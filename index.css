@@ -1,0 +1,27 @@
+body {
+  color: white; 
+  font-family: "Roboto Light";
+}
+
+h1 {
+  font-size: 150px;
+}
+h2 {
+  font-size: 100px;
+}
+h3 {
+  font-size: 25px; 
+}
+
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px;  
+  background: transparent; /* https://stackoverflow.com/questions/16670931/ */
+}
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
