@@ -16,3 +16,5 @@ Fast, open and free-to-use new tab page for Chrome
 [Pexels](https://pexels.com) - Stock photos used
 
 [Stack Overflow](https://stackoverflow.com) - Small code snippets, links to original can be found commented in the files where they are used 
+
+and all the contributors <3
