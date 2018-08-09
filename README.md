@@ -11,7 +11,7 @@ Fast, open and free-to-use new tab page for Chrome
 
 
 ## Credits
-[Turbomarshmello](https://github.com/turbomarshmello) - Portions of original code, name idea. ~~pls don't ban me i gave credit~~
+[Turbomarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea. ~~pls don't ban me i gave credit~~
 
 [Pexels](https://pexels.com) - Stock photos used
 

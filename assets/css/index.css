@@ -32,7 +32,11 @@ body {
 .sunrise {   background-image: url('../images/2.jpeg'); }
 .butterfly { background-image: url('../images/3.jpeg'); }
 .leaves {    background-image: url('../images/4.jpeg'); }
-.city {    background-image: url('../images/5.jpeg'); }
+.city {      background-image: url('../images/5.jpeg'); }
+.sea {      background-image: url('../images/6.jpeg'); }
+.space {      background-image: url('../images/7.jpeg'); }
+.ice {      background-image: url('../images/8.jpeg'); }
+.house {      background-image: url('../images/9.jpeg'); }
 
 /*  TEXT SHADOW  */
 

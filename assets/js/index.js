@@ -64,7 +64,11 @@ function setRandomBackground () {
 		'sunrise',
 		'butterfly',
 		'leaves',
-		'city'
+		'city',
+		'sea',
+		'space',
+		'ice',
+		'house'
 
 	],
 	currentBackgroundClass = pickFromArray(backgroundClasses);
