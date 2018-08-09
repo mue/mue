@@ -96,7 +96,11 @@ function setRandomQuote () {
 
 	let quotes = [
 
-		{ text: 'Time goes on. So whatever you’re going to do, do it. Do it now. Don’t wait.', author: 'Robert De Niro' }
+		{ text: 'Time goes on. So whatever you’re going to do, do it. Do it now. Don’t wait.', author: 'Robert De Niro' },
+		{ text: 'All our dreams can come true, if we have the courage to pursue them.', author: 'Walt Disney' },
+		{ text: 'It does not matter how slowly you go as long as you do not stop.', author: 'Confucius'},
+		{ text: 'Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine.', author: 'Roy T. Bennett'},
+		{ text: 'If you believe it will work out, you’ll see opportunities. If you believe it won’t, you will see obstacles', author: 'Wayne Dyer'}
 
 	],
 		quote = pickFromArray(quotes);
@@ -107,7 +111,6 @@ function setRandomQuote () {
 	// little treats of visual alignment, for code beauty's sake
 
 };
-
 
 
 function setTime () {
