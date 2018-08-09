@@ -1,27 +1,95 @@
+/*  VARIABLES  */
+
+:root {
+
+	--shadow-color: #111111CC;
+
+}
+
+/*  BASIC STYLING  */
+
+html, body { height: 100%; }
 body {
-  color: white; 
-  font-family: "Roboto Light";
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+
+	margin: 0;
+
+	background-size: cover;
+	background-position: 50%;
+
+	font-family: 'Roboto', sans-serif;
+	color: white;
+
 }
 
-h1 {
-  font-size: 150px;
-}
-h2 {
-  font-size: 100px;
-}
-h3 {
-  font-size: 25px; 
+/*  BACKGROUND CLASSES  */
+
+.mountain {  background-image: url('images/1.jpeg'); }
+.sunrise {   background-image: url('images/2.jpeg'); }
+.butterfly { background-image: url('images/3.jpeg'); }
+.leaves {    background-image: url('images/4.jpeg'); }
+
+/*  TEXT SHADOW  */
+
+.greeting,
+time,
+.quote {
+	
+	filter: drop-shadow(var(--shadow-shift) var(--shadow-shift) 0 var(--shadow-color));
+
 }
 
+/* Greeting */
 
-html {
-  overflow: scroll;
-  overflow-x: hidden;
+.greeting {
+
+	--shadow-shift: 0.2rem;
+	
+	font-size: 3.25rem;
+
 }
-::-webkit-scrollbar {
-  width: 0px;  
-  background: transparent; /* https://stackoverflow.com/questions/16670931/ */
+
+/* Time */
+
+time {
+
+	--shadow-shift: 0.4rem;
+	
+	font-size: 12rem;
+
 }
-::-webkit-scrollbar-thumb {
-  background: #FF0000;
+
+/* Quote */
+
+.quote {
+
+	--shadow-shift: 0.125rem;
+
+	width: 37.5%;
+	max-width: 37.5rem; /* 600px on desktop */
+	
+	font-size: 1.5rem;
+	text-align: center;
+
 }
+
+/* quote text */
+
+.quote blockquote {
+
+	margin: 0 0 0.25rem 0;
+
+	line-height: 1.125;
+	
+}
+
+.quote blockquote::before { content: '“'; margin-right: 0.25ch; }
+.quote blockquote::after { content: '”';  margin-left: 0.25ch; }
+
+/* quote author */
+
+.quote cite { font-size: 83.33%; }
