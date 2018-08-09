@@ -1,0 +1,109 @@
+/*  VARIABLES  */
+
+:root {
+
+	--shadow-color: #111111CC;
+
+}
+
+/*  BASIC STYLING  */
+
+html, body { height: 100%; }
+body {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+
+	margin: 0;
+
+	background-size: cover;
+	background-position: 50%;
+
+	font-family: 'Roboto', sans-serif;
+	color: white;
+
+}
+
+/*  BACKGROUND CLASSES  */
+
+.mountain {  background-image: url('../images/1.jpeg'); }
+.sunrise {   background-image: url('../images/2.jpeg'); }
+.butterfly { background-image: url('../images/3.jpeg'); }
+.leaves {    background-image: url('../images/4.jpeg'); }
+
+/*  TEXT SHADOW  */
+
+.greeting,
+time,
+.quote {
+	
+	filter: drop-shadow(var(--shadow-shift) var(--shadow-shift) 0 var(--shadow-color));
+
+}
+
+/* Greeting */
+
+.greeting {
+
+	--shadow-shift: 0.2rem;
+	
+	font-size: 3.25rem;
+
+}
+
+/* Time */
+
+time {
+
+	--shadow-shift: 0.4rem;
+	
+	font-size: 12rem;
+
+}
+
+/* Quote */
+
+.quote {
+
+	--shadow-shift: 0.125rem;
+
+	width: 37.5%;
+	max-width: 37.5rem; /* 600px on desktop */
+	
+	font-size: 1.5rem;
+	text-align: center;
+
+}
+
+/* quote text */
+
+.quote blockquote {
+
+	margin: 0 0 0.25rem 0;
+
+	line-height: 1.125;
+	
+}
+
+.quote blockquote::before { content: '“'; margin-right: 0.25ch; }
+.quote blockquote::after { content: '”';  margin-left: 0.25ch; }
+
+/* quote author */
+
+.quote cite { font-size: 83.33%; }
+
+/* roboto-regular - latin */
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/roboto-v18-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('Roboto'), local('Roboto-Regular'),
+		 url('../fonts/roboto-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('../fonts/roboto-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+		 url('../fonts/roboto-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
+		 url('../fonts/roboto-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		 url('../fonts/roboto-v18-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+  }
