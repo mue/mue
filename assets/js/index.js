@@ -68,7 +68,8 @@ function setRandomBackground () {
 		'sea',
 		'space',
 		'ice',
-		'house'
+		'house',
+		'river'
 
 	],
 	currentBackgroundClass = pickFromArray(backgroundClasses);
@@ -100,7 +101,12 @@ function setRandomQuote () {
 		{ text: 'All our dreams can come true, if we have the courage to pursue them.', author: 'Walt Disney' },
 		{ text: 'It does not matter how slowly you go as long as you do not stop.', author: 'Confucius'},
 		{ text: 'Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine.', author: 'Roy T. Bennett'},
-		{ text: 'If you believe it will work out, you’ll see opportunities. If you believe it won’t, you will see obstacles', author: 'Wayne Dyer'}
+		{ text: 'If you believe it will work out, you’ll see opportunities. If you believe it won’t, you will see obstacles', author: 'Wayne Dyer'},
+		{ text: 'Everything you’ve ever wanted is on the other side of fear.', author: 'George Addair'},
+		{ text: 'Success is not final, failure is not fatal: it is the courage to continue that counts.', author: 'Winston Churchill'},
+		{ text: 'There is only one thing that makes a dream impossible to achieve: the fear of failure.', author: 'Paulo Coelho'},
+		{ text: 'Your true success in life begins only when you make the commitment to become excellent at what you do.', author: 'Brian Tracy'},
+		{ text: 'Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going.', author: 'Chantal Sutherland'}
 
 	],
 		quote = pickFromArray(quotes);
