@@ -23,21 +23,27 @@ body {
 
 	font-family: 'Roboto', sans-serif;
 	color: white;
-
+    -moz-user-select: none; /* Firefox */
+     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 /*  BACKGROUND CLASSES  */
 
-.mountain {  background-image: url('../images/1.jpeg'); }
-.sunrise {   background-image: url('../images/2.jpeg'); }
-.butterfly { background-image: url('../images/3.jpeg'); }
-.leaves {    background-image: url('../images/4.jpeg'); }
-.city {      background-image: url('../images/5.jpeg'); }
-.sea {       background-image: url('../images/6.jpeg'); }
-.space {     background-image: url('../images/7.jpeg'); }
-.ice {       background-image: url('../images/8.jpeg'); }
-.house {     background-image: url('../images/9.jpeg'); }
-.river {     background-image: url('../images/10.jpeg'); }
+.mountain {  background-image: url('../img/1.jpeg'); }
+.sunrise {   background-image: url('../img/2.jpeg'); }
+.butterfly { background-image: url('../img/3.jpeg'); }
+.leaves {    background-image: url('../img/4.jpeg'); }
+.city {      background-image: url('../img/5.jpeg'); }
+.sea {       background-image: url('../img/6.jpeg'); }
+.space {     background-image: url('../img/7.jpeg'); }
+.ice {       background-image: url('../img/8.jpeg'); }
+.house {     background-image: url('../img/9.jpeg'); }
+.river {     background-image: url('../img/10.jpeg'); }
+.town {      background-image: url('../img/11.jpeg'); }
+.desert {    background-image: url('../img/12.jpeg'); }
+.canyon {    background-image: url('../img/13.jpeg'); }
+.rose {      background-image: url('../img/14.jpeg'); }
+.forest {    background-image: url('../img/15.jpeg'); }
 
 /*  TEXT SHADOW  */
 
@@ -107,11 +113,6 @@ time {
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 400;
-	src: url('../fonts/roboto-v18-latin-regular.eot'); /* IE9 Compat Modes */
 	src: local('Roboto'), local('Roboto-Regular'),
-		 url('../fonts/roboto-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('../fonts/roboto-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-		 url('../fonts/roboto-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
-		 url('../fonts/roboto-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-		 url('../fonts/roboto-v18-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+		 url('../font/roboto-v18-latin-regular.woff2') format('woff2'); /* Super Modern Browsers */
   }

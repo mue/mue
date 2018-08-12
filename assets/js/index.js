@@ -69,7 +69,12 @@ function setRandomBackground () {
 		'space',
 		'ice',
 		'house',
-		'river'
+		'river',
+		'town',
+		'desert',
+		'canyon',
+		'rose',
+		'forest'
 
 	],
 	currentBackgroundClass = pickFromArray(backgroundClasses);
@@ -106,7 +111,9 @@ function setRandomQuote () {
 		{ text: 'Success is not final, failure is not fatal: it is the courage to continue that counts.', author: 'Winston Churchill'},
 		{ text: 'There is only one thing that makes a dream impossible to achieve: the fear of failure.', author: 'Paulo Coelho'},
 		{ text: 'Your true success in life begins only when you make the commitment to become excellent at what you do.', author: 'Brian Tracy'},
-		{ text: 'Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going.', author: 'Chantal Sutherland'}
+		{ text: 'Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going.', author: 'Chantal Sutherland'},
+		{ text: 'Too many of us are not living our dreams because we are living our fears.', author: 'Les Brown'},
+		{ text: 'Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed.', author: 'Bob Riley'}
 
 	],
 		quote = pickFromArray(quotes);
@@ -222,3 +229,8 @@ function formatTimeUnit (unit) { return unit < 10 ? '0' + unit : unit };
 function setHTMLContent (selector, content) { return document.querySelector(selector) .innerHTML = content };
 
 function pickFromArray(array) { return array[Math.floor(Math.random() * (array.length - 1))] };
+
+// Disable right click
+
+document.oncontextmenu=RightMouseDown;
+function RightMouseDown() { return false; }
