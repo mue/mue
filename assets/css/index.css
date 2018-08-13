@@ -24,7 +24,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 	color: white;
     -moz-user-select: none; /* Firefox */
-     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 /*  BACKGROUND CLASSES  */
@@ -44,6 +44,11 @@ body {
 .canyon {    background-image: url('../img/13.jpeg'); }
 .rose {      background-image: url('../img/14.jpeg'); }
 .forest {    background-image: url('../img/15.jpeg'); }
+.lightbulb { background-image: url('../img/16.jpeg'); }
+.clouds {    background-image: url('../img/17.jpeg'); }
+.dj {        background-image: url('../img/18.jpeg'); }
+.keyboard {  background-image: url('../img/19.jpeg'); }
+.table {     background-image: url('../img/20.jpeg'); }
 
 /*  TEXT SHADOW  */
 

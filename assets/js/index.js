@@ -74,7 +74,12 @@ function setRandomBackground () {
 		'desert',
 		'canyon',
 		'rose',
-		'forest'
+		'forest',
+		'lightbulb',
+		'clouds',
+		'dj',
+		'keyboard',
+		'table'
 
 	],
 	currentBackgroundClass = pickFromArray(backgroundClasses);
@@ -113,7 +118,10 @@ function setRandomQuote () {
 		{ text: 'Your true success in life begins only when you make the commitment to become excellent at what you do.', author: 'Brian Tracy'},
 		{ text: 'Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going.', author: 'Chantal Sutherland'},
 		{ text: 'Too many of us are not living our dreams because we are living our fears.', author: 'Les Brown'},
-		{ text: 'Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed.', author: 'Bob Riley'}
+		{ text: 'Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed.', author: 'Bob Riley'},
+		{ text: 'If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily.', author: 'Jack Canfield'},
+		{ text: 'Whatever the mind can conceive and believe, it can achieve.', author: 'Napoleon Hill'},
+		{ text: 'Don’t wish it were easier. Wish you were better.', author: 'Jim Rohn'}
 
 	],
 		quote = pickFromArray(quotes);
