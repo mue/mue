@@ -113,11 +113,10 @@ time {
 
 /* Font */
 
-/* roboto-regular - latin */
 @font-face {
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 400;
 	src: local('Roboto'), local('Roboto-Regular'),
-		 url('../font/roboto-v18-latin-regular.woff2') format('woff2'); /* Super Modern Browsers */
+		 url('../font/roboto-v18-latin-regular.woff2') format('woff2'); 
   }

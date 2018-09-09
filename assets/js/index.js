@@ -121,8 +121,12 @@ function setRandomQuote () {
 		{ text: 'Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed.', author: 'Bob Riley'},
 		{ text: 'If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily.', author: 'Jack Canfield'},
 		{ text: 'Whatever the mind can conceive and believe, it can achieve.', author: 'Napoleon Hill'},
-		{ text: 'Don’t wish it were easier. Wish you were better.', author: 'Jim Rohn'}
-
+		{ text: 'Don’t wish it were easier. Wish you were better.', author: 'Jim Rohn'},
+		{ text: 'A champion is defined not by their wins but by how they can recover when they fall.', author: 'Serena Williams'},
+		{ text: 'Motivation comes from working on things we care about.', author: 'Sheryl Sandberg'},
+		{ text: 'With the right kind of coaching and determination you can accomplish anything.', author: 'Reese Witherspoon'},
+		{ text: 'Some people look for a beautiful place. Others make a place beautiful.', author: 'Hazrat Inayat Khan'},
+		{ text: 'Life is like riding a bicycle. To keep your balance, you must keep moving.', author: 'Albert Einstein'}
 	],
 		quote = pickFromArray(quotes);
 
