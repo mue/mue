@@ -1,3 +1,17 @@
+/*
+  __  __            
+ |  \/  |           
+ | \  / |_   _  ___ 
+ | |\/| | | | |/ _ \
+ | |  | | |_| |  __/
+ |_|  |_|\__,_|\___|
+ -------------------
+ Copyright 2018 Dave R (ohlookitsderpy) 
+ Licensed under MIT
+ Special thanks to contributors! <3
+ GitHub: https://github.com/ohlookitsderpy/Mue
+*/
+
 // start a separate function for each of the things that we need to do
 
 // function construction is part of making the code clearer...
