@@ -38,8 +38,8 @@ body {
 	font-family: 'Roboto', sans-serif;
 	color: white;
 	
-        -moz-user-select: none; /* Firefox */
-        user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    -moz-user-select: none; /* Firefox */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 /*  BACKGROUND CLASSES  */
