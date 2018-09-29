@@ -32,4 +32,6 @@ Fast, open and free-to-use new tab page for Chrome (also works on Opera and Fire
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 
+[Animate.css](https://daneden.github.io/animate.css/) - Portions of code used for animations
+
 and all the contributors <3
