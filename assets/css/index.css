@@ -34,11 +34,13 @@ body {
 
 	background-size: cover;
 	background-position: 50%;
+	background-color: black; /* Prevent white flash on page load */
 
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto';
 	color: white;
+	
     -moz-user-select: none; /* Firefox */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 /*  BACKGROUND CLASSES  */
@@ -47,22 +49,29 @@ body {
 .sunrise {   background-image: url('../img/2.jpeg'); }
 .butterfly { background-image: url('../img/3.jpeg'); }
 .leaves {    background-image: url('../img/4.jpeg'); }
-.city {      background-image: url('../img/5.jpeg'); }
+.river {     background-image: url('../img/5.jpeg'); }
 .sea {       background-image: url('../img/6.jpeg'); }
 .space {     background-image: url('../img/7.jpeg'); }
 .ice {       background-image: url('../img/8.jpeg'); }
-.house {     background-image: url('../img/9.jpeg'); }
+.waterfall { background-image: url('../img/9.jpeg'); }
 .river {     background-image: url('../img/10.jpeg'); }
-.town {      background-image: url('../img/11.jpeg'); }
+.sunset {    background-image: url('../img/11.jpeg'); }
 .desert {    background-image: url('../img/12.jpeg'); }
 .canyon {    background-image: url('../img/13.jpeg'); }
 .rose {      background-image: url('../img/14.jpeg'); }
 .forest {    background-image: url('../img/15.jpeg'); }
-.lightbulb { background-image: url('../img/16.jpeg'); }
+.cherry {    background-image: url('../img/16.jpeg'); }
 .clouds {    background-image: url('../img/17.jpeg'); }
-.dj {        background-image: url('../img/18.jpeg'); }
-.keyboard {  background-image: url('../img/19.jpeg'); }
-.table {     background-image: url('../img/20.jpeg'); }
+.winter {    background-image: url('../img/18.jpeg'); }
+.autumn {    background-image: url('../img/19.jpeg'); }
+.flowers {   background-image: url('../img/20.jpeg'); }
+.sunrise {   background-image: url('../img/21.jpeg'); }
+.rocks {     background-image: url('../img/22.jpeg'); }
+.trees {     background-image: url('../img/23.jpeg'); }
+.mountains { background-image: url('../img/24.jpeg'); }
+.beach {     background-image: url('../img/25.jpeg'); }
+
+
 
 /*  TEXT SHADOW  */
 
@@ -133,4 +142,90 @@ time {
 	font-weight: 400;
 	src: local('Roboto'), local('Roboto-Regular'),
 		 url('../font/roboto-v18-latin-regular.woff2') format('woff2'); 
+  }
+
+/* ANIMATIONS */
+
+  /*!
+   * animate.css -http://daneden.me/animate
+   * Version - 3.7.0
+   * Licensed under the MIT license - http://opensource.org/licenses/MIT
+   *
+   * Copyright (c) 2018 Daniel Eden
+   */
+  
+  @-webkit-keyframes fadeIn {
+	from {
+	  opacity: 0;
+	}
+  
+	to {
+	  opacity: 1;
+	}
+  }
+  
+  @keyframes fadeIn {
+	from {
+	  opacity: 0;
+	}
+  
+	to {
+	  opacity: 1;
+	}
+  }
+  
+  .fadeIn {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+  }
+  
+  @-webkit-keyframes fadeInUp {
+	from {
+	  opacity: 0;
+	  -webkit-transform: translate3d(0, 100%, 0);
+	  transform: translate3d(0, 100%, 0);
+	}
+  
+	to {
+	  opacity: 1;
+	  -webkit-transform: translate3d(0, 0, 0);
+	  transform: translate3d(0, 0, 0);
+	}
+  }
+  
+  @keyframes fadeInUp {
+	from {
+	  opacity: 0;
+	  -webkit-transform: translate3d(0, 100%, 0);
+	  transform: translate3d(0, 100%, 0);
+	}
+  
+	to {
+	  opacity: 1;
+	  -webkit-transform: translate3d(0, 0, 0);
+	  transform: translate3d(0, 0, 0);
+	}
+  }
+  
+  .fadeInUp {
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+  }
+  
+  
+  .animated {
+	-webkit-animation-duration: 0.75s; /* modified from 1s */
+	animation-duration: 0.75s; /* modified from 1s */
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+  }
+  
+  
+  @media (prefers-reduced-motion) {
+	.animated {
+	  -webkit-animation: unset !important;
+	  animation: unset !important;
+	  -webkit-transition: none !important;
+	  transition: none !important;
+	}
   }

@@ -78,22 +78,27 @@ function setRandomBackground () {
 		'sunrise',
 		'butterfly',
 		'leaves',
-		'city',
+		'river',
 		'sea',
 		'space',
 		'ice',
-		'house',
+		'waterfall',
 		'river',
-		'town',
+		'sunset',
 		'desert',
 		'canyon',
 		'rose',
 		'forest',
-		'lightbulb',
+		'cherry',
 		'clouds',
-		'dj',
-		'keyboard',
-		'table'
+		'autumn',
+		'winter',
+		'flowers',
+		'sunrise',
+		'rocks',
+		'trees',
+		'mountains',
+		'beach'
 
 	],
 	currentBackgroundClass = pickFromArray(backgroundClasses);
@@ -260,3 +265,4 @@ function pickFromArray(array) { return array[Math.floor(Math.random() * (array.l
 
 document.oncontextmenu=RightMouseDown;
 function RightMouseDown() { return false; }
+
