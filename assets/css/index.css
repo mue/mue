@@ -39,7 +39,7 @@ body {
 	font-family: 'Roboto';
 	color: white;
 	
-    -moz-user-select: none; /* Firefox */
+  -moz-user-select: none; /* Firefox */
 	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
@@ -154,31 +154,6 @@ time {
    * Copyright (c) 2018 Daniel Eden
    */
   
-  @-webkit-keyframes fadeIn {
-	from {
-	  opacity: 0;
-	}
-  
-	to {
-	  opacity: 1;
-	}
-  }
-  
-  @keyframes fadeIn {
-	from {
-	  opacity: 0;
-	}
-  
-	to {
-	  opacity: 1;
-	}
-  }
-  
-  .fadeIn {
-	-webkit-animation-name: fadeIn;
-	animation-name: fadeIn;
-  }
-  
   @-webkit-keyframes fadeInUp {
 	from {
 	  opacity: 0;
@@ -211,7 +186,6 @@ time {
 	-webkit-animation-name: fadeInUp;
 	animation-name: fadeInUp;
   }
-  
   
   .animated {
 	-webkit-animation-duration: 0.75s; /* modified from 1s */
