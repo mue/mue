@@ -25,8 +25,13 @@ Fast, open and free-to-use new tab page for Chrome (also works on Opera and Fire
 5. Go to the directory and click on the manifest.json
 6. Enjoy your new tab!
 
+## Screenshot
+*Will be updated if needed*
+
+<img src="https://vgy.me/K8T5EP.png">
+
 ## Credits
-[Turbomarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea. ~~pls don't ban me i gave credit~~
+[Turbomarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea.
 
 [Pexels](https://pexels.com) - Stock photos used
 
