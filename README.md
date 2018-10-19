@@ -1,4 +1,7 @@
 # Mue
+<a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://c5.patreon.com/external/logo/become_a_patron_button.png' border='0' alt='Become a patron on patreon.com' /></a>
+
 Fast, open and free-to-use new tab page for Chrome (also works on Opera and Firefox)
 
 ## Installation
