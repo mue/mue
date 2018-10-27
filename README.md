@@ -8,7 +8,7 @@ Fast, open and free-to-use new tab page for Chrome (also works on Opera and Fire
 * Fast
 * Supports multiple browsers
 * Actively developed and opensource
-* Multiple language support (Currently English and Italian 
+* Multiple language support (Currently English and Italian and Dutch)
 
 ## Installation
 ### Chrome
