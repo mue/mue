@@ -30,9 +30,9 @@
 // https://eloquentjavascript.net/05_higher_order.html
 
 function setDaytimeMessage () {
-	if (window.browser.language === 'it' || window.browser.language === 'it-ch') itaMessageSet(); //Italian
-	if (window.browser.language === 'de') nlMessageSet(); //Dutch
-	if (window.browser.language === 'fr') frMessageSet(); //French
+	if (navigator.language === 'it' || navigator.language === 'it-ch') itaMessageSet(); //Italian
+	if (navigator.language === 'de') nlMessageSet(); //Dutch
+	if (navigator.language === 'fr') frMessageSet(); //French
 	else engMessageSet(); //English 
 };
 
@@ -155,7 +155,7 @@ function setRandomQuote () {
 	],
 		quote = pickFromArray(quotes);
 
-	if (browserlang === 'it' || browserlang === 'it-ch') setHTMLContent('blockquote', quote.ita);
+	if (navigator.language === 'it' || navigator.language === 'it-ch') setHTMLContent('blockquote', quote.ita);
 	else setHTMLContent('blockquote', quote.eng);
 
 	setHTMLContent('cite', quote.author);
