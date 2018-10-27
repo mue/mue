@@ -30,44 +30,8 @@
 // https://eloquentjavascript.net/05_higher_order.html
 
 function setDaytimeMessage () {
-
-	// skip the foreplay and get straight to hours...
-	// ...since we don't need the Date() anywhere else in the function
-
-	let currentHour = new Date().getHours(),
-
-		getDaytime = () => {
-
-			// if it's morning...
-
-			if (currentHour < 12) { return 'morning' }
-
-			// ...if it's evening...
-
-			else if (currentHour >= 18) { return 'evening' }
-
-			// ...and in all other cases...
-			// ...which happens to be afternoon
-
-			else { return 'afternoon' };
-
-			// no need to make code more specific than it needs to be
-			// if you can get the desired result without writing more...
-			// ...don't write more
-
-		};
-
-	// ideally, one would want to have similar styles of comparison...
-	// ...within the same `if-else` structure (< and >, or, <= and >=)...
-	// ...but it makes more sense that way
-
-	// separate function for setting an element's `innerHTML`
-	// uses template literals and ${}-extrapolation
-
-	// further reading:
-	// https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals
-	setHTMLContent(".greeting", `Good ${getDaytime()}`);
-
+	if (browserlang === 'it' || broserlang === 'it-ch') itaMessageSet();
+	else engMessageSet();
 };
 
 function setRandomBackground () {
@@ -265,4 +229,35 @@ function pickFromArray(array) { return array[Math.floor(Math.random() * (array.l
 
 document.oncontextmenu=RightMouseDown;
 function RightMouseDown() { return false; }
+
+//Language-Specific-Functions-----------------------------------------------------------------------------------
+
+//English
+
+function engMessageSet() {
+        
+	let currentHour = new Date().getHours(),
+
+	getDaytime = () => {
+
+		if (currentHour < 12)  return 'morning';       // if it's morning
+		else if (currentHour >= 18) return 'evening';  // if it's evening
+		else return 'afternoon';               // else, which happens to be afternoon
+	};
+        setHTMLContent(".greeting", `Good ${getDaytime()}`);
+}
+
+//Italian
+
+function itaMessageSet() {
+        
+	let currentHour = new Date().getHours(),
+
+	getDaytime = () => {
+
+		if (currentHour < 18) return 'giorno';       //In Italian there is just Buongiorno or Buonasera
+		else return 'asera';                         //used 'asera' instead of 'sera' for avoiding creating a special case for it
+	};
+        setHTMLContent(".greeting", `Buon${getDaytime()}`);
+}
 
