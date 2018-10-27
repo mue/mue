@@ -30,7 +30,7 @@
 // https://eloquentjavascript.net/05_higher_order.html
 
 function setDaytimeMessage () {
-	if (browserlang === 'it' || broserlang === 'it-ch') itaMessageSet();
+	if (window.navigator.language === 'it' || window.navigator.language === 'it-ch') itaMessageSet();
 	else engMessageSet();
 };
 
