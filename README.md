@@ -4,6 +4,12 @@
 
 Fast, open and free-to-use new tab page for Chrome (also works on Opera and Firefox)
 
+## Features
+* Fast
+* Supports multiple browsers
+* Actively developed and opensource
+* Multiple language support (Currently English and Italian 
+
 ## Installation
 ### Chrome
 1. ``git clone https://github.com/ohlookitsderpy/Mue`` (If you don't have Git just go to **Clone or download** and click **Download ZIP**)
