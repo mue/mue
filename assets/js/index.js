@@ -30,9 +30,10 @@
 // https://eloquentjavascript.net/05_higher_order.html
 
 function setDaytimeMessage () {
-	if (window.browser.language === 'it' || window.browser.language === 'it-ch') itaMessageSet();
-	if (window.browser.language === 'de') nlMessageSet();
-	else engMessageSet();
+	if (window.browser.language === 'it' || window.browser.language === 'it-ch') itaMessageSet(); //Italian
+	if (window.browser.language === 'de') nlMessageSet(); //Dutch
+	if (window.browser.language === 'fr') frMessageSet(); //French
+	else engMessageSet(); //English 
 };
 
 function setRandomBackground () {
@@ -270,6 +271,18 @@ function nlMessageSet() {
 	if (hour < 12)      time = 'Goedemorgen'; // If it's before 12am, set the time string to "Good morning"
 	else if (hour > 18) time = 'Goedenavond'; // If it's after 6pm, set the time string to "Good afternoon"
 	else 		    time = 'Goedemiddag'; // If It's unknown, set the time stirng to "Good evening"
+	
+	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
+}
+
+// French
+function frMessageSet() {
+	let hour = new Date().getHours();         // Get the current hour
+	let time = 'Goedemiddag';		  // Set the default time string to "Good evening"
+	
+	if (hour < 12)      time = 'Bonjour'; // If it's before 12am, set the time string to "Good morning"
+	else if (hour > 18) time = 'Bonne après-midi'; // If it's after 6pm, set the time string to "Good afternoon"
+	else 		    time = 'Bonsoir'; // If It's unknown, set the time stirng to "Good evening"
 	
 	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
 }
