@@ -92,32 +92,74 @@ function setRandomQuote () {
 
 	let quotes = [
 
-		{ text: 'Time goes on. So whatever you’re going to do, do it. Do it now. Don’t wait.', author: 'Robert De Niro' },
-		{ text: 'All our dreams can come true, if we have the courage to pursue them.', author: 'Walt Disney' },
-		{ text: 'It does not matter how slowly you go as long as you do not stop.', author: 'Confucius'},
-		{ text: 'Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine.', author: 'Roy T. Bennett'},
-		{ text: 'If you believe it will work out, you’ll see opportunities. If you believe it won’t, you will see obstacles', author: 'Wayne Dyer'},
-		{ text: 'Everything you’ve ever wanted is on the other side of fear.', author: 'George Addair'},
-		{ text: 'Success is not final, failure is not fatal: it is the courage to continue that counts.', author: 'Winston Churchill'},
-		{ text: 'There is only one thing that makes a dream impossible to achieve: the fear of failure.', author: 'Paulo Coelho'},
-		{ text: 'Your true success in life begins only when you make the commitment to become excellent at what you do.', author: 'Brian Tracy'},
-		{ text: 'Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going.', author: 'Chantal Sutherland'},
-		{ text: 'Too many of us are not living our dreams because we are living our fears.', author: 'Les Brown'},
-		{ text: 'Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed.', author: 'Bob Riley'},
-		{ text: 'If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily.', author: 'Jack Canfield'},
-		{ text: 'Whatever the mind can conceive and believe, it can achieve.', author: 'Napoleon Hill'},
-		{ text: 'Don’t wish it were easier. Wish you were better.', author: 'Jim Rohn'},
-		{ text: 'A champion is defined not by their wins but by how they can recover when they fall.', author: 'Serena Williams'},
-		{ text: 'Motivation comes from working on things we care about.', author: 'Sheryl Sandberg'},
-		{ text: 'With the right kind of coaching and determination you can accomplish anything.', author: 'Reese Witherspoon'},
-		{ text: 'Some people look for a beautiful place. Others make a place beautiful.', author: 'Hazrat Inayat Khan'},
-		{ text: 'Life is like riding a bicycle. To keep your balance, you must keep moving.', author: 'Albert Einstein'}
+		{ eng: 'Time goes on. So whatever you’re going to do, do it. Do it now. Don’t wait.',
+			ita: 'Il tempo passa. Quindi qualunque cosa che farai, falla. Falla ora. Non aspettare',
+			author: 'Robert De Niro' },
+		{ eng: 'All our dreams can come true, if we have the courage to pursue them.',
+			ita: 'Tutti i nostri sogni possono diventare reali, se abbiamo il coraggio di seguirli.',
+			author: 'Walt Disney' },
+		{ eng: 'It does not matter how slowly you go as long as you do not stop.',
+			ita: 'Non importa quanto lentamente vai fino a quando non ti fermi',
+		 	author: 'Confucius'},
+		{ eng: 'Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine.',
+			ita: 'Credi in te stesso. Sei più coraggioso di quanto pensi, più talentuoso di quanto credi, e capace più di quanto puoi immaginare.',
+			author: 'Roy T. Bennett'},
+		{ eng: 'If you believe it will work out, you’ll see opportunities. If you believe it won’t, you will see obstacles',
+			ita: 'Se ci credi funzionerà, vedrai delle opportunità. Se non ci credi, vedrai solamente ostacoli',
+			author: 'Wayne Dyer'},
+		{ eng: 'Everything you’ve ever wanted is on the other side of fear.',
+			ita: 'Tutti i tuoi desideri sono opposti alla paura',
+			author: 'George Addair'},
+		{ eng: 'Success is not final, failure is not fatal: it is the courage to continue that counts.',
+			ita: 'Il successo non è la fine, il fallimento non è fatale: è il coraggio per continuare quello che conta.',
+			author: 'Winston Churchill'},
+		{ eng: 'There is only one thing that makes a dream impossible to achieve: the fear of failure.',
+			ita: "C'è solo una cosa che fa i sogni impossibili: la paura di fallire",
+		 	author: 'Paulo Coelho'},
+		{ eng: 'Your true success in life begins only when you make the commitment to become excellent at what you do.',
+                  ita: 'Il vero successo nella tua vita inizia solo quando fai il sacrificio per diventare eccellente a quello che ami.',
+			author: 'Brian Tracy'},
+		{ eng: 'Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going.',
+			ita: "Credi in te stesso, sfida i tuoi problemi, scava nel profondo del tuo io per sconfiggere le tue paure. Mai arrendersi per qualcun'altro. Tu devi continuare.",
+			author: 'Chantal Sutherland'},
+		{ eng: 'Too many of us are not living our dreams because we are living our fears.',
+			ita: "Troppe persone non vivono i loro sogni per vivere nelle loro paure",
+			author: 'Les Brown'},
+		{ eng: 'Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed.',
+			ita: "Tempi difficili non fanno eroi. È durante i tempi duri che \"l'eroe\" in noi viene rivelato.",
+			author: 'Bob Riley'},
+		{ eng: 'If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily.',
+			ita: "Se puoi sintonizzare sul tuo senso e allinearti a quest'ultimo, impostando i tuoi obiettivi in modo che la tua visione sia un'espressione di quel senso, La tua vita scorre molto più facilmente",
+			author: 'Jack Canfield'},
+		{ eng: 'Whatever the mind can conceive and believe, it can achieve.',
+			ita: "Qualunque cosa la mente può immaginare e crederese, si può realizzare",
+			author: 'Napoleon Hill'},
+		{ eng: 'Don’t wish it were easier. Wish you were better.',
+			ita: "Non desiderare che fosse stato più facile. Desidera che tu fossi stato migliore.",
+			author: 'Jim Rohn'},
+		{ eng: 'A champion is defined not by their wins but by how they can recover when they fall.',
+			ita: "Un campione si definisce non dalle sue vittorie ma da come recuperano quando cadono",
+			author: 'Serena Williams'},
+		{ eng: 'Motivation comes from working on things we care about.',
+			ita: "La motivazione viene dal lavorare so cose che amiamo",
+			author: 'Sheryl Sandberg'},
+		{ eng: 'With the right kind of coaching and determination you can accomplish anything.',
+			ita: "Con il giusto tipo di allenamento e determinazione puoi fare tutto",
+			author: 'Reese Witherspoon'},
+		{ eng: 'Some people look for a beautiful place. Others make a place beautiful.',
+			ita: "Alcune persone cercano un posto indimenticabile. Altre lo transformano in un posto mozzafiato.",
+			author: 'Hazrat Inayat Khan'},
+		{ eng: 'Life is like riding a bicycle. To keep your balance, you must keep moving.',
+			ita: "La vita è come andare in bicicletta. Per tenerti in equilibrio, devi continuare a muoverti",
+			author: 'Albert Einstein'}
 	],
 		quote = pickFromArray(quotes);
 
-	setHTMLContent('blockquote', quote.text);
-	setHTMLContent('cite',       quote.author);
-	
+	if (browserlang === 'it' || browserlang === 'it-ch') setHTMLContent('blockquote', quote.ita);
+	else setHTMLContent('blockquote', quote.eng);
+
+	setHTMLContent('cite', quote.author);
+
 	// little treats of visual alignment, for code beauty's sake
 
 };
