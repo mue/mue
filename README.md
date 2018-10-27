@@ -26,13 +26,11 @@ Fast, open and free-to-use new tab page for Chrome (also works on Opera and Fire
 5. Go to the directory and click ok
 6. Enjoy your new tab!
 ### Firefox
-*Note: I'm currently trying to find a better method to do this, but this works for now. Also in testing and may not work properly!*
-1. ``git clone https://github.com/ohlookitsderpy/Mue`` (If you don't have Git just go to **Clone or download** and click **Download ZIP**)
-2. Rename ``manifest-firefox.json`` to ``manifest.json``
-3. Visit ``about:debugging#addons`` in Firefox
-4. Click **Load Temporary Add-on...**
-5. Go to the directory and click on the manifest.json
-6. Enjoy your new tab!
+<a href="https://addons.mozilla.org/en-US/firefox/addon/mue/"><img src='https://vgy.me/REe6qz.png' target='_blank'></a> 
+
+Link: https://addons.mozilla.org/en-US/firefox/addon/mue/
+
+Development: You know what you're doing, I don't need to explain.
 
 ## Screenshot
 *Will be updated if needed*
