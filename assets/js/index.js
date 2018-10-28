@@ -30,14 +30,14 @@
 // https://eloquentjavascript.net/05_higher_order.html
 
 function setDaytimeMessage () {
-	if (nal === 'it' || nal === 'it-ch') itaMessageSet(); //Italian
-	else if (nal === 'nl'|| nal === 'nl-be') nlMessageSet(); //Dutch
+	if (nal == 'it' || nal == 'it-CH') itaMessageSet(); //Italian
+	else if (nal === 'nl'|| nal == 'nl-BE') nlMessageSet(); //Dutch
 
-	else if (nal === 'fr' || nal === 'fr-be'|| nal === 'fr-ca'|| //French
-        nal === 'fr-fr'|| nal === 'fr-lu'|| nal === 'fr-mc'||        //French
-        nal === 'fr-ch') frMessageSet();                             //French
+	else if (nal === 'fr' || nal === 'fr-BE'|| nal === 'fr-CA'||
+        nal === 'fr-FR'|| nal === 'fr-LU'|| nal === 'fr-MC'||
+        nal === 'fr-CH') frMessageSet(); //French
 
-	else if (nal === 'pt' || nal === 'pt-BR') ptMessageSet();    //Portuguese
+	else if (nal === 'pt' || nal === 'pt-BR') ptMessageSet();
 	else engMessageSet(); //English
 };
 
@@ -181,7 +181,7 @@ function setRandomQuote () {
 	],
 		quote = pickFromArray(quotes);
 
-	if (navigator.language === 'it' || navigator.language === 'it-ch') setHTMLContent('blockquote', quote.ita);
+	if (navigator.language === 'it' || navigator.language === 'it-CH') setHTMLContent('blockquote', quote.ita);
 	else if( navigator.language === 'pt' || navigator.language === 'pt-BR') setHTMLContent('blockquote', quote.pt || quote.eng)
 	else setHTMLContent('blockquote', quote.eng);
 
