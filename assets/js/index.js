@@ -30,11 +30,17 @@
 // https://eloquentjavascript.net/05_higher_order.html
 
 function setDaytimeMessage () {
-	if (navigator.language === 'it' || navigator.language === 'it-ch') itaMessageSet(); //Italian
-	if (navigator.language === 'de') nlMessageSet(); //Dutch
-	if (navigator.language === 'fr') frMessageSet(); //French
-	else engMessageSet(); //English 
+	if (nal == 'it' || nal == 'it-ch') itaMessageSet(); //Italian
+	else if (nal === 'nl'|| nal == 'nl-be') nlMessageSet(); //Dutch
+
+	else if (nal === 'fr' || nal === 'fr-be'|| nal === 'fr-ca'|| //French
+        nal === 'fr-fr'|| nal === 'fr-lu'|| nal === 'fr-mc'||        //French
+        nal === 'fr-ch') frMessageSet();                             //French
+
+	else if (nal === 'pt' || nal === 'pt-br') ptMessageSet();    //Portuguese
+	else engMessageSet(); //English
 };
+
 
 function setRandomBackground () {
 
