@@ -37,7 +37,7 @@ function setDaytimeMessage () {
         nal === 'fr-fr'|| nal === 'fr-lu'|| nal === 'fr-mc'||        //French
         nal === 'fr-ch') frMessageSet();                             //French
 
-	else if (nal === 'pt' || nal === 'pt-br') ptMessageSet();    //Portuguese
+	else if (nal === 'pt' || nal === 'pt-BR') ptMessageSet();    //Portuguese
 	else engMessageSet(); //English
 };
 
