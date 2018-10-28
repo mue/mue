@@ -30,11 +30,17 @@
 // https://eloquentjavascript.net/05_higher_order.html
 
 function setDaytimeMessage () {
-	if (navigator.language === 'it' || navigator.language === 'it-ch') itaMessageSet(); //Italian
-	if (navigator.language === 'de') nlMessageSet(); //Dutch
-	if (navigator.language === 'fr') frMessageSet(); //French
-	else engMessageSet(); //English 
+	if (nal === 'it' || nal === 'it-CH') itaMessageSet(); //Italian
+	else if (nal === 'nl'|| nal === 'nl-BE') nlMessageSet(); //Dutch
+
+	else if (nal === 'fr' || nal === 'fr-BE'|| nal === 'fr-CA'||
+        nal === 'fr-FR'|| nal === 'fr-LU'|| nal === 'fr-MC'||
+        nal === 'fr-CH') frMessageSet(); //French
+
+	else if (nal === 'pt' || nal === 'pt-BR') ptMessageSet();
+	else engMessageSet(); //English
 };
+
 
 function setRandomBackground () {
 
@@ -94,68 +100,89 @@ function setRandomQuote () {
 
 		{ eng: 'Time goes on. So whatever you’re going to do, do it. Do it now. Don’t wait.',
 			ita: 'Il tempo passa. Quindi qualunque cosa che farai, falla. Falla ora. Non aspettare',
+      			pt: "O tempo continua. Então o que quer que você vai fazer,faça. Faça agora. Não espere.",
 			author: 'Robert De Niro' },
 		{ eng: 'All our dreams can come true, if we have the courage to pursue them.',
 			ita: 'Tutti i nostri sogni possono diventare reali, se abbiamo il coraggio di seguirli.',
+      			pt: "Todos os sonhos podem virar verdade,se tivermos a coragem de persegui-los.",
 			author: 'Walt Disney' },
 		{ eng: 'It does not matter how slowly you go as long as you do not stop.',
 			ita: 'Non importa quanto lentamente vai fino a quando non ti fermi',
+      			pt: "Não importa o quão devagar você for,desde que você não pare.",
 		 	author: 'Confucius'},
 		{ eng: 'Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine.',
 			ita: 'Credi in te stesso. Sei più coraggioso di quanto pensi, più talentuoso di quanto credi, e capace più di quanto puoi immaginare.',
+     			pt: "Acredite em si mesmo. Você é mais corajoso que pensa,mais talentoso que sabe,e capaz de mais que imagina.",
 			author: 'Roy T. Bennett'},
 		{ eng: 'If you believe it will work out, you’ll see opportunities. If you believe it won’t, you will see obstacles',
 			ita: 'Se ci credi funzionerà, vedrai delle opportunità. Se non ci credi, vedrai solamente ostacoli',
+      			pt: "Se você acredita que vai dar certo,você verá oportunidades. Se você acredita que não vai,você vera obstáculos.",
 			author: 'Wayne Dyer'},
 		{ eng: 'Everything you’ve ever wanted is on the other side of fear.',
 			ita: 'Tutti i tuoi desideri sono opposti alla paura',
+      			pt: "",
 			author: 'George Addair'},
 		{ eng: 'Success is not final, failure is not fatal: it is the courage to continue that counts.',
 			ita: 'Il successo non è la fine, il fallimento non è fatale: è il coraggio per continuare quello che conta.',
+      			pt: "",
 			author: 'Winston Churchill'},
 		{ eng: 'There is only one thing that makes a dream impossible to achieve: the fear of failure.',
 			ita: "C'è solo una cosa che fa i sogni impossibili: la paura di fallire",
+      			pt: "",
 		 	author: 'Paulo Coelho'},
 		{ eng: 'Your true success in life begins only when you make the commitment to become excellent at what you do.',
-                  ita: 'Il vero successo nella tua vita inizia solo quando fai il sacrificio per diventare eccellente a quello che ami.',
+      			ita: 'Il vero successo nella tua vita inizia solo quando fai il sacrificio per diventare eccellente a quello che ami.',
+      			pt: "",
 			author: 'Brian Tracy'},
 		{ eng: 'Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going.',
 			ita: "Credi in te stesso, sfida i tuoi problemi, scava nel profondo del tuo io per sconfiggere le tue paure. Mai arrendersi per qualcun'altro. Tu devi continuare.",
+      			pt: "",
 			author: 'Chantal Sutherland'},
 		{ eng: 'Too many of us are not living our dreams because we are living our fears.',
 			ita: "Troppe persone non vivono i loro sogni per vivere nelle loro paure",
+     			 pt: "",
 			author: 'Les Brown'},
 		{ eng: 'Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed.',
 			ita: "Tempi difficili non fanno eroi. È durante i tempi duri che \"l'eroe\" in noi viene rivelato.",
+      			pt: "",
 			author: 'Bob Riley'},
 		{ eng: 'If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily.',
 			ita: "Se puoi sintonizzare sul tuo senso e allinearti a quest'ultimo, impostando i tuoi obiettivi in modo che la tua visione sia un'espressione di quel senso, La tua vita scorre molto più facilmente",
-			author: 'Jack Canfield'},
+     			 pt: "",
+    			author: 'Jack Canfield'},
 		{ eng: 'Whatever the mind can conceive and believe, it can achieve.',
 			ita: "Qualunque cosa la mente può immaginare e crederese, si può realizzare",
+     			 pt: "",
 			author: 'Napoleon Hill'},
 		{ eng: 'Don’t wish it were easier. Wish you were better.',
 			ita: "Non desiderare che fosse stato più facile. Desidera che tu fossi stato migliore.",
+      			pt: "",
 			author: 'Jim Rohn'},
 		{ eng: 'A champion is defined not by their wins but by how they can recover when they fall.',
 			ita: "Un campione si definisce non dalle sue vittorie ma da come recuperano quando cadono",
+      			pt: "",
 			author: 'Serena Williams'},
 		{ eng: 'Motivation comes from working on things we care about.',
 			ita: "La motivazione viene dal lavorare so cose che amiamo",
+      			pt: "",
 			author: 'Sheryl Sandberg'},
 		{ eng: 'With the right kind of coaching and determination you can accomplish anything.',
 			ita: "Con il giusto tipo di allenamento e determinazione puoi fare tutto",
+     			 pt: "",
 			author: 'Reese Witherspoon'},
 		{ eng: 'Some people look for a beautiful place. Others make a place beautiful.',
 			ita: "Alcune persone cercano un posto indimenticabile. Altre lo transformano in un posto mozzafiato.",
+   		   	pt: "",
 			author: 'Hazrat Inayat Khan'},
 		{ eng: 'Life is like riding a bicycle. To keep your balance, you must keep moving.',
 			ita: "La vita è come andare in bicicletta. Per tenerti in equilibrio, devi continuare a muoverti",
+      			pt: "",
 			author: 'Albert Einstein'}
 	],
 		quote = pickFromArray(quotes);
 
-	if (navigator.language === 'it' || navigator.language === 'it-ch') setHTMLContent('blockquote', quote.ita);
+	if (navigator.language === 'it' || navigator.language === 'it-CH') setHTMLContent('blockquote', quote.ita);
+	else if( navigator.language === 'pt' || navigator.language === 'pt-BR') setHTMLContent('blockquote', quote.pt || quote.eng)
 	else setHTMLContent('blockquote', quote.eng);
 
 	setHTMLContent('cite', quote.author);
