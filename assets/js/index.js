@@ -30,8 +30,8 @@
 // https://eloquentjavascript.net/05_higher_order.html
 
 function setDaytimeMessage () {
-	if (nal == 'it' || nal == 'it-CH') itaMessageSet(); //Italian
-	else if (nal === 'nl'|| nal == 'nl-BE') nlMessageSet(); //Dutch
+	if (nal === 'it' || nal === 'it-CH') itaMessageSet(); //Italian
+	else if (nal === 'nl'|| nal === 'nl-BE') nlMessageSet(); //Dutch
 
 	else if (nal === 'fr' || nal === 'fr-BE'|| nal === 'fr-CA'||
         nal === 'fr-FR'|| nal === 'fr-LU'|| nal === 'fr-MC'||
