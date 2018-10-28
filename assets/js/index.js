@@ -37,7 +37,7 @@ function setDaytimeMessage () {
         nal === 'fr-FR'|| nal === 'fr-LU'|| nal === 'fr-MC'||
         nal === 'fr-CH') frMessageSet(); //French
 
-	else if (nal === 'pt' || nal === 'pt-BR') ptMessageSet();
+	else if (nal === 'pt' || nal === 'pt-BR') ptMessageSet(); //Portuguese
 	else engMessageSet(); //English
 };
 
@@ -318,18 +318,15 @@ function engMessageSet() {
         setHTMLContent(".greeting", `Good ${getDaytime()}`);
 }
 
-//Italian
-
+// Italian
 function itaMessageSet() {
-        
-	let currentHour = new Date().getHours(),
-
-	getDaytime = () => {
-
-		if (currentHour < 18) return 'giorno';       //In Italian there is just Buongiorno or Buonasera
-		else return 'asera';                         //used 'asera' instead of 'sera' for avoiding creating a special case for it
-	};
-        setHTMLContent(".greeting", `Buon${getDaytime()}`);
+	let hour = new Date().getHours();           // Get the current hour
+	let time = 'Buongiorno';	
+	
+	if (hour > 18) time = 'Buongiorno';        //In Italian there is just Buongiorno or Buonasera
+	else 		    time = 'Buongiorno';   //used 'asera' instead of 'sera' for avoiding creating a special case for it
+	
+	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
 }
 
 // Dutch
@@ -346,12 +343,12 @@ function nlMessageSet() {
 
 // French
 function frMessageSet() {
-	let hour = new Date().getHours();         // Get the current hour
-	let time = 'Goedemiddag';		  // Set the default time string to "Good evening"
+	let hour = new Date().getHours();               // Get the current hour
+	let time = 'Bonsoir';		                // Set the default time string to "Good evening"
 	
-	if (hour < 12)      time = 'Bonjour'; // If it's before 12am, set the time string to "Good morning"
+	if (hour < 12)      time = 'Bonjour';          // If it's before 12am, set the time string to "Good morning"
 	else if (hour > 18) time = 'Bonne après-midi'; // If it's after 6pm, set the time string to "Good afternoon"
-	else 		    time = 'Bonsoir'; // If It's unknown, set the time stirng to "Good evening"
+	else 		    time = 'Bonsoir';          // If It's unknown, set the time stirng to "Good evening"
 	
-	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
+	setHTMLContent('.greeting', time);	      // Write the string contents to the HTML
 }
