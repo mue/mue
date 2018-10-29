@@ -29,8 +29,10 @@
 // further reading:
 // https://eloquentjavascript.net/05_higher_order.html
 
+let nal = navigator.language;
+
 function setDaytimeMessage () {
-	if (nal === 'it' || nal === 'it-CH') itaMessageSet(); //Italian
+	if (nal === 'it' || nal === 'it-IT' || nal === 'it-CH') itaMessageSet(); //Italian
 	else if (nal === 'nl'|| nal === 'nl-BE') nlMessageSet(); //Dutch
 
 	else if (nal === 'fr' || nal === 'fr-BE'|| nal === 'fr-CA'||
@@ -181,8 +183,8 @@ function setRandomQuote () {
 	],
 		quote = pickFromArray(quotes);
 
-	if (navigator.language === 'it' || navigator.language === 'it-CH') setHTMLContent('blockquote', quote.ita);
-	else if( navigator.language === 'pt' || navigator.language === 'pt-BR') setHTMLContent('blockquote', quote.pt || quote.eng)
+	if (nal === 'it' || nal === 'it-IT'|| nal === 'it-CH') setHTMLContent('blockquote', quote.ita);
+	else if( nal === 'pt' || nal === 'pt-BR') setHTMLContent('blockquote', quote.pt || quote.eng)
 	else setHTMLContent('blockquote', quote.eng);
 
 	setHTMLContent('cite', quote.author);
