@@ -29,6 +29,8 @@
 // further reading:
 // https://eloquentjavascript.net/05_higher_order.html
 
+let nal = navigator.language;
+
 function setDaytimeMessage () {
 	if (nal === 'it' || nal === 'it-CH') itaMessageSet(); //Italian
 	else if (nal === 'nl'|| nal === 'nl-BE') nlMessageSet(); //Dutch
