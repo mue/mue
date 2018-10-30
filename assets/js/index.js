@@ -29,17 +29,47 @@
 // further reading:
 // https://eloquentjavascript.net/05_higher_order.html
 
+var contains = function(needle) {
+
+    var findNaN = needle !== needle;
+    var indexOf;
+
+    if(!findNaN && typeof Array.prototype.indexOf === 'function') {
+        indexOf = Array.prototype.indexOf;
+    } else {
+        indexOf = function(needle) {
+            var i = -1, index = -1;
+
+            for(i = 0; i < this.length; i++) {
+                var item = this[i];
+
+                if((findNaN && item !== item) || item === needle) {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        };
+    }
+
+    return indexOf.call(this, needle) > -1;
+};
+
+
 let nal = navigator.language;
 
+let itcodes = ['it', 'it-IT', 'it-CH'];
+let nlcodes = ['nl', 'nl-BE'];
+let frcodes = ['fr', 'fr-BE', 'fr-CA', 'fr-FR', 'fr-LU', 'fr-MC', 'fr-CH'];
+let ptcodes = ['pt', 'pt-BR'];
+
 function setDaytimeMessage () {
-	if (nal === 'it' || nal === 'it-IT' || nal === 'it-CH') itaMessageSet(); //Italian
-	else if (nal === 'nl'|| nal === 'nl-BE') nlMessageSet(); //Dutch
-
-	else if (nal === 'fr' || nal === 'fr-BE'|| nal === 'fr-CA'||
-        nal === 'fr-FR'|| nal === 'fr-LU'|| nal === 'fr-MC'||
-        nal === 'fr-CH') frMessageSet(); //French
-
-	else if (nal === 'pt' || nal === 'pt-BR') ptMessageSet(); //Portuguese
+	
+	if      ( contains.call(itcodes, nal) ) itMessageSet(); //Italian
+	else if ( contains.call(nlcodes, nal) ) nlMessageSet(); //Dutch
+	else if ( contains.call(frcodes, nal) ) frMessageSet(); //French
+	else if ( contains.call(ptcodes, nal) ) ptMessageSet(); //Portuguese
 	else engMessageSet(); //English
 };
 
@@ -321,7 +351,7 @@ function engMessageSet() {
 }
 
 // Italian
-function itaMessageSet() {
+function itMessageSet() {
 	let hour = new Date().getHours();           // Get the current hour
 	let time = 'Buongiorno';	
 	
