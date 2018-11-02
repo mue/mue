@@ -1,23 +1,22 @@
 /*
-███████████████████████████████████████████████████████████                                                                        
-█                                                         █╗
-█           ███╗   ███╗██╗   ██╗███████╗                  █║  
-█           ████╗ ████║██║   ██║██╔════╝                  █║  
-█           ██╔████╔██║██║   ██║█████╗                    █║  
-█           ██║╚██╔╝██║██║   ██║██╔══╝                    █║  
-█           ██║ ╚═╝ ██║╚██████╔╝███████╗                  █║  
-█           ╚═╝     ╚═╝ ╚═════╝ ╚══════╝                  █║  
-█                                                         █║                                                                                                  
-█       Copyright 2018 Dave R (ohlookitsderpy)            █║
-█                 Licensed under MIT                      █║                     
-█      GitHub: https://github.com/ohlookitsderpy/Mue      █║
-█                                                         █║                                               
-█          Spanish Translation made by: Pepehound         █║
-█        Portuguese Translation made by: Candystick       █║
-█                                                         █║
-█          Special thanks to contributors! <3             █║
-███████████████████████████████████████████████████████████║
- ╚═════════════════════════════════════════════════════════╝
+█████████████████████████████████████████████████████████████                                                                        
+██                                                         ██
+██           ███    ███ ██    ██ ███████                   ██  
+██           ████  ████ ██    ██ ██                        ██ 
+██           ██ ████ ██ ██    ██ █████                     ██ 
+██           ██  ██  ██ ██    ██ ██                        ██ 
+██           ██      ██  ██████  ███████                   ██ 
+██                                                         ██ 
+██                                                         ██                                                                                                 
+██       Copyright 2018 Dave R (ohlookitsderpy)            ██
+██                 Licensed under MIT                      ██                    
+██      GitHub: https://github.com/ohlookitsderpy/Mue      ██
+██                                                         ██
+██          Spanish Translation made by: Pepehound         ██
+██        Portuguese Translation made by: Candystick       ██
+██                                                         ██
+██          Special thanks to contributors! <3             ██
+█████████████████████████████████████████████████████████████
 */
 
 // start a separate function for each of the things that we need to do
