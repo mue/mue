@@ -59,7 +59,7 @@ Italian - Quotes and Messages
 
 Spanish - Quotes and Messages
 
-Portuguese - Quotes (Some) and Messages
+Portuguese - Quotes (Some)
 
 Dutch - Messages
 
