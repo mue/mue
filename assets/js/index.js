@@ -14,27 +14,14 @@
 ██                                                         ██
 ██          Spanish Translation made by: Pepehound         ██
 ██        Portuguese Translation made by: Candystick       ██
+██         Italian Translation made by: Yanderella         ██
+██          Dutch Translation made by: Wesselgame          ██
+██         French Translation made by: Yanderealla         ██
+██                                      & ohlookitsderpy   ██
 ██                                                         ██
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
 */
-
-// start a separate function for each of the things that we need to do
-
-// function construction is part of making the code clearer...
-// ...i.e., easier to read and to debug
-
-// the clearer the code, the easier it would be:
-// 1.   for the author to return to its development later,
-// 2.   for coders unfamiliar with it to understand it...
-// 2.1. ...and help improve it,
-
-// the clearer the code, the better it is perceived...
-// ...which encourages others in open-source environment...
-// ...to maintain, improve and copy it
-
-// further reading:
-// https://eloquentjavascript.net/05_higher_order.html
 
 //From cirnornd.js
 function randomInt(min, max) {   
@@ -130,28 +117,12 @@ function setRandomBackground () {
 	],
 	currentBackgroundClass = pickFromArray(backgroundClasses);
 
-	// adds a class from backgroundClasses to <body>
-
-	// using classes to define element attributes is often safer...
-	// ...than setting the attributes straight to element's `style`
-
 	document.body.classList.add(currentBackgroundClass);
 
 };
 
 function setRandomQuote () {
 
-	// each quote is an object within the array
-
-	// `text` and `author` go into different elements...
-	// ...each of which has its own styling
-
-	// also, semantic separation is important for clarity of code
-
-	// big-enough objects — such as each of the quotes — may be...
-	// ...separated by a new line each for clarity
-
-	
 	let quotes = {
 		eng: [
 		       'Time goes on. So whatever you’re going to do, do it. Do it now. Don’t wait.',
@@ -242,20 +213,12 @@ function setRandomQuote () {
 
 	setHTMLContent('cite', quotes.authors[id]);
 
-	// little treats of visual alignment, for code beauty's sake
-
 };
 
 
 function setTime () {
 
-	// we need to save Date() here because we use...
-	// ...the same moment of time down the line
-
 	let date = new Date(),
-
-		// instead of performing separate operations for formatting...
-		// we store the time unit values already formatted
 
 		time = [
 
@@ -265,10 +228,8 @@ function setTime () {
 
 		];
 
-	// joins all of the array elements into a string...
-	// ...using the ':' separator
-
-	// i.e. [16, 32, 03] -> "16:32:03"
+	// joins all of the array elements into a string using the ':' separator
+	// example: [16, 32, 03] -> "16:32:03"
 
 	setHTMLContent('time', time.join(':'));
 
@@ -276,13 +237,8 @@ function setTime () {
 
 function init () {
 
-	// initialize everything
 
-	// init() gets executed only when the page is fully loaded...
-	// ...which is good practice when dealing with page elements
-
-	// init() serves as a container for all the functions that we require...
-	// ...to work at the start of the page
+	// init() gets executed only when the page is fully loaded
 
 	setDaytimeMessage();
 	setRandomBackground();
@@ -291,61 +247,20 @@ function init () {
 
 	// set interval to update time every second
 
-	// if you don't use milliseconds, updating more often...
-	// is wasting CPU resources
-
 	let timeInterval = setInterval(setTime, 1000);
-
-	// ideally, one would want to update only the time unit changed...
-	// ...i.e., only seconds if 16:02:32 became 16:02:33
-
-	// this would use even less resources for the same result...
-	// ...which is always the goal
-
 };
 
-// initialize on page load through a listener...
-// ...which tracks a particular event and executes...
-// ...the set function when the event happens
-
-// 'DOMContentLoaded' is the event of 'all HTML has loaded'
-
-// it allows to safely search for and modify HTML nodes
-
-// if a node is searched for while the page hasn't loaded yet...
-// ...you will not get the same result and may encounter an error...
-// ...which will halt your code execution
+// initialize on page load through a listener
 
 document.addEventListener('DOMContentLoaded', init);
 
 // UTILITY FUNCTIONS
 
-// since JavaScript defines variables lazily [1], one can...
-// ...semantically separate current and utility functions [2]
-
-// here, utility functions are put to the bottom so they don't pollute...
-// ...the workflow — i.e., the part of the code that does most of the work
-
-// [1] lazily means it may already use variables and functions...
-//     ...defined later in the code
-
-// [2] utility functions are those that help write better code...
-//    ...either by making it more concise, more expressive or both
-
-// formatTimeUnit() is the kind of a pure utility functions
-
-// its purpose is to perform a single action on a single object
-
-// it makes the code look more concise while performing...
-// ...with the same effectiveness
+// format time
 
 function formatTimeUnit (unit) { return unit < 10 ? '0' + unit : unit };
 
-// setHTMLContent is the kind of function is referred to as a 'wrapper'
-
-// its purpose is to make code look better aesthetically...
-// ...while performing the same function as...
-// ...its straightfoward-yet-ugly equivalent native function
+// setHTMLContent is the kind of function that is referred to as a 'wrapper'
 
 function setHTMLContent (selector, content) { return document.querySelector(selector) .innerHTML = content };
 
@@ -358,9 +273,9 @@ function pickFromArray(array) { return array[Math.floor(Math.random() * (array.l
 document.oncontextmenu=RightMouseDown;
 function RightMouseDown() { return false; }
 
-//Language-Specific-Functions-----------------------------------------------------------------------------------
+// LANGUAGE FUNCTIONS
 
-//English
+// English
 
 function engMessageSet() {
         
@@ -410,6 +325,7 @@ function frMessageSet() {
 	setHTMLContent('.greeting', time);	      // Write the string contents to the HTML
 }
 
+// Spanish
 function spMessageSet() {
 	let hour = new Date().getHours();               // Get the current hour
 	let time = 'Buenas Tardes';		                // Set the default time string to "Good evening"
