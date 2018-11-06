@@ -79,7 +79,7 @@ function setDaytimeMessage () {
 	if      ( contains.call(itcodes, nal) ) itMessageSet(); //Italian
 	else if ( contains.call(nlcodes, nal) ) nlMessageSet(); //Dutch
 	else if ( contains.call(frcodes, nal) ) frMessageSet(); //French
-	else if ( contains.call(ptcodes, nal) ) ptMessageSet(); //Portuguese
+	//else if ( contains.call(ptcodes, nal) ) ptMessageSet(); //Portuguese
 	else if ( contains.call(spcodes, nal) ) spMessageSet(); //Spanish
 	else     engMessageSet();                               //English
 };
