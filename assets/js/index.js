@@ -72,15 +72,15 @@ let nlcodes = ['nl', 'nl-BE'];
 let frcodes = ['fr', 'fr-BE', 'fr-CA', 'fr-FR', 'fr-LU', 'fr-MC', 'fr-CH'];
 let ptcodes = ['pt', 'pt-BR'];
 let spcodes = ['es', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO', 
-			   'es-EC', 'es-ES', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA', 
-			   'es-PE', 'es-PR', 'es-PY', 'es-SV', 'es-UY', 'es-VE'];
+			      'es-EC', 'es-ES', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA', 
+			      'es-PE', 'es-PR', 'es-PY', 'es-SV', 'es-UY', 'es-VE'];
 
 function setDaytimeMessage () {
 	if      ( contains.call(itcodes, nal) ) itMessageSet(); //Italian
 	else if ( contains.call(nlcodes, nal) ) nlMessageSet(); //Dutch
 	else if ( contains.call(frcodes, nal) ) frMessageSet(); //French
 	else if ( contains.call(ptcodes, nal) ) ptMessageSet(); //Portuguese
-	else if ( contains.call(spcodes, nal) ) spMessageSet();
+	else if ( contains.call(spcodes, nal) ) spMessageSet(); //Spanish
 	else     engMessageSet();                               //English
 };
 
@@ -170,36 +170,55 @@ function setRandomQuote () {
 			"La vita è come andare in bicicletta. Per tenerti in equilibrio, devi continuare a muoverti"
 		],
 		spa: [
-			"El tiempo continúa. Así que lo que sea que vayas a hacer, hazlo. Hazlo ahora. No esperes",
-			"Todos nuestros sueños pueden hacerse realidad, si tenemos el coraje de perseguirlos.",
-			"No importa qué tan lento vayas, siempre y cuando no te detengas.",
-			"Cree en ti mismo. Eres más valiente de lo que crees, más talentoso de lo que sabes y capaz de más de lo que imaginas.",
-			"Si crees que funcionará, verás oportunidades. Si crees que no, verás obstáculos ",
-			"Todo lo que siempre has querido está al otro lado del miedo",
-			"El éxito no es definitivo, el fracaso no es fatal: el coraje para continuar es lo que cuenta",
-			"Solo hay una cosa que hace que un sueño sea imposible de lograr: el miedo al fracaso",
-			"Tu verdadero éxito en la vida comienza solo cuando te comprometes a ser excelente en lo que haces",
-			"Cree en ti mismo, asume tus desafíos, excava profundo dentro de ti mismo para vencer tus miedos. Nunca dejes que nadie te derribe. Tienes que seguir adelante.",
-			"Muchos de nosotros no estamos viviendo nuestros sueños porque estamos viviendo nuestros miedos",
-			"Los tiempos difíciles no crean héroes. Es durante los momentos difíciles en que se revela el héroe dentro de nosotros.",
-			"Si  puedes sincornizarte con tu propósito, y realmente alinearte con él, estableciendo metas para que tu visión sea una expresión de ese propósito, entonces la vida fluye mucho más fácilmente",
-			"Lo que la mente pueda concebir y creer, lo puede lograr",
-			"No desees que sea fácil. Desea ser mejor.",
-			"Un campeón se define no por sus victorias, sino por cómo pueden recuperarse cuando caen",
-			"La motivación viene de trabajar en cosas que nos importan",
-			"Con el entrenamiento y la determinación adecuados, puedes lograr cualquier cosa",
-			"Algunas personas buscan un lugar hermoso. Otras, hacen un lugar hermoso.",
+			'El tiempo continúa. Así que lo que sea que vayas a hacer, hazlo. Hazlo ahora. No esperes',
+			'Todos nuestros sueños pueden hacerse realidad, si tenemos el coraje de perseguirlos.',
+			'No importa qué tan lento vayas, siempre y cuando no te detengas.',
+			'Cree en ti mismo. Eres más valiente de lo que crees, más talentoso de lo que sabes y capaz de más de lo que imaginas.',
+			'Si crees que funcionará, verás oportunidades. Si crees que no, verás obstáculos ',
+			'Todo lo que siempre has querido está al otro lado del miedo',
+			'El éxito no es definitivo, el fracaso no es fatal: el coraje para continuar es lo que cuenta',
+			'Solo hay una cosa que hace que un sueño sea imposible de lograr: el miedo al fracaso',
+			'Tu verdadero éxito en la vida comienza solo cuando te comprometes a ser excelente en lo que haces',
+			'Cree en ti mismo, asume tus desafíos, excava profundo dentro de ti mismo para vencer tus miedos. Nunca dejes que nadie te derribe. Tienes que seguir adelante.',
+			'Muchos de nosotros no estamos viviendo nuestros sueños porque estamos viviendo nuestros miedos',
+			'Los tiempos difíciles no crean héroes. Es durante los momentos difíciles en que se revela el héroe dentro de nosotros.',
+			'Si  puedes sincornizarte con tu propósito, y realmente alinearte con él, estableciendo metas para que tu visión sea una expresión de ese propósito, entonces la vida fluye mucho más fácilmente',
+			'Lo que la mente pueda concebir y creer, lo puede lograr',
+			'No desees que sea fácil. Desea ser mejor.',
+			'Un campeón se define no por sus victorias, sino por cómo pueden recuperarse cuando caen',
+			'La motivación viene de trabajar en cosas que nos importan',
+			'Con el entrenamiento y la determinación adecuados, puedes lograr cualquier cosa',
+			'Algunas personas buscan un lugar hermoso. Otras, hacen un lugar hermoso.',
 		],
 		pt: [
-			"O tempo continua. Então o que quer que você vai fazer,faça. Faça agora. Não espere.",
-			"Todos os sonhos podem virar verdade,se tivermos a coragem de persegui-los.",
-			"Não importa o quão devagar você for,desde que você não pare.",
-			"Acredite em si mesmo. Você é mais corajoso que pensa,mais talentoso que sabe,e capaz de mais que imagina.",
-			"Se você acredita que vai dar certo,você verá oportunidades. Se você acredita que não vai,você vera obstáculos.",
+			'O tempo continua. Então o que quer que você vai fazer,faça. Faça agora. Não espere.',
+			'Todos os sonhos podem virar verdade,se tivermos a coragem de persegui-los.',
+			'Não importa o quão devagar você for,desde que você não pare.',
+			'Acredite em si mesmo. Você é mais corajoso que pensa,mais talentoso que sabe,e capaz de mais que imagina.',
+			'Se você acredita que vai dar certo,você verá oportunidades. Se você acredita que não vai,você vera obstáculos.',
 		],
-		authors: ['Robert De Niro', 'Walt Disney', 'Confucius', 'Roy T. Bennett', 'Wayne Dyer', 'George Addair', 'Winston Churchill', 'Paulo Coelho',
-				 'Brian Tracy', 'Chantal Sutherland', 'Les Brown', 'Bob Riley', 'Jack Canfield', 'Napoleon Hill', 'Jim Rohn', 'Serena Williams',
-				 'Sheryl Sandberg', 'Reese Witherspoon', 'Hazrat Inayat Khan', 'Albert Einstein']
+		authors: [
+			'Robert De Niro', 
+			'Walt Disney', 
+			'Confucius', 
+			'Roy T. Bennett', 
+			'Wayne Dyer', 
+			'George Addair', 
+			'Winston Churchill', 
+			'Paulo Coelho',
+		        'Brian Tracy', 
+			'Chantal Sutherland', 
+			'Les Brown', 
+			'Bob Riley', 
+			'Jack Canfield', 
+			'Napoleon Hill', 
+			'Jim Rohn', 
+			'Serena Williams',
+		        'Sheryl Sandberg', 
+			'Reese Witherspoon', 
+			'Hazrat Inayat Khan', 
+			'Albert Einstein'
+		]
 
 	};
 	let id = getRandIndex( quotes.authors );
@@ -279,15 +298,14 @@ function RightMouseDown() { return false; }
 
 function engMessageSet() {
         
-	let currentHour = new Date().getHours(),
-
-	getDaytime = () => {
-
-		if (currentHour < 12)  return 'morning';       // if it's morning
-		else if (currentHour >= 18) return 'evening';  // if it's evening
-		else return 'afternoon';               // else, which happens to be afternoon
-	};
-        setHTMLContent(".greeting", `Good ${getDaytime()}`);
+	let hour = new Date().getHours();           // Get the current hour
+	let time = 'Buongiorno';	
+	
+        if (hour < 12)      time = 'Good morning';          //If it's before 12am, set the time string to "Good morning"
+	else if (hour > 18) time = 'Good afternoon';        //If it's after 6pm, set the time string to "Good afternoon"
+	else 		    time = 'Good evening';          //If It's unknown, set the time stirng to "Good evening"
+	
+	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
 }
 
 // Italian
@@ -306,9 +324,9 @@ function nlMessageSet() {
 	let hour = new Date().getHours();         // Get the current hour
 	let time = 'Goedemiddag';		  // Set the default time string to "Good evening"
 	
-	if (hour < 12)      time = 'Goedemorgen'; // If it's before 12am, set the time string to "Good morning"
-	else if (hour > 18) time = 'Goedenavond'; // If it's after 6pm, set the time string to "Good afternoon"
-	else 		    time = 'Goedemiddag'; // If It's unknown, set the time stirng to "Good evening"
+	if (hour < 12)      time = 'Goedemorgen'; //If it's before 12am, set the time string to "Good morning"
+	else if (hour > 18) time = 'Goedenavond'; //If it's after 6pm, set the time string to "Good afternoon"
+	else 		    time = 'Goedemiddag'; //If It's unknown, set the time stirng to "Good evening"
 	
 	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
 }
@@ -318,9 +336,9 @@ function frMessageSet() {
 	let hour = new Date().getHours();               // Get the current hour
 	let time = 'Bonsoir';		                // Set the default time string to "Good evening"
 	
-	if (hour < 12)      time = 'Bonjour';          // If it's before 12am, set the time string to "Good morning"
-	else if (hour > 18) time = 'Bonne après-midi'; // If it's after 6pm, set the time string to "Good afternoon"
-	else 		    time = 'Bonsoir';          // If It's unknown, set the time stirng to "Good evening"
+	if (hour < 12)      time = 'Bonjour';          //If it's before 12am, set the time string to "Good morning"
+	else if (hour > 18) time = 'Bonne après-midi'; //If it's after 6pm, set the time string to "Good afternoon"
+	else 		    time = 'Bonsoir';          //If It's unknown, set the time stirng to "Good evening"
 	
 	setHTMLContent('.greeting', time);	      // Write the string contents to the HTML
 }
