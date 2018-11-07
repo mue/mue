@@ -12,6 +12,10 @@ Fast, open and free-to-use new tab page for most modern browsers
 
 ## Installation
 ### Chrome
+<a href="https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid"><img src='https://vgy.me/h6SLKn.png' target='_blank'></a> 
+
+Link: https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid
+
 Development: Read the [Development](#development) section
 ### Opera
 Development: Read the [Development](#development) section
