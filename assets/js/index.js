@@ -313,8 +313,7 @@ function itMessageSet() {
 	let hour = new Date().getHours();           // Get the current hour
 	let time = 'Buongiorno';	
 	
-	if (hour > 18) time = 'Buongiorno';        //In Italian there is just Buongiorno or Buonasera
-	else 		    time = 'Buongiorno';   //used 'asera' instead of 'sera' for avoiding creating a special case for it
+	if (hour > 18) time = 'Buonasera';        //In Italian there is just Buongiorno or Buonasera
 	
 	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
 }
@@ -326,7 +325,6 @@ function nlMessageSet() {
 	
 	if (hour < 12)      time = 'Goedemorgen'; //If it's before 12am, set the time string to "Good morning"
 	else if (hour > 18) time = 'Goedenavond'; //If it's after 6pm, set the time string to "Good afternoon"
-	else 		    time = 'Goedemiddag'; //If It's unknown, set the time stirng to "Good evening"
 	
 	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
 }
@@ -338,7 +336,6 @@ function frMessageSet() {
 	
 	if (hour < 12)      time = 'Bonjour';          //If it's before 12am, set the time string to "Good morning"
 	else if (hour > 18) time = 'Bonne après-midi'; //If it's after 6pm, set the time string to "Good afternoon"
-	else 		    time = 'Bonsoir';          //If It's unknown, set the time stirng to "Good evening"
 	
 	setHTMLContent('.greeting', time);	      // Write the string contents to the HTML
 }
