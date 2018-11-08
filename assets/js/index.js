@@ -299,11 +299,10 @@ function RightMouseDown() { return false; }
 function engMessageSet() {
         
 	let hour = new Date().getHours();           // Get the current hour
-	let time = 'Buongiorno';	
+	let time = 'Good evening';                  // Set the default time string to "Good evening"	
 	
         if (hour < 12)      time = 'Good morning';          //If it's before 12am, set the time string to "Good morning"
 	else if (hour > 18) time = 'Good afternoon';        //If it's after 6pm, set the time string to "Good afternoon"
-	else 		    time = 'Good evening';          //If It's unknown, set the time stirng to "Good evening"
 	
 	setHTMLContent('.greeting', time);	  // Write the string contents to the HTML
 }
