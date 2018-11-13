@@ -29,6 +29,7 @@ Development: Read the [Development](#development) section
 ### Development
 
 #### Chrome
+*Also seems to work on Vivaldi, just replace "chrome" with "vivaldi" to use!*
 1. ``git clone https://github.com/ohlookitsderpy/Mue`` (If you don't have Git just go to **Clone or download** and click **Download ZIP**)
 2. Rename ``manifest-chrome.json`` to ``manifest.json``
 3. Visit ``chrome://extensions`` in Chrome
