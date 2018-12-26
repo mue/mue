@@ -27,29 +27,37 @@ Link: https://addons.mozilla.org/en-US/firefox/addon/mue/
 Development: Read the [Development](#development) section
 
 ### Development
-
-#### Chrome
-1. ``git clone https://github.com/ohlookitsderpy/Mue`` (If you don't have Git just go to **Clone or download** and click **Download ZIP**)
-2. Rename ``manifest-chrome.json`` to ``manifest.json``
-3. Visit ``chrome://extensions`` in Chrome
-4. Click **Load unpacked** (Make sure **Developer Mode** is on)
-5. Go to the directory and click ok
-6. Enjoy your new tab!
-#### Opera
-1. ``git clone https://github.com/ohlookitsderpy/Mue`` (If you don't have Git just go to **Clone or download** and click **Download ZIP**)
-2. Rename ``manifest-opera.json`` to ``manifest.json``
-3. Visit ``about://extensions`` in Opera
-4. Click **Load unpacked extension...** (Make sure you are in **Developer Mode**)
-5. Go to the directory and click ok
-6. Enjoy your new tab!
-#### Firefox
-*Note: I'm currently trying to find a better method to do this, but this works for now. Also in testing and may not work properly!*
-1. ``git clone https://github.com/ohlookitsderpy/Mue`` (If you don't have Git just go to **Clone or download** and click **Download ZIP**)
-2. Rename ``manifest-firefox.json`` to ``manifest.json``
-3. Visit ``about:debugging#addons`` in Firefox
-4. Click **Load Temporary Add-on...**
-5. Go to the directory and click on the manifest.json
-6. Enjoy your new tab!
+<details>
+  <summary><b>Chrome</b> (Click to expand)</summary>
+  <ol>
+    <li> <code>git clone https://github.com/ohlookitsderpy/Mue</code> (If you don't have Git just go to <b>Clone or download</b> and click <b>Download ZIP</b>)
+    <li> Rename <code>manifest-chrome.json</code> to <code>manifest.json</code>
+    <li> Visit <code>chrome://extensions</code> in Chrome
+    <li> Click <b>Load unpacked</b> (Make sure <b>Developer Mode</b> is on)
+    <li> Go to the directory containing Mue and click <b>ok</b>
+    <li> Enjoy your new tab!
+</details>
+<details>
+  <summary><b>Opera</b> (Click to expand)</summary>
+  <ol>
+    <li> <code>git clone https://github.com/ohlookitsderpy/Mue</code> (If you don't have Git just go to <b>Clone or download</b> and click <b>Download ZIP</b>)
+    <li> Rename <code>manifest-opera.json</code> to <code>manifest.json</code>
+    <li> Visit <code>about://extensions</code> in Opera
+    <li> Click <b>Load unpacked extension...</b> (Make sure <b>Developer Mode</b> is on)
+    <li> Go to the directory containing Mue and click <b>ok</b>
+    <li> Enjoy your new tab!
+</details>
+<details>
+  <summary><b>Firefox</b> (Click to expand)</summary>
+  <i>Note: I'm currently trying to find a better method to do this, but this works for now. Also in testing and may not work properly!</i>
+  <ol>
+    <li> <code>git clone https://github.com/ohlookitsderpy/Mue</code> (If you don't have Git just go to <b>Clone or download</b> and click <b>Download ZIP</b>)
+    <li> Rename <code>manifest-firefox.json</code> to <code>manifest.json</code>
+    <li> Visit <code>about:debugging#addons</code> in Firefox
+    <li> Click <b>Load Temporary Add-on</b>
+    <li> Go to the directory containing Mue and click on the <b>manifest.json</b>
+    <li> Enjoy your new tab!
+</details>
 
 ## Screenshot
 *Will be updated if needed*
