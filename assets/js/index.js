@@ -16,40 +16,26 @@
 ██        Portuguese Translation made by: Candystick       ██
 ██         Italian Translation made by: Yanderella         ██
 ██          Dutch Translation made by: Wesselgame          ██
-██         French Translation made by: Yanderealla         ██
+██         French Translation made by: Yanderella          ██
 ██                                      & ohlookitsderpy   ██
 ██                                                         ██
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
 */
 
-//From cirnornd.js
-function randomInt(min, max) {   
-	let badArg = new Error("Bad args ;-;");
-	
-	try {
-		if( typeof min != 'number' || typeof max != 'number' ) throw badArg;
-		min += 1
-		return Math.floor(Math.random() * (max - min + 1)) + min;
-	
-	} catch (error) {
-    return error;
-  }
-}
+let contains = function(needle) {
 
-var contains = function(needle) {
-
-    var findNaN = needle !== needle;
-    var indexOf;
+    let findNaN = needle !== needle;
+    let indexOf;
 
     if(!findNaN && typeof Array.prototype.indexOf === 'function') {
         indexOf = Array.prototype.indexOf;
     } else {
         indexOf = function(needle) {
-            var i = -1, index = -1;
+            let i = -1, index = -1;
 
             for(i = 0; i < this.length; i++) {
-                var item = this[i];
+                let item = this[i];
 
                 if((findNaN && item !== item) || item === needle) {
                     index = i;
@@ -79,7 +65,7 @@ function setDaytimeMessage () {
 	if      ( contains.call(itcodes, nal) ) itMessageSet(); //Italian
 	else if ( contains.call(nlcodes, nal) ) nlMessageSet(); //Dutch
 	else if ( contains.call(frcodes, nal) ) frMessageSet(); //French
-	//else if ( contains.call(ptcodes, nal) ) ptMessageSet(); //Portuguese
+	else if ( contains.call(ptcodes, nal) ) ptMessageSet(); //Portuguese
 	else if ( contains.call(spcodes, nal) ) spMessageSet(); //Spanish
 	else     engMessageSet();                               //English
 };
@@ -222,9 +208,7 @@ function setRandomQuote () {
 
 	};
 	let id = getRandIndex( quotes.authors );
-	
-	//nal = navigator.language
-	
+		
 	if ( contains.call(itcodes, nal) ) setHTMLContent('blockquote', quotes.ita[id]);
 	else if( contains.call(ptcodes, nal) ) setHTMLContent('blockquote', quotes.pt[id] || quotes.eng[id]);
 	else if( contains.call(spcodes, nal) ) setHTMLContent('blockquote', quotes.spa[id]);
