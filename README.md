@@ -12,7 +12,7 @@ Fast, open and free-to-use new tab page for most modern browsers
 
 ## Installation
 ### Chrome
-<a href="https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid"><img src='https://vgy.me/h6SLKn.png' target='_blank'></a> 
+<a href='https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid'><img src='https://vgy.me/h6SLKn.png' target='_blank'></a> 
 
 Link: https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid
 
@@ -20,7 +20,7 @@ Development: Read the [Development](#development) section
 ### Opera
 Development: Read the [Development](#development) section
 ### Firefox
-<a href="https://addons.mozilla.org/en-US/firefox/addon/mue/"><img src='https://vgy.me/REe6qz.png' target='_blank'></a> 
+<a href='https://addons.mozilla.org/en-US/firefox/addon/mue/'><img src='https://vgy.me/REe6qz.png' target='_blank'></a> 
 
 Link: https://addons.mozilla.org/en-US/firefox/addon/mue/
 
@@ -62,7 +62,7 @@ Development: Read the [Development](#development) section
 ## Screenshot
 *Will be updated if needed*
 
-<img src="https://vgy.me/K8T5EP.png">
+<img src='https://vgy.me/K8T5EP.png'>
 
 ## Translations
 English - Quotes and Messages
