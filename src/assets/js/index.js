@@ -8,7 +8,7 @@
 ██           ██      ██  ██████  ███████                   ██ 
 ██                                                         ██ 
 ██                                                         ██                                                                                                 
-██       Copyright 2018 Dave R (ohlookitsderpy)            ██
+██      Copyright 2018-2019 David Ralph (ohlookitsderpy)   ██
 ██                 Licensed under MIT                      ██                    
 ██      GitHub: https://github.com/ohlookitsderpy/Mue      ██
 ██                                                         ██
@@ -192,7 +192,7 @@ function setRandomQuote () {
 			'George Addair', 
 			'Winston Churchill', 
 			'Paulo Coelho',
-		        'Brian Tracy', 
+		    'Brian Tracy', 
 			'Chantal Sutherland', 
 			'Les Brown', 
 			'Bob Riley', 
@@ -200,7 +200,7 @@ function setRandomQuote () {
 			'Napoleon Hill', 
 			'Jim Rohn', 
 			'Serena Williams',
-		        'Sheryl Sandberg', 
+		    'Sheryl Sandberg', 
 			'Reese Witherspoon', 
 			'Hazrat Inayat Khan', 
 			'Albert Einstein'
