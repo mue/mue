@@ -66,7 +66,7 @@ Development: Read the [Development](#development) section
 </details>
 <details>
   <summary><b>Other</b> (Click to expand)</summary>
-  <i>Note: To get the full new tab experience, just set your browser to open the index.html on startup and tab open
+  <i>Note: To get the full new tab experience, just set your browser to open the index.html on startup and tab open</i>
     <ol>
       <li> Open the index.html in your browser
       <li> Enjoy your new tab!
