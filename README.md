@@ -63,6 +63,7 @@ Development: Read the [Development](#development) section
     <li> Click <b>Load Temporary Add-on</b>
     <li> Go to the directory containing Mue and click on the <b>manifest.json</b>
     <li> Enjoy your new tab!
+  </ol>
 </details>
 <details>
   <summary><b>Other</b> (Click to expand)</summary>
@@ -81,15 +82,15 @@ Development: Read the [Development](#development) section
 ## Translations
 English - Quotes and Messages
 
-Italian - Quotes and Messages 
+Italian - Quotes and Messages (by [Yanderella](https://github.com/Chivi19))
 
-Spanish - Quotes and Messages
+Spanish - Quotes and Messages (by Pepehound)
 
-Portuguese - Quotes (Some)
+Portuguese - Quotes (Some) (by Candystick)
 
-Dutch - Messages
+Dutch - Messages (by [PassTheWessel](https://github.com/PassTheWessel))
 
-French - Messages
+French - Messages (by [Yanderella](https://github.com/Chivi19) and ohlookitsderpy)
 
 *Feel free to pull request with other translations!*
 
