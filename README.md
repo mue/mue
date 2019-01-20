@@ -17,13 +17,13 @@ Fast, open and free-to-use new tab page for most modern browsers
 Link: https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid
 
 Development: Read the [Development](#development) section
-### Opera
-Development: Read the [Development](#development) section
 ### Firefox
 <a href='https://addons.mozilla.org/firefox/addon/mue/'><img src='https://vgy.me/REe6qz.png' target='_blank'></a> 
 
 Link: https://addons.mozilla.org/firefox/addon/mue/
 
+Development: Read the [Development](#development) section
+### Opera/Other
 Development: Read the [Development](#development) section
 
 ### Development
