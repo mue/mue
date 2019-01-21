@@ -12,13 +12,6 @@
 ██                 Licensed under MIT                      ██                    
 ██      GitHub: https://github.com/ohlookitsderpy/Mue      ██
 ██                                                         ██
-██          Spanish Translation made by: Pepehound         ██
-██        Portuguese Translation made by: Candystick       ██
-██         Italian Translation made by: Yanderella         ██
-██          Dutch Translation made by: Wesselgame          ██
-██         French Translation made by: Yanderella          ██
-██                                      & ohlookitsderpy   ██
-██                                                         ██
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
 */
