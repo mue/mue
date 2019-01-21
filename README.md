@@ -31,8 +31,11 @@ Development: Read the [Development](#development) section
 <ol>
   <li> <code>git clone https://github.com/ohlookitsderpy/Mue</code> (If you don't have Git just go to <b>Clone or
       download</b> and click <b>Download ZIP</b>)
+  <li>Open a terminal and run these commands: (in the Mue directory)
   <li> <code>yarn</code> (or <code>npm install</code>)
   <li> <code>yarn run sass-watch</code> (or <code>npm run sass-watch</code>)
+  <li>Open another terminal and run this command: (in the Mue directory)
+  <li> <code>yarn run js-watch</code> (or <code>npm run js-watch</code>)
   <li>Start developing! (See the sections below for how to set it up with your browser)
 </ol>
 <details>

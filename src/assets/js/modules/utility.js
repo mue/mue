@@ -1,4 +1,4 @@
-<!--
+/*
 █████████████████████████████████████████████████████████████                                                                        
 ██                                                         ██
 ██           ███    ███ ██    ██ ███████                   ██  
@@ -14,39 +14,48 @@
 ██                                                         ██
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
--->
+*/
 
-<!DOCTYPE html>
-<html>
+module.exports = class Util {
+    // format time
+    static formatTimeUnit(unit) {
+        return unit < 10 ? '0' + unit : unit;
+    };
 
-	<head>
+    // setHTMLContent is the kind of function that is referred to as a 'wrapper'
+    static setHTMLContent(selector, content) {
+        return document.querySelector(selector).innerHTML = content;
+    };
 
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width'>
+    // get random item
+    static getRandIndex(array) {
+        return Math.floor(Math.random() * (array.length - 1));
+    }
 
-		<title>New Tab</title>
+    // pick random from array
+    static pickFromArray(array) {
+        return array[Math.floor(Math.random() * (array.length - 1))];
+    };
 
-		<link href='./assets/css/base.css' rel='stylesheet'>
-	    <link href='./assets/css/animate.css' rel='stylesheet'>
-
-	</head>
-
-	<body>
-
-		<div class='greeting animated fadeInUp'></div>
-		
-		<time class='animated fadeInUp'></time>
-
-		<div class='quote animated fadeInUp'>
-
-			<blockquote></blockquote>
-
-			<cite></cite>
-
-		</div>
-
-	</body>
-
-	<script src='./assets/js/base.js'></script>
-
-</html>
+    static contains(needle) {
+        let findNaN = needle !== needle;
+        let indexOf;
+        if (!findNaN && typeof Array.prototype.indexOf === 'function') {
+            indexOf = Array.prototype.indexOf;
+        } else {
+            indexOf = (needle) => {
+                let i = -1,
+                    index = -1;
+                for (i = 0; i < this.length; i++) {
+                    let item = this[i];
+                    if ((findNaN && item !== item) || item === needle) {
+                        index = i;
+                        break;
+                    }
+                }
+                return index;
+            };
+        }
+        return indexOf.call(this, needle) > -1;
+    };
+}

@@ -1,4 +1,4 @@
-<!--
+/*
 █████████████████████████████████████████████████████████████                                                                        
 ██                                                         ██
 ██           ███    ███ ██    ██ ███████                   ██  
@@ -14,39 +14,52 @@
 ██                                                         ██
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
--->
+*/
 
-<!DOCTYPE html>
-<html>
+@import 'modules/background';
+@import 'modules/quote';
+@import 'modules/time-greeting'; 
 
-	<head>
+/* Body */
+html, body { height: 100%; }
+body {
 
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width'>
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 
-		<title>New Tab</title>
+	margin: 0;
 
-		<link href='./assets/css/base.css' rel='stylesheet'>
-	    <link href='./assets/css/animate.css' rel='stylesheet'>
+	background-size: cover;
+	background-position: 50%;
+	background-color: black; /* Prevent white flash on page load */
 
-	</head>
+	font-family: 'Roboto';
+	color: white;
 
-	<body>
+	overflow: hidden;
+	
+  -moz-user-select: none; /* Firefox */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
 
-		<div class='greeting animated fadeInUp'></div>
-		
-		<time class='animated fadeInUp'></time>
+/* Font */
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Roboto'), local('Roboto-Regular'),
+		 url('../font/roboto-v18-latin-regular.woff2') format('woff2'); 
+}
 
-		<div class='quote animated fadeInUp'>
+/* Shadow */
+:root {
+	--shadow-color: #111111CC;
+}
 
-			<blockquote></blockquote>
-
-			<cite></cite>
-
-		</div>
-
-	</body>
-
-	<script src='./assets/js/base.js'></script>
-
-</html>
+.greeting,
+time,
+.quote {
+	filter: drop-shadow(var(--shadow-shift) var(--shadow-shift) 0 var(--shadow-color));
+}

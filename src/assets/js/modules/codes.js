@@ -16,50 +16,13 @@
 █████████████████████████████████████████████████████████████
 */
 
-@import 'modules/background';
-@import 'modules/quote';
-@import 'modules/time-greeting';
-
-/* Body */
-html, body { height: 100%; }
-body {
-
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-
-	margin: 0;
-
-	background-size: cover;
-	background-position: 50%;
-	background-color: black; /* Prevent white flash on page load */
-
-	font-family: 'Roboto';
-	color: white;
-
-	overflow: hidden;
-	
-  -moz-user-select: none; /* Firefox */
-	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-}
-
-/* Font */
-@font-face {
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 400;
-	src: local('Roboto'), local('Roboto-Regular'),
-		 url('../font/roboto-v18-latin-regular.woff2') format('woff2'); 
-}
-
-/* Shadow */
-:root {
-	--shadow-color: #111111CC;
-}
-
-.greeting,
-time,
-.quote {
-	filter: drop-shadow(var(--shadow-shift) var(--shadow-shift) 0 var(--shadow-color));
+module.exports = {
+    itcodes: ['it', 'it-IT', 'it-CH'],
+    nlcodes: ['nl', 'nl-BE'],
+    frcodes: ['fr', 'fr-BE', 'fr-CA', 'fr-FR', 'fr-LU', 'fr-MC', 'fr-CH'],
+    ptcodes: ['pt', 'pt-BR'],
+    spcodes: ['es', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO',
+        'es-EC', 'es-ES', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA',
+        'es-PE', 'es-PR', 'es-PY', 'es-SV', 'es-UY', 'es-VE'
+    ]
 }
