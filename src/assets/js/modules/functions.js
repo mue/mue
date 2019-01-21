@@ -1,11 +1,3 @@
-const util       = require('./utility.js');
-const message    = require('./message.js');
-const quotes     = require('./quotes.js');
-const background = require('./background.js');
-const codes      = require('./codes.js');
-
-let nal = navigator.language;
-
 /*
 █████████████████████████████████████████████████████████████                                                                        
 ██                                                         ██
@@ -23,6 +15,14 @@ let nal = navigator.language;
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
 */
+
+const util       = require('./utility.js');
+const message    = require('./message.js');
+const quotes     = require('./quotes.js');
+const background = require('./background.js');
+const codes      = require('./codes.js');
+
+let nal = navigator.language;
 
 module.exports = class Functions {
     static setDaytimeMessage() {

@@ -19,22 +19,22 @@
 module.exports = class Util {
     // format time
     static formatTimeUnit(unit) {
-        return unit < 10 ? '0' + unit : unit
+        return unit < 10 ? '0' + unit : unit;
     };
 
     // setHTMLContent is the kind of function that is referred to as a 'wrapper'
     static setHTMLContent(selector, content) {
-        return document.querySelector(selector).innerHTML = content
+        return document.querySelector(selector).innerHTML = content;
     };
 
     // get random item
     static getRandIndex(array) {
-        return Math.floor(Math.random() * (array.length - 1))
+        return Math.floor(Math.random() * (array.length - 1));
     }
 
     // pick random from array
     static pickFromArray(array) {
-        return array[Math.floor(Math.random() * (array.length - 1))]
+        return array[Math.floor(Math.random() * (array.length - 1))];
     };
 
     static contains(needle) {
@@ -46,16 +46,13 @@ module.exports = class Util {
             indexOf = (needle) => {
                 let i = -1,
                     index = -1;
-
                 for (i = 0; i < this.length; i++) {
                     let item = this[i];
-
                     if ((findNaN && item !== item) || item === needle) {
                         index = i;
                         break;
                     }
                 }
-
                 return index;
             };
         }
