@@ -95,6 +95,10 @@ Dutch - Messages (by [PassTheWessel](https://github.com/PassTheWessel))
 
 French - Messages (by [Yanderella](https://github.com/Chivi19) and ohlookitsderpy)
 
+Finnish - Messages (by [untocodes](https://github.com/untocodes))
+
+German - Messages (by [untocodes](https://github.com/untocodes))
+
 *Feel free to pull request with other translations!*
 
 ## Credits

@@ -31,6 +31,8 @@ module.exports = class Functions {
         else if (util.contains.call(codes.frcodes, nal)) message.frMessageSet(); //French
         else if (util.contains.call(codes.ptcodes, nal)) message.ptMessageSet(); //Portuguese
         else if (util.contains.call(codes.spcodes, nal)) message.spMessageSet(); //Spanish
+        else if (util.contains.call(codes.ficodes, nal)) message.spMessageSet(); //Finnish
+        else if (util.contains.call(codes.decodes, nal)) message.spMessageSet(); //German
         else message.engMessageSet(); //English
     };
 
@@ -41,10 +43,10 @@ module.exports = class Functions {
 
     static setRandomQuote() {
         let id = util.getRandIndex(quotes.authors);
-        if (util.contains.call(codes.itcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.ita[id]}"`);
-        else if (util.contains.call(codes.ptcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`);
-        else if (util.contains.call(codes.spcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.spa[id]}"`);
-        else util.setHTMLContent('blockquote', `"${quotes.eng[id]}"`);
+        if (util.contains.call(codes.itcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.ita[id]}"`); //Italian
+        else if (util.contains.call(codes.ptcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`); //Portuguese
+        else if (util.contains.call(codes.spcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.spa[id]}"`); //Spanish
+        else util.setHTMLContent('blockquote', `"${quotes.eng[id]}"`); //English
         util.setHTMLContent('cite', quotes.authors[id]);
     };
 

@@ -24,5 +24,7 @@ module.exports = {
     spcodes: ['es', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO',
         'es-EC', 'es-ES', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA',
         'es-PE', 'es-PR', 'es-PY', 'es-SV', 'es-UY', 'es-VE'
-    ]
+    ],
+    ficodes: ['fi'],
+    decodes: ['de', 'de-AT', 'de-DE', 'de-LI', 'de-LU', 'de-CH']
 }

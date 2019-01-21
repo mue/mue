@@ -62,4 +62,22 @@ module.exports = class Message {
         else if (hour > 20) time = 'Buenas Noches'; // If it's after 6pm, set the time string to "Good afternoon"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
+
+    // Finnish
+    static fiMessageSet() {
+        let hour = new Date().getHours(); // Get the current hour
+        let time = 'Hyvää iltaa'; // Set the default time string to "Good evening"
+        if (hour < 12) time = 'Hyvää huomenta'; // If it's before 12am, set the time string to "Good morning"
+        else if (hour > 20) time = 'Hyvää iltapäivää'; // If it's after 6pm, set the time string to "Good afternoon"
+        setHTMLContent('.greeting', time); // Write the string contents to the HTML
+    }
+
+    // German
+    static deMessageSet() {
+        let hour = new Date().getHours(); // Get the current hour
+        let time = 'Guten Abend'; // Set the default time string to "Good evening"
+        if (hour < 12) time = 'Guten Morgen'; // If it's before 12am, set the time string to "Good morning"
+        else if (hour > 20) time = 'Guten Nachmittag'; // If it's after 6pm, set the time string to "Good afternoon"
+        setHTMLContent('.greeting', time); // Write the string contents to the HTML
+    }
 }
