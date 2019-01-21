@@ -29,7 +29,7 @@ module.exports = class Functions {
         if (util.contains.call(codes.itcodes, nal)) message.itMessageSet(); //Italian
         else if (util.contains.call(codes.nlcodes, nal)) message.nlMessageSet(); //Dutch
         else if (util.contains.call(codes.frcodes, nal)) message.frMessageSet(); //French
-        else if (util.contains.call(codes.ptcodes, nal)) message.ptMessageSet(); //Portuguese
+        //else if (util.contains.call(codes.ptcodes, nal)) message.ptMessageSet(); //Portuguese
         else if (util.contains.call(codes.spcodes, nal)) message.spMessageSet(); //Spanish
         else if (util.contains.call(codes.ficodes, nal)) message.spMessageSet(); //Finnish
         else if (util.contains.call(codes.decodes, nal)) message.spMessageSet(); //German
