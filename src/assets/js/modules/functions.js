@@ -41,12 +41,10 @@ module.exports = class Functions {
 
     static setRandomQuote() {
         let id = util.getRandIndex(quotes.authors);
-
         if (util.contains.call(codes.itcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.ita[id]}"`);
         else if (util.contains.call(codes.ptcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`);
         else if (util.contains.call(codes.spcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.spa[id]}"`);
         else util.setHTMLContent('blockquote', `"${quotes.eng[id]}"`);
-
         util.setHTMLContent('cite', quotes.authors[id]);
     };
 
