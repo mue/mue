@@ -5,9 +5,12 @@
     "license": "MIT",
     "repository": "https://github.com/ohlookitsderpy/Mue",
     "scripts": {
-        "sass-watch": "sass --watch src/assets/scss:src/assets/css --style compressed"
+        "sass-watch": "sass --watch src/assets/scss:src/assets/css --style compressed",
+        "js-watch": "webpack --progress --watch"
     },
     "devDependencies": {
-        "sass": "1.16.1"
+        "sass": "1.16.1",
+        "webpack": "4.29.0",
+        "webpack-cli": "3.2.1"
     }
 }

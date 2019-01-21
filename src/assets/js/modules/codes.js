@@ -1,4 +1,4 @@
-<!--
+/*
 █████████████████████████████████████████████████████████████                                                                        
 ██                                                         ██
 ██           ███    ███ ██    ██ ███████                   ██  
@@ -14,39 +14,15 @@
 ██                                                         ██
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
--->
+*/
 
-<!DOCTYPE html>
-<html>
-
-	<head>
-
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width'>
-
-		<title>New Tab</title>
-
-		<link href='./assets/css/base.css' rel='stylesheet'>
-	    <link href='./assets/css/animate.css' rel='stylesheet'>
-
-	</head>
-
-	<body>
-
-		<div class='greeting animated fadeInUp'></div>
-		
-		<time class='animated fadeInUp'></time>
-
-		<div class='quote animated fadeInUp'>
-
-			<blockquote></blockquote>
-
-			<cite></cite>
-
-		</div>
-
-	</body>
-
-	<script src='./assets/js/base.js'></script>
-
-</html>
+module.exports = {
+    itcodes: ['it', 'it-IT', 'it-CH'],
+    nlcodes: ['nl', 'nl-BE'],
+    frcodes: ['fr', 'fr-BE', 'fr-CA', 'fr-FR', 'fr-LU', 'fr-MC', 'fr-CH'],
+    ptcodes: ['pt', 'pt-BR'],
+    spcodes: ['es', 'es-AR', 'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO',
+        'es-EC', 'es-ES', 'es-GT', 'es-HN', 'es-MX', 'es-NI', 'es-PA',
+        'es-PE', 'es-PR', 'es-PY', 'es-SV', 'es-UY', 'es-VE'
+    ]
+}

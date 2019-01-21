@@ -1,4 +1,4 @@
-<!--
+/*
 █████████████████████████████████████████████████████████████                                                                        
 ██                                                         ██
 ██           ███    ███ ██    ██ ███████                   ██  
@@ -14,39 +14,32 @@
 ██                                                         ██
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
--->
+*/
 
-<!DOCTYPE html>
-<html>
-
-	<head>
-
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width'>
-
-		<title>New Tab</title>
-
-		<link href='./assets/css/base.css' rel='stylesheet'>
-	    <link href='./assets/css/animate.css' rel='stylesheet'>
-
-	</head>
-
-	<body>
-
-		<div class='greeting animated fadeInUp'></div>
-		
-		<time class='animated fadeInUp'></time>
-
-		<div class='quote animated fadeInUp'>
-
-			<blockquote></blockquote>
-
-			<cite></cite>
-
-		</div>
-
-	</body>
-
-	<script src='./assets/js/base.js'></script>
-
-</html>
+module.exports = [
+    'mountain',
+    'sunrise',
+    'butterfly',
+    'leaves',
+    'river',
+    'sea',
+    'space',
+    'ice',
+    'waterfall',
+    'river',
+    'sunset',
+    'desert',
+    'canyon',
+    'rose',
+    'forest',
+    'cherry',
+    'clouds',
+    'autumn',
+    'winter',
+    'flowers',
+    'sunrise',
+    'rocks',
+    'trees',
+    'mountains',
+    'beach'
+]

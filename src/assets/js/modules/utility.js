@@ -16,50 +16,49 @@
 █████████████████████████████████████████████████████████████
 */
 
-@import 'modules/background';
-@import 'modules/quote';
-@import 'modules/time-greeting';
+module.exports = class Util {
+    // format time
+    static formatTimeUnit(unit) {
+        return unit < 10 ? '0' + unit : unit
+    };
 
-/* Body */
-html, body { height: 100%; }
-body {
+    // setHTMLContent is the kind of function that is referred to as a 'wrapper'
+    static setHTMLContent(selector, content) {
+        return document.querySelector(selector).innerHTML = content
+    };
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
+    // get random item
+    static getRandIndex(array) {
+        return Math.floor(Math.random() * (array.length - 1))
+    }
 
-	margin: 0;
+    // pick random from array
+    static pickFromArray(array) {
+        return array[Math.floor(Math.random() * (array.length - 1))]
+    };
 
-	background-size: cover;
-	background-position: 50%;
-	background-color: black; /* Prevent white flash on page load */
+    static contains(needle) {
+        let findNaN = needle !== needle;
+        let indexOf;
+        if (!findNaN && typeof Array.prototype.indexOf === 'function') {
+            indexOf = Array.prototype.indexOf;
+        } else {
+            indexOf = (needle) => {
+                let i = -1,
+                    index = -1;
 
-	font-family: 'Roboto';
-	color: white;
+                for (i = 0; i < this.length; i++) {
+                    let item = this[i];
 
-	overflow: hidden;
-	
-  -moz-user-select: none; /* Firefox */
-	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-}
+                    if ((findNaN && item !== item) || item === needle) {
+                        index = i;
+                        break;
+                    }
+                }
 
-/* Font */
-@font-face {
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 400;
-	src: local('Roboto'), local('Roboto-Regular'),
-		 url('../font/roboto-v18-latin-regular.woff2') format('woff2'); 
-}
-
-/* Shadow */
-:root {
-	--shadow-color: #111111CC;
-}
-
-.greeting,
-time,
-.quote {
-	filter: drop-shadow(var(--shadow-shift) var(--shadow-shift) 0 var(--shadow-color));
+                return index;
+            };
+        }
+        return indexOf.call(this, needle) > -1;
+    };
 }
