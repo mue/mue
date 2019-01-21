@@ -1,6 +1,6 @@
 # Mue
-<a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://vgy.me/u7sGQr.png' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-<a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://vgy.me/PKn6Z8.png' border='0' alt='Become a patron on patreon.com' /></a>
+<a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='assets/kofi.png' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='assets/patreon.png' border='0' alt='Become a patron on patreon.com' /></a>
 
 Fast, open and free-to-use new tab page for most modern browsers
 
@@ -12,15 +12,15 @@ Fast, open and free-to-use new tab page for most modern browsers
 
 ## Installation
 ### Chrome
-<a href='https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid'><img src='https://vgy.me/h6SLKn.png' target='_blank'></a> 
+<a href='https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid'><img src='assets/chrome.png' target='_blank'></a> 
 
 Link: https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid
 
 Development: Read the [Development](#development) section
 ### Firefox
-<a href='https://addons.mozilla.org/firefox/addon/mue/'><img src='https://vgy.me/REe6qz.png' target='_blank'></a> 
+<a href='https://addons.mozilla.org/firefox/addon/mue'><img src='assets/firefox.png' target='_blank'></a> 
 
-Link: https://addons.mozilla.org/firefox/addon/mue/
+Link: https://addons.mozilla.org/firefox/addon/mue
 
 Development: Read the [Development](#development) section
 ### Opera/Other
@@ -80,7 +80,7 @@ Development: Read the [Development](#development) section
 ## Screenshot
 *Will be updated if needed*
 
-<img src='https://vgy.me/K8T5EP.png'>
+<img src='assets/screenshot.png'>
 
 ## Translations
 English - Quotes and Messages
@@ -104,6 +104,6 @@ French - Messages (by [Yanderella](https://github.com/Chivi19) and ohlookitsderp
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 
-[Animate.css](https://daneden.github.io/animate.css/) - Portions of code used for animations
+[Animate.css](https://daneden.github.io/animate.css) - Portions of code used for animations
 
 and all the contributors <3
