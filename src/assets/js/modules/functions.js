@@ -17,9 +17,9 @@
 */
 
 const util       = require('./utility.js');
-const message    = require('./message.js');
+const message    = require('./messages.js');
 const quotes     = require('./quotes.js');
-const background = require('./background.js');
+const background = require('./backgrounds.js');
 const codes      = require('./codes.js');
 
 let nal = navigator.language;
@@ -33,6 +33,7 @@ module.exports = class Functions {
         else if (util.contains.call(codes.spcodes, nal)) message.spMessageSet(); //Spanish
         else if (util.contains.call(codes.ficodes, nal)) message.spMessageSet(); //Finnish
         else if (util.contains.call(codes.decodes, nal)) message.spMessageSet(); //German
+        else if (util.contains.call(codes.hecodes, nal)) message.heMessageSet(); //Hebrew
         else message.engMessageSet(); //English
     };
 

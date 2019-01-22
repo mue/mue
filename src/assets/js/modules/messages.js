@@ -80,4 +80,13 @@ module.exports = class Message {
         else if (hour > 20) time = 'Guten Nachmittag'; // If it's after 6pm, set the time string to "Good afternoon"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
+
+    // Hebrew
+    static heMessageSet() {
+        let hour = new Date().getHours(); // Get the current hour
+        let time = 'ערב טוב'; // Set the default time string to "Good evening"
+        if (hour < 12) time = 'בוקר טוב'; // If it's before 12am, set the time string to "Good morning"
+        else if (hour > 20) time = 'אחר הצהריים טובים'; // If it's after 6pm, set the time string to "Good afternoon"
+        setHTMLContent('.greeting', time); // Write the string contents to the HTML
+    }
 }

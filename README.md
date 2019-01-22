@@ -99,6 +99,8 @@ Finnish - Messages (by [untocodes](https://github.com/untocodes))
 
 German - Messages (by [untocodes](https://github.com/untocodes))
 
+Hebrew - Messages (by [dondish](https://github.com/dondish))
+
 *Feel free to pull request with other translations!*
 
 ## Credits

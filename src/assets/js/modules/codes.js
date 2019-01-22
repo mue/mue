@@ -26,5 +26,6 @@ module.exports = {
         'es-PE', 'es-PR', 'es-PY', 'es-SV', 'es-UY', 'es-VE'
     ],
     ficodes: ['fi'],
-    decodes: ['de', 'de-AT', 'de-DE', 'de-LI', 'de-LU', 'de-CH']
+    decodes: ['de', 'de-AT', 'de-DE', 'de-LI', 'de-LU', 'de-CH'],
+    hecodes: ['he']
 }
