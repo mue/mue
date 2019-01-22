@@ -27,5 +27,10 @@ module.exports = {
     ],
     ficodes: ['fi'],
     decodes: ['de', 'de-AT', 'de-DE', 'de-LI', 'de-LU', 'de-CH'],
-    hecodes: ['he']
+    hecodes: ['he'],
+    rucodes: ['ru', 'ru-MO'],
+    arcodes: ['ar', 'ar-DZ', 'ar-BH', 'ar-EG', 'ar-IQ', 'ar-JO', 'ar-KW',
+        'ar-LB', 'ar-LY', 'ar-QA', 'ar-SA', 'ar-SY', 'ar-TN', 'ar-AE', 
+        'ar-YE'
+    ]
 }

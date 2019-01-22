@@ -16,7 +16,9 @@
 █████████████████████████████████████████████████████████████
 */
 
-const { setHTMLContent } = require('./utility.js');
+const {
+    setHTMLContent
+} = require('./utility.js');
 
 module.exports = class Message {
     // English
@@ -87,6 +89,24 @@ module.exports = class Message {
         let time = 'ערב טוב'; // Set the default time string to "Good evening"
         if (hour < 12) time = 'בוקר טוב'; // If it's before 12am, set the time string to "Good morning"
         else if (hour > 20) time = 'אחר הצהריים טובים'; // If it's after 6pm, set the time string to "Good afternoon"
+        setHTMLContent('.greeting', time); // Write the string contents to the HTML
+    }
+
+    // Russian
+    static ruMessageSet() {
+        let hour = new Date().getHours(); // Get the current hour
+        let time = 'Добрый Вечер'; // Set the default time string to "Good evening"
+        if (hour < 12) time = 'добрый утро'; // If it's before 12am, set the time string to "Good morning"
+        else if (hour > 20) time = 'добрый день'; // If it's after 6pm, set the time string to "Good afternoon"
+        setHTMLContent('.greeting', time); // Write the string contents to the HTML
+    }
+
+     // Arabic
+     static arMessageSet() {
+        let hour = new Date().getHours(); // Get the current hour
+        let time = 'مساء الخير'; // Set the default time string to "Good evening"
+        if (hour < 12) time = 'صباح الخير'; // If it's before 12am, set the time string to "Good morning"
+        else if (hour > 20) time = 'مساء الخير'; // If it's after 6pm, set the time string to "Good afternoon"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 }

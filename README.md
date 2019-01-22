@@ -101,6 +101,10 @@ German - Messages (by [untocodes](https://github.com/untocodes))
 
 Hebrew - Messages (by [dondish](https://github.com/dondish))
 
+Russian - Messages (by [dondish](https://github.com/dondish))
+
+Arabic - Messages (by [MrSheldon](https://github.com/MrSheldon))
+
 *Feel free to pull request with other translations!*
 
 ## Credits

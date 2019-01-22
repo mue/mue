@@ -34,6 +34,8 @@ module.exports = class Functions {
         else if (util.contains.call(codes.ficodes, nal)) message.spMessageSet(); //Finnish
         else if (util.contains.call(codes.decodes, nal)) message.spMessageSet(); //German
         else if (util.contains.call(codes.hecodes, nal)) message.heMessageSet(); //Hebrew
+        else if (util.contains.call(codes.rucodes, nal)) message.ruMessageSet(); //Russian
+        else if (util.contains.call(codes.arcodes, nal)) message.arMessageSet(); //Arabic
         else message.engMessageSet(); //English
     };
 
