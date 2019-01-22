@@ -24,7 +24,8 @@ module.exports = class Messages {
         let hour = new Date().getHours(); // Get the current hour
         let time = 'Good evening'; // Set the default time string to "Good evening"	
         if (hour < 12) time = 'Good morning'; //If it's before 12am, set the time string to "Good morning"
-        else if (hour > 18) time = 'Good afternoon'; //If it's before 6pm, set the time string to "Good afternoon"
+        else if (hour < 18) time = 'Good afternoon'; //If it's before 6pm, set the time string to "Good afternoon"
+        else time = time; //If it's unknown, set the time stirng to "Good evening"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 
@@ -42,6 +43,7 @@ module.exports = class Messages {
         let time = 'Goedemiddag'; // Set the default time string to "Good evening"
         if (hour < 12) time = 'Goedemorgen'; //If it's before 12am, set the time string to "Good morning"
         else if (hour > 18) time = 'Goedenavond'; //If it's before 6pm, set the time string to "Good afternoon"
+        else time = time; //If it's unknown, set the time stirng to "Good evening"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 
@@ -60,6 +62,7 @@ module.exports = class Messages {
         let time = 'Buenas Tardes'; // Set the default time string to "Good evening"
         if (hour < 12) time = 'Buenos Días'; // If it's before 12am, set the time string to "Good morning"
         else if (hour > 18) time = 'Buenas Noches'; // If it's before 6pm, set the time string to "Good afternoon"
+        else time = time; //If it's unknown, set the time stirng to "Good evening"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 
@@ -69,6 +72,7 @@ module.exports = class Messages {
         let time = 'Hyvää iltaa'; // Set the default time string to "Good evening"
         if (hour < 12) time = 'Hyvää huomenta'; // If it's before 12am, set the time string to "Good morning"
         else if (hour > 18) time = 'Hyvää iltapäivää'; // If it's before 6pm, set the time string to "Good afternoon"
+        else time = time; //If it's unknown, set the time stirng to "Good evening"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
  
@@ -87,6 +91,7 @@ module.exports = class Messages {
         let time = 'ערב טוב'; // Set the default time string to "Good evening"
         if (hour < 12) time = 'בוקר טוב'; // If it's before 12am, set the time string to "Good morning"
         else if (hour > 18) time = 'אחר הצהריים טובים'; // If it's before 6pm, set the time string to "Good afternoon"
+        else time = time; //If it's unknown, set the time stirng to "Good evening"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 
@@ -96,6 +101,7 @@ module.exports = class Messages {
         let time = 'Добрый Вечер'; // Set the default time string to "Good evening"
         if (hour < 12) time = 'добрый утро'; // If it's before 12am, set the time string to "Good morning"
         else if (hour > 18) time = 'добрый день'; // If it's before 6pm, set the time string to "Good afternoon"
+        else time = time; //If it's unknown, set the time stirng to "Good evening"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 
@@ -105,6 +111,7 @@ module.exports = class Messages {
         let time = 'مساء الخير'; // Set the default time string to "Good evening"
         if (hour < 12) time = 'صباح الخير'; // If it's before 12am, set the time string to "Good morning"
         else if (hour > 18) time = 'مساء الخير'; // If it's before 6pm, set the time string to "Good afternoon"
+        else time = time; //If it's unknown, set the time stirng to "Good evening"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 }
