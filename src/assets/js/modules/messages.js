@@ -16,9 +16,7 @@
 █████████████████████████████████████████████████████████████
 */
 
-const {
-    setHTMLContent
-} = require('./utility.js');
+const { setHTMLContent } = require('./utility.js');
 
 module.exports = class Message {
     // English
