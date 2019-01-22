@@ -16,7 +16,7 @@
 █████████████████████████████████████████████████████████████
 */
 
-module.exports = class Util {
+module.exports = class Utility {
     // format time
     static formatTimeUnit(unit) {
         return unit < 10 ? '0' + unit : unit;
