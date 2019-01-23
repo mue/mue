@@ -16,15 +16,15 @@
 █████████████████████████████████████████████████████████████
 */
 
-const util       = require('./utility.js');
-const message    = require('./messages.js');
-const quotes     = require('./quotes.js');
-const background = require('./backgrounds.js');
-const codes      = require('./codes.js');
+const util       = require('./util.js');
+const message    = require('./message.js');
+const quotes     = require('./quote.js');
+const background = require('./background.js');
+const codes      = require('./code.js');
 
 let nal = navigator.language;
 
-module.exports = class Functions {
+module.exports = class Function {
     static setDaytimeMessage() {
         if (util.contains.call(codes.itcodes, nal)) message.itMessageSet(); //Italian
         else if (util.contains.call(codes.nlcodes, nal)) message.nlMessageSet(); //Dutch

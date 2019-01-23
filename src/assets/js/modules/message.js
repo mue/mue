@@ -16,9 +16,9 @@
 █████████████████████████████████████████████████████████████
 */
 
-const { setHTMLContent } = require('./utility.js');
+const { setHTMLContent } = require('./util.js');
 
-module.exports = class Messages {
+module.exports = class Message {
     // English
     static engMessageSet() {
         let hour = new Date().getHours(); // Get the current hour

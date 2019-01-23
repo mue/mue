@@ -16,7 +16,7 @@
 █████████████████████████████████████████████████████████████
 */
 
-const functions = require('./modules/functions.js');
+const functions = require('./modules/function.js');
 
 const init = () => {
 	// init() gets executed only when the page is fully loaded

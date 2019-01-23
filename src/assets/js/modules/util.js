@@ -16,7 +16,7 @@
 █████████████████████████████████████████████████████████████
 */
 
-module.exports = class Utility {
+module.exports = class Util {
     // format time
     static formatTimeUnit(unit) {
         return unit < 10 ? '0' + unit : unit;
@@ -27,7 +27,7 @@ module.exports = class Utility {
         return document.querySelector(selector).innerHTML = content;
     };
 
-    // get random item
+    // get random item 
     static getRandIndex(array) {
         return Math.floor(Math.random() * (array.length - 1));
     }
