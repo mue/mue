@@ -17,7 +17,6 @@
 */
 
 .quote {
-
     --shadow-shift: 0.125rem;
 
     width: 37.5%;
@@ -27,11 +26,9 @@
     text-align: center;
 
     blockquote {
-
         margin: 0 0 0.25rem 0;
-
         line-height: 1.125;
-
+        
         ::before {
             content: '“';
             margin-right: 0.25ch;

@@ -75,7 +75,7 @@ module.exports = class Message {
         else time = time; //If it's unknown, set the time stirng to "Good evening"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
- 
+
     // German
     static deMessageSet() {
         let hour = new Date().getHours(); // Get the current hour
@@ -105,13 +105,22 @@ module.exports = class Message {
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 
-     // Arabic
-     static arMessageSet() {
+    // Arabic
+    static arMessageSet() {
         let hour = new Date().getHours(); // Get the current hour
         let time = 'مساء الخير'; // Set the default time string to "Good evening"
         if (hour < 12) time = 'صباح الخير'; // If it's before 12am, set the time string to "Good morning"
         else if (hour > 18) time = 'مساء الخير'; // If it's before 6pm, set the time string to "Good afternoon"
         else time = time; //If it's unknown, set the time stirng to "Good evening"
+        setHTMLContent('.greeting', time); // Write the string contents to the HTML
+    }
+
+    // Swedish
+    static svMessageSet() {
+        let hour = new Date().getHours(); // Get the current hour
+        let time = 'God kväll'; // Set the default time string to "Good evening"
+        if (hour < 12) time = 'God morgon'; // If it's before 12am, set the time string to "Good morning"
+        else if (hour > 18) time = 'Dod eftermiddag'; // If it's before 6pm, set the time string to "Good afternoon"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
 }

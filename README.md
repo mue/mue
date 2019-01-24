@@ -105,6 +105,8 @@ Russian - Messages (by [dondish](https://github.com/dondish))
 
 Arabic - Messages (by [MrSheldon](https://github.com/MrSheldon))
 
+Swedish - Messages (by [MrSheldon](https://github.com/MrSheldon))
+
 *Feel free to pull request with other translations!*
 
 ## Credits
