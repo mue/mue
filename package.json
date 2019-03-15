@@ -11,6 +11,6 @@
     "devDependencies": {
         "sass": "1.17.2",
         "webpack": "4.29.6",
-        "webpack-cli": "3.2.3"
+        "webpack-cli": "3.3.0"
     }
 }
