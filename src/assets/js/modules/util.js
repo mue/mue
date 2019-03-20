@@ -30,7 +30,7 @@ module.exports = class Util {
     // get random item 
     static getRandIndex(array) {
         return Math.floor(Math.random() * (array.length - 1));
-    }
+    };
 
     // pick random from array
     static pickFromArray(array) {
@@ -40,9 +40,8 @@ module.exports = class Util {
     static contains(needle) {
         let findNaN = needle !== needle;
         let indexOf;
-        if (!findNaN && typeof Array.prototype.indexOf === 'function') {
-            indexOf = Array.prototype.indexOf;
-        } else {
+        if (!findNaN && typeof Array.prototype.indexOf === 'function') indexOf = Array.prototype.indexOf;
+        else {
             indexOf = (needle) => {
                 let i = -1,
                     index = -1;

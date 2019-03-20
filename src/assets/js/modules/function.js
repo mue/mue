@@ -17,10 +17,10 @@
 */
 
 const util       = require('./util.js');
-const message    = require('./message.js');
-const quotes     = require('./quote.js');
-const background = require('./background.js');
 const codes      = require('./code.js');
+const quotes     = require('./quote.js');
+const message    = require('./message.js');
+const background = require('./background.js');
 
 let nal = navigator.language;
 
@@ -41,8 +41,7 @@ module.exports = class Function {
     };
 
     static setRandomBackground() {
-        let currentBackgroundClass = util.pickFromArray(background);
-        document.body.classList.add(currentBackgroundClass);
+        document.body.classList.add(util.pickFromArray(background));
     };
 
     static setRandomQuote() {

@@ -25,7 +25,7 @@ const init = () => {
 	functions.setRandomQuote();
 	functions.setTime();
 	// set interval to update time every second
-	let timeInterval = setInterval(functions.setTime, 1000);
+	setInterval(functions.setTime, 1000);
 };
 
 // initialize on page load through a listener

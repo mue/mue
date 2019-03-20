@@ -26,7 +26,7 @@ module.exports = [
     'space',
     'ice',
     'waterfall',
-    'river',
+    'lake',
     'sunset',
     'desert',
     'canyon',
