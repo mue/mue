@@ -80,7 +80,7 @@ Development: Read the [Development](#development) section
 ## Screenshot
 *Will be updated if needed*
 
-<img src='assets/screenshot.png'>
+<img src='assets/screenshot.jpg'>
 
 ## Translations
 English - Quotes and Messages
