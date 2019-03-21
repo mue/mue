@@ -53,7 +53,7 @@ module.exports = class Util {
                     }
                 }
                 return index;
-            };
+            }
         }
         return indexOf.call(this, needle) > -1;
     };

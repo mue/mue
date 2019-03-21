@@ -32,5 +32,5 @@ const init = () => {
 document.addEventListener('DOMContentLoaded', init);
 
 // Disable right click
-document.oncontextmenu=RightMouseDown;
 function RightMouseDown() { return false; }
+document.oncontextmenu=RightMouseDown;

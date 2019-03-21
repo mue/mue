@@ -28,4 +28,4 @@ module.exports = {
     rucodes: ['ru', 'ru-MO'],
     arcodes: ['ar', 'ar-DZ', 'ar-BH', 'ar-EG', 'ar-IQ', 'ar-JO', 'ar-KW', 'ar-LB', 'ar-LY', 'ar-QA', 'ar-SA', 'ar-SY', 'ar-TN', 'ar-AE', 'ar-YE' ],
     svcodes: ['sv', 'sv-FI', 'sv-SV']
-}
+};

@@ -53,7 +53,6 @@ module.exports = class Function {
         util.setHTMLContent('cite', quotes.authors[id]);
     };
 
-
     static setTime() {
         let date = new Date(),
             time = [
@@ -65,4 +64,4 @@ module.exports = class Function {
         // example: [16, 32, 03] -> "16:32:03"
         util.setHTMLContent('time', time.join(':'));
     };
-}
+};
