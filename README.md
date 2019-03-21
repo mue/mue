@@ -1,4 +1,7 @@
 # Mue
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fba7ad7fc6e14fe0bc2a8d53dbf0bb41)](https://www.codacy.com/app/ohlookitsderpy/Mue?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ohlookitsderpy/Mue&amp;utm_campaign=Badge_Grade)
+[![Discord Badge](https://discordapp.com/api/guilds/336039472250748928/widget.png)](https://discord.gg/HJmmmTB)
+
 <a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='assets/kofi.png' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 <a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='assets/patreon.png' border='0' alt='Become a patron on patreon.com' /></a>
 
