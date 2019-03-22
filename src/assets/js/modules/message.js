@@ -123,4 +123,4 @@ module.exports = class Message {
         else if (hour > 18) time = 'Dod eftermiddag'; // If it's before 6pm, set the time string to "Good afternoon"
         setHTMLContent('.greeting', time); // Write the string contents to the HTML
     }
-}
+};
