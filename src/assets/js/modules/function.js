@@ -22,7 +22,7 @@ const quotes     = require('./quote.js');
 const message    = require('./message.js');
 const background = require('./background.js');
 
-let nal = navigator.language;
+const nal = navigator.language;
 
 module.exports = class Function {
     static setDaytimeMessage() {
@@ -38,23 +38,23 @@ module.exports = class Function {
         if (util.contains.call(codes.arcodes, nal)) message.arMessageSet(); //Arabic
         if (util.contains.call(codes.svcodes, nal)) message.svMessageSet(); //Swedish
         else message.engMessageSet(); //English
-    };
+    }
 
     static setRandomBackground() {
         document.body.classList.add(util.pickFromArray(background));
-    };
+    }
 
     static setRandomQuote() {
-        let id = util.getRandIndex(quotes.authors);
+        const id = util.getRandIndex(quotes.authors);
         if (util.contains.call(codes.itcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.ita[id]}"`); //Italian
         if (util.contains.call(codes.ptcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`); //Portuguese
         if (util.contains.call(codes.spcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.spa[id]}"`); //Spanish
         else util.setHTMLContent('blockquote', `"${quotes.eng[id]}"`); //English
         util.setHTMLContent('cite', quotes.authors[id]);
-    };
+    }
 
     static setTime() {
-        let date = new Date(),
+        const date = new Date(),
             time = [
                 util.formatTimeUnit(date.getHours()),
                 util.formatTimeUnit(date.getMinutes()),

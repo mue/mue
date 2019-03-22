@@ -38,7 +38,7 @@ module.exports = class Util {
     }
 
     static contains(needle) {
-        let findNaN = needle !== needle;
+        const findNaN = needle !== needle;
         let indexOf;
         if (!findNaN && typeof Array.prototype.indexOf === 'function') indexOf = Array.prototype.indexOf;
         else {
@@ -46,14 +46,14 @@ module.exports = class Util {
                 let i = -1,
                     index = -1;
                 for (i = 0; i < this.length; i++) {
-                    let item = this[i];
+                    const item = this[i];
                     if ((findNaN && item !== item) || item === needle) {
                         index = i;
                         break;
                     }
                 }
                 return index;
-            }
+            };
         }
         return indexOf.call(this, needle) > -1;
     }
