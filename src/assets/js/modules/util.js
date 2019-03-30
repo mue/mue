@@ -17,7 +17,7 @@
 */
 
 module.exports = class Util {
-    // format time
+    // Format time
     static formatTimeUnit(unit) {
         return unit < 10 ? '0' + unit : unit;
     }
@@ -27,12 +27,12 @@ module.exports = class Util {
         return document.querySelector(selector).innerHTML = content;
     }
 
-    // get random item 
+    // Get random item 
     static getRandIndex(array) {
         return Math.floor(Math.random() * (array.length - 1));
     }
 
-    // pick random from array
+    // Pick random from array
     static pickFromArray(array) {
         return array[Math.floor(Math.random() * (array.length - 1))];
     }
