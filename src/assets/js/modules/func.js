@@ -24,7 +24,7 @@ const quotes = require('./quote.js');
 
 const nal = navigator.language;
 
-module.exports = class Fun {
+module.exports = class Func {
     static setDaytimeMsg() {
         if (util.contains.call(codes.itcodes, nal)) msg.itMsgSet(); //Italian
         if (util.contains.call(codes.nlcodes, nal)) msg.nlMsgSet(); //Dutch

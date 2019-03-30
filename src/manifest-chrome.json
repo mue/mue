@@ -7,6 +7,5 @@
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
-  },
-  "runs_offline": true
+  }
 }

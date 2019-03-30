@@ -16,16 +16,16 @@
 █████████████████████████████████████████████████████████████
 */
 
-const fun = require('./modules/fun.js');
+const func = require('./modules/func.js');
 
 const init = () => {
 	// init() gets executed only when the page is fully loaded
-	fun.setDaytimeMsg();
-	fun.setRandBg();
-	fun.setRandQuote();
-	fun.setTime();
+	func.setDaytimeMsg();
+	func.setRandBg();
+	func.setRandQuote();
+	func.setTime();
 	// set interval to update time every second
-	setInterval(fun.setTime, 1000);
+	setInterval(func.setTime, 1000);
 };
 
 // initialize on page load through a listener
