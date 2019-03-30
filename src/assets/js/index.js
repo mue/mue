@@ -16,21 +16,21 @@
 █████████████████████████████████████████████████████████████
 */
 
-const functions = require('./modules/function.js');
+const fun = require('./modules/fun.js');
 
 const init = () => {
 	// init() gets executed only when the page is fully loaded
-	functions.setDaytimeMessage();
-	functions.setRandomBackground();
-	functions.setRandomQuote();
-	functions.setTime();
+	fun.setDaytimeMsg();
+	fun.setRandBg();
+	fun.setRandQuote();
+	fun.setTime();
 	// set interval to update time every second
-	setInterval(functions.setTime, 1000);
+	setInterval(fun.setTime, 1000);
 };
 
 // initialize on page load through a listener
 document.addEventListener('DOMContentLoaded', init);
 
 // Disable right click
-const rightclick = () => { return false; }
-document.oncontextmenu=rightclick;
+const rightClick = () => { return false; }
+document.oncontextmenu=rightClick;
