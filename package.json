@@ -9,7 +9,7 @@
         "js-watch": "webpack --progress --watch"
     },
     "devDependencies": {
-        "sass": "1.17.4",
+        "sass": "1.18.0",
         "webpack": "4.29.6",
         "webpack-cli": "3.3.0"
     }
