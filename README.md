@@ -30,6 +30,12 @@ Development: Read the [Development](#development) section
 Development: Read the [Development](#development) section
 
 ### Development
+<h5>Requirements</h5>
+<ol>
+  <li>Git (optional)</li>
+  <li>Node.js</li>
+  <li>A suitable browser</li>
+</ol>
 <h5>Starting</h5>
 <ol>
   <li> <code>git clone https://github.com/ohlookitsderpy/Mue</code> (If you don't have Git just go to <b>Clone or
@@ -84,33 +90,6 @@ Development: Read the [Development](#development) section
 
 <img src='assets/screenshot.jpg'>
 
-## Translations
-English - Quotes and Messages
-
-Italian - Quotes and Messages (by [Yanderella](https://github.com/Chivi19))
-
-Spanish - Quotes and Messages (by Pepehound)
-
-Portuguese - Quotes (Some) (by Candystick)
-
-Dutch - Messages (by [PassTheWessel](https://github.com/PassTheWessel))
-
-French - Messages (by [Yanderella](https://github.com/Chivi19) and ohlookitsderpy)
-
-Finnish - Messages (by [untocodes](https://github.com/untocodes))
-
-German - Messages (by [untocodes](https://github.com/untocodes))
-
-Hebrew - Messages (by [dondish](https://github.com/dondish))
-
-Russian - Messages (by [dondish](https://github.com/dondish))
-
-Arabic - Messages (by [MrSheldon](https://github.com/MrSheldon))
-
-Swedish - Messages (by [MrSheldon](https://github.com/MrSheldon))
-
-*Feel free to pull request with other translations!*
-
 ## Credits
 [Turbomarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea.
 
@@ -119,5 +98,26 @@ Swedish - Messages (by [MrSheldon](https://github.com/MrSheldon))
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 
 [Animate.css](https://daneden.github.io/animate.css) - Portions of code used for animations
+
+### Translations
+[ohlookitsderpy](https://github.com/ohlookitsderpy) - English (Quotes and Messages)
+
+[Yanderella](https://github.com/Chivi19) - Italian (Quotes and Messages)
+
+Pepehound - Spanish (Quotes and Messages)
+
+Candystick - Portuguese (Some Quotes)
+
+[PassTheWessel](https://github.com/PassTheWessel) - Dutch (Messages)
+
+[Yanderella](https://github.com/Chivi19) and [ohlookitsderpy](https://github.com/ohlookitsderpy) - French (Messages)
+
+[untocodes](https://github.com/untocodes) - Finnish and German (Messages)
+
+[dondish](https://github.com/dondish) - Hebrew and Russian (Messages)
+
+[MrSheldon](https://github.com/MrSheldon) - Arabic and Swedish (Messages)
+
+*Feel free to pull request with other translations!*
 
 and all the contributors <3
