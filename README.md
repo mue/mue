@@ -61,8 +61,7 @@ Development: Read the [Development](#development) section
 </details>
 <details>
   <summary><b>Firefox</b> (Click to expand)</summary>
-  <i>Note: I'm currently trying to find a better method to do this, but this works for now. Also in testing and may not
-    work properly!</i>
+  <i>Note: I'm currently trying to find a better method to do this, but this works for now.</i>
   <ol>
     <li> Rename <code>manifest-firefox.json</code> to <code>manifest.json</code>
     <li> Visit <code>about:debugging#addons</code> in Firefox
