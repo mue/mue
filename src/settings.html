@@ -1,4 +1,4 @@
-/*
+<!--
 █████████████████████████████████████████████████████████████                                                                        
 ██                                                         ██
 ██           ███    ███ ██    ██ ███████                   ██  
@@ -14,28 +14,26 @@
 ██                                                         ██
 ██          Special thanks to contributors! <3             ██
 █████████████████████████████████████████████████████████████
-*/
+-->
 
-const func = require('./modules/func.js');
+<!DOCTYPE html>
+<html>
 
-// init() gets executed only when the page is fully loaded
-const init = () => {
-	try {
-		func.setDaytimeMsg();
-		func.setRandBg();
-		func.setRandQuote();
-		func.setTime();
-		// set interval to update time every second
-		setInterval(func.setTime, 1000);
-	// catch for settings menu
-	} catch (e) {
-      func.setSettingDisplay();
-	}
-};
+<head>
 
-// initialize on page load through a listener
-document.addEventListener('DOMContentLoaded', init);
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width'>
 
-// Disable right click
-const rightClick = () => { return false; };
-document.oncontextmenu=rightClick;
+	<title>Mue Settings</title>
+
+	<link href='./assets/css/base.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+</body>
+
+<script src='./assets/js/base.js'></script>
+
+</html>
