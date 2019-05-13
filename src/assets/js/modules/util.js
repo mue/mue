@@ -22,11 +22,6 @@ module.exports = class Util {
         return unit < 10 ? '0' + unit : unit;
     }
 
-    // setHTMLContent is the kind of function that is referred to as a 'wrapper'
-    static setHTMLContent(selector, content) {
-        return document.querySelector(selector).innerHTML = content;
-    }
-
     // Get random item 
     static getRandIndex(array) {
         return Math.floor(Math.random() * (array.length - 1));

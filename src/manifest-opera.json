@@ -6,7 +6,9 @@
     "default_icon": "./assets/img/icon.png"
   },
   "background": {
-    "scripts": ["./assets/js/background-opera.js"]
+    "scripts": [
+      "./assets/js/background-opera.js"
+    ]
   },
   "permissions": [
     "tabs"

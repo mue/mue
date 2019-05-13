@@ -46,11 +46,11 @@ module.exports = class Func {
 
     static setRandQuote() {
         const id = util.getRandIndex(quotes.authors);
-        if (util.contains.call(codes.itcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.ita[id]}"`); //Italian
-        if (util.contains.call(codes.ptcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`); //Portuguese
-        if (util.contains.call(codes.spcodes, nal)) util.setHTMLContent('blockquote', `"${quotes.spa[id]}"`); //Spanish
-        else util.setHTMLContent('blockquote', `"${quotes.eng[id]}"`); //English
-        util.setHTMLContent('cite', quotes.authors[id]);
+        if (util.contains.call(codes.itcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.it[id]}"`; //Italian
+        if (util.contains.call(codes.ptcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`; //Portuguese
+        if (util.contains.call(codes.spcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.sp[id]}"`; //Spanish
+        else document.querySelector('blockquote').innerHTML = `"${quotes.eng[id]}"`; //English
+        document.querySelector('cite').innerHTML = quotes.authors[id];
     }
 
     static setTime() {
@@ -62,6 +62,6 @@ module.exports = class Func {
             ];
         // joins all of the array elements into a string using the ':' separator
         // example: [16, 32, 03] -> "16:32:03"
-        util.setHTMLContent('time', time.join(':'));
+        document.querySelector('time').innerHTML = time.join(':');
     }
 };

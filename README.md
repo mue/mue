@@ -1,3 +1,5 @@
+<img src='assets/logo/logo_horizontal.png'>
+
 # Mue
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fba7ad7fc6e14fe0bc2a8d53dbf0bb41)](https://www.codacy.com/app/ohlookitsderpy/Mue?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ohlookitsderpy/Mue&amp;utm_campaign=Badge_Grade)
 [![Discord Badge](https://discordapp.com/api/guilds/336039472250748928/widget.png)](https://discord.gg/HJmmmTB)
@@ -91,6 +93,7 @@ Development: Read the [Development](#development) section
 <img src='assets/screenshot.jpg'>
 
 ## Credits
+
 [Turbomarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea.
 
 [Pexels](https://pexels.com) - Stock photos used
