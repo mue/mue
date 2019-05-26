@@ -4,8 +4,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fba7ad7fc6e14fe0bc2a8d53dbf0bb41)](https://www.codacy.com/app/ohlookitsderpy/Mue?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ohlookitsderpy/Mue&amp;utm_campaign=Badge_Grade)
 [![Discord Badge](https://discordapp.com/api/guilds/336039472250748928/widget.png)](https://discord.gg/HJmmmTB)
 
-<a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='assets/kofi.png' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-<a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='assets/patreon.png' border='0' alt='Become a patron on patreon.com' /></a>
+<a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' src='assets/kofi.png' alt='Buy me a Coffee at ko-fi.com' /></a>
+<a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' src='assets/patreon.png' alt='Become a patron on patreon.com' /></a>
 
 Fast, open and free-to-use new tab page for most modern browsers
 
@@ -94,13 +94,13 @@ Development: Read the [Development](#development) section
 
 ## Credits
 
-[Turbomarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea.
+[Turbomarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea
 
 [Pexels](https://pexels.com) - Stock photos used
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 
-[Animate.css](https://daneden.github.io/animate.css) - Portions of code used for animations
+[Animate.css](https://daneden.github.io/animate.css) - Portions of code used to add animations
 
 ### Translations
 [ohlookitsderpy](https://github.com/ohlookitsderpy) - English (Quotes and Messages)
