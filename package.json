@@ -10,7 +10,7 @@
     },
     "devDependencies": {
         "eslint": "5.16.0",
-        "sass": "1.20.1",
+        "sass": "1.20.3",
         "webpack": "4.32.2",
         "webpack-cli": "3.3.2"
     }
