@@ -12,6 +12,6 @@
         "eslint": "6.0.0",
         "sass": "1.20.3",
         "webpack": "4.32.2",
-        "webpack-cli": "3.3.2"
+        "webpack-cli": "3.3.4"
     }
 }
