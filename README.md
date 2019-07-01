@@ -1,18 +1,19 @@
+<img src='assets/logo/logo_horizontal.png'>
+
 # Mue
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fba7ad7fc6e14fe0bc2a8d53dbf0bb41)](https://www.codacy.com/app/ohlookitsderpy/Mue?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ohlookitsderpy/Mue&amp;utm_campaign=Badge_Grade)
 [![Discord Badge](https://discordapp.com/api/guilds/336039472250748928/widget.png)](https://discord.gg/HJmmmTB)
 
-<a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='assets/kofi.png' border='0' alt='Buy me a Coffee at ko-fi.com' /></a>
-<a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' style='border:0px;height:36px;' src='assets/patreon.png' border='0' alt='Become a patron on patreon.com' /></a>
+<a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' src='assets/kofi.png' alt='Buy me a coffee at ko-fi.com' /></a>
+<a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' src='assets/patreon.png' alt='Become a patron on patreon.com' /></a>
 
-Fast, open and free-to-use new tab page for most modern browsers
+Fast, open and free-to-use new tab page for most modern browsers.
 
 ## Features
 * Fast and free
 * Supports multiple browsers
 * Actively developed and opensource
 * Multiple language support
-* Settings menu for easy customisation
 
 ## Installation
 ### Chrome
@@ -20,15 +21,17 @@ Fast, open and free-to-use new tab page for most modern browsers
 
 Link: [Chrome Web Store](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 
-Development: Read the [Development](#development) section
+Development: Read the [Development](#development) section.
 ### Firefox
 <a href='https://addons.mozilla.org/firefox/addon/mue'><img src='assets/firefox.png' target='_blank'></a> 
 
 Link: [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/mue)
 
-Development: Read the [Development](#development) section
+Development: Read the [Development](#development) section.
 ### Opera/Other
-Development: Read the [Development](#development) section
+Link: [GitHub Releases](https://github.com/ohlookitsderpy/Mue/releases)
+
+Development: Read the [Development](#development) section.
 
 ### Development
 <h5>Requirements</h5>
@@ -41,12 +44,12 @@ Development: Read the [Development](#development) section
 <ol>
   <li> <code>git clone https://github.com/ohlookitsderpy/Mue</code> (If you don't have Git just go to <b>Clone or
       download</b> and click <b>Download ZIP</b>)
-  <li>Open a terminal and run these commands: (in the Mue directory)
+  <li> Open a terminal and run these commands: (in the Mue directory)
   <li> <code>yarn</code> (or <code>npm install</code>)
   <li> <code>yarn run sass-watch</code> (or <code>npm run sass-watch</code>)
-  <li>Open another terminal and run this command: (in the Mue directory)
+  <li> Open another terminal and run this command: (in the Mue directory)
   <li> <code>yarn run js-watch</code> (or <code>npm run js-watch</code>)
-  <li>Start developing! (See the sections below for how to set it up with your browser)
+  <li> Start developing! (See the sections below for how to set it up with your browser)
 </ol>
 <details>
   <summary><b>Chrome</b> (Click to expand)</summary>
@@ -92,13 +95,14 @@ Development: Read the [Development](#development) section
 <img src='assets/screenshot.jpg'>
 
 ## Credits
-[Turbomarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea.
+
+[TurboMarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea
 
 [Pexels](https://pexels.com) - Stock photos used
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 
-[Animate.css](https://daneden.github.io/animate.css) - Portions of code used for animations
+[Animate.css](https://daneden.github.io/animate.css) - Portions of code used to add animations
 
 ### Translations
 [ohlookitsderpy](https://github.com/ohlookitsderpy) - English (Quotes and Messages)

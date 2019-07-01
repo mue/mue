@@ -16,11 +16,8 @@
 █████████████████████████████████████████████████████████████
 */
 
-/* Tab */
-@import 'modules/tab/bg';
-@import 'modules/tab/misc';
-@import 'modules/tab/quote';
-@import 'modules/tab/time-greeting';
-
-/* Settings*/
-@import 'modules/settings/misc';
+@import 'modules/bg';
+@import 'modules/misc';
+@import 'modules/quote';
+@import 'modules/time-greeting'; 
+@import 'modules/settings';

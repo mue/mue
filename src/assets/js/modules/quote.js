@@ -37,7 +37,7 @@ module.exports = {
         'Motivation comes from working on things we care about.',
         'With the right kind of coaching and determination you can accomplish anything.',
         'Some people look for a beautiful place. Others make a place beautiful.',
-        'Life is like riding a bicycle. To keep your balance, you must keep moving.',
+        'Life is like riding a bicycle. To keep your balance, you must keep moving.'
 
     ],
     ita: [
@@ -81,14 +81,14 @@ module.exports = {
         'Un campeón se define no por sus victorias, sino por cómo pueden recuperarse cuando caen',
         'La motivación viene de trabajar en cosas que nos importan',
         'Con el entrenamiento y la determinación adecuados, puedes lograr cualquier cosa',
-        'Algunas personas buscan un lugar hermoso. Otras, hacen un lugar hermoso.',
+        'Algunas personas buscan un lugar hermoso. Otras, hacen un lugar hermoso.'
     ],
     pt: [
         'O tempo continua. Então o que quer que você vai fazer,faça. Faça agora. Não espere.',
         'Todos os sonhos podem virar verdade,se tivermos a coragem de persegui-los.',
         'Não importa o quão devagar você for,desde que você não pare.',
         'Acredite em si mesmo. Você é mais corajoso que pensa,mais talentoso que sabe,e capaz de mais que imagina.',
-        'Se você acredita que vai dar certo,você verá oportunidades. Se você acredita que não vai,você vera obstáculos.',
+        'Se você acredita que vai dar certo,você verá oportunidades. Se você acredita que não vai,você vera obstáculos.'
     ],
     authors: [
         'Robert De Niro',
