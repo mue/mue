@@ -1,0 +1,116 @@
+<!--
+█████████████████████████████████████████████████████████████                                                                        
+██                                                         ██
+██           ███    ███ ██    ██ ███████                   ██  
+██           ████  ████ ██    ██ ██                        ██ 
+██           ██ ████ ██ ██    ██ █████                     ██ 
+██           ██  ██  ██ ██    ██ ██                        ██ 
+██           ██      ██  ██████  ███████                   ██ 
+██                                                         ██ 
+██                                                         ██                                                                                                 
+██      Copyright 2018-2019 David Ralph (ohlookitsderpy)   ██
+██                 Licensed under MIT                      ██                    
+██      GitHub: https://github.com/ohlookitsderpy/Mue      ██
+██                                                         ██
+██          Special thanks to contributors! <3             ██
+█████████████████████████████████████████████████████████████
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width'>
+	<link rel='stylesheet' type='text/css' href='./assets/css/light.css' />
+	<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+
+	<title>New Tab</title>
+
+	<link href='./assets/css/base.css' rel='stylesheet'>
+	<link href='./assets/css/animate.css' rel='stylesheet'>
+	<style>
+		.modal {
+			display: none;
+		}
+	</style>
+
+
+</head>
+
+<body>
+
+
+	<div id='greetingText' class='greeting animate'></div>
+
+	<time id='withSeconds' class='animate'></time>
+	<time id='withoutSeconds' style='display: none;' class='animate'></time>
+
+	<div id='quoteText' class='quote animate'>
+
+		<blockquote></blockquote>
+
+		<cite></cite>
+
+	</div>
+	<div id='updateModal' class='modal animate'>
+
+		<div class='modal-content'>
+			<span class='close'>&times;</span>
+			<span class='title'>UPDATE &#128515;</span>
+			<br>
+			<p class='subtitle'>BY TEAM MUE</p>
+			<img src='https://cdn.discordapp.com/attachments/252071498397777921/593884018840305854/unknown.png' />
+			<h2>Add some colour!</h2>
+			<p>VIVA LAS VEGASSSS</p>
+		</div>
+	</div>
+	<div id='settingsModal' class='modal animate'>
+
+		<div class='modal-content'>
+			<span class='close2'>&times;</span>
+			<span class='settingsTitle'>SETTINGS</span>
+			<li class='items'>
+				<br>
+				<p class='switch'>Theme Switch</p>
+				<label class='switch'>
+					<input id='check' onclick='changeTheme()' type='checkbox'>
+					<span class='slider round'></span>
+				</label>
+			</li>
+			<li class='items'>
+				<p class='switch'>Hide Quotes</p>
+				<label class='switch'>
+					<input id='quoteCheck' type='checkbox' onclick='hideQuotes()'>
+					<span class='slider round'></span>
+				</label>
+			</li>
+			<li class='items'>
+				<p class='switch'>Hide Greeting</p>
+				<label class='switch'>
+					<input id='greetingCheck' type='checkbox' onclick='hideGreeting()'>
+					<span class='slider round'></span>
+				</label>
+			</li>
+			<li class='items'>
+				<p class='switch'>Hide Seconds</p>
+				<label class='switch'>
+					<input id='secondsCheck' type='checkbox' onclick='hideSeconds()'>
+					<span class='slider round'></span>
+				</label>
+			</li>
+			<li class='items'>
+				<p class='switch'>Custom Background</p>
+				<label class='yeetus'>
+				</label>
+		</div>
+		</li>
+	</div>
+	<div class='buttons'>
+		<button class='settings' id='openSettingsModal'><i class='material-icons'>settings</i></button>
+		<button id='openNewsModal' style='display: none;'>Open Update News Module</button>
+	</div>
+</body>
+<script src='./assets/js/base.js'></script>
+<script src='./assets/js/stuff.js'></script>
+</html>

@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "Mue",
+  "version": "0.1",
+  "browser_action": {
+    "default_icon": "./assets/img/icon.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}

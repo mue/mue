@@ -1,0 +1,59 @@
+{
+    "env": {
+      "es6": true,
+      "amd": true,
+      "node": true,
+      "browser": true,
+      "commonjs": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 9,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "forOf": true,
+        "spread": true,
+        "modules": true,
+        "classes": true,
+        "generators": true,
+        "restParams": true,
+        "regexUFlag": true,
+        "regexYFlag": true,
+        "globalReturn": true,
+        "destructuring": true,
+        "impliedStrict": true,
+        "blockBindings": true,
+        "defaultParams": true,
+        "octalLiterals": true,
+        "arrowFunctions": true,
+        "binaryLiterals": true,
+        "templateStrings": true,
+        "superInFunctions": true,
+        "unicodeCodePointEscapes": true,
+        "objectLiteralShorthandMethods": true,
+        "objectLiteralComputedProperties": true,
+        "objectLiteralDuplicateProperties": true,
+        "objectLiteralShorthandProperties": true
+      }
+    },
+    "plugins": [],
+    "rules": {
+      "semi": "error",
+      "indent": [ 0, 2 ],
+      "strict": "off",
+      "eqeqeq": "error",
+      "no-var": "warn",
+      "no-undef": "warn",
+      "comma-dangle": "warn",
+      "no-dupe-args": "warn",
+      "no-dupe-keys": "warn",
+      "require-await": "warn",
+      "no-global-assign": "warn",
+      "no-duplicate-imports": "error",
+      "no-dupe-class-members": "error"
+    },
+    "globals": {
+        "_config": false,
+        "console": false
+    }
+}
