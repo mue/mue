@@ -9,6 +9,8 @@
 
 Fast, open and free-to-use new tab page for most modern browsers.
 
+*This is the code for the extension. If you are looking for the website code, please look [here](https://github.com/TurboMarshmello/muetab.xyz).*
+
 ## Features
 * Fast and free
 * Supports multiple browsers
