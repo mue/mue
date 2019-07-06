@@ -14,6 +14,8 @@ Fast, open and free-to-use new tab page for most modern browsers.
 * Supports multiple browsers
 * Actively developed and opensource
 * Multiple language support
+* Settings feature - enable/disable features!
+* Search bar, update modal, copy button and more!
 
 ## Installation
 ### Chrome
@@ -95,7 +97,7 @@ Development/Other: Read the [Development](#development) section.
 
 ## Credits
 
-[TurboMarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea
+[TurboMarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea, BIG HELP WITH THE SETTINGS, SEARCH BAR AND OTHER STUFF
 
 [Pexels](https://pexels.com) - Stock photos used
 
