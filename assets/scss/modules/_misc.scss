@@ -1,0 +1,41 @@
+/* Body */
+html, body { height: 100%; }
+body {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+
+	margin: 0;
+
+	background-size: cover;
+	background-position: 50%;
+	background-color: black; /* Prevent white flash on page load */
+
+	font-family: 'Open Sans';
+	color: white;
+
+	overflow: hidden;
+	
+    -moz-user-select: none; /* Firefox */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+/* Shadow */
+:root {
+	--shadow-color: #111111CC;
+}
+
+.greeting,
+time,
+.quote {
+	position: absolute;
+	filter: drop-shadow(var(--shadow-shift) var(--shadow-shift) 0 var(--shadow-color));
+}
+
+/* Selection */
+::selection {
+    background: #FF4F4E;
+    color: #fff;
+}
