@@ -29,10 +29,9 @@ Link: [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/mue)
 
 Development: Read the [Development](#development) section.
 ### Opera/Other
-Opera Link: [GitHub Releases](https://github.com/ohlookitsderpy/Mue/releases)
+Link: [GitHub Releases](https://github.com/ohlookitsderpy/Mue/releases)
 
 Development/Other: Read the [Development](#development) section.
-
 ### Development
 <h5>Requirements</h5>
 <ol>

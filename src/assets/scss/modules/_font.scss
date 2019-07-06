@@ -16,28 +16,40 @@
 █████████████████████████████████████████████████████████████
 */
 
-/* Greeting */
-
-.greeting {
-	text-shadow: 0 0 25px rgba(0,0,0,0.3);
-	font-size: 3.25rem;
-    padding-bottom: 10em;
-    font-weight: bold;
-    letter-spacing: 2px;
+/* fallback */
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../font/MaterialIcons-Regular.woff2") format("woff2")
 }
 
-/* Time */
-
-time {
-	text-shadow: 0 0 25px rgba(0,0,0,0.3);
-	font-size: 12rem;
-	font-weight: bold;
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -moz-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+    -moz-osx-font-smoothing: grayscale
 }
 
-#withSeconds, #withoutSeconds, #greetingText {
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+@font-face {
+    font-family: "Open Sans";
+    src: url("../font/opensans-regular-webfont.woff2") format("woff2"),
+        url("../font/opensans-regular-webfont.woff") format("woff");
+    src: url("../font/roboto-v18-latin-regular.woff2") format("woff2"),
+}
+
+i.material-icons {
+    font-size: 30px;
+    display: inline;
+    color: #fff
 }
