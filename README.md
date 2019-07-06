@@ -31,13 +31,12 @@ Development: Read the [Development](#development) section.
 ### Opera/Other
 Link: [GitHub Releases](https://github.com/ohlookitsderpy/Mue/releases)
 
-Development: Read the [Development](#development) section.
-
+Development/Other: Read the [Development](#development) section.
 ### Development
 <h5>Requirements</h5>
 <ol>
-  <li>Git (optional)</li>
-  <li>Node.js</li>
+  <li><a href='https://git-scm.com'>Git</a> (optional)</li>
+  <li><a href='https://nodejs.org'>Node.js</a></li>
   <li>A suitable browser</li>
 </ol>
 <h5>Starting</h5>
@@ -107,7 +106,7 @@ Development: Read the [Development](#development) section.
 ### Translations
 [ohlookitsderpy](https://github.com/ohlookitsderpy) - English (Quotes and Messages)
 
-[Yanderella](https://github.com/Chivi19) - Italian (Quotes and Messages)
+[Yanderella](https://github.com/tomiedev) - Italian (Quotes and Messages)
 
 Pepehound - Spanish (Quotes and Messages)
 
@@ -115,7 +114,7 @@ Candystick - Portuguese (Some Quotes)
 
 [PassTheWessel](https://github.com/PassTheWessel) - Dutch (Messages)
 
-[Yanderella](https://github.com/Chivi19) and [ohlookitsderpy](https://github.com/ohlookitsderpy) - French (Messages)
+[Yanderella](https://github.com/tomiedev) and [ohlookitsderpy](https://github.com/ohlookitsderpy) - French (Messages)
 
 [untocodes](https://github.com/untocodes) - Finnish and German (Messages)
 

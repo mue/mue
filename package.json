@@ -9,9 +9,9 @@
         "js-watch": "webpack --progress --watch"
     },
     "devDependencies": {
-        "eslint": "6.0.0",
-        "sass": "1.21.0",
-        "webpack": "4.35.0",
+        "eslint": "6.0.1",
+        "sass": "1.22.2",
+        "webpack": "4.35.2",
         "webpack-cli": "3.3.4"
     }
 }

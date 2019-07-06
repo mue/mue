@@ -71,11 +71,11 @@ module.exports = class Func {
                 document.querySelector('blockquote').innerHTML = `"${data.quote}"`;
                 document.querySelector('cite').innerHTML = data.author;
             });*/
-            if (util.contains.call(codes.itcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.it[id]}"`; // Italian
-            if (util.contains.call(codes.ptcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`; // Portuguese
-            if (util.contains.call(codes.spcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.sp[id]}"`; // Spanish
-            else document.querySelector('blockquote').innerHTML = `"${quotes.eng[id]}"`; // English
-            document.querySelector('cite').innerHTML = quotes.authors[id];
+        if (util.contains.call(codes.itcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.it[id]}"`; // Italian
+        if (util.contains.call(codes.ptcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`; // Portuguese
+        if (util.contains.call(codes.spcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.sp[id]}"`; // Spanish
+        else document.querySelector('blockquote').innerHTML = `"${quotes.eng[id]}"`; // English
+        document.querySelector('cite').innerHTML = quotes.authors[id];
     }
 
     static setTime() {
