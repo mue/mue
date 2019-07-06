@@ -1,23 +1,30 @@
-
-
 a {
     color: #ffffff;
 }
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-h1, h2, h3, p {
+img {
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+h1,
+h2,
+h3,
+p {
     color: #ffffff;
 }
 
@@ -26,25 +33,31 @@ h1, h2, h3, p {
     margin: auto;
     padding: 30px;
     width: 450px;
-    max-height: 800px;
+    max-height: 600px;
     overflow-y: auto;
 }
 
-.title, .close, .settingsTitle, .close2 {
+.title,
+.close,
+.settingsTitle,
+.close2 {
     display: inline;
 }
+
 .title {
     color: #ffffff;
     float: left;
     font-size: 20px;
     font-weight: bold;
 }
+
 .settingsTitle {
     color: #ffffff;
     float: left;
     font-size: 30px;
     font-weight: bold;
 }
+
 p.subtitle {
     color: #ffffff;
     float: left;
@@ -52,6 +65,7 @@ p.subtitle {
     font-weight: bold;
     margin-top: 10px;
 }
+
 .close {
     color: #ffffff;
     float: right;
@@ -59,11 +73,17 @@ p.subtitle {
     font-weight: bold;
 }
 
-label.switch, p.switch {
-  display: inline;
+.title {
+    float: left;
 }
+
+label.switch,
+p.switch {
+    display: inline;
+}
+
 label.switch {
-  float: right;
+    float: right;
 }
 
 .close:hover,
@@ -74,42 +94,31 @@ label.switch {
 }
 
 .close2 {
-  color: #ffffff;
-  float: right;
-  font-size: 30px;
-  font-weight: bold;
+    color: #ffffff;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
 }
+
 .close2:hover,
 .close2:focus {
-  color: #bdc3c7;
-  text-decoration: none;
-  cursor: pointer;
+    color: #bdc3c7;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
     width: 5px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background: #2d3436;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #34495e;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #2c3e50;
-}
-
-.drop-btn {
-  color: #fff;
-}
-
-.dropdown {
-   background: #2d3436;
-   color: #fff;
 }

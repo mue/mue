@@ -42,34 +42,40 @@ module.exports = class Func {
 
     static setRandBg() {
         document.body.classList.add(util.pickFromArray(bg));
-        /*var getJSON = function(url, callback) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.responseType = 'json';
-            xhr.onload = function() {
-              var status = xhr.status;
-              if (status === 200) {
-                callback(null, xhr.response);
-              } else {
-                callback(status, xhr.response);
-              }
-            };
-            xhr.send();
-        };
+        /*util.getJSON(`https://api.muetab.xyz/getImage?category=Outdoors`,
+            (err, data) => {
+                document.body.style.background = `#f3f3f3 url('${data.file}') !important`;
+            });*/
+    }
 
-        getJSON(`https://mueapi.derpyenterprises.org/getImage?category=Outdoors`,
-function(err, data) {
-  document.body.style.background = `url('${data.file}') !important`;
-});*/
+    static setWithoutSeconds() {
+        const dateNoSec = new Date(),
+            time = [
+                util.formatTimeUnit(dateNoSec.getHours()),
+                util.formatTimeUnit(dateNoSec.getMinutes())
+            ];
+        document.getElementById('withoutSeconds').innerHTML = time.join(':');
     }
 
     static setRandQuote() {
         const id = util.getRandIndex(quotes.authors);
-        if (util.contains.call(codes.itcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.it[id]}"`; // Italian
-        if (util.contains.call(codes.ptcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`; // Portuguese
-        if (util.contains.call(codes.spcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.sp[id]}"`; // Spanish
-        else document.querySelector('blockquote').innerHTML = `"${quotes.eng[id]}"`; // English
-        document.querySelector('cite').innerHTML = quotes.authors[id];
+        /*util.getJSON(`https://api.muetab.xyz/getQuote`,
+            (err, data) => {
+                if (err) {
+                    if (util.contains.call(codes.itcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.it[id]}"`; // Italian
+                    if (util.contains.call(codes.ptcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`; // Portuguese
+                    if (util.contains.call(codes.spcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.sp[id]}"`; // Spanish
+                    else document.querySelector('blockquote').innerHTML = `"${quotes.eng[id]}"`; // English
+                    document.querySelector('cite').innerHTML = quotes.authors[id];
+                }
+                document.querySelector('blockquote').innerHTML = `"${data.quote}"`;
+                document.querySelector('cite').innerHTML = data.author;
+            });*/
+            if (util.contains.call(codes.itcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.it[id]}"`; // Italian
+            if (util.contains.call(codes.ptcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.pt[id]}"` || `"${quotes.eng[id]}"`; // Portuguese
+            if (util.contains.call(codes.spcodes, nal)) document.querySelector('blockquote').innerHTML = `"${quotes.sp[id]}"`; // Spanish
+            else document.querySelector('blockquote').innerHTML = `"${quotes.eng[id]}"`; // English
+            document.querySelector('cite').innerHTML = quotes.authors[id];
     }
 
     static setTime() {
@@ -81,6 +87,6 @@ function(err, data) {
             ];
         // Joins all of the array elements into a string using the ':' separator
         // Example: [16, 32, 03] -> "16:32:03"
-        document.querySelector('time').innerHTML = time.join(':');
+        document.getElementById('withSeconds').innerHTML = time.join(':');
     }
 };

@@ -22,47 +22,50 @@
 <head>
 	<meta charset='utf-8'>
 	<meta name='viewport' content='width=device-width'>
-	<link rel='stylesheet' type='text/css' href='./assets/css/light.css' />
-	<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
 
 	<title>New Tab</title>
 
+	<link href='./assets/css/light.css' rel='stylesheet'>
 	<link href='./assets/css/base.css' rel='stylesheet'>
 	<link href='./assets/css/animate.css' rel='stylesheet'>
-	<style>
-		.modal {
-			display: none;
-		}
-	</style>
-
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
 
 </head>
 
-<body>
-
-
+<body id="body">
 	<div id='greetingText' class='greeting animate'></div>
 
 	<time id='withSeconds' class='animate'></time>
-	<time id='withoutSeconds' style='display: none;' class='animate'></time>
+	<time id='withoutSeconds'class='animate'></time>
 
 	<div id='quoteText' class='quote animate'>
 
 		<blockquote></blockquote>
 
 		<cite></cite>
+		<button class='copyButton' onclick="copyQuote()" type='submit'><i class="material-icons">link</i></button>
 
 	</div>
 	<div id='updateModal' class='modal animate'>
 
 		<div class='modal-content'>
 			<span class='close'>&times;</span>
-			<span class='title'>UPDATE &#128515;</span>
+			<span id='title' class='title'>UPDATE -  SETTINGS + MORE</span>
 			<br>
-			<p class='subtitle'>BY TEAM MUE</p>
-			<img src='https://cdn.discordapp.com/attachments/252071498397777921/593884018840305854/unknown.png' />
-			<h2>Add some colour!</h2>
-			<p>VIVA LAS VEGASSSS</p>
+			<br>
+			<p class='subtitle'>BY TEAM MUE • 05/07/2019</p>
+			<img src="assets/img/updatenewlogo.png">
+			<p class='subtitle'>New Mue Logo</p>
+			<br>
+			<br>
+			<h2>First Major Update! (Settings, search and more)</h2>
+			<p><b>The Mue feature update is finally here</b> - in this update we have added a lot of features such as settings, search bar, and customization, the latter of which was requested by many users. <br> In the settings, you can now disable or enable features such as the seconds appearing or the custom quotes. To do this just go to the top right of the page and there's a settings icon when you click that will be a popup modal which you can view the settings on. <br> Below is a screenshot of the settings!</p> 
+			<img src="assets/img/muesettings.png">
+			<p class='subtitle'>Picture of settings</p>
+			<br>
+			<br>
+			<p>The next new feature is the search bar; like the name suggests, you can search things using the search bar; currently there is only duckduckgo but soon we'll be adding inferior search engines such as Google, Bing, Yahoo and even Ask Jeeves which no one uses in 2019. <br>Another new feature, now using our brand new API which is on the new <a href="https://muetab.xyz">website</a> at muetab.xyz is the renewed random quotes - you can now get a random quote from the API where if you have an internet connection you will be able to see around the quote every time you refresh the page and will be updated on the clouds even if you never update extension which you should by the way you still get all the brand new quotes.</p>
 		</div>
 	</div>
 	<div id='settingsModal' class='modal animate'>
@@ -70,18 +73,26 @@
 		<div class='modal-content'>
 			<span class='close2'>&times;</span>
 			<span class='settingsTitle'>SETTINGS</span>
+			<br>
+			<br>
 			<li class='items'>
-				<br>
 				<p class='switch'>Theme Switch</p>
 				<label class='switch'>
-					<input id='check' onclick='changeTheme()' type='checkbox'>
+					<input id='check' type='checkbox' onclick='window.changeTheme()'>
+					<span class='slider round'></span>
+				</label>
+			</li>
+			<li class='items'>
+				<p class='switch'>Hide Search Bar</p>
+				<label class='switch'>
+					<input id='searchBarCheck' type='checkbox' onclick='hideSearchBar()'>
 					<span class='slider round'></span>
 				</label>
 			</li>
 			<li class='items'>
 				<p class='switch'>Hide Quotes</p>
 				<label class='switch'>
-					<input id='quoteCheck' type='checkbox' onclick='hideQuotes()'>
+					<input id='quoteCheck' type='checkbox' onclick='hideQuotes()' >
 					<span class='slider round'></span>
 				</label>
 			</li>
@@ -99,18 +110,53 @@
 					<span class='slider round'></span>
 				</label>
 			</li>
+			<!--
 			<li class='items'>
-				<p class='switch'>Custom Background</p>
-				<label class='yeetus'>
-				</label>
-		</div>
+				<div class="sliderContainer">
+					<p class='switch'>Background Blur</p>
+					<input type='range' min='0' max='100' value='0' class="blurslider" id='slider'>
+					<p class='switch'><span id="blurValue"></span>×</p>
+				  </div>
+			</li>
+			 <li class='items'>
+				<p class='switch'>Search Engine</p>
+				<select class="dropdown" id ="searchdropdown">
+					<option value="volvo">DuckDuckGo</option>
+					<option value="saab">Google</option>
+					<option value="mercedes">Ask</option>
+					<option value="audi">Ecosia</option>
+				  </select>
 		</li>
+		<li class='items'>
+			<p class='switch'>Font</p>
+			<select class="dropdown" id="font_dropdown">
+				<option value="opensans" onclick="setFontOP()">Open Sans</option>
+				<option value="roboto" onclick="setFontROB()">Roboto</option>
+			  </select>
+	</li>
+	-->
+	</div>
 	</div>
 	<div class='buttons'>
 		<button class='settings' id='openSettingsModal'><i class='material-icons'>settings</i></button>
-		<button id='openNewsModal' style='display: none;'>Open Update News Module</button>
+		<button class='news' id='openUpdateModal' onclick="setFontROB()"><i class='material-icons'>new_releases</i></button>
+	</div>
+	<div id='searchBar' class='search-bar'>
+		<form id='searchBar' class="searchbarform" action='https://google.com' onsubmit='search()'>
+			<input type='text' placeholder='SEARCH' style='color: #000000;' name='q' id='searchText' class='searchText' />
+			<button class='searchbutton' type='submit'><i class='material-icons'>search</i></button>
+		  </form>
 	</div>
 </body>
+<script>
+function copyQuote() {
+    const quote = document.createRange();
+    quote.selectNode(document.getElementById('quoteText'));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(quote);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+}
+</script>
 <script src='./assets/js/base.js'></script>
-<script src='./assets/js/stuff.js'></script>
 </html>
