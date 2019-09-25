@@ -1,9 +1,0 @@
-/*!
-   * animate.css -http://daneden.me/animate
-   * Version - 3.7.0
-   * Licensed under the MIT license - http://opensource.org/licenses/MIT
-   *
-   * Copyright (c) 2018 Daniel Eden
-   * Modified by ohlookitsderpy
-*/
-@-webkit-keyframes animate{from{opacity:0;-webkit-transform:translate3d(0, 100%, 0);transform:translate3d(0, 100%, 0)}to{opacity:1;-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}}@keyframes animate{from{opacity:0;-webkit-transform:translate3d(0, 100%, 0);transform:translate3d(0, 100%, 0)}to{opacity:1;-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}}.animate{-webkit-animation-name:amimated;animation-name:animate;-webkit-animation-duration:0.75s;animation-duration:0.75s;-webkit-animation-fill-mode:both;animation-fill-mode:both}

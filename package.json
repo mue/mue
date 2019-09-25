@@ -1,17 +1,43 @@
 {
-    "name": "mue",
-    "description": "Fast, open and free-to-use new tab page for most modern browsers",
-    "author": "ohlookitsderpy",
-    "license": "MIT",
-    "repository": "https://github.com/ohlookitsderpy/Mue",
-    "scripts": {
-        "sass-watch": "sass --watch src/assets/scss:src/assets/css --style compressed",
-        "js-watch": "webpack --progress --watch"
-    },
-    "devDependencies": {
-        "eslint": "6.0.1",
-        "sass": "1.22.5",
-        "webpack": "4.35.3",
-        "webpack-cli": "3.3.6"
-    }
+  "name": "mue",
+  "author": "ohlookitsderpy",
+  "description": "Fast, open and free-to-use new tab page for most modern browsers",
+  "license": "MIT",
+  "version": "0.1.0",
+  "dependencies": {
+    "@material-ui/core": "^4.4.1",
+    "@material-ui/icons": "^4.4.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1",
+    "unfetch": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.22.12"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "sass": "sass --watch src/scss:src/css --style compressed",
+    "start-all": "npm-run-all -p start sass"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

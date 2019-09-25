@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Lexend Deca';
+  }
+  
+  @font-face {
+    font-family: 'Lexend Deca'; /* IE9 Compat Modes */
+    src: url('/src/fonts/LexendDeca-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/src/fonts/LexendDeca-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+         url('/src/fonts/LexendDeca.ttf')  format('truetype'); /* Safari, Android, iOS */
+  }
+  code {
+    font-family: 'Lexend Deca';
+  }

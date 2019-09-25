@@ -1,8 +1,0 @@
-# Directories
-.vscode/
-node_modules/
-
-# Files
-yarn.lock
-yarn-error.log
-package-lock.json
