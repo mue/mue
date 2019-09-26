@@ -9,15 +9,18 @@
 
 Fast, open and free-to-use new tab page for most modern browsers.
 
-*This is the code for the extension. If you are looking for the website code, please look [here](https://github.com/TurboMarshmello/muetab.xyz).*
+*This is the code for the extension. If you are looking for the website code, please go [here](https://github.com/TurboMarshmello/muetab.xyz).*
 
 ## Features
 * Fast and free
 * Supports multiple browsers
 * Actively developed and opensource
-* Multiple language support
-* Settings feature - enable/disable features!
-* Search bar, update modal, copy button and more!
+* Automatically updating API (with no tracking!) with new photos and offline mode
+* ~~Multiple language support~~
+* ~~Settings feature - enable/disable features!~~
+* Search bar, ~~update modal, copy button and more!~~
+
+* Mue has been recently rewritten with React and is missing the features that are crossed out *
 
 ## Installation
 ### Chrome
@@ -49,10 +52,8 @@ Development/Other: Read the [Development](#development) section.
       download</b> and click <b>Download ZIP</b>)
   <li> Open a terminal and run these commands: (in the Mue directory)
   <li> <code>yarn</code> (or <code>npm install</code>)
-  <li> <code>yarn run sass-watch</code> (or <code>npm run sass-watch</code>)
-  <li> Open another terminal and run this command: (in the Mue directory)
-  <li> <code>yarn run js-watch</code> (or <code>npm run js-watch</code>)
-  <li> Start developing! (See the sections below for how to set it up with your browser)
+  <li> <code>yarn start</code> (or <code>npm start</code>)
+  <li> Start developing! (See the sections below for how to set up a developer copy of the extension.)
 </ol>
 <details>
   <summary><b>Chrome</b> (Click to expand)</summary>
@@ -98,14 +99,17 @@ Development/Other: Read the [Development](#development) section.
 <img src='assets/screenshot.jpg'>
 
 ## Credits
+### Maintainers
+[ohlookitsderpy](https://github.com/ohlookitsderpy)
 
-[TurboMarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea, BIG HELP WITH THE SETTINGS, SEARCH BAR AND OTHER STUFF
+[TurboMarshmello](https://github.com/TurboMarshmello)
 
-[Pexels](https://pexels.com) - Stock photos used
+### Other
+[TurboMarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea
+
+[Pexels](https://pexels.com) - Stock photos used for offline mode
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
-
-[Animate.css](https://daneden.github.io/animate.css) - Portions of code used to add animations
 
 ### Translations
 [ohlookitsderpy](https://github.com/ohlookitsderpy) - English (Quotes and Messages)
