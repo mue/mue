@@ -10,7 +10,6 @@ export default class Search extends React.Component {
           <h1 id='photographer'></h1>
           <div id='backgroundCredits' class='tooltip'><RoomIcon classname='locationicon'/>
             <span class='tooltiptext' id='location'></span>
-            
           </div>
      </div>
     );

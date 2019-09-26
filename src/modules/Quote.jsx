@@ -18,8 +18,8 @@ export default class Quote extends React.Component {
       this.setState({ quote: data.quote, author: data.author });
     } catch (e) {
       const randomInt = (min, max) => { return Math.floor(Math.random() * (max - min + 1)) + min; };
-      const num      = randomInt(1, 20);
-      this.setState({ quote: quotes[num].quote, author: quotes[num].author })
+      const num       = randomInt(1, 20);
+      this.setState({ quote: quotes[num].quote, author: quotes[num].author });
     }
   }
 

@@ -3,7 +3,7 @@ import React from 'react';
 const checkTime = (i) => {
   if (i < 10) i = '0' + i;
   return i;
-}
+};
 
 export default class Clock extends React.Component {
   constructor(...args) {
@@ -16,9 +16,9 @@ export default class Clock extends React.Component {
 
   startTime() {
     const today = new Date();
-    let h = today.getHours();
-    let ampm = h >= 12 ? 'PM' : 'AM';
-    const m = checkTime(today.getMinutes());
+    let h       = today.getHours();
+    const ampm  = h >= 12 ? 'PM' : 'AM';
+    const m     = checkTime(today.getMinutes());
     // const s = checkTime(today.getSeconds());
 
     if (h > 12) h = h - 12;
