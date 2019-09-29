@@ -1,0 +1,23 @@
+.App-quote {
+  font-size: 0.8em;
+  text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (min-width: 600px) {
+  .App-quote {
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+}
+
+.App-quote-author {
+  font-size: 0.9em;
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+i.material-icons,
+h1.App-quote-author {
+  display: inline;
+}

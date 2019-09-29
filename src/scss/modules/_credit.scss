@@ -1,0 +1,75 @@
+#location {
+  margin-bottom: -10px;
+}
+
+#location,
+#photographer {
+  font-size: calc(10px + 1.2vmin);
+  text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  text-overflow: ellipsis;
+}
+
+#photographer {
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
+  width: 1000px;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+}
+
+.personicon,
+.locationicon {
+  font-size: calc(10px + 1.2vmin);
+}
+
+.MuiSvgIcon-root {
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  width: 100em;
+  height: 100em;
+  font-size: 2rem;
+  text-shadow: 0 2px 25px rgba(0, 0, 0, 0.3);
+}
+
+.credits {
+  bottom: 2px;
+  left: 0px;
+  position: absolute;
+  text-align: left;
+  min-width: 50px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+
+  .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 20px;
+    position: absolute;
+    z-index: 1;
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    margin-left: -60px;
+    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+    opacity: 0;
+    transition: opacity 1s;
+  }
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
