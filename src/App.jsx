@@ -36,29 +36,26 @@ export default class App extends React.Component {
   // Set background: Attempt to get one from the API first, and if that fails then use the offline ones.
   async getAndSetBackground() {
     const root = document.getElementById('root');
+    
     try {
       let data = await Fetch('https://api.muetab.xyz/getImage?category=Outdoors');
       data     = await data.json(); 
 
       const checkRepeat = getCookie('backgroundimageurl');
       document.getElementById('photographer').innerText = `Photo by ${data.photographer}`;
-      let location = data.location;
-      if (data.location === 'Lake') location = 'Lake District';
-      if (data.location === 'Wetland') location = 'Wetland Park';
-      if (data.location === 'EastYorkshire') location = 'East Yorkshire';
-      document.getElementById('location').innerText = `${location}`;
+      document.getElementById('location').innerText     = `${data.location}`;
 
       if (checkRepeat !== root.style.backgroundImage) root.style.backgroundImage = `url(${data.file})`;
       else {
         /*let data = await Fetch('https://api.muetab.xyz/getImage?category=Outdoors');
         data = await data.json();*/ 
-        document.cookie = 'backgroundimageurl; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie            = 'backgroundimageurl; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         root.style.backgroundImage = `url(${data.file})`;
-        document.cookie = `backgroundimageurl=${data.file}`;
+        document.cookie            = `backgroundimageurl=${data.file}`;
       }
     } catch (e) {
       document.getElementById('backgroundCredits').style.display = 'none';
-      document.getElementById('photographer').innerText = 'Photo from Pexels';
+      document.getElementById('photographer').innerText          = 'Photo from Pexels';
       root.style.backgroundImage = `url(../offline-images/${randomInt(1, 25)}.jpeg)`;
     }
   }

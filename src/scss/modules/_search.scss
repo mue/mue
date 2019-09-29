@@ -6,14 +6,19 @@
     flex-direction: row;
     display: block;
     color: #ffff;
+    font-family: 'Lexend Deca';
+
     button {
         cursor: pointer;
         outline: none;
+
         i.material-icons {
             text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
         }
+
         display: inline;
     }
+
     input[type=text] {
         font-size: calc(5px + 1.2vmin);
         background: none;
@@ -23,13 +28,12 @@
         position: absolute;
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
         z-index: 1;
-    }  
+    }
 }
 
 .input.searchText {
     border: none;
 }
-
 
 .searchbarform {
     display: flex;

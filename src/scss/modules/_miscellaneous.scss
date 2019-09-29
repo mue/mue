@@ -1,18 +1,20 @@
 #center {
-    margin-left: 2vw;
-    margin-right: 2vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    text-align: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  text-align: center;
 }
 
 ::placeholder {
   color: #ffffff;
-  opacity: 1; /* Firefox */
+  opacity: 1;
+  /* Firefox */
 }
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: #ffffff;
 }
