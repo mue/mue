@@ -128,7 +128,7 @@ Candystick - Portuguese (Some Quotes)
 
 [dondish](https://github.com/dondish) - Hebrew and Russian (Messages)
 
-[MrSheldon](https://github.com/MrSheldon) - Arabic and Swedish (Messages)
+[Roee Lupo (MrSheldon)](https://github.com/MrSheldon) - Arabic and Swedish (Messages)
 
 *Feel free to pull request with other translations!*
 
