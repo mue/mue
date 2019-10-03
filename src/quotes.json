@@ -1,82 +1,102 @@
 {
-    "1": {
-        "author": "Robert De Niro",
-        "quote": "Time goes on. So whatever you’re going to do, do it. Do it now. Don’t wait."
-    },
-    "2": {
-        "author": "Walt Disney",
-        "quote": "All our dreams can come true, if we have the courage to pursue them."
-    },
-    "3": {
-        "author": "Confucius",
-        "quote": "It does not matter how slowly you go as long as you do not stop."
-    },
-    "4": {
-        "author": "Roy T. Bennett",
-        "quote": "Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine."
-    },
-    "5": {
-        "author": "Wayne Dyer",
-        "quote": "If you believe it will work out, you’ll see opportunities. If you believe it won’t, you will see obstacles."
-    },
-    "6": {
-        "author": "George Addair",
-        "quote": "Everything you’ve ever wanted is on the other side of fear."
-    },
-    "7": {
-        "author": "Winston Churchill",
-        "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts."
-    },
-    "8": {
-        "author": "Paulo Coelho",
-        "quote": "There is only one thing that makes a dream impossible to achieve: the fear of failure"
-    },
-    "9": {
-        "author": "Brian Tracy",
-        "quote": "Your true success in life begins only when you make the commitment to become excellent at what you do."
-    },
-    "10": {
-        "author": "Chantal Sutherland",
-        "quote": "Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going."
-    },
-    "11": {
-        "author": "Les Brown",
-        "quote": "Too many of us are not living our dreams because we are living our fears."
-    },
-    "12": {
-        "author": "Bob Riley",
-        "quote": "Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed."
-    },
-    "13": {
-        "author": "Jack Canfield",
-        "quote": "If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily."
-    },
-    "14": {
-        "author": "Napolean Hill",
-        "quote": "Whatever the mind can conceive and believe, it can achieve."
-    },
-    "15": {
-        "author": "Jim Rohn",
-        "quote": "Don’t wish it were easier. Wish you were better."
-    },
-    "16": {
-        "author": "Serena Williams",
-        "quote": "A champion is defined not by their wins but by how they can recover when they fall."
-    },
-    "17": {
-        "author": "Sheryl Sandberg",
-        "quote": "Motivation comes from working on things we care about."
-    },
-    "18": {
-        "author": "Reese Witherspoon",
-        "quote": "With the right kind of coaching and determination you can accomplish anything."
-    },
-    "19": {
-        "author": "Hazrat Inayat Khan",
-        "quote": "Some people look for a beautiful place. Others make a place beautiful."
-    },
-    "20": {
-        "author": "Albert Einstein",
-        "quote": "Life is like riding a bicycle. To keep your balance, you must keep moving."
-    }
+"1": {
+"author": "Robert De Niro",
+"quote": "Time goes on. So whatever you’re going to do, do it. Do it now. Don’t wait."
+},
+"2": {
+"author": "Walt Disney",
+"quote": "All our dreams can come true, if we have the courage to pursue them."
+},
+"3": {
+"author": "Confucius",
+"quote": "It does not matter how slowly you go as long as you do not stop."
+},
+"4": {
+"author": "Roy T. Bennett",
+"quote": "Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine."
+},
+"5": {
+"author": "Wayne Dyer",
+"quote": "If you believe it will work out, you’ll see opportunities. If you believe it won’t, you will see obstacles."
+},
+"6": {
+"author": "George Addair",
+"quote": "Everything you’ve ever wanted is on the other side of fear."
+},
+"7": {
+"author": "Winston Churchill",
+"quote": "Success is not final, failure is not fatal: it is the courage to continue that counts."
+},
+"8": {
+"author": "Paulo Coelho",
+"quote": "There is only one thing that makes a dream impossible to achieve: the fear of failure"
+},
+"9": {
+"author": "Brian Tracy",
+"quote": "Your true success in life begins only when you make the commitment to become excellent at what you do."
+},
+"10": {
+"author": "Chantal Sutherland",
+"quote": "Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going."
+},
+"11": {
+"author": "Les Brown",
+"quote": "Too many of us are not living our dreams because we are living our fears."
+},
+"12": {
+"author": "Bob Riley",
+"quote": "Hard times don’t create heroes. It is during the hard times when the ‘hero’ within us is revealed."
+},
+"13": {
+"author": "Jack Canfield",
+"quote": "If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily."
+},
+"14": {
+"author": "Napolean Hill",
+"quote": "Whatever the mind can conceive and believe, it can achieve."
+},
+"15": {
+"author": "Jim Rohn",
+"quote": "Don’t wish it were easier. Wish you were better."
+},
+"16": {
+"author": "Serena Williams",
+"quote": "A champion is defined not by their wins but by how they can recover when they fall."
+},
+"17": {
+"author": "Sheryl Sandberg",
+"quote": "Motivation comes from working on things we care about."
+},
+"18": {
+"author": "Reese Witherspoon",
+"quote": "With the right kind of coaching and determination you can accomplish anything."
+},
+"19": {
+"author": "Hazrat Inayat Khan",
+"quote": "Some people look for a beautiful place. Others make a place beautiful."
+},
+"20": {
+"author": "Albert Einstein",
+"quote": "Life is like riding a bicycle. To keep your balance, you must keep moving."
+},
+"21": {
+"author": "The Way Get Started Is To Quit Talking And Begin Doing.",
+"quote": "Walt Disney"
+}, 
+"22": {
+"author": "The Pessimist Sees Difficulty In Every Opportunity. The Optimist Sees Opportunity In Every Difficulty.",
+"quote": "Winston Churchill"
+},
+"23": {
+"author": "Don’t Let Yesterday Take Up Too Much Of Today.",
+"quote": "Will Rogers"
+},
+"24": {
+"author": "It’s Not Whether You Get Knocked Down, It’s Whether You Get Up.",
+"quote": "Vince Lombardi"
+},
+"25": {
+"author": "If You Are Working On Something That You Really Care About, You Don’t Have To Be Pushed. The Vision Pulls You.",
+"quote": "Steve Jobs"
+}
 }
