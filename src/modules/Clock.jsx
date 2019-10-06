@@ -23,7 +23,7 @@ export default class Clock extends React.Component {
 
     if (h > 12) h = h - 12;
 
-    if (h < 12) this.setState({ date: '0' + h + ':' + m, ampm: ampm });
+    if (h < 12) this.setState({ date: h + ':' + m, ampm: ampm });
     else this.setState({ date: h + ':' + m, ampm: ampm });
 
     this.timeout = setTimeout(() => this.startTime(), 500);
