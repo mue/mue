@@ -1,0 +1,7 @@
+# Directories
+node_modules/
+build/
+
+# Files
+package-lock.json
+yarn.lock
