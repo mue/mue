@@ -1,10 +1,5 @@
 import React from 'react';
 
-const checkTime = (i) => {
-  if (i < 10) i = '0' + i;
-  return i;
-};
-
 export default class Clock extends React.Component {
   constructor(...args) {
     super(...args);
@@ -18,12 +13,12 @@ export default class Clock extends React.Component {
     const today = new Date();
     let h       = today.getHours();
     const ampm  = h >= 12 ? 'PM' : 'AM';
-    const m     = checkTime(today.getMinutes());
-    // const s = checkTime(today.getSeconds());
+    const m     = today.getMinutes();
+    // const s = today.getSeconds();
 
     if (h > 12) h = h - 12;
 
-    this.setState({ date: h + ':' + m, ampm: ampm });
+    this.setState({ date: `${('0' + h).slice(-2)}:${('0' + m).slice(-2)}`, ampm: ampm });
 
     this.timeout = setTimeout(() => this.startTime(), 500);
   }
