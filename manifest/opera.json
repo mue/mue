@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Mue",
+    "version": "0.6",
+    "browser_action": {
+        "default_icon": "./android-chrome-512x512.png"
+    },
+    "background": {
+        "scripts": ["./background-opera.js"]
+    },
+    "permissions": [
+        "tabs"
+    ]
+}
