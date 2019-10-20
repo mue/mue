@@ -14,10 +14,10 @@ export default class Background extends React.Component {
 
       root.style.backgroundImage = `url(${data.file})`;
       document.getElementById('photographer').innerText = `Photo by ${data.photographer}`;
-      document.getElementById('location').innerText     = `${data.location}`;   
+      document.getElementById('location').innerText = `${data.location}`;   
     } catch (e) {
       document.getElementById('backgroundCredits').style.display = 'none';
-      document.getElementById('photographer').innerText          = 'Photo from Pexels';
+      document.getElementById('photographer').innerText = 'Photo from Pexels';
       root.style.backgroundImage = `url(../offline-images/${randomInt(1, 25)}.jpeg)`;
     }
   }
