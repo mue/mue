@@ -15,7 +15,7 @@ Fast, open and free-to-use new tab page for most modern browsers.
 * Fast and free
 * Supports multiple browsers
 * Actively developed and opensource
-* Automatically updating API (with no tracking!) with new photos and offline mode
+* Automatically updating API (with no tracking!) with new photos, quotes and offline mode
 * ~~Multiple language support~~
 * ~~Settings feature - enable/disable features!~~
 * Search bar, ~~update modal, copy button and more!~~

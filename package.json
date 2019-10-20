@@ -3,19 +3,19 @@
   "author": "ohlookitsderpy",
   "description": "Fast, open and free-to-use new tab page for most modern browsers.",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "dependencies": {
-    "@material-ui/core": "^4.4.3",
-    "@material-ui/icons": "^4.4.3",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2",
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "3.2.0",
     "unfetch": "^4.1.0"
   },
   "devDependencies": {
     "eslint": "^6.5.0",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.22.12"
+    "sass": "^1.23.0"
   },
   "scripts": {
     "start": "react-scripts start",
