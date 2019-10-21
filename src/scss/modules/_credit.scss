@@ -1,12 +1,12 @@
-#location {
-  margin-bottom: -10px;
-}
-
 #location,
 #photographer {
   font-size: calc(10px + 1.2vmin);
   text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   text-overflow: ellipsis;
+}
+
+#location {
+  margin-bottom: -10px;
 }
 
 #photographer {
@@ -16,15 +16,9 @@
   width: 1000px;
 }
 
-.tooltip {
-  position: absolute;
-  bottom: 15px;
-  left: 10px;
-}
-
-.personicon,
 .locationicon {
   font-size: calc(10px + 1.2vmin);
+  cursor: pointer;
 }
 
 .MuiSvgIcon-root {
@@ -49,6 +43,8 @@
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
+  bottom: 15px;
+  left: 10px;
 
   .tooltiptext {
     visibility: hidden;

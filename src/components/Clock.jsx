@@ -1,3 +1,4 @@
+//* Imports
 import React from 'react';
 
 export default class Clock extends React.Component {
@@ -32,9 +33,9 @@ export default class Clock extends React.Component {
   }
 
   render() {
-    return <h1 className='App-clock'>
+    return <h1 className='clock'>
       {this.state.date}
-      <span className='App-ampm-specifier'>
+      <span className='ampm'>
         {this.state.ampm}  
       </span>
     </h1>;

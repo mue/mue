@@ -1,3 +1,4 @@
+//* Imports
 import React from 'react';
 
 export default class Greeting extends React.Component {
@@ -21,6 +22,6 @@ export default class Greeting extends React.Component {
   }
   
   render() {
-    return <h1 className='App-greeting'>{this.state.greeting}</h1>;
+    return <h1 className='greeting'>{this.state.greeting}</h1>;
   }
 }

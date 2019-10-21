@@ -1,3 +1,12 @@
+body {
+  background: #2f3640;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Lexend Deca';
+  overflow: hidden;
+}
+
 #center {
   margin-left: 2vw;
   margin-right: 2vw;
@@ -11,10 +20,19 @@
 ::placeholder {
   color: #ffffff;
   opacity: 1;
-  /* Firefox */
 }
 
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #ffffff;
+#root {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: grid;
+  color: white;
+}
+
+@font-face {
+  font-family: 'Lexend Deca';
+  src: url('/./fonts/LexendDeca-Regular.woff2') format('woff2');
 }

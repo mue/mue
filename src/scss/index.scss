@@ -1,34 +1,7 @@
+/* Imports */
 @import 'modules/clock';
 @import 'modules/greeting';
 @import 'modules/quote';
 @import 'modules/search';
 @import 'modules/credit';
 @import 'modules/miscellaneous';
-
-#root {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    min-height: 100vh;
-    display: grid;
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-body {
-    background: #2f3640;
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: 'Lexend Deca';
-    overflow: hidden;
-}
-
-@font-face {
-    font-family: 'Lexend Deca';
-    src: url('/./fonts/LexendDeca-Regular.woff2') format('woff2');
-}

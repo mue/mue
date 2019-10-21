@@ -1,16 +1,16 @@
-.App-quote {
+.quote {
   font-size: 0.8em;
   text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (min-width: 600px) {
-  .App-quote {
+  .quote {
     margin-left: 30%;
     margin-right: 30%;
   }
 }
 
-.App-quote-author {
+.quoteauthor {
   font-size: 0.9em;
   letter-spacing: 0.5px;
   margin: 0;
@@ -18,6 +18,6 @@
 }
 
 i.material-icons,
-h1.App-quote-author {
+h1.quoteauthor {
   display: inline;
 }
