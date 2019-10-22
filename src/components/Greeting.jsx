@@ -22,6 +22,8 @@ export default class Greeting extends React.Component {
   }
   
   render() {
-    return <h1 className='greeting'>{this.state.greeting}</h1>;
+    return <h1 className='greeting'>
+      {this.state.greeting}
+    </h1>;
   }
 }

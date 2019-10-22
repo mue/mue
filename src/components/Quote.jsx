@@ -3,9 +3,6 @@ import React from 'react';
 import Fetch from 'unfetch';
 import quotes from '../quotes.json';
 
-// Pick randon number
-const randomInt = (min, max) => { return Math.floor(Math.random() * (max - min + 1)) + min; };
-
 export default class Quote extends React.Component {
   constructor(...args) {
     super(...args);
@@ -21,7 +18,7 @@ export default class Quote extends React.Component {
       data = await data.json();
       this.setState({ quote: data.quote, author: data.author });
     } catch (e) { // ..and if that fails we load one locally
-      const num = randomInt(1, 20);
+      const num = Math.floor(Math.random() * (20 - 1 + 1)) + 1; // Get random number between 1-20
       this.setState({ quote: quotes[num].quote, author: quotes[num].author });
     }
   }

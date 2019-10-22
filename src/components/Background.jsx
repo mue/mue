@@ -2,9 +2,6 @@
 import React from 'react';
 import Fetch from 'unfetch';
 
-// Pick random number
-const randomInt = (min, max) => { return Math.floor(Math.random() * (max - min + 1)) + min; };
-  
 export default class Background extends React.Component {
   async getAndSetBackground() {    
     try { // First we try and get an image from the API...
@@ -17,7 +14,7 @@ export default class Background extends React.Component {
     } catch (e) { // ..and if that fails we load one locally
       document.getElementById('backgroundCredits').style.display = 'none';
       document.getElementById('photographer').innerText = 'Photo from Pexels';
-      document.getElementById('root').style.backgroundImage = `url(../offline-images/${randomInt(1, 25)}.jpeg)`;
+      document.getElementById('root').style.backgroundImage = `url(../offline-images/${Math.floor(Math.random() * (20 - 1 + 1)) + 1})`;
     }
   }
 
