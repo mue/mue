@@ -57,7 +57,7 @@ Development/Other: Read the [Development](#development) section.
 </ol>
 <h2>Building</h5>
 <i>This section is a work in progress, and doesn't include the manual edits you are required to do to get it working without errors. 
-Once I find a method to do it automatically, I will update this section accordingly.</li>
+Once I find a method to do it automatically, I will update this section accordingly.</i>
 <details>
   <summary><b>Chrome</b> (Click to expand)</summary>
   <ol>
