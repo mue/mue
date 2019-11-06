@@ -3,7 +3,7 @@ import React from 'react';
 import Fetch from 'unfetch';
 
 export default class Background extends React.Component {
-  async getAndSetBackground() {    
+  async setBackground() {    
     try { // First we try and get an image from the API...
       let data = await Fetch('https://api.muetab.xyz/getImage?category=Outdoors');
       data = await data.json(); 
@@ -19,7 +19,7 @@ export default class Background extends React.Component {
   }
 
   componentDidMount() {
-    this.getAndSetBackground();
+    this.setBackground();
   }
 
   render() {

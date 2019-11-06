@@ -6,6 +6,7 @@ import Greeting from './components/Greeting';
 import Quote from './components/Quote';
 import Search from './components/Search';
 import Credit from './components/Credit';
+import Navbar from './components/Navbar';
 import './css/index.css';
 
 //* App

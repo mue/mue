@@ -18,8 +18,9 @@ export default class Quote extends React.Component {
       data = await data.json();
       this.setState({ quote: data.quote, author: data.author });
     } catch (e) { // ..and if that fails we load one locally
-      const num = Math.floor(Math.random() * (20 - 1 + 1)) + 1; // Get random number between 1-20
-      this.setState({ quote: quotes[num].quote, author: quotes[num].author });
+      // const num = Math.floor(Math.random() * (20 - 1 + 1)) + 1; // Get random number between 1-20
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      this.setState({ quote: quote.quote, author: quote.author });
     }
   }
 
