@@ -1,4 +1,5 @@
 <img src='assets/logo/logo_horizontal.png'>
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 # Mue
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fba7ad7fc6e14fe0bc2a8d53dbf0bb41)](https://www.codacy.com/app/ohlookitsderpy/Mue?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ohlookitsderpy/Mue&amp;utm_campaign=Badge_Grade)
@@ -140,3 +141,19 @@ Candystick - Portuguese (Some Quotes)
 *Feel free to pull request with other translations!*
 
 and all the contributors <3
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/TurboMarshmello"><img src="https://avatars3.githubusercontent.com/u/25852280?v=4" width="100px;" alt="Turbo Marshmello"/><br /><sub><b>Turbo Marshmello</b></sub></a><br /><a href="https://github.com/ohlookitsderpy/Mue/commits?author=Turbomarshmello" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
