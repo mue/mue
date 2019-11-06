@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "ohlookitsderpy",
+      "name": "David Ralph",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/14052956?v=4",
+      "profile": "https://derpyenterprises.org",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Mue",
+  "projectOwner": "ohlookitsderpy",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
