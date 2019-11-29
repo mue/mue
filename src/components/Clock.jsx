@@ -12,7 +12,7 @@ export default class Clock extends React.Component {
 
   startTime() {
     const t = new Date(); // Get the current date 
-    let h = today.getHours(); // Get hours
+    let h = t.getHours(); // Get hours
     // const s = today.getSeconds();
 
     if (h > 12) h = h - 12; // Forgot what this does, might remove later if it doesn't do anything
