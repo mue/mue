@@ -7,7 +7,7 @@ import Quote from './components/Quote';
 import Search from './components/Search';
 import Credit from './components/Credit';
 import Navbar from './components/Navbar';
-import './css/index.css';
+import './css/index.css'; // Import the compiled Sass
 
 //* App
 export default class App extends React.Component {

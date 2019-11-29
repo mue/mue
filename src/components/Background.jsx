@@ -14,7 +14,7 @@ export default class Background extends React.Component {
     } catch (e) { // ..and if that fails we load one locally
       document.getElementById('backgroundCredits').style.display = 'none';
       document.getElementById('photographer').innerText = 'Photo from Pexels';
-      document.getElementById('root').style.backgroundImage = `url(../offline-images/${Math.floor(Math.random() * (20 - 1 + 1)) + 1})`;
+      document.getElementById('root').style.backgroundImage = `url(../offline-images/${Math.floor(Math.random() * (20 - 1 + 1)) + 1})`; // There are 20 images in the offline-images folder
     }
   }
 
