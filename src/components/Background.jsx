@@ -1,11 +1,10 @@
 //* Imports
 import React from 'react';
-import Fetch from 'unfetch';
 
 export default class Background extends React.Component {
   async setBackground() {    
     try { // First we try and get an image from the API...
-      let data = await Fetch('https://api.muetab.xyz/getImage?category=Outdoors');
+      let data = await fetch('https://api.muetab.xyz/getImage?category=Outdoors');
       data = await data.json(); 
 
       document.getElementById('root').style.backgroundImage = `url(${data.file})`;

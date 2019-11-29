@@ -109,11 +109,9 @@ Once I find a method to do it automatically, I will update this section accordin
 ### Maintainers
 [ohlookitsderpy](https://github.com/ohlookitsderpy)
 
-[TurboMarshmello](https://github.com/TurboMarshmello)
+[TurboMarshmello](https://github.com/TurboMarshmello) (name idea, code contributions)
 
 ### Other
-[TurboMarshmello](https://github.com/TurboMarshmello) - Portions of original code, name idea
-
 [Pexels](https://pexels.com) - Stock photos used for offline mode
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support

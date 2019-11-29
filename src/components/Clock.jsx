@@ -15,7 +15,7 @@ export default class Clock extends React.Component {
     let h = t.getHours(); // Get hours
     // const s = today.getSeconds();
 
-    if (h > 12) h = h - 12; // Forgot what this does, might remove later if it doesn't do anything
+    if (h > 12) h = h - 12; // 12 hour support
 
     this.setState({ 
       date: `${('0' + h).slice(-2)}:${('0' + t.getMinutes()).slice(-2)}`, ampm: h >= 12 ? 'AM' : 'PM' 
@@ -26,10 +26,6 @@ export default class Clock extends React.Component {
 
   componentDidMount() {
     this.startTime();
-  }
-
-  componentWillUnmount() { // Do we need this?
-    clearTimeout(this.timeout);
   }
 
   render() {

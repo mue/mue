@@ -11,12 +11,11 @@
     button {
         cursor: pointer;
         outline: none;
+        display: inline;
 
         i.material-icons {
             text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
         }
-
-        display: inline;
     }
 
     input[type=text] {

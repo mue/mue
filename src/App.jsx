@@ -6,8 +6,8 @@ import Greeting from './components/Greeting';
 import Quote from './components/Quote';
 import Search from './components/Search';
 import Credit from './components/Credit';
-import Navbar from './components/Navbar';
-import './css/index.css'; // Import the compiled Sass
+//import Navbar from './components/Navbar';
+import './scss/index.scss'; 
 
 //* App
 export default class App extends React.Component {

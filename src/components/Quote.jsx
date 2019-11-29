@@ -1,6 +1,5 @@
 //* Imports
 import React from 'react';
-import Fetch from 'unfetch';
 import quotes from '../quotes.json';
 
 export default class Quote extends React.Component {
@@ -14,7 +13,7 @@ export default class Quote extends React.Component {
 
   async getQuote() {
     try { // First we try and get a quote from the API...
-      let data = await Fetch('https://api.muetab.xyz/getQuote');
+      let data = await fetch('https://api.muetab.xyz/getQuote');
       data = await data.json();
       this.setState({ quote: data.quote, author: data.author });
     } catch (e) { // ..and if that fails we load one locally
