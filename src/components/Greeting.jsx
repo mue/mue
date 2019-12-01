@@ -23,9 +23,10 @@ export default class Greeting extends React.Component {
     if (t.getMonth() === 0 && t.getDate() === 1) g = 'Happy new year'; // If the date is January 1st, set it to new year
     else if (t.getMonth() === 11 && t.getDate() === 25) g = 'Merry Christmas'; // If it's December 25th, set it to xmas
     else if (t.getMonth() === 9 && t.getDate() === 31) g = 'Happy Halloween'; // If it's October 31st, set it to halloween
+
     this.setState({ 
       greeting: g 
-    }); // Set the state to the time string
+    }); // Set the state to the greeting string
   }
 
   componentDidMount() {

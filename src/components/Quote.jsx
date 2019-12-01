@@ -1,6 +1,6 @@
 //* Imports
 import React from 'react';
-import quotes from '../quotes.json';
+import Quotes from '@muetab/quotes';
 
 export default class Quote extends React.Component {
   constructor(...args) {
@@ -15,9 +15,12 @@ export default class Quote extends React.Component {
     try { // First we try and get a quote from the API...
       let data = await fetch('https://api.muetab.xyz/getQuote');
       data = await data.json();
-      this.setState({ quote: data.quote, author: data.author });
+      this.setState({ 
+        quote: data.quote, 
+        author: data.author 
+      });
     } catch (e) { // ..and if that fails we load one locally
-      const quote = quotes[Math.floor(Math.random() * quotes.length)]; // Get a random quote from quotes.json
+      const quote = Quotes.random(); // Get a random quote from our local package
       this.setState({ 
         quote: quote.quote, 
         author: quote.author 
