@@ -141,4 +141,5 @@ and all the contributors <3
 
 # License
 Code, Documentation - MIT
+
 Logos - CC-BY-4.0
