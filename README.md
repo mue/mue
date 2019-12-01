@@ -1,11 +1,7 @@
-<img src='assets/logo/logo_horizontal.png'>
+![Logo](assets/logo/logo_horizontal.png)
 
 # Mue
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fba7ad7fc6e14fe0bc2a8d53dbf0bb41)](https://www.codacy.com/app/ohlookitsderpy/Mue?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ohlookitsderpy/Mue&amp;utm_campaign=Badge_Grade)
 [![Discord Badge](https://discordapp.com/api/guilds/336039472250748928/widget.png)](https://discord.gg/HJmmmTB)
-
-<a href='https://ko-fi.com/ohlookitsderpy' target='_blank'><img height='36' src='assets/kofi.png' alt='Buy me a coffee at ko-fi.com' /></a>
-<a href='https://patreon.com/ohlookitsderpy' target='_blank'><img height='36' src='assets/patreon.png' alt='Become a patron on patreon.com' /></a>
 
 Fast, open and free-to-use new tab page for most modern browsers.
 
@@ -20,17 +16,17 @@ Fast, open and free-to-use new tab page for most modern browsers.
 * ~~Settings feature - enable/disable features!~~
 * Search bar, ~~update modal, copy button and more!~~
 
-* Mue has been recently rewritten with React and is missing the features that are crossed out *
+*Mue has been recently rewritten with React and is missing the features that are crossed out*
 
 ## Installation
 ### Chrome
-<a href='https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid'><img src='assets/chrome.png' target='_blank'></a> 
+[![Chrome Web Store Logo](assets/chrome.png)](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 
 Link: [Chrome Web Store](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 
 Development: Read the [Development](#development) section.
 ### Firefox
-<a href='https://addons.mozilla.org/firefox/addon/mue'><img src='assets/firefox.png' target='_blank'></a> 
+[![Firefox Add-ons Logo](assets/firefox.png)](https://addons.mozilla.org/firefox/addon/mue)
 
 Link: [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/mue)
 
@@ -103,7 +99,7 @@ Once I find a method to do it automatically, I will update this section accordin
 ## Screenshot
 *Will be updated if needed*
 
-<img src='assets/screenshot.jpg'>
+![Screenshot](assets/screenshot.jpg)
 
 ## Credits
 ### Maintainers
@@ -140,6 +136,6 @@ Candystick - Portuguese (Some Quotes)
 and all the contributors <3
 
 # License
-Code, Documentation - MIT
+Code, Documentation - [MIT](LICENSE)
 
-Logos - CC-BY-4.0
+Logos - [CC-BY-4.0](assets/logo/LICENSE)
