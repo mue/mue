@@ -8,16 +8,6 @@
     color: #ffff;
     font-family: 'Lexend Deca';
 
-    button {
-        cursor: pointer;
-        outline: none;
-        display: inline;
-
-        i.material-icons {
-            text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-        }
-    }
-
     input[type=text] {
         font-size: calc(5px + 1.2vmin);
         background: none;

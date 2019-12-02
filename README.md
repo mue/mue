@@ -36,7 +36,7 @@ Link: [GitHub Releases](https://github.com/ohlookitsderpy/Mue/releases)
 
 Development/Other: Read the [Development](#development) section.
 ### Development
-<h5>Requirements</h5>
+##### Requirements
 <ol>
   <li><a href='https://git-scm.com'>Git</a> (optional)</li>
   <li><a href='https://nodejs.org'>Node.js</a></li>
@@ -103,7 +103,7 @@ Once I find a method to do it automatically, I will update this section accordin
 
 ## Credits
 ### Maintainers
-[ohlookitsderpy](https://github.com/ohlookitsderpy)
+[ohlookitsderpy](https://github.com/ohlookitsderpy) (lead dev)
 
 [TurboMarshmello](https://github.com/TurboMarshmello) (name idea, code contributions)
 

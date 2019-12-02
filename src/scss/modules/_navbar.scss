@@ -1,17 +1,19 @@
-.navbar1 {
-    top: 50px;
-    right: 0px;
+%navbar {
     position: absolute;
     text-align: right;
     min-width: 50px;
 }
 
+.navbar1 {
+    @extend navbar;
+    top: 50px;
+    right: 0px;
+}
+
 .navbar2 {
+    @extend navbar;
     top: 50px;
     right: 50px;
-    position: absolute;
-    text-align: right;
-    min-width: 50px;
 }
 
 .PizzaIcon {

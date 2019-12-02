@@ -55,11 +55,9 @@
     padding: 20px;
     position: absolute;
     z-index: 1;
-    position: absolute;
     bottom: 40px;
     left: 60px;
     margin-left: -60px;
-    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
     opacity: 0;
     transition: opacity 1s;
   }
