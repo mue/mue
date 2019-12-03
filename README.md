@@ -136,6 +136,6 @@ Candystick - Portuguese (Some Quotes)
 and all the contributors <3
 
 # License
-Code, Documentation - [BSD-3-Clause-Clear](LICENSE)
+Code, Documentation - [BSD-3-Clause](LICENSE)
 
 Logos - [CC-BY-4.0](assets/logo/LICENSE)

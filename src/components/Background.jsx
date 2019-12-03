@@ -16,59 +16,59 @@ export default class Background extends React.Component {
       let photographer; // Photographer credit
       switch (photo) { // Select photographer based on image file number
         default: {
-          photographer = 'Unknown (Pexels)';
+          photographer = 'Unknown';
           break;
         }
         case 1: {
-          photographer = 'Tirachard Kumtanom (Pexels)';
+          photographer = 'Tirachard Kumtanom';
           break;
         }
         case 2: {
-          photographer = 'Pixabay (Pexels)';
+          photographer = 'Pixabay';
           break;
         }
         case 3: {
-          photographer = 'Pixabay (Pexels)';
+          photographer = 'Pixabay';
           break;
         }
         case 4: {
-          photographer = 'Sohail Na (Pexels)';
+          photographer = 'Sohail Na';
           break;
         }
         case 7: {
-          photographer = 'Miriam Espacio (Pexels)';
+          photographer = 'Miriam Espacio';
           break;
         }
         case 9: {
-          photographer = 'Pixabay (Pexels)';
+          photographer = 'Pixabay';
           break;
         }
         case 10: {
-          photographer = 'NO NAME (Pexels)';
+          photographer = 'NO NAME';
           break;
         }
         case 11: {
-          photographer = 'Pixabay (Pexels)';
+          photographer = 'Pixabay';
           break;
         }
         case 13: {
-          photographer = 'Pixabay (Pexels)';
+          photographer = 'Pixabay';
           break;
         }
         case 14: {
-          photographer = 'Pixabay (Pexels)';
+          photographer = 'Pixabay';
           break;
         }
         case 15: {
-          photographer = 'Pixabay (Pexels)';
+          photographer = 'Pixabay';
           break;
         }
         case 20: {
-          photographer = 'Fabian Wiktor (Pexels)';
+          photographer = 'Fabian Wiktor';
           break;
         }
       }
-      document.getElementById('photographer').innerText = `Photo by ${photographer}`; // Set the credit
+      document.getElementById('photographer').innerText = `Photo by ${photographer} (Pexels)`; // Set the credit
       document.getElementById('root').style.backgroundImage = `url(../offline-images/${photo}.jpeg)`; // Set the background
     }
   }
