@@ -5,7 +5,7 @@
 
 Fast, open and free-to-use new tab page for most modern browsers.
 
-*This is the code for the extension. If you are looking for the website code, please go [here](https://github.com/TurboMarshmello/muetab.xyz).*
+*This is the code for the extension. If you are looking for the website code, please go [here](https://github.com/TurboMarshmello/muetab.xyz), or for the API docs go [here](https://apidocs.muetab.xyz)*
 
 ## Features
 * Fast and free
@@ -136,6 +136,6 @@ Candystick - Portuguese (Some Quotes)
 and all the contributors <3
 
 # License
-Code, Documentation - [BSD-3-Clause](LICENSE)
+Code - [BSD-3-Clause](LICENSE)
 
 Logos - [CC-BY-4.0](assets/logo/LICENSE)
