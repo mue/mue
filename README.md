@@ -1,4 +1,4 @@
-![Logo](assets/logo/logo_horizontal.png)
+![Logo](https://github.com/muetab/branding/raw/master/logo/logo_horizontal.png)
 
 # Mue
 [![Discord Badge](https://discordapp.com/api/guilds/336039472250748928/widget.png)](https://discord.gg/HJmmmTB)
