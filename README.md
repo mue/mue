@@ -137,5 +137,3 @@ and all the contributors <3
 
 # License
 Code - [BSD-3-Clause](LICENSE)
-
-Logos - [CC-BY-4.0](assets/logo/LICENSE)
