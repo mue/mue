@@ -115,7 +115,7 @@ Once I find a method to do it automatically, I will update this section accordin
 ### Translations
 [ohlookitsderpy](https://github.com/ohlookitsderpy) - English (Quotes and Messages)
 
-[Yanderella](https://github.com/tomiedev) - Italian (Quotes and Messages)
+[Yanderella](https://github.com/gbacretin) - Italian (Quotes and Messages)
 
 Pepehound - Spanish (Quotes and Messages)
 
@@ -123,7 +123,7 @@ Candystick - Portuguese (Some Quotes)
 
 [PassTheWessel](https://github.com/PassTheWessel) - Dutch (Messages)
 
-[Yanderella](https://github.com/tomiedev) and [ohlookitsderpy](https://github.com/ohlookitsderpy) - French (Messages)
+[Yanderella](https://github.com/gbacretin) and [ohlookitsderpy](https://github.com/ohlookitsderpy) - French (Messages)
 
 [untocodes](https://github.com/untocodes) - Finnish and German (Messages)
 
