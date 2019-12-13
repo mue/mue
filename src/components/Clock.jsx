@@ -21,7 +21,7 @@ export default class Clock extends React.Component {
       date: `${('0' + h).slice(-2)}:${('0' + t.getMinutes()).slice(-2)}`, ampm: h >= 12 ? 'AM' : 'PM' 
     }); // Set time
 
-    this.timeout = setTimeout(() => this.startTime(), 500); // Update the clock every 500 milliseconds
+    this.timeout = setTimeout(() => this.startTime(), 750); // Update the clock every 750 milliseconds
   }
 
   componentDidMount() {

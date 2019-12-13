@@ -5,8 +5,6 @@
 
 Fast, open and free-to-use new tab page for most modern browsers.
 
-*This is the code for the extension. If you are looking for the website code, please go [here](https://github.com/TurboMarshmello/muetab.xyz), or for the API docs go [here](https://apidocs.muetab.xyz)*
-
 ## Features
 * Fast and free
 * Supports multiple browsers
@@ -44,7 +42,7 @@ Development/Other: Read the [Development](#development) section.
 </ol>
 <h5>Starting</h5>
 <ol>
-  <li> <code>git clone https://github.com/ohlookitsderpy/Mue</code> (If you don't have Git just go to <b>Clone or
+  <li> <code>git clone https://github.com/muetab/mue</code> (If you don't have Git just go to <b>Clone or
       download</b> and click <b>Download ZIP</b>)
   <li> Open a terminal and run these commands: (in the Mue directory)
   <li> <code>yarn</code> (or <code>npm i</code>)
@@ -111,6 +109,8 @@ Once I find a method to do it automatically, I will update this section accordin
 [Pexels](https://pexels.com) - Stock photos used for offline mode
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
+
+[Google Fonts](https://fonts.google.com/specimen/Lexend+Deca) - Lexend Deca font
 
 ### Translations
 [ohlookitsderpy](https://github.com/ohlookitsderpy) - English (Quotes and Messages)
