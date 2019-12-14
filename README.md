@@ -17,6 +17,7 @@ Fast, open and free-to-use new tab page for most modern browsers.
 *Mue has been recently rewritten with React and is missing the features that are crossed out*
 
 ## Installation
+Note: A demo of the tab can be found [here](https://mue.now.sh).
 ### Chrome
 [![Chrome Web Store Logo](assets/chrome.png)](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 
@@ -136,4 +137,4 @@ Candystick - Portuguese (Some Quotes)
 and all the contributors <3
 
 # License
-Code - [BSD-3-Clause](LICENSE)
+[BSD-3-Clause](LICENSE)
