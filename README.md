@@ -48,7 +48,7 @@ Development/Other: Read the [Development](#development) section.
   <li> Open a terminal and run these commands: (in the Mue directory)
   <li> <code>yarn</code> (or <code>npm i</code>)
   <li> <code>yarn start</code> (or <code>npm start</code>)
-  <li> Start developing! (See the sections below for how to set up a developer copy of the extension.)
+  <li> Start developing! (See the sections below for how to build the extension)
 </ol>
 <h2>Building</h5>
 <details>
