@@ -47,17 +47,15 @@ Development/Other: Read the [Development](#development) section.
       download</b> and click <b>Download ZIP</b>)
   <li> Open a terminal and run these commands: (in the Mue directory)
   <li> <code>yarn</code> (or <code>npm i</code>)
-  <li> <code>yarn run all</code> (or <code>npm run all</code>)
+  <li> <code>yarn start</code> (or <code>npm start</code>)
   <li> Start developing! (See the sections below for how to set up a developer copy of the extension.)
 </ol>
 <h2>Building</h5>
-<i>This section is a work in progress, and doesn't include the manual edits you are required to do to get it working without errors. 
-Once I find a method to do it automatically, I will update this section accordingly.</i>
 <details>
   <summary><b>Chrome</b> (Click to expand)</summary>
   <ol>
     <li> <code>yarn run build</code> (or <code>npm run build</code>)
-    <li> Rename <code>manifest-chrome.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build" (replace the one created by React)
+    <li> Rename <code>manifest-chrome.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
     <li> Visit <code>chrome://extensions</code> in Chrome
     <li> Click <b>Load unpacked</b> (Make sure <b>Developer Mode</b> is on)
     <li> Go to the directory containing the built copy of Mue and click <b>ok</b>
@@ -67,7 +65,7 @@ Once I find a method to do it automatically, I will update this section accordin
   <summary><b>Opera</b> (Click to expand)</summary>
   <ol>
     <li> <code>yarn run build</code> (or <code>npm run build</code>)
-    <li> Rename <code>manifest-opera.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build" (replace the one created by React)
+    <li> Rename <code>manifest-opera.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
     <li> Visit <code>about://extensions</code> in Opera
     <li> Click <b>Load unpacked extension...</b> (Make sure <b>Developer Mode</b> is on)
     <li> Go to the directory containing Mue and click <b>ok</b>
@@ -78,7 +76,7 @@ Once I find a method to do it automatically, I will update this section accordin
   <i>Note: I'm currently trying to find a better method to do this, but this works for now.</i>
   <ol>
     <li> <code>yarn run build</code> (or <code>npm run build</code>)
-    <li> Rename <code>manifest-firefox.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build" (replace the one created by React) 
+    <li> Rename <code>manifest-firefox.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
     <li> Move <code>manifest/background-opera.js</code> to <code>build/background-opera.js</code>   
     <li> Visit <code>about:debugging#addons</code> in Firefox
     <li> Click <b>Load Temporary Add-on</b>
@@ -90,6 +88,7 @@ Once I find a method to do it automatically, I will update this section accordin
   <summary><b>Other</b> (Click to expand)</summary>
   <i>Note: To get the full new tab experience, set your browser to open the <code>index.html</code> on startup and tab open!</i>
     <ol>
+      <li> <code>yarn run build</code> (or <code>npm run build</code>)
       <li> Open the <code>index.html</code> in your browser
       <li> Enjoy your new tab!
     </ol>
