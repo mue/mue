@@ -66,6 +66,7 @@ Development/Other: Read the [Development](#development) section.
   <ol>
     <li> <code>yarn run build</code> (or <code>npm run build</code>)
     <li> Rename <code>manifest-opera.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
+    <li> Copy <codebackground-opera.js</code> in the "manifest" folder to "build"
     <li> Visit <code>about://extensions</code> in Opera
     <li> Click <b>Load unpacked extension...</b> (Make sure <b>Developer Mode</b> is on)
     <li> Go to the directory containing Mue and click <b>ok</b>
@@ -73,7 +74,6 @@ Development/Other: Read the [Development](#development) section.
 </details>
 <details>
   <summary><b>Firefox</b> (Click to expand)</summary>
-  <i>Note: I'm currently trying to find a better method to do this, but this works for now.</i>
   <ol>
     <li> <code>yarn run build</code> (or <code>npm run build</code>)
     <li> Rename <code>manifest-firefox.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
