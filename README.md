@@ -30,6 +30,8 @@ Development: Read the [Development](#development) section.
 Link: [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/mue)
 
 Development: Read the [Development](#development) section.
+### Edge (Chromium)
+Link: [Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)
 ### Opera/Other
 Link: [GitHub Releases](https://github.com/ohlookitsderpy/Mue/releases)
 

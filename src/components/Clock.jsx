@@ -12,13 +12,14 @@ export default class Clock extends React.Component {
 
   startTime() {
     const t = new Date(); // Get the current date 
+    const a = t.getHours();
     let h = t.getHours(); // Get hours
     // const s = today.getSeconds();
 
     if (h > 12) h = h - 12; // 12 hour support
 
     this.setState({ 
-      date: `${('0' + h).slice(-2)}:${('0' + t.getMinutes()).slice(-2)}`, ampm: h >= 12 ? 'AM' : 'PM' 
+      date: `${('0' + h).slice(-2)}:${('0' + t.getMinutes()).slice(-2)}`, ampm: a >= 12 ? 'PM' : 'AM' 
     }); // Set time
 
     this.timeout = setTimeout(() => this.startTime(), 750); // Update the clock every 750 milliseconds
