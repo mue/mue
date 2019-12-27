@@ -10,9 +10,13 @@ Fast, open and free-to-use new tab page for most modern browsers.
 * Supports multiple browsers
 * Actively developed and opensource
 * Automatically updating API (with no tracking!) with new photos, quotes and offline mode
-* ~~Multiple language support~~
-* ~~Settings feature - enable/disable features!~~
-* Search bar, ~~update modal, copy button and more!~~
+
+* Search bar
+
+## Planned Features
+* Settings feature - enable/disable features!
+* Update modal, copy button and more!
+* Multiple language support
 
 *Mue has been recently rewritten with React and is missing the features that are crossed out*
 
@@ -105,7 +109,7 @@ Development/Other: Read the [Development](#development) section.
 ### Maintainers
 [ohlookitsderpy](https://github.com/ohlookitsderpy) (lead dev)
 
-[TurboMarshmello](https://github.com/TurboMarshmello) (name idea, code contributions)
+[TurboMarshmello](https://github.com/TurboMarshmello) (name idea, lead designer)
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode
@@ -113,27 +117,6 @@ Development/Other: Read the [Development](#development) section.
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 
 [Google Fonts](https://fonts.google.com/specimen/Lexend+Deca) - Lexend Deca font
-
-### Translations
-[ohlookitsderpy](https://github.com/ohlookitsderpy) - English (Quotes and Messages)
-
-[Yanderella](https://github.com/gbacretin) - Italian (Quotes and Messages)
-
-Pepehound - Spanish (Quotes and Messages)
-
-Candystick - Portuguese (Some Quotes)
-
-[PassTheWessel](https://github.com/PassTheWessel) - Dutch (Messages)
-
-[Yanderella](https://github.com/gbacretin) and [ohlookitsderpy](https://github.com/ohlookitsderpy) - French (Messages)
-
-[untocodes](https://github.com/untocodes) - Finnish and German (Messages)
-
-[dondish](https://github.com/dondish) - Hebrew and Russian (Messages)
-
-[Roee Lupo (MrSheldon)](https://github.com/MrSheldon) - Arabic and Swedish (Messages)
-
-*Feel free to pull request with other translations!*
 
 and all the contributors <3
 
