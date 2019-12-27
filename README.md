@@ -1,8 +1,6 @@
 ![Logo](https://github.com/muetab/branding/raw/master/logo/logo_horizontal.png)
 
 # Mue
-[![Discord Badge](https://discordapp.com/api/guilds/336039472250748928/widget.png)](https://discord.gg/HJmmmTB)
-
 Fast, open and free-to-use new tab page for most modern browsers.
 
 ## Features
@@ -55,7 +53,7 @@ Development/Other: Read the [Development](#development) section.
 </ol>
 <h2>Building</h5>
 <details>
-  <summary><b>Chrome</b> (Click to expand)</summary>
+  <summary><b>Chrome/Edge (Chromium)</b> (Click to expand)</summary>
   <ol>
     <li> <code>yarn run build</code> (or <code>npm run build</code>)
     <li> Rename <code>manifest-chrome.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
@@ -104,7 +102,7 @@ Development/Other: Read the [Development](#development) section.
 
 ## Credits
 ### Maintainers
-[ohlookitsderpy](https://github.com/ohlookitsderpy) (lead dev)
+[ohlookitsderpy](https://github.com/ohlookitsderpy) (owner, lead dev)
 
 [TurboMarshmello](https://github.com/TurboMarshmello) (name idea, lead designer)
 
