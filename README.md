@@ -10,15 +10,12 @@ Fast, open and free-to-use new tab page for most modern browsers.
 * Supports multiple browsers
 * Actively developed and opensource
 * Automatically updating API (with no tracking!) with new photos, quotes and offline mode
-
 * Search bar
 
 ## Planned Features
 * Settings feature - enable/disable features!
 * Update modal, copy button and more!
 * Multiple language support
-
-*Mue has been recently rewritten with React and is missing the features that are crossed out*
 
 ## Installation
 Note: A demo of the tab can be found [here](https://mue.now.sh).
