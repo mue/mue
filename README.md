@@ -102,7 +102,7 @@ Development/Other: Read the [Development](#development) section.
 
 ## Credits
 ### Maintainers
-[ohlookitsderpy](https://github.com/ohlookitsderpy) (owner, lead dev)
+[ohlookitsderpy](https://github.com/ohlookitsderpy) (owner, lead developer)
 
 [TurboMarshmello](https://github.com/TurboMarshmello) (name idea, lead designer)
 
