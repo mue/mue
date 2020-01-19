@@ -11,5 +11,6 @@
     },
     "chrome_settings_overrides": {
         "homepage": "index.html"
-    }
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-Q/fJeEyXf7ZhxjXeAydpu6mDGAmyqvj93tDPNxGThn0='; object-src 'self'"
 }
