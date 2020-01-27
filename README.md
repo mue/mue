@@ -44,7 +44,7 @@ Development/Other: Read the [Development](#development) section.
 </ol>
 <h5>Starting</h5>
 <ol>
-  <li> <code>git clone https://github.com/muetab/mue</code> (If you don't have Git just go to <b>Clone or
+  <li> <code>git clone https://github.com/mue/mue</code> (If you don't have Git just go to <b>Clone or
       download</b> and click <b>Download ZIP</b>)
   <li> Open a terminal and run these commands: (in the Mue directory)
   <li> <code>yarn</code> (or <code>npm i</code>)
