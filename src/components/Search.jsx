@@ -6,7 +6,7 @@ export default class Search extends React.Component {
   render() {
     return (
       <div id='searchBar' className='searchbar'>
-        <form id='searchBar' className='searchbarform' action='https://duckduckgo.com/' onSubmit={('search();')}> 
+        <form id='searchBar' className='searchbarform' action='https://duckduckgo.com/'> 
             <input type='text' placeholder='Search' name='q' id='searchtext' className='searchtext'/>
             <div className='blursearcbBG'/>
           </form>
