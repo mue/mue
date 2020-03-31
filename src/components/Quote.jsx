@@ -12,27 +12,13 @@ export default class Quote extends React.Component {
   }
 
   async getQuote() {
-    // Taken from Greeting.jsx
-    const t = new Date(); // Current date object
-    const m = t.getMonth(); // Current month
-    const d = t.getDate(); // Current Date
-
     try { // First we try and get a quote from the API...
-      if (m === 3 && d === 1) { // April fools!
-        let data = await fetch('https://api.kanye.rest');
-        data = await data.json();
-        this.setState({ 
-          quote: data.quote, 
-          author: 'Kanye West'
-        });
-      } else {
-        let data = await fetch('https://api.muetab.xyz/getQuote');
-        data = await data.json();
-        this.setState({ 
-          quote: data.quote, 
-          author: data.author 
-        });
-      }
+      let data = await fetch('https://api.muetab.xyz/getQuote');
+      data = await data.json();
+      this.setState({ 
+        quote: data.quote, 
+        author: data.author 
+      });
     } catch (e) { // ..and if that fails we load one locally
       const quote = Quotes.random(); // Get a random quote from our local package
       this.setState({ 
