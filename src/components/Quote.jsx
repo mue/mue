@@ -15,6 +15,13 @@ export default class Quote extends React.Component {
     try { // First we try and get a quote from the API...
       let data = await fetch('https://api.muetab.xyz/getQuote');
       data = await data.json();
+      if (data.statusCode === 429) { // If we hit the ratelimit, we fallback to local quotes
+        const quote = Quotes.random(); // Get a random quote from our local package
+        return this.setState({ 
+          quote: quote.quote, 
+          author: quote.author 
+        }); // Set the quote
+      }
       this.setState({ 
         quote: data.quote, 
         author: data.author 

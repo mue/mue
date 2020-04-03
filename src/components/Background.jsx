@@ -14,21 +14,15 @@ export default class Background extends React.Component {
       const photo = Math.floor(Math.random() * (20 - 1 + 1)) + 1; // There are 20 images in the offline-images folder
       document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
       let photographer; // Photographer credit
-      switch (photo) { // Select photographer based on image file number
+      let pixabayNumbers = [2, 3, 9, 11, 13, 14, 15]; // As there are a lot of Pixabay photos, we shorten the code a bit here
+      if (pixabayNumbers.includes(photo)) photographer = 'Pixabay';
+      else switch (photo) {
         default: {
           photographer = 'Unknown';
           break;
         }
         case 1: {
           photographer = 'Tirachard Kumtanom';
-          break;
-        }
-        case 2: {
-          photographer = 'Pixabay';
-          break;
-        }
-        case 3: {
-          photographer = 'Pixabay';
           break;
         }
         case 4: {
@@ -39,28 +33,8 @@ export default class Background extends React.Component {
           photographer = 'Miriam Espacio';
           break;
         }
-        case 9: {
-          photographer = 'Pixabay';
-          break;
-        }
         case 10: {
           photographer = 'NO NAME';
-          break;
-        }
-        case 11: {
-          photographer = 'Pixabay';
-          break;
-        }
-        case 13: {
-          photographer = 'Pixabay';
-          break;
-        }
-        case 14: {
-          photographer = 'Pixabay';
-          break;
-        }
-        case 15: {
-          photographer = 'Pixabay';
           break;
         }
         case 20: {
