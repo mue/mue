@@ -10,7 +10,6 @@
     "chrome_url_overrides": {
         "newtab": "index.html"
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-Q/fJeEyXf7ZhxjXeAydpu6mDGAmyqvj93tDPNxGThn0='; object-src 'self'",
     "icons": {
 		"16": "./icons/16x16-circle.png",
 		"48": "./icons/48x48-circle.png",

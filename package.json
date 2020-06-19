@@ -29,7 +29,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "env INLINE_RUNTIME_CHUNK=false && react-scripts build",
+    "chrome": "cp manifest/chrome.json build/manifest.json",
+    "firefox": "cp manifest/firefox.json build/manifest.json",
+    "opera": "cp manifest/opera.json build/manifest.json && cp manifest/background-opera.js build/"
   },
   "eslintConfig": {
     "extends": "react-app"
