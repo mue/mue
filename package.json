@@ -15,9 +15,10 @@
   "license": "BSD-3-Clause",
   "version": "0.7.1",
   "dependencies": {
-    "@material-ui/core": "4.10.2",
+    "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
     "@muetab/quotes": "^1.0.0",
+    "fontsource-lexend-deca": "^2.1.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -29,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "env INLINE_RUNTIME_CHUNK=false && react-scripts build",
+    "build": "react-scripts build",
     "chrome": "cp manifest/chrome.json build/manifest.json",
     "firefox": "cp manifest/firefox.json build/manifest.json",
     "opera": "cp manifest/opera.json build/manifest.json && cp manifest/background-opera.js build/"
