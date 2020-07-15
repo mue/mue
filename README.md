@@ -7,7 +7,7 @@
 <br>
 [![Microsoft Edge](https://img.shields.io/badge/dynamic/json?style=flat-square&label=microsoft%20edge&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Faepnglgjfokepefimhbnibfjekidhmja)]() [![](https://img.shields.io/amo/v/mue?label=firefox&style=flat-square)]() [![](https://img.shields.io/chrome-web-store/v/bngmbednanpcfochchhgbkookpiaiaid?label=chrome&style=flat-square)]()
 
-Mue is a fast, open and free-to-use browser plugin gives a new, fresh and customizable tab page to most modern browsers
+Mue is a fast, open and free-to-use browser extension that gives a new, fresh and customizable tab page to most modern browsers
 
 <br>
 
