@@ -53,6 +53,8 @@ export default class Background extends React.Component {
   }
 
   componentDidMount() {
+    const enabled = localStorage.getItem('background');
+    if (enabled === 'false') return;
     this.setBackground();
   }
 

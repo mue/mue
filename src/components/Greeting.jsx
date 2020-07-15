@@ -33,6 +33,8 @@ export default class Greeting extends React.Component {
   }
 
   componentDidMount() {
+    const enabled = localStorage.getItem('greeting');
+    if (enabled === 'false') return;
     this.getGreeting();
   }
   

@@ -18,30 +18,32 @@ export default class Quote extends React.Component {
       if (data.statusCode === 429) { // If we hit the ratelimit, we fallback to local quotes
         const quote = Quotes.random(); // Get a random quote from our local package
         return this.setState({ 
-          quote: quote.quote, 
+          quote: '"' + quote.quote + '"', 
           author: quote.author 
         }); // Set the quote
       }
       this.setState({ 
-        quote: data.quote, 
+        quote: '"' + data.quote + '"', 
         author: data.author 
       });
     } catch (e) { // ..and if that fails we load one locally
       const quote = Quotes.random(); // Get a random quote from our local package
       this.setState({ 
-        quote: quote.quote, 
+        quote: '"' + quote.quote + '"', 
         author: quote.author 
       }); // Set the quote
     }
   }
 
   componentDidMount() {
+    const enabled = localStorage.getItem('quote');
+    if (enabled === 'false') return;
     this.getQuote();
   }
 
   render() {
     return [
-      <h1 className='quote'>{`"${this.state.quote}"`}</h1>,
+      <h1 className='quote'>{`${this.state.quote}`}</h1>,
       // <i class="material-icons">perm_identity</i>,
       <h1 className='quoteauthor'>{`${this.state.author}`}</h1>,
     ];

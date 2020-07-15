@@ -20,12 +20,13 @@
     "@muetab/quotes": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
     "react-scripts": "3.4.1",
     "supports-webp": "^2.0.1"
   },
   "devDependencies": {
-    "eslint": "^7.1.0",
-    "node-sass": "^4.13.0"
+    "eslint": "^7.3.0",
+    "node-sass": "^4.14.1"
   },
   "scripts": {
     "start": "react-scripts start",

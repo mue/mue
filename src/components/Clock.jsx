@@ -26,6 +26,8 @@ export default class Clock extends React.Component {
   }
 
   componentDidMount() {
+    const enabled = localStorage.getItem('time');
+    if (enabled === 'false') return;
     this.startTime();
   }
 

@@ -2,24 +2,17 @@
     position: absolute;
     text-align: right;
     min-width: 50px;
+    cursor: pointer;
 }
 
 .navbar1 {
-    @extend navbar;
+    @extend %navbar;
     top: 50px;
     right: 0px;
 }
 
 .navbar2 {
-    @extend navbar;
+    @extend %navbar;
     top: 50px;
     right: 50px;
-}
-
-.PizzaIcon {
-    margin-right: 20px; 
-}
-
-.pizza {
-    right: 2000px;
 }

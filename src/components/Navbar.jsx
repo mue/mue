@@ -1,6 +1,6 @@
 //* Imports
 import RefreshIcon from '@material-ui/icons/Refresh';
-import LocalPizzaIcon from '@material-ui/icons/LocalPizza';
+import Gear from '@material-ui/icons/Settings';
 import React from 'react';
 
 export default class Navbar extends React.Component {
@@ -8,10 +8,10 @@ export default class Navbar extends React.Component {
     return (
       <div className='navbar-container'>
         <div className='navbar1'>
-              <RefreshIcon className='locationicon'/>
+          <Gear className='settings-icon' onClick={this.props.modalOpen} />
         </div>
         <div className='navbar2'>
-            <LocalPizzaIcon className='pizzaicon'/>
+            <RefreshIcon className='refreshicon' onClick={() => window.location.reload()} />
         </div>
       </div>
     );
