@@ -11,35 +11,31 @@ export default class Clock extends React.Component {
     this.timer = undefined;
   }
   
-  startTime(time) {
+  startTime(time = localStorage.getItem('seconds') === 'true' ? (1000 - Date.now() % 1000) : (60000 - Date.now() % 60000)) {
     this.timer = setTimeout(() => {
-      this.startTime();
-      const t = new Date(); // Get the current date 
-      const a = t.getHours();
-      let h = t.getHours(); // Get hours
+      const now = new Date();
+      let sec = '';
   
-      // Seconds 
-      let s = '';
-      const enabled = localStorage.getItem('seconds');
-      if (enabled === 'true') s = ':' + ('0' + t.getSeconds()).slice(-2);
-  
-      const twentyfour = localStorage.getItem('24hour');
-      if (twentyfour === 'true') {
-        // this.date = `${('0' + h).slice(-2)}:${('0' + t.getMinutes()).slice(-2)}${s}`;
-        return this.setState({ 
-          date: `${('0' + h).slice(-2)}:${('0' + t.getMinutes()).slice(-2)}${s}`
+      if (localStorage.getItem('seconds') === 'true') {
+        sec = `:${('00' + now.getSeconds()).slice(-2)}`;
+      }
+
+      if (localStorage.getItem('24hour') === 'true') {
+        this.setState({ 
+          date: `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`
         }); 
       } else {
-        if (h > 12) h = h - 12; // 12 hour support
-        // this.date = `${('0' + h).slice(-2)}:${('0' + t.getMinutes()).slice(-2)}${s}`;
+        let hours = now.getHours();
+        if (hours > 12) hours -= 12; // 12 hour support
 
         this.setState({ 
-          date: `${('0' + h).slice(-2)}:${('0' + t.getMinutes()).slice(-2)}${s}`, ampm: a >= 12 ? 'PM' : 'AM' 
-        }); // Set time
-        }
-  
-  
-    }, (1000 - Date.now() % 1000));
+          date: `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`,
+          ampm: now.getHours() > 11 ? 'PM' : 'AM' 
+        });
+      }
+
+      this.startTime();
+    }, time);
   }
 
   componentDidMount() {
