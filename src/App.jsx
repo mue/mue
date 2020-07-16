@@ -8,6 +8,7 @@ import Search from './components/Search';
 import Credit from './components/Credit';
 import Navbar from './components/Navbar';
 import Settings from './components/Settings';
+import Update from './components/Update';
 import Modal from 'react-modal';
 import './scss/index.scss'; 
 
@@ -17,16 +18,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { modal: false };
-    this.openModal = this.onOpenModal.bind(this);
-  }
-
-  onOpenModal() {
-    this.setState({ modal: true });
-  }
-
-  onCloseModal() {
-    this.setState({ modal: false });
+    this.state = { 
+      settingsModal: false, 
+      updateModal: false 
+    };
   }
 
   // Render all the components
@@ -40,16 +35,20 @@ export default class App extends React.Component {
     }
     return (
       <React.Fragment>
+        <div id='backgroundImage'></div>
         <Background/>
         <Search/>
         <div id='center'>
-        <Navbar modalOpen={() => this.onOpenModal()}/>
+        <Navbar settingsModalOpen={() => this.setState({ settingsModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} />
             <Greeting/>
             <Clock/> 
             <Quote/>
             <Credit/>
-            <Modal isOpen={this.state.modal} className='Modal' overlayClassName="Overlay" ariaHideApp={false}>
-              <Settings modalClose={() => this.onCloseModal()} />
+            <Modal isOpen={this.state.settingsModal} className='Modal' overlayClassName="Overlay" ariaHideApp={false}>
+              <Settings modalClose={() => this.setState({ settingsModal: false })} />
+            </Modal>
+            <Modal isOpen={this.state.updateModal} className='Modal' overlayClassName="Overlay" ariaHideApp={false}>
+              <Update modalClose={() => this.setState({ updateModal: false })} />
             </Modal>
         </div>
       </React.Fragment>

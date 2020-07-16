@@ -9,6 +9,22 @@ export default class Greeting extends React.Component {
     };
  }
 
+  doEvents(t, g) {
+    const enabled = localStorage.getItem('events');
+    if (enabled === 'false') return;
+
+    const m = t.getMonth(); // Current month
+    const d = t.getDate(); // Current Date
+
+    if (m === 0 && d === 1) g = 'Happy new year'; // If the date is January 1st, set the greeting string to "Happy new year"
+    else if (m === 11 && d === 25) g = 'Merry Christmas'; // If it's December 25th, set the greeting string to "Merry Christmas"
+    else if (m === 9 && d === 31) g = 'Happy Halloween'; // If it's October 31st, set the greeting string to "Happy Halloween"
+    return {
+      g,
+      t
+    }
+  }
+
   getGreeting() {
     const t = new Date(); // Current date object
     
@@ -20,12 +36,7 @@ export default class Greeting extends React.Component {
     else if (h < 18) g = 'Good afternoon'; // If it's before 6pm, set the greeting string to "Good afternoon"
 
     // Events
-    const m = t.getMonth(); // Current month
-    const d = t.getDate(); // Current Date
-
-    if (m === 0 && d === 1) g = 'Happy new year'; // If the date is January 1st, set the greeting string to "Happy new year"
-    else if (m === 11 && d === 25) g = 'Merry Christmas'; // If it's December 25th, set the greeting string to "Merry Christmas"
-    else if (m === 9 && d === 31) g = 'Happy Halloween'; // If it's October 31st, set the greeting string to "Happy Halloween"
+    this.doEvents(t, g);
 
     this.setState({ 
       greeting: g 

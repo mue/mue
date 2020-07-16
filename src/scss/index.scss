@@ -8,3 +8,13 @@
 @import 'modules/modal';
 @import 'modules/settings';
 @import 'modules/miscellaneous';
+
+#backgroundImage {
+    height:100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 0;
+    border: none;
+}

@@ -16,3 +16,9 @@
     top: 50px;
     right: 50px;
 }
+
+.navbar3 {
+    @extend %navbar;
+    top: 50px;
+    right: 100px;
+}
