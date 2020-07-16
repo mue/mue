@@ -11,7 +11,7 @@ export default class Settings extends React.Component {
     }
 
     localStorage.setItem(key, val);
-    document.getElementById(`${key}Status`).innerHTML = val === true ? 'ON' : 'OFF';
+    //document.getElementById(`${key}Status`).innerHTML = val === true ? 'ON' : 'OFF';
     console.log(`[DEBUG] setItem(${key}, ${old} -> ${val})`);
   }
 
@@ -25,26 +25,53 @@ export default class Settings extends React.Component {
         <div className='section'>
           <h4>Time</h4>
           <label class="switch">
-            <input type="checkbox" />
+            <input type="checkbox" onClick={()=> this.setItem('time')} />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div className='section'>
+          <h4>Greeting</h4>
+          <label class="switch">
+            <input type="checkbox" onClick={()=> this.setItem('greeting')} />
             <span class="slider round"></span>
           </label>
         </div>
         <div className='section'>
           <h4>Quote</h4>
           <label class="switch">
-            <input type="checkbox" />
+            <input type="checkbox" onClick={()=> this.setItem('quote')} />
             <span class="slider"></span>
           </label>
         </div>
         <div className='section'>
           <h4>Background</h4>
           <label class="switch">
-            <input type="checkbox" />
+            <input type="checkbox" onClick={()=> this.setItem('background')}  />
             <span class="slider"></span>
           </label>
         </div>
-        <button class="apply">Apply</button>
-        <p>You need to refresh the page to see your changes!</p>
+        <div className='section'>
+          <h4>Search Bar</h4>
+          <label class="switch">
+            <input type="checkbox" onClick={()=> this.setItem('searchBar')}  />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div className='section'>
+          <h4>Offline Mode</h4>
+          <label class="switch">
+            <input type="checkbox" onClick={()=> this.setItem('offlineMode')}  />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div className='section'>
+          <h4>Enable WebP (experimental)</h4>
+          <label class="switch">
+            <input type="checkbox" onClick={()=> this.setItem('webp')}  />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <button class="apply" onClick={() => window.location.reload()}>Apply</button>
       {/*
         <h4 style={{ flex: 2 }}>Time <span id="timeStatus">{localStorage.getItem('time') === 'true' ? 'ON' : 'OFF'}</span>
         </h4> 
