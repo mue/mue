@@ -28,7 +28,6 @@
   width: 100em;
   height: 100em;
   font-size: 2rem;
-  text-shadow: 0 2px 25px rgba(0, 0, 0, 0.3);
 }
 
 .credits {
@@ -45,6 +44,8 @@
   border-bottom: 1px dotted black;
   bottom: 15px;
   left: 10px;
+  -webkit-filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.4));
 
   .tooltiptext {
     visibility: hidden;

@@ -7,20 +7,6 @@
   z-index: 4;
 }
 
-.Modal:focus {
-  outline: 0;
-}
-
-.closeModal {
-  float: right;
-  font-size: 2em;
-  cursor: pointer;
-}
-
-.closeModal:hover {
-  color: grey;
-}
-
 .switch {
   position: relative;
  /* display: inline-block; */
@@ -192,4 +178,14 @@ li {
   border-radius: 12px;
   background: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);;
   cursor: pointer;
+}
+
+input[type=text] {
+  width: 200px;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
+  outline: none;
+  font-family: 'Lexend Deca', sans-serif;
 }

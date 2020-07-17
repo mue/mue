@@ -1,93 +1,101 @@
 .Modal {
-    background-color: #fff;
-    width: 600px;
-    margin: 0 auto;
-    margin-top: 40px;
-    border: none;
-    opacity: 1;
-    z-index: -2;
-    height: auto;
-    padding: 20px; 
-    cursor: hand;
+  background-color: #fff;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 40px;
+  border: none;
+  opacity: 1;
+  z-index: -2;
+  height: auto;
+  padding: 20px;
+  cursor: hand;
 }
 
 .Overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-
-  ::-webkit-scrollbar {
-    width: 5px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
-/* Track /
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-/ Handle /
-::-webkit-scrollbar-thumb {
-    background: #888;
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-/ Handle on hover */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
-  
+
+
+.Modal:focus {
+  outline: 0;
+}
+
+.closeModal {
+  float: right;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.closeModal:hover {
+  color: grey;
+}
+
+.dark {
+  background-color: #2f3542 !important;
+  color: white !important;
+}

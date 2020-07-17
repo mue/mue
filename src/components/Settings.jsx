@@ -21,6 +21,12 @@ export default class Settings extends React.Component {
     (element2.style.transform === 'rotate(-180deg)') ? element2.style.transform = 'rotate(0)' : element2.style.transform = 'rotate(-180deg)';
   }
 
+  saveStuff() {
+    localStorage.setItem('blur', document.getElementById('blurRange').value); // this is better than inline onChange for performance
+    localStorage.setItem('greetingName', document.getElementById('greetingName').value);
+    window.location.reload();
+  }
+
   componentDidMount() {
     for (const key of Object.keys(localStorage)) {
       let value = localStorage.getItem(key);
@@ -55,17 +61,17 @@ export default class Settings extends React.Component {
           <li className="extraSettings">
             <ul>
             <input id="1" type="checkbox" onClick={()=> this.setItem('seconds')} id='secondsStatus' />
-            <label for="1">Seconds</label>
+            <label htmlFor="1">Seconds</label>
             </ul>
             <ul>
             <input id="2" type="checkbox" onClick={()=> this.setItem('24hour')} id='24hourStatus' />
-            <label for="2">24 Hour</label>
+            <label htmlFor="2">24 Hour</label>
             </ul>
           </li>
         </div>
         </div>
-        <div className='section'>
-          <h4>Greeting</h4>
+        <div style={{ "lineHeight": "1px" }} className='section'>
+          <h4>Greeting</h4>       
           <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[1], document.getElementsByClassName('expandIcons')[1])} />
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('greeting')} id='greetingStatus' />
@@ -74,7 +80,11 @@ export default class Settings extends React.Component {
           <li className="extraSettings">
             <ul>
             <input id="3" type="checkbox" onClick={()=> this.setItem('events')} id='eventsStatus' />
-            <label for="3">Events</label>
+            <label htmlFor="3">Events</label>
+            </ul>
+            <ul>
+              <p>Name for greeting</p>
+              <input type='text' id='greetingName'></input>
             </ul>
           </li>
         </div>
@@ -94,16 +104,10 @@ export default class Settings extends React.Component {
           </label>
           <li className="extraSettings">
             <ul>
-              <p>Adjust Blur</p>
+              <p>Adjust Blur (<span id='blurAmount'></span>%)</p>
             </ul>
             <ul>
-              <input className="range" type="range" min="1" max="100" />
-            </ul>
-            <ul>
-              <p>Adjust Brightness</p>
-            </ul>
-            <ul>
-              <input className="range" type="range" min="1" max="100" />
+              <input className="range" type="range" min="0" max="100" id='blurRange' onInput={() => document.getElementById('blurAmount').innerText = document.getElementById('blurRange').value} />
             </ul>
           </li>
         </div>
@@ -116,8 +120,8 @@ export default class Settings extends React.Component {
           </label>
           <li className="extraSettings">
             <ul>
-            <label for="4">Search Engine</label>
-            <select name="4">
+            <label htmlFor="4">Search Engine</label>
+            <select name="4" id='searchBar'>
               <option value="duckduckgo">DuckDuckGo</option>
               <option value="google">Google</option>
               <option value="bing">Bing</option>
@@ -140,8 +144,16 @@ export default class Settings extends React.Component {
             <span className="slider"></span>
           </label>
         </div>
-        <button className="apply" onClick={() => window.location.reload()}>Apply</button>
+        <div className='section'>
+          <h4>Dark Theme (experimental)</h4>
+          <label className="switch">
+            <input type="checkbox" onClick={()=> this.setItem('darkTheme')} id='darkThemeStatus'  />
+            <span className="slider"></span>
+          </label>
+        </div>
+        <button className="apply" onClick={() => this.saveStuff()}>Apply</button>
       </div>
+      
     </div>;
   }
 }

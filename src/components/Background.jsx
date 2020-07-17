@@ -2,7 +2,6 @@
 import React from 'react';
 import supportsWebP from 'supports-webp';
 
-
 export default class Background extends React.Component {
   doOffline() {
     const photo = Math.floor(Math.random() * (20 - 1 + 1)) + 1; // There are 20 images in the offline-images folder
@@ -20,8 +19,8 @@ export default class Background extends React.Component {
       default: photographer = 'Unknown'; break;
     }
 
+    document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(../offline-images/${photo}.jpeg)`); // Set background and blur etc
     document.getElementById('photographer').innerText = `Photo by ${photographer} (Pexels)`; // Set the credit
-    document.getElementById('backgroundImage').style.backgroundImage = `url(../offline-images/${photo}.jpeg)`; // Set the background
   }
 
   async setBackground() {    
@@ -36,7 +35,7 @@ export default class Background extends React.Component {
       let data = await fetch(requestURL);
       data = await data.json(); 
 
-      document.getElementById('backgroundImage').style.backgroundImage = `url(${data.file})`; // Set the background
+      document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${data.file})`); // Set background and blur etc
       document.getElementById('photographer').innerText = `Photo by ${data.photographer}`; // Set the credit
       document.getElementById('location').innerText = `${data.location}`; // Set the location tooltip
     } catch (e) { // ..and if that fails we load one locally

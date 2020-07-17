@@ -33,6 +33,11 @@ export default class App extends React.Component {
       localStorage.setItem('quote', true);
       localStorage.setItem('firstRun', true);
     }
+
+    let modalClassList = 'Modal';
+    const darkTheme = localStorage.getItem('darkTheme');
+    if (darkTheme === 'true') modalClassList = 'Modal dark';
+  
     return (
       <React.Fragment>
         <div id='backgroundImage'></div>
@@ -44,10 +49,10 @@ export default class App extends React.Component {
             <Clock/> 
             <Quote/>
             <Credit/>
-            <Modal isOpen={this.state.settingsModal} className='Modal' overlayClassName="Overlay" ariaHideApp={false}>
+            <Modal isOpen={this.state.settingsModal} className={modalClassList} overlayClassName="Overlay" ariaHideApp={false}>
               <Settings modalClose={() => this.setState({ settingsModal: false })} />
             </Modal>
-            <Modal isOpen={this.state.updateModal} className='Modal' overlayClassName="Overlay" ariaHideApp={false}>
+            <Modal isOpen={this.state.updateModal} className={modalClassList} overlayClassName="Overlay" ariaHideApp={false}>
               <Update modalClose={() => this.setState({ updateModal: false })} />
             </Modal>
         </div>
