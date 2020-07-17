@@ -1,6 +1,8 @@
 //* Imports
 import React from 'react';
 import Quotes from '@muetab/quotes';
+import copy from 'copy-text-to-clipboard';
+import FileCopy from '@material-ui/icons/AttachFile';
 
 export default class Quote extends React.Component {
   constructor(...args) {
@@ -38,6 +40,13 @@ export default class Quote extends React.Component {
     }
   }
 
+  copyQuote() {
+    copy(`${this.state.quote} - ${this.state.author}`);
+    var x = document.getElementById('toast');
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  } 
+
   componentDidMount() {
     const enabled = localStorage.getItem('quote');
     if (enabled === 'false') return;
@@ -46,9 +55,17 @@ export default class Quote extends React.Component {
 
   render() {
     return [
-      <h1 className='quote'>{`${this.state.quote}`}</h1>,
-      // <i class="material-icons">perm_identity</i>,
-      <h1 className='quoteauthor'>{`${this.state.author}`}</h1>,
+        <h1 className='quote'>{`${this.state.quote}`}</h1>,
+        <h1 className='quoteauthor'>{this.state.author} <FileCopy className='copyButton' onClick={() => this.copyQuote() }></FileCopy></h1>,
     ];
   }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 }

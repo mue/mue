@@ -9,6 +9,7 @@ import Credit from './components/Credit';
 import Navbar from './components/Navbar';
 import Settings from './components/Settings';
 import Update from './components/Update';
+import Toast from './components/Toast';
 import Modal from 'react-modal';
 import './scss/index.scss'; 
 
@@ -20,7 +21,7 @@ export default class App extends React.Component {
 
     this.state = { 
       settingsModal: false, 
-      updateModal: false 
+      updateModal: false
     };
   }
 
@@ -47,8 +48,9 @@ export default class App extends React.Component {
         <Navbar settingsModalOpen={() => this.setState({ settingsModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} />
             <Greeting/>
             <Clock/> 
-            <Quote/>
+            <Quote />
             <Credit/>
+            <Toast/>
             <Modal isOpen={this.state.settingsModal} className={modalClassList} overlayClassName="Overlay" ariaHideApp={false}>
               <Settings modalClose={() => this.setState({ settingsModal: false })} />
             </Modal>

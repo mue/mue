@@ -1,0 +1,96 @@
+#toast {
+    visibility: hidden;
+    text-align: center;
+    position: fixed;
+    z-index: 2;
+    bottom: 30px;
+    padding: 10px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    // backdrop-filter: blur(20px);  stupid firefox :(
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+    text-align: left;
+    font-size: 16px;
+    width: auto;
+    bottom: 30px;
+    right: 30px;
+}
+
+.copyButton, hr {
+    display: inline;
+    vertical-align: middle;
+}
+
+hr {
+    height: 20px;
+    width: 1px;
+    margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+#toast>img {
+    height: 20px;
+    width: auto;
+    float: left;
+}
+
+#toast>hr {
+    margin-left: 10px;
+    margin-right: 10px;
+}

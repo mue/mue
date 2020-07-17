@@ -28,8 +28,16 @@ export default class Settings extends React.Component {
   }
 
   componentDidMount() {
+    document.getElementById('greetingName').value = localStorage.getItem('greetingName');
+
     for (const key of Object.keys(localStorage)) {
       let value = localStorage.getItem(key);
+
+      if (key === 'blur') {
+        document.getElementById('blurAmount').innerText = value;
+        document.getElementById('blurRange').value = value;
+      }
+  
       const tag = document.getElementById(`${key}Status`);
       
       if (tag) {
@@ -90,14 +98,20 @@ export default class Settings extends React.Component {
         </div>
         <div className='section'>
           <h4>Quote</h4>
+          <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[2], document.getElementsByClassName('expandIcons')[2])} />
           <label className="switch">
             <input id="quoteStatus" type="checkbox" onClick={()=> this.setItem('quote')} id='quoteStatus' />
             <span className="slider"></span>
-          </label>
+          </label>   <li className="extraSettings">
+            <ul>
+            <input id="5" type="checkbox" onClick={()=> this.setItem('copyButton')} id='copyButtonStatus' />
+            <label htmlFor="5">Copy Button</label>
+            </ul>
+          </li>
         </div>
         <div className='section'>
           <h4>Background</h4>
-          <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[2], document.getElementsByClassName('expandIcons')[2])} />
+          <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])} />
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('background')} id='backgroundStatus'  />
             <span className="slider"></span>
@@ -113,7 +127,7 @@ export default class Settings extends React.Component {
         </div>
         <div className='section'>
           <h4>Search Bar</h4>
-          <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])} />
+          <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[4], document.getElementsByClassName('expandIcons')[4])} />
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('searchBar')} id='searchBarStatus'  />
             <span className="slider"></span>
