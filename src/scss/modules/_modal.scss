@@ -1,14 +1,21 @@
 .Modal {
+  color: #000;
   background-color: #fff;
-  width: 600px;
-  margin: 0 auto;
-  margin-top: 40px;
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.3);
   border: none;
   opacity: 1;
   z-index: -2;
-  height: auto;
   padding: 20px;
   cursor: hand;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+a.modalLink {
+  color: #5352ed;
+  cursor: pointer;
 }
 
 .Overlay {
@@ -19,83 +26,44 @@
   bottom: 0;
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked+.slider {
-  background-color: #2196F3;
-}
-
-input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-
-.Modal:focus {
-  outline: 0;
-}
-
 .closeModal {
   float: right;
   font-size: 2em;
   cursor: pointer;
-}
 
-.closeModal:hover {
-  color: grey;
+  &:hover {
+    color: grey;
+  }
 }
 
 .dark {
   background-color: #2f3542 !important;
   color: white !important;
+}
+
+.ReactModal__Html--open,
+.ReactModal__Body--open {
+  overflow: hidden; /* prevents background page from scrolling when the modal is open */
+}
+
+.ReactModal__Overlay {
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ReactModal__Content {
+  width: 500px;
+  max-width: 600px;
+  max-height: calc(100vh - 10vh);
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+  position: relative;
 }

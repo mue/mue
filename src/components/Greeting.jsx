@@ -39,7 +39,7 @@ export default class Greeting extends React.Component {
     let data = localStorage.getItem('greetingName');
 
     if (typeof data === 'string') {
-      data = data.replace(/\s/g, '');
+      data = data.replace(/\s/g, ' ');
       if (data.length > 0) name = `, ${data}`;
     }
 

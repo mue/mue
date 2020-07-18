@@ -27,6 +27,18 @@ export default class Background extends React.Component {
     const enabled = localStorage.getItem('offlineMode');
     if (enabled === 'true') return this.doOffline();
 
+    const colour = localStorage.getItem('customBackgroundColour');
+    if (colour) {
+      document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
+      return document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-color: ${colour}`); // Set background and blur etc
+    }
+
+    const custom = localStorage.getItem('customBackground');
+    if (custom) {
+      document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
+      return document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${custom})`); // Set background and blur etc
+    }
+
     try { // First we try and get an image from the API...
       let requestURL;
       const enabled = localStorage.getItem('webp');

@@ -4,9 +4,9 @@ export default class Update extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      title: '',
+      title: 'Loading...',
       date: '',
-      content: ''
+      content: 'Loading...'
     };
  }
 

@@ -1,11 +1,4 @@
-.Modal {
-  width: auto;
-  color: #000;
-  background-color: #fff;
-  max-width: 500px;
-  box-shadow: 0 0 200px rgba(0, 0, 0, 0.3);
-  z-index: 4;
-}
+$gradient: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
 
 .switch {
   position: relative;
@@ -13,12 +6,12 @@
   width: 60px;
   height: 34px;
   float: right;
-}
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 }
 
 .slider {
@@ -32,35 +25,56 @@
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 34px;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  &.round:before {
+    border-radius: 50%;
+  }
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 50%;
+input {
+  &[type=text] {
+    width: 200px;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    border-image-slice: 1;
+    border-image-source: $gradient;
+    outline: none;
+    font-family: 'Lexend Deca', sans-serif;
+    background: transparent;
+  }
+
+  &:checked + .slider {
+    background: $gradient;
+  
+    &:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  }
+
+  &:focus + .slider {
+    box-shadow: 0 0 1px #e67e22;
+  }
 }
 
-input:checked + .slider {
-  background: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
+::-webkit-scrollbar {
+  width: 5px;
+  background: #555;
 }
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #e67e22;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
 
 h4, .switch, .expandIcons {
   display: inline;
@@ -76,14 +90,12 @@ h4, #engines {
   margin-bottom: 20px;
 }
 
-
-.apply {
+%settingsButton {
   height: 45px;
   width: 130px;
   text-align: center;
   border: none;
   transition: 0.25s;
-  background-color: #dd3b67;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -97,7 +109,6 @@ h4, #engines {
 
   &:before {
     content: '';
-    background: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
     position: absolute;
     width: 0%;
     top: 0;
@@ -117,6 +128,23 @@ h4, #engines {
   }
 }
 
+.apply {
+  @extend %settingsButton;
+  background-color: #dd3b67;
+  &:before {
+    background: $gradient;
+  }
+}
+
+.reset {
+  @extend %settingsButton;
+  background-color: #ffb032;
+  margin-left: 20px;
+  &:before {
+    background: linear-gradient(90deg, #dd3b67 0%, #ffb032 100%);
+  }
+}
+
 .expandIcons {
   position: relative;
   font-size: 25px;
@@ -126,14 +154,17 @@ h4, #engines {
   transition-duration: 0.5s;
 }
 
-$gradient: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
-
 .extraSettings {
   display: none;
   border-left: 10px solid;
   border-image-slice: 1;
   border-width: 5px;
   border-image-source: linear-gradient(to bottom, #ffb032 0%, #dd3b67 100%);
+
+  > p {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 ul {
@@ -143,11 +174,6 @@ ul {
 
 li {
   margin-top: 1px;
-}
-
-.extraSettings > p {
-  margin: 0;
-  padding: 0;
 }
 
 .range {
@@ -160,32 +186,22 @@ li {
   background: #ecf0f1;
   border-radius: 12px;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
-}
 
-.range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);;
-  cursor: pointer;
-}
-
-.range::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);;
-  cursor: pointer;
-}
-
-input[type=text] {
-  width: 200px;
-  padding: 0.5rem 1rem;
-  box-sizing: border-box;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
-  outline: none;
-  font-family: 'Lexend Deca', sans-serif;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 12px;
+    background: $gradient;
+    cursor: pointer;
+  }
+  
+  &::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 12px;
+    background: $gradient;
+    cursor: pointer;
+  }
 }

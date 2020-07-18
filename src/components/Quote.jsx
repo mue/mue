@@ -28,9 +28,7 @@ export default class Quote extends React.Component {
     try { // First we try and get a quote from the API...
       let data = await fetch('https://api.muetab.xyz/getQuote');
       data = await data.json();
-      if (data.statusCode === 429) { // If we hit the ratelimit, we fallback to local quotes
-        this.doOffline();
-      }
+      if (data.statusCode === 429) this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
       this.setState({ 
         quote: '"' + data.quote + '"', 
         author: data.author 
@@ -42,9 +40,9 @@ export default class Quote extends React.Component {
 
   copyQuote() {
     copy(`${this.state.quote} - ${this.state.author}`);
-    var x = document.getElementById('toast');
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    let toast = document.getElementById('toast');
+    toast.className = 'show';
+    setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
   } 
 
   componentDidMount() {
@@ -54,18 +52,13 @@ export default class Quote extends React.Component {
   }
 
   render() {
+    let copy = <FileCopy className='copyButton' onClick={() => this.copyQuote() }></FileCopy>;
+    const enabled = localStorage.getItem('copyButton');
+    if (enabled === 'false') copy = '';
+
     return [
         <h1 className='quote'>{`${this.state.quote}`}</h1>,
-        <h1 className='quoteauthor'>{this.state.author} <FileCopy className='copyButton' onClick={() => this.copyQuote() }></FileCopy></h1>,
+    <h1 className='quoteauthor'>{this.state.author} {copy}</h1>,
     ];
   }
- 
- 
- 
- 
- 
- 
- 
- 
- 
 }

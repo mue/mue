@@ -8,14 +8,58 @@
 @import 'modules/modal';
 @import 'modules/settings';
 @import 'modules/toast';
-@import 'modules/miscellaneous';
+
+body {
+    background: #2f3640;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Lexend Deca', sans-serif;
+    overflow: hidden;
+}
+
+#center {
+    margin-left: 2vw;
+    margin-right: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+::placeholder {
+    color: #ffffff;
+    opacity: 1;
+}
+
+#root {
+    min-height: 100vh;
+    display: grid;
+    color: white;
+}
 
 #backgroundImage {
-    height:100vh;
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     z-index: 0;
     border: none;
+    transform: scale(1.1);
+}
+
+
+
+@font-face {
+    font-family: 'Lexend Deca';
+    src: url('/./fonts/LexendDeca-Regular.woff2') format('woff2');
 }

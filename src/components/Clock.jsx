@@ -16,9 +16,7 @@ export default class Clock extends React.Component {
       const now = new Date();
       let sec = '';
   
-      if (localStorage.getItem('seconds') === 'true') {
-        sec = `:${('00' + now.getSeconds()).slice(-2)}`;
-      }
+      if (localStorage.getItem('seconds') === 'true') sec = `:${('00' + now.getSeconds()).slice(-2)}`;
 
       if (localStorage.getItem('24hour') === 'true') {
         this.setState({ 

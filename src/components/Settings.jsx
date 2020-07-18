@@ -13,7 +13,7 @@ export default class Settings extends React.Component {
 
     localStorage.setItem(key, val);
     //document.getElementById(`${key}Status`).innerHTML = val === true ? 'ON' : 'OFF';
-    console.log(`[DEBUG] setItem(${key}, ${old} -> ${val})`);
+    // console.log(`[DEBUG] setItem(${key}, ${old} -> ${val})`);
   }
 
   toggleExtra(element, element2) {
@@ -24,7 +24,41 @@ export default class Settings extends React.Component {
   saveStuff() {
     localStorage.setItem('blur', document.getElementById('blurRange').value); // this is better than inline onChange for performance
     localStorage.setItem('greetingName', document.getElementById('greetingName').value);
+    localStorage.setItem('customBackground', document.getElementById('customBackground').value);
+    if (!document.getElementById('customBackgroundColour').enabled === 'false') localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundColour').value);
     window.location.reload();
+  }
+
+  resetItem(key) {
+    switch (key) {
+      case 'greetingName':
+        localStorage.setItem('greetingName', '');
+        document.getElementById('greetingName').value = '';
+        break;
+      case 'customBackgroundColour':
+        localStorage.setItem('customBackgroundColour', '');
+        document.getElementById('customBackgroundColour').enabled = 'false';
+        break;
+      case 'customBackground':
+        localStorage.setItem('customBackground', '');
+        document.getElementById('customBackground').value = '';
+        break;
+      case 'blur':
+        localStorage.setItem('blur', 0);
+        document.getElementById('blurRange').value = 0;
+        document.getElementById('blurAmount').innerText = '0';
+        break;
+      default:
+        console.log('[ERROR] resetItem requires a key!');
+    }
+    this.showToast();
+  }
+
+  showToast() {
+    let toast = document.getElementById('toast');
+    toast.innerText = 'Reset successfully!';
+    toast.className = 'show';
+    setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
   }
 
   componentDidMount() {
@@ -50,6 +84,10 @@ export default class Settings extends React.Component {
         tag.checked = value;
       }
     }
+
+    document.addEventListener('keyup', (event) => {
+      if (event.keyCode === 13) this.saveStuff();
+    });
   }
 
   render() {
@@ -91,7 +129,7 @@ export default class Settings extends React.Component {
             <label htmlFor="3">Events</label>
             </ul>
             <ul>
-              <p>Name for greeting</p>
+              <p>Name for greeting <a className="modalLink" onClick={() => this.resetItem('greetingName')}>Reset</a></p>
               <input type='text' id='greetingName'></input>
             </ul>
           </li>
@@ -102,7 +140,8 @@ export default class Settings extends React.Component {
           <label className="switch">
             <input id="quoteStatus" type="checkbox" onClick={()=> this.setItem('quote')} id='quoteStatus' />
             <span className="slider"></span>
-          </label>   <li className="extraSettings">
+          </label>
+          <li className="extraSettings">
             <ul>
             <input id="5" type="checkbox" onClick={()=> this.setItem('copyButton')} id='copyButtonStatus' />
             <label htmlFor="5">Copy Button</label>
@@ -118,21 +157,29 @@ export default class Settings extends React.Component {
           </label>
           <li className="extraSettings">
             <ul>
-              <p>Adjust Blur (<span id='blurAmount'></span>%)</p>
+              <p>Adjust Blur (<span id='blurAmount'></span>%) <a className="modalLink" onClick={() => this.resetItem('blur')}>Reset</a></p>
             </ul>
             <ul>
               <input className="range" type="range" min="0" max="100" id='blurRange' onInput={() => document.getElementById('blurAmount').innerText = document.getElementById('blurRange').value} />
+            </ul>
+            <ul>
+              <p>Custom Background URL <a className="modalLink" onClick={() => this.resetItem('customBackground')}>Reset</a></p>
+              <input type='text' id='customBackground'></input>
+            </ul>
+            <ul>
+              <p>Custom Background Colour <a className="modalLink" onClick={() => this.resetItem('customBackgroundColour')}>Reset</a></p>
+              <input type='color' id='customBackgroundColour'></input>
             </ul>
           </li>
         </div>
         <div className='section'>
           <h4>Search Bar</h4>
-          <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[4], document.getElementsByClassName('expandIcons')[4])} />
+          {/* <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[4], document.getElementsByClassName('expandIcons')[4])} /> */ }
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('searchBar')} id='searchBarStatus'  />
             <span className="slider"></span>
           </label>
-          <li className="extraSettings">
+          {/* <li className="extraSettings">
             <ul>
             <label htmlFor="4">Search Engine</label>
             <select name="4" id='searchBar'>
@@ -142,7 +189,7 @@ export default class Settings extends React.Component {
               <option value="custom">Custom</option>
             </select>
             </ul>
-          </li>
+          </li> */}
         </div>
         <div className='section'>
           <h4>Offline Mode</h4>
@@ -166,6 +213,7 @@ export default class Settings extends React.Component {
           </label>
         </div>
         <button className="apply" onClick={() => this.saveStuff()}>Apply</button>
+        <button className="reset" onClick={() => this.props.setDefaultSettings()}>Reset</button>
       </div>
       
     </div>;

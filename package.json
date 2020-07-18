@@ -13,7 +13,7 @@
   "homepage": "https://muetab.xyz",
   "bugs": "https://github.com/mue/mue/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BBUG%5D",
   "license": "BSD-3-Clause",
-  "version": "0.7.1",
+  "version": "3.0",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "env INLINE_RUNTIME_CHUNK=false && react-scripts build",
+    "build": "react-scripts build",
     "chrome": "cp manifest/chrome.json build/manifest.json",
     "firefox": "cp manifest/firefox.json build/manifest.json",
     "opera": "cp manifest/opera.json build/manifest.json && cp manifest/background-opera.js build/"
