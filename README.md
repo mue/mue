@@ -39,12 +39,12 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 * Fast and free
 * Supports multiple browsers
 * Actively developed and open source
-* Automatically updating API (with no tracking!) with new photos, quotes and offline mode
+* Automatically updating API (no tracking) with new photos, quotes and offline mode
 * Search bar
+* Settings - enable/disable various features and customise parts of Mue
+* Update modal, copy button and more!
 
 ## Planned Features
-* Settings - enable/disable features!
-* Update modal, copy button and more!
 * Multilingual support
 
 ## Installation
@@ -127,17 +127,17 @@ Link: [GitHub Releases](https://github.com/mue/mue/releases)
 ## Credits
 ### Maintainers
 [ohlookitsderpy](https://github.com/ohlookitsderpy) - Founder, Lead development, Photographer <br>
-[TurboMarshmello](https://github.com/TurboMarshmello) - Name, Lead design, <br>
+[TurboMarshmello](https://github.com/TurboMarshmello) - Name, Lead design, Photographer <br>
+
+### Contributors
+[Wessel](https://github.com/Wessel) - Development <br>
+[Isaac](https://github.com/eartharoid) - QA, Development, Photographer <br>
+[Chris](https://github.com/auguwu) - Development <br>
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support <br>
 [Google Fonts](https://fonts.google.com/specimen/Lexend+Deca) - Lexend Deca font
-
-### Contributors
-[Wessel](https://github.com/Wessel) - Development <br>
-[Isaac](https://github.com/eartharoid) - Development <br>
-[Chris](https://github.com/auguwu) - Development <br>
 
 And many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/MrSheldon), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox/), [Oded Shapira](https://twitter.com/dondishdev) and [Nikka Lai](#) for letting us use their wonderful photographs
