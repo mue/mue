@@ -16,21 +16,15 @@
 .modalLink {
   color: #5352ed;
   cursor: pointer;
-}
-
-.Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .closeModal {
   float: right;
   font-size: 2em;
   cursor: pointer;
-
   &:hover {
     color: grey;
   }
@@ -46,11 +40,13 @@
   overflow: hidden; /* prevents background page from scrolling when the modal is open */
 }
 
-.ReactModal__Overlay {
+.Overlay {
   position: fixed;
   z-index: 999999;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100vw;
   height: 90vh;
   display: flex;

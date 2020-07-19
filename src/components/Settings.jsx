@@ -199,15 +199,16 @@ export default class Settings extends React.Component {
             <span className="slider"></span>
           </label>
         </div>
+        <h3>Experimental</h3>
         <div className='section'>
-          <h4>Enable WebP (experimental)</h4>
+          <h4>Enable WebP</h4>
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('webp')} id='webpStatus'  />
             <span className="slider"></span>
           </label>
         </div>
         <div className='section'>
-          <h4>Dark Theme (experimental)</h4>
+          <h4>Dark Theme</h4>
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('darkTheme')} id='darkThemeStatus'  />
             <span className="slider"></span>
