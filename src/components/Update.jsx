@@ -20,8 +20,8 @@ export default class Update extends React.Component {
   try { // First we try and get a quote from the API...
     let data = await fetch('https://api.muetab.xyz/getUpdate');
     data = await data.json();
-    this.setState({ 
-      title: data.title, 
+    this.setState({
+      title: data.title,
       content: data.content
     });
   } catch (e) {

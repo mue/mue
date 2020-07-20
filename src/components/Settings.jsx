@@ -1,3 +1,4 @@
+// eslint-disable
 import React from 'react';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
@@ -25,31 +26,24 @@ export default class Settings extends React.Component {
     localStorage.setItem('blur', document.getElementById('blurRange').value); // this is better than inline onChange for performance
     localStorage.setItem('greetingName', document.getElementById('greetingName').value);
     localStorage.setItem('customBackground', document.getElementById('customBackground').value);
-    if (!document.getElementById('customBackgroundColour').enabled === 'false') localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundColour').value);
+    //if (!document.getElementById('customBackgroundColour').enabled === 'false') localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundColour').value);
     window.location.reload();
   }
 
   resetItem(key) {
     switch (key) {
-      case 'greetingName':
-        localStorage.setItem('greetingName', '');
-        document.getElementById('greetingName').value = '';
-        break;
+      case 'greetingName': document.getElementById('greetingName').value = ''; break;
       case 'customBackgroundColour':
         localStorage.setItem('customBackgroundColour', '');
         document.getElementById('customBackgroundColour').enabled = 'false';
         break;
-      case 'customBackground':
-        localStorage.setItem('customBackground', '');
-        document.getElementById('customBackground').value = '';
-        break;
+      case 'customBackground': document.getElementById('customBackground').value = ''; break;
       case 'blur':
         localStorage.setItem('blur', 0);
         document.getElementById('blurRange').value = 0;
         document.getElementById('blurAmount').innerText = '0';
         break;
-      default:
-        console.log('[ERROR] resetItem requires a key!');
+      default: console.log('[ERROR] resetItem requires a key!');
     }
     this.showToast();
   }
@@ -63,6 +57,12 @@ export default class Settings extends React.Component {
 
   componentDidMount() {
     document.getElementById('greetingName').value = localStorage.getItem('greetingName');
+    document.getElementById('customBackground').value = localStorage.getItem('customBackground');
+    /*const hex = localStorage.getItem('customBackgroundColour');
+    if (!hex === '') {
+      document.getElementById('customBackgroundColour').value = hex;
+      document.getElementById('customBackgroundHex').innerText = hex;
+    }*/
 
     for (const key of Object.keys(localStorage)) {
       let value = localStorage.getItem(key);
@@ -71,14 +71,14 @@ export default class Settings extends React.Component {
         document.getElementById('blurAmount').innerText = value;
         document.getElementById('blurRange').value = value;
       }
-  
+
       const tag = document.getElementById(`${key}Status`);
-      
+
       if (tag) {
         switch (value) {
           case 'true': value = true; break;
           case 'false': value = false; break;
-          default: value = true; 
+          default: value = true;
         }
 
         tag.checked = value;
@@ -88,6 +88,12 @@ export default class Settings extends React.Component {
     document.addEventListener('keyup', (event) => {
       if (event.keyCode === 13) this.saveStuff();
     });
+
+    const darkTheme = localStorage.getItem('darkTheme');
+    if (darkTheme === 'true') {
+      document.getElementById('customBackground').style.color = 'white';
+      document.getElementById('greetingName').style.color = 'white';
+    }
   }
 
   render() {
@@ -98,7 +104,7 @@ export default class Settings extends React.Component {
       <div className='columns'>
           <div className='group'>
           <div className='section'>
-            <h4>Time</h4>     
+            <h4>Time</h4>
             <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[0], document.getElementsByClassName('expandIcons')[0])} />
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('time')} id='timeStatus' />
@@ -106,18 +112,18 @@ export default class Settings extends React.Component {
           </label>
           <li className="extraSettings">
             <ul>
-            <input id="1" type="checkbox" onClick={()=> this.setItem('seconds')} id='secondsStatus' />
+            <input name="1" type="checkbox" onClick={()=> this.setItem('seconds')} id='secondsStatus' />
             <label htmlFor="1">Seconds</label>
             </ul>
             <ul>
-            <input id="2" type="checkbox" onClick={()=> this.setItem('24hour')} id='24hourStatus' />
+            <input name="2" type="checkbox" onClick={()=> this.setItem('24hour')} id='24hourStatus' />
             <label htmlFor="2">24 Hour</label>
             </ul>
           </li>
         </div>
         </div>
         <div style={{ "lineHeight": "1px" }} className='section'>
-          <h4>Greeting</h4>       
+          <h4>Greeting</h4>
           <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[1], document.getElementsByClassName('expandIcons')[1])} />
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('greeting')} id='greetingStatus' />
@@ -125,11 +131,11 @@ export default class Settings extends React.Component {
           </label>
           <li className="extraSettings">
             <ul>
-            <input id="3" type="checkbox" onClick={()=> this.setItem('events')} id='eventsStatus' />
+            <input name="3" type="checkbox" onClick={()=> this.setItem('events')} id='eventsStatus' />
             <label htmlFor="3">Events</label>
             </ul>
             <ul>
-              <p>Name for greeting <a className="modalLink" onClick={() => this.resetItem('greetingName')}>Reset</a></p>
+              <p>Name for greeting <span className="modalLink" onClick={() => this.resetItem('greetingName')}>Reset</span></p>
               <input type='text' id='greetingName'></input>
             </ul>
           </li>
@@ -138,12 +144,12 @@ export default class Settings extends React.Component {
           <h4>Quote</h4>
           <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[2], document.getElementsByClassName('expandIcons')[2])} />
           <label className="switch">
-            <input id="quoteStatus" type="checkbox" onClick={()=> this.setItem('quote')} id='quoteStatus' />
+            <input type="checkbox" onClick={()=> this.setItem('quote')} id='quoteStatus' />
             <span className="slider"></span>
           </label>
           <li className="extraSettings">
             <ul>
-            <input id="5" type="checkbox" onClick={()=> this.setItem('copyButton')} id='copyButtonStatus' />
+            <input name="5" type="checkbox" onClick={()=> this.setItem('copyButton')} id='copyButtonStatus' />
             <label htmlFor="5">Copy Button</label>
             </ul>
           </li>
@@ -157,19 +163,20 @@ export default class Settings extends React.Component {
           </label>
           <li className="extraSettings">
             <ul>
-              <p>Adjust Blur (<span id='blurAmount'></span>%) <a className="modalLink" onClick={() => this.resetItem('blur')}>Reset</a></p>
+              <p>Adjust Blur (<span id='blurAmount'></span>%) <span className="modalLink" onClick={() => this.resetItem('blur')}>Reset</span></p>
             </ul>
             <ul>
               <input className="range" type="range" min="0" max="100" id='blurRange' onInput={() => document.getElementById('blurAmount').innerText = document.getElementById('blurRange').value} />
             </ul>
             <ul>
-              <p>Custom Background URL <a className="modalLink" onClick={() => this.resetItem('customBackground')}>Reset</a></p>
+              <p>Custom Background URL <span className="modalLink" onClick={() => this.resetItem('customBackground')}>Reset</span></p>
               <input type='text' id='customBackground'></input>
             </ul>
-            <ul>
-              <p>Custom Background Colour <a className="modalLink" onClick={() => this.resetItem('customBackgroundColour')}>Reset</a></p>
-              <input type='color' id='customBackgroundColour'></input>
-            </ul>
+            { /*<ul>
+              <p>Custom Background Colour <span className="modalLink" onClick={() => this.resetItem('customBackgroundColour')}>Reset</span></p>
+              <input name='colour' type='color' id='customBackgroundColour' onChange={() => document.getElementById('customBackgroundHex').innerText = document.getElementById('customBackgroundColour').value}></input>
+              <label for='colour' id='customBackgroundHex'>#00000</label>
+            </ul>  */}
           </li>
         </div>
         <div className='section'>
@@ -198,15 +205,16 @@ export default class Settings extends React.Component {
             <span className="slider"></span>
           </label>
         </div>
+        <h3>Experimental</h3>
         <div className='section'>
-          <h4>Enable WebP (experimental)</h4>
+          <h4>Enable WebP</h4>
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('webp')} id='webpStatus'  />
             <span className="slider"></span>
           </label>
         </div>
         <div className='section'>
-          <h4>Dark Theme (experimental)</h4>
+          <h4>Dark Theme</h4>
           <label className="switch">
             <input type="checkbox" onClick={()=> this.setItem('darkTheme')} id='darkThemeStatus'  />
             <span className="slider"></span>
@@ -215,7 +223,7 @@ export default class Settings extends React.Component {
         <button className="apply" onClick={() => this.saveStuff()}>Apply</button>
         <button className="reset" onClick={() => this.props.setDefaultSettings()}>Reset</button>
       </div>
-      
+
     </div>;
   }
 }

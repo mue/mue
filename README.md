@@ -5,7 +5,7 @@
 
 [![License](https://img.shields.io/badge/license-BSD%203-blue?style=flat-square)](/LICENSE) [![Discord](https://img.shields.io/discord/659129207208804381?label=discord&color=7289DA&style=flat-square)](https://discord.gg/zv8C9F8) [![Code Size]( https://img.shields.io/github/languages/code-size/mue/mue?color=green&label=size&style=flat-square)]()
 <br>
-[![Microsoft Edge](https://img.shields.io/badge/dynamic/json?style=flat-square&label=microsoft%20edge&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Faepnglgjfokepefimhbnibfjekidhmja)]() [![](https://img.shields.io/amo/v/mue?label=firefox&style=flat-square)]() [![](https://img.shields.io/chrome-web-store/v/bngmbednanpcfochchhgbkookpiaiaid?label=chrome&style=flat-square)]()
+[![Microsoft Edge](https://img.shields.io/badge/dynamic/json?style=flat-square&label=microsoft%20edge&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Faepnglgjfokepefimhbnibfjekidhmja)](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja) [![Firefox](https://img.shields.io/amo/v/mue?label=firefox&style=flat-square)](https://addons.mozilla.org/firefox/addon/mue) [![Chrome](https://img.shields.io/chrome-web-store/v/bngmbednanpcfochchhgbkookpiaiaid?label=chrome&style=flat-square)](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 
 Mue is a fast, open and free-to-use browser extension that gives a new, fresh and customizable tab page to most modern browsers
 
@@ -39,12 +39,12 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 * Fast and free
 * Supports multiple browsers
 * Actively developed and open source
-* Automatically updating API (with no tracking!) with new photos, quotes and offline mode
+* Automatically updating API (no tracking) with new photos, quotes and offline mode
 * Search bar
+* Settings - enable/disable various features and customise parts of Mue
+* Update modal, copy button and more!
 
 ## Planned Features
-* Settings - enable/disable features!
-* Update modal, copy button and more!
 * Multilingual support
 
 ## Installation
@@ -63,7 +63,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 [Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)
 
 ### Opera/Other
-Link: [GitHub Releases](https://github.com/mue/mue/releases)
+[GitHub Releases](https://github.com/mue/mue/releases)
 
 ### Development
 #### Requirements
@@ -79,7 +79,7 @@ Link: [GitHub Releases](https://github.com/mue/mue/releases)
   <li> run <code>yarn start</code> or <code>npm start</code> to start testing
   <li> Code your heart out! (See the sections below for how to build the extension)
 </ol>
-<h2>Building</h5>
+<h2>Building</h2>
 <details>
   <summary><b>Chrome/Edge (Chromium)</b> (Click to expand)</summary>
   <ol>
@@ -95,7 +95,7 @@ Link: [GitHub Releases](https://github.com/mue/mue/releases)
   <ol>
     <li> <code>yarn run build</code> or <code>npm run build</code>
     <li> Rename <code>manifest-opera.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
-    <li> Copy <codebackground-opera.js</code> in the "manifest" folder to "build"
+    <li> Copy <code>background-opera.js</code> in the "manifest" folder to "build"
     <li> Visit <code>about://extensions</code> in Opera
     <li> Click <b>Load unpacked extension...</b> (Make sure <b>Developer Mode</b> is on)
     <li> Go to the directory containing Mue and click <b>ok</b>
@@ -127,17 +127,17 @@ Link: [GitHub Releases](https://github.com/mue/mue/releases)
 ## Credits
 ### Maintainers
 [ohlookitsderpy](https://github.com/ohlookitsderpy) - Founder, Lead development, Photographer <br>
-[TurboMarshmello](https://github.com/TurboMarshmello) - Name, Lead design, <br>
+[TurboMarshmello](https://github.com/TurboMarshmello) - Name, Lead design, Photographer <br>
+
+### Contributors
+[Wessel](https://github.com/Wessel) - Development <br>
+[Isaac](https://github.com/eartharoid) - QA, Development, Photographer <br>
+[Chris](https://github.com/auguwu) - Development <br>
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support <br>
 [Google Fonts](https://fonts.google.com/specimen/Lexend+Deca) - Lexend Deca font
-
-### Contributors
-[Wessel](https://github.com/Wessel) - Development <br>
-[Isaac](https://github.com/eartharoid) - Development <br>
-[Chris](https://github.com/auguwu) - Development <br>
 
 And many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/MrSheldon), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox/), [Oded Shapira](https://twitter.com/dondishdev) and [Nikka Lai](#) for letting us use their wonderful photographs

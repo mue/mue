@@ -3,7 +3,7 @@ import React from 'react';
 
 export default class Search extends React.Component {
   render() {
-    const enabled = localStorage.getItem('searchbar');
+    const enabled = localStorage.getItem('searchBar');
     if (enabled === 'false') return (<div></div>);
 
     const searchEngine = localStorage.getItem('searchEngine');
@@ -18,7 +18,7 @@ export default class Search extends React.Component {
 
     return (
       <div id='searchBar' className='searchbar'>
-        <form id='searchBar' className='searchbarform' action={url}> 
+        <form id='searchBar' className='searchbarform' action={url}>
             <input type='text' placeholder='Search' name='q' id='searchtext' className='searchtext'/>
             <div className='blursearcbBG'/>
           </form>

@@ -23,7 +23,7 @@ export default class Background extends React.Component {
     document.getElementById('photographer').innerText = `Photo by ${photographer} (Pexels)`; // Set the credit
   }
 
-  async setBackground() {    
+  async setBackground() {
     const enabled = localStorage.getItem('offlineMode');
     if (enabled === 'true') return this.doOffline();
 
@@ -45,7 +45,7 @@ export default class Background extends React.Component {
       if (await supportsWebP && enabled === 'true') requestURL = 'https://api.muetab.xyz/getImage?webp=true';
       else requestURL = 'https://api.muetab.xyz/getImage?category=Outdoors';
       let data = await fetch(requestURL);
-      data = await data.json(); 
+      data = await data.json();
 
       document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${data.file})`); // Set background and blur etc
       document.getElementById('photographer').innerText = `Photo by ${data.photographer}`; // Set the credit
@@ -58,7 +58,7 @@ export default class Background extends React.Component {
   componentDidMount() {
     const enabled = localStorage.getItem('background');
     if (enabled === 'false') {
-      document.getElementById('backgroundCredits').style.display = 'none'; 
+      document.getElementById('backgroundCredits').style.display = 'none';
       return;
     }
     this.setBackground();
