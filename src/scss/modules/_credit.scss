@@ -17,17 +17,15 @@
 }
 
 .locationicon {
-  font-size: calc(10px + 1.2vmin);
+  width: auto;
   cursor: pointer;
 }
 
 .MuiSvgIcon-root {
+  font-size: calc(10px + 1.5vmin) !important;
   position: absolute;
   bottom: 2px;
   left: 2px;
-  width: 100em;
-  height: 100em;
-  font-size: 2rem;
 }
 
 .credits {
@@ -36,6 +34,8 @@
   position: absolute;
   text-align: left;
   min-width: 50px;
+  width: auto;
+  height: auto;
 }
 
 .tooltip {
@@ -67,4 +67,9 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+#photographer, .locationicon {
+  display: inline;
+  vertical-align: midddle;
 }
