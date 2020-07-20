@@ -88,6 +88,12 @@ export default class Settings extends React.Component {
     document.addEventListener('keyup', (event) => {
       if (event.keyCode === 13) this.saveStuff();
     });
+
+    const darkTheme = localStorage.getItem('darkTheme');
+    if (darkTheme === 'true') {
+      document.getElementById('customBackground').style.color = 'white';
+      document.getElementById('greetingName').style.color = 'white';
+    }
   }
 
   render() {

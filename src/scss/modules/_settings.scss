@@ -100,6 +100,7 @@ h4, #engines {
   box-shadow: 20px #000;
   font-size: 1.3em;
   position: relative;
+  font-family: 'Lexend Deca', sans-serif;
 
   &:hover {
     transform: translateY(-0.10em);
@@ -226,4 +227,8 @@ input[type=color] {
     border: none;
     border-radius: 100%;
   }
+}
+
+input[type=checkbox] {
+  vertical-align: middle;
 }

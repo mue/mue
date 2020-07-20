@@ -47,8 +47,8 @@ export default class App extends React.Component {
     localStorage.setItem('greetingName', '');
 
     // Set theme depending on user preferred
-    //if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.setItem('darkTheme', true);
-    //else localStorage.setItem('darkTheme', false);
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.setItem('darkTheme', true);
+    else localStorage.setItem('darkTheme', false);
     localStorage.setItem('darkTheme', false);
 
     // Finally we set this to true so it doesn't run the function on every load
