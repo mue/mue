@@ -13,8 +13,8 @@ export default class Greeting extends React.Component {
     if (enabled === 'false') return message;
 
     // Get current month & day
-    const m = time.getMonth(); // Current month
-    const d = time.getDate(); // Current Date
+    const m = time.getMonth();
+    const d = time.getDate();
 
     if (m === 11 && d === 25) message = 'Merry Christmas'; // If it's December 25th, set the greeting string to "Merry Christmas"
     else if (m === 0 && d === 1) message = 'Happy new year'; // If the date is January 1st, set the greeting string to "Happy new year"
@@ -33,16 +33,18 @@ export default class Greeting extends React.Component {
 
     // Events
     message = this.doEvents(now, message);
+    let custom = localStorage.getItem('defaultGreetingMessage');
+    if (custom === 'false') message = '';
 
     // Name
     let name = '';
-    let data = localStorage.getItem('greetingName');
+    const data = localStorage.getItem('greetingName');
 
     if (typeof data === 'string') {
-      if (data.replace(/\s/g, '').length > 0) {
-        name = `, ${data.trim()}`;
-      }
+      if (data.replace(/\s/g, '').length > 0) name = `, ${data.trim()}`;
     }
+
+    if (custom === 'false') name = name.replace(',', '');
 
     // Set the state to the greeting string
     this.setState({

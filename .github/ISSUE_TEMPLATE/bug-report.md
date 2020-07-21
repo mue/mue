@@ -1,7 +1,7 @@
 ---
 name: Bug Report
-about: Report a bug to help improve this project
-title: "[BUG]"
+about: Report a bug to help improve Mue
+title: "[Bug]"
 labels: bug
 assignees: ''
 
@@ -14,7 +14,7 @@ A clear and concise description of what the bug is.
 Steps to reproduce the behaviour:
 1. Go to '...'
 2. Click on '....'
-4. See error in console (Ctrl + Shift + I)
+3. See error in console (Ctrl + Shift + I)
 
 **Expected behaviour**
 A clear and concise description of what you expected to happen.

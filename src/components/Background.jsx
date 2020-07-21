@@ -8,7 +8,7 @@ export default class Background extends React.Component {
     document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
 
     let photographer; // Photographer credit
-    let pixabayNumbers = [2, 3, 9, 11, 13, 14, 15]; // As there are a lot of Pixabay photos, we shorten the code a bit here
+    const pixabayNumbers = [2, 3, 9, 11, 13, 14, 15]; // As there are a lot of Pixabay photos, we shorten the code a bit here
     if (pixabayNumbers.includes(photo)) photographer = 'Pixabay';
     else switch (photo) {
       case 1: photographer = 'Tirachard Kumtanom'; break;

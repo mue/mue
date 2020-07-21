@@ -29,7 +29,6 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 	* [Contributors]()
 	* [Other](#other)
 
-
 ## Screenshot
 *May be updated in the future*
 
@@ -106,7 +105,6 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
   <ol>
     <li> <code>yarn run build</code> or <code>npm run build</code>
     <li> Rename <code>manifest-firefox.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
-    <li> Move <code>manifest/background-opera.js</code> to <code>build/background-opera.js</code>   
     <li> Visit <code>about:debugging#addons</code> in Firefox
     <li> Click <b>Load Temporary Add-on</b>
     <li> Go to the directory containing Mue and click on the <b>manifest.json</b>
@@ -122,7 +120,6 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
       <li> Enjoy your new tab!
     </ol>
 </details>
-
 
 ## Credits
 ### Maintainers

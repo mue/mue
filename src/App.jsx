@@ -45,6 +45,7 @@ export default class App extends React.Component {
     localStorage.setItem('customBackgroundColour', '');
     localStorage.setItem('customBackground', '');
     localStorage.setItem('greetingName', '');
+    localStorage.setItem('defaultGreetingMessage', true);
 
     // Set theme depending on user preferred
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.setItem('darkTheme', true);

@@ -107,17 +107,17 @@ export default class Settings extends React.Component {
             <h4>Time</h4>
             <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[0], document.getElementsByClassName('expandIcons')[0])} />
           <label className="switch">
-            <input type="checkbox" onClick={()=> this.setItem('time')} id='timeStatus' />
+            <input type="checkbox" onClick={() => this.setItem('time')} id='timeStatus' />
             <span className="slider round"></span>
           </label>
           <li className="extraSettings">
             <ul>
-            <input name="1" type="checkbox" onClick={()=> this.setItem('seconds')} id='secondsStatus' />
-            <label htmlFor="1">Seconds</label>
+              <input name="1" type="checkbox" onClick={() => this.setItem('seconds')} id='secondsStatus' />
+              <label htmlFor="1">Seconds</label>
             </ul>
             <ul>
-            <input name="2" type="checkbox" onClick={()=> this.setItem('24hour')} id='24hourStatus' />
-            <label htmlFor="2">24 Hour</label>
+              <input name="2" type="checkbox" onClick={() => this.setItem('24hour')} id='24hourStatus' />
+              <label htmlFor="2">24 Hour</label>
             </ul>
           </li>
         </div>
@@ -131,8 +131,12 @@ export default class Settings extends React.Component {
           </label>
           <li className="extraSettings">
             <ul>
-            <input name="3" type="checkbox" onClick={()=> this.setItem('events')} id='eventsStatus' />
-            <label htmlFor="3">Events</label>
+              <input name="3" type="checkbox" onClick={() => this.setItem('events')} id='eventsStatus' />
+              <label htmlFor="3">Events</label>
+            </ul>
+            <ul>
+              <input name="6" type="checkbox" onClick={() => this.setItem('defaultGreetingMessage')} id='defaultGreetingMessageStatus' />
+              <label htmlFor="6">Default Greeting Message</label>
             </ul>
             <ul>
               <p>Name for greeting <span className="modalLink" onClick={() => this.resetItem('greetingName')}>Reset</span></p>
@@ -149,7 +153,7 @@ export default class Settings extends React.Component {
           </label>
           <li className="extraSettings">
             <ul>
-            <input name="5" type="checkbox" onClick={()=> this.setItem('copyButton')} id='copyButtonStatus' />
+            <input name="5" type="checkbox" onClick={() => this.setItem('copyButton')} id='copyButtonStatus' />
             <label htmlFor="5">Copy Button</label>
             </ul>
           </li>
@@ -183,7 +187,7 @@ export default class Settings extends React.Component {
           <h4>Search Bar</h4>
           {/* <ExpandMore className='expandIcons' onClick={() => this.toggleExtra(document.getElementsByClassName('extraSettings')[4], document.getElementsByClassName('expandIcons')[4])} /> */ }
           <label className="switch">
-            <input type="checkbox" onClick={()=> this.setItem('searchBar')} id='searchBarStatus'  />
+            <input type="checkbox" onClick={() => this.setItem('searchBar')} id='searchBarStatus'  />
             <span className="slider"></span>
           </label>
           {/* <li className="extraSettings">
@@ -201,7 +205,7 @@ export default class Settings extends React.Component {
         <div className='section'>
           <h4>Offline Mode</h4>
           <label className="switch">
-            <input type="checkbox" onClick={()=> this.setItem('offlineMode')} id='offlineModeStatus'  />
+            <input type="checkbox" onClick={() => this.setItem('offlineMode')} id='offlineModeStatus'  />
             <span className="slider"></span>
           </label>
         </div>
@@ -209,21 +213,20 @@ export default class Settings extends React.Component {
         <div className='section'>
           <h4>Enable WebP</h4>
           <label className="switch">
-            <input type="checkbox" onClick={()=> this.setItem('webp')} id='webpStatus'  />
+            <input type="checkbox" onClick={() => this.setItem('webp')} id='webpStatus'  />
             <span className="slider"></span>
           </label>
         </div>
         <div className='section'>
           <h4>Dark Theme</h4>
           <label className="switch">
-            <input type="checkbox" onClick={()=> this.setItem('darkTheme')} id='darkThemeStatus'  />
+            <input type="checkbox" onClick={() => this.setItem('darkTheme')} id='darkThemeStatus'  />
             <span className="slider"></span>
           </label>
         </div>
         <button className="apply" onClick={() => this.saveStuff()}>Apply</button>
         <button className="reset" onClick={() => this.props.setDefaultSettings()}>Reset</button>
       </div>
-
     </div>;
   }
 }

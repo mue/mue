@@ -40,7 +40,7 @@ export default class Quote extends React.Component {
 
   copyQuote() {
     copy(`${this.state.quote} - ${this.state.author}`);
-    let toast = document.getElementById('toast');
+    const toast = document.getElementById('toast');
     toast.className = 'show';
     setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
   }
