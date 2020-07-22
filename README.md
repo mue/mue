@@ -129,7 +129,6 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 ### Contributors
 [Wessel](https://github.com/Wessel) - Development <br>
 [Isaac](https://github.com/eartharoid) - QA, Development, Photographer <br>
-[Chris](https://github.com/auguwu) - Development <br>
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode
