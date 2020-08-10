@@ -14,6 +14,10 @@ $gradient: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
   }
 }
 
+.hidden {
+  display: none;
+}
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -32,8 +36,8 @@ $gradient: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
     border-radius: 50%;
   }
 
@@ -56,7 +60,7 @@ input {
 
   &:checked + .slider {
     background: $gradient;
-  
+
     &:before {
       -webkit-transform: translateX(26px);
       -ms-transform: translateX(26px);
@@ -71,7 +75,12 @@ input {
 
 ::-webkit-scrollbar {
   width: 5px;
-  background: #555;
+  background: #bdc3c7;
+  height: auto;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #34495e;
 }
 
 h4, .switch, .expandIcons {
@@ -89,8 +98,6 @@ h4, #engines {
 }
 
 %settingsButton {
-  height: 45px;
-  width: 130px;
   text-align: center;
   border: none;
   transition: 0.25s;
@@ -98,12 +105,15 @@ h4, #engines {
   cursor: pointer;
   display: inline-block;
   box-shadow: 20px #000;
-  font-size: 1.3em;
   position: relative;
+  padding: 15px;
+  width: 120px;
+  font-size: 1.1em;
   font-family: 'Lexend Deca', sans-serif;
 
   &:hover {
-    transform: translateX(-0.10em);
+    transform: translateY(-0.10em);
+    outline: none;
   }
 
   &:before {
@@ -135,10 +145,43 @@ h4, #engines {
   }
 }
 
+.import {
+  float: right;
+  @extend %settingsButton;
+  background-color: #dd3b67;
+  margin-right: 5px;
+
+  &:before {
+    background: $gradient;
+  }
+}
+
+.export {
+  float: right;
+  @extend %settingsButton;
+  background-color: #dd3b67;
+
+  &:before {
+    background: $gradient;
+  }
+}
+
+.uploadbg {
+  @extend %settingsButton;
+  background-color: #dd3b67;
+  width: auto;
+  height: auto;
+  padding: 5px 18px;
+
+  &:before {
+    background: $gradient;
+  }
+}
+
 .reset {
   @extend %settingsButton;
   background-color: #ffb032;
-  margin-left: 20px;
+  margin-left: 5px;
   &:before {
     background: linear-gradient(90deg, #dd3b67 0%, #ffb032 100%);
   }
@@ -150,7 +193,6 @@ h4, #engines {
   vertical-align: middle;
   display: inline-flex;
   cursor: pointer;
-  transition-duration: 0.5s;
 }
 
 .extraSettings {
@@ -199,7 +241,7 @@ li {
     background: $gradient;
     cursor: pointer;
   }
-  
+
   &::-moz-range-thumb {
     width: 25px;
     height: 25px;
@@ -220,7 +262,7 @@ input[type=color] {
   vertical-align: middle;
 
   &::-webkit-color-swatch-wrapper {
-    padding: 0;	
+    padding: 0;
   }
 
   &::-webkit-color-swatch {
@@ -231,4 +273,22 @@ input[type=color] {
 
 input[type=checkbox] {
   vertical-align: middle;
+}
+
+#customBackgroundHex {
+  font-size: 1.2em;
+  padding-left: 7px;
+}
+
+select#language {
+  float: right;
+  background: none;
+  backdrop-filter: blur(10em);
+  height: 34px;
+  width: 100px;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(180deg, #ffb032 0%, #dd3b67 100%);
+  border-left: 10px solid;
+  font-weight: 400;
+  font-family: 'Lexend Deca', sans-serif;
 }

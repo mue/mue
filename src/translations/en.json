@@ -1,0 +1,74 @@
+{
+    "greeting": {
+        "morning": "Good Morning",
+        "afternoon": "Good Afternoon",
+        "evening": "Good Evening",
+        "christmas": "Merry Christmas",
+        "newyear": "Happy new year",
+        "halloween": "Happy Halloween"
+    },
+    "credit": "Photo by",
+    "search": "Search",
+    "settings": {
+        "title": "Settings",
+        "description": "Edit different components to make Mue your new tab.",
+        "time": {
+            "title": "Time",
+            "seconds": "Seconds",
+            "twentyfourhour": "24 Hour",
+            "ampm": "AM/PM (12 hour)",
+            "zero": "Extra Zero",
+            "analog": "Analog"
+        },
+        "greeting": {
+            "title": "Greeting",
+            "events": "Events",
+            "default": "Default Greeting Message",
+            "name": "Name for greeting"
+        },
+        "quote": {
+            "title": "Quote",
+            "copy": "Copy Button"
+        },
+        "background": {
+            "title": "Background",
+            "API": "Background API",
+            "blur": "Adjust Blur",
+            "customURL": "Custom Background URL",
+            "custombackground": "Custom Background",
+            "customcolour": "Custom Background Colour"
+        },
+        "searchbar": {
+            "title": "Search Bar",
+            "searchengine": "Search Engine"
+        },
+        "offline": "Offline Mode",
+        "experimental": {
+            "title": "Experimental",
+            "webp": "Enable WebP",
+            "dark": "Dark Theme",
+            "animations": "Animations"
+        },
+        "language": "Language",
+        "apply": "Apply",
+        "reset": "Reset",
+        "import": "Import",
+        "export": "Export"
+    },
+    "update": {
+        "title": "Update",
+        "offline": {
+            "title": "Offline",
+            "description": "Cannot get update logs while in offline mode"
+        },
+        "error": {
+            "title": "Error",
+            "content": "Could not connect to the server"
+        },
+        "loading": "Loading..."
+    },
+    "toasts": {
+        "quote": "Quote Copied!",
+        "reset": "Reset successfully!"
+    }
+}

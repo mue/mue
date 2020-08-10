@@ -20,9 +20,11 @@
     "@muetab/quotes": "^1.0.0",
     "copy-text-to-clipboard": "^2.2.0",
     "react": "^16.13.1",
+    "react-clock": "^2.4.0",
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
     "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.8",
     "supports-webp": "^2.0.1"
   },
   "devDependencies": {

@@ -1,96 +1,29 @@
-#toast {
-    visibility: hidden;
-    text-align: center;
-    position: fixed;
-    z-index: 2;
-    bottom: 30px;
-    padding: 10px;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    // backdrop-filter: blur(20px);  stupid firefox :(
-    border-radius: 10px;
-    background: #fff;
-    color: #000;
-    text-align: left;
-    font-size: 16px;
-    width: auto;
-    bottom: 30px;
-    right: 30px;
-
-    &.show {
-        visibility: visible;
-        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
-
-    > img {
-        height: 20px;
-        width: auto;
-        float: left;
-    }
-
-    > hr {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+.Toastify__toast-body {
+    font-family: 'Lexend Deca', sans-serif !important;
+    color: #000 !important;
+    font-size: 16px !important;
+    padding: 15px 20px !important;
 }
 
-.copyButton, hr {
-    display: inline;
-    vertical-align: middle;
+.Toastify__toast {
+    border-radius: 12px !important;
+    min-height: auto !important;
+    height: auto !important;
+    width: auto !important;
+    min-width: auto !important;
+    padding: 0px !important;
 }
 
-hr {
-    height: 20px;
-    width: 1px;
-    margin: 0;
-    margin-left: 10px;
+.Toastify__close-button {
+    margin-top: 10px;
     margin-right: 10px;
 }
 
-@-webkit-keyframes fadein {
-    from {
-        bottom: 0;
-        opacity: 0;
-    }
-
-    to {
-        bottom: 30px;
-        opacity: 1;
-    }
+.Toastify__progress-bar--default {
+    height: 3px !important;
+    background: #000 !important;
 }
 
-@keyframes fadein {
-    from {
-        bottom: 0;
-        opacity: 0;
-    }
-
-    to {
-        bottom: 30px;
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes fadeout {
-    from {
-        bottom: 30px;
-        opacity: 1;
-    }
-
-    to {
-        bottom: 0;
-        opacity: 0;
-    }
-}
-
-@keyframes fadeout {
-    from {
-        bottom: 30px;
-        opacity: 1;
-    }
-
-    to {
-        bottom: 0;
-        opacity: 0;
-    }
+.Toastify__toast-container {
+    width: auto !important;
 }

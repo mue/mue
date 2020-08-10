@@ -1,13 +1,15 @@
 .Modal {
   color: #000;
   background-color: #fff;
-  box-shadow: 0 0 200px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   border: none;
   opacity: 1;
   z-index: -2;
-  padding: 20px;
+  padding: 25px;
   cursor: hand;
-
+  transition: 0.6s;
+  transition-timing-function: ease-in;
+  border-radius: 12px;
   &:focus {
     outline: 0;
   }
@@ -16,6 +18,7 @@
 .modalLink {
   color: #5352ed;
   cursor: pointer;
+
   &:hover {
     opacity: 0.8;
   }
@@ -25,6 +28,7 @@
   float: right;
   font-size: 2em;
   cursor: pointer;
+
   &:hover {
     color: grey;
   }
@@ -37,8 +41,39 @@
 
 .ReactModal__Html--open,
 .ReactModal__Body--open {
-  overflow: hidden; /* prevents background page from scrolling when the modal is open */
+  overflow: hidden;
+  /* prevents background page from scrolling when the modal is open */
 }
+
+@-webkit-keyframes zoom-in {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.05, 1.05);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    -webkit-transform: scale(0);
+  }
+
+  50% {
+    -webkit-transform: scale(1.05, 1.05);
+  }
+
+  100% {
+    -webkit-transform: scale(1, 1);
+  }
+}
+
+
 
 .Overlay {
   position: fixed;
@@ -55,6 +90,11 @@
   margin-top: 20px;
 }
 
+.modal-animation {
+  -webkit-animation: zoom-in 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: zoom-in 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 .ReactModal__Content {
   width: 500px;
   max-width: 600px;
@@ -62,4 +102,51 @@
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   overflow-y: auto;
   position: relative;
+}
+
+.content {
+  margin-top: -20px;
+  h1 {
+    font-size: 35px;
+  }
+  p {
+    margin-top: -20px;
+    font-size: 16px;
+  }
+  .columns {
+    font-size: 15px;
+  }
+}
+
+.zoom-out {
+  -webkit-animation: zoom-out 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: zoom-out 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.05, 1.05);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes zoom-out {
+  0% {
+    -webkit-transform: scale(1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.05, 1.05);
+  }
+
+  100% {
+    -webkit-transform: scale(0);
+  }
 }

@@ -5,22 +5,35 @@
     cursor: pointer;
     -webkit-filter: drop-shadow(0 0 6px rgba(0,0,0,.3));
     filter: drop-shadow(0 0 6px rgba(0,0,0,.3));
+    top: 50px;
+    svg {
+        transition: ease 0.2s;
+    }
+    &:hover {
+        svg {
+            transform: scale(1.1);
+            color: #fff;
+        }
+    }
 }
 
 .navbar1 {
     @extend %navbar;
-    top: 50px;
     right: 0px;
+    svg {
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1.0, 1.0);
+        backface-visibility: hidden;
+        transform: translateZ(0) scale(1.0, 1.0);
+    }
 }
 
 .navbar2 {
     @extend %navbar;
-    top: 50px;
     right: 50px;
 }
 
 .navbar3 {
     @extend %navbar;
-    top: 50px;
     right: 100px;
 }

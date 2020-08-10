@@ -1,30 +1,30 @@
 .searchbar {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    display: flex;
-    flex-direction: row;
-    display: block;
-    color: #ffff;
-    font-family: 'Lexend Deca', sans-serif;;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  display: flex;
+  flex-direction: row;
+  display: block;
+  color: #ffff;
+  font-family: 'Lexend Deca', sans-serif;;
 
-    input[type=text] {
-        font-size: calc(5px + 1.2vmin);
-        background: transparent;
-        border: 2px solid #ffff;
-        padding: 10px;
-        color: #ffff;
-        position: absolute;
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-    }
+  input[type=text] {
+    font-size: calc(5px + 1.2vmin);
+    background: transparent;
+    border: 2px solid #ffff;
+    padding: 10px;
+    color: #ffff;
+    position: absolute;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .input.searchtext {
-    border: none;
+  border: none;
 }
 
 .searchbarform {
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
 }

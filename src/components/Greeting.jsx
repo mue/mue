@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Greeting extends React.Component {
+export default class Greeting extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
@@ -9,8 +9,7 @@ export default class Greeting extends React.Component {
  }
 
   doEvents(time, message) {
-    const enabled = localStorage.getItem('events');
-    if (enabled === 'false') return message;
+    if (localStorage.getItem('events') === 'false') return message;
 
     // Get current month & day
     const m = time.getMonth();
@@ -27,9 +26,9 @@ export default class Greeting extends React.Component {
     const now = new Date();
     const hour = now.getHours();
 
-    let message = 'Good evening'; // Set the default greeting string to "Good evening"
-    if (hour < 12) message = 'Good morning'; // If it's before 12am, set the greeting string to "Good morning"
-    else if (hour < 18) message = 'Good afternoon'; // If it's before 6pm, set the greeting string to "Good afternoon"
+    let message = this.props.language.evening; // Set the default greeting string to "Good evening"
+    if (hour < 12) message = this.props.language.morning; // If it's before 12am, set the greeting string to "Good morning"
+    else if (hour < 18) message = this.props.language.afternoon; // If it's before 6pm, set the greeting string to "Good afternoon"
 
     // Events
     message = this.doEvents(now, message);
@@ -53,8 +52,7 @@ export default class Greeting extends React.Component {
   }
 
   componentDidMount() {
-    const enabled = localStorage.getItem('greeting');
-    if (enabled === 'false') return;
+    if (localStorage.getItem('greeting') === 'false') return;
     this.getGreeting();
   }
 

@@ -1,0 +1,62 @@
+[
+    {
+        "name": "time",
+        "value": true
+    },
+    {
+        "name": "greeting",
+        "value": true
+    },
+    {
+        "name": "background",
+        "value": true
+    },
+    {
+        "name": "quote",
+        "value": true
+    },
+    {
+        "name": "searchBar",
+        "value": true
+    },
+    {
+        "name": "blur",
+        "value": 0
+    },
+    {
+        "name": "events",
+        "value": true
+    },
+    {
+        "name": "customBackgroundColour",
+        "value": ""
+    },
+    {
+        "name": "customBackground",
+        "value": ""
+    },
+    {
+        "name": "greetingName",
+        "value": ""
+    },
+    {
+        "name": "defaultGreetingMessage",
+        "value": true
+    },
+    {
+        "name": "language",
+        "value": "en"
+    },
+    {
+        "name": "backgroundAPI",
+        "value": "mue"
+    },
+    {
+        "name": "ampm",
+        "value": true
+    },
+    {
+        "name": "copyButton",
+        "value": false
+    }
+]

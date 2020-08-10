@@ -26,6 +26,7 @@
   position: absolute;
   bottom: 2px;
   left: 2px;
+  transition: all 0.5s ease 0s;
 }
 
 .credits {
@@ -33,7 +34,6 @@
   left: 0px;
   position: absolute;
   text-align: left;
-  min-width: 50px;
   width: auto;
   height: auto;
 }
@@ -41,26 +41,27 @@
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
   bottom: 15px;
   left: 10px;
   -webkit-filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.4));
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.4));
-
   .tooltiptext {
+    width: 200px;
+    display: inline-block;
     visibility: hidden;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #000;
+    font-size: calc(10px + 1.2vmin);
     position: absolute;
     z-index: 1;
+    padding: 15px 32px;
     bottom: 40px;
     left: 60px;
     margin-left: -60px;
     opacity: 0;
     transition: opacity 1s;
+    box-sizing: border-box;
   }
 }
 

@@ -22,7 +22,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 	* [Opera/Other](#operaother)
 * [Contributing](#development)
 	* [Requirements](#requirements)
-	* [Starting](#starting) 
+	* [Starting](#starting)
 	* [Building](#building)
 * [Credits](#credits)
 	* [Maintainers](#maintainers)

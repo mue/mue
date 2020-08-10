@@ -1,33 +1,33 @@
 import React from 'react';
+import * as Constants from '../modules/constants';
 
-export default class Update extends React.Component {
+export default class Update extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-      title: 'Loading...',
-      date: '',
-      content: 'Loading...'
+      title: this.props.language.title,
+      date: '21/07/2020',
+      content: this.props.language.title
     };
  }
 
  async getUpdate() {
-  const enabled = localStorage.getItem('offlineMode');
-  if (enabled === 'true') return this.setState({
-    title: 'Offline',
-    content: 'Cannot get update logs while in offline mode'
+  if (localStorage.getItem('offlineMode') === 'true') return this.setState({
+    title: this.props.language.offline.title,
+    content: this.props.language.offline.description
   });
 
-  try { // First we try and get a quote from the API...
-    let data = await fetch('https://api.muetab.xyz/getUpdate');
+  try { // Get update log from the API
+    let data = await fetch(Constants.API_URL + '/getUpdate');
     data = await data.json();
     this.setState({
       title: data.title,
       content: data.content
     });
-  } catch (e) {
+  } catch (e) { // If it fails, we send an error
     this.setState({
-      title: 'Error',
-      content: 'Could not connect to the server!'
+      title: this.props.language.error.title,
+      content: this.props.language.error.description
     });
   }
  }
@@ -37,10 +37,11 @@ export default class Update extends React.Component {
  }
 
   render() {
-    return <div className="content">
-        <span className="closeModal" onClick={this.props.modalClose}>&times;</span>
-        <h1 dangerouslySetInnerHTML={{__html: this.state.title}}></h1>
-        <p dangerouslySetInnerHTML={{__html: this.state.content}}></p>
+    return <div className='content'>
+        <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
+        <h1 style={{ 'marginBottom':'-10px' }} dangerouslySetInnerHTML={{__html: this.state.title}}></h1>
+        <h5 style={{ 'lineHeight':'0px' }}> By Mue • <span dangerouslySetInnerHTML={{__html: this.state.date}}></span></h5>
+        <p style={{ 'padding': '0px 20px 0px 20px' }} dangerouslySetInnerHTML={{__html: this.state.content}}></p>
       </div>;
     }
 }
