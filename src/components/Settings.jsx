@@ -245,6 +245,7 @@ export default class Settings extends React.PureComponent {
             <option className='choices' value='en'>English</option>
             <option className='choices' value='nl'>Dutch</option>
             <option className='choices' value='fr'>French</option>
+            <option className='choices' value='ru'>Russian</option>
           </select>
         </div>
         <button className='apply' onClick={() => SettingsFunctions.saveStuff()}>{this.props.language.apply}</button>
