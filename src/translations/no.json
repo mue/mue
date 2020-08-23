@@ -1,0 +1,74 @@
+{
+    "greeting": {
+        "morning": "God Morgen",
+        "afternoon": "God Ettermiddag",
+        "evening": "God Kveld",
+        "christmas": "God Jul",
+        "newyear": "Godt Nyttår",
+        "halloween": "Ha en god Halloween"
+    },
+    "credit": "Bilde av",
+    "search": "Søk",
+    "settings": {
+        "title": "Instillinger",
+        "description": "Rediger for å få Mue til dine preferanser.",
+        "time": {
+            "title": "Tid",
+            "seconds": "Sekunder",
+            "twentyfourhour": "24 Timer",
+            "ampm": "AM/PM (12 Timer)",
+            "zero": "Ekstra Null",
+            "analog": "Analog"
+        },
+        "greeting": {
+            "title": "Hallo",
+            "events": "Planer",
+            "default": "Standard Hallo Melding",
+            "name": "Navn for Hallo"
+        },
+        "quote": {
+            "title": "Sitat",
+            "copy": "Kopier knapp"
+        },
+        "background": {
+            "title": "Bakgrunn",
+            "API": "Bakgrunn API",
+            "blur": "Juster Blur",
+            "customURL": "Personlig bakgrunn URL",
+            "custombackground": "Personlig bakgrunn",
+            "customcolour": "Personlig Bakgrunn Farge"
+        },
+        "searchbar": {
+            "title": "Søkebar",
+            "searchengine": "Søkemotor"
+        },
+        "offline": "Frakoblet Modus",
+        "experimental": {
+            "title": "Eksperimental",
+            "webp": "Skru på WebP",
+            "dark": "Mørkt tema",
+            "animations": "Animasjoner"
+        },
+        "language": "Språk",
+        "apply": "Bruk",
+        "reset": "Nullstill",
+        "import": "Importer",
+        "export": "Eksporter"
+    },
+    "update": {
+        "title": "Oppdater",
+        "offline": {
+            "title": "Offline",
+            "description": "Kan ikke få oppdatering loggene når i offline modus."
+        },
+        "error": {
+            "title": "Error",
+            "content": "Kan ikke koble til serveren."
+        },
+        "loading": "Laster..."
+    },
+    "toasts": {
+        "quote": "Sitat kopiert!",
+        "reset": "Tilbakestillte vellykket!"
+    }
+}
