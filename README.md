@@ -131,14 +131,20 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 
 ### Translators
 English - [David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) & [Alex Sparkes](https://github.com/alexsparkes)
+
 Dutch - [Wessel Tip](https://github.com/Wessel)
+
 French - [Alex Sparkes](https://github.com/alexsparkes)
+
 Norwegian - [Anders](https://github.com/FuryingFox)
+
 Russian - [MrZillaGold](https://github.com/MrZillaGold)
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode
+
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
+
 [Google Fonts](https://fonts.google.com/specimen/Lexend+Deca) - Lexend Deca font
 
 And many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/RoeeLupo), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox), [Oded Shapira](https://twitter.com/dondishdev), Jacob Tyrrell and [Nikka Lai](#) for letting us use their wonderful photographs
