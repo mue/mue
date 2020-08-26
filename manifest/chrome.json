@@ -14,5 +14,8 @@
 		"16": "./icons/16x16-circle.png",
 		"48": "./icons/48x48-circle.png",
 		"128": "./icons/128x128-circle.png"
-	}
+    },
+    "background": {
+        "scripts": ["background-chrome.js"]
+    }
 }
