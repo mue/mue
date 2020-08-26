@@ -134,6 +134,7 @@ English - [David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) & [A
 Dutch - [Wessel Tip](https://github.com/Wessel)
 French - [Alex Sparkes](https://github.com/alexsparkes)
 Norwegian - [Anders](https://github.com/FuryingFox)
+Russian - [MrZillaGold](https://github.com/MrZillaGold)
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode
