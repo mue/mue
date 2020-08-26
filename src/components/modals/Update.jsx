@@ -6,7 +6,7 @@ export default class Update extends React.PureComponent {
     super(...args);
     this.state = {
       title: this.props.language.title,
-      date: '21/07/2020',
+      date: '26/08/2020',
       content: this.props.language.title
     };
  }
