@@ -2,7 +2,6 @@ import React from 'react';
 import WifiOffIcon from '@material-ui/icons/WifiOff';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { toast } from 'react-toastify';
-import dtf from '@eartharoid/dtf';
 import Item from './marketplace/Item';
 import MarketplaceFunctions from '../../modules/marketplaceFunctions';
 import * as Constants from '../../modules/constants';
@@ -80,7 +79,7 @@ export default class Marketplace extends React.PureComponent {
                     name: info.data.name,
                     author: info.data.author,
                     description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
-                    updated: dtf('n_D MMM YYYY', info.updated, 'en-GB'),
+                    updated: info.updated,
                     version: info.data.version,
                     icon: info.data.screenshot_url
                 }

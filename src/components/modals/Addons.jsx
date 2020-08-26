@@ -1,7 +1,6 @@
 import React from 'react';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import { toast } from 'react-toastify';
-import dtf from '@eartharoid/dtf';
 import Item from './marketplace/Item';
 import MarketplaceFunctions from '../../modules/marketplaceFunctions';
 
@@ -31,7 +30,7 @@ export default class Addons extends React.PureComponent {
                     name: info.data.name,
                     author: info.data.author,
                     description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
-                    updated: dtf('n_D MMM YYYY', info.updated, 'en-GB'),
+                    updated: info.updated,
                     version: info.data.version,
                     icon: info.data.screenshot_url
                 }
