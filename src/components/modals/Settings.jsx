@@ -1,6 +1,6 @@
 import React from 'react';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import * as SettingsFunctions from '../modules/settingsFunctions';
+import SettingsFunctions from '../../modules/settingsFunctions';
 import Checkbox from './settings/Checkbox';
 import Slider from './settings/Slider';
 import { toast } from 'react-toastify';
@@ -22,7 +22,7 @@ export default class Settings extends React.PureComponent {
       case 'customSearchEngine': document.getElementById('searchEngine').value = 'DuckDuckGo'; break;
       default: console.log('[ERROR] resetItem requires a key!');
     }
-    toast('Reset successfully!');
+    toast(this.props.toastLanguage.reset);
   }
 
   updateCurrent() {
@@ -108,16 +108,9 @@ export default class Settings extends React.PureComponent {
       document.getElementById('customBackgroundHex').innerText = hex;
     }*/
 
+
     document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
     document.getElementById('center').classList.toggle('backgroundEffects');
-
- /*   document.addEventListener('keyup', (event) => {
-      if (event.keyCode === 13) this.saveStuff();
-  if (event.keyCode === 27) {
-        document.getElementById('root').classList.toggle('backgroundEffects');
-        this.props.modalClose();
-      }
-    });*/
   }
 
   componentWillUnmount() {
@@ -130,12 +123,17 @@ export default class Settings extends React.PureComponent {
     //if (localStorage.getItem('animations') === 'true') expandClassList = 'all 0.5 ease 0s';
 
     return <div className='content'>
-      <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-      <h1>{this.props.language.title}</h1>
-      <p>{this.props.language.description}</p>
+        <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
+        <h1>{this.props.modalLanguage.title}</h1>
+        <div className="tab">
+          <button className="tablinks" onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
+          <button className="tablinks" onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
+          <button className="tablinks" id="active">{this.props.modalLanguage.settings}</button>
+        </div>
+        <br />
       <div className='columns'>
           <div className='section'>
-            <h4>{this.props.language.time.title}</h4>
+            <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[0], document.getElementsByClassName('expandIcons')[0])}>{this.props.language.time.title}</h4>
             <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[0], document.getElementsByClassName('expandIcons')[0])} />
             <Slider name='time' />
           <li className='extraSettings'>
@@ -147,7 +145,7 @@ export default class Settings extends React.PureComponent {
           </li>
         </div>
         <div className='section'>
-          <h4>{this.props.language.greeting.title}</h4>
+          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[1], document.getElementsByClassName('expandIcons')[1])}>{this.props.language.greeting.title}</h4>
           <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[1], document.getElementsByClassName('expandIcons')[1])} />
           <Slider name='greeting' />
           <li className='extraSettings'>
@@ -160,7 +158,7 @@ export default class Settings extends React.PureComponent {
           </li>
         </div>
         <div className='section'>
-          <h4>{this.props.language.quote.title}</h4>
+          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[2], document.getElementsByClassName('expandIcons')[2])}>{this.props.language.quote.title}</h4>
           <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[2], document.getElementsByClassName('expandIcons')[2])} />
           <Slider name='quote' />
           <li className='extraSettings'>
@@ -168,7 +166,7 @@ export default class Settings extends React.PureComponent {
           </li>
         </div>
         <div className='section'>
-          <h4>{this.props.language.background.title}</h4>
+          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])}>{this.props.language.background.title}</h4>
           <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])} />
           <Slider name='background' override='customBackground' />
           <li className='extraSettings'>
@@ -203,7 +201,7 @@ export default class Settings extends React.PureComponent {
           </li>
         </div>
         <div className='section'>
-          <h4>{this.props.language.searchbar.title}</h4>
+          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[4], document.getElementsByClassName('expandIcons')[4])}>{this.props.language.searchbar.title}</h4>
           <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[4], document.getElementsByClassName('expandIcons')[4])} />
           <Slider name='searchBar' />
           <li className='extraSettings'>
@@ -213,11 +211,17 @@ export default class Settings extends React.PureComponent {
                 <option value='duckduckgo'>DuckDuckGo</option>
                 <option value='google'>Google</option>
                 <option value='bing'>Bing</option>
-                { /* <option value='custom'>Custom</option> */ }
+                <option value='yahoo'>Yahoo</option>
+                <option value='ecosia'>Ecosia</option>
+                <option value='yandex'>Yandex</option>
+                <option value='qwant'>Qwant</option>
+                <option value='ask'>Ask</option>
+                <option value='startpage'>Startpage</option>
+               {/* <option value='custom'>Custom</option> */}
               </select>
             </ul>
             <ul id='searchEngineInput' style={{ display: 'none' }}>
-              <p>Custom Search URL <span className='modalLink' onClick={() => this.resetItem('customSearchEngine')}>Reset</span></p>
+              <p style={{"marginTop": "0px"}}>Custom Search URL <span className='modalLink' onClick={() => this.resetItem('customSearchEngine')}>Reset</span></p>
               <input type='text' id='customSearchEngine'></input>
             </ul>
           </li>
@@ -243,8 +247,10 @@ export default class Settings extends React.PureComponent {
         <h4 htmlFor='9'>{this.props.language.language} </h4>
           <select className='select-css' name='9' id='language' onChange={() => localStorage.setItem('language', document.getElementById('language').value)}>
             <option className='choices' value='en'>English</option>
-            <option className='choices' value='nl'>Dutch</option>
-            <option className='choices' value='fr'>French</option>
+            <option className='choices' value='nl'>Nederlands</option>
+            <option className='choices' value='fr'>Français</option>
+            <option className='choices' value='no'>Norsk</option>
+            <option className='choices' value='ru'>Russian</option>
           </select>
         </div>
         <button className='apply' onClick={() => SettingsFunctions.saveStuff()}>{this.props.language.apply}</button>

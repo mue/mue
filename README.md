@@ -26,7 +26,8 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 	* [Building](#building)
 * [Credits](#credits)
 	* [Maintainers](#maintainers)
-	* [Contributors]()
+	* [Contributors](#contributors)
+  * [Translators](#translators)
 	* [Other](#other)
 
 ## Screenshot
@@ -42,12 +43,10 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 * Search bar
 * Settings - enable/disable various features and customise parts of Mue
 * Update modal, copy button and more!
-
-## Planned Features
-* Multilingual support
+* Marketplace - download custom photo packs, quote packs, preset settings and themes made by the community!
 
 ## Installation
-*A demo of the tab can be found [here](https://mue.now.sh)*
+*A demo of the tab can be found [here](https://demo.muetab.xyz)*
 ### Chrome
 [![Chrome Web Store Logo](assets/chrome.png)](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 <br>
@@ -67,15 +66,15 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 ### Development
 #### Requirements
 <ol>
-  <li><a href='https://git-scm.com'>Git</a> (optional)</li>
+  <li><a href='https://git-scm.com'>Git</a></li>
   <li><a href='https://nodejs.org'>Node.JS</a></li>
   <li>A suitable browser</li>
 </ol>
 <h5>Starting</h5>
 <ol>
-  <li> clone the repository using <code>git clone https://github.com/mue/mue.git</code>
-  <li> run <code>yarn</code> or <code>npm i</code> to install all needed dependencies
-  <li> run <code>yarn start</code> or <code>npm start</code> to start testing
+  <li> Clone the repository using <code>git clone https://github.com/mue/mue.git</code>
+  <li> Run <code>yarn</code> or <code>npm i</code> to install all needed dependencies
+  <li> Run <code>yarn start</code> or <code>npm start</code> to start testing
   <li> Code your heart out! (See the sections below for how to build the extension)
 </ol>
 <h2>Building</h2>
@@ -123,17 +122,22 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 
 ## Credits
 ### Maintainers
-[ohlookitsderpy](https://github.com/ohlookitsderpy) - Founder, Lead development, Photographer <br>
-[TurboMarshmello](https://github.com/TurboMarshmello) - Name, Lead design, Photographer <br>
+[David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) - Founder, Lead development, Photographer <br>
+[Alex Sparkes](https://github.com/alexsparkes) - Name, Lead design, Photographer <br>
 
 ### Contributors
-[Wessel](https://github.com/Wessel) - Development <br>
-[Isaac](https://github.com/eartharoid) - QA, Development, Photographer <br>
+[Wessel Tip](https://github.com/Wessel) - Development <br>
+[Isaac (Eartharoid)](https://github.com/eartharoid) - QA, Development, Photographer <br>
+
+### Translators
+English - [David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) & [Alex Sparkes](https://github.com/alexsparkes)
+Dutch - [Wessel Tip](https://github.com/Wessel)
+French - [Alex Sparkes](https://github.com/alexsparkes)
+Norwegian - [Anders](https://github.com/FuryingFox)
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode
-
-[Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support <br>
+[Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 [Google Fonts](https://fonts.google.com/specimen/Lexend+Deca) - Lexend Deca font
 
-And many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/MrSheldon), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox/), [Oded Shapira](https://twitter.com/dondishdev) and [Nikka Lai](#) for letting us use their wonderful photographs
+And many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/RoeeLupo), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox), [Oded Shapira](https://twitter.com/dondishdev), Jacob Tyrrell and [Nikka Lai](#) for letting us use their wonderful photographs

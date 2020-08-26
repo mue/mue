@@ -1,9 +1,8 @@
 import React from 'react';
 import Quotes from '@muetab/quotes';
-import copy from 'copy-text-to-clipboard';
 import FileCopy from '@material-ui/icons/FilterNone';
 import { toast } from 'react-toastify';
-import * as Constants from '../modules/constants';
+import * as Constants from '../../modules/constants';
 
 export default class Quote extends React.PureComponent {
   constructor(...args) {
@@ -23,10 +22,19 @@ export default class Quote extends React.PureComponent {
   }
 
   async getQuote() {
+    const quotePack = JSON.parse(localStorage.getItem('quote_packs'));
+    if (quotePack) {
+      const data = quotePack[Math.floor(Math.random() * quotePack.length)]
+      return this.setState({
+        quote: '"' + data.quote + '"',
+        author: data.author
+      });
+    }
+
     if (localStorage.getItem('offlineMode') === 'true') return this.doOffline();
 
     try { // First we try and get a quote from the API...
-      let data = await fetch(Constants.API_URL +'/getQuote');
+      let data = await fetch(Constants.API_URL + '/getQuote');
       data = await data.json();
       if (data.statusCode === 429) this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
       this.setState({
@@ -39,8 +47,8 @@ export default class Quote extends React.PureComponent {
   }
 
   copyQuote() {
-    copy(`${this.state.quote} - ${this.state.author}`);
-    toast('Quote copied!');
+    navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
+    toast(this.props.language.quote);
   }
 
   componentDidMount() {

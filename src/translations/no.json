@@ -1,0 +1,130 @@
+{
+    "greeting": {
+        "morning": "God Morgen",
+        "afternoon": "God Ettermiddag",
+        "evening": "God Kveld",
+        "christmas": "God Jul",
+        "newyear": "Godt Nyttår",
+        "halloween": "Ha en god Halloween"
+    },
+    "credit": "Bilde av",
+    "search": "Søk",
+    "modals": {
+        "title": "Options",
+        "settings": "Instillinger",
+        "addons": "Mine add-ons",
+        "marketplace": "Markedsplass"
+    },
+    "settings": {
+        "time": {
+            "title": "Tid",
+            "seconds": "Sekunder",
+            "twentyfourhour": "24 Timer",
+            "ampm": "AM/PM (12 Timer)",
+            "zero": "Ekstra Null",
+            "analog": "Analog"
+        },
+        "greeting": {
+            "title": "Hallo",
+            "events": "Planer",
+            "default": "Standard Hallo Melding",
+            "name": "Navn for Hallo"
+        },
+        "quote": {
+            "title": "Sitat",
+            "copy": "Kopier knapp"
+        },
+        "background": {
+            "title": "Bakgrunn",
+            "API": "Bakgrunn API",
+            "blur": "Juster Blur",
+            "customURL": "Personlig bakgrunn URL",
+            "custombackground": "Personlig bakgrunn",
+            "customcolour": "Personlig Bakgrunn Farge"
+        },
+        "searchbar": {
+            "title": "Søkebar",
+            "searchengine": "Søkemotor"
+        },
+        "offline": "Frakoblet Modus",
+        "experimental": {
+            "title": "Eksperimental",
+            "webp": "Skru på WebP",
+            "dark": "Mørkt tema",
+            "animations": "Animasjoner"
+        },
+        "language": "Språk",
+        "apply": "Bruk",
+        "reset": "Nullstill",
+        "import": "Importer",
+        "export": "Eksporter"
+    },
+    "update": {
+        "title": "Oppdater",
+        "offline": {
+            "title": "Offline",
+            "description": "Kan ikke få oppdatering loggene når i offline modus."
+        },
+        "error": {
+            "title": "Error",
+            "content": "Kan ikke koble til serveren."
+        },
+        "loading": "Laster..."
+    },
+    "toasts": {
+        "quote": "Sitat kopiert",
+        "reset": "Tilbakestillte vellykket",
+        "installed": "Installert",
+        "removed": "Fjernet",
+        "error": "Noe gikk galt"
+    },
+    "marketplace": {
+        "photo_packs": "Bilde pakker",
+        "quote_packs": "Sitat pakker",
+        "preset_settings": "Preset instillinger",
+        "themes": "Themes",
+        "product": {
+            "overview": "Oversikt",
+            "information": "Informasjon",
+            "last_updated": "Sist oppdatert",
+            "version": "Versjon",
+            "author": "Forfatter",
+            "notice": {
+                "title": "Vær oppmerksom",
+                "description": "For at endringen skal ta skje, må siden relastes."
+            },
+            "buttons": {
+                "addtomue": "Legg Til Mue",
+                "remove": "Fjern"
+            }
+        },
+        "offline": {
+            "title": "Ser ut som at du er offiline.",
+            "description": "Vær så snill, koble til internettet."
+        },
+        "see_more": "Se mer"
+    },
+    "addons": {
+        "added": "Lagt til",
+        "product": {
+            "overview": "Oversikt",
+            "information": "Informasjon",
+            "last_updated": "Sist oppdatert",
+            "version": "Versjon",
+            "author": "Forfatter",
+            "notice": {
+                "title": "Vær oppmerksom",
+                "description": "For at endringen skal ta skje, må siden relastes."
+            },
+            "buttons": {
+                "addtomue": "Legg Til Mue",
+                "remove": "Fjern"
+            }
+        },
+        "empty": {
+            "title": "Det er tomt her.",
+            "description": "Gå til markedsplassen å legg til noe.",
+            "button": "Ta meg der"
+        }
+    }
+}

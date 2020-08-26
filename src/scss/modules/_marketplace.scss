@@ -1,0 +1,287 @@
+.tab,
+button.tablinks {
+  margin-top: -10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  outline: none;
+  color: map-get($modal, "text");
+}
+
+button.tablinks {
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 12px;
+  padding: 10px 30px 10px 30px;
+
+  &:hover {
+    background: rgba(189, 195, 199, .075);
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding-top: 10px;
+    border-bottom: 3px solid map-get($modal, "tab-underline");
+  }
+}
+
+#item a {
+  color: map-get($button-colours, "other");
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+
+#active:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  padding-top: 10px;
+  border-bottom: 3px solid map-get($modal, "tab-underline-active");
+}
+
+.dark {
+
+  .tab,
+  button.tablinks {
+    color: white;
+  }
+
+  #active:after {
+    border-image-slice: 1;
+    border-image-source: map-get($theme-colours, "gradient");
+    border-bottom: 3px solid;
+  }
+}
+
+.tab {
+  margin-left: -3px;
+}
+
+.items {
+  display: flex;
+  flex-flow: wrap;
+  align-items: left;
+  justify-content: left;
+  margin-top: -10px;
+
+  .item {
+    position: relative;
+    border-radius: 12px;
+    height: 80px;
+    width: 270px;
+    background: map-get($marketplace, "item-background");
+    transition: 0.5s;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    overflow: none;
+
+    img {
+      height: 100%;
+      width: auto;
+      border-radius: 12px 0 0 12px;
+      background: white;
+    }
+
+    h4 {
+      font-size: 20px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+
+    img,
+    .details {
+      display: inline;
+    }
+
+    .details {
+      position: absolute;
+      left: 90px;
+      top: 15px;
+
+      img {
+        margin-left: 10px;
+        height: 15px;
+      }
+    }
+
+    p {
+      margin-top: 5px;
+    }
+
+    p.desc {
+      margin-top: -14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.dark .items .item {
+  background: #2d3436;
+}
+
+p.author {
+  margin-top: -5px;
+}
+
+#item {
+  display: none;
+
+  h1 {
+    font-size: 40px;
+  }
+}
+
+#item>h1,
+#item>.MuiSvgIcon-root {
+  display: inline;
+  font-size: 35px !important;
+}
+
+
+p.description {
+  margin-top: 0px;
+}
+
+.emptyMessage {
+  margin: 0 auto;
+  text-align: center;
+  transform: translateY(30%);
+
+  svg {
+    font-size: 50px;
+    line-height: 0px;
+    margin: 0;
+    margin-bottom: -20px;
+  }
+}
+
+.backArrow {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    color: grey;
+  }
+}
+
+.informationContainer {
+  float: right;
+}
+
+.productInformation {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: map-get($marketplace, "product-information-backgroud");
+  width: 200px;
+  border-radius: 12px;
+
+  li {
+    margin-left: -4px;
+    list-style: none;
+  }
+
+  li.header {
+    text-transform: uppercase;
+    color: #787878;
+    list-style: none;
+    margin-left: -5px;
+  }
+}
+
+.dark .productInformation {
+  background: #2d3436;
+}
+
+#item>img {
+  border-radius: 24px;
+  height: 200px;
+  width: auto;
+}
+
+#marketplace {
+  -webkit-animation: content 0.5s;
+  -moz-animation: content 0.5s;
+  -ms-animation: content 0.5s;
+  -o-animation: content 0.5s;
+  animation: content 0.5s;
+}
+
+@keyframes content {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.banner {
+  text-align: center;
+  background: #54a0ff;
+  border-radius: 24px;
+  padding: 10px;
+  margin: 0;
+  color: map-get($theme-colours, "main");
+  display: none !important;
+}
+
+.featured {
+  background: #2d3436;
+  margin-top: 20px;
+  border-radius: 24px;
+  padding: 50px;
+  color: map-get($theme-colours, "main");
+
+  button {
+    float: left;
+    margin-top: -20px;
+    border: 2px solid map-get($theme-colours, "main");
+    color: map-get($theme-colours, "main");
+
+    &:hover {
+      border: 2px solid map-get($theme-colours, "main");
+      background: map-get($theme-colours, "main");
+      color: #2d3436;
+    }
+  }
+
+  h1 {
+    margin-top: -20px;
+  }
+}
+
+.dark .featured {
+  background: black;
+  color: white;
+}
+
+.requires {
+  float: right;
+}
+
+#seemore {
+  display: none;
+}
+
+#seemore svg {
+  font-size: 35px !important;
+  margin-bottom: -30px;
+}

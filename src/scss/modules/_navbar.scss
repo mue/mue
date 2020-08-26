@@ -5,21 +5,24 @@
     cursor: pointer;
     -webkit-filter: drop-shadow(0 0 6px rgba(0,0,0,.3));
     filter: drop-shadow(0 0 6px rgba(0,0,0,.3));
-    top: 50px;
+    top: 20px;
+
     svg {
         transition: ease 0.2s;
+        font-size: calc(10px + 1.5vmin) !important;
     }
+
     &:hover {
         svg {
             transform: scale(1.1);
-            color: #fff;
+            color: map-get($theme-colours, "main");;
         }
     }
 }
 
 .navbar1 {
     @extend %navbar;
-    right: 0px;
+    right: 20px;
     svg {
         -webkit-backface-visibility: hidden;
         -webkit-transform: translateZ(0) scale(1.0, 1.0);
@@ -30,7 +33,7 @@
 
 .navbar2 {
     @extend %navbar;
-    right: 50px;
+    right: 60px;
 }
 
 .navbar3 {

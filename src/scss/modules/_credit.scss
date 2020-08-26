@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-.MuiSvgIcon-root {
+.navbar-container > svg, #backgroundCredits > svg  {
   font-size: calc(10px + 1.5vmin) !important;
   position: absolute;
   bottom: 2px;
@@ -45,12 +45,13 @@
   left: 10px;
   -webkit-filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.4));
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.4));
+
   .tooltiptext {
     width: 200px;
     display: inline-block;
     visibility: hidden;
     border-radius: 12px;
-    background-color: #fff;
+    background-color: map-get($theme-colours, "main");;
     color: #000;
     font-size: calc(10px + 1.2vmin);
     position: absolute;
@@ -63,11 +64,11 @@
     transition: opacity 1s;
     box-sizing: border-box;
   }
-}
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
+  &:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 #photographer, .locationicon {

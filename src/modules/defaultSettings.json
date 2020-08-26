@@ -44,10 +44,6 @@
         "value": true
     },
     {
-        "name": "language",
-        "value": "en"
-    },
-    {
         "name": "backgroundAPI",
         "value": "mue"
     },
@@ -58,5 +54,13 @@
     {
         "name": "copyButton",
         "value": false
+    },
+    {
+        "name": "installed",
+        "value": "[]"
+    },
+    {
+        "name": "searchEngine",
+        "value": "duckduckgo"
     }
 ]

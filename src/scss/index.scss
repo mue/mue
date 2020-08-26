@@ -1,4 +1,6 @@
-/* Imports */
+@import 'variables';
+@import 'mixins';
+
 @import 'modules/clock';
 @import 'modules/greeting';
 @import 'modules/quote';
@@ -8,6 +10,10 @@
 @import 'modules/modal';
 @import 'modules/settings';
 @import 'modules/toast';
+@import 'modules/marketplace';
+@import 'modules/checkbox';
+@import 'modules/buttons';
+@import 'modules/welcome';
 
 body {
     background: #2f3640;
@@ -16,6 +22,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Lexend Deca', sans-serif;
     overflow: hidden;
+}
+
+* {
+    font-family: 'Lexend Deca' !important;
+    outline: none;
+}
+
+@font-face {
+    font-family: 'Lexend Deca';
+    src: url('/./fonts/LexendDeca-Regular.woff2') format('woff2');
 }
 
 #center {
@@ -36,14 +52,14 @@ body {
 }
 
 ::placeholder {
-    color: #ffffff;
+    color: map-get($theme-colours, 'main');
     opacity: 1;
 }
 
 #root {
     min-height: 100vh;
     display: grid;
-    color: white;
+    color: map-get($theme-colours, 'main-text-color');
 }
 
 #backgroundImage {
@@ -52,35 +68,15 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    z-index: 0;
-    border: none;
-    transform: scale(1.1);
 }
 
 .fade-in {
-    -webkit-animation: fadein 2s;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s;
+    @include animation('fadein 2s');
 }
 
-@-webkit-keyframes fadein {
+@include keyframes(fadein) {
     from { opacity: 0; }
     to   { opacity: 1; }
-}
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@font-face {
-    font-family: 'Lexend Deca';
-    src: url('/./fonts/LexendDeca-Regular.woff2') format('woff2');
 }
 
 .backgroundEffects {
@@ -90,15 +86,4 @@ body {
 
 #searchEngine {
     width: 130px;
-}
-
-.select-css {
-    background: none;
-    backdrop-filter: blur(10em);
-    height: 34px;
-    width: 100px;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(180deg, #ffb032 0%, #dd3b67 100%);
-    border-left: 10px solid;
-    font-weight: 400;
 }

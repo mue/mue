@@ -1,8 +1,5 @@
-$gradient: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
-
 .switch {
   position: relative;
- /* display: inline-block; */
   width: 60px;
   height: 34px;
   float: right;
@@ -35,7 +32,7 @@ $gradient: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: #fff;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
@@ -52,14 +49,13 @@ input {
     padding: 0.5rem 1rem;
     box-sizing: border-box;
     border-image-slice: 1;
-    border-image-source: $gradient;
+    border-image-source: map-get($theme-colours, "gradient");
     outline: none;
-    font-family: 'Lexend Deca', sans-serif;
     background: transparent;
   }
 
-  &:checked + .slider {
-    background: $gradient;
+  &:checked+.slider {
+    background: map-get($theme-colours, "gradient");
 
     &:before {
       -webkit-transform: translateX(26px);
@@ -68,7 +64,7 @@ input {
     }
   }
 
-  &:focus + .slider {
+  &:focus+.slider {
     box-shadow: 0 0 1px #e67e22;
   }
 }
@@ -83,13 +79,16 @@ input {
   background: #34495e;
 }
 
-h4, .switch, .expandIcons {
+h4,
+.switch,
+.expandIcons {
   display: inline;
   font-size: 1.4em;
   font-weight: 100;
 }
 
-h4, #engines {
+h4,
+#engines {
   display: inline;
 }
 
@@ -97,101 +96,15 @@ h4, #engines {
   margin-bottom: 20px;
 }
 
-%settingsButton {
-  text-align: center;
-  border: none;
-  transition: 0.25s;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  box-shadow: 20px #000;
-  position: relative;
-  padding: 15px;
-  width: 120px;
-  font-size: 1.1em;
-  font-family: 'Lexend Deca', sans-serif;
-
-  &:hover {
-    transform: translateY(-0.10em);
-    outline: none;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    width: 0%;
-    top: 0;
-    left: 0;
-    height: 100%;
-    transition: 0.3s linear;
-    z-index: -1;
-    color: #fff;
-  }
-
-  &:hover:before {
-    width: 100%;
-  }
-
-  &:active {
-    outline: none;
-  }
-}
-
-.apply {
-  @extend %settingsButton;
-  background-color: #dd3b67;
-  &:before {
-    background: $gradient;
-  }
-}
-
-.import {
-  float: right;
-  @extend %settingsButton;
-  background-color: #dd3b67;
-  margin-right: 5px;
-
-  &:before {
-    background: $gradient;
-  }
-}
-
-.export {
-  float: right;
-  @extend %settingsButton;
-  background-color: #dd3b67;
-
-  &:before {
-    background: $gradient;
-  }
-}
-
-.uploadbg {
-  @extend %settingsButton;
-  background-color: #dd3b67;
-  width: auto;
-  height: auto;
-  padding: 5px 18px;
-
-  &:before {
-    background: $gradient;
-  }
-}
-
-.reset {
-  @extend %settingsButton;
-  background-color: #ffb032;
-  margin-left: 5px;
-  &:before {
-    background: linear-gradient(90deg, #dd3b67 0%, #ffb032 100%);
-  }
-}
-
 .expandIcons {
   position: relative;
   font-size: 25px;
   vertical-align: middle;
   display: inline-flex;
+}
+
+h4,
+.expandIcons {
   cursor: pointer;
 }
 
@@ -202,9 +115,20 @@ h4, #engines {
   border-width: 5px;
   border-image-source: linear-gradient(to bottom, #ffb032 0%, #dd3b67 100%);
 
-  > p {
+  p {
     margin: 0;
     padding: 0;
+  }
+
+  select {
+    margin-left: 20px;
+  }
+
+  input[type=text],
+  input[type=range],
+  p,
+  button {
+    margin-top: 10px;
   }
 }
 
@@ -212,7 +136,7 @@ ul {
   padding-left: 5px;
   margin: 0;
 
-  > label {
+  >label {
     vertical-align: middle;
   }
 }
@@ -238,7 +162,7 @@ li {
     width: 25px;
     height: 25px;
     border-radius: 12px;
-    background: $gradient;
+    background: map-get($theme-colours, "gradient");
     cursor: pointer;
   }
 
@@ -246,7 +170,7 @@ li {
     width: 25px;
     height: 25px;
     border-radius: 12px;
-    background: $gradient;
+    background: map-get($theme-colours, "gradient");
     cursor: pointer;
   }
 }
@@ -255,7 +179,7 @@ input[type=color] {
   border-radius: 100%;
   height: 30px;
   width: 30px;
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  box-shadow: map-get($main-parts, "shadow");
   border: none;
   outline: none;
   -webkit-appearance: none;
@@ -280,15 +204,16 @@ input[type=checkbox] {
   padding-left: 7px;
 }
 
-select#language {
-  float: right;
+select {
   background: none;
-  backdrop-filter: blur(10em);
   height: 34px;
-  width: 100px;
+  width: 120px;
   border-image-slice: 1;
   border-image-source: linear-gradient(180deg, #ffb032 0%, #dd3b67 100%);
   border-left: 10px solid;
-  font-weight: 400;
-  font-family: 'Lexend Deca', sans-serif;
+  color: map-get($modal, "text");
+}
+
+select#language {
+  float: right;
 }

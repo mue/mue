@@ -1,74 +1,130 @@
 {
     "greeting": {
-        "morning": "Good Morning",
-        "afternoon": "Good Afternoon",
-        "evening": "Good Evening",
-        "christmas": "Merry Christmas",
-        "newyear": "Happy new year",
-        "halloween": "Happy Halloween"
+        "morning": "Goedemorgen",
+        "afternoon": "Goedemiddag",
+        "evening": "Goedenavond",
+        "christmas": "Fijne kerstdagen",
+        "newyear": "Gelukkig nieuw jaar",
+        "halloween": "Fijne halloween"
     },
-    "credit": "Photo by",
-    "search": "Search",
+    "credit": "Afbeelding door",
+    "search": "Zoeken",
+    "modals": {
+        "title": "Opties",
+        "settings": "Instellingen",
+        "addons": "Mijn Extensies",
+        "marketplace": "Marktplaats"
+    },
     "settings": {
-        "title": "Settings",
-        "description": "Edit different components to make Mue your new tab.",
         "time": {
-            "title": "Time",
-            "seconds": "Seconds",
-            "twentyfourhour": "24 Hour",
-            "ampm": "AM/PM (12 hour)",
-            "zero": "Extra Zero",
-            "analog": "Analog"
+            "title": "Tijd",
+            "seconds": "Seconden",
+            "twentyfourhour": "24 uurs",
+            "ampm": "AM/PM (12 uurs)",
+            "zero": "Nul Opvulling",
+            "analog": "Analoog"
         },
         "greeting": {
-            "title": "Greeting",
-            "events": "Events",
-            "default": "Default Greeting Message",
-            "name": "Name for greeting"
+            "title": "Groeten",
+            "events": "Evenementen",
+            "default": "Standaard begroetingsnaam",
+            "name": "Naam Voor Groet"
         },
         "quote": {
-            "title": "Quote",
-            "copy": "Copy Button"
+            "title": "Citaat",
+            "copy": "Kopieer Knop"
         },
         "background": {
-            "title": "Background",
-            "API": "Background API",
-            "blur": "Adjust Blur",
-            "customURL": "Custom Background URL",
-            "custombackground": "Custom Background",
-            "customcolour": "Custom Background Colour"
+            "title": "Achtergrond",
+            "API": "Achtergrond API",
+            "blur": "Onscherpte Aanpassen",
+            "customURL": "Aangepaste Achtergrond URL",
+            "custombackground": "Aangepaste Achtergrond",
+            "customcolour": "Aangepaste Achtergrondkleur"
         },
         "searchbar": {
-            "title": "Search Bar",
-            "searchengine": "Search Engine"
+            "title": "Zoekbalk",
+            "searchengine": "Zoekmachine"
         },
-        "offline": "Offline Mode",
+        "offline": "Offline Modus",
         "experimental": {
-            "title": "Experimental",
-            "webp": "Enable WebP",
-            "dark": "Dark Theme",
-            "animations": "Animations"
+            "title": "Experimenteel",
+            "webp": "WebP Gebruiken",
+            "dark": "Donker Thema",
+            "animations": "Animaties"
         },
-        "language": "Language",
-        "apply": "Apply",
-        "reset": "Reset",
-        "import": "Import",
-        "export": "Export"
+        "language": "Taal",
+        "apply": "Toepassen",
+        "reset": "Resetten",
+        "import": "Importeren",
+        "export": "Exporteren"
     },
     "update": {
-        "title": "Update",
+        "title": "Veranderingen",
         "offline": {
             "title": "Offline",
-            "description": "Cannot get update logs while in offline mode"
+            "description": "Kan veranderingen logboek niet verkrijgen in offline modus"
         },
         "error": {
-            "title": "Error",
-            "content": "Could not connect to the server"
+            "title": "Fout",
+            "content": "Kon niet verbinden met de servers"
         },
-        "loading": "Loading..."
+        "loading": "Aan het laden..."
     },
     "toasts": {
-        "quote": "Quote Copied!",
-        "reset": "Reset successfully!"
+        "quote": "Quote Copied",
+        "reset": "Reset successfully",
+        "installed": "Successvol geïnstalleerd",
+        "removed": "Successvol verwijderd",
+        "error": "Iets is verkeerd gegaan"
+    },
+    "marketplace": {
+        "photo_packs": "Afbeelding Pakketten",
+        "quote_packs": "Citaat Pakketten",
+        "preset_settings": "Vooraf ingestelde instellingen",
+        "themes": "Themas",
+        "product": {
+            "overview": "Overzicht",
+            "information": "Informatie",
+            "last_updated": "Laatst Geüpdatet",
+            "version": "Versie",
+            "author": "Auteur",
+            "notice": {
+                "title": "Aankondiging",
+                "description": "De veranderingen gaan in zodra je de pagina herlaad."
+            },
+            "buttons": {
+                "addtomue": "Voeg aan Mue toe",
+                "remove": "Verwijder"
+            }
+        },
+        "offline": {
+            "title": "Het ziet er uit dat je offline bent",
+            "description": "Verbind met het internet."
+        },
+        "see_more": "Zie Meer"
+    },
+    "addons": {
+        "added": "Toegevoegd",
+        "product": {
+            "overview": "Overzicht",
+            "information": "Informatie",
+            "last_updated": "Laatst Geüpdatet",
+            "version": "Versie",
+            "author": "Auteur",
+            "notice": {
+                "title": "Aankondiging",
+                "description": "De veranderingen gaan in zodra je de pagina herlaad."
+            },
+            "buttons": {
+                "addtomue": "Voeg aan Mue toe",
+                "remove": "Verwijder"
+            }
+        },
+        "empty": {
+            "title": "Het is hier leeg",
+            "description": "Ga naar de marktplaats om een paar extensies toe te veogen.",
+            "button": "Breng me naar de marktplaats"
+        }
     }
 }

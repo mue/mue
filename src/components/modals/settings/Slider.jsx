@@ -1,5 +1,5 @@
 import React from 'react';
-import * as SettingsFunctions from '../../modules/settingsFunctions';
+import SettingsFunctions from '../../../modules/settingsFunctions';
 
 export default class Slider extends React.PureComponent {
   render() {

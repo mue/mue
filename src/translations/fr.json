@@ -1,74 +1,130 @@
 {
     "greeting": {
-        "morning": "Good Morning",
-        "afternoon": "Good Afternoon",
-        "evening": "Good Evening",
-        "christmas": "Merry Christmas",
-        "newyear": "Happy new year",
-        "halloween": "Happy Halloween"
+        "morning": "Bonjour",
+        "afternoon": "Bonne après-midi",
+        "evening": "Bonsoir",
+        "christmas": "Bonne Noël",
+        "newyear": "Bonne année",
+        "halloween": "Joyeux Halloween"
     },
-    "credit": "Photo by",
-    "search": "Search",
+    "credit": "Photo par",
+    "search": "Trouver",
+    "modals": {
+        "title": "Options",
+        "settings": "Parametres",
+        "addons": "Mes Options",
+        "marketplace": "Marché"
+    },
     "settings": {
-        "title": "Settings",
-        "description": "Edit different components to make Mue your new tab.",
         "time": {
-            "title": "Time",
+            "title": "Temps",
             "seconds": "Seconds",
-            "twentyfourhour": "24 Hour",
+            "twentyfourhour": "24 Heures",
             "ampm": "AM/PM (12 hour)",
-            "zero": "Extra Zero",
-            "analog": "Analog"
+            "zero": "Zero-padded",
+            "analog": "Analogue"
         },
         "greeting": {
-            "title": "Greeting",
-            "events": "Events",
-            "default": "Default Greeting Message",
-            "name": "Name for greeting"
+            "title": "Salutation",
+            "events": "Événements",
+            "default": "Défaut Salutation",
+            "name": "Nom Pour Salutation"
         },
         "quote": {
-            "title": "Quote",
-            "copy": "Copy Button"
+            "title": "Citation",
+            "copy": "Au bouton copie"
         },
         "background": {
-            "title": "Background",
-            "API": "Background API",
-            "blur": "Adjust Blur",
-            "customURL": "Custom Background URL",
-            "custombackground": "Custom Background",
-            "customcolour": "Custom Background Colour"
+            "title": "Fond",
+            "API": "Fond API",
+            "blur": "Ajuster le flou",
+            "customURL": "URL D'arrière-plan personnalisée",
+            "custombackground": "D'arrière-plan personnalisée",
+            "customcolour": "Couleur d'arrière-plan personnalisée"
         },
         "searchbar": {
-            "title": "Search Bar",
-            "searchengine": "Search Engine"
+            "title": "Barre de Recherche",
+            "searchengine": "Moteur de recherche"
         },
-        "offline": "Offline Mode",
+        "offline": "Mode Hors-Ligne",
         "experimental": {
-            "title": "Experimental",
-            "webp": "Enable WebP",
-            "dark": "Dark Theme",
+            "title": "Expérimental",
+            "webp": "Activer WebP",
+            "dark": "Thème sombre",
             "animations": "Animations"
         },
-        "language": "Language",
-        "apply": "Apply",
+        "language": "Langue",
+        "apply": "Appliquer",
         "reset": "Reset",
-        "import": "Import",
-        "export": "Export"
+        "import": "Importer",
+        "export": "Exporter"
     },
     "update": {
-        "title": "Update",
+        "title": "Actualiser",
         "offline": {
-            "title": "Offline",
-            "description": "Cannot get update logs while in offline mode"
+            "title": "Hors ligne",
+            "description": "Peut pas se connecter à Internet"
         },
         "error": {
-            "title": "Error",
+            "title": "Erreur",
             "content": "Could not connect to the server"
         },
-        "loading": "Loading..."
+        "loading": "Chargement..."
     },
     "toasts": {
-        "quote": "Quote Copied!",
-        "reset": "Reset successfully!"
+        "quote": "Citation Copié",
+        "reset": "Réinitaliser avec succès",
+        "installed": "Installé avec succès",
+        "removed": "Enlevée avec succès",
+        "error": "Quelque chose a mal tourné."
+    },
+    "marketplace": {
+        "photo_packs": "Des Photos Packs",
+        "quote_packs": "Des Citation Packs",
+        "preset_settings": "Paramètres de prédéterminée",
+        "themes": "Thème",
+        "product": {
+            "overview": "Aperçu",
+            "information": "Information",
+            "last_updated": "Dernière mise à jour",
+            "version": "Version",
+            "author": "Auteur",
+            "notice": {
+                "title": "Écriteau",
+                "description": "S'il vous plait, recharger la page."
+            },
+            "buttons": {
+                "addtomue": "Ajouter au Mue",
+                "remove": "Enlever"
+            }
+        },
+        "offline": {
+            "title": "Vous êtes hors ligne",
+            "description": "Veuillez vous connecter à l'internet."
+        },
+        "see_more": "Voir de Plus"
+    },
+    "addons": {
+        "added": "Ajoutée",
+        "product": {
+            "overview": "Aperçu",
+            "information": "Informations",
+            "last_updated": "Dernière mise à jour",
+            "version": "Version",
+            "author": "Auteure",
+            "notice": {
+                "title": "Écriteau",
+                "description": "S'il vous plait, recharger la page."
+            },
+            "buttons": {
+                "addtomue": "Ajouter au Mue",
+                "remove": "Enlever"
+            }
+        },
+        "empty": {
+            "title": "Il est vide ici",
+            "description": "Aller su le marché pour en ajouter.",
+            "button": "Naviguer vers le marché"
+        }
     }
 }

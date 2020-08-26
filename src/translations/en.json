@@ -9,15 +9,19 @@
     },
     "credit": "Photo by",
     "search": "Search",
+    "modals": {
+        "title": "Options",
+        "settings": "Settings",
+        "addons": "My Add-ons",
+        "marketplace": "Marketplace"
+    },
     "settings": {
-        "title": "Settings",
-        "description": "Edit different components to make Mue your new tab.",
         "time": {
             "title": "Time",
             "seconds": "Seconds",
             "twentyfourhour": "24 Hour",
             "ampm": "AM/PM (12 hour)",
-            "zero": "Extra Zero",
+            "zero": "Zero-padded",
             "analog": "Analog"
         },
         "greeting": {
@@ -68,7 +72,59 @@
         "loading": "Loading..."
     },
     "toasts": {
-        "quote": "Quote Copied!",
-        "reset": "Reset successfully!"
+        "quote": "Quote Copied",
+        "reset": "Reset successfully",
+        "installed": "Successfully installed",
+        "removed": "Successfully removed",
+        "error": "Something went wrong"
+    },
+    "marketplace": {
+        "photo_packs": "Photo Packs",
+        "quote_packs": "Quote Packs",
+        "preset_settings": "Preset Settings",
+        "themes": "Themes",
+        "product": {
+            "overview": "Overview",
+            "information": "Information",
+            "last_updated": "Last Updated",
+            "version": "Version",
+            "author": "Author",
+            "notice": {
+                "title": "Notice",
+                "description": "In order for the change to take place, the page must be refreshed."
+            },
+            "buttons": {
+                "addtomue": "Add To Mue",
+                "remove": "Remove"
+            }
+        },
+        "offline": {
+            "title": "Looks like you're offline",
+            "description": "Please connect to the internet."
+        },
+        "see_more": "See More"
+    },
+    "addons": {
+        "added": "Added",
+        "product": {
+            "overview": "Overview",
+            "information": "Information",
+            "last_updated": "Last Updated",
+            "version": "Version",
+            "author": "Author",
+            "notice": {
+                "title": "Notice",
+                "description": "In order for the change to take place, the page must be refreshed."
+            },
+            "buttons": {
+                "addtomue": "Add To Mue",
+                "remove": "Remove"
+            }
+        },
+        "empty": {
+            "title": "It's empty here",
+            "description": "Head to the marketplace to add some.",
+            "button": "Take me there"
+        }
     }
 }

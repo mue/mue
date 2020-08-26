@@ -1,0 +1,42 @@
+.welcomeModalText {
+    line-height: 2px;
+    h2.subtitle {
+        font-size: 24px;
+        color: #535353;
+        text-transform: uppercase;
+    }
+    h1.welcometitle {
+        font-size: 50px;
+    }
+}
+
+.welcomeContent {
+    text-align: center;
+    padding: 25px;
+    a {
+        text-decoration: none;
+        line-height: 20px !important;
+        color: #5352ED;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    img.icon, svg {
+        margin-top: -12px;
+        padding: 10px;
+        cursor: pointer;
+        transition: ease 0.2s;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    p {
+        margin-top: 0.7rem;
+        line-height: 1em;
+    }
+    img, svg {
+        height: 24px;
+        width: auto;
+    }
+}

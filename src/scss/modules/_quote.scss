@@ -1,6 +1,6 @@
 .quote {
   font-size: 0.8em;
-  text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (min-width: 600px) {
@@ -30,7 +30,10 @@
   float: middle;
   margin: 0 auto;
   text-align: right;
-  // transform: rotate(45deg);
+  transition: ease 0.2s !important;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 i.material-icons,
@@ -41,7 +44,7 @@ h1.quoteauthor {
 button.copyButton {
   background: transparent;
   border: none;
-  color: #fff;
+  color: map-get($theme-colours, "main");;
   padding: 20px 20px;
   text-align: center;
   text-decoration: none;

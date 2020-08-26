@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Constants from '../modules/constants';
+import * as Constants from '../../modules/constants';
 
 export default class Update extends React.PureComponent {
   constructor(...args) {
@@ -33,15 +33,18 @@ export default class Update extends React.PureComponent {
  }
 
  componentDidMount() {
+   localStorage.setItem('viewedUpdate', true);
    this.getUpdate();
  }
 
   render() {
-    return <div className='content'>
+    return <div className='updateContent'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1 style={{ 'marginBottom':'-10px' }} dangerouslySetInnerHTML={{__html: this.state.title}}></h1>
         <h5 style={{ 'lineHeight':'0px' }}> By Mue • <span dangerouslySetInnerHTML={{__html: this.state.date}}></span></h5>
-        <p style={{ 'padding': '0px 20px 0px 20px' }} dangerouslySetInnerHTML={{__html: this.state.content}}></p>
+        <img alt='update picture' src='https://i.redd.it/dtm7e7ggxxh51.png' />
+        <figcaption>Image of JIF.</figcaption>
+        <p dangerouslySetInnerHTML={{__html: this.state.content}}></p>
       </div>;
     }
 }

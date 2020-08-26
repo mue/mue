@@ -1,6 +1,6 @@
 import React from 'react';
 import supportsWebP from 'supports-webp';
-import * as Constants from '../modules/constants';
+import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
   doOffline() {
@@ -24,7 +24,15 @@ export default class Background extends React.PureComponent {
   }
 
   async setBackground() {
-    if (localStorage.getItem('offlineMode')=== 'true') return this.doOffline();
+    if (localStorage.getItem('offlineMode') === 'true') return this.doOffline();
+
+    const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
+    if (photoPack) {
+      let background = photoPack[Math.floor(Math.random() * photoPack.length)];
+      document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
+      document.getElementById('photographer').style.display = 'none';
+      return document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${background.url.default})`); // Set background and blur etc
+    }
 
     const colour = localStorage.getItem('customBackgroundColour');
     if (colour) {
@@ -54,7 +62,7 @@ export default class Background extends React.PureComponent {
             requestURL = 'https://unsplash.muetab.xyz/getImage';
             break;
           default:
-            if (await supportsWebP && enabled === 'true') requestURL =  Constants.API_URL +'/getImage?webp=true';
+            if (await supportsWebP && enabled === 'true') requestURL = Constants.API_URL +'/getImage?webp=true';
             else requestURL = Constants.API_URL + '/getImage?category=Outdoors';
             break;
         }
@@ -79,6 +87,6 @@ export default class Background extends React.PureComponent {
   }
 
   render() {
-    return null; // React gets annoyed if I don't put anything here or use "return;"
+    return <div id='backgroundImage'></div>;
   }
 }

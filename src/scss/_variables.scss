@@ -1,0 +1,31 @@
+@use 'sass:map';
+
+$theme-colours: (
+  'gradient': linear-gradient(90deg, #ffb032 0%, #dd3b67 100%),
+  'main': rgba(242, 243, 244, 1),
+  'secondary': rgba(0, 0, 0, 1),
+  'main-text-color': rgba(242, 243, 244, 1),
+);
+
+$modal: (
+  'background': #fff,
+  'text': rgba(0, 0, 0, 1),
+  'tab-underline': rgba(204, 204, 204, 1),
+  'tab-underline-active': rgba(0, 0, 0, 1),
+  'border-radius': 12px,
+);
+
+$marketplace: (
+    'item-background': rgba(242, 243, 244, 1),
+    'product-information-backgroud': rgba(242, 243, 244, 1),
+);
+
+$button-colours: (
+  'confirm': rgba(46, 213, 115, 1),
+  'reset': rgba(255, 71, 87, 1),
+  'other': rgba(83, 82, 237, 1),
+);
+
+$main-parts: (
+    'shadow':  0 0 1rem 0 rgba(0, 0, 0, .2),
+);
