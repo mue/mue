@@ -168,7 +168,7 @@ export default class Settings extends React.PureComponent {
         <div className='section'>
           <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])}>{this.props.language.background.title}</h4>
           <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])} />
-          <Slider name='background' override='customBackground' />
+          <Slider name='background' />
           <li className='extraSettings'>
           <ul>
             <label htmlFor='8'>{this.props.language.background.API} </label>
