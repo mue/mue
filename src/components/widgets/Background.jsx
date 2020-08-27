@@ -50,10 +50,9 @@ export default class Background extends React.PureComponent {
       try { // First we try and get an image from the API...
         let requestURL;
         const enabled = localStorage.getItem('webp');
-        const backgroundAPI = localStorage.getItem('backgroundAPI');
         let data;
 
-        switch (backgroundAPI) {
+        switch (localStorage.getItem('backgroundAPI')) {
           case 'mue':
             if (await supportsWebP && enabled === 'true') requestURL = Constants.API_URL + '/getImage?webp=true';
             else requestURL = Constants.API_URL + '/getImage?category=Outdoors';
@@ -73,7 +72,8 @@ export default class Background extends React.PureComponent {
         document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${data.file})`); // Set background and blur etc
         let credit = document.getElementById('photographer');
         credit.innerText = `${credit.innerText} ${data.photographer}`; // Set the credit
-        document.getElementById('location').innerText = `${data.location}`; // Set the location tooltip
+        if (data.location.replace(/[null]+/g, '') === ' ') return document.getElementById('backgroundCredits').style.display = 'none';
+        document.getElementById('location').innerText = `${data.location.replace('null', '')}`; // Set the location tooltip
       } catch (e) { // ..and if that fails we load one locally
         this.doOffline();
       }
@@ -81,7 +81,10 @@ export default class Background extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('background') === 'false') return document.getElementById('backgroundCredits').style.display = 'none';
+    if (localStorage.getItem('background') === 'false') {
+      document.getElementById('photographer').style.display = 'none';
+      return document.getElementById('backgroundCredits').style.display = 'none';
+    }
     if (localStorage.getItem('animations') === 'true') document.getElementById('backgroundImage').classList.add('fade-in');
     this.setBackground();
   }

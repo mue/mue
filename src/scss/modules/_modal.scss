@@ -13,6 +13,8 @@
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  scrollbar-width: thin;
+  scrollbar-color: #34495e  #bdc3c7;
 
   &:focus {
     outline: 0;
@@ -183,4 +185,14 @@
     width: 100%;
     height: auto;
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: #bdc3c7;
+  height: auto;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #34495e;
 }
