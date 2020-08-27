@@ -3,24 +3,22 @@ import supportsWebP from 'supports-webp';
 import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
-  doOffline() {
-    const photo = Math.floor(Math.random() * (Constants.OFFLINE_IMAGES - 1 + 1)) + 1; // There are 20 images in the offline-images folder
-    document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
+  doOffline() { // Handles setting the background if the user is offline
+    const offlineImages = require('../../modules/offlineImages.json');
+    const photographers = Object.keys(offlineImages); // Get all photographers from the keys in offlineImages.json
+    const photographer = photographers[Math.floor(Math.random() * photographers.length)]; // Select a random photographer from the keys
+    const randomImage = offlineImages[photographer].photo[
+      Math.floor(Math.random() * offlineImages[photographer].photo.length)
+    ] // Select a random image
 
-    let photographer; // Photographer credit
-    if ([2, 3, 9, 11, 13, 14, 15].includes(photo)) photographer = 'Pixabay';  // As there are a lot of Pixabay photos, we shorten the code a bit here
-    else switch (photo) {
-      case 1: photographer = 'Tirachard Kumtanom'; break;
-      case 4: photographer = 'Sohail Na'; break;
-      case 7: photographer = 'Miriam Espacio'; break;
-      case 10: photographer = 'NO NAME'; break;
-      case 20: photographer = 'Fabian Wiktor'; break;
-      default: photographer = 'Unknown'; break;
-    }
+    document.querySelector('#backgroundImage').setAttribute(
+      'style', `background-image: url(../offline-images/${randomImage}.jpeg); -webkit-filter:blur(${localStorage.getItem('blur')}px);` 
+    ); // Set background and blur
+    
+    const creditElem = document.querySelector('#photographer');
+    creditElem.append(` ${photographer} (Pexels)`); // Set the credit
 
-    document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(../offline-images/${photo}.jpeg)`); // Set background and blur etc
-    let credit = document.getElementById('photographer');
-    credit.innerText = `${credit.innerText} ${photographer} (Pexels)`; // Set the credit
+    document.querySelector('#backgroundCredits').style.display = 'none'; // Hide the location icon
   }
 
   async setBackground() {
