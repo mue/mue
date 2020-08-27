@@ -14,7 +14,7 @@ export default class Background extends React.PureComponent {
     document.querySelector('#backgroundImage').setAttribute(
       'style', `background-image: url(../offline-images/${randomImage}.jpeg); -webkit-filter:blur(${localStorage.getItem('blur')}px);` 
     ); // Set background and blur
-    
+
     const creditElem = document.querySelector('#photographer');
     creditElem.append(` ${photographer} (Pexels)`); // Set the credit
 
@@ -68,8 +68,8 @@ export default class Background extends React.PureComponent {
         data = await data.json();
 
         document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${data.file})`); // Set background and blur etc
-        let credit = document.getElementById('photographer');
-        credit.innerText = `${credit.innerText} ${data.photographer}`; // Set the credit
+        const creditElem = document.querySelector('#photographer');
+        creditElem.append(` ${data.photographer}`); // Set the credit
         if (data.location.replace(/[null]+/g, '') === ' ') return document.getElementById('backgroundCredits').style.display = 'none';
         document.getElementById('location').innerText = `${data.location.replace('null', '')}`; // Set the location tooltip
       } catch (e) { // ..and if that fails we load one locally
