@@ -78,14 +78,12 @@ export default class App extends React.PureComponent {
                 setDefaultSettings={() => SettingsFunctions.setDefaultSettings()}
                 openMarketplace={() => this.setState({ marketplaceModal: true, settingsModal: false })}
                 openAddons={() => this.setState({ settingsModal: false, addonsModal: true })}
-                toastLanguage={language.toasts}
-              />
+                toastLanguage={language.toasts} />
             </Modal>
             <Modal onRequestClose={() => this.setState({ updateModal: false })} isOpen={this.state.updateModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Update
                 language={language.update}
-                modalClose={() => this.setState({ updateModal: false })}
-              />
+                modalClose={() => this.setState({ updateModal: false })} />
             </Modal>
             <Modal onRequestClose={() => this.setState({ marketplaceModal: false })} isOpen={this.state.marketplaceModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
               <Marketplace
@@ -94,8 +92,7 @@ export default class App extends React.PureComponent {
                 modalClose={() => this.setState({ marketplaceModal: false })}
                 openSettings={() => this.setState({ marketplaceModal: false, settingsModal: true })}
                 openAddons={() => this.setState({ marketplaceModal: false, addonsModal: true })}
-                toastLanguage={language.toasts}
-              />
+                toastLanguage={language.toasts} />
             </Modal>
             <Modal onRequestClose={() => this.setState({ addonsModal: false })} isOpen={this.state.addonsModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
               <Addons
@@ -104,13 +101,10 @@ export default class App extends React.PureComponent {
                 modalClose={() => this.setState({ addonsModal: false })}
                 openSettings={() => this.setState({ addonsModal: false, settingsModal: true })}
                 openMarketplace={() => this.setState({ addonsModal: false, marketplaceModal: true })}
-                toastLanguage={language.toasts}
-              />
+                toastLanguage={language.toasts} />
             </Modal>
             <Modal onRequestClose={() => this.setState({ welcomeModal: false })} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
-              <Welcome
-                modalClose={() => this.setState({ welcomeModal: false })}
-              />
+              <Welcome modalClose={() => this.setState({ welcomeModal: false })} />
             </Modal>
           </React.Suspense>
         </div>

@@ -31,8 +31,6 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 	* [Other](#other)
 
 ## Screenshot
-*May be updated in the future*
-
 ![Screenshot](assets/screenshot.jpg)
 
 ## Features
@@ -82,7 +80,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
   <summary><b>Chrome/Edge (Chromium)</b> (Click to expand)</summary>
   <ol>
     <li> <code>yarn run build</code> or <code>npm run build</code>
-    <li> Rename <code>manifest-chrome.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
+    <li> <code>yarn run chrome</code> or <code>npm run chrome</code>
     <li> Visit <code>chrome://extensions</code> in Chrome
     <li> Click <b>Load unpacked</b> (Make sure <b>Developer Mode</b> is on)
     <li> Go to the directory containing the built copy of Mue and click <b>ok</b>
@@ -92,8 +90,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
   <summary><b>Opera</b> (Click to expand)</summary>
   <ol>
     <li> <code>yarn run build</code> or <code>npm run build</code>
-    <li> Rename <code>manifest-opera.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
-    <li> Copy <code>background-opera.js</code> in the "manifest" folder to "build"
+    <li> <code>yarn run opera</code> or <code>npm run opera</code>
     <li> Visit <code>about://extensions</code> in Opera
     <li> Click <b>Load unpacked extension...</b> (Make sure <b>Developer Mode</b> is on)
     <li> Go to the directory containing Mue and click <b>ok</b>
@@ -103,7 +100,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
   <summary><b>Firefox</b> (Click to expand)</summary>
   <ol>
     <li> <code>yarn run build</code> or <code>npm run build</code>
-    <li> Rename <code>manifest-firefox.json</code> in the "manfiest" folder to <code>manifest.json</code> in "build"
+    <li> <code>yarn run firefox</code> or <code>npm run firefox</code>
     <li> Visit <code>about:debugging#addons</code> in Firefox
     <li> Click <b>Load Temporary Add-on</b>
     <li> Go to the directory containing Mue and click on the <b>manifest.json</b>

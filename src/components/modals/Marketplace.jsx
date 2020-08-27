@@ -154,37 +154,11 @@ export default class Marketplace extends React.PureComponent {
     }
 
     uninstall() {
-      let installed = JSON.parse(localStorage.getItem('installed'));
-      let button;
-
-      const uninstallStuff = () => {
-        for (let i = 0; i < installed.length; i++) {
-            if (installed[i].name === this.state.current_data.name) {
-                installed.splice(i, 1);
-                break;
-            }
-        }
-        localStorage.setItem('installed', JSON.stringify(installed));
+        MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.type);
         toast(this.props.toastLanguage.removed);
-        button = <button className="addToMue" onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>;
-        this.setState({ button: button });
-      }
-
-      switch (this.state.current_data.type) {
-          case 'settings':
-            let oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
-            localStorage.clear();
-            oldSettings.forEach(item => localStorage.setItem(item.name, item.value));
-            uninstallStuff();
-            break;
-          default:
-            try {
-                localStorage.removeItem(this.state.current_data.type);
-                uninstallStuff();
-            } catch (e) {
-                console.log('invalid');
-            }
-        }
+        this.setState({
+            button: <button className="addToMue" onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>
+        });
     }
 
     componentDidMount() {
@@ -200,9 +174,7 @@ export default class Marketplace extends React.PureComponent {
    }
 
   render() {
-    if (navigator.onLine === false || this.state.done === false) {
-        return this.offlineHTML;
-    }
+    if (navigator.onLine === false || this.state.done === false) return this.offlineHTML;
 
     return <div className='content'>
              <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
@@ -217,36 +189,31 @@ export default class Marketplace extends React.PureComponent {
                  <div className="featured" style={{backgroundColor: this.state.featured.colour}}>
                      <p>{this.state.featured.title}</p>
                      <h1>{this.state.featured.name}</h1>
-                     <button className="addToMue" onClick={() => window.location.href =
-                         this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
+                     <button className="addToMue" onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
                  </div>
                  <Items
                    title={this.props.language.photo_packs}
                    seeMoreTitle={this.props.language.see_more}
                    items={this.state.photo_packs.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'photo_packs', input)}
-                   seeMore={true}
                    seeMoreFunction={() => this.toggle('seemore', 'photo_packs')} />
                  <Items
                    title={this.props.language.preset_settings}
                    seeMoreTitle={this.props.language.see_more}
                    items={this.state.settings.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'settings', input)}
-                   seeMore={true}
                    seeMoreFunction={() => this.toggle('seemore', 'settings')} />
                  <Items
                    title={this.props.language.quote_packs}
                    seeMoreTitle={this.props.language.see_more}
                    items={this.state.quote_packs.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'quote_packs', input)}
-                   seeMore={true}
                    seeMoreFunction={() => this.toggle('seemore', 'quote_packs')} />
                  <Items
                    title={this.props.language.themes}
                    seeMoreTitle={this.props.language.see_more}
                    items={this.state.themes.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'theme', input)}
-                   seeMore={true}
                    seeMoreFunction={() => this.toggle('seemore', 'themes')} />
              </div>
              <Item button={this.state.button} data={this.state.item_data} function={()=> this.toggle()} language={this.props.language.product} />

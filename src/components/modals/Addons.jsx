@@ -3,6 +3,8 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 import { toast } from 'react-toastify';
 import Item from './marketplace/Item';
 import MarketplaceFunctions from '../../modules/marketplaceFunctions';
+import StoreIcon from '@material-ui/icons/Store';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 export default class Addons extends React.PureComponent {
     constructor(...args) {
@@ -44,36 +46,11 @@ export default class Addons extends React.PureComponent {
     }
 
     uninstall() {
-        let installed = JSON.parse(localStorage.getItem('installed'));
-
-        const uninstallStuff = () => {
-            for (let i = 0; i < installed.length; i++) {
-                if (installed[i].name === this.state.current_data.name) {
-                    installed.splice(i, 1);
-                    break;
-                }
-            }
-            localStorage.setItem('installed', JSON.stringify(installed));
-            toast(this.props.toastLanguage.removed);
-            this.toggle();
-            this.componentDidMount();
-        }
-
-        switch (this.state.current_data.type) {
-            case 'settings':
-                let oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
-                localStorage.clear();
-                oldSettings.forEach(item => localStorage.setItem(item.name, item.value));
-                uninstallStuff();
-                break;
-            default:
-                try {
-                    localStorage.removeItem(this.state.current_data.type);
-                    uninstallStuff();
-                } catch (e) {
-                    console.log('invalid');
-                }
-        }
+        MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.type);
+        toast(this.props.toastLanguage.removed);
+        this.setState({
+            button: <button className="addToMue" onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>
+        });
     }
 
   componentDidMount() {
@@ -93,9 +70,9 @@ export default class Addons extends React.PureComponent {
          <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
          <h1>{this.props.modalLanguage.title}</h1>
              <div className="tab">
-               <button className="tablinks" onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
+               <button className="tablinks" onClick={this.props.openMarketplace}><StoreIcon/> {this.props.modalLanguage.marketplace}</button>
                <button className="tablinks" id="active">{this.props.modalLanguage.addons}</button>
-               <button className="tablinks" onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
+               <button className="tablinks" onClick={this.props.openSettings}><SettingsIcon/> {this.props.modalLanguage.settings}</button>
             </div>
          <div id='marketplace'>
          { /*<input id='file-input' type='file' name='name' className='hidden' />

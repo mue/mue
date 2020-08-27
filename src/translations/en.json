@@ -58,7 +58,8 @@
         "apply": "Apply",
         "reset": "Reset",
         "import": "Import",
-        "export": "Export"
+        "export": "Export",
+        "imported_settings": "Imported settings"
     },
     "update": {
         "title": "Update",

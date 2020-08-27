@@ -39,7 +39,6 @@ export default class Update extends React.PureComponent {
  }
 
  componentDidMount() {
-   localStorage.setItem('viewedUpdate', true);
    this.getUpdate();
  }
 
