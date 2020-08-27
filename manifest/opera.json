@@ -4,7 +4,7 @@
     "description": "Fast, open and free-to-use new tab page for most modern browsers.",
     "version": "4.0.2",
     "browser_action": {
-        "default_icon": "./icons/extension-icon.png"
+        "default_icon": "icons/128x128.png"
     },
     "background": {
         "scripts": [

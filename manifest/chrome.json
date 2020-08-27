@@ -5,14 +5,14 @@
     "description": "Fast, open and free-to-use new tab page for most modern browsers.",
     "version": "4.0.2",
     "browser_action": {
-        "default_icon": "./icons/extension-icon.png"
+        "default_icon": "icons/128x128.png"
     },
     "chrome_url_overrides": {
         "newtab": "index.html"
     },
     "icons": {
-		"16": "./icons/16x16-circle.png",
-		"48": "./icons/48x48-circle.png",
-		"128": "./icons/128x128-circle.png"
+		"16": "icons/16x16.png",
+		"48": "icons/48x48.png",
+		"128": "icons/128x128.png"
     }
 }
