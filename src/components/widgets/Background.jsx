@@ -15,7 +15,7 @@ export default class Background extends React.PureComponent {
       'style', `background-image: url(../offline-images/${randomImage}.jpeg); -webkit-filter:blur(${localStorage.getItem('blur')}px);` 
     ); // Set background and blur
     
-    const creditElem = document.getElementById('photographer');
+    const creditElem = document.querySelector('#photographer');
     creditElem.append(` ${photographer} (Pexels)`); // Set the credit
 
     document.querySelector('#backgroundCredits').style.display = 'none'; // Hide the location icon
