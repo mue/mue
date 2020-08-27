@@ -40,7 +40,8 @@
             "blur": "Onscherpte Aanpassen",
             "customURL": "Aangepaste Achtergrond URL",
             "custombackground": "Aangepaste Achtergrond",
-            "customcolour": "Aangepaste Achtergrondkleur"
+            "customcolour": "Aangepaste Achtergrondkleur",
+            "upload": "Uploaden"
         },
         "searchbar": {
             "title": "Zoekbalk",
@@ -106,21 +107,6 @@
     },
     "addons": {
         "added": "Toegevoegd",
-        "product": {
-            "overview": "Overzicht",
-            "information": "Informatie",
-            "last_updated": "Laatst Geüpdatet",
-            "version": "Versie",
-            "author": "Auteur",
-            "notice": {
-                "title": "Aankondiging",
-                "description": "De veranderingen gaan in zodra je de pagina herlaad."
-            },
-            "buttons": {
-                "addtomue": "Voeg aan Mue toe",
-                "remove": "Verwijder"
-            }
-        },
         "empty": {
             "title": "Het is hier leeg",
             "description": "Ga naar de marktplaats om een paar extensies toe te veogen.",

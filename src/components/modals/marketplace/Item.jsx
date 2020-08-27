@@ -11,7 +11,7 @@ export default class Item extends React.PureComponent {
       <h1>{this.props.data.name}</h1>
       {this.props.button}
       <br/><br/>
-      <img alt="product" src={'https://external-content.duckduckgo.com/iu/?u=' + this.props.data.icon} />
+      <img alt="product" draggable={false} src={'https://external-content.duckduckgo.com/iu/?u=' + this.props.data.icon} />
       <div className="informationContainer">
       <div className="productInformation">
           <h4>{this.props.language.information}</h4>

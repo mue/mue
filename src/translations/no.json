@@ -106,21 +106,6 @@
     },
     "addons": {
         "added": "Lagt til",
-        "product": {
-            "overview": "Oversikt",
-            "information": "Informasjon",
-            "last_updated": "Sist oppdatert",
-            "version": "Versjon",
-            "author": "Forfatter",
-            "notice": {
-                "title": "Vær oppmerksom",
-                "description": "For at endringen skal ta skje, må siden relastes."
-            },
-            "buttons": {
-                "addtomue": "Legg Til Mue",
-                "remove": "Fjern"
-            }
-        },
         "empty": {
             "title": "Det er tomt her.",
             "description": "Gå til markedsplassen å legg til noe.",

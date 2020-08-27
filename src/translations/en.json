@@ -40,7 +40,8 @@
             "blur": "Adjust Blur",
             "customURL": "Custom Background URL",
             "custombackground": "Custom Background",
-            "customcolour": "Custom Background Colour"
+            "customcolour": "Custom Background Colour",
+            "upload": "Upload"
         },
         "searchbar": {
             "title": "Search Bar",
@@ -106,21 +107,6 @@
     },
     "addons": {
         "added": "Added",
-        "product": {
-            "overview": "Overview",
-            "information": "Information",
-            "last_updated": "Last Updated",
-            "version": "Version",
-            "author": "Author",
-            "notice": {
-                "title": "Notice",
-                "description": "In order for the change to take place, the page must be refreshed."
-            },
-            "buttons": {
-                "addtomue": "Add To Mue",
-                "remove": "Remove"
-            }
-        },
         "empty": {
             "title": "It's empty here",
             "description": "Head to the marketplace to add some.",

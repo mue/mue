@@ -152,7 +152,7 @@ export default class Settings extends React.PureComponent {
           <Checkbox name='events' text={this.props.language.greeting.events} />
           <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
             <ul>
-              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greetingName')}>Reset</span></p>
+              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greetingName')}>{this.props.language.reset}</span></p>
               <input type='text' id='greetingName'></input>
             </ul>
           </li>
@@ -168,7 +168,7 @@ export default class Settings extends React.PureComponent {
         <div className='section'>
           <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])}>{this.props.language.background.title}</h4>
           <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])} />
-          <Slider name='background' />
+          <Slider name='background' override='customBackground' />
           <li className='extraSettings'>
           <ul>
             <label htmlFor='8'>{this.props.language.background.API} </label>
@@ -181,16 +181,16 @@ export default class Settings extends React.PureComponent {
             </label>
             </ul>
             <ul>
-              <p>{this.props.language.background.blur} (<span id='blurAmount'></span>%) <span className='modalLink' onClick={() => this.resetItem('blur')}>Reset</span></p>
+              <p>{this.props.language.background.blur} (<span id='blurAmount'></span>%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
               <input className='range' type='range' min='0' max='100' id='blurRange' onInput={() => document.getElementById('blurAmount').innerText = document.getElementById('blurRange').value} />
             </ul>
             <ul>
-              <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>Reset</span></p>
+              <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
               <input type='text' id='customBackground'></input>
             </ul>
             <ul>
-              <p>{this.props.language.background.custombackground} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>Reset</span></p>
-              <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>Upload</button>
+              <p>{this.props.language.background.custombackground} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
+              <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
               <input id='bg-input' type='file' name='name' className='hidden' />
             </ul>
            { /* <ul>

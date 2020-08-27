@@ -106,21 +106,6 @@
     },
     "addons": {
         "added": "Ajoutée",
-        "product": {
-            "overview": "Aperçu",
-            "information": "Informations",
-            "last_updated": "Dernière mise à jour",
-            "version": "Version",
-            "author": "Auteure",
-            "notice": {
-                "title": "Écriteau",
-                "description": "S'il vous plait, recharger la page."
-            },
-            "buttons": {
-                "addtomue": "Ajouter au Mue",
-                "remove": "Enlever"
-            }
-        },
         "empty": {
             "title": "Il est vide ici",
             "description": "Aller su le marché pour en ajouter.",
