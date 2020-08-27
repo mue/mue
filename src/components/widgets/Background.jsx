@@ -12,7 +12,7 @@ export default class Background extends React.PureComponent {
     ] // Select a random image
 
     document.querySelector('#backgroundImage').setAttribute(
-      'style', `background-image: url(../offline-images/${randomImage}.jpeg); -webkit-filter:blur(${localStorage.getItem('blur')}px);` 
+      'style', `background-image: url(../offline-images/${randomImage}.jpeg); -webkit-filter:blur(${localStorage.getItem('blur')}px);`
     ); // Set background and blur
 
     const creditElem = document.querySelector('#photographer');
@@ -27,23 +27,26 @@ export default class Background extends React.PureComponent {
     const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
     if (photoPack) {
       let background = photoPack[Math.floor(Math.random() * photoPack.length)];
-      document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
-      document.getElementById('photographer').style.display = 'none';
-      return document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${background.url.default})`); // Set background and blur etc
+      document.getElementById('credits').style.display = 'none'; // Hide the credit
+      return document.getElementById('backgroundImage').setAttribute(
+        'style',  `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${background.url.default})`
+      ); // Set background and blur etc
     }
 
     const colour = localStorage.getItem('customBackgroundColour');
     if (colour) {
-      document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
-      document.getElementById('photographer').style.display = 'none';
-      return document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-color: ${colour}`); // Set background and blur etc
+      document.getElementById('credits').style.display = 'none'; // Hide the credit
+      return document.getElementById('backgroundImage').setAttribute(
+        'style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-color: ${colour}`
+      ); // Set background and blur etc
     }
 
     const custom = localStorage.getItem('customBackground');
     if (custom !== '') {
-      document.getElementById('backgroundCredits').style.display = 'none'; // Hide the location icon
-      document.getElementById('photographer').style.display = 'none';
-      return document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${custom})`); // Set background and blur etc
+      document.getElementById('credits').style.display = 'none'; // Hide the credit
+      return document.getElementById('backgroundImage').setAttribute(
+        'style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${custom})`
+      ); // Set background and blur etc
     } else {
       try { // First we try and get an image from the API...
         let requestURL;
@@ -67,7 +70,9 @@ export default class Background extends React.PureComponent {
         data = await fetch(requestURL);
         data = await data.json();
 
-        document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${data.file})`); // Set background and blur etc
+        document.getElementById('backgroundImage').setAttribute(
+          'style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${data.file})`
+        ); // Set background and blur etc
         const creditElem = document.querySelector('#photographer');
         creditElem.append(` ${data.photographer}`); // Set the credit
         if (data.location.replace(/[null]+/g, '') === ' ') return document.getElementById('backgroundCredits').style.display = 'none';
@@ -79,10 +84,7 @@ export default class Background extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('background') === 'false') {
-      document.getElementById('photographer').style.display = 'none';
-      return document.getElementById('backgroundCredits').style.display = 'none';
-    }
+    if (localStorage.getItem('background') === 'false') return document.getElementById('credits').style.display = 'none'; // Hide the credit
     if (localStorage.getItem('animations') === 'true') document.getElementById('backgroundImage').classList.add('fade-in');
     this.setBackground();
   }

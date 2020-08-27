@@ -62,7 +62,7 @@ export default class App extends React.PureComponent {
           <Greeting language={language.greeting} />
           <Clock/>
           <Quote language={language.toasts}/>
-          <div className='credits'>
+          <div className='credits' id='credits'>
             <h1 id='photographer'>{language.credit}</h1>
             <div id='backgroundCredits' className='tooltip'>
               <RoomIcon className='locationicon'/>
