@@ -36,7 +36,7 @@ export default class Quote extends React.PureComponent {
     try { // First we try and get a quote from the API...
       let data = await fetch(Constants.API_URL + '/getQuote');
       data = await data.json();
-      if (data.statusCode === 429) this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
+      if (data.statusCode === 429) return this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
       this.setState({
         quote: '"' + data.quote + '"',
         author: data.author

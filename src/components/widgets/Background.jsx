@@ -70,6 +70,8 @@ export default class Background extends React.PureComponent {
         data = await fetch(requestURL);
         data = await data.json();
 
+        if (data.statusCode === 429) return this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
+
         document.getElementById('backgroundImage').setAttribute(
           'style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${data.file})`
         ); // Set background and blur etc
