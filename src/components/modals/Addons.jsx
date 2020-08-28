@@ -3,8 +3,6 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 import { toast } from 'react-toastify';
 import Item from './marketplace/Item';
 import MarketplaceFunctions from '../../modules/marketplaceFunctions';
-import StoreIcon from '@material-ui/icons/Store';
-import SettingsIcon from '@material-ui/icons/Settings';
 
 export default class Addons extends React.PureComponent {
     constructor(...args) {
@@ -70,9 +68,9 @@ export default class Addons extends React.PureComponent {
          <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
          <h1>{this.props.modalLanguage.title}</h1>
              <div className="tab">
-               <button className="tablinks" onClick={this.props.openMarketplace}><StoreIcon/> {this.props.modalLanguage.marketplace}</button>
+               <button className="tablinks" onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
                <button className="tablinks" id="active">{this.props.modalLanguage.addons}</button>
-               <button className="tablinks" onClick={this.props.openSettings}><SettingsIcon/> {this.props.modalLanguage.settings}</button>
+               <button className="tablinks" onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
             </div>
          <div id='marketplace'>
          { /*<input id='file-input' type='file' name='name' className='hidden' />
