@@ -38,6 +38,7 @@
             "title": "Background",
             "API": "Background API",
             "blur": "Adjust Blur",
+            "brightness": "Adjust Brightness",
             "customURL": "Custom Background URL",
             "custombackground": "Custom Background",
             "customcolour": "Custom Background Colour",

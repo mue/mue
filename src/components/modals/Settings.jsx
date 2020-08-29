@@ -19,6 +19,11 @@ export default class Settings extends React.PureComponent {
         document.getElementById('blurRange').value = 0;
         document.getElementById('blurAmount').innerText = '0';
         break;
+      case 'brightness':
+        localStorage.setItem('brightness', 100);
+        document.getElementById('brightnessRange').value = 100;
+        document.getElementById('brightnessAmount').innerText = '100';
+        break;
       case 'customSearchEngine': document.getElementById('searchEngine').value = 'DuckDuckGo'; break;
       default: console.log('[ERROR] resetItem requires a key!');
     }
@@ -39,6 +44,11 @@ export default class Settings extends React.PureComponent {
       if (key === 'blur') {
         document.getElementById('blurAmount').innerText = value;
         document.getElementById('blurRange').value = value;
+      }
+
+      if (key === 'brightness') {
+        document.getElementById('brightnessAmount').innerText = value;
+        document.getElementById('brightnessRange').value = value;
       }
 
       const tag = document.getElementById(`${key}Status`);
@@ -181,6 +191,10 @@ export default class Settings extends React.PureComponent {
             <ul>
               <p>{this.props.language.background.blur} (<span id='blurAmount'></span>%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
               <input className='range' type='range' min='0' max='100' id='blurRange' onInput={() => document.getElementById('blurAmount').innerText = document.getElementById('blurRange').value} />
+            </ul>
+            <ul>
+              <p>{this.props.language.background.brightness} (<span id='brightnessAmount'></span>%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
+              <input className='range' type='range' min='0' max='100' id='brightnessRange' onInput={() => document.getElementById('brightnessAmount').innerText = document.getElementById('brightnessRange').value} />
             </ul>
             <ul>
               <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
