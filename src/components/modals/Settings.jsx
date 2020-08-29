@@ -65,6 +65,7 @@ export default class Settings extends React.PureComponent {
 
     if (localStorage.getItem('darkTheme') === 'true') {
       document.getElementById('blurRange').style.background = '#535c68';
+      document.getElementById('brightnessRange').style.background = '#535c68';
       document.getElementById('customBackground').style.color = 'white';
       document.getElementById('backgroundAPI').style.color = 'white';
       document.getElementById('searchEngine').style.color = 'white';
