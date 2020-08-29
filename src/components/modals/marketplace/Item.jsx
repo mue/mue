@@ -3,6 +3,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 export default class Item extends React.PureComponent {
   render() {
+    if (!this.props.data.icon) return <div></div>;
     return (
       <div id='item'>
       <br/>
