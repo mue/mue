@@ -20,8 +20,8 @@ export default class Welcome extends React.PureComponent {
           <br/>
           <a href=''>Settings</a>
           <h2 className="subtitle">Support</h2>
-          <img alt="twitter" href="https://twitter.com/getmue" className="icon" src="./././icons/iconmonstr-twitter.svg"/>
-          <img alt="discord" href="https://discord.gg/kJsufA9" className="icon" src="https://cdn.discordapp.com/attachments/252071498397777921/747860127171739758/Discord-Logo-Black.svg"/>
+         {/* <img alt="twitter" href="https://twitter.com/getmue" className="icon" src=""/>
+          <img alt="discord" href="https://discord.gg/kJsufA9" className="icon" src=""/> */}
           <EmailIcon />
           <br/>
           <button className="close" onClick={this.props.modalClose}>Close</button>
