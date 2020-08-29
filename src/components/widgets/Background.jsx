@@ -3,7 +3,7 @@ import supportsWebP from 'supports-webp';
 import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
-  setBackground(url, colour) { // Sets the attributes of the background image
+  setBackground(url, colour, credit) { // Sets the attributes of the background image
     const background = colour ? `background-color: ${colour};` : `background-image: url(${url});`
 
     document.querySelector('#backgroundImage').setAttribute(
@@ -12,6 +12,8 @@ export default class Background extends React.PureComponent {
       -webkit-filter: blur(${localStorage.getItem('blur')}px);
       -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
     );
+    
+    if (credit === 'false') document.querySelector('#credits').style.display = 'none'; // Hide the credit
   }
 
   setCredit(photographer) {
@@ -44,11 +46,9 @@ export default class Background extends React.PureComponent {
       const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
       this.setBackground(randomPhoto.url.default);
     } else if (customBackgroundColour) {
-      document.querySelector('#credits').style.display = 'none'; // Hide the credit
-      this.setBackground(null, customBackgroundColour);
+      this.setBackground(null, customBackgroundColour, 'false');
     } else if (customBackground !== '') { // Local
-      document.querySelector('#credits').style.display = 'none'; // Hide the credit
-      this.setBackground(customBackground);
+      this.setBackground(customBackground, null, 'false');
     } else { // Online
       try { // First we try and get an image from the API...
         const enabled = localStorage.getItem('webp');
@@ -56,14 +56,11 @@ export default class Background extends React.PureComponent {
 
         switch (localStorage.getItem('backgroundAPI')) {
           case 'unsplash':
-            requestURL = 'https://unsplash.muetab.xyz/getImage';
+            requestURL = `${Constants.UNSPLASH_URL}/getImage`;
             break;
           default: // Defaults to Mue
-            if (await supportsWebP && enabled === 'true') {
-              requestURL = `${Constants.API_URL}/getImage?webp=true`;
-            } else {
-              requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
-            }
+            if (await supportsWebP && enabled === 'true') requestURL = `${Constants.API_URL}/getImage?webp=true`;
+            else requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
             break;
         }
 
