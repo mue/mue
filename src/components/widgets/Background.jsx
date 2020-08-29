@@ -4,7 +4,7 @@ import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
   setBackground(url, colour) { // Sets the attributes of the background image
-    let background = colour ? `background-color: ${colour};` : `background-image: url(${url});`
+    const background = colour ? `background-color: ${colour};` : `background-image: url(${url});`
 
     document.querySelector('#backgroundImage').setAttribute(
       'style',
@@ -67,7 +67,7 @@ export default class Background extends React.PureComponent {
             break;
         }
 
-        let data = await (await fetch(requestURL)).json(); // Fetch JSON data from requestURL
+        const data = await (await fetch(requestURL)).json(); // Fetch JSON data from requestURL
 
         if (data.statusCode === 429) {
           this.doOffline(); // If we hit the rate limit, fallback to local images
