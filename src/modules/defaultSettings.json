@@ -24,6 +24,10 @@
         "value": 0
     },
     {
+        "name": "brightness",
+        "value": 100
+    },
+    {
         "name": "events",
         "value": true
     },

@@ -55,7 +55,8 @@ export default class SettingsFunctions {
     }
 
     static saveStuff() {
-        localStorage.setItem('blur', document.getElementById('blurRange').value); // this is better than inline onChange for performance
+        localStorage.setItem('blur', document.getElementById('blurRange').value);  // this is better than inline onChange for performance
+        localStorage.setItem('brightness', document.getElementById('brightnessRange').value);
         localStorage.setItem('greetingName', document.getElementById('greetingName').value);
         localStorage.setItem('customBackground', document.getElementById('customBackground').value);
         if (!document.getElementById('searchEngineInput').enabled === 'false') {
