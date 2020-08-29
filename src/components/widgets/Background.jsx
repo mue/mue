@@ -3,6 +3,21 @@ import supportsWebP from 'supports-webp';
 import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
+  setAttributes(url, colour) { // Sets the attributes of the background image
+    let background = colour ? `background-color: ${colour};` : `background-image: url(${url});`
+
+    document.querySelector('#backgroundImage').setAttribute(
+      'style',
+      `${background};
+      -webkit-filter: blur(${localStorage.getItem('blur')}px);
+      -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
+    );
+  }
+
+  setCredit(photographer) {
+    document.querySelector('#photographer').append(` ${photographer}`); // Append credit
+  }
+
   doOffline() { // Handles setting the background if the user is offline
     const offlineImages = require('../../modules/offlineImages.json');
     const photographers = Object.keys(offlineImages); // Get all photographers from the keys in offlineImages.json
@@ -10,16 +25,10 @@ export default class Background extends React.PureComponent {
     const randomImage = offlineImages[photographer].photo[
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
     ] // Select a random image
+    const url = `../offline-images/${randomImage}.jpeg`;
 
-    document.querySelector('#backgroundImage').setAttribute(
-      'style',
-      `background-image: url(../offline-images/${randomImage}.jpeg);
-      -webkit-filter: blur(${localStorage.getItem('blur')}px);
-      -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
-    ); // Set background and blur
-
-    const creditElem = document.querySelector('#photographer');
-    creditElem.append(` ${photographer} (Pexels)`); // Set the credit
+    this.setAttributes(url);
+    this.setCredit(photographer);
 
     document.querySelector('#backgroundCredits').style.display = 'none'; // Hide the location icon
   }
@@ -30,41 +39,23 @@ export default class Background extends React.PureComponent {
     const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
     if (photoPack) {
       let background = photoPack[Math.floor(Math.random() * photoPack.length)];
-
-      document.getElementById('credits').style.display = 'none'; // Hide the credit
-      return document.getElementById('backgroundImage').setAttribute(
-        'style',
-        `background-image: url(${background.url.default});
-        -webkit-filter: blur(${localStorage.getItem('blur')}px);
-        -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
-      ); // Set background and blur etc
+      return this.setAttributes(background.url.default);
     }
 
     const colour = localStorage.getItem('customBackgroundColour');
     if (colour) {
       document.getElementById('credits').style.display = 'none'; // Hide the credit
-      return document.getElementById('backgroundImage').setAttribute(
-        'style',
-        `background-color: ${colour};
-        -webkit-filter: blur(${localStorage.getItem('blur')}px);
-        -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
-      ); // Set background and blur etc
+      return this.setAttributes(null, colour);
     }
 
     const custom = localStorage.getItem('customBackground');
-    if (custom !== '') {
+    if (custom !== '') { // Local
       document.getElementById('credits').style.display = 'none'; // Hide the credit
-
-      return document.getElementById('backgroundImage').setAttribute(
-        'style',
-        `background-image: url(${custom});
-        -webkit-filter: blur(${localStorage.getItem('blur')}px);
-        -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
-      ); // Set background and blur etc
-    } else {
+      return this.setAttributes(custom);
+    } else { // Online
       try { // First we try and get an image from the API...
-        let requestURL;
         const enabled = localStorage.getItem('webp');
+        let requestURL;
         let data;
 
         switch (localStorage.getItem('backgroundAPI')) {
@@ -86,14 +77,9 @@ export default class Background extends React.PureComponent {
 
         if (data.statusCode === 429) return this.doOffline(); // If we hit the ratelimit, we fallback to local images
 
-        document.getElementById('backgroundImage').setAttribute(
-          'style',
-          `background-image: url(${data.file});
-          -webkit-filter: blur(${localStorage.getItem('blur')}px);
-          -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
-        ); // Set background and blur etc
-        const creditElem = document.querySelector('#photographer');
-        creditElem.append(` ${data.photographer}`); // Set the credit
+        this.setAttributes(data.file);
+        this.setCredit(data.photographer);
+
         if (data.location.replace(/[null]+/g, '') === ' ') return document.getElementById('backgroundCredits').style.display = 'none';
         document.getElementById('location').innerText = `${data.location.replace('null', '')}`; // Set the location tooltip
       } catch (e) { // ..and if that fails we load one locally
