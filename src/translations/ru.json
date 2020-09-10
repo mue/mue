@@ -9,9 +9,13 @@
     },
     "credit": "Фото",
     "search": "Поиск",
+    "modals": {
+        "title": "Options",
+        "settings": "Settings",
+        "addons": "My Add-ons",
+        "marketplace": "Marketplace"
+    },
     "settings": {
-        "title": "Настройки",
-        "description": "Измените компоненты Mue по своему вкусу.",
         "time": {
             "title": "Время",
             "seconds": "Секунды",
@@ -34,9 +38,11 @@
             "title": "Фон",
             "API": "API для фона",
             "blur": "Размытие",
+            "brightness": "Яркость",
             "customURL": "Ссылка для пользовательского фона",
             "custombackground": "Пользовательский фон",
-            "customcolour": "Пользовательский цвет фона"
+            "customcolour": "Пользовательский цвет фона",
+            "upload": "Загрузить"
         },
         "searchbar": {
             "title": "Панель поиска",
@@ -53,7 +59,8 @@
         "apply": "Применить",
         "reset": "Сбросить",
         "import": "Импорт",
-        "export": "Экспорт"
+        "export": "Экспорт",
+        "imported_settings": "Импортированные настройки"
     },
     "update": {
         "title": "Обновление",
@@ -69,6 +76,43 @@
     },
     "toasts": {
         "quote": "Цитата скопирована!",
-        "reset": "Сброшено!"
+        "reset": "Сброшено!",
+        "installed": "Успешно установлено",
+        "removed": "Успешно удалено",
+        "error": "Что-то пошло не так"
+    },
+    "marketplace": {
+        "photo_packs": "Наборы фото",
+        "quote_packs": "Наборы цитат",
+        "preset_settings": "Пресеты настроек",
+        "themes": "Темы",
+        "product": {
+            "overview": "Обзор",
+            "information": "Информация",
+            "last_updated": "Последнее обновление",
+            "version": "Версия",
+            "author": "Автор",
+            "notice": {
+                "title": "Предупреждение",
+                "description": "Для того, чтобы изменения вступили в силу необходимо обновить страницу."
+            },
+            "buttons": {
+                "addtomue": "Добавить в Mue",
+                "remove": "Удалить"
+            }
+        },
+        "offline": {
+            "title": "Похоже, что вы офлайн",
+            "description": "Пожалуйста, подключитесь к интернету."
+        },
+        "see_more": "Показать больше"
+    },
+    "addons": {
+        "added": "Добавлен",
+        "empty": {
+            "title": "Здесь пусто",
+            "description": "Зайдите в магазин, чтобы найти что-то интересное.",
+            "button": "Перейти"
+        }
     }
 }
