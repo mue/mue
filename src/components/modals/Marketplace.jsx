@@ -174,7 +174,24 @@ export default class Marketplace extends React.PureComponent {
    }
 
   render() {
-    if (navigator.onLine === false || this.state.done === false) return this.offlineHTML;
+    if (navigator.onLine === false) return this.offlineHTML;
+    if (this.state.done === false) {
+        return  <div className='content'>
+        <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
+        <h1>{this.props.modalLanguage.title}</h1>
+        <div className="tab">
+            <button className="tablinks" id="active">{this.props.modalLanguage.marketplace}</button>
+            <button className="tablinks" onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
+            <button className="tablinks"
+                onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
+        </div>
+        <div id='marketplace'>
+            <div className="emptyMessage" style={{"marginTop": "20px", "transform": "translateY(80%)"}}>
+                <h1>Loading...</h1>
+            </div>
+        </div>
+        </div>;
+    }
 
     return <div className='content'>
              <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
