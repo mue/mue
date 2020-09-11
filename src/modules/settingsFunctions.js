@@ -86,6 +86,10 @@ export default class SettingsFunctions {
                 localStorage.setItem('language', 'fr');
                 document.documentElement.lang = 'fr';
                 break;
+            case 'ru':
+                localStorage.setItem('language', 'ru');
+                document.documentElement.lang = 'ru';
+                break;
             default:
                 localStorage.setItem('language', 'en');
         }
