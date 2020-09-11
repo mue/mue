@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export default class MarketplaceFunctions {
     static urlParser (input) { // based on https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
         let urlPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&//=]*)/;
@@ -29,7 +31,8 @@ export default class MarketplaceFunctions {
                   localStorage.removeItem(type);
                   uninstallStuff();
               } catch (e) {
-                  console.log('invalid');
+                  toast('Failed to uninstall addon, check the console');
+                  console.error(e);
               }
           }
     }

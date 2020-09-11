@@ -76,12 +76,15 @@ export default class SettingsFunctions {
         switch(detectBrowserLanguage()) {
             case 'nl':
                 localStorage.setItem('language', 'nl');
+                document.documentElement.lang = 'nl';
                 break;
             case 'no':
                 localStorage.setItem('language', 'no');
+                document.documentElement.lang = 'no';
                 break;
             case 'fr':
                 localStorage.setItem('language', 'fr');
+                document.documentElement.lang = 'fr';
                 break;
             default:
                 localStorage.setItem('language', 'en');

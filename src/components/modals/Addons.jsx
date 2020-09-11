@@ -85,7 +85,7 @@ export default class Addons extends React.PureComponent {
               </div>
            </div>
          </div>
-         </div>
+        </div>;
      }
 
     return <div className='content'>

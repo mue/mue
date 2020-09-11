@@ -4,7 +4,7 @@ import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
   setBackground(url, colour, credit) { // Sets the attributes of the background image
-    const background = colour ? `background-color: ${colour};` : `background-image: url(${url});`
+    const background = colour ? `background-color: ${colour};` : `background-image: url(${url});`;
 
     document.querySelector('#backgroundImage').setAttribute(
       'style',
@@ -12,7 +12,7 @@ export default class Background extends React.PureComponent {
       -webkit-filter: blur(${localStorage.getItem('blur')}px);
       -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
     );
-    
+
     if (credit === 'false') document.querySelector('#credits').style.display = 'none'; // Hide the credit
   }
 
@@ -26,7 +26,7 @@ export default class Background extends React.PureComponent {
     const photographer = photographers[Math.floor(Math.random() * photographers.length)]; // Select a random photographer from the keys
     const randomImage = offlineImages[photographer].photo[
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
-    ] // Select a random image
+    ]; // Select a random image
     const url = `../offline-images/${randomImage}.jpeg`;
 
     this.setBackground(url);
