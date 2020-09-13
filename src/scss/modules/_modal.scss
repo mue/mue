@@ -13,8 +13,7 @@
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  scrollbar-width: thin;
-  scrollbar-color: #34495e  #bdc3c7;
+  scrollbar-color: #34495e #bdc3c7;
 
   &:focus {
     outline: 0;
@@ -188,11 +187,14 @@
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 13px;
   background: #bdc3c7;
-  height: auto;
+  border-top-right-radius: map-get($modal, "border-radius");
+  border-bottom-right-radius: map-get($modal, "border-radius");
 }
 
 ::-webkit-scrollbar-thumb {
   background: #34495e;
+  border-top-right-radius: map-get($modal, "border-radius");
+  border-bottom-right-radius: map-get($modal, "border-radius");
 }
