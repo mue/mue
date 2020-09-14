@@ -7,33 +7,24 @@ export default class Checkbox extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-        checked: true
+      checked: true
     }
   }
 
+  handleChange() {
+    SettingsFunctions.setItem(this.props.name);
+    this.setState({ checked: this.state.checked });
+  }
+
+  componentDidMount() {
+    this.setState({ checked: (localStorage.getItem(this.props.name) === 'true') });
+  }
+
   render() {
-    const handleChange = () => {
-      SettingsFunctions.setItem(this.props.name);
-      let checked;
-      if (this.state.checked === true) checked = false;
-      else checked = true;
-      this.setState({ checked: checked });
-    }
-
-    let value = localStorage.getItem(this.props.name);
-
-    switch (value) {
-      case 'true': value = true; break;
-      case 'false': value = false; break;
-      default: value = false;
-    }
-
-    this.setState({ checked: value });
-
     return (
       <React.Fragment>
         <FormControlLabel
-          control={<CheckboxUI name="checkedB" color="primary" checked={this.state.checked} onChange={handleChange} />}
+          control={<CheckboxUI name="checkedB" color="primary" checked={this.state.checked} onChange={this.handleChange} />}
           label={this.props.text}
         />
         <br/>

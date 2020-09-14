@@ -1,10 +1,14 @@
 import React from 'react';
+
 import Background from './components/widgets/Background';
 import Clock from './components/widgets/Clock';
 import Greeting from './components/widgets/Greeting';
 import Quote from './components/widgets/Quote';
 import Search from './components/widgets/Search';
+import Maximise from './components/widgets/Maximise';
+
 import Navbar from './components/Navbar';
+
 import SettingsFunctions from './modules/settingsFunctions';
 import { ToastContainer } from 'react-toastify';
 import Modal from 'react-modal';
@@ -69,6 +73,7 @@ export default class App extends React.PureComponent {
               <span className='tooltiptext' id='location'/>
             </div>
           </div>
+          <Maximise/>
           <React.Suspense fallback={renderLoader()}>
             <Modal id={'modal'} onRequestClose={() => this.setState({ settingsModal: false })} isOpen={this.state.settingsModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Settings

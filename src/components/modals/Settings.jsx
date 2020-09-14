@@ -50,17 +50,6 @@ export default class Settings extends React.PureComponent {
         document.getElementById('brightnessAmount').innerText = value;
         document.getElementById('brightnessRange').value = value;
       }
-
-      const tag = document.getElementById(`${key}Status`);
-
-      if (tag) {
-        switch (value) {
-          case 'true': value = true; break;
-          case 'false': value = false; break;
-          default: value = true;
-        }
-        tag.checked = value;
-      }
     }
 
     if (localStorage.getItem('darkTheme') === 'true') {
@@ -70,10 +59,6 @@ export default class Settings extends React.PureComponent {
       document.getElementById('backgroundAPI').style.color = 'white';
       document.getElementById('searchEngine').style.color = 'white';
       document.getElementById('language').style.color = 'white';
-      /*[1, 2, 3, 4, 5].forEach((index) => {
-        console.log(index)
-        document.getElementsByClassName('choices')[index].style.background = 'black';
-      })*/
       document.getElementById('greetingName').style.color = 'white';
     }
   }
@@ -116,7 +101,6 @@ export default class Settings extends React.PureComponent {
       document.getElementById('customBackgroundColour').value = hex;
       document.getElementById('customBackgroundHex').innerText = hex;
     }*/
-
 
     document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
     document.getElementById('center').classList.toggle('backgroundEffects');

@@ -67,8 +67,7 @@ export default class Marketplace extends React.PureComponent {
         if (type === 'item') {
             let info;
             try {
-                info = await fetch(`${Constants.MARKETPLACE_URL}/item/${type2}/${data}`);
-                info = await info.json();
+                info = (await fetch(`${Constants.MARKETPLACE_URL}/item/${type2}/${data}`)).json();
             } catch (e) {
                 return toast(this.props.toastLanguage.error);
             }
@@ -100,17 +99,15 @@ export default class Marketplace extends React.PureComponent {
    }
 
     async getItems() {
-        let data = await fetch(Constants.MARKETPLACE_URL + '/all');
-        data = await data.json();
-        let data2 = await fetch(Constants.MARKETPLACE_URL + '/featured');
-        data2 = await data2.json();
+        const data = await (await fetch(Constants.MARKETPLACE_URL + '/all')).json();
+        const featured = await (await fetch(Constants.MARKETPLACE_URL + '/featured')).json();
         this.setState({
             themes: data.data.themes,
             settings: data.data.settings,
             photo_packs: data.data.photo_packs,
             quote_packs: data.data.quote_packs,
             see_more: data.data.photo_packs,
-            featured: data2.data,
+            featured: featured.data,
             done: true
         });
     }

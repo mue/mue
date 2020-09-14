@@ -20,8 +20,7 @@ export default class Update extends React.PureComponent {
   });
 
   try { // Get update log from the API
-    let data = await fetch(Constants.API_URL + '/getUpdate');
-    data = await data.json();
+    const data = await (await fetch(Constants.API_URL + '/getUpdate')).json();
     this.setState({
       title: data.title,
       content: data.content,

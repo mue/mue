@@ -9,6 +9,12 @@
   margin-bottom: -10px;
 }
 
+.view {
+  position: absolute;
+  bottom: 10px;
+  right: 25px;
+}
+
 #photographer {
   position: absolute;
   bottom: 10px;
@@ -16,12 +22,12 @@
   width: 1000px;
 }
 
-.locationicon {
+.locationicon, #viewButton {
   width: auto;
   cursor: pointer;
 }
 
-.navbar-container > svg, #backgroundCredits > svg  {
+.navbar-container > svg, #backgroundCredits > svg, #viewButton > svg  {
   font-size: calc(10px + 1.5vmin) !important;
   position: absolute;
   bottom: 2px;

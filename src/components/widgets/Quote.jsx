@@ -34,8 +34,7 @@ export default class Quote extends React.PureComponent {
     if (localStorage.getItem('offlineMode') === 'true') return this.doOffline();
 
     try { // First we try and get a quote from the API...
-      let data = await fetch(Constants.API_URL + '/getQuote');
-      data = await data.json();
+      const data = await (await fetch(Constants.API_URL + '/getQuote')).json();
       if (data.statusCode === 429) return this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
       this.setState({
         quote: '"' + data.quote + '"',
@@ -61,7 +60,7 @@ export default class Quote extends React.PureComponent {
     if (localStorage.getItem('copyButton') === 'false') copy = '';
 
     return (
-        <div>
+        <div className='quotediv'>
           <h1 className='quote'>{`${this.state.quote}`}</h1>
           <h1 className='quoteauthor'>{this.state.author} {copy}</h1>
         </div>
