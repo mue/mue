@@ -47,7 +47,7 @@ export default class Addons extends React.PureComponent {
         MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.type);
         toast(this.props.toastLanguage.removed);
         this.setState({
-            button: <button className="addToMue" onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>
+            button: <button className='addToMue' onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>
         });
     }
 
@@ -67,21 +67,21 @@ export default class Addons extends React.PureComponent {
          return <div className='content'>
          <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
          <h1>{this.props.modalLanguage.title}</h1>
-             <div className="tab">
-               <button className="tablinks" onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
-               <button className="tablinks" id="active">{this.props.modalLanguage.addons}</button>
-               <button className="tablinks" onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
+             <div className='tab'>
+               <button className='tablinks' onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
+               <button className='tablinks' id='active'>{this.props.modalLanguage.addons}</button>
+               <button className='tablinks' onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
             </div>
          <div id='marketplace'>
          { /*<input id='file-input' type='file' name='name' className='hidden' />
         <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button> */}
            <h1>{this.props.language.added}</h1>
-           <div className="items">
-               <div className="emptyMessage">
+           <div className='items'>
+               <div className='emptyMessage'>
                     <LocalMallIcon />
                     <h1>{this.props.language.empty.title}</h1>
-                    <p className="description">{this.props.language.empty.description}</p>
-                    <button className="goToMarket" onClick={this.props.openMarketplace}>{this.props.language.empty.button}</button>
+                    <p className='description'>{this.props.language.empty.description}</p>
+                    <button className='goToMarket' onClick={this.props.openMarketplace}>{this.props.language.empty.button}</button>
               </div>
            </div>
          </div>
@@ -91,27 +91,27 @@ export default class Addons extends React.PureComponent {
     return <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.modalLanguage.title}</h1>
-             <div className="tab">
-               <button className="tablinks" onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
-               <button className="tablinks" id="active">{this.props.modalLanguage.addons}</button>
-               <button className="tablinks" onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
+             <div className='tab'>
+               <button className='tablinks' onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
+               <button className='tablinks' id='active'>{this.props.modalLanguage.addons}</button>
+               <button className='tablinks' onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
             </div>
         <div id='marketplace'>
        { /*<input id='file-input' type='file' name='name' className='hidden' />
         <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button> */}
         <h1>{this.props.language.added}</h1>
-          <div className="items">
+          <div className='items'>
               {this.state.installed.map((item) =>
-                   <div className="item" onClick={()=> this.toggle('item', item.type, item.name)}>
-                   <img alt="icon" src={item.content.data.icon_url} />
-                   <div className="details">
+                   <div className='item' onClick={()=> this.toggle('item', item.type, item.name)}>
+                   <img alt='icon' src={item.content.data.icon_url} />
+                   <div className='details'>
                        <h4>{item.content.data.name}</h4>
                        <p>{item.content.data.author}</p>
                    </div>
                </div>)}
           </div>
         </div>
-        <Item button={<button className="removeFromMue" onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>} data={this.state.item_data} function={()=> this.toggle()} language={this.props.language.product} />
+        <Item button={<button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>} data={this.state.item_data} function={()=> this.toggle()} language={this.props.language.product} />
     </div>;
     }
 }

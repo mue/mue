@@ -33,7 +33,7 @@ export default class View extends React.PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('view') === 'false') return <div></div>;
+    if (localStorage.getItem('view') === 'false') return null;
     return <div className='view'>
         <FullscreenIcon id='viewButton' onClick={() => this.viewStuff()} />
     </div>

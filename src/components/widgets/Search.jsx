@@ -3,7 +3,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 export default class Search extends React.PureComponent {
   render() {
-    if (localStorage.getItem('searchBar') === 'false') return <div></div>;
+    if (localStorage.getItem('searchBar') === 'false') return null;
 
     let url;
     let query = 'q';

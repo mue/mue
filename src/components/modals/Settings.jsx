@@ -50,6 +50,9 @@ export default class Settings extends React.PureComponent {
         document.getElementById('brightnessAmount').innerText = value;
         document.getElementById('brightnessRange').value = value;
       }
+
+      const tag = document.getElementById(`${key}Status`);
+      if (tag) tag.checked = (value === 'true');
     }
 
     if (localStorage.getItem('darkTheme') === 'true') {

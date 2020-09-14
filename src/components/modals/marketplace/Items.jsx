@@ -9,11 +9,11 @@ export default class Items extends React.PureComponent {
         <div>
             {seeMoreHTML}
             <h1>{this.props.title}</h1>
-            <div className="items">
+            <div className='items'>
                 {this.props.items.map((item) =>
-                    <div className="item" onClick={() => this.props.toggleFunction(item.name)}>
-                        <img alt="icon" draggable={false} src={'https://external-content.duckduckgo.com/iu/?u=' + item.icon_url} />
-                        <div className="details">
+                    <div className='item' onClick={() => this.props.toggleFunction(item.name)}>
+                        <img alt='icon' draggable={false} src={'https://external-content.duckduckgo.com/iu/?u=' + item.icon_url} />
+                        <div className='details'>
                             <h4>{item.display_name}</h4>
                             <p>{item.author}</p>
                         </div>

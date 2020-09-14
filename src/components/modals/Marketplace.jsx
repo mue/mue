@@ -38,17 +38,17 @@ export default class Marketplace extends React.PureComponent {
         this.offlineHTML = <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.modalLanguage.title}</h1>
-        <div className="tab">
-            <button className="tablinks" id="active">{this.props.modalLanguage.marketplace}</button>
-            <button className="tablinks" onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
-            <button className="tablinks"
+        <div className='tab'>
+            <button className='tablinks' id='active'>{this.props.modalLanguage.marketplace}</button>
+            <button className='tablinks' onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
+            <button className='tablinks'
                 onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
         </div>
         <div id='marketplace'>
-            <div className="emptyMessage" style={{"marginTop": "20px", "transform": "translateY(80%)"}}>
+            <div className='emptyMessage' style={{'marginTop': '20px', 'transform': 'translateY(80%)'}}>
                 <WifiOffIcon />
                 <h1>{this.props.language.offline.title}</h1>
-                <p className="description">{this.props.language.offline.description}</p>
+                <p className='description'>{this.props.language.offline.description}</p>
             </div>
         </div>
         </div>;
@@ -67,7 +67,7 @@ export default class Marketplace extends React.PureComponent {
         if (type === 'item') {
             let info;
             try {
-                info = (await fetch(`${Constants.MARKETPLACE_URL}/item/${type2}/${data}`)).json();
+                info = await (await fetch(`${Constants.MARKETPLACE_URL}/item/${type2}/${data}`)).json();
             } catch (e) {
                 return toast(this.props.toastLanguage.error);
             }
@@ -87,9 +87,9 @@ export default class Marketplace extends React.PureComponent {
             document.getElementById('seemore').style.display = 'none';
             document.getElementById('item').style.display = 'block';
 
-            let button = <button className="addToMue" onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>;
+            let button = <button className='addToMue' onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>;
             let installed = JSON.parse(localStorage.getItem('installed'));
-            if (installed.some(item => item.name === data)) button = <button className="removeFromMue" onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>;
+            if (installed.some(item => item.name === data)) button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>;
             this.setState({ button: button });
         } else {
             document.getElementById('marketplace').style.display = 'block';
@@ -120,7 +120,7 @@ export default class Marketplace extends React.PureComponent {
            installed.push(this.state.current_data);
            localStorage.setItem('installed', JSON.stringify(installed));
            toast(this.props.toastLanguage.installed);
-           button = <button className="removeFromMue" onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>;
+           button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>;
            this.setState({ button: button });
         }
 
@@ -154,7 +154,7 @@ export default class Marketplace extends React.PureComponent {
         MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.type);
         toast(this.props.toastLanguage.removed);
         this.setState({
-            button: <button className="addToMue" onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>
+            button: <button className='addToMue' onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>
         });
     }
 
@@ -176,14 +176,14 @@ export default class Marketplace extends React.PureComponent {
         return  <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.modalLanguage.title}</h1>
-        <div className="tab">
-            <button className="tablinks" id="active">{this.props.modalLanguage.marketplace}</button>
-            <button className="tablinks" onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
-            <button className="tablinks"
+        <div className='tab'>
+            <button className='tablinks' id='active'>{this.props.modalLanguage.marketplace}</button>
+            <button className='tablinks' onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
+            <button className='tablinks'
                 onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
         </div>
         <div id='marketplace'>
-            <div className="emptyMessage" style={{"marginTop": "20px", "transform": "translateY(80%)"}}>
+            <div className='emptyMessage' style={{'marginTop': '20px', 'transform': 'translateY(80%)'}}>
                 <h1>Loading...</h1>
             </div>
         </div>
@@ -193,17 +193,17 @@ export default class Marketplace extends React.PureComponent {
     return <div className='content'>
              <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
              <h1>{this.props.modalLanguage.title}</h1>
-             <div className="tab">
-                 <button className="tablinks" id="active">{this.props.modalLanguage.marketplace}</button>
-                 <button className="tablinks" onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
-                 <button className="tablinks"
+             <div className='tab'>
+                 <button className='tablinks' id='active'>{this.props.modalLanguage.marketplace}</button>
+                 <button className='tablinks' onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
+                 <button className='tablinks'
                      onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
              </div>
              <div id='marketplace'>
-                 <div className="featured" style={{backgroundColor: this.state.featured.colour}}>
+                 <div className='featured' style={{backgroundColor: this.state.featured.colour}}>
                      <p>{this.state.featured.title}</p>
                      <h1>{this.state.featured.name}</h1>
-                     <button className="addToMue" onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
+                     <button className='addToMue' onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
                  </div>
                  <Items
                    title={this.props.language.photo_packs}
