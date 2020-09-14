@@ -13,14 +13,12 @@
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  scrollbar-width: thin;
-  scrollbar-color: #34495e  #bdc3c7;
+  scrollbar-color: #34495e #bdc3c7;
 
   &:focus {
     outline: 0;
   }
 }
-
 
 .modalLink {
   color: #5352ed;
@@ -95,8 +93,8 @@
 }
 
 .modal-animation {
-  -webkit-animation: zoom-in 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: zoom-in 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: zoom-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: zoom-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .ReactModal__Content {
@@ -114,7 +112,7 @@
   }
 }
 
-@media only screen and (min-height: 700px){
+@media only screen and (min-height: 700px) {
   .ReactModal__Content {
     min-height: 600px;
   }
@@ -142,8 +140,8 @@
 }
 
 .zoom-out {
-  -webkit-animation: zoom-out 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: zoom-out 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: zoom-out 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: zoom-out 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes zoom-out {
@@ -188,11 +186,14 @@
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 13px;
   background: #bdc3c7;
-  height: auto;
+  border-top-right-radius: map-get($modal, "border-radius");
+  border-bottom-right-radius: map-get($modal, "border-radius");
 }
 
 ::-webkit-scrollbar-thumb {
   background: #34495e;
+  border-top-right-radius: map-get($modal, "border-radius");
+  border-bottom-right-radius: map-get($modal, "border-radius");
 }
