@@ -25,7 +25,7 @@ export default class Search extends React.PureComponent {
       let value = document.getElementById('searchtext').value;
       if (!value) value = 'mue fast';
       window.location.href = url + '?q=' + value;
-    }
+    };
 
     return <div id='searchBar' className='searchbar'>
         <form id='searchBar' className='searchbarform' action={url}>

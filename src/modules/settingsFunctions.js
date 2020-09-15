@@ -14,7 +14,7 @@ const saveFile = (data, filename = 'file') => {
 
     e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
     a.dispatchEvent(e);
-}
+};
 
 const defaultSettings = require('./defaultSettings.json');
 
@@ -67,7 +67,7 @@ export default class SettingsFunctions {
 
     static setDefaultSettings() {
         localStorage.clear();
-        defaultSettings.forEach(element => localStorage.setItem(element.name, element.value));
+        defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 
         // Set theme depending on user preferred
         // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.setItem('darkTheme', true);

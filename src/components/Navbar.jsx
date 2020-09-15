@@ -9,10 +9,6 @@ export default class Navbar extends React.PureComponent {
     const refresh = localStorage.getItem('refresh');
     if (refresh === 'false') refreshHTML = '';
 
-    const viewedUpdate = localStorage.getItem('viewedUpdate');
-    let update = <NewReleases className='refreshicon' onClick={this.props.updateModalOpen} />;
-    if (viewedUpdate === 'false') update =  <NewReleases className='refreshicon' onClick={this.props.updateModalOpen} />
-
     return (
       <div className='navbar-container'>
         <div className='navbar1'>
@@ -20,7 +16,7 @@ export default class Navbar extends React.PureComponent {
         </div>
         {refreshHTML}
         <div className={refresh === 'false' ? 'navbar2' : 'navbar3'}>
-        {update}
+        <NewReleases className='refreshicon' onClick={this.props.updateModalOpen} />
         </div>
       </div>
     );

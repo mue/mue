@@ -8,7 +8,7 @@ export default class Checkbox extends React.PureComponent {
     super(...args);
     this.state = {
       checked: true
-    }
+    };
   }
 
   handleChange(name) {

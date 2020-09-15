@@ -46,7 +46,7 @@ export default class App extends React.PureComponent {
     let overlayClassList = 'Overlay';
     if (localStorage.getItem('animations') === 'true') overlayClassList = 'Overlay modal-animation';
 
-    let language = require(`./translations/${localStorage.getItem('language')}.json`);
+    const language = require(`./translations/${localStorage.getItem('language')}.json`);
 
     const theme = localStorage.getItem('theme');
     if (theme) {

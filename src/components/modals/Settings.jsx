@@ -25,7 +25,7 @@ export default class Settings extends React.PureComponent {
         document.getElementById('brightnessAmount').innerText = '100';
         break;
       case 'customSearchEngine': document.getElementById('searchEngine').value = 'DuckDuckGo'; break;
-      default: console.log('[ERROR] resetItem requires a key!');
+      default: toast('resetItem requires a key!');
     }
     toast(this.props.toastLanguage.reset);
   }
@@ -39,7 +39,7 @@ export default class Settings extends React.PureComponent {
     // document.getElementById('backgroundImage').style.backgroundUrl = localStorage.getItem('customBackground');
 
     for (const key of Object.keys(localStorage)) {
-      let value = localStorage.getItem(key);
+      const value = localStorage.getItem(key);
 
       if (key === 'blur') {
         document.getElementById('blurAmount').innerText = value;
@@ -82,7 +82,7 @@ export default class Settings extends React.PureComponent {
         const content = JSON.parse(readerEvent.target.result);
         for (const key of Object.keys(content)) localStorage.setItem(key, content[key]);
         toast(this.props.toastLanguage.imported_settings);
-      }
+      };
     }
 
     document.getElementById('bg-input').onchange = (e) => {
@@ -96,7 +96,7 @@ export default class Settings extends React.PureComponent {
         document.getElementById('customBackground').src = e.target.result;
         document.getElementById('customBackground').value = e.target.result;
         document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${localStorage.getItem('customBackground')}`);
-        document.getElementById('backgroundImage').style.backgroundImage = `url(${localStorage.getItem('customBackground')})`
+        document.getElementById('backgroundImage').style.backgroundImage = `url(${localStorage.getItem('customBackground')})`;
       });
 
       reader.readAsDataURL(file);

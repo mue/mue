@@ -24,7 +24,7 @@ export default class Quote extends React.PureComponent {
   async getQuote() {
     const quotePack = JSON.parse(localStorage.getItem('quote_packs'));
     if (quotePack) {
-      const data = quotePack[Math.floor(Math.random() * quotePack.length)]
+      const data = quotePack[Math.floor(Math.random() * quotePack.length)];
       return this.setState({
         quote: '"' + data.quote + '"',
         author: data.author
@@ -64,6 +64,6 @@ export default class Quote extends React.PureComponent {
           <h1 className='quote'>{`${this.state.quote}`}</h1>
           <h1 className='quoteauthor'>{this.state.author} {copy}</h1>
         </div>
-    )
+    );
   }
 }

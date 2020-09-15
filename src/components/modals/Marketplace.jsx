@@ -146,7 +146,7 @@ export default class Marketplace extends React.PureComponent {
                 installStuff();
                 break;
             default:
-               console.log('invalid');
+               break;
         }
     }
 

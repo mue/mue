@@ -20,7 +20,7 @@ export default class View extends React.PureComponent {
 
   viewStuff() {
     const elements = ['#searchBar', '.navbar-container', '.clock', '.greeting', '.quotediv'];
-    elements.forEach(element => {
+    elements.forEach((element) => {
         try {
             (this.state.hidden === false) ?  document.querySelector(element).style.display = 'none' : document.querySelector(element).style.display = 'block';
         } catch (e) {

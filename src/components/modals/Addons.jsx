@@ -111,7 +111,7 @@ export default class Addons extends React.PureComponent {
                </div>)}
           </div>
         </div>
-        <Item button={<button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>} data={this.state.item_data} function={()=> this.toggle()} language={this.props.language.product} />
+        <Item button={<button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>} data={this.state.item_data} function={() => this.toggle()} language={this.props.language.product} />
     </div>;
     }
 }
