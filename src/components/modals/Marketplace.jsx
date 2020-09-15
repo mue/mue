@@ -88,7 +88,7 @@ export default class Marketplace extends React.PureComponent {
             document.getElementById('item').style.display = 'block';
 
             let button = <button className='addToMue' onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>;
-            let installed = JSON.parse(localStorage.getItem('installed'));
+            const installed = JSON.parse(localStorage.getItem('installed'));
             if (installed.some(item => item.name === data)) button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>;
             this.setState({ button: button });
         } else {
