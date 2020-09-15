@@ -63,6 +63,8 @@ export default class Settings extends React.PureComponent {
       document.getElementById('searchEngine').style.color = 'white';
       document.getElementById('language').style.color = 'white';
       document.getElementById('greetingName').style.color = 'white';
+      const choices = document.getElementsByClassName('choices');
+      for (let i = 0; i < choices.length; i++) choices[i].style.backgroundColor = '#2f3542';
     }
   }
 
@@ -170,8 +172,8 @@ export default class Settings extends React.PureComponent {
             <label htmlFor='8'>{this.props.language.background.API} </label>
             <label className='dropdown'>
               <select className='select-css' name='8' id='backgroundAPI' onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
-                <option value='mue'>Mue</option>
-                <option value='unsplash'>Unsplash</option>
+                <option class='choices' value='mue'>Mue</option>
+                <option class='choices' value='unsplash'>Unsplash</option>
                 { /* <option value='custom'>Custom</option> */ }
               </select>
             </label>
@@ -208,15 +210,15 @@ export default class Settings extends React.PureComponent {
             <ul>
             <label htmlFor='4'>{this.props.language.searchbar.searchengine} </label>
               <select className='select-css' name='4' id='searchEngine' onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)}>
-                <option value='duckduckgo'>DuckDuckGo</option>
-                <option value='google'>Google</option>
-                <option value='bing'>Bing</option>
-                <option value='yahoo'>Yahoo</option>
-                <option value='ecosia'>Ecosia</option>
-                <option value='yandex'>Yandex</option>
-                <option value='qwant'>Qwant</option>
-                <option value='ask'>Ask</option>
-                <option value='startpage'>Startpage</option>
+                <option class='choices' value='duckduckgo'>DuckDuckGo</option>
+                <option class='choices' value='google'>Google</option>
+                <option class='choices' value='bing'>Bing</option>
+                <option class='choices' value='yahoo'>Yahoo</option>
+                <option class='choices' value='ecosia'>Ecosia</option>
+                <option class='choices' value='yandex'>Yandex</option>
+                <option class='choices' value='qwant'>Qwant</option>
+                <option class='choices' value='ask'>Ask</option>
+                <option class='choices' value='startpage'>Startpage</option>
                {/* <option value='custom'>Custom</option> */}
               </select>
             </ul>
