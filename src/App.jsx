@@ -13,6 +13,7 @@ import Navbar from './components/Navbar';
 import SettingsFunctions from './modules/settingsFunctions';
 import { ToastContainer } from 'react-toastify';
 import Modal from 'react-modal';
+import Merge from 'lodash.merge';
 import RoomIcon from '@material-ui/icons/Room';
 
 // Modals are lazy loaded as a user won't use them every time they open a tab
@@ -47,7 +48,9 @@ export default class App extends React.PureComponent {
     let overlayClassList = 'Overlay';
     if (localStorage.getItem('animations') === 'true') overlayClassList = 'Overlay modal-animation';
 
-    const language = require(`./translations/${localStorage.getItem('language')}.json`);
+    let language = require(`./translations/${localStorage.getItem('language')}.json`);
+    const en = require('./translations/en.json');
+    language = Merge(en, language);
 
     const theme = localStorage.getItem('theme');
     if (theme) {
