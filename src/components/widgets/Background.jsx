@@ -18,6 +18,7 @@ export default class Background extends React.PureComponent {
 
   setCredit(photographer) {
     document.querySelector('#photographer').append(` ${photographer}`); // Append credit
+    document.getElementById('credit').textContent = photographer;
   }
 
   doOffline() { // Handles setting the background if the user is offline
@@ -41,12 +42,17 @@ export default class Background extends React.PureComponent {
     const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
     const customBackgroundColour = localStorage.getItem('customBackgroundColour');
     const customBackground = localStorage.getItem('customBackground');
+    const favourited = JSON.parse(localStorage.getItem('favourite'));
 
     if (photoPack) {
       const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
       this.setBackground(randomPhoto.url.default);
     } else if (customBackgroundColour) {
       this.setBackground(null, customBackgroundColour, 'false');
+    } else if (favourited) {
+      this.setBackground(favourited.url, null, 'true');
+      this.setCredit(favourited.credit)
+      document.getElementById('location').textContent = favourited.location;
     } else if (customBackground !== '') { // Local
       this.setBackground(customBackground, null, 'false');
     } else { // Online

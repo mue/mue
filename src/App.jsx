@@ -6,6 +6,7 @@ import Greeting from './components/widgets/Greeting';
 import Quote from './components/widgets/Quote';
 import Search from './components/widgets/Search';
 import Maximise from './components/widgets/Maximise';
+import Favourite from './components/widgets/Favourite';
 
 import Navbar from './components/Navbar';
 
@@ -68,12 +69,14 @@ export default class App extends React.PureComponent {
           <Quote language={language.toasts}/>
           <div className='credits' id='credits'>
             <h1 id='photographer'>{language.credit}</h1>
+            <span id='credit' style={{'display': 'none'}}></span>
             <div id='backgroundCredits' className='tooltip'>
               <RoomIcon className='locationicon'/>
               <span className='tooltiptext' id='location'/>
             </div>
           </div>
           <Maximise/>
+          <Favourite/>
           <React.Suspense fallback={renderLoader()}>
             <Modal id={'modal'} onRequestClose={() => this.setState({ settingsModal: false })} isOpen={this.state.settingsModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Settings
