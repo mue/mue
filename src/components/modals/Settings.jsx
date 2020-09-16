@@ -83,7 +83,7 @@ export default class Settings extends React.PureComponent {
         for (const key of Object.keys(content)) localStorage.setItem(key, content[key]);
         toast(this.props.toastLanguage.imported_settings);
       };
-    }
+    };
 
     document.getElementById('bg-input').onchange = (e) => {
       const reader = new FileReader();

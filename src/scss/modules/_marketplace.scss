@@ -48,7 +48,6 @@ button.tablinks {
 }
 
 .dark {
-
   .tab,
   button.tablinks {
     color: white;
@@ -146,8 +145,8 @@ p.author {
   }
 }
 
-#item>h1,
-#item>.MuiSvgIcon-root {
+#item > h1,
+#item > .MuiSvgIcon-root {
   display: inline;
   font-size: 35px !important;
 }
@@ -207,7 +206,7 @@ p.description {
   background: #2d3436;
 }
 
-#item>img {
+#item > img {
   border-radius: 24px;
   height: 200px;
   width: auto;

@@ -26,7 +26,7 @@ export default class SettingsFunctions {
     }
 
     static setItem(key, value) {
-        let old = localStorage.getItem(key);
+        const old = localStorage.getItem(key);
         let val = true;
 
         if (old !== null && !value) {

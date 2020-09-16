@@ -3,8 +3,8 @@
     text-align: right;
     min-width: 50px;
     cursor: pointer;
-    -webkit-filter: drop-shadow(0 0 6px rgba(0,0,0,.3));
-    filter: drop-shadow(0 0 6px rgba(0,0,0,.3));
+    -webkit-filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
     top: 20px;
 
     svg {
@@ -23,11 +23,12 @@
 .navbar1 {
     @extend %navbar;
     right: 20px;
+
     svg {
         -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1.0, 1.0);
+        -webkit-transform: translateZ(0) scale(1, 1);
         backface-visibility: hidden;
-        transform: translateZ(0) scale(1.0, 1.0);
+        transform: translateZ(0) scale(1, 1);
     }
 }
 

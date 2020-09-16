@@ -27,12 +27,14 @@ export default class Search extends React.PureComponent {
       window.location.href = url + '?q=' + value;
     };
 
-    return <div id='searchBar' className='searchbar'>
+    return (
+      <div id='searchBar' className='searchbar'>
         <form id='searchBar' className='searchbarform' action={url}>
             <SearchIcon onClick={() => searchButton()} />
             <input type='text' placeholder={this.props.language} name={query} id='searchtext' className='searchtext'/>
             <div className='blursearcbBG'/>
           </form>
       </div>
+    );
   }
 }

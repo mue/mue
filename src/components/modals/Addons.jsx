@@ -102,7 +102,7 @@ export default class Addons extends React.PureComponent {
         <h1>{this.props.language.added}</h1>
           <div className='items'>
               {this.state.installed.map((item) =>
-                   <div className='item' onClick={()=> this.toggle('item', item.type, item.name)}>
+                   <div className='item' onClick={() => this.toggle('item', item.type, item.name)}>
                    <img alt='icon' src={item.content.data.icon_url} />
                    <div className='details'>
                        <h4>{item.content.data.name}</h4>
