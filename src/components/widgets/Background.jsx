@@ -1,5 +1,4 @@
 import React from 'react';
-import supportsWebP from 'supports-webp';
 import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
@@ -65,7 +64,7 @@ export default class Background extends React.PureComponent {
             requestURL = `${Constants.UNSPLASH_URL}/getImage`;
             break;
           default: // Defaults to Mue
-            if (await supportsWebP && enabled === 'true') requestURL = `${Constants.API_URL}/getImage?webp=true`;
+            if (localStorage.getItem('supportswebp') === 'true' && enabled === 'true') requestURL = `${Constants.API_URL}/getImage?webp=true`;
             else requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
             break;
         }

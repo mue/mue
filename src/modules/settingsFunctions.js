@@ -65,34 +65,25 @@ export default class SettingsFunctions {
         window.location.reload();
     }
 
-    static setDefaultSettings() {
+    static async setDefaultSettings() {
         localStorage.clear();
         defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 
         // Set theme depending on user preferred
-        // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.setItem('darkTheme', true);
-        //else localStorage.setItem('darkTheme', false);
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.setItem('darkTheme', true);
+        else localStorage.setItem('darkTheme', false);
 
-        switch(detectBrowserLanguage()) {
-            case 'nl':
-                localStorage.setItem('language', 'nl');
-                document.documentElement.lang = 'nl';
-                break;
-            case 'no':
-                localStorage.setItem('language', 'no');
-                document.documentElement.lang = 'no';
-                break;
-            case 'fr':
-                localStorage.setItem('language', 'fr');
-                document.documentElement.lang = 'fr';
-                break;
-            case 'ru':
-                localStorage.setItem('language', 'ru');
-                document.documentElement.lang = 'ru';
-                break;
-            default:
-                localStorage.setItem('language', 'en');
-        }
+        // Webp support
+        const supportsWebP = require('supports-webp'); // We import it here so it doesn't run the function on each page load
+        if (supportsWebP) localStorage.setItem('supportswebp', 'true');
+
+        // Languages
+        const languages = ['nl', 'no', 'fr', 'ru'];
+        const browserLanguage = detectBrowserLanguage();
+        if (languages.includes(browserLanguage)) {
+            localStorage.setItem('language', browserLanguage);
+            document.documentElement.lang = browserLanguage;
+        } else localStorage.setItem('language', 'en');
 
         // Finally we set this to true so it doesn't run the function on every load
         localStorage.setItem('firstRun', true);
