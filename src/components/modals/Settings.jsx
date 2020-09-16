@@ -172,8 +172,8 @@ export default class Settings extends React.PureComponent {
             <label htmlFor='8'>{this.props.language.background.API} </label>
             <label className='dropdown'>
               <select className='select-css' name='8' id='backgroundAPI' onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
-                <option class='choices' value='mue'>Mue</option>
-                <option class='choices' value='unsplash'>Unsplash</option>
+                <option className='choices' value='mue'>Mue</option>
+                <option className='choices' value='unsplash'>Unsplash</option>
                 { /* <option value='custom'>Custom</option> */ }
               </select>
             </label>
@@ -210,15 +210,15 @@ export default class Settings extends React.PureComponent {
             <ul>
             <label htmlFor='4'>{this.props.language.searchbar.searchengine} </label>
               <select className='select-css' name='4' id='searchEngine' onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)}>
-                <option class='choices' value='duckduckgo'>DuckDuckGo</option>
-                <option class='choices' value='google'>Google</option>
-                <option class='choices' value='bing'>Bing</option>
-                <option class='choices' value='yahoo'>Yahoo</option>
-                <option class='choices' value='ecosia'>Ecosia</option>
-                <option class='choices' value='yandex'>Yandex</option>
-                <option class='choices' value='qwant'>Qwant</option>
-                <option class='choices' value='ask'>Ask</option>
-                <option class='choices' value='startpage'>Startpage</option>
+                <option className='choices' value='duckduckgo'>DuckDuckGo</option>
+                <option className='choices' value='google'>Google</option>
+                <option className='choices' value='bing'>Bing</option>
+                <option className='choices' value='yahoo'>Yahoo</option>
+                <option className='choices' value='ecosia'>Ecosia</option>
+                <option className='choices' value='yandex'>Yandex</option>
+                <option className='choices' value='qwant'>Qwant</option>
+                <option className='choices' value='ask'>Ask</option>
+                <option className='choices' value='startpage'>Startpage</option>
                {/* <option value='custom'>Custom</option> */}
               </select>
             </ul>
@@ -232,19 +232,37 @@ export default class Settings extends React.PureComponent {
           <h4>{this.props.language.offline}</h4>
           <Slider name='offlineMode' />
         </div>
-        <h3>{this.props.language.experimental.title}</h3>
         <div className='section'>
-          <h4>{this.props.language.experimental.webp}</h4>
-          <Slider name='webp' />
+            <h4>{this.props.language.experimental.dark}</h4>
+            <Slider name='darkTheme' />
         </div>
         <div className='section'>
-          <h4>{this.props.language.experimental.dark}</h4>
-          <Slider name='darkTheme' />
+          <h4>{this.props.language.experimental.title}</h4>
+          <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[5], document.getElementsByClassName('expandIcons')[5])} />
+          <li className='extraSettings'>
+            <div className='section'>
+              <h4>{this.props.language.experimental.webp}</h4>
+              <Slider name='webp' />
+            </div>
+            <div className='section'>
+               <h4>{this.props.language.experimental.animations}</h4>
+               <Slider name='animations' />
+            </div>
+            <div className='section'>
+               <h4>View</h4>
+               <Slider name='view' />
+            </div>
+            <div className='section'>
+               <h4>Favourite</h4>
+               <Slider name='favouriteEnabled' />
+            </div>
+            <div className='section'>
+               <h4>Refresh</h4>
+               <Slider name='refresh' />
+            </div>
+          </li>
         </div>
-        <div className='section'>
-          <h4>{this.props.language.experimental.animations}</h4>
-          <Slider name='animations' />
-        </div>
+
         <div className='section'>
         <h4 htmlFor='9'>{this.props.language.language} </h4>
           <select className='select-css' name='9' id='language' onChange={() => localStorage.setItem('language', document.getElementById('language').value)}>

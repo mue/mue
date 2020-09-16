@@ -66,5 +66,17 @@
     {
         "name": "searchEngine",
         "value": "duckduckgo"
+    },
+    {
+        "name": "refresh",
+        "value": true
+    },
+    {
+        "name": "view",
+        "value": true
+    },
+    {
+        "name": "favouriteEnabled",
+        "value": true
     }
 ]
