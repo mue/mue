@@ -9,6 +9,11 @@ export default class Addons extends React.PureComponent {
         super(...args);
         this.state = {
             installed: [],
+            current_data: {
+                type: '',
+                name: '',
+                content: {}
+            },
             item_data: {
                 name: 'Name',
                 author: 'Author',
@@ -20,10 +25,11 @@ export default class Addons extends React.PureComponent {
         }
     }
 
-    async toggle(type, type2, data) {
+    toggle(type, type2, data) {
         if (type === 'item') {
             let installed = JSON.parse(localStorage.getItem('installed'));
             let info = installed.find(i => i.name === data).content;
+            console.log(info.data)
             this.setState({
                 current_data: { type: type2, name: data, content: info },
                 item_data: {
@@ -34,9 +40,9 @@ export default class Addons extends React.PureComponent {
                     version: info.data.version,
                     icon: info.data.screenshot_url
                 }
-             });
-            document.getElementById('marketplace').style.display = 'none';
+            });
             document.getElementById('item').style.display = 'block';
+            document.getElementById('marketplace').style.display = 'none';
          } else {
             document.getElementById('marketplace').style.display = 'block';
             document.getElementById('item').style.display = 'none';
