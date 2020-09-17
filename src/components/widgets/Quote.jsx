@@ -3,6 +3,7 @@ import Quotes from '@muetab/quotes';
 import FileCopy from '@material-ui/icons/FilterNone';
 import { toast } from 'react-toastify';
 import * as Constants from '../../modules/constants';
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 export default class Quote extends React.PureComponent {
   constructor(...args) {
@@ -77,12 +78,15 @@ export default class Quote extends React.PureComponent {
 
   render() {
     let copy = <FileCopy className='copyButton' onClick={() => this.copyQuote()}></FileCopy>;
-    if (localStorage.getItem('copyButton') === 'false') copy = '';
+    if (localStorage.getItem('copyButton') === 'false') copy = null;
+
+    let tweet = <TwitterIcon className='copyButton' onClick={() => window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus()}/>
+    if (localStorage.getItem('tweetButton') === 'false') tweet = null;
 
     return (
         <div className='quotediv'>
           <h1 className='quote'>{`${this.state.quote}`}</h1>
-          <h1 className='quoteauthor'>{this.state.author} {copy}</h1>
+          <h1 className='quoteauthor'>{this.state.author} {copy} {tweet}</h1>
         </div>
     );
   }

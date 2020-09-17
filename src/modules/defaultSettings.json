@@ -78,5 +78,9 @@
     {
         "name": "favouriteEnabled",
         "value": true
+    },
+    {
+        "name": "tweetButton",
+        "value": false
     }
 ]
