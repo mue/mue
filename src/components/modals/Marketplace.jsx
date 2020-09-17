@@ -143,7 +143,7 @@ export default class Marketplace extends React.PureComponent {
                 installStuff();
                 break;
             case 'quote_packs':
-                if (this.state.current_data.content.data.quoteapi) localStorage.setItem('quote_api', JSON.stringify(this.state.current_data.content.data.quoteapi));
+                if (this.state.current_data.content.data.quote_api) localStorage.setItem('quote_api', JSON.stringify(this.state.current_data.content.data.quote_api));
                 localStorage.setItem('quote_packs', JSON.stringify(this.state.current_data.content.data.quotes));
                 installStuff();
                 break;

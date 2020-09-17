@@ -108,6 +108,7 @@ export default class App extends React.PureComponent {
             <Modal onRequestClose={() => this.setState({ addonsModal: false })} isOpen={this.state.addonsModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
               <Addons
                 language={language.addons}
+                marketplaceLanguage={language.marketplace}
                 modalLanguage={language.modals}
                 modalClose={() => this.setState({ addonsModal: false })}
                 openSettings={() => this.setState({ addonsModal: false, settingsModal: true })}

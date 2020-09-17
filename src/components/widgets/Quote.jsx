@@ -22,7 +22,11 @@ export default class Quote extends React.PureComponent {
   }
 
   getQuotePack() {
-    const quotePack = JSON.parse(localStorage.getItem('quote_packs'));
+    let quotePack = localStorage.getItem('quote_packs');
+    console.log(quotePack)
+    if (quotePack === 'undefined') return this.doOffline();
+    quotePack = JSON.parse(quotePack);
+
     if (quotePack) {
       const data = quotePack[Math.floor(Math.random() * quotePack.length)];
       return this.setState({
