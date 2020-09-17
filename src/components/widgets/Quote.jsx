@@ -21,7 +21,7 @@ export default class Quote extends React.PureComponent {
     }); // Set the quote
   }
 
-  async getQuote() {
+  getQuotePack() {
     const quotePack = JSON.parse(localStorage.getItem('quote_packs'));
     if (quotePack) {
       const data = quotePack[Math.floor(Math.random() * quotePack.length)];
@@ -29,6 +29,23 @@ export default class Quote extends React.PureComponent {
         quote: '"' + data.quote + '"',
         author: data.author
       });
+    } else this.doOffline();
+  }
+
+  async getQuote() {
+    const quotePackAPI = JSON.parse(localStorage.getItem('quote_api'));
+    if (quotePackAPI) {
+      try {
+        const data = await (await fetch(quotePackAPI.url)).json();
+        let author = data[quotePackAPI.author];
+        if (quotePackAPI.authorOverride) author = quotePackAPI.authorOverride;
+        return this.setState({
+          quote: '"' + data[quotePackAPI.quote] + '"',
+          author: author
+        });
+      } catch (e) {
+        return this.getQuotePack();
+      }
     }
 
     if (localStorage.getItem('offlineMode') === 'true') return this.doOffline();

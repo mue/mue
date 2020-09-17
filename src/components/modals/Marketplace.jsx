@@ -83,6 +83,7 @@ export default class Marketplace extends React.PureComponent {
                     icon: info.data.screenshot_url
                 }
             });
+
             document.getElementById('marketplace').style.display = 'none';
             document.getElementById('seemore').style.display = 'none';
             document.getElementById('item').style.display = 'block';
@@ -142,6 +143,7 @@ export default class Marketplace extends React.PureComponent {
                 installStuff();
                 break;
             case 'quote_packs':
+                if (this.state.current_data.content.data.quoteapi) localStorage.setItem('quote_api', JSON.stringify(this.state.current_data.content.data.quoteapi));
                 localStorage.setItem('quote_packs', JSON.stringify(this.state.current_data.content.data.quotes));
                 installStuff();
                 break;

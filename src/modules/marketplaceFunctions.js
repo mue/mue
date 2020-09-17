@@ -26,6 +26,10 @@ export default class MarketplaceFunctions {
               oldSettings.forEach(item => localStorage.setItem(item.name, item.value));
               uninstallStuff();
               break;
+            case 'quote_pack':
+                localStorage.removeItem('quote_packs');
+                localStorage.removeItem('quote_api');
+                break;
             default:
               try {
                   localStorage.removeItem(type);
