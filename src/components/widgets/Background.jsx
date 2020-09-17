@@ -50,7 +50,7 @@ export default class Background extends React.PureComponent {
       this.setBackground(null, customBackgroundColour, 'false');
     } else if (favourited) {
       this.setBackground(favourited.url, null, 'true');
-      this.setCredit(favourited.credit)
+      this.setCredit(favourited.credit);
       document.getElementById('location').textContent = favourited.location;
     } else if (customBackground !== '') { // Local
       this.setBackground(customBackground, null, 'false');

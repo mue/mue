@@ -1,9 +1,14 @@
 import React from 'react';
-import ExpandMore from '@material-ui/icons/ExpandMore';
 import SettingsFunctions from '../../modules/settingsFunctions';
 import Checkbox from './settings/Checkbox';
 import Slider from './settings/Slider';
+import Section from './settings/Section';
 import { toast } from 'react-toastify';
+
+import BackgroundSettings from './settings/sections/BackgroundSettings';
+import ExperimentalSettings from './settings/sections/ExperimentalSettings';
+import SearchSettings from './settings/sections/SearchSettings';
+import LanguageSettings from './settings/sections/LanguageSettings';
 
 export default class Settings extends React.PureComponent {
   resetItem(key) {
@@ -85,22 +90,6 @@ export default class Settings extends React.PureComponent {
       };
     };
 
-    document.getElementById('bg-input').onchange = (e) => {
-      const reader = new FileReader();
-      const file = e.target.files[0];
-
-      if (file.size > 2000000) return toast('File is over 2MB', '#ff0000', '#ffffff');
-
-      reader.addEventListener('load', (e) => {
-        localStorage.setItem('customBackground', e.target.result);
-        document.getElementById('customBackground').src = e.target.result;
-        document.getElementById('customBackground').value = e.target.result;
-        document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${localStorage.getItem('customBackground')}`);
-        document.getElementById('backgroundImage').style.backgroundImage = `url(${localStorage.getItem('customBackground')})`;
-      });
-
-      reader.readAsDataURL(file);
-    };
     /*const hex = localStorage.getItem('customBackgroundColour');
     if (!hex === '') {
       document.getElementById('customBackgroundColour').value = hex;
@@ -128,151 +117,44 @@ export default class Settings extends React.PureComponent {
           <button className="tablinks" onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
           <button className="tablinks" id="active">{this.props.modalLanguage.settings}</button>
         </div>
-        <br />
+        <br/>
+
       <div className='columns'>
-          <div className='section'>
-            <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[0], document.getElementsByClassName('expandIcons')[0])}>{this.props.language.time.title}</h4>
-            <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[0], document.getElementsByClassName('expandIcons')[0])} />
-            <Slider name='time' />
-          <li className='extraSettings'>
+        <Section title={this.props.language.time.title} name='time'>
             <Checkbox name='seconds' text={this.props.language.time.seconds} />
             <Checkbox name='24hour' text={this.props.language.time.twentyfourhour} />
             <Checkbox name='ampm' text={this.props.language.time.ampm} />
             <Checkbox name='zero' text={this.props.language.time.zero} />
             <Checkbox name='analog' text={this.props.language.time.analog} />
-          </li>
-        </div>
-        <div className='section'>
-          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[1], document.getElementsByClassName('expandIcons')[1])}>{this.props.language.greeting.title}</h4>
-          <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[1], document.getElementsByClassName('expandIcons')[1])} />
-          <Slider name='greeting' />
-          <li className='extraSettings'>
+        </Section>
+        <Section title={this.props.language.greeting.title} name='greeting'>
           <Checkbox name='events' text={this.props.language.greeting.events} />
           <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
-            <ul>
-              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greetingName')}>{this.props.language.reset}</span></p>
-              <input type='text' id='greetingName'></input>
-            </ul>
-          </li>
-        </div>
-        <div className='section'>
-          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[2], document.getElementsByClassName('expandIcons')[2])}>{this.props.language.quote.title}</h4>
-          <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[2], document.getElementsByClassName('expandIcons')[2])} />
-          <Slider name='quote' />
-          <li className='extraSettings'>
-            <Checkbox name='copyButton' text={this.props.language.quote.copy} />
-          </li>
-        </div>
-        <div className='section'>
-          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])}>{this.props.language.background.title}</h4>
-          <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[3], document.getElementsByClassName('expandIcons')[3])} />
-          <Slider name='background' />
-          <li className='extraSettings'>
           <ul>
-            <label htmlFor='8'>{this.props.language.background.API} </label>
-            <label className='dropdown'>
-              <select className='select-css' name='8' id='backgroundAPI' onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
-                <option className='choices' value='mue'>Mue</option>
-                <option className='choices' value='unsplash'>Unsplash</option>
-                { /* <option value='custom'>Custom</option> */ }
-              </select>
-            </label>
-            </ul>
-            <ul>
-              <p>{this.props.language.background.blur} (<span id='blurAmount'></span>%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
-              <input className='range' type='range' min='0' max='100' id='blurRange' onInput={() => document.getElementById('blurAmount').innerText = document.getElementById('blurRange').value} />
-            </ul>
-            <ul>
-              <p>{this.props.language.background.brightness} (<span id='brightnessAmount'></span>%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
-              <input className='range' type='range' min='0' max='100' id='brightnessRange' onInput={() => document.getElementById('brightnessAmount').innerText = document.getElementById('brightnessRange').value} />
-            </ul>
-            <ul>
-              <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-              <input type='text' id='customBackground'></input>
-            </ul>
-            <ul>
-              <p>{this.props.language.background.custombackground} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-              <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
-              <input id='bg-input' type='file' name='name' className='hidden' accept='image/svg+xml, image/jpeg, image/png, image/webp, image/webm, image/gif' />
-            </ul>
-           { /* <ul>
-              <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>Reset</span></p>
-              <input name='colour' type='color' id='customBackgroundColour' onChange={() => document.getElementById('customBackgroundHex').innerText = document.getElementById('customBackgroundColour').value}></input>
-              <label htmlFor='colour' id='customBackgroundHex'>#00000</label>
-           </ul> */ }
-          </li>
-        </div>
-        <div className='section'>
-          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[4], document.getElementsByClassName('expandIcons')[4])}>{this.props.language.searchbar.title}</h4>
-          <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[4], document.getElementsByClassName('expandIcons')[4])} />
-          <Slider name='searchBar' />
-          <li className='extraSettings'>
-            <ul>
-            <label htmlFor='4'>{this.props.language.searchbar.searchengine} </label>
-              <select className='select-css' name='4' id='searchEngine' onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)}>
-                <option className='choices' value='duckduckgo'>DuckDuckGo</option>
-                <option className='choices' value='google'>Google</option>
-                <option className='choices' value='bing'>Bing</option>
-                <option className='choices' value='yahoo'>Yahoo</option>
-                <option className='choices' value='ecosia'>Ecosia</option>
-                <option className='choices' value='yandex'>Yandex</option>
-                <option className='choices' value='qwant'>Qwant</option>
-                <option className='choices' value='ask'>Ask</option>
-                <option className='choices' value='startpage'>Startpage</option>
-               {/* <option value='custom'>Custom</option> */}
-              </select>
-            </ul>
-            <ul id='searchEngineInput' style={{ display: 'none' }}>
-              <p style={{"marginTop": "0px"}}>Custom Search URL <span className='modalLink' onClick={() => this.resetItem('customSearchEngine')}>Reset</span></p>
-              <input type='text' id='customSearchEngine'></input>
-            </ul>
-          </li>
-        </div>
+            <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greetingName')}>{this.props.language.reset}</span></p>
+            <input type='text' id='greetingName'></input>
+          </ul>
+        </Section>
+        <Section title={this.props.language.quote.title} name='quote'>
+          <Checkbox name='copyButton' text={this.props.language.quote.copy} />
+        </Section>
+        <Section title={this.props.language.background.title} name='background'>
+          <BackgroundSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
+        </Section>
+        <Section title={this.props.language.searchbar.title} name='searchBar'>
+          <SearchSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
+        </Section>
         <div className='section'>
           <h4>{this.props.language.offline}</h4>
-          <Slider name='offlineMode' />
+          <Slider name='offlineMode'/>
         </div>
         <div className='section'>
-            <h4>{this.props.language.experimental.dark}</h4>
-            <Slider name='darkTheme' />
+          <h4>{this.props.language.experimental.dark}</h4>
+          <Slider name='darkTheme'/>
         </div>
-        <div className='section'>
-          <h4>{this.props.language.experimental.title}</h4>
-          <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[5], document.getElementsByClassName('expandIcons')[5])} />
-          <li className='extraSettings'>
-            <div className='section'>
-              <h4>{this.props.language.experimental.webp}</h4>
-              <Slider name='webp' />
-            </div>
-            <div className='section'>
-               <h4>{this.props.language.experimental.animations}</h4>
-               <Slider name='animations' />
-            </div>
-            <div className='section'>
-               <h4>View</h4>
-               <Slider name='view' />
-            </div>
-            <div className='section'>
-               <h4>Favourite</h4>
-               <Slider name='favouriteEnabled' />
-            </div>
-            <div className='section'>
-               <h4>Refresh</h4>
-               <Slider name='refresh' />
-            </div>
-          </li>
-        </div>
+        <ExperimentalSettings language={this.props.language} />
+        <LanguageSettings language={this.props.language} />
 
-        <div className='section'>
-        <h4 htmlFor='9'>{this.props.language.language} </h4>
-          <select className='select-css' name='9' id='language' onChange={() => localStorage.setItem('language', document.getElementById('language').value)}>
-            <option className='choices' value='en'>English</option>
-            <option className='choices' value='nl'>Nederlands</option>
-            <option className='choices' value='fr'>Français</option>
-            <option className='choices' value='no'>Norsk</option>
-            <option className='choices' value='ru'>Russian</option>
-          </select>
-        </div>
         <button className='apply' onClick={() => SettingsFunctions.saveStuff()}>{this.props.language.apply}</button>
         <button className='reset' onClick={() => this.props.setDefaultSettings()}>{this.props.language.reset}</button>
         <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
