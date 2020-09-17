@@ -113,7 +113,7 @@ export default class Marketplace extends React.PureComponent {
         });
     }
 
-    async install() {
+    install() {
         let installed = JSON.parse(localStorage.getItem('installed'));
         let button;
 

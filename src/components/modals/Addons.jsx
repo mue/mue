@@ -21,7 +21,8 @@ export default class Addons extends React.PureComponent {
                 updated: '???',
                 version: '1.0.0',
                 icon: ''
-            }
+            },
+            button: <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.marketplaceLanguage.product.buttons.remove}</button>
         }
     }
 
@@ -29,7 +30,6 @@ export default class Addons extends React.PureComponent {
         if (type === 'item') {
             let installed = JSON.parse(localStorage.getItem('installed'));
             let info = installed.find(i => i.name === data).content;
-            console.log(info.data)
             this.setState({
                 current_data: { type: type2, name: data, content: info },
                 item_data: {
@@ -41,6 +41,7 @@ export default class Addons extends React.PureComponent {
                     icon: info.data.screenshot_url
                 }
             });
+
             document.getElementById('item').style.display = 'block';
             document.getElementById('marketplace').style.display = 'none';
          } else {
@@ -53,11 +54,68 @@ export default class Addons extends React.PureComponent {
         MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.type);
         toast(this.props.toastLanguage.removed);
         this.setState({
-            button: <button className='addToMue' onClick={() => this.install()}>{this.props.language.product.buttons.addtomue}</button>
+            button: ''
         });
     }
 
+    install(input) {
+        let installed = JSON.parse(localStorage.getItem('installed'));
+        let button;
+
+        const installStuff = () => {
+           installed.push({
+                content: {
+                   updated: 'Unpublished',
+                   data: input
+                }
+           });
+           localStorage.setItem('installed', JSON.stringify(installed));
+           toast(this.props.toastLanguage.installed);
+           button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.marketplaceLanguage.product.buttons.remove}</button>;
+           this.setState({ button: button });
+        }
+
+        switch (input.type) {
+            case 'settings':
+                localStorage.removeItem('backup_settings');
+                let oldSettings = [];
+                for (const key of Object.keys(localStorage)) oldSettings.push({name: key, value: localStorage.getItem(key)});
+                localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
+                input.settings.forEach(element => localStorage.setItem(element.name, element.value));
+                installStuff();
+                break;
+            case 'photos':
+                localStorage.setItem('photo_packs', JSON.stringify(input.photos));
+                installStuff();
+                break;
+            case 'theme':
+                localStorage.setItem('theme', input.theme);
+                installStuff();
+                break;
+            case 'quotes':
+                if (this.state.current_data.content.data.quote_api) localStorage.setItem('quote_api', JSON.stringify(this.state.current_data.content.data.quote_api));
+                localStorage.setItem('quote_packs', JSON.stringify(this.state.current_data.content.data.quotes));
+                installStuff();
+                break;
+            default:
+               break;
+        }
+    }
+
   componentDidMount() {
+    document.getElementById('file-input').onchange = (e) => {
+        const file = e.target.files[0];
+        if (file.type !== 'application/json') return console.error(`expected json, got ${file.type}`);
+
+        const reader = new FileReader();
+        reader.readAsText(file, 'UTF-8');
+
+        reader.onload = (readerEvent) => {
+          const content = JSON.parse(readerEvent.target.result);
+          this.install(content);
+        };
+    };
+
     document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
     document.getElementById('center').classList.toggle('backgroundEffects');
     this.setState({ installed: JSON.parse(localStorage.getItem('installed')) });
@@ -79,8 +137,8 @@ export default class Addons extends React.PureComponent {
                <button className='tablinks' onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
             </div>
          <div id='marketplace'>
-         { /*<input id='file-input' type='file' name='name' className='hidden' />
-        <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button> */}
+         <input id='file-input' type='file' name='name' className='hidden' />
+         <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
            <h1>{this.props.language.added}</h1>
            <div className='items'>
                <div className='emptyMessage'>
@@ -103,8 +161,8 @@ export default class Addons extends React.PureComponent {
                <button className='tablinks' onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
             </div>
         <div id='marketplace'>
-       { /*<input id='file-input' type='file' name='name' className='hidden' />
-        <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button> */}
+        <input id='file-input' type='file' name='name' className='hidden' />
+        <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
         <h1>{this.props.language.added}</h1>
           <div className='items'>
               {this.state.installed.map((item) =>
@@ -117,7 +175,7 @@ export default class Addons extends React.PureComponent {
                </div>)}
           </div>
         </div>
-        <Item button={<button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.marketplaceLanguage.product.buttons.remove}</button>} data={this.state.item_data} function={() => this.toggle()} language={this.props.marketplaceLanguage.product} />
+        <Item button={this.state.button} data={this.state.item_data} function={() => this.toggle()} language={this.props.marketplaceLanguage.product} />
     </div>;
     }
 }
