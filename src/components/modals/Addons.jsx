@@ -51,7 +51,21 @@ export default class Addons extends React.PureComponent {
     }
 
     uninstall() {
-        MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.type);
+        let type;
+        let data = this.state.current_data.type;
+        if (data === undefined) data = this.state.current_data.content.data.type;
+        switch (data) {
+            case 'photos':
+                type = 'photo_packs';
+                break;
+            case 'quotes':
+                type = 'quote_pack';
+                break;
+            default:
+                type = this.state.current_data.type;
+                break;
+        }
+        MarketplaceFunctions.uninstall(this.state.current_data.name, type);
         toast(this.props.toastLanguage.removed);
         this.setState({
             button: '',
