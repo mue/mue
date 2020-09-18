@@ -54,7 +54,8 @@ export default class Addons extends React.PureComponent {
         MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.type);
         toast(this.props.toastLanguage.removed);
         this.setState({
-            button: ''
+            button: '',
+            installed: JSON.parse(localStorage.getItem('installed'))
         });
     }
 
@@ -72,7 +73,10 @@ export default class Addons extends React.PureComponent {
            localStorage.setItem('installed', JSON.stringify(installed));
            toast(this.props.toastLanguage.installed);
            button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.marketplaceLanguage.product.buttons.remove}</button>;
-           this.setState({ button: button });
+           this.setState({
+               button: button,
+               installed: JSON.parse(localStorage.getItem('installed'))
+            });
         }
 
         switch (input.type) {

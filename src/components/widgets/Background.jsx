@@ -45,7 +45,9 @@ export default class Background extends React.PureComponent {
 
     if (photoPack) {
       const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
-      this.setBackground(randomPhoto.url.default);
+      this.setBackground(randomPhoto.url.default, null, randomPhoto.photographer);
+      this.setCredit(randomPhoto.photographer);
+      document.getElementById('location').textContent = randomPhoto.location;
     } else if (customBackgroundColour) {
       this.setBackground(null, customBackgroundColour, 'false');
     } else if (favourited) {
