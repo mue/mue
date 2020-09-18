@@ -13,8 +13,6 @@ export default class BackgroundSettings extends React.PureComponent {
               localStorage.setItem('customBackground', e.target.result);
               document.getElementById('customBackground').src = e.target.result;
               document.getElementById('customBackground').value = e.target.result;
-              document.getElementById('backgroundImage').setAttribute('style', `-webkit-filter:blur(${localStorage.getItem('blur')}px); background-image: url(${localStorage.getItem('customBackground')}`);
-              document.getElementById('backgroundImage').style.backgroundImage = `url(${localStorage.getItem('customBackground')})`;
             });
 
             reader.readAsDataURL(file);

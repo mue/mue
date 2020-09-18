@@ -68,6 +68,7 @@ export default class Settings extends React.PureComponent {
       document.getElementById('searchEngine').style.color = 'white';
       document.getElementById('language').style.color = 'white';
       document.getElementById('greetingName').style.color = 'white';
+      document.getElementById('customSearchEngine').style.color = 'white';
       const choices = document.getElementsByClassName('choices');
       for (let i = 0; i < choices.length; i++) choices[i].style.backgroundColor = '#2f3542';
     }

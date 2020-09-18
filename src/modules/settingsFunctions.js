@@ -45,11 +45,11 @@ export default class SettingsFunctions {
     static setSearchEngine(input) {
         const searchEngineInput = document.getElementById('searchEngineInput');
         if (input === 'custom') {
-          searchEngineInput.enabled = 'false';
+          searchEngineInput.enabled = 'true';
           searchEngineInput.style.display = 'block';
         } else {
           searchEngineInput.style.display = 'none';
-          searchEngineInput.enabled = 'true';
+          searchEngineInput.enabled = 'false';
           localStorage.setItem('searchEngine', input);
         }
     }
@@ -62,8 +62,9 @@ export default class SettingsFunctions {
         if (document.getElementById('customBackgroundHex').textContent !== 'Disabled') {
             localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').textContent);
         }
-        if (!document.getElementById('searchEngineInput').enabled === 'false') {
-          localStorage.setItem('customSearchEngine', document.getElementById('searchEngineInput').value);
+        if (document.getElementById('searchEngineInput').enabled === 'true') {
+          localStorage.setItem('searchEngine', 'custom');
+          localStorage.setItem('customSearchEngine', document.getElementById('customSearchEngine').value);
         }
         window.location.reload();
     }

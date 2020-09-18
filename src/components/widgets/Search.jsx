@@ -21,6 +21,9 @@ export default class Search extends React.PureComponent {
       default: url = 'https://duckduckgo.com'; break;
     }
 
+    const custom = localStorage.getItem('customSearchEngine');
+    if (custom) url = custom;
+
     const searchButton = () => {
       let value = document.getElementById('searchtext').value;
       if (!value) value = 'mue fast';
