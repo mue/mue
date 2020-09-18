@@ -19,6 +19,12 @@ export default class BackgroundSettings extends React.PureComponent {
 
             reader.readAsDataURL(file);
         };
+
+        const hex = localStorage.getItem('customBackgroundColour');
+        if (hex !== '') {
+            document.getElementById('customBackgroundColour').value = hex;
+            document.getElementById('customBackgroundHex').innerText = hex;
+        } else document.getElementById('customBackgroundHex').innerText = 'Disabled';
     }
 
   render() {
@@ -50,11 +56,11 @@ export default class BackgroundSettings extends React.PureComponent {
               <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
               <input id='bg-input' type='file' name='name' className='hidden' accept='image/svg+xml, image/jpeg, image/png, image/webp, image/webm, image/gif' />
             </ul>
-           { /* <ul>
-              <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>Reset</span></p>
+           <ul>
+              <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.props.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
               <input name='colour' type='color' id='customBackgroundColour' onChange={() => document.getElementById('customBackgroundHex').innerText = document.getElementById('customBackgroundColour').value}></input>
               <label htmlFor='colour' id='customBackgroundHex'>#00000</label>
-           </ul> */ }
+           </ul>
         </div>
     );
   }

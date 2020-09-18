@@ -59,13 +59,16 @@ export default class SettingsFunctions {
         localStorage.setItem('brightness', document.getElementById('brightnessRange').value);
         localStorage.setItem('greetingName', document.getElementById('greetingName').value);
         localStorage.setItem('customBackground', document.getElementById('customBackground').value);
+        if (document.getElementById('customBackgroundHex').textContent !== 'Disabled') {
+            localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').textContent);
+        }
         if (!document.getElementById('searchEngineInput').enabled === 'false') {
           localStorage.setItem('customSearchEngine', document.getElementById('searchEngineInput').value);
         }
         window.location.reload();
     }
 
-    static async setDefaultSettings() {
+    static setDefaultSettings() {
         localStorage.clear();
         defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 

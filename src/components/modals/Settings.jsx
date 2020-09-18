@@ -16,7 +16,7 @@ export default class Settings extends React.PureComponent {
       case 'greetingName': document.getElementById('greetingName').value = ''; break;
       case 'customBackgroundColour':
         localStorage.setItem('customBackgroundColour', '');
-        document.getElementById('customBackgroundColour').enabled = 'false';
+        document.getElementById('customBackgroundHex').textContent = 'Disabled';
         break;
       case 'customBackground': document.getElementById('customBackground').value = ''; break;
       case 'blur':
@@ -90,12 +90,6 @@ export default class Settings extends React.PureComponent {
       };
     };
 
-    /*const hex = localStorage.getItem('customBackgroundColour');
-    if (!hex === '') {
-      document.getElementById('customBackgroundColour').value = hex;
-      document.getElementById('customBackgroundHex').innerText = hex;
-    }*/
-
     document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
     document.getElementById('center').classList.toggle('backgroundEffects');
   }
@@ -112,10 +106,10 @@ export default class Settings extends React.PureComponent {
     return <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.modalLanguage.title}</h1>
-        <div className="tab">
-          <button className="tablinks" onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
-          <button className="tablinks" onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
-          <button className="tablinks" id="active">{this.props.modalLanguage.settings}</button>
+        <div className='tab'>
+          <button className='tablinks' onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
+          <button className='tablinks' onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
+          <button className='tablinks' id='active'>{this.props.modalLanguage.settings}</button>
         </div>
         <br/>
 
