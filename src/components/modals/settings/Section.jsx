@@ -5,7 +5,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 
 export default class Section extends React.PureComponent {
   render() {
-    let extraHTML, expandMore = '';
+    let extraHTML, expandMore;
     if (this.props.children) {
         extraHTML = <li className={'extraSettings ' + this.props.title}>{this.props.children}</li>
         expandMore = <ExpandMore

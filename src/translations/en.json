@@ -46,14 +46,18 @@
         },
         "searchbar": {
             "title": "Search Bar",
-            "searchengine": "Search Engine"
+            "searchengine": "Search Engine",
+            "custom": "Custom Search URL"
         },
         "offline": "Offline Mode",
         "experimental": {
             "title": "Experimental",
             "webp": "Enable WebP",
             "dark": "Dark Theme",
-            "animations": "Animations"
+            "animations": "Animations",
+            "view": "View",
+            "favourite": "Favourite",
+            "refresh": "Refresh"
         },
         "language": "Language",
         "apply": "Apply",
@@ -99,6 +103,10 @@
             "buttons": {
                 "addtomue": "Add To Mue",
                 "remove": "Remove"
+            },
+            "quoteWarning": {
+                "title": "Warning",
+                "description": "This quote pack requests to external servers that may track you!"
             }
         },
         "offline": {

@@ -4,12 +4,12 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 export default class Item extends React.PureComponent {
   render() {
     //if (!this.props.data.icon) return null;
-    let warningHTML = '';
+    let warningHTML;
     if (this.props.data.quote_api) {
       warningHTML = <div className='productInformation'>
           <ul>
-              <li className='header'>Warning</li>
-              <li id='updated'>This quote pack requests to external servers that may track you!</li>
+              <li className='header'>{this.props.language.quoteWarning.title}</li>
+              <li id='updated'>{this.props.language.quoteWarning.description}</li>
           </ul>
       </div>
     }

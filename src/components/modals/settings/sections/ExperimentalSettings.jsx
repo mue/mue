@@ -12,9 +12,9 @@ export default class ExperimentalSettings extends React.PureComponent {
           <li className='extraSettings'>
             <Checkbox name='webp' text={this.props.language.experimental.webp} />
             <Checkbox name='animations' text={this.props.language.experimental.animations} />
-            <Checkbox name='view' text='View' />
-            <Checkbox name='favouriteEnabled' text='Favourite' />
-            <Checkbox name='refresh' text='Refresh' />
+            <Checkbox name='view' text={this.props.language.experimental.view} />
+            <Checkbox name='favouriteEnabled' text={this.props.language.experimental.favourite} />
+            <Checkbox name='refresh' text={this.props.language.experimental.refresh} />
           </li>
         </div>
     );

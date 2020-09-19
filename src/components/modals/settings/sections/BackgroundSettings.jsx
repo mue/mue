@@ -5,7 +5,7 @@ export default class BackgroundSettings extends React.PureComponent {
    componentDidMount() {
       document.getElementById('bg-input').onchange = (e) => {
         const reader = new FileReader();
-         const file = e.target.files[0];
+        const file = e.target.files[0];
 
         if (file.size > 2000000) return toast('File is over 2MB', '#ff0000', '#ffffff');
 

@@ -27,7 +27,7 @@ export default class SearchSettings extends React.PureComponent {
               </select>
             </ul>
             <ul id='searchEngineInput' style={{ display: 'none' }}>
-              <p style={{"marginTop": "0px"}}>Custom Search URL <span className='modalLink' onClick={() => this.props.resetItem('customSearchEngine')}>{this.props.language.reset}</span></p>
+              <p style={{"marginTop": "0px"}}>{this.props.language.searchbar.custom} <span className='modalLink' onClick={() => this.props.resetItem('customSearchEngine')}>{this.props.language.reset}</span></p>
               <input type='text' id='customSearchEngine'></input>
             </ul>
         </div>
