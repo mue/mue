@@ -124,6 +124,7 @@ export default class Settings extends React.PureComponent {
           <Section title={this.props.language.searchbar.title} name='searchBar'>
             <SearchSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
           </Section>
+          <ExperimentalSettings language={this.props.language} />
           <div className='section'>
             <h4>{this.props.language.offline}</h4>
             <Slider name='offlineMode'/>
@@ -132,7 +133,6 @@ export default class Settings extends React.PureComponent {
             <h4>{this.props.language.experimental.dark}</h4>
             <Slider name='darkTheme'/>
           </div>
-          <ExperimentalSettings language={this.props.language} />
           <LanguageSettings language={this.props.language} />
 
           <button className='apply' onClick={() => SettingsFunctions.saveStuff()}>{this.props.language.apply}</button>
