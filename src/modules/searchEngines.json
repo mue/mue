@@ -1,0 +1,48 @@
+[
+    {
+        "name": "DuckDuckGo",
+        "settingsName": "duckduckgo",
+        "url": "https://duckduckgo.com"
+    },
+    {
+        "name": "Google",
+        "settingsName": "google",
+        "url": "https://google.com/search"
+    },
+    {
+        "name": "Bing",
+        "settingsName": "bing",
+        "url": "https://bing.com/search"
+    },
+    {
+        "name": "Yahoo",
+        "settingsName": "yahoo",
+        "url": "https://search.yahoo.com/search"
+    },
+    {
+        "name": "Ecosia",
+        "settingsName": "ecosia",
+        "url": "https://ecosia.org/search"
+    },
+    {
+        "name": "Yandex (RU)",
+        "settingsName": "yandex",
+        "url": "https://yandex.ru/search",
+        "query": "text"
+    },
+    {
+        "name": "Qwant",
+        "settingsName": "qwant",
+        "url": "https://www.quant.com/"
+    },
+    {
+        "name": "Ask",
+        "settingsName": "ask",
+        "url": "https://ask.com/web"
+    },
+    {
+        "name": "Startpage",
+        "settingsName": "startpage",
+        "url": "https://www.startpage.com/sp/search"
+    }
+]

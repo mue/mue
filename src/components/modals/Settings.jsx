@@ -29,7 +29,10 @@ export default class Settings extends React.PureComponent {
         document.getElementById('brightnessRange').value = 100;
         document.getElementById('brightnessAmount').innerText = '100';
         break;
-      case 'customSearchEngine': document.getElementById('searchEngine').value = 'DuckDuckGo'; break;
+      case 'customSearchEngine':
+        localStorage.removeItem('customSearchEngine');
+        document.getElementById('searchEngine').value = 'DuckDuckGo';
+        break;
       default: toast('resetItem requires a key!');
     }
     toast(this.props.toastLanguage.reset);
@@ -37,28 +40,8 @@ export default class Settings extends React.PureComponent {
 
   updateCurrent() {
     document.getElementById('greetingName').value = localStorage.getItem('greetingName');
-    document.getElementById('customBackground').value = localStorage.getItem('customBackground');
-    document.getElementById('backgroundAPI').value = localStorage.getItem('backgroundAPI');
+
     document.getElementById('language').value = localStorage.getItem('language');
-    document.getElementById('searchEngine').value = localStorage.getItem('searchEngine');
-    // document.getElementById('backgroundImage').style.backgroundUrl = localStorage.getItem('customBackground');
-
-    for (const key of Object.keys(localStorage)) {
-      const value = localStorage.getItem(key);
-
-      if (key === 'blur') {
-        document.getElementById('blurAmount').innerText = value;
-        document.getElementById('blurRange').value = value;
-      }
-
-      if (key === 'brightness') {
-        document.getElementById('brightnessAmount').innerText = value;
-        document.getElementById('brightnessRange').value = value;
-      }
-
-      const tag = document.getElementById(`${key}Status`);
-      if (tag) tag.checked = (value === 'true');
-    }
 
     if (localStorage.getItem('darkTheme') === 'true') {
       document.getElementById('blurRange').style.background = '#535c68';
@@ -104,7 +87,8 @@ export default class Settings extends React.PureComponent {
    // let expandClassList = '';
     //if (localStorage.getItem('animations') === 'true') expandClassList = 'all 0.5 ease 0s';
 
-    return <div className='content'>
+    return (
+      <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.modalLanguage.title}</h1>
         <div className='tab'>
@@ -114,49 +98,50 @@ export default class Settings extends React.PureComponent {
         </div>
         <br/>
 
-      <div className='columns'>
-        <Section title={this.props.language.time.title} name='time'>
+        <div className='columns'>
+          <Section title={this.props.language.time.title} name='time'>
             <Checkbox name='seconds' text={this.props.language.time.seconds} />
             <Checkbox name='24hour' text={this.props.language.time.twentyfourhour} />
             <Checkbox name='ampm' text={this.props.language.time.ampm} />
             <Checkbox name='zero' text={this.props.language.time.zero} />
             <Checkbox name='analog' text={this.props.language.time.analog} />
-        </Section>
-        <Section title={this.props.language.greeting.title} name='greeting'>
-          <Checkbox name='events' text={this.props.language.greeting.events} />
-          <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
-          <ul>
-            <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greetingName')}>{this.props.language.reset}</span></p>
-            <input type='text' id='greetingName'></input>
-          </ul>
-        </Section>
-        <Section title={this.props.language.quote.title} name='quote'>
-          <Checkbox name='copyButton' text={this.props.language.quote.copy} />
-          <Checkbox name='tweetButton' text='Tweet Button' />
-        </Section>
-        <Section title={this.props.language.background.title} name='background'>
-          <BackgroundSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
-        </Section>
-        <Section title={this.props.language.searchbar.title} name='searchBar'>
-          <SearchSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
-        </Section>
-        <div className='section'>
-          <h4>{this.props.language.offline}</h4>
-          <Slider name='offlineMode'/>
-        </div>
-        <div className='section'>
-          <h4>{this.props.language.experimental.dark}</h4>
-          <Slider name='darkTheme'/>
-        </div>
-        <ExperimentalSettings language={this.props.language} />
-        <LanguageSettings language={this.props.language} />
+          </Section>
+          <Section title={this.props.language.greeting.title} name='greeting'>
+            <Checkbox name='events' text={this.props.language.greeting.events} />
+            <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
+            <ul>
+              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greetingName')}>{this.props.language.reset}</span></p>
+              <input type='text' id='greetingName'></input>
+            </ul>
+          </Section>
+          <Section title={this.props.language.quote.title} name='quote'>
+            <Checkbox name='copyButton' text={this.props.language.quote.copy} />
+            <Checkbox name='tweetButton' text='Tweet Button' />
+          </Section>
+          <Section title={this.props.language.background.title} name='background'>
+            <BackgroundSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
+          </Section>
+          <Section title={this.props.language.searchbar.title} name='searchBar'>
+            <SearchSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
+          </Section>
+          <div className='section'>
+            <h4>{this.props.language.offline}</h4>
+            <Slider name='offlineMode'/>
+          </div>
+          <div className='section'>
+            <h4>{this.props.language.experimental.dark}</h4>
+            <Slider name='darkTheme'/>
+          </div>
+          <ExperimentalSettings language={this.props.language} />
+          <LanguageSettings language={this.props.language} />
 
-        <button className='apply' onClick={() => SettingsFunctions.saveStuff()}>{this.props.language.apply}</button>
-        <button className='reset' onClick={() => this.props.setDefaultSettings()}>{this.props.language.reset}</button>
-        <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
-        <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>
-        <input id='file-input' type='file' name='name' className='hidden' />
+          <button className='apply' onClick={() => SettingsFunctions.saveStuff()}>{this.props.language.apply}</button>
+          <button className='reset' onClick={() => this.props.setDefaultSettings()}>{this.props.language.reset}</button>
+          <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
+          <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>
+          <input id='file-input' type='file' name='name' className='hidden' />
+        </div>
       </div>
-    </div>;
+    );
   }
 }

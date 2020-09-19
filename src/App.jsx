@@ -54,7 +54,7 @@ export default class App extends React.PureComponent {
 
     const theme = localStorage.getItem('theme');
     if (theme) {
-      let style = document.createElement('link');
+      const style = document.createElement('link');
       style.href = theme;
       style.rel = 'stylesheet';
       document.head.appendChild(style);

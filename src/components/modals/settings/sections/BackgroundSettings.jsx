@@ -3,26 +3,38 @@ import { toast } from 'react-toastify';
 
 export default class BackgroundSettings extends React.PureComponent {
    componentDidMount() {
-        document.getElementById('bg-input').onchange = (e) => {
-            const reader = new FileReader();
-            const file = e.target.files[0];
+      document.getElementById('bg-input').onchange = (e) => {
+        const reader = new FileReader();
+         const file = e.target.files[0];
 
-            if (file.size > 2000000) return toast('File is over 2MB', '#ff0000', '#ffffff');
+        if (file.size > 2000000) return toast('File is over 2MB', '#ff0000', '#ffffff');
 
-            reader.addEventListener('load', (e) => {
-              localStorage.setItem('customBackground', e.target.result);
-              document.getElementById('customBackground').src = e.target.result;
-              document.getElementById('customBackground').value = e.target.result;
-            });
+        reader.addEventListener('load', (e) => {
+            localStorage.setItem('customBackground', e.target.result);
+            document.getElementById('customBackground').src = e.target.result;
+            document.getElementById('customBackground').value = e.target.result;
+        });
 
-            reader.readAsDataURL(file);
-        };
+        reader.readAsDataURL(file);
+      };
 
-        const hex = localStorage.getItem('customBackgroundColour');
-        if (hex !== '') {
-            document.getElementById('customBackgroundColour').value = hex;
-            document.getElementById('customBackgroundHex').innerText = hex;
-        } else document.getElementById('customBackgroundHex').innerText = 'Disabled';
+      const hex = localStorage.getItem('customBackgroundColour');
+      if (hex !== '') {
+          document.getElementById('customBackgroundColour').value = hex;
+          document.getElementById('customBackgroundHex').innerText = hex;
+      } else document.getElementById('customBackgroundHex').innerText = 'Disabled';
+
+      const blur = localStorage.getItem('blur');
+      const brightness = localStorage.getItem('brightness');
+
+      document.getElementById('blurAmount').innerText = blur;
+      document.getElementById('blurRange').value = blur;
+
+      document.getElementById('brightnessAmount').innerText = brightness;
+      document.getElementById('brightnessRange').value = brightness;
+
+      document.getElementById('customBackground').value = localStorage.getItem('customBackground');
+      document.getElementById('backgroundAPI').value = localStorage.getItem('backgroundAPI');
     }
 
   render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import SettingsFunctions from '../../../../modules/settingsFunctions';
+const searchEngines = require('../../../../modules/searchEngines.json');
 
 export default class SearchSettings extends React.PureComponent {
   componentDidMount() {
@@ -9,23 +10,19 @@ export default class SearchSettings extends React.PureComponent {
       input.enabled = 'true';
       document.getElementById('customSearchEngine').value = localStorage.getItem('customSearchEngine');
     } else localStorage.removeItem('customSearchEngine');
+
+    document.getElementById('searchEngine').value = localStorage.getItem('searchEngine');
   }
 
   render() {
     return (
         <div>
           <ul>
-            <label htmlFor='4'>{this.props.language.searchbar.searchengine} </label>
-              <select className='select-css' name='4' id='searchEngine' onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)}>
-                <option className='choices' value='duckduckgo'>DuckDuckGo</option>
-                <option className='choices' value='google'>Google</option>
-                <option className='choices' value='bing'>Bing</option>
-                <option className='choices' value='yahoo'>Yahoo</option>
-                <option className='choices' value='ecosia'>Ecosia</option>
-                <option className='choices' value='yandex'>Yandex</option>
-                <option className='choices' value='qwant'>Qwant</option>
-                <option className='choices' value='ask'>Ask</option>
-                <option className='choices' value='startpage'>Startpage</option>
+            <label htmlFor='searchEngine'>{this.props.language.searchbar.searchengine} </label>
+              <select className='select-css' name='searchEngine' id='searchEngine' onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)}>
+                {searchEngines.map((engine) =>
+                  <option className='choices' value={engine.settingsName}>{engine.name}</option>
+                )}
                 <option className='choices' value='custom'>Custom</option>
               </select>
             </ul>

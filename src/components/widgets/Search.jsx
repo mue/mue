@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
+const searchEngines = require('../../modules/searchEngines.json');
 
 export default class Search extends React.PureComponent {
   render() {
@@ -8,18 +9,10 @@ export default class Search extends React.PureComponent {
     let url;
     let query = 'q';
 
-    switch (localStorage.getItem('searchEngine')) {
-      case 'duckduckgo': url = 'https://duckduckgo.com'; break;
-      case 'google': url = 'https://google.com/search'; break;
-      case 'bing': url = 'https://bing.com/search'; break;
-      case 'yahoo': url ='https://search.yahoo.com/search'; break;
-      case 'ecosia': url = 'https://ecosia.org/search'; break;
-      case 'yandex': url = 'https://yandex.ru/search'; query = 'text'; break;
-      case 'qwant': url = 'https://www.qwant.com/'; break;
-      case 'ask': url = 'https://ask.com/web'; break;
-      case 'startpage': url = 'https://www.startpage.com/sp/search'; break;
-      default: url = 'https://duckduckgo.com'; break;
-    }
+    const setting = localStorage.getItem('searchEngine');
+    const info = searchEngines.find(i => i.settingsName === setting);
+    url = info.url;
+    if (info.query) query = info.query;
 
     const custom = localStorage.getItem('customSearchEngine');
     if (custom) url = custom;
