@@ -145,16 +145,24 @@ export default class Addons extends React.PureComponent {
   }
 
   render() {
+     let content = <div id='marketplace'>
+     <input id='file-input' type='file' name='name' className='hidden' />
+     <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
+     <h1>{this.props.language.added}</h1>
+       <div className='items'>
+           {this.state.installed.map((item) =>
+                <div className='item' onClick={() => this.toggle('item', item.type, item.name)}>
+                <img alt='icon' src={item.content.data.icon_url} />
+                <div className='details'>
+                    <h4>{item.content.data.name}</h4>
+                    <p>{item.content.data.author}</p>
+                </div>
+            </div>)}
+       </div>
+     </div>;
+
      if (this.state.installed.length === 0) {
-         return <div className='content'>
-         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-         <h1>{this.props.modalLanguage.title}</h1>
-             <div className='tab'>
-               <button className='tablinks' onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
-               <button className='tablinks' id='active'>{this.props.modalLanguage.addons}</button>
-               <button className='tablinks' onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
-            </div>
-         <div id='marketplace'>
+         content = <div id='marketplace'>
          <input id='file-input' type='file' name='name' className='hidden' />
          <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
            <h1>{this.props.language.added}</h1>
@@ -166,33 +174,18 @@ export default class Addons extends React.PureComponent {
                     <button className='goToMarket' onClick={this.props.openMarketplace}>{this.props.language.empty.button}</button>
               </div>
            </div>
-         </div>
-        </div>;
+         </div>;
      }
 
     return <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.modalLanguage.title}</h1>
-             <div className='tab'>
-               <button className='tablinks' onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
-               <button className='tablinks' id='active'>{this.props.modalLanguage.addons}</button>
-               <button className='tablinks' onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
-            </div>
-        <div id='marketplace'>
-        <input id='file-input' type='file' name='name' className='hidden' />
-        <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
-        <h1>{this.props.language.added}</h1>
-          <div className='items'>
-              {this.state.installed.map((item) =>
-                   <div className='item' onClick={() => this.toggle('item', item.type, item.name)}>
-                   <img alt='icon' src={item.content.data.icon_url} />
-                   <div className='details'>
-                       <h4>{item.content.data.name}</h4>
-                       <p>{item.content.data.author}</p>
-                   </div>
-               </div>)}
-          </div>
+        <div className='tab'>
+            <button className='tablinks' onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
+            <button className='tablinks' id='active'>{this.props.modalLanguage.addons}</button>
+            <button className='tablinks' onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
         </div>
+        {content}
         <Item button={this.state.button} data={this.state.item_data} function={() => this.toggle()} language={this.props.marketplaceLanguage.product} />
     </div>;
     }

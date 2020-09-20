@@ -5,14 +5,17 @@ export default class Item extends React.PureComponent {
   render() {
     //if (!this.props.data.icon) return null;
     let warningHTML;
-    if (this.props.data.quote_api) {
-      warningHTML = <div className='productInformation'>
-          <ul>
-              <li className='header'>{this.props.language.quoteWarning.title}</li>
-              <li id='updated'>{this.props.language.quoteWarning.description}</li>
-          </ul>
-      </div>
-    }
+    try { // For some reason it breaks sometimes so we use try/catch
+      if (this.props.content.content.data.quote_api) {
+        warningHTML = <div className='productInformation'>
+            <ul>
+                <li className='header'>{this.props.language.quoteWarning.title}</li>
+                <li id='updated'>{this.props.language.quoteWarning.description}</li>
+            </ul>
+        </div>
+      }
+    } catch (e) {}
+
     return (
       <div id='item'>
       <br/>

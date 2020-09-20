@@ -29,6 +29,7 @@ export default class MarketplaceFunctions {
             case 'quote_pack':
                 localStorage.removeItem('quote_packs');
                 localStorage.removeItem('quote_api');
+                uninstallStuff();
                 break;
             default:
               try {

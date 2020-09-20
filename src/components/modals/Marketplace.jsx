@@ -232,7 +232,12 @@ export default class Marketplace extends React.PureComponent {
                    toggleFunction={(input) => this.toggle('item', 'theme', input)}
                    seeMoreFunction={() => this.toggle('seemore', 'themes')} />
              </div>
-             <Item button={this.state.button} data={this.state.item_data} function={() => this.toggle()} language={this.props.language.product} />
+             <Item
+               button={this.state.button}
+               data={this.state.item_data}
+               content={this.state.current_data}
+               function={() => this.toggle()} language={this.props.language.product}
+             />
              <div id='seemore'>
                 <ArrowBackIcon className='backArrow' onClick={() => this.toggle()} />
                 <Items
