@@ -7,7 +7,7 @@ export default class ExperimentalSettings extends React.PureComponent {
   render() {
     return (
         <div className='section'>
-          <h4>{this.props.language.experimental.title}</h4>
+          <h4 onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[5], document.getElementsByClassName('expandIcons')[5])}>{this.props.language.experimental.title}</h4>
           <ExpandMore style={{ 'transition': 'all 0.5s ease 0s' }} className='expandIcons' onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName('extraSettings')[5], document.getElementsByClassName('expandIcons')[5])} />
           <li className='extraSettings'>
             <Checkbox name='webp' text={this.props.language.experimental.webp} />

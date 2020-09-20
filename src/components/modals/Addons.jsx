@@ -59,7 +59,7 @@ export default class Addons extends React.PureComponent {
                 type = 'photo_packs';
                 break;
             case 'quotes':
-                type = 'quote_pack';
+                type = 'quote_packs';
                 break;
             default:
                 type = this.state.current_data.type;
@@ -110,9 +110,9 @@ export default class Addons extends React.PureComponent {
                 localStorage.setItem('theme', input.theme);
                 installStuff();
                 break;
-            case 'quotes':
-                if (this.state.current_data.content.data.quote_api) localStorage.setItem('quote_api', JSON.stringify(this.state.current_data.content.data.quote_api));
-                localStorage.setItem('quote_packs', JSON.stringify(this.state.current_data.content.data.quotes));
+            case 'quote_packs':
+                if (input.quote_api) localStorage.setItem('quote_api', JSON.stringify(input.quote_api));
+                localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
                 installStuff();
                 break;
             default:
