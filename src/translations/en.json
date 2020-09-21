@@ -121,6 +121,7 @@
             "title": "It's empty here",
             "description": "Head to the marketplace to add some.",
             "button": "Take me there"
-        }
+        },
+        "sideload": "Sideload"
     }
 }

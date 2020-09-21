@@ -15,7 +15,7 @@ export default class Slider extends React.PureComponent {
   }
 
   render() {
-    let setText = (this.props.override) ? this.props.name : this.props.override;
+    let setText = (this.props.override) ? this.props.override : this.props.name;
     return (
         <label className='switch'>
           <input type='checkbox' checked={this.state.checked} onChange={() => this.handleChange(setText)} />

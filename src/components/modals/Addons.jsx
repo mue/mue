@@ -45,6 +45,9 @@ export default class Addons extends React.PureComponent {
             document.getElementById('item').style.display = 'block';
             document.getElementById('marketplace').style.display = 'none';
          } else {
+            this.setState({
+                button: <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.marketplaceLanguage.product.buttons.remove}</button>
+            });
             document.getElementById('marketplace').style.display = 'block';
             document.getElementById('item').style.display = 'none';
         }
@@ -120,7 +123,7 @@ export default class Addons extends React.PureComponent {
     }
 
   componentDidMount() {
-    /*document.getElementById('file-input').onchange = (e) => {
+    document.getElementById('file-input').onchange = (e) => {
         const file = e.target.files[0];
         if (file.type !== 'application/json') return console.error(`expected json, got ${file.type}`);
 
@@ -131,7 +134,7 @@ export default class Addons extends React.PureComponent {
           const content = JSON.parse(readerEvent.target.result);
           this.install(content);
         };
-    };*/
+    };
 
     document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
     document.getElementById('center').classList.toggle('backgroundEffects');
@@ -145,8 +148,8 @@ export default class Addons extends React.PureComponent {
 
   render() {
      let content = <div id='marketplace'>
-    {/* <input id='file-input' type='file' name='name' className='hidden' />
-     <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button> */ }
+     <input id='file-input' type='file' name='name' className='hidden' />
+     <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.props.language.sideload}</button>
      <h1>{this.props.language.added}</h1>
        <div className='items'>
            {this.state.installed.map((item) =>
@@ -162,8 +165,8 @@ export default class Addons extends React.PureComponent {
 
      if (this.state.installed.length === 0) {
          content = <div id='marketplace'>
-           {/* <input id='file-input' type='file' name='name' className='hidden' />
-     <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button> */ }
+         <input id='file-input' type='file' name='name' className='hidden' />
+         <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.props.language.sideload}</button>
            <h1>{this.props.language.added}</h1>
            <div className='items'>
                <div className='emptyMessage'>
