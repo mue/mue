@@ -51,8 +51,7 @@ export default class Addons extends React.PureComponent {
     }
 
     uninstall() {
-        let type;
-        let data = this.state.current_data.type;
+        let type, data = this.state.current_data.type;
         if (data === undefined) data = this.state.current_data.content.data.type;
         switch (data) {
             case 'photos':
@@ -121,7 +120,7 @@ export default class Addons extends React.PureComponent {
     }
 
   componentDidMount() {
-    document.getElementById('file-input').onchange = (e) => {
+    /*document.getElementById('file-input').onchange = (e) => {
         const file = e.target.files[0];
         if (file.type !== 'application/json') return console.error(`expected json, got ${file.type}`);
 
@@ -132,7 +131,7 @@ export default class Addons extends React.PureComponent {
           const content = JSON.parse(readerEvent.target.result);
           this.install(content);
         };
-    };
+    };*/
 
     document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
     document.getElementById('center').classList.toggle('backgroundEffects');
@@ -146,8 +145,8 @@ export default class Addons extends React.PureComponent {
 
   render() {
      let content = <div id='marketplace'>
-     <input id='file-input' type='file' name='name' className='hidden' />
-     <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
+    {/* <input id='file-input' type='file' name='name' className='hidden' />
+     <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button> */ }
      <h1>{this.props.language.added}</h1>
        <div className='items'>
            {this.state.installed.map((item) =>
@@ -163,8 +162,8 @@ export default class Addons extends React.PureComponent {
 
      if (this.state.installed.length === 0) {
          content = <div id='marketplace'>
-         <input id='file-input' type='file' name='name' className='hidden' />
-         <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
+           {/* <input id='file-input' type='file' name='name' className='hidden' />
+     <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button> */ }
            <h1>{this.props.language.added}</h1>
            <div className='items'>
                <div className='emptyMessage'>
