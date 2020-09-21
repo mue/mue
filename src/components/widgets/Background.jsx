@@ -43,17 +43,17 @@ export default class Background extends React.PureComponent {
     const customBackground = localStorage.getItem('customBackground');
     const favourited = JSON.parse(localStorage.getItem('favourite'));
 
-    if (photoPack) {
+    if (favourited) {
+      this.setBackground(favourited.url, null, 'true');
+      this.setCredit(favourited.credit);
+      document.getElementById('location').textContent = favourited.location;
+    } else if (photoPack) {
       const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
       this.setBackground(randomPhoto.url.default, null, randomPhoto.photographer);
       this.setCredit(randomPhoto.photographer);
       document.getElementById('location').textContent = randomPhoto.location;
     } else if (customBackgroundColour) {
       this.setBackground(null, customBackgroundColour, 'false');
-    } else if (favourited) {
-      this.setBackground(favourited.url, null, 'true');
-      this.setCredit(favourited.credit);
-      document.getElementById('location').textContent = favourited.location;
     } else if (customBackground !== '') { // Local
       this.setBackground(customBackground, null, 'false');
     } else { // Online

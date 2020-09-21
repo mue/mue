@@ -35,6 +35,7 @@ export default class Clock extends React.PureComponent {
         if (localStorage.getItem('24hour') === 'true') {
           let time = '';
           if (zero === 'false') time = `${now.getHours()}:${now.getMinutes()}${sec}`;
+
           else time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
           this.setState({
             time: time
@@ -51,6 +52,7 @@ export default class Clock extends React.PureComponent {
           let time = '';
           if (zero === 'false') time = `${hours}:${now.getMinutes()}${sec}`;
           else time = `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+
           this.setState({
             time: time,
             ampm: ampm
