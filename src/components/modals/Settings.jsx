@@ -11,47 +11,16 @@ import SearchSettings from './settings/sections/SearchSettings';
 import LanguageSettings from './settings/sections/LanguageSettings';
 
 export default class Settings extends React.PureComponent {
-  resetItem(key) {
-    switch (key) {
-      case 'greetingName': document.getElementById('greetingName').value = ''; break;
-      case 'customBackgroundColour':
-        localStorage.setItem('customBackgroundColour', '');
-        document.getElementById('customBackgroundHex').textContent = 'Disabled';
-        break;
-      case 'customBackground': document.getElementById('customBackground').value = ''; break;
-      case 'blur':
-        localStorage.setItem('blur', 0);
-        document.getElementById('blurRange').value = 0;
-        document.getElementById('blurAmount').innerText = '0';
-        break;
-      case 'brightness':
-        localStorage.setItem('brightness', 100);
-        document.getElementById('brightnessRange').value = 100;
-        document.getElementById('brightnessAmount').innerText = '100';
-        break;
-      case 'customSearchEngine':
-        localStorage.removeItem('customSearchEngine');
-        document.getElementById('searchEngine').value = 'DuckDuckGo';
-        break;
-      default: toast('resetItem requires a key!');
-    }
+  resetGreeting() {
+    document.getElementById('greetingName').value = '';
     toast(this.props.toastLanguage.reset);
   }
 
   updateCurrent() {
     document.getElementById('greetingName').value = localStorage.getItem('greetingName');
-
     document.getElementById('language').value = localStorage.getItem('language');
 
     if (localStorage.getItem('darkTheme') === 'true') {
-      document.getElementById('blurRange').style.background = '#535c68';
-      document.getElementById('brightnessRange').style.background = '#535c68';
-      document.getElementById('customBackground').style.color = 'white';
-      document.getElementById('backgroundAPI').style.color = 'white';
-      document.getElementById('searchEngine').style.color = 'white';
-      document.getElementById('language').style.color = 'white';
-      document.getElementById('greetingName').style.color = 'white';
-      document.getElementById('customSearchEngine').style.color = 'white';
       const choices = document.getElementsByClassName('choices');
       for (let i = 0; i < choices.length; i++) choices[i].style.backgroundColor = '#2f3542';
     }
@@ -84,9 +53,6 @@ export default class Settings extends React.PureComponent {
   }
 
   render() {
-   // let expandClassList = '';
-    //if (localStorage.getItem('animations') === 'true') expandClassList = 'all 0.5 ease 0s';
-
     return (
       <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
@@ -110,7 +76,7 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='events' text={this.props.language.greeting.events} />
             <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
             <ul>
-              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greetingName')}>{this.props.language.reset}</span></p>
+              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetGreeting()}>{this.props.language.reset}</span></p>
               <input type='text' id='greetingName'></input>
             </ul>
           </Section>
@@ -119,10 +85,10 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='tweetButton' text='Tweet Button' />
           </Section>
           <Section title={this.props.language.background.title} name='background'>
-            <BackgroundSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
+            <BackgroundSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
           </Section>
           <Section title={this.props.language.searchbar.title} name='searchBar'>
-            <SearchSettings language={this.props.language} resetItem={(item) => this.resetItem(item)}/>
+            <SearchSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
           </Section>
           <div className='section'>
             <h4>{this.props.language.offline}</h4>

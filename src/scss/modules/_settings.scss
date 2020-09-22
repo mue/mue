@@ -211,3 +211,19 @@ select#language {
 #customBackgroundColour {
   cursor: pointer;
 }
+
+
+// Dark Theme
+.dark {
+  #blurRange, #brightnessRange {
+    background-color: #535c68;
+  }
+
+  #customBackground, #backgroundAPI, #searchEngine, #language, #greetingName, #customSearchEngine {
+    color: white;
+  }
+
+  .choices {
+    background-color: white;
+  }
+}

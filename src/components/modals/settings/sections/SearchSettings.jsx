@@ -1,8 +1,16 @@
 import React from 'react';
 import SettingsFunctions from '../../../../modules/settingsFunctions';
+import { toast } from 'react-toastify';
+
 const searchEngines = require('../../../../modules/searchEngines.json');
 
 export default class SearchSettings extends React.PureComponent {
+  resetSearch() {
+    localStorage.removeItem('customSearchEngine');
+    document.getElementById('customSearchEngine').value = '';
+    toast(this.props.toastLanguage.reset);
+  }
+
   componentDidMount() {
     if (localStorage.getItem('searchEngine') === 'custom') {
       const input = document.getElementById('searchEngineInput');
@@ -27,7 +35,7 @@ export default class SearchSettings extends React.PureComponent {
               </select>
             </ul>
             <ul id='searchEngineInput' style={{ display: 'none' }}>
-              <p style={{"marginTop": "0px"}}>{this.props.language.searchbar.custom} <span className='modalLink' onClick={() => this.props.resetItem('customSearchEngine')}>{this.props.language.reset}</span></p>
+              <p style={{"marginTop": "0px"}}>{this.props.language.searchbar.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{this.props.language.reset}</span></p>
               <input type='text' id='customSearchEngine'></input>
             </ul>
         </div>

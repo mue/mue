@@ -175,7 +175,7 @@ export default class Marketplace extends React.PureComponent {
   render() {
     if (navigator.onLine === false) return this.offlineHTML;
     if (this.state.done === false) {
-        return  <div className='content'>
+        return <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.modalLanguage.title}</h1>
         <div className='tab'>
