@@ -25,7 +25,7 @@
         "url": "https://ecosia.org/search"
     },
     {
-        "name": "Yandex (RU)",
+        "name": "Яндекс",
         "settingsName": "yandex",
         "url": "https://yandex.ru/search",
         "query": "text"

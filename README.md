@@ -145,6 +145,6 @@ Russian - [MrZillaGold](https://github.com/MrZillaGold)
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 
-[Google Fonts](https://fonts.google.com/specimen/Lexend+Deca) - Lexend Deca font
+[Google Fonts](https://fonts.google.com) - Lexend Deca and Roboto fonts
 
 And many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/RoeeLupo), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox), [Oded Shapira](https://twitter.com/dondishdev), Jacob Tyrrell and [Nikka Lai](#) for letting us use their wonderful photographs

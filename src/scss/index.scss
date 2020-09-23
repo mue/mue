@@ -25,13 +25,18 @@ body {
 }
 
 * {
-    font-family: 'Lexend Deca' !important;
+    font-family: 'Lexend Deca', 'Roboto' !important;
     outline: none;
 }
 
 @font-face {
     font-family: 'Lexend Deca';
     src: url('/./fonts/LexendDeca-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/./fonts/Roboto-Cyrillic.woff2') format('woff2');
 }
 
 #center {

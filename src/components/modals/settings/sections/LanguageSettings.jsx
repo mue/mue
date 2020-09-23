@@ -10,7 +10,7 @@ export default class LanguageSettings extends React.PureComponent {
             <option className='choices' value='nl'>Nederlands</option>
             <option className='choices' value='fr'>Français</option>
             <option className='choices' value='no'>Norsk</option>
-            <option className='choices' value='ru'>Russian</option>
+            <option className='choices' value='ru'>Pусский</option>
           </select>
         </div>
     );
