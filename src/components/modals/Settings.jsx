@@ -91,11 +91,11 @@ export default class Settings extends React.PureComponent {
             <SearchSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
           </Section>
           <div className='section'>
-            <h4>{this.props.language.offline}</h4>
+            <h4 class='nodropdown'>{this.props.language.offline}</h4>
             <Slider name='offlineMode'/>
           </div>
           <div className='section'>
-            <h4>{this.props.language.experimental.dark}</h4>
+            <h4 class='nodropdown'>{this.props.language.experimental.dark}</h4>
             <Slider name='darkTheme'/>
           </div>
           <ExperimentalSettings language={this.props.language} />
@@ -105,7 +105,7 @@ export default class Settings extends React.PureComponent {
           <button className='reset' onClick={() => this.props.setDefaultSettings()}>{this.props.language.reset}</button>
           <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
           <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>
-          <input id='file-input' type='file' name='name' className='hidden' />
+          <input id='file-input' type='file' name='name' className='hidden' accept='application/json' />
         </div>
       </div>
     );

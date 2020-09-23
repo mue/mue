@@ -86,7 +86,7 @@ export default class BackgroundSettings extends React.PureComponent {
             <ul>
               <p>{this.props.language.background.custombackground} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
               <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
-              <input id='bg-input' type='file' name='name' className='hidden' accept='image/svg+xml, image/jpeg, image/png, image/webp, image/webm, image/gif' />
+              <input id='bg-input' type='file' name='name' className='hidden' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' />
             </ul>
            <ul>
               <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
