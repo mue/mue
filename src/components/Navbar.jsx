@@ -5,7 +5,7 @@ import NewReleases from '@material-ui/icons/NewReleases';
 
 export default class Navbar extends React.PureComponent {
   render() {
-    let refreshHTML = <div className='navbar2' ><RefreshIcon className='refreshicon' onClick={() => window.location.reload()} /></div>;
+    let refreshHTML = <div className='navbar2'><RefreshIcon className='refreshicon' onClick={() => window.location.reload()} /></div>;
     const refresh = localStorage.getItem('refresh');
     if (refresh === 'false') refreshHTML = '';
 

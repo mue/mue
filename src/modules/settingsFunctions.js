@@ -63,8 +63,11 @@ export default class SettingsFunctions {
             localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').textContent);
         }
         if (document.getElementById('searchEngineInput').enabled === 'true') {
-          localStorage.setItem('searchEngine', 'custom');
-          localStorage.setItem('customSearchEngine', document.getElementById('customSearchEngine').value);
+          const input = document.getElementById('customSearchEngine').value;
+          if (input) {
+            localStorage.setItem('searchEngine', 'custom');
+            localStorage.setItem('customSearchEngine', input);
+          }
         }
         window.location.reload();
     }

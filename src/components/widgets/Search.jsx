@@ -11,8 +11,10 @@ export default class Search extends React.PureComponent {
 
     const setting = localStorage.getItem('searchEngine');
     const info = searchEngines.find(i => i.settingsName === setting);
-    url = info.url;
-    if (info.query) query = info.query;
+    if (info !== undefined) {
+      url = info.url;
+      if (info.query) query = info.query;
+    }
 
     const custom = localStorage.getItem('customSearchEngine');
     if (custom) url = custom;

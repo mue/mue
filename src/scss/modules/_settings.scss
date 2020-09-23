@@ -160,6 +160,7 @@ li {
     width: 25px;
     height: 25px;
     border-radius: 12px;
+    border: 0;
     background: map-get($theme-colours, "gradient");
     cursor: pointer;
   }
@@ -180,6 +181,27 @@ input[type=color] {
   }
 
   &::-webkit-color-swatch {
+    border: none;
+    border-radius: 100%;
+  }
+}
+
+// This is duplicated because it didn't work with a comma, need to look into it later
+input[type=color]::-moz-color-swatch {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  box-shadow: map-get($main-parts, "shadow");
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  vertical-align: middle;
+
+  &::-moz-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-moz-color-swatch {
     border: none;
     border-radius: 100%;
   }

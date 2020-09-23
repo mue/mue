@@ -32,7 +32,8 @@
         },
         "quote": {
             "title": "Quote",
-            "copy": "Copy Button"
+            "copy": "Copy Button",
+            "tweet": "Tweet Button"
         },
         "background": {
             "title": "Background",
