@@ -84,7 +84,8 @@
         "reset": "Reset successfully",
         "installed": "Successfully installed",
         "removed": "Successfully removed",
-        "error": "Something went wrong"
+        "error": "Something went wrong",
+        "imported": "Successfully imported"
     },
     "marketplace": {
         "photo_packs": "Photo Packs",

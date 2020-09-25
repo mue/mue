@@ -44,10 +44,10 @@ export default class Update extends React.PureComponent {
   render() {
     return <div className='updateContent'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1 style={{ 'marginBottom':'-10px' }} dangerouslySetInnerHTML={{__html: this.state.title}}></h1>
+        <h1 style={{ 'marginBottom':'-10px' }}>{this.state.title}</h1>
         <h5 style={{ 'lineHeight':'0px' }}> By {this.state.author} • {this.state.date}</h5>
         <img draggable='false' src={this.state.image} alt='Update'></img>
-        <p dangerouslySetInnerHTML={{__html: this.state.content + `<br/><p>Read on the blog here: <a target='_blank' href='${this.state.url}'>${this.state.url}</a></p>`}}></p>
+        <p dangerouslySetInnerHTML={{__html: this.state.content + `<br/><p>Read on the blog here: <a target='_blank' class='modalLink' href='${this.state.url}'>${this.state.url}</a></p>`}}></p>
       </div>;
     }
 }

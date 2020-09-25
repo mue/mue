@@ -39,7 +39,7 @@ export default class Settings extends React.PureComponent {
       reader.onload = (readerEvent) => {
         const content = JSON.parse(readerEvent.target.result);
         for (const key of Object.keys(content)) localStorage.setItem(key, content[key]);
-        toast(this.props.toastLanguage.imported_settings);
+        toast(this.props.toastLanguage.imported);
       };
     };
 

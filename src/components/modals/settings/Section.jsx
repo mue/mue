@@ -10,7 +10,7 @@ export default class Section extends React.PureComponent {
         extraHTML = <li className={'extraSettings ' + this.props.title}>{this.props.children}</li>
         expandMore = <ExpandMore
                         style={{ 'transition': 'all 0.5s ease 0s' }}
-                        className={'expandIcons ' + 'expand' + this.props.title}
+                        className={`expandIcons expand${this.props.title}`}
                         onClick={() => SettingsFunctions.toggleExtra(document.getElementsByClassName(this.props.title)[0], document.getElementsByClassName('expand' + this.props.title)[0])}
                     />
     }

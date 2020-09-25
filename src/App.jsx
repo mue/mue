@@ -21,7 +21,7 @@ const Settings = React.lazy(() => import('./components/modals/Settings'));
 const Update = React.lazy(() => import('./components/modals/Update'));
 const Marketplace = React.lazy(() => import('./components/modals/Marketplace'));
 const Addons = React.lazy(() => import('./components/modals/Addons'));
-const Welcome = React.lazy(() => import('./components/modals/Welcome'));
+//const Welcome = React.lazy(() => import('./components/modals/Welcome'));
 const renderLoader = () => <div></div>;
 
 export default class App extends React.PureComponent {
@@ -115,9 +115,9 @@ export default class App extends React.PureComponent {
                 openMarketplace={() => this.setState({ addonsModal: false, marketplaceModal: true })}
                 toastLanguage={language.toasts} />
             </Modal>
-            <Modal onRequestClose={() => this.setState({ welcomeModal: false })} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
+            {/* <Modal onRequestClose={() => this.setState({ welcomeModal: false })} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
               <Welcome modalClose={() => this.setState({ welcomeModal: false })} />
-            </Modal>
+             </Modal> */ }
           </React.Suspense>
         </div>
       </React.Fragment>
