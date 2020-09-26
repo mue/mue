@@ -2,6 +2,14 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 export default class BackgroundSettings extends React.PureComponent {
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      blur: 0,
+      brightness: 100
+    };
+  }
+
   resetItem(key) {
     switch (key) {
       case 'customBackgroundColour':
@@ -11,13 +19,11 @@ export default class BackgroundSettings extends React.PureComponent {
       case 'customBackground': document.getElementById('customBackground').value = ''; break;
       case 'blur':
         localStorage.setItem('blur', 0);
-        document.getElementById('blurRange').value = 0;
-        document.getElementById('blurAmount').innerText = '0';
+        this.setState({ blur: 0 });
         break;
       case 'brightness':
         localStorage.setItem('brightness', 100);
-        document.getElementById('brightnessRange').value = 100;
-        document.getElementById('brightnessAmount').innerText = '100';
+        this.setState({ blur: 100 });
         break;
       default: toast('resetItem requires a key!');
     }
@@ -46,14 +52,10 @@ export default class BackgroundSettings extends React.PureComponent {
           document.getElementById('customBackgroundHex').innerText = hex;
       } else document.getElementById('customBackgroundHex').innerText = 'Disabled';
 
-      const blur = localStorage.getItem('blur');
-      const brightness = localStorage.getItem('brightness');
-
-      document.getElementById('blurAmount').innerText = blur;
-      document.getElementById('blurRange').value = blur;
-
-      document.getElementById('brightnessAmount').innerText = brightness;
-      document.getElementById('brightnessRange').value = brightness;
+      this.setState({
+        blur: localStorage.getItem('blur'),
+        brightness: localStorage.getItem('brightness')
+      })
 
       document.getElementById('customBackground').value = localStorage.getItem('customBackground');
       document.getElementById('backgroundAPI').value = localStorage.getItem('backgroundAPI');
@@ -72,12 +74,12 @@ export default class BackgroundSettings extends React.PureComponent {
             </label>
             </ul>
             <ul>
-              <p>{this.props.language.background.blur} (<span id='blurAmount'></span>%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
-              <input className='range' type='range' min='0' max='100' id='blurRange' onInput={() => document.getElementById('blurAmount').innerText = document.getElementById('blurRange').value} />
+              <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
+              <input className='range' type='range' min='0' max='100' id='blurRange' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
             </ul>
             <ul>
-              <p>{this.props.language.background.brightness} (<span id='brightnessAmount'></span>%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
-              <input className='range' type='range' min='0' max='100' id='brightnessRange' onInput={() => document.getElementById('brightnessAmount').innerText = document.getElementById('brightnessRange').value} />
+              <p>{this.props.language.background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
+              <input className='range' type='range' min='0' max='100' id='brightnessRange' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
             </ul>
             <ul>
               <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>

@@ -12,11 +12,11 @@ export default class Navbar extends React.PureComponent {
     return (
       <div className='navbar-container'>
         <div className='navbar1'>
-          <Gear className='settings-icon' onClick={this.props.settingsModalOpen} />
+          <Gear className='settingsicon' onClick={this.props.settingsModalOpen} />
         </div>
         {refreshHTML}
         <div className={refresh === 'false' ? 'navbar2' : 'navbar3'}>
-        <NewReleases className='refreshicon' onClick={this.props.updateModalOpen} />
+        <NewReleases className='updateicon' onClick={this.props.updateModalOpen} />
         </div>
       </div>
     );

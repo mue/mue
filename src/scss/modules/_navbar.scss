@@ -2,7 +2,6 @@
     position: absolute;
     text-align: right;
     min-width: 50px;
-    cursor: pointer;
     -webkit-filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
     filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
     top: 20px;
@@ -11,20 +10,13 @@
         transition: ease 0.2s;
         font-size: calc(10px + 1.5vmin) !important;
     }
-
-    &:hover {
-        svg {
-            transform: scale(1.1);
-            color: map-get($theme-colours, "main");;
-        }
-    }
 }
 
 .navbar1 {
     @extend %navbar;
     right: 20px;
 
-    svg {
+    svg { // apparently fixes shaking issue that only happens to settings icon
         -webkit-backface-visibility: hidden;
         -webkit-transform: translateZ(0) scale(1, 1);
         backface-visibility: hidden;
@@ -40,4 +32,13 @@
 .navbar3 {
     @extend %navbar;
     right: 100px;
+}
+
+.refreshicon, .settingsicon, .updateicon {
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+        color: map-get($theme-colours, "main");;
+    }
 }

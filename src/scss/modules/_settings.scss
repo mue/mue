@@ -99,10 +99,10 @@ h4,
 }
 
 .extraSettings {
-  display: none;
   border-left: 10px solid;
   border-image-slice: 1;
   border-width: 5px;
+  list-style: none;
   border-image-source: linear-gradient(to bottom, #ffb032 0%, #dd3b67 100%);
 
   p {

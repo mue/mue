@@ -6,7 +6,6 @@ import Section from './settings/Section';
 import { toast } from 'react-toastify';
 
 import BackgroundSettings from './settings/sections/BackgroundSettings';
-import ExperimentalSettings from './settings/sections/ExperimentalSettings';
 import SearchSettings from './settings/sections/SearchSettings';
 import LanguageSettings from './settings/sections/LanguageSettings';
 
@@ -98,7 +97,13 @@ export default class Settings extends React.PureComponent {
             <h4 class='nodropdown'>{this.props.language.experimental.dark}</h4>
             <Slider name='darkTheme'/>
           </div>
-          <ExperimentalSettings language={this.props.language} />
+          <Section title={this.props.language.experimental.title} name='experimental' slider={false}>
+            <Checkbox name='webp' text={this.props.language.experimental.webp} />
+            <Checkbox name='animations' text={this.props.language.experimental.animations} />
+            <Checkbox name='view' text={this.props.language.experimental.view} />
+            <Checkbox name='favouriteEnabled' text={this.props.language.experimental.favourite} />
+            <Checkbox name='refresh' text={this.props.language.experimental.refresh} />
+          </Section>
           <LanguageSettings language={this.props.language} />
 
           <button className='apply' onClick={() => SettingsFunctions.saveStuff()}>{this.props.language.apply}</button>

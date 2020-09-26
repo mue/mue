@@ -37,11 +37,6 @@ export default class SettingsFunctions {
         localStorage.setItem(key, val);
     }
 
-    static toggleExtra(element, element2) {
-        (element.style.display === 'none' || !element.style.display) ? element.style.display = 'block' : element.style.display = 'none';
-        (element2.style.transform === 'rotate(-180deg)') ? element2.style.transform = 'rotate(0)' : element2.style.transform = 'rotate(-180deg)';
-    }
-
     static setSearchEngine(input) {
         const searchEngineInput = document.getElementById('searchEngineInput');
         if (input === 'custom') {

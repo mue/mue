@@ -8,8 +8,7 @@ export default class Background extends React.PureComponent {
     document.querySelector('#backgroundImage').setAttribute(
       'style',
       `${background};
-      -webkit-filter: blur(${localStorage.getItem('blur')}px);
-      -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
+      -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`
     );
 
     if (credit === 'false') document.querySelector('#credits').style.display = 'none'; // Hide the credit
