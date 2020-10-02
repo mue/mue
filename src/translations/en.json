@@ -75,9 +75,11 @@
         },
         "error": {
             "title": "Error",
-            "content": "Could not connect to the server"
+            "description": "Could not connect to the server"
         },
-        "loading": "Loading..."
+        "loading": "Loading...",
+        "readblog": "Read on the blog here",
+        "contactsupport": "Contact us here"
     },
     "toasts": {
         "quote": "Quote Copied",

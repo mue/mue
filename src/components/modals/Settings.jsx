@@ -90,11 +90,11 @@ export default class Settings extends React.PureComponent {
             <SearchSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
           </Section>
           <div className='section'>
-            <h4 class='nodropdown'>{this.props.language.offline}</h4>
+            <h4 className='nodropdown'>{this.props.language.offline}</h4>
             <Slider name='offlineMode'/>
           </div>
           <div className='section'>
-            <h4 class='nodropdown'>{this.props.language.experimental.dark}</h4>
+            <h4 className='nodropdown'>{this.props.language.experimental.dark}</h4>
             <Slider name='darkTheme'/>
           </div>
           <Section title={this.props.language.experimental.title} name='experimental' slider={false}>
