@@ -14,9 +14,10 @@ export default class Background extends React.PureComponent {
     if (credit === 'false') document.querySelector('#credits').style.display = 'none'; // Hide the credit
   }
 
-  setCredit(photographer) {
-    document.querySelector('#photographer').append(` ${photographer}`); // Append credit
-    document.getElementById('credit').textContent = photographer;
+  setCredit(photographer, unsplash, url) {
+    let credit = photographer;
+    if (unsplash) credit = `<a href='${url}' class='creditlink'>${photographer}</a> on <a href='https://unsplash.com/?utm_source=mue&utm_medium=referral' class='creditlink'>Unsplash</a>`;
+    document.querySelector('#photographer').insertAdjacentHTML("beforeend", ` ${credit}`); // Append credit
   }
 
   doOffline() { // Handles setting the background if the user is offline
@@ -72,10 +73,10 @@ export default class Background extends React.PureComponent {
 
         const data = await (await fetch(requestURL)).json(); // Fetch JSON data from requestURL
 
-        if (data.statusCode === 429) {
-          this.doOffline(); // If we hit the rate limit, fallback to local images
-        } else { // Otherwise, set the background and credit from remote data
+        if (data.statusCode === 429) this.doOffline(); // If we hit the rate limit, fallback to local images
+        else { // Otherwise, set the background and credit from remote data
           this.setBackground(data.file);
+          if (localStorage.getItem('backgroundAPI') === 'unsplash') return this.setCredit(data.photographer, 'unsplash', data.photographer_page);
           this.setCredit(data.photographer);
         }
 

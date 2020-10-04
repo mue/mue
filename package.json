@@ -24,7 +24,8 @@
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
     "react-toastify": "^6.0.8",
-    "supports-webp": "^2.0.1"
+    "supports-webp": "^2.0.1",
+    "lodash.merge": "4.6.2"
   },
   "devDependencies": {
     "react-scripts": "3.4.3",

@@ -13,7 +13,7 @@ import Navbar from './components/Navbar';
 import SettingsFunctions from './modules/settingsFunctions';
 import { ToastContainer } from 'react-toastify';
 import Modal from 'react-modal';
-import { merge } from './modules/merge';
+import merge from 'lodash.merge';
 import RoomIcon from '@material-ui/icons/Room';
 
 // Modals are lazy loaded as a user won't use them every time they open a tab
