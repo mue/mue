@@ -2,8 +2,21 @@ import React from 'react';
 import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
+  gradientStyleBuilder(gradientSettings) {
+    const {type, angle, gradient } = gradientSettings;
+    const stepStyles = gradient.map(g => ` ${g.colour} ${g.stop}%`).join();
+    return `background: ${gradient[0].colour}; background: ${type}-gradient(${angle}deg,${stepStyles})`;
+  }
+
   setBackground(url, colour, credit) { // Sets the attributes of the background image
-    const background = colour ? `background-color: ${colour};` : `background-image: url(${url});`;
+    let gradientSettings;
+    try {
+      gradientSettings = JSON.parse(colour);
+    } catch (e) {
+      //colour use to be simply a hex colour or a NULL value before it was a JSON object. This automatically upgrades the hex colour value to the new standard. (NULL would not trigger an exception)
+      gradientSettings = {"type": "linear", "angle": "0", "gradient": [{"colour": colour, "stop": 0}, {"colour": colour, "stop": 100}]};
+    }
+    const background = colour ? this.gradientStyleBuilder(gradientSettings) : `background-image: url(${url});`;
 
     document.querySelector('#backgroundImage').setAttribute(
       'style',
