@@ -29,7 +29,7 @@ export default class SearchSettings extends React.PureComponent {
             <label htmlFor='searchEngine'>{this.props.language.searchbar.searchengine} </label>
               <select className='select-css' name='searchEngine' id='searchEngine' onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)}>
                 {searchEngines.map((engine) =>
-                  <option className='choices' value={engine.settingsName}>{engine.name}</option>
+                  <option key={engine.name} className='choices' value={engine.settingsName}>{engine.name}</option>
                 )}
                 <option className='choices' value='custom'>Custom</option>
               </select>
