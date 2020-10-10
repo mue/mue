@@ -145,7 +145,7 @@ export default class BackgroundSettings extends React.PureComponent {
       colourSettings = (
         <div>
           {gradientInputs}
-          {this.state.gradientSettings.gradient[0].colour !== 'Disabled' ? (<button type="button" className="add" onClick={this.addColour}>+</button>) : null}
+          {this.state.gradientSettings.gradient[0].colour !== 'Disabled' ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addColour}</button>) : null}
         </div>);
     }
 

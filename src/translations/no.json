@@ -40,7 +40,8 @@
             "blur": "Juster Blur",
             "customURL": "Personlig bakgrunn URL",
             "custombackground": "Personlig bakgrunn",
-            "customcolour": "Personlig Bakgrunn Farge"
+            "customcolour": "Personlig Bakgrunn Farge",
+            "addColour": "Legg til farge"
         },
         "searchbar": {
             "title": "Søkebar",

@@ -61,12 +61,8 @@
 
 .add {
   @extend %settingsButton;
-  padding: 5px;
-  width: 25px;
   background-color: map-get($button-colours, "other");
   border: 2px solid map-get($button-colours, "other");
-  text-align: center;
-  vertical-align: sub;
 
   &:hover {
     color: map-get($button-colours, "other");
@@ -77,15 +73,17 @@
 
 .remove {
   @extend %settingsButton;
+  border-radius: 4px;
   padding: 5px;
   width: 25px;
-  background-color: map-get($button-colours, "reset");
-  border: 2px solid map-get($button-colours, "reset");
+  background-color: map-get($modal, "background");
+  border: 2px solid map-get($modal, "background");
+  color: map-get($modal, "text");
   text-align: center;
   vertical-align: sub;
 
   &:hover {
-    color: map-get($button-colours, "reset");
+    color: map-get($button-colours, "background");
     border: 2px solid map-get($button-colours, "reset");
     background: none;
   }
