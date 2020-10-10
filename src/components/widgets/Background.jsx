@@ -36,7 +36,7 @@ export default class Background extends React.PureComponent {
   }
 
   async determineMode() {
-    if (localStorage.getItem('offlineMode') === 'true') return this.doOffline();
+    const offlineMode = localStorage.getItem('offlineMode');
 
     const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
     const customBackgroundColour = localStorage.getItem('customBackgroundColour');
@@ -44,10 +44,12 @@ export default class Background extends React.PureComponent {
     const favourited = JSON.parse(localStorage.getItem('favourite'));
 
     if (favourited) {
+      if (offlineMode === 'true') return this.doOffline();
       this.setBackground(favourited.url, null, 'true');
       this.setCredit(favourited.credit);
       document.getElementById('location').textContent = favourited.location;
     } else if (photoPack) {
+      if (offlineMode === 'true') return this.doOffline();
       const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
       this.setBackground(randomPhoto.url.default, null, randomPhoto.photographer);
       this.setCredit(randomPhoto.photographer);
@@ -57,6 +59,7 @@ export default class Background extends React.PureComponent {
     } else if (customBackground !== '') { // Local
       this.setBackground(customBackground, null, 'false');
     } else { // Online
+      if (offlineMode === 'true') return this.doOffline();
       try { // First we try and get an image from the API...
         const enabled = localStorage.getItem('webp');
         let requestURL;
