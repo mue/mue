@@ -2,12 +2,14 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 export default class BackgroundSettings extends React.PureComponent {
+  DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": "Disabled", "stop": 0 }], "type": "linear" };
+
   constructor(...args) {
     super(...args);
     this.state = {
       blur: 0,
       brightness: 100,
-      gradientSettings: ''
+      gradientSettings: this.DefaultGradientSettings
     };
   }
 
@@ -15,7 +17,7 @@ export default class BackgroundSettings extends React.PureComponent {
     switch (key) {
       case 'customBackgroundColour':
         localStorage.setItem('customBackgroundColour', '');
-        this.setState({ gradientSettings: '' });
+        this.setState({ gradientSettings: this.DefaultGradientSettings });
         break;
       case 'customBackground': document.getElementById('customBackground').value = ''; break;
       case 'blur':
@@ -48,13 +50,16 @@ export default class BackgroundSettings extends React.PureComponent {
     };
 
     const hex = localStorage.getItem('customBackgroundColour');
-    let gradientSettings = '';
+    let gradientSettings = undefined;
     if (hex !== '') {
       try {
         gradientSettings = JSON.parse(hex);
       } catch (e) {
         //Disregard exception.
       }
+    }
+    if (gradientSettings === undefined) {
+      gradientSettings = this.DefaultGradientSettings
     }
 
     this.setState({
@@ -112,7 +117,7 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   currentGradientSettings = () => {
-    if (typeof this.state.gradientSettings === 'object') {
+    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== 'Disabled')) {
       const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
       return JSON.stringify({
         ...this.state.gradientSettings,
@@ -123,7 +128,7 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   render() {
-    let colourSettings;
+    let colourSettings = null;
     if (typeof this.state.gradientSettings === 'object') {
       const gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
         const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
@@ -131,7 +136,7 @@ export default class BackgroundSettings extends React.PureComponent {
           <div key={i}>
             {gradientHasMoreThanOneColour ? (<button type="button" className="remove" onClick={() => this.removeColour(i)}>-</button>) : null}
             <input id={'colour_' + i} type='color' name='colour' onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
-            <label htmlFor={'colour_' + i}>{g.colour}</label>
+            <label htmlFor={'colour_' + i} className="customBackgroundHex">{g.colour}</label>
             {gradientHasMoreThanOneColour ? (
               <span>–
                 <input type="number" name='stop' min={0} max={100} value={g.stop} onChange={(event) => this.onGradientChange(event, i)} />
@@ -141,12 +146,7 @@ export default class BackgroundSettings extends React.PureComponent {
       colourSettings = (
         <div>
           {gradientInputs}
-          <button type="button" className="add" onClick={this.addColour}>+</button>
-        </div>);
-    } else {
-      colourSettings = (
-        <div><input id='colour_0' type='color' name='colour' onChange={(event) => this.pickFirstColour(event)} value="#000000"></input>
-          <label htmlFor='colour_0'>Disabled</label>
+          {this.state.gradientSettings.gradient[0].colour !== 'Disabled' ? (<button type="button" className="add" onClick={this.addColour}>+</button>) : null}
         </div>);
     }
 
