@@ -217,6 +217,14 @@ input[type=checkbox] {
   vertical-align: middle;
 }
 
+input[type=number].stop  {
+  margin-left: 7px;
+}
+
+button.remove + input[type=color].colour  {
+  margin-left: 7px;
+}
+
 select {
   background: none;
   height: 34px;

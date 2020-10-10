@@ -59,8 +59,7 @@
   }
 }
 
-.add,
-.remove {
+.add {
   @extend %settingsButton;
   padding: 5px;
   width: 25px;
@@ -72,6 +71,22 @@
   &:hover {
     color: map-get($button-colours, "other");
     border: 2px solid map-get($button-colours, "other");
+    background: none;
+  }
+}
+
+.remove {
+  @extend %settingsButton;
+  padding: 5px;
+  width: 25px;
+  background-color: map-get($button-colours, "reset");
+  border: 2px solid map-get($button-colours, "reset");
+  text-align: center;
+  vertical-align: sub;
+
+  &:hover {
+    color: map-get($button-colours, "reset");
+    border: 2px solid map-get($button-colours, "reset");
     background: none;
   }
 }

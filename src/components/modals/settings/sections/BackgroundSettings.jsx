@@ -134,13 +134,12 @@ export default class BackgroundSettings extends React.PureComponent {
         const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
         return (
           <div key={i}>
-            {gradientHasMoreThanOneColour ? (<button type="button" className="remove" onClick={() => this.removeColour(i)}>-</button>) : null}
-            <input id={'colour_' + i} type='color' name='colour' onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
+            {gradientHasMoreThanOneColour ? (<button type="button" className="remove" onClick={() => this.removeColour(i)}>x</button>) : null}
+            <input id={'colour_' + i} type='color' name='colour' className="colour" onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
             <label htmlFor={'colour_' + i} className="customBackgroundHex">{g.colour}</label>
-            {gradientHasMoreThanOneColour ? (
-              <span>–
-                <input type="number" name='stop' min={0} max={100} value={g.stop} onChange={(event) => this.onGradientChange(event, i)} />
-              </span>) : null}
+            {gradientHasMoreThanOneColour ? (              
+                <input type="number" name='stop' className='stop' min={0} max={100} value={g.stop} onChange={(event) => this.onGradientChange(event, i)} />
+              ) : null}
           </div>);
       });
       colourSettings = (
