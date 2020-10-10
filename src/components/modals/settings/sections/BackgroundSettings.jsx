@@ -6,7 +6,8 @@ export default class BackgroundSettings extends React.PureComponent {
     super(...args);
     this.state = {
       blur: 0,
-      brightness: 100
+      brightness: 100,
+      gradientSettings: ''
     };
   }
 
@@ -14,7 +15,7 @@ export default class BackgroundSettings extends React.PureComponent {
     switch (key) {
       case 'customBackgroundColour':
         localStorage.setItem('customBackgroundColour', '');
-        document.getElementById('customBackgroundHex').textContent = 'Disabled';
+        this.setState({ gradientSettings: '' });
         break;
       case 'customBackground': document.getElementById('customBackground').value = ''; break;
       case 'blur':
@@ -30,72 +31,159 @@ export default class BackgroundSettings extends React.PureComponent {
     toast(this.props.toastLanguage.reset);
   }
 
-   componentDidMount() {
-      document.getElementById('bg-input').onchange = (e) => {
-        const reader = new FileReader();
-        const file = e.target.files[0];
+  componentDidMount() {
+    document.getElementById('bg-input').onchange = (e) => {
+      const reader = new FileReader();
+      const file = e.target.files[0];
 
-        if (file.size > 2000000) return toast('File is over 2MB', '#ff0000', '#ffffff');
+      if (file.size > 2000000) return toast('File is over 2MB', '#ff0000', '#ffffff');
 
-        reader.addEventListener('load', (e) => {
-            localStorage.setItem('customBackground', e.target.result);
-            document.getElementById('customBackground').src = e.target.result;
-            document.getElementById('customBackground').value = e.target.result;
-        });
+      reader.addEventListener('load', (e) => {
+        localStorage.setItem('customBackground', e.target.result);
+        document.getElementById('customBackground').src = e.target.result;
+        document.getElementById('customBackground').value = e.target.result;
+      });
 
-        reader.readAsDataURL(file);
-      };
+      reader.readAsDataURL(file);
+    };
 
-      const hex = localStorage.getItem('customBackgroundColour');
-      if (hex !== '') {
-          document.getElementById('customBackgroundColour').value = hex;
-          document.getElementById('customBackgroundHex').innerText = hex;
-      } else document.getElementById('customBackgroundHex').innerText = 'Disabled';
-
-      this.setState({
-        blur: localStorage.getItem('blur'),
-        brightness: localStorage.getItem('brightness')
-      })
-
-      document.getElementById('customBackground').value = localStorage.getItem('customBackground');
-      document.getElementById('backgroundAPI').value = localStorage.getItem('backgroundAPI');
+    const hex = localStorage.getItem('customBackgroundColour');
+    let gradientSettings = '';
+    if (hex !== '') {
+      try {
+        gradientSettings = JSON.parse(hex);
+      } catch (e) {
+        //Disregard exception.
+      }
     }
 
+    this.setState({
+      blur: localStorage.getItem('blur'),
+      brightness: localStorage.getItem('brightness'),
+      gradientSettings
+    })
+
+    document.getElementById('customBackground').value = localStorage.getItem('customBackground');
+    document.getElementById('backgroundAPI').value = localStorage.getItem('backgroundAPI');
+  }
+
+  onGradientChange = (event, index) => {
+    const newValue = event.target.value;
+    const name = event.target.name;
+    this.setState((s) => {
+      const newState = {
+        gradientSettings: {
+          ...s.gradientSettings,
+          gradient: s.gradientSettings.gradient.map((g, i) => i === index ? { ...g, [name]: newValue } : g)
+        }
+      };
+      return newState;
+    });
+  }
+
+  pickFirstColour = (event) => {
+    const value = event.target.value;
+    this.setState({ gradientSettings: { "angle": "180", "gradient": [{ "colour": value, "stop": 0 }], "type": "linear" } });
+  }
+
+  addColour = () => {
+    this.setState((s) => {
+      const [lastGradient, ...initGradients] = s.gradientSettings.gradient.reverse();
+      const newState = {
+        gradientSettings: {
+          ...s.gradientSettings,
+          gradient: [...initGradients, lastGradient, { ...lastGradient, stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
+        }
+      };
+      return newState;
+    });
+  }
+
+  removeColour = (index) => {
+    this.setState((s) => {
+      const newState = {
+        gradientSettings: {
+          ...s.gradientSettings,
+          gradient: s.gradientSettings.gradient.filter((g, i) => i !== index)
+        }
+      };
+      return newState;
+    });
+  }
+
+  currentGradientSettings = () => {
+    if (typeof this.state.gradientSettings === 'object') {
+      const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
+      return JSON.stringify({
+        ...this.state.gradientSettings,
+        gradient: [...this.state.gradientSettings.gradient.map(g => { return { ...g, stop: clampNumber(+g.stop, 0, 100) } })].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
+      });
+    }
+    return "Disabled";
+  }
+
   render() {
-    return (
+    let colourSettings;
+    if (typeof this.state.gradientSettings === 'object') {
+      const gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
+        const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
+        return (
+          <div key={i}>
+            {gradientHasMoreThanOneColour ? (<button type="button" className="remove" onClick={() => this.removeColour(i)}>-</button>) : null}
+            <input id={'colour_' + i} type='color' name='colour' onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
+            <label htmlFor={'colour_' + i}>{g.colour}</label>
+            {gradientHasMoreThanOneColour ? (
+              <span>–
+                <input type="number" name='stop' min={0} max={100} value={g.stop} onChange={(event) => this.onGradientChange(event, i)} />
+              </span>) : null}
+          </div>);
+      });
+      colourSettings = (
         <div>
-          <ul>
-            <label htmlFor='backgroundapi'>{this.props.language.background.API} </label>
-            <label className='dropdown'>
-              <select className='select-css' name='backgroundapi' id='backgroundAPI' onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
-                <option className='choices' value='mue'>Mue</option>
-                <option className='choices' value='unsplash'>Unsplash</option>
-              </select>
-            </label>
-            </ul>
-            <ul>
-              <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
-              <input className='range' type='range' min='0' max='100' id='blurRange' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
-            </ul>
-            <ul>
-              <p>{this.props.language.background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
-              <input className='range' type='range' min='0' max='100' id='brightnessRange' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
-            </ul>
-            <ul>
-              <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-              <input type='text' id='customBackground'></input>
-            </ul>
-            <ul>
-              <p>{this.props.language.background.custombackground} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-              <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
-              <input id='bg-input' type='file' name='name' className='hidden' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' />
-            </ul>
-           <ul>
-              <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
-              <input name='colour' type='color' id='customBackgroundColour' onChange={() => document.getElementById('customBackgroundHex').innerText = document.getElementById('customBackgroundColour').value}></input>
-              <label htmlFor='colour' id='customBackgroundHex'>#00000</label>
-           </ul>
-        </div>
+          {gradientInputs}
+          <button type="button" className="add" onClick={this.addColour}>+</button>
+        </div>);
+    } else {
+      colourSettings = (
+        <div><input id='colour_0' type='color' name='colour' onChange={(event) => this.pickFirstColour(event)} value="#000000"></input>
+          <label htmlFor='colour_0'>Disabled</label>
+        </div>);
+    }
+
+    return (
+      <div>
+        <ul>
+          <label htmlFor='backgroundapi'>{this.props.language.background.API} </label>
+          <label className='dropdown'>
+            <select className='select-css' name='backgroundapi' id='backgroundAPI' onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
+              <option className='choices' value='mue'>Mue</option>
+              <option className='choices' value='unsplash'>Unsplash</option>
+            </select>
+          </label>
+        </ul>
+        <ul>
+          <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
+          <input className='range' type='range' min='0' max='100' id='blurRange' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
+        </ul>
+        <ul>
+          <p>{this.props.language.background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
+          <input className='range' type='range' min='0' max='100' id='brightnessRange' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
+        </ul>
+        <ul>
+          <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
+          <input type='text' id='customBackground'></input>
+        </ul>
+        <ul>
+          <p>{this.props.language.background.custombackground} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
+          <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
+          <input id='bg-input' type='file' name='name' className='hidden' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' />
+        </ul>
+        <ul>
+          <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
+          <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
+          {colourSettings}
+        </ul>
+      </div>
     );
   }
 }
