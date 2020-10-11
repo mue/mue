@@ -41,17 +41,13 @@ export default class App extends React.PureComponent {
   render() {
     if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
 
-    let modalClassList = 'Modal';
-    if (localStorage.getItem('darkTheme') === 'true') modalClassList = 'Modal dark';
+    const modalClassList = (localStorage.getItem('darkTheme') === 'true') ? 'Modal dark' : 'Modal'; // Modal features
+    const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
-    let overlayClassList = 'Overlay';
-    if (localStorage.getItem('animations') === 'true') overlayClassList = 'Overlay modal-animation';
+    const en = require('./translations/en.json'); // User language
+    const language = merge(en, require(`./translations/${localStorage.getItem('language') || 'en'}.json`));
 
-    let language = require(`./translations/${localStorage.getItem('language') || 'en'}.json`);
-    const en = require('./translations/en.json');
-    language = merge(en, language);
-
-    const theme = localStorage.getItem('theme');
+    const theme = localStorage.getItem('theme'); // Marketplace themes (WIP)
     if (theme) {
       const style = document.createElement('link');
       style.href = theme;

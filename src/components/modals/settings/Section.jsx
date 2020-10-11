@@ -12,10 +12,8 @@ export default class Section extends React.PureComponent {
   }
 
   toggleSection() {
-    let display = 'none';
-    if (this.state.display === 'none') display = 'block';
-    let transform = 'rotate(0)';
-    if (this.state.transform === 'rotate(0)') transform = 'rotate(-180deg)';
+    const display = (this.state.display === 'none') ? 'block': 'none';
+    const transform = (this.state.transform === 'rotate(0)') ? 'rotate(-180deg)' : 'rotate(0)';
 
     this.setState({
       display: display,
@@ -31,7 +29,7 @@ export default class Section extends React.PureComponent {
                         style={{ 'transition': 'all 0.5s ease 0s', 'transform': this.state.transform }}
                         className={`expandIcons`}
                         onClick={() => this.toggleSection()}
-                      />
+                      />;
     }
 
     if (this.props.slider !== false) slider = <Slider name={this.props.name} />;

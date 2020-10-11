@@ -22,7 +22,7 @@ export default class View extends React.PureComponent {
     const elements = ['#searchBar', '.navbar-container', '.clock', '.greeting', '.quotediv', 'time'];
     elements.forEach((element) => {
         try {
-            (this.state.hidden === false) ?  document.querySelector(element).style.display = 'none' : document.querySelector(element).style.display = 'block';
+            (this.state.hidden === false) ? document.querySelector(element).style.display = 'none' : document.querySelector(element).style.display = 'block';
         } catch (e) {
             return;
         }

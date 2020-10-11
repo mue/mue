@@ -41,8 +41,7 @@ export default class Quote extends React.PureComponent {
     if (quotePackAPI) {
       try {
         const data = await (await fetch(quotePackAPI.url)).json();
-        let author = data[quotePackAPI.author];
-        if (quotePackAPI.authorOverride) author = quotePackAPI.authorOverride;
+        const author = quotePackAPI.authorOverride || data[quotePackAPI.author];
         return this.setState({
           quote: '"' + data[quotePackAPI.quote] + '"',
           author: author
@@ -77,11 +76,9 @@ export default class Quote extends React.PureComponent {
   }
 
   render() {
-    let copy = <FileCopy className='copyButton' onClick={() => this.copyQuote()}></FileCopy>;
-    if (localStorage.getItem('copyButton') === 'false') copy = null;
-
-    let tweet = <TwitterIcon className='copyButton' onClick={() => window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus()}/>
-    if (localStorage.getItem('tweetButton') === 'false') tweet = null;
+    const copy = (localStorage.getItem('copyButton') === 'false') ? null : <FileCopy className='copyButton' onClick={() => this.copyQuote()}></FileCopy>;
+    const tweet = (localStorage.getItem('tweetButton') === 'false') ? null :
+                  <TwitterIcon className='copyButton' onClick={() => window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus()}/>;
 
     return (
         <div className='quotediv'>

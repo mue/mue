@@ -17,11 +17,8 @@ export default class Clock extends React.PureComponent {
       const now = new Date();
 
       // Analog clock
-      if (localStorage.getItem('analog') === 'true') {
-        this.setState({
-          time: now
-        });
-      } else {
+      if (localStorage.getItem('analog') === 'true') this.setState({ time: now });
+      else {
         let sec = '';
 
         // Extra 0
@@ -35,11 +32,9 @@ export default class Clock extends React.PureComponent {
         if (localStorage.getItem('24hour') === 'true') {
           let time = '';
           if (zero === 'false') time = `${now.getHours()}:${now.getMinutes()}${sec}`;
-
           else time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
-          this.setState({
-            time: time
-          });
+
+          this.setState({ time: time });
         } else {
           // 12 hour support
           let hours = now.getHours();

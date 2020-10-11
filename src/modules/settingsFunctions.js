@@ -1,4 +1,4 @@
-import detectBrowserLanguage from 'detect-browser-language';
+const defaultSettings = require('./defaultSettings.json');
 
 const saveFile = (data, filename = 'file') => {
     if (!data) return console.error('No data');
@@ -15,8 +15,6 @@ const saveFile = (data, filename = 'file') => {
     e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
     a.dispatchEvent(e);
 };
-
-const defaultSettings = require('./defaultSettings.json');
 
 export default class SettingsFunctions {
     static exportSettings() {
@@ -81,7 +79,7 @@ export default class SettingsFunctions {
 
         // Languages
         const languages = ['nl', 'no', 'fr', 'ru'];
-        const browserLanguage = detectBrowserLanguage();
+        const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
         if (languages.includes(browserLanguage)) {
             localStorage.setItem('language', browserLanguage);
             document.documentElement.lang = browserLanguage;

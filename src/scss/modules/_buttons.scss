@@ -73,14 +73,16 @@
 
 .remove {
   @extend %settingsButton;
-  border-radius: 4px;
-  padding: 5px;
-  width: 25px;
-  background-color: map-get($modal, "background");
-  border: 2px solid map-get($modal, "background");
+  border-radius: 50%;
+  background: none;
+  border: 2px solid rgba(0,0,0,0);
   color: map-get($button-colours, "reset");
   text-align: center;
   vertical-align: sub;
+  height: 60px;
+  width: 60px;
+  padding: 0px;
+  font-size: 30px;
 
   &:hover {
     color: map-get($button-colours, "background");
@@ -187,4 +189,19 @@
     border: 2px solid #2d3436;
     background: none;
   }
+}
+
+.stop {
+  outline: none;
+  border-image-slice: 1;
+  border-image-source: map-get($theme-colours, "gradient");
+  font-size: 1.2em;
+  padding-left: 7px;
+  vertical-align: middle;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+  outline: none;
 }

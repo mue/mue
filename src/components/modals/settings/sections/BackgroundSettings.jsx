@@ -51,6 +51,7 @@ export default class BackgroundSettings extends React.PureComponent {
 
     const hex = localStorage.getItem('customBackgroundColour');
     let gradientSettings = undefined;
+
     if (hex !== '') {
       try {
         gradientSettings = JSON.parse(hex);
@@ -58,15 +59,14 @@ export default class BackgroundSettings extends React.PureComponent {
         //Disregard exception.
       }
     }
-    if (gradientSettings === undefined) {
-      gradientSettings = this.DefaultGradientSettings
-    }
+
+    if (gradientSettings === undefined) gradientSettings = this.DefaultGradientSettings;
 
     this.setState({
       blur: localStorage.getItem('blur'),
       brightness: localStorage.getItem('brightness'),
       gradientSettings
-    })
+    });
 
     document.getElementById('customBackground').value = localStorage.getItem('customBackground');
     document.getElementById('backgroundAPI').value = localStorage.getItem('backgroundAPI');
@@ -124,7 +124,7 @@ export default class BackgroundSettings extends React.PureComponent {
         gradient: [...this.state.gradientSettings.gradient.map(g => { return { ...g, stop: clampNumber(+g.stop, 0, 100) } })].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
       });
     }
-    return "Disabled";
+    return 'Disabled';
   }
 
   render() {
@@ -134,10 +134,10 @@ export default class BackgroundSettings extends React.PureComponent {
         const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
         return (
           <div key={i}>
-            {gradientHasMoreThanOneColour ? (<button type="button" className="remove" onClick={() => this.removeColour(i)}>x</button>) : null}
+            {gradientHasMoreThanOneColour ? (<button type='button' className='remove' onClick={() => this.removeColour(i)}>×</button>) : null}
             <input id={'colour_' + i} type='color' name='colour' className="colour" onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
             <label htmlFor={'colour_' + i} className="customBackgroundHex">{g.colour}</label>
-            {gradientHasMoreThanOneColour ? (              
+            {gradientHasMoreThanOneColour ? (
                 <input type="number" name='stop' className='stop' min={0} max={100} value={g.stop} onChange={(event) => this.onGradientChange(event, i)} />
               ) : null}
           </div>);

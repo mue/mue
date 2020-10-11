@@ -20,8 +20,7 @@ export default class Search extends React.PureComponent {
     if (custom) url = custom;
 
     const searchButton = () => {
-      let value = document.getElementById('searchtext').value;
-      if (!value) value = 'mue fast';
+      const value = document.getElementById('searchtext').value || 'mue fast';
       window.location.href = url + `?${query}=` + value;
     };
 

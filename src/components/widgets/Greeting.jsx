@@ -32,7 +32,7 @@ export default class Greeting extends React.PureComponent {
 
     // Events
     message = this.doEvents(now, message);
-    let custom = localStorage.getItem('defaultGreetingMessage');
+    const custom = localStorage.getItem('defaultGreetingMessage');
     if (custom === 'false') message = '';
 
     // Name

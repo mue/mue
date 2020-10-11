@@ -130,15 +130,13 @@ Please see our [roadmap](https://github.com/mue/mue/projects/2)
 [Isaac (Eartharoid)](https://github.com/eartharoid) - QA, Development, Photographer <br>
 
 ### Translators
-English - [David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) & [Alex Sparkes](https://github.com/alexsparkes)
+[Wessel Tip](https://github.com/Wessel) - Dutch
 
-Dutch - [Wessel Tip](https://github.com/Wessel)
+[Alex Sparkes](https://github.com/alexsparkes) - French
 
-French - [Alex Sparkes](https://github.com/alexsparkes)
+[Anders](https://github.com/FuryingFox) - Norwegian
 
-Norwegian - [Anders](https://github.com/FuryingFox)
-
-Russian - [MrZillaGold](https://github.com/MrZillaGold)
+[MrZillaGold](https://github.com/MrZillaGold) - Russian
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode
