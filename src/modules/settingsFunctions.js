@@ -40,12 +40,12 @@ export default class SettingsFunctions {
     static setSearchEngine(input) {
         const searchEngineInput = document.getElementById('searchEngineInput');
         if (input === 'custom') {
-          searchEngineInput.enabled = 'true';
-          searchEngineInput.style.display = 'block';
+            searchEngineInput.enabled = 'true';
+            searchEngineInput.style.display = 'block';
         } else {
-          searchEngineInput.style.display = 'none';
-          searchEngineInput.enabled = 'false';
-          localStorage.setItem('searchEngine', input);
+            searchEngineInput.style.display = 'none';
+            searchEngineInput.enabled = 'false';
+            localStorage.setItem('searchEngine', input);
         }
     }
 
@@ -54,15 +54,15 @@ export default class SettingsFunctions {
         localStorage.setItem('brightness', document.getElementById('brightnessRange').value);
         localStorage.setItem('greetingName', document.getElementById('greetingName').value);
         localStorage.setItem('customBackground', document.getElementById('customBackground').value);
-        if (document.getElementById('customBackgroundHex').textContent !== 'Disabled') {
-            localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').textContent);
+        if (document.getElementById('customBackgroundHex').value !== 'Disabled') {
+            localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
         }
         if (document.getElementById('searchEngineInput').enabled === 'true') {
-          const input = document.getElementById('customSearchEngine').value;
-          if (input) {
-            localStorage.setItem('searchEngine', 'custom');
-            localStorage.setItem('customSearchEngine', input);
-          }
+            const input = document.getElementById('customSearchEngine').value;
+            if (input) {
+                localStorage.setItem('searchEngine', 'custom');
+                localStorage.setItem('customSearchEngine', input);
+            }
         }
         window.location.reload();
     }

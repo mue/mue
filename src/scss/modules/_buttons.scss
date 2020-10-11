@@ -59,6 +59,36 @@
   }
 }
 
+.add {
+  @extend %settingsButton;
+  background-color: map-get($button-colours, "other");
+  border: 2px solid map-get($button-colours, "other");
+
+  &:hover {
+    color: map-get($button-colours, "other");
+    border: 2px solid map-get($button-colours, "other");
+    background: none;
+  }
+}
+
+.remove {
+  @extend %settingsButton;
+  border-radius: 4px;
+  padding: 5px;
+  width: 25px;
+  background-color: map-get($modal, "background");
+  border: 2px solid map-get($modal, "background");
+  color: map-get($button-colours, "reset");
+  text-align: center;
+  vertical-align: sub;
+
+  &:hover {
+    color: map-get($button-colours, "background");
+    border: 2px solid map-get($button-colours, "reset");
+    background: none;
+  }
+}
+
 .export,
 .uploadbg,
 .import {

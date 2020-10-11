@@ -43,7 +43,8 @@
             "customURL": "Custom Background URL",
             "custombackground": "Custom Background",
             "customcolour": "Custom Background Colour",
-            "upload": "Upload"
+            "upload": "Upload",
+            "addColour": "Add colour"
         },
         "searchbar": {
             "title": "Search Bar",

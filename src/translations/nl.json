@@ -41,7 +41,8 @@
             "customURL": "Aangepaste Achtergrond URL",
             "custombackground": "Aangepaste Achtergrond",
             "customcolour": "Aangepaste Achtergrondkleur",
-            "upload": "Uploaden"
+            "upload": "Uploaden",
+            "addColour": "Kleur toevoegen"
         },
         "searchbar": {
             "title": "Zoekbalk",
