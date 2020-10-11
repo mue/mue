@@ -78,7 +78,7 @@
   width: 25px;
   background-color: map-get($modal, "background");
   border: 2px solid map-get($modal, "background");
-  color: map-get($modal, "text");
+  color: map-get($button-colours, "reset");
   text-align: center;
   vertical-align: sub;
 
