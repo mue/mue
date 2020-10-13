@@ -43,7 +43,7 @@
             "custombackground": "Пользовательский фон",
             "customcolour": "Пользовательский цвет фона",
             "upload": "Загрузить",
-            "addColour": "Добавить цвет"
+            "addcolour": "Добавить цвет"
         },
         "searchbar": {
             "title": "Панель поиска",

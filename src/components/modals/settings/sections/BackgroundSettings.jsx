@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import Checkbox from '../Checkbox';
 
 export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": "Disabled", "stop": 0 }], "type": "linear" };
@@ -145,12 +146,17 @@ export default class BackgroundSettings extends React.PureComponent {
       colourSettings = (
         <div>
           {gradientInputs}
-          {this.state.gradientSettings.gradient[0].colour !== 'Disabled' ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addColour}</button>) : null}
+          {this.state.gradientSettings.gradient[0].colour !== 'Disabled' ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addcolour}</button>) : null}
         </div>);
     }
 
     return (
       <div>
+        <ul>
+          <Checkbox name='view' text={this.props.language.background.view} />
+          <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
+          <Checkbox name='refresh' text={this.props.language.background.refresh} />
+        </ul>
         <ul>
           <label htmlFor='backgroundapi'>{this.props.language.background.API} </label>
           <label className='dropdown'>

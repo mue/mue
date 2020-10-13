@@ -82,5 +82,9 @@
     {
         "name": "tweetButton",
         "value": false
+    },
+    {
+        "name": "favouriteQuoteEnabled",
+        "value": false
     }
 ]

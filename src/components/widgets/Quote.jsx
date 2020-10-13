@@ -4,13 +4,16 @@ import FileCopy from '@material-ui/icons/FilterNone';
 import { toast } from 'react-toastify';
 import * as Constants from '../../modules/constants';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import StarIcon from '@material-ui/icons/Star';
+import StarIcon2 from '@material-ui/icons/StarBorder';
 
 export default class Quote extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
         quote: '',
-        author: ''
+        author: '',
+        favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />
     };
   }
 
@@ -51,6 +54,12 @@ export default class Quote extends React.PureComponent {
       }
     }
 
+    const favouriteQuote = localStorage.getItem('favouriteQuote');
+    if (favouriteQuote) return this.setState({
+      quote: favouriteQuote.split(' - ')[0],
+      author: favouriteQuote.split(' - ')[1]
+    });
+
     if (localStorage.getItem('offlineMode') === 'true') return this.doOffline();
 
     try { // First we try and get a quote from the API...
@@ -70,8 +79,19 @@ export default class Quote extends React.PureComponent {
     toast(this.props.language.quote);
   }
 
+  favourite() {
+    if (localStorage.getItem('favouriteQuote')) {
+      localStorage.removeItem('favouriteQuote');
+      this.setState({ favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} /> });
+    } else {
+      localStorage.setItem('favouriteQuote', this.state.quote + ' - ' + this.state.author);
+      this.setState({ favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} /> });
+    }
+  }
+
   componentDidMount() {
     if (localStorage.getItem('quote') === 'false') return;
+    if (localStorage.getItem('favouriteQuote')) this.setState({ favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} /> });
     this.getQuote();
   }
 
@@ -82,10 +102,12 @@ export default class Quote extends React.PureComponent {
     let tweet = <TwitterIcon className='copyButton' onClick={() => window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus()}/>
     if (localStorage.getItem('tweetButton') === 'false') tweet = null;
 
+    if (localStorage.getItem('favouriteQuoteEnabled') === 'false') this.setState({ favourited: null });
+
     return (
         <div className='quotediv'>
           <h1 className='quote'>{`${this.state.quote}`}</h1>
-          <h1 className='quoteauthor'>{this.state.author} {copy} {tweet}</h1>
+          <h1 className='quoteauthor'>{this.state.author} {copy} {tweet} {this.state.favourited}</h1>
         </div>
     );
   }

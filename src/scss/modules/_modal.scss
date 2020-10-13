@@ -49,7 +49,11 @@
   overflow: hidden;
 }
 
-@-webkit-keyframes zoom-in {
+.zoom-in {
+  @include animation('zoom-in');
+}
+
+@include keyframes(zoom-in) {
   0% {
     transform: scale(0);
   }
@@ -60,20 +64,6 @@
 
   100% {
     transform: scale(1, 1);
-  }
-}
-
-@keyframes zoom-in {
-  0% {
-    -webkit-transform: scale(0);
-  }
-
-  50% {
-    -webkit-transform: scale(1.05, 1.05);
-  }
-
-  100% {
-    -webkit-transform: scale(1, 1);
   }
 }
 
@@ -175,10 +165,12 @@
 .updateContent {
   width: 400px;
   padding: 5px;
+
   .closeModal {
     margin-top: 10px;
     font-size: 45px;
   }
+
   img {
     width: 100%;
     height: auto;

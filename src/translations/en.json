@@ -33,7 +33,8 @@
         "quote": {
             "title": "Quote",
             "copy": "Copy Button",
-            "tweet": "Tweet Button"
+            "tweet": "Tweet Button",
+            "favourite": "Favourite Button"
         },
         "background": {
             "title": "Background",
@@ -44,7 +45,10 @@
             "custombackground": "Custom Background",
             "customcolour": "Custom Background Colour",
             "upload": "Upload",
-            "addColour": "Add colour"
+            "addcolour": "Add colour",
+            "favourite": "Favourite",
+            "view": "View",
+            "refresh": "Refresh"
         },
         "searchbar": {
             "title": "Search Bar",
@@ -57,9 +61,6 @@
             "webp": "Enable WebP",
             "dark": "Dark Theme",
             "animations": "Animations",
-            "view": "View",
-            "favourite": "Favourite",
-            "refresh": "Refresh",
             "voicesearch": "Voice Search"
         },
         "language": "Language",
