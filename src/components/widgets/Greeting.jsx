@@ -6,7 +6,7 @@ export default class Greeting extends React.PureComponent {
     this.state = {
       greeting: ''
     };
- }
+  }
 
   doEvents(time, message) {
     if (localStorage.getItem('events') === 'false') return message;

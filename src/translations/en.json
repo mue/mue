@@ -59,7 +59,8 @@
             "animations": "Animations",
             "view": "View",
             "favourite": "Favourite",
-            "refresh": "Refresh"
+            "refresh": "Refresh",
+            "voicesearch": "Voice Search"
         },
         "language": "Language",
         "apply": "Apply",
