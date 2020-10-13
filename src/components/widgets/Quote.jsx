@@ -76,9 +76,11 @@ export default class Quote extends React.PureComponent {
   }
 
   render() {
-    const copy = (localStorage.getItem('copyButton') === 'false') ? null : <FileCopy className='copyButton' onClick={() => this.copyQuote()}></FileCopy>;
-    const tweet = (localStorage.getItem('tweetButton') === 'false') ? null :
-                  <TwitterIcon className='copyButton' onClick={() => window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus()}/>;
+    let copy = <FileCopy className='copyButton' onClick={() => this.copyQuote()}></FileCopy>;
+    if (localStorage.getItem('copyButton') === 'false') copy = null;
+
+    let tweet = <TwitterIcon className='copyButton' onClick={() => window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus()}/>
+    if (localStorage.getItem('tweetButton') === 'false') tweet = null;
 
     return (
         <div className='quotediv'>
