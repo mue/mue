@@ -17,11 +17,14 @@ export default class Checkbox extends React.PureComponent {
   }
 
   render() {
+    let text = this.props.text;
+    if (this.props.newFeature) text = <span>{this.props.text} <span className='newFeature'> NEW</span></span>;
+
     return (
       <React.Fragment>
         <FormControlLabel
           control={<CheckboxUI name='checkedB' color='primary' checked={this.state.checked} onChange={() => this.handleChange(this.props.name)} />}
-          label={this.props.text}
+          label={text}
         />
         <br/>
       </React.Fragment>

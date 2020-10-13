@@ -103,7 +103,7 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='view' text={this.props.language.experimental.view} />
             <Checkbox name='favouriteEnabled' text={this.props.language.experimental.favourite} />
             <Checkbox name='refresh' text={this.props.language.experimental.refresh} />
-            <Checkbox name='voiceSearch' text={this.props.language.experimental.voicesearch} />
+            <Checkbox name='voiceSearch' text={this.props.language.experimental.voicesearch} newFeature={true} />
           </Section>
           <LanguageSettings language={this.props.language} />
 

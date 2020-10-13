@@ -40,6 +40,7 @@ export default class Background extends React.PureComponent {
     let credit = photographer;
     if (unsplash) credit = `<a href='${url}' class='creditlink'>${photographer}</a> on <a href='https://unsplash.com/?utm_source=mue&utm_medium=referral' class='creditlink'>Unsplash</a>`;
     document.querySelector('#photographer').insertAdjacentHTML("beforeend", ` ${credit}`); // Append credit
+    document.getElementById('credit').textContent = credit;
   }
 
   doOffline() { // Handles setting the background if the user is offline
