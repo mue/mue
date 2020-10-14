@@ -1,89 +1,103 @@
 {
     "greeting": {
         "morning": "Bonjour",
-        "afternoon": "Bonne après-midi",
+        "afternoon": "Bon après-midi",
         "evening": "Bonsoir",
-        "christmas": "Bonne Noël",
+        "christmas": "Joyeux Noël",
         "newyear": "Bonne année",
         "halloween": "Joyeux Halloween"
     },
     "credit": "Photo par",
-    "search": "Trouver",
+    "search": "Rechercher",
     "modals": {
         "title": "Options",
-        "settings": "Parametres",
+        "settings": "Paramètres",
         "addons": "Mes Options",
         "marketplace": "Marché"
     },
     "settings": {
         "time": {
-            "title": "Temps",
-            "seconds": "Seconds",
-            "twentyfourhour": "24 Heures",
-            "ampm": "AM/PM (12 hour)",
-            "zero": "Zero-padded",
-            "analog": "Analogue"
+            "title": "Heure",
+            "seconds": "Secondes",
+            "twentyfourhour": "24 heures",
+            "ampm": "AM/PM (12 heures)",
+            "zero": "Complétion de zéros",
+            "analog": "Analogique"
         },
         "greeting": {
             "title": "Salutation",
             "events": "Événements",
-            "default": "Défaut Salutation",
-            "name": "Nom Pour Salutation"
+            "default": "Salutation par défaut",
+            "name": "Nom pour salutation"
         },
         "quote": {
             "title": "Citation",
-            "copy": "Au bouton copie"
+            "copy": "Bouton Copier",
+            "tweet": "Bouton Twitter",
+            "favourite": "Bouton Ajouter aux favoris"
         },
         "background": {
             "title": "Fond",
-            "API": "Fond API",
+            "API": "Source",
             "blur": "Ajuster le flou",
-            "customURL": "URL D'arrière-plan personnalisée",
-            "custombackground": "D'arrière-plan personnalisée",
+            "brightness": "Ajuster la luminosité",
+            "customURL": "URL d'arrière-plan personnalisé",
+            "custombackground": "Arrière-plan personnalisé",
             "customcolour": "Couleur d'arrière-plan personnalisée",
-            "addcolour": "Ajouter de la couleur"
+            "upload": "Ajouter",
+            "addcolour": "Ajouter une couleur",
+            "favourite": "Ajouter aux favoris",
+            "view": "Mode vue",
+            "refresh": "Rafraîchir"
         },
         "searchbar": {
             "title": "Barre de Recherche",
-            "searchengine": "Moteur de recherche"
+            "searchengine": "Moteur de recherche",
+            "custom": "URL de recherche personnalisée"
         },
         "offline": "Mode Hors-Ligne",
         "experimental": {
             "title": "Expérimental",
             "webp": "Activer WebP",
             "dark": "Thème sombre",
-            "animations": "Animations"
+            "animations": "Animations",
+            "favourite": "Bouton Ajouter aux favoris",
+            "voicesearch": "Recherche vocale"
         },
         "language": "Langue",
         "apply": "Appliquer",
-        "reset": "Reset",
+        "reset": "Réinitialiser",
         "import": "Importer",
-        "export": "Exporter"
+        "export": "Exporter",
+        "imported_settings": "Paramètres importés"
     },
     "update": {
-        "title": "Actualiser",
+        "title": "Mise à jour",
         "offline": {
             "title": "Hors ligne",
-            "description": "Peut pas se connecter à Internet"
+            "description": "Impossible de se connecter à Internet"
         },
         "error": {
             "title": "Erreur",
-            "content": "Could not connect to the server"
+            "description": "Impossible de se connecter au serveur"
         },
-        "loading": "Chargement..."
+        "loading": "Chargement...",
+        "readblog": "Lire sur le blog ",
+        "contactsupport": "Contactez-nous "
     },
     "toasts": {
-        "quote": "Citation Copié",
-        "reset": "Réinitaliser avec succès",
+        "quote": "Citation copiée",
+        "reset": "Réinitialisé avec succès",
         "installed": "Installé avec succès",
-        "removed": "Enlevée avec succès",
-        "error": "Quelque chose a mal tourné."
+        "removed": "Enlevé avec succès",
+        "error": "Quelque chose s'est mal passé",
+        "imported": "Importé avec succès"
     },
     "marketplace": {
-        "photo_packs": "Des Photos Packs",
-        "quote_packs": "Des Citation Packs",
-        "preset_settings": "Paramètres de prédéterminée",
-        "themes": "Thème",
+        "photo_packs": "Packs Photos",
+        "quote_packs": "Packs Citations",
+        "preset_settings": "Paramètres prédéfinis",
+        "themes": "Thèmes",
         "product": {
             "overview": "Aperçu",
             "information": "Information",
@@ -91,26 +105,31 @@
             "version": "Version",
             "author": "Auteur",
             "notice": {
-                "title": "Écriteau",
-                "description": "S'il vous plait, recharger la page."
+                "title": "Remarque",
+                "description": "Pour appliquer les changements, veuillez recharger la page."
             },
             "buttons": {
-                "addtomue": "Ajouter au Mue",
+                "addtomue": "Ajouter à Mue",
                 "remove": "Enlever"
+            },
+            "quoteWarning": {
+                "title": "Attention",
+                "description": "Ce pack fait appel à des serveurs externes qui sont susceptibles de vous tracer !"
             }
         },
         "offline": {
             "title": "Vous êtes hors ligne",
-            "description": "Veuillez vous connecter à l'internet."
+            "description": "Veuillez vous connecter à Internet."
         },
-        "see_more": "Voir de Plus"
+        "see_more": "Voir plus"
     },
     "addons": {
-        "added": "Ajoutée",
+        "added": "Ajoutées",
         "empty": {
-            "title": "Il est vide ici",
-            "description": "Aller su le marché pour en ajouter.",
+            "title": "C'est vide par ici",
+            "description": "Dirigez vous vers le marché pour ajouter des options.",
             "button": "Naviguer vers le marché"
-        }
+        },
+        "sideload": "Charger"
     }
 }
