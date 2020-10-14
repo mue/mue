@@ -48,7 +48,8 @@
             "addcolour": "Add colour",
             "favourite": "Favourite",
             "view": "View",
-            "refresh": "Refresh"
+            "refresh": "Refresh",
+            "disabled": "Disabled"
         },
         "searchbar": {
             "title": "Search Bar",
@@ -67,8 +68,7 @@
         "apply": "Apply",
         "reset": "Reset",
         "import": "Import",
-        "export": "Export",
-        "imported_settings": "Imported settings"
+        "export": "Export"
     },
     "update": {
         "title": "Update",

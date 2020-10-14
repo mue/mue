@@ -106,7 +106,7 @@ export default class Settings extends React.PureComponent {
           </Section>
           <LanguageSettings language={this.props.language} />
 
-          <button className='apply' onClick={() => SettingsFunctions.saveStuff()}>{this.props.language.apply}</button>
+          <button className='apply' onClick={() => SettingsFunctions.saveStuff(this.props.language.background.disabled)}>{this.props.language.apply}</button>
           <button className='reset' onClick={() => this.props.setDefaultSettings()}>{this.props.language.reset}</button>
           <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
           <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>

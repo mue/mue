@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import Checkbox from '../Checkbox';
 
 export default class BackgroundSettings extends React.PureComponent {
-  DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": "Disabled", "stop": 0 }], "type": "linear" };
+  DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": this.props.language.background.disabled, "stop": 0 }], "type": "linear" };
 
   constructor(...args) {
     super(...args);
@@ -118,14 +118,14 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   currentGradientSettings = () => {
-    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== 'Disabled')) {
+    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.props.language.background.disabled)) {
       const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
       return JSON.stringify({
         ...this.state.gradientSettings,
         gradient: [...this.state.gradientSettings.gradient.map(g => { return { ...g, stop: clampNumber(+g.stop, 0, 100) } })].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
       });
     }
-    return 'Disabled';
+    return this.props.language.background.disabled;
   }
 
   render() {
@@ -146,7 +146,7 @@ export default class BackgroundSettings extends React.PureComponent {
       colourSettings = (
         <div>
           {gradientInputs}
-          {this.state.gradientSettings.gradient[0].colour !== 'Disabled' ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addcolour}</button>) : null}
+          {this.state.gradientSettings.gradient[0].colour !== this.props.language.background.disabled ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addcolour}</button>) : null}
         </div>);
     }
 

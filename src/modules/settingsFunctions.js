@@ -47,12 +47,12 @@ export default class SettingsFunctions {
         }
     }
 
-    static saveStuff() {
+    static saveStuff(hexDisabled) {
         localStorage.setItem('blur', document.getElementById('blurRange').value);  // this is better than inline onChange for performance
         localStorage.setItem('brightness', document.getElementById('brightnessRange').value);
         localStorage.setItem('greetingName', document.getElementById('greetingName').value);
         localStorage.setItem('customBackground', document.getElementById('customBackground').value);
-        if (document.getElementById('customBackgroundHex').value !== 'Disabled') {
+        if (document.getElementById('customBackgroundHex').value !== hexDisabled) {
             localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
         }
         if (document.getElementById('searchEngineInput').enabled === 'true') {

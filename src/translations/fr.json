@@ -68,8 +68,7 @@
         "apply": "Appliquer",
         "reset": "Réinitialiser",
         "import": "Importer",
-        "export": "Exporter",
-        "imported_settings": "Paramètres importés"
+        "export": "Exporter"
     },
     "update": {
         "title": "Mise à jour",
