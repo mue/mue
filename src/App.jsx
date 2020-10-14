@@ -41,7 +41,12 @@ export default class App extends React.PureComponent {
   render() {
     if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
 
-    const modalClassList = (localStorage.getItem('darkTheme') === 'true') ? 'Modal dark' : 'Modal'; // Modal features
+    let modalClassList = 'Modal'; // Modal features
+    let tooltipClassList = 'tooltiptext';
+    if ((localStorage.getItem('brightnessTime') && new Date().getHours() > 18) || localStorage.getItem('darkTheme') === 'true') {
+      modalClassList = 'Modal dark';
+      tooltipClassList = 'tooltiptext dark';
+    }
     const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
     const en = require('./translations/en.json'); // User language
@@ -70,7 +75,7 @@ export default class App extends React.PureComponent {
             <span id='credit' style={{'display': 'none'}}></span>
             <div id='backgroundCredits' className='tooltip'>
               <RoomIcon className='locationicon'/>
-              <span className='tooltiptext' id='location'/>
+              <span className={tooltipClassList} id='location'/>
             </div>
           </div>
           <Maximise/>

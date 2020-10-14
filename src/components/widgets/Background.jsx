@@ -26,11 +26,13 @@ export default class Background extends React.PureComponent {
       }
     }
     const background = typeof gradientSettings === 'object' && gradientSettings !== null ? this.gradientStyleBuilder(gradientSettings) : `background-image: url(${url});`;
+    let brightness = localStorage.getItem('brightness');
+    if (localStorage.getItem('brightnessTime') && new Date().getHours() > 18) brightness = 75;
 
     document.querySelector('#backgroundImage').setAttribute(
       'style',
       `${background};
-      -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`
+      -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
     );
 
     if (credit === 'false') document.querySelector('#credits').style.display = 'none'; // Hide the credit

@@ -75,6 +75,10 @@
     opacity: 0;
     transition: opacity 1s;
     box-sizing: border-box;
+    &.dark {
+      background-color: #2f3542 !important;
+      color: white !important;
+    }
   }
 
   &:hover .tooltiptext {

@@ -19,7 +19,7 @@ export default class Settings extends React.PureComponent {
     document.getElementById('greetingName').value = localStorage.getItem('greetingName');
     document.getElementById('language').value = localStorage.getItem('language');
 
-    if (localStorage.getItem('darkTheme') === 'true') {
+    if (document.getElementById('modal').classList.contains('dark')) {
       const choices = document.getElementsByClassName('choices');
       for (let i = 0; i < choices.length; i++) choices[i].style.backgroundColor = '#2f3542';
     }
@@ -102,6 +102,7 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='webp' text={this.props.language.experimental.webp} />
             <Checkbox name='animations' text={this.props.language.experimental.animations} />
             <Checkbox name='voiceSearch' text={this.props.language.experimental.voicesearch} newFeature={true} />
+            <Checkbox name='brightnessTime' text='Automatic Night Mode' newFeature={true} />
           </Section>
           <LanguageSettings language={this.props.language} />
 
