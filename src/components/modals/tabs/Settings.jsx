@@ -62,7 +62,7 @@ export default class Settings extends React.PureComponent {
           <Section title={this.props.language.quote.title} name='quote'>
             <Checkbox name='copyButton' text={this.props.language.quote.copy} />
             <Checkbox name='tweetButton' text={this.props.language.quote.tweet} />
-            <Checkbox name='favouriteQuoteEnabled' text={this.props.language.experimental.favourite} />
+            <Checkbox name='favouriteQuoteEnabled' text={this.props.language.quote.favourite} />
           </Section>
 
           <BackgroundSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
