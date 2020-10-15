@@ -25,14 +25,13 @@ export default class Background extends React.PureComponent {
         localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
       }
     }
-    const background = typeof gradientSettings === 'object' && gradientSettings !== null ? this.gradientStyleBuilder(gradientSettings) : `background-image: url(${url});`;
+    const background = typeof gradientSettings === 'object' && gradientSettings !== null ? this.gradientStyleBuilder(gradientSettings) : `background-image: url(${url})`;
     let brightness = localStorage.getItem('brightness');
     if (localStorage.getItem('brightnessTime') && new Date().getHours() > 18) brightness = 75;
 
     document.querySelector('#backgroundImage').setAttribute(
       'style',
-      `${background};
-      -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+      `${background}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
     );
 
     if (credit === 'false') document.querySelector('#credits').style.display = 'none'; // Hide the credit
@@ -52,7 +51,7 @@ export default class Background extends React.PureComponent {
     const randomImage = offlineImages[photographer].photo[
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
     ]; // Select a random image
-    const url = `../offline-images/${randomImage}.jpeg`;
+    const url = `../offline-images/${randomImage}.jpg`;
 
     this.setBackground(url);
     this.setCredit(photographer);

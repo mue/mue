@@ -48,10 +48,10 @@
             "searchengine": "Søkemotor"
         },
         "offline": "Frakoblet Modus",
+        "dark": "Mørkt tema",
         "experimental": {
             "title": "Eksperimental",
             "webp": "Skru på WebP",
-            "dark": "Mørkt tema",
             "animations": "Animasjoner"
         },
         "language": "Språk",

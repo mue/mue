@@ -1,6 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import Checkbox from '../Checkbox';
+import Section from '../Section';
 
 export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": this.props.language.background.disabled, "stop": 0 }], "type": "linear" };
@@ -151,44 +152,46 @@ export default class BackgroundSettings extends React.PureComponent {
     }
 
     return (
-      <div>
-        <ul>
-          <Checkbox name='view' text={this.props.language.background.view} />
-          <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
-          <Checkbox name='refresh' text={this.props.language.background.refresh} />
-        </ul>
-        <ul>
-          <label htmlFor='backgroundapi'>{this.props.language.background.API} </label>
-          <label className='dropdown'>
-            <select className='select-css' name='backgroundapi' id='backgroundAPI' onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
-              <option className='choices' value='mue'>Mue</option>
-              <option className='choices' value='unsplash'>Unsplash</option>
-            </select>
-          </label>
-        </ul>
-        <ul>
-          <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
-          <input className='range' type='range' min='0' max='100' id='blurRange' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
-        </ul>
-        <ul>
-          <p>{this.props.language.background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
-          <input className='range' type='range' min='0' max='100' id='brightnessRange' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
-        </ul>
-        <ul>
-          <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-          <input type='text' id='customBackground'></input>
-        </ul>
-        <ul>
-          <p>{this.props.language.background.custombackground} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-          <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
-          <input id='bg-input' type='file' name='name' className='hidden' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' />
-        </ul>
-        <ul>
-          <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
-          <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
-          {colourSettings}
-        </ul>
-      </div>
+      <React.Fragment>
+        <Section title={this.props.language.background.title} name='background'>
+          <ul>
+            <Checkbox name='view' text={this.props.language.background.view} />
+            <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
+            <Checkbox name='refresh' text={this.props.language.background.refresh} />
+          </ul>
+          <ul>
+            <label htmlFor='backgroundapi'>{this.props.language.background.API} </label>
+            <label className='dropdown'>
+              <select className='select-css' name='backgroundapi' id='backgroundAPI' onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
+                <option className='choices' value='mue'>Mue</option>
+                <option className='choices' value='unsplash'>Unsplash</option>
+              </select>
+            </label>
+          </ul>
+          <ul>
+            <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
+            <input className='range' type='range' min='0' max='100' id='blurRange' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
+          </ul>
+          <ul>
+            <p>{this.props.language.background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
+            <input className='range' type='range' min='0' max='100' id='brightnessRange' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
+          </ul>
+          <ul>
+            <p>{this.props.language.background.customURL} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
+            <input type='text' id='customBackground'></input>
+          </ul>
+          <ul>
+            <p>{this.props.language.background.custombackground} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
+            <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
+            <input id='bg-input' type='file' name='name' className='hidden' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' />
+          </ul>
+          <ul>
+            <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
+             <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
+            {colourSettings}
+          </ul>
+        </Section>
+      </React.Fragment>
     );
   }
 }

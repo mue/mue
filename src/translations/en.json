@@ -57,12 +57,13 @@
             "custom": "Custom Search URL"
         },
         "offline": "Offline Mode",
+        "dark": "Dark Theme",
         "experimental": {
             "title": "Experimental",
             "webp": "Enable WebP",
-            "dark": "Dark Theme",
             "animations": "Animations",
-            "voicesearch": "Voice Search"
+            "voicesearch": "Voice Search",
+            "nightmode": "Automatic Night Mode"
         },
         "language": "Language",
         "apply": "Apply",

@@ -1,7 +1,6 @@
 import React from 'react';
 import SettingsFunctions from '../../../modules/settingsFunctions';
 import Checkbox from '../settings/Checkbox';
-import Slider from '../settings/Slider';
 import Section from '../settings/Section';
 import { toast } from 'react-toastify';
 
@@ -50,6 +49,7 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='zero' text={this.props.language.time.zero} />
             <Checkbox name='analog' text={this.props.language.time.analog} />
           </Section>
+
           <Section title={this.props.language.greeting.title} name='greeting'>
             <Checkbox name='events' text={this.props.language.greeting.events} />
             <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
@@ -58,31 +58,27 @@ export default class Settings extends React.PureComponent {
               <input type='text' id='greetingName'></input>
             </ul>
           </Section>
+
           <Section title={this.props.language.quote.title} name='quote'>
             <Checkbox name='copyButton' text={this.props.language.quote.copy} />
             <Checkbox name='tweetButton' text={this.props.language.quote.tweet} />
             <Checkbox name='favouriteQuoteEnabled' text={this.props.language.experimental.favourite} />
           </Section>
-          <Section title={this.props.language.background.title} name='background'>
-            <BackgroundSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
-          </Section>
-          <Section title={this.props.language.searchbar.title} name='searchBar'>
-            <SearchSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
-          </Section>
-          <div className='section'>
-            <h4 className='nodropdown'>{this.props.language.offline}</h4>
-            <Slider name='offlineMode'/>
-          </div>
-          <div className='section'>
-            <h4 className='nodropdown'>{this.props.language.experimental.dark}</h4>
-            <Slider name='darkTheme'/>
-          </div>
+
+          <BackgroundSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
+
+          <SearchSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
+
+          <Section title={this.props.language.offline} name='offlineMode' noDropdown={true} />
+          <Section title={this.props.language.dark} name='darkTheme' noDropdown={true} />
+
           <Section title={this.props.language.experimental.title} name='experimental' slider={false}>
             <Checkbox name='webp' text={this.props.language.experimental.webp} />
             <Checkbox name='animations' text={this.props.language.experimental.animations} />
             <Checkbox name='voiceSearch' text={this.props.language.experimental.voicesearch} newFeature={true} />
-            <Checkbox name='brightnessTime' text='Automatic Night Mode' newFeature={true} />
+            <Checkbox name='brightnessTime' text={this.props.language.experimental.nightmode} newFeature={true} />
           </Section>
+
           <LanguageSettings language={this.props.language} />
 
           <button className='apply' onClick={() => SettingsFunctions.saveStuff(this.props.language.background.disabled)}>{this.props.language.apply}</button>

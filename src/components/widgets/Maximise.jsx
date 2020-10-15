@@ -27,6 +27,7 @@ export default class View extends React.PureComponent {
             return;
         }
     });
+
     if (this.state.hidden === false) {
         this.setState({ hidden: true });
         this.setAttribute(0, 100);

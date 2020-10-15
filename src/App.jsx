@@ -16,7 +16,7 @@ import Modal from 'react-modal';
 import merge from 'lodash.merge';
 import RoomIcon from '@material-ui/icons/Room';
 
-// Modals are lazy loaded as a user won't use them every time they open a tab
+// Modals are lazy loaded as the user won't use them every time they open a tab
 const MainModal = React.lazy(() => import('./components/modals/MainModal'));
 const Update = React.lazy(() => import('./components/modals/Update'));
 //const Welcome = React.lazy(() => import('./components/modals/Welcome'));

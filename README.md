@@ -132,11 +132,11 @@ Please see our [roadmap](https://github.com/mue/mue/projects/2)
 ### Translators
 [Wessel Tip](https://github.com/Wessel) - Dutch
 
-[Alex Sparkes](https://github.com/alexsparkes) - French
+[Alex Sparkes](https://github.com/alexsparkes), [Maxime](https://github.com/exiam) - French
 
 [Anders](https://github.com/FuryingFox) - Norwegian
 
-[MrZillaGold](https://github.com/MrZillaGold) - Russian
+[Pronin Egor](https://github.com/MrZillaGold) - Russian
 
 ### Other
 [Pexels](https://pexels.com) - Stock photos used for offline mode

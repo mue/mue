@@ -56,10 +56,10 @@
             "custom": "URL de recherche personnalisée"
         },
         "offline": "Mode Hors-Ligne",
+        "dark": "Thème sombre",
         "experimental": {
             "title": "Expérimental",
             "webp": "Activer WebP",
-            "dark": "Thème sombre",
             "animations": "Animations",
             "favourite": "Bouton Ajouter aux favoris",
             "voicesearch": "Recherche vocale"

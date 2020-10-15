@@ -49,10 +49,10 @@
             "searchengine": "Zoekmachine"
         },
         "offline": "Offline Modus",
+        "dark": "Donker Thema",
         "experimental": {
             "title": "Experimenteel",
             "webp": "WebP Gebruiken",
-            "dark": "Donker Thema",
             "animations": "Animaties"
         },
         "language": "Taal",

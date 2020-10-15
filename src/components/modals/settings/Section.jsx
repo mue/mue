@@ -22,7 +22,7 @@ export default class Section extends React.PureComponent {
   }
 
   render() {
-    let extraHTML, expandMore, slider;
+    let extraHTML, expandMore, slider, noDropdown;
     if (this.props.children) {
         extraHTML = <li className='extraSettings'>{this.props.children}</li>
         expandMore = <ExpandMore
@@ -33,10 +33,11 @@ export default class Section extends React.PureComponent {
     }
 
     if (this.props.slider !== false) slider = <Slider name={this.props.name} />;
+    if (this.props.noDropdown) noDropdown = 'nodropdown';
 
     return (
         <div className='section'>
-            <h4 onClick={() => this.toggleSection()}>{this.props.title}</h4>
+            <h4 className={noDropdown} onClick={() => this.toggleSection()}>{this.props.title}</h4>
             {expandMore}
             {slider}
             <div style={{display: this.state.display}}>
