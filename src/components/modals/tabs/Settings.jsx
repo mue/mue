@@ -15,20 +15,17 @@ export default class Settings extends React.PureComponent {
     toast(this.props.toastLanguage.reset);
   }
 
-  updateCurrent() {
+  componentDidMount() {
+    // Settings
     document.getElementById('greetingName').value = localStorage.getItem('greetingName');
     document.getElementById('language').value = localStorage.getItem('language');
 
-    if (document.getElementById('modal').classList.contains('dark')) {
+    if (document.getElementById('modal').classList.contains('dark')) { // Dark theme support for dropdowns
       const choices = document.getElementsByClassName('choices');
       for (let i = 0; i < choices.length; i++) choices[i].style.backgroundColor = '#2f3542';
     }
-  }
 
-  componentDidMount() {
-    this.updateCurrent();
-
-    document.getElementById('file-input').onchange = (e) => {
+    document.getElementById('file-input').onchange = (e) => { // import settings
       const file = e.target.files[0];
       if (file.type !== 'application/json') return console.error(`expected json, got ${file.type}`);
 
@@ -89,7 +86,7 @@ export default class Settings extends React.PureComponent {
           <LanguageSettings language={this.props.language} />
 
           <button className='apply' onClick={() => SettingsFunctions.saveStuff(this.props.language.background.disabled)}>{this.props.language.apply}</button>
-          <button className='reset' onClick={() => this.props.setDefaultSettings()}>{this.props.language.reset}</button>
+          <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings()}>{this.props.language.reset}</button>
           <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
           <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>
           <input id='file-input' type='file' name='name' className='hidden' accept='application/json' />

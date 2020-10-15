@@ -10,6 +10,7 @@
   font-size: 20px;
   border-radius: 24px;
   background: none;
+
   &:hover {
     outline: none;
   }
@@ -31,7 +32,6 @@
     background: none;
   }
 }
-
 
 .reset {
   @extend %settingsButton;
@@ -171,11 +171,7 @@
   @extend .storebutton;
 }
 
-.sideload {
-  margin-top: 12px;
-}
-
-.seemore {
+.sideload, .seemore {
   margin-top: 12px;
 }
 
