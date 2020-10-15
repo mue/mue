@@ -1,13 +1,13 @@
 import React from 'react';
-import SettingsFunctions from '../../modules/settingsFunctions';
-import Checkbox from './settings/Checkbox';
-import Slider from './settings/Slider';
-import Section from './settings/Section';
+import SettingsFunctions from '../../../modules/settingsFunctions';
+import Checkbox from '../settings/Checkbox';
+import Slider from '../settings/Slider';
+import Section from '../settings/Section';
 import { toast } from 'react-toastify';
 
-import BackgroundSettings from './settings/sections/BackgroundSettings';
-import SearchSettings from './settings/sections/SearchSettings';
-import LanguageSettings from './settings/sections/LanguageSettings';
+import BackgroundSettings from '../settings/sections/BackgroundSettings';
+import SearchSettings from '../settings/sections/SearchSettings';
+import LanguageSettings from '../settings/sections/LanguageSettings';
 
 export default class Settings extends React.PureComponent {
   resetGreeting() {
@@ -41,28 +41,10 @@ export default class Settings extends React.PureComponent {
         toast(this.props.toastLanguage.imported);
       };
     };
-
-    document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
-    document.getElementById('center').classList.toggle('backgroundEffects');
-  }
-
-  componentWillUnmount() {
-    document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
-    document.getElementById('center').classList.toggle('backgroundEffects');
   }
 
   render() {
     return (
-      <div className='content'>
-        <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1>{this.props.modalLanguage.title}</h1>
-        <div className='tab'>
-          <button className='tablinks' onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
-          <button className='tablinks' onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
-          <button className='tablinks' id='active'>{this.props.modalLanguage.settings}</button>
-        </div>
-        <br/>
-
         <div className='columns'>
           <Section title={this.props.language.time.title} name='time'>
             <Checkbox name='seconds' text={this.props.language.time.seconds} />
@@ -112,7 +94,6 @@ export default class Settings extends React.PureComponent {
           <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>
           <input id='file-input' type='file' name='name' className='hidden' accept='application/json' />
         </div>
-      </div>
     );
   }
 }
