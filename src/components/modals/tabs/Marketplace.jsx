@@ -161,7 +161,7 @@ export default class Marketplace extends React.PureComponent {
         return (
             <div id='marketplace'>
             <div className='emptyMessage' style={{'marginTop': '20px', 'transform': 'translateY(80%)'}}>
-                <h1>Loading...</h1>
+                <h1>{this.props.updateLanguage.loading}</h1>
             </div>
           </div>
         )

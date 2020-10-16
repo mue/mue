@@ -57,7 +57,7 @@ export default class App extends React.PureComponent {
     return (
       <React.Fragment>
         <Background/>
-        <ToastContainer className='toast' position='bottom-right' autoClose={2500} hideProgressBar={false} newestOnTop={true} closeOnClick rtl={false} pauseOnFocusLoss />
+        <ToastContainer position='bottom-right' autoClose={2500} newestOnTop={true} closeOnClick rtl={false} pauseOnFocusLoss />
         <div id='center'>
           <Search language={language.search} />
           <Navbar settingsModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} />
@@ -78,9 +78,7 @@ export default class App extends React.PureComponent {
             <Modal id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <MainModal
                 language={language}
-                modalLanguage={language.modals}
-                modalClose={() => this.setState({ mainsModal: false })}
-                toastLanguage={language.toasts} />
+                modalClose={() => this.setState({ mainsModal: false })} />
             </Modal>
             <Modal onRequestClose={() => this.setState({ updateModal: false })} isOpen={this.state.updateModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Update

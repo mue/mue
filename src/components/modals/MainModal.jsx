@@ -29,7 +29,7 @@ export default class MainModal extends React.PureComponent {
       switch (input) {
           case 'addons':
               this.setState({
-                  tab: <Addons language={this.props.language.addons} marketplaceLanguage={this.props.language.marketplace} toastLanguage={this.props.toastLanguage} openMarketplace={() => this.changeEnabled('marketplace')}/>,
+                  tab: <Addons language={this.props.language.addons} marketplaceLanguage={this.props.language.marketplace} toastLanguage={this.props.language.toasts} openMarketplace={() => this.changeEnabled('marketplace')}/>,
                   addonsActive: 'active',
                   settingsActive: '',
                   marketplaceActive: ''
@@ -37,7 +37,7 @@ export default class MainModal extends React.PureComponent {
               break;
           case 'settings':
               this.setState({
-                  tab: <Settings language={this.props.language.settings} toastLanguage={this.props.toastLanguage}/>,
+                  tab: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts}/>,
                   settingsActive: 'active',
                   addonsActive: '',
                   marketplaceActive: ''
@@ -45,7 +45,7 @@ export default class MainModal extends React.PureComponent {
               break;
           case 'marketplace':
               this.setState({
-                  tab: <Marketplace language={this.props.language.marketplace} toastLanguage={this.props.toastLanguage}/>,
+                  tab: <Marketplace language={this.props.language.marketplace} toastLanguage={this.props.language.toasts} updateLanguage={this.props.language.update}/>,
                   marketplaceActive: 'active',
                   addonsActive: '',
                   settingsActive: ''
@@ -60,11 +60,11 @@ export default class MainModal extends React.PureComponent {
     return (
       <div className='content'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1>{this.props.modalLanguage.title}</h1>
+        <h1>{this.props.language.modals.title}</h1>
         <div className='tab'>
-          <button className='tablinks' id={this.state.marketplaceActive} onClick={() => this.changeEnabled('marketplace')}>{this.props.modalLanguage.marketplace}</button>
-          <button className='tablinks' id={this.state.addonsActive} onClick={() => this.changeEnabled('addons')}>{this.props.modalLanguage.addons}</button>
-          <button className='tablinks' id={this.state.settingsActive} onClick={() => this.changeEnabled('settings')}>{this.props.modalLanguage.settings}</button>
+          <button className='tablinks' id={this.state.marketplaceActive} onClick={() => this.changeEnabled('marketplace')}>{this.props.language.modals.marketplace}</button>
+          <button className='tablinks' id={this.state.addonsActive} onClick={() => this.changeEnabled('addons')}>{this.props.language.modals.addons}</button>
+          <button className='tablinks' id={this.state.settingsActive} onClick={() => this.changeEnabled('settings')}>{this.props.language.modals.settings}</button>
         </div>
         <br/>
         {this.state.tab}
