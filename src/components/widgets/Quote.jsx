@@ -97,6 +97,8 @@ export default class Quote extends React.PureComponent {
   }
 
   render() {
+    if (localStorage.getItem('quote') === 'false') return null;
+
     let copy = <FileCopy className='copyButton' onClick={() => this.copyQuote()}></FileCopy>;
     if (localStorage.getItem('copyButton') === 'false') copy = null;
 

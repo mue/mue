@@ -29,7 +29,7 @@ export default class MainModal extends React.PureComponent {
       switch (input) {
           case 'addons':
               this.setState({
-                  tab: <Addons language={this.props.language.addons} marketplaceLanguage={this.props.language.marketplace} toastLanguage={this.props.toastLanguage}/>,
+                  tab: <Addons language={this.props.language.addons} marketplaceLanguage={this.props.language.marketplace} toastLanguage={this.props.toastLanguage} openMarketplace={() => this.changeEnabled('marketplace')}/>,
                   addonsActive: 'active',
                   settingsActive: '',
                   marketplaceActive: ''

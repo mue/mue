@@ -44,7 +44,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 * Marketplace - download custom photo packs, quote packs, preset settings and themes made by the community!
 
 ### Planned Features
-Please see our [roadmap](https://github.com/mue/mue/projects/2)
+Please see our [roadmap](https://github.com/mue/mue/projects)
 
 ## Installation
 *A demo of the tab can be found [here](https://demo.muetab.xyz)*

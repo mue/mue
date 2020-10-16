@@ -28,7 +28,7 @@ export default class Favourite extends React.PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('favouriteEnabled') === 'false') return null;
+    if (localStorage.getItem('favouriteEnabled') === 'false' || localStorage.getItem('background') === 'false') return null;
     return <div className='favourite'>
         {this.state.favourited}
     </div>

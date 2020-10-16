@@ -2,6 +2,8 @@ import React from 'react';
 
 export default class Items extends React.PureComponent {
   render() {
+    if (this.props.items.length === 0) return null;
+
     let seeMoreHTML;
     if (this.props.seeMoreFunction) seeMoreHTML = <button className='addToMue seemore' onClick={this.props.seeMoreFunction}>{this.props.seeMoreTitle}</button>;
 

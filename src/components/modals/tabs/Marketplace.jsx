@@ -171,9 +171,9 @@ export default class Marketplace extends React.PureComponent {
         <div>
             <div id='marketplace'>
                  <div className='featured' style={{backgroundColor: this.state.featured.colour}}>
-                     <p>{this.state.featured.title}</p>
-                     <h1>{this.state.featured.name}</h1>
-                     <button className='addToMue' onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
+                    <p>{this.state.featured.title}</p>
+                    <h1>{this.state.featured.name}</h1>
+                    <button className='addToMue' onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
                  </div>
                  <Items
                    title={this.props.language.photo_packs}
@@ -193,12 +193,12 @@ export default class Marketplace extends React.PureComponent {
                    items={this.state.quote_packs.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'quote_packs', input)}
                    seeMoreFunction={() => this.toggle('seemore', 'quote_packs')} />
-                 <Items
+                 {/* <Items
                    title={this.props.language.themes}
                    seeMoreTitle={this.props.language.see_more}
                    items={this.state.themes.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'theme', input)}
-                   seeMoreFunction={() => this.toggle('seemore', 'themes')} />
+                 seeMoreFunction={() => this.toggle('seemore', 'themes')} /> */ }
              </div>
              <Item
                button={this.state.button}

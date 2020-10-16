@@ -12,9 +12,7 @@ export default class View extends React.PureComponent {
     setAttribute(blur, brightness) {
         document.querySelector('#backgroundImage').setAttribute(
             'style',
-            `background-image: url(${document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '')});
-            -webkit-filter: blur(${blur});
-            -webkit-filter: brightness(${brightness}%);`
+            `background-image: url(${document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}); -webkit-filter: brightness(${brightness}%);`
         );
     }
 
@@ -38,7 +36,7 @@ export default class View extends React.PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('view') === 'false') return null;
+    if (localStorage.getItem('view') === 'false' || localStorage.getItem('background') === 'false') return null;
     return <div className='view'>
         <FullscreenIcon id='viewButton' onClick={() => this.viewStuff()} />
     </div>
