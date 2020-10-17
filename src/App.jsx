@@ -7,6 +7,7 @@ import Quote from './components/widgets/Quote';
 import Search from './components/widgets/Search';
 import Maximise from './components/widgets/Maximise';
 import Favourite from './components/widgets/Favourite';
+import PhotoInformation from './components/widgets/PhotoInformation';
 
 import Navbar from './components/Navbar';
 
@@ -14,7 +15,6 @@ import SettingsFunctions from './modules/settingsFunctions';
 import { ToastContainer } from 'react-toastify';
 import Modal from 'react-modal';
 import merge from 'lodash.merge';
-import RoomIcon from '@material-ui/icons/Room';
 
 // Modals are lazy loaded as the user won't use them every time they open a tab
 const MainModal = React.lazy(() => import('./components/modals/MainModal'));
@@ -36,10 +36,10 @@ export default class App extends React.PureComponent {
     if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
 
     let modalClassList = 'Modal'; // Modal features
-    let tooltipClassList = 'tooltiptext';
+  //  let tooltipClassList = 'tooltiptext';
     if ((localStorage.getItem('brightnessTime') && new Date().getHours() > 18) || localStorage.getItem('darkTheme') === 'true') {
       modalClassList = 'Modal dark';
-      tooltipClassList = 'tooltiptext dark';
+     // tooltipClassList = 'tooltiptext dark';
     }
     const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
@@ -64,14 +64,7 @@ export default class App extends React.PureComponent {
           <Greeting language={language.greeting} />
           <Clock/>
           <Quote language={language.toasts}/>
-          <div className='credits' id='credits'>
-            <h1 id='photographer'>{language.credit}</h1>
-            <span id='credit' style={{'display': 'none'}}></span>
-            <div id='backgroundCredits' className='tooltip'>
-              <RoomIcon className='locationicon'/>
-              <span className={tooltipClassList} id='location'/>
-            </div>
-          </div>
+          <PhotoInformation/>
           <Maximise/>
           <Favourite/>
           <React.Suspense fallback={renderLoader()}>

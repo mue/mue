@@ -42,6 +42,7 @@ export default class Background extends React.PureComponent {
     if (unsplash) credit = `<a href='${url}' class='creditlink'>${photographer}</a> on <a href='https://unsplash.com/?utm_source=mue&utm_medium=referral' class='creditlink'>Unsplash</a>`;
     document.querySelector('#photographer').insertAdjacentHTML("beforeend", ` ${credit}`); // Append credit
     document.getElementById('credit').textContent = credit;
+    document.getElementById('photographerCard').textContent = credit;
   }
 
   doOffline() { // Handles setting the background if the user is offline
@@ -105,6 +106,8 @@ export default class Background extends React.PureComponent {
           this.setBackground(data.file);
           if (localStorage.getItem('backgroundAPI') === 'unsplash') return this.setCredit(data.photographer, 'unsplash', data.photographer_page);
           this.setCredit(data.photographer);
+          document.getElementById('camera').textContent = data.camera;
+          document.getElementById('resolution').textContent = data.resolution || 'N/A';
         }
 
         if (data.location.replace(/[null]+/g, '') === ' ') return document.querySelector('#backgroundCredits').style.display = 'none';
