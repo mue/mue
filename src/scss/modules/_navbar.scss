@@ -1,44 +1,150 @@
-%navbar {
+.navbar-container {
     position: absolute;
-    text-align: right;
-    min-width: 50px;
-    -webkit-filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
-    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
-    top: 20px;
+    top: 1rem;
+    right: 1rem;
+
+    div {
+        display: inline;
+    }
+
+    img {
+        height: 1em;
+        width: auto;
+        margin: 0.5rem;
+    }
+
+    svg.topicons {
+        color: map-get($theme-colours, 'main-text-color');
+        -webkit-font-smoothing: subpixel-antialiased;
+        font-size: 1em;
+        display: inline;
+        margin: 0.5rem;
+        filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+        cursor: pointer;
+        transition: .2s ease;
+
+        &:hover {
+            color: map-get($theme-colours, 'main-text-color');
+            transform: translateZ(0);
+            transform: scale(1.3);
+        }
+    }
+}
+
+.navbar-container-bottom {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+
+    div {
+        display: inline;
+    }
+
+    img {
+        height: 1em;
+        width: auto;
+        margin: 0.5rem;
+    }
+
+    svg.topicons {
+        color: map-get($theme-colours, 'main-text-color');
+        -webkit-font-smoothing: subpixel-antialiased;
+        font-size: 1em;
+        display: inline;
+        margin: 0.5rem;
+        filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+        cursor: pointer;
+        transition: .2s ease;
+
+        &:hover {
+            color: map-get($theme-colours, 'main-text-color');
+            transform: translateZ(0);
+            transform: scale(1.3);
+        }
+    }
+}
+
+.notes {
+    position: relative;
+    display: inline-block;
+
+    h3 {
+        text-shadow: none;
+        margin: 0;
+    }
+}
+
+.notes .notescontainer {
+    text-align: center;
+    padding: 15px;
+    visibility: hidden;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    border-radius: 12px;
+    position: absolute;
+    z-index: 1;
+    top: 80%;
+    left: 50%;
+    margin-left: -125px;
+
+    input[type=text] {
+        border: none;
+        color: #2d3436;
+    }
+
+    svg,
+    input[type=text] {
+        display: inline-flex;
+    }
 
     svg {
-        transition: ease 0.2s;
-        font-size: calc(10px + 1.5vmin) !important;
+        float: left;
+    }
+
+    ::placeholder {
+        color: #636e72;
+        opacity: 1;
     }
 }
 
-.navbar1 {
-    @extend %navbar;
-    right: 20px;
 
-    svg { // apparently fixes shaking issue that only happens to settings icon
-        -webkit-backface-visibility: hidden;
-        -webkit-transform: translateZ(0) scale(1, 1);
-        backface-visibility: hidden;
-        transform: translateZ(0) scale(1, 1);
+.notes:hover .notescontainer {
+    visibility: visible;
+}
+
+textarea {
+    overflow: none;
+    border: none;
+    outline: none;
+    width: 200px;
+    resize: none;
+    height: 100px;
+    margin: 10px;
+}
+
+.noteIcon {
+    display: inline;
+    font-size: 1em;
+    float: none;
+}
+
+.topbarnotes {
+    text-align: center;
+
+    svg {
+        font-size: 48px;
+        float: left !important;
+        padding: 9px;
+    }
+
+    h3 {
+        font-size: 48px;
+        float: right;
+        margin-right: 20px;
     }
 }
 
-.navbar2 {
-    @extend %navbar;
-    right: 60px;
-}
-
-.navbar3 {
-    @extend %navbar;
-    right: 100px;
-}
-
-.refreshicon, .settingsicon, .updateicon {
-    cursor: pointer;
-
-    &:hover {
-        transform: scale(1.1);
-        color: map-get($theme-colours, "main");;
-    }
+.visibilityshow {
+    visibility: visible !important;
 }

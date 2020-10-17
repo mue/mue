@@ -31,12 +31,22 @@ export default class App extends React.PureComponent {
     };
   }
 
-  // Render all the components
-  render() {
+  componentDidMount() {
     if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
 
+    const theme = localStorage.getItem('theme'); // Marketplace themes (WIP)
+    if (theme) {
+      const style = document.createElement('link');
+      style.href = theme;
+      style.rel = 'stylesheet';
+      document.head.appendChild(style);
+    }
+  }
+
+  // Render all the components
+  render() {
     let modalClassList = 'Modal'; // Modal features
-  //  let tooltipClassList = 'tooltiptext';
+    //  let tooltipClassList = 'tooltiptext';
     if ((localStorage.getItem('brightnessTime') && new Date().getHours() > 18) || localStorage.getItem('darkTheme') === 'true') {
       modalClassList = 'Modal dark';
      // tooltipClassList = 'tooltiptext dark';
@@ -46,21 +56,13 @@ export default class App extends React.PureComponent {
     const en = require('./translations/en.json'); // User language
     const language = merge(en, require(`./translations/${localStorage.getItem('language') || 'en'}.json`));
 
-    const theme = localStorage.getItem('theme'); // Marketplace themes (WIP)
-    if (theme) {
-      const style = document.createElement('link');
-      style.href = theme;
-      style.rel = 'stylesheet';
-      document.head.appendChild(style);
-    }
-
     return (
       <React.Fragment>
         <Background/>
         <ToastContainer position='bottom-right' autoClose={2500} newestOnTop={true} closeOnClick rtl={false} pauseOnFocusLoss />
         <div id='center'>
           <Search language={language.search} />
-          <Navbar settingsModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} />
+          <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} />
           <Greeting language={language.greeting} />
           <Clock/>
           <Quote language={language.toasts}/>
