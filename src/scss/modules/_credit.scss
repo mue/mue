@@ -19,6 +19,14 @@
   position: absolute;
   bottom: 10px;
   right: 50px;
+  padding-right: 5px;
+}
+
+.view, .favourite {
+  transition: all 0.5s ease 0s;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 #photographer {

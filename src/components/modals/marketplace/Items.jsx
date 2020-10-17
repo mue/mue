@@ -5,7 +5,7 @@ export default class Items extends React.PureComponent {
     if (this.props.items.length === 0) return null;
 
     let seeMoreHTML;
-    if (this.props.seeMoreFunction) seeMoreHTML = <button className='addToMue seemore' onClick={this.props.seeMoreFunction}>{this.props.seeMoreTitle}</button>;
+    if (this.props.seeMoreFunction && this.props.items.length === 3) seeMoreHTML = <button className='addToMue seemore' onClick={this.props.seeMoreFunction}>{this.props.seeMoreTitle}</button>;
 
     return (
         <div>
