@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/mue/branding/master/logo/logo_round.png" align="left" width="180px" height="180px"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
-> <a href="https://muetab.xyz/">Mue</a>
+> <a href="https://muetab.com/">Mue</a>
 
 [![License](https://img.shields.io/badge/license-BSD%203-blue?style=flat-square)](/LICENSE) [![Discord](https://img.shields.io/discord/659129207208804381?label=discord&color=7289DA&style=flat-square)](https://discord.gg/zv8C9F8) [![Code Size]( https://img.shields.io/github/languages/code-size/mue/mue?color=green&label=size&style=flat-square)]()
 <br>
@@ -47,7 +47,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 Please see our [roadmap](https://github.com/mue/mue/projects)
 
 ## Installation
-*A demo of the tab can be found [here](https://demo.muetab.xyz)*
+*A demo of the tab can be found [here](https://demo.muetab.com)*
 ### Chrome
 [![Chrome Web Store Logo](assets/chrome.png)](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 <br>
