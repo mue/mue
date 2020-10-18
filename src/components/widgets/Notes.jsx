@@ -8,11 +8,11 @@ export default class Notes extends React.PureComponent {
     constructor(...args) {
         super(...args);
         this.state = {
-            notes: localStorage.getItem('notes')
+            notes: localStorage.getItem('notes') || ""
         };
     }
 
-    setNotes(e) {
+    setNotes = (e) => {
         localStorage.setItem('notes', e.target.value);
         this.setState({ notes: e.target.value });
     };
