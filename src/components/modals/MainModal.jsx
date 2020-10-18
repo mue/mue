@@ -8,7 +8,7 @@ export default class MainModal extends React.PureComponent {
     constructor(...args) {
         super(...args);
         this.state = {
-            tab: <Settings language={this.props.language.settings} toastLanguage={this.props.toastLanguage} />,
+            tab: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts} />,
             settingsActive: 'active',
             addonsActive: '',
             marketplaceActive: ''
