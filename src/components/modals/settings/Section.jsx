@@ -6,8 +6,8 @@ export default class Section extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-      display: 'none',
-      transform: 'rotate(0)'
+      display: 'block',
+      transform: 'rotate(-180deg)'
     };
   }
 
