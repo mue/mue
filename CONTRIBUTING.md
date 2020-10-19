@@ -2,7 +2,7 @@
 All contributions are welcome! However, there are some things you need to take note of before starting your contribution to the Mue project.
 
 ## General
-Test *everything*. That's right - make sure every feature still works depending on the change you just implemented. If it's a translation, check if all strings are translated. 
+Test *everything*. That's right - make sure every feature still works depending on the change you just implemented. If it's a translation, check if all strings are translated.
 A bug fix? See if it has fixed the issue fully on both Chromium and Firefox. For features, make sure that everything else still works fine and is compatible with what you
 implemented.
 
@@ -21,7 +21,7 @@ We prefer it if you implement features from our [projects board](https://github.
 issue or our Discord server (see README for invite). Here's a quick list of things to look out for:
 * External APIs - Please refrain from requesting to servers not on the ``muetab.xyz``, ``derpyenterprises.org`` or ``duckduckgo.com`` domains. Whenever possible, try to create
 a "proxy" API service for requests to go through. Pull requests involving paid APIs or heavily limited free plans will be denied.
-* Clones - Please don't go blatantly copying features from the alternative extensions out there unless you have written permission from the original author of the project. 
+* Clones - Please don't go blatantly copying features from the alternative extensions out there unless you have written permission from the original author of the project.
 Inspired features are fine.
 * Removed Features - If a feature has been removed by us don't add it back again without asking us about it first for the reasons as to why it was removed in the first place.
 

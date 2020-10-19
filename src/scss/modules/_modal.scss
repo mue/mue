@@ -49,7 +49,11 @@
   overflow: hidden;
 }
 
-@-webkit-keyframes zoom-in {
+.zoom-in {
+  @include animation('zoom-in');
+}
+
+@include keyframes(zoom-in) {
   0% {
     transform: scale(0);
   }
@@ -60,20 +64,6 @@
 
   100% {
     transform: scale(1, 1);
-  }
-}
-
-@keyframes zoom-in {
-  0% {
-    -webkit-transform: scale(0);
-  }
-
-  50% {
-    -webkit-transform: scale(1.05, 1.05);
-  }
-
-  100% {
-    -webkit-transform: scale(1, 1);
   }
 }
 
@@ -140,11 +130,10 @@
 }
 
 .zoom-out {
-  -webkit-animation: zoom-out 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: zoom-out 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  @include animation('zoom-out 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both');
 }
 
-@-webkit-keyframes zoom-out {
+@include keyframes(zoom-out) {
   0% {
     transform: scale(1, 1);
   }
@@ -158,27 +147,15 @@
   }
 }
 
-@keyframes zoom-out {
-  0% {
-    -webkit-transform: scale(1, 1);
-  }
-
-  50% {
-    -webkit-transform: scale(1.05, 1.05);
-  }
-
-  100% {
-    -webkit-transform: scale(0);
-  }
-}
-
 .updateContent {
   width: 400px;
   padding: 5px;
+
   .closeModal {
     margin-top: 10px;
     font-size: 45px;
   }
+
   img {
     width: 100%;
     height: auto;

@@ -41,17 +41,17 @@
             "customURL": "Personlig bakgrunn URL",
             "custombackground": "Personlig bakgrunn",
             "customcolour": "Personlig Bakgrunn Farge",
-            "addColour": "Legg til farge"
+            "addcolour": "Legg til farge"
         },
         "searchbar": {
             "title": "Søkebar",
             "searchengine": "Søkemotor"
         },
         "offline": "Frakoblet Modus",
+        "dark": "Mørkt tema",
         "experimental": {
             "title": "Eksperimental",
             "webp": "Skru på WebP",
-            "dark": "Mørkt tema",
             "animations": "Animasjoner"
         },
         "language": "Språk",

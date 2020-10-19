@@ -42,17 +42,17 @@
             "custombackground": "Aangepaste Achtergrond",
             "customcolour": "Aangepaste Achtergrondkleur",
             "upload": "Uploaden",
-            "addColour": "Kleur toevoegen"
+            "addcolour": "Kleur toevoegen"
         },
         "searchbar": {
             "title": "Zoekbalk",
             "searchengine": "Zoekmachine"
         },
         "offline": "Offline Modus",
+        "dark": "Donker Thema",
         "experimental": {
             "title": "Experimenteel",
             "webp": "WebP Gebruiken",
-            "dark": "Donker Thema",
             "animations": "Animaties"
         },
         "language": "Taal",

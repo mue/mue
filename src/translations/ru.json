@@ -43,25 +43,24 @@
             "custombackground": "Пользовательский фон",
             "customcolour": "Пользовательский цвет фона",
             "upload": "Загрузить",
-            "addColour": "Добавить цвет"
+            "addcolour": "Добавить цвет"
         },
         "searchbar": {
             "title": "Панель поиска",
             "searchengine": "Поисковый движок"
         },
         "offline": "Офлайн режим",
+        "dark": "Тёмная тема",
         "experimental": {
             "title": "Экспериментальные настройки",
             "webp": "Включить WebP",
-            "dark": "Тёмная тема",
             "animations": "Анимации"
         },
         "language": "Язык",
         "apply": "Применить",
         "reset": "Сбросить",
         "import": "Импорт",
-        "export": "Экспорт",
-        "imported_settings": "Импортированные настройки"
+        "export": "Экспорт"
     },
     "update": {
         "title": "Обновление",

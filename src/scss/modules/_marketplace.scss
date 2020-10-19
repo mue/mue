@@ -151,7 +151,6 @@ p.author {
   font-size: 35px !important;
 }
 
-
 p.description {
   margin-top: 0px;
 }
@@ -213,14 +212,10 @@ p.description {
 }
 
 #marketplace {
-  -webkit-animation: content 0.5s;
-  -moz-animation: content 0.5s;
-  -ms-animation: content 0.5s;
-  -o-animation: content 0.5s;
-  animation: content 0.5s;
+  @include animation('content 0.5s');
 }
 
-@keyframes content {
+@include keyframes(content) {
   from {
     opacity: 0;
     transform: translateY(5%);
@@ -278,9 +273,9 @@ p.description {
 
 #seemore {
   display: none;
-}
 
-#seemore svg {
-  font-size: 35px !important;
-  margin-bottom: -30px;
+  svg {
+    font-size: 35px !important;
+    margin-bottom: -30px;
+  }
 }

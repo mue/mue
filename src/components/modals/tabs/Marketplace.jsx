@@ -2,10 +2,10 @@ import React from 'react';
 import WifiOffIcon from '@material-ui/icons/WifiOff';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { toast } from 'react-toastify';
-import Item from './marketplace/Item';
-import MarketplaceFunctions from '../../modules/marketplaceFunctions';
-import * as Constants from '../../modules/constants';
-import Items from './marketplace/Items';
+import Item from '../marketplace/Item';
+import MarketplaceFunctions from '../../../modules/marketplaceFunctions';
+import * as Constants from '../../../modules/constants';
+import Items from '../marketplace/Items';
 
 export default class Marketplace extends React.PureComponent {
     constructor(...args) {
@@ -35,22 +35,12 @@ export default class Marketplace extends React.PureComponent {
             }
         }
 
-        this.offlineHTML = <div className='content'>
-        <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1>{this.props.modalLanguage.title}</h1>
-        <div className='tab'>
-            <button className='tablinks' id='active'>{this.props.modalLanguage.marketplace}</button>
-            <button className='tablinks' onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
-            <button className='tablinks'
-                onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
-        </div>
-        <div id='marketplace'>
+        this.offlineHTML = <div id='marketplace'>
             <div className='emptyMessage' style={{'marginTop': '20px', 'transform': 'translateY(80%)'}}>
                 <WifiOffIcon />
                 <h1>{this.props.language.offline.title}</h1>
                 <p className='description'>{this.props.language.offline.description}</p>
             </div>
-        </div>
         </div>;
     }
 
@@ -161,51 +151,29 @@ export default class Marketplace extends React.PureComponent {
     }
 
     componentDidMount() {
-      document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
-      document.getElementById('center').classList.toggle('backgroundEffects');
       if (navigator.onLine === false) return;
       this.getItems();
     }
 
-   componentWillUnmount() {
-      document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
-      document.getElementById('center').classList.toggle('backgroundEffects');
-   }
-
   render() {
     if (navigator.onLine === false) return this.offlineHTML;
     if (this.state.done === false) {
-        return <div className='content'>
-        <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1>{this.props.modalLanguage.title}</h1>
-        <div className='tab'>
-            <button className='tablinks' id='active'>{this.props.modalLanguage.marketplace}</button>
-            <button className='tablinks' onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
-            <button className='tablinks'
-                onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
-        </div>
-        <div id='marketplace'>
+        return (
+            <div id='marketplace'>
             <div className='emptyMessage' style={{'marginTop': '20px', 'transform': 'translateY(80%)'}}>
-                <h1>Loading...</h1>
+                <h1>{this.props.updateLanguage.loading}</h1>
             </div>
-        </div>
-        </div>;
+          </div>
+        )
     }
 
-    return <div className='content'>
-             <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-             <h1>{this.props.modalLanguage.title}</h1>
-             <div className='tab'>
-                 <button className='tablinks' id='active'>{this.props.modalLanguage.marketplace}</button>
-                 <button className='tablinks' onClick={this.props.openAddons}>{this.props.modalLanguage.addons}</button>
-                 <button className='tablinks'
-                     onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
-             </div>
-             <div id='marketplace'>
+    return (
+        <div>
+            <div id='marketplace'>
                  <div className='featured' style={{backgroundColor: this.state.featured.colour}}>
-                     <p>{this.state.featured.title}</p>
-                     <h1>{this.state.featured.name}</h1>
-                     <button className='addToMue' onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
+                    <p>{this.state.featured.title}</p>
+                    <h1>{this.state.featured.name}</h1>
+                    <button className='addToMue' onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
                  </div>
                  <Items
                    title={this.props.language.photo_packs}
@@ -225,12 +193,12 @@ export default class Marketplace extends React.PureComponent {
                    items={this.state.quote_packs.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'quote_packs', input)}
                    seeMoreFunction={() => this.toggle('seemore', 'quote_packs')} />
-                 <Items
+                 {/* <Items
                    title={this.props.language.themes}
                    seeMoreTitle={this.props.language.see_more}
                    items={this.state.themes.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'theme', input)}
-                   seeMoreFunction={() => this.toggle('seemore', 'themes')} />
+                 seeMoreFunction={() => this.toggle('seemore', 'themes')} /> */ }
              </div>
              <Item
                button={this.state.button}
@@ -247,6 +215,7 @@ export default class Marketplace extends React.PureComponent {
                   items={this.state.see_more}
                 />
              </div>
-            </div>;
+        </div>
+      )
     }
 }

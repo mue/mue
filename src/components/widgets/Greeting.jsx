@@ -6,7 +6,7 @@ export default class Greeting extends React.PureComponent {
     this.state = {
       greeting: ''
     };
- }
+  }
 
   doEvents(time, message) {
     if (localStorage.getItem('events') === 'false') return message;
@@ -15,9 +15,9 @@ export default class Greeting extends React.PureComponent {
     const m = time.getMonth();
     const d = time.getDate();
 
-    if (m === 11 && d === 25) message = 'Merry Christmas'; // If it's December 25th, set the greeting string to "Merry Christmas"
-    else if (m === 0 && d === 1) message = 'Happy new year'; // If the date is January 1st, set the greeting string to "Happy new year"
-    else if (m === 9 && d === 31) message = 'Happy Halloween'; // If it's October 31st, set the greeting string to "Happy Halloween"
+    if (m === 11 && d === 25) message = this.props.language.christmas; // If it's December 25th, set the greeting string to "Merry Christmas"
+    else if (m === 0 && d === 1) message = this.props.language.newyear; // If the date is January 1st, set the greeting string to "Happy new year"
+    else if (m === 9 && d === 31) message = this.props.language.halloween; // If it's October 31st, set the greeting string to "Happy Halloween"
 
     return message;
   }

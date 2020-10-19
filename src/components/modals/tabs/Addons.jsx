@@ -1,8 +1,8 @@
 import React from 'react';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import { toast } from 'react-toastify';
-import Item from './marketplace/Item';
-import MarketplaceFunctions from '../../modules/marketplaceFunctions';
+import Item from '../marketplace/Item';
+import MarketplaceFunctions from '../../../modules/marketplaceFunctions';
 
 export default class Addons extends React.PureComponent {
     constructor(...args) {
@@ -136,14 +136,7 @@ export default class Addons extends React.PureComponent {
         };
     };
 
-    document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
-    document.getElementById('center').classList.toggle('backgroundEffects');
     this.setState({ installed: JSON.parse(localStorage.getItem('installed')) });
-  }
-
-  componentWillUnmount() {
-    document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
-    document.getElementById('center').classList.toggle('backgroundEffects');
   }
 
   render() {
@@ -169,21 +162,16 @@ export default class Addons extends React.PureComponent {
            </div>;
      }
 
-    return <div className='content'>
-        <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1>{this.props.modalLanguage.title}</h1>
-        <div className='tab'>
-            <button className='tablinks' onClick={this.props.openMarketplace}>{this.props.modalLanguage.marketplace}</button>
-            <button className='tablinks' id='active'>{this.props.modalLanguage.addons}</button>
-            <button className='tablinks' onClick={this.props.openSettings}>{this.props.modalLanguage.settings}</button>
-        </div>
-        <div id='marketplace'>
-           <input id='file-input' type='file' name='name' className='hidden' />
-           <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.props.language.sideload}</button>
-           <h1>{this.props.language.added}</h1>
-           {content}
-        </div>
-        <Item button={this.state.button} data={this.state.item_data} function={() => this.toggle()} language={this.props.marketplaceLanguage.product} />
-    </div>;
+    return (
+       <div>
+         <div id='marketplace'>
+          <input id='file-input' type='file' name='name' className='hidden' />
+          <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.props.language.sideload}</button>
+          <h1>{this.props.language.added}</h1>
+          {content}
+         </div>
+         <Item button={this.state.button} data={this.state.item_data} function={() => this.toggle()} language={this.props.marketplaceLanguage.product} />
+       </div>
+        );
     }
 }
