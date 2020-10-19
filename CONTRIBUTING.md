@@ -1,6 +1,10 @@
 # Contributing
 All contributions are welcome! However, there are some things you need to take note of before starting your contribution to the Mue project.
 
+By contributing to Mue, you agree that:
+* None of the work submitted is plagiarised
+* Your contribution will be distributed under the [BSD-3-Clause License](LICENSE) after it has been merged or implemented otherwise.
+
 ## General
 Test *everything*. That's right - make sure every feature still works depending on the change you just implemented. If it's a translation, check if all strings are translated.
 A bug fix? See if it has fixed the issue fully on both Chromium and Firefox. For features, make sure that everything else still works fine and is compatible with what you
