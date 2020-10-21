@@ -23,8 +23,8 @@ const Update = React.lazy(() => import('./components/modals/Update'));
 const renderLoader = () => <div></div>;
 
 export default class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor(...args) {
+    super(...args);
     this.state = {
       mainModal: false,
       updateModal: false

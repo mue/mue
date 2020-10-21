@@ -67,6 +67,7 @@ export default class Background extends React.PureComponent {
     const customBackgroundColour = localStorage.getItem('customBackgroundColour');
     const customBackground = localStorage.getItem('customBackground');
     const favourited = JSON.parse(localStorage.getItem('favourite'));
+    const customBackgroundVideo = localStorage.getItem('customBackgroundVideo');
 
     if (favourited) {
       if (offlineMode === 'true') return this.doOffline();
@@ -83,6 +84,12 @@ export default class Background extends React.PureComponent {
       this.setBackground(null, customBackgroundColour, 'false');
     } else if (customBackground !== '') { // Local
       this.setBackground(customBackground, null, 'false');
+    } else if (customBackgroundVideo) {
+      document.getElementById('backgroundImage').innerHTML = `
+      <video autoplay muted loop id="backgroundVideo">
+          <source src="${customBackgroundVideo}"/>
+      </video>`;
+      document.querySelector('.photoInformation').style.display = 'none'; // Hide the credit
     } else { // Online
       if (offlineMode === 'true') return this.doOffline();
       try { // First we try and get an image from the API...
