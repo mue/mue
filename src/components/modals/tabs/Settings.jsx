@@ -75,8 +75,8 @@ export default class Settings extends React.PureComponent {
           <Section title={this.props.language.experimental.title} name='experimental' slider={false}>
             <Checkbox name='webp' text={this.props.language.experimental.webp} />
             <Checkbox name='animations' text={this.props.language.experimental.animations} />
-            <Checkbox name='voiceSearch' text={this.props.language.experimental.voicesearch} newFeature={true} />
-            <Checkbox name='brightnessTime' text={this.props.language.experimental.nightmode} newFeature={true} />
+            <Checkbox name='voiceSearch' text={this.props.language.experimental.voice_search} newFeature={true} />
+            <Checkbox name='brightnessTime' text={this.props.language.experimental.night_mode} newFeature={true} />
           </Section>
 
           <LanguageSettings language={this.props.language} />

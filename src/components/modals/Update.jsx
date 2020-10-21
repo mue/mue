@@ -14,7 +14,7 @@ export default class Update extends React.PureComponent {
  }
 
  async getUpdate() {
-  const supportText = `<br/><p>${this.props.language.contactsupport}: <a target='_blank' class='modalLink' href='https://muetab.xyz/contact.html'</a>https://muetab.xyz/contact</p>`;
+  const supportText = `<br/><p>${this.props.language.contact_support}: <a target='_blank' class='modalLink' href='https://muetab.com/contact.html'</a>https://muetab.com/contact</p>`;
 
   if (localStorage.getItem('offlineMode') === 'true') return this.setState({
     title: this.props.language.offline.title,
@@ -33,7 +33,7 @@ export default class Update extends React.PureComponent {
       date: data.published,
       image: data.image,
       author: data.author,
-      html: data.content + `<br/><p>${this.props.language.readblog}: <a target='_blank' class='modalLink' href='${data.url}'>${data.url}</a></p>`
+      html: data.content + `<br/><p>${this.props.language.read_blog}: <a target='_blank' class='modalLink' href='${data.url}'>${data.url}</a></p>`
     });
   } catch (e) { // If it fails, we send an error
     this.setState({
@@ -50,7 +50,7 @@ export default class Update extends React.PureComponent {
   render() {
     return <div className='updateContent'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1 style={{ 'marginBottom':'-10px' }}>{this.state.title}</h1>
+        <h1 style={{ 'marginBottom': '-10px' }}>{this.state.title}</h1>
         <h5 style={{ 'lineHeight':'0px' }}> By {this.state.author} • {this.state.date}</h5>
         <img draggable='false' src={this.state.image} alt='Update'></img>
         <p dangerouslySetInnerHTML={{ __html: this.state.html }}></p>

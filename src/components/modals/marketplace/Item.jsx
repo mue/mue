@@ -9,8 +9,8 @@ export default class Item extends React.PureComponent {
       if (this.props.content.content.data.quote_api) {
         warningHTML = <div className='productInformation'>
             <ul>
-                <li className='header'>{this.props.language.quoteWarning.title}</li>
-                <li id='updated'>{this.props.language.quoteWarning.description}</li>
+                <li className='header'>{this.props.language.quote_warning.title}</li>
+                <li id='updated'>{this.props.language.quote_warning.description}</li>
             </ul>
         </div>
       }
@@ -27,24 +27,24 @@ export default class Item extends React.PureComponent {
       <img alt='product' draggable={false} src={'https://external-content.duckduckgo.com/iu/?u=' + this.props.data.icon} />
       <div className='informationContainer'>
       <div className='productInformation'>
-          <h4>{this.props.language.information}</h4>
-          <ul>
-              <br/>
-              <li className='header'>{this.props.language.last_updated}</li>
-              <li>{this.props.data.updated}</li>
-              <br/>
-              <li className='header'>{this.props.language.version}</li>
-              <li>{this.props.data.version}</li>
-              <br/>
-              <li className='header'>{this.props.language.author}</li>
-              <li>{this.props.data.author}</li>
-          </ul>
+        <h4>{this.props.language.information}</h4>
+        <ul>
+          <br/>
+          <li className='header'>{this.props.language.last_updated}</li>
+          <li>{this.props.data.updated}</li>
+          <br/>
+          <li className='header'>{this.props.language.version}</li>
+          <li>{this.props.data.version}</li>
+          <br/>
+          <li className='header'>{this.props.language.author}</li>
+          <li>{this.props.data.author}</li>
+        </ul>
       </div>
       <div className='productInformation'>
-          <ul>
-              <li className='header'>{this.props.language.notice.title}</li>
-              <li id='updated'>{this.props.language.notice.description}</li>
-          </ul>
+        <ul>
+          <li className='header'>{this.props.language.notice.title}</li>
+          <li id='updated'>{this.props.language.notice.description}</li>
+        </ul>
       </div>
       {warningHTML}
       </div>

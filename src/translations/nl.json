@@ -36,17 +36,17 @@
         },
         "background": {
             "title": "Achtergrond",
-            "API": "Achtergrond API",
+            "api": "Achtergrond API",
             "blur": "Onscherpte Aanpassen",
-            "customURL": "Aangepaste Achtergrond URL",
-            "custombackground": "Aangepaste Achtergrond",
-            "customcolour": "Aangepaste Achtergrondkleur",
+            "custom_url": "Aangepaste Achtergrond URL",
+            "custom_background": "Aangepaste Achtergrond",
+            "custom_colour": "Aangepaste Achtergrondkleur",
             "upload": "Uploaden",
-            "addcolour": "Kleur toevoegen"
+            "add_colour": "Kleur toevoegen"
         },
         "searchbar": {
             "title": "Zoekbalk",
-            "searchengine": "Zoekmachine"
+            "search_engine": "Zoekmachine"
         },
         "offline": "Offline Modus",
         "dark": "Donker Thema",

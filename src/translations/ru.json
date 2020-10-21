@@ -36,18 +36,18 @@
         },
         "background": {
             "title": "Фон",
-            "API": "API для фона",
+            "api": "API для фона",
             "blur": "Размытие",
             "brightness": "Яркость",
-            "customURL": "Ссылка для пользовательского фона",
-            "custombackground": "Пользовательский фон",
-            "customcolour": "Пользовательский цвет фона",
+            "custom_url": "Ссылка для пользовательского фона",
+            "custom_background": "Пользовательский фон",
+            "custom_colour": "Пользовательский цвет фона",
             "upload": "Загрузить",
-            "addcolour": "Добавить цвет"
+            "add_colour": "Добавить цвет"
         },
         "searchbar": {
             "title": "Панель поиска",
-            "searchengine": "Поисковый движок"
+            "search_engine": "Поисковый движок"
         },
         "offline": "Офлайн режим",
         "dark": "Тёмная тема",

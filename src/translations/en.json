@@ -4,7 +4,7 @@
         "afternoon": "Good Afternoon",
         "evening": "Good Evening",
         "christmas": "Merry Christmas",
-        "newyear": "Happy new year",
+        "newyear": "Happy New Year",
         "halloween": "Happy Halloween"
     },
     "credit": "Photo by",
@@ -38,14 +38,14 @@
         },
         "background": {
             "title": "Background",
-            "API": "Background API",
+            "api": "Background API",
             "blur": "Adjust Blur",
             "brightness": "Adjust Brightness",
-            "customURL": "Custom Background URL",
-            "custombackground": "Custom Background",
-            "customcolour": "Custom Background Colour",
+            "custom_url": "Custom Background URL",
+            "custom_background": "Custom Background",
+            "custom_colour": "Custom Background Colour",
             "upload": "Upload",
-            "addcolour": "Add colour",
+            "add_colour": "Add colour",
             "favourite": "Favourite",
             "view": "View",
             "refresh": "Refresh",
@@ -53,7 +53,7 @@
         },
         "searchbar": {
             "title": "Search Bar",
-            "searchengine": "Search Engine",
+            "search_engine": "Search Engine",
             "custom": "Custom Search URL"
         },
         "offline": "Offline Mode",
@@ -62,8 +62,8 @@
             "title": "Experimental",
             "webp": "Enable WebP",
             "animations": "Animations",
-            "voicesearch": "Voice Search",
-            "nightmode": "Automatic Night Mode"
+            "voice_search": "Voice Search",
+            "night_mode": "Automatic Night Mode"
         },
         "language": "Language",
         "apply": "Apply",
@@ -82,8 +82,8 @@
             "description": "Could not connect to the server"
         },
         "loading": "Loading...",
-        "readblog": "Read on the blog here",
-        "contactsupport": "Contact us here"
+        "read_blog": "Read on the blog here",
+        "contact_support": "Contact us here"
     },
     "toasts": {
         "quote": "Quote Copied",
@@ -112,7 +112,7 @@
                 "addtomue": "Add To Mue",
                 "remove": "Remove"
             },
-            "quoteWarning": {
+            "quote_warning": {
                 "title": "Warning",
                 "description": "This quote pack requests to external servers that may track you!"
             }

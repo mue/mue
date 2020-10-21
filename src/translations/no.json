@@ -36,16 +36,16 @@
         },
         "background": {
             "title": "Bakgrunn",
-            "API": "Bakgrunn API",
+            "api": "Bakgrunn API",
             "blur": "Juster Blur",
-            "customURL": "Personlig bakgrunn URL",
-            "custombackground": "Personlig bakgrunn",
-            "customcolour": "Personlig Bakgrunn Farge",
-            "addcolour": "Legg til farge"
+            "custom_url": "Personlig bakgrunn URL",
+            "custom_background": "Personlig bakgrunn",
+            "custom_colour": "Personlig Bakgrunn Farge",
+            "add_colour": "Legg til farge"
         },
         "searchbar": {
             "title": "Søkebar",
-            "searchengine": "Søkemotor"
+            "search_engine": "Søkemotor"
         },
         "offline": "Frakoblet Modus",
         "dark": "Mørkt tema",
