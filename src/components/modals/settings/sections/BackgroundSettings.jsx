@@ -7,7 +7,7 @@ import 'react-color-gradient-picker/dist/index.css';
 
 export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": this.props.language.background.disabled, "stop": 0 }], "type": "linear" };
-  GradientPickerInitalState = {};
+  GradientPickerInitalState = undefined;
 
   constructor(...args) {
     super(...args);
@@ -38,116 +38,102 @@ export default class BackgroundSettings extends React.PureComponent {
     toast(this.props.toastLanguage.reset);
   }
 
-  
- setRGBA(red, green, blue, alpha) {
-  if (this.isValidRGBValue(red) && this.isValidRGBValue(green) && this.isValidRGBValue(blue)) {
+
+  setRGBA(red, green, blue, alpha) {
+    if (this.isValidRGBValue(red) && this.isValidRGBValue(green) && this.isValidRGBValue(blue)) {
       var color = {
-          red: red | 0,
-          green: green | 0,
-          blue: blue | 0,
+        red: red | 0,
+        green: green | 0,
+        blue: blue | 0,
       };
 
       if (this.isValidRGBValue(alpha) === true) {
-          color.alpha = alpha | 0;
+        color.alpha = alpha | 0;
       }
 
       // RGBToHSL(color.r, color.g, color.b);
 
       return color;
+    }
   }
-}
- isValidRGBValue(value) {
+  isValidRGBValue(value) {
     return (typeof (value) === 'number' && Number.isNaN(value) === false && value >= 0 && value <= 255);
-}
- rgbToHSv(ref) {
-  var red = ref.red;
-  var green = ref.green;
-  var blue = ref.blue;
+  }
+  rgbToHSv(ref) {
+    var red = ref.red;
+    var green = ref.green;
+    var blue = ref.blue;
 
-  var rr;
-  var gg;
-  var bb;
-  var h;
-  var s;
+    var rr;
+    var gg;
+    var bb;
+    var h;
+    var s;
 
-  var rabs = red / 255;
-  var gabs = green / 255;
-  var babs = blue / 255;
-  var v = Math.max(rabs, gabs, babs);
-  var diff = v - Math.min(rabs, gabs, babs);
-  var diffc = function (c) { return (v - c) / 6 / diff + 1 / 2; };
-  if (diff === 0) {
+    var rabs = red / 255;
+    var gabs = green / 255;
+    var babs = blue / 255;
+    var v = Math.max(rabs, gabs, babs);
+    var diff = v - Math.min(rabs, gabs, babs);
+    var diffc = function (c) { return (v - c) / 6 / diff + 1 / 2; };
+    if (diff === 0) {
       h = 0;
       s = 0;
-  } else {
+    } else {
       s = diff / v;
       rr = diffc(rabs);
       gg = diffc(gabs);
       bb = diffc(babs);
 
       if (rabs === v) {
-          h = bb - gg;
+        h = bb - gg;
       } else if (gabs === v) {
-          h = (1 / 3) + rr - bb;
+        h = (1 / 3) + rr - bb;
       } else if (babs === v) {
-          h = (2 / 3) + gg - rr;
+        h = (2 / 3) + gg - rr;
       }
       if (h < 0) {
-          h += 1;
+        h += 1;
       } else if (h > 1) {
-          h -= 1;
+        h -= 1;
       }
-  }
+    }
 
-  return {
+    return {
       hue: Math.round(h * 360),
       saturation: Math.round(s * 100),
       value: Math.round(v * 100),
-  };
-}
+    };
+  }
 
 
-   hexToRgb(value) {
+  hexToRgb(value) {
     var hexRegexp = /(^#{0,1}[0-9A-F]{6}$)|(^#{0,1}[0-9A-F]{3}$)|(^#{0,1}[0-9A-F]{8}$)/i;
 
     var regexp = /([0-9A-F])([0-9A-F])([0-9A-F])/i;
     var valid = hexRegexp.test(value);
 
     if (valid) {
-        if (value[0] === '#') { value = value.slice(1, value.length); }
+      if (value[0] === '#') { value = value.slice(1, value.length); }
 
-        if (value.length === 3) { value = value.replace(regexp, '$1$1$2$2$3$3'); }
+      if (value.length === 3) { value = value.replace(regexp, '$1$1$2$2$3$3'); }
 
-        var red = parseInt(value.substr(0, 2), 16);
-        var green = parseInt(value.substr(2, 2), 16);
-        var blue = parseInt(value.substr(4, 2), 16);
-        var alpha = parseInt(value.substr(6, 2), 16) / 255;
+      var red = parseInt(value.substr(0, 2), 16);
+      var green = parseInt(value.substr(2, 2), 16);
+      var blue = parseInt(value.substr(4, 2), 16);
+      var alpha = parseInt(value.substr(6, 2), 16) / 255;
 
-        var color = this.setRGBA(red, green, blue, alpha);
-        var hsv = this.rgbToHSv(Object.assign({}, color));
+      var color = this.setRGBA(red, green, blue, alpha);
+      var hsv = this.rgbToHSv(Object.assign({}, color));
 
-        return Object.assign({}, color,
-            hsv);
+      return Object.assign({}, color,
+        hsv);
     }
 
     return false;
-}
+  }
 
-UNSAFE_componentWillMount(){
-  const hex = localStorage.getItem('customBackgroundColour');
-    let gradientSettings = undefined;
-
-    if (hex !== '') {
-      try {
-        gradientSettings = JSON.parse(hex);
-      } catch (e) {
-        //Disregard exception.
-      }
-    }
-
-    if (gradientSettings === undefined) gradientSettings = this.DefaultGradientSettings;
-
-    console.log(this.hexToRgb("#ff12ab"));
+  mapFromGradientSettingsToColorPickerInitalState(gradientSettings) {
     this.GradientPickerInitalState = {
       points: gradientSettings.gradient.map((g) => {
         const rgb = this.hexToRgb(g.colour);
@@ -157,12 +143,12 @@ UNSAFE_componentWillMount(){
           green: rgb.green,
           blue: rgb.blue,
           alpha: 1
-        }
+        };
       }),
       degree: +gradientSettings.angle,
       type: gradientSettings.type
-    }
-}
+    };
+  }
 
   componentDidMount() {
     document.getElementById('bg-input').onchange = (e) => {
@@ -192,7 +178,7 @@ UNSAFE_componentWillMount(){
     }
 
     if (gradientSettings === undefined) gradientSettings = this.DefaultGradientSettings;
-    
+
     this.setState({
       blur: localStorage.getItem('blur'),
       brightness: localStorage.getItem('brightness'),
@@ -228,7 +214,7 @@ UNSAFE_componentWillMount(){
       const newState = {
         gradientSettings: {
           ...s.gradientSettings,
-          gradient: [...initGradients, lastGradient, { ...lastGradient, stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
+          gradient: [...initGradients, lastGradient, { 'colour': '#000000', stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
         }
       };
       return newState;
@@ -264,40 +250,48 @@ UNSAFE_componentWillMount(){
       let r16 = red.toString(16);
       let g16 = green.toString(16);
       let b16 = blue.toString(16);
-  
+
       if (red < 16) r16 = `0${r16}`;
       if (green < 16) g16 = `0${g16}`;
       if (blue < 16) b16 = `0${b16}`;
-  
+
       return r16 + g16 + b16;
-  }
+    }
     this.setState({
-      gradientSettings: { 'angle': attrs.degree, 'gradient': attrs.points.map((p) => {return {'colour': '#'+rgbToHex(p.red, p.green, p.blue), 'stop': p.left }}), 'type': attrs.type }
+      gradientSettings: { 'angle': attrs.degree, 'gradient': attrs.points.map((p) => { return { 'colour': '#' + rgbToHex(p.red, p.green, p.blue), 'stop': p.left } }), 'type': attrs.type }
     });
   };
 
   render() {
     let colourSettings = null;
     if (typeof this.state.gradientSettings === 'object') {
-      const gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
-        const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
-        return (
-          <div key={i}>
-            {gradientHasMoreThanOneColour ? (<button type='button' className='remove' onClick={() => this.removeColour(i)}>×</button>) : null}
-            <input id={'colour_' + i} type='color' name='colour' className="colour" onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
-            <label htmlFor={'colour_' + i} className="customBackgroundHex">{g.colour}</label>
-            {gradientHasMoreThanOneColour ? (
-              <input type="number" name='stop' className='stop' min={0} max={100} value={g.stop} onChange={(event) => this.onGradientChange(event, i)} />
-            ) : null}
-          </div>);
-      });
+      const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
+      let gradientInputs;
+      if (gradientHasMoreThanOneColour) {
+        if (this.GradientPickerInitalState === undefined) {
+          this.mapFromGradientSettingsToColorPickerInitalState(this.state.gradientSettings);
+        }
+        gradientInputs = (<ColorPicker
+          onStartChange={color => this.onChange(color, 'start')}
+          onChange={color => this.onChange(color, 'change')}
+          onEndChange={color => this.onChange(color, 'end')}
+          gradient={this.GradientPickerInitalState}
+          isGradient />);
+      } else {
+        gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
+          return (
+            <div key={i}>
+              <input id={'colour_' + i} type='color' name='colour' className="colour" onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
+              <label htmlFor={'colour_' + i} className="customBackgroundHex">{g.colour}</label>
+            </div>);
+        });
+      }
       colourSettings = (
         <div>
           {gradientInputs}
-          {this.state.gradientSettings.gradient[0].colour !== this.props.language.background.disabled ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addcolour}</button>) : null}
+          {this.state.gradientSettings.gradient[0].colour !== this.props.language.background.disabled && !gradientHasMoreThanOneColour ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addcolour}</button>) : null}
         </div>);
     }
-
     return (
       <React.Fragment>
         <Section title={this.props.language.background.title} name='background'>
@@ -334,14 +328,8 @@ UNSAFE_componentWillMount(){
           </ul>
           <ul>
             <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
-             <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
+            <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
             {colourSettings}
-          <ColorPicker
-            onStartChange={color => this.onChange(color, 'start')}
-            onChange={color => this.onChange(color, 'change')}
-            onEndChange={color => this.onChange(color, 'end')}
-            gradient={this.GradientPickerInitalState}
-            isGradient />
           </ul>
         </Section>
       </React.Fragment>
