@@ -1,6 +1,10 @@
 # Contributing
 All contributions are welcome! However, there are some things you need to take note of before starting your contribution to the Mue project.
 
+By contributing to Mue, you agree that:
+* None of the work submitted is plagiarised
+* Your contribution will be distributed under the [BSD-3-Clause License](LICENSE) after it has been merged or implemented otherwise.
+
 ## General
 Test *everything*. That's right - make sure every feature still works depending on the change you just implemented. If it's a translation, check if all strings are translated.
 A bug fix? See if it has fixed the issue fully on both Chromium and Firefox. For features, make sure that everything else still works fine and is compatible with what you
@@ -19,7 +23,7 @@ Here's some quick bullet points as to what your code should be like on Mue:
 ### Features
 We prefer it if you implement features from our [projects board](https://github.com/mue/mue/projects). However, if you have an idea feel free to let us know first via a GitHub
 issue or our Discord server (see README for invite). Here's a quick list of things to look out for:
-* External APIs - Please refrain from requesting to servers not on the ``muetab.xyz``, ``derpyenterprises.org`` or ``duckduckgo.com`` domains. Whenever possible, try to create
+* External APIs - Please refrain from requesting to servers not on the ``muetab.com``, ``derpyenterprises.org`` or ``duckduckgo.com`` domains. Whenever possible, try to create
 a "proxy" API service for requests to go through. Pull requests involving paid APIs or heavily limited free plans will be denied.
 * Clones - Please don't go blatantly copying features from the alternative extensions out there unless you have written permission from the original author of the project.
 Inspired features are fine.
