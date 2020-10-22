@@ -34,7 +34,7 @@ export default class Background extends React.PureComponent {
       `${background}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
     );
 
-    if (credit === 'false') document.querySelector('#credits').style.display = 'none'; // Hide the credit
+    if (credit === 'false' && document.querySelector('#credits')) document.querySelector('#credits').style.display = 'none'; // Hide the credit
   }
 
   setCredit(photographer, unsplash, url) {
