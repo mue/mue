@@ -14,7 +14,8 @@ export default class BackgroundSettings extends React.PureComponent {
     this.state = {
       blur: 0,
       brightness: 100,
-      gradientSettings: this.DefaultGradientSettings
+      gradientSettings: this.DefaultGradientSettings,
+      shown: false
     };
   }
 
@@ -262,6 +263,14 @@ export default class BackgroundSettings extends React.PureComponent {
     });
   };
 
+  onSection = () => {
+    this.setState((state) => {
+      return {
+        shown: !state.shown
+      };
+    })
+  }
+
   render() {
     let colourSettings = null;
     if (typeof this.state.gradientSettings === 'object') {
@@ -294,7 +303,7 @@ export default class BackgroundSettings extends React.PureComponent {
     }
     return (
       <React.Fragment>
-        <Section title={this.props.language.background.title} name='background'>
+        <Section title={this.props.language.background.title} name='background' onToggle={this.onSection}>
           <ul>
             <Checkbox name='view' text={this.props.language.background.view} />
             <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
@@ -329,7 +338,7 @@ export default class BackgroundSettings extends React.PureComponent {
           <ul>
             <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
             <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
-            {colourSettings}
+            {this.state.shown && colourSettings}
           </ul>
         </Section>
       </React.Fragment>

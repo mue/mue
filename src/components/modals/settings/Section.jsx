@@ -6,8 +6,8 @@ export default class Section extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-      display: 'block',
-      transform: 'rotate(-180deg)'
+      display: 'none',
+      transform: 'rotate(0)'
     };
   }
 
@@ -19,6 +19,10 @@ export default class Section extends React.PureComponent {
       display: display,
       transform: transform
     });
+
+    if(this.props.onToggle) {
+      this.props.onToggle(display);
+    }
   }
 
   render() {
