@@ -4,6 +4,8 @@ import Checkbox from '../Checkbox';
 import Section from '../Section';
 import { ColorPicker } from 'react-color-gradient-picker';
 import 'react-color-gradient-picker/dist/index.css';
+import hexToRgb from '../../../../helpers/hexToRgb'
+import rgbToHex from '../../../../helpers/rgbToHex'
 
 export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": this.props.language.background.disabled, "stop": 0 }], "type": "linear" };
@@ -39,105 +41,10 @@ export default class BackgroundSettings extends React.PureComponent {
     toast(this.props.toastLanguage.reset);
   }
 
-
-  setRGBA(red, green, blue, alpha) {
-    if (this.isValidRGBValue(red) && this.isValidRGBValue(green) && this.isValidRGBValue(blue)) {
-      var color = {
-        red: red | 0,
-        green: green | 0,
-        blue: blue | 0,
-      };
-
-      if (this.isValidRGBValue(alpha) === true) {
-        color.alpha = alpha | 0;
-      }
-
-      // RGBToHSL(color.r, color.g, color.b);
-
-      return color;
-    }
-  }
-  isValidRGBValue(value) {
-    return (typeof (value) === 'number' && Number.isNaN(value) === false && value >= 0 && value <= 255);
-  }
-  rgbToHSv(ref) {
-    var red = ref.red;
-    var green = ref.green;
-    var blue = ref.blue;
-
-    var rr;
-    var gg;
-    var bb;
-    var h;
-    var s;
-
-    var rabs = red / 255;
-    var gabs = green / 255;
-    var babs = blue / 255;
-    var v = Math.max(rabs, gabs, babs);
-    var diff = v - Math.min(rabs, gabs, babs);
-    var diffc = function (c) { return (v - c) / 6 / diff + 1 / 2; };
-    if (diff === 0) {
-      h = 0;
-      s = 0;
-    } else {
-      s = diff / v;
-      rr = diffc(rabs);
-      gg = diffc(gabs);
-      bb = diffc(babs);
-
-      if (rabs === v) {
-        h = bb - gg;
-      } else if (gabs === v) {
-        h = (1 / 3) + rr - bb;
-      } else if (babs === v) {
-        h = (2 / 3) + gg - rr;
-      }
-      if (h < 0) {
-        h += 1;
-      } else if (h > 1) {
-        h -= 1;
-      }
-    }
-
-    return {
-      hue: Math.round(h * 360),
-      saturation: Math.round(s * 100),
-      value: Math.round(v * 100),
-    };
-  }
-
-
-  hexToRgb(value) {
-    var hexRegexp = /(^#{0,1}[0-9A-F]{6}$)|(^#{0,1}[0-9A-F]{3}$)|(^#{0,1}[0-9A-F]{8}$)/i;
-
-    var regexp = /([0-9A-F])([0-9A-F])([0-9A-F])/i;
-    var valid = hexRegexp.test(value);
-
-    if (valid) {
-      if (value[0] === '#') { value = value.slice(1, value.length); }
-
-      if (value.length === 3) { value = value.replace(regexp, '$1$1$2$2$3$3'); }
-
-      var red = parseInt(value.substr(0, 2), 16);
-      var green = parseInt(value.substr(2, 2), 16);
-      var blue = parseInt(value.substr(4, 2), 16);
-      var alpha = parseInt(value.substr(6, 2), 16) / 255;
-
-      var color = this.setRGBA(red, green, blue, alpha);
-      var hsv = this.rgbToHSv(Object.assign({}, color));
-
-      return Object.assign({}, color,
-        hsv);
-    }
-
-    return false;
-  }
-
   mapFromGradientSettingsToColorPickerInitalState(gradientSettings) {
     this.GradientPickerInitalState = {
       points: gradientSettings.gradient.map((g) => {
-        const rgb = this.hexToRgb(g.colour);
+        const rgb = hexToRgb(g.colour);
         return {
           left: +g.stop,
           red: rgb.red,
@@ -204,11 +111,6 @@ export default class BackgroundSettings extends React.PureComponent {
     });
   }
 
-  pickFirstColour = (event) => {
-    const value = event.target.value;
-    this.setState({ gradientSettings: { "angle": "180", "gradient": [{ "colour": value, "stop": 0 }], "type": "linear" } });
-  }
-
   addColour = () => {
     this.setState((s) => {
       const [lastGradient, ...initGradients] = s.gradientSettings.gradient.reverse();
@@ -216,18 +118,6 @@ export default class BackgroundSettings extends React.PureComponent {
         gradientSettings: {
           ...s.gradientSettings,
           gradient: [...initGradients, lastGradient, { 'colour': localStorage.getItem('darkTheme') === 'true' ? '#000000' : '#ffffff', stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
-        }
-      };
-      return newState;
-    });
-  }
-
-  removeColour = (index) => {
-    this.setState((s) => {
-      const newState = {
-        gradientSettings: {
-          ...s.gradientSettings,
-          gradient: s.gradientSettings.gradient.filter((g, i) => i !== index)
         }
       };
       return newState;
@@ -245,25 +135,16 @@ export default class BackgroundSettings extends React.PureComponent {
     return this.props.language.background.disabled;
   }
 
-  onChange = (attrs, name) => {
-    console.log(attrs, name);
-    function rgbToHex(red, green, blue) {
-      let r16 = red.toString(16);
-      let g16 = green.toString(16);
-      let b16 = blue.toString(16);
-
-      if (red < 16) r16 = `0${r16}`;
-      if (green < 16) g16 = `0${g16}`;
-      if (blue < 16) b16 = `0${b16}`;
-
-      return r16 + g16 + b16;
+  onColorPickerChange = (attrs, name) => {
+    if(process.env.NODE_ENV == 'development'){
+      console.log(attrs, name);
     }
     this.setState({
       gradientSettings: { 'angle': attrs.degree, 'gradient': attrs.points.map((p) => { return { 'colour': '#' + rgbToHex(p.red, p.green, p.blue), 'stop': p.left } }), 'type': attrs.type }
     });
   };
 
-  onSection = () => {
+  onSectionToggle = () => {
     this.setState((state) => {
       return {
         shown: !state.shown
@@ -281,9 +162,9 @@ export default class BackgroundSettings extends React.PureComponent {
           this.mapFromGradientSettingsToColorPickerInitalState(this.state.gradientSettings);
         }
         gradientInputs = (<ColorPicker
-          onStartChange={color => this.onChange(color, 'start')}
-          onChange={color => this.onChange(color, 'change')}
-          onEndChange={color => this.onChange(color, 'end')}
+          onStartChange={color => this.onColorPickerChange(color, 'start')}
+          onChange={color => this.onColorPickerChange(color, 'change')}
+          onEndChange={color => this.onColorPickerChange(color, 'end')}
           gradient={this.GradientPickerInitalState}
           isGradient />);
       } else {
@@ -303,7 +184,7 @@ export default class BackgroundSettings extends React.PureComponent {
     }
     return (
       <React.Fragment>
-        <Section title={this.props.language.background.title} name='background' onToggle={this.onSection}>
+        <Section title={this.props.language.background.title} name='background' onToggle={this.onSectionToggle}>
           <ul>
             <Checkbox name='view' text={this.props.language.background.view} />
             <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
