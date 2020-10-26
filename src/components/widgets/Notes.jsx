@@ -18,9 +18,8 @@ export default class Notes extends React.PureComponent {
     };
 
     pin() {
-        const pinned = localStorage.getItem('notesPinned');
         document.getElementById('noteContainer').classList.toggle('visibilityshow');
-        if (pinned === 'true') localStorage.setItem('notesPinned', false);
+        if (localStorage.getItem('notesPinned') === 'true') localStorage.setItem('notesPinned', false);
         else localStorage.setItem('notesPinned', true);
     }
 
@@ -35,9 +34,9 @@ export default class Notes extends React.PureComponent {
             <span id='noteContainer' className='notescontainer'>
                 <div className='topbarnotes'>
                     <NotesIcon/>
-                    <h3>Notes</h3>
+                    <h3>{this.props.language.title}</h3>
                 </div>
-                <TextareaAutosize rowsMax={50} placeholder='Enter Notes' value={this.state.notes} onChange={this.setNotes}/>
+                <TextareaAutosize rowsMax={50} placeholder={this.props.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
                 <button onClick={this.pin} className='pinNote'><Pin/></button>
                 <button onClick={copyNotes} className='saveNote'><CopyIcon/></button>
             </span>

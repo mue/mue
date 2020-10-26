@@ -62,7 +62,7 @@ export default class App extends React.PureComponent {
         <ToastContainer position='bottom-right' autoClose={2500} newestOnTop={true} closeOnClick rtl={false} pauseOnFocusLoss />
         <div id='center'>
           <Search language={language.search} />
-          <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} />
+          <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} language={language} />
           <Greeting language={language.greeting} />
           <Clock/>
           <Quote language={language.toasts}/>

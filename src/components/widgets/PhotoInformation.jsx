@@ -12,7 +12,8 @@ export default class PhotoInformation extends React.PureComponent {
         <h1 id='photographer'>Photo By</h1>
         <Info className='photoInformationHover'/>
         <div className='infoCard'>
-          <Info className='infoIcon' /><h1>Information</h1>
+          <Info className='infoIcon'/>
+          <h1>Information</h1>
           <hr/>
           <Location/>
           <span id='location'></span>
