@@ -23,7 +23,7 @@ Here's some quick bullet points as to what your code should be like on Mue:
 ### Features
 We prefer it if you implement features from our [projects board](https://github.com/mue/mue/projects). However, if you have an idea feel free to let us know first via a GitHub
 issue or our Discord server (see README for invite). Here's a quick list of things to look out for:
-* External APIs - Please refrain from requesting to servers not on the ``muetab.xyz``, ``derpyenterprises.org`` or ``duckduckgo.com`` domains. Whenever possible, try to create
+* External APIs - Please refrain from requesting to servers not on the ``muetab.com``, ``derpyenterprises.org`` or ``duckduckgo.com`` domains. Whenever possible, try to create
 a "proxy" API service for requests to go through. Pull requests involving paid APIs or heavily limited free plans will be denied.
 * Clones - Please don't go blatantly copying features from the alternative extensions out there unless you have written permission from the original author of the project.
 Inspired features are fine.
