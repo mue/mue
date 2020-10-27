@@ -10,6 +10,7 @@
   font-size: 20px;
   border-radius: 24px;
   background: none;
+  box-shadow: 0 5px 15px rgba(46, 213, 115, .4);
 
   &:hover {
     outline: none;
@@ -35,9 +36,9 @@
 
 .reset {
   @extend %settingsButton;
+  margin-left: 5px;
   background-color: map-get($button-colours, 'reset');
   border: 2px solid map-get($button-colours, 'reset');
-  margin-left: 5px;
 
   &:hover {
     border: 2px solid map-get($button-colours, 'reset');

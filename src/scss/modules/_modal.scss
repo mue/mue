@@ -30,8 +30,10 @@
 }
 
 .closeModal {
-  float: right;
-  font-size: 2em;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 4em;
   cursor: pointer;
 
   &:hover {
@@ -173,4 +175,9 @@
   background: #34495e;
   border-top-right-radius: map-get($modal, "border-radius");
   border-bottom-right-radius: map-get($modal, "border-radius");
+}
+
+.tablinks svg {
+  top: 0.125em;
+  position: relative;
 }

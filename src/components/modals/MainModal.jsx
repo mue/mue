@@ -4,6 +4,10 @@ import Settings from './tabs/Settings';
 import Addons from './tabs/Addons';
 import Marketplace from './tabs/Marketplace';
 
+import SettingsIcon from '@material-ui/icons/Settings';
+import AddonsIcon from '@material-ui/icons/Widgets';
+import MarketplaceIcon from '@material-ui/icons/ShoppingBasket';
+
 export default class MainModal extends React.PureComponent {
     constructor(...args) {
         super(...args);
@@ -62,9 +66,9 @@ export default class MainModal extends React.PureComponent {
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.language.modals.title}</h1>
         <div className='tab'>
-          <button className='tablinks' id={this.state.marketplaceActive} onClick={() => this.changeEnabled('marketplace')}>{this.props.language.modals.marketplace}</button>
-          <button className='tablinks' id={this.state.addonsActive} onClick={() => this.changeEnabled('addons')}>{this.props.language.modals.addons}</button>
-          <button className='tablinks' id={this.state.settingsActive} onClick={() => this.changeEnabled('settings')}>{this.props.language.modals.settings}</button>
+          <button className='tablinks' id={this.state.marketplaceActive} onClick={() => this.changeEnabled('marketplace')}><MarketplaceIcon/> {this.props.language.modals.marketplace}</button>
+          <button className='tablinks' id={this.state.addonsActive} onClick={() => this.changeEnabled('addons')}><AddonsIcon/> {this.props.language.modals.addons}</button>
+          <button className='tablinks' id={this.state.settingsActive} onClick={() => this.changeEnabled('settings')}><SettingsIcon/> {this.props.language.modals.settings}</button>
         </div>
         <br/>
         {this.state.tab}
