@@ -1,0 +1,135 @@
+{
+    "greeting": {
+        "morning": "Buenos días",
+        "afternoon": "Buenas tardes",
+        "evening": "Buenas noches",
+        "christmas": "Feliz Navidad",
+        "newyear": "Feliz año nuevo",
+        "halloween": "Feliz Halloween"
+    },
+    "credit": "Foto por",
+    "search": "Buscar",
+    "modals": {
+        "title": "Opciones",
+        "settings": "Ajustes",
+        "addons": "Mis complementos",
+        "marketplace": "Tienda"
+    },
+    "settings": {
+        "time": {
+            "title": "Tiempo",
+            "seconds": "Segundos",
+            "twentyfourhour": "24 Horas",
+            "ampm": "AM/PM (12 horas)",
+            "zero": "Sin ceros",
+            "analog": "Analógico"
+        },
+        "greeting": {
+            "title": "Saludos",
+            "events": "Eventos",
+            "default": "Mensaje del saludo por defecto",
+            "name": "Nombre para el saludo"
+        },
+        "quote": {
+            "title": "Cita",
+            "copy": "Botón de copiar",
+            "tweet": "Botón de Tweet",
+            "favourite": "Botón de favoritos"
+        },
+        "background": {
+            "title": "Fondo",
+            "API": "Fondos API",
+            "blur": "Ajustar difuminado",
+            "brightness": "Ajustar brillo",
+            "customURL": "URL del fondo personalizado",
+            "custombackground": "Fondo personalizado",
+            "customcolour": "Color del fondo personalizado",
+            "upload": "Subir",
+            "addcolour": "Añadir color",
+            "favourite": "Favorito",
+            "view": "Ver",
+            "refresh": "Refrescar",
+            "disabled": "Desactivado"
+        },
+        "searchbar": {
+            "title": "Barra de búsqueda",
+            "searchengine": "Motor de búsqueda",
+            "custom": "URL de búsqueda personalizada"
+        },
+        "offline": "Modo Offline",
+        "dark": "Tema Oscuro",
+        "experimental": {
+            "title": "Experimental",
+            "webp": "Activar WebP",
+            "animations": "Animaciones",
+            "voicesearch": "Búsqueda por voz",
+            "nightmode": "Modo nocturno automático"
+        },
+        "language": "Lenguaje",
+        "apply": "Aplicar",
+        "reset": "Reiniciar",
+        "import": "Importar",
+        "export": "Exportar"
+    },
+    "update": {
+        "title": "Actualizar",
+        "offline": {
+            "title": "Offline",
+            "description": "No se pueden obtener actualizaciones en modo sin conexión"
+        },
+        "error": {
+            "title": "Error",
+            "description": "No se pudo conectar con el servidor"
+        },
+        "loading": "Cargando...",
+        "readblog": "Leer en el blog aquí",
+        "contactsupport": "Contáctanos aquí"
+    },
+    "toasts": {
+        "quote": "Cita copiada",
+        "reset": "Restablecido correctamente",
+        "installed": "Instalado correctamente",
+        "removed": "Retirado correctamente",
+        "error": "Algo salió mal",
+        "imported": "Importado correctamente"
+    },
+    "marketplace": {
+        "photo_packs": "Paquetes de fotos",
+        "quote_packs": "Paquetes de citas",
+        "preset_settings": "Ajustes preestablecidos",
+        "themes": "Tema",
+        "product": {
+            "overview": "Visión general",
+            "information": "Información",
+            "last_updated": "Última actualización",
+            "version": "Versión",
+            "author": "Autor",
+            "notice": {
+                "title": "Aviso",
+                "description": "Para que se realice el cambio, la página debe actualizarse."
+            },
+            "buttons": {
+                "addtomue": "Añadir a Mue",
+                "remove": "Remover"
+            },
+            "quoteWarning": {
+                "title": "Advertencia",
+                "description": "¡Este paquete de citas solicita a servidores externos que pueden rastrearlo!"
+            }
+        },
+        "offline": {
+            "title": "Parece que estás desconectado",
+            "description": "Por favor conéctate a Internet."
+        },
+        "see_more": "Ver más"
+    },
+    "addons": {
+        "added": "Añadido",
+        "empty": {
+            "title": "Está vacío aquí",
+            "description": "Dirígete a la tienda para agregar algunos.",
+            "button": "Llévame allí"
+        },
+        "sideload": "Cargar complemento localmente"
+    }
+}
