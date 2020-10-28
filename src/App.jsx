@@ -65,10 +65,12 @@ export default class App extends React.PureComponent {
           <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} language={language} />
           <Greeting language={language.greeting} />
           <Clock/>
-          <Quote language={language.toasts}/>
-          <PhotoInformation/>
-          <Maximise/>
-          <Favourite/>
+          <Quote language={language.toasts} />
+          <PhotoInformation language={language} />
+          <div class="bottom-navbar">
+            <Maximise/>
+            <Favourite/>
+          </div>
           <React.Suspense fallback={renderLoader()}>
             <Modal id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <MainModal

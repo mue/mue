@@ -9,25 +9,25 @@ export default class PhotoInformation extends React.PureComponent {
   render() {
     return (
       <div className='photoInformation'>
-        <h1 id='photographer'>Photo By</h1>
+        <h1 id='photographer'>{this.props.language.credit}</h1>
         <Info className='photoInformationHover'/>
         <div className='infoCard'>
           <Info className='infoIcon'/>
-          <h1>Information</h1>
+          <h1>{this.props.language.information}</h1>
           <hr/>
           <Location/>
           <span id='location'></span>
           <Camera/>
-          <span id='camera'>Gaming</span>
+          <span id='camera'></span>
           <Resolution/>
-          <span id='resolution'>1280x720</span>
+          <span id='resolution'></span>
           <Photographer/>
           <span id='photographerCard'></span>
         </div>
         <div id='backgroundCredits' className='tooltip'>
           <span className='tooltiptext' id='location'/>
         </div>
-        <span id='credit' style={{'display': 'none'}}></span>
+        <span id='credit' style={{ 'display': 'none' }}></span>
       </div>
     );
   }
