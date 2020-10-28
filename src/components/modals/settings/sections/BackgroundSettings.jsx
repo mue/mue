@@ -1,6 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import Checkbox from '../Checkbox';
+import Dropdown from '../Dropdown';
 import Section from '../Section';
 
 export default class BackgroundSettings extends React.PureComponent {
@@ -160,13 +161,15 @@ export default class BackgroundSettings extends React.PureComponent {
             <Checkbox name='refresh' text={this.props.language.background.refresh} />
           </ul>
           <ul>
-            <label htmlFor='backgroundapi'>{this.props.language.background.API} </label>
-            <label className='dropdown'>
-              <select className='select-css' name='backgroundapi' id='backgroundAPI' onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
-                <option className='choices' value='mue'>Mue</option>
-                <option className='choices' value='unsplash'>Unsplash</option>
-              </select>
-            </label>
+            <Dropdown
+              label={this.props.language.background.API}
+              name='backgroundapi'
+              id='backgroundAPI'
+              onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}
+            >
+              <option className='choices' value='mue'>Mue</option>
+              <option className='choices' value='unsplash'>Unsplash</option>
+            </Dropdown>
           </ul>
           <ul>
             <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
