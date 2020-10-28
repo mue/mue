@@ -88,6 +88,7 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
     <li> Click <b>Load unpacked</b> (Make sure <b>Developer Mode</b> is on)
     <li> Go to the directory containing the built copy of Mue and click <b>ok</b>
     <li> Enjoy your new tab!
+  </ol>
 </details>
 <details>
   <summary><b>Opera</b> (Click to expand)</summary>
@@ -98,6 +99,7 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
     <li> Click <b>Load unpacked extension...</b> (Make sure <b>Developer Mode</b> is on)
     <li> Go to the directory containing Mue and click <b>ok</b>
     <li> Enjoy your new tab!
+  </ol>
 </details>
 <details>
   <summary><b>Firefox</b> (Click to expand)</summary>
@@ -113,20 +115,23 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 <details>
   <summary><b>Other</b> (Click to expand)</summary>
   <i>Note: To get the full new tab experience, set your browser to open the <code>index.html</code> on startup and tab open!</i>
-    <ol>
-      <li> <code>yarn run build</code> or <code>npm run build</code>
-      <li> Open the <code>index.html</code> in your browser
-      <li> Enjoy your new tab!
-    </ol>
+  <ol>
+    <li> <code>yarn run build</code> or <code>npm run build</code>
+    <li> Open the <code>index.html</code> in your browser
+    <li> Enjoy your new tab!
+  </ol>
 </details>
 
 ## Credits
-### Maintainers
+### Core Team
+#### Maintainers
 [David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) - Founder, Lead development, Photographer <br>
+
 [Alex Sparkes](https://github.com/alexsparkes) - Name, Lead design, Photographer <br>
 
-### Contributors
+#### Developers
 [Wessel Tip](https://github.com/Wessel) - Development <br>
+
 [Isaac (Eartharoid)](https://github.com/eartharoid) - QA, Development, Photographer <br>
 
 ### Translators
@@ -138,9 +143,13 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 
 [Pronin Egor](https://github.com/MrZillaGold) - Russian
 
-### Other
+[Vicente](https://github.com/Vicente015) - Spanish
+
+### Resources
 [Pexels](https://pexels.com) - Stock photos used for offline mode
 
 [Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
 
-And many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/RoeeLupo), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox), [Oded Shapira](https://twitter.com/dondishdev), Jacob Tyrrell and [Nikka Lai](#) for letting us use their wonderful photographs
+Many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/RoeeLupo), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox), [Oded Shapira](https://twitter.com/dondishdev), Jacob Tyrrell and [Nikka Lai](#) for letting us use their wonderful photographs.
+
+And finally, a big thank you to all the [contributors](https://github.com/mue/mue/graphs/contributors)!

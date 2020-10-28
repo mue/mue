@@ -78,7 +78,7 @@ export default class SettingsFunctions {
         if (supportsWebP) localStorage.setItem('supportswebp', 'true');
 
         // Languages
-        const languages = ['nl', 'no', 'fr', 'ru'];
+        const languages = ['nl', 'no', 'fr', 'ru', 'es'];
         const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
         if (languages.includes(browserLanguage)) {
             localStorage.setItem('language', browserLanguage);
