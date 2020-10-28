@@ -1,0 +1,16 @@
+.dropdown {
+  select {
+    background: linear-gradient(180deg, #ffb032 0%, #dd3b67 100%);
+    height: 34px;
+    width: 120px;
+    color: map-get($modal, "text");
+
+    border-image-source: linear-gradient(180deg, #ffb032 0%, #dd3b67 100%);
+    border-image-slice: 1;
+    border-width: 3px 4px;
+  }
+
+  select#language {
+    float: right;
+  }
+}
