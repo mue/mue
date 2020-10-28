@@ -19,14 +19,13 @@
 body {
     background: #2f3640;
     margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: 'Lexend Deca', sans-serif;
     overflow: hidden;
 }
 
 * {
     font-family: 'Lexend Deca', 'Roboto' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     outline: none;
 }
 
@@ -52,6 +51,10 @@ body {
     opacity: 1;
 }
 
+::selection {
+    background-color: #c2c2c2;
+}
+
 #root {
     min-height: 100vh;
     display: grid;
@@ -64,6 +67,14 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+}
+
+#backgroundVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .fade-in {
@@ -88,16 +99,4 @@ body {
 .creditlink {
     text-decoration: none;
     color: white;
-}
-
-::selection {
-    background-color: #c2c2c2;
-}
-
-#backgroundVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
 }

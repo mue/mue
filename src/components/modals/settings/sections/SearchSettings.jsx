@@ -29,7 +29,7 @@ export default class SearchSettings extends React.PureComponent {
       <React.Fragment>
         <Section title={this.props.language.searchbar.title} name='searchBar'>
           <ul>
-            <Dropdown label={this.props.language.searchbar.searchengine}
+            <Dropdown label={this.props.language.searchbar.search_engine}
               name='searchEngine'
               id='searchEngine'
               onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)}

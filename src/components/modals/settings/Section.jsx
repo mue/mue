@@ -40,7 +40,7 @@ export default class Section extends React.PureComponent {
             <h4 className={noDropdown} onClick={() => this.toggleSection()}>{this.props.title}</h4>
             {expandMore}
             {slider}
-            <div style={{display: this.state.display}}>
+            <div style={{ display: this.state.display }}>
               {extraHTML}
             </div>
         </div>

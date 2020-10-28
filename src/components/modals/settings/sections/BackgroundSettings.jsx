@@ -162,7 +162,7 @@ export default class BackgroundSettings extends React.PureComponent {
           </ul>
           <ul>
             <Dropdown
-              label={this.props.language.background.API}
+              label={this.props.language.background.api}
               name='backgroundapi'
               id='backgroundAPI'
               onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}
