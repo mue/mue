@@ -1,10 +1,10 @@
 import React from 'react';
-import SettingsFunctions from '../../../../modules/settingsFunctions';
+import SettingsFunctions from '../../../../modules/helpers/settings';
 import { toast } from 'react-toastify';
 import Section from '../Section';
 import Dropdown from '../Dropdown';
 
-const searchEngines = require('../../../../modules/searchEngines.json');
+const searchEngines = require('../../../../modules/json/search_engines.json');
 
 export default class SearchSettings extends React.PureComponent {
   resetSearch() {
@@ -26,7 +26,6 @@ export default class SearchSettings extends React.PureComponent {
 
   render() {
     return (
-      <React.Fragment>
         <Section title={this.props.language.searchbar.title} name='searchBar'>
           <ul>
             <Dropdown label={this.props.language.searchbar.search_engine}
@@ -45,7 +44,6 @@ export default class SearchSettings extends React.PureComponent {
             <input type='text' id='customSearchEngine'></input>
           </ul>
         </Section>
-      </React.Fragment>
     );
   }
 }

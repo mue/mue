@@ -46,7 +46,7 @@ export default class Background extends React.PureComponent {
   }
 
   doOffline() { // Handles setting the background if the user is offline
-    const offlineImages = require('../../modules/offlineImages.json');
+    const offlineImages = require('../../modules/json/offline_images.json');
     const photographers = Object.keys(offlineImages); // Get all photographers from the keys in offlineImages.json
     const photographer = photographers[Math.floor(Math.random() * photographers.length)]; // Select a random photographer from the keys
     const randomImage = offlineImages[photographer].photo[
@@ -113,7 +113,7 @@ export default class Background extends React.PureComponent {
           this.setBackground(data.file);
           if (localStorage.getItem('backgroundAPI') === 'unsplash') return this.setCredit(data.photographer, 'unsplash', data.photographer_page);
           this.setCredit(data.photographer);
-          document.getElementById('camera').textContent = data.camera;
+          document.getElementById('camera').textContent = data.camera || 'N/A';
           document.getElementById('resolution').textContent = data.resolution || 'N/A';
         }
 

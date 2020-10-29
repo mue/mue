@@ -1,4 +1,4 @@
-const defaultSettings = require('./defaultSettings.json');
+const defaultSettings = require('../json/default_settings.json');
 
 const saveFile = (data, filename = 'file') => {
     if (!data) return console.error('No data');

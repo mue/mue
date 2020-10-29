@@ -3,7 +3,7 @@ import WifiOffIcon from '@material-ui/icons/WifiOff';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { toast } from 'react-toastify';
 import Item from '../marketplace/Item';
-import MarketplaceFunctions from '../../../modules/marketplaceFunctions';
+import MarketplaceFunctions from '../../../modules/helpers/marketplace';
 import * as Constants from '../../../modules/constants';
 import Items from '../marketplace/Items';
 

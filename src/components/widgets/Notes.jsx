@@ -28,8 +28,6 @@ export default class Notes extends React.PureComponent {
     }
 
     render() {
-        const copyNotes = () => navigator.clipboard.writeText(this.state.notes);
-
         return (
             <span id='noteContainer' className='notescontainer'>
                 <div className='topbarnotes'>
@@ -38,7 +36,7 @@ export default class Notes extends React.PureComponent {
                 </div>
                 <TextareaAutosize rowsMax={50} placeholder={this.props.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
                 <button onClick={this.pin} className='pinNote'><Pin/></button>
-                <button onClick={copyNotes} className='saveNote'><CopyIcon/></button>
+                <button onClick={() => navigator.clipboard.writeText(this.state.notes)} className='saveNote'><CopyIcon/></button>
             </span>
         );
     }

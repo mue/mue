@@ -1,5 +1,5 @@
 import React from 'react';
-import SettingsFunctions from '../../../modules/settingsFunctions';
+import SettingsFunctions from '../../../modules/helpers/settings';
 import Checkbox from '../settings/Checkbox';
 import Section from '../settings/Section';
 import { toast } from 'react-toastify';
@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import BackgroundSettings from '../settings/sections/BackgroundSettings';
 import SearchSettings from '../settings/sections/SearchSettings';
 import LanguageSettings from '../settings/sections/LanguageSettings';
+import DateSettings from '../settings/sections/DateSettings';
 
 export default class Settings extends React.PureComponent {
   resetGreeting() {

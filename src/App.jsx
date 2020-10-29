@@ -8,10 +8,11 @@ import Search from './components/widgets/Search';
 import Maximise from './components/widgets/Maximise';
 import Favourite from './components/widgets/Favourite';
 import PhotoInformation from './components/widgets/PhotoInformation';
+import Date from './components/widgets/Date';
 
 import Navbar from './components/Navbar';
 
-import SettingsFunctions from './modules/settingsFunctions';
+import SettingsFunctions from './modules/helpers/settings';
 import { ToastContainer } from 'react-toastify';
 import Modal from 'react-modal';
 import merge from 'lodash.merge';
@@ -65,9 +66,10 @@ export default class App extends React.PureComponent {
           <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} language={language} />
           <Greeting language={language.greeting} />
           <Clock/>
+          <Date/>
           <Quote language={language.toasts} />
           <PhotoInformation language={language} />
-          <div class="bottom-navbar">
+          <div className='bottom-navbar'>
             <Maximise/>
             <Favourite/>
           </div>
