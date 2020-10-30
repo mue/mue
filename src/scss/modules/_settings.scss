@@ -225,20 +225,6 @@ button.remove + input[type=color].colour  {
   margin-left: 7px;
 }
 
-select {
-  background: none;
-  height: 34px;
-  width: 120px;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(180deg, #ffb032 0%, #dd3b67 100%);
-  border-left: 10px solid;
-  color: map-get($modal, "text");
-}
-
-select#language {
-  float: right;
-}
-
 #customBackgroundColour {
   cursor: pointer;
 }

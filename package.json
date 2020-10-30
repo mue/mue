@@ -6,7 +6,7 @@
     "David \"ohlookitsderpy\" Ralph <d.ralph@muetab.com> (https://derpyenterprises.org)",
     "Alex \"TurboMarshmello\" Sparkes <a.sparkes@muetab.com> (https://github.com/alexsparkes)"
   ],
-  "description": "Fast, open and free-to-use new tab page for most modern browsers.",
+  "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "repository": {
     "url": "github:mue/mue"
   },
@@ -18,6 +18,8 @@
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "4.9.1",
     "@muetab/quotes": "^1.0.0",
+    "fontsource-lexend-deca": "^3.0.10",
+    "fontsource-roboto": "^3.0.3",
     "lodash.merge": "4.6.2",
     "react": "16.14.0",
     "react-clock": "^2.4.0",
@@ -28,7 +30,7 @@
     "supports-webp": "2.0.1"
   },
   "devDependencies": {
-    "react-scripts": "3.4.4",
+    "react-scripts": "4.0.0",
     "node-sass": "^4.14.1"
   },
   "scripts": {
