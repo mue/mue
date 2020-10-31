@@ -1,0 +1,17 @@
+//The following CSS is to work around some assumptions made by the react-color-gradient-picker
+* {    
+    box-sizing: inherit; //Required to work around https://github.com/arthay/react-color-gradient-picker/issues/11
+}
+
+div.picker-area > div.preview > div.color-hue-alpha > div.alpha,
+div.color-preview-area > div > div:nth-child(5) {
+    display: none;
+}
+
+.ui-color-picker {
+    margin: 8px -12px;
+}
+
+.input-field .label {
+    color: inherit;
+}

@@ -92,9 +92,3 @@ body {
 ::selection {
     background-color: #c2c2c2;
 }
-
-div.picker-area > div.preview > div.color-hue-alpha > div.alpha,
-div.color-preview-area > div > div:nth-child(5)
-{
-    display: none;
-}

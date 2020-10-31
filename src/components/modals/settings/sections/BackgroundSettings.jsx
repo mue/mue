@@ -4,9 +4,8 @@ import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Section from '../Section';
 import { ColorPicker } from 'react-color-gradient-picker';
-import 'react-color-gradient-picker/dist/index.css';
-import hexToRgb from '../../../../helpers/hexToRgb'
-import rgbToHex from '../../../../helpers/rgbToHex'
+import hexToRgb from '../../../../helpers/hexToRgb';
+import rgbToHex from '../../../../helpers/rgbToHex';
 
 export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": this.props.language.background.disabled, "stop": 0 }], "type": "linear" };
@@ -42,7 +41,7 @@ export default class BackgroundSettings extends React.PureComponent {
     toast(this.props.toastLanguage.reset);
   }
 
-  mapFromGradientSettingsToColorPickerInitalState(gradientSettings) {
+  InitializeColorPickerState(gradientSettings) {
     this.GradientPickerInitalState = {
       points: gradientSettings.gradient.map((g) => {
         const rgb = hexToRgb(g.colour);
@@ -137,7 +136,7 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   onColorPickerChange = (attrs, name) => {
-    if(process.env.NODE_ENV == 'development'){
+    if (process.env.NODE_ENV == 'development'){
       console.log(attrs, name);
     }
     this.setState({
@@ -160,7 +159,7 @@ export default class BackgroundSettings extends React.PureComponent {
       let gradientInputs;
       if (gradientHasMoreThanOneColour) {
         if (this.GradientPickerInitalState === undefined) {
-          this.mapFromGradientSettingsToColorPickerInitalState(this.state.gradientSettings);
+          this.InitializeColorPickerState(this.state.gradientSettings);
         }
         gradientInputs = (<ColorPicker
           onStartChange={color => this.onColorPickerChange(color, 'start')}
