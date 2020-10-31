@@ -3,16 +3,21 @@ import { toast } from 'react-toastify';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Section from '../Section';
+import { ColorPicker } from 'react-color-gradient-picker';
+import hexToRgb from '../../../../helpers/hexToRgb';
+import rgbToHex from '../../../../helpers/rgbToHex';
 
 export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": this.props.language.background.disabled, "stop": 0 }], "type": "linear" };
+  GradientPickerInitalState = undefined;
 
   constructor(...args) {
     super(...args);
     this.state = {
       blur: 0,
       brightness: 100,
-      gradientSettings: this.DefaultGradientSettings
+      gradientSettings: this.DefaultGradientSettings,
+      shown: false
     };
   }
 
@@ -34,6 +39,23 @@ export default class BackgroundSettings extends React.PureComponent {
       default: toast('resetItem requires a key!');
     }
     toast(this.props.toastLanguage.reset);
+  }
+
+  InitializeColorPickerState(gradientSettings) {
+    this.GradientPickerInitalState = {
+      points: gradientSettings.gradient.map((g) => {
+        const rgb = hexToRgb(g.colour);
+        return {
+          left: +g.stop,
+          red: rgb.red,
+          green: rgb.green,
+          blue: rgb.blue,
+          alpha: 1
+        };
+      }),
+      degree: +gradientSettings.angle,
+      type: gradientSettings.type
+    };
   }
 
   componentDidMount() {
@@ -89,30 +111,13 @@ export default class BackgroundSettings extends React.PureComponent {
     });
   }
 
-  pickFirstColour = (event) => {
-    const value = event.target.value;
-    this.setState({ gradientSettings: { "angle": "180", "gradient": [{ "colour": value, "stop": 0 }], "type": "linear" } });
-  }
-
   addColour = () => {
     this.setState((s) => {
       const [lastGradient, ...initGradients] = s.gradientSettings.gradient.reverse();
       const newState = {
         gradientSettings: {
           ...s.gradientSettings,
-          gradient: [...initGradients, lastGradient, { ...lastGradient, stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
-        }
-      };
-      return newState;
-    });
-  }
-
-  removeColour = (index) => {
-    this.setState((s) => {
-      const newState = {
-        gradientSettings: {
-          ...s.gradientSettings,
-          gradient: s.gradientSettings.gradient.filter((g, i) => i !== index)
+          gradient: [...initGradients, lastGradient, { 'colour': localStorage.getItem('darkTheme') === 'true' ? '#000000' : '#ffffff', stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
         }
       };
       return newState;
@@ -130,31 +135,56 @@ export default class BackgroundSettings extends React.PureComponent {
     return this.props.language.background.disabled;
   }
 
+  onColorPickerChange = (attrs, name) => {
+    if (process.env.NODE_ENV == 'development'){
+      console.log(attrs, name);
+    }
+    this.setState({
+      gradientSettings: { 'angle': attrs.degree, 'gradient': attrs.points.map((p) => { return { 'colour': '#' + rgbToHex(p.red, p.green, p.blue), 'stop': p.left } }), 'type': attrs.type }
+    });
+  };
+
+  onSectionToggle = () => {
+    this.setState((state) => {
+      return {
+        shown: !state.shown
+      };
+    })
+  }
+
   render() {
     let colourSettings = null;
     if (typeof this.state.gradientSettings === 'object') {
-      const gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
-        const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
-        return (
-          <div key={i}>
-            {gradientHasMoreThanOneColour ? (<button type='button' className='remove' onClick={() => this.removeColour(i)}>×</button>) : null}
-            <input id={'colour_' + i} type='color' name='colour' className="colour" onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
-            <label htmlFor={'colour_' + i} className="customBackgroundHex">{g.colour}</label>
-            {gradientHasMoreThanOneColour ? (
-                <input type="number" name='stop' className='stop' min={0} max={100} value={g.stop} onChange={(event) => this.onGradientChange(event, i)} />
-              ) : null}
-          </div>);
-      });
+      const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
+      let gradientInputs;
+      if (gradientHasMoreThanOneColour) {
+        if (this.GradientPickerInitalState === undefined) {
+          this.InitializeColorPickerState(this.state.gradientSettings);
+        }
+        gradientInputs = (<ColorPicker
+          onStartChange={color => this.onColorPickerChange(color, 'start')}
+          onChange={color => this.onColorPickerChange(color, 'change')}
+          onEndChange={color => this.onColorPickerChange(color, 'end')}
+          gradient={this.GradientPickerInitalState}
+          isGradient />);
+      } else {
+        gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
+          return (
+            <div key={i}>
+              <input id={'colour_' + i} type='color' name='colour' className="colour" onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
+              <label htmlFor={'colour_' + i} className="customBackgroundHex">{g.colour}</label>
+            </div>);
+        });
+      }
       colourSettings = (
         <div>
           {gradientInputs}
-          {this.state.gradientSettings.gradient[0].colour !== this.props.language.background.disabled ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addcolour}</button>) : null}
+          {this.state.gradientSettings.gradient[0].colour !== this.props.language.background.disabled && !gradientHasMoreThanOneColour ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.addcolour}</button>) : null}
         </div>);
     }
-
     return (
       <React.Fragment>
-        <Section title={this.props.language.background.title} name='background'>
+        <Section title={this.props.language.background.title} name='background' onToggle={this.onSectionToggle}>
           <ul>
             <Checkbox name='view' text={this.props.language.background.view} />
             <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
@@ -190,8 +220,8 @@ export default class BackgroundSettings extends React.PureComponent {
           </ul>
           <ul>
             <p>{this.props.language.background.customcolour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
-             <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
-            {colourSettings}
+            <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
+            {this.state.shown && colourSettings}
           </ul>
         </Section>
       </React.Fragment>
