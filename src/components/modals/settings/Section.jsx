@@ -19,6 +19,10 @@ export default class Section extends React.PureComponent {
       display: display,
       transform: transform
     });
+
+    if (this.props.onToggle) {
+      this.props.onToggle(display);
+    }
   }
 
   render() {

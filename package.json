@@ -24,6 +24,7 @@
     "lodash.merge": "4.6.2",
     "react": "17.0.1",
     "react-clock": "^2.4.0",
+    "react-color-gradient-picker": "^0.1.2",
     "react-dom": "17.0.1",
     "react-modal": "3.11.2",
     "react-toastify": "6.0.9",
@@ -31,7 +32,7 @@
   },
   "devDependencies": {
     "react-scripts": "4.0.0",
-    "node-sass": "^4.14.1"
+    "node-sass": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
