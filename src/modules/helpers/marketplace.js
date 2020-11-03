@@ -41,4 +41,39 @@ export default class MarketplaceFunctions {
               }
           }
     }
+
+    static install(type, input, sideload) {
+        switch (type) {
+            case 'settings':
+                localStorage.removeItem('backup_settings');
+                let oldSettings = [];
+                for (const key of Object.keys(localStorage)) oldSettings.push({ name: key, value: localStorage.getItem(key) });
+                localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
+                input.settings.forEach(element => localStorage.setItem(element.name, element.value));
+                break;
+            case 'photo_packs':
+                localStorage.setItem('photo_packs', JSON.stringify(input.photos));
+                break;
+            case 'theme':
+                localStorage.setItem('theme', input.theme);
+                break;
+            case 'quote_packs':
+                if (input.quote_api) localStorage.setItem('quote_api', JSON.stringify(input.quote_api));
+                localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
+                break;
+            default:
+               break;
+        }
+
+        let installed = JSON.parse(localStorage.getItem('installed'));
+        if (sideload) {
+            installed.push({
+                content: {
+                   updated: 'Unpublished',
+                   data: input
+                }
+           });
+        } else installed.push(input);
+        localStorage.setItem('installed', JSON.stringify(installed));
+    }
 }

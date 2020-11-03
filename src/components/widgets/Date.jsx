@@ -28,7 +28,7 @@ export default class DateWidget extends React.PureComponent {
           day = dateYear;
           year = dateDay;
           break;
-        default:
+        default: // DMY
           break;
       }
 
@@ -49,7 +49,7 @@ export default class DateWidget extends React.PureComponent {
       const lang = localStorage.getItem('language');
 
       const day = date.toLocaleDateString(lang, { weekday: 'long' });
-      const nth = dtf.nth(date.getDate());
+      const nth = (localStorage.getItem('datenth') === 'true') ? dtf.nth(date.getDate()) : date.getDate();
       const month = date.toLocaleDateString(lang, { month: 'long' });
       const year = date.getFullYear();
 

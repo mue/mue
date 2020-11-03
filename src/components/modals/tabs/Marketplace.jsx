@@ -104,42 +104,11 @@ export default class Marketplace extends React.PureComponent {
     }
 
     install() {
-        let installed = JSON.parse(localStorage.getItem('installed'));
         let button;
-
-        const installStuff = () => {
-           installed.push(this.state.current_data);
-           localStorage.setItem('installed', JSON.stringify(installed));
-           toast(this.props.toastLanguage.installed);
-           button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>;
-           this.setState({ button: button });
-        }
-
-        switch (this.state.current_data.type) {
-            case 'settings':
-                localStorage.removeItem('backup_settings');
-                let oldSettings = [];
-                for (const key of Object.keys(localStorage)) oldSettings.push({name: key, value: localStorage.getItem(key)});
-                localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
-                this.state.current_data.content.data.settings.forEach(element => localStorage.setItem(element.name, element.value));
-                installStuff();
-                break;
-            case 'photo_packs':
-                localStorage.setItem('photo_packs', JSON.stringify(this.state.current_data.content.data.photos));
-                installStuff();
-                break;
-            case 'theme':
-                localStorage.setItem('theme', this.state.current_data.content.data.theme);
-                installStuff();
-                break;
-            case 'quote_packs':
-                if (this.state.current_data.content.data.quote_api) localStorage.setItem('quote_api', JSON.stringify(this.state.current_data.content.data.quote_api));
-                localStorage.setItem('quote_packs', JSON.stringify(this.state.current_data.content.data.quotes));
-                installStuff();
-                break;
-            default:
-               break;
-        }
+        MarketplaceFunctions.install(this.state.current_data.type, this.state.current_data.content.data);
+        toast(this.props.toastLanguage.installed);
+        button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.language.product.buttons.remove}</button>;
+        this.setState({ button: button });
     }
 
     uninstall() {
@@ -160,15 +129,15 @@ export default class Marketplace extends React.PureComponent {
     if (this.state.done === false) {
         return (
             <div id='marketplace'>
-            <div className='emptyMessage' style={{'marginTop': '20px', 'transform': 'translateY(80%)'}}>
+              <div className='emptyMessage' style={{ 'marginTop': '20px', 'transform': 'translateY(80%)' }}>
                 <h1>{this.props.updateLanguage.loading}</h1>
+              </div>
             </div>
-          </div>
-        )
+        );
     }
 
     return (
-        <div>
+        <React.Fragment>
             <div id='marketplace'>
                  <div className='featured' style={{backgroundColor: this.state.featured.colour}}>
                     <p>{this.state.featured.title}</p>
@@ -193,12 +162,6 @@ export default class Marketplace extends React.PureComponent {
                    items={this.state.quote_packs.slice(0, 3)}
                    toggleFunction={(input) => this.toggle('item', 'quote_packs', input)}
                    seeMoreFunction={() => this.toggle('seemore', 'quote_packs')} />
-                 {/* <Items
-                   title={this.props.language.themes}
-                   seeMoreTitle={this.props.language.see_more}
-                   items={this.state.themes.slice(0, 3)}
-                   toggleFunction={(input) => this.toggle('item', 'theme', input)}
-                 seeMoreFunction={() => this.toggle('seemore', 'themes')} /> */ }
              </div>
              <Item
                button={this.state.button}
@@ -215,7 +178,7 @@ export default class Marketplace extends React.PureComponent {
                   items={this.state.see_more}
                 />
              </div>
-        </div>
+        </React.Fragment>
       )
     }
 }

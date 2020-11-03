@@ -2,6 +2,7 @@ import React from 'react';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import { toast } from 'react-toastify';
 import Item from '../marketplace/Item';
+import Items from '../marketplace/Items';
 import MarketplaceFunctions from '../../../modules/helpers/marketplace';
 
 export default class Addons extends React.PureComponent {
@@ -28,17 +29,17 @@ export default class Addons extends React.PureComponent {
 
     toggle(type, type2, data) {
         if (type === 'item') {
-            let installed = JSON.parse(localStorage.getItem('installed'));
-            let info = installed.find(i => i.name === data).content;
+            const installed = JSON.parse(localStorage.getItem('installed'));
+            const info = installed.find(i => i.name === data);
             this.setState({
                 current_data: { type: type2, name: data, content: info },
                 item_data: {
-                    name: info.data.name,
-                    author: info.data.author,
-                    description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
-                    updated: info.updated,
-                    version: info.data.version,
-                    icon: info.data.screenshot_url
+                    name: info.name,
+                    author: info.author,
+                    description: MarketplaceFunctions.urlParser(info.description.replace(/\n/g, '<br>')),
+                    updated: 'Not Implemented',
+                    version: info.version,
+                    icon: info.screenshot_url
                 }
             });
 
@@ -54,8 +55,7 @@ export default class Addons extends React.PureComponent {
     }
 
     uninstall() {
-        let type, data = this.state.current_data.type;
-        if (data === undefined) data = this.state.current_data.content.data.type;
+        let type, data = this.state.current_data.content.type;
         switch (data) {
             case 'photos':
                 type = 'photo_packs';
@@ -76,50 +76,14 @@ export default class Addons extends React.PureComponent {
     }
 
     install(input) {
-        let installed = JSON.parse(localStorage.getItem('installed'));
         let button;
-
-        const installStuff = () => {
-           installed.push({
-                content: {
-                   updated: 'Unpublished',
-                   data: input
-                }
-           });
-           localStorage.setItem('installed', JSON.stringify(installed));
-           toast(this.props.toastLanguage.installed);
-           button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.marketplaceLanguage.product.buttons.remove}</button>;
-           this.setState({
-               button: button,
-               installed: JSON.parse(localStorage.getItem('installed'))
-            });
-        }
-
-        switch (input.type) {
-            case 'settings':
-                localStorage.removeItem('backup_settings');
-                let oldSettings = [];
-                for (const key of Object.keys(localStorage)) oldSettings.push({name: key, value: localStorage.getItem(key)});
-                localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
-                input.settings.forEach(element => localStorage.setItem(element.name, element.value));
-                installStuff();
-                break;
-            case 'photos':
-                localStorage.setItem('photo_packs', JSON.stringify(input.photos));
-                installStuff();
-                break;
-            case 'theme':
-                localStorage.setItem('theme', input.theme);
-                installStuff();
-                break;
-            case 'quote_packs':
-                if (input.quote_api) localStorage.setItem('quote_api', JSON.stringify(input.quote_api));
-                localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
-                installStuff();
-                break;
-            default:
-               break;
-        }
+        MarketplaceFunctions.install(input.type, input, true);
+        toast(this.props.toastLanguage.installed);
+        button = <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.marketplaceLanguage.product.buttons.remove}</button>;
+        this.setState({
+            button: button,
+            installed: JSON.parse(localStorage.getItem('installed'))
+        });
     }
 
   componentDidMount() {
@@ -140,18 +104,9 @@ export default class Addons extends React.PureComponent {
   }
 
   render() {
-     let content = <div className='items'>
-           {this.state.installed.map((item) =>
-                <div className='item' onClick={() => this.toggle('item', item.type, item.name)}>
-                <img alt='icon' src={item.content.data.icon_url} />
-                <div className='details'>
-                    <h4>{item.content.data.name}</h4>
-                    <p>{item.content.data.author}</p>
-                </div>
-            </div>)}
-    </div>;
+    let content = <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', 'addon', input)} />
 
-     if (this.state.installed.length === 0) {
+    if (this.state.installed.length === 0) {
          content = <div className='items'>
                <div className='emptyMessage'>
                     <LocalMallIcon />
@@ -160,7 +115,7 @@ export default class Addons extends React.PureComponent {
                     <button className='goToMarket' onClick={this.props.openMarketplace}>{this.props.language.empty.button}</button>
               </div>
            </div>;
-     }
+    }
 
     return (
        <div>

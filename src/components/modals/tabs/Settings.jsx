@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import BackgroundSettings from '../settings/sections/BackgroundSettings';
 import SearchSettings from '../settings/sections/SearchSettings';
 import LanguageSettings from '../settings/sections/LanguageSettings';
-import DateSettings from '../settings/sections/DateSettings';
 
 export default class Settings extends React.PureComponent {
   resetGreeting() {
