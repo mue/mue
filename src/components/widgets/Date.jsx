@@ -63,6 +63,6 @@ export default class DateWidget extends React.PureComponent {
   }
 
   render() {
-    return <span style={{ 'text-transform': 'capitalize', 'font-weight': 'bold'}}>{this.state.date}</span>
+    return <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold'}}>{this.state.date}</span>
   }
 }

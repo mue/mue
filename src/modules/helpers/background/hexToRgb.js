@@ -10,7 +10,6 @@ export default function hexToRgb(value) {
 
     if (valid) {
         if (value[0] === '#') value = value.slice(1, value.length);
-
         if (value.length === 3) value = value.replace(regexp, '$1$1$2$2$3$3');
 
         const red = parseInt(value.substr(0, 2), 16);

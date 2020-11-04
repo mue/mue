@@ -90,7 +90,7 @@
         "quote": "Quote Copied",
         "reset": "Reset successfully",
         "installed": "Successfully installed",
-        "removed": "Successfully removed",
+        "uninstalled": "Successfully removed",
         "error": "Something went wrong",
         "imported": "Successfully imported"
     },
@@ -142,5 +142,13 @@
             "title": "Notes",
             "placeholder": "Type here"
         }
+    },
+    "welcome": {
+        "title": "Welcome to",
+        "information": "Information",
+        "thankyoumessage1": "Thank you for downloading Mue Tab,",
+        "thankyoumessage2": "we hope you enjoy your time with our extension.",
+        "support": "Support",
+        "close": "Close"
     }
 }

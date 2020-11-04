@@ -156,28 +156,30 @@ export default class BackgroundSettings extends React.PureComponent {
       const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
       let gradientInputs;
       if (gradientHasMoreThanOneColour) {
-        if (this.GradientPickerInitalState === undefined) {
-          this.InitializeColorPickerState(this.state.gradientSettings);
-        }
-        gradientInputs = (<ColorPicker
-          onStartChange={color => this.onColorPickerChange(color, 'start')}
-          onChange={color => this.onColorPickerChange(color, 'change')}
-          onEndChange={color => this.onColorPickerChange(color, 'end')}
+        if (this.GradientPickerInitalState === undefined) this.InitializeColorPickerState(this.state.gradientSettings);
+        gradientInputs = (
+        <ColorPicker
+          onStartChange={(color) => this.onColorPickerChange(color, 'start')}
+          onChange={(color) => this.onColorPickerChange(color, 'change')}
+          onEndChange={(color) => this.onColorPickerChange(color, 'end')}
           gradient={this.GradientPickerInitalState}
-          isGradient />);
+          isGradient/>
+        );
       } else {
         gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
           return (
             <div key={i}>
-              <input id={'colour_' + i} type='color' name='colour' className="colour" onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
-              <label htmlFor={'colour_' + i} className="customBackgroundHex">{g.colour}</label>
+              <input id={'colour_' + i} type='color' name='colour' className='colour' onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
+              <label htmlFor={'colour_' + i} className='customBackgroundHex'>{g.colour}</label>
             </div>);
         });
       }
       colourSettings = (
         <div>
           {gradientInputs}
-          {this.state.gradientSettings.gradient[0].colour !== this.props.language.background.disabled && !gradientHasMoreThanOneColour ? (<button type="button" className="add" onClick={this.addColour}>{this.props.language.background.add_colour}</button>) : null}
+          {this.state.gradientSettings.gradient[0].colour !== this.props.language.background.disabled &&
+           !gradientHasMoreThanOneColour ? (<button type='button' className='add' onClick={this.addColour}>{this.props.language.background.add_colour}</button>) : null
+          }
         </div>);
     }
     return (
@@ -193,8 +195,7 @@ export default class BackgroundSettings extends React.PureComponent {
               label={this.props.language.background.api}
               name='backgroundapi'
               id='backgroundAPI'
-              onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}
-            >
+              onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)} >
               <option className='choices' value='mue'>Mue</option>
               <option className='choices' value='unsplash'>Unsplash</option>
             </Dropdown>

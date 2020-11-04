@@ -7,39 +7,31 @@ export default class MarketplaceFunctions {
     }
 
     static uninstall(name, type) {
-        let installed = JSON.parse(localStorage.getItem('installed'));
-
-        const uninstallStuff = () => {
-          for (let i = 0; i < installed.length; i++) {
-              if (installed[i].name === name) {
-                  installed.splice(i, 1);
-                  break;
-              }
-          }
-          localStorage.setItem('installed', JSON.stringify(installed));
-        };
-
         switch (type) {
             case 'settings':
               const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
               localStorage.clear();
               oldSettings.forEach(item => localStorage.setItem(item.name, item.value));
-              uninstallStuff();
               break;
             case 'quote_packs':
-                localStorage.removeItem('quote_packs');
-                localStorage.removeItem('quote_api');
-                uninstallStuff();
-                break;
+              localStorage.removeItem('quote_packs');
+              localStorage.removeItem('quote_api');
+              break;
             default:
-              try {
-                  localStorage.removeItem(type);
-                  uninstallStuff();
-              } catch (e) {
+              try { localStorage.removeItem(type); }
+              catch (e) {
                   toast('Failed to uninstall addon, check the console');
                   console.error(e);
               }
-          }
+        }
+        let installed = JSON.parse(localStorage.getItem('installed'));
+        for (let i = 0; i < installed.length; i++) {
+            if (installed[i].name === name) {
+                installed.splice(i, 1);
+                break;
+            }
+        }
+        localStorage.setItem('installed', JSON.stringify(installed));
     }
 
     static install(type, input, sideload) {
@@ -53,9 +45,6 @@ export default class MarketplaceFunctions {
                 break;
             case 'photo_packs':
                 localStorage.setItem('photo_packs', JSON.stringify(input.photos));
-                break;
-            case 'theme':
-                localStorage.setItem('theme', input.theme);
                 break;
             case 'quote_packs':
                 if (input.quote_api) localStorage.setItem('quote_api', JSON.stringify(input.quote_api));

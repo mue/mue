@@ -20,7 +20,7 @@ import merge from 'lodash.merge';
 // Modals are lazy loaded as the user won't use them every time they open a tab
 const MainModal = React.lazy(() => import('./components/modals/MainModal'));
 const Update = React.lazy(() => import('./components/modals/Update'));
-//const Welcome = React.lazy(() => import('./components/modals/Welcome'));
+const Welcome = React.lazy(() => import('./components/modals/Welcome'));
 const renderLoader = () => <div></div>;
 
 export default class App extends React.PureComponent {
@@ -28,20 +28,13 @@ export default class App extends React.PureComponent {
     super(...args);
     this.state = {
       mainModal: false,
-      updateModal: false
+      updateModal: false,
+      welcomeModal: false
     };
   }
 
   componentDidMount() {
     if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
-
-    const theme = localStorage.getItem('theme'); // Marketplace themes (WIP)
-    if (theme) {
-      const style = document.createElement('link');
-      style.href = theme;
-      style.rel = 'stylesheet';
-      document.head.appendChild(style);
-    }
   }
 
   // Render all the components
@@ -84,9 +77,9 @@ export default class App extends React.PureComponent {
                 language={language.update}
                 modalClose={() => this.setState({ updateModal: false })} />
             </Modal>
-            {/* <Modal onRequestClose={() => this.setState({ welcomeModal: false })} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
+            <Modal onRequestClose={() => this.setState({ welcomeModal: false })} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
               <Welcome modalClose={() => this.setState({ welcomeModal: false })} />
-             </Modal> */ }
+            </Modal>
           </React.Suspense>
         </div>
       </React.Fragment>
