@@ -86,5 +86,9 @@
     {
         "name": "favouriteQuoteEnabled",
         "value": false
+    },
+    {
+        "name": "showWelcome",
+        "value": true
     }
 ]

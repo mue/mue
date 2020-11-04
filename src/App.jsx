@@ -35,6 +35,12 @@ export default class App extends React.PureComponent {
 
   componentDidMount() {
     if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
+    if (localStorage.getItem('showWelcome') === 'true') this.setState({ welcomeModal: true });
+  }
+
+  closeWelcome() {
+    localStorage.setItem('showWelcome', false);
+    this.setState({ welcomeModal: false });
   }
 
   // Render all the components
@@ -77,8 +83,8 @@ export default class App extends React.PureComponent {
                 language={language.update}
                 modalClose={() => this.setState({ updateModal: false })} />
             </Modal>
-            <Modal onRequestClose={() => this.setState({ welcomeModal: false })} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
-              <Welcome modalClose={() => this.setState({ welcomeModal: false })} />
+            <Modal onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
+              <Welcome modalClose={() => this.closeWelcome()} language={language.welcome} />
             </Modal>
           </React.Suspense>
         </div>

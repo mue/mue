@@ -65,7 +65,7 @@ export default class SettingsFunctions {
         window.location.reload();
     }
 
-    static setDefaultSettings() {
+    static setDefaultSettings(reset) {
         localStorage.clear();
         defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 
@@ -84,6 +84,8 @@ export default class SettingsFunctions {
             localStorage.setItem('language', browserLanguage);
             document.documentElement.lang = browserLanguage;
         } else localStorage.setItem('language', 'en');
+
+        if (reset) localStorage.setItem('showWelcome', false);
 
         // Finally we set this to true so it doesn't run the function on every load
         localStorage.setItem('firstRun', true);

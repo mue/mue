@@ -25,11 +25,8 @@ export default class Settings extends React.PureComponent {
     }
 
     document.getElementById('file-input').onchange = (e) => { // import settings
-      const file = e.target.files[0];
-      if (file.type !== 'application/json') return console.error(`expected json, got ${file.type}`);
-
       const reader = new FileReader();
-      reader.readAsText(file, 'UTF-8');
+      reader.readAsText(e.target.files[0], 'UTF-8');
 
       reader.onload = (readerEvent) => {
         const content = JSON.parse(readerEvent.target.result);
@@ -82,7 +79,7 @@ export default class Settings extends React.PureComponent {
           <LanguageSettings language={this.props.language} />
 
           <button className='apply' onClick={() => SettingsFunctions.saveStuff(this.props.language.background.disabled)}>{this.props.language.apply}</button>
-          <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings()}>{this.props.language.reset}</button>
+          <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings('reset')}>{this.props.language.reset}</button>
           <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
           <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>
           <input id='file-input' type='file' name='name' className='hidden' accept='application/json' />

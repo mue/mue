@@ -13,7 +13,7 @@
   "homepage": "https://muetab.com",
   "bugs": "https://github.com/mue/mue/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BBUG%5D",
   "license": "BSD-3-Clause",
-  "version": "4.2.1",
+  "version": "5.0.0",
   "dependencies": {
     "@eartharoid/dtf": "^1.0.8",
     "@material-ui/core": "4.11.0",
