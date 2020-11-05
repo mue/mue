@@ -19,8 +19,7 @@ export default class Notes extends React.PureComponent {
 
     pin() {
         document.getElementById('noteContainer').classList.toggle('visibilityshow');
-        if (localStorage.getItem('notesPinned') === 'true') localStorage.setItem('notesPinned', false);
-        else localStorage.setItem('notesPinned', true);
+        (localStorage.getItem('notesPinned') === 'true') ? localStorage.setItem('notesPinned', false) : localStorage.setItem('notesPinned', true);
     }
 
     componentDidMount() {

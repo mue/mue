@@ -43,9 +43,7 @@ export default class MarketplaceFunctions {
                 localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
                 input.settings.forEach(element => localStorage.setItem(element.name, element.value));
                 break;
-            case 'photo_packs':
-                localStorage.setItem('photo_packs', JSON.stringify(input.photos));
-                break;
+            case 'photo_packs': localStorage.setItem('photo_packs', JSON.stringify(input.photos)); break;
             case 'quote_packs':
                 if (input.quote_api) localStorage.setItem('quote_api', JSON.stringify(input.quote_api));
                 localStorage.setItem('quote_packs', JSON.stringify(input.quotes));

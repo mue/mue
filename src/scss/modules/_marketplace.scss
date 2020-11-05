@@ -5,7 +5,7 @@ button.tablinks {
   background: none;
   border: none;
   outline: none;
-  color: map-get($modal, "text");
+  color: map-get($modal, 'text');
 }
 
 button.tablinks {
@@ -19,17 +19,17 @@ button.tablinks {
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     margin: 0 auto;
     width: 50%;
     padding-top: 10px;
-    border-bottom: 3px solid map-get($modal, "tab-underline");
+    border-bottom: 3px solid map-get($modal, 'tab-underline');
   }
 }
 
 #item a {
-  color: map-get($button-colours, "other");
+  color: map-get($button-colours, 'other');
   cursor: pointer;
 
   &:hover {
@@ -39,12 +39,12 @@ button.tablinks {
 
 
 #active:after {
-  content: "";
+  content: '';
   display: block;
   margin: 0 auto;
   width: 50%;
   padding-top: 10px;
-  border-bottom: 3px solid map-get($modal, "tab-underline-active");
+  border-bottom: 3px solid map-get($modal, 'tab-underline-active');
 }
 
 .dark {
@@ -55,7 +55,7 @@ button.tablinks {
 
   #active:after {
     border-image-slice: 1;
-    border-image-source: map-get($theme-colours, "gradient");
+    border-image-source: map-get($theme-colours, 'gradient');
     border-bottom: 3px solid;
   }
 }
@@ -76,7 +76,7 @@ button.tablinks {
     border-radius: 12px;
     height: 80px;
     width: 270px;
-    background: map-get($marketplace, "item-background");
+    background: map-get($marketplace, 'item-background');
     transition: 0.5s;
     cursor: pointer;
     margin-right: 20px;
@@ -184,20 +184,20 @@ p.description {
 .productInformation {
   margin-bottom: 20px;
   padding: 20px;
-  background: map-get($marketplace, "product-information-backgroud");
+  background: map-get($marketplace, 'product-information-backgroud');
   width: 200px;
   border-radius: 12px;
 
   li {
     margin-left: -4px;
     list-style: none;
-  }
 
-  li.header {
-    text-transform: uppercase;
-    color: #787878;
-    list-style: none;
-    margin-left: -5px;
+    &.header {
+      text-transform: uppercase;
+      color: #787878;
+      list-style: none;
+      margin-left: -5px;
+    }
   }
 }
 
@@ -233,7 +233,7 @@ p.description {
   border-radius: 24px;
   padding: 10px;
   margin: 0;
-  color: map-get($theme-colours, "main");
+  color: map-get($theme-colours, 'main');
   display: none !important;
 }
 
@@ -242,17 +242,16 @@ p.description {
   margin-top: 20px;
   border-radius: 24px;
   padding: 50px;
-  color: map-get($theme-colours, "main");
+  color: map-get($theme-colours, 'main');
 
   button {
     float: left;
     margin-top: -20px;
-    border: 2px solid map-get($theme-colours, "main");
-    color: map-get($theme-colours, "main");
+    border: 2px solid map-get($theme-colours, 'main');
+    color: map-get($theme-colours, 'main');
 
     &:hover {
-      border: 2px solid map-get($theme-colours, "main");
-      background: map-get($theme-colours, "main");
+      background: map-get($theme-colours, 'main');
       color: #2d3436;
     }
   }

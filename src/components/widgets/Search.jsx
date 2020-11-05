@@ -14,7 +14,6 @@ export default class Search extends React.PureComponent {
   }
 
   startSpeechRecognition() {
-    if (localStorage.getItem('voiceSearch') === 'false') return;
     const voiceSearch = new window.webkitSpeechRecognition();
     voiceSearch.start();
     voiceSearch.onresult = (event) => document.getElementById('searchtext').value = event.results[0][0].transcript;
@@ -34,8 +33,7 @@ export default class Search extends React.PureComponent {
       if (info.query) query = info.query;
     }
 
-    const custom = localStorage.getItem('customSearchEngine');
-    if (custom) url = custom;
+    if (setting === 'custom') url = localStorage.getItem('customSearchEngine');
 
     const searchButton = () => {
       const value = document.getElementById('searchtext').value || 'mue fast';

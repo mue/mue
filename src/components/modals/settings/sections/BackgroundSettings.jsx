@@ -7,6 +7,9 @@ import { ColorPicker } from 'react-color-gradient-picker';
 import hexToRgb from '../../../../modules/helpers/background/hexToRgb';
 import rgbToHex from '../../../../modules/helpers/background/rgbToHex';
 
+import 'react-color-gradient-picker/dist/index.css';
+import '../../../../scss/react-color-picker-gradient-picker-custom-styles.scss';
+
 export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": this.props.language.background.disabled, "stop": 0 }], "type": "linear" };
   GradientPickerInitalState = undefined;
@@ -171,7 +174,8 @@ export default class BackgroundSettings extends React.PureComponent {
             <div key={i}>
               <input id={'colour_' + i} type='color' name='colour' className='colour' onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
               <label htmlFor={'colour_' + i} className='customBackgroundHex'>{g.colour}</label>
-            </div>);
+            </div>
+          );
         });
       }
       colourSettings = (
@@ -180,7 +184,8 @@ export default class BackgroundSettings extends React.PureComponent {
           {this.state.gradientSettings.gradient[0].colour !== this.props.language.background.disabled &&
            !gradientHasMoreThanOneColour ? (<button type='button' className='add' onClick={this.addColour}>{this.props.language.background.add_colour}</button>) : null
           }
-        </div>);
+        </div>
+      );
     }
     return (
       <React.Fragment>

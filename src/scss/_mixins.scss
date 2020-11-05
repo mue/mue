@@ -10,6 +10,7 @@
             $animations: #{$animations + ', '};
         }
     }
+
     -webkit-animation: $animations;
     -moz-animation: $animations;
     animation: $animations;
@@ -19,9 +20,11 @@
     @-webkit-keyframes #{$animationName} {
         @content;
     }
+
     @-moz-keyframes #{$animationName} {
         @content;
     }
+
     @keyframes #{$animationName} {
         @content;
     }

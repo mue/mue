@@ -1,5 +1,5 @@
 import React from 'react';
-import SettingsFunctions from '../../../../modules/helpers/settings';
+import SettingsFunctions from '../../../../modules/helpers/Settings';
 import { toast } from 'react-toastify';
 import Section from '../Section';
 import Dropdown from '../Dropdown';
@@ -31,8 +31,7 @@ export default class SearchSettings extends React.PureComponent {
             <Dropdown label={this.props.language.searchbar.search_engine}
               name='searchEngine'
               id='searchEngine'
-              onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)}
-            >
+              onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)} >
               {searchEngines.map((engine) =>
                 <option key={engine.name} className='choices' value={engine.settingsName}>{engine.name}</option>
               )}

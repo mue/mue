@@ -21,7 +21,7 @@ export default class Welcome extends React.PureComponent {
           <br/>
           <button className='close' onClick={this.props.modalClose}>{this.props.language.close}</button>
         </div>
-      </div>
+       </div>
       );
     }
 }

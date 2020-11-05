@@ -9,8 +9,7 @@ export default class LanguageSettings extends React.PureComponent {
         <Dropdown
           name='language'
           id='language'
-          onChange={() => localStorage.setItem('language', document.getElementById('language').value)}
-        >
+          onChange={() => localStorage.setItem('language', document.getElementById('language').value)} >
           <option className='choices' value='en'>English</option>
           <option className='choices' value='es'>Español</option>
           <option className='choices' value='fr'>Français</option>

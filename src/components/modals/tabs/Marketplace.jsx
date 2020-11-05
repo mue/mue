@@ -3,8 +3,8 @@ import WifiOffIcon from '@material-ui/icons/WifiOff';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { toast } from 'react-toastify';
 import Item from '../marketplace/Item';
-import MarketplaceFunctions from '../../../modules/helpers/marketplace';
-import * as Constants from '../../../modules/constants';
+import MarketplaceFunctions from '../../../modules/helpers/Marketplace';
+import * as Constants from '../../../modules/Constants';
 import Items from '../marketplace/Items';
 
 export default class Marketplace extends React.PureComponent {

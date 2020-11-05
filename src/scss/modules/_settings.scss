@@ -27,7 +27,7 @@
 
   &:before {
     position: absolute;
-    content: "";
+    content: '';
     height: 26px;
     width: 26px;
     left: 4px;
@@ -49,13 +49,13 @@ input {
     padding: 0.5rem 1rem;
     box-sizing: border-box;
     border-image-slice: 1;
-    border-image-source: map-get($theme-colours, "gradient");
+    border-image-source: map-get($theme-colours, 'gradient');
     outline: none;
     background: transparent;
   }
 
   &:checked+.slider {
-    background: map-get($theme-colours, "gradient");
+    background: map-get($theme-colours, 'gradient');
 
     &:before {
       -webkit-transform: translateX(26px);
@@ -152,7 +152,7 @@ li {
     width: 25px;
     height: 25px;
     border-radius: 12px;
-    background: map-get($theme-colours, "gradient");
+    background: map-get($theme-colours, 'gradient');
     cursor: pointer;
   }
 
@@ -161,7 +161,7 @@ li {
     height: 25px;
     border-radius: 12px;
     border: 0;
-    background: map-get($theme-colours, "gradient");
+    background: map-get($theme-colours, 'gradient');
     cursor: pointer;
   }
 }
@@ -170,7 +170,7 @@ input[type=color] {
   border-radius: 100%;
   height: 30px;
   width: 30px;
-  box-shadow: map-get($main-parts, "shadow");
+  box-shadow: map-get($main-parts, 'shadow');
   border: none;
   outline: none;
   -webkit-appearance: none;
@@ -191,7 +191,7 @@ input[type=color]::-moz-color-swatch {
   border-radius: 100%;
   height: 30px;
   width: 30px;
-  box-shadow: map-get($main-parts, "shadow");
+  box-shadow: map-get($main-parts, 'shadow');
   border: none;
   outline: none;
   -webkit-appearance: none;

@@ -10,15 +10,16 @@
   font-size: 20px;
   border-radius: 24px;
   background: none;
-  box-shadow: 0 5px 15px rgba(46, 213, 115, .4);
+  box-shadow: 0 5px 15px rgba(128, 161, 144, 0.4);
 
-  &:hover {
+  &:hover, &:active {
     outline: none;
+    background: none;
   }
+}
 
-  &:active {
-    outline: none;
-  }
+.dark %settingsButton {
+  box-shadow: none;
 }
 
 .apply {
@@ -30,7 +31,6 @@
   &:hover {
     border: 2px solid map-get($button-colours, 'confirm');
     color: map-get($button-colours, 'confirm');
-    background: none;
   }
 }
 
@@ -43,7 +43,6 @@
   &:hover {
     border: 2px solid map-get($button-colours, 'reset');
     color: map-get($button-colours, 'reset');
-    background: none;
   }
 }
 
@@ -56,7 +55,6 @@
   &:hover {
     color: map-get($button-colours, 'other');
     border: 2px solid map-get($button-colours, 'other');
-    background: none;
   }
 }
 
@@ -68,27 +66,6 @@
   &:hover {
     color: map-get($button-colours, 'other');
     border: 2px solid map-get($button-colours, 'other');
-    background: none;
-  }
-}
-
-.remove {
-  @extend %settingsButton;
-  border-radius: 50%;
-  background: none;
-  border: 2px solid rgba(0,0,0,0);
-  color: map-get($button-colours, 'reset');
-  text-align: center;
-  vertical-align: sub;
-  height: 60px;
-  width: 60px;
-  padding: 0px;
-  font-size: 30px;
-
-  &:hover {
-    color: map-get($button-colours, 'background');
-    border: 2px solid map-get($button-colours, 'reset');
-    background: none;
   }
 }
 
@@ -102,8 +79,6 @@
 
   &:hover {
     color: map-get($button-colours, 'other');
-    border: 2px solid map-get($button-colours, 'other');
-    background: none;
   }
 }
 
@@ -113,7 +88,7 @@
   margin-left: 20px;
 }
 
-.storebutton {
+%storebutton {
   cursor: pointer;
   font-size: 18px;
   float: right;
@@ -130,32 +105,28 @@
   &:hover {
     background: #2d3436;
     color: map-get($theme-colours, 'main');;
-    border: 2px solid #2d3436;
   }
 }
 
-.dark .storebutton {
+.dark %storebutton {
   border: 2px solid map-get($theme-colours, 'main');
   color: map-get($theme-colours, 'main');
 
   &:hover {
     background: map-get($theme-colours, 'main');
     color: #2d3436;
-    border: 2px solid map-get($theme-colours, 'main');
   }
 }
 
-#item >.removeFromMue {
+.removeFromMue {
+  @extend %storebutton;
   border: 2px solid #ff4757;
   color: #ff4757;
 
   &:hover {
     background: #ff4757;
     color: map-get($theme-colours, 'main');;
-    border: 2px solid #ff4757;
   }
-
-  @extend .storebutton;
 }
 
 #item .addToMue,
@@ -164,28 +135,16 @@
 }
 
 .addToMue {
-  @extend .storebutton;
+  @extend %storebutton;
 }
 
 .goToMarket {
   float: none;
-  @extend .storebutton;
+  @extend %storebutton;
 }
 
 .sideload, .seemore {
   margin-top: 12px;
-}
-
-.seemore {
-  @extend %settingsButton;
-  background-color: #2d3436;
-  border: 2px solid #2d3436;
-
-  &:hover {
-    color: #2d3436;
-    border: 2px solid #2d3436;
-    background: none;
-  }
 }
 
 .stop {
@@ -212,8 +171,6 @@ input[type=number]::-webkit-outer-spin-button {
 
   &:hover {
     color: map-get($button-colours, 'confirm');
-    border: 2px solid map-get($button-colours, 'confirm');
-    background: none;
   }
 
   svg {
@@ -234,15 +191,10 @@ input[type=number]::-webkit-outer-spin-button {
   border: 2px solid map-get($button-colours, 'other');
   color: map-get($theme-colours, 'main');
   transition: 0s;
+  display: inline;
+  margin: 5px;
 
   &:hover {
     color: map-get($button-colours, 'other');
-    border: 2px solid map-get($button-colours, 'other');
-    background: none;
   }
-}
-
-.saveNote {
-  display: inline;
-  margin: 5px;
 }

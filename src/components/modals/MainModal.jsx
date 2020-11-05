@@ -55,8 +55,7 @@ export default class MainModal extends React.PureComponent {
                   settingsActive: ''
               });
               break;
-            default:
-                break;
+            default: break;
       }
   }
 
@@ -73,6 +72,6 @@ export default class MainModal extends React.PureComponent {
         <br/>
         {this.state.tab}
       </div>
-    )
+    );
   }
 }

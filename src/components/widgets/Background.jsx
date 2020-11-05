@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Constants from '../../modules/constants';
+import * as Constants from '../../modules/Constants';
 
 export default class Background extends React.PureComponent {
   gradientStyleBuilder(gradientSettings) {
@@ -80,11 +80,10 @@ export default class Background extends React.PureComponent {
       this.setBackground(randomPhoto.url.default, null, randomPhoto.photographer);
       this.setCredit(randomPhoto.photographer);
       document.getElementById('location').textContent = randomPhoto.location;
-    } else if (customBackgroundColour) {
-      this.setBackground(null, customBackgroundColour, 'false');
-    } else if (customBackground !== '') { // Local
-      this.setBackground(customBackground, null, 'false');
-    } else if (customBackgroundVideo) {
+    }
+    else if (customBackgroundColour) this.setBackground(null, customBackgroundColour, 'false');
+    else if (customBackground !== '') this.setBackground(customBackground, null, 'false'); // Local
+    else if (customBackgroundVideo) {
       document.getElementById('backgroundImage').innerHTML = `
       <video autoplay muted loop id="backgroundVideo">
           <source src="${customBackgroundVideo}"/>

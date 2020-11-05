@@ -12,7 +12,7 @@ import Date from './components/widgets/Date';
 
 import Navbar from './components/Navbar';
 
-import SettingsFunctions from './modules/helpers/settings';
+import SettingsFunctions from './modules/helpers/Settings';
 import { ToastContainer } from 'react-toastify';
 import Modal from 'react-modal';
 import merge from 'lodash.merge';

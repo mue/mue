@@ -3,13 +3,13 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 import { toast } from 'react-toastify';
 import Item from '../marketplace/Item';
 import Items from '../marketplace/Items';
-import MarketplaceFunctions from '../../../modules/helpers/marketplace';
+import MarketplaceFunctions from '../../../modules/helpers/Marketplace';
 
 export default class Addons extends React.PureComponent {
     constructor(...args) {
         super(...args);
         this.state = {
-            installed: [],
+            installed: JSON.parse(localStorage.getItem('installed')),
             current_data: {
                 type: '',
                 name: '',
@@ -26,7 +26,7 @@ export default class Addons extends React.PureComponent {
             button: ''
         }
         this.buttons = {
-            uninstall: <button className='removeFromMue' onClick={() => this.uninstall()}>{this.props.marketplaceLanguage.product.buttons.remove}</button>,
+            uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{this.props.marketplaceLanguage.product.buttons.remove}</button>,
         }
     }
 
@@ -55,38 +55,24 @@ export default class Addons extends React.PureComponent {
         this.setState({ button: this.buttons.uninstall });
     }
 
-    uninstall() {
-        let type, data = this.state.current_data.content.type;
-        switch (data) {
-            case 'photos': type = 'photo_packs'; break;
-            case 'quotes': type = 'quote_packs'; break;
-            default: type = this.state.current_data.type; break;
-        }
-        MarketplaceFunctions.uninstall(this.state.current_data.name, type);
-        toast(this.props.toastLanguage.uninstalled);
-        this.setState({
-            button: '',
-            installed: JSON.parse(localStorage.getItem('installed'))
-        });
+  manage(type, input) {
+    switch (type) {
+        case 'install': MarketplaceFunctions.install(input.type, input, true); break;
+        case 'uninstall': MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.content.type); break;
+        default: break;
     }
-
-    install(input) {
-        MarketplaceFunctions.install(input.type, input, true);
-        toast(this.props.toastLanguage.installed);
-        this.setState({
-            button: this.buttons.uninstall,
-            installed: JSON.parse(localStorage.getItem('installed'))
-        });
-    }
+    toast(this.props.toastLanguage[type + 'ed']);
+    let button = '';
+    if (type === 'install') button = this.buttons.uninstall;
+    this.setState({ button: button, installed: JSON.parse(localStorage.getItem('installed')) });
+  }
 
   componentDidMount() {
     document.getElementById('file-input').onchange = (e) => {
         const reader = new FileReader();
         reader.readAsText(e.target.files[0], 'UTF-8');
-        reader.onload = (readerEvent) => this.install(JSON.parse(readerEvent.target.result));
+        reader.onload = (readerEvent) => this.manage('install', JSON.parse(readerEvent.target.result));
     };
-
-    this.setState({ installed: JSON.parse(localStorage.getItem('installed')) });
   }
 
   render() {
@@ -96,25 +82,25 @@ export default class Addons extends React.PureComponent {
          content = (
            <div className='items'>
             <div className='emptyMessage'>
-                 <LocalMallIcon/>
-                 <h1>{this.props.language.empty.title}</h1>
-                 <p className='description'>{this.props.language.empty.description}</p>
-                 <button className='goToMarket' onClick={this.props.openMarketplace}>{this.props.language.empty.button}</button>
+                <LocalMallIcon/>
+                <h1>{this.props.language.empty.title}</h1>
+                <p className='description'>{this.props.language.empty.description}</p>
+                <button className='goToMarket' onClick={this.props.openMarketplace}>{this.props.language.empty.button}</button>
            </div>
           </div>
         );
     }
 
     return (
-       <div>
-         <div id='marketplace'>
+       <React.Fragment>
+        <div id='marketplace'>
           <input id='file-input' type='file' name='name' className='hidden' accept='application/json' />
           <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.props.language.sideload}</button>
           <h1>{this.props.language.added}</h1>
           {content}
-         </div>
-         <Item button={this.state.button} data={this.state.item_data} function={() => this.toggle()} language={this.props.marketplaceLanguage.product} />
-       </div>
-        );
+        </div>
+        <Item button={this.state.button} data={this.state.item_data} function={() => this.toggle()} language={this.props.marketplaceLanguage.product} />
+       </React.Fragment>
+      );
     }
 }
