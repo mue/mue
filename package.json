@@ -1,10 +1,10 @@
 {
   "name": "mue",
   "private": true,
-  "author": "David \"ohlookitsderpy\" Ralph <d.ralph@muetab.com> (https://derpyenterprises.org)",
+  "author": "David \"ohlookitsderpy\" Ralph <contact@derpyenterprises.org> (https://derpyenterprises.org)",
   "maintainers": [
-    "David \"ohlookitsderpy\" Ralph <d.ralph@muetab.com> (https://derpyenterprises.org)",
-    "Alex \"TurboMarshmello\" Sparkes <a.sparkes@muetab.com> (https://github.com/alexsparkes)"
+    "David \"ohlookitsderpy\" Ralph <contact@derpyenterprises.org> (https://derpyenterprises.org)",
+    "Alex \"TurboMarshmello\" Sparkes <turbomarshmello@gmail.com> (https://github.com/alexsparkes)"
   ],
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "repository": {
