@@ -18,9 +18,10 @@ import Modal from 'react-modal';
 import merge from 'lodash.merge';
 
 // Modals are lazy loaded as the user won't use them every time they open a tab
-const MainModal = React.lazy(() => import('./components/modals/MainModal'));
+const Main = React.lazy(() => import('./components/modals/Main'));
 const Update = React.lazy(() => import('./components/modals/Update'));
 const Welcome = React.lazy(() => import('./components/modals/Welcome'));
+const Feedback = React.lazy(() => import('./components/modals/Feedback'));
 const renderLoader = () => <div></div>;
 
 export default class App extends React.PureComponent {
@@ -29,7 +30,8 @@ export default class App extends React.PureComponent {
     this.state = {
       mainModal: false,
       updateModal: false,
-      welcomeModal: false
+      welcomeModal: false,
+      feedbackModal: false
     };
   }
 
@@ -62,7 +64,7 @@ export default class App extends React.PureComponent {
         <ToastContainer position='bottom-right' autoClose={2500} newestOnTop={true} closeOnClick rtl={false} pauseOnFocusLoss />
         <div id='center'>
           <Search language={language.search} />
-          <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} language={language} />
+          <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} feedbackModalOpen={() => this.setState({ feedbackModal: true })} language={language} />
           <Greeting language={language.greeting} />
           <Clock/>
           <Date/>
@@ -74,7 +76,7 @@ export default class App extends React.PureComponent {
           </div>
           <React.Suspense fallback={renderLoader()}>
             <Modal id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
-              <MainModal
+              <Main
                 language={language}
                 modalClose={() => this.setState({ mainModal: false })} />
             </Modal>
@@ -83,8 +85,11 @@ export default class App extends React.PureComponent {
                 language={language.update}
                 modalClose={() => this.setState({ updateModal: false })} />
             </Modal>
-            <Modal onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName='Overlay' ariaHideApp={false}>
+            <Modal onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Welcome modalClose={() => this.closeWelcome()} language={language.welcome} />
+            </Modal>
+            <Modal onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
+              <Feedback modalClose={() => this.setState({ feedbackModal: false })} />
             </Modal>
           </React.Suspense>
         </div>

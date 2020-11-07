@@ -4,6 +4,8 @@ import Gear from '@material-ui/icons/SettingsRounded';
 import NewReleases from '@material-ui/icons/NewReleasesRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Tooltip from '@material-ui/core/Tooltip';
+import Report from '@material-ui/icons/SmsFailed';
+import * as Constants from '../modules/Constants';
 
 const Notes = React.lazy(() => import('./widgets/Notes')); // the user probably won't use the notes feature every time so we lazy load
 const renderLoader = () => <div></div>;
@@ -18,14 +20,23 @@ export default class Navbar extends React.PureComponent {
     );
     if (localStorage.getItem('refresh') === 'false') refreshHTML = null;
 
+    // toggle feedback button
+    let feedbackHTML = (
+      <Tooltip title='Feedback' placement='top'>
+        <Report className='topicons' onClick={this.props.feedbackModalOpen} />
+      </Tooltip>
+    );
+    if (Constants.BETA_VERSION === false) feedbackHTML = null;
+
     return (
       <div className='navbar-container'>
         <div className='notes'>
-          <NotesIcon className='topicons' />
+          <NotesIcon className='topicons'/>
           <React.Suspense fallback={renderLoader()}>
             <Notes language={this.props.language.navbar.notes} />
           </React.Suspense>
         </div>
+        {feedbackHTML}
         <Tooltip title={this.props.language.navbar.tooltips.update} placement='top'>
           <NewReleases className='refreshicon topicons' onClick={this.props.updateModalOpen} />
         </Tooltip>
