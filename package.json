@@ -2,10 +2,6 @@
   "name": "mue",
   "private": true,
   "author": "David \"ohlookitsderpy\" Ralph <contact@derpyenterprises.org> (https://derpyenterprises.org)",
-  "maintainers": [
-    "David \"ohlookitsderpy\" Ralph <contact@derpyenterprises.org> (https://derpyenterprises.org)",
-    "Alex \"TurboMarshmello\" Sparkes <turbomarshmello@gmail.com> (https://github.com/alexsparkes)"
-  ],
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "repository": {
     "url": "github:mue/mue"
