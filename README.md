@@ -59,7 +59,7 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/mue)
 
 ### Edge (Chromium)
-[Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)
+~~[Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)~~ Currently outdated, please use the Chrome Web Store version
 
 ### Opera/Other
 [GitHub Releases](https://github.com/mue/mue/releases)
@@ -125,14 +125,14 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 ## Credits
 ### Core Team
 #### Maintainers
-[David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) - Founder, Lead development, Photographer <br>
-
-[Alex Sparkes](https://github.com/alexsparkes) - Name, Lead design, Photographer <br>
+[David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) - Lead development, photographer <br>
 
 #### Developers
-[Wessel Tip](https://github.com/Wessel) - Development <br>
+[Alex Sparkes](https://github.com/alexsparkes) - Name, lead design, photographer <br>
 
-[Isaac (Eartharoid)](https://github.com/eartharoid) - QA, Development, Photographer <br>
+[Isaac (Eartharoid)](https://github.com/eartharoid) - QA, development, photographer <br>
+
+[Wessel Tip](https://github.com/Wessel) - Development <br>
 
 ### Translators
 [Wessel Tip](https://github.com/Wessel) - Dutch

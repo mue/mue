@@ -1,11 +1,7 @@
 {
   "name": "mue",
   "private": true,
-  "author": "David \"ohlookitsderpy\" Ralph <d.ralph@muetab.com> (https://derpyenterprises.org)",
-  "maintainers": [
-    "David \"ohlookitsderpy\" Ralph <d.ralph@muetab.com> (https://derpyenterprises.org)",
-    "Alex \"TurboMarshmello\" Sparkes <a.sparkes@muetab.com> (https://github.com/alexsparkes)"
-  ],
+  "author": "David \"ohlookitsderpy\" Ralph <contact@derpyenterprises.org> (https://derpyenterprises.org)",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "repository": {
     "url": "github:mue/mue"
@@ -15,8 +11,7 @@
   "license": "BSD-3-Clause",
   "version": "5.0.0",
   "dependencies": {
-    "@eartharoid/dtf": "^1.0.8",
-    "@material-ui/core": "4.11.0",
+    "@material-ui/core": "4.11.1",
     "@material-ui/icons": "4.9.1",
     "@muetab/quotes": "^1.0.0",
     "fontsource-lexend-deca": "^3.0.10",
@@ -25,13 +20,13 @@
     "react": "17.0.1",
     "react-clock": "^2.4.0",
     "react-color-gradient-picker": "^0.1.2",
-    "react-dom": "17.0.1",
-    "react-modal": "3.11.2",
-    "react-toastify": "6.0.9",
+    "react-dom": "16.14.0",
+    "react-modal": "3.12.1",
+    "react-toastify": "6.1.0",
     "supports-webp": "2.0.1"
   },
   "devDependencies": {
-    "react-scripts": "4.0.0",
+    "react-scripts": "4.0.1",
     "node-sass": "^5.0.0"
   },
   "scripts": {
