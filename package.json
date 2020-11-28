@@ -20,14 +20,14 @@
     "react": "17.0.1",
     "react-clock": "^2.4.0",
     "react-color-gradient-picker": "^0.1.2",
-    "react-dom": "16.14.0",
+    "react-dom": "17.0.1",
     "react-modal": "3.12.1",
     "react-toastify": "6.1.0",
     "supports-webp": "2.0.1"
   },
   "devDependencies": {
     "node-sass": "4.14.1",
-    "react-scripts": "4.0.1"
+    "react-scripts": "^3.4.4"
   },
   "scripts": {
     "start": "react-scripts start",
