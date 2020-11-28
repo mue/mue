@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Constants from '../../modules/Constants';
+import * as Constants from '../../modules/constants';
 
 export default class Background extends React.PureComponent {
   gradientStyleBuilder(gradientSettings) {

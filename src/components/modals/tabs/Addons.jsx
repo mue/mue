@@ -3,7 +3,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 import { toast } from 'react-toastify';
 import Item from '../marketplace/Item';
 import Items from '../marketplace/Items';
-import MarketplaceFunctions from '../../../modules/helpers/Marketplace';
+import MarketplaceFunctions from '../../../modules/helpers/marketplace';
 
 export default class Addons extends React.PureComponent {
     constructor(...args) {

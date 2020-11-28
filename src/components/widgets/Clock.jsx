@@ -16,6 +16,11 @@ export default class Clock extends React.PureComponent {
     this.timer = setTimeout(() => {
       const now = new Date();
 
+      // Percentage
+      if (localStorage.getItem('percentageComplete') === 'true') {
+        return this.setState({ time: (now.getHours() / 24).toFixed(2) + '%'})
+      }
+
       // Analog clock
       if (localStorage.getItem('analog') === 'true') this.setState({ time: now });
       else {

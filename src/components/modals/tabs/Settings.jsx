@@ -1,5 +1,5 @@
 import React from 'react';
-import SettingsFunctions from '../../../modules/helpers/Settings';
+import SettingsFunctions from '../../../modules/helpers/settings';
 import Checkbox from '../settings/Checkbox';
 import Section from '../settings/Section';
 import { toast } from 'react-toastify';

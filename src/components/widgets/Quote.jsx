@@ -2,7 +2,7 @@ import React from 'react';
 import Quotes from '@muetab/quotes';
 import FileCopy from '@material-ui/icons/FilterNone';
 import { toast } from 'react-toastify';
-import * as Constants from '../../modules/Constants';
+import * as Constants from '../../modules/constants';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import StarIcon from '@material-ui/icons/Star';
 import StarIcon2 from '@material-ui/icons/StarBorder';

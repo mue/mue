@@ -6,4 +6,5 @@ build/
 # Files
 package-lock.json
 yarn-error.log
+.eslintcache
 yarn.lock
