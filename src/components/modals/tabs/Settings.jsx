@@ -9,8 +9,12 @@ import SearchSettings from '../settings/sections/SearchSettings';
 import LanguageSettings from '../settings/sections/LanguageSettings';
 
 export default class Settings extends React.PureComponent {
-  resetGreeting() {
-    document.getElementById('greetingName').value = '';
+  resetItem(type) {
+    switch (type) {
+      case 'greeting': document.getElementById('greetingName').value = ''; break;
+      case 'css': document.getElementById('customcss').value = ''; break;
+      default: break;
+    }
     toast(this.props.toastLanguage.reset);
   }
 
@@ -18,6 +22,7 @@ export default class Settings extends React.PureComponent {
     // Settings
     document.getElementById('greetingName').value = localStorage.getItem('greetingName');
     document.getElementById('language').value = localStorage.getItem('language');
+    document.getElementById('customcss').value = localStorage.getItem('customcss');
 
     if (document.getElementById('modal').classList.contains('dark')) { // Dark theme support for dropdowns
       const choices = document.getElementsByClassName('choices');
@@ -45,13 +50,14 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='ampm' text={this.props.language.time.ampm} />
             <Checkbox name='zero' text={this.props.language.time.zero} />
             <Checkbox name='analog' text={this.props.language.time.analog} />
+            <Checkbox name='percentageComplete' text={this.props.language.time.percentageComplete} />
           </Section>
 
           <Section title={this.props.language.greeting.title} name='greeting'>
             <Checkbox name='events' text={this.props.language.greeting.events} />
             <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
             <ul>
-              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetGreeting()}>{this.props.language.reset}</span></p>
+              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greeting')}>{this.props.language.reset}</span></p>
               <input type='text' id='greetingName'></input>
             </ul>
           </Section>
@@ -63,17 +69,17 @@ export default class Settings extends React.PureComponent {
           </Section>
 
           <BackgroundSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
-
           <SearchSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
+          <Section title={this.props.language.offline} name='offlineMode' dropdown={false} />
 
-          <Section title={this.props.language.offline} name='offlineMode' noDropdown={true} />
-          <Section title={this.props.language.dark} name='darkTheme' noDropdown={true} />
-
-          <Section title={this.props.language.experimental.title} name='experimental' slider={false}>
-            <Checkbox name='webp' text={this.props.language.experimental.webp} />
-            <Checkbox name='animations' text={this.props.language.experimental.animations} />
-            <Checkbox name='voiceSearch' text={this.props.language.experimental.voice_search} newFeature={true} />
-            <Checkbox name='brightnessTime' text={this.props.language.experimental.night_mode} newFeature={true} />
+          <Section title='Appearance' name='appearance' slider={false}>
+            <Checkbox name='animations' text={this.props.language.experimental.animations} betaFeature={true} />
+            <Checkbox name='darkTheme' text={this.props.language.dark} />
+            <Checkbox name='brightnessTime' text={this.props.language.experimental.night_mode} betaFeature={true} />
+            <ul>
+              <p>Custom CSS <span className='modalLink' onClick={() => this.resetItem('css')}>{this.props.language.reset}</span> <span className='newFeature'> NEW</span></p>
+              <textarea id='customcss'></textarea>
+            </ul>
           </Section>
 
           <LanguageSettings language={this.props.language} />

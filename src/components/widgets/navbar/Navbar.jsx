@@ -5,9 +5,11 @@ import NewReleases from '@material-ui/icons/NewReleasesRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Tooltip from '@material-ui/core/Tooltip';
 import Report from '@material-ui/icons/SmsFailed';
-import * as Constants from '../modules/constants';
+import * as Constants from '../../../modules/constants';
 
-const Notes = React.lazy(() => import('./widgets/Notes')); // the user probably won't use the notes feature every time so we lazy load
+import './scss/index.scss';
+
+const Notes = React.lazy(() => import('./Notes')); // the user probably won't use the notes feature every time so we lazy load
 const renderLoader = () => <div></div>;
 
 export default class Navbar extends React.PureComponent {

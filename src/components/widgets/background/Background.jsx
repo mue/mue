@@ -1,5 +1,7 @@
 import React from 'react';
-import * as Constants from '../../modules/constants';
+import * as Constants from '../../../modules/constants';
+
+import './scss/index.scss';
 
 export default class Background extends React.PureComponent {
   gradientStyleBuilder(gradientSettings) {
@@ -46,7 +48,7 @@ export default class Background extends React.PureComponent {
   }
 
   doOffline() { // Handles setting the background if the user is offline
-    const offlineImages = require('../../modules/json/offline_images.json');
+    const offlineImages = require('./offline_images.json');
     const photographers = Object.keys(offlineImages); // Get all photographers from the keys in offlineImages.json
     const photographer = photographers[Math.floor(Math.random() * photographers.length)]; // Select a random photographer from the keys
     const randomImage = offlineImages[photographer].photo[
@@ -67,7 +69,6 @@ export default class Background extends React.PureComponent {
     const customBackgroundColour = localStorage.getItem('customBackgroundColour');
     const customBackground = localStorage.getItem('customBackground');
     const favourited = JSON.parse(localStorage.getItem('favourite'));
-    const customBackgroundVideo = localStorage.getItem('customBackgroundVideo');
 
     if (favourited) {
       if (offlineMode === 'true') return this.doOffline();
@@ -82,13 +83,13 @@ export default class Background extends React.PureComponent {
       document.getElementById('location').textContent = randomPhoto.location;
     }
     else if (customBackgroundColour) this.setBackground(null, customBackgroundColour, 'false');
-    else if (customBackground !== '') this.setBackground(customBackground, null, 'false'); // Local
-    else if (customBackgroundVideo) {
-      document.getElementById('backgroundImage').innerHTML = `
-      <video autoplay muted loop id="backgroundVideo">
-          <source src="${customBackgroundVideo}"/>
-      </video>`;
-      document.querySelector('.photoInformation').style.display = 'none'; // Hide the credit
+    else if (customBackground !== '') {
+      if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) {
+        document.getElementById('backgroundImage').innerHTML = `
+        <video autoplay muted loop id='backgroundVideo'>
+            <source src='${customBackground}'/>
+        </video>`;
+      } else this.setBackground(customBackground, null, 'false'); // Local
     } else { // Online
       if (offlineMode === 'true') return this.doOffline();
       try { // First we try and get an image from the API...
@@ -96,9 +97,7 @@ export default class Background extends React.PureComponent {
         let requestURL;
 
         switch (localStorage.getItem('backgroundAPI')) {
-          case 'unsplash':
-            requestURL = `${Constants.UNSPLASH_URL}/getImage`;
-            break;
+          case 'unsplash': requestURL = `${Constants.UNSPLASH_URL}/getImage`; break;
           default: // Defaults to Mue
             if (localStorage.getItem('supportswebp') === 'true' && enabled === 'true') requestURL = `${Constants.API_URL}/getImage?webp=true`;
             else requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;

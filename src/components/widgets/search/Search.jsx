@@ -2,7 +2,9 @@ import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import MicIcon from '@material-ui/icons/Mic';
 
-const searchEngines = require('../../modules/json/search_engines.json');
+import './search.scss';
+
+const searchEngines = require('./search_engines.json');
 
 export default class Search extends React.PureComponent {
   constructor(...args) {

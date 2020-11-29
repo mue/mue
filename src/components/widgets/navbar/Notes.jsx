@@ -1,7 +1,7 @@
 import React from 'react';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import CopyIcon from '@material-ui/icons/FileCopyRounded';
-import Pin from './icons/Pin';
+import Pin from './Pin';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
 
 export default class Notes extends React.PureComponent {

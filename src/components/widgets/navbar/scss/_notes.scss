@@ -1,0 +1,80 @@
+.notes {
+    position: relative;
+    display: inline-block;
+
+    h3 {
+        text-shadow: none;
+        margin: 0;
+    }
+}
+
+.notes .notescontainer {
+    text-align: center;
+    padding: 15px;
+    visibility: hidden;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    border-radius: 12px;
+    position: absolute;
+    z-index: 1;
+    top: 80%;
+    left: 50%;
+    margin-left: -125px;
+
+    input[type=text] {
+        border: none;
+        color: #2d3436;
+    }
+
+    svg,
+    input[type=text] {
+        display: inline-flex;
+    }
+
+    svg {
+        float: left;
+    }
+
+    ::placeholder {
+        color: #636e72;
+        opacity: 1;
+    }
+}
+
+
+.notes:hover .notescontainer {
+    visibility: visible;
+}
+
+textarea {
+    overflow: none;
+    border: none;
+    outline: none;
+    width: 200px;
+    resize: none;
+    height: 100px;
+    margin: 10px;
+}
+
+.noteIcon {
+    display: inline;
+    font-size: 1em;
+    float: none;
+}
+
+.topbarnotes {
+    text-align: center;
+
+    svg {
+        font-size: 48px;
+        float: left !important;
+        padding: 9px;
+    }
+
+    h3 {
+        font-size: 48px;
+        float: right;
+        margin-right: 20px;
+    }
+}

@@ -1,16 +1,16 @@
 import React from 'react';
 
-import Background from './components/widgets/Background';
-import Clock from './components/widgets/Clock';
-import Greeting from './components/widgets/Greeting';
-import Quote from './components/widgets/Quote';
-import Search from './components/widgets/Search';
-import Maximise from './components/widgets/Maximise';
-import Favourite from './components/widgets/Favourite';
-import PhotoInformation from './components/widgets/PhotoInformation';
-import Date from './components/widgets/Date';
+import Background from './components/widgets/background/Background';
+import Clock from './components/widgets/time/Clock';
+import Greeting from './components/widgets/greeting/Greeting';
+import Quote from './components/widgets/quote/Quote';
+import Search from './components/widgets/search/Search';
+import Maximise from './components/widgets/background/Maximise';
+import Favourite from './components/widgets/background/Favourite';
+import PhotoInformation from './components/widgets/background/PhotoInformation';
+import Date from './components/widgets/time/Date';
 
-import Navbar from './components/Navbar';
+import Navbar from './components/widgets/navbar/Navbar';
 
 import SettingsFunctions from './modules/helpers/settings';
 import { ToastContainer } from 'react-toastify';
@@ -38,6 +38,8 @@ export default class App extends React.PureComponent {
   componentDidMount() {
     if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
     if (localStorage.getItem('showWelcome') === 'true') this.setState({ welcomeModal: true });
+    const css = localStorage.getItem('customcss');
+    if (css) document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
   }
 
   closeWelcome() {

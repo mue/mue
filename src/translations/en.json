@@ -23,7 +23,8 @@
             "twentyfourhour": "24 Hour",
             "ampm": "AM/PM (12 hour)",
             "zero": "Zero-padded",
-            "analog": "Analog"
+            "analog": "Analog",
+            "percentageComplete": "Percentage of the Day Complete"
         },
         "greeting": {
             "title": "Greeting",

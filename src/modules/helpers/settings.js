@@ -1,7 +1,6 @@
-const defaultSettings = require('../json/default_settings.json');
+const defaultSettings = require('../default_settings.json');
 
 const saveFile = (data, filename = 'file') => {
-    if (!data) return console.error('No data');
     if (typeof data === 'object') data = JSON.stringify(data, undefined, 4);
 
     const blob = new Blob([data], { type: 'text/json' });
@@ -52,6 +51,7 @@ export default class SettingsFunctions {
         localStorage.setItem('brightness', document.getElementById('brightnessRange').value);
         localStorage.setItem('greetingName', document.getElementById('greetingName').value);
         localStorage.setItem('customBackground', document.getElementById('customBackground').value);
+        localStorage.setItem('customcss', document.getElementById('customcss').value);
         if (document.getElementById('customBackgroundHex').value !== hexDisabled) {
             localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
         }

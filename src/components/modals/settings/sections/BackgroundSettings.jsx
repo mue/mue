@@ -194,6 +194,7 @@ export default class BackgroundSettings extends React.PureComponent {
             <Checkbox name='view' text={this.props.language.background.view} />
             <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
             <Checkbox name='refresh' text={this.props.language.background.refresh} />
+            <Checkbox name='webp' text={this.props.language.experimental.webp} betaFeature={true} />
           </ul>
           <ul>
             <Dropdown

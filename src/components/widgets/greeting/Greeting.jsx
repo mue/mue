@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './greeting.scss';
+
 export default class Greeting extends React.PureComponent {
   constructor(...args) {
     super(...args);

@@ -1,6 +1,8 @@
 import React from 'react';
 import Analog from 'react-clock';
 
+import './clock.scss';
+
 export default class Clock extends React.PureComponent {
   constructor(...args) {
     super(...args);
@@ -17,14 +19,12 @@ export default class Clock extends React.PureComponent {
       const now = new Date();
 
       // Percentage
-      if (localStorage.getItem('percentageComplete') === 'true') {
-        return this.setState({ time: (now.getHours() / 24).toFixed(2) + '%'})
-      }
+      if (localStorage.getItem('percentageComplete') === 'true') return this.setState({ time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'});
 
       // Analog clock
       if (localStorage.getItem('analog') === 'true') this.setState({ time: now });
       else {
-        let sec = '';
+        let time, sec = '';
 
         // Extra 0
         const zero = localStorage.getItem('zero');
@@ -35,7 +35,6 @@ export default class Clock extends React.PureComponent {
         }
 
         if (localStorage.getItem('24hour') === 'true') {
-          let time = '';
           if (zero === 'false') time = `${now.getHours()}:${now.getMinutes()}${sec}`;
           else time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
 
@@ -49,7 +48,6 @@ export default class Clock extends React.PureComponent {
           let ampm = now.getHours() > 11 ? 'PM' : 'AM';
           if (localStorage.getItem('ampm') === 'false') ampm = '';
 
-          let time = '';
           if (zero === 'false') time = `${hours}:${now.getMinutes()}${sec}`;
           else time = `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
 

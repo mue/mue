@@ -12,7 +12,7 @@ export default class Section extends React.PureComponent {
   }
 
   toggleSection() {
-    const display = (this.state.display === 'none') ? 'block': 'none';
+    const display = (this.state.display === 'none') ? 'block' : 'none';
 
     this.setState({
       display: display,
@@ -26,7 +26,11 @@ export default class Section extends React.PureComponent {
     let extraHTML, expandMore, slider, noDropdown;
 
     if (this.props.children) {
-        extraHTML = <li className='extraSettings'>{this.props.children}</li>
+        extraHTML = (
+          <div style={{ display: this.state.display }}>
+            <li className='extraSettings'>{this.props.children}</li>
+          </div>
+        );
         expandMore = (
           <ExpandMore
             style={{ 'transition': 'all 0.5s ease 0s', 'transform': this.state.transform }}
@@ -35,16 +39,14 @@ export default class Section extends React.PureComponent {
         );
     }
     if (this.props.slider !== false) slider = <Slider name={this.props.name} />;
-    if (this.props.noDropdown) noDropdown = 'nodropdown';
+    if (this.props.dropdown === false) noDropdown = 'nodropdown';
 
     return (
         <div className='section'>
             <h4 className={noDropdown} onClick={() => this.toggleSection()}>{this.props.title}</h4>
             {expandMore}
             {slider}
-            <div style={{ display: this.state.display }}>
-              {extraHTML}
-            </div>
+            {extraHTML}
         </div>
     );
   }

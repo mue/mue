@@ -256,3 +256,9 @@ button.remove + input[type=color].colour  {
   color: #ff4757;
   font-size: 12px;
 }
+
+#customcss {
+  font-family: Consolas !important;
+  border: solid 1px black !important;
+  margin-left: 0px;
+}

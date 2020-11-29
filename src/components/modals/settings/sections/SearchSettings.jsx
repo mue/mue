@@ -3,8 +3,9 @@ import SettingsFunctions from '../../../../modules/helpers/settings';
 import { toast } from 'react-toastify';
 import Section from '../Section';
 import Dropdown from '../Dropdown';
+import Checkbox from '../Checkbox';
 
-const searchEngines = require('../../../../modules/json/search_engines.json');
+const searchEngines = require('../../../widgets/search/search_engines.json');
 
 export default class SearchSettings extends React.PureComponent {
   resetSearch() {
@@ -28,6 +29,9 @@ export default class SearchSettings extends React.PureComponent {
     return (
         <Section title={this.props.language.searchbar.title} name='searchBar'>
           <ul>
+            <Checkbox name='voiceSearch' text={this.props.language.experimental.voice_search} />
+          </ul>
+          <ul>
             <Dropdown label={this.props.language.searchbar.search_engine}
               name='searchEngine'
               id='searchEngine'
@@ -39,7 +43,7 @@ export default class SearchSettings extends React.PureComponent {
             </Dropdown>
           </ul>
           <ul id='searchEngineInput' style={{ display: 'none' }}>
-            <p style={{ "marginTop": "0px" }}>{this.props.language.searchbar.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{this.props.language.reset}</span></p>
+            <p style={{ 'marginTop': '0px' }}>{this.props.language.searchbar.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{this.props.language.reset}</span></p>
             <input type='text' id='customSearchEngine'></input>
           </ul>
         </Section>

@@ -1,12 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-@import 'modules/clock';
-@import 'modules/greeting';
-@import 'modules/quote';
-@import 'modules/search';
-@import 'modules/credit';
-@import 'modules/navbar';
 @import 'modules/modal';
 @import 'modules/settings';
 @import 'modules/toast';
@@ -59,44 +53,4 @@ body {
     min-height: 100vh;
     display: grid;
     color: map-get($theme-colours, 'main-text-color');
-}
-
-#backgroundImage {
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-#backgroundVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-}
-
-.fade-in {
-    @include animation('fadein 2s');
-}
-
-@include keyframes(fadein) {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-.backgroundEffects {
-    opacity: 0.7;
-    transition: ease 0.6s;
-}
-
-.creditlink {
-    text-decoration: none;
-    color: white;
 }

@@ -11,15 +11,16 @@ export default class DateWidget extends React.PureComponent {
 
   getDate() {
     const date = new Date();
+    const dateFormat = localStorage.getItem('dateFormat');
 
-    if (localStorage.getItem('dateFormat') === 'short') {
+    if (dateFormat === 'short') {
       const dateDay = date.getDate();
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
 
       let day = dateDay, month = dateMonth, year = dateYear;
 
-      switch (localStorage.getItem('dateFormat')) {
+      switch (dateFormat) {
         case 'MDY':
           day = dateMonth;
           month = dateDay;
@@ -28,8 +29,7 @@ export default class DateWidget extends React.PureComponent {
           day = dateYear;
           year = dateDay;
           break;
-        default: // DMY
-          break;
+        default: break; // DMY
       }
 
       let format;
@@ -58,6 +58,6 @@ export default class DateWidget extends React.PureComponent {
   }
 
   render() {
-    return <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold'}}>{this.state.date}</span>
+    return <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date}</span>
   }
 }
