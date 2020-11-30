@@ -112,8 +112,7 @@ export default class Quote extends React.PureComponent {
         <div className='quotediv'>
           <h1 className='quote'>{`${this.state.quote}`}</h1>
           <h1 className='quoteauthor'>
-            <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a>
-            {copy} {tweet} {this.state.favourited}
+            <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a> {copy} {tweet} {this.state.favourited}
           </h1>
         </div>
     );

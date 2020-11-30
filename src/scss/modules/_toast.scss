@@ -26,3 +26,15 @@
 .Toastify__toast-container {
     width: auto !important;
 }
+
+.dark {
+    .Toastify__toast {
+        background-color: #2f3542 !important;
+    }
+
+    .Toastify__toast-body,
+    .Toastify__progress-bar--default,
+    .Toastify__close-button {
+        color: white !important;
+    }
+}

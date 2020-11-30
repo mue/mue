@@ -40,6 +40,7 @@ export default class App extends React.PureComponent {
     if (localStorage.getItem('showWelcome') === 'true') this.setState({ welcomeModal: true });
     const css = localStorage.getItem('customcss');
     if (css) document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
+    if (localStorage.getItem('darkTheme') === 'true') document.getElementsByClassName('Toastify')[0].classList.add('dark');
   }
 
   closeWelcome() {
