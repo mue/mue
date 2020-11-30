@@ -1,5 +1,5 @@
 {
-    "Tirachard Kumtanom" : {
+    "Tirachard Kumtanom": {
         "photo": [1]
     },
     "Sohail Na": {
@@ -14,7 +14,7 @@
     "Pixabay": {
         "photo": [2, 3, 9, 11, 13, 14, 15]
     },
-    "Unknown" : {
+    "Unknown": {
         "photo": [5, 6, 8, 10, 12, 16, 17, 18, 19]
     }
 }

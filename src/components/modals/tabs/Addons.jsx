@@ -68,6 +68,8 @@ export default class Addons extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (localStorage.getItem('animations') === 'true') document.getElementById('marketplace').classList.add('marketplaceanimation');
+
     document.getElementById('file-input').onchange = (e) => {
         const reader = new FileReader();
         reader.readAsText(e.target.files[0], 'UTF-8');
@@ -76,7 +78,7 @@ export default class Addons extends React.PureComponent {
   }
 
   render() {
-    let content = <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', 'addon', input)} />
+    let content = <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', 'addon', input)} />;
 
     if (this.state.installed.length === 0) {
          content = (

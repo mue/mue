@@ -7,11 +7,13 @@ import Photographer from '@material-ui/icons/Person';
 
 export default class PhotoInformation extends React.PureComponent {
   render() {
+    let classList = 'infoCard';
+    if (this.props.className) classList = this.props.className;
     return (
       <div className='photoInformation'>
         <h1 id='photographer'>{this.props.language.credit}</h1>
         <Info className='photoInformationHover'/>
-        <div className='infoCard'>
+        <div className={classList}>
           <Info className='infoIcon'/>
           <h1>{this.props.language.information}</h1>
           <hr/>
@@ -23,9 +25,6 @@ export default class PhotoInformation extends React.PureComponent {
           <span id='resolution'></span>
           <Photographer/>
           <span id='photographerCard'></span>
-        </div>
-        <div id='backgroundCredits' className='tooltip'>
-          <span className='tooltiptext' id='location'/>
         </div>
         <span id='credit' style={{ 'display': 'none' }}></span>
       </div>

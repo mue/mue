@@ -106,6 +106,7 @@ export default class Marketplace extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (localStorage.getItem('animations') === 'true') document.getElementById('marketplace').classList.add('marketplaceanimation');
     if (navigator.onLine === false) return;
     this.getItems();
   }

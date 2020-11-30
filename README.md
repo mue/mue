@@ -28,7 +28,6 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 	* [Maintainers](#maintainers)
 	* [Contributors](#contributors)
   * [Translators](#translators)
-	* [Other](#other)
 
 ## Screenshot
 ![Screenshot](assets/screenshot.jpg)

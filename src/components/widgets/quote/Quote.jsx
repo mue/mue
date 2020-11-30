@@ -69,7 +69,8 @@ export default class Quote extends React.PureComponent {
       if (data.statusCode === 429) return this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
       this.setState({
         quote: '"' + data.quote + '"',
-        author: data.author
+        author: data.author,
+        authorlink: `https://${this.props.languagecode}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`
       });
     } catch (e) { // ..and if that fails we load one locally
       this.doOffline();
@@ -110,7 +111,10 @@ export default class Quote extends React.PureComponent {
     return (
         <div className='quotediv'>
           <h1 className='quote'>{`${this.state.quote}`}</h1>
-          <h1 className='quoteauthor'>{this.state.author} {copy} {tweet} {this.state.favourited}</h1>
+          <h1 className='quoteauthor'>
+            <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a>
+            {copy} {tweet} {this.state.favourited}
+          </h1>
         </div>
     );
   }

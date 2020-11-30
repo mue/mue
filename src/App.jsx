@@ -50,15 +50,16 @@ export default class App extends React.PureComponent {
   // Render all the components
   render() {
     let modalClassList = 'Modal'; // Modal features
-    //  let tooltipClassList = 'tooltiptext';
+    let tooltipClassList = 'infoCard';
     if ((localStorage.getItem('brightnessTime') && new Date().getHours() > 18) || localStorage.getItem('darkTheme') === 'true') {
-      modalClassList = 'Modal dark';
-     // tooltipClassList = 'tooltiptext dark';
+      modalClassList += ' dark';
+      tooltipClassList += ' dark';
     }
     const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
     const en = require('./translations/en.json'); // User language
-    const language = merge(en, require(`./translations/${localStorage.getItem('language') || 'en'}.json`));
+    const languagecode = localStorage.getItem('language') || 'en';
+    const language = merge(en, require(`./translations/${languagecode}.json`));
 
     return (
       <React.Fragment>
@@ -70,8 +71,8 @@ export default class App extends React.PureComponent {
           <Greeting language={language.greeting} />
           <Clock/>
           <Date/>
-          <Quote language={language.toasts} />
-          <PhotoInformation language={language} />
+          <Quote language={language.toasts} languagecode={languagecode} />
+          <PhotoInformation language={language} className={tooltipClassList} />
           <div className='bottom-navbar'>
             <Maximise/>
             <Favourite/>
