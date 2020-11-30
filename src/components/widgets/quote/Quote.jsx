@@ -65,7 +65,7 @@ export default class Quote extends React.PureComponent {
     if (localStorage.getItem('offlineMode') === 'true') return this.doOffline();
 
     try { // First we try and get a quote from the API...
-      const data = await (await fetch(Constants.API_URL + '/getQuote')).json();
+      const data = await (await fetch(Constants.API_URL + '/getQuote?language=' + localStorage.getItem('quotelanguage'))).json();
       if (data.statusCode === 429) return this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
       this.setState({
         quote: '"' + data.quote + '"',

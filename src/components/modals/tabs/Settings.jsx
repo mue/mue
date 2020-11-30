@@ -1,6 +1,7 @@
 import React from 'react';
 import SettingsFunctions from '../../../modules/helpers/settings';
 import Checkbox from '../settings/Checkbox';
+import Dropdown from '../settings/Dropdown';
 import Section from '../settings/Section';
 import { toast } from 'react-toastify';
 
@@ -66,6 +67,25 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='copyButton' text={this.props.language.quote.copy} />
             <Checkbox name='tweetButton' text={this.props.language.quote.tweet} />
             <Checkbox name='favouriteQuoteEnabled' text={this.props.language.quote.favourite} />
+            <Dropdown label='Language' name='quotelanguage' id='quotelanguage' onChange={() => localStorage.setItem('quotelanguage', document.getElementById('quotelanguage').value)}>
+              <option className='choices' value='English'>English</option>
+              <option className='choices' value='French'>Français</option>
+            </Dropdown>
+          </Section>
+
+          <Section title='Date' name='date'>
+            <Checkbox name='short' text='Short Date' betaFeature={true} />
+            <Dropdown label='Short Format' name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>
+              <option className='choices' value='DMY'>DMY</option>
+              <option className='choices' value='MDY'>MDY</option>
+              <option className='choices' value='YMD'>YMD</option>
+            </Dropdown>
+            <br/><br/>
+            <Dropdown label='Short Separator' name='shortFormat' id='shortformat' onChange={() => localStorage.setItem('shortFormat', document.getElementById('shortformat').value)}>
+              <option className='choices' value='default'>Default</option>
+              <option className='choices' value='dash'>Dash</option>
+              <option className='choices' value='gaps'>Gaps</option>
+            </Dropdown>
           </Section>
 
           <BackgroundSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />

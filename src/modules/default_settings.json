@@ -90,5 +90,13 @@
     {
         "name": "showWelcome",
         "value": true
+    },
+    {
+        "name": "quotelanguage",
+        "value": "English"
+    },
+    {
+        "name": "date",
+        "value": "false"
     }
 ]
