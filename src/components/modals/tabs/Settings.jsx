@@ -8,11 +8,11 @@ import { toast } from 'react-toastify';
 import BackgroundSettings from '../settings/sections/BackgroundSettings';
 import SearchSettings from '../settings/sections/SearchSettings';
 import LanguageSettings from '../settings/sections/LanguageSettings';
+import GreetingSettings from '../settings/sections/GreetingSettings';
 
 export default class Settings extends React.PureComponent {
   resetItem(type) {
     switch (type) {
-      case 'greeting': document.getElementById('greetingName').value = ''; break;
       case 'css': document.getElementById('customcss').value = ''; break;
       default: break;
     }
@@ -54,14 +54,7 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='percentageComplete' text={this.props.language.time.percentageComplete} />
           </Section>
 
-          <Section title={this.props.language.greeting.title} name='greeting'>
-            <Checkbox name='events' text={this.props.language.greeting.events} />
-            <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
-            <ul>
-              <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greeting')}>{this.props.language.reset}</span></p>
-              <input type='text' id='greetingName'></input>
-            </ul>
-          </Section>
+          <GreetingSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
 
           <Section title={this.props.language.quote.title} name='quote'>
             <Checkbox name='copyButton' text={this.props.language.quote.copy} />
