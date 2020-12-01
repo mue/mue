@@ -47,8 +47,6 @@ export default class SettingsFunctions {
     }
 
     static saveStuff(hexDisabled) {
-        localStorage.setItem('blur', document.getElementById('blurRange').value);  // this is better than inline onChange for performance
-        localStorage.setItem('brightness', document.getElementById('brightnessRange').value);
         localStorage.setItem('greetingName', document.getElementById('greetingName').value);
         localStorage.setItem('customBackground', document.getElementById('customBackground').value);
         localStorage.setItem('customcss', document.getElementById('customcss').value);

@@ -23,6 +23,10 @@ export default class GreetingSettings extends React.PureComponent {
       this.setState({ birthday: data });
   }
 
+  componentDidMount() {
+    document.getElementById('greetingName').value = localStorage.getItem('greetingName');
+  }
+
   render() {
     return (
         <Section title={this.props.language.greeting.title} name='greeting'>

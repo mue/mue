@@ -3,6 +3,7 @@ import SettingsFunctions from '../../../modules/helpers/settings';
 import Checkbox from '../settings/Checkbox';
 import Dropdown from '../settings/Dropdown';
 import Section from '../settings/Section';
+import FileUpload from '../settings/FileUpload';
 import { toast } from 'react-toastify';
 
 import BackgroundSettings from '../settings/sections/BackgroundSettings';
@@ -18,7 +19,6 @@ export default class Settings extends React.PureComponent {
 
   componentDidMount() {
     // Settings
-    document.getElementById('greetingName').value = localStorage.getItem('greetingName');
     document.getElementById('language').value = localStorage.getItem('language');
     document.getElementById('customcss').value = localStorage.getItem('customcss');
 
@@ -26,17 +26,12 @@ export default class Settings extends React.PureComponent {
       const choices = document.getElementsByClassName('choices');
       for (let i = 0; i < choices.length; i++) choices[i].style.backgroundColor = '#2f3542';
     }
+  }
 
-    document.getElementById('file-input').onchange = (e) => { // import settings
-      const reader = new FileReader();
-      reader.readAsText(e.target.files[0], 'UTF-8');
-
-      reader.onload = (readerEvent) => {
-        const content = JSON.parse(readerEvent.target.result);
-        for (const key of Object.keys(content)) localStorage.setItem(key, content[key]);
-        toast(this.props.toastLanguage.imported);
-      };
-    };
+  settingsImport(e) {
+    const content = JSON.parse(e.target.result);
+    for (const key of Object.keys(content)) localStorage.setItem(key, content[key]);
+    toast(this.props.toastLanguage.imported);
   }
 
   render() {
@@ -98,7 +93,7 @@ export default class Settings extends React.PureComponent {
           <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings('reset')}>{this.props.language.reset}</button>
           <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
           <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>
-          <input id='file-input' type='file' name='name' className='hidden' accept='application/json' />
+          <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)} />
         </div>
     );
   }

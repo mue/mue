@@ -3,9 +3,11 @@ import { toast } from 'react-toastify';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Section from '../Section';
+import FileUpload from '../FileUpload';
 import { ColorPicker } from 'react-color-gradient-picker';
 import hexToRgb from '../../../../modules/helpers/background/hexToRgb';
 import rgbToHex from '../../../../modules/helpers/background/rgbToHex';
+import { Beforeunload } from 'react-beforeunload';
 
 import 'react-color-gradient-picker/dist/index.css';
 import '../../../../scss/react-color-picker-gradient-picker-custom-styles.scss';
@@ -62,21 +64,6 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.getElementById('bg-input').onchange = (e) => {
-      const reader = new FileReader();
-      const file = e.target.files[0];
-
-      if (file.size > 2000000) return toast('File is over 2MB', '#ff0000', '#ffffff');
-
-      reader.addEventListener('load', (e) => {
-        localStorage.setItem('customBackground', e.target.result);
-        document.getElementById('customBackground').src = e.target.result;
-        document.getElementById('customBackground').value = e.target.result;
-      });
-
-      reader.readAsDataURL(file);
-    };
-
     const hex = localStorage.getItem('customBackgroundColour');
     let gradientSettings = undefined;
 
@@ -150,23 +137,34 @@ export default class BackgroundSettings extends React.PureComponent {
       return {
         shown: !state.shown
       };
-    })
+    });
+  }
+
+  fileUpload(e) {
+    localStorage.setItem('customBackground', e.target.result);
+    document.getElementById('customBackground').value = e.target.result;
+  }
+
+  beforeUnload() {
+    localStorage.setItem('blur', this.state.blur);
+    localStorage.setItem('brightness', this.state.brightness);
   }
 
   render() {
     let colourSettings = null;
     if (typeof this.state.gradientSettings === 'object') {
       const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
+
       let gradientInputs;
       if (gradientHasMoreThanOneColour) {
         if (this.GradientPickerInitalState === undefined) this.InitializeColorPickerState(this.state.gradientSettings);
         gradientInputs = (
-        <ColorPicker
-          onStartChange={(color) => this.onColorPickerChange(color, 'start')}
-          onChange={(color) => this.onColorPickerChange(color, 'change')}
-          onEndChange={(color) => this.onColorPickerChange(color, 'end')}
-          gradient={this.GradientPickerInitalState}
-          isGradient/>
+          <ColorPicker
+            onStartChange={(color) => this.onColorPickerChange(color, 'start')}
+            onChange={(color) => this.onColorPickerChange(color, 'change')}
+            onEndChange={(color) => this.onColorPickerChange(color, 'end')}
+            gradient={this.GradientPickerInitalState}
+            isGradient />
         );
       } else {
         gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
@@ -178,6 +176,7 @@ export default class BackgroundSettings extends React.PureComponent {
           );
         });
       }
+
       colourSettings = (
         <div>
           {gradientInputs}
@@ -187,6 +186,7 @@ export default class BackgroundSettings extends React.PureComponent {
         </div>
       );
     }
+
     return (
       <React.Fragment>
         <Section title={this.props.language.background.title} name='background' onToggle={this.onSectionToggle}>
@@ -202,17 +202,17 @@ export default class BackgroundSettings extends React.PureComponent {
               name='backgroundapi'
               id='backgroundAPI'
               onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)} >
-              <option className='choices' value='mue'>Mue</option>
-              <option className='choices' value='unsplash'>Unsplash</option>
+                <option className='choices' value='mue'>Mue</option>
+                <option className='choices' value='unsplash'>Unsplash</option>
             </Dropdown>
           </ul>
           <ul>
             <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
-            <input className='range' type='range' min='0' max='100' id='blurRange' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
+            <input className='range' type='range' min='0' max='100' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
           </ul>
           <ul>
             <p>{this.props.language.background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
-            <input className='range' type='range' min='0' max='100' id='brightnessRange' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
+            <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
           </ul>
           <ul>
             <p>{this.props.language.background.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
@@ -221,7 +221,7 @@ export default class BackgroundSettings extends React.PureComponent {
           <ul>
             <p>{this.props.language.background.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
             <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.background.upload}</button>
-            <input id='bg-input' type='file' name='name' className='hidden' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' />
+            <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' loadFunction={(e) => this.fileUpload(e)} />
           </ul>
           <ul>
             <p>{this.props.language.background.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
@@ -229,6 +229,7 @@ export default class BackgroundSettings extends React.PureComponent {
             {this.state.shown && colourSettings}
           </ul>
         </Section>
+        <Beforeunload onBeforeunload={() => this.beforeUnload()}/>
       </React.Fragment>
     );
   }

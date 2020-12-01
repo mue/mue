@@ -18,6 +18,7 @@
     "fontsource-lexend-deca": "^3.0.10",
     "fontsource-roboto": "^3.0.3",
     "react": "17.0.1",
+    "react-beforeunload": "^2.4.0",
     "react-clock": "^2.4.0",
     "react-color-gradient-picker": "^0.1.2",
     "react-date-picker": "^8.0.5",
