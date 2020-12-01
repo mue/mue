@@ -52,9 +52,7 @@ export default class Greeting extends React.PureComponent {
     if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth() && birth.getFullYear() !== 1001) message = 'Happy Birthday';
 
     // Set the state to the greeting string
-    this.setState({
-      greeting: `${message}${name}`
-    });
+    this.setState({ greeting: `${message}${name}` });
   }
 
   componentDidMount() {

@@ -38,13 +38,8 @@ button.tablinks {
 }
 
 
-#active:after {
-  content: '';
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-  padding-top: 10px;
-  border-bottom: 3px solid map-get($modal, 'tab-underline-active');
+.active:after {
+  border-bottom: 3px solid map-get($modal, 'tab-underline-active') !important;
 }
 
 .dark {
@@ -53,7 +48,7 @@ button.tablinks {
     color: white;
   }
 
-  #active:after {
+  .active:after {
     border-image-slice: 1;
     border-image-source: map-get($theme-colours, 'gradient');
     border-bottom: 3px solid;

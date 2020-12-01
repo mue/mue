@@ -11,7 +11,7 @@ import 'react-color-gradient-picker/dist/index.css';
 import '../../../../scss/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class BackgroundSettings extends React.PureComponent {
-  DefaultGradientSettings = { "angle": "180", "gradient": [{ "colour": this.props.language.background.disabled, "stop": 0 }], "type": "linear" };
+  DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': this.props.language.background.disabled, 'stop': 0 }], 'type': 'linear' };
   GradientPickerInitalState = undefined;
 
   constructor(...args) {

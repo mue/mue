@@ -13,10 +13,13 @@ export default class MainModal extends React.PureComponent {
         super(...args);
         this.state = {
             tab: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts} />,
-            settingsActive: 'active',
-            addonsActive: '',
-            marketplaceActive: ''
+            currentTab: 'settings'
         };
+        this.tabs = {
+          settings: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts} />,
+          addons: <Addons language={this.props.language.addons} marketplaceLanguage={this.props.language.marketplace} toastLanguage={this.props.language.toasts} openMarketplace={() => this.changeEnabled('marketplace')}/>,
+          marketplace: <Marketplace language={this.props.language.marketplace} toastLanguage={this.props.language.toasts} updateLanguage={this.props.language.update}/>
+        }
     }
 
   componentDidMount() {
@@ -30,33 +33,9 @@ export default class MainModal extends React.PureComponent {
   }
 
   changeEnabled(input) {
-      switch (input) {
-          case 'addons':
-              this.setState({
-                  tab: <Addons language={this.props.language.addons} marketplaceLanguage={this.props.language.marketplace} toastLanguage={this.props.language.toasts} openMarketplace={() => this.changeEnabled('marketplace')}/>,
-                  addonsActive: 'active',
-                  settingsActive: '',
-                  marketplaceActive: ''
-              });
-              break;
-          case 'settings':
-              this.setState({
-                  tab: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts}/>,
-                  settingsActive: 'active',
-                  addonsActive: '',
-                  marketplaceActive: ''
-              });
-              break;
-          case 'marketplace':
-              this.setState({
-                  tab: <Marketplace language={this.props.language.marketplace} toastLanguage={this.props.language.toasts} updateLanguage={this.props.language.update}/>,
-                  marketplaceActive: 'active',
-                  addonsActive: '',
-                  settingsActive: ''
-              });
-              break;
-            default: break;
-      }
+    document.getElementById(this.state.currentTab + 'TabLink').classList.toggle('active');
+    document.getElementById(input + 'TabLink').classList.toggle('active');
+    this.setState({ tab: this.tabs[input], currentTab: input });
   }
 
   render() {
@@ -65,9 +44,9 @@ export default class MainModal extends React.PureComponent {
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <h1>{this.props.language.modals.title}</h1>
         <div className='tab'>
-          <button className='tablinks' id={this.state.marketplaceActive} onClick={() => this.changeEnabled('marketplace')}><MarketplaceIcon/> {this.props.language.modals.marketplace}</button>
-          <button className='tablinks' id={this.state.addonsActive} onClick={() => this.changeEnabled('addons')}><AddonsIcon/> {this.props.language.modals.addons}</button>
-          <button className='tablinks' id={this.state.settingsActive} onClick={() => this.changeEnabled('settings')}><SettingsIcon/> {this.props.language.modals.settings}</button>
+          <button className='tablinks' id='marketplaceTabLink' onClick={() => this.changeEnabled('marketplace')}><MarketplaceIcon/> {this.props.language.modals.marketplace}</button>
+          <button className='tablinks' id='addonsTabLink'onClick={() => this.changeEnabled('addons')}><AddonsIcon/> {this.props.language.modals.addons}</button>
+          <button className='tablinks active' id='settingsTabLink' onClick={() => this.changeEnabled('settings')}><SettingsIcon/> {this.props.language.modals.settings}</button>
         </div>
         <br/>
         {this.state.tab}

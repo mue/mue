@@ -12,11 +12,8 @@ export default class GreetingSettings extends React.PureComponent {
     };
   }
 
-  resetItem(type) {
-    switch (type) {
-      case 'greeting': document.getElementById('greetingName').value = ''; break;
-      default: break;
-    }
+  resetItem() {
+    document.getElementById('greetingName').value = '';
     toast(this.props.toastLanguage.reset);
   }
 
@@ -32,7 +29,7 @@ export default class GreetingSettings extends React.PureComponent {
         <Checkbox name='events' text={this.props.language.greeting.events} />
         <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
         <ul>
-          <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem('greeting')}>{this.props.language.reset}</span></p>
+          <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem()}>{this.props.language.reset}</span></p>
           <input type='text' id='greetingName'></input>
         </ul>
         <ul>

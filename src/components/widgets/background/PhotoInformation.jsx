@@ -9,6 +9,7 @@ export default class PhotoInformation extends React.PureComponent {
   render() {
     let classList = 'infoCard';
     if (this.props.className) classList = this.props.className;
+
     return (
       <div className='photoInformation'>
         <h1 id='photographer'>{this.props.language.credit}</h1>

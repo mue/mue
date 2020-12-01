@@ -14,7 +14,7 @@ export default class Update extends React.PureComponent {
  }
 
  async getUpdate() {
-  const supportText = `<br/><p>${this.props.language.contact_support}: <a target='_blank' class='modalLink' href='https://muetab.com/contact.html'</a>https://muetab.com/contact</p>`;
+  const supportText = `<br/><p>${this.props.language.contact_support}: <a target='_blank' class='modalLink' href='https://muetab.com/contact'>https://muetab.com/contact</a></p>`;
 
   if (localStorage.getItem('offlineMode') === 'true') return this.setState({
     title: this.props.language.offline.title,

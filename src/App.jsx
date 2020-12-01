@@ -50,7 +50,7 @@ export default class App extends React.PureComponent {
 
   // Render all the components
   render() {
-    let modalClassList = 'Modal'; // Modal features
+    let modalClassList = 'Modal';
     let tooltipClassList = 'infoCard';
     if ((localStorage.getItem('brightnessTime') && new Date().getHours() > 18) || localStorage.getItem('darkTheme') === 'true') {
       modalClassList += ' dark';
@@ -58,9 +58,8 @@ export default class App extends React.PureComponent {
     }
     const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
-    const en = require('./translations/en.json'); // User language
     const languagecode = localStorage.getItem('language') || 'en';
-    const language = merge(en, require(`./translations/${languagecode}.json`));
+    const language = merge(require('./translations/en.json'), require(`./translations/${languagecode}.json`));
 
     return (
       <React.Fragment>

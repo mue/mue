@@ -48,8 +48,7 @@ export default class MarketplaceFunctions {
                 if (input.quote_api) localStorage.setItem('quote_api', JSON.stringify(input.quote_api));
                 localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
                 break;
-            default:
-               break;
+            default: break;
         }
 
         let installed = JSON.parse(localStorage.getItem('installed'));
@@ -59,7 +58,7 @@ export default class MarketplaceFunctions {
                    updated: 'Unpublished',
                    data: input
                 }
-           });
+            });
         } else installed.push(input);
         localStorage.setItem('installed', JSON.stringify(installed));
     }

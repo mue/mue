@@ -11,11 +11,8 @@ import LanguageSettings from '../settings/sections/LanguageSettings';
 import GreetingSettings from '../settings/sections/GreetingSettings';
 
 export default class Settings extends React.PureComponent {
-  resetItem(type) {
-    switch (type) {
-      case 'css': document.getElementById('customcss').value = ''; break;
-      default: break;
-    }
+  resetItem() {
+    document.getElementById('customcss').value = '';
     toast(this.props.toastLanguage.reset);
   }
 
@@ -90,7 +87,7 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='darkTheme' text={this.props.language.dark} />
             <Checkbox name='brightnessTime' text={this.props.language.experimental.night_mode} betaFeature={true} />
             <ul>
-              <p>Custom CSS <span className='modalLink' onClick={() => this.resetItem('css')}>{this.props.language.reset}</span> <span className='newFeature'> NEW</span></p>
+              <p>Custom CSS <span className='modalLink' onClick={() => this.resetItem()}>{this.props.language.reset}</span> <span className='newFeature'> NEW</span></p>
               <textarea id='customcss'></textarea>
             </ul>
           </Section>
