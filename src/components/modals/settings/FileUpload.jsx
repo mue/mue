@@ -8,7 +8,7 @@ export default class FileUpload extends React.PureComponent {
         const file = e.target.files[0];
 
         if (this.props.type === 'settings') reader.readAsText(file, 'UTF-8');
-        else { // file upload
+        else { // background upload
           if (file.size > 2000000) return toast('File is over 2MB');
           reader.readAsDataURL(file);
         }

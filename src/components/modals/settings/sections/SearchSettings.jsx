@@ -28,9 +28,7 @@ export default class SearchSettings extends React.PureComponent {
   render() {
     return (
         <Section title={this.props.language.searchbar.title} name='searchBar'>
-          <ul>
-            <Checkbox name='voiceSearch' text={this.props.language.experimental.voice_search} />
-          </ul>
+          <Checkbox name='voiceSearch' text={this.props.language.experimental.voice_search} />
           <ul>
             <Dropdown label={this.props.language.searchbar.search_engine}
               name='searchEngine'

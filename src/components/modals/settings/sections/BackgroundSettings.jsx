@@ -21,6 +21,7 @@ export default class BackgroundSettings extends React.PureComponent {
     this.state = {
       blur: 0,
       brightness: 100,
+      customBackground: localStorage.getItem('customBackground') || '',
       gradientSettings: this.DefaultGradientSettings,
       shown: false
     };
@@ -83,7 +84,6 @@ export default class BackgroundSettings extends React.PureComponent {
       gradientSettings
     });
 
-    document.getElementById('customBackground').value = localStorage.getItem('customBackground');
     document.getElementById('backgroundAPI').value = localStorage.getItem('backgroundAPI');
   }
 
@@ -142,12 +142,13 @@ export default class BackgroundSettings extends React.PureComponent {
 
   fileUpload(e) {
     localStorage.setItem('customBackground', e.target.result);
-    document.getElementById('customBackground').value = e.target.result;
+    this.setState({ customBackground: e.target.result });
   }
 
   beforeUnload() {
     localStorage.setItem('blur', this.state.blur);
     localStorage.setItem('brightness', this.state.brightness);
+    localStorage.setItem('customBackground', this.state.customBackground);
   }
 
   render() {
@@ -216,7 +217,7 @@ export default class BackgroundSettings extends React.PureComponent {
           </ul>
           <ul>
             <p>{this.props.language.background.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-            <input type='text' id='customBackground'></input>
+            <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
           </ul>
           <ul>
             <p>{this.props.language.background.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>

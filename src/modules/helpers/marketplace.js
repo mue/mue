@@ -24,6 +24,7 @@ export default class MarketplaceFunctions {
                   console.error(e);
               }
         }
+
         let installed = JSON.parse(localStorage.getItem('installed'));
         for (let i = 0; i < installed.length; i++) {
             if (installed[i].name === name) {

@@ -100,9 +100,9 @@ export default class Marketplace extends React.PureComponent {
         default: break;
     }
     toast(this.props.toastLanguage[type + 'ed']);
-    let button = this.buttons.install;
-    if (type === 'install') button = this.buttons.uninstall;
-    this.setState({ button: button });
+    this.setState({
+      button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
+    });
   }
 
   componentDidMount() {
@@ -132,7 +132,7 @@ export default class Marketplace extends React.PureComponent {
         );
     }
 
-    if (this.state.done === false) return returnMessage(<h1>{this.props.updateLanguage.loading}</h1>)
+    if (this.state.done === false) return returnMessage(<h1>{this.props.updateLanguage.loading}</h1>);
 
     return (
         <React.Fragment>

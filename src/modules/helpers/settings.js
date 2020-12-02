@@ -47,8 +47,6 @@ export default class SettingsFunctions {
     }
 
     static saveStuff(hexDisabled) {
-        localStorage.setItem('greetingName', document.getElementById('greetingName').value);
-        localStorage.setItem('customBackground', document.getElementById('customBackground').value);
         localStorage.setItem('customcss', document.getElementById('customcss').value);
         if (document.getElementById('customBackgroundHex').value !== hexDisabled) {
             localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);

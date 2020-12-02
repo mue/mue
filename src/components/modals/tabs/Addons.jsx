@@ -3,6 +3,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 import { toast } from 'react-toastify';
 import Item from '../marketplace/Item';
 import Items from '../marketplace/Items';
+import FileUpload from '../settings/FileUpload';
 import MarketplaceFunctions from '../../../modules/helpers/marketplace';
 
 export default class Addons extends React.PureComponent {
@@ -69,12 +70,6 @@ export default class Addons extends React.PureComponent {
 
   componentDidMount() {
     if (localStorage.getItem('animations') === 'true') document.getElementById('marketplace').classList.add('marketplaceanimation');
-
-    document.getElementById('file-input').onchange = (e) => {
-        const reader = new FileReader();
-        reader.readAsText(e.target.files[0], 'UTF-8');
-        reader.onload = (readerEvent) => this.manage('install', JSON.parse(readerEvent.target.result));
-    };
   }
 
   render() {
@@ -96,7 +91,7 @@ export default class Addons extends React.PureComponent {
     return (
        <React.Fragment>
         <div id='marketplace'>
-          <input id='file-input' type='file' name='name' className='hidden' accept='application/json' />
+          <FileUpload id='file-input' accept='application/json' loadFunction={(e) => this.manage('install', JSON.parse(e.target.result))} />
           <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.props.language.sideload}</button>
           <h1>{this.props.language.added}</h1>
           {content}
