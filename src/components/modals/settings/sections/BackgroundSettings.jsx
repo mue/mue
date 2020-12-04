@@ -40,7 +40,7 @@ export default class BackgroundSettings extends React.PureComponent {
         break;
       case 'brightness':
         localStorage.setItem('brightness', 100);
-        this.setState({ blur: 100 });
+        this.setState({ brightness: 100 });
         break;
       default: toast('resetItem requires a key!');
     }
