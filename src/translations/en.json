@@ -30,7 +30,9 @@
             "title": "Greeting",
             "events": "Events",
             "default": "Default Greeting Message",
-            "name": "Name for greeting"
+            "name": "Name for greeting",
+            "birthday_enabled": "Birthday Enabled",
+            "birthday_date": "Birthday Date"
         },
         "quote": {
             "title": "Quote",
@@ -58,8 +60,20 @@
             "search_engine": "Search Engine",
             "custom": "Custom Search URL"
         },
+        "date": {
+            "title": "Date",
+            "short_date": "Short Date",
+            "short_format": "Short Format",
+            "short_separator": {
+                "title": "Short Separator",
+                "default": "Default",
+                "dash": "Dash",
+                "gaps": "Gaps"
+            }
+        },
         "offline": "Offline Mode",
         "dark": "Dark Theme",
+        "custom_css": "Custom CSS",
         "experimental": {
             "title": "Experimental",
             "webp": "Enable WebP",

@@ -12,8 +12,8 @@ export default class MainModal extends React.PureComponent {
     constructor(...args) {
         super(...args);
         this.state = {
-            tab: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts} />,
-            currentTab: 'settings'
+            tab: '',
+            currentTab: ''
         };
         this.tabs = {
           settings: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts} />,
@@ -25,6 +25,7 @@ export default class MainModal extends React.PureComponent {
   componentDidMount() {
     document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
     document.getElementById('center').classList.toggle('backgroundEffects');
+    this.setState({ tab: this.tabs.settings, currentTab: 'settings' });
   }
 
   componentWillUnmount() {

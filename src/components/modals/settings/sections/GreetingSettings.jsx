@@ -34,13 +34,13 @@ export default class GreetingSettings extends React.PureComponent {
       <Section title={this.props.language.greeting.title} name='greeting'>
         <Checkbox name='events' text={this.props.language.greeting.events} />
         <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
-        <Checkbox name='birthdayenabled' text='Birthday Enabled' />
+        <Checkbox name='birthdayenabled' text={this.props.language.greeting.birthday_enabled} />
         <ul>
           <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem()}>{this.props.language.reset}</span></p>
           <input type='text' value={this.state.greetingName} onChange={(e) => this.setState({ greetingName: e.target.value })}></input>
         </ul>
         <ul>
-          <p>Birthday Date</p>
+          <p>{this.props.language.greeting.birthday_date}</p>
           <DatePicker onChange={(data) => this.changeDate(data)} value={this.state.birthday}/>
         </ul>
         <Beforeunload onBeforeunload={() => this.beforeUnload()}/>

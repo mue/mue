@@ -52,24 +52,24 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='copyButton' text={this.props.language.quote.copy} />
             <Checkbox name='tweetButton' text={this.props.language.quote.tweet} />
             <Checkbox name='favouriteQuoteEnabled' text={this.props.language.quote.favourite} />
-            <Dropdown label='Language' name='quotelanguage' id='quotelanguage' onChange={() => localStorage.setItem('quotelanguage', document.getElementById('quotelanguage').value)}>
+            <Dropdown label={this.props.language.language} name='quotelanguage' id='quotelanguage' onChange={() => localStorage.setItem('quotelanguage', document.getElementById('quotelanguage').value)}>
               <option className='choices' value='English'>English</option>
               <option className='choices' value='French'>Français</option>
             </Dropdown>
           </Section>
 
-          <Section title='Date' name='date'>
-            <Checkbox name='short' text='Short Date' betaFeature={true} />
-            <Dropdown label='Short Format' name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>
+          <Section title={this.props.language.date.title} name='date'>
+            <Checkbox name='short' text={this.props.language.date.short_date} betaFeature={true} />
+            <Dropdown label={this.props.language.date.short_format} name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>
               <option className='choices' value='DMY'>DMY</option>
               <option className='choices' value='MDY'>MDY</option>
               <option className='choices' value='YMD'>YMD</option>
             </Dropdown>
             <br/><br/>
-            <Dropdown label='Short Separator' name='shortFormat' id='shortformat' onChange={() => localStorage.setItem('shortFormat', document.getElementById('shortformat').value)}>
-              <option className='choices' value='default'>Default</option>
-              <option className='choices' value='dash'>Dash</option>
-              <option className='choices' value='gaps'>Gaps</option>
+            <Dropdown label={this.props.language.date.short_separator.title} name='shortFormat' id='shortformat' onChange={() => localStorage.setItem('shortFormat', document.getElementById('shortformat').value)}>
+              <option className='choices' value='default'>{this.props.language.date.short_separator.default}</option>
+              <option className='choices' value='dash'>{this.props.language.date.short_separator.dash}</option>
+              <option className='choices' value='gaps'>{this.props.language.date.short_separator.gaps}</option>
             </Dropdown>
           </Section>
 
@@ -82,7 +82,7 @@ export default class Settings extends React.PureComponent {
             <Checkbox name='darkTheme' text={this.props.language.dark} />
             <Checkbox name='brightnessTime' text={this.props.language.experimental.night_mode} betaFeature={true} />
             <ul>
-              <p>Custom CSS <span className='modalLink' onClick={() => this.resetItem()}>{this.props.language.reset}</span> <span className='newFeature'> NEW</span></p>
+              <p>{this.props.language.custom_css} <span className='modalLink' onClick={() => this.resetItem()}>{this.props.language.reset}</span> <span className='newFeature'> NEW</span></p>
               <textarea id='customcss'></textarea>
             </ul>
           </Section>
