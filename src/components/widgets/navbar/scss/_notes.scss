@@ -15,20 +15,8 @@
     text-align: center;
     border-radius: 12px;
     position: absolute;
-    z-index: 1;
     top: 80%;
-    left: 50%;
-    margin-left: -125px;
-
-    input[type=text] {
-        border: none;
-        color: #2d3436;
-    }
-
-    svg,
-    input[type=text] {
-        display: inline-flex;
-    }
+    margin-left: -150px;
 
     svg {
         float: left;
@@ -39,7 +27,6 @@
         opacity: 1;
     }
 }
-
 
 .notes:hover .notescontainer {
     visibility: visible;
