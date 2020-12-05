@@ -75,10 +75,8 @@ export default class App extends React.PureComponent {
           <Quote language={language.toasts} languagecode={languagecode} />
           <Countdown/>
           <PhotoInformation language={language} className={tooltipClassList} />
-          <div className='bottom-navbar'>
-            <Maximise/>
-            <Favourite/>
-          </div>
+          <Maximise/>
+          <Favourite/>
           <React.Suspense fallback={renderLoader()}>
             <Modal id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Main

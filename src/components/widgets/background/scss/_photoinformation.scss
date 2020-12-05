@@ -7,17 +7,8 @@
 
     svg {
         float: left;
-        vertical-align: middle;
         margin-right: 1rem;
         font-size: calc(10px + 2vmin);
-    }
-
-    span {
-        display: none;
-    }
-
-    h1 {
-        position: relative;
     }
 
     svg,
@@ -75,10 +66,10 @@
         outline: none;
         border: none;
     }
-}
 
-.infoCard:hover {
-    display: block !important;
+    &:hover {
+        display: block !important;
+    }
 }
 
 .photoInformationHover {

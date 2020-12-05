@@ -38,7 +38,7 @@ export default class View extends React.PureComponent {
   render() {
     if (localStorage.getItem('view') === 'false' || localStorage.getItem('background') === 'false') return null;
     return <div className='view'>
-        <FullscreenIcon id='viewButton' onClick={() => this.viewStuff()} />
+        <FullscreenIcon onClick={() => this.viewStuff()} />
     </div>
   }
 }

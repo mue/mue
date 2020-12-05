@@ -1,15 +1,10 @@
 %settingsButton {
-  text-align: center;
-  border: none;
   transition: ease 0.33s;
   color: map-get($theme-colours, 'main');
   cursor: pointer;
-  display: inline-block;
-  position: relative;
   padding: 10px 30px;
   font-size: 20px;
   border-radius: 24px;
-  background: none;
   box-shadow: 0 5px 15px rgba(128, 161, 144, 0.4);
 
   &:hover, &:active {
@@ -92,14 +87,9 @@
   cursor: pointer;
   font-size: 18px;
   float: right;
-  vertical-align: middle;
   padding: 5px 30px;
   background: none;
-  outline: none;
-  border: none;
-  border: 2px solid #2d3436;
   border-radius: 24px;
-  font-family: 'Lexend Deca', sans-serif;
   transition: ease 0.33s;
 
   &:hover {

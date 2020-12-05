@@ -20,6 +20,7 @@
         background-color: rgba(0, 0, 0, 0.1);
         -webkit-transition: width 0.5s ease-in-out;
         transition: width 0.5s ease-in-out;
+        color: white;
 
         &:focus {
             width: 400px;
@@ -41,8 +42,4 @@
 
 .micIcon {
     margin-right: 10px;
-}
-
-#searchEngine {
-    width: 130px;
 }

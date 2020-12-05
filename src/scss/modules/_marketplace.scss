@@ -1,33 +1,3 @@
-.tab,
-button.tablinks {
-  margin-top: -10px;
-  font-size: 24px;
-  background: none;
-  border: none;
-  outline: none;
-  color: map-get($modal, 'text');
-}
-
-button.tablinks {
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 12px;
-  padding: 10px 30px 10px 30px;
-
-  &:hover {
-    background: rgba(189, 195, 199, .075);
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    padding-top: 10px;
-    border-bottom: 3px solid map-get($modal, 'tab-underline');
-  }
-}
-
 #item a {
   color: map-get($button-colours, 'other');
   cursor: pointer;
@@ -222,16 +192,6 @@ p.description {
   }
 }
 
-.banner {
-  text-align: center;
-  background: #54a0ff;
-  border-radius: 24px;
-  padding: 10px;
-  margin: 0;
-  color: map-get($theme-colours, 'main');
-  display: none !important;
-}
-
 .featured {
   background: #2d3436;
   margin-top: 20px;
@@ -259,10 +219,6 @@ p.description {
 .dark .featured {
   background: black;
   color: white;
-}
-
-.requires {
-  float: right;
 }
 
 #seemore {

@@ -15,24 +15,12 @@
 .quoteauthor {
     font-size: 0.9em;
     letter-spacing: 0.5px;
-    margin: 0;
-}
-
-.quoteAuthor,
-.copyButton {
-    display: inline;
-    font-size: 0.8em;
-    position: relative !important;
-    display: block;
-    margin: 0 auto;
 }
 
 .copyButton {
     cursor: pointer;
     vertical-align: middle;
-    float: middle;
     margin: 0 auto;
-    text-align: right;
     transition: ease 0.2s !important;
 
     &:hover {
@@ -43,19 +31,6 @@
 i.material-icons,
 h1.quoteauthor {
     display: inline;
-}
-
-button.copyButton {
-    background: transparent;
-    border: none;
-    color: map-get($theme-colours, 'main');
-    padding: 20px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    display: table-cell
 }
 
 .quoteauthorlink {

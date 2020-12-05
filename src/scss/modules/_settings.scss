@@ -37,10 +37,6 @@
     transition: 0.4s;
     border-radius: 50%;
   }
-
-  &.round:before {
-    border-radius: 50%;
-  }
 }
 
 input {
@@ -50,7 +46,6 @@ input {
     box-sizing: border-box;
     border-image-slice: 1;
     border-image-source: map-get($theme-colours, 'gradient');
-    outline: none;
     background: transparent;
   }
 
@@ -59,7 +54,6 @@ input {
 
     &:before {
       -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
       transform: translateX(26px);
     }
   }
@@ -186,7 +180,6 @@ input[type=color] {
   }
 }
 
-// This is duplicated because it didn't work with a comma, need to look into it later
 input[type=color]::-moz-color-swatch {
   border-radius: 100%;
   height: 30px;
@@ -207,26 +200,14 @@ input[type=color]::-moz-color-swatch {
   }
 }
 
-input[type=checkbox] {
-  vertical-align: middle;
-}
-
 .customBackgroundHex {
   font-size: 1.2em;
   padding-left: 7px;
   vertical-align: middle;
 }
 
-input[type=number].stop  {
-  margin-left: 7px;
-}
-
 button.remove + input[type=color].colour  {
   margin-left: 7px;
-}
-
-#customBackgroundColour {
-  cursor: pointer;
 }
 
 // Dark Theme
