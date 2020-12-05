@@ -1,5 +1,4 @@
 import React from 'react';
-import Quotes from '@muetab/quotes';
 import FileCopy from '@material-ui/icons/FilterNone';
 import { toast } from 'react-toastify';
 import * as Constants from '../../../modules/constants';
@@ -8,6 +7,8 @@ import StarIcon from '@material-ui/icons/Star';
 import StarIcon2 from '@material-ui/icons/StarBorder';
 
 import './quote.scss';
+
+const quotes = require('./offline_quotes.json');
 
 export default class Quote extends React.PureComponent {
   constructor(...args) {
@@ -20,7 +21,7 @@ export default class Quote extends React.PureComponent {
   }
 
   doOffline() {
-    const quote = Quotes.random(); // Get a random quote from our local package
+    const quote = quotes[Math.floor(Math.random() * quotes.length)]; // Get a random quote from our local package
     this.setState({
       quote: '"' + quote.quote + '"',
       author: quote.author
@@ -42,14 +43,13 @@ export default class Quote extends React.PureComponent {
   }
 
   async getQuote() {
-    const quotePackAPI = JSON.parse(localStorage.getItem('quote_api'));
+    const quotePackAPI = JSON.parse(localStorage.getItem('quoteAPI'));
     if (quotePackAPI) {
       try {
         const data = await (await fetch(quotePackAPI.url)).json();
-        const author = quotePackAPI.authorOverride || data[quotePackAPI.author];
         return this.setState({
-          quote: '"' + data[quotePackAPI.quote] + '"',
-          author: author
+          quote: '"' + data.quote + '"',
+          author: quotePackAPI.author || data.author
         });
       } catch (e) {
         return this.getQuotePack();

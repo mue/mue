@@ -15,7 +15,7 @@ export default class MarketplaceFunctions {
               break;
             case 'quote_packs':
               localStorage.removeItem('quote_packs');
-              localStorage.removeItem('quote_api');
+              localStorage.removeItem('quoteAPI');
               break;
             default:
               try { localStorage.removeItem(type); }
@@ -46,7 +46,7 @@ export default class MarketplaceFunctions {
                 break;
             case 'photo_packs': localStorage.setItem('photo_packs', JSON.stringify(input.photos)); break;
             case 'quote_packs':
-                if (input.quote_api) localStorage.setItem('quote_api', JSON.stringify(input.quote_api));
+                if (input.quote_api) localStorage.setItem('quoteAPI', JSON.stringify(input.quote_api));
                 localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
                 break;
             default: break;

@@ -15,14 +15,15 @@ export default class SearchSettings extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('searchEngine') === 'custom') {
+    const searchEngine = localStorage.getItem('searchEngine');
+    if (searchEngine === 'custom') {
       const input = document.getElementById('searchEngineInput');
       input.style.display = 'block';
       input.enabled = 'true';
       document.getElementById('customSearchEngine').value = localStorage.getItem('customSearchEngine');
     } else localStorage.removeItem('customSearchEngine');
 
-    document.getElementById('searchEngine').value = localStorage.getItem('searchEngine');
+    document.getElementById('searchEngine').value = searchEngine;
   }
 
   render() {
