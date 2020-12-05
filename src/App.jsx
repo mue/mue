@@ -9,6 +9,7 @@ import Maximise from './components/widgets/background/Maximise';
 import Favourite from './components/widgets/background/Favourite';
 import PhotoInformation from './components/widgets/background/PhotoInformation';
 import Date from './components/widgets/time/Date';
+import Countdown from './components/widgets/countdown/Countdown';
 
 import Navbar from './components/widgets/navbar/Navbar';
 
@@ -72,6 +73,7 @@ export default class App extends React.PureComponent {
           <Clock/>
           <Date/>
           <Quote language={language.toasts} languagecode={languagecode} />
+          <Countdown/>
           <PhotoInformation language={language} className={tooltipClassList} />
           <div className='bottom-navbar'>
             <Maximise/>
