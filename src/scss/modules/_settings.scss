@@ -203,10 +203,6 @@ input[type=color]::-moz-color-swatch {
   vertical-align: middle;
 }
 
-button.remove + input[type=color].colour  {
-  margin-left: 7px;
-}
-
 // Dark Theme
 .dark {
   #blurRange, #brightnessRange {
@@ -239,4 +235,8 @@ button.remove + input[type=color].colour  {
   font-family: Consolas !important;
   border: solid 1px black !important;
   margin-left: 0px;
+}
+
+.MuiCheckbox-colorPrimary.Mui-checked {
+  color: map-get($button-colours, 'reset') !important;
 }

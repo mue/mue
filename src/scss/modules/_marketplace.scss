@@ -7,33 +7,8 @@
   }
 }
 
-
-.active:after {
-  border-bottom: 3px solid map-get($modal, 'tab-underline-active') !important;
-}
-
-.dark {
-  .tab,
-  button.tablinks {
-    color: white;
-  }
-
-  .active:after {
-    border-image-slice: 1;
-    border-image-source: map-get($theme-colours, 'gradient');
-    border-bottom: 3px solid;
-  }
-}
-
-.tab {
-  margin-left: -3px;
-}
-
 .items {
   display: flex;
-  flex-flow: wrap;
-  align-items: left;
-  justify-content: left;
   margin-top: -10px;
 
   .item {
@@ -45,8 +20,6 @@
     transition: 0.5s;
     cursor: pointer;
     margin-right: 20px;
-    margin-bottom: 20px;
-    overflow: none;
 
     img {
       height: 100%;
@@ -79,13 +52,6 @@
 
     p {
       margin-top: 5px;
-    }
-
-    p.desc {
-      margin-top: -14px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     &:hover {
@@ -127,14 +93,11 @@ p.description {
 
   svg {
     font-size: 50px;
-    line-height: 0px;
-    margin: 0;
     margin-bottom: -20px;
   }
 }
 
 .backArrow {
-  position: relative;
   cursor: pointer;
 
   &:hover {
@@ -160,7 +123,6 @@ p.description {
     &.header {
       text-transform: uppercase;
       color: #787878;
-      list-style: none;
       margin-left: -5px;
     }
   }
@@ -193,7 +155,6 @@ p.description {
 }
 
 .featured {
-  background: #2d3436;
   margin-top: 20px;
   border-radius: 24px;
   padding: 50px;
