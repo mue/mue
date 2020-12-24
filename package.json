@@ -15,7 +15,7 @@
     "@material-ui/icons": "4.11.2",
     "@muetab/quotes": "^1.0.0",
     "fontsource-lexend-deca": "^3.0.10",
-    "fontsource-roboto": "^3.0.3",
+    "fontsource-roboto": "^4.0.0",
     "lodash.merge": "4.6.2",
     "react": "16.14.0",
     "react-clock": "^2.4.0",
