@@ -9,7 +9,6 @@ import Maximise from './components/widgets/background/Maximise';
 import Favourite from './components/widgets/background/Favourite';
 import PhotoInformation from './components/widgets/background/PhotoInformation';
 import Date from './components/widgets/time/Date';
-import Countdown from './components/widgets/countdown/Countdown';
 
 import Navbar from './components/widgets/navbar/Navbar';
 
@@ -22,7 +21,7 @@ import merge from 'deepmerge';
 const Main = React.lazy(() => import('./components/modals/Main'));
 const Update = React.lazy(() => import('./components/modals/Update'));
 const Welcome = React.lazy(() => import('./components/modals/Welcome'));
-const Feedback = React.lazy(() => import('./components/modals/Feedback'));
+//const Feedback = React.lazy(() => import('./components/modals/Feedback'));
 const renderLoader = () => <div></div>;
 
 export default class App extends React.PureComponent {
@@ -51,6 +50,7 @@ export default class App extends React.PureComponent {
 
   // Render all the components
   render() {
+    // dark theme support for modals and info card
     let modalClassList = 'Modal';
     let tooltipClassList = 'infoCard';
     if ((localStorage.getItem('brightnessTime') && new Date().getHours() > 18) || localStorage.getItem('darkTheme') === 'true') {
@@ -59,6 +59,7 @@ export default class App extends React.PureComponent {
     }
     const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
+    /// language
     const languagecode = localStorage.getItem('language') || 'en';
     const language = merge(require('./translations/en.json'), require(`./translations/${languagecode}.json`));
 
@@ -73,27 +74,22 @@ export default class App extends React.PureComponent {
           <Clock/>
           <Date/>
           <Quote language={language.toasts} languagecode={languagecode} />
-          <Countdown/>
           <PhotoInformation language={language} className={tooltipClassList} />
           <Maximise/>
           <Favourite/>
           <React.Suspense fallback={renderLoader()}>
             <Modal id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
-              <Main
-                language={language}
-                modalClose={() => this.setState({ mainModal: false })} />
+              <Main language={language} modalClose={() => this.setState({ mainModal: false })} />
             </Modal>
             <Modal onRequestClose={() => this.setState({ updateModal: false })} isOpen={this.state.updateModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
-              <Update
-                language={language.update}
-                modalClose={() => this.setState({ updateModal: false })} />
+              <Update language={language.update} modalClose={() => this.setState({ updateModal: false })} />
             </Modal>
             <Modal onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Welcome modalClose={() => this.closeWelcome()} language={language.welcome} />
             </Modal>
-            <Modal onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
+            {/* <Modal onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Feedback modalClose={() => this.setState({ feedbackModal: false })} />
-            </Modal>
+            </Modal> */}
           </React.Suspense>
         </div>
       </React.Fragment>
