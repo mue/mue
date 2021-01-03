@@ -21,15 +21,14 @@
     "react-beforeunload": "^2.4.0",
     "react-clock": "^3.0.0",
     "react-color-gradient-picker": "^0.1.2",
-    "react-countdown": "^2.3.1",
     "react-date-picker": "^8.0.5",
     "react-dom": "17.0.1",
     "react-modal": "3.12.1",
-    "react-toastify": "6.1.0",
+    "react-toastify": "6.2.0",
     "supports-webp": "2.0.1"
   },
   "devDependencies": {
-    "node-sass": "4.14.1",
+    "node-sass": "^4.14.1",
     "react-scripts": "^4.0.1"
   },
   "scripts": {
