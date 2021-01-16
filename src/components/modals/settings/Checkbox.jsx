@@ -13,13 +13,19 @@ export default class Checkbox extends React.PureComponent {
 
   handleChange(name) {
     SettingsFunctions.setItem(name);
-    this.setState({ checked: (this.state.checked === true) ? false : true });
+    this.setState({ 
+      checked: (this.state.checked === true) ? false : true 
+    });
   }
 
   render() {
     let text = this.props.text;
-    if (this.props.newFeature) text = <span>{this.props.text} <span className='newFeature'> NEW</span></span>;
-    else if (this.props.betaFeature) text = <span>{this.props.text} <span className='newFeature'> BETA</span></span>;
+    
+    if (this.props.newFeature) {
+      text = <span>{this.props.text} <span className='newFeature'> NEW</span></span>;
+    } else if (this.props.betaFeature) {
+      text = <span>{this.props.text} <span className='newFeature'> BETA</span></span>;
+    }
 
     return (
       <React.Fragment>

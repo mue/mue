@@ -18,7 +18,9 @@ const saveFile = (data, filename = 'file') => {
 export default class SettingsFunctions {
     static exportSettings() {
         let settings = {};
-        for (const key of Object.keys(localStorage)) settings[key] = localStorage.getItem(key);
+        for (const key of Object.keys(localStorage)) {
+            settings[key] = localStorage.getItem(key);
+        }
         saveFile(settings, 'mue-settings.json');
     }
 
@@ -27,8 +29,13 @@ export default class SettingsFunctions {
         let val = true;
 
         if (old !== null && !value) {
-            if (old === 'true') val = false;
-            if (old === 'false') val = true;
+            if (old === 'true') {
+                val = false;
+            }
+
+            if (old === 'false') {
+                val = true;
+            }
         }
 
         localStorage.setItem(key, val);
@@ -69,8 +76,11 @@ export default class SettingsFunctions {
         defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 
         // Set theme depending on user preferred
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.setItem('darkTheme', true);
-        else localStorage.setItem('darkTheme', false);
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            localStorage.setItem('darkTheme', true);
+        } else {
+            localStorage.setItem('darkTheme', false);
+        }
 
         // Languages
         const languages = ['nl', 'no', 'fr', 'ru', 'es'];
@@ -79,9 +89,13 @@ export default class SettingsFunctions {
         if (languages.includes(browserLanguage)) {
             localStorage.setItem('language', browserLanguage);
             document.documentElement.lang = browserLanguage;
-        } else localStorage.setItem('language', 'en');
+        } else {
+            localStorage.setItem('language', 'en');
+        }
 
-        if (reset) localStorage.setItem('showWelcome', false);
+        if (reset) {
+            localStorage.setItem('showWelcome', false);
+        }
 
         // Finally we set this to true so it doesn't run the function on every load
         localStorage.setItem('firstRun', true);

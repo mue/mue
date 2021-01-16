@@ -27,16 +27,23 @@ export default class View extends React.PureComponent {
       });
   
       if (this.state.hidden === false) {
-          this.setState({ hidden: true });
+          this.setState({ 
+              hidden: true 
+          });
           this.setAttribute(0, 100);
       } else {
-          this.setState({ hidden: false });
+          this.setState({ 
+              hidden: false 
+          });
           this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'));
       }
   }
 
     render() {
-      if (localStorage.getItem('background') === 'false') return null;
+      if (localStorage.getItem('background') === 'false') {
+        return null;
+      }
+      
       return <div className='view'>
           <FullscreenIcon onClick={() => this.viewStuff()} />
       </div>

@@ -10,8 +10,10 @@ export default function setRGBA(red, green, blue, alpha) {
             blue: blue | 0,
         };
 
-        if (isValidRGBValue(alpha) === true) color.alpha = alpha | 0;
-        // RGBToHSL(color.r, color.g, color.b);
+        if (isValidRGBValue(alpha) === true) {
+            color.alpha = alpha | 0;
+        }
+        
         return color;
     }
 }

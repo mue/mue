@@ -18,8 +18,9 @@ export default class MarketplaceFunctions {
               localStorage.removeItem('quoteAPI');
               break;
             default:
-              try { localStorage.removeItem(type); }
-              catch (e) {
+              try { 
+                  localStorage.removeItem(type); 
+              } catch (e) {
                   toast('Failed to uninstall addon, check the console');
                   console.error(e);
               }
@@ -39,17 +40,32 @@ export default class MarketplaceFunctions {
         switch (type) {
             case 'settings':
                 localStorage.removeItem('backup_settings');
+
                 let oldSettings = [];
-                for (const key of Object.keys(localStorage)) oldSettings.push({ name: key, value: localStorage.getItem(key) });
+                for (const key of Object.keys(localStorage)) {
+                    oldSettings.push({ 
+                        name: key, 
+                        value: localStorage.getItem(key) 
+                    });
+                }
+
                 localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
                 input.settings.forEach(element => localStorage.setItem(element.name, element.value));
                 break;
-            case 'photo_packs': localStorage.setItem('photo_packs', JSON.stringify(input.photos)); break;
+
+            case 'photo_packs': 
+              localStorage.setItem('photo_packs', JSON.stringify(input.photos)); 
+              break;
+
             case 'quote_packs':
-                if (input.quote_api) localStorage.setItem('quoteAPI', JSON.stringify(input.quote_api));
+                if (input.quote_api) {
+                    localStorage.setItem('quoteAPI', JSON.stringify(input.quote_api));
+                }
+
                 localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
                 break;
-            default: break;
+            default: 
+              break;
         }
 
         let installed = JSON.parse(localStorage.getItem('installed'));

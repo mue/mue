@@ -20,18 +20,26 @@ export default class Favourite extends React.PureComponent {
         const location = document.getElementById('location').textContent;
         
         localStorage.setItem('favourite', JSON.stringify({ url: url, credit: credit, location: location }));
-        this.setState({ favourited: <StarIcon onClick={() => this.favourite()} /> });
+  
+        this.setState({ 
+          favourited: <StarIcon onClick={() => this.favourite()} /> 
+        });
       }
   }
 
   componentDidMount() {
     if (localStorage.getItem('favourite')) {
-      this.setState({ favourited: <StarIcon onClick={() => this.favourite()} /> });
+      this.setState({ 
+        favourited: <StarIcon onClick={() => this.favourite()} /> 
+      });
     }
   }
 
   render() {
-    if (localStorage.getItem('favouriteEnabled') === 'false' || localStorage.getItem('background') === 'false' || localStorage.getItem('customBackgroundColour') || localStorage.getItem('customBackground')) return null;
+    if (localStorage.getItem('favouriteEnabled') === 'false' || localStorage.getItem('background') === 'false' || localStorage.getItem('customBackgroundColour') || localStorage.getItem('customBackground')) {
+      return null;
+    }
+    
     return <div className='favourite'>
         {this.state.favourited}
     </div>

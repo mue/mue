@@ -20,7 +20,11 @@ export default class Search extends React.PureComponent {
     voiceSearch.start();
     const searchText = document.getElementById('searchtext');
     voiceSearch.onresult = (event) => searchText.value = event.results[0][0].transcript;
-    voiceSearch.onend = () => setTimeout(() => window.location.href = this.state.url + `?${this.state.query}=` + searchText.value, 1000);
+    voiceSearch.onend = () =>{
+      setTimeout(() => {
+        window.location.href = this.state.url + `?${this.state.query}=` + searchText.value;
+      }, 1000);
+    }
   }
 
   render() {

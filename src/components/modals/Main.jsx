@@ -9,23 +9,26 @@ import AddonsIcon from '@material-ui/icons/Widgets';
 import MarketplaceIcon from '@material-ui/icons/ShoppingBasket';
 
 export default class MainModal extends React.PureComponent {
-    constructor(...args) {
-        super(...args);
-        this.state = {
-            tab: '',
-            currentTab: ''
-        };
-        this.tabs = {
-          settings: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts} />,
-          addons: <Addons language={this.props.language.addons} marketplaceLanguage={this.props.language.marketplace} toastLanguage={this.props.language.toasts} openMarketplace={() => this.changeEnabled('marketplace')}/>,
-          marketplace: <Marketplace language={this.props.language.marketplace} toastLanguage={this.props.language.toasts} updateLanguage={this.props.language.update}/>
-        }
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      tab: '',
+      currentTab: ''
     }
+    this.tabs = {
+      settings: <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts} />,
+      addons: <Addons language={this.props.language.addons} marketplaceLanguage={this.props.language.marketplace} toastLanguage={this.props.language.toasts} openMarketplace={() => this.changeEnabled('marketplace')}/>,
+      marketplace: <Marketplace language={this.props.language.marketplace} toastLanguage={this.props.language.toasts} updateLanguage={this.props.language.update}/>
+    }
+  }
 
   componentDidMount() {
     document.getElementById('backgroundImage').classList.toggle('backgroundEffects');
     document.getElementById('center').classList.toggle('backgroundEffects');
-    this.setState({ tab: this.tabs.settings, currentTab: 'settings' });
+
+    this.setState({ 
+      tab: this.tabs.settings, currentTab: 'settings' 
+    });
   }
 
   componentWillUnmount() {
@@ -36,7 +39,10 @@ export default class MainModal extends React.PureComponent {
   changeEnabled(input) {
     document.getElementById(this.state.currentTab + 'TabLink').classList.toggle('active');
     document.getElementById(input + 'TabLink').classList.toggle('active');
-    this.setState({ tab: this.tabs[input], currentTab: input });
+
+    this.setState({ 
+      tab: this.tabs[input], currentTab: input 
+    });
   }
 
   render() {

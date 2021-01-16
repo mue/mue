@@ -35,8 +35,13 @@ export default class Addons extends React.PureComponent {
         if (type === 'item') {
             const installed = JSON.parse(localStorage.getItem('installed'));
             const info = installed.find(i => i.name === data);
+
             this.setState({
-                current_data: { type: type2, name: data, content: info },
+                current_data: { 
+                    type: type2,
+                    name: data,
+                    content: info 
+                },
                 item_data: {
                     name: info.name,
                     author: info.author,
@@ -53,23 +58,40 @@ export default class Addons extends React.PureComponent {
             document.getElementById('marketplace').style.display = 'block';
             document.getElementById('item').style.display = 'none';
         }
-        this.setState({ button: this.buttons.uninstall });
+        this.setState({ 
+            button: this.buttons.uninstall 
+        });
     }
 
   manage(type, input) {
     switch (type) {
-        case 'install': MarketplaceFunctions.install(input.type, input, true); break;
-        case 'uninstall': MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.content.type); break;
-        default: break;
+        case 'install': 
+          MarketplaceFunctions.install(input.type, input, true); 
+          break;
+        case 'uninstall': 
+          MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.content.type); 
+          break;
+        default: 
+          break;
     }
+
     toast(this.props.toastLanguage[type + 'ed']);
+
     let button = '';
-    if (type === 'install') button = this.buttons.uninstall;
-    this.setState({ button: button, installed: JSON.parse(localStorage.getItem('installed')) });
+    if (type === 'install'){
+        button = this.buttons.uninstall;
+    }
+
+    this.setState({ 
+        button: button, 
+        installed: JSON.parse(localStorage.getItem('installed')) 
+    });
   }
 
   componentDidMount() {
-    if (localStorage.getItem('animations') === 'true') document.getElementById('marketplace').classList.add('marketplaceanimation');
+    if (localStorage.getItem('animations') === 'true') {
+        document.getElementById('marketplace').classList.add('marketplaceanimation');
+    }
   }
 
   render() {

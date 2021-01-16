@@ -29,18 +29,31 @@ export default class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
-    if (localStorage.getItem('showWelcome') === 'true') this.setState({ welcomeModal: true });
+    if (!localStorage.getItem('firstRun')) {
+      SettingsFunctions.setDefaultSettings();
+    }
+    
+    if (localStorage.getItem('showWelcome') === 'true') {
+      this.setState({ 
+        welcomeModal: true 
+      });
+    }
     
     const css = localStorage.getItem('customcss');
-    if (css) document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
+    if (css) {
+      document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
+    }
 
-    if (localStorage.getItem('darkTheme') === 'true') document.getElementsByClassName('Toastify')[0].classList.add('dark');
+    if (localStorage.getItem('darkTheme') === 'true'){
+      document.getElementsByClassName('Toastify')[0].classList.add('dark');
+    }
   }
 
   closeWelcome() {
     localStorage.setItem('showWelcome', false);
-    this.setState({ welcomeModal: false });
+    this.setState({ 
+      welcomeModal: false 
+    });
   }
 
   // Render all the components
@@ -48,10 +61,12 @@ export default class App extends React.PureComponent {
     // dark theme support for modals and info card
     let modalClassList = 'Modal';
     let tooltipClassList = 'infoCard';
+
     if ((localStorage.getItem('brightnessTime') && new Date().getHours() > 18) || localStorage.getItem('darkTheme') === 'true') {
       modalClassList += ' dark';
       tooltipClassList += ' dark';
     }
+    
     const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
     /// language

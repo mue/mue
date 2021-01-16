@@ -22,6 +22,7 @@ export default class Update extends React.PureComponent {
   }
 
   const data = await (await fetch(Constants.API_URL + '/getUpdate')).json();
+  
   if (data.statusCode === 500 || data.title === null) {
     const supportText = `<br/><p>${this.props.language.contact_support}: <a target='_blank' class='modalLink' href='https://muetab.com/contact'>https://muetab.com/contact</a></p>`;
     return this.setState({

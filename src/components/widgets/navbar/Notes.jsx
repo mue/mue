@@ -30,7 +30,9 @@ export default class Notes extends React.PureComponent {
 
     render() {
         let classList = 'notescontainer';
-        if (localStorage.getItem('darkTheme') === 'true') classList += ' dark';
+        if (localStorage.getItem('darkTheme') === 'true') {
+            classList += ' dark';
+        }
 
         return (
             <span id='noteContainer' className={classList}>

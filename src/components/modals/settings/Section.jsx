@@ -19,7 +19,9 @@ export default class Section extends React.PureComponent {
       transform: (this.state.transform === 'rotate(0)') ? 'rotate(-180deg)' : 'rotate(0)'
     });
 
-    if (this.props.onToggle) this.props.onToggle(display);
+    if (this.props.onToggle) {
+      this.props.onToggle(display);
+    }
   }
 
   render() {
@@ -31,6 +33,7 @@ export default class Section extends React.PureComponent {
             <li className='extraSettings'>{this.props.children}</li>
           </div>
         );
+
         expandMore = (
           <ExpandMore
             style={{ 'transition': 'all 0.5s ease 0s', 'transform': this.state.transform }}
@@ -38,8 +41,14 @@ export default class Section extends React.PureComponent {
             onClick={() => this.toggleSection()} />
         );
     }
-    if (this.props.slider !== false) slider = <Slider name={this.props.name} />;
-    if (this.props.dropdown === false) noDropdown = 'nodropdown';
+
+    if (this.props.slider !== false) {
+      slider = <Slider name={this.props.name} />;
+    }
+    
+    if (this.props.dropdown === false){
+      noDropdown = 'nodropdown';
+    }
 
     return (
         <div className='section'>

@@ -44,12 +44,20 @@ export default class Marketplace extends React.PureComponent {
         case 'seemore':
             document.getElementById('marketplace').style.display = 'none';
             document.getElementById('seemore').style.display = 'block';
-            this.setState({ see_more: this.state[type2], see_more_type: type2 });
+            
+            this.setState({ 
+              see_more: this.state[type2], 
+              see_more_type: type2 
+            });
             break;
+
         case 'item':
             let info;
-            try { info = await (await fetch(`${Constants.MARKETPLACE_URL}/item/${type2}/${data}`)).json(); }
-            catch (e) { return toast(this.props.toastLanguage.error); }
+            try { 
+              info = await (await fetch(`${Constants.MARKETPLACE_URL}/item/${type2}/${data}`)).json(); 
+            } catch (e) { 
+              return toast(this.props.toastLanguage.error);
+            }
 
             this.setState({
                 current_data: { type: type2, name: data, content: info },
@@ -64,14 +72,22 @@ export default class Marketplace extends React.PureComponent {
             });
 
             let button = this.buttons.install;
+
             const installed = JSON.parse(localStorage.getItem('installed'));
-            if (installed.some(item => item.name === data)) button = this.buttons.uninstall;
-            this.setState({ button: button });
+
+            if (installed.some(item => item.name === data)) {
+              button = this.buttons.uninstall;
+            }
+
+            this.setState({
+               button: button 
+              });
 
             document.getElementById('marketplace').style.display = 'none';
             document.getElementById('seemore').style.display = 'none';
             document.getElementById('item').style.display = 'block';
             break;
+
         default:
             document.getElementById('marketplace').style.display = 'block';
             document.getElementById('item').style.display = 'none';
@@ -83,6 +99,7 @@ export default class Marketplace extends React.PureComponent {
   async getItems() {
     const data = await (await fetch(Constants.MARKETPLACE_URL + '/all')).json();
     const featured = await (await fetch(Constants.MARKETPLACE_URL + '/featured')).json();
+
     this.setState({
         settings: data.data.settings,
         photo_packs: data.data.photo_packs,
@@ -95,10 +112,16 @@ export default class Marketplace extends React.PureComponent {
 
   manage(type) {
     switch (type) {
-        case 'install': MarketplaceFunctions.install(this.state.current_data.type, this.state.current_data.content.data); break;
-        case 'uninstall': MarketplaceFunctions.uninstall(this.state.current_data.content.data.name, this.state.current_data.type); break;
-        default: break;
+        case 'install': 
+          MarketplaceFunctions.install(this.state.current_data.type, this.state.current_data.content.data); 
+          break;
+        case 'uninstall': 
+          MarketplaceFunctions.uninstall(this.state.current_data.content.data.name, this.state.current_data.type); 
+          break;
+        default:
+          break;
     }
+
     toast(this.props.toastLanguage[type + 'ed']);
     this.setState({
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
@@ -106,8 +129,14 @@ export default class Marketplace extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('animations') === 'true') document.getElementById('marketplace').classList.add('marketplaceanimation');
-    if (navigator.onLine === false) return;
+    if (localStorage.getItem('animations') === 'true') {
+      document.getElementById('marketplace').classList.add('marketplaceanimation');
+    }
+
+    if (navigator.onLine === false) {
+      return;
+    }
+
     this.getItems();
   }
 

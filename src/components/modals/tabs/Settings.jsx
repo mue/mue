@@ -24,13 +24,19 @@ export default class Settings extends React.PureComponent {
 
     if (document.getElementById('modal').classList.contains('dark')) { // Dark theme support for dropdowns
       const choices = document.getElementsByClassName('choices');
-      for (let i = 0; i < choices.length; i++) choices[i].style.backgroundColor = '#2f3542';
+      for (let i = 0; i < choices.length; i++) {
+        choices[i].style.backgroundColor = '#2f3542';
+      }
     }
   }
 
   settingsImport(e) {
     const content = JSON.parse(e.target.result);
-    for (const key of Object.keys(content)) localStorage.setItem(key, content[key]);
+
+    for (const key of Object.keys(content)) {
+      localStorage.setItem(key, content[key]);
+    }
+
     toast(this.props.toastLanguage.imported);
   }
 

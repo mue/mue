@@ -34,19 +34,33 @@ export default class BackgroundSettings extends React.PureComponent {
     switch (key) {
       case 'customBackgroundColour':
         localStorage.setItem('customBackgroundColour', '');
-        this.setState({ gradientSettings: this.DefaultGradientSettings });
+        this.setState({ 
+          gradientSettings: this.DefaultGradientSettings 
+        });
         break;
-      case 'customBackground': document.getElementById('customBackground').value = ''; break;
+
+      case 'customBackground': 
+        document.getElementById('customBackground').value = ''; 
+        break;
+
       case 'blur':
         localStorage.setItem('blur', 0);
-        this.setState({ blur: 0 });
+        this.setState({ 
+          blur: 0 
+        });
         break;
+
       case 'brightness':
         localStorage.setItem('brightness', 100);
-        this.setState({ brightness: 100 });
+        this.setState({ 
+          brightness: 100 
+        });
         break;
-      default: toast('resetItem requires a key!');
+
+      default: 
+        toast('resetItem requires a key!');
     }
+
     toast(this.props.toastLanguage.reset);
   }
 
@@ -79,7 +93,9 @@ export default class BackgroundSettings extends React.PureComponent {
       }
     }
 
-    if (gradientSettings === undefined) gradientSettings = this.DefaultGradientSettings;
+    if (gradientSettings === undefined) {
+      gradientSettings = this.DefaultGradientSettings;
+    }
 
     this.setState({
       blur: localStorage.getItem('blur'),
@@ -129,9 +145,20 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   onColorPickerChange = (attrs, name) => {
-    if (process.env.NODE_ENV === 'development') console.log(attrs, name);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(attrs, name);
+    }
+
     this.setState({
-      gradientSettings: { 'angle': attrs.degree, 'gradient': attrs.points.map((p) => { return { 'colour': '#' + rgbToHex(p.red, p.green, p.blue), 'stop': p.left } }), 'type': attrs.type }
+      gradientSettings: { 
+        'angle': attrs.degree, 
+        'gradient': attrs.points.map((p) => { 
+          return { 
+            'colour': '#' + rgbToHex(p.red, p.green, p.blue), 
+            'stop': p.left 
+          } }), 
+        'type': attrs.type 
+      }
     });
   };
 
@@ -145,7 +172,9 @@ export default class BackgroundSettings extends React.PureComponent {
 
   fileUpload(e) {
     localStorage.setItem('customBackground', e.target.result);
-    this.setState({ customBackground: e.target.result });
+    this.setState({ 
+      customBackground: e.target.result
+     });
   }
 
   beforeUnload() {

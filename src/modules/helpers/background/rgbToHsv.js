@@ -18,11 +18,19 @@ export default function rgbToHSv({ red, green, blue }) {
         gg = diffc(gabs);
         bb = diffc(babs);
 
-        if (rabs === v) h = bb - gg;
-        else if (gabs === v)  h = (1 / 3) + rr - bb;
-        else if (babs === v) h = (2 / 3) + gg - rr;
-        if (h < 0)  h += 1;
-        else if (h > 1)  h -= 1;
+        if (rabs === v){
+            h = bb - gg;
+        } else if (gabs === v) {
+            h = (1 / 3) + rr - bb;
+        } else if (babs === v) {
+            h = (2 / 3) + gg - rr;
+        }
+
+        if (h < 0) {
+            h += 1;
+        } else if (h > 1) {
+            h -= 1;
+        }
     }
 
     return {

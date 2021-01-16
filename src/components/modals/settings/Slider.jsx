@@ -11,11 +11,14 @@ export default class Slider extends React.PureComponent {
 
   handleChange(name) {
     SettingsFunctions.setItem(name);
-    this.setState({ checked: (this.state.checked === true) ? false : true });
+    this.setState({ 
+      checked: (this.state.checked === true) ? false : true 
+    });
   }
 
   render() {
     let setText = (this.props.override) ? this.props.override : this.props.name;
+
     return (
         <label className='switch'>
           <input type='checkbox' checked={this.state.checked} onChange={() => this.handleChange(setText)} />

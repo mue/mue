@@ -15,7 +15,9 @@ export default class Item extends React.PureComponent {
           </div>
         );
       }
-    } catch (e) {}
+    } catch (e) {
+      // ignore
+    }
 
     return (
       <div id='item'>

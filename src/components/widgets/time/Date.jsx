@@ -5,24 +5,24 @@ export default class DateWidget extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-        date: ''
+      date: ''
     };
   }
 
   getDate() {
     const date = new Date();
-
     const short = localStorage.getItem('short');
-    const dateFormat = localStorage.getItem('dateFormat');
 
     if (short === 'true') {
       const dateDay = date.getDate();
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
 
-      let day = dateDay, month = dateMonth, year = dateYear;
+      let day = dateDay;
+      let month = dateMonth;
+      let year = dateYear;
 
-      switch (dateFormat) {
+      switch (localStorage.getItem('dateFormat')) {
         case 'MDY':
           day = dateMonth;
           month = dateDay;
@@ -36,13 +36,21 @@ export default class DateWidget extends React.PureComponent {
 
       let format;
       switch (localStorage.getItem('shortFormat')) {
-        case 'dash': format = `${day}-${month}-${year}`; break;
-        case 'gaps': format = `${day} - ${month} - ${year}`; break;
-        default: format = `${day}/${month}/${year}`;
+        case 'dash': 
+          format = `${day}-${month}-${year}`; 
+          break;
+        case 'gaps': 
+          format = `${day} - ${month} - ${year}`; 
+          break;
+        default: 
+          format = `${day}/${month}/${year}`;
       }
 
-      this.setState({ date: format });
-    } else { // full date
+      this.setState({ 
+        date: format 
+      });
+    } else {
+      // Full date
       const lang = localStorage.getItem('language');
 
       const day = date.toLocaleDateString(lang, { weekday: 'long' });
@@ -50,7 +58,9 @@ export default class DateWidget extends React.PureComponent {
       const month = date.toLocaleDateString(lang, { month: 'long' });
       const year = date.getFullYear();
 
-      this.setState({ date: `${day} ${nth} ${month} ${year}` });
+      this.setState({ 
+        date: `${day} ${nth} ${month} ${year}` 
+      });
     }
   }
 

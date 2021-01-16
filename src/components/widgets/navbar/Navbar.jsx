@@ -23,7 +23,9 @@ export default class Navbar extends React.PureComponent {
       </Tooltip>
     );
 
-    if (localStorage.getItem('refresh') === 'false') refreshHTML = null;
+    if (localStorage.getItem('refresh') === 'false') {
+      refreshHTML = null;
+    }
 
     // toggle feedback button
     let feedbackHTML = (
@@ -32,7 +34,9 @@ export default class Navbar extends React.PureComponent {
       </Tooltip>
     );
   
-    if (Constants.BETA_VERSION === false) feedbackHTML = null;
+    if (Constants.BETA_VERSION === false){
+      feedbackHTML = null;
+    }
 
     return (
       <div className='navbar-container'>

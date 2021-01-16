@@ -10,15 +10,20 @@ import Date from './time/Date';
 
 export default class Widgets extends React.PureComponent {
    enabled(key) {
-    const old = localStorage.getItem(key);
-    let val = true;
+    const stringValue = localStorage.getItem(key);
+    let enabled = true;
 
-    if (old !== null) {
-        if (old === 'true') val = true;
-        if (old === 'false') val = false;
+    if (stringValue !== null) {
+      if (stringValue === 'true') {
+        enabled = true;
+      }
+
+      if (stringValue === 'false') { 
+        enabled = false;
+      }
     }
 
-    return val;
+    return enabled;
   }
 
   // Render all the components
@@ -30,7 +35,7 @@ export default class Widgets extends React.PureComponent {
       <React.Fragment>
           {enabled('searchBar') ? <Search language={language.search} /> : null}
           {enabled('greeting') ? <Greeting language={language.greeting} /> : null}
-          {enabled('clock') ? <Clock/> : null}
+          {enabled('time') ? <Clock/> : null}
           {enabled('date') ? <Date/> : null}
           {enabled('quote') ? <Quote language={language.toasts} languagecode={languagecode} /> : null}
           {enabled('view') ? <Maximise/> : null}
