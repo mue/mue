@@ -22,8 +22,10 @@ export default class Clock extends React.PureComponent {
       if (localStorage.getItem('percentageComplete') === 'true') return this.setState({ time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'});
 
       // Analog clock
-      if (localStorage.getItem('analog') === 'true') this.setState({ time: now });
-      else {
+      if (localStorage.getItem('analog') === 'true') {
+        require('react-clock/dist/Clock.css');
+        this.setState({ time: now });
+      } else {
         let time, sec = '';
 
         // Extra 0

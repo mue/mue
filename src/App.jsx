@@ -1,15 +1,8 @@
 import React from 'react';
 
 import Background from './components/widgets/background/Background';
-import Clock from './components/widgets/time/Clock';
-import Greeting from './components/widgets/greeting/Greeting';
-import Quote from './components/widgets/quote/Quote';
-import Search from './components/widgets/search/Search';
-import Maximise from './components/widgets/background/Maximise';
-import Favourite from './components/widgets/background/Favourite';
+import Widgets from './components/widgets/Widgets';
 import PhotoInformation from './components/widgets/background/PhotoInformation';
-import Date from './components/widgets/time/Date';
-
 import Navbar from './components/widgets/navbar/Navbar';
 
 import SettingsFunctions from './modules/helpers/settings';
@@ -38,8 +31,10 @@ export default class App extends React.PureComponent {
   componentDidMount() {
     if (!localStorage.getItem('firstRun')) SettingsFunctions.setDefaultSettings();
     if (localStorage.getItem('showWelcome') === 'true') this.setState({ welcomeModal: true });
+    
     const css = localStorage.getItem('customcss');
     if (css) document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
+
     if (localStorage.getItem('darkTheme') === 'true') document.getElementsByClassName('Toastify')[0].classList.add('dark');
   }
 
@@ -68,15 +63,9 @@ export default class App extends React.PureComponent {
         <Background/>
         <ToastContainer position='bottom-right' autoClose={2500} newestOnTop={true} closeOnClick rtl={false} pauseOnFocusLoss />
         <div id='center'>
-          <Search language={language.search} />
           <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} feedbackModalOpen={() => this.setState({ feedbackModal: true })} language={language} />
-          <Greeting language={language.greeting} />
-          <Clock/>
-          <Date/>
-          <Quote language={language.toasts} languagecode={languagecode} />
+          <Widgets language={language} languagecode={languagecode} />
           <PhotoInformation language={language} className={tooltipClassList} />
-          <Maximise/>
-          <Favourite/>
           <React.Suspense fallback={renderLoader()}>
             <Modal id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Main language={language} modalClose={() => this.setState({ mainModal: false })} />

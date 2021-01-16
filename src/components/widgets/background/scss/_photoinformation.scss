@@ -9,6 +9,7 @@
         float: left;
         margin-right: 1rem;
         font-size: calc(10px + 2vmin);
+        cursor: pointer;
     }
 
     svg,
@@ -70,10 +71,6 @@
     &:hover {
         display: block !important;
     }
-}
-
-.photoInformationHover {
-    cursor: pointer;
 }
 
 .dark hr {

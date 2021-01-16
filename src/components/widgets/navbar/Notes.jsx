@@ -23,12 +23,15 @@ export default class Notes extends React.PureComponent {
     }
 
     componentDidMount() {
-        if (localStorage.getItem('notesPinned') === 'true') document.getElementById('noteContainer').classList.toggle('visibilityshow');
+        if (localStorage.getItem('notesPinned') === 'true') {
+            document.getElementById('noteContainer').classList.toggle('visibilityshow');
+        }
     }
 
     render() {
         let classList = 'notescontainer';
         if (localStorage.getItem('darkTheme') === 'true') classList += ' dark';
+
         return (
             <span id='noteContainer' className={classList}>
                 <div className='topbarnotes'>

@@ -1,10 +1,12 @@
 import React from 'react';
+
 import RefreshIcon from '@material-ui/icons/RefreshRounded';
 import Gear from '@material-ui/icons/SettingsRounded';
 import NewReleases from '@material-ui/icons/NewReleasesRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Tooltip from '@material-ui/core/Tooltip';
 import Report from '@material-ui/icons/SmsFailed';
+
 import * as Constants from '../../../modules/constants';
 
 import './scss/index.scss';
@@ -20,6 +22,7 @@ export default class Navbar extends React.PureComponent {
         <RefreshIcon className='refreshicon topicons' onClick={() => window.location.reload()} />
       </Tooltip>
     );
+
     if (localStorage.getItem('refresh') === 'false') refreshHTML = null;
 
     // toggle feedback button
@@ -28,6 +31,7 @@ export default class Navbar extends React.PureComponent {
         <Report className='topicons' onClick={this.props.feedbackModalOpen} />
       </Tooltip>
     );
+  
     if (Constants.BETA_VERSION === false) feedbackHTML = null;
 
     return (

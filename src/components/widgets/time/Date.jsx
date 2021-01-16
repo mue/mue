@@ -11,6 +11,7 @@ export default class DateWidget extends React.PureComponent {
 
   getDate() {
     const date = new Date();
+
     const short = localStorage.getItem('short');
     const dateFormat = localStorage.getItem('dateFormat');
 
@@ -54,7 +55,6 @@ export default class DateWidget extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('date') === 'false') return;
     this.getDate();
   }
 

@@ -1,12 +1,15 @@
 import React from 'react';
-import { toast } from 'react-toastify';
+
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Section from '../Section';
 import FileUpload from '../FileUpload';
+
 import { ColorPicker } from 'react-color-gradient-picker';
 import hexToRgb from '../../../../modules/helpers/background/hexToRgb';
 import rgbToHex from '../../../../modules/helpers/background/rgbToHex';
+
+import { toast } from 'react-toastify';
 import { Beforeunload } from 'react-beforeunload';
 
 import 'react-color-gradient-picker/dist/index.css';

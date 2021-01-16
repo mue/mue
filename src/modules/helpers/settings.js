@@ -48,9 +48,11 @@ export default class SettingsFunctions {
 
     static saveStuff(hexDisabled) {
         localStorage.setItem('customcss', document.getElementById('customcss').value);
+
         if (document.getElementById('customBackgroundHex').value !== hexDisabled) {
             localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
         }
+
         if (document.getElementById('searchEngineInput').enabled === 'true') {
             const input = document.getElementById('customSearchEngine').value;
             if (input) {
@@ -58,6 +60,7 @@ export default class SettingsFunctions {
                 localStorage.setItem('customSearchEngine', input);
             }
         }
+
         window.location.reload();
     }
 
@@ -69,13 +72,10 @@ export default class SettingsFunctions {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.setItem('darkTheme', true);
         else localStorage.setItem('darkTheme', false);
 
-        // Webp support
-        const supportsWebP = require('supports-webp'); // We import it here so it doesn't run the function on each page load
-        if (supportsWebP) localStorage.setItem('supportswebp', 'true');
-
         // Languages
         const languages = ['nl', 'no', 'fr', 'ru', 'es'];
         const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
+
         if (languages.includes(browserLanguage)) {
             localStorage.setItem('language', browserLanguage);
             document.documentElement.lang = browserLanguage;

@@ -56,7 +56,6 @@ export default class Greeting extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('greeting') === 'false') return;
     this.getGreeting();
   }
 

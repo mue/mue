@@ -18,13 +18,16 @@ export default class Favourite extends React.PureComponent {
         const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
         const credit = document.getElementById('credit').textContent;
         const location = document.getElementById('location').textContent;
+        
         localStorage.setItem('favourite', JSON.stringify({ url: url, credit: credit, location: location }));
         this.setState({ favourited: <StarIcon onClick={() => this.favourite()} /> });
       }
   }
 
   componentDidMount() {
-    if (localStorage.getItem('favourite')) this.setState({ favourited: <StarIcon onClick={() => this.favourite()} /> });
+    if (localStorage.getItem('favourite')) {
+      this.setState({ favourited: <StarIcon onClick={() => this.favourite()} /> });
+    }
   }
 
   render() {

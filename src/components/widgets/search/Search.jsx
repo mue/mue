@@ -18,13 +18,12 @@ export default class Search extends React.PureComponent {
   startSpeechRecognition() {
     const voiceSearch = new window.webkitSpeechRecognition();
     voiceSearch.start();
-    voiceSearch.onresult = (event) => document.getElementById('searchtext').value = event.results[0][0].transcript;
-    voiceSearch.onend = () => setTimeout(() => window.location.href = this.state.url + `?${this.state.query}=` + document.getElementById('searchtext').value, 1000);
+    const searchText = document.getElementById('searchtext');
+    voiceSearch.onresult = (event) => searchText.value = event.results[0][0].transcript;
+    voiceSearch.onend = () => setTimeout(() => window.location.href = this.state.url + `?${this.state.query}=` + searchText.value, 1000);
   }
 
   render() {
-    if (localStorage.getItem('searchBar') === 'false') return null;
-
     let url;
     let query = 'q';
 
@@ -52,8 +51,8 @@ export default class Search extends React.PureComponent {
     }
 
     return (
-      <div id='searchBar' className='searchbar'>
-        <form id='searchBar' className='searchbarform' action={url}>
+      <div id='searchBar'>
+        <form action={url}>
             {microphone}
             <SearchIcon onClick={() => searchButton()} id='searchButton' />
             <input type='text' placeholder={this.props.language} name={query} id='searchtext' className='searchtext'/>

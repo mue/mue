@@ -32,6 +32,5 @@ Inspired features are fine.
 ### Bug Fixes
 See the note in general.
 
-
 ## Final Note
 Contact us before doing anything if you don't want to have to change 1000 things and/or have your pull request closed.
