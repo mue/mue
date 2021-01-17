@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Slider from './Slider';
+
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
 export default class Section extends React.PureComponent {

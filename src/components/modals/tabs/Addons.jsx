@@ -1,9 +1,12 @@
 import React from 'react';
+
 import LocalMallIcon from '@material-ui/icons/LocalMall';
-import { toast } from 'react-toastify';
 import Item from '../marketplace/Item';
 import Items from '../marketplace/Items';
 import FileUpload from '../settings/FileUpload';
+
+import { toast } from 'react-toastify';
+
 import MarketplaceFunctions from '../../../modules/helpers/marketplace';
 
 export default class Addons extends React.PureComponent {
@@ -58,7 +61,7 @@ export default class Addons extends React.PureComponent {
             document.getElementById('marketplace').style.display = 'block';
             document.getElementById('item').style.display = 'none';
         }
-        
+
         this.setState({ 
             button: this.buttons.uninstall 
         });

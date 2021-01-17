@@ -1,8 +1,10 @@
 import React from 'react';
+
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import CopyIcon from '@material-ui/icons/FileCopyRounded';
-import Pin from './Pin';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
+
+import Pin from './Pin';
 
 export default class Notes extends React.PureComponent {
     constructor(...args) {
@@ -21,7 +23,7 @@ export default class Notes extends React.PureComponent {
 
     pin() {
         document.getElementById('noteContainer').classList.toggle('visibilityshow');
-        
+
         if (localStorage.getItem('notesPinned') === 'true') {
             localStorage.setItem('notesPinned', false);
         } else {

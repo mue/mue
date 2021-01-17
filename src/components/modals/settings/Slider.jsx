@@ -1,4 +1,5 @@
 import React from 'react';
+
 import SettingsFunctions from '../../../modules/helpers/settings';
 
 export default class Slider extends React.PureComponent {
@@ -11,7 +12,7 @@ export default class Slider extends React.PureComponent {
 
   handleChange(name) {
     SettingsFunctions.setItem(name);
-    
+
     this.setState({ 
       checked: (this.state.checked === true) ? false : true 
     });

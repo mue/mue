@@ -16,7 +16,7 @@
 */
 import React from 'react';
 
-const Pin = () => {
+export default function Pin() {
     return (
         <svg xmlns='http://www.w3.org/2000/svg' enableBackground='new 0 0 24 24' viewBox='0 0 24 24' fill='black' width='18px' height='18px'>
           <g><rect fill='none' height='24' width='24'/></g>
@@ -24,5 +24,3 @@ const Pin = () => {
         </svg>
     );
 }
-
-export default Pin;

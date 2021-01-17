@@ -1,9 +1,11 @@
 import React from 'react';
+
 import SettingsFunctions from '../../../modules/helpers/settings';
 import Checkbox from '../settings/Checkbox';
 import Dropdown from '../settings/Dropdown';
 import Section from '../settings/Section';
 import FileUpload from '../settings/FileUpload';
+
 import { toast } from 'react-toastify';
 
 import BackgroundSettings from '../settings/sections/BackgroundSettings';

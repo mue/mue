@@ -1,14 +1,16 @@
 import React from 'react';
+
 import FileCopy from '@material-ui/icons/FilterNone';
-import { toast } from 'react-toastify';
-import * as Constants from '../../../modules/constants';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import StarIcon from '@material-ui/icons/Star';
 import StarIcon2 from '@material-ui/icons/StarBorder';
 
+import { toast } from 'react-toastify';
+
+import * as Constants from '../../../modules/constants';
+
 import './quote.scss';
 
-const quotes = require('./offline_quotes.json');
 
 export default class Quote extends React.PureComponent {
   constructor(...args) {
@@ -23,6 +25,8 @@ export default class Quote extends React.PureComponent {
   }
 
   doOffline() {
+    const quotes = require('./offline_quotes.json');
+
     const quote = quotes[Math.floor(Math.random() * quotes.length)]; // Get a random quote from our local package
     this.setState({
       quote: '"' + quote.quote + '"',

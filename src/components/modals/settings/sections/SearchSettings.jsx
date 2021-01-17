@@ -1,6 +1,9 @@
 import React from 'react';
+
 import SettingsFunctions from '../../../../modules/helpers/settings';
+
 import { toast } from 'react-toastify';
+
 import Section from '../Section';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';

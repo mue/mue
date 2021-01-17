@@ -1,10 +1,10 @@
 import React from 'react';
 
-const FeedbackModal = () => {
+export default function FeedbackModal(props) {
     return (
         <div className='feedback'>
           <h1>Give us feedback</h1>
-          <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
+          <span className='closeModal' onClick={props.modalClose}>&times;</span>
            <label>How would you rate your experience of this Mue Build?</label>
            <br/><br/>
            <label className='values'>0</label><input className='range' type='range' min='0' max='100' /><label className='values'>10</label>
@@ -21,5 +21,3 @@ const FeedbackModal = () => {
        </div>
     );
 }
-
-export default FeedbackModal;

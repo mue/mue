@@ -1,9 +1,10 @@
 import React from 'react';
+
 import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ForumIcon from '@material-ui/icons/Forum';
 
-const WelcomeModal = (props) => {
+export default function WelcomeModal(props) {
   return (
     <div className='welcomeContent'>
         <span className='closeModal' onClick={props.modalClose}>&times;</span>
@@ -23,5 +24,3 @@ const WelcomeModal = (props) => {
        </div>
   );
 }
-
-export default WelcomeModal;

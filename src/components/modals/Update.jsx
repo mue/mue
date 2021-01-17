@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as Constants from '../../modules/constants';
 
 export default class Update extends React.PureComponent {

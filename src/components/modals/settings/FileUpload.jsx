@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { toast } from 'react-toastify';
 
 export default class FileUpload extends React.PureComponent {
@@ -16,7 +17,7 @@ export default class FileUpload extends React.PureComponent {
 
           reader.readAsDataURL(file);
         }
-        
+
         reader.addEventListener('load', (e) => this.props.loadFunction(e));
     };
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import SearchIcon from '@material-ui/icons/Search';
 import MicIcon from '@material-ui/icons/Mic';
 
@@ -33,7 +34,7 @@ export default class Search extends React.PureComponent {
 
     const setting = localStorage.getItem('searchEngine');
     const info = searchEngines.find(i => i.settingsName === setting);
-    
+
     if (info !== undefined) {
       url = info.url;
       if (info.query) query = info.query;

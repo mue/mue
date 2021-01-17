@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from '../Dropdown';
 
-const LanguageSettings = (props) => {
+export default function LanguageSettings (props) {
   return (
     <div className='section'>
       <h4 htmlFor='language' className='nodropdown'>{props.language.language}</h4>
@@ -19,5 +19,3 @@ const LanguageSettings = (props) => {
     </div>
   );
 }
-
-export default LanguageSettings;

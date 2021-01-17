@@ -1,11 +1,15 @@
 import React from 'react';
+
 import WifiOffIcon from '@material-ui/icons/WifiOff';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { toast } from 'react-toastify';
 import Item from '../marketplace/Item';
-import MarketplaceFunctions from '../../../modules/helpers/marketplace';
-import * as Constants from '../../../modules/constants';
 import Items from '../marketplace/Items';
+
+import MarketplaceFunctions from '../../../modules/helpers/marketplace';
+
+import { toast } from 'react-toastify';
+
+import * as Constants from '../../../modules/constants';
 
 export default class Marketplace extends React.PureComponent {
   constructor(...args) {

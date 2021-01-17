@@ -5,7 +5,7 @@ import Camera from '@material-ui/icons/PhotoCamera';
 import Resolution from '@material-ui/icons/Crop';
 import Photographer from '@material-ui/icons/Person';
 
-const PhotoInformation = (props) => {
+export default function PhotoInformation(props) {
   return (
     <div className='photoInformation'>
       <h1 id='photographer'>{props.language.credit}</h1>
@@ -27,5 +27,3 @@ const PhotoInformation = (props) => {
     </div>
   );
 }
-
-export default PhotoInformation;
