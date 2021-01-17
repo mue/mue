@@ -81,7 +81,7 @@ export default class Marketplace extends React.PureComponent {
 
             this.setState({
                button: button 
-              });
+            });
 
             document.getElementById('marketplace').style.display = 'none';
             document.getElementById('seemore').style.display = 'none';
@@ -97,14 +97,14 @@ export default class Marketplace extends React.PureComponent {
    }
 
   async getItems() {
-    const data = await (await fetch(Constants.MARKETPLACE_URL + '/all')).json();
+    const { data }= await (await fetch(Constants.MARKETPLACE_URL + '/all')).json();
     const featured = await (await fetch(Constants.MARKETPLACE_URL + '/featured')).json();
 
     this.setState({
-        settings: data.data.settings,
-        photo_packs: data.data.photo_packs,
-        quote_packs: data.data.quote_packs,
-        see_more: data.data.photo_packs,
+        settings: data.settings,
+        photo_packs: data.photo_packs,
+        quote_packs: data.quote_packs,
+        see_more: data.photo_packs,
         featured: featured.data,
         done: true
     });
@@ -133,7 +133,7 @@ export default class Marketplace extends React.PureComponent {
       document.getElementById('marketplace').classList.add('marketplaceanimation');
     }
 
-    if (navigator.onLine === false) {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return;
     }
 
@@ -141,7 +141,7 @@ export default class Marketplace extends React.PureComponent {
   }
 
   render() {
-    const returnMessage = (msg) => {
+    const errorMessage = (msg) => {
         return (
             <div id='marketplace'>
               <div className='emptyMessage' style={{ 'marginTop': '20px', 'transform': 'translateY(80%)' }}>
@@ -152,7 +152,7 @@ export default class Marketplace extends React.PureComponent {
     }
 
     if (navigator.onLine === false) {
-        return returnMessage(
+        return errorMessage(
             <React.Fragment>
                 <WifiOffIcon/>
                 <h1>{this.props.language.offline.title}</h1>
@@ -161,7 +161,19 @@ export default class Marketplace extends React.PureComponent {
         );
     }
 
-    if (this.state.done === false) return returnMessage(<h1>{this.props.updateLanguage.loading}</h1>);
+    if (localStorage.getItem('offlineMode') === 'true') {
+      return errorMessage(
+        <React.Fragment>
+            <WifiOffIcon/>
+            <h1>Offline mode is enabled</h1>
+            <p className='description'>Please turn off offline mode to access the marketplace</p>
+        </React.Fragment>
+      );
+    }
+
+    if (this.state.done === false) {
+      return errorMessage(<h1>{this.props.updateLanguage.loading}</h1>);
+    }
 
     return (
         <React.Fragment>

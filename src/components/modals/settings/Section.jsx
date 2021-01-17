@@ -46,7 +46,7 @@ export default class Section extends React.PureComponent {
       slider = <Slider name={this.props.name} />;
     }
     
-    if (this.props.dropdown === false){
+    if (this.props.dropdown === false) {
       noDropdown = 'nodropdown';
     }
 

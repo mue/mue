@@ -20,12 +20,15 @@ export default class Clock extends React.PureComponent {
 
       // Percentage
       if (localStorage.getItem('percentageComplete') === 'true') {
-        return this.setState({ time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'});
+        return this.setState({ 
+          time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'
+        });
       }
 
       // Analog clock
       if (localStorage.getItem('analog') === 'true') {
         require('react-clock/dist/Clock.css'); // load analog clock css
+        
         this.setState({ 
           time: now 
         });
@@ -49,7 +52,9 @@ export default class Clock extends React.PureComponent {
             time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
           }
 
-          this.setState({ time: time });
+          this.setState({ 
+            time: time 
+          });
         } else {
           // 12 hour support
           let hours = now.getHours();

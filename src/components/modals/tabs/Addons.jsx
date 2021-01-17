@@ -58,6 +58,7 @@ export default class Addons extends React.PureComponent {
             document.getElementById('marketplace').style.display = 'block';
             document.getElementById('item').style.display = 'none';
         }
+        
         this.setState({ 
             button: this.buttons.uninstall 
         });
@@ -78,7 +79,7 @@ export default class Addons extends React.PureComponent {
     toast(this.props.toastLanguage[type + 'ed']);
 
     let button = '';
-    if (type === 'install'){
+    if (type === 'install') {
         button = this.buttons.uninstall;
     }
 

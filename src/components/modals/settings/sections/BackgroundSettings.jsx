@@ -190,7 +190,10 @@ export default class BackgroundSettings extends React.PureComponent {
 
       let gradientInputs;
       if (gradientHasMoreThanOneColour) {
-        if (this.GradientPickerInitalState === undefined) this.InitializeColorPickerState(this.state.gradientSettings);
+        if (this.GradientPickerInitalState === undefined) {
+          this.InitializeColorPickerState(this.state.gradientSettings);
+        }
+        
         gradientInputs = (
           <ColorPicker
             onStartChange={(color) => this.onColorPickerChange(color, 'start')}

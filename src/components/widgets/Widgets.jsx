@@ -26,7 +26,6 @@ export default class Widgets extends React.PureComponent {
     return enabled;
   }
 
-  // Render all the components
   render() {
     const { language, languagecode } = this.props;
     const enabled = this.enabled;

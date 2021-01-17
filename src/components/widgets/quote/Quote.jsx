@@ -118,19 +118,27 @@ export default class Quote extends React.PureComponent {
 
   componentDidMount() {
     if (localStorage.getItem('favouriteQuote')) {
-      this.setState({ favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} /> });
+      this.setState({ 
+        favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} /> 
+      });
     }
 
     if (localStorage.getItem('favouriteQuoteEnabled') === 'false') {
-      this.setState({ favourited: null });
+      this.setState({ 
+        favourited: null 
+      });
     }
 
     if (localStorage.getItem('copyButton') === 'false') {
-      this.setState({ copy: null });
+      this.setState({ 
+        copy: null 
+      });
     }
 
-    if (localStorage.getItem('tweetEnabled') === 'false') {
-      this.setState({ tweet: null });
+    if (localStorage.getItem('tweetButton') === 'false') {
+      this.setState({ 
+        tweet: null 
+      });
     }
   
     this.getQuote();

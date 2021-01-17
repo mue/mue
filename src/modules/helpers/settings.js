@@ -1,7 +1,9 @@
 const defaultSettings = require('../default_settings.json');
 
 const saveFile = (data, filename = 'file') => {
-    if (typeof data === 'object') data = JSON.stringify(data, undefined, 4);
+    if (typeof data === 'object') {
+        data = JSON.stringify(data, undefined, 4);
+    }
 
     const blob = new Blob([data], { type: 'text/json' });
     let e = document.createEvent('MouseEvents');

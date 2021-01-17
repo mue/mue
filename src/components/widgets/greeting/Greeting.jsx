@@ -16,14 +16,14 @@ export default class Greeting extends React.PureComponent {
     }
 
     // Get current month & day
-    const m = time.getMonth();
-    const d = time.getDate();
+    const month = time.getMonth();
+    const date = time.getDate();
 
-    if (m === 11 && d === 25) {
+    if (month === 11 && date === 25) {
       message = this.props.language.christmas;  // If it's December 25th, set the greeting string to "Merry Christmas"
-    } else if (m === 0 && d === 1) {
+    } else if (month === 0 && date === 1) {
       message = this.props.language.newyear; // If the date is January 1st, set the greeting string to "Happy new year"
-    } else if (m === 9 && d === 31) {
+    } else if (month === 9 && date === 31) {
       message = this.props.language.halloween; // If it's October 31st, set the greeting string to "Happy Halloween"
     }
 

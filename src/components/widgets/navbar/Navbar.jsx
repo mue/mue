@@ -30,11 +30,11 @@ export default class Navbar extends React.PureComponent {
     // toggle feedback button
     let feedbackHTML = (
       <Tooltip title='Feedback' placement='top'>
-        <Report className='topicons' onClick={this.props.feedbackModalOpen} />
+        <Report className='topicons' onClick={() => this.props.openModal('feedbackModal')} />
       </Tooltip>
     );
   
-    if (Constants.BETA_VERSION === false){
+    if (Constants.BETA_VERSION === false) {
       feedbackHTML = null;
     }
 
@@ -48,11 +48,11 @@ export default class Navbar extends React.PureComponent {
         </div>
         {feedbackHTML}
         <Tooltip title={this.props.language.navbar.tooltips.update} placement='top'>
-          <NewReleases className='refreshicon topicons' onClick={this.props.updateModalOpen} />
+          <NewReleases className='refreshicon topicons' onClick={() => this.props.openModal('updateModal')} />
         </Tooltip>
         {refreshHTML}
         <Tooltip title={this.props.language.modals.settings} placement='top'>
-          <Gear className='settings-icon topicons' onClick={this.props.mainModalOpen} />
+          <Gear className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')} />
         </Tooltip>
       </div>
     );

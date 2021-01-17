@@ -44,7 +44,7 @@ export default class App extends React.PureComponent {
       document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
     }
 
-    if (localStorage.getItem('darkTheme') === 'true'){
+    if (localStorage.getItem('darkTheme') === 'true') {
       document.getElementsByClassName('Toastify')[0].classList.add('dark');
     }
   }
@@ -56,7 +56,6 @@ export default class App extends React.PureComponent {
     });
   }
 
-  // Render all the components
   render() {
     // dark theme support for modals and info card
     let modalClassList = 'Modal';
@@ -78,7 +77,7 @@ export default class App extends React.PureComponent {
         <Background/>
         <ToastContainer position='bottom-right' autoClose={2500} newestOnTop={true} closeOnClick rtl={false} pauseOnFocusLoss />
         <div id='center'>
-          <Navbar mainModalOpen={() => this.setState({ mainModal: true })} updateModalOpen={() => this.setState({ updateModal: true })} feedbackModalOpen={() => this.setState({ feedbackModal: true })} language={language} />
+          <Navbar openModal={(modal) => this.setState({ [modal]: true })} language={language} />
           <Widgets language={language} languagecode={languagecode} />
           <PhotoInformation language={language} className={tooltipClassList} />
           <React.Suspense fallback={renderLoader()}>

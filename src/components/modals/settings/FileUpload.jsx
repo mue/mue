@@ -13,8 +13,10 @@ export default class FileUpload extends React.PureComponent {
           if (file.size > 2000000) {
             return toast('File is over 2MB');
           }
+
           reader.readAsDataURL(file);
         }
+        
         reader.addEventListener('load', (e) => this.props.loadFunction(e));
     };
   }

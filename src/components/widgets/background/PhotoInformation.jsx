@@ -5,27 +5,27 @@ import Camera from '@material-ui/icons/PhotoCamera';
 import Resolution from '@material-ui/icons/Crop';
 import Photographer from '@material-ui/icons/Person';
 
-export default class PhotoInformation extends React.PureComponent {
-  render() {
-    return (
-      <div className='photoInformation'>
-        <h1 id='photographer'>{this.props.language.credit}</h1>
-        <Info className='photoInformationHover'/>
-        <div className={this.props.className || 'infoCard'}>
-          <Info className='infoIcon'/>
-          <h1>{this.props.language.information}</h1>
-          <hr/>
-          <Location/>
-          <span id='location'></span>
-          <Camera/>
-          <span id='camera'></span>
-          <Resolution/>
-          <span id='resolution'></span>
-          <Photographer/>
-          <span id='photographerCard'></span>
-        </div>
-        <span id='credit' style={{ 'display': 'none' }}></span>
+const PhotoInformation = (props) => {
+  return (
+    <div className='photoInformation'>
+      <h1 id='photographer'>{props.language.credit}</h1>
+      <Info className='photoInformationHover'/>
+      <div className={props.className || 'infoCard'}>
+        <Info className='infoIcon'/>
+        <h1>{props.language.information}</h1>
+        <hr/>
+        <Location/>
+        <span id='location'></span>
+        <Camera/>
+        <span id='camera'></span>
+        <Resolution/>
+        <span id='resolution'></span>
+        <Photographer/>
+        <span id='photographerCard'></span>
       </div>
-    );
-  }
+      <span id='credit' style={{ 'display': 'none' }}></span>
+    </div>
+  );
 }
+
+export default PhotoInformation;

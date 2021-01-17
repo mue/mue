@@ -15,7 +15,9 @@ export default class GreetingSettings extends React.PureComponent {
   }
 
   resetItem() {
-    this.setState({ greetingName: '' });
+    this.setState({ 
+      greetingName: '' 
+    });
     toast(this.props.toastLanguage.reset);
   }
 

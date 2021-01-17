@@ -41,7 +41,8 @@ export default class MainModal extends React.PureComponent {
     document.getElementById(input + 'TabLink').classList.toggle('active');
 
     this.setState({ 
-      tab: this.tabs[input], currentTab: input 
+      tab: this.tabs[input], 
+      currentTab: input 
     });
   }
 

@@ -14,12 +14,19 @@ export default class Notes extends React.PureComponent {
 
     setNotes = (e) => {
         localStorage.setItem('notes', e.target.value);
-        this.setState({ notes: e.target.value });
+        this.setState({ 
+            notes: e.target.value 
+        });
     };
 
     pin() {
         document.getElementById('noteContainer').classList.toggle('visibilityshow');
-        (localStorage.getItem('notesPinned') === 'true') ? localStorage.setItem('notesPinned', false) : localStorage.setItem('notesPinned', true);
+        
+        if (localStorage.getItem('notesPinned') === 'true') {
+            localStorage.setItem('notesPinned', false);
+        } else {
+            localStorage.setItem('notesPinned', true);
+        }
     }
 
     componentDidMount() {

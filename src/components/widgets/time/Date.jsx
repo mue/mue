@@ -31,7 +31,8 @@ export default class DateWidget extends React.PureComponent {
           day = dateYear;
           year = dateDay;
           break;
-        default: break; // DMY
+        default: 
+          break; // DMY
       }
 
       let format;

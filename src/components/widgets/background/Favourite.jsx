@@ -13,7 +13,9 @@ export default class Favourite extends React.PureComponent {
   favourite() {
       if (localStorage.getItem('favourite')) {
         localStorage.removeItem('favourite');
-        this.setState({ favourited: <StarIcon2 onClick={() => this.favourite()} /> });
+        this.setState({ 
+          favourited: <StarIcon2 onClick={() => this.favourite()} /> 
+        });
       } else {
         const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
         const credit = document.getElementById('credit').textContent;

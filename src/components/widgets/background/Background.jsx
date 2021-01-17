@@ -72,7 +72,7 @@ export default class Background extends React.PureComponent {
     this.setBackground(url);
     this.setCredit(photographer);
 
-    document.querySelector('#backgroundCredits').style.display = 'none'; // Hide the location icon
+    //document.querySelector('#backgroundCredits').style.display = 'none'; // Hide the location icon
   }
 
   async determineMode() {

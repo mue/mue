@@ -18,6 +18,7 @@ export default class View extends React.PureComponent {
 
     viewStuff() {
       const elements = ['#searchBar', '.navbar-container', '.clock', '.greeting', '.quotediv', 'time']; // elements to hide
+      
       elements.forEach((element) => {
           try {
               (this.state.hidden === false) ? document.querySelector(element).style.display = 'none' : document.querySelector(element).style.display = 'block';
@@ -30,11 +31,13 @@ export default class View extends React.PureComponent {
           this.setState({ 
               hidden: true 
           });
+
           this.setAttribute(0, 100);
       } else {
           this.setState({ 
               hidden: false 
           });
+
           this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'));
       }
   }
