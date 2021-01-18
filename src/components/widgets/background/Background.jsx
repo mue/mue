@@ -68,7 +68,7 @@ export default class Background extends React.PureComponent {
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
     ]; // Select a random image
 
-    const url = `../offline-images/${randomImage}.jpg`;
+    const url = `./offline-images/${randomImage}.jpg`;
 
     this.setBackground(url);
     this.setCredit(photographer);

@@ -1,24 +1,34 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
- 
+const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
-  mode: 'production',
+  mode: 'development',
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
       },
       {
-        test: /\.(scss|css)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: ''
+            },
+          },
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.(woff|woff2|svg)$/,
         use: {
-          loader: 'url-loader',
+          loader: 'file-loader',
         }
       }
     ]
@@ -38,6 +48,21 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html')
+    }),
+    new CopyPlugin({
+      patterns: [{
+          from: 'public/icons',
+          to: 'icons'
+        },
+        {
+          from: 'public/offline-images',
+          to: 'offline-images'
+        },
+      ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     })
   ]
 };
