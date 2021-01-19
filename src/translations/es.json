@@ -60,7 +60,6 @@
         "dark": "Tema Oscuro",
         "experimental": {
             "title": "Experimental",
-            "webp": "Activar WebP",
             "animations": "Animaciones",
             "voicesearch": "Búsqueda por voz",
             "nightmode": "Modo nocturno automático"

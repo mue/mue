@@ -12,15 +12,21 @@ export default class Search extends React.PureComponent {
     super(...args);
     this.state = {
       url: '',
-      query: ''
+      query: '',
+      microphone: null
     };
   }
 
   startSpeechRecognition() {
     const voiceSearch = new window.webkitSpeechRecognition();
     voiceSearch.start();
+
     const searchText = document.getElementById('searchtext');
-    voiceSearch.onresult = (event) => searchText.value = event.results[0][0].transcript;
+
+    voiceSearch.onresult = (event) => {
+      searchText.value = event.results[0][0].transcript;
+    }
+
     voiceSearch.onend = () =>{
       setTimeout(() => {
         window.location.href = this.state.url + `?${this.state.query}=` + searchText.value;
@@ -28,9 +34,11 @@ export default class Search extends React.PureComponent {
     }
   }
 
-  render() {
+
+  componentDidMount() {
     let url;
     let query = 'q';
+    let microphone = null;
 
     const setting = localStorage.getItem('searchEngine');
     const info = searchEngines.find(i => i.settingsName === setting);
@@ -44,27 +52,24 @@ export default class Search extends React.PureComponent {
       url = localStorage.getItem('customSearchEngine');
     }
 
-    const searchButton = () => {
-      const value = document.getElementById('searchtext').value || 'mue fast';
-      window.location.href = url + `?${query}=` + value;
-    };
-
-    let microphone = null;
     if (localStorage.getItem('voiceSearch') === 'true') {
-      this.setState({
-        url: url,
-        query: query
-      });
       microphone = <MicIcon className='micIcon' onClick={() => this.startSpeechRecognition()}/>;
     }
 
+    this.setState({
+      url: url,
+      query: query,
+      microphone: microphone
+    });
+  }
+
+  render() {
     return (
       <div id='searchBar'>
-        <form action={url}>
-            {microphone}
-            <SearchIcon onClick={() => searchButton()} id='searchButton' />
-            <input type='text' placeholder={this.props.language} name={query} id='searchtext' className='searchtext'/>
-            <div className='blursearcbBG'/>
+        <form action={this.state.url}>
+            {this.state.microphone}
+            <SearchIcon onClick={() => searchButton()} id='searchButton'/>
+            <input type='text' placeholder={this.props.language} name={this.state.query} id='searchtext'/>
           </form>
       </div>
     );

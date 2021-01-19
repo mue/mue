@@ -59,7 +59,6 @@
         "dark": "Thème sombre",
         "experimental": {
             "title": "Expérimental",
-            "webp": "Activer WebP",
             "animations": "Animations",
             "favourite": "Bouton Ajouter aux favoris",
             "voice_search": "Recherche vocale"

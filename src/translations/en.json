@@ -76,7 +76,6 @@
         "custom_css": "Custom CSS",
         "experimental": {
             "title": "Experimental",
-            "webp": "Enable WebP",
             "animations": "Animations",
             "voice_search": "Voice Search",
             "night_mode": "Automatic Night Mode"

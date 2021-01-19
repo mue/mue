@@ -121,7 +121,6 @@ export default class Background extends React.PureComponent {
       }
     
       try { // First we try and get an image from the API...
-        const enabled = localStorage.getItem('webp');
         let requestURL;
 
         switch (localStorage.getItem('backgroundAPI')) {
@@ -129,8 +128,7 @@ export default class Background extends React.PureComponent {
             requestURL = `${Constants.UNSPLASH_URL}/getImage`;
             break;
           default: // Defaults to Mue
-            if (localStorage.getItem('supportswebp') === 'true' && enabled === 'true') requestURL = `${Constants.API_URL}/getImage?webp=true`;
-            else requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
+            requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
             break;
         }
 

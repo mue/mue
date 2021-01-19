@@ -15,13 +15,6 @@ export default class Update extends React.PureComponent {
  }
 
  async getUpdate() {
-  if (localStorage.getItem('offlineMode') === 'true') {
-    return this.setState({
-      title: this.props.language.offline.title,
-      html: this.props.language.offline.description
-    });
-  }
-
   const data = await (await fetch(Constants.API_URL + '/getUpdate')).json();
   
   if (data.statusCode === 500 || data.title === null) {
@@ -42,7 +35,14 @@ export default class Update extends React.PureComponent {
  }
 
  componentDidMount() {
-   this.getUpdate();
+  if (localStorage.getItem('offlineMode') === 'true') {
+    return this.setState({
+      title: this.props.language.offline.title,
+      html: this.props.language.offline.description
+    });
+  }
+
+  this.getUpdate();
  }
 
   render() {
