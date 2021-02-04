@@ -26,7 +26,7 @@
     "supports-webp": "2.0.1"
   },
   "devDependencies": {
-    "react-scripts": "4.0.1",
+    "react-scripts": "4.0.2",
     "node-sass": "^5.0.0"
   },
   "scripts": {
