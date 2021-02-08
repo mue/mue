@@ -27,7 +27,8 @@ export default class MainModal extends React.PureComponent {
     document.getElementById('center').classList.toggle('backgroundEffects');
 
     this.setState({ 
-      tab: this.tabs.settings, currentTab: 'settings' 
+      tab: this.tabs.settings, 
+      currentTab: 'settings' 
     });
   }
 

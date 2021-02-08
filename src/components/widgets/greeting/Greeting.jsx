@@ -54,7 +54,9 @@ export default class Greeting extends React.PureComponent {
     const data = localStorage.getItem('greetingName');
 
     if (typeof data === 'string') {
-      if (data.replace(/\s/g, '').length > 0) name = `, ${data.trim()}`;
+      if (data.replace(/\s/g, '').length > 0) {
+        name = `, ${data.trim()}`;
+      }
     }
 
     if (custom === 'false') {

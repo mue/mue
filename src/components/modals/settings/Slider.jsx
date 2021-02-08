@@ -10,8 +10,10 @@ export default class Slider extends React.PureComponent {
     };
   }
 
-  handleChange(name) {
-    SettingsFunctions.setItem(name);
+  handleChange() {
+    let setText = (this.props.override) ? this.props.override : this.props.name;
+
+    SettingsFunctions.setItem(setText);
 
     this.setState({ 
       checked: (this.state.checked === true) ? false : true 
@@ -19,11 +21,9 @@ export default class Slider extends React.PureComponent {
   }
 
   render() {
-    let setText = (this.props.override) ? this.props.override : this.props.name;
-
     return (
         <label className='switch'>
-          <input type='checkbox' checked={this.state.checked} onChange={() => this.handleChange(setText)} />
+          <input type='checkbox' checked={this.state.checked} onChange={() => this.handleChange()} />
           <span className='slider'></span>
         </label>
     );

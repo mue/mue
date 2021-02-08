@@ -56,11 +56,20 @@ export default class Marketplace extends React.PureComponent {
             break;
 
         case 'item':
-            let info;
+            let info; // get item info
             try { 
               info = await (await fetch(`${Constants.MARKETPLACE_URL}/item/${type2}/${data}`)).json(); 
             } catch (e) { 
               return toast(this.props.toastLanguage.error);
+            }
+
+            // check if already installed
+            let button = this.buttons.install; 
+
+            const installed = JSON.parse(localStorage.getItem('installed'));
+
+            if (installed.some(item => item.name === data)) {
+              button = this.buttons.uninstall;
             }
 
             this.setState({
@@ -72,19 +81,8 @@ export default class Marketplace extends React.PureComponent {
                     updated: info.updated,
                     version: info.data.version,
                     icon: info.data.screenshot_url
-                }
-            });
-
-            let button = this.buttons.install;
-
-            const installed = JSON.parse(localStorage.getItem('installed'));
-
-            if (installed.some(item => item.name === data)) {
-              button = this.buttons.uninstall;
-            }
-
-            this.setState({
-               button: button 
+                },
+                button: button
             });
 
             document.getElementById('marketplace').style.display = 'none';
@@ -101,7 +99,7 @@ export default class Marketplace extends React.PureComponent {
    }
 
   async getItems() {
-    const { data }= await (await fetch(Constants.MARKETPLACE_URL + '/all')).json();
+    const { data } = await (await fetch(Constants.MARKETPLACE_URL + '/all')).json();
     const featured = await (await fetch(Constants.MARKETPLACE_URL + '/featured')).json();
 
     this.setState({

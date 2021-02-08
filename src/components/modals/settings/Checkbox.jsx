@@ -15,6 +15,7 @@ export default class Checkbox extends React.PureComponent {
 
   handleChange(name) {
     SettingsFunctions.setItem(name);
+    
     this.setState({ 
       checked: (this.state.checked === true) ? false : true 
     });

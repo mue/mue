@@ -14,6 +14,7 @@ export default class SearchSettings extends React.PureComponent {
   resetSearch() {
     localStorage.removeItem('customSearchEngine');
     document.getElementById('customSearchEngine').value = '';
+    
     toast(this.props.toastLanguage.reset);
   }
 

@@ -20,6 +20,7 @@ export default class GreetingSettings extends React.PureComponent {
     this.setState({ 
       greetingName: '' 
     });
+
     toast(this.props.toastLanguage.reset);
   }
 
@@ -29,6 +30,7 @@ export default class GreetingSettings extends React.PureComponent {
       }
 
       localStorage.setItem('birthday', data);
+      
       this.setState({ 
         birthday: data 
       });
