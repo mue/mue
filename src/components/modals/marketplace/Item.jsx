@@ -2,11 +2,10 @@ import React from 'react';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-export default class Item extends React.PureComponent {
-  render() {
+export default function Item(props) {
     let warningHTML;
     try { // For some reason it breaks sometimes so we use try/catch
-      if (this.props.content.content.data.quote_api) {
+      if (props.content.content.data.quote_api) {
         warningHTML = (
           <div className='productInformation'>
             <ul>
@@ -23,39 +22,38 @@ export default class Item extends React.PureComponent {
     return (
       <div id='item'>
         <br/>
-        <ArrowBackIcon className='backArrow' onClick={this.props.function} />
+        <ArrowBackIcon className='backArrow' onClick={props.function} />
         <br/>
-        <h1>{this.props.data.name}</h1>
-        {this.props.button}
+        <h1>{props.data.name}</h1>
+        {props.button}
         <br/><br/>
-        <img alt='product' draggable={false} src={'https://external-content.duckduckgo.com/iu/?u=' + this.props.data.icon} />
+        <img alt='product' draggable={false} src={'https://external-content.duckduckgo.com/iu/?u=' + props.data.icon} />
         <div className='informationContainer'>
           <div className='productInformation'>
-            <h4>{this.props.language.information}</h4>
+            <h4>{props.language.information}</h4>
             <ul>
               <br/>
-              <li className='header'>{this.props.language.last_updated}</li>
-              <li>{this.props.data.updated}</li>
+              <li className='header'>{props.language.last_updated}</li>
+              <li>{props.data.updated}</li>
               <br/>
-              <li className='header'>{this.props.language.version}</li>
-              <li>{this.props.data.version}</li>
+              <li className='header'>{props.language.version}</li>
+              <li>{props.data.version}</li>
               <br/>
-              <li className='header'>{this.props.language.author}</li>
-             <li>{this.props.data.author}</li>
+              <li className='header'>{props.language.author}</li>
+             <li>{props.data.author}</li>
            </ul>
           </div>
           <div className='productInformation'>
             <ul>
-              <li className='header'>{this.props.language.notice.title}</li>
-              <li id='updated'>{this.props.language.notice.description}</li>
+              <li className='header'>{props.language.notice.title}</li>
+              <li id='updated'>{props.language.notice.description}</li>
             </ul>
           </div>
           {warningHTML}
         </div>
         <br/>
-        <h1>{this.props.language.overview}</h1>
-        <p className='description' dangerouslySetInnerHTML={{__html: this.props.data.description}}></p>
+        <h1>{props.language.overview}</h1>
+        <p className='description' dangerouslySetInnerHTML={{__html: props.data.description}}></p>
       </div>
     );
-  }
 }

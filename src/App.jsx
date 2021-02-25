@@ -47,6 +47,26 @@ export default class App extends React.PureComponent {
     if (localStorage.getItem('darkTheme') === 'true') {
       document.getElementsByClassName('Toastify')[0].classList.add('dark');
     }
+
+    // These lines of code prevent double clicking the page or pressing CTRL + A from highlighting the page
+    document.addEventListener('mousedown', (event) => {
+      if (event.detail > 1) {
+        event.preventDefault();
+      }
+    }, false);
+
+    document.onkeydown = (e) => {
+      e = e || window.event; 
+      if (!e.ctrlKey) return;
+      let code = e.which || e.keyCode;
+
+      switch (code) {
+          case 65:
+            e.preventDefault();
+            e.stopPropagation();
+            break;
+      }
+    };
   }
 
   closeWelcome() {
