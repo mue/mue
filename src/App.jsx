@@ -38,16 +38,9 @@ export default class App extends React.PureComponent {
         welcomeModal: true 
       });
     }
+
+    SettingsFunctions.loadSettings();
     
-    const css = localStorage.getItem('customcss');
-    if (css) {
-      document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
-    }
-
-    if (localStorage.getItem('darkTheme') === 'true') {
-      document.getElementsByClassName('Toastify')[0].classList.add('dark');
-    }
-
     // These lines of code prevent double clicking the page or pressing CTRL + A from highlighting the page
     document.addEventListener('mousedown', (event) => {
       if (event.detail > 1) {
@@ -92,10 +85,12 @@ export default class App extends React.PureComponent {
     const languagecode = localStorage.getItem('language') || 'en';
     const language = merge(require('./translations/en.json'), require(`./translations/${languagecode}.json`));
 
+    const toastDisplayTime = localStorage.getItem('toastDisplayTime') || 2500;
+
     return (
       <React.Fragment>
         <Background/>
-        <ToastContainer position='bottom-right' autoClose={2500} newestOnTop={true} closeOnClick rtl={false} pauseOnFocusLoss />
+        <ToastContainer position='bottom-right' autoClose={toastDisplayTime} newestOnTop={true} closeOnClick pauseOnFocusLoss />
         <div id='center'>
           <Navbar openModal={(modal) => this.setState({ [modal]: true })} language={language} />
           <Widgets language={language} languagecode={languagecode} />

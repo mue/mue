@@ -74,4 +74,38 @@ export default class SettingsFunctions {
         localStorage.setItem('firstRun', true);
         window.location.reload();
     }
+
+    static loadSettings() {
+        const css = localStorage.getItem('customcss');
+        if (css) {
+          document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
+        }
+    
+        if (localStorage.getItem('darkTheme') === 'true') {
+          document.getElementsByClassName('Toastify')[0].classList.add('dark');
+        }
+    
+        const font = localStorage.getItem('font');
+        if (font) {
+          const data = JSON.parse(font);
+    
+          let url = '';
+          if (data.google === true) {
+            url = `@import url('https://fonts.googleapis.com/css2?family=${data.name}&display=swap');`;
+          }
+    
+          document.head.insertAdjacentHTML('beforeend', `
+            <style>
+              ${url}
+              * {
+                font-family: '${data.name}', 'Lexend Deca' !important;
+              }
+            </style>`);
+        }
+
+        const zoom = localStorage.getItem('zoom');
+        if (zoom !== 100) { // don't bother if it's default zoom
+            document.body.style.zoom = zoom + '%';
+        }
+    }
 }
