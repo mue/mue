@@ -18,7 +18,6 @@
     "@material-ui/icons": "4.11.2",
     "deepmerge": "^4.2.2",
     "react": "17.0.1",
-    "react-beforeunload": "^2.4.0",
     "react-clock": "^3.0.0",
     "react-color-gradient-picker": "^0.1.2",
     "react-date-picker": "^8.0.6",

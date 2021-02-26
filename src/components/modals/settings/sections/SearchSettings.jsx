@@ -1,7 +1,5 @@
 import React from 'react';
 
-import SettingsFunctions from '../../../../modules/helpers/settings';
-
 import { toast } from 'react-toastify';
 
 import Section from '../Section';
@@ -35,6 +33,28 @@ export default class SearchSettings extends React.PureComponent {
     document.getElementById('searchEngine').value = searchEngine;
   }
 
+  componentDidUpdate() {
+    if (document.getElementById('searchEngineInput').enabled === 'true') {
+      const input = document.getElementById('customSearchEngine').value;
+      if (input) {
+          localStorage.setItem('searchEngine', 'custom');
+          localStorage.setItem('customSearchEngine', input);
+      }
+    }
+  }
+
+  setSearchEngine(input) {
+    const searchEngineInput = document.getElementById('searchEngineInput');
+    if (input === 'custom') {
+        searchEngineInput.enabled = 'true';
+        searchEngineInput.style.display = 'block';
+    } else {
+        searchEngineInput.style.display = 'none';
+        searchEngineInput.enabled = 'false';
+        localStorage.setItem('searchEngine', input);
+    }
+  }
+
   render() {
     return (
         <Section title={this.props.language.searchbar.title} name='searchBar'>
@@ -43,7 +63,7 @@ export default class SearchSettings extends React.PureComponent {
             <Dropdown label={this.props.language.searchbar.search_engine}
               name='searchEngine'
               id='searchEngine'
-              onChange={() => SettingsFunctions.setSearchEngine(document.getElementById('searchEngine').value)} >
+              onChange={() => this.setSearchEngine(document.getElementById('searchEngine').value)} >
               {searchEngines.map((engine) =>
                 <option key={engine.name} className='choices' value={engine.settingsName}>{engine.name}</option>
               )}

@@ -42,6 +42,10 @@ export default class Settings extends React.PureComponent {
     toast(this.props.toastLanguage.imported);
   }
 
+  componentWillUnmount() {
+    localStorage.setItem('customcss', document.getElementById('customcss').value);
+  }
+
   render() {
     return (
         <div className='columns'>
@@ -81,7 +85,7 @@ export default class Settings extends React.PureComponent {
             </Dropdown>
           </Section>
 
-          <BackgroundSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
+          <BackgroundSettings language={this.props.language} toastLanguage={this.props.toastLanguage} backgroundDisabled={this.props.language.background.disabled} />
           <SearchSettings language={this.props.language} toastLanguage={this.props.toastLanguage} />
           <Section title={this.props.language.offline} name='offlineMode' dropdown={false} />
 
@@ -97,7 +101,7 @@ export default class Settings extends React.PureComponent {
 
           <LanguageSettings language={this.props.language} />
 
-          <button className='apply' onClick={() => SettingsFunctions.saveStuff(this.props.language.background.disabled)}>{this.props.language.apply}</button>
+          <button className='apply' onClick={() => window.location.reload()}>{this.props.language.apply}</button>
           <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings('reset')}>{this.props.language.reset}</button>
           <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.export}</button>
           <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.import}</button>

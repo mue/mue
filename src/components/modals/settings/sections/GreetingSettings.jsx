@@ -5,7 +5,6 @@ import Checkbox from '../Checkbox';
 
 import DatePicker from 'react-date-picker';
 import { toast } from 'react-toastify';
-import { Beforeunload } from 'react-beforeunload';
 
 export default class GreetingSettings extends React.PureComponent {
   constructor(...args) {
@@ -36,7 +35,7 @@ export default class GreetingSettings extends React.PureComponent {
       });
   }
 
-  beforeUnload() {
+  componentDidUpdate() {
     localStorage.setItem('greetingName', this.state.greetingName);
   }
 
@@ -54,7 +53,6 @@ export default class GreetingSettings extends React.PureComponent {
           <p>{this.props.language.greeting.birthday_date}</p>
           <DatePicker onChange={(data) => this.changeDate(data)} value={this.state.birthday}/>
         </ul>
-        <Beforeunload onBeforeunload={() => this.beforeUnload()}/>
       </Section>
     );
   }

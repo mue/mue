@@ -43,36 +43,6 @@ export default class SettingsFunctions {
         localStorage.setItem(key, val);
     }
 
-    static setSearchEngine(input) {
-        const searchEngineInput = document.getElementById('searchEngineInput');
-        if (input === 'custom') {
-            searchEngineInput.enabled = 'true';
-            searchEngineInput.style.display = 'block';
-        } else {
-            searchEngineInput.style.display = 'none';
-            searchEngineInput.enabled = 'false';
-            localStorage.setItem('searchEngine', input);
-        }
-    }
-
-    static saveStuff(hexDisabled) {
-        localStorage.setItem('customcss', document.getElementById('customcss').value);
-
-        if (document.getElementById('customBackgroundHex').value !== hexDisabled) {
-            localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
-        }
-
-        if (document.getElementById('searchEngineInput').enabled === 'true') {
-            const input = document.getElementById('customSearchEngine').value;
-            if (input) {
-                localStorage.setItem('searchEngine', 'custom');
-                localStorage.setItem('customSearchEngine', input);
-            }
-        }
-
-        window.location.reload();
-    }
-
     static setDefaultSettings(reset) {
         localStorage.clear();
         defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
@@ -85,7 +55,7 @@ export default class SettingsFunctions {
         }
 
         // Languages
-        const languages = ['nl', 'no', 'fr', 'ru', 'es'];
+        const languages = ['es', 'fr', 'nl', 'no', 'ru'];
         const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
 
         if (languages.includes(browserLanguage)) {

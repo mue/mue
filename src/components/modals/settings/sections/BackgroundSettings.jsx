@@ -10,7 +10,6 @@ import hexToRgb from '../../../../modules/helpers/background/hexToRgb';
 import rgbToHex from '../../../../modules/helpers/background/rgbToHex';
 
 import { toast } from 'react-toastify';
-import { Beforeunload } from 'react-beforeunload';
 
 import 'react-color-gradient-picker/dist/index.css';
 import '../../../../scss/react-color-picker-gradient-picker-custom-styles.scss';
@@ -177,10 +176,14 @@ export default class BackgroundSettings extends React.PureComponent {
      });
   }
 
-  beforeUnload() {
+  componentDidUpdate() {
     localStorage.setItem('blur', this.state.blur);
     localStorage.setItem('brightness', this.state.brightness);
     localStorage.setItem('customBackground', this.state.customBackground);
+
+    if (document.getElementById('customBackgroundHex').value !== this.props.backgroundDisabled) {
+      localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
+    }
   }
 
   render() {
@@ -264,7 +267,6 @@ export default class BackgroundSettings extends React.PureComponent {
             {this.state.shown && colourSettings}
           </ul>
         </Section>
-        <Beforeunload onBeforeunload={() => this.beforeUnload()}/>
       </React.Fragment>
     );
   }
