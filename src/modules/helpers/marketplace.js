@@ -69,6 +69,7 @@ export default class MarketplaceFunctions {
         }
 
         let installed = JSON.parse(localStorage.getItem('installed'));
+        
         if (sideload) {
             installed.push({
                 content: {
@@ -76,7 +77,10 @@ export default class MarketplaceFunctions {
                    data: input
                 }
             });
-        } else installed.push(input);
+        } else {
+            installed.push(input);
+        }
+
         localStorage.setItem('installed', JSON.stringify(installed));
     }
 }
