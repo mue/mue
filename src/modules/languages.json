@@ -1,0 +1,26 @@
+[
+    {
+        "text": "English",
+        "code": "en"
+    },
+    {
+        "text": "Español",
+        "code": "es"
+    }, 
+    {
+        "text": "Français",
+        "code": "fr"
+    },
+    {
+        "text": "Nederlands",
+        "code": "nl"
+    },
+    {
+        "text": "Norsk",
+        "code": "no"
+    },
+    {
+        "text": "Pусский",
+        "code": "ru"
+    }
+]

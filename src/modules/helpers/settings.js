@@ -1,4 +1,5 @@
 const defaultSettings = require('../default_settings.json');
+const languages = require('../languages.json');
 
 const saveFile = (data, filename = 'file') => {
     if (typeof data === 'object') {
@@ -55,10 +56,10 @@ export default class SettingsFunctions {
         }
 
         // Languages
-        const languages = ['es', 'fr', 'nl', 'no', 'ru'];
+        const languageCodes = languages.map(({ code }) => code).splice(1); // remove "en" from list
         const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
 
-        if (languages.includes(browserLanguage)) {
+        if (languageCodes.includes(browserLanguage)) {
             localStorage.setItem('language', browserLanguage);
             document.documentElement.lang = browserLanguage;
         } else {

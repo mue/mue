@@ -19,6 +19,11 @@ export default function Item(props) {
       // ignore
     }
 
+    let iconsrc = 'https://external-content.duckduckgo.com/iu/?u=' + props.data.icon; // prevent console error
+    if (!props.data.icon) {
+      iconsrc = null;
+    }
+
     return (
       <div id='item'>
         <br/>
@@ -27,7 +32,7 @@ export default function Item(props) {
         <h1>{props.data.name}</h1>
         {props.button}
         <br/><br/>
-        <img alt='product' draggable={false} src={'https://external-content.duckduckgo.com/iu/?u=' + props.data.icon} />
+        <img alt='product' draggable={false} src={iconsrc} />
         <div className='informationContainer'>
           <div className='productInformation'>
             <h4>{props.language.information}</h4>

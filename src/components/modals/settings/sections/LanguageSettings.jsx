@@ -1,6 +1,8 @@
 import React from 'react';
 import Dropdown from '../Dropdown';
 
+const languages = require('../../../../modules/languages.json');
+
 export default function LanguageSettings (props) {
   return (
     <div className='section'>
@@ -8,13 +10,10 @@ export default function LanguageSettings (props) {
       <Dropdown
         name='language'
         id='language'
-        onChange={() => localStorage.setItem('language', document.getElementById('language').value)} >
-          <option className='choices' value='en'>English</option>
-          <option className='choices' value='es'>Español</option>
-          <option className='choices' value='fr'>Français</option>
-          <option className='choices' value='nl'>Nederlands</option>
-          <option className='choices' value='no'>Norsk</option>
-          <option className='choices' value='ru'>Pусский</option>
+        onChange={() => localStorage.setItem('language', document.getElementById('language').value)}>
+          {languages.map(language => 
+             <option className='choices' value={language.code} key={language.code}>{language.text}</option>
+          )}
       </Dropdown>
     </div>
   );
