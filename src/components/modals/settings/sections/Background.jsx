@@ -2,7 +2,6 @@ import React from 'react';
 
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
-import Section from '../Section';
 import FileUpload from '../FileUpload';
 
 import { ColorPicker } from 'react-color-gradient-picker';
@@ -227,8 +226,8 @@ export default class BackgroundSettings extends React.PureComponent {
     }
 
     return (
-      <React.Fragment>
-        <Section title={this.props.language.background.title} name='background' onToggle={this.onSectionToggle}>
+        <div>
+          <h2>Background</h2>
           <ul>
             <Checkbox name='view' text={this.props.language.background.view} />
             <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
@@ -266,8 +265,7 @@ export default class BackgroundSettings extends React.PureComponent {
             <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
             {this.state.shown && colourSettings}
           </ul>
-        </Section>
-      </React.Fragment>
+        </div>
     );
   }
 }

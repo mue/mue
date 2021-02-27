@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Section from '../Section';
 import Checkbox from '../Checkbox';
 
 import DatePicker from 'react-date-picker';
@@ -41,7 +40,8 @@ export default class GreetingSettings extends React.PureComponent {
 
   render() {
     return (
-      <Section title={this.props.language.greeting.title} name='greeting'>
+      <div>
+        <h2>Greeting</h2>
         <Checkbox name='events' text={this.props.language.greeting.events} />
         <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
         <Checkbox name='birthdayenabled' text={this.props.language.greeting.birthday_enabled} />
@@ -53,7 +53,7 @@ export default class GreetingSettings extends React.PureComponent {
           <p>{this.props.language.greeting.birthday_date}</p>
           <DatePicker onChange={(data) => this.changeDate(data)} value={this.state.birthday}/>
         </ul>
-      </Section>
+      </div>
     );
   }
 }

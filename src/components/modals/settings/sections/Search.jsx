@@ -2,7 +2,6 @@ import React from 'react';
 
 import { toast } from 'react-toastify';
 
-import Section from '../Section';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
 
@@ -57,7 +56,8 @@ export default class SearchSettings extends React.PureComponent {
 
   render() {
     return (
-        <Section title={this.props.language.searchbar.title} name='searchBar'>
+       <div className='section'>
+          <h2>Search</h2>
           <Checkbox name='voiceSearch' text={this.props.language.experimental.voice_search} />
           <ul>
             <Dropdown label={this.props.language.searchbar.search_engine}
@@ -74,7 +74,7 @@ export default class SearchSettings extends React.PureComponent {
             <p style={{ 'marginTop': '0px' }}>{this.props.language.searchbar.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{this.props.language.reset}</span></p>
             <input type='text' id='customSearchEngine'></input>
           </ul>
-        </Section>
+        </div>
     );
   }
 }

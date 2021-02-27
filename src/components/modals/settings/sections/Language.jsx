@@ -5,7 +5,8 @@ const languages = require('../../../../modules/languages.json');
 
 export default function LanguageSettings (props) {
   return (
-    <div className='section'>
+    <div>
+      <h2>Language</h2>
       <h4 htmlFor='language' className='nodropdown'>{props.language.language}</h4>
       <Dropdown
         name='language'

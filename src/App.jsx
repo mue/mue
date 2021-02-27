@@ -96,7 +96,7 @@ export default class App extends React.PureComponent {
           <Widgets language={language} languagecode={languagecode} />
           <PhotoInformation language={language} className={tooltipClassList} />
           <React.Suspense fallback={renderLoader()}>
-            <Modal id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
+            <Modal closeTimeoutMS={300} id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Main language={language} modalClose={() => this.setState({ mainModal: false })} />
             </Modal>
             <Modal onRequestClose={() => this.setState({ updateModal: false })} isOpen={this.state.updateModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
