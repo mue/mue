@@ -36,9 +36,7 @@ export default class Tab extends React.PureComponent {
           }
         }
 
-        let icon;
-        let divider;
-
+        let icon, divider;
         switch (this.props.label) {
           // Navbar
           case 'Settings': icon = <Settings/>; break;
@@ -62,7 +60,7 @@ export default class Tab extends React.PureComponent {
           case 'Photo Packs': icon = <Background/>; break; 
           case 'Quotes Packs': icon = <Quote/>; break;
           case 'Plugins':
-            icon = <Plugins />
+            icon = <Plugins/>;
             divider = <div><hr/></div>;
             break;
           case 'Added': icon = <Added/>; break;

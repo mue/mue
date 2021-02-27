@@ -11,31 +11,30 @@ import Background from '../settings/sections/Background';
 
 import SettingsTabs from '../tabs-backend/Tabs';
 
-export default class Settings extends React.PureComponent {
-  render() {
+export default function Settings (props) {
     return (
       <React.Fragment>
         <SettingsTabs>
           <div label='Time'>
-            <Time language={this.props.language}/>
+            <Time language={props.language}/>
           </div>
           <div label='Quote'>
-            <Quote language={this.props.language}/>
+            <Quote language={props.language}/>
           </div>
           <div label='Greeting'>
-            <Greeting language={this.props.language}/>
+            <Greeting language={props.language} toastLanguage={props.toastLanguage} />
           </div>
           <div label='Background'>
-            <Background language={this.props.language}/>
+            <Background language={props.language} toastLanguage={props.toastLanguage}/>
           </div>
           <div label='Search'>
-            <Search language={this.props.language}/>
+            <Search language={props.language}/>
           </div>
           <div label='Appearance'>
-            <Appearance language={this.props.language}/>
+            <Appearance language={props.language} toastLanguage={props.toastLanguage}/>
           </div>
           <div label='Language'>
-            <Language language={this.props.language}/>
+            <Language language={props.language}/>
           </div>
           <div label='Change Log'>
             <About/>
@@ -46,5 +45,4 @@ export default class Settings extends React.PureComponent {
         </SettingsTabs>
       </React.Fragment>
     );
-  }
 }

@@ -4,3 +4,4 @@ export const MARKETPLACE_URL = 'https://marketplace.muetab.com';
 export const WEBSITE_URL = 'https://muetab.com';
 export const OFFLINE_IMAGES = 20;
 export const BETA_VERSION = false;
+export const VERSION = '5.0.0';
