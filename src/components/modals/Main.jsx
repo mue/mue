@@ -4,7 +4,7 @@ import Settings from './tabs/Settings';
 import Addons from './tabs/Addons';
 import Marketplace from './tabs/Marketplace';
 
-import Navigation from './tabs-backend/Tabs';
+import Navigation from './tabs/backend/Tabs';
 
 export default class MainModal extends React.PureComponent {
   render() {

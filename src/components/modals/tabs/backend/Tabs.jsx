@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Tab from './Tab';
 
 export default class Tabs extends React.PureComponent {

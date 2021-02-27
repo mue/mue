@@ -1,22 +1,24 @@
 import React from 'react';
 
-// navbar
+// Navbar
 import Settings from '@material-ui/icons/Settings';
 import Addons from '@material-ui/icons/Widgets';
 import Marketplace from '@material-ui/icons/ShoppingBasket';
 
-// settings
+// Settings
 import Time from '@material-ui/icons/AccessAlarm';
 import Greeting from '@material-ui/icons/EmojiPeople';
 import Quote from '@material-ui/icons/FormatQuote';
 import Background from '@material-ui/icons/Photo';
 import Search from '@material-ui/icons/Search';
-import About from '@material-ui/icons/Info';
-import Plugins from '@material-ui/icons/Widgets';
-import Added from '@material-ui/icons/AddCircle';
 import Appearance from '@material-ui/icons/FormatPaint';
 import Language from '@material-ui/icons/Translate';
 import Changelog from '@material-ui/icons/NewReleasesRounded';
+import About from '@material-ui/icons/Info';
+
+import Colors from '@material-ui/icons/ColorLens';
+import Plugins from '@material-ui/icons/Widgets';
+import Added from '@material-ui/icons/AddCircle';
 
 export default class Tab extends React.PureComponent {
       onClick = () => {

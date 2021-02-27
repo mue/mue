@@ -9,7 +9,7 @@ import Quote from '../settings/sections/Quote';
 import Appearance from '../settings/sections/Appearance';
 import Background from '../settings/sections/Background';
 
-import SettingsTabs from '../tabs-backend/Tabs';
+import SettingsTabs from './backend/Tabs';
 
 export default function Settings (props) {
     return (

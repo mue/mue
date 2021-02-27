@@ -123,13 +123,12 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 
 ## Credits
 ### Core Team
-#### Maintainers
-[David Ralph (ohlookitsderpy)](https://github.com/ohlookitsderpy) - Lead development, photographer <br>
-
 #### Developers
+[David Ralph](https://github.com/davidjcralph) - Lead development, photographer <br>
+
 [Alex Sparkes](https://github.com/alexsparkes) - Name, lead design, photographer <br>
 
-[Isaac (Eartharoid)](https://github.com/eartharoid) - QA, development, photographer <br>
+[Isaac Saunders](https://github.com/eartharoid) - QA, development, photographer <br>
 
 [Wessel Tip](https://github.com/Wessel) - Development <br>
 
