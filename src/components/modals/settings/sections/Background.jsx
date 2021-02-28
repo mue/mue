@@ -23,8 +23,7 @@ export default class BackgroundSettings extends React.PureComponent {
       blur: 0,
       brightness: 100,
       customBackground: localStorage.getItem('customBackground') || '',
-      gradientSettings: this.DefaultGradientSettings,
-      shown: false
+      gradientSettings: this.DefaultGradientSettings
     };
   }
 
@@ -160,14 +159,6 @@ export default class BackgroundSettings extends React.PureComponent {
     });
   };
 
-  onSectionToggle = () => {
-    this.setState((state) => {
-      return {
-        shown: !state.shown
-      };
-    });
-  }
-
   fileUpload(e) {
     localStorage.setItem('customBackground', e.target.result);
     this.setState({ 
@@ -267,7 +258,7 @@ export default class BackgroundSettings extends React.PureComponent {
           <ul>
             <p>{this.props.language.background.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
             <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
-            {this.state.shown && colourSettings}
+            {colourSettings}
           </ul>
         </div>
     );
