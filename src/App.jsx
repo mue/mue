@@ -8,7 +8,7 @@ import Navbar from './components/widgets/navbar/Navbar';
 import SettingsFunctions from './modules/helpers/settings';
 import { ToastContainer } from 'react-toastify';
 import Modal from 'react-modal';
-import merge from 'deepmerge';
+import merge from './modules/helpers/merge';
 
 // Modals are lazy loaded as the user won't use them every time they open a tab
 const Main = React.lazy(() => import('./components/modals/Main'));
