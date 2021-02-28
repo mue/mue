@@ -8,6 +8,7 @@ import Time from '../settings/sections/Time';
 import Quote from '../settings/sections/Quote';
 import Appearance from '../settings/sections/Appearance';
 import Background from '../settings/sections/Background';
+import Advanced from '../settings/sections/Advanced';
 
 import SettingsTabs from './backend/Tabs';
 
@@ -35,6 +36,12 @@ export default function Settings (props) {
           </div>
           <div label={props.language.sections.language}>
             <Language language={props.language}/>
+          </div>
+          <div label='Advanced'>
+            <Advanced/>
+          </div>
+          <div label='Experimental'>
+
           </div>
           <div label={props.language.sections.changelog}>
             <About/>

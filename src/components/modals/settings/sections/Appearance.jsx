@@ -7,10 +7,6 @@ export default function AppearanceSettings (props) {
         <h2>Appearance</h2>
         <Checkbox name='darkTheme' text={props.language.dark} />
         <Checkbox name='brightnessTime' text={props.language.experimental.night_mode} betaFeature={true} />
-        <ul>
-            <p>{props.language.custom_css} <span className='modalLink' onClick={() => this.resetItem()}>{props.language.reset}</span> <span className='newFeature'> NEW</span></p>
-            <textarea id='customcss'></textarea>
-        </ul>
         <h3>Accessibility</h3>
         <Checkbox name='animations' text={props.language.experimental.animations} betaFeature={true} />
         <ul>

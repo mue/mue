@@ -15,7 +15,9 @@ import Appearance from '@material-ui/icons/FormatPaint';
 import Language from '@material-ui/icons/Translate';
 import Changelog from '@material-ui/icons/NewReleasesRounded';
 import About from '@material-ui/icons/Info';
+import Experimental from '@material-ui/icons/BugReport';
 
+// Store
 import Colors from '@material-ui/icons/ColorLens';
 import Plugins from '@material-ui/icons/Widgets';
 import Added from '@material-ui/icons/AddCircle';
@@ -54,7 +56,12 @@ export default class Tab extends React.PureComponent {
           case 'Language': 
             icon = <Language/>; 
             divider = <div><hr/></div>;
-          break;
+            break;
+          case 'Advanced': icon = <Settings/>; break;
+          case 'Experimental': 
+            icon = <Experimental/>; 
+            divider = <div><hr/></div>;
+            break;
           case 'Change Log': icon = <Changelog/>; break;
           case 'About': icon = <About/>; break; 
           // Store
