@@ -56,14 +56,16 @@ export default class SettingsFunctions {
         }
 
         // Languages
-        const languageCodes = languages.map(({ code }) => code).splice(1); // remove "en" from list
+        const languageCodes = languages.map(({ code }) => code);
         const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
 
         if (languageCodes.includes(browserLanguage)) {
             localStorage.setItem('language', browserLanguage);
-            document.documentElement.lang = browserLanguage;
+            if (browserLanguage !== 'en-GB' || browserLanguage !== 'en-US') {
+                document.documentElement.lang = browserLanguage;
+            }
         } else {
-            localStorage.setItem('language', 'en');
+            localStorage.setItem('language', 'en-GB');
         }
 
         if (reset) {

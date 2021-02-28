@@ -11,7 +11,8 @@ A bug fix? See if it has fixed the issue fully on both Chromium and Firefox. For
 implemented.
 
 ### Translations
-Please don't use Google Translate. When submitting new translations, we'd prefer it if you waited until it's finished before pull requesting or if you opened it as a draft.
+Please don't use Google Translate. When submitting new translations, we'd prefer it if you waited until it's finished before pull requesting or if you opened it as a draft. 
+All translation work should be done by copying the ``en-GB.json`` file to a file with your language code as the name, e.g ``fr.json``.
 
 ## Development
 ### Code

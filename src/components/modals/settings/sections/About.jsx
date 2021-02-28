@@ -4,6 +4,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 import * as Constants from '../../../../modules/constants';
 
+const other_contributors = require('../../../../modules/other_contributors.json');
+
 export default class About extends React.PureComponent {
   constructor(...args) {
     super(...args);
@@ -45,6 +47,11 @@ export default class About extends React.PureComponent {
           <p>Google (Pin Icon)</p>
           <h3>Contributors</h3>
           {this.state.contributors.map((item) =>
+            <Tooltip title={item.login} placement='top' key={item.login}>
+                <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
+            </Tooltip>
+          )}
+          {other_contributors.map((item) => // for those who contributed without opening a pull request
             <Tooltip title={item.login} placement='top' key={item.login}>
                 <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
             </Tooltip>

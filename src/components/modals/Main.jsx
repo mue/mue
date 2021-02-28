@@ -11,16 +11,16 @@ export default class MainModal extends React.PureComponent {
     return (
       <div className='modal'>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1>{this.props.language.modals.title}</h1>
+        <h1>Options</h1>
         <div>
           <Navigation navbar={true}>
-            <div label='Settings'>
-              <Settings language={this.props.language.settings} toastLanguage={this.props.language.toasts} />
+            <div label={this.props.language.modals.main.navbar.settings}>
+              <Settings language={this.props.language.modals.main.settings} toastLanguage={this.props.language.toasts} />
             </div>
-            <div label='My Add-ons'>
+            <div label={this.props.language.modals.main.navbar.addons}>
               <Addons/>
             </div>
-            <div label='Marketplace'>
+            <div label={this.props.language.modals.main.navbar.marketplace}>
               <Marketplace/>
             </div>
           </Navigation>

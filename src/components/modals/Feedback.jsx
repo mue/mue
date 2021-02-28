@@ -3,21 +3,21 @@ import React from 'react';
 export default function FeedbackModal(props) {
     return (
         <div className='feedback'>
-          <h1>Give us feedback</h1>
+          <h1>{props.language.modals.feedback.title}</h1>
           <span className='closeModal' onClick={props.modalClose}>&times;</span>
-           <label>How would you rate your experience of this Mue Build?</label>
+           <label>{props.language.modals.feedback.question_one}</label>
            <br/><br/>
            <label className='values'>0</label><input className='range' type='range' min='0' max='100' /><label className='values'>10</label>
            <br/><br/>
-           <label>What bugs did you encounter in your use of Mue?</label>
+           <label>{props.language.modals.feedback.question_two}</label>
            <br/><br/>
            <input type='text'/>
            <br/><br/>
-           <label>How likely would you be to recommend this version of Mue to a friend or colleague?</label>
+           <label>{props.language.modals.feedback.question_three}</label>
            <br/><br/>
            <label className='values'>0</label><input className='range' type='range' min='0' max='100' /><label className='values'>10</label>
            <br/><br/><br/>
-           <button>Submit</button>
+           <button>{props.language.modals.feedback.submit}</button>
        </div>
     );
 }

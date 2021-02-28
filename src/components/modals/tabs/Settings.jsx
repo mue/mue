@@ -15,31 +15,31 @@ export default function Settings (props) {
     return (
       <React.Fragment>
         <SettingsTabs>
-          <div label='Time'>
-            <Time language={props.language}/>
+          <div label={props.language.sections.time.title}>
+            <Time language={props.language.sections.time}/>
           </div>
-          <div label='Quote'>
-            <Quote language={props.language}/>
+          <div label={props.language.sections.quote.title}>
+            <Quote language={props.language.sections.quote}/>
           </div>
-          <div label='Greeting'>
+          <div label={props.language.sections.greeting.title}>
             <Greeting language={props.language} toastLanguage={props.toastLanguage} />
           </div>
-          <div label='Background'>
+          <div label={props.language.sections.background.title}>
             <Background language={props.language} toastLanguage={props.toastLanguage}/>
           </div>
-          <div label='Search'>
+          <div label={props.language.sections.search.title}>
             <Search language={props.language}/>
           </div>
-          <div label='Appearance'>
+          <div label={props.language.sections.appearance}>
             <Appearance language={props.language} toastLanguage={props.toastLanguage}/>
           </div>
-          <div label='Language'>
+          <div label={props.language.sections.language}>
             <Language language={props.language}/>
           </div>
-          <div label='Change Log'>
+          <div label={props.language.sections.changelog}>
             <About/>
           </div>
-          <div label='About'>
+          <div label={props.language.sections.about.title}>
             <About/>
           </div>
         </SettingsTabs>

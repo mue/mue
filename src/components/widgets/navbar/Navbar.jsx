@@ -18,7 +18,7 @@ export default class Navbar extends React.PureComponent {
   render() {
     // toggle refresh button
     let refreshHTML = (
-      <Tooltip title={this.props.language.navbar.tooltips.refresh}>
+      <Tooltip title={this.props.language.widgets.navbar.tooltips.refresh}>
         <RefreshIcon className='refreshicon topicons' onClick={() => window.location.reload()} />
       </Tooltip>
     );
@@ -43,15 +43,15 @@ export default class Navbar extends React.PureComponent {
         <div className='notes'>
           <NotesIcon className='topicons'/>
           <React.Suspense fallback={renderLoader()}>
-            <Notes language={this.props.language.navbar.notes} />
+            <Notes language={this.props.language.widgets.navbar.notes} />
           </React.Suspense>
         </div>
         {feedbackHTML}
-        <Tooltip title={this.props.language.navbar.tooltips.update} placement='top'>
+        <Tooltip title={this.props.language.widgets.navbar.tooltips.update} placement='top'>
           <NewReleases className='refreshicon topicons' onClick={() => this.props.openModal('updateModal')} />
         </Tooltip>
         {refreshHTML}
-        <Tooltip title={this.props.language.modals.settings} placement='top'>
+        <Tooltip title={this.props.language.modals.main.navbar.settings} placement='top'>
           <Gear className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')} />
         </Tooltip>
       </div>

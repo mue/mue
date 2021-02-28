@@ -1,0 +1,199 @@
+{
+    "widgets": {
+        "greeting": {
+            "morning": "Good Morning",
+            "afternoon": "Good Afternoon",
+            "evening": "Good Evening",
+            "christmas": "Merry Christmas",
+            "newyear": "Happy New Year",
+            "halloween": "Happy Halloween"
+        },
+        "background": {
+            "credit": "Photo by",
+            "information": "Information"
+        },
+        "search": "Search",
+        "navbar": {
+            "tooltips": {
+                "update": "Update Patch Notes",
+                "refresh": "Refresh Page"
+            },
+            "notes": {
+                "title": "Notes",
+                "placeholder": "Type here"
+            }
+        }
+    },
+    "modals": {
+        "main": {
+            "title": "Options",
+            "loading": "Loading...",
+            "navbar": {
+                "settings": "Settings",
+                "addons": "My Add-ons",
+                "marketplace": "Marketplace"
+            },
+            "settings": {
+                "sections": {
+                    "time": {
+                        "title": "Time",
+                        "seconds": "Seconds",
+                        "twentyfourhour": "24 Hour",
+                        "ampm": "AM/PM (12 hour)",
+                        "zero": "Zero-padded",
+                        "analog": "Analog",
+                        "percentageComplete": "Percentage of the Day Complete",
+                        "date": {
+                            "title": "Date",
+                            "short_date": "Short Date",
+                            "short_format": "Short Format",
+                            "short_separator": {
+                                "title": "Short Separator",
+                                "default": "Default",
+                                "dash": "Dash",
+                                "gaps": "Gaps"
+                            }
+                        }
+                    },
+                    "quote": {
+                        "title": "Quote",
+                        "buttons": "Buttons",
+                        "copy": "Copy",
+                        "tweet": "Tweet",
+                        "favourite": "Favourite"
+                    },
+                    "greeting": {
+                        "title": "Greeting",
+                        "events": "Events",
+                        "default": "Default Greeting Message",
+                        "name": "Name for greeting",
+                        "birthday_enabled": "Birthday Enabled",
+                        "birthday_date": "Birthday Date"
+                    },
+                    "background": {
+                        "title": "Background",
+                        "api": "Background API",
+                        "blur": "Adjust Blur",
+                        "brightness": "Adjust Brightness",
+                        "custom_url": "Custom Background URL",
+                        "custom_background": "Custom Background",
+                        "custom_colour": "Custom Background Colour",
+                        "upload": "Upload",
+                        "add_colour": "Add colour",
+                        "favourite": "Favourite",
+                        "view": "View",
+                        "refresh": "Refresh",
+                        "disabled": "Disabled"
+                    },
+                    "search": {
+                        "title": "Search",
+                        "search_engine": "Search Engine",
+                        "custom": "Custom Search URL"
+                    },
+                    "appearance": "Appearance",
+                    "language": "Language",
+                    "changelog": "Change Log",
+                    "about": {
+                        "title": "About",
+                        "about": {
+                            "copyright": "Copyright",
+                            "version": {
+                                "title": "Version",
+                                "update_available": "Update available",
+                                "no_update": "No update available"
+                            },
+                            "resources_used": {
+                                "title": "Resources Used",
+                                "bg_images": "Background Images",
+                                "pin_icon": "Pin Icon"
+                            },
+                            "contributors": "Contributors",
+                            "supporters": "Supporters"
+                        }
+                    }
+                },
+                "buttons": {
+                    "apply": "Apply",
+                    "reset": "Reset",
+                    "import": "Import",
+                    "export": "Export"
+                }
+            },
+            "marketplace": {
+                "photo_packs": "Photo Packs",
+                "quote_packs": "Quote Packs",
+                "preset_settings": "Preset Settings",
+                "themes": "Themes",
+                "product": {
+                    "overview": "Overview",
+                    "information": "Information",
+                    "last_updated": "Last Updated",
+                    "version": "Version",
+                    "author": "Author",
+                    "notice": {
+                        "title": "Notice",
+                        "description": "In order for the change to take place, the page must be refreshed."
+                    },
+                    "buttons": {
+                        "addtomue": "Add To Mue",
+                        "remove": "Remove"
+                    },
+                    "quote_warning": {
+                        "title": "Warning",
+                        "description": "This quote pack requests to external servers that may track you!"
+                    }
+                },
+                "offline": {
+                    "title": "Looks like you're offline",
+                    "description": "Please connect to the internet."
+                },
+                "see_more": "See More"
+            },
+            "addons": {
+                "added": "Added",
+                "empty": {
+                    "title": "It's empty here",
+                    "description": "Head to the marketplace to add some.",
+                    "button": "Take me there"
+                },
+                "sideload": "Sideload"
+            }
+        },
+        "update": {
+            "title": "Update",
+            "offline": {
+                "title": "Offline",
+                "description": "Cannot get update logs while in offline mode"
+            },
+            "error": {
+                "title": "Error",
+                "description": "Could not connect to the server"
+            },
+            "read_blog": "Read on the blog here",
+            "contact_support": "Contact us here"
+        },
+        "welcome": {
+            "title": "Welcome to",
+            "information": "Information",
+            "thankyoumessage1": "Thank you for downloading Mue Tab,",
+            "thankyoumessage2": "we hope you enjoy your time with our extension.",
+            "support": "Support",
+            "close": "Close"
+        },
+        "feedback": {
+            "title": "Give us feedback",
+            "question_one": "How would you rate your experience of this Mue build?",
+            "question_two": "What bugs did you encounter in your use of Mue?",
+            "question_three": "How likely would you be to recommend this version of Mue to a friend of colleague?",
+            "submit": "Submit"
+        }
+    },
+    "toasts": {
+        "quote": "Quote copied",
+        "reset": "Reset successfully",
+        "imported": "Successfully imported",
+        "installed": "Successfully installed",
+        "uninstalled": "Successfully removed",
+        "error": "Something went wrong"
+    }
+}

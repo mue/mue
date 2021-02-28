@@ -82,8 +82,8 @@ export default class App extends React.PureComponent {
     const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
     /// language
-    const languagecode = localStorage.getItem('language') || 'en';
-    const language = merge(require('./translations/en.json'), require(`./translations/${languagecode}.json`));
+    const languagecode = localStorage.getItem('language') || 'en-GB';
+    const language = merge(require('./translations/en-GB.json'), require(`./translations/${languagecode}.json`));
 
     const toastDisplayTime = localStorage.getItem('toastDisplayTime') || 2500;
 
@@ -94,7 +94,7 @@ export default class App extends React.PureComponent {
         <div id='center'>
           <Navbar openModal={(modal) => this.setState({ [modal]: true })} language={language} />
           <Widgets language={language} languagecode={languagecode} />
-          <PhotoInformation language={language} className={tooltipClassList} />
+          <PhotoInformation language={language.widgets.background} className={tooltipClassList} />
           <React.Suspense fallback={renderLoader()}>
             <Modal closeTimeoutMS={300} id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Main language={language} modalClose={() => this.setState({ mainModal: false })} />
@@ -103,7 +103,7 @@ export default class App extends React.PureComponent {
               <Update language={language.update} modalClose={() => this.setState({ updateModal: false })} />
             </Modal>
             <Modal onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
-              <Welcome modalClose={() => this.closeWelcome()} language={language.welcome} />
+              <Welcome modalClose={() => this.closeWelcome()} language={language.modals.welcome} />
             </Modal>
             {/* <Modal onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>
               <Feedback modalClose={() => this.setState({ feedbackModal: false })} />

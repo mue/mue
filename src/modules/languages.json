@@ -1,7 +1,11 @@
 [
     {
-        "text": "English",
-        "code": "en"
+        "text": "English (UK)",
+        "code": "en-GB"
+    },
+    {
+        "text": "English (US)",
+        "code": "en-US"
     },
     {
         "text": "Español",
