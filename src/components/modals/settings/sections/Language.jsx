@@ -16,6 +16,11 @@ export default function LanguageSettings (props) {
              <option className='choices' value={language.code} key={language.code}>{language.text}</option>
           )}
       </Dropdown>
+      <h4 htmlFor='quotelanguage' className='nodropdown'>Quote {props.language.language}</h4>
+      <Dropdown label={props.language.language} name='quotelanguage' id='quotelanguage' onChange={() => localStorage.setItem('quotelanguage', document.getElementById('quotelanguage').value)}>
+              <option className='choices' value='English'>English</option>
+              <option className='choices' value='French'>Français</option>
+      </Dropdown>
     </div>
   );
 }

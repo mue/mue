@@ -228,11 +228,23 @@ export default class BackgroundSettings extends React.PureComponent {
     return (
         <div>
           <h2>Background</h2>
+          <Checkbox name='background' text='Enabled' />
+          <h3>Buttons</h3>
           <ul>
             <Checkbox name='view' text={this.props.language.background.view} />
             <Checkbox name='favouriteEnabled' text={this.props.language.background.favourite} />
             <Checkbox name='refresh' text={this.props.language.background.refresh} />
           </ul>
+          <h3>Effects</h3>
+          <ul>
+            <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
+            <input className='range' type='range' min='0' max='100' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
+          </ul>
+          <ul>
+            <p>{this.props.language.background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
+            <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
+          </ul>
+          <h3>Source</h3>
           <ul>
             <Dropdown
               label={this.props.language.background.api}
@@ -242,14 +254,6 @@ export default class BackgroundSettings extends React.PureComponent {
                 <option className='choices' value='mue'>Mue</option>
                 <option className='choices' value='unsplash'>Unsplash</option>
             </Dropdown>
-          </ul>
-          <ul>
-            <p>{this.props.language.background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
-            <input className='range' type='range' min='0' max='100' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
-          </ul>
-          <ul>
-            <p>{this.props.language.background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
-            <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
           </ul>
           <ul>
             <p>{this.props.language.background.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
