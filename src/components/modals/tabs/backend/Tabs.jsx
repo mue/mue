@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Tab from './Tab';
+import ErrorBoundary from '../../../ErrorBoundary';
 
 export default class Tabs extends React.PureComponent {
   constructor(props) {
@@ -43,10 +44,12 @@ export default class Tabs extends React.PureComponent {
           })}
         </ul>
         <div className={tabClass}>
+          <ErrorBoundary>
           {this.props.children.map((child) => {
             if (child.props.label !== this.state.currentTab) return undefined;
             return child.props.children;
           })}
+          </ErrorBoundary>
         </div>
       </span>
     );

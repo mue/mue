@@ -58,9 +58,9 @@ export default class SearchSettings extends React.PureComponent {
     return (
        <div className='section'>
           <h2>Search</h2>
-          <Checkbox name='voiceSearch' text={this.props.language.experimental.voice_search} />
+          <Checkbox name='voiceSearch' text={this.props.language.voice_search} />
           <ul>
-            <Dropdown label={this.props.language.searchbar.search_engine}
+            <Dropdown label={this.props.language.search_engine}
               name='searchEngine'
               id='searchEngine'
               onChange={() => this.setSearchEngine(document.getElementById('searchEngine').value)} >
@@ -71,7 +71,7 @@ export default class SearchSettings extends React.PureComponent {
             </Dropdown>
           </ul>
           <ul id='searchEngineInput' style={{ display: 'none' }}>
-            <p style={{ 'marginTop': '0px' }}>{this.props.language.searchbar.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{this.props.language.reset}</span></p>
+            <p style={{ 'marginTop': '0px' }}>{this.props.language.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{this.props.language.reset}</span></p>
             <input type='text' id='customSearchEngine'></input>
           </ul>
         </div>

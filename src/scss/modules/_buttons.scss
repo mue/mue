@@ -17,6 +17,17 @@
   box-shadow: none;
 }
 
+.refresh {
+  @extend %settingsButton;
+  background-color: map-get($button-colours, 'confirm');
+  border: 2px solid map-get($button-colours, 'confirm');
+
+  &:hover {
+    border: 2px solid map-get($button-colours, 'confirm');
+    color: map-get($button-colours, 'confirm');
+  }
+}
+
 .apply {
   @extend %settingsButton;
   margin-right: 20px;

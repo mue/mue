@@ -23,16 +23,16 @@ export default function Settings (props) {
             <Quote language={props.language.sections.quote}/>
           </div>
           <div label={props.language.sections.greeting.title}>
-            <Greeting language={props.language} toastLanguage={props.toastLanguage} />
+            <Greeting language={props.language.sections.greeting} toastLanguage={props.language.toasts} />
           </div>
           <div label={props.language.sections.background.title}>
-            <Background language={props.language} toastLanguage={props.toastLanguage}/>
+            <Background language={props.language.sections.background} toastLanguage={props.toastLanguage}/>
           </div>
           <div label={props.language.sections.search.title}>
-            <Search language={props.language}/>
+            <Search language={props.language.sections.search}/>
           </div>
           <div label={props.language.sections.appearance}>
-            <Appearance language={props.language} toastLanguage={props.toastLanguage}/>
+            <Appearance language={props.language.sections.appearance} toastLanguage={props.toastLanguage}/>
           </div>
           <div label={props.language.sections.language}>
             <Language language={props.language}/>

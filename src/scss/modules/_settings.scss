@@ -64,8 +64,7 @@ input {
 }
 
 h4,
-.switch,
-.expandIcons {
+.switch {
   display: inline;
   font-size: 1.4em;
   font-weight: 100;
@@ -80,38 +79,8 @@ h4,
   margin-bottom: 20px;
 }
 
-.expandIcons {
-  font-size: 25px;
-  vertical-align: middle;
-}
-
-h4,
-.expandIcons {
+h4 {
   cursor: pointer;
-}
-
-.extraSettings {
-  border-left: 10px solid;
-  border-image-slice: 1;
-  border-width: 5px;
-  list-style: none;
-  border-image-source: linear-gradient(to bottom, #ffb032 0%, #dd3b67 100%);
-
-  p {
-    margin: 0;
-    padding: 0;
-  }
-
-  select {
-    margin-left: 20px;
-  }
-
-  input[type=text],
-  input[type=range],
-  p,
-  button {
-    margin-top: 10px;
-  }
 }
 
 ul {

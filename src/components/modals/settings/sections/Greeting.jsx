@@ -41,18 +41,18 @@ export default class GreetingSettings extends React.PureComponent {
   render() {
     return (
       <div>
-        <h2>Greeting</h2>
-        <Checkbox name='greeting'>Enabled</Checkbox>
-        <Checkbox name='events' text={this.props.language.greeting.events} />
-        <Checkbox name='defaultGreetingMessage' text={this.props.language.greeting.default} />
+        <h2>{this.props.language.title}</h2>
+        <Checkbox name='greeting' text={'Enabled'}>Enabled</Checkbox>
+        <Checkbox name='events' text={this.props.language.events} />
+        <Checkbox name='defaultGreetingMessage' text={this.props.language.default} />
         <ul>
-          <p>{this.props.language.greeting.name} <span className='modalLink' onClick={() => this.resetItem()}>{this.props.language.reset}</span></p>
+          <p>{this.props.language.name} <span className='modalLink' onClick={() => this.resetItem()}>Reset</span></p>
           <input type='text' value={this.state.greetingName} onChange={(e) => this.setState({ greetingName: e.target.value })}></input>
         </ul>
         <h3>Birthday</h3>
-        <Checkbox name='birthdayenabled' text={this.props.language.greeting.birthday_enabled} />
+        <Checkbox name='birthdayenabled' text={this.props.language.birthday_enabled} />
         <ul>
-          <p>{this.props.language.greeting.birthday_date}</p>
+          <p>{this.props.language.birthday_date}</p>
           <DatePicker onChange={(data) => this.changeDate(data)} value={this.state.birthday}/>
         </ul>
       </div>
