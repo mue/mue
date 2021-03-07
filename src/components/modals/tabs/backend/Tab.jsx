@@ -67,7 +67,7 @@ export default class Tab extends React.PureComponent {
           // Store
           case 'Themes': icon = <Colors/>; break; 
           case 'Photo Packs': icon = <Background/>; break; 
-          case 'Quotes Packs': icon = <Quote/>; break;
+          case 'Quote Packs': icon = <Quote/>; break;
           case 'Plugins':
             icon = <Plugins/>;
             divider = <div><hr/></div>;

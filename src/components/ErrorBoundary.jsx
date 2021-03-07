@@ -3,16 +3,18 @@ import React from 'react';
 export default class ErrorBoundary extends React.PureComponent {
     constructor(props) {
       super(props);
-      this.state = { hasError: false, error: '' };
+      this.state = { 
+        error: false 
+      };
     }
   
     static getDerivedStateFromError(error) {
-        console.log(error);
-        return { hasError: true, error: error };
+      console.log(error);
+      return { error: true };
     }
     
     render() {
-      if (this.state.hasError) {
+      if (this.state.error) {
         return (
             <div style={{'text-align': 'center'}}>
                 <h1>Error</h1>
@@ -24,4 +26,4 @@ export default class ErrorBoundary extends React.PureComponent {
   
       return this.props.children; 
     }
-  }
+}
