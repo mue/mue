@@ -46,6 +46,7 @@ export default class Tab extends React.PureComponent {
           case 'Settings': icon = <Settings/>; break;
           case 'My Add-ons': icon = <Addons/>; break;
           case 'Marketplace': icon = <Marketplace/>; break;
+
           // Settings
           case 'Time': icon = <Time/>; break;
           case 'Greeting': icon = <Greeting/>; break;
@@ -64,6 +65,7 @@ export default class Tab extends React.PureComponent {
             break;
           case 'Change Log': icon = <Changelog/>; break;
           case 'About': icon = <About/>; break; 
+
           // Store
           case 'Themes': icon = <Colors/>; break; 
           case 'Photo Packs': icon = <Background/>; break; 
@@ -73,6 +75,7 @@ export default class Tab extends React.PureComponent {
             divider = <div><hr/></div>;
             break;
           case 'Added': icon = <Added/>; break;
+          
           default: break;
         }
 

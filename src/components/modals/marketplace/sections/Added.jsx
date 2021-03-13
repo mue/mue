@@ -5,6 +5,8 @@ import Item from '../Item';
 import Items from '../Items';
 import FileUpload from '../../settings/FileUpload';
 
+import MarketplaceFunctions from '../../../../modules/helpers/marketplace';
+
 export default class Added extends React.PureComponent {
   constructor(...args) {
     super(...args);
@@ -61,8 +63,32 @@ export default class Added extends React.PureComponent {
     this.setState({ 
         button: this.buttons.uninstall 
     });
-}
+  }
 
+  manage(type, input) {
+    switch (type) {
+        case 'install': 
+          MarketplaceFunctions.install(input.type, input, true); 
+          break;
+        case 'uninstall': 
+          MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.content.type); 
+          break;
+        default: 
+          break;
+    }
+
+    toast(this.props.toastLanguage[type + 'ed']);
+
+    let button = '';
+    if (type === 'install') {
+        button = this.buttons.uninstall;
+    }
+
+    this.setState({ 
+        button: button, 
+        installed: JSON.parse(localStorage.getItem('installed')) 
+    });
+  }
 
   render() {
     let content = <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', 'addon', input)} />;
@@ -74,7 +100,7 @@ export default class Added extends React.PureComponent {
                 <LocalMallIcon/>
                 <h1>Empty</h1>
                 <p className='description'>Nothing here (yet)</p>
-                <button className='goToMarket'>not implemented</button>
+                <button className='goToMarket'>Take me there</button>
            </div>
           </div>
         );
@@ -83,7 +109,7 @@ export default class Added extends React.PureComponent {
     return (
        <React.Fragment>
         <div id='marketplace'>
-          <FileUpload id='file-input' accept='application/json' loadFunction={(e) => this.manage('install', JSON.parse(e.target.result))} />
+          <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.manage('install', JSON.parse(e.target.result))} />
           <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
           {content}
         </div>

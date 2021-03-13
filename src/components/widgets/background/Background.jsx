@@ -161,7 +161,11 @@ export default class Background extends React.PureComponent {
 
   componentDidMount() {
     if (localStorage.getItem('background') === 'false') {
-      return document.querySelector('#credits').style.display = 'none'; // Hide the credit
+      return document.querySelector('.photoInformation').style.display = 'none'; // Hide the credit
+    }
+
+    if (localStorage.getItem('customBackgroundColour') !== 'Disabled') {
+      document.querySelector('.photoInformation').style.display = 'none';
     }
 
     if (localStorage.getItem('animations') === 'true') {
