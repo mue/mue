@@ -25,8 +25,9 @@ export default class About extends React.PureComponent {
       updateMsg = 'Update available: ' + version;
     }
 
+    // TODO: REMOVE BOTS AND MAKE IT ACTUALLY WORK,
     this.setState({
-      contributors: contributors, // TODO: REMOVE BOTS AND MAKE IT ACTUALLY WORK,
+      contributors: contributors,
       update: updateMsg
     });
   }
@@ -51,7 +52,8 @@ export default class About extends React.PureComponent {
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
           </Tooltip>
         )}
-        {other_contributors.map((item) => // for those who contributed without opening a pull request
+        {// for those who contributed without opening a pull request
+        other_contributors.map((item) =>
           <Tooltip title={item.login} placement='top' key={item.login}>
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
           </Tooltip>

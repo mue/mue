@@ -42,14 +42,15 @@ export default class Marketplace extends React.PureComponent {
   async toggle(type, data) {
     switch (type) {
       case 'item':
-        let info; // get item info
+        let info;
+      // get item info
         try {
           info = await (await fetch(`${Constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
         } catch (e) {
           return toast(this.props.toastLanguage.error);
         }
 
-            // check if already installed
+        // check if already installed
         let button = this.buttons.install;
 
         const installed = JSON.parse(localStorage.getItem('installed'));

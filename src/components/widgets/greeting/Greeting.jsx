@@ -19,12 +19,15 @@ export default class Greeting extends React.PureComponent {
     const month = time.getMonth();
     const date = time.getDate();
 
+    // If it's December 25th, set the greeting string to "Merry Christmas"
     if (month === 11 && date === 25) {
-      message = this.props.language.christmas;  // If it's December 25th, set the greeting string to "Merry Christmas"
+      message = this.props.language.christmas;
+    // If the date is January 1st, set the greeting string to "Happy new year"
     } else if (month === 0 && date === 1) {
-      message = this.props.language.newyear; // If the date is January 1st, set the greeting string to "Happy new year"
+      message = this.props.language.newyear;
+    // If it's October 31st, set the greeting string to "Happy Halloween"
     } else if (month === 9 && date === 31) {
-      message = this.props.language.halloween; // If it's October 31st, set the greeting string to "Happy Halloween"
+      message = this.props.language.halloween;
     }
 
     return message;
@@ -34,11 +37,14 @@ export default class Greeting extends React.PureComponent {
     const now = new Date();
     const hour = now.getHours();
 
-    let message = this.props.language.evening; // Set the default greeting string to "Good evening"
+    // Set the default greeting string to "Good evening"
+    let message = this.props.language.evening;
+    // If it's before 12am, set the greeting string to "Good morning"
     if (hour < 12) {
-      message = this.props.language.morning; // If it's before 12am, set the greeting string to "Good morning"
+      message = this.props.language.morning;
+    // If it's before 6pm, set the greeting string to "Good afternoon"
     } else if (hour < 18) {
-      message = this.props.language.afternoon; // If it's before 6pm, set the greeting string to "Good afternoon"
+      message = this.props.language.afternoon;
     }
 
     // Events

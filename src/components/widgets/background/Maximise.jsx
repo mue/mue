@@ -18,7 +18,8 @@ export default class View extends React.PureComponent {
   }
 
   viewStuff() {
-    const elements = ['#searchBar', '.navbar-container', '.clock', '.greeting', '.quotediv', 'time']; // elements to hide
+    // elements to hide
+    const elements = ['#searchBar', '.navbar-container', '.clock', '.greeting', '.quotediv', 'time'];
 
     elements.forEach((element) => {
       try {

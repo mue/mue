@@ -11,7 +11,8 @@ import * as Constants from '../../../modules/constants';
 
 import './scss/index.scss';
 
-const Notes = React.lazy(() => import('./Notes')); // the user probably won't use the notes feature every time so we lazy load
+// the user probably won't use the notes feature every time so we lazy load
+const Notes = React.lazy(() => import('./Notes'));
 const renderLoader = () => <div></div>;
 
 export default class Navbar extends React.PureComponent {

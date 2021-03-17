@@ -16,7 +16,8 @@ export default class Background extends React.PureComponent {
     return style;
   }
 
-  setBackground(url, colour, credit) { // Sets the attributes of the background image
+  // Sets the attributes of the background image
+  setBackground(url, colour, credit) {
     let gradientSettings = '';
     try {
       gradientSettings = JSON.parse(colour);
@@ -42,8 +43,9 @@ export default class Background extends React.PureComponent {
       `${background}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
     );
 
+    // Hide the credit
     if (credit === 'false' && document.querySelector('#credits')) {
-      document.querySelector('#credits').style.display = 'none'; // Hide the credit
+      document.querySelector('#credits').style.display = 'none';
     }
   }
 
@@ -58,22 +60,27 @@ export default class Background extends React.PureComponent {
     document.getElementById('photographerCard').textContent = credit;
   }
 
-  doOffline() { // Handles setting the background if the user is offline
+  // Handles setting the background if the user is offline
+  doOffline() {
     const offlineImages = require('./offline_images.json');
 
-    const photographers = Object.keys(offlineImages); // Get all photographers from the keys in offlineImages.json
-    const photographer = photographers[Math.floor(Math.random() * photographers.length)]; // Select a random photographer from the keys
+    // Get all photographers from the keys in offlineImages.json
+    const photographers = Object.keys(offlineImages);
+    // Select a random photographer from the keys
+    const photographer = photographers[Math.floor(Math.random() * photographers.length)];
 
+    // Select a random image
     const randomImage = offlineImages[photographer].photo[
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
-    ]; // Select a random image
+    ];
 
     const url = `./offline-images/${randomImage}.jpg`;
 
     this.setBackground(url);
     this.setCredit(photographer);
 
-    //document.querySelector('#backgroundCredits').style.display = 'none'; // Hide the location icon
+    // Hide the location icon
+    //document.querySelector('#backgroundCredits').style.display = 'none';
   }
 
   async determineMode() {
@@ -113,30 +120,37 @@ export default class Background extends React.PureComponent {
           <source src='${customBackground}'/>
         </video>`;
       } else {
-        this.setBackground(customBackground, null, 'false'); // Local
+        // Local
+        this.setBackground(customBackground, null, 'false');
       }
-    } else { // Online
+    // Online
+    } else {
       if (offlineMode === 'true') {
         return this.doOffline();
       }
 
-      try { // First we try and get an image from the API...
+      // First we try and get an image from the API...
+      try {
         let requestURL;
 
         switch (localStorage.getItem('backgroundAPI')) {
           case 'unsplash':
             requestURL = `${Constants.UNSPLASH_URL}/getImage`;
             break;
-          default: // Defaults to Mue
+          // Defaults to Mue
+          default:
             requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
             break;
         }
 
-        const data = await (await fetch(requestURL)).json(); // Fetch JSON data from requestURL
+        // Fetch JSON data from requestURL
+        const data = await (await fetch(requestURL)).json();
 
+        // If we hit the rate limit, fallback to local images
         if (data.statusCode === 429) {
-          this.doOffline(); // If we hit the rate limit, fallback to local images
-        } else { // Otherwise, set the background and credit from remote data
+          this.doOffline();
+        // Otherwise, set the background and credit from remote data
+        } else {
           this.setBackground(data.file);
 
           if (localStorage.getItem('backgroundAPI') === 'unsplash') {
@@ -152,16 +166,19 @@ export default class Background extends React.PureComponent {
           return document.querySelector('#backgroundCredits').style.display = 'none';
         }
 
-        document.getElementById('location').innerText = `${data.location.replace('null', '')}`; // Set the location tooltip
-      } catch (e) { // ..and if that fails we load one locally
+        // Set the location tooltip
+        document.getElementById('location').innerText = `${data.location.replace('null', '')}`;
+      // ..and if that fails we load one locally
+      } catch (e) {
         this.doOffline();
       }
     }
   }
 
   componentDidMount() {
+    // Hide the credit
     if (localStorage.getItem('background') === 'false') {
-      return document.querySelector('.photoInformation').style.display = 'none'; // Hide the credit
+      return document.querySelector('.photoInformation').style.display = 'none';
     }
 
     if (localStorage.getItem('customBackgroundColour') !== 'Disabled') {

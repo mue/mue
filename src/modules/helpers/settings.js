@@ -72,7 +72,7 @@ export default class SettingsFunctions {
       localStorage.setItem('showWelcome', false);
     }
 
-      // Finally we set this to true so it doesn't run the function on every load
+    // Finally we set this to true so it doesn't run the function on every load
     localStorage.setItem('firstRun', true);
     window.location.reload();
   }
@@ -106,7 +106,8 @@ export default class SettingsFunctions {
     }
 
     const zoom = localStorage.getItem('zoom');
-    if (zoom !== 100) { // don't bother if it's default zoom
+    // don't bother if it's default zoom
+    if (zoom !== 100) {
       document.body.style.zoom = zoom + '%';
     }
   }

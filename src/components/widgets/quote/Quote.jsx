@@ -26,12 +26,13 @@ export default class Quote extends React.PureComponent {
 
   doOffline() {
     const quotes = require('./offline_quotes.json');
-
-    const quote = quotes[Math.floor(Math.random() * quotes.length)]; // Get a random quote from our local package
+    // Get a random quote from our local package
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    // Set the quote
     this.setState({
       quote: '"' + quote.quote + '"',
       author: quote.author
-    }); // Set the quote
+    });
   }
 
   getQuotePack() {
@@ -80,11 +81,13 @@ export default class Quote extends React.PureComponent {
       return this.doOffline();
     }
 
-    try { // First we try and get a quote from the API...
+    // First we try and get a quote from the API...
+    try {
       const data = await (await fetch(Constants.API_URL + '/getQuote?language=' + localStorage.getItem('quotelanguage'))).json();
 
+      // If we hit the ratelimit, we fallback to local quotes
       if (data.statusCode === 429) {
-        return this.doOffline(); // If we hit the ratelimit, we fallback to local quotes
+        return this.doOffline();
       }
 
       this.setState({
@@ -92,7 +95,8 @@ export default class Quote extends React.PureComponent {
         author: data.author,
         authorlink: `https://${this.props.languagecode}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`
       });
-    } catch (e) { // ..and if that fails we load one locally
+    } catch (e) {
+      // ..and if that fails we load one locally
       this.doOffline();
     }
   }
@@ -121,8 +125,9 @@ export default class Quote extends React.PureComponent {
   }
 
   componentDidMount() {
+    // todo: fix (localStorage.getItem('favouriteQuoteEnabled') === 'false')
     this.setState({
-      favourited: localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={() => this.favourite()} /> : null, // todo: fix (localStorage.getItem('favouriteQuoteEnabled') === 'false')
+      favourited: localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={() => this.favourite()} /> : null,
       copy: (localStorage.getItem('copyButton') === 'false') ? null : this.state.copy,
       tweet: (localStorage.getItem('tweetButton') === 'false') ? null: this.state.tweet
     });

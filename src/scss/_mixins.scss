@@ -1,4 +1,4 @@
-// source: https://joshbroton.com/quick-fix-sass-mixins-for-css-keyframe-animations/
+// Source https://joshbroton.com/quick-fix-sass-mixins-for-css-keyframe-animations/
 @mixin animation($animate...) {
   $max: length($animate);
   $animations: '';

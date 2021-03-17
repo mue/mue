@@ -28,7 +28,8 @@ export default class Clock extends React.PureComponent {
 
       // Analog clock
       if (localStorage.getItem('analog') === 'true') {
-        require('react-clock/dist/Clock.css'); // load analog clock css
+        // load analog clock css
+        require('react-clock/dist/Clock.css');
 
         this.setState({
           time: now

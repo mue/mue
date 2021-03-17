@@ -23,8 +23,9 @@ export default class GreetingSettings extends React.PureComponent {
   }
 
   changeDate(data) {
+    //soon
     if (data === 'reset') {
-      return; //soon
+      return;
     }
 
     localStorage.setItem('birthday', data);

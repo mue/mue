@@ -1,8 +1,9 @@
 import React from 'react';
 
 export default function Items(props) {
+  // todo: add message here
   if (props.items.length === 0) {
-    return null; // todo: add message here
+    return null;
   }
 
   return (

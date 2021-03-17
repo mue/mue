@@ -4,7 +4,8 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 export default function Item(props) {
   let warningHTML;
-  try { // For some reason it breaks sometimes so we use try/catch
+  // For some reason it breaks sometimes so we use try/catch
+  try {
     if (props.content.content.data.quote_api) {
       warningHTML = (
         <div className='productInformation'>
@@ -19,7 +20,8 @@ export default function Item(props) {
     // ignore
   }
 
-  let iconsrc = 'https://external-content.duckduckgo.com/iu/?u=' + props.data.icon; // prevent console error
+  // prevent console error
+  let iconsrc = 'https://external-content.duckduckgo.com/iu/?u=' + props.data.icon;
   if (!props.data.icon) {
     iconsrc = null;
   }
