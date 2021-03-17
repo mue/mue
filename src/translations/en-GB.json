@@ -67,7 +67,6 @@
             "events": "Events",
             "default": "Default Greeting Message",
             "name": "Name for greeting",
-            "birthday_enabled": "Birthday Enabled",
             "birthday_date": "Birthday Date"
           },
           "background": {

@@ -8,13 +8,14 @@ import SettingsFunctions from '../../../../modules/helpers/settings';
 import { toast } from 'react-toastify';
 
 export default class AdvancedSettings extends React.PureComponent {
-  resetItem() {
-    document.getElementById('customcss').value = '';
+  resetItem(type) {
+    document.getElementById(type).value = '';
     toast(this.props.toastLanguage.reset);
   }
 
   componentDidMount() {
     document.getElementById('customcss').value = localStorage.getItem('customcss');
+    document.getElementById('customjs').value = localStorage.getItem('customjs');
   }
 
   settingsImport(e) {
@@ -29,6 +30,7 @@ export default class AdvancedSettings extends React.PureComponent {
 
   componentWillUnmount() {
     localStorage.setItem('customcss', document.getElementById('customcss').value);
+    localStorage.setItem('customjs', document.getElementById('customjs').value);
   }
 
   render() {
@@ -43,11 +45,11 @@ export default class AdvancedSettings extends React.PureComponent {
         <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)} />
         <h3>Customisation</h3>
         <ul>
-          <p>Custom CSS <span className='modalLink' onClick={() => this.resetItem()}>Reset</span></p>
+          <p>Custom CSS <span className='modalLink' onClick={() => this.resetItem('customcss')}>Reset</span></p>
           <textarea id='customcss'></textarea>
         </ul>
         <ul>
-          <p>Custom JS <span className='modalLink' onClick={() => this.resetItem()}>Reset</span></p>
+          <p>Custom JS <span className='modalLink' onClick={() => this.resetItem('customjs')}>Reset</span></p>
           <textarea id='customjs'></textarea>
         </ul>
         <h3>Experimental</h3>

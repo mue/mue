@@ -13,7 +13,9 @@ export default class Tabs extends React.PureComponent {
   }
 
   onClick = (tab) => {
-    this.setState({ currentTab: tab });
+    this.setState({ 
+      currentTab: tab 
+    });
   };
 
   render() {

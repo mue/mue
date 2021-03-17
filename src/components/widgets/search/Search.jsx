@@ -34,6 +34,10 @@ export default class Search extends React.PureComponent {
     }
   }
 
+  searchButton() {
+    const value = document.getElementById('searchtext').value || 'mue fast';
+    window.location.href = this.state.url + `?${this.state.query}=` + value;
+  }
 
   componentDidMount() {
     let url;
@@ -68,7 +72,7 @@ export default class Search extends React.PureComponent {
       <div id='searchBar'>
         <form action={this.state.url}>
           {this.state.microphone}
-          <SearchIcon onClick={() => searchButton()} id='searchButton'/>
+          <SearchIcon onClick={() => this.searchButton()} id='searchButton'/>
           <input type='text' placeholder={this.props.language} name={this.state.query} id='searchtext'/>
         </form>
       </div>

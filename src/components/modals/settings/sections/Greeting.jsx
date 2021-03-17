@@ -51,7 +51,7 @@ export default class GreetingSettings extends React.PureComponent {
           <input type='text' value={this.state.greetingName} onChange={(e) => this.setState({ greetingName: e.target.value })}></input>
         </ul>
         <h3>Birthday</h3>
-        <Checkbox name='birthdayenabled' text={this.props.language.birthday_enabled} />
+        <Checkbox name='birthdayenabled' text={'Enabled'} />
         <ul>
           <p>{this.props.language.birthday_date}</p>
           <DatePicker onChange={(data) => this.changeDate(data)} value={this.state.birthday}/>

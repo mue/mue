@@ -25,7 +25,7 @@ export default class About extends React.PureComponent {
       updateMsg = 'Update available: ' + version;
     }
 
-    // TODO: REMOVE BOTS AND MAKE IT ACTUALLY WORK,
+    // TODO: REMOVE BOTS AND MAKE IT ACTUALLY WORK
     this.setState({
       contributors: contributors,
       update: updateMsg
