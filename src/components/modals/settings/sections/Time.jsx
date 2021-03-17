@@ -27,22 +27,22 @@ export default class TimeSettings extends React.PureComponent {
   render() {
     let digitalSettings = (
       <React.Fragment>
-        <h3>Digital</h3>
-        <Checkbox name='seconds' text={this.props.language.seconds} />
-        <Checkbox name='24hour' text={this.props.language.twentyfourhour} />
-        <Checkbox name='ampm' text={this.props.language.ampm} />
-        <Checkbox name='zero' text={this.props.language.zero} />
+        <h3>{this.props.language.digital.title}</h3>
+        <Checkbox name='seconds' text={this.props.language.digital.seconds} />
+        <Checkbox name='24hour' text={this.props.language.digital.twentyfourhour} />
+        <Checkbox name='ampm' text={this.props.language.digital.ampm} />
+        <Checkbox name='zero' text={this.props.language.digital.zero} />
       </React.Fragment>
     );
 
     let analogSettings = (
       <React.Fragment>
-        <h3>Analog</h3>
-        <Checkbox name='secondHand' text='Seconds Hand' />
-        <Checkbox name='minuteHand' text='Minutes Hand' />
-        <Checkbox name='hourHand' text='Hours Hand' />
-        <Checkbox name='hourMarks' text='Hour Marks' />
-        <Checkbox name='minuteMarks' text='Minute Marks' />
+        <h3>{this.props.language.analogue.title}</h3>
+        <Checkbox name='secondHand' text={this.props.language.analogue.second_hand} />
+        <Checkbox name='minuteHand' text={this.props.language.analogue.minute_hand} />
+        <Checkbox name='hourHand' text={this.props.language.analogue.hour_hand} />
+        <Checkbox name='hourMarks' text={this.props.language.analogue.hour_marks} />
+        <Checkbox name='minuteMarks' text={this.props.language.analogue.minute_marks} />
       </React.Fragment>
     );
 
@@ -57,9 +57,9 @@ export default class TimeSettings extends React.PureComponent {
         <h2>{this.props.language.title}</h2>
         <Checkbox name='time' text='Enabled' />
         <Dropdown label='Type' name='timeType' id='timeType' onChange={() => this.changeType()}>
-          <option className='choices' value='digital'>Digital</option>
-          <option className='choices' value='analogue'>Analog</option>
-          <option className='choices' value='percentageComplete'>Percentage of Day</option>
+          <option className='choices' value='digital'>{this.props.language.digital.title}</option>
+          <option className='choices' value='analogue'>{this.props.language.analogue.title}</option>
+          <option className='choices' value='percentageComplete'>{this.props.language.percentage_complete}</option>
         </Dropdown>
         {digitalSettings}
         <h3>{this.props.language.date.title}</h3>

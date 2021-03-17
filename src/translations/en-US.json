@@ -10,6 +10,11 @@
             "custom_colour": "Custom Background Color",
             "add_colour": "Add color",
             "favourite": "Favorite"
+          },
+          "time": {
+            "analogue": {
+              "title": "Analog"
+            }
           }
         }
       }

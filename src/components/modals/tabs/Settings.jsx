@@ -47,7 +47,7 @@ export default function Settings (props) {
           <About/>
         </div>
         <div label={props.language.sections.about.title}>
-          <About/>
+          <About language={props.language.sections.about}/>
         </div>
       </SettingsTabs>
     </React.Fragment>

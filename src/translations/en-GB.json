@@ -37,12 +37,22 @@
         "sections": {
           "time": {
             "title": "Time",
-            "seconds": "Seconds",
-            "twentyfourhour": "24 Hour",
-            "ampm": "AM/PM (12 hour)",
-            "zero": "Zero-padded",
-            "analog": "Analog",
-            "percentageComplete": "Percentage of the Day Complete",
+            "digital": {
+              "title": "Digital",
+              "seconds": "Seconds",
+              "twentyfourhour": "24 Hour",
+              "ampm": "AM/PM (12 hour)",
+              "zero": "Zero-padded"
+            },
+            "analogue": {
+              "title": "Analogue",
+              "second_hand": "Seconds Hand",
+              "minute_hand": "Minutes Hand",
+              "hour_hand": "Hours Hand",
+              "hour_marks": "Hour Marks",
+              "minute_marks": "Minute Marks"
+            },
+            "percentage_complete": "Percentage of the Day Complete",
             "date": {
               "title": "Date",
               "short_date": "Short Date",
@@ -94,21 +104,19 @@
           "changelog": "Change Log",
           "about": {
             "title": "About",
-            "about": {
-              "copyright": "Copyright",
-              "version": {
-                "title": "Version",
-                "update_available": "Update available",
-                "no_update": "No update available"
-              },
-              "resources_used": {
-                "title": "Resources Used",
-                "bg_images": "Background Images",
-                "pin_icon": "Pin Icon"
-              },
-              "contributors": "Contributors",
-              "supporters": "Supporters"
-            }
+            "copyright": "Copyright",
+            "version": {
+              "title": "Version",
+              "update_available": "Update available",
+              "no_update": "No update available"
+            },
+            "resources_used": {
+              "title": "Resources Used",
+              "bg_images": "Background Images",
+              "pin_icon": "Pin Icon"
+            },
+            "contributors": "Contributors",
+            "supporters": "Supporters"
           }
         },
         "buttons": {
