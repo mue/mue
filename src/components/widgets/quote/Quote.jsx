@@ -16,11 +16,11 @@ export default class Quote extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-        quote: '',
-        author: '',
-        favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />,
-        tweet: <TwitterIcon className='copyButton' onClick={() => this.tweetQuote()} />,
-        copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />
+      quote: '',
+      author: '',
+      favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />,
+      tweet: <TwitterIcon className='copyButton' onClick={() => this.tweetQuote()} />,
+      copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />
     };
   }
 
@@ -40,7 +40,7 @@ export default class Quote extends React.PureComponent {
     if (quotePack === 'undefined') {
       return this.doOffline();
     }
-    
+
     quotePack = JSON.parse(quotePack);
 
     if (quotePack) {
@@ -109,19 +109,19 @@ export default class Quote extends React.PureComponent {
   favourite() {
     if (localStorage.getItem('favouriteQuote')) {
       localStorage.removeItem('favouriteQuote');
-      this.setState({ 
-        favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} /> 
+      this.setState({
+        favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />
       });
     } else {
       localStorage.setItem('favouriteQuote', this.state.quote + ' - ' + this.state.author);
-      this.setState({ 
-        favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} /> 
+      this.setState({
+        favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} />
       });
     }
   }
 
   componentDidMount() {
-    this.setState({ 
+    this.setState({
       favourited: localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={() => this.favourite()} /> : null, // todo: fix (localStorage.getItem('favouriteQuoteEnabled') === 'false')
       copy: (localStorage.getItem('copyButton') === 'false') ? null : this.state.copy,
       tweet: (localStorage.getItem('tweetButton') === 'false') ? null: this.state.tweet
@@ -132,12 +132,12 @@ export default class Quote extends React.PureComponent {
 
   render() {
     return (
-        <div className='quotediv'>
-          <h1 className='quote'>{`${this.state.quote}`}</h1>
-          <h1 className='quoteauthor'>
-            <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a> {this.state.copy} {this.state.tweet} {this.state.favourited}
-          </h1>
-        </div>
+      <div className='quotediv'>
+        <h1 className='quote'>{`${this.state.quote}`}</h1>
+        <h1 className='quoteauthor'>
+          <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a> {this.state.copy} {this.state.tweet} {this.state.favourited}
+        </h1>
+      </div>
     );
   }
 }

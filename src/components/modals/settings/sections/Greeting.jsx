@@ -9,29 +9,29 @@ export default class GreetingSettings extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-        birthday: new Date(localStorage.getItem('birthday')) || new Date(),
-        greetingName: localStorage.getItem('greetingName') || ''
+      birthday: new Date(localStorage.getItem('birthday')) || new Date(),
+      greetingName: localStorage.getItem('greetingName') || ''
     };
   }
 
   resetItem() {
-    this.setState({ 
-      greetingName: '' 
+    this.setState({
+      greetingName: ''
     });
 
     toast(this.props.toastLanguage.reset);
   }
 
   changeDate(data) {
-      if (data === 'reset') {
-        return; //soon
-      }
+    if (data === 'reset') {
+      return; //soon
+    }
 
-      localStorage.setItem('birthday', data);
-      
-      this.setState({ 
-        birthday: data 
-      });
+    localStorage.setItem('birthday', data);
+
+    this.setState({
+      birthday: data
+    });
   }
 
   componentDidUpdate() {

@@ -1,18 +1,18 @@
 {
-    "modals": {
-        "main": {
-            "settings": {
-                "sections": {
-                    "quote": {
-                        "favourite": "Favorite"
-                    },
-                    "background": {
-                        "custom_colour": "Custom Background Color",
-                        "add_colour": "Add color",
-                        "favourite": "Favorite"
-                    }
-                }
-            }
+  "modals": {
+    "main": {
+      "settings": {
+        "sections": {
+          "quote": {
+            "favourite": "Favorite"
+          },
+          "background": {
+            "custom_colour": "Custom Background Color",
+            "add_colour": "Add color",
+            "favourite": "Favorite"
+          }
         }
+      }
     }
+  }
 }

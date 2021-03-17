@@ -33,7 +33,7 @@ export default class Navbar extends React.PureComponent {
         <Report className='topicons' onClick={() => this.props.openModal('feedbackModal')} />
       </Tooltip>
     );
-  
+
     if (Constants.BETA_VERSION === false) {
       feedbackHTML = null;
     }

@@ -28,7 +28,7 @@ export default class Background extends React.PureComponent {
         localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
       }
     }
-    
+
     const background = typeof gradientSettings === 'object' && gradientSettings !== null ? this.gradientStyleBuilder(gradientSettings) : `background-image: url(${url})`;
 
     // Brightness
@@ -83,7 +83,7 @@ export default class Background extends React.PureComponent {
 
     const customBackgroundColour = localStorage.getItem('customBackgroundColour');
     const customBackground = localStorage.getItem('customBackground');
-    
+
     const favourited = JSON.parse(localStorage.getItem('favourite'));
 
     if (favourited) {
@@ -110,7 +110,7 @@ export default class Background extends React.PureComponent {
       if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) {
         document.getElementById('backgroundImage').innerHTML = `
         <video autoplay muted loop id='backgroundVideo'>
-            <source src='${customBackground}'/>
+          <source src='${customBackground}'/>
         </video>`;
       } else {
         this.setBackground(customBackground, null, 'false'); // Local
@@ -119,12 +119,12 @@ export default class Background extends React.PureComponent {
       if (offlineMode === 'true') {
         return this.doOffline();
       }
-    
+
       try { // First we try and get an image from the API...
         let requestURL;
 
         switch (localStorage.getItem('backgroundAPI')) {
-          case 'unsplash': 
+          case 'unsplash':
             requestURL = `${Constants.UNSPLASH_URL}/getImage`;
             break;
           default: // Defaults to Mue
@@ -151,7 +151,7 @@ export default class Background extends React.PureComponent {
         if (data.location.replace(/[null]+/g, '') === ' ') {
           return document.querySelector('#backgroundCredits').style.display = 'none';
         }
-  
+
         document.getElementById('location').innerText = `${data.location.replace('null', '')}`; // Set the location tooltip
       } catch (e) { // ..and if that fails we load one locally
         this.doOffline();
@@ -171,7 +171,7 @@ export default class Background extends React.PureComponent {
     if (localStorage.getItem('animations') === 'true') {
       document.querySelector('#backgroundImage').classList.add('fade-in');
     }
-    
+
     this.determineMode();
   }
 

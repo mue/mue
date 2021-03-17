@@ -9,7 +9,7 @@ import Favourite from './background/Favourite';
 import Date from './time/Date';
 
 export default class Widgets extends React.PureComponent {
-   enabled(key) {
+  enabled(key) {
     const stringValue = localStorage.getItem(key);
     let enabled = true;
 
@@ -18,7 +18,7 @@ export default class Widgets extends React.PureComponent {
         enabled = true;
       }
 
-      if (stringValue === 'false') { 
+      if (stringValue === 'false') {
         enabled = false;
       }
     }
@@ -32,13 +32,13 @@ export default class Widgets extends React.PureComponent {
 
     return (
       <React.Fragment>
-          {enabled('searchBar') ? <Search language={language.widgets.search} /> : null}
-          {enabled('greeting') ? <Greeting language={language.widgets.greeting} /> : null}
-          {enabled('time') ? <Clock/> : null}
-          {enabled('date') ? <Date/> : null}
-          {enabled('quote') ? <Quote language={language.toasts} languagecode={languagecode} /> : null}
-          {enabled('view') ? <Maximise/> : null}
-          {enabled('favouriteEnabled') ? <Favourite/> : null}
+        {enabled('searchBar') ? <Search language={language.widgets.search} /> : null}
+        {enabled('greeting') ? <Greeting language={language.widgets.greeting} /> : null}
+        {enabled('time') ? <Clock/> : null}
+        {enabled('date') ? <Date/> : null}
+        {enabled('quote') ? <Quote language={language.toasts} languagecode={languagecode} /> : null}
+        {enabled('view') ? <Maximise/> : null}
+        {enabled('favouriteEnabled') ? <Favourite/> : null}
       </React.Fragment>
     );
   }

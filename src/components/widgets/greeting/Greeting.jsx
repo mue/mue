@@ -70,8 +70,8 @@ export default class Greeting extends React.PureComponent {
     }
 
     // Set the state to the greeting string
-    this.setState({ 
-      greeting: `${message}${name}` 
+    this.setState({
+      greeting: `${message}${name}`
     });
   }
 

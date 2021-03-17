@@ -32,15 +32,15 @@ export default class App extends React.PureComponent {
     if (!localStorage.getItem('firstRun')) {
       SettingsFunctions.setDefaultSettings();
     }
-    
+
     if (localStorage.getItem('showWelcome') === 'true') {
-      this.setState({ 
-        welcomeModal: true 
+      this.setState({
+        welcomeModal: true
       });
     }
 
     SettingsFunctions.loadSettings();
-    
+
     // These lines of code prevent double clicking the page or pressing CTRL + A from highlighting the page
     document.addEventListener('mousedown', (event) => {
       if (event.detail > 1) {
@@ -49,23 +49,23 @@ export default class App extends React.PureComponent {
     }, false);
 
     document.onkeydown = (e) => {
-      e = e || window.event; 
+      e = e || window.event;
       if (!e.ctrlKey) return;
       let code = e.which || e.keyCode;
 
       switch (code) {
-          case 65:
-            e.preventDefault();
-            e.stopPropagation();
-            break;
+        case 65:
+          e.preventDefault();
+          e.stopPropagation();
+          break;
       }
     };
   }
 
   closeWelcome() {
     localStorage.setItem('showWelcome', false);
-    this.setState({ 
-      welcomeModal: false 
+    this.setState({
+      welcomeModal: false
     });
   }
 
@@ -78,7 +78,7 @@ export default class App extends React.PureComponent {
       modalClassList += ' dark';
       tooltipClassList += ' dark';
     }
-    
+
     const overlayClassList = (localStorage.getItem('animations') === 'true') ? 'Overlay modal-animation' : 'Overlay';
 
     /// language

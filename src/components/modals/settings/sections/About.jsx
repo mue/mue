@@ -25,9 +25,9 @@ export default class About extends React.PureComponent {
       updateMsg = 'Update available: ' + version;
     }
 
-    this.setState({ 
-        contributors: contributors, // TODO: REMOVE BOTS AND MAKE IT ACTUALLY WORK,
-        update: updateMsg
+    this.setState({
+      contributors: contributors, // TODO: REMOVE BOTS AND MAKE IT ACTUALLY WORK,
+      update: updateMsg
     });
   }
 
@@ -38,26 +38,26 @@ export default class About extends React.PureComponent {
   render() {
     return (
       <div>
-          <h2>About</h2>
-          <img draggable='false' style={{'height': '100px', 'width': 'auto'}} src='https://raw.githubusercontent.com/mue/branding/master/logo/logo_horizontal.png' alt='Mue logo'></img>
-          <p>Copyright 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
-          <p>Version {Constants.VERSION} ({this.state.update})</p>
-          <h3>Resources Used</h3>
-          <p>Pexels (Background Images)</p>
-          <p>Google (Pin Icon)</p>
-          <h3>Contributors</h3>
-          {this.state.contributors.map((item) =>
-            <Tooltip title={item.login} placement='top' key={item.login}>
-                <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
-            </Tooltip>
-          )}
-          {other_contributors.map((item) => // for those who contributed without opening a pull request
-            <Tooltip title={item.login} placement='top' key={item.login}>
-                <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
-            </Tooltip>
-          )}
-          <h3>Supporters</h3>
-          <p>to be implemented</p>
+        <h2>About</h2>
+        <img draggable='false' style={{'height': '100px', 'width': 'auto'}} src='https://raw.githubusercontent.com/mue/branding/master/logo/logo_horizontal.png' alt='Mue logo'></img>
+        <p>Copyright 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
+        <p>Version {Constants.VERSION} ({this.state.update})</p>
+        <h3>Resources Used</h3>
+        <p>Pexels (Background Images)</p>
+        <p>Google (Pin Icon)</p>
+        <h3>Contributors</h3>
+        {this.state.contributors.map((item) =>
+          <Tooltip title={item.login} placement='top' key={item.login}>
+            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
+          </Tooltip>
+        )}
+        {other_contributors.map((item) => // for those who contributed without opening a pull request
+          <Tooltip title={item.login} placement='top' key={item.login}>
+            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
+          </Tooltip>
+        )}
+        <h3>Supporters</h3>
+        <p>to be implemented</p>
       </div>
     );
   }

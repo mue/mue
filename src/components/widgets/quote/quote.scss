@@ -1,38 +1,38 @@
 @import '../../../scss/variables';
 
 .quote {
-    font-size: 0.8em;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-size: 0.8em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (min-width: 600px) {
-    .quote {
-        margin-left: 30%;
-        margin-right: 30%;
-    }
+  .quote {
+    margin-left: 30%;
+    margin-right: 30%;
+  }
 }
 
 .quoteauthor {
-    font-size: 0.9em;
-    letter-spacing: 0.5px;
+  font-size: 0.9em;
+  letter-spacing: 0.5px;
 }
 
 .copyButton {
-    cursor: pointer;
-    vertical-align: middle;
-    transition: ease 0.2s !important;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: ease 0.2s !important;
 
-    &:hover {
-        transform: scale(1.1);
-    }
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 i.material-icons,
 h1.quoteauthor {
-    display: inline;
+  display: inline;
 }
 
 .quoteauthorlink {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }

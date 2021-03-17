@@ -13,43 +13,43 @@ import Advanced from '../settings/sections/Advanced';
 import SettingsTabs from './backend/Tabs';
 
 export default function Settings (props) {
-    return (
-      <React.Fragment>
-        <SettingsTabs>
-          <div label={props.language.sections.time.title}>
-            <Time language={props.language.sections.time}/>
-          </div>
-          <div label={props.language.sections.quote.title}>
-            <Quote language={props.language.sections.quote}/>
-          </div>
-          <div label={props.language.sections.greeting.title}>
-            <Greeting language={props.language.sections.greeting} toastLanguage={props.language.toasts} />
-          </div>
-          <div label={props.language.sections.background.title}>
-            <Background language={props.language.sections.background} toastLanguage={props.toastLanguage}/>
-          </div>
-          <div label={props.language.sections.search.title}>
-            <Search language={props.language.sections.search}/>
-          </div>
-          <div label={props.language.sections.appearance}>
-            <Appearance language={props.language.sections.appearance} toastLanguage={props.toastLanguage}/>
-          </div>
-          <div label={props.language.sections.language}>
-            <Language language={props.language}/>
-          </div>
-          <div label='Advanced'>
-            <Advanced/>
-          </div>
-          <div label='Experimental'>
+  return (
+    <React.Fragment>
+      <SettingsTabs>
+        <div label={props.language.sections.time.title}>
+          <Time language={props.language.sections.time}/>
+        </div>
+        <div label={props.language.sections.quote.title}>
+          <Quote language={props.language.sections.quote}/>
+        </div>
+        <div label={props.language.sections.greeting.title}>
+          <Greeting language={props.language.sections.greeting} toastLanguage={props.language.toasts} />
+        </div>
+        <div label={props.language.sections.background.title}>
+          <Background language={props.language.sections.background} toastLanguage={props.toastLanguage}/>
+        </div>
+        <div label={props.language.sections.search.title}>
+          <Search language={props.language.sections.search}/>
+        </div>
+        <div label={props.language.sections.appearance}>
+          <Appearance language={props.language.sections.appearance} toastLanguage={props.toastLanguage}/>
+        </div>
+        <div label={props.language.sections.language}>
+          <Language language={props.language}/>
+        </div>
+        <div label='Advanced'>
+          <Advanced/>
+        </div>
+        <div label='Experimental'>
 
-          </div>
-          <div label={props.language.sections.changelog}>
-            <About/>
-          </div>
-          <div label={props.language.sections.about.title}>
-            <About/>
-          </div>
-        </SettingsTabs>
-      </React.Fragment>
-    );
+        </div>
+        <div label={props.language.sections.changelog}>
+          <About/>
+        </div>
+        <div label={props.language.sections.about.title}>
+          <About/>
+        </div>
+      </SettingsTabs>
+    </React.Fragment>
+  );
 }

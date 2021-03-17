@@ -21,7 +21,7 @@ export default class Clock extends React.PureComponent {
 
       // Percentage
       if (localStorage.getItem('percentageComplete') === 'true') {
-        return this.setState({ 
+        return this.setState({
           time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'
         });
       }
@@ -30,8 +30,8 @@ export default class Clock extends React.PureComponent {
       if (localStorage.getItem('analog') === 'true') {
         require('react-clock/dist/Clock.css'); // load analog clock css
 
-        this.setState({ 
-          time: now 
+        this.setState({
+          time: now
         });
       } else {
         // Default clock
@@ -53,13 +53,13 @@ export default class Clock extends React.PureComponent {
             time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
           }
 
-          this.setState({ 
-            time: time 
+          this.setState({
+            time: time
           });
         } else {
           // 12 hour support
           let hours = now.getHours();
-  
+
           if (hours > 12) {
             hours -= 12;
           }
@@ -74,7 +74,7 @@ export default class Clock extends React.PureComponent {
             time = `${hours}:${now.getMinutes()}${sec}`;
           } else {
             time = `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
-          } 
+          }
 
           this.setState({
             time: time,
@@ -93,7 +93,7 @@ export default class Clock extends React.PureComponent {
 
   render() {
     let clockHTML = <h1 className='clock'>{this.state.time}<span className='ampm'>{this.state.ampm}</span></h1>;
-  
+
     if (localStorage.getItem('analog') === 'true') {
       clockHTML = <Analog className='analogclock' value={this.state.time} renderHourMarks={false} renderMinuteMarks={false} />;
     }

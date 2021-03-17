@@ -32,24 +32,24 @@ export default class DateWidget extends React.PureComponent {
           day = dateYear;
           year = dateDay;
           break;
-        default: 
+        default:
           break; // DMY
       }
 
       let format;
       switch (localStorage.getItem('shortFormat')) {
-        case 'dash': 
-          format = `${day}-${month}-${year}`; 
+        case 'dash':
+          format = `${day}-${month}-${year}`;
           break;
-        case 'gaps': 
-          format = `${day} - ${month} - ${year}`; 
+        case 'gaps':
+          format = `${day} - ${month} - ${year}`;
           break;
-        default: 
+        default:
           format = `${day}/${month}/${year}`;
       }
 
-      this.setState({ 
-        date: format 
+      this.setState({
+        date: format
       });
     } else {
       // Full date
@@ -60,8 +60,8 @@ export default class DateWidget extends React.PureComponent {
       const month = date.toLocaleDateString(lang, { month: 'long' });
       const year = date.getFullYear();
 
-      this.setState({ 
-        date: `${day} ${nth} ${month} ${year}` 
+      this.setState({
+        date: `${day} ${nth} ${month} ${year}`
       });
     }
   }

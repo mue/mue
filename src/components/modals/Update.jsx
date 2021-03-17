@@ -16,7 +16,7 @@ export default class Update extends React.PureComponent {
 
  async getUpdate() {
   const data = await (await fetch(Constants.API_URL + '/getUpdate')).json();
-  
+
   if (data.statusCode === 500 || data.title === null) {
     const supportText = `<br/><p>${this.props.language.contact_support}: <a target='_blank' class='modalLink' href='https://muetab.com/contact'>https://muetab.com/contact</a></p>`;
     return this.setState({
@@ -47,11 +47,11 @@ export default class Update extends React.PureComponent {
 
   render() {
     return <div className='updateContent'>
-        <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
-        <h1 style={{ 'marginBottom': '-10px' }}>{this.state.title}</h1>
-        <h5 style={{ 'lineHeight': '0px' }}>{this.state.date}</h5>
-        {this.state.image ? <img draggable='false' src={this.state.image} alt='Update'></img> : null}
-        <p dangerouslySetInnerHTML={{ __html: this.state.html }}></p>
+      <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
+      <h1 style={{ 'marginBottom': '-10px' }}>{this.state.title}</h1>
+      <h5 style={{ 'lineHeight': '0px' }}>{this.state.date}</h5>
+      {this.state.image ? <img draggable='false' src={this.state.image} alt='Update'></img> : null}
+      <p dangerouslySetInnerHTML={{ __html: this.state.html }}></p>
       </div>;
-    }
+  }
 }

@@ -1,102 +1,102 @@
 [
-    {
-        "name": "time",
-        "value": true
-    },
-    {
-        "name": "greeting",
-        "value": true
-    },
-    {
-        "name": "background",
-        "value": true
-    },
-    {
-        "name": "quote",
-        "value": true
-    },
-    {
-        "name": "searchBar",
-        "value": true
-    },
-    {
-        "name": "blur",
-        "value": 0
-    },
-    {
-        "name": "brightness",
-        "value": 100
-    },
-    {
-        "name": "events",
-        "value": true
-    },
-    {
-        "name": "customBackgroundColour",
-        "value": ""
-    },
-    {
-        "name": "customBackground",
-        "value": ""
-    },
-    {
-        "name": "greetingName",
-        "value": ""
-    },
-    {
-        "name": "defaultGreetingMessage",
-        "value": true
-    },
-    {
-        "name": "backgroundAPI",
-        "value": "mue"
-    },
-    {
-        "name": "ampm",
-        "value": true
-    },
-    {
-        "name": "copyButton",
-        "value": false
-    },
-    {
-        "name": "installed",
-        "value": "[]"
-    },
-    {
-        "name": "searchEngine",
-        "value": "duckduckgo"
-    },
-    {
-        "name": "refresh",
-        "value": true
-    },
-    {
-        "name": "view",
-        "value": true
-    },
-    {
-        "name": "favouriteEnabled",
-        "value": true
-    },
-    {
-        "name": "tweetButton",
-        "value": false
-    },
-    {
-        "name": "favouriteQuoteEnabled",
-        "value": false
-    },
-    {
-        "name": "showWelcome",
-        "value": true
-    },
-    {
-        "name": "quotelanguage",
-        "value": "English"
-    },
-    {
-        "name": "date",
-        "value": "false"
-    }
+  {
+    "name": "time",
+    "value": true
+  },
+  {
+    "name": "greeting",
+    "value": true
+  },
+  {
+    "name": "background",
+    "value": true
+  },
+  {
+    "name": "quote",
+    "value": true
+  },
+  {
+    "name": "searchBar",
+    "value": true
+  },
+  {
+    "name": "blur",
+    "value": 0
+  },
+  {
+    "name": "brightness",
+    "value": 100
+  },
+  {
+    "name": "events",
+    "value": true
+  },
+  {
+    "name": "customBackgroundColour",
+    "value": ""
+  },
+  {
+    "name": "customBackground",
+    "value": ""
+  },
+  {
+    "name": "greetingName",
+    "value": ""
+  },
+  {
+    "name": "defaultGreetingMessage",
+    "value": true
+  },
+  {
+    "name": "backgroundAPI",
+    "value": "mue"
+  },
+  {
+    "name": "ampm",
+    "value": true
+  },
+  {
+    "name": "copyButton",
+    "value": false
+  },
+  {
+    "name": "installed",
+    "value": "[]"
+  },
+  {
+    "name": "searchEngine",
+    "value": "duckduckgo"
+  },
+  {
+    "name": "refresh",
+    "value": true
+  },
+  {
+    "name": "view",
+    "value": true
+  },
+  {
+    "name": "favouriteEnabled",
+    "value": true
+  },
+  {
+    "name": "tweetButton",
+    "value": false
+  },
+  {
+    "name": "favouriteQuoteEnabled",
+    "value": false
+  },
+  {
+    "name": "showWelcome",
+    "value": true
+  },
+  {
+    "name": "quotelanguage",
+    "value": "English"
+  },
+  {
+    "name": "date",
+    "value": "false"
+  }
 ]

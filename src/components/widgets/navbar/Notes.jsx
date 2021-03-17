@@ -7,52 +7,52 @@ import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Pin from './Pin';
 
 export default class Notes extends React.PureComponent {
-    constructor(...args) {
-        super(...args);
-        this.state = {
-            notes: localStorage.getItem('notes') || ''
-        };
-    }
-
-    setNotes = (e) => {
-        localStorage.setItem('notes', e.target.value);
-        this.setState({ 
-            notes: e.target.value 
-        });
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      notes: localStorage.getItem('notes') || ''
     };
+  }
 
-    pin() {
-        document.getElementById('noteContainer').classList.toggle('visibilityshow');
+  setNotes = (e) => {
+    localStorage.setItem('notes', e.target.value);
+    this.setState({
+      notes: e.target.value
+    });
+  };
 
-        if (localStorage.getItem('notesPinned') === 'true') {
-            localStorage.setItem('notesPinned', false);
-        } else {
-            localStorage.setItem('notesPinned', true);
-        }
+  pin() {
+    document.getElementById('noteContainer').classList.toggle('visibilityshow');
+
+    if (localStorage.getItem('notesPinned') === 'true') {
+      localStorage.setItem('notesPinned', false);
+    } else {
+      localStorage.setItem('notesPinned', true);
+    }
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('notesPinned') === 'true') {
+      document.getElementById('noteContainer').classList.toggle('visibilityshow');
+    }
+  }
+
+  render() {
+    let classList = 'notescontainer';
+    if (localStorage.getItem('darkTheme') === 'true') {
+      classList += ' dark';
     }
 
-    componentDidMount() {
-        if (localStorage.getItem('notesPinned') === 'true') {
-            document.getElementById('noteContainer').classList.toggle('visibilityshow');
-        }
-    }
-
-    render() {
-        let classList = 'notescontainer';
-        if (localStorage.getItem('darkTheme') === 'true') {
-            classList += ' dark';
-        }
-
-        return (
-            <span id='noteContainer' className={classList}>
-                <div className='topbarnotes'>
-                    <NotesIcon/>
-                    <h3>{this.props.language.title}</h3>
-                </div>
-                <TextareaAutosize rowsMax={50} placeholder={this.props.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
-                <button onClick={this.pin} className='pinNote'><Pin/></button>
-                <button onClick={() => navigator.clipboard.writeText(this.state.notes)} className='saveNote'><CopyIcon/></button>
-            </span>
-        );
-    }
+    return (
+      <span id='noteContainer' className={classList}>
+        <div className='topbarnotes'>
+          <NotesIcon/>
+          <h3>{this.props.language.title}</h3>
+        </div>
+        <TextareaAutosize rowsMax={50} placeholder={this.props.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
+        <button onClick={this.pin} className='pinNote'><Pin/></button>
+        <button onClick={() => navigator.clipboard.writeText(this.state.notes)} className='saveNote'><CopyIcon/></button>
+      </span>
+    );
+  }
 }

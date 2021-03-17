@@ -10,6 +10,6 @@ import '@fontsource/lexend-deca/latin-400.css';
 import '@fontsource/roboto/cyrillic-400.css';
 
 ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
+  <App/>,
+  document.getElementById('root')
 );

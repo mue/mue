@@ -1,133 +1,133 @@
 {
+  "greeting": {
+    "morning": "Bonjour",
+    "afternoon": "Bon après-midi",
+    "evening": "Bonsoir",
+    "christmas": "Joyeux Noël",
+    "newyear": "Bonne année",
+    "halloween": "Joyeux Halloween"
+  },
+  "credit": "Photo par",
+  "search": "Rechercher",
+  "modals": {
+    "title": "Options",
+    "settings": "Paramètres",
+    "addons": "Mes Options",
+    "marketplace": "Marché"
+  },
+  "settings": {
+    "time": {
+      "title": "Heure",
+      "seconds": "Secondes",
+      "twentyfourhour": "24 heures",
+      "ampm": "AM/PM (12 heures)",
+      "zero": "Complétion de zéros",
+      "analog": "Analogique"
+    },
     "greeting": {
-        "morning": "Bonjour",
-        "afternoon": "Bon après-midi",
-        "evening": "Bonsoir",
-        "christmas": "Joyeux Noël",
-        "newyear": "Bonne année",
-        "halloween": "Joyeux Halloween"
+      "title": "Salutation",
+      "events": "Événements",
+      "default": "Salutation par défaut",
+      "name": "Nom pour salutation"
     },
-    "credit": "Photo par",
-    "search": "Rechercher",
-    "modals": {
-        "title": "Options",
-        "settings": "Paramètres",
-        "addons": "Mes Options",
-        "marketplace": "Marché"
+    "quote": {
+      "title": "Citation",
+      "copy": "Bouton Copier",
+      "tweet": "Bouton Twitter",
+      "favourite": "Bouton Ajouter aux favoris"
     },
-    "settings": {
-        "time": {
-            "title": "Heure",
-            "seconds": "Secondes",
-            "twentyfourhour": "24 heures",
-            "ampm": "AM/PM (12 heures)",
-            "zero": "Complétion de zéros",
-            "analog": "Analogique"
-        },
-        "greeting": {
-            "title": "Salutation",
-            "events": "Événements",
-            "default": "Salutation par défaut",
-            "name": "Nom pour salutation"
-        },
-        "quote": {
-            "title": "Citation",
-            "copy": "Bouton Copier",
-            "tweet": "Bouton Twitter",
-            "favourite": "Bouton Ajouter aux favoris"
-        },
-        "background": {
-            "title": "Fond",
-            "api": "Source",
-            "blur": "Ajuster le flou",
-            "brightness": "Ajuster la luminosité",
-            "custom_url": "URL d'arrière-plan personnalisé",
-            "custom_background": "Arrière-plan personnalisé",
-            "custom_colour": "Couleur d'arrière-plan personnalisée",
-            "upload": "Ajouter",
-            "add_colour": "Ajouter une couleur",
-            "favourite": "Ajouter aux favoris",
-            "view": "Mode vue",
-            "refresh": "Rafraîchir"
-        },
-        "searchbar": {
-            "title": "Barre de Recherche",
-            "search_engine": "Moteur de recherche",
-            "custom": "URL de recherche personnalisée"
-        },
-        "offline": "Mode Hors-Ligne",
-        "dark": "Thème sombre",
-        "experimental": {
-            "title": "Expérimental",
-            "animations": "Animations",
-            "favourite": "Bouton Ajouter aux favoris",
-            "voice_search": "Recherche vocale"
-        },
-        "language": "Langue",
-        "apply": "Appliquer",
-        "reset": "Réinitialiser",
-        "import": "Importer",
-        "export": "Exporter"
+    "background": {
+      "title": "Fond",
+      "api": "Source",
+      "blur": "Ajuster le flou",
+      "brightness": "Ajuster la luminosité",
+      "custom_url": "URL d'arrière-plan personnalisé",
+      "custom_background": "Arrière-plan personnalisé",
+      "custom_colour": "Couleur d'arrière-plan personnalisée",
+      "upload": "Ajouter",
+      "add_colour": "Ajouter une couleur",
+      "favourite": "Ajouter aux favoris",
+      "view": "Mode vue",
+      "refresh": "Rafraîchir"
     },
-    "update": {
-        "title": "Mise à jour",
-        "offline": {
-            "title": "Hors ligne",
-            "description": "Impossible de se connecter à Internet"
-        },
-        "error": {
-            "title": "Erreur",
-            "description": "Impossible de se connecter au serveur"
-        },
-        "loading": "Chargement...",
-        "read_blog": "Lire sur le blog ",
-        "contact_support": "Contactez-nous "
+    "searchbar": {
+      "title": "Barre de Recherche",
+      "search_engine": "Moteur de recherche",
+      "custom": "URL de recherche personnalisée"
     },
-    "toasts": {
-        "quote": "Citation copiée",
-        "reset": "Réinitialisé avec succès",
-        "installed": "Installé avec succès",
-        "removed": "Enlevé avec succès",
-        "error": "Quelque chose s'est mal passé",
-        "imported": "Importé avec succès"
+    "offline": "Mode Hors-Ligne",
+    "dark": "Thème sombre",
+    "experimental": {
+      "title": "Expérimental",
+      "animations": "Animations",
+      "favourite": "Bouton Ajouter aux favoris",
+      "voice_search": "Recherche vocale"
     },
-    "marketplace": {
-        "photo_packs": "Packs Photos",
-        "quote_packs": "Packs Citations",
-        "preset_settings": "Paramètres prédéfinis",
-        "themes": "Thèmes",
-        "product": {
-            "overview": "Aperçu",
-            "information": "Information",
-            "last_updated": "Dernière mise à jour",
-            "version": "Version",
-            "author": "Auteur",
-            "notice": {
-                "title": "Remarque",
-                "description": "Pour appliquer les changements, veuillez recharger la page."
-            },
-            "buttons": {
-                "addtomue": "Ajouter à Mue",
-                "remove": "Enlever"
-            },
-            "quote_warning": {
-                "title": "Attention",
-                "description": "Ce pack fait appel à des serveurs externes qui sont susceptibles de vous tracer !"
-            }
-        },
-        "offline": {
-            "title": "Vous êtes hors ligne",
-            "description": "Veuillez vous connecter à Internet."
-        },
-        "see_more": "Voir plus"
+    "language": "Langue",
+    "apply": "Appliquer",
+    "reset": "Réinitialiser",
+    "import": "Importer",
+    "export": "Exporter"
+  },
+  "update": {
+    "title": "Mise à jour",
+    "offline": {
+      "title": "Hors ligne",
+      "description": "Impossible de se connecter à Internet"
     },
-    "addons": {
-        "added": "Ajoutées",
-        "empty": {
-            "title": "C'est vide par ici",
-            "description": "Dirigez vous vers le marché pour ajouter des options.",
-            "button": "Naviguer vers le marché"
-        },
-        "sideload": "Charger"
-    }
+    "error": {
+      "title": "Erreur",
+      "description": "Impossible de se connecter au serveur"
+    },
+    "loading": "Chargement...",
+    "read_blog": "Lire sur le blog ",
+    "contact_support": "Contactez-nous "
+  },
+  "toasts": {
+    "quote": "Citation copiée",
+    "reset": "Réinitialisé avec succès",
+    "installed": "Installé avec succès",
+    "removed": "Enlevé avec succès",
+    "error": "Quelque chose s'est mal passé",
+    "imported": "Importé avec succès"
+  },
+  "marketplace": {
+    "photo_packs": "Packs Photos",
+    "quote_packs": "Packs Citations",
+    "preset_settings": "Paramètres prédéfinis",
+    "themes": "Thèmes",
+    "product": {
+      "overview": "Aperçu",
+      "information": "Information",
+      "last_updated": "Dernière mise à jour",
+      "version": "Version",
+      "author": "Auteur",
+      "notice": {
+        "title": "Remarque",
+        "description": "Pour appliquer les changements, veuillez recharger la page."
+      },
+      "buttons": {
+        "addtomue": "Ajouter à Mue",
+        "remove": "Enlever"
+      },
+      "quote_warning": {
+        "title": "Attention",
+        "description": "Ce pack fait appel à des serveurs externes qui sont susceptibles de vous tracer !"
+      }
+    },
+    "offline": {
+      "title": "Vous êtes hors ligne",
+      "description": "Veuillez vous connecter à Internet."
+    },
+    "see_more": "Voir plus"
+  },
+  "addons": {
+    "added": "Ajoutées",
+    "empty": {
+      "title": "C'est vide par ici",
+      "description": "Dirigez vous vers le marché pour ajouter des options.",
+      "button": "Naviguer vers le marché"
+    },
+    "sideload": "Charger"
+  }
 }

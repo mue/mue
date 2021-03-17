@@ -8,30 +8,29 @@ module.exports = {
   mode: 'development',
   module: {
     rules: [{
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: ''
-            },
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: ['babel-loader']
+    },
+    {
+      test: /\.(sa|sc|c)ss$/,
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            publicPath: ''
           },
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.(woff|woff2|svg)$/,
-        use: {
-          loader: 'file-loader',
-        }
+        },
+        'css-loader',
+        'sass-loader',
+      ],
+    },
+    {
+      test: /\.(woff|woff2|svg)$/,
+      use: {
+        loader: 'file-loader',
       }
-    ]
+    }]
   },
   resolve: {
     extensions: ['.js', '.jsx']

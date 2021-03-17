@@ -31,30 +31,30 @@ export default class BackgroundSettings extends React.PureComponent {
     switch (key) {
       case 'customBackgroundColour':
         localStorage.setItem('customBackgroundColour', '');
-        this.setState({ 
-          gradientSettings: this.DefaultGradientSettings 
+        this.setState({
+          gradientSettings: this.DefaultGradientSettings
         });
         break;
 
-      case 'customBackground': 
-        document.getElementById('customBackground').value = ''; 
+      case 'customBackground':
+        document.getElementById('customBackground').value = '';
         break;
 
       case 'blur':
         localStorage.setItem('blur', 0);
-        this.setState({ 
-          blur: 0 
+        this.setState({
+          blur: 0
         });
         break;
 
       case 'brightness':
         localStorage.setItem('brightness', 100);
-        this.setState({ 
-          brightness: 100 
+        this.setState({
+          brightness: 100
         });
         break;
 
-      default: 
+      default:
         toast('resetItem requires a key!');
     }
 
@@ -147,21 +147,21 @@ export default class BackgroundSettings extends React.PureComponent {
     }
 
     this.setState({
-      gradientSettings: { 
-        'angle': attrs.degree, 
-        'gradient': attrs.points.map((p) => { 
-          return { 
-            'colour': '#' + rgbToHex(p.red, p.green, p.blue), 
-            'stop': p.left 
-          } }), 
-        'type': attrs.type 
+      gradientSettings: {
+        'angle': attrs.degree,
+        'gradient': attrs.points.map((p) => {
+          return {
+            'colour': '#' + rgbToHex(p.red, p.green, p.blue),
+            'stop': p.left
+          }}),
+        'type': attrs.type
       }
     });
   };
 
   fileUpload(e) {
     localStorage.setItem('customBackground', e.target.result);
-    this.setState({ 
+    this.setState({
       customBackground: e.target.result
      });
   }
@@ -186,7 +186,7 @@ export default class BackgroundSettings extends React.PureComponent {
         if (this.GradientPickerInitalState === undefined) {
           this.InitializeColorPickerState(this.state.gradientSettings);
         }
-        
+
         gradientInputs = (
           <ColorPicker
             onStartChange={(color) => this.onColorPickerChange(color, 'start')}
@@ -217,50 +217,50 @@ export default class BackgroundSettings extends React.PureComponent {
     }
 
     return (
-        <div>
-          <h2>Background</h2>
-          <Checkbox name='background' text='Enabled' />
-          <h3>Buttons</h3>
-          <ul>
-            <Checkbox name='view' text={this.props.language.view} />
-            <Checkbox name='favouriteEnabled' text={this.props.language.favourite} />
-            <Checkbox name='refresh' text={this.props.language.refresh} />
-          </ul>
-          <h3>Effects</h3>
-          <ul>
-            <p>{this.props.language.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
-            <input className='range' type='range' min='0' max='100' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
-          </ul>
-          <ul>
-            <p>{this.props.language.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
-            <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
-          </ul>
-          <h3>Source</h3>
-          <ul>
-            <Dropdown
-              label={this.props.language.api}
-              name='backgroundapi'
-              id='backgroundAPI'
-              onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)} >
-                <option className='choices' value='mue'>Mue</option>
-                <option className='choices' value='unsplash'>Unsplash</option>
-            </Dropdown>
-          </ul>
-          <ul>
-            <p>{this.props.language.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-            <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
-          </ul>
-          <ul>
-            <p>{this.props.language.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-            <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.upload}</button>
-            <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' loadFunction={(e) => this.fileUpload(e)} />
-          </ul>
-          <ul>
-            <p>{this.props.language.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
-            <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
-            {colourSettings}
-          </ul>
-        </div>
+      <div>
+        <h2>Background</h2>
+        <Checkbox name='background' text='Enabled' />
+        <h3>Buttons</h3>
+        <ul>
+          <Checkbox name='view' text={this.props.language.view} />
+          <Checkbox name='favouriteEnabled' text={this.props.language.favourite} />
+          <Checkbox name='refresh' text={this.props.language.refresh} />
+        </ul>
+        <h3>Effects</h3>
+        <ul>
+          <p>{this.props.language.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
+          <input className='range' type='range' min='0' max='100' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
+        </ul>
+        <ul>
+          <p>{this.props.language.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
+          <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
+        </ul>
+        <h3>Source</h3>
+        <ul>
+          <Dropdown
+            label={this.props.language.api}
+            name='backgroundapi'
+            id='backgroundAPI'
+            onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)} >
+              <option className='choices' value='mue'>Mue</option>
+              <option className='choices' value='unsplash'>Unsplash</option>
+          </Dropdown>
+        </ul>
+        <ul>
+          <p>{this.props.language.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
+          <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
+        </ul>
+        <ul>
+          <p>{this.props.language.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
+          <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.upload}</button>
+          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' loadFunction={(e) => this.fileUpload(e)} />
+        </ul>
+        <ul>
+          <p>{this.props.language.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
+          <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
+          {colourSettings}
+        </ul>
+      </div>
     );
   }
 }

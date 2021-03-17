@@ -2,63 +2,63 @@
 @import '../../../../scss/mixins';
 
 #backgroundImage {
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 #backgroundVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .fade-in {
-    @include animation('fadein 2s');
+  @include animation('fadein 2s');
 }
 
 @include keyframes(fadein) {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 .backgroundEffects {
-    opacity: 0.7;
-    transition: ease 0.6s;
+  opacity: 0.7;
+  transition: ease 0.6s;
 }
 
 .creditlink {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .view {
-    right: 25px;
+  right: 25px;
 }
 
 .favourite {
-    right: 50px;
-    padding-right: 5px;
+  right: 50px;
+  padding-right: 5px;
 }
 
 .view,
 .favourite {
-    bottom: 10px;
-    position: absolute;
-    transition: all 0.5s ease 0s;
-    width: auto;
-    cursor: pointer;
+  bottom: 10px;
+  position: absolute;
+  transition: all 0.5s ease 0s;
+  width: auto;
+  cursor: pointer;
 
-    &:hover {
-        transform: scale(1.1);
-    }
+  &:hover {
+    transform: scale(1.1);
+  }
 }
