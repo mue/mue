@@ -56,8 +56,9 @@ export default class DateWidget extends React.PureComponent {
       // Full date
       const lang = localStorage.getItem('language');
 
-      const day = date.toLocaleDateString(lang, { weekday: 'long' });
       const nth = (localStorage.getItem('datenth') === 'true') ? dtf.nth(date.getDate()) : date.getDate();
+
+      const day = (localStorage.getItem('dayofweek') === 'true') ? date.toLocaleDateString(lang, { weekday: 'long' }) : '';
       const month = date.toLocaleDateString(lang, { month: 'long' });
       const year = date.getFullYear();
 

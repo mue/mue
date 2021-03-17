@@ -21,6 +21,7 @@ export default class TimeSettings extends React.PureComponent {
 
   componentDidMount() {
     document.getElementById('dateformat').value = localStorage.getItem('dateFormat');
+    document.getElementById('shortformat').value = localStorage.getItem('shortFormat');
     document.getElementById('timeType').value = localStorage.getItem('timeType');
   }
 
@@ -64,12 +65,18 @@ export default class TimeSettings extends React.PureComponent {
         {digitalSettings}
         <h3>{this.props.language.date.title}</h3>
         <Checkbox name='date' text='Enabled' />
+        <Checkbox name='dayofweek' text={this.props.language.date.day_of_week} />
         <Checkbox name='short' text={this.props.language.date.short_date} betaFeature={true} />
         <Dropdown label={this.props.language.date.short_format} name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>
           <option className='choices' value='DMY'>DMY</option>
           <option className='choices' value='MDY'>MDY</option>
           <option className='choices' value='YMD'>YMD</option>
         </Dropdown>
+        <Dropdown label={this.props.language.date.short_separator.title} name='shortFormat' id='shortformat' onChange={() => localStorage.setItem('shortFormat', document.getElementById('shortformat').value)}>
+          <option className='choices' value='default'>{this.props.language.date.short_separator.default}</option>
+          <option className='choices' value='dash'>{this.props.language.date.short_separator.dash}</option>
+          <option className='choices' value='gaps'>{this.props.language.date.short_separator.gaps}</option>
+         </Dropdown>
       </div>
     );
   }
