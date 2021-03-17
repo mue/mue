@@ -102,27 +102,6 @@
   }
 }
 
-.content {
-  margin-top: -20px;
-  width: 900px;
-
-  h1 {
-    font-size: 35px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
-  .columns {
-    font-size: 15px;
-
-    li {
-      padding-left: 10px;
-    }
-  }
-}
-
 .ReactModal__Overlay {
   opacity: 0;
   transform: scale(0);
@@ -199,6 +178,12 @@ li {
   background: rgba(219, 219, 219, 0.72);
 }
 
+@media only screen and (max-height: 898px) {
+  ul.sidebar {
+    height: auto;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   li.tab-list-item {
     span {
@@ -218,28 +203,6 @@ li {
 .tab-list-item {
   &:hover {
     background: rgba(219, 219, 219, 0.8);
-  }
-}
-
-ul.sectionSelector {
-  margin: 0;
-  width: 60%;
-  padding-left: 30%;
-  padding-top: 20px;
-
-  .option {
-    display: inline;
-    padding: 15px;
-    font-size: 28px;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  ul.sectionSelector {
-    span {
-      display: none;
-      padding: 5px !important;
-    }
   }
 }
 
@@ -308,12 +271,6 @@ ul.sectionSelector {
       display: none;
     }
   }
-}
-
-.tabIndicator {
-  width: 40px;
-  height: 3px;
-  background: #000;
 }
 
 @media only screen and (max-width: 1200px) {
