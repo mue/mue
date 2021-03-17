@@ -248,12 +248,13 @@ ul.sectionSelector {
   left: 25%;
   width: 60%;
 
+
   h3 {
     text-transform: uppercase;
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (max-width: 1920px) {
   .tab-content {
     position: absolute;
     left: 35%;
@@ -263,7 +264,7 @@ ul.sectionSelector {
 @media only screen and (max-width: 1400px) {
   .tab-content {
     position: absolute;
-    left: 45%
+    left: 45%;
   }
 }
 
