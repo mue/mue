@@ -245,7 +245,7 @@ ul.sectionSelector {
 
 .tab-content {
     position: absolute;
-    left: 30%;
+    left: 25%;
     width: 60%;
 
     h3 {
@@ -253,10 +253,17 @@ ul.sectionSelector {
     }
 }
 
-@media only screen and (min-width: 1300px) {
+@media only screen and (max-width: 1920px) {
     .tab-content {
         position: absolute;
-        left: 30%;
+        left: 35%;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .tab-content {
+        position: absolute;
+        left: 45%;
     }
 }
 

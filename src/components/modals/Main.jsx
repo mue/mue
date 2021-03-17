@@ -10,7 +10,7 @@ export default function MainModal(props) {
   return (
     <div className='modal'>
       <span className='closeModal' onClick={props.modalClose}>&times;</span>
-      <h1>Options</h1>
+      <h1>.</h1>
       <div>
         <Navigation navbar={true}>
           <div label={props.language.modals.main.navbar.settings}>
