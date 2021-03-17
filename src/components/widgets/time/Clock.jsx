@@ -97,8 +97,22 @@ export default class Clock extends React.PureComponent {
   render() {
     let clockHTML = <h1 className='clock'>{this.state.time}<span className='ampm'>{this.state.ampm}</span></h1>;
 
+    const checkValue = (setting) => {
+      return (localStorage.getItem(setting) === 'true');
+    }
+
     if (localStorage.getItem('timeType') === 'analogue') {
-      clockHTML = <Analog className='analogclock' value={this.state.time} renderHourMarks={false} renderMinuteMarks={false} />;
+      clockHTML = (
+        <Analog 
+          className='analogclock' 
+          value={this.state.time} 
+          renderHourMarks={checkValue('hourMarks')} 
+          renderMinuteMarks={checkValue('minuteMarks')} 
+          renderSecondHand={checkValue('secondHand')} 
+          renderMinuteHand={checkValue('minuteHand')} 
+          renderHourHand={checkValue('hourHand')} 
+        />
+      );
     }
 
     return clockHTML;

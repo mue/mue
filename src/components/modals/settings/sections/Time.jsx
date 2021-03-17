@@ -19,6 +19,11 @@ export default class TimeSettings extends React.PureComponent {
     });
   }
 
+  componentDidMount() {
+    document.getElementById('dateformat').value = localStorage.getItem('dateFormat');
+    document.getElementById('timeType').value = localStorage.getItem('timeType');
+  }
+
   render() {
     let digitalSettings = (
       <React.Fragment>
@@ -28,10 +33,23 @@ export default class TimeSettings extends React.PureComponent {
         <Checkbox name='ampm' text={this.props.language.ampm} />
         <Checkbox name='zero' text={this.props.language.zero} />
       </React.Fragment>
-    )
+    );
 
-    if (this.state.timeType !== 'digital') {
-      digitalSettings = null;
+    let analogSettings = (
+      <React.Fragment>
+        <h3>Analog</h3>
+        <Checkbox name='secondHand' text='Seconds Hand' />
+        <Checkbox name='minuteHand' text='Minutes Hand' />
+        <Checkbox name='hourHand' text='Hours Hand' />
+        <Checkbox name='hourMarks' text='Hour Marks' />
+        <Checkbox name='minuteMarks' text='Minute Marks' />
+      </React.Fragment>
+    );
+
+    switch (this.state.timeType) {
+      case 'digital': break;
+      case 'analogue': digitalSettings = analogSettings; break;
+      default: digitalSettings = null; break;
     }
 
     return (
