@@ -80,6 +80,7 @@
             "events": "Events",
             "default": "Default Greeting Message",
             "name": "Name for greeting",
+            "birthday": "Birthday",
             "birthday_date": "Birthday Date"
           },
           "background": {
@@ -103,7 +104,7 @@
             "custom": "Custom Search URL",
             "voice_search": "Voice Search"
           },
-          "appearance":{
+          "appearance": {
             "title": "Appearance",
             "dark_theme": "Dark Theme",
             "night_mode": "Night Mode",
@@ -115,7 +116,22 @@
               "milliseconds": "milliseconds"
             }
           },
-          "language": "Language",
+          "advanced": {
+            "title": "Advanced",
+            "offline_mode": "Offline Mode",
+            "data": "Data",
+            "customisation": "Customisation",
+            "custom_css": "Custom CSS",
+            "custom_js": "Custom JS",
+            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support." 
+          },
+          "experimental": {
+            "title": "Experimental"
+          },
+          "language": {
+            "title": "Language",
+            "quote": "Quote Language"
+          },
           "changelog": "Change Log",
           "about": {
             "title": "About",
@@ -206,7 +222,7 @@
       "title": "Give us feedback",
       "question_one": "How would you rate your experience of this Mue build?",
       "question_two": "What bugs did you encounter in your use of Mue?",
-      "question_three": "How likely would you be to recommend this version of Mue to a friend of colleague?",
+      "question_three": "How likely would you be to recommend this version of Mue to a friend or colleague?",
       "submit": "Submit"
     }
   },

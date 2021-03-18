@@ -15,6 +15,9 @@
             "analogue": {
               "title": "Analog"
             }
+          },
+          "advanced": {
+            "customisation": "Customization"
           }
         }
       }

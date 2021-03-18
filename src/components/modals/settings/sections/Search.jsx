@@ -55,24 +55,26 @@ export default class SearchSettings extends React.PureComponent {
   }
 
   render() {
+    const { search } = this.props.language.sections;
+
     return (
       <div className='section'>
-        <h2>{this.props.language.title}</h2>
-        <Checkbox name='searchBar' text={this.props.enabledLanguage} />
-        <Checkbox name='voiceSearch' text={this.props.language.voice_search} />
+        <h2>{search.title}</h2>
+        <Checkbox name='searchBar' text={this.props.language.enabled} />
+        <Checkbox name='voiceSearch' text={search.voice_search} />
         <ul>
-          <Dropdown label={this.props.language.search_engine}
+          <Dropdown label={search.search_engine}
             name='searchEngine'
             id='searchEngine'
             onChange={() => this.setSearchEngine(document.getElementById('searchEngine').value)} >
           {searchEngines.map((engine) =>
             <option key={engine.name} className='choices' value={engine.settingsName}>{engine.name}</option>
           )}
-          <option className='choices' value='custom'>{this.props.language.custom.split(' ')[0]}</option>
+          <option className='choices' value='custom'>{search.custom.split(' ')[0]}</option>
           </Dropdown>
         </ul>
         <ul id='searchEngineInput' style={{ display: 'none' }}>
-          <p style={{ 'marginTop': '0px' }}>{this.props.language.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{this.props.language.reset}</span></p>
+          <p style={{ 'marginTop': '0px' }}>{search.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{this.props.language.reset}</span></p>
           <input type='text' id='customSearchEngine'></input>
         </ul>
       </div>

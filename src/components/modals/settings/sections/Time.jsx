@@ -26,24 +26,26 @@ export default class TimeSettings extends React.PureComponent {
   }
 
   render() {
+    const { time } = this.props.language.sections;
+
     let digitalSettings = (
       <React.Fragment>
-        <h3>{this.props.language.digital.title}</h3>
-        <Checkbox name='seconds' text={this.props.language.digital.seconds} />
-        <Checkbox name='24hour' text={this.props.language.digital.twentyfourhour} />
-        <Checkbox name='ampm' text={this.props.language.digital.ampm} />
-        <Checkbox name='zero' text={this.props.language.digital.zero} />
+        <h3>{time.digital.title}</h3>
+        <Checkbox name='seconds' text={time.digital.seconds} />
+        <Checkbox name='24hour' text={time.digital.twentyfourhour} />
+        <Checkbox name='ampm' text={time.digital.ampm} />
+        <Checkbox name='zero' text={time.digital.zero} />
       </React.Fragment>
     );
 
     let analogSettings = (
       <React.Fragment>
-        <h3>{this.props.language.analogue.title}</h3>
-        <Checkbox name='secondHand' text={this.props.language.analogue.second_hand} />
-        <Checkbox name='minuteHand' text={this.props.language.analogue.minute_hand} />
-        <Checkbox name='hourHand' text={this.props.language.analogue.hour_hand} />
-        <Checkbox name='hourMarks' text={this.props.language.analogue.hour_marks} />
-        <Checkbox name='minuteMarks' text={this.props.language.analogue.minute_marks} />
+        <h3>{time.analogue.title}</h3>
+        <Checkbox name='secondHand' text={time.analogue.second_hand} />
+        <Checkbox name='minuteHand' text={time.analogue.minute_hand} />
+        <Checkbox name='hourHand' text={time.analogue.hour_hand} />
+        <Checkbox name='hourMarks' text={time.analogue.hour_marks} />
+        <Checkbox name='minuteMarks' text={time.analogue.minute_marks} />
       </React.Fragment>
     );
 
@@ -55,27 +57,27 @@ export default class TimeSettings extends React.PureComponent {
 
     return (
       <div>
-        <h2>{this.props.language.title}</h2>
-        <Checkbox name='time' text={this.props.enabledLanguage} />
+        <h2>{time.title}</h2>
+        <Checkbox name='time' text={this.props.language.enabled} />
         <Dropdown label='Type' name='timeType' id='timeType' onChange={() => this.changeType()}>
-          <option className='choices' value='digital'>{this.props.language.digital.title}</option>
-          <option className='choices' value='analogue'>{this.props.language.analogue.title}</option>
-          <option className='choices' value='percentageComplete'>{this.props.language.percentage_complete}</option>
+          <option className='choices' value='digital'>{time.digital.title}</option>
+          <option className='choices' value='analogue'>{time.analogue.title}</option>
+          <option className='choices' value='percentageComplete'>{time.percentage_complete}</option>
         </Dropdown>
         {digitalSettings}
-        <h3>{this.props.language.date.title}</h3>
-        <Checkbox name='date' text={this.props.enabledLanguage} />
-        <Checkbox name='dayofweek' text={this.props.language.date.day_of_week} />
-        <Checkbox name='short' text={this.props.language.date.short_date} betaFeature={true} />
-        <Dropdown label={this.props.language.date.short_format} name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>
+        <h3>{time.date.title}</h3>
+        <Checkbox name='date' text={this.props.language.enabled} />
+        <Checkbox name='dayofweek' text={time.date.day_of_week} />
+        <Checkbox name='short' text={time.date.short_date} betaFeature={true} />
+        <Dropdown label={time.date.short_format} name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>
           <option className='choices' value='DMY'>DMY</option>
           <option className='choices' value='MDY'>MDY</option>
           <option className='choices' value='YMD'>YMD</option>
         </Dropdown>
-        <Dropdown label={this.props.language.date.short_separator.title} name='shortFormat' id='shortformat' onChange={() => localStorage.setItem('shortFormat', document.getElementById('shortformat').value)}>
-          <option className='choices' value='default'>{this.props.language.date.short_separator.default}</option>
-          <option className='choices' value='dash'>{this.props.language.date.short_separator.dash}</option>
-          <option className='choices' value='gaps'>{this.props.language.date.short_separator.gaps}</option>
+        <Dropdown label={time.date.short_separator.title} name='shortFormat' id='shortformat' onChange={() => localStorage.setItem('shortFormat', document.getElementById('shortformat').value)}>
+          <option className='choices' value='default'>{time.date.short_separator.default}</option>
+          <option className='choices' value='dash'>{time.date.short_separator.dash}</option>
+          <option className='choices' value='gaps'>{time.date.short_separator.gaps}</option>
          </Dropdown>
       </div>
     );

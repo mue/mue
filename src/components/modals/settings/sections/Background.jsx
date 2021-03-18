@@ -14,7 +14,7 @@ import 'react-color-gradient-picker/dist/index.css';
 import '../../../../scss/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class BackgroundSettings extends React.PureComponent {
-  DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': this.props.language.disabled, 'stop': 0 }], 'type': 'linear' };
+  DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': this.props.language.sections.background.disabled, 'stop': 0 }], 'type': 'linear' };
   GradientPickerInitalState = undefined;
 
   constructor(...args) {
@@ -131,14 +131,14 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   currentGradientSettings = () => {
-    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.props.language.disabled)) {
+    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.props.language.sections.background.disabled)) {
       const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
       return JSON.stringify({
         ...this.state.gradientSettings,
         gradient: [...this.state.gradientSettings.gradient.map(g => { return { ...g, stop: clampNumber(+g.stop, 0, 100) } })].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
       });
     }
-    return this.props.language.disabled;
+    return this.props.language.sections.background.disabled;
   }
 
   onColorPickerChange = (attrs, name) => {
@@ -171,12 +171,14 @@ export default class BackgroundSettings extends React.PureComponent {
     localStorage.setItem('brightness', this.state.brightness);
     localStorage.setItem('customBackground', this.state.customBackground);
 
-    if (document.getElementById('customBackgroundHex').value !== this.props.backgroundDisabled) {
+    if (document.getElementById('customBackgroundHex').value !== this.props.language.sections.background.disabled) {
       localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
     }
   }
 
   render() {
+    const { background } = this.props.language.sections;
+
     let colourSettings = null;
     if (typeof this.state.gradientSettings === 'object') {
       const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
@@ -209,8 +211,8 @@ export default class BackgroundSettings extends React.PureComponent {
       colourSettings = (
         <div>
           {gradientInputs}
-          {this.state.gradientSettings.gradient[0].colour !== this.props.language.disabled &&
-           !gradientHasMoreThanOneColour ? (<button type='button' className='add' onClick={this.addColour}>{this.props.language.add_colour}</button>) : null
+          {this.state.gradientSettings.gradient[0].colour !== background.disabled &&
+           !gradientHasMoreThanOneColour ? (<button type='button' className='add' onClick={this.addColour}>{background.add_colour}</button>) : null
           }
         </div>
       );
@@ -222,23 +224,23 @@ export default class BackgroundSettings extends React.PureComponent {
         <Checkbox name='background' text='Enabled' />
         <h3>Buttons</h3>
         <ul>
-          <Checkbox name='view' text={this.props.language.view} />
-          <Checkbox name='favouriteEnabled' text={this.props.language.favourite} />
-          <Checkbox name='refresh' text={this.props.language.refresh} />
+          <Checkbox name='view' text={background.view} />
+          <Checkbox name='favouriteEnabled' text={background.favourite} />
+          <Checkbox name='refresh' text={background.refresh} />
         </ul>
         <h3>Effects</h3>
         <ul>
-          <p>{this.props.language.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.reset}</span></p>
+          <p>{background.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.buttons.reset}</span></p>
           <input className='range' type='range' min='0' max='100' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
         </ul>
         <ul>
-          <p>{this.props.language.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.reset}</span></p>
+          <p>{background.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.buttons.reset}</span></p>
           <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
         </ul>
         <h3>Source</h3>
         <ul>
           <Dropdown
-            label={this.props.language.api}
+            label={background.api}
             name='backgroundapi'
             id='backgroundAPI'
             onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)} >
@@ -247,16 +249,16 @@ export default class BackgroundSettings extends React.PureComponent {
           </Dropdown>
         </ul>
         <ul>
-          <p>{this.props.language.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
+          <p>{background.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
         </ul>
         <ul>
-          <p>{this.props.language.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.reset}</span></p>
-          <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{this.props.language.upload}</button>
+          <p>{background.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.buttons.reset}</span></p>
+          <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{background.upload}</button>
           <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' loadFunction={(e) => this.fileUpload(e)} />
         </ul>
         <ul>
-          <p>{this.props.language.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.reset}</span></p>
+          <p>{background.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.buttons.reset}</span></p>
           <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
           {colourSettings}
         </ul>

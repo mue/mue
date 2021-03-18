@@ -3,15 +3,17 @@ import React from 'react';
 import Checkbox from '../Checkbox';
 
 export default function QuoteSettings (props) {
+  const { quote } = props.language.sections;
+
   return (
     <div>
-      <h2>{props.language.title}</h2>
-      <Checkbox name='greeting' text={'Enabled'}></Checkbox>
-      <Checkbox name='authorLink' text={props.language.author_link}></Checkbox>
-      <h3>{props.language.buttons}</h3>
-      <Checkbox name='copyButton' text={props.language.copy} />
-      <Checkbox name='tweetButton' text={props.language.tweet} />
-      <Checkbox name='favouriteQuoteEnabled' text={props.language.favourite} />
+      <h2>{quote.title}</h2>
+      <Checkbox name='quote' text={props.language.enabled}></Checkbox>
+      <Checkbox name='authorLink' text={quote.author_link}></Checkbox>
+      <h3>{quote.buttons}</h3>
+      <Checkbox name='copyButton' text={quote.copy} />
+      <Checkbox name='tweetButton' text={quote.tweet} />
+      <Checkbox name='favouriteQuoteEnabled' text={quote.favourite} />
     </div>
   );
 }

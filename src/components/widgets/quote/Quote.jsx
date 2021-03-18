@@ -91,7 +91,9 @@ export default class Quote extends React.PureComponent {
       }
 
       let authorlink = `https://${this.props.languagecode.split('-')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
-      if (localStorage.getItem('authorLink') === 'false') authorLink = null;
+      if (localStorage.getItem('authorLink') === 'false') {
+        authorLink = null;
+      }
 
       this.setState({
         quote: '"' + data.quote + '"',

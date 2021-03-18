@@ -17,28 +17,28 @@ export default function Settings (props) {
     <React.Fragment>
       <SettingsTabs>
         <div label={props.language.sections.time.title}>
-          <Time language={props.language.sections.time} enabledLanguage={props.language.enabled} />
+          <Time language={props.language}/>
         </div>
         <div label={props.language.sections.quote.title}>
-          <Quote language={props.language.sections.quote} enabledLanguage={props.language.enabled}/>
+          <Quote language={props.language}/>
         </div>
         <div label={props.language.sections.greeting.title}>
-          <Greeting language={props.language.sections.greeting} enabledLanguage={props.language.enabled} toastLanguage={props.toastLanguage} />
+          <Greeting language={props.language}/>
         </div>
         <div label={props.language.sections.background.title}>
-          <Background language={props.language.sections.background} enabledLanguage={props.language.enabled} toastLanguage={props.toastLanguage}/>
+          <Background language={props.language}/>
         </div>
         <div label={props.language.sections.search.title}>
-          <Search language={props.language.sections.search} enabledLanguage={props.language.enabled}/>
+          <Search language={props.language}/>
         </div>
         <div label={props.language.sections.appearance.title}>
-          <Appearance language={props.language.sections.appearance} toastLanguage={props.toastLanguage}/>
+          <Appearance language={props.language.sections.appearance} resetLanguage={props.language.buttons.reset} toastLanguage={props.toastLanguage}/>
         </div>
-        <div label={props.language.sections.language}>
-          <Language language={props.language}/>
+        <div label={props.language.sections.language.title}>
+          <Language language={props.language.sections.language}/>
         </div>
-        <div label='Advanced'>
-          <Advanced/>
+        <div label={props.language.sections.advanced.title}>
+          <Advanced language={props.language}/>
         </div>
         <div label='Experimental'>
 

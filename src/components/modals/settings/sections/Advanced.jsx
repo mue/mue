@@ -34,27 +34,29 @@ export default class AdvancedSettings extends React.PureComponent {
   }
 
   render() {
+    const { advanced } = this.props.language.sections;
+
     return (
       <div>
-        <h2>Advanced</h2>
-        <Checkbox name='offlineMode' text='Offline Mode' />
-        <h3>Data</h3>
-        <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings('reset')}>Reset</button>
-        <button className='export' onClick={() => SettingsFunctions.exportSettings()}>Export</button>
-        <button className='import' onClick={() => document.getElementById('file-input').click()}>Import</button>
+        <h2>{advanced.title}</h2>
+        <Checkbox name='offlineMode' text={advanced.offline_mode} />
+        <h3>{advanced.data}</h3>
+        <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings('reset')}>{this.props.language.buttons.reset}</button>
+        <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.buttons.export}</button>
+        <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.buttons.import}</button>
         <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)} />
-        <h3>Customisation</h3>
+        <h3>{advanced.customisation}</h3>
         <ul>
-          <p>Custom CSS <span className='modalLink' onClick={() => this.resetItem('customcss')}>Reset</span></p>
+          <p>{advanced.custom_css} <span className='modalLink' onClick={() => this.resetItem('customcss')}>{this.props.language.buttons.reset}</span></p>
           <textarea id='customcss'></textarea>
         </ul>
         <ul>
-          <p>Custom JS <span className='modalLink' onClick={() => this.resetItem('customjs')}>Reset</span></p>
+          <p>{advanced.custom_js} <span className='modalLink' onClick={() => this.resetItem('customjs')}>{this.props.language.buttons.reset}</span></p>
           <textarea id='customjs'></textarea>
         </ul>
-        <h3>Experimental</h3>
-        <p>Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issues continue to occur before contacting support.</p>
-        <Checkbox name='experimental' text='Enabled' />
+        <h3>{this.props.language.sections.experimental.title}</h3>
+        <p>{advanced.experimental_warning}</p>
+        <Checkbox name='experimental' text={this.props.language.enabled} />
       </div>
     );
   }

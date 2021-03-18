@@ -111,7 +111,7 @@ export default class Background extends React.PureComponent {
       this.setBackground(randomPhoto.url.default, null, randomPhoto.photographer);
       this.setCredit(randomPhoto.photographer);
       document.getElementById('location').textContent = randomPhoto.location;
-    } else if (customBackgroundColour) {
+    } else if (customBackgroundColour !== 'Disabled' && customBackgroundColour !== '') {
       this.setBackground(null, customBackgroundColour, 'false');
     } else if (customBackground !== '') {
       if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) {
