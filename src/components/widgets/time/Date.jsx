@@ -39,13 +39,16 @@ export default class DateWidget extends React.PureComponent {
 
       let format;
       switch (localStorage.getItem('shortFormat')) {
+        case 'dots':
+          format = `${day}.${month}.${year}`;
+          break;
         case 'dash':
           format = `${day}-${month}-${year}`;
           break;
         case 'gaps':
           format = `${day} - ${month} - ${year}`;
           break;
-        default:
+        case 'slashes':
           format = `${day}/${month}/${year}`;
       }
 

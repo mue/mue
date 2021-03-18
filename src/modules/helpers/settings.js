@@ -89,18 +89,18 @@ export default class SettingsFunctions {
 
     const font = localStorage.getItem('font');
     if (font) {
-      const data = JSON.parse(font);
+      const google = localStorage.getItem('fontGoogle');
 
       let url = '';
-      if (data.google === true) {
-        url = `@import url('https://fonts.googleapis.com/css2?family=${data.name}&display=swap');`;
+      if (google === 'true') {
+        url = `@import url('https://fonts.googleapis.com/css2?family=${font}&display=swap');`;
       }
 
       document.head.insertAdjacentHTML('beforeend', `
         <style>
           ${url}
           * {
-            font-family: '${data.name}', 'Lexend Deca' !important;
+            font-family: '${font}', 'Lexend Deca' !important;
           }
       </style>`);
     }

@@ -61,9 +61,10 @@
               "short_format": "Short Format",
               "short_separator": {
                 "title": "Short Separator",
-                "default": "Dots (.)",
-                "dash": "Dash (-)",
-                "gaps": "Gaps ( )"
+                "dots": "Dots",
+                "dash": "Dash",
+                "gaps": "Gaps",
+                "slashes": "Slashes"
               }
             }
           },
@@ -109,6 +110,11 @@
             "dark_theme": "Dark Theme",
             "night_mode": "Night Mode",
             "animations": "Animations",
+            "font": {
+              "title": "Font",
+              "custom": "Custom Font",
+              "google": "Import from Google Fonts"
+            },
             "accessibility": {
               "title": "Accessibility",
               "zoom": "Zoom",
@@ -140,7 +146,8 @@
               "title": "Version",
               "checking_update": "Checking for update",
               "update_available": "Update available",
-              "no_update": "No update available"
+              "no_update": "No update available",
+              "offline_mode": "Cannot check for update in offline mode"
             },
             "resources_used": {
               "title": "Resources Used",

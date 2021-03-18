@@ -36,6 +36,13 @@ export default class About extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (localStorage.getItem('offlineMode') === 'true') {
+      this.setState({
+        update: this.props.language.version.offline_mode
+      });
+      return;
+    }
+
     this.getGitHubData();
   }
 

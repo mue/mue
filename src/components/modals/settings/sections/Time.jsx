@@ -74,10 +74,13 @@ export default class TimeSettings extends React.PureComponent {
           <option className='choices' value='MDY'>MDY</option>
           <option className='choices' value='YMD'>YMD</option>
         </Dropdown>
+        <br/>
+        <br/>
         <Dropdown label={time.date.short_separator.title} name='shortFormat' id='shortformat' onChange={() => localStorage.setItem('shortFormat', document.getElementById('shortformat').value)}>
-          <option className='choices' value='default'>{time.date.short_separator.default}</option>
+          <option className='choices' value='dots'>{time.date.short_separator.dots}</option>
           <option className='choices' value='dash'>{time.date.short_separator.dash}</option>
           <option className='choices' value='gaps'>{time.date.short_separator.gaps}</option>
+          <option className='choices' value='slashes'>{time.date.short_separator.slashes}</option>
          </Dropdown>
       </div>
     );
