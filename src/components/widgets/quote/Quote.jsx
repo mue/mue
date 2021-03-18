@@ -77,6 +77,14 @@ export default class Quote extends React.PureComponent {
       });
     }
 
+    const customQuote = localStorage.getItem('customQuote');
+    if (customQuote) {
+      return this.setState({
+        quote: '"' + customQuote + '"',
+        author: localStorage.getItem('customQuoteAuthor')
+      });
+    }
+
     if (localStorage.getItem('offlineMode') === 'true') {
       return this.doOffline();
     }

@@ -4,7 +4,9 @@
       "settings": {
         "sections": {
           "quote": {
-            "favourite": "Favorite"
+            "favourite": "Favorite",
+            "author_link": "Author Link",
+            "custom_author": "Custom Author"
           },
           "background": {
             "custom_colour": "Custom Background Color",

@@ -124,7 +124,7 @@ ul.sidebar {
   left: 0;
   margin: 0;
   padding-left: 0;
-  height: 100%;
+  height: 100vh;
   background: #f0f0f0;
   left: 0;
   border-radius: 12px 0 0 12px;
@@ -306,14 +306,13 @@ li {
 }
 
 ::-webkit-scrollbar {
-  width: 13px;
-  background: #bdc3c7;
+  width: 6px;
   border-top-right-radius: map-get($modal, 'border-radius');
   border-bottom-right-radius: map-get($modal, 'border-radius');
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #34495e;
+  background: #636e72;
   border-top-right-radius: map-get($modal, 'border-radius');
   border-bottom-right-radius: map-get($modal, 'border-radius');
 }

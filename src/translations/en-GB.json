@@ -74,7 +74,9 @@
             "copy": "Copy",
             "tweet": "Tweet",
             "favourite": "Favourite",
-            "author_link": "Author Link"
+            "author_link": "Authour Link",
+            "custom": "Custom Quote",
+            "custom_author": "Custom Authour"
           },
           "greeting": {
             "title": "Greeting",
@@ -179,7 +181,7 @@
           "information": "Information",
           "last_updated": "Last Updated",
           "version": "Version",
-          "author": "Author",
+          "author": "Authour",
           "notice": {
             "title": "Notice",
             "description": "In order for the change to take place, the page must be refreshed."
