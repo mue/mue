@@ -37,7 +37,7 @@ export default function Tab(props) {
 
   let icon, divider;
   switch (props.label) {
-     // Navbar
+    // Navbar
     case 'Settings': icon = <Settings/>; break;
     case 'My Add-ons': icon = <Addons/>; break;
     case 'Marketplace': icon = <Marketplace/>; break;

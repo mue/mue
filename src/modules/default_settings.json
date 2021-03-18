@@ -98,5 +98,17 @@
   {
     "name": "date",
     "value": "false"
+  },
+  {
+    "name": "timeType",
+    "value": "digital"
+  },
+  {
+    "name": "dateFormat",
+    "value": "DMY"
+  },
+  {
+    "name": "shortFormat",
+    "value": "default"
   }
 ]

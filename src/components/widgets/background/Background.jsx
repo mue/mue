@@ -181,7 +181,8 @@ export default class Background extends React.PureComponent {
       return document.querySelector('.photoInformation').style.display = 'none';
     }
 
-    if (localStorage.getItem('customBackgroundColour') !== 'Disabled') {
+    const backgroundColour = localStorage.getItem('customBackgroundColour');
+    if (backgroundColour !== 'Disabled' && backgroundColour !== '') {
       document.querySelector('.photoInformation').style.display = 'none';
     }
 
