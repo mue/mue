@@ -56,7 +56,7 @@ export default class TimeSettings extends React.PureComponent {
     return (
       <div>
         <h2>{this.props.language.title}</h2>
-        <Checkbox name='time' text='Enabled' />
+        <Checkbox name='time' text={this.props.enabledLanguage} />
         <Dropdown label='Type' name='timeType' id='timeType' onChange={() => this.changeType()}>
           <option className='choices' value='digital'>{this.props.language.digital.title}</option>
           <option className='choices' value='analogue'>{this.props.language.analogue.title}</option>
@@ -64,7 +64,7 @@ export default class TimeSettings extends React.PureComponent {
         </Dropdown>
         {digitalSettings}
         <h3>{this.props.language.date.title}</h3>
-        <Checkbox name='date' text='Enabled' />
+        <Checkbox name='date' text={this.props.enabledLanguage} />
         <Checkbox name='dayofweek' text={this.props.language.date.day_of_week} />
         <Checkbox name='short' text={this.props.language.date.short_date} betaFeature={true} />
         <Dropdown label={this.props.language.date.short_format} name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>

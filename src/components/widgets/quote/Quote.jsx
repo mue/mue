@@ -90,10 +90,13 @@ export default class Quote extends React.PureComponent {
         return this.doOffline();
       }
 
+      let authorlink = `https://${this.props.languagecode.split('-')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
+      if (localStorage.getItem('authorLink') === 'false') authorLink = null;
+
       this.setState({
         quote: '"' + data.quote + '"',
         author: data.author,
-        authorlink: `https://${this.props.languagecode}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`
+        authorlink: authorlink
       });
     } catch (e) {
       // ..and if that fails we load one locally

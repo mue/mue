@@ -17,21 +17,21 @@ export default function Settings (props) {
     <React.Fragment>
       <SettingsTabs>
         <div label={props.language.sections.time.title}>
-          <Time language={props.language.sections.time}/>
+          <Time language={props.language.sections.time} enabledLanguage={props.language.enabled} />
         </div>
         <div label={props.language.sections.quote.title}>
-          <Quote language={props.language.sections.quote}/>
+          <Quote language={props.language.sections.quote} enabledLanguage={props.language.enabled}/>
         </div>
         <div label={props.language.sections.greeting.title}>
-          <Greeting language={props.language.sections.greeting} toastLanguage={props.language.toasts} />
+          <Greeting language={props.language.sections.greeting} enabledLanguage={props.language.enabled} toastLanguage={props.toastLanguage} />
         </div>
         <div label={props.language.sections.background.title}>
-          <Background language={props.language.sections.background} toastLanguage={props.toastLanguage}/>
+          <Background language={props.language.sections.background} enabledLanguage={props.language.enabled} toastLanguage={props.toastLanguage}/>
         </div>
         <div label={props.language.sections.search.title}>
-          <Search language={props.language.sections.search}/>
+          <Search language={props.language.sections.search} enabledLanguage={props.language.enabled}/>
         </div>
-        <div label={props.language.sections.appearance}>
+        <div label={props.language.sections.appearance.title}>
           <Appearance language={props.language.sections.appearance} toastLanguage={props.toastLanguage}/>
         </div>
         <div label={props.language.sections.language}>

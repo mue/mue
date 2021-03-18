@@ -7,6 +7,7 @@ export default function QuoteSettings (props) {
     <div>
       <h2>{props.language.title}</h2>
       <Checkbox name='greeting' text={'Enabled'}></Checkbox>
+      <Checkbox name='authorLink' text={props.language.author_link}></Checkbox>
       <h3>{props.language.buttons}</h3>
       <Checkbox name='copyButton' text={props.language.copy} />
       <Checkbox name='tweetButton' text={props.language.tweet} />

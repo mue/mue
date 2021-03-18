@@ -57,8 +57,8 @@ export default class SearchSettings extends React.PureComponent {
   render() {
     return (
       <div className='section'>
-        <h2>Search</h2>
-        <Checkbox name='searchBar' text='Enabled' />
+        <h2>{this.props.language.title}</h2>
+        <Checkbox name='searchBar' text={this.props.enabledLanguage} />
         <Checkbox name='voiceSearch' text={this.props.language.voice_search} />
         <ul>
           <Dropdown label={this.props.language.search_engine}
@@ -68,7 +68,7 @@ export default class SearchSettings extends React.PureComponent {
           {searchEngines.map((engine) =>
             <option key={engine.name} className='choices' value={engine.settingsName}>{engine.name}</option>
           )}
-          <option className='choices' value='custom'>Custom</option>
+          <option className='choices' value='custom'>{this.props.language.custom.split(' ')[0]}</option>
           </Dropdown>
         </ul>
         <ul id='searchEngineInput' style={{ display: 'none' }}>
