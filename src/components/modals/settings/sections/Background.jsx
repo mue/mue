@@ -224,7 +224,6 @@ export default class BackgroundSettings extends React.PureComponent {
         <ul>
           <Checkbox name='view' text={background.view} />
           <Checkbox name='favouriteEnabled' text={background.favourite} />
-          <Checkbox name='refresh' text={background.refresh} />
         </ul>
         <h3>Effects</h3>
         <ul>

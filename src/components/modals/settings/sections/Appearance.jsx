@@ -58,6 +58,9 @@ export default class AppearanceSettings extends React.PureComponent {
         <h2>{appearance.title}</h2>
         <Checkbox name='darkTheme' text={appearance.dark_theme} />
         <Checkbox name='brightnessTime' text={appearance.night_mode} />
+        <h3>{appearance.navbar.title}</h3>
+        <Checkbox name='notesEnabled' text={appearance.navbar.notes} />
+        <Checkbox name='refresh' text={appearance.navbar.refresh} />
         <h3>{appearance.font.title}</h3>
         <ul>
           <p>{appearance.font.custom} <span className='modalLink' onClick={() => this.resetItem('font')}>{this.props.language.buttons.reset}</span></p>

@@ -13,7 +13,7 @@ export default function MainModal(props) {
       <div>
         <Navigation navbar={true}>
           <div label={props.language.modals.main.navbar.settings}>
-            <Settings language={props.language.modals.main.settings} toastLanguage={props.language.toasts} />
+            <Settings language={props.language.modals.main.settings} toastLanguage={props.language.toasts} updateLanguage={props.language.modals.update} />
           </div>
           <div label={props.language.modals.main.navbar.addons}>
             <Addons/>

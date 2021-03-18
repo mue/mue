@@ -9,6 +9,7 @@ import Quote from '../settings/sections/Quote';
 import Appearance from '../settings/sections/Appearance';
 import Background from '../settings/sections/Background';
 import Advanced from '../settings/sections/Advanced';
+import Changelog from '../settings/sections/Changelog';
 
 import SettingsTabs from './backend/Tabs';
 
@@ -44,7 +45,7 @@ export default function Settings (props) {
 
         </div>
         <div label={props.language.sections.changelog}>
-          <About/>
+          <Changelog language={props.updateLanguage} />
         </div>
         <div label={props.language.sections.about.title}>
           <About language={props.language.sections.about}/>

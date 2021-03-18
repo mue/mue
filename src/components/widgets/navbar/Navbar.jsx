@@ -2,7 +2,6 @@ import React from 'react';
 
 import RefreshIcon from '@material-ui/icons/RefreshRounded';
 import Gear from '@material-ui/icons/SettingsRounded';
-import NewReleases from '@material-ui/icons/NewReleasesRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Tooltip from '@material-ui/core/Tooltip';
 import Report from '@material-ui/icons/SmsFailed';
@@ -39,18 +38,24 @@ export default class Navbar extends React.PureComponent {
       feedbackHTML = null;
     }
 
+    // toggle notes
+    let notesHTML = (
+      <div className='notes'>
+        <NotesIcon className='topicons'/>
+        <React.Suspense fallback={renderLoader()}>
+          <Notes language={this.props.language.widgets.navbar.notes} />
+        </React.Suspense>
+      </div>
+    );
+
+    if (localStorage.getItem('notesEnabled') === 'false') {
+      notesHTML = null;
+    }
+
     return (
       <div className='navbar-container'>
-        <div className='notes'>
-          <NotesIcon className='topicons'/>
-          <React.Suspense fallback={renderLoader()}>
-            <Notes language={this.props.language.widgets.navbar.notes} />
-          </React.Suspense>
-        </div>
+        {notesHTML}
         {feedbackHTML}
-        <Tooltip title={this.props.language.widgets.navbar.tooltips.update} placement='top'>
-          <NewReleases className='refreshicon topicons' onClick={() => this.props.openModal('updateModal')} />
-        </Tooltip>
         {refreshHTML}
         <Tooltip title={this.props.language.modals.main.navbar.settings} placement='top'>
           <Gear className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')} />

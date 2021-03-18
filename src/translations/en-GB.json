@@ -99,7 +99,6 @@
             "add_colour": "Add colour",
             "favourite": "Favourite",
             "view": "View",
-            "refresh": "Refresh",
             "disabled": "Disabled"
           },
           "search": {
@@ -113,6 +112,11 @@
             "dark_theme": "Dark Theme",
             "night_mode": "Night Mode",
             "animations": "Animations",
+            "navbar": {
+              "title": "Navbar",
+              "notes": "Notes",
+              "refresh": "Refresh Button"
+            },
             "font": {
               "title": "Font",
               "custom": "Custom Font",
