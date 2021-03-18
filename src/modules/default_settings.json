@@ -110,5 +110,13 @@
   {
     "name": "shortFormat",
     "value": "default"
+  },
+  {
+    "name": "zoom",
+    "value": 100
+  },
+  {
+    "name": "toastDisplayTime",
+    "value": 2500
   }
 ]
