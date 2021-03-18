@@ -144,7 +144,8 @@
             },
             "resources_used": {
               "title": "Resources Used",
-              "bg_images": "Background Images",
+              "bg_images": "Offline Background Images",
+              "welcome_img": "Welcome Image",
               "pin_icon": "Pin Icon"
             },
             "contributors": "Contributors",
@@ -155,6 +156,10 @@
           "reset": "Reset",
           "import": "Import",
           "export": "Export"
+        },
+        "toasts": {
+          "reset": "Reset successfully",
+          "imported": "Successfully imported"
         }
       },
       "marketplace": {
@@ -228,8 +233,6 @@
   },
   "toasts": {
     "quote": "Quote copied",
-    "reset": "Reset successfully",
-    "imported": "Successfully imported",
     "installed": "Successfully installed",
     "uninstalled": "Successfully removed",
     "error": "Something went wrong"

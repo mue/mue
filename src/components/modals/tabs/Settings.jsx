@@ -32,7 +32,7 @@ export default function Settings (props) {
           <Search language={props.language}/>
         </div>
         <div label={props.language.sections.appearance.title}>
-          <Appearance language={props.language.sections.appearance} resetLanguage={props.language.buttons.reset} toastLanguage={props.toastLanguage}/>
+          <Appearance language={props.language}/>
         </div>
         <div label={props.language.sections.language.title}>
           <Language language={props.language.sections.language}/>

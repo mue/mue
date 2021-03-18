@@ -20,8 +20,8 @@ export default class BackgroundSettings extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-      blur: 0,
-      brightness: 100,
+      blur: localStorage.getItem('blur'),
+      brightness: localStorage.getItem('brightness'),
       customBackground: localStorage.getItem('customBackground') || '',
       gradientSettings: this.DefaultGradientSettings
     };
@@ -58,7 +58,7 @@ export default class BackgroundSettings extends React.PureComponent {
         toast('resetItem requires a key!');
     }
 
-    toast(this.props.toastLanguage.reset);
+    toast(this.props.language.toasts.reset);
   }
 
   InitializeColorPickerState(gradientSettings) {
@@ -95,8 +95,6 @@ export default class BackgroundSettings extends React.PureComponent {
     }
 
     this.setState({
-      blur: localStorage.getItem('blur'),
-      brightness: localStorage.getItem('brightness'),
       gradientSettings
     });
 
@@ -163,7 +161,7 @@ export default class BackgroundSettings extends React.PureComponent {
     localStorage.setItem('customBackground', e.target.result);
     this.setState({
       customBackground: e.target.result
-     });
+    });
   }
 
   componentDidUpdate() {

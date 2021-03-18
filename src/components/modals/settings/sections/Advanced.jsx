@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 export default class AdvancedSettings extends React.PureComponent {
   resetItem(type) {
     document.getElementById(type).value = '';
-    toast(this.props.toastLanguage.reset);
+    toast(this.props.language.toasts.reset);
   }
 
   componentDidMount() {
@@ -25,7 +25,7 @@ export default class AdvancedSettings extends React.PureComponent {
       localStorage.setItem(key, content[key]);
     }
 
-    toast(this.props.toastLanguage.imported);
+    toast(this.props.language.toasts.imported);
   }
 
   componentWillUnmount() {
