@@ -122,6 +122,7 @@
             "copyright": "Copyright",
             "version": {
               "title": "Version",
+              "checking_update": "Checking for update",
               "update_available": "Update available",
               "no_update": "No update available"
             },

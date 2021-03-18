@@ -11,13 +11,15 @@ export default class About extends React.PureComponent {
     super(...args);
     this.state = {
       contributors: [],
-      update: ''
+      sponsors: [],
+      update: this.props.language.version.checking_update
     }
   }
 
   async getGitHubData() {
     const contributors = await (await fetch('https://api.github.com/repos/mue/mue/contributors')).json();
     const versionData = await (await fetch('https://api.github.com/repos/mue/mue/releases')).json();
+    const { sponsors } = await (await fetch(Constants.SPONSORS_URL + '/list')).json();
 
     let updateMsg = this.props.language.version.no_update;
     let version = versionData[0].tag_name;
@@ -25,9 +27,9 @@ export default class About extends React.PureComponent {
       updateMsg = `${this.props.language.version.update_available}: ${version}`;
     }
 
-    // TODO: REMOVE BOTS AND MAKE IT ACTUALLY WORK
     this.setState({
-      contributors: contributors,
+      contributors: contributors.filter((contributor) => !contributor.login.includes('bot')),
+      sponsors: sponsors,
       update: updateMsg
     });
   }
@@ -59,7 +61,11 @@ export default class About extends React.PureComponent {
           </Tooltip>
         )}
         <h3>{this.props.language.supporters}</h3>
-        <p>to be implemented</p>
+        {this.state.sponsors.map((item) =>
+          <Tooltip title={item.handle} placement='top' key={item.handle}>
+            <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=256'} alt={item.handle}></img></a>
+          </Tooltip>
+        )}
       </div>
     );
   }
