@@ -57,6 +57,7 @@
             "date": {
               "title": "Date",
               "day_of_week": "Day of week",
+              "datenth": "Date nth",
               "short_date": "Short Date",
               "short_format": "Short Format",
               "short_separator": {

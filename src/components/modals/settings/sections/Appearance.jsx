@@ -47,7 +47,7 @@ export default class AppearanceSettings extends React.PureComponent {
   componentDidUpdate() {
     localStorage.setItem('zoom', this.state.zoom);
     localStorage.setItem('toastDisplayTime', this.state.toast_duration);
-    localStorage.setItem('font', this.state.font);
+    localStorage.setItem('font', this.state.font.charAt(0).toUpperCase() + this.state.font.slice(1));
   }
 
   render() {

@@ -68,6 +68,7 @@ export default class TimeSettings extends React.PureComponent {
         <h3>{time.date.title}</h3>
         <Checkbox name='date' text={this.props.language.enabled} />
         <Checkbox name='dayofweek' text={time.date.day_of_week} />
+        <Checkbox name='datenth' text={time.date.datenth} />
         <Checkbox name='short' text={time.date.short_date} betaFeature={true} />
         <Dropdown label={time.date.short_format} name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>
           <option className='choices' value='DMY'>DMY</option>

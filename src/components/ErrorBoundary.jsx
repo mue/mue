@@ -23,7 +23,7 @@ export default class ErrorBoundary extends React.PureComponent {
           <p>Failed to load this component of Mue.</p>
           <button className='refresh' onClick={() => window.location.reload()}>Refresh</button>
         </div>
-      )
+      );
     }
 
     return this.props.children;
