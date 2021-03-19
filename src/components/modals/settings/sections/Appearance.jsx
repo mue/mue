@@ -13,6 +13,7 @@ export default class AppearanceSettings extends React.PureComponent {
       toast_duration: localStorage.getItem('toastDisplayTime'),
       font: localStorage.getItem('font') || ''
     };
+    this.language = window.language.modals.main.settings;
   }
 
   resetItem(key) {
@@ -42,7 +43,7 @@ export default class AppearanceSettings extends React.PureComponent {
         toast('resetItem requires a key!');
     }
 
-    toast(this.props.language.toasts.reset);
+    toast(this.language.toasts.reset);
   }
 
   componentDidUpdate() {
@@ -52,7 +53,7 @@ export default class AppearanceSettings extends React.PureComponent {
   }
 
   render() {
-    const { appearance } = this.props.language.sections;
+    const { appearance } = this.language.sections;
 
     return (
       <div>
@@ -66,9 +67,10 @@ export default class AppearanceSettings extends React.PureComponent {
   
         <h3>{appearance.font.title}</h3>
         <ul>
-          <p>{appearance.font.custom} <span className='modalLink' onClick={() => this.resetItem('font')}>{this.props.language.buttons.reset}</span></p>
+          <p>{appearance.font.custom} <span className='modalLink' onClick={() => this.resetItem('font')}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.font} onChange={(e) => this.setState({ font: e.target.value })}></input>
         </ul>
+        <br />
         <Dropdown
             label='Font Weight'
             name='fontweight'
@@ -84,6 +86,7 @@ export default class AppearanceSettings extends React.PureComponent {
               <option className='choices' value='700'>Bold</option>
               <option className='choices' value='800'>Extra-Bold</option>
         </Dropdown>
+        <br /><br />
         <Dropdown
             label='Font Style'
             name='fontstyle'
@@ -93,16 +96,17 @@ export default class AppearanceSettings extends React.PureComponent {
               <option className='choices' value='italic'>Italic</option>
               <option className='choices' value='oblique'>Oblique</option>
         </Dropdown>
+        <br /><br />
         <Checkbox name='fontGoogle' text={appearance.font.google} />
 
         <h3>{appearance.accessibility.title}</h3>
         <Checkbox name='animations' text={appearance.animations} betaFeature={true} />
         <ul>
-          <p>{appearance.accessibility.zoom} ({this.state.zoom}%) <span className='modalLink' onClick={() => this.resetItem('zoom')}>{this.props.language.buttons.reset}</span></p>
+          <p>{appearance.accessibility.zoom} ({this.state.zoom}%) <span className='modalLink' onClick={() => this.resetItem('zoom')}>{this.language.buttons.reset}</span></p>
           <input className='range' type='range' min='50' max='200' value={this.state.zoom} onChange={(event) => this.setState({ zoom: event.target.value })} />
         </ul>
         <ul>
-          <p>{appearance.accessibility.toast_duration} ({this.state.toast_duration} {appearance.accessibility.milliseconds}) <span className='modalLink' onClick={() => this.resetItem('toast_duration')}>{this.props.language.buttons.reset}</span></p>
+          <p>{appearance.accessibility.toast_duration} ({this.state.toast_duration} {appearance.accessibility.milliseconds}) <span className='modalLink' onClick={() => this.resetItem('toast_duration')}>{this.language.buttons.reset}</span></p>
           <input className='range' type='range' min='500' max='5000' value={this.state.toast_duration} onChange={(event) => this.setState({ toast_duration: event.target.value })} />
         </ul>
       </div>

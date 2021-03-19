@@ -12,6 +12,7 @@ export default class GreetingSettings extends React.PureComponent {
       birthday: new Date(localStorage.getItem('birthday')) || new Date(),
       greetingName: localStorage.getItem('greetingName') || ''
     };
+    this.language = window.language.modals.main.settings;
   }
 
   resetItem() {
@@ -19,7 +20,7 @@ export default class GreetingSettings extends React.PureComponent {
       greetingName: ''
     });
 
-    toast(this.props.language.toasts.reset);
+    toast(this.language.toasts.reset);
   }
 
   changeDate(data) {
@@ -40,21 +41,21 @@ export default class GreetingSettings extends React.PureComponent {
   }
 
   render() {
-    const { greeting } = this.props.language.sections;
+    const { greeting } = this.language.sections;
 
     return (
       <div>
         <h2>{greeting.title}</h2>
-        <Checkbox name='greeting' text={this.props.language.enabled} />
+        <Checkbox name='greeting' text={this.language.enabled} />
         <Checkbox name='events' text={greeting.events} />
         <Checkbox name='defaultGreetingMessage' text={greeting.default} />
         <ul>
-          <p>{greeting.name} <span className='modalLink' onClick={() => this.resetItem()}>{this.props.language.buttons.reset}</span></p>
+          <p>{greeting.name} <span className='modalLink' onClick={() => this.resetItem()}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.greetingName} onChange={(e) => this.setState({ greetingName: e.target.value })}></input>
         </ul>
 
         <h3>{greeting.birthday}</h3>
-        <Checkbox name='birthdayenabled' text={this.props.language.enabled} />
+        <Checkbox name='birthdayenabled' text={this.language.enabled} />
         <ul>
           <p>{greeting.birthday_date}</p>
           <DatePicker onChange={(data) => this.changeDate(data)} value={this.state.birthday}/>

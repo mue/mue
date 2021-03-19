@@ -7,18 +7,20 @@ import Marketplace from './tabs/Marketplace';
 import Navigation from './tabs/backend/Tabs';
 
 export default function MainModal(props) {
+  const language = window.language;
+
   return (
     <div className='modal'>
       <span className='closeModal' onClick={props.modalClose}>&times;</span>
       <div>
         <Navigation navbar={true}>
-          <div label={props.language.modals.main.navbar.settings}>
-            <Settings language={props.language.modals.main.settings} toastLanguage={props.language.toasts} updateLanguage={props.language.modals.update} />
+          <div label={language.modals.main.navbar.settings}>
+            <Settings/>
           </div>
-          <div label={props.language.modals.main.navbar.addons}>
+          <div label={language.modals.main.navbar.addons}>
             <Addons/>
           </div>
-          <div label={props.language.modals.main.navbar.marketplace}>
+          <div label={language.modals.main.navbar.marketplace}>
             <Marketplace/>
           </div>
         </Navigation>

@@ -8,6 +8,7 @@ export default class Greeting extends React.PureComponent {
     this.state = {
       greeting: ''
     };
+    this.language = window.language.widgets.greeting;
   }
 
   doEvents(time, message) {
@@ -21,13 +22,13 @@ export default class Greeting extends React.PureComponent {
 
     // If it's December 25th, set the greeting string to "Merry Christmas"
     if (month === 11 && date === 25) {
-      message = this.props.language.christmas;
+      message = this.language.christmas;
     // If the date is January 1st, set the greeting string to "Happy new year"
     } else if (month === 0 && date === 1) {
-      message = this.props.language.newyear;
+      message = this.language.newyear;
     // If it's October 31st, set the greeting string to "Happy Halloween"
     } else if (month === 9 && date === 31) {
-      message = this.props.language.halloween;
+      message = this.language.halloween;
     }
 
     return message;
@@ -38,13 +39,13 @@ export default class Greeting extends React.PureComponent {
     const hour = now.getHours();
 
     // Set the default greeting string to "Good evening"
-    let message = this.props.language.evening;
+    let message = this.language.evening;
     // If it's before 12am, set the greeting string to "Good morning"
     if (hour < 12) {
-      message = this.props.language.morning;
+      message = this.language.morning;
     // If it's before 6pm, set the greeting string to "Good afternoon"
     } else if (hour < 18) {
-      message = this.props.language.afternoon;
+      message = this.language.afternoon;
     }
 
     // Events
@@ -72,7 +73,7 @@ export default class Greeting extends React.PureComponent {
     // Birthday
     const birth = new Date(localStorage.getItem('birthday'));
     if (localStorage.getItem('birthdayenabled') === 'true' && birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
-      message = this.props.language.birthday;
+      message = this.language.birthday;
     }
 
     // Set the state to the greeting string

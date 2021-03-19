@@ -27,16 +27,15 @@ export default class Widgets extends React.PureComponent {
   }
 
   render() {
-    const { language, languagecode } = this.props;
     const enabled = this.enabled;
 
     return (
       <React.Fragment>
-        {enabled('searchBar') ? <Search language={language.widgets.search} /> : null}
-        {enabled('greeting') ? <Greeting language={language.widgets.greeting} /> : null}
+        {enabled('searchBar') ? <Search/> : null}
+        {enabled('greeting') ? <Greeting/> : null}
         {enabled('time') ? <Clock/> : null}
         {enabled('date') ? <Date/> : null}
-        {enabled('quote') ? <Quote language={language.toasts} languagecode={languagecode} /> : null}
+        {enabled('quote') ? <Quote/> : null}
         {enabled('view') ? <Maximise/> : null}
         {enabled('favouriteEnabled') ? <Favourite/> : null}
       </React.Fragment>

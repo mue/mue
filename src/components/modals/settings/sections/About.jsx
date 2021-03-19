@@ -14,8 +14,9 @@ export default class About extends React.PureComponent {
       contributors: [],
       sponsors: [],
       other_contributors: [],
-      update: this.props.language.version.checking_update
+      update: window.language.modals.main.settings.sections.about.version.checking_update
     }
+    this.language = window.language.modals.main.settings.sections.about;
   }
 
   async getGitHubData() {
@@ -25,9 +26,9 @@ export default class About extends React.PureComponent {
     const versionData = await (await fetch('https://api.github.com/repos/mue/mue/releases')).json();
     const newVersion = versionData[0].tag_name;
 
-    let updateMsg = this.props.language.version.no_update;
+    let updateMsg = this.language.version.no_update;
     if (version < newVersion) {
-      updateMsg = `${this.props.language.version.update_available}: ${newVersion}`;
+      updateMsg = `${this.language.version.update_available}: ${newVersion}`;
     }
 
     this.setState({
@@ -41,7 +42,7 @@ export default class About extends React.PureComponent {
   componentDidMount() {
     if (localStorage.getItem('offlineMode') === 'true') {
       this.setState({
-        update: this.props.language.version.offline_mode
+        update: this.language.version.offline_mode
       });
       return;
     }
@@ -52,15 +53,15 @@ export default class About extends React.PureComponent {
   render() {
     return (
       <div>
-        <h2>{this.props.language.title}</h2>
+        <h2>{this.language.title}</h2>
         <img draggable='false' style={{'height': '100px', 'width': 'auto'}} src='https://raw.githubusercontent.com/mue/branding/master/logo/logo_horizontal.png' alt='Mue logo'></img>
-        <p>{this.props.language.copyright} 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
-        <p>{this.props.language.version.title} {version} ({this.state.update})</p>
-        <h3>{this.props.language.resources_used.title}</h3>
-        <p>Pexels ({this.props.language.resources_used.bg_images})</p>
-        <p>Google ({this.props.language.resources_used.pin_icon})</p>
-        <p>Undraw ({this.props.language.resources_used.welcome_img})</p>
-        <h3>{this.props.language.contributors}</h3>
+        <p>{this.language.copyright} 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
+        <p>{this.language.version.title} {version} ({this.state.update})</p>
+        <h3>{this.language.resources_used.title}</h3>
+        <p>Pexels ({this.language.resources_used.bg_images})</p>
+        <p>Google ({this.language.resources_used.pin_icon})</p>
+        <p>Undraw ({this.language.resources_used.welcome_img})</p>
+        <h3>{this.language.contributors}</h3>
         {this.state.contributors.map((item) =>
           <Tooltip title={item.login} placement='top' key={item.login}>
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
@@ -72,7 +73,7 @@ export default class About extends React.PureComponent {
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
           </Tooltip>
         )}
-        <h3>{this.props.language.supporters}</h3>
+        <h3>{this.language.supporters}</h3>
         {this.state.sponsors.map((item) =>
           <Tooltip title={item.handle} placement='top' key={item.handle}>
             <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=256'} alt={item.handle}></img></a>

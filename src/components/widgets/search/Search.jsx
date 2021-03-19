@@ -15,6 +15,7 @@ export default class Search extends React.PureComponent {
       query: '',
       microphone: null
     };
+    this.language = window.language.widgets.search;
   }
 
   startSpeechRecognition() {
@@ -73,7 +74,7 @@ export default class Search extends React.PureComponent {
         <form action={this.state.url}>
           {this.state.microphone}
           <SearchIcon onClick={() => this.searchButton()} id='searchButton'/>
-          <input type='text' placeholder={this.props.language} name={this.state.query} id='searchtext'/>
+          <input type='text' placeholder={this.language} name={this.state.query} id='searchtext'/>
         </form>
       </div>
     );

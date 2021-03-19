@@ -6,13 +6,15 @@ import Resolution from '@material-ui/icons/Crop';
 import Photographer from '@material-ui/icons/Person';
 
 export default function PhotoInformation(props) {
+  const language = window.language.widgets.background;
+
   return (
     <div className='photoInformation'>
-      <h1 id='photographer'>{props.language.credit}</h1>
+      <h1 id='photographer'>{language.credit}</h1>
       <Info className='photoInformationHover'/>
       <div className={props.className || 'infoCard'}>
         <Info className='infoIcon'/>
-        <h1>{props.language.information}</h1>
+        <h1>{language.information}</h1>
         <hr/>
         <Location/>
         <span id='location'/>

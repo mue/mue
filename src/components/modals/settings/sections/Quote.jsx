@@ -11,6 +11,7 @@ export default class QuoteSettings extends React.PureComponent {
       customQuote: localStorage.getItem('customQuote') || '',
       customQuoteAuthor: localStorage.getItem('customQuoteAuthor') || 'Unknown'
     };
+    this.language = window.language.modals.main.settings;
   }
 
 
@@ -34,7 +35,7 @@ export default class QuoteSettings extends React.PureComponent {
         toast('resetItem requires a key!');
     }
 
-    toast(this.props.language.toasts.reset);
+    toast(this.language.toasts.reset);
   }
 
   componentDidUpdate() {
@@ -43,19 +44,19 @@ export default class QuoteSettings extends React.PureComponent {
   }
 
   render() {
-    const { quote } = this.props.language.sections;
+    const { quote } = this.language.sections;
 
     return (
       <div>
         <h2>{quote.title}</h2>
-        <Checkbox name='quote' text={this.props.language.enabled}/>
+        <Checkbox name='quote' text={this.language.enabled}/>
         <Checkbox name='authorLink' text={quote.author_link}/>
         <ul>
-          <p>{quote.custom} <span className='modalLink' onClick={() => this.resetItem('customQuote')}>{this.props.language.buttons.reset}</span></p>
+          <p>{quote.custom} <span className='modalLink' onClick={() => this.resetItem('customQuote')}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customQuote} onChange={(e) => this.setState({ customQuote: e.target.value })}></input>
         </ul>
         <ul>
-          <p>{quote.custom_author} <span className='modalLink' onClick={() => this.resetItem('customQuoteAuthor')}>{this.props.language.buttons.reset}</span></p>
+          <p>{quote.custom_author} <span className='modalLink' onClick={() => this.resetItem('customQuoteAuthor')}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customQuoteAuthor} onChange={(e) => this.setState({ customQuoteAuthor: e.target.value })}></input>
         </ul>
         <h3>{quote.buttons.title}</h3>

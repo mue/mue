@@ -15,11 +15,12 @@ export default class AdvancedSettings extends React.PureComponent {
     this.state = {
       resetModal: false
     };
+    this.language = window.language.modals.main.settings;
   }
 
   resetItem(type) {
     document.getElementById(type).value = '';
-    toast(this.props.language.toasts.reset);
+    toast(this.language.toasts.reset);
   }
 
   settingsImport(e) {
@@ -29,7 +30,7 @@ export default class AdvancedSettings extends React.PureComponent {
       localStorage.setItem(key, content[key]);
     }
 
-    toast(this.props.language.toasts.imported);
+    toast(this.language.toasts.imported);
   }
 
   componentDidMount() {
@@ -43,7 +44,7 @@ export default class AdvancedSettings extends React.PureComponent {
   }
 
   render() {
-    const { advanced } = this.props.language.sections;
+    const { advanced } = this.language.sections;
 
     return (
       <div>
@@ -51,24 +52,24 @@ export default class AdvancedSettings extends React.PureComponent {
         <Checkbox name='offlineMode' text={advanced.offline_mode} />
 
         <h3>{advanced.data}</h3>
-        <button className='reset' onClick={() => this.setState({ resetModal: true })}>{this.props.language.buttons.reset}</button>
-        <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.buttons.export}</button>
-        <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.buttons.import}</button>
+        <button className='reset' onClick={() => this.setState({ resetModal: true })}>{this.language.buttons.reset}</button>
+        <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.language.buttons.export}</button>
+        <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.language.buttons.import}</button>
         <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)} />
 
         <h3>{advanced.customisation}</h3>
         <ul>
-          <p>{advanced.custom_css} <span className='modalLink' onClick={() => this.resetItem('customcss')}>{this.props.language.buttons.reset}</span></p>
+          <p>{advanced.custom_css} <span className='modalLink' onClick={() => this.resetItem('customcss')}>{this.language.buttons.reset}</span></p>
           <textarea id='customcss'></textarea>
         </ul>
         <ul>
-          <p>{advanced.custom_js} <span className='modalLink' onClick={() => this.resetItem('customjs')}>{this.props.language.buttons.reset}</span></p>
+          <p>{advanced.custom_js} <span className='modalLink' onClick={() => this.resetItem('customjs')}>{this.language.buttons.reset}</span></p>
           <textarea id='customjs'></textarea>
         </ul>
 
-        <h3>{this.props.language.sections.experimental.title}</h3>
+        <h3>{this.language.sections.experimental.title}</h3>
         <p>{advanced.experimental_warning}</p>
-        <Checkbox name='experimental' text={this.props.language.enabled} />
+        <Checkbox name='experimental' text={this.language.enabled} />
 
         <Modal onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className={'modal'} overlayClassName={'Overlay'} ariaHideApp={false}>
           <ResetModal modalClose={() => this.setState({ resetModal: false })} />

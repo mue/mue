@@ -49,15 +49,9 @@ export default function Tab(props) {
     case 'Background': icon = <Background/>; break;
     case 'Search': icon = <Search/>; break;
     case 'Appearance': icon = <Appearance/>; break;
-    case 'Language':
-      icon = <Language/>;
-      divider = <div><hr/></div>;
-      break;
+    case 'Language': icon = <Language/>; divider = true; break;
     case 'Advanced': icon = <Settings/>; break;
-    case 'Experimental':
-      icon = <Experimental/>;
-      divider = <div><hr/></div>;
-      break;
+    case 'Experimental': icon = <Experimental/>; divider = true; break;
     case 'Change Log': icon = <Changelog/>; break;
     case 'About': icon = <About/>; break;
 
@@ -65,10 +59,7 @@ export default function Tab(props) {
     case 'Themes': icon = <Colors/>; break;
     case 'Photo Packs': icon = <Background/>; break;
     case 'Quote Packs': icon = <Quote/>; break;
-    case 'Plugins':
-      icon = <Plugins/>;
-      divider = <div><hr/></div>;
-      break;
+    case 'Plugins': icon = <Plugins/>; divider = true; break;
     case 'Added': icon = <Added/>; break;
 
     default: break;
@@ -79,7 +70,7 @@ export default function Tab(props) {
       <li className={className} onClick={() => props.onClick(props.label)}>
       {icon} <span>{props.label}</span>
       </li>
-      {divider}
+      {(divider === true) ? <div><hr/></div> : null}
     </React.Fragment>
   )
 }

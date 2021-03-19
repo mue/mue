@@ -22,6 +22,9 @@ export default class Quote extends React.PureComponent {
       tweet: <TwitterIcon className='copyButton' onClick={() => this.tweetQuote()} />,
       copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />
     };
+  
+    this.language = window.language.widgets.quote;
+    this.languagecode = window.languagecode;
   }
 
   doOffline() {
@@ -98,7 +101,7 @@ export default class Quote extends React.PureComponent {
         return this.doOffline();
       }
 
-      let authorlink = `https://${this.props.languagecode.split('-')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
+      let authorlink = `https://${this.languagecode.split('-')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
       if (localStorage.getItem('authorLink') === 'false') {
         authorLink = null;
       }
@@ -116,7 +119,7 @@ export default class Quote extends React.PureComponent {
 
   copyQuote() {
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
-    toast(this.props.language.quote);
+    toast(this.language.quote);
   }
 
   tweetQuote() {

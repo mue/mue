@@ -13,47 +13,27 @@ import Changelog from '../settings/sections/Changelog';
 
 import SettingsTabs from './backend/Tabs';
 
-export default function Settings (props) {
+export default function Settings () {
+  const language = window.language.modals.main.settings.sections;
+
   return (
     <React.Fragment>
       <SettingsTabs>
-        <div label={props.language.sections.time.title}>
-          <Time language={props.language}/>
-        </div>
-        <div label={props.language.sections.quote.title}>
-          <Quote language={props.language}/>
-        </div>
-        <div label={props.language.sections.greeting.title}>
-          <Greeting language={props.language}/>
-        </div>
-        <div label={props.language.sections.background.title}>
-          <Background language={props.language}/>
-        </div>
-        <div label={props.language.sections.search.title}>
-          <Search language={props.language}/>
-        </div>
-        <div label={props.language.sections.appearance.title}>
-          <Appearance language={props.language}/>
-        </div>
-        <div label={props.language.sections.language.title}>
-          <Language language={props.language.sections.language}/>
-        </div>
-        <div label={props.language.sections.advanced.title}>
-          <Advanced language={props.language}/>
-        </div>
-        <div label='Experimental'>
-
-        </div>
-        <div label={props.language.sections.changelog}>
-          <Changelog language={props.updateLanguage} />
-        </div>
-        <div label={props.language.sections.about.title}>
-          <About language={props.language.sections.about}/>
-        </div>
+        <div label={language.time.title}><Time/></div>
+        <div label={language.quote.title}><Quote/></div>
+        <div label={language.greeting.title}><Greeting/></div>
+        <div label={language.background.title}><Background/></div>
+        <div label={language.search.title}><Search/></div>
+        <div label={language.appearance.title}><Appearance/></div>
+        <div label={language.language.title}><Language/></div>
+        <div label={language.advanced.title}><Advanced/></div>
+        <div label='Experimental'></div>
+        <div label={language.changelog}><Changelog/></div>
+        <div label={language.about.title}><About/></div>
       </SettingsTabs>
       <div className='reminder-info'>
-          <h1>IMPORTANT INFO</h1>
-          <p>In order for changes to take place, the page must be refreshed.</p>
+        <h1>IMPORTANT INFO</h1>
+        <p>In order for changes to take place, the page must be refreshed.</p>
       </div>
     </React.Fragment>
   );

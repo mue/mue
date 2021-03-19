@@ -12,6 +12,7 @@ export default class Notes extends React.PureComponent {
     this.state = {
       notes: localStorage.getItem('notes') || ''
     };
+    this.language = window.language.widgets.navbar.notes
   }
 
   setNotes = (e) => {
@@ -47,9 +48,9 @@ export default class Notes extends React.PureComponent {
       <span id='noteContainer' className={classList}>
         <div className='topbarnotes'>
           <NotesIcon/>
-          <h3>{this.props.language.title}</h3>
+          <h3>{this.language.title}</h3>
         </div>
-        <TextareaAutosize rowsMax={50} placeholder={this.props.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
+        <TextareaAutosize rowsMax={50} placeholder={this.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
         <button onClick={this.pin} className='pinNote'><Pin/></button>
         <button onClick={() => navigator.clipboard.writeText(this.state.notes)} className='saveNote'><CopyIcon/></button>
       </span>

@@ -14,7 +14,7 @@ import 'react-color-gradient-picker/dist/index.css';
 import '../../../../scss/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class BackgroundSettings extends React.PureComponent {
-  DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': this.props.language.sections.background.source.disabled, 'stop': 0 }], 'type': 'linear' };
+  DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': window.language.modals.main.settings.sections.background.source.disabled, 'stop': 0 }], 'type': 'linear' };
   GradientPickerInitalState = undefined;
 
   constructor(...args) {
@@ -25,6 +25,7 @@ export default class BackgroundSettings extends React.PureComponent {
       customBackground: localStorage.getItem('customBackground') || '',
       gradientSettings: this.DefaultGradientSettings
     };
+    this.language = window.language.modals.main.settings;
   }
 
   resetItem(key) {
@@ -61,7 +62,7 @@ export default class BackgroundSettings extends React.PureComponent {
         toast('resetItem requires a key!');
     }
 
-    toast(this.props.language.toasts.reset);
+    toast(this.language.toasts.reset);
   }
 
   InitializeColorPickerState(gradientSettings) {
@@ -130,14 +131,14 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   currentGradientSettings = () => {
-    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.props.language.sections.background.source.disabled)) {
+    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.language.sections.background.source.disabled)) {
       const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
       return JSON.stringify({
         ...this.state.gradientSettings,
         gradient: [...this.state.gradientSettings.gradient.map(g => { return { ...g, stop: clampNumber(+g.stop, 0, 100) } })].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
       });
     }
-    return this.props.language.sections.background.source.disabled;
+    return this.language.sections.background.source.disabled;
   }
 
   onColorPickerChange = (attrs, name) => {
@@ -170,13 +171,13 @@ export default class BackgroundSettings extends React.PureComponent {
     localStorage.setItem('brightness', this.state.brightness);
     localStorage.setItem('customBackground', this.state.customBackground);
 
-    if (document.getElementById('customBackgroundHex').value !== this.props.language.sections.background.source.disabled) {
+    if (document.getElementById('customBackgroundHex').value !== this.language.sections.background.source.disabled) {
       localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
     }
   }
 
   render() {
-    const { background } = this.props.language.sections;
+    const { background } = this.language.sections;
 
     let colourSettings = null;
     if (typeof this.state.gradientSettings === 'object') {
@@ -229,11 +230,11 @@ export default class BackgroundSettings extends React.PureComponent {
 
         <h3>{background.effects.title}</h3>
         <ul>
-          <p>{background.effects.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.buttons.reset}</span></p>
+          <p>{background.effects.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.language.buttons.reset}</span></p>
           <input className='range' type='range' min='0' max='100' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
         </ul>
         <ul>
-          <p>{background.effects.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.buttons.reset}</span></p>
+          <p>{background.effects.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.language.buttons.reset}</span></p>
           <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
         </ul>
     
@@ -245,16 +246,16 @@ export default class BackgroundSettings extends React.PureComponent {
           </Dropdown>
         </ul>
         <ul>
-          <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.buttons.reset}</span></p>
+          <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
         </ul>
         <ul>
-          <p>{background.source.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.props.language.buttons.reset}</span></p>
+          <p>{background.source.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
           <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{background.source.upload}</button>
           <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' loadFunction={(e) => this.fileUpload(e)} />
         </ul>
         <ul>
-          <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.props.language.buttons.reset}</span></p>
+          <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.language.buttons.reset}</span></p>
           <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
           {colourSettings}
         </ul>

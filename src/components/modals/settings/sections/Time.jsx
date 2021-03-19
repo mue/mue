@@ -9,6 +9,7 @@ export default class TimeSettings extends React.PureComponent {
     this.state = {
       timeType: localStorage.getItem('timeType') || 'digital'
     };
+    this.language = window.language.modals.main.settings;
   }
 
   changeType() {
@@ -20,7 +21,7 @@ export default class TimeSettings extends React.PureComponent {
   }
 
   render() {
-    const { time } = this.props.language.sections;
+    const { time } = this.language.sections;
 
     let timeSettings;
 
@@ -54,7 +55,7 @@ export default class TimeSettings extends React.PureComponent {
     return (
       <div>
         <h2>{time.title}</h2>
-        <Checkbox name='time' text={this.props.language.enabled} />
+        <Checkbox name='time' text={this.language.enabled} />
         <Dropdown label='Type' name='timeType' onChange={() => this.changeType()}>
           <option className='choices' value='digital'>{time.digital.title}</option>
           <option className='choices' value='analogue'>{time.analogue.title}</option>
@@ -64,7 +65,7 @@ export default class TimeSettings extends React.PureComponent {
         {timeSettings}
 
         <h3>{time.date.title}</h3>
-        <Checkbox name='date' text={this.props.language.enabled} />
+        <Checkbox name='date' text={this.language.enabled} />
         <Checkbox name='dayofweek' text={time.date.day_of_week} />
         <Checkbox name='weeknumber' text={time.date.week_number} />
         <Checkbox name='datenth' text={time.date.datenth} />

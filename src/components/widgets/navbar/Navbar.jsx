@@ -15,13 +15,15 @@ const Notes = React.lazy(() => import('./Notes'));
 const renderLoader = () => <div></div>;
 
 export default function Navbar(props) {
+  const language = window.language;
+
   return (
     <div className='navbar-container'>
       {(localStorage.getItem('notesEnabled') === 'true') ?
         <div className='notes'>
           <NotesIcon className='topicons'/>
           <React.Suspense fallback={renderLoader()}>
-            <Notes language={props.language.widgets.navbar.notes}/>
+            <Notes/>
           </React.Suspense>
         </div>
       :null}
@@ -33,12 +35,12 @@ export default function Navbar(props) {
       :null}
 
       {(localStorage.getItem('refresh') === 'true') ?
-        <Tooltip title={props.language.widgets.navbar.tooltips.refresh}>
+        <Tooltip title={language.widgets.navbar.tooltips.refresh}>
           <RefreshIcon className='refreshicon topicons' onClick={() => window.location.reload()}/>
         </Tooltip>
       :null}
 
-      <Tooltip title={props.language.modals.main.navbar.settings} placement='top'>
+      <Tooltip title={language.modals.main.navbar.settings} placement='top'>
         <Gear className='settings-icon topicons' onClick={() => props.openModal('mainModal')}/>
       </Tooltip>
     </div>
