@@ -52,6 +52,7 @@ export default class GreetingSettings extends React.PureComponent {
           <p>{greeting.name} <span className='modalLink' onClick={() => this.resetItem()}>{this.props.language.buttons.reset}</span></p>
           <input type='text' value={this.state.greetingName} onChange={(e) => this.setState({ greetingName: e.target.value })}></input>
         </ul>
+
         <h3>{greeting.birthday}</h3>
         <Checkbox name='birthdayenabled' text={this.props.language.enabled} />
         <ul>

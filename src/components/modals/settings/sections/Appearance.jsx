@@ -10,7 +10,7 @@ export default class AppearanceSettings extends React.PureComponent {
     this.state = {
       zoom: localStorage.getItem('zoom'),
       toast_duration: localStorage.getItem('toastDisplayTime'),
-      font: localStorage.getItem('font')
+      font: localStorage.getItem('font') || ''
     };
   }
 
@@ -58,15 +58,18 @@ export default class AppearanceSettings extends React.PureComponent {
         <h2>{appearance.title}</h2>
         <Checkbox name='darkTheme' text={appearance.dark_theme} />
         <Checkbox name='brightnessTime' text={appearance.night_mode} />
+
         <h3>{appearance.navbar.title}</h3>
         <Checkbox name='notesEnabled' text={appearance.navbar.notes} />
         <Checkbox name='refresh' text={appearance.navbar.refresh} />
+  
         <h3>{appearance.font.title}</h3>
         <ul>
           <p>{appearance.font.custom} <span className='modalLink' onClick={() => this.resetItem('font')}>{this.props.language.buttons.reset}</span></p>
           <input type='text' value={this.state.font} onChange={(e) => this.setState({ font: e.target.value })}></input>
         </ul>
         <Checkbox name='fontGoogle' text={appearance.font.google} />
+
         <h3>{appearance.accessibility.title}</h3>
         <Checkbox name='animations' text={appearance.animations} betaFeature={true} />
         <ul>

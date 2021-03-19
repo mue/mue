@@ -6,7 +6,8 @@
       "evening": "Good Evening",
       "christmas": "Merry Christmas",
       "newyear": "Happy New Year",
-      "halloween": "Happy Halloween"
+      "halloween": "Happy Halloween",
+      "birthday": "Happy Birthday"
     },
     "background": {
       "credit": "Photo by",
@@ -71,13 +72,15 @@
           },
           "quote": {
             "title": "Quote",
-            "buttons": "Buttons",
-            "copy": "Copy",
-            "tweet": "Tweet",
-            "favourite": "Favourite",
             "author_link": "Authour Link",
             "custom": "Custom Quote",
-            "custom_author": "Custom Authour"
+            "custom_author": "Custom Authour",
+            "buttons": {
+              "title": "Buttons",
+              "copy": "Copy",
+              "tweet": "Tweet",
+              "favourite": "Favourite"
+            }
           },
           "greeting": {
             "title": "Greeting",
@@ -89,17 +92,26 @@
           },
           "background": {
             "title": "Background",
-            "api": "Background API",
-            "blur": "Adjust Blur",
-            "brightness": "Adjust Brightness",
-            "custom_url": "Custom Background URL",
-            "custom_background": "Custom Background",
-            "custom_colour": "Custom Background Colour",
-            "upload": "Upload",
-            "add_colour": "Add colour",
-            "favourite": "Favourite",
-            "view": "View",
-            "disabled": "Disabled"
+            "buttons": {
+              "title": "Buttons",
+              "view": "View",
+              "favourite": "Favourite"
+            },
+            "effects": {
+              "title": "Effects",
+              "blur": "Adjust Blur",
+              "brightness": "Adjust Brightness"
+            },
+            "source": {
+              "title": "Source",
+              "api": "Background API",
+              "custom_url": "Custom Background URL",
+              "custom_background": "Custom Background",
+              "custom_colour": "Custom Background Colour",
+              "upload": "Upload",
+              "add_colour": "Add colour",
+              "disabled": "Disabled"
+            }
           },
           "search": {
             "title": "Search",

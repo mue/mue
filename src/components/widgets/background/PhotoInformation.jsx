@@ -15,13 +15,13 @@ export default function PhotoInformation(props) {
         <h1>{props.language.information}</h1>
         <hr/>
         <Location/>
-        <span id='location'></span>
+        <span id='location'/>
         <Camera/>
-        <span id='camera'></span>
+        <span id='camera'/>
         <Resolution/>
-        <span id='resolution'></span>
+        <span id='resolution'/>
         <Photographer/>
-        <span id='photographerCard'></span>
+        <span id='photographerCard'/>
       </div>
       <span id='credit' style={{ 'display': 'none' }}></span>
     </div>

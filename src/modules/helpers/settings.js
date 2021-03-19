@@ -110,5 +110,24 @@ export default class SettingsFunctions {
     if (zoom !== 100) {
       document.body.style.zoom = zoom + '%';
     }
+
+    // easter egg
+    console.log(`
+ █████████████████████████████████████████████████████████████                                                                        
+ ██                                                         ██
+ ██              ███    ███ ██    ██ ███████                ██  
+ ██              ████  ████ ██    ██ ██                     ██ 
+ ██              ██ ████ ██ ██    ██ █████                  ██ 
+ ██              ██  ██  ██ ██    ██ ██                     ██ 
+ ██              ██      ██  ██████  ███████                ██ 
+ ██                                                         ██ 
+ ██                                                         ██                                                                                                 
+ ██               Copyright 2018-2021 Mue                   ██
+ ██           GitHub: https://github.com/mue/mue            ██
+ ██                                                         ██
+ ██                 Thank you for using!                    ██
+ ██              Feedback: hello@muetab.com                 ██
+ █████████████████████████████████████████████████████████████
+`);
   }
 }

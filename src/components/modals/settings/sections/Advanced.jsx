@@ -40,11 +40,13 @@ export default class AdvancedSettings extends React.PureComponent {
       <div>
         <h2>{advanced.title}</h2>
         <Checkbox name='offlineMode' text={advanced.offline_mode} />
+
         <h3>{advanced.data}</h3>
         <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings('reset')}>{this.props.language.buttons.reset}</button>
         <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.buttons.export}</button>
         <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.buttons.import}</button>
         <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)} />
+
         <h3>{advanced.customisation}</h3>
         <ul>
           <p>{advanced.custom_css} <span className='modalLink' onClick={() => this.resetItem('customcss')}>{this.props.language.buttons.reset}</span></p>

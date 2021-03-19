@@ -26,11 +26,15 @@
   }
 }
 
-.react-date-picker__wrapper{
-  padding: 0.5rem 1rem  !important;
-    box-sizing: border-box  !important;
-    border-image-slice: 1  !important;
-    border-image-source: linear-gradient( 90deg, #ffb032 0%, #dd3b67 100%)  !important;
-    background: transparent  !important;
-    color: #fff  !important; 
+.react-date-picker__wrapper {
+  padding: 0.5rem 1rem !important;
+  box-sizing: border-box !important;
+  border-image-slice: 1 !important;
+  border-image-source: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%) !important;
+  background: transparent !important;
+  color: #fff !important; 
+}
+
+.react-date-picker__clear-button, .react-calendar__navigation__prev2-button, .react-calendar__navigation__next2-button {
+  display: none !important;
 }

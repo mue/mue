@@ -8,7 +8,7 @@ export default class QuoteSettings extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-      customQuote: localStorage.getItem('customQuote'),
+      customQuote: localStorage.getItem('customQuote') || '',
       customQuoteAuthor: localStorage.getItem('customQuoteAuthor') || 'Unknown'
     };
   }
@@ -51,17 +51,17 @@ export default class QuoteSettings extends React.PureComponent {
         <Checkbox name='quote' text={this.props.language.enabled}/>
         <Checkbox name='authorLink' text={quote.author_link}/>
         <ul>
-            <p>{quote.custom} <span className='modalLink' onClick={() => this.resetItem('customQuote')}>{this.props.language.buttons.reset}</span></p>
-            <input type='text' value={this.state.customQuote} onChange={(e) => this.setState({ customQuote: e.target.value })}></input>
+          <p>{quote.custom} <span className='modalLink' onClick={() => this.resetItem('customQuote')}>{this.props.language.buttons.reset}</span></p>
+          <input type='text' value={this.state.customQuote} onChange={(e) => this.setState({ customQuote: e.target.value })}></input>
         </ul>
         <ul>
-            <p>{quote.custom_author} <span className='modalLink' onClick={() => this.resetItem('customQuoteAuthor')}>{this.props.language.buttons.reset}</span></p>
-            <input type='text' value={this.state.customQuoteAuthor} onChange={(e) => this.setState({ customQuoteAuthor: e.target.value })}></input>
+          <p>{quote.custom_author} <span className='modalLink' onClick={() => this.resetItem('customQuoteAuthor')}>{this.props.language.buttons.reset}</span></p>
+          <input type='text' value={this.state.customQuoteAuthor} onChange={(e) => this.setState({ customQuoteAuthor: e.target.value })}></input>
         </ul>
-        <h3>{quote.buttons}</h3>
-        <Checkbox name='copyButton' text={quote.copy}/>
-        <Checkbox name='tweetButton' text={quote.tweet}/>
-        <Checkbox name='favouriteQuoteEnabled' text={quote.favourite}/>
+        <h3>{quote.buttons.title}</h3>
+        <Checkbox name='copyButton' text={quote.buttons.copy}/>
+        <Checkbox name='tweetButton' text={quote.buttons.tweet}/>
+        <Checkbox name='favouriteQuoteEnabled' text={quote.buttons.favourite}/>
       </div>
     );
   }

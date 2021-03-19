@@ -28,7 +28,9 @@ export default class TimeSettings extends React.PureComponent {
   render() {
     const { time } = this.props.language.sections;
 
-    let digitalSettings = (
+    let timeSettings;
+
+    const digitalSettings = (
       <React.Fragment>
         <h3>{time.digital.title}</h3>
         <Checkbox name='seconds' text={time.digital.seconds} />
@@ -38,7 +40,7 @@ export default class TimeSettings extends React.PureComponent {
       </React.Fragment>
     );
 
-    let analogSettings = (
+    const analogSettings = (
       <React.Fragment>
         <h3>{time.analogue.title}</h3>
         <Checkbox name='secondHand' text={time.analogue.second_hand} />
@@ -50,9 +52,9 @@ export default class TimeSettings extends React.PureComponent {
     );
 
     switch (this.state.timeType) {
-      case 'digital': break;
-      case 'analogue': digitalSettings = analogSettings; break;
-      default: digitalSettings = null; break;
+      case 'digital': timeSettings = digitalSettings; break;
+      case 'analogue': timeSettings = analogSettings; break;
+      default: timeSettings = null; break;
     }
 
     return (
@@ -64,7 +66,9 @@ export default class TimeSettings extends React.PureComponent {
           <option className='choices' value='analogue'>{time.analogue.title}</option>
           <option className='choices' value='percentageComplete'>{time.percentage_complete}</option>
         </Dropdown>
-        {digitalSettings}
+
+        {timeSettings}
+
         <h3>{time.date.title}</h3>
         <Checkbox name='date' text={this.props.language.enabled} />
         <Checkbox name='dayofweek' text={time.date.day_of_week} />

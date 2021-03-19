@@ -194,6 +194,6 @@ export default class Background extends React.PureComponent {
   }
 
   render() {
-    return <div id='backgroundImage'></div>;
+    return <div id='backgroundImage'/>;
   }
 }
