@@ -100,8 +100,6 @@ export default class BackgroundSettings extends React.PureComponent {
     this.setState({
       gradientSettings
     });
-
-    document.getElementById('backgroundAPI').value = localStorage.getItem('backgroundAPI');
   }
 
   onGradientChange = (event, index) => {
@@ -241,13 +239,9 @@ export default class BackgroundSettings extends React.PureComponent {
     
         <h3>{background.source.title}</h3>
         <ul>
-          <Dropdown
-            label={background.source.api}
-            name='backgroundapi'
-            id='backgroundAPI'
-            onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
-              <option className='choices' value='mue'>Mue</option>
-              <option className='choices' value='unsplash'>Unsplash</option>
+          <Dropdown label={background.source.api} name='backgroundAPI'>
+            <option className='choices' value='mue'>Mue</option>
+            <option className='choices' value='unsplash'>Unsplash</option>
           </Dropdown>
         </ul>
         <ul>

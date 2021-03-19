@@ -172,3 +172,19 @@ input[type=color]::-moz-color-swatch {
 .MuiCheckbox-colorPrimary.Mui-checked {
   color: map-get($button-colours, 'reset') !important;
 }
+
+.reminder-info {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px;
+  color: #000;
+  background: #f0f0f0;
+  max-width: 300px;
+  border-radius: 0.7em;
+  display: none;
+
+  h1 {
+    font-size: 1em;
+  }
+}

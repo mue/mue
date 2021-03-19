@@ -118,5 +118,13 @@
   {
     "name": "toastDisplayTime",
     "value": 2500
+  },
+  {
+    "name": "fontStyle",
+    "value": "normal"
+  },
+  {
+    "name": "fontWeight",
+    "value": "normal"
   }
 ]

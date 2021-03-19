@@ -19,12 +19,6 @@ export default class TimeSettings extends React.PureComponent {
     });
   }
 
-  componentDidMount() {
-    document.getElementById('dateformat').value = localStorage.getItem('dateFormat');
-    document.getElementById('shortformat').value = localStorage.getItem('shortFormat');
-    document.getElementById('timeType').value = localStorage.getItem('timeType');
-  }
-
   render() {
     const { time } = this.props.language.sections;
 
@@ -61,7 +55,7 @@ export default class TimeSettings extends React.PureComponent {
       <div>
         <h2>{time.title}</h2>
         <Checkbox name='time' text={this.props.language.enabled} />
-        <Dropdown label='Type' name='timeType' id='timeType' onChange={() => this.changeType()}>
+        <Dropdown label='Type' name='timeType' onChange={() => this.changeType()}>
           <option className='choices' value='digital'>{time.digital.title}</option>
           <option className='choices' value='analogue'>{time.analogue.title}</option>
           <option className='choices' value='percentageComplete'>{time.percentage_complete}</option>
@@ -75,14 +69,14 @@ export default class TimeSettings extends React.PureComponent {
         <Checkbox name='weeknumber' text={time.date.week_number} />
         <Checkbox name='datenth' text={time.date.datenth} />
         <Checkbox name='short' text={time.date.short_date} betaFeature={true} />
-        <Dropdown label={time.date.short_format} name='dateFormat' id='dateformat' onChange={() => localStorage.setItem('dateFormat', document.getElementById('dateformat').value)}>
+        <Dropdown label={time.date.short_format} name='dateFormat'>
           <option className='choices' value='DMY'>DMY</option>
           <option className='choices' value='MDY'>MDY</option>
           <option className='choices' value='YMD'>YMD</option>
         </Dropdown>
         <br/>
         <br/>
-        <Dropdown label={time.date.short_separator.title} name='shortFormat' id='shortformat' onChange={() => localStorage.setItem('shortFormat', document.getElementById('shortformat').value)}>
+        <Dropdown label={time.date.short_separator.title} name='shortFormat'>
           <option className='choices' value='dots'>{time.date.short_separator.dots}</option>
           <option className='choices' value='dash'>{time.date.short_separator.dash}</option>
           <option className='choices' value='gaps'>{time.date.short_separator.gaps}</option>

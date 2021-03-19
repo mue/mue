@@ -51,6 +51,10 @@ export default function Settings (props) {
           <About language={props.language.sections.about}/>
         </div>
       </SettingsTabs>
+      <div className='reminder-info'>
+          <h1>IMPORTANT INFO</h1>
+          <p>In order for changes to take place, the page must be refreshed.</p>
+      </div>
     </React.Fragment>
   );
 }

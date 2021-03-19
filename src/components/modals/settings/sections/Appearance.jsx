@@ -51,10 +51,6 @@ export default class AppearanceSettings extends React.PureComponent {
     localStorage.setItem('font', this.state.font.charAt(0).toUpperCase() + this.state.font.slice(1));
   }
 
-  componentDidMount() {
-    document.getElementById('fontWeight').value = localStorage.getItem('fontWeight') || 400;
-  }
-
   render() {
     const { appearance } = this.props.language.sections;
 
@@ -87,6 +83,15 @@ export default class AppearanceSettings extends React.PureComponent {
               <option className='choices' value='600'>Semi-Bold</option>
               <option className='choices' value='700'>Bold</option>
               <option className='choices' value='800'>Extra-Bold</option>
+        </Dropdown>
+        <Dropdown
+            label='Font Style'
+            name='fontstyle'
+            id='fontStyle'
+            onChange={() => localStorage.setItem('fontStyle', document.getElementById('fontStyle').value)}>
+              <option className='choices' value='normal'>Normal</option>
+              <option className='choices' value='italic'>Italic</option>
+              <option className='choices' value='oblique'>Oblique</option>
         </Dropdown>
         <Checkbox name='fontGoogle' text={appearance.font.google} />
 

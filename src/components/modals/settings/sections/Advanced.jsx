@@ -2,12 +2,21 @@ import React from 'react';
 
 import Checkbox from '../Checkbox';
 import FileUpload from '../FileUpload';
+import ResetModal from '../ResetModal';
 
 import SettingsFunctions from '../../../../modules/helpers/settings';
 
 import { toast } from 'react-toastify';
+import Modal from 'react-modal';
 
 export default class AdvancedSettings extends React.PureComponent {
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      resetModal: false
+    };
+  }
+
   resetItem(type) {
     document.getElementById(type).value = '';
     toast(this.props.language.toasts.reset);
@@ -42,7 +51,7 @@ export default class AdvancedSettings extends React.PureComponent {
         <Checkbox name='offlineMode' text={advanced.offline_mode} />
 
         <h3>{advanced.data}</h3>
-        <button className='reset' onClick={() => SettingsFunctions.setDefaultSettings('reset')}>{this.props.language.buttons.reset}</button>
+        <button className='reset' onClick={() => this.setState({ resetModal: true })}>{this.props.language.buttons.reset}</button>
         <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.props.language.buttons.export}</button>
         <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.props.language.buttons.import}</button>
         <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)} />
@@ -56,9 +65,14 @@ export default class AdvancedSettings extends React.PureComponent {
           <p>{advanced.custom_js} <span className='modalLink' onClick={() => this.resetItem('customjs')}>{this.props.language.buttons.reset}</span></p>
           <textarea id='customjs'></textarea>
         </ul>
+
         <h3>{this.props.language.sections.experimental.title}</h3>
         <p>{advanced.experimental_warning}</p>
         <Checkbox name='experimental' text={this.props.language.enabled} />
+
+        <Modal onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className={'modal'} overlayClassName={'Overlay'} ariaHideApp={false}>
+          <ResetModal modalClose={() => this.setState({ resetModal: false })} />
+        </Modal>
       </div>
     );
   }
