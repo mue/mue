@@ -58,6 +58,7 @@
             "date": {
               "title": "Date",
               "day_of_week": "Day of week",
+              "week_number": "Week Number",
               "datenth": "Date nth",
               "short_date": "Short Date",
               "short_format": "Short Format",

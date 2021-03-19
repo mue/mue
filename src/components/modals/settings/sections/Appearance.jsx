@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Checkbox from '../Checkbox';
+import Dropdown from '../Dropdown';
 
 import { toast } from 'react-toastify';
 
@@ -50,6 +51,10 @@ export default class AppearanceSettings extends React.PureComponent {
     localStorage.setItem('font', this.state.font.charAt(0).toUpperCase() + this.state.font.slice(1));
   }
 
+  componentDidMount() {
+    document.getElementById('fontWeight').value = localStorage.getItem('fontWeight') || 400;
+  }
+
   render() {
     const { appearance } = this.props.language.sections;
 
@@ -68,6 +73,21 @@ export default class AppearanceSettings extends React.PureComponent {
           <p>{appearance.font.custom} <span className='modalLink' onClick={() => this.resetItem('font')}>{this.props.language.buttons.reset}</span></p>
           <input type='text' value={this.state.font} onChange={(e) => this.setState({ font: e.target.value })}></input>
         </ul>
+        <Dropdown
+            label='Font Weight'
+            name='fontweight'
+            id='fontWeight'
+            onChange={() => localStorage.setItem('fontWeight', document.getElementById('fontWeight').value)}>
+              {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
+              <option className='choices' value='100'>Thin</option>
+              <option className='choices' value='200'>Extra-Light</option>
+              <option className='choices' value='300'>Light</option>
+              <option className='choices' value='400'>Normal</option>
+              <option className='choices' value='500'>Medium</option>
+              <option className='choices' value='600'>Semi-Bold</option>
+              <option className='choices' value='700'>Bold</option>
+              <option className='choices' value='800'>Extra-Bold</option>
+        </Dropdown>
         <Checkbox name='fontGoogle' text={appearance.font.google} />
 
         <h3>{appearance.accessibility.title}</h3>

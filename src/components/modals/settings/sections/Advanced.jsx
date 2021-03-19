@@ -13,11 +13,6 @@ export default class AdvancedSettings extends React.PureComponent {
     toast(this.props.language.toasts.reset);
   }
 
-  componentDidMount() {
-    document.getElementById('customcss').value = localStorage.getItem('customcss');
-    document.getElementById('customjs').value = localStorage.getItem('customjs');
-  }
-
   settingsImport(e) {
     const content = JSON.parse(e.target.result);
 
@@ -28,7 +23,12 @@ export default class AdvancedSettings extends React.PureComponent {
     toast(this.props.language.toasts.imported);
   }
 
-  componentWillUnmount() {
+  componentDidMount() {
+    document.getElementById('customcss').value = localStorage.getItem('customcss');
+    document.getElementById('customjs').value = localStorage.getItem('customjs');
+  }
+
+  componentDidUpdate() {
     localStorage.setItem('customcss', document.getElementById('customcss').value);
     localStorage.setItem('customjs', document.getElementById('customjs').value);
   }

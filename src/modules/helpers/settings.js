@@ -91,9 +91,19 @@ export default class SettingsFunctions {
     if (font) {
       const google = localStorage.getItem('fontGoogle');
 
-      let url = '';
+      let url, fontweight, fontstyle = '';
       if (google === 'true') {
         url = `@import url('https://fonts.googleapis.com/css2?family=${font}&display=swap');`;
+      }
+
+      const fontWeight = localStorage.getItem('fontWeight');
+      if (fontWeight) {
+        fontweight = `font-weight: ${fontWeight};`;
+      }
+
+      const fontStyle = localStorage.getItem('fontStyle');
+      if (fontStyle) {
+        fontstyle = `font-style: ${fontStyle};`;
       }
 
       document.head.insertAdjacentHTML('beforeend', `
@@ -101,6 +111,8 @@ export default class SettingsFunctions {
           ${url}
           * {
             font-family: '${font}', 'Lexend Deca' !important;
+            ${fontweight}
+            ${fontstyle}
           }
       </style>`);
     }

@@ -29,6 +29,11 @@
     font-size: 30px;
     filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
     cursor: pointer;
+    transition: all 0.5s ease 0s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 

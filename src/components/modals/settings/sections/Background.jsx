@@ -37,7 +37,10 @@ export default class BackgroundSettings extends React.PureComponent {
         break;
 
       case 'customBackground':
-        document.getElementById('customBackground').value = '';
+        localStorage.setItem('customBackground', '');
+        this.setState({
+          customBackground: ''
+        });
         break;
 
       case 'blur':
@@ -225,6 +228,7 @@ export default class BackgroundSettings extends React.PureComponent {
           <Checkbox name='view' text={background.buttons.view} />
           <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
         </ul>
+
         <h3>{background.effects.title}</h3>
         <ul>
           <p>{background.effects.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.props.language.buttons.reset}</span></p>
@@ -234,13 +238,14 @@ export default class BackgroundSettings extends React.PureComponent {
           <p>{background.effects.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.props.language.buttons.reset}</span></p>
           <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
         </ul>
+    
         <h3>{background.source.title}</h3>
         <ul>
           <Dropdown
             label={background.source.api}
             name='backgroundapi'
             id='backgroundAPI'
-            onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)} >
+            onChange={() => localStorage.setItem('backgroundAPI', document.getElementById('backgroundAPI').value)}>
               <option className='choices' value='mue'>Mue</option>
               <option className='choices' value='unsplash'>Unsplash</option>
           </Dropdown>
