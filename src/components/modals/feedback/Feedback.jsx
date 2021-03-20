@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './feedback.scss';
+
 export default function FeedbackModal(props) {
   return (
     <div className='feedback'>

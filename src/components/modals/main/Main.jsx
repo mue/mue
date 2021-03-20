@@ -6,6 +6,8 @@ import Marketplace from './tabs/Marketplace';
 
 import Navigation from './tabs/backend/Tabs';
 
+import './scss/index.scss';
+
 export default function MainModal(props) {
   const language = window.language;
 

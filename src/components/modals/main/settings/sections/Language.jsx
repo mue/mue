@@ -2,7 +2,7 @@ import React from 'react';
 
 import Dropdown from '../Dropdown';
 
-const languages = require('../../../../modules/languages.json');
+const languages = require('../../../../../modules/languages.json');
 
 export default function LanguageSettings () {
   const language = window.language.modals.main.settings.sections.language;

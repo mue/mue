@@ -4,7 +4,7 @@ import Checkbox from '../Checkbox';
 import FileUpload from '../FileUpload';
 import ResetModal from '../ResetModal';
 
-import SettingsFunctions from '../../../../modules/helpers/settings';
+import SettingsFunctions from '../../../../../modules/helpers/settings';
 
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';

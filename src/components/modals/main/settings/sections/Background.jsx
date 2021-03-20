@@ -5,13 +5,13 @@ import Dropdown from '../Dropdown';
 import FileUpload from '../FileUpload';
 
 import { ColorPicker } from 'react-color-gradient-picker';
-import hexToRgb from '../../../../modules/helpers/background/hexToRgb';
-import rgbToHex from '../../../../modules/helpers/background/rgbToHex';
+import hexToRgb from '../../../../../modules/helpers/background/hexToRgb';
+import rgbToHex from '../../../../../modules/helpers/background/rgbToHex';
 
 import { toast } from 'react-toastify';
 
 import 'react-color-gradient-picker/dist/index.css';
-import '../../../../scss/react-color-picker-gradient-picker-custom-styles.scss';
+import '../../../../../scss/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': window.language.modals.main.settings.sections.background.source.disabled, 'stop': 0 }], 'type': 'linear' };

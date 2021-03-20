@@ -2,8 +2,6 @@ import React from 'react';
 
 import PhotoInformation from './PhotoInformation';
 
-import * as Constants from '../../../modules/constants';
-
 import './scss/index.scss';
 
 export default class Background extends React.PureComponent {
@@ -158,11 +156,11 @@ export default class Background extends React.PureComponent {
     let requestURL, data;
     switch (backgroundAPI) {
       case 'unsplash':
-        requestURL = `${Constants.UNSPLASH_URL}/getImage`;
+        requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
         break;
       // Defaults to Mue
       default:
-        requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
+        requestURL = `${window.constants.API_URL}/getImage?category=Outdoors`;
         break;
     }
 

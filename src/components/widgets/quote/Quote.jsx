@@ -7,8 +7,6 @@ import StarIcon2 from '@material-ui/icons/StarBorder';
 
 import { toast } from 'react-toastify';
 
-import * as Constants from '../../../modules/constants';
-
 import './quote.scss';
 
 
@@ -94,7 +92,7 @@ export default class Quote extends React.PureComponent {
 
     // First we try and get a quote from the API...
     try {
-      const data = await (await fetch(Constants.API_URL + '/getQuote?language=' + localStorage.getItem('quotelanguage'))).json();
+      const data = await (await fetch(window.constants.API_URL + '/getQuote?language=' + localStorage.getItem('quotelanguage'))).json();
 
       // If we hit the ratelimit, we fallback to local quotes
       if (data.statusCode === 429) {

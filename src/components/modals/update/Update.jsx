@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as Constants from '../../modules/constants';
+import './update.scss';
 
 export default class Update extends React.PureComponent {
   constructor(...args) {
@@ -15,7 +15,7 @@ export default class Update extends React.PureComponent {
  }
 
  async getUpdate() {
-  const data = await (await fetch(Constants.API_URL + '/getUpdate')).json();
+  const data = await (await fetch(window.constants.API_URL + '/getUpdate')).json();
 
   if (data.statusCode === 500 || data.title === null) {
     const supportText = `<br/><p>${this.props.language.contact_support}: <a target='_blank' class='modalLink' href='https://muetab.com/contact'>https://muetab.com/contact</a></p>`;

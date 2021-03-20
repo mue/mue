@@ -1,16 +1,9 @@
 @import 'variables';
 @import 'mixins';
 
-@import 'modules/settings';
 @import 'modules/toast';
 @import 'modules/marketplace';
 @import 'modules/buttons';
-@import 'modules/dropdown';
-
-@import 'modules/modals/main';
-@import 'modules/modals/feedback';
-@import 'modules/modals/update';
-@import 'modules/modals/welcome';
 
 body {
   background: #2f3640;

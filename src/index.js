@@ -17,6 +17,10 @@ const languagecode = localStorage.getItem('language') || 'en-GB';
 window.languagecode = languagecode;
 window.language = merge(require('./translations/en-GB.json'), require(`./translations/${languagecode}.json`));
 
+// window.constants
+import * as Constants from './modules/constants';
+window.constants = Constants;
+
 ReactDOM.render(
   <App/>,
   document.getElementById('root')

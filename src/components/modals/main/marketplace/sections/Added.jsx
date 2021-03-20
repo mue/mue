@@ -5,7 +5,7 @@ import Item from '../Item';
 import Items from '../Items';
 import FileUpload from '../../settings/FileUpload';
 
-import MarketplaceFunctions from '../../../../modules/helpers/marketplace';
+import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 
 export default class Added extends React.PureComponent {
   constructor(...args) {

@@ -2,10 +2,8 @@ import React from 'react';
 
 import Tooltip from '@material-ui/core/Tooltip';
 
-import * as Constants from '../../../../modules/constants';
-
-const other_contributors = require('../../../../modules/other_contributors.json');
-const { version } = require('../../../../../package.json');
+const other_contributors = require('../../../../../modules/other_contributors.json');
+const { version } = require('../../../../../../package.json');
 
 export default class About extends React.PureComponent {
   constructor(...args) {
@@ -21,7 +19,7 @@ export default class About extends React.PureComponent {
 
   async getGitHubData() {
     const contributors = await (await fetch('https://api.github.com/repos/mue/mue/contributors')).json();
-    const { sponsors } = await (await fetch(Constants.SPONSORS_URL + '/list')).json();
+    const { sponsors } = await (await fetch(window.constants.SPONSORS_URL + '/list')).json();
 
     const versionData = await (await fetch('https://api.github.com/repos/mue/mue/releases')).json();
     const newVersion = versionData[0].tag_name;

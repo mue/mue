@@ -4,6 +4,8 @@ import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ForumIcon from '@material-ui/icons/Forum';
 
+import './welcome.scss';
+
 export default function WelcomeModal(props) {
   const language = window.language.modals.welcome;
 

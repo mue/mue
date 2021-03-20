@@ -6,8 +6,6 @@ import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Tooltip from '@material-ui/core/Tooltip';
 import Report from '@material-ui/icons/SmsFailed';
 
-import * as Constants from '../../../modules/constants';
-
 import './scss/index.scss';
 
 // the user probably won't use the notes feature every time so we lazy load
@@ -28,7 +26,7 @@ export default function Navbar(props) {
         </div>
       :null}
 
-      {(Constants.BETA_VERSION === true) ? 
+      {(window.constants.BETA_VERSION === true) ? 
         <Tooltip title='Feedback' placement='top'>
           <Report className='topicons' onClick={() => props.openModal('feedbackModal')}/>
         </Tooltip>

@@ -137,11 +137,18 @@ input[type=color]::-moz-color-swatch {
 
 // Dark Theme
 .dark {
-  #blurRange, #brightnessRange {
+
+  #blurRange,
+  #brightnessRange {
     background-color: #535c68;
   }
 
-  #customBackground, #backgroundAPI, #searchEngine, #language, #greetingName, #customSearchEngine {
+  #customBackground,
+  #backgroundAPI,
+  #searchEngine,
+  #language,
+  #greetingName,
+  #customSearchEngine {
     color: white;
   }
 
@@ -163,7 +170,8 @@ input[type=color]::-moz-color-swatch {
   font-size: 12px;
 }
 
-#customcss, #customjs {
+#customcss,
+#customjs {
   font-family: Consolas !important;
   border: solid 1px black !important;
   margin-left: 0px;

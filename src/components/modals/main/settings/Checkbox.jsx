@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SettingsFunctions from '../../../modules/helpers/settings';
+import SettingsFunctions from '../../../../modules/helpers/settings';
 
 import CheckboxUI from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';

@@ -1,5 +1,8 @@
+@import '../main/scss/index.scss';
+
 .dark {
-  h2.subtitle, svg {
+  h2.subtitle,
+  svg {
     color: white !important;
   }
 }
@@ -33,14 +36,15 @@
     }
   }
 
-  img.icon, svg {
-      margin-top: -12px;
-      padding: 10px;
-      cursor: pointer;
-      transition: ease 0.2s;
+  img.icon,
+  svg {
+    margin-top: -12px;
+    padding: 10px;
+    cursor: pointer;
+    transition: ease 0.2s;
 
-      &:hover {
-        transform: scale(1.1);
+    &:hover {
+      transform: scale(1.1);
     }
   }
 
@@ -49,7 +53,8 @@
     line-height: 1em;
   }
 
-  img, svg {
+  img,
+  svg {
     height: 24px;
     width: auto;
   }

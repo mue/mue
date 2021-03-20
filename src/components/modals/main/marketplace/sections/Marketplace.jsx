@@ -5,11 +5,9 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Item from '../Item';
 import Items from '../Items';
 
-import MarketplaceFunctions from '../../../../modules/helpers/marketplace';
+import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 
 import { toast } from 'react-toastify';
-
-import * as Constants from '../../../../modules/constants';
 
 export default class Marketplace extends React.PureComponent {
   constructor(...args) {
@@ -45,7 +43,7 @@ export default class Marketplace extends React.PureComponent {
         let info;
       // get item info
         try {
-          info = await (await fetch(`${Constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
+          info = await (await fetch(`${window.window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
         } catch (e) {
           return toast(this.props.toastLanguage.error);
         }
@@ -84,8 +82,8 @@ export default class Marketplace extends React.PureComponent {
   }
 
   async getItems() {
-    const { data } = await (await fetch(Constants.MARKETPLACE_URL + '/all')).json();
-    const featured = await (await fetch(Constants.MARKETPLACE_URL + '/featured')).json();
+    const { data } = await (await fetch(window.window.constants.MARKETPLACE_URL + '/all')).json();
+    const featured = await (await fetch(window.window.constants.MARKETPLACE_URL + '/featured')).json();
 
     this.setState({
       items: data[this.props.type],

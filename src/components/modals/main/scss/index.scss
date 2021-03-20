@@ -1,3 +1,10 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+@import 'settings/main';
+@import 'settings/buttons';
+@import 'settings/dropdown';
+
 .Modal {
   color: map-get($modal, 'text');
   background-color: map-get($modal, 'background');

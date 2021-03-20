@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
 
-const searchEngines = require('../../../widgets/search/search_engines.json');
+const searchEngines = require('../../../../widgets/search/search_engines.json');
 
 export default class SearchSettings extends React.PureComponent {
   resetSearch() {
