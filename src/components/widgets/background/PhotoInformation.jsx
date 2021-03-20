@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Info from '@material-ui/icons/Info';
 import Location from '@material-ui/icons/LocationOn';
 import Camera from '@material-ui/icons/PhotoCamera';
@@ -10,22 +11,21 @@ export default function PhotoInformation(props) {
 
   return (
     <div className='photoInformation'>
-      <h1 id='photographer'>{language.credit}</h1>
+      <h1>{language.credit} {props.info.credit}</h1>
       <Info className='photoInformationHover'/>
       <div className={props.className || 'infoCard'}>
         <Info className='infoIcon'/>
         <h1>{language.information}</h1>
         <hr/>
         <Location/>
-        <span id='location'/>
+        <span>{props.info.location}</span>
         <Camera/>
-        <span id='camera'/>
+        <span>{props.info.camera}</span>
         <Resolution/>
-        <span id='resolution'/>
+        <span>{props.info.resolution}</span>
         <Photographer/>
-        <span id='photographerCard'/>
+        <span>{props.info.credit.split(' on Unsplash')[0]}</span>
       </div>
-      <span id='credit' style={{ 'display': 'none' }}></span>
     </div>
   );
 }

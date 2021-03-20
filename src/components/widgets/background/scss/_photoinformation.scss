@@ -4,6 +4,7 @@
   left: 1rem;
   font-size: calc(10px + 0.1vmin) !important;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 99;
 
   svg {
     float: left;

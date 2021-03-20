@@ -1,10 +1,29 @@
 import React from 'react';
 
+import PhotoInformation from './PhotoInformation';
+
 import * as Constants from '../../../modules/constants';
 
 import './scss/index.scss';
 
 export default class Background extends React.PureComponent {
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      style: '',
+      url: '',
+      video: false,
+      photoInfo: {
+        hidden: false,
+        credit: '',
+        location: 'N/A',
+        camera: 'N/A',
+        resolution: 'N/A'
+      }
+    };
+    this.language = window.language.widgets.background;
+  }
+
   gradientStyleBuilder(gradientSettings) {
     const { type, angle, gradient } = gradientSettings;
     let style = `background: ${gradient[0].colour};`;
@@ -13,55 +32,32 @@ export default class Background extends React.PureComponent {
       const stepStyles = gradient.map(g => ` ${g.colour} ${g.stop}%`).join();
       style += ` background: ${type}-gradient(${(type === 'linear' ? (`${angle}deg,`) : '')}${stepStyles})`;
     }
-    return style;
+    this.setState({
+      style: style
+    });
   }
 
-  // Sets the attributes of the background image
-  setBackground(url, colour, credit) {
-    let gradientSettings = '';
-    try {
-      gradientSettings = JSON.parse(colour);
-    } catch (e) {
-      const hexColorRegex = /#[0-9a-fA-F]{6}/s;
-      if (hexColorRegex.exec(colour)) {
-        // Colour use to be simply a hex colour or a NULL value before it was a JSON object. This automatically upgrades the hex colour value to the new standard. (NULL would not trigger an exception)
-        gradientSettings = { "type": "linear", "angle": "180", "gradient": [{ "colour": colour, "stop": 0 }] };
-        localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
-      }
-    }
-
-    const background = typeof gradientSettings === 'object' && gradientSettings !== null ? this.gradientStyleBuilder(gradientSettings) : `background-image: url(${url})`;
-
+  setBackground() {
     // Brightness
     let brightness = localStorage.getItem('brightness');
     if (localStorage.getItem('brightnessTime') && new Date().getHours() > 18) {
       brightness = 75;
     }
 
-    document.querySelector('#backgroundImage').setAttribute(
-      'style',
-      `${background}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
-    );
-
-    // Hide the credit
-    if (credit === 'false' && document.querySelector('#credits')) {
-      document.querySelector('#credits').style.display = 'none';
+    if (this.state.url !== '') {
+      document.querySelector('#backgroundImage').setAttribute(
+        'style',
+        `background-image: url(${this.state.url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+      );
+    } else {
+      document.querySelector('#backgroundImage').setAttribute(
+        'style',
+        `${this.state.style}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+      );
     }
   }
 
-  setCredit(photographer, unsplash, url) {
-    let credit = photographer;
-    if (unsplash){
-      credit = `<a href='${url}' class='creditlink'>${photographer}</a> on <a href='https://unsplash.com/?utm_source=mue&utm_medium=referral' class='creditlink'>Unsplash</a>`;
-    }
-
-    document.querySelector('#photographer').insertAdjacentHTML('beforeend', ` ${credit}`); // Append credit
-    document.getElementById('credit').textContent = credit;
-    document.getElementById('photographerCard').textContent = credit;
-  }
-
-  // Handles setting the background if the user is offline
-  doOffline() {
+  offlineBackground() {
     const offlineImages = require('./offline_images.json');
 
     // Get all photographers from the keys in offlineImages.json
@@ -74,126 +70,139 @@ export default class Background extends React.PureComponent {
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
     ];
 
-    const url = `./offline-images/${randomImage}.jpg`;
-
-    this.setBackground(url);
-    this.setCredit(photographer);
-
-    // Hide the location icon
-    //document.querySelector('#backgroundCredits').style.display = 'none';
+    this.setState({
+      url: `./offline-images/${randomImage}.jpg`,
+      photoInfo: {
+        hidden: true,
+        credit: photographer
+      }
+    });
   }
 
-  async determineMode() {
-    const offlineMode = localStorage.getItem('offlineMode');
+  // Main background getting function
+  async getBackground() {
+    if (localStorage.getItem('offlineMode') === 'true') {
+       return this.offlineBackground();
+    }
 
-    const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
-
-    const customBackgroundColour = localStorage.getItem('customBackgroundColour');
-    const customBackground = localStorage.getItem('customBackground');
-
+    // favourite button
     const favourited = JSON.parse(localStorage.getItem('favourite'));
-
     if (favourited) {
-      if (offlineMode === 'true') {
-        return this.doOffline();
-      }
+      return this.setState({
+        url: favourited.url,
+        photoInfo: {
+          credit: favourited.credit,
+          location: favourited.location
+        }
+      });
+    }
 
-      this.setBackground(favourited.url, null, 'true');
-      this.setCredit(favourited.credit);
-      document.getElementById('location').textContent = favourited.location;
-    } else if (photoPack) {
-      if (offlineMode === 'true') {
-        return this.doOffline();
-      }
-
-      const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
-
-      this.setBackground(randomPhoto.url.default, null, randomPhoto.photographer);
-      this.setCredit(randomPhoto.photographer);
-      document.getElementById('location').textContent = randomPhoto.location;
-    } else if (customBackgroundColour !== 'Disabled' && customBackgroundColour !== '') {
-      this.setBackground(null, customBackgroundColour, 'false');
-    } else if (customBackground !== '') {
-      if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) {
-        document.getElementById('backgroundImage').innerHTML = `
-        <video autoplay muted loop id='backgroundVideo'>
-          <source src='${customBackground}'/>
-        </video>`;
-      } else {
-        // Local
-        this.setBackground(customBackground, null, 'false');
-      }
-    // Online
-    } else {
-      if (offlineMode === 'true') {
-        return this.doOffline();
-      }
-
-      // First we try and get an image from the API...
+    // background colour
+    const customBackgroundColour = localStorage.getItem('customBackgroundColour');
+    if (customBackgroundColour !== 'Disabled' && customBackgroundColour !== '') {
+      let gradientSettings = '';
       try {
-        let requestURL;
-
-        switch (localStorage.getItem('backgroundAPI')) {
-          case 'unsplash':
-            requestURL = `${Constants.UNSPLASH_URL}/getImage`;
-            break;
-          // Defaults to Mue
-          default:
-            requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
-            break;
-        }
-
-        // Fetch JSON data from requestURL
-        const data = await (await fetch(requestURL)).json();
-
-        // If we hit the rate limit, fallback to local images
-        if (data.statusCode === 429) {
-          this.doOffline();
-        // Otherwise, set the background and credit from remote data
-        } else {
-          this.setBackground(data.file);
-
-          if (localStorage.getItem('backgroundAPI') === 'unsplash') {
-            return this.setCredit(data.photographer, 'unsplash', data.photographer_page);
-          }
-
-          this.setCredit(data.photographer);
-          document.getElementById('camera').textContent = data.camera || 'N/A';
-          document.getElementById('resolution').textContent = data.resolution || 'N/A';
-        }
-
-        if (data.location.replace(/[null]+/g, '') === ' ') {
-          return document.querySelector('#backgroundCredits').style.display = 'none';
-        }
-
-        // Set the location tooltip
-        document.getElementById('location').innerText = `${data.location.replace('null', '')}`;
-      // ..and if that fails we load one locally
+        gradientSettings = JSON.parse(colour);
       } catch (e) {
-        this.doOffline();
+        const hexColorRegex = /#[0-9a-fA-F]{6}/s;
+        if (hexColorRegex.exec(colour)) {
+          // Colour use to be simply a hex colour or a NULL value before it was a JSON object. This automatically upgrades the hex colour value to the new standard. (NULL would not trigger an exception)
+          gradientSettings = { "type": "linear", "angle": "180", "gradient": [{ "colour": colour, "stop": 0 }] };
+          localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
+        }
+      }
+
+      if (typeof gradientSettings === 'object' && gradientSettings !== null) {
+        return this.gradientStyleBuilder(gradientSettings);
       }
     }
+
+    // custom user background
+    const customBackground = localStorage.getItem('customBackground');
+    if (customBackground !== '') {
+      // video background
+      if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) { 
+        return this.setState({
+          url: customBackground,
+          video: true,
+          photoInfo: {
+            hidden: true
+          }
+        });
+      // normal background
+      } else {
+        return this.setState({
+         url: customBackground,
+          photoInfo: {
+            hidden: true
+          }
+        });
+      }
+    }
+
+    // photo pack
+    const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
+    if (photoPack) {
+      const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
+      return this.setState({
+        url: randomPhoto.url.default,
+        photoInfo: {
+          credit: randomPhoto.photographer
+        }
+      });
+    }
+
+    // API background
+    const backgroundAPI = localStorage.getItem('backgroundAPI');
+
+    let requestURL, data;
+    switch (backgroundAPI) {
+      case 'unsplash':
+        requestURL = `${Constants.UNSPLASH_URL}/getImage`;
+        break;
+      // Defaults to Mue
+      default:
+        requestURL = `${Constants.API_URL}/getImage?category=Outdoors`;
+        break;
+    }
+
+    try {
+      data = await (await fetch(requestURL)).json();
+    } catch (e) {
+      // if requesting to the API fails, we get an offline image
+      return this.offlineBackground();
+    }
+
+    this.setState({
+      url: data.file,
+      photoInfo: {
+        credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ' on Unsplash',
+        location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
+        camera: data.camera || 'N/A',
+        resolution: data.resolution || 'N/A'
+      }
+    });
   }
 
   componentDidMount() {
-    // Hide the credit
     if (localStorage.getItem('background') === 'false') {
-      return document.querySelector('.photoInformation').style.display = 'none';
+      return;
     }
 
-    const backgroundColour = localStorage.getItem('customBackgroundColour');
-    if (backgroundColour !== 'Disabled' && backgroundColour !== '') {
-      document.querySelector('.photoInformation').style.display = 'none';
-    }
+    this.getBackground();
+  }
 
-    if (localStorage.getItem('animations') === 'true') {
-      document.querySelector('#backgroundImage').classList.add('fade-in');
-    }
-
-    this.determineMode();
+  // only set once we've got the info
+  componentDidUpdate() {
+    this.setBackground();
   }
 
   render() {
-    return <div id='backgroundImage'/>;
+    return (
+      <React.Fragment>
+        <div id='backgroundImage'/>
+        <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
+      </React.Fragment>
+    );
   }
 }
