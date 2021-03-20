@@ -3,7 +3,6 @@ import React from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 
 const other_contributors = require('../../../../../modules/other_contributors.json');
-const { version } = require('../../../../../../package.json');
 
 export default class About extends React.PureComponent {
   constructor(...args) {
@@ -25,7 +24,7 @@ export default class About extends React.PureComponent {
     const newVersion = versionData[0].tag_name;
 
     let updateMsg = this.language.version.no_update;
-    if (version < newVersion) {
+    if (window.constants.VERSION < newVersion) {
       updateMsg = `${this.language.version.update_available}: ${newVersion}`;
     }
 
@@ -54,7 +53,7 @@ export default class About extends React.PureComponent {
         <h2>{this.language.title}</h2>
         <img draggable='false' style={{'height': '100px', 'width': 'auto'}} src='https://raw.githubusercontent.com/mue/branding/master/logo/logo_horizontal.png' alt='Mue logo'></img>
         <p>{this.language.copyright} 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
-        <p>{this.language.version.title} {version} ({this.state.update})</p>
+        <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
         <h3>{this.language.resources_used.title}</h3>
         <p>Pexels ({this.language.resources_used.bg_images})</p>
         <p>Google ({this.language.resources_used.pin_icon})</p>

@@ -1,30 +1,30 @@
 [
   {
-    "text": "English (UK)",
-    "code": "en-GB"
+    "name": "English (UK)",
+    "value": "en-GB"
   },
   {
-    "text": "English (US)",
-    "code": "en-US"
+    "name": "English (US)",
+    "value": "en-US"
   },
   {
-    "text": "Español",
-    "code": "es"
+    "name": "Español",
+    "value": "es"
   },
   {
-    "text": "Français",
-    "code": "fr"
+    "name": "Français",
+    "value": "fr"
   },
   {
-    "text": "Nederlands",
-    "code": "nl"
+    "name": "Nederlands",
+    "value": "nl"
   },
   {
-    "text": "Norsk",
-    "code": "no"
+    "name": "Norsk",
+    "value": "no"
   },
   {
-    "text": "Pусский",
-    "code": "ru"
+    "name": "Pусский",
+    "value": "ru"
   }
 ]

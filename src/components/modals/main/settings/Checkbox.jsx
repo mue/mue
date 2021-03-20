@@ -13,8 +13,8 @@ export default class Checkbox extends React.PureComponent {
     };
   }
 
-  handleChange(name) {
-    SettingsFunctions.setItem(name);
+  handleChange() {
+    SettingsFunctions.setItem(this.props.name);
 
     this.setState({
       checked: (this.state.checked === true) ? false : true
@@ -33,7 +33,7 @@ export default class Checkbox extends React.PureComponent {
     return (
       <React.Fragment>
         <FormControlLabel
-          control={<CheckboxUI name='checkedB' color='primary' checked={this.state.checked} onChange={() => this.handleChange(this.props.name)} />}
+          control={<CheckboxUI name={this.props.name} color='primary' checked={this.state.checked} onChange={() => this.handleChange()} />}
           label={text}
         />
         <br/>

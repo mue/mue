@@ -50,25 +50,6 @@
   }
 }
 
-.dark {
-  background-color: #2f3542 !important;
-  color: white !important;
-
-  .sidebar {
-    background-color: #2a303b !important;
-  }
-
-  .tab-list-active {
-    background: rgba(161, 159, 159, 0.8);
-  }
-
-  .tab-list-item {
-    &:hover {
-      background: rgba(161, 159, 159, 0.8);
-    }
-  }
-}
-
 .ReactModal__Html--open,
 .ReactModal__Body--open {
   overflow: hidden;

@@ -57,6 +57,10 @@ export default class Quote extends React.PureComponent {
   }
 
   async getQuote() {
+    if (localStorage.getItem('offlineMode') === 'true') {
+      return this.doOffline();
+    }
+
     const quotePackAPI = JSON.parse(localStorage.getItem('quoteAPI'));
     if (quotePackAPI) {
       try {
@@ -84,10 +88,6 @@ export default class Quote extends React.PureComponent {
         quote: '"' + customQuote + '"',
         author: localStorage.getItem('customQuoteAuthor')
       });
-    }
-
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return this.doOffline();
     }
 
     // First we try and get a quote from the API...
