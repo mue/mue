@@ -15,11 +15,15 @@
 }
 
 // firefox dropdown
-@supports (-moz-appearance:none) {
+@supports (-moz-appearance: none) {
   select {
     -moz-appearance: none !important;
-    background: url('data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==') right center no-repeat, linear-gradient(180deg, #ffb032 0%, #dd3b67 100%) !important;
-    background-position: calc(100% - 5px) center !important;
+    background: url('data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==') right center no-repeat, var(--sidebar) !important;
+    background-position: calc(100% - 15px) center !important;
+  }
+
+  option {
+    font: -moz-pull-down-menu !important;
   }
 }
 
