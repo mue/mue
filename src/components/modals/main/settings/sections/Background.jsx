@@ -223,10 +223,8 @@ export default class BackgroundSettings extends React.PureComponent {
         <h2>{background.title}</h2>
         <Checkbox name='background' text='Enabled' />
         <h3>{background.buttons.title}</h3>
-        <ul>
-          <Checkbox name='view' text={background.buttons.view} />
-          <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
-        </ul>
+        <Checkbox name='view' text={background.buttons.view} />
+        <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
 
         <h3>{background.effects.title}</h3>
         <ul>
@@ -239,12 +237,10 @@ export default class BackgroundSettings extends React.PureComponent {
         </ul>
     
         <h3>{background.source.title}</h3>
-        <ul>
-          <Dropdown label={background.source.api} name='backgroundAPI'>
-            <option className='choices' value='mue'>Mue</option>
-            <option className='choices' value='unsplash'>Unsplash</option>
-          </Dropdown>
-        </ul>
+        <Dropdown label={background.source.api} name='backgroundAPI'>
+          <option className='choices' value='mue'>Mue</option>
+          <option className='choices' value='unsplash'>Unsplash</option>
+        </Dropdown>
         <ul>
           <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>

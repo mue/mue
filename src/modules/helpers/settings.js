@@ -50,9 +50,9 @@ export default class SettingsFunctions {
 
     // Set theme depending on user preferred
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      localStorage.setItem('darkTheme', true);
+      localStorage.setItem('theme', 'dark');
     } else {
-      localStorage.setItem('darkTheme', false);
+      localStorage.setItem('theme', 'light');
     }
 
     // Languages
@@ -121,6 +121,11 @@ export default class SettingsFunctions {
     // don't bother if it's default zoom
     if (zoom !== 100) {
       document.body.style.zoom = zoom + '%';
+    }
+
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.body.classList.add('dark');
     }
 
     // easter egg

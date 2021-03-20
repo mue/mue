@@ -5,7 +5,7 @@
 
   h2.subtitle {
     font-size: 24px;
-    color: #535353;
+    color: var(--modal-text);
     text-transform: uppercase;
   }
 
@@ -21,7 +21,7 @@
   a {
     text-decoration: none;
     line-height: 20px !important;
-    color: #5352ED;
+    color: var(--modal-link);
     cursor: pointer;
 
     &:hover {
@@ -54,5 +54,5 @@
 }
 
 .welcomeLink {
-  color: black !important;
+  color: var(--modal-text) !important;
 }

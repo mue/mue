@@ -71,28 +71,11 @@ export default class DateWidget extends React.PureComponent {
     }
   }
 
-  // based on https://gist.github.com/IamSilviu/5899269#gistcomment-2773524
-  getWeekNumber() {
-    const today = new Date();
-    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
-    const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
-    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
-  }
-
   componentDidMount() {
     this.getDate();
   }
 
   render() {
-    return (
-      <div>
-        <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date}</span>
-        {(localStorage.getItem('weeknumber') === 'true') ?
-          <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}><br/>
-            {'Week ' + this.getWeekNumber()}
-          </span>
-        :null}
-      </div>
-    )
+    return <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date}</span>;
   }
 }

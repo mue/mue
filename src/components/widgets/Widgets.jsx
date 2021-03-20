@@ -26,11 +26,41 @@ export default class Widgets extends React.PureComponent {
     return enabled;
   }
 
+  componentDidMount() {
+    const widget = document.getElementById('widgets');
+    // These lines of code prevent double clicking the page or pressing CTRL + A from highlighting the page
+    widget.addEventListener('mousedown', (event) => {
+      if (event.detail > 1) {
+        event.preventDefault();
+      }
+    }, false);
+
+    document.onkeydown = (e) => {
+      e = e || window.event;
+      if (!e.ctrlKey) {
+        return;
+      }
+      let code = e.which || e.keyCode;
+      
+      const modals = document.getElementsByClassName('ReactModal__Overlay');
+      if (modals.length > 0) {
+        return;
+      }
+
+      switch (code) {
+        case 65:
+          e.preventDefault();
+          e.stopPropagation();
+          break;
+      }
+    };
+  }
+
   render() {
     const enabled = this.enabled;
 
     return (
-      <React.Fragment>
+      <div id='widgets'>
         {enabled('searchBar') ? <Search/> : null}
         {enabled('greeting') ? <Greeting/> : null}
         {enabled('time') ? <Clock/> : null}
@@ -38,7 +68,7 @@ export default class Widgets extends React.PureComponent {
         {enabled('quote') ? <Quote/> : null}
         {enabled('view') ? <Maximise/> : null}
         {enabled('favouriteEnabled') ? <Favourite/> : null}
-      </React.Fragment>
+      </div>
     );
   }
 }

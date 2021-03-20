@@ -169,6 +169,7 @@ export default class Marketplace extends React.PureComponent {
             items={this.state.items.slice(0, 3)}
             toggleFunction={(input) => this.toggle('item', input)} />
         </div>
+        <Item data={this.state.item_data} button={this.state.button} />
       </React.Fragment>
     );
   }

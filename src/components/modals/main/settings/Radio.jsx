@@ -28,7 +28,7 @@ export default class Radio extends React.PureComponent {
         <FormLabel className='radio-title' component='legend'>{this.props.title}</FormLabel>
         <RadioGroup aria-label={this.props.name} name={this.props.name} onChange={(e) => this.handleChange(e.target.value)} value={this.state.value}>
           {this.props.options.map(option =>
-            <FormControlLabel value={option.value} control={<RadioUI/>} label={option.name} />
+            <FormControlLabel value={option.value} control={<RadioUI/>} label={option.name} key={option.name} />
           )}
         </RadioGroup>
       </FormControl>

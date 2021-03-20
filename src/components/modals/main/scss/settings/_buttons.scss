@@ -203,3 +203,15 @@ input[type=number]::-webkit-outer-spin-button {
     color: map-get($button-colours, 'other');
   }
 }
+
+.MuiCheckbox-root {
+  color: var(--modal-text) !important;
+}
+
+.MuiIconButton-label > svg.MuiSvgIcon-root {
+  color: var(--modal-text) !important;
+}
+
+legend {
+  color: var(--modal-text) !important;
+}

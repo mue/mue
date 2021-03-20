@@ -14,7 +14,6 @@ export default function MainModal(props) {
   return (
     <div className='modal'>
       <span className='closeModal' onClick={props.modalClose}>&times;</span>
-      <div>
         <Navigation navbar={true}>
           <div label={language.modals.main.navbar.settings}>
             <Settings/>
@@ -26,7 +25,6 @@ export default function MainModal(props) {
             <Marketplace/>
           </div>
         </Navigation>
-      </div>
     </div>
   );
 }

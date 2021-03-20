@@ -109,7 +109,7 @@
   },
   {
     "name": "shortFormat",
-    "value": "default"
+    "value": "dots"
   },
   {
     "name": "zoom",
@@ -120,11 +120,11 @@
     "value": 2500
   },
   {
-    "name": "fontStyle",
+    "name": "fontstyle",
     "value": "normal"
   },
   {
-    "name": "fontWeight",
-    "value": "normal"
+    "name": "fontweight",
+    "value": 400
   }
 ]

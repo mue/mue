@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Checkbox from '../Checkbox';
+import Switch from '../Switch';
 
 import DatePicker from 'react-date-picker';
 import { toast } from 'react-toastify';
@@ -46,7 +47,7 @@ export default class GreetingSettings extends React.PureComponent {
     return (
       <div>
         <h2>{greeting.title}</h2>
-        <Checkbox name='greeting' text={this.language.enabled} />
+        <Switch name='greeting' text={this.language.enabled} />
         <Checkbox name='events' text={greeting.events} />
         <Checkbox name='defaultGreetingMessage' text={greeting.default} />
         <ul>

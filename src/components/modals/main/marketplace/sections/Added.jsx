@@ -7,6 +7,8 @@ import FileUpload from '../../settings/FileUpload';
 
 import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 
+import { toast } from 'react-toastify';
+
 export default class Added extends React.PureComponent {
   constructor(...args) {
     super(...args);
@@ -77,7 +79,7 @@ export default class Added extends React.PureComponent {
         break;
     }
 
-    toast(this.props.toastLanguage[type + 'ed']);
+    toast(window.language.modals.main.toasts[type + 'ed']);
 
     let button = '';
     if (type === 'install') {
@@ -113,6 +115,7 @@ export default class Added extends React.PureComponent {
           <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
           {content}
         </div>
+        <Item data={this.state.item_data} button={this.state.button} />
       </React.Fragment>
     );
   }

@@ -3,6 +3,8 @@ import React from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 export default function Item(props) {
+  const language = window.language.modals.main.marketplace.product;
+
   let warningHTML;
   // For some reason it breaks sometimes so we use try/catch
   try {
@@ -10,8 +12,8 @@ export default function Item(props) {
       warningHTML = (
         <div className='productInformation'>
           <ul>
-            <li className='header'>{this.props.language.quote_warning.title}</li>
-            <li id='updated'>{this.props.language.quote_warning.description}</li>
+            <li className='header'>{language.quote_warning.title}</li>
+            <li id='updated'>{language.quote_warning.description}</li>
           </ul>
         </div>
       );
@@ -37,29 +39,29 @@ export default function Item(props) {
       <img alt='product' draggable={false} src={iconsrc} />
       <div className='informationContainer'>
         <div className='productInformation'>
-          <h4>{props.language.information}</h4>
+          <h4>{language.information}</h4>
           <ul>
             <br/>
-            <li className='header'>{props.language.last_updated}</li>
+            <li className='header'>{language.last_updated}</li>
             <li>{props.data.updated}</li>
             <br/>
-            <li className='header'>{props.language.version}</li>
+            <li className='header'>{language.version}</li>
             <li>{props.data.version}</li>
             <br/>
-            <li className='header'>{props.language.author}</li>
+            <li className='header'>{language.author}</li>
            <li>{props.data.author}</li>
          </ul>
         </div>
         <div className='productInformation'>
           <ul>
-            <li className='header'>{props.language.notice.title}</li>
-            <li id='updated'>{props.language.notice.description}</li>
+            <li className='header'>{language.notice.title}</li>
+            <li id='updated'>{language.notice.description}</li>
           </ul>
         </div>
         {warningHTML}
       </div>
       <br/>
-      <h1>{props.language.overview}</h1>
+      <h1>{language.overview}</h1>
       <p className='description' dangerouslySetInnerHTML={{__html: props.data.description}}></p>
     </div>
   );

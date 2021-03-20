@@ -6,6 +6,7 @@ $background: map-get($modal, 'background');
 $sidebar: map-get($modal, 'sidebar');
 $tab-active: map-get($modal, 'tab-active');
 $photo-info: map-get($theme-colours, 'photo-info');
+$modal-link: map-get($modal, 'modal-link');
 
 $main-text-dark: map-get($theme-colours, 'secondary');
 $modal-text-dark: map-get($theme-colours, 'main');
@@ -13,6 +14,7 @@ $background-dark: map-get($modal, 'background-dark');
 $sidebar-dark: map-get($modal, 'sidebar-dark'); 
 $tab-active-dark: map-get($modal, 'tab-active-dark');
 $photo-info-dark: map-get($theme-colours, 'photo-info-dark');
+$modal-link-dark: map-get($modal, 'modal-link-dark');
 
 :root {
   --main-text: #{$main-text};
@@ -21,6 +23,7 @@ $photo-info-dark: map-get($theme-colours, 'photo-info-dark');
   --sidebar: #{$sidebar};
   --tab-active: #{$tab-active};
   --photo-info: #{$photo-info};
+  --modal-link: #{$modal-link};
 }
 
 .dark {
@@ -30,4 +33,5 @@ $photo-info-dark: map-get($theme-colours, 'photo-info-dark');
   --sidebar: #{$sidebar-dark};
   --tab-active: #{$tab-active-dark};
   --photo-info: #{$photo-info-dark};
+  --modal-link: #{$modal-link-dark};
 }

@@ -65,7 +65,7 @@ li {
   height: 15px;
   border-radius: 12px;
   outline: none;
-  background: #ecf0f1;
+  background: var(--sidebar);
   border-radius: 12px;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
 
@@ -147,12 +147,19 @@ input[type=color]::-moz-color-swatch {
 #customcss,
 #customjs {
   font-family: Consolas !important;
-  border: solid 1px black !important;
-  margin-left: 0px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: var(--sidebar) !important;
+  border: none;
+  margin-left: 0;
 }
 
-.MuiCheckbox-colorPrimary.Mui-checked {
+.MuiCheckbox-colorPrimary.Mui-checked, .MuiSwitch-colorPrimary.Mui-checked {
   color: map-get($button-colours, 'reset') !important;
+}
+
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+  background-color: var(--sidebar) !important;
 }
 
 .reminder-info {
