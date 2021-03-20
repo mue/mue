@@ -5,8 +5,8 @@
 input {
   &[type=text] {
     width: 200px;
-    color: black;
-    background: #f0f0f0;
+    color: var(--modal-text);
+    background: var(--sidebar);
     border: none;
     padding: 10px 10px;
     border-radius: 5px;
@@ -133,32 +133,6 @@ input[type=color]::-moz-color-swatch {
   font-size: 1.2em;
   padding-left: 7px;
   vertical-align: middle;
-}
-
-// Dark Theme
-.dark {
-
-  #blurRange,
-  #brightnessRange {
-    background-color: #535c68;
-  }
-
-  #customBackground,
-  #backgroundAPI,
-  #searchEngine,
-  #language,
-  #greetingName,
-  #customSearchEngine {
-    color: white;
-  }
-
-  .choices {
-    background-color: white;
-  }
-
-  .modalLink {
-    color: #3498db;
-  }
 }
 
 .nodropdown {

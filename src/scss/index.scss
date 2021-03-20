@@ -1,21 +1,10 @@
 @import 'variables';
 @import 'mixins';
+@import 'themes';
 
 @import 'modules/toast';
 @import 'modules/marketplace';
 @import 'modules/buttons';
-
-:root {
-  --main-text: map-get($theme-colours, 'main');
-  --modal-text: map-get($modal, 'text');
-  --background: map-get($modal, 'background'); 
-}
-
-.dark {
-  --main-text: map-get($theme-colours, 'secondary');
-  --modal-text: map-get($theme-colours, 'main');
-  --background: map-get($modal, 'background-dark'); 
-}
 
 body {
   background: #2f3640;

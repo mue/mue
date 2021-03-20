@@ -29,20 +29,6 @@ export default class Modals extends React.PureComponent {
         welcomeModal: true
       });
     }
-
-    // dark theme support for modals and info card
-    let modalClassList = 'Modal';
-    let tooltipClassList = 'infoCard';
-        
-    if ((localStorage.getItem('brightnessTime') && new Date().getHours() > 18) || localStorage.getItem('darkTheme') === 'true') {
-      modalClassList += ' dark';
-      tooltipClassList += ' dark';
-    }
-    
-    this.setState({
-        modalClassList: modalClassList,
-        tooltipClassList: tooltipClassList
-    });
   }
 
   closeWelcome() {
@@ -57,13 +43,13 @@ export default class Modals extends React.PureComponent {
       <React.Fragment>
         <Navbar openModal={(modal) => this.setState({ [modal]: true })}/>
         <React.Suspense fallback={renderLoader()}>
-          <Modal closeTimeoutMS={300} id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className={this.state.modalClassList} overlayClassName={this.state.overlayClassList} ariaHideApp={false}>
+          <Modal closeTimeoutMS={300} id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className='Modal' overlayClassName={this.state.overlayClassList} ariaHideApp={false}>
             <Main modalClose={() => this.setState({ mainModal: false })} />
           </Modal>
-          <Modal onRequestClose={() => this.setState({ updateModal: false })} isOpen={this.state.updateModal} className={this.state.modalClassList} overlayClassName={this.state.overlayClassList} ariaHideApp={false}>
+          <Modal onRequestClose={() => this.setState({ updateModal: false })} isOpen={this.state.updateModal} className='Modal' overlayClassName={this.state.overlayClassList} ariaHideApp={false}>
             <Update modalClose={() => this.setState({ updateModal: false })} />
          </Modal>
-         <Modal onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className={this.state.modalClassList} overlayClassName={this.state.overlayClassList} ariaHideApp={false}>
+         <Modal onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal' overlayClassName={this.state.overlayClassList} ariaHideApp={false}>
             <Welcome modalClose={() => this.closeWelcome()} />
           </Modal>
           {/* <Modal onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className={modalClassList} overlayClassName={overlayClassList} ariaHideApp={false}>

@@ -6,8 +6,8 @@
 @import 'settings/dropdown';
 
 .Modal {
-  color: map-get($modal, 'text');
-  background-color: map-get($modal, 'background');
+  color: var(--modal-text);
+  background-color: var(--background);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   border: none;
   opacity: 1;
@@ -113,7 +113,7 @@ ul.sidebar {
   margin: 0;
   padding-left: 0;
   height: 100vh;
-  background: #f0f0f0;
+  background: var(--sidebar);
   left: 0;
   border-radius: 12px 0 0 12px;
   text-align: left;
@@ -163,7 +163,7 @@ li {
 }
 
 .tab-list-active {
-  background: rgba(219, 219, 219, 0.72);
+  background: var(--tab-active);
 }
 
 @media only screen and (max-height: 898px) {
@@ -190,7 +190,7 @@ li {
 
 .tab-list-item {
   &:hover {
-    background: rgba(219, 219, 219, 0.8);
+    background: var(--tab-active);
   }
 }
 

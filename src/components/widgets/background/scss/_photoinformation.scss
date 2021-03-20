@@ -25,9 +25,9 @@
 
 .infoCard {
   display: none;
-  background: #fff;
+  background: var(--background);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  color: #000;
+  color: var(--modal-text);
   position: fixed;
   bottom: 3.25rem;
   left: 0.7em;
@@ -64,7 +64,7 @@
 
   hr {
     height: 3px;
-    background: #2d3436;
+    background: var(--photo-info);
     outline: none;
     border: none;
   }
@@ -72,8 +72,4 @@
   &:hover {
     display: block !important;
   }
-}
-
-.dark hr {
-  background-color: white !important;
 }
