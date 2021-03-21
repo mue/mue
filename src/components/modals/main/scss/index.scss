@@ -5,6 +5,8 @@
 @import 'settings/buttons';
 @import 'settings/dropdown';
 
+@import './settings/react-color-picker-gradient-picker-custom-styles.scss';
+
 .Modal {
   color: var(--modal-text);
   background-color: var(--background);

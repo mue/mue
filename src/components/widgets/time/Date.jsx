@@ -12,9 +12,9 @@ export default class DateWidget extends React.PureComponent {
 
   getDate() {
     const date = new Date();
-    const short = localStorage.getItem('short');
+    const type = localStorage.getItem('type');
 
-    if (short === 'true') {
+    if (type === 'short') {
       const dateDay = date.getDate();
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
@@ -56,7 +56,7 @@ export default class DateWidget extends React.PureComponent {
         date: format
       });
     } else {
-      // Full date
+      // Long date
       const lang = localStorage.getItem('language');
 
       const nth = (localStorage.getItem('datenth') === 'true') ? dtf.nth(date.getDate()) : date.getDate();

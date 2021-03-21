@@ -26,10 +26,10 @@ input {
   }
 }
 
-.DayPickerInput {
+.DayPickerInput, .input-container {
   input {
   width: 200px;
-  color: var(--modal-text);
+  color: var(--modal-text) ! important;
   background: var(--sidebar);
   border: none;
   padding: 10px 10px;
@@ -195,4 +195,14 @@ input[type=color]::-moz-color-swatch {
 .radio-title {
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.DayPicker-Day--selected {
+  background-color: #ff4757 !important;
+  color: white;
+}
+
+.DayPicker-Months, .DayPickerInput-Overlay {
+  background-color: var(--background) !important;
+  color: var(--modal-text) !important;
 }

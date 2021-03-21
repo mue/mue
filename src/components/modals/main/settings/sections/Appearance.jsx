@@ -6,7 +6,7 @@ import Radio from '../Radio';
 import Slider from '../Slider';
 import Text from '../Text';
 
-export default function AppearanceSettings(props) {
+export default function AppearanceSettings() {
   const { appearance } = window.language.modals.main.settings.sections;
 
   let themeOptions = [

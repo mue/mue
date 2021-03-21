@@ -4,7 +4,7 @@ import Checkbox from '../Checkbox';
 import Text from '../Text';
 import Switch from '../Switch';
 
-export default function QuoteSettings(props) {
+export default function QuoteSettings() {
   const { quote } = window.language.modals.main.settings.sections;
 
   return (

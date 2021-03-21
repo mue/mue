@@ -24,6 +24,7 @@ export default class SettingsFunctions {
     for (const key of Object.keys(localStorage)) {
       settings[key] = localStorage.getItem(key);
     }
+  
     saveFile(settings, 'mue-settings.json');
   }
 
@@ -47,13 +48,6 @@ export default class SettingsFunctions {
   static setDefaultSettings(reset) {
     localStorage.clear();
     defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
-
-    // Set theme depending on user preferred
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      localStorage.setItem('theme', 'dark');
-    } else {
-      localStorage.setItem('theme', 'light');
-    }
 
     // Languages
     const languageCodes = languages.map(({ code }) => code);
@@ -126,6 +120,11 @@ export default class SettingsFunctions {
     const theme = localStorage.getItem('theme');
     if (theme === 'dark') {
       document.body.classList.add('dark');
+    } else if (theme === 'auto') {
+      // Set theme depending on user preferred
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+      }
     }
 
     const tabName = localStorage.getItem('tabName');
@@ -147,7 +146,7 @@ export default class SettingsFunctions {
  ██               Copyright 2018-2021 Mue                   ██
  ██           GitHub: https://github.com/mue/mue            ██
  ██                                                         ██
- ██                 Thank you for using!                    ██
+ ██               Thank you for using Mue!                  ██
  ██              Feedback: hello@muetab.com                 ██
  █████████████████████████████████████████████████████████████
 `);

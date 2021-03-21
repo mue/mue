@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
+import Switch from '../Switch';
 
 const searchEngines = require('../../../../widgets/search/search_engines.json');
 
@@ -59,7 +60,7 @@ export default class SearchSettings extends React.PureComponent {
     return (
       <div className='section'>
         <h2>{search.title}</h2>
-        <Checkbox name='searchBar' text={language.enabled} />
+        <Switch name='searchBar' text={language.enabled} />
         <Checkbox name='voiceSearch' text={search.voice_search} />
         <ul>
           <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>

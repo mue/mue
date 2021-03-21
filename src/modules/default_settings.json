@@ -130,5 +130,9 @@
   {
     "name": "order",
     "value": "[\"greeting\", \"time\", \"quote\", \"date\"]"
+  },
+  {
+    "name": "theme",
+    "value": "auto"
   }
 ]
