@@ -110,7 +110,7 @@ export default class BackgroundSettings extends React.PureComponent {
       const newState = {
         gradientSettings: {
           ...s.gradientSettings,
-          gradient: [...initGradients, lastGradient, { 'colour': localStorage.getItem('darkTheme') === 'true' ? '#000000' : '#ffffff', stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
+          gradient: [...initGradients, lastGradient, { 'colour': localStorage.getItem('theme') === 'dark' ? '#000000' : '#ffffff', stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
         }
       };
       return newState;

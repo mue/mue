@@ -34,7 +34,8 @@ export default function AppearanceSettings(props) {
 
       <h3>{appearance.font.title}</h3>
       <Text title={appearance.font.custom} name='font' upperCaseFirst={true} />
-      <br/><br/>
+      <br/>
+      <Checkbox name='fontGoogle' text={appearance.font.google} />
       <Dropdown label='Font Weight' name='fontweight'>
         {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
         <option className='choices' value='100'>Thin</option>
@@ -52,8 +53,6 @@ export default function AppearanceSettings(props) {
         <option className='choices' value='italic'>Italic</option>
         <option className='choices' value='oblique'>Oblique</option>
       </Dropdown>
-      <br/>
-      <Checkbox name='fontGoogle' text={appearance.font.google} />
 
       <h3>{appearance.accessibility.title}</h3>
       <Checkbox name='animations' text={appearance.animations} betaFeature={true} />

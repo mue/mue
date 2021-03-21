@@ -16,12 +16,14 @@
     "@fontsource/roboto": "^4.2.2",
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
+    "array-move": "^3.0.1",
     "react": "17.0.1",
     "react-clock": "^3.0.0",
     "react-color-gradient-picker": "^0.1.2",
-    "react-date-picker": "^8.1.0",
+    "react-day-picker": "^7.4.10",
     "react-dom": "17.0.1",
     "react-modal": "3.12.1",
+    "react-sortable-hoc": "^2.0.0",
     "react-toastify": "7.0.3"
   },
   "devDependencies": {
@@ -39,12 +41,13 @@
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "webpack": "^5.27.0",
+    "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
     "start": "webpack serve",
-    "build": "rm -rf build && webpack --mode=production",
+    "build": "rm -rf build && webpack --mode=production -json > stats.json",
     "chrome": "cp manifest/chrome.json build/manifest.json",
     "firefox": "cp manifest/firefox.json build/manifest.json",
     "opera": "cp manifest/opera.json build/manifest.json && cp manifest/background-opera.js build/"

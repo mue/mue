@@ -215,3 +215,24 @@ input[type=number]::-webkit-outer-spin-button {
 legend {
   color: var(--modal-text) !important;
 }
+
+.sortableitem {
+  background: var(--sidebar) !important;
+  padding: 10px 80px;
+  padding-left: 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  svg {
+    font-size: 1.3rem;
+  }
+  &:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transition: 0.3s;
+  }
+  z-index: 999 !important;
+}
+
+li.stortableitem {
+  width: 200px;
+}

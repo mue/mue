@@ -4,7 +4,8 @@ import Checkbox from '../Checkbox';
 import Switch from '../Switch';
 import Text from '../Text';
 
-import DatePicker from 'react-date-picker';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
 
 export default class GreetingSettings extends React.PureComponent {
   constructor(...args) {
@@ -39,7 +40,7 @@ export default class GreetingSettings extends React.PureComponent {
         <Checkbox name='birthdayage' text='Birthday Age'/>
         <ul>
           <p>{greeting.birthday_date}</p>
-          <DatePicker onChange={(data) => this.changeDate(data)} value={this.state.birthday}/>
+          <DayPickerInput onDayChange={(data) => this.changeDate(data)} value={this.state.birthday} />
         </ul>
       </div>
     );

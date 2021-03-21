@@ -3,7 +3,7 @@
 }
 
 input {
-  &[type=text] {
+  &[type=text]  {
     width: 200px;
     color: var(--modal-text);
     background: var(--sidebar);
@@ -23,6 +23,17 @@ input {
 
   &:focus+.slider {
     box-shadow: 0 0 1px #e67e22;
+  }
+}
+
+.DayPickerInput {
+  input {
+  width: 200px;
+  color: var(--modal-text);
+  background: var(--sidebar);
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
   }
 }
 

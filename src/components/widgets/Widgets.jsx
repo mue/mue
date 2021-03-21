@@ -9,6 +9,17 @@ import Favourite from './background/Favourite';
 import Date from './time/Date';
 
 export default class Widgets extends React.PureComponent {
+  constructor(...args) {
+    super(...args);
+    // widgets we can re-order
+    this.widgets = {
+      time: this.enabled('time') ? <Clock/> : null,
+      greeting: this.enabled('greeting') ? <Greeting/> : null,
+      quote: this.enabled('quote') ? <Quote/> : null,
+      date: this.enabled('date') ? <Date/> : null
+    }
+  }
+
   enabled(key) {
     const stringValue = localStorage.getItem(key);
     let enabled = true;
@@ -57,17 +68,24 @@ export default class Widgets extends React.PureComponent {
   }
 
   render() {
-    const enabled = this.enabled;
+    // allow for re-ordering widgets
+    let elements = [];
+    const order = JSON.parse(localStorage.getItem('order'));
+
+    if (order) {
+      order.forEach(element => {
+        elements.push(this.widgets[element]);
+      });
+    } else {
+      elements = ['greeting', 'time', 'quote', 'date'];
+    }
 
     return (
       <div id='widgets'>
-        {enabled('searchBar') ? <Search/> : null}
-        {enabled('greeting') ? <Greeting/> : null}
-        {enabled('time') ? <Clock/> : null}
-        {enabled('date') ? <Date/> : null}
-        {enabled('quote') ? <Quote/> : null}
-        {enabled('view') ? <Maximise/> : null}
-        {enabled('favouriteEnabled') ? <Favourite/> : null}
+        {this.enabled('searchBar') ? <Search/> : null}
+        {elements}
+        {this.enabled('view') ? <Maximise/> : null}
+        {this.enabled('favouriteEnabled') ? <Favourite/> : null}
       </div>
     );
   }

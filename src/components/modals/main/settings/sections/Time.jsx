@@ -64,7 +64,7 @@ export default class TimeSettings extends React.PureComponent {
         {timeSettings}
 
         <h3>{time.date.title}</h3>
-        <Checkbox name='date' text={this.language.enabled} />
+        <Switch name='date' text={this.language.enabled} />
         <Checkbox name='dayofweek' text={time.date.day_of_week} />
         <Checkbox name='datenth' text={time.date.datenth} />
         <Checkbox name='short' text={time.date.short_date} betaFeature={true} />

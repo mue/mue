@@ -16,6 +16,7 @@ import Language from '@material-ui/icons/Translate';
 import Changelog from '@material-ui/icons/NewReleasesRounded';
 import About from '@material-ui/icons/Info';
 import Experimental from '@material-ui/icons/BugReport';
+import Order from '@material-ui/icons/List';
 
 // Store
 import Colors from '@material-ui/icons/ColorLens';
@@ -49,6 +50,7 @@ export default function Tab(props) {
     case 'Background': icon = <Background/>; break;
     case 'Search': icon = <Search/>; break;
     case 'Appearance': icon = <Appearance/>; break;
+    case 'Order': icon = <Order/>; break;
     case 'Language': icon = <Language/>; divider = true; break;
     case 'Advanced': icon = <Settings/>; break;
     case 'Experimental': icon = <Experimental/>; divider = true; break;

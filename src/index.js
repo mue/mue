@@ -11,7 +11,7 @@ import '@fontsource/lexend-deca/latin-400.css';
 import '@fontsource/roboto/cyrillic-400.css';
 
 // language
-import merge from './modules/helpers/merge';
+import merge from '@material-ui/utils/deepmerge';
 const languagecode = localStorage.getItem('language') || 'en-GB';
 // we set things to window. so they're global and we avoid passing the translation strings as props to each component
 window.languagecode = languagecode;
