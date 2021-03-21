@@ -144,8 +144,7 @@ input[type=color]::-moz-color-swatch {
   font-size: 12px;
 }
 
-#customcss,
-#customjs {
+.settingsTextarea {
   font-family: Consolas !important;
   padding: 15px;
   border-radius: 15px;
@@ -154,7 +153,7 @@ input[type=color]::-moz-color-swatch {
   margin-left: 0;
 }
 
-.MuiCheckbox-colorPrimary.Mui-checked, .MuiSwitch-colorPrimary.Mui-checked {
+.MuiCheckbox-colorPrimary.Mui-checked, .MuiSwitch-colorPrimary.Mui-checked,  .MuIconButton-colorPrimary.Mui-checked{
   color: map-get($button-colours, 'reset') !important;
 }
 

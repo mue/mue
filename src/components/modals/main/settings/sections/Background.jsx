@@ -3,6 +3,8 @@ import React from 'react';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import FileUpload from '../FileUpload';
+import Slider from '../Slider';
+import Text from '../Text';
 
 import { ColorPicker } from 'react-color-gradient-picker';
 import hexToRgb from '../../../../../modules/helpers/background/hexToRgb';
@@ -20,8 +22,6 @@ export default class BackgroundSettings extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-      blur: localStorage.getItem('blur'),
-      brightness: localStorage.getItem('brightness'),
       customBackground: localStorage.getItem('customBackground') || '',
       gradientSettings: this.DefaultGradientSettings
     };
@@ -41,20 +41,6 @@ export default class BackgroundSettings extends React.PureComponent {
         localStorage.setItem('customBackground', '');
         this.setState({
           customBackground: ''
-        });
-        break;
-
-      case 'blur':
-        localStorage.setItem('blur', 0);
-        this.setState({
-          blur: 0
-        });
-        break;
-
-      case 'brightness':
-        localStorage.setItem('brightness', 100);
-        this.setState({
-          brightness: 100
         });
         break;
 
@@ -167,10 +153,6 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    localStorage.setItem('blur', this.state.blur);
-    localStorage.setItem('brightness', this.state.brightness);
-    localStorage.setItem('customBackground', this.state.customBackground);
-
     if (document.getElementById('customBackgroundHex').value !== this.language.sections.background.source.disabled) {
       localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
     }
@@ -227,20 +209,15 @@ export default class BackgroundSettings extends React.PureComponent {
         <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
 
         <h3>{background.effects.title}</h3>
-        <ul>
-          <p>{background.effects.blur} ({this.state.blur}%) <span className='modalLink' onClick={() => this.resetItem('blur')}>{this.language.buttons.reset}</span></p>
-          <input className='range' type='range' min='0' max='100' value={this.state.blur} onChange={(event) => this.setState({ blur: event.target.value })} />
-        </ul>
-        <ul>
-          <p>{background.effects.brightness} ({this.state.brightness}%) <span className='modalLink' onClick={() => this.resetItem('brightness')}>{this.language.buttons.reset}</span></p>
-          <input className='range' type='range' min='0' max='100' value={this.state.brightness} onChange={(event) => this.setState({ brightness: event.target.value })} />
-        </ul>
-    
+        <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' />
+        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='100' display='%' />
+
         <h3>{background.source.title}</h3>
         <Dropdown label={background.source.api} name='backgroundAPI'>
           <option className='choices' value='mue'>Mue</option>
           <option className='choices' value='unsplash'>Unsplash</option>
         </Dropdown>
+        {/* <Text title={background.source.custom_url} name='customBackground' /> */ }
         <ul>
           <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>

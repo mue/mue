@@ -128,6 +128,11 @@ export default class SettingsFunctions {
       document.body.classList.add('dark');
     }
 
+    const tabName = localStorage.getItem('tabName');
+    if (tabName) {
+      document.title = tabName;
+    }
+
     // easter egg
     console.log(`
  █████████████████████████████████████████████████████████████                                                                        

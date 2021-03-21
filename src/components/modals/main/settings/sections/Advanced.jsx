@@ -2,6 +2,7 @@ import React from 'react';
 
 import Checkbox from '../Checkbox';
 import FileUpload from '../FileUpload';
+import Text from '../Text';
 import ResetModal from '../ResetModal';
 
 import SettingsFunctions from '../../../../../modules/helpers/settings';
@@ -18,11 +19,6 @@ export default class AdvancedSettings extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  resetItem(type) {
-    document.getElementById(type).value = '';
-    toast(this.language.toasts.reset);
-  }
-
   settingsImport(e) {
     const content = JSON.parse(e.target.result);
 
@@ -31,16 +27,6 @@ export default class AdvancedSettings extends React.PureComponent {
     }
 
     toast(this.language.toasts.imported);
-  }
-
-  componentDidMount() {
-    document.getElementById('customcss').value = localStorage.getItem('customcss');
-    document.getElementById('customjs').value = localStorage.getItem('customjs');
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem('customcss', document.getElementById('customcss').value);
-    localStorage.setItem('customjs', document.getElementById('customjs').value);
   }
 
   render() {
@@ -58,14 +44,9 @@ export default class AdvancedSettings extends React.PureComponent {
         <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)} />
 
         <h3>{advanced.customisation}</h3>
-        <ul>
-          <p>{advanced.custom_css} <span className='modalLink' onClick={() => this.resetItem('customcss')}>{this.language.buttons.reset}</span></p>
-          <textarea id='customcss'></textarea>
-        </ul>
-        <ul>
-          <p>{advanced.custom_js} <span className='modalLink' onClick={() => this.resetItem('customjs')}>{this.language.buttons.reset}</span></p>
-          <textarea id='customjs'></textarea>
-        </ul>
+        <Text title={advanced.custom_js} name='customjs' textarea={true}/>
+        <Text title={advanced.custom_css} name='customcss' textarea={true}/>
+        <Text title='Tab Name' name='tabName'/>
 
         <h3>{this.language.sections.experimental.title}</h3>
         <p>{advanced.experimental_warning}</p>
