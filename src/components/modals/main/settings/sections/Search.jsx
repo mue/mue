@@ -28,8 +28,6 @@ export default class SearchSettings extends React.PureComponent {
     } else {
       localStorage.removeItem('customSearchEngine');
     }
-
-    document.getElementById('searchEngine').value = searchEngine;
   }
 
   componentDidUpdate() {
@@ -64,14 +62,11 @@ export default class SearchSettings extends React.PureComponent {
         <Checkbox name='searchBar' text={language.enabled} />
         <Checkbox name='voiceSearch' text={search.voice_search} />
         <ul>
-          <Dropdown label={search.search_engine}
-            name='searchEngine'
-            id='searchEngine'
-            onChange={() => this.setSearchEngine(document.getElementById('searchEngine').value)} >
-          {searchEngines.map((engine) =>
-            <option key={engine.name} className='choices' value={engine.settingsName}>{engine.name}</option>
-          )}
-          <option className='choices' value='custom'>{search.custom.split(' ')[0]}</option>
+          <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
+            {searchEngines.map((engine) =>
+              <option key={engine.name} className='choices' value={engine.settingsName}>{engine.name}</option>
+            )}
+            <option className='choices' value='custom'>{search.custom.split(' ')[0]}</option>
           </Dropdown>
         </ul>
         <ul id='searchEngineInput' style={{ display: 'none' }}>

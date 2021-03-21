@@ -13,7 +13,7 @@ export default function LanguageSettings () {
       <h2>{language.title}</h2>
       <Radio name='language' options={languages} />
       <br/>
-      <Dropdown label={language.quote} name='quotelanguage' id='quotelanguage' onChange={() => localStorage.setItem('quotelanguage', document.getElementById('quotelanguage').value)}>
+      <Dropdown label={language.quote} name='quotelanguage'>
         <option className='choices' value='English'>English</option>
         <option className='choices' value='French'>Français</option>
       </Dropdown>

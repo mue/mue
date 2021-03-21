@@ -2,6 +2,7 @@ import React from 'react';
 
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
+import Switch from '../Switch';
 
 export default class TimeSettings extends React.PureComponent {
   constructor(...args) {
@@ -12,9 +13,7 @@ export default class TimeSettings extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  changeType() {
-    const value = document.getElementById('timeType').value;
-    localStorage.setItem('timeType', value);
+  changeType(value) {
     this.setState({
       timeType: value
     });
@@ -55,8 +54,8 @@ export default class TimeSettings extends React.PureComponent {
     return (
       <div>
         <h2>{time.title}</h2>
-        <Checkbox name='time' text={this.language.enabled} />
-        <Dropdown label='Type' name='timeType' onChange={() => this.changeType()}>
+        <Switch name='time' text={this.language.enabled} />
+        <Dropdown label='Type' name='timeType' onChange={(value) => this.changeType(value)}>
           <option className='choices' value='digital'>{time.digital.title}</option>
           <option className='choices' value='analogue'>{time.analogue.title}</option>
           <option className='choices' value='percentageComplete'>{time.percentage_complete}</option>

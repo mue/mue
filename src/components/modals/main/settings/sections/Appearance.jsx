@@ -34,33 +34,25 @@ export default function AppearanceSettings(props) {
 
       <h3>{appearance.font.title}</h3>
       <Text title={appearance.font.custom} name='font' upperCaseFirst={true} />
+      <br/><br/>
+      <Dropdown label='Font Weight' name='fontweight'>
+        {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
+        <option className='choices' value='100'>Thin</option>
+        <option className='choices' value='200'>Extra-Light</option>
+        <option className='choices' value='300'>Light</option>
+        <option className='choices' value='400'>Normal</option>
+        <option className='choices' value='500'>Medium</option>
+        <option className='choices' value='600'>Semi-Bold</option>
+        <option className='choices' value='700'>Bold</option>
+        <option className='choices' value='800'>Extra-Bold</option>
+      </Dropdown>
+      <br/><br/>
+      <Dropdown label='Font Style' name='fontstyle'>
+        <option className='choices' value='normal'>Normal</option>
+        <option className='choices' value='italic'>Italic</option>
+        <option className='choices' value='oblique'>Oblique</option>
+      </Dropdown>
       <br/>
-      <Dropdown
-          label='Font Weight'
-          name='fontweight'
-          id='fontWeight'
-          onChange={() => localStorage.setItem('fontWeight', document.getElementById('fontWeight').value)}>
-            {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
-            <option className='choices' value='100'>Thin</option>
-            <option className='choices' value='200'>Extra-Light</option>
-            <option className='choices' value='300'>Light</option>
-            <option className='choices' value='400'>Normal</option>
-            <option className='choices' value='500'>Medium</option>
-            <option className='choices' value='600'>Semi-Bold</option>
-            <option className='choices' value='700'>Bold</option>
-            <option className='choices' value='800'>Extra-Bold</option>
-      </Dropdown>
-      <br /><br />
-      <Dropdown
-          label='Font Style'
-          name='fontstyle'
-          id='fontStyle'
-          onChange={() => localStorage.setItem('fontStyle', document.getElementById('fontStyle').value)}>
-            <option className='choices' value='normal'>Normal</option>
-            <option className='choices' value='italic'>Italic</option>
-            <option className='choices' value='oblique'>Oblique</option>
-      </Dropdown>
-      <br /><br />
       <Checkbox name='fontGoogle' text={appearance.font.google} />
 
       <h3>{appearance.accessibility.title}</h3>

@@ -157,8 +157,12 @@ input[type=color]::-moz-color-swatch {
   color: map-get($button-colours, 'reset') !important;
 }
 
+.MuiFormControlLabel-labelPlacementStart {
+  margin-left: 0px;
+}
+
 .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
-  background-color: var(--sidebar) !important;
+  background: darkgray !important;
 }
 
 .reminder-info {

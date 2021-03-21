@@ -5,6 +5,7 @@ import Dropdown from '../Dropdown';
 import FileUpload from '../FileUpload';
 import Slider from '../Slider';
 import Text from '../Text';
+import Switch from '../Switch';
 
 import { ColorPicker } from 'react-color-gradient-picker';
 import hexToRgb from '../../../../../modules/helpers/background/hexToRgb';
@@ -203,7 +204,7 @@ export default class BackgroundSettings extends React.PureComponent {
     return (
       <div>
         <h2>{background.title}</h2>
-        <Checkbox name='background' text='Enabled' />
+        <Switch name='background' text={this.language.enabled} />
         <h3>{background.buttons.title}</h3>
         <Checkbox name='view' text={background.buttons.view} />
         <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />

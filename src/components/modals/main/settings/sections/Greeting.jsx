@@ -16,11 +16,6 @@ export default class GreetingSettings extends React.PureComponent {
   }
 
   changeDate(data) {
-    //soon
-    if (data === 'reset') {
-      return;
-    }
-
     localStorage.setItem('birthday', data);
 
     this.setState({
@@ -41,6 +36,7 @@ export default class GreetingSettings extends React.PureComponent {
 
         <h3>{greeting.birthday}</h3>
         <Checkbox name='birthdayenabled' text={this.language.enabled} />
+        <Checkbox name='birthdayage' text='Birthday Age'/>
         <ul>
           <p>{greeting.birthday_date}</p>
           <DatePicker onChange={(data) => this.changeDate(data)} value={this.state.birthday}/>

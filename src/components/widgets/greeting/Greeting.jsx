@@ -1,5 +1,7 @@
 import React from 'react';
 
+import dtf from '@eartharoid/dtf';
+
 import './greeting.scss';
 
 export default class Greeting extends React.PureComponent {
@@ -32,6 +34,12 @@ export default class Greeting extends React.PureComponent {
     }
 
     return message;
+  }
+
+  calculateAge(date) {
+    const diff = Date.now() - date.getTime();
+    const birthday = new Date(diff);
+    return Math.abs(birthday.getUTCFullYear() - 1970);
   }
 
   getGreeting() {
@@ -73,7 +81,12 @@ export default class Greeting extends React.PureComponent {
     // Birthday
     const birth = new Date(localStorage.getItem('birthday'));
     if (localStorage.getItem('birthdayenabled') === 'true' && birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
-      message = this.language.birthday;
+      if (localStorage.getItem('birthdayage')) {
+        const text = this.language.birthday.split(' ');
+        message = `${text[0]} ${dtf.nth(this.calculateAge(birth))} ${text[1]}`;
+      } else {
+        message = this.language.birthday;
+      }
     }
 
     // Set the state to the greeting string
