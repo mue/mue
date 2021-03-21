@@ -17,7 +17,7 @@ export default function WelcomeModal(props) {
         <h1 className='welcometitle'>Mue Tab</h1>
         <img alt='celebration' style={{ 'height': '200px', 'width': 'auto' }} draggable={false} src='./././icons/undraw_celebration.svg' />
         <h2 className='subtitle'>{language.information}</h2>
-        <p>{language.thankyoumessage1},<br/> {language.thankyoumessage2}</p>
+        <p>{language.thankyoumessage1}<br/> {language.thankyoumessage2}</p>
         <h2 className='subtitle'>{language.support}</h2>
         <a href='mailto:hello@muetab.com' className='welcomeLink' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
         <a href='https://twitter.com/getmue' className='welcomeLink' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>

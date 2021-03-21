@@ -93,11 +93,11 @@ input[type=color] {
   border-radius: 100%;
   height: 30px;
   width: 30px;
-  box-shadow: map-get($main-parts, 'shadow');
   border: none;
   outline: none;
   -webkit-appearance: none;
   vertical-align: middle;
+  background: none;
 
   &::-webkit-color-swatch-wrapper {
     padding: 0;
@@ -113,11 +113,11 @@ input[type=color]::-moz-color-swatch {
   border-radius: 100%;
   height: 30px;
   width: 30px;
-  box-shadow: map-get($main-parts, 'shadow');
   border: none;
   outline: none;
-  -webkit-appearance: none;
+  -moz-appearance: none;
   vertical-align: middle;
+  background: none;
 
   &::-moz-color-swatch-wrapper {
     padding: 0;

@@ -9,7 +9,9 @@ import Photographer from '@material-ui/icons/Person';
 export default function PhotoInformation(props) {
   const language = window.language.widgets.background;
 
-  if (props.info.hidden === true) return null;
+  if (props.info.hidden === true) {
+    return null;
+  }
 
   return (
     <div className='photoInformation'>
