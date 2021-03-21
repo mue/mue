@@ -6,6 +6,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
   mode: 'development',
+  performance: {
+    hints: false
+  },
   module: {
     rules: [{
       test: /\.(js|jsx)$/,
@@ -22,14 +25,19 @@ module.exports = {
           },
         },
         'css-loader',
-        'sass-loader',
+        'sass-loader'
       ],
     },
     {
       test: /\.(woff|woff2|svg)$/,
       use: {
-        loader: 'file-loader',
+        loader: 'file-loader'
       }
+    },
+    {
+      test: /\.js$/,
+      enforce: 'pre',
+      use: ['source-map-loader']
     }]
   },
   resolve: {
@@ -37,7 +45,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   devServer: {
     contentBase: path.resolve(__dirname, './build'),
@@ -56,12 +64,12 @@ module.exports = {
         {
           from: 'public/offline-images',
           to: 'offline-images'
-        },
-      ],
+        }
+      ]
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css',
+      chunkFilename: '[id].css'
     })
   ]
 };
