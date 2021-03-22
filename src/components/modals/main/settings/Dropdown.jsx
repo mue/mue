@@ -26,14 +26,14 @@ export default class Dropdown extends React.PureComponent {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         {this.getLabel()}
         <div className='dropdown' style={{ display: 'inline' }}>
           <select name={this.props.name} value={this.state.value} onChange={(e) => this.onChange(e.target.value)}>
             {this.props.children}
           </select>
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }

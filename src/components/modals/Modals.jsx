@@ -9,7 +9,7 @@ const Main = React.lazy(() => import('./main/Main'));
 const Update = React.lazy(() => import('./update/Update'));
 const Welcome = React.lazy(() => import('./welcome/Welcome'));
 //const Feedback = React.lazy(() => import('./components/modals/Feedback'));
-const renderLoader = () => <div></div>;
+const renderLoader = () => <></>;
 
 export default class Modals extends React.PureComponent {
   constructor(...args) {
@@ -40,7 +40,7 @@ export default class Modals extends React.PureComponent {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <Navbar openModal={(modal) => this.setState({ [modal]: true })}/>
         <React.Suspense fallback={renderLoader()}>
           <Modal closeTimeoutMS={300} id={'modal'} onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className='Modal' overlayClassName={this.state.overlayClassList} ariaHideApp={false}>
@@ -56,7 +56,7 @@ export default class Modals extends React.PureComponent {
               <Feedback modalClose={() => this.setState({ feedbackModal: false })} />
             </Modal> */}
         </React.Suspense>
-      </React.Fragment>
+      </>
     );
   }
 }

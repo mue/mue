@@ -4,9 +4,9 @@ import Added from '../marketplace/sections/Added';
 
 import AddonsTabs from './backend/Tabs';
 
-export default function Addons (props) {
+export default function Addons() {
   return (
-    <React.Fragment>
+    <>
       <AddonsTabs>
         <div label='Added'>
           <Added/>
@@ -15,6 +15,6 @@ export default function Addons (props) {
 
         </div>
       </AddonsTabs>
-    </React.Fragment>
+    </>
   );
 }

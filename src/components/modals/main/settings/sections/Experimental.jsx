@@ -1,9 +1,9 @@
 import React from 'react';
-import Checkbox from '../Checkbox';
 
-export default function ExperimentalSettings (props) {
+export default function ExperimentalSettings() {
   return (
-    <div>
-    </div>
+    <>
+      <p>Coming soon...</p>
+    </>
   );
 }

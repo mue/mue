@@ -34,13 +34,13 @@ export default class Text extends React.PureComponent {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <p>{this.props.title} <span className='modalLink' onClick={() => this.resetItem()}>{this.language.buttons.reset}</span></p>
         {(this.props.textarea === true) ? 
            <textarea className='settingsTextarea' value={this.state.value} onChange={(e) => this.handleChange(e.target.value)}/>
           :<input type='text' value={this.state.value} onChange={(e) => this.handleChange(e.target.value)}/>
         }
-      </React.Fragment>
+      </>
     );
   }
 }

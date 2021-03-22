@@ -8,7 +8,7 @@ export default function QuoteSettings() {
   const { quote } = window.language.modals.main.settings.sections;
 
   return (
-    <div>
+    <>
       <h2>{quote.title}</h2>
       <Switch name='quote' text={window.language.modals.main.settings.enabled} />
       <Checkbox name='authorLink' text={quote.author_link}/>
@@ -19,6 +19,6 @@ export default function QuoteSettings() {
       <Checkbox name='copyButton' text={quote.buttons.copy}/>
       <Checkbox name='tweetButton' text={quote.buttons.tweet}/>
       <Checkbox name='favouriteQuoteEnabled' text={quote.buttons.favourite}/>
-    </div>
+    </>
   );
 }

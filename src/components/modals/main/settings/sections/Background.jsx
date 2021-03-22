@@ -200,7 +200,7 @@ export default class BackgroundSettings extends React.PureComponent {
     }
 
     return (
-      <div>
+      <>
         <h2>{background.title}</h2>
         <Switch name='background' text={this.language.enabled} />
         <h3>{background.buttons.title}</h3>
@@ -231,7 +231,7 @@ export default class BackgroundSettings extends React.PureComponent {
           <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
           {colourSettings}
         </ul>
-      </div>
+      </>
     );
   }
 }

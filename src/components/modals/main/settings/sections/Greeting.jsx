@@ -28,7 +28,7 @@ export default class GreetingSettings extends React.PureComponent {
     const { greeting } = this.language.sections;
 
     return (
-      <div>
+      <>
         <h2>{greeting.title}</h2>
         <Switch name='greeting' text={this.language.enabled} />
         <Checkbox name='events' text={greeting.events} />
@@ -42,7 +42,7 @@ export default class GreetingSettings extends React.PureComponent {
           <p>{greeting.birthday_date}</p>
           <DayPickerInput onDayChange={(data) => this.changeDate(data)} value={this.state.birthday} />
         </ul>
-      </div>
+      </>
     );
   }
 }

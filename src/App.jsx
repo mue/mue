@@ -25,14 +25,14 @@ export default class App extends React.PureComponent {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <Background/>
         <ToastContainer position='bottom-right' autoClose={this.state.toastDisplayTime} newestOnTop={true} closeOnClick pauseOnFocusLoss/>
         <div id='center'>
           <Widgets/>
           <Modals/>
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -33,7 +33,7 @@ export default class AdvancedSettings extends React.PureComponent {
     const { advanced } = this.language.sections;
 
     return (
-      <div>
+      <>
         <h2>{advanced.title}</h2>
         <Checkbox name='offlineMode' text={advanced.offline_mode} />
 
@@ -55,7 +55,7 @@ export default class AdvancedSettings extends React.PureComponent {
         <Modal onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className={'modal'} overlayClassName={'Overlay'} ariaHideApp={false}>
           <ResetModal modalClose={() => this.setState({ resetModal: false })} />
         </Modal>
-      </div>
+      </>
     );
   }
 }

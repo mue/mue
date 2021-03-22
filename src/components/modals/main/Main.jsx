@@ -12,19 +12,19 @@ export default function MainModal(props) {
   const language = window.language;
 
   return (
-    <div className='modal'>
+    <>
       <span className='closeModal' onClick={props.modalClose}>&times;</span>
-        <Navigation navbar={true}>
-          <div label={language.modals.main.navbar.settings}>
-            <Settings/>
-          </div>
-          <div label={language.modals.main.navbar.addons}>
-            <Addons/>
-          </div>
-          <div label={language.modals.main.navbar.marketplace}>
-            <Marketplace/>
-          </div>
-        </Navigation>
-    </div>
+      <Navigation navbar={true}>
+        <div label={language.modals.main.navbar.settings}>
+          <Settings/>
+        </div>
+        <div label={language.modals.main.navbar.addons}>
+          <Addons/>
+        </div>
+        <div label={language.modals.main.navbar.marketplace}>
+          <Marketplace/>
+        </div>
+      </Navigation>
+    </>
   );
 }

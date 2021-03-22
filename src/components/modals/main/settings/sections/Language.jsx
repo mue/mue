@@ -5,11 +5,11 @@ import Radio from '../Radio';
 
 const languages = require('../../../../../modules/languages.json');
 
-export default function LanguageSettings () {
+export default function LanguageSettings() {
   const language = window.language.modals.main.settings.sections.language;
 
   return (
-    <div>
+    <>
       <h2>{language.title}</h2>
       <Radio name='language' options={languages} />
       <br/>
@@ -17,6 +17,6 @@ export default function LanguageSettings () {
         <option className='choices' value='English'>English</option>
         <option className='choices' value='French'>Français</option>
       </Dropdown>
-    </div>
+    </>
   );
 }

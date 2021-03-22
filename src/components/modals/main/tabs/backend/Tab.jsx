@@ -68,11 +68,11 @@ export default function Tab(props) {
   }
 
   return (
-    <React.Fragment>
+    <>
       <li className={className} onClick={() => props.onClick(props.label)}>
       {icon} <span>{props.label}</span>
       </li>
-      {(divider === true) ? <div><hr/></div> : null}
-    </React.Fragment>
+      {(divider === true) ? <hr/> : null}
+    </>
   )
 }

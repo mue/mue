@@ -34,14 +34,14 @@ export default class OrderSettings extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <>
         <h2>Order</h2>
         <SortableContainer onSortEnd={this.onSortEnd}>
           {this.state.items.map((value, index) => (
             <SortableItem key={`item-${value}`} index={index} value={value} />
           ))}
         </SortableContainer>
-      </div>
+      </>
     );
   }
 }

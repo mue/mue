@@ -24,7 +24,7 @@ export default function AppearanceSettings() {
   ]
 
   return (
-    <div>
+    <>
       <h2>{appearance.title}</h2>
       <Radio name='theme' title='Theme' options={themeOptions} />
 
@@ -58,6 +58,6 @@ export default function AppearanceSettings() {
       <Checkbox name='animations' text={appearance.animations} betaFeature={true} />
       <Slider title={appearance.accessibility.zoom} name='zoom' default='100' min='50' max='200' display='%'/>
       <Slider title={appearance.accessibility.toast_duration} name='toastDisplayTime' default='2500' min='500' max='5000' display={' ' + appearance.accessibility.milliseconds} />
-    </div>
+    </>
   );
 }

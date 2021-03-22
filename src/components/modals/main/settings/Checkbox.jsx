@@ -31,13 +31,13 @@ export default class Checkbox extends React.PureComponent {
     }
 
     return (
-      <React.Fragment>
+      <>
         <FormControlLabel
           control={<CheckboxUI name={this.props.name} color='primary' checked={this.state.checked} onChange={() => this.handleChange()} />}
           label={text}
         />
         <br/>
-      </React.Fragment>
+      </>
     );
   }
 }

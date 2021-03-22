@@ -14,11 +14,10 @@ import Order from '../settings/sections/Order';
 
 import SettingsTabs from './backend/Tabs';
 
-export default function Settings () {
+export default function Settings() {
   const language = window.language.modals.main.settings.sections;
-
   return (
-    <React.Fragment>
+    <>
       <SettingsTabs>
         <div label={language.time.title}><Time/></div>
         <div label={language.quote.title}><Quote/></div>
@@ -37,6 +36,6 @@ export default function Settings () {
         <h1>IMPORTANT INFO</h1>
         <p>In order for changes to take place, the page must be refreshed.</p>
       </div>
-    </React.Fragment>
+    </>
   );
 }

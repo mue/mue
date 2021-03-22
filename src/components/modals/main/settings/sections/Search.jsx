@@ -58,7 +58,7 @@ export default class SearchSettings extends React.PureComponent {
     const { search } = language.sections;
 
     return (
-      <div className='section'>
+      <>
         <h2>{search.title}</h2>
         <Switch name='searchBar' text={language.enabled} />
         <Checkbox name='voiceSearch' text={search.voice_search} />
@@ -74,7 +74,7 @@ export default class SearchSettings extends React.PureComponent {
           <p style={{ 'marginTop': '0px' }}>{search.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{language.reset}</span></p>
           <input type='text' id='customSearchEngine'></input>
         </ul>
-      </div>
+      </>
     );
   }
 }

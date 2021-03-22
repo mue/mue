@@ -29,10 +29,10 @@ export default class Slider extends React.PureComponent {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <p>{this.props.title} ({this.state.value}{this.props.display}) <span className='modalLink' onClick={() => this.resetItem()}>{this.language.buttons.reset}</span></p>
         <input className='range' type='range' min={this.props.min} max={this.props.max} value={this.state.value} onChange={(e) => this.handleChange(e.target.value)} />
-      </React.Fragment>
+      </>
     );
   }
 }

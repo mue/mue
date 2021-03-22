@@ -20,24 +20,24 @@ export default class TimeSettings extends React.PureComponent {
     let timeSettings;
 
     const digitalSettings = (
-      <React.Fragment>
+      <>
         <h3>{time.digital.title}</h3>
         <Checkbox name='seconds' text={time.digital.seconds} />
         <Checkbox name='24hour' text={time.digital.twentyfourhour} />
         <Checkbox name='ampm' text={time.digital.ampm} />
         <Checkbox name='zero' text={time.digital.zero} />
-      </React.Fragment>
+      </>
     );
 
     const analogSettings = (
-      <React.Fragment>
+      <>
         <h3>{time.analogue.title}</h3>
         <Checkbox name='secondHand' text={time.analogue.second_hand} />
         <Checkbox name='minuteHand' text={time.analogue.minute_hand} />
         <Checkbox name='hourHand' text={time.analogue.hour_hand} />
         <Checkbox name='hourMarks' text={time.analogue.hour_marks} />
         <Checkbox name='minuteMarks' text={time.analogue.minute_marks} />
-      </React.Fragment>
+      </>
     );
 
     switch (this.state.timeType) {
@@ -49,14 +49,14 @@ export default class TimeSettings extends React.PureComponent {
     let dateSettings;
     
     const longSettings = (
-      <React.Fragment>
+      <>
         <Checkbox name='dayofweek' text={time.date.day_of_week} />
         <Checkbox name='datenth' text={time.date.datenth} />
-      </React.Fragment>
+      </>
     );
 
     const shortSettings = (
-      <React.Fragment>
+      <>
         <br/>
         <Dropdown label={time.date.short_format} name='dateFormat'>
           <option className='choices' value='DMY'>DMY</option>
@@ -70,7 +70,7 @@ export default class TimeSettings extends React.PureComponent {
           <option className='choices' value='gaps'>{time.date.short_separator.gaps}</option>
           <option className='choices' value='slashes'>{time.date.short_separator.slashes}</option>
        </Dropdown>
-      </React.Fragment>
+      </>
     );
 
     switch (this.state.dateType) {
@@ -79,7 +79,7 @@ export default class TimeSettings extends React.PureComponent {
     }
 
     return (
-      <div>
+      <>
         <h2>{time.title}</h2>
         <Switch name='time' text={this.language.enabled} />
         <Dropdown label='Type' name='timeType' onChange={(value) => this.setState({ timeType: value })}>
@@ -97,7 +97,7 @@ export default class TimeSettings extends React.PureComponent {
         </Dropdown>
         <br/>
         {dateSettings}
-      </div>
+      </>
     );
   }
 }

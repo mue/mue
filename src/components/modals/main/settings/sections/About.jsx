@@ -49,7 +49,7 @@ export default class About extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <>
         <h2>{this.language.title}</h2>
         <img draggable='false' style={{'height': '100px', 'width': 'auto'}} src='https://raw.githubusercontent.com/mue/branding/master/logo/logo_horizontal.png' alt='Mue logo'></img>
         <p>{this.language.copyright} 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
@@ -76,7 +76,7 @@ export default class About extends React.PureComponent {
             <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=256'} alt={item.handle}></img></a>
           </Tooltip>
         )}
-      </div>
+      </>
     );
   }
 }

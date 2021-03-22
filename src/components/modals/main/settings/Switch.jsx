@@ -31,14 +31,14 @@ export default class Switch extends React.PureComponent {
     }
 
     return (
-      <React.Fragment>
+      <>
         <FormControlLabel
           control={<SwitchUI name={this.props.name} color='primary' checked={this.state.checked} onChange={() => this.handleChange()} />}
           label={text}
           labelPlacement='start'
         />
         <br/>
-      </React.Fragment>
+      </>
     );
   }
 }
