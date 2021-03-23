@@ -213,8 +213,8 @@ export default class BackgroundSettings extends React.PureComponent {
 
         <h3>{background.source.title}</h3>
         <Dropdown label={background.source.api} name='backgroundAPI'>
-          <option className='choices' value='mue'>Mue</option>
-          <option className='choices' value='unsplash'>Unsplash</option>
+          <option value='mue'>Mue</option>
+          <option value='unsplash'>Unsplash</option>
         </Dropdown>
         {/* <Text title={background.source.custom_url} name='customBackground' /> */ }
         <ul>

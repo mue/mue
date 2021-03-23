@@ -9,7 +9,7 @@ export default class Dropdown extends React.PureComponent {
   }
 
   getLabel() {
-    return this.props.label ? <label htmlFor={this.props.name}>{this.props.label}</label> : null;
+    return this.props.label ? <label>{this.props.label}</label> : null;
   }
 
   onChange(value) {
@@ -28,11 +28,9 @@ export default class Dropdown extends React.PureComponent {
     return (
       <>
         {this.getLabel()}
-        <div className='dropdown' style={{ display: 'inline' }}>
-          <select name={this.props.name} value={this.state.value} onChange={(e) => this.onChange(e.target.value)}>
-            {this.props.children}
-          </select>
-        </div>
+        <select value={this.state.value} onChange={(e) => this.onChange(e.target.value)}>
+          {this.props.children}
+        </select>
       </>
     );
   }

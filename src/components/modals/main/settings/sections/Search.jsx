@@ -62,14 +62,12 @@ export default class SearchSettings extends React.PureComponent {
         <h2>{search.title}</h2>
         <Switch name='searchBar' text={language.enabled} />
         <Checkbox name='voiceSearch' text={search.voice_search} />
-        <ul>
-          <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
-            {searchEngines.map((engine) =>
-              <option key={engine.name} className='choices' value={engine.settingsName}>{engine.name}</option>
-            )}
-            <option className='choices' value='custom'>{search.custom.split(' ')[0]}</option>
-          </Dropdown>
-        </ul>
+        <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
+          {searchEngines.map((engine) =>
+            <option key={engine.name} value={engine.settingsName}>{engine.name}</option>
+          )}
+          <option value='custom'>{search.custom.split(' ')[0]}</option>
+        </Dropdown>
         <ul id='searchEngineInput' style={{ display: 'none' }}>
           <p style={{ 'marginTop': '0px' }}>{search.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{language.reset}</span></p>
           <input type='text' id='customSearchEngine'></input>

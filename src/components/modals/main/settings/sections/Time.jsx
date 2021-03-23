@@ -71,16 +71,16 @@ export default class TimeSettings extends React.PureComponent {
       <>
         <br/>
         <Dropdown label={time.date.short_format} name='dateFormat'>
-          <option className='choices' value='DMY'>DMY</option>
-          <option className='choices' value='MDY'>MDY</option>
-          <option className='choices' value='YMD'>YMD</option>
+          <option value='DMY'>DMY</option>
+          <option value='MDY'>MDY</option>
+          <option value='YMD'>YMD</option>
         </Dropdown>
         <br/><br/>
         <Dropdown label={time.date.short_separator.title} name='shortFormat'>
-          <option className='choices' value='dots'>{time.date.short_separator.dots}</option>
-          <option className='choices' value='dash'>{time.date.short_separator.dash}</option>
-          <option className='choices' value='gaps'>{time.date.short_separator.gaps}</option>
-          <option className='choices' value='slashes'>{time.date.short_separator.slashes}</option>
+          <option value='dots'>{time.date.short_separator.dots}</option>
+          <option value='dash'>{time.date.short_separator.dash}</option>
+          <option value='gaps'>{time.date.short_separator.gaps}</option>
+          <option value='slashes'>{time.date.short_separator.slashes}</option>
        </Dropdown>
       </>
     );
@@ -95,17 +95,17 @@ export default class TimeSettings extends React.PureComponent {
         <h2>{time.title}</h2>
         <Switch name='time' text={this.language.enabled} />
         <Dropdown label='Type' name='timeType' onChange={(value) => this.setState({ timeType: value })}>
-          <option className='choices' value='digital'>{time.digital.title}</option>
-          <option className='choices' value='analogue'>{time.analogue.title}</option>
-          <option className='choices' value='percentageComplete'>{time.percentage_complete}</option>
+          <option  value='digital'>{time.digital.title}</option>
+          <option  value='analogue'>{time.analogue.title}</option>
+          <option  value='percentageComplete'>{time.percentage_complete}</option>
         </Dropdown>
         {timeSettings}
 
         <h3>{time.date.title}</h3>
         <Switch name='date' text={this.language.enabled} />
         <Dropdown label='Type' name='dateType' onChange={(value) => this.setState({ dateType: value })}>
-          <option className='choices' value='long'>Long</option>
-          <option className='choices' value='short'>Short</option>
+          <option  value='long'>Long</option>
+          <option  value='short'>Short</option>
         </Dropdown>
         <br/>
         {dateSettings}

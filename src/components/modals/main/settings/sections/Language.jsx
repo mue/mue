@@ -14,8 +14,8 @@ export default function LanguageSettings() {
       <Radio name='language' options={languages} />
       <br/>
       <Dropdown label={language.quote} name='quotelanguage'>
-        <option className='choices' value='English'>English</option>
-        <option className='choices' value='French'>Français</option>
+        <option value='English'>English</option>
+        <option value='French'>Français</option>
       </Dropdown>
     </>
   );

@@ -39,20 +39,20 @@ export default function AppearanceSettings() {
       <Checkbox name='fontGoogle' text={appearance.font.google} />
       <Dropdown label='Font Weight' name='fontweight'>
         {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
-        <option className='choices' value='100'>Thin</option>
-        <option className='choices' value='200'>Extra-Light</option>
-        <option className='choices' value='300'>Light</option>
-        <option className='choices' value='400'>Normal</option>
-        <option className='choices' value='500'>Medium</option>
-        <option className='choices' value='600'>Semi-Bold</option>
-        <option className='choices' value='700'>Bold</option>
-        <option className='choices' value='800'>Extra-Bold</option>
+        <option value='100'>Thin</option>
+        <option value='200'>Extra-Light</option>
+        <option value='300'>Light</option>
+        <option value='400'>Normal</option>
+        <option value='500'>Medium</option>
+        <option value='600'>Semi-Bold</option>
+        <option value='700'>Bold</option>
+        <option value='800'>Extra-Bold</option>
       </Dropdown>
       <br/><br/>
       <Dropdown label='Font Style' name='fontstyle'>
-        <option className='choices' value='normal'>Normal</option>
-        <option className='choices' value='italic'>Italic</option>
-        <option className='choices' value='oblique'>Oblique</option>
+        <option value='normal'>Normal</option>
+        <option value='italic'>Italic</option>
+        <option value='oblique'>Oblique</option>
       </Dropdown>
 
       <h3>{appearance.accessibility.title}</h3>
