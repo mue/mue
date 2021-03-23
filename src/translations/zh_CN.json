@@ -1,0 +1,135 @@
+{
+    "greeting": {
+        "morning": "早上好",
+        "afternoon": "下午好",
+        "evening": "晚上好",
+        "christmas": "圣诞节快乐",
+        "newyear": "新年快乐",
+        "halloween": "万圣节快乐"
+    },
+    "credit": "图像作者：",
+    "search": "搜索",
+    "modals": {
+        "title": "选项",
+        "settings": "设置",
+        "addons": "我的插件",
+        "marketplace": "插件市场"
+    },
+    "settings": {
+        "time": {
+            "title": "时间",
+            "seconds": "显示秒",
+            "twentyfourhour": "使用 24 小时制",
+            "ampm": "12 小时制下显示 AM/PM",
+            "zero": "加零补足二位数字",
+            "analog": "使用模拟时钟"
+        },
+        "greeting": {
+            "title": "问候",
+            "events": "节日问候",
+            "default": "常规问候",
+            "name": "您在问候中的名字"
+        },
+        "quote": {
+            "title": "名言",
+            "copy": "复制按钮",
+            "tweet": "发推按钮",
+            "favourite": "收藏按钮"
+        },
+        "background": {
+            "title": "背景",
+            "API": "背景来源",
+            "blur": "调整模糊",
+            "brightness": "调整亮度",
+            "customURL": "自定义背景链接",
+            "custombackground": "自定义背景",
+            "customcolour": "自定义背景颜色",
+            "upload": "上传",
+            "addcolour": "添加颜色",
+            "favourite": "收藏",
+            "view": "查看",
+            "refresh": "刷新",
+            "disabled": "已禁用"
+        },
+        "searchbar": {
+            "title": "搜索栏",
+            "searchengine": "搜索引擎",
+            "custom": "自定义搜索链接"
+        },
+        "offline": "离线模式",
+        "dark": "暗黑主题",
+        "experimental": {
+            "title": "实验性功能",
+            "webp": "启用 WebP",
+            "animations": "动画",
+            "voicesearch": "语音搜索",
+            "nightmode": "夜间自动启用暗黑主题"
+        },
+        "language": "语言",
+        "apply": "应用",
+        "reset": "重置",
+        "import": "导入",
+        "export": "导出"
+    },
+    "update": {
+        "title": "更新日志",
+        "offline": {
+            "title": "离线模式已启用",
+            "description": "不能从官网获取更新日志"
+        },
+        "error": {
+            "title": "错误",
+            "description": "无法连接到服务器"
+        },
+        "loading": "载入中...",
+        "readblog": "点此在我们的博客中阅读",
+        "contactsupport": "点此联系我们"
+    },
+    "toasts": {
+        "quote": "名言已复制",
+        "reset": "重置成功",
+        "installed": "安装成功",
+        "removed": "卸载成功",
+        "error": "发生了错误",
+        "imported": "导入成功"
+    },
+    "marketplace": {
+        "photo_packs": "图片包",
+        "quote_packs": "名言包",
+        "preset_settings": "预设设定",
+        "themes": "主题",
+        "product": {
+            "overview": "总览",
+            "information": "信息",
+            "last_updated": "更新日期",
+            "version": "版本",
+            "author": "作者",
+            "notice": {
+                "title": "温馨提醒",
+                "description": "更改会在刷新页面后生效。"
+            },
+            "buttons": {
+                "addtomue": "添加至 Mue",
+                "remove": "卸载"
+            },
+            "quoteWarning": {
+                "title": "注意",
+                "description": "本名言包会连接到可能会跟踪您的外部服务器！"
+            }
+        },
+        "offline": {
+            "title": "您目前似乎离线",
+            "description": "请连接到互联网。"
+        },
+        "see_more": "查看更多"
+    },
+    "addons": {
+        "added": "已添加",
+        "empty": {
+            "title": "这里空空如也",
+            "description": "请访问插件市场来添加插件。",
+            "button": "带我去那儿"
+        },
+        "sideload": "上传插件"
+    }
+}
