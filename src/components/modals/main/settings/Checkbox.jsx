@@ -25,9 +25,9 @@ export default class Checkbox extends React.PureComponent {
     let text = this.props.text;
 
     if (this.props.newFeature) {
-      text = <span>{this.props.text} <span className='newFeature'> NEW</span></span>;
+      text = <>{this.props.text} <span className='newFeature'> NEW</span></>;
     } else if (this.props.betaFeature) {
-      text = <span>{this.props.text} <span className='newFeature'> BETA</span></span>;
+      text = <>{this.props.text} <span className='newFeature'> BETA</span></>;
     }
 
     return (

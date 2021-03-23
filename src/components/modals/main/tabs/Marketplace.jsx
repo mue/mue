@@ -1,19 +1,14 @@
 import React from 'react';
 
-import MarketplaceBackend from '../marketplace/sections/Marketplace';
-import MarketplaceTabs from './backend/Tabs';
+import MarketplaceTab from '../marketplace/sections/Marketplace';
+
+import Tabs from './backend/Tabs';
 
 export default function Marketplace() {
   return (
-    <>
-      <MarketplaceTabs>
-        <div label='Photo Packs'>
-          <MarketplaceBackend type='photo_packs'/>
-        </div>
-        <div label='Quote Packs'>
-          <MarketplaceBackend type='quote_packs'/>
-        </div>
-      </MarketplaceTabs>
-    </>
+    <Tabs>
+      <div label='Photo Packs'><MarketplaceTab type='photo_packs'/></div>
+      <div label='Quote Packs'><MarketplaceTab type='quote_packs'/></div>
+    </Tabs>
   );
 }

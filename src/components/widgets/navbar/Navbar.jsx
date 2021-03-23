@@ -10,7 +10,7 @@ import './scss/index.scss';
 
 // the user probably won't use the notes feature every time so we lazy load
 const Notes = React.lazy(() => import('./Notes'));
-const renderLoader = () => <div></div>;
+const renderLoader = () => <></>;
 
 export default function Navbar(props) {
   const language = window.language;

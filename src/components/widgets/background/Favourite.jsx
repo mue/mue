@@ -7,7 +7,7 @@ export default class Favourite extends React.PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {
-      favourited: <StarIcon2 onClick={() => this.favourite()} />
+      favourited: (localStorage.getItem('favourite')) ? <StarIcon onClick={() => this.favourite()} /> : <StarIcon2 onClick={() => this.favourite()} />
     };
   }
 
@@ -24,14 +24,6 @@ export default class Favourite extends React.PureComponent {
 
       localStorage.setItem('favourite', JSON.stringify({ url: url, credit: credit, location: location }));
 
-      this.setState({
-        favourited: <StarIcon onClick={() => this.favourite()} />
-      });
-    }
-  }
-
-  componentDidMount() {
-    if (localStorage.getItem('favourite')) {
       this.setState({
         favourited: <StarIcon onClick={() => this.favourite()} />
       });

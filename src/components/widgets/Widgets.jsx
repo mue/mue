@@ -74,7 +74,7 @@ export default class Widgets extends React.PureComponent {
 
     if (order) {
       order.forEach(element => {
-        elements.push(this.widgets[element]);
+        elements.push(<React.Fragment key={element}>{this.widgets[element]}</React.Fragment>);
       });
     } else {
       elements = ['greeting', 'time', 'quote', 'date'];

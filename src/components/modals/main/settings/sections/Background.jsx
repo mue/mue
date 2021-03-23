@@ -176,7 +176,7 @@ export default class BackgroundSettings extends React.PureComponent {
             onChange={(color) => this.onColorPickerChange(color, 'change')}
             onEndChange={(color) => this.onColorPickerChange(color, 'end')}
             gradient={this.GradientPickerInitalState}
-            isGradient />
+            isGradient/>
         );
       } else {
         gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
@@ -190,12 +190,12 @@ export default class BackgroundSettings extends React.PureComponent {
       }
 
       colourSettings = (
-        <div>
+        <>
           {gradientInputs}
           {this.state.gradientSettings.gradient[0].colour !== background.source.disabled &&
            !gradientHasMoreThanOneColour ? (<button type='button' className='add' onClick={this.addColour}>{background.source.add_colour}</button>) : null
           }
-        </div>
+        </>
       );
     }
 

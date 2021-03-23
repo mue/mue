@@ -12,13 +12,13 @@ import Advanced from '../settings/sections/Advanced';
 import Changelog from '../settings/sections/Changelog';
 import Order from '../settings/sections/Order';
 
-import SettingsTabs from './backend/Tabs';
+import Tabs from './backend/Tabs';
 
 export default function Settings() {
   const language = window.language.modals.main.settings.sections;
   return (
     <>
-      <SettingsTabs>
+      <Tabs>
         <div label={language.time.title}><Time/></div>
         <div label={language.quote.title}><Quote/></div>
         <div label={language.greeting.title}><Greeting/></div>
@@ -31,7 +31,7 @@ export default function Settings() {
         <div label='Experimental'></div>
         <div label={language.changelog}><Changelog/></div>
         <div label={language.about.title}><About/></div>
-      </SettingsTabs>
+      </Tabs>
       <div className='reminder-info'>
         <h1>IMPORTANT INFO</h1>
         <p>In order for changes to take place, the page must be refreshed.</p>

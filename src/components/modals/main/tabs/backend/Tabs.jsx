@@ -32,7 +32,7 @@ export default class Tabs extends React.PureComponent {
     return (
       <span className='tabs'>
         <ul className={className}>
-         {optionsText}
+          {optionsText}
           {this.props.children.map((tab) => {
             return (
               <Tab
@@ -47,10 +47,10 @@ export default class Tabs extends React.PureComponent {
         </ul>
         <div className={tabClass}>
           <ErrorBoundary>
-          {this.props.children.map((child) => {
-            if (child.props.label !== this.state.currentTab) return undefined;
-            return child.props.children;
-          })}
+            {this.props.children.map((child) => {
+              if (child.props.label !== this.state.currentTab) return undefined;
+              return child.props.children;
+            })}
           </ErrorBoundary>
         </div>
       </span>

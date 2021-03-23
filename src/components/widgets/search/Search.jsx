@@ -70,13 +70,11 @@ export default class Search extends React.PureComponent {
 
   render() {
     return (
-      <>
-        <form action={this.state.url} id='searchBar'>
-          {this.state.microphone}
-          <SearchIcon onClick={() => this.searchButton()} id='searchButton'/>
-          <input type='text' placeholder={this.language} name={this.state.query} id='searchtext'/>
-        </form>
-      </>
+      <form action={this.state.url} className='searchBar'>
+        {this.state.microphone}
+        <SearchIcon onClick={() => this.searchButton()} id='searchButton'/>
+        <input type='text' placeholder={this.language} name={this.state.query} id='searchtext'/>
+      </form>
     );
   }
 }

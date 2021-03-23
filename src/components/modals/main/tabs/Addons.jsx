@@ -6,15 +6,9 @@ import AddonsTabs from './backend/Tabs';
 
 export default function Addons() {
   return (
-    <>
-      <AddonsTabs>
-        <div label='Added'>
-          <Added/>
-        </div>
-        <div label=''>
-
-        </div>
-      </AddonsTabs>
-    </>
+    <AddonsTabs>
+      <div label='Added'><Added/></div>
+      <div label=''></div>
+    </AddonsTabs>
   );
 }

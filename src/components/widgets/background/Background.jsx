@@ -199,7 +199,8 @@ export default class Background extends React.PureComponent {
     return (
       <React.Fragment>
         <div id='backgroundImage'/>
-        <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
+        {(this.state.photoInfo.credit !== '') ? <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
+        : null}
       </React.Fragment>
     );
   }
