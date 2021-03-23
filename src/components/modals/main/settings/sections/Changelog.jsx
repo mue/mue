@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default class Changelog extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       title: this.props.language.title,
       date: null,

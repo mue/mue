@@ -6,14 +6,14 @@ import SwitchUI from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class Switch extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
     this.state = {
       checked: (localStorage.getItem(this.props.name) === 'true')
     };
   }
 
-  handleChange() {
+  handleChange = () => {
     SettingsFunctions.setItem(this.props.name);
 
     this.setState({
@@ -33,7 +33,7 @@ export default class Switch extends React.PureComponent {
     return (
       <>
         <FormControlLabel
-          control={<SwitchUI name={this.props.name} color='primary' checked={this.state.checked} onChange={() => this.handleChange()} />}
+          control={<SwitchUI name={this.props.name} color='primary' checked={this.state.checked} onChange={this.handleChange} />}
           label={text}
           labelPlacement='start'
         />

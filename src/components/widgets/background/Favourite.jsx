@@ -4,8 +4,8 @@ import StarIcon from '@material-ui/icons/Star';
 import StarIcon2 from '@material-ui/icons/StarBorder';
 
 export default class Favourite extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       favourited: (localStorage.getItem('favourite')) ? <StarIcon onClick={() => this.favourite()} /> : <StarIcon2 onClick={() => this.favourite()} />
     };

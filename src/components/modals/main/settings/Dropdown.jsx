@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default class Dropdown extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
     this.state = {
       value: localStorage.getItem(this.props.name) || ''
     };
@@ -12,7 +12,9 @@ export default class Dropdown extends React.PureComponent {
     return this.props.label ? <label>{this.props.label}</label> : null;
   }
 
-  onChange(value) {
+  onChange = (e) => {
+    const { value } = e.target;
+
     this.setState({
       value: value
     });
@@ -28,7 +30,7 @@ export default class Dropdown extends React.PureComponent {
     return (
       <>
         {this.getLabel()}
-        <select value={this.state.value} onChange={(e) => this.onChange(e.target.value)}>
+        <select value={this.state.value} onChange={this.onChange}>
           {this.props.children}
         </select>
       </>

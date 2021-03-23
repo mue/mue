@@ -19,8 +19,6 @@ import Experimental from '@material-ui/icons/BugReport';
 import Order from '@material-ui/icons/List';
 
 // Store
-import Colors from '@material-ui/icons/ColorLens';
-import Plugins from '@material-ui/icons/Widgets';
 import Added from '@material-ui/icons/AddCircle';
 
 export default function Tab(props) {
@@ -58,10 +56,8 @@ export default function Tab(props) {
     case 'About': icon = <About/>; break;
 
     // Store
-    case 'Themes': icon = <Colors/>; break;
     case 'Photo Packs': icon = <Background/>; break;
     case 'Quote Packs': icon = <Quote/>; break;
-    case 'Plugins': icon = <Plugins/>; divider = true; break;
     case 'Added': icon = <Added/>; break;
 
     default: break;

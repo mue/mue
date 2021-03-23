@@ -15,6 +15,7 @@ import merge from '@material-ui/utils/deepmerge';
 const languagecode = localStorage.getItem('language') || 'en-GB';
 // we set things to window. so they're global and we avoid passing the translation strings as props to each component
 window.languagecode = languagecode;
+// these are merged so if a string is untranslated it doesn't break mue
 window.language = merge(require('./translations/en-GB.json'), require(`./translations/${languagecode}.json`));
 
 // window.constants

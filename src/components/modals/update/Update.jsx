@@ -3,8 +3,8 @@ import React from 'react';
 import './update.scss';
 
 export default class Update extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       title: this.props.language.title,
       date: null,

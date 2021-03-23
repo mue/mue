@@ -9,8 +9,8 @@ import Favourite from './background/Favourite';
 import Date from './time/Date';
 
 export default class Widgets extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     // widgets we can re-order
     this.widgets = {
       time: this.enabled('time') ? <Clock/> : null,

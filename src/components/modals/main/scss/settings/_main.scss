@@ -28,25 +28,13 @@ input {
 
 .DayPickerInput, .input-container {
   input {
-  width: 200px;
-  color: var(--modal-text) ! important;
-  background: var(--sidebar);
-  border: none;
-  padding: 10px 10px;
-  border-radius: 5px;
+    width: 200px;
+    color: var(--modal-text) ! important;
+    background: var(--sidebar);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
   }
-}
-
-h4,
-.switch {
-  display: inline;
-  font-size: 1.4em;
-  font-weight: 100;
-}
-
-h4,
-#engines {
-  display: inline;
 }
 
 h4 {
@@ -60,10 +48,6 @@ ul {
   >label {
     vertical-align: middle;
   }
-}
-
-li {
-  margin-top: 1px;
 }
 
 .range {
@@ -134,16 +118,6 @@ input[type=color]::-moz-color-swatch {
     border: none;
     border-radius: 100%;
   }
-}
-
-.customBackgroundHex {
-  font-size: 1.2em;
-  padding-left: 7px;
-  vertical-align: middle;
-}
-
-.nodropdown {
-  cursor: default;
 }
 
 .newFeature {

@@ -6,8 +6,8 @@ import Switch from '../Switch';
 import Radio from '../Radio';
 
 export default class TimeSettings extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       timeType: localStorage.getItem('timeType') || 'digital',
       dateType: localStorage.getItem('dateType') || 'long'

@@ -7,8 +7,8 @@ import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Pin from './Pin';
 
 export default class Notes extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       notes: localStorage.getItem('notes') || ''
     };

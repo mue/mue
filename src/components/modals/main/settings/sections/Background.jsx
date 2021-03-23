@@ -18,8 +18,8 @@ export default class BackgroundSettings extends React.PureComponent {
   DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': window.language.modals.main.settings.sections.background.source.disabled, 'stop': 0 }], 'type': 'linear' };
   GradientPickerInitalState = undefined;
 
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       customBackground: localStorage.getItem('customBackground') || '',
       gradientSettings: this.DefaultGradientSettings

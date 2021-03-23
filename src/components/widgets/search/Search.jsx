@@ -8,8 +8,8 @@ import './search.scss';
 const searchEngines = require('./search_engines.json');
 
 export default class Search extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       url: '',
       query: '',
@@ -18,7 +18,7 @@ export default class Search extends React.PureComponent {
     this.language = window.language.widgets.search;
   }
 
-  startSpeechRecognition() {
+  startSpeechRecognition = () => {
     const voiceSearch = new window.webkitSpeechRecognition();
     voiceSearch.start();
 
@@ -35,7 +35,7 @@ export default class Search extends React.PureComponent {
     }
   }
 
-  searchButton() {
+  searchButton = () => {
     const value = document.getElementById('searchtext').value || 'mue fast';
     window.location.href = this.state.url + `?${this.state.query}=` + value;
   }
@@ -58,7 +58,7 @@ export default class Search extends React.PureComponent {
     }
 
     if (localStorage.getItem('voiceSearch') === 'true') {
-      microphone = <MicIcon className='micIcon' onClick={() => this.startSpeechRecognition()}/>;
+      microphone = <MicIcon className='micIcon' onClick={this.startSpeechRecognition}/>;
     }
 
     this.setState({
@@ -72,7 +72,7 @@ export default class Search extends React.PureComponent {
     return (
       <form action={this.state.url} className='searchBar'>
         {this.state.microphone}
-        <SearchIcon onClick={() => this.searchButton()}/>
+        <SearchIcon onClick={this.searchButton}/>
         <input type='text' placeholder={this.language} name={this.state.query} id='searchtext'/>
       </form>
     );

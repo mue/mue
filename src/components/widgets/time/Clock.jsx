@@ -5,8 +5,8 @@ import Analog from 'react-clock';
 import './clock.scss';
 
 export default class Clock extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
 
     this.timer = undefined;
     this.state = {

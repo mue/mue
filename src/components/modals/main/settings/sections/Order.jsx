@@ -15,8 +15,8 @@ const SortableContainer = sortableContainer(({children}) => {
 });
 
 export default class OrderSettings extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       items: JSON.parse(localStorage.getItem('order'))
     };

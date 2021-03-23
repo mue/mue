@@ -5,8 +5,8 @@ import dtf from '@eartharoid/dtf';
 import './greeting.scss';
 
 export default class Greeting extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       greeting: ''
     };

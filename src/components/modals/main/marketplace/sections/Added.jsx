@@ -10,8 +10,8 @@ import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 import { toast } from 'react-toastify';
 
 export default class Added extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       installed: JSON.parse(localStorage.getItem('installed')),
       current_data: {

@@ -5,8 +5,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 const other_contributors = require('../../../../../modules/other_contributors.json');
 
 export default class About extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       contributors: [],
       sponsors: [],

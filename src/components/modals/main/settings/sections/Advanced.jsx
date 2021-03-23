@@ -11,8 +11,8 @@ import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 export default class AdvancedSettings extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       resetModal: false
     };

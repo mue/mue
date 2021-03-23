@@ -3,8 +3,8 @@ import React from 'react';
 import dtf from '@eartharoid/dtf';
 
 export default class DateWidget extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       date: ''
     };

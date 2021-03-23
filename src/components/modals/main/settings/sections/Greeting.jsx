@@ -8,15 +8,15 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
 export default class GreetingSettings extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       birthday: new Date(localStorage.getItem('birthday')) || new Date()
     };
     this.language = window.language.modals.main.settings;
   }
 
-  changeDate(data) {
+  changeDate = (data) => {
     localStorage.setItem('birthday', data);
 
     this.setState({
@@ -30,18 +30,16 @@ export default class GreetingSettings extends React.PureComponent {
     return (
       <>
         <h2>{greeting.title}</h2>
-        <Switch name='greeting' text={this.language.enabled} />
-        <Checkbox name='events' text={greeting.events} />
-        <Checkbox name='defaultGreetingMessage' text={greeting.default} />
+        <Switch name='greeting' text={this.language.enabled}/>
+        <Checkbox name='events' text={greeting.events}/>
+        <Checkbox name='defaultGreetingMessage' text={greeting.default}/>
         <Text title={greeting.name} name='greetingName'/>
 
         <h3>{greeting.birthday}</h3>
-        <Switch name='birthdayenabled' text={this.language.enabled} />
+        <Switch name='birthdayenabled' text={this.language.enabled}/>
         <Checkbox name='birthdayage' text='Birthday Age'/>
-        <ul>
-          <p>{greeting.birthday_date}</p>
-          <DayPickerInput onDayChange={(data) => this.changeDate(data)} value={this.state.birthday} />
-        </ul>
+        <p>{greeting.birthday_date}</p>
+        <DayPickerInput onDayChange={this.changeDate} value={this.state.birthday}/>
       </>
     );
   }

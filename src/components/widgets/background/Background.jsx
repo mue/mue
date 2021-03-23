@@ -5,8 +5,8 @@ import PhotoInformation from './PhotoInformation';
 import './scss/index.scss';
 
 export default class Background extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       style: '',
       url: '',

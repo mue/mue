@@ -11,8 +11,8 @@ import './quote.scss';
 
 
 export default class Quote extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       quote: '',
       author: '',

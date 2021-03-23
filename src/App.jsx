@@ -8,13 +8,6 @@ import SettingsFunctions from './modules/helpers/settings';
 import { ToastContainer } from 'react-toastify';
 
 export default class App extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      toastDisplayTime: localStorage.getItem('toastDisplayTime') || 2500
-    };
-  }
-
   componentDidMount() {
     if (!localStorage.getItem('firstRun')) {
       SettingsFunctions.setDefaultSettings();
@@ -27,7 +20,7 @@ export default class App extends React.PureComponent {
     return (
       <>
         <Background/>
-        <ToastContainer position='bottom-right' autoClose={this.state.toastDisplayTime} newestOnTop={true} closeOnClick pauseOnFocusLoss/>
+        <ToastContainer position='bottom-right' autoClose={localStorage.getItem('toastDisplayTime') || 2500} newestOnTop={true} closeOnClick pauseOnFocusLoss/>
         <div id='center'>
           <Widgets/>
           <Modals/>

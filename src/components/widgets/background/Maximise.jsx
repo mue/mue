@@ -3,8 +3,8 @@ import React from 'react';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 
 export default class View extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
     this.state = {
       hidden: false
     };

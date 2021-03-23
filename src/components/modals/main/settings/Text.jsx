@@ -3,15 +3,17 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 export default class Text extends React.PureComponent {
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
     this.state = {
       value: localStorage.getItem(this.props.name) || ''
     };
     this.language = window.language.modals.main.settings;
   }
 
-  handleChange(value) {
+  handleChange(e) {
+    const { value } = e.target;
+  
     // Alex wanted font to work with montserrat and Montserrat, so I made it work
     if (this.props.upperCaseFirst === true) {
       value = value.charAt(0).toUpperCase() + value.slice(1);
@@ -23,7 +25,7 @@ export default class Text extends React.PureComponent {
     });
   }
 
-  resetItem() {
+  resetItem = () => {
     localStorage.setItem(this.props.name, this.props.default || '');
     this.setState({
       value: this.props.default || ''
@@ -35,10 +37,10 @@ export default class Text extends React.PureComponent {
   render() {
     return (
       <>
-        <p>{this.props.title} <span className='modalLink' onClick={() => this.resetItem()}>{this.language.buttons.reset}</span></p>
+        <p>{this.props.title} <span className='modalLink' onClick={this.resetItem}>{this.language.buttons.reset}</span></p>
         {(this.props.textarea === true) ? 
-           <textarea className='settingsTextarea' value={this.state.value} onChange={(e) => this.handleChange(e.target.value)}/>
-          :<input type='text' value={this.state.value} onChange={(e) => this.handleChange(e.target.value)}/>
+          <textarea className='settingsTextarea' value={this.state.value} onChange={this.handleChange}/>
+          :<input type='text' value={this.state.value} onChange={this.handleChange}/>
         }
       </>
     );
