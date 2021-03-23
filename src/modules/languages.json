@@ -1,11 +1,11 @@
 [
   {
     "name": "English (UK)",
-    "value": "en-GB"
+    "value": "en_GB"
   },
   {
     "name": "English (US)",
-    "value": "en-US"
+    "value": "en_US"
   },
   {
     "name": "Español",
@@ -26,5 +26,9 @@
   {
     "name": "Pусский",
     "value": "ru"
+  },
+  {
+    "name": "Chinese (Simplified)",
+    "value": "zh_CN"
   }
 ]

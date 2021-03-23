@@ -149,6 +149,8 @@ Please note that we have dropped support for Opera as of Mue 5.0
 
 [Vicente](https://github.com/Vicente015) - Spanish
 
+[Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified)
+
 ### Resources
 [Pexels](https://pexels.com) - Stock photos used for offline mode
 
