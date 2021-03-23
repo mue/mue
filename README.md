@@ -145,6 +145,8 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 
 [Vicente](https://github.com/Vicente015) - Spanish
 
+[Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified)
+
 ### Resources
 [Pexels](https://pexels.com) - Stock photos used for offline mode
 
