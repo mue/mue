@@ -30,9 +30,7 @@ module.exports = {
     },
     {
       test: /\.(woff|woff2|svg)$/,
-      use: {
-        loader: 'file-loader'
-      }
+      type: 'asset/resource'
     },
     {
       test: /\.js$/,
@@ -45,7 +43,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    clean: true
   },
   devServer: {
     contentBase: path.resolve(__dirname, './build'),
