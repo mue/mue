@@ -9,7 +9,7 @@ import Text from '../Text';
 export default function AppearanceSettings() {
   const { appearance } = window.language.modals.main.settings.sections;
 
-  let themeOptions = [
+  const themeOptions = [
     {
       'name': 'Auto',
       'value': 'auto'
@@ -17,11 +17,12 @@ export default function AppearanceSettings() {
     {
       'name': 'Light',
       'value': 'light'
-    }, {
+    }, 
+    {
       'name': 'Dark',
       'value': 'dark'
     }
-  ]
+  ];
 
   return (
     <>

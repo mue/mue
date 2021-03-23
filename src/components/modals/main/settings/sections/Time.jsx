@@ -3,6 +3,7 @@ import React from 'react';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Switch from '../Switch';
+import Radio from '../Radio';
 
 export default class TimeSettings extends React.PureComponent {
   constructor(...args) {
@@ -19,12 +20,23 @@ export default class TimeSettings extends React.PureComponent {
 
     let timeSettings;
 
+    const digitalOptions = [
+      {
+        'name': '24 hour',
+        'value': 'twentyfourhour'
+      },
+      {
+        'name': '12 hour',
+        'value': 'twelvehour'
+      }
+    ];
+
     const digitalSettings = (
       <>
         <h3>{time.digital.title}</h3>
+        <Radio title='Format' name='timeformat' options={digitalOptions} />
+        <br/>
         <Checkbox name='seconds' text={time.digital.seconds} />
-        <Checkbox name='24hour' text={time.digital.twentyfourhour} />
-        <Checkbox name='ampm' text={time.digital.ampm} />
         <Checkbox name='zero' text={time.digital.zero} />
       </>
     );

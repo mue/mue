@@ -18,8 +18,9 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 * [Installation](#installation)
 	* [Chrome](#chrome)
 	* [Firefox](#firefox)
-	* [Chromium](#edge-chromium)
-	* [Opera/Other](#operaother)
+	* [Edge Chromium](#edge-chromium)
+  * [Naver](#naver)
+	* [Other](#other)
 * [Contributing](#development)
 	* [Requirements](#requirements)
 	* [Starting](#starting)
@@ -60,7 +61,12 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 ### Edge (Chromium)
 ~~[Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)~~ Currently outdated, please use the Chrome Web Store version
 
-### Opera/Other
+### Naver
+[Whale Store](https://store.whale.naver.com/detail/ecllekeilcmicbfkkiknfdddbogibbnc)
+
+### Other
+Please note that we have dropped support for Opera as of Mue 5.0
+
 [GitHub Releases](https://github.com/mue/mue/releases)
 
 ### Development

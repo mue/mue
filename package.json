@@ -48,8 +48,7 @@
     "start": "webpack serve",
     "build": "webpack --mode=production",
     "chrome": "cp manifest/chrome.json build/manifest.json",
-    "firefox": "cp manifest/firefox.json build/manifest.json",
-    "opera": "cp manifest/opera.json build/manifest.json && cp manifest/background-opera.js build/"
+    "firefox": "cp manifest/firefox.json build/manifest.json"
   },
   "eslintConfig": {
     "extends": "react-app"

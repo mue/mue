@@ -10,6 +10,7 @@ export default class Greeting extends React.PureComponent {
     this.state = {
       greeting: ''
     };
+    this.timer = undefined;
     this.language = window.language.widgets.greeting;
   }
 
@@ -42,61 +43,65 @@ export default class Greeting extends React.PureComponent {
     return Math.abs(birthday.getUTCFullYear() - 1970);
   }
 
-  getGreeting() {
-    const now = new Date();
-    const hour = now.getHours();
+  getGreeting(time = (60000 - Date.now() % 60000)) {
+    this.timer = setTimeout(() => {
+      const now = new Date();
+      const hour = now.getHours();
 
-    // Set the default greeting string to "Good evening"
-    let message = this.language.evening;
-    // If it's before 12am, set the greeting string to "Good morning"
-    if (hour < 12) {
-      message = this.language.morning;
-    // If it's before 6pm, set the greeting string to "Good afternoon"
-    } else if (hour < 18) {
-      message = this.language.afternoon;
-    }
-
-    // Events
-    message = this.doEvents(now, message);
-
-    const custom = localStorage.getItem('defaultGreetingMessage');
-    if (custom === 'false') {
-      message = '';
-    }
-
-    // Name
-    let name = '';
-    const data = localStorage.getItem('greetingName');
-
-    if (typeof data === 'string') {
-      if (data.replace(/\s/g, '').length > 0) {
-        name = `, ${data.trim()}`;
+      // Set the default greeting string to "Good evening"
+      let message = this.language.evening;
+      // If it's before 12am, set the greeting string to "Good morning"
+      if (hour < 12) {
+        message = this.language.morning;
+      // If it's before 6pm, set the greeting string to "Good afternoon"
+      } else if (hour < 18) {
+        message = this.language.afternoon;
       }
-    }
 
-    if (custom === 'false') {
-      name = name.replace(',', '');
-    }
+      // Events
+      message = this.doEvents(now, message);
 
-    // Birthday
-    const birth = new Date(localStorage.getItem('birthday'));
-    if (localStorage.getItem('birthdayenabled') === 'true' && birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
-      if (localStorage.getItem('birthdayage')) {
-        const text = this.language.birthday.split(' ');
-        message = `${text[0]} ${dtf.nth(this.calculateAge(birth))} ${text[1]}`;
-      } else {
-        message = this.language.birthday;
+      const custom = localStorage.getItem('defaultGreetingMessage');
+      if (custom === 'false') {
+        message = '';
       }
-    }
 
-    // Set the state to the greeting string
-    this.setState({
-      greeting: `${message}${name}`
-    });
+      // Name
+      let name = '';
+      const data = localStorage.getItem('greetingName');
+
+      if (typeof data === 'string') {
+        if (data.replace(/\s/g, '').length > 0) {
+          name = `, ${data.trim()}`;
+        }
+      }
+
+      if (custom === 'false') {
+        name = name.replace(',', '');
+      }
+
+      // Birthday
+      const birth = new Date(localStorage.getItem('birthday'));
+      if (localStorage.getItem('birthdayenabled') === 'true' && birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
+        if (localStorage.getItem('birthdayage')) {
+          const text = this.language.birthday.split(' ');
+          message = `${text[0]} ${dtf.nth(this.calculateAge(birth))} ${text[1]}`;
+        } else {
+          message = this.language.birthday;
+        }
+      }
+
+      // Set the state to the greeting string
+      this.setState({
+        greeting: `${message}${name}`
+      });
+  
+      this.getGreeting();
+    }, time);
   }
 
   componentDidMount() {
-    this.getGreeting();
+    this.getGreeting(0);
   }
 
   render() {

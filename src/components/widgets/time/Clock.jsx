@@ -21,69 +21,63 @@ export default class Clock extends React.PureComponent {
 
       const timeType = localStorage.getItem('timeType');
 
-      // Percentage
-      if (timeType === 'percentageComplete') {
-        return this.setState({
-          time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'
-        });
-      }
-
-      // Analog clock
-      if (timeType === 'analogue') {
-        // load analog clock css
-        require('react-clock/dist/Clock.css');
-
-        this.setState({
-          time: now
-        });
-      } else {
-        // Default clock
-        let time, sec = '';
-        const zero = localStorage.getItem('zero');
-
-        if (localStorage.getItem('seconds') === 'true') {
-          if (zero === 'false') {
-            sec = ':' + now.getSeconds();
-          } else {
-            sec = `:${('00' + now.getSeconds()).slice(-2)}`;
-          }
-        }
-
-        if (localStorage.getItem('24hour') === 'true') {
-          if (zero === 'false') {
-            time = `${now.getHours()}:${now.getMinutes()}${sec}`;
-          } else {
-            time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
-          }
+      switch (timeType) {
+        case 'percentageComplete':
+          this.setState({
+            time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'
+          });
+          break; 
+        case 'analogue':
+          // load analog clock css
+          require('react-clock/dist/Clock.css');
 
           this.setState({
-            time: time
+            time: now
           });
-        } else {
-          // 12 hour support
-          let hours = now.getHours();
+          break;
+        default:
+          // Default clock
+          let time, sec = '';
+          const zero = localStorage.getItem('zero');
 
-          if (hours > 12) {
-            hours -= 12;
+          if (localStorage.getItem('seconds') === 'true') {
+            if (zero === 'false') {
+              sec = ':' + now.getSeconds();
+            } else {
+              sec = `:${('00' + now.getSeconds()).slice(-2)}`;
+            }
           }
 
-          // Toggle AM/PM
-          let ampm = now.getHours() > 11 ? 'PM' : 'AM';
-          if (localStorage.getItem('ampm') === 'false') {
-            ampm = '';
-          }
+          if (localStorage.getItem('timeformat') === 'twentyfourhour') {
+            if (zero === 'false') {
+              time = `${now.getHours()}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+            } else {
+              time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+            }
 
-          if (zero === 'false') {
-            time = `${hours}:${now.getMinutes()}${sec}`;
+            this.setState({
+              time: time
+            });
           } else {
-            time = `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
-          }
+            // 12 hour
+            let hours = now.getHours();
 
-          this.setState({
-            time: time,
-            ampm: ampm
-          });
-        }
+            if (hours > 12) {
+              hours -= 12;
+            }
+
+            if (zero === 'false') {
+              time = `${hours}:${now.getMinutes()}${sec}`;
+            } else {
+              time = `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+            }
+
+            this.setState({
+              time: time,
+              ampm: now.getHours() > 11 ? 'PM' : 'AM'
+            });
+          }
+          break;
       }
 
       this.startTime();
