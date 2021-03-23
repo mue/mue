@@ -95,7 +95,6 @@
   &:hover {
     background: #2d3436;
     color: map-get($theme-colours, 'main');
-    ;
   }
 }
 
@@ -117,7 +116,6 @@
   &:hover {
     background: #ff4757;
     color: map-get($theme-colours, 'main');
-    ;
   }
 }
 
@@ -159,7 +157,7 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--modal-text) !important;
 }
 
-.MuiIconButton-label > svg.MuiSvgIcon-root {
+.MuiIconButton-label>svg.MuiSvgIcon-root {
   color: var(--modal-text) !important;
 }
 
@@ -174,13 +172,16 @@ legend {
   border-radius: 15px;
   margin-bottom: 10px;
   font-size: 1.5rem;
+
   svg {
     font-size: 1.3rem;
   }
+
   &:hover {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     transition: 0.3s;
   }
+
   z-index: 999 !important;
 }
 

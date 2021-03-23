@@ -1,0 +1,26 @@
+.DayPickerInput,
+.input-container {
+  input {
+    width: 200px;
+    color: var(--modal-text) !important;
+    background: var(--sidebar);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+  }
+}
+
+.DayPicker-Day--selected {
+  background-color: #ff4757 !important;
+  color: white;
+}
+
+.DayPicker-Months,
+.DayPickerInput-Overlay {
+  background-color: var(--background) !important;
+  color: var(--modal-text) !important;
+}
+
+.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  color: black !important;
+}

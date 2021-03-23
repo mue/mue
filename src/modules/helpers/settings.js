@@ -53,13 +53,10 @@ export default class SettingsFunctions {
     const languageCodes = languages.map(({ code }) => code);
     const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
 
-    if (languageCodes.includes(browserLanguage)) {
+    if (languageCodes.includes(browserLanguage.replace('-', '_'))) {
       localStorage.setItem('language', browserLanguage);
-      if (browserLanguage !== 'en-GB' || browserLanguage !== 'en-US') {
-        document.documentElement.lang = browserLanguage;
-      }
     } else {
-      localStorage.setItem('language', 'en-GB');
+      localStorage.setItem('language', 'en_GB');
     }
 
     if (reset) {
