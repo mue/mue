@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-color-gradient-picker/dist/index.css';
 
 export default class ColourSettings extends React.PureComponent {
-  DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': window.language.modals.main.settings.sections.background.source.disabled, 'stop': 0 }], 'type': 'linear' };
+  DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': '#ffb032', 'stop': 0 }], 'type': 'linear' };
   GradientPickerInitalState = undefined;
   
   constructor() {
@@ -76,9 +76,7 @@ export default class ColourSettings extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    if (document.getElementById('customBackgroundHex').value !== this.language.sections.background.source.disabled) {
-      localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
-    }
+    localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
   }
 
   onGradientChange = (event, index) => {
@@ -161,10 +159,10 @@ export default class ColourSettings extends React.PureComponent {
       } else {
         gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
           return (
-            <div key={i}>
+            <React.Fragment key={i}>
               <input id={'colour_' + i} type='color' name='colour' className='colour' onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
               <label htmlFor={'colour_' + i} className='customBackgroundHex'>{g.colour}</label>
-            </div>
+            </React.Fragment>
           );
         });
       }
@@ -172,20 +170,16 @@ export default class ColourSettings extends React.PureComponent {
       colourSettings = (
         <>
           {gradientInputs}
-          {this.state.gradientSettings.gradient[0].colour !== background.source.disabled &&
-           !gradientHasMoreThanOneColour ? (<button type='button' className='add' onClick={this.addColour}>{background.source.add_colour}</button>) : null
-          }
+          {!gradientHasMoreThanOneColour ? (<><br/><br/><button type='button' className='add' onClick={this.addColour}>{background.source.add_colour}</button></>) : null}
         </>
       );
     }
 
     return (
       <>
-        <ul>
-          <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.language.buttons.reset}</span></p>
-          <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
-          {colourSettings}
-        </ul>
+        <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.language.buttons.reset}</span></p>
+        <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
+        {colourSettings}
       </>
     );
   }
