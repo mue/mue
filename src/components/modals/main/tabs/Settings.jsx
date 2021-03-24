@@ -7,7 +7,7 @@ import Greeting from '../settings/sections/Greeting';
 import Time from '../settings/sections/Time';
 import Quote from '../settings/sections/Quote';
 import Appearance from '../settings/sections/Appearance';
-import Background from '../settings/sections/Background';
+import Background from '../settings/sections/background/Background';
 import Advanced from '../settings/sections/Advanced';
 import Changelog from '../settings/sections/Changelog';
 import Order from '../settings/sections/Order';

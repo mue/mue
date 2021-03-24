@@ -80,106 +80,115 @@ export default class Background extends React.PureComponent {
   // Main background getting function
   async getBackground() {
     if (localStorage.getItem('offlineMode') === 'true') {
-       return this.offlineBackground();
-    }
-
-    // favourite button
-    const favourited = JSON.parse(localStorage.getItem('favourite'));
-    if (favourited) {
-      return this.setState({
-        url: favourited.url,
-        photoInfo: {
-          credit: favourited.credit,
-          location: favourited.location
-        }
-      });
-    }
-
-    // background colour
-    const customBackgroundColour = localStorage.getItem('customBackgroundColour');
-    if (customBackgroundColour !== 'Disabled' && customBackgroundColour !== '') {
-      let gradientSettings = '';
-      try {
-        gradientSettings = JSON.parse(customBackgroundColour);
-      } catch (e) {
-        const hexColorRegex = /#[0-9a-fA-F]{6}/s;
-        if (hexColorRegex.exec(customBackgroundColour)) {
-          // Colour use to be simply a hex colour or a NULL value before it was a JSON object. This automatically upgrades the hex colour value to the new standard. (NULL would not trigger an exception)
-          gradientSettings = { "type": "linear", "angle": "180", "gradient": [{ "colour": colour, "stop": 0 }] };
-          localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
-        }
-      }
-
-      if (typeof gradientSettings === 'object' && gradientSettings !== null) {
-        return this.gradientStyleBuilder(gradientSettings);
-      }
-    }
-
-    // custom user background
-    const customBackground = localStorage.getItem('customBackground');
-    if (customBackground !== '') {
-      // video background
-      if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) { 
-        return this.setState({
-          url: customBackground,
-          video: true,
-          photoInfo: {
-            hidden: true
-          }
-        });
-      // normal background
-      } else {
-        return this.setState({
-         url: customBackground,
-          photoInfo: {
-            hidden: true
-          }
-        });
-      }
-    }
-
-    // photo pack
-    const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
-    if (photoPack) {
-      const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
-      return this.setState({
-        url: randomPhoto.url.default,
-        photoInfo: {
-          credit: randomPhoto.photographer
-        }
-      });
-    }
-
-    // API background
-    const backgroundAPI = localStorage.getItem('backgroundAPI');
-
-    let requestURL, data;
-    switch (backgroundAPI) {
-      case 'unsplash':
-        requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
-        break;
-      // Defaults to Mue
-      default:
-        requestURL = `${window.constants.API_URL}/getImage?category=Outdoors`;
-        break;
-    }
-
-    try {
-      data = await (await fetch(requestURL)).json();
-    } catch (e) {
-      // if requesting to the API fails, we get an offline image
       return this.offlineBackground();
     }
 
-    this.setState({
-      url: data.file,
-      photoInfo: {
-        credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ' on Unsplash',
-        location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
-        camera: data.camera || 'N/A',
-        resolution: data.resolution || 'N/A'
+    switch (localStorage.getItem('backgroundType')) {
+      case 'api':
+        // favourite button
+        const favourited = JSON.parse(localStorage.getItem('favourite'));
+        if (favourited) {
+          return this.setState({
+             url: favourited.url,
+             photoInfo: {
+              credit: favourited.credit,
+              location: favourited.location
+            }
+          });
+        }
+
+        // API background
+        const backgroundAPI = localStorage.getItem('backgroundAPI');
+
+        let requestURL, data;
+        switch (backgroundAPI) {
+          case 'unsplash':
+            requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
+          break;
+          // Defaults to Mue
+          default:
+            requestURL = `${window.constants.API_URL}/getImage?category=Outdoors`;
+            break;
+        }
+
+        try {
+          data = await (await fetch(requestURL)).json();
+        } catch (e) {
+          // if requesting to the API fails, we get an offline image
+          return this.offlineBackground();
+        } 
+
+        this.setState({
+          url: data.file,
+          photoInfo: {
+            credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ' on Unsplash',
+            location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
+            camera: data.camera || 'N/A',
+            resolution: data.resolution || 'N/A'
+          }
+        });
+      break;
+
+      case 'colour':
+        // background colour
+        const customBackgroundColour = localStorage.getItem('customBackgroundColour');
+        if (customBackgroundColour !== 'Disabled' && customBackgroundColour !== '') {
+        let gradientSettings = '';
+        try {
+          gradientSettings = JSON.parse(customBackgroundColour);
+        } catch (e) {
+          const hexColorRegex = /#[0-9a-fA-F]{6}/s;
+          if (hexColorRegex.exec(customBackgroundColour)) {
+            // Colour use to be simply a hex colour or a NULL value before it was a JSON object. This automatically upgrades the hex colour value to the new standard. (NULL would not trigger an exception)
+            gradientSettings = { "type": "linear", "angle": "180", "gradient": [{ "colour": colour, "stop": 0 }] };
+            localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
+          }
+        }
+
+        if (typeof gradientSettings === 'object' && gradientSettings !== null) {
+          return this.gradientStyleBuilder(gradientSettings);
+        }
       }
-    });
+      break;
+
+      case 'custom':
+        // custom user background
+        const customBackground = localStorage.getItem('customBackground');
+        if (customBackground !== '') {
+          // video background
+          if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) { 
+            return this.setState({
+              url: customBackground,
+            video: true,
+            photoInfo: {
+              hidden: true
+            }
+          });
+        // normal background
+        } else {
+          return this.setState({
+            url: customBackground,
+            photoInfo: {
+              hidden: true
+            }
+          });
+        }
+      }
+      break;
+
+      case 'photo_pack':
+        // photo pack
+        const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
+        if (photoPack) {
+          const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
+          return this.setState({
+            url: randomPhoto.url.default,
+            photoInfo: {
+              credit: randomPhoto.photographer
+            }
+          });
+        }
+      }
   }
 
   componentDidMount() {

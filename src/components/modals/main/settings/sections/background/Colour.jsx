@@ -1,27 +1,21 @@
 import React from 'react';
 
-import Checkbox from '../Checkbox';
-import Dropdown from '../Dropdown';
-import FileUpload from '../FileUpload';
-import Slider from '../Slider';
-import Switch from '../Switch';
-
 import { ColorPicker } from 'react-color-gradient-picker';
-import hexToRgb from '../../../../../modules/helpers/background/hexToRgb';
-import rgbToHex from '../../../../../modules/helpers/background/rgbToHex';
+
+import hexToRgb from '../../../../../../modules/helpers/background/hexToRgb';
+import rgbToHex from '../../../../../../modules/helpers/background/rgbToHex';
 
 import { toast } from 'react-toastify';
 
 import 'react-color-gradient-picker/dist/index.css';
 
-export default class BackgroundSettings extends React.PureComponent {
+export default class ColourSettings extends React.PureComponent {
   DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': window.language.modals.main.settings.sections.background.source.disabled, 'stop': 0 }], 'type': 'linear' };
   GradientPickerInitalState = undefined;
-
+  
   constructor() {
     super();
     this.state = {
-      customBackground: localStorage.getItem('customBackground') || '',
       gradientSettings: this.DefaultGradientSettings
     };
     this.language = window.language.modals.main.settings;
@@ -33,13 +27,6 @@ export default class BackgroundSettings extends React.PureComponent {
         localStorage.setItem('customBackgroundColour', '');
         this.setState({
           gradientSettings: this.DefaultGradientSettings
-        });
-        break;
-
-      case 'customBackground':
-        localStorage.setItem('customBackground', '');
-        this.setState({
-          customBackground: ''
         });
         break;
 
@@ -86,6 +73,12 @@ export default class BackgroundSettings extends React.PureComponent {
     this.setState({
       gradientSettings
     });
+  }
+
+  componentDidUpdate() {
+    if (document.getElementById('customBackgroundHex').value !== this.language.sections.background.source.disabled) {
+      localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
+    }
   }
 
   onGradientChange = (event, index) => {
@@ -144,19 +137,6 @@ export default class BackgroundSettings extends React.PureComponent {
     });
   };
 
-  fileUpload(e) {
-    localStorage.setItem('customBackground', e.target.result);
-    this.setState({
-      customBackground: e.target.result
-    });
-  }
-
-  componentDidUpdate() {
-    if (document.getElementById('customBackgroundHex').value !== this.language.sections.background.source.disabled) {
-      localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
-    }
-  }
-
   render() {
     const { background } = this.language.sections;
 
@@ -201,31 +181,6 @@ export default class BackgroundSettings extends React.PureComponent {
 
     return (
       <>
-        <h2>{background.title}</h2>
-        <Switch name='background' text={this.language.enabled} />
-        <h3>{background.buttons.title}</h3>
-        <Checkbox name='view' text={background.buttons.view} />
-        <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
-
-        <h3>{background.effects.title}</h3>
-        <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' />
-        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='100' display='%' />
-
-        <h3>{background.source.title}</h3>
-        <Dropdown label={background.source.api} name='backgroundAPI'>
-          <option value='mue'>Mue</option>
-          <option value='unsplash'>Unsplash</option>
-        </Dropdown>
-        {/* <Text title={background.source.custom_url} name='customBackground' /> */ }
-        <ul>
-          <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
-          <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
-        </ul>
-        <ul>
-          <p>{background.source.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
-          <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{background.source.upload}</button>
-          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' loadFunction={(e) => this.fileUpload(e)} />
-        </ul>
         <ul>
           <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.language.buttons.reset}</span></p>
           <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
