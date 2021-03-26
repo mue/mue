@@ -6,11 +6,9 @@ import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Tooltip from '@material-ui/core/Tooltip';
 import Report from '@material-ui/icons/SmsFailed';
 
-import './scss/index.scss';
+import Notes from './Notes';
 
-// the user probably won't use the notes feature every time so we lazy load
-const Notes = React.lazy(() => import('./Notes'));
-const renderLoader = () => <></>;
+import './scss/index.scss';
 
 export default function Navbar(props) {
   const language = window.language;
@@ -20,9 +18,7 @@ export default function Navbar(props) {
       {(localStorage.getItem('notesEnabled') === 'true') ?
         <div className='notes'>
           <NotesIcon className='topicons'/>
-          <React.Suspense fallback={renderLoader()}>
-            <Notes/>
-          </React.Suspense>
+          <Notes/>
         </div>
       :null}
 

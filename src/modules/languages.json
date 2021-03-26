@@ -1,15 +1,15 @@
 [
   {
+    "name": "Deutsch",
+    "value": "de_DE"
+  },
+  {
     "name": "English (UK)",
     "value": "en_GB"
   },
   {
     "name": "English (US)",
     "value": "en_US"
-  },
-  {
-    "name": "Germany",
-    "value": "de_DE"
   },
   {
     "name": "Español",

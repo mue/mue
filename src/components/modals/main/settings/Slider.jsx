@@ -11,7 +11,7 @@ export default class Slider extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  handleChange = () => {
+  handleChange = (e) => {
     const { value } = e.target;
   
     localStorage.setItem(this.props.name, value);

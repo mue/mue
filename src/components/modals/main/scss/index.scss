@@ -233,6 +233,10 @@ li {
   font-size: 22px;
   font-weight: 500;
   display: inline-flex;
+
+  &:hover {
+    color: rgb(105, 105, 105);
+  }
 }
 
 .modalNavbar {
@@ -296,7 +300,6 @@ li {
   }
 
   &:hover {
-    opacity: .8;
     background: map-get($theme-colours, 'gradient');
     -webkit-background-clip: text;
     background-clip: text;

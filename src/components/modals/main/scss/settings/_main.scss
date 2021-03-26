@@ -11,19 +11,6 @@ input {
     padding: 10px 10px;
     border-radius: 5px;
   }
-
-  &:checked+.slider {
-    background: map-get($theme-colours, 'gradient');
-
-    &:before {
-      -webkit-transform: translateX(26px);
-      transform: translateX(26px);
-    }
-  }
-
-  &:focus+.slider {
-    box-shadow: 0 0 1px #e67e22;
-  }
 }
 
 h4 {
@@ -42,7 +29,7 @@ ul {
 .range {
   -webkit-appearance: none;
   width: 200px;
-  height: 15px;
+  height: 12px;
   border-radius: 12px;
   outline: none;
   background: var(--sidebar);
@@ -52,10 +39,10 @@ ul {
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 12px;
-    background: map-get($theme-colours, 'gradient');
+    background: #ff4757;
     cursor: pointer;
   }
 
@@ -64,7 +51,7 @@ ul {
     height: 25px;
     border-radius: 12px;
     border: 0;
-    background: map-get($theme-colours, 'gradient');
+    background: #ff4757;
     cursor: pointer;
   }
 }

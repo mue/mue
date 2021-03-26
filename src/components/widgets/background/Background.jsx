@@ -132,7 +132,6 @@ export default class Background extends React.PureComponent {
       case 'colour':
         // background colour
         const customBackgroundColour = localStorage.getItem('customBackgroundColour');
-        if (customBackgroundColour !== 'Disabled' && customBackgroundColour !== '') {
         let gradientSettings = '';
         try {
           gradientSettings = JSON.parse(customBackgroundColour);
@@ -148,7 +147,6 @@ export default class Background extends React.PureComponent {
         if (typeof gradientSettings === 'object' && gradientSettings !== null) {
           return this.gradientStyleBuilder(gradientSettings);
         }
-      }
       break;
 
       case 'custom':
@@ -188,7 +186,10 @@ export default class Background extends React.PureComponent {
             }
           });
         }
-      }
+      break;
+      default: 
+        break;
+    }
   }
 
   componentDidMount() {

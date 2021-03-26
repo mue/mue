@@ -11,7 +11,8 @@ export default class About extends React.PureComponent {
       contributors: [],
       sponsors: [],
       other_contributors: [],
-      update: window.language.modals.main.settings.sections.about.version.checking_update
+      update: window.language.modals.main.settings.sections.about.version.checking_update,
+      loading: 'Loading...'
     }
     this.language = window.language.modals.main.settings.sections.about;
   }
@@ -32,7 +33,8 @@ export default class About extends React.PureComponent {
       contributors: contributors.filter((contributor) => !contributor.login.includes('bot')),
       sponsors: sponsors,
       update: updateMsg,
-      other_contributors: other_contributors
+      other_contributors: other_contributors,
+      loading: null
     });
   }
 
@@ -59,6 +61,7 @@ export default class About extends React.PureComponent {
         <p>Google ({this.language.resources_used.pin_icon})</p>
         <p>Undraw ({this.language.resources_used.welcome_img})</p>
         <h3>{this.language.contributors}</h3>
+        {this.state.loading}
         {this.state.contributors.map((item) =>
           <Tooltip title={item.login} placement='top' key={item.login}>
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
@@ -71,6 +74,7 @@ export default class About extends React.PureComponent {
           </Tooltip>
         )}
         <h3>{this.language.supporters}</h3>
+        {this.state.loading}
         {this.state.sponsors.map((item) =>
           <Tooltip title={item.handle} placement='top' key={item.handle}>
             <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=256'} alt={item.handle}></img></a>
