@@ -12,24 +12,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 <br>
 
 ## Table of contents
-* [Screenshot](#screenshot)
-* [Features](#features)
-* [Planned Features](#planned-features)
-* [Installation](#installation)
-	* [Chrome](#chrome)
-	* [Firefox](#firefox)
-	* [Edge Chromium](#edge-chromium)
-  * [Naver](#naver)
-	* [Other](#other)
-* [Contributing](#development)
-	* [Requirements](#requirements)
-	* [Starting](#starting)
-	* [Building](#building)
-* [Credits](#credits)
-	* [Maintainers](#maintainers)
-	* [Contributors](#contributors)
-  * [Translators](#translators)
-
+[[toc]]
 ## Screenshot
 ![Screenshot](assets/screenshot.jpg)
 
@@ -69,21 +52,17 @@ Please note that we have dropped support for Opera as of Mue 5.0
 
 [GitHub Releases](https://github.com/mue/mue/releases)
 
-### Development
+## Development
 #### Requirements
-<ol>
-  <li><a href='https://git-scm.com'>Git</a></li>
-  <li><a href='https://nodejs.org'>Node.JS</a></li>
-  <li>A suitable browser</li>
-</ol>
-<h5>Starting</h5>
-<ol>
-  <li> Clone the repository using <code>git clone https://github.com/mue/mue.git</code>
-  <li> Run <code>yarn</code> or <code>npm i</code> to install all needed dependencies
-  <li> Run <code>yarn start</code> or <code>npm start</code> to start testing
-  <li> Code your heart out! (See the sections below for how to build the extension)
-</ol>
-<h2>Building</h2>
+  * [Git](https://git-scm.com/)
+  * [Node.JS](https://nodejs.org/)
+  * A suitable browser
+#### Starting
+  1. Clone the repository using `git clone https://github.com/mue/mue.git`
+  2. Run `yarn` or `npm i` to install all needed dependencies
+  3. Run `yarn start` or `npm start` to start testing
+  4. Code your heart out! (See the sections below for how to build the extension)
+#### Building
 <details>
   <summary><b>Chrome/Edge (Chromium)</b> (Click to expand)</summary>
   <ol>
@@ -128,36 +107,23 @@ Please note that we have dropped support for Opera as of Mue 5.0
 </details>
 
 ## Credits
-### Core Team
-#### Developers
-[David Ralph](https://github.com/davidjcralph) - Lead development, photographer <br>
-
-[Alex Sparkes](https://github.com/alexsparkes) - Name, lead design, photographer <br>
-
-[Isaac Saunders](https://github.com/eartharoid) - QA, development, photographer <br>
-
-[Wessel Tip](https://github.com/Wessel) - Development <br>
-
+### Developers
+[David Ralph](https://github.com/davidjcralph) - Lead development, photographer <br/>
+[Alex Sparkes](https://github.com/alexsparkes) - Name, lead design, photographer <br/>
+[Isaac Saunders](https://github.com/eartharoid) - QA, development, photographer <br/>
+[Wessel Tip](https://github.com/Wessel) - Development <br/>
 ### Translators
-[Wessel Tip](https://github.com/Wessel) - Dutch
-
-[Alex Sparkes](https://github.com/alexsparkes), [Maxime](https://github.com/exiam) - French
-
-[Anders](https://github.com/FuryingFox) - Norwegian
-
-[Pronin Egor](https://github.com/MrZillaGold) - Russian
-
-[Vicente](https://github.com/Vicente015) - Spanish
-
-[Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified)
-
-[FreeFun](https://github.com/xXFreeFunXx) - Germany
-
-### Resources
-[Pexels](https://pexels.com) - Stock photos used for offline mode
-
-[Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support
-
+[Wessel Tip](https://github.com/Wessel) - Dutch<br/>
+[Alex Sparkes](https://github.com/alexsparkes), [Maxime](https://github.com/exiam) - French<br/>
+[Anders](https://github.com/FuryingFox) - Norwegian<br/>
+[Pronin Egor](https://github.com/MrZillaGold) - Russian<br/>
+[Vicente](https://github.com/Vicente015) - Spanish<br/>
+[Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified)<br/>
+[FreeFun](https://github.com/xXFreeFunXx) - German<br/>
+### Contributors
 Many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/RoeeLupo), [Jeroen](#), [Glasvegas](https://twitter.com/_glasvegas), [Anders](https://github.com/FuryingFox), [Oded Shapira](https://twitter.com/dondishdev), Jacob Tyrrell and [Nikka Lai](#) for letting us use their wonderful photographs.
 
-And finally, a big thank you to all the [contributors](https://github.com/mue/mue/graphs/contributors)!
+And finally, a big thank you to all the other [contributors](https://github.com/mue/mue/graphs/contributors)!
+### Resources
+[Pexels](https://pexels.com) - Stock photos used for offline mode<br/>
+[Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support<br/>
