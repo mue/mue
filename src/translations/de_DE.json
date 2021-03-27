@@ -17,7 +17,7 @@
     "navbar": {
       "tooltips": {
         "update": "Update Hinweise",
-        "refresh": "Seite neu laden"
+        "refresh": "Neuladen"
       },
       "notes": {
         "title": "Notizen",
@@ -38,7 +38,7 @@
         "enabled": "Aktivieren",
         "sections": {
           "time": {
-            "title": "Zeit",
+            "title": "Uhrzeit",
             "digital": {
               "title": "Digital",
               "seconds": "Sekunden",
@@ -54,7 +54,7 @@
               "hour_marks": "Stunden-Markierungen",
               "minute_marks": "Minuten-Markierungen"
             },
-            "percentage_complete": "Prozentsatz des Tages abgeschlossen",
+            "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen",
             "date": {
               "title": "Datum",
               "day_of_week": "Wochentag",
@@ -76,7 +76,7 @@
             "custom": "Benutzerdefiniertes Zitat",
             "custom_author": "Benutzerdefinierter Autor",
             "buttons": {
-              "title": "Buttons",
+              "title": "Schaltflächen",
               "copy": "Kopieren",
               "tweet": "Twitter",
               "favourite": "Favorit"
@@ -157,7 +157,7 @@
             "title": "Sprache",
             "quote": "Zitat-Sprache"
           },
-          "changelog": "Änderungsprotokoll",
+          "changelog": "Änderungshinweise",
           "about": {
             "title": "Über",
             "copyright": "Urheberrechte",
