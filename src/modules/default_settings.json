@@ -52,10 +52,6 @@
     "value": "mue"
   },
   {
-    "name": "ampm",
-    "value": true
-  },
-  {
     "name": "copyButton",
     "value": false
   },
@@ -138,5 +134,9 @@
   {
     "name": "backgroundType",
     "value": "api"
+  },
+  {
+    "name": "timeformat",
+    "value": "twentyfourhour"
   }
 ]

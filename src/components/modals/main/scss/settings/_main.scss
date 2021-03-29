@@ -110,8 +110,12 @@ input[type=color]::-moz-color-swatch {
   margin-left: 0;
 }
 
-.MuiCheckbox-colorPrimary.Mui-checked, .MuiSwitch-colorPrimary.Mui-checked,  .MuIconButton-colorPrimary.Mui-checked{
-  color: map-get($button-colours, 'reset') !important;
+.MuiCheckbox-colorPrimary.Mui-checked, .MuiSwitch-colorPrimary.Mui-checked, .MuIconButton-colorPrimary.Mui-checked, .MuiSwitch-thumb, .MuiRadio-colorSecondary.Mui-checked {
+  color: var(--modal-text) !important;
+}
+
+.MuiRadio-root {
+  color: var(--modal-text);
 }
 
 .MuiFormControlLabel-labelPlacementStart {
@@ -141,4 +145,9 @@ input[type=color]::-moz-color-swatch {
 .radio-title {
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.sortableitem {
+  width: auto !important;
+  color: var(--modal-text) !important;
 }

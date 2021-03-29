@@ -5,7 +5,7 @@ import DragHandleIcon from '@material-ui/icons/DragIndicator';
 
 const SortableItem = sortableElement(({value}) => (
   <li className='sortableitem'>
-    <DragHandleIcon/>
+    <DragHandleIcon style={{'verticalAlign': 'middle'}} />
     {value.charAt(0).toUpperCase() + value.slice(1)}
   </li>
 ));

@@ -153,11 +153,7 @@ input[type=number]::-webkit-outer-spin-button {
   outline: none;
 }
 
-.MuiCheckbox-root {
-  color: var(--modal-text) !important;
-}
-
-.MuiIconButton-label>svg.MuiSvgIcon-root {
+.MuiIconButton-label > svg.MuiSvgIcon-root {
   color: var(--modal-text) !important;
 }
 
