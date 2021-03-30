@@ -19,7 +19,7 @@ window.languagecode = languagecode.replace('-', '_');
 window.language = merge(require('./translations/en_GB.json'), require(`./translations/${window.languagecode}.json`));
 // set html language tag
 if (window.languagecode !== 'en_GB' || window.languagecode !== 'en_US') {
-  document.documentElement.lang = window.languagecode;
+  document.documentElement.lang = window.languagecode.split('_')[0];
 }
 
 // window.constants

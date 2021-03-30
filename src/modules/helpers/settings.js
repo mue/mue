@@ -59,6 +59,8 @@ export default class SettingsFunctions {
       localStorage.setItem('language', 'en_GB');
     }
 
+    localStorage.setItem('tabName', window.language.tabname);
+
     if (reset) {
       localStorage.setItem('showWelcome', false);
     }
@@ -105,13 +107,14 @@ export default class SettingsFunctions {
             ${fontweight}
             ${fontstyle}
           }
-      </style>`);
+        </style>
+      `);
     }
 
-    const zoom = localStorage.getItem('zoom');
+    const widgetzoom = localStorage.getItem('widgetzoom');
     // don't bother if it's default zoom
-    if (zoom !== 100) {
-      document.body.style.zoom = zoom + '%';
+    if (widgetzoom !== '100') {
+      document.getElementById('root').style.zoom = widgetzoom + '%';
     }
 
     const theme = localStorage.getItem('theme');
@@ -125,7 +128,7 @@ export default class SettingsFunctions {
     }
 
     const tabName = localStorage.getItem('tabName');
-    if (tabName) {
+    if (tabName !== window.language.tabname) {
       document.title = tabName;
     }
 
