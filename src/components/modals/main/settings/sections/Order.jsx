@@ -1,7 +1,10 @@
 import React from 'react';
+
+import DragHandleIcon from '@material-ui/icons/DragIndicator';
+
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
-import DragHandleIcon from '@material-ui/icons/DragIndicator';
+import { toast } from 'react-toastify';
 
 const SortableItem = sortableElement(({value}) => (
   <li className='sortableitem'>
@@ -20,6 +23,7 @@ export default class OrderSettings extends React.PureComponent {
     this.state = {
       items: JSON.parse(localStorage.getItem('order'))
     };
+    this.language = window.language.modals.main.settings;
   }
 
   onSortEnd = ({oldIndex, newIndex}) => {
@@ -30,9 +34,12 @@ export default class OrderSettings extends React.PureComponent {
 
   reset = () => {
     localStorage.setItem('order', JSON.stringify(['greeting', 'time', 'quote', 'date']));
+  
     this.setState({
       items: JSON.parse(localStorage.getItem('order'))
     });
+
+    toast(this.language.toasts.reset);
   }
 
   componentDidUpdate() {
