@@ -58,7 +58,6 @@ export default function AppearanceSettings() {
       </Dropdown>
 
       <h3>{appearance.accessibility.title}</h3>
-      <Checkbox name='animations' text={appearance.animations} betaFeature={true} />
       {(engineName === 'Blink') ? 
         <Slider title={appearance.accessibility.widget_zoom} name='widgetzoom' default='100' min='50' max='200' display='%'/> 
       : null}

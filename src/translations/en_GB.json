@@ -153,7 +153,9 @@
             "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support." 
           },
           "experimental": {
-            "title": "Experimental"
+            "title": "Experimental",
+            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
+            "developer": "Developer"
           },
           "language": {
             "title": "Language",

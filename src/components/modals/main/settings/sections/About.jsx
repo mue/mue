@@ -62,7 +62,7 @@ export default class About extends React.PureComponent {
     return (
       <>
         <h2>{this.language.title}</h2>
-        <img draggable='false' style={{'height': '100px', 'width': 'auto'}} src='https://raw.githubusercontent.com/mue/branding/master/logo/logo_horizontal.png' alt='Mue logo'></img>
+        <img draggable='false' style={{'height': '100px', 'width': 'auto'}} src='./././icons/logo_horizontal.png' alt='Mue logo'></img>
         <p>{this.language.copyright} 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
         <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
         <h3>{this.language.resources_used.title}</h3>
@@ -73,20 +73,20 @@ export default class About extends React.PureComponent {
         {this.state.loading}
         {this.state.contributors.map((item) =>
           <Tooltip title={item.login} placement='top' key={item.login}>
-            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
+            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}></img></a>
           </Tooltip>
         )}
         { // for those who contributed without opening a pull request
         this.state.other_contributors.map((item) =>
           <Tooltip title={item.login} placement='top' key={item.login}>
-            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=256'} alt={item.login}></img></a>
+            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}></img></a>
           </Tooltip>
         )}
         <h3>{this.language.supporters}</h3>
         {this.state.loading}
         {this.state.sponsors.map((item) =>
           <Tooltip title={item.handle} placement='top' key={item.handle}>
-            <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=256'} alt={item.handle}></img></a>
+            <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
           </Tooltip>
         )}
       </>
