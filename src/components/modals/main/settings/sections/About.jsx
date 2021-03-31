@@ -11,17 +11,19 @@ export default class About extends React.PureComponent {
       contributors: [],
       sponsors: [],
       other_contributors: [],
+      photographers: [],
       update: window.language.modals.main.settings.sections.about.version.checking_update,
-      loading: 'Loading...'
+      loading: window.language.modals.main.loading
     }
     this.language = window.language.modals.main.settings.sections.about;
   }
 
   async getGitHubData() {
-    let contributors, sponsors, versionData;
+    let contributors, sponsors, photographers, versionData;
     try {
       contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/contributors')).json();
       sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list')).json()).sponsors;
+      photographers = await (await fetch(window.constants.API_URL + '/getPhotographers')).json();
   
       versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/releases')).json();
     } catch (e) {
@@ -43,6 +45,7 @@ export default class About extends React.PureComponent {
       sponsors: sponsors,
       update: updateMsg,
       other_contributors: other_contributors,
+      photographers: photographers.sort(),
       loading: null
     });
   }
@@ -89,6 +92,13 @@ export default class About extends React.PureComponent {
             <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
           </Tooltip>
         )}
+        <h3>{this.language.photographers}</h3>
+        {this.state.loading}
+        <p>
+          {this.state.photographers.map((item) => 
+            <>{item}, </>
+          )}
+        </p>
       </>
     );
   }
