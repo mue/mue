@@ -34,26 +34,29 @@ export default function Tab(props) {
     }
   }
 
+  const language = window.language.modals.main.settings.sections;
+  const navbarlanguage = window.language.modals.main.navbar;
+
   let icon, divider;
   switch (props.label) {
     // Navbar
-    case 'Settings': icon = <Settings/>; break;
-    case 'My Add-ons': icon = <Addons/>; break;
-    case 'Marketplace': icon = <Marketplace/>; break;
+    case navbarlanguage.settings: icon = <Settings/>; break;
+    case navbarlanguage.addons: icon = <Addons/>; break;
+    case navbarlanguage.marketplace: icon = <Marketplace/>; break;
 
     // Settings
-    case 'Time': icon = <Time/>; break;
-    case 'Greeting': icon = <Greeting/>; break;
-    case 'Quote': icon = <Quote/>; break;
-    case 'Background': icon = <Background/>; break;
-    case 'Search': icon = <Search/>; break;
-    case 'Appearance': icon = <Appearance/>; break;
-    case 'Order': icon = <Order/>; break;
-    case 'Language': icon = <Language/>; divider = true; break;
-    case 'Advanced': icon = <Settings/>; break;
-    case 'Experimental': icon = <Experimental/>; divider = true; break;
-    case 'Change Log': icon = <Changelog/>; break;
-    case 'About': icon = <About/>; break;
+    case language.time.title: icon = <Time/>; break;
+    case language.greeting.title: icon = <Greeting/>; break;
+    case language.quote.title: icon = <Quote/>; break;
+    case language.background.title: icon = <Background/>; break;
+    case language.search.title: icon = <Search/>; break;
+    case language.appearance.title: icon = <Appearance/>; break;
+    case language.order: icon = <Order/>; break;
+    case language.language.title: icon = <Language/>; divider = true; break;
+    case language.advanced.title: icon = <Settings/>; break;
+    case language.experimental.title: icon = <Experimental/>; divider = true; break;
+    case language.changelog: icon = <Changelog/>; break;
+    case language.about.title: icon = <About/>; break;
 
     // Store
     case 'Photo Packs': icon = <Background/>; break;
@@ -61,6 +64,12 @@ export default function Tab(props) {
     case 'Added': icon = <Added/>; break;
 
     default: break;
+  }
+
+  if (props.label === language.experimental.title) {
+    if (localStorage.getItem('experimental') === 'false') {
+      return <hr/>;
+    }
   }
 
   return (

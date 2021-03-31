@@ -18,10 +18,19 @@ export default class About extends React.PureComponent {
   }
 
   async getGitHubData() {
-    const contributors = await (await fetch('https://api.github.com/repos/mue/mue/contributors')).json();
-    const { sponsors } = await (await fetch(window.constants.SPONSORS_URL + '/list')).json();
+    let contributors, sponsors, versionData;
+    try {
+      contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/contributors')).json();
+      sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list')).json()).sponsors;
+  
+      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/releases')).json();
+    } catch (e) {
+      return this.setState({
+        update: 'Failed to get update information',
+        loading: 'An error occurred'
+      });
+    }
 
-    const versionData = await (await fetch('https://api.github.com/repos/mue/mue/releases')).json();
     const newVersion = versionData[0].tag_name;
 
     let updateMsg = this.language.version.no_update;

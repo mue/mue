@@ -142,6 +142,7 @@
               "milliseconds": "milliseconds"
             }
           },
+          "order": "Widget Order",
           "advanced": {
             "title": "Advanced",
             "offline_mode": "Offline Mode",

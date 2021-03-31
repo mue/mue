@@ -138,5 +138,9 @@
   {
     "name": "timeformat",
     "value": "twentyfourhour"
+  },
+  {
+    "name": "experimental",
+    "value": false
   }
 ]

@@ -26,7 +26,14 @@ export default class OrderSettings extends React.PureComponent {
     this.setState(({items}) => ({
       items: arrayMove(items, oldIndex, newIndex)
     }));
-  };
+  }
+
+  reset = () => {
+    localStorage.setItem('order', JSON.stringify(['greeting', 'time', 'quote', 'date']));
+    this.setState({
+      items: JSON.parse(localStorage.getItem('order'))
+    });
+  }
 
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
@@ -36,6 +43,7 @@ export default class OrderSettings extends React.PureComponent {
     return (
       <>
         <h2>Order</h2>
+        <span className='modalLink' onClick={this.reset}>Reset</span>
         <SortableContainer onSortEnd={this.onSortEnd}>
           {this.state.items.map((value, index) => (
             <SortableItem key={`item-${value}`} index={index} value={value} />

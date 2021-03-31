@@ -11,6 +11,7 @@ import Background from '../settings/sections/background/Background';
 import Advanced from '../settings/sections/Advanced';
 import Changelog from '../settings/sections/Changelog';
 import Order from '../settings/sections/Order';
+import Experimental from '../settings/sections/Experimental';
 
 import Tabs from './backend/Tabs';
 
@@ -25,10 +26,10 @@ export default function Settings() {
         <div label={language.background.title}><Background/></div>
         <div label={language.search.title}><Search/></div>
         <div label={language.appearance.title}><Appearance/></div>
-        <div label='Order'><Order/></div>
+        <div label={language.order}><Order/></div>
         <div label={language.language.title}><Language/></div>
         <div label={language.advanced.title}><Advanced/></div>
-        <div label='Experimental'></div>
+        <div label={language.experimental.title}><Experimental/></div>
         <div label={language.changelog}><Changelog/></div>
         <div label={language.about.title}><About/></div>
       </Tabs>

@@ -21,7 +21,7 @@ export default class Tabs extends React.PureComponent {
   render() {
     let className = 'sidebar';
     let tabClass = 'tab-content';
-    let optionsText = (<h1>Options</h1>);
+    let optionsText = (<h1>{window.language.modals.main.title}</h1>);
 
     if (this.props.navbar) {
       className = 'modalNavbar';
