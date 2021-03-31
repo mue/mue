@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { engineName } from 'react-device-detect';
+
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Radio from '../Radio';
@@ -57,7 +59,9 @@ export default function AppearanceSettings() {
 
       <h3>{appearance.accessibility.title}</h3>
       <Checkbox name='animations' text={appearance.animations} betaFeature={true} />
-      <Slider title={appearance.accessibility.widget_zoom} name='widgetzoom' default='100' min='50' max='200' display='%'/>
+      {(engineName === 'Blink') ? 
+        <Slider title={appearance.accessibility.widget_zoom} name='widgetzoom' default='100' min='50' max='200' display='%'/> 
+      : null}
       <Slider title={appearance.accessibility.toast_duration} name='toastDisplayTime' default='2500' min='500' max='5000' display={' ' + appearance.accessibility.milliseconds} />
     </>
   );

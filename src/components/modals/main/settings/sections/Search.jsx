@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { isChrome } from 'react-device-detect';
 import { toast } from 'react-toastify';
 
 import Dropdown from '../Dropdown';
@@ -61,7 +62,7 @@ export default class SearchSettings extends React.PureComponent {
       <>
         <h2>{search.title}</h2>
         <Switch name='searchBar' text={language.enabled} />
-        <Checkbox name='voiceSearch' text={search.voice_search} />
+        {isChrome ? <Checkbox name='voiceSearch' text={search.voice_search} /> : null}
         <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
           {searchEngines.map((engine) =>
             <option key={engine.name} value={engine.settingsName}>{engine.name}</option>

@@ -57,7 +57,7 @@ export default class DateWidget extends React.PureComponent {
       });
     } else {
       // Long date
-      const lang = localStorage.getItem('language');
+      const lang = localStorage.getItem('language').split('_')[0];
 
       const nth = (localStorage.getItem('datenth') === 'true') ? dtf.nth(date.getDate()) : date.getDate();
 

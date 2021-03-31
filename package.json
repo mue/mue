@@ -21,6 +21,7 @@
     "react-clock": "^3.0.0",
     "react-color-gradient-picker": "^0.1.2",
     "react-day-picker": "^7.4.10",
+    "react-device-detect": "^1.17.0",
     "react-dom": "17.0.2",
     "react-modal": "3.12.1",
     "react-sortable-hoc": "^2.0.0",
