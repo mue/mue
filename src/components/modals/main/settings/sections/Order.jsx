@@ -51,7 +51,7 @@ export default class OrderSettings extends React.PureComponent {
       <>
         <h2>Order</h2>
         <span className='modalLink' onClick={this.reset}>Reset</span>
-        <SortableContainer onSortEnd={this.onSortEnd}>
+        <SortableContainer onSortEnd={this.onSortEnd} lockAxis='y' lockToContainerEdges disableAutoscroll>
           {this.state.items.map((value, index) => (
             <SortableItem key={`item-${value}`} index={index} value={value} />
           ))}

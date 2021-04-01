@@ -150,4 +150,5 @@ input[type=color]::-moz-color-swatch {
 .sortableitem {
   width: auto !important;
   color: var(--modal-text) !important;
+  cursor: move;
 }

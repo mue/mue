@@ -6,5 +6,5 @@ export const SPONSORS_URL = 'https://sponsors.muetab.com';
 export const GITHUB_URL = 'https://api.github.com';
 export const FEEDBACK_FORM = 'https://api.formcake.com/api/form/349b56cb-7e2b-4004-b32b-e8964d217dd1/submission';
 export const OFFLINE_IMAGES = 20;
-export const BETA_VERSION = false
+export const BETA_VERSION = false;
 export const VERSION = '5.0'; 
