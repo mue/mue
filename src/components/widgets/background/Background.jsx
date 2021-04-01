@@ -20,6 +20,7 @@ export default class Background extends React.PureComponent {
       }
     };
     this.language = window.language.widgets.background;
+    this.ddgproxy = (localStorage.getItem('ddgProxy') === 'true');
   }
 
   gradientStyleBuilder(gradientSettings) {
@@ -43,9 +44,11 @@ export default class Background extends React.PureComponent {
     }
 
     if (this.state.url !== '') {
+      const url = this.ddgproxy ? window.constants.DDG_PROXY + this.state.url : this.state.url;
+
       document.querySelector('#backgroundImage').setAttribute(
         'style',
-        `background-image: url(${this.state.url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+        `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
       );
     } else {
       document.querySelector('#backgroundImage').setAttribute(
@@ -157,10 +160,10 @@ export default class Background extends React.PureComponent {
           if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) { 
             return this.setState({
               url: customBackground,
-            video: true,
-            photoInfo: {
-              hidden: true
-            }
+              video: true,
+              photoInfo: {
+                hidden: true
+              }
           });
         // normal background
         } else {

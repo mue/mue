@@ -93,6 +93,7 @@
           },
           "background": {
             "title": "Background",
+            "ddg_proxy": "Use DuckDuckGo Image Proxy",
             "buttons": {
               "title": "Buttons",
               "view": "View",

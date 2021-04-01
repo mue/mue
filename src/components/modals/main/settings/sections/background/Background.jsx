@@ -86,6 +86,8 @@ export default class BackgroundSettings extends React.PureComponent {
       <>
         <h2>{background.title}</h2>
         <Switch name='background' text={this.language.enabled} />
+        <Checkbox name='ddgProxy' text={background.ddg_proxy} />
+
         <h3>{background.buttons.title}</h3>
         <Checkbox name='view' text={background.buttons.view} />
         <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
