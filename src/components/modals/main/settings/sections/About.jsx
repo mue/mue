@@ -45,7 +45,7 @@ export default class About extends React.PureComponent {
       sponsors: sponsors,
       update: updateMsg,
       other_contributors: other_contributors,
-      photographers: photographers.sort(),
+      photographers: photographers.sort().join(', '), 
       loading: null
     });
   }
@@ -94,11 +94,7 @@ export default class About extends React.PureComponent {
         )}
         <h3>{this.language.photographers}</h3>
         {this.state.loading}
-        <p>
-          {this.state.photographers.map((item) => 
-            <>{item}, </>
-          )}
-        </p>
+        <p>{this.state.photographers}</p>
       </>
     );
   }

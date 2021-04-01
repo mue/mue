@@ -11,7 +11,7 @@ export default class Text extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     const { value } = e.target;
   
     // Alex wanted font to work with montserrat and Montserrat, so I made it work
