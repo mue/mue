@@ -37,7 +37,7 @@ export default class GreetingSettings extends React.PureComponent {
 
         <h3>{greeting.birthday}</h3>
         <Switch name='birthdayenabled' text={this.language.enabled}/>
-        <Checkbox name='birthdayage' text='Birthday Age'/>
+        <Checkbox name='birthdayage' text={greeting.birthday_age}/>
         <p>{greeting.birthday_date}</p>
         <DayPickerInput onDayChange={this.changeDate} value={this.state.birthday}/>
       </>

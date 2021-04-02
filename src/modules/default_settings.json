@@ -142,5 +142,9 @@
   {
     "name": "experimental",
     "value": false
+  },
+  {
+    "name": "debugtimeout",
+    "value": 0
   }
 ]

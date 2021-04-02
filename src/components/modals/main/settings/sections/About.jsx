@@ -74,24 +74,24 @@ export default class About extends React.PureComponent {
         <p>Undraw ({this.language.resources_used.welcome_img})</p>
         <h3>{this.language.contributors}</h3>
         {this.state.loading}
-        {this.state.contributors.map((item) =>
+        {this.state.contributors.map((item) => (
           <Tooltip title={item.login} placement='top' key={item.login}>
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}></img></a>
           </Tooltip>
-        )}
+        ))}
         { // for those who contributed without opening a pull request
-        this.state.other_contributors.map((item) =>
+        this.state.other_contributors.map((item) => (
           <Tooltip title={item.login} placement='top' key={item.login}>
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}></img></a>
           </Tooltip>
-        )}
+        ))}
         <h3>{this.language.supporters}</h3>
         {this.state.loading}
-        {this.state.sponsors.map((item) =>
+        {this.state.sponsors.map((item) => (
           <Tooltip title={item.handle} placement='top' key={item.handle}>
             <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
           </Tooltip>
-        )}
+        ))}
         <h3>{this.language.photographers}</h3>
         {this.state.loading}
         <p>{this.state.photographers}</p>

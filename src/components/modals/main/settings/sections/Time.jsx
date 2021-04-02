@@ -22,11 +22,11 @@ export default class TimeSettings extends React.PureComponent {
 
     const digitalOptions = [
       {
-        'name': '24 hour',
+        'name': time.digital.twentyfourhour,
         'value': 'twentyfourhour'
       },
       {
-        'name': '12 hour',
+        'name': time.digital.twelvehour,
         'value': 'twelvehour'
       }
     ];
@@ -104,8 +104,8 @@ export default class TimeSettings extends React.PureComponent {
         <h3>{time.date.title}</h3>
         <Switch name='date' text={this.language.enabled} />
         <Dropdown label='Type' name='dateType' onChange={(value) => this.setState({ dateType: value })}>
-          <option value='long'>Long</option>
-          <option value='short'>Short</option>
+          <option value='long'>{time.date.type.long}</option>
+          <option value='short'>{time.date.type.short}</option>
         </Dropdown>
         <br/>
         {dateSettings}

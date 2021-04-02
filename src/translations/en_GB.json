@@ -44,6 +44,7 @@
               "title": "Digital",
               "seconds": "Seconds",
               "twentyfourhour": "24 Hour",
+              "twelvehour": "12 hour",
               "ampm": "AM/PM (12 hour)",
               "zero": "Zero-padded"
             },
@@ -60,6 +61,10 @@
               "title": "Date",
               "day_of_week": "Day of week",
               "datenth": "Date nth",
+              "type": {
+                "short": "Short",
+                "long": "Long"
+              },
               "short_date": "Short Date",
               "short_format": "Short Format",
               "short_separator": {
@@ -89,6 +94,7 @@
             "default": "Default Greeting Message",
             "name": "Name for greeting",
             "birthday": "Birthday",
+            "birthday_age": "Birthday Age",
             "birthday_date": "Birthday Date"
           },
           "background": {
@@ -104,8 +110,12 @@
               "blur": "Adjust Blur",
               "brightness": "Adjust Brightness"
             },
+            "type": {
+              "api": "API",
+              "custom_image": "Custom Image",
+              "custom_colour": "Custom Colour/Gradient"
+            },
             "source": {
-              "title": "Source",
               "api": "Background API",
               "custom_url": "Custom Background URL",
               "custom_background": "Custom Background",
@@ -123,7 +133,12 @@
           },
           "appearance": {
             "title": "Appearance",
-            "dark_theme": "Dark Theme",
+            "theme": {
+              "title": "Theme",
+              "auto": "Auto",
+              "light": "Light",
+              "dark": "Dark"
+            },
             "night_mode": "Night Mode",
             "animations": "Animations",
             "navbar": {
@@ -134,7 +149,24 @@
             "font": {
               "title": "Font",
               "custom": "Custom Font",
-              "google": "Import from Google Fonts"
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font Weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font Style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
             },
             "accessibility": {
               "title": "Accessibility",
@@ -143,7 +175,9 @@
               "milliseconds": "milliseconds"
             }
           },
-          "order": "Widget Order",
+          "order": {
+            "title": "Widget Order"
+          },
           "advanced": {
             "title": "Advanced",
             "offline_mode": "Offline Mode",
@@ -151,6 +185,7 @@
             "customisation": "Customisation",
             "custom_css": "Custom CSS",
             "custom_js": "Custom JS",
+            "tab_name": "Tab Name",
             "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support." 
           },
           "experimental": {

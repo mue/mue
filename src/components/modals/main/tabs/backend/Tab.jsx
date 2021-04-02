@@ -51,7 +51,7 @@ export default function Tab(props) {
     case language.background.title: icon = <Background/>; break;
     case language.search.title: icon = <Search/>; break;
     case language.appearance.title: icon = <Appearance/>; break;
-    case language.order: icon = <Order/>; break;
+    case language.order.title: icon = <Order/>; break;
     case language.language.title: icon = <Language/>; divider = true; break;
     case language.advanced.title: icon = <Settings/>; break;
     case language.experimental.title: icon = <Experimental/>; divider = true; break;

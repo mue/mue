@@ -26,7 +26,7 @@ export default function Settings() {
         <div label={language.background.title}><Background/></div>
         <div label={language.search.title}><Search/></div>
         <div label={language.appearance.title}><Appearance/></div>
-        <div label={language.order}><Order/></div>
+        <div label={language.order.title}><Order/></div>
         <div label={language.language.title}><Language/></div>
         <div label={language.advanced.title}><Advanced/></div>
         <div label={language.experimental.title}><Experimental/></div>

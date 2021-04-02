@@ -9,9 +9,15 @@
             "custom_author": "Custom Author"
           },
           "background": {
-            "custom_colour": "Custom Background Color",
-            "add_colour": "Add color",
-            "favourite": "Favorite"
+            "buttons": {
+              "favourite": "Favorite"
+            },
+            "type": {
+              "custom_colour": "Custom Color/Gradient"
+            },
+            "source": {
+              "add_colour": "Add color"
+            }
           },
           "time": {
             "analogue": {

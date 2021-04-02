@@ -10,7 +10,15 @@ export default function ExperimentalInit() {
 
       switch (code) {
         case 222:
-          debugger;
+          const timeout = localStorage.getItem('debugtimeout');
+
+          if (timeout !== '0') {
+            setTimeout(() => {
+              debugger;
+            }, timeout);
+          } else {
+            debugger;
+          }
           break;
       }
     };

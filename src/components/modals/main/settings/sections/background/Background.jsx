@@ -60,7 +60,6 @@ export default class BackgroundSettings extends React.PureComponent {
 
     const customSettings = (
       <>
-        <h3>{background.source.title}</h3>
         <ul>
           <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
@@ -98,9 +97,9 @@ export default class BackgroundSettings extends React.PureComponent {
         <br/><br/>
   
         <Dropdown label='Type' name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })}>
-          <option value='api'>API</option>
-          <option value='custom'>Custom Image</option>
-          <option value='colour'>Custom Colour/Gradient</option>
+          <option value='api'>{background.type.api}</option>
+          <option value='custom'>{background.type.custom_image}</option>
+          <option value='colour'>{background.type.custom_colour}</option>
         </Dropdown>
         <br/>
 

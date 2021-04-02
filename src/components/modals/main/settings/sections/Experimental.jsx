@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Checkbox from '../Checkbox';
+import Slider from '../Slider';
 //import Text from '../Text';
 
 export default function ExperimentalSettings() {
@@ -13,6 +14,7 @@ export default function ExperimentalSettings() {
       <Checkbox name='animations' text={window.language.modals.main.settings.sections.appearance.animations}/>
       <h3>{experimental.developer}</h3>
       <Checkbox name='debug' text='Debug hotkey (Ctrl + #)'/>
+      <Slider title='Debug timeout' name='debugtimeout' min='0' max='5000' default='0' step='100' display=' miliseconds' />
       {/* <Checkbox name='beta' text='Beta Mode Override'/>
       <Text name='api_override' title='Version Override (format example: 5.0)'/>
       <Text name='api_override' title='API URL Override'/>
@@ -22,6 +24,7 @@ export default function ExperimentalSettings() {
       <Text name='github_override' title='GitHub URL Override'/> 
       <br/><br/>
       */}
+      <br/><br/>
       <button className='reset' style={{'marginLeft': '0px'}} onClick={() => localStorage.clear()}>Clear LocalStorage</button>
     </>
   );
