@@ -329,9 +329,14 @@ li {
 .resetmodal {
   min-height: 300px !important;
   max-width: 300px !important;
+  margin: auto;
 }
 
 .resetfooter {
   position: absolute;
   bottom: 20px;
+}
+
+.resetoverlay {
+  background-color: rgba(0, 0, 0, 0.5);
 }

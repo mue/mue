@@ -52,7 +52,7 @@ export default class AdvancedSettings extends React.PureComponent {
         <p>{advanced.experimental_warning}</p>
         <Checkbox name='experimental' text={this.language.enabled} />
 
-        <Modal onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className={'Modal resetmodal'} overlayClassName={'Overlay'} ariaHideApp={false}>
+        <Modal onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className={'Modal resetmodal'} overlayClassName={'Overlay resetoverlay'} ariaHideApp={false}>
           <ResetModal modalClose={() => this.setState({ resetModal: false })} />
         </Modal>
       </>
