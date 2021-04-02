@@ -42,16 +42,16 @@ ul {
     width: 20px;
     height: 20px;
     border-radius: 12px;
-    background: #ff4757;
+    background: var(--modal-text);
     cursor: pointer;
   }
 
   &::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 12px;
     border: 0;
-    background: #ff4757;
+    background: var(--modal-text);
     cursor: pointer;
   }
 }

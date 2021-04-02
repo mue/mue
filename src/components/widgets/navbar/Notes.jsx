@@ -36,6 +36,10 @@ export default class Notes extends React.PureComponent {
     if (localStorage.getItem('notesPinned') === 'true') {
       document.getElementById('noteContainer').classList.toggle('visibilityshow');
     }
+
+    if (localStorage.getItem('refresh') === 'false') {
+      document.getElementById('noteContainer').style.marginLeft = '-200px';
+    }
   }
 
   render() {
