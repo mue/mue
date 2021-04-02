@@ -76,13 +76,13 @@ export default class About extends React.PureComponent {
         {this.state.loading}
         {this.state.contributors.map((item) => (
           <Tooltip title={item.login} placement='top' key={item.login}>
-            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}></img></a>
+            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}/></a>
           </Tooltip>
         ))}
         { // for those who contributed without opening a pull request
         this.state.other_contributors.map((item) => (
           <Tooltip title={item.login} placement='top' key={item.login}>
-            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}></img></a>
+            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}/></a>
           </Tooltip>
         ))}
         <h3>{this.language.supporters}</h3>

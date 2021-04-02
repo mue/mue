@@ -56,7 +56,7 @@
               "hour_marks": "Hour Marks",
               "minute_marks": "Minute Marks"
             },
-            "percentage_complete": "Percentage of the Day Complete",
+            "percentage_complete": "Percentage Complete",
             "date": {
               "title": "Date",
               "day_of_week": "Day of week",
@@ -182,6 +182,12 @@
             "title": "Advanced",
             "offline_mode": "Offline Mode",
             "data": "Data",
+            "reset_modal": {
+              "title": "WARNING",
+              "question": "Do you want to reset Mue?",
+              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
+              "cancel": "Cancel"
+            },
             "customisation": "Customisation",
             "custom_css": "Custom CSS",
             "custom_js": "Custom JS",

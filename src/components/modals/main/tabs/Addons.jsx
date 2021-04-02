@@ -8,7 +8,7 @@ export default function Addons() {
   return (
     <AddonsTabs>
       <div label='Added'><Added/></div>
-      <div label=''></div>
+      <div label='Sideload'></div>
     </AddonsTabs>
   );
 }
