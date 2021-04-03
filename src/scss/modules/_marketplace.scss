@@ -41,8 +41,8 @@
 
     .details {
       position: absolute;
-      left: 90px;
-      top: 15px;
+      left: 85px;
+      top: -15px;
 
       img {
         margin-left: 10px;
@@ -52,6 +52,7 @@
 
     p {
       margin-top: 5px;
+      line-height: 20px;
     }
 
     &:hover {
@@ -107,6 +108,7 @@ p.description {
 
 .informationContainer {
   float: right;
+  margin-right: 15px;
 }
 
 .productInformation {
@@ -116,9 +118,15 @@ p.description {
   width: 200px;
   border-radius: 12px;
 
+  h4 {
+    cursor: initial !important;
+  }
+
   li {
     margin-left: -4px;
     list-style: none;
+    font-size: 16px;
+    cursor: initial !important;
 
     &.header {
       text-transform: uppercase;

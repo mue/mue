@@ -1,7 +1,6 @@
 import React from 'react';
 
 import WifiOffIcon from '@material-ui/icons/WifiOff';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Item from '../Item';
 import Items from '../Items';
 
@@ -41,9 +40,9 @@ export default class Marketplace extends React.PureComponent {
     switch (type) {
       case 'item':
         let info;
-      // get item info
+        // get item info
         try {
-          info = await (await fetch(`${window.window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
+          info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
         } catch (e) {
           return toast(this.props.toastLanguage.error);
         }
@@ -82,8 +81,8 @@ export default class Marketplace extends React.PureComponent {
   }
 
   async getItems() {
-    const { data } = await (await fetch(window.window.constants.MARKETPLACE_URL + '/all')).json();
-    const featured = await (await fetch(window.window.constants.MARKETPLACE_URL + '/featured')).json();
+    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/all')).json();
+    const featured = await (await fetch(window.constants.MARKETPLACE_URL + '/featured')).json();
 
     this.setState({
       items: data[this.props.type],
@@ -135,21 +134,21 @@ export default class Marketplace extends React.PureComponent {
 
     if (navigator.onLine === false) {
       return errorMessage(
-        <React.Fragment>
+        <>
           <WifiOffIcon/>
           <h1>Offline</h1>
           <p className='description'>Mue down!</p>
-        </React.Fragment>
+        </>
       );
     }
 
     if (localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(
-        <React.Fragment>
+        <>
           <WifiOffIcon/>
           <h1>Offline mode is enabled</h1>
           <p className='description'>Please turn off offline mode to access the marketplace</p>
-        </React.Fragment>
+        </>
       );
     }
 
@@ -158,7 +157,7 @@ export default class Marketplace extends React.PureComponent {
     }
 
     return (
-      <React.Fragment>
+      <>
         <div id='marketplace'>
           <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
             <p>{this.state.featured.title}</p>
@@ -169,8 +168,8 @@ export default class Marketplace extends React.PureComponent {
             items={this.state.items.slice(0, 3)}
             toggleFunction={(input) => this.toggle('item', input)} />
         </div>
-        <Item data={this.state.item_data} button={this.state.button} />
-      </React.Fragment>
+        <Item data={this.state.item_data} button={this.state.button} toggleFunction={() => this.toggle()} />
+      </>
     );
   }
 }

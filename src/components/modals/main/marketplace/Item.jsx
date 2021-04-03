@@ -23,7 +23,7 @@ export default function Item(props) {
   }
 
   // prevent console error
-  let iconsrc = 'https://external-content.duckduckgo.com/iu/?u=' + props.data.icon;
+  let iconsrc = window.constants.DDG_PROXY + props.data.icon;
   if (!props.data.icon) {
     iconsrc = null;
   }
@@ -31,12 +31,12 @@ export default function Item(props) {
   return (
     <div id='item'>
       <br/>
-      <ArrowBackIcon className='backArrow' onClick={props.function} />
+      <ArrowBackIcon className='backArrow' onClick={props.toggleFunction}/>
       <br/>
       <h1>{props.data.name}</h1>
       {props.button}
       <br/><br/>
-      <img alt='product' draggable={false} src={iconsrc} />
+      <img alt='product' draggable='false' src={iconsrc}/>
       <div className='informationContainer'>
         <div className='productInformation'>
           <h4>{language.information}</h4>
