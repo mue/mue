@@ -11,6 +11,9 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 
 <br>
 
+## WARNING
+This is the branch for 5.0, the next version of Mue. For the stable version currently on stores, see the main branch.
+
 ## Table of contents
 * [Screenshot](#screenshot)
 * [Features](#features)
@@ -130,7 +133,7 @@ Please note that we have dropped support for Opera as of Mue 5.0
 [Isaac Saunders](https://github.com/eartharoid) - QA, development, photographer <br/>
 [Wessel Tip](https://github.com/Wessel) - Development <br/>
 ### Translators
-[Wessel Tip](https://github.com/Wessel) - Dutch<br/>
+[Wessel Tip](https://github.com/Wessel), [Heimen Stoffels](https://github.com/Vistaus) - Dutch<br/>
 [Alex Sparkes](https://github.com/alexsparkes), [Maxime](https://github.com/exiam) - French<br/>
 [Anders](https://github.com/FuryingFox) - Norwegian<br/>
 [Pronin Egor](https://github.com/MrZillaGold) - Russian<br/>
