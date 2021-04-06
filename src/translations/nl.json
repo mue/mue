@@ -4,114 +4,131 @@
         "afternoon": "Goedemiddag",
         "evening": "Goedenavond",
         "christmas": "Fijne kerstdagen",
-        "newyear": "Gelukkig nieuw jaar",
-        "halloween": "Fijne halloween"
+        "newyear": "Gelukkig nieuwjaar",
+        "halloween": "Fijne Halloween"
     },
-    "credit": "Afbeelding door",
+    "credit": "Foto van",
     "search": "Zoeken",
     "modals": {
         "title": "Opties",
         "settings": "Instellingen",
-        "addons": "Mijn Extensies",
+        "addons": "Mijn extensies",
         "marketplace": "Marktplaats"
     },
     "settings": {
         "time": {
             "title": "Tijd",
-            "seconds": "Seconden",
-            "twentyfourhour": "24 uurs",
-            "ampm": "AM/PM (12 uurs)",
-            "zero": "Nul Opvulling",
-            "analog": "Analoog"
+            "seconds": "Seconden tonen",
+            "twentyfourhour": "24-uursklok gebruiken",
+            "ampm": "AM/PM (12-uursklok) gebruiken",
+            "zero": "Nulopvulling",
+            "analog": "Analoge klok tonen"
         },
         "greeting": {
-            "title": "Groeten",
-            "events": "Evenementen",
+            "title": "Begroetingen",
+            "events": "Gebeurtenissen",
             "default": "Standaard begroetingsnaam",
-            "name": "Naam Voor Groet"
+            "name": "Naam van begroeting"
         },
         "quote": {
             "title": "Citaat",
-            "copy": "Kopieer Knop"
+            "copy": "Kopieerknop",
+             "tweet": "Tweetknop",
+            "favourite": "Knop 'Toevoegen aan favorieten'"
         },
         "background": {
             "title": "Achtergrond",
-            "API": "Achtergrond API",
-            "blur": "Onscherpte Aanpassen",
-            "customURL": "Aangepaste Achtergrond URL",
-            "custombackground": "Aangepaste Achtergrond",
-            "customcolour": "Aangepaste Achtergrondkleur",
+            "API": "Achtergrond-api",
+            "blur": "Vervaging instellen",
+            "customURL": "Aangepaste achtergrond-url",
+            "custombackground": "Aangepaste achtergrond",
+            "customcolour": "Aangepaste achtergrondkleur",
             "upload": "Uploaden",
-            "addcolour": "Kleur toevoegen"
+            "addcolour": "Kleur toevoegen",
+            "view": "Weergave",
+            "refresh": "Herladen",
+            "disabled": "Uitgeschakeld"
         },
         "searchbar": {
             "title": "Zoekbalk",
-            "searchengine": "Zoekmachine"
+            "searchengine": "Zoekmachine",
+            "custom": "Aangepaste zoekmachine-url"
         },
-        "offline": "Offline Modus",
-        "dark": "Donker Thema",
+        "offline": "Offline-modus",
+        "dark": "Donker thema",
         "experimental": {
             "title": "Experimenteel",
-            "webp": "WebP Gebruiken",
-            "animations": "Animaties"
+            "webp": "WebP gebruiken",
+            "animations": "Animaties gebruiken",
+            "voicesearch": "Spraakgestuurd zoeken gebruiken",
+            "nightmode": "Automatische nachtmodus"
         },
         "language": "Taal",
         "apply": "Toepassen",
-        "reset": "Resetten",
+        "reset": "Herstellen",
         "import": "Importeren",
         "export": "Exporteren"
     },
     "update": {
-        "title": "Veranderingen",
+        "title": "Wijzigingen",
         "offline": {
             "title": "Offline",
-            "description": "Kan veranderingen logboek niet verkrijgen in offline modus"
+            "description": "Het wijzigingslog kan niet worden opgehaald in de offline-modus"
         },
         "error": {
-            "title": "Fout",
-            "content": "Kon niet verbinden met de servers"
+            "title": "Foutmelding",
+            "content": "Er kan geen verbinding worden gemaakt met de servers"
         },
-        "loading": "Aan het laden..."
+        "loading": "Bezig met laden…",
+        "readblog": "Lees ons blog",
+        "contactsupport": "Neem contact met ons op"
     },
     "toasts": {
-        "quote": "Quote Copied",
-        "reset": "Reset successfully",
-        "installed": "Successvol geïnstalleerd",
-        "removed": "Successvol verwijderd",
-        "error": "Iets is verkeerd gegaan"
+        "quote": "Het citaat is gekopieerd",
+        "reset": "Het herstellen is voltooid",
+        "installed": "De installatie is voltooid",
+        "removed": "Het verwijderen is voltooid",
+        "error": "Er is iets misgegaan"
+        "imported": "Het importeren is voltooid"
     },
     "marketplace": {
-        "photo_packs": "Afbeelding Pakketten",
-        "quote_packs": "Citaat Pakketten",
-        "preset_settings": "Vooraf ingestelde instellingen",
-        "themes": "Themas",
+        "photo_packs": "Fotoverzamelingen",
+        "quote_packs": "Citaatverzamelingen",
+        "preset_settings": "Voorinstellingen",
+        "themes": "Thema's",
         "product": {
             "overview": "Overzicht",
             "information": "Informatie",
-            "last_updated": "Laatst Geüpdatet",
+            "last_updated": "Laatst geüpdatet",
             "version": "Versie",
-            "author": "Auteur",
+            "author": "Maker",
             "notice": {
                 "title": "Aankondiging",
-                "description": "De veranderingen gaan in zodra je de pagina herlaad."
+                "description": "Herlaad de pagina om de wijzigingen toe te passen."
             },
             "buttons": {
-                "addtomue": "Voeg aan Mue toe",
-                "remove": "Verwijder"
+                "addtomue": "Toevoegen aan Mue",
+                "remove": "Verwijderen"
+            },
+            "quoteWarning": {
+                "title": "Waarschuwing",
+                "description": "Deze citaatverzameling maakt verbinding met externe servers die kunnen worden gebruikt om je te internetverkeer te tracken!"
             }
         },
         "offline": {
-            "title": "Het ziet er uit dat je offline bent",
-            "description": "Verbind met het internet."
+            "title": "Het lijkt er op dat je niet verbonden bent het internet",
+            "description": "Maak verbinding met het internet."
         },
-        "see_more": "Zie Meer"
+        "see_more": "Meer tonen"
     },
     "addons": {
         "added": "Toegevoegd",
         "empty": {
-            "title": "Het is hier leeg",
-            "description": "Ga naar de marktplaats om een paar extensies toe te veogen.",
-            "button": "Breng me naar de marktplaats"
+            "title": "Het is hier erg leeg",
+            "description": "Ga naar de marktplaats om een paar extensies toe te voegen.",
+            "button": "Open de marktplaats"
+            },
+        "sideload": "Sideloaden"
         }
     }
 }
