@@ -88,7 +88,7 @@
         "reset": "Het herstellen is voltooid",
         "installed": "De installatie is voltooid",
         "removed": "Het verwijderen is voltooid",
-        "error": "Er is iets misgegaan"
+        "error": "Er is iets misgegaan",
         "imported": "Het importeren is voltooid"
     },
     "marketplace": {
