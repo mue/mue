@@ -9,7 +9,7 @@ export default class Dropdown extends React.PureComponent {
     };
   }
 
-  getLabel() {
+  getLabel = () => {
     return this.props.label ? <label>{this.props.label}</label> : null;
   }
 
@@ -39,7 +39,7 @@ export default class Dropdown extends React.PureComponent {
   render() {
     return (
       <>
-        {this.getLabel()}
+        {this.getLabel}
         <select id={this.props.name} value={this.state.value} onChange={this.onChange} style={{width: `${(8*this.state.title.length) + 50}px`}}>
           {this.props.children}
         </select>

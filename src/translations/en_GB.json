@@ -30,16 +30,24 @@
     "main": {
       "title": "Options",
       "loading": "Loading...",
+      "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Settings",
         "addons": "My Add-ons",
         "marketplace": "Marketplace"
+      },
+      "error_boundary": {
+        "title": "Error",
+        "message": "Failed to load this component of Mue",
+        "refresh": "Refresh"
       },
       "settings": {
         "enabled": "Enabled",
         "sections": {
           "time": {
             "title": "Time",
+            "format": "Format",
+            "type": "Type",
             "digital": {
               "title": "Digital",
               "seconds": "Seconds",
@@ -302,6 +310,8 @@
       "question_two": "What bugs did you encounter in your use of Mue?",
       "question_three": "How likely would you be to recommend this version of Mue to a friend or colleague?",
       "question_four": "What do you want adding to the next Mue build?",
+      "not_filled": "Question box must be filled",
+      "success": "Sent successfully!",
       "submit": "Submit"
     }
   },

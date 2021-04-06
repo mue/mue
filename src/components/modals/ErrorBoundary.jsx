@@ -6,6 +6,7 @@ export default class ErrorBoundary extends React.PureComponent {
     this.state = {
       error: false
     };
+    this.language = window.language.modals.main.error_boundary;
   }
 
   static getDerivedStateFromError(error) {
@@ -19,9 +20,9 @@ export default class ErrorBoundary extends React.PureComponent {
     if (this.state.error) {
       return (
         <div style={{'textAlign': 'center'}}>
-          <h1>Error</h1>
-          <p>Failed to load this component of Mue.</p>
-          <button className='refresh' onClick={() => window.location.reload()}>Refresh</button>
+          <h1>{this.language.title}</h1>
+          <p>{this.language.message}</p>
+          <button className='refresh' onClick={() => window.location.reload()}>{this.language.refresh}</button>
         </div>
       );
     }

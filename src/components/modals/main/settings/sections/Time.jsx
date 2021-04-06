@@ -34,7 +34,7 @@ export default class TimeSettings extends React.PureComponent {
     const digitalSettings = (
       <>
         <h3>{time.digital.title}</h3>
-        <Radio title='Format' name='timeformat' options={digitalOptions} />
+        <Radio title={time.format} name='timeformat' options={digitalOptions} />
         <br/>
         <Checkbox name='seconds' text={time.digital.seconds} />
         <Checkbox name='zero' text={time.digital.zero} />
@@ -94,7 +94,7 @@ export default class TimeSettings extends React.PureComponent {
       <>
         <h2>{time.title}</h2>
         <Switch name='time' text={this.language.enabled} />
-        <Dropdown label='Type' name='timeType' onChange={(value) => this.setState({ timeType: value })}>
+        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })}>
           <option value='digital'>{time.digital.title}</option>
           <option value='analogue'>{time.analogue.title}</option>
           <option value='percentageComplete'>{time.percentage_complete}</option>
@@ -103,7 +103,7 @@ export default class TimeSettings extends React.PureComponent {
 
         <h3>{time.date.title}</h3>
         <Switch name='date' text={this.language.enabled} />
-        <Dropdown label='Type' name='dateType' onChange={(value) => this.setState({ dateType: value })}>
+        <Dropdown label={time.type} name='dateType' onChange={(value) => this.setState({ dateType: value })}>
           <option value='long'>{time.date.type.long}</option>
           <option value='short'>{time.date.type.short}</option>
         </Dropdown>

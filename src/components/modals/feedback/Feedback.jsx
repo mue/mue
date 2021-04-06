@@ -12,17 +12,18 @@ export default class FeedbackModal extends React.PureComponent {
       questionfourerror: '',
       formsubmit: ''
     };
+    this.language = window.language.modals.feedback;
   }
 
   async submitForm () {
     let questiontwoerror, questionfourerror;
 
     if (document.getElementById('questiontwo').value.length <= 0) {
-      questiontwoerror = 'Question box must be filled';
+      questiontwoerror = this.language.not_filled;
     }
 
     if (document.getElementById('questionfour').value.length <= 0) {
-      questionfourerror = 'Question box must be filled';
+      questionfourerror = this.language.not_filled;
     }
 
     if (questiontwoerror || questionfourerror) {
@@ -41,7 +42,7 @@ export default class FeedbackModal extends React.PureComponent {
       });
 
       this.setState({
-        formsubmit: 'Sent successfully!'
+        formsubmit: this.language.success
       });
 
       setTimeout(() => {
@@ -51,16 +52,14 @@ export default class FeedbackModal extends React.PureComponent {
   }
 
   render() {
-    const { feedback } = window.language.modals;
-
     return (
       <div className='feedback'>
-        <h1>{feedback.title}</h1>
+        <h1>{this.language.title}</h1>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <>
           <input type='hidden' name='version' value={window.constants.VERSION} />
           <>
-            <label>{feedback.question_one}</label>
+            <label>{this.language.question_one}</label>
             <br/><br/>
             <label className='values'>0</label>
             <input className='range' type='range' min='0' max='10' name='question1' value={this.state.questionone} onChange={(e) => this.setState({ questionone: e.target.value })}/>
@@ -68,12 +67,12 @@ export default class FeedbackModal extends React.PureComponent {
           </>
           <br/><br/>
           <>
-            <label>{feedback.question_two}</label>
+            <label>{this.language.question_two}</label>
             <textarea name='question2' id='questiontwo'/>
             <p className='feedbackerror'>{this.state.questiontwoerror}</p>
           </>
           <>
-            <label>{feedback.question_three}</label>
+            <label>{this.language.question_three}</label>
             <br/><br/>
             <label className='values'>0</label>
             <input className='range' type='range' min='0' max='10' name='question3' value={this.state.questionthree} onChange={(e) => this.setState({ questionthree: e.target.value })}/>
@@ -81,12 +80,12 @@ export default class FeedbackModal extends React.PureComponent {
           </>
           <br/><br/>
           <>
-            <label>{feedback.question_four}</label>
+            <label>{this.language.question_four}</label>
             <textarea name='question4' id='questionfour'/>
             <p className='feedbackerror'>{this.state.questionfourerror}</p>
           </>
           {this.state.formsubmit}
-          <button onClick={() => this.submitForm()}>{feedback.submit}</button>
+          <button onClick={() => this.submitForm()}>{this.language.submit}</button>
         </>
       </div>
     );
