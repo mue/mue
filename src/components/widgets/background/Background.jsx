@@ -16,7 +16,8 @@ export default class Background extends React.PureComponent {
         credit: '',
         location: 'N/A',
         camera: 'N/A',
-        resolution: 'N/A'
+        resolution: 'N/A',
+        url: ''
       }
     };
     this.language = window.language.widgets.background;
@@ -124,10 +125,11 @@ export default class Background extends React.PureComponent {
         this.setState({
           url: data.file,
           photoInfo: {
-            credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ' on Unsplash',
+            credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ` ${this.language.unsplash}`,
             location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
             camera: data.camera || 'N/A',
-            resolution: data.resolution || 'N/A'
+            resolution: data.resolution || 'N/A',
+            url: data.file
           }
         });
       break;

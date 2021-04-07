@@ -5,6 +5,7 @@ import Dropdown from '../../Dropdown';
 import FileUpload from '../../FileUpload';
 import Slider from '../../Slider';
 import Switch from '../../Switch';
+import Radio from '../../Radio';
 
 import ColourSettings from './Colour';
 
@@ -48,13 +49,21 @@ export default class BackgroundSettings extends React.PureComponent {
 
     let backgroundSettings;
 
+    const apiOptions = [
+      {
+        'name': 'Mue',
+        'value': 'mue'
+      },
+      {
+        'name': 'Unsplash',
+        'value': 'unsplash'
+      }
+    ]
+
     const APISettings = (
       <>
         <br/>
-        <Dropdown label={background.source.api} name='backgroundAPI'>
-          <option value='mue'>Mue</option>
-          <option value='unsplash'>Unsplash</option>
-        </Dropdown>
+        <Radio title={background.source.api} options={apiOptions} name='backgroundAPI'/>
       </>
     );
 
@@ -90,6 +99,7 @@ export default class BackgroundSettings extends React.PureComponent {
         <h3>{background.buttons.title}</h3>
         <Checkbox name='view' text={background.buttons.view} />
         <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
+        <Checkbox name='downloadbtn' text={background.buttons.download}/>
 
         <h3>{background.effects.title}</h3>
         <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' />

@@ -12,7 +12,9 @@
     },
     "background": {
       "credit": "Photo by",
-      "information": "Information"
+      "unsplash": "on Unsplash",
+      "information": "Information",
+      "download": "Download"
     },
     "search": "Search",
     "navbar": {
@@ -111,7 +113,8 @@
             "buttons": {
               "title": "Buttons",
               "view": "View",
-              "favourite": "Favourite"
+              "favourite": "Favourite",
+              "download": "Download"
             },
             "effects": {
               "title": "Effects",
