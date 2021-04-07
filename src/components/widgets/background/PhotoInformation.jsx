@@ -5,6 +5,7 @@ import Location from '@material-ui/icons/LocationOn';
 import Camera from '@material-ui/icons/PhotoCamera';
 import Resolution from '@material-ui/icons/Crop';
 import Photographer from '@material-ui/icons/Person';
+import Download from '@material-ui/icons/GetApp';
 
 const toDataURL = async (url) => {
   const response = await fetch(url);
@@ -45,7 +46,8 @@ export default function PhotoInformation(props) {
         <span>{props.info.resolution}</span>
         <Photographer/>
         <span>{props.info.credit.split(` ${language.unsplash}`)[0]}</span>
-        <button className='download' onClick={() => downloadImage(props.info)}>{language.download}</button>
+        <Download/>
+        <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
       </div>
     </div>
   );

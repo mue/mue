@@ -340,3 +340,8 @@ li {
 .resetoverlay {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.welcomeLink {
+  color: var(--modal-text) !important;
+  padding-right: 10px;
+}

@@ -4,22 +4,23 @@ export default class Changelog extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      title: this.props.language.title,
+      title: window.language.modals.update.title,
       date: null,
-      content: this.props.language.title,
-      html: this.props.language.loading,
+      content: window.language.modals.update.title,
+      html: window.language.modals.main.loading,
       image: null
     };
+    this.language = window.language.modals.update;
   }
 
   async getUpdate() {
     const data = await (await fetch(window.constants.API_URL + '/getUpdate')).json();
   
     if (data.statusCode === 500 || data.title === null) {
-      const supportText = `<br/><p>${this.props.language.contact_support}: <a target='_blank' class='modalLink' href='https://muetab.com/contact'>https://muetab.com/contact</a></p>`;
+      const supportText = `<br/><p>${this.language.contact_support}: <a target='_blank' class='modalLink' style='padding-left: 0px' href='https://muetab.com/contact'>https://muetab.com/contact</a></p>`;
       return this.setState({
-        title: this.props.language.error.title,
-        html: this.props.language.error.description + supportText
+        title: this.language.error.title,
+        html: this.language.error.description + supportText
       });
     }
   
@@ -35,8 +36,8 @@ export default class Changelog extends React.PureComponent {
    componentDidMount() {
     if (localStorage.getItem('offlineMode') === 'true') {
       return this.setState({
-        title: this.props.language.offline.title,
-        html: this.props.language.offline.description
+        title: this.language.offline.title,
+        html: this.language.offline.description
       });
     }
   

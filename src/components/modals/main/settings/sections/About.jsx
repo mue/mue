@@ -1,6 +1,9 @@
 import React from 'react';
 
 import Tooltip from '@material-ui/core/Tooltip';
+import EmailIcon from '@material-ui/icons/Email';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import ForumIcon from '@material-ui/icons/Forum';
 
 const other_contributors = require('../../../../../modules/other_contributors.json');
 
@@ -68,10 +71,17 @@ export default class About extends React.PureComponent {
         <img draggable='false' style={{'height': '100px', 'width': 'auto'}} src='./././icons/logo_horizontal.png' alt='Mue logo'></img>
         <p>{this.language.copyright} 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
         <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
+
+        <h3>{window.language.modals.welcome.support}</h3>
+        <a href='mailto:hello@muetab.com' className='welcomeLink' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
+        <a href='https://twitter.com/getmue' className='welcomeLink' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
+        <a href='https://discord.gg/zv8C9F8' className='welcomeLink' target='_blank' rel='noopener noreferrer'><ForumIcon/></a>
+
         <h3>{this.language.resources_used.title}</h3>
         <p>Pexels ({this.language.resources_used.bg_images})</p>
         <p>Google ({this.language.resources_used.pin_icon})</p>
         <p>Undraw ({this.language.resources_used.welcome_img})</p>
+
         <h3>{this.language.contributors}</h3>
         {this.state.loading}
         {this.state.contributors.map((item) => (
@@ -85,6 +95,7 @@ export default class About extends React.PureComponent {
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}/></a>
           </Tooltip>
         ))}
+
         <h3>{this.language.supporters}</h3>
         {this.state.loading}
         {this.state.sponsors.map((item) => (
@@ -92,6 +103,7 @@ export default class About extends React.PureComponent {
             <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
           </Tooltip>
         ))}
+
         <h3>{this.language.photographers}</h3>
         {this.state.loading}
         <p>{this.state.photographers}</p>
