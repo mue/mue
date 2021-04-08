@@ -1,0 +1,75 @@
+.quicklinks {
+  position: relative;
+
+  h3 {
+    text-shadow: none;
+    margin: 0;
+  }
+}
+
+.quicklinkscontainer {
+  padding: 15px;
+  visibility: hidden;
+  background-color: var(--background);
+  color: var(--modal-text);
+  text-align: center;
+  border-radius: 12px;
+  position: absolute;
+  top: 80%;
+  margin-left: -140px;
+  margin-top: 5px;
+
+  svg {
+    float: left;
+  }
+
+  ::placeholder {
+    color: #636e72;
+    opacity: 1;
+  }
+
+}
+
+.quicklinks:hover .quicklinkscontainer {
+  visibility: visible;
+}
+
+textarea {
+  border: none;
+  width: 200px;
+  resize: none;
+  height: 100px;
+  margin: 10px;
+}
+
+.topbarquicklinks {
+  svg {
+    font-size: 46px;
+    padding: 9px;
+  }
+
+  h3 {
+    font-size: 46px;
+    margin-right: 20px;
+  }
+
+  h4 {
+    margin: 0;
+  }
+}
+
+.dark textarea {
+  background-color: #2f3542;
+  color: white;
+}
+
+.quicklinks > button {
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  background: none;
+}
+
+.quicklinks-container > a, .quicklinks-container > .quicklinks > button {
+  display: inline;
+}

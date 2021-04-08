@@ -22,7 +22,7 @@ export default class Modals extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('showWelcome') === 'true') {
+    if (localStorage.getItem('showWelcome') === 'true' && window.location.search !== '?nointro=true') {
       this.setState({
         welcomeModal: true
       });

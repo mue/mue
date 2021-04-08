@@ -41,25 +41,3 @@
   text-decoration: none;
   color: white;
 }
-
-.view {
-  right: 25px;
-}
-
-.favourite {
-  right: 50px;
-  padding-right: 5px;
-}
-
-.view,
-.favourite {
-  bottom: 10px;
-  position: absolute;
-  transition: all 0.5s ease 0s;
-  width: auto;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}

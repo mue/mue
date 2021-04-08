@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Tooltip from '@material-ui/core/Tooltip';
+
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 
 export default class View extends React.PureComponent {
@@ -19,7 +21,7 @@ export default class View extends React.PureComponent {
 
   viewStuff() {
     // elements to hide
-    const elements = ['.searchBar', '.navbar-container', '.clock', '.greeting', '.quotediv', 'time'];
+    const elements = ['.searchBar', '.clock', '.greeting', '.quotediv', 'time'];
 
     elements.forEach((element) => {
       try {
@@ -49,8 +51,8 @@ export default class View extends React.PureComponent {
       return null;
     }
 
-    return <div className='view'>
-      <FullscreenIcon onClick={() => this.viewStuff()} />
-    </div>
+    return <Tooltip title='View' placement='top'>
+      <FullscreenIcon onClick={() => this.viewStuff()} className='topicons' />
+    </Tooltip>
   }
 }

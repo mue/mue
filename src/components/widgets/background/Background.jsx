@@ -14,9 +14,6 @@ export default class Background extends React.PureComponent {
       photoInfo: {
         hidden: false,
         credit: '',
-        location: 'N/A',
-        camera: 'N/A',
-        resolution: 'N/A',
         url: ''
       }
     };
@@ -95,8 +92,7 @@ export default class Background extends React.PureComponent {
           return this.setState({
              url: favourited.url,
              photoInfo: {
-              credit: favourited.credit,
-              location: favourited.location
+              credit: favourited.credit
             }
           });
         }
@@ -108,7 +104,7 @@ export default class Background extends React.PureComponent {
         switch (backgroundAPI) {
           case 'unsplash':
             requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
-          break;
+            break;
           // Defaults to Mue
           default:
             requestURL = `${window.constants.API_URL}/getImage?category=Outdoors`;

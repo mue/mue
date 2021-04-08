@@ -7,6 +7,7 @@ import Search from './search/Search';
 import Maximise from './background/Maximise';
 import Favourite from './background/Favourite';
 import Date from './time/Date';
+import QuickLinks from './quicklinks/QuickLinks';
 
 export default class Widgets extends React.PureComponent {
   constructor() {
@@ -16,7 +17,8 @@ export default class Widgets extends React.PureComponent {
       time: this.enabled('time') ? <Clock/> : null,
       greeting: this.enabled('greeting') ? <Greeting/> : null,
       quote: this.enabled('quote') ? <Quote/> : null,
-      date: this.enabled('date') ? <Date/> : null
+      date: this.enabled('date') ? <Date/> : null,
+      quicklinks: this.enabled('quicklinksenabled') ? <QuickLinks/> : null
     }
   }
 
@@ -77,15 +79,13 @@ export default class Widgets extends React.PureComponent {
         elements.push(<React.Fragment key={element}>{this.widgets[element]}</React.Fragment>);
       });
     } else {
-      elements = ['greeting', 'time', 'quote', 'date'];
+      elements = ['greeting', 'time', 'quicklinks', 'quote', 'date'];
     }
 
     return (
       <div id='widgets'>
         {this.enabled('searchBar') ? <Search/> : null}
         {elements}
-        {this.enabled('view') ? <Maximise/> : null}
-        {this.enabled('favouriteEnabled') ? <Favourite/> : null}
       </div>
     );
   }

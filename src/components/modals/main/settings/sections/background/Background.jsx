@@ -64,6 +64,14 @@ export default class BackgroundSettings extends React.PureComponent {
       <>
         <br/>
         <Radio title={background.source.api} options={apiOptions} name='backgroundAPI'/>
+        <br/>
+        <Dropdown label='Category' name='apiCategory'>
+          <option value='wildlife'>Landscapes</option>
+          <option value='wildlife'>Wildlife</option>
+          <option value='nature'>Vehicles</option>
+          <option value='nature'>Cities</option>
+          <option value='nature'>Castles</option>
+        </Dropdown>
       </>
     );
 

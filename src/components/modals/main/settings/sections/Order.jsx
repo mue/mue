@@ -33,7 +33,7 @@ export default class OrderSettings extends React.PureComponent {
   }
 
   reset = () => {
-    localStorage.setItem('order', JSON.stringify(['greeting', 'time', 'quote', 'date']));
+    localStorage.setItem('order', JSON.stringify(['greeting', 'time', 'quicklinks', 'quote', 'date']));
   
     this.setState({
       items: JSON.parse(localStorage.getItem('order'))

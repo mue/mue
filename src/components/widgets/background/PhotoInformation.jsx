@@ -32,22 +32,25 @@ export default function PhotoInformation(props) {
 
   return (
     <div className='photoInformation'>
-      <h1>{language.credit} {props.info.credit}</h1>
+      <h1>{language.credit} <span id='credit'>{props.info.credit}</span></h1>
       <Info className='photoInformationHover'/>
       <div className={props.className || 'infoCard'}>
         <Info className='infoIcon'/>
         <h1>{language.information}</h1>
         <hr/>
         <Location/>
-        <span>{props.info.location}</span>
+        <span>{props.info.location || 'N/A'}</span>
         <Camera/>
-        <span>{props.info.camera}</span>
+        <span>{props.info.camera || 'N/A'}</span>
         <Resolution/>
-        <span>{props.info.resolution}</span>
+        <span>{props.info.resolution || 'N/A'}</span>
         <Photographer/>
         <span>{props.info.credit.split(` ${language.unsplash}`)[0]}</span>
-        <Download/>
-        <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
+        {(localStorage.getItem('downloadbtn') === 'true') ? 
+          <>
+            <Download/>
+            <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
+          </> : null}
       </div>
     </div>
   );

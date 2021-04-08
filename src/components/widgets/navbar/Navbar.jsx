@@ -3,10 +3,13 @@ import React from 'react';
 import RefreshIcon from '@material-ui/icons/RefreshRounded';
 import Gear from '@material-ui/icons/SettingsRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
-import Tooltip from '@material-ui/core/Tooltip';
 import Report from '@material-ui/icons/SmsFailed';
 
+import Tooltip from '@material-ui/core/Tooltip';
+
 import Notes from './Notes';
+import View from '../background/Maximise';
+import Favourite from '../background/Favourite';
 
 import './scss/index.scss';
 
@@ -15,6 +18,9 @@ export default function Navbar(props) {
 
   return (
     <div className='navbar-container'>
+      {(localStorage.getItem('view') === 'true') ? <View/> :null}
+      {(localStorage.getItem('favouriteEnabled') === 'true') ? <Favourite/> :null}
+  
       {(localStorage.getItem('notesEnabled') === 'true') ?
         <div className='notes'>
           <NotesIcon className='topicons'/>
