@@ -28,7 +28,7 @@ export default class Added extends React.PureComponent {
         icon: ''
       },
       button: ''
-    }
+    };
     this.buttons = {
       uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>Remove</button>,
     }

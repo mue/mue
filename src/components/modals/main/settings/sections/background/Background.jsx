@@ -21,19 +21,11 @@ export default class BackgroundSettings extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  resetItem(key) {
-    switch (key) {
-      case 'customBackground':
-        localStorage.setItem('customBackground', '');
-        this.setState({
-          customBackground: ''
-        });
-        break;
-
-      default:
-        toast('resetItem requires a key!');
-    }
-
+  resetCustom() {
+    localStorage.setItem('customBackground', '');
+    this.setState({
+      customBackground: ''
+    });
     toast(this.language.toasts.reset);
   }
 
@@ -42,6 +34,25 @@ export default class BackgroundSettings extends React.PureComponent {
     this.setState({
       customBackground: e.target.result
     });
+  }
+
+  videoCustomSettings = () => {
+    const customBackground = this.state.customBackground;
+
+    if (customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
+      return (
+        <>
+          <Checkbox name='backgroundVideoLoop' text='Loop Video'/>
+          <Checkbox name='backgroundVideoMute' text='Mute Video'/>
+        </>
+      )
+    } else {
+      return null;
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('customBackground', this.state.customBackground);
   }
 
   render() {
@@ -78,22 +89,21 @@ export default class BackgroundSettings extends React.PureComponent {
     const customSettings = (
       <>
         <ul>
-          <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
+          <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetCustom()}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
         </ul>
+        {this.videoCustomSettings()}
         <ul>
-          <p>{background.source.custom_background} <span className='modalLink' onClick={() => this.resetItem('customBackground')}>{this.language.buttons.reset}</span></p>
+          <p>{background.source.custom_background} <span className='modalLink' onClick={() => this.resetCustom()}>{this.language.buttons.reset}</span></p>
           <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{background.source.upload}</button>
           <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' loadFunction={(e) => this.fileUpload(e)} />
         </ul>
       </>
     );
 
-    const colourSettings = <ColourSettings/>;
-
     switch (this.state.backgroundType) {
       case 'custom': backgroundSettings = customSettings; break;
-      case 'colour': backgroundSettings = colourSettings; break;
+      case 'colour': backgroundSettings = <ColourSettings/>; break;
       // API
       default: backgroundSettings = APISettings; break;
     }

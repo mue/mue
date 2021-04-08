@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
+    "@babel/eslint-parser": "^7.13.14",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.12",
@@ -36,6 +37,9 @@
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.0",
+    "eslint": "^7.23.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-webpack-plugin": "^2.5.3",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.4.0",
     "sass": "^1.32.8",
@@ -50,9 +54,6 @@
     "build": "webpack --mode=production",
     "chrome": "cp manifest/chrome.json build/manifest.json",
     "firefox": "cp manifest/firefox.json build/manifest.json"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

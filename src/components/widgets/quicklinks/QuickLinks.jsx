@@ -42,7 +42,7 @@ export default class QuickLinks extends React.PureComponent {
       <div className='quicklinks-container'>
         {this.state.items.map((item) => (
           <Tooltip title={item.name} key={item.name}>
-            <a href={item.url}><img src={'https://s2.googleusercontent.com/s2/favicons?domain_url=' + item.url}/></a>
+            <a href={item.url}><img src={'https://s2.googleusercontent.com/s2/favicons?sz=64&domain_url=' + item.url} alt={item.name}/></a>
           </Tooltip>
         ))}
         <div className='quicklinks'>

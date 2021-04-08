@@ -34,28 +34,6 @@ export default class Background extends React.PureComponent {
     });
   }
 
-  setBackground() {
-    // Brightness
-    let brightness = localStorage.getItem('brightness');
-    if (localStorage.getItem('brightnessTime') && new Date().getHours() > 18) {
-      brightness = 75;
-    }
-
-    if (this.state.url !== '') {
-      const url = this.ddgproxy ? window.constants.DDG_PROXY + this.state.url : this.state.url;
-
-      document.querySelector('#backgroundImage').setAttribute(
-        'style',
-        `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
-      );
-    } else {
-      document.querySelector('#backgroundImage').setAttribute(
-        'style',
-        `${this.state.style}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
-      );
-    }
-  }
-
   offlineBackground() {
     const offlineImages = require('./offline_images.json');
 
@@ -76,6 +54,28 @@ export default class Background extends React.PureComponent {
         credit: photographer
       }
     });
+  }
+
+  setBackground() {
+    // Brightness
+    let brightness = localStorage.getItem('brightness');
+    if (localStorage.getItem('brightnessTime') && new Date().getHours() > 18) {
+      brightness = 75;
+    }
+
+    if (this.state.url !== '') {
+      const url = this.ddgproxy ? window.constants.DDG_PROXY + this.state.url : this.state.url;
+
+      document.querySelector('#backgroundImage').setAttribute(
+        'style',
+        `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+      );
+    } else {
+      document.querySelector('#backgroundImage').setAttribute(
+        'style',
+        `${this.state.style}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+      );
+    }
   }
 
   // Main background getting function
@@ -140,7 +140,7 @@ export default class Background extends React.PureComponent {
           const hexColorRegex = /#[0-9a-fA-F]{6}/s;
           if (hexColorRegex.exec(customBackgroundColour)) {
             // Colour use to be simply a hex colour or a NULL value before it was a JSON object. This automatically upgrades the hex colour value to the new standard. (NULL would not trigger an exception)
-            gradientSettings = { "type": "linear", "angle": "180", "gradient": [{ "colour": colour, "stop": 0 }] };
+            gradientSettings = { 'type': 'linear', 'angle': '180', 'gradient': [{ 'colour': customBackgroundColour, 'stop': 0 }] };
             localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
           }
         }
@@ -155,7 +155,7 @@ export default class Background extends React.PureComponent {
         const customBackground = localStorage.getItem('customBackground');
         if (customBackground !== '') {
           // video background
-          if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) { 
+          if (customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
             return this.setState({
               url: customBackground,
               video: true,
@@ -203,16 +203,32 @@ export default class Background extends React.PureComponent {
 
   // only set once we've got the info
   componentDidUpdate() {
+    if (this.state.video === true) {
+      return;
+    }
+
     this.setBackground();
   }
 
   render() {
+    if (this.state.video === true) {
+      const checkValue = (setting) => {
+        return (localStorage.getItem(setting) === 'true');
+      };
+
+      return (
+        <video autoPlay muted={checkValue('backgroundVideoMute')} loop={checkValue('backgroundVideoLoop')} id='backgroundVideo'>
+          <source src={this.state.url}/>
+        </video>
+      );
+    }
+
     return (
-      <React.Fragment>
+      <>
         <div id='backgroundImage'/>
         {(this.state.photoInfo.credit !== '') ? <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
         : null}
-      </React.Fragment>
+      </>
     );
   }
 }
