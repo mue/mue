@@ -37,7 +37,7 @@ export default class ColourSettings extends React.PureComponent {
     toast(this.language.toasts.reset);
   }
 
-  InitializeColorPickerState(gradientSettings) {
+  initialiseColorPickerState(gradientSettings) {
     this.GradientPickerInitalState = {
       points: gradientSettings.gradient.map((g) => {
         const rgb = hexToRgb(g.colour);
@@ -145,7 +145,7 @@ export default class ColourSettings extends React.PureComponent {
       let gradientInputs;
       if (gradientHasMoreThanOneColour) {
         if (this.GradientPickerInitalState === undefined) {
-          this.InitializeColorPickerState(this.state.gradientSettings);
+          this.initialiseColorPickerState(this.state.gradientSettings);
         }
 
         gradientInputs = (

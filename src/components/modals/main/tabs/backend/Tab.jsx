@@ -79,5 +79,5 @@ export default function Tab(props) {
       </li>
       {(divider === true) ? <hr/> : null}
     </>
-  )
+  );
 }

@@ -7,7 +7,7 @@ export default function rgbToHSv({ red, green, blue }) {
 
   const v = Math.max(rabs, gabs, babs);
   const diff = v - Math.min(rabs, gabs, babs);
-  const diffc = c => (v - c) / 6 / diff + 1 / 2;
+  const diffc = (c) => (v - c) / 6 / diff + 1 / 2;
 
   if (diff === 0) {
     h = 0;
@@ -18,7 +18,7 @@ export default function rgbToHSv({ red, green, blue }) {
     gg = diffc(gabs);
     bb = diffc(babs);
 
-    if (rabs === v){
+    if (rabs === v) {
       h = bb - gg;
     } else if (gabs === v) {
       h = (1 / 3) + rr - bb;

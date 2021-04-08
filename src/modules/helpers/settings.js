@@ -1,4 +1,4 @@
-import ExperimentalInit from './experimental';
+import experimentalInit from './experimental';
 
 const defaultSettings = require('../default_settings.json');
 const languages = require('../languages.json');
@@ -114,7 +114,7 @@ export default class SettingsFunctions {
     }
 
     if (localStorage.getItem('experimental') === 'true') {
-      ExperimentalInit();
+      experimentalInit();
     }
 
     const widgetzoom = localStorage.getItem('widgetzoom');

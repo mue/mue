@@ -26,9 +26,9 @@ export default class Search extends React.PureComponent {
 
     voiceSearch.onresult = (event) => {
       searchText.value = event.results[0][0].transcript;
-    }
+    };
 
-    voiceSearch.onend = () =>{
+    voiceSearch.onend = () => {
       setTimeout(() => {
         window.location.href = this.state.url + `?${this.state.query}=` + searchText.value;
       }, 1000);
@@ -46,7 +46,7 @@ export default class Search extends React.PureComponent {
     let microphone = null;
 
     const setting = localStorage.getItem('searchEngine');
-    const info = searchEngines.find(i => i.settingsName === setting);
+    const info = searchEngines.find((i) => i.settingsName === setting);
 
     if (info !== undefined) {
       url = info.url;

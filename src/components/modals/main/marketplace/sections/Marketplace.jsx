@@ -29,7 +29,7 @@ export default class Marketplace extends React.PureComponent {
         version: '1.0.0',
         icon: ''
       }
-    }
+    };
     this.buttons = {
       uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>Remove</button>,
       install: <button className='addToMue' onClick={() => this.manage('install')}>Add to Mue</button>

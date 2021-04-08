@@ -13,7 +13,7 @@ export default function hexToRgb(value) {
       value = value.slice(1, value.length);
     }
 
-    if (value.length === 3){
+    if (value.length === 3) {
       value = value.replace(regexp, '$1$1$2$2$3$3');
     }
 
