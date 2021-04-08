@@ -51,8 +51,10 @@ export default class View extends React.PureComponent {
       return null;
     }
 
-    return <Tooltip title='View' placement='top'>
-      <FullscreenIcon onClick={() => this.viewStuff()} className='topicons' />
-    </Tooltip>
+    return (
+      <Tooltip title='View' placement='top'>
+        <FullscreenIcon onClick={() => this.viewStuff()} className='topicons' />
+      </Tooltip>
+    );
   }
 }

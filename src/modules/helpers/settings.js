@@ -91,12 +91,12 @@ export default class SettingsFunctions {
         url = `@import url('https://fonts.googleapis.com/css2?family=${font}&display=swap');`;
       }
 
-      const fontWeight = localStorage.getItem('fontWeight');
+      const fontWeight = localStorage.getItem('fontweight');
       if (fontWeight) {
         fontweight = `font-weight: ${fontWeight};`;
       }
 
-      const fontStyle = localStorage.getItem('fontStyle');
+      const fontStyle = localStorage.getItem('fontstyle');
       if (fontStyle) {
         fontstyle = `font-style: ${fontStyle};`;
       }

@@ -19,7 +19,7 @@ export default class Widgets extends React.PureComponent {
       quote: this.enabled('quote') ? <Quote/> : null,
       date: this.enabled('date') ? <Date/> : null,
       quicklinks: this.enabled('quicklinksenabled') ? <QuickLinks/> : null
-    }
+    };
   }
 
   enabled(key) {
@@ -75,7 +75,7 @@ export default class Widgets extends React.PureComponent {
     const order = JSON.parse(localStorage.getItem('order'));
 
     if (order) {
-      order.forEach(element => {
+      order.forEach((element) => {
         elements.push(<React.Fragment key={element}>{this.widgets[element]}</React.Fragment>);
       });
     } else {

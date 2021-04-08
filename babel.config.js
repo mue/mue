@@ -3,4 +3,4 @@ module.exports = {
   plugins: ['@babel/plugin-proposal-class-properties', ['@babel/transform-runtime', {
     'regenerator': true
   }]]
-}
+};

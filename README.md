@@ -73,16 +73,16 @@ Please note that we have dropped support for Opera as of Mue 5.0
 [GitHub Releases](https://github.com/mue/mue/releases)
 
 ## Development
-#### Requirements
+### Requirements
   * [Git](https://git-scm.com/)
   * [Node.JS](https://nodejs.org/)
   * A suitable browser
-#### Starting
+### Starting
   1. Clone the repository using `git clone https://github.com/mue/mue.git`
   2. Run `yarn` or `npm i` to install all needed dependencies
   3. Run `yarn start` or `npm start` to start testing
   4. Code your heart out! (See the sections below for how to build the extension)
-#### Building
+### Building
 <details>
   <summary><b>Chrome/Edge (Chromium)</b> (Click to expand)</summary>
   <ol>

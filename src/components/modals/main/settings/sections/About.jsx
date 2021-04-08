@@ -17,7 +17,7 @@ export default class About extends React.PureComponent {
       photographers: [],
       update: window.language.modals.main.settings.sections.about.version.checking_update,
       loading: window.language.modals.main.loading
-    }
+    };
     this.language = window.language.modals.main.settings.sections.about;
   }
 

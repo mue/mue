@@ -12,7 +12,7 @@ export default class Text extends React.PureComponent {
   }
 
   handleChange = (e) => {
-    const { value } = e.target;
+    let { value } = e.target;
   
     // Alex wanted font to work with montserrat and Montserrat, so I made it work
     if (this.props.upperCaseFirst === true) {

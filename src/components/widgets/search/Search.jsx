@@ -50,7 +50,9 @@ export default class Search extends React.PureComponent {
 
     if (info !== undefined) {
       url = info.url;
-      if (info.query) query = info.query;
+      if (info.query) {
+        query = info.query;
+      }
     }
 
     if (setting === 'custom') {

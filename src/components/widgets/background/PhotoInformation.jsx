@@ -11,7 +11,7 @@ const toDataURL = async (url) => {
   const response = await fetch(url);
   const blob = await response.blob();
   return URL.createObjectURL(blob);
-}
+};
 
 const downloadImage = async (info) => {
   const link = document.createElement('a');
@@ -21,7 +21,7 @@ const downloadImage = async (info) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-}
+};
 
 export default function PhotoInformation(props) {
   const language = window.language.widgets.background;

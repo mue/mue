@@ -93,7 +93,7 @@ export default class Clock extends React.PureComponent {
 
     const checkValue = (setting) => {
       return (localStorage.getItem(setting) === 'true');
-    }
+    };
 
     if (localStorage.getItem('timeType') === 'analogue') {
       clockHTML = (

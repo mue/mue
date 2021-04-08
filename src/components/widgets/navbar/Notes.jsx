@@ -12,7 +12,7 @@ export default class Notes extends React.PureComponent {
     this.state = {
       notes: localStorage.getItem('notes') || ''
     };
-    this.language = window.language.widgets.navbar.notes
+    this.language = window.language.widgets.navbar.notes;
   }
 
   setNotes = (e) => {
