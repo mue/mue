@@ -12,6 +12,8 @@ import Advanced from '../settings/sections/Advanced';
 import Changelog from '../settings/sections/Changelog';
 import Order from '../settings/sections/Order';
 import Experimental from '../settings/sections/Experimental';
+import QuickLinks from '../settings/sections/QuickLinks';
+import Weather from '../settings/sections/Weather';
 
 import Tabs from './backend/Tabs';
 
@@ -25,6 +27,8 @@ export default function Settings() {
         <div label={language.greeting.title}><Greeting/></div>
         <div label={language.background.title}><Background/></div>
         <div label={language.search.title}><Search/></div>
+        <div label={language.quicklinks.title}><QuickLinks/></div>
+        <div label={language.weather.title}><Weather/></div>
         <div label={language.appearance.title}><Appearance/></div>
         <div label={language.order.title}><Order/></div>
         <div label={language.language.title}><Language/></div>

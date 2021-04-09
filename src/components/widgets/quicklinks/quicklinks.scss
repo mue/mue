@@ -9,13 +9,12 @@
 
 .quicklinkscontainer {
   padding: 15px;
-  visibility: hidden;
   background-color: var(--background);
   color: var(--modal-text);
   text-align: center;
   border-radius: 12px;
   position: absolute;
-  top: 80%;
+  top: 56%;
   margin-left: -140px;
   margin-top: 5px;
 
@@ -27,10 +26,6 @@
     color: #636e72;
     opacity: 1;
   }
-}
-
-.quicklinks:hover .quicklinkscontainer {
-  visibility: visible;
 }
 
 textarea {
@@ -62,26 +57,30 @@ textarea {
   color: white;
 }
 
-.quicklinks > button {
+.quicklinks {
   border: none;
   color: #fff;
   font-size: 22px;
   background: none;
+  cursor: pointer;
 }
 
-.quicklinks-container > a, .quicklinks-container > .quicklinks > button {
+.quicklinks-container>a,
+.quicklinks-container>.quicklinks>button {
   display: inline;
 }
 
-.quicklinks-container { 
+.quicklinks-container {
   img {
     height: 32px;
     width: auto;
     transition: transform .2s;
+
     &:hover {
       transform: scale(1.1);
     }
   }
+
   a {
     margin: 5px;
   }

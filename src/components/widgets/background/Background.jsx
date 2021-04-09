@@ -24,11 +24,13 @@ export default class Background extends React.PureComponent {
   gradientStyleBuilder(gradientSettings) {
     const { type, angle, gradient } = gradientSettings;
     let style = `background: ${gradient[0].colour};`;
+
     if (gradient.length > 1) {
       // Note: Append the gradient for additional browser support.
       const stepStyles = gradient.map(g => ` ${g.colour} ${g.stop}%`).join();
       style += ` background: ${type}-gradient(${(type === 'linear' ? (`${angle}deg,`) : '')}${stepStyles})`;
     }
+
     this.setState({
       style: style
     });
@@ -132,7 +134,7 @@ export default class Background extends React.PureComponent {
 
       case 'colour':
         // background colour
-        const customBackgroundColour = localStorage.getItem('customBackgroundColour');
+        const customBackgroundColour = localStorage.getItem('customBackgroundColour') || {"angle":"180","gradient":[{"colour":"#ffb032","stop":0}],"type":"linear"};
         let gradientSettings = '';
         try {
           gradientSettings = JSON.parse(customBackgroundColour);

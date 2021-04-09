@@ -4,10 +4,9 @@ import Clock from './time/Clock';
 import Greeting from './greeting/Greeting';
 import Quote from './quote/Quote';
 import Search from './search/Search';
-import Maximise from './background/Maximise';
-import Favourite from './background/Favourite';
 import Date from './time/Date';
 import QuickLinks from './quicklinks/QuickLinks';
+import Weather from './weather/Weather';
 
 export default class Widgets extends React.PureComponent {
   constructor() {
@@ -65,6 +64,7 @@ export default class Widgets extends React.PureComponent {
           e.preventDefault();
           e.stopPropagation();
           break;
+        default: break;
       }
     };
   }
@@ -86,6 +86,7 @@ export default class Widgets extends React.PureComponent {
       <div id='widgets'>
         {this.enabled('searchBar') ? <Search/> : null}
         {elements}
+        {this.enabled('weatherEnabled') ? <Weather/> : null}
       </div>
     );
   }

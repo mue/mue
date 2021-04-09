@@ -1,0 +1,26 @@
+.weather {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  span {
+    text-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  }
+
+  svg {
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+
+    font-size: 0.8em;
+
+  }
+
+  .loc {
+    font-size: 0.7em;
+    margin: 0;
+    padding: 0;
+  }
+
+  .minmax {
+    font-size: 0.5em;
+  }
+}

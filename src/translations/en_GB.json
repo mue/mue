@@ -142,6 +142,12 @@
             "custom": "Custom Search URL",
             "voice_search": "Voice Search"
           },
+          "weather": {
+            "title": "Weather"
+          },
+          "quicklinks": {
+            "title": "Quick Links"
+          },
           "appearance": {
             "title": "Appearance",
             "theme": {

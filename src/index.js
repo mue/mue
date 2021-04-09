@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
+import * as Constants from './modules/constants';
 
 import './scss/index.scss';
 // the toast css is based on default so we need to import it
@@ -23,7 +24,6 @@ if (window.languagecode !== 'en_GB' || window.languagecode !== 'en_US') {
 }
 
 // window.constants
-import * as Constants from './modules/constants';
 window.constants = Constants;
 
 ReactDOM.render(

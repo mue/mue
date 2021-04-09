@@ -125,7 +125,7 @@
   },
   {
     "name": "order",
-    "value": "[\"greeting\", \"time\", \"quote\", \"date\"]"
+    "value": "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\"]"
   },
   {
     "name": "theme",
@@ -146,5 +146,17 @@
   {
     "name": "debugtimeout",
     "value": 0
+  },
+  {
+    "name": "quicklinks",
+    "value": "[]"
+  },
+  {
+    "name": "quicklinksenabled",
+    "value": false
+  },
+  {
+    "name": "weatherEnabled",
+    "value": false
   }
 ]

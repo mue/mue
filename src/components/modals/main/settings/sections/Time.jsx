@@ -88,6 +88,7 @@ export default class TimeSettings extends React.PureComponent {
     switch (this.state.dateType) {
       case 'short': dateSettings = shortSettings; break;
       case 'long': dateSettings = longSettings; break;
+      default: break;
     }
 
     return (

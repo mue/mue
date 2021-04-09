@@ -1,6 +1,7 @@
 export const API_URL = 'https://api.muetab.com';
 export const UNSPLASH_URL = 'https://unsplash.muetab.com';
 export const MARKETPLACE_URL = 'https://marketplace.muetab.com';
+export const WEATHER_URL = 'https://mueweather.ohlookitsderpy.workers.dev';
 export const WEBSITE_URL = 'https://muetab.com';
 export const SPONSORS_URL = 'https://sponsors.muetab.com';
 export const GITHUB_URL = 'https://api.github.com';
