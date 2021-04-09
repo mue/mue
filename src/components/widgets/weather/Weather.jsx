@@ -68,18 +68,19 @@ export default class Weather extends React.PureComponent {
   }
 
   render() {
+    const checkValue = (setting) => {
+      return (localStorage.getItem(setting) === 'true');
+    };
+  
     return (
       <div className='weather'>
         <WeatherIcon name={this.state.icon}/>
         <span>{this.state.weather.temp + this.state.temp_text}</span>
         <br/>
-        <span className='minmax'>{this.state.weather.temp_min + this.state.temp_text} {this.state.weather.temp_max + this.state.temp_text}</span>
-        <br/>
-        <span className='loc'><WiHumidity/>{this.state.weather.humidity}%</span>
-        <br/>
-        <span className='loc'><WiWindy/>{this.state.weather.windspeed}<span className='minmax'> m/s</span></span>
-        <br/>
-        <span className='loc'>{this.state.weather.pressure}<span className='minmax'> hPa</span></span>
+        <span className='minmax'>{checkValue('mintemp') ? this.state.weather.temp_min + this.state.temp_text : null} {checkValue('maxtemp') ? this.state.weather.temp_max + this.state.temp_text : null}</span>
+        {checkValue('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
+        {checkValue('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.windspeed}<span className='minmax'> m/s</span></span> : null}
+        {checkValue('atmosphericpressure') ? <span className='loc'><br/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
         <span className='loc'>{this.state.location}</span>
         {/*<span>{this.state.weather.title}</span>*/}

@@ -143,10 +143,29 @@
             "voice_search": "Voice Search"
           },
           "weather": {
-            "title": "Weather"
+            "title": "Weather",
+            "location": "Location",
+            "auto": "Auto",
+            "temp_format": {
+              "title": "Temperature Format",
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Extra Information",
+              "humidity": "Humidity",
+              "wind_speed": "Wind speed",
+              "min_temp": "Minimum temperature",
+              "max_temp": "Maximum temperature",
+              "atmospheric_pressure": "Atmospheric pressure"
+            }
           },
           "quicklinks": {
-            "title": "Quick Links"
+            "title": "Quick Links",
+            "open_new": "Open in new tab",
+            "tooltip": "Tooltip",
+            "chrome_apps": "Chrome Apps"
           },
           "appearance": {
             "title": "Appearance",

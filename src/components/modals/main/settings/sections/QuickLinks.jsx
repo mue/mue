@@ -10,9 +10,9 @@ export default function QuickLinks() {
     <>
       <h2>{language.title}</h2>
       <Switch name='quicklinksenabled' text={window.language.modals.main.settings.enabled} />
-      <Checkbox name='quicklinksnewtab' text='Open in new tab' />
-      <Checkbox name='quicklinkstooltip' text='Tooltip' />
-      <Checkbox name='quicklinksnewtab' text='Chrome Apps' />
+      <Checkbox name='quicklinksnewtab' text={language.open_new} />
+      <Checkbox name='quicklinkstooltip' text={language.tooltip} />
+      <Checkbox name='quicklinksnewtab' text={language.chrome_apps} />
     </>
   );
 }

@@ -28,15 +28,15 @@ export default class TimeSettings extends React.PureComponent {
 
     const tempFormat = [
       {
-        'name': 'Celsius',
+        'name': language.temp_format.celsius + ' (°C)',
         'value': 'celsius'
       },
       {
-        'name': 'Fahrenheit',
+        'name': language.temp_format.fahrenheit + ' (°F)',
         'value': 'fahrenheit'
       },
       {
-        'name': 'Kelvin',
+        'name': language.temp_format.kelvin + ' (K)',
         'value': 'kelvin'
       }
     ];
@@ -45,18 +45,18 @@ export default class TimeSettings extends React.PureComponent {
       <>
         <h2>{language.title}</h2>
         <Switch name='weatherEnabled' text={this.language.enabled} />
-        <br/>
-        <Radio name='tempformat' title='Temperature Format' options={tempFormat} />
         <ul>
-          <p>Location <span className='modalLink' onClick={() => this.getLocation()}>Auto</span></p>
+          <p>{language.location} <span className='modalLink' onClick={() => this.getLocation()}>{language.auto}</span></p>
           <input type='text' value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })}></input>
         </ul>
-        <h3>Extra Information</h3>
-        <Checkbox name='mintemp' text='Min temp'/>
-        <Checkbox name='maxtemp' text='Max temp'/>
-        <Checkbox name='humidity' text='Humidity'/>
-        <Checkbox name='windspeed' text='Wind speed'/>
-        <Checkbox name='windspeed' text='Atmospheric pressure'/>
+        <br/>
+        <Radio name='tempformat' title={language.temp_format.title} options={tempFormat} />
+        <h3>{language.extra_info.title}</h3>
+        <Checkbox name='humidity' text={language.extra_info.humidity}/>
+        <Checkbox name='windspeed' text={language.extra_info.wind_speed}/>
+        <Checkbox name='mintemp' text={language.extra_info.min_temp}/>
+        <Checkbox name='maxtemp' text={language.extra_info.max_temp}/>
+        <Checkbox name='atmosphericpressure' text={language.extra_info.atmospheric_pressure}/>
       </>
     );
   }
