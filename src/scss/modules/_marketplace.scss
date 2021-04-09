@@ -8,18 +8,21 @@
 }
 
 .items {
-  display: flex;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 15px;
 
   .item {
     position: relative;
     border-radius: 12px;
     height: 80px;
-    width: 270px;
+    width: 260px;
     background: map-get($marketplace, 'item-background');
     transition: 0.5s;
     cursor: pointer;
     margin-right: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 30%);
 
     img {
       height: 100%;
@@ -74,17 +77,18 @@ p.author {
 
   h1 {
     font-size: 40px;
+    line-height: 20px;
   }
 }
 
 #item>h1,
 #item>.MuiSvgIcon-root {
   display: inline;
-  font-size: 35px !important;
 }
 
 p.description {
   margin-top: 0px;
+  max-width: 400px;
 }
 
 .emptyMessage {
@@ -107,15 +111,13 @@ p.description {
 }
 
 .informationContainer {
-  float: right;
-  margin-right: 15px;
+  margin-top: 20px;
 }
 
 .productInformation {
-  margin-bottom: 20px;
-  padding: 20px;
+  padding: 10px;
   background: map-get($marketplace, 'product-information-backgroud');
-  width: 200px;
+  width: 350px;
   border-radius: 12px;
 
   h4 {
@@ -163,14 +165,16 @@ p.description {
 }
 
 .featured {
-  margin-top: 20px;
-  border-radius: 24px;
+  margin-top: 40px;
+  border-radius: 15px;
   padding: 50px;
-  color: map-get($theme-colours, 'main');
+  color: #fff;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  width: 85%;
 
   button {
     float: left;
-    margin-top: -20px;
+    margin-top: -7px;
     border: 2px solid map-get($theme-colours, 'main');
     color: map-get($theme-colours, 'main');
 

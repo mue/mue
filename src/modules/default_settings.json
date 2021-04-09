@@ -158,5 +158,9 @@
   {
     "name": "weatherEnabled",
     "value": false
+  },
+  {
+    "name": "temperatureformat",
+    "value": "celsius"
   }
 ]

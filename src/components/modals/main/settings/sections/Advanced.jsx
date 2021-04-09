@@ -46,7 +46,7 @@ export default class AdvancedSettings extends React.PureComponent {
         <h3>{advanced.customisation}</h3>
         <Text title={advanced.custom_js} name='customjs' textarea={true}/>
         <Text title={advanced.custom_css} name='customcss' textarea={true}/>
-        <Text title={advanced.tab_name} name='tabName'/>
+        <Text title={advanced.tab_name} name='tabName' default={window.language.tabname}/>
 
         <h3>{this.language.sections.experimental.title}</h3>
         <p>{advanced.experimental_warning}</p>

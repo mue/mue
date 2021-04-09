@@ -12,7 +12,7 @@ export default class DateWidget extends React.PureComponent {
 
   getDate() {
     const date = new Date();
-    const type = localStorage.getItem('type');
+    const type = localStorage.getItem('dateType');
 
     if (type === 'short') {
       const dateDay = date.getDate();
@@ -33,8 +33,7 @@ export default class DateWidget extends React.PureComponent {
           year = dateDay;
           break;
         // DMY
-        default:
-          break;
+        default: break;
       }
 
       let format;
@@ -50,6 +49,8 @@ export default class DateWidget extends React.PureComponent {
           break;
         case 'slashes':
           format = `${day}/${month}/${year}`;
+          break;
+        default: break;
       }
 
       this.setState({

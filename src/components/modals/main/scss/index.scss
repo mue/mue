@@ -200,6 +200,14 @@ li {
   }
 }
 
+@media only screen and (min-width: 2300px) {
+  .tab-content {
+    position: absolute !important;
+    left: 25% !important;
+    top: 7%;
+  }
+}
+
 @media only screen and (max-width: 1920px) {
   .tab-content {
     position: absolute;

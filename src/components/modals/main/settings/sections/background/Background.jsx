@@ -51,6 +51,12 @@ export default class BackgroundSettings extends React.PureComponent {
     }
   }
 
+  marketplaceType = () => {
+    if (localStorage.getItem('photo_packs')) {
+      return <option value='photo_pack'>Marketplace</option>
+    }
+  }
+
   componentDidUpdate() {
     localStorage.setItem('customBackground', this.state.customBackground);
   }
@@ -107,7 +113,7 @@ export default class BackgroundSettings extends React.PureComponent {
       // API
       default: backgroundSettings = APISettings; break;
     }
-
+  
     return (
       <>
         <h2>{background.title}</h2>
@@ -125,6 +131,7 @@ export default class BackgroundSettings extends React.PureComponent {
         <br/><br/>
   
         <Dropdown label='Type' name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })}>
+          {this.marketplaceType()}
           <option value='api'>{background.type.api}</option>
           <option value='custom'>{background.type.custom_image}</option>
           <option value='colour'>{background.type.custom_colour}</option>

@@ -31,17 +31,19 @@ export default function Item(props) {
   return (
     <div id='item'>
       <br/>
-      <ArrowBackIcon className='backArrow' onClick={props.toggleFunction}/>
+      <span>
+        <ArrowBackIcon className='backArrow' onClick={props.toggleFunction}/>
+      </span>
       <br/>
       <h1>{props.data.name}</h1>
       {props.button}
-      <br/><br/>
+      <br/>
       <img alt='product' draggable='false' src={iconsrc}/>
       <div className='informationContainer'>
+      <h1>{language.overview}</h1>
+      <p className='description' dangerouslySetInnerHTML={{__html: props.data.description}}></p>
         <div className='productInformation'>
-          <h4>{language.information}</h4>
           <ul>
-            <br/>
             <li className='header'>{language.last_updated}</li>
             <li>{props.data.updated}</li>
             <br/>
@@ -52,17 +54,16 @@ export default function Item(props) {
            <li>{props.data.author}</li>
          </ul>
         </div>
-        <div className='productInformation'>
+        
+       {/*} <div className='productInformation'>
           <ul>
             <li className='header'>{language.notice.title}</li>
             <li id='updated'>{language.notice.description}</li>
           </ul>
-        </div>
-        {warningHTML}
+  </div> */}
+   {warningHTML} 
       </div>
       <br/>
-      <h1>{language.overview}</h1>
-      <p className='description' dangerouslySetInnerHTML={{__html: props.data.description}}></p>
     </div>
   );
 }

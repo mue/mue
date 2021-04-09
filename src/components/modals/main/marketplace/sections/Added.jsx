@@ -79,7 +79,7 @@ export default class Added extends React.PureComponent {
         break;
     }
 
-    toast(window.language.modals.main.toasts[type + 'ed']);
+    toast(window.language.toasts[type + 'ed']);
 
     let button = '';
     if (type === 'install') {
@@ -93,7 +93,13 @@ export default class Added extends React.PureComponent {
   }
 
   render() {
-    let content = <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', 'addon', input)} />;
+    let content = (
+      <Items 
+        items={this.state.installed} 
+        toggleFunction={(input) => this.toggle('item', 'addon', input)} 
+        reloadItemsList={() => this.setState({ installed: JSON.parse(localStorage.getItem('installed')) })} 
+      />
+    );
 
     if (this.state.installed.length === 0) {
       content = (
@@ -112,7 +118,7 @@ export default class Added extends React.PureComponent {
       <>
         <div id='marketplace'>
           <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.manage('install', JSON.parse(e.target.result))} />
-          <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
+          {/*<button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>*/}
           {content}
         </div>
         <Item data={this.state.item_data} button={this.state.button} toggleFunction={() => this.toggle()} />

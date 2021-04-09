@@ -1,5 +1,9 @@
 [
   {
+    "name": "Chinese (Simplified)",
+    "value": "zh_CN"
+  },
+  {
     "name": "Deutsch",
     "value": "de_DE"
   },
@@ -30,9 +34,5 @@
   {
     "name": "Pусский",
     "value": "ru"
-  },
-  {
-    "name": "Chinese (Simplified)",
-    "value": "zh_CN"
   }
 ]

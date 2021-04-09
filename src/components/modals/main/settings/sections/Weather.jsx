@@ -2,6 +2,7 @@ import React from 'react';
 
 import Switch from '../Switch';
 import Radio from '../Radio';
+import Checkbox from '../Checkbox';
 
 export default class TimeSettings extends React.PureComponent {
   constructor() {
@@ -44,11 +45,18 @@ export default class TimeSettings extends React.PureComponent {
       <>
         <h2>{language.title}</h2>
         <Switch name='weatherEnabled' text={this.language.enabled} />
+        <br/>
         <Radio name='tempformat' title='Temperature Format' options={tempFormat} />
         <ul>
           <p>Location <span className='modalLink' onClick={() => this.getLocation()}>Auto</span></p>
           <input type='text' value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })}></input>
         </ul>
+        <h3>Extra Information</h3>
+        <Checkbox name='mintemp' text='Min temp'/>
+        <Checkbox name='maxtemp' text='Max temp'/>
+        <Checkbox name='humidity' text='Humidity'/>
+        <Checkbox name='windspeed' text='Wind speed'/>
+        <Checkbox name='windspeed' text='Atmospheric pressure'/>
       </>
     );
   }

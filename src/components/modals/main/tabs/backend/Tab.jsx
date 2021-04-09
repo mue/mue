@@ -20,9 +20,10 @@ import Order from '@material-ui/icons/List';
 import Weather from '@material-ui/icons/CloudOutlined';
 import Advanced from '@material-ui/icons/SettingsOutlined';
 import QuickLinks from '@material-ui/icons/Link';
+import Sideload from '@material-ui/icons/Code';
 
 // Store
-import Added from '@material-ui/icons/AddCircle';
+import Added from '@material-ui/icons/AddCircleOutline';
 
 export default function Tab(props) {
   let className = 'tab-list-item';
@@ -67,6 +68,7 @@ export default function Tab(props) {
     case 'Photo Packs': icon = <Background/>; break;
     case 'Quote Packs': icon = <Quote/>; break;
     case 'Added': icon = <Added/>; break;
+    case 'Sideload': icon = <Sideload/>; break;
 
     default: break;
   }

@@ -1,6 +1,8 @@
 import React from 'react';
 
 import WifiOffIcon from '@material-ui/icons/WifiOff';
+import LocalMallIcon from '@material-ui/icons/LocalMall';
+
 import Item from '../Item';
 import Items from '../Items';
 
@@ -31,9 +33,10 @@ export default class Marketplace extends React.PureComponent {
       }
     };
     this.buttons = {
-      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>Remove</button>,
-      install: <button className='addToMue' onClick={() => this.manage('install')}>Add to Mue</button>
+      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
+      install: <button className='addToMue' onClick={() => this.manage('install')}>{window.language.modals.main.marketplace.product.buttons.addtomue}</button>
     }
+    this.language = window.language.modals.main.marketplace;
   }
 
   async toggle(type, data) {
@@ -103,17 +106,13 @@ export default class Marketplace extends React.PureComponent {
         break;
     }
 
-    toast(this.props.toastLanguage[type + 'ed']);
+    toast(window.language.toasts[type + 'ed']);
     this.setState({
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
     });
   }
 
   componentDidMount() {
-    if (localStorage.getItem('animations') === 'true') {
-      document.getElementById('marketplace').classList.add('marketplaceanimation');
-    }
-
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return;
     }
@@ -156,6 +155,14 @@ export default class Marketplace extends React.PureComponent {
       return errorMessage(<h1>Loading</h1>);
     }
 
+    if (this.state.items.length === 0) {
+      return errorMessage(<>
+        <LocalMallIcon/>
+        <h1>Empty</h1>
+        <p className='description'>No items in this category</p>
+      </>)
+    }
+
     return (
       <>
         <div id='marketplace'>
@@ -165,7 +172,7 @@ export default class Marketplace extends React.PureComponent {
             <button className='addToMue' onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
           </div>
           <Items
-            items={this.state.items.slice(0, 3)}
+            items={this.state.items}
             toggleFunction={(input) => this.toggle('item', input)} />
         </div>
         <Item data={this.state.item_data} button={this.state.button} toggleFunction={() => this.toggle()} />
