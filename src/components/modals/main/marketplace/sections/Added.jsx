@@ -107,8 +107,7 @@ export default class Added extends React.PureComponent {
           <div className='emptyMessage'>
             <LocalMallIcon/>
             <h1>Empty</h1>
-            <p className='description'>Nothing here (yet)</p>
-            <button className='goToMarket'>Take me there</button>
+            <p className='description'>No addons are installed</p>
           </div>
         </div>
       );

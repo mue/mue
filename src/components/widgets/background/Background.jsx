@@ -82,12 +82,14 @@ export default class Background extends React.PureComponent {
 
   // Main background getting function
   async getBackground() {
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return this.offlineBackground();
-    }
+    const offline = (localStorage.getItem('offlineMode') === 'true');
 
     switch (localStorage.getItem('backgroundType')) {
       case 'api':
+        if (offline) {
+          return this.offlineBackground();
+        }
+
         // favourite button
         const favourited = JSON.parse(localStorage.getItem('favourite'));
         if (favourited) {
@@ -155,6 +157,12 @@ export default class Background extends React.PureComponent {
       case 'custom':
         // custom user background
         const customBackground = localStorage.getItem('customBackground');
+
+        // allow users to use offline images
+        if (offline && !customBackground.startsWith('data:')) {
+          return this.offlineBackground();
+        }
+
         if (customBackground !== '') {
           // video background
           if (customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
@@ -178,6 +186,10 @@ export default class Background extends React.PureComponent {
       break;
 
       case 'photo_pack':
+        if (offline) {
+          return this.offlineBackground();
+        }
+
         // photo pack
         const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
         if (photoPack) {

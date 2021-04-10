@@ -115,11 +115,13 @@ ul.sidebar {
   left: 0;
   margin: 0;
   padding-left: 0;
-  height: 100vh;
+  height: 20%;
   background: var(--sidebar);
   border-radius: 12px 0 0 12px;
   text-align: left;
   font-size: 24px;
+  padding-bottom: 100%;
+  margin-bottom: -100%;
 
   h1 {
     text-align: center;
@@ -163,11 +165,6 @@ li {
   background: var(--tab-active);
 }
 
-@media only screen and (max-height: 898px) {
-  ul.sidebar {
-    height: auto;
-  }
-}
 
 @media only screen and (max-width: 1200px) {
   li.tab-list-item {

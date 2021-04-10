@@ -86,7 +86,7 @@ export default class Widgets extends React.PureComponent {
       <div id='widgets'>
         {this.enabled('searchBar') ? <Search/> : null}
         {elements}
-        {this.enabled('weatherEnabled') ? <Weather/> : null}
+        {this.enabled('weatherEnabled') && (localStorage.getItem('offlineMode') === 'false') ? <Weather/> : null}
       </div>
     );
   }

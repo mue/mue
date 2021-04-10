@@ -162,5 +162,9 @@
   {
     "name": "temperatureformat",
     "value": "celsius"
+  },
+  {
+    "name": "authorLink",
+    "value": true
   }
 ]
