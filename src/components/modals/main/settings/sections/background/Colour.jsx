@@ -21,19 +21,11 @@ export default class ColourSettings extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  resetItem(key) {
-    switch (key) {
-      case 'customBackgroundColour':
-        localStorage.setItem('customBackgroundColour', '');
-        this.setState({
-          gradientSettings: this.DefaultGradientSettings
-        });
-        break;
-
-      default:
-        toast('resetItem requires a key!');
-    }
-
+  resetColour() {
+    localStorage.setItem('customBackgroundColour', '');
+    this.setState({
+      gradientSettings: this.DefaultGradientSettings
+    });
     toast(this.language.toasts.reset);
   }
 
@@ -177,7 +169,7 @@ export default class ColourSettings extends React.PureComponent {
 
     return (
       <>
-        <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.language.buttons.reset}</span></p>
+        <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetColour()}>{this.language.buttons.reset}</span></p>
         <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
         {colourSettings}
       </>

@@ -22,20 +22,7 @@ export default class Widgets extends React.PureComponent {
   }
 
   enabled(key) {
-    const stringValue = localStorage.getItem(key);
-    let enabled = true;
-
-    if (stringValue !== null) {
-      if (stringValue === 'true') {
-        enabled = true;
-      }
-
-      if (stringValue === 'false') {
-        enabled = false;
-      }
-    }
-
-    return enabled;
+    return (localStorage.getItem(key) === 'true');
   }
 
   componentDidMount() {

@@ -132,18 +132,22 @@
               "brightness": "Adjust Brightness"
             },
             "type": {
+              "title": "Type",
               "api": "API",
               "custom_image": "Custom Image",
               "custom_colour": "Custom Colour/Gradient"
             },
             "source": {
+              "title": "Source",
               "api": "Background API",
               "custom_url": "Custom Background URL",
               "custom_background": "Custom Background",
               "custom_colour": "Custom Background Colour",
               "upload": "Upload",
               "add_colour": "Add colour",
-              "disabled": "Disabled"
+              "disabled": "Disabled",
+              "loop_video": "Loop Video",
+              "mute_video": "Mute Video"
             }
           },
           "search": {

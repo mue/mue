@@ -34,7 +34,7 @@ export default class TimeSettings extends React.PureComponent {
     const digitalSettings = (
       <>
         <h3>{time.digital.title}</h3>
-        <Radio title={time.format} name='timeformat' options={digitalOptions} />
+        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} />
         <br/>
         <Checkbox name='seconds' text={time.digital.seconds} />
         <Checkbox name='zero' text={time.digital.zero} />

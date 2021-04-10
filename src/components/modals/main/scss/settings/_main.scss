@@ -144,6 +144,13 @@ input[type=color]::-moz-color-swatch {
 .radio-title {
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 1.17rem;
+}
+
+.radio-title-small {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .sortableitem {

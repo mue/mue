@@ -226,12 +226,12 @@ export default class Background extends React.PureComponent {
 
   render() {
     if (this.state.video === true) {
-      const checkValue = (setting) => {
+      const enabled = (setting) => {
         return (localStorage.getItem(setting) === 'true');
       };
 
       return (
-        <video autoPlay muted={checkValue('backgroundVideoMute')} loop={checkValue('backgroundVideoLoop')} id='backgroundVideo'>
+        <video autoPlay muted={enabled('backgroundVideoMute')} loop={enabled('backgroundVideoLoop')} id='backgroundVideo'>
           <source src={this.state.url}/>
         </video>
       );

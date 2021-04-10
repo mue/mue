@@ -42,8 +42,8 @@ export default class BackgroundSettings extends React.PureComponent {
     if (customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
       return (
         <>
-          <Checkbox name='backgroundVideoLoop' text='Loop Video'/>
-          <Checkbox name='backgroundVideoMute' text='Mute Video'/>
+          <Checkbox name='backgroundVideoLoop' text={this.language.sections.background.source.loop_video}/>
+          <Checkbox name='backgroundVideoMute' text={this.language.sections.background.source.mute_video}/>
         </>
       )
     } else {
@@ -53,7 +53,7 @@ export default class BackgroundSettings extends React.PureComponent {
 
   marketplaceType = () => {
     if (localStorage.getItem('photo_packs')) {
-      return <option value='photo_pack'>Marketplace</option>
+      return <option value='photo_pack'>{window.language.modals.main.navbar.marketplace}</option>
     }
   }
 
@@ -120,6 +120,17 @@ export default class BackgroundSettings extends React.PureComponent {
         <Switch name='background' text={this.language.enabled} />
         <Checkbox name='ddgProxy' text={background.ddg_proxy} />
 
+        <h3>{background.source.title}</h3>
+        <Dropdown label={background.type.title} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })}>
+          {this.marketplaceType()}
+          <option value='api'>{background.type.api}</option>
+          <option value='custom'>{background.type.custom_image}</option>
+          <option value='colour'>{background.type.custom_colour}</option>
+        </Dropdown>
+        <br/>
+
+        {backgroundSettings}
+
         <h3>{background.buttons.title}</h3>
         <Checkbox name='view' text={background.buttons.view} />
         <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
@@ -129,16 +140,6 @@ export default class BackgroundSettings extends React.PureComponent {
         <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' />
         <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='100' display='%' />
         <br/><br/>
-  
-        <Dropdown label='Type' name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })}>
-          {this.marketplaceType()}
-          <option value='api'>{background.type.api}</option>
-          <option value='custom'>{background.type.custom_image}</option>
-          <option value='colour'>{background.type.custom_colour}</option>
-        </Dropdown>
-        <br/>
-
-        {backgroundSettings}
       </>
     );
   }

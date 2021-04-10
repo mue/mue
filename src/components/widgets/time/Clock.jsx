@@ -91,7 +91,7 @@ export default class Clock extends React.PureComponent {
   render() {
     let clockHTML = <h1 className='clock'>{this.state.time}<span className='ampm'>{this.state.ampm}</span></h1>;
 
-    const checkValue = (setting) => {
+    const enabled = (setting) => {
       return (localStorage.getItem(setting) === 'true');
     };
 
@@ -100,11 +100,11 @@ export default class Clock extends React.PureComponent {
         <Analog 
           className='analogclock' 
           value={this.state.time} 
-          renderHourMarks={checkValue('hourMarks')} 
-          renderMinuteMarks={checkValue('minuteMarks')} 
-          renderSecondHand={checkValue('secondHand')} 
-          renderMinuteHand={checkValue('minuteHand')} 
-          renderHourHand={checkValue('hourHand')} 
+          renderHourMarks={enabled('hourMarks')} 
+          renderMinuteMarks={enabled('minuteMarks')} 
+          renderSecondHand={enabled('secondHand')} 
+          renderMinuteHand={enabled('minuteHand')} 
+          renderHourHand={enabled('hourHand')} 
         />
       );
     }
