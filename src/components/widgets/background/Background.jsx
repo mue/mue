@@ -68,10 +68,21 @@ export default class Background extends React.PureComponent {
     if (this.state.url !== '') {
       const url = this.ddgproxy ? window.constants.DDG_PROXY + this.state.url : this.state.url;
 
-      document.querySelector('#backgroundImage').setAttribute(
-        'style',
-        `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
-      );
+      const backgroundImage = document.querySelector('#backgroundImage');
+      backgroundImage.classList.add('backgroundPreload');
+
+      let preloader = document.createElement('img');
+      preloader.src = url;
+      preloader.addEventListener('load', () => {
+        backgroundImage.classList.remove('backgroundPreload');
+        backgroundImage.classList.add('fade-in');
+
+        backgroundImage.setAttribute(
+          'style',
+          `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+        ); 
+        preloader = null;
+      });
     } else {
       document.querySelector('#backgroundImage').setAttribute(
         'style',
@@ -136,7 +147,7 @@ export default class Background extends React.PureComponent {
 
       case 'colour':
         // background colour
-        const customBackgroundColour = localStorage.getItem('customBackgroundColour') || {"angle":"180","gradient":[{"colour":"#ffb032","stop":0}],"type":"linear"};
+        const customBackgroundColour = localStorage.getItem('customBackgroundColour') || {'angle':'180','gradient':[{'colour':'#ffb032','stop':0}],'type':'linear'};
         let gradientSettings = '';
         try {
           gradientSettings = JSON.parse(customBackgroundColour);

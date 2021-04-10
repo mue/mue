@@ -79,9 +79,9 @@ export default class SearchSettings extends React.PureComponent {
         </Dropdown>
 
         <br/><br/>
-        <ul id='searchEngineInput' style={{ display: this.state.customDisplay }}>
+        <ul style={{ display: this.state.customDisplay }}>
           <p style={{ 'marginTop': '0px' }}>{search.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{language.buttons.reset}</span></p>
-          <input type='text' id='customSearchEngine' value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })}></input>
+          <input type='text' value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })}></input>
         </ul>
       </>
     );
