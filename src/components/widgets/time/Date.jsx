@@ -6,12 +6,35 @@ export default class DateWidget extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      date: ''
+      date: '',
+      weekNumber: ''
     };
+  }
+
+  getWeekNumber(date) {
+    const dateToday = new Date(date.valueOf());
+    const dayNumber = (dateToday.getDay() + 6) % 7;
+
+    dateToday.setDate(dateToday.getDate() - dayNumber + 3);
+    const firstThursday = dateToday.valueOf();
+    dateToday.setMonth(0, 1);
+
+    if (dateToday.getDay() !== 4) {
+      dateToday.setMonth(0, 1 + ((4 - dateToday.getDay()) + 7) % 7);
+    }
+
+    this.setState({
+      weekNumber: `${window.language.widgets.date.week} ${1 + Math.ceil((firstThursday - dateToday) / 604800000)}`
+    });
   }
 
   getDate() {
     const date = new Date();
+
+    if (localStorage.getItem('weeknumber') === 'true') {
+      this.getWeekNumber(date);
+    }
+
     const type = localStorage.getItem('dateType');
 
     if (type === 'short') {
@@ -77,6 +100,6 @@ export default class DateWidget extends React.PureComponent {
   }
 
   render() {
-    return <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date}</span>;
+    return <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date} <br/> {this.state.weekNumber}</span>;
   }
 }

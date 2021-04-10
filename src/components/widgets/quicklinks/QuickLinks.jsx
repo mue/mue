@@ -14,6 +14,7 @@ export default class QuickLinks extends React.PureComponent {
       url: '',
       showAddLink: 'hidden'
     };
+    this.language = window.language.widgets.quicklinks;
   }
 
   updateLink(type, value) {
@@ -71,22 +72,36 @@ export default class QuickLinks extends React.PureComponent {
       rel ='noopener noreferrer';
     }
 
+    const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
+
+    const quickLink = (item) => {
+      const link = (
+        <a key={item.name} onContextMenu={(e) => this.deleteLink(item.name, e)} href={item.url} target={target} rel={rel}>
+          <img src={'https://icons.duckduckgo.com/ip2/' + item.url.replace('https://', '').replace('http://', '') + '.ico'} alt={item.name}/>
+        </a>
+      );
+
+      if (tooltipEnabled === 'true') {
+        return <Tooltip title={item.name} key={item.name}>{link}</Tooltip>;
+      } else {
+        return link;
+      }
+    }
+
     return (
       <div className='quicklinks-container'>
         {this.state.items.map((item) => (
-          <Tooltip title={item.name} key={item.name}>
-            <a onContextMenu={(e) => this.deleteLink(item.name, e)} href={item.url} target={target} rel={rel}><img src={'https://icons.duckduckgo.com/ip2/' + item.url.replace('https://', '').replace('http://', '') + '.ico'} alt={item.name}/></a>
-          </Tooltip>
+          quickLink(item)
         ))}
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
         <span className='quicklinkscontainer' style={{'visibility': this.state.showAddLink}}>
           <div className='topbarquicklinks'>
-            <h4>New Link</h4>
-            <TextareaAutosize rowsMax={1} placeholder='Name' value={this.state.name} onChange={(e) => this.updateLink('name', e.target.value)} />
+            <h4>{this.language.new}</h4>
+            <TextareaAutosize rowsMax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.updateLink('name', e.target.value)} />
             <br/>
-            <TextareaAutosize rowsMax={10} placeholder='URL' value={this.state.url} onChange={(e) => this.updateLink('url', e.target.value)} />
+            <TextareaAutosize rowsMax={10} placeholder={this.language.url} value={this.state.url} onChange={(e) => this.updateLink('url', e.target.value)} />
             <br/>
-            <button className='pinNote' onClick={this.addLink}>Add</button>
+            <button className='pinNote' onClick={this.addLink}>{this.language.add}</button>
           </div>
         </span>
       </div>

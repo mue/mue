@@ -109,6 +109,7 @@ export default class TimeSettings extends React.PureComponent {
           <option value='short'>{time.date.type.short}</option>
         </Dropdown>
         <br/>
+        <Checkbox name='weeknumber' text={time.date.week_number}/>
         {dateSettings}
       </>
     );

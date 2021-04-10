@@ -33,7 +33,7 @@
   },
   {
     "name": "customBackgroundColour",
-    "value": ""
+    "value": "{\"angle\":\"180\",\"gradient\":[{\"colour\":\"#ffb032\",\"stop\":0}],\"type\":\"linear\"}"
   },
   {
     "name": "customBackground",

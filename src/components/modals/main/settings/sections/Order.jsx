@@ -3,7 +3,6 @@ import React from 'react';
 import DragHandleIcon from '@material-ui/icons/DragIndicator';
 
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
-import arrayMove from 'array-move';
 import { toast } from 'react-toastify';
 
 const SortableItem = sortableElement(({value}) => (
@@ -26,9 +25,29 @@ export default class OrderSettings extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
+  // based on https://stackoverflow.com/a/48301905
+  arrayMove(array, oldIndex, newIndex) {
+    if (oldIndex === newIndex) {
+      return array;
+    }
+  
+    const newArray = [...array];
+  
+    const target = newArray[oldIndex];
+    const inc = newIndex < oldIndex ? -1 : 1;
+  
+    for (let i = oldIndex; i !== newIndex; i += inc) {
+      newArray[i] = newArray[i + inc];
+    }
+  
+    newArray[newIndex] = target;
+  
+    return newArray;
+  }
+
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState(({items}) => ({
-      items: arrayMove(items, oldIndex, newIndex)
+      items: this.arrayMove(items, oldIndex, newIndex)
     }));
   }
 

@@ -17,6 +17,15 @@
       "download": "Download"
     },
     "search": "Search",
+    "quicklinks": {
+      "new": "New Link",
+      "name": "Name",
+      "url": "URL",
+      "add": "Add"
+    },
+    "date": {
+      "week": "Week"
+    },
     "navbar": {
       "tooltips": {
         "update": "Update Patch Notes",
@@ -69,6 +78,7 @@
             "percentage_complete": "Percentage Complete",
             "date": {
               "title": "Date",
+              "week_number": "Week Number",
               "day_of_week": "Day of week",
               "datenth": "Date nth",
               "type": {
@@ -164,8 +174,7 @@
           "quicklinks": {
             "title": "Quick Links",
             "open_new": "Open in new tab",
-            "tooltip": "Tooltip",
-            "chrome_apps": "Chrome Apps"
+            "tooltip": "Tooltip"
           },
           "appearance": {
             "title": "Appearance",

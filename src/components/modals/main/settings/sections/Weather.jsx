@@ -13,12 +13,6 @@ export default class TimeSettings extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  getLocation() {
-    if (window.navigator.geolocation) {
-      window.navigator.geolocation.getCurrentPosition(console.log, console.log);
-    }
-  }
-
   componentDidUpdate() {
     localStorage.setItem('location', this.state.location);
   }
@@ -46,7 +40,7 @@ export default class TimeSettings extends React.PureComponent {
         <h2>{language.title}</h2>
         <Switch name='weatherEnabled' text={this.language.enabled} />
         <ul>
-          <p>{language.location} <span className='modalLink' onClick={() => this.getLocation()}>{language.auto}</span></p>
+          <p>{language.location}</p>
           <input type='text' value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })}></input>
         </ul>
         <br/>
