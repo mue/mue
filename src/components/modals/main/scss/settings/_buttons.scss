@@ -69,10 +69,12 @@
 .import {
   @extend %settingsButton;
   background-color: map-get($button-colours, 'other');
-  color: map-get($theme-colours, 'secondary');
+  color: map-get($theme-colours, 'primary');
+  border: 2px solid map-get($button-colours, 'other');
 
   &:hover {
     color: map-get($button-colours, 'other');
+    border: 2px solid map-get($button-colours, 'other');
   }
 }
 

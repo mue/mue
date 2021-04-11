@@ -160,11 +160,15 @@
     "value": false
   },
   {
-    "name": "temperatureformat",
+    "name": "tempformat",
     "value": "celsius"
   },
   {
     "name": "authorLink",
+    "value": true
+  },
+  {
+    "name": "bgtransition",
     "value": true
   }
 ]

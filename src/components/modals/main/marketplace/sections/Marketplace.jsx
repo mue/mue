@@ -47,7 +47,7 @@ export default class Marketplace extends React.PureComponent {
         try {
           info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
         } catch (e) {
-          return toast(this.props.toastLanguage.error);
+          return toast(window.language.toasts.error);
         }
 
         // check if already installed
@@ -131,35 +131,25 @@ export default class Marketplace extends React.PureComponent {
       );
     }
 
-    if (navigator.onLine === false) {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(
         <>
           <WifiOffIcon/>
-          <h1>Offline</h1>
-          <p className='description'>Mue down!</p>
-        </>
-      );
-    }
-
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return errorMessage(
-        <>
-          <WifiOffIcon/>
-          <h1>Offline mode is enabled</h1>
-          <p className='description'>Please turn off offline mode to access the marketplace</p>
+          <h1>{this.language.offline.title}</h1>
+          <p className='description'>{this.language.offline.description}</p>
         </>
       );
     }
 
     if (this.state.done === false) {
-      return errorMessage(<h1>Loading</h1>);
+      return errorMessage(<h1>{window.language.modals.main.loading}</h1>);
     }
 
     if (this.state.items.length === 0) {
       return errorMessage(<>
         <LocalMallIcon/>
-        <h1>Empty</h1>
-        <p className='description'>No items in this category</p>
+        <h1>{window.language.modals.main.addons.empty.title}</h1>
+        <p className='description'>{this.language.no_items}</p>
       </>)
     }
 

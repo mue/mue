@@ -30,8 +30,9 @@ export default class Added extends React.PureComponent {
       button: ''
     };
     this.buttons = {
-      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>Remove</button>,
+      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
     }
+    this.language = window.language.modals.main.addons;
   }
 
   toggle(type, type2, data) {
@@ -106,8 +107,8 @@ export default class Added extends React.PureComponent {
         <div className='items'>
           <div className='emptyMessage'>
             <LocalMallIcon/>
-            <h1>Empty</h1>
-            <p className='description'>No addons are installed</p>
+            <h1>{this.language.empty.title}</h1>
+            <p className='description'>{this.language.empty.description}</p>
           </div>
         </div>
       );

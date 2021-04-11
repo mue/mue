@@ -16,9 +16,9 @@ export default class Quote extends React.PureComponent {
     this.state = {
       quote: '',
       author: '',
-      favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />,
-      tweet: <TwitterIcon className='copyButton' onClick={() => this.tweetQuote()} />,
-      copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />
+      favourited: <StarIcon2 className='copyButton' onClick={this.favourite} />,
+      tweet: <TwitterIcon className='copyButton' onClick={this.tweetQuote} />,
+      copy: <FileCopy className='copyButton' onClick={this.copyQuote} />
     };
   
     this.language = window.language.widgets.quote;
@@ -92,7 +92,7 @@ export default class Quote extends React.PureComponent {
 
     // First we try and get a quote from the API...
     try {
-      const data = await (await fetch(window.constants.API_URL + '/getQuote?language=' + localStorage.getItem('quotelanguage'))).json();
+      const data = await (await fetch(window.constants.API_URL + '/quotes/random?language=' + localStorage.getItem('quotelanguage'))).json();
 
       // If we hit the ratelimit, we fallback to local quotes
       if (data.statusCode === 429) {
@@ -115,25 +115,25 @@ export default class Quote extends React.PureComponent {
     }
   }
 
-  copyQuote() {
+  copyQuote = () => {
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
-    toast(this.language.quote);
+    toast(window.language.toasts.quote);
   }
 
-  tweetQuote() {
+  tweetQuote = () => {
     window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus();
   }
 
-  favourite() {
+  favourite = () => {
     if (localStorage.getItem('favouriteQuote')) {
       localStorage.removeItem('favouriteQuote');
       this.setState({
-        favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />
+        favourited: <StarIcon2 className='copyButton' onClick={this.favourite} />
       });
     } else {
       localStorage.setItem('favouriteQuote', this.state.quote + ' - ' + this.state.author);
       this.setState({
-        favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} />
+        favourited: <StarIcon className='copyButton' onClick={this.favourite} />
       });
     }
   }
@@ -141,7 +141,7 @@ export default class Quote extends React.PureComponent {
   componentDidMount() {
     let favouriteQuote = '';
     if (localStorage.getItem('favouriteQuoteEnabled') === 'true') {
-      favouriteQuote = localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={() => this.favourite()} /> : <StarIcon2 className='copyButton' onClick={() => this.favourite()} />;
+      favouriteQuote = localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={this.favourite} /> : <StarIcon2 className='copyButton' onClick={this.favourite} />;
     }
 
     this.setState({
@@ -158,7 +158,8 @@ export default class Quote extends React.PureComponent {
       <div className='quotediv'>
         <h1 className='quote'>{`${this.state.quote}`}</h1>
         <h1 className='quoteauthor'>
-          <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a> 
+          <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a>
+          <br/>
           {this.state.copy} {this.state.tweet} {this.state.favourited}
         </h1>
       </div>

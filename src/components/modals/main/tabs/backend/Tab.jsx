@@ -40,6 +40,8 @@ function Tab(props) {
 
   const language = window.language.modals.main.settings.sections;
   const navbarlanguage = window.language.modals.main.navbar;
+  const marketplacelanguage = window.language.modals.main.marketplace;
+  const addonslanguage = window.language.modals.main.addons;
 
   let icon, divider;
   switch (props.label) {
@@ -65,10 +67,10 @@ function Tab(props) {
     case language.about.title: icon = <About/>; break;
 
     // Store
-    case 'Photo Packs': icon = <Background/>; break;
-    case 'Quote Packs': icon = <Quote/>; break;
-    case 'Added': icon = <Added/>; break;
-    case 'Sideload': icon = <Sideload/>; break;
+    case marketplacelanguage.photo_packs: icon = <Background/>; break;
+    case marketplacelanguage.quote_packs: icon = <Quote/>; break;
+    case addonslanguage.added: icon = <Added/>; break;
+    case addonslanguage.sideload: icon = <Sideload/>; break;
 
     default: break;
   }

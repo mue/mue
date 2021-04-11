@@ -124,6 +124,7 @@ ul.sidebar {
 
   h1 {
     text-align: center;
+    font-size: 1.8em;
   }
 
   svg {
@@ -358,3 +359,7 @@ li {
   color: var(--modal-text) !important;
   padding-right: 10px;
 }
+
+.MuiIconButton-root {
+  color: var(--modal-text) !important;
+} 

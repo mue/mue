@@ -61,8 +61,15 @@ export default class Background extends React.PureComponent {
   setBackground() {
     if (this.state.url !== '') {
       const url = this.ddgproxy ? window.constants.DDG_PROXY + this.state.url : this.state.url;
-
       const backgroundImage = document.querySelector('#backgroundImage');
+
+      if (localStorage.getItem('bgtransition') === 'false') {
+        return backgroundImage.setAttribute(
+          'style',
+          `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`
+        ); 
+      }
+
       backgroundImage.classList.add('backgroundPreload');
 
       // preloader for background transition
@@ -118,15 +125,16 @@ export default class Background extends React.PureComponent {
 
         // API background
         const backgroundAPI = localStorage.getItem('backgroundAPI');
+        const apiCategory = localStorage.getItem('apiCategory');
 
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
+            requestURL = `${window.constants.UNSPLASH_URL}/getImage?category=${apiCategory}`;
             break;
           // Defaults to Mue
           default:
-            requestURL = `${window.constants.API_URL}/getImage?category=Outdoors`;
+            requestURL = `${window.constants.API_URL}/images/random?category=${apiCategory}`;
             break;
         }
 

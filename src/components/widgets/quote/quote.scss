@@ -15,8 +15,10 @@
 .quoteauthor {
   font-size: 0.9em;
   letter-spacing: 0.5px;
+
   svg {
     margin-left: 10px;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
   }
 }
 

@@ -60,9 +60,10 @@ textarea {
 .quicklinks {
   border: none;
   color: #fff;
-  font-size: 22px;
+  font-size: 42px;
   background: none;
   cursor: pointer;
+  text-shadow: 0 0 10px rgb(0 0 0 / 60%);
 }
 
 .quicklinks-container>a,

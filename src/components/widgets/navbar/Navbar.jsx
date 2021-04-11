@@ -31,7 +31,7 @@ export default function Navbar(props) {
       :null}
 
       {(window.constants.BETA_VERSION === true) ? 
-        <Tooltip title='Feedback' placement='top'>
+        <Tooltip title={language.widgets.navbar.tooltips.feedback} placement='top'>
           <Report className='topicons' onClick={() => props.openModal('feedbackModal')}/>
         </Tooltip>
       :null}

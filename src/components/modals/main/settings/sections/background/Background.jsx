@@ -119,6 +119,7 @@ export default class BackgroundSettings extends React.PureComponent {
         <h2>{background.title}</h2>
         <Switch name='background' text={this.language.enabled} />
         <Checkbox name='ddgProxy' text={background.ddg_proxy} />
+        <Checkbox name='bgtransition' text={background.transition} />
 
         <h3>{background.source.title}</h3>
         <Dropdown label={background.type.title} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })}>

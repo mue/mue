@@ -5,10 +5,12 @@ import Added from '../marketplace/sections/Added';
 import AddonsTabs from './backend/Tabs';
 
 export default function Addons() {
+  const language = window.language.modals.main.addons;
+
   return (
     <AddonsTabs>
-      <div label='Added'><Added/></div>
-      <div label='Sideload'></div>
+      <div label={language.added}><Added/></div>
+      <div label={language.sideload}></div>
     </AddonsTabs>
   );
 }

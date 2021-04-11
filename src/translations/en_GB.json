@@ -29,7 +29,8 @@
     "navbar": {
       "tooltips": {
         "update": "Update Patch Notes",
-        "refresh": "Refresh Page"
+        "refresh": "Refresh Page",
+        "feedback": "Feedback"
       },
       "notes": {
         "title": "Notes",
@@ -120,6 +121,7 @@
           "background": {
             "title": "Background",
             "ddg_proxy": "Use DuckDuckGo Image Proxy",
+            "transition": "Fade-in transition",
             "buttons": {
               "title": "Buttons",
               "view": "Maximise",
@@ -295,6 +297,7 @@
           "last_updated": "Last Updated",
           "version": "Version",
           "author": "Authour",
+          "no_items": "No items in this category",
           "notice": {
             "title": "Notice",
             "description": "In order for the change to take place, the page must be refreshed."
@@ -317,9 +320,8 @@
       "addons": {
         "added": "Added",
         "empty": {
-          "title": "It's empty here",
-          "description": "Head to the marketplace to add some.",
-          "button": "Take me there"
+          "title": "Empty",
+          "description": "No addons are installed"
         },
         "sideload": "Sideload"
       }
