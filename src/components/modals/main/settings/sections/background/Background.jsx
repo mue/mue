@@ -16,7 +16,8 @@ export default class BackgroundSettings extends React.PureComponent {
     super();
     this.state = {
       customBackground: localStorage.getItem('customBackground') || '',
-      backgroundType: localStorage.getItem('backgroundType') || 'api'
+      backgroundType: localStorage.getItem('backgroundType') || 'api',
+      backgroundCategories: [window.language.modals.main.loading]
     };
     this.language = window.language.modals.main.settings;
   }
@@ -61,6 +62,17 @@ export default class BackgroundSettings extends React.PureComponent {
     localStorage.setItem('customBackground', this.state.customBackground);
   }
 
+  async getBackgroundCategories() {
+    const data = await (await fetch(window.constants.API_URL + '/images/categories')).json();
+    this.setState({
+      backgroundCategories: data
+    });
+  }
+
+  componentDidMount() {
+    this.getBackgroundCategories();
+  }
+
   render() {
     const { background } = this.language.sections;
 
@@ -83,11 +95,9 @@ export default class BackgroundSettings extends React.PureComponent {
         <Radio title={background.source.api} options={apiOptions} name='backgroundAPI'/>
         <br/>
         <Dropdown label='Category' name='apiCategory'>
-          <option value='wildlife'>Landscapes</option>
-          <option value='wildlife'>Wildlife</option>
-          <option value='nature'>Vehicles</option>
-          <option value='nature'>Cities</option>
-          <option value='nature'>Castles</option>
+          {this.state.backgroundCategories.map((category) => (
+            <option value={category} key={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</option>
+          ))}
         </Dropdown>
       </>
     );

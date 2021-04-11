@@ -64,6 +64,8 @@ export default class Background extends React.PureComponent {
       const backgroundImage = document.querySelector('#backgroundImage');
 
       if (localStorage.getItem('bgtransition') === 'false') {
+        document.querySelector('.photoInformation').style.display = 'block';
+
         return backgroundImage.setAttribute(
           'style',
           `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`

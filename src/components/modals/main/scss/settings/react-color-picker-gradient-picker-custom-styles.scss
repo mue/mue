@@ -29,3 +29,11 @@ div.color-preview-area > div > div:nth-child(5) {
 .gradient-degree-pointer {
   background-color: var(--modal-text) !important;
 }
+
+.input-field .label {
+  color: var(--modal-text) !important;
+}
+
+.gradient-type-item.active::after {
+  border: 2px solid var(--modal-text) !important;
+}
