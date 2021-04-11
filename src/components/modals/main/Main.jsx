@@ -1,12 +1,14 @@
 import React from 'react';
 
-import Settings from './tabs/Settings';
-import Addons from './tabs/Addons';
-import Marketplace from './tabs/Marketplace';
-
 import Tabs from './tabs/backend/Tabs';
 
 import './scss/index.scss';
+
+const Settings = React.lazy(() => import('./tabs/Settings'));
+const Addons = React.lazy(() => import('./tabs/Addons'));
+const Marketplace = React.lazy(() => import('./tabs/Marketplace'));
+
+const renderLoader = () => <></>;
 
 export default function MainModal(props) {
   const language = window.language.modals.main.navbar;
@@ -15,9 +17,21 @@ export default function MainModal(props) {
     <>
       <span className='closeModal' onClick={props.modalClose}>&times;</span>
       <Tabs navbar={true}>
-        <div label={language.settings}><Settings/></div>
-        <div label={language.addons}><Addons/></div>
-        <div label={language.marketplace}><Marketplace/></div>
+        <div label={language.settings}>
+          <React.Suspense fallback={renderLoader()}>
+            <Settings/>
+          </React.Suspense>
+        </div>
+        <div label={language.addons}>
+          <React.Suspense fallback={renderLoader()}>
+            <Addons/>
+          </React.Suspense>
+        </div>
+        <div label={language.marketplace}>
+          <React.Suspense fallback={renderLoader()}>
+            <Marketplace/>
+          </React.Suspense>
+        </div>
       </Tabs>
     </>
   );

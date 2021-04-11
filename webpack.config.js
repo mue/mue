@@ -44,7 +44,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     clean: true
   },
   devServer: {

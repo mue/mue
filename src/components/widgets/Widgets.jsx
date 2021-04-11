@@ -1,12 +1,13 @@
 import React from 'react';
 
-import Clock from './time/Clock';
-import Greeting from './greeting/Greeting';
-import Quote from './quote/Quote';
-import Search from './search/Search';
-import Date from './time/Date';
-import QuickLinks from './quicklinks/QuickLinks';
-import Weather from './weather/Weather';
+const Clock = React.lazy(() => import('./time/Clock'));
+const Greeting = React.lazy(() => import('./greeting/Greeting'));
+const Quote = React.lazy(() => import('./quote/Quote'));
+const Search = React.lazy(() => import('./search/Search'));
+const Date = React.lazy(() => import('./time/Date'));
+const QuickLinks = React.lazy(() => import('./quicklinks/QuickLinks'));
+const Weather = React.lazy(() => import('./weather/Weather'));
+const renderLoader = () => <></>;
 
 export default class Widgets extends React.PureComponent {
   constructor() {
@@ -71,9 +72,11 @@ export default class Widgets extends React.PureComponent {
 
     return (
       <div id='widgets'>
-        {this.enabled('searchBar') ? <Search/> : null}
-        {elements}
-        {this.enabled('weatherEnabled') && (localStorage.getItem('offlineMode') === 'false') ? <Weather/> : null}
+        <React.Suspense fallback={renderLoader()}>
+          {this.enabled('searchBar') ? <Search/> : null}
+          {elements}
+          {this.enabled('weatherEnabled') && (localStorage.getItem('offlineMode') === 'false') ? <Weather/> : null}
+        </React.Suspense>
       </div>
     );
   }

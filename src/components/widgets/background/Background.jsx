@@ -71,8 +71,11 @@ export default class Background extends React.PureComponent {
       const backgroundImage = document.querySelector('#backgroundImage');
       backgroundImage.classList.add('backgroundPreload');
 
+      // preloader for background transition
       let preloader = document.createElement('img');
       preloader.src = url;
+
+      // once image has loaded, add the fade-in transition
       preloader.addEventListener('load', () => {
         backgroundImage.classList.remove('backgroundPreload');
         backgroundImage.classList.add('fade-in');
@@ -82,6 +85,13 @@ export default class Background extends React.PureComponent {
           `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
         ); 
         preloader = null;
+
+        // wait before showing photoinformation, should make this better with state or something later but lazy
+        if (this.state.photoInfo.hidden === false) {
+          setTimeout(() => {
+            document.querySelector('.photoInformation').style.display = 'block';
+          }, 800);
+        }
       });
     } else {
       document.querySelector('#backgroundImage').setAttribute(

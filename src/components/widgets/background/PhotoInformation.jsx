@@ -31,7 +31,7 @@ export default function PhotoInformation(props) {
   }
 
   return (
-    <div className='photoInformation'>
+    <div className='photoInformation' style={{'display': 'none'}}>
       <h1>{language.credit} <span id='credit'>{props.info.credit}</span></h1>
       <Info className='photoInformationHover'/>
       <div className={props.className || 'infoCard'}>

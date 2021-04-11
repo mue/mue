@@ -1,8 +1,9 @@
 import React from 'react';
 
-import Analog from 'react-clock';
-
 import './clock.scss';
+
+const Analog = React.lazy(() => import('react-clock'));
+const renderLoader = () => <></>;
 
 export default class Clock extends React.PureComponent {
   constructor() {
@@ -97,7 +98,8 @@ export default class Clock extends React.PureComponent {
 
     if (localStorage.getItem('timeType') === 'analogue') {
       clockHTML = (
-        <Analog 
+        <React.Suspense fallback={renderLoader()}>
+          <Analog 
           className='analogclock' 
           value={this.state.time} 
           renderHourMarks={enabled('hourMarks')} 
@@ -106,6 +108,7 @@ export default class Clock extends React.PureComponent {
           renderMinuteHand={enabled('minuteHand')} 
           renderHourHand={enabled('hourHand')} 
         />
+        </React.Suspense>
       );
     }
 
