@@ -25,7 +25,7 @@ import Sideload from '@material-ui/icons/Code';
 // Store
 import Added from '@material-ui/icons/AddCircleOutline';
 
-export default function Tab(props) {
+function Tab(props) {
   let className = 'tab-list-item';
   if (props.currentTab === props.label) {
     className += ' tab-list-active';
@@ -88,3 +88,5 @@ export default function Tab(props) {
     </>
   );
 }
+
+export default React.memo(Tab);

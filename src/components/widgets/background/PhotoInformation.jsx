@@ -8,9 +8,8 @@ import Photographer from '@material-ui/icons/Person';
 import Download from '@material-ui/icons/GetApp';
 
 const toDataURL = async (url) => {
-  const response = await fetch(url);
-  const blob = await response.blob();
-  return URL.createObjectURL(blob);
+  const res = await fetch(url);
+  return URL.createObjectURL(await res.blob());
 };
 
 const downloadImage = async (info) => {
@@ -31,7 +30,7 @@ export default function PhotoInformation(props) {
   }
 
   return (
-    <div className='photoInformation' style={{'display': 'none'}}>
+    <div className='photoInformation' style={{ 'display': 'none' }}>
       <h1>{language.credit} <span id='credit'>{props.info.credit}</span></h1>
       <Info className='photoInformationHover'/>
       <div className={props.className || 'infoCard'}>

@@ -44,7 +44,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: '[name].js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[id].[chunkhash].chunk.js',
     clean: true
   },
   devServer: {
@@ -68,8 +69,8 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+      filename: '[name].[chunkhash].css',
+      chunkFilename: '[id].[chunkhash].chunk.css'
     }),
     //new ESLintPlugin()
   ]

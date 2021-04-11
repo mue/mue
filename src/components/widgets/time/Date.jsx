@@ -1,6 +1,6 @@
 import React from 'react';
 
-import dtf from '@eartharoid/dtf';
+import dtf from '../../../modules/helpers/date';
 
 export default class DateWidget extends React.PureComponent {
   constructor() {
@@ -100,6 +100,6 @@ export default class DateWidget extends React.PureComponent {
   }
 
   render() {
-    return <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date} <br/> {this.state.weekNumber}</span>;
+    return <span className='date' style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date} <br/> {this.state.weekNumber}</span>;
   }
 }

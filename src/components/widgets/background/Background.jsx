@@ -59,12 +59,6 @@ export default class Background extends React.PureComponent {
   }
 
   setBackground() {
-    // Brightness
-    let brightness = localStorage.getItem('brightness');
-    if (localStorage.getItem('brightnessTime') && new Date().getHours() > 18) {
-      brightness = 75;
-    }
-
     if (this.state.url !== '') {
       const url = this.ddgproxy ? window.constants.DDG_PROXY + this.state.url : this.state.url;
 
@@ -82,12 +76,12 @@ export default class Background extends React.PureComponent {
 
         backgroundImage.setAttribute(
           'style',
-          `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+          `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`
         ); 
         preloader = null;
 
         // wait before showing photoinformation, should make this better with state or something later but lazy
-        if (this.state.photoInfo.hidden === false) {
+        if (this.state.photoInfo.hidden !== false) {
           setTimeout(() => {
             document.querySelector('.photoInformation').style.display = 'block';
           }, 800);
@@ -96,7 +90,7 @@ export default class Background extends React.PureComponent {
     } else {
       document.querySelector('#backgroundImage').setAttribute(
         'style',
-        `${this.state.style}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
+        `${this.state.style}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`
       );
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import dtf from '@eartharoid/dtf';
+import dtf from '../../../modules/helpers/date';
 
 import './greeting.scss';
 

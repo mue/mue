@@ -115,7 +115,6 @@ ul.sidebar {
   left: 0;
   margin: 0;
   padding-left: 0;
-  height: 20%;
   background: var(--sidebar);
   border-radius: 12px 0 0 12px;
   text-align: left;
@@ -190,7 +189,6 @@ li {
 
 .tab-content {
   position: absolute;
-  left: 25%;
 
   h3 {
     text-transform: uppercase;
@@ -199,32 +197,43 @@ li {
 
 @media only screen and (min-width: 2300px) {
   .tab-content {
-    position: absolute !important;
-    left: 25% !important;
+    left: 350px;
     top: 7%;
   }
 }
 
 @media only screen and (max-width: 1920px) {
   .tab-content {
-    position: absolute;
-    left: 30%;
-    top: 15%;
+    left: 120px;
+    top: 50px;
   }
 }
 
 @media only screen and (min-width: 1920px) {
   .tab-content {
-    position: absolute;
-    left: 30%;
+    left: 350px;
     top: 7%;
   }
 }
 
 @media only screen and (max-width: 1400px) {
   .tab-content {
-    position: absolute;
-    left: 45%;
+    left: 350px;
+    top: 75px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .tab-content {
+    left: 350px;
+    top: 75px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .tab-content {
+    left: 125px;
+    top: 75px;
   }
 }
 
@@ -247,6 +256,7 @@ li {
   svg {
     margin-right: 0.5rem;
     padding: 3px;
+    font-size: 1.4em !important;
   }
 }
 
@@ -262,12 +272,16 @@ li {
     font-size: 1.1em !important;
   }
 
+  svg {
+    font-size: 1.4em !important;
+  }
+
   &:hover {
     background: none;
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1300px) {
   li.navbar-item {
     span {
       display: none;

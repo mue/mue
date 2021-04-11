@@ -19,9 +19,9 @@ export default class View extends React.PureComponent {
     );
   }
 
-  viewStuff() {
+  maximise = () => {
     // elements to hide
-    const elements = ['.searchBar', '.clock', '.greeting', '.quotediv', 'time', '.quicklinks-container', '.weather'];
+    const elements = ['.searchBar', '.clock', '.greeting', '.quotediv', 'time', '.quicklinks-container', '.weather', '.date'];
 
     elements.forEach((element) => {
       try {
@@ -47,13 +47,9 @@ export default class View extends React.PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('background') === 'false') {
-      return null;
-    }
-
     return (
-      <Tooltip title='View' placement='top'>
-        <FullscreenIcon onClick={() => this.viewStuff()} className='topicons' />
+      <Tooltip title={window.language.modals.main.settings.sections.background.buttons.view} placement='top'>
+        <FullscreenIcon onClick={this.maximise} className='topicons' />
       </Tooltip>
     );
   }

@@ -68,8 +68,7 @@
 .uploadbg,
 .import {
   @extend %settingsButton;
-  background-color: map-get($modal, 'sidebar');
-  border: none;
+  background-color: map-get($button-colours, 'other');
   color: map-get($theme-colours, 'secondary');
 
   &:hover {

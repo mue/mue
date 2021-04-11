@@ -8,7 +8,7 @@ import Report from '@material-ui/icons/SmsFailed';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import Notes from './Notes';
-import View from '../background/Maximise';
+import Maximise from '../background/Maximise';
 import Favourite from '../background/Favourite';
 
 import './scss/index.scss';
@@ -16,10 +16,12 @@ import './scss/index.scss';
 export default function Navbar(props) {
   const language = window.language;
 
+  const backgroundEnabled = (localStorage.getItem('background') === 'true');
+
   return (
     <div className='navbar-container'>
-      {(localStorage.getItem('view') === 'true') ? <View/> :null}
-      {(localStorage.getItem('favouriteEnabled') === 'true') ? <Favourite/> :null}
+      {(localStorage.getItem('view') === 'true' && backgroundEnabled) ? <Maximise/> :null}
+      {(localStorage.getItem('favouriteEnabled') === 'true' && backgroundEnabled) ? <Favourite/> :null}
   
       {(localStorage.getItem('notesEnabled') === 'true') ?
         <div className='notes'>
