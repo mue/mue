@@ -26,7 +26,7 @@ export default class About extends React.PureComponent {
     try {
       contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/contributors')).json();
       sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list')).json()).sponsors;
-      photographers = await (await fetch(window.constants.API_URL + '/getPhotographers')).json();
+      photographers = await (await fetch(window.constants.API_URL + '/images/photographers')).json();
   
       versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/releases')).json();
     } catch (e) {

@@ -62,9 +62,10 @@ export default class Background extends React.PureComponent {
     if (this.state.url !== '') {
       const url = this.ddgproxy ? window.constants.DDG_PROXY + this.state.url : this.state.url;
       const backgroundImage = document.querySelector('#backgroundImage');
+      const photoInformation = document.querySelector('.photoInformation');
 
       if (localStorage.getItem('bgtransition') === 'false') {
-        document.querySelector('.photoInformation').style.display = 'block';
+        photoInformation.style.display = 'block';
 
         return backgroundImage.setAttribute(
           'style',
@@ -73,6 +74,7 @@ export default class Background extends React.PureComponent {
       }
 
       backgroundImage.classList.add('backgroundPreload');
+      photoInformation.classList.add('backgroundPreload');
 
       // preloader for background transition
       let preloader = document.createElement('img');
@@ -91,9 +93,8 @@ export default class Background extends React.PureComponent {
 
         // wait before showing photoinformation, should make this better with state or something later but lazy
         if (this.state.photoInfo.hidden !== false) {
-          setTimeout(() => {
-            document.querySelector('.photoInformation').style.display = 'block';
-          }, 800);
+          photoInformation.classList.remove('backgroundPreload');
+          document.querySelector('.photoInformation').classList.add('fade-in');
         }
       });
     } else {
