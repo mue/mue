@@ -2,6 +2,8 @@ import React from 'react';
 
 import dtf from '../../../modules/helpers/date';
 
+import './date.scss';
+
 export default class DateWidget extends React.PureComponent {
   constructor() {
     super();
@@ -35,9 +37,7 @@ export default class DateWidget extends React.PureComponent {
       this.getWeekNumber(date);
     }
 
-    const type = localStorage.getItem('dateType');
-
-    if (type === 'short') {
+    if (localStorage.getItem('dateType') === 'short') {
       const dateDay = date.getDate();
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
@@ -87,10 +87,9 @@ export default class DateWidget extends React.PureComponent {
 
       const day = (localStorage.getItem('dayofweek') === 'true') ? date.toLocaleDateString(lang, { weekday: 'long' }) : '';
       const month = date.toLocaleDateString(lang, { month: 'long' });
-      const year = date.getFullYear();
 
       this.setState({
-        date: `${day} ${nth} ${month} ${year}`
+        date: `${day} ${nth} ${month} ${date.getFullYear()}`
       });
     }
   }
@@ -100,6 +99,6 @@ export default class DateWidget extends React.PureComponent {
   }
 
   render() {
-    return <span className='date' style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date} <br/> {this.state.weekNumber}</span>;
+    return <span className='date'>{this.state.date} <br/> {this.state.weekNumber}</span>;
   }
 }

@@ -170,5 +170,13 @@
   {
     "name": "bgtransition",
     "value": true
+  },
+  {
+    "name": "backgroundVideoLoop",
+    "value": true
+  },
+  {
+    "name": "backgroundVideoMute",
+    "value": true
   }
 ]

@@ -33,26 +33,24 @@ export default class Tabs extends React.PureComponent {
       <>
         <ul className={className}>
           {optionsText}
-          {this.props.children.map((tab) => {
-            return (
-              <Tab
-                currentTab={this.state.currentTab}
-                key={tab.props.label}
-                label={tab.props.label}
-                onClick={this.onClick}
-                navbar={this.props.navbar || false}
-              />
-            );
-          })}
+          {this.props.children.map((tab, index) => (
+            <Tab
+              currentTab={this.state.currentTab}
+              key={tab.props.label || index}
+              label={tab.props.label}
+              onClick={this.onClick}
+              navbar={this.props.navbar || false}
+            />
+          ))}
         </ul>
         <div className={tabClass}>
           <ErrorBoundary>
-            {this.props.children.map((child) => {
-              if (child.props.label !== this.state.currentTab) {
+            {this.props.children.map((tab) => {
+              if (tab.props.label !== this.state.currentTab) {
                 return undefined;
               }
 
-              return child.props.children;
+              return tab.props.children;
             })}
           </ErrorBoundary>
         </div>

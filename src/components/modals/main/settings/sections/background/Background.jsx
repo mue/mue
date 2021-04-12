@@ -22,7 +22,7 @@ export default class BackgroundSettings extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  resetCustom() {
+  resetCustom = () => {
     localStorage.setItem('customBackground', '');
     this.setState({
       customBackground: ''
@@ -40,7 +40,7 @@ export default class BackgroundSettings extends React.PureComponent {
   videoCustomSettings = () => {
     const customBackground = this.state.customBackground;
 
-    if (customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
+    if (customBackground.startsWith('data:video/') || customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
       return (
         <>
           <Checkbox name='backgroundVideoLoop' text={this.language.sections.background.source.loop_video}/>
@@ -105,15 +105,12 @@ export default class BackgroundSettings extends React.PureComponent {
     const customSettings = (
       <>
         <ul>
-          <p>{background.source.custom_url} <span className='modalLink' onClick={() => this.resetCustom()}>{this.language.buttons.reset}</span></p>
+          <p>{background.source.custom_background} <span className='modalLink' onClick={this.resetCustom}>{this.language.buttons.reset}</span></p>
           <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
+          <span className='modalLink' onClick={() => document.getElementById('bg-input').click()}>{background.source.upload}</span>
+          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.fileUpload(e)} />
         </ul>
         {this.videoCustomSettings()}
-        <ul>
-          <p>{background.source.custom_background} <span className='modalLink' onClick={() => this.resetCustom()}>{this.language.buttons.reset}</span></p>
-          <button className='uploadbg' onClick={() => document.getElementById('bg-input').click()}>{background.source.upload}</button>
-          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif' loadFunction={(e) => this.fileUpload(e)} />
-        </ul>
       </>
     );
 

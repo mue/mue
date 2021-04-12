@@ -18,24 +18,25 @@ import Weather from '../settings/sections/Weather';
 import Tabs from './backend/Tabs';
 
 export default function Settings() {
-  const language = window.language.modals.main.settings.sections;
+  const settings = window.language.modals.main.settings.sections;
+
   return (
     <>
       <Tabs>
-        <div label={language.time.title}><Time/></div>
-        <div label={language.quote.title}><Quote/></div>
-        <div label={language.greeting.title}><Greeting/></div>
-        <div label={language.background.title}><Background/></div>
-        <div label={language.search.title}><Search/></div>
-        <div label={language.quicklinks.title}><QuickLinks/></div>
-        <div label={language.weather.title}><Weather/></div>
-        <div label={language.appearance.title}><Appearance/></div>
-        <div label={language.order.title}><Order/></div>
-        <div label={language.language.title}><Language/></div>
-        <div label={language.advanced.title}><Advanced/></div>
-        <div label={language.experimental.title}><Experimental/></div>
-        <div label={language.changelog}><Changelog/></div>
-        <div label={language.about.title}><About/></div>
+        <div label={settings.time.title}><Time/></div>
+        <div label={settings.quote.title}><Quote/></div>
+        <div label={settings.greeting.title}><Greeting/></div>
+        <div label={settings.background.title}><Background/></div>
+        <div label={settings.search.title}><Search/></div>
+        <div label={settings.quicklinks.title}><QuickLinks/></div>
+        <div label={settings.weather.title}><Weather/></div>
+        <div label={settings.appearance.title}><Appearance/></div>
+        <div label={settings.order.title}><Order/></div>
+        <div label={settings.language.title}><Language/></div>
+        <div label={settings.advanced.title}><Advanced/></div>
+        <div label={settings.experimental.title}><Experimental/></div>
+        <div label={settings.changelog}><Changelog/></div>
+        <div label={settings.about.title}><About/></div>
       </Tabs>
       <div className='reminder-info'>
         <h1>IMPORTANT INFO</h1>

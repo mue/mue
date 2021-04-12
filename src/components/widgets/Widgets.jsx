@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Clock = React.lazy(() => import('./time/Clock'));
-const Greeting = React.lazy(() => import('./greeting/Greeting'));
-const Quote = React.lazy(() => import('./quote/Quote'));
-const Search = React.lazy(() => import('./search/Search'));
-const Date = React.lazy(() => import('./time/Date'));
-const QuickLinks = React.lazy(() => import('./quicklinks/QuickLinks'));
+import Clock from './time/Clock';
+import Greeting from './greeting/Greeting';
+import Quote from './quote/Quote';
+import Search from './search/Search';
+import QuickLinks from './quicklinks/QuickLinks';
+import Date from './time/Date';
+
 const Weather = React.lazy(() => import('./weather/Weather'));
 const renderLoader = () => <></>;
 
@@ -24,37 +25,6 @@ export default class Widgets extends React.PureComponent {
 
   enabled(key) {
     return (localStorage.getItem(key) === 'true');
-  }
-
-  componentDidMount() {
-    const widget = document.getElementById('widgets');
-    // These lines of code prevent double clicking the page or pressing CTRL + A from highlighting the page
-    widget.addEventListener('mousedown', (event) => {
-      if (event.detail > 1) {
-        event.preventDefault();
-      }
-    }, false);
-
-    document.onkeydown = (e) => {
-      e = e || window.event;
-      if (!e.ctrlKey) {
-        return;
-      }
-      let code = e.which || e.keyCode;
-      
-      const modals = document.getElementsByClassName('ReactModal__Overlay');
-      if (modals.length > 0) {
-        return;
-      }
-
-      switch (code) {
-        case 65:
-          e.preventDefault();
-          e.stopPropagation();
-          break;
-        default: break;
-      }
-    };
   }
 
   render() {

@@ -191,7 +191,7 @@ export default class Background extends React.PureComponent {
 
         if (customBackground !== '') {
           // video background
-          if (customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
+          if (customBackground.startsWith('data:video/') || customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
             return this.setState({
               url: customBackground,
               video: true,

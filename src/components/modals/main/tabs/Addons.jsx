@@ -2,15 +2,15 @@ import React from 'react';
 
 import Added from '../marketplace/sections/Added';
 
-import AddonsTabs from './backend/Tabs';
+import Tabs from './backend/Tabs';
 
 export default function Addons() {
-  const language = window.language.modals.main.addons;
+  const addons = window.language.modals.main.addons;
 
   return (
-    <AddonsTabs>
-      <div label={language.added}><Added/></div>
-      <div label={language.sideload}></div>
-    </AddonsTabs>
+    <Tabs>
+      <div label={addons.added}><Added/></div>
+      <div label={addons.sideload}></div>
+    </Tabs>
   );
 }

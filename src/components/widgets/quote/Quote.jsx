@@ -22,7 +22,6 @@ export default class Quote extends React.PureComponent {
     };
   
     this.language = window.language.widgets.quote;
-    this.languagecode = window.languagecode;
   }
 
   doOffline() {
@@ -57,6 +56,22 @@ export default class Quote extends React.PureComponent {
   }
 
   async getQuote() {
+    const favouriteQuote = localStorage.getItem('favouriteQuote');
+    if (favouriteQuote) {
+      return this.setState({
+        quote: favouriteQuote.split(' - ')[0],
+        author: favouriteQuote.split(' - ')[1]
+      });
+    }
+
+    const customQuote = localStorage.getItem('customQuote');
+    if (customQuote) {
+      return this.setState({
+        quote: '"' + customQuote + '"',
+        author: localStorage.getItem('customQuoteAuthor')
+      });
+    }
+
     if (localStorage.getItem('offlineMode') === 'true') {
       return this.doOffline();
     }
@@ -74,22 +89,6 @@ export default class Quote extends React.PureComponent {
       }
     }
 
-    const favouriteQuote = localStorage.getItem('favouriteQuote');
-    if (favouriteQuote) {
-      return this.setState({
-        quote: favouriteQuote.split(' - ')[0],
-        author: favouriteQuote.split(' - ')[1]
-      });
-    }
-
-    const customQuote = localStorage.getItem('customQuote');
-    if (customQuote) {
-      return this.setState({
-        quote: '"' + customQuote + '"',
-        author: localStorage.getItem('customQuoteAuthor')
-      });
-    }
-
     // First we try and get a quote from the API...
     try {
       const data = await (await fetch(window.constants.API_URL + '/quotes/random?language=' + localStorage.getItem('quotelanguage'))).json();
@@ -99,7 +98,7 @@ export default class Quote extends React.PureComponent {
         return this.doOffline();
       }
 
-      let authorlink = `https://${this.languagecode.split('_')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
+      let authorlink = `https://${window.languagecode.split('_')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
       if (localStorage.getItem('authorLink') === 'false') {
         authorlink = null;
       }
