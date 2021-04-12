@@ -29,7 +29,7 @@ export default function AppearanceSettings() {
   return (
     <>
       <h2>{appearance.title}</h2>
-      <Radio name='theme' title={appearance.theme.title} options={themeOptions} />
+      <Radio name='theme' title={appearance.theme.title} options={themeOptions} category='other' />
 
       <h3>{appearance.navbar.title}</h3>
       <Checkbox name='notesEnabled' text={appearance.navbar.notes} />

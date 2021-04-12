@@ -36,6 +36,7 @@ export default class Text extends React.PureComponent {
     });
 
     toast(this.language.toasts.reset);
+    EventBus.dispatch('refresh', this.props.category);
   }
 
   render() {

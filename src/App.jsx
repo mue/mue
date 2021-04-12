@@ -4,6 +4,7 @@ import Background from './components/widgets/background/Background';
 import Widgets from './components/widgets/Widgets';
 import Modals from './components/modals/Modals';
 
+import EventBus from './modules/helpers/eventbus';
 import SettingsFunctions from './modules/helpers/settings';
 
 import { ToastContainer } from 'react-toastify';
@@ -15,6 +16,12 @@ export default class App extends React.PureComponent {
     }
 
     SettingsFunctions.loadSettings();
+
+    EventBus.on('refresh', (data) => {
+      if (data === 'other') {
+        SettingsFunctions.loadSettings(true);
+      }
+    });
   }
 
   render() {

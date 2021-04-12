@@ -72,14 +72,15 @@ export default class SettingsFunctions {
     window.location.reload();
   }
 
-  static loadSettings() {
+  static loadSettings(noeasteregg) {
     const css = localStorage.getItem('customcss');
     if (css) {
       document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
     }
 
-    if (localStorage.getItem('darkTheme') === 'true') {
-      document.getElementsByClassName('Toastify')[0].classList.add('dark');
+    const js = localStorage.getItem('customjs');
+    if (js) {
+      document.body.insertAdjacentHTML('beforeend', '<script>' + js + '</script>');
     }
 
     const font = localStorage.getItem('font');
@@ -118,24 +119,31 @@ export default class SettingsFunctions {
     }
 
     const widgetzoom = localStorage.getItem('widgetzoom');
-    // don't bother if it's default zoom
-    if (widgetzoom !== '100') {
-      document.getElementById('root').style.zoom = widgetzoom + '%';
-    }
+    document.getElementById('root').style.zoom = widgetzoom + '%';
 
     const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-      document.body.classList.add('dark');
-    } else if (theme === 'auto') {
-      // Set theme depending on user preferred
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    switch (theme) {
+      case 'dark':
         document.body.classList.add('dark');
-      }
+        break;
+      case 'auto':
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.body.classList.add('dark');
+        }
+        break;
+      default:
+        document.body.classList.remove('dark');
     }
 
     const tabName = localStorage.getItem('tabName');
     if (tabName !== window.language.tabname) {
       document.title = tabName;
+    } else {
+      document.title = window.language.tabname;
+    }
+
+    if (noeasteregg === true) {
+      return;
     }
 
     // easter egg

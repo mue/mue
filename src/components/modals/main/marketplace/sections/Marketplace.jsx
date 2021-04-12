@@ -55,7 +55,7 @@ export default class Marketplace extends React.PureComponent {
 
         const installed = JSON.parse(localStorage.getItem('installed'));
 
-        if (installed.some(item => item.name === data)) {
+        if (installed.some(item => item.name === info.data.name)) {
           button = this.buttons.uninstall;
         }
 

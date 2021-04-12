@@ -31,6 +31,7 @@ export default class Slider extends React.PureComponent {
     });
 
     toast(this.language.toasts.reset);
+    EventBus.dispatch('refresh', this.props.category);
   }
 
   render() {

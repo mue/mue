@@ -18,6 +18,7 @@ export default class MarketplaceFunctions {
         localStorage.removeItem('quote_packs');
         localStorage.removeItem('quoteAPI');
         break;
+      case 'photos':
       case 'photo_packs':
         localStorage.removeItem('photo_packs');
         localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));

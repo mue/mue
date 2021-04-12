@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../../modules/helpers/eventbus';
+
 export default class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -26,6 +28,8 @@ export default class Dropdown extends React.PureComponent {
     if (this.props.onChange) {
       this.props.onChange(value);
     }
+
+    EventBus.dispatch('refresh', this.props.category);
   }
 
   // todo: find a better way to do this

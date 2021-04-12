@@ -1,4 +1,5 @@
 {
+  "tabname": "Neuer Tab",
   "widgets": {
     "greeting": {
       "morning": "Guten Morgen",

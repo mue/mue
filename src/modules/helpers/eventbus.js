@@ -1,17 +1,15 @@
-const EventBus = {
-  on(event, callback) {
+export default class EventBus {
+  static on(event, callback) {
     document.addEventListener(event, (e) => callback(e.detail));
-  },
+  }
 
-  dispatch(event, data) {
+  static dispatch(event, data) {
     document.dispatchEvent(new CustomEvent(event, {
       detail: data
     }));
-  },
+  }
 
-  remove(event, callback) {
+  static remove(event, callback) {
     document.removeEventListener(event, callback);
-  },
-};
-
-export default EventBus;
+  }
+}

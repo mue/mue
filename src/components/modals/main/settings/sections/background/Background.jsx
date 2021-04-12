@@ -30,7 +30,7 @@ export default class BackgroundSettings extends React.PureComponent {
     toast(this.language.toasts.reset);
   }
 
-  fileUpload(e) {
+  customBackground(e) {
     localStorage.setItem('customBackground', e.target.result);
     this.setState({
       customBackground: e.target.result
@@ -56,10 +56,6 @@ export default class BackgroundSettings extends React.PureComponent {
     if (localStorage.getItem('photo_packs')) {
       return <option value='photo_pack'>{window.language.modals.main.navbar.marketplace}</option>
     }
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem('customBackground', this.state.customBackground);
   }
 
   async getBackgroundCategories() {
@@ -94,7 +90,7 @@ export default class BackgroundSettings extends React.PureComponent {
         <br/>
         <Radio title={background.source.api} options={apiOptions} name='backgroundAPI'/>
         <br/>
-        <Dropdown label='Category' name='apiCategory'>
+        <Dropdown label={background.category} name='apiCategory'>
           {this.state.backgroundCategories.map((category) => (
             <option value={category} key={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</option>
           ))}
@@ -106,9 +102,9 @@ export default class BackgroundSettings extends React.PureComponent {
       <>
         <ul>
           <p>{background.source.custom_background} <span className='modalLink' onClick={this.resetCustom}>{this.language.buttons.reset}</span></p>
-          <input type='text' value={this.state.customBackground} onChange={(e) => this.setState({ customBackground: e.target.value })}></input>
+          <input type='text' value={this.state.customBackground} onChange={(e) => this.customBackground(e)}></input>
           <span className='modalLink' onClick={() => document.getElementById('bg-input').click()}>{background.source.upload}</span>
-          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.fileUpload(e)} />
+          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e)} />
         </ul>
         {this.videoCustomSettings()}
       </>
