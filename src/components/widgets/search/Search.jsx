@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import SearchIcon from '@material-ui/icons/Search';
 import MicIcon from '@material-ui/icons/Mic';
 
@@ -40,7 +42,7 @@ export default class Search extends React.PureComponent {
     window.location.href = this.state.url + `?${this.state.query}=` + value;
   }
 
-  componentDidMount() {
+  init() {
     let url;
     let query = 'q';
     let microphone = null;
@@ -68,6 +70,27 @@ export default class Search extends React.PureComponent {
       query: query,
       microphone: microphone
     });
+  }
+
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'search') {
+        const element = document.querySelector('.searchBar');
+
+        if (localStorage.getItem('searchBar') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+        this.init();
+      }
+    });
+  
+    this.init();
+  }
+
+  componentWillUnmount() {
+    EventBus.remove('refresh');
   }
 
   render() {

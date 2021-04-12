@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../../../modules/helpers/eventbus';
+
 import DragHandleIcon from '@material-ui/icons/DragIndicator';
 
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
@@ -63,6 +65,7 @@ export default class OrderSettings extends React.PureComponent {
 
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
+    EventBus.dispatch('refresh', 'order');
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import EventBus from '../../../../modules/helpers/eventbus';
 import SettingsFunctions from '../../../../modules/helpers/settings';
 
 import CheckboxUI from '@material-ui/core/Checkbox';
@@ -19,6 +20,8 @@ export default class Checkbox extends React.PureComponent {
     this.setState({
       checked: (this.state.checked === true) ? false : true
     });
+
+    EventBus.dispatch('refresh', this.props.category);
   }
 
   render() {

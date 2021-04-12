@@ -104,7 +104,7 @@ export default class Added extends React.PureComponent {
 
     if (this.state.installed.length === 0) {
       content = (
-        <div className='items'>
+        <div className='emptyitems'>
           <div className='emptyMessage'>
             <LocalMallIcon/>
             <h1>{this.language.empty.title}</h1>

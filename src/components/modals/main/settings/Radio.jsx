@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../../modules/helpers/eventbus';
+
 import RadioUI from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -22,6 +24,8 @@ export default class Radio extends React.PureComponent {
     this.setState({
       value: value
     });
+
+    EventBus.dispatch('refresh', this.props.category);
   }
   
   render() {

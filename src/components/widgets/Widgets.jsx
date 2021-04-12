@@ -1,4 +1,5 @@
 import React from 'react';
+import EventBus from '../../modules/helpers/eventbus';
 
 import Clock from './time/Clock';
 import Greeting from './greeting/Greeting';
@@ -13,6 +14,9 @@ const renderLoader = () => <></>;
 export default class Widgets extends React.PureComponent {
   constructor() {
     super();
+    this.state = {
+      order: JSON.parse(localStorage.getItem('order'))
+    };
     // widgets we can re-order
     this.widgets = {
       time: this.enabled('time') ? <Clock/> : null,
@@ -27,13 +31,22 @@ export default class Widgets extends React.PureComponent {
     return (localStorage.getItem(key) === 'true');
   }
 
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'order') {
+        this.setState({
+          order: JSON.parse(localStorage.getItem('order'))
+        });
+      }
+    });
+  }
+
   render() {
     // allow for re-ordering widgets
     let elements = [];
-    const order = JSON.parse(localStorage.getItem('order'));
 
-    if (order) {
-      order.forEach((element) => {
+    if (this.state.order) {
+      this.state.order.forEach((element) => {
         elements.push(<React.Fragment key={element}>{this.widgets[element]}</React.Fragment>);
       });
     } else {

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../../modules/helpers/eventbus';
+
 import { toast } from 'react-toastify';
 
 export default class Text extends React.PureComponent {
@@ -23,6 +25,8 @@ export default class Text extends React.PureComponent {
     this.setState({
       value: value
     });
+
+    EventBus.dispatch('refresh', this.props.category);
   }
 
   resetItem = () => {

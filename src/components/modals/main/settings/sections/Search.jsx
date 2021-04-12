@@ -4,6 +4,8 @@ import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
 import Switch from '../Switch';
 
+import EventBus from '../../../../../modules/helpers/eventbus';
+
 import { isChrome } from 'react-device-detect';
 import { toast } from 'react-toastify';
 
@@ -44,6 +46,8 @@ export default class SearchSettings extends React.PureComponent {
     if (this.state.customEnabled === true && this.state.customValue !== '') {
       localStorage.setItem('customSearchEngine', this.state.customValue);
     }
+
+    EventBus.dispatch('refresh', 'search');
   }
 
   setSearchEngine(input) {
@@ -59,6 +63,8 @@ export default class SearchSettings extends React.PureComponent {
       });
       localStorage.setItem('searchEngine', input);
     }
+
+    EventBus.dispatch('refresh', 'search');
   }
 
   render() {
@@ -68,7 +74,7 @@ export default class SearchSettings extends React.PureComponent {
     return (
       <>
         <h2>{search.title}</h2>
-        <Switch name='searchBar' text={language.enabled} />
+        <Switch name='searchBar' text={language.enabled} category='search' />
         {isChrome ? <Checkbox name='voiceSearch' text={search.voice_search} /> : null}
 
         <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>

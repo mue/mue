@@ -7,9 +7,16 @@
   }
 }
 
+.emptyitems {
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
+}
+
 .items {
   display: inline-grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   margin-top: 15px;
 
   .item {
@@ -92,10 +99,13 @@ p.description {
 }
 
 .emptyMessage {
-  margin: 0 auto;
   text-align: center;
-  transform: translateY(30%);
-
+  background: var(--sidebar);
+  padding: 25px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  position: absolute;
+  width: 300px;
   svg {
     font-size: 50px;
     margin-bottom: -20px;
@@ -170,7 +180,7 @@ p.description {
   padding: 50px;
   color: #fff;
   box-shadow: 0 0 10px rgb(0 0 0 / 30%);
-  width: 85%;
+  width: 100%;
 
   button {
     float: left;

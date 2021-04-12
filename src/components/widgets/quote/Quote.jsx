@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import FileCopy from '@material-ui/icons/FilterNone';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import StarIcon from '@material-ui/icons/Star';
@@ -17,9 +19,14 @@ export default class Quote extends React.PureComponent {
       quote: '',
       author: '',
       favourited: <StarIcon2 className='copyButton' onClick={this.favourite} />,
+      tweet: '',
+      copy: ''
+    };
+
+    this.buttons = {
       tweet: <TwitterIcon className='copyButton' onClick={this.tweetQuote} />,
       copy: <FileCopy className='copyButton' onClick={this.copyQuote} />
-    };
+    }
   
     this.language = window.language.widgets.quote;
   }
@@ -137,7 +144,7 @@ export default class Quote extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
+  init() {
     let favouriteQuote = '';
     if (localStorage.getItem('favouriteQuoteEnabled') === 'true') {
       favouriteQuote = localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={this.favourite} /> : <StarIcon2 className='copyButton' onClick={this.favourite} />;
@@ -145,11 +152,32 @@ export default class Quote extends React.PureComponent {
 
     this.setState({
       favourited: favouriteQuote,
-      copy: (localStorage.getItem('copyButton') === 'false') ? null : this.state.copy,
-      tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.state.tweet
+      copy: (localStorage.getItem('copyButton') === 'false') ? null : this.buttons.copy,
+      tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet
     });
-
+  
     this.getQuote();
+  }
+
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'quote') {
+        const element = document.querySelector('.quotediv');
+
+        if (localStorage.getItem('quote') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+        this.init();
+      }
+    });
+  
+    this.init();
+  }
+
+  componentWillUnmount() {
+    EventBus.remove('refresh');
   }
 
   render() {

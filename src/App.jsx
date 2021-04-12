@@ -5,6 +5,7 @@ import Widgets from './components/widgets/Widgets';
 import Modals from './components/modals/Modals';
 
 import SettingsFunctions from './modules/helpers/settings';
+
 import { ToastContainer } from 'react-toastify';
 
 export default class App extends React.PureComponent {
