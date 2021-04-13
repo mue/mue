@@ -27,7 +27,7 @@ export default class App extends React.PureComponent {
   render() {
     return (
       <>
-        <Background/>
+        {(localStorage.getItem('background') === 'true') ? <Background/> : null}
         <ToastContainer position='bottom-right' autoClose={localStorage.getItem('toastDisplayTime') || 2500} newestOnTop={true} closeOnClick pauseOnFocusLoss/>
         <div id='center'>
           <Widgets/>

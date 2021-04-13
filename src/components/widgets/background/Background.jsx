@@ -1,3 +1,4 @@
+// TODO: rewrite this tomorrow
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
