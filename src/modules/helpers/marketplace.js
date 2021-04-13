@@ -60,6 +60,7 @@ export default class MarketplaceFunctions {
         input.settings.forEach(element => localStorage.setItem(element.name, element.value));
         break;
 
+      case 'photos':
       case 'photo_packs':
         localStorage.setItem('photo_packs', JSON.stringify(input.photos));
         localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));

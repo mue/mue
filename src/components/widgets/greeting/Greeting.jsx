@@ -1,5 +1,6 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
 import dtf from '../../../modules/helpers/date';
 
 import './greeting.scss';
@@ -101,6 +102,18 @@ export default class Greeting extends React.PureComponent {
   }
 
   componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'greeting') {
+        const element = document.querySelector('.greeting');
+
+        if (localStorage.getItem('greeting') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+      }
+    });
+
     this.getGreeting(0);
   }
 

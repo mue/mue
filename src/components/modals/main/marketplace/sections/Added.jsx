@@ -3,7 +3,6 @@ import React from 'react';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import Item from '../Item';
 import Items from '../Items';
-import FileUpload from '../../settings/FileUpload';
 
 import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 
@@ -117,8 +116,6 @@ export default class Added extends React.PureComponent {
     return (
       <>
         <div id='marketplace'>
-          <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.manage('install', JSON.parse(e.target.result))} />
-          {/*<button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>*/}
           {content}
         </div>
         <Item data={this.state.item_data} button={this.state.button} toggleFunction={() => this.toggle()} />

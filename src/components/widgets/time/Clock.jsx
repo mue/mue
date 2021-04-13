@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import './clock.scss';
 
 const Analog = React.lazy(() => import('react-clock'));
@@ -86,11 +88,23 @@ export default class Clock extends React.PureComponent {
   }
 
   componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'clock') {
+        const element = document.querySelector('.clock-container');
+
+        if (localStorage.getItem('time') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+      }
+    });
+
     this.startTime(0);
   }
 
   render() {
-    let clockHTML = <h1 className='clock'>{this.state.time}<span className='ampm'>{this.state.ampm}</span></h1>;
+    let clockHTML = <h1 className='clock clock-container'>{this.state.time}<span className='ampm'>{this.state.ampm}</span></h1>;
 
     const enabled = (setting) => {
       return (localStorage.getItem(setting) === 'true');
@@ -100,7 +114,7 @@ export default class Clock extends React.PureComponent {
       clockHTML = (
         <React.Suspense fallback={renderLoader()}>
           <Analog 
-          className='analogclock' 
+          className='analogclock clock-container' 
           value={this.state.time} 
           renderHourMarks={enabled('hourMarks')} 
           renderMinuteMarks={enabled('minuteMarks')} 

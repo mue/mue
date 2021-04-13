@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import dtf from '../../../modules/helpers/date';
 
 import './date.scss';
@@ -95,6 +97,19 @@ export default class DateWidget extends React.PureComponent {
   }
 
   componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'date') {
+        const element = document.querySelector('.date');
+
+        if (localStorage.getItem('date') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+        this.getDate();
+      }
+    });
+
     this.getDate();
   }
 

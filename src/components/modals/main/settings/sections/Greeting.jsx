@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../../../modules/helpers/eventbus';
+
 import Checkbox from '../Checkbox';
 import Switch from '../Switch';
 import Text from '../Text';
@@ -22,6 +24,8 @@ export default class GreetingSettings extends React.PureComponent {
     this.setState({
       birthday: data
     });
+
+    EventBus.dispatch('refresh', 'greeting');
   }
 
   render() {
@@ -30,14 +34,14 @@ export default class GreetingSettings extends React.PureComponent {
     return (
       <>
         <h2>{greeting.title}</h2>
-        <Switch name='greeting' text={this.language.enabled}/>
-        <Checkbox name='events' text={greeting.events}/>
-        <Checkbox name='defaultGreetingMessage' text={greeting.default}/>
-        <Text title={greeting.name} name='greetingName'/>
+        <Switch name='greeting' text={this.language.enabled} category='greeting'/>
+        <Checkbox name='events' text={greeting.events} category='greeting'/>
+        <Checkbox name='defaultGreetingMessage' text={greeting.default} category='greeting'/>
+        <Text title={greeting.name} name='greetingName' category='greeting'/>
 
         <h3>{greeting.birthday}</h3>
-        <Switch name='birthdayenabled' text={this.language.enabled}/>
-        <Checkbox name='birthdayage' text={greeting.birthday_age}/>
+        <Switch name='birthdayenabled' text={this.language.enabled} category='greeting'/>
+        <Checkbox name='birthdayage' text={greeting.birthday_age} category='greeting'/>
         <p>{greeting.birthday_date}</p>
         <DayPickerInput onDayChange={this.changeDate} value={this.state.birthday}/>
       </>

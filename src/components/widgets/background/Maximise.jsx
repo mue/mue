@@ -48,7 +48,7 @@ export default class View extends React.PureComponent {
 
   render() {
     return (
-      <Tooltip title={window.language.modals.main.settings.sections.background.buttons.view} placement='top'>
+      <Tooltip title={window.language.modals.main.settings.sections.background.buttons.view}>
         <FullscreenIcon onClick={this.maximise} className='topicons' />
       </Tooltip>
     );

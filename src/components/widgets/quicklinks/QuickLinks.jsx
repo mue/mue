@@ -87,10 +87,10 @@ export default class QuickLinks extends React.PureComponent {
 
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
 
-    const quickLink = (item) => {
+    const quickLink = (item, index) => {
       const link = (
-        <a key={item.name} onContextMenu={(e) => this.deleteLink(item.name, e)} href={item.url} target={target} rel={rel}>
-          <img src={'https://icons.duckduckgo.com/ip2/' + item.url.replace('https://', '').replace('http://', '') + '.ico'} alt={item.name}/>
+        <a key={index} onContextMenu={(e) => this.deleteLink(item.name, e)} href={item.url} target={target} rel={rel} draggable={false}>
+          <img src={'https://icons.duckduckgo.com/ip2/' + item.url.replace('https://', '').replace('http://', '') + '.ico'} alt={item.name} draggable={false}/>
         </a>
       );
 
@@ -103,8 +103,8 @@ export default class QuickLinks extends React.PureComponent {
 
     return (
       <div className='quicklinks-container'>
-        {this.state.items.map((item) => (
-          quickLink(item)
+        {this.state.items.map((item, index) => (
+          quickLink(item, index)
         ))}
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
         <span className='quicklinkscontainer' style={{'visibility': this.state.showAddLink}}>

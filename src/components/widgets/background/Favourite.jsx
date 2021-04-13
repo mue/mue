@@ -36,6 +36,6 @@ export default class Favourite extends React.PureComponent {
       return null;
     }
 
-    return <Tooltip title='Favourite' placement='top'>{this.state.favourited}</Tooltip>;
+    return <Tooltip title={window.language.modals.main.settings.sections.background.buttons.favourite}>{this.state.favourited}</Tooltip>;
   }
 }
