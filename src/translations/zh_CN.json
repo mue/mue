@@ -21,7 +21,9 @@
         "addons": "我的插件",
         "marketplace": "插件市场"
       },
+      "loading": "载入中...",
       "settings": {
+        "enabled": "已启用",
         "sections": {
           "time": {
             "title": "时间",
@@ -55,8 +57,8 @@
             "buttons": {
               "favourite": "收藏",
               "view": "查看",
-              "refresh": "刷新",
-              "disabled": "已禁用"
+              "disabled": "已禁用",
+              "download": "下载"
             },
             "effects": {
               "blur": "调整模糊",
@@ -64,6 +66,7 @@
             },
             "source": {
               "custom_url": "自定义背景链接",
+              "api": "背景背景来源",
               "custom_background": "自定义背景",
               "custom_colour": "自定义背景颜色",
               "upload": "上传",
@@ -77,7 +80,7 @@
             "voice_search": "语音搜索"
           },
           "advanced": {
-            "offline": "离线模式"
+            "offline_mode": "离线模式"
           },
           "dark": "暗黑主题",
           "experimental": {
@@ -85,6 +88,11 @@
             "webp": "启用 WebP",
             "animations": "动画",
             "nightmode": "夜间自动启用暗黑主题"
+          },
+          "appearance": {
+            "navbar": {
+              "refresh": "刷新按钮"
+            }
           },
           "language": {
             "title": "语言"

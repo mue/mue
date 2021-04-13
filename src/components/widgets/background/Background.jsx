@@ -100,7 +100,7 @@ export default class Background extends React.PureComponent {
     } else {
       document.querySelector('#backgroundImage').setAttribute(
         'style',
-        `${this.state.style}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`
+        `${this.state.style}; -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
       );
     }
   }

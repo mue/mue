@@ -7,10 +7,23 @@ import DragHandleIcon from '@material-ui/icons/DragIndicator';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';
 
+const enabled = (setting) => {
+  return (localStorage.getItem(setting) === 'true');
+};
+
+const settings = window.language.modals.main.settings.sections;
+const widget_name = {
+  greeting: settings.greeting.title,
+  time: settings.time.title,
+  quicklinks: settings.quicklinks.title,
+  quote: settings.quote.title,
+  date: settings.time.date.title
+};
+
 const SortableItem = sortableElement(({value}) => (
-  <li className='sortableitem'>
+  <li className='sortableitem' style={{ display: enabled(value) ? 'block' : 'none' }}>
     <DragHandleIcon style={{'verticalAlign': 'middle'}} />
-    {value.charAt(0).toUpperCase() + value.slice(1)}
+    {widget_name[value]}
   </li>
 ));
   

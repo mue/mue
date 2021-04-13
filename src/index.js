@@ -9,7 +9,7 @@ import './scss/index.scss';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 import '@fontsource/lexend-deca/latin-400.css';
-import '@fontsource/roboto/cyrillic-400.css';
+import '@fontsource/montserrat/cyrillic-500.css';
 
 // language
 import merge from '@material-ui/utils/deepmerge';

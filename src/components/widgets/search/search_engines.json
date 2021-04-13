@@ -15,14 +15,29 @@
     "url": "https://bing.com/search"
   },
   {
+    "name": "Ecosia",
+    "settingsName": "ecosia",
+    "url": "https://ecosia.org/search"
+  },
+  {
+    "name": "Ask",
+    "settingsName": "ask",
+    "url": "https://ask.com/web"
+  },
+  {
     "name": "Yahoo",
     "settingsName": "yahoo",
     "url": "https://search.yahoo.com/search"
   },
   {
-    "name": "Ecosia",
-    "settingsName": "ecosia",
-    "url": "https://ecosia.org/search"
+    "name": "Qwant",
+    "settingsName": "qwant",
+    "url": "https://www.qwant.com/"
+  },
+  {
+    "name": "Startpage",
+    "settingsName": "startpage",
+    "url": "https://www.startpage.com/sp/search"
   },
   {
     "name": "Яндекс",
@@ -31,18 +46,8 @@
     "query": "text"
   },
   {
-    "name": "Qwant",
-    "settingsName": "qwant",
-    "url": "https://www.qwant.com/"
-  },
-  {
-    "name": "Ask",
-    "settingsName": "ask",
-    "url": "https://ask.com/web"
-  },
-  {
-    "name": "Startpage",
-    "settingsName": "startpage",
-    "url": "https://www.startpage.com/sp/search"
+    "name": "百度",
+    "settingsName": "baidu",
+    "url": "https://www.baidu.com/s?wd="
   }
 ]

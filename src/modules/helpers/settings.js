@@ -129,7 +129,7 @@ export default class SettingsFunctions {
         <style>
           ${url}
           * {
-            font-family: '${font}', 'Lexend Deca', 'Roboto' !important;
+            font-family: '${font}', 'Lexend Deca', 'Montserrat' !important;
             ${fontweight}
             ${fontstyle}
           }
