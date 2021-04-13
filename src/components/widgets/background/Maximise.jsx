@@ -15,7 +15,7 @@ export default class View extends React.PureComponent {
   setAttribute(blur, brightness) {
     document.querySelector('#backgroundImage').setAttribute(
       'style',
-      `background-image: url(${document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}); -webkit-filter: brightness(${brightness}%);`
+      `background-image: url(${document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}px) brightness(${brightness}%);`
     );
   }
 
