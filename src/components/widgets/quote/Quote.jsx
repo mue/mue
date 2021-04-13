@@ -155,8 +155,10 @@ export default class Quote extends React.PureComponent {
       copy: (localStorage.getItem('copyButton') === 'false') ? null : this.buttons.copy,
       tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet
     });
-  
-    this.getQuote();
+
+    if (!this.state.quote) {
+      this.getQuote();
+    }
   }
 
   componentDidMount() {

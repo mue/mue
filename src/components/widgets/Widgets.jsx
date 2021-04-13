@@ -1,4 +1,5 @@
 import React from 'react';
+
 import EventBus from '../../modules/helpers/eventbus';
 
 import Clock from './time/Clock';

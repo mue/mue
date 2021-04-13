@@ -38,19 +38,19 @@ export default class TimeSettings extends React.PureComponent {
     return (
       <>
         <h2>{language.title}</h2>
-        <Switch name='weatherEnabled' text={this.language.enabled} />
+        <Switch name='weatherEnabled' text={this.language.enabled} category='weather'/>
         <ul>
           <p>{language.location}</p>
           <input type='text' value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })}></input>
         </ul>
         <br/>
-        <Radio name='tempformat' title={language.temp_format.title} options={tempFormat} />
+        <Radio name='tempformat' title={language.temp_format.title} options={tempFormat} category='weather'/>
         <h3>{language.extra_info.title}</h3>
-        <Checkbox name='humidity' text={language.extra_info.humidity}/>
-        <Checkbox name='windspeed' text={language.extra_info.wind_speed}/>
-        <Checkbox name='mintemp' text={language.extra_info.min_temp}/>
-        <Checkbox name='maxtemp' text={language.extra_info.max_temp}/>
-        <Checkbox name='atmosphericpressure' text={language.extra_info.atmospheric_pressure}/>
+        <Checkbox name='humidity' text={language.extra_info.humidity} category='weather'/>
+        <Checkbox name='windspeed' text={language.extra_info.wind_speed} category='weather'/>
+        <Checkbox name='mintemp' text={language.extra_info.min_temp} category='weather'/>
+        <Checkbox name='maxtemp' text={language.extra_info.max_temp} category='weather'/>
+        <Checkbox name='atmosphericpressure' text={language.extra_info.atmospheric_pressure} category='weather'/>
       </>
     );
   }

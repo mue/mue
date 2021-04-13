@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import WeatherIcon from './WeatherIcon';
 import { WiHumidity, WiWindy } from 'weather-icons-react';
 
@@ -13,7 +15,6 @@ export default class Weather extends React.PureComponent {
       icon: '',
       temp_text: '',
       weather: {
-        title: '',
         temp: '',
         temp_min: '',
         temp_max: '',
@@ -25,10 +26,30 @@ export default class Weather extends React.PureComponent {
   }
 
   async getWeather() {
-    const data = await (await fetch (window.constants.WEATHER_URL + `?city=${this.state.location}`)).json();
+    let data = {
+      weather: [
+        {
+          icon: this.state.icon
+        }
+      ],
+      wind: {
+        speed: this.state.weather.windspeed
+      },
+      main: {
+        temp: this.state.weather.original_temp,
+        temp_min: this.state.weather.original_temp_min,
+        temp_max: this.state.weather.original_temp_max,
+        humidity: this.state.weather.humidity,
+        pressure: this.state.weather.pressure
+      }
+    }
+
+    if (!this.state.weather.temp) {
+      data = await (await fetch (window.constants.WEATHER_URL + `?city=${this.state.location}`)).json();
+    }
 
     let temp = data.main.temp;
-    let temp_min = data.main.temp_max 
+    let temp_min = data.main.temp_mix 
     let temp_max = data.main.temp_max;
     let temp_text = 'K';
 
@@ -52,18 +73,33 @@ export default class Weather extends React.PureComponent {
       icon: data.weather[0].icon,
       temp_text: temp_text,
       weather: {
-        title: data.weather[0].main,
         temp: Math.round(temp),
         temp_min: Math.round(temp_min),
         temp_max: Math.round(temp_max),
         humidity: data.main.humidity,
         windspeed: data.wind.speed,
-        pressure: data.main.pressure
+        pressure: data.main.pressure,
+        original_temp: data.main.temp,
+        original_temp_min: data.main.temp_min,
+        original_temp_max: data.main.temp_max
       }
     });
   }
   
   componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'weather') {
+        const element = document.querySelector('.weather');
+
+        if (localStorage.getItem('weatherEnabled') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+        this.getWeather();
+      }
+    });
+
     this.getWeather();
   }
 

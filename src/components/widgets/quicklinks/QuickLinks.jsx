@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import Tooltip from '@material-ui/core/Tooltip';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
@@ -15,12 +17,6 @@ export default class QuickLinks extends React.PureComponent {
       showAddLink: 'hidden'
     };
     this.language = window.language.widgets.quicklinks;
-  }
-
-  updateLink(type, value) {
-    this.setState({
-      [type]: value
-    });
   }
 
   deleteLink(name, event) {
@@ -65,6 +61,23 @@ export default class QuickLinks extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'quicklinks') {
+        const element = document.querySelector('.quicklinks-container');
+
+        if (localStorage.getItem('quicklinksenabled') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+        this.setState({
+          items: JSON.parse(localStorage.getItem('quicklinks'))
+        });
+      }
+    });
+  }
+
   render() {
     let target, rel = null;
     if (localStorage.getItem('quicklinksnewtab') === 'true') {
@@ -97,9 +110,9 @@ export default class QuickLinks extends React.PureComponent {
         <span className='quicklinkscontainer' style={{'visibility': this.state.showAddLink}}>
           <div className='topbarquicklinks'>
             <h4>{this.language.new}</h4>
-            <TextareaAutosize rowsMax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.updateLink('name', e.target.value)} />
+            <TextareaAutosize rowsMax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
             <br/>
-            <TextareaAutosize rowsMax={10} placeholder={this.language.url} value={this.state.url} onChange={(e) => this.updateLink('url', e.target.value)} />
+            <TextareaAutosize rowsMax={10} placeholder={this.language.url} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
             <br/>
             <button className='pinNote' onClick={this.addLink}>{this.language.add}</button>
           </div>

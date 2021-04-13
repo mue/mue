@@ -59,7 +59,7 @@ export default function AppearanceSettings() {
 
       <h3>{appearance.accessibility.title}</h3>
       {(engineName === 'Blink') ? 
-        <Slider title={appearance.accessibility.widget_zoom} name='widgetzoom' default='100' step='10' min='50' max='200' display='%'/> 
+        <Slider title={appearance.accessibility.widget_zoom} name='widgetzoom' default='100' step='10' min='50' max='200' display='%' category='other'/> 
       : null}
       <Slider title={appearance.accessibility.toast_duration} name='toastDisplayTime' default='2500' step='100' min='500' max='5000' display={' ' + appearance.accessibility.milliseconds} />
     </>

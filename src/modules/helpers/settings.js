@@ -72,7 +72,30 @@ export default class SettingsFunctions {
     window.location.reload();
   }
 
-  static loadSettings(noeasteregg) {
+  static loadSettings(hotreload) {
+    document.getElementById('widgets').style.zoom = localStorage.getItem('widgetzoom') + '%';
+
+    const theme = localStorage.getItem('theme');
+    switch (theme) {
+      case 'dark':
+        document.body.classList.add('dark');
+        break;
+      case 'auto':
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.body.classList.add('dark');
+        }
+        break;
+      default:
+        document.body.classList.remove('dark');
+    }
+
+    const tabName = localStorage.getItem('tabName') || window.language.tabname;
+    document.title = tabName;
+
+    if (hotreload === true) {
+      return;
+    }
+
     const css = localStorage.getItem('customcss');
     if (css) {
       document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
@@ -106,7 +129,7 @@ export default class SettingsFunctions {
         <style>
           ${url}
           * {
-            font-family: '${font}', 'Lexend Deca' !important;
+            font-family: '${font}', 'Lexend Deca', 'Roboto' !important;
             ${fontweight}
             ${fontstyle}
           }
@@ -116,34 +139,6 @@ export default class SettingsFunctions {
 
     if (localStorage.getItem('experimental') === 'true') {
       experimentalInit();
-    }
-
-    const widgetzoom = localStorage.getItem('widgetzoom');
-    document.getElementById('root').style.zoom = widgetzoom + '%';
-
-    const theme = localStorage.getItem('theme');
-    switch (theme) {
-      case 'dark':
-        document.body.classList.add('dark');
-        break;
-      case 'auto':
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.body.classList.add('dark');
-        }
-        break;
-      default:
-        document.body.classList.remove('dark');
-    }
-
-    const tabName = localStorage.getItem('tabName');
-    if (tabName !== window.language.tabname) {
-      document.title = tabName;
-    } else {
-      document.title = window.language.tabname;
-    }
-
-    if (noeasteregg === true) {
-      return;
     }
 
     // easter egg
