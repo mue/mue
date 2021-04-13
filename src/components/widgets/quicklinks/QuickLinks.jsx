@@ -19,11 +19,11 @@ export default class QuickLinks extends React.PureComponent {
     this.language = window.language.widgets.quicklinks;
   }
 
-  deleteLink(name, event) {
+  deleteLink(key, event) {
     event.preventDefault();
 
     let data = JSON.parse(localStorage.getItem('quicklinks'));
-    data = data.filter((i) => i.name !== name);
+    data = data.filter((i) => i.key !== key);
 
     localStorage.setItem('quicklinks', JSON.stringify(data));
     this.setState({
@@ -35,7 +35,8 @@ export default class QuickLinks extends React.PureComponent {
     let data = JSON.parse(localStorage.getItem('quicklinks'));
     data.push({
       name: this.state.name,
-      url: this.state.url
+      url: this.state.url,
+      key: Math.random().toString(36).substring(7) + 1
     });
 
     localStorage.setItem('quicklinks', JSON.stringify(data));
@@ -87,9 +88,9 @@ export default class QuickLinks extends React.PureComponent {
 
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
 
-    const quickLink = (item, index) => {
+    const quickLink = (item) => {
       const link = (
-        <a key={index} onContextMenu={(e) => this.deleteLink(item.name, e)} href={item.url} target={target} rel={rel} draggable={false}>
+        <a key={item.key} onContextMenu={(e) => this.deleteLink(item.key, e)} href={item.url} target={target} rel={rel} draggable={false}>
           <img src={'https://icons.duckduckgo.com/ip2/' + item.url.replace('https://', '').replace('http://', '') + '.ico'} alt={item.name} draggable={false}/>
         </a>
       );
@@ -103,11 +104,11 @@ export default class QuickLinks extends React.PureComponent {
 
     return (
       <div className='quicklinks-container'>
-        {this.state.items.map((item, index) => (
-          quickLink(item, index)
+        {this.state.items.map((item) => (
+          quickLink(item)
         ))}
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
-        <span className='quicklinkscontainer' style={{'visibility': this.state.showAddLink}}>
+        <span className='quicklinkscontainer' style={{ 'visibility': this.state.showAddLink }}>
           <div className='topbarquicklinks'>
             <h4>{this.language.new}</h4>
             <TextareaAutosize rowsMax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />

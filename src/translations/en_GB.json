@@ -291,13 +291,13 @@
         "quote_packs": "Quote Packs",
         "preset_settings": "Preset Settings",
         "themes": "Themes",
+        "no_items": "No items in this category",
         "product": {
           "overview": "Overview",
           "information": "Information",
           "last_updated": "Last Updated",
           "version": "Version",
           "author": "Authour",
-          "no_items": "No items in this category",
           "notice": {
             "title": "Notice",
             "description": "In order for the change to take place, the page must be refreshed."

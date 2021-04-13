@@ -95,7 +95,7 @@ export default class BackgroundSettings extends React.PureComponent {
     const APISettings = (
       <>
         <br/>
-        <Radio title={background.source.api} options={apiOptions} name='backgroundAPI'/>
+        <Radio title={background.source.api} options={apiOptions} name='backgroundAPI' category='background'/>
         <br/>
         <Dropdown label={background.category} name='apiCategory'>
           {this.state.backgroundCategories.map((category) => (
@@ -127,12 +127,12 @@ export default class BackgroundSettings extends React.PureComponent {
     return (
       <>
         <h2>{background.title}</h2>
-        <Switch name='background' text={this.language.enabled} />
+        <Switch name='background' text={this.language.enabled} category='background' />
         <Checkbox name='ddgProxy' text={background.ddg_proxy} />
         <Checkbox name='bgtransition' text={background.transition} />
 
         <h3>{background.source.title}</h3>
-        <Dropdown label={background.type.title} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })}>
+        <Dropdown label={background.type.title} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>
           {this.marketplaceType()}
           <option value='api'>{background.type.api}</option>
           <option value='custom'>{background.type.custom_image}</option>
@@ -148,8 +148,8 @@ export default class BackgroundSettings extends React.PureComponent {
         <Checkbox name='downloadbtn' text={background.buttons.download}/>
 
         <h3>{background.effects.title}</h3>
-        <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' />
-        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='100' display='%' />
+        <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' category='background' />
+        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='100' display='%' category='background' />
         <br/><br/>
       </>
     );

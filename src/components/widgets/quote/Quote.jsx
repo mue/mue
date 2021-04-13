@@ -20,7 +20,8 @@ export default class Quote extends React.PureComponent {
       author: '',
       favourited: <StarIcon2 className='copyButton' onClick={this.favourite} />,
       tweet: '',
-      copy: ''
+      copy: '',
+      quoteLanguage: ''
     };
 
     this.buttons = {
@@ -98,7 +99,8 @@ export default class Quote extends React.PureComponent {
 
     // First we try and get a quote from the API...
     try {
-      const data = await (await fetch(window.constants.API_URL + '/quotes/random?language=' + localStorage.getItem('quotelanguage'))).json();
+      const quotelanguage = localStorage.getItem('quotelanguage');
+      const data = await (await fetch(window.constants.API_URL + '/quotes/random?language=' + quotelanguage)).json();
 
       // If we hit the ratelimit, we fallback to local quotes
       if (data.statusCode === 429) {
@@ -113,7 +115,8 @@ export default class Quote extends React.PureComponent {
       this.setState({
         quote: '"' + data.quote + '"',
         author: data.author,
-        authorlink: authorlink
+        authorlink: authorlink,
+        quoteLanguage: quotelanguage
       });
     } catch (e) {
       // ..and if that fails we load one locally
@@ -156,7 +159,7 @@ export default class Quote extends React.PureComponent {
       tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet
     });
 
-    if (!this.state.quote) {
+    if (!this.state.quote || localStorage.getItem('quotelanguage') !== this.state.quoteLanguage) {
       this.getQuote();
     }
   }

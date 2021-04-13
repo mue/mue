@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import PhotoInformation from './PhotoInformation';
 
 import './scss/index.scss';
@@ -10,6 +12,7 @@ export default class Background extends React.PureComponent {
     this.state = {
       style: '',
       url: '',
+      currentAPI: '',
       video: false,
       photoInfo: {
         hidden: false,
@@ -32,6 +35,7 @@ export default class Background extends React.PureComponent {
     }
 
     this.setState({
+      type: 'colour',
       style: style
     });
   }
@@ -137,7 +141,8 @@ export default class Background extends React.PureComponent {
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            requestURL = `${window.constants.UNSPLASH_URL}/getImage?category=${apiCategory}`;
+            //requestURL = `${window.constants.UNSPLASH_URL}/getImage?category=${apiCategory}`;
+            requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
             break;
           // Defaults to Mue
           default:
@@ -154,6 +159,8 @@ export default class Background extends React.PureComponent {
 
         this.setState({
           url: data.file,
+          type: 'api',
+          currentAPI: backgroundAPI,
           photoInfo: {
             credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ` ${this.language.unsplash}`,
             location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
@@ -196,6 +203,7 @@ export default class Background extends React.PureComponent {
         if (customBackground !== '' && customBackground !== 'undefined') {
           this.setState({
             url: customBackground,
+            type: 'custom',
             video: this.videoCheck(customBackground),
             photoInfo: {
               hidden: true
@@ -226,10 +234,42 @@ export default class Background extends React.PureComponent {
     }
   }
 
+  updateFilters() {
+    document.querySelector('#backgroundImage').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+  }
+
   componentDidMount() {
     if (localStorage.getItem('background') === 'false') {
       return;
     }
+
+    EventBus.on('refresh', (data) => {
+      if (data === 'background') {
+        const element = document.querySelector('#backgroundImage');
+        const photoInfo = document.querySelector('.photoInformation');
+
+        if (localStorage.getItem('background') === 'false') {
+          photoInfo.style.display = 'none';
+          return element.style.display = 'none';
+        }
+
+        photoInfo.style.display = 'block';
+        element.style.display = 'block';
+
+        if (this.state.type !== localStorage.getItem('backgroundType') || (this.state.type === 'api' && this.state.currentAPI !== localStorage.getItem('backgroundAPI'))) {
+          element.classList.remove('fade-in');
+          this.setState({
+            url: '',
+            photoInfo: {
+              hidden: true
+            }
+          });
+          return this.getBackground();
+        }
+
+        this.updateFilters();
+      }
+    });
 
     this.getBackground();
   }

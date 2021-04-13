@@ -118,7 +118,7 @@ ul.sidebar {
   border-radius: 12px 0 0 12px;
   text-align: left;
   font-size: 24px;
-  height: 100vh;
+  min-height: 100vh;
 
   h1 {
     text-align: center;
@@ -155,8 +155,18 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 60%;
   height: 80%;
+}
+
+@media only screen and (max-width: 1300px) {
+  #modal {
+    width: 90% !important;
+  }
+}
+@media only screen and (min-width: 1310px) {
+  #modal {
+    width: 60%;
+  }
 }
 
 .tab-list-active {

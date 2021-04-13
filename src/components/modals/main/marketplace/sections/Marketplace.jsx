@@ -124,8 +124,10 @@ export default class Marketplace extends React.PureComponent {
     const errorMessage = (msg) => {
       return (
         <div id='marketplace'>
-          <div className='emptyMessage' style={{ 'marginTop': '20px', 'transform': 'translateY(80%)' }}>
-            {msg}
+          <div className='emptyitems'>
+            <div class='emptyMessage'>
+              {msg}
+            </div>
           </div>
         </div>
       );

@@ -8,7 +8,12 @@ import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';
 
 const enabled = (setting) => {
-  return (localStorage.getItem(setting) === 'true');
+  switch (setting) {
+    case 'quicklinks':
+      return (localStorage.getItem('quicklinksenabled') === 'true');
+    default:
+      return (localStorage.getItem(setting) === 'true');
+  }
 };
 
 const settings = window.language.modals.main.settings.sections;

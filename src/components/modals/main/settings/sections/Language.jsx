@@ -13,7 +13,7 @@ export default function LanguageSettings() {
       <h2>{language.title}</h2>
       <Radio name='language' options={languages} />
       <h3>{language.quote}</h3>
-      <Radio name='quotelanguage' options={quote_languages} />
+      <Radio name='quotelanguage' options={quote_languages} category='quote' />
     </>
   );
 }
