@@ -235,18 +235,11 @@ export default class Background extends React.PureComponent {
     }
   }
 
-  updateFilters() {
-    document.querySelector('#backgroundImage').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
-  }
-
   componentDidMount() {
-    if (localStorage.getItem('background') === 'false') {
-      return;
-    }
+    const element = document.querySelector('#backgroundImage');
 
     EventBus.on('refresh', (data) => {
       if (data === 'background') {
-        const element = document.querySelector('#backgroundImage');
         const photoInfo = document.querySelector('.photoInformation');
 
         if (localStorage.getItem('background') === 'false') {
@@ -268,7 +261,7 @@ export default class Background extends React.PureComponent {
           return this.getBackground();
         }
 
-        this.updateFilters();
+        element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
       }
     });
 
