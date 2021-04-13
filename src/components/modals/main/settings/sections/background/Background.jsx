@@ -30,10 +30,17 @@ export default class BackgroundSettings extends React.PureComponent {
     toast(this.language.toasts.reset);
   }
 
-  customBackground(e) {
-    localStorage.setItem('customBackground', e.target.result);
+  customBackground(e, text) {
+    let result;
+    if (text === true) {
+      result = e.target.value;
+    } else {
+      result = e.target.result;
+    }
+  
+    localStorage.setItem('customBackground', result);
     this.setState({
-      customBackground: e.target.result
+      customBackground: result
     });
   }
 
@@ -102,7 +109,7 @@ export default class BackgroundSettings extends React.PureComponent {
       <>
         <ul>
           <p>{background.source.custom_background} <span className='modalLink' onClick={this.resetCustom}>{this.language.buttons.reset}</span></p>
-          <input type='text' value={this.state.customBackground} onChange={(e) => this.customBackground(e)}></input>
+          <input type='text' value={this.state.customBackground} onChange={(e) => this.customBackground(e, true)}></input>
           <span className='modalLink' onClick={() => document.getElementById('bg-input').click()}>{background.source.upload}</span>
           <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e)} />
         </ul>

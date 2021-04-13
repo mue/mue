@@ -36,6 +36,10 @@ export default class Background extends React.PureComponent {
     });
   }
 
+  videoCheck(url) {
+    return url.startsWith('data:video/') || url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg')
+  }
+
   offlineBackground() {
     const offlineImages = require('./offline_images.json');
 
@@ -189,26 +193,15 @@ export default class Background extends React.PureComponent {
           return this.offlineBackground();
         }
 
-        if (customBackground !== '') {
-          // video background
-          if (customBackground.startsWith('data:video/') || customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
-            return this.setState({
-              url: customBackground,
-              video: true,
-              photoInfo: {
-                hidden: true
-              }
-          });
-        // normal background
-        } else {
-          return this.setState({
+        if (customBackground !== '' && customBackground !== 'undefined') {
+          this.setState({
             url: customBackground,
+            video: this.videoCheck(customBackground),
             photoInfo: {
               hidden: true
             }
           });
         }
-      }
       break;
 
       case 'photo_pack':
