@@ -75,13 +75,6 @@ export default class Search extends React.PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'search') {
-        const element = document.querySelector('.searchBar');
-
-        if (localStorage.getItem('searchBar') === 'false') {
-          return element.style.display = 'none';
-        }
-
-        element.style.display = 'block';
         this.init();
       }
     });

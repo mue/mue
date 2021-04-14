@@ -34,7 +34,7 @@ export default class Widgets extends React.PureComponent {
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
-      if (data === 'order') {
+      if (data === 'widgets') {
         this.setState({
           order: JSON.parse(localStorage.getItem('order'))
         });

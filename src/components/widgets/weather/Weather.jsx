@@ -89,18 +89,15 @@ export default class Weather extends React.PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'weather') {
-        const element = document.querySelector('.weather');
-
-        if (localStorage.getItem('weatherEnabled') === 'false') {
-          return element.style.display = 'none';
-        }
-
-        element.style.display = 'block';
         this.getWeather();
       }
     });
 
     this.getWeather();
+  }
+
+  componentWillUnmount() {
+    EventBus.remove('refresh');
   }
 
   render() {

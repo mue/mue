@@ -38,7 +38,7 @@ export default class TimeSettings extends React.PureComponent {
     return (
       <>
         <h2>{language.title}</h2>
-        <Switch name='weatherEnabled' text={this.language.enabled} category='weather'/>
+        <Switch name='weatherEnabled' text={this.language.enabled} category='widgets'/>
         <ul>
           <p>{language.location}</p>
           <input type='text' value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })}></input>
