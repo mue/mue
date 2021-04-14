@@ -1,4 +1,3 @@
-// TODO: rewrite this tomorrow
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
@@ -14,15 +13,11 @@ export default class Background extends React.PureComponent {
       style: '',
       url: '',
       currentAPI: '',
-      video: false,
       photoInfo: {
-        hidden: false,
-        credit: '',
-        url: ''
+        hidden: false
       }
     };
     this.language = window.language.widgets.background;
-    this.ddgproxy = (localStorage.getItem('ddgProxy') === 'true');
   }
 
   gradientStyleBuilder(gradientSettings) {
@@ -50,10 +45,8 @@ export default class Background extends React.PureComponent {
 
     // Get all photographers from the keys in offlineImages.json
     const photographers = Object.keys(offlineImages);
-    // Select a random photographer from the keys
     const photographer = photographers[Math.floor(Math.random() * photographers.length)];
 
-    // Select a random image
     const randomImage = offlineImages[photographer].photo[
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
     ];
@@ -61,29 +54,32 @@ export default class Background extends React.PureComponent {
     this.setState({
       url: `./offline-images/${randomImage}.jpg`,
       photoInfo: {
-        hidden: true,
         credit: photographer
       }
     });
   }
 
   setBackground() {
+    const backgroundImage = document.querySelector('#backgroundImage');
+
     if (this.state.url !== '') {
-      const url = this.ddgproxy ? window.constants.DDG_PROXY + this.state.url : this.state.url;
-      const backgroundImage = document.querySelector('#backgroundImage');
+      const url = (localStorage.getItem('ddgProxy') === 'true') ? window.constants.DDG_PROXY + this.state.url : this.state.url;
       const photoInformation = document.querySelector('.photoInformation');
 
       if (localStorage.getItem('bgtransition') === 'false') {
-        photoInformation.style.display = 'block';
-
-        return backgroundImage.setAttribute(
-          'style',
-          `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`
-        ); 
+        if (photoInformation) {
+          photoInformation.style.display = 'block';
+        }
+        backgroundImage.style.backgroundImage = null;
+        return backgroundImage.style.backgroundImage = `url(${url})`; 
       }
 
       backgroundImage.classList.add('backgroundPreload');
-      photoInformation.classList.add('backgroundPreload');
+      backgroundImage.style.backgroundImage = null;
+
+      if (photoInformation) {
+        photoInformation.classList.add('backgroundPreload');
+      }
 
       // preloader for background transition
       let preloader = document.createElement('img');
@@ -94,23 +90,16 @@ export default class Background extends React.PureComponent {
         backgroundImage.classList.remove('backgroundPreload');
         backgroundImage.classList.add('fade-in');
 
-        backgroundImage.setAttribute(
-          'style',
-          `background-image: url(${url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%);`
-        ); 
-        preloader = null;
+        backgroundImage.style.backgroundImage = `url(${url})`;        
+        preloader.remove();
 
-        // wait before showing photoinformation, should make this better with state or something later but lazy
-        if (this.state.photoInfo.hidden !== false) {
+        if (photoInformation) {
           photoInformation.classList.remove('backgroundPreload');
-          document.querySelector('.photoInformation').classList.add('fade-in');
+          photoInformation.classList.add('fade-in');
         }
       });
     } else {
-      document.querySelector('#backgroundImage').setAttribute(
-        'style',
-        `${this.state.style}; -webkit-filter: brightness(${localStorage.getItem('brightness')}%);`
-      );
+      backgroundImage.setAttribute('style', `${this.state.style};`);
     }
   }
 
@@ -165,16 +154,16 @@ export default class Background extends React.PureComponent {
           photoInfo: {
             credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ` ${this.language.unsplash}`,
             location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
-            camera: data.camera || 'N/A',
-            resolution: data.resolution || 'N/A',
+            camera: data.camera,
+            resolution: data.resolution,
             url: data.file
           }
         });
       break;
 
       case 'colour':
-        // background colour
         const customBackgroundColour = localStorage.getItem('customBackgroundColour') || {'angle':'180','gradient':[{'colour':'#ffb032','stop':0}],'type':'linear'};
+
         let gradientSettings = '';
         try {
           gradientSettings = JSON.parse(customBackgroundColour);
@@ -193,7 +182,6 @@ export default class Background extends React.PureComponent {
       break;
 
       case 'custom':
-        // custom user background
         const customBackground = localStorage.getItem('customBackground');
 
         // allow users to use offline images
@@ -218,7 +206,6 @@ export default class Background extends React.PureComponent {
           return this.offlineBackground();
         }
 
-        // photo pack
         const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
         if (photoPack) {
           const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
@@ -240,20 +227,17 @@ export default class Background extends React.PureComponent {
 
     EventBus.on('refresh', (data) => {
       if (data === 'background') {
-        const photoInfo = document.querySelector('.photoInformation');
+        const backgroundType = localStorage.getItem('backgroundType');
 
-        if (localStorage.getItem('background') === 'false') {
-          photoInfo.style.display = 'none';
-          return element.style.display = 'none';
-        }
-
-        photoInfo.style.display = 'block';
-        element.style.display = 'block';
-
-        if (this.state.type !== localStorage.getItem('backgroundType') || (this.state.type === 'api' && this.state.currentAPI !== localStorage.getItem('backgroundAPI'))) {
+        // todo: make this good
+        if (backgroundType !== this.state.type 
+          || (localStorage.getItem('backgroundAPI') !== this.state.currentAPI && backgroundType === 'api') 
+          || (backgroundType === 'custom' && localStorage.getItem('customBackground') !== this.state.url)
+        ) {
           element.classList.remove('fade-in');
           this.setState({
             url: '',
+            video: false,
             photoInfo: {
               hidden: true
             }
@@ -261,7 +245,11 @@ export default class Background extends React.PureComponent {
           return this.getBackground();
         }
 
-        element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+        if (this.state.video === true) {
+          document.querySelector('#backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+        } else {
+          element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+        }
       }
     });
 
@@ -284,7 +272,7 @@ export default class Background extends React.PureComponent {
       };
 
       return (
-        <video autoPlay muted={enabled('backgroundVideoMute')} loop={enabled('backgroundVideoLoop')} id='backgroundVideo'>
+        <video autoPlay muted={enabled('backgroundVideoMute')} loop={enabled('backgroundVideoLoop')} style={{ 'WebkitFilter': `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)` }} id='backgroundVideo'>
           <source src={this.state.url}/>
         </video>
       );
@@ -292,8 +280,9 @@ export default class Background extends React.PureComponent {
 
     return (
       <>
-        <div id='backgroundImage'/>
-        {(this.state.photoInfo.credit !== '') ? <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
+        <div style={{ 'WebkitFilter': `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)` }} id='backgroundImage'/>
+        {(this.state.photoInfo.credit !== '') ? 
+          <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
         : null}
       </>
     );

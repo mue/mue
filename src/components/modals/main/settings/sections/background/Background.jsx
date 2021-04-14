@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../../../../modules/helpers/eventbus';
+
 import Checkbox from '../../Checkbox';
 import Dropdown from '../../Dropdown';
 import FileUpload from '../../FileUpload';
@@ -28,6 +30,7 @@ export default class BackgroundSettings extends React.PureComponent {
       customBackground: ''
     });
     toast(this.language.toasts.reset);
+    EventBus.dispatch('refresh', 'background');
   }
 
   customBackground(e, text) {
@@ -42,6 +45,7 @@ export default class BackgroundSettings extends React.PureComponent {
     this.setState({
       customBackground: result
     });
+    EventBus.dispatch('refresh', 'background');
   }
 
   videoCustomSettings = () => {

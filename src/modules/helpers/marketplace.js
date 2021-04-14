@@ -1,5 +1,7 @@
 import { toast } from 'react-toastify';
 
+import EventBus from './eventbus';
+
 export default class MarketplaceFunctions {
   // based on https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
   static urlParser (input) {
@@ -23,6 +25,7 @@ export default class MarketplaceFunctions {
         localStorage.removeItem('photo_packs');
         localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
         localStorage.removeItem('oldBackgroundType');
+        EventBus.dispatch('refresh', 'background');
         break;
       default:
         try {
@@ -65,6 +68,7 @@ export default class MarketplaceFunctions {
         localStorage.setItem('photo_packs', JSON.stringify(input.photos));
         localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
         localStorage.setItem('backgroundType', 'photo_pack');
+        EventBus.dispatch('refresh', 'background');
         break;
 
       case 'quote_packs':

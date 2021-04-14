@@ -125,7 +125,7 @@ export default class Marketplace extends React.PureComponent {
       return (
         <div id='marketplace'>
           <div className='emptyitems'>
-            <div class='emptyMessage'>
+            <div className='emptyMessage'>
               {msg}
             </div>
           </div>

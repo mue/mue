@@ -25,7 +25,7 @@ const downloadImage = async (info) => {
 export default function PhotoInformation(props) {
   const language = window.language.widgets.background;
 
-  if (props.info.hidden === true) {
+  if (props.info.hidden === true || !props.info.credit) {
     return null;
   }
 
