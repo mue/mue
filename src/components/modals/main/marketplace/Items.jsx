@@ -1,11 +1,6 @@
 import React from 'react';
 
 export default function Items(props) {
-  // todo: add message here
-  if (props.items.length === 0) {
-    return null;
-  }
-
   return (
     <div className='items'>
       {props.items.map((item) => (

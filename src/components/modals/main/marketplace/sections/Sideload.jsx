@@ -7,22 +7,15 @@ import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 import { toast } from 'react-toastify';
 
 export default function Sideload() {
-  const manage = (type, input) => {
-    switch (type) {
-      case 'install':
-        MarketplaceFunctions.install(input.type, input);
-        break;
-      default:
-        break;
-    }
-      
-    toast(window.language.toasts[type + 'ed']);
+  const install = (input) => {
+    MarketplaceFunctions.install(input.type, input);
+    toast(window.language.toasts.installed);
   }
 
   return (
     <>
       <div id='marketplace'>
-        <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => manage('install', JSON.parse(e.target.result))} />
+        <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => install(JSON.parse(e.target.result))} />
         <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{window.language.modals.main.addons.sideload}</button>
       </div>
     </>

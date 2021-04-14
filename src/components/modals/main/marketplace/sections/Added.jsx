@@ -18,76 +18,68 @@ export default class Added extends React.PureComponent {
         name: '',
         content: {}
       },
-      item_data: {
+      item: {
         name: 'Name',
         author: 'Author',
         description: 'Description',
-        updated: '???',
+        //updated: '???',
         version: '1.0.0',
         icon: ''
       },
-      button: ''
+      button: '',
+      display: {
+        marketplace: 'block',
+        item: 'none'
+      }
     };
     this.buttons = {
-      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
+      uninstall: <button className='removeFromMue' onClick={() => this.uninstall()}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
     }
     this.language = window.language.modals.main.addons;
   }
 
-  toggle(type, type2, data) {
+  toggle(type, data) {
     if (type === 'item') {
       const installed = JSON.parse(localStorage.getItem('installed'));
       const info = installed.find(i => i.name === data);
 
       this.setState({
-        current_data: {
-          type: type2,
+        item: {
+          type: info.type,
           name: data,
-          content: info
-        },
-        item_data: {
-          name: info.name,
+          display_name: info.name,
           author: info.author,
           description: MarketplaceFunctions.urlParser(info.description.replace(/\n/g, '<br>')),
-          updated: 'Not Implemented',
+          //updated: info.updated,
           version: info.version,
           icon: info.screenshot_url
         }
       });
 
-      document.getElementById('item').style.display = 'block';
-      document.getElementById('marketplace').style.display = 'none';
+      this.setState({
+        button: this.buttons.uninstall,
+        display: {
+          marketplace: 'none',
+          item: 'block'
+        }
+      });
     } else {
-      document.getElementById('marketplace').style.display = 'block';
-      document.getElementById('item').style.display = 'none';
+      this.setState({
+        display: {
+          marketplace: 'block',
+          item: 'none'
+        }
+      });
     }
-
-    this.setState({
-      button: this.buttons.uninstall
-    });
   }
 
-  manage(type, input) {
-    switch (type) {
-      case 'install':
-        MarketplaceFunctions.install(input.type, input, true);
-        break;
-      case 'uninstall':
-        MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.content.type);
-        break;
-      default:
-        break;
-    }
-
-    toast(window.language.toasts[type + 'ed']);
-
-    let button = '';
-    if (type === 'install') {
-      button = this.buttons.uninstall;
-    }
+  uninstall() {
+    MarketplaceFunctions.uninstall(this.state.item.display_name, this.state.item.type);
+    
+    toast(window.language.toasts.uninstalled);
 
     this.setState({
-      button: button,
+      button: '',
       installed: JSON.parse(localStorage.getItem('installed'))
     });
   }
@@ -96,7 +88,7 @@ export default class Added extends React.PureComponent {
     let content = (
       <Items 
         items={this.state.installed} 
-        toggleFunction={(input) => this.toggle('item', 'addon', input)} 
+        toggleFunction={(input) => this.toggle('item', input)} 
         reloadItemsList={() => this.setState({ installed: JSON.parse(localStorage.getItem('installed')) })} 
       />
     );
@@ -115,10 +107,10 @@ export default class Added extends React.PureComponent {
 
     return (
       <>
-        <div id='marketplace'>
+        <div id='marketplace' style={{ 'display': this.state.display.marketplace }}>
           {content}
         </div>
-        <Item data={this.state.item_data} button={this.state.button} toggleFunction={() => this.toggle()} />
+        <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
       </>
     );
   }

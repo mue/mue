@@ -15,21 +15,20 @@ export default class Marketplace extends React.PureComponent {
     super();
     this.state = {
       items: [],
-      current_data: {
-        type: '',
-        name: '',
-        content: {}
-      },
       button: '',
       featured: {},
       done: false,
-      item_data: {
+      item: {
         name: 'Name',
         author: 'Author',
         description: 'Description',
-        updated: '???',
+        //updated: '???',
         version: '1.0.0',
         icon: ''
+      },
+      display: {
+        marketplace: 'block',
+        item: 'none'
       }
     };
     this.buttons = {
@@ -40,46 +39,48 @@ export default class Marketplace extends React.PureComponent {
   }
 
   async toggle(type, data) {
-    switch (type) {
-      case 'item':
-        let info;
-        // get item info
-        try {
-          info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
-        } catch (e) {
-          return toast(window.language.toasts.error);
+    if (type === 'item') {
+      let info;
+      // get item info
+      try {
+        info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
+      } catch (e) {
+        return toast(window.language.toasts.error);
+      }
+
+      // check if already installed
+      let button = this.buttons.install;
+
+      const installed = JSON.parse(localStorage.getItem('installed'));
+
+      if (installed.some(item => item.name === info.data.name)) {
+        button = this.buttons.uninstall;
+      }
+
+      this.setState({
+        item: {
+          type: this.props.type,
+          display_name: info.data.name,
+          author: info.data.author,
+          description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
+          //updated: info.updated,
+          version: info.data.version,
+          icon: info.data.screenshot_url,
+          data: info.data
+        },
+        button: button,
+        display: {
+          item: 'block',
+          marketplace: 'none'
         }
-
-        // check if already installed
-        let button = this.buttons.install;
-
-        const installed = JSON.parse(localStorage.getItem('installed'));
-
-        if (installed.some(item => item.name === info.data.name)) {
-          button = this.buttons.uninstall;
+      });
+    } else {
+      this.setState({
+        display: {
+          marketplace: 'block',
+          item: 'none'
         }
-
-        this.setState({
-          current_data: { type: this.props.type, name: data, content: info },
-          item_data: {
-            name: info.data.name,
-            author: info.data.author,
-            description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
-            updated: info.updated,
-            version: info.data.version,
-            icon: info.data.screenshot_url
-          },
-          button: button
-        });
-
-        document.getElementById('marketplace').style.display = 'none';
-        document.getElementById('item').style.display = 'block';
-        break;
-
-      default:
-        document.getElementById('marketplace').style.display = 'block';
-        document.getElementById('item').style.display = 'none';
-        break;
+      });
     }
   }
 
@@ -95,15 +96,10 @@ export default class Marketplace extends React.PureComponent {
   }
 
   manage(type) {
-    switch (type) {
-      case 'install':
-        MarketplaceFunctions.install(this.state.current_data.type, this.state.current_data.content.data);
-        break;
-      case 'uninstall':
-        MarketplaceFunctions.uninstall(this.state.current_data.content.data.name, this.state.current_data.type);
-        break;
-      default:
-        break;
+    if (type === 'install') {
+      MarketplaceFunctions.install(this.state.item.type, this.state.item.data);
+    } else {
+      MarketplaceFunctions.uninstall(this.state.item.display_name, this.state.item.type);
     }
 
     toast(window.language.toasts[type + 'ed']);
@@ -157,7 +153,7 @@ export default class Marketplace extends React.PureComponent {
 
     return (
       <>
-        <div id='marketplace'>
+        <div id='marketplace' style={{ 'display': this.state.display.marketplace }}>
           <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
             <p>{this.state.featured.title}</p>
             <h1>{this.state.featured.name}</h1>
@@ -167,7 +163,7 @@ export default class Marketplace extends React.PureComponent {
             items={this.state.items}
             toggleFunction={(input) => this.toggle('item', input)} />
         </div>
-        <Item data={this.state.item_data} button={this.state.button} toggleFunction={() => this.toggle()} />
+        <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
       </>
     );
   }
