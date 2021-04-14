@@ -119,24 +119,20 @@ export default class Marketplace extends React.PureComponent {
   render() {
     const errorMessage = (msg) => {
       return (
-        <div id='marketplace'>
-          <div className='emptyitems'>
-            <div className='emptyMessage'>
-              {msg}
-            </div>
+        <div className='emptyitems'>
+          <div className='emptyMessage'>
+            {msg}
           </div>
         </div>
       );
     }
 
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      return errorMessage(
-        <>
-          <WifiOffIcon/>
-          <h1>{this.language.offline.title}</h1>
-          <p className='description'>{this.language.offline.description}</p>
-        </>
-      );
+      return errorMessage(<>
+        <WifiOffIcon/>
+        <h1>{this.language.offline.title}</h1>
+        <p className='description'>{this.language.offline.description}</p>
+      </>);
     }
 
     if (this.state.done === false) {
@@ -148,20 +144,18 @@ export default class Marketplace extends React.PureComponent {
         <LocalMallIcon/>
         <h1>{window.language.modals.main.addons.empty.title}</h1>
         <p className='description'>{this.language.no_items}</p>
-      </>)
+      </>);
     }
 
     return (
       <>
-        <div id='marketplace' style={{ 'display': this.state.display.marketplace }}>
+        <div style={{ 'display': this.state.display.marketplace }}>
           <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
             <p>{this.state.featured.title}</p>
             <h1>{this.state.featured.name}</h1>
-            <button className='addToMue' onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
+            <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
           </div>
-          <Items
-            items={this.state.items}
-            toggleFunction={(input) => this.toggle('item', input)} />
+          <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
         </div>
         <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
       </>

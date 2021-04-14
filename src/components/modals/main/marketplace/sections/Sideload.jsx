@@ -14,10 +14,8 @@ export default function Sideload() {
 
   return (
     <>
-      <div id='marketplace'>
-        <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => install(JSON.parse(e.target.result))} />
-        <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{window.language.modals.main.addons.sideload}</button>
-      </div>
+      <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => install(JSON.parse(e.target.result))} />
+      <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{window.language.modals.main.addons.sideload}</button>
     </>
   );
 }

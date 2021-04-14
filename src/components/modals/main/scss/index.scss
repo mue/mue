@@ -6,7 +6,9 @@
 @import 'settings/dropdown';
 @import 'settings/daypicker';
 
-@import './settings/react-color-picker-gradient-picker-custom-styles.scss';
+@import 'settings/react-color-picker-gradient-picker-custom-styles.scss';
+
+@import 'marketplace/main';
 
 .Modal {
   color: var(--modal-text);

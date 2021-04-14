@@ -25,7 +25,7 @@ export default class MarketplaceFunctions {
         localStorage.removeItem('photo_packs');
         localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
         localStorage.removeItem('oldBackgroundType');
-        EventBus.dispatch('refresh', 'background');
+        EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');
         break;
       default:
         try {

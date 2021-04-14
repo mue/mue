@@ -13,11 +13,6 @@ export default class Added extends React.PureComponent {
     super();
     this.state = {
       installed: JSON.parse(localStorage.getItem('installed')),
-      current_data: {
-        type: '',
-        name: '',
-        content: {}
-      },
       item: {
         name: 'Name',
         author: 'Author',
@@ -53,10 +48,7 @@ export default class Added extends React.PureComponent {
           //updated: info.updated,
           version: info.version,
           icon: info.screenshot_url
-        }
-      });
-
-      this.setState({
+        },
         button: this.buttons.uninstall,
         display: {
           marketplace: 'none',
@@ -85,16 +77,8 @@ export default class Added extends React.PureComponent {
   }
 
   render() {
-    let content = (
-      <Items 
-        items={this.state.installed} 
-        toggleFunction={(input) => this.toggle('item', input)} 
-        reloadItemsList={() => this.setState({ installed: JSON.parse(localStorage.getItem('installed')) })} 
-      />
-    );
-
     if (this.state.installed.length === 0) {
-      content = (
+      return (
         <div className='emptyitems'>
           <div className='emptyMessage'>
             <LocalMallIcon/>
@@ -107,8 +91,8 @@ export default class Added extends React.PureComponent {
 
     return (
       <>
-        <div id='marketplace' style={{ 'display': this.state.display.marketplace }}>
-          {content}
+        <div style={{ 'display': this.state.display.marketplace }}>
+          <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', input)} />        
         </div>
         <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
       </>

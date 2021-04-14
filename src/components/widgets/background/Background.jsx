@@ -225,6 +225,18 @@ export default class Background extends React.PureComponent {
   componentDidMount() {
     const element = document.querySelector('#backgroundImage');
 
+    const refresh = () => {
+      element.classList.remove('fade-in');
+      this.setState({
+        url: '',
+        video: false,
+        photoInfo: {
+          hidden: true
+        }
+      });
+      this.getBackground();
+    }
+
     EventBus.on('refresh', (data) => {
       if (data === 'background') {
         const backgroundType = localStorage.getItem('backgroundType');
@@ -234,15 +246,7 @@ export default class Background extends React.PureComponent {
           || (localStorage.getItem('backgroundAPI') !== this.state.currentAPI && backgroundType === 'api') 
           || (backgroundType === 'custom' && localStorage.getItem('customBackground') !== this.state.url)
         ) {
-          element.classList.remove('fade-in');
-          this.setState({
-            url: '',
-            video: false,
-            photoInfo: {
-              hidden: true
-            }
-          });
-          return this.getBackground();
+          return refresh();
         }
 
         if (this.state.video === true) {
@@ -250,6 +254,10 @@ export default class Background extends React.PureComponent {
         } else {
           element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
         }
+      }
+
+      if (data === 'marketplacebackgrounduninstall') {
+        refresh();
       }
     });
 

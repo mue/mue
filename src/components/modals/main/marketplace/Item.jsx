@@ -31,32 +31,29 @@ export default function Item(props) {
   return (
     <div id='item' style={{ 'display': props.display }}>
       <br/>
-      <span>
-        <ArrowBackIcon className='backArrow' onClick={props.toggleFunction}/>
-      </span>
+      <span><ArrowBackIcon className='backArrow' onClick={props.toggleFunction}/></span>
       <br/>
       <h1>{props.data.display_name}</h1>
       {props.button}
       <br/>
       <img alt='product' draggable='false' src={iconsrc}/>
       <div className='informationContainer'>
-      <h1>{language.overview}</h1>
-      <p className='description' dangerouslySetInnerHTML={{__html: props.data.description}}></p>
-        <div className='productInformation'>
-          <ul>
-            {/* <li className='header'>{language.last_updated}</li>
-            <li>{props.data.updated}</li>
-            <br/>*/}
-            <li className='header'>{language.version}</li>
-            <li>{props.data.version}</li>
-            <br/>
-            <li className='header'>{language.author}</li>
-           <li>{props.data.author}</li>
-         </ul>
-        </div>
-        {warningHTML} 
+        <h1>{language.overview}</h1>
+        <p className='description' dangerouslySetInnerHTML={{__html: props.data.description}}></p>
+          <div className='productInformation'>
+            <ul>
+              {/* <li className='header'>{language.last_updated}</li>
+              <li>{props.data.updated}</li>
+              <br/>*/}
+              <li className='header'>{language.version}</li>
+              <li>{props.data.version}</li>
+              <br/>
+              <li className='header'>{language.author}</li>
+             <li>{props.data.author}</li>
+           </ul>
+          </div>
+          {warningHTML} 
       </div>
-      <br/>
     </div>
   );
 }

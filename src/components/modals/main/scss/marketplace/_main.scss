@@ -106,6 +106,7 @@ p.description {
   box-shadow: 0 0 10px rgb(0 0 0 / 30%);
   position: absolute;
   width: 300px;
+
   svg {
     font-size: 50px;
     margin-bottom: -20px;
@@ -114,6 +115,8 @@ p.description {
 
 .backArrow {
   cursor: pointer;
+  width: 2rem !important;
+  height: 2rem !important;
 
   &:hover {
     color: grey;
@@ -158,22 +161,6 @@ p.description {
   width: auto;
 }
 
-.marketplaceanimation {
-  @include animation('content 0.5s');
-}
-
-@include keyframes(content) {
-  from {
-    opacity: 0;
-    transform: translateY(5%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
-
 .featured {
   margin-top: 40px;
   border-radius: 15px;
@@ -196,19 +183,5 @@ p.description {
 
   h1 {
     margin-top: -20px;
-  }
-}
-
-.dark .featured {
-  background: black;
-  color: white;
-}
-
-#seemore {
-  display: none;
-
-  svg {
-    font-size: 35px !important;
-    margin-bottom: -30px;
   }
 }
