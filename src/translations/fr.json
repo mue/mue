@@ -1,134 +1,162 @@
 {
+  "widgets": {
     "greeting": {
-        "morning": "Bonjour",
-        "afternoon": "Bon après-midi",
-        "evening": "Bonsoir",
-        "christmas": "Joyeux Noël",
-        "newyear": "Bonne année",
-        "halloween": "Joyeux Halloween"
+      "morning": "Bonjour",
+      "afternoon": "Bon après-midi",
+      "evening": "Bonsoir",
+      "christmas": "Joyeux Noël",
+      "newyear": "Bonne année",
+      "halloween": "Joyeux Halloween"
     },
-    "credit": "Photo par",
-    "search": "Rechercher",
-    "modals": {
-        "title": "Options",
+    "background": {
+      "credit": "Photo par"
+    },
+    "search": "Rechercher"
+  },
+  "modals": {
+    "main": {
+      "title": "Options",
+      "navbar": {
         "settings": "Paramètres",
         "addons": "Mes Options",
         "marketplace": "Marché"
-    },
-    "settings": {
-        "time": {
+      },
+      "settings": {
+        "sections": {
+          "time": {
             "title": "Heure",
-            "seconds": "Secondes",
-            "twentyfourhour": "24 heures",
-            "ampm": "AM/PM (12 heures)",
-            "zero": "Complétion de zéros",
-            "analog": "Analogique"
-        },
-        "greeting": {
+            "digital": {
+              "seconds": "Secondes",
+              "twentyfourhour": "24 heures",
+              "ampm": "AM/PM (12 heures)",
+              "zero": "Complétion de zéros"
+            },
+            "analogue": {
+              "title": "Analogique"
+            }
+          },
+          "quote": {
+            "title": "Citation",
+            "buttons": {
+              "title": "Boutons",
+              "copy": "Copier",
+              "tweet": "Twitter",
+              "favourite": "Ajouter aux favoris"
+            }
+          },
+          "greeting": {
             "title": "Salutation",
             "events": "Événements",
             "default": "Salutation par défaut",
             "name": "Nom pour salutation"
-        },
-        "quote": {
-            "title": "Citation",
-            "copy": "Bouton Copier",
-            "tweet": "Bouton Twitter",
-            "favourite": "Bouton Ajouter aux favoris"
-        },
-        "background": {
+          },
+          "background": {
             "title": "Fond",
-            "API": "Source",
-            "blur": "Ajuster le flou",
-            "brightness": "Ajuster la luminosité",
-            "customURL": "URL d'arrière-plan personnalisé",
-            "custombackground": "Arrière-plan personnalisé",
-            "customcolour": "Couleur d'arrière-plan personnalisée",
-            "upload": "Ajouter",
-            "addcolour": "Ajouter une couleur",
-            "favourite": "Ajouter aux favoris",
-            "view": "Mode vue",
-            "refresh": "Rafraîchir"
-        },
-        "searchbar": {
+            "buttons": {
+              "favourite": "Ajouter aux favoris",
+              "view": "Mode vue"
+            },
+            "effects": {
+              "blur": "Ajuster le flou",
+              "brightness": "Ajuster la luminosité"
+            },
+            "source": {
+              "api": "Source",
+              "custom_url": "URL d'arrière-plan personnalisé",
+              "custom_background": "Arrière-plan personnalisé",
+              "custom_colour": "Couleur d'arrière-plan personnalisée",
+              "upload": "Ajouter",
+              "add_colour": "Ajouter une couleur"
+            }
+          },
+          "search": {
             "title": "Barre de Recherche",
-            "searchengine": "Moteur de recherche",
+            "search_engine": "Moteur de recherche",
+            "voice_search": "Recherche vocale",
             "custom": "URL de recherche personnalisée"
+          },
+          "appearance": {
+            "dark_theme": "Thème sombre"
+          },
+          "advanced": {
+            "offline_mode": "Mode Hors-Ligne"
+          },
+          "experimental": {
+            "title": "Expérimental"
+          },
+          "language": {
+            "title": "Langue"
+          }
         },
-        "offline": "Mode Hors-Ligne",
-        "dark": "Thème sombre",
-        "experimental": {
-            "title": "Expérimental",
-            "webp": "Activer WebP",
-            "animations": "Animations",
-            "favourite": "Bouton Ajouter aux favoris",
-            "voicesearch": "Recherche vocale"
+        "buttons": {
+          "reset": "Réinitialiser",
+          "import": "Importer",
+          "export": "Exporter"
         },
-        "language": "Langue",
-        "apply": "Appliquer",
-        "reset": "Réinitialiser",
-        "import": "Importer",
-        "export": "Exporter"
-    },
-    "update": {
-        "title": "Mise à jour",
-        "offline": {
-            "title": "Hors ligne",
-            "description": "Impossible de se connecter à Internet"
-        },
-        "error": {
-            "title": "Erreur",
-            "description": "Impossible de se connecter au serveur"
-        },
-        "loading": "Chargement...",
-        "readblog": "Lire sur le blog ",
-        "contactsupport": "Contactez-nous "
-    },
-    "toasts": {
-        "quote": "Citation copiée",
-        "reset": "Réinitialisé avec succès",
-        "installed": "Installé avec succès",
-        "removed": "Enlevé avec succès",
-        "error": "Quelque chose s'est mal passé",
-        "imported": "Importé avec succès"
-    },
-    "marketplace": {
+        "toasts": {
+          "reset": "Réinitialisé avec succès",
+          "imported": "Importé avec succès"
+        }
+      },
+      "marketplace": {
         "photo_packs": "Packs Photos",
         "quote_packs": "Packs Citations",
         "preset_settings": "Paramètres prédéfinis",
         "themes": "Thèmes",
         "product": {
-            "overview": "Aperçu",
-            "information": "Information",
-            "last_updated": "Dernière mise à jour",
-            "version": "Version",
-            "author": "Auteur",
-            "notice": {
-                "title": "Remarque",
-                "description": "Pour appliquer les changements, veuillez recharger la page."
-            },
-            "buttons": {
-                "addtomue": "Ajouter à Mue",
-                "remove": "Enlever"
-            },
-            "quoteWarning": {
-                "title": "Attention",
-                "description": "Ce pack fait appel à des serveurs externes qui sont susceptibles de vous tracer !"
-            }
+          "overview": "Aperçu",
+          "information": "Information",
+          "last_updated": "Dernière mise à jour",
+          "version": "Version",
+          "author": "Auteur",
+          "notice": {
+            "title": "Remarque",
+            "description": "Pour appliquer les changements, veuillez recharger la page."
+          },
+          "buttons": {
+            "addtomue": "Ajouter à Mue",
+            "remove": "Enlever"
+          },
+          "quote_warning": {
+            "title": "Attention",
+            "description": "Ce pack fait appel à des serveurs externes qui sont susceptibles de vous tracer !"
+          }
         },
         "offline": {
-            "title": "Vous êtes hors ligne",
-            "description": "Veuillez vous connecter à Internet."
+          "title": "Vous êtes hors ligne",
+          "description": "Veuillez vous connecter à Internet."
         },
         "see_more": "Voir plus"
-    },
-    "addons": {
+      },
+      "addons": {
         "added": "Ajoutées",
         "empty": {
-            "title": "C'est vide par ici",
-            "description": "Dirigez vous vers le marché pour ajouter des options.",
-            "button": "Naviguer vers le marché"
+          "title": "C'est vide par ici",
+          "description": "Dirigez vous vers le marché pour ajouter des options.",
+          "button": "Naviguer vers le marché"
         },
         "sideload": "Charger"
+      }
+    },
+    "update": {
+      "title": "Mise à jour",
+      "offline": {
+        "title": "Hors ligne",
+        "description": "Impossible de se connecter à Internet"
+      },
+      "error": {
+        "title": "Erreur",
+        "description": "Impossible de se connecter au serveur"
+      },
+      "loading": "Chargement...",
+      "read_blog": "Lire sur le blog ",
+      "contact_support": "Contactez-nous "
     }
+  },
+  "toasts": {
+    "quote": "Citation copiée",
+    "installed": "Installé avec succès",
+    "removed": "Enlevé avec succès",
+    "error": "Quelque chose s'est mal passé"
+  }
 }

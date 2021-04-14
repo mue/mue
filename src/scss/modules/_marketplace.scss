@@ -1,35 +1,5 @@
-.tab,
-button.tablinks {
-  margin-top: -10px;
-  font-size: 24px;
-  background: none;
-  border: none;
-  outline: none;
-  color: map-get($modal, "text");
-}
-
-button.tablinks {
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 12px;
-  padding: 10px 30px 10px 30px;
-
-  &:hover {
-    background: rgba(189, 195, 199, .075);
-  }
-
-  &:after {
-    content: "";
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    padding-top: 10px;
-    border-bottom: 3px solid map-get($modal, "tab-underline");
-  }
-}
-
 #item a {
-  color: map-get($button-colours, "other");
+  color: map-get($button-colours, 'other');
   cursor: pointer;
 
   &:hover {
@@ -37,51 +7,29 @@ button.tablinks {
   }
 }
 
-
-#active:after {
-  content: "";
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-  padding-top: 10px;
-  border-bottom: 3px solid map-get($modal, "tab-underline-active");
-}
-
-.dark {
-  .tab,
-  button.tablinks {
-    color: white;
-  }
-
-  #active:after {
-    border-image-slice: 1;
-    border-image-source: map-get($theme-colours, "gradient");
-    border-bottom: 3px solid;
-  }
-}
-
-.tab {
-  margin-left: -3px;
+.emptyitems {
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
 }
 
 .items {
-  display: flex;
-  flex-flow: wrap;
-  align-items: left;
-  justify-content: left;
-  margin-top: -10px;
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 15px;
 
   .item {
     position: relative;
     border-radius: 12px;
     height: 80px;
-    width: 270px;
-    background: map-get($marketplace, "item-background");
+    width: 260px;
+    background: map-get($marketplace, 'item-background');
     transition: 0.5s;
     cursor: pointer;
     margin-right: 20px;
-    margin-bottom: 20px;
-    overflow: none;
+    margin-top: 20px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 30%);
 
     img {
       height: 100%;
@@ -103,8 +51,8 @@ button.tablinks {
 
     .details {
       position: absolute;
-      left: 90px;
-      top: 15px;
+      left: 85px;
+      top: -15px;
 
       img {
         margin-left: 10px;
@@ -114,13 +62,7 @@ button.tablinks {
 
     p {
       margin-top: 5px;
-    }
-
-    p.desc {
-      margin-top: -14px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 20px;
     }
 
     &:hover {
@@ -142,34 +84,35 @@ p.author {
 
   h1 {
     font-size: 40px;
+    line-height: 20px;
   }
 }
 
-#item > h1,
-#item > .MuiSvgIcon-root {
+#item>h1,
+#item>.MuiSvgIcon-root {
   display: inline;
-  font-size: 35px !important;
 }
 
 p.description {
   margin-top: 0px;
+  max-width: 400px;
 }
 
 .emptyMessage {
-  margin: 0 auto;
   text-align: center;
-  transform: translateY(30%);
-
+  background: var(--sidebar);
+  padding: 25px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  position: absolute;
+  width: 300px;
   svg {
     font-size: 50px;
-    line-height: 0px;
-    margin: 0;
     margin-bottom: -20px;
   }
 }
 
 .backArrow {
-  position: relative;
   cursor: pointer;
 
   &:hover {
@@ -178,26 +121,30 @@ p.description {
 }
 
 .informationContainer {
-  float: right;
+  margin-top: 20px;
 }
 
 .productInformation {
-  margin-bottom: 20px;
-  padding: 20px;
-  background: map-get($marketplace, "product-information-backgroud");
-  width: 200px;
+  padding: 10px;
+  background: map-get($marketplace, 'product-information-backgroud');
+  width: 350px;
   border-radius: 12px;
+
+  h4 {
+    cursor: initial !important;
+  }
 
   li {
     margin-left: -4px;
     list-style: none;
-  }
+    font-size: 16px;
+    cursor: initial !important;
 
-  li.header {
-    text-transform: uppercase;
-    color: #787878;
-    list-style: none;
-    margin-left: -5px;
+    &.header {
+      text-transform: uppercase;
+      color: #787878;
+      margin-left: -5px;
+    }
   }
 }
 
@@ -205,13 +152,13 @@ p.description {
   background: #2d3436;
 }
 
-#item > img {
+#item>img {
   border-radius: 24px;
   height: 200px;
   width: auto;
 }
 
-#marketplace {
+.marketplaceanimation {
   @include animation('content 0.5s');
 }
 
@@ -227,32 +174,22 @@ p.description {
   }
 }
 
-.banner {
-  text-align: center;
-  background: #54a0ff;
-  border-radius: 24px;
-  padding: 10px;
-  margin: 0;
-  color: map-get($theme-colours, "main");
-  display: none !important;
-}
-
 .featured {
-  background: #2d3436;
-  margin-top: 20px;
-  border-radius: 24px;
+  margin-top: 40px;
+  border-radius: 15px;
   padding: 50px;
-  color: map-get($theme-colours, "main");
+  color: #fff;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  width: 100%;
 
   button {
     float: left;
-    margin-top: -20px;
-    border: 2px solid map-get($theme-colours, "main");
-    color: map-get($theme-colours, "main");
+    margin-top: -7px;
+    border: 2px solid map-get($theme-colours, 'main');
+    color: map-get($theme-colours, 'main');
 
     &:hover {
-      border: 2px solid map-get($theme-colours, "main");
-      background: map-get($theme-colours, "main");
+      background: map-get($theme-colours, 'main');
       color: #2d3436;
     }
   }
@@ -265,10 +202,6 @@ p.description {
 .dark .featured {
   background: black;
   color: white;
-}
-
-.requires {
-  float: right;
 }
 
 #seemore {

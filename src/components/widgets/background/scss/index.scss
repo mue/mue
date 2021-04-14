@@ -1,0 +1,37 @@
+@import 'photoinformation';
+@import '../../../../scss/mixins';
+
+#backgroundImage {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  zoom: 100% !important;
+}
+
+.backgroundPreload {
+  opacity: 0;
+}
+
+#backgroundVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.fade-in {
+  @include animation('fadein 1s');
+}
+
+@include keyframes(fadein) {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

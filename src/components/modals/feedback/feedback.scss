@@ -1,0 +1,63 @@
+@import '../main/scss/index.scss';
+
+#feedbackmodal {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  height: 100px;
+}
+
+.feedback {
+  width: 400px;
+  padding: 5px;
+
+  h1,
+  .closeModal {
+    font-size: 2.5em;
+  }
+
+  span {
+    font-size: 6em;
+  }
+
+  button {
+    width: 50%;
+    border-radius: 48px;
+    outline: none;
+    border: none;
+    padding: 15px 20px;
+    font-size: 1.5em;
+    background: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  input[type=text] {
+    width: 100%;
+    font-size: 1em;
+  }
+
+  input[type=range] {
+    margin-left: 20px;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+
+  label.values {
+    font-weight: 700;
+  }
+
+  textarea {
+    width: 80%;
+    background-color: var(--sidebar);
+  }
+
+  .feedbackerror {
+    color: red;
+  }
+}

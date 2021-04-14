@@ -1,0 +1,34 @@
+{
+  "modals": {
+    "main": {
+      "settings": {
+        "sections": {
+          "quote": {
+            "favourite": "Favorite",
+            "author_link": "Author Link",
+            "custom_author": "Custom Author"
+          },
+          "background": {
+            "buttons": {
+              "favourite": "Favorite"
+            },
+            "type": {
+              "custom_colour": "Custom Color/Gradient"
+            },
+            "source": {
+              "add_colour": "Add color"
+            }
+          },
+          "time": {
+            "analogue": {
+              "title": "Analog"
+            }
+          },
+          "advanced": {
+            "customisation": "Customization"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,203 +1,55 @@
 %settingsButton {
-  text-align: center;
-  border: none;
   transition: ease 0.33s;
-  color: map-get($theme-colours, "main");
+  color: map-get($theme-colours, 'main');
   cursor: pointer;
-  display: inline-block;
-  position: relative;
   padding: 10px 30px;
   font-size: 20px;
   border-radius: 24px;
-  background: none;
+  box-shadow: 0 5px 15px rgba(128, 161, 144, 0.4);
 
-  &:hover {
+  &:hover, &:active {
     outline: none;
-  }
-
-  &:active {
-    outline: none;
-  }
-}
-
-.apply {
-  @extend %settingsButton;
-  margin-right: 20px;
-  background-color: map-get($button-colours, "confirm");
-  border: 2px solid map-get($button-colours, "confirm");
-
-  &:hover {
-    border: 2px solid map-get($button-colours, "confirm");
-    color: map-get($button-colours, "confirm");
     background: none;
   }
 }
 
-.reset {
+.dark %settingsButton {
+  box-shadow: none;
+}
+
+.pinNote {
   @extend %settingsButton;
-  background-color: map-get($button-colours, "reset");
-  border: 2px solid map-get($button-colours, "reset");
-  margin-left: 5px;
+  background-color: map-get($button-colours, 'confirm');
+  border: 2px solid map-get($button-colours, 'confirm');
+  color: map-get($theme-colours, 'main');
+  transition: 0s;
 
   &:hover {
-    border: 2px solid map-get($button-colours, "reset");
-    color: map-get($button-colours, "reset");
-    background: none;
+    color: map-get($button-colours, 'confirm');
+  }
+
+  svg {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
   }
 }
 
-.close {
+.saveNote {
   @extend %settingsButton;
-  padding: 10px 50px 10px 50px;
-  background-color: map-get($button-colours, "other");
-  border: 2px solid map-get($button-colours, "other");
+  background-color: map-get($button-colours, 'other');
+  border: 2px solid map-get($button-colours, 'other');
+  color: map-get($theme-colours, 'main');
+  transition: 0s;
+  display: inline;
+  margin: 5px;
 
   &:hover {
-    color: map-get($button-colours, "other");
-    border: 2px solid map-get($button-colours, "other");
-    background: none;
+    color: map-get($button-colours, 'other');
   }
-}
-
-.add {
-  @extend %settingsButton;
-  background-color: map-get($button-colours, "other");
-  border: 2px solid map-get($button-colours, "other");
-
-  &:hover {
-    color: map-get($button-colours, "other");
-    border: 2px solid map-get($button-colours, "other");
-    background: none;
-  }
-}
-
-.remove {
-  @extend %settingsButton;
-  border-radius: 50%;
-  background: none;
-  border: 2px solid rgba(0,0,0,0);
-  color: map-get($button-colours, "reset");
-  text-align: center;
-  vertical-align: sub;
-  height: 60px;
-  width: 60px;
-  padding: 0px;
-  font-size: 30px;
-
-  &:hover {
-    color: map-get($button-colours, "background");
-    border: 2px solid map-get($button-colours, "reset");
-    background: none;
-  }
-}
-
-.export,
-.uploadbg,
-.import {
-  @extend %settingsButton;
-  background-color: map-get($button-colours, "other");
-  border: 2px solid map-get($button-colours, "other");
-  color: map-get($theme-colours, "main");
-
-  &:hover {
-    color: map-get($button-colours, "other");
-    border: 2px solid map-get($button-colours, "other");
-    background: none;
-  }
-}
-
-.export,
-.import {
-  float: right;
-  margin-left: 20px;
-}
-
-.storebutton {
-  cursor: pointer;
-  font-size: 18px;
-  float: right;
-  vertical-align: middle;
-  padding: 5px 30px;
-  background: none;
-  outline: none;
-  border: none;
-  border: 2px solid #2d3436;
-  border-radius: 24px;
-  font-family: 'Lexend Deca', sans-serif;
-  transition: ease 0.33s;
-
-  &:hover {
-    background: #2d3436;
-    color: map-get($theme-colours, "main");;
-    border: 2px solid #2d3436;
-  }
-}
-
-.dark .storebutton {
-  border: 2px solid map-get($theme-colours, "main");
-  color: map-get($theme-colours, "main");
-
-  &:hover {
-    background: map-get($theme-colours, "main");
-    color: #2d3436;
-    border: 2px solid map-get($theme-colours, "main");
-  }
-}
-
-#item >.removeFromMue {
-  border: 2px solid #ff4757;
-  color: #ff4757;
-
-  &:hover {
-    background: #ff4757;
-    color: map-get($theme-colours, "main");;
-    border: 2px solid #ff4757;
-  }
-
-  @extend .storebutton;
-}
-
-#item .addToMue,
-#item .removeFromMue {
-  margin-top: 5px;
-}
-
-.addToMue {
-  @extend .storebutton;
-}
-
-.goToMarket {
-  float: none;
-  @extend .storebutton;
-}
-
-.sideload, .seemore {
-  margin-top: 12px;
-}
-
-.seemore {
-  @extend %settingsButton;
-  background-color: #2d3436;
-  border: 2px solid #2d3436;
-
-  &:hover {
-    color: #2d3436;
-    border: 2px solid #2d3436;
-    background: none;
-  }
-}
-
-.stop {
-  outline: none;
-  border-image-slice: 1;
-  border-image-source: map-get($theme-colours, "gradient");
-  font-size: 1.2em;
-  padding-left: 7px;
-  vertical-align: middle;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  opacity: 1;
-  outline: none;
 }

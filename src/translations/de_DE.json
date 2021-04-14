@@ -1,0 +1,267 @@
+{
+  "tabname": "Neuer Tab",
+  "widgets": {
+    "greeting": {
+      "morning": "Guten Morgen",
+      "afternoon": "Guten Tag",
+      "evening": "Guten Abend",
+      "christmas": "Fröhliche Weihnachten",
+      "newyear": "Frohes neues Jahr",
+      "halloween": "Happy Halloween",
+      "birthday": "Glückwunsch zum Geburtstag"
+    },
+    "background": {
+      "credit": "Foto von",
+      "information": "Informationen"
+    },
+    "search": "Suche",
+    "navbar": {
+      "tooltips": {
+        "update": "Update Hinweise",
+        "refresh": "Neuladen"
+      },
+      "notes": {
+        "title": "Notizen",
+        "placeholder": "Hier eingeben"
+      }
+    }
+  },
+  "modals": {
+    "main": {
+      "title": "Einstellungen",
+      "loading": "Loading...",
+      "navbar": {
+        "settings": "Einstellungen",
+        "addons": "Meine Addons",
+        "marketplace": "Marktplatz"
+      },
+      "settings": {
+        "enabled": "Aktivieren",
+        "sections": {
+          "time": {
+            "title": "Uhrzeit",
+            "digital": {
+              "title": "Digital",
+              "seconds": "Sekunden",
+              "twentyfourhour": "24 Stunden",
+              "ampm": "AM/PM (12 Stunden)",
+              "zero": "Nullen füllen"
+            },
+            "analogue": {
+              "title": "Analog",
+              "second_hand": "Sekundenzeiger",
+              "minute_hand": "Minutenzeiger",
+              "hour_hand": "Stundenzeiger",
+              "hour_marks": "Stunden-Markierungen",
+              "minute_marks": "Minuten-Markierungen"
+            },
+            "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen",
+            "date": {
+              "title": "Datum",
+              "day_of_week": "Wochentag",
+              "datenth": "Date nth",
+              "short_date": "Kurzes Datum",
+              "short_format": "Kurzes Format",
+              "short_separator": {
+                "title": "Kurzer Trenner",
+                "dots": "Punkte",
+                "dash": "Bindestrich",
+                "gaps": "Lücke",
+                "slashes": "Slashes"
+              }
+            }
+          },
+          "quote": {
+            "title": "Zitat",
+            "author_link": "Autor Link",
+            "custom": "Benutzerdefiniertes Zitat",
+            "custom_author": "Benutzerdefinierter Autor",
+            "buttons": {
+              "title": "Schaltflächen",
+              "copy": "Kopieren",
+              "tweet": "Twitter",
+              "favourite": "Favorit"
+            }
+          },
+          "greeting": {
+            "title": "Begrüßung",
+            "events": "Veranstaltungen",
+            "default": "Standard-Begrüßungsnachricht",
+            "name": "Name zur Begrüßung",
+            "birthday": "Geburtstag",
+            "birthday_date": "Geburtstags Datum"
+          },
+          "background": {
+            "title": "Hintergrund",
+            "buttons": {
+              "title": "Buttons",
+              "view": "Ansicht",
+              "favourite": "Favorit"
+            },
+            "effects": {
+              "title": "Effekte",
+              "blur": "Unschärfe anpassen",
+              "brightness": "Helligkeit anpassen"
+            },
+            "source": {
+              "title": "Quelle",
+              "api": "Hintergrund API",
+              "custom_url": "Benutzerdefinierter Hintergrund URL",
+              "custom_background": "Benutzerdefinierter Hintergrund",
+              "custom_colour": "Benutzerdefinierter Hintergrundfarbe",
+              "upload": "Upload",
+              "add_colour": "Farbe hinzufügen",
+              "disabled": "Deaktiviert"
+            }
+          },
+          "search": {
+            "title": "Suche",
+            "search_engine": "Suchmaschine",
+            "custom": "Abfrage-URL",
+            "voice_search": "Sprachsuche"
+          },
+          "appearance": {
+            "title": "Erscheinungsbild",
+            "dark_theme": "Dark Mode",
+            "night_mode": "Nacht Modus",
+            "animations": "Animationen",
+            "navbar": {
+              "title": "Navigationsleiste",
+              "notes": "Hinweise",
+              "refresh": "Aktualisieren"
+            },
+            "font": {
+              "title": "Schriftart",
+              "custom": "Eigene Schriftart",
+              "google": "Importieren von Google Fonts"
+            },
+            "accessibility": {
+              "title": "Accessibility",
+              "zoom": "Zoom",
+              "toast_duration": "Toast Dauer",
+              "milliseconds": "Millisekunden"
+            }
+          },
+          "advanced": {
+            "title": "Erweitert",
+            "offline_mode": "Offline Modus",
+            "data": "Daten",
+            "customisation": "Anpassung",
+            "custom_css": "Benutzerdefiniertes CSS",
+            "custom_js": "Benutzerdefiniertes JS",
+            "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren." 
+          },
+          "experimental": {
+            "title": "Experimentell"
+          },
+          "language": {
+            "title": "Sprache",
+            "quote": "Zitat-Sprache"
+          },
+          "changelog": "Änderungshinweise",
+          "about": {
+            "title": "Über",
+            "copyright": "Urheberrechte",
+            "version": {
+              "title": "Version",
+              "checking_update": "Auf Update prüfen",
+              "update_available": "Update verfügbar",
+              "no_update": "Kein Update verfügbar",
+              "offline_mode": "Im Offline Modus kann nicht nach Updates gesucht werden"
+            },
+            "resources_used": {
+              "title": "Verwendete Ressourcen",
+              "bg_images": "Offline Hintergrundbilder",
+              "welcome_img": "Willkommensbild",
+              "pin_icon": "Pin Icon"
+            },
+            "contributors": "Mitwirkende",
+            "supporters": "Unterstützer"
+          }
+        },
+        "buttons": {
+          "reset": "Zurücksetzen",
+          "import": "Importieren",
+          "export": "Exportieren"
+        },
+        "toasts": {
+          "reset": "Erfolgreich zurücksetzen",
+          "imported": "Erfolgreich importiert"
+        }
+      },
+      "marketplace": {
+        "photo_packs": "Fotopakete",
+        "quote_packs": "Zitat-Pakete",
+        "preset_settings": "Voreingestellte Einstellungen",
+        "themes": "Themen",
+        "product": {
+          "overview": "Übersicht",
+          "information": "Information",
+          "last_updated": "Letzte Aktualisierung",
+          "version": "Version",
+          "author": "Autor",
+          "notice": {
+            "title": "Hinweis",
+            "description": "Damit die Änderung erfolgt, muss die Seite neu geladen werden."
+          },
+          "buttons": {
+            "addtomue": "Zu Mue hinzufügen",
+            "remove": "Entfernen"
+          },
+          "quote_warning": {
+            "title": "Warnung",
+            "description": "Dieses Zitatpaket stellt Anfragen an externe Server, die Sie möglicherweise tracken!"
+          }
+        },
+        "offline": {
+          "title": "Sieht aus, als ob Sie offline sind",
+          "description": "Bitte stellen Sie eine Verbindung zum Internet her."
+        },
+        "see_more": "Mehr sehen"
+      },
+      "addons": {
+        "added": "Hinzugefügt",
+        "empty": {
+          "title": "Hier ist es leer",
+          "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen.",
+          "button": "Bring mich dorthin"
+        },
+        "sideload": "Hochladen"
+      }
+    },
+    "update": {
+      "title": "Update",
+      "offline": {
+        "title": "Offline",
+        "description": "Update-Protokolle können im Offline-Modus nicht abgerufen werden"
+      },
+      "error": {
+        "title": "Fehler",
+        "description": "Konnte keine Verbindung zum Server herstellen"
+      },
+      "read_blog": "Hier im Blog lesen",
+      "contact_support": "Kontaktieren Sie uns hier"
+    },
+    "welcome": {
+      "title": "Willkommen bei",
+      "information": "Information",
+      "thankyoumessage1": "Vielen Dank für die Installation von Mue Tab,",
+      "thankyoumessage2": "wir wünschen Ihnen viel Spaß mit unserer Erweiterung.",
+      "support": "Support",
+      "close": "Schließen"
+    },
+    "feedback": {
+      "title": "Geben Sie uns Feedback",
+      "question_one": "Wie würden Sie Ihre Erfahrungen mit dieser Mue Version bewerten?",
+      "question_two": "Auf welche Fehler sind Sie bei der Verwendung von Mue gestoßen?",
+      "question_three": "Wie wahrscheinlich ist es, dass Sie diese Version von Mue einem Freund oder Kollegen empfehlen würden?",
+      "submit": "Senden"
+    }
+  },
+  "toasts": {
+    "quote": "Kopierte Zitate",
+    "installed": "Erfolgreich installiert",
+    "uninstalled": "Erfolgreich entfernt",
+    "error": "Etwas ist schief gelaufen"
+  }
+}

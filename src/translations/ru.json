@@ -1,135 +1,154 @@
 {
+  "widgets": {
     "greeting": {
-        "morning": "Доброе утро",
-        "afternoon": "Добрый день",
-        "evening": "Добрый вечер",
-        "christmas": "С Рождеством",
-        "newyear": "С Новым Годом",
-        "halloween": "Счастливого Хэллоуина"
+      "morning": "Доброе утро",
+      "afternoon": "Добрый день",
+      "evening": "Добрый вечер",
+      "christmas": "С Рождеством",
+      "newyear": "С Новым Годом",
+      "halloween": "Счастливого Хэллоуина"
     },
-    "credit": "Фото",
-    "search": "Поиск",
-    "modals": {
-        "title": "Options",
-        "settings": "Settings",
-        "addons": "My Add-ons",
-        "marketplace": "Marketplace"
+    "background": {
+      "credit": "Фото"
     },
-    "settings": {
-        "time": {
+    "search": "Поиск"
+  },
+  "modals": {
+    "main": {
+      "settings": {
+        "sections": {
+          "time": {
             "title": "Время",
-            "seconds": "Секунды",
-            "twentyfourhour": "24 Часа",
-            "ampm": "AM/PM (12 часов)",
-            "zero": "Дополнительный ноль",
-            "analog": "Аналоговое"
-        },
-        "greeting": {
+            "digital": {
+              "seconds": "Секунды",
+              "twentyfourhour": "24 Часа",
+              "ampm": "AM/PM (12 часов)",
+              "zero": "Дополнительный ноль"
+            },
+            "analogue": {
+              "title": "Аналоговое"
+            }
+          },
+          "greeting": {
             "title": "Приветствие",
             "events": "События",
             "default": "Сообщение с приветствием по-умолчанию",
             "name": "Имя для приветствия"
-        },
-        "quote": {
+          },
+          "quote": {
             "title": "Цитата",
-            "copy": "Кнопка копирования",
-            "tweet": "Кнопка твита",
-            "favourite": "Кнопка для оценки"
-        },
-        "background": {
+            "buttons": {
+              "copy": "Кнопка копирования",
+              "tweet": "Кнопка твита",
+              "favourite": "Кнопка для оценки"
+            }
+          },
+          "background": {
             "title": "Фон",
-            "API": "API для фона",
-            "blur": "Размытие",
-            "brightness": "Яркость",
-            "customURL": "Ссылка для пользовательского фона",
-            "custombackground": "Пользовательский фон",
-            "customcolour": "Пользовательский цвет фона",
-            "upload": "Загрузить",
-            "addcolour": "Добавить цвет",
-            "favourite": "Любимые",
-            "view": "Просмотр",
-            "refresh": "Обновить",
-            "disabled": "Выключен"
-        },
-        "searchbar": {
+            "buttons": {
+              "favourite": "Любимые",
+              "view": "Просмотр",
+              "refresh": "Обновить",
+              "disabled": "Выключен"
+            },
+            "effects": {
+              "blur": "Размытие",
+              "brightness": "Яркость"
+            },
+            "source": {
+              "api": "API для фона",
+              "custom_url": "Ссылка для пользовательского фона",
+              "custom_background": "Пользовательский фон",
+              "custom_colour": "Пользовательский цвет фона",
+              "upload": "Загрузить",
+              "add_colour": "Добавить цвет"
+            }
+          },
+          "search": {
             "title": "Панель поиска",
-            "searchengine": "Поисковый движок",
-            "custom": "Пользовательский поисковый движок"
-        },
-        "offline": "Офлайн режим",
-        "dark": "Тёмная тема",
-        "experimental": {
+            "search_engine": "Поисковый движок",
+            "custom": "Пользовательский поисковый движок",
+            "voice_search": "Поиск голосом"
+          },
+          "appearance": {
+            "dark_theme": "Тёмная тема"
+          },
+          "advanced": {
+            "offline_mode": "Офлайн режим"
+          },
+          "experimental": {
             "title": "Экспериментальные настройки",
-            "webp": "Включить WebP",
             "animations": "Анимации",
-            "voicesearch": "Поиск голосом",
             "nightmode": "Автоматический ночной режим"
+          },
+          "language": {
+            "title": "Язык"
+          }
         },
-        "language": "Язык",
-        "apply": "Применить",
-        "reset": "Сбросить",
-        "import": "Импорт",
-        "export": "Экспорт"
-    },
-    "update": {
-        "title": "Обновление",
-        "offline": {
-            "title": "Офлайн",
-            "description": "Не удалось получить журнал обновления в офлайн режиме"
+        "toasts": {
+          "reset": "Сброшено!",
+          "error": "Что-то пошло не так",
+          "imported": "Успешно импортировано"
         },
-        "error": {
-            "title": "Ошибка",
-            "content": "Не удалось подключиться к серверу"
-        },
-        "loading": "Загрузка...",
-        "readblog": "Прочитайте об изменениях в блоге",
-        "contactsupport": "Связаться с нами"
-    },
-    "toasts": {
-        "quote": "Цитата скопирована!",
-        "reset": "Сброшено!",
-        "installed": "Успешно установлено",
-        "removed": "Успешно удалено",
-        "error": "Что-то пошло не так",
-        "imported": "Успешно импортировано"
-    },
-    "marketplace": {
+        "buttons": {
+          "reset": "Сбросить",
+          "import": "Импорт",
+          "export": "Экспорт"
+        }
+      },
+      "marketplace": {
         "photo_packs": "Наборы фото",
         "quote_packs": "Наборы цитат",
         "preset_settings": "Пресеты настроек",
         "themes": "Темы",
         "product": {
-            "overview": "Обзор",
-            "information": "Информация",
-            "last_updated": "Последнее обновление",
-            "version": "Версия",
-            "author": "Автор",
-            "notice": {
-                "title": "Предупреждение",
-                "description": "Для того, чтобы изменения вступили в силу необходимо обновить страницу."
-            },
-            "buttons": {
-                "addtomue": "Добавить в Mue",
-                "remove": "Удалить"
-            },
-            "quoteWarning": {
-                "title": "Предупреждение",
-                "description": "Этот пакет цитат обращается к внешнему серверу и может отслеживать вас!"
-            }
+          "overview": "Обзор",
+          "information": "Информация",
+          "last_updated": "Последнее обновление",
+          "version": "Версия",
+          "author": "Автор",
+          "notice": {
+            "title": "Предупреждение",
+            "description": "Для того, чтобы изменения вступили в силу необходимо обновить страницу."
+          },
+          "buttons": {
+            "addtomue": "Добавить в Mue",
+            "remove": "Удалить"
+          },
+          "quoteWarning": {
+            "title": "Предупреждение",
+            "description": "Этот пакет цитат обращается к внешнему серверу и может отслеживать вас!"
+          }
         },
         "offline": {
-            "title": "Похоже, что вы офлайн",
-            "description": "Пожалуйста, подключитесь к интернету."
+          "title": "Похоже, что вы офлайн",
+          "description": "Пожалуйста, подключитесь к интернету."
         },
         "see_more": "Показать больше"
-    },
-    "addons": {
+      },
+      "addons": {
         "added": "Добавлен",
         "empty": {
-            "title": "Здесь пусто",
-            "description": "Зайдите в магазин, чтобы найти что-то интересное.",
-            "button": "Перейти"
+          "title": "Здесь пусто",
+          "description": "Зайдите в магазин, чтобы найти что-то интересное.",
+          "button": "Перейти"
         },
         "sideload": "Загрузить"
+      }
+    },
+    "update": {
+      "title": "Обновление",
+      "offline": {
+        "title": "Офлайн",
+        "description": "Не удалось получить журнал обновления в офлайн режиме"
+      },
+      "error": {
+        "title": "Ошибка",
+        "content": "Не удалось подключиться к серверу"
+      },
+      "loading": "Загрузка...",
+      "readblog": "Прочитайте об изменениях в блоге",
+      "contactsupport": "Связаться с нами"
     }
+  }
 }

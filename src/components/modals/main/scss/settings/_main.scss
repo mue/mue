@@ -1,0 +1,160 @@
+.hidden {
+  display: none;
+}
+
+input {
+  &[type=text] {
+    width: 200px;
+    color: var(--modal-text);
+    background: var(--sidebar);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+  }
+}
+
+h4 {
+  cursor: pointer;
+}
+
+ul {
+  padding-left: 0px;
+  margin: 0;
+
+  >label {
+    vertical-align: middle;
+  }
+}
+
+.range {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 12px;
+  border-radius: 12px;
+  outline: none;
+  background: var(--sidebar);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 12px;
+    background: var(--modal-text);
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 12px;
+    border: 0;
+    background: var(--modal-text);
+    cursor: pointer;
+  }
+}
+
+input[type=color] {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  vertical-align: middle;
+  background: none;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    border: none;
+    border-radius: 100%;
+  }
+}
+
+input[type=color]::-moz-color-swatch {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  border: none;
+  outline: none;
+  -moz-appearance: none;
+  vertical-align: middle;
+  background: none;
+
+  &::-moz-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-moz-color-swatch {
+    border: none;
+    border-radius: 100%;
+  }
+}
+
+.newFeature {
+  color: #ff4757;
+  font-size: 12px;
+}
+
+.settingsTextarea {
+  font-family: Consolas !important;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: var(--sidebar) !important;
+  border: none;
+  margin-left: 0;
+}
+
+.MuiCheckbox-colorPrimary.Mui-checked, .MuiSwitch-colorPrimary.Mui-checked, .MuIconButton-colorPrimary.Mui-checked, .MuiSwitch-thumb, .MuiRadio-colorSecondary.Mui-checked, .PrivateSwitchBase-input-4 {
+  color: var(--modal-text) !important;
+}
+
+.MuiRadio-root {
+  color: var(--modal-text);
+}
+
+.MuiFormControlLabel-labelPlacementStart {
+  margin-left: 0px !important;
+}
+
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+  background: darkgray !important;
+}
+
+.reminder-info {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px;
+  color: #000;
+  background: #f0f0f0;
+  max-width: 300px;
+  border-radius: 0.7em;
+  display: none;
+
+  h1 {
+    font-size: 1em;
+  }
+}
+
+.radio-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.17rem;
+}
+
+.radio-title-small {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.sortableitem {
+  width: auto !important;
+  color: var(--modal-text) !important;
+  cursor: move;
+}

@@ -1,0 +1,373 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+@import 'settings/main';
+@import 'settings/buttons';
+@import 'settings/dropdown';
+@import 'settings/daypicker';
+
+@import './settings/react-color-picker-gradient-picker-custom-styles.scss';
+
+.Modal {
+  color: var(--modal-text);
+  background-color: var(--background);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border: none;
+  opacity: 1;
+  z-index: -2;
+  padding: 25px;
+  transition-timing-function: ease-in;
+  border-radius: map-get($modal, 'border-radius');
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  scrollbar-width: thin;
+  scrollbar-color: #34495e #bdc3c7;
+  position: relative;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.modalLink {
+  color: var(--modal-link);
+  cursor: pointer;
+  padding-left: 10px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.closeModal {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 4em;
+  cursor: pointer;
+
+  &:hover {
+    color: grey;
+  }
+}
+
+.ReactModal__Html--open,
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.Overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.ReactModal__Content {
+  min-height: calc(100vh - 30vh);
+  max-height: calc(100vh - 10vh);
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+  position: relative;
+}
+
+@media only screen and (max-height: 700px) {
+  .ReactModal__Content {
+    min-height: 500px;
+    max-height: calc(100vh - 30vh);
+  }
+}
+
+@media only screen and (min-height: 700px) {
+  .ReactModal__Content {
+    min-height: 600px;
+  }
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transform: scale(0);
+  transition: all 300ms cubic-bezier(.47, 1.64, .41, .8);
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  transform: scale(0);
+}
+
+ul.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding-left: 0;
+  background: var(--sidebar);
+  border-radius: 12px 0 0 12px;
+  text-align: left;
+  font-size: 24px;
+  min-height: 100vh;
+
+  h1 {
+    text-align: center;
+    font-size: 1.8em;
+  }
+
+  svg {
+    vertical-align: middle;
+    font-size: 35px;
+    padding: 5px;
+  }
+
+  hr {
+    height: 3px;
+    background: rgba(196, 196, 196, 0.74);
+    width: 75%;
+    outline: none;
+    border: none;
+  }
+}
+
+li {
+  list-style: none;
+  font-size: 24px;
+  padding: 5px 30px 5px 30px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+#modal {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 80%;
+}
+
+@media only screen and (max-width: 1300px) {
+  #modal {
+    width: 90% !important;
+  }
+}
+@media only screen and (min-width: 1310px) {
+  #modal {
+    width: 60%;
+  }
+}
+
+.tab-list-active {
+  background: var(--tab-active);
+}
+
+
+@media only screen and (max-width: 1200px) {
+  li.tab-list-item {
+    span {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  ul.sidebar {
+    h1 {
+      display: none;
+    }
+  }
+}
+
+.tab-list-item {
+  &:hover {
+    background: var(--tab-active);
+  }
+}
+
+.tab-content {
+  position: absolute;
+
+  h3 {
+    text-transform: uppercase;
+  }
+}
+
+@media only screen and (min-width: 2300px) {
+  .tab-content {
+    left: 350px;
+    top: 7%;
+  }
+}
+
+@media only screen and (max-width: 1920px) {
+  .tab-content {
+    left: 120px;
+    top: 50px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .tab-content {
+    left: 350px;
+    top: 7%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .tab-content {
+    left: 350px;
+    top: 75px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .tab-content {
+    left: 350px;
+    top: 75px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .tab-content {
+    left: 125px;
+    top: 75px;
+  }
+}
+
+.navbar-item {
+  font-size: 22px;
+  font-weight: 500;
+  display: inline-flex;
+
+  &:hover {
+    color: rgb(165, 165, 165);
+  }
+}
+
+.modalNavbar {
+  position: absolute;
+  left: 20rem;
+  top: 1rem;
+  justify-content: center;
+
+  svg {
+    margin-right: 0.5rem;
+    padding: 3px;
+    font-size: 1.4em !important;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .modalNavbar {
+    left: 6rem;
+  }
+}
+
+.navbar-item {
+  span,
+  svg {
+    font-size: 1.1em !important;
+  }
+
+  svg {
+    font-size: 1.4em !important;
+  }
+
+  &:hover {
+    background: none;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  li.navbar-item {
+    span {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .tabContent {
+    left: 20px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  ul.sidebar {
+    width: 310px;
+    align-items: center;
+  }
+}
+
+.navbar-item-active {
+  background: map-get($theme-colours, 'gradient');
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  svg {
+    color: orange;
+  }
+
+  &:hover {
+    background: map-get($theme-colours, 'gradient');
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  border-top-right-radius: map-get($modal, 'border-radius');
+  border-bottom-right-radius: map-get($modal, 'border-radius');
+}
+
+::-webkit-scrollbar-thumb {
+  background: #636e72;
+  border-top-right-radius: map-get($modal, 'border-radius');
+  border-bottom-right-radius: map-get($modal, 'border-radius');
+}
+
+.abouticon {
+  width: 96px;
+  height: auto;
+  border-radius: 50%;
+  padding-right: 5px;
+}
+
+.resetmodal {
+  min-height: 300px !important;
+  max-width: 300px !important;
+  margin: auto;
+}
+
+.resetfooter {
+  position: absolute;
+  bottom: 20px;
+}
+
+.resetoverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.welcomeLink {
+  color: var(--modal-text) !important;
+  padding-right: 10px;
+}
+
+.MuiIconButton-root {
+  color: var(--modal-text) !important;
+} 

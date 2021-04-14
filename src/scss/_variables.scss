@@ -5,14 +5,23 @@ $theme-colours: (
   'main': rgba(242, 243, 244, 1),
   'secondary': rgba(0, 0, 0, 1),
   'main-text-color': rgba(242, 243, 244, 1),
+  'photo-info': #2d3436,
+  'photo-info-dark': #ffff
 );
 
 $modal: (
   'background': #fff,
+  'background-dark': #2f3542,
   'text': rgba(0, 0, 0, 1),
   'tab-underline': rgba(204, 204, 204, 1),
   'tab-underline-active': rgba(0, 0, 0, 1),
   'border-radius': 12px,
+  'sidebar': #f0f0f0,
+  'tab-active': rgba(219, 219, 219, 0.72),
+  'sidebar-dark': #353b48,
+  'tab-active-dark': rgba(65, 71, 84, .9),
+  'modal-link': #5352ed,
+  'modal-link-dark': #3498db
 );
 
 $marketplace: (

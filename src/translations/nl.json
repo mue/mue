@@ -1,134 +1,158 @@
 {
+  "widgets": {
     "greeting": {
-        "morning": "Goedemorgen",
-        "afternoon": "Goedemiddag",
-        "evening": "Goedenavond",
-        "christmas": "Fijne kerstdagen",
-        "newyear": "Gelukkig nieuwjaar",
-        "halloween": "Fijne Halloween"
+      "morning": "Goedemorgen",
+      "afternoon": "Goedemiddag",
+      "evening": "Goedenavond",
+      "christmas": "Fijne kerstdagen",
+      "newyear": "Gelukkig nieuwjaar",
+      "halloween": "Fijne Halloween"
     },
-    "credit": "Foto van",
-    "search": "Zoeken",
-    "modals": {
-        "title": "Opties",
+    "background": {
+      "credit": "Foto van"
+    },
+    "search": "Zoeken"
+  },
+  "modals": {
+    "main": {
+      "title": "Opties",
+      "navbar": {
         "settings": "Instellingen",
         "addons": "Mijn extensies",
         "marketplace": "Marktplaats"
-    },
-    "settings": {
-        "time": {
+      },
+      "settings": {
+        "sections": {
+          "time": {
             "title": "Tijd",
-            "seconds": "Seconden tonen",
-            "twentyfourhour": "24-uursklok gebruiken",
-            "ampm": "AM/PM (12-uursklok) gebruiken",
-            "zero": "Nulopvulling",
-            "analog": "Analoge klok tonen"
-        },
-        "greeting": {
+            "digital": {
+              "seconds": "Seconden tonen",
+              "twentyfourhour": "24-uursklok gebruiken",
+              "ampm": "AM/PM (12-uursklok) gebruiken",
+              "zero": "Nulopvulling"
+            },
+            "analogue": {
+              "title": "Analoog"
+            }
+          },
+          "quote": {
+            "title": "Citaat",
+            "buttons": {
+              "copy": "Kopieerknop",
+              "tweet": "Tweetknop",
+              "favourite": "Knop 'Toevoegen aan favorieten'"
+            }
+          },
+          "greeting": {
             "title": "Begroetingen",
             "events": "Gebeurtenissen",
             "default": "Standaard begroetingsnaam",
             "name": "Naam van begroeting"
-        },
-        "quote": {
-            "title": "Citaat",
-            "copy": "Kopieerknop",
-             "tweet": "Tweetknop",
-            "favourite": "Knop 'Toevoegen aan favorieten'"
-        },
-        "background": {
+          },
+          "background": {
             "title": "Achtergrond",
-            "API": "Achtergrond-api",
-            "blur": "Vervaging instellen",
-            "customURL": "Aangepaste achtergrond-url",
-            "custombackground": "Aangepaste achtergrond",
-            "customcolour": "Aangepaste achtergrondkleur",
-            "upload": "Uploaden",
-            "addcolour": "Kleur toevoegen",
-            "view": "Weergave",
-            "refresh": "Herladen",
-            "disabled": "Uitgeschakeld"
-        },
-        "searchbar": {
+            "buttons": {
+              "view": "Weergave",
+              "refresh": "Herladen",
+              "disabled": "Uitgeschakeld"
+            },
+            "effects": {
+              "blur": "Vervaging instellen"
+            },
+            "source": {
+              "api": "Achtergrond-api",
+              "custom_url": "Aangepaste achtergrond-url",
+              "custom_background": "Aangepaste achtergrond",
+              "custom_colour": "Aangepaste achtergrondkleur",
+              "upload": "Uploaden",
+              "add_colour": "Kleur toevoegen"
+            }
+          },
+          "search": {
             "title": "Zoekbalk",
-            "searchengine": "Zoekmachine",
+            "search_engine": "Zoekmachine",
             "custom": "Aangepaste zoekmachine-url"
-        },
-        "offline": "Offline-modus",
-        "dark": "Donker thema",
-        "experimental": {
+          },
+          "appearance": {
+            "dark_theme": "Donker thema"
+          },
+          "advanced": {
+            "offline_mode": "Offline-modus"
+          },
+          "experimental": {
             "title": "Experimenteel",
-            "webp": "WebP gebruiken",
-            "animations": "Animaties gebruiken",
-            "voicesearch": "Spraakgestuurd zoeken gebruiken",
-            "nightmode": "Automatische nachtmodus"
+            "animations": "Animaties"
+          },
+          "language": {
+            "title": "Taal"
+          }
         },
-        "language": "Taal",
-        "apply": "Toepassen",
-        "reset": "Herstellen",
-        "import": "Importeren",
-        "export": "Exporteren"
-    },
-    "update": {
-        "title": "Wijzigingen",
-        "offline": {
-            "title": "Offline",
-            "description": "Het wijzigingslog kan niet worden opgehaald in de offline-modus"
+        "buttons": {
+          "apply": "Toepassen",
+          "reset": "Herstellen",
+          "import": "Importeren",
+          "export": "Exporteren"
         },
-        "error": {
-            "title": "Foutmelding",
-            "content": "Er kan geen verbinding worden gemaakt met de servers"
-        },
-        "loading": "Bezig met laden…",
-        "readblog": "Lees ons blog",
-        "contactsupport": "Neem contact met ons op"
-    },
-    "toasts": {
-        "quote": "Het citaat is gekopieerd",
-        "reset": "Het herstellen is voltooid",
-        "installed": "De installatie is voltooid",
-        "removed": "Het verwijderen is voltooid",
-        "error": "Er is iets misgegaan",
-        "imported": "Het importeren is voltooid"
-    },
-    "marketplace": {
+        "toasts": {
+          "installed": "De installatie is voltooid",
+          "removed": "Het verwijderen is voltooid",
+          "error": "Er is iets misgegaan",
+          "imported": "Het importeren is voltooid"
+        }
+      },
+      "marketplace": {
         "photo_packs": "Fotoverzamelingen",
         "quote_packs": "Citaatverzamelingen",
         "preset_settings": "Voorinstellingen",
         "themes": "Thema's",
         "product": {
-            "overview": "Overzicht",
-            "information": "Informatie",
-            "last_updated": "Laatst geüpdatet",
-            "version": "Versie",
-            "author": "Maker",
-            "notice": {
-                "title": "Aankondiging",
-                "description": "Herlaad de pagina om de wijzigingen toe te passen."
-            },
-            "buttons": {
-                "addtomue": "Toevoegen aan Mue",
-                "remove": "Verwijderen"
-            },
-            "quoteWarning": {
-                "title": "Waarschuwing",
-                "description": "Deze citaatverzameling maakt verbinding met externe servers die kunnen worden gebruikt om je te internetverkeer te tracken!"
-            }
+          "overview": "Overzicht",
+          "information": "Informatie",
+          "last_updated": "Laatst geüpdatet",
+          "version": "Versie",
+          "author": "Maker",
+          "notice": {
+            "title": "Aankondiging",
+            "description": "Herlaad de pagina om de wijzigingen toe te passen."
+          },
+          "buttons": {
+            "addtomue": "Toevoegen aan Mue",
+            "remove": "Verwijderen"
+          },
+          "quoteWarning": {
+            "title": "Waarschuwing",
+            "description": "Deze citaatverzameling maakt verbinding met externe servers die kunnen worden gebruikt om je te internetverkeer te tracken!"
+          }
         },
         "offline": {
-            "title": "Het lijkt er op dat je niet verbonden bent het internet",
-            "description": "Maak verbinding met het internet."
+          "title": "Het lijkt er op dat je niet verbonden bent het internet",
+          "description": "Maak verbinding met het internet."
         },
         "see_more": "Meer tonen"
-    },
-    "addons": {
+      },
+      "addons": {
         "added": "Toegevoegd",
         "empty": {
-            "title": "Het is hier erg leeg",
-            "description": "Ga naar de marktplaats om een paar extensies toe te voegen.",
-            "button": "Open de marktplaats"
-            },
+          "title": "Het is hier erg leeg",
+          "description": "Ga naar de marktplaats om een paar extensies toe te voegen.",
+          "button": "Open de marktplaats"
+        },
         "sideload": "Sideloaden"
-        }
+      }
     }
+  },
+  "update": {
+    "title": "Wijzigingen",
+    "offline": {
+      "title": "Offline",
+      "description": "Het wijzigingslog kan niet worden opgehaald in de offline-modus"
+    },
+    "error": {
+      "title": "Foutmelding",
+      "content": "Er kan geen verbinding worden gemaakt met de servers"
+    },
+    "loading": "Bezig met laden…",
+    "readblog": "Lees ons blog",
+    "contactsupport": "Neem contact met ons op"
+  }
 }
