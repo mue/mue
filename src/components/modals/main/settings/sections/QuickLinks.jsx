@@ -9,7 +9,7 @@ export default function QuickLinks() {
   return (
     <>
       <h2>{language.title}</h2>
-      <Switch name='quicklinksenabled' text={window.language.modals.main.settings.enabled} category='quicklinks' />
+      <Switch name='quicklinksenabled' text={window.language.modals.main.settings.enabled} category='quicklinks' element='.quicklinks-container' />
       <Checkbox name='quicklinksnewtab' text={language.open_new} category='quicklinks' />
       <Checkbox name='quicklinkstooltip' text={language.tooltip} category='quicklinks' />
     </>

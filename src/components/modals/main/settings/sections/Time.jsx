@@ -94,7 +94,7 @@ export default class TimeSettings extends React.PureComponent {
     return (
       <>
         <h2>{time.title}</h2>
-        <Switch name='time' text={this.language.enabled} category='clock' />
+        <Switch name='time' text={this.language.enabled} category='clock' element='.clock' />
         <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock'>
           <option value='digital'>{time.digital.title}</option>
           <option value='analogue'>{time.analogue.title}</option>

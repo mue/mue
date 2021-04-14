@@ -27,6 +27,9 @@ export default class Modals extends React.PureComponent {
         welcomeModal: true
       });
     }
+
+    // hide refresh reminder once the user has refreshed the page
+    localStorage.setItem('showReminder', false);
   }
 
   closeWelcome() {

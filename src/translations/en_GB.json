@@ -55,6 +55,10 @@
       },
       "settings": {
         "enabled": "Enabled",
+        "reminder": {
+          "title": "NOTICE",
+          "message": "In order for all of the changes to take place, the page must be refreshed."
+        },
         "sections": {
           "time": {
             "title": "Time",
@@ -298,10 +302,6 @@
           "last_updated": "Last Updated",
           "version": "Version",
           "author": "Authour",
-          "notice": {
-            "title": "Notice",
-            "description": "In order for the change to take place, the page must be refreshed."
-          },
           "buttons": {
             "addtomue": "Add To Mue",
             "remove": "Remove"

@@ -8,10 +8,18 @@ const Settings = React.lazy(() => import('./tabs/Settings'));
 const Addons = React.lazy(() => import('./tabs/Addons'));
 const Marketplace = React.lazy(() => import('./tabs/Marketplace'));
 
-const renderLoader = () => (<Tabs>
-  <div label=''>{window.language.modals.main.loading}</div>
-  <div label=''>{window.language.modals.main.loading}</div>
-</Tabs>);
+const renderLoader = () => (
+  <Tabs>
+    <div label={window.language.modals.main.loading}>
+      <div className='emptyitems'>
+        <div className='emptyMessage'>
+          <h1>{window.language.modals.main.loading}</h1>
+        </div>
+      </div>
+    </div>
+    <div label='' style={{ 'display': 'none' }}></div>
+  </Tabs>
+);
 
 export default function MainModal(props) {
   const language = window.language.modals.main.navbar;

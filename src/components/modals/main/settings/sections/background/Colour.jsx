@@ -8,6 +8,7 @@ import rgbToHex from '../../../../../../modules/helpers/background/rgbToHex';
 import { toast } from 'react-toastify';
 
 import 'react-color-gradient-picker/dist/index.css';
+import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class ColourSettings extends React.PureComponent {
   DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': '#ffb032', 'stop': 0 }], 'type': 'linear' };

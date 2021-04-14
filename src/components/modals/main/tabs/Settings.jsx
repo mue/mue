@@ -18,29 +18,35 @@ import Weather from '../settings/sections/Weather';
 import Tabs from './backend/Tabs';
 
 export default function Settings() {
-  const settings = window.language.modals.main.settings.sections;
+  const { reminder, sections } = window.language.modals.main.settings;
+
+  let display = 'none';
+  if (localStorage.getItem('showReminder') === 'true') {
+    display = 'block';
+  }
 
   return (
     <>
       <Tabs>
-        <div label={settings.time.title}><Time/></div>
-        <div label={settings.quote.title}><Quote/></div>
-        <div label={settings.greeting.title}><Greeting/></div>
-        <div label={settings.background.title}><Background/></div>
-        <div label={settings.search.title}><Search/></div>
-        <div label={settings.quicklinks.title}><QuickLinks/></div>
-        <div label={settings.weather.title}><Weather/></div>
-        <div label={settings.appearance.title}><Appearance/></div>
-        <div label={settings.order.title}><Order/></div>
-        <div label={settings.language.title}><Language/></div>
-        <div label={settings.advanced.title}><Advanced/></div>
-        <div label={settings.experimental.title}><Experimental/></div>
-        <div label={settings.changelog}><Changelog/></div>
-        <div label={settings.about.title}><About/></div>
+        <div label={sections.time.title}><Time/></div>
+        <div label={sections.quote.title}><Quote/></div>
+        <div label={sections.greeting.title}><Greeting/></div>
+        <div label={sections.background.title}><Background/></div>
+        <div label={sections.search.title}><Search/></div>
+        <div label={sections.quicklinks.title}><QuickLinks/></div>
+        <div label={sections.weather.title}><Weather/></div>
+        <div label={sections.appearance.title}><Appearance/></div>
+        <div label={sections.order.title}><Order/></div>
+        <div label={sections.language.title}><Language/></div>
+        <div label={sections.advanced.title}><Advanced/></div>
+        <div label={sections.experimental.title}><Experimental/></div>
+        <div label={sections.changelog}><Changelog/></div>
+        <div label={sections.about.title}><About/></div>
       </Tabs>
-      <div className='reminder-info'>
-        <h1>IMPORTANT INFO</h1>
-        <p>In order for changes to take place, the page must be refreshed.</p>
+      <div className='reminder-info' style={{ 'display': display }}>
+        <h1>{reminder.title}</h1>
+        <p>{reminder.message}</p>
+        <button className='pinNote' onClick={() => window.location.reload()}>{window.language.modals.main.error_boundary.refresh}</button>
       </div>
     </>
   );

@@ -129,12 +129,11 @@ input[type=color]::-moz-color-swatch {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  padding: 20px;
-  color: #000;
-  background: #f0f0f0;
+  padding: 15px;
+  color: var(--modal-text);
+  background: var(--sidebar);
   max-width: 300px;
   border-radius: 0.7em;
-  display: none;
 
   h1 {
     font-size: 1em;

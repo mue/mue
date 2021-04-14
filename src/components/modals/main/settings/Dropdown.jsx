@@ -29,6 +29,13 @@ export default class Dropdown extends React.PureComponent {
       this.props.onChange(value);
     }
 
+    if (this.props.element) {
+      if (!document.querySelector(this.props.element)) {
+        document.querySelector('.reminder-info').style.display = 'block';
+        return localStorage.setItem('showReminder', true);
+      }
+    }
+
     EventBus.dispatch('refresh', this.props.category);
   }
 

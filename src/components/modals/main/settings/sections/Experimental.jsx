@@ -11,10 +11,10 @@ export default function ExperimentalSettings() {
     <>
       <h2>{experimental.title}</h2>
       <p>{experimental.warning}</p>
-      <Checkbox name='animations' text={window.language.modals.main.settings.sections.appearance.animations}/>
+      <Checkbox name='animations' text={window.language.modals.main.settings.sections.appearance.animations} element='.other'/>
       <h3>{experimental.developer}</h3>
-      <Checkbox name='debug' text='Debug hotkey (Ctrl + #)'/>
-      <Slider title='Debug timeout' name='debugtimeout' min='0' max='5000' default='0' step='100' display=' miliseconds' />
+      <Checkbox name='debug' text='Debug hotkey (Ctrl + #)' element='.other'/>
+      <Slider title='Debug timeout' name='debugtimeout' min='0' max='5000' default='0' step='100' display=' miliseconds' element='.other' />
       {/* <Checkbox name='beta' text='Beta Mode Override'/>
       <Text name='api_override' title='Version Override (format example: 5.0)'/>
       <Text name='api_override' title='API URL Override'/>

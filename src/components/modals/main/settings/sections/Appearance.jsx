@@ -32,14 +32,14 @@ export default function AppearanceSettings() {
       <Radio name='theme' title={appearance.theme.title} options={themeOptions} category='other' />
 
       <h3>{appearance.navbar.title}</h3>
-      <Checkbox name='notesEnabled' text={appearance.navbar.notes} />
-      <Checkbox name='refresh' text={appearance.navbar.refresh} />
+      <Checkbox name='notesEnabled' text={appearance.navbar.notes} element='.other' />
+      <Checkbox name='refresh' text={appearance.navbar.refresh} element='.other' />
 
       <h3>{appearance.font.title}</h3>
-      <Text title={appearance.font.custom} name='font' upperCaseFirst={true} />
+      <Text title={appearance.font.custom} name='font' upperCaseFirst={true} element='.other' />
       <br/>
-      <Checkbox name='fontGoogle' text={appearance.font.google} />
-      <Dropdown label={appearance.font.weight.title} name='fontweight'>
+      <Checkbox name='fontGoogle' text={appearance.font.google} element='.other' />
+      <Dropdown label={appearance.font.weight.title} name='fontweight' element='.other'>
         {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
         <option value='100'>{appearance.font.weight.thin}</option>
         <option value='200'>{appearance.font.weight.extra_light}</option>
@@ -51,7 +51,7 @@ export default function AppearanceSettings() {
         <option value='800'>{appearance.font.weight.extra_bold}</option>
       </Dropdown>
       <br/><br/>
-      <Dropdown label={appearance.font.style.title} name='fontstyle'>
+      <Dropdown label={appearance.font.style.title} name='fontstyle' element='.other'>
         <option value='normal'>{appearance.font.style.normal}</option>
         <option value='italic'>{appearance.font.style.italic}</option>
         <option value='oblique'>{appearance.font.style.oblique}</option>
