@@ -49,7 +49,7 @@ export default class Changelog extends React.PureComponent {
       <>
         <h1 style={{ 'marginBottom': '-10px' }}>{this.state.title}</h1>
         <h5 style={{ 'lineHeight': '0px' }}>{this.state.date}</h5>
-        {this.state.image ? <img draggable='false' src={this.state.image} alt='Update'></img> : null}
+        {this.state.image ? <img draggable='false' src={this.state.image} alt={window.language.modals.update.title}/> : null}
         <p dangerouslySetInnerHTML={{ __html: this.state.html }}></p>
       </>
     );
