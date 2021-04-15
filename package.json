@@ -21,7 +21,7 @@
     "react-clock": "^2.4.0",
     "react-color-gradient-picker": "^0.1.2",
     "react-dom": "16.14.0",
-    "react-modal": "3.12.1",
+    "react-modal": "3.13.1",
     "react-toastify": "7.0.3",
     "supports-webp": "2.0.1"
   },
