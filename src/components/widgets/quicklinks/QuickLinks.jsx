@@ -33,9 +33,15 @@ export default class QuickLinks extends React.PureComponent {
 
   addLink = () => {
     let data = JSON.parse(localStorage.getItem('quicklinks'));
+    let url = this.state.url;
+
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'http://' + url;
+    }
+
     data.push({
       name: this.state.name,
-      url: this.state.url,
+      url: url,
       key: Math.random().toString(36).substring(7) + 1
     });
 
@@ -77,6 +83,17 @@ export default class QuickLinks extends React.PureComponent {
         });
       }
     });
+
+    const addlink = document.querySelector('.topbarquicklinks');
+
+    addlink.onkeydown = (e) => {
+      e = e || window.event;
+      let code = e.which || e.keyCode;
+      if (code === 13 && this.state.showAddLink === 'visible') {
+        this.addLink();
+        e.preventDefault();
+      }
+    }
   }
 
   render() {

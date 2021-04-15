@@ -36,7 +36,7 @@ export default class SettingsFunctions {
 
     if (old !== null && !value) {
       if (old === 'true') {
-          val = false;
+        val = false;
       }
 
       if (old === 'false') {

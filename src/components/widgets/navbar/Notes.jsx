@@ -33,12 +33,14 @@ export default class Notes extends React.PureComponent {
   }
 
   componentDidMount() {
+    const noteContainer = document.getElementById('noteContainer');
+
     if (localStorage.getItem('notesPinned') === 'true') {
-      document.getElementById('noteContainer').classList.toggle('visibilityshow');
+      noteContainer.classList.toggle('visibilityshow');
     }
 
     if (localStorage.getItem('refresh') === 'false') {
-      document.getElementById('noteContainer').style.marginLeft = '-200px';
+      noteContainer.style.marginLeft = '-200px';
     }
   }
 

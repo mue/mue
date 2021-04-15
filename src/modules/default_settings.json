@@ -178,5 +178,13 @@
   {
     "name": "backgroundVideoMute",
     "value": true
+  },
+  {
+    "name": "quicklinkstooltip",
+    "value": true
+  },
+  {
+    "name": "notesEnabled",
+    "value": true
   }
 ]
