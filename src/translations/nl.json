@@ -72,12 +72,12 @@
             "digital": {
               "title": "Digital",
               "seconds": "Seconden tonen",
-              "twentyfourhour": "24-uursklok gebruiken",
+              "twentyfourhour": "24 Hour",
               "twelvehour": "12 hour",
               "zero": "Nulopvulling"
             },
             "analogue": {
-              "title": "Analoog",
+              "title": "Analogue",
               "second_hand": "Seconds hand",
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
@@ -135,9 +135,7 @@
               "title": "Buttons",
               "view": "Weergave",
               "favourite": "Favourite",
-              "download": "Download",
-              "refresh": "Herladen",
-              "disabled": "Uitgeschakeld"
+              "download": "Download"
             },
             "effects": {
               "title": "Effects",
@@ -153,12 +151,11 @@
             "source": {
               "title": "Source",
               "api": "Achtergrond-api",
-              "custom_url": "Aangepaste achtergrond-url",
               "custom_background": "Aangepaste achtergrond",
               "custom_colour": "Aangepaste achtergrondkleur",
               "upload": "Uploaden",
               "add_colour": "Kleur toevoegen",
-              "disabled": "Disabled",
+              "disabled": "Uitgeschakeld",
               "loop_video": "Loop video",
               "mute_video": "Mute video"
             }
@@ -167,7 +164,7 @@
             "title": "Zoekbalk",
             "search_engine": "Zoekmachine",
             "custom": "Aangepaste zoekmachine-url",
-            "voice_search": "Voice search"
+            "voice_search": "Spraakgestuurd zoeken gebruiken"
           },
           "weather": {
             "title": "Weather",
@@ -259,8 +256,7 @@
           "experimental": {
             "title": "Experimenteel",
             "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer",
-            "animations": "Animaties"
+            "developer": "Developer"
           },
           "language": {
             "title": "Taal",
@@ -294,13 +290,6 @@
           "reset": "Herstellen",
           "import": "Importeren",
           "export": "Exporteren"
-        },
-        "toasts": {
-          "reset": "Reset successfully",
-          "imported": "Het importeren is voltooid",
-          "installed": "De installatie is voltooid",
-          "removed": "Het verwijderen is voltooid",
-          "error": "Er is iets misgegaan"
         }
       },
       "marketplace": {
@@ -327,8 +316,7 @@
         "offline": {
           "title": "Het lijkt er op dat je niet verbonden bent het internet",
           "description": "Maak verbinding met het internet."
-        },
-        "see_more": "Meer tonen"
+        }
       },
       "addons": {
         "added": "Toegevoegd",
@@ -372,23 +360,9 @@
     }
   },
   "toasts": {
-    "quote": "Quote copied",
-    "installed": "Successfully installed",
-    "uninstalled": "Successfully removed",
-    "error": "Something went wrong"
-  },
-  "update": {
-    "title": "Wijzigingen",
-    "offline": {
-      "title": "Offline",
-      "description": "Het wijzigingslog kan niet worden opgehaald in de offline-modus"
-    },
-    "error": {
-      "title": "Foutmelding",
-      "content": "Er kan geen verbinding worden gemaakt met de servers"
-    },
-    "loading": "Bezig met laden…",
-    "readblog": "Lees ons blog",
-    "contactsupport": "Neem contact met ons op"
+    "quote": "Het citaat is gekopieerd",
+    "installed": "De installatie is voltooid",
+    "uninstalled": "Het verwijderen is voltooid",
+    "error": "Er is iets misgegaan"
   }
 }

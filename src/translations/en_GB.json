@@ -151,7 +151,6 @@
             "source": {
               "title": "Source",
               "api": "Background API",
-              "custom_url": "Custom background URL",
               "custom_background": "Custom background",
               "custom_colour": "Custom background colour",
               "upload": "Upload",
@@ -317,8 +316,7 @@
         "offline": {
           "title": "Looks like you're offline",
           "description": "Please connect to the internet."
-        },
-        "see_more": "See More"
+        }
       },
       "addons": {
         "added": "Added",

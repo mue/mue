@@ -11,9 +11,6 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 
 <br>
 
-## WARNING
-This is the branch for 5.0, the next version of Mue. For the stable version currently on stores, see the main branch.
-
 ## Table of contents
 * [Screenshot](#screenshot)
 * [Features](#features)
@@ -33,8 +30,9 @@ This is the branch for 5.0, the next version of Mue. For the stable version curr
 	* [Translators](#translators)
   * [Contributors](#contributors)
   * [Resources](#resources)
-## Screenshot
-![Screenshot](assets/screenshot.jpg)
+## Screenshots
+![Screenshot](assets/screenshot.webp)
+![Settings Modal](assets/screenshot2.webp)
 
 ## Features
 * Fast and free
@@ -44,7 +42,7 @@ This is the branch for 5.0, the next version of Mue. For the stable version curr
 * Search bar
 * Settings - enable/disable various features and customise parts of Mue
 * Update modal, copy button and more!
-* Marketplace - download custom photo packs, quote packs, preset settings and themes made by the community!
+* Marketplace - download custom photo packs made by the community!
 
 ### Planned Features
 Please see our [roadmap](https://github.com/mue/mue/projects)
@@ -95,17 +93,6 @@ Please note that we have dropped support for Opera as of Mue 5.0
   </ol>
 </details>
 <details>
-  <summary><b>Opera</b> (Click to expand)</summary>
-  <ol>
-    <li> <code>yarn run build</code> or <code>npm run build</code>
-    <li> <code>yarn run opera</code> or <code>npm run opera</code>
-    <li> Visit <code>about://extensions</code> in Opera
-    <li> Click <b>Load unpacked extension...</b> (Make sure <b>Developer Mode</b> is on)
-    <li> Go to the directory containing Mue and click <b>ok</b>
-    <li> Enjoy your new tab!
-  </ol>
-</details>
-<details>
   <summary><b>Firefox</b> (Click to expand)</summary>
   <ol>
     <li> <code>yarn run build</code> or <code>npm run build</code>
@@ -146,4 +133,3 @@ Many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#
 And finally, a big thank you to all the other [contributors](https://github.com/mue/mue/graphs/contributors)!
 ### Resources
 [Pexels](https://pexels.com) - Stock photos used for offline mode<br/>
-[Opera Forum](https://forums.opera.com/topic/25046/how-to-disable-completely-the-speed-dial/14) - Portions of code to add Opera support<br/>

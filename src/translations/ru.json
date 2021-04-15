@@ -136,8 +136,7 @@
               "view": "Просмотр",
               "favourite": "Любимые",
               "download": "Download",
-              "refresh": "Обновить",
-              "disabled": "Выключен"
+              "refresh": "Обновить"
             },
             "effects": {
               "title": "Effects",
@@ -153,12 +152,11 @@
             "source": {
               "title": "Source",
               "api": "API для фона",
-              "custom_url": "Ссылка для пользовательского фона",
               "custom_background": "Пользовательский фон",
               "custom_colour": "Пользовательский цвет фона",
               "upload": "Загрузить",
               "add_colour": "Добавить цвет",
-              "disabled": "Disabled",
+              "disabled": "Выключен",
               "loop_video": "Loop video",
               "mute_video": "Mute video"
             }
@@ -202,7 +200,7 @@
               "light": "Light",
               "dark": "Dark"
             },
-            "animations": "Animations",
+            "animations": "Анимации",
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
@@ -259,8 +257,7 @@
           "experimental": {
             "title": "Экспериментальные настройки",
             "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer",
-            "animations": "Анимации"
+            "developer": "Developer"
           },
           "language": {
             "title": "Язык",
@@ -325,8 +322,7 @@
         "offline": {
           "title": "Похоже, что вы офлайн",
           "description": "Пожалуйста, подключитесь к интернету."
-        },
-        "see_more": "Показать больше"
+        }
       },
       "addons": {
         "added": "Добавлен",

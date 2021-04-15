@@ -72,12 +72,12 @@
             "digital": {
               "title": "Digital",
               "seconds": "显示秒",
-              "twentyfourhour": "使用 24 小时制",
+              "twentyfourhour": "24 Hour",
               "twelvehour": "12 hour",
               "zero": "加零补足二位数字"
             },
             "analogue": {
-              "title": "使用模拟时钟",
+              "analog": "Analogue",
               "second_hand": "Seconds hand",
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
@@ -135,8 +135,7 @@
               "title": "Buttons",
               "view": "查看",
               "favourite": "收藏",
-              "download": "下载",
-              "disabled": "已禁用"
+              "download": "下载"
             },
             "effects": {
               "title": "Effects",
@@ -151,13 +150,12 @@
             },
             "source": {
               "title": "Source",
-              "api": "背景背景来源",
-              "custom_url": "自定义背景链接",
+              "api": "背景来源",
               "custom_background": "自定义背景",
               "custom_colour": "自定义背景颜色",
               "upload": "上传",
               "add_colour": "添加颜色",
-              "disabled": "Disabled",
+              "disabled": "已禁用",
               "loop_video": "Loop video",
               "mute_video": "Mute video"
             }
@@ -201,11 +199,11 @@
               "light": "Light",
               "dark": "Dark"
             },
-            "animations": "Animations",
+            "animations": "动画",
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
-              "refresh": "刷新按钮"
+              "refresh": "Refresh button"
             },
             "font": {
               "title": "Font",
@@ -258,9 +256,7 @@
           "experimental": {
             "title": "实验性功能",
             "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer",
-            "webp": "启用 WebP",
-            "animations": "动画"
+            "developer": "Developer"
           },
           "language": {
             "title": "语言",
@@ -294,10 +290,6 @@
           "reset": "重置",
           "import": "导入",
           "export": "导出"
-        },
-        "toasts": {
-          "reset": "Reset successfully",
-          "imported": "Successfully imported"
         }
       },
       "marketplace": {
@@ -324,8 +316,7 @@
         "offline": {
           "title": "您目前似乎离线",
           "description": "请连接到互联网。"
-        },
-        "see_more": "查看更多"
+        }
       },
       "addons": {
         "added": "已添加",
@@ -347,8 +338,7 @@
         "description": "无法连接到服务器"
       },
       "read_blog": "点此在我们的博客中阅读",
-      "contact_support": "点此联系我们",
-      "loading": "载入中..."
+      "contact_support": "点此联系我们"
     },
     "welcome": {
       "title": "Welcome to",
@@ -367,17 +357,12 @@
       "not_filled": "Question box must be filled",
       "success": "Sent successfully!",
       "submit": "Submit"
-    },
-    "toasts": {
-      "reset": "重置成功",
-      "removed": "卸载成功",
-      "imported": "导入成功"
     }
   },
   "toasts": {
     "quote": "名言已复制",
     "installed": "安装成功",
-    "uninstalled": "Successfully removed",
+    "uninstalled": "卸载成功",
     "error": "发生了错误"
   }
 }

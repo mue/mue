@@ -151,7 +151,6 @@
             "source": {
               "title": "Source",
               "api": "Fondos API",
-              "custom_url": "URL del fondo personalizado",
               "custom_background": "Fondo personalizado",
               "custom_colour": "Color del fondo personalizado",
               "upload": "Subir",
@@ -321,8 +320,7 @@
         "offline": {
           "title": "Parece que estás desconectado",
           "description": "Por favor conéctate a Internet."
-        },
-        "see_more": "Ver más"
+        }
       },
       "addons": {
         "added": "Añadido",

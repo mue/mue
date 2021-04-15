@@ -5,6 +5,8 @@
   font-size: calc(10px + 0.1vmin) !important;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 99;
+  user-select: none;
+  cursor: initial;
 
   svg {
     float: left;
@@ -51,6 +53,11 @@
   span,
   svg {
     font-size: 2em;
+  }
+
+  h1 {
+    user-select: none;
+    cursor: initial;
   }
 
   h1,

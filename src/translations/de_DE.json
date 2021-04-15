@@ -151,7 +151,6 @@
             "source": {
               "title": "Quelle",
               "api": "Hintergrund API",
-              "custom_url": "Benutzerdefinierter Hintergrund URL",
               "custom_background": "Benutzerdefinierter Hintergrund",
               "custom_colour": "Benutzerdefinierter Hintergrundfarbe",
               "upload": "Upload",
@@ -232,8 +231,7 @@
               "title": "Accessibility",
               "widget_zoom": "Widget zoom",
               "toast_duration": "Toast Dauer",
-              "milliseconds": "Millisekunden",
-              "zoom": "Zoom"
+              "milliseconds": "Millisekunden"
             }
           },
           "order": {
@@ -253,12 +251,12 @@
             "custom_css": "Benutzerdefiniertes CSS",
             "custom_js": "Benutzerdefiniertes JS",
             "tab_name": "Tab name",
-            "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren."
+            "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren.",
+            "developer": "Developer"
           },
           "experimental": {
-            "title": "Experimentell",
-            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer"
+            "title": "Experimental",
+            "warning": "These settings have not been fully tested/implemented and may not work correctly!"
           },
           "language": {
             "title": "Sprache",
@@ -292,10 +290,6 @@
           "reset": "Zurücksetzen",
           "import": "Importieren",
           "export": "Exportieren"
-        },
-        "toasts": {
-          "reset": "Erfolgreich zurücksetzen",
-          "imported": "Erfolgreich importiert"
         }
       },
       "marketplace": {
@@ -322,8 +316,7 @@
         "offline": {
           "title": "Sieht aus, als ob Sie offline sind",
           "description": "Bitte stellen Sie eine Verbindung zum Internet her."
-        },
-        "see_more": "Mehr sehen"
+        }
       },
       "addons": {
         "added": "Hinzugefügt",

@@ -151,7 +151,6 @@
             "source": {
               "title": "Source",
               "api": "Bakgrunn API",
-              "custom_url": "Personlig bakgrunn URL",
               "custom_background": "Personlig bakgrunn",
               "custom_colour": "Personlig Bakgrunn Farge",
               "upload": "Upload",
@@ -200,7 +199,7 @@
               "light": "Light",
               "dark": "Dark"
             },
-            "animations": "Animations",
+            "animations": "Animasjoner",
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
@@ -258,8 +257,7 @@
           "experimental": {
             "title": "Eksperimental",
             "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer",
-            "animations": "Animasjoner"
+            "developer": "Developer"
           },
           "language": {
             "title": "Språk",
@@ -324,8 +322,7 @@
         "offline": {
           "title": "Ser ut som at du er offiline.",
           "description": "Vær så snill, koble til internettet."
-        },
-        "see_more": "Se mer"
+        }
       },
       "addons": {
         "added": "Lagt til",
