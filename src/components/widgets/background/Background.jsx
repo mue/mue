@@ -52,7 +52,7 @@ export default class Background extends React.PureComponent {
     ];
 
     this.setState({
-      url: `./offline-images/${randomImage}.jpg`,
+      url: `./offline-images/${randomImage}.webp`,
       photoInfo: {
         credit: photographer
       }

@@ -132,4 +132,4 @@ Many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#
 
 And finally, a big thank you to all the other [contributors](https://github.com/mue/mue/graphs/contributors)!
 ### Resources
-[Pexels](https://pexels.com) - Stock photos used for offline mode<br/>
+[Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode<br/>
