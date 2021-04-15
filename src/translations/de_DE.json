@@ -12,13 +12,30 @@
     },
     "background": {
       "credit": "Foto von",
-      "information": "Informationen"
+      "unsplash": "on Unsplash",
+      "information": "Informationen",
+      "download": "Download"
     },
     "search": "Suche",
+    "quicklinks": {
+      "new": "New Link",
+      "name": "Name",
+      "url": "URL",
+      "add": "Add",
+      "name_error": "Must provide name",
+      "url_error": "Must provide URL"
+    },
+    "date": {
+      "week": "Week"
+    },
+    "weather": {
+      "not_found": "Not Found"
+    },
     "navbar": {
       "tooltips": {
         "update": "Update Hinweise",
-        "refresh": "Neuladen"
+        "refresh": "Neuladen",
+        "feedback": "Feedback"
       },
       "notes": {
         "title": "Notizen",
@@ -30,21 +47,33 @@
     "main": {
       "title": "Einstellungen",
       "loading": "Loading...",
+      "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Einstellungen",
         "addons": "Meine Addons",
         "marketplace": "Marktplatz"
       },
+      "error_boundary": {
+        "title": "Error",
+        "message": "Failed to load this component of Mue",
+        "refresh": "Refresh"
+      },
       "settings": {
         "enabled": "Aktivieren",
+        "reminder": {
+          "title": "NOTICE",
+          "message": "In order for all of the changes to take place, the page must be refreshed."
+        },
         "sections": {
           "time": {
             "title": "Uhrzeit",
+            "format": "Format",
+            "type": "Type",
             "digital": {
               "title": "Digital",
               "seconds": "Sekunden",
               "twentyfourhour": "24 Stunden",
-              "ampm": "AM/PM (12 Stunden)",
+              "twelvehour": "12 hour",
               "zero": "Nullen füllen"
             },
             "analogue": {
@@ -58,8 +87,13 @@
             "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen",
             "date": {
               "title": "Datum",
+              "week_number": "Week number",
               "day_of_week": "Wochentag",
               "datenth": "Date nth",
+              "type": {
+                "short": "Short",
+                "long": "Long"
+              },
               "short_date": "Kurzes Datum",
               "short_format": "Kurzes Format",
               "short_separator": {
@@ -89,19 +123,30 @@
             "default": "Standard-Begrüßungsnachricht",
             "name": "Name zur Begrüßung",
             "birthday": "Geburtstag",
+            "birthday_age": "Birthday age",
             "birthday_date": "Geburtstags Datum"
           },
           "background": {
             "title": "Hintergrund",
+            "ddg_proxy": "Use DuckDuckGo image proxy",
+            "transition": "Fade-in transition",
+            "category": "Category",
             "buttons": {
               "title": "Buttons",
               "view": "Ansicht",
-              "favourite": "Favorit"
+              "favourite": "Favorit",
+              "download": "Download"
             },
             "effects": {
               "title": "Effekte",
               "blur": "Unschärfe anpassen",
               "brightness": "Helligkeit anpassen"
+            },
+            "type": {
+              "title": "Type",
+              "api": "API",
+              "custom_image": "Custom image",
+              "custom_colour": "Custom colour/gradient"
             },
             "source": {
               "title": "Quelle",
@@ -111,7 +156,9 @@
               "custom_colour": "Benutzerdefinierter Hintergrundfarbe",
               "upload": "Upload",
               "add_colour": "Farbe hinzufügen",
-              "disabled": "Deaktiviert"
+              "disabled": "Deaktiviert",
+              "loop_video": "Loop video",
+              "mute_video": "Mute video"
             }
           },
           "search": {
@@ -120,10 +167,39 @@
             "custom": "Abfrage-URL",
             "voice_search": "Sprachsuche"
           },
+          "weather": {
+            "title": "Weather",
+            "location": "Location",
+            "auto": "Auto",
+            "temp_format": {
+              "title": "Temperature format",
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Extra information",
+              "show_location": "Show Location",
+              "humidity": "Humidity",
+              "wind_speed": "Wind speed",
+              "min_temp": "Minimum temperature",
+              "max_temp": "Maximum temperature",
+              "atmospheric_pressure": "Atmospheric pressure"
+            }
+          },
+          "quicklinks": {
+            "title": "Quick Links",
+            "open_new": "Open in new tab",
+            "tooltip": "Tooltip"
+          },
           "appearance": {
             "title": "Erscheinungsbild",
-            "dark_theme": "Dark Mode",
-            "night_mode": "Nacht Modus",
+            "theme": {
+              "title": "Theme",
+              "auto": "Auto",
+              "light": "Light",
+              "dark": "Dark"
+            },
             "animations": "Animationen",
             "navbar": {
               "title": "Navigationsleiste",
@@ -133,26 +209,56 @@
             "font": {
               "title": "Schriftart",
               "custom": "Eigene Schriftart",
-              "google": "Importieren von Google Fonts"
+              "google": "Importieren von Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
             },
             "accessibility": {
               "title": "Accessibility",
-              "zoom": "Zoom",
+              "widget_zoom": "Widget zoom",
               "toast_duration": "Toast Dauer",
-              "milliseconds": "Millisekunden"
+              "milliseconds": "Millisekunden",
+              "zoom": "Zoom"
             }
+          },
+          "order": {
+            "title": "Widget Order"
           },
           "advanced": {
             "title": "Erweitert",
             "offline_mode": "Offline Modus",
             "data": "Daten",
+            "reset_modal": {
+              "title": "WARNING",
+              "question": "Do you want to reset Mue?",
+              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
+              "cancel": "Cancel"
+            },
             "customisation": "Anpassung",
             "custom_css": "Benutzerdefiniertes CSS",
             "custom_js": "Benutzerdefiniertes JS",
-            "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren." 
+            "tab_name": "Tab name",
+            "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren."
           },
           "experimental": {
-            "title": "Experimentell"
+            "title": "Experimentell",
+            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
+            "developer": "Developer"
           },
           "language": {
             "title": "Sprache",
@@ -169,6 +275,8 @@
               "no_update": "Kein Update verfügbar",
               "offline_mode": "Im Offline Modus kann nicht nach Updates gesucht werden"
             },
+            "contact_us": "Contact Us",
+            "support_mue": "Support Mue",
             "resources_used": {
               "title": "Verwendete Ressourcen",
               "bg_images": "Offline Hintergrundbilder",
@@ -176,7 +284,8 @@
               "pin_icon": "Pin Icon"
             },
             "contributors": "Mitwirkende",
-            "supporters": "Unterstützer"
+            "supporters": "Unterstützer",
+            "photographers": "Photographers"
           }
         },
         "buttons": {
@@ -194,16 +303,13 @@
         "quote_packs": "Zitat-Pakete",
         "preset_settings": "Voreingestellte Einstellungen",
         "themes": "Themen",
+        "no_items": "No items in this category",
         "product": {
           "overview": "Übersicht",
           "information": "Information",
           "last_updated": "Letzte Aktualisierung",
           "version": "Version",
           "author": "Autor",
-          "notice": {
-            "title": "Hinweis",
-            "description": "Damit die Änderung erfolgt, muss die Seite neu geladen werden."
-          },
           "buttons": {
             "addtomue": "Zu Mue hinzufügen",
             "remove": "Entfernen"
@@ -223,8 +329,7 @@
         "added": "Hinzugefügt",
         "empty": {
           "title": "Hier ist es leer",
-          "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen.",
-          "button": "Bring mich dorthin"
+          "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen."
         },
         "sideload": "Hochladen"
       }
@@ -255,6 +360,9 @@
       "question_one": "Wie würden Sie Ihre Erfahrungen mit dieser Mue Version bewerten?",
       "question_two": "Auf welche Fehler sind Sie bei der Verwendung von Mue gestoßen?",
       "question_three": "Wie wahrscheinlich ist es, dass Sie diese Version von Mue einem Freund oder Kollegen empfehlen würden?",
+      "question_four": "What do you want adding to the next Mue build?",
+      "not_filled": "Question box must be filled",
+      "success": "Sent successfully!",
       "submit": "Senden"
     }
   },

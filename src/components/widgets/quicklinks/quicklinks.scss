@@ -15,9 +15,8 @@
   text-align: center;
   border-radius: 12px;
   position: absolute;
-  top: 56%;
   margin-left: -140px;
-  margin-top: 5px;
+  margin-top: 50px;
 
   svg {
     float: left;
@@ -43,15 +42,17 @@ textarea {
     padding: 9px;
   }
 
-  h3 {
-    font-size: 46px;
-    margin-right: 20px;
-  }
-
   h4 {
     margin: 0;
     cursor: initial;
     user-select: none;
+  }
+
+  p {
+    font-size: 16px;
+    cursor: initial;
+    user-select: none;
+    color: rgba(255, 71, 87, 1);
   }
 }
 
@@ -79,6 +80,7 @@ textarea {
     height: 32px;
     width: auto;
     transition: transform .2s;
+    user-select: none;
 
     &:hover {
       transform: scale(1.1);

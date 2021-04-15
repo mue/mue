@@ -186,5 +186,17 @@
   {
     "name": "notesEnabled",
     "value": true
+  },
+  {
+    "name": "showlocation",
+    "value": true
+  },
+  {
+    "name": "minuteHand",
+    "value": true
+  },
+  {
+    "name": "hourHand",
+    "value": true
   }
 ]

@@ -34,10 +34,10 @@ export default class TimeSettings extends React.PureComponent {
     const digitalSettings = (
       <>
         <h3>{time.digital.title}</h3>
-        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' />
+        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' element='.other' />
         <br/>
-        <Checkbox name='seconds' text={time.digital.seconds} category='clock' />
-        <Checkbox name='zero' text={time.digital.zero} category='clock' />
+        <Checkbox name='seconds' text={time.digital.seconds} category='clock' element='.other' />
+        <Checkbox name='zero' text={time.digital.zero} category='clock' element='.other' />
       </>
     );
 
@@ -62,21 +62,21 @@ export default class TimeSettings extends React.PureComponent {
     
     const longSettings = (
       <>
-        <Checkbox name='dayofweek' text={time.date.day_of_week} category='date' />
-        <Checkbox name='datenth' text={time.date.datenth} category='date' />
+        <Checkbox name='dayofweek' text={time.date.day_of_week} category='date' element='.date' />
+        <Checkbox name='datenth' text={time.date.datenth} category='date' element='.date' />
       </>
     );
 
     const shortSettings = (
       <>
         <br/>
-        <Dropdown label={time.date.short_format} name='dateFormat' category='date'>
+        <Dropdown label={time.date.short_format} name='dateFormat' category='date' element='.date'>
           <option value='DMY'>DMY</option>
           <option value='MDY'>MDY</option>
           <option value='YMD'>YMD</option>
         </Dropdown>
         <br/><br/>
-        <Dropdown label={time.date.short_separator.title} name='shortFormat' category='date'>
+        <Dropdown label={time.date.short_separator.title} name='shortFormat' category='date' element='.date'>
           <option value='dots'>{time.date.short_separator.dots}</option>
           <option value='dash'>{time.date.short_separator.dash}</option>
           <option value='gaps'>{time.date.short_separator.gaps}</option>
@@ -95,7 +95,7 @@ export default class TimeSettings extends React.PureComponent {
       <>
         <h2>{time.title}</h2>
         <Switch name='time' text={this.language.enabled} category='clock' element='.clock' />
-        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock'>
+        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock' element='.other'>
           <option value='digital'>{time.digital.title}</option>
           <option value='analogue'>{time.analogue.title}</option>
           <option value='percentageComplete'>{time.percentage_complete}</option>
@@ -103,13 +103,13 @@ export default class TimeSettings extends React.PureComponent {
         {timeSettings}
 
         <h3>{time.date.title}</h3>
-        <Switch name='date' text={this.language.enabled} category='date' />
-        <Dropdown label={time.type} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date'>
+        <Switch name='date' text={this.language.enabled} category='date' element='.date'/>
+        <Dropdown label={time.type} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date' element='.date'>
           <option value='long'>{time.date.type.long}</option>
           <option value='short'>{time.date.type.short}</option>
         </Dropdown>
         <br/>
-        <Checkbox name='weeknumber' text={time.date.week_number} category='date'/>
+        <Checkbox name='weeknumber' text={time.date.week_number} category='date' element='.date'/>
         {dateSettings}
       </>
     );

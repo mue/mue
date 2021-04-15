@@ -114,14 +114,14 @@ export default class Clock extends React.PureComponent {
       clockHTML = (
         <React.Suspense fallback={renderLoader()}>
           <Analog 
-          className='analogclock clock-container' 
-          value={this.state.time} 
-          renderHourMarks={enabled('hourMarks')} 
-          renderMinuteMarks={enabled('minuteMarks')} 
-          renderSecondHand={enabled('secondHand')} 
-          renderMinuteHand={enabled('minuteHand')} 
-          renderHourHand={enabled('hourHand')} 
-        />
+            className='analogclock clock-container' 
+            value={this.state.time} 
+            renderMinuteMarks={enabled('minuteMarks')}
+            renderHourMarks={enabled('hourMarks')} 
+            renderSecondHand={enabled('secondHand')} 
+            renderMinuteHand={enabled('minuteHand')} 
+            renderHourHand={enabled('hourHand')} 
+          />
         </React.Suspense>
       );
     }

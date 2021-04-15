@@ -14,7 +14,9 @@ export default class QuickLinks extends React.PureComponent {
       items: JSON.parse(localStorage.getItem('quicklinks')),
       name: '',
       url: '',
-      showAddLink: 'hidden'
+      showAddLink: 'hidden',
+      nameError: '',
+      urlError: ''
     };
     this.language = window.language.widgets.quicklinks;
   }
@@ -34,6 +36,22 @@ export default class QuickLinks extends React.PureComponent {
   addLink = () => {
     let data = JSON.parse(localStorage.getItem('quicklinks'));
     let url = this.state.url;
+
+    let nameError, urlError;
+    if (this.state.name.length <= 0) {
+      nameError = 'Must provide name';
+    }
+
+    if (url.length <= 0) {
+      urlError = 'Must provide URL';
+    }
+
+    if (nameError || urlError) {
+      return this.setState({
+        nameError: nameError,
+        urlError: urlError
+      });
+    }
 
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
       url = 'http://' + url;
@@ -99,8 +117,8 @@ export default class QuickLinks extends React.PureComponent {
   render() {
     let target, rel = null;
     if (localStorage.getItem('quicklinksnewtab') === 'true') {
-      target ='_blank';
-      rel ='noopener noreferrer';
+      target = '_blank';
+      rel = 'noopener noreferrer';
     }
 
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
@@ -113,7 +131,7 @@ export default class QuickLinks extends React.PureComponent {
       );
 
       if (tooltipEnabled === 'true') {
-        return <Tooltip title={item.name} key={item.name}>{link}</Tooltip>;
+        return <Tooltip title={item.name} key={item.name} draggable={false}>{link}</Tooltip>;
       } else {
         return link;
       }
@@ -129,9 +147,9 @@ export default class QuickLinks extends React.PureComponent {
           <div className='topbarquicklinks'>
             <h4>{this.language.new}</h4>
             <TextareaAutosize rowsMax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
-            <br/>
+            <p>{this.state.nameError}</p>
             <TextareaAutosize rowsMax={10} placeholder={this.language.url} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
-            <br/>
+            <p>{this.state.urlError}</p>
             <button className='pinNote' onClick={this.addLink}>{this.language.add}</button>
           </div>
         </span>

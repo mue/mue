@@ -21,10 +21,15 @@
       "new": "New Link",
       "name": "Name",
       "url": "URL",
-      "add": "Add"
+      "add": "Add",
+      "name_error": "Must provide name",
+      "url_error": "Must provide URL"
     },
     "date": {
       "week": "Week"
+    },
+    "weather": {
+      "not_found": "Not Found"
     },
     "navbar": {
       "tooltips": {
@@ -69,7 +74,6 @@
               "seconds": "Seconds",
               "twentyfourhour": "24 Hour",
               "twelvehour": "12 hour",
-              "ampm": "AM/PM (12 hour)",
               "zero": "Zero-padded"
             },
             "analogue": {
@@ -175,6 +179,7 @@
             },
             "extra_info": {
               "title": "Extra information",
+              "show_location": "Show Location",
               "humidity": "Humidity",
               "wind_speed": "Wind speed",
               "min_temp": "Minimum temperature",
@@ -247,7 +252,7 @@
             "custom_css": "Custom CSS",
             "custom_js": "Custom JS",
             "tab_name": "Tab name",
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support." 
+            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
           },
           "experimental": {
             "title": "Experimental",
@@ -269,6 +274,8 @@
               "no_update": "No update available",
               "offline_mode": "Cannot check for update in offline mode"
             },
+            "contact_us": "Contact Us",
+            "support_mue": "Support Mue",
             "resources_used": {
               "title": "Resources used",
               "bg_images": "Offline background images",
@@ -284,10 +291,6 @@
           "reset": "Reset",
           "import": "Import",
           "export": "Export"
-        },
-        "toasts": {
-          "reset": "Reset successfully",
-          "imported": "Successfully imported"
         }
       },
       "marketplace": {

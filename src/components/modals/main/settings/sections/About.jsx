@@ -72,10 +72,16 @@ export default class About extends React.PureComponent {
         <p>{this.language.copyright} 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
         <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
 
-        <h3>{window.language.modals.welcome.support}</h3>
+        <h3>{this.language.contact_us}</h3>
         <a href='mailto:hello@muetab.com' className='welcomeLink' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
         <a href='https://twitter.com/getmue' className='welcomeLink' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
         <a href='https://discord.gg/zv8C9F8' className='welcomeLink' target='_blank' rel='noopener noreferrer'><ForumIcon/></a>
+
+        <h3>{this.language.support_mue}</h3>
+        <p><a href='https://github.com/sponsors/davidjcralph' className='welcomeLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> 
+          • <a href='https://ko-fi.com/davidjcralph' className='welcomeLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> 
+          • <a href='https://patreon.com/davidjcralph' className='welcomeLink' target='_blank' rel='noopener noreferrer'>Patreon</a>
+        </p>
 
         <h3>{this.language.resources_used.title}</h3>
         <p>Pexels ({this.language.resources_used.bg_images})</p>

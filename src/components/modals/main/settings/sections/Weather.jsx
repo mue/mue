@@ -17,6 +17,15 @@ export default class TimeSettings extends React.PureComponent {
     localStorage.setItem('location', this.state.location);
   }
 
+  changeLocation(e) {
+    this.setState({ 
+      location: e.target.value 
+    });
+
+    document.querySelector('.reminder-info').style.display = 'block';
+    localStorage.setItem('showReminder', true);
+  }
+
   render() {
     const language = window.language.modals.main.settings.sections.weather;
 
@@ -41,11 +50,12 @@ export default class TimeSettings extends React.PureComponent {
         <Switch name='weatherEnabled' text={this.language.enabled} category='widgets'/>
         <ul>
           <p>{language.location}</p>
-          <input type='text' value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })}></input>
+          <input type='text' value={this.state.location} onChange={(e) => this.changeLocation(e)}></input>
         </ul>
         <br/>
         <Radio name='tempformat' title={language.temp_format.title} options={tempFormat} category='weather'/>
         <h3>{language.extra_info.title}</h3>
+        <Checkbox name='showlocation' text={language.extra_info.show_location} category='weather'/>
         <Checkbox name='humidity' text={language.extra_info.humidity} category='weather'/>
         <Checkbox name='windspeed' text={language.extra_info.wind_speed} category='weather'/>
         <Checkbox name='mintemp' text={language.extra_info.min_temp} category='weather'/>

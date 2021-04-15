@@ -48,8 +48,14 @@ export default class Weather extends React.PureComponent {
       data = await (await fetch (window.constants.WEATHER_URL + `?city=${this.state.location}`)).json();
     }
 
+    if (data.cod === '404') {
+      return this.setState({
+        location: window.language.widgets.weather.not_found
+      });
+    }
+
     let temp = data.main.temp;
-    let temp_min = data.main.temp_mix 
+    let temp_min = data.main.temp_min; 
     let temp_max = data.main.temp_max;
     let temp_text = 'K';
 
@@ -105,6 +111,12 @@ export default class Weather extends React.PureComponent {
       return (localStorage.getItem(setting) === 'true');
     };
 
+    if (this.state.location === window.language.widgets.weather.not_found) {
+      return (<div className='weather'>
+        <span className='loc'>{this.state.location}</span>
+      </div>);
+    };
+
     const minmax = () => {
       const mintemp = (localStorage.getItem('mintemp') === 'true');
       const maxtemp = (localStorage.getItem('maxtemp') === 'true');
@@ -129,7 +141,7 @@ export default class Weather extends React.PureComponent {
         {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.windspeed}<span className='minmax'> m/s</span></span> : null}
         {enabled('atmosphericpressure') ? <span className='loc'><br/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
-        <span className='loc'>{this.state.location}</span>
+        {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}
       </div>
     );
   }
