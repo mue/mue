@@ -16,6 +16,7 @@ div.color-preview-area > div > div:nth-child(5) {
 
 .input-field .label {
   color: inherit;
+  color: var(--modal-text) !important;
 }
 
 // other styling for themes support etc
@@ -25,10 +26,6 @@ div.color-preview-area > div > div:nth-child(5) {
 
 .gradient-degree-pointer {
   background-color: var(--modal-text) !important;
-}
-
-.input-field .label {
-  color: var(--modal-text) !important;
 }
 
 .gradient-type-item.active::after {

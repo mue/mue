@@ -135,7 +135,7 @@ export default class QuickLinks extends React.PureComponent {
       } else {
         return link;
       }
-    }
+    };
 
     return (
       <div className='quicklinks-container'>

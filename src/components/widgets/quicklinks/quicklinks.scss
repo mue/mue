@@ -2,6 +2,13 @@
   position: relative;
   user-select: none;
 
+  border: none;
+  color: #fff;
+  font-size: 42px;
+  background: none;
+  cursor: pointer;
+  text-shadow: 0 0 10px rgb(0 0 0 / 60%);
+
   h3 {
     text-shadow: none;
     margin: 0;
@@ -59,15 +66,6 @@ textarea {
 .dark textarea {
   background-color: #2f3542;
   color: white;
-}
-
-.quicklinks {
-  border: none;
-  color: #fff;
-  font-size: 42px;
-  background: none;
-  cursor: pointer;
-  text-shadow: 0 0 10px rgb(0 0 0 / 60%);
 }
 
 .quicklinks-container>a,

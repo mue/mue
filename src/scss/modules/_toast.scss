@@ -17,6 +17,7 @@
 .Toastify__close-button {
   margin-top: 10px;
   margin-right: 10px;
+  color: var(--modal-text) !important;
 }
 
 .Toastify__progress-bar--default {
@@ -27,10 +28,6 @@
 
 .Toastify__toast-container {
   width: auto !important;
-}
-
-.Toastify__close-button {
-  color: var(--modal-text) !important;
 }
 
 .Toastify__toast--default {
