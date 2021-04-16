@@ -46,7 +46,7 @@
   "modals": {
     "main": {
       "title": "Options",
-      "loading": "Loading...",
+      "loading": "Laster...",
       "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Instillinger",
@@ -77,7 +77,7 @@
               "zero": "Ekstra Null"
             },
             "analogue": {
-              "title": "Analog",
+              "title": "Analogue",
               "second_hand": "Seconds hand",
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
@@ -239,7 +239,7 @@
           },
           "advanced": {
             "title": "Advanced",
-            "offline_mode": "Offline mode",
+            "offline_mode": "Frakoblet Modus",
             "data": "Data",
             "reset_modal": {
               "title": "WARNING",
@@ -251,8 +251,7 @@
             "custom_css": "Custom CSS",
             "custom_js": "Custom JS",
             "tab_name": "Tab name",
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support.",
-            "offline": "Frakoblet Modus"
+            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
           },
           "experimental": {
             "title": "Eksperimental",
@@ -291,11 +290,6 @@
           "reset": "Nullstill",
           "import": "Importer",
           "export": "Eksporter"
-        },
-        "toasts": {
-          "reset": "Tilbakestillte vellykket",
-          "imported": "Successfully imported",
-          "error": "Noe gikk galt"
         }
       },
       "marketplace": {
@@ -341,12 +335,10 @@
       },
       "error": {
         "title": "Error",
-        "description": "Could not connect to the server",
-        "content": "Kan ikke koble til serveren."
+        "description": "Kan ikke koble til serveren."
       },
       "read_blog": "Read on the blog here",
-      "contact_support": "Contact us here",
-      "loading": "Laster..."
+      "contact_support": "Contact us here"
     },
     "welcome": {
       "title": "Welcome to",
@@ -368,9 +360,10 @@
     }
   },
   "toasts": {
-    "quote": "Quote copied",
-    "installed": "Successfully installed",
-    "uninstalled": "Successfully removed",
-    "error": "Something went wrong"
+    "quote": "Sitat kopiert",
+    "installed": "Installert",
+    "uninstalled": "Fjernet",
+    "error": "Noe gikk galt",
+    "imported": "Successfully imported"
   }
 }

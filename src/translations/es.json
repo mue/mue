@@ -46,7 +46,7 @@
   "modals": {
     "main": {
       "title": "Opciones",
-      "loading": "Loading...",
+      "loading": "Cargando...",
       "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Ajustes",
@@ -56,7 +56,7 @@
       "error_boundary": {
         "title": "Error",
         "message": "Failed to load this component of Mue",
-        "refresh": "Refresh"
+        "refresh": "Refrescar"
       },
       "settings": {
         "enabled": "Enabled",
@@ -73,11 +73,11 @@
               "title": "Digital",
               "seconds": "Segundos",
               "twentyfourhour": "24 Horas",
-              "twelvehour": "12 hour",
+              "twelvehour": "12 Horas",
               "zero": "Sin ceros"
             },
             "analogue": {
-              "title": "Analógico",
+              "analog": "Analógico",
               "second_hand": "Seconds hand",
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
@@ -112,9 +112,9 @@
             "custom_author": "Custom authour",
             "buttons": {
               "title": "Buttons",
-              "copy": "Copiar",
-              "tweet": "Tweet",
-              "favourite": "Favoritos"
+              "copy": "Botón de copiar",
+              "tweet": "Botón de Tweet",
+              "favourite": "Botón de favoritos"
             }
           },
           "greeting": {
@@ -153,7 +153,7 @@
               "api": "Fondos API",
               "custom_background": "Fondo personalizado",
               "custom_colour": "Color del fondo personalizado",
-              "upload": "Subir",
+              "upload": "Upload",
               "add_colour": "Añadir color",
               "disabled": "Desactivado",
               "loop_video": "Loop video",
@@ -199,7 +199,7 @@
               "light": "Light",
               "dark": "Dark"
             },
-            "animations": "Animations",
+            "animations": "Animaciones",
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
@@ -259,7 +259,7 @@
             "developer": "Developer"
           },
           "language": {
-            "title": "Language",
+            "language": "Lenguaje",
             "quote": "Quote language"
           },
           "changelog": "Change Log",
@@ -290,10 +290,6 @@
           "reset": "Reiniciar",
           "import": "Importar",
           "export": "Exportar"
-        },
-        "toasts": {
-          "reset": "Restablecido correctamente",
-          "imported": "Importado correctamente"
         }
       },
       "marketplace": {
@@ -341,11 +337,8 @@
         "title": "Error",
         "description": "No se pudo conectar con el servidor"
       },
-      "read_blog": "Read on the blog here",
-      "contact_support": "Contact us here",
-      "loading": "Cargando...",
-      "readblog": "Leer en el blog aquí",
-      "contactsupport": "Contáctanos aquí"
+      "read_blog": "Leer en el blog aquí",
+      "contact_support": "Contáctanos aquí"
     },
     "welcome": {
       "title": "Welcome to",
@@ -369,8 +362,8 @@
   "toasts": {
     "quote": "Cita copiada",
     "installed": "Instalado correctamente",
-    "uninstalled": "Successfully removed",
-    "error": "Something went wrong",
-    "removed": "Retirado correctamente"
+    "uninstalled": "Retirado correctamente",
+    "error": "Algo salió mal",
+    "imported": "Importado correctamente"
   }
 }

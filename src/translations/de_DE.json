@@ -54,9 +54,9 @@
         "marketplace": "Marktplatz"
       },
       "error_boundary": {
-        "title": "Error",
+        "title": "Fehler",
         "message": "Failed to load this component of Mue",
-        "refresh": "Refresh"
+        "refresh": "Neuladen"
       },
       "settings": {
         "enabled": "Aktivieren",
@@ -363,6 +363,7 @@
     "quote": "Kopierte Zitate",
     "installed": "Erfolgreich installiert",
     "uninstalled": "Erfolgreich entfernt",
-    "error": "Etwas ist schief gelaufen"
+    "error": "Etwas ist schief gelaufen",
+    "imported": "Erfolgreich importiert"
   }
 }

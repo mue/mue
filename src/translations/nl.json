@@ -46,7 +46,7 @@
   "modals": {
     "main": {
       "title": "Opties",
-      "loading": "Loading...",
+      "loading": "Bezig met laden…",
       "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Instellingen",
@@ -54,7 +54,7 @@
         "marketplace": "Marktplaats"
       },
       "error_boundary": {
-        "title": "Error",
+        "title": "Foutmelding",
         "message": "Failed to load this component of Mue",
         "refresh": "Refresh"
       },
@@ -72,8 +72,8 @@
             "digital": {
               "title": "Digital",
               "seconds": "Seconden tonen",
-              "twentyfourhour": "24 Hour",
-              "twelvehour": "12 hour",
+              "twentyfourhour": "24-uursklok gebruiken",
+              "twelvehour": "12-uursklok gebruiken",
               "zero": "Nulopvulling"
             },
             "analogue": {
@@ -363,6 +363,7 @@
     "quote": "Het citaat is gekopieerd",
     "installed": "De installatie is voltooid",
     "uninstalled": "Het verwijderen is voltooid",
-    "error": "Er is iets misgegaan"
+    "error": "Er is iets misgegaan",
+    "imported": "Het importeren is voltooid"
   }
 }

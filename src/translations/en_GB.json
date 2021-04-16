@@ -363,6 +363,7 @@
     "quote": "Quote copied",
     "installed": "Successfully installed",
     "uninstalled": "Successfully removed",
-    "error": "Something went wrong"
+    "error": "Something went wrong",
+    "imported": "Successfully imported"
   }
 }

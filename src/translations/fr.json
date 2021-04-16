@@ -54,9 +54,9 @@
         "marketplace": "Marché"
       },
       "error_boundary": {
-        "title": "Error",
+        "title": "Erreur",
         "message": "Failed to load this component of Mue",
-        "refresh": "Refresh"
+        "refresh": "Rafraîchir"
       },
       "settings": {
         "enabled": "Enabled",
@@ -73,7 +73,7 @@
               "title": "Digital",
               "seconds": "Secondes",
               "twentyfourhour": "24 heures",
-              "twelvehour": "12 hour",
+              "twelvehour": "12 heures",
               "zero": "Complétion de zéros"
             },
             "analogue": {
@@ -362,8 +362,8 @@
   "toasts": {
     "quote": "Citation copiée",
     "installed": "Installé avec succès",
-    "uninstalled": "Successfully removed",
+    "uninstalled": "Enlevé avec succès",
     "error": "Quelque chose s'est mal passé",
-    "removed": "Enlevé avec succès"
+    "imported": "Importé avec succès"
   }
 }

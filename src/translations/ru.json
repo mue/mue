@@ -46,7 +46,7 @@
   "modals": {
     "main": {
       "title": "Options",
-      "loading": "Loading...",
+      "loading": "Загрузка...",
       "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Settings",
@@ -54,9 +54,9 @@
         "marketplace": "Marketplace"
       },
       "error_boundary": {
-        "title": "Error",
+        "title": "Ошибка",
         "message": "Failed to load this component of Mue",
-        "refresh": "Refresh"
+        "refresh": "Обновить"
       },
       "settings": {
         "enabled": "Enabled",
@@ -73,11 +73,11 @@
               "title": "Digital",
               "seconds": "Секунды",
               "twentyfourhour": "24 Часа",
-              "twelvehour": "12 hour",
+              "twelvehour": "12 часов",
               "zero": "Дополнительный ноль"
             },
             "analogue": {
-              "title": "Аналоговое",
+              "title": "Analogue",
               "second_hand": "Seconds hand",
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
@@ -135,8 +135,7 @@
               "title": "Buttons",
               "view": "Просмотр",
               "favourite": "Любимые",
-              "download": "Download",
-              "refresh": "Обновить"
+              "download": "Download"
             },
             "effects": {
               "title": "Effects",
@@ -153,7 +152,7 @@
               "title": "Source",
               "api": "API для фона",
               "custom_background": "Пользовательский фон",
-              "custom_colour": "Пользовательский цвет фона",
+              "custom_colour": "Пользовательский цвет фон",
               "upload": "Загрузить",
               "add_colour": "Добавить цвет",
               "disabled": "Выключен",
@@ -291,11 +290,6 @@
           "reset": "Сбросить",
           "import": "Импорт",
           "export": "Экспорт"
-        },
-        "toasts": {
-          "reset": "Сброшено!",
-          "imported": "Успешно импортировано",
-          "error": "Что-то пошло не так"
         }
       },
       "marketplace": {
@@ -341,14 +335,10 @@
       },
       "error": {
         "title": "Ошибка",
-        "description": "Could not connect to the server",
         "content": "Не удалось подключиться к серверу"
       },
-      "read_blog": "Read on the blog here",
-      "contact_support": "Contact us here",
-      "loading": "Загрузка...",
-      "readblog": "Прочитайте об изменениях в блоге",
-      "contactsupport": "Связаться с нами"
+      "read_blog": "Прочитайте об изменениях в блоге",
+      "contact_support": "Связаться с нами"
     },
     "welcome": {
       "title": "Welcome to",
@@ -370,9 +360,10 @@
     }
   },
   "toasts": {
-    "quote": "Quote copied",
-    "installed": "Successfully installed",
-    "uninstalled": "Successfully removed",
-    "error": "Something went wrong"
+    "quote": "Цитата скопирована!",
+    "installed": "Успешно установлено",
+    "uninstalled": "Успешно удалено",
+    "error": "Что-то пошло не так",
+    "imported": "Успешно импортировано"
   }
 }

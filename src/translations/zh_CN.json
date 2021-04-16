@@ -54,9 +54,9 @@
         "marketplace": "插件市场"
       },
       "error_boundary": {
-        "title": "Error",
+        "title": "错误",
         "message": "Failed to load this component of Mue",
-        "refresh": "Refresh"
+        "refresh": "刷新"
       },
       "settings": {
         "enabled": "已启用",
@@ -72,8 +72,8 @@
             "digital": {
               "title": "Digital",
               "seconds": "显示秒",
-              "twentyfourhour": "24 Hour",
-              "twelvehour": "12 hour",
+              "twentyfourhour": "使用 24 小时制",
+              "twelvehour": "12 小时制下显示",
               "zero": "加零补足二位数字"
             },
             "analogue": {
@@ -363,6 +363,7 @@
     "quote": "名言已复制",
     "installed": "安装成功",
     "uninstalled": "卸载成功",
-    "error": "发生了错误"
+    "error": "发生了错误",
+    "imported": "导入成功"
   }
 }

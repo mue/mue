@@ -12,7 +12,7 @@ import '@fontsource/lexend-deca/latin-400.css';
 import '@fontsource/montserrat/cyrillic-500.css';
 
 // language
-import merge from '@material-ui/utils/deepmerge';
+import merge from '@material-ui/utils/esm/deepmerge';
 
 const languagecode = localStorage.getItem('language') || 'en_GB';
 

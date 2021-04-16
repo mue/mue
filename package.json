@@ -46,7 +46,7 @@
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "source-map-loader": "^2.0.1",
-    "webpack": "^5.31.2",
+    "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
   },
