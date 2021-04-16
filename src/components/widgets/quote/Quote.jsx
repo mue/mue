@@ -23,12 +23,10 @@ export default class Quote extends React.PureComponent {
       copy: '',
       quoteLanguage: ''
     };
-
     this.buttons = {
       tweet: <TwitterIcon className='copyButton' onClick={this.tweetQuote} />,
       copy: <FileCopy className='copyButton' onClick={this.copyQuote} />
-    }
-  
+    };
     this.language = window.language.widgets.quote;
   }
 

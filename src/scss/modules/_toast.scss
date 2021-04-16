@@ -22,14 +22,11 @@
 .Toastify__progress-bar--default {
   height: 3px !important;
   background: var(--modal-text) !important;
+  color: var(--modal-text) !important;
 }
 
 .Toastify__toast-container {
   width: auto !important;
-}
-
-.Toastify__progress-bar--default {
-  color: var(--modal-text) !important;
 }
 
 .Toastify__close-button {

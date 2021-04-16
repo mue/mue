@@ -77,6 +77,21 @@
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   overflow-y: auto;
   position: relative;
+
+  // animation
+  opacity: 0;
+  transform: scale(0);
+  transition: all 300ms cubic-bezier(.47, 1.64, .41, 0.8);
+}
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ReactModal__Content--before-close {
+  opacity: 0;
+  transform: scale(0);
 }
 
 @media only screen and (max-height: 700px) {
@@ -90,22 +105,6 @@
   .ReactModal__Content {
     min-height: 600px;
   }
-}
-
-.ReactModal__Content {
-  opacity: 0;
-  transform: scale(0);
-  transition: all 300ms cubic-bezier(.47, 1.64, .41, .8);
-}
-
-.ReactModal__Content--after-open {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.ReactModal__Content--before-close {
-  opacity: 0;
-  transform: scale(0);
 }
 
 ul.sidebar {
@@ -171,7 +170,6 @@ li {
 .tab-list-active {
   background: var(--tab-active);
 }
-
 
 @media only screen and (max-width: 1200px) {
   li.tab-list-item {
@@ -252,6 +250,16 @@ li {
 
   &:hover {
     color: rgb(165, 165, 165);
+    background: none;
+  }
+
+  span,
+  svg {
+    font-size: 1.1em !important;
+  }
+
+  svg {
+    font-size: 1.2em !important;
   }
 }
 
@@ -271,21 +279,6 @@ li {
 @media only screen and (max-width: 1200px) {
   .modalNavbar {
     left: 6rem;
-  }
-}
-
-.navbar-item {
-  span,
-  svg {
-    font-size: 1.1em !important;
-  }
-
-  svg {
-    font-size: 1.2em !important;
-  }
-
-  &:hover {
-    background: none;
   }
 }
 
@@ -373,4 +366,4 @@ li {
 
 .MuiIconButton-root {
   color: var(--modal-text) !important;
-} 
+}

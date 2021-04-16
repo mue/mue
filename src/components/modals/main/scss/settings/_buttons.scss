@@ -20,6 +20,7 @@
 
 .refresh {
   @extend %settingsButton;
+
   background-color: map-get($button-colours, 'confirm');
   border: 2px solid map-get($button-colours, 'confirm');
 
@@ -31,6 +32,7 @@
 
 .reset {
   @extend %settingsButton;
+
   margin-left: 5px;
   background-color: map-get($button-colours, 'reset');
   border: 2px solid map-get($button-colours, 'reset');
@@ -43,6 +45,7 @@
 
 .close {
   @extend %settingsButton;
+
   padding: 10px 50px 10px 50px;
   background-color: map-get($button-colours, 'other');
   border: 2px solid map-get($button-colours, 'other');
@@ -55,6 +58,7 @@
 
 .add {
   @extend %settingsButton;
+
   background-color: map-get($button-colours, 'other');
   border: 2px solid map-get($button-colours, 'other');
 
@@ -68,6 +72,7 @@
 .uploadbg,
 .import {
   @extend %settingsButton;
+
   background-color: map-get($button-colours, 'other');
   color: map-get($theme-colours, 'primary');
   border: 2px solid map-get($button-colours, 'other');

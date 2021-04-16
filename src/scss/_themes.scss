@@ -10,8 +10,8 @@ $modal-link: map-get($modal, 'modal-link');
 
 $main-text-dark: map-get($theme-colours, 'secondary');
 $modal-text-dark: map-get($theme-colours, 'main');
-$background-dark: map-get($modal, 'background-dark'); 
-$sidebar-dark: map-get($modal, 'sidebar-dark'); 
+$background-dark: map-get($modal, 'background-dark');
+$sidebar-dark: map-get($modal, 'sidebar-dark');
 $tab-active-dark: map-get($modal, 'tab-active-dark');
 $photo-info-dark: map-get($theme-colours, 'photo-info-dark');
 $modal-link-dark: map-get($modal, 'modal-link-dark');

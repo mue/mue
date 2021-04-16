@@ -19,7 +19,7 @@ $modal: (
   'sidebar': #f0f0f0,
   'tab-active': rgba(219, 219, 219, 0.72),
   'sidebar-dark': #353b48,
-  'tab-active-dark': rgba(65, 71, 84, .9),
+  'tab-active-dark': rgba(65, 71, 84, 0.9),
   'modal-link': #5352ed,
   'modal-link-dark': #3498db
 );
@@ -36,5 +36,5 @@ $button-colours: (
 );
 
 $main-parts: (
-  'shadow':  0 0 1rem 0 rgba(0, 0, 0, .2)
+  'shadow':  0 0 1rem 0 rgba(0, 0, 0, 0.2)
 );

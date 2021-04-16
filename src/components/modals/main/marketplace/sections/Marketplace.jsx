@@ -53,7 +53,7 @@ export default class Marketplace extends React.PureComponent {
 
       const installed = JSON.parse(localStorage.getItem('installed'));
 
-      if (installed.some(item => item.name === info.data.name)) {
+      if (installed.some((item) => item.name === info.data.name)) {
         button = this.buttons.uninstall;
       }
 
@@ -125,7 +125,7 @@ export default class Marketplace extends React.PureComponent {
           </div>
         </div>
       );
-    }
+    };
 
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(<>

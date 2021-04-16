@@ -42,7 +42,7 @@ export default class Weather extends React.PureComponent {
         humidity: this.state.weather.humidity,
         pressure: this.state.weather.pressure
       }
-    }
+    };
 
     if (!this.state.weather.temp) {
       data = await (await fetch (window.constants.WEATHER_URL + `?city=${this.state.location}`)).json();

@@ -111,7 +111,7 @@ export default class QuickLinks extends React.PureComponent {
         this.addLink();
         e.preventDefault();
       }
-    }
+    };
   }
 
   render() {

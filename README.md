@@ -39,9 +39,9 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 * Supports multiple browsers
 * Actively developed and open source
 * Automatically updating API (no tracking) with new photos, quotes and offline mode
-* Search bar
+* Widgets such as searchbar, weather, quick links, clock, date, quote, greeting
 * Settings - enable/disable various features and customise parts of Mue
-* Update modal, copy button and more!
+* Navbar with copy button, favourite background, notes feature etc
 * Marketplace - download custom photo packs made by the community!
 
 ### Planned Features
@@ -132,4 +132,4 @@ Many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#
 
 And finally, a big thank you to all the other [contributors](https://github.com/mue/mue/graphs/contributors)!
 ### Resources
-[Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode<br/>
+[Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode
