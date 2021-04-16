@@ -26,7 +26,7 @@ export default class AdvancedSettings extends React.PureComponent {
       localStorage.setItem(key, content[key]);
     }
 
-    toast(this.language.toasts.imported);
+    toast(window.language.toasts.imported);
   }
 
   render() {

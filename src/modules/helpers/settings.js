@@ -160,4 +160,25 @@ export default class SettingsFunctions {
  █████████████████████████████████████████████████████████████
 `);
   }
+
+  static moveSettings() {
+    localStorage.setItem('order', "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\"]");
+    localStorage.setItem('backgroundType', 'api');
+    localStorage.setItem('timeformat', 'twentyfourhour');
+    localStorage.setItem('bgtransition', true);
+    localStorage.setItem('tempformat', 'celsius');
+    localStorage.setItem('theme', 'auto');
+    localStorage.setItem('toastDisplayTime', 2500);
+    localStorage.setItem('widgetzoom', 100);
+    localStorage.setItem('fontweight', 400);
+    localStorage.setItem('language', window.languagecode);
+    localStorage.setItem('tabname', window.language.tabname);
+    localStorage.setItem('debugtimeout', 0);
+    localStorage.setItem('showWelcome', true);
+    localStorage.setItem('quicklinks', '[]');
+    localStorage.setItem('customBackgroundColour', "{\"angle\":\"180\",\"gradient\":[{\"colour\":\"#ffb032\",\"stop\":0}],\"type\":\"linear\"}");
+    localStorage.setItem('firstRun', true);
+
+    window.location.reload();
+  }
 }
