@@ -1,0 +1,91 @@
+.photoInformation {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: calc(10px + 0.1vmin) !important;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  user-select: none;
+  cursor: initial;
+
+  svg {
+    float: left;
+    margin-right: 1rem;
+    font-size: calc(10px + 2vmin);
+    cursor: pointer;
+  }
+
+  svg,
+  h1 {
+    display: inline;
+  }
+
+  svg:hover+.infoCard {
+    display: block;
+  }
+}
+
+.infoCard {
+  display: none;
+  background: var(--background);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: var(--modal-text);
+  position: fixed;
+  bottom: 2.9rem;
+  left: 0.7em;
+  padding: 1rem;
+  border-radius: 24px 24px 24px 0;
+  max-width: 500px;
+  text-align: left;
+  text-shadow: none;
+
+  span {
+    display: block;
+  }
+
+  svg {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    display: inline-flex;
+    padding: 2px;
+  }
+
+  span,
+  svg {
+    font-size: 2em;
+  }
+
+  h1 {
+    user-select: none;
+    cursor: initial;
+  }
+
+  h1,
+  .infoIcon {
+    font-size: 3em;
+  }
+
+  .infoIcon {
+    padding: 4px;
+  }
+
+  hr {
+    height: 3px;
+    background: var(--photo-info);
+    outline: none;
+    border: none;
+  }
+
+  &:hover {
+    display: block !important;
+  }
+
+  .download {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .MuiSvgIcon-root {
+    cursor: initial;
+  }
+}

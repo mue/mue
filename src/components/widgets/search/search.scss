@@ -1,0 +1,45 @@
+@import '../../../scss/variables';
+
+.searchBar {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  color: map-get($theme-colours, 'main-text-color');
+
+  input[type=text] {
+    width: 140px;
+    margin-left: 12px;
+    border-radius: 24px;
+    font-size: calc(5px + 1.2vmin);
+    border: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    color: white;
+    padding: 0.5rem 1rem;
+    user-select: none;
+
+    &:focus {
+      width: 400px;
+      background-color: rgba(0, 0, 0, 0.5);
+      user-select: text;
+    }
+  }
+
+  .MuiSvgIcon-root {
+    margin-top: 4px;
+    font-size: 30px;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.micIcon {
+  margin-right: 10px;
+}

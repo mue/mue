@@ -1,0 +1,22 @@
+select {
+  margin-left: 10px;
+  width: 120px;
+  color: var(--modal-text);
+  background: var(--sidebar);
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+}
+
+// firefox dropdown
+@supports (-moz-appearance: none) {
+  select {
+    -moz-appearance: none !important;
+    background: url('data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==') right center no-repeat, var(--sidebar) !important;
+    background-position: calc(100% - 15px) center !important;
+  }
+
+  option {
+    font: -moz-pull-down-menu !important;
+  }
+}

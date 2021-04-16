@@ -1,0 +1,202 @@
+[
+  {
+    "name": "time",
+    "value": true
+  },
+  {
+    "name": "greeting",
+    "value": true
+  },
+  {
+    "name": "background",
+    "value": true
+  },
+  {
+    "name": "quote",
+    "value": true
+  },
+  {
+    "name": "searchBar",
+    "value": true
+  },
+  {
+    "name": "blur",
+    "value": 0
+  },
+  {
+    "name": "brightness",
+    "value": 90
+  },
+  {
+    "name": "events",
+    "value": true
+  },
+  {
+    "name": "customBackgroundColour",
+    "value": "{\"angle\":\"180\",\"gradient\":[{\"colour\":\"#ffb032\",\"stop\":0}],\"type\":\"linear\"}"
+  },
+  {
+    "name": "customBackground",
+    "value": ""
+  },
+  {
+    "name": "greetingName",
+    "value": ""
+  },
+  {
+    "name": "defaultGreetingMessage",
+    "value": true
+  },
+  {
+    "name": "backgroundAPI",
+    "value": "mue"
+  },
+  {
+    "name": "copyButton",
+    "value": false
+  },
+  {
+    "name": "installed",
+    "value": "[]"
+  },
+  {
+    "name": "searchEngine",
+    "value": "duckduckgo"
+  },
+  {
+    "name": "refresh",
+    "value": true
+  },
+  {
+    "name": "view",
+    "value": true
+  },
+  {
+    "name": "favouriteEnabled",
+    "value": true
+  },
+  {
+    "name": "tweetButton",
+    "value": false
+  },
+  {
+    "name": "favouriteQuoteEnabled",
+    "value": false
+  },
+  {
+    "name": "showWelcome",
+    "value": true
+  },
+  {
+    "name": "quotelanguage",
+    "value": "English"
+  },
+  {
+    "name": "date",
+    "value": "false"
+  },
+  {
+    "name": "timeType",
+    "value": "digital"
+  },
+  {
+    "name": "dateFormat",
+    "value": "DMY"
+  },
+  {
+    "name": "shortFormat",
+    "value": "dots"
+  },
+  {
+    "name": "widgetzoom",
+    "value": 100
+  },
+  {
+    "name": "toastDisplayTime",
+    "value": 2500
+  },
+  {
+    "name": "fontstyle",
+    "value": "normal"
+  },
+  {
+    "name": "fontweight",
+    "value": 400
+  },
+  {
+    "name": "order",
+    "value": "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\"]"
+  },
+  {
+    "name": "theme",
+    "value": "auto"
+  },
+  {
+    "name": "backgroundType",
+    "value": "api"
+  },
+  {
+    "name": "timeformat",
+    "value": "twentyfourhour"
+  },
+  {
+    "name": "experimental",
+    "value": false
+  },
+  {
+    "name": "debugtimeout",
+    "value": 0
+  },
+  {
+    "name": "quicklinks",
+    "value": "[]"
+  },
+  {
+    "name": "quicklinksenabled",
+    "value": false
+  },
+  {
+    "name": "weatherEnabled",
+    "value": false
+  },
+  {
+    "name": "tempformat",
+    "value": "celsius"
+  },
+  {
+    "name": "authorLink",
+    "value": true
+  },
+  {
+    "name": "bgtransition",
+    "value": true
+  },
+  {
+    "name": "backgroundVideoLoop",
+    "value": true
+  },
+  {
+    "name": "backgroundVideoMute",
+    "value": true
+  },
+  {
+    "name": "quicklinkstooltip",
+    "value": true
+  },
+  {
+    "name": "notesEnabled",
+    "value": true
+  },
+  {
+    "name": "showlocation",
+    "value": true
+  },
+  {
+    "name": "minuteHand",
+    "value": true
+  },
+  {
+    "name": "hourHand",
+    "value": true
+  }
+]

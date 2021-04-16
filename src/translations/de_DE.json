@@ -1,0 +1,369 @@
+{
+  "tabname": "Neuer Tab",
+  "widgets": {
+    "greeting": {
+      "morning": "Guten Morgen",
+      "afternoon": "Guten Tag",
+      "evening": "Guten Abend",
+      "christmas": "Fröhliche Weihnachten",
+      "newyear": "Frohes neues Jahr",
+      "halloween": "Happy Halloween",
+      "birthday": "Glückwunsch zum Geburtstag"
+    },
+    "background": {
+      "credit": "Foto von",
+      "unsplash": "on Unsplash",
+      "information": "Informationen",
+      "download": "Download"
+    },
+    "search": "Suche",
+    "quicklinks": {
+      "new": "New Link",
+      "name": "Name",
+      "url": "URL",
+      "add": "Add",
+      "name_error": "Must provide name",
+      "url_error": "Must provide URL"
+    },
+    "date": {
+      "week": "Week"
+    },
+    "weather": {
+      "not_found": "Not Found"
+    },
+    "navbar": {
+      "tooltips": {
+        "update": "Update Hinweise",
+        "refresh": "Neuladen",
+        "feedback": "Feedback"
+      },
+      "notes": {
+        "title": "Notizen",
+        "placeholder": "Hier eingeben"
+      }
+    }
+  },
+  "modals": {
+    "main": {
+      "title": "Einstellungen",
+      "loading": "Loading...",
+      "file_upload_error": "File is over 2MB",
+      "navbar": {
+        "settings": "Einstellungen",
+        "addons": "Meine Addons",
+        "marketplace": "Marktplatz"
+      },
+      "error_boundary": {
+        "title": "Fehler",
+        "message": "Failed to load this component of Mue",
+        "refresh": "Neuladen"
+      },
+      "settings": {
+        "enabled": "Aktivieren",
+        "reminder": {
+          "title": "NOTICE",
+          "message": "In order for all of the changes to take place, the page must be refreshed."
+        },
+        "sections": {
+          "time": {
+            "title": "Uhrzeit",
+            "format": "Format",
+            "type": "Type",
+            "digital": {
+              "title": "Digital",
+              "seconds": "Sekunden",
+              "twentyfourhour": "24 Stunden",
+              "twelvehour": "12 Stunden",
+              "zero": "Nullen füllen"
+            },
+            "analogue": {
+              "title": "Analog",
+              "second_hand": "Sekundenzeiger",
+              "minute_hand": "Minutenzeiger",
+              "hour_hand": "Stundenzeiger",
+              "hour_marks": "Stunden-Markierungen",
+              "minute_marks": "Minuten-Markierungen"
+            },
+            "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen",
+            "date": {
+              "title": "Datum",
+              "week_number": "Week number",
+              "day_of_week": "Wochentag",
+              "datenth": "Date nth",
+              "type": {
+                "short": "Short",
+                "long": "Long"
+              },
+              "short_date": "Kurzes Datum",
+              "short_format": "Kurzes Format",
+              "short_separator": {
+                "title": "Kurzer Trenner",
+                "dots": "Punkte",
+                "dash": "Bindestrich",
+                "gaps": "Lücke",
+                "slashes": "Slashes"
+              }
+            }
+          },
+          "quote": {
+            "title": "Zitat",
+            "author_link": "Autor Link",
+            "custom": "Benutzerdefiniertes Zitat",
+            "custom_author": "Benutzerdefinierter Autor",
+            "buttons": {
+              "title": "Schaltflächen",
+              "copy": "Kopieren",
+              "tweet": "Twitter",
+              "favourite": "Favorit"
+            }
+          },
+          "greeting": {
+            "title": "Begrüßung",
+            "events": "Veranstaltungen",
+            "default": "Standard-Begrüßungsnachricht",
+            "name": "Name zur Begrüßung",
+            "birthday": "Geburtstag",
+            "birthday_age": "Birthday age",
+            "birthday_date": "Geburtstags Datum"
+          },
+          "background": {
+            "title": "Hintergrund",
+            "ddg_proxy": "Use DuckDuckGo image proxy",
+            "transition": "Fade-in transition",
+            "category": "Category",
+            "buttons": {
+              "title": "Buttons",
+              "view": "Ansicht",
+              "favourite": "Favorit",
+              "download": "Download"
+            },
+            "effects": {
+              "title": "Effekte",
+              "blur": "Unschärfe anpassen",
+              "brightness": "Helligkeit anpassen"
+            },
+            "type": {
+              "title": "Type",
+              "api": "API",
+              "custom_image": "Custom image",
+              "custom_colour": "Custom colour/gradient"
+            },
+            "source": {
+              "title": "Quelle",
+              "api": "Hintergrund API",
+              "custom_background": "Benutzerdefinierter Hintergrund",
+              "custom_colour": "Benutzerdefinierter Hintergrundfarbe",
+              "upload": "Upload",
+              "add_colour": "Farbe hinzufügen",
+              "disabled": "Deaktiviert",
+              "loop_video": "Loop video",
+              "mute_video": "Mute video"
+            }
+          },
+          "search": {
+            "title": "Suche",
+            "search_engine": "Suchmaschine",
+            "custom": "Abfrage-URL",
+            "voice_search": "Sprachsuche"
+          },
+          "weather": {
+            "title": "Weather",
+            "location": "Location",
+            "auto": "Auto",
+            "temp_format": {
+              "title": "Temperature format",
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Extra information",
+              "show_location": "Show Location",
+              "humidity": "Humidity",
+              "wind_speed": "Wind speed",
+              "min_temp": "Minimum temperature",
+              "max_temp": "Maximum temperature",
+              "atmospheric_pressure": "Atmospheric pressure"
+            }
+          },
+          "quicklinks": {
+            "title": "Quick Links",
+            "open_new": "Open in new tab",
+            "tooltip": "Tooltip"
+          },
+          "appearance": {
+            "title": "Erscheinungsbild",
+            "theme": {
+              "title": "Theme",
+              "auto": "Auto",
+              "light": "Light",
+              "dark": "Dark"
+            },
+            "animations": "Animationen",
+            "navbar": {
+              "title": "Navigationsleiste",
+              "notes": "Hinweise",
+              "refresh": "Aktualisieren"
+            },
+            "font": {
+              "title": "Schriftart",
+              "custom": "Eigene Schriftart",
+              "google": "Importieren von Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "accessibility": {
+              "title": "Accessibility",
+              "widget_zoom": "Widget zoom",
+              "toast_duration": "Toast Dauer",
+              "milliseconds": "Millisekunden"
+            }
+          },
+          "order": {
+            "title": "Widget Order"
+          },
+          "advanced": {
+            "title": "Erweitert",
+            "offline_mode": "Offline Modus",
+            "data": "Daten",
+            "reset_modal": {
+              "title": "WARNING",
+              "question": "Do you want to reset Mue?",
+              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
+              "cancel": "Cancel"
+            },
+            "customisation": "Anpassung",
+            "custom_css": "Benutzerdefiniertes CSS",
+            "custom_js": "Benutzerdefiniertes JS",
+            "tab_name": "Tab name",
+            "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren.",
+            "developer": "Developer"
+          },
+          "experimental": {
+            "title": "Experimental",
+            "warning": "These settings have not been fully tested/implemented and may not work correctly!"
+          },
+          "language": {
+            "title": "Sprache",
+            "quote": "Zitat-Sprache"
+          },
+          "changelog": "Änderungshinweise",
+          "about": {
+            "title": "Über",
+            "copyright": "Urheberrechte",
+            "version": {
+              "title": "Version",
+              "checking_update": "Auf Update prüfen",
+              "update_available": "Update verfügbar",
+              "no_update": "Kein Update verfügbar",
+              "offline_mode": "Im Offline Modus kann nicht nach Updates gesucht werden"
+            },
+            "contact_us": "Contact Us",
+            "support_mue": "Support Mue",
+            "resources_used": {
+              "title": "Verwendete Ressourcen",
+              "bg_images": "Offline Hintergrundbilder",
+              "welcome_img": "Willkommensbild",
+              "pin_icon": "Pin Icon"
+            },
+            "contributors": "Mitwirkende",
+            "supporters": "Unterstützer",
+            "photographers": "Photographers"
+          }
+        },
+        "buttons": {
+          "reset": "Zurücksetzen",
+          "import": "Importieren",
+          "export": "Exportieren"
+        }
+      },
+      "marketplace": {
+        "photo_packs": "Fotopakete",
+        "quote_packs": "Zitat-Pakete",
+        "preset_settings": "Voreingestellte Einstellungen",
+        "themes": "Themen",
+        "no_items": "No items in this category",
+        "product": {
+          "overview": "Übersicht",
+          "information": "Information",
+          "last_updated": "Letzte Aktualisierung",
+          "version": "Version",
+          "author": "Autor",
+          "buttons": {
+            "addtomue": "Zu Mue hinzufügen",
+            "remove": "Entfernen"
+          },
+          "quote_warning": {
+            "title": "Warnung",
+            "description": "Dieses Zitatpaket stellt Anfragen an externe Server, die Sie möglicherweise tracken!"
+          }
+        },
+        "offline": {
+          "title": "Sieht aus, als ob Sie offline sind",
+          "description": "Bitte stellen Sie eine Verbindung zum Internet her."
+        }
+      },
+      "addons": {
+        "added": "Hinzugefügt",
+        "empty": {
+          "title": "Hier ist es leer",
+          "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen."
+        },
+        "sideload": "Hochladen"
+      }
+    },
+    "update": {
+      "title": "Update",
+      "offline": {
+        "title": "Offline",
+        "description": "Update-Protokolle können im Offline-Modus nicht abgerufen werden"
+      },
+      "error": {
+        "title": "Fehler",
+        "description": "Konnte keine Verbindung zum Server herstellen"
+      },
+      "read_blog": "Hier im Blog lesen",
+      "contact_support": "Kontaktieren Sie uns hier"
+    },
+    "welcome": {
+      "title": "Willkommen bei",
+      "information": "Information",
+      "thankyoumessage1": "Vielen Dank für die Installation von Mue Tab,",
+      "thankyoumessage2": "wir wünschen Ihnen viel Spaß mit unserer Erweiterung.",
+      "support": "Support",
+      "close": "Schließen"
+    },
+    "feedback": {
+      "title": "Geben Sie uns Feedback",
+      "question_one": "Wie würden Sie Ihre Erfahrungen mit dieser Mue Version bewerten?",
+      "question_two": "Auf welche Fehler sind Sie bei der Verwendung von Mue gestoßen?",
+      "question_three": "Wie wahrscheinlich ist es, dass Sie diese Version von Mue einem Freund oder Kollegen empfehlen würden?",
+      "question_four": "What do you want adding to the next Mue build?",
+      "not_filled": "Question box must be filled",
+      "success": "Sent successfully!",
+      "submit": "Senden"
+    }
+  },
+  "toasts": {
+    "quote": "Kopierte Zitate",
+    "installed": "Erfolgreich installiert",
+    "uninstalled": "Erfolgreich entfernt",
+    "error": "Etwas ist schief gelaufen",
+    "imported": "Erfolgreich importiert"
+  }
+}

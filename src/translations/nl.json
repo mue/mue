@@ -1,134 +1,369 @@
 {
+  "tabname": "New Tab",
+  "widgets": {
     "greeting": {
-        "morning": "Goedemorgen",
-        "afternoon": "Goedemiddag",
-        "evening": "Goedenavond",
-        "christmas": "Fijne kerstdagen",
-        "newyear": "Gelukkig nieuwjaar",
-        "halloween": "Fijne Halloween"
+      "morning": "Goedemorgen",
+      "afternoon": "Goedemiddag",
+      "evening": "Goedenavond",
+      "christmas": "Fijne kerstdagen",
+      "newyear": "Gelukkig nieuwjaar",
+      "halloween": "Fijne Halloween",
+      "birthday": "Happy Birthday"
     },
-    "credit": "Foto van",
+    "background": {
+      "credit": "Foto van",
+      "unsplash": "on Unsplash",
+      "information": "Information",
+      "download": "Download"
+    },
     "search": "Zoeken",
-    "modals": {
-        "title": "Opties",
+    "quicklinks": {
+      "new": "New Link",
+      "name": "Name",
+      "url": "URL",
+      "add": "Add",
+      "name_error": "Must provide name",
+      "url_error": "Must provide URL"
+    },
+    "date": {
+      "week": "Week"
+    },
+    "weather": {
+      "not_found": "Not Found"
+    },
+    "navbar": {
+      "tooltips": {
+        "update": "Update Patch Notes",
+        "refresh": "Refresh Page",
+        "feedback": "Feedback"
+      },
+      "notes": {
+        "title": "Notes",
+        "placeholder": "Type here"
+      }
+    }
+  },
+  "modals": {
+    "main": {
+      "title": "Opties",
+      "loading": "Bezig met laden…",
+      "file_upload_error": "File is over 2MB",
+      "navbar": {
         "settings": "Instellingen",
         "addons": "Mijn extensies",
         "marketplace": "Marktplaats"
-    },
-    "settings": {
-        "time": {
-            "title": "Tijd",
-            "seconds": "Seconden tonen",
-            "twentyfourhour": "24-uursklok gebruiken",
-            "ampm": "AM/PM (12-uursklok) gebruiken",
-            "zero": "Nulopvulling",
-            "analog": "Analoge klok tonen"
+      },
+      "error_boundary": {
+        "title": "Foutmelding",
+        "message": "Failed to load this component of Mue",
+        "refresh": "Refresh"
+      },
+      "settings": {
+        "enabled": "Enabled",
+        "reminder": {
+          "title": "NOTICE",
+          "message": "In order for all of the changes to take place, the page must be refreshed."
         },
-        "greeting": {
+        "sections": {
+          "time": {
+            "title": "Tijd",
+            "format": "Format",
+            "type": "Type",
+            "digital": {
+              "title": "Digital",
+              "seconds": "Seconden tonen",
+              "twentyfourhour": "24-uursklok gebruiken",
+              "twelvehour": "12-uursklok gebruiken",
+              "zero": "Nulopvulling"
+            },
+            "analogue": {
+              "title": "Analogue",
+              "second_hand": "Seconds hand",
+              "minute_hand": "Minutes hand",
+              "hour_hand": "Hours hand",
+              "hour_marks": "Hour marks",
+              "minute_marks": "Minute marks"
+            },
+            "percentage_complete": "Percentage complete",
+            "date": {
+              "title": "Date",
+              "week_number": "Week number",
+              "day_of_week": "Day of week",
+              "datenth": "Date nth",
+              "type": {
+                "short": "Short",
+                "long": "Long"
+              },
+              "short_date": "Short date",
+              "short_format": "Short format",
+              "short_separator": {
+                "title": "Short separator",
+                "dots": "Dots",
+                "dash": "Dash",
+                "gaps": "Gaps",
+                "slashes": "Slashes"
+              }
+            }
+          },
+          "quote": {
+            "title": "Citaat",
+            "author_link": "Authour link",
+            "custom": "Custom quote",
+            "custom_author": "Custom authour",
+            "buttons": {
+              "title": "Buttons",
+              "copy": "Kopieerknop",
+              "tweet": "Tweetknop",
+              "favourite": "Knop 'Toevoegen aan favorieten'"
+            }
+          },
+          "greeting": {
             "title": "Begroetingen",
             "events": "Gebeurtenissen",
             "default": "Standaard begroetingsnaam",
-            "name": "Naam van begroeting"
-        },
-        "quote": {
-            "title": "Citaat",
-            "copy": "Kopieerknop",
-             "tweet": "Tweetknop",
-            "favourite": "Knop 'Toevoegen aan favorieten'"
-        },
-        "background": {
+            "name": "Naam van begroeting",
+            "birthday": "Birthday",
+            "birthday_age": "Birthday age",
+            "birthday_date": "Birthday date"
+          },
+          "background": {
             "title": "Achtergrond",
-            "API": "Achtergrond-api",
-            "blur": "Vervaging instellen",
-            "customURL": "Aangepaste achtergrond-url",
-            "custombackground": "Aangepaste achtergrond",
-            "customcolour": "Aangepaste achtergrondkleur",
-            "upload": "Uploaden",
-            "addcolour": "Kleur toevoegen",
-            "view": "Weergave",
-            "refresh": "Herladen",
-            "disabled": "Uitgeschakeld"
-        },
-        "searchbar": {
+            "ddg_proxy": "Use DuckDuckGo image proxy",
+            "transition": "Fade-in transition",
+            "category": "Category",
+            "buttons": {
+              "title": "Buttons",
+              "view": "Weergave",
+              "favourite": "Favourite",
+              "download": "Download"
+            },
+            "effects": {
+              "title": "Effects",
+              "blur": "Vervaging instellen",
+              "brightness": "Adjust brightness"
+            },
+            "type": {
+              "title": "Type",
+              "api": "API",
+              "custom_image": "Custom image",
+              "custom_colour": "Custom colour/gradient"
+            },
+            "source": {
+              "title": "Source",
+              "api": "Achtergrond-api",
+              "custom_background": "Aangepaste achtergrond",
+              "custom_colour": "Aangepaste achtergrondkleur",
+              "upload": "Uploaden",
+              "add_colour": "Kleur toevoegen",
+              "disabled": "Uitgeschakeld",
+              "loop_video": "Loop video",
+              "mute_video": "Mute video"
+            }
+          },
+          "search": {
             "title": "Zoekbalk",
-            "searchengine": "Zoekmachine",
-            "custom": "Aangepaste zoekmachine-url"
-        },
-        "offline": "Offline-modus",
-        "dark": "Donker thema",
-        "experimental": {
+            "search_engine": "Zoekmachine",
+            "custom": "Aangepaste zoekmachine-url",
+            "voice_search": "Spraakgestuurd zoeken gebruiken"
+          },
+          "weather": {
+            "title": "Weather",
+            "location": "Location",
+            "auto": "Auto",
+            "temp_format": {
+              "title": "Temperature format",
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Extra information",
+              "show_location": "Show Location",
+              "humidity": "Humidity",
+              "wind_speed": "Wind speed",
+              "min_temp": "Minimum temperature",
+              "max_temp": "Maximum temperature",
+              "atmospheric_pressure": "Atmospheric pressure"
+            }
+          },
+          "quicklinks": {
+            "title": "Quick Links",
+            "open_new": "Open in new tab",
+            "tooltip": "Tooltip"
+          },
+          "appearance": {
+            "title": "Appearance",
+            "theme": {
+              "title": "Theme",
+              "auto": "Auto",
+              "light": "Light",
+              "dark": "Dark"
+            },
+            "animations": "Animations",
+            "navbar": {
+              "title": "Navbar",
+              "notes": "Notes",
+              "refresh": "Refresh button"
+            },
+            "font": {
+              "title": "Font",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "accessibility": {
+              "title": "Accessibility",
+              "widget_zoom": "Widget zoom",
+              "toast_duration": "Toast duration",
+              "milliseconds": "milliseconds"
+            }
+          },
+          "order": {
+            "title": "Widget Order"
+          },
+          "advanced": {
+            "title": "Advanced",
+            "offline_mode": "Offline-modus",
+            "data": "Data",
+            "reset_modal": {
+              "title": "WARNING",
+              "question": "Do you want to reset Mue?",
+              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
+              "cancel": "Cancel"
+            },
+            "customisation": "Customisation",
+            "custom_css": "Custom CSS",
+            "custom_js": "Custom JS",
+            "tab_name": "Tab name",
+            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
+          },
+          "experimental": {
             "title": "Experimenteel",
-            "webp": "WebP gebruiken",
-            "animations": "Animaties gebruiken",
-            "voicesearch": "Spraakgestuurd zoeken gebruiken",
-            "nightmode": "Automatische nachtmodus"
+            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
+            "developer": "Developer"
+          },
+          "language": {
+            "title": "Taal",
+            "quote": "Quote language"
+          },
+          "changelog": "Change Log",
+          "about": {
+            "title": "About",
+            "copyright": "Copyright",
+            "version": {
+              "title": "Version",
+              "checking_update": "Checking for update",
+              "update_available": "Update available",
+              "no_update": "No update available",
+              "offline_mode": "Cannot check for update in offline mode"
+            },
+            "contact_us": "Contact Us",
+            "support_mue": "Support Mue",
+            "resources_used": {
+              "title": "Resources used",
+              "bg_images": "Offline background images",
+              "welcome_img": "Welcome image",
+              "pin_icon": "Pin icon"
+            },
+            "contributors": "Contributors",
+            "supporters": "Supporters",
+            "photographers": "Photographers"
+          }
         },
-        "language": "Taal",
-        "apply": "Toepassen",
-        "reset": "Herstellen",
-        "import": "Importeren",
-        "export": "Exporteren"
-    },
-    "update": {
-        "title": "Wijzigingen",
-        "offline": {
-            "title": "Offline",
-            "description": "Het wijzigingslog kan niet worden opgehaald in de offline-modus"
-        },
-        "error": {
-            "title": "Foutmelding",
-            "content": "Er kan geen verbinding worden gemaakt met de servers"
-        },
-        "loading": "Bezig met laden…",
-        "readblog": "Lees ons blog",
-        "contactsupport": "Neem contact met ons op"
-    },
-    "toasts": {
-        "quote": "Het citaat is gekopieerd",
-        "reset": "Het herstellen is voltooid",
-        "installed": "De installatie is voltooid",
-        "removed": "Het verwijderen is voltooid",
-        "error": "Er is iets misgegaan",
-        "imported": "Het importeren is voltooid"
-    },
-    "marketplace": {
+        "buttons": {
+          "reset": "Herstellen",
+          "import": "Importeren",
+          "export": "Exporteren"
+        }
+      },
+      "marketplace": {
         "photo_packs": "Fotoverzamelingen",
         "quote_packs": "Citaatverzamelingen",
         "preset_settings": "Voorinstellingen",
         "themes": "Thema's",
+        "no_items": "No items in this category",
         "product": {
-            "overview": "Overzicht",
-            "information": "Informatie",
-            "last_updated": "Laatst geüpdatet",
-            "version": "Versie",
-            "author": "Maker",
-            "notice": {
-                "title": "Aankondiging",
-                "description": "Herlaad de pagina om de wijzigingen toe te passen."
-            },
-            "buttons": {
-                "addtomue": "Toevoegen aan Mue",
-                "remove": "Verwijderen"
-            },
-            "quoteWarning": {
-                "title": "Waarschuwing",
-                "description": "Deze citaatverzameling maakt verbinding met externe servers die kunnen worden gebruikt om je te internetverkeer te tracken!"
-            }
+          "overview": "Overzicht",
+          "information": "Informatie",
+          "last_updated": "Laatst geüpdatet",
+          "version": "Versie",
+          "author": "Maker",
+          "buttons": {
+            "addtomue": "Toevoegen aan Mue",
+            "remove": "Verwijderen"
+          },
+          "quote_warning": {
+            "title": "Waarschuwing",
+            "description": "Deze citaatverzameling maakt verbinding met externe servers die kunnen worden gebruikt om je te internetverkeer te tracken!"
+          }
         },
         "offline": {
-            "title": "Het lijkt er op dat je niet verbonden bent het internet",
-            "description": "Maak verbinding met het internet."
-        },
-        "see_more": "Meer tonen"
-    },
-    "addons": {
+          "title": "Het lijkt er op dat je niet verbonden bent het internet",
+          "description": "Maak verbinding met het internet."
+        }
+      },
+      "addons": {
         "added": "Toegevoegd",
         "empty": {
-            "title": "Het is hier erg leeg",
-            "description": "Ga naar de marktplaats om een paar extensies toe te voegen.",
-            "button": "Open de marktplaats"
-            },
+          "title": "Het is hier erg leeg",
+          "description": "Ga naar de marktplaats om een paar extensies toe te voegen."
+        },
         "sideload": "Sideloaden"
-        }
+      }
+    },
+    "update": {
+      "title": "Update",
+      "offline": {
+        "title": "Offline",
+        "description": "Cannot get update logs while in offline mode"
+      },
+      "error": {
+        "title": "Error",
+        "description": "Could not connect to the server"
+      },
+      "read_blog": "Read on the blog here",
+      "contact_support": "Contact us here"
+    },
+    "welcome": {
+      "title": "Welcome to",
+      "information": "Information",
+      "thankyoumessage1": "Thank you for installing Mue Tab,",
+      "thankyoumessage2": "we hope you enjoy your time with our extension.",
+      "support": "Support",
+      "close": "Close"
+    },
+    "feedback": {
+      "title": "Give us feedback",
+      "question_one": "How would you rate your experience of this Mue build?",
+      "question_two": "What bugs did you encounter in your use of Mue?",
+      "question_three": "How likely would you be to recommend this version of Mue to a friend or colleague?",
+      "question_four": "What do you want adding to the next Mue build?",
+      "not_filled": "Question box must be filled",
+      "success": "Sent successfully!",
+      "submit": "Submit"
     }
+  },
+  "toasts": {
+    "quote": "Het citaat is gekopieerd",
+    "installed": "De installatie is voltooid",
+    "uninstalled": "Het verwijderen is voltooid",
+    "error": "Er is iets misgegaan",
+    "imported": "Het importeren is voltooid"
+  }
 }

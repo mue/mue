@@ -1,0 +1,187 @@
+#item a {
+  color: map-get($button-colours, 'other');
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.emptyitems {
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+.items {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 15px;
+
+  .item {
+    position: relative;
+    border-radius: 12px;
+    height: 80px;
+    width: 260px;
+    background: map-get($marketplace, 'item-background');
+    transition: 0.5s;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 30%);
+
+    img {
+      height: 100%;
+      width: auto;
+      border-radius: 12px 0 0 12px;
+      background: white;
+    }
+
+    h4 {
+      font-size: 20px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+
+    img,
+    .details {
+      display: inline;
+    }
+
+    .details {
+      position: absolute;
+      left: 85px;
+      top: -15px;
+
+      img {
+        margin-left: 10px;
+        height: 15px;
+      }
+    }
+
+    p {
+      margin-top: 5px;
+      line-height: 20px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.dark .items .item {
+  background: #2d3436;
+}
+
+p.author {
+  margin-top: -5px;
+}
+
+#item {
+  display: none;
+
+  h1 {
+    font-size: 40px;
+    line-height: 20px;
+  }
+}
+
+#item>h1,
+#item>.MuiSvgIcon-root {
+  display: inline;
+}
+
+p.description {
+  margin-top: 0px;
+  max-width: 400px;
+}
+
+.emptyMessage {
+  text-align: center;
+  background: var(--sidebar);
+  padding: 25px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  position: absolute;
+  width: 300px;
+
+  svg {
+    font-size: 50px;
+    margin-bottom: -20px;
+  }
+}
+
+.backArrow {
+  cursor: pointer;
+  width: 2rem !important;
+  height: 2rem !important;
+
+  &:hover {
+    color: grey;
+  }
+}
+
+.informationContainer {
+  margin-top: 20px;
+}
+
+.productInformation {
+  padding: 10px;
+  background: map-get($marketplace, 'product-information-backgroud');
+  width: 350px;
+  border-radius: 12px;
+
+  h4 {
+    cursor: initial !important;
+  }
+
+  li {
+    margin-left: -4px;
+    list-style: none;
+    font-size: 16px;
+    cursor: initial !important;
+
+    &.header {
+      text-transform: uppercase;
+      color: #787878;
+      margin-left: -5px;
+    }
+  }
+}
+
+.dark .productInformation {
+  background: #2d3436;
+}
+
+#item>img, .updateimage, .updatechangelog>p>img {
+  border-radius: 24px;
+  height: 200px;
+  width: auto;
+}
+
+.featured {
+  margin-top: 40px;
+  border-radius: 15px;
+  padding: 50px;
+  color: #fff;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  width: 100%;
+
+  button {
+    float: left;
+    margin-top: -7px;
+    border: 2px solid map-get($theme-colours, 'main');
+    color: map-get($theme-colours, 'main');
+
+    &:hover {
+      background: map-get($theme-colours, 'main');
+      color: #2d3436;
+    }
+  }
+
+  h1 {
+    margin-top: -20px;
+  }
+}

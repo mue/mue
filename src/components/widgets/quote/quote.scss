@@ -1,0 +1,47 @@
+@import '../../../scss/variables';
+
+.quote {
+  font-size: 0.8em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: initial;
+  user-select: none;
+}
+
+@media screen and (min-width: 600px) {
+  .quote {
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+}
+
+.quoteauthor {
+  font-size: 0.9em;
+  letter-spacing: 0.5px;
+  user-select: none;
+
+  svg {
+    margin-left: 10px;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+  }
+}
+
+.copyButton {
+  cursor: pointer;
+  vertical-align: middle;
+  transition: ease 0.2s !important;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+i.material-icons,
+h1.quoteauthor {
+  display: inline;
+}
+
+.quoteauthorlink {
+  text-decoration: none;
+  color: white;
+  user-select: none;
+}
