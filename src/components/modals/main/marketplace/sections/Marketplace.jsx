@@ -34,7 +34,7 @@ export default class Marketplace extends React.PureComponent {
     this.buttons = {
       uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
       install: <button className='addToMue' onClick={() => this.manage('install')}>{window.language.modals.main.marketplace.product.buttons.addtomue}</button>
-    }
+    };
     this.language = window.language.modals.main.marketplace;
   }
 

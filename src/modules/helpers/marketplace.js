@@ -14,7 +14,7 @@ export default class MarketplaceFunctions {
       case 'settings':
         const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
         localStorage.clear();
-        oldSettings.forEach(item => localStorage.setItem(item.name, item.value));
+        oldSettings.forEach((item) => localStorage.setItem(item.name, item.value));
         break;
       case 'quote_packs':
         localStorage.removeItem('quote_packs');
@@ -60,7 +60,7 @@ export default class MarketplaceFunctions {
         }
 
         localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
-        input.settings.forEach(element => localStorage.setItem(element.name, element.value));
+        input.settings.forEach((element) => localStorage.setItem(element.name, element.value));
         break;
 
       case 'photos':

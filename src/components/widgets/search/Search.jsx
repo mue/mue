@@ -34,7 +34,7 @@ export default class Search extends React.PureComponent {
       setTimeout(() => {
         window.location.href = this.state.url + `?${this.state.query}=` + searchText.value;
       }, 1000);
-    }
+    };
   }
 
   searchButton = () => {

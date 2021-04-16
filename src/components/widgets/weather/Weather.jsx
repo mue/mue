@@ -115,7 +115,7 @@ export default class Weather extends React.PureComponent {
       return (<div className='weather'>
         <span className='loc'>{this.state.location}</span>
       </div>);
-    };
+    }
 
     const minmax = () => {
       const mintemp = (localStorage.getItem('mintemp') === 'true');

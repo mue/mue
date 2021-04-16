@@ -10,7 +10,7 @@ export default function Sideload() {
   const install = (input) => {
     MarketplaceFunctions.install(input.type, input);
     toast(window.language.toasts.installed);
-  }
+  };
 
   return (
     <>

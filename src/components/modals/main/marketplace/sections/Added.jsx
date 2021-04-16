@@ -29,14 +29,14 @@ export default class Added extends React.PureComponent {
     };
     this.buttons = {
       uninstall: <button className='removeFromMue' onClick={() => this.uninstall()}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
-    }
+    };
     this.language = window.language.modals.main.addons;
   }
 
   toggle(type, data) {
     if (type === 'item') {
       const installed = JSON.parse(localStorage.getItem('installed'));
-      const info = installed.find(i => i.name === data);
+      const info = installed.find((i) => i.name === data);
 
       this.setState({
         item: {

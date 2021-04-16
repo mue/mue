@@ -26,7 +26,7 @@ export default class Background extends React.PureComponent {
 
     if (gradient.length > 1) {
       // Note: Append the gradient for additional browser support.
-      const stepStyles = gradient.map(g => ` ${g.colour} ${g.stop}%`).join();
+      const stepStyles = gradient.map((g) => ` ${g.colour} ${g.stop}%`).join();
       style += ` background: ${type}-gradient(${(type === 'linear' ? (`${angle}deg,`) : '')}${stepStyles})`;
     }
 
@@ -37,7 +37,7 @@ export default class Background extends React.PureComponent {
   }
 
   videoCheck(url) {
-    return url.startsWith('data:video/') || url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg')
+    return url.startsWith('data:video/') || url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg');
   }
 
   offlineBackground() {
@@ -235,7 +235,7 @@ export default class Background extends React.PureComponent {
         }
       });
       this.getBackground();
-    }
+    };
 
     EventBus.on('refresh', (data) => {
       if (data === 'background') {

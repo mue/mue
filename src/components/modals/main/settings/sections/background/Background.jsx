@@ -57,7 +57,7 @@ export default class BackgroundSettings extends React.PureComponent {
           <Checkbox name='backgroundVideoLoop' text={this.language.sections.background.source.loop_video}/>
           <Checkbox name='backgroundVideoMute' text={this.language.sections.background.source.mute_video}/>
         </>
-      )
+      );
     } else {
       return null;
     }
@@ -65,7 +65,7 @@ export default class BackgroundSettings extends React.PureComponent {
 
   marketplaceType = () => {
     if (localStorage.getItem('photo_packs')) {
-      return <option value='photo_pack'>{window.language.modals.main.navbar.marketplace}</option>
+      return <option value='photo_pack'>{window.language.modals.main.navbar.marketplace}</option>;
     }
   }
 
