@@ -78,10 +78,7 @@ export default class About extends React.PureComponent {
         <a href='https://discord.gg/zv8C9F8' className='welcomeLink' target='_blank' rel='noopener noreferrer'><ForumIcon/></a>
 
         <h3>{this.language.support_mue}</h3>
-        <p><a href='https://github.com/sponsors/davidjcralph' className='welcomeLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> 
-          • <a href='https://ko-fi.com/davidjcralph' className='welcomeLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> 
-          • <a href='https://patreon.com/davidjcralph' className='welcomeLink' target='_blank' rel='noopener noreferrer'>Patreon</a>
-        </p>
+        <p><a href='https://github.com/sponsors/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> • <a href='https://ko-fi.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> • <a href='https://patreon.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a></p>
 
         <h3>{this.language.resources_used.title}</h3>
         <p>Pexels ({this.language.resources_used.bg_images})</p>

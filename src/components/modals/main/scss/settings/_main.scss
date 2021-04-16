@@ -161,3 +161,17 @@ input[type=color]::-moz-color-swatch {
   color: var(--modal-text) !important;
   cursor: move;
 }
+
+.updatechangelog {
+  li {
+    cursor: initial;
+    font-size: 1rem;
+    list-style-type:disc;
+    padding: 0;
+    margin-left: 20px;
+  }
+}
+
+.aboutLink {
+  color: var(--modal-text) !important;
+}
