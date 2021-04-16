@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import SearchIcon from '@material-ui/icons/Search';
 import MicIcon from '@material-ui/icons/Mic';
 
@@ -26,13 +28,13 @@ export default class Search extends React.PureComponent {
 
     voiceSearch.onresult = (event) => {
       searchText.value = event.results[0][0].transcript;
-    }
+    };
 
-    voiceSearch.onend = () =>{
+    voiceSearch.onend = () => {
       setTimeout(() => {
         window.location.href = this.state.url + `?${this.state.query}=` + searchText.value;
       }, 1000);
-    }
+    };
   }
 
   searchButton = () => {
@@ -40,17 +42,19 @@ export default class Search extends React.PureComponent {
     window.location.href = this.state.url + `?${this.state.query}=` + value;
   }
 
-  componentDidMount() {
+  init() {
     let url;
     let query = 'q';
     let microphone = null;
 
     const setting = localStorage.getItem('searchEngine');
-    const info = searchEngines.find(i => i.settingsName === setting);
+    const info = searchEngines.find((i) => i.settingsName === setting);
 
     if (info !== undefined) {
       url = info.url;
-      if (info.query) query = info.query;
+      if (info.query) {
+        query = info.query;
+      }
     }
 
     if (setting === 'custom') {
@@ -66,6 +70,20 @@ export default class Search extends React.PureComponent {
       query: query,
       microphone: microphone
     });
+  }
+
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'search') {
+        this.init();
+      }
+    });
+  
+    this.init();
+  }
+
+  componentWillUnmount() {
+    EventBus.remove('refresh');
   }
 
   render() {

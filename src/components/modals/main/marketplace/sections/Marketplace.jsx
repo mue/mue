@@ -1,7 +1,8 @@
 import React from 'react';
 
 import WifiOffIcon from '@material-ui/icons/WifiOff';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import LocalMallIcon from '@material-ui/icons/LocalMall';
+
 import Item from '../Item';
 import Items from '../Items';
 
@@ -14,76 +15,78 @@ export default class Marketplace extends React.PureComponent {
     super();
     this.state = {
       items: [],
-      current_data: {
-        type: '',
-        name: '',
-        content: {}
-      },
       button: '',
       featured: {},
       done: false,
-      item_data: {
+      item: {
         name: 'Name',
         author: 'Author',
         description: 'Description',
-        updated: '???',
+        //updated: '???',
         version: '1.0.0',
         icon: ''
+      },
+      display: {
+        marketplace: 'block',
+        item: 'none'
       }
-    }
+    };
     this.buttons = {
-      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>Remove</button>,
-      install: <button className='addToMue' onClick={() => this.manage('install')}>Add to Mue</button>
-    }
+      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
+      install: <button className='addToMue' onClick={() => this.manage('install')}>{window.language.modals.main.marketplace.product.buttons.addtomue}</button>
+    };
+    this.language = window.language.modals.main.marketplace;
   }
 
   async toggle(type, data) {
-    switch (type) {
-      case 'item':
-        let info;
+    if (type === 'item') {
+      let info;
       // get item info
-        try {
-          info = await (await fetch(`${window.window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
-        } catch (e) {
-          return toast(this.props.toastLanguage.error);
+      try {
+        info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
+      } catch (e) {
+        return toast(window.language.toasts.error);
+      }
+
+      // check if already installed
+      let button = this.buttons.install;
+
+      const installed = JSON.parse(localStorage.getItem('installed'));
+
+      if (installed.some((item) => item.name === info.data.name)) {
+        button = this.buttons.uninstall;
+      }
+
+      this.setState({
+        item: {
+          type: this.props.type,
+          display_name: info.data.name,
+          author: info.data.author,
+          description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
+          //updated: info.updated,
+          version: info.data.version,
+          icon: info.data.screenshot_url,
+          data: info.data
+        },
+        button: button,
+        display: {
+          item: 'block',
+          marketplace: 'none'
         }
-
-        // check if already installed
-        let button = this.buttons.install;
-
-        const installed = JSON.parse(localStorage.getItem('installed'));
-
-        if (installed.some(item => item.name === data)) {
-          button = this.buttons.uninstall;
+      });
+    } else {
+      this.setState({
+        display: {
+          marketplace: 'block',
+          item: 'none'
         }
-
-        this.setState({
-          current_data: { type: this.props.type, name: data, content: info },
-          item_data: {
-            name: info.data.name,
-            author: info.data.author,
-            description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
-            updated: info.updated,
-            version: info.data.version,
-            icon: info.data.screenshot_url
-          },
-          button: button
-        });
-
-        document.getElementById('marketplace').style.display = 'none';
-        document.getElementById('item').style.display = 'block';
-        break;
-
-      default:
-        document.getElementById('marketplace').style.display = 'block';
-        document.getElementById('item').style.display = 'none';
-        break;
+      });
     }
   }
 
   async getItems() {
-    const { data } = await (await fetch(window.window.constants.MARKETPLACE_URL + '/all')).json();
-    const featured = await (await fetch(window.window.constants.MARKETPLACE_URL + '/featured')).json();
+    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/all')).json();
+    const featured = await (await fetch(window.constants.MARKETPLACE_URL + '/featured')).json();
 
     this.setState({
       items: data[this.props.type],
@@ -93,28 +96,19 @@ export default class Marketplace extends React.PureComponent {
   }
 
   manage(type) {
-    switch (type) {
-      case 'install':
-        MarketplaceFunctions.install(this.state.current_data.type, this.state.current_data.content.data);
-        break;
-      case 'uninstall':
-        MarketplaceFunctions.uninstall(this.state.current_data.content.data.name, this.state.current_data.type);
-        break;
-      default:
-        break;
+    if (type === 'install') {
+      MarketplaceFunctions.install(this.state.item.type, this.state.item.data);
+    } else {
+      MarketplaceFunctions.uninstall(this.state.item.display_name, this.state.item.type);
     }
 
-    toast(this.props.toastLanguage[type + 'ed']);
+    toast(window.language.toasts[type + 'ed']);
     this.setState({
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
     });
   }
 
   componentDidMount() {
-    if (localStorage.getItem('animations') === 'true') {
-      document.getElementById('marketplace').classList.add('marketplaceanimation');
-    }
-
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return;
     }
@@ -125,52 +119,46 @@ export default class Marketplace extends React.PureComponent {
   render() {
     const errorMessage = (msg) => {
       return (
-        <div id='marketplace'>
-          <div className='emptyMessage' style={{ 'marginTop': '20px', 'transform': 'translateY(80%)' }}>
+        <div className='emptyitems'>
+          <div className='emptyMessage'>
             {msg}
           </div>
         </div>
       );
-    }
+    };
 
-    if (navigator.onLine === false) {
-      return errorMessage(
-        <React.Fragment>
-          <WifiOffIcon/>
-          <h1>Offline</h1>
-          <p className='description'>Mue down!</p>
-        </React.Fragment>
-      );
-    }
-
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return errorMessage(
-        <React.Fragment>
-          <WifiOffIcon/>
-          <h1>Offline mode is enabled</h1>
-          <p className='description'>Please turn off offline mode to access the marketplace</p>
-        </React.Fragment>
-      );
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+      return errorMessage(<>
+        <WifiOffIcon/>
+        <h1>{this.language.offline.title}</h1>
+        <p className='description'>{this.language.offline.description}</p>
+      </>);
     }
 
     if (this.state.done === false) {
-      return errorMessage(<h1>Loading</h1>);
+      return errorMessage(<h1>{window.language.modals.main.loading}</h1>);
+    }
+
+    if (this.state.items.length === 0) {
+      return errorMessage(<>
+        <LocalMallIcon/>
+        <h1>{window.language.modals.main.addons.empty.title}</h1>
+        <p className='description'>{this.language.no_items}</p>
+      </>);
     }
 
     return (
-      <React.Fragment>
-        <div id='marketplace'>
+      <>
+        <div style={{ 'display': this.state.display.marketplace }}>
           <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
             <p>{this.state.featured.title}</p>
             <h1>{this.state.featured.name}</h1>
-            <button className='addToMue' onClick={() => window.location.href = this.state.featured.buttonLink}>{this.state.featured.buttonText}</button>
+            <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
           </div>
-          <Items
-            items={this.state.items.slice(0, 3)}
-            toggleFunction={(input) => this.toggle('item', input)} />
+          <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
         </div>
-        <Item data={this.state.item_data} button={this.state.button} />
-      </React.Fragment>
+        <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
+      </>
     );
   }
 }

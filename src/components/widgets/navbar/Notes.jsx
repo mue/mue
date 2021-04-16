@@ -12,7 +12,7 @@ export default class Notes extends React.PureComponent {
     this.state = {
       notes: localStorage.getItem('notes') || ''
     };
-    this.language = window.language.widgets.navbar.notes
+    this.language = window.language.widgets.navbar.notes;
   }
 
   setNotes = (e) => {
@@ -33,8 +33,14 @@ export default class Notes extends React.PureComponent {
   }
 
   componentDidMount() {
+    const noteContainer = document.getElementById('noteContainer');
+
     if (localStorage.getItem('notesPinned') === 'true') {
-      document.getElementById('noteContainer').classList.toggle('visibilityshow');
+      noteContainer.classList.toggle('visibilityshow');
+    }
+
+    if (localStorage.getItem('refresh') === 'false') {
+      noteContainer.style.marginLeft = '-200px';
     }
   }
 

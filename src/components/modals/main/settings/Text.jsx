@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../../modules/helpers/eventbus';
+
 import { toast } from 'react-toastify';
 
 export default class Text extends React.PureComponent {
@@ -11,8 +13,8 @@ export default class Text extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  handleChange(e) {
-    const { value } = e.target;
+  handleChange = (e) => {
+    let { value } = e.target;
   
     // Alex wanted font to work with montserrat and Montserrat, so I made it work
     if (this.props.upperCaseFirst === true) {
@@ -23,6 +25,15 @@ export default class Text extends React.PureComponent {
     this.setState({
       value: value
     });
+
+    if (this.props.element) {
+      if (!document.querySelector(this.props.element)) {
+        document.querySelector('.reminder-info').style.display = 'block';
+        return localStorage.setItem('showReminder', true);
+      }
+    }
+
+    EventBus.dispatch('refresh', this.props.category);
   }
 
   resetItem = () => {
@@ -32,6 +43,7 @@ export default class Text extends React.PureComponent {
     });
 
     toast(this.language.toasts.reset);
+    EventBus.dispatch('refresh', this.props.category);
   }
 
   render() {
@@ -40,7 +52,7 @@ export default class Text extends React.PureComponent {
         <p>{this.props.title} <span className='modalLink' onClick={this.resetItem}>{this.language.buttons.reset}</span></p>
         {(this.props.textarea === true) ? 
           <textarea className='settingsTextarea' value={this.state.value} onChange={this.handleChange}/>
-          :<input type='text' value={this.state.value} onChange={this.handleChange}/>
+          : <input type='text' value={this.state.value} onChange={this.handleChange}/>
         }
       </>
     );

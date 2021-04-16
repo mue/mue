@@ -20,6 +20,7 @@
 
 .refresh {
   @extend %settingsButton;
+
   background-color: map-get($button-colours, 'confirm');
   border: 2px solid map-get($button-colours, 'confirm');
 
@@ -31,6 +32,7 @@
 
 .reset {
   @extend %settingsButton;
+
   margin-left: 5px;
   background-color: map-get($button-colours, 'reset');
   border: 2px solid map-get($button-colours, 'reset');
@@ -43,6 +45,7 @@
 
 .close {
   @extend %settingsButton;
+
   padding: 10px 50px 10px 50px;
   background-color: map-get($button-colours, 'other');
   border: 2px solid map-get($button-colours, 'other');
@@ -55,6 +58,7 @@
 
 .add {
   @extend %settingsButton;
+
   background-color: map-get($button-colours, 'other');
   border: 2px solid map-get($button-colours, 'other');
 
@@ -68,12 +72,14 @@
 .uploadbg,
 .import {
   @extend %settingsButton;
+
   background-color: map-get($button-colours, 'other');
+  color: map-get($theme-colours, 'primary');
   border: 2px solid map-get($button-colours, 'other');
-  color: map-get($theme-colours, 'main');
 
   &:hover {
     color: map-get($button-colours, 'other');
+    border: 2px solid map-get($button-colours, 'other');
   }
 }
 
@@ -85,7 +91,7 @@
 %storebutton {
   cursor: pointer;
   font-size: 18px;
-  float: right;
+  display: block;
   padding: 5px 30px;
   background: none;
   border-radius: 24px;
@@ -110,6 +116,7 @@
 
 .removeFromMue {
   @extend %storebutton;
+
   border: 2px solid #ff4757;
   color: #ff4757;
 
@@ -133,8 +140,7 @@
   @extend %storebutton;
 }
 
-.sideload,
-.seemore {
+.sideload {
   margin-top: 12px;
 }
 
@@ -153,11 +159,7 @@ input[type=number]::-webkit-outer-spin-button {
   outline: none;
 }
 
-.MuiCheckbox-root {
-  color: var(--modal-text) !important;
-}
-
-.MuiIconButton-label>svg.MuiSvgIcon-root {
+.MuiIconButton-label > svg.MuiSvgIcon-root {
   color: var(--modal-text) !important;
 }
 
@@ -171,20 +173,20 @@ legend {
   padding-left: 10px;
   border-radius: 15px;
   margin-bottom: 10px;
-  font-size: 1.5rem;
+  font-size: 1.325rem;
 
   svg {
     font-size: 1.3rem;
   }
 
   &:hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.15);
     transition: 0.3s;
   }
 
   z-index: 999 !important;
 }
 
-li.stortableitem {
-  width: 200px;
+.MuiTouchRipple-root {
+  background: transparent;
 }

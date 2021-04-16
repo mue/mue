@@ -13,7 +13,7 @@ export default class FileUpload extends React.PureComponent {
       } else {
         // background upload
         if (file.size > 2000000) {
-          return toast('File is over 2MB');
+          return toast(window.language.modals.main.file_upload_error);
         }
 
         reader.readAsDataURL(file);

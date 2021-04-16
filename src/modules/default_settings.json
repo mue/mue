@@ -25,7 +25,7 @@
   },
   {
     "name": "brightness",
-    "value": 100
+    "value": 90
   },
   {
     "name": "events",
@@ -33,7 +33,7 @@
   },
   {
     "name": "customBackgroundColour",
-    "value": ""
+    "value": "{\"angle\":\"180\",\"gradient\":[{\"colour\":\"#ffb032\",\"stop\":0}],\"type\":\"linear\"}"
   },
   {
     "name": "customBackground",
@@ -50,10 +50,6 @@
   {
     "name": "backgroundAPI",
     "value": "mue"
-  },
-  {
-    "name": "ampm",
-    "value": true
   },
   {
     "name": "copyButton",
@@ -112,7 +108,7 @@
     "value": "dots"
   },
   {
-    "name": "zoom",
+    "name": "widgetzoom",
     "value": 100
   },
   {
@@ -129,10 +125,78 @@
   },
   {
     "name": "order",
-    "value": "[\"greeting\", \"time\", \"quote\", \"date\"]"
+    "value": "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\"]"
   },
   {
     "name": "theme",
     "value": "auto"
+  },
+  {
+    "name": "backgroundType",
+    "value": "api"
+  },
+  {
+    "name": "timeformat",
+    "value": "twentyfourhour"
+  },
+  {
+    "name": "experimental",
+    "value": false
+  },
+  {
+    "name": "debugtimeout",
+    "value": 0
+  },
+  {
+    "name": "quicklinks",
+    "value": "[]"
+  },
+  {
+    "name": "quicklinksenabled",
+    "value": false
+  },
+  {
+    "name": "weatherEnabled",
+    "value": false
+  },
+  {
+    "name": "tempformat",
+    "value": "celsius"
+  },
+  {
+    "name": "authorLink",
+    "value": true
+  },
+  {
+    "name": "bgtransition",
+    "value": true
+  },
+  {
+    "name": "backgroundVideoLoop",
+    "value": true
+  },
+  {
+    "name": "backgroundVideoMute",
+    "value": true
+  },
+  {
+    "name": "quicklinkstooltip",
+    "value": true
+  },
+  {
+    "name": "notesEnabled",
+    "value": true
+  },
+  {
+    "name": "showlocation",
+    "value": true
+  },
+  {
+    "name": "minuteHand",
+    "value": true
+  },
+  {
+    "name": "hourHand",
+    "value": true
   }
 ]

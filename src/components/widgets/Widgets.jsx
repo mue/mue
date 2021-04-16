@@ -1,91 +1,66 @@
 import React from 'react';
 
+import EventBus from '../../modules/helpers/eventbus';
+
 import Clock from './time/Clock';
 import Greeting from './greeting/Greeting';
 import Quote from './quote/Quote';
 import Search from './search/Search';
-import Maximise from './background/Maximise';
-import Favourite from './background/Favourite';
+import QuickLinks from './quicklinks/QuickLinks';
 import Date from './time/Date';
+
+const Weather = React.lazy(() => import('./weather/Weather'));
+const renderLoader = () => <></>;
 
 export default class Widgets extends React.PureComponent {
   constructor() {
     super();
+    this.state = {
+      order: JSON.parse(localStorage.getItem('order'))
+    };
     // widgets we can re-order
     this.widgets = {
       time: this.enabled('time') ? <Clock/> : null,
       greeting: this.enabled('greeting') ? <Greeting/> : null,
       quote: this.enabled('quote') ? <Quote/> : null,
-      date: this.enabled('date') ? <Date/> : null
-    }
+      date: this.enabled('date') ? <Date/> : null,
+      quicklinks: this.enabled('quicklinksenabled') ? <QuickLinks/> : null
+    };
   }
 
   enabled(key) {
-    const stringValue = localStorage.getItem(key);
-    let enabled = true;
-
-    if (stringValue !== null) {
-      if (stringValue === 'true') {
-        enabled = true;
-      }
-
-      if (stringValue === 'false') {
-        enabled = false;
-      }
-    }
-
-    return enabled;
+    return (localStorage.getItem(key) === 'true');
   }
 
   componentDidMount() {
-    const widget = document.getElementById('widgets');
-    // These lines of code prevent double clicking the page or pressing CTRL + A from highlighting the page
-    widget.addEventListener('mousedown', (event) => {
-      if (event.detail > 1) {
-        event.preventDefault();
+    EventBus.on('refresh', (data) => {
+      if (data === 'widgets') {
+        this.setState({
+          order: JSON.parse(localStorage.getItem('order'))
+        });
       }
-    }, false);
-
-    document.onkeydown = (e) => {
-      e = e || window.event;
-      if (!e.ctrlKey) {
-        return;
-      }
-      let code = e.which || e.keyCode;
-      
-      const modals = document.getElementsByClassName('ReactModal__Overlay');
-      if (modals.length > 0) {
-        return;
-      }
-
-      switch (code) {
-        case 65:
-          e.preventDefault();
-          e.stopPropagation();
-          break;
-      }
-    };
+    });
   }
 
   render() {
     // allow for re-ordering widgets
     let elements = [];
-    const order = JSON.parse(localStorage.getItem('order'));
 
-    if (order) {
-      order.forEach(element => {
+    if (this.state.order) {
+      this.state.order.forEach((element) => {
         elements.push(<React.Fragment key={element}>{this.widgets[element]}</React.Fragment>);
       });
     } else {
-      elements = ['greeting', 'time', 'quote', 'date'];
+      elements = ['greeting', 'time', 'quicklinks', 'quote', 'date'];
     }
 
     return (
       <div id='widgets'>
-        {this.enabled('searchBar') ? <Search/> : null}
-        {elements}
-        {this.enabled('view') ? <Maximise/> : null}
-        {this.enabled('favouriteEnabled') ? <Favourite/> : null}
+        <React.Suspense fallback={renderLoader()}>
+          {this.enabled('searchBar') ? <Search/> : null}
+          {elements}
+          {this.enabled('weatherEnabled') && !localStorage.getItem('offlineMode') ? <Weather/> : null}
+        </React.Suspense>
       </div>
     );
   }

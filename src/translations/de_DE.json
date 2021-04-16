@@ -31,6 +31,9 @@
     "weather": {
       "not_found": "Nicht gefunden"
     },
+    "date": {
+      "week": "Week"
+    },
     "navbar": {
       "tooltips": {
         "update": "Update Hinweise",

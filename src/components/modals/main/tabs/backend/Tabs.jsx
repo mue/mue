@@ -21,7 +21,7 @@ export default class Tabs extends React.PureComponent {
   render() {
     let className = 'sidebar';
     let tabClass = 'tab-content';
-    let optionsText = (<h1>Options</h1>);
+    let optionsText = (<h1>{window.language.modals.main.title}</h1>);
 
     if (this.props.navbar) {
       className = 'modalNavbar';
@@ -30,30 +30,31 @@ export default class Tabs extends React.PureComponent {
     }
 
     return (
-      <span className='tabs'>
+      <>
         <ul className={className}>
           {optionsText}
-          {this.props.children.map((tab) => {
-            return (
-              <Tab
-                currentTab={this.state.currentTab}
-                key={tab.props.label}
-                label={tab.props.label}
-                onClick={this.onClick}
-                navbar={this.props.navbar || false}
-              />
-            );
-          })}
+          {this.props.children.map((tab, index) => (
+            <Tab
+              currentTab={this.state.currentTab}
+              key={tab.props.label || index}
+              label={tab.props.label}
+              onClick={this.onClick}
+              navbar={this.props.navbar || false}
+            />
+          ))}
         </ul>
         <div className={tabClass}>
           <ErrorBoundary>
-            {this.props.children.map((child) => {
-              if (child.props.label !== this.state.currentTab) return undefined;
-              return child.props.children;
+            {this.props.children.map((tab) => {
+              if (tab.props.label !== this.state.currentTab) {
+                return undefined;
+              }
+
+              return tab.props.children;
             })}
           </ErrorBoundary>
         </div>
-      </span>
+      </>
     );
   }
 }

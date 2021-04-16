@@ -3,26 +3,13 @@
 }
 
 input {
-  &[type=text]  {
+  &[type=text] {
     width: 200px;
     color: var(--modal-text);
     background: var(--sidebar);
     border: none;
     padding: 10px 10px;
     border-radius: 5px;
-  }
-
-  &:checked+.slider {
-    background: map-get($theme-colours, 'gradient');
-
-    &:before {
-      -webkit-transform: translateX(26px);
-      transform: translateX(26px);
-    }
-  }
-
-  &:focus+.slider {
-    box-shadow: 0 0 1px #e67e22;
   }
 }
 
@@ -42,29 +29,28 @@ ul {
 .range {
   -webkit-appearance: none;
   width: 200px;
-  height: 15px;
+  height: 12px;
   border-radius: 12px;
   outline: none;
   background: var(--sidebar);
-  border-radius: 12px;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 12px;
-    background: map-get($theme-colours, 'gradient');
+    background: var(--modal-text);
     cursor: pointer;
   }
 
   &::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 12px;
     border: 0;
-    background: map-get($theme-colours, 'gradient');
+    background: var(--modal-text);
     cursor: pointer;
   }
 }
@@ -123,15 +109,24 @@ input[type=color]::-moz-color-swatch {
   margin-left: 0;
 }
 
-.MuiCheckbox-colorPrimary.Mui-checked, .MuiSwitch-colorPrimary.Mui-checked,  .MuIconButton-colorPrimary.Mui-checked{
-  color: map-get($button-colours, 'reset') !important;
+.MuiCheckbox-colorPrimary.Mui-checked,
+.MuiSwitch-colorPrimary.Mui-checked,
+.MuIconButton-colorPrimary.Mui-checked,
+.MuiSwitch-thumb,
+.MuiRadio-colorSecondary.Mui-checked,
+.PrivateSwitchBase-input-4 {
+  color: var(--modal-text) !important;
+}
+
+.MuiRadio-root {
+  color: var(--modal-text);
 }
 
 .MuiFormControlLabel-labelPlacementStart {
-  margin-left: 0px;
+  margin-left: 0px !important;
 }
 
-.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+.MuiSwitch-colorPrimary.Mui-checked+.MuiSwitch-track {
   background: darkgray !important;
 }
 
@@ -139,12 +134,11 @@ input[type=color]::-moz-color-swatch {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  padding: 20px;
-  color: #000;
-  background: #f0f0f0;
+  padding: 15px;
+  color: var(--modal-text);
+  background: var(--sidebar);
   max-width: 300px;
   border-radius: 0.7em;
-  display: none;
 
   h1 {
     font-size: 1em;
@@ -154,4 +148,30 @@ input[type=color]::-moz-color-swatch {
 .radio-title {
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 1.17rem;
+}
+
+.radio-title-small {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.sortableitem {
+  color: var(--modal-text) !important;
+  cursor: move;
+}
+
+.updatechangelog {
+  li {
+    cursor: initial;
+    font-size: 1rem;
+    list-style-type:disc;
+    padding: 0;
+    margin-left: 20px;
+  }
+}
+
+.aboutLink {
+  color: var(--modal-text) !important;
 }

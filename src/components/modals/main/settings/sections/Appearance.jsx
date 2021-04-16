@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { engineName } from 'react-device-detect';
+
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Radio from '../Radio';
@@ -11,15 +13,15 @@ export default function AppearanceSettings() {
 
   const themeOptions = [
     {
-      'name': 'Auto',
+      'name': appearance.theme.auto,
       'value': 'auto'
     },
     {
-      'name': 'Light',
+      'name': appearance.theme.light,
       'value': 'light'
     }, 
     {
-      'name': 'Dark',
+      'name': appearance.theme.dark,
       'value': 'dark'
     }
   ];
@@ -27,38 +29,39 @@ export default function AppearanceSettings() {
   return (
     <>
       <h2>{appearance.title}</h2>
-      <Radio name='theme' title='Theme' options={themeOptions} />
+      <Radio name='theme' title={appearance.theme.title} options={themeOptions} category='other' />
 
       <h3>{appearance.navbar.title}</h3>
-      <Checkbox name='notesEnabled' text={appearance.navbar.notes} />
-      <Checkbox name='refresh' text={appearance.navbar.refresh} />
+      <Checkbox name='notesEnabled' text={appearance.navbar.notes} element='.other' />
+      <Checkbox name='refresh' text={appearance.navbar.refresh} element='.other' />
 
       <h3>{appearance.font.title}</h3>
-      <Text title={appearance.font.custom} name='font' upperCaseFirst={true} />
+      <Text title={appearance.font.custom} name='font' upperCaseFirst={true} element='.other' />
       <br/>
-      <Checkbox name='fontGoogle' text={appearance.font.google} />
-      <Dropdown label='Font Weight' name='fontweight'>
+      <Checkbox name='fontGoogle' text={appearance.font.google} element='.other' />
+      <Dropdown label={appearance.font.weight.title} name='fontweight' element='.other'>
         {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
-        <option value='100'>Thin</option>
-        <option value='200'>Extra-Light</option>
-        <option value='300'>Light</option>
-        <option value='400'>Normal</option>
-        <option value='500'>Medium</option>
-        <option value='600'>Semi-Bold</option>
-        <option value='700'>Bold</option>
-        <option value='800'>Extra-Bold</option>
+        <option value='100'>{appearance.font.weight.thin}</option>
+        <option value='200'>{appearance.font.weight.extra_light}</option>
+        <option value='300'>{appearance.font.weight.light}</option>
+        <option value='400'>{appearance.font.weight.normal}</option>
+        <option value='500'>{appearance.font.weight.medium}</option>
+        <option value='600'>{appearance.font.weight.semi_bold}</option>
+        <option value='700'>{appearance.font.weight.bold}</option>
+        <option value='800'>{appearance.font.weight.extra_bold}</option>
       </Dropdown>
       <br/><br/>
-      <Dropdown label='Font Style' name='fontstyle'>
-        <option value='normal'>Normal</option>
-        <option value='italic'>Italic</option>
-        <option value='oblique'>Oblique</option>
+      <Dropdown label={appearance.font.style.title} name='fontstyle' element='.other'>
+        <option value='normal'>{appearance.font.style.normal}</option>
+        <option value='italic'>{appearance.font.style.italic}</option>
+        <option value='oblique'>{appearance.font.style.oblique}</option>
       </Dropdown>
 
       <h3>{appearance.accessibility.title}</h3>
-      <Checkbox name='animations' text={appearance.animations} betaFeature={true} />
-      <Slider title={appearance.accessibility.zoom} name='zoom' default='100' min='50' max='200' display='%'/>
-      <Slider title={appearance.accessibility.toast_duration} name='toastDisplayTime' default='2500' min='500' max='5000' display={' ' + appearance.accessibility.milliseconds} />
+      {(engineName === 'Blink') ? 
+        <Slider title={appearance.accessibility.widget_zoom} name='widgetzoom' default='100' step='10' min='50' max='200' display='%' category='other'/> 
+      : null}
+      <Slider title={appearance.accessibility.toast_duration} name='toastDisplayTime' default='2500' step='100' min='500' max='5000' display={' ' + appearance.accessibility.milliseconds} />
     </>
   );
 }

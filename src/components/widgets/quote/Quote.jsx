@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import FileCopy from '@material-ui/icons/FilterNone';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import StarIcon from '@material-ui/icons/Star';
@@ -16,13 +18,16 @@ export default class Quote extends React.PureComponent {
     this.state = {
       quote: '',
       author: '',
-      favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />,
-      tweet: <TwitterIcon className='copyButton' onClick={() => this.tweetQuote()} />,
-      copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />
+      favourited: <StarIcon2 className='copyButton' onClick={this.favourite} />,
+      tweet: '',
+      copy: '',
+      quoteLanguage: ''
     };
-  
+    this.buttons = {
+      tweet: <TwitterIcon className='copyButton' onClick={this.tweetQuote} />,
+      copy: <FileCopy className='copyButton' onClick={this.copyQuote} />
+    };
     this.language = window.language.widgets.quote;
-    this.languagecode = window.languagecode;
   }
 
   doOffline() {
@@ -57,6 +62,22 @@ export default class Quote extends React.PureComponent {
   }
 
   async getQuote() {
+    const favouriteQuote = localStorage.getItem('favouriteQuote');
+    if (favouriteQuote) {
+      return this.setState({
+        quote: favouriteQuote.split(' - ')[0],
+        author: favouriteQuote.split(' - ')[1]
+      });
+    }
+
+    const customQuote = localStorage.getItem('customQuote');
+    if (customQuote) {
+      return this.setState({
+        quote: '"' + customQuote + '"',
+        author: localStorage.getItem('customQuoteAuthor')
+      });
+    }
+
     if (localStorage.getItem('offlineMode') === 'true') {
       return this.doOffline();
     }
@@ -74,40 +95,26 @@ export default class Quote extends React.PureComponent {
       }
     }
 
-    const favouriteQuote = localStorage.getItem('favouriteQuote');
-    if (favouriteQuote) {
-      return this.setState({
-        quote: favouriteQuote.split(' - ')[0],
-        author: favouriteQuote.split(' - ')[1]
-      });
-    }
-
-    const customQuote = localStorage.getItem('customQuote');
-    if (customQuote) {
-      return this.setState({
-        quote: '"' + customQuote + '"',
-        author: localStorage.getItem('customQuoteAuthor')
-      });
-    }
-
     // First we try and get a quote from the API...
     try {
-      const data = await (await fetch(window.constants.API_URL + '/getQuote?language=' + localStorage.getItem('quotelanguage'))).json();
+      const quotelanguage = localStorage.getItem('quotelanguage');
+      const data = await (await fetch(window.constants.API_URL + '/quotes/random?language=' + quotelanguage)).json();
 
       // If we hit the ratelimit, we fallback to local quotes
       if (data.statusCode === 429) {
         return this.doOffline();
       }
 
-      let authorlink = `https://${this.languagecode.split('-')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
+      let authorlink = `https://${window.languagecode.split('_')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
       if (localStorage.getItem('authorLink') === 'false') {
-        authorLink = null;
+        authorlink = null;
       }
 
       this.setState({
         quote: '"' + data.quote + '"',
         author: data.author,
-        authorlink: authorlink
+        authorlink: authorlink,
+        quoteLanguage: quotelanguage
       });
     } catch (e) {
       // ..and if that fails we load one locally
@@ -115,38 +122,61 @@ export default class Quote extends React.PureComponent {
     }
   }
 
-  copyQuote() {
+  copyQuote = () => {
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
-    toast(this.language.quote);
+    toast(window.language.toasts.quote);
   }
 
-  tweetQuote() {
+  tweetQuote = () => {
     window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus();
   }
 
-  favourite() {
+  favourite = () => {
     if (localStorage.getItem('favouriteQuote')) {
       localStorage.removeItem('favouriteQuote');
       this.setState({
-        favourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />
+        favourited: <StarIcon2 className='copyButton' onClick={this.favourite} />
       });
     } else {
       localStorage.setItem('favouriteQuote', this.state.quote + ' - ' + this.state.author);
       this.setState({
-        favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} />
+        favourited: <StarIcon className='copyButton' onClick={this.favourite} />
       });
     }
   }
 
-  componentDidMount() {
-    // todo: fix (localStorage.getItem('favouriteQuoteEnabled') === 'false')
+  init() {
+    let favouriteQuote = '';
+    if (localStorage.getItem('favouriteQuoteEnabled') === 'true') {
+      favouriteQuote = localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={this.favourite} /> : <StarIcon2 className='copyButton' onClick={this.favourite} />;
+    }
+
     this.setState({
-      favourited: localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={() => this.favourite()} /> : null,
-      copy: (localStorage.getItem('copyButton') === 'false') ? null : this.state.copy,
-      tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.state.tweet
+      favourited: favouriteQuote,
+      copy: (localStorage.getItem('copyButton') === 'false') ? null : this.buttons.copy,
+      tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet
     });
 
-    this.getQuote();
+    if (!this.state.quote || localStorage.getItem('quotelanguage') !== this.state.quoteLanguage) {
+      this.getQuote();
+    }
+  }
+
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'quote') {
+        const element = document.querySelector('.quotediv');
+
+        if (localStorage.getItem('quote') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+        this.init();
+      }
+    });
+  
+    this.init();
   }
 
   render() {
@@ -154,7 +184,8 @@ export default class Quote extends React.PureComponent {
       <div className='quotediv'>
         <h1 className='quote'>{`${this.state.quote}`}</h1>
         <h1 className='quoteauthor'>
-          <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a> 
+          <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a>
+          <br/>
           {this.state.copy} {this.state.tweet} {this.state.favourited}
         </h1>
       </div>

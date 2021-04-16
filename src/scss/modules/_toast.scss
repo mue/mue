@@ -1,7 +1,8 @@
 .Toastify__toast-body {
-  color: #000000 !important;
+  color: var(--modal-text) !important;
   font-size: 16px !important;
   padding: 15px 20px !important;
+  background: var(--background) !important;
 }
 
 .Toastify__toast {
@@ -16,25 +17,19 @@
 .Toastify__close-button {
   margin-top: 10px;
   margin-right: 10px;
+  color: var(--modal-text) !important;
 }
 
 .Toastify__progress-bar--default {
   height: 3px !important;
-  background: #000000 !important;
+  background: var(--modal-text) !important;
+  color: var(--modal-text) !important;
 }
 
 .Toastify__toast-container {
   width: auto !important;
 }
 
-.dark {
-  .Toastify__toast {
-    background-color: #2f3542 !important;
-  }
-
-  .Toastify__toast-body,
-  .Toastify__progress-bar--default,
-  .Toastify__close-button {
-    color: white !important;
-  }
+.Toastify__toast--default {
+  background: var(--background) !important;
 }

@@ -1,14 +1,19 @@
 import React from 'react';
 
+import SettingsFunctions from '../../../../modules/helpers/settings';
+
 export default function ResetModal(props) {
+  const language = window.language.modals.main.settings.sections.advanced.reset_modal;
+
   return (
-    <div className='welcomeContent'>
-      <span className='closeModal' onClick={props.modalClose}>&times;</span>
-      <div className='welcomeModalText'>
-        reset text
-        <button className='close' onClick={props.modalClose}>yes</button>
-        <button className='close' onClick={props.modalClose}>no</button>
+    <>
+      <h3 style={{'textAlign': 'center'}}>{language.title}</h3>
+      <h4>{language.question}</h4>
+      <p>{language.information}</p>
+      <div className='resetfooter'>
+        <button className='reset' style={{ 'marginLeft': '0' }} onClick={() => SettingsFunctions.setDefaultSettings('reset')}>{window.language.modals.main.settings.buttons.reset}</button>
+        <button className='import' style={{ 'marginLeft': '5px' }} onClick={props.modalClose}>{language.cancel}</button>
       </div>
-    </div>
+    </>
   );
 }

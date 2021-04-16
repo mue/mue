@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Tooltip from '@material-ui/core/Tooltip';
+
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 
 export default class View extends React.PureComponent {
@@ -13,13 +15,13 @@ export default class View extends React.PureComponent {
   setAttribute(blur, brightness) {
     document.querySelector('#backgroundImage').setAttribute(
       'style',
-      `background-image: url(${document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}); -webkit-filter: brightness(${brightness}%);`
+      `background-image: url(${document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}px) brightness(${brightness}%);`
     );
   }
 
-  viewStuff() {
+  maximise = () => {
     // elements to hide
-    const elements = ['.searchBar', '.navbar-container', '.clock', '.greeting', '.quotediv', 'time'];
+    const elements = ['.searchBar', '.clock', '.greeting', '.quotediv', 'time', '.quicklinks-container', '.weather', '.date'];
 
     elements.forEach((element) => {
       try {
@@ -45,12 +47,10 @@ export default class View extends React.PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('background') === 'false') {
-      return null;
-    }
-
-    return <div className='view'>
-      <FullscreenIcon onClick={() => this.viewStuff()} />
-    </div>
+    return (
+      <Tooltip title={window.language.modals.main.settings.sections.background.buttons.view}>
+        <FullscreenIcon onClick={this.maximise} className='topicons' />
+      </Tooltip>
+    );
   }
 }

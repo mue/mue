@@ -1,20 +1,45 @@
 import React from 'react';
 
-import dtf from '@eartharoid/dtf';
+import EventBus from '../../../modules/helpers/eventbus';
+
+import dtf from '../../../modules/helpers/date';
+
+import './date.scss';
 
 export default class DateWidget extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      date: ''
+      date: '',
+      weekNumber: ''
     };
+  }
+
+  getWeekNumber(date) {
+    const dateToday = new Date(date.valueOf());
+    const dayNumber = (dateToday.getDay() + 6) % 7;
+
+    dateToday.setDate(dateToday.getDate() - dayNumber + 3);
+    const firstThursday = dateToday.valueOf();
+    dateToday.setMonth(0, 1);
+
+    if (dateToday.getDay() !== 4) {
+      dateToday.setMonth(0, 1 + ((4 - dateToday.getDay()) + 7) % 7);
+    }
+
+    this.setState({
+      weekNumber: `${window.language.widgets.date.week} ${1 + Math.ceil((firstThursday - dateToday) / 604800000)}`
+    });
   }
 
   getDate() {
     const date = new Date();
-    const type = localStorage.getItem('type');
 
-    if (type === 'short') {
+    if (localStorage.getItem('weeknumber') === 'true') {
+      this.getWeekNumber(date);
+    }
+
+    if (localStorage.getItem('dateType') === 'short') {
       const dateDay = date.getDate();
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
@@ -33,8 +58,7 @@ export default class DateWidget extends React.PureComponent {
           year = dateDay;
           break;
         // DMY
-        default:
-          break;
+        default: break;
       }
 
       let format;
@@ -50,6 +74,8 @@ export default class DateWidget extends React.PureComponent {
           break;
         case 'slashes':
           format = `${day}/${month}/${year}`;
+          break;
+        default: break;
       }
 
       this.setState({
@@ -57,25 +83,37 @@ export default class DateWidget extends React.PureComponent {
       });
     } else {
       // Long date
-      const lang = localStorage.getItem('language');
+      const lang = localStorage.getItem('language').split('_')[0];
 
       const nth = (localStorage.getItem('datenth') === 'true') ? dtf.nth(date.getDate()) : date.getDate();
 
       const day = (localStorage.getItem('dayofweek') === 'true') ? date.toLocaleDateString(lang, { weekday: 'long' }) : '';
       const month = date.toLocaleDateString(lang, { month: 'long' });
-      const year = date.getFullYear();
 
       this.setState({
-        date: `${day} ${nth} ${month} ${year}`
+        date: `${day} ${nth} ${month} ${date.getFullYear()}`
       });
     }
   }
 
   componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'date') {
+        const element = document.querySelector('.date');
+
+        if (localStorage.getItem('date') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+        this.getDate();
+      }
+    });
+
     this.getDate();
   }
 
   render() {
-    return <span style={{ 'textTransform': 'capitalize', 'fontWeight': 'bold' }}>{this.state.date}</span>;
+    return <span className='date'>{this.state.date} <br/> {this.state.weekNumber}</span>;
   }
 }

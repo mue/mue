@@ -8,6 +8,7 @@ import rgbToHex from '../../../../../../modules/helpers/background/rgbToHex';
 import { toast } from 'react-toastify';
 
 import 'react-color-gradient-picker/dist/index.css';
+import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class ColourSettings extends React.PureComponent {
   DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': '#ffb032', 'stop': 0 }], 'type': 'linear' };
@@ -21,23 +22,15 @@ export default class ColourSettings extends React.PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
-  resetItem(key) {
-    switch (key) {
-      case 'customBackgroundColour':
-        localStorage.setItem('customBackgroundColour', '');
-        this.setState({
-          gradientSettings: this.DefaultGradientSettings
-        });
-        break;
-
-      default:
-        toast('resetItem requires a key!');
-    }
-
+  resetColour() {
+    localStorage.setItem('customBackgroundColour', '');
+    this.setState({
+      gradientSettings: this.DefaultGradientSettings
+    });
     toast(this.language.toasts.reset);
   }
 
-  InitializeColorPickerState(gradientSettings) {
+  initialiseColorPickerState(gradientSettings) {
     this.GradientPickerInitalState = {
       points: gradientSettings.gradient.map((g) => {
         const rgb = hexToRgb(g.colour);
@@ -145,7 +138,7 @@ export default class ColourSettings extends React.PureComponent {
       let gradientInputs;
       if (gradientHasMoreThanOneColour) {
         if (this.GradientPickerInitalState === undefined) {
-          this.InitializeColorPickerState(this.state.gradientSettings);
+          this.initialiseColorPickerState(this.state.gradientSettings);
         }
 
         gradientInputs = (
@@ -177,7 +170,7 @@ export default class ColourSettings extends React.PureComponent {
 
     return (
       <>
-        <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetItem('customBackgroundColour')}>{this.language.buttons.reset}</span></p>
+        <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetColour()}>{this.language.buttons.reset}</span></p>
         <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
         {colourSettings}
       </>

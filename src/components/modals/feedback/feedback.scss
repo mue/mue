@@ -25,14 +25,14 @@
   }
 
   button {
-    width: 100%;
+    width: 50%;
     border-radius: 48px;
     outline: none;
     border: none;
     padding: 15px 20px;
     font-size: 1.5em;
     background: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
-    color: #ffffff;
+    color: #fff;
     text-transform: uppercase;
     cursor: pointer;
   }
@@ -50,5 +50,14 @@
 
   label.values {
     font-weight: 700;
+  }
+
+  textarea {
+    width: 80%;
+    background-color: var(--sidebar);
+  }
+
+  .feedbackerror {
+    color: red;
   }
 }

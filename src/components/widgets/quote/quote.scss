@@ -3,6 +3,8 @@
 .quote {
   font-size: 0.8em;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: initial;
+  user-select: none;
 }
 
 @media screen and (min-width: 600px) {
@@ -15,6 +17,12 @@
 .quoteauthor {
   font-size: 0.9em;
   letter-spacing: 0.5px;
+  user-select: none;
+
+  svg {
+    margin-left: 10px;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+  }
 }
 
 .copyButton {
@@ -35,4 +43,5 @@ h1.quoteauthor {
 .quoteauthorlink {
   text-decoration: none;
   color: white;
+  user-select: none;
 }

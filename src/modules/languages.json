@@ -1,15 +1,15 @@
 [
   {
+    "name": "Deutsch",
+    "value": "de_DE"
+  },
+  {
     "name": "English (UK)",
     "value": "en_GB"
   },
   {
     "name": "English (US)",
     "value": "en_US"
-  },
-  {
-    "name": "Germany",
-    "value": "de_DE"
   },
   {
     "name": "Español",
@@ -32,7 +32,7 @@
     "value": "ru"
   },
   {
-    "name": "Chinese (Simplified)",
+    "name": "中文 (简体)",
     "value": "zh_CN"
   }
 ]

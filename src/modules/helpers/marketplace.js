@@ -1,5 +1,7 @@
 import { toast } from 'react-toastify';
 
+import EventBus from './eventbus';
+
 export default class MarketplaceFunctions {
   // based on https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
   static urlParser (input) {
@@ -12,11 +14,18 @@ export default class MarketplaceFunctions {
       case 'settings':
         const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
         localStorage.clear();
-        oldSettings.forEach(item => localStorage.setItem(item.name, item.value));
+        oldSettings.forEach((item) => localStorage.setItem(item.name, item.value));
         break;
       case 'quote_packs':
         localStorage.removeItem('quote_packs');
         localStorage.removeItem('quoteAPI');
+        break;
+      case 'photos':
+      case 'photo_packs':
+        localStorage.removeItem('photo_packs');
+        localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
+        localStorage.removeItem('oldBackgroundType');
+        EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');
         break;
       default:
         try {
@@ -51,11 +60,15 @@ export default class MarketplaceFunctions {
         }
 
         localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
-        input.settings.forEach(element => localStorage.setItem(element.name, element.value));
+        input.settings.forEach((element) => localStorage.setItem(element.name, element.value));
         break;
 
+      case 'photos':
       case 'photo_packs':
         localStorage.setItem('photo_packs', JSON.stringify(input.photos));
+        localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
+        localStorage.setItem('backgroundType', 'photo_pack');
+        EventBus.dispatch('refresh', 'background');
         break;
 
       case 'quote_packs':

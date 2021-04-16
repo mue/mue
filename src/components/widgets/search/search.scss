@@ -13,15 +13,17 @@
     font-size: calc(5px + 1.2vmin);
     border: none;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
     -webkit-transition: width 0.5s ease-in-out;
     transition: width 0.5s ease-in-out;
     color: white;
     padding: 0.5rem 1rem;
+    user-select: none;
 
     &:focus {
       width: 400px;
-      background-color: rgba(0, 0, 0, .3);
+      background-color: rgba(0, 0, 0, 0.5);
+      user-select: text;
     }
   }
 

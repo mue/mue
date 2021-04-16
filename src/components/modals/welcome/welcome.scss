@@ -1,5 +1,9 @@
 @import '../main/scss/index.scss';
 
+.welcomemodal {
+  margin-top: 40px;
+}
+
 .welcomeModalText {
   line-height: 2px;
 
@@ -15,6 +19,7 @@
 }
 
 .welcomeContent {
+  margin-top: 2em;
   text-align: center;
   padding: 25px;
 

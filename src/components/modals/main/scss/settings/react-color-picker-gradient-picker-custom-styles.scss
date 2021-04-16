@@ -1,6 +1,6 @@
 // The following CSS is to work around some assumptions made by the react-color-gradient-picker
 * {
-// workaround for https://github.com/arthay/react-color-gradient-picker/issues/11
+  // workaround for https://github.com/arthay/react-color-gradient-picker/issues/11
   box-sizing: inherit;
 }
 
@@ -11,21 +11,23 @@ div.color-preview-area > div > div:nth-child(5) {
 
 .ui-color-picker {
   margin: 8px -12px;
+  background-color: var(--background) !important;
 }
 
 .input-field .label {
   color: inherit;
+  color: var(--modal-text) !important;
 }
 
 // other styling for themes support etc
-.ui-color-picker {
-  background-color: var(--background) !important;
-}
-
 .gradient-degrees {
   border: 3px solid var(--modal-text) !important;
 }
 
 .gradient-degree-pointer {
   background-color: var(--modal-text) !important;
+}
+
+.gradient-type-item.active::after {
+  border: 2px solid var(--modal-text) !important;
 }

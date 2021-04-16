@@ -6,7 +6,7 @@
 @import 'settings/dropdown';
 @import 'settings/daypicker';
 
-@import './settings/react-color-picker-gradient-picker-custom-styles.scss';
+@import 'marketplace/main';
 
 .Modal {
   color: var(--modal-text);
@@ -16,7 +16,6 @@
   opacity: 1;
   z-index: -2;
   padding: 25px;
-  transition: 0.6s;
   transition-timing-function: ease-in;
   border-radius: map-get($modal, 'border-radius');
   -moz-user-select: none;
@@ -78,6 +77,21 @@
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   overflow-y: auto;
   position: relative;
+
+  // animation
+  opacity: 0;
+  transform: scale(0);
+  transition: all 300ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
+}
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ReactModal__Content--before-close {
+  opacity: 0;
+  transform: scale(0);
 }
 
 @media only screen and (max-height: 700px) {
@@ -93,47 +107,25 @@
   }
 }
 
-.ReactModal__Overlay {
-  opacity: 0;
-  transform: scale(0);
-  transition: all 300ms cubic-bezier(.47, 1.64, .41, .8);
-}
-
-.ReactModal__Overlay--after-open {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.ReactModal__Overlay--before-close {
-  opacity: 0;
-  transform: scale(0);
-}
-
 ul.sidebar {
   position: absolute;
   top: 0;
   left: 0;
   margin: 0;
   padding-left: 0;
-  height: 100vh;
   background: var(--sidebar);
-  left: 0;
   border-radius: 12px 0 0 12px;
   text-align: left;
   font-size: 24px;
+  min-height: 100vh;
 
   h1 {
     text-align: center;
-  }
-
-  svg,
-  li {
-    font-size: 30px;
+    font-size: 1.8em;
   }
 
   svg {
     vertical-align: middle;
-    font-size: 32px;
     padding: 5px;
   }
 
@@ -161,18 +153,22 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 60%;
   height: 80%;
+}
+
+@media only screen and (max-width: 1300px) {
+  #modal {
+    width: 90% !important;
+  }
+}
+@media only screen and (min-width: 1310px) {
+  #modal {
+    width: 60%;
+  }
 }
 
 .tab-list-active {
   background: var(--tab-active);
-}
-
-@media only screen and (max-height: 898px) {
-  ul.sidebar {
-    height: auto;
-  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -199,33 +195,51 @@ li {
 
 .tab-content {
   position: absolute;
-  left: 25%;
 
   h3 {
     text-transform: uppercase;
   }
 }
 
+@media only screen and (min-width: 2300px) {
+  .tab-content {
+    left: 350px;
+    top: 7%;
+  }
+}
+
 @media only screen and (max-width: 1920px) {
   .tab-content {
-    position: absolute;
-    left: 30%;
-    top: 15%;
+    left: 120px;
+    top: 50px;
   }
 }
 
 @media only screen and (min-width: 1920px) {
   .tab-content {
-    position: absolute;
-    left: 30%;
+    left: 350px;
     top: 7%;
   }
 }
 
 @media only screen and (max-width: 1400px) {
   .tab-content {
-    position: absolute;
-    left: 45%;
+    left: 350px;
+    top: 75px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .tab-content {
+    left: 350px;
+    top: 75px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .tab-content {
+    left: 125px;
+    top: 75px;
   }
 }
 
@@ -233,6 +247,20 @@ li {
   font-size: 22px;
   font-weight: 500;
   display: inline-flex;
+
+  &:hover {
+    color: rgb(165, 165, 165);
+    background: none;
+  }
+
+  span,
+  svg {
+    font-size: 1.1em !important;
+  }
+
+  svg {
+    font-size: 1.2em !important;
+  }
 }
 
 .modalNavbar {
@@ -244,6 +272,7 @@ li {
   svg {
     margin-right: 0.5rem;
     padding: 3px;
+    font-size: 1.4em !important;
   }
 }
 
@@ -253,18 +282,7 @@ li {
   }
 }
 
-.navbar-item {
-  span,
-  svg {
-    font-size: 1.1em !important;
-  }
-
-  &:hover {
-    background: none;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1300px) {
   li.navbar-item {
     span {
       display: none;
@@ -296,7 +314,6 @@ li {
   }
 
   &:hover {
-    opacity: .8;
     background: map-get($theme-colours, 'gradient');
     -webkit-background-clip: text;
     background-clip: text;
@@ -321,4 +338,32 @@ li {
   height: auto;
   border-radius: 50%;
   padding-right: 5px;
+}
+
+.resetmodal {
+  min-height: 300px !important;
+  max-width: 300px !important;
+  margin: auto;
+}
+
+.resetfooter {
+  position: absolute;
+  bottom: 20px;
+
+  button.reset {
+    margin-right: 43px;
+  }
+}
+
+.resetoverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.welcomeLink {
+  color: var(--modal-text) !important;
+  padding-right: 10px;
+}
+
+.MuiIconButton-root {
+  color: var(--modal-text) !important;
 }

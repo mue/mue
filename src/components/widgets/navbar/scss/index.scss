@@ -23,7 +23,7 @@
     margin: 0.5rem;
     filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
     cursor: pointer;
-    transition: .2s ease;
+    transition: 0.2s ease;
 
     &:hover {
       color: map-get($theme-colours, 'main-text-color');

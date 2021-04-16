@@ -1,3 +1,5 @@
+import experimentalInit from './experimental';
+
 const defaultSettings = require('../default_settings.json');
 const languages = require('../languages.json');
 
@@ -34,7 +36,7 @@ export default class SettingsFunctions {
 
     if (old !== null && !value) {
       if (old === 'true') {
-          val = false;
+        val = false;
       }
 
       if (old === 'false') {
@@ -59,6 +61,8 @@ export default class SettingsFunctions {
       localStorage.setItem('language', 'en_GB');
     }
 
+    localStorage.setItem('tabName', window.language.tabname);
+
     if (reset) {
       localStorage.setItem('showWelcome', false);
     }
@@ -68,14 +72,38 @@ export default class SettingsFunctions {
     window.location.reload();
   }
 
-  static loadSettings() {
+  static loadSettings(hotreload) {
+    document.getElementById('widgets').style.zoom = localStorage.getItem('widgetzoom') + '%';
+
+    const theme = localStorage.getItem('theme');
+    switch (theme) {
+      case 'dark':
+        document.body.classList.add('dark');
+        break;
+      case 'auto':
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.body.classList.add('dark');
+        }
+        break;
+      default:
+        document.body.classList.remove('dark');
+    }
+
+    const tabName = localStorage.getItem('tabName') || window.language.tabname;
+    document.title = tabName;
+
+    if (hotreload === true) {
+      return;
+    }
+
     const css = localStorage.getItem('customcss');
     if (css) {
       document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
     }
 
-    if (localStorage.getItem('darkTheme') === 'true') {
-      document.getElementsByClassName('Toastify')[0].classList.add('dark');
+    const js = localStorage.getItem('customjs');
+    if (js) {
+      document.body.insertAdjacentHTML('beforeend', '<script>' + js + '</script>');
     }
 
     const font = localStorage.getItem('font');
@@ -87,12 +115,12 @@ export default class SettingsFunctions {
         url = `@import url('https://fonts.googleapis.com/css2?family=${font}&display=swap');`;
       }
 
-      const fontWeight = localStorage.getItem('fontWeight');
+      const fontWeight = localStorage.getItem('fontweight');
       if (fontWeight) {
         fontweight = `font-weight: ${fontWeight};`;
       }
 
-      const fontStyle = localStorage.getItem('fontStyle');
+      const fontStyle = localStorage.getItem('fontstyle');
       if (fontStyle) {
         fontstyle = `font-style: ${fontStyle};`;
       }
@@ -101,32 +129,16 @@ export default class SettingsFunctions {
         <style>
           ${url}
           * {
-            font-family: '${font}', 'Lexend Deca' !important;
+            font-family: '${font}', 'Lexend Deca', 'Montserrat' !important;
             ${fontweight}
             ${fontstyle}
           }
-      </style>`);
+        </style>
+      `);
     }
 
-    const zoom = localStorage.getItem('zoom');
-    // don't bother if it's default zoom
-    if (zoom !== 100) {
-      document.body.style.zoom = zoom + '%';
-    }
-
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-      document.body.classList.add('dark');
-    } else if (theme === 'auto') {
-      // Set theme depending on user preferred
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-      }
-    }
-
-    const tabName = localStorage.getItem('tabName');
-    if (tabName) {
-      document.title = tabName;
+    if (localStorage.getItem('experimental') === 'true') {
+      experimentalInit();
     }
 
     // easter egg
@@ -147,5 +159,26 @@ export default class SettingsFunctions {
  ██              Feedback: hello@muetab.com                 ██
  █████████████████████████████████████████████████████████████
 `);
+  }
+
+  static moveSettings() {
+    localStorage.setItem('order', "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\"]");
+    localStorage.setItem('backgroundType', 'api');
+    localStorage.setItem('timeformat', 'twentyfourhour');
+    localStorage.setItem('bgtransition', true);
+    localStorage.setItem('tempformat', 'celsius');
+    localStorage.setItem('theme', 'auto');
+    localStorage.setItem('toastDisplayTime', 2500);
+    localStorage.setItem('widgetzoom', 100);
+    localStorage.setItem('fontweight', 400);
+    localStorage.setItem('language', window.languagecode);
+    localStorage.setItem('tabname', window.language.tabname);
+    localStorage.setItem('debugtimeout', 0);
+    localStorage.setItem('showWelcome', true);
+    localStorage.setItem('quicklinks', '[]');
+    localStorage.setItem('customBackgroundColour', "{\"angle\":\"180\",\"gradient\":[{\"colour\":\"#ffb032\",\"stop\":0}],\"type\":\"linear\"}");
+    localStorage.setItem('firstRun', true);
+
+    window.location.reload();
   }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import PhotoInformation from './PhotoInformation';
 
 import './scss/index.scss';
@@ -10,13 +12,9 @@ export default class Background extends React.PureComponent {
     this.state = {
       style: '',
       url: '',
-      video: false,
+      currentAPI: '',
       photoInfo: {
-        hidden: false,
-        credit: '',
-        location: 'N/A',
-        camera: 'N/A',
-        resolution: 'N/A'
+        hidden: false
       }
     };
     this.language = window.language.widgets.background;
@@ -25,34 +23,21 @@ export default class Background extends React.PureComponent {
   gradientStyleBuilder(gradientSettings) {
     const { type, angle, gradient } = gradientSettings;
     let style = `background: ${gradient[0].colour};`;
+
     if (gradient.length > 1) {
       // Note: Append the gradient for additional browser support.
-      const stepStyles = gradient.map(g => ` ${g.colour} ${g.stop}%`).join();
+      const stepStyles = gradient.map((g) => ` ${g.colour} ${g.stop}%`).join();
       style += ` background: ${type}-gradient(${(type === 'linear' ? (`${angle}deg,`) : '')}${stepStyles})`;
     }
+
     this.setState({
+      type: 'colour',
       style: style
     });
   }
 
-  setBackground() {
-    // Brightness
-    let brightness = localStorage.getItem('brightness');
-    if (localStorage.getItem('brightnessTime') && new Date().getHours() > 18) {
-      brightness = 75;
-    }
-
-    if (this.state.url !== '') {
-      document.querySelector('#backgroundImage').setAttribute(
-        'style',
-        `background-image: url(${this.state.url}); -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
-      );
-    } else {
-      document.querySelector('#backgroundImage').setAttribute(
-        'style',
-        `${this.state.style}; -webkit-filter: blur(${localStorage.getItem('blur')}px) brightness(${brightness}%);`
-      );
-    }
+  videoCheck(url) {
+    return url.startsWith('data:video/') || url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg');
   }
 
   offlineBackground() {
@@ -60,54 +45,98 @@ export default class Background extends React.PureComponent {
 
     // Get all photographers from the keys in offlineImages.json
     const photographers = Object.keys(offlineImages);
-    // Select a random photographer from the keys
     const photographer = photographers[Math.floor(Math.random() * photographers.length)];
 
-    // Select a random image
     const randomImage = offlineImages[photographer].photo[
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
     ];
 
     this.setState({
-      url: `./offline-images/${randomImage}.jpg`,
+      url: `./offline-images/${randomImage}.webp`,
       photoInfo: {
-        hidden: true,
         credit: photographer
       }
     });
   }
 
+  setBackground() {
+    const backgroundImage = document.querySelector('#backgroundImage');
+
+    if (this.state.url !== '') {
+      const url = (localStorage.getItem('ddgProxy') === 'true') ? window.constants.DDG_PROXY + this.state.url : this.state.url;
+      const photoInformation = document.querySelector('.photoInformation');
+
+      if (localStorage.getItem('bgtransition') === 'false') {
+        if (photoInformation) {
+          photoInformation.style.display = 'block';
+        }
+        backgroundImage.style.backgroundImage = null;
+        return backgroundImage.style.backgroundImage = `url(${url})`; 
+      }
+
+      backgroundImage.classList.add('backgroundPreload');
+      backgroundImage.style.backgroundImage = null;
+
+      if (photoInformation) {
+        photoInformation.classList.add('backgroundPreload');
+      }
+
+      // preloader for background transition
+      let preloader = document.createElement('img');
+      preloader.src = url;
+
+      // once image has loaded, add the fade-in transition
+      preloader.addEventListener('load', () => {
+        backgroundImage.classList.remove('backgroundPreload');
+        backgroundImage.classList.add('fade-in');
+
+        backgroundImage.style.backgroundImage = `url(${url})`;        
+        preloader.remove();
+
+        if (photoInformation) {
+          photoInformation.classList.remove('backgroundPreload');
+          photoInformation.classList.add('fade-in');
+        }
+      });
+    } else {
+      backgroundImage.setAttribute('style', `${this.state.style};`);
+    }
+  }
+
   // Main background getting function
   async getBackground() {
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return this.offlineBackground();
-    }
+    const offline = (localStorage.getItem('offlineMode') === 'true');
 
     switch (localStorage.getItem('backgroundType')) {
       case 'api':
+        if (offline) {
+          return this.offlineBackground();
+        }
+
         // favourite button
         const favourited = JSON.parse(localStorage.getItem('favourite'));
         if (favourited) {
           return this.setState({
              url: favourited.url,
              photoInfo: {
-              credit: favourited.credit,
-              location: favourited.location
+              credit: favourited.credit
             }
           });
         }
 
         // API background
         const backgroundAPI = localStorage.getItem('backgroundAPI');
+        const apiCategory = localStorage.getItem('apiCategory');
 
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
+            //requestURL = `${window.constants.UNSPLASH_URL}/getImage?category=${apiCategory}`;
             requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
-          break;
+            break;
           // Defaults to Mue
           default:
-            requestURL = `${window.constants.API_URL}/getImage?category=Outdoors`;
+            requestURL = `${window.constants.API_URL}/images/random?category=${apiCategory}`;
             break;
         }
 
@@ -120,19 +149,21 @@ export default class Background extends React.PureComponent {
 
         this.setState({
           url: data.file,
+          type: 'api',
+          currentAPI: backgroundAPI,
           photoInfo: {
-            credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ' on Unsplash',
+            credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ` ${this.language.unsplash}`,
             location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
-            camera: data.camera || 'N/A',
-            resolution: data.resolution || 'N/A'
+            camera: data.camera,
+            resolution: data.resolution,
+            url: data.file
           }
         });
       break;
 
       case 'colour':
-        // background colour
-        const customBackgroundColour = localStorage.getItem('customBackgroundColour');
-        if (customBackgroundColour !== 'Disabled' && customBackgroundColour !== '') {
+        const customBackgroundColour = localStorage.getItem('customBackgroundColour') || {'angle':'180','gradient':[{'colour':'#ffb032','stop':0}],'type':'linear'};
+
         let gradientSettings = '';
         try {
           gradientSettings = JSON.parse(customBackgroundColour);
@@ -140,7 +171,7 @@ export default class Background extends React.PureComponent {
           const hexColorRegex = /#[0-9a-fA-F]{6}/s;
           if (hexColorRegex.exec(customBackgroundColour)) {
             // Colour use to be simply a hex colour or a NULL value before it was a JSON object. This automatically upgrades the hex colour value to the new standard. (NULL would not trigger an exception)
-            gradientSettings = { "type": "linear", "angle": "180", "gradient": [{ "colour": colour, "stop": 0 }] };
+            gradientSettings = { 'type': 'linear', 'angle': '180', 'gradient': [{ 'colour': customBackgroundColour, 'stop': 0 }] };
             localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
           }
         }
@@ -148,36 +179,33 @@ export default class Background extends React.PureComponent {
         if (typeof gradientSettings === 'object' && gradientSettings !== null) {
           return this.gradientStyleBuilder(gradientSettings);
         }
-      }
       break;
 
       case 'custom':
-        // custom user background
         const customBackground = localStorage.getItem('customBackground');
-        if (customBackground !== '') {
-          // video background
-          if (customBackground.includes('.mp4') || customBackground.includes('.webm') || customBackground.includes('.ogg')) { 
-            return this.setState({
-              url: customBackground,
-            video: true,
-            photoInfo: {
-              hidden: true
-            }
-          });
-        // normal background
-        } else {
-          return this.setState({
+
+        // allow users to use offline images
+        if (offline && !customBackground.startsWith('data:')) {
+          return this.offlineBackground();
+        }
+
+        if (customBackground !== '' && customBackground !== 'undefined') {
+          this.setState({
             url: customBackground,
+            type: 'custom',
+            video: this.videoCheck(customBackground),
             photoInfo: {
               hidden: true
             }
           });
         }
-      }
       break;
 
       case 'photo_pack':
-        // photo pack
+        if (offline) {
+          return this.offlineBackground();
+        }
+
         const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
         if (photoPack) {
           const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
@@ -188,29 +216,83 @@ export default class Background extends React.PureComponent {
             }
           });
         }
-      }
+      break;
+      default: 
+        break;
+    }
   }
 
   componentDidMount() {
-    if (localStorage.getItem('background') === 'false') {
-      return;
-    }
+    const element = document.querySelector('#backgroundImage');
+
+    const refresh = () => {
+      element.classList.remove('fade-in');
+      this.setState({
+        url: '',
+        video: false,
+        photoInfo: {
+          hidden: true
+        }
+      });
+      this.getBackground();
+    };
+
+    EventBus.on('refresh', (data) => {
+      if (data === 'background') {
+        const backgroundType = localStorage.getItem('backgroundType');
+
+        // todo: make this good
+        if (backgroundType !== this.state.type 
+          || (localStorage.getItem('backgroundAPI') !== this.state.currentAPI && backgroundType === 'api') 
+          || (backgroundType === 'custom' && localStorage.getItem('customBackground') !== this.state.url)
+        ) {
+          return refresh();
+        }
+
+        if (this.state.video === true) {
+          document.querySelector('#backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+        } else {
+          element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+        }
+      }
+
+      if (data === 'marketplacebackgrounduninstall') {
+        refresh();
+      }
+    });
 
     this.getBackground();
   }
 
   // only set once we've got the info
   componentDidUpdate() {
+    if (this.state.video === true) {
+      return;
+    }
+
     this.setBackground();
   }
 
   render() {
+    if (this.state.video === true) {
+      const enabled = (setting) => {
+        return (localStorage.getItem(setting) === 'true');
+      };
+
+      return (
+        <video autoPlay muted={enabled('backgroundVideoMute')} loop={enabled('backgroundVideoLoop')} style={{ 'WebkitFilter': `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)` }} id='backgroundVideo'>
+          <source src={this.state.url}/>
+        </video>
+      );
+    }
+
     return (
-      <React.Fragment>
-        <div id='backgroundImage'/>
-        {(this.state.photoInfo.credit !== '') ? <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
+      <>
+        <div style={{ 'WebkitFilter': `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)` }} id='backgroundImage'/>
+        {(this.state.photoInfo.credit !== '') ? 
+          <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
         : null}
-      </React.Fragment>
+      </>
     );
   }
 }

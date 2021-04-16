@@ -3,7 +3,6 @@ import React from 'react';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import Item from '../Item';
 import Items from '../Items';
-import FileUpload from '../../settings/FileUpload';
 
 import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 
@@ -14,109 +13,89 @@ export default class Added extends React.PureComponent {
     super();
     this.state = {
       installed: JSON.parse(localStorage.getItem('installed')),
-      current_data: {
-        type: '',
-        name: '',
-        content: {}
-      },
-      item_data: {
+      item: {
         name: 'Name',
         author: 'Author',
         description: 'Description',
-        updated: '???',
+        //updated: '???',
         version: '1.0.0',
         icon: ''
       },
-      button: ''
-    }
+      button: '',
+      display: {
+        marketplace: 'block',
+        item: 'none'
+      }
+    };
     this.buttons = {
-      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>Remove</button>,
-    }
+      uninstall: <button className='removeFromMue' onClick={() => this.uninstall()}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
+    };
+    this.language = window.language.modals.main.addons;
   }
 
-  toggle(type, type2, data) {
+  toggle(type, data) {
     if (type === 'item') {
       const installed = JSON.parse(localStorage.getItem('installed'));
-      const info = installed.find(i => i.name === data);
+      const info = installed.find((i) => i.name === data);
 
       this.setState({
-        current_data: {
-          type: type2,
+        item: {
+          type: info.type,
           name: data,
-          content: info
-        },
-        item_data: {
-          name: info.name,
+          display_name: info.name,
           author: info.author,
           description: MarketplaceFunctions.urlParser(info.description.replace(/\n/g, '<br>')),
-          updated: 'Not Implemented',
+          //updated: info.updated,
           version: info.version,
           icon: info.screenshot_url
+        },
+        button: this.buttons.uninstall,
+        display: {
+          marketplace: 'none',
+          item: 'block'
         }
       });
-
-      document.getElementById('item').style.display = 'block';
-      document.getElementById('marketplace').style.display = 'none';
     } else {
-      document.getElementById('marketplace').style.display = 'block';
-      document.getElementById('item').style.display = 'none';
+      this.setState({
+        display: {
+          marketplace: 'block',
+          item: 'none'
+        }
+      });
     }
-
-    this.setState({
-      button: this.buttons.uninstall
-    });
   }
 
-  manage(type, input) {
-    switch (type) {
-      case 'install':
-        MarketplaceFunctions.install(input.type, input, true);
-        break;
-      case 'uninstall':
-        MarketplaceFunctions.uninstall(this.state.current_data.name, this.state.current_data.content.type);
-        break;
-      default:
-        break;
-    }
-
-    toast(window.language.modals.main.toasts[type + 'ed']);
-
-    let button = '';
-    if (type === 'install') {
-      button = this.buttons.uninstall;
-    }
+  uninstall() {
+    MarketplaceFunctions.uninstall(this.state.item.display_name, this.state.item.type);
+    
+    toast(window.language.toasts.uninstalled);
 
     this.setState({
-      button: button,
+      button: '',
       installed: JSON.parse(localStorage.getItem('installed'))
     });
   }
 
   render() {
-    let content = <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', 'addon', input)} />;
-
     if (this.state.installed.length === 0) {
-      content = (
-        <div className='items'>
+      return (
+        <div className='emptyitems'>
           <div className='emptyMessage'>
             <LocalMallIcon/>
-            <h1>Empty</h1>
-            <p className='description'>Nothing here (yet)</p>
-            <button className='goToMarket'>Take me there</button>
+            <h1>{this.language.empty.title}</h1>
+            <p className='description'>{this.language.empty.description}</p>
           </div>
         </div>
       );
     }
 
     return (
-      <React.Fragment>
-        <div id='marketplace'>
-          <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.manage('install', JSON.parse(e.target.result))} />
-          <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>Sideload</button>
-          {content}
+      <>
+        <div style={{ 'display': this.state.display.marketplace }}>
+          <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', input)} />        
         </div>
-        <Item data={this.state.item_data} button={this.state.button} />
-      </React.Fragment>
+        <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
+      </>
     );
   }
 }

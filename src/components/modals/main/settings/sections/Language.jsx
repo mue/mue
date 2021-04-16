@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Dropdown from '../Dropdown';
 import Radio from '../Radio';
 
 const languages = require('../../../../../modules/languages.json');
+const quote_languages = require('../../../../../modules/quote_languages.json');
 
 export default function LanguageSettings() {
   const language = window.language.modals.main.settings.sections.language;
@@ -11,12 +11,9 @@ export default function LanguageSettings() {
   return (
     <>
       <h2>{language.title}</h2>
-      <Radio name='language' options={languages} />
-      <br/>
-      <Dropdown label={language.quote} name='quotelanguage'>
-        <option value='English'>English</option>
-        <option value='French'>Français</option>
-      </Dropdown>
+      <Radio name='language' options={languages} element='.language' />
+      <h3>{language.quote}</h3>
+      <Radio name='quotelanguage' options={quote_languages} category='quote' />
     </>
   );
 }

@@ -3,10 +3,15 @@
 
 #backgroundImage {
   height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  zoom: 100% !important;
+}
+
+.backgroundPreload {
+  opacity: 0;
 }
 
 #backgroundVideo {
@@ -18,7 +23,7 @@
 }
 
 .fade-in {
-  @include animation('fadein 2s');
+  @include animation('fadein 1s');
 }
 
 @include keyframes(fadein) {
@@ -28,37 +33,5 @@
 
   to {
     opacity: 1;
-  }
-}
-
-.backgroundEffects {
-  opacity: 0.7;
-  transition: ease 0.6s;
-}
-
-.creditlink {
-  text-decoration: none;
-  color: white;
-}
-
-.view {
-  right: 25px;
-}
-
-.favourite {
-  right: 50px;
-  padding-right: 5px;
-}
-
-.view,
-.favourite {
-  bottom: 10px;
-  position: absolute;
-  transition: all 0.5s ease 0s;
-  width: auto;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
   }
 }

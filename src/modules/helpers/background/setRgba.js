@@ -1,6 +1,6 @@
 const isValidRGBValue = (value) => {
   return (typeof (value) === 'number' && Number.isNaN(value) === false && value >= 0 && value <= 255);
-}
+};
 
 export default function setRGBA(red, green, blue, alpha) {
   if (isValidRGBValue(red) && isValidRGBValue(green) && isValidRGBValue(blue)) {

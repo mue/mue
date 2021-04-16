@@ -26,7 +26,7 @@ export default class AdvancedSettings extends React.PureComponent {
       localStorage.setItem(key, content[key]);
     }
 
-    toast(this.language.toasts.imported);
+    toast(window.language.toasts.imported);
   }
 
   render() {
@@ -41,18 +41,18 @@ export default class AdvancedSettings extends React.PureComponent {
         <button className='reset' onClick={() => this.setState({ resetModal: true })}>{this.language.buttons.reset}</button>
         <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.language.buttons.export}</button>
         <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.language.buttons.import}</button>
-        <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)} />
+        <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)}/>
 
         <h3>{advanced.customisation}</h3>
-        <Text title={advanced.custom_js} name='customjs' textarea={true}/>
-        <Text title={advanced.custom_css} name='customcss' textarea={true}/>
-        <Text title='Tab Name' name='tabName'/>
+        <Text title={advanced.custom_js} name='customjs' textarea={true} element='.other'/>
+        <Text title={advanced.custom_css} name='customcss' textarea={true} element='.other'/>
+        <Text title={advanced.tab_name} name='tabName' default={window.language.tabname} category='other'/>
 
         <h3>{this.language.sections.experimental.title}</h3>
         <p>{advanced.experimental_warning}</p>
-        <Checkbox name='experimental' text={this.language.enabled} />
+        <Checkbox name='experimental' text={this.language.enabled} element='.other'/>
 
-        <Modal onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className={'modal'} overlayClassName={'Overlay'} ariaHideApp={false}>
+        <Modal onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className={'Modal resetmodal'} overlayClassName={'Overlay resetoverlay'} ariaHideApp={false}>
           <ResetModal modalClose={() => this.setState({ resetModal: false })} />
         </Modal>
       </>

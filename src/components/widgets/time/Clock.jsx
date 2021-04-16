@@ -1,8 +1,11 @@
 import React from 'react';
 
-import Analog from 'react-clock';
+import EventBus from '../../../modules/helpers/eventbus';
 
 import './clock.scss';
+
+const Analog = React.lazy(() => import('react-clock'));
+const renderLoader = () => <></>;
 
 export default class Clock extends React.PureComponent {
   constructor() {
@@ -85,27 +88,41 @@ export default class Clock extends React.PureComponent {
   }
 
   componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'clock') {
+        const element = document.querySelector('.clock-container');
+
+        if (localStorage.getItem('time') === 'false') {
+          return element.style.display = 'none';
+        }
+
+        element.style.display = 'block';
+      }
+    });
+
     this.startTime(0);
   }
 
   render() {
-    let clockHTML = <h1 className='clock'>{this.state.time}<span className='ampm'>{this.state.ampm}</span></h1>;
+    let clockHTML = <h1 className='clock clock-container'>{this.state.time}<span className='ampm'>{this.state.ampm}</span></h1>;
 
-    const checkValue = (setting) => {
+    const enabled = (setting) => {
       return (localStorage.getItem(setting) === 'true');
-    }
+    };
 
     if (localStorage.getItem('timeType') === 'analogue') {
       clockHTML = (
-        <Analog 
-          className='analogclock' 
-          value={this.state.time} 
-          renderHourMarks={checkValue('hourMarks')} 
-          renderMinuteMarks={checkValue('minuteMarks')} 
-          renderSecondHand={checkValue('secondHand')} 
-          renderMinuteHand={checkValue('minuteHand')} 
-          renderHourHand={checkValue('hourHand')} 
-        />
+        <React.Suspense fallback={renderLoader()}>
+          <Analog 
+            className='analogclock clock-container' 
+            value={this.state.time} 
+            renderMinuteMarks={enabled('minuteMarks')}
+            renderHourMarks={enabled('hourMarks')} 
+            renderSecondHand={enabled('secondHand')} 
+            renderMinuteHand={enabled('minuteHand')} 
+            renderHourHand={enabled('hourHand')} 
+          />
+        </React.Suspense>
       );
     }
 

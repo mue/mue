@@ -3,31 +3,35 @@ import React from 'react';
 import RefreshIcon from '@material-ui/icons/RefreshRounded';
 import Gear from '@material-ui/icons/SettingsRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
-import Tooltip from '@material-ui/core/Tooltip';
 import Report from '@material-ui/icons/SmsFailed';
 
-import './scss/index.scss';
+import Tooltip from '@material-ui/core/Tooltip';
 
-// the user probably won't use the notes feature every time so we lazy load
-const Notes = React.lazy(() => import('./Notes'));
-const renderLoader = () => <></>;
+import Notes from './Notes';
+import Maximise from '../background/Maximise';
+import Favourite from '../background/Favourite';
+
+import './scss/index.scss';
 
 export default function Navbar(props) {
   const language = window.language;
 
+  const backgroundEnabled = (localStorage.getItem('background') === 'true');
+
   return (
     <div className='navbar-container'>
+      {(localStorage.getItem('view') === 'true' && backgroundEnabled) ? <Maximise/> :null}
+      {(localStorage.getItem('favouriteEnabled') === 'true' && backgroundEnabled) ? <Favourite/> :null}
+  
       {(localStorage.getItem('notesEnabled') === 'true') ?
         <div className='notes'>
           <NotesIcon className='topicons'/>
-          <React.Suspense fallback={renderLoader()}>
-            <Notes/>
-          </React.Suspense>
+          <Notes/>
         </div>
       :null}
 
       {(window.constants.BETA_VERSION === true) ? 
-        <Tooltip title='Feedback' placement='top'>
+        <Tooltip title={language.widgets.navbar.tooltips.feedback} placement='top'>
           <Report className='topicons' onClick={() => props.openModal('feedbackModal')}/>
         </Tooltip>
       :null}

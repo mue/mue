@@ -3,17 +3,16 @@
 @import 'themes';
 
 @import 'modules/toast';
-@import 'modules/marketplace';
 @import 'modules/buttons';
 
 body {
-  background: #2f3640;
+  background: #000;
   margin: 0;
   overflow: hidden;
 }
 
 * {
-  font-family: 'Lexend Deca', 'Roboto' !important;
+  font-family: 'Lexend Deca', 'Montserrat' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   outline: none;
