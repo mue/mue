@@ -19,10 +19,12 @@ export default class ErrorBoundary extends React.PureComponent {
   render() {
     if (this.state.error) {
       return (
-        <div style={{'textAlign': 'center'}}>
-          <h1>{this.language.title}</h1>
-          <p>{this.language.message}</p>
-          <button className='refresh' onClick={() => window.location.reload()}>{this.language.refresh}</button>
+        <div className='emptyitems'>
+          <div className='emptyMessage'>
+            <h1>{this.language.title}</h1>
+            <p>{this.language.message}</p>
+            <button className='refresh' onClick={() => window.location.reload()}>{this.language.refresh}</button>
+          </div>
         </div>
       );
     }

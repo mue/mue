@@ -19,6 +19,10 @@ export default class Radio extends React.PureComponent {
   handleChange = (e) => {
     const { value } = e.target;
 
+    if (value === 'loading') {
+      return;
+    }
+
     localStorage.setItem(this.props.name, value);
   
     this.setState({

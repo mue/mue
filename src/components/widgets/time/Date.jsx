@@ -44,8 +44,10 @@ export default class DateWidget extends React.PureComponent {
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
 
-      let day = dateDay;
-      let month = dateMonth;
+      const zero = (localStorage.getItem('datezero') === 'true');
+
+      let day = zero ? ('00' + dateDay).slice(-2) : dateDay;
+      let month = zero ? ('00' + dateMonth).slice(-2) : dateMonth;
       let year = dateYear;
 
       switch (localStorage.getItem('dateFormat')) {

@@ -31,9 +31,6 @@
     "weather": {
       "not_found": "Nicht gefunden"
     },
-    "date": {
-      "week": "Week"
-    },
     "navbar": {
       "tooltips": {
         "update": "Update Hinweise",
@@ -254,12 +251,12 @@
             "custom_css": "Benutzerdefiniertes CSS",
             "custom_js": "Benutzerdefiniertes JS",
             "tab_name": "Tab Name",
-            "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren.",
-            "developer": "Entwickler"
+            "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren."
           },
           "experimental": {
             "title": "Experimentell",
-            "warning": "Diese Einstellungen sind nicht vollständig getestet/implementiert und funktionieren möglicherweise nicht korrekt!"
+            "warning": "Diese Einstellungen sind nicht vollständig getestet/implementiert und funktionieren möglicherweise nicht korrekt!",
+            "developer": "Entwickler"
           },
           "language": {
             "title": "Sprache",

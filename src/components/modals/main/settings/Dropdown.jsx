@@ -18,6 +18,10 @@ export default class Dropdown extends React.PureComponent {
   onChange = (e) => {
     const { value } = e.target;
 
+    if (value === window.language.modals.main.loading) {
+      return;
+    }
+
     this.setState({
       value: value,
       title: e.target[e.target.selectedIndex].text

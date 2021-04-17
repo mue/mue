@@ -18,7 +18,7 @@ export default class Changelog extends React.PureComponent {
       title: data.title,
       date: data.date.split(' ')[0],
       image: data.featured_image || null,
-      author: 'By ' + data.author,
+      author: 'By ' + data.authors.join(', '),
       html: data.html
     });
    }
