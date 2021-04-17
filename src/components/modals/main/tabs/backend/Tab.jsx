@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Navbar
-import Settings from '@material-ui/icons/Settings';
+import Settings from '@material-ui/icons/SettingsRounded';
 import Addons from '@material-ui/icons/Widgets';
 import Marketplace from '@material-ui/icons/ShoppingBasket';
 

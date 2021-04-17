@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+
 export default class ErrorBoundary extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -21,6 +23,7 @@ export default class ErrorBoundary extends React.PureComponent {
       return (
         <div className='emptyitems'>
           <div className='emptyMessage'>
+            <ErrorOutlineIcon/>
             <h1>{this.language.title}</h1>
             <p>{this.language.message}</p>
             <button className='refresh' onClick={() => window.location.reload()}>{this.language.refresh}</button>
