@@ -152,7 +152,7 @@ export default class SettingsFunctions {
  ██              ██      ██  ██████  ███████                ██ 
  ██                                                         ██ 
  ██                                                         ██                                                                                                 
- ██               Copyright 2018-2021 Mue                   ██
+ ██           Copyright 2018-2021 The Mue Authors           ██
  ██           GitHub: https://github.com/mue/mue            ██
  ██                                                         ██
  ██               Thank you for using Mue!                  ██

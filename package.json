@@ -1,7 +1,7 @@
 {
   "name": "mue",
   "private": true,
-  "author": "David \"ohlookitsderpy\" Ralph <me@davidjcralph.co.uk> (https://davidjcralph.co.uk)",
+  "author": "The Mue Authors (https://github.com/mue/mue/graphs/contributors)",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "repository": {
     "url": "github:mue/mue"
