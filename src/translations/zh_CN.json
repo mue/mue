@@ -1,5 +1,5 @@
 {
-  "tabname": "New Tab",
+  "tabname": "新标签页",
   "widgets": {
     "greeting": {
       "morning": "早上好",
@@ -8,38 +8,38 @@
       "christmas": "圣诞节快乐",
       "newyear": "新年快乐",
       "halloween": "万圣节快乐",
-      "birthday": "Happy Birthday"
+      "birthday": "生日快乐"
     },
     "background": {
       "credit": "图像作者：",
-      "unsplash": "on Unsplash",
-      "information": "Information",
-      "download": "Download"
+      "unsplash": "@ Unsplash",
+      "information": "信息",
+      "download": "下载"
     },
     "search": "搜索",
     "quicklinks": {
-      "new": "New Link",
-      "name": "Name",
-      "url": "URL",
-      "add": "Add",
-      "name_error": "Must provide name",
-      "url_error": "Must provide URL"
+      "new": "新快捷方式",
+      "name": "名称",
+      "url": "链接",
+      "add": "添加",
+      "name_error": "请输入名称",
+      "url_error": "请输入链接"
     },
     "date": {
-      "week": "Week"
+      "week": "周"
     },
     "weather": {
-      "not_found": "Not Found"
+      "not_found": "未找到"
     },
     "navbar": {
       "tooltips": {
-        "update": "Update Patch Notes",
-        "refresh": "Refresh Page",
-        "feedback": "Feedback"
+        "update": "更新日志",
+        "refresh": "刷新页面",
+        "feedback": "用户反馈"
       },
       "notes": {
-        "title": "Notes",
-        "placeholder": "Type here"
+        "title": "备注",
+        "placeholder": "请键入内容"
       }
     }
   },
@@ -47,7 +47,7 @@
     "main": {
       "title": "选项",
       "loading": "载入中...",
-      "file_upload_error": "File is over 2MB",
+      "file_upload_error": "大小超过了 2MB",
       "navbar": {
         "settings": "设置",
         "addons": "我的插件",
@@ -55,40 +55,40 @@
       },
       "error_boundary": {
         "title": "错误",
-        "message": "Failed to load this component of Mue",
+        "message": "无法载入本板块",
         "refresh": "刷新"
       },
       "settings": {
         "enabled": "已启用",
         "reminder": {
-          "title": "NOTICE",
-          "message": "In order for all of the changes to take place, the page must be refreshed."
+          "title": "注意",
+          "message": "刷新页面后设置才会生效"
         },
         "sections": {
           "time": {
             "title": "时间",
-            "format": "Format",
-            "type": "Type",
+            "format": "格式",
+            "type": "类型",
             "digital": {
-              "title": "Digital",
+              "title": "数字时钟",
               "seconds": "显示秒",
               "twentyfourhour": "使用 24 小时制",
               "twelvehour": "12 小时制下显示",
               "zero": "加零补足二位数字"
             },
             "analogue": {
-              "analog": "Analogue",
-              "second_hand": "Seconds hand",
-              "minute_hand": "Minutes hand",
-              "hour_hand": "Hours hand",
-              "hour_marks": "Hour marks",
-              "minute_marks": "Minute marks"
+              "analog": "模拟时钟",
+              "second_hand": "秒针,
+              "minute_hand": "分针",
+              "hour_hand": "时针",
+              "hour_marks": "时钟刻度",
+              "minute_marks": "分钟刻度"
             },
             "percentage_complete": "Percentage complete",
             "date": {
-              "title": "Date",
-              "week_number": "Week number",
-              "day_of_week": "Day of week",
+              "title": "日期",
+              "week_number": "第几周",
+              "day_of_week": "星期几",
               "datenth": "Date nth",
               "type": {
                 "short": "Short",
@@ -107,11 +107,11 @@
           },
           "quote": {
             "title": "名言",
-            "author_link": "Authour link",
-            "custom": "Custom quote",
-            "custom_author": "Custom authour",
+            "author_link": "出处链接",
+            "custom": "自定义名言",
+            "custom_author": "自定义出处",
             "buttons": {
-              "title": "Buttons",
+              "title": "按钮",
               "copy": "复制按钮",
               "tweet": "发推按钮",
               "favourite": "收藏按钮"
@@ -122,23 +122,23 @@
             "events": "节日问候",
             "default": "常规问候",
             "name": "您在问候中的名字",
-            "birthday": "Birthday",
-            "birthday_age": "Birthday age",
-            "birthday_date": "Birthday date"
+            "birthday": "生日",
+            "birthday_age": "生日年龄",
+            "birthday_date": "生日日期"
           },
           "background": {
             "title": "背景",
-            "ddg_proxy": "Use DuckDuckGo image proxy",
+            "ddg_proxy": "使用 DuckDuckGo 图像代理",
             "transition": "Fade-in transition",
-            "category": "Category",
+            "category": "分类",
             "buttons": {
-              "title": "Buttons",
+              "title": "按钮",
               "view": "查看",
               "favourite": "收藏",
               "download": "下载"
             },
             "effects": {
-              "title": "Effects",
+              "title": "效果",
               "blur": "调整模糊",
               "brightness": "调整亮度"
             },
@@ -149,15 +149,15 @@
               "custom_colour": "Custom colour/gradient"
             },
             "source": {
-              "title": "Source",
+              "title": "来源",
               "api": "背景来源",
               "custom_background": "自定义背景",
               "custom_colour": "自定义背景颜色",
               "upload": "上传",
               "add_colour": "添加颜色",
               "disabled": "已禁用",
-              "loop_video": "Loop video",
-              "mute_video": "Mute video"
+              "loop_video": "循环播放",
+              "mute_video": "静音"
             }
           },
           "search": {
@@ -167,37 +167,37 @@
             "voice_search": "语音搜索"
           },
           "weather": {
-            "title": "Weather",
-            "location": "Location",
-            "auto": "Auto",
+            "title": "天气",
+            "location": "位置",
+            "auto": "自动",
             "temp_format": {
-              "title": "Temperature format",
-              "celsius": "Celsius",
-              "fahrenheit": "Fahrenheit",
-              "kelvin": "Kelvin"
+              "title": "温度单位",
+              "celsius": "摄氏度",
+              "fahrenheit": "华氏度",
+              "kelvin": "开尔文"
             },
             "extra_info": {
-              "title": "Extra information",
-              "show_location": "Show Location",
-              "humidity": "Humidity",
-              "wind_speed": "Wind speed",
-              "min_temp": "Minimum temperature",
-              "max_temp": "Maximum temperature",
-              "atmospheric_pressure": "Atmospheric pressure"
+              "title": "更多信息",
+              "show_location": "显示位置",
+              "humidity": "湿度",
+              "wind_speed": "风速",
+              "min_temp": "最低温度",
+              "max_temp": "最高温度",
+              "atmospheric_pressure": "大气压"
             }
           },
           "quicklinks": {
-            "title": "Quick Links",
-            "open_new": "Open in new tab",
+            "title": "快捷方式",
+            "open_new": "在新标签页打开",
             "tooltip": "Tooltip"
           },
           "appearance": {
-            "title": "Appearance",
+            "title": "显示",
             "theme": {
-              "title": "Theme",
-              "auto": "Auto",
-              "light": "Light",
-              "dark": "Dark"
+              "title": "主题",
+              "auto": "自动选择",
+              "light": "日间主题",
+              "dark": "夜间主题"
             },
             "animations": "动画",
             "navbar": {
@@ -206,9 +206,9 @@
               "refresh": "Refresh button"
             },
             "font": {
-              "title": "Font",
-              "custom": "Custom font",
-              "google": "Import from Google Fonts",
+              "title": "字体",
+              "custom": "自定义字体",
+              "google": "从 Google Fonts 导入",
               "weight": {
                 "title": "Font weight",
                 "thin": "Thin",
@@ -256,13 +256,13 @@
           "experimental": {
             "title": "实验性功能",
             "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer"
+            "developer": "开发者"
           },
           "language": {
             "title": "语言",
-            "quote": "Quote language"
+            "quote": "名言语言"
           },
-          "changelog": "Change Log",
+          "changelog": "更新日志,
           "about": {
             "title": "About",
             "copyright": "Copyright",
@@ -341,12 +341,12 @@
       "contact_support": "点此联系我们"
     },
     "welcome": {
-      "title": "Welcome to",
-      "information": "Information",
-      "thankyoumessage1": "Thank you for installing Mue Tab,",
-      "thankyoumessage2": "we hope you enjoy your time with our extension.",
-      "support": "Support",
-      "close": "Close"
+      "title": "欢迎使用",
+      "information": "信息",
+      "thankyoumessage1": "感谢您安装 Mue Tab。",
+      "thankyoumessage2": "祝您使用愉快。",
+      "support": "支持",
+      "close": "关闭"
     },
     "feedback": {
       "title": "Give us feedback",
