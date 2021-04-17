@@ -11,14 +11,16 @@ import { ToastContainer } from 'react-toastify';
 
 export default class App extends React.PureComponent {
   componentDidMount() {
-    // 4.0 -> 5.0
-    if (!localStorage.getItem('showWelcome')) {
-      SettingsFunctions.moveSettings();
-    }
-
     if (!localStorage.getItem('firstRun')) {
       SettingsFunctions.setDefaultSettings();
+      window.location.reload();
     }
+
+    // 4.0 -> 5.0 (the key below is only on 5.0)
+    if (!localStorage.getItem('order')) {
+      SettingsFunctions.moveSettings();
+      window.location.reload();
+    }    
 
     SettingsFunctions.loadSettings();
 

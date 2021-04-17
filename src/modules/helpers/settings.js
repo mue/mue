@@ -69,7 +69,6 @@ export default class SettingsFunctions {
 
     // Finally we set this to true so it doesn't run the function on every load
     localStorage.setItem('firstRun', true);
-    window.location.reload();
   }
 
   static loadSettings(hotreload) {
@@ -162,23 +161,20 @@ export default class SettingsFunctions {
   }
 
   static moveSettings() {
-    localStorage.setItem('order', "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\"]");
-    localStorage.setItem('backgroundType', 'api');
-    localStorage.setItem('timeformat', 'twentyfourhour');
-    localStorage.setItem('bgtransition', true);
-    localStorage.setItem('tempformat', 'celsius');
-    localStorage.setItem('theme', 'auto');
-    localStorage.setItem('toastDisplayTime', 2500);
-    localStorage.setItem('widgetzoom', 100);
-    localStorage.setItem('fontweight', 400);
-    localStorage.setItem('language', window.languagecode);
-    localStorage.setItem('tabname', window.language.tabname);
-    localStorage.setItem('debugtimeout', 0);
-    localStorage.setItem('showWelcome', true);
-    localStorage.setItem('quicklinks', '[]');
-    localStorage.setItem('customBackgroundColour', "{\"angle\":\"180\",\"gradient\":[{\"colour\":\"#ffb032\",\"stop\":0}],\"type\":\"linear\"}");
-    localStorage.setItem('firstRun', true);
+    if (Object.keys(localStorage).length === 0) {
+      return this.setDefaultSettings();
+    }
 
-    window.location.reload();
+    let settings = {};
+    for (const key of Object.keys(localStorage)) {
+      settings[key] = localStorage.getItem(key);
+    }
+
+    localStorage.clear();
+
+    this.setDefaultSettings();
+    Object.keys(settings).forEach(key => {
+      localStorage.setItem(key, settings[key]);
+    });
   }
 }
