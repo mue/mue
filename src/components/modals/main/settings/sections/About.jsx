@@ -73,9 +73,9 @@ export default class About extends React.PureComponent {
         <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
 
         <h3>{this.language.contact_us}</h3>
-        <a href='mailto:hello@muetab.com' className='welcomeLink' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
-        <a href='https://twitter.com/getmue' className='welcomeLink' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
-        <a href='https://discord.gg/zv8C9F8' className='welcomeLink' target='_blank' rel='noopener noreferrer'><ForumIcon/></a>
+        <a href='mailto:hello@muetab.com' className='aboutIcon' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
+        <a href='https://twitter.com/getmue' className='aboutIcon' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
+        <a href='https://discord.gg/zv8C9F8' className='aboutIcon' target='_blank' rel='noopener noreferrer'><ForumIcon/></a>
 
         <h3>{this.language.support_mue}</h3>
         <p><a href='https://github.com/sponsors/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> • <a href='https://ko-fi.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> • <a href='https://patreon.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a></p>
@@ -86,7 +86,7 @@ export default class About extends React.PureComponent {
         <p>Undraw ({this.language.resources_used.welcome_img})</p>
 
         <h3>{this.language.contributors}</h3>
-        {this.state.loading}
+        <p>{this.state.loading}</p>
         {this.state.contributors.map((item) => (
           <Tooltip title={item.login} placement='top' key={item.login}>
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}/></a>
@@ -100,7 +100,7 @@ export default class About extends React.PureComponent {
         ))}
 
         <h3>{this.language.supporters}</h3>
-        {this.state.loading}
+        <p>{this.state.loading}</p>
         {this.state.sponsors.map((item) => (
           <Tooltip title={item.handle} placement='top' key={item.handle}>
             <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
@@ -108,7 +108,7 @@ export default class About extends React.PureComponent {
         ))}
 
         <h3>{this.language.photographers}</h3>
-        {this.state.loading}
+        <p>{this.state.loading}</p>
         <p>{this.state.photographers}</p>
       </>
     );

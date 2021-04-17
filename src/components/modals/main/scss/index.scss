@@ -344,6 +344,11 @@ li {
   min-height: 300px !important;
   max-width: 300px !important;
   margin: auto;
+
+  h4 {
+    cursor: initial;
+    font-size: 1.1rem;
+  }
 }
 
 .resetfooter {
@@ -361,6 +366,10 @@ li {
 
 .welcomeLink {
   color: var(--modal-text) !important;
+}
+
+.aboutIcon {
+  color: var(--modal-text) !important;
   padding-right: 10px;
 }
 
@@ -370,4 +379,20 @@ li {
 
 .MuiFormControl-root {
   margin-top: 10px !important;
+}
+
+label, p {
+  font-size: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.17rem;
+}
+
+h5 {
+  font-size: 0.8rem;
 }
