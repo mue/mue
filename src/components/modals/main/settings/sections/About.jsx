@@ -82,6 +82,7 @@ export default class About extends React.PureComponent {
 
         <h3>{this.language.resources_used.title}</h3>
         <p>Pexels ({this.language.resources_used.bg_images})</p>
+        <p>Unsplash ({this.language.resources_used.bg_images})</p>
         <p>Google ({this.language.resources_used.pin_icon})</p>
         <p>Undraw ({this.language.resources_used.welcome_img})</p>
 
