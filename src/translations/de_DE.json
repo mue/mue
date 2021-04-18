@@ -361,6 +361,7 @@
   },
   "toasts": {
     "quote": "Kopierte Zitate",
+    "reset": "Reset successfully",
     "installed": "Erfolgreich installiert",
     "uninstalled": "Erfolgreich entfernt",
     "error": "Etwas ist schief gelaufen",

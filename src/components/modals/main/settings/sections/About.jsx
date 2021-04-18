@@ -41,6 +41,10 @@ export default class About extends React.PureComponent {
       });
     }
 
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
+
     const newVersion = versionData[0].tag_name;
 
     let updateMsg = this.language.version.no_update;
@@ -48,9 +52,6 @@ export default class About extends React.PureComponent {
       updateMsg = `${this.language.version.update_available}: ${newVersion}`;
     }
 
-    if (this.controller.signal.aborted === true) {
-      return;
-    }
 
     this.setState({
       contributors: contributors.filter((contributor) => !contributor.login.includes('bot')),

@@ -13,10 +13,15 @@ export default class BackgroundSettings extends React.PureComponent {
         value: 'loading'
       }]
     };
+    this.controller = new AbortController();
   }
 
   async getQuoteLanguages() {
-    const data = await (await fetch(window.constants.API_URL + '/quotes/languages')).json();
+    const data = await (await fetch(window.constants.API_URL + '/quotes/languages', { signal: this.controller.signal })).json();
+
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
 
     let array = [];
     data.forEach(item => {
@@ -33,6 +38,11 @@ export default class BackgroundSettings extends React.PureComponent {
 
   componentDidMount() {
     this.getQuoteLanguages();
+  }
+
+  componentWillUnmount() {
+    // stop making requests
+    this.controller.abort();
   }
 
   render() {

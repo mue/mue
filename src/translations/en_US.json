@@ -361,6 +361,7 @@
   },
   "toasts": {
     "quote": "Quote copied",
+    "reset": "Reset successfully",
     "installed": "Successfully installed",
     "uninstalled": "Successfully removed",
     "error": "Something went wrong",

@@ -9,10 +9,15 @@ export default class Changelog extends React.PureComponent {
       title: null
     };
     this.language = window.language.modals.update;
+    this.controller = new AbortController();
   }
 
   async getUpdate() {
-    const data = await (await fetch(window.constants.BLOG_POST + '/index.json')).json();
+    const data = await (await fetch(window.constants.BLOG_POST + '/index.json', { signal: this.controller.signal })).json();
+
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
 
     this.setState({
       title: data.title,
@@ -21,15 +26,20 @@ export default class Changelog extends React.PureComponent {
       author: 'By ' + data.authors.join(', '),
       html: data.html
     });
-   }
+  }
   
-   componentDidMount() {
+  componentDidMount() {
     if (localStorage.getItem('offlineMode') === 'true') {
       return;
     }
   
     this.getUpdate();
-   }
+  }
+
+  componentWillUnmount() {
+    // stop making requests
+    this.controller.abort();
+  }
 
   render() {
     const errorMessage = (msg) => {

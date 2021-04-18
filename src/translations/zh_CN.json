@@ -361,6 +361,7 @@
   },
   "toasts": {
     "quote": "名言已复制",
+    "reset": "重置成功",
     "installed": "安装成功",
     "uninstalled": "卸载成功",
     "error": "发生了错误",

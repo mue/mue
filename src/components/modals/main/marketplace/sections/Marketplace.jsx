@@ -36,6 +36,7 @@ export default class Marketplace extends React.PureComponent {
       install: <button className='addToMue' onClick={() => this.manage('install')}>{window.language.modals.main.marketplace.product.buttons.addtomue}</button>
     };
     this.language = window.language.modals.main.marketplace;
+    this.controller = new AbortController();
   }
 
   async toggle(type, data) {
@@ -43,9 +44,15 @@ export default class Marketplace extends React.PureComponent {
       let info;
       // get item info
       try {
-        info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
+        info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`, { signal: this.controller.signal })).json();
       } catch (e) {
-        return toast(window.language.toasts.error);
+        if (this.controller.signal.aborted === false) {
+          return toast(window.language.toasts.error);
+        }
+      }
+
+      if (this.controller.signal.aborted === true) {
+        return;
       }
 
       // check if already installed
@@ -85,8 +92,12 @@ export default class Marketplace extends React.PureComponent {
   }
 
   async getItems() {
-    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/all')).json();
-    const featured = await (await fetch(window.constants.MARKETPLACE_URL + '/featured')).json();
+    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/all', { signal: this.controller.signal })).json();
+    const featured = await (await fetch(window.constants.MARKETPLACE_URL + '/featured', { signal: this.controller.signal })).json();
+
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
 
     this.setState({
       items: data[this.props.type],
@@ -114,6 +125,11 @@ export default class Marketplace extends React.PureComponent {
     }
 
     this.getItems();
+  }
+
+  componentWillUnmount() {
+    // stop making requests
+    this.controller.abort();
   }
 
   render() {

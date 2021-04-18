@@ -361,6 +361,7 @@
   },
   "toasts": {
     "quote": "Sitat kopiert",
+    "reset": "Tilbakestillte vellykket",
     "installed": "Installert",
     "uninstalled": "Fjernet",
     "error": "Noe gikk galt",
