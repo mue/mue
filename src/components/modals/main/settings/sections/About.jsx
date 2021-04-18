@@ -19,17 +19,22 @@ export default class About extends React.PureComponent {
       loading: window.language.modals.main.loading
     };
     this.language = window.language.modals.main.settings.sections.about;
+    this.controller = new AbortController();
   }
 
   async getGitHubData() {
     let contributors, sponsors, photographers, versionData;
     try {
-      contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/contributors')).json();
-      sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list')).json()).sponsors;
-      photographers = await (await fetch(window.constants.API_URL + '/images/photographers')).json();
+      contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/contributors', { signal: this.controller.signal })).json();
+      sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list', { signal: this.controller.signal })).json()).sponsors;
+      photographers = await (await fetch(window.constants.API_URL + '/images/photographers', { signal: this.controller.signal })).json();
   
-      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/releases')).json();
+      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/releases', { signal: this.controller.signal })).json();
     } catch (e) {
+      if (this.controller.signal.aborted === true) {
+        return;
+      }
+
       return this.setState({
         update: 'Failed to get update information',
         loading: 'An error occurred'
@@ -41,6 +46,10 @@ export default class About extends React.PureComponent {
     let updateMsg = this.language.version.no_update;
     if (Number(window.constants.VERSION) < newVersion) {
       updateMsg = `${this.language.version.update_available}: ${newVersion}`;
+    }
+
+    if (this.controller.signal.aborted === true) {
+      return;
     }
 
     this.setState({
@@ -62,6 +71,11 @@ export default class About extends React.PureComponent {
     }
 
     this.getGitHubData();
+  }
+
+  componentWillUnmount() {
+    // stop making requests
+    this.controller.abort();
   }
 
   render() {

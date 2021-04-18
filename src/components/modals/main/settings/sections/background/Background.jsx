@@ -22,6 +22,7 @@ export default class BackgroundSettings extends React.PureComponent {
       backgroundCategories: [window.language.modals.main.loading]
     };
     this.language = window.language.modals.main.settings;
+    this.controller = new AbortController();
   }
 
   resetCustom = () => {
@@ -70,7 +71,12 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   async getBackgroundCategories() {
-    const data = await (await fetch(window.constants.API_URL + '/images/categories')).json();
+    const data = await (await fetch(window.constants.API_URL + '/images/categories', { signal: this.controller.signal })).json();
+
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
+
     this.setState({
       backgroundCategories: data
     });
@@ -78,6 +84,11 @@ export default class BackgroundSettings extends React.PureComponent {
 
   componentDidMount() {
     this.getBackgroundCategories();
+  }
+
+  componentWillUnmount() {
+    // stop making requests
+    this.controller.abort();
   }
 
   render() {
