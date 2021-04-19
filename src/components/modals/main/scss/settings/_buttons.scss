@@ -25,19 +25,6 @@
   }
 }
 
-.close {
-  @extend %settingsButton;
-
-  padding: 10px 50px 10px 50px;
-  background-color: map-get($button-colours, 'other');
-  border: 2px solid map-get($button-colours, 'other');
-
-  &:hover {
-    color: map-get($button-colours, 'other');
-    border: 2px solid map-get($button-colours, 'other');
-  }
-}
-
 .add {
   @extend %settingsButton;
 
@@ -68,77 +55,6 @@
 .export,
 .import {
   margin-left: 20px;
-}
-
-%storebutton {
-  cursor: pointer;
-  font-size: 18px;
-  display: block;
-  padding: 5px 30px;
-  background: none;
-  border-radius: 24px;
-  transition: ease 0.33s;
-  border: 2px solid black;
-
-  &:hover {
-    background: #2d3436;
-    color: map-get($theme-colours, 'main');
-  }
-}
-
-.dark %storebutton {
-  border: 2px solid map-get($theme-colours, 'main');
-  color: map-get($theme-colours, 'main');
-
-  &:hover {
-    background: map-get($theme-colours, 'main');
-    color: #2d3436;
-  }
-}
-
-.removeFromMue {
-  @extend %storebutton;
-
-  border: 2px solid #ff4757;
-  color: #ff4757;
-
-  &:hover {
-    background: #ff4757;
-    color: map-get($theme-colours, 'main');
-  }
-}
-
-#item .addToMue,
-#item .removeFromMue {
-  margin-top: 5px;
-}
-
-.addToMue {
-  @extend %storebutton;
-}
-
-.goToMarket {
-  float: none;
-  @extend %storebutton;
-}
-
-.sideload {
-  display: inline;
-}
-
-.stop {
-  outline: none;
-  border-image-slice: 1;
-  border-image-source: map-get($theme-colours, 'gradient');
-  font-size: 1.2em;
-  padding-left: 7px;
-  vertical-align: middle;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  opacity: 1;
-  outline: none;
 }
 
 .MuiIconButton-label > svg.MuiSvgIcon-root {

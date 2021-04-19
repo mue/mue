@@ -27,7 +27,7 @@ export default class ColourSettings extends React.PureComponent {
     this.setState({
       gradientSettings: this.DefaultGradientSettings
     });
-    toast(this.language.toasts.reset);
+    toast(window.language.toasts.reset);
   }
 
   initialiseColorPickerState(gradientSettings) {
