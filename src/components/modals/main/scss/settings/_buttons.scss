@@ -37,6 +37,19 @@
   }
 }
 
+.close {
+  @extend %settingsButton;
+
+  padding: 10px 50px 10px 50px;
+  background-color: map-get($button-colours, 'other');
+  border: 2px solid map-get($button-colours, 'other');
+
+  &:hover {
+    color: map-get($button-colours, 'other');
+    border: 2px solid map-get($button-colours, 'other');
+  }
+}
+
 .export,
 .uploadbg,
 .import {
