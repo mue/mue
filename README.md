@@ -42,7 +42,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 * Widgets such as searchbar, weather, quick links, clock, date, quote, greeting
 * Settings - enable/disable various features and customise parts of Mue
 * Navbar with copy button, favourite background, notes feature etc
-* Marketplace - download custom photo packs made by the community!
+* Marketplace - download custom photo packs made by the community
 
 ### Planned Features
 Please see our [roadmap](https://github.com/mue/mue/projects)

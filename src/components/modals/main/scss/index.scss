@@ -18,8 +18,6 @@
   padding: 25px;
   transition-timing-function: ease-in;
   border-radius: map-get($modal, 'border-radius');
-  -moz-user-select: none;
-  -webkit-user-select: none;
   user-select: none;
   scrollbar-width: thin;
   scrollbar-color: #34495e #bdc3c7;
@@ -161,6 +159,7 @@ li {
     width: 90% !important;
   }
 }
+
 @media only screen and (min-width: 1310px) {
   #modal {
     width: 60%;
@@ -177,9 +176,7 @@ li {
       display: none;
     }
   }
-}
 
-@media only screen and (max-width: 1200px) {
   ul.sidebar {
     h1 {
       display: none;
@@ -222,14 +219,7 @@ li {
   }
 }
 
-@media only screen and (max-width: 1400px) {
-  .tab-content {
-    left: 350px;
-    top: 75px;
-  }
-}
-
-@media only screen and (min-width: 1400px) {
+@media only screen and (max-width: 1400px), (min-width: 1400px) {
   .tab-content {
     left: 350px;
     top: 75px;
@@ -287,12 +277,6 @@ li {
     span {
       display: none;
     }
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .tabContent {
-    left: 20px;
   }
 }
 
@@ -364,17 +348,9 @@ li {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.welcomeLink {
-  color: var(--modal-text) !important;
-}
-
 .aboutIcon {
   color: var(--modal-text) !important;
   padding-right: 10px;
-}
-
-.MuiIconButton-root {
-  color: var(--modal-text) !important;
 }
 
 .MuiFormControl-root {

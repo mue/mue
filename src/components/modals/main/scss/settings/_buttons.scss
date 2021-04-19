@@ -1,22 +1,4 @@
-%settingsButton {
-  transition: ease 0.33s;
-  color: map-get($theme-colours, 'main');
-  cursor: pointer;
-  padding: 10px 30px;
-  font-size: 20px;
-  border-radius: 24px;
-  box-shadow: 0 5px 15px rgba(128, 161, 144, 0.4);
-
-  &:hover,
-  &:active {
-    outline: none;
-    background: none;
-  }
-}
-
-.dark %settingsButton {
-  box-shadow: none;
-}
+@import '../../../../../scss/modules/buttons';
 
 .refresh {
   @extend %settingsButton;
@@ -160,10 +142,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .MuiIconButton-label > svg.MuiSvgIcon-root {
-  color: var(--modal-text) !important;
-}
-
-legend {
   color: var(--modal-text) !important;
 }
 

@@ -24,6 +24,6 @@ export default class FileUpload extends React.PureComponent {
   }
 
   render() {
-    return <input id={this.props.id} type='file' className='hidden' accept={this.props.accept} />;
+    return <input id={this.props.id} type='file' style={{ display: 'none' }} accept={this.props.accept} />;
   }
 }
