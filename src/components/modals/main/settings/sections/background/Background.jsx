@@ -30,18 +30,12 @@ export default class BackgroundSettings extends React.PureComponent {
     this.setState({
       customBackground: ''
     });
-    toast(this.language.toasts.reset);
+    toast(window.language.toasts.reset);
     EventBus.dispatch('refresh', 'background');
   }
 
   customBackground(e, text) {
-    let result;
-    if (text === true) {
-      result = e.target.value;
-    } else {
-      result = e.target.result;
-    }
-  
+    const result = (text === true) ? e.target.value : e.target.result;
     localStorage.setItem('customBackground', result);
     this.setState({
       customBackground: result
@@ -83,6 +77,10 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+      return;
+    }
+
     this.getBackgroundCategories();
   }
 

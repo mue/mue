@@ -42,7 +42,7 @@ export default class Text extends React.PureComponent {
       value: this.props.default || ''
     });
 
-    toast(this.language.toasts.reset);
+    toast(window.language.toasts.reset);
     EventBus.dispatch('refresh', this.props.category);
   }
 

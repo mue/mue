@@ -1,3 +1,4 @@
+// warning: the code here is fairly messy and probably needs a rewrite
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';

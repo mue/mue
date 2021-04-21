@@ -66,7 +66,7 @@ export default class Added extends React.PureComponent {
   }
 
   uninstall() {
-    MarketplaceFunctions.uninstall(this.state.item.display_name, this.state.item.type);
+    MarketplaceFunctions.uninstall(this.state.item.type, this.state.item.display_name);
     
     toast(window.language.toasts.uninstalled);
 

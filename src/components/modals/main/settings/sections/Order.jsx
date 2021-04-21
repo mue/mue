@@ -78,7 +78,7 @@ export default class OrderSettings extends React.PureComponent {
       items: JSON.parse(localStorage.getItem('order'))
     });
 
-    toast(this.language.toasts.reset);
+    toast(window.language.toasts.reset);
   }
 
   componentDidUpdate() {

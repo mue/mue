@@ -110,7 +110,7 @@ export default class Marketplace extends React.PureComponent {
     if (type === 'install') {
       MarketplaceFunctions.install(this.state.item.type, this.state.item.data);
     } else {
-      MarketplaceFunctions.uninstall(this.state.item.display_name, this.state.item.type);
+      MarketplaceFunctions.uninstall(this.state.item.type, this.state.item.display_name);
     }
 
     toast(window.language.toasts[type + 'ed']);

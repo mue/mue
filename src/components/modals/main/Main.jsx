@@ -4,6 +4,7 @@ import Tabs from './tabs/backend/Tabs';
 
 import './scss/index.scss';
 
+// Lazy load all the tabs instead of the modal itself
 const Settings = React.lazy(() => import('./tabs/Settings'));
 const Addons = React.lazy(() => import('./tabs/Addons'));
 const Marketplace = React.lazy(() => import('./tabs/Marketplace'));

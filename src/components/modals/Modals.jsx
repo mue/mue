@@ -5,7 +5,8 @@ import Navbar from '../widgets/navbar/Navbar';
 
 import Modal from 'react-modal';
 
-// Modals are lazy loaded as the user won't use them every time they open a tab
+// These modals are lazy loaded as the user won't use them every time they open a tab
+// We used to lazy load the main modal, but doing so broke the main modal open animation on first click
 const Welcome = React.lazy(() => import('./welcome/Welcome'));
 const Feedback = React.lazy(() => import('./feedback/Feedback'));
 const renderLoader = () => <></>;

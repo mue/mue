@@ -39,7 +39,7 @@ export default function Item(props) {
       <img alt='product' draggable='false' src={iconsrc}/>
       <div className='informationContainer'>
         <h1>{language.overview}</h1>
-        <p className='description' dangerouslySetInnerHTML={{__html: props.data.description}}></p>
+        <p className='description' dangerouslySetInnerHTML={{ __html: props.data.description }}></p>
           <div className='productInformation'>
             <ul>
               {/* <li className='header'>{language.last_updated}</li>

@@ -4,17 +4,19 @@ import EventBus from './eventbus';
 
 export default class MarketplaceFunctions {
   // based on https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
-  static urlParser (input) {
+  static urlParser(input) {
     const urlPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&//=]*)/;
     return input.replace(urlPattern, '<a href="$&" target="_blank">$&</a>');
   }
 
-  static uninstall(name, type) {
+  static uninstall(type, name) {
     switch (type) {
       case 'settings':
         const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
         localStorage.clear();
-        oldSettings.forEach((item) => localStorage.setItem(item.name, item.value));
+        oldSettings.forEach((item) => {
+          localStorage.setItem(item.name, item.value);
+        });
         break;
       case 'quote_packs':
         localStorage.removeItem('quote_packs');
@@ -52,15 +54,17 @@ export default class MarketplaceFunctions {
         localStorage.removeItem('backup_settings');
 
         let oldSettings = [];
-        for (const key of Object.keys(localStorage)) {
+        Object.keys(localStorage).forEach((key) => {
           oldSettings.push({
             name: key,
             value: localStorage.getItem(key)
           });
-        }
+        });
 
         localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
-        input.settings.forEach((element) => localStorage.setItem(element.name, element.value));
+        input.settings.forEach((element) => {
+          localStorage.setItem(element.name, element.value);
+        });
         break;
 
       case 'photos':

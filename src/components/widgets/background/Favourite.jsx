@@ -32,7 +32,8 @@ export default class Favourite extends React.PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('backgroundType') === 'colour') {
+    const backgroundType = localStorage.getItem('backgroundType');
+    if (backgroundType === 'colour' || backgroundType === 'custom') {
       return null;
     }
 

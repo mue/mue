@@ -19,7 +19,9 @@ export default class FileUpload extends React.PureComponent {
         reader.readAsDataURL(file);
       }
 
-      reader.addEventListener('load', (e) => this.props.loadFunction(e));
+      reader.addEventListener('load', (e) => {
+        this.props.loadFunction(e);
+      });
     };
   }
 

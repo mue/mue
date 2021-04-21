@@ -23,10 +23,9 @@ const saveFile = (data, filename = 'file') => {
 export default class SettingsFunctions {
   static exportSettings() {
     let settings = {};
-    for (const key of Object.keys(localStorage)) {
+    Object.keys(localStorage).forEach((key) => {
       settings[key] = localStorage.getItem(key);
-    }
-  
+    });
     saveFile(settings, 'mue-settings.json');
   }
 
@@ -160,15 +159,17 @@ export default class SettingsFunctions {
 `);
   }
 
+  // in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides 
+  // the new settings with the old saved messages where they exist
   static moveSettings() {
     if (Object.keys(localStorage).length === 0) {
       return this.setDefaultSettings();
     }
 
     let settings = {};
-    for (const key of Object.keys(localStorage)) {
+    Object.keys(localStorage).forEach((key) => {
       settings[key] = localStorage.getItem(key);
-    }
+    });
 
     localStorage.clear();
 

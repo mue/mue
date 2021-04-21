@@ -22,9 +22,9 @@ export default class AdvancedSettings extends React.PureComponent {
   settingsImport(e) {
     const content = JSON.parse(e.target.result);
 
-    for (const key of Object.keys(content)) {
+    Object.keys(content).forEach((key) => {
       localStorage.setItem(key, content[key]);
-    }
+    });
 
     toast(window.language.toasts.imported);
   }
