@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 

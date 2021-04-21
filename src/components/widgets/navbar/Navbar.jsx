@@ -5,11 +5,10 @@ import Gear from '@material-ui/icons/SettingsRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Report from '@material-ui/icons/SmsFailed';
 
-import Tooltip from '@material-ui/core/Tooltip';
-
 import Notes from './Notes';
 import Maximise from '../background/Maximise';
 import Favourite from '../background/Favourite';
+import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import './scss/index.scss';
 
@@ -31,7 +30,7 @@ export default function Navbar(props) {
       :null}
 
       {(window.constants.BETA_VERSION === true) ? 
-        <Tooltip title={language.widgets.navbar.tooltips.feedback} placement='top'>
+        <Tooltip title={language.widgets.navbar.tooltips.feedback}>
           <Report className='topicons' onClick={() => props.openModal('feedbackModal')}/>
         </Tooltip>
       :null}
@@ -42,7 +41,7 @@ export default function Navbar(props) {
         </Tooltip>
       :null}
 
-      <Tooltip title={language.modals.main.navbar.settings} placement='top'>
+      <Tooltip title={language.modals.main.navbar.settings}>
         <Gear className='settings-icon topicons' onClick={() => props.openModal('mainModal')}/>
       </Tooltip>
     </div>

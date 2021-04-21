@@ -60,7 +60,7 @@ export default class Background extends React.PureComponent {
   }
 
   setBackground() {
-    const backgroundImage = document.querySelector('#backgroundImage');
+    const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
       const url = (localStorage.getItem('ddgProxy') === 'true') ? window.constants.DDG_PROXY + this.state.url : this.state.url;
@@ -152,6 +152,7 @@ export default class Background extends React.PureComponent {
           type: 'api',
           currentAPI: backgroundAPI,
           photoInfo: {
+            hidden: false,
             credit: (backgroundAPI !== 'unsplash') ? data.photographer : data.photographer + ` ${this.language.unsplash}`,
             location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
             camera: data.camera,
@@ -212,6 +213,7 @@ export default class Background extends React.PureComponent {
           return this.setState({
             url: randomPhoto.url.default,
             photoInfo: {
+              hidden: false,
               credit: randomPhoto.photographer
             }
           });
@@ -223,7 +225,7 @@ export default class Background extends React.PureComponent {
   }
 
   componentDidMount() {
-    const element = document.querySelector('#backgroundImage');
+    const element = document.getElementById('backgroundImage');
 
     const refresh = () => {
       element.classList.remove('fade-in');
@@ -239,6 +241,28 @@ export default class Background extends React.PureComponent {
 
     EventBus.on('refresh', (data) => {
       if (data === 'background') {
+        if (localStorage.getItem('background') === 'false') {
+          if (this.state.photoInfo.hidden === false) {
+            document.querySelector('.photoInformation').style.display = 'none';
+          }
+
+          if (this.state.video === true) {
+            return document.getElementById('backgroundVideo').style.display = 'none';
+          } else {
+            return element.style.display = 'none';
+          }
+        }
+
+        if (this.state.video === true) {
+          document.getElementById('backgroundVideo').style.display = 'block';
+        } else {
+          element.style.display = 'block';
+        }
+
+        if (this.state.photoInfo.hidden === false) {
+          document.querySelector('.photoInformation').style.display = 'block';
+        }
+
         const backgroundType = localStorage.getItem('backgroundType');
 
         // todo: make this good
@@ -250,7 +274,7 @@ export default class Background extends React.PureComponent {
         }
 
         if (this.state.video === true) {
-          document.querySelector('#backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+          document.getElementById('backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
         } else {
           element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
         }

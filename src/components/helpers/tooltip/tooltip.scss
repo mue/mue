@@ -1,0 +1,28 @@
+// todo: possibly add tooltip placement option
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+  .tooltipTitle {
+    width: 60px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.6rem;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -30px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.8s;
+  }
+}
+
+.tooltip:hover .tooltipTitle {
+  visibility: visible;
+  opacity: 1;
+}

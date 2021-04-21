@@ -2,7 +2,7 @@ import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '../../helpers/tooltip/Tooltip';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import './quicklinks.scss';
@@ -102,9 +102,7 @@ export default class QuickLinks extends React.PureComponent {
       }
     });
 
-    const addlink = document.querySelector('.topbarquicklinks');
-
-    addlink.onkeydown = (e) => {
+    document.querySelector('.topbarquicklinks').onkeydown = (e) => {
       e = e || window.event;
       let code = e.which || e.keyCode;
       if (code === 13 && this.state.showAddLink === 'visible') {

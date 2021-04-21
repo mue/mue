@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import StarIcon from '@material-ui/icons/Star';
 import StarIcon2 from '@material-ui/icons/StarBorder';

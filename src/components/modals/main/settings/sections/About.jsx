@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '../../../../helpers/tooltip/Tooltip';
 import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ForumIcon from '@material-ui/icons/Forum';
@@ -104,13 +104,13 @@ export default class About extends React.PureComponent {
         <h3>{this.language.contributors}</h3>
         <p>{this.state.loading}</p>
         {this.state.contributors.map((item) => (
-          <Tooltip title={item.login} placement='top' key={item.login}>
+          <Tooltip title={item.login} key={item.login}>
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}/></a>
           </Tooltip>
         ))}
         { // for those who contributed without opening a pull request
         this.state.other_contributors.map((item) => (
-          <Tooltip title={item.login} placement='top' key={item.login}>
+          <Tooltip title={item.login} key={item.login}>
             <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}/></a>
           </Tooltip>
         ))}
@@ -118,7 +118,7 @@ export default class About extends React.PureComponent {
         <h3>{this.language.supporters}</h3>
         <p>{this.state.loading}</p>
         {this.state.sponsors.map((item) => (
-          <Tooltip title={item.handle} placement='top' key={item.handle}>
+          <Tooltip title={item.handle} key={item.handle}>
             <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
           </Tooltip>
         ))}
