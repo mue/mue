@@ -351,6 +351,16 @@ li {
 .aboutIcon {
   color: var(--modal-text) !important;
   padding-right: 10px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.aboutLink {
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .MuiFormControl-root {

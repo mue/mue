@@ -71,12 +71,12 @@ export default class Background extends React.PureComponent {
         if (photoInformation) {
           photoInformation.style.display = 'block';
         }
-        backgroundImage.style.backgroundImage = null;
-        return backgroundImage.style.backgroundImage = `url(${url})`; 
+        backgroundImage.style.background = null;
+        return backgroundImage.style.background = `url(${url})`; 
       }
 
       backgroundImage.classList.add('backgroundPreload');
-      backgroundImage.style.backgroundImage = null;
+      backgroundImage.style.background = null;
 
       if (photoInformation) {
         photoInformation.classList.add('backgroundPreload');
@@ -91,7 +91,7 @@ export default class Background extends React.PureComponent {
         backgroundImage.classList.remove('backgroundPreload');
         backgroundImage.classList.add('fade-in');
 
-        backgroundImage.style.backgroundImage = `url(${url})`;        
+        backgroundImage.style.background = `url(${url})`;        
         preloader.remove();
 
         if (photoInformation) {
@@ -100,7 +100,7 @@ export default class Background extends React.PureComponent {
         }
       });
     } else {
-      backgroundImage.setAttribute('style', `${this.state.style};`);
+      backgroundImage.setAttribute('style', this.state.style);
     }
   }
 
@@ -232,6 +232,7 @@ export default class Background extends React.PureComponent {
       element.classList.remove('fade-in');
       this.setState({
         url: '',
+        style: '',
         video: false,
         photoInfo: {
           hidden: true
@@ -258,10 +259,6 @@ export default class Background extends React.PureComponent {
           document.getElementById('backgroundVideo').style.display = 'block';
         } else {
           element.style.display = 'block';
-        }
-
-        if (this.state.photoInfo.hidden === false) {
-          document.querySelector('.photoInformation').style.display = 'block';
         }
 
         const backgroundType = localStorage.getItem('backgroundType');
