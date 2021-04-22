@@ -3,8 +3,9 @@ import React from 'react';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import CopyIcon from '@material-ui/icons/FileCopyRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
-
 import Pin from './Pin';
+
+import { toast } from 'react-toastify';
 
 export default class Notes extends React.PureComponent {
   constructor() {
@@ -32,6 +33,12 @@ export default class Notes extends React.PureComponent {
     }
   }
 
+  // todo: fix this
+  copy() {
+    navigator.clipboard.writeText(this.state.notes);
+    toast(window.language.toasts.copy);
+  }
+
   componentDidMount() {
     const noteContainer = document.getElementById('noteContainer');
 
@@ -53,7 +60,7 @@ export default class Notes extends React.PureComponent {
         </div>
         <TextareaAutosize rowsMax={50} placeholder={this.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
         <button onClick={this.pin} className='pinNote'><Pin/></button>
-        <button onClick={() => navigator.clipboard.writeText(this.state.notes)} className='saveNote'><CopyIcon/></button>
+        <button onClick={this.copy} className='copyNote'><CopyIcon/></button>
       </span>
     );
   }

@@ -5,8 +5,8 @@
 
   .tooltipTitle {
     width: 60px;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     text-align: center;
     font-size: 0.6rem;
     border-radius: 6px;
@@ -24,5 +24,10 @@
 
 .tooltip:hover .tooltipTitle {
   visibility: visible;
-  opacity: 1;
+  opacity: 0.8;
+}
+
+.dark .tooltip {
+  background-color: #000000;
+  color: #ffffff;
 }

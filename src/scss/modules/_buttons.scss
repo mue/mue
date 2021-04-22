@@ -42,7 +42,7 @@
   }
 }
 
-.saveNote {
+.copyNote {
   @extend %settingsButton;
 
   background-color: map-get($button-colours, 'other');

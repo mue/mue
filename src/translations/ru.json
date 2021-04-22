@@ -361,6 +361,7 @@
   },
   "toasts": {
     "quote": "Цитата скопирована!",
+    "note": "Notes copied",
     "reset": "Сброшено!",
     "installed": "Успешно установлено",
     "uninstalled": "Успешно удалено",

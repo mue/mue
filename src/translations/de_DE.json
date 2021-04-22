@@ -360,7 +360,8 @@
     }
   },
   "toasts": {
-    "quote": "Kopierte Zitate",
+    "quote": "Kopierte zitate",
+    "note": "Kopierte notizen",
     "reset": "Reset successfully",
     "installed": "Erfolgreich installiert",
     "uninstalled": "Erfolgreich entfernt",

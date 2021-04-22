@@ -361,6 +361,7 @@
   },
   "toasts": {
     "quote": "Het citaat is gekopieerd",
+    "note": "Notes copied",
     "reset": "Het herstellen is voltooid",
     "installed": "De installatie is voltooid",
     "uninstalled": "Het verwijderen is voltooid",
