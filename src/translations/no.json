@@ -361,7 +361,7 @@
   },
   "toasts": {
     "quote": "Sitat kopiert",
-    "note": "Notes copied",
+    "notes": "Notes copied",
     "reset": "Tilbakestillte vellykket",
     "installed": "Installert",
     "uninstalled": "Fjernet",

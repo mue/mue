@@ -4,7 +4,7 @@ import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 
-export default class View extends React.PureComponent {
+export default class Maximise extends React.PureComponent {
   constructor() {
     super();
     this.state = {

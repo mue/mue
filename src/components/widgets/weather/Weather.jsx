@@ -26,6 +26,10 @@ export default class Weather extends React.PureComponent {
   }
 
   async getWeather() {
+    if (localStorage.getItem('offlineMode') === 'true') {
+      return null;
+    }
+
     let data = {
       weather: [
         {
@@ -111,6 +115,10 @@ export default class Weather extends React.PureComponent {
       return (localStorage.getItem(setting) === 'true');
     };
 
+    if (enabled('offlineMode')) {
+      return null;
+    }
+
     if (this.state.location === window.language.widgets.weather.not_found) {
       return (<div className='weather'>
         <span className='loc'>{this.state.location}</span>
@@ -118,8 +126,8 @@ export default class Weather extends React.PureComponent {
     }
 
     const minmax = () => {
-      const mintemp = (localStorage.getItem('mintemp') === 'true');
-      const maxtemp = (localStorage.getItem('maxtemp') === 'true');
+      const mintemp = enabled('mintemp');
+      const maxtemp = enabled('maxtemp');
     
       if (!mintemp && !maxtemp) {
         return null;

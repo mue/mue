@@ -5,15 +5,16 @@
   cursor: initial;
   user-select: none;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
   border-radius: 20px;
 
   span {
-    text-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    text-shadow: 0 0 10px rgb(255 255 255 / 50%);
   }
 
   svg {
-    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.1));
     vertical-align: middle;
     font-size: 35px;
   }
@@ -26,5 +27,20 @@
 
   .minmax {
     font-size: 0.5em;
+  }
+}
+
+.dark .weather {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  span {
+    text-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  }
+
+  svg {
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.1));
+    vertical-align: middle;
+    font-size: 35px;
   }
 }

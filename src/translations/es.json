@@ -361,7 +361,7 @@
   },
   "toasts": {
     "quote": "Cita copiada",
-    "note": "Notes copied",
+    "notes": "Notes copied",
     "reset": "Restablecido correctamente",
     "installed": "Instalado correctamente",
     "uninstalled": "Retirado correctamente",

@@ -33,10 +33,10 @@ export default class Notes extends React.PureComponent {
     }
   }
 
-  // todo: fix this
   copy() {
-    navigator.clipboard.writeText(this.state.notes);
-    toast(window.language.toasts.copy);
+    // this.state.notes doesnt work for some reason
+    navigator.clipboard.writeText(localStorage.getItem('notes'));
+    toast(window.language.toasts.notes);
   }
 
   componentDidMount() {
