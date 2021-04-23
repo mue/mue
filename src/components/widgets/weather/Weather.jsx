@@ -49,7 +49,7 @@ export default class Weather extends React.PureComponent {
     };
 
     if (!this.state.weather.temp) {
-      data = await (await fetch (window.constants.WEATHER_URL + `?city=${this.state.location}`)).json();
+      data = await (await fetch (window.constants.WEATHER_URL + `/current?city=${this.state.location}`)).json();
     }
 
     if (data.cod === '404') {
@@ -76,6 +76,7 @@ export default class Weather extends React.PureComponent {
         temp_max = ((temp_max - 273.15) * 1.8) + 32;
         temp_text = '°F';
         break;
+      // kelvin
       default: break;
     }
 

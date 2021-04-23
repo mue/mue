@@ -29,7 +29,7 @@ export default class Changelog extends React.PureComponent {
   }
   
   componentDidMount() {
-    if (navigator.onLine || localStorage.getItem('offlineMode') === 'true') {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return;
     }
   
