@@ -150,7 +150,7 @@
             },
             "source": {
               "title": "Fuente",
-              "api": "Fondos API",
+              "api": "API de fondos",
               "custom_background": "Fondo personalizado",
               "custom_colour": "Color del fondo personalizado",
               "upload": "Subir",
@@ -306,7 +306,7 @@
           "author": "Autor",
           "buttons": {
             "addtomue": "Añadir a Mue",
-            "remove": "Remover"
+            "remove": "Desinstalar"
           },
           "quote_warning": {
             "title": "Advertencia",
@@ -361,10 +361,10 @@
   },
   "toasts": {
     "quote": "Cita copiada",
-    "notes": "Notes copied",
+    "notes": "Notas copiadas",
     "reset": "Restablecido correctamente",
     "installed": "Instalado correctamente",
-    "uninstalled": "Retirado correctamente",
+    "uninstalled": "Desinstalado correctamente",
     "error": "Algo salió mal",
     "imported": "Importado correctamente"
   }
