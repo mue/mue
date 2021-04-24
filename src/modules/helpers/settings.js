@@ -52,7 +52,7 @@ export default class SettingsFunctions {
 
     // Languages
     const languageCodes = languages.map(({ value }) => value);
-    const browserLanguage = (navigator.languages && navigator.languages.find(lang => lang.replace('-', '_') && languageCodes.includes(lang))) || navigator.language.replace('-', '_');
+    const browserLanguage = (navigator.languages && navigator.languages.find((lang) => lang.replace('-', '_') && languageCodes.includes(lang))) || navigator.language.replace('-', '_');
 
     if (languageCodes.includes(browserLanguage)) {
       localStorage.setItem('language', browserLanguage);
