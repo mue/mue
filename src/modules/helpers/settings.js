@@ -51,10 +51,10 @@ export default class SettingsFunctions {
     defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 
     // Languages
-    const languageCodes = languages.map(({ code }) => code);
-    const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
+    const languageCodes = languages.map(({ value }) => value);
+    const browserLanguage = navigator.languages && navigator.languages.find(lang => lang.replace('-', '_') && languageCodes.includes(lang)) || navigator.language.replace('-', '_');
 
-    if (languageCodes.includes(browserLanguage.replace('-', '_'))) {
+    if (languageCodes.includes(browserLanguage)) {
       localStorage.setItem('language', browserLanguage);
     } else {
       localStorage.setItem('language', 'en_GB');
