@@ -34,7 +34,7 @@
     "navbar": {
       "tooltips": {
         "update": "Notas de actualización del parche",
-        "refresh": "Refrescar página",
+        "refresh": "Recargar página",
         "feedback": "Comentarios"
       },
       "notes": {
@@ -56,13 +56,13 @@
       "error_boundary": {
         "title": "Error",
         "message": "No se ha podido cargar este componente de Mue",
-        "refresh": "Refrescar"
+        "refresh": "Recargar"
       },
       "settings": {
         "enabled": "Activado",
         "reminder": {
           "title": "AVISO",
-          "message": "Para que se produzcan todos los cambios, hay que refrescar la página."
+          "message": "Para que se produzcan todos los cambios hay que recargar la página."
         },
         "sections": {
           "time": {
@@ -77,14 +77,14 @@
               "zero": "Sin ceros"
             },
             "analogue": {
-              "analog": "Analógico",
+              "title": "Analógico",
               "second_hand": "Manecilla de los segundos",
               "minute_hand": "Manecilla de los minutos",
               "hour_hand": "Manecilla de las horas",
               "hour_marks": "Marcas de las horas",
               "minute_marks": "Marcas de los minutos"
             },
-            "percentage_complete": "Percentaje completado",
+            "percentage_complete": "Porcentaje completado",
             "date": {
               "title": "Fecha",
               "week_number": "Número de la semana",
@@ -100,7 +100,7 @@
                 "title": "Separador corto",
                 "dots": "Puntos",
                 "dash": "Guiones",
-                "gaps": "Gaps",
+                "gaps": "Guiones con espacios",
                 "slashes": "Barras"
               }
             }
@@ -118,7 +118,7 @@
             }
           },
           "greeting": {
-            "title": "Saludos",
+            "title": "Saludo",
             "events": "Eventos",
             "default": "Mensaje del saludo por defecto",
             "name": "Nombre para el saludo",
@@ -146,7 +146,7 @@
               "title": "Tipo",
               "api": "API",
               "custom_image": "Imagen personalizada",
-              "custom_colour": "Color/gradiente personalizado"
+              "custom_colour": "Color/degradado personalizado"
             },
             "source": {
               "title": "Fuente",
@@ -161,14 +161,14 @@
             }
           },
           "search": {
-            "title": "Barra de búsqueda",
+            "title": "Búsqueda",
             "search_engine": "Motor de búsqueda",
             "custom": "URL de búsqueda personalizada",
             "voice_search": "Búsqueda por voz"
           },
           "weather": {
-            "title": "Tiempo",
-            "location": "Localización",
+            "title": "Clima",
+            "location": "Ubicación",
             "auto": "Auto",
             "temp_format": {
               "title": "Formato de la temperatura",
@@ -189,7 +189,7 @@
           "quicklinks": {
             "title": "Enlaces rápidos",
             "open_new": "Abrir en una nueva pestaña",
-            "tooltip": "Herramientas"
+            "tooltip": "Descripción emergente"
           },
           "appearance": {
             "title": "Apariencia",
@@ -203,7 +203,7 @@
             "navbar": {
               "title": "Barra de búsqueda",
               "notes": "Notas",
-              "refresh": "Botón de refrescar"
+              "refresh": "Botón de recargar"
             },
             "font": {
               "title": "Fuente",
@@ -212,13 +212,13 @@
               "weight": {
                 "title": "Tipo de la fuente",
                 "thin": "Delgado",
-                "extra_light": "Extra ligero",
-                "light": "Ligero",
+                "extra_light": "Extra fino",
+                "light": "Fino",
                 "normal": "Normal",
-                "medium": "Medio",
-                "semi_bold": "Semi-negrita",
+                "medium": "Mediano",
+                "semi_bold": "Semi negrita",
                 "bold": "Negrita",
-                "extra_bold": "Extra-negrita"
+                "extra_bold": "Extra negrita"
               },
               "style": {
                 "title": "Estilo de la fuente",
@@ -230,12 +230,12 @@
             "accessibility": {
               "title": "Accesibilidad",
               "widget_zoom": "Zoom del widget",
-              "toast_duration": "Toast duration",
+              "toast_duration": "Duración de la notificación",
               "milliseconds": "milisegundos"
             }
           },
           "order": {
-            "title": "Orden de los widgets"
+            "title": "Orden de widgets"
           },
           "advanced": {
             "title": "Avanzado",
@@ -259,8 +259,8 @@
             "developer": "Desarrollador"
           },
           "language": {
-            "language": "Lenguaje",
-            "quote": "Lenguaje de las citas"
+            "title": "Idioma",
+            "quote": "Idioma de las citas"
           },
           "changelog": "Registro de cambios",
           "about": {
@@ -271,7 +271,7 @@
               "checking_update": "Comprobando actualizaciones",
               "update_available": "Actualización disponible",
               "no_update": "Actualizaciones no disponibles",
-              "offline_mode": "No se puede comprobar la actualización en modo offline"
+              "offline_mode": "No se puede comprobar la actualización en modo sin conexión"
             },
             "contact_us": "Contacto",
             "support_mue": "Apoya Mue",
@@ -299,7 +299,7 @@
         "themes": "Tema",
         "no_items": "No hay artículos en esta categoría",
         "product": {
-          "overview": "Visión general",
+          "overview": "Vista general",
           "information": "Información",
           "last_updated": "Última actualización",
           "version": "Versión",
@@ -310,7 +310,7 @@
           },
           "quote_warning": {
             "title": "Advertencia",
-            "description": "¡Este paquete de citas solicita a servidores externos que pueden rastrearlo!"
+            "description": "¡Este paquete de citas solicita a servidores externos que pueden rastrearte!"
           }
         },
         "offline": {
@@ -319,12 +319,12 @@
         }
       },
       "addons": {
-        "added": "Añadido",
+        "added": "Añadidos",
         "empty": {
-          "title": "Está vacío aquí",
+          "title": "Vacío",
           "description": "Dirígete a la tienda para agregar algunos."
         },
-        "sideload": "Cargar complemento localmente"
+        "sideload": "Cargar localmente"
       }
     },
     "update": {

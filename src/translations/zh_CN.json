@@ -77,7 +77,7 @@
               "zero": "加零补足二位数字"
             },
             "analogue": {
-              "analog": "Analogue",
+              "title": "Analogue",
               "second_hand": "Seconds hand",
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
