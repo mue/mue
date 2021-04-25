@@ -1,5 +1,5 @@
 #item a {
-  color: map-get($button-colours, 'other');
+  color: var(--modal-link);
   cursor: pointer;
 
   &:hover {
@@ -32,8 +32,8 @@
     box-shadow: 0 0 6px rgb(0 0 0 / 30%);
 
     img {
-      height: 100%;
-      width: auto;
+      height: 80px;
+      width: 80px;
       border-radius: 12px 0 0 12px;
       background: white;
     }
