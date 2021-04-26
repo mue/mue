@@ -1,8 +1,6 @@
 import React from 'react';
 import { WiDirectionDownLeft, WiDirectionDownRight, WiDirectionDown, WiDirectionLeft, WiDirectionRight, WiDirectionUpLeft, WiDirectionUpRight, WiDirectionUp } from 'weather-icons-react';
 
-import './weather.scss';
-
 export default function WeatherIcon(props) {
   let icon;
 
