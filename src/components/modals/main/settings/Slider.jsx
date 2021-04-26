@@ -14,7 +14,15 @@ export default class Slider extends React.PureComponent {
   }
 
   handleChange = (e) => {
-    const { value } = e.target;
+    let { value } = e.target;
+
+    if (value > this.props.max) {
+      value = this.props.max;
+    }
+
+    if (value < this.props.min) {
+      value = this.props.min;
+    }
   
     localStorage.setItem(this.props.name, value);
     this.setState({
@@ -35,9 +43,11 @@ export default class Slider extends React.PureComponent {
   }
 
   render() {
+    const text = <input className='sliderText' type='text' onChange={this.handleChange} value={this.state.value}/>;
+
     return (
       <>
-        <p>{this.props.title} ({this.state.value}{this.props.display}) <span className='modalLink' onClick={this.resetItem}>{this.language.buttons.reset}</span></p>
+        <p>{this.props.title} ({text}{this.props.display}) <span className='modalLink' onClick={this.resetItem}>{this.language.buttons.reset}</span></p>
         <input className='range' type='range' min={this.props.min} max={this.props.max} step={this.props.step || 1} value={this.state.value} onChange={this.handleChange} />
       </>
     );

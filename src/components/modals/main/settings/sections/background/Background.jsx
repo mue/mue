@@ -162,7 +162,7 @@ export default class BackgroundSettings extends React.PureComponent {
 
         <h3>{background.effects.title}</h3>
         <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' category='background' />
-        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='100' display='%' category='background' />
+        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='90' display='%' category='background' />
         <br/><br/>
       </>
     );

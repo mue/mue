@@ -115,7 +115,6 @@ ul {
 .PrivateSwitchBase-input-4,
 .MuiRadio-root,
 .aboutLink,
-.MuiIconButton-root,
 legend {
   color: var(--modal-text) !important;
 }
@@ -176,4 +175,12 @@ legend {
       opacity: 0.8;
     }
   }
+}
+
+.sliderText {
+  background: none !important;
+  max-width: 30px;
+  padding: 0px 0px !important;
+  border-radius: 0;
+  font-size: 1rem;
 }
