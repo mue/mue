@@ -57,7 +57,6 @@
       img {
         margin-left: 10px;
         height: 15px;
-        cursor: pointer;
       }
     }
 
@@ -165,9 +164,10 @@ p.description {
 }
 
 #item>img, .updateimage, .updatechangelog>p>img {
-  border-radius: 24px;
+  border-radius: 12px;
   height: 200px;
   width: auto;
+  cursor: pointer;
 }
 
 .featured {
