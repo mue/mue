@@ -3,7 +3,8 @@ import React from 'react';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import WeatherIcon from './WeatherIcon';
-import { WiHumidity, WiWindy } from 'weather-icons-react';
+import WindDirectionIcon from './WindDirectionIcon';
+import { WiHumidity, WiWindy, WiBarometer } from 'weather-icons-react';
 
 import './weather.scss';
 
@@ -19,7 +20,8 @@ export default class Weather extends React.PureComponent {
         temp_min: '',
         temp_max: '',
         humidity: '',
-        windspeed: '',
+        wind_speed: '',
+        wind_degrees: '',
         pressure: ''
       }
     };
@@ -37,7 +39,8 @@ export default class Weather extends React.PureComponent {
         }
       ],
       wind: {
-        speed: this.state.weather.windspeed
+        speed: this.state.weather.wind_speed,
+        deg: this.state.weather.wind_degrees
       },
       main: {
         temp: this.state.weather.original_temp,
@@ -88,7 +91,8 @@ export default class Weather extends React.PureComponent {
         temp_min: Math.round(temp_min),
         temp_max: Math.round(temp_max),
         humidity: data.main.humidity,
-        windspeed: data.wind.speed,
+        wind_speed: data.wind.speed,
+        wind_degrees: data.wind.deg,
         pressure: data.main.pressure,
         original_temp: data.main.temp,
         original_temp_min: data.main.temp_min,
@@ -147,8 +151,8 @@ export default class Weather extends React.PureComponent {
         <span>{this.state.weather.temp + this.state.temp_text}</span>
         <span className='minmax'>{minmax()}</span>
         {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
-        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.windspeed}<span className='minmax'> m/s</span></span> : null}
-        {enabled('atmosphericpressure') ? <span className='loc'><br/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
+        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span><WindDirectionIcon degrees={this.state.weather.wind_degrees}/></span> : null}
+        {enabled('atmosphericpressure') ? <span className='loc'><br/><WiBarometer/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
         {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}
       </div>
