@@ -20,17 +20,17 @@ export default class Slider extends React.PureComponent {
     let { value } = e.target;
 
     if (text) {
-      if (value.includes('.')) {
+      if (value === '') {
         return this.setState({
-          value: this.state.value
+          value: 0
         });
       }
 
-      if (value > this.props.max) {
+      if (Number(value) > this.props.max) {
         value = this.props.max;
       }
   
-      if (value < this.props.min) {
+      if (Number(value) < this.props.min) {
         value = this.props.min;
       }
     }
@@ -56,7 +56,7 @@ export default class Slider extends React.PureComponent {
   }
 
   render() {
-    const text = <input className='sliderText' type='number' min={this.props.min} max={this.props.max} onChange={(e) => this.handleChange(e, text)} value={this.state.value} style={{ width: this.state.numberWidth }}/>;
+    const text = <input className='sliderText' type='number' min={this.props.min} max={this.props.max} onChange={(e) => this.handleChange(e, 'text')} value={this.state.value} style={{ width: this.state.numberWidth }}/>;
 
     return (
       <>

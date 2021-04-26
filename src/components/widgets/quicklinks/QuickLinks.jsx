@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
@@ -39,11 +40,12 @@ export default class QuickLinks extends React.PureComponent {
 
     let nameError, urlError;
     if (this.state.name.length <= 0) {
-      nameError = 'Must provide name';
+      nameError = this.language.name_error;
     }
 
-    if (url.length <= 0) {
-      urlError = 'Must provide URL';
+    // regex: https://ihateregex.io/expr/url/
+    if (url.length <= 0 || /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/.test(url) === false) {
+      urlError = this.language.url_error;
     }
 
     if (nameError || urlError) {
