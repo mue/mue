@@ -53,7 +53,7 @@ export default class AdvancedSettings extends React.PureComponent {
         <p style={{ 'maxWidth': '75%'}}>{advanced.experimental_warning}</p>
         <Switch name='experimental' text={this.language.enabled} element='.other'/>
 
-        <Modal onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className='Modal resetmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
+        <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className='Modal resetmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
           <ResetModal modalClose={() => this.setState({ resetModal: false })} />
         </Modal>
       </>
