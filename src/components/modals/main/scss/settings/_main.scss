@@ -178,9 +178,19 @@ legend {
 }
 
 .sliderText {
-  background: none !important;
-  max-width: 30px;
-  padding: 0px 0px !important;
+  color: var(--modal-text);
+  background: none;
+  border: none;
   border-radius: 0;
   font-size: 1rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

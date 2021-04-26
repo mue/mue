@@ -1,3 +1,4 @@
+// todo: find a better method to do width of number input
 import React from 'react';
 
 import EventBus from '../../../../modules/helpers/eventbus';
@@ -8,25 +9,36 @@ export default class Slider extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: localStorage.getItem(this.props.name) || ''
+      value: localStorage.getItem(this.props.name) || '',
+      numberWidth: ((localStorage.getItem(this.props.name).length + 1) * ((this.props.toast === true) ? 7.75 : 7))
     };
     this.language = window.language.modals.main.settings;
+    this.widthCalculation = (this.props.toast === true) ? 7.75 : 7;
   }
 
-  handleChange = (e) => {
+  handleChange = (e, text) => {
     let { value } = e.target;
 
-    if (value > this.props.max) {
-      value = this.props.max;
-    }
+    if (text) {
+      if (value.includes('.')) {
+        return this.setState({
+          value: this.state.value
+        });
+      }
 
-    if (value < this.props.min) {
-      value = this.props.min;
+      if (value > this.props.max) {
+        value = this.props.max;
+      }
+  
+      if (value < this.props.min) {
+        value = this.props.min;
+      }
     }
   
     localStorage.setItem(this.props.name, value);
     this.setState({
-      value: value
+      value: value,
+      numberWidth: ((value.length + 1) * this.widthCalculation)
     });
 
     EventBus.dispatch('refresh', this.props.category);
@@ -35,7 +47,8 @@ export default class Slider extends React.PureComponent {
   resetItem = () => {
     localStorage.setItem(this.props.name, this.props.default);
     this.setState({
-      value: this.props.default
+      value: this.props.default,
+      numberWidth: ((this.props.default.length + 1) * this.widthCalculation)
     });
 
     toast(window.language.toasts.reset);
@@ -43,7 +56,7 @@ export default class Slider extends React.PureComponent {
   }
 
   render() {
-    const text = <input className='sliderText' type='text' onChange={this.handleChange} value={this.state.value}/>;
+    const text = <input className='sliderText' type='number' min={this.props.min} max={this.props.max} onChange={(e) => this.handleChange(e, text)} value={this.state.value} style={{ width: this.state.numberWidth }}/>;
 
     return (
       <>
