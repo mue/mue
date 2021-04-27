@@ -3,7 +3,7 @@ import React from 'react';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import WeatherIcon from './WeatherIcon';
-import WindDirectionIcon from './WindDirectionIcon';
+//import WindDirectionIcon from './WindDirectionIcon';
 import { WiHumidity, WiWindy, WiBarometer } from 'weather-icons-react';
 
 import './weather.scss';
@@ -151,7 +151,7 @@ export default class Weather extends React.PureComponent {
         <span>{this.state.weather.temp + this.state.temp_text}</span>
         <span className='minmax'>{minmax()}</span>
         {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
-        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span><WindDirectionIcon degrees={this.state.weather.wind_degrees}/></span> : null}
+        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span>{/*<WindDirectionIcon degrees={this.state.weather.wind_degrees}/>*/}</span> : null}
         {enabled('atmosphericpressure') ? <span className='loc'><br/><WiBarometer/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
         {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}

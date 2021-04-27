@@ -15,7 +15,10 @@ export default class Background extends React.PureComponent {
       url: '',
       currentAPI: '',
       photoInfo: {
-        hidden: false
+        hidden: false,
+        offline: false,
+        photographerURL: '',
+        photoURL: ''
       }
     };
     this.language = window.language.widgets.background;
@@ -55,6 +58,7 @@ export default class Background extends React.PureComponent {
     this.setState({
       url: `./offline-images/${randomImage}.webp`,
       photoInfo: {
+        offline: true,
         credit: photographer
       }
     });
@@ -158,7 +162,9 @@ export default class Background extends React.PureComponent {
             location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
             camera: data.camera,
             resolution: data.resolution,
-            url: data.file
+            url: data.file,
+            photographerURL: (backgroundAPI === 'unsplash') ? data.photographer_page : '',
+            photoURL: (backgroundAPI === 'unsplash') ? data.photo_page : ''
           }
         });
       break;

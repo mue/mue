@@ -23,6 +23,15 @@
   svg:hover+.infoCard {
     display: block;
   }
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .infoCard {

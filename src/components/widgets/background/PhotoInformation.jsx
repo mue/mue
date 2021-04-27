@@ -29,9 +29,21 @@ export default function PhotoInformation(props) {
     return null;
   }
 
+  // remove unsplash text
+  const photographer = props.info.credit.split(` ${language.unsplash}`)[0];
+
+  let credit = props.info.credit;
+  let photo = language.credit;
+
+  // unsplash
+  if (props.info.photographerURL !== '' && !props.info.offline) {
+    photo = <a href={props.info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
+    credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;
+  }
+
   return (
     <div className='photoInformation'>
-      <h1>{language.credit} <span id='credit'>{props.info.credit}</span></h1>
+      <h1>{photo} <span id='credit'>{credit}</span></h1>
       <Info className='photoInformationHover'/>
       <div className={props.className || 'infoCard'}>
         <Info className='infoIcon'/>
@@ -44,7 +56,7 @@ export default function PhotoInformation(props) {
         <Resolution/>
         <span>{props.info.resolution || 'N/A'}</span>
         <Photographer/>
-        <span>{props.info.credit.split(` ${language.unsplash}`)[0]}</span>
+        <span>{photographer}</span>
         {(localStorage.getItem('downloadbtn') === 'true') ? 
           <>
             <Download/>
