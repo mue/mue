@@ -36,7 +36,7 @@ export default class AdvancedSettings extends React.PureComponent {
     return (
       <>
         <h2>{advanced.title}</h2>
-        <Checkbox name='offlineMode' text={advanced.offline_mode} />
+        <Checkbox name='offlineMode' text={advanced.offline_mode} element='.other' />
 
         <h3>{advanced.data}</h3>
         <button className='reset' onClick={() => this.setState({ resetModal: true })}>{this.language.buttons.reset}</button>

@@ -87,7 +87,7 @@ export default class Background extends React.PureComponent {
       }
 
       // preloader for background transition
-      let preloader = document.createElement('img');
+      const preloader = document.createElement('img');
       preloader.src = url;
 
       // once image has loaded, add the fade-in transition
@@ -269,12 +269,10 @@ export default class Background extends React.PureComponent {
 
         const backgroundType = localStorage.getItem('backgroundType');
 
-        // todo: make this good
-        if (backgroundType !== this.state.type 
-          || (localStorage.getItem('backgroundAPI') !== this.state.currentAPI && backgroundType === 'api') 
-          || (backgroundType === 'custom' && localStorage.getItem('customBackground') !== this.state.url)
-        ) {
-          return refresh();
+        if (this.state.photoInfo.offline !== true) {
+          if (backgroundType !== this.state.type || localStorage.getItem('backgroundAPI') !== this.state.currentAPI || (this.state.type === 'custom' && localStorage.getItem('customBackground') !== this.state.url)) {
+            return refresh();
+          }
         }
 
         if (this.state.video === true) {
