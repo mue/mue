@@ -78,7 +78,9 @@ export default class BackgroundSettings extends React.PureComponent {
 
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      return;
+      return this.setState({
+        backgroundCategories: [window.language.modals.update.offline.title]
+      });
     }
 
     this.getBackgroundCategories();

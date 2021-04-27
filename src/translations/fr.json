@@ -271,7 +271,11 @@
               "checking_update": "Vérification de la mise à jour",
               "update_available": "Mise à jour disponible",
               "no_update": "Pas de mise a jour disponible",
-              "offline_mode": "Impossible de vérifier la mise à jour en mode hors ligne"
+              "offline_mode": "Impossible de vérifier la mise à jour en mode hors ligne",
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
             },
             "contact_us": "Nous contacter",
             "support_mue": "Soutenir Mue",

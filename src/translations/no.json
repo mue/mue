@@ -271,7 +271,11 @@
               "checking_update": "Checking for update",
               "update_available": "Update available",
               "no_update": "No update available",
-              "offline_mode": "Cannot check for update in offline mode"
+              "offline_mode": "Cannot check for update in offline mode",
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
             },
             "contact_us": "Contact Us",
             "support_mue": "Support Mue",

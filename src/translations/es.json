@@ -271,7 +271,11 @@
               "checking_update": "Comprobando actualizaciones",
               "update_available": "Actualización disponible",
               "no_update": "Actualizaciones no disponibles",
-              "offline_mode": "No se puede comprobar la actualización en modo sin conexión"
+              "offline_mode": "No se puede comprobar la actualización en modo sin conexión",
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
             },
             "contact_us": "Contacto",
             "support_mue": "Apoya Mue",

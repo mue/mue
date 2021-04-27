@@ -36,8 +36,8 @@ export default class About extends React.PureComponent {
       }
 
       return this.setState({
-        update: 'Failed to get update information',
-        loading: 'An error occurred'
+        update: this.language.version.error.title,
+        loading: this.language.version.error.description
       });
     }
 
@@ -66,7 +66,8 @@ export default class About extends React.PureComponent {
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       this.setState({
-        update: this.language.version.offline_mode
+        update: this.language.version.offline_mode,
+        loading: window.language.modals.update.offline.title
       });
       return;
     }

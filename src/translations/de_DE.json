@@ -271,7 +271,11 @@
               "checking_update": "Auf Update prüfen",
               "update_available": "Update verfügbar",
               "no_update": "Kein Update verfügbar",
-              "offline_mode": "Im Offline Modus kann nicht nach Updates gesucht werden"
+              "offline_mode": "Im Offline Modus kann nicht nach Updates gesucht werden",
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
             },
             "contact_us": "Kontaktieren Sie uns",
             "support_mue": "Mue unterstützen",
