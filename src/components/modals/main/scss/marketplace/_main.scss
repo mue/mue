@@ -197,4 +197,13 @@ p.description {
 
 .lightboxmodal {
   margin: auto;
+  max-width: 60%;
+
+  img {
+    max-height: 80%;
+    max-width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

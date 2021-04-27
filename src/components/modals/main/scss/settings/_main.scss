@@ -105,6 +105,7 @@ ul {
   margin-left: 0;
   width: 400px;
   height: 200px;
+  max-width: 60%;
 }
 
 .MuiCheckbox-colorPrimary.Mui-checked,
@@ -160,6 +161,8 @@ legend {
 }
 
 .updatechangelog {
+  max-width: 75%;
+
   li {
     cursor: initial;
     font-size: 1rem;
@@ -174,6 +177,16 @@ legend {
     &:hover {
       opacity: 0.8;
     }
+  }
+}
+
+.tab-content {
+  h1 {
+    max-width: 85%;
+  }
+
+  img {
+    max-width: 95%;
   }
 }
 
