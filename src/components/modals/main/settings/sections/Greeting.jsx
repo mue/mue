@@ -22,9 +22,6 @@ export default class GreetingSettings extends React.PureComponent {
     this.setState({
       birthday: data
     });
-
-    document.querySelector('.reminder-info').style.display = 'block';
-    localStorage.setItem('showReminder', true);
   }
 
   render() {
@@ -34,13 +31,13 @@ export default class GreetingSettings extends React.PureComponent {
       <>
         <h2>{greeting.title}</h2>
         <Switch name='greeting' text={this.language.enabled} category='greeting' element='.greeting'/>
-        <Checkbox name='events' text={greeting.events} category='greeting' element='.other'/>
-        <Checkbox name='defaultGreetingMessage' text={greeting.default} category='greeting' element='.other'/>
-        <Text title={greeting.name} name='greetingName' category='greeting' element='.other'/>
+        <Checkbox name='events' text={greeting.events} category='greeting' element='.greeting'/>
+        <Checkbox name='defaultGreetingMessage' text={greeting.default} category='greeting' element='.greeting'/>
+        <Text title={greeting.name} name='greetingName' category='greeting' element='.greeting'/>
 
         <h3>{greeting.birthday}</h3>
-        <Switch name='birthdayenabled' text={this.language.enabled} category='greeting' element='.other'/>
-        <Checkbox name='birthdayage' text={greeting.birthday_age} category='greeting' element='.other'/>
+        <Switch name='birthdayenabled' text={this.language.enabled} category='greeting' element='.greeting'/>
+        <Checkbox name='birthdayage' text={greeting.birthday_age} category='greeting' element='.greeting'/>
         <p>{greeting.birthday_date}</p>
         <DayPickerInput onDayChange={this.changeDate} value={this.state.birthday}/>
       </>

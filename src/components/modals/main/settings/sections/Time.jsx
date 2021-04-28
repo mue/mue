@@ -34,21 +34,21 @@ export default class TimeSettings extends React.PureComponent {
     const digitalSettings = (
       <>
         <h3>{time.digital.title}</h3>
-        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' element='.other' />
+        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' element='.clock-container' />
         <br/>
-        <Checkbox name='seconds' text={time.digital.seconds} category='clock' element='.other' />
-        <Checkbox name='zero' text={time.digital.zero} category='clock' element='.other' />
+        <Checkbox name='seconds' text={time.digital.seconds} category='clock' element='.clock-container' />
+        <Checkbox name='zero' text={time.digital.zero} category='clock' element='.clock-container' />
       </>
     );
 
     const analogSettings = (
       <>
         <h3>{time.analogue.title}</h3>
-        <Checkbox name='secondHand' text={time.analogue.second_hand} category='clock' />
-        <Checkbox name='minuteHand' text={time.analogue.minute_hand} category='clock' />
-        <Checkbox name='hourHand' text={time.analogue.hour_hand} category='clock' />
-        <Checkbox name='hourMarks' text={time.analogue.hour_marks} category='clock' />
-        <Checkbox name='minuteMarks' text={time.analogue.minute_marks} category='clock' />
+        <Checkbox name='secondHand' text={time.analogue.second_hand} category='clock' element='.clock-container' />
+        <Checkbox name='minuteHand' text={time.analogue.minute_hand} category='clock' element='.clock-container' />
+        <Checkbox name='hourHand' text={time.analogue.hour_hand} category='clock' element='.clock-container' />
+        <Checkbox name='hourMarks' text={time.analogue.hour_marks} category='clock' element='.clock-container' />
+        <Checkbox name='minuteMarks' text={time.analogue.minute_marks} category='clock' element='.clock-container' />
       </>
     );
 
@@ -94,8 +94,8 @@ export default class TimeSettings extends React.PureComponent {
     return (
       <>
         <h2>{time.title}</h2>
-        <Switch name='time' text={this.language.enabled} category='clock' element='.clock' />
-        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock' element='.other'>
+        <Switch name='time' text={this.language.enabled} category='clock' element='.clock-container' />
+        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock' element='.clock-container'>
           <option value='digital'>{time.digital.title}</option>
           <option value='analogue'>{time.analogue.title}</option>
           <option value='percentageComplete'>{time.percentage_complete}</option>

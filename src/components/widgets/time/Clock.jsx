@@ -96,6 +96,9 @@ export default class Clock extends React.PureComponent {
           return element.style.display = 'none';
         }
 
+        this.timer = null;
+        this.startTime(0);
+
         element.style.display = 'block';
       }
     });

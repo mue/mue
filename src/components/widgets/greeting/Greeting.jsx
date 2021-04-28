@@ -110,6 +110,9 @@ export default class Greeting extends React.PureComponent {
           return element.style.display = 'none';
         }
 
+        this.timer = null;
+        this.getGreeting(0);
+
         element.style.display = 'block';
       }
     });
