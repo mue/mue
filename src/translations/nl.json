@@ -319,14 +319,14 @@
         },
         "offline": {
           "title": "Het lijkt er op dat je niet verbonden bent het internet",
-          "description": "Maak verbinding met het internet."
+          "description": "Maak verbinding met het internet"
         }
       },
       "addons": {
         "added": "Toegevoegd",
         "empty": {
           "title": "Het is hier erg leeg",
-          "description": "Ga naar de marktplaats om een paar extensies toe te voegen."
+          "description": "Ga naar de marktplaats om een paar extensies toe te voegen"
         },
         "sideload": "Sideloaden"
       }

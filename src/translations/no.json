@@ -318,15 +318,15 @@
           }
         },
         "offline": {
-          "title": "Ser ut som at du er offiline.",
-          "description": "Vær så snill, koble til internettet."
+          "title": "Ser ut som at du er offiline",
+          "description": "Vær så snill, koble til internettet"
         }
       },
       "addons": {
         "added": "Lagt til",
         "empty": {
           "title": "Det er tomt her.",
-          "description": "Gå til markedsplassen å legg til noe."
+          "description": "Gå til markedsplassen å legg til noe"
         },
         "sideload": "Sideload"
       }
@@ -335,7 +335,7 @@
       "title": "Oppdater",
       "offline": {
         "title": "Offline",
-        "description": "Kan ikke få oppdatering loggene når i offline modus."
+        "description": "Kan ikke få oppdatering loggene når i offline modus"
       },
       "error": {
         "title": "Error",

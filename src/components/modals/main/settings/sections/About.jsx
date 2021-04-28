@@ -67,7 +67,7 @@ export default class About extends React.PureComponent {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       this.setState({
         update: this.language.version.offline_mode,
-        loading: window.language.modals.update.offline.title
+        loading: window.language.modals.main.marketplace.offline.description
       });
       return;
     }

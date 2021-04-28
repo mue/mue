@@ -37,6 +37,14 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+      return this.setState({
+        quoteLanguages: [{
+          name: window.language.modals.main.marketplace.offline.description,
+          value: 'loading'
+        }]
+      });
+    }
     this.getQuoteLanguages();
   }
 

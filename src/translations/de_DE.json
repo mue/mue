@@ -319,14 +319,14 @@
         },
         "offline": {
           "title": "Sieht aus, als ob Sie offline sind",
-          "description": "Bitte stellen Sie eine Verbindung zum Internet her."
+          "description": "Bitte stellen Sie eine Verbindung zum Internet her"
         }
       },
       "addons": {
         "added": "Hinzugefügt",
         "empty": {
           "title": "Hier ist es leer",
-          "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen."
+          "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen"
         },
         "sideload": "Hochladen"
       }

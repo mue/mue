@@ -319,7 +319,7 @@
         },
         "offline": {
           "title": "Parece que estás desconectado",
-          "description": "Por favor conéctate a Internet."
+          "description": "Por favor conéctate a Internet"
         }
       },
       "addons": {

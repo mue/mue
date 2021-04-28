@@ -57,7 +57,7 @@ export default function PhotoInformation(props) {
         <span>{props.info.resolution || 'N/A'}</span>
         <Photographer/>
         <span>{photographer}</span>
-        {(localStorage.getItem('downloadbtn') === 'true') ? 
+        {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 
           <>
             <Download/>
             <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>

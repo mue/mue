@@ -319,7 +319,7 @@
         },
         "offline": {
           "title": "Looks like you're offline",
-          "description": "Please connect to the internet."
+          "description": "Please connect to the internet"
         }
       },
       "addons": {
