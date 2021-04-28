@@ -264,6 +264,10 @@ export default class Background extends React.PureComponent {
         if (this.state.video === true) {
           document.getElementById('backgroundVideo').style.display = 'block';
         } else {
+          if (this.state.photoInfo.hidden === false) {
+            document.querySelector('.photoInformation').style.display = 'block';
+          }
+
           element.style.display = 'block';
         }
 
