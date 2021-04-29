@@ -239,6 +239,7 @@ export default class Background extends React.PureComponent {
       this.setState({
         url: '',
         style: '',
+        type: '',
         video: false,
         photoInfo: {
           hidden: true
