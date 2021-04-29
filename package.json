@@ -9,7 +9,7 @@
   "homepage": "https://muetab.com",
   "bugs": "https://github.com/mue/mue/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BBUG%5D",
   "license": "BSD-3-Clause",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "dependencies": {
     "@fontsource/lexend-deca": "^4.2.3",
     "@fontsource/montserrat": "^4.2.2",
