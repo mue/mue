@@ -48,7 +48,7 @@ export default class About extends React.PureComponent {
     const newVersion = versionData[0].tag_name;
 
     let updateMsg = this.language.version.no_update;
-    if (Number(window.constants.VERSION) < newVersion) {
+    if (Number(window.constants.VERSION.replaceAll('.', '')) < Number(newVersion.replaceAll('.', ''))) {
       updateMsg = `${this.language.version.update_available}: ${newVersion}`;
     }
 

@@ -10,4 +10,4 @@ export const FEEDBACK_FORM = 'https://api.formcake.com/api/form/349b56cb-7e2b-40
 export const DDG_PROXY = 'https://external-content.duckduckgo.com/iu/?u=';
 export const OFFLINE_IMAGES = 20;
 export const BETA_VERSION = false;
-export const VERSION = '5.0'; 
+export const VERSION = '5.0.0'; 
