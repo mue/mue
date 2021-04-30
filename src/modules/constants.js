@@ -1,5 +1,6 @@
 export const API_URL = 'https://api.muetab.com';
 export const UNSPLASH_URL = 'https://unsplash.muetab.com';
+export const PEXELS_URL = 'https://pexels.muetab.com';
 export const MARKETPLACE_URL = 'https://marketplace.muetab.com';
 export const WEATHER_URL = 'https://weather.muetab.com';
 export const WEBSITE_URL = 'https://muetab.com';

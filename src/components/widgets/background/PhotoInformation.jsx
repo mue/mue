@@ -30,7 +30,7 @@ export default function PhotoInformation(props) {
   }
 
   // remove unsplash text
-  const photographer = props.info.credit.split(` ${language.unsplash}`)[0];
+  const photographer = props.info.credit.split(` ${language.unsplash}`)[0].split(` ${language.pexels}`);
 
   let credit = props.info.credit;
   let photo = language.credit;

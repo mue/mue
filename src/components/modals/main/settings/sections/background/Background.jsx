@@ -104,6 +104,10 @@ export default class BackgroundSettings extends React.PureComponent {
       {
         'name': 'Unsplash',
         'value': 'unsplash'
+      },
+      {
+        'name': 'Pexels',
+        'value': 'pexels'
       }
     ];
 
