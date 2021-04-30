@@ -3,8 +3,8 @@ import React from 'react';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import WeatherIcon from './WeatherIcon';
-//import WindDirectionIcon from './WindDirectionIcon';
-import { WiHumidity, WiWindy, WiBarometer } from 'weather-icons-react';
+import WindDirectionIcon from './WindDirectionIcon';
+import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'weather-icons-react';
 
 import './weather.scss';
 
@@ -17,11 +17,13 @@ export default class Weather extends React.PureComponent {
       temp_text: '',
       weather: {
         temp: '',
+        description: '',
         temp_min: '',
         temp_max: '',
         humidity: '',
         wind_speed: '',
         wind_degrees: '',
+        cloudiness: '',
         pressure: ''
       }
     };
@@ -35,19 +37,23 @@ export default class Weather extends React.PureComponent {
     let data = {
       weather: [
         {
+          description: this.state.weather.description,
           icon: this.state.icon
         }
       ],
-      wind: {
-        speed: this.state.weather.wind_speed,
-        deg: this.state.weather.wind_degrees
-      },
       main: {
         temp: this.state.weather.original_temp,
         temp_min: this.state.weather.original_temp_min,
         temp_max: this.state.weather.original_temp_max,
         humidity: this.state.weather.humidity,
         pressure: this.state.weather.pressure
+      },
+      wind: {
+        speed: this.state.weather.wind_speed,
+        deg: this.state.weather.wind_degrees
+      },
+      clouds: {
+        all: this.state.weather.cloudiness
       }
     };
 
@@ -88,11 +94,13 @@ export default class Weather extends React.PureComponent {
       temp_text: temp_text,
       weather: {
         temp: Math.round(temp),
+        description: data.weather[0].description,
         temp_min: Math.round(temp_min),
         temp_max: Math.round(temp_max),
         humidity: data.main.humidity,
         wind_speed: data.wind.speed,
         wind_degrees: data.wind.deg,
+        cloudiness: data.clouds.all,
         pressure: data.main.pressure,
         original_temp: data.main.temp,
         original_temp_min: data.main.temp_min,
@@ -144,14 +152,16 @@ export default class Weather extends React.PureComponent {
         return <><br/>{this.state.weather.temp_min + this.state.temp_text} {this.state.weather.temp_max + this.state.temp_text}</>;
       }
     };
-  
+
     return (
       <div className='weather'>
         <WeatherIcon name={this.state.icon}/>
         <span>{this.state.weather.temp + this.state.temp_text}</span>
+        <span className='loc' style={{ 'textTransform': 'capitalize' }}><br/>{this.state.weather.description}</span>
         <span className='minmax'>{minmax()}</span>
         {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
-        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span>{/*<WindDirectionIcon degrees={this.state.weather.wind_degrees}/>*/}</span> : null}
+        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span> {enabled('windDirection') ? <WindDirectionIcon degrees={this.state.weather.wind_degrees}/> : null}</span> : null}
+        {enabled('cloudiness') ? <span className='loc'><br/><WiCloud/>{this.state.weather.cloudiness}%</span>: null}
         {enabled('atmosphericpressure') ? <span className='loc'><br/><WiBarometer/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
         {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}

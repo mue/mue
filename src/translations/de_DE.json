@@ -179,8 +179,10 @@
             "extra_info": {
               "title": "Zusätzliche Informationen",
               "show_location": "Standort anzeigen",
+              "show_text": "Show Text",
               "humidity": "Luftfeuchtigkeit",
               "wind_speed": "Windgeschwindigkeit",
+              "wind_direction": "Wind direction",
               "min_temp": "Mindesttemperatur",
               "max_temp": "Höchsttemperatur",
               "atmospheric_pressure": "Atmosphärischer Druck"
