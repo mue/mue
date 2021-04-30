@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Mue",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "version": "5.0.1",

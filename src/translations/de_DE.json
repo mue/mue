@@ -177,9 +177,10 @@
               "kelvin": "Kelvin"
             },
             "extra_info": {
-              "title": "Zusätzliche Informationen",
+              "title": "Zusätzliche informationen",
               "show_location": "Standort anzeigen",
-              "show_text": "Show Text",
+              "show_text": "Show text",
+              "cloudiness": "Cloudiness",
               "humidity": "Luftfeuchtigkeit",
               "wind_speed": "Windgeschwindigkeit",
               "wind_direction": "Wind direction",

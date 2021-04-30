@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "offline_enabled": true,
   "name": "Mue",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",

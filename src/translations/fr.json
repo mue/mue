@@ -179,7 +179,8 @@
             "extra_info": {
               "title": "Informations supplémentaires",
               "show_location": "Afficher l'emplacement",
-              "show_text": "Show Text",
+              "show_text": "Show text",
+              "cloudiness": "Cloudiness",
               "humidity": "Humidité",
               "wind_speed": "Vitesse du vent",
               "wind_direction": "Wind direction",

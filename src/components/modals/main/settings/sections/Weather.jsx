@@ -32,6 +32,8 @@ export default class TimeSettings extends React.PureComponent {
       this.setState({
         location: data[0].name
       });
+    }, { 
+      enableHighAccuracy: true 
     });
 
     document.querySelector('.reminder-info').style.display = 'block';
@@ -69,6 +71,7 @@ export default class TimeSettings extends React.PureComponent {
         <h3>{language.extra_info.title}</h3>
         <Checkbox name='showlocation' text={language.extra_info.show_location} category='weather'/>
         <Checkbox name='showtext' text={language.extra_info.show_text} category='weather'/>
+        <Checkbox name='cloudiness' text={language.extra_info.cloudiness} category='weather'/>
         <Checkbox name='humidity' text={language.extra_info.humidity} category='weather'/>
         <Checkbox name='windspeed' text={language.extra_info.wind_speed} category='weather'/>
         <Checkbox name='windDirection' text={language.extra_info.wind_direction} category='weather'/>
