@@ -202,5 +202,9 @@
   {
     "name": "datezero",
     "value": true
+  },
+  {
+    "name": "autocompleteProvider",
+    "value": "google"
   }
 ]

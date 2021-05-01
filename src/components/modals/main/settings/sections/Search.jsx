@@ -3,6 +3,7 @@ import React from 'react';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
 import Switch from '../Switch';
+import Radio from '../Radio';
 
 import EventBus from '../../../../../modules/helpers/eventbus';
 
@@ -10,6 +11,7 @@ import { isChrome } from 'react-device-detect';
 import { toast } from 'react-toastify';
 
 const searchEngines = require('../../../../widgets/search/search_engines.json');
+const autocompleteProviders = require('../../../../widgets/search/autocomplete_providers.json')
 
 export default class SearchSettings extends React.PureComponent {
   constructor() {
@@ -76,6 +78,9 @@ export default class SearchSettings extends React.PureComponent {
         <h2>{search.title}</h2>
         <Switch name='searchBar' text={language.enabled} category='widgets' />
         {isChrome ? <Checkbox name='voiceSearch' text={search.voice_search} /> : null}
+        <Checkbox name='autocomplete' text={search.autocomplete} category='search'/>
+        <Radio title={search.autocomplete_provider} options={autocompleteProviders} name='autocompleteProvider' category='search'/>
+        <br/>
 
         <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
           {searchEngines.map((engine) => (

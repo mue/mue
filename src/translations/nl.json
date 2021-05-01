@@ -165,6 +165,8 @@
             "title": "Zoekbalk",
             "search_engine": "Zoekmachine",
             "custom": "Aangepaste zoekmachine-url",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "Spraakgestuurd zoeken gebruiken"
           },
           "weather": {

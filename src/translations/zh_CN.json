@@ -165,6 +165,8 @@
             "title": "搜索栏",
             "search_engine": "搜索引擎",
             "custom": "自定义搜索链接",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "语音搜索"
           },
           "weather": {

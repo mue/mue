@@ -165,6 +165,8 @@
             "title": "Панель поиска",
             "search_engine": "Поисковый движок",
             "custom": "Пользовательский поисковый движок",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "Поиск голосом"
           },
           "weather": {

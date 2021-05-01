@@ -165,6 +165,8 @@
             "title": "Search",
             "search_engine": "Search engine",
             "custom": "Custom search URL",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "Voice search"
           },
           "weather": {

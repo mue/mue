@@ -1,6 +1,9 @@
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
+import fetchJSONP from 'fetch-jsonp';
+
+import AutocompleteInput from '../../helpers/autocomplete/Autocomplete';
 
 import SearchIcon from '@material-ui/icons/Search';
 import MicIcon from '@material-ui/icons/Mic';
@@ -8,6 +11,7 @@ import MicIcon from '@material-ui/icons/Mic';
 import './search.scss';
 
 const searchEngines = require('./search_engines.json');
+const autocompleteProviders = require('./autocomplete_providers.json');
 
 export default class Search extends React.PureComponent {
   constructor() {
@@ -15,7 +19,11 @@ export default class Search extends React.PureComponent {
     this.state = {
       url: '',
       query: '',
-      microphone: null
+      autocompleteURL: '',
+      autocompleteQuery: '',
+      autocompleteCallback: '',
+      microphone: null,
+      suggestions: []
     };
     this.language = window.language.widgets.search;
   }
@@ -42,6 +50,15 @@ export default class Search extends React.PureComponent {
     window.location.href = this.state.url + `?${this.state.query}=` + value;
   }
 
+  async getSuggestions(input) {
+    const data = await (await fetchJSONP(this.state.autocompleteURL + this.state.autocompleteQuery + input, {
+      jsonpCallback: this.state.autocompleteCallback
+    })).json();
+    this.setState({
+      suggestions: data[1].splice(0, 3)
+    });
+  }
+
   init() {
     let url;
     let query = 'q';
@@ -65,9 +82,23 @@ export default class Search extends React.PureComponent {
       microphone = <MicIcon className='micIcon' onClick={this.startSpeechRecognition}/>;
     }
 
+    let autocompleteURL;
+    let autocompleteQuery;
+    let autocompleteCallback;
+
+    if (localStorage.getItem('autocomplete') === 'true') {
+      const info = autocompleteProviders.find((i) => i.value === localStorage.getItem('autocompleteProvider'));
+      autocompleteURL = info.url;
+      autocompleteQuery = info.query;
+      autocompleteCallback = info.callback;
+    }
+
     this.setState({
       url: url,
       query: query,
+      autocompleteURL: autocompleteURL,
+      autocompleteQuery: autocompleteQuery,
+      autocompleteCallback: autocompleteCallback,
       microphone: microphone
     });
   }
@@ -91,7 +122,7 @@ export default class Search extends React.PureComponent {
       <form action={this.state.url} className='searchBar'>
         {this.state.microphone}
         <SearchIcon onClick={this.searchButton}/>
-        <input type='text' placeholder={this.language} name={this.state.query} id='searchtext'/>
+        <AutocompleteInput placeholder={this.language} name={this.state.query} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
       </form>
     );
   }

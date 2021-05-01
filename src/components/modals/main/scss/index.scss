@@ -32,12 +32,20 @@
 }
 
 .modalLink {
+  display: block !important;
+  margin-top: 5px;
   color: var(--modal-link);
   cursor: pointer;
-  padding-left: 10px;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  span {
+    font-size: 1.2rem;
+    color: var(--modal-link);
+    vertical-align: text-bottom;
+    margin-left: 5px;
   }
 }
 
@@ -99,12 +107,6 @@
   .ReactModal__Content {
     min-height: 500px;
     max-height: calc(100vh - 30vh);
-  }
-}
-
-@media only screen and (min-height: 700px) {
-  .ReactModal__Content {
-    //min-height: 600px;
   }
 }
 

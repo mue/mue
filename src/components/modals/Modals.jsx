@@ -48,10 +48,10 @@ export default class Modals extends React.PureComponent {
           <Main modalClose={() => this.setState({ mainModal: false })}/>
         </Modal>
         <React.Suspense fallback={renderLoader()}>
-          <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal' overlayClassName='Overlay' ariaHideApp={false}>
+          <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
             <Welcome modalClose={() => this.closeWelcome()}/>
           </Modal>
-          <Modal closeTimeoutMS={300} onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className='Modal' overlayClassName='Overlay' ariaHideApp={false}>
+          <Modal closeTimeoutMS={300} onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
             <Feedback modalClose={() => this.setState({ feedbackModal: false })}/>
           </Modal>
         </React.Suspense>

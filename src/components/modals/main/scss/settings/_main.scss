@@ -207,3 +207,16 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.resetArea {
+  h2 {
+    font-size: 2rem !important;
+  }
+  h2, span, svg {
+    display: inline;
+  }
+  svg {
+    vertical-align: sub;
+    font-size: 1.4rem;
+  }
+}
