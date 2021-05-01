@@ -32,12 +32,15 @@ export default class TimeSettings extends React.PureComponent {
       this.setState({
         location: data[0].name
       });
+
+      document.querySelector('.reminder-info').style.display = 'block';
+      localStorage.setItem('showReminder', true);
+    }, (error) => {
+      // firefox requires this 2nd function
+      console.log(error);
     }, { 
       enableHighAccuracy: true 
     });
-
-    document.querySelector('.reminder-info').style.display = 'block';
-    localStorage.setItem('showReminder', true);
   }
 
   render() {
