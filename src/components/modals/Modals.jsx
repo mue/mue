@@ -44,7 +44,7 @@ export default class Modals extends React.PureComponent {
     return (
       <>
         <Navbar openModal={(modal) => this.setState({ [modal]: true })}/>
-        <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className='Modal' overlayClassName='Overlay' ariaHideApp={false}>
+        <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
           <Main modalClose={() => this.setState({ mainModal: false })}/>
         </Modal>
         <React.Suspense fallback={renderLoader()}>

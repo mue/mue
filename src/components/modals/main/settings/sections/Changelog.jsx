@@ -1,8 +1,8 @@
 import React from 'react';
 
-//import Modal from 'react-modal';
+import Modal from 'react-modal';
 
-//import Lightbox from '../../marketplace/Lightbox';
+import Lightbox from '../../marketplace/Lightbox';
 
 import WifiOffIcon from '@material-ui/icons/WifiOff';
 
@@ -103,9 +103,9 @@ export default class Changelog extends React.PureComponent {
         <h5 style={{ 'lineHeight': '0px' }}>{this.state.author} • {this.state.date}</h5>
         {this.state.image ? <img draggable='false' src={this.state.image} alt={window.language.modals.update.title} className='updateimage'/> : null}
         <div className='updatechangelog' dangerouslySetInnerHTML={{ __html: this.state.html }}/>
-        {/*<Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
+        <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
           <Lightbox modalClose={() => this.setState({ showLightbox: false })} img={this.state.lightboxImg}/>
-    </Modal>*/}
+        </Modal>
       </div>
     );
   }

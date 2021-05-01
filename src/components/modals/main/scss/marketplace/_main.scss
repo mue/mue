@@ -198,12 +198,16 @@ p.description {
 .lightboxmodal {
   margin: auto;
   max-width: 60%;
+  background: none !important;
+  box-shadow: none !important;
 
   img {
-    max-height: 80%;
-    max-width: 80%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    height: auto;
+    width: 100%;
+  }
+
+  .closeModal {
+    color: #fff;
+    text-shadow: 0 0 20px rgb(0 0 0 / 30%);
   }
 }

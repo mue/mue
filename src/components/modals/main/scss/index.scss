@@ -15,7 +15,6 @@
   border: none;
   opacity: 1;
   z-index: -2;
-  padding: 25px;
   transition-timing-function: ease-in;
   border-radius: map-get($modal, 'border-radius');
   user-select: none;
@@ -26,6 +25,10 @@
   &:focus {
     outline: 0;
   }
+}
+
+.mainModal {
+  padding: 25px;
 }
 
 .modalLink {
@@ -70,8 +73,8 @@
 }
 
 .ReactModal__Content {
-  min-height: calc(100vh - 30vh);
-  max-height: calc(100vh - 10vh);
+  //min-height: calc(100vh - 30vh);
+  //max-height: calc(100vh - 10vh);
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   overflow-y: auto;
   position: relative;
@@ -101,7 +104,7 @@
 
 @media only screen and (min-height: 700px) {
   .ReactModal__Content {
-    min-height: 600px;
+    //min-height: 600px;
   }
 }
 

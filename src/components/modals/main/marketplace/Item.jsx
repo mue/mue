@@ -1,8 +1,8 @@
 import React from 'react';
 
-//import Modal from 'react-modal';
+import Modal from 'react-modal';
 
-//import Lightbox from './Lightbox';
+import Lightbox from './Lightbox';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
@@ -66,9 +66,9 @@ export default class Item extends React.PureComponent {
             </div>
             {warningHTML} 
         </div>
-        {/* <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
+        <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
           <Lightbox modalClose={() => this.setState({ showLightbox: false })} img={iconsrc}/>
-              </Modal> */}
+        </Modal>
       </div>
     );
   }
