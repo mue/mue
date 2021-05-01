@@ -76,6 +76,7 @@ export default class TimeSettings extends React.PureComponent {
         <Checkbox name='showtext' text={language.extra_info.show_text} category='weather'/>
         <Checkbox name='cloudiness' text={language.extra_info.cloudiness} category='weather'/>
         <Checkbox name='humidity' text={language.extra_info.humidity} category='weather'/>
+        <Checkbox name='visibility' text={language.extra_info.visibility} category='weather'/>
         <Checkbox name='windspeed' text={language.extra_info.wind_speed} category='weather'/>
         <Checkbox name='windDirection' text={language.extra_info.wind_direction} category='weather'/>
         <Checkbox name='mintemp' text={language.extra_info.min_temp} category='weather'/>

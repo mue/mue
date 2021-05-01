@@ -24,6 +24,7 @@ export default class Weather extends React.PureComponent {
         wind_speed: '',
         wind_degrees: '',
         cloudiness: '',
+        visibility: '',
         pressure: ''
       }
     };
@@ -48,6 +49,7 @@ export default class Weather extends React.PureComponent {
         humidity: this.state.weather.humidity,
         pressure: this.state.weather.pressure
       },
+      visibility: this.state.weather.visibility,
       wind: {
         speed: this.state.weather.wind_speed,
         deg: this.state.weather.wind_degrees
@@ -101,6 +103,7 @@ export default class Weather extends React.PureComponent {
         wind_speed: data.wind.speed,
         wind_degrees: data.wind.deg,
         cloudiness: data.clouds.all,
+        visibility: data.visibility,
         pressure: data.main.pressure,
         original_temp: data.main.temp,
         original_temp_min: data.main.temp_min,
@@ -162,6 +165,7 @@ export default class Weather extends React.PureComponent {
         {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
         {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span> {enabled('windDirection') ? <WindDirectionIcon degrees={this.state.weather.wind_degrees}/> : null}</span> : null}
         {enabled('cloudiness') ? <span className='loc'><br/><WiCloud/>{this.state.weather.cloudiness}%</span>: null}
+        {enabled('visibility') ? <span className='loc'><br/>{this.state.weather.visibility} meters</span>: null}
         {enabled('atmosphericpressure') ? <span className='loc'><br/><WiBarometer/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
         {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}

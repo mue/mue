@@ -45,8 +45,15 @@ export default class Search extends React.PureComponent {
     };
   }
 
-  searchButton = () => {
-    const value = document.getElementById('searchtext').value || 'mue fast';
+  searchButton = (e) => {
+    let value;
+
+    if (e) {
+      value = e;
+    } else {
+      value = document.getElementById('searchtext').value || 'mue fast';
+    }
+
     window.location.href = this.state.url + `?${this.state.query}=` + value;
   }
 
@@ -54,6 +61,7 @@ export default class Search extends React.PureComponent {
     const data = await (await fetchJSONP(this.state.autocompleteURL + this.state.autocompleteQuery + input, {
       jsonpCallback: this.state.autocompleteCallback
     })).json();
+
     this.setState({
       suggestions: data[1].splice(0, 3)
     });

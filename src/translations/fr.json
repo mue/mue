@@ -185,6 +185,7 @@
               "show_text": "Show text",
               "cloudiness": "Cloudiness",
               "humidity": "Humidité",
+              "visibility": "Visibility",
               "wind_speed": "Vitesse du vent",
               "wind_direction": "Wind direction",
               "min_temp": "Température minimale",
