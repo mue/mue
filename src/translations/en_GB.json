@@ -141,7 +141,16 @@
             "effects": {
               "title": "Effects",
               "blur": "Adjust blur",
-              "brightness": "Adjust brightness"
+              "brightness": "Adjust brightness",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "constrast": "Contrast"
+              }
             },
             "type": {
               "title": "Type",

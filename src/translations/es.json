@@ -141,7 +141,16 @@
             "effects": {
               "title": "Efectos",
               "blur": "Ajustar difuminado",
-              "brightness": "Ajustar brillo"
+              "brightness": "Ajustar brillo",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "constrast": "Contrast"
+              }
             },
             "type": {
               "title": "Tipo",

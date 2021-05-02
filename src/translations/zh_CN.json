@@ -141,7 +141,16 @@
             "effects": {
               "title": "Effects",
               "blur": "调整模糊",
-              "brightness": "调整亮度"
+              "brightness": "调整亮度",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "constrast": "Contrast"
+              }
             },
             "type": {
               "title": "Type",

@@ -141,7 +141,16 @@
             "effects": {
               "title": "Effects",
               "blur": "Размытие",
-              "brightness": "Яркость"
+              "brightness": "Яркость",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "constrast": "Contrast"
+              }
             },
             "type": {
               "title": "Type",

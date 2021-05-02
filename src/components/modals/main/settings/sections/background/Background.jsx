@@ -170,6 +170,14 @@ export default class BackgroundSettings extends React.PureComponent {
         <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' category='background' />
         <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='90' display='%' category='background' />
         <br/><br/>
+        <Dropdown label={background.effects.filters.title} name='backgroundFilter' category='background'>
+          <option value='grayscale'>{background.effects.filters.grayscale}</option>
+          <option value='sepia'>{background.effects.filters.sepia}</option>
+          <option value='invert'>{background.effects.filters.invert}</option>
+          <option value='saturate'>{background.effects.filters.saturate}</option>
+          <option value='contrast'>{background.effects.filters.contrast}</option>
+        </Dropdown>
+        <Slider title={background.effects.filters.amount} name='backgroundFilterAmount' min='0' max='100' default='0' display='%' category='background' />
       </>
     );
   }

@@ -301,10 +301,12 @@ export default class Background extends React.PureComponent {
         }
 
         // background effects so we don't get another image again
+        const backgroundFilter = localStorage.getItem('backgroundFilter');
+
         if (this.state.video === true) {
-          document.getElementById('backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+          document.getElementById('backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}`;
         } else {
-          element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
+          element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}`;
         }
       }
 
@@ -339,9 +341,11 @@ export default class Background extends React.PureComponent {
       );
     }
 
+    const backgroundFilter = localStorage.getItem('backgroundFilter');
+
     return (
       <>
-        <div style={{ 'WebkitFilter': `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)` }} id='backgroundImage'/>
+        <div style={{ 'WebkitFilter': `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}` }} id='backgroundImage'/>
         {(this.state.photoInfo.credit !== '') ? 
           <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
         : null}
