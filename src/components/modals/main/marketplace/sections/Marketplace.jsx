@@ -5,6 +5,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 import Item from '../Item';
 import Items from '../Items';
+import Dropdown from '../../settings/Dropdown';
 
 import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 
@@ -101,9 +102,12 @@ export default class Marketplace extends React.PureComponent {
 
     this.setState({
       items: data[this.props.type],
+      oldItems: data[this.props.type],
       featured: featured.data,
       done: true
     });
+
+    this.sortMarketplace(localStorage.getItem('sortMarketplace'));
   }
 
   manage(type) {
@@ -116,6 +120,28 @@ export default class Marketplace extends React.PureComponent {
     toast(window.language.toasts[type + 'ed']);
     this.setState({
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
+    });
+  }
+
+  sortMarketplace(value) {
+    let items = this.state.oldItems;
+    switch (value) {
+      case 'a-z':
+        items.sort();
+        items.reverse();
+        break;
+      case 'z-a':
+        items.sort();
+        items.reverse();
+      break;
+    }
+
+    this.setState({
+      items: items,
+      display: {
+        item: 'none',
+        marketplace: 'block'
+      }
     });
   }
 
@@ -171,6 +197,11 @@ export default class Marketplace extends React.PureComponent {
             <h1>{this.state.featured.name}</h1>
             <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
           </div>
+          <br/>
+          <Dropdown label={window.language.modals.main.addons.sort.title} name='sortMarketplace' onChange={(value) => this.sortMarketplace(value)}>
+            <option value='a-z'>{window.language.modals.main.addons.sort.a_z}</option>
+            <option value='z-a'>{window.language.modals.main.addons.sort.z_a}</option>
+          </Dropdown>
           <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
         </div>
         <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
