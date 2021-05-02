@@ -41,26 +41,6 @@ export default class Quote extends React.PureComponent {
     });
   }
 
-  getQuotePack() {
-    let quotePack = localStorage.getItem('quote_packs');
-
-    if (quotePack === 'undefined') {
-      return this.doOffline();
-    }
-
-    quotePack = JSON.parse(quotePack);
-
-    if (quotePack) {
-      const data = quotePack[Math.floor(Math.random() * quotePack.length)];
-      return this.setState({
-        quote: '"' + data.quote + '"',
-        author: data.author
-      });
-    } else {
-      this.doOffline();
-    }
-  }
-
   async getQuote() {
     const favouriteQuote = localStorage.getItem('favouriteQuote');
     if (favouriteQuote) {
@@ -91,7 +71,23 @@ export default class Quote extends React.PureComponent {
           author: quotePackAPI.author || data.author
         });
       } catch (e) {
-        return this.getQuotePack();
+        return this.doOffline();
+      }
+    }
+
+    let quotePack = localStorage.getItem('quote_packs');
+
+    if (quotePack !== null) {
+      quotePack = JSON.parse(quotePack);
+
+      if (quotePack) {
+        const data = quotePack[Math.floor(Math.random() * quotePack.length)];
+        return this.setState({
+          quote: '"' + data.quote + '"',
+          author: data.author
+        });
+      } else {
+        return this.doOffline();
       }
     }
 

@@ -67,6 +67,7 @@ function Tab(props) {
     // Store
     case marketplace.photo_packs: icon = <Background/>; break;
     case marketplace.quote_packs: icon = <Quote/>; break;
+    case marketplace.preset_settings: icon = <Advanced/>; break;
     case addons.added: icon = <Added/>; break;
     case addons.sideload: icon = <Sideload/>; break;
 

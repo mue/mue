@@ -18,12 +18,11 @@ export default class MarketplaceFunctions {
           localStorage.setItem(item.name, item.value);
         });
         break;
-      case 'quote_packs':
+      case 'quotes':
         localStorage.removeItem('quote_packs');
         localStorage.removeItem('quoteAPI');
         break;
       case 'photos':
-      case 'photo_packs':
         localStorage.removeItem('photo_packs');
         localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
         localStorage.removeItem('oldBackgroundType');
@@ -68,14 +67,13 @@ export default class MarketplaceFunctions {
         break;
 
       case 'photos':
-      case 'photo_packs':
         localStorage.setItem('photo_packs', JSON.stringify(input.photos));
         localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
         localStorage.setItem('backgroundType', 'photo_pack');
         EventBus.dispatch('refresh', 'background');
         break;
 
-      case 'quote_packs':
+      case 'quotes':
         if (input.quote_api) {
           localStorage.setItem('quoteAPI', JSON.stringify(input.quote_api));
         }
