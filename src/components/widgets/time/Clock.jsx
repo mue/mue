@@ -100,8 +100,11 @@ export default class Clock extends React.PureComponent {
         this.startTime(0);
 
         element.style.display = 'block';
+        element.style.fontSize = `${4 * Number((localStorage.getItem('zoomClock') || 100) / 100)}em`;
       }
     });
+
+    document.querySelector('.clock-container').style.fontSize = `${4 * Number((localStorage.getItem('zoomClock') || 100) / 100)}em`;
 
     this.startTime(0);
   }

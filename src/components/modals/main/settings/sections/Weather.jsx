@@ -73,7 +73,7 @@ export default class TimeSettings extends React.PureComponent {
         <Radio name='tempformat' title={language.temp_format.title} options={tempFormat} category='weather'/>
         <h3>{language.extra_info.title}</h3>
         <Checkbox name='showlocation' text={language.extra_info.show_location} category='weather'/>
-        <Checkbox name='showtext' text={language.extra_info.show_text} category='weather'/>
+        <Checkbox name='weatherdescription' text={language.extra_info.show_description} category='weather'/>
         <Checkbox name='cloudiness' text={language.extra_info.cloudiness} category='weather'/>
         <Checkbox name='humidity' text={language.extra_info.humidity} category='weather'/>
         <Checkbox name='visibility' text={language.extra_info.visibility} category='weather'/>

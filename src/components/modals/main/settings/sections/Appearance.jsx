@@ -36,10 +36,10 @@ export default function AppearanceSettings() {
       <Checkbox name='refresh' text={appearance.navbar.refresh} element='.other' />
 
       <h3>{appearance.font.title}</h3>
-      <Text title={appearance.font.custom} name='font' upperCaseFirst={true} element='.other' />
+      <Text title={appearance.font.custom} name='font' upperCaseFirst={true} category='other' />
       <br/>
-      <Checkbox name='fontGoogle' text={appearance.font.google} element='.other' />
-      <Dropdown label={appearance.font.weight.title} name='fontweight' element='.other'>
+      <Checkbox name='fontGoogle' text={appearance.font.google} category='other' />
+      <Dropdown label={appearance.font.weight.title} name='fontweight' category='other'>
         {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
         <option value='100'>{appearance.font.weight.thin}</option>
         <option value='200'>{appearance.font.weight.extra_light}</option>
@@ -51,7 +51,7 @@ export default function AppearanceSettings() {
         <option value='800'>{appearance.font.weight.extra_bold}</option>
       </Dropdown>
       <br/><br/>
-      <Dropdown label={appearance.font.style.title} name='fontstyle' element='.other'>
+      <Dropdown label={appearance.font.style.title} name='fontstyle' category='other'>
         <option value='normal'>{appearance.font.style.normal}</option>
         <option value='italic'>{appearance.font.style.italic}</option>
         <option value='oblique'>{appearance.font.style.oblique}</option>

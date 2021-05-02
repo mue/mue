@@ -172,10 +172,15 @@ export default class Quote extends React.PureComponent {
         }
 
         element.style.display = 'block';
+        document.querySelector('.quote').style.fontSize = `${0.8 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
+        document.querySelector('.quoteauthor').style.fontSize = `${0.9 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
         this.init();
       }
     });
   
+    document.querySelector('.quote').style.fontSize = `${0.8 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
+    document.querySelector('.quoteauthor').style.fontSize = `${0.9 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
+
     this.init();
   }
 

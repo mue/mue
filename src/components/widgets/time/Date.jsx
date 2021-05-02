@@ -108,9 +108,12 @@ export default class DateWidget extends React.PureComponent {
         }
 
         element.style.display = 'block';
+        element.style.fontSize = `${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`;
         this.getDate();
       }
     });
+
+    document.querySelector('.date').style.fontSize = `${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`;
 
     this.getDate();
   }

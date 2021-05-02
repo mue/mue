@@ -51,6 +51,7 @@ export default class Widgets extends React.PureComponent {
         elements.push(<React.Fragment key={element}>{this.widgets[element]}</React.Fragment>);
       });
     } else {
+      // prevent error
       elements = ['greeting', 'time', 'quicklinks', 'quote', 'date'];
     }
 

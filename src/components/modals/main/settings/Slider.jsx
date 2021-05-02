@@ -9,8 +9,8 @@ export default class Slider extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: localStorage.getItem(this.props.name) || '',
-      numberWidth: ((localStorage.getItem(this.props.name).length + 1) * ((this.props.toast === true) ? 7.75 : 7))
+      value: localStorage.getItem(this.props.name) || this.props.default,
+      numberWidth: localStorage.getItem(this.props.name) ? ((localStorage.getItem(this.props.name).length + 1) * ((this.props.toast === true) ? 7.75 : 7)) : 32
     };
     this.language = window.language.modals.main.settings;
     this.widthCalculation = (this.props.toast === true) ? 7.75 : 7;

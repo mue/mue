@@ -35,7 +35,7 @@ export default function PhotoInformation(props) {
   let credit = props.info.credit;
   let photo = language.credit;
 
-  // unsplash
+  // unsplash credit
   if (props.info.photographerURL && props.info.photographerURL !== '' && !props.info.offline) {
     photo = <a href={props.info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
     credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;

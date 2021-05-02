@@ -114,8 +114,13 @@ export default class Greeting extends React.PureComponent {
         this.getGreeting(0);
 
         element.style.display = 'block';
+        element.style.fontSize = `${1.6 * Number(localStorage.getItem('zoomGreeting') / 100)}em`;
       }
     });
+
+    // this comment can apply to all widget zoom features apart from the general one in the Accessibility section
+    // in a nutshell: 1.6 is the current font size and we do "localstorage || 100" so we don't have to try that 4.0 -> 5.0 thing again
+    document.querySelector('.greeting').style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
 
     this.getGreeting(0);
   }

@@ -78,10 +78,6 @@ export default class SearchSettings extends React.PureComponent {
         <h2>{search.title}</h2>
         <Switch name='searchBar' text={language.enabled} category='widgets' />
         {isChrome ? <Checkbox name='voiceSearch' text={search.voice_search} /> : null}
-        <Checkbox name='autocomplete' text={search.autocomplete} category='search'/>
-        <Radio title={search.autocomplete_provider} options={autocompleteProviders} name='autocompleteProvider' category='search'/>
-        <br/>
-
         <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
           {searchEngines.map((engine) => (
             <option key={engine.name} value={engine.settingsName}>{engine.name}</option>
@@ -89,11 +85,14 @@ export default class SearchSettings extends React.PureComponent {
           <option value='custom'>{search.custom.split(' ')[0]}</option>
         </Dropdown>
 
-        <br/><br/>
         <ul style={{ display: this.state.customDisplay }}>
+          <br/>
           <p style={{ 'marginTop': '0px' }}>{search.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{language.buttons.reset}</span></p>
           <input type='text' value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })}></input>
         </ul>
+        <br/>
+        <Checkbox name='autocomplete' text={search.autocomplete} category='search' element='.other'/>
+        <Radio title={search.autocomplete_provider} options={autocompleteProviders} name='autocompleteProvider' category='search'/>
       </>
     );
   }

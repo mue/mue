@@ -91,24 +91,32 @@ export default class SettingsFunctions {
     document.title = tabName;
 
     if (hotreload === true) {
-      return;
+      const custom = ['customcss', 'customjs', 'customfont'];
+      custom.forEach((element) => {
+        try {
+          document.head.removeChild(document.getElementById(element));
+        } catch (e) {}
+      });
     }
 
     const css = localStorage.getItem('customcss');
     if (css) {
-      document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
+      document.head.insertAdjacentHTML('beforeend', '<style id="customcss">' + css + '</style>');
     }
 
     const js = localStorage.getItem('customjs');
     if (js) {
-      document.body.insertAdjacentHTML('beforeend', '<script>' + js + '</script>');
+      document.head.insertAdjacentHTML('beforeend', '<script id="customjs">' + js + '</script>');
     }
 
     const font = localStorage.getItem('font');
     if (font) {
       const google = localStorage.getItem('fontGoogle');
 
-      let url, fontweight, fontstyle = '';
+      let url = '';
+      let fontweight = '';
+      let fontstyle = '';
+
       if (google === 'true') {
         url = `@import url('https://fonts.googleapis.com/css2?family=${font}&display=swap');`;
       }
@@ -124,7 +132,7 @@ export default class SettingsFunctions {
       }
 
       document.head.insertAdjacentHTML('beforeend', `
-        <style>
+        <style id='customfont'>
           ${url}
           * {
             font-family: '${font}', 'Lexend Deca', 'Montserrat' !important;
@@ -133,6 +141,10 @@ export default class SettingsFunctions {
           }
         </style>
       `);
+    }
+
+    if (hotreload === true) {
+      return;
     }
 
     if (localStorage.getItem('experimental') === 'true') {

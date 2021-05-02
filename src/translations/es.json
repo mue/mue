@@ -182,7 +182,7 @@
             "extra_info": {
               "title": "Información extra",
               "show_location": "Mostrar ubicación",
-              "show_text": "Show text",
+              "show_description": "Show description",
               "cloudiness": "Cloudiness",
               "humidity": "Humedad",
               "visibility": "Visibility",

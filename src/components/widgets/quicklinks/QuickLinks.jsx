@@ -104,6 +104,7 @@ export default class QuickLinks extends React.PureComponent {
       }
     });
 
+    // allows you to add a link by pressing enter
     document.querySelector('.topbarquicklinks').onkeydown = (e) => {
       e = e || window.event;
       let code = e.which || e.keyCode;

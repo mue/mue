@@ -71,6 +71,7 @@ export default class Background extends React.PureComponent {
       const url = (localStorage.getItem('ddgProxy') === 'true') ? window.constants.DDG_PROXY + this.state.url : this.state.url;
       const photoInformation = document.querySelector('.photoInformation');
 
+      // just set the background
       if (localStorage.getItem('bgtransition') === 'false') {
         if (photoInformation) {
           photoInformation.style.display = 'block';
@@ -79,14 +80,16 @@ export default class Background extends React.PureComponent {
         return backgroundImage.style.background = `url(${url})`; 
       }
 
+      // firstly we set the background as hidden and make sure there is no background set currently
       backgroundImage.classList.add('backgroundPreload');
       backgroundImage.style.background = null;
 
+      // same with photo information if not using custom background
       if (photoInformation) {
         photoInformation.classList.add('backgroundPreload');
       }
 
-      // preloader for background transition
+      // preloader for background transition, required so it loads in nice
       const preloader = document.createElement('img');
       preloader.src = url;
 
@@ -95,7 +98,9 @@ export default class Background extends React.PureComponent {
         backgroundImage.classList.remove('backgroundPreload');
         backgroundImage.classList.add('fade-in');
 
-        backgroundImage.style.background = `url(${url})`;        
+        // this doesn't make it fetch again which is nice
+        backgroundImage.style.background = `url(${url})`;
+        // remove the preloader element we created earlier
         preloader.remove();
 
         if (photoInformation) {
@@ -104,6 +109,7 @@ export default class Background extends React.PureComponent {
         }
       });
     } else {
+      // custom colour
       backgroundImage.setAttribute('style', this.state.style);
     }
   }
@@ -243,6 +249,7 @@ export default class Background extends React.PureComponent {
   componentDidMount() {
     const element = document.getElementById('backgroundImage');
 
+    // this resets it so the fade in and getting background all works properly
     const refresh = () => {
       element.classList.remove('fade-in');
       this.setState({
@@ -260,17 +267,20 @@ export default class Background extends React.PureComponent {
     EventBus.on('refresh', (data) => {
       if (data === 'background') {
         if (localStorage.getItem('background') === 'false') {
+          // user is using custom colour or image
           if (this.state.photoInfo.hidden === false) {
             document.querySelector('.photoInformation').style.display = 'none';
           }
 
+          // video backgrounds
           if (this.state.video === true) {
             return document.getElementById('backgroundVideo').style.display = 'none';
           } else {
             return element.style.display = 'none';
           }
         }
-
+         
+        // video backgrounds
         if (this.state.video === true) {
           document.getElementById('backgroundVideo').style.display = 'block';
         } else {
@@ -284,11 +294,13 @@ export default class Background extends React.PureComponent {
         const backgroundType = localStorage.getItem('backgroundType');
 
         if (this.state.photoInfo.offline !== true) {
+          // basically check to make sure something has changed before we try getting another background
           if (backgroundType !== this.state.type || localStorage.getItem('backgroundAPI') !== this.state.currentAPI || (this.state.type === 'custom' && localStorage.getItem('customBackground') !== this.state.url)) {
             return refresh();
           }
         }
 
+        // background effects so we don't get another image again
         if (this.state.video === true) {
           document.getElementById('backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)`;
         } else {
@@ -296,6 +308,7 @@ export default class Background extends React.PureComponent {
         }
       }
 
+      // uninstall photo pack reverts your background to what you had previously
       if (data === 'marketplacebackgrounduninstall') {
         refresh();
       }

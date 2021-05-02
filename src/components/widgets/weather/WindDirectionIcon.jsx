@@ -4,6 +4,7 @@ import { WiDirectionDownLeft, WiDirectionDownRight, WiDirectionDown, WiDirection
 export default function WindDirectionIcon(props) {
   let icon;
 
+  // convert the number openweathermap gives us to closest direction or something
   const getDirection = (angle) => {
     const directions = ['North', 'North-West', 'West', 'South-West', 'South', 'South-East', 'East', 'North-East'];
     return directions[Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 45) % 8];

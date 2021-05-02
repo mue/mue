@@ -47,10 +47,8 @@ export default class Autocomplete extends React.Component {
         autocomplete = (
           <ul className='suggestions'>
             {this.state.filtered.map((suggestion) => {
-              let className;
-
               return (
-                <li className={className} key={suggestion} onClick={this.onClick}>
+                <li key={suggestion} onClick={this.onClick}>
                   {suggestion}
                 </li>
               );
