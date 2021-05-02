@@ -344,7 +344,14 @@
           "title": "Vacío",
           "description": "Dirígete a la tienda para agregar algunos."
         },
-        "sideload": "Cargar localmente"
+        "sideload": "Cargar localmente",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {

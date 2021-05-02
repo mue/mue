@@ -344,7 +344,14 @@
           "title": "Здесь пусто",
           "description": "Зайдите в магазин, чтобы найти что-то интересное"
         },
-        "sideload": "Загрузить"
+        "sideload": "Загрузить",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {

@@ -344,7 +344,14 @@
           "title": "Empty",
           "description": "No addons are installed"
         },
-        "sideload": "Sideload"
+        "sideload": "Sideload",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {

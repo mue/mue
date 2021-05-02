@@ -344,7 +344,14 @@
           "title": "Hier ist es leer",
           "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen"
         },
-        "sideload": "Hochladen"
+        "sideload": "Hochladen",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {

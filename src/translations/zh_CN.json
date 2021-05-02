@@ -344,7 +344,14 @@
           "title": "这里空空如也",
           "description": "请访问插件市场来添加插件。"
         },
-        "sideload": "上传插件"
+        "sideload": "上传插件",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {

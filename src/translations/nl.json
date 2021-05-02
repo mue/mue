@@ -344,7 +344,14 @@
           "title": "Het is hier erg leeg",
           "description": "Ga naar de marktplaats om een paar extensies toe te voegen"
         },
-        "sideload": "Sideloaden"
+        "sideload": "Sideloaden",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {

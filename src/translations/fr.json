@@ -344,7 +344,14 @@
           "title": "C'est vide par ici",
           "description": "Dirigez vous vers le marché pour ajouter des options"
         },
-        "sideload": "Charger"
+        "sideload": "Charger",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {
