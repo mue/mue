@@ -21,6 +21,9 @@ export default class MarketplaceFunctions {
       case 'quotes':
         localStorage.removeItem('quote_packs');
         localStorage.removeItem('quoteAPI');
+        localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType'));
+        localStorage.removeItem('oldQuoteType');
+        EventBus.dispatch('refresh', 'marketplacequoteuninstall');
         break;
       case 'photos':
         localStorage.removeItem('photo_packs');
@@ -79,6 +82,9 @@ export default class MarketplaceFunctions {
         }
 
         localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
+        localStorage.setItem('oldQuoteType', localStorage.getItem('quoteType'));
+        localStorage.setItem('quoteType', 'quote_pack');
+        EventBus.dispatch('refresh', 'quote');
         break;
       default:
         break;

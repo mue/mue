@@ -42,6 +42,8 @@ export default class Quote extends React.PureComponent {
   }
 
   async getQuote() {
+    const offline = (localStorage.getItem('offlineMode') === 'true');
+
     const favouriteQuote = localStorage.getItem('favouriteQuote');
     if (favouriteQuote) {
       return this.setState({
@@ -50,71 +52,87 @@ export default class Quote extends React.PureComponent {
       });
     }
 
-    const customQuote = localStorage.getItem('customQuote');
-    if (customQuote) {
-      return this.setState({
-        quote: '"' + customQuote + '"',
-        author: localStorage.getItem('customQuoteAuthor')
-      });
-    }
+    switch (localStorage.getItem('quoteType')) {
+      case 'custom':
+        const customQuote = localStorage.getItem('customQuote');
+        if (customQuote) {
+          return this.setState({
+            quote: '"' + customQuote + '"',
+            author: localStorage.getItem('customQuoteAuthor'),
+            type: 'custom'
+          });
+        }
+        break;
+      case 'quote_pack':
+        if (offline) {
+          return this.doOffline();
+        }
 
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return this.doOffline();
-    }
+        const quotePackAPI = JSON.parse(localStorage.getItem('quoteAPI'));
+        if (quotePackAPI) {
+          try {
+            const data = await (await fetch(quotePackAPI.url)).json();
+            return this.setState({
+              quote: '"' + data.quote + '"',
+              author: quotePackAPI.author || data.author,
+              type: 'quote_pack'
+            });
+          } catch (e) {
+            return this.doOffline();
+          }
+        }
+    
+        let quotePack = localStorage.getItem('quote_packs');
+    
+        if (quotePack !== null) {
+          quotePack = JSON.parse(quotePack);
+    
+          if (quotePack) {
+            const data = quotePack[Math.floor(Math.random() * quotePack.length)];
+            return this.setState({
+              quote: '"' + data.quote + '"',
+              author: data.author,
+              type: 'quote_pack'
+            });
+          } else {
+            return this.doOffline();
+          }
+        }
+        break;
+      case 'api':
+        if (offline) {
+          return this.doOffline();
+        }
 
-    const quotePackAPI = JSON.parse(localStorage.getItem('quoteAPI'));
-    if (quotePackAPI) {
-      try {
-        const data = await (await fetch(quotePackAPI.url)).json();
-        return this.setState({
-          quote: '"' + data.quote + '"',
-          author: quotePackAPI.author || data.author
-        });
-      } catch (e) {
-        return this.doOffline();
-      }
-    }
+        // First we try and get a quote from the API...
+        try {
+          const quotelanguage = localStorage.getItem('quotelanguage');
+          const data = await (await fetch(window.constants.API_URL + '/quotes/random?language=' + quotelanguage)).json();
 
-    let quotePack = localStorage.getItem('quote_packs');
+          // If we hit the ratelimit, we fallback to local quotes
+          if (data.statusCode === 429) {
+            return this.doOffline();
+          }
 
-    if (quotePack !== null) {
-      quotePack = JSON.parse(quotePack);
+          let authorlink = `https://${window.languagecode.split('_')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
+          if (localStorage.getItem('authorLink') === 'false' || data.author === 'Unknown') {
+            authorlink = null;
+          }
 
-      if (quotePack) {
-        const data = quotePack[Math.floor(Math.random() * quotePack.length)];
-        return this.setState({
-          quote: '"' + data.quote + '"',
-          author: data.author
-        });
-      } else {
-        return this.doOffline();
-      }
-    }
-
-    // First we try and get a quote from the API...
-    try {
-      const quotelanguage = localStorage.getItem('quotelanguage');
-      const data = await (await fetch(window.constants.API_URL + '/quotes/random?language=' + quotelanguage)).json();
-
-      // If we hit the ratelimit, we fallback to local quotes
-      if (data.statusCode === 429) {
-        return this.doOffline();
-      }
-
-      let authorlink = `https://${window.languagecode.split('_')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
-      if (localStorage.getItem('authorLink') === 'false' || data.author === 'Unknown') {
-        authorlink = null;
-      }
-
-      this.setState({
-        quote: '"' + data.quote + '"',
-        author: data.author,
-        authorlink: authorlink,
-        quoteLanguage: quotelanguage
-      });
-    } catch (e) {
-      // ..and if that fails we load one locally
-      this.doOffline();
+          this.setState({
+            quote: '"' + data.quote + '"',
+            author: data.author,
+            authorlink: authorlink,
+            quoteLanguage: quotelanguage,
+            type: 'api'
+          });
+        } catch (e) {
+          // ..and if that fails we load one locally
+          this.doOffline();
+        }
+        break;
+      default:
+        break;
     }
   }
 
@@ -153,7 +171,7 @@ export default class Quote extends React.PureComponent {
       tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet
     });
 
-    if (!this.state.quote || localStorage.getItem('quotelanguage') !== this.state.quoteLanguage) {
+    if (this.state.type !== localStorage.getItem('quoteType')|| localStorage.getItem('quotelanguage') !== this.state.quoteLanguage) {
       this.getQuote();
     }
   }
@@ -170,6 +188,11 @@ export default class Quote extends React.PureComponent {
         element.style.display = 'block';
         document.querySelector('.quote').style.fontSize = `${0.8 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
         document.querySelector('.quoteauthor').style.fontSize = `${0.9 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
+        this.init();
+      }
+
+      // uninstall quote pack reverts the quote to what you had previously
+      if (data === 'marketplacequoteuninstall') {
         this.init();
       }
     });
