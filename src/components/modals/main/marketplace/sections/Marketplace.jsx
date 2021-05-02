@@ -202,6 +202,7 @@ export default class Marketplace extends React.PureComponent {
             <option value='a-z'>{window.language.modals.main.addons.sort.a_z}</option>
             <option value='z-a'>{window.language.modals.main.addons.sort.z_a}</option>
           </Dropdown>
+          <br/>
           <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
         </div>
         <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />

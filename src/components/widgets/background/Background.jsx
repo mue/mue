@@ -233,6 +233,7 @@ export default class Background extends React.PureComponent {
           const photoLocation = randomPhoto.location.replace(/[null]+/g, '');
           return this.setState({
             url: randomPhoto.url.default,
+            type: 'photo_pack',
             photoInfo: {
               hidden: false,
               credit: randomPhoto.photographer,
@@ -295,7 +296,7 @@ export default class Background extends React.PureComponent {
 
         if (this.state.photoInfo.offline !== true) {
           // basically check to make sure something has changed before we try getting another background
-          if (backgroundType !== this.state.type || localStorage.getItem('backgroundAPI') !== this.state.currentAPI || (this.state.type === 'custom' && localStorage.getItem('customBackground') !== this.state.url)) {
+          if (backgroundType !== this.state.type || (this.state.type === 'api' && localStorage.getItem('backgroundAPI') !== this.state.currentAPI) || (this.state.type === 'custom' && localStorage.getItem('customBackground') !== this.state.url)) {
             return refresh();
           }
         }

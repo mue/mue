@@ -149,7 +149,7 @@
                 "sepia": "Sepia",
                 "invert": "Invert",
                 "saturate": "Saturate",
-                "constrast": "Contrast"
+                "contrast": "Contrast"
               }
             },
             "type": {
