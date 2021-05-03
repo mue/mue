@@ -206,5 +206,9 @@
   {
     "name": "autocompleteProvider",
     "value": "google"
+  },
+  {
+    "name": "quoteType",
+    "value": "api"
   }
 ]

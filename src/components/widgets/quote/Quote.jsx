@@ -52,7 +52,7 @@ export default class Quote extends React.PureComponent {
       });
     }
 
-    switch (localStorage.getItem('quoteType')) {
+    switch (localStorage.getItem('quoteType') || 'api') {
       case 'custom':
         const customQuote = localStorage.getItem('customQuote');
         if (customQuote) {
