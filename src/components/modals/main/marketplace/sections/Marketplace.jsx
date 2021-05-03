@@ -56,7 +56,7 @@ export default class Marketplace extends React.PureComponent {
 
       this.setState({
         item: {
-          type: this.props.type,
+          type: info.data.type,
           display_name: info.data.name,
           author: info.data.author,
           description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
@@ -123,6 +123,8 @@ export default class Marketplace extends React.PureComponent {
     this.setState({
       items: items
     });
+    
+    this.forceUpdate();
   }
 
   componentDidMount() {
