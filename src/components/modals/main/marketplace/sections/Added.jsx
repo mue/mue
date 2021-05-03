@@ -48,7 +48,8 @@ export default class Added extends React.PureComponent {
           description: MarketplaceFunctions.urlParser(info.description.replace(/\n/g, '<br>')),
           //updated: info.updated,
           version: info.version,
-          icon: info.screenshot_url
+          icon: info.screenshot_url,
+          quote_api: info.quote_api || null
         },
         button: this.buttons.uninstall,
         display: {

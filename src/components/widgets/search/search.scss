@@ -61,5 +61,13 @@
     &:focus {
       background-color: rgba(0, 0, 0, 0.5);
     }
+
+    &::-webkit-input-placeholder {
+      color: white;
+    }
+
+    &::-moz-placeholder {
+      color: white;
+    }
   }
 }

@@ -73,8 +73,8 @@ export default class Quote extends React.PureComponent {
           try {
             const data = await (await fetch(quotePackAPI.url)).json();
             return this.setState({
-              quote: '"' + data.quote + '"',
-              author: quotePackAPI.author || data.author,
+              quote: '"' + data[quotePackAPI.quote] + '"',
+              author: data[quotePackAPI.author] || quotePackAPI.author,
               type: 'quote_pack'
             });
           } catch (e) {

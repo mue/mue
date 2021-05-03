@@ -19,8 +19,9 @@ export default class Item extends React.PureComponent {
 
     let warningHTML;
     // For some reason it breaks sometimes so we use try/catch
+    console.log(this.props.data)
     try {
-      if (this.props.content.content.data.quote_api) {
+      if (this.props.data.quote_api) {
         warningHTML = (
           <div className='productInformation'>
             <ul>
@@ -64,6 +65,7 @@ export default class Item extends React.PureComponent {
                <li>{this.props.data.author}</li>
              </ul>
             </div>
+            <br/>
             {warningHTML} 
         </div>
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
