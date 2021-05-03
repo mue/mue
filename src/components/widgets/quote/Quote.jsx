@@ -37,8 +37,18 @@ export default class Quote extends React.PureComponent {
     // Set the quote
     this.setState({
       quote: '"' + quote.quote + '"',
-      author: quote.author
+      author: quote.author,
+      authorlink: this.getAuthorLink(quote.author)
     });
+  }
+
+  getAuthorLink(author) {
+    let authorlink = `https://${window.languagecode.split('_')[0]}.wikipedia.org/wiki/${author.split(' ').join('_')}`;
+    if (localStorage.getItem('authorLink') === 'false' || author === 'Unknown') {
+      authorlink = null;
+    }
+
+    return authorlink;
   }
 
   async getQuote() {
@@ -48,17 +58,21 @@ export default class Quote extends React.PureComponent {
     if (favouriteQuote) {
       return this.setState({
         quote: favouriteQuote.split(' - ')[0],
-        author: favouriteQuote.split(' - ')[1]
+        author: favouriteQuote.split(' - ')[1],
+        authorlink: this.getAuthorLink(data.author)
       });
     }
 
     switch (localStorage.getItem('quoteType') || 'api') {
       case 'custom':
         const customQuote = localStorage.getItem('customQuote');
+        const customQuoteAuthor = localStorage.getItem('customQuoteAuthor');
+
         if (customQuote) {
           return this.setState({
             quote: '"' + customQuote + '"',
-            author: localStorage.getItem('customQuoteAuthor'),
+            author: customQuoteAuthor,
+            authorlink: this.getAuthorLink(customQuote),
             type: 'custom'
           });
         }
@@ -72,9 +86,12 @@ export default class Quote extends React.PureComponent {
         if (quotePackAPI) {
           try {
             const data = await (await fetch(quotePackAPI.url)).json();
+            const author = data[quotePackAPI.author] || quotePackAPI.author;
+
             return this.setState({
               quote: '"' + data[quotePackAPI.quote] + '"',
-              author: data[quotePackAPI.author] || quotePackAPI.author,
+              author: author,
+              authorlink: this.getAuthorLink(author),
               type: 'quote_pack'
             });
           } catch (e) {
@@ -92,6 +109,7 @@ export default class Quote extends React.PureComponent {
             return this.setState({
               quote: '"' + data.quote + '"',
               author: data.author,
+              authorlink: this.getAuthorLink(data.author),
               type: 'quote_pack'
             });
           } else {
@@ -114,15 +132,12 @@ export default class Quote extends React.PureComponent {
             return this.doOffline();
           }
 
-          let authorlink = `https://${window.languagecode.split('_')[0]}.wikipedia.org/wiki/${data.author.split(' ').join('_')}`;
-          if (localStorage.getItem('authorLink') === 'false' || data.author === 'Unknown') {
-            authorlink = null;
-          }
+          console.log(this.getAuthorLink(data.author))
 
           this.setState({
             quote: '"' + data.quote + '"',
             author: data.author,
-            authorlink: authorlink,
+            authorlink: this.getAuthorLink(data.author),
             quoteLanguage: quotelanguage,
             type: 'api'
           });

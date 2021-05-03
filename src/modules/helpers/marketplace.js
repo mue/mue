@@ -1,5 +1,3 @@
-import { toast } from 'react-toastify';
-
 import EventBus from './eventbus';
 
 export default class MarketplaceFunctions {
@@ -32,12 +30,7 @@ export default class MarketplaceFunctions {
         EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');
         break;
       default:
-        try {
-          localStorage.removeItem(type);
-        } catch (e) {
-          toast('Failed to uninstall addon, check the console');
-          console.error(e);
-        }
+        break;
     }
 
     let installed = JSON.parse(localStorage.getItem('installed'));
@@ -64,8 +57,8 @@ export default class MarketplaceFunctions {
         });
 
         localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
-        input.settings.forEach((element) => {
-          localStorage.setItem(element.name, element.value);
+        Object.keys(input.settings).forEach((key) => {
+          localStorage.setItem(key, input.settings[key]);
         });
         break;
 
