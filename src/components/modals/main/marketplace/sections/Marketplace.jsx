@@ -19,18 +19,7 @@ export default class Marketplace extends React.PureComponent {
       button: '',
       featured: {},
       done: false,
-      item: {
-        name: 'Name',
-        author: 'Author',
-        description: 'Description',
-        //updated: '???',
-        version: '1.0.0',
-        icon: ''
-      },
-      display: {
-        marketplace: 'block',
-        item: 'none'
-      }
+      item: {}
     };
     this.buttons = {
       uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
@@ -76,18 +65,11 @@ export default class Marketplace extends React.PureComponent {
           icon: info.data.screenshot_url,
           data: info.data
         },
-        button: button,
-        display: {
-          item: 'block',
-          marketplace: 'none'
-        }
+        button: button
       });
     } else {
       this.setState({
-        display: {
-          marketplace: 'block',
-          item: 'none'
-        }
+        item: {}
       });
     }
   }
@@ -133,15 +115,13 @@ export default class Marketplace extends React.PureComponent {
       case 'z-a':
         items.sort();
         items.reverse();
-      break;
+        break;
+      default:
+        break;
     }
 
     this.setState({
-      items: items,
-      display: {
-        item: 'none',
-        marketplace: 'block'
-      }
+      items: items
     });
   }
 
@@ -189,23 +169,24 @@ export default class Marketplace extends React.PureComponent {
       </>);
     }
 
+    if (this.state.item.display_name) {
+      return <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()}/>;
+    }
+
     return (
       <>
-        <div style={{ 'display': this.state.display.marketplace }}>
-          <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
-            <p>{this.state.featured.title}</p>
-            <h1>{this.state.featured.name}</h1>
-            <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
-          </div>
-          <br/>
-          <Dropdown label={window.language.modals.main.addons.sort.title} name='sortMarketplace' onChange={(value) => this.sortMarketplace(value)}>
-            <option value='a-z'>{window.language.modals.main.addons.sort.a_z}</option>
-            <option value='z-a'>{window.language.modals.main.addons.sort.z_a}</option>
-          </Dropdown>
-          <br/>
-          <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
+        <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
+          <p>{this.state.featured.title}</p>
+          <h1>{this.state.featured.name}</h1>
+          <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
         </div>
-        <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
+        <br/>
+        <Dropdown label={window.language.modals.main.addons.sort.title} name='sortMarketplace' onChange={(value) => this.sortMarketplace(value)}>
+          <option value='a-z'>{window.language.modals.main.addons.sort.a_z}</option>
+          <option value='z-a'>{window.language.modals.main.addons.sort.z_a}</option>
+        </Dropdown>
+        <br/>
+        <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
       </>
     );
   }

@@ -17,22 +17,20 @@ export default class Item extends React.PureComponent {
   render() {
     const language = window.language.modals.main.marketplace.product;
 
+    if (!this.props.data.display_name) {
+      return null;
+    }
+
     let warningHTML;
-    // For some reason it breaks sometimes so we use try/catch
-    console.log(this.props.data)
-    try {
-      if (this.props.data.quote_api) {
-        warningHTML = (
-          <div className='productInformation'>
-            <ul>
-              <li className='header'>{language.quote_warning.title}</li>
-              <li id='updated'>{language.quote_warning.description}</li>
-            </ul>
-          </div>
-        );
-      }
-    } catch (e) {
-      // ignore
+    if (this.props.data.quote_api) {
+      warningHTML = (
+        <div className='productInformation'>
+          <ul>
+            <li className='header'>{language.quote_warning.title}</li>
+            <li id='updated'>{language.quote_warning.description}</li>
+          </ul>
+        </div>
+      );
     }
   
     // prevent console error
@@ -42,14 +40,15 @@ export default class Item extends React.PureComponent {
     }
   
     return (
-      <div id='item' style={{ 'display': this.props.display }}>
+      <div id='item'>
         <br/>
-        <span><ArrowBackIcon className='backArrow' onClick={this.props.toggleFunction}/></span>
+        <ArrowBackIcon className='backArrow' onClick={this.props.toggleFunction}/>
         <br/>
         <h1>{this.props.data.display_name}</h1>
+        <br/>
         {this.props.button}
         <br/>
-        <img alt='product' draggable='false' src={iconsrc} onClick={() => this.setState({ showLightbox: true })}/>
+        {iconsrc ? <img alt='product' draggable='false' src={iconsrc} onClick={() => this.setState({ showLightbox: true })}/> : null}
         <div className='informationContainer'>
           <h1>{language.overview}</h1>
           <p className='description' dangerouslySetInnerHTML={{ __html: this.props.data.description }}></p>

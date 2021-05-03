@@ -14,19 +14,8 @@ export default class Added extends React.PureComponent {
     super();
     this.state = {
       installed: JSON.parse(localStorage.getItem('installed')),
-      item: {
-        name: 'Name',
-        author: 'Author',
-        description: 'Description',
-        //updated: '???',
-        version: '1.0.0',
-        icon: ''
-      },
-      button: '',
-      display: {
-        marketplace: 'block',
-        item: 'none'
-      }
+      item: {},
+      button: ''
     };
     this.buttons = {
       uninstall: <button className='removeFromMue' onClick={() => this.uninstall()}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
@@ -51,18 +40,11 @@ export default class Added extends React.PureComponent {
           icon: info.screenshot_url,
           quote_api: info.quote_api || null
         },
-        button: this.buttons.uninstall,
-        display: {
-          marketplace: 'none',
-          item: 'block'
-        }
+        button: this.buttons.uninstall
       });
     } else {
       this.setState({
-        display: {
-          marketplace: 'block',
-          item: 'none'
-        }
+        item: {}
       });
     }
   }
@@ -92,7 +74,9 @@ export default class Added extends React.PureComponent {
       case 'z-a':
         installed.sort();
         installed.reverse();
-      break;
+        break;
+      default:
+        break;
     }
 
     this.setState({
@@ -117,19 +101,20 @@ export default class Added extends React.PureComponent {
       );
     }
 
+    if (this.state.item.display_name) {
+      return <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} />;
+    }
+
     return (
       <>
-        <div style={{ 'display': this.state.display.marketplace }}>
-          <Dropdown label={this.language.sort.title} name='sortAddons' onChange={(value) => this.sortAddons(value)}>
-            <option value='newest'>{this.language.sort.newest}</option>
-            <option value='oldest'>{this.language.sort.oldest}</option>
-            <option value='a-z'>{this.language.sort.a_z}</option>
-            <option value='z-a'>{this.language.sort.z_a}</option>
-          </Dropdown>
-          <br/>
-          <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', input)} />        
-        </div>
-        <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
+        <Dropdown label={this.language.sort.title} name='sortAddons' onChange={(value) => this.sortAddons(value)}>
+          <option value='newest'>{this.language.sort.newest}</option>
+          <option value='oldest'>{this.language.sort.oldest}</option>
+          <option value='a-z'>{this.language.sort.a_z}</option>
+          <option value='z-a'>{this.language.sort.z_a}</option>
+        </Dropdown>
+        <br/>
+        <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', input)} />        
       </>
     );
   }
