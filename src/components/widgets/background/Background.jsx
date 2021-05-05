@@ -146,7 +146,7 @@ export default class Background extends React.PureComponent {
             requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
             break;
           case 'pexels':
-            requestURL = `${window.constants.PEXELS_URL}/getImage`;
+            requestURL = `${window.constants.PEXELS_URL}/images/random`;
             break;
           // Defaults to Mue
           default:
@@ -162,8 +162,13 @@ export default class Background extends React.PureComponent {
         } 
 
         let credit = data.photographer;
-        if (backgroundAPI === 'unsplash') credit = data.photographer + ` ${this.language.unsplash}`;
-        else if (backgroundAPI === 'pexels') credit = data.photographer + ` ${this.language.pexels}`;
+        if (backgroundAPI === 'unsplash') {
+          credit = data.photographer + ` ${this.language.unsplash}`;
+        } else if (backgroundAPI === 'pexels') {
+          credit = data.photographer + ` ${this.language.pexels}`;
+        }
+
+        const location = data.location.replace(/[null]+/g, '');
 
         this.setState({
           url: data.file,
@@ -172,7 +177,7 @@ export default class Background extends React.PureComponent {
           photoInfo: {
             hidden: false,
             credit: credit,
-            location: (data.location.replace(/[null]+/g, '') !== ' ') ? data.location : 'N/A',
+            location: (location !== ' ' && location !== ', ') ? data.location : 'N/A',
             camera: data.camera,
             resolution: data.resolution,
             url: data.file,
