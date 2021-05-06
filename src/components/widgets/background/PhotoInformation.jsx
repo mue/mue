@@ -37,11 +37,11 @@ export default function PhotoInformation(props) {
 
   // unsplash and pexels credit
   if (props.info.photographerURL && props.info.photographerURL !== '' && !props.info.offline && props.api) {
-    photo = <a href={props.info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
-
     if (props.api === 'unsplash') {
+      photo = <a href={props.info.photoURL + '?utm_source=mue'} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
       credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;
     } else {
+      photo = <a href={props.info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
       credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{language.pexels}</a></>;
     }
   }
