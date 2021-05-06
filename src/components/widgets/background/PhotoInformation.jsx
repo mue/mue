@@ -29,16 +29,21 @@ export default function PhotoInformation(props) {
     return null;
   }
 
-  // remove unsplash text
+  // remove unsplash and pexels text
   const photographer = props.info.credit.split(` ${language.unsplash}`)[0].split(` ${language.pexels}`);
 
   let credit = props.info.credit;
   let photo = language.credit;
 
-  // unsplash credit
-  if (props.info.photographerURL && props.info.photographerURL !== '' && !props.info.offline) {
+  // unsplash and pexels credit
+  if (props.info.photographerURL && props.info.photographerURL !== '' && !props.info.offline && props.api) {
     photo = <a href={props.info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
-    credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;
+
+    if (props.api === 'unsplash') {
+      credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;
+    } else {
+      credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{language.pexels}</a></>;
+    }
   }
 
   return (

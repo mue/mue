@@ -143,7 +143,7 @@ export default class Background extends React.PureComponent {
         switch (backgroundAPI) {
           case 'unsplash':
             //requestURL = `${window.constants.UNSPLASH_URL}/getImage?category=${apiCategory}`;
-            requestURL = `${window.constants.UNSPLASH_URL}/getImage`;
+            requestURL = `${window.constants.UNSPLASH_URL}/images/random`;
             break;
           case 'pexels':
             requestURL = `${window.constants.PEXELS_URL}/images/random`;
@@ -162,10 +162,17 @@ export default class Background extends React.PureComponent {
         } 
 
         let credit = data.photographer;
+        let photoURL = '';
+        let photographerURL = '';
+
         if (backgroundAPI === 'unsplash') {
           credit = data.photographer + ` ${this.language.unsplash}`;
+          photoURL = data.photo_page;
+          photographerURL = data.photographer_page;
         } else if (backgroundAPI === 'pexels') {
           credit = data.photographer + ` ${this.language.pexels}`;
+          photoURL = data.photo_page;
+          photographerURL = data.photographer_page;
         }
 
         const location = data.location.replace(/[null]+/g, '');
@@ -181,8 +188,8 @@ export default class Background extends React.PureComponent {
             camera: data.camera,
             resolution: data.resolution,
             url: data.file,
-            photographerURL: (backgroundAPI === 'unsplash') ? data.photographer_page : '',
-            photoURL: (backgroundAPI === 'unsplash') ? data.photo_page : ''
+            photographerURL: photographerURL,
+            photoURL: photoURL
           }
         });
       break;
@@ -353,7 +360,7 @@ export default class Background extends React.PureComponent {
       <>
         <div style={{ 'WebkitFilter': `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}` }} id='backgroundImage'/>
         {(this.state.photoInfo.credit !== '') ? 
-          <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo}/>
+          <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo} api={this.state.currentAPI}/>
         : null}
       </>
     );
