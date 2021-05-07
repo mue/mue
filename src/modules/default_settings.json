@@ -210,5 +210,9 @@
   {
     "name": "quoteType",
     "value": "api"
+  },
+  {
+    "name": "backgroundFilter",
+    "value": "grayscale"
   }
 ]

@@ -3,6 +3,7 @@ import React from 'react';
 import Switch from '../Switch';
 import Radio from '../Radio';
 import Checkbox from '../Checkbox';
+import Slider from '../Slider';
 
 export default class TimeSettings extends React.PureComponent {
   constructor() {
@@ -71,6 +72,8 @@ export default class TimeSettings extends React.PureComponent {
         </ul>
         <br/>
         <Radio name='tempformat' title={language.temp_format.title} options={tempFormat} category='weather'/>
+        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomWeather' min='10' max='400' default='100' display='%' category='weather'/>
+
         <h3>{language.extra_info.title}</h3>
         <Checkbox name='showlocation' text={language.extra_info.show_location} category='weather'/>
         <Checkbox name='weatherdescription' text={language.extra_info.show_description} category='weather'/>

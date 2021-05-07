@@ -34,6 +34,7 @@ export default class QuoteSettings extends React.PureComponent {
 
     switch (this.state.quoteType) {
       case 'custom': quoteSettings = customSettings; break;
+      default: break;
     }
 
     return (

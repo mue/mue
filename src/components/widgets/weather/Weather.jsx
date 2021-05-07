@@ -110,15 +110,20 @@ export default class Weather extends React.PureComponent {
         original_temp_max: data.main.temp_max
       }
     });
+
+    document.querySelector('.weather svg').style.fontSize = `${0.95 * Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
   }
   
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'weather') {
         this.getWeather();
+        document.querySelector('.weather').style.fontSize = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+        document.querySelector('.weather svg').style.fontSize = `${0.95 * Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
       }
     });
 
+    document.querySelector('.weather').style.fontSize = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
     this.getWeather();
   }
 

@@ -16,7 +16,7 @@ export default class About extends React.PureComponent {
       contributors: [],
       sponsors: [],
       other_contributors: [],
-      photographers: [],
+      photographers: window.language.modals.main.loading,
       update: window.language.modals.main.settings.sections.about.version.checking_update,
       loading: window.language.modals.main.loading
     };
@@ -53,7 +53,6 @@ export default class About extends React.PureComponent {
     if (Number(window.constants.VERSION.replaceAll('.', '')) < Number(newVersion.replaceAll('.', ''))) {
       updateMsg = `${this.language.version.update_available}: ${newVersion}`;
     }
-
 
     this.setState({
       contributors: contributors.filter((contributor) => !contributor.login.includes('bot')),
@@ -103,7 +102,7 @@ export default class About extends React.PureComponent {
         <h3>{this.language.resources_used.title}</h3>
         <p><a href='https://www.pexels.com' className='aboutLink' target='_blank' rel='noopener noreferrer'>Pexels</a>, <a href='https://unsplash.com' className='aboutLink' target='_blank' rel='noopener noreferrer'>Unsplash</a> ({this.language.resources_used.bg_images})</p>
         <p><a href='https://fonts.google.com/icons?selected=Material+Icons' className='aboutLink' target='_blank' rel='noopener noreferrer'>Google Fonts</a> ({this.language.resources_used.pin_icon})</p>
-        <p><a href='https://undraw.co/' className='aboutLink' target='_blank' rel='noopener noreferrer'>Undraw</a> ({this.language.resources_used.welcome_img})</p>
+        <p><a href='https://undraw.co' className='aboutLink' target='_blank' rel='noopener noreferrer'>Undraw</a> ({this.language.resources_used.welcome_img})</p>
 
         <h3>{this.language.contributors}</h3>
         <p>{this.state.loading}</p>
@@ -128,7 +127,6 @@ export default class About extends React.PureComponent {
         ))}
 
         <h3>{this.language.photographers}</h3>
-        <p>{this.state.loading}</p>
         <p>{this.state.photographers}</p>
       </>
     );

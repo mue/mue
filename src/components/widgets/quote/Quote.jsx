@@ -59,7 +59,7 @@ export default class Quote extends React.PureComponent {
       return this.setState({
         quote: favouriteQuote.split(' - ')[0],
         author: favouriteQuote.split(' - ')[1],
-        authorlink: this.getAuthorLink(data.author)
+        authorlink: this.getAuthorLink(favouriteQuote.split(' - ')[1])
       });
     }
 
@@ -131,8 +131,6 @@ export default class Quote extends React.PureComponent {
           if (data.statusCode === 429) {
             return this.doOffline();
           }
-
-          console.log(this.getAuthorLink(data.author))
 
           this.setState({
             quote: '"' + data.quote + '"',
