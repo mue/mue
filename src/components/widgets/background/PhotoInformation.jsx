@@ -55,11 +55,11 @@ export default function PhotoInformation(props) {
         <h1>{language.information}</h1>
         <hr/>
         <Location/>
-        <span>{props.info.location || 'N/A'}</span>
+        <span id='infoLocation'>{props.info.location || 'N/A'}</span>
         <Camera/>
-        <span>{props.info.camera || 'N/A'}</span>
+        <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
         <Resolution/>
-        <span>{props.info.resolution || 'N/A'}</span>
+        <span id='infoResolution'>{props.info.resolution || 'N/A'}</span>
         <Photographer/>
         <span>{photographer}</span>
         {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 

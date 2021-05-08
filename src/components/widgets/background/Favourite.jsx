@@ -21,9 +21,18 @@ export default class Favourite extends React.PureComponent {
       });
     } else {
       const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
-      const credit = document.getElementById('credit').textContent;
 
-      localStorage.setItem('favourite', JSON.stringify({ url: url, credit: credit }));
+      if (!url) {
+        return;
+      }
+      
+      localStorage.setItem('favourite', JSON.stringify({ 
+        url: url, 
+        credit: document.getElementById('credit').textContent,
+        location: document.getElementById('infoLocation').textContent,
+        camera: document.getElementById('infoCamera').textContent,
+        resolution: document.getElementById('infoResolution').textContent
+      }));
 
       this.setState({
         favourited: <StarIcon onClick={this.favourite} className='topicons' />

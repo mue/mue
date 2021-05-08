@@ -130,7 +130,10 @@ export default class Background extends React.PureComponent {
           return this.setState({
              url: favourited.url,
              photoInfo: {
-              credit: favourited.credit
+              credit: favourited.credit,
+              location: favourited.location,
+              camera: favourited.camera,
+              resolution: favourited.resolution
             }
           });
         }
