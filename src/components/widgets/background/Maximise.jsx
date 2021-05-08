@@ -12,11 +12,17 @@ export default class Maximise extends React.PureComponent {
     };
   }
 
-  setAttribute(blur, brightness) {
+  setAttribute(blur, brightness, filter) {
     const element = document.getElementById('backgroundImage');
+
+    let backgroundFilter;
+    if (filter === true) {
+      backgroundFilter = localStorage.getItem('backgroundFilter');
+    }
+
     element.setAttribute(
       'style',
-      `background-image: url(${element.style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}px) brightness(${brightness}%);`
+      `background-image: url(${element.style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}px) brightness(${brightness}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''};`
     );
   }
 
@@ -43,7 +49,7 @@ export default class Maximise extends React.PureComponent {
         hidden: false
       });
 
-      this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'));
+      this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'), true);
     }
   }
 
