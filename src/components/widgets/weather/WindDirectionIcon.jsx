@@ -5,12 +5,10 @@ export default function WindDirectionIcon(props) {
   let icon;
 
   // convert the number openweathermap gives us to closest direction or something
-  const getDirection = (angle) => {
-    const directions = ['North', 'North-West', 'West', 'South-West', 'South', 'South-East', 'East', 'North-East'];
-    return directions[Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 45) % 8];
-  }
+  const directions = ['North', 'North-West', 'West', 'South-West', 'South', 'South-East', 'East', 'North-East'];
+  const direction = directions[Math.round(((props.degrees %= 360) < 0 ? props.degrees + 360 : props.degrees) / 45) % 8];
 
-  switch (getDirection(props.degrees)) {
+  switch (direction) {
     case 'North': icon = <WiDirectionUp/>; break;
     case 'North-West': icon = <WiDirectionUpLeft/>; break;
     case 'West': icon = <WiDirectionLeft/>; break;

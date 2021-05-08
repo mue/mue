@@ -48,8 +48,8 @@ export default class Search extends React.PureComponent {
   searchButton = (e) => {
     let value;
 
-    if (e) {
-      value = e;
+    if (e.target.innerText !== undefined) {
+      value = e.target.innerText;
     } else {
       value = document.getElementById('searchtext').value || 'mue fast';
     }

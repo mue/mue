@@ -36,7 +36,7 @@ export default class Autocomplete extends React.Component {
       input: e.target.innerText
     });
 
-    this.props.onClick(e.target.innerText);
+    this.props.onClick(e);
   };
 
   render() {
