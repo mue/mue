@@ -49,25 +49,26 @@ export default function PhotoInformation(props) {
   return (
     <div className='photoInformation'>
       <h1>{photo} <span id='credit'>{credit}</span></h1>
-      <Info className='photoInformationHover'/>
-      <div className={props.className || 'infoCard'}>
-        <Info className='infoIcon'/>
-        <h1>{language.information}</h1>
-        <hr/>
-        <Location/>
-        <span id='infoLocation'>{props.info.location || 'N/A'}</span>
-        <Camera/>
-        <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
-        <Resolution/>
-        <span id='infoResolution'>{props.info.resolution || 'N/A'}</span>
-        <Photographer/>
-        <span>{photographer}</span>
-        {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 
-          <>
-            <Download/>
-            <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
-          </> : null}
-      </div>
+      {localStorage.getItem('photoInformation') !== 'false' ? <><Info className='photoInformationHover'/>
+        <div className={props.className || 'infoCard'}>
+          <Info className='infoIcon'/>
+          <h1>{language.information}</h1>
+          <hr/>
+          <Location/>
+          <span id='infoLocation'>{props.info.location || 'N/A'}</span>
+          <Camera/>
+          <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
+          <Resolution/>
+          <span id='infoResolution'>{props.info.resolution || 'N/A'}</span>
+          <Photographer/>
+          <span>{photographer}</span>
+          {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 
+            <>
+              <Download/>
+              <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
+            </> : null}
+        </div>
+      </>: null}
     </div>
   );
 }

@@ -8,8 +8,7 @@ import './scss/index.scss';
 // the toast css is based on default so we need to import it
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import '@fontsource/lexend-deca/latin-400.css';
-import '@fontsource/montserrat/cyrillic-500.css';
+import '@fontsource/lexend-deca/400.css';
 
 // language
 import merge from '@material-ui/utils/esm/deepmerge';
@@ -21,6 +20,11 @@ window.languagecode = languagecode.replace('-', '_');
 
 if (languagecode === 'en') {
   window.languagecode = 'en_GB';
+}
+
+// only load font if needed
+if (languagecode === 'ru') {
+  require('@fontsource/montserrat/cyrillic-500.css');
 }
 
 // these are merged so if a string is untranslated it doesn't break mue

@@ -131,6 +131,7 @@
             "title": "Background",
             "ddg_proxy": "Use DuckDuckGo image proxy",
             "transition": "Fade-in transition",
+            "photo_information": "Show photo information",
             "category": "Category",
             "buttons": {
               "title": "Buttons",
