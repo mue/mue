@@ -220,7 +220,8 @@
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
-              "refresh": "Refresh button"
+              "refresh": "Refresh button",
+              "hover": "Display on hover"
             },
             "font": {
               "title": "Font",

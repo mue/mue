@@ -214,5 +214,9 @@
   {
     "name": "backgroundFilter",
     "value": "grayscale"
+  },
+  {
+    "name": "navbarHover",
+    "value": false
   }
 ]

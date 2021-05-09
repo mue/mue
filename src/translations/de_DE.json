@@ -220,7 +220,8 @@
             "navbar": {
               "title": "Navigationsleiste",
               "notes": "Notizen",
-              "refresh": "Aktualisieren"
+              "refresh": "Aktualisieren",
+              "hover": "Display on hover"
             },
             "font": {
               "title": "Schriftart",
