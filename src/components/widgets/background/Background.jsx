@@ -68,7 +68,7 @@ export default class Background extends React.PureComponent {
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
-      const url = (localStorage.getItem('ddgProxy') === 'true') ? window.constants.DDG_PROXY + this.state.url : this.state.url;
+      const url = (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true) ? window.constants.DDG_PROXY + this.state.url : this.state.url;
       const photoInformation = document.querySelector('.photoInformation');
 
       // just set the background
