@@ -31,8 +31,7 @@
   padding: 25px;
 }
 
-.modalLink {
-  margin-left: 5px;
+.resetLink {
   color: var(--modal-link);
   cursor: pointer;
 
@@ -45,6 +44,16 @@
     color: var(--modal-link);
     vertical-align: text-bottom;
     margin-left: 5px;
+  }
+}
+
+.modalLink {
+  color: var(--modal-link);
+  cursor: pointer;
+  margin-left: 5px;
+
+  &:hover {
+    opacity: 0.8;
   }
 }
 
@@ -295,7 +304,7 @@ li {
   background: map-get($theme-colours, 'gradient');
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 
   svg {
     color: orange;
@@ -305,7 +314,7 @@ li {
     background: map-get($theme-colours, 'gradient');
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 }
 
@@ -377,7 +386,9 @@ li {
   margin-top: 10px !important;
 }
 
-label, p, span.modalLink {
+label,
+p,
+span.modalLink {
   font-size: 1rem;
 }
 

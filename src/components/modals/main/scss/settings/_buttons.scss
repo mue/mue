@@ -81,6 +81,10 @@
   border-radius: 15px;
   margin-bottom: 10px;
   font-size: 1.325rem;
+  color: var(--modal-text) !important;
+  cursor: move;
+  width: 150px;
+  z-index: 999 !important;
 
   svg {
     font-size: 1.3rem;
@@ -90,8 +94,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.15);
     transition: 0.3s;
   }
-
-  z-index: 999 !important;
 }
 
 .MuiTouchRipple-root {
