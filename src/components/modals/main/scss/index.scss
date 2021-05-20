@@ -266,6 +266,12 @@ li {
   }
 }
 
+@supports (-webkit-hyphens: none) {
+  .navbar-item {
+    display: inline-block !important;
+  }
+}
+
 .modalNavbar {
   position: absolute;
   left: 20rem;
