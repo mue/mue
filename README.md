@@ -60,7 +60,7 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/mue)
 
 ### Edge (Chromium)
-~~[Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)~~ Currently outdated, please use the Chrome Web Store version
+[Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)
 
 ### Naver
 [Whale Store](https://store.whale.naver.com/detail/ecllekeilcmicbfkkiknfdddbogibbnc)
