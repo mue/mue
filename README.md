@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/mue/branding/master/logo/logo_round.png" align="left" width="180px" height="180px"/>
+<img src="https://raw.githubusercontent.com/mue/branding/main/logo/logo_round.png" align="left" width="180px" height="180px"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
 > <a href="https://muetab.com/">Mue</a>
@@ -22,9 +22,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 	* [Naver](#naver)
 	* [Other](#other)
 * [Contributing](#development)
-	* [Requirements](#requirements)
-	* [Starting](#starting)
-	* [Building](#building)
+	* [Translations](#translations)
 * [Credits](#credits)
 	* [Developers](#developers)
 	* [Translators](#translators)
@@ -71,47 +69,10 @@ Please note that we have dropped support for Opera as of Mue 5.0
 [GitHub Releases](https://github.com/mue/mue/releases)
 
 ## Development
-### Requirements
-  * [Git](https://git-scm.com/)
-  * [Node.JS](https://nodejs.org/)
-  * A suitable browser
-### Starting
-  1. Clone the repository using `git clone https://github.com/mue/mue.git`
-  2. Run `yarn` or `npm i` to install all needed dependencies
-  3. Run `yarn start` or `npm start` to start testing
-  4. Code your heart out! (See the sections below for how to build the extension)
-### Building
-<details>
-  <summary><b>Chrome/Edge (Chromium)</b> (Click to expand)</summary>
-  <ol>
-    <li> <code>yarn run build</code> or <code>npm run build</code>
-    <li> <code>yarn run chrome</code> or <code>npm run chrome</code>
-    <li> Visit <code>chrome://extensions</code> in Chrome
-    <li> Click <b>Load unpacked</b> (Make sure <b>Developer Mode</b> is on)
-    <li> Go to the directory containing the built copy of Mue and click <b>ok</b>
-    <li> Enjoy your new tab!
-  </ol>
-</details>
-<details>
-  <summary><b>Firefox</b> (Click to expand)</summary>
-  <ol>
-    <li> <code>yarn run build</code> or <code>npm run build</code>
-    <li> <code>yarn run firefox</code> or <code>npm run firefox</code>
-    <li> Visit <code>about:debugging#addons</code> in Firefox
-    <li> Click <b>Load Temporary Add-on</b>
-    <li> Go to the directory containing Mue and click on the <b>manifest.json</b>
-    <li> Enjoy your new tab!
-  </ol>
-</details>
-<details>
-  <summary><b>Other</b> (Click to expand)</summary>
-  <i>Note: To get the full new tab experience, set your browser to open the <code>index.html</code> on startup and tab open!</i>
-  <ol>
-    <li> <code>yarn run build</code> or <code>npm run build</code>
-    <li> Open the <code>index.html</code> in your browser
-    <li> Enjoy your new tab!
-  </ol>
-</details>
+This section has moved to the [documentation](https://docs.muetab.com/development#mue-tab).
+
+### Translations
+Please see the [documentation](https://docs.muetab.com/translations).
 
 ## Credits
 ### Developers
@@ -128,7 +89,7 @@ Please note that we have dropped support for Opera as of Mue 5.0
 [Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified)<br/>
 [FreeFun](https://github.com/xXFreeFunXx) - German<br/>
 ### Contributors
-Many thanks to [Highholding](https://discord.bio/p/highholding), [Noa Shapira](#), [Roee Lupo](https://github.com/RoeeLupo), [Jeroen](#), [Gio](#), [Anders](https://github.com/FuryingFox), [Oded Shapira](https://twitter.com/dondishdev), Jacob Tyrrell and [Nikka Lai](#) for letting us use their wonderful photographs.
+Many thanks to the photographers [here](https://api.muetab.com/images/photographers) for letting us use their wonderful photographs.
 
 And finally, a big thank you to all the other [contributors](https://github.com/mue/mue/graphs/contributors)!
 ### Resources
