@@ -7,7 +7,7 @@
 <br>
 [![Microsoft Edge](https://img.shields.io/badge/dynamic/json?style=flat-square&label=microsoft%20edge&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Faepnglgjfokepefimhbnibfjekidhmja)](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja) [![Firefox](https://img.shields.io/amo/v/mue?label=firefox&style=flat-square)](https://addons.mozilla.org/firefox/addon/mue) [![Chrome](https://img.shields.io/chrome-web-store/v/bngmbednanpcfochchhgbkookpiaiaid?label=chrome&style=flat-square)](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 
-Mue is a fast, open and free-to-use browser extension that gives a new, fresh and customizable tab page to most modern browsers
+Mue is a fast, open and free-to-use browser extension that gives a new, fresh and customisable tab page to modern browsers
 
 <br>
 
@@ -60,7 +60,7 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/mue)
 
 ### Edge (Chromium)
-~~[Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)~~ Currently outdated, please use the Chrome Web Store version
+[Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)
 
 ### Naver
 [Whale Store](https://store.whale.naver.com/detail/ecllekeilcmicbfkkiknfdddbogibbnc)
