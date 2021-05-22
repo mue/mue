@@ -139,7 +139,6 @@ export default class BackgroundSettings extends React.PureComponent {
     switch (this.state.backgroundType) {
       case 'custom': backgroundSettings = customSettings; break;
       case 'colour': backgroundSettings = <ColourSettings/>; break;
-      // API
       default: backgroundSettings = APISettings; break;
     }
   

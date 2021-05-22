@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+
 import CopyIcon from '@material-ui/icons/FileCopyRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
 import Pin from './Pin';

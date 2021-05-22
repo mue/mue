@@ -19,10 +19,10 @@ export default function Navbar(props) {
 
   return (
     <>
-      {(localStorage.getItem('navbarHover') === 'true') ? <div className='navbar-hidden'/> :null}
+      {(localStorage.getItem('navbarHover') === 'true') ? <div className='navbar-hidden'/> : null}
       <div className='navbar-container'>
-        {(localStorage.getItem('view') === 'true' && backgroundEnabled) ? <Maximise/> :null}
-        {(localStorage.getItem('favouriteEnabled') === 'true' && backgroundEnabled) ? <Favourite/> :null}
+        {(localStorage.getItem('view') === 'true' && backgroundEnabled) ? <Maximise/> : null}
+        {(localStorage.getItem('favouriteEnabled') === 'true' && backgroundEnabled) ? <Favourite/> : null}
   
         {(localStorage.getItem('notesEnabled') === 'true') ?
           <div className='notes'>
@@ -35,13 +35,13 @@ export default function Navbar(props) {
           <Tooltip title={language.widgets.navbar.tooltips.feedback}>
             <Report className='topicons' onClick={() => props.openModal('feedbackModal')}/>
           </Tooltip>
-        :null}
+        : null}
 
         {(localStorage.getItem('refresh') === 'true') ?
           <Tooltip title={language.widgets.navbar.tooltips.refresh}>
             <RefreshIcon className='refreshicon topicons' onClick={() => window.location.reload()}/>
           </Tooltip>
-        :null}
+        : null}
 
         <Tooltip title={language.modals.main.navbar.settings}>
           <Gear className='settings-icon topicons' onClick={() => props.openModal('mainModal')}/>

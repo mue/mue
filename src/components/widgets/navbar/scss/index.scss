@@ -37,10 +37,6 @@
   visibility: visible !important;
 }
 
-.navbar-hidden + .navbar-container {
-  display: none;
-}
-
 .navbar-hidden {
   position: absolute;
   width: 50vw;
@@ -48,12 +44,16 @@
   top: 0;
   background: none;
   height: 75px;
-}
 
-.navbar-hidden:hover + .navbar-container {
-  display: block !important;
-}
+  +.navbar-container {
+    display: none;
+  }
 
-.navbar-container:hover {
-  display: block;
+  &:hover {
+    display: block;
+
+    +.navbar-container {
+      display: block !important;
+    }
+  }
 }

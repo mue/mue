@@ -12,7 +12,7 @@ export default function ResetModal(props) {
 
   return (
     <>
-      <h3 style={{'textAlign': 'center'}}>{language.title}</h3>
+      <h3 style={{ 'textAlign': 'center' }}>{language.title}</h3>
       <h4>{language.question}</h4>
       <p>{language.information}</p>
       <div className='resetfooter'>

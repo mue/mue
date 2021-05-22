@@ -7,6 +7,10 @@
     cursor: initial;
     user-select: none;
   }
+
+  &:hover .notescontainer {
+    visibility: visible;
+  }
 }
 
 .notescontainer {
@@ -28,10 +32,6 @@
     color: #636e72;
     opacity: 1;
   }
-}
-
-.notes:hover .notescontainer {
-  visibility: visible;
 }
 
 textarea {

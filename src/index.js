@@ -15,7 +15,7 @@ import merge from '@material-ui/utils/esm/deepmerge';
 
 const languagecode = localStorage.getItem('language') || 'en_GB';
 
-// we set things to window. so they're global and we avoid passing the translation strings as props to each component
+// we set things to window. so we avoid passing the translation strings as props to each component
 window.languagecode = languagecode.replace('-', '_');
 
 if (languagecode === 'en') {
@@ -35,7 +35,6 @@ if (window.languagecode !== 'en_GB' || window.languagecode !== 'en_US') {
   document.documentElement.lang = window.languagecode.split('_')[0];
 }
 
-// window.constants
 window.constants = Constants;
 
 ReactDOM.render(

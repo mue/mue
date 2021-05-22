@@ -86,7 +86,7 @@ export default class About extends React.PureComponent {
       <>
         <h2>{this.language.title}</h2>
         <img draggable='false' className='aboutLogo' src='./././icons/logo_horizontal.png' alt='Mue logo'></img>
-        <p>{this.language.copyright} 2018-{new Date().getFullYear()} Mue Tab (BSD-3 License)</p>
+        <p>{this.language.copyright} 2018-{new Date().getFullYear()} <a href='https://github.com/mue/mue/graphs/contributors' className='aboutLink' target='_blank' rel='noopener noreferrer'>The Mue Authors</a> (BSD-3 License)</p>
         <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
 
         <h3>{this.language.contact_us}</h3>
@@ -97,10 +97,17 @@ export default class About extends React.PureComponent {
         <a href='https://discord.gg/zv8C9F8' className='aboutIcon' target='_blank' rel='noopener noreferrer'><ForumIcon/></a>
 
         <h3>{this.language.support_mue}</h3>
-        <p><a href='https://github.com/sponsors/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> • <a href='https://ko-fi.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> • <a href='https://patreon.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a></p>
+        <p>
+          <a href='https://github.com/sponsors/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> 
+          &nbsp; • &nbsp;<a href='https://ko-fi.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> 
+          &nbsp; • &nbsp;<a href='https://patreon.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a>
+        </p>
 
         <h3>{this.language.resources_used.title}</h3>
-        <p><a href='https://www.pexels.com' className='aboutLink' target='_blank' rel='noopener noreferrer'>Pexels</a>, <a href='https://unsplash.com' className='aboutLink' target='_blank' rel='noopener noreferrer'>Unsplash</a> ({this.language.resources_used.bg_images})</p>
+        <p>
+          <a href='https://www.pexels.com' className='aboutLink' target='_blank' rel='noopener noreferrer'>Pexels</a>
+          , <a href='https://unsplash.com' className='aboutLink' target='_blank' rel='noopener noreferrer'>Unsplash</a> ({this.language.resources_used.bg_images})
+        </p>
         <p><a href='https://fonts.google.com/icons?selected=Material+Icons' className='aboutLink' target='_blank' rel='noopener noreferrer'>Google Fonts</a> ({this.language.resources_used.pin_icon})</p>
         <p><a href='https://undraw.co' className='aboutLink' target='_blank' rel='noopener noreferrer'>Undraw</a> ({this.language.resources_used.welcome_img})</p>
 
