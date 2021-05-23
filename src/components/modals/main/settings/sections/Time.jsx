@@ -102,7 +102,9 @@ export default class TimeSettings extends React.PureComponent {
           <option value='percentageComplete'>{time.percentage_complete}</option>
         </Dropdown>
         {timeSettings}
-        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomClock' min='10' max='400' default='100' display='%' category='clock' element='.clock-container' />
+        {this.state.timeType !== 'analogue' ? 
+          <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomClock' min='10' max='400' default='100' display='%' category='clock' element='.clock-container' />
+        : null }
 
         <h3>{time.date.title}</h3>
         <Switch name='date' text={this.language.enabled} category='date' element='.date'/>

@@ -110,7 +110,10 @@ export default class Marketplace extends React.PureComponent {
     switch (value) {
       case 'a-z':
         items.sort();
-        items.reverse();
+        // fix sort not working sometimes
+        if (this.state.sortType === 'z-a') {
+          items.reverse();
+        }
         break;
       case 'z-a':
         items.sort();
@@ -121,10 +124,9 @@ export default class Marketplace extends React.PureComponent {
     }
 
     this.setState({
-      items: items
+      items: items,
+      sortType: value
     });
-    
-    this.forceUpdate();
   }
 
   componentDidMount() {
