@@ -11,7 +11,6 @@ import { toast } from 'react-toastify';
 
 import './quote.scss';
 
-
 export default class Quote extends React.PureComponent {
   constructor() {
     super();
@@ -32,9 +31,10 @@ export default class Quote extends React.PureComponent {
 
   doOffline() {
     const quotes = require('./offline_quotes.json');
+
     // Get a random quote from our local package
     const quote = quotes[Math.floor(Math.random() * quotes.length)];
-    // Set the quote
+
     this.setState({
       quote: '"' + quote.quote + '"',
       author: quote.author,
@@ -184,7 +184,10 @@ export default class Quote extends React.PureComponent {
       tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet
     });
 
-    if (this.state.type !== localStorage.getItem('quoteType')|| localStorage.getItem('quotelanguage') !== this.state.quoteLanguage) {
+    const quoteType = localStorage.getItem('quoteType');
+
+    if (this.state.type !== quoteType || localStorage.getItem('quotelanguage') !== this.state.quoteLanguage || (quoteType === 'custom' && this.state.quote !== localStorage.getItem('customQuote'))
+       || (quoteType === 'custom' && this.state.author !== localStorage.getItem('customQuoteAuthor'))) {
       this.getQuote();
     }
   }
