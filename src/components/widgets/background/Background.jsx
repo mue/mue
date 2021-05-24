@@ -178,8 +178,6 @@ export default class Background extends React.PureComponent {
           photographerURL = data.photographer_page;
         }
 
-        const location = data.location.replace(/[null]+/g, '');
-
         this.setState({
           url: data.file,
           type: 'api',
@@ -187,7 +185,7 @@ export default class Background extends React.PureComponent {
           photoInfo: {
             hidden: false,
             credit: credit,
-            location: (location !== ' ' && location !== ', ') ? data.location : 'N/A',
+            location: data.location,
             camera: data.camera,
             resolution: data.resolution,
             url: data.file,
