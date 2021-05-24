@@ -50,7 +50,7 @@ export default class Item extends React.PureComponent {
         <br/>
         {iconsrc ? <img alt='product' draggable='false' src={iconsrc} onClick={() => this.setState({ showLightbox: true })}/> : null}
         <div className='informationContainer'>
-          <h1>{language.overview}</h1>
+          <h1 className='overview'>{language.overview}</h1>
           <p className='description' dangerouslySetInnerHTML={{ __html: this.props.data.description }}></p>
             <div className='productInformation'>
               <ul>
