@@ -43,7 +43,7 @@ export default class Changelog extends React.PureComponent {
     const images = content.getElementsByTagName('img');
     const links = content.getElementsByTagName('a');
 
-    for (let img of images) {
+    for (const img of images) {
       img.draggable = false;
       img.onclick = () => {
         this.setState({

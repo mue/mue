@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Info from '@material-ui/icons/Info';
 import Location from '@material-ui/icons/LocationOn';
 import Camera from '@material-ui/icons/PhotoCamera';

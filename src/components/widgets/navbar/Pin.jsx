@@ -14,8 +14,6 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import React from 'react';
-
 export default function Pin() {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' enableBackground='new 0 0 24 24' viewBox='0 0 24 24' fill='black' width='18px' height='18px'>

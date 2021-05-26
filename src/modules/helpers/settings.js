@@ -186,7 +186,7 @@ export default class SettingsFunctions {
     localStorage.clear();
 
     this.setDefaultSettings();
-    Object.keys(settings).forEach(key => {
+    Object.keys(settings).forEach((key) => {
       localStorage.setItem(key, settings[key]);
     });
   }

@@ -153,6 +153,16 @@ export default class Marketplace extends React.PureComponent {
       );
     };
 
+    const featured = () => {
+      return (
+        <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
+          <p>{this.state.featured.title}</p>
+          <h1>{this.state.featured.name}</h1>
+          <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
+        </div>
+      );
+    }
+
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(<>
         <WifiOffIcon/>
@@ -166,11 +176,16 @@ export default class Marketplace extends React.PureComponent {
     }
 
     if (this.state.items.length === 0) {
-      return errorMessage(<>
-        <LocalMallIcon/>
-        <h1>{window.language.modals.main.addons.empty.title}</h1>
-        <p className='description'>{this.language.no_items}</p>
-      </>);
+      return (
+        <>
+          {featured()}
+          {errorMessage(<>
+            <LocalMallIcon/>
+            <h1>{window.language.modals.main.addons.empty.title}</h1>
+            <p className='description'>{this.language.no_items}</p>
+          </>)}
+        </>
+      )
     }
 
     if (this.state.item.display_name) {
@@ -179,11 +194,7 @@ export default class Marketplace extends React.PureComponent {
 
     return (
       <>
-        <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
-          <p>{this.state.featured.title}</p>
-          <h1>{this.state.featured.name}</h1>
-          <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
-        </div>
+        {featured()}
         <br/>
         <Dropdown label={window.language.modals.main.addons.sort.title} name='sortMarketplace' onChange={(value) => this.sortMarketplace(value)}>
           <option value='a-z'>{window.language.modals.main.addons.sort.a_z}</option>

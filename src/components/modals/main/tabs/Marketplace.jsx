@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MarketplaceTab from '../marketplace/sections/Marketplace';
 
 import Tabs from './backend/Tabs';

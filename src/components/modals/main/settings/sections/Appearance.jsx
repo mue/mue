@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { engineName } from 'react-device-detect';
 
 import Checkbox from '../Checkbox';

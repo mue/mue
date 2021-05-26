@@ -1,4 +1,3 @@
-import React from 'react';
 import { WiDirectionDownLeft, WiDirectionDownRight, WiDirectionDown, WiDirectionLeft, WiDirectionRight, WiDirectionUpLeft, WiDirectionUpRight, WiDirectionUp } from 'weather-icons-react';
 
 export default function WindDirectionIcon(props) {

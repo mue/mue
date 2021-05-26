@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SettingsFunctions from '../../../../modules/helpers/settings';
 
 export default function ResetModal(props) {

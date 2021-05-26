@@ -243,14 +243,13 @@ export default class Background extends React.PureComponent {
         const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
         if (photoPack) {
           const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
-          const photoLocation = randomPhoto.location.replace(/[null]+/g, '');
           return this.setState({
             url: randomPhoto.url.default,
             type: 'photo_pack',
             photoInfo: {
               hidden: false,
               credit: randomPhoto.photographer,
-              location: photoLocation !== ' ' && photoLocation !== '???' ? randomPhoto.location : 'N/A',
+              location: randomPhoto.location || 'N/A'
             }
           });
         }

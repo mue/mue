@@ -1,5 +1,3 @@
-import React from 'react';
-
 import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ForumIcon from '@material-ui/icons/Forum';

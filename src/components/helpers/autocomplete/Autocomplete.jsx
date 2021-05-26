@@ -2,7 +2,7 @@ import React from 'react';
 
 import './autocomplete.scss';
 
-export default class Autocomplete extends React.Component {
+export default class Autocomplete extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,7 +10,7 @@ export default class Autocomplete extends React.Component {
       showList: false,
       input: ''
     };
-    this.enabled = (localStorage.getItem('autocomplete') === 'true')
+    this.enabled = (localStorage.getItem('autocomplete') === 'true');
   }
 
   onChange = (e) => {

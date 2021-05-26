@@ -1,4 +1,3 @@
-import React from 'react';
 import { WiDaySunny, WiNightClear, WiDayCloudy, WiNightCloudy, WiCloud, WiCloudy, WiDayShowers, WiNightShowers, WiRain, WiThunderstorm, WiSnow, WiFog } from 'weather-icons-react';
 
 export default function WeatherIcon(props) {

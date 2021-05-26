@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Switch from '../Switch';
 import Checkbox from '../Checkbox';
 
