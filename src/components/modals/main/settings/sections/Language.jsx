@@ -24,7 +24,7 @@ export default class BackgroundSettings extends React.PureComponent {
     }
 
     let array = [];
-    data.forEach(item => {
+    data.forEach((item) => {
       array.push({
         name: item,
         value: item
@@ -45,6 +45,7 @@ export default class BackgroundSettings extends React.PureComponent {
         }]
       });
     }
+
     this.getQuoteLanguages();
   }
 

@@ -104,11 +104,6 @@ export default class SettingsFunctions {
       document.head.insertAdjacentHTML('beforeend', '<style id="customcss">' + css + '</style>');
     }
 
-    const js = localStorage.getItem('customjs');
-    if (js) {
-      document.head.insertAdjacentHTML('beforeend', '<script id="customjs">' + js + '</script>');
-    }
-
     const font = localStorage.getItem('font');
     if (font) {
       const google = localStorage.getItem('fontGoogle');
@@ -145,6 +140,12 @@ export default class SettingsFunctions {
 
     if (hotreload === true) {
       return;
+    }
+
+    const js = localStorage.getItem('customjs');
+    if (js) {
+      // eslint-disable-next-line no-eval
+      eval(js);
     }
 
     if (localStorage.getItem('experimental') === 'true') {

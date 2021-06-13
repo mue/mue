@@ -41,18 +41,23 @@ export default class Slider extends React.PureComponent {
       numberWidth: ((value.length + 1) * this.widthCalculation)
     });
 
+    if (this.props.element) {
+      if (!document.querySelector(this.props.element)) {
+        document.querySelector('.reminder-info').style.display = 'block';
+        return localStorage.setItem('showReminder', true);
+      }
+    }
+
     EventBus.dispatch('refresh', this.props.category);
   }
 
   resetItem = () => {
-    localStorage.setItem(this.props.name, this.props.default);
-    this.setState({
-      value: this.props.default,
-      numberWidth: ((this.props.default.length + 1) * this.widthCalculation)
+    this.handleChange({
+      target: {
+        value: this.props.default || ''
+      }
     });
-
     toast(window.language.toasts.reset);
-    EventBus.dispatch('refresh', this.props.category);
   }
 
   render() {

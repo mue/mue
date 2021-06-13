@@ -40,6 +40,12 @@
     "url": "https://www.startpage.com/sp/search"
   },
   {
+    "name": "Yahoo! JAPAN",
+    "settingsName": "yahoojp",
+    "url": "https://search.yahoo.co.jp/search",
+    "query": "p"
+  },
+  {
     "name": "Яндекс",
     "settingsName": "yandex",
     "url": "https://yandex.ru/search",

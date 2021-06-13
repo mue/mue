@@ -83,7 +83,7 @@ export default class MarketplaceFunctions {
         break;
     }
 
-    let installed = JSON.parse(localStorage.getItem('installed'));
+    const installed = JSON.parse(localStorage.getItem('installed'));
 
     if (sideload) {
       installed.push({

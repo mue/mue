@@ -37,13 +37,12 @@ export default class Text extends React.PureComponent {
   }
 
   resetItem = () => {
-    localStorage.setItem(this.props.name, this.props.default || '');
-    this.setState({
-      value: this.props.default || ''
+    this.handleChange({
+      target: {
+        value: this.props.default || ''
+      }
     });
-
     toast(window.language.toasts.reset);
-    EventBus.dispatch('refresh', this.props.category);
   }
 
   render() {
