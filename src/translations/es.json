@@ -168,7 +168,14 @@
               "add_colour": "Añadir color",
               "disabled": "Desactivado",
               "loop_video": "Vídeo en bucle",
-              "mute_video": "Silenciar video"
+              "mute_video": "Silenciar video",
+              "quality": {
+                "title": "Quality",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              }
             }
           },
           "search": {

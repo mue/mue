@@ -168,7 +168,14 @@
               "add_colour": "Добавить цвет",
               "disabled": "Выключен",
               "loop_video": "Loop video",
-              "mute_video": "Mute video"
+              "mute_video": "Mute video",
+              "quality": {
+                "title": "Quality",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              }
             }
           },
           "search": {

@@ -141,19 +141,20 @@ export default class Background extends React.PureComponent {
         // API background
         const backgroundAPI = localStorage.getItem('backgroundAPI');
         const apiCategory = localStorage.getItem('apiCategory');
+        const apiQuality = localStorage.getItem('apiQuality');
 
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
             //requestURL = `${window.constants.UNSPLASH_URL}/getImage?category=${apiCategory}`;
-            requestURL = `${window.constants.UNSPLASH_URL}/images/random`;
+            requestURL = `${window.constants.UNSPLASH_URL}/images/random?quality=${apiQuality}`;
             break;
           case 'pexels':
-            requestURL = `${window.constants.PEXELS_URL}/images/random`;
+            requestURL = `${window.constants.PEXELS_URL}/images/random?quality=${apiQuality}`;
             break;
           // Defaults to Mue
           default:
-            requestURL = `${window.constants.API_URL}/images/random?category=${apiCategory}`;
+            requestURL = `${window.constants.API_URL}/images/random?category=${apiCategory}&quality=${apiQuality}`;
             break;
         }
 

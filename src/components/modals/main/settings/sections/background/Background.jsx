@@ -121,6 +121,13 @@ export default class BackgroundSettings extends React.PureComponent {
             <option value={category} key={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</option>
           ))}
         </Dropdown>
+        <br/><br/>
+        <Dropdown label={background.source.quality.title} name='apiQuality' category='background'>
+          <option value='original'>{background.source.quality.original}</option>
+          <option value='high'>{background.source.quality.high}</option>
+          <option value='normal'>{background.source.quality.normal}</option>
+          <option value='datasaver'>{background.source.quality.datasaver}</option>
+        </Dropdown>
       </>
     );
 

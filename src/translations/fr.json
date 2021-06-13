@@ -168,7 +168,14 @@
               "add_colour": "Ajouter une couleur",
               "disabled": "Disabled",
               "loop_video": "Boucle vidéo",
-              "mute_video": "Mettre la vidéo en sourdine"
+              "mute_video": "Mettre la vidéo en sourdine",
+              "quality": {
+                "title": "Quality",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              }
             }
           },
           "search": {
