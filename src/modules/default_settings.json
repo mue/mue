@@ -222,5 +222,9 @@
   {
     "name": "apiQuality",
     "value": "high"
+  },
+  {
+    "name": "photoInformation",
+    "value": true
   }
 ]

@@ -227,8 +227,7 @@
             "navbar": {
               "title": "Barra de búsqueda",
               "notes": "Notas",
-              "refresh": "Botón de recargar",
-              "hover": "Display on hover"
+              "refresh": "Botón de recargar"
             },
             "font": {
               "title": "Fuente",

@@ -26,6 +26,7 @@ export default class About extends React.PureComponent {
 
   async getGitHubData() {
     let contributors, sponsors, photographers, versionData;
+
     try {
       contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/contributors', { signal: this.controller.signal })).json();
       sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list', { signal: this.controller.signal })).json()).sponsors;

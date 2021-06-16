@@ -32,7 +32,6 @@ export default function AppearanceSettings() {
       <h3>{appearance.navbar.title}</h3>
       <Checkbox name='notesEnabled' text={appearance.navbar.notes} element='.other' />
       <Checkbox name='refresh' text={appearance.navbar.refresh} element='.other' />
-      <Checkbox name='navbarHover' text={appearance.navbar.hover} element='.other' />
 
       <h3>{appearance.font.title}</h3>
       <Text title={appearance.font.custom} name='font' upperCaseFirst={true} category='other' />

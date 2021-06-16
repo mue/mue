@@ -227,8 +227,7 @@
             "navbar": {
               "title": "Navigationsleiste",
               "notes": "Notizen",
-              "refresh": "Aktualisieren",
-              "hover": "Display on hover"
+              "refresh": "Aktualisieren"
             },
             "font": {
               "title": "Schriftart",

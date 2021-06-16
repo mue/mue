@@ -108,9 +108,9 @@
           },
           "quote": {
             "title": "名言",
-            "author_link": "Authour link",
+            "author_link": "Author link",
             "custom": "Custom quote",
-            "custom_author": "Custom authour",
+            "custom_author": "Custom author",
             "buttons": {
               "title": "Buttons",
               "copy": "复制按钮",
@@ -227,8 +227,7 @@
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
-              "refresh": "Refresh button",
-              "hover": "Display on hover"
+              "refresh": "Refresh button"
             },
             "font": {
               "title": "Font",
