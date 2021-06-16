@@ -131,7 +131,7 @@
             "title": "Fondo",
             "ddg_proxy": "Utilizar el proxy de imágenes de DuckDuckGo",
             "transition": "Transición fade-in",
-            "photo_information": "Show photo information",
+            "photo_information": "Ver información de la foto",
             "category": "Categoría",
             "buttons": {
               "title": "Botones",
@@ -182,8 +182,8 @@
             "title": "Búsqueda",
             "search_engine": "Motor de búsqueda",
             "custom": "URL de búsqueda personalizada",
-            "autocomplete": "Autocomplete",
-            "autocomplete_provider": "Autocomplete Provider",
+            "autocomplete": "Autocompletado",
+            "autocomplete_provider": "Proveedor del autocompletado",
             "voice_search": "Búsqueda por voz"
           },
           "weather": {
