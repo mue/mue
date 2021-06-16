@@ -144,13 +144,13 @@
               "blur": "Ajustar difuminado",
               "brightness": "Ajustar brillo",
               "filters": {
-                "title": "Background filter",
-                "amount": "Filter amount",
-                "grayscale": "Grayscale",
+                "title": "Filtros del fondo",
+                "amount": "Cantidad del filtro",
+                "grayscale": "Escala de grises",
                 "sepia": "Sepia",
-                "invert": "Invert",
-                "saturate": "Saturate",
-                "contrast": "Contrast"
+                "invert": "Invertir",
+                "saturate": "Saturar",
+                "contrast": "Contraste"
               }
             },
             "type": {
@@ -170,11 +170,11 @@
               "loop_video": "Vídeo en bucle",
               "mute_video": "Silenciar video",
               "quality": {
-                "title": "Quality",
+                "title": "Calidad",
                 "original": "Original",
-                "high": "High Quality",
-                "normal": "Normal Quality",
-                "datasaver": "Data Saver"
+                "high": "Calidad alta",
+                "normal": "Calidad normal",
+                "datasaver": "Ahorro de datos"
               }
             }
           },
@@ -199,12 +199,12 @@
             "extra_info": {
               "title": "Información extra",
               "show_location": "Mostrar ubicación",
-              "show_description": "Show description",
-              "cloudiness": "Cloudiness",
+              "show_description": "Mostrar descripción",
+              "cloudiness": "Nubosidad",
               "humidity": "Humedad",
-              "visibility": "Visibility",
+              "visibility": "Visibilidad",
               "wind_speed": "Velocidad del viento",
-              "wind_direction": "Wind direction",
+              "wind_direction": "Dirección del viento",
               "min_temp": "Temperatura mínima",
               "max_temp": "Temperatura máxima",
               "atmospheric_pressure": "Presión atmosférica"
@@ -297,8 +297,8 @@
               "no_update": "Actualizaciones no disponibles",
               "offline_mode": "No se puede comprobar la actualización en modo sin conexión",
               "error": {
-                "title": "Failed to get update information",
-                "description": "An error occured"
+                "title": "Fallo al obtener la información de la actualización",
+                "description": "Ha ocurrido un error"
               }
             },
             "contact_us": "Contacto",
@@ -353,11 +353,11 @@
         },
         "sideload": "Cargar localmente",
         "sort": {
-          "title": "Sort",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
-          "a_z": "Alphabetical (A-Z)",
-          "z_a": "Alphabetical (Z-A)"
+          "title": "Ordenar",
+          "newest": "Instalado (Nuevos)",
+          "oldest": "Instalado (Antiguos)",
+          "a_z": "Alfabético (A-Z)",
+          "z_a": "Alfabético (Z-A)"
         }
       }
     },
