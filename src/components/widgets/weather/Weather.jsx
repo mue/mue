@@ -60,7 +60,7 @@ export default class Weather extends React.PureComponent {
     };
 
     if (!this.state.weather.temp) {
-      data = await (await fetch (window.constants.WEATHER_URL + `/current?city=${this.state.location}`)).json();
+      data = await (await fetch (window.constants.WEATHER_URL + `/current?city=${this.state.location}&lang=${localStorage.getItem('language')}`)).json();
     }
 
     if (data.cod === '404') {
