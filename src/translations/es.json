@@ -30,7 +30,8 @@
       "week": "Semana"
     },
     "weather": {
-      "not_found": "No encontrado"
+      "not_found": "No encontrado",
+      "meters": "metros"
     },
     "navbar": {
       "tooltips": {
