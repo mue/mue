@@ -107,7 +107,7 @@ export default class QuickLinks extends React.PureComponent {
     // allows you to add a link by pressing enter
     document.querySelector('.topbarquicklinks').onkeydown = (e) => {
       e = e || window.event;
-      let code = e.which || e.keyCode;
+      const code = e.which || e.keyCode;
       if (code === 13 && this.state.showAddLink === 'visible') {
         this.addLink();
         e.preventDefault();
@@ -125,9 +125,12 @@ export default class QuickLinks extends React.PureComponent {
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
 
     const quickLink = (item) => {
+      const useProxy = (localStorage.getItem('quicklinksddgProxy') !== 'false');
+      const url = useProxy ? 'https://icons.duckduckgo.com/ip2/' : 'https://www.google.com/s2/favicons?sz=32&domain=';
+
       const link = (
         <a key={item.key} onContextMenu={(e) => this.deleteLink(item.key, e)} href={item.url} target={target} rel={rel} draggable={false}>
-          <img src={'https://icons.duckduckgo.com/ip2/' + item.url.replace('https://', '').replace('http://', '') + '.ico'} alt={item.name} draggable={false}/>
+          <img src={url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '')} alt={item.name} draggable={false}/>
         </a>
       );
 
