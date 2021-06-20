@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import StarIcon from '@material-ui/icons/Star';
 import StarIcon2 from '@material-ui/icons/StarBorder';
@@ -21,9 +21,18 @@ export default class Favourite extends React.PureComponent {
       });
     } else {
       const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
-      const credit = document.getElementById('credit').textContent;
 
-      localStorage.setItem('favourite', JSON.stringify({ url: url, credit: credit }));
+      if (!url) {
+        return;
+      }
+      
+      localStorage.setItem('favourite', JSON.stringify({ 
+        url: url, 
+        credit: document.getElementById('credit').textContent,
+        location: document.getElementById('infoLocation').textContent,
+        camera: document.getElementById('infoCamera').textContent,
+        resolution: document.getElementById('infoResolution').textContent
+      }));
 
       this.setState({
         favourited: <StarIcon onClick={this.favourite} className='topicons' />
@@ -32,7 +41,8 @@ export default class Favourite extends React.PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('backgroundType') === 'colour') {
+    const backgroundType = localStorage.getItem('backgroundType');
+    if (backgroundType === 'colour' || backgroundType === 'custom') {
       return null;
     }
 

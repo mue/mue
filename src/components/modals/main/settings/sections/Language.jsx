@@ -13,13 +13,18 @@ export default class BackgroundSettings extends React.PureComponent {
         value: 'loading'
       }]
     };
+    this.controller = new AbortController();
   }
 
   async getQuoteLanguages() {
-    const data = await (await fetch(window.constants.API_URL + '/quotes/languages')).json();
+    const data = await (await fetch(window.constants.API_URL + '/quotes/languages', { signal: this.controller.signal })).json();
+
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
 
     let array = [];
-    data.forEach(item => {
+    data.forEach((item) => {
       array.push({
         name: item,
         value: item
@@ -32,7 +37,21 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+      return this.setState({
+        quoteLanguages: [{
+          name: window.language.modals.main.marketplace.offline.description,
+          value: 'loading'
+        }]
+      });
+    }
+
     this.getQuoteLanguages();
+  }
+
+  componentWillUnmount() {
+    // stop making requests
+    this.controller.abort();
   }
 
   render() {

@@ -23,6 +23,15 @@
   svg:hover+.infoCard {
     display: block;
   }
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .infoCard {
@@ -39,10 +48,6 @@
   text-align: left;
   text-shadow: none;
 
-  span {
-    display: block;
-  }
-
   svg {
     margin-right: 0.5rem;
     vertical-align: middle;
@@ -55,7 +60,8 @@
     font-size: 2em;
   }
 
-  h1 {
+  h1,
+  .MuiSvgIcon-root {
     user-select: none;
     cursor: initial;
   }
@@ -76,16 +82,17 @@
     border: none;
   }
 
-  &:hover {
+  &:hover, 
+  span {
     display: block !important;
   }
 
   .download {
     text-decoration: underline;
     cursor: pointer;
-  }
 
-  .MuiSvgIcon-root {
-    cursor: initial;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

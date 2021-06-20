@@ -23,10 +23,9 @@ const saveFile = (data, filename = 'file') => {
 export default class SettingsFunctions {
   static exportSettings() {
     let settings = {};
-    for (const key of Object.keys(localStorage)) {
+    Object.keys(localStorage).forEach((key) => {
       settings[key] = localStorage.getItem(key);
-    }
-  
+    });
     saveFile(settings, 'mue-settings.json');
   }
 
@@ -52,10 +51,10 @@ export default class SettingsFunctions {
     defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 
     // Languages
-    const languageCodes = languages.map(({ code }) => code);
-    const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language;
+    const languageCodes = languages.map(({ value }) => value);
+    const browserLanguage = (navigator.languages && navigator.languages.find((lang) => lang.replace('-', '_') && languageCodes.includes(lang))) || navigator.language.replace('-', '_');
 
-    if (languageCodes.includes(browserLanguage.replace('-', '_'))) {
+    if (languageCodes.includes(browserLanguage)) {
       localStorage.setItem('language', browserLanguage);
     } else {
       localStorage.setItem('language', 'en_GB');
@@ -92,24 +91,27 @@ export default class SettingsFunctions {
     document.title = tabName;
 
     if (hotreload === true) {
-      return;
+      const custom = ['customcss', 'customjs', 'customfont'];
+      custom.forEach((element) => {
+        try {
+          document.head.removeChild(document.getElementById(element));
+        } catch (e) {}
+      });
     }
 
     const css = localStorage.getItem('customcss');
     if (css) {
-      document.head.insertAdjacentHTML('beforeend', '<style>' + css + '</style>');
-    }
-
-    const js = localStorage.getItem('customjs');
-    if (js) {
-      document.body.insertAdjacentHTML('beforeend', '<script>' + js + '</script>');
+      document.head.insertAdjacentHTML('beforeend', '<style id="customcss">' + css + '</style>');
     }
 
     const font = localStorage.getItem('font');
     if (font) {
       const google = localStorage.getItem('fontGoogle');
 
-      let url, fontweight, fontstyle = '';
+      let url = '';
+      let fontweight = '';
+      let fontstyle = '';
+
       if (google === 'true') {
         url = `@import url('https://fonts.googleapis.com/css2?family=${font}&display=swap');`;
       }
@@ -125,7 +127,7 @@ export default class SettingsFunctions {
       }
 
       document.head.insertAdjacentHTML('beforeend', `
-        <style>
+        <style id='customfont'>
           ${url}
           * {
             font-family: '${font}', 'Lexend Deca', 'Montserrat' !important;
@@ -134,6 +136,16 @@ export default class SettingsFunctions {
           }
         </style>
       `);
+    }
+
+    if (hotreload === true) {
+      return;
+    }
+
+    const js = localStorage.getItem('customjs');
+    if (js) {
+      // eslint-disable-next-line no-eval
+      eval(js);
     }
 
     if (localStorage.getItem('experimental') === 'true') {
@@ -160,20 +172,22 @@ export default class SettingsFunctions {
 `);
   }
 
+  // in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides 
+  // the new settings with the old saved messages where they exist
   static moveSettings() {
     if (Object.keys(localStorage).length === 0) {
       return this.setDefaultSettings();
     }
 
     let settings = {};
-    for (const key of Object.keys(localStorage)) {
+    Object.keys(localStorage).forEach((key) => {
       settings[key] = localStorage.getItem(key);
-    }
+    });
 
     localStorage.clear();
 
     this.setDefaultSettings();
-    Object.keys(settings).forEach(key => {
+    Object.keys(settings).forEach((key) => {
       localStorage.setItem(key, settings[key]);
     });
   }

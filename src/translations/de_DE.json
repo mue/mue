@@ -13,6 +13,7 @@
     "background": {
       "credit": "Foto von",
       "unsplash": "unsplash.com",
+      "pexels": "pexels.com",
       "information": "Informationen",
       "download": "Download"
     },
@@ -29,7 +30,8 @@
       "week": "Kalenderwoche"
     },
     "weather": {
-      "not_found": "Nicht gefunden"
+      "not_found": "Nicht gefunden",
+      "meters": "Meter"
     },
     "navbar": {
       "tooltips": {
@@ -130,6 +132,7 @@
             "title": "Hintergrund",
             "ddg_proxy": "DuckDuckGo Bilder Proxy verwenden",
             "transition": "Weicher übergang",
+            "photo_information": "Show photo information",
             "category": "Kategorie",
             "buttons": {
               "title": "Schaltflächen",
@@ -140,7 +143,16 @@
             "effects": {
               "title": "Effekte",
               "blur": "Unschärfe anpassen",
-              "brightness": "Helligkeit anpassen"
+              "brightness": "Helligkeit anpassen",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "contrast": "Contrast"
+              }
             },
             "type": {
               "title": "Type",
@@ -157,13 +169,22 @@
               "add_colour": "Farbe hinzufügen",
               "disabled": "Deaktiviert",
               "loop_video": "Video schleife",
-              "mute_video": "Video stumm"
+              "mute_video": "Video stumm",
+              "quality": {
+                "title": "Quality",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              }
             }
           },
           "search": {
             "title": "Suche",
             "search_engine": "Suchmaschine",
             "custom": "Abfrage-URL",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "Sprachsuche"
           },
           "weather": {
@@ -177,10 +198,14 @@
               "kelvin": "Kelvin"
             },
             "extra_info": {
-              "title": "Zusätzliche Informationen",
+              "title": "Zusätzliche informationen",
               "show_location": "Standort anzeigen",
+              "show_description": "Show description",
+              "cloudiness": "Cloudiness",
               "humidity": "Luftfeuchtigkeit",
+              "visibility": "Visibility",
               "wind_speed": "Windgeschwindigkeit",
+              "wind_direction": "Wind direction",
               "min_temp": "Mindesttemperatur",
               "max_temp": "Höchsttemperatur",
               "atmospheric_pressure": "Atmosphärischer Druck"
@@ -271,7 +296,11 @@
               "checking_update": "Auf Update prüfen",
               "update_available": "Update verfügbar",
               "no_update": "Kein Update verfügbar",
-              "offline_mode": "Im Offline Modus kann nicht nach Updates gesucht werden"
+              "offline_mode": "Im Offline Modus kann nicht nach Updates gesucht werden",
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
             },
             "contact_us": "Kontaktieren Sie uns",
             "support_mue": "Mue unterstützen",
@@ -296,7 +325,6 @@
         "photo_packs": "Fotopakete",
         "quote_packs": "Zitat-Pakete",
         "preset_settings": "Voreingestellte Einstellungen",
-        "themes": "Themen",
         "no_items": "Keine Einträge in dieser Kategorie",
         "product": {
           "overview": "Übersicht",
@@ -315,16 +343,23 @@
         },
         "offline": {
           "title": "Sieht aus, als ob Sie offline sind",
-          "description": "Bitte stellen Sie eine Verbindung zum Internet her."
+          "description": "Bitte stellen Sie eine Verbindung zum Internet her"
         }
       },
       "addons": {
         "added": "Hinzugefügt",
         "empty": {
           "title": "Hier ist es leer",
-          "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen."
+          "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen"
         },
-        "sideload": "Hochladen"
+        "sideload": "Hochladen",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {
@@ -360,7 +395,9 @@
     }
   },
   "toasts": {
-    "quote": "Kopierte Zitate",
+    "quote": "Kopierte zitate",
+    "notes": "Kopierte notizen",
+    "reset": "Reset successfully",
     "installed": "Erfolgreich installiert",
     "uninstalled": "Erfolgreich entfernt",
     "error": "Etwas ist schief gelaufen",

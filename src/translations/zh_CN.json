@@ -30,6 +30,7 @@
     },
     "weather": {
       "not_found": "未找到"
+      "meters": "meters"
     },
     "navbar": {
       "tooltips": {
@@ -140,7 +141,16 @@
             "effects": {
               "title": "效果",
               "blur": "调整模糊",
-              "brightness": "调整亮度"
+              "brightness": "调整亮度",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "contrast": "Contrast"
+              }
             },
             "type": {
               "title": "来源",
@@ -158,12 +168,21 @@
               "disabled": "已禁用",
               "loop_video": "循环播放",
               "mute_video": "静音"
+              "quality": {
+                "title": "Quality",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              }
             }
           },
           "search": {
             "title": "搜索栏",
             "search_engine": "搜索引擎",
             "custom": "自定义搜索链接",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "语音搜索"
           },
           "weather": {
@@ -179,7 +198,11 @@
             "extra_info": {
               "title": "更多信息",
               "show_location": "显示位置",
-              "humidity": "湿度",
+              "show_location": "Show location",
+              "show_description": "Show description",
+              "cloudiness": "Cloudiness",
+              "humidity": "Humidity",
+              "visibility": "Visibility",
               "wind_speed": "风速",
               "min_temp": "最低温度",
               "max_temp": "最高温度",
@@ -272,6 +295,10 @@
               "update_available": "可下载更新",
               "no_update": "无可下载更新",
               "offline_mode": "离线模式下不能检查更新"
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
             },
             "contact_us": "联系我们",
             "support_mue": "给我们打赏",
@@ -296,7 +323,6 @@
         "photo_packs": "图片包",
         "quote_packs": "名言包",
         "preset_settings": "预设设定",
-        "themes": "主题",
         "no_items": "本类别为空",
         "product": {
           "overview": "总览",
@@ -324,7 +350,14 @@
           "title": "这里空空如也",
           "description": "请访问插件市场来添加插件。"
         },
-        "sideload": "上传插件"
+        "sideload": "上传插件",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {
@@ -361,6 +394,8 @@
   },
   "toasts": {
     "quote": "名言已复制",
+    "notes": "Notes copied",
+    "reset": "重置成功",
     "installed": "安装成功",
     "uninstalled": "卸载成功",
     "error": "发生了错误",

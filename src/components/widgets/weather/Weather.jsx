@@ -3,7 +3,8 @@ import React from 'react';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import WeatherIcon from './WeatherIcon';
-import { WiHumidity, WiWindy } from 'weather-icons-react';
+import WindDirectionIcon from './WindDirectionIcon';
+import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'weather-icons-react';
 
 import './weather.scss';
 
@@ -16,36 +17,50 @@ export default class Weather extends React.PureComponent {
       temp_text: '',
       weather: {
         temp: '',
+        description: '',
         temp_min: '',
         temp_max: '',
         humidity: '',
-        windspeed: '',
+        wind_speed: '',
+        wind_degrees: '',
+        cloudiness: '',
+        visibility: '',
         pressure: ''
       }
     };
   }
 
   async getWeather() {
+    if (localStorage.getItem('offlineMode') === 'true') {
+      return null;
+    }
+
     let data = {
       weather: [
         {
+          description: this.state.weather.description,
           icon: this.state.icon
         }
       ],
-      wind: {
-        speed: this.state.weather.windspeed
-      },
       main: {
         temp: this.state.weather.original_temp,
         temp_min: this.state.weather.original_temp_min,
         temp_max: this.state.weather.original_temp_max,
         humidity: this.state.weather.humidity,
         pressure: this.state.weather.pressure
+      },
+      visibility: this.state.weather.visibility,
+      wind: {
+        speed: this.state.weather.wind_speed,
+        deg: this.state.weather.wind_degrees
+      },
+      clouds: {
+        all: this.state.weather.cloudiness
       }
     };
 
     if (!this.state.weather.temp) {
-      data = await (await fetch (window.constants.WEATHER_URL + `?city=${this.state.location}`)).json();
+      data = await (await fetch (window.constants.WEATHER_URL + `/current?city=${this.state.location}&lang=${localStorage.getItem('language')}`)).json();
     }
 
     if (data.cod === '404') {
@@ -72,6 +87,7 @@ export default class Weather extends React.PureComponent {
         temp_max = ((temp_max - 273.15) * 1.8) + 32;
         temp_text = '°F';
         break;
+      // kelvin
       default: break;
     }
 
@@ -80,25 +96,34 @@ export default class Weather extends React.PureComponent {
       temp_text: temp_text,
       weather: {
         temp: Math.round(temp),
+        description: data.weather[0].description,
         temp_min: Math.round(temp_min),
         temp_max: Math.round(temp_max),
         humidity: data.main.humidity,
-        windspeed: data.wind.speed,
+        wind_speed: data.wind.speed,
+        wind_degrees: data.wind.deg,
+        cloudiness: data.clouds.all,
+        visibility: data.visibility,
         pressure: data.main.pressure,
         original_temp: data.main.temp,
         original_temp_min: data.main.temp_min,
         original_temp_max: data.main.temp_max
       }
     });
+
+    document.querySelector('.weather svg').style.fontSize = `${0.95 * Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
   }
   
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'weather') {
         this.getWeather();
+        document.querySelector('.weather').style.fontSize = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+        document.querySelector('.weather svg').style.fontSize = `${0.95 * Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
       }
     });
 
+    document.querySelector('.weather').style.fontSize = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
     this.getWeather();
   }
 
@@ -111,6 +136,10 @@ export default class Weather extends React.PureComponent {
       return (localStorage.getItem(setting) === 'true');
     };
 
+    if (enabled('offlineMode')) {
+      return null;
+    }
+
     if (this.state.location === window.language.widgets.weather.not_found) {
       return (<div className='weather'>
         <span className='loc'>{this.state.location}</span>
@@ -118,8 +147,8 @@ export default class Weather extends React.PureComponent {
     }
 
     const minmax = () => {
-      const mintemp = (localStorage.getItem('mintemp') === 'true');
-      const maxtemp = (localStorage.getItem('maxtemp') === 'true');
+      const mintemp = enabled('mintemp');
+      const maxtemp = enabled('maxtemp');
     
       if (!mintemp && !maxtemp) {
         return null;
@@ -131,15 +160,18 @@ export default class Weather extends React.PureComponent {
         return <><br/>{this.state.weather.temp_min + this.state.temp_text} {this.state.weather.temp_max + this.state.temp_text}</>;
       }
     };
-  
+
     return (
       <div className='weather'>
         <WeatherIcon name={this.state.icon}/>
         <span>{this.state.weather.temp + this.state.temp_text}</span>
+        {enabled('weatherdescription') ? <span className='loc' style={{ 'textTransform': 'capitalize' }}><br/>{this.state.weather.description}</span> : null}
         <span className='minmax'>{minmax()}</span>
         {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
-        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.windspeed}<span className='minmax'> m/s</span></span> : null}
-        {enabled('atmosphericpressure') ? <span className='loc'><br/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
+        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span> {enabled('windDirection') ? <WindDirectionIcon degrees={this.state.weather.wind_degrees}/> : null}</span> : null}
+        {enabled('cloudiness') ? <span className='loc'><br/><WiCloud/>{this.state.weather.cloudiness}%</span> : null}
+        {enabled('visibility') ? <span className='loc'><br/>{this.state.weather.visibility} {window.language.widgets.weather.meters}</span> : null}
+        {enabled('atmosphericpressure') ? <span className='loc'><br/><WiBarometer/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
         {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}
       </div>

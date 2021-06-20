@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 
-export default class View extends React.PureComponent {
+export default class Maximise extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -12,10 +12,17 @@ export default class View extends React.PureComponent {
     };
   }
 
-  setAttribute(blur, brightness) {
-    document.querySelector('#backgroundImage').setAttribute(
+  setAttribute(blur, brightness, filter) {
+    const element = document.getElementById('backgroundImage');
+
+    let backgroundFilter;
+    if (filter === true) {
+      backgroundFilter = localStorage.getItem('backgroundFilter');
+    }
+
+    element.setAttribute(
       'style',
-      `background-image: url(${document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}px) brightness(${brightness}%);`
+      `background-image: url(${element.style.backgroundImage.replace('url("', '').replace('")', '')}); -webkit-filter: blur(${blur}px) brightness(${brightness}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''};`
     );
   }
 
@@ -42,7 +49,7 @@ export default class View extends React.PureComponent {
         hidden: false
       });
 
-      this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'));
+      this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'), true);
     }
   }
 

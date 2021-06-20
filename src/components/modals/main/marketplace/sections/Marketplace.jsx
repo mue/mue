@@ -5,6 +5,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 import Item from '../Item';
 import Items from '../Items';
+import Dropdown from '../../settings/Dropdown';
 
 import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
 
@@ -18,24 +19,14 @@ export default class Marketplace extends React.PureComponent {
       button: '',
       featured: {},
       done: false,
-      item: {
-        name: 'Name',
-        author: 'Author',
-        description: 'Description',
-        //updated: '???',
-        version: '1.0.0',
-        icon: ''
-      },
-      display: {
-        marketplace: 'block',
-        item: 'none'
-      }
+      item: {}
     };
     this.buttons = {
       uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
       install: <button className='addToMue' onClick={() => this.manage('install')}>{window.language.modals.main.marketplace.product.buttons.addtomue}</button>
     };
     this.language = window.language.modals.main.marketplace;
+    this.controller = new AbortController();
   }
 
   async toggle(type, data) {
@@ -43,9 +34,15 @@ export default class Marketplace extends React.PureComponent {
       let info;
       // get item info
       try {
-        info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`)).json();
+        info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`, { signal: this.controller.signal })).json();
       } catch (e) {
-        return toast(window.language.toasts.error);
+        if (this.controller.signal.aborted === false) {
+          return toast(window.language.toasts.error);
+        }
+      }
+
+      if (this.controller.signal.aborted === true) {
+        return;
       }
 
       // check if already installed
@@ -59,7 +56,7 @@ export default class Marketplace extends React.PureComponent {
 
       this.setState({
         item: {
-          type: this.props.type,
+          type: info.data.type,
           display_name: info.data.name,
           author: info.data.author,
           description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
@@ -68,43 +65,67 @@ export default class Marketplace extends React.PureComponent {
           icon: info.data.screenshot_url,
           data: info.data
         },
-        button: button,
-        display: {
-          item: 'block',
-          marketplace: 'none'
-        }
+        button: button
       });
     } else {
       this.setState({
-        display: {
-          marketplace: 'block',
-          item: 'none'
-        }
+        item: {}
       });
     }
   }
 
   async getItems() {
-    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/all')).json();
-    const featured = await (await fetch(window.constants.MARKETPLACE_URL + '/featured')).json();
+    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/all', { signal: this.controller.signal })).json();
+    const featured = await (await fetch(window.constants.MARKETPLACE_URL + '/featured', { signal: this.controller.signal })).json();
+
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
 
     this.setState({
       items: data[this.props.type],
+      oldItems: data[this.props.type],
       featured: featured.data,
       done: true
     });
+
+    this.sortMarketplace(localStorage.getItem('sortMarketplace'));
   }
 
   manage(type) {
     if (type === 'install') {
       MarketplaceFunctions.install(this.state.item.type, this.state.item.data);
     } else {
-      MarketplaceFunctions.uninstall(this.state.item.display_name, this.state.item.type);
+      MarketplaceFunctions.uninstall(this.state.item.type, this.state.item.display_name);
     }
 
     toast(window.language.toasts[type + 'ed']);
     this.setState({
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
+    });
+  }
+
+  sortMarketplace(value) {
+    let items = this.state.oldItems;
+    switch (value) {
+      case 'a-z':
+        items.sort();
+        // fix sort not working sometimes
+        if (this.state.sortType === 'z-a') {
+          items.reverse();
+        }
+        break;
+      case 'z-a':
+        items.sort();
+        items.reverse();
+        break;
+      default:
+        break;
+    }
+
+    this.setState({
+      items: items,
+      sortType: value
     });
   }
 
@@ -114,6 +135,11 @@ export default class Marketplace extends React.PureComponent {
     }
 
     this.getItems();
+  }
+
+  componentWillUnmount() {
+    // stop making requests
+    this.controller.abort();
   }
 
   render() {
@@ -126,6 +152,16 @@ export default class Marketplace extends React.PureComponent {
         </div>
       );
     };
+
+    const featured = () => {
+      return (
+        <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
+          <p>{this.state.featured.title}</p>
+          <h1>{this.state.featured.name}</h1>
+          <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
+        </div>
+      );
+    }
 
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(<>
@@ -140,24 +176,32 @@ export default class Marketplace extends React.PureComponent {
     }
 
     if (this.state.items.length === 0) {
-      return errorMessage(<>
-        <LocalMallIcon/>
-        <h1>{window.language.modals.main.addons.empty.title}</h1>
-        <p className='description'>{this.language.no_items}</p>
-      </>);
+      return (
+        <>
+          {featured()}
+          {errorMessage(<>
+            <LocalMallIcon/>
+            <h1>{window.language.modals.main.addons.empty.title}</h1>
+            <p className='description'>{this.language.no_items}</p>
+          </>)}
+        </>
+      )
+    }
+
+    if (this.state.item.display_name) {
+      return <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()}/>;
     }
 
     return (
       <>
-        <div style={{ 'display': this.state.display.marketplace }}>
-          <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
-            <p>{this.state.featured.title}</p>
-            <h1>{this.state.featured.name}</h1>
-            <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
-          </div>
-          <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
-        </div>
-        <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} display={this.state.display.item} />
+        {featured()}
+        <br/>
+        <Dropdown label={window.language.modals.main.addons.sort.title} name='sortMarketplace' onChange={(value) => this.sortMarketplace(value)}>
+          <option value='a-z'>{window.language.modals.main.addons.sort.a_z}</option>
+          <option value='z-a'>{window.language.modals.main.addons.sort.z_a}</option>
+        </Dropdown>
+        <br/>
+        <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
       </>
     );
   }

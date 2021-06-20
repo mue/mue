@@ -202,5 +202,33 @@
   {
     "name": "datezero",
     "value": true
+  },
+  {
+    "name": "autocompleteProvider",
+    "value": "google"
+  },
+  {
+    "name": "quoteType",
+    "value": "api"
+  },
+  {
+    "name": "backgroundFilter",
+    "value": "grayscale"
+  },
+  {
+    "name": "navbarHover",
+    "value": false
+  },
+  {
+    "name": "apiQuality",
+    "value": "high"
+  },
+  {
+    "name": "photoInformation",
+    "value": true
+  }, 
+  {
+    "name": "quicklinksddgProxy",
+    "value": true
   }
 ]

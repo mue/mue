@@ -4,6 +4,7 @@ import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Switch from '../Switch';
 import Radio from '../Radio';
+import Slider from '../Slider';
 
 export default class TimeSettings extends React.PureComponent {
   constructor() {
@@ -22,33 +23,33 @@ export default class TimeSettings extends React.PureComponent {
 
     const digitalOptions = [
       {
-        'name': time.digital.twentyfourhour,
-        'value': 'twentyfourhour'
+        name: time.digital.twentyfourhour,
+        value: 'twentyfourhour'
       },
       {
-        'name': time.digital.twelvehour,
-        'value': 'twelvehour'
+        name: time.digital.twelvehour,
+        value: 'twelvehour'
       }
     ];
 
     const digitalSettings = (
       <>
         <h3>{time.digital.title}</h3>
-        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' element='.other' />
+        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' element='.clock-container' />
         <br/>
-        <Checkbox name='seconds' text={time.digital.seconds} category='clock' element='.other' />
-        <Checkbox name='zero' text={time.digital.zero} category='clock' element='.other' />
+        <Checkbox name='seconds' text={time.digital.seconds} category='clock' element='.clock-container' />
+        <Checkbox name='zero' text={time.digital.zero} category='clock' element='.clock-container' />
       </>
     );
 
     const analogSettings = (
       <>
         <h3>{time.analogue.title}</h3>
-        <Checkbox name='secondHand' text={time.analogue.second_hand} category='clock' />
-        <Checkbox name='minuteHand' text={time.analogue.minute_hand} category='clock' />
-        <Checkbox name='hourHand' text={time.analogue.hour_hand} category='clock' />
-        <Checkbox name='hourMarks' text={time.analogue.hour_marks} category='clock' />
-        <Checkbox name='minuteMarks' text={time.analogue.minute_marks} category='clock' />
+        <Checkbox name='secondHand' text={time.analogue.second_hand} category='clock' element='.clock-container' />
+        <Checkbox name='minuteHand' text={time.analogue.minute_hand} category='clock' element='.clock-container' />
+        <Checkbox name='hourHand' text={time.analogue.hour_hand} category='clock' element='.clock-container' />
+        <Checkbox name='hourMarks' text={time.analogue.hour_marks} category='clock' element='.clock-container' />
+        <Checkbox name='minuteMarks' text={time.analogue.minute_marks} category='clock' element='.clock-container' />
       </>
     );
 
@@ -94,13 +95,16 @@ export default class TimeSettings extends React.PureComponent {
     return (
       <>
         <h2>{time.title}</h2>
-        <Switch name='time' text={this.language.enabled} category='clock' element='.clock' />
-        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock' element='.other'>
+        <Switch name='time' text={this.language.enabled} category='clock' element='.clock-container' />
+        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock' element='.clock-container'>
           <option value='digital'>{time.digital.title}</option>
           <option value='analogue'>{time.analogue.title}</option>
           <option value='percentageComplete'>{time.percentage_complete}</option>
         </Dropdown>
         {timeSettings}
+        {this.state.timeType !== 'analogue' ? 
+          <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomClock' min='10' max='400' default='100' display='%' category='clock' element='.clock-container' />
+        : null}
 
         <h3>{time.date.title}</h3>
         <Switch name='date' text={this.language.enabled} category='date' element='.date'/>
@@ -112,6 +116,7 @@ export default class TimeSettings extends React.PureComponent {
         <Checkbox name='datezero' text={time.digital.zero} category='date' element='.date' />
         <Checkbox name='weeknumber' text={time.date.week_number} category='date' element='.date'/>
         {dateSettings}
+        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomDate' min='10' max='400' default='100' display='%' category='date' element='.date' />
       </>
     );
   }

@@ -96,9 +96,17 @@ export default class Clock extends React.PureComponent {
           return element.style.display = 'none';
         }
 
+        this.timer = null;
+        this.startTime(0);
+
         element.style.display = 'block';
+        element.style.fontSize = `${4 * Number((localStorage.getItem('zoomClock') || 100) / 100)}em`;
       }
     });
+
+    if (localStorage.getItem('timeType') !== 'analogue') {
+      document.querySelector('.clock-container').style.fontSize = `${4 * Number((localStorage.getItem('zoomClock') || 100) / 100)}em`;
+    }
 
     this.startTime(0);
   }

@@ -1,5 +1,5 @@
 #item a {
-  color: map-get($button-colours, 'other');
+  color: var(--modal-link);
   cursor: pointer;
 
   &:hover {
@@ -16,7 +16,7 @@
 
 .items {
   display: inline-grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-top: 15px;
 
   .item {
@@ -24,7 +24,7 @@
     border-radius: 12px;
     height: 80px;
     width: 260px;
-    background: map-get($marketplace, 'item-background');
+    background: var(--sidebar);
     transition: 0.5s;
     cursor: pointer;
     margin-right: 20px;
@@ -32,8 +32,8 @@
     box-shadow: 0 0 6px rgb(0 0 0 / 30%);
 
     img {
-      height: 100%;
-      width: auto;
+      height: 80px;
+      width: 80px;
       border-radius: 12px 0 0 12px;
       background: white;
     }
@@ -71,8 +71,22 @@
   }
 }
 
-.dark .items .item {
-  background: #2d3436;
+@media only screen and (max-width: 2100px) {
+  .items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1870px) {
+  .items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1079px), (max-width: 1869px) {
+  .items {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 p.author {
@@ -80,8 +94,6 @@ p.author {
 }
 
 #item {
-  display: none;
-
   h1 {
     font-size: 40px;
     line-height: 20px;
@@ -129,7 +141,7 @@ p.description {
 
 .productInformation {
   padding: 10px;
-  background: map-get($marketplace, 'product-information-backgroud');
+  background: var(--sidebar);
   width: 350px;
   border-radius: 12px;
 
@@ -151,14 +163,11 @@ p.description {
   }
 }
 
-.dark .productInformation {
-  background: #2d3436;
-}
-
 #item>img, .updateimage, .updatechangelog>p>img {
-  border-radius: 24px;
+  border-radius: 12px;
   height: 200px;
   width: auto;
+  cursor: pointer;
 }
 
 .featured {
@@ -167,7 +176,7 @@ p.description {
   padding: 50px;
   color: #fff;
   box-shadow: 0 0 10px rgb(0 0 0 / 30%);
-  width: 100%;
+  width: 85%;
 
   button {
     float: left;
@@ -184,4 +193,25 @@ p.description {
   h1 {
     margin-top: -20px;
   }
+}
+
+.lightboxmodal {
+  margin: auto;
+  max-width: 60%;
+  background: none !important;
+  box-shadow: none !important;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  .closeModal {
+    color: #fff;
+    text-shadow: 0 0 20px rgb(0 0 0 / 30%);
+  }
+}
+
+.overview {
+  font-size: 30px !important;
 }

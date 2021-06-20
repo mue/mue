@@ -1,0 +1,48 @@
+%storebutton {
+  cursor: pointer;
+  font-size: 18px;
+  display: block;
+  padding: 5px 30px;
+  background: none;
+  border-radius: 24px;
+  transition: ease 0.33s;
+  border: 2px solid black;
+
+  &:hover {
+    background: #2d3436;
+    color: map-get($theme-colours, 'main');
+  }
+}
+
+.dark %storebutton {
+  border: 2px solid map-get($theme-colours, 'main');
+  color: map-get($theme-colours, 'main');
+
+  &:hover {
+    background: map-get($theme-colours, 'main');
+    color: #2d3436;
+  }
+}
+
+.removeFromMue {
+  @extend %storebutton;
+
+  border: 2px solid #ff4757;
+  color: #ff4757;
+  margin-top: 5px;
+
+  &:hover {
+    background: #ff4757;
+    color: map-get($theme-colours, 'main');
+  }
+}
+
+.addToMue {
+  @extend %storebutton;
+  margin-top: 12px;
+}
+
+.sideload {
+  display: inline;
+  margin-top: 0px;
+}

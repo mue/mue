@@ -8,27 +8,36 @@
 
   input[type=text] {
     width: 140px;
-    margin-left: 12px;
+    margin-left: 40px;
     border-radius: 24px;
     font-size: calc(5px + 1.2vmin);
     border: none;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
     -webkit-transition: width 0.5s ease-in-out;
     transition: width 0.5s ease-in-out;
-    color: white;
+    color: black;
     padding: 0.5rem 1rem;
     user-select: none;
 
     &:focus {
       width: 400px;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(255, 255, 255, 0.8);
       user-select: text;
+    }
+
+    &::-webkit-input-placeholder {
+      color: black;
+    }
+
+    &::-moz-placeholder {
+      color: black;
     }
   }
 
   .MuiSvgIcon-root {
-    margin-top: 4px;
+    position: absolute;
+    margin-top: 6px;
     font-size: 30px;
     filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
     cursor: pointer;
@@ -42,4 +51,23 @@
 
 .micIcon {
   margin-right: 10px;
+}
+
+.dark .searchBar {
+  input[type=text] {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &::-webkit-input-placeholder {
+      color: white;
+    }
+
+    &::-moz-placeholder {
+      color: white;
+    }
+  }
 }

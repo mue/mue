@@ -1,5 +1,5 @@
 {
-  "tabname": "New Tab",
+  "tabname": "Nouvel Onglet",
   "widgets": {
     "greeting": {
       "morning": "Bonjour",
@@ -13,23 +13,25 @@
     "background": {
       "credit": "Photo par",
       "unsplash": "sur Unsplash",
+      "pexels": "sur Pexels",
       "information": "Information",
       "download": "Téléchargement"
     },
     "search": "Rechercher",
     "quicklinks": {
-      "new": "New Link",
+      "new": "Nouveau lien",
       "name": "Nom",
       "url": "URL",
       "add": "Ajouter",
-      "name_error": "Must provide name",
-      "url_error": "Must provide URL"
+      "name_error": "Doit fournir le nom",
+      "url_error": "Doit fournir une URL"
     },
     "date": {
       "week": "Semaine"
     },
     "weather": {
-      "not_found": "Not Found"
+      "not_found": "Pas trouvé",
+      "meters": "mètres"
     },
     "navbar": {
       "tooltips": {
@@ -38,8 +40,8 @@
         "feedback": "Réactions"
       },
       "notes": {
-        "title": "Notes",
-        "placeholder": "Type here"
+        "title": "Remarques",
+        "placeholder": "Écrivez ici"
       }
     }
   },
@@ -59,57 +61,57 @@
         "refresh": "Rafraîchir"
       },
       "settings": {
-        "enabled": "Enabled",
+        "enabled": "Activé",
         "reminder": {
-          "title": "NOTICE",
-          "message": "In order for all of the changes to take place, the page must be refreshed."
+          "title": "REMARQUER",
+          "message": "Pour que toutes les modifications aient lieu, la page doit être actualisée."
         },
         "sections": {
           "time": {
             "title": "Heure",
             "format": "Format",
-            "type": "Type",
+            "type": "Genre",
             "digital": {
-              "title": "Digital",
+              "title": "Affichage numériquel",
               "seconds": "Secondes",
               "twentyfourhour": "24 heures",
               "twelvehour": "12 heures",
               "zero": "Complétion de zéros"
             },
             "analogue": {
-              "title": "Analogue",
-              "second_hand": "Seconds hand",
-              "minute_hand": "Minutes hand",
-              "hour_hand": "Hours hand",
-              "hour_marks": "Hour marks",
-              "minute_marks": "Minute marks"
+              "title": "Analogique",
+              "second_hand": "Aiguille des secondes",
+              "minute_hand": "Aiguille des minutes",
+              "hour_hand": "Aiguille de heure",
+              "hour_marks": "Marques d'heure",
+              "minute_marks": "Marques des minutes"
             },
-            "percentage_complete": "Percentage complete",
+            "percentage_complete": "Pourcentage achevé",
             "date": {
               "title": "Date",
-              "week_number": "Week number",
-              "day_of_week": "Day of week",
+              "week_number": "Numéro de semaine",
+              "day_of_week": "Jour de la semaine",
               "datenth": "Date nth",
               "type": {
-                "short": "Short",
+                "short": "Courtt",
                 "long": "Long"
               },
-              "short_date": "Short date",
-              "short_format": "Short format",
+              "short_date": "Date courte",
+              "short_format": "Format court",
               "short_separator": {
-                "title": "Short separator",
-                "dots": "Dots",
-                "dash": "Dash",
-                "gaps": "Gaps",
-                "slashes": "Slashes"
+                "title": "Séparateur court",
+                "dots": "Points",
+                "dash": "Tiret",
+                "gaps": "Blancs",
+                "slashes": "Barres"
               }
             }
           },
           "quote": {
-            "title": "Quote",
-            "author_link": "Authour link",
-            "custom": "Custom quote",
-            "custom_author": "Custom authour",
+            "title": "Citation",
+            "author_link": "Lien auteur",
+            "custom": "Citation personnalisé",
+            "custom_author": "Auteur de devis personnalisé",
             "buttons": {
               "title": "Boutons",
               "copy": "Copier",
@@ -128,25 +130,35 @@
           },
           "background": {
             "title": "Fond",
-            "ddg_proxy": "Use DuckDuckGo image proxy",
-            "transition": "Fade-in transition",
+            "ddg_proxy": "Utiliser le proxy d'image DuckDuckGo",
+            "transition": "Transition en fondu",
+            "photo_information": "Show photo information",
             "category": "Catégorie",
             "buttons": {
-              "title": "Buttons",
+              "title": "Boutons",
               "view": "Mode vue",
               "favourite": "Ajouter aux favoris",
               "download": "Télécharger"
             },
             "effects": {
-              "title": "Effects",
+              "title": "Effets",
               "blur": "Ajuster le flou",
-              "brightness": "Ajuster la luminosité"
+              "brightness": "Ajuster la luminosité",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "contrast": "Contrast"
+              }
             },
             "type": {
               "title": "Type",
               "api": "API",
-              "custom_image": "Custom image",
-              "custom_colour": "Custom colour/gradient"
+              "custom_image": "Image personnalisée",
+              "custom_colour": "Couleur / dégradé personnalisé"
             },
             "source": {
               "title": "Source",
@@ -156,48 +168,61 @@
               "upload": "Ajouter",
               "add_colour": "Ajouter une couleur",
               "disabled": "Disabled",
-              "loop_video": "Loop video",
-              "mute_video": "Mute video"
+              "loop_video": "Boucle vidéo",
+              "mute_video": "Mettre la vidéo en sourdine",
+              "quality": {
+                "title": "Quality",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              }
             }
           },
           "search": {
             "title": "Barre de Recherche",
             "search_engine": "Moteur de recherche",
             "custom": "URL de recherche personnalisée",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "Recherche vocale"
           },
           "weather": {
-            "title": "Weather",
-            "location": "Location",
+            "title": "Météo",
+            "location": "Emplacement",
             "auto": "Auto",
             "temp_format": {
-              "title": "Temperature format",
+              "title": "Format de température",
               "celsius": "Celsius",
               "fahrenheit": "Fahrenheit",
               "kelvin": "Kelvin"
             },
             "extra_info": {
-              "title": "Extra information",
-              "show_location": "Show Location",
-              "humidity": "Humidity",
-              "wind_speed": "Wind speed",
-              "min_temp": "Minimum temperature",
-              "max_temp": "Maximum temperature",
-              "atmospheric_pressure": "Atmospheric pressure"
+              "title": "Informations supplémentaires",
+              "show_location": "Afficher l'emplacement",
+              "show_description": "Show description",
+              "cloudiness": "Cloudiness",
+              "humidity": "Humidité",
+              "visibility": "Visibility",
+              "wind_speed": "Vitesse du vent",
+              "wind_direction": "Wind direction",
+              "min_temp": "Température minimale",
+              "max_temp": "Température maximale",
+              "atmospheric_pressure": "Pression atmosphérique"
             }
           },
           "quicklinks": {
-            "title": "Quick Links",
-            "open_new": "Open in new tab",
-            "tooltip": "Tooltip"
+            "title": "Liens rapides",
+            "open_new": "Ouvrir dans un nouvel onglet",
+            "tooltip": "Info-bulle"
           },
           "appearance": {
-            "title": "Appearance",
+            "title": "Apparence",
             "theme": {
-              "title": "Theme",
+              "title": "Thème",
               "auto": "Auto",
-              "light": "Light",
-              "dark": "Dark"
+              "light": "Clair",
+              "dark": "Sombre"
             },
             "animations": "Animations",
             "navbar": {
@@ -228,62 +253,66 @@
               }
             },
             "accessibility": {
-              "title": "Accessibility",
-              "widget_zoom": "Widget zoom",
-              "toast_duration": "Toast duration",
-              "milliseconds": "milliseconds"
+              "title": "Accessibilité",
+              "widget_zoom": "Zoom du widget",
+              "toast_duration": "Durée du toast",
+              "milliseconds": "millisecondes"
             }
           },
           "order": {
-            "title": "Widget Order"
+            "title": "Ordre des widgets"
           },
           "advanced": {
-            "title": "Advanced",
-            "offline_mode": "Offline mode",
-            "data": "Data",
+            "title": "Avancée",
+            "offline_mode": "Mode hors-ligne",
+            "data": "Donnés",
             "reset_modal": {
-              "title": "WARNING",
-              "question": "Do you want to reset Mue?",
-              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
-              "cancel": "Cancel"
+              "title": "ATTENTION",
+              "question": "Voulez-vous réinitialiser Mue?",
+              "information": "Cela supprimera toutes les données. Si vous souhaitez conserver vos données et préférences, veuillez d'abord les exporter.",
+              "cancel": "Annuler"
             },
-            "customisation": "Customisation",
-            "custom_css": "Custom CSS",
-            "custom_js": "Custom JS",
-            "tab_name": "Tab name",
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
+            "customisation": "Personnalisation",
+            "custom_css": "CSS personnalisé",
+            "custom_js": "JS personnalisé",
+            "tab_name": "Nom de l'onglet",
+            "experimental_warning": "Veuillez noter que l'équipe Mue ne peut pas fournir d'assistance si vous avez activé le mode expérimental. Veuillez d'abord le désactiver et voir si le problème persiste avant de contacter le support."
           },
           "experimental": {
-            "title": "Experimental",
+            "title": "Expérimental",
             "warning": "These settings have not been fully tested/implemented and may not work correctly!",
             "developer": "Developer"
           },
           "language": {
-            "title": "Language",
-            "quote": "Quote language"
+            "title": "Langue",
+            "quote": "Citation langue"
           },
-          "changelog": "Change Log",
+          "changelog": "Journal des modifications",
           "about": {
-            "title": "About",
-            "copyright": "Copyright",
+            "title": "à propos de",
+            "copyright": "Droits d'auteur",
             "version": {
               "title": "Version",
-              "checking_update": "Checking for update",
-              "update_available": "Update available",
-              "no_update": "No update available",
-              "offline_mode": "Cannot check for update in offline mode"
+              "checking_update": "Vérification de la mise à jour",
+              "update_available": "Mise à jour disponible",
+              "no_update": "Pas de mise a jour disponible",
+              "offline_mode": "Impossible de vérifier la mise à jour en mode hors ligne",
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
             },
-            "contact_us": "Contact Us",
-            "support_mue": "Support Mue",
+            "contact_us": "Nous contacter",
+            "support_mue": "Soutenir Mue",
             "resources_used": {
-              "title": "Resources used",
-              "bg_images": "Offline background images",
-              "welcome_img": "Welcome image",
-              "pin_icon": "Pin icon"
+              "title": "Ressources utilisées",
+              "bg_images": "Images d'arrière-plan hors ligne",
+              "welcome_img": "Image de bienvenue",
+              "pin_icon": "Icône de broche"
             },
-            "contributors": "Contributors",
-            "supporters": "Supporters",
-            "photographers": "Photographers"
+            "contributors": "Collaborateurs",
+            "supporters": "Partisans",
+            "photographers": "Photographes"
           }
         },
         "buttons": {
@@ -296,8 +325,7 @@
         "photo_packs": "Packs Photos",
         "quote_packs": "Packs Citations",
         "preset_settings": "Paramètres prédéfinis",
-        "themes": "Thèmes",
-        "no_items": "No items in this category",
+        "no_items": "Aucun article dans cette catégorie",
         "product": {
           "overview": "Aperçu",
           "information": "Information",
@@ -322,16 +350,23 @@
         "added": "Ajoutées",
         "empty": {
           "title": "C'est vide par ici",
-          "description": "Dirigez vous vers le marché pour ajouter des options."
+          "description": "Dirigez vous vers le marché pour ajouter des options"
         },
-        "sideload": "Charger"
+        "sideload": "Charger",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {
-      "title": "Update",
+      "title": "Mettre à jour",
       "offline": {
-        "title": "Offline",
-        "description": "Cannot get update logs while in offline mode"
+        "title": "Hors",
+        "description": "Vous ne pouvez pas obtenir de mise à jour si vous êtes hors ligne"
       },
       "error": {
         "title": "Erreur",
@@ -341,12 +376,12 @@
       "contact_support": "Contactez-nous "
     },
     "welcome": {
-      "title": "Welcome to",
-      "information": "Information",
-      "thankyoumessage1": "Thank you for installing Mue Tab,",
-      "thankyoumessage2": "we hope you enjoy your time with our extension.",
-      "support": "Support",
-      "close": "Close"
+      "title": "Bienvenue en",
+      "information": "Informations",
+      "thankyoumessage1": "Merci d'avoir installé Mue Tab,",
+      "thankyoumessage2": "nous espérons que vous apprécierez votre temps avec notre extension.",
+      "support": "Soutien",
+      "close": "Fermer"
     },
     "feedback": {
       "title": "Give us feedback",
@@ -361,6 +396,8 @@
   },
   "toasts": {
     "quote": "Citation copiée",
+    "notes": "Remarques copiée",
+    "reset": "Réinitialisé avec succès",
     "installed": "Installé avec succès",
     "uninstalled": "Enlevé avec succès",
     "error": "Quelque chose s'est mal passé",

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 import FileUpload from '../../settings/FileUpload';

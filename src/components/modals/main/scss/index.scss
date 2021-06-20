@@ -1,5 +1,4 @@
 @import '../../../../scss/variables';
-@import '../../../../scss/mixins';
 
 @import 'settings/main';
 @import 'settings/buttons';
@@ -7,6 +6,7 @@
 @import 'settings/daypicker';
 
 @import 'marketplace/main';
+@import 'marketplace/buttons';
 
 .Modal {
   color: var(--modal-text);
@@ -15,11 +15,8 @@
   border: none;
   opacity: 1;
   z-index: -2;
-  padding: 25px;
   transition-timing-function: ease-in;
   border-radius: map-get($modal, 'border-radius');
-  -moz-user-select: none;
-  -webkit-user-select: none;
   user-select: none;
   scrollbar-width: thin;
   scrollbar-color: #34495e #bdc3c7;
@@ -30,10 +27,30 @@
   }
 }
 
+.mainModal {
+  padding: 25px;
+}
+
+.resetLink {
+  color: var(--modal-link);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  span {
+    font-size: 1.2rem;
+    color: var(--modal-link);
+    vertical-align: text-bottom;
+    margin-left: 5px;
+  }
+}
+
 .modalLink {
   color: var(--modal-link);
   cursor: pointer;
-  padding-left: 10px;
+  margin-left: 5px;
 
   &:hover {
     opacity: 0.8;
@@ -72,8 +89,8 @@
 }
 
 .ReactModal__Content {
-  min-height: calc(100vh - 30vh);
-  max-height: calc(100vh - 10vh);
+  //min-height: calc(100vh - 30vh);
+  //max-height: calc(100vh - 10vh);
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   overflow-y: auto;
   position: relative;
@@ -98,12 +115,6 @@
   .ReactModal__Content {
     min-height: 500px;
     max-height: calc(100vh - 30vh);
-  }
-}
-
-@media only screen and (min-height: 700px) {
-  .ReactModal__Content {
-    min-height: 600px;
   }
 }
 
@@ -161,6 +172,7 @@ li {
     width: 90% !important;
   }
 }
+
 @media only screen and (min-width: 1310px) {
   #modal {
     width: 60%;
@@ -177,9 +189,7 @@ li {
       display: none;
     }
   }
-}
 
-@media only screen and (max-width: 1200px) {
   ul.sidebar {
     h1 {
       display: none;
@@ -222,14 +232,7 @@ li {
   }
 }
 
-@media only screen and (max-width: 1400px) {
-  .tab-content {
-    left: 350px;
-    top: 75px;
-  }
-}
-
-@media only screen and (min-width: 1400px) {
+@media only screen and (max-width: 1400px), (min-width: 1400px) {
   .tab-content {
     left: 350px;
     top: 75px;
@@ -263,6 +266,12 @@ li {
   }
 }
 
+@supports (-webkit-hyphens: none) {
+  .navbar-item {
+    display: inline-block !important;
+  }
+}
+
 .modalNavbar {
   position: absolute;
   left: 20rem;
@@ -272,7 +281,7 @@ li {
   svg {
     margin-right: 0.5rem;
     padding: 3px;
-    font-size: 1.4em !important;
+    vertical-align: middle;
   }
 }
 
@@ -282,17 +291,11 @@ li {
   }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1650px) {
   li.navbar-item {
     span {
       display: none;
     }
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .tabContent {
-    left: 20px;
   }
 }
 
@@ -307,7 +310,7 @@ li {
   background: map-get($theme-colours, 'gradient');
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 
   svg {
     color: orange;
@@ -317,12 +320,13 @@ li {
     background: map-get($theme-colours, 'gradient');
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 }
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
   border-top-right-radius: map-get($modal, 'border-radius');
   border-bottom-right-radius: map-get($modal, 'border-radius');
 }
@@ -364,24 +368,34 @@ li {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.welcomeLink {
-  color: var(--modal-text) !important;
-}
-
 .aboutIcon {
   color: var(--modal-text) !important;
   padding-right: 10px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
-.MuiIconButton-root {
-  color: var(--modal-text) !important;
+.aboutLink {
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.aboutLogo {
+  height: 100px;
+  width: auto;
+  margin-left: -15px;
 }
 
 .MuiFormControl-root {
   margin-top: 10px !important;
 }
 
-label, p {
+label,
+p,
+span.modalLink {
   font-size: 1rem;
 }
 

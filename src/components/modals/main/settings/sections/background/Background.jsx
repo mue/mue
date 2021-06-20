@@ -22,6 +22,7 @@ export default class BackgroundSettings extends React.PureComponent {
       backgroundCategories: [window.language.modals.main.loading]
     };
     this.language = window.language.modals.main.settings;
+    this.controller = new AbortController();
   }
 
   resetCustom = () => {
@@ -29,18 +30,12 @@ export default class BackgroundSettings extends React.PureComponent {
     this.setState({
       customBackground: ''
     });
-    toast(this.language.toasts.reset);
+    toast(window.language.toasts.reset);
     EventBus.dispatch('refresh', 'background');
   }
 
   customBackground(e, text) {
-    let result;
-    if (text === true) {
-      result = e.target.value;
-    } else {
-      result = e.target.result;
-    }
-  
+    const result = (text === true) ? e.target.value : e.target.result;
     localStorage.setItem('customBackground', result);
     this.setState({
       customBackground: result
@@ -70,14 +65,30 @@ export default class BackgroundSettings extends React.PureComponent {
   }
 
   async getBackgroundCategories() {
-    const data = await (await fetch(window.constants.API_URL + '/images/categories')).json();
+    const data = await (await fetch(window.constants.API_URL + '/images/categories', { signal: this.controller.signal })).json();
+
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
+
     this.setState({
       backgroundCategories: data
     });
   }
 
   componentDidMount() {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+      return this.setState({
+        backgroundCategories: [window.language.modals.update.offline.title]
+      });
+    }
+
     this.getBackgroundCategories();
+  }
+
+  componentWillUnmount() {
+    // stop making requests
+    this.controller.abort();
   }
 
   render() {
@@ -93,6 +104,10 @@ export default class BackgroundSettings extends React.PureComponent {
       {
         'name': 'Unsplash',
         'value': 'unsplash'
+      },
+      {
+        'name': 'Pexels',
+        'value': 'pexels'
       }
     ];
 
@@ -105,6 +120,13 @@ export default class BackgroundSettings extends React.PureComponent {
           {this.state.backgroundCategories.map((category) => (
             <option value={category} key={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</option>
           ))}
+        </Dropdown>
+        <br/><br/>
+        <Dropdown label={background.source.quality.title} name='apiQuality' category='background'>
+          <option value='original'>{background.source.quality.original}</option>
+          <option value='high'>{background.source.quality.high}</option>
+          <option value='normal'>{background.source.quality.normal}</option>
+          <option value='datasaver'>{background.source.quality.datasaver}</option>
         </Dropdown>
       </>
     );
@@ -124,7 +146,6 @@ export default class BackgroundSettings extends React.PureComponent {
     switch (this.state.backgroundType) {
       case 'custom': backgroundSettings = customSettings; break;
       case 'colour': backgroundSettings = <ColourSettings/>; break;
-      // API
       default: backgroundSettings = APISettings; break;
     }
   
@@ -134,6 +155,7 @@ export default class BackgroundSettings extends React.PureComponent {
         <Switch name='background' text={this.language.enabled} category='background' />
         <Checkbox name='ddgProxy' text={background.ddg_proxy} />
         <Checkbox name='bgtransition' text={background.transition} />
+        <Checkbox name='photoInformation' text={background.photo_information} category='background' element='.other' />
 
         <h3>{background.source.title}</h3>
         <Dropdown label={background.type.title} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>
@@ -147,14 +169,22 @@ export default class BackgroundSettings extends React.PureComponent {
         {backgroundSettings}
 
         <h3>{background.buttons.title}</h3>
-        <Checkbox name='view' text={background.buttons.view} />
-        <Checkbox name='favouriteEnabled' text={background.buttons.favourite} />
-        <Checkbox name='downloadbtn' text={background.buttons.download}/>
+        <Checkbox name='view' text={background.buttons.view} element='.other' />
+        <Checkbox name='favouriteEnabled' text={background.buttons.favourite} element='.other' />
+        <Checkbox name='downloadbtn' text={background.buttons.download} element='.other' />
 
         <h3>{background.effects.title}</h3>
         <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' category='background' />
-        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='100' display='%' category='background' />
+        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='90' display='%' category='background' />
         <br/><br/>
+        <Dropdown label={background.effects.filters.title} name='backgroundFilter' category='background'>
+          <option value='grayscale'>{background.effects.filters.grayscale}</option>
+          <option value='sepia'>{background.effects.filters.sepia}</option>
+          <option value='invert'>{background.effects.filters.invert}</option>
+          <option value='saturate'>{background.effects.filters.saturate}</option>
+          <option value='contrast'>{background.effects.filters.contrast}</option>
+        </Dropdown>
+        <Slider title={background.effects.filters.amount} name='backgroundFilterAmount' min='0' max='100' default='0' display='%' category='background' />
       </>
     );
   }

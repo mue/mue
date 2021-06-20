@@ -13,6 +13,7 @@
     "background": {
       "credit": "Фото",
       "unsplash": "on Unsplash",
+      "pexels": "on Pexels",
       "information": "Information",
       "download": "Download"
     },
@@ -29,7 +30,8 @@
       "week": "Week"
     },
     "weather": {
-      "not_found": "Not Found"
+      "not_found": "Not Found",
+      "meters": "метры"
     },
     "navbar": {
       "tooltips": {
@@ -107,9 +109,9 @@
           },
           "quote": {
             "title": "Цитата",
-            "author_link": "Authour link",
+            "author_link": "Author link",
             "custom": "Custom quote",
-            "custom_author": "Custom authour",
+            "custom_author": "Custom author",
             "buttons": {
               "title": "Buttons",
               "copy": "Кнопка копирования",
@@ -130,6 +132,7 @@
             "title": "Фон",
             "ddg_proxy": "Use DuckDuckGo image proxy",
             "transition": "Fade-in transition",
+            "photo_information": "Show photo information",
             "category": "Category",
             "buttons": {
               "title": "Buttons",
@@ -140,7 +143,16 @@
             "effects": {
               "title": "Effects",
               "blur": "Размытие",
-              "brightness": "Яркость"
+              "brightness": "Яркость",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "contrast": "Contrast"
+              }
             },
             "type": {
               "title": "Type",
@@ -157,13 +169,22 @@
               "add_colour": "Добавить цвет",
               "disabled": "Выключен",
               "loop_video": "Loop video",
-              "mute_video": "Mute video"
+              "mute_video": "Mute video",
+              "quality": {
+                "title": "Quality",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              }
             }
           },
           "search": {
             "title": "Панель поиска",
             "search_engine": "Поисковый движок",
             "custom": "Пользовательский поисковый движок",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "Поиск голосом"
           },
           "weather": {
@@ -178,9 +199,13 @@
             },
             "extra_info": {
               "title": "Extra information",
-              "show_location": "Show Location",
+              "show_location": "Show location",
+              "show_description": "Show description",
+              "cloudiness": "Cloudiness",
               "humidity": "Humidity",
+              "visibility": "Visibility",
               "wind_speed": "Wind speed",
+              "wind_direction": "Wind direction",
               "min_temp": "Minimum temperature",
               "max_temp": "Maximum temperature",
               "atmospheric_pressure": "Atmospheric pressure"
@@ -271,7 +296,11 @@
               "checking_update": "Checking for update",
               "update_available": "Update available",
               "no_update": "No update available",
-              "offline_mode": "Cannot check for update in offline mode"
+              "offline_mode": "Cannot check for update in offline mode",
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
             },
             "contact_us": "Contact Us",
             "support_mue": "Support Mue",
@@ -296,7 +325,6 @@
         "photo_packs": "Наборы фото",
         "quote_packs": "Наборы цитат",
         "preset_settings": "Пресеты настроек",
-        "themes": "Темы",
         "no_items": "No items in this category",
         "product": {
           "overview": "Обзор",
@@ -315,16 +343,23 @@
         },
         "offline": {
           "title": "Похоже, что вы офлайн",
-          "description": "Пожалуйста, подключитесь к интернету."
+          "description": "Пожалуйста, подключитесь к интернету"
         }
       },
       "addons": {
         "added": "Добавлен",
         "empty": {
           "title": "Здесь пусто",
-          "description": "Зайдите в магазин, чтобы найти что-то интересное."
+          "description": "Зайдите в магазин, чтобы найти что-то интересное"
         },
-        "sideload": "Загрузить"
+        "sideload": "Загрузить",
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        }
       }
     },
     "update": {
@@ -360,7 +395,9 @@
     }
   },
   "toasts": {
-    "quote": "Цитата скопирована!",
+    "quote": "Цитата скопирована",
+    "notes": "Notes copied",
+    "reset": "Сброшено",
     "installed": "Успешно установлено",
     "uninstalled": "Успешно удалено",
     "error": "Что-то пошло не так",

@@ -5,7 +5,8 @@ import Navbar from '../widgets/navbar/Navbar';
 
 import Modal from 'react-modal';
 
-// Modals are lazy loaded as the user won't use them every time they open a tab
+// These modals are lazy loaded as the user won't use them every time they open a tab
+// We used to lazy load the main modal, but doing so broke the main modal open animation on first click
 const Welcome = React.lazy(() => import('./welcome/Welcome'));
 const Feedback = React.lazy(() => import('./feedback/Feedback'));
 const renderLoader = () => <></>;
@@ -43,14 +44,14 @@ export default class Modals extends React.PureComponent {
     return (
       <>
         <Navbar openModal={(modal) => this.setState({ [modal]: true })}/>
-        <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className='Modal' overlayClassName='Overlay' ariaHideApp={false}>
+        <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
           <Main modalClose={() => this.setState({ mainModal: false })}/>
         </Modal>
         <React.Suspense fallback={renderLoader()}>
-          <Modal onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal' overlayClassName='Overlay' ariaHideApp={false}>
+          <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
             <Welcome modalClose={() => this.closeWelcome()}/>
           </Modal>
-          <Modal onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className='Modal' overlayClassName='Overlay' ariaHideApp={false}>
+          <Modal closeTimeoutMS={300} onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
             <Feedback modalClose={() => this.setState({ feedbackModal: false })}/>
           </Modal>
         </React.Suspense>

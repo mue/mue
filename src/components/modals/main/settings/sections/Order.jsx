@@ -25,14 +25,14 @@ const widget_name = {
   date: settings.time.date.title
 };
 
-const SortableItem = sortableElement(({value}) => (
+const SortableItem = sortableElement(({ value }) => (
   <li className='sortableitem' style={{ display: enabled(value) ? 'block' : 'none' }}>
     <DragHandleIcon style={{'verticalAlign': 'middle'}} />
     {widget_name[value]}
   </li>
 ));
   
-const SortableContainer = sortableContainer(({children}) => {
+const SortableContainer = sortableContainer(({ children }) => {
   return <ul className='sortablecontainer'>{children}</ul>;
 });
 
@@ -65,10 +65,10 @@ export default class OrderSettings extends React.PureComponent {
     return newArray;
   }
 
-  onSortEnd = ({oldIndex, newIndex}) => {
-    this.setState(({items}) => ({
-      items: this.arrayMove(items, oldIndex, newIndex)
-    }));
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState({
+      items: this.arrayMove(this.state.items, oldIndex, newIndex)
+    });
   }
 
   reset = () => {
@@ -78,7 +78,7 @@ export default class OrderSettings extends React.PureComponent {
       items: JSON.parse(localStorage.getItem('order'))
     });
 
-    toast(this.language.toasts.reset);
+    toast(window.language.toasts.reset);
   }
 
   componentDidUpdate() {

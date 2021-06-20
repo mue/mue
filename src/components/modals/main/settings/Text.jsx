@@ -37,13 +37,12 @@ export default class Text extends React.PureComponent {
   }
 
   resetItem = () => {
-    localStorage.setItem(this.props.name, this.props.default || '');
-    this.setState({
-      value: this.props.default || ''
+    this.handleChange({
+      target: {
+        value: this.props.default || ''
+      }
     });
-
-    toast(this.language.toasts.reset);
-    EventBus.dispatch('refresh', this.props.category);
+    toast(window.language.toasts.reset);
   }
 
   render() {
@@ -51,7 +50,7 @@ export default class Text extends React.PureComponent {
       <>
         <p>{this.props.title} <span className='modalLink' onClick={this.resetItem}>{this.language.buttons.reset}</span></p>
         {(this.props.textarea === true) ? 
-          <textarea className='settingsTextarea' value={this.state.value} onChange={this.handleChange}/>
+          <textarea className='settingsTextarea' spellCheck={false} value={this.state.value} onChange={this.handleChange}/>
           : <input type='text' value={this.state.value} onChange={this.handleChange}/>
         }
       </>

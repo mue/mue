@@ -1,0 +1,50 @@
+.suggestions {
+  text-align: left;
+  font-size: calc(5px + 1.2vmin);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 40px;
+  max-height: 143px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  margin-left: 40px;
+  border-radius: 24px;
+  width: 430px;
+  opacity: 0;
+
+  li {
+    padding: 0.5rem;
+    padding-left: 20px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+    }
+  }
+}
+
+.searchBar {
+  input[type=text]:focus+.suggestions {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .suggestions {
+    margin-top: 50px;
+  }
+}
+
+.dark .suggestions {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  li {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

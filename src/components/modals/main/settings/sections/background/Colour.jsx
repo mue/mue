@@ -27,10 +27,10 @@ export default class ColourSettings extends React.PureComponent {
     this.setState({
       gradientSettings: this.DefaultGradientSettings
     });
-    toast(this.language.toasts.reset);
+    toast(window.language.toasts.reset);
   }
 
-  initialiseColorPickerState(gradientSettings) {
+  initialiseColourPickerState(gradientSettings) {
     this.GradientPickerInitalState = {
       points: gradientSettings.gradient.map((g) => {
         const rgb = hexToRgb(g.colour);
@@ -110,7 +110,7 @@ export default class ColourSettings extends React.PureComponent {
     return this.language.sections.background.source.disabled;
   }
 
-  onColorPickerChange = (attrs, name) => {
+  onColourPickerChange = (attrs, name) => {
     if (process.env.NODE_ENV === 'development') {
       console.log(attrs, name);
     }
@@ -138,14 +138,14 @@ export default class ColourSettings extends React.PureComponent {
       let gradientInputs;
       if (gradientHasMoreThanOneColour) {
         if (this.GradientPickerInitalState === undefined) {
-          this.initialiseColorPickerState(this.state.gradientSettings);
+          this.initialiseColourPickerState(this.state.gradientSettings);
         }
 
         gradientInputs = (
           <ColorPicker
-            onStartChange={(color) => this.onColorPickerChange(color, 'start')}
-            onChange={(color) => this.onColorPickerChange(color, 'change')}
-            onEndChange={(color) => this.onColorPickerChange(color, 'end')}
+            onStartChange={(colour) => this.onColourPickerChange(colour, 'start')}
+            onChange={(colour) => this.onColourPickerChange(colour, 'change')}
+            onEndChange={(colour) => this.onColourPickerChange(colour, 'end')}
             gradient={this.GradientPickerInitalState}
             isGradient/>
         );

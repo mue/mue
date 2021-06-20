@@ -17,7 +17,8 @@ export default class App extends React.PureComponent {
     }
 
     // 4.0 -> 5.0 (the key below is only on 5.0)
-    if (!localStorage.getItem('order')) {
+    // now featuring 5.0 -> 5.1
+    if (!localStorage.getItem('order') || !localStorage.getItem('autocompleteProvider')) {
       SettingsFunctions.moveSettings();
       window.location.reload();
     }    

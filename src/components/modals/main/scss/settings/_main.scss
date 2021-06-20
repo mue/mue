@@ -1,7 +1,3 @@
-.hidden {
-  display: none;
-}
-
 input {
   &[type=text] {
     width: 200px;
@@ -10,6 +6,46 @@ input {
     border: none;
     padding: 10px 10px;
     border-radius: 5px;
+  }
+
+  &[type=color] {
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    vertical-align: middle;
+    background: none;
+  
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+  
+    &::-webkit-color-swatch {
+      border: none;
+      border-radius: 100%;
+    }
+  }
+
+  &[type=color]::-moz-color-swatch {
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    border: none;
+    outline: none;
+    -moz-appearance: none;
+    vertical-align: middle;
+    background: none;
+  
+    &::-moz-color-swatch-wrapper {
+      padding: 0;
+    }
+  
+    &::-moz-color-swatch {
+      border: none;
+      border-radius: 100%;
+    }
   }
 }
 
@@ -55,46 +91,6 @@ ul {
   }
 }
 
-input[type=color] {
-  border-radius: 100%;
-  height: 30px;
-  width: 30px;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
-  vertical-align: middle;
-  background: none;
-
-  &::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-
-  &::-webkit-color-swatch {
-    border: none;
-    border-radius: 100%;
-  }
-}
-
-input[type=color]::-moz-color-swatch {
-  border-radius: 100%;
-  height: 30px;
-  width: 30px;
-  border: none;
-  outline: none;
-  -moz-appearance: none;
-  vertical-align: middle;
-  background: none;
-
-  &::-moz-color-swatch-wrapper {
-    padding: 0;
-  }
-
-  &::-moz-color-swatch {
-    border: none;
-    border-radius: 100%;
-  }
-}
-
 .newFeature {
   color: #ff4757;
   font-size: 12px;
@@ -107,6 +103,9 @@ input[type=color]::-moz-color-swatch {
   background-color: var(--sidebar) !important;
   border: none;
   margin-left: 0;
+  width: 400px;
+  height: 200px;
+  max-width: 60%;
 }
 
 .MuiCheckbox-colorPrimary.Mui-checked,
@@ -114,12 +113,11 @@ input[type=color]::-moz-color-swatch {
 .MuIconButton-colorPrimary.Mui-checked,
 .MuiSwitch-thumb,
 .MuiRadio-colorSecondary.Mui-checked,
-.PrivateSwitchBase-input-4 {
+.PrivateSwitchBase-input-4,
+.MuiRadio-root,
+.aboutLink,
+legend {
   color: var(--modal-text) !important;
-}
-
-.MuiRadio-root {
-  color: var(--modal-text);
 }
 
 .MuiFormControlLabel-labelPlacementStart {
@@ -163,6 +161,8 @@ input[type=color]::-moz-color-swatch {
 }
 
 .updatechangelog {
+  max-width: 75%;
+
   li {
     cursor: initial;
     font-size: 1rem;
@@ -170,8 +170,53 @@ input[type=color]::-moz-color-swatch {
     padding: 0;
     margin-left: 20px;
   }
+
+  a {
+    color: var(--modal-link);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
-.aboutLink {
-  color: var(--modal-text) !important;
+.changelogtab {
+  h1 {
+    max-width: 85%;
+  }
+
+  img {
+    max-width: 95%;
+  }
+}
+
+.sliderText {
+  color: var(--modal-text);
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-size: 1rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.resetArea {
+  h2 {
+    font-size: 2rem !important;
+  }
+  h2, span, svg {
+    display: inline;
+  }
+  svg {
+    vertical-align: sub;
+    font-size: 1.4rem;
+  }
 }

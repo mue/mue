@@ -2,7 +2,7 @@ import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '../../helpers/tooltip/Tooltip';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import './quicklinks.scss';
@@ -39,11 +39,13 @@ export default class QuickLinks extends React.PureComponent {
 
     let nameError, urlError;
     if (this.state.name.length <= 0) {
-      nameError = 'Must provide name';
+      nameError = this.language.name_error;
     }
 
-    if (url.length <= 0) {
-      urlError = 'Must provide URL';
+    // regex: https://ihateregex.io/expr/url/
+    // eslint-disable-next-line no-useless-escape
+    if (url.length <= 0 || /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/.test(url) === false) {
+      urlError = this.language.url_error;
     }
 
     if (nameError || urlError) {
@@ -102,11 +104,10 @@ export default class QuickLinks extends React.PureComponent {
       }
     });
 
-    const addlink = document.querySelector('.topbarquicklinks');
-
-    addlink.onkeydown = (e) => {
+    // allows you to add a link by pressing enter
+    document.querySelector('.topbarquicklinks').onkeydown = (e) => {
       e = e || window.event;
-      let code = e.which || e.keyCode;
+      const code = e.which || e.keyCode;
       if (code === 13 && this.state.showAddLink === 'visible') {
         this.addLink();
         e.preventDefault();
@@ -124,9 +125,12 @@ export default class QuickLinks extends React.PureComponent {
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
 
     const quickLink = (item) => {
+      const useProxy = (localStorage.getItem('quicklinksddgProxy') !== 'false');
+      const url = useProxy ? 'https://icons.duckduckgo.com/ip2/' : 'https://www.google.com/s2/favicons?sz=32&domain=';
+
       const link = (
         <a key={item.key} onContextMenu={(e) => this.deleteLink(item.key, e)} href={item.url} target={target} rel={rel} draggable={false}>
-          <img src={'https://icons.duckduckgo.com/ip2/' + item.url.replace('https://', '').replace('http://', '') + '.ico'} alt={item.name} draggable={false}/>
+          <img src={url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '')} alt={item.name} draggable={false}/>
         </a>
       );
 

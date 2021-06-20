@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Info from '@material-ui/icons/Info';
 import Location from '@material-ui/icons/LocationOn';
 import Camera from '@material-ui/icons/PhotoCamera';
@@ -29,28 +27,46 @@ export default function PhotoInformation(props) {
     return null;
   }
 
+  // remove unsplash and pexels text
+  const photographer = props.info.credit.split(` ${language.unsplash}`)[0].split(` ${language.pexels}`);
+
+  let credit = props.info.credit;
+  let photo = language.credit;
+
+  // unsplash and pexels credit
+  if (props.info.photographerURL && props.info.photographerURL !== '' && !props.info.offline && props.api) {
+    if (props.api === 'unsplash') {
+      photo = <a href={props.info.photoURL + '?utm_source=mue'} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
+      credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;
+    } else {
+      photo = <a href={props.info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
+      credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{language.pexels}</a></>;
+    }
+  }
+
   return (
     <div className='photoInformation'>
-      <h1>{language.credit} <span id='credit'>{props.info.credit}</span></h1>
-      <Info className='photoInformationHover'/>
-      <div className={props.className || 'infoCard'}>
-        <Info className='infoIcon'/>
-        <h1>{language.information}</h1>
-        <hr/>
-        <Location/>
-        <span>{props.info.location || 'N/A'}</span>
-        <Camera/>
-        <span>{props.info.camera || 'N/A'}</span>
-        <Resolution/>
-        <span>{props.info.resolution || 'N/A'}</span>
-        <Photographer/>
-        <span>{props.info.credit.split(` ${language.unsplash}`)[0]}</span>
-        {(localStorage.getItem('downloadbtn') === 'true') ? 
-          <>
-            <Download/>
-            <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
-          </> : null}
-      </div>
+      <h1>{photo} <span id='credit'>{credit}</span></h1>
+      {localStorage.getItem('photoInformation') !== 'false' ? <><Info className='photoInformationHover'/>
+        <div className={props.className || 'infoCard'}>
+          <Info className='infoIcon'/>
+          <h1>{language.information}</h1>
+          <hr/>
+          <Location/>
+          <span id='infoLocation'>{props.info.location || 'N/A'}</span>
+          <Camera/>
+          <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
+          <Resolution/>
+          <span id='infoResolution'>{props.info.resolution || 'N/A'}</span>
+          <Photographer/>
+          <span>{photographer}</span>
+          {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 
+            <>
+              <Download/>
+              <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
+            </> : null}
+        </div>
+      </>: null}
     </div>
   );
 }

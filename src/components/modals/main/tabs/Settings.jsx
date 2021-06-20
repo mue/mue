@@ -1,5 +1,3 @@
-import React from 'react';
-
 import About from '../settings/sections/About';
 import Language from '../settings/sections/Language';
 import Search from '../settings/sections/Search';
