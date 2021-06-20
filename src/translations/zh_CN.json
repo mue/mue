@@ -78,30 +78,30 @@
             },
             "analogue": {
               "analog": "模拟时钟",
-              "second_hand": "秒针,
+              "second_hand": "秒针",
               "minute_hand": "分针",
               "hour_hand": "时针",
               "hour_marks": "时钟刻度",
               "minute_marks": "分钟刻度"
             },
-            "percentage_complete": "Percentage complete",
+            "percentage_complete": "经过时间百分比",
             "date": {
               "title": "日期",
               "week_number": "第几周",
               "day_of_week": "星期几",
-              "datenth": "Date nth",
+              "datenth": "几日",
               "type": {
-                "short": "Short",
-                "long": "Long"
+                "short": "简写",
+                "long": "全称"
               },
-              "short_date": "Short date",
-              "short_format": "Short format",
+              "short_date": "简写日期",
+              "short_format": "简写格式",
               "short_separator": {
-                "title": "Short separator",
-                "dots": "Dots",
-                "dash": "Dash",
-                "gaps": "Gaps",
-                "slashes": "Slashes"
+                "title": "简写分隔",
+                "dots": "点",
+                "dash": "横杠",
+                "gaps": "空格",
+                "slashes": "斜杠"
               }
             }
           },
@@ -129,7 +129,7 @@
           "background": {
             "title": "背景",
             "ddg_proxy": "使用 DuckDuckGo 图像代理",
-            "transition": "Fade-in transition",
+            "transition": "渐变",
             "category": "分类",
             "buttons": {
               "title": "按钮",
@@ -143,10 +143,10 @@
               "brightness": "调整亮度"
             },
             "type": {
-              "title": "Type",
+              "title": "来源",
               "api": "API",
-              "custom_image": "Custom image",
-              "custom_colour": "Custom colour/gradient"
+              "custom_image": "自定义图像",
+              "custom_colour": "自定义背景颜色"
             },
             "source": {
               "title": "来源",
@@ -189,7 +189,7 @@
           "quicklinks": {
             "title": "快捷方式",
             "open_new": "在新标签页打开",
-            "tooltip": "Tooltip"
+            "tooltip": "光标停留时下方显示标题"
           },
           "appearance": {
             "title": "显示",
@@ -201,89 +201,89 @@
             },
             "animations": "动画",
             "navbar": {
-              "title": "Navbar",
-              "notes": "Notes",
-              "refresh": "Refresh button"
+              "title": "右上方功能键",
+              "notes": "备忘录",
+              "refresh": "刷新键"
             },
             "font": {
               "title": "字体",
               "custom": "自定义字体",
               "google": "从 Google Fonts 导入",
               "weight": {
-                "title": "Font weight",
-                "thin": "Thin",
-                "extra_light": "Extra Light",
-                "light": "Light",
-                "normal": "Normal",
-                "medium": "Medium",
-                "semi_bold": "Semi-Bold",
-                "bold": "Bold",
-                "extra_bold": "Extra-Bold"
+                "title": "字体厚度",
+                "thin": "极细",
+                "extra_light": "细字",
+                "light": "较细",
+                "normal": "一般",
+                "medium": "中等",
+                "semi_bold": "较粗",
+                "bold": "粗体",
+                "extra_bold": "加粗"
               },
               "style": {
-                "title": "Font style",
-                "normal": "Normal",
-                "italic": "Italic",
-                "oblique": "Oblique"
+                "title": "字体样式",
+                "normal": "常规",
+                "italic": "意大利斜体",
+                "oblique": "伪斜体"
               }
             },
             "accessibility": {
-              "title": "Accessibility",
-              "widget_zoom": "Widget zoom",
-              "toast_duration": "Toast duration",
-              "milliseconds": "milliseconds"
+              "title": "无障碍设定",
+              "widget_zoom": "小部件缩放",
+              "toast_duration": "窗口弹出时间长度",
+              "milliseconds": "毫秒"
             }
           },
           "order": {
-            "title": "Widget Order"
+            "title": "小部件顺序"
           },
           "advanced": {
-            "title": "Advanced",
+            "title": "高级",
             "offline_mode": "离线模式",
-            "data": "Data",
+            "data": "数据",
             "reset_modal": {
-              "title": "WARNING",
-              "question": "Do you want to reset Mue?",
-              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
-              "cancel": "Cancel"
+              "title": "警告",
+              "question": "您是否想恢复 Mue 默认设定？",
+              "information": "本操作将删除所有数据。若您想保留数据及设置，请先将其导出。",
+              "cancel": "取消"
             },
-            "customisation": "Customisation",
-            "custom_css": "Custom CSS",
-            "custom_js": "Custom JS",
-            "tab_name": "Tab name",
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
+            "customisation": "定制",
+            "custom_css": "自定义 CSS",
+            "custom_js": "自定义 JS",
+            "tab_name": "标签页名称",
+            "experimental_warning": "请注意 Mue 团队无法提供实验性功能的支持。若您遇到问题，请先关闭实验性功能，再寻求帮助。"
           },
           "experimental": {
             "title": "实验性功能",
-            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
+            "warning": "以下设置仍未完成编写或测试，可能无法正常运作！",
             "developer": "开发者"
           },
           "language": {
             "title": "语言",
             "quote": "名言语言"
           },
-          "changelog": "更新日志,
+          "changelog": "更新日志",
           "about": {
-            "title": "About",
-            "copyright": "Copyright",
+            "title": "关于",
+            "copyright": "版权",
             "version": {
-              "title": "Version",
-              "checking_update": "Checking for update",
-              "update_available": "Update available",
-              "no_update": "No update available",
-              "offline_mode": "Cannot check for update in offline mode"
+              "title": "版本",
+              "checking_update": "正在检查更新……",
+              "update_available": "可下载更新",
+              "no_update": "无可下载更新",
+              "offline_mode": "离线模式下不能检查更新"
             },
-            "contact_us": "Contact Us",
-            "support_mue": "Support Mue",
+            "contact_us": "联系我们",
+            "support_mue": "给我们打赏",
             "resources_used": {
-              "title": "Resources used",
-              "bg_images": "Offline background images",
-              "welcome_img": "Welcome image",
-              "pin_icon": "Pin icon"
+              "title": "使用资源",
+              "bg_images": "离线背景",
+              "welcome_img": "欢迎图像",
+              "pin_icon": "大头针图标"
             },
-            "contributors": "Contributors",
-            "supporters": "Supporters",
-            "photographers": "Photographers"
+            "contributors": "贡献者",
+            "supporters": "打赏者",
+            "photographers": "摄影者"
           }
         },
         "buttons": {
@@ -297,7 +297,7 @@
         "quote_packs": "名言包",
         "preset_settings": "预设设定",
         "themes": "主题",
-        "no_items": "No items in this category",
+        "no_items": "本类别为空",
         "product": {
           "overview": "总览",
           "information": "信息",
@@ -349,14 +349,14 @@
       "close": "关闭"
     },
     "feedback": {
-      "title": "Give us feedback",
-      "question_one": "How would you rate your experience of this Mue build?",
-      "question_two": "What bugs did you encounter in your use of Mue?",
-      "question_three": "How likely would you be to recommend this version of Mue to a friend or colleague?",
-      "question_four": "What do you want adding to the next Mue build?",
-      "not_filled": "Question box must be filled",
-      "success": "Sent successfully!",
-      "submit": "Submit"
+      "title": "给我们反馈",
+      "question_one": "您使用本 Mue 版本感受如何？",
+      "question_two": "您首次使用 Mue 时遇到过问题吗？",
+      "question_three": "您会向朋友和同事推荐 Mue 吗？",
+      "question_four": "您觉得下一个 Mue 版本需要什么改进？",
+      "not_filled": "必须回答本问题",
+      "success": "提交成功！",
+      "submit": "提交"
     }
   },
   "toasts": {
