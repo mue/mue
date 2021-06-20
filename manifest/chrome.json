@@ -4,6 +4,7 @@
   "name": "Mue",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "version": "5.0.1",
+  "homepage_url": "https://muetab.com",
   "browser_action": {
     "default_icon": "icons/128x128.png"
   },

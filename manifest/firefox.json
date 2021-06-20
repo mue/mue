@@ -3,11 +3,17 @@
   "name": "Mue",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "version": "5.0.1",
+  "homepage_url": "https://muetab.com",
   "browser_action": {
     "default_icon": "icons/128x128.png"
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
+  },
+  "icons": {
+    "16": "icons/16x16.png",
+    "48": "icons/48x48.png",
+    "128": "icons/128x128.png"
   },
   "chrome_settings_overrides": {
     "homepage": "index.html"
