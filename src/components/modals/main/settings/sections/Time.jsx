@@ -23,12 +23,12 @@ export default class TimeSettings extends React.PureComponent {
 
     const digitalOptions = [
       {
-        'name': time.digital.twentyfourhour,
-        'value': 'twentyfourhour'
+        name: time.digital.twentyfourhour,
+        value: 'twentyfourhour'
       },
       {
-        'name': time.digital.twelvehour,
-        'value': 'twelvehour'
+        name: time.digital.twelvehour,
+        value: 'twelvehour'
       }
     ];
 

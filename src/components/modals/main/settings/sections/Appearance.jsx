@@ -11,16 +11,16 @@ export default function AppearanceSettings() {
 
   const themeOptions = [
     {
-      'name': appearance.theme.auto,
-      'value': 'auto'
+      name: appearance.theme.auto,
+      value: 'auto'
     },
     {
-      'name': appearance.theme.light,
-      'value': 'light'
+      name: appearance.theme.light,
+      value: 'light'
     }, 
     {
-      'name': appearance.theme.dark,
-      'value': 'dark'
+      name: appearance.theme.dark,
+      value: 'dark'
     }
   ];
 

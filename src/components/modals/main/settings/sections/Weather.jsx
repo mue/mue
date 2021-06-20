@@ -49,16 +49,16 @@ export default class TimeSettings extends React.PureComponent {
 
     const tempFormat = [
       {
-        'name': language.temp_format.celsius + ' (°C)',
-        'value': 'celsius'
+        name: language.temp_format.celsius + ' (°C)',
+        value: 'celsius'
       },
       {
-        'name': language.temp_format.fahrenheit + ' (°F)',
-        'value': 'fahrenheit'
+        name: language.temp_format.fahrenheit + ' (°F)',
+        value: 'fahrenheit'
       },
       {
-        'name': language.temp_format.kelvin + ' (K)',
-        'value': 'kelvin'
+        name: language.temp_format.kelvin + ' (K)',
+        value: 'kelvin'
       }
     ];
       

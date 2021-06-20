@@ -28,11 +28,12 @@ export default class About extends React.PureComponent {
     let contributors, sponsors, photographers, versionData;
 
     try {
+      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/releases', { signal: this.controller.signal })).json();
+
       contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/contributors', { signal: this.controller.signal })).json();
       sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list', { signal: this.controller.signal })).json()).sponsors;
+
       photographers = await (await fetch(window.constants.API_URL + '/images/photographers', { signal: this.controller.signal })).json();
-  
-      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/releases', { signal: this.controller.signal })).json();
     } catch (e) {
       if (this.controller.signal.aborted === true) {
         return;
