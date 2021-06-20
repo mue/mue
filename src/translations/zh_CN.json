@@ -13,6 +13,7 @@
     "background": {
       "credit": "图像作者：",
       "unsplash": "@ Unsplash",
+      "pexels": "@ Pexels",
       "information": "信息",
       "download": "下载"
     },
@@ -29,7 +30,7 @@
       "week": "周"
     },
     "weather": {
-      "not_found": "未找到"
+      "not_found": "未找到",
       "meters": "meters"
     },
     "navbar": {
@@ -78,7 +79,7 @@
               "zero": "加零补足二位数字"
             },
             "analogue": {
-              "analog": "模拟时钟",
+              "title": "模拟时钟",
               "second_hand": "秒针",
               "minute_hand": "分针",
               "hour_hand": "时针",
@@ -131,6 +132,7 @@
             "title": "背景",
             "ddg_proxy": "使用 DuckDuckGo 图像代理",
             "transition": "渐变",
+            "photo_information": "Show photo information",
             "category": "分类",
             "buttons": {
               "title": "按钮",
@@ -167,7 +169,7 @@
               "add_colour": "添加颜色",
               "disabled": "已禁用",
               "loop_video": "循环播放",
-              "mute_video": "静音"
+              "mute_video": "静音",
               "quality": {
                 "title": "Quality",
                 "original": "Original",
@@ -198,12 +200,12 @@
             "extra_info": {
               "title": "更多信息",
               "show_location": "显示位置",
-              "show_location": "Show location",
               "show_description": "Show description",
               "cloudiness": "Cloudiness",
               "humidity": "Humidity",
               "visibility": "Visibility",
               "wind_speed": "风速",
+              "wind_direction": "Wind direction",
               "min_temp": "最低温度",
               "max_temp": "最高温度",
               "atmospheric_pressure": "大气压"
@@ -294,7 +296,7 @@
               "checking_update": "正在检查更新……",
               "update_available": "可下载更新",
               "no_update": "无可下载更新",
-              "offline_mode": "离线模式下不能检查更新"
+              "offline_mode": "离线模式下不能检查更新",
               "error": {
                 "title": "Failed to get update information",
                 "description": "An error occured"
