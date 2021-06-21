@@ -29,7 +29,7 @@ export default class Radio extends React.PureComponent {
       value: value
     });
 
-    window.analytics.postEvent('settingUpdate', `Changed setting ${this.props.name} from ${this.state.value} to ${value}`);
+    window.analytics.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
 
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {

@@ -68,7 +68,7 @@ export default class Marketplace extends React.PureComponent {
         button: button
       });
 
-      window.analytics.postEvent('marketplaceItemUpdate', `${this.state.item.display_name} viewed`);
+      window.analytics.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
     } else {
       this.setState({
         item: {}
@@ -106,8 +106,8 @@ export default class Marketplace extends React.PureComponent {
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
     });
 
-    window.analytics.postEvent('marketplaceItemUpdate', `${this.state.item.display_name} ${(type === 'install' ? 'installed': 'uninstalled')}`);
-    window.analytics.postEvent('marketplaceUpdate', `${(type === 'install' ? 'Install': 'Uninstall')} used`);
+    window.analytics.postEvent('marketplace-item', `${this.state.item.display_name} ${(type === 'install' ? 'installed': 'uninstalled')}`);
+    window.analytics.postEvent('marketplace', (type === 'install' ? 'Install': 'Uninstall'));
   }
 
   sortMarketplace(value, sendEvent) {
@@ -134,7 +134,7 @@ export default class Marketplace extends React.PureComponent {
     });
 
     if (sendEvent) {
-      window.analytics.postEvent('marketplaceUpdate', 'Sort used');
+      window.analytics.postEvent('marketplace', 'Sort');
     }
   }
 
@@ -164,7 +164,7 @@ export default class Marketplace extends React.PureComponent {
 
     const featured = () => {
       const openFeatured = () => {
-        window.analytics.postEvent('marketplaceUpdate', 'Featured click used');
+        window.analytics.postEvent('marketplace', 'Featured clicked');
         window.open(this.state.featured.buttonLink);
       }
       return (

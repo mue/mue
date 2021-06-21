@@ -21,7 +21,7 @@ export default class Switch extends React.PureComponent {
       checked: (this.state.checked === true) ? false : true
     });
 
-    window.analytics.postEvent('settingUpdate', `${(this.state.checked === true) ? 'Enabled' : 'Disabled'} setting ${this.props.name}`);
+    window.analytics.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
 
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {

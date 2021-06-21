@@ -27,7 +27,7 @@ export default class Modals extends React.PureComponent {
       this.setState({
         welcomeModal: true
       });
-      window.analytics.postEvent('modalUpdate', 'Opened welcome modal');
+      window.analytics.postEvent('modal', 'Opened welcome');
     }
 
     // hide refresh reminder once the user has refreshed the page
@@ -39,14 +39,16 @@ export default class Modals extends React.PureComponent {
     this.setState({
       welcomeModal: false
     });
-    window.analytics.postEvent('modalUpdate', 'Closed welcome modal');
   }
 
   toggleModal(type, action) {
     this.setState({
       [type]: action
     });
-    window.analytics.postEvent('modalUpdate', `${(action === false) ? 'Closed' : 'Opened'} ${type.replace('Modal', '')} modal`);
+
+    if (action !== false) {
+      window.analytics.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
+    }
   }
 
   render() {

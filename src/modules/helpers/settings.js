@@ -27,6 +27,7 @@ export default class SettingsFunctions {
       settings[key] = localStorage.getItem(key);
     });
     saveFile(settings, 'mue-settings.json');
+    window.analytics.postEvent('tab', 'Settings exported');
   }
 
   static setItem(key, value) {

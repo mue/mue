@@ -32,7 +32,7 @@ export default class QuickLinks extends React.PureComponent {
       items: data
     });
 
-    window.analytics.postEvent('featureUpdate', 'Feature delete quicklink used');
+    window.analytics.postEvent('feature', 'Quicklink delete');
   }
 
   addLink = () => {
@@ -75,7 +75,7 @@ export default class QuickLinks extends React.PureComponent {
       url: ''
     });
 
-    window.analytics.postEvent('featureUpdate', 'Feature add quicklink used');
+    window.analytics.postEvent('feature', 'Quicklink add');
 
     this.toggleAdd();
   }

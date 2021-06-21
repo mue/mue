@@ -22,7 +22,7 @@ export default class Dropdown extends React.PureComponent {
       return;
     }
 
-    window.analytics.postEvent('settingUpdate', `Changed setting ${this.props.name} from ${this.state.value} to ${value}`);
+    window.analytics.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
 
     this.setState({
       value: value,
