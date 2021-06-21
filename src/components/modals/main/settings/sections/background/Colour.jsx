@@ -11,7 +11,7 @@ import 'react-color-gradient-picker/dist/index.css';
 import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class ColourSettings extends React.PureComponent {
-  DefaultGradientSettings = { 'angle': '180', 'gradient': [{ 'colour': '#ffb032', 'stop': 0 }], 'type': 'linear' };
+  DefaultGradientSettings = { angle: '180', gradient: [{ colour: '#ffb032', stop: 0 }], type: 'linear' };
   GradientPickerInitalState = undefined;
   
   constructor() {
@@ -84,6 +84,12 @@ export default class ColourSettings extends React.PureComponent {
       };
       return newState;
     });
+
+    const reminderInfo = document.querySelector('.reminder-info');
+    if (reminderInfo.style.display !== 'block') {
+      reminderInfo.style.display = 'block';
+      localStorage.setItem('showReminder', true);
+    }
   }
 
   addColour = () => {
@@ -92,7 +98,7 @@ export default class ColourSettings extends React.PureComponent {
       const newState = {
         gradientSettings: {
           ...s.gradientSettings,
-          gradient: [...initGradients, lastGradient, { 'colour': localStorage.getItem('theme') === 'dark' ? '#000000' : '#ffffff', stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
+          gradient: [...initGradients, lastGradient, { colour: localStorage.getItem('theme') === 'dark' ? '#000000' : '#ffffff', stop: 100 }].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
         }
       };
       return newState;
@@ -117,15 +123,21 @@ export default class ColourSettings extends React.PureComponent {
 
     this.setState({
       gradientSettings: {
-        'angle': attrs.degree,
-        'gradient': attrs.points.map((p) => {
+        angle: attrs.degree,
+        gradient: attrs.points.map((p) => {
           return {
-            'colour': '#' + rgbToHex(p.red, p.green, p.blue),
-            'stop': p.left
+            colour: '#' + rgbToHex(p.red, p.green, p.blue),
+            stop: p.left
           }}),
-        'type': attrs.type
+        type: attrs.type
       }
     });
+
+    const reminderInfo = document.querySelector('.reminder-info');
+    if (reminderInfo.style.display !== 'block') {
+      reminderInfo.style.display = 'block';
+      localStorage.setItem('showReminder', true);
+    }
   };
 
   render() {

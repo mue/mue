@@ -98,16 +98,16 @@ export default class BackgroundSettings extends React.PureComponent {
 
     const apiOptions = [
       {
-        'name': 'Mue',
-        'value': 'mue'
+        name: 'Mue',
+        value: 'mue'
       },
       {
-        'name': 'Unsplash',
-        'value': 'unsplash'
+        name: 'Unsplash',
+        value: 'unsplash'
       },
       {
-        'name': 'Pexels',
-        'value': 'pexels'
+        name: 'Pexels',
+        value: 'pexels'
       }
     ];
 
@@ -122,7 +122,7 @@ export default class BackgroundSettings extends React.PureComponent {
           ))}
         </Dropdown>
         <br/><br/>
-        <Dropdown label={background.source.quality.title} name='apiQuality' category='background'>
+        <Dropdown label={background.source.quality.title} name='apiQuality' category='background' element='.other'>
           <option value='original'>{background.source.quality.original}</option>
           <option value='high'>{background.source.quality.high}</option>
           <option value='normal'>{background.source.quality.normal}</option>

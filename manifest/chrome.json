@@ -15,5 +15,6 @@
     "16": "icons/16x16.png",
     "48": "icons/48x48.png",
     "128": "icons/128x128.png"
-  }
+  },
+  "content_security_policy": "script-src 'self' https://api.bing.com https://www.google.com; object-src 'self'"
 }
