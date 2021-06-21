@@ -13,6 +13,7 @@ export default class Tabs extends React.PureComponent {
   }
 
   onClick = (tab) => {
+    window.analytics.postEvent('tabUpdate', `Changed tab from ${this.state.currentTab} to ${tab}`);
     this.setState({ 
       currentTab: tab 
     });

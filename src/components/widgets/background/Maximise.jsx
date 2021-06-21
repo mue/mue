@@ -44,12 +44,14 @@ export default class Maximise extends React.PureComponent {
       });
 
       this.setAttribute(0, 100);
+      window.analytics.postEvent('featureUpdate', 'Feature background maximise used');
     } else {
       this.setState({
         hidden: false
       });
 
       this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'), true);
+      window.analytics.postEvent('featureUpdate', 'Feature background unmaximise used');
     }
   }
 

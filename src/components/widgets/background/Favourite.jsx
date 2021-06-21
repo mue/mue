@@ -19,6 +19,7 @@ export default class Favourite extends React.PureComponent {
       this.setState({
         favourited: <StarIcon2 onClick={this.favourite} className='topicons' />
       });
+      window.analytics.postEvent('featureUpdate', 'Feature background favourite used');
     } else {
       const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
 
@@ -37,6 +38,7 @@ export default class Favourite extends React.PureComponent {
       this.setState({
         favourited: <StarIcon onClick={this.favourite} className='topicons' />
       });
+      window.analytics.postEvent('featureUpdate', 'Feature background unfavourite used');
     }
   }
 

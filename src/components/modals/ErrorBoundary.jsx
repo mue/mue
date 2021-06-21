@@ -13,6 +13,7 @@ export default class ErrorBoundary extends React.PureComponent {
 
   static getDerivedStateFromError(error) {
     console.log(error);
+    window.analytics.postEvent('modalUpdate', 'Error occurred');
     return { 
       error: true 
     };

@@ -1,4 +1,6 @@
 export default function Lightbox(props) {
+  window.analytics.postEvent('modalUpdate', 'Lightbox used');
+
   return (
     <>
       <span className='closeModal' onClick={props.modalClose}>&times;</span>

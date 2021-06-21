@@ -19,6 +19,8 @@ export default class Slider extends React.PureComponent {
   handleChange = (e, text) => {
     let { value } = e.target;
 
+    window.analytics.postEvent('settingUpdate', `Changed setting ${this.props.name} from ${this.state.value} to ${value}`);
+
     if (text) {
       if (value === '') {
         return this.setState({

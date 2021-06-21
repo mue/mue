@@ -22,6 +22,8 @@ export default class Dropdown extends React.PureComponent {
       return;
     }
 
+    window.analytics.postEvent('settingUpdate', `Changed setting ${this.props.name} from ${this.state.value} to ${value}`);
+
     this.setState({
       value: value,
       title: e.target[e.target.selectedIndex].text

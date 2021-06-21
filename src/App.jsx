@@ -30,6 +30,8 @@ export default class App extends React.PureComponent {
         SettingsFunctions.loadSettings(true);
       }
     });
+
+    window.analytics.tabLoad();
   }
 
   render() {

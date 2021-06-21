@@ -42,6 +42,7 @@ export default class Added extends React.PureComponent {
         },
         button: this.buttons.uninstall
       });
+      window.analytics.postEvent('marketplaceUpdate', `Item viewed`);
     } else {
       this.setState({
         item: {}
@@ -58,9 +59,11 @@ export default class Added extends React.PureComponent {
       button: '',
       installed: JSON.parse(localStorage.getItem('installed'))
     });
+
+    window.analytics.postEvent('marketplaceUpdate', 'Uninstall used');
   }
 
-  sortAddons(value) {
+  sortAddons(value, sendEvent) {
     let installed = JSON.parse(localStorage.getItem('installed'));
     switch (value) {
       case 'newest':
@@ -82,10 +85,14 @@ export default class Added extends React.PureComponent {
     this.setState({
       installed: installed
     });
+
+    if (sendEvent) {
+      window.analytics.postEvent('marketplaceUpdate', 'Sort used');
+    }
   }
 
   componentDidMount() {
-    this.sortAddons(localStorage.getItem('sortAddons'));
+    this.sortAddons(localStorage.getItem('sortAddons'), false);
   }
 
   render() {

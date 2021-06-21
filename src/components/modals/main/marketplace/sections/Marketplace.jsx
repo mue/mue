@@ -67,6 +67,8 @@ export default class Marketplace extends React.PureComponent {
         },
         button: button
       });
+
+      window.analytics.postEvent('marketplaceItemUpdate', `${this.state.item.display_name} viewed`);
     } else {
       this.setState({
         item: {}
@@ -89,7 +91,7 @@ export default class Marketplace extends React.PureComponent {
       done: true
     });
 
-    this.sortMarketplace(localStorage.getItem('sortMarketplace'));
+    this.sortMarketplace(localStorage.getItem('sortMarketplace'), false);
   }
 
   manage(type) {
@@ -103,9 +105,12 @@ export default class Marketplace extends React.PureComponent {
     this.setState({
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
     });
+
+    window.analytics.postEvent('marketplaceItemUpdate', `${this.state.item.display_name} ${(type === 'install' ? 'installed': 'uninstalled')}`);
+    window.analytics.postEvent('marketplaceUpdate', `${(type === 'install' ? 'Install': 'Uninstall')} used`);
   }
 
-  sortMarketplace(value) {
+  sortMarketplace(value, sendEvent) {
     let items = this.state.oldItems;
     switch (value) {
       case 'a-z':
@@ -127,6 +132,10 @@ export default class Marketplace extends React.PureComponent {
       items: items,
       sortType: value
     });
+
+    if (sendEvent) {
+      window.analytics.postEvent('marketplaceUpdate', 'Sort used');
+    }
   }
 
   componentDidMount() {
@@ -154,11 +163,15 @@ export default class Marketplace extends React.PureComponent {
     };
 
     const featured = () => {
+      const openFeatured = () => {
+        window.analytics.postEvent('marketplaceUpdate', 'Featured click used');
+        window.open(this.state.featured.buttonLink);
+      }
       return (
         <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
           <p>{this.state.featured.title}</p>
           <h1>{this.state.featured.name}</h1>
-          <button className='addToMue' onClick={() => window.open(this.state.featured.buttonLink)}>{this.state.featured.buttonText}</button>
+          <button className='addToMue' onClick={() => openFeatured()}>{this.state.featured.buttonText}</button>
         </div>
       );
     }

@@ -150,11 +150,13 @@ export default class Quote extends React.PureComponent {
   }
 
   copyQuote = () => {
+    window.analytics.postEvent('featureUpdate', 'Feature quote copy used');
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
     toast(window.language.toasts.quote);
   }
 
   tweetQuote = () => {
+    window.analytics.postEvent('featureUpdate', 'Feature quote tweet used');
     window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus();
   }
 
@@ -170,6 +172,8 @@ export default class Quote extends React.PureComponent {
         favourited: <StarIcon className='copyButton' onClick={this.favourite} />
       });
     }
+
+    window.analytics.postEvent('featureUpdate', 'Feature quote favourite used');
   }
 
   init() {

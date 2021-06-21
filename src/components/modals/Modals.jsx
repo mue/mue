@@ -27,6 +27,7 @@ export default class Modals extends React.PureComponent {
       this.setState({
         welcomeModal: true
       });
+      window.analytics.postEvent('modalUpdate', 'Opened welcome modal');
     }
 
     // hide refresh reminder once the user has refreshed the page
@@ -38,21 +39,29 @@ export default class Modals extends React.PureComponent {
     this.setState({
       welcomeModal: false
     });
+    window.analytics.postEvent('modalUpdate', 'Closed welcome modal');
+  }
+
+  toggleModal(type, action) {
+    this.setState({
+      [type]: action
+    });
+    window.analytics.postEvent('modalUpdate', `${(action === false) ? 'Closed' : 'Opened'} ${type.replace('Modal', '')} modal`);
   }
 
   render() {
     return (
       <>
-        <Navbar openModal={(modal) => this.setState({ [modal]: true })}/>
-        <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.setState({ mainModal: false })} isOpen={this.state.mainModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
-          <Main modalClose={() => this.setState({ mainModal: false })}/>
+        <Navbar openModal={(modal) => this.toggleModal(modal, true)}/>
+        <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.toggleModal('mainModal', false)} isOpen={this.state.mainModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
+          <Main modalClose={() => this.toggleModal('mainModal', false)}/>
         </Modal>
         <React.Suspense fallback={renderLoader()}>
           <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
             <Welcome modalClose={() => this.closeWelcome()}/>
           </Modal>
-          <Modal closeTimeoutMS={300} onRequestClose={() => this.setState({ feedbackModal: false })} isOpen={this.state.feedbackModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
-            <Feedback modalClose={() => this.setState({ feedbackModal: false })}/>
+          <Modal closeTimeoutMS={300} onRequestClose={() => this.toggleModal('feedbackModal', false)} isOpen={this.state.feedbackModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
+            <Feedback modalClose={() => this.toggleModal('feedbackModal', false)}/>
           </Modal>
         </React.Suspense>
       </>

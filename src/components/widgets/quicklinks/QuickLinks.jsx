@@ -31,6 +31,8 @@ export default class QuickLinks extends React.PureComponent {
     this.setState({
       items: data
     });
+
+    window.analytics.postEvent('featureUpdate', 'Feature delete quicklink used');
   }
 
   addLink = () => {
@@ -72,6 +74,8 @@ export default class QuickLinks extends React.PureComponent {
       name: '',
       url: ''
     });
+
+    window.analytics.postEvent('featureUpdate', 'Feature add quicklink used');
 
     this.toggleAdd();
   }

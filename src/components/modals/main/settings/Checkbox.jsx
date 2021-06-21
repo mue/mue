@@ -21,6 +21,8 @@ export default class Checkbox extends React.PureComponent {
       checked: (this.state.checked === true) ? false : true
     });
 
+    window.analytics.postEvent('settingUpdate', `${(this.state.checked === true) ? 'Enabled' : 'Disabled'} setting ${this.props.name}`);
+
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {
         document.querySelector('.reminder-info').style.display = 'block';

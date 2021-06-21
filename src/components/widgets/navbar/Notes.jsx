@@ -25,6 +25,7 @@ export default class Notes extends React.PureComponent {
   };
 
   pin() {
+    window.analytics.postEvent('featureUpdate', 'Feature notes pin used');
     document.getElementById('noteContainer').classList.toggle('visibilityshow');
 
     if (localStorage.getItem('notesPinned') === 'true') {
@@ -35,6 +36,7 @@ export default class Notes extends React.PureComponent {
   }
 
   copy() {
+    window.analytics.postEvent('featureUpdate', 'Feature notes copy used');
     // this.state.notes doesnt work for some reason
     navigator.clipboard.writeText(localStorage.getItem('notes'));
     toast(window.language.toasts.notes);

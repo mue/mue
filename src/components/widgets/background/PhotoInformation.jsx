@@ -18,6 +18,7 @@ const downloadImage = async (info) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+  window.analytics.postEvent('featureUpdate', 'Feature background download used');
 };
 
 export default function PhotoInformation(props) {

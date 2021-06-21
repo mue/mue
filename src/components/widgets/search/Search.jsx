@@ -44,6 +44,7 @@ export default class Search extends React.PureComponent {
       }
 
       setTimeout(() => {
+        window.analytics.postEvent('featureUpdate', 'Feature voice search used');
         window.location.href = this.state.url + `?${this.state.query}=` + searchText.value;
       }, 1000);
     };
@@ -58,6 +59,7 @@ export default class Search extends React.PureComponent {
       value = document.getElementById('searchtext').value || 'mue fast';
     }
 
+    window.analytics.postEvent('featureUpdate', 'Feature search used');
     window.location.href = this.state.url + `?${this.state.query}=` + value;
   }
 
