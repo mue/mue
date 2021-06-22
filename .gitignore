@@ -2,6 +2,7 @@
 node_modules/
 .vscode/
 build/
+dist/
 
 # Files
 package-lock.json
