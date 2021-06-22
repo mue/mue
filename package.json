@@ -47,11 +47,12 @@
     "source-map-loader": "^3.0.0",
     "webpack": "^5.39.1",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0"
   },
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack --mode=production",
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "chrome": "cp manifest/chrome.json build/manifest.json",
     "firefox": "cp manifest/firefox.json build/manifest.json"
   },
