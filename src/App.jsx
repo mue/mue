@@ -18,7 +18,7 @@ export default class App extends React.PureComponent {
 
     // 4.0 -> 5.0 (the key below is only on 5.0)
     // now featuring 5.0 -> 5.1
-    if (!localStorage.getItem('order') || !localStorage.getItem('autocompleteProvider')) {
+    if (!localStorage.getItem('order') || !localStorage.getItem('backgroundFilterAmount')) {
       SettingsFunctions.moveSettings();
       window.location.reload();
     }    
