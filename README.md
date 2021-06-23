@@ -19,7 +19,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 	* [Chrome](#chrome)
 	* [Firefox](#firefox)
 	* [Edge Chromium](#edge-chromium)
-	* [Naver](#naver)
+	* [Whale](#whale)
 	* [Other](#other)
 * [Contributing](#development)
 	* [Translations](#translations)
@@ -60,16 +60,14 @@ Please see our [roadmap](https://github.com/mue/mue/projects)
 ### Edge (Chromium)
 [Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja)
 
-### Naver
+### Whale
 [Whale Store](https://store.whale.naver.com/detail/ecllekeilcmicbfkkiknfdddbogibbnc)
 
 ### Other
-Please note that we have dropped support for Opera as of Mue 5.0
-
 [GitHub Releases](https://github.com/mue/mue/releases)
 
 ## Development
-This section has moved to the [documentation](https://docs.muetab.com/development#mue-tab).
+Please see the [documentation](https://docs.muetab.com/development#mue-tab).
 
 ### Translations
 Please see the [documentation](https://docs.muetab.com/translations).
@@ -81,16 +79,18 @@ Please see the [documentation](https://docs.muetab.com/translations).
 [Isaac Saunders](https://github.com/eartharoid) - QA, development, photographer <br/>
 [Wessel Tip](https://github.com/Wessel) - Development <br/>
 ### Translators
-[Wessel Tip](https://github.com/Wessel), [Heimen Stoffels](https://github.com/Vistaus) - Dutch<br/>
-[Alex Sparkes](https://github.com/alexsparkes), [Maxime](https://github.com/exiam) - French<br/>
-[Anders](https://github.com/FuryingFox) - Norwegian<br/>
-[Pronin Egor](https://github.com/MrZillaGold) - Russian<br/>
-[Vicente](https://github.com/Vicente015) - Spanish<br/>
-[Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified)<br/>
-[FreeFun](https://github.com/xXFreeFunXx) - German<br/>
+[Wessel Tip](https://github.com/Wessel), [Heimen Stoffels](https://github.com/Vistaus) - Dutch <br/>
+[Alex Sparkes](https://github.com/alexsparkes), [Maxime](https://github.com/exiam) - French <br/>
+[Anders](https://github.com/FuryingFox) - Norwegian <br/>
+[Pronin Egor](https://github.com/MrZillaGold) - Russian <br/>
+[Vicente](https://github.com/Vicente015) - Spanish <br/>
+[Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified) <br/>
+[FreeFun](https://github.com/xXFreeFunXx) - German <br/>
 ### Contributors
 Many thanks to the photographers [here](https://api.muetab.com/images/photographers) for letting us use their wonderful photographs.
 
 And finally, a big thank you to all the other [contributors](https://github.com/mue/mue/graphs/contributors)!
 ### Resources
-[Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode
+[Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode <br/>
+[Undraw](https://undraw.co) - Welcome modal image <br/>
+[Material Icons](https://fonts.google.com/icons?selected=Material+Icons) - Pin icon
