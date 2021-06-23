@@ -31,7 +31,7 @@ export default class Background extends React.PureComponent {
     if (gradient.length > 1) {
       // Note: Append the gradient for additional browser support.
       const stepStyles = gradient.map((g) => ` ${g.colour} ${g.stop}%`).join();
-      style += ` background: ${type}-gradient(${(type === 'linear' ? (`${angle}deg,`) : '')}${stepStyles});`;
+      style += ` background: ${type}-gradient(${(type === 'linear' ? (`${angle}deg,`) : '')}${stepStyles})`;
     }
 
     this.setState({
