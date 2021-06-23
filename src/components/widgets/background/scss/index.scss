@@ -3,11 +3,12 @@
 
 #backgroundImage {
   height: 100vh;
-  background-size: cover !important;
+	background-size: 400% 400%;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-attachment: fixed !important;
   zoom: 100% !important;
+  animation: gradient 15s ease infinite;
 }
 
 .backgroundPreload {
@@ -34,4 +35,16 @@
   to {
     opacity: 1;
   }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

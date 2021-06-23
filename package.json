@@ -47,16 +47,13 @@
     "source-map-loader": "^3.0.0",
     "webpack": "^5.39.1",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.8.0",
-    "zip-file-webpack-plugin": "^1.2.0"
+    "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "build:chrome": "webpack --config webpack.prod.js --env=type=chrome",
-    "build:firefox": "webpack --config webpack.prod.js --env=type=firefox",
-    "postinstall": "node -e \"if (require('fs').existsSync('node_modules/.cache/webpack')) require('fs').rmSync('node_modules/.cache/webpack', { recursive: true })\""
+    "start": "webpack serve",
+    "build": "webpack --mode=production",
+    "chrome": "cp manifest/chrome.json build/manifest.json",
+    "firefox": "cp manifest/firefox.json build/manifest.json"
   },
   "browserslist": {
     "production": [
