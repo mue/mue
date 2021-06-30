@@ -76,7 +76,9 @@ export default class SearchSettings extends React.PureComponent {
       <>
         <h2>{search.title}</h2>
         <Switch name='searchBar' text={language.enabled} category='widgets' />
-        {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? <Checkbox name='voiceSearch' text={search.voice_search} category='search' element='.other' /> : null}
+        {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
+          <Checkbox name='voiceSearch' text={search.voice_search} category='search'/> 
+        : null}
         <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
           {searchEngines.map((engine) => (
             <option key={engine.name} value={engine.settingsName}>{engine.name}</option>

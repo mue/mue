@@ -13,6 +13,12 @@ export default class Maximise extends React.PureComponent {
   }
 
   setAttribute(blur, brightness, filter) {
+    // don't attempt to modify the background if it isn't an image
+    const backgroundType = localStorage.getItem('backgroundType');
+    if (backgroundType === 'colour') {
+      return;
+    }
+
     const element = document.getElementById('backgroundImage');
 
     let backgroundFilter;
@@ -27,16 +33,9 @@ export default class Maximise extends React.PureComponent {
   }
 
   maximise = () => {
-    // elements to hide
-    const elements = ['.searchBar', '.clock', '.greeting', '.quotediv', 'time', '.quicklinks-container', '.weather', '.date'];
-
-    elements.forEach((element) => {
-      try {
-        (this.state.hidden === false) ? document.querySelector(element).style.display = 'none' : document.querySelector(element).style.display = 'block';
-      } catch (e) {
-        return;
-      }
-    });
+    // hide widgets
+    const widgets = document.getElementById('widgets');
+    (this.state.hidden === false) ? widgets.style.display = 'none' : widgets.style.display = 'block';
 
     if (this.state.hidden === false) {
       this.setState({

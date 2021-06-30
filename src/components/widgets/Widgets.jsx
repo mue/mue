@@ -60,7 +60,7 @@ export default class Widgets extends React.PureComponent {
         <React.Suspense fallback={renderLoader()}>
           {this.enabled('searchBar') ? <Search/> : null}
           {elements}
-          {this.enabled('weatherEnabled') && !localStorage.getItem('offlineMode') ? <Weather/> : null}
+          {this.enabled('weatherEnabled') && (localStorage.getItem('offlineMode') === 'false') ? <Weather/> : null}
         </React.Suspense>
       </div>
     );
