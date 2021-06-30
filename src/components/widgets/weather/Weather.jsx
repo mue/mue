@@ -35,6 +35,8 @@ export default class Weather extends React.PureComponent {
       return null;
     }
 
+    document.querySelector('.weather').style.fontSize = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+
     let data = {
       weather: [
         {
@@ -118,12 +120,8 @@ export default class Weather extends React.PureComponent {
     EventBus.on('refresh', (data) => {
       if (data === 'weather') {
         this.getWeather();
-        document.querySelector('.weather').style.fontSize = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
-        document.querySelector('.weather svg').style.fontSize = `${0.95 * Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
       }
     });
-
-    document.querySelector('.weather').style.fontSize = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
     this.getWeather();
   }
 
@@ -165,7 +163,7 @@ export default class Weather extends React.PureComponent {
       <div className='weather'>
         <WeatherIcon name={this.state.icon}/>
         <span>{this.state.weather.temp + this.state.temp_text}</span>
-        {enabled('weatherdescription') ? <span className='loc' style={{ 'textTransform': 'capitalize' }}><br/>{this.state.weather.description}</span> : null}
+        {enabled('weatherdescription') ? <span className='loc'><br/>{this.state.weather.description}</span> : null}
         <span className='minmax'>{minmax()}</span>
         {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
         {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span> {enabled('windDirection') ? <WindDirectionIcon degrees={this.state.weather.wind_degrees}/> : null}</span> : null}

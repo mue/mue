@@ -2,10 +2,12 @@ import { WiDirectionDownLeft, WiDirectionDownRight, WiDirectionDown, WiDirection
 
 export default function WindDirectionIcon(props) {
   let icon;
+  // fix potential bug, idk what causes it but now it is fixed
+  let degrees = props.degrees;
 
   // convert the number openweathermap gives us to closest direction or something
   const directions = ['North', 'North-West', 'West', 'South-West', 'South', 'South-East', 'East', 'North-East'];
-  const direction = directions[Math.round(((props.degrees %= 360) < 0 ? props.degrees + 360 : props.degrees) / 45) % 8];
+  const direction = directions[Math.round(((degrees %= 360) < 0 ? degrees + 360 : degrees) / 45) % 8];
 
   switch (direction) {
     case 'North': icon = <WiDirectionUp/>; break;

@@ -13,7 +13,7 @@ export default function WelcomeModal(props) {
       <div className='welcomeModalText'>
         <h2 className='subtitle'>{language.title}</h2>
         <h1 className='welcometitle'>Mue Tab</h1>
-        <img alt='celebration' style={{ 'height': '200px', 'width': 'auto' }} draggable={false} src='./././icons/undraw_celebration.svg' />
+        <img alt='celebration' style={{ height: '200px', width: 'auto' }} draggable={false} src='./././icons/undraw_celebration.svg' />
         <h2 className='subtitle'>{language.information}</h2>
         <p>{language.thankyoumessage1}<br/> {language.thankyoumessage2}</p>
         <h2 className='subtitle'>{language.support}</h2>

@@ -18,7 +18,7 @@ const renderLoader = () => (
         </div>
       </div>
     </div>
-    <div label='' style={{ 'display': 'none' }}></div>
+    <div label='' style={{ display: 'none' }}></div>
   </Tabs>
 );
 

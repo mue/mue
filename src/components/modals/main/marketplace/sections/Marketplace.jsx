@@ -168,7 +168,7 @@ export default class Marketplace extends React.PureComponent {
         window.open(this.state.featured.buttonLink);
       }
       return (
-        <div className='featured' style={{ 'backgroundColor': this.state.featured.colour }}>
+        <div className='featured' style={{ backgroundColor: this.state.featured.colour }}>
           <p>{this.state.featured.title}</p>
           <h1>{this.state.featured.name}</h1>
           <button className='addToMue' onClick={() => openFeatured()}>{this.state.featured.buttonText}</button>

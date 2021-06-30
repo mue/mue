@@ -57,7 +57,7 @@ export default class Dropdown extends React.PureComponent {
     return (
       <>
         {this.getLabel()}
-        <select id={this.props.name} value={this.state.value} onChange={this.onChange} style={{width: `${(8*this.state.title.length) + 50}px`}}>
+        <select id={this.props.name} value={this.state.value} onChange={this.onChange} style={{ width: `${(8*this.state.title.length) + 50}px` }}>
           {this.props.children}
         </select>
       </>

@@ -24,7 +24,7 @@ export default function ExperimentalSettings() {
       <br/><br/>
       <button className='uploadbg' onClick={() => EventBus.dispatch(document.getElementById('eventType').value, document.getElementById('eventName').value)}>Send</button>
       <br/><br/>
-      <button className='reset' style={{ 'marginLeft': '0px' }} onClick={() => localStorage.clear()}>Clear LocalStorage</button>
+      <button className='reset' style={{ marginLeft: '0px' }} onClick={() => localStorage.clear()}>Clear LocalStorage</button>
     </>
   );
 }

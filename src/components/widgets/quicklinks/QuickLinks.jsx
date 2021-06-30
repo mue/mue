@@ -151,7 +151,7 @@ export default class QuickLinks extends React.PureComponent {
           quickLink(item)
         ))}
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
-        <span className='quicklinkscontainer' style={{ 'visibility': this.state.showAddLink }}>
+        <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink }}>
           <div className='topbarquicklinks'>
             <h4>{this.language.new}</h4>
             <TextareaAutosize rowsMax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />

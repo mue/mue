@@ -23,18 +23,14 @@ export default class QuoteSettings extends React.PureComponent {
   render() {
     const { quote } = window.language.modals.main.settings.sections;
 
-    let quoteSettings;
-
-    const customSettings = (
-      <>
-        <Text title={quote.custom} name='customQuote' category='quote' element='.quotediv' />
-        <Text title={quote.custom_author} name='customQuoteAuthor' category='quote' element='.quotediv'/>
-      </>
-    );
-
-    switch (this.state.quoteType) {
-      case 'custom': quoteSettings = customSettings; break;
-      default: break;
+    let customSettings;
+    if (this.state.quoteType === 'custom') {
+      customSettings = (
+        <>
+          <Text title={quote.custom} name='customQuote' category='quote' element='.quotediv' />
+          <Text title={quote.custom_author} name='customQuoteAuthor' category='quote' element='.quotediv'/>
+        </>
+      );
     }
 
     return (
@@ -47,7 +43,7 @@ export default class QuoteSettings extends React.PureComponent {
           <option value='api'>{window.language.modals.main.settings.sections.background.type.api}</option>
           <option value='custom'>{quote.custom}</option>
         </Dropdown>
-        {quoteSettings}
+        {customSettings}
         <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomQuote' min='10' max='400' default='100' display='%' category='quote' element='.quotediv' />
   
         <h3>{quote.buttons.title}</h3>

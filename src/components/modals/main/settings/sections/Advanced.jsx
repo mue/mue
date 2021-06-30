@@ -51,7 +51,7 @@ export default class AdvancedSettings extends React.PureComponent {
         <Text title={advanced.custom_css} name='customcss' textarea={true} category='other'/>
 
         <h3>{this.language.sections.experimental.title}</h3>
-        <p style={{ 'maxWidth': '75%'}}>{advanced.experimental_warning}</p>
+        <p style={{ maxWidth: '75%' }}>{advanced.experimental_warning}</p>
         <Switch name='experimental' text={this.language.enabled} element='.other'/>
 
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ resetModal: false })} isOpen={this.state.resetModal} className='Modal resetmodal mainModal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>

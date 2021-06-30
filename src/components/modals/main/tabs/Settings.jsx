@@ -41,7 +41,7 @@ export default function Settings() {
         <div label={sections.changelog}><Changelog/></div>
         <div label={sections.about.title}><About/></div>
       </Tabs>
-      <div className='reminder-info' style={{ 'display': display }}>
+      <div className='reminder-info' style={{ display: display }}>
         <h1>{reminder.title}</h1>
         <p>{reminder.message}</p>
         <button className='pinNote' onClick={() => window.location.reload()}>{window.language.modals.main.error_boundary.refresh}</button>

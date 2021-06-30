@@ -32,7 +32,7 @@ export default class Tabs extends React.PureComponent {
       tabClass = '';
       optionsText = '';
     }
-
+    
     return (
       <>
         <ul className={className}>

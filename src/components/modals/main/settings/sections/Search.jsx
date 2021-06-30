@@ -29,7 +29,7 @@ export default class SearchSettings extends React.PureComponent {
       customValue: ''
     });
 
-    toast(window.language.modals.main.settings.toasts.reset);
+    toast(window.language.toasts.reset);
   }
 
   componentDidMount() {
@@ -88,7 +88,7 @@ export default class SearchSettings extends React.PureComponent {
 
         <ul style={{ display: this.state.customDisplay }}>
           <br/>
-          <p style={{ 'marginTop': '0px' }}>{search.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{language.buttons.reset}</span></p>
+          <p style={{ marginTop: '0px' }}>{search.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{language.buttons.reset}</span></p>
           <input type='text' value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })}></input>
         </ul>
         <br/>
