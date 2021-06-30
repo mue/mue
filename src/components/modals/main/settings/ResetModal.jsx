@@ -4,7 +4,7 @@ export default function ResetModal(props) {
   const language = window.language.modals.main.settings.sections.advanced.reset_modal;
 
   const reset = () => {
-    window.analytics.postEvent('setting', 'Reset');
+    window.stats.postEvent('setting', 'Reset');
     SettingsFunctions.setDefaultSettings('reset');
     window.location.reload();
   }

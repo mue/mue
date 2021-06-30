@@ -1,5 +1,5 @@
 export default function Lightbox(props) {
-  window.analytics.postEvent('modal', 'Opened lightbox');
+  window.stats.postEvent('modal', 'Opened lightbox');
 
   return (
     <>

@@ -21,7 +21,7 @@ export default class Checkbox extends React.PureComponent {
       checked: (this.state.checked === true) ? false : true
     });
 
-    window.analytics.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
+    window.stats.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
 
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {

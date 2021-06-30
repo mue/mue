@@ -18,7 +18,7 @@ const downloadImage = async (info) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-  window.analytics.postEvent('feature', 'Background download');
+  window.stats.postEvent('feature', 'Background download');
 };
 
 export default function PhotoInformation(props) {

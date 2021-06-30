@@ -10,8 +10,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 import '@fontsource/lexend-deca/400.css';
 
-// this is opt-in btw
-import Analytics from './modules/helpers/analytics';
+// this is opt-in btw, allows you to see your stats etc
+import Stats from './modules/helpers/stats';
 
 // language
 import merge from '@material-ui/utils/esm/deepmerge';
@@ -39,10 +39,10 @@ if (window.languagecode !== 'en_GB' || window.languagecode !== 'en_US') {
 }
 
 window.constants = Constants;
-if (localStorage.getItem('analytics') === 'true' && localStorage.getItem('offlineMode') !== 'true') {
-  window.analytics = new Analytics(window.constants.UMAMI_ID);
+if (localStorage.getItem('stats') === 'true' && localStorage.getItem('offlineMode') !== 'true') {
+  window.stats = new Stats(window.constants.UMAMI_ID);
 } else {
-  window.analytics = {
+  window.stats = {
     tabLoad: () => '',
     postEvent: () => '' 
   } 

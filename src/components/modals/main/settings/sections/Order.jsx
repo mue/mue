@@ -83,7 +83,7 @@ export default class OrderSettings extends React.PureComponent {
 
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
-    window.analytics.postEvent('setting', 'Widget order');
+    window.stats.postEvent('setting', 'Widget order');
     EventBus.dispatch('refresh', 'widgets');
   }
 

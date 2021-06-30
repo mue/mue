@@ -28,7 +28,7 @@ export default class AdvancedSettings extends React.PureComponent {
     });
 
     toast(window.language.toasts.imported);
-    window.analytics.postEvent('tab', 'Settings imported');
+    window.stats.postEvent('tab', 'Settings imported');
   }
 
   render() {

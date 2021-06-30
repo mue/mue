@@ -31,7 +31,7 @@ export default class App extends React.PureComponent {
       }
     });
 
-    window.analytics.tabLoad();
+    window.stats.tabLoad();
   }
 
   render() {

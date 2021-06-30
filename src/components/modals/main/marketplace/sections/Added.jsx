@@ -42,7 +42,7 @@ export default class Added extends React.PureComponent {
         },
         button: this.buttons.uninstall
       });
-      window.analytics.postEvent('marketplace', 'Item viewed');
+      window.stats.postEvent('marketplace', 'Item viewed');
     } else {
       this.setState({
         item: {}
@@ -60,7 +60,7 @@ export default class Added extends React.PureComponent {
       installed: JSON.parse(localStorage.getItem('installed'))
     });
 
-    window.analytics.postEvent('marketplace', 'Uninstall');
+    window.stats.postEvent('marketplace', 'Uninstall');
   }
 
   sortAddons(value, sendEvent) {
@@ -87,7 +87,7 @@ export default class Added extends React.PureComponent {
     });
 
     if (sendEvent) {
-      window.analytics.postEvent('marketplace', 'Sort');
+      window.stats.postEvent('marketplace', 'Sort');
     }
   }
 

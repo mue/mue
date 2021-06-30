@@ -234,5 +234,13 @@
   {
     "name": "backgroundFilterAmount",
     "value": 0
+  },
+  {
+    "name": "stats",
+    "value": false
+  },
+  {
+    "name": "statsData",
+    "value": "{}"
   }
 ]

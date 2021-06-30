@@ -104,7 +104,7 @@ export default class ColourSettings extends React.PureComponent {
       return newState;
     });
 
-    window.analytics.postEvent('setting', 'Changed backgroundtype from colour to gradient');
+    window.stats.postEvent('setting', 'Changed backgroundtype from colour to gradient');
   }
 
   currentGradientSettings = () => {
