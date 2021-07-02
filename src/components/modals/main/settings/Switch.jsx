@@ -1,7 +1,6 @@
 import React from 'react';
 
 import EventBus from '../../../../modules/helpers/eventbus';
-import SettingsFunctions from '../../../../modules/helpers/settings';
 
 import SwitchUI from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -15,10 +14,11 @@ export default class Switch extends React.PureComponent {
   }
 
   handleChange = () => {
-    SettingsFunctions.setItem(this.props.name);
+    const value = (this.state.checked === true) ? false : true;
+    localStorage.setItem(this.props.name, value);
 
     this.setState({
-      checked: (this.state.checked === true) ? false : true
+      checked: value
     });
 
     window.stats.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);

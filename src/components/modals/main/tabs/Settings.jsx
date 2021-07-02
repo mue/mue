@@ -26,20 +26,20 @@ export default function Settings() {
   return (
     <>
       <Tabs>
-        <div label={sections.time.title}><Time/></div>
-        <div label={sections.quote.title}><Quote/></div>
-        <div label={sections.greeting.title}><Greeting/></div>
-        <div label={sections.background.title}><Background/></div>
-        <div label={sections.search.title}><Search/></div>
-        <div label={sections.quicklinks.title}><QuickLinks/></div>
-        <div label={sections.weather.title}><Weather/></div>
-        <div label={sections.appearance.title}><Appearance/></div>
-        <div label={sections.order.title}><Order/></div>
-        <div label={sections.language.title}><Language/></div>
-        <div label={sections.advanced.title}><Advanced/></div>
-        <div label={sections.experimental.title}><Experimental/></div>
-        <div label={sections.changelog}><Changelog/></div>
-        <div label={sections.about.title}><About/></div>
+        <div label={sections.time.title} name='time'><Time/></div>
+        <div label={sections.quote.title} name='quote'><Quote/></div>
+        <div label={sections.greeting.title} name='greeting'><Greeting/></div>
+        <div label={sections.background.title} name='background'><Background/></div>
+        <div label={sections.search.title} name='search'><Search/></div>
+        <div label={sections.quicklinks.title} name='quicklinks'><QuickLinks/></div>
+        <div label={sections.weather.title} name='weather'><Weather/></div>
+        <div label={sections.appearance.title} name='appearance'><Appearance/></div>
+        <div label={sections.order.title} name='order'><Order/></div>
+        <div label={sections.language.title} name='language'><Language/></div>
+        <div label={sections.advanced.title} name='advanced'><Advanced/></div>
+        <div label={sections.experimental.title} name='experimental'><Experimental/></div>
+        <div label={sections.changelog} name='changelog'><Changelog/></div>
+        <div label={sections.about.title} name='about'><About/></div>
       </Tabs>
       <div className='reminder-info' style={{ display: display }}>
         <h1>{reminder.title}</h1>

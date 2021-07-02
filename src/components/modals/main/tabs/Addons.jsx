@@ -8,8 +8,8 @@ export default function Addons() {
 
   return (
     <Tabs>
-      <div label={addons.added}><Added/></div>
-      <div label={addons.sideload}><Sideload/></div>
+      <div label={addons.added} name='added'><Added/></div>
+      <div label={addons.sideload} name='sideload'><Sideload/></div>
     </Tabs>
   );
 }

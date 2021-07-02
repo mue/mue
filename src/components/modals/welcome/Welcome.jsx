@@ -1,28 +1,69 @@
-import EmailIcon from '@material-ui/icons/Email';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import ForumIcon from '@material-ui/icons/Forum';
+import React from 'react';
+
+import WelcomeSections from './WelcomeSections';
+import ProgressBar from './ProgressBar';
 
 import './welcome.scss';
 
-export default function WelcomeModal(props) {
-  const language = window.language.modals.welcome;
+export default class WelcomeModal extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      image: './././icons/undraw_celebration.svg',
+      currentTab: 0,
+      finalTab: 4,
+      buttonText: 'Next'
+    };
+    this.language = window.language.modals.welcome;
+    this.images = ['./././icons/undraw_celebration.svg', './././icons/undraw_around_the_world_modified.svg', './././icons/undraw_add_files_modified.svg', './././icons/undraw_dark_mode.svg', './././icons/undraw_private_data_modified.svg', './././icons/undraw_upgrade_modified.svg']
+  }
 
-  return (
-    <div className='welcomeContent'>
-      <span className='closeModal' onClick={props.modalClose}>&times;</span>
-      <div className='welcomeModalText'>
-        <h2 className='subtitle'>{language.title}</h2>
-        <h1 className='welcometitle'>Mue Tab</h1>
-        <img alt='celebration' style={{ height: '200px', width: 'auto' }} draggable={false} src='./././icons/undraw_celebration.svg' />
-        <h2 className='subtitle'>{language.information}</h2>
-        <p>{language.thankyoumessage1}<br/> {language.thankyoumessage2}</p>
-        <h2 className='subtitle'>{language.support}</h2>
-        <a href='mailto:hello@muetab.com' className='welcomeLink' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
-        <a href='https://twitter.com/getmue' className='welcomeLink' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
-        <a href='https://discord.gg/zv8C9F8' className='welcomeLink' target='_blank' rel='noopener noreferrer'><ForumIcon/></a>
-        <br/>
-        <button className='close' onClick={props.modalClose}>{language.close}</button>
+  changeTab(minus) {
+    if (minus) {
+      return this.setState({
+        currentTab: this.state.currentTab - 1,
+        image: this.images[this.state.currentTab - 1],
+        buttonText: 'Next'
+      });
+    }
+
+    if (this.state.buttonText === 'Close') {
+      return this.props.modalClose();
+    }
+
+    this.setState({
+      currentTab: this.state.currentTab + 1,
+      image: this.images[this.state.currentTab + 1],
+      buttonText: (this.state.currentTab !== this.state.finalTab) ? 'Next' : 'Close'
+    });
+  }
+
+  // specific
+  switchTab(tab) {
+    this.setState({
+      currentTab: tab,
+      image: this.images[tab],
+      buttonText: 'Next'
+    });
+  }
+
+  render() {
+    return (
+      <div className='welcomeContent'>
+        <section>
+          <img alt='celebration' draggable={false} src={this.state.image} />
+          <ProgressBar count={this.images} currentTab={this.state.currentTab} switchTab={(tab) => this.switchTab(tab)}/>  
+        </section>
+        <section>
+          <div className='content'>
+            <WelcomeSections currentTab={this.state.currentTab} switchTab={(tab) => this.switchTab(tab)}/>
+          </div>
+          <div className='buttons'>
+            {(this.state.currentTab !== 0) ? <button className='close' style={{ marginRight: '20px' }} onClick={() => this.changeTab(true)}>Previous</button> : null}
+            <button className='close' onClick={() => this.changeTab()}>{this.state.buttonText}</button>
+          </div>
+        </section>
       </div>
-    </div>
-  );
+    );
+  }
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import Tooltip from '../../../../helpers/tooltip/Tooltip';
 import EmailIcon from '@material-ui/icons/Email';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import ForumIcon from '@material-ui/icons/Forum';
+import ChatIcon from '@material-ui/icons/Chat';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 
@@ -96,7 +96,7 @@ export default class About extends React.PureComponent {
         <a href='https://twitter.com/getmue' className='aboutIcon' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
         <a href='https://instagram.com/mue.tab' className='aboutIcon' target='_blank' rel='noopener noreferrer'><InstagramIcon/></a>
         <a href='https://facebook.com/muetab' className='aboutIcon' target='_blank' rel='noopener noreferrer'><FacebookIcon/></a>
-        <a href='https://discord.gg/zv8C9F8' className='aboutIcon' target='_blank' rel='noopener noreferrer'><ForumIcon/></a>
+        <a href='https://discord.gg/zv8C9F8' className='aboutIcon' target='_blank' rel='noopener noreferrer'><ChatIcon/></a>
 
         <h3>{this.language.support_mue}</h3>
         <p>

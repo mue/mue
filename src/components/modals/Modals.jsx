@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../modules/helpers/eventbus';
+
 import Main from './main/Main';
 import Navbar from '../widgets/navbar/Navbar';
 
@@ -39,6 +41,8 @@ export default class Modals extends React.PureComponent {
     this.setState({
       welcomeModal: false
     });
+    EventBus.dispatch('refresh', 'widgets');
+    EventBus.dispatch('refresh', 'backgroundwelcome');
   }
 
   toggleModal(type, action) {
@@ -59,7 +63,7 @@ export default class Modals extends React.PureComponent {
           <Main modalClose={() => this.toggleModal('mainModal', false)}/>
         </Modal>
         <React.Suspense fallback={renderLoader()}>
-          <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
+          <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay welcomeoverlay' shouldCloseOnOverlayClick={false} ariaHideApp={false}>
             <Welcome modalClose={() => this.closeWelcome()}/>
           </Modal>
           <Modal closeTimeoutMS={300} onRequestClose={() => this.toggleModal('feedbackModal', false)} isOpen={this.state.feedbackModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>

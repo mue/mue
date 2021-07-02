@@ -43,6 +43,11 @@ export default class Widgets extends React.PureComponent {
   }
 
   render() {
+    // don't hide when welcome is there
+    if (localStorage.getItem('showWelcome') === 'true') {
+      return <div id='widgets'></div>
+    }
+
     // allow for re-ordering widgets
     let elements = [];
 

@@ -119,6 +119,10 @@ export default class QuickLinks extends React.PureComponent {
     };
   }
 
+  componentWillUnmount() {
+    EventBus.remove('refresh');
+  }
+
   render() {
     let target, rel = null;
     if (localStorage.getItem('quicklinksnewtab') === 'true') {
@@ -154,9 +158,9 @@ export default class QuickLinks extends React.PureComponent {
         <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink }}>
           <div className='topbarquicklinks'>
             <h4>{this.language.new}</h4>
-            <TextareaAutosize rowsMax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
+            <TextareaAutosize rowsmax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
             <p>{this.state.nameError}</p>
-            <TextareaAutosize rowsMax={10} placeholder={this.language.url} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
+            <TextareaAutosize rowsmax={10} placeholder={this.language.url} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
             <p>{this.state.urlError}</p>
             <button className='pinNote' onClick={this.addLink}>{this.language.add}</button>
           </div>

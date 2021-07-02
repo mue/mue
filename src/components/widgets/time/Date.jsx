@@ -118,6 +118,10 @@ export default class DateWidget extends React.PureComponent {
     this.getDate();
   }
 
+  componentWillUnmount() {
+    EventBus.remove('refresh');
+  }
+
   render() {
     return <span className='date'>{this.state.date} <br/> {this.state.weekNumber}</span>;
   }

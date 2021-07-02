@@ -111,6 +111,10 @@ export default class Clock extends React.PureComponent {
     this.startTime(0);
   }
 
+  componentWillUnmount() {
+    EventBus.remove('refresh');
+  }
+
   render() {
     let clockHTML = <h1 className='clock clock-container'>{this.state.time}<span className='ampm'>{this.state.ampm}</span></h1>;
 

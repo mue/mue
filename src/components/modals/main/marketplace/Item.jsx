@@ -34,7 +34,7 @@ export default class Item extends React.PureComponent {
     }
   
     // prevent console error
-    let iconsrc = window.constants.DDG_PROXY + this.props.data.icon;
+    let iconsrc = window.constants.DDG_IMAGE_PROXY + this.props.data.icon;
     if (!this.props.data.icon) {
       iconsrc = null;
     }

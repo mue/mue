@@ -48,7 +48,7 @@ module.exports = {
     clean: true
   },
   devServer: {
-    contentBase: path.resolve(__dirname, './build'),
+    static: path.resolve(__dirname, './build'),
     open: true,
     port: 3000
   },

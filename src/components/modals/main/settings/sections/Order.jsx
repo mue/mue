@@ -52,7 +52,6 @@ export default class OrderSettings extends React.PureComponent {
     }
   
     const newArray = [...array];
-  
     const target = newArray[oldIndex];
     const inc = newIndex < oldIndex ? -1 : 1;
   
@@ -61,7 +60,6 @@ export default class OrderSettings extends React.PureComponent {
     }
   
     newArray[newIndex] = target;
-  
     return newArray;
   }
 

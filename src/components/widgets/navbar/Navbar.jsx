@@ -13,6 +13,10 @@ import Tooltip from '../../helpers/tooltip/Tooltip';
 import './scss/index.scss';
 
 export default function Navbar(props) {
+  if (localStorage.getItem('showWelcome') === 'true') {
+    return null;
+  }
+
   const backgroundEnabled = (localStorage.getItem('background') === 'true');
 
   return (

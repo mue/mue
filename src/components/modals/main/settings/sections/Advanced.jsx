@@ -6,9 +6,8 @@ import Text from '../Text';
 import Switch from '../Switch';
 import ResetModal from '../ResetModal';
 
-import SettingsFunctions from '../../../../../modules/helpers/settings';
+import SettingsFunctions from '../../../../../modules/helpers/settings/modals';
 
-import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 export default class AdvancedSettings extends React.PureComponent {
@@ -18,17 +17,6 @@ export default class AdvancedSettings extends React.PureComponent {
       resetModal: false
     };
     this.language = window.language.modals.main.settings;
-  }
-
-  settingsImport(e) {
-    const content = JSON.parse(e.target.result);
-
-    Object.keys(content).forEach((key) => {
-      localStorage.setItem(key, content[key]);
-    });
-
-    toast(window.language.toasts.imported);
-    window.stats.postEvent('tab', 'Settings imported');
   }
 
   render() {
@@ -43,7 +31,7 @@ export default class AdvancedSettings extends React.PureComponent {
         <button className='reset' onClick={() => this.setState({ resetModal: true })}>{this.language.buttons.reset}</button>
         <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.language.buttons.export}</button>
         <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.language.buttons.import}</button>
-        <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.settingsImport(e)}/>
+        <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => SettingsFunctions.importSettings(e)}/>
 
         <h3>{advanced.customisation}</h3>
         <Text title={advanced.tab_name} name='tabName' default={window.language.tabname} category='other'/>

@@ -39,7 +39,8 @@ if (window.languagecode !== 'en_GB' || window.languagecode !== 'en_US') {
 }
 
 window.constants = Constants;
-if (localStorage.getItem('stats') === 'true' && localStorage.getItem('offlineMode') !== 'true') {
+// doesn't send to umami when offline mode is on
+if (localStorage.getItem('stats') === 'true') {
   window.stats = new Stats(window.constants.UMAMI_ID);
 } else {
   window.stats = {

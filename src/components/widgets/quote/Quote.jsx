@@ -223,6 +223,10 @@ export default class Quote extends React.PureComponent {
     this.init();
   }
 
+  componentWillUnmount() {
+    EventBus.remove('refresh');
+  }
+
   render() {
     return (
       <div className='quotediv'>

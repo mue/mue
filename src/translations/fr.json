@@ -130,7 +130,7 @@
           },
           "background": {
             "title": "Fond",
-            "ddg_proxy": "Utiliser le proxy d'image DuckDuckGo",
+            "ddg_image_proxy": "Utiliser le proxy d'image DuckDuckGo",
             "transition": "Transition en fondu",
             "photo_information": "Show photo information",
             "category": "Catégorie",

@@ -114,7 +114,7 @@ export default class Greeting extends React.PureComponent {
         this.getGreeting(0);
 
         element.style.display = 'block';
-        element.style.fontSize = `${1.6 * Number(localStorage.getItem('zoomGreeting') / 100)}em`;
+        element.style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
       }
     });
 
@@ -123,6 +123,10 @@ export default class Greeting extends React.PureComponent {
     document.querySelector('.greeting').style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
 
     this.getGreeting(0);
+  }
+
+  componentWillUnmount() {
+    EventBus.remove('refresh');
   }
 
   render() {

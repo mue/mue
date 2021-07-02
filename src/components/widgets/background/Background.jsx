@@ -68,7 +68,7 @@ export default class Background extends React.PureComponent {
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
-      const url = (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true) ? window.constants.DDG_PROXY + this.state.url : this.state.url;
+      const url = (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true) ? window.constants.DDG_IMAGE_PROXY + this.state.url : this.state.url;
       const photoInformation = document.querySelector('.photoInformation');
 
       // just set the background
@@ -116,7 +116,10 @@ export default class Background extends React.PureComponent {
 
   // Main background getting function
   async getBackground() {
-    const offline = (localStorage.getItem('offlineMode') === 'true');
+    let offline = (localStorage.getItem('offlineMode') === 'true');
+    if (localStorage.getItem('showWelcome') === 'true') {
+      offline = true;
+    }
 
     switch (localStorage.getItem('backgroundType')) {
       case 'api':
@@ -302,7 +305,9 @@ export default class Background extends React.PureComponent {
             // fix bug
             try {
               document.querySelector('.photoInformation').style.display = 'block';
-            } catch (e) {}
+            } catch (e) {
+              // Disregard exception
+            }
           }
 
           element.style.display = 'block';
@@ -328,7 +333,7 @@ export default class Background extends React.PureComponent {
       }
 
       // uninstall photo pack reverts your background to what you had previously
-      if (data === 'marketplacebackgrounduninstall') {
+      if (data === 'marketplacebackgrounduninstall' || data === 'backgroundwelcome') {
         refresh();
       }
     });
@@ -362,7 +367,7 @@ export default class Background extends React.PureComponent {
 
     return (
       <>
-        <div style={{ 'WebkitFilter': `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}` }} id='backgroundImage'/>
+        <div style={{ WebkitFilter: `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}` }} id='backgroundImage'/>
         {(this.state.photoInfo.credit !== '') ? 
           <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo} api={this.state.currentAPI}/>
         : null}

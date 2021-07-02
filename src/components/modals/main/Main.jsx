@@ -29,17 +29,17 @@ export default function MainModal(props) {
     <>
       <span className='closeModal' onClick={props.modalClose}>&times;</span>
       <Tabs navbar={true}>
-        <div label={language.settings}>
+        <div label={language.settings} name='settings'>
           <React.Suspense fallback={renderLoader()}>
             <Settings/>
           </React.Suspense>
         </div>
-        <div label={language.addons}>
+        <div label={language.addons} name='addons'>
           <React.Suspense fallback={renderLoader()}>
             <Addons/>
           </React.Suspense>
         </div>
-        <div label={language.marketplace}>
+        <div label={language.marketplace} name='marketplace'>
           <React.Suspense fallback={renderLoader()}>
             <Marketplace/>
           </React.Suspense>

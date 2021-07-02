@@ -130,7 +130,7 @@
           },
           "background": {
             "title": "背景",
-            "ddg_proxy": "使用 DuckDuckGo 图像代理",
+            "ddg_image_proxy": "使用 DuckDuckGo 图像代理",
             "transition": "渐变",
             "photo_information": "Show photo information",
             "category": "分类",

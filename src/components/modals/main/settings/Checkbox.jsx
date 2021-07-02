@@ -1,7 +1,6 @@
 import React from 'react';
 
 import EventBus from '../../../../modules/helpers/eventbus';
-import SettingsFunctions from '../../../../modules/helpers/settings';
 
 import CheckboxUI from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -15,10 +14,11 @@ export default class Checkbox extends React.PureComponent {
   }
 
   handleChange = () => {
-    SettingsFunctions.setItem(this.props.name);
+    const value = (this.state.checked === true) ? false : true;
+    localStorage.setItem(this.props.name, value);
 
     this.setState({
-      checked: (this.state.checked === true) ? false : true
+      checked: value
     });
 
     window.stats.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
@@ -45,7 +45,7 @@ export default class Checkbox extends React.PureComponent {
     return (
       <>
         <FormControlLabel
-          control={<CheckboxUI name={this.props.name} color='primary' checked={this.state.checked} onChange={this.handleChange} />}
+          control={<CheckboxUI name={this.props.name} color='primary' className='checkbox' checked={this.state.checked} onChange={this.handleChange} />}
           label={text}
         />
         <br/>

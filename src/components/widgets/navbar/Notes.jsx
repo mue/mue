@@ -4,7 +4,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import CopyIcon from '@material-ui/icons/FileCopyRounded';
 import NotesIcon from '@material-ui/icons/AssignmentRounded';
-import Pin from './Pin';
+import Pin from '@material-ui/icons/PushPin';
 
 import { toast } from 'react-toastify';
 
@@ -37,7 +37,7 @@ export default class Notes extends React.PureComponent {
 
   copy() {
     window.stats.postEvent('feature', 'Notes copied');
-    // this.state.notes doesnt work for some reason
+    // this.state.notes doesn't work for some reason
     navigator.clipboard.writeText(localStorage.getItem('notes'));
     toast(window.language.toasts.notes);
   }
@@ -61,7 +61,7 @@ export default class Notes extends React.PureComponent {
           <NotesIcon/>
           <h3>{this.language.title}</h3>
         </div>
-        <TextareaAutosize rowsMax={50} placeholder={this.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
+        <TextareaAutosize rowsmax={50} placeholder={this.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
         <button onClick={this.pin} className='pinNote'><Pin/></button>
         <button onClick={this.copy} className='copyNote'><CopyIcon/></button>
       </span>

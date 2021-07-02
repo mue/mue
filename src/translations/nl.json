@@ -130,7 +130,7 @@
           },
           "background": {
             "title": "Achtergrond",
-            "ddg_proxy": "Use DuckDuckGo image proxy",
+            "ddg_image_proxy": "Use DuckDuckGo image proxy",
             "transition": "Fade-in transition",
             "photo_information": "Show photo information",
             "category": "Category",

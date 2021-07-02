@@ -7,9 +7,9 @@ export default function Marketplace() {
 
   return (
     <Tabs>
-      <div label={marketplace.photo_packs}><MarketplaceTab type='photo_packs'/></div>
-      <div label={marketplace.quote_packs}><MarketplaceTab type='quote_packs'/></div>
-      <div label={marketplace.preset_settings}><MarketplaceTab type='preset_settings'/></div>
+      <div label={marketplace.photo_packs} name='photo_packs'><MarketplaceTab type='photo_packs'/></div>
+      <div label={marketplace.quote_packs} name='quote_packs'><MarketplaceTab type='quote_packs'/></div>
+      <div label={marketplace.preset_settings} name='preset_settings'><MarketplaceTab type='preset_settings'/></div>
     </Tabs>
   );
 }

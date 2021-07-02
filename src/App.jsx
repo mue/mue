@@ -11,14 +11,10 @@ import { ToastContainer } from 'react-toastify';
 
 export default class App extends React.PureComponent {
   componentDidMount() {
-    if (!localStorage.getItem('firstRun')) {
-      SettingsFunctions.setDefaultSettings();
-      window.location.reload();
-    }
-
     // 4.0 -> 5.0 (the key below is only on 5.0)
     // now featuring 5.0 -> 5.1
-    if (!localStorage.getItem('order') || !localStorage.getItem('backgroundFilterAmount')) {
+    // the firstRun check was moved here because the old function was useless
+    if (!localStorage.getItem('firstRun') || !localStorage.getItem('order') || !localStorage.getItem('backgroundFilterAmount')) {
       SettingsFunctions.moveSettings();
       window.location.reload();
     }    

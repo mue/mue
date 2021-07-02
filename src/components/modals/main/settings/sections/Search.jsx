@@ -85,7 +85,6 @@ export default class SearchSettings extends React.PureComponent {
           ))}
           <option value='custom'>{search.custom.split(' ')[0]}</option>
         </Dropdown>
-
         <ul style={{ display: this.state.customDisplay }}>
           <br/>
           <p style={{ marginTop: '0px' }}>{search.custom} <span className='modalLink' onClick={() => this.resetSearch()}>{language.buttons.reset}</span></p>

@@ -55,7 +55,7 @@ export default class ColourSettings extends React.PureComponent {
       try {
         gradientSettings = JSON.parse(hex);
       } catch (e) {
-        // Disregard exception.
+        // Disregard exception
       }
     }
 

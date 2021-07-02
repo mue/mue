@@ -8,17 +8,19 @@ export default class Tabs extends React.PureComponent {
     super(props);
 
     this.state = {
-      currentTab: this.props.children[0].props.label
+      currentTab: this.props.children[0].props.label,
+      currentName: this.props.children[0].props.name 
     };
   }
 
-  onClick = (tab) => {
-    if (tab !== this.state.currentTab) {
-      window.stats.postEvent('tab', `Changed ${this.state.currentTab} to ${tab}`);
+  onClick = (tab, name) => {
+    if (name !== this.state.currentName) {
+      window.stats.postEvent('tab', `Changed ${this.state.currentName} to ${name}`);
     }
 
     this.setState({ 
-      currentTab: tab 
+      currentTab: tab,
+      currentName: name
     });
   };
 
@@ -42,7 +44,7 @@ export default class Tabs extends React.PureComponent {
               currentTab={this.state.currentTab}
               key={tab.props.label || index}
               label={tab.props.label}
-              onClick={this.onClick}
+              onClick={(nextTab) => this.onClick(nextTab, tab.props.name)}
               navbar={this.props.navbar || false}
             />
           ))}
