@@ -44,11 +44,7 @@ export default class Clock extends React.PureComponent {
           const zero = localStorage.getItem('zero');
 
           if (localStorage.getItem('seconds') === 'true') {
-            if (zero === 'false') {
-              sec = ':' + now.getSeconds();
-            } else {
-              sec = `:${('00' + now.getSeconds()).slice(-2)}`;
-            }
+            sec = `:${('00' + now.getSeconds()).slice(-2)}`;
           }
 
           if (localStorage.getItem('timeformat') === 'twentyfourhour') {
