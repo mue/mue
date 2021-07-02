@@ -49,7 +49,7 @@ export default class Clock extends React.PureComponent {
 
           if (localStorage.getItem('timeformat') === 'twentyfourhour') {
             if (zero === 'false') {
-              time = `${now.getHours()}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+              time = `${now.getHours()}:${('00' + now.getMinutes()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}`;
             } else {
               time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
             }
@@ -66,7 +66,7 @@ export default class Clock extends React.PureComponent {
             }
 
             if (zero === 'false') {
-              time = `${hours}:${now.getMinutes()}${sec}`;
+              time = `${hours}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
             } else {
               time = `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
             }
