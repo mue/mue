@@ -376,12 +376,42 @@
       "contact_support": "点此联系我们"
     },
     "welcome": {
-      "title": "欢迎使用",
-      "information": "信息",
-      "thankyoumessage1": "感谢您安装 Mue Tab。",
-      "thankyoumessage2": "祝您使用愉快。",
-      "support": "支持",
-      "close": "关闭"
+      "tip": "Quick Tip",
+      "sections": {
+        "intro": {
+          "title": "欢迎使用 Mue Tab",
+          "description": "感谢您安装。祝您使用愉快。"
+        },
+        "language": {
+          "title": "Choose your language",
+          "description": "to be added"
+        },
+        "theme": {
+          "title": "Select a theme",
+          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
+          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
+        },
+        "settings": {
+          "title": "Import Settings",
+          "description": "Installing Mue on a new device? Feel free to import your old settings!",
+          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
+        },
+        "privacy": {
+          "title": "Privacy Options",
+          "description": "to be added"
+        },
+        "final": {
+          "title": "Final step",
+          "description": "Your Mue Tab experience is about to begin.",
+          "changes": "Changes",
+          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab."
+        }
+      },
+      "buttons": {
+        "next": "Next",
+        "previous": "Previous",
+        "close": "关闭"
+      }
     },
     "feedback": {
       "title": "给我们反馈",

@@ -376,12 +376,42 @@
       "contact_support": "Contactez-nous "
     },
     "welcome": {
-      "title": "Bienvenue en",
-      "information": "Informations",
-      "thankyoumessage1": "Merci d'avoir installé Mue Tab,",
-      "thankyoumessage2": "nous espérons que vous apprécierez votre temps avec notre extension.",
-      "support": "Soutien",
-      "close": "Fermer"
+      "tip": "Quick Tip",
+      "sections": {
+        "intro": {
+          "title": "Bienvenue en Mue Tab",
+          "description": "Merci d'avoir installé, nous espérons que vous apprécierez votre temps avec notre extension."
+        },
+        "language": {
+          "title": "Choose your language",
+          "description": "to be added"
+        },
+        "theme": {
+          "title": "Select a theme",
+          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
+          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
+        },
+        "settings": {
+          "title": "Import Settings",
+          "description": "Installing Mue on a new device? Feel free to import your old settings!",
+          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
+        },
+        "privacy": {
+          "title": "Privacy Options",
+          "description": "to be added"
+        },
+        "final": {
+          "title": "Final step",
+          "description": "Your Mue Tab experience is about to begin.",
+          "changes": "Changes",
+          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab."
+        }
+      },
+      "buttons": {
+        "next": "Next",
+        "previous": "Previous",
+        "close": "Fermer"
+      }
     },
     "feedback": {
       "title": "Give us feedback",

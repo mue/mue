@@ -23,7 +23,7 @@ export default class WelcomeModal extends React.PureComponent {
       return this.setState({
         currentTab: this.state.currentTab - 1,
         image: this.images[this.state.currentTab - 1],
-        buttonText: 'Next'
+        buttonText: this.language.buttons.next
       });
     }
 
@@ -34,7 +34,7 @@ export default class WelcomeModal extends React.PureComponent {
     this.setState({
       currentTab: this.state.currentTab + 1,
       image: this.images[this.state.currentTab + 1],
-      buttonText: (this.state.currentTab !== this.state.finalTab) ? 'Next' : 'Close'
+      buttonText: (this.state.currentTab !== this.state.finalTab) ? this.language.buttons.next : this.language.buttons.close
     });
   }
 
@@ -43,7 +43,7 @@ export default class WelcomeModal extends React.PureComponent {
     this.setState({
       currentTab: tab,
       image: this.images[tab],
-      buttonText: 'Next'
+      buttonText: this.language.buttons.next
     });
   }
 
@@ -59,7 +59,7 @@ export default class WelcomeModal extends React.PureComponent {
             <WelcomeSections currentTab={this.state.currentTab} switchTab={(tab) => this.switchTab(tab)}/>
           </div>
           <div className='buttons'>
-            {(this.state.currentTab !== 0) ? <button className='close' style={{ marginRight: '20px' }} onClick={() => this.changeTab(true)}>Previous</button> : null}
+            {(this.state.currentTab !== 0) ? <button className='close' style={{ marginRight: '20px' }} onClick={() => this.changeTab(true)}>{this.language.buttons.previous}</button> : null}
             <button className='close' onClick={() => this.changeTab()}>{this.state.buttonText}</button>
           </div>
         </section>

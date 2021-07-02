@@ -64,8 +64,8 @@ export default class WelcomeSections extends React.Component {
   
     const intro = (
       <>
-        <h1>{language.title} Mue Tab</h1>
-        <p>{language.thankyoumessage1} {language.thankyoumessage2}</p>
+        <h1>{language.sections.intro.title}</h1>
+        <p>{language.sections.intro.description}</p>
         <h3 className='quicktip'>to be added</h3>
         <div className='examples'>
           <img src={this.welcomeImages[this.state.welcomeImage]} alt='example mue setup' draggable={false}/>
@@ -75,16 +75,16 @@ export default class WelcomeSections extends React.Component {
   
     const chooseLanguage = (
       <>
-        <h1>Choose your language</h1>
-        <p>to be added</p>
+        <h1>{language.sections.language.title}</h1>
+        <p>{language.sections.language.description}</p>
         <Radio name='language' options={languages}/>
       </>
     );
   
     const theme = (
       <>
-        <h1>Select a theme</h1>
-        <p>Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.</p>
+        <h1>{language.sections.theme.title}</h1>
+        <p>{language.sections.theme.description}</p>
         <div className='themesToggleArea'>
           <div className={this.state.autoClass} onClick={() => this.changeTheme('auto')}>
             <AutoIcon/>
@@ -100,40 +100,40 @@ export default class WelcomeSections extends React.Component {
                 <span>Dark</span>
             </div>
           </div>
-          <h3 className='quicktip'>Quick Tip</h3>
-          <p>Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes.</p>
+          <h3 className='quicktip'>{language.tip}</h3>
+          <p>{language.sections.theme.tip}</p>
         </div>
       </>
     );
   
     const settings = (
       <>
-        <h1>Import Settings</h1>
-        <p>Installing Mue on a new device? Feel free to import your old settings!</p>
+        <h1>{language.sections.settings.title}</h1>
+        <p>{language.sections.settings.description}</p>
         <button className='upload' onClick={() => document.getElementById('file-input').click()}>
           <UploadIcon/>
           <br/>
           <span>{window.language.modals.main.settings.buttons.import}</span>
         </button>
         <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => this.importSettings(e)}/>
-        <h3 className='quicktip'>Quick Tip</h3>
-        <p>You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation.</p>
+        <h3 className='quicktip'>{language.tip}</h3>
+        <p>{language.sections.settings.tip}</p>
       </>
     );
 
     const privacy = (
       <>
-        <h1>Privacy Options</h1>
-        <p>to be added</p>
+        <h1>{language.sections.privacy.title}</h1>
+        <p>{language.sections.privacy.description}</p>
       </>
     );
 
     const final = (
       <>
-        <h1>Final step</h1>
-        <p>Your Mue Tab experience is finally about to begin.</p>
-        <h3 className='quicktip'>Changes</h3>
-        <p>To change settings later click on the settings icon in the top right corner of your tab.</p>
+        <h1>{language.sections.final.title}</h1>
+        <p>{language.sections.final.description}</p>
+        <h3 className='quicktip'>{language.sections.final.changes}</h3>
+        <p>{language.sections.final.changes_description}</p>
         <div className='themesToggleArea'>
           <div className='toggle' onClick={() => this.props.switchTab(1)}>Language: {languages.find((i) => i.value === localStorage.getItem('language')).name}</div>
           <div className='toggle' onClick={() => this.props.switchTab(3)}>Theme: {this.getSetting('theme')}</div>
