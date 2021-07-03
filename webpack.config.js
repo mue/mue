@@ -64,6 +64,10 @@ module.exports = {
         {
           from: 'public/offline-images',
           to: 'offline-images'
+        },
+        {
+          from: 'public/welcome-images',
+          to: 'welcome-images'
         }
       ]
     }),

@@ -78,6 +78,13 @@ export default class QuickLinks extends React.PureComponent {
     window.stats.postEvent('feature', 'Quicklink add');
 
     this.toggleAdd();
+
+    // make sure image is correct size
+    const element = document.querySelector('.quicklinks-container');
+    const images = element.getElementsByTagName('img');
+    for (const img of images) {
+      img.style.height = `${0.87 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
+    };
   }
 
   toggleAdd = () => {
@@ -102,6 +109,12 @@ export default class QuickLinks extends React.PureComponent {
         }
 
         element.style.display = 'block';
+        const images = element.getElementsByTagName('img');
+        for (const img of images) {
+          img.style.height = `${0.87 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
+        };
+        element.querySelector('button').style.fontSize = `${1.15 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
+
         this.setState({
           items: JSON.parse(localStorage.getItem('quicklinks'))
         });
@@ -117,6 +130,13 @@ export default class QuickLinks extends React.PureComponent {
         e.preventDefault();
       }
     };
+
+    const element = document.querySelector('.quicklinks-container');
+    const images = element.getElementsByTagName('img');
+    for (const img of images) {
+      img.style.height = `${0.87 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
+    };
+    element.querySelector('button').style.fontSize = `${1.15 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
   }
 
   componentWillUnmount() {

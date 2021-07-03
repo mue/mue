@@ -169,8 +169,8 @@ export default class BackgroundSettings extends React.PureComponent {
         {backgroundSettings}
 
         <h3>{background.buttons.title}</h3>
-        <Checkbox name='view' text={background.buttons.view} element='.other' />
-        <Checkbox name='favouriteEnabled' text={background.buttons.favourite} element='.other' />
+        <Checkbox name='view' text={background.buttons.view} category='navbar' />
+        <Checkbox name='favouriteEnabled' text={background.buttons.favourite} category='navbar' />
         <Checkbox name='downloadbtn' text={background.buttons.download} element='.other' />
 
         <h3>{background.effects.title}</h3>

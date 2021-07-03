@@ -28,8 +28,8 @@ export default function AppearanceSettings() {
       <Radio name='theme' title={appearance.theme.title} options={themeOptions} category='other' />
 
       <h3>{appearance.navbar.title}</h3>
-      <Checkbox name='notesEnabled' text={appearance.navbar.notes} element='.other' />
-      <Checkbox name='refresh' text={appearance.navbar.refresh} element='.other' />
+      <Checkbox name='notesEnabled' text={appearance.navbar.notes} category='navbar' />
+      <Checkbox name='refresh' text={appearance.navbar.refresh} category='navbar' />
 
       <h3>{appearance.font.title}</h3>
       <Text title={appearance.font.custom} name='font' upperCaseFirst={true} category='other' />

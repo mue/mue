@@ -43,9 +43,9 @@ export default class Widgets extends React.PureComponent {
   }
 
   render() {
-    // don't hide when welcome is there
-    if (localStorage.getItem('showWelcome') === 'true') {
-      return <div id='widgets'></div>
+    // don't show when welcome is there
+    if (localStorage.getItem('showWelcome') !== 'false') {
+      return <div id='widgets'></div>;
     }
 
     // allow for re-ordering widgets
@@ -57,7 +57,7 @@ export default class Widgets extends React.PureComponent {
       });
     } else {
       // prevent error
-      elements = ['greeting', 'time', 'quicklinks', 'quote', 'date'];
+      elements = [<Greeting/>, <Clock/>, <QuickLinks/>, <Quote/>, <Date/>];
     }
 
     return (

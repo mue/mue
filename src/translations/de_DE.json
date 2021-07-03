@@ -22,7 +22,7 @@
       "new": "Neuer Link",
       "name": "Name",
       "url": "URL",
-      "add": "hinzufügen",
+      "add": "Hinzufügen",
       "name_error": "Muss einen Namen angeben",
       "url_error": "Muss eine URL angeben"
     },

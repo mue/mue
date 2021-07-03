@@ -22,7 +22,7 @@ export default class WelcomeSections extends React.Component {
       welcomeImage: 0
     };
     this.changeWelcomeImg = this.changeWelcomeImg.bind(this);
-    this.welcomeImages = ['https://external-content.duckduckgo.com/iu/?u=example.com/example.png'];
+    this.welcomeImages = ['./welcome-images/example1.webp', './welcome-images/example2.webp', './welcome-images/example3.webp', './welcome-images/example4.webp'];
   }
 
   changeTheme(type) {
@@ -58,6 +58,12 @@ export default class WelcomeSections extends React.Component {
     this.timeout = setTimeout(this.changeWelcomeImg, 3 * 1000);
   }
 
+  componentWillUnmount() {
+  	if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+  }
+
   render() {
     const language = window.language.modals.welcome;
     let tabContent;
@@ -66,7 +72,7 @@ export default class WelcomeSections extends React.Component {
       <>
         <h1>{language.sections.intro.title}</h1>
         <p>{language.sections.intro.description}</p>
-        <h3 className='quicktip'>to be added</h3>
+        <h3 className='quicktip'>#shareyourmue</h3>
         <div className='examples'>
           <img src={this.welcomeImages[this.state.welcomeImage]} alt='example mue setup' draggable={false}/>
         </div>
@@ -81,6 +87,7 @@ export default class WelcomeSections extends React.Component {
       </>
     );
   
+    const { appearance } = window.language.modals.main.settings.sections;
     const theme = (
       <>
         <h1>{language.sections.theme.title}</h1>
@@ -88,16 +95,16 @@ export default class WelcomeSections extends React.Component {
         <div className='themesToggleArea'>
           <div className={this.state.autoClass} onClick={() => this.changeTheme('auto')}>
             <AutoIcon/>
-            <span>Auto</span>
+            <span>{appearance.theme.auto}</span>
           </div>
           <div className='options'>
             <div className={this.state.lightClass} onClick={() => this.changeTheme('light')}>
                 <LightModeIcon/>
-                <span>Light</span>
+                <span>{appearance.theme.light}</span>
             </div>
             <div className={this.state.darkClass} onClick={() => this.changeTheme('dark')}>
                 <DarkModeIcon/>
-                <span>Dark</span>
+                <span>{appearance.theme.dark}</span>
             </div>
           </div>
           <h3 className='quicktip'>{language.tip}</h3>
@@ -139,7 +146,7 @@ export default class WelcomeSections extends React.Component {
           <div className='toggle' onClick={() => this.props.switchTab(3)}>Theme: {this.getSetting('theme')}</div>
         </div>
       </>
-    )
+    );
   
     switch (this.props.currentTab) {
       case 1: tabContent = chooseLanguage; break;
