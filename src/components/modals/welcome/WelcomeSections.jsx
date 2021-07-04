@@ -9,17 +9,23 @@ import LightModeIcon from '@material-ui/icons/LightMode';
 import DarkModeIcon from '@material-ui/icons/DarkMode';
 
 import SettingsFunctions from '../../../modules/helpers/settings';
+import SettingsFunctionsModal from '../../../modules/helpers/settings/modals';
 
 const languages = require('../../../modules/languages.json');
+const default_settings = require('../../../modules/default_settings.json');
 
 export default class WelcomeSections extends React.Component {
   constructor() {
     super();
     this.state = {
+      // themes
       autoClass: 'toggle auto active',
       lightClass: 'toggle lightTheme',
       darkClass: 'toggle darkTheme',
-      welcomeImage: 0
+      // welcome
+      welcomeImage: 0,
+      // final
+      importedSettings: []
     };
     this.changeWelcomeImg = this.changeWelcomeImg.bind(this);
     this.welcomeImages = ['./welcome-images/example1.webp', './welcome-images/example2.webp', './welcome-images/example3.webp', './welcome-images/example4.webp'];
@@ -42,8 +48,33 @@ export default class WelcomeSections extends React.Component {
   }
 
   importSettings(e) {
-    SettingsFunctions.importSettings(e);
-    this.props.switchTab(4);
+    SettingsFunctionsModal.importSettings(e);
+
+    let settings = [];
+    const data = JSON.parse(e.target.result);
+    Object.keys(data).forEach((setting) => {
+      if (setting === 'language' || setting === 'theme'|| setting === 'firstRun' || setting === 'showWelcome' || setting === 'showReminder') {
+        return;
+      }
+
+      const defaultSetting = default_settings.find((i) => i.name === setting);
+      if (defaultSetting !== undefined) {
+        if (data[setting] === String(defaultSetting.value)) {
+          return;
+        }
+      }
+
+      settings.push({
+        name: setting,
+        value: data[setting]
+      });
+    });
+
+    this.setState({
+      importedSettings: settings
+    });
+
+    this.props.switchTab(5);
   }
 
   changeWelcomeImg() {
@@ -58,9 +89,16 @@ export default class WelcomeSections extends React.Component {
     this.timeout = setTimeout(this.changeWelcomeImg, 3 * 1000);
   }
 
-  componentWillUnmount() {
-  	if (this.timeout) {
-      clearTimeout(this.timeout);
+  // cancel welcome image timer if not on welcome tab
+  componentDidUpdate() {
+  	if (this.props.currentTab !== 0) {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+    } else {
+      if (!this.timeout) {
+        this.timeout = setTimeout(this.changeWelcomeImg, 3 * 1000);
+      }
     }
   }
 
@@ -88,6 +126,8 @@ export default class WelcomeSections extends React.Component {
     );
   
     const { appearance } = window.language.modals.main.settings.sections;
+    const languageSettings = window.language.modals.main.settings.sections.language;
+
     const theme = (
       <>
         <h1>{language.sections.theme.title}</h1>
@@ -142,8 +182,9 @@ export default class WelcomeSections extends React.Component {
         <h3 className='quicktip'>{language.sections.final.changes}</h3>
         <p>{language.sections.final.changes_description}</p>
         <div className='themesToggleArea'>
-          <div className='toggle' onClick={() => this.props.switchTab(1)}>Language: {languages.find((i) => i.value === localStorage.getItem('language')).name}</div>
-          <div className='toggle' onClick={() => this.props.switchTab(3)}>Theme: {this.getSetting('theme')}</div>
+          <div className='toggle' onClick={() => this.props.switchTab(1)}>{languageSettings.title}: {languages.find((i) => i.value === localStorage.getItem('language')).name}</div>
+          <div className='toggle' onClick={() => this.props.switchTab(3)}>{appearance.theme.title}: {this.getSetting('theme')}</div>
+          {(this.state.importedSettings.length !== 0) ? <div className='toggle' onClick={() => this.props.switchTab(2)}>Imported {this.state.importedSettings.length} settings</div> : null}
         </div>
       </>
     );

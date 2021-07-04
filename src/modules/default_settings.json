@@ -216,10 +216,6 @@
     "value": "grayscale"
   },
   {
-    "name": "navbarHover",
-    "value": false
-  },
-  {
     "name": "apiQuality",
     "value": "high"
   },

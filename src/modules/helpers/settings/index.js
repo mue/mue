@@ -92,8 +92,12 @@ export default class SettingsFunctions {
 
     const js = localStorage.getItem('customjs');
     if (js) {
-      // eslint-disable-next-line no-eval
-      eval(js);
+      try {
+        // eslint-disable-next-line no-eval
+        eval(js);
+      } catch (e) {
+        console.error('Failed to run custom JS: ', e);
+      }
     }
 
     if (localStorage.getItem('experimental') === 'true') {

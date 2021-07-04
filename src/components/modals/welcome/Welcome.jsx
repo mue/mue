@@ -43,7 +43,7 @@ export default class WelcomeModal extends React.PureComponent {
     this.setState({
       currentTab: tab,
       image: this.images[tab],
-      buttonText: this.language.buttons.next
+      buttonText: (tab !== this.state.finalTab + 1) ? this.language.buttons.next : this.language.buttons.close
     });
   }
 
