@@ -46,7 +46,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 Please see our [roadmap](https://github.com/mue/mue/projects)
 
 ## Installation
-*A demo of the tab can be found [here](https://demo.muetab.com)*
+*A demo of the tab can be found [here](https://demo.muetab.com), and the latest GitHub commit build [here](https://mue.vercel.app)*
 ### Chrome
 [![Chrome Web Store Logo](assets/chrome.png)](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 <br>
