@@ -64,12 +64,14 @@ function Tab(props) {
     case settings.changelog: icon = <Changelog/>; break;
     case settings.about.title: icon = <About/>; break;
 
-    // Store
+    // Addons
+    case addons.added: icon = <Added/>; break;
+    case addons.sideload: icon = <Sideload/>; break;
+
+    // Marketplace
     case marketplace.photo_packs: icon = <Background/>; break;
     case marketplace.quote_packs: icon = <Quote/>; break;
     case marketplace.preset_settings: icon = <Advanced/>; break;
-    case addons.added: icon = <Added/>; break;
-    case addons.sideload: icon = <Sideload/>; break;
 
     default: break;
   }

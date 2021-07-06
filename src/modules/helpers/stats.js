@@ -2,13 +2,13 @@ export default class Stats {
   constructor(id) {
     this.id = id;
     this.url = window.constants.UMAMI_DOMAIN + '/api/collect';
-    this.offline = (localStorage.getItem('offlineMode') !== 'true');
+    this.online = (localStorage.getItem('offlineMode') === 'false');
   }
 
   async postEvent(type, name) {
     const value = name.toLowerCase().replaceAll(' ', '-');
 
-    if (!this.offline) {
+    if (this.online) {
       // umami
       await fetch(this.url, {
         method: 'POST',
@@ -46,7 +46,7 @@ export default class Stats {
   }
 
   async tabLoad() {
-    if (!this.offline) {
+    if (this.online) {
       // umami
       await fetch(this.url, {
         method: 'POST',

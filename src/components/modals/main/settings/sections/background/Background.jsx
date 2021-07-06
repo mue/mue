@@ -114,7 +114,7 @@ export default class BackgroundSettings extends React.PureComponent {
     const APISettings = (
       <>
         <br/>
-        <Radio title={background.source.api} options={apiOptions} name='backgroundAPI' category='background'/>
+        <Radio title={background.source.api} options={apiOptions} name='backgroundAPI' category='background' element='#backgroundImage'/>
         <br/>
         <Dropdown label={background.category} name='apiCategory'>
           {this.state.backgroundCategories.map((category) => (
@@ -152,7 +152,7 @@ export default class BackgroundSettings extends React.PureComponent {
     return (
       <>
         <h2>{background.title}</h2>
-        <Switch name='background' text={this.language.enabled} category='background' />
+        <Switch name='background' text={this.language.enabled} category='background' element='#backgroundImage' />
         <Checkbox name='ddgProxy' text={background.ddg_image_proxy} />
         <Checkbox name='bgtransition' text={background.transition} />
         <Checkbox name='photoInformation' text={background.photo_information} category='background' element='.other' />
@@ -174,17 +174,17 @@ export default class BackgroundSettings extends React.PureComponent {
         <Checkbox name='downloadbtn' text={background.buttons.download} element='.other' />
 
         <h3>{background.effects.title}</h3>
-        <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' category='background' />
-        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='90' display='%' category='background' />
+        <Slider title={background.effects.blur} name='blur' min='0' max='100' default='0' display='%' category='background' element='#backgroundImage' />
+        <Slider title={background.effects.brightness} name='brightness' min='0' max='100' default='90' display='%' category='background' element='#backgroundImage' />
         <br/><br/>
-        <Dropdown label={background.effects.filters.title} name='backgroundFilter' category='background'>
+        <Dropdown label={background.effects.filters.title} name='backgroundFilter' category='background' element='#backgroundImage'>
           <option value='grayscale'>{background.effects.filters.grayscale}</option>
           <option value='sepia'>{background.effects.filters.sepia}</option>
           <option value='invert'>{background.effects.filters.invert}</option>
           <option value='saturate'>{background.effects.filters.saturate}</option>
           <option value='contrast'>{background.effects.filters.contrast}</option>
         </Dropdown>
-        <Slider title={background.effects.filters.amount} name='backgroundFilterAmount' min='0' max='100' default='0' display='%' category='background' />
+        <Slider title={background.effects.filters.amount} name='backgroundFilterAmount' min='0' max='100' default='0' display='%' category='background' element='#backgroundImage' />
       </>
     );
   }

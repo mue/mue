@@ -358,6 +358,9 @@ li {
 .resetfooter {
   position: absolute;
   bottom: 20px;
+  width: 300px;
+  justify-content: center;
+  display: flex;
 
   button.reset {
     margin-right: 43px;

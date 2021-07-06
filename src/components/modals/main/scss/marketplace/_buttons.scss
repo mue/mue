@@ -46,3 +46,14 @@
   display: inline;
   margin-top: 0px;
 }
+
+button.round {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 3px;
+  vertical-align: middle;
+  padding: 10px;
+}

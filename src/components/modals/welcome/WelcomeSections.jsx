@@ -1,8 +1,9 @@
 import React from 'react';
 
 import Radio from '../main/settings/Radio';
-//import Checkbox from '../main/settings/Checkbox';
+import Checkbox from '../main/settings/Checkbox';
 import FileUpload from '../main/settings/FileUpload';
+
 import UploadIcon from '@material-ui/icons/CloudUpload';
 import AutoIcon from '@material-ui/icons/AutoAwesome';
 import LightModeIcon from '@material-ui/icons/LightMode';
@@ -79,9 +80,11 @@ export default class WelcomeSections extends React.Component {
 
   changeWelcomeImg() {
     let welcomeImage = this.state.welcomeImage;
+
     this.setState({
       welcomeImage: ++welcomeImage % this.welcomeImages.length
     });
+
     this.timeout = setTimeout(this.changeWelcomeImg, 3 * 1000);
   }
 
@@ -125,7 +128,7 @@ export default class WelcomeSections extends React.Component {
       </>
     );
   
-    const { appearance } = window.language.modals.main.settings.sections;
+    const { appearance, advanced } = window.language.modals.main.settings.sections;
     const languageSettings = window.language.modals.main.settings.sections.language;
 
     const theme = (
@@ -139,12 +142,12 @@ export default class WelcomeSections extends React.Component {
           </div>
           <div className='options'>
             <div className={this.state.lightClass} onClick={() => this.changeTheme('light')}>
-                <LightModeIcon/>
-                <span>{appearance.theme.light}</span>
+              <LightModeIcon/>
+              <span>{appearance.theme.light}</span>
             </div>
             <div className={this.state.darkClass} onClick={() => this.changeTheme('dark')}>
-                <DarkModeIcon/>
-                <span>{appearance.theme.dark}</span>
+              <DarkModeIcon/>
+              <span>{appearance.theme.dark}</span>
             </div>
           </div>
           <h3 className='quicktip'>{language.tip}</h3>
@@ -172,6 +175,10 @@ export default class WelcomeSections extends React.Component {
       <>
         <h1>{language.sections.privacy.title}</h1>
         <p>{language.sections.privacy.description}</p>
+        <Checkbox name='offlineMode' text={advanced.offline_mode} element='.other' />
+        <p>{language.sections.privacy.offline_mode_description}</p>
+        <h3 className='quicktip'>{language.sections.privacy.links.title}</h3>
+        <a className='privacy' href='https://muetab.com/privacy' target='_blank' rel='noopener noreferrer'>{language.sections.privacy.links.privacy_policy}</a>
       </>
     );
 

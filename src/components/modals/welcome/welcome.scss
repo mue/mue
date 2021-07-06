@@ -24,10 +24,6 @@
     justify-content: center;
     align-items: center;
 
-    img {
-      height: 300px;
-      width: 400px;
-    }
   }
 
   section:nth-child(2) {
@@ -82,20 +78,6 @@
   }
 }
 
-.examples {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-
-  img {
-    width: 30rem;
-    height: auto;
-    display: block;
-    margin: 30px;
-    border-radius: 12px;
-  }
-}
 
 .themesToggleArea {
   .active {
@@ -145,4 +127,24 @@ a.privacy {
   &:hover {
     color: #5352ed;
   }
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 30rem !important;
+    height: auto !important;
+    display: block;
+    margin: 30px;
+    border-radius: 12px;
+  }
+}
+
+.showcaseimg {
+  width: 350px;
+  height: auto;
 }

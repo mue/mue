@@ -20,7 +20,6 @@ export default class SearchSettings extends React.PureComponent {
       customDisplay: 'none',
       customValue: localStorage.getItem('customSearchEngine') || ''
     };
-    this.language = window.language.modals.main.settings;
   }
 
   resetSearch() {

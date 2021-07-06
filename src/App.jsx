@@ -14,7 +14,7 @@ export default class App extends React.PureComponent {
     // 4.0 -> 5.0 (the key below is only on 5.0)
     // now featuring 5.0 -> 5.1
     // the firstRun check was moved here because the old function was useless
-    if (!localStorage.getItem('firstRun') || !localStorage.getItem('order') || !localStorage.getItem('backgroundFilterAmount')) {
+    if (!localStorage.getItem('firstRun') || !localStorage.getItem('stats')) {
       SettingsFunctions.moveSettings();
       window.location.reload();
     }    

@@ -238,5 +238,9 @@
   {
     "name": "statsData",
     "value": "{}"
+  },
+  {
+    "name": "offlineMode",
+    "value": false
   }
 ]

@@ -77,7 +77,7 @@ export default class Marketplace extends React.PureComponent {
   }
 
   async getItems() {
-    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/all', { signal: this.controller.signal })).json();
+    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/items/' + this.props.type, { signal: this.controller.signal })).json();
     const featured = await (await fetch(window.constants.MARKETPLACE_URL + '/featured', { signal: this.controller.signal })).json();
 
     if (this.controller.signal.aborted === true) {
@@ -85,8 +85,8 @@ export default class Marketplace extends React.PureComponent {
     }
 
     this.setState({
-      items: data[this.props.type],
-      oldItems: data[this.props.type],
+      items: data,
+      oldItems: data,
       featured: featured.data,
       done: true
     });

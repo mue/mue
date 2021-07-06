@@ -100,6 +100,10 @@ export default class QuickLinks extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (localStorage.getItem('offlineMode') === 'true') {
+      return; 
+    }
+
     EventBus.on('refresh', (data) => {
       if (data === 'quicklinks') {
         const element = document.querySelector('.quicklinks-container');
@@ -144,6 +148,10 @@ export default class QuickLinks extends React.PureComponent {
   }
 
   render() {
+    if (localStorage.getItem('offlineMode') === 'true') {
+      return null; 
+    }
+
     let target, rel = null;
     if (localStorage.getItem('quicklinksnewtab') === 'true') {
       target = '_blank';
