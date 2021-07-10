@@ -14,7 +14,7 @@ import EventBus from '../../../modules/helpers/eventbus';
 
 import './scss/index.scss';
 
-export default class Navbar extends React.Component {
+export default class Navbar extends React.PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'navbar') {

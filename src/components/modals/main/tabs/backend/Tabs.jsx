@@ -42,7 +42,7 @@ export default class Tabs extends React.PureComponent {
           {this.props.children.map((tab, index) => (
             <Tab
               currentTab={this.state.currentTab}
-              key={tab.props.label || index}
+              key={index}
               label={tab.props.label}
               onClick={(nextTab) => this.onClick(nextTab, tab.props.name)}
               navbar={this.props.navbar || false}

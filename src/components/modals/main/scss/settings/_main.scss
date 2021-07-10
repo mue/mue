@@ -47,6 +47,21 @@ input {
       border-radius: 100%;
     }
   }
+
+  &[type=date] {
+    width: 200px;
+    color: var(--modal-text);
+    background: var(--sidebar);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+  }
+}
+
+.dark {
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
 }
 
 h4 {

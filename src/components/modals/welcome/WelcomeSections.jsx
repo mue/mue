@@ -15,7 +15,7 @@ import SettingsFunctionsModal from '../../../modules/helpers/settings/modals';
 const languages = require('../../../modules/languages.json');
 const default_settings = require('../../../modules/default_settings.json');
 
-export default class WelcomeSections extends React.Component {
+export default class WelcomeSections extends React.PureComponent {
   constructor() {
     super();
     this.state = {
