@@ -7,14 +7,12 @@ export default class Autocomplete extends React.PureComponent {
     super(props);
     this.state = {
       filtered: [],
-      showList: false,
       input: ''
     };
-    this.enabled = (localStorage.getItem('autocomplete') === 'true');
   }
 
   onChange = (e) => {
-    if (this.enabled === false) {
+    if (localStorage.getItem('autocomplete') !== 'true') {
       return this.setState({
         input: e.target.value
       });
@@ -22,7 +20,6 @@ export default class Autocomplete extends React.PureComponent {
 
     this.setState({
       filtered: this.props.suggestions.filter((suggestion) => suggestion.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1),
-      showList: true,
       input: e.target.value
     });
 
@@ -32,7 +29,6 @@ export default class Autocomplete extends React.PureComponent {
   onClick = (e) => {
     this.setState({
       filtered: [],
-      showList: false,
       input: e.target.innerText
     });
 
@@ -42,20 +38,19 @@ export default class Autocomplete extends React.PureComponent {
   render() {
     let autocomplete = null;
 
-    if (this.state.showList && this.state.input) {
-      if (this.state.filtered.length && localStorage.getItem('autocomplete') === 'true') {
-        autocomplete = (
-          <ul className='suggestions'>
-            {this.state.filtered.map((suggestion) => {
-              return (
-                <li key={suggestion} onClick={this.onClick}>
-                  {suggestion}
-                </li>
-              );
-            })}
-          </ul>
-        );
-      }
+    // length will only be > 0 if enabled
+    if (this.state.filtered.length > 0 && this.state.input.length > 0) {
+      autocomplete = (
+        <ul className='suggestions'>
+          {this.state.filtered.map((suggestion) => {
+            return (
+              <li key={suggestion} onClick={this.onClick}>
+                {suggestion}
+              </li>
+            );
+          })}
+        </ul>
+      );
     }
 
     return (
@@ -64,7 +59,6 @@ export default class Autocomplete extends React.PureComponent {
           type='text'
           onChange={this.onChange}
           value={this.state.input}
-          name={this.props.name || 'name'}
           placeholder={this.props.placeholder || ''}
           autoComplete='off'
           id={this.props.id || ''} />

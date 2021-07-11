@@ -1,7 +1,6 @@
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
-import fetchJSONP from 'fetch-jsonp';
 
 import AutocompleteInput from '../../helpers/autocomplete/Autocomplete';
 
@@ -64,13 +63,22 @@ export default class Search extends React.PureComponent {
   }
 
   async getSuggestions(input) {
-    const data = await (await fetchJSONP(this.state.autocompleteURL + this.state.autocompleteQuery + input, {
-      jsonpCallback: this.state.autocompleteCallback
-    })).json();
+    window.setResults = (results) => { 
+      window.searchResults = results;
+    }
 
-    this.setState({
-      suggestions: data[1].splice(0, 3)
-    });
+    const script = document.createElement('script')
+    script.src = `${this.state.autocompleteURL + this.state.autocompleteQuery + input}&${this.state.autocompleteCallback}=window.setResults`;
+    document.head.appendChild(script);
+
+    try {
+      this.setState({
+        suggestions: window.searchResults[1].splice(0, 3)
+      });
+    // ignore error if empty
+    } catch (e) {}
+
+    document.head.removeChild(script);
   }
 
   init() {
@@ -136,7 +144,7 @@ export default class Search extends React.PureComponent {
       <form action={this.state.url} className='searchBar'>
         {this.state.microphone}
         <SearchIcon onClick={this.searchButton}/>
-        <AutocompleteInput placeholder={this.language} name={this.state.query} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
+        <AutocompleteInput placeholder={this.language} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
       </form>
     );
   }
