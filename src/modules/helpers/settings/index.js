@@ -56,7 +56,7 @@ export default class SettingsFunctions {
         try {
           document.head.removeChild(document.getElementById(element));
         } catch (e) {
-           // Disregard exception
+          // Disregard exception
         }
       });
     }
