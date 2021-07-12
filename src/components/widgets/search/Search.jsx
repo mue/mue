@@ -65,9 +65,9 @@ export default class Search extends React.PureComponent {
   async getSuggestions(input) {
     window.setResults = (results) => { 
       window.searchResults = results;
-    }
+    };
 
-    const script = document.createElement('script')
+    const script = document.createElement('script');
     script.src = `${this.state.autocompleteURL + this.state.autocompleteQuery + input}&${this.state.autocompleteCallback}=window.setResults`;
     document.head.appendChild(script);
 
@@ -82,9 +82,8 @@ export default class Search extends React.PureComponent {
   }
 
   init() {
-    let url;
+    let url, microphone;
     let query = 'q';
-    let microphone = null;
 
     const setting = localStorage.getItem('searchEngine');
     const info = searchEngines.find((i) => i.settingsName === setting);
@@ -104,9 +103,7 @@ export default class Search extends React.PureComponent {
       microphone = <MicIcon className='micIcon' onClick={this.startSpeechRecognition}/>;
     }
 
-    let autocompleteURL;
-    let autocompleteQuery;
-    let autocompleteCallback;
+    let autocompleteURL, autocompleteQuery, autocompleteCallback;
 
     if (localStorage.getItem('autocomplete') === 'true') {
       const info = autocompleteProviders.find((i) => i.value === localStorage.getItem('autocompleteProvider'));

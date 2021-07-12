@@ -12,21 +12,33 @@ import { toast } from 'react-toastify';
 import './quote.scss';
 
 export default class Quote extends React.PureComponent {
+  buttons = {
+    tweet: <TwitterIcon className='copyButton' onClick={() => this.tweetQuote()} />,
+    copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />,
+    unfavourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />,
+    favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} />
+  }
+
   constructor() {
     super();
     this.state = {
       quote: '',
       author: '',
-      favourited: <StarIcon2 className='copyButton' onClick={this.favourite} />,
-      tweet: '',
-      copy: '',
-      quoteLanguage: ''
-    };
-    this.buttons = {
-      tweet: <TwitterIcon className='copyButton' onClick={this.tweetQuote} />,
-      copy: <FileCopy className='copyButton' onClick={this.copyQuote} />
+      favourited: this.useFavourite(),
+      tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet,
+      copy: (localStorage.getItem('copyButton') === 'false') ? null : this.buttons.copy,
+      quoteLanguage: '',
+      type: localStorage.getItem('quoteType') || 'api'
     };
     this.language = window.language.widgets.quote;
+  }
+
+  useFavourite() {
+    let favouriteQuote = null;
+    if (localStorage.getItem('favouriteQuoteEnabled') === 'true') {
+      favouriteQuote = localStorage.getItem('favouriteQuote') ? this.buttons.favourited : this.buttons.unfavourited;
+    }
+    return favouriteQuote;
   }
 
   doOffline() {
@@ -63,7 +75,7 @@ export default class Quote extends React.PureComponent {
       });
     }
 
-    switch (localStorage.getItem('quoteType') || 'api') {
+    switch (this.state.type) {
       case 'custom':
         const customQuote = localStorage.getItem('customQuote');
         const customQuoteAuthor = localStorage.getItem('customQuoteAuthor');
@@ -72,8 +84,7 @@ export default class Quote extends React.PureComponent {
           return this.setState({
             quote: '"' + customQuote + '"',
             author: customQuoteAuthor,
-            authorlink: this.getAuthorLink(customQuote),
-            type: 'custom'
+            authorlink: this.getAuthorLink(customQuote)
           });
         }
         break;
@@ -91,8 +102,7 @@ export default class Quote extends React.PureComponent {
             return this.setState({
               quote: '"' + data[quotePackAPI.quote] + '"',
               author: author,
-              authorlink: this.getAuthorLink(author),
-              type: 'quote_pack'
+              authorlink: this.getAuthorLink(author)
             });
           } catch (e) {
             return this.doOffline();
@@ -109,8 +119,7 @@ export default class Quote extends React.PureComponent {
             return this.setState({
               quote: '"' + data.quote + '"',
               author: data.author,
-              authorlink: this.getAuthorLink(data.author),
-              type: 'quote_pack'
+              authorlink: this.getAuthorLink(data.author)
             });
           } else {
             return this.doOffline();
@@ -136,8 +145,7 @@ export default class Quote extends React.PureComponent {
             quote: '"' + data.quote + '"',
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
-            quoteLanguage: quotelanguage,
-            type: 'api'
+            quoteLanguage: quotelanguage
           });
         } catch (e) {
           // ..and if that fails we load one locally
@@ -149,27 +157,27 @@ export default class Quote extends React.PureComponent {
     }
   }
 
-  copyQuote = () => {
+  copyQuote() {
     window.stats.postEvent('feature', 'Quote copied');
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
     toast(window.language.toasts.quote);
   }
 
-  tweetQuote = () => {
+  tweetQuote() {
     window.stats.postEvent('feature', 'Quote tweet');
     window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus();
   }
 
-  favourite = () => {
+  favourite() {
     if (localStorage.getItem('favouriteQuote')) {
       localStorage.removeItem('favouriteQuote');
       this.setState({
-        favourited: <StarIcon2 className='copyButton' onClick={this.favourite} />
+        favourited: this.buttons.unfavourited
       });
     } else {
       localStorage.setItem('favouriteQuote', this.state.quote + ' - ' + this.state.author);
       this.setState({
-        favourited: <StarIcon className='copyButton' onClick={this.favourite} />
+        favourited: this.buttons.favourited
       });
     }
 
@@ -177,16 +185,7 @@ export default class Quote extends React.PureComponent {
   }
 
   init() {
-    let favouriteQuote = '';
-    if (localStorage.getItem('favouriteQuoteEnabled') === 'true') {
-      favouriteQuote = localStorage.getItem('favouriteQuote') ? <StarIcon className='copyButton' onClick={this.favourite} /> : <StarIcon2 className='copyButton' onClick={this.favourite} />;
-    }
-
-    this.setState({
-      favourited: favouriteQuote,
-      copy: (localStorage.getItem('copyButton') === 'false') ? null : this.buttons.copy,
-      tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet
-    });
+    this.setZoom();
 
     const quoteType = localStorage.getItem('quoteType');
 
@@ -194,6 +193,11 @@ export default class Quote extends React.PureComponent {
        || (quoteType === 'custom' && this.state.author !== localStorage.getItem('customQuoteAuthor'))) {
       this.getQuote();
     }
+  }
+
+  setZoom() {
+    document.querySelector('.quote').style.fontSize = `${0.8 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
+    document.querySelector('.quoteauthor').style.fontSize = `${0.9 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
   }
 
   componentDidMount() {
@@ -206,8 +210,6 @@ export default class Quote extends React.PureComponent {
         }
 
         element.style.display = 'block';
-        document.querySelector('.quote').style.fontSize = `${0.8 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
-        document.querySelector('.quoteauthor').style.fontSize = `${0.9 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
         this.init();
       }
 
@@ -217,10 +219,9 @@ export default class Quote extends React.PureComponent {
       }
     });
   
-    document.querySelector('.quote').style.fontSize = `${0.8 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
-    document.querySelector('.quoteauthor').style.fontSize = `${0.9 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
-
-    this.init();
+    // don't bother with the checks if we're loading for the first time
+    this.setZoom();
+    this.getQuote();
   }
 
   componentWillUnmount() {
@@ -230,7 +231,7 @@ export default class Quote extends React.PureComponent {
   render() {
     return (
       <div className='quotediv'>
-        <h1 className='quote'>{`${this.state.quote}`}</h1>
+        <h1 className='quote'>{this.state.quote}</h1>
         <h1 className='quoteauthor'>
           <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a>
           <br/>

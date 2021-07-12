@@ -6,10 +6,15 @@ import StarIcon from '@material-ui/icons/Star';
 import StarIcon2 from '@material-ui/icons/StarBorder';
 
 export default class Favourite extends React.PureComponent {
+  buttons = {
+    favourited: <StarIcon onClick={this.favourite} className='topicons' />,
+    unfavourited: <StarIcon2 onClick={this.favourite} className='topicons' />
+  }
+
   constructor() {
     super();
     this.state = {
-      favourited: (localStorage.getItem('favourite')) ? <StarIcon onClick={this.favourite} className='topicons' /> : <StarIcon2 onClick={this.favourite} className='topicons' />
+      favourited: (localStorage.getItem('favourite')) ? this.buttons.favourited : this.buttons.unfavourited
     };
   }
 
@@ -17,7 +22,7 @@ export default class Favourite extends React.PureComponent {
     if (localStorage.getItem('favourite')) {
       localStorage.removeItem('favourite');
       this.setState({
-        favourited: <StarIcon2 onClick={this.favourite} className='topicons' />
+        favourited: this.buttons.unfavourited
       });
       window.stats.postEvent('feature', 'Background favourite');
     } else {
@@ -36,7 +41,7 @@ export default class Favourite extends React.PureComponent {
       }));
 
       this.setState({
-        favourited: <StarIcon onClick={this.favourite} className='topicons' />
+        favourited: this.buttons.favourited
       });
       window.stats.postEvent('feature', 'Background unfavourite');
     }

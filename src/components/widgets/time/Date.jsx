@@ -11,7 +11,7 @@ export default class DateWidget extends React.PureComponent {
     super();
     this.state = {
       date: '',
-      weekNumber: ''
+      weekNumber: null
     };
   }
 
@@ -37,6 +37,10 @@ export default class DateWidget extends React.PureComponent {
 
     if (localStorage.getItem('weeknumber') === 'true') {
       this.getWeekNumber(date);
+    } else if (this.state.weekNumber !== null) {
+      this.setState({
+        weekNumber: null
+      });
     }
 
     if (localStorage.getItem('dateType') === 'short') {
@@ -60,7 +64,8 @@ export default class DateWidget extends React.PureComponent {
           year = dateDay;
           break;
         // DMY
-        default: break;
+        default: 
+          break;
       }
 
       let format;
@@ -77,7 +82,8 @@ export default class DateWidget extends React.PureComponent {
         case 'slashes':
           format = `${day}/${month}/${year}`;
           break;
-        default: break;
+        default: 
+          break;
       }
 
       this.setState({

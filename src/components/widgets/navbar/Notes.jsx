@@ -12,7 +12,8 @@ export default class Notes extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      notes: localStorage.getItem('notes') || ''
+      notes: localStorage.getItem('notes') || '',
+      visibility: (localStorage.getItem('notesPinned') === 'true') ? 'visible' : 'hidden'
     };
     this.language = window.language.widgets.navbar.notes;
   }
@@ -26,44 +27,42 @@ export default class Notes extends React.PureComponent {
 
   pin() {
     window.stats.postEvent('feature', 'Notes pin');
-    document.getElementById('noteContainer').classList.toggle('visibilityshow');
 
     if (localStorage.getItem('notesPinned') === 'true') {
       localStorage.setItem('notesPinned', false);
+      this.setState({
+        visibility: 'hidden'
+      });
     } else {
       localStorage.setItem('notesPinned', true);
+      this.setState({
+        visibility: 'visible'
+      });
     }
   }
 
   copy() {
     window.stats.postEvent('feature', 'Notes copied');
-    // this.state.notes doesn't work for some reason
-    navigator.clipboard.writeText(localStorage.getItem('notes'));
+    navigator.clipboard.writeText(this.state.notes);
     toast(window.language.toasts.notes);
   }
 
   componentDidMount() {
-    const noteContainer = document.getElementById('noteContainer');
-
-    if (localStorage.getItem('notesPinned') === 'true') {
-      noteContainer.classList.toggle('visibilityshow');
-    }
-
     if (localStorage.getItem('refresh') === 'false') {
-      noteContainer.style.marginLeft = '-200px';
+      document.getElementById('noteContainer').style.marginLeft = '-200px';
     }
   }
 
   render() {
     return (
-      <span id='noteContainer' className='notescontainer'>
+      <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility }}>
         <div className='topbarnotes'>
           <NotesIcon/>
           <h3>{this.language.title}</h3>
         </div>
         <TextareaAutosize rowsmax={50} placeholder={this.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
-        <button onClick={this.pin} className='pinNote'><Pin/></button>
-        <button onClick={this.copy} className='copyNote'><CopyIcon/></button>
+        <button onClick={() => this.pin()} className='pinNote'><Pin/></button>
+        <button onClick={() => this.copy()} className='copyNote'><CopyIcon/></button>
       </span>
     );
   }

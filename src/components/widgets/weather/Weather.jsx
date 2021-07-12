@@ -90,7 +90,8 @@ export default class Weather extends React.PureComponent {
         temp_text = '°F';
         break;
       // kelvin
-      default: break;
+      default: 
+        break;
     }
 
     this.setState({
