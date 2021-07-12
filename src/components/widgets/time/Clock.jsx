@@ -22,9 +22,7 @@ export default class Clock extends React.PureComponent {
     this.timer = setTimeout(() => {
       const now = new Date();
 
-      const timeType = localStorage.getItem('timeType');
-
-      switch (timeType) {
+      switch (localStorage.getItem('timeType')) {
         case 'percentageComplete':
           this.setState({
             time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'

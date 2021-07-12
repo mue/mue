@@ -7,8 +7,8 @@ import StarIcon2 from '@material-ui/icons/StarBorder';
 
 export default class Favourite extends React.PureComponent {
   buttons = {
-    favourited: <StarIcon onClick={this.favourite} className='topicons' />,
-    unfavourited: <StarIcon2 onClick={this.favourite} className='topicons' />
+    favourited: <StarIcon onClick={() => this.favourite()} className='topicons' />,
+    unfavourited: <StarIcon2 onClick={() => this.favourite()} className='topicons' />
   }
 
   constructor() {
@@ -18,7 +18,7 @@ export default class Favourite extends React.PureComponent {
     };
   }
 
-  favourite = () => {
+  favourite() {
     if (localStorage.getItem('favourite')) {
       localStorage.removeItem('favourite');
       this.setState({
@@ -36,8 +36,7 @@ export default class Favourite extends React.PureComponent {
         url: url, 
         credit: document.getElementById('credit').textContent,
         location: document.getElementById('infoLocation').textContent,
-        camera: document.getElementById('infoCamera').textContent,
-        resolution: document.getElementById('infoResolution').textContent
+        camera: document.getElementById('infoCamera').textContent
       }));
 
       this.setState({

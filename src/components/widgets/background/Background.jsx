@@ -135,8 +135,7 @@ export default class Background extends React.PureComponent {
              photoInfo: {
               credit: favourited.credit,
               location: favourited.location,
-              camera: favourited.camera,
-              resolution: favourited.resolution
+              camera: favourited.camera
             }
           });
         }
@@ -191,7 +190,6 @@ export default class Background extends React.PureComponent {
             credit: credit,
             location: data.location,
             camera: data.camera,
-            resolution: data.resolution,
             url: data.file,
             photographerURL: photographerURL,
             photoURL: photoURL
@@ -369,7 +367,7 @@ export default class Background extends React.PureComponent {
       <>
         <div style={{ WebkitFilter: `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}` }} id='backgroundImage'/>
         {(this.state.photoInfo.credit !== '') ? 
-          <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo} api={this.state.currentAPI}/>
+          <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo} api={this.state.currentAPI} url={this.state.url}/>
         : null}
       </>
     );

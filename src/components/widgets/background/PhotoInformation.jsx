@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Info from '@material-ui/icons/Info';
 import Location from '@material-ui/icons/LocationOn';
 import Camera from '@material-ui/icons/PhotoCamera';
@@ -22,6 +24,9 @@ const downloadImage = async (info) => {
 };
 
 export default function PhotoInformation(props) {
+  const [width, setWidth] = React.useState(0);
+  const [height, setHeight] = React.useState(0);
+
   const language = window.language.widgets.background;
 
   if (props.info.hidden === true || !props.info.credit) {
@@ -45,6 +50,14 @@ export default function PhotoInformation(props) {
     }
   }
 
+  // get resolution
+  const img = new Image();
+  img.onload = function() {
+    setWidth(this.width);
+    setHeight(this.height);
+  }
+  img.src = props.url;
+
   return (
     <div className='photoInformation'>
       <h1>{photo} <span id='credit'>{credit}</span></h1>
@@ -58,7 +71,7 @@ export default function PhotoInformation(props) {
           <Camera/>
           <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
           <Resolution/>
-          <span id='infoResolution'>{props.info.resolution || 'N/A'}</span>
+          <span id='infoResolution'>{width}x{height}</span>
           <Photographer/>
           <span>{photographer}</span>
           {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 
