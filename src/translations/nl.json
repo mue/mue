@@ -384,7 +384,7 @@
         },
         "language": {
           "title": "Choose your language",
-          "description": "to be added"
+          "description": "Mue can be displayed the languages listed below. You can also add new translations on our GitHub!"
         },
         "theme": {
           "title": "Select a theme",
@@ -409,7 +409,9 @@
           "title": "Final step",
           "description": "Your Mue Tab experience is about to begin.",
           "changes": "Changes",
-          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab."
+          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
+          "imported": "Imported",
+          "settings": "settings"
         }
       },
       "buttons": {

@@ -89,6 +89,16 @@
   }
 }
 
+@media only screen and (max-width: 1680px) {
+  .side {
+    float: none !important;
+  }
+
+  .sidebr {
+    display: none;
+  }
+}
+
 p.author {
   margin-top: -5px;
 }

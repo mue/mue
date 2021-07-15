@@ -28,9 +28,9 @@ export default class About extends React.PureComponent {
     let contributors, sponsors, photographers, versionData;
 
     try {
-      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/releases', { signal: this.controller.signal })).json();
+      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/' + window.constants.REPO_NAME + '/releases', { signal: this.controller.signal })).json();
 
-      contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/mue/mue/contributors', { signal: this.controller.signal })).json();
+      contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/' + window.constants.REPO_NAME + '/contributors', { signal: this.controller.signal })).json();
       sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list', { signal: this.controller.signal })).json()).sponsors;
 
       photographers = await (await fetch(window.constants.API_URL + '/images/photographers', { signal: this.controller.signal })).json();
@@ -57,6 +57,7 @@ export default class About extends React.PureComponent {
     }
 
     this.setState({
+      // exclude bots
       contributors: contributors.filter((contributor) => !contributor.login.includes('bot')),
       sponsors: sponsors,
       update: updateMsg,
@@ -87,22 +88,23 @@ export default class About extends React.PureComponent {
     return (
       <>
         <h2>{this.language.title}</h2>
-        <img draggable='false' className='aboutLogo' src='./././icons/logo_horizontal.png' alt='Mue logo'></img>
-        <p>{this.language.copyright} 2018-{new Date().getFullYear()} <a href='https://github.com/mue/mue/graphs/contributors' className='aboutLink' target='_blank' rel='noopener noreferrer'>The Mue Authors</a> (BSD-3 License)</p>
+        <img draggable='false' className='aboutLogo' src='./././icons/logo_horizontal.png' alt='Logo'></img>
+        <p>{this.language.copyright} {window.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()} <a href={'https://github.com/repos/' + window.constants.REPO_NAME + '/graphs/contributors'} className='aboutLink' target='_blank' rel='noopener noreferrer'>{window.constants.COPYRIGHT_NAME}</a> ({window.constants.COPYRIGHT_LICENSE})</p>
         <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
+        <a href={window.constants.PRIVACY_URL} className='aboutLink' target='_blank' rel='noopener noreferrer'>{window.language.modals.welcome.sections.privacy.links.privacy_policy}</a>
 
         <h3>{this.language.contact_us}</h3>
-        <a href='mailto:hello@muetab.com' className='aboutIcon' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
-        <a href='https://twitter.com/getmue' className='aboutIcon' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
-        <a href='https://instagram.com/mue.tab' className='aboutIcon' target='_blank' rel='noopener noreferrer'><InstagramIcon/></a>
-        <a href='https://facebook.com/muetab' className='aboutIcon' target='_blank' rel='noopener noreferrer'><FacebookIcon/></a>
-        <a href='https://discord.gg/zv8C9F8' className='aboutIcon' target='_blank' rel='noopener noreferrer'><ChatIcon/></a>
+        <a href={'mailto:' + window.constants.EMAIL} className='aboutIcon' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
+        <a href={'https://twitter.com/' + window.constants.TWITTER_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
+        <a href={'https://instagram.com/' + window.constants.INSTAGRAM_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><InstagramIcon/></a>
+        <a href={'https://facebook.com/' + window.constants.FACEBOOK_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><FacebookIcon/></a>
+        <a href={'https://discord.gg/' + window.constants.DISCORD_SERVER} className='aboutIcon' target='_blank' rel='noopener noreferrer'><ChatIcon/></a>
 
         <h3>{this.language.support_mue}</h3>
         <p>
-          <a href='https://github.com/sponsors/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> 
-          &nbsp; • &nbsp;<a href='https://ko-fi.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> 
-          &nbsp; • &nbsp;<a href='https://patreon.com/davidjcralph' className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a>
+          <a href={'https://github.com/sponsors/' + window.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> 
+          &nbsp; • &nbsp;<a href={'https://ko-fi.com/' + window.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> 
+          &nbsp; • &nbsp;<a href={'https://patreon.com/' + window.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a>
         </p>
 
         <h3>{this.language.resources_used.title}</h3>
@@ -131,7 +133,7 @@ export default class About extends React.PureComponent {
         <p>{this.state.loading}</p>
         {this.state.sponsors.map((item) => (
           <Tooltip title={item.handle} key={item.handle}>
-            <a href={item.profile} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
+            <a href={'https://github.com/' + item.handle} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
           </Tooltip>
         ))}
 

@@ -97,6 +97,7 @@ export default class WelcomeSections extends React.PureComponent {
   	if (this.props.currentTab !== 0) {
       if (this.timeout) {
         clearTimeout(this.timeout);
+        this.timeout = null;
       }
     } else {
       if (!this.timeout) {
@@ -115,7 +116,7 @@ export default class WelcomeSections extends React.PureComponent {
         <p>{language.sections.intro.description}</p>
         <h3 className='quicktip'>#shareyourmue</h3>
         <div className='examples'>
-          <img src={this.welcomeImages[this.state.welcomeImage]} alt='example mue setup' draggable={false}/>
+          <img src={this.welcomeImages[this.state.welcomeImage]} alt='Example Mue setup' draggable={false}/>
         </div>
       </>
     );
@@ -178,7 +179,7 @@ export default class WelcomeSections extends React.PureComponent {
         <Checkbox name='offlineMode' text={advanced.offline_mode} element='.other' />
         <p>{language.sections.privacy.offline_mode_description}</p>
         <h3 className='quicktip'>{language.sections.privacy.links.title}</h3>
-        <a className='privacy' href='https://muetab.com/privacy' target='_blank' rel='noopener noreferrer'>{language.sections.privacy.links.privacy_policy}</a>
+        <a className='privacy' href={window.constants.PRIVACY_URL} target='_blank' rel='noopener noreferrer'>{language.sections.privacy.links.privacy_policy}</a>
       </>
     );
 
@@ -191,7 +192,7 @@ export default class WelcomeSections extends React.PureComponent {
         <div className='themesToggleArea'>
           <div className='toggle' onClick={() => this.props.switchTab(1)}>{languageSettings.title}: {languages.find((i) => i.value === localStorage.getItem('language')).name}</div>
           <div className='toggle' onClick={() => this.props.switchTab(3)}>{appearance.theme.title}: {this.getSetting('theme')}</div>
-          {(this.state.importedSettings.length !== 0) ? <div className='toggle' onClick={() => this.props.switchTab(2)}>Imported {this.state.importedSettings.length} settings</div> : null}
+          {(this.state.importedSettings.length !== 0) ? <div className='toggle' onClick={() => this.props.switchTab(2)}>{language.sections.final.imported} {this.state.importedSettings.length} {language.sections.final.settings}</div> : null}
         </div>
       </>
     );

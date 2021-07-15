@@ -61,7 +61,9 @@ export default class Item extends React.PureComponent {
           <br/>
           {warningHTML} 
         </div>
-        <br/><br/>
+        <div className='sidebr'>
+          <br/><br/>
+        </div>
         <div className='informationContainer'>
           <h1 className='overview'>{language.overview}</h1>
           <p className='description' dangerouslySetInnerHTML={{ __html: this.props.data.description }}></p>

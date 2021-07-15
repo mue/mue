@@ -10,8 +10,21 @@ export const DDG_IMAGE_PROXY = 'https://external-content.duckduckgo.com/iu/?u=';
 
 // Mue URLs
 export const WEBSITE_URL = 'https://muetab.com';
+export const PRIVACY_URL = 'https://muetab.com/privacy';
 export const BLOG_POST = 'https://blog.muetab.com/posts/version-5-1';
 export const FEEDBACK_FORM = 'https://api.formcake.com/api/form/349b56cb-7e2b-4004-b32b-e8964d217dd1/submission';
+
+// Mue Info
+export const REPO_NAME = 'mue/mue';
+export const EMAIL = 'hello@muetab.com';
+export const TWITTER_HANDLE = 'getmue';
+export const INSTAGRAM_HANDLE = 'mue.tab';
+export const FACEBOOK_HANDLE = 'muetab';
+export const DISCORD_SERVER = 'https://discord.gg/zv8C9F8';
+export const COPYRIGHT_NAME = 'The Mue Authors';
+export const COPYRIGHT_YEAR = '2018';
+export const COPYRIGHT_LICENSE = 'BSD-3 License';
+export const DONATE_USERNAME = 'davidjcralph';
 
 // umami
 export const UMAMI_DOMAIN = 'https://umami.muetab.com';
