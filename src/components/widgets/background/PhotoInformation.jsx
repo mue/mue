@@ -52,9 +52,9 @@ export default function PhotoInformation(props) {
 
   // get resolution
   const img = new Image();
-  img.onload = function() {
-    setWidth(this.width);
-    setHeight(this.height);
+  img.onload = (event) => {
+    setWidth(event.target.width);
+    setHeight(event.target.height);
   }
   img.src = props.url;
 

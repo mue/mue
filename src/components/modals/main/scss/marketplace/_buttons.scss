@@ -39,7 +39,8 @@
 
 .addToMue {
   @extend %storebutton;
-  margin-top: 12px;
+  float: right;
+  margin-top: -10px;
 }
 
 .sideload {

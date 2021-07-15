@@ -98,6 +98,15 @@ p.author {
     font-size: 40px;
     line-height: 20px;
   }
+
+  img {
+    float: left;
+  }
+}
+
+.side {
+  float: right;
+  margin-left: 20px;
 }
 
 #item>h1,
@@ -107,7 +116,7 @@ p.author {
 
 p.description {
   margin-top: 0px;
-  max-width: 400px;
+  max-width: 800px;
 }
 
 .emptyMessage {
@@ -136,7 +145,8 @@ p.description {
 }
 
 .informationContainer {
-  margin-top: 20px;
+  margin-top: 150px;
+  position: absolute;
 }
 
 .productInformation {

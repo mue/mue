@@ -45,27 +45,26 @@ export default class Item extends React.PureComponent {
         <ArrowBackIcon className='backArrow' onClick={this.props.toggleFunction}/>
         <br/>
         <h1>{this.props.data.display_name}</h1>
-        <br/>
         {this.props.button}
-        <br/>
+        <br/><br/>
         {iconsrc ? <img alt='product' draggable='false' src={iconsrc} onClick={() => this.setState({ showLightbox: true })}/> : null}
+        <div className='side'>
+          <div className='productInformation'>
+            <ul>
+              <li className='header'>{language.version}</li>
+              <li>{this.props.data.version}</li>
+              <br/>
+              <li className='header'>{language.author}</li>
+              <li>{this.props.data.author}</li>
+             </ul>
+          </div>
+          <br/>
+          {warningHTML} 
+        </div>
+        <br/><br/>
         <div className='informationContainer'>
           <h1 className='overview'>{language.overview}</h1>
           <p className='description' dangerouslySetInnerHTML={{ __html: this.props.data.description }}></p>
-            <div className='productInformation'>
-              <ul>
-                {/* <li className='header'>{language.last_updated}</li>
-                <li>{this.props.data.updated}</li>
-                <br/>*/}
-                <li className='header'>{language.version}</li>
-                <li>{this.props.data.version}</li>
-                <br/>
-                <li className='header'>{language.author}</li>
-               <li>{this.props.data.author}</li>
-             </ul>
-            </div>
-            <br/>
-            {warningHTML} 
         </div>
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
           <Lightbox modalClose={() => this.setState({ showLightbox: false })} img={iconsrc}/>
