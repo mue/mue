@@ -21,7 +21,7 @@ export default class QuoteSettings extends React.PureComponent {
   }
 
   render() {
-    const { quote } = window.language.modals.main.settings.sections;
+    const { quote, background } = window.language.modals.main.settings.sections;
 
     let customSettings;
     if (this.state.quoteType === 'custom') {
@@ -36,14 +36,14 @@ export default class QuoteSettings extends React.PureComponent {
       customSettings = (
         <>
         <br/><br/>
-        <Dropdown label='Change every' name='quotechange'>
-          <option value='refresh'>New Tab</option>
-          <option value='60000'>Minute</option>
-          <option value='1800000'>Half Hour</option>
-          <option value='3600000'>Hour</option>
-          <option value='86400000'>Day</option>
-          <option value='604800000'>Week</option>
-          <option value='2628000000'>Month</option>
+        <Dropdown label={background.interval.title} name='quotechange'>
+          <option value='refresh'>{window.language.tabname}</option>
+          <option value='60000'>{background.interval.minute}</option>
+          <option value='1800000'>{background.interval.half_hour}</option>
+          <option value='3600000'>{background.interval.hour}</option>
+          <option value='86400000'>{background.interval.day}</option>
+          <option value='604800000'>{window.language.widgets.date.week}</option>
+          <option value='2628000000'>{background.interval.month}</option>
         </Dropdown>
         </>
       );

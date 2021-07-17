@@ -177,6 +177,14 @@
                 "normal": "Normal Quality",
                 "datasaver": "Data Saver"
               }
+            },
+            "interval": {
+              "title": "Change every",
+              "minute": "Minute",
+              "half_hour": "Half hour",
+              "hour": "Hour",
+              "day": "Day",
+              "month": "Month"
             }
           },
           "search": {
