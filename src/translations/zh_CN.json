@@ -276,6 +276,10 @@
             "custom_css": "自定义 CSS",
             "custom_js": "自定义 JS",
             "tab_name": "标签页名称",
+            "timezone": {
+              "title": "Time Zone",
+              "automatic": "Automatic"
+            },
             "experimental_warning": "请注意 Mue 团队无法提供实验性功能的支持。若您遇到问题，请先关闭实验性功能，再寻求帮助。"
           },
           "experimental": {

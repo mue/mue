@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { utcToZonedTime } from 'date-fns-tz';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import dtf from '../../../modules/helpers/date';
@@ -33,7 +34,11 @@ export default class DateWidget extends React.PureComponent {
   }
 
   getDate() {
-    const date = new Date();
+    let date = new Date();
+    const timezone = localStorage.getItem('timezone');
+    if (timezone) {
+      date = utcToZonedTime(date, timezone);
+    }
 
     if (localStorage.getItem('weeknumber') === 'true') {
       this.getWeekNumber(date);
@@ -106,7 +111,7 @@ export default class DateWidget extends React.PureComponent {
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
-      if (data === 'date') {
+      if (data === 'date' || data === 'timezone') {
         const element = document.querySelector('.date');
 
         if (localStorage.getItem('date') === 'false') {

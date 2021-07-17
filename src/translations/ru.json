@@ -276,6 +276,10 @@
             "custom_css": "Custom CSS",
             "custom_js": "Custom JS",
             "tab_name": "Tab name",
+            "timezone": {
+              "title": "Time Zone",
+              "automatic": "Automatic"
+            },
             "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
           },
           "experimental": {
@@ -370,6 +374,7 @@
       },
       "error": {
         "title": "Ошибка",
+        "description": "Could not connect to the server",
         "content": "Не удалось подключиться к серверу"
       },
       "read_blog": "Прочитайте об изменениях в блоге",

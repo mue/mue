@@ -276,6 +276,10 @@
             "custom_css": "Benutzerdefiniertes CSS",
             "custom_js": "Benutzerdefiniertes JS",
             "tab_name": "Tab Name",
+            "timezone": {
+              "title": "Time Zone",
+              "automatic": "Automatic"
+            },
             "experimental_warning": "Bitte beachten Sie, dass das Mue Team keinen Support leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin auftritt, bevor Sie den Support kontaktieren."
           },
           "experimental": {

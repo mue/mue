@@ -5,10 +5,13 @@ import FileUpload from '../FileUpload';
 import Text from '../Text';
 import Switch from '../Switch';
 import ResetModal from '../ResetModal';
+import Dropdown from '../Dropdown';
 
 import SettingsFunctions from '../../../../../modules/helpers/settings/modals';
 
 import Modal from 'react-modal';
+
+const time_zones = require('../../../../widgets/time/timezones.json');
 
 export default class AdvancedSettings extends React.PureComponent {
   constructor() {
@@ -26,6 +29,12 @@ export default class AdvancedSettings extends React.PureComponent {
       <>
         <h2>{advanced.title}</h2>
         <Checkbox name='offlineMode' text={advanced.offline_mode} element='.other' />
+        <Dropdown name='timezone' label={advanced.timezone.title} category='timezone'>
+          <option value='auto'>{advanced.timezone.automatic}</option>
+          {time_zones.map((timezone) => (
+            <option value={timezone} key={timezone}>{timezone}</option>
+          ))}
+        </Dropdown>
 
         <h3>{advanced.data}</h3>
         <button className='reset' onClick={() => this.setState({ resetModal: true })}>{this.language.buttons.reset}</button>

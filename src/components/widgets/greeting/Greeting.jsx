@@ -1,6 +1,8 @@
 import React from 'react';
 
+import { utcToZonedTime } from 'date-fns-tz';
 import EventBus from '../../../modules/helpers/eventbus';
+
 import dtf from '../../../modules/helpers/date';
 
 import './greeting.scss';
@@ -46,7 +48,12 @@ export default class Greeting extends React.PureComponent {
 
   getGreeting(time = (60000 - Date.now() % 60000)) {
     this.timer = setTimeout(() => {
-      const now = new Date();
+      let now = new Date();
+      const timezone = localStorage.getItem('timezone');
+      if (timezone) {
+        now = utcToZonedTime(now, timezone);
+      }
+
       const hour = now.getHours();
 
       // Set the default greeting string to "Good evening"
@@ -103,7 +110,7 @@ export default class Greeting extends React.PureComponent {
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
-      if (data === 'greeting') {
+      if (data === 'greeting' || data === 'timezone') {
         const element = document.querySelector('.greeting');
 
         if (localStorage.getItem('greeting') === 'false') {

@@ -276,6 +276,10 @@
             "custom_css": "CSS personalizado",
             "custom_js": "JS personalizado",
             "tab_name": "Nombre de la pestaña",
+            "timezone": {
+              "title": "Time Zone",
+              "automatic": "Automatic"
+            },
             "experimental_warning": "Por favor, ten en cuenta que el equipo de Mue no puede dar soporte si tienes el modo experimental activado. Por favor, desactívalo primero y comprueba si el problema sigue ocurriendo antes de contactar con el equipo de soporte."
           },
           "experimental": {

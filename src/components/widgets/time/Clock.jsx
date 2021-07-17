@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { utcToZonedTime } from 'date-fns-tz';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import './clock.scss';
@@ -20,7 +21,11 @@ export default class Clock extends React.PureComponent {
 
   startTime(time = localStorage.getItem('seconds') === 'true' || localStorage.getItem('timeType') === 'analogue' ? (1000 - Date.now() % 1000) : (60000 - Date.now() % 60000)) {
     this.timer = setTimeout(() => {
-      const now = new Date();
+      let now = new Date();
+      const timezone = localStorage.getItem('timezone');
+      if (timezone) {
+        now = utcToZonedTime(now, timezone);
+      }
 
       switch (localStorage.getItem('timeType')) {
         case 'percentageComplete':
@@ -83,7 +88,7 @@ export default class Clock extends React.PureComponent {
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
-      if (data === 'clock') {
+      if (data === 'clock' || data === 'timezone') {
         const element = document.querySelector('.clock-container');
 
         if (localStorage.getItem('time') === 'false') {

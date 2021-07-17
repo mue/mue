@@ -276,6 +276,10 @@
             "custom_css": "CSS personnalisé",
             "custom_js": "JS personnalisé",
             "tab_name": "Nom de l'onglet",
+            "timezone": {
+              "title": "Time Zone",
+              "automatic": "Automatic"
+            },
             "experimental_warning": "Veuillez noter que l'équipe Mue ne peut pas fournir d'assistance si vous avez activé le mode expérimental. Veuillez d'abord le désactiver et voir si le problème persiste avant de contacter le support."
           },
           "experimental": {
