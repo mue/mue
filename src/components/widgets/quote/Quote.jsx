@@ -1,6 +1,7 @@
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
+import Interval from '../../../modules/helpers/interval';
 
 import FileCopy from '@material-ui/icons/FilterNone';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -141,12 +142,15 @@ export default class Quote extends React.PureComponent {
             return this.doOffline();
           }
 
-          this.setState({
+          const object = {
             quote: '"' + data.quote + '"',
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
             quoteLanguage: quotelanguage
-          });
+          }
+
+          this.setState(object);
+          localStorage.setItem('currentQuote', JSON.stringify(object));
         } catch (e) {
           // ..and if that fails we load one locally
           this.doOffline();
@@ -218,10 +222,25 @@ export default class Quote extends React.PureComponent {
         this.init();
       }
     });
-  
-    // don't bother with the checks if we're loading for the first time
-    this.setZoom();
-    this.getQuote();
+
+    const interval = localStorage.getItem('quotechange');
+    if (interval && interval !== 'refresh') {
+      Interval(() => {
+        this.setZoom();
+        this.getQuote();
+      }, Number(interval), 'quote');
+
+      try {
+        this.setState(JSON.parse(localStorage.getItem('currentQuote')));
+      } catch (e) {
+        this.setZoom();
+        this.getQuote();
+      }
+    } else {
+      // don't bother with the checks if we're loading for the first time
+      this.setZoom();
+      this.getQuote();
+    }
   }
 
   componentWillUnmount() {

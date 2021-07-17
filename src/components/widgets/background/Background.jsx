@@ -2,6 +2,7 @@
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
+import Interval from '../../../modules/helpers/interval';
 
 import PhotoInformation from './PhotoInformation';
 
@@ -181,7 +182,7 @@ export default class Background extends React.PureComponent {
           photographerURL = data.photographer_page;
         }
 
-        this.setState({
+        const object = {
           url: data.file,
           type: 'api',
           currentAPI: backgroundAPI,
@@ -194,7 +195,10 @@ export default class Background extends React.PureComponent {
             photographerURL: photographerURL,
             photoURL: photoURL
           }
-        });
+        }
+        this.setState(object);
+
+        localStorage.setItem('currentBackground', JSON.stringify(object));
       break;
 
       case 'colour':
@@ -336,7 +340,24 @@ export default class Background extends React.PureComponent {
       }
     });
 
-    this.getBackground();
+    const interval = localStorage.getItem('backgroundchange');
+    if (interval && interval !== 'refresh') {
+      Interval(() => {
+        try {
+          document.getElementById('backgroundImage').classList.remove('fade-in');
+          document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
+        } catch (e) {
+          // Disregard exception
+        }
+        this.getBackground();
+      }, Number(interval), 'background');
+
+      try {
+        this.setState(JSON.parse(localStorage.getItem('currentBackground')));
+      } catch (e) { this.setBackground(); }
+    } else {
+      this.getBackground();
+    }
   }
 
   // only set once we've got the info

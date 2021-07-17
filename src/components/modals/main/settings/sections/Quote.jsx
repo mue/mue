@@ -31,6 +31,22 @@ export default class QuoteSettings extends React.PureComponent {
           <Text title={quote.custom_author} name='customQuoteAuthor' category='quote' element='.quotediv'/>
         </>
       );
+    } else {
+      // api
+      customSettings = (
+        <>
+        <br/><br/>
+        <Dropdown label='Change every' name='quotechange'>
+          <option value='refresh'>New Tab</option>
+          <option value='60000'>Minute</option>
+          <option value='1800000'>Half Hour</option>
+          <option value='3600000'>Hour</option>
+          <option value='86400000'>Day</option>
+          <option value='604800000'>Week</option>
+          <option value='2628000000'>Month</option>
+        </Dropdown>
+        </>
+      );
     }
 
     return (

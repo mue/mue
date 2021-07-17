@@ -128,6 +128,16 @@ export default class BackgroundSettings extends React.PureComponent {
           <option value='normal'>{background.source.quality.normal}</option>
           <option value='datasaver'>{background.source.quality.datasaver}</option>
         </Dropdown>
+        <br/><br/>
+        <Dropdown label='Change every' name='backgroundchange'>
+          <option value='refresh'>New Tab</option>
+          <option value='60000'>Minute</option>
+          <option value='1800000'>Half Hour</option>
+          <option value='3600000'>Hour</option>
+          <option value='86400000'>Day</option>
+          <option value='604800000'>Week</option>
+          <option value='2628000000'>Month</option>
+        </Dropdown>
       </>
     );
 

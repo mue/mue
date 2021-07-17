@@ -61,8 +61,10 @@ export default class Weather extends React.PureComponent {
       }
     };
 
+    const tempFormat = localStorage.getItem('tempformat');
+
     if (!this.state.weather.temp) {
-      data = await (await fetch (window.constants.WEATHER_URL + `/current?city=${this.state.location}&lang=${localStorage.getItem('language')}`)).json();
+      data = await (await fetch(window.constants.WEATHER_URL + `/current?city=${this.state.location}&lang=${localStorage.getItem('language')}&format=${tempFormat}`)).json();
     }
 
     if (data.cod === '404') {
@@ -71,37 +73,27 @@ export default class Weather extends React.PureComponent {
       });
     }
 
-    let temp = data.main.temp;
-    let temp_min = data.main.temp_min; 
-    let temp_max = data.main.temp_max;
-    let temp_text = 'K';
-
-    switch (localStorage.getItem('tempformat')) {
+    let tempText;
+    switch (tempFormat) {
       case 'celsius':
-        temp = temp - 273.15;
-        temp_min = temp_min - 273.15;
-        temp_max = temp_max - 273.15;
-        temp_text = '°C';
+        tempText = '°C';
         break;
       case 'fahrenheit':
-        temp = ((temp - 273.15) * 1.8) + 32;
-        temp_min = ((temp_min - 273.15) * 1.8) + 32;
-        temp_max = ((temp_max - 273.15) * 1.8) + 32;
-        temp_text = '°F';
+        tempText = '°F';
         break;
-      // kelvin
-      default: 
+      default:
+        tempText = 'K';
         break;
     }
 
     this.setState({
       icon: data.weather[0].icon,
-      temp_text: temp_text,
+      temp_text: tempText,
       weather: {
-        temp: Math.round(temp),
+        temp: Math.round(data.main.temp),
         description: data.weather[0].description,
-        temp_min: Math.round(temp_min),
-        temp_max: Math.round(temp_max),
+        temp_min: Math.round(data.main.temp_min),
+        temp_max: Math.round(data.main.temp_max),
         humidity: data.main.humidity,
         wind_speed: data.wind.speed,
         wind_degrees: data.wind.deg,
