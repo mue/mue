@@ -18,7 +18,7 @@ export default class GreetingSettings extends React.PureComponent {
     localStorage.setItem('birthday', e.target.value);
 
     this.setState({
-      birthday: e.target.value
+      birthday: new Date(e.target.value)
     });
   }
 
