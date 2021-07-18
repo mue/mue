@@ -195,8 +195,8 @@ export default class WelcomeSections extends React.PureComponent {
         <h3 className='quicktip'>{language.sections.final.changes}</h3>
         <p>{language.sections.final.changes_description}</p>
         <div className='themesToggleArea'>
-          <div className='toggle' onClick={() => this.props.switchTab(1)}>{languageSettings.title}: {languages.find((i) => i.value === localStorage.getItem('language')).name}</div>
-          <div className='toggle' onClick={() => this.props.switchTab(3)}>{appearance.theme.title}: {this.getSetting('theme')}</div>
+          <div className='toggle' onClick={() => this.props.switchTab(1)}><span>{languageSettings.title}: {languages.find((i) => i.value === localStorage.getItem('language')).name}</span></div>
+          <div className='toggle' onClick={() => this.props.switchTab(3)}><span>{appearance.theme.title}: {this.getSetting('theme')}</span></div>
           {(this.state.importedSettings.length !== 0) ? <div className='toggle' onClick={() => this.props.switchTab(2)}>{language.sections.final.imported} {this.state.importedSettings.length} {language.sections.final.settings}</div> : null}
         </div>
       </>

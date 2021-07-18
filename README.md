@@ -92,4 +92,4 @@ Many thanks to the photographers [here](https://api.muetab.com/images/photograph
 And finally, a big thank you to all the other [contributors](https://github.com/mue/mue/graphs/contributors)!
 ### Resources
 [Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode <br/>
-[Undraw](https://undraw.co) - Welcome modal images <br/>
+[Undraw](https://undraw.co) - Welcome modal images

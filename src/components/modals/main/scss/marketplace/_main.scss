@@ -138,6 +138,10 @@ p.description {
   position: absolute;
   width: 300px;
 
+  h1 {
+    font-size: 2rem;
+  }
+
   svg {
     font-size: 50px;
     margin-bottom: -20px;
@@ -212,6 +216,7 @@ p.description {
 
   h1 {
     margin-top: -20px;
+    font-size: 2rem;
   }
 }
 

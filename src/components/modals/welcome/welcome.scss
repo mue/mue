@@ -23,7 +23,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 
   section:nth-child(2) {
@@ -40,7 +39,7 @@
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2.5rem;
     }
 
     h3.quicktip {
@@ -95,6 +94,10 @@
       background: var(--tab-active);
       cursor: pointer;
     }
+
+    span {
+      font-size: 1rem;
+    }
   }
 
   .auto {
@@ -123,6 +126,7 @@
 a.privacy {
   text-decoration: none;
   color: var(--modal-text);
+  font-size: 1rem;
 
   &:hover {
     color: #5352ed;
