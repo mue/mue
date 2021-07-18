@@ -125,7 +125,7 @@ export default class WelcomeSections extends React.PureComponent {
       <>
         <h1>{language.sections.language.title}</h1>
         <p>{language.sections.language.description}</p>
-        <Radio name='language' options={languages}/>
+        <Radio name='language' options={languages} category='welcomeLanguage'/>
       </>
     );
   

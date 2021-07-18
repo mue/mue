@@ -1,5 +1,7 @@
 import React from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import WelcomeSections from './WelcomeSections';
 import ProgressBar from './ProgressBar';
 
@@ -12,7 +14,7 @@ export default class WelcomeModal extends React.PureComponent {
       image: './././icons/undraw_celebration.svg',
       currentTab: 0,
       finalTab: 4,
-      buttonText: 'Next'
+      buttonText: window.language.modals.welcome.buttons.next
     };
     this.language = window.language.modals.welcome;
     this.images = [
@@ -26,6 +28,9 @@ export default class WelcomeModal extends React.PureComponent {
   }
 
   changeTab(minus) {
+    localStorage.setItem('bgtransition', true);
+    localStorage.removeItem('welcomeTab');
+
     if (minus) {
       return this.setState({
         currentTab: this.state.currentTab - 1,
@@ -51,6 +56,28 @@ export default class WelcomeModal extends React.PureComponent {
       currentTab: tab,
       image: this.images[tab],
       buttonText: (tab !== this.state.finalTab + 1) ? this.language.buttons.next : this.language.buttons.close
+    });
+
+    localStorage.setItem('bgtransition', true);
+    localStorage.removeItem('welcomeTab');
+  }
+
+  componentDidMount() {
+    const welcomeTab = localStorage.getItem('welcomeTab');
+    if (welcomeTab) {
+      this.setState({
+        currentTab: Number(welcomeTab),
+        image: this.images[Number(welcomeTab)],
+        buttonText: (Number(welcomeTab) !== this.state.finalTab + 1) ? this.language.buttons.next : this.language.buttons.close
+      });
+    }
+
+    EventBus.on('refresh', (data) => {
+      if (data === 'welcomeLanguage') {
+        localStorage.setItem('welcomeTab', this.state.currentTab);
+        localStorage.setItem('bgtransition', false);
+        window.location.reload();
+      }
     });
   }
 

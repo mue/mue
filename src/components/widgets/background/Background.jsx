@@ -283,7 +283,16 @@ export default class Background extends React.PureComponent {
       this.getBackground();
     };
 
+    const welcomeTab = localStorage.getItem('welcomeTab');
+    if (welcomeTab) {
+      return this.setState(JSON.parse(localStorage.getItem('welcomeImage')));
+    }
+
     EventBus.on('refresh', (data) => {
+      if (data === 'welcomeLanguage') {
+        localStorage.setItem('welcomeImage', JSON.stringify(this.state));
+      }
+
       if (data === 'background') {
         if (localStorage.getItem('background') === 'false') {
           // user is using custom colour or image
