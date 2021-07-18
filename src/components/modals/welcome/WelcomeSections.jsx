@@ -129,7 +129,7 @@ export default class WelcomeSections extends React.PureComponent {
       </>
     );
   
-    const { appearance, advanced } = window.language.modals.main.settings.sections;
+    const { appearance, advanced, background, quicklinks } = window.language.modals.main.settings.sections;
     const languageSettings = window.language.modals.main.settings.sections.language;
 
     const theme = (
@@ -178,8 +178,13 @@ export default class WelcomeSections extends React.PureComponent {
         <p>{language.sections.privacy.description}</p>
         <Checkbox name='offlineMode' text={advanced.offline_mode} element='.other' />
         <p>{language.sections.privacy.offline_mode_description}</p>
+        <Checkbox name='quicklinksddgProxy' text={background.ddg_image_proxy + ' (' + quicklinks.title + ')'}/>
+        <Checkbox name='ddgProxy' text={background.ddg_image_proxy + ' (' + background.title + ')'}/>
+        <p>{language.sections.privacy.ddg_proxy_description}</p>
         <h3 className='quicktip'>{language.sections.privacy.links.title}</h3>
         <a className='privacy' href={window.constants.PRIVACY_URL} target='_blank' rel='noopener noreferrer'>{language.sections.privacy.links.privacy_policy}</a>
+        <br/><br/>
+        <a className='privacy' href={'https://github.com/' + window.constants.ORG_NAME} target='_blank' rel='noopener noreferrer'>{language.sections.privacy.links.source_code}</a>
       </>
     );
 

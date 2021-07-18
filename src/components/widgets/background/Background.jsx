@@ -1,4 +1,4 @@
-// warning: the code here is fairly messy and probably needs a rewrite
+// todo: rewrite this mess
 import React from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
@@ -283,11 +283,6 @@ export default class Background extends React.PureComponent {
       this.getBackground();
     };
 
-    const welcomeTab = localStorage.getItem('welcomeTab');
-    if (welcomeTab) {
-      return this.setState(JSON.parse(localStorage.getItem('welcomeImage')));
-    }
-
     EventBus.on('refresh', (data) => {
       if (data === 'welcomeLanguage') {
         localStorage.setItem('welcomeImage', JSON.stringify(this.state));
@@ -349,6 +344,10 @@ export default class Background extends React.PureComponent {
       }
     });
 
+    if (localStorage.getItem('welcomeTab')) {
+      return this.setState(JSON.parse(localStorage.getItem('welcomeImage')));
+    }
+
     const interval = localStorage.getItem('backgroundchange');
     if (interval && interval !== 'refresh') {
       Interval(() => {
@@ -363,7 +362,9 @@ export default class Background extends React.PureComponent {
 
       try {
         this.setState(JSON.parse(localStorage.getItem('currentBackground')));
-      } catch (e) { this.setBackground(); }
+      } catch (e) { 
+        this.setBackground(); 
+      }
     } else {
       this.getBackground();
     }

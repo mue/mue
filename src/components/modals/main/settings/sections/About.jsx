@@ -28,9 +28,9 @@ export default class About extends React.PureComponent {
     let contributors, sponsors, photographers, versionData;
 
     try {
-      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/' + window.constants.REPO_NAME + '/releases', { signal: this.controller.signal })).json();
+      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/' + window.constants.ORG_NAME + '/' + window.constants.REPO_NAME + '/releases', { signal: this.controller.signal })).json();
 
-      contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/' + window.constants.REPO_NAME + '/contributors', { signal: this.controller.signal })).json();
+      contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/'+ window.constants.ORG_NAME + '/' + window.constants.REPO_NAME + '/contributors', { signal: this.controller.signal })).json();
       sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list', { signal: this.controller.signal })).json()).sponsors;
 
       photographers = await (await fetch(window.constants.API_URL + '/images/photographers', { signal: this.controller.signal })).json();
@@ -89,7 +89,7 @@ export default class About extends React.PureComponent {
       <>
         <h2>{this.language.title}</h2>
         <img draggable='false' className='aboutLogo' src='./././icons/logo_horizontal.png' alt='Logo'></img>
-        <p>{this.language.copyright} {window.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()} <a href={'https://github.com/repos/' + window.constants.REPO_NAME + '/graphs/contributors'} className='aboutLink' target='_blank' rel='noopener noreferrer'>{window.constants.COPYRIGHT_NAME}</a> ({window.constants.COPYRIGHT_LICENSE})</p>
+        <p>{this.language.copyright} {window.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()} <a href={'https://github.com/repos/' + window.constants.ORG_NAME + '/' + window.constants.REPO_NAME + '/graphs/contributors'} className='aboutLink' target='_blank' rel='noopener noreferrer'>{window.constants.COPYRIGHT_NAME}</a> ({window.constants.COPYRIGHT_LICENSE})</p>
         <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
         <a href={window.constants.PRIVACY_URL} className='aboutLink' target='_blank' rel='noopener noreferrer'>{window.language.modals.welcome.sections.privacy.links.privacy_policy}</a>
 
