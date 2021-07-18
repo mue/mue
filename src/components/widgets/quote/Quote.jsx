@@ -224,7 +224,7 @@ export default class Quote extends React.PureComponent {
     });
 
     const interval = localStorage.getItem('quotechange');
-    if (interval && interval !== 'refresh') {
+    if (interval && interval !== 'refresh' && localStorage.getItem('quoteType') === 'api') {
       Interval(() => {
         this.setZoom();
         this.getQuote();

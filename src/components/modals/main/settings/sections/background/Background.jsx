@@ -158,6 +158,10 @@ export default class BackgroundSettings extends React.PureComponent {
       case 'colour': backgroundSettings = <ColourSettings/>; break;
       default: backgroundSettings = APISettings; break;
     }
+
+    if (localStorage.getItem('photo_packs') && this.state.backgroundType !== 'custom' && this.state.backgroundType !== 'colour' && this.state.backgroundType !== 'api') {
+      backgroundSettings = null;
+    }
   
     return (
       <>

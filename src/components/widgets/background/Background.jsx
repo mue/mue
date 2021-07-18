@@ -349,7 +349,7 @@ export default class Background extends React.PureComponent {
     }
 
     const interval = localStorage.getItem('backgroundchange');
-    if (interval && interval !== 'refresh') {
+    if (interval && interval !== 'refresh' && localStorage.getItem('backgroundType') === 'api') {
       Interval(() => {
         try {
           document.getElementById('backgroundImage').classList.remove('fade-in');

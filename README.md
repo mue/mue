@@ -7,7 +7,7 @@
 <br>
 [![Microsoft Edge](https://img.shields.io/badge/dynamic/json?style=flat-square&label=microsoft%20edge&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Faepnglgjfokepefimhbnibfjekidhmja)](https://microsoftedge.microsoft.com/addons/detail/aepnglgjfokepefimhbnibfjekidhmja) [![Firefox](https://img.shields.io/amo/v/mue?label=firefox&style=flat-square)](https://addons.mozilla.org/firefox/addon/mue) [![Chrome](https://img.shields.io/chrome-web-store/v/bngmbednanpcfochchhgbkookpiaiaid?label=chrome&style=flat-square)](https://chrome.google.com/webstore/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
 
-Mue is a fast, open and free-to-use browser extension that gives a new, fresh and customisable tab page to modern browsers
+Mue is a fast, open and free-to-use browser extension that gives a new, fresh and customisable tab page to modern browsers.
 
 <br>
 
@@ -92,5 +92,4 @@ Many thanks to the photographers [here](https://api.muetab.com/images/photograph
 And finally, a big thank you to all the other [contributors](https://github.com/mue/mue/graphs/contributors)!
 ### Resources
 [Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode <br/>
-[Undraw](https://undraw.co) - Welcome modal image <br/>
-[Material Icons](https://fonts.google.com/icons?selected=Material+Icons) - Pin icon
+[Undraw](https://undraw.co) - Welcome modal images <br/>

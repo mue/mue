@@ -15,7 +15,6 @@
 .reset {
   @extend %settingsButton;
 
-  margin-left: 5px;
   background-color: map-get($button-colours, 'reset');
   border: 2px solid map-get($button-colours, 'reset');
 
