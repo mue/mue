@@ -75,8 +75,9 @@ export default class Search extends React.PureComponent {
       this.setState({
         suggestions: window.searchResults[1].splice(0, 3)
       });
-    // ignore error if empty
-    } catch (e) {}
+    } catch (e) {
+      // ignore error if empty
+    }
 
     document.head.removeChild(script);
   }

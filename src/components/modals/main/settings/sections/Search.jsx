@@ -10,7 +10,7 @@ import EventBus from '../../../../../modules/helpers/eventbus';
 import { toast } from 'react-toastify';
 
 const searchEngines = require('../../../../widgets/search/search_engines.json');
-const autocompleteProviders = require('../../../../widgets/search/autocomplete_providers.json')
+const autocompleteProviders = require('../../../../widgets/search/autocomplete_providers.json');
 
 export default class SearchSettings extends React.PureComponent {
   constructor() {

@@ -35,16 +35,16 @@ export default class QuoteSettings extends React.PureComponent {
       // api
       customSettings = (
         <>
-        <br/><br/>
-        <Dropdown label={background.interval.title} name='quotechange'>
-          <option value='refresh'>{window.language.tabname}</option>
-          <option value='60000'>{background.interval.minute}</option>
-          <option value='1800000'>{background.interval.half_hour}</option>
-          <option value='3600000'>{background.interval.hour}</option>
-          <option value='86400000'>{background.interval.day}</option>
-          <option value='604800000'>{window.language.widgets.date.week}</option>
-          <option value='2628000000'>{background.interval.month}</option>
-        </Dropdown>
+          <br/><br/>
+          <Dropdown label={background.interval.title} name='quotechange'>
+            <option value='refresh'>{window.language.tabname}</option>
+            <option value='60000'>{background.interval.minute}</option>
+            <option value='1800000'>{background.interval.half_hour}</option>
+            <option value='3600000'>{background.interval.hour}</option>
+            <option value='86400000'>{background.interval.day}</option>
+            <option value='604800000'>{window.language.widgets.date.week}</option>
+            <option value='2628000000'>{background.interval.month}</option>
+          </Dropdown>
         </>
       );
     }

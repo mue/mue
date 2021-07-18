@@ -148,3 +148,25 @@ a.privacy {
   width: 350px;
   height: auto;
 }
+
+@media only screen and (max-width: 1440px) {
+  .buttons {
+    position: relative !important;
+    bottom: 0rem !important;
+  }
+
+  .examples img {
+    width: 15rem !important;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .examples img {
+    width: 20rem !important;
+  }
+
+  .buttons {
+    position: relative !important;
+    bottom: 1rem !important;
+  }
+}

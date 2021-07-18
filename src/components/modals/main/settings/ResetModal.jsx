@@ -10,7 +10,7 @@ export default function ResetModal(props) {
     window.stats.postEvent('setting', 'Reset');
     SettingsFunctions.setDefaultSettings('reset');
     window.location.reload();
-  }
+  };
 
   return (
     <>

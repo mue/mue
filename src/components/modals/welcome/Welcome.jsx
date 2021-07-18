@@ -15,7 +15,14 @@ export default class WelcomeModal extends React.PureComponent {
       buttonText: 'Next'
     };
     this.language = window.language.modals.welcome;
-    this.images = ['./././icons/undraw_celebration.svg', './././icons/undraw_around_the_world_modified.svg', './././icons/undraw_add_files_modified.svg', './././icons/undraw_dark_mode.svg', './././icons/undraw_private_data_modified.svg', './././icons/undraw_upgrade_modified.svg']
+    this.images = [
+      './././icons/undraw_celebration.svg', 
+      './././icons/undraw_around_the_world_modified.svg', 
+      './././icons/undraw_add_files_modified.svg', 
+      './././icons/undraw_dark_mode.svg',
+      './././icons/undraw_private_data_modified.svg', 
+      './././icons/undraw_upgrade_modified.svg'
+    ];
   }
 
   changeTab(minus) {
@@ -27,7 +34,7 @@ export default class WelcomeModal extends React.PureComponent {
       });
     }
 
-    if (this.state.buttonText === 'Close') {
+    if (this.state.buttonText === this.language.buttons.close) {
       return this.props.modalClose();
     }
 

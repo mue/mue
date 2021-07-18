@@ -9,7 +9,7 @@ export default function ProgressBar(props) {
           className = 'step active';
         }
 
-        return <div className={className} key={index} onClick={() => props.switchTab(index)}></div>
+        return <div className={className} key={index} onClick={() => props.switchTab(index)}></div>;
       })}
     </div>
   );

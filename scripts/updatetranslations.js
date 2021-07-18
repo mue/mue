@@ -1,7 +1,7 @@
 const fs = require('fs');
 const merge = require('@eartharoid/deep-merge');
 
-fs.readdirSync('../src/translations').forEach(file => {
+fs.readdirSync('../src/translations').forEach((file) => {
   if (file === 'en_GB.json') {
     return;
   }

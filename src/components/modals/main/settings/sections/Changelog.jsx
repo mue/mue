@@ -53,7 +53,7 @@ export default class Changelog extends React.PureComponent {
           lightboxImg: img.src
         });
       };
-    };
+    }
 
     for (let link = 0; link < links.length; link++) {
       links[link].target = '_blank';
