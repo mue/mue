@@ -1,8 +1,9 @@
 {
   "manifest_version": 2,
   "offline_enabled": true,
-  "name": "Mue",
-  "description": "Fast, open and free-to-use new tab page for modern browsers.",
+  "default_locale": "en",
+  "name": "__MSG_name__",
+  "description": "__MSG_description__",
   "version": "5.1.1",
   "homepage_url": "https://muetab.com",
   "browser_action": {

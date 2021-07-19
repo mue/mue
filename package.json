@@ -55,7 +55,7 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack --mode=production",
-    "chrome": "cp manifest/chrome.json build/manifest.json",
+    "chrome": "cp manifest/chrome.json build/manifest.json && cp -r manifest/_locales build/_locales",
     "firefox": "cp manifest/firefox.json build/manifest.json"
   },
   "browserslist": {
