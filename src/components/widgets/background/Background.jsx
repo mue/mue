@@ -99,7 +99,6 @@ export default class Background extends React.PureComponent {
         backgroundImage.classList.remove('backgroundPreload');
         backgroundImage.classList.add('fade-in');
 
-        // this doesn't make it fetch again which is nice
         backgroundImage.style.background = `url(${url})`;
         // remove the preloader element we created earlier
         preloader.remove();
@@ -149,7 +148,6 @@ export default class Background extends React.PureComponent {
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            //requestURL = `${window.constants.UNSPLASH_URL}/getImage?category=${apiCategory}`;
             requestURL = `${window.constants.UNSPLASH_URL}/images/random?quality=${apiQuality}`;
             break;
           case 'pexels':
@@ -169,8 +167,7 @@ export default class Background extends React.PureComponent {
         } 
 
         let credit = data.photographer;
-        let photoURL = '';
-        let photographerURL = '';
+        let photoURL, photographerURL;
 
         if (backgroundAPI === 'unsplash') {
           credit = data.photographer + ` ${this.language.unsplash}`;
@@ -308,7 +305,6 @@ export default class Background extends React.PureComponent {
           document.getElementById('backgroundVideo').style.display = 'block';
         } else {
           if (this.state.photoInfo.hidden === false) {
-            // fix bug
             try {
               document.querySelector('.photoInformation').style.display = 'block';
             } catch (e) {

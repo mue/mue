@@ -61,7 +61,9 @@ export default function PhotoInformation(props) {
   return (
     <div className='photoInformation'>
       <h1>{photo} <span id='credit'>{credit}</span></h1>
-      {localStorage.getItem('photoInformation') !== 'false' ? <><Info className='photoInformationHover'/>
+      {localStorage.getItem('photoInformation') !== 'false' ? 
+      <>
+        <Info className='photoInformationHover'/>
         <div className={props.className || 'infoCard'}>
           <Info className='infoIcon'/>
           <h1>{language.information}</h1>
@@ -80,7 +82,7 @@ export default function PhotoInformation(props) {
               <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
             </> : null}
         </div>
-      </>: null}
+      </> : null}
     </div>
   );
 }

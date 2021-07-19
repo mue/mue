@@ -25,7 +25,7 @@ export default class Changelog extends React.PureComponent {
       return;
     }
 
-    let date = new Date(data.date);
+    let date = new Date(data.date.split(' ')[0]);
     date = date.toLocaleDateString(window.languagecode.replace('_', '-'), { 
       year: 'numeric', 
       month: 'long', 
