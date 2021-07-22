@@ -64,7 +64,7 @@ export default class Weather extends React.PureComponent {
     const tempFormat = localStorage.getItem('tempformat');
 
     if (!this.state.weather.temp) {
-      data = await (await fetch(window.constants.WEATHER_URL + `/current?city=${this.state.location}&lang=${localStorage.getItem('language')}&format=${tempFormat}`)).json();
+      data = await (await fetch(window.constants.PROXY_URL + `/weather/current?city=${this.state.location}&lang=${localStorage.getItem('language')}&format=${tempFormat}`)).json();
     }
 
     if (data.cod === '404') {

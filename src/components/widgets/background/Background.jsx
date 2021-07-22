@@ -148,10 +148,10 @@ export default class Background extends React.PureComponent {
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            requestURL = `${window.constants.UNSPLASH_URL}/images/random?quality=${apiQuality}`;
+            requestURL = `${window.constants.PROXY_URL}/images/unsplash?quality=${apiQuality}`;
             break;
           case 'pexels':
-            requestURL = `${window.constants.PEXELS_URL}/images/random?quality=${apiQuality}`;
+            requestURL = `${window.constants.PROXY_URL}/images/pexels?quality=${apiQuality}`;
             break;
           // Defaults to Mue
           default:
