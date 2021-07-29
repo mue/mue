@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.3.0",
     "@fontsource/lexend-deca": "4.4.5",
     "@fontsource/montserrat": "4.4.5",
-    "@material-ui/core": "5.0.0-beta.1",
+    "@material-ui/core": "5.0.0-beta.2",
     "@material-ui/icons": "5.0.0-beta.1",
     "date-fns-tz": "^1.1.4",
     "react": "17.0.2",
