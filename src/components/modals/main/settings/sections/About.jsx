@@ -89,7 +89,7 @@ export default class About extends React.PureComponent {
       <>
         <h2>{this.language.title}</h2>
         <img draggable='false' className='aboutLogo' src='./././icons/logo_horizontal.png' alt='Logo'></img>
-        <p>{this.language.copyright} {window.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()} <a href={'https://github.com/repos/' + window.constants.ORG_NAME + '/' + window.constants.REPO_NAME + '/graphs/contributors'} className='aboutLink' target='_blank' rel='noopener noreferrer'>{window.constants.COPYRIGHT_NAME}</a> ({window.constants.COPYRIGHT_LICENSE})</p>
+        <p>{this.language.copyright} {window.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()} <a href={'https://github.com/' + window.constants.ORG_NAME + '/' + window.constants.REPO_NAME + '/graphs/contributors'} className='aboutLink' target='_blank' rel='noopener noreferrer'>{window.constants.COPYRIGHT_NAME}</a> ({window.constants.COPYRIGHT_LICENSE})</p>
         <p>{this.language.version.title} {window.constants.VERSION} ({this.state.update})</p>
         <a href={window.constants.PRIVACY_URL} className='aboutLink' target='_blank' rel='noopener noreferrer' style={{ fontSize: '1rem' }}>{window.language.modals.welcome.sections.privacy.links.privacy_policy}</a>
 
