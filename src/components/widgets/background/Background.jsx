@@ -56,13 +56,16 @@ export default class Background extends React.PureComponent {
       Math.floor(Math.random() * offlineImages[photographer].photo.length)
     ];
 
-    this.setState({
+    const object = {
       url: `./offline-images/${randomImage}.webp`,
       photoInfo: {
         offline: true,
         credit: photographer
       }
-    });
+    }
+
+    this.setState(object);
+    localStorage.setItem('currentBackground', JSON.stringify(object));
   }
 
   setBackground() {
@@ -361,7 +364,20 @@ export default class Background extends React.PureComponent {
       }, Number(interval), 'background');
 
       try {
-        this.setState(JSON.parse(localStorage.getItem('currentBackground')));
+        // todo: refactor this mess
+        const current = JSON.parse(localStorage.getItem('currentBackground'));
+        const offline = localStorage.getItem('offlineMode')
+        if (current.url.startsWith('http') && offline === 'false') {
+          this.setState(current);
+        } else if (current.url.startsWith('http')) {
+          this.offlineBackground();
+        } else {
+          if (offline === 'false') {
+            localStorage.removeItem('currentBackground');
+            return this.getBackground();
+          }
+          this.setState(current);
+        }
       } catch (e) { 
         this.setBackground(); 
       }
