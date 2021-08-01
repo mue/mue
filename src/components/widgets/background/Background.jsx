@@ -69,7 +69,7 @@ export default class Background extends React.PureComponent {
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
-      const url = (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true) ? window.constants.DDG_IMAGE_PROXY + this.state.url : this.state.url;
+      const url = (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true && !this.state.url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + this.state.url : this.state.url;
       const photoInformation = document.querySelector('.photoInformation');
 
       // just set the background
@@ -320,6 +320,10 @@ export default class Background extends React.PureComponent {
         if (this.state.photoInfo.offline !== true) {
           // basically check to make sure something has changed before we try getting another background
           if (backgroundType !== this.state.type || (this.state.type === 'api' && localStorage.getItem('backgroundAPI') !== this.state.currentAPI) || (this.state.type === 'custom' && localStorage.getItem('customBackground') !== this.state.url)) {
+            return refresh();
+          }
+        } else {
+          if (backgroundType !== this.state.type) {
             return refresh();
           }
         }

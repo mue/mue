@@ -56,7 +56,7 @@ export default function PhotoInformation(props) {
     setWidth(event.target.width);
     setHeight(event.target.height);
   }
-  img.src = props.url;
+  img.src = (localStorage.getItem('ddgProxy') === 'true' && !props.info.offline && !props.url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + props.url : props.url;
 
   return (
     <div className='photoInformation'>
