@@ -7,7 +7,6 @@ build/
 package-lock.json
 yarn-error.log
 .eslintcache
-Firefox.zip
-Chrome.zip
 stats.json
 yarn.lock
+*.zip
