@@ -38,7 +38,7 @@ export default class FeedbackModal extends React.PureComponent {
       });
 
       await fetch(window.constants.FEEDBACK_FORM, {
-        'method': 'POST'
+        method: 'POST'
       });
 
       this.setState({
@@ -47,7 +47,7 @@ export default class FeedbackModal extends React.PureComponent {
 
       setTimeout(() => {
         this.props.modalClose();
-      }, 3000);
+      }, 5000);
     }
   }
 
@@ -84,7 +84,7 @@ export default class FeedbackModal extends React.PureComponent {
             <textarea name='question4' id='questionfour'/>
             <p className='feedbackerror'>{this.state.questionfourerror}</p>
           </>
-          {this.state.formsubmit}
+          <p>{this.state.formsubmit}</p>
           <button onClick={() => this.submitForm()}>{this.language.submit}</button>
         </>
       </div>

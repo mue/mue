@@ -31,10 +31,14 @@
     border: none;
     padding: 15px 20px;
     font-size: 1.5em;
-    background: linear-gradient(90deg, #ffb032 0%, #dd3b67 100%);
+    background: #5352ed;
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
+
+    &:hover {
+      background: rgba(83, 82, 237, 0.8);
+    }
   }
 
   input[type=text] {
@@ -54,7 +58,8 @@
 
   textarea {
     width: 80%;
-    background-color: var(--sidebar);
+    padding: 10px;
+    background-color: var(--sidebar) !important;
   }
 
   .feedbackerror {
