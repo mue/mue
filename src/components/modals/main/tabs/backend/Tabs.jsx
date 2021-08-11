@@ -15,7 +15,7 @@ export default class Tabs extends React.PureComponent {
 
   onClick = (tab, name) => {
     if (name !== this.state.currentName) {
-      window.stats.postEvent('tab', `Changed ${this.state.currentName} to ${name}`);
+      window.stats.postEvent('tab', `Opened ${name}`);
     }
 
     this.setState({ 

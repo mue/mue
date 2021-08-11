@@ -12,6 +12,7 @@ import Order from '../settings/sections/Order';
 import Experimental from '../settings/sections/Experimental';
 import QuickLinks from '../settings/sections/QuickLinks';
 import Weather from '../settings/sections/Weather';
+import Stats from '../settings/sections/Stats';
 
 import Tabs from './backend/Tabs';
 
@@ -37,6 +38,7 @@ export default function Settings() {
         <div label={sections.order.title} name='order'><Order/></div>
         <div label={sections.language.title} name='language'><Language/></div>
         <div label={sections.advanced.title} name='advanced'><Advanced/></div>
+        <div label='Stats' name='stats'><Stats/></div>
         <div label={sections.experimental.title} name='experimental'><Experimental/></div>
         <div label={sections.changelog} name='changelog'><Changelog/></div>
         <div label={sections.about.title} name='about'><About/></div>
