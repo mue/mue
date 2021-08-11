@@ -1,5 +1,5 @@
 // todo: rewrite this mess
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
 import Interval from '../../../modules/helpers/interval';
@@ -8,7 +8,7 @@ import PhotoInformation from './PhotoInformation';
 
 import './scss/index.scss';
 
-export default class Background extends React.PureComponent {
+export default class Background extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -25,19 +25,14 @@ export default class Background extends React.PureComponent {
     this.language = window.language.widgets.background;
   }
 
-  gradientStyleBuilder(gradientSettings) {
-    const { type, angle, gradient } = gradientSettings;
-    let style = `background: ${gradient[0].colour};`;
-
-    if (gradient.length > 1) {
-      // Note: Append the gradient for additional browser support.
-      const stepStyles = gradient.map((g) => ` ${g.colour} ${g.stop}%`).join();
-      style += ` background: ${type}-gradient(${(type === 'linear' ? (`${angle}deg,`) : '')}${stepStyles})`;
-    }
+  gradientStyleBuilder({ type, angle, gradient }) {
+    // Note: Append the gradient for additional browser support.
+    const steps = gradient?.map((v) => `${v.colour} ${v.stop}%`);
+    const grad = `background: ${type}-gradient(${type === 'linear' ? `${angle}deg,` : ''}${steps})`;
 
     this.setState({
       type: 'colour',
-      style: style
+      style: `background:${gradient[0]?.colour};${grad}`
     });
   }
 
@@ -81,7 +76,7 @@ export default class Background extends React.PureComponent {
           photoInformation.style.display = 'block';
         }
         backgroundImage.style.background = null;
-        return backgroundImage.style.background = `url(${url})`; 
+        return backgroundImage.style.background = `url(${url})`;
       }
 
       // firstly we set the background as hidden and make sure there is no background set currently
@@ -167,7 +162,7 @@ export default class Background extends React.PureComponent {
         } catch (e) {
           // if requesting to the API fails, we get an offline image
           return this.offlineBackground();
-        } 
+        }
 
         let credit = data.photographer;
         let photoURL, photographerURL;
@@ -260,7 +255,7 @@ export default class Background extends React.PureComponent {
           });
         }
       break;
-      default: 
+      default:
         break;
     }
   }
@@ -302,7 +297,7 @@ export default class Background extends React.PureComponent {
             return element.style.display = 'none';
           }
         }
-         
+
         // video backgrounds
         if (this.state.video === true) {
           document.getElementById('backgroundVideo').style.display = 'block';
@@ -378,8 +373,8 @@ export default class Background extends React.PureComponent {
           }
           this.setState(current);
         }
-      } catch (e) { 
-        this.setBackground(); 
+      } catch (e) {
+        this.setBackground();
       }
     } else {
       this.getBackground();
@@ -413,7 +408,7 @@ export default class Background extends React.PureComponent {
     return (
       <>
         <div style={{ WebkitFilter: `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}` }} id='backgroundImage'/>
-        {(this.state.photoInfo.credit !== '') ? 
+        {(this.state.photoInfo.credit !== '') ?
           <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo} api={this.state.currentAPI} url={this.state.url}/>
         : null}
       </>
