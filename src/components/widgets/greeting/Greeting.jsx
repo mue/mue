@@ -89,13 +89,16 @@ export default class Greeting extends React.PureComponent {
       }
 
       // Birthday
-      const birth = new Date(localStorage.getItem('birthday'));
-      if (localStorage.getItem('birthdayenabled') === 'true' && birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
-        if (localStorage.getItem('birthdayage') === 'true') {
-          const text = this.language.birthday.split(' ');
-          message = `${text[0]} ${dtf.nth(this.calculateAge(birth))} ${text[1]}`;
-        } else {
-          message = this.language.birthday;
+      if (localStorage.getItem('birthdayenabled') === 'true') {
+        const birth = new Date(localStorage.getItem('birthday'));
+
+        if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
+          if (localStorage.getItem('birthdayage') === 'true') {
+            const text = this.language.birthday.split(' ');
+            message = `${text[0]} ${dtf.nth(this.calculateAge(birth))} ${text[1]}`;
+          } else {
+            message = this.language.birthday;
+          }
         }
       }
 
