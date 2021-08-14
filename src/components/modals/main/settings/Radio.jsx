@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../../modules/helpers/eventbus';
 
@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-export default class Radio extends React.PureComponent {
+export default class Radio extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

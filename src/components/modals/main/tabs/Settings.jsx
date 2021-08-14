@@ -18,11 +18,7 @@ import Tabs from './backend/Tabs';
 
 export default function Settings() {
   const { reminder, sections } = window.language.modals.main.settings;
-
-  let display = 'none';
-  if (localStorage.getItem('showReminder') === 'true') {
-    display = 'block';
-  }
+  const display = (localStorage.getItem('showReminder') === 'true') ? 'block' : 'none';
 
   return (
     <>
@@ -38,7 +34,7 @@ export default function Settings() {
         <div label={sections.order.title} name='order'><Order/></div>
         <div label={sections.language.title} name='language'><Language/></div>
         <div label={sections.advanced.title} name='advanced'><Advanced/></div>
-        <div label='Stats' name='stats'><Stats/></div>
+        <div label={sections.stats.title} name='stats'><Stats/></div>
         <div label={sections.experimental.title} name='experimental'><Experimental/></div>
         <div label={sections.changelog} name='changelog'><Changelog/></div>
         <div label={sections.about.title} name='about'><About/></div>

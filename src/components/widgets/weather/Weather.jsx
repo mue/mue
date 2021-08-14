@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
 
@@ -8,7 +8,7 @@ import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'weather-icons-react';
 
 import './weather.scss';
 
-export default class Weather extends React.PureComponent {
+export default class Weather extends PureComponent {
   constructor() {
     super();
     this.state = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent, Fragment, Suspense, lazy } from 'react';
 
 import EventBus from '../../modules/helpers/eventbus';
 
@@ -9,10 +9,10 @@ import Search from './search/Search';
 import QuickLinks from './quicklinks/QuickLinks';
 import Date from './time/Date';
 
-const Weather = React.lazy(() => import('./weather/Weather'));
+const Weather = lazy(() => import('./weather/Weather'));
 const renderLoader = () => <></>;
 
-export default class Widgets extends React.PureComponent {
+export default class Widgets extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -53,7 +53,7 @@ export default class Widgets extends React.PureComponent {
 
     if (this.state.order) {
       this.state.order.forEach((element) => {
-        elements.push(<React.Fragment key={element}>{this.widgets[element]}</React.Fragment>);
+        elements.push(<Fragment key={element}>{this.widgets[element]}</Fragment>);
       });
     } else {
       // prevent error
@@ -62,11 +62,11 @@ export default class Widgets extends React.PureComponent {
 
     return (
       <div id='widgets'>
-        <React.Suspense fallback={renderLoader()}>
+        <Suspense fallback={renderLoader()}>
           {this.enabled('searchBar') ? <Search/> : null}
           {elements}
           {this.enabled('weatherEnabled') && (localStorage.getItem('offlineMode') === 'false') ? <Weather/> : null}
-        </React.Suspense>
+        </Suspense>
       </div>
     );
   }

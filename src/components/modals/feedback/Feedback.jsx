@@ -1,8 +1,8 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import './feedback.scss';
 
-export default class FeedbackModal extends React.PureComponent {
+export default class FeedbackModal extends PureComponent {
   constructor() {
     super();
     this.state = {

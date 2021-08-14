@@ -1,8 +1,8 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../../modules/helpers/eventbus';
 
-export default class Dropdown extends React.PureComponent {
+export default class Dropdown extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

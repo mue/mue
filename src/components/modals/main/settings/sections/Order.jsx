@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../../../modules/helpers/eventbus';
 
@@ -36,7 +36,7 @@ const SortableContainer = sortableContainer(({ children }) => {
   return <ul className='sortablecontainer'>{children}</ul>;
 });
 
-export default class OrderSettings extends React.PureComponent {
+export default class OrderSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

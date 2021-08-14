@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Radio from '../main/settings/Radio';
 import Checkbox from '../main/settings/Checkbox';
@@ -9,13 +9,13 @@ import AutoIcon from '@material-ui/icons/AutoAwesome';
 import LightModeIcon from '@material-ui/icons/LightMode';
 import DarkModeIcon from '@material-ui/icons/DarkMode';
 
-import SettingsFunctions from '../../../modules/helpers/settings';
-import SettingsFunctionsModal from '../../../modules/helpers/settings/modals';
+import { loadSettings } from '../../../modules/helpers/settings';
+import { importSettings } from '../../../modules/helpers/settings/modals';
 
 const languages = require('../../../modules/languages.json');
 const default_settings = require('../../../modules/default_settings.json');
 
-export default class WelcomeSections extends React.PureComponent {
+export default class WelcomeSections extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -40,7 +40,7 @@ export default class WelcomeSections extends React.PureComponent {
     });
 
     localStorage.setItem('theme', type);
-    SettingsFunctions.loadSettings(true);
+    loadSettings(true);
   }
 
   getSetting(name) {
@@ -49,7 +49,7 @@ export default class WelcomeSections extends React.PureComponent {
   }
 
   importSettings(e) {
-    SettingsFunctionsModal.importSettings(e);
+    importSettings(e);
 
     let settings = [];
     const data = JSON.parse(e.target.result);

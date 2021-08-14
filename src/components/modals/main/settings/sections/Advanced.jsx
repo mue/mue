@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Checkbox from '../Checkbox';
 import FileUpload from '../FileUpload';
@@ -7,13 +7,13 @@ import Switch from '../Switch';
 import ResetModal from '../ResetModal';
 import Dropdown from '../Dropdown';
 
-import SettingsFunctions from '../../../../../modules/helpers/settings/modals';
+import { exportSettings, importSettings } from '../../../../../modules/helpers/settings/modals';
 
 import Modal from 'react-modal';
 
 const time_zones = require('../../../../widgets/time/timezones.json');
 
-export default class AdvancedSettings extends React.PureComponent {
+export default class AdvancedSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -38,9 +38,9 @@ export default class AdvancedSettings extends React.PureComponent {
 
         <h3>{advanced.data}</h3>
         <button className='reset' onClick={() => this.setState({ resetModal: true })}>{this.language.buttons.reset}</button>
-        <button className='export' onClick={() => SettingsFunctions.exportSettings()}>{this.language.buttons.export}</button>
+        <button className='export' onClick={() => exportSettings()}>{this.language.buttons.export}</button>
         <button className='import' onClick={() => document.getElementById('file-input').click()}>{this.language.buttons.import}</button>
-        <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => SettingsFunctions.importSettings(e)}/>
+        <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => importSettings(e)}/>
 
         <h3>{advanced.customisation}</h3>
         <Text title={advanced.tab_name} name='tabName' default={window.language.tabname} category='other'/>

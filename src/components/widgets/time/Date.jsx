@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import { utcToZonedTime } from 'date-fns-tz';
 import EventBus from '../../../modules/helpers/eventbus';
@@ -7,7 +7,7 @@ import dtf from '../../../modules/helpers/date';
 
 import './date.scss';
 
-export default class DateWidget extends React.PureComponent {
+export default class DateWidget extends PureComponent {
   constructor() {
     super();
     this.state = {

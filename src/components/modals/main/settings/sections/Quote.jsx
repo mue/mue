@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Checkbox from '../Checkbox';
 import Text from '../Text';
@@ -6,7 +6,7 @@ import Switch from '../Switch';
 import Slider from '../Slider';
 import Dropdown from '../Dropdown';
 
-export default class QuoteSettings extends React.PureComponent {
+export default class QuoteSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

@@ -1,9 +1,9 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Tab from './Tab';
 import ErrorBoundary from '../../../ErrorBoundary';
 
-export default class Tabs extends React.PureComponent {
+export default class Tabs extends PureComponent {
   constructor(props) {
     super(props);
 

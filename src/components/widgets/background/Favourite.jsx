@@ -1,11 +1,11 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import StarIcon from '@material-ui/icons/Star';
 import StarIcon2 from '@material-ui/icons/StarBorder';
 
-export default class Favourite extends React.PureComponent {
+export default class Favourite extends PureComponent {
   buttons = {
     favourited: <StarIcon onClick={() => this.favourite()} className='topicons' />,
     unfavourited: <StarIcon2 onClick={() => this.favourite()} className='topicons' />

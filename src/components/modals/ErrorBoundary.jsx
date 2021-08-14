@@ -1,8 +1,8 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
-export default class ErrorBoundary extends React.PureComponent {
+export default class ErrorBoundary extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

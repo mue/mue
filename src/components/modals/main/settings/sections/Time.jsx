@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
@@ -6,7 +6,7 @@ import Switch from '../Switch';
 import Radio from '../Radio';
 import Slider from '../Slider';
 
-export default class TimeSettings extends React.PureComponent {
+export default class TimeSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

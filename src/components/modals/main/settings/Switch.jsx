@@ -1,11 +1,11 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../../modules/helpers/eventbus';
 
 import SwitchUI from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-export default class Switch extends React.PureComponent {
+export default class Switch extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

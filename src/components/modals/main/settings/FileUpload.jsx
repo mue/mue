@@ -1,8 +1,8 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import { toast } from 'react-toastify';
 
-export default class FileUpload extends React.PureComponent {
+export default class FileUpload extends PureComponent {
   componentDidMount() {
     document.getElementById(this.props.id).onchange = (e) => {
       const reader = new FileReader();

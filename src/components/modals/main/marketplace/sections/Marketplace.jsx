@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import WifiOffIcon from '@material-ui/icons/WifiOff';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
@@ -7,11 +7,11 @@ import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 
-import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
+import { install, urlParser, uninstall } from '../../../../../modules/helpers/marketplace';
 
 import { toast } from 'react-toastify';
 
-export default class Marketplace extends React.PureComponent {
+export default class Marketplace extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -59,7 +59,7 @@ export default class Marketplace extends React.PureComponent {
           type: info.data.type,
           display_name: info.data.name,
           author: info.data.author,
-          description: MarketplaceFunctions.urlParser(info.data.description.replace(/\n/g, '<br>')),
+          description: urlParser(info.data.description.replace(/\n/g, '<br>')),
           //updated: info.updated,
           version: info.data.version,
           icon: info.data.screenshot_url,
@@ -96,9 +96,9 @@ export default class Marketplace extends React.PureComponent {
 
   manage(type) {
     if (type === 'install') {
-      MarketplaceFunctions.install(this.state.item.type, this.state.item.data);
+      install(this.state.item.type, this.state.item.data);
     } else {
-      MarketplaceFunctions.uninstall(this.state.item.type, this.state.item.display_name);
+      uninstall(this.state.item.type, this.state.item.display_name);
     }
 
     toast(window.language.toasts[type + 'ed']);

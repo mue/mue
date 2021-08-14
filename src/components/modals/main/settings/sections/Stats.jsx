@@ -1,10 +1,10 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Switch from '../Switch';
 
 import EventBus from '../../../../../modules/helpers/eventbus';
 
-export default class Stats extends React.PureComponent {
+export default class Stats extends PureComponent {
   constructor() {
     super();
     this.state = {

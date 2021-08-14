@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
@@ -8,7 +8,7 @@ import Pin from '@material-ui/icons/PushPin';
 
 import { toast } from 'react-toastify';
 
-export default class Notes extends React.PureComponent {
+export default class Notes extends PureComponent {
   constructor() {
     super();
     this.state = {

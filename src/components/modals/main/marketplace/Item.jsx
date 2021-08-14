@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Modal from 'react-modal';
 
@@ -6,7 +6,7 @@ import Lightbox from './Lightbox';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-export default class Item extends React.PureComponent {
+export default class Item extends PureComponent {
   constructor() {
     super();
     this.state = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 const searchEngines = require('../../../../widgets/search/search_engines.json');
 const autocompleteProviders = require('../../../../widgets/search/autocomplete_providers.json');
 
-export default class SearchSettings extends React.PureComponent {
+export default class SearchSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

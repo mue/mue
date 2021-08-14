@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent, Suspense, lazy } from 'react';
 
 import EventBus from '../../modules/helpers/eventbus';
 
@@ -10,10 +10,10 @@ import Modal from 'react-modal';
 
 // Welcome modal is lazy loaded as the user won't use it every time they open a tab
 // We used to lazy load the main and feedback modals, but doing so broke the modal open animation on first click
-const Welcome = React.lazy(() => import('./welcome/Welcome'));
+const Welcome = lazy(() => import('./welcome/Welcome'));
 const renderLoader = () => <></>;
 
-export default class Modals extends React.PureComponent {
+export default class Modals extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -62,14 +62,14 @@ export default class Modals extends React.PureComponent {
         <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.toggleModal('mainModal', false)} isOpen={this.state.mainModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
           <Main modalClose={() => this.toggleModal('mainModal', false)}/>
         </Modal>
-        <React.Suspense fallback={renderLoader()}>
+        <Suspense fallback={renderLoader()}>
           <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay welcomeoverlay' shouldCloseOnOverlayClick={false} ariaHideApp={false}>
             <Welcome modalClose={() => this.closeWelcome()}/>
           </Modal>
           <Modal closeTimeoutMS={300} onRequestClose={() => this.toggleModal('feedbackModal', false)} isOpen={this.state.feedbackModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
             <Feedback modalClose={() => this.toggleModal('feedbackModal', false)}/>
           </Modal>
-        </React.Suspense>
+        </Suspense>
       </>
     );
   }

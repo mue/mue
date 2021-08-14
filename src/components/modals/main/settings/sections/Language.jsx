@@ -1,10 +1,10 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Radio from '../Radio';
 
 const languages = require('../../../../../modules/languages.json');
 
-export default class BackgroundSettings extends React.PureComponent {
+export default class BackgroundSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

@@ -1,10 +1,10 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 
-export default class Maximise extends React.PureComponent {
+export default class Maximise extends PureComponent {
   constructor() {
     super();
     this.state = {

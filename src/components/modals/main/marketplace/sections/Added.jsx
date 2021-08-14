@@ -1,15 +1,15 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 
-import MarketplaceFunctions from '../../../../../modules/helpers/marketplace';
+import { uninstall, urlParser } from '../../../../../modules/helpers/marketplace';
 
 import { toast } from 'react-toastify';
 
-export default class Added extends React.PureComponent {
+export default class Added extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -34,7 +34,7 @@ export default class Added extends React.PureComponent {
           name: data,
           display_name: info.name,
           author: info.author,
-          description: MarketplaceFunctions.urlParser(info.description.replace(/\n/g, '<br>')),
+          description: urlParser(info.description.replace(/\n/g, '<br>')),
           //updated: info.updated,
           version: info.version,
           icon: info.screenshot_url,
@@ -51,7 +51,7 @@ export default class Added extends React.PureComponent {
   }
 
   uninstall() {
-    MarketplaceFunctions.uninstall(this.state.item.type, this.state.item.display_name);
+    uninstall(this.state.item.type, this.state.item.display_name);
     
     toast(window.language.toasts.uninstalled);
 

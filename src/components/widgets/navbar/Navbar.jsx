@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import RefreshIcon from '@material-ui/icons/RefreshRounded';
 import Gear from '@material-ui/icons/SettingsRounded';
@@ -14,7 +14,7 @@ import EventBus from '../../../modules/helpers/eventbus';
 
 import './scss/index.scss';
 
-export default class Navbar extends React.PureComponent {
+export default class Navbar extends PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'navbar') {

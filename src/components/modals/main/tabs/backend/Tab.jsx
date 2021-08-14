@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 // Navbar
 import Settings from '@material-ui/icons/SettingsRounded';
@@ -96,4 +96,4 @@ function Tab(props) {
   );
 }
 
-export default React.memo(Tab);
+export default memo(Tab);

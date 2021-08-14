@@ -1,11 +1,11 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Checkbox from '../Checkbox';
 import Switch from '../Switch';
 import Text from '../Text';
 import Slider from '../Slider';
 
-export default class GreetingSettings extends React.PureComponent {
+export default class GreetingSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

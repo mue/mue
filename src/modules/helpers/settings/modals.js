@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-const saveFile = (data, filename = 'file') => {
+export function saveFile(data, filename = 'file') {
   if (typeof data === 'object') {
     data = JSON.stringify(data, undefined, 4);
   }
@@ -17,28 +17,22 @@ const saveFile = (data, filename = 'file') => {
   a.dispatchEvent(e);
 };
 
-export default class ModalSettingsFunctions {
-  static exportSettings() {
-    let settings = {};
-    Object.keys(localStorage).forEach((key) => {
-        settings[key] = localStorage.getItem(key);
-    });
-    saveFile(settings, 'mue-settings.json');
-    window.stats.postEvent('tab', 'Settings exported');
-  }
+export function exportSettings() {
+  let settings = {};
+  Object.keys(localStorage).forEach((key) => {
+      settings[key] = localStorage.getItem(key);
+  });
+  saveFile(settings, 'mue-settings.json');
+  window.stats.postEvent('tab', 'Settings exported');
+}
 
-  static saveFile(data, filename) {
-    saveFile(data, filename);
-  }
+export function importSettings(e) {
+  const content = JSON.parse(e.target.result);
 
-  static importSettings(e) {
-    const content = JSON.parse(e.target.result);
+  Object.keys(content).forEach((key) => {
+    localStorage.setItem(key, content[key]);
+  });
 
-    Object.keys(content).forEach((key) => {
-      localStorage.setItem(key, content[key]);
-    });
-
-    toast(window.language.toasts.imported);
-    window.stats.postEvent('tab', 'Settings imported');
-  }
+  toast(window.language.toasts.imported);
+  window.stats.postEvent('tab', 'Settings imported');
 }

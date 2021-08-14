@@ -1,13 +1,13 @@
-import React from 'react';
+import { Suspense, lazy } from 'react';
 
 import Tabs from './tabs/backend/Tabs';
 
 import './scss/index.scss';
 
 // Lazy load all the tabs instead of the modal itself
-const Settings = React.lazy(() => import('./tabs/Settings'));
-const Addons = React.lazy(() => import('./tabs/Addons'));
-const Marketplace = React.lazy(() => import('./tabs/Marketplace'));
+const Settings = lazy(() => import('./tabs/Settings'));
+const Addons = lazy(() => import('./tabs/Addons'));
+const Marketplace = lazy(() => import('./tabs/Marketplace'));
 
 const renderLoader = () => (
   <Tabs>
@@ -30,19 +30,19 @@ export default function MainModal(props) {
       <span className='closeModal' onClick={props.modalClose}>&times;</span>
       <Tabs navbar={true}>
         <div label={language.settings} name='settings'>
-          <React.Suspense fallback={renderLoader()}>
+          <Suspense fallback={renderLoader()}>
             <Settings/>
-          </React.Suspense>
+          </Suspense>
         </div>
         <div label={language.addons} name='addons'>
-          <React.Suspense fallback={renderLoader()}>
+          <Suspense fallback={renderLoader()}>
             <Addons/>
-          </React.Suspense>
+          </Suspense>
         </div>
         <div label={language.marketplace} name='marketplace'>
-          <React.Suspense fallback={renderLoader()}>
+          <Suspense fallback={renderLoader()}>
             <Marketplace/>
-          </React.Suspense>
+          </Suspense>
         </div>
       </Tabs>
     </>

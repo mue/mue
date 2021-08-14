@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Modal from 'react-modal';
 
@@ -6,7 +6,7 @@ import Lightbox from '../../marketplace/Lightbox';
 
 import WifiOffIcon from '@material-ui/icons/WifiOff';
 
-export default class Changelog extends React.PureComponent {
+export default class Changelog extends PureComponent {
   constructor() {
     super();
     this.state = {

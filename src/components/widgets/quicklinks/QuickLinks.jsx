@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
 
@@ -7,7 +7,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import './quicklinks.scss';
 
-export default class QuickLinks extends React.PureComponent {
+export default class QuickLinks extends PureComponent {
   constructor() {
     super();
     this.state = {

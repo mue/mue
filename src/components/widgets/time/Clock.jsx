@@ -1,14 +1,14 @@
-import React from 'react';
+import { PureComponent, Suspense, lazy } from 'react';
 
 import { utcToZonedTime } from 'date-fns-tz';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import './clock.scss';
 
-const Analog = React.lazy(() => import('react-clock'));
+const Analog = lazy(() => import('react-clock'));
 const renderLoader = () => <></>;
 
-export default class Clock extends React.PureComponent {
+export default class Clock extends PureComponent {
   constructor() {
     super();
 
@@ -123,7 +123,7 @@ export default class Clock extends React.PureComponent {
 
     if (localStorage.getItem('timeType') === 'analogue') {
       clockHTML = (
-        <React.Suspense fallback={renderLoader()}>
+        <Suspense fallback={renderLoader()}>
           <Analog 
             className='analogclock clock-container' 
             value={this.state.time} 
@@ -133,7 +133,7 @@ export default class Clock extends React.PureComponent {
             renderMinuteHand={enabled('minuteHand')} 
             renderHourHand={enabled('hourHand')} 
           />
-        </React.Suspense>
+        </Suspense>
       );
     }
 

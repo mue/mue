@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
 
@@ -7,7 +7,7 @@ import ProgressBar from './ProgressBar';
 
 import './welcome.scss';
 
-export default class WelcomeModal extends React.PureComponent {
+export default class WelcomeModal extends PureComponent {
   constructor() {
     super();
     this.state = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
 
@@ -12,7 +12,7 @@ import './search.scss';
 const searchEngines = require('./search_engines.json');
 const autocompleteProviders = require('./autocomplete_providers.json');
 
-export default class Search extends React.PureComponent {
+export default class Search extends PureComponent {
   constructor() {
     super();
     this.state = {

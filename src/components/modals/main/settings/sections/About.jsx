@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import Tooltip from '../../../../helpers/tooltip/Tooltip';
 import EmailIcon from '@material-ui/icons/Email';
@@ -9,7 +9,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 
 const other_contributors = require('../../../../../modules/other_contributors.json');
 
-export default class About extends React.PureComponent {
+export default class About extends PureComponent {
   constructor() {
     super();
     this.state = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../../../../modules/helpers/eventbus';
 
@@ -13,7 +13,7 @@ import ColourSettings from './Colour';
 
 import { toast } from 'react-toastify';
 
-export default class BackgroundSettings extends React.PureComponent {
+export default class BackgroundSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

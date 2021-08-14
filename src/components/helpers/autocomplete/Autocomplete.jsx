@@ -1,8 +1,8 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import './autocomplete.scss';
 
-export default class Autocomplete extends React.PureComponent {
+export default class Autocomplete extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

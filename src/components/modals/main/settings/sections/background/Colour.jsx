@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent, Fragment } from 'react';
 
 import { ColorPicker } from 'react-color-gradient-picker';
 
@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-color-gradient-picker/dist/index.css';
 import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss';
 
-export default class ColourSettings extends React.PureComponent {
+export default class ColourSettings extends PureComponent {
   DefaultGradientSettings = { angle: '180', gradient: [{ colour: '#ffb032', stop: 0 }], type: 'linear' };
   GradientPickerInitalState = undefined;
   
@@ -166,10 +166,10 @@ export default class ColourSettings extends React.PureComponent {
       } else {
         gradientInputs = this.state.gradientSettings.gradient.map((g, i) => {
           return (
-            <React.Fragment key={i}>
+            <Fragment key={i}>
               <input id={'colour_' + i} type='color' name='colour' className='colour' onChange={(event) => this.onGradientChange(event, i)} value={g.colour}></input>
               <label htmlFor={'colour_' + i} className='customBackgroundHex'>{g.colour}</label>
-            </React.Fragment>
+            </Fragment>
           );
         });
       }

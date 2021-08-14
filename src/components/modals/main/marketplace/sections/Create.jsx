@@ -1,12 +1,12 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import FileUpload from '../../settings/FileUpload';
 
-import SettingsFunctions from '../../../../../modules/helpers/settings/modals';
+import { saveFile } from '../../../../../modules/helpers/settings/modals';
 
 import { toast } from 'react-toastify';
 
-export default class Create extends React.PureComponent {
+export default class Create extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -72,7 +72,7 @@ export default class Create extends React.PureComponent {
   }
 
   downloadAddon() {
-    SettingsFunctions.saveFile({
+    saveFile({
       name: this.state.addonMetadata.name,
       description: this.state.addonMetadata.description,
       type: this.state.addonMetadata.type,

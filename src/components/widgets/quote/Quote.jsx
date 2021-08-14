@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import EventBus from '../../../modules/helpers/eventbus';
 import Interval from '../../../modules/helpers/interval';
@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 
 import './quote.scss';
 
-export default class Quote extends React.PureComponent {
+export default class Quote extends PureComponent {
   buttons = {
     tweet: <TwitterIcon className='copyButton' onClick={() => this.tweetQuote()} />,
     copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />,

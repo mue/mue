@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 import Info from '@material-ui/icons/Info';
 import Location from '@material-ui/icons/LocationOn';
@@ -24,8 +24,8 @@ const downloadImage = async (info) => {
 };
 
 export default function PhotoInformation(props) {
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
 
   const language = window.language.widgets.background;
 
