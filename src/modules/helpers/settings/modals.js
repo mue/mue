@@ -27,6 +27,10 @@ export default class ModalSettingsFunctions {
     window.stats.postEvent('tab', 'Settings exported');
   }
 
+  static saveFile(data, filename) {
+    saveFile(data, filename);
+  }
+
   static importSettings(e) {
     const content = JSON.parse(e.target.result);
 

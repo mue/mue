@@ -21,6 +21,6 @@
   "content_security_policy": "script-src 'self' https://api.bing.com https://www.google.com; object-src 'self'",
   "background": {
     "persistent": false,
-    "scripts": [ "background-chrome.js" ]
+    "scripts": [ "background-firefox.js" ]
   }
 }

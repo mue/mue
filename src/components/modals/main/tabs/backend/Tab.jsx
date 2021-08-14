@@ -20,10 +20,12 @@ import Order from '@material-ui/icons/List';
 import Weather from '@material-ui/icons/CloudOutlined';
 import Advanced from '@material-ui/icons/SettingsOutlined';
 import QuickLinks from '@material-ui/icons/Link';
+import Stats from '@material-ui/icons/AssessmentOutlined';
 
 // Addons
 import Sideload from '@material-ui/icons/Code';
 import Added from '@material-ui/icons/AddCircleOutline';
+import Create from '@material-ui/icons/CreateNewFolderOutlined';
 
 function Tab(props) {
   let className = 'tab-list-item';
@@ -60,6 +62,7 @@ function Tab(props) {
     case settings.order.title: icon = <Order/>; break;
     case settings.language.title: icon = <Language/>; divider = true; break;
     case settings.advanced.title: icon = <Advanced/>; break;
+    case settings.stats.title: icon = <Stats/>; break;
     case settings.experimental.title: icon = <Experimental/>; divider = true; break;
     case settings.changelog: icon = <Changelog/>; break;
     case settings.about.title: icon = <About/>; break;
@@ -67,6 +70,7 @@ function Tab(props) {
     // Addons
     case addons.added: icon = <Added/>; break;
     case addons.sideload: icon = <Sideload/>; break;
+    case 'Create': icon = <Create/>; break;
 
     // Marketplace
     case marketplace.photo_packs: icon = <Background/>; break;

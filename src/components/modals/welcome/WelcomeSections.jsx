@@ -54,6 +54,7 @@ export default class WelcomeSections extends React.PureComponent {
     let settings = [];
     const data = JSON.parse(e.target.result);
     Object.keys(data).forEach((setting) => {
+      // language and theme already shown, the others are only used internally
       if (setting === 'language' || setting === 'theme'|| setting === 'firstRun' || setting === 'showWelcome' || setting === 'showReminder') {
         return;
       }
@@ -129,7 +130,7 @@ export default class WelcomeSections extends React.PureComponent {
       </>
     );
   
-    const { appearance, advanced, background, quicklinks } = window.language.modals.main.settings.sections;
+    const { appearance, advanced, background, quicklinks, stats } = window.language.modals.main.settings.sections;
     const languageSettings = window.language.modals.main.settings.sections.language;
 
     const theme = (
@@ -181,6 +182,8 @@ export default class WelcomeSections extends React.PureComponent {
         <Checkbox name='quicklinksddgProxy' text={background.ddg_image_proxy + ' (' + quicklinks.title + ')'}/>
         <Checkbox name='ddgProxy' text={background.ddg_image_proxy + ' (' + background.title + ')'}/>
         <p>{language.sections.privacy.ddg_proxy_description}</p>
+        <Checkbox name='stats' text={stats.usage}/>
+        <p>{language.sections.privacy.stats_description}</p>
         <h3 className='quicktip'>{language.sections.privacy.links.title}</h3>
         <a className='privacy' href={window.constants.PRIVACY_URL} target='_blank' rel='noopener noreferrer'>{language.sections.privacy.links.privacy_policy}</a>
         <br/><br/>
