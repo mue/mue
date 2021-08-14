@@ -18,5 +18,9 @@
   "chrome_settings_overrides": {
     "homepage": "index.html"
   },
-  "content_security_policy": "script-src 'self' https://api.bing.com https://www.google.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://api.bing.com https://www.google.com; object-src 'self'",
+  "background": {
+    "persistent": false,
+    "scripts": [ "background-chrome.js" ]
+  }
 }

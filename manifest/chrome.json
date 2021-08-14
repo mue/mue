@@ -17,5 +17,9 @@
     "48": "icons/48x48.png",
     "128": "icons/128x128.png"
   },
-  "content_security_policy": "script-src 'self' https://api.bing.com https://www.google.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://api.bing.com https://www.google.com; object-src 'self'",
+  "background": {
+    "persistent": false,
+    "scripts": [ "background-chrome.js" ]
+  }
 }
