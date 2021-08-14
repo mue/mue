@@ -44,7 +44,9 @@ export default class Stats extends React.PureComponent {
         <p>Backgrounds favourited: {this.state.stats.feature ? this.state.stats.feature['background-favourite'] || 0 : 0}</p>
         <p>Backgrounds downloaded: {this.state.stats.feature ? this.state.stats.feature['background-download'] || 0 : 0}</p>
         <p>Quotes favourited: {this.state.stats.feature ? this.state.stats.feature['quoted-favourite'] || 0 : 0}</p>
+        <p>Quick links added: {this.state.stats.feature ? this.state.stats.feature['quicklink-add'] || 0 : 0}</p>
         <p>Settings changed: {this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0}</p>
+        <p>Add-ons installed: {this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0}</p>
         <Switch name='stats' text='Usage Stats' category='stats'/>
         <p>Turning this off will clear your statistics locally, but will not delete the anonymous data posted to umami.</p>
       </>
