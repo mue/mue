@@ -1,9 +1,7 @@
 import { PureComponent } from 'react';
+import { Checkbox as CheckboxUI, FormControlLabel } from '@material-ui/core';
 
 import EventBus from '../../../../modules/helpers/eventbus';
-
-import CheckboxUI from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class Checkbox extends PureComponent {
   constructor(props) {
@@ -34,19 +32,11 @@ export default class Checkbox extends PureComponent {
   }
 
   render() {
-    let text = this.props.text;
-
-    if (this.props.newFeature) {
-      text = <>{this.props.text} <span className='newFeature'> NEW</span></>;
-    } else if (this.props.betaFeature) {
-      text = <>{this.props.text} <span className='newFeature'> BETA</span></>;
-    }
-
     return (
       <>
         <FormControlLabel
           control={<CheckboxUI name={this.props.name} color='primary' className='checkbox' checked={this.state.checked} onChange={this.handleChange} />}
-          label={text}
+          label={this.props.text}
         />
         <br/>
       </>

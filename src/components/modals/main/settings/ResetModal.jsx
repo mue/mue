@@ -1,6 +1,4 @@
-import CloseIcon from '@material-ui/icons/Close';
-import DeleteIcon from '@material-ui/icons/Delete';
-
+import { Close, Delete } from '@material-ui/icons';
 import { setDefaultSettings } from '../../../../modules/helpers/settings';
 
 export default function ResetModal(props) {
@@ -20,10 +18,10 @@ export default function ResetModal(props) {
       <span>{language.information}</span>
       <div className='resetfooter'>
         <button className='round reset' style={{ marginLeft: 0 }} onClick={() => reset()}>
-          <DeleteIcon/>
+          <Delete/>
         </button>
         <button className='round import' style={{ marginLeft: '5px' }} onClick={props.modalClose}>
-          <CloseIcon/>
+          <Close/>
         </button>
       </div>
     </>

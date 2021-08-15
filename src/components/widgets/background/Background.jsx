@@ -1,10 +1,10 @@
 // todo: rewrite this mess
 import { PureComponent } from 'react';
 
+import PhotoInformation from './PhotoInformation';
+
 import EventBus from '../../../modules/helpers/eventbus';
 import Interval from '../../../modules/helpers/interval';
-
-import PhotoInformation from './PhotoInformation';
 
 import './scss/index.scss';
 

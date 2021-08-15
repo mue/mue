@@ -1,10 +1,8 @@
 import { PureComponent } from 'react';
-
+import { ArrowBack } from '@material-ui/icons';
 import Modal from 'react-modal';
 
 import Lightbox from './Lightbox';
-
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 export default class Item extends PureComponent {
   constructor() {
@@ -42,7 +40,7 @@ export default class Item extends PureComponent {
     return (
       <div id='item'>
         <br/>
-        <ArrowBackIcon className='backArrow' onClick={this.props.toggleFunction}/>
+        <ArrowBack className='backArrow' onClick={this.props.toggleFunction}/>
         <br/>
         <h1>{this.props.data.display_name}</h1>
         {this.props.button}

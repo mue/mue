@@ -1,9 +1,8 @@
 // todo: find a better method to do width of number input
 import { PureComponent } from 'react';
+import { toast } from 'react-toastify';
 
 import EventBus from '../../../../modules/helpers/eventbus';
-
-import { toast } from 'react-toastify';
 
 export default class Slider extends PureComponent {
   constructor(props) {

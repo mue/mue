@@ -1,8 +1,8 @@
+import Tabs from './backend/Tabs';
+
 import Added from '../marketplace/sections/Added';
 import Sideload from '../marketplace/sections/Sideload';
 import Create from '../marketplace/sections/Create';
-
-import Tabs from './backend/Tabs';
 
 export default function Addons() {
   const addons = window.language.modals.main.addons;

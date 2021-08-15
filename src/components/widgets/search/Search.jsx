@@ -1,11 +1,9 @@
 import { PureComponent } from 'react';
-
-import EventBus from '../../../modules/helpers/eventbus';
+import { Search as SearchIcon, Mic } from '@material-ui/icons';
 
 import AutocompleteInput from '../../helpers/autocomplete/Autocomplete';
 
-import SearchIcon from '@material-ui/icons/Search';
-import MicIcon from '@material-ui/icons/Mic';
+import EventBus from '../../../modules/helpers/eventbus';
 
 import './search.scss';
 
@@ -101,7 +99,7 @@ export default class Search extends PureComponent {
     }
 
     if (localStorage.getItem('voiceSearch') === 'true') {
-      microphone = <MicIcon className='micIcon' onClick={this.startSpeechRecognition}/>;
+      microphone = <Mic className='micIcon' onClick={this.startSpeechRecognition}/>;
     }
 
     let autocompleteURL, autocompleteQuery, autocompleteCallback;

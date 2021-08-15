@@ -1,13 +1,12 @@
 import { PureComponent } from 'react';
+import { LocalMall } from '@material-ui/icons';
+import { toast } from 'react-toastify';
 
-import LocalMallIcon from '@material-ui/icons/LocalMall';
 import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 
 import { uninstall, urlParser } from '../../../../../modules/helpers/marketplace';
-
-import { toast } from 'react-toastify';
 
 export default class Added extends PureComponent {
   constructor() {
@@ -100,7 +99,7 @@ export default class Added extends PureComponent {
       return (
         <div className='emptyitems'>
           <div className='emptyMessage'>
-            <LocalMallIcon/>
+            <LocalMall/>
             <h1>{this.language.empty.title}</h1>
             <p className='description'>{this.language.empty.description}</p>
           </div>

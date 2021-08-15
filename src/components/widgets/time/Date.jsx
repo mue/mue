@@ -1,9 +1,8 @@
 import { PureComponent } from 'react';
-
 import { utcToZonedTime } from 'date-fns-tz';
-import EventBus from '../../../modules/helpers/eventbus';
 
 import dtf from '../../../modules/helpers/date';
+import EventBus from '../../../modules/helpers/eventbus';
 
 import './date.scss';
 

@@ -1,3 +1,5 @@
+import Tabs from './backend/Tabs';
+
 import About from '../settings/sections/About';
 import Language from '../settings/sections/Language';
 import Search from '../settings/sections/Search';
@@ -13,8 +15,6 @@ import Experimental from '../settings/sections/Experimental';
 import QuickLinks from '../settings/sections/QuickLinks';
 import Weather from '../settings/sections/Weather';
 import Stats from '../settings/sections/Stats';
-
-import Tabs from './backend/Tabs';
 
 export default function Settings() {
   const { reminder, sections } = window.language.modals.main.settings;

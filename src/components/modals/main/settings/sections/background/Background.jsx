@@ -1,6 +1,5 @@
 import { PureComponent } from 'react';
-
-import EventBus from '../../../../../../modules/helpers/eventbus';
+import { toast } from 'react-toastify';
 
 import Checkbox from '../../Checkbox';
 import Dropdown from '../../Dropdown';
@@ -11,7 +10,7 @@ import Radio from '../../Radio';
 
 import ColourSettings from './Colour';
 
-import { toast } from 'react-toastify';
+import EventBus from '../../../../../../modules/helpers/eventbus';
 
 export default class BackgroundSettings extends PureComponent {
   constructor() {

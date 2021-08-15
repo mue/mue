@@ -1,31 +1,27 @@
 import { memo } from 'react';
-
-// Navbar
-import Settings from '@material-ui/icons/SettingsRounded';
-import Addons from '@material-ui/icons/Widgets';
-import Marketplace from '@material-ui/icons/ShoppingBasket';
-
-// Settings
-import Time from '@material-ui/icons/AccessAlarm';
-import Greeting from '@material-ui/icons/EmojiPeopleOutlined';
-import Quote from '@material-ui/icons/FormatQuoteOutlined';
-import Background from '@material-ui/icons/PhotoOutlined';
-import Search from '@material-ui/icons/Search';
-import Appearance from '@material-ui/icons/FormatPaintOutlined';
-import Language from '@material-ui/icons/Translate';
-import Changelog from '@material-ui/icons/NewReleasesOutlined';
-import About from '@material-ui/icons/InfoOutlined';
-import Experimental from '@material-ui/icons/BugReportOutlined';
-import Order from '@material-ui/icons/List';
-import Weather from '@material-ui/icons/CloudOutlined';
-import Advanced from '@material-ui/icons/SettingsOutlined';
-import QuickLinks from '@material-ui/icons/Link';
-import Stats from '@material-ui/icons/AssessmentOutlined';
-
-// Addons
-import Sideload from '@material-ui/icons/Code';
-import Added from '@material-ui/icons/AddCircleOutline';
-import Create from '@material-ui/icons/CreateNewFolderOutlined';
+import {
+  SettingsRounded as Settings,
+  Widgets as Addons,
+  ShoppingBasket as Marketplace,
+  AccessAlarm as Time,
+  EmojiPeopleOutlined as Greeting,
+  FormatQuoteOutlined as Quote,
+  PhotoOutlined as Background,
+  Search,
+  FormatPaintOutlined as Appearance,
+  Translate as Language,
+  NewReleasesOutlined as Changelog,
+  InfoOutlined as About,
+  BugReportOutlined as Experimental,
+  List as Order,
+  CloudOutlined as Weather,
+  SettingsOutlined as Advanced,
+  Link as QuickLinks,
+  AssessmentOutlined as Stats,
+  Code as Sideload,
+  AddCircleOutline as Added,
+  CreateNewFolderOutlined as Create
+} from '@material-ui/icons';
 
 function Tab(props) {
   let className = 'tab-list-item';

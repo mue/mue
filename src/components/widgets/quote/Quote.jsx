@@ -1,23 +1,18 @@
 import { PureComponent } from 'react';
-
-import EventBus from '../../../modules/helpers/eventbus';
-import Interval from '../../../modules/helpers/interval';
-
-import FileCopy from '@material-ui/icons/FilterNone';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import StarIcon from '@material-ui/icons/Star';
-import StarIcon2 from '@material-ui/icons/StarBorder';
-
+import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@material-ui/icons';
 import { toast } from 'react-toastify';
+
+import Interval from '../../../modules/helpers/interval';
+import EventBus from '../../../modules/helpers/eventbus';
 
 import './quote.scss';
 
 export default class Quote extends PureComponent {
   buttons = {
-    tweet: <TwitterIcon className='copyButton' onClick={() => this.tweetQuote()} />,
+    tweet: <Twitter className='copyButton' onClick={() => this.tweetQuote()} />,
     copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />,
-    unfavourited: <StarIcon2 className='copyButton' onClick={() => this.favourite()} />,
-    favourited: <StarIcon className='copyButton' onClick={() => this.favourite()} />
+    unfavourited: <StarBorder className='copyButton' onClick={() => this.favourite()} />,
+    favourited: <Star className='copyButton' onClick={() => this.favourite()} />
   }
 
   constructor() {

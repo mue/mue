@@ -1,13 +1,13 @@
 import { PureComponent, Fragment, Suspense, lazy } from 'react';
 
-import EventBus from '../../modules/helpers/eventbus';
-
 import Clock from './time/Clock';
 import Greeting from './greeting/Greeting';
 import Quote from './quote/Quote';
 import Search from './search/Search';
 import QuickLinks from './quicklinks/QuickLinks';
 import Date from './time/Date';
+
+import EventBus from '../../modules/helpers/eventbus';
 
 const Weather = lazy(() => import('./weather/Weather'));
 const renderLoader = () => <></>;

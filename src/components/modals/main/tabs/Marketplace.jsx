@@ -1,6 +1,6 @@
-import MarketplaceTab from '../marketplace/sections/Marketplace';
-
 import Tabs from './backend/Tabs';
+
+import MarketplaceTab from '../marketplace/sections/Marketplace';
 
 export default function Marketplace() {
   const marketplace = window.language.modals.main.marketplace;

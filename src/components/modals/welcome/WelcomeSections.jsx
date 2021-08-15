@@ -1,13 +1,9 @@
 import { PureComponent } from 'react';
+import { CloudUpload, AutoAwesome, LightMode, DarkMode } from '@material-ui/icons';
 
 import Radio from '../main/settings/Radio';
 import Checkbox from '../main/settings/Checkbox';
 import FileUpload from '../main/settings/FileUpload';
-
-import UploadIcon from '@material-ui/icons/CloudUpload';
-import AutoIcon from '@material-ui/icons/AutoAwesome';
-import LightModeIcon from '@material-ui/icons/LightMode';
-import DarkModeIcon from '@material-ui/icons/DarkMode';
 
 import { loadSettings } from '../../../modules/helpers/settings';
 import { importSettings } from '../../../modules/helpers/settings/modals';
@@ -139,16 +135,16 @@ export default class WelcomeSections extends PureComponent {
         <p>{language.sections.theme.description}</p>
         <div className='themesToggleArea'>
           <div className={this.state.autoClass} onClick={() => this.changeTheme('auto')}>
-            <AutoIcon/>
+            <AutoAwesome/>
             <span>{appearance.theme.auto}</span>
           </div>
           <div className='options'>
             <div className={this.state.lightClass} onClick={() => this.changeTheme('light')}>
-              <LightModeIcon/>
+              <LightMode/>
               <span>{appearance.theme.light}</span>
             </div>
             <div className={this.state.darkClass} onClick={() => this.changeTheme('dark')}>
-              <DarkModeIcon/>
+              <DarkMode/>
               <span>{appearance.theme.dark}</span>
             </div>
           </div>
@@ -163,7 +159,7 @@ export default class WelcomeSections extends PureComponent {
         <h1>{language.sections.settings.title}</h1>
         <p>{language.sections.settings.description}</p>
         <button className='upload' onClick={() => document.getElementById('file-input').click()}>
-          <UploadIcon/>
+          <CloudUpload/>
           <br/>
           <span>{window.language.modals.main.settings.buttons.import}</span>
         </button>

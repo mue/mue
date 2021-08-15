@@ -1,10 +1,10 @@
 import { PureComponent } from 'react';
-
-import EventBus from '../../../modules/helpers/eventbus';
+import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'weather-icons-react';
 
 import WeatherIcon from './WeatherIcon';
 import WindDirectionIcon from './WindDirectionIcon';
-import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'weather-icons-react';
+
+import EventBus from '../../../modules/helpers/eventbus';
 
 import './weather.scss';
 
@@ -132,10 +132,6 @@ export default class Weather extends PureComponent {
     const enabled = (setting) => {
       return (localStorage.getItem(setting) === 'true');
     };
-
-    if (enabled('offlineMode')) {
-      return null;
-    }
 
     if (this.state.location === window.language.widgets.weather.not_found) {
       return (<div className='weather'>

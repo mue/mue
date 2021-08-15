@@ -1,11 +1,7 @@
 import { PureComponent } from 'react';
+import { Email, Twitter, Chat, Instagram, Facebook } from '@material-ui/icons';
 
 import Tooltip from '../../../../helpers/tooltip/Tooltip';
-import EmailIcon from '@material-ui/icons/Email';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import ChatIcon from '@material-ui/icons/Chat';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
 
 const other_contributors = require('../../../../../modules/other_contributors.json');
 
@@ -94,11 +90,11 @@ export default class About extends PureComponent {
         <a href={window.constants.PRIVACY_URL} className='aboutLink' target='_blank' rel='noopener noreferrer' style={{ fontSize: '1rem' }}>{window.language.modals.welcome.sections.privacy.links.privacy_policy}</a>
 
         <h3>{this.language.contact_us}</h3>
-        <a href={'mailto:' + window.constants.EMAIL} className='aboutIcon' target='_blank' rel='noopener noreferrer'><EmailIcon/></a>
-        <a href={'https://twitter.com/' + window.constants.TWITTER_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><TwitterIcon/></a>
-        <a href={'https://instagram.com/' + window.constants.INSTAGRAM_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><InstagramIcon/></a>
-        <a href={'https://facebook.com/' + window.constants.FACEBOOK_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><FacebookIcon/></a>
-        <a href={'https://discord.gg/' + window.constants.DISCORD_SERVER} className='aboutIcon' target='_blank' rel='noopener noreferrer'><ChatIcon/></a>
+        <a href={'mailto:' + window.constants.EMAIL} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Email/></a>
+        <a href={'https://twitter.com/' + window.constants.TWITTER_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Twitter/></a>
+        <a href={'https://instagram.com/' + window.constants.INSTAGRAM_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Instagram/></a>
+        <a href={'https://facebook.com/' + window.constants.FACEBOOK_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Facebook/></a>
+        <a href={'https://discord.gg/' + window.constants.DISCORD_SERVER} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Chat/></a>
 
         <h3>{this.language.support_mue}</h3>
         <p>

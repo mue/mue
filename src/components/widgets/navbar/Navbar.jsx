@@ -1,9 +1,5 @@
 import { PureComponent } from 'react';
-
-import RefreshIcon from '@material-ui/icons/RefreshRounded';
-import Gear from '@material-ui/icons/SettingsRounded';
-import NotesIcon from '@material-ui/icons/AssignmentRounded';
-import Report from '@material-ui/icons/SmsFailed';
+import { RefreshRounded, SettingsRounded, AssignmentRounded as NotesRounded, SmsFailed as Report } from '@material-ui/icons';
 
 import Notes from './Notes';
 import Maximise from '../background/Maximise';
@@ -33,7 +29,7 @@ export default class Navbar extends PureComponent {
     
         {(localStorage.getItem('notesEnabled') === 'true') ?
           <div className='notes'>
-            <NotesIcon className='topicons'/>
+            <NotesRounded className='topicons'/>
             <Notes/>
           </div>
         : null}
@@ -46,12 +42,12 @@ export default class Navbar extends PureComponent {
   
         {(localStorage.getItem('refresh') === 'true') ?
           <Tooltip title={window.language.widgets.navbar.tooltips.refresh}>
-            <RefreshIcon className='refreshicon topicons' onClick={() => window.location.reload()}/>
+            <RefreshRounded className='refreshicon topicons' onClick={() => window.location.reload()}/>
           </Tooltip>
         : null}
   
         <Tooltip title={window.language.modals.main.navbar.settings}>
-          <Gear className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')}/>
+          <SettingsRounded className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')}/>
         </Tooltip>
       </div>
     );

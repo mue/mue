@@ -1,11 +1,9 @@
 import { PureComponent } from 'react';
-
-import EventBus from '../../../../../modules/helpers/eventbus';
-
-import DragHandleIcon from '@material-ui/icons/DragIndicator';
-
+import { DragIndicator } from '@material-ui/icons';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';
+
+import EventBus from '../../../../../modules/helpers/eventbus';
 
 const enabled = (setting) => {
   switch (setting) {
@@ -27,7 +25,7 @@ const widget_name = {
 
 const SortableItem = sortableElement(({ value }) => (
   <li className='sortableitem' style={{ display: enabled(value) ? 'block' : 'none' }}>
-    <DragHandleIcon style={{ verticalAlign: 'middle' }} />
+    <DragIndicator style={{ verticalAlign: 'middle' }} />
     {widget_name[value]}
   </li>
 ));

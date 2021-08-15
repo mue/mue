@@ -1,15 +1,12 @@
 import { PureComponent } from 'react';
-
-import WifiOffIcon from '@material-ui/icons/WifiOff';
-import LocalMallIcon from '@material-ui/icons/LocalMall';
+import { toast } from 'react-toastify';
+import { WifiOff, LocalMall } from '@material-ui/icons';
 
 import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 
 import { install, urlParser, uninstall } from '../../../../../modules/helpers/marketplace';
-
-import { toast } from 'react-toastify';
 
 export default class Marketplace extends PureComponent {
   constructor() {
@@ -178,7 +175,7 @@ export default class Marketplace extends PureComponent {
 
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(<>
-        <WifiOffIcon/>
+        <WifiOff/>
         <h1>{this.language.offline.title}</h1>
         <p className='description'>{this.language.offline.description}</p>
       </>);
@@ -193,7 +190,7 @@ export default class Marketplace extends PureComponent {
         <>
           {featured()}
           {errorMessage(<>
-            <LocalMallIcon/>
+            <LocalMall/>
             <h1>{window.language.modals.main.addons.empty.title}</h1>
             <p className='description'>{this.language.no_items}</p>
           </>)}

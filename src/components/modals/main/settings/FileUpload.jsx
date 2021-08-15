@@ -1,5 +1,4 @@
 import { PureComponent } from 'react';
-
 import { toast } from 'react-toastify';
 
 export default class FileUpload extends PureComponent {

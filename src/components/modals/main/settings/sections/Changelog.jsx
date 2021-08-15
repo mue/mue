@@ -1,10 +1,8 @@
 import { PureComponent } from 'react';
-
+import { WifiOff } from '@material-ui/icons';
 import Modal from 'react-modal';
 
 import Lightbox from '../../marketplace/Lightbox';
-
-import WifiOffIcon from '@material-ui/icons/WifiOff';
 
 export default class Changelog extends PureComponent {
   constructor() {
@@ -89,7 +87,7 @@ export default class Changelog extends PureComponent {
       const language = window.language.modals.main.marketplace;
     
       return errorMessage(<>
-        <WifiOffIcon/>
+        <WifiOff/>
         <h1>{language.offline.title}</h1>
         <p className='description'>{language.offline.description}</p>
       </>);

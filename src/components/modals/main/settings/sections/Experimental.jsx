@@ -1,5 +1,6 @@
 import Checkbox from '../Checkbox';
 import Slider from '../Slider';
+
 import EventBus from '../../../../../modules/helpers/eventbus';
 
 export default function ExperimentalSettings() {

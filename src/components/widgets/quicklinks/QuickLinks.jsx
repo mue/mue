@@ -1,9 +1,8 @@
 import { PureComponent } from 'react';
+import Tooltip from '../../helpers/tooltip/Tooltip';
+import { TextareaAutosize } from '@material-ui/core';
 
 import EventBus from '../../../modules/helpers/eventbus';
-
-import Tooltip from '../../helpers/tooltip/Tooltip';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import './quicklinks.scss';
 
@@ -88,15 +87,9 @@ export default class QuickLinks extends PureComponent {
   }
 
   toggleAdd = () => {
-    if (this.state.showAddLink === 'hidden') {
-      this.setState({
-        showAddLink: 'visible'
-      });
-    } else {
-      this.setState({
-        showAddLink: 'hidden'
-      });
-    }
+    this.setState({
+      showAddLink: (this.state.showAddLink === 'hidden') ? 'visible' : 'hidden'
+    });
   }
 
   // widget zoom
@@ -154,9 +147,9 @@ export default class QuickLinks extends PureComponent {
     }
 
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
+    const useProxy = (localStorage.getItem('quicklinksddgProxy') !== 'false');
 
     const quickLink = (item) => {
-      const useProxy = (localStorage.getItem('quicklinksddgProxy') !== 'false');
       const url = useProxy ? 'https://icons.duckduckgo.com/ip2/' : 'https://www.google.com/s2/favicons?sz=32&domain=';
 
       const link = (
@@ -166,7 +159,7 @@ export default class QuickLinks extends PureComponent {
       );
 
       if (tooltipEnabled === 'true') {
-        return <Tooltip title={item.name} key={item.name} draggable={false}>{link}</Tooltip>;
+        return <Tooltip title={item.name}>{link}</Tooltip>;
       } else {
         return link;
       }

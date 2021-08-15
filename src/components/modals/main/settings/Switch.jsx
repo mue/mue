@@ -1,9 +1,7 @@
 import { PureComponent } from 'react';
+import { Switch as SwitchUI, FormControlLabel } from '@material-ui/core';
 
 import EventBus from '../../../../modules/helpers/eventbus';
-
-import SwitchUI from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class Switch extends PureComponent {
   constructor(props) {
@@ -34,19 +32,11 @@ export default class Switch extends PureComponent {
   }
 
   render() {
-    let text = this.props.text;
-
-    if (this.props.newFeature) {
-      text = <>{this.props.text} <span className='newFeature'> NEW</span></>;
-    } else if (this.props.betaFeature) {
-      text = <>{this.props.text} <span className='newFeature'> BETA</span></>;
-    }
-
     return (
       <>
         <FormControlLabel
           control={<SwitchUI name={this.props.name} color='primary' checked={this.state.checked} onChange={this.handleChange} />}
-          label={text}
+          label={this.props.text}
           labelPlacement='start'
         />
         <br/>

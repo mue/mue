@@ -1,4 +1,7 @@
 import { PureComponent } from 'react';
+import Modal from 'react-modal';
+
+import { exportSettings, importSettings } from '../../../../../modules/helpers/settings/modals';
 
 import Checkbox from '../Checkbox';
 import FileUpload from '../FileUpload';
@@ -6,10 +9,6 @@ import Text from '../Text';
 import Switch from '../Switch';
 import ResetModal from '../ResetModal';
 import Dropdown from '../Dropdown';
-
-import { exportSettings, importSettings } from '../../../../../modules/helpers/settings/modals';
-
-import Modal from 'react-modal';
 
 const time_zones = require('../../../../widgets/time/timezones.json');
 

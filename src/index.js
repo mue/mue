@@ -20,7 +20,6 @@ if (languagecode === 'en') {
   window.languagecode = 'en_GB';
 }
 
-// these are merged so if a string is untranslated it doesn't break mue
 window.language = require(`./translations/${window.languagecode}.json`);
 
 // set html language tag

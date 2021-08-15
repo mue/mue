@@ -1,13 +1,14 @@
 import { PureComponent } from 'react';
-
-import FileUpload from '../../settings/FileUpload';
-
-import Settings from '@material-ui/icons/SettingsRounded';
-import Photos from '@material-ui/icons/PhotoOutlined';
-import Quotes from '@material-ui/icons/FormatQuoteOutlined';
+import { 
+  SettingsRounded as Settings, 
+  PhotoOutlined as Photos, 
+  FormatQuoteOutlined as Quotes
+} from '@material-ui/icons';
+import { toast } from 'react-toastify';
 
 import { saveFile } from '../../../../../modules/helpers/settings/modals';
-import { toast } from 'react-toastify';
+
+import FileUpload from '../../settings/FileUpload';
 
 import '../../../welcome/welcome.scss';
 

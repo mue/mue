@@ -1,8 +1,7 @@
 import { PureComponent } from 'react';
+import { Fullscreen } from '@material-ui/icons';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
-
-import FullscreenIcon from '@material-ui/icons/Fullscreen';
 
 export default class Maximise extends PureComponent {
   constructor() {
@@ -57,7 +56,7 @@ export default class Maximise extends PureComponent {
   render() {
     return (
       <Tooltip title={window.language.modals.main.settings.sections.background.buttons.view}>
-        <FullscreenIcon onClick={this.maximise} className='topicons' />
+        <Fullscreen onClick={this.maximise} className='topicons' />
       </Tooltip>
     );
   }

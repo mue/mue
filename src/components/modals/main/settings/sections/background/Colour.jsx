@@ -1,11 +1,9 @@
 import { PureComponent, Fragment } from 'react';
-
 import { ColorPicker } from 'react-color-gradient-picker';
+import { toast } from 'react-toastify';
 
 import hexToRgb from '../../../../../../modules/helpers/background/hexToRgb';
 import rgbToHex from '../../../../../../modules/helpers/background/rgbToHex';
-
-import { toast } from 'react-toastify';
 
 import 'react-color-gradient-picker/dist/index.css';
 import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss';

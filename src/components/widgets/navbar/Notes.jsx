@@ -1,11 +1,6 @@
 import { PureComponent } from 'react';
-
+import { FileCopyRounded, AssignmentRounded as NotesRounded, PushPin }from '@material-ui/icons';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-
-import CopyIcon from '@material-ui/icons/FileCopyRounded';
-import NotesIcon from '@material-ui/icons/AssignmentRounded';
-import Pin from '@material-ui/icons/PushPin';
-
 import { toast } from 'react-toastify';
 
 export default class Notes extends PureComponent {
@@ -57,12 +52,12 @@ export default class Notes extends PureComponent {
     return (
       <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility }}>
         <div className='topbarnotes'>
-          <NotesIcon/>
+          <NotesRounded/>
           <h3>{this.language.title}</h3>
         </div>
         <TextareaAutosize rowsmax={50} placeholder={this.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
-        <button onClick={() => this.pin()} className='pinNote'><Pin/></button>
-        <button onClick={() => this.copy()} className='copyNote'><CopyIcon/></button>
+        <button onClick={() => this.pin()} className='pinNote'><PushPin/></button>
+        <button onClick={() => this.copy()} className='copyNote'><FileCopyRounded/></button>
       </span>
     );
   }

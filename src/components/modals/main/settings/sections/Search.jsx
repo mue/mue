@@ -1,4 +1,5 @@
 import { PureComponent } from 'react';
+import { toast } from 'react-toastify';
 
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
@@ -6,8 +7,6 @@ import Switch from '../Switch';
 import Radio from '../Radio';
 
 import EventBus from '../../../../../modules/helpers/eventbus';
-
-import { toast } from 'react-toastify';
 
 const searchEngines = require('../../../../widgets/search/search_engines.json');
 const autocompleteProviders = require('../../../../widgets/search/autocomplete_providers.json');

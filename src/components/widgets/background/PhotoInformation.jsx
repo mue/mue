@@ -1,11 +1,5 @@
 import { useState } from 'react';
-
-import Info from '@material-ui/icons/Info';
-import Location from '@material-ui/icons/LocationOn';
-import Camera from '@material-ui/icons/PhotoCamera';
-import Resolution from '@material-ui/icons/Crop';
-import Photographer from '@material-ui/icons/Person';
-import Download from '@material-ui/icons/GetApp';
+import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@material-ui/icons';
 
 const toDataURL = async (url) => {
   const res = await fetch(url);
@@ -68,9 +62,9 @@ export default function PhotoInformation(props) {
           <Info className='infoIcon'/>
           <h1>{language.information}</h1>
           <hr/>
-          <Location/>
+          <LocationOn/>
           <span id='infoLocation'>{props.info.location || 'N/A'}</span>
-          <Camera/>
+          <PhotoCamera/>
           <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
           <Resolution/>
           <span id='infoResolution'>{width}x{height}</span>
