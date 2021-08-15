@@ -25,7 +25,11 @@ export default class Create extends PureComponent {
         icon_url: '',
         screenshot_url: ''
       },
-      addonData: ''
+      addonData: '',
+      settingsClasses: {
+        current: 'toggle lightTheme',
+        json: 'toggle lightTheme'
+      }
     };
   }
 
@@ -55,7 +59,11 @@ export default class Create extends PureComponent {
     });
 
     this.setState({
-      addonData: settings
+      addonData: settings,
+      settingsClasses: {
+        current: input ? 'toggle lightTheme' : 'toggle lightTheme active',
+        json: input ? 'toggle lightTheme active' : 'toggle lightTheme'
+      }
     });
 
     toast('Imported settings!');
@@ -145,16 +153,22 @@ export default class Create extends PureComponent {
       </>
     );
 
-    const nextSettingsDisabled = (this.state.addonData === '') ? true : false;
-
     // settings
+    const nextSettingsDisabled = (this.state.addonData === '') ? true : false;
     const importSettings = (
       <>
         <h3>{welcome.sections.settings.title}</h3>
-        <p onClick={() => this.importSettings()} className='addToMue'>{addons.create.settings.current}</p>
-        <br/><br/><br/>
+        <div className='themesToggleArea'>
+          <div className='options'>
+            <div className={this.state.settingsClasses.current} onClick={() => this.importSettings()}>
+              <span>{addons.create.settings.current}</span>
+            </div>
+            <div className={this.state.settingsClasses.json} onClick={() => document.getElementById('file-input').click()}>
+              <span>{addons.create.settings.json}</span>
+            </div>
+          </div>
+        </div>
         <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.importSettings(JSON.parse(e.target.result))} />
-        <p className='addToMue' style={{ position: 'absolute' }} onClick={() => document.getElementById('file-input').click()}>{addons.create.settings.json}</p>
         <br/><br/>
         <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{welcome.buttons.previous}</button>
         <button onClick={() => this.changeTab(3)} className='uploadbg' disabled={nextSettingsDisabled}>{welcome.buttons.next}</button>
