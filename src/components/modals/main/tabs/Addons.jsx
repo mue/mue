@@ -11,7 +11,7 @@ export default function Addons() {
     <Tabs>
       <div label={addons.added} name='added'><Added/></div>
       <div label={addons.sideload} name='sideload'><Sideload/></div>
-      <div label='Create' name='create'><Create/></div>
+      <div label={addons.create.title} name='create'><Create/></div>
     </Tabs>
   );
 }
