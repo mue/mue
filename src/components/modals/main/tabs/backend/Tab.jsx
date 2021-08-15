@@ -70,7 +70,7 @@ function Tab(props) {
     // Addons
     case addons.added: icon = <Added/>; break;
     case addons.sideload: icon = <Sideload/>; break;
-    case 'Create': icon = <Create/>; break;
+    case addons.create.title: icon = <Create/>; break;
 
     // Marketplace
     case marketplace.photo_packs: icon = <Background/>; break;

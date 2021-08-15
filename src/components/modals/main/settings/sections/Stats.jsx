@@ -29,13 +29,13 @@ export default class Stats extends PureComponent {
 
   render() {
     if (localStorage.getItem('stats') === 'false') {
-        return (
-          <>
-            <h2>Notice</h2>
-            <p>{this.language.warning}</p>
-            <Switch name='stats' text={this.language.usage} category='stats'/>
-          </>
-        );
+      return (
+        <>
+          <h2>{window.language.modals.main.settings.reminder.title}</h2>
+          <p>{this.language.warning}</p>
+          <Switch name='stats' text={this.language.usage} category='stats'/>
+        </>
+      );
     }
 
     return (
@@ -49,7 +49,7 @@ export default class Stats extends PureComponent {
         <p>{this.language.sections.settings_changed}: {this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0}</p>
         <p>{this.language.sections.addons_installed}: {this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0}</p>
         <Switch name='stats' text={this.language.usage} category='stats'/>
-        <p>Turning this off will clear your statistics locally, but will not delete the anonymous data posted to umami.</p>
+        <p>{this.language.disable}</p>
       </>
     );
   }

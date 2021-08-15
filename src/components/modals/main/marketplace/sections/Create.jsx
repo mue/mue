@@ -77,22 +77,26 @@ export default class Create extends PureComponent {
   render() {
     let tabContent;
 
+    const { time } = window.language.modals.main.settings.sections;
+    const { marketplace, addons } = window.language.modals.main;
+    const { welcome } = window.language.modals;
+
     const chooseType = (
       <>
-        <h3>Type</h3>
+        <h3>{time.type}</h3>
         <div className='themesToggleArea'>
           <div className='options'>
             <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'photos')}>
               <Photos/>
-              <span>Photo Pack (soon™️)</span>
+              <span>{marketplace.photo_packs}</span>
             </div>
             <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'quotes')}>
               <Quotes/>
-              <span>Quote Pack (soon™️)</span>
+              <span>{marketplace.quote_packs}</span>
             </div>
             <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'settings')}>
               <Settings/>
-              <span>Preset Settings</span>
+              <span>{marketplace.preset_settings}</span>
             </div>
           </div>
         </div>
@@ -122,22 +126,22 @@ export default class Create extends PureComponent {
 
     const writeDescription = ( 
       <>
-        <h3>Information</h3>
-        <p>Name</p>
+        <h3>{marketplace.product.information}</h3>
+        <p>{addons.create.metadata.name}</p>
         <input type='text' value={this.state.addonMetadata.name} onInput={(e) => setMetadata(e.target.value, 'name')}/>
-        <p>Version</p>
+        <p>{marketplace.product.version}</p>
         <input type='text' value={this.state.addonMetadata.version} onInput={(e) => setMetadata(e.target.value, 'version')}/>
-        <p>Author</p>
+        <p>{marketplace.product.author}</p>
         <input type='text' value={this.state.addonMetadata.author} onInput={(e) => setMetadata(e.target.value, 'author')}/>
-        <p>Icon URL</p>
+        <p>{addons.create.metadata.icon_url}</p>
         <input type='text' value={this.state.addonMetadata.icon_url} onInput={(e) => setMetadata(e.target.value, 'icon_url')}/>
-        <p>Screenshot URL</p>
+        <p>{addons.create.metadata.screenshot_url}</p>
         <input type='text' value={this.state.addonMetadata.screenshot_url} onInput={(e) => setMetadata(e.target.value, 'screenshot_url')}/>
-        <p>Description</p>
+        <p>{addons.create.metadata.description}</p>
         <textarea className='settingsTextarea' value={this.state.addonMetadata.description} onInput={(e) => setMetadata(e.target.value, 'description')}></textarea>
         <br/>
-        <button onClick={() => this.changeTab(1)} className='uploadbg' style={{ marginRight: '10px' }}>Back</button>
-        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' disabled={nextDescriptionDisabled}>Next</button>
+        <button onClick={() => this.changeTab(1)} className='uploadbg' style={{ marginRight: '10px' }}>{welcome.buttons.previous}</button>
+        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' disabled={nextDescriptionDisabled}>{welcome.buttons.next}</button>
       </>
     );
 
@@ -146,37 +150,37 @@ export default class Create extends PureComponent {
     // settings
     const importSettings = (
       <>
-        <h3>Import Settings</h3>
-        <p onClick={() => this.importSettings()} className='addToMue'>Import current setup</p>
+        <h3>{welcome.sections.settings.title}</h3>
+        <p onClick={() => this.importSettings()} className='addToMue'>{addons.create.settings.current}</p>
         <br/><br/><br/>
         <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.importSettings(JSON.parse(e.target.result))} />
-        <p className='addToMue' style={{ position: 'absolute' }} onClick={() => document.getElementById('file-input').click()}>Upload JSON</p>
+        <p className='addToMue' style={{ position: 'absolute' }} onClick={() => document.getElementById('file-input').click()}>{addons.create.settings.json}</p>
         <br/><br/>
-        <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>Back</button>
-        <button onClick={() => this.changeTab(3)} className='uploadbg' disabled={nextSettingsDisabled}>Next</button>
+        <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{welcome.buttons.previous}</button>
+        <button onClick={() => this.changeTab(3)} className='uploadbg' disabled={nextSettingsDisabled}>{welcome.buttons.next}</button>
       </>
     );
     
     // quotes
     const addQuotes = (
       <>
-        <h3>Add Quotes</h3>
+        <h3>{addons.create.quotes.title}</h3>
       </>
     );
 
     // photos
     const addPhotos = (
       <>
-        <h3>Add Photos</h3>
+        <h3>{addons.create.photos.title}</h3>
       </>
     );
 
     const downloadAddon = (
       <>
-        <h3>Finish</h3>
-        <button onClick={() => this.downloadAddon()} className='upload'>Download Add-on</button>
+        <h3>{addons.create.finish.title}</h3>
+        <button onClick={() => this.downloadAddon()} className='upload'>{addons.create.finish.download}</button>
         <br/><br/>
-        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' style={{ marginRight: '10px' }}>Back</button>
+        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' style={{ marginRight: '10px' }}>{welcome.buttons.previous}</button>
       </>
     );
 
@@ -191,7 +195,7 @@ export default class Create extends PureComponent {
 
     return (
       <>
-        <h2>Create Add-on</h2>
+        <h2>{addons.create.other_title}</h2>
         {tabContent}
       </>
     );

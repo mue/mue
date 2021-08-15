@@ -386,6 +386,30 @@
           "oldest": "Installed (Oldest)",
           "a_z": "Alphabetical (A-Z)",
           "z_a": "Alphabetical (Z-A)"
+        },
+        "create": {
+          "title": "Create",
+          "other_title": "Create Add-on",
+          "metadata": {
+            "name": "Name",
+            "icon_url": "Icon URL",
+            "screenshot_url": "Screenshot URL",
+            "description": "Description"
+          },
+          "finish": {
+            "title": "Finish",
+            "download": "Download Add-on"
+          },
+          "settings": {
+            "current": "Import current setup",
+            "json": "Upload JSON"
+          },
+          "photos": {
+            "title": "Add Photos"
+          },
+          "quotes": {
+            "title": "Add Quotes"
+          }
         }
       }
     },
