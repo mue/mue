@@ -12,6 +12,13 @@
     outline: none;
     background: none;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: grey !important;
+    background: none;
+    border: 2px solid grey !important;
+  }
 }
 
 .dark %settingsButton {
