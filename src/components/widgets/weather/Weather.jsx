@@ -59,7 +59,7 @@ export default class Weather extends PureComponent {
     };
 
     if (!this.state.weather.temp) {
-      data = await (await fetch(window.constants.PROXY_URL + `/weather/current?city=${this.state.location}&lang=${window.languadecode}`)).json();
+      data = await (await fetch(window.constants.PROXY_URL + `/weather/current?city=${this.state.location}&lang=${window.languagecode}`)).json();
     }
 
     if (data.cod === '404') {
