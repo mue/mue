@@ -13,6 +13,7 @@ const Weather = lazy(() => import('./weather/Weather'));
 const renderLoader = () => <></>;
 
 export default class Widgets extends PureComponent {
+  online = (localStorage.getItem('offlineMode') === 'false');
   constructor() {
     super();
     this.state = {
@@ -24,7 +25,7 @@ export default class Widgets extends PureComponent {
       greeting: this.enabled('greeting') ? <Greeting/> : null,
       quote: this.enabled('quote') ? <Quote/> : null,
       date: this.enabled('date') ? <Date/> : null,
-      quicklinks: this.enabled('quicklinksenabled') ? <QuickLinks/> : null
+      quicklinks: this.enabled('quicklinksenabled') && this.online ? <QuickLinks/> : null
     };
   }
 
@@ -65,7 +66,7 @@ export default class Widgets extends PureComponent {
         <Suspense fallback={renderLoader()}>
           {this.enabled('searchBar') ? <Search/> : null}
           {elements}
-          {this.enabled('weatherEnabled') && (localStorage.getItem('offlineMode') === 'false') ? <Weather/> : null}
+          {this.enabled('weatherEnabled') && this.online ? <Weather/> : null}
         </Suspense>
       </div>
     );

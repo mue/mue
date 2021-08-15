@@ -58,7 +58,7 @@ export default class Modals extends PureComponent {
   render() {
     return (
       <>
-        <Navbar openModal={(modal) => this.toggleModal(modal, true)}/>
+        {this.state.welcomeModal === false ? <Navbar openModal={(modal) => this.toggleModal(modal, true)}/> : null}
         <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.toggleModal('mainModal', false)} isOpen={this.state.mainModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
           <Main modalClose={() => this.toggleModal('mainModal', false)}/>
         </Modal>

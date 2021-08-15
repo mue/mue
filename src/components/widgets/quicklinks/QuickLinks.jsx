@@ -101,18 +101,17 @@ export default class QuickLinks extends PureComponent {
 
   // widget zoom
   setZoom(element) {
+    const zoomQuicklinks = Number((localStorage.getItem('zoomQuicklinks') || 100) / 100);
     const images = element.getElementsByTagName('img');
+
     for (const img of images) {
-      img.style.height = `${0.87 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
+      img.style.height = `${0.87 * zoomQuicklinks}em`;
     };
-    element.querySelector('button').style.fontSize = `${1.15 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
+
+    element.querySelector('button').style.fontSize = `${1.15 * zoomQuicklinks}em`;
   }
 
   componentDidMount() {
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return; 
-    }
-
     EventBus.on('refresh', (data) => {
       if (data === 'quicklinks') {
         const element = document.querySelector('.quicklinks-container');
@@ -148,10 +147,6 @@ export default class QuickLinks extends PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return null; 
-    }
-
     let target, rel = null;
     if (localStorage.getItem('quicklinksnewtab') === 'true') {
       target = '_blank';

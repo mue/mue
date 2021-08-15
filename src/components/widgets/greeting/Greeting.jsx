@@ -66,12 +66,12 @@ export default class Greeting extends PureComponent {
         message = this.language.afternoon;
       }
 
-      // Events
-      message = this.doEvents(now, message);
-
+      // Events and custom
       const custom = localStorage.getItem('defaultGreetingMessage');
       if (custom === 'false') {
         message = '';
+      } else {
+        message = this.doEvents(now, message);
       }
 
       // Name

@@ -31,11 +31,8 @@ export default class Weather extends PureComponent {
   }
 
   async getWeather() {
-    if (localStorage.getItem('offlineMode') === 'true') {
-      return null;
-    }
-
-    document.querySelector('.weather').style.fontSize = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+    const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+    document.querySelector('.weather').style.fontSize = zoomWeather;
 
     let data = {
       weather: [
@@ -62,7 +59,7 @@ export default class Weather extends PureComponent {
     };
 
     if (!this.state.weather.temp) {
-      data = await (await fetch(window.constants.PROXY_URL + `/weather/current?city=${this.state.location}&lang=${localStorage.getItem('language')}`)).json();
+      data = await (await fetch(window.constants.PROXY_URL + `/weather/current?city=${this.state.location}&lang=${window.languadecode}`)).json();
     }
 
     if (data.cod === '404') {
@@ -114,7 +111,7 @@ export default class Weather extends PureComponent {
       }
     });
 
-    document.querySelector('.weather svg').style.fontSize = `${0.95 * Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+    document.querySelector('.weather svg').style.fontSize = zoomWeather;
   }
   
   componentDidMount() {
@@ -123,6 +120,7 @@ export default class Weather extends PureComponent {
         this.getWeather();
       }
     });
+
     this.getWeather();
   }
 

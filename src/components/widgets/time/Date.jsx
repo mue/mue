@@ -96,7 +96,7 @@ export default class DateWidget extends PureComponent {
       });
     } else {
       // Long date
-      const lang = localStorage.getItem('language').split('_')[0];
+      const lang = window.languagecode.split('_')[0];
 
       const nth = (localStorage.getItem('datenth') === 'true') ? dtf.nth(date.getDate()) : date.getDate();
 

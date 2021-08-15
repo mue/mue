@@ -200,8 +200,9 @@ export default class Quote extends PureComponent {
   }
 
   setZoom() {
-    document.querySelector('.quote').style.fontSize = `${0.8 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
-    document.querySelector('.quoteauthor').style.fontSize = `${0.9 * Number((localStorage.getItem('zoomQuote') || 100) / 100)}em`;
+    const zoomQuote = Number((localStorage.getItem('zoomQuote') || 100) / 100);
+    document.querySelector('.quote').style.fontSize = `${0.8 * zoomQuote}em`;
+    document.querySelector('.quoteauthor').style.fontSize = `${0.9 * zoomQuote}em`;
   }
 
   componentDidMount() {

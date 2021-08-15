@@ -24,10 +24,6 @@ export default class Navbar extends PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('showWelcome') !== 'false') {
-      return null;
-    }
-  
     const backgroundEnabled = (localStorage.getItem('background') === 'true');
   
     return (
