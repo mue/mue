@@ -179,12 +179,12 @@
               }
             },
             "interval": {
-              "title": "Change every",
-              "minute": "Minute",
-              "half_hour": "Half hour",
-              "hour": "Hour",
-              "day": "Day",
-              "month": "Month"
+              "title": "Cambiar cada",
+              "minute": "Minuto",
+              "half_hour": "Media hora",
+              "hour": "Hora",
+              "day": "Día",
+              "month": "Mes"
             }
           },
           "search": {
@@ -285,25 +285,25 @@
             "custom_js": "JS personalizado",
             "tab_name": "Nombre de la pestaña",
             "timezone": {
-              "title": "Time Zone",
-              "automatic": "Automatic"
+              "title": "Zona horaria",
+              "automatic": "Automático"
             },
             "experimental_warning": "Por favor, ten en cuenta que el equipo de Mue no puede dar soporte si tienes el modo experimental activado. Por favor, desactívalo primero y comprueba si el problema sigue ocurriendo antes de contactar con el equipo de soporte."
           },
           "stats": {
-            "title": "Stats",
-            "warning": "You need to enable usage data in order to use this feature",
+            "title": "Estadísticas",
+            "warning": "Tienes que activar las estadísticas de uso para poder utilizar esta función",
             "sections": {
-              "tabs_opened": "Tabs opened",
-              "backgrounds_favourited": "Backgrounds favourited",
-              "backgrounds_downloaded": "Backgrounds downloaded",
-              "quotes_favourited": "Quotes favourited",
-              "quicklinks_added": "Quicklinks added",
-              "settings_changed": "Settings changed",
-              "addons_installed": "Add-ons installed"
+              "tabs_opened": "Pestañas abiertas",
+              "backgrounds_favourited": "Fondos favoritos",
+              "backgrounds_downloaded": "Fondos descargados",
+              "quotes_favourited": "Citas favoritas",
+              "quicklinks_added": "Enlaces rápidos añadidos",
+              "settings_changed": "Ajustes cambiados",
+              "addons_installed": "Complementos instalados"
             },
-            "usage": "Usage Stats",
-            "disable": "Turning this off will clear your statistics locally, but will not delete the anonymous data posted to umami."
+            "usage": "Estadísticas de uso",
+            "disable": "Si se desactiva, se borrarán las estadísticas localmente, pero no se eliminarán los datos anónimos publicados en umami."
           },
           "experimental": {
             "title": "Experimental",
@@ -388,27 +388,27 @@
           "z_a": "Alfabético (Z-A)"
         },
         "create": {
-          "title": "Create",
-          "other_title": "Create Add-on",
+          "title": "Crear",
+          "other_title": "Crear complemento",
           "metadata": {
-            "name": "Name",
-            "icon_url": "Icon URL",
-            "screenshot_url": "Screenshot URL",
-            "description": "Description"
+            "name": "Nombre",
+            "icon_url": "URL del icono",
+            "screenshot_url": "URL de la captura de pantalla",
+            "description": "Descripción"
           },
           "finish": {
-            "title": "Finish",
-            "download": "Download Add-on"
+            "title": "Acabar",
+            "download": "Descargar complemento"
           },
           "settings": {
-            "current": "Import current setup",
-            "json": "Upload JSON"
+            "current": "Importar la configuración actual",
+            "json": "Subir JSON"
           },
           "photos": {
-            "title": "Add Photos"
+            "title": "Añadir fotos"
           },
           "quotes": {
-            "title": "Add Quotes"
+            "title": "Añadir citas"
           }
         }
       }
@@ -427,50 +427,50 @@
       "contact_support": "Contáctanos aquí"
     },
     "welcome": {
-      "tip": "Quick Tip",
+      "tip": "Truco",
       "sections": {
         "intro": {
           "title": "Bienvenido a Mue Tab",
           "description": "Gracias por instalar, esperamos que disfrute de su tiempo con nuestra extensión."
         },
         "language": {
-          "title": "Choose your language",
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our GitHub!"
+          "title": "Elige el idioma",
+          "description": "Mue puede mostrarse en los idiomas que se indican debajo. ¡También puedes contribuir con traducciones en nuestro GitHub!"
         },
         "theme": {
-          "title": "Select a theme",
-          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
-          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
+          "title": "Selecciona un tema",
+          "description": "Mue está disponible tanto en el tema claro como en el oscuro, también se puede configurar automáticamente en función del tema de su sistema.",
+          "tip": "Si utiliza la configuración automática, utilizará el tema de su ordenador. Esta configuración afectará a los modales y a algunos de los widgets que aparecen en la pantalla, como el tiempo y las notas."
         },
         "settings": {
-          "title": "Import Settings",
-          "description": "Installing Mue on a new device? Feel free to import your old settings!",
-          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
+          "title": "Importa los ajustes",
+          "description": "¿Instalando Mue en un nuevo dispositivo? No dudes en importar tu antigua configuración.",
+          "tip": "Puedes exportar tu antigua configuración navegando a la pestaña Avanzado en tu antigua configuración de Mue. Luego debes hacer clic en el botón de exportación que descargará el archivo JSON. Puedes subir este archivo aquí para mantener tus ajustes y preferencias de tu anterior instalación de Mue."
         },
         "privacy": {
-          "title": "Privacy Options",
-          "description": "Enable settings to further protect your privacy with Mue.",
-          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
-          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
-          "stats_description": "Enabling this will allow you to see the stats tab in settings which shows interesting things like how many tabs you have opened, backgrounds favourited/downloaded and more. This will also post anonymous statistics to our umami instance. You can find the source code to this instance on our GitHub page.",
+          "title": "Opciones de privacidad",
+          "description": "Activa estos ajustes para proteger aún más tu privacidad con Mue.",
+          "offline_mode_description": "Al activar el modo offline se deshabilitarán todas las peticiones a cualquier servicio. Esto hará que se desactiven los fondos en línea, las citas en línea, la tienda, el tiempo, los enlaces rápidos, el registro de cambios y alguna información de la pestaña Acerca de.",
+          "ddg_proxy_description": "Puedes hacer que las solicitudes de imágenes pasen por DuckDuckGo si lo deseas. Por defecto, las solicitudes a la API van a tráves de nuestros servidores de código abierto y las solicitudes de imágenes van a través del servidor original. Si desactivas esta opción para los enlaces rápidos, los iconos de obtendrán de Google en lugar de DuckDuckGo. El proxy de DuckDuckGo está siempre activado para la tienda.",
+          "stats_description": "Al activar esto, podrás ver la pestaña de estadísticas en la configuración, que muestra cosas interesantes como el número de pestañas que has abierto, los fondos favoritos/descargados y más. Esto también enviará estadísticas anónimas a nuestra instancia de umami. Puedes encontrar el código fuente de esta instancia en nuestra página de GitHub.",
           "links": {
-            "title": "Links",
-            "privacy_policy": "Privacy Policy",
-            "source_code": "Source Code"
+            "title": "Enlaces",
+            "privacy_policy": "Política de privacidad",
+            "source_code": "Código fuente"
           }
         },
         "final": {
-          "title": "Final step",
-          "description": "Your Mue Tab experience is about to begin.",
-          "changes": "Changes",
-          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "imported": "Imported",
-          "settings": "settings"
+          "title": "Último paso",
+          "description": "Tu experiencia con Mue Tab está a punto de comenzar",
+          "changes": "Cambios",
+          "changes_description": "Para cambiar la configuración más tarde, haga clic en el icono de configuración en la esquina superior derecha de su pestaña.",
+          "imported": "Importados",
+          "settings": "ajustes"
         }
       },
       "buttons": {
-        "next": "Next",
-        "previous": "Previous",
+        "next": "Siguiente",
+        "previous": "Anterior",
         "close": "Cerrar"
       }
     },
