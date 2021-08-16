@@ -48,14 +48,8 @@ export default class Search extends PureComponent {
   }
 
   searchButton = (e) => {
-    let value;
-
-    if (e.target.innerText !== undefined) {
-      value = e.target.innerText;
-    } else {
-      value = document.getElementById('searchtext').value || 'mue fast';
-    }
-
+    e.preventDefault();
+    const value = e.target.value || document.getElementById('searchtext').value || 'mue fast';
     window.stats.postEvent('feature', 'Search');
     window.location.href = this.state.url + `?${this.state.query}=` + value;
   }
@@ -137,7 +131,7 @@ export default class Search extends PureComponent {
 
   render() {
     return (
-      <form action={this.state.url} className='searchBar'>
+      <form onSubmit={this.searchButton} className='searchBar'>
         {this.state.microphone}
         <SearchIcon onClick={this.searchButton}/>
         <AutocompleteInput placeholder={this.language} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
