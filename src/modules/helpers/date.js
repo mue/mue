@@ -1,4 +1,4 @@
-export default function nth(d) {
+export function nth(d) {
   if (d > 3 && d < 21) {
     return d + 'th';
   }
@@ -13,4 +13,8 @@ export default function nth(d) {
     default:
       return d + 'th';
   }
+}
+
+export function convertTimezone(date, tz) {
+  return new Date((typeof date === 'string' ? new Date(date) : date).toLocaleString('en-US', { timeZone: tz }));   
 }

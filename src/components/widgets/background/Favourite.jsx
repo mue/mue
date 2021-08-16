@@ -34,7 +34,8 @@ export default class Favourite extends PureComponent {
         url: url, 
         credit: document.getElementById('credit').textContent,
         location: document.getElementById('infoLocation').textContent,
-        camera: document.getElementById('infoCamera').textContent
+        camera: document.getElementById('infoCamera').textContent,
+        resolution: document.getElementById('infoResolution').textContent
       }));
 
       this.setState({

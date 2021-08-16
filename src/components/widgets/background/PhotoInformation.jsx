@@ -52,31 +52,43 @@ export default function PhotoInformation(props) {
   }
   img.src = (localStorage.getItem('ddgProxy') === 'true' && !props.info.offline && !props.url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + props.url : props.url;
 
+  // info is still there because we want the favourite button to work
+  if (localStorage.getItem('photoInformation') === 'false') {
+    return (
+      <div className='photoInformation'>
+        <h1>{photo} <span id='credit'>{credit}</span></h1>
+        <div style={{ display: 'none' }}>
+          <span id='infoLocation'>{props.info.location || 'N/A'}</span>
+          <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
+          <span id='infoResolution'>{width}x{height}</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className='photoInformation'>
       <h1>{photo} <span id='credit'>{credit}</span></h1>
-      {localStorage.getItem('photoInformation') !== 'false' ? 
-      <>
-        <Info className='photoInformationHover'/>
-        <div className={props.className || 'infoCard'}>
-          <Info className='infoIcon'/>
-          <h1>{language.information}</h1>
-          <hr/>
-          <LocationOn/>
-          <span id='infoLocation'>{props.info.location || 'N/A'}</span>
-          <PhotoCamera/>
-          <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
-          <Resolution/>
-          <span id='infoResolution'>{width}x{height}</span>
-          <Photographer/>
-          <span>{photographer}</span>
-          {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 
-            <>
-              <Download/>
-              <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
-            </> : null}
-        </div>
-      </> : null}
+      <Info className='photoInformationHover'/>
+      <div className='infoCard'>
+        <Info className='infoIcon'/>
+        <h1>{language.information}</h1>
+        <hr/>
+        <LocationOn/>
+        <span id='infoLocation'>{props.info.location || 'N/A'}</span>
+        <PhotoCamera/>
+        <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
+        <Resolution/>
+        <span id='infoResolution'>{width}x{height}</span>
+        <Photographer/>
+        <span>{photographer}</span>
+        {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 
+          <>
+            <Download/>
+            <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
+          </> 
+        : null}
+      </div>
     </div>
   );
 }

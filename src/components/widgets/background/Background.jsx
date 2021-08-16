@@ -409,7 +409,7 @@ export default class Background extends PureComponent {
       <>
         <div style={{ WebkitFilter: `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}` }} id='backgroundImage'/>
         {(this.state.photoInfo.credit !== '') ?
-          <PhotoInformation className={this.props.photoInformationClass} info={this.state.photoInfo} api={this.state.currentAPI} url={this.state.url}/>
+          <PhotoInformation info={this.state.photoInfo} api={this.state.currentAPI} url={this.state.url}/>
         : null}
       </>
     );

@@ -1,7 +1,6 @@
 import { PureComponent } from 'react';
-import { utcToZonedTime } from 'date-fns-tz';
 
-import dtf from '../../../modules/helpers/date';
+import { nth, convertTimezone } from '../../../modules/helpers/date';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import './date.scss';
@@ -35,8 +34,8 @@ export default class DateWidget extends PureComponent {
   getDate() {
     let date = new Date();
     const timezone = localStorage.getItem('timezone');
-    if (timezone) {
-      date = utcToZonedTime(date, timezone);
+    if (timezone && timezone !== 'auto') {
+      date = convertTimezone(date, timezone);
     }
 
     if (localStorage.getItem('weeknumber') === 'true') {
@@ -97,13 +96,13 @@ export default class DateWidget extends PureComponent {
       // Long date
       const lang = window.languagecode.split('_')[0];
 
-      const nth = (localStorage.getItem('datenth') === 'true') ? dtf.nth(date.getDate()) : date.getDate();
+      const datenth = (localStorage.getItem('datenth') === 'true') ? nth(date.getDate()) : date.getDate();
 
       const day = (localStorage.getItem('dayofweek') === 'true') ? date.toLocaleDateString(lang, { weekday: 'long' }) : '';
       const month = date.toLocaleDateString(lang, { month: 'long' });
 
       this.setState({
-        date: `${day} ${nth} ${month} ${date.getFullYear()}`
+        date: `${day} ${datenth} ${month} ${date.getFullYear()}`
       });
     }
   }

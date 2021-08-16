@@ -1,6 +1,6 @@
 import { PureComponent, Suspense, lazy } from 'react';
-import { utcToZonedTime } from 'date-fns-tz';
 
+import { convertTimezone } from '../../../modules/helpers/date';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import './clock.scss';
@@ -23,8 +23,8 @@ export default class Clock extends PureComponent {
     this.timer = setTimeout(() => {
       let now = new Date();
       const timezone = localStorage.getItem('timezone');
-      if (timezone) {
-        now = utcToZonedTime(now, timezone);
+      if (timezone && timezone !== 'auto') {
+        now = convertTimezone(now, timezone);
       }
 
       switch (localStorage.getItem('timeType')) {

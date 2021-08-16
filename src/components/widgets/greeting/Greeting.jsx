@@ -1,7 +1,6 @@
 import { PureComponent } from 'react';
-import { utcToZonedTime } from 'date-fns-tz';
 
-import dtf from '../../../modules/helpers/date';
+import { nth, convertTimezone } from '../../../modules/helpers/date';
 import EventBus from '../../../modules/helpers/eventbus';
 
 import './greeting.scss';
@@ -49,8 +48,8 @@ export default class Greeting extends PureComponent {
     this.timer = setTimeout(() => {
       let now = new Date();
       const timezone = localStorage.getItem('timezone');
-      if (timezone) {
-        now = utcToZonedTime(now, timezone);
+      if (timezone && timezone !== 'auto') {
+        now = convertTimezone(now, timezone);
       }
 
       const hour = now.getHours();
@@ -94,7 +93,7 @@ export default class Greeting extends PureComponent {
         if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
           if (localStorage.getItem('birthdayage') === 'true') {
             const text = this.language.birthday.split(' ');
-            message = `${text[0]} ${dtf.nth(this.calculateAge(birth))} ${text[1]}`;
+            message = `${text[0]} ${nth(this.calculateAge(birth))} ${text[1]}`;
           } else {
             message = this.language.birthday;
           }
