@@ -26,6 +26,7 @@
 
   svg {
     float: left;
+    font-size: 1em !important;
   }
 
   ::placeholder {
@@ -45,7 +46,7 @@ textarea {
 
 .topbarnotes {
   svg {
-    font-size: 46px;
+    font-size: 46px !important;
     padding: 9px;
   }
 

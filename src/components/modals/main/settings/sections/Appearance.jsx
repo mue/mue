@@ -30,6 +30,7 @@ export default function AppearanceSettings() {
       <h3>{appearance.navbar.title}</h3>
       <Checkbox name='notesEnabled' text={appearance.navbar.notes} category='navbar' />
       <Checkbox name='refresh' text={appearance.navbar.refresh} category='navbar' />
+      <Slider title={appearance.accessibility.widget_zoom} name='zoomNavbar' min='10' max='400' default='100' display='%' category='navbar' />
 
       <h3>{appearance.font.title}</h3>
       <Text title={appearance.font.custom} name='font' upperCaseFirst={true} category='other' />

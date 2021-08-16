@@ -11,12 +11,23 @@ import EventBus from '../../../modules/helpers/eventbus';
 import './scss/index.scss';
 
 export default class Navbar extends PureComponent {
+  setZoom() {
+    const zoomNavbar = Number((localStorage.getItem('zoomNavbar') || 100) / 100);
+    const navbarIcons = document.querySelectorAll('.navbar-container');
+    for (let i = 0; i < navbarIcons.length; i++) {
+      navbarIcons[i].style.fontSize = `${zoomNavbar}em`;
+    };
+  }
+
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'navbar') {
         this.forceUpdate();
+        this.setZoom();
       }
     });
+
+    this.setZoom();
   }
 
   render() {
