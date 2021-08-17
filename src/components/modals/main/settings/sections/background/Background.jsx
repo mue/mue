@@ -121,7 +121,7 @@ export default class BackgroundSettings extends PureComponent {
           ))}
         </Dropdown>
         <br/><br/>
-        <Dropdown label={background.source.quality.title} name='apiQuality' category='background' element='.other'>
+        <Dropdown label={background.source.quality.title} name='apiQuality' element='.other'>
           <option value='original'>{background.source.quality.original}</option>
           <option value='high'>{background.source.quality.high}</option>
           <option value='normal'>{background.source.quality.normal}</option>
@@ -166,9 +166,9 @@ export default class BackgroundSettings extends PureComponent {
       <>
         <h2>{background.title}</h2>
         <Switch name='background' text={this.language.enabled} category='background' element='#backgroundImage' />
-        <Checkbox name='ddgProxy' text={background.ddg_image_proxy} />
-        <Checkbox name='bgtransition' text={background.transition} />
-        <Checkbox name='photoInformation' text={background.photo_information} category='background' element='.other' />
+        <Checkbox name='ddgProxy' text={background.ddg_image_proxy} element='.other' />
+        <Checkbox name='bgtransition' text={background.transition} element='.other' />
+        <Checkbox name='photoInformation' text={background.photo_information} element='.other' />
 
         <h3>{background.source.title}</h3>
         <Dropdown label={background.type.title} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>

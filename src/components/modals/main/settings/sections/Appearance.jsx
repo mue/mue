@@ -55,6 +55,7 @@ export default function AppearanceSettings() {
       </Dropdown>
 
       <h3>{appearance.accessibility.title}</h3>
+      {/* not supported on firefox */}
       {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
         <Slider title={appearance.accessibility.widget_zoom} name='widgetzoom' default='100' step='10' min='50' max='200' display='%' category='other'/> 
       : null}

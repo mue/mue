@@ -89,7 +89,7 @@ export default class SearchSettings extends PureComponent {
           <input type='text' value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })}></input>
         </ul>
         <br/>
-        <Checkbox name='autocomplete' text={search.autocomplete} category='search' element='.other'/>
+        <Checkbox name='autocomplete' text={search.autocomplete} category='search' />
         <Radio title={search.autocomplete_provider} options={autocompleteProviders} name='autocompleteProvider' category='search'/>
       </>
     );

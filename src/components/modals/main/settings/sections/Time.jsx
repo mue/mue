@@ -35,21 +35,21 @@ export default class TimeSettings extends PureComponent {
     const digitalSettings = (
       <>
         <h3>{time.digital.title}</h3>
-        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' element='.clock-container' />
+        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' />
         <br/>
-        <Checkbox name='seconds' text={time.digital.seconds} category='clock' element='.clock-container' />
-        <Checkbox name='zero' text={time.digital.zero} category='clock' element='.clock-container' />
+        <Checkbox name='seconds' text={time.digital.seconds} category='clock' />
+        <Checkbox name='zero' text={time.digital.zero} category='clock' />
       </>
     );
 
     const analogSettings = (
       <>
         <h3>{time.analogue.title}</h3>
-        <Checkbox name='secondHand' text={time.analogue.second_hand} category='clock' element='.clock-container' />
-        <Checkbox name='minuteHand' text={time.analogue.minute_hand} category='clock' element='.clock-container' />
-        <Checkbox name='hourHand' text={time.analogue.hour_hand} category='clock' element='.clock-container' />
-        <Checkbox name='hourMarks' text={time.analogue.hour_marks} category='clock' element='.clock-container' />
-        <Checkbox name='minuteMarks' text={time.analogue.minute_marks} category='clock' element='.clock-container' />
+        <Checkbox name='secondHand' text={time.analogue.second_hand} category='clock' />
+        <Checkbox name='minuteHand' text={time.analogue.minute_hand} category='clock' />
+        <Checkbox name='hourHand' text={time.analogue.hour_hand} category='clock' />
+        <Checkbox name='hourMarks' text={time.analogue.hour_marks} category='clock' />
+        <Checkbox name='minuteMarks' text={time.analogue.minute_marks} category='clock' />
       </>
     );
 
@@ -63,21 +63,21 @@ export default class TimeSettings extends PureComponent {
     
     const longSettings = (
       <>
-        <Checkbox name='dayofweek' text={time.date.day_of_week} category='date' element='.date' />
-        <Checkbox name='datenth' text={time.date.datenth} category='date' element='.date' />
+        <Checkbox name='dayofweek' text={time.date.day_of_week} category='date' />
+        <Checkbox name='datenth' text={time.date.datenth} category='date' />
       </>
     );
 
     const shortSettings = (
       <>
         <br/>
-        <Dropdown label={time.date.short_format} name='dateFormat' category='date' element='.date'>
+        <Dropdown label={time.date.short_format} name='dateFormat' category='date'>
           <option value='DMY'>DMY</option>
           <option value='MDY'>MDY</option>
           <option value='YMD'>YMD</option>
         </Dropdown>
         <br/><br/>
-        <Dropdown label={time.date.short_separator.title} name='shortFormat' category='date' element='.date'>
+        <Dropdown label={time.date.short_separator.title} name='shortFormat' category='date'>
           <option value='dots'>{time.date.short_separator.dots}</option>
           <option value='dash'>{time.date.short_separator.dash}</option>
           <option value='gaps'>{time.date.short_separator.gaps}</option>
@@ -96,27 +96,27 @@ export default class TimeSettings extends PureComponent {
       <>
         <h2>{time.title}</h2>
         <Switch name='time' text={this.language.enabled} category='clock' element='.clock-container' />
-        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock' element='.clock-container'>
+        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock'>
           <option value='digital'>{time.digital.title}</option>
           <option value='analogue'>{time.analogue.title}</option>
           <option value='percentageComplete'>{time.percentage_complete}</option>
         </Dropdown>
         {timeSettings}
         {this.state.timeType !== 'analogue' ? 
-          <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomClock' min='10' max='400' default='100' display='%' category='clock' element='.clock-container' />
+          <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomClock' min='10' max='400' default='100' display='%' category='clock'/>
         : null}
 
         <h3>{time.date.title}</h3>
         <Switch name='date' text={this.language.enabled} category='date' element='.date'/>
-        <Dropdown label={time.type} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date' element='.date'>
+        <Dropdown label={time.type} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date'>
           <option value='long'>{time.date.type.long}</option>
           <option value='short'>{time.date.type.short}</option>
         </Dropdown>
         <br/>
-        <Checkbox name='datezero' text={time.digital.zero} category='date' element='.date' />
-        <Checkbox name='weeknumber' text={time.date.week_number} category='date' element='.date'/>
+        <Checkbox name='datezero' text={time.digital.zero} category='date'/>
+        <Checkbox name='weeknumber' text={time.date.week_number} category='date'/>
         {dateSettings}
-        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomDate' min='10' max='400' default='100' display='%' category='date' element='.date' />
+        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomDate' min='10' max='400' default='100' display='%' category='date'/>
       </>
     );
   }

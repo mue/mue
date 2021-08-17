@@ -1,5 +1,7 @@
 import { PureComponent } from 'react';
 
+import EventBus from '../../../modules/helpers/eventbus';
+
 import './autocomplete.scss';
 
 export default class Autocomplete extends PureComponent {
@@ -7,12 +9,13 @@ export default class Autocomplete extends PureComponent {
     super(props);
     this.state = {
       filtered: [],
-      input: ''
+      input: '',
+      autocompleteDisabled: (localStorage.getItem('autocomplete') !== 'true')
     };
   }
 
   onChange = (e) => {
-    if (localStorage.getItem('autocomplete') !== 'true') {
+    if (this.state.autocompleteDisabled) {
       return this.setState({
         input: e.target.value
       });
@@ -34,6 +37,16 @@ export default class Autocomplete extends PureComponent {
 
     this.props.onClick(e);
   };
+
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'search') {
+        this.setState({
+          autocompleteDisabled: (localStorage.getItem('autocomplete') !== 'true')
+        });
+      }
+    });
+  }
 
   render() {
     let autocomplete = null;

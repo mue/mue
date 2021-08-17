@@ -211,6 +211,13 @@ export default class Quote extends PureComponent {
 
         element.style.display = 'block';
         this.init();
+
+        // buttons hot reload
+        this.setState({
+          favourited: this.useFavourite(),
+          tweet: (localStorage.getItem('tweetButton') === 'false') ? null : this.buttons.tweet,
+          copy: (localStorage.getItem('copyButton') === 'false') ? null : this.buttons.copy
+        });
       }
 
       // uninstall quote pack reverts the quote to what you had previously

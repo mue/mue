@@ -27,8 +27,8 @@ export default class QuoteSettings extends PureComponent {
     if (this.state.quoteType === 'custom') {
       customSettings = (
         <>
-          <Text title={quote.custom} name='customQuote' category='quote' element='.quotediv' />
-          <Text title={quote.custom_author} name='customQuoteAuthor' category='quote' element='.quotediv'/>
+          <Text title={quote.custom} name='customQuote' category='quote' />
+          <Text title={quote.custom_author} name='customQuoteAuthor' category='quote'/>
         </>
       );
     } else {
@@ -60,7 +60,7 @@ export default class QuoteSettings extends PureComponent {
           <option value='custom'>{quote.custom}</option>
         </Dropdown>
         {customSettings}
-        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomQuote' min='10' max='400' default='100' display='%' category='quote' element='.quotediv' />
+        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomQuote' min='10' max='400' default='100' display='%' category='quote' />
   
         <h3>{quote.buttons.title}</h3>
         <Checkbox name='copyButton' text={quote.buttons.copy} category='quote'/>

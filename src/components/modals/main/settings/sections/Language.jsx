@@ -60,7 +60,7 @@ export default class BackgroundSettings extends PureComponent {
     return (
       <>
         <h2>{language.title}</h2>
-        <Radio name='language' options={languages} element='.language' />
+        <Radio name='language' options={languages} element='.other' />
         <h3>{language.quote}</h3>
         <Radio name='quotelanguage' options={this.state.quoteLanguages} category='quote' />
       </>
