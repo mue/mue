@@ -5,15 +5,6 @@ import { toast } from 'react-toastify';
 
 import EventBus from '../../../../../modules/helpers/eventbus';
 
-const enabled = (setting) => {
-  switch (setting) {
-    case 'quicklinks':
-      return (localStorage.getItem('quicklinksenabled') === 'true');
-    default:
-      return (localStorage.getItem(setting) === 'true');
-  }
-};
-
 const settings = window.language.modals.main.settings.sections;
 const widget_name = {
   greeting: settings.greeting.title,
@@ -24,7 +15,7 @@ const widget_name = {
 };
 
 const SortableItem = sortableElement(({ value }) => (
-  <li className='sortableitem' style={{ display: enabled(value) ? 'block' : 'none' }}>
+  <li className='sortableitem'>
     <DragIndicator style={{ verticalAlign: 'middle' }} />
     {widget_name[value]}
   </li>
@@ -77,6 +68,15 @@ export default class OrderSettings extends PureComponent {
     toast(window.language.toasts.reset);
   }
 
+  enabled = (setting) => {
+    switch (setting) {
+      case 'quicklinks':
+        return (localStorage.getItem('quicklinksenabled') === 'true');
+      default:
+        return (localStorage.getItem(setting) === 'true');
+    }
+  }
+
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
     window.stats.postEvent('setting', 'Widget order');
@@ -89,9 +89,15 @@ export default class OrderSettings extends PureComponent {
         <h2>{this.language.sections.order.title}</h2>
         <span className='modalLink' onClick={this.reset}>{this.language.buttons.reset}</span>
         <SortableContainer onSortEnd={this.onSortEnd} lockAxis='y' lockToContainerEdges disableAutoscroll>
-          {this.state.items.map((value, index) => (
-            <SortableItem key={`item-${value}`} index={index} value={value} />
-          ))}
+          {this.state.items.map((value, index) => {
+            if (!this.enabled(value)) { 
+              return null;
+            }
+
+            return (
+              <SortableItem key={`item-${value}`} index={index} value={value} />
+            );
+          })}
         </SortableContainer>
       </>
     );
