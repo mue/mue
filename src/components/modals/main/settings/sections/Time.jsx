@@ -78,8 +78,8 @@ export default class TimeSettings extends PureComponent {
         </Dropdown>
         <br/><br/>
         <Dropdown label={time.date.short_separator.title} name='shortFormat' category='date'>
-          <option value='dots'>{time.date.short_separator.dots}</option>
           <option value='dash'>{time.date.short_separator.dash}</option>
+          <option value='dots'>{time.date.short_separator.dots}</option>
           <option value='gaps'>{time.date.short_separator.gaps}</option>
           <option value='slashes'>{time.date.short_separator.slashes}</option>
        </Dropdown>
