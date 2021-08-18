@@ -146,6 +146,24 @@ ul.sidebar {
   }
 }
 
+@media (max-height: 999px) and (min-height: 920px) {
+  ul.sidebar {
+    min-height: 160vh;
+  }
+}
+
+@media (max-height: 919px) and (min-height: 700px) {
+  ul.sidebar {
+    min-height: 200vh;
+  }
+}
+
+@media (max-height: 699px) and (min-height: 400px) {
+  ul.sidebar {
+    min-height: 260vh;
+  }
+}
+
 li {
   list-style: none;
   font-size: 24px;
