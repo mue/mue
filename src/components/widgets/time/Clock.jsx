@@ -66,6 +66,8 @@ export default class Clock extends PureComponent {
 
             if (hours > 12) {
               hours -= 12;
+            } else if (hours === 0) {
+              hours = 12;
             }
 
             if (zero === 'false') {
