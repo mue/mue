@@ -16,7 +16,7 @@
 
 .items {
   display: inline-grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 15px;
 
   .item {
@@ -71,21 +71,15 @@
   }
 }
 
-@media only screen and (max-width: 2100px) {
-  .items {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media only screen and (max-width: 1870px) {
+@media (max-width: 1680px) and (min-width: 1500px) {
   .items {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media only screen and (min-width: 1079px), (max-width: 1869px) {
+@media (max-width: 1440px) {
   .items {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 

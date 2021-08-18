@@ -159,20 +159,6 @@ export default class Marketplace extends PureComponent {
       );
     };
 
-    const featured = () => {
-      const openFeatured = () => {
-        window.stats.postEvent('marketplace', 'Featured clicked');
-        window.open(this.state.featured.buttonLink);
-      }
-      return (
-        <div className='featured' style={{ backgroundColor: this.state.featured.colour }}>
-          <p>{this.state.featured.title}</p>
-          <h1>{this.state.featured.name}</h1>
-          <button className='addToMue' onClick={() => openFeatured()}>{this.state.featured.buttonText}</button>
-        </div>
-      );
-    }
-
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(<>
         <WifiOff/>
@@ -185,6 +171,21 @@ export default class Marketplace extends PureComponent {
       return errorMessage(<h1>{window.language.modals.main.loading}</h1>);
     }
 
+    const featured = () => {
+      const openFeatured = () => {
+        window.stats.postEvent('marketplace', 'Featured clicked');
+        window.open(this.state.featured.buttonLink);
+      }
+
+      return (
+        <div className='featured' style={{ backgroundColor: this.state.featured.colour }}>
+          <p>{this.state.featured.title}</p>
+          <h1>{this.state.featured.name}</h1>
+          <button className='addToMue' onClick={() => openFeatured()}>{this.state.featured.buttonText}</button>
+        </div>
+      );
+    }
+
     if (this.state.items.length === 0) {
       return (
         <>
@@ -195,7 +196,7 @@ export default class Marketplace extends PureComponent {
             <p className='description'>{this.language.no_items}</p>
           </>)}
         </>
-      )
+      );
     }
 
     if (this.state.item.display_name) {
