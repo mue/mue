@@ -24,7 +24,7 @@ export function exportSettings() {
   });
   saveFile(settings, 'mue-settings.json');
   window.stats.postEvent('tab', 'Settings exported');
-}
+};
 
 export function importSettings(e) {
   const content = JSON.parse(e.target.result);
@@ -35,4 +35,4 @@ export function importSettings(e) {
 
   toast(window.language.toasts.imported);
   window.stats.postEvent('tab', 'Settings imported');
-}
+};

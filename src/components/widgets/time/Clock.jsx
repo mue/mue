@@ -58,7 +58,8 @@ export default class Clock extends PureComponent {
             }
 
             this.setState({
-              time: time
+              time: time,
+              ampm: ''
             });
           } else {
             // 12 hour

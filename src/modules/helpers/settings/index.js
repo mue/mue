@@ -25,7 +25,7 @@ export function setDefaultSettings(reset) {
 
   // Finally we set this to true so it doesn't run the function on every load
   localStorage.setItem('firstRun', true);
-}
+};
 
 export function loadSettings(hotreload) {
   document.getElementById('widgets').style.zoom = localStorage.getItem('widgetzoom') + '%';
@@ -121,7 +121,7 @@ export function loadSettings(hotreload) {
 ██              Feedback: hello@muetab.com                 ██
 █████████████████████████████████████████████████████████████
 `);
-}
+};
 
 // in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides 
 // the new settings with the old saved messages where they exist
@@ -141,4 +141,4 @@ export function moveSettings() {
   Object.keys(settings).forEach((key) => {
     localStorage.setItem(key, settings[key]);
   });
-}
+};

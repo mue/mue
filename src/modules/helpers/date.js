@@ -13,8 +13,8 @@ export function nth(d) {
     default:
       return d + 'th';
   }
-}
+};
 
 export function convertTimezone(date, tz) {
   return new Date((typeof date === 'string' ? new Date(date) : date).toLocaleString('en-US', { timeZone: tz }));   
-}
+};
