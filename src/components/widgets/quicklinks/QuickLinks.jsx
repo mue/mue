@@ -1,6 +1,7 @@
 import { PureComponent } from 'react';
-import Tooltip from '../../helpers/tooltip/Tooltip';
 import { TextareaAutosize } from '@material-ui/core';
+
+import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import EventBus from '../../../modules/helpers/eventbus';
 
@@ -23,8 +24,8 @@ export default class QuickLinks extends PureComponent {
   deleteLink(key, event) {
     event.preventDefault();
 
-    let data = JSON.parse(localStorage.getItem('quicklinks'));
-    data = data.filter((i) => i.key !== key);
+    // remove link from array
+    const data = JSON.parse(localStorage.getItem('quicklinks')).filter((i) => i.key !== key);
 
     localStorage.setItem('quicklinks', JSON.stringify(data));
     this.setState({
@@ -35,7 +36,7 @@ export default class QuickLinks extends PureComponent {
   }
 
   addLink = () => {
-    let data = JSON.parse(localStorage.getItem('quicklinks'));
+    const data = JSON.parse(localStorage.getItem('quicklinks'));
     let url = this.state.url;
 
     let nameError, urlError;
@@ -80,10 +81,7 @@ export default class QuickLinks extends PureComponent {
 
     // make sure image is correct size
     const element = document.querySelector('.quicklinks-container');
-    const images = element.getElementsByTagName('img');
-    for (const img of images) {
-      img.style.height = `${0.87 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
-    };
+    this.setZoom(element);
   }
 
   toggleAdd = () => {
@@ -94,14 +92,11 @@ export default class QuickLinks extends PureComponent {
 
   // widget zoom
   setZoom(element) {
-    const zoomQuicklinks = Number((localStorage.getItem('zoomQuicklinks') || 100) / 100);
     const images = element.getElementsByTagName('img');
 
     for (const img of images) {
-      img.style.height = `${0.87 * zoomQuicklinks}em`;
+      img.style.height = `${0.87 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
     };
-
-    element.querySelector('button').style.fontSize = `${1.15 * zoomQuicklinks}em`;
   }
 
   componentDidMount() {
@@ -165,13 +160,15 @@ export default class QuickLinks extends PureComponent {
       }
     };
 
+    const marginTop = (this.state.items.length > 0) ? '9vh' : '4vh';
+
     return (
       <div className='quicklinks-container'>
         {this.state.items.map((item) => (
           quickLink(item)
         ))}
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
-        <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink }}>
+        <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink, marginTop: marginTop }}>
           <div className='topbarquicklinks'>
             <h4>{this.language.new}</h4>
             <TextareaAutosize rowsmax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
