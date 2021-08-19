@@ -180,17 +180,12 @@ li {
   bottom: 0;
   left: 0;
   height: 80%;
+  width: 60%;
 }
 
-@media only screen and (max-width: 1300px) {
+@media (max-width: 1700px) {
   #modal {
-    width: 90% !important;
-  }
-}
-
-@media only screen and (min-width: 1310px) {
-  #modal {
-    width: 60%;
+    width: 80% !important;
   }
 }
 
@@ -306,7 +301,7 @@ li {
   }
 }
 
-@media only screen and (max-width: 1650px) {
+@media only screen and (max-width: 800px) {
   li.navbar-item {
     span {
       display: none;
