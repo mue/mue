@@ -6,11 +6,14 @@ const toDataURL = async (url) => {
   return URL.createObjectURL(await res.blob());
 };
 
+const formatText = (text) => {
+  return text.toLowerCase().replaceAll(',', '').replaceAll(' ', '-');
+};
+
 const downloadImage = async (info) => {
   const link = document.createElement('a');
   link.href = await toDataURL(info.url);
-  // todo: make this a bit cleaner
-  link.download = `mue-${info.credit.toLowerCase().replaceAll(' ', '-')}-${info.location.toLowerCase().replaceAll(',', '').replaceAll(' ', '-')}.jpg`;
+  link.download = `mue-${formatText(info.credit)}-${formatText(info.location)}.jpg`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -74,10 +77,14 @@ export default function PhotoInformation(props) {
         <Info className='infoIcon'/>
         <h1>{language.information}</h1>
         <hr/>
-        <LocationOn/>
-        <span id='infoLocation'>{props.info.location || 'N/A'}</span>
-        <PhotoCamera/>
-        <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
+        {props.info.location && props.info.location !== 'N/A' ? <>
+          <LocationOn/>
+          <span id='infoLocation'>{props.info.location}</span>
+        </> : null}
+        {props.info.camera && props.info.camera !== 'N/A' ? <>
+          <PhotoCamera/>
+          <span id='infoCamera'>{props.info.camera}</span>
+        </> : null}
         <Resolution/>
         <span id='infoResolution'>{width}x{height}</span>
         <Photographer/>

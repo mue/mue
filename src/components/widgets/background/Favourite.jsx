@@ -29,12 +29,12 @@ export default class Favourite extends PureComponent {
       if (!url) {
         return;
       }
-      
+
       localStorage.setItem('favourite', JSON.stringify({ 
         url: url, 
         credit: document.getElementById('credit').textContent,
-        location: document.getElementById('infoLocation').textContent,
-        camera: document.getElementById('infoCamera').textContent,
+        location: document.getElementById('infoLocation') ? document.getElementById('infoLocation').innerText : 'N/A',
+        camera: document.getElementById('infoCamera') ? document.getElementById('infoCamera').innerText : 'N/A',
         resolution: document.getElementById('infoResolution').textContent
       }));
 
