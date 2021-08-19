@@ -5,6 +5,7 @@ import PhotoInformation from './PhotoInformation';
 
 import EventBus from '../../../modules/helpers/eventbus';
 import Interval from '../../../modules/helpers/interval';
+import { videoCheck, offlineBackground, gradientStyleBuilder } from '../../../modules/helpers/background/widget';
 
 import './scss/index.scss';
 
@@ -23,44 +24,6 @@ export default class Background extends PureComponent {
       }
     };
     this.language = window.language.widgets.background;
-  }
-
-  gradientStyleBuilder({ type, angle, gradient }) {
-    // Note: Append the gradient for additional browser support.
-    const steps = gradient?.map((v) => `${v.colour} ${v.stop}%`);
-    const grad = `background: ${type}-gradient(${type === 'linear' ? `${angle}deg,` : ''}${steps})`;
-
-    this.setState({
-      type: 'colour',
-      style: `background:${gradient[0]?.colour};${grad}`
-    });
-  }
-
-  videoCheck(url) {
-    return url.startsWith('data:video/') || url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg');
-  }
-
-  offlineBackground() {
-    const offlineImages = require('./offline_images.json');
-
-    // Get all photographers from the keys in offlineImages.json
-    const photographers = Object.keys(offlineImages);
-    const photographer = photographers[Math.floor(Math.random() * photographers.length)];
-
-    const randomImage = offlineImages[photographer].photo[
-      Math.floor(Math.random() * offlineImages[photographer].photo.length)
-    ];
-
-    const object = {
-      url: `./offline-images/${randomImage}.webp`,
-      photoInfo: {
-        offline: true,
-        credit: photographer
-      }
-    }
-
-    this.setState(object);
-    localStorage.setItem('currentBackground', JSON.stringify(object));
   }
 
   setBackground() {
@@ -122,7 +85,7 @@ export default class Background extends PureComponent {
     switch (localStorage.getItem('backgroundType')) {
       case 'api':
         if (offline) {
-          return this.offlineBackground();
+          return this.setState(offlineBackground());
         }
 
         // favourite button
@@ -161,7 +124,7 @@ export default class Background extends PureComponent {
           data = await (await fetch(requestURL)).json();
         } catch (e) {
           // if requesting to the API fails, we get an offline image
-          return this.offlineBackground();
+          return this.setState(offlineBackground());
         }
 
         let credit = data.photographer;
@@ -212,7 +175,7 @@ export default class Background extends PureComponent {
         }
 
         if (typeof gradientSettings === 'object' && gradientSettings !== null) {
-          return this.gradientStyleBuilder(gradientSettings);
+          return this.setState(gradientStyleBuilder(gradientSettings));
         }
       break;
 
@@ -221,14 +184,14 @@ export default class Background extends PureComponent {
 
         // allow users to use offline images
         if (offline && !customBackground.startsWith('data:')) {
-          return this.offlineBackground();
+          return this.setState(offlineBackground());
         }
 
         if (customBackground !== '' && customBackground !== 'undefined') {
           this.setState({
             url: customBackground,
             type: 'custom',
-            video: this.videoCheck(customBackground),
+            video: videoCheck(customBackground),
             photoInfo: {
               hidden: true
             }
@@ -238,7 +201,7 @@ export default class Background extends PureComponent {
 
       case 'photo_pack':
         if (offline) {
-          return this.offlineBackground();
+          return this.setState(offlineBackground());
         }
 
         const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
@@ -347,34 +310,36 @@ export default class Background extends PureComponent {
     }
 
     const interval = localStorage.getItem('backgroundchange');
-    if (interval && interval !== 'refresh' && localStorage.getItem('backgroundType') === 'api') {
-      Interval(() => {
-        try {
-          document.getElementById('backgroundImage').classList.remove('fade-in');
-          document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
-        } catch (e) {
-          // Disregard exception
-        }
-        this.getBackground();
-      }, Number(interval), 'background');
-
-      try {
-        // todo: refactor this mess
-        const current = JSON.parse(localStorage.getItem('currentBackground'));
-        const offline = localStorage.getItem('offlineMode')
-        if (current.url.startsWith('http') && offline === 'false') {
-          this.setState(current);
-        } else if (current.url.startsWith('http')) {
-          this.offlineBackground();
-        } else {
-          if (offline === 'false') {
-            localStorage.removeItem('currentBackground');
-            return this.getBackground();
+    if (interval && interval !== 'refresh') {
+      if (localStorage.getItem('backgroundType') === 'api') {
+        Interval(() => {
+          try {
+            document.getElementById('backgroundImage').classList.remove('fade-in');
+            document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
+          } catch (e) {
+            // Disregard exception
           }
-          this.setState(current);
+          this.getBackground();
+        }, Number(interval), 'background');
+  
+        try {
+          // todo: refactor this mess
+          const current = JSON.parse(localStorage.getItem('currentBackground'));
+          const offline = localStorage.getItem('offlineMode');
+          if (current.url.startsWith('http') && offline === 'false') {
+            this.setState(current);
+          } else if (current.url.startsWith('http')) {
+            this.setState(offlineBackground());
+          } else {
+            if (offline === 'false') {
+              localStorage.removeItem('currentBackground');
+              return this.getBackground();
+            }
+            this.setState(current);
+          }
+        } catch (e) {
+          this.setBackground();
         }
-      } catch (e) {
-        this.setBackground();
       }
     } else {
       this.getBackground();
