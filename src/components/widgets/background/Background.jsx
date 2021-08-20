@@ -355,6 +355,10 @@ export default class Background extends PureComponent {
     this.setBackground();
   }
 
+  componentWillUnmount() {
+    EventBus.off('refresh');
+  }
+
   render() {
     if (this.state.video === true) {
       const enabled = (setting) => {

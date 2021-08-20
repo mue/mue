@@ -114,7 +114,7 @@ export default class Clock extends PureComponent {
   }
 
   componentWillUnmount() {
-    EventBus.remove('refresh');
+    EventBus.off('refresh');
   }
 
   render() {

@@ -11,7 +11,7 @@ export default class EventBus {
     }));
   }
 
-  static remove(event, callback) {
+  static off(event, callback) {
     document.removeEventListener(event, callback);
   }
 }

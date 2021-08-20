@@ -19,12 +19,16 @@ export default class Stats extends PureComponent {
         if (localStorage.getItem('stats') === 'false') {
           localStorage.setItem('statsData', JSON.stringify({}));
           return this.setState({
-            stats: JSON.parse(localStorage.getItem('statsData')) || {}
+            stats: {}
           });
         }
         this.forceUpdate();
       }
-    })
+    });
+  }
+
+  componentWillUnmount() {
+    EventBus.off('refresh');
   }
 
   render() {

@@ -125,7 +125,7 @@ export default class Weather extends PureComponent {
   }
 
   componentWillUnmount() {
-    EventBus.remove('refresh');
+    EventBus.off('refresh');
   }
 
   render() {

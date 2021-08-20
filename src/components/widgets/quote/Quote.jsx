@@ -247,7 +247,7 @@ export default class Quote extends PureComponent {
   }
 
   componentWillUnmount() {
-    EventBus.remove('refresh');
+    EventBus.off('refresh');
   }
 
   render() {

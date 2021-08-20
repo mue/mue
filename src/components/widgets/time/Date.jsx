@@ -128,7 +128,7 @@ export default class DateWidget extends PureComponent {
   }
 
   componentWillUnmount() {
-    EventBus.remove('refresh');
+    EventBus.off('refresh');
   }
 
   render() {

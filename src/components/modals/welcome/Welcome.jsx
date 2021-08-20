@@ -81,6 +81,10 @@ export default class WelcomeModal extends PureComponent {
     });
   }
 
+  componentWillUnmount() {
+    EventBus.off('refresh');
+  }
+
   render() {
     return (
       <div className='welcomeContent'>

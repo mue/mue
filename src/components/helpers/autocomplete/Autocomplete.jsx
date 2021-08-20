@@ -48,6 +48,10 @@ export default class Autocomplete extends PureComponent {
     });
   }
 
+  componentWillUnount() {
+    EventBus.off('refresh');
+  }
+
   render() {
     let autocomplete = null;
 

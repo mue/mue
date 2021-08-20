@@ -134,7 +134,7 @@ export default class Greeting extends PureComponent {
   }
 
   componentWillUnmount() {
-    EventBus.remove('refresh');
+    EventBus.off('refresh');
   }
 
   render() {
