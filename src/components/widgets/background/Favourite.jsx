@@ -30,11 +30,15 @@ export default class Favourite extends PureComponent {
         return;
       }
 
+      // photo information now hides information if it isn't sent, unless if photoinformation hover is hidden
+      const location = document.getElementById('infoLocation');
+      const camera = document.getElementById('infoCamera');
+
       localStorage.setItem('favourite', JSON.stringify({ 
         url: url, 
         credit: document.getElementById('credit').textContent,
-        location: document.getElementById('infoLocation') ? document.getElementById('infoLocation').innerText : 'N/A',
-        camera: document.getElementById('infoCamera') ? document.getElementById('infoCamera').innerText : 'N/A',
+        location: location ? location.innerText : 'N/A',
+        camera: camera ? camera.innerText : 'N/A',
         resolution: document.getElementById('infoResolution').textContent
       }));
 

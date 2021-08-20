@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@material-ui/icons';
 
 const toDataURL = async (url) => {
@@ -77,14 +77,15 @@ export default function PhotoInformation(props) {
         <Info className='infoIcon'/>
         <h1>{language.information}</h1>
         <hr/>
-        {props.info.location && props.info.location !== 'N/A' ? <>
+        {/* fix console error by using fragment and key */}
+        {props.info.location && props.info.location !== 'N/A' ? <Fragment key='location'>
           <LocationOn/>
           <span id='infoLocation'>{props.info.location}</span>
-        </> : null}
-        {props.info.camera && props.info.camera !== 'N/A' ? <>
+        </Fragment> : null}
+        {props.info.camera && props.info.camera !== 'N/A' ? <Fragment key='camera'>
           <PhotoCamera/>
           <span id='infoCamera'>{props.info.camera}</span>
-        </> : null}
+        </Fragment> : null}
         <Resolution/>
         <span id='infoResolution'>{width}x{height}</span>
         <Photographer/>
