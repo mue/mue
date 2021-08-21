@@ -15,7 +15,7 @@ export function saveFile(data, filename = 'file') {
   
   e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
   a.dispatchEvent(e);
-};
+}
 
 export function exportSettings() {
   let settings = {};

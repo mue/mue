@@ -17,11 +17,11 @@ input {
     -webkit-appearance: none;
     vertical-align: middle;
     background: none;
-  
+
     &::-webkit-color-swatch-wrapper {
       padding: 0;
     }
-  
+
     &::-webkit-color-swatch {
       border: none;
       border-radius: 100%;
@@ -37,11 +37,11 @@ input {
     -moz-appearance: none;
     vertical-align: middle;
     background: none;
-  
+
     &::-moz-color-swatch-wrapper {
       padding: 0;
     }
-  
+
     &::-moz-color-swatch {
       border: none;
       border-radius: 100%;
@@ -176,7 +176,7 @@ legend {
   li {
     cursor: initial;
     font-size: 1rem;
-    list-style-type:disc;
+    list-style-type: disc;
     padding: 0;
     margin-left: 20px;
   }
@@ -223,9 +223,13 @@ input[type=number] {
   h2 {
     font-size: 2rem !important;
   }
-  h2, span, svg {
+
+  h2,
+  span,
+  svg {
     display: inline;
   }
+
   svg {
     vertical-align: sub;
     font-size: 1.4rem;

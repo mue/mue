@@ -35,7 +35,7 @@ if (localStorage.getItem('stats') === 'true') {
   window.stats = {
     tabLoad: () => '',
     postEvent: () => '' 
-  } 
+  };
 }
 
 render(

@@ -142,7 +142,7 @@ export default class Quote extends PureComponent {
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
             quoteLanguage: quotelanguage
-          }
+          };
 
           this.setState(object);
           localStorage.setItem('currentQuote', JSON.stringify(object));

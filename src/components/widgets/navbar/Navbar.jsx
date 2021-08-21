@@ -16,7 +16,7 @@ export default class Navbar extends PureComponent {
     const navbarIcons = document.querySelectorAll('.navbar-container');
     for (let i = 0; i < navbarIcons.length; i++) {
       navbarIcons[i].style.fontSize = `${zoomNavbar}em`;
-    };
+    }
   }
 
   componentDidMount() {

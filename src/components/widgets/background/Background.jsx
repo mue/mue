@@ -153,7 +153,8 @@ export default class Background extends PureComponent {
             photographerURL: photographerURL,
             photoURL: photoURL
           }
-        }
+        };
+
         this.setState(object);
 
         localStorage.setItem('currentBackground', JSON.stringify(object));

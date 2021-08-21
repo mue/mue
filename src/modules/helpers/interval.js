@@ -1,5 +1,5 @@
 // based on https://stackoverflow.com/a/47009962
-export default function Interval(callback, interval, name) {
+export default function interval(callback, interval, name) {
   const key = name + 'interval';
   const timeInMs = localStorage.getItem(key);
 
@@ -8,7 +8,7 @@ export default function Interval(callback, interval, name) {
   const executeCallback = () => {
     localStorage.setItem(key, Date.now());
     callback();
-  }
+  };
 
   if (timeInMs) {
     const delta = now - parseInt(timeInMs);

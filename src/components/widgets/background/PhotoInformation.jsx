@@ -52,7 +52,7 @@ export default function PhotoInformation(props) {
   img.onload = (event) => {
     setWidth(event.target.width);
     setHeight(event.target.height);
-  }
+  };
   img.src = (localStorage.getItem('ddgProxy') === 'true' && !props.info.offline && !props.url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + props.url : props.url;
 
   // info is still there because we want the favourite button to work

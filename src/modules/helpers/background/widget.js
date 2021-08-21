@@ -1,7 +1,7 @@
 // since there is so much code in the component, we have moved it to a separate file
 export function videoCheck(url) {
   return url.startsWith('data:video/') || url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg');
-};
+}
 
 export function offlineBackground() {
   const offlineImages = require('./offlineImages.json');
@@ -20,7 +20,7 @@ export function offlineBackground() {
       offline: true,
       credit: photographer
     }
-  }
+  };
 
   localStorage.setItem('currentBackground', JSON.stringify(object));
 

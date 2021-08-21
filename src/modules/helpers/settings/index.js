@@ -25,7 +25,7 @@ export function setDefaultSettings(reset) {
 
   // Finally we set this to true so it doesn't run the function on every load
   localStorage.setItem('firstRun', true);
-};
+}
 
 export function loadSettings(hotreload) {
   document.getElementById('widgets').style.zoom = localStorage.getItem('widgetzoom') + '%';
