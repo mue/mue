@@ -292,7 +292,7 @@
           },
           "stats": {
             "title": "Estadísticas",
-            "warning": "Tienes que activar las estadísticas de uso para poder utilizar esta función",
+            "warning": "Tienes que activar las estadísticas de uso para poder utilizar esta función. Esto también enviará estadísticas anónimas a nuestra instancia de umami.",
             "sections": {
               "tabs_opened": "Pestañas abiertas",
               "backgrounds_favourited": "Fondos favoritos",
