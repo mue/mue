@@ -19,7 +19,10 @@ export default class Radio extends PureComponent {
     }
 
     if (this.props.name === 'language') {
-      localStorage.setItem('tabName', require(`../../../../translations/${value.replace('-', '_')}.json`).tabname);
+      // old tab name
+      if (localStorage.getItem('tabName') === window.language.tabname) {
+        localStorage.setItem('tabName', require(`../../../../translations/${value.replace('-', '_')}.json`).tabname);
+      }
     }
 
     localStorage.setItem(this.props.name, value);

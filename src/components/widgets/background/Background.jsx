@@ -82,23 +82,26 @@ export default class Background extends PureComponent {
       offline = true;
     }
 
+    const setFavourited = (favourited) => {
+      this.setState({
+        url: favourited.url,
+        photoInfo: {
+          credit: favourited.credit,
+          location: favourited.location,
+          camera: favourited.camera
+        }
+      });
+    }
+
     switch (localStorage.getItem('backgroundType')) {
       case 'api':
         if (offline) {
           return this.setState(offlineBackground());
         }
 
-        // favourite button
         const favourited = JSON.parse(localStorage.getItem('favourite'));
         if (favourited) {
-          return this.setState({
-             url: favourited.url,
-             photoInfo: {
-              credit: favourited.credit,
-              location: favourited.location,
-              camera: favourited.camera
-            }
-          });
+          return setFavourited(favourited);
         }
 
         // API background
@@ -203,6 +206,11 @@ export default class Background extends PureComponent {
       case 'photo_pack':
         if (offline) {
           return this.setState(offlineBackground());
+        }
+
+        const photofavourited = JSON.parse(localStorage.getItem('favourite'));
+        if (photofavourited) {
+          return setFavourited(photofavourited);
         }
 
         const photoPack = JSON.parse(localStorage.getItem('photo_packs'));

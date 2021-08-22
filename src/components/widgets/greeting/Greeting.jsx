@@ -82,12 +82,14 @@ export default class Greeting extends PureComponent {
         }
       }
 
-      if (custom === 'false') {
+      const birthday = localStorage.getItem('birthdayenabled');
+
+      if (custom === 'false' && birthday !== 'true') {
         name = name.replace(',', '');
       }
 
       // Birthday
-      if (localStorage.getItem('birthdayenabled') === 'true') {
+      if (birthday === 'true') {
         const birth = new Date(localStorage.getItem('birthday'));
 
         if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
