@@ -431,11 +431,11 @@
       "sections": {
         "intro": {
           "title": "Welcome to Mue Tab",
-          "description": "Thank you for installing, we hope you enjoy your time with our extension."
+          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension."
         },
         "language": {
           "title": "Choose your language",
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our GitHub!"
+          "description": "Mue can be displayed the languages listed below. You can also add new translations on our"
         },
         "theme": {
           "title": "Select a theme",

@@ -6,21 +6,22 @@ export function saveFile(data, filename = 'file') {
   }
   
   const blob = new Blob([data], { type: 'text/json' });
-  let e = document.createEvent('MouseEvents');
-  let a = document.createElement('a');
+
+  const event = document.createEvent('MouseEvents');
+  const a = document.createElement('a');
   
   a.href = window.URL.createObjectURL(blob);
   a.download = filename;
   a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
   
-  e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-  a.dispatchEvent(e);
+  event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+  a.dispatchEvent(event);
 }
 
 export function exportSettings() {
-  let settings = {};
+  const settings = {};
   Object.keys(localStorage).forEach((key) => {
-      settings[key] = localStorage.getItem(key);
+    settings[key] = localStorage.getItem(key);
   });
   saveFile(settings, 'mue-settings.json');
   window.stats.postEvent('tab', 'Settings exported');

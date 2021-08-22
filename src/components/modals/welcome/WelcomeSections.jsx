@@ -121,7 +121,7 @@ export default class WelcomeSections extends PureComponent {
     const chooseLanguage = (
       <>
         <h1>{language.sections.language.title}</h1>
-        <p>{language.sections.language.description}</p>
+        <p>{language.sections.language.description} <a href='https://docs.muetab.com/translations/' className='resetLink' target='_blank' rel='noopener noreferrer'>GitHub</a>!</p>
         <Radio name='language' options={languages} category='welcomeLanguage'/>
       </>
     );

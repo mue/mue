@@ -30,8 +30,7 @@ export function setDefaultSettings(reset) {
 export function loadSettings(hotreload) {
   document.getElementById('widgets').style.zoom = localStorage.getItem('widgetzoom') + '%';
 
-  const theme = localStorage.getItem('theme');
-  switch (theme) {
+  switch (localStorage.getItem('theme')) {
     case 'dark':
       document.body.classList.add('dark');
       break;
@@ -46,16 +45,16 @@ export function loadSettings(hotreload) {
       document.body.classList.remove('dark');
   }
 
-  const tabName = localStorage.getItem('tabName') || window.language.tabname;
-  document.title = tabName;
+  document.title = localStorage.getItem('tabName') || window.language.tabname;
 
   if (hotreload === true) {
-    const custom = ['customcss', 'customjs', 'customfont'];
+    // remove old custom stuff and add new
+    const custom = ['customcss', 'customfont'];
     custom.forEach((element) => {
       try {
         document.head.removeChild(document.getElementById(element));
       } catch (e) {
-        // Disregard exception
+        // Disregard exception if custom stuff doesn't exist
       }
     });
   }
@@ -92,8 +91,8 @@ export function loadSettings(hotreload) {
   const js = localStorage.getItem('customjs');
   if (js) {
     try {
-      // eslint-disable-next-line no-eval
-      eval(js);
+      // eslint-disable-next-line no-new-func
+      Function(`'use strict'; return (${js})`)();
     } catch (e) {
       console.error('Failed to run custom JS: ', e);
     }
@@ -126,18 +125,19 @@ export function loadSettings(hotreload) {
 // in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides 
 // the new settings with the old saved messages where they exist
 export function moveSettings() {
-  if (Object.keys(localStorage).length === 0) {
+  const currentSettings = Object.keys(localStorage);
+  if (currentSettings.length === 0) {
     return this.setDefaultSettings();
   }
 
-  let settings = {};
-  Object.keys(localStorage).forEach((key) => {
+  const settings = {};
+  currentSettings.forEach((key) => {
     settings[key] = localStorage.getItem(key);
   });
 
   localStorage.clear();
-
   setDefaultSettings();
+
   Object.keys(settings).forEach((key) => {
     localStorage.setItem(key, settings[key]);
   });
