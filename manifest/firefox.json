@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Mue",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "homepage_url": "https://muetab.com",
   "browser_action": {
     "default_icon": "icons/128x128.png"
@@ -18,9 +18,5 @@
   "chrome_settings_overrides": {
     "homepage": "index.html"
   },
-  "content_security_policy": "script-src 'self' https://api.bing.com https://www.google.com; object-src 'self'",
-  "background": {
-    "persistent": false,
-    "scripts": [ "background-firefox.js" ]
-  }
+  "content_security_policy": "script-src 'self' https://api.bing.com https://www.google.com; object-src 'self'"
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { PureComponent } from 'react';
 import { 
   SettingsRounded as Settings, 
@@ -95,14 +96,15 @@ export default class Create extends PureComponent {
         <h3>{time.type}</h3>
         <div className='themesToggleArea'>
           <div className='options'>
-            <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'photos')}>
+            {/* <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'photos')}>
               <Photos/>
               <span>{marketplace.photo_packs}</span>
             </div>
             <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'quotes')}>
               <Quotes/>
               <span>{marketplace.quote_packs}</span>
-            </div>
+            </div> 
+           */}
             <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'settings')}>
               <Settings/>
               <span>{marketplace.preset_settings}</span>
