@@ -58,7 +58,7 @@ export default class Stats {
           payload: {
             website: this.id,
             url: '/',
-            language: localStorage.getItem('language').replace('_', '-'),
+            language: window.languagecode.replace('_', '-'),
             screen: `${window.screen.width}x${window.screen.height}`
           }
         })

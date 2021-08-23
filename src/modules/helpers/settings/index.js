@@ -91,8 +91,8 @@ export function loadSettings(hotreload) {
   const js = localStorage.getItem('customjs');
   if (js) {
     try {
-      // eslint-disable-next-line no-new-func
-      Function(`'use strict'; return (${js})`)();
+      // eslint-disable-next-line no-eval
+      eval(js);
     } catch (e) {
       console.error('Failed to run custom JS: ', e);
     }

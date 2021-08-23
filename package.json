@@ -9,7 +9,7 @@
   "homepage": "https://muetab.com",
   "bugs": "https://github.com/mue/mue/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BBUG%5D",
   "license": "BSD-3-Clause",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -55,7 +55,7 @@
     "start": "webpack serve",
     "build": "webpack --mode=production",
     "chrome": "cp manifest/chrome.json build/manifest.json && cp -r manifest/_locales build/_locales && cp manifest/background-chrome.js build/background-chrome.js",
-    "firefox": "rm -rf build/_locales && cp manifest/firefox.json build/manifest.json && cp manifest/background-firefox.js build/background-firefox.js"
+    "firefox": "rm -rf build/_locales && cp manifest/firefox.json build/manifest.json"
   },
   "browserslist": {
     "production": [

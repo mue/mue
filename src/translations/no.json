@@ -292,7 +292,7 @@
           },
           "stats": {
             "title": "Stats",
-            "warning": "You need to enable usage data in order to use this feature. This will also post anonymous statistics to our umami instance.",
+            "warning": "You need to enable usage data in order to use this feature. This will post anonymous statistics to our umami instance.",
             "sections": {
               "tabs_opened": "Tabs opened",
               "backgrounds_favourited": "Backgrounds favourited",
