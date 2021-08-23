@@ -26,13 +26,9 @@ export const COPYRIGHT_YEAR = '2018';
 export const COPYRIGHT_LICENSE = 'BSD-3 License';
 export const DONATE_USERNAME = 'davidjcralph'; // this only works if you use the same username for Patreon, GitHub and Ko-Fi
 
-// umami
-export const UMAMI_DOMAIN = 'https://umami.muetab.com';
-export const UMAMI_ID = '1b97e723-199c-48d8-8992-17c4e22d4f3c';
-
 // Offline images
 export const OFFLINE_IMAGES = 20;
 
 // Version
 export const BETA_VERSION = false;
-export const VERSION = '5.3.1'; 
+export const VERSION = '5.3.2'; 

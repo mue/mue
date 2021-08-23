@@ -7,7 +7,7 @@ import './scss/index.scss';
 // the toast css is based on default so we need to import it
 import 'react-toastify/dist/ReactToastify.min.css';
 
-// this is opt-in btw, allows you to see your stats etc
+// local stats
 import Stats from './modules/helpers/stats';
 
 // language
@@ -28,9 +28,8 @@ if (window.languagecode !== 'en_GB' || window.languagecode !== 'en_US') {
 }
 
 window.constants = Constants;
-// doesn't send to umami when offline mode is on
 if (localStorage.getItem('stats') === 'true') {
-  window.stats = new Stats(window.constants.UMAMI_ID);
+  window.stats = Stats;
 } else {
   window.stats = {
     tabLoad: () => '',

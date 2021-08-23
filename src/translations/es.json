@@ -292,7 +292,7 @@
           },
           "stats": {
             "title": "Estadísticas",
-            "warning": "Tienes que activar las estadísticas de uso para poder utilizar esta función. Esto enviará estadísticas anónimas a nuestra instancia de umami.",
+            "warning": "Tienes que activar las estadísticas de uso para poder utilizar esta función. This data is only stored locally.",
             "sections": {
               "tabs_opened": "Pestañas abiertas",
               "backgrounds_favourited": "Fondos favoritos",
@@ -302,8 +302,7 @@
               "settings_changed": "Ajustes cambiados",
               "addons_installed": "Complementos instalados"
             },
-            "usage": "Estadísticas de uso",
-            "disable": "Si se desactiva, se borrarán las estadísticas localmente, pero no se eliminarán los datos anónimos publicados en umami."
+            "usage": "Estadísticas de uso"
           },
           "experimental": {
             "title": "Experimental",
@@ -452,7 +451,6 @@
           "description": "Activa estos ajustes para proteger aún más tu privacidad con Mue.",
           "offline_mode_description": "Al activar el modo offline se deshabilitarán todas las peticiones a cualquier servicio. Esto hará que se desactiven los fondos en línea, las citas en línea, la tienda, el tiempo, los enlaces rápidos, el registro de cambios y alguna información de la pestaña Acerca de.",
           "ddg_proxy_description": "Puedes hacer que las solicitudes de imágenes pasen por DuckDuckGo si lo deseas. Por defecto, las solicitudes a la API van a tráves de nuestros servidores de código abierto y las solicitudes de imágenes van a través del servidor original. Si desactivas esta opción para los enlaces rápidos y los iconos de obtendrán de Google en lugar de DuckDuckGo. El proxy de DuckDuckGo está siempre activado para la tienda.",
-          "stats_description": "Al activar esto, podrás ver la pestaña de estadísticas en los ajustes, que muestra cosas interesantes como el número de pestañas que has abierto, los fondos favoritos/descargados y más. Esto también enviará estadísticas anónimas a nuestra instancia de umami. Puedes encontrar el código fuente de esta instancia en nuestra página de GitHub.",
           "links": {
             "title": "Enlaces",
             "privacy_policy": "Política de privacidad",

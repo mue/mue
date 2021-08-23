@@ -53,7 +53,6 @@ export default class Stats extends PureComponent {
         <p>{this.language.sections.settings_changed}: {this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0}</p>
         <p>{this.language.sections.addons_installed}: {this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0}</p>
         <Switch name='stats' text={this.language.usage} category='stats'/>
-        <p>{this.language.disable}</p>
       </>
     );
   }

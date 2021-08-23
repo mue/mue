@@ -292,7 +292,7 @@
           },
           "stats": {
             "title": "Stats",
-            "warning": "You need to enable usage data in order to use this feature. This will post anonymous statistics to our umami instance.",
+            "warning": "You need to enable usage data in order to use this feature. This data is only stored locally.",
             "sections": {
               "tabs_opened": "Tabs opened",
               "backgrounds_favourited": "Backgrounds favourited",
@@ -302,8 +302,7 @@
               "settings_changed": "Settings changed",
               "addons_installed": "Add-ons installed"
             },
-            "usage": "Usage Stats",
-            "disable": "Turning this off will clear your statistics locally, but will not delete the anonymous data posted to umami."
+            "usage": "Usage Stats"
           },
           "experimental": {
             "title": "Экспериментальные настройки",
@@ -453,7 +452,6 @@
           "description": "Enable settings to further protect your privacy with Mue.",
           "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
           "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
-          "stats_description": "Enabling this will allow you to see the stats tab in settings which shows interesting things like how many tabs you have opened, backgrounds favourited/downloaded and more. This will also post anonymous statistics to our umami instance. You can find the source code to this instance on our GitHub page.",
           "links": {
             "title": "Links",
             "privacy_policy": "Privacy Policy",
