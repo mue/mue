@@ -55,10 +55,6 @@ export default function AppearanceSettings() {
       </Dropdown>
 
       <h3>{appearance.accessibility.title}</h3>
-      {/* not supported on firefox */}
-      {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
-        <Slider title={appearance.accessibility.widget_zoom} name='widgetzoom' default='100' step='10' min='50' max='200' display='%' category='other'/> 
-      : null}
       <Slider title={appearance.accessibility.toast_duration} name='toastDisplayTime' default='2500' step='100' min='500' max='5000' toast={true} display={' ' + appearance.accessibility.milliseconds} />
     </>
   );

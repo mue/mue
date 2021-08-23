@@ -28,8 +28,6 @@ export function setDefaultSettings(reset) {
 }
 
 export function loadSettings(hotreload) {
-  document.getElementById('widgets').style.zoom = localStorage.getItem('widgetzoom') + '%';
-
   switch (localStorage.getItem('theme')) {
     case 'dark':
       document.body.classList.add('dark');

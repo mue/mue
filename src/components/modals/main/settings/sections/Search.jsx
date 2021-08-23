@@ -74,6 +74,7 @@ export default class SearchSettings extends PureComponent {
       <>
         <h2>{search.title}</h2>
         <Switch name='searchBar' text={language.enabled} category='widgets' />
+        {/* not supported on firefox */}
         {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
           <Checkbox name='voiceSearch' text={search.voice_search} category='search'/> 
         : null}

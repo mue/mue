@@ -108,10 +108,6 @@
     "value": "dots"
   },
   {
-    "name": "widgetzoom",
-    "value": 100
-  },
-  {
     "name": "toastDisplayTime",
     "value": 2500
   },

@@ -31,4 +31,4 @@ export const OFFLINE_IMAGES = 20;
 
 // Version
 export const BETA_VERSION = false;
-export const VERSION = '5.3.2'; 
+export const VERSION = '5.3.3'; 
