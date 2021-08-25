@@ -1,5 +1,6 @@
 import { PureComponent } from 'react';
 import { Fullscreen } from '@material-ui/icons';
+import Hotkeys from 'react-hot-keys';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
 
@@ -54,10 +55,20 @@ export default class Maximise extends PureComponent {
   }
 
   render() {
-    return (
+    const maximise = (
       <Tooltip title={window.language.modals.main.settings.sections.background.buttons.view}>
         <Fullscreen onClick={this.maximise} className='topicons' />
       </Tooltip>
     );
+
+    if (window.keybinds.maximiseBackground && window.keybinds.maximiseBackground !== '') {
+      return (
+        <Hotkeys keyName={window.keybinds.maximiseBackground} onKeyDown={() => this.maximise()}>
+          {maximise}
+        </Hotkeys>
+      );
+    } else {
+      return maximise;
+    }
   }
 }

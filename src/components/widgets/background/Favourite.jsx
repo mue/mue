@@ -1,5 +1,6 @@
 import { PureComponent } from 'react';
 import { Star, StarBorder } from '@material-ui/icons';
+import Hotkeys from 'react-hot-keys';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
 
@@ -55,6 +56,16 @@ export default class Favourite extends PureComponent {
       return null;
     }
 
-    return <Tooltip title={window.language.modals.main.settings.sections.background.buttons.favourite}>{this.state.favourited}</Tooltip>;
+    const favourite = <Tooltip title={window.language.modals.main.settings.sections.background.buttons.favourite}>{this.state.favourited}</Tooltip>;
+
+    if (window.keybinds.favouriteBackground && window.keybinds.favouriteBackground !== '') {
+      return (
+        <Hotkeys keyName={window.keybinds.favouriteBackground} onKeyDown={() => this.favourite()}>
+          {favourite}
+        </Hotkeys>
+      );
+    } else {
+      return favourite;
+    }
   }
 }

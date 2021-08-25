@@ -20,7 +20,8 @@ import {
   AssessmentOutlined as Stats,
   Code as Sideload,
   AddCircleOutline as Added,
-  CreateNewFolderOutlined as Create
+  CreateNewFolderOutlined as Create,
+  KeyboardAltOutlined as Keybinds
 } from '@material-ui/icons';
 
 function Tab(props) {
@@ -58,6 +59,7 @@ function Tab(props) {
     case settings.order.title: icon = <Order/>; break;
     case settings.language.title: icon = <Language/>; divider = true; break;
     case settings.advanced.title: icon = <Advanced/>; break;
+    case 'Keybinds': icon = <Keybinds/>; break;
     case settings.stats.title: icon = <Stats/>; break;
     case settings.experimental.title: icon = <Experimental/>; divider = true; break;
     case settings.changelog: icon = <Changelog/>; break;

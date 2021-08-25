@@ -37,6 +37,12 @@ if (localStorage.getItem('stats') === 'true') {
   };
 }
 
+if (localStorage.getItem('keybindsEnabled') === 'true') {
+  window.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
+} else {
+  window.keybinds = {};
+}
+
 render(
   <App/>,
   document.getElementById('root')

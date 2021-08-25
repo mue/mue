@@ -15,6 +15,7 @@ import Experimental from '../settings/sections/Experimental';
 import QuickLinks from '../settings/sections/QuickLinks';
 import Weather from '../settings/sections/Weather';
 import Stats from '../settings/sections/Stats';
+import Keybinds from '../settings/sections/Keybinds';
 
 export default function Settings() {
   const { reminder, sections } = window.language.modals.main.settings;
@@ -34,6 +35,7 @@ export default function Settings() {
         <div label={sections.order.title} name='order'><Order/></div>
         <div label={sections.language.title} name='language'><Language/></div>
         <div label={sections.advanced.title} name='advanced'><Advanced/></div>
+        <div label='Keybinds' name='keybinds'><Keybinds/></div>
         <div label={sections.stats.title} name='stats'><Stats/></div>
         <div label={sections.experimental.title} name='experimental'><Experimental/></div>
         <div label={sections.changelog} name='changelog'><Changelog/></div>

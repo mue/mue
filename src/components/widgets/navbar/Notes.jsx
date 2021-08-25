@@ -2,6 +2,7 @@ import { PureComponent } from 'react';
 import { FileCopyRounded, AssignmentRounded as NotesRounded, PushPin }from '@material-ui/icons';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { toast } from 'react-toastify';
+import Hotkeys from 'react-hot-keys';
 
 export default class Notes extends PureComponent {
   constructor() {
@@ -49,8 +50,8 @@ export default class Notes extends PureComponent {
   }
 
   render() {
-    return (
-      <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility }}>
+    const notes = (
+        <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility }}>
         <div className='topbarnotes'>
           <NotesRounded/>
           <h3>{this.language.title}</h3>
@@ -60,5 +61,15 @@ export default class Notes extends PureComponent {
         <button onClick={() => this.copy()} className='copyNote'><FileCopyRounded/></button>
       </span>
     );
+    
+    if (window.keybinds.pinNotes && window.keybinds.pinNotes !== '') {
+      return (
+        <Hotkeys keyName={window.keybinds.pinNotes} onKeyDown={() => this.pin()}>
+          {notes}
+        </Hotkeys>
+      );
+    } else {
+      return notes;
+    }
   }
 }
