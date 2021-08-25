@@ -57,6 +57,28 @@ export function loadSettings(hotreload) {
     });
   }
 
+  if (localStorage.getItem('animations') === 'false') { 
+    document.body.classList.add('no-animations');
+  } else {
+    document.body.classList.remove('no-animations');
+  }
+
+  if (localStorage.getItem('textBorder') === 'true') {
+    const elements = ['greeting', 'clock', 'quote', 'quoteauthor'];
+    elements.forEach((element) => {
+      try {
+        document.querySelector('.' + element).classList.add('textBorder')
+      } catch (e) {}
+    });
+  } else {
+    const elements = ['greeting', 'clock', 'quote', 'quoteauthor'];
+    elements.forEach((element) => {
+      try {
+        document.querySelector('.' + element).classList.remove('textBorder')
+      } catch (e) {}
+    });
+  }
+
   const css = localStorage.getItem('customcss');
   if (css) {
     document.head.insertAdjacentHTML('beforeend', '<style id="customcss">' + css + '</style>');

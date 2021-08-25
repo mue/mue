@@ -238,5 +238,9 @@
   {
     "name": "offlineMode",
     "value": false
+  },
+  {
+    "name": "animations",
+    "value": true
   }
 ]
