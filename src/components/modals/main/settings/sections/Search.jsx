@@ -78,6 +78,7 @@ export default class SearchSettings extends PureComponent {
         {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
           <Checkbox name='voiceSearch' text={search.voice_search} category='search'/> 
         : null}
+        <Checkbox name='searchDropdown' text={search.dropdown} category='search' element='.other'/>
         <Dropdown label={search.search_engine} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
           {searchEngines.map((engine) => (
             <option key={engine.name} value={engine.settingsName}>{engine.name}</option>

@@ -193,7 +193,8 @@
             "custom": "Abfrage-URL",
             "autocomplete": "Autocomplete",
             "autocomplete_provider": "Autocomplete Provider",
-            "voice_search": "Sprachsuche"
+            "voice_search": "Sprachsuche",
+            "dropdown": "Search dropdown"
           },
           "weather": {
             "title": "Wetter",

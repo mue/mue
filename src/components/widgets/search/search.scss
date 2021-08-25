@@ -49,6 +49,15 @@
   }
 }
 
+.searchDropdown {
+  display: inline-block;
+  font-size: calc(5px + 1.2vmin);
+
+  .searchSelected {
+    cursor: pointer;
+  }
+}
+
 .micIcon {
   margin-right: 10px;
   position: relative !important;

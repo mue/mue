@@ -193,7 +193,8 @@
             "custom": "Aangepaste zoekmachine-url",
             "autocomplete": "Autocomplete",
             "autocomplete_provider": "Autocomplete Provider",
-            "voice_search": "Spraakgestuurd zoeken gebruiken"
+            "voice_search": "Spraakgestuurd zoeken gebruiken",
+            "dropdown": "Search dropdown"
           },
           "weather": {
             "title": "Weather",

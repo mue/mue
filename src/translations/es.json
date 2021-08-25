@@ -193,7 +193,8 @@
             "custom": "URL de búsqueda personalizada",
             "autocomplete": "Autocompletado",
             "autocomplete_provider": "Proveedor del autocompletado",
-            "voice_search": "Búsqueda por voz"
+            "voice_search": "Búsqueda por voz",
+            "dropdown": "Search dropdown"
           },
           "weather": {
             "title": "Clima",

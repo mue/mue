@@ -21,7 +21,8 @@ export default class Search extends PureComponent {
       autocompleteQuery: '',
       autocompleteCallback: '',
       microphone: null,
-      suggestions: []
+      suggestions: [],
+      searchDropdown: 'none'
     };
     this.language = window.language.widgets.search;
   }
@@ -112,7 +113,40 @@ export default class Search extends PureComponent {
       autocompleteURL: autocompleteURL,
       autocompleteQuery: autocompleteQuery,
       autocompleteCallback: autocompleteCallback,
-      microphone: microphone
+      microphone: microphone,
+      currentSearch: info.name
+    });
+  }
+
+  toggleDropdown() {
+    if (this.state.searchDropdown === 'none') {
+      this.setState({
+        searchDropdown: 'block'
+      });
+    } else {
+      this.setState({
+        searchDropdown: 'none'
+      });
+    }
+  }
+
+  setSearch(name) {
+    let url;
+    let query = 'q';
+    const info = searchEngines.find((i) => i.name === name);
+
+    if (info !== undefined) {
+      url = info.url;
+      if (info.query) {
+        query = info.query;
+      }
+    }
+
+    this.setState({
+      url: url,
+      query: query,
+      currentSearch: name,
+      searchDropdown: 'none'
     });
   }
 
@@ -133,6 +167,23 @@ export default class Search extends PureComponent {
   render() {
     return (
       <form onSubmit={this.searchButton} className='searchBar'>
+        {localStorage.getItem('searchDropdown') === 'true' ? 
+        <div className='searchDropdown'>
+          <span className='searchSelected' onClick={() => this.toggleDropdown()}>{this.state.currentSearch}</span>
+          <div className='searchOptions' style={{ display: this.state.searchDropdown }}>
+            {searchEngines.map((engine) => {
+              if (engine.name === this.state.currentSearch) {
+                return null;
+              }
+              return (
+                <>
+                  <span className='searchSelected' onClick={() => this.setSearch(engine.name)}>{engine.name}</span>
+                  <br/>
+                </>
+              );
+            })}
+          </div>
+        </div> : null}
         {this.state.microphone}
         <SearchIcon onClick={this.searchButton}/>
         <AutocompleteInput placeholder={this.language} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>

@@ -193,7 +193,8 @@
             "custom": "Пользовательский поисковый движок",
             "autocomplete": "Autocomplete",
             "autocomplete_provider": "Autocomplete Provider",
-            "voice_search": "Поиск голосом"
+            "voice_search": "Поиск голосом",
+            "dropdown": "Search dropdown"
           },
           "weather": {
             "title": "Weather",
