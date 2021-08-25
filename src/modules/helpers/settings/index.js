@@ -64,18 +64,22 @@ export function loadSettings(hotreload) {
   }
 
   if (localStorage.getItem('textBorder') === 'true') {
-    const elements = ['greeting', 'clock', 'quote', 'quoteauthor'];
+    const elements = ['greeting', 'clock', 'quote', 'quoteauthor', 'date'];
     elements.forEach((element) => {
       try {
-        document.querySelector('.' + element).classList.add('textBorder')
-      } catch (e) {}
+        document.querySelector('.' + element).classList.add('textBorder');
+      } catch (e) {
+        // Disregard exception 
+      }
     });
   } else {
-    const elements = ['greeting', 'clock', 'quote', 'quoteauthor'];
+    const elements = ['greeting', 'clock', 'quote', 'quoteauthor', 'date'];
     elements.forEach((element) => {
       try {
-        document.querySelector('.' + element).classList.remove('textBorder')
-      } catch (e) {}
+        document.querySelector('.' + element).classList.remove('textBorder');
+      } catch (e) {
+        // Disregard exception 
+      }
     });
   }
 

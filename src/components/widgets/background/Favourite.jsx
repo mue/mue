@@ -56,16 +56,11 @@ export default class Favourite extends PureComponent {
       return null;
     }
 
-    const favourite = <Tooltip title={window.language.modals.main.settings.sections.background.buttons.favourite}>{this.state.favourited}</Tooltip>;
-
-    if (window.keybinds.favouriteBackground && window.keybinds.favouriteBackground !== '') {
-      return (
-        <Hotkeys keyName={window.keybinds.favouriteBackground} onKeyDown={() => this.favourite()}>
-          {favourite}
-        </Hotkeys>
-      );
-    } else {
-      return favourite;
-    }
+    return (
+      <Tooltip title={window.language.modals.main.settings.sections.background.buttons.favourite}>
+        {this.state.favourited}
+        {window.keybinds.favouriteBackground && window.keybinds.favouriteBackground !== '' ? <Hotkeys keyName={window.keybinds.favouriteBackground} onKeyDown={() => this.favourite()} /> : null}
+      </Tooltip>
+    );
   }
 }

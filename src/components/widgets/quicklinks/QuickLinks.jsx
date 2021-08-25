@@ -1,5 +1,6 @@
 import { PureComponent } from 'react';
 import { TextareaAutosize } from '@material-ui/core';
+import Hotkeys from 'react-hot-keys';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
 
@@ -178,6 +179,7 @@ export default class QuickLinks extends PureComponent {
             <button className='pinNote' onClick={this.addLink}>{this.language.add}</button>
           </div>
         </span>
+        {window.keybinds.toggleQuicklinks && window.keybinds.toggleQuicklinks !== '' ? <Hotkeys keyName={window.keybinds.toggleQuicklinks} onKeyDown={this.toggleAdd} /> : null}
       </div>
     );
   }

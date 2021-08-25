@@ -232,7 +232,6 @@
               "light": "Light",
               "dark": "Dark"
             },
-            "animations": "Animasjoner",
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
@@ -262,6 +261,8 @@
             },
             "accessibility": {
               "title": "Accessibility",
+              "animations": "Animasjoner",
+              "text_shadow": "Widget text shadow",
               "widget_zoom": "Widget zoom",
               "toast_duration": "Toast duration",
               "milliseconds": "milliseconds"
@@ -303,6 +304,28 @@
               "addons_installed": "Add-ons installed"
             },
             "usage": "Usage Stats"
+          },
+          "keybinds": {
+            "title": "Keybinds",
+            "recording": "Recording...",
+            "background": {
+              "favourite": "Favourite background",
+              "maximise": "Maximise background",
+              "download": "Download background",
+              "show_info": "Show background information"
+            },
+            "quote": {
+              "favourite": "Favourite quote",
+              "copy": "Copy quote",
+              "tweet": "Tweet quote"
+            },
+            "notes": {
+              "pin": "Pin notes",
+              "copy": "Copy notes"
+            },
+            "search": "Focus search",
+            "quicklinks": "Toggle add quick link",
+            "modal": "Toggle modal"
           },
           "experimental": {
             "title": "Eksperimental",

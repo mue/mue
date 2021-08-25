@@ -1,6 +1,7 @@
 import { PureComponent } from 'react';
 import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@material-ui/icons';
 import { toast } from 'react-toastify';
+import Hotkeys from 'react-hot-keys';
 
 import Interval from '../../../modules/helpers/interval';
 import EventBus from '../../../modules/helpers/eventbus';
@@ -259,6 +260,9 @@ export default class Quote extends PureComponent {
           <br/>
           {this.state.copy} {this.state.tweet} {this.state.favourited}
         </h1>
+        {window.keybinds.favouriteQuote && window.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={window.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null}
+        {window.keybinds.tweetQuote && window.keybinds.tweetQuote !== '' ? <Hotkeys keyName={window.keybinds.tweetQuote} onKeyDown={() => this.tweetQuote()} /> : null}
+        {window.keybinds.copyQuote && window.keybinds.copyQuote !== '' ? <Hotkeys keyName={window.keybinds.copyQuote} onKeyDown={() => this.copyQuote()} /> : null}
       </div>
     );
   }

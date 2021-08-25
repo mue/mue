@@ -1,5 +1,6 @@
 import { PureComponent, Suspense, lazy } from 'react';
 import Modal from 'react-modal';
+import Hotkeys from 'react-hot-keys';
 
 import Main from './main/Main';
 import Feedback from './feedback/Feedback';
@@ -69,6 +70,7 @@ export default class Modals extends PureComponent {
             <Feedback modalClose={() => this.toggleModal('feedbackModal', false)}/>
           </Modal>
         </Suspense>
+        {window.keybinds.toggleModal && window.keybinds.toggleModal !== '' ? <Hotkeys keyName={window.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null} 
       </>
     );
   }

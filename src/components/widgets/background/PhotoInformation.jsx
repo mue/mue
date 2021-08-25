@@ -1,5 +1,6 @@
 import { useState, Fragment } from 'react';
 import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@material-ui/icons';
+import Hotkeys from 'react-hot-keys';
 
 const toDataURL = async (url) => {
   const res = await fetch(url);
@@ -69,6 +70,24 @@ export default function PhotoInformation(props) {
     );
   }
 
+  const downloadEnabled = (localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL;
+  const downloadBackground = () => { 
+    if (downloadEnabled) {
+      downloadImage(props.info);
+    }
+  };
+
+  const showBackgroundInformation = () => {
+    const element = document.querySelector('.infoCard');
+    if (element) {
+      if (element.style.display === 'none' || element.style.display === '') {
+        element.style.display = 'block';
+      } else {
+        element.style.display = 'none';
+      }
+    }
+  }
+
   return (
     <div className='photoInformation'>
       <h1>{photo} <span id='credit'>{credit}</span></h1>
@@ -90,13 +109,15 @@ export default function PhotoInformation(props) {
         <span id='infoResolution'>{width}x{height}</span>
         <Photographer/>
         <span>{photographer}</span>
-        {(localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL ? 
+        {downloadEnabled ? 
           <>
             <Download/>
             <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
           </> 
         : null}
       </div>
+      {window.keybinds.downloadBackground && window.keybinds.downloadBackground !== '' ? <Hotkeys keyName={window.keybinds.downloadBackground} onKeyDown={() => downloadBackground()} /> : null}
+      {window.keybinds.showBackgroundInformation && window.keybinds.showBackgroundInformation !== '' ? <Hotkeys keyName={window.keybinds.showBackgroundInformation} onKeyDown={() => showBackgroundInformation()} /> : null}
     </div>
   );
 }

@@ -50,8 +50,8 @@ export default class Notes extends PureComponent {
   }
 
   render() {
-    const notes = (
-        <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility }}>
+    return (
+      <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility }}>
         <div className='topbarnotes'>
           <NotesRounded/>
           <h3>{this.language.title}</h3>
@@ -59,17 +59,9 @@ export default class Notes extends PureComponent {
         <TextareaAutosize rowsmax={50} placeholder={this.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
         <button onClick={() => this.pin()} className='pinNote'><PushPin/></button>
         <button onClick={() => this.copy()} className='copyNote'><FileCopyRounded/></button>
+        {window.keybinds.pinNotes && window.keybinds.pinNotes !== '' ? <Hotkeys keyName={window.keybinds.pinNotes} onKeyDown={() => this.pin()}/> : null}
+        {window.keybinds.copyNotes && window.keybinds.copyNotes !== '' ? <Hotkeys keyName={window.keybinds.copyNotes} onKeyDown={() => this.copy()}/> : null}
       </span>
     );
-    
-    if (window.keybinds.pinNotes && window.keybinds.pinNotes !== '') {
-      return (
-        <Hotkeys keyName={window.keybinds.pinNotes} onKeyDown={() => this.pin()}>
-          {notes}
-        </Hotkeys>
-      );
-    } else {
-      return notes;
-    }
   }
 }

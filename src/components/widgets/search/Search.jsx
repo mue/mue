@@ -1,5 +1,6 @@
 import { PureComponent } from 'react';
 import { Search as SearchIcon, Mic } from '@material-ui/icons';
+import Hotkeys from 'react-hot-keys';
 
 import AutocompleteInput from '../../helpers/autocomplete/Autocomplete';
 
@@ -135,6 +136,7 @@ export default class Search extends PureComponent {
         {this.state.microphone}
         <SearchIcon onClick={this.searchButton}/>
         <AutocompleteInput placeholder={this.language} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
+        {window.keybinds.focusSearch && window.keybinds.focusSearch !== '' ? <Hotkeys keyName={window.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null}
       </form>
     );
   }

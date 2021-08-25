@@ -55,8 +55,8 @@ export default function AppearanceSettings() {
       </Dropdown>
 
       <h3>{appearance.accessibility.title}</h3>
-      <Checkbox text='Widget Text Border' name='textBorder' category='other'/>
-      <Checkbox text='Animations' name='animations' category='other'/>
+      <Checkbox text={appearance.accessibility.text_shadow} name='textBorder' category='other'/>
+      <Checkbox text={appearance.accessibility.animations} name='animations' category='other'/>
       <Slider title={appearance.accessibility.toast_duration} name='toastDisplayTime' default='2500' step='100' min='500' max='5000' toast={true} display={' ' + appearance.accessibility.milliseconds} />
     </>
   );

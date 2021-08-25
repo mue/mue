@@ -55,20 +55,11 @@ export default class Maximise extends PureComponent {
   }
 
   render() {
-    const maximise = (
+    return (
       <Tooltip title={window.language.modals.main.settings.sections.background.buttons.view}>
         <Fullscreen onClick={this.maximise} className='topicons' />
+        {window.keybinds.maximiseBackground && window.keybinds.maximiseBackground !== '' ? <Hotkeys keyName={window.keybinds.maximiseBackground} onKeyDown={this.maximise} /> : null}
       </Tooltip>
     );
-
-    if (window.keybinds.maximiseBackground && window.keybinds.maximiseBackground !== '') {
-      return (
-        <Hotkeys keyName={window.keybinds.maximiseBackground} onKeyDown={() => this.maximise()}>
-          {maximise}
-        </Hotkeys>
-      );
-    } else {
-      return maximise;
-    }
   }
 }

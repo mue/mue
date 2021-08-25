@@ -37,7 +37,12 @@ $modal-link-dark: map-get($modal, 'modal-link-dark');
 }
 
 .no-animations {
-  .ReactModal__Content, button, svg, input[type=text], .MuiSwitch-switchBase {
+
+  .ReactModal__Content,
+  button,
+  svg,
+  input[type=text],
+  .MuiSwitch-switchBase {
     transition: none !important;
   }
 }

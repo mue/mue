@@ -232,7 +232,6 @@
               "light": "日间主题",
               "dark": "夜间主题"
             },
-            "animations": "动画",
             "navbar": {
               "title": "右上方功能键",
               "notes": "备忘录",
@@ -262,6 +261,8 @@
             },
             "accessibility": {
               "title": "无障碍设定",
+              "animations": "动画",
+              "text_shadow": "Widget text shadow",
               "widget_zoom": "小部件缩放",
               "toast_duration": "窗口弹出时间长度",
               "milliseconds": "毫秒"
@@ -303,6 +304,28 @@
               "addons_installed": "Add-ons installed"
             },
             "usage": "Usage Stats"
+          },
+          "keybinds": {
+            "title": "Keybinds",
+            "recording": "Recording...",
+            "background": {
+              "favourite": "Favourite background",
+              "maximise": "Maximise background",
+              "download": "Download background",
+              "show_info": "Show background information"
+            },
+            "quote": {
+              "favourite": "Favourite quote",
+              "copy": "Copy quote",
+              "tweet": "Tweet quote"
+            },
+            "notes": {
+              "pin": "Pin notes",
+              "copy": "Copy notes"
+            },
+            "search": "Focus search",
+            "quicklinks": "Toggle add quick link",
+            "modal": "Toggle modal"
           },
           "experimental": {
             "title": "实验性功能",
