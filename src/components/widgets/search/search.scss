@@ -56,6 +56,14 @@
   .searchSelected {
     cursor: pointer;
   }
+
+  .searchDropdownList {
+    cursor: pointer;
+    
+    &:hover {
+      color: rgb(211, 211, 211);
+    }
+  }
 }
 
 .micIcon {

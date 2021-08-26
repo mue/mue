@@ -45,7 +45,7 @@ export default class KeybindSettings extends PureComponent {
   }
 
   reset(type) {
-    let keybinds = this.state.keybinds;
+    const keybinds = this.state.keybinds;
     keybinds[type] = '';
     localStorage.setItem('keybinds', JSON.stringify(keybinds));
     this.setState({

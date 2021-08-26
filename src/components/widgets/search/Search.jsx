@@ -130,7 +130,7 @@ export default class Search extends PureComponent {
     }
   }
 
-  setSearch(name) {
+  setSearch(name, custom) {
     let url;
     let query = 'q';
     const info = searchEngines.find((i) => i.name === name);
@@ -140,6 +140,10 @@ export default class Search extends PureComponent {
       if (info.query) {
         query = info.query;
       }
+    }
+
+    if (custom) {
+      url = localStorage.getItem('customSearchEngine');
     }
 
     this.setState({
@@ -165,23 +169,27 @@ export default class Search extends PureComponent {
   }
 
   render() {
+    const customText = window.language.modals.main.settings.sections.search.custom.split(' ')[0];
+
     return (
       <form onSubmit={this.searchButton} className='searchBar'>
         {localStorage.getItem('searchDropdown') === 'true' ? 
         <div className='searchDropdown'>
           <span className='searchSelected' onClick={() => this.toggleDropdown()}>{this.state.currentSearch}</span>
-          <div className='searchOptions' style={{ display: this.state.searchDropdown }}>
+          <div style={{ display: this.state.searchDropdown }}>
             {searchEngines.map((engine) => {
               if (engine.name === this.state.currentSearch) {
                 return null;
               }
+
               return (
                 <>
-                  <span className='searchSelected' onClick={() => this.setSearch(engine.name)}>{engine.name}</span>
+                  <span className='searchDropdownList' onClick={() => this.setSearch(engine.name)}>{engine.name}</span>
                   <br/>
                 </>
               );
             })}
+            {this.state.currentSearch !== customText ? <span className='searchDropdownList' onClick={() => this.setSearch(customText, 'custom')}>{customText}</span> : null}
           </div>
         </div> : null}
         {this.state.microphone}
