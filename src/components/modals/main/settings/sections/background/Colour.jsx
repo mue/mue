@@ -67,7 +67,7 @@ export default class ColourSettings extends PureComponent {
   }
 
   componentDidUpdate() {
-    localStorage.setItem('customBackgroundColour', document.getElementById('customBackgroundHex').value);
+    localStorage.setItem('customBackgroundColour', this.currentGradientSettings());
   }
 
   onGradientChange = (event, index) => {
@@ -83,11 +83,7 @@ export default class ColourSettings extends PureComponent {
       return newState;
     });
 
-    const reminderInfo = document.querySelector('.reminder-info');
-    if (reminderInfo.style.display !== 'block') {
-      reminderInfo.style.display = 'block';
-      localStorage.setItem('showReminder', true);
-    }
+    this.showReminder();
   }
 
   addColour = () => {
@@ -133,12 +129,16 @@ export default class ColourSettings extends PureComponent {
       }
     });
 
+    this.showReminder();
+  };
+
+  showReminder() {
     const reminderInfo = document.querySelector('.reminder-info');
     if (reminderInfo.style.display !== 'block') {
       reminderInfo.style.display = 'block';
       localStorage.setItem('showReminder', true);
     }
-  };
+  }
 
   render() {
     const { background } = this.language.sections;
@@ -183,7 +183,6 @@ export default class ColourSettings extends PureComponent {
     return (
       <>
         <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetColour()}>{this.language.buttons.reset}</span></p>
-        <input id='customBackgroundHex' type='hidden' value={this.currentGradientSettings()} />
         {colourSettings}
       </>
     );

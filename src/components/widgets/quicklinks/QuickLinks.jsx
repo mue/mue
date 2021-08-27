@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 import { TextareaAutosize } from '@material-ui/core';
 import Hotkeys from 'react-hot-keys';
 
@@ -20,6 +20,7 @@ export default class QuickLinks extends PureComponent {
       urlError: ''
     };
     this.language = window.language.widgets.quicklinks;
+    this.quicklinksContainer = createRef();
   }
 
   deleteLink(key, event) {
@@ -81,8 +82,7 @@ export default class QuickLinks extends PureComponent {
     this.toggleAdd();
 
     // make sure image is correct size
-    const element = document.querySelector('.quicklinks-container');
-    this.setZoom(element);
+    this.setZoom(this.quicklinksContainer.current);
   }
 
   toggleAdd = () => {
@@ -103,14 +103,12 @@ export default class QuickLinks extends PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'quicklinks') {
-        const element = document.querySelector('.quicklinks-container');
-
         if (localStorage.getItem('quicklinksenabled') === 'false') {
-          return element.style.display = 'none';
+          return this.quicklinksContainer.current.style.display = 'none';
         }
 
-        element.style.display = 'block';
-        this.setZoom(element);
+        this.quicklinksContainer.current.style.display = 'block';
+        this.setZoom(this.quicklinksContainer.current);
 
         this.setState({
           items: JSON.parse(localStorage.getItem('quicklinks'))
@@ -118,17 +116,17 @@ export default class QuickLinks extends PureComponent {
       }
     });
 
-    // allows you to add a link by pressing enter
-    document.querySelector('.topbarquicklinks').onkeydown = (e) => {
-      e = e || window.event;
-      const code = e.which || e.keyCode;
-      if (code === 13 && this.state.showAddLink === 'visible') {
-        this.addLink();
-        e.preventDefault();
-      }
-    };
+    this.setZoom(this.quicklinksContainer.current);
+  }
 
-    this.setZoom(document.querySelector('.quicklinks-container'));
+  // allows you to add a link by pressing enter
+  topbarEnter = (e) => {
+    e = e || window.event;
+    const code = e.which || e.keyCode;
+    if (code === 13 && this.state.showAddLink === 'visible') {
+      this.addLink();
+      e.preventDefault();
+    }
   }
 
   componentWillUnmount() {
@@ -164,13 +162,13 @@ export default class QuickLinks extends PureComponent {
     const marginTop = (this.state.items.length > 0) ? '9vh' : '4vh';
 
     return (
-      <div className='quicklinks-container'>
+      <div className='quicklinks-container' ref={this.quicklinksContainer}>
         {this.state.items.map((item) => (
           quickLink(item)
         ))}
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
         <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink, marginTop }}>
-          <div className='topbarquicklinks'>
+          <div className='topbarquicklinks' onKeyDown={this.topbarEnter}>
             <h4>{this.language.new}</h4>
             <TextareaAutosize rowsmax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
             <p>{this.state.nameError}</p>

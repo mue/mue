@@ -18,13 +18,17 @@ export default class TimeSettings extends PureComponent {
     localStorage.setItem('location', this.state.location);
   }
 
+  showReminder() {
+    document.querySelector('.reminder-info').style.display = 'block';
+    localStorage.setItem('showReminder', true);
+  }
+
   changeLocation(e) {
     this.setState({ 
       location: e.target.value 
     });
 
-    document.querySelector('.reminder-info').style.display = 'block';
-    localStorage.setItem('showReminder', true);
+    this.showReminder();
   }
 
   getAuto() {
@@ -34,8 +38,7 @@ export default class TimeSettings extends PureComponent {
         location: data[0].name
       });
 
-      document.querySelector('.reminder-info').style.display = 'block';
-      localStorage.setItem('showReminder', true);
+      this.showReminder();
     }, (error) => {
       // firefox requires this 2nd function
       console.log(error);

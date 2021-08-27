@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@material-ui/icons';
 import { toast } from 'react-toastify';
 import Hotkeys from 'react-hot-keys';
@@ -28,6 +28,9 @@ export default class Quote extends PureComponent {
       type: localStorage.getItem('quoteType') || 'api'
     };
     this.language = window.language.widgets.quote;
+    this.quote = createRef();
+    this.quotediv = createRef();
+    this.quoteauthor = createRef();
   }
 
   useFavourite() {
@@ -197,20 +200,18 @@ export default class Quote extends PureComponent {
 
   setZoom() {
     const zoomQuote = Number((localStorage.getItem('zoomQuote') || 100) / 100);
-    document.querySelector('.quote').style.fontSize = `${0.8 * zoomQuote}em`;
-    document.querySelector('.quoteauthor').style.fontSize = `${0.9 * zoomQuote}em`;
+    this.quote.current.style.fontSize = `${0.8 * zoomQuote}em`;
+    this.quoteauthor.current.style.fontSize = `${0.9 * zoomQuote}em`;
   }
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'quote') {
-        const element = document.querySelector('.quotediv');
-
         if (localStorage.getItem('quote') === 'false') {
-          return element.style.display = 'none';
+          return this.quotediv.current.style.display = 'none';
         }
 
-        element.style.display = 'block';
+        this.quotediv.current.style.display = 'block';
         this.init();
 
         // buttons hot reload
@@ -253,9 +254,9 @@ export default class Quote extends PureComponent {
 
   render() {
     return (
-      <div className='quotediv'>
-        <h1 className='quote'>{this.state.quote}</h1>
-        <h1 className='quoteauthor'>
+      <div className='quotediv' ref={this.quotediv}>
+        <h1 className='quote' ref={this.quote}>{this.state.quote}</h1>
+        <h1 className='quoteauthor' ref={this.quoteauthor}>
           <a href={this.state.authorlink} className='quoteauthorlink' target='_blank' rel='noopener noreferrer'>{this.state.author}</a>
           <br/>
           {this.state.copy} {this.state.tweet} {this.state.favourited}

@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 import { WifiOff } from '@material-ui/icons';
 import Modal from 'react-modal';
 
@@ -13,7 +13,9 @@ export default class Changelog extends PureComponent {
       lightboxImg: null
     };
     this.language = window.language.modals.update;
+    this.offlineMode = (localStorage.getItem('offlineMode') === 'true');
     this.controller = new AbortController();
+    this.changelog = createRef();
   }
 
   async getUpdate() {
@@ -39,9 +41,8 @@ export default class Changelog extends PureComponent {
     });
 
     // lightbox etc
-    const content = document.querySelector('.tab-content');
-    const images = content.getElementsByTagName('img');
-    const links = content.getElementsByTagName('a');
+    const images = this.changelog.current.getElementsByTagName('img');
+    const links = this.changelog.current.getElementsByTagName('a');
 
     for (const img of images) {
       img.draggable = false;
@@ -53,6 +54,7 @@ export default class Changelog extends PureComponent {
       };
     }
 
+    // open in new tab
     for (let link = 0; link < links.length; link++) {
       links[link].target = '_blank';
       links[link].rel = 'noopener noreferrer';
@@ -60,7 +62,7 @@ export default class Changelog extends PureComponent {
   }
   
   componentDidMount() {
-    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+    if (navigator.onLine === false || this.offlineMode) {
       return;
     }
   
@@ -83,7 +85,7 @@ export default class Changelog extends PureComponent {
       );
     };
 
-    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+    if (navigator.onLine === false || this.offlineMode) {
       const language = window.language.modals.main.marketplace;
     
       return errorMessage(<>
@@ -98,9 +100,9 @@ export default class Changelog extends PureComponent {
     }
 
     return (
-      <div className='changelogtab'>
-        <h1 style={{ marginBottom: '-10px' }}>{this.state.title}</h1>
-        <h5 style={{ lineHeight: '0px' }}>{this.state.author} • {this.state.date}</h5>
+      <div className='changelogtab' ref={this.changelog}>
+        <h1>{this.state.title}</h1>
+        <h5>{this.state.author} • {this.state.date}</h5>
         {this.state.image ? <img draggable='false' src={this.state.image} alt={window.language.modals.update.title} className='updateimage'/> : null}
         <div className='updatechangelog' dangerouslySetInnerHTML={{ __html: this.state.html }}/>
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>

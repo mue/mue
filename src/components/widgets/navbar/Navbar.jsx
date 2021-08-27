@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 import { RefreshRounded, SettingsRounded, AssignmentRounded as NotesRounded, SmsFailed as Report } from '@material-ui/icons';
 
 import Notes from './Notes';
@@ -11,12 +11,14 @@ import EventBus from '../../../modules/helpers/eventbus';
 import './scss/index.scss';
 
 export default class Navbar extends PureComponent {
+  constructor() {
+    super();
+    this.navbarContainer = createRef();
+  }
+
   setZoom() {
     const zoomNavbar = Number((localStorage.getItem('zoomNavbar') || 100) / 100);
-    const navbarIcons = document.querySelectorAll('.navbar-container');
-    for (let i = 0; i < navbarIcons.length; i++) {
-      navbarIcons[i].style.fontSize = `${zoomNavbar}em`;
-    }
+    this.navbarContainer.current.style.fontSize = `${zoomNavbar}em`;
   }
 
   componentDidMount() {
@@ -34,7 +36,7 @@ export default class Navbar extends PureComponent {
     const backgroundEnabled = (localStorage.getItem('background') === 'true');
   
     return (
-      <div className='navbar-container'>
+      <div className='navbar-container' ref={this.navbarContainer}>
         {(localStorage.getItem('view') === 'true' && backgroundEnabled) ? <Maximise/> : null}
         {(localStorage.getItem('favouriteEnabled') === 'true' && backgroundEnabled) ? <Favourite/> : null}
     

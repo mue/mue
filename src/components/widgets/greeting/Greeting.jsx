@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 
 import { nth, convertTimezone } from '../../../modules/helpers/date';
 import EventBus from '../../../modules/helpers/eventbus';
@@ -13,6 +13,7 @@ export default class Greeting extends PureComponent {
     };
     this.timer = undefined;
     this.language = window.language.widgets.greeting;
+    this.greeting = createRef();
   }
 
   doEvents(time, message) {
@@ -114,23 +115,21 @@ export default class Greeting extends PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'greeting' || data === 'timezone') {
-        const element = document.querySelector('.greeting');
-
         if (localStorage.getItem('greeting') === 'false') {
-          return element.style.display = 'none';
+          return this.greeting.current.style.display = 'none';
         }
 
         this.timer = null;
         this.getGreeting(0);
 
-        element.style.display = 'block';
-        element.style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
+        this.greeting.current.style.display = 'block';
+        this.greeting.current.style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
       }
     });
 
     // this comment can apply to all widget zoom features apart from the general one in the Accessibility section
     // in a nutshell: 1.6 is the current font size and we do "localstorage || 100" so we don't have to try that 4.0 -> 5.0 thing again
-    document.querySelector('.greeting').style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
+    this.greeting.current.style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
 
     this.getGreeting(0);
   }
@@ -140,8 +139,10 @@ export default class Greeting extends PureComponent {
   }
 
   render() {
-    return <h1 className='greeting'>
-      {this.state.greeting}
-    </h1>;
+    return (
+      <h1 className='greeting' ref={this.greeting}>
+        {this.state.greeting}
+      </h1>
+    );
   }
 }

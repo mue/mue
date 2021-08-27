@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 
 import EventBus from '../../../../modules/helpers/eventbus';
 
@@ -9,6 +9,7 @@ export default class Dropdown extends PureComponent {
       value: localStorage.getItem(this.props.name) || '',
       title: ''
     };
+    this.dropdown = createRef();
   }
 
   getLabel() {
@@ -47,9 +48,8 @@ export default class Dropdown extends PureComponent {
 
   // todo: find a better way to do this
   componentDidMount() {
-    const element = document.getElementById(this.props.name);
     this.setState({
-      title: element[element.selectedIndex].text
+      title: this.dropdown.current[this.dropdown.current.selectedIndex].text
     });
   }
 
@@ -57,7 +57,7 @@ export default class Dropdown extends PureComponent {
     return (
       <>
         {this.getLabel()}
-        <select id={this.props.name} value={this.state.value} onChange={this.onChange} style={{ width: `${(8*this.state.title.length) + 50}px` }}>
+        <select id={this.props.name} ref={this.dropdown} value={this.state.value} onChange={this.onChange} style={{ width: `${(8*this.state.title.length) + 50}px` }}>
           {this.props.children}
         </select>
       </>

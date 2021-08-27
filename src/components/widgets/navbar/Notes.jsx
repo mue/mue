@@ -9,7 +9,8 @@ export default class Notes extends PureComponent {
     super();
     this.state = {
       notes: localStorage.getItem('notes') || '',
-      visibility: (localStorage.getItem('notesPinned') === 'true') ? 'visible' : 'hidden'
+      visibility: (localStorage.getItem('notesPinned') === 'true') ? 'visible' : 'hidden',
+      marginLeft: (localStorage.getItem('refresh') === 'false') ? '-200px' : '0px'
     };
     this.language = window.language.widgets.navbar.notes;
   }
@@ -43,15 +44,9 @@ export default class Notes extends PureComponent {
     toast(window.language.toasts.notes);
   }
 
-  componentDidMount() {
-    if (localStorage.getItem('refresh') === 'false') {
-      document.getElementById('noteContainer').style.marginLeft = '-200px';
-    }
-  }
-
   render() {
     return (
-      <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility }}>
+      <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility, marginleft: this.state.marginLeft }}>
         <div className='topbarnotes'>
           <NotesRounded/>
           <h3>{this.language.title}</h3>

@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 
 import { nth, convertTimezone } from '../../../modules/helpers/date';
 import EventBus from '../../../modules/helpers/eventbus';
@@ -12,6 +12,7 @@ export default class DateWidget extends PureComponent {
       date: '',
       weekNumber: null
     };
+    this.date = createRef();
   }
 
   getWeekNumber(date) {
@@ -110,19 +111,18 @@ export default class DateWidget extends PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'date' || data === 'timezone') {
-        const element = document.querySelector('.date');
 
         if (localStorage.getItem('date') === 'false') {
-          return element.style.display = 'none';
+          return this.date.current.style.display = 'none';
         }
 
-        element.style.display = 'block';
-        element.style.fontSize = `${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`;
+        this.date.current.style.display = 'block';
+        this.date.current.style.fontSize = `${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`;
         this.getDate();
       }
     });
 
-    document.querySelector('.date').style.fontSize = `${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`;
+    this.date.current.style.fontSize = `${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`;
 
     this.getDate();
   }
@@ -132,6 +132,12 @@ export default class DateWidget extends PureComponent {
   }
 
   render() {
-    return <span className='date'>{this.state.date} <br/> {this.state.weekNumber}</span>;
+    return (
+      <span className='date' ref={this.date}>
+        {this.state.date}
+        <br/> 
+        {this.state.weekNumber}
+      </span>
+    );
   }
 }

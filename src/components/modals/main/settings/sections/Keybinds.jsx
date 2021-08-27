@@ -11,6 +11,11 @@ export default class KeybindSettings extends PureComponent {
     this.language = window.language.modals.main.settings;
   }
 
+  showReminder() {
+    document.querySelector('.reminder-info').style.display = 'none';
+    return localStorage.setItem('showReminder', false);
+  }
+
   listen(type) {
     const currentKeybinds = this.state.keybinds;
     currentKeybinds[type] = this.language.sections.keybinds.recording;
@@ -40,8 +45,7 @@ export default class KeybindSettings extends PureComponent {
 
     document.removeEventListener('keyup', keyup);
 
-    document.querySelector('.reminder-info').style.display = 'block';
-    return localStorage.setItem('showReminder', true);
+    this.showReminder();
   }
 
   reset(type) {
@@ -52,8 +56,7 @@ export default class KeybindSettings extends PureComponent {
       keybinds: JSON.parse(localStorage.getItem('keybinds')) || {}
     });
 
-    document.querySelector('.reminder-info').style.display = 'block';
-    return localStorage.setItem('showReminder', true);
+    this.showReminder();
   }
 
   render() {
