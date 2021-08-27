@@ -25,7 +25,7 @@ export default class Dropdown extends PureComponent {
     window.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
 
     this.setState({
-      value: value,
+      value,
       title: e.target[e.target.selectedIndex].text
     });
   

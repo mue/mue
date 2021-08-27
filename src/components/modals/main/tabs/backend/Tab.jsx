@@ -42,12 +42,10 @@ function Tab(props) {
 
   let icon, divider;
   switch (props.label) {
-    // Navbar
     case navbar.settings: icon = <Settings/>; break;
     case navbar.addons: icon = <Addons/>; break;
     case navbar.marketplace: icon = <Marketplace/>; break;
 
-    // Settings
     case settings.time.title: icon = <Time/>; break;
     case settings.greeting.title: icon = <Greeting/>; break;
     case settings.quote.title: icon = <Quote/>; break;
@@ -59,18 +57,16 @@ function Tab(props) {
     case settings.order.title: icon = <Order/>; break;
     case settings.language.title: icon = <Language/>; divider = true; break;
     case settings.advanced.title: icon = <Advanced/>; break;
-    case 'Keybinds': icon = <Keybinds/>; break;
+    case settings.keybinds.title: icon = <Keybinds/>; break;
     case settings.stats.title: icon = <Stats/>; break;
     case settings.experimental.title: icon = <Experimental/>; divider = true; break;
     case settings.changelog: icon = <Changelog/>; break;
     case settings.about.title: icon = <About/>; break;
 
-    // Addons
     case addons.added: icon = <Added/>; break;
     case addons.sideload: icon = <Sideload/>; break;
     case addons.create.title: icon = <Create/>; break;
 
-    // Marketplace
     case marketplace.photo_packs: icon = <Background/>; break;
     case marketplace.quote_packs: icon = <Quote/>; break;
     case marketplace.preset_settings: icon = <Advanced/>; break;

@@ -32,7 +32,7 @@ export default class Changelog extends PureComponent {
 
     this.setState({
       title: data.title,
-      date: date,
+      date,
       image: data.featured_image || null,
       author: 'By ' + data.authors.join(', '),
       html: data.html

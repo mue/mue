@@ -47,17 +47,17 @@ export default class About extends PureComponent {
 
     const newVersion = versionData[0].tag_name;
 
-    let updateMsg = this.language.version.no_update;
+    let update = this.language.version.no_update;
     if (Number(window.constants.VERSION.replaceAll('.', '')) < Number(newVersion.replaceAll('.', ''))) {
-      updateMsg = `${this.language.version.update_available}: ${newVersion}`;
+      update = `${this.language.version.update_available}: ${newVersion}`;
     }
 
     this.setState({
       // exclude bots
       contributors: contributors.filter((contributor) => !contributor.login.includes('bot')),
-      sponsors: sponsors,
-      update: updateMsg,
-      other_contributors: other_contributors,
+      sponsors,
+      update,
+      other_contributors,
       photographers: photographers.sort().join(', '), 
       loading: null
     });

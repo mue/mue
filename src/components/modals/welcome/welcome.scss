@@ -77,7 +77,6 @@
   }
 }
 
-
 .themesToggleArea {
   .active {
     background: var(--tab-active) !important;
@@ -120,6 +119,30 @@
         display: block;
       }
     }
+  }
+}
+
+.upload {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 50px;
+  background: var(--sidebar);
+  color: var(--modal-text);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--tab-active);
+  }
+
+  svg {
+    font-size: 4em;
+  }
+
+  span {
+    font-size: 2em;
   }
 }
 

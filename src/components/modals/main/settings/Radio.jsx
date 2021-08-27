@@ -28,7 +28,7 @@ export default class Radio extends PureComponent {
     localStorage.setItem(this.props.name, value);
   
     this.setState({
-      value: value
+      value
     });
 
     window.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);

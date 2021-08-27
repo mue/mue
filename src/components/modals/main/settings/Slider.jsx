@@ -36,7 +36,7 @@ export default class Slider extends PureComponent {
   
     localStorage.setItem(this.props.name, value);
     this.setState({
-      value: value,
+      value,
       numberWidth: ((value.length + 1) * this.widthCalculation)
     });
 

@@ -35,13 +35,13 @@ export default function Settings() {
         <div label={sections.order.title} name='order'><Order/></div>
         <div label={sections.language.title} name='language'><Language/></div>
         <div label={sections.advanced.title} name='advanced'><Advanced/></div>
-        <div label='Keybinds' name='keybinds'><Keybinds/></div>
+        <div label={sections.keybinds.title} name='keybinds'><Keybinds/></div>
         <div label={sections.stats.title} name='stats'><Stats/></div>
         <div label={sections.experimental.title} name='experimental'><Experimental/></div>
         <div label={sections.changelog} name='changelog'><Changelog/></div>
         <div label={sections.about.title} name='about'><About/></div>
       </Tabs>
-      <div className='reminder-info' style={{ display: display }}>
+      <div className='reminder-info' style={{ display }}>
         <h1>{reminder.title}</h1>
         <p>{reminder.message}</p>
         <button className='pinNote' onClick={() => window.location.reload()}>{window.language.modals.main.error_boundary.refresh}</button>

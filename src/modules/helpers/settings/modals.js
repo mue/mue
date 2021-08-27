@@ -36,4 +36,4 @@ export function importSettings(e) {
 
   toast(window.language.toasts.imported);
   window.stats.postEvent('tab', 'Settings imported');
-};
+}

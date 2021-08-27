@@ -22,7 +22,7 @@ export default class Text extends PureComponent {
 
     localStorage.setItem(this.props.name, value);
     this.setState({
-      value: value
+      value
     });
 
     if (this.props.element) {

@@ -108,12 +108,12 @@ export default class Search extends PureComponent {
     }
 
     this.setState({
-      url: url,
-      query: query,
-      autocompleteURL: autocompleteURL,
-      autocompleteQuery: autocompleteQuery,
-      autocompleteCallback: autocompleteCallback,
-      microphone: microphone,
+      url,
+      query,
+      autocompleteURL,
+      autocompleteQuery,
+      autocompleteCallback,
+      microphone,
       currentSearch: info.name
     });
   }
@@ -147,8 +147,8 @@ export default class Search extends PureComponent {
     }
 
     this.setState({
-      url: url,
-      query: query,
+      url,
+      query,
       currentSearch: name,
       searchDropdown: 'none'
     });

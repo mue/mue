@@ -58,7 +58,7 @@ export default class Clock extends PureComponent {
             }
 
             this.setState({
-              time: time,
+              time,
               ampm: ''
             });
           } else {
@@ -78,7 +78,7 @@ export default class Clock extends PureComponent {
             }
 
             this.setState({
-              time: time,
+              time,
               ampm: now.getHours() > 11 ? 'PM' : 'AM'
             });
           }

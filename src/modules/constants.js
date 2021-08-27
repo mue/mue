@@ -26,9 +26,7 @@ export const COPYRIGHT_YEAR = '2018';
 export const COPYRIGHT_LICENSE = 'BSD-3 License';
 export const DONATE_USERNAME = 'davidjcralph'; // this only works if you use the same username for Patreon, GitHub and Ko-Fi
 
-// Offline images
 export const OFFLINE_IMAGES = 20;
 
-// Version
 export const BETA_VERSION = false;
 export const VERSION = '5.3.3'; 

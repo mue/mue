@@ -40,7 +40,7 @@ export function uninstall(type, name) {
     }
   }
   localStorage.setItem('installed', JSON.stringify(installed));
-};
+}
 
 export function install(type, input, sideload) {
   switch (type) {

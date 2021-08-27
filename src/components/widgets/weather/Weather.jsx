@@ -93,7 +93,7 @@ export default class Weather extends PureComponent {
 
     this.setState({
       icon: data.weather[0].icon,
-      temp_text: temp_text,
+      temp_text,
       weather: {
         temp: Math.round(temp),
         description: data.weather[0].description,

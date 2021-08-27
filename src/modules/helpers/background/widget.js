@@ -23,7 +23,6 @@ export function offlineBackground() {
   };
 
   localStorage.setItem('currentBackground', JSON.stringify(object));
-
   return object;
 }
 
@@ -36,4 +35,4 @@ export function gradientStyleBuilder({ type, angle, gradient }) {
     type: 'colour',
     style: `background:${gradient[0]?.colour};${grad}`
   };
-};
+}

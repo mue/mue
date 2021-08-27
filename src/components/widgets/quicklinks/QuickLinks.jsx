@@ -53,8 +53,8 @@ export default class QuickLinks extends PureComponent {
 
     if (nameError || urlError) {
       return this.setState({
-        nameError: nameError,
-        urlError: urlError
+        nameError,
+        urlError
       });
     }
 
@@ -169,7 +169,7 @@ export default class QuickLinks extends PureComponent {
           quickLink(item)
         ))}
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
-        <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink, marginTop: marginTop }}>
+        <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink, marginTop }}>
           <div className='topbarquicklinks'>
             <h4>{this.language.new}</h4>
             <TextareaAutosize rowsmax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />

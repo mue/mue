@@ -165,4 +165,4 @@ export function moveSettings() {
   Object.keys(settings).forEach((key) => {
     localStorage.setItem(key, settings[key]);
   });
-};
+}
