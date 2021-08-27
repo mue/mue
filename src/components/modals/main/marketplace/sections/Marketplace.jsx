@@ -175,7 +175,7 @@ export default class Marketplace extends PureComponent {
       const openFeatured = () => {
         window.stats.postEvent('marketplace', 'Featured clicked');
         window.open(this.state.featured.buttonLink);
-      }
+      };
 
       return (
         <div className='featured' style={{ backgroundColor: this.state.featured.colour }}>

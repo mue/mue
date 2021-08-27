@@ -86,7 +86,7 @@ export default function PhotoInformation(props) {
         element.style.display = 'none';
       }
     }
-  }
+  };
 
   return (
     <div className='photoInformation'>

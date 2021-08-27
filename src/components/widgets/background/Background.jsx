@@ -91,7 +91,7 @@ export default class Background extends PureComponent {
           camera: favourited.camera
         }
       });
-    }
+    };
 
     switch (localStorage.getItem('backgroundType')) {
       case 'api':

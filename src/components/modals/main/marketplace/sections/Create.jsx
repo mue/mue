@@ -133,7 +133,7 @@ export default class Create extends PureComponent {
           type: this.state.addonMetadata.type
         }
       });
-    }
+    };
 
     const writeDescription = ( 
       <>

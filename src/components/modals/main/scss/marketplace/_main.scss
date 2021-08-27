@@ -177,7 +177,9 @@ p.description {
   }
 }
 
-#item>img, .updateimage, .updatechangelog>p>img {
+#item>img,
+.updateimage,
+.updatechangelog>p>img {
   border-radius: 12px;
   height: 200px;
   width: auto;

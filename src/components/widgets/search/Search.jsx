@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, Fragment } from 'react';
 import { Search as SearchIcon, Mic } from '@material-ui/icons';
 import Hotkeys from 'react-hot-keys';
 
@@ -183,10 +183,10 @@ export default class Search extends PureComponent {
               }
 
               return (
-                <>
+                <Fragment key={engine.name}>
                   <span className='searchDropdownList' onClick={() => this.setSearch(engine.name)}>{engine.name}</span>
                   <br/>
-                </>
+                </Fragment>
               );
             })}
             {this.state.currentSearch !== customText ? <span className='searchDropdownList' onClick={() => this.setSearch(customText, 'custom')}>{customText}</span> : null}

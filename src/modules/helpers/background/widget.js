@@ -25,7 +25,7 @@ export function offlineBackground() {
   localStorage.setItem('currentBackground', JSON.stringify(object));
 
   return object;
-};
+}
 
 export function gradientStyleBuilder({ type, angle, gradient }) {
   // Note: Append the gradient for additional browser support.
@@ -35,5 +35,5 @@ export function gradientStyleBuilder({ type, angle, gradient }) {
   return {
     type: 'colour',
     style: `background:${gradient[0]?.colour};${grad}`
-  }
+  };
 };

@@ -144,7 +144,7 @@ export function loadSettings(hotreload) {
 ██              Feedback: hello@muetab.com                 ██
 █████████████████████████████████████████████████████████████
 `);
-};
+}
 
 // in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides 
 // the new settings with the old saved messages where they exist

@@ -6,7 +6,7 @@
   .tooltipTitle {
     min-width: 60px;
     background-color: rgba(255, 255, 255, 0.89);
-    color: #000000;
+    color: #000;
     text-align: center;
     font-size: 0.6rem;
     border-radius: 6px;
@@ -33,5 +33,5 @@
 
 .dark .tooltipTitle {
   background-color: rgba(0, 0, 0, 0.79);
-  color: #ffffff;
+  color: #fff;
 }

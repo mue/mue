@@ -91,7 +91,7 @@ export default class WelcomeSections extends PureComponent {
 
   // cancel welcome image timer if not on welcome tab
   componentDidUpdate() {
-  	if (this.props.currentTab !== 0) {
+    if (this.props.currentTab !== 0) {
       if (this.timeout) {
         clearTimeout(this.timeout);
         this.timeout = null;

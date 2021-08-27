@@ -97,7 +97,7 @@ export default class QuickLinks extends PureComponent {
 
     for (const img of images) {
       img.style.height = `${0.87 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
-    };
+    }
   }
 
   componentDidMount() {
