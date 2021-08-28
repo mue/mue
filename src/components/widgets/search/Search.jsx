@@ -22,7 +22,7 @@ export default class Search extends PureComponent {
       autocompleteCallback: '',
       microphone: null,
       suggestions: [],
-      searchDropdown: 'none'
+      searchDropdown: 'hidden'
     };
     this.language = window.language.widgets.search;
   }
@@ -119,13 +119,13 @@ export default class Search extends PureComponent {
   }
 
   toggleDropdown() {
-    if (this.state.searchDropdown === 'none') {
+    if (this.state.searchDropdown === 'hidden') {
       this.setState({
-        searchDropdown: 'block'
+        searchDropdown: 'visible'
       });
     } else {
       this.setState({
-        searchDropdown: 'none'
+        searchDropdown: 'hidden'
       });
     }
   }
@@ -150,7 +150,7 @@ export default class Search extends PureComponent {
       url,
       query,
       currentSearch: name,
-      searchDropdown: 'none'
+      searchDropdown: 'hidden'
     });
   }
 
@@ -176,7 +176,7 @@ export default class Search extends PureComponent {
         {localStorage.getItem('searchDropdown') === 'true' ? 
         <div className='searchDropdown'>
           <span className='searchSelected' onClick={() => this.toggleDropdown()}>{this.state.currentSearch}</span>
-          <div style={{ display: this.state.searchDropdown }}>
+          <div style={{ visibility: this.state.searchDropdown }}>
             {searchEngines.map((engine) => {
               if (engine.name === this.state.currentSearch) {
                 return null;
