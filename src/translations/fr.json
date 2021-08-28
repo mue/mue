@@ -36,7 +36,7 @@
     "navbar": {
       "tooltips": {
         "update": "Update Patch Notes",
-        "refresh": "Refresh Page",
+        "refresh": "Refresh",
         "feedback": "Réactions"
       },
       "notes": {
@@ -236,7 +236,11 @@
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
-              "refresh": "Refresh button"
+              "refresh": "Refresh button",
+              "refresh_options": {
+                "none": "None",
+                "page": "Page"
+              }
             },
             "font": {
               "title": "Font",

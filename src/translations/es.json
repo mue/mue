@@ -36,7 +36,7 @@
     "navbar": {
       "tooltips": {
         "update": "Notas de actualización del parche",
-        "refresh": "Recargar página",
+        "refresh": "Recargar",
         "feedback": "Comentarios"
       },
       "notes": {
@@ -236,7 +236,11 @@
             "navbar": {
               "title": "Barra de búsqueda",
               "notes": "Notas",
-              "refresh": "Botón de recargar"
+              "refresh": "Botón de recargar",
+              "refresh_options": {
+                "none": "None",
+                "page": "Página"
+              }
             },
             "font": {
               "title": "Fuente",

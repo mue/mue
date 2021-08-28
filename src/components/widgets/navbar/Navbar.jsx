@@ -14,6 +14,7 @@ export default class Navbar extends PureComponent {
   constructor() {
     super();
     this.navbarContainer = createRef();
+    this.refreshValue = localStorage.getItem('refresh');
   }
 
   setZoom() {
@@ -30,6 +31,23 @@ export default class Navbar extends PureComponent {
     });
 
     this.setZoom();
+  }
+
+  refresh() {
+    switch (this.refreshValue) { 
+      case 'background':
+        EventBus.dispatch('refresh', 'backgroundrefresh');
+        break;
+      case 'quote':
+        EventBus.dispatch('refresh', 'quoterefresh');
+        break;
+      case 'quotebackground':
+        EventBus.dispatch('refresh', 'quoterefresh');
+        EventBus.dispatch('refresh', 'backgroundrefresh');
+        break;
+      default:
+        window.location.reload();
+    }
   }
 
   render() {
@@ -53,9 +71,9 @@ export default class Navbar extends PureComponent {
           </Tooltip>
         : null}
   
-        {(localStorage.getItem('refresh') === 'true') ?
+        {(this.refreshValue !== 'false') ?
           <Tooltip title={window.language.widgets.navbar.tooltips.refresh}>
-            <RefreshRounded className='refreshicon topicons' onClick={() => window.location.reload()}/>
+            <RefreshRounded className='refreshicon topicons' onClick={() => this.refresh()}/>
           </Tooltip>
         : null}
   

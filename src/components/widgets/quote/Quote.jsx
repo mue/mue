@@ -226,6 +226,10 @@ export default class Quote extends PureComponent {
       if (data === 'marketplacequoteuninstall') {
         this.init();
       }
+
+      if (data === 'quoterefresh') {
+        this.getQuote();
+      }
     });
 
     const interval = localStorage.getItem('quotechange');

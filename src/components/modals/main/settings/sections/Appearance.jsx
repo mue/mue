@@ -5,7 +5,7 @@ import Slider from '../Slider';
 import Text from '../Text';
 
 export default function AppearanceSettings() {
-  const { appearance } = window.language.modals.main.settings.sections;
+  const { appearance, background, quote } = window.language.modals.main.settings.sections;
 
   const themeOptions = [
     {
@@ -28,8 +28,16 @@ export default function AppearanceSettings() {
       <Radio name='theme' title={appearance.theme.title} options={themeOptions} category='other' />
 
       <h3>{appearance.navbar.title}</h3>
-      <Checkbox name='notesEnabled' text={appearance.navbar.notes} category='navbar' />
-      <Checkbox name='refresh' text={appearance.navbar.refresh} category='navbar' />
+      <Checkbox name='notesEnabled' text={appearance.navbar.notes} category='navbar' element='.other' />
+      <Dropdown label={appearance.navbar.refresh} name='refresh' category='navbar'>
+        <option value='false'>{appearance.navbar.refresh_options.none}</option>
+        <option value='background'>{background.title}</option>
+        <option value='quote'>{quote.title}</option>
+        <option value='quotebackground'>{quote.title} + {background.title}</option>
+        {/* before it was just a checkbox */}
+        <option value='true'>{appearance.navbar.refresh_options.page}</option>
+      </Dropdown>
+      <br/>
       <Slider title={appearance.accessibility.widget_zoom} name='zoomNavbar' min='10' max='400' default='100' display='%' category='navbar' />
 
       <h3>{appearance.font.title}</h3>

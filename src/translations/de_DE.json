@@ -236,7 +236,11 @@
             "navbar": {
               "title": "Navigationsleiste",
               "notes": "Notizen",
-              "refresh": "Aktualisieren"
+              "refresh": "Aktualisieren",
+              "refresh_options": {
+                "none": "None",
+                "page": "Page"
+              }
             },
             "font": {
               "title": "Schriftart",

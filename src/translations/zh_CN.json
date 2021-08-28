@@ -36,7 +36,7 @@
     "navbar": {
       "tooltips": {
         "update": "更新日志",
-        "refresh": "刷新页面",
+        "refresh": "刷新",
         "feedback": "用户反馈"
       },
       "notes": {
@@ -236,7 +236,11 @@
             "navbar": {
               "title": "右上方功能键",
               "notes": "备忘录",
-              "refresh": "刷新键"
+              "refresh": "刷新键",
+              "refresh_options": {
+                "none": "None",
+                "page": "页面"
+              }
             },
             "font": {
               "title": "字体",

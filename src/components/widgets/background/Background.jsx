@@ -309,7 +309,7 @@ export default class Background extends PureComponent {
       }
 
       // uninstall photo pack reverts your background to what you had previously
-      if (data === 'marketplacebackgrounduninstall' || data === 'backgroundwelcome') {
+      if (data === 'marketplacebackgrounduninstall' || data === 'backgroundwelcome' || data === 'backgroundrefresh') {
         refresh();
       }
     });
