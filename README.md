@@ -12,7 +12,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 <br>
 
 ## Table of contents
-* [Screenshot](#screenshot)
+* [Screenshots](#screenshot)
 * [Features](#features)
 	* [Planned Features](#planned-features)
 * [Installation](#installation)
@@ -37,13 +37,13 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 * Supports multiple browsers
 * Actively developed and open source
 * Automatically updating [API](https://github.com/mue/api) with new photos, quotes and offline mode
-* Widgets such as searchbar, weather, quick links, clock, date, quote, greeting
+* Widgets such as search bar, weather, quick links, clock, date, quote, greeting
 * Settings - enable/disable various features and customise parts of Mue
 * Navbar with copy button, favourite background, notes feature etc
 * [Marketplace](https://github.com/mue/marketplace) - download custom photo packs, quote packs and preset settings made by the community
 
 ### Planned Features
-Please see our [roadmap](https://github.com/mue/mue/projects)
+Please see our [roadmap](https://trello.com/b/w7zhS7Hi/mue-50).
 
 ## Installation
 *A demo of the tab can be found [here](https://demo.muetab.com), and the latest GitHub commit build [here](https://mue.vercel.app)*
