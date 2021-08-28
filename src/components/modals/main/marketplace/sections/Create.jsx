@@ -7,7 +7,7 @@ import {
 } from '@material-ui/icons';
 import { toast } from 'react-toastify';
 
-import { saveFile } from '../../../../../modules/helpers/settings/modals';
+import { saveFile } from 'modules/helpers/settings/modals';
 
 import FileUpload from '../../settings/FileUpload';
 

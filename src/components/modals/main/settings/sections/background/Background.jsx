@@ -10,7 +10,7 @@ import Radio from '../../Radio';
 
 import ColourSettings from './Colour';
 
-import EventBus from '../../../../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 export default class BackgroundSettings extends PureComponent {
   constructor() {

@@ -1,7 +1,7 @@
 import { PureComponent } from 'react';
 import { Radio as RadioUI, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core';
 
-import EventBus from '../../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 export default class Radio extends PureComponent {
   constructor(props) {

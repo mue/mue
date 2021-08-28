@@ -1,7 +1,7 @@
 import { PureComponent } from 'react';
 import Modal from 'react-modal';
 
-import { exportSettings, importSettings } from '../../../../../modules/helpers/settings/modals';
+import { exportSettings, importSettings } from 'modules/helpers/settings/modals';
 
 import Checkbox from '../Checkbox';
 import FileUpload from '../FileUpload';
@@ -10,7 +10,7 @@ import Switch from '../Switch';
 import ResetModal from '../ResetModal';
 import Dropdown from '../Dropdown';
 
-const time_zones = require('../../../../widgets/time/timezones.json');
+const time_zones = require('components/widgets/time/timezones.json');
 
 export default class AdvancedSettings extends PureComponent {
   constructor() {

@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 
 import Radio from '../Radio';
 
-const languages = require('../../../../../modules/languages.json');
+const languages = require('modules/languages.json');
 
 export default class BackgroundSettings extends PureComponent {
   constructor() {

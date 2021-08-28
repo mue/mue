@@ -3,9 +3,9 @@ import { PureComponent } from 'react';
 
 import PhotoInformation from './PhotoInformation';
 
-import EventBus from '../../../modules/helpers/eventbus';
-import Interval from '../../../modules/helpers/interval';
-import { videoCheck, offlineBackground, gradientStyleBuilder } from '../../../modules/helpers/background/widget';
+import EventBus from 'modules/helpers/eventbus';
+import Interval from 'modules/helpers/interval';
+import { videoCheck, offlineBackground, gradientStyleBuilder } from 'modules/helpers/background/widget';
 
 import './scss/index.scss';
 

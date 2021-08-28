@@ -1,5 +1,5 @@
 import { Close, Delete } from '@material-ui/icons';
-import { setDefaultSettings } from '../../../../modules/helpers/settings';
+import { setDefaultSettings } from 'modules/helpers/settings';
 
 export default function ResetModal(props) {
   const language = window.language.modals.main.settings.sections.advanced.reset_modal;

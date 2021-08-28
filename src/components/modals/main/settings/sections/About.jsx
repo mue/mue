@@ -1,9 +1,9 @@
 import { PureComponent } from 'react';
 import { Email, Twitter, Chat, Instagram, Facebook } from '@material-ui/icons';
 
-import Tooltip from '../../../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
-const other_contributors = require('../../../../../modules/other_contributors.json');
+const other_contributors = require('modules/other_contributors.json');
 
 export default class About extends PureComponent {
   constructor() {

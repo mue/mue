@@ -1,7 +1,7 @@
 import experimentalInit from '../experimental';
 
-const defaultSettings = require('../../default_settings.json');
-const languages = require('../../languages.json');
+const defaultSettings = require('modules/default_settings.json');
+const languages = require('modules/languages.json');
 
 export function setDefaultSettings(reset) {
   localStorage.clear();

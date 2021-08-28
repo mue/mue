@@ -3,8 +3,8 @@ import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@material-ui/
 import { toast } from 'react-toastify';
 import Hotkeys from 'react-hot-keys';
 
-import Interval from '../../../modules/helpers/interval';
-import EventBus from '../../../modules/helpers/eventbus';
+import Interval from 'modules/helpers/interval';
+import EventBus from 'modules/helpers/eventbus';
 
 import './quote.scss';
 

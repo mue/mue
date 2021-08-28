@@ -6,7 +6,7 @@ import Main from './main/Main';
 import Feedback from './feedback/Feedback';
 import Navbar from '../widgets/navbar/Navbar';
 
-import EventBus from '../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 // Welcome modal is lazy loaded as the user won't use it every time they open a tab
 // We used to lazy load the main and feedback modals, but doing so broke the modal open animation on first click

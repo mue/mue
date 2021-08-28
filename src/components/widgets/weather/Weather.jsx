@@ -4,7 +4,7 @@ import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'weather-icons-react';
 import WeatherIcon from './WeatherIcon';
 import WindDirectionIcon from './WindDirectionIcon';
 
-import EventBus from '../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 import './weather.scss';
 

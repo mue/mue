@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 
-import EventBus from '../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 import WelcomeSections from './WelcomeSections';
 import ProgressBar from './ProgressBar';

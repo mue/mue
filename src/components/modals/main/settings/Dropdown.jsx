@@ -1,6 +1,6 @@
 import { PureComponent, createRef } from 'react';
 
-import EventBus from '../../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 export default class Dropdown extends PureComponent {
   constructor(props) {

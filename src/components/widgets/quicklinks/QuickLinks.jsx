@@ -2,9 +2,9 @@ import { PureComponent, createRef } from 'react';
 import { TextareaAutosize } from '@material-ui/core';
 import Hotkeys from 'react-hot-keys';
 
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
-import EventBus from '../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 import './quicklinks.scss';
 

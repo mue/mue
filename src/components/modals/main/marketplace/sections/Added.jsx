@@ -6,7 +6,7 @@ import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 
-import { uninstall, urlParser } from '../../../../../modules/helpers/marketplace';
+import { uninstall, urlParser } from 'modules/helpers/marketplace';
 
 export default class Added extends PureComponent {
   constructor() {

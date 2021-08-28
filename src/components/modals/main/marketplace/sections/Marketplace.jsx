@@ -6,7 +6,7 @@ import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 
-import { install, urlParser, uninstall } from '../../../../../modules/helpers/marketplace';
+import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
 
 export default class Marketplace extends PureComponent {
   constructor() {

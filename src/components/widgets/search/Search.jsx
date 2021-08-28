@@ -2,9 +2,9 @@ import { PureComponent, Fragment } from 'react';
 import { Search as SearchIcon, Mic } from '@material-ui/icons';
 import Hotkeys from 'react-hot-keys';
 
-import AutocompleteInput from '../../helpers/autocomplete/Autocomplete';
+import AutocompleteInput from 'components/helpers/autocomplete/Autocomplete';
 
-import EventBus from '../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 import './search.scss';
 

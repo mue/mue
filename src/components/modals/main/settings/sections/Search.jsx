@@ -6,10 +6,10 @@ import Checkbox from '../Checkbox';
 import Switch from '../Switch';
 import Radio from '../Radio';
 
-import EventBus from '../../../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
-const searchEngines = require('../../../../widgets/search/search_engines.json');
-const autocompleteProviders = require('../../../../widgets/search/autocomplete_providers.json');
+const searchEngines = require('components/widgets/search/search_engines.json');
+const autocompleteProviders = require('components/widgets/search/autocomplete_providers.json');
 
 export default class SearchSettings extends PureComponent {
   constructor() {

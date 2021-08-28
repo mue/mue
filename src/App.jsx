@@ -1,13 +1,13 @@
 import { PureComponent } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import Background from './components/widgets/background/Background';
-import Widgets from './components/widgets/Widgets';
-import Modals from './components/modals/Modals';
+import Background from 'components/widgets/background/Background';
+import Widgets from 'components/widgets/Widgets';
+import Modals from 'components/modals/Modals';
 
-import { loadSettings, moveSettings } from './modules/helpers/settings';
+import { loadSettings, moveSettings } from 'modules/helpers/settings';
 
-import EventBus from './modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 export default class App extends PureComponent {
   componentDidMount() {

@@ -4,9 +4,9 @@ import { RefreshRounded, SettingsRounded, AssignmentRounded as NotesRounded, Sms
 import Notes from './Notes';
 import Maximise from '../background/Maximise';
 import Favourite from '../background/Favourite';
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
-import EventBus from '../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 import './scss/index.scss';
 

@@ -1,7 +1,7 @@
 import Checkbox from '../Checkbox';
 import Slider from '../Slider';
 
-import EventBus from '../../../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 export default function ExperimentalSettings() {
   const { experimental } = window.language.modals.main.settings.sections;

@@ -1,14 +1,14 @@
 import { render } from 'react-dom';
 
 import App from './App';
-import * as Constants from './modules/constants';
+import * as Constants from 'modules/constants';
 
 import './scss/index.scss';
 // the toast css is based on default so we need to import it
 import 'react-toastify/dist/ReactToastify.min.css';
 
 // local stats
-import Stats from './modules/helpers/stats';
+import Stats from 'modules/helpers/stats';
 
 // language
 const languagecode = localStorage.getItem('language') || 'en_GB';

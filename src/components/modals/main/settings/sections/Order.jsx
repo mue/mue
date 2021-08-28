@@ -3,7 +3,7 @@ import { DragIndicator } from '@material-ui/icons';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';
 
-import EventBus from '../../../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 const settings = window.language.modals.main.settings.sections;
 const widget_name = {

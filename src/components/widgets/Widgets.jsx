@@ -7,7 +7,7 @@ import Search from './search/Search';
 import QuickLinks from './quicklinks/QuickLinks';
 import Date from './time/Date';
 
-import EventBus from '../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 const Weather = lazy(() => import('./weather/Weather'));
 const renderLoader = () => <></>;

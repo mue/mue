@@ -5,11 +5,11 @@ import Radio from '../main/settings/Radio';
 import Checkbox from '../main/settings/Checkbox';
 import FileUpload from '../main/settings/FileUpload';
 
-import { loadSettings } from '../../../modules/helpers/settings';
-import { importSettings } from '../../../modules/helpers/settings/modals';
+import { loadSettings } from 'modules/helpers/settings';
+import { importSettings } from 'modules/helpers/settings/modals';
 
-const languages = require('../../../modules/languages.json');
-const default_settings = require('../../../modules/default_settings.json');
+const languages = require('modules/languages.json');
+const default_settings = require('modules/default_settings.json');
 
 export default class WelcomeSections extends PureComponent {
   constructor() {

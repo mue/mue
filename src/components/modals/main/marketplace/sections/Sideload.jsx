@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import FileUpload from '../../settings/FileUpload';
 
-import { install } from '../../../../../modules/helpers/marketplace';
+import { install } from 'modules/helpers/marketplace';
 
 export default function Sideload() {
   const installAddon = (input) => {

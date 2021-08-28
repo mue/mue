@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import { Star, StarBorder } from '@material-ui/icons';
 import Hotkeys from 'react-hot-keys';
 
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 export default class Favourite extends PureComponent {
   buttons = {

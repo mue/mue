@@ -1,7 +1,7 @@
 import { PureComponent } from 'react';
 import { Checkbox as CheckboxUI, FormControlLabel } from '@material-ui/core';
 
-import EventBus from '../../../../modules/helpers/eventbus';
+import EventBus from 'modules/helpers/eventbus';
 
 export default class Checkbox extends PureComponent {
   constructor(props) {
