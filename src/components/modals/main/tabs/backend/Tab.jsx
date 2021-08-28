@@ -24,15 +24,15 @@ import {
   KeyboardAltOutlined as Keybinds
 } from '@material-ui/icons';
 
-function Tab(props) {
+function Tab({ currentTab, label, navbarTab, onClick }) {
   let className = 'tab-list-item';
-  if (props.currentTab === props.label) {
+  if (currentTab === label) {
     className += ' tab-list-active';
   }
 
-  if (props.navbar === true) {
+  if (navbarTab === true) {
     className = 'navbar-item';
-    if (props.currentTab === props.label) {
+    if (currentTab === label) {
       className += ' navbar-item-active';
     }
   }
@@ -41,7 +41,7 @@ function Tab(props) {
   const { navbar, marketplace, addons } = window.language.modals.main;
 
   let icon, divider;
-  switch (props.label) {
+  switch (label) {
     case navbar.settings: icon = <Settings/>; break;
     case navbar.addons: icon = <Addons/>; break;
     case navbar.marketplace: icon = <Marketplace/>; break;
@@ -74,7 +74,7 @@ function Tab(props) {
     default: break;
   }
 
-  if (props.label === settings.experimental.title) {
+  if (label === settings.experimental.title) {
     if (localStorage.getItem('experimental') === 'false') {
       return <hr/>;
     }
@@ -82,8 +82,8 @@ function Tab(props) {
 
   return (
     <>
-      <li className={className} onClick={() => props.onClick(props.label)}>
-      {icon} <span>{props.label}</span>
+      <li className={className} onClick={() => onClick(label)}>
+      {icon} <span>{label}</span>
       </li>
       {(divider === true) ? <hr/> : null}
     </>

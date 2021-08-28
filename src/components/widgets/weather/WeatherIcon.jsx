@@ -1,10 +1,10 @@
 import { WiDaySunny, WiNightClear, WiDayCloudy, WiNightCloudy, WiCloud, WiCloudy, WiDayShowers, WiNightShowers, WiRain, WiThunderstorm, WiSnow, WiFog } from 'weather-icons-react';
 
-export default function WeatherIcon(props) {
+export default function WeatherIcon({ name }) {
   let icon;
 
-  // props.name is the openweathermap icon name, see https://openweathermap.org/weather-conditions
-  switch (props.name) {
+  // name is the openweathermap icon name, see https://openweathermap.org/weather-conditions
+  switch (name) {
     case '01d': icon = <WiDaySunny/>; break;
     case '01n': icon = <WiNightClear/>; break;
     case '02d': icon = <WiDayCloudy/>; break;

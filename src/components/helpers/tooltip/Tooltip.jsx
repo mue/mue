@@ -1,10 +1,10 @@
 import './tooltip.scss';
 
-export default function Tooltip(props) {
+export default function Tooltip({ children, title }) {
   return (
     <div className='tooltip'>
-      {props.children}
-      <span className='tooltipTitle'>{props.title}</span>
+      {children}
+      <span className='tooltipTitle'>{title}</span>
     </div>
   );
 }

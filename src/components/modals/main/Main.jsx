@@ -22,12 +22,12 @@ const renderLoader = () => (
   </Tabs>
 );
 
-export default function MainModal(props) {
+export default function MainModal({ modalClose }) {
   const language = window.language.modals.main.navbar;
 
   return (
     <>
-      <span className='closeModal' onClick={props.modalClose}>&times;</span>
+      <span className='closeModal' onClick={modalClose}>&times;</span>
       <Tabs navbar={true}>
         <div label={language.settings} name='settings'>
           <Suspense fallback={renderLoader()}>

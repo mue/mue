@@ -1,9 +1,8 @@
 import { WiDirectionDownLeft, WiDirectionDownRight, WiDirectionDown, WiDirectionLeft, WiDirectionRight, WiDirectionUpLeft, WiDirectionUpRight, WiDirectionUp } from 'weather-icons-react';
 
-export default function WindDirectionIcon(props) {
+// degrees is imported because of a potential bug, idk what causes it but now it is fixed
+export default function WindDirectionIcon({ degrees }) {
   let icon;
-  // fix potential bug, idk what causes it but now it is fixed
-  let degrees = props.degrees;
 
   // convert the number openweathermap gives us to closest direction or something
   const directions = ['North', 'North-West', 'West', 'South-West', 'South', 'South-East', 'East', 'North-East'];

@@ -53,10 +53,7 @@
   display: inline-block;
   margin-top: 10px;
   font-size: calc(5px + 1.2vmin);
-
-  .searchSelected {
-    cursor: pointer;
-  }
+  user-select: none;
 
   .searchDropdownList {
     cursor: pointer;

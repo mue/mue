@@ -1,7 +1,7 @@
 import { Close, Delete } from '@material-ui/icons';
 import { setDefaultSettings } from 'modules/helpers/settings';
 
-export default function ResetModal(props) {
+export default function ResetModal({ modalClose }) {
   const language = window.language.modals.main.settings.sections.advanced.reset_modal;
 
   const reset = () => {
@@ -20,7 +20,7 @@ export default function ResetModal(props) {
         <button className='round reset' style={{ marginLeft: 0 }} onClick={() => reset()}>
           <Delete/>
         </button>
-        <button className='round import' style={{ marginLeft: '5px' }} onClick={props.modalClose}>
+        <button className='round import' style={{ marginLeft: '5px' }} onClick={modalClose}>
           <Close/>
         </button>
       </div>

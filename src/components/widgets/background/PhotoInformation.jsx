@@ -21,30 +21,30 @@ const downloadImage = async (info) => {
   window.stats.postEvent('feature', 'Background download');
 };
 
-export default function PhotoInformation(props) {
+export default function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 
   const language = window.language.widgets.background;
 
-  if (props.info.hidden === true || !props.info.credit) {
+  if (info.hidden === true || !info.credit) {
     return null;
   }
 
   // remove unsplash and pexels text
-  const photographer = props.info.credit.split(` ${language.unsplash}`)[0].split(` ${language.pexels}`);
+  const photographer = info.credit.split(` ${language.unsplash}`)[0].split(` ${language.pexels}`);
 
-  let credit = props.info.credit;
+  let credit = info.credit;
   let photo = language.credit;
 
   // unsplash and pexels credit
-  if (props.info.photographerURL && props.info.photographerURL !== '' && !props.info.offline && props.api) {
-    if (props.api === 'unsplash') {
-      photo = <a href={props.info.photoURL + '?utm_source=mue'} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
-      credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;
+  if (info.photographerURL && info.photographerURL !== '' && !info.offline && api) {
+    if (api === 'unsplash') {
+      photo = <a href={info.photoURL + '?utm_source=mue'} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
+      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;
     } else {
-      photo = <a href={props.info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
-      credit = <><a href={props.info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{language.pexels}</a></>;
+      photo = <a href={info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
+      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{language.pexels}</a></>;
     }
   }
 
@@ -54,7 +54,7 @@ export default function PhotoInformation(props) {
     setWidth(event.target.width);
     setHeight(event.target.height);
   };
-  img.src = (localStorage.getItem('ddgProxy') === 'true' && !props.info.offline && !props.url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + props.url : props.url;
+  img.src = (localStorage.getItem('ddgProxy') === 'true' && !info.offline && !url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + url : url;
 
   // info is still there because we want the favourite button to work
   if (localStorage.getItem('photoInformation') === 'false') {
@@ -62,18 +62,18 @@ export default function PhotoInformation(props) {
       <div className='photoInformation'>
         <h1>{photo} <span id='credit'>{credit}</span></h1>
         <div style={{ display: 'none' }}>
-          <span id='infoLocation'>{props.info.location || 'N/A'}</span>
-          <span id='infoCamera'>{props.info.camera || 'N/A'}</span>
+          <span id='infoLocation'>{info.location || 'N/A'}</span>
+          <span id='infoCamera'>{info.camera || 'N/A'}</span>
           <span id='infoResolution'>{width}x{height}</span>
         </div>
       </div>
     );
   }
 
-  const downloadEnabled = (localStorage.getItem('downloadbtn') === 'true') && !props.info.offline && !props.info.photographerURL;
+  const downloadEnabled = (localStorage.getItem('downloadbtn') === 'true') && !info.offline && !info.photographerURL;
   const downloadBackground = () => { 
     if (downloadEnabled) {
-      downloadImage(props.info);
+      downloadImage(info);
     }
   };
 
@@ -97,13 +97,13 @@ export default function PhotoInformation(props) {
         <h1>{language.information}</h1>
         <hr/>
         {/* fix console error by using fragment and key */}
-        {props.info.location && props.info.location !== 'N/A' ? <Fragment key='location'>
+        {info.location && info.location !== 'N/A' ? <Fragment key='location'>
           <LocationOn/>
-          <span id='infoLocation'>{props.info.location}</span>
+          <span id='infoLocation'>{info.location}</span>
         </Fragment> : null}
-        {props.info.camera && props.info.camera !== 'N/A' ? <Fragment key='camera'>
+        {info.camera && info.camera !== 'N/A' ? <Fragment key='camera'>
           <PhotoCamera/>
-          <span id='infoCamera'>{props.info.camera}</span>
+          <span id='infoCamera'>{info.camera}</span>
         </Fragment> : null}
         <Resolution/>
         <span id='infoResolution'>{width}x{height}</span>
@@ -112,7 +112,7 @@ export default function PhotoInformation(props) {
         {downloadEnabled ? 
           <>
             <Download/>
-            <span className='download' onClick={() => downloadImage(props.info)}>{language.download}</span>
+            <span className='download' onClick={() => downloadImage(info)}>{language.download}</span>
           </> 
         : null}
       </div>

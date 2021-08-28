@@ -1,10 +1,10 @@
-export default function Lightbox(props) {
+export default function Lightbox({ modalClose, img }) {
   window.stats.postEvent('modal', 'Opened lightbox');
 
   return (
     <>
-      <span className='closeModal' onClick={props.modalClose}>&times;</span>
-      <img src={props.img} className='lightboximg' draggable={false} alt='Item screenshot'/>
+      <span className='closeModal' onClick={modalClose}>&times;</span>
+      <img src={img} className='lightboximg' draggable={false} alt='Item screenshot'/>
     </>
   );
 }
