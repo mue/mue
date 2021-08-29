@@ -45,7 +45,7 @@ export default class Tabs extends PureComponent {
               key={index}
               label={tab.props.label}
               onClick={(nextTab) => this.onClick(nextTab, tab.props.name)}
-              navbar={this.props.navbar || false}
+              navbarTab={this.props.navbar || false}
             />
           ))}
         </ul>

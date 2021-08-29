@@ -24,7 +24,7 @@ import {
   KeyboardAltOutlined as Keybinds
 } from '@material-ui/icons';
 
-function Tab({ currentTab, label, navbarTab, onClick }) {
+function Tab({ label, currentTab, onClick, navbarTab }) {
   let className = 'tab-list-item';
   if (currentTab === label) {
     className += ' tab-list-active';
