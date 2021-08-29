@@ -111,23 +111,23 @@ export default class About extends PureComponent {
 
         <h3>{this.language.contributors}</h3>
         <p>{this.state.loading}</p>
-        {this.state.contributors.map((item) => (
-          <Tooltip title={item.login} key={item.login}>
-            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}/></a>
+        {this.state.contributors.map(({ handle, avatar, login }) => (
+          <Tooltip title={handle} key={handle}>
+            <a href={'https://github.com/' + login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar + '&size=128'} alt={handle}></img></a>
           </Tooltip>
         ))}
         { // for those who contributed without opening a pull request
-        this.state.other_contributors.map((item) => (
-          <Tooltip title={item.login} key={item.login}>
-            <a href={'https://github.com/' + item.login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar_url + '&size=128'} alt={item.login}/></a>
+        this.state.other_contributors.map(({ handle, avatar, login }) => (
+          <Tooltip title={handle} key={handle}>
+            <a href={'https://github.com/' + login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar + '&size=128'} alt={handle}></img></a>
           </Tooltip>
         ))}
 
         <h3>{this.language.supporters}</h3>
         <p>{this.state.loading}</p>
-        {this.state.sponsors.map((item) => (
-          <Tooltip title={item.handle} key={item.handle}>
-            <a href={'https://github.com/' + item.handle} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={item.avatar + '&size=128'} alt={item.handle}></img></a>
+        {this.state.sponsors.map(({ handle, avatar }) => (
+          <Tooltip title={handle} key={handle}>
+            <a href={'https://github.com/' + handle} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar + '&size=128'} alt={handle}></img></a>
           </Tooltip>
         ))}
 

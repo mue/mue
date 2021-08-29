@@ -177,14 +177,14 @@ export default class Search extends PureComponent {
         <div className='searchDropdown'>
           <span className='searchSelected' onClick={() => this.toggleDropdown()}>{this.state.currentSearch}</span>
           <div style={{ visibility: this.state.searchDropdown }}>
-            {searchEngines.map((engine) => {
-              if (engine.name === this.state.currentSearch) {
+            {searchEngines.map(({ name }) => {
+              if (name === this.state.currentSearch) {
                 return null;
               }
 
               return (
-                <Fragment key={engine.name}>
-                  <span className='searchDropdownList' onClick={() => this.setSearch(engine.name)}>{engine.name}</span>
+                <Fragment key={name}>
+                  <span className='searchDropdownList' onClick={() => this.setSearch(name)}>{name}</span>
                   <br/>
                 </Fragment>
               );
