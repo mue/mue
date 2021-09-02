@@ -176,18 +176,22 @@ a.privacy {
   height: auto;
 }
 
-@media only screen and (max-width: 1440px) {
-  .buttons {
-    position: relative !important;
-    bottom: 0rem !important;
+@media (max-width: 1820px) and (min-width: 1200px) {
+  .welcomemodal {
+    width: 85%;
+    height: 90%;
   }
 
-  .examples img {
-    width: 15rem !important;
+  section {
+    height: 90vh !important;
   }
 }
 
-@media only screen and (max-width: 1600px) {
+@media (max-width: 1300px) {
+  .welcomemodal {
+    overflow-x: hidden !important;
+  }
+
   .examples img {
     width: 20rem !important;
   }
@@ -195,5 +199,32 @@ a.privacy {
   .buttons {
     position: relative !important;
     bottom: 1rem !important;
+    right: -1rem !important;
+  }
+
+  section {
+    height: 100vh !important;
+  }
+}
+
+@media (max-width: 1190px) { 
+  .welcomemodal {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+@media (max-width: 800px) { 
+  .welcomemodal {
+    width: 100%;
+    height: 100%;
+  }
+
+  .examples img {
+    width: 15rem !important;
+  }
+
+  section {
+    height: 140vh !important;
   }
 }
