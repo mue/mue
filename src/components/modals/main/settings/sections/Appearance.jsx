@@ -28,7 +28,7 @@ export default function AppearanceSettings() {
       <Radio name='theme' title={appearance.theme.title} options={themeOptions} category='other' />
 
       <h3>{appearance.navbar.title}</h3>
-      <Checkbox name='notesEnabled' text={appearance.navbar.notes} category='navbar' element='.other' />
+      <Checkbox name='notesEnabled' text={appearance.navbar.notes} category='navbar' />
       <Dropdown label={appearance.navbar.refresh} name='refresh' category='navbar'>
         <option value='false'>{appearance.navbar.refresh_options.none}</option>
         <option value='background'>{background.title}</option>

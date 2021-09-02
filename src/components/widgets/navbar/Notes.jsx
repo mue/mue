@@ -46,7 +46,7 @@ export default class Notes extends PureComponent {
 
   render() {
     return (
-      <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility, marginleft: this.state.marginLeft }}>
+      <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility, marginLeft: this.state.marginLeft }}>
         <div className='topbarnotes'>
           <NotesRounded/>
           <h3>{this.language.title}</h3>

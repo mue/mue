@@ -25,6 +25,7 @@ export default class Navbar extends PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'navbar' || data === 'background') {
+        this.refreshValue = localStorage.getItem('refresh');
         this.forceUpdate();
         this.setZoom();
       }
