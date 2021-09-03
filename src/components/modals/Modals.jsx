@@ -32,6 +32,14 @@ export default class Modals extends PureComponent {
       window.stats.postEvent('modal', 'Opened welcome');
     }
 
+    if (window.location.search === '?nointro=true') {
+      if (localStorage.getItem('showWelcome') === 'true') {
+        localStorage.setItem('showWelcome', false);
+        EventBus.dispatch('refresh', 'widgets');
+        EventBus.dispatch('refresh', 'backgroundwelcome');
+      }
+    }
+
     // hide refresh reminder once the user has refreshed the page
     localStorage.setItem('showReminder', false);
   }
