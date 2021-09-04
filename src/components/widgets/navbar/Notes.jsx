@@ -10,7 +10,7 @@ export default class Notes extends PureComponent {
     this.state = {
       notes: localStorage.getItem('notes') || '',
       visibility: (localStorage.getItem('notesPinned') === 'true') ? 'visible' : 'hidden',
-      marginLeft: (localStorage.getItem('refresh') === 'false') ? '-200px' : '0px'
+      marginLeft: (localStorage.getItem('refresh') === 'false') ? '-200px' : '-150px'
     };
     this.language = window.language.widgets.navbar.notes;
   }

@@ -313,6 +313,7 @@
           "keybinds": {
             "title": "Keybinds",
             "recording": "Recording...",
+            "click_to_record": "Click to record",
             "background": {
               "favourite": "Favourite background",
               "maximise": "Maximise background",

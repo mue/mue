@@ -1,6 +1,7 @@
 import { PureComponent } from 'react';
 
-import Checkbox from '../Checkbox';
+import Switch from '../Switch';
+import KeybindInput from '../KeybindInput';
 
 export default class KeybindSettings extends PureComponent {
   constructor() {
@@ -25,7 +26,7 @@ export default class KeybindSettings extends PureComponent {
     this.forceUpdate();
 
     let keys = '';
-    const keydown = document.addEventListener('keydown', (event) => {
+    this.keydown = document.addEventListener('keydown', (event) => {
       if (keys === '') {
         keys = event.key;
       } else {
@@ -33,8 +34,8 @@ export default class KeybindSettings extends PureComponent {
       }
     });
 
-    const keyup = document.addEventListener('keyup', () => {
-      document.removeEventListener('keydown', keydown);
+    this.keyup = document.addEventListener('keyup', () => {
+      document.removeEventListener('keydown', this.keydown);
       const keybinds = this.state.keybinds;
       keybinds[type] = keys;
       localStorage.setItem('keybinds', JSON.stringify(keybinds));
@@ -43,9 +44,20 @@ export default class KeybindSettings extends PureComponent {
       });
     });
 
-    document.removeEventListener('keyup', keyup);
+    document.removeEventListener('keyup', this.keyup);
 
     this.showReminder();
+  }
+
+  cancel(type) {
+    document.removeEventListener('keydown', this.keydown);
+    document.removeEventListener('keyup', this.keyup);
+    const currentKeybinds = this.state.keybinds;
+    delete currentKeybinds[type];
+    this.setState({
+      keybinds: currentKeybinds
+    });
+    this.forceUpdate();
   }
 
   reset(type) {
@@ -65,67 +77,19 @@ export default class KeybindSettings extends PureComponent {
     return (
       <>
         <h2>{keybinds.title}</h2>
-        <Checkbox name='keybindsEnabled' text={this.language.enabled} element='.other' />
-        <div>
-          <p>{keybinds.background.favourite}</p>
-          <input type='text' onClick={() => this.listen('favouriteBackground')} value={this.state.keybinds['favouriteBackground'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('favouriteBackground')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.background.maximise}</p>
-          <input type='text' onClick={() => this.listen('maximiseBackground')} value={this.state.keybinds['maximiseBackground'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('maximiseBackground')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.background.download}</p>
-          <input type='text' onClick={() => this.listen('downloadBackground')} value={this.state.keybinds['downloadBackground'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('downloadBackground')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.background.show_info}</p>
-          <input type='text' onClick={() => this.listen('showBackgroundInformation')} value={this.state.keybinds['showBackgroundInformation'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('showBackgroundInformation')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.quote.favourite}</p>
-          <input type='text' onClick={() => this.listen('favouriteQuote')} value={this.state.keybinds['favouriteQuote'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('favouriteQuote')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.quote.copy}</p>
-          <input type='text' onClick={() => this.listen('copyQuote')} value={this.state.keybinds['copyQuote'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('copyQuote')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.quote.tweet}</p>
-          <input type='text' onClick={() => this.listen('tweetQuote')} value={this.state.keybinds['tweetQuote'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('tweetQuote')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.notes.pin}</p>
-          <input type='text' onClick={() => this.listen('pinNotes')} value={this.state.keybinds['pinNotes'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('pinNotes')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.notes.copy}</p>
-          <input type='text' onClick={() => this.listen('copyNotes')} value={this.state.keybinds['copyNotes'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('copyNotes')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.search}</p>
-          <input type='text' onClick={() => this.listen('focusSearch')} value={this.state.keybinds['focusSearch'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('focusSearch')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.quicklinks}</p>
-          <input type='text' onClick={() => this.listen('toggleQuicklinks')} value={this.state.keybinds['toggleQuicklinks'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('toggleQuicklinks')}>{this.language.buttons.reset}</span>
-        </div>
-        <div>
-          <p>{keybinds.modal}</p>
-          <input type='text' onClick={() => this.listen('toggleModal')} value={this.state.keybinds['toggleModal'] || ''} readOnly/>
-          <span className='modalLink' onClick={() => this.reset('toggleModal')}>{this.language.buttons.reset}</span>
-        </div>
+        <Switch name='keybindsEnabled' text={this.language.enabled} element='.other' />
+        <KeybindInput name={keybinds.background.favourite} state={this.state.keybinds} settingsName='favouriteBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.background.maximise} state={this.state.keybinds} settingsName='maximiseBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.background.download} state={this.state.keybinds} settingsName='downloadBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.background.show_info} state={this.state.keybinds} settingsName='showBackgroundInformation' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.quote.favourite} state={this.state.keybinds} settingsName='favouriteQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.quote.copy} state={this.state.keybinds} settingsName='copyQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.quote.tweet} state={this.state.keybinds} settingsName='tweetQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.notes.pin} state={this.state.keybinds} settingsName='pinNotes' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.notes.copy} state={this.state.keybinds} settingsName='copyNotes' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.search} state={this.state.keybinds} settingsName='focusSearch' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.quicklinks} state={this.state.keybinds} settingsName='toggleQuicklinks' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={keybinds.modal} state={this.state.keybinds} settingsName='toggleModal' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
       </>
     );
   }
