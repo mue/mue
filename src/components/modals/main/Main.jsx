@@ -24,6 +24,8 @@ const renderLoader = () => (
 
 export default function MainModal({ modalClose }) {
   const language = window.language.modals.main.navbar;
+  const { reminder } = window.language.modals.main.settings;
+  const display = (localStorage.getItem('showReminder') === 'true') ? 'block' : 'none';
 
   return (
     <>
@@ -45,6 +47,11 @@ export default function MainModal({ modalClose }) {
           </Suspense>
         </div>
       </Tabs>
+      <div className='reminder-info' style={{ display }}>
+        <h1>{reminder.title}</h1>
+        <p>{reminder.message}</p>
+        <button className='pinNote' onClick={() => window.location.reload()}>{window.language.modals.main.error_boundary.refresh}</button>
+      </div>
     </>
   );
 }

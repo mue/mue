@@ -116,3 +116,14 @@ p.author {
   width: auto;
   cursor: pointer;
 }
+
+/* sideload failed modal */
+.sideloadModal {
+  min-width: 250px;
+  max-width: 250px;
+  overflow-x: hidden;
+
+  button {
+    margin-left: -50px;
+  }
+}

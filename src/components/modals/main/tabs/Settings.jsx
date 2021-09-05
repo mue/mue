@@ -18,8 +18,7 @@ import Stats from '../settings/sections/Stats';
 import Keybinds from '../settings/sections/Keybinds';
 
 export default function Settings() {
-  const { reminder, sections } = window.language.modals.main.settings;
-  const display = (localStorage.getItem('showReminder') === 'true') ? 'block' : 'none';
+  const { sections } = window.language.modals.main.settings;
 
   return (
     <>
@@ -41,11 +40,6 @@ export default function Settings() {
         <div label={sections.changelog} name='changelog'><Changelog/></div>
         <div label={sections.about.title} name='about'><About/></div>
       </Tabs>
-      <div className='reminder-info' style={{ display }}>
-        <h1>{reminder.title}</h1>
-        <p>{reminder.message}</p>
-        <button className='pinNote' onClick={() => window.location.reload()}>{window.language.modals.main.error_boundary.refresh}</button>
-      </div>
     </>
   );
 }

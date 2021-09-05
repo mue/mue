@@ -44,11 +44,20 @@ export default class Marketplace extends PureComponent {
 
       // check if already installed
       let button = this.buttons.install;
+      let addonInstalled = false;
+      let addonInstalledVersion;
 
       const installed = JSON.parse(localStorage.getItem('installed'));
 
       if (installed.some((item) => item.name === info.data.name)) {
         button = this.buttons.uninstall;
+        addonInstalled = true;
+        for (let i = 0; i < installed.length; i++) {
+          if (installed[i].name === info.data.name) {
+            addonInstalledVersion = installed[i].version;
+            break;
+          }
+        }
       }
 
       this.setState({
@@ -60,7 +69,9 @@ export default class Marketplace extends PureComponent {
           //updated: info.updated,
           version: info.data.version,
           icon: info.data.screenshot_url,
-          data: info.data
+          data: info.data,
+          addonInstalled,
+          addonInstalledVersion
         },
         button: button
       });
@@ -200,7 +211,7 @@ export default class Marketplace extends PureComponent {
     }
 
     if (this.state.item.display_name) {
-      return <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()}/>;
+      return <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} addonInstalled={this.state.item.addonInstalled} addonInstalledVersion={this.state.item.addonInstalledVersion}/>;
     }
 
     return (

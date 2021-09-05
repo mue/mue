@@ -34,10 +34,6 @@ body {
   text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
-.textBorder {
-  filter: drop-shadow(var(--shadow-shift) var(--shadow-shift) 0 #111c);
-}
-
 ::placeholder {
   color: map-get($theme-colours, 'main');
   opacity: 1;
@@ -53,7 +49,22 @@ body {
   color: map-get($theme-colours, 'main-text-color');
 }
 
-// fonts imported from fontsource
+/* accessibility */
+.textBorder {
+  filter: drop-shadow(var(--shadow-shift) var(--shadow-shift) 0 #111c);
+}
+
+.no-animations {
+  .ReactModal__Content,
+  button,
+  svg,
+  input[type=text],
+  .MuiSwitch-switchBase {
+    transition: none !important;
+  }
+}
+
+/* fonts (imported from fontsource) */
 @font-face {
   font-family: 'Lexend Deca';
   font-style: normal;
