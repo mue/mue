@@ -1,0 +1,71 @@
+.navbar-item {
+  font-size: 22px;
+  font-weight: 500;
+  display: inline-flex;
+
+  &:hover {
+    color: grey;
+    background: none;
+  }
+
+  span,
+  svg {
+    font-size: 1.1em !important;
+  }
+
+  svg {
+    font-size: 1.2em !important;
+  }
+}
+
+/* safari fix */
+@supports (-webkit-hyphens: none) {
+  .navbar-item {
+    display: inline-block !important;
+  }
+}
+
+.modalNavbar {
+  position: absolute;
+  left: 20rem;
+  top: 1rem;
+  justify-content: center;
+
+  svg {
+    margin-right: 0.5rem;
+    padding: 3px;
+    vertical-align: middle;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .modalNavbar {
+    left: 6rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  li.navbar-item {
+    span {
+      display: none;
+    }
+  }
+}
+
+.navbar-item-active {
+  background: map-get($theme-colours, 'gradient');
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  svg {
+    color: orange;
+  }
+
+  &:hover {
+    background: map-get($theme-colours, 'gradient');
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}

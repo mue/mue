@@ -1,0 +1,27 @@
+.aboutIcon {
+  color: var(--modal-text) !important;
+  padding-right: 10px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.aboutLink {
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.aboutLogo {
+  height: 100px;
+  width: auto;
+  margin-left: -15px;
+}
+
+.abouticon {
+  width: 96px;
+  height: auto;
+  border-radius: 50%;
+  padding-right: 5px;
+}

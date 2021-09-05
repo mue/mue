@@ -1,0 +1,12 @@
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  border-top-right-radius: map-get($modal, 'border-radius');
+  border-bottom-right-radius: map-get($modal, 'border-radius');
+}
+
+::-webkit-scrollbar-thumb {
+  background: #636e72;
+  border-top-right-radius: map-get($modal, 'border-radius');
+  border-bottom-right-radius: map-get($modal, 'border-radius');
+}

@@ -1,0 +1,87 @@
+ul.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding-left: 0;
+  background: var(--sidebar);
+  border-radius: 12px 0 0 12px;
+  text-align: left;
+  font-size: 24px;
+  min-height: 100vh;
+
+  h1 {
+    text-align: center;
+    font-size: 1.8em;
+  }
+
+  svg {
+    vertical-align: middle;
+    padding: 5px;
+  }
+
+  hr {
+    height: 3px;
+    background: rgba(196, 196, 196, 0.74);
+    width: 75%;
+    outline: none;
+    border: none;
+  }
+}
+
+@media (max-height: 999px) and (min-height: 920px) {
+  ul.sidebar {
+    min-height: 160vh;
+  }
+}
+
+@media (max-height: 919px) and (min-height: 700px) {
+  ul.sidebar {
+    min-height: 200vh;
+  }
+}
+
+@media (max-height: 699px) and (min-height: 400px) {
+  ul.sidebar {
+    min-height: 260vh;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  ul.sidebar {
+    width: 310px;
+    align-items: center;
+  }
+}
+
+li {
+  list-style: none;
+  font-size: 24px;
+  padding: 5px 30px 5px 30px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.tab-list-active {
+  background: var(--tab-active);
+}
+
+@media only screen and (max-width: 1200px) {
+  li.tab-list-item {
+    span {
+      display: none;
+    }
+  }
+
+  ul.sidebar {
+    h1 {
+      display: none;
+    }
+  }
+}
+
+.tab-list-item {
+  &:hover {
+    background: var(--tab-active);
+  }
+}

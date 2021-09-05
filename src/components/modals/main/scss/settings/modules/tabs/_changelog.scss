@@ -1,0 +1,35 @@
+.updatechangelog {
+  max-width: 75%;
+
+  li {
+    cursor: initial;
+    font-size: 1rem;
+    list-style-type: disc;
+    padding: 0;
+    margin-left: 20px;
+  }
+
+  a {
+    color: var(--modal-link);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.changelogtab {
+  h1 {
+    max-width: 85%;
+    font-size: 2rem;
+    margin-bottom: -10px !important;
+  }
+
+  h5 {
+    line-height: 0px !important;
+  }
+
+  img {
+    max-width: 95%;
+  }
+}

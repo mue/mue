@@ -1,0 +1,77 @@
+#item {
+  h1 {
+    font-size: 40px;
+    line-height: 20px;
+  }
+
+  img {
+    float: left;
+  }
+
+  a {
+    color: var(--modal-link);
+    cursor: pointer;
+  
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.side {
+  float: right;
+  margin-left: 20px;
+}
+
+#item>h1,
+#item>.MuiSvgIcon-root {
+  display: inline;
+}
+
+p.description {
+  margin-top: 0px;
+  max-width: 800px;
+}
+
+.backArrow {
+  cursor: pointer;
+  width: 2rem !important;
+  height: 2rem !important;
+
+  &:hover {
+    color: grey;
+  }
+}
+
+.informationContainer {
+  margin-top: 150px;
+  position: absolute;
+}
+
+.productInformation {
+  padding: 10px;
+  background: var(--sidebar);
+  width: 350px;
+  border-radius: 12px;
+
+  h4 {
+    cursor: initial !important;
+  }
+
+  li {
+    margin-left: -4px;
+    list-style: none;
+    font-size: 16px;
+    cursor: initial !important;
+
+    &.header {
+      text-transform: uppercase;
+      color: #787878;
+      margin-left: -5px;
+    }
+  }
+}
+
+.overview {
+  font-size: 30px !important;
+}

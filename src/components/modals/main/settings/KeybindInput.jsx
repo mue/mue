@@ -1,8 +1,8 @@
 export default function KeybindInput(props) {
   const language = window.language.modals.main.settings;
+  const value = props.state[props.settingsName];
 
   const getButton = () => {
-    const value = props.state[props.settingsName];
     if (!value) {
       return null;
     } else if (value === language.sections.keybinds.recording) {
@@ -15,7 +15,7 @@ export default function KeybindInput(props) {
   return (
     <>
       <p>{props.name}</p>
-      <input type='text' onClick={() => props.set(props.settingsName)} value={props.state[props.settingsName] || language.sections.keybinds.click_to_record} readOnly/>
+      <input type='text' onClick={() => props.set(props.settingsName)} value={value || language.sections.keybinds.click_to_record} readOnly/>
       {getButton()}
     </>
   );

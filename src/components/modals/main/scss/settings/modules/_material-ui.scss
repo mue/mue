@@ -1,0 +1,48 @@
+/* these are overrides for the material ui default styles */
+.MuiCheckbox-colorPrimary.Mui-checked,
+.MuiSwitch-colorPrimary.Mui-checked,
+.MuIconButton-colorPrimary.Mui-checked,
+.MuiSwitch-thumb,
+.MuiRadio-colorSecondary.Mui-checked,
+.PrivateSwitchBase-input-4,
+.MuiRadio-root,
+.aboutLink,
+legend {
+  color: var(--modal-text) !important;
+}
+
+.MuiFormControlLabel-labelPlacementStart {
+  margin-left: 0px !important;
+}
+
+.MuiSwitch-colorPrimary.Mui-checked+.MuiSwitch-track {
+  background: darkgray !important;
+}
+
+.MuiIconButton-label>svg.MuiSvgIcon-root {
+  color: var(--modal-text) !important;
+}
+
+.MuiTouchRipple-root {
+  background: transparent;
+}
+
+.MuiFormControl-root {
+  margin-top: 10px !important;
+}
+
+.checkbox svg {
+  fill: var(--modal-text) !important;
+}
+
+.radio-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.17rem;
+}
+
+.radio-title-small {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+}

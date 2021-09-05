@@ -1,0 +1,25 @@
+.resetLink {
+  color: var(--modal-link);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  span {
+    font-size: 1.2rem;
+    color: var(--modal-link);
+    vertical-align: text-bottom;
+    margin-left: 5px;
+  }
+}
+
+.modalLink {
+  color: var(--modal-link);
+  cursor: pointer;
+  margin-left: 5px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

@@ -1,4 +1,16 @@
+@import 'modules/dropdown';
+@import 'modules/resetmodal';
+@import 'modules/material-ui';
+@import 'modules/slider';
+@import 'modules/reminder';
+@import 'modules/textarea';
+
+@import 'modules/tabs/about';
+@import 'modules/tabs/changelog';
+@import 'modules/tabs/order';
+
 input {
+  /* text input */
   &[type=text] {
     width: 200px;
     color: var(--modal-text);
@@ -8,6 +20,7 @@ input {
     border-radius: 5px;
   }
 
+  /* colour picker */
   &[type=color] {
     border-radius: 100%;
     height: 30px;
@@ -28,6 +41,7 @@ input {
     }
   }
 
+  /* firefox fixes for colour picker (using "," didn't work) */
   &[type=color]::-moz-color-swatch {
     border-radius: 100%;
     height: 30px;
@@ -48,6 +62,7 @@ input {
     }
   }
 
+  /* date picker */
   &[type=date] {
     width: 200px;
     color: var(--modal-text);
@@ -58,6 +73,7 @@ input {
   }
 }
 
+/* dark theme date picker fix */
 .dark {
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -66,177 +82,4 @@ input {
 
 h4 {
   cursor: pointer;
-}
-
-ul {
-  padding-left: 0px;
-  margin: 0;
-
-  >label {
-    vertical-align: middle;
-  }
-}
-
-.range {
-  -webkit-appearance: none;
-  width: 200px;
-  height: 12px;
-  border-radius: 12px;
-  outline: none;
-  background: var(--sidebar);
-  box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 12px;
-    background: var(--modal-text);
-    cursor: pointer;
-  }
-
-  &::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 12px;
-    border: 0;
-    background: var(--modal-text);
-    cursor: pointer;
-  }
-}
-
-.settingsTextarea {
-  font-family: Consolas !important;
-  padding: 15px;
-  border-radius: 15px;
-  background-color: var(--sidebar) !important;
-  border: none;
-  margin-left: 0;
-  width: 400px;
-  height: 200px;
-  max-width: 60%;
-}
-
-.MuiCheckbox-colorPrimary.Mui-checked,
-.MuiSwitch-colorPrimary.Mui-checked,
-.MuIconButton-colorPrimary.Mui-checked,
-.MuiSwitch-thumb,
-.MuiRadio-colorSecondary.Mui-checked,
-.PrivateSwitchBase-input-4,
-.MuiRadio-root,
-.aboutLink,
-legend {
-  color: var(--modal-text) !important;
-}
-
-.MuiFormControlLabel-labelPlacementStart {
-  margin-left: 0px !important;
-}
-
-.MuiSwitch-colorPrimary.Mui-checked+.MuiSwitch-track {
-  background: darkgray !important;
-}
-
-.reminder-info {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 15px;
-  color: var(--modal-text);
-  background: var(--sidebar);
-  max-width: 300px;
-  border-radius: 0.7em;
-
-  h1 {
-    font-size: 1rem;
-  }
-}
-
-.radio-title {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.17rem;
-}
-
-.radio-title-small {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.sortableitem {
-  color: var(--modal-text) !important;
-  cursor: move;
-}
-
-.updatechangelog {
-  max-width: 75%;
-
-  li {
-    cursor: initial;
-    font-size: 1rem;
-    list-style-type: disc;
-    padding: 0;
-    margin-left: 20px;
-  }
-
-  a {
-    color: var(--modal-link);
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-}
-
-.changelogtab {
-  h1 {
-    max-width: 85%;
-    font-size: 2rem;
-    margin-bottom: -10px !important;
-  }
-
-  h5 {
-    line-height: 0px !important;
-  }
-
-  img {
-    max-width: 95%;
-  }
-}
-
-.sliderText {
-  color: var(--modal-text);
-  background: none;
-  border: none;
-  border-radius: 0;
-  font-size: 1rem;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.resetArea {
-  h2 {
-    font-size: 2rem !important;
-  }
-
-  h2,
-  span,
-  svg {
-    display: inline;
-  }
-
-  svg {
-    vertical-align: sub;
-    font-size: 1.4rem;
-  }
 }

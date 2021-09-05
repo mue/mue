@@ -1,0 +1,25 @@
+.featured {
+  margin-top: 40px;
+  border-radius: 15px;
+  padding: 50px;
+  color: #fff;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  width: 85%;
+
+  button {
+    float: left;
+    margin-top: -7px;
+    border: 2px solid map-get($theme-colours, 'main');
+    color: map-get($theme-colours, 'main');
+
+    &:hover {
+      background: map-get($theme-colours, 'main');
+      color: #2d3436;
+    }
+  }
+
+  h1 {
+    margin-top: -20px;
+    font-size: 2rem;
+  }
+}

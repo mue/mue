@@ -24,7 +24,7 @@
   }
 }
 
-.add {
+.add, .close {
   @extend %settingsButton;
 
   background-color: map-get($button-colours, 'other');
@@ -37,16 +37,7 @@
 }
 
 .close {
-  @extend %settingsButton;
-
   padding: 10px 50px 10px 50px;
-  background-color: map-get($button-colours, 'other');
-  border: 2px solid map-get($button-colours, 'other');
-
-  &:hover {
-    color: map-get($button-colours, 'other');
-    border: 2px solid map-get($button-colours, 'other');
-  }
 }
 
 .export,
@@ -67,34 +58,4 @@
 .export,
 .import {
   margin-left: 20px;
-}
-
-.MuiIconButton-label > svg.MuiSvgIcon-root {
-  color: var(--modal-text) !important;
-}
-
-.sortableitem {
-  background: var(--sidebar) !important;
-  padding: 10px 80px;
-  padding-left: 10px;
-  border-radius: 15px;
-  margin-bottom: 10px;
-  font-size: 1.325rem;
-  color: var(--modal-text) !important;
-  cursor: move;
-  width: 150px;
-  z-index: 999 !important;
-
-  svg {
-    font-size: 1.3rem;
-  }
-
-  &:hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.15);
-    transition: 0.3s;
-  }
-}
-
-.MuiTouchRipple-root {
-  background: transparent;
 }

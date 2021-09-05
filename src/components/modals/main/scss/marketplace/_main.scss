@@ -1,18 +1,7 @@
-#item a {
-  color: var(--modal-link);
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-.emptyitems {
-  width: 25vw;
-  display: flex;
-  justify-content: center;
-  margin-top: 90px;
-}
+@import 'modules/item';
+@import 'modules/buttons';
+@import 'modules/featured';
+@import 'modules/lightbox';
 
 .items {
   display: inline-grid;
@@ -89,34 +78,11 @@
   }
 }
 
-p.author {
-  margin-top: -5px;
-}
-
-#item {
-  h1 {
-    font-size: 40px;
-    line-height: 20px;
-  }
-
-  img {
-    float: left;
-  }
-}
-
-.side {
-  float: right;
-  margin-left: 20px;
-}
-
-#item>h1,
-#item>.MuiSvgIcon-root {
-  display: inline;
-}
-
-p.description {
-  margin-top: 0px;
-  max-width: 800px;
+.emptyitems {
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
 }
 
 .emptyMessage {
@@ -138,43 +104,8 @@ p.description {
   }
 }
 
-.backArrow {
-  cursor: pointer;
-  width: 2rem !important;
-  height: 2rem !important;
-
-  &:hover {
-    color: grey;
-  }
-}
-
-.informationContainer {
-  margin-top: 150px;
-  position: absolute;
-}
-
-.productInformation {
-  padding: 10px;
-  background: var(--sidebar);
-  width: 350px;
-  border-radius: 12px;
-
-  h4 {
-    cursor: initial !important;
-  }
-
-  li {
-    margin-left: -4px;
-    list-style: none;
-    font-size: 16px;
-    cursor: initial !important;
-
-    &.header {
-      text-transform: uppercase;
-      color: #787878;
-      margin-left: -5px;
-    }
-  }
+p.author {
+  margin-top: -5px;
 }
 
 #item>img,
@@ -184,51 +115,4 @@ p.description {
   height: 200px;
   width: auto;
   cursor: pointer;
-}
-
-.featured {
-  margin-top: 40px;
-  border-radius: 15px;
-  padding: 50px;
-  color: #fff;
-  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
-  width: 85%;
-
-  button {
-    float: left;
-    margin-top: -7px;
-    border: 2px solid map-get($theme-colours, 'main');
-    color: map-get($theme-colours, 'main');
-
-    &:hover {
-      background: map-get($theme-colours, 'main');
-      color: #2d3436;
-    }
-  }
-
-  h1 {
-    margin-top: -20px;
-    font-size: 2rem;
-  }
-}
-
-.lightboxmodal {
-  margin: auto;
-  max-width: 60%;
-  background: none !important;
-  box-shadow: none !important;
-
-  img {
-    height: auto;
-    width: 100%;
-  }
-
-  .closeModal {
-    color: #fff;
-    text-shadow: 0 0 20px rgb(0 0 0 / 30%);
-  }
-}
-
-.overview {
-  font-size: 30px !important;
 }
