@@ -49,13 +49,15 @@ export default function PhotoInformation({ info, url, api }) {
     }
   }
 
+  const ddgProxy = (localStorage.getItem('ddgProxy') === 'true');
+
   // get resolution
   const img = new Image();
   img.onload = (event) => {
     setWidth(event.target.width);
     setHeight(event.target.height);
   };
-  img.src = (localStorage.getItem('ddgProxy') === 'true' && !info.offline && !url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + url : url;
+  img.src = (ddgProxy && !info.offline && !url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + url : url;
 
   // info is still there because we want the favourite button to work
   if (localStorage.getItem('photoInformation') === 'false') {
@@ -96,8 +98,10 @@ export default function PhotoInformation({ info, url, api }) {
 
     const lat = lat2tile(info.latitude, 12);
     const lon = lon2tile(info.longitude, 12);
+    const tile = `https://a.tile.openstreetmap.org/12/${lon}/${lat}.png`;
+
     return (
-      <img src={`https://a.tile.openstreetmap.org/12/${lon}/${lat}.png`} alt='location' draggable={false}/>
+      <img src={ddgProxy ? window.constants.DDG_IMAGE_PROXY + tile : tile} alt='location' draggable={false}/>
     );
   }
 
