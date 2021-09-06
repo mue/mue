@@ -169,6 +169,7 @@ export default class BackgroundSettings extends PureComponent {
         <Checkbox name='ddgProxy' text={background.ddg_image_proxy} element='.other' />
         <Checkbox name='bgtransition' text={background.transition} element='.other' />
         <Checkbox name='photoInformation' text={background.photo_information} element='.other' />
+        <Checkbox name='photoMap' text='Show location map on photo information if available' element='.other'/>
 
         <h3>{background.source.title}</h3>
         <Dropdown label={background.type.title} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>

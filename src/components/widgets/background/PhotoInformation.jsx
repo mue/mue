@@ -1,6 +1,7 @@
 import { useState, Fragment } from 'react';
 import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@material-ui/icons';
 import Hotkeys from 'react-hot-keys';
+import { lat2tile, lon2tile } from 'modules/helpers/background/widget';
 
 const toDataURL = async (url) => {
   const res = await fetch(url);
@@ -88,6 +89,18 @@ export default function PhotoInformation({ info, url, api }) {
     }
   };
 
+  const photoMap = () => {
+    if (localStorage.getItem('photoMap') !== 'true' || info.latitude === null || info.longitude === null) {
+      return null;
+    }
+
+    const lat = lat2tile(info.latitude, 12);
+    const lon = lon2tile(info.longitude, 12);
+    return (
+      <img src={`https://a.tile.openstreetmap.org/12/${lon}/${lat}.png`} alt='location' draggable={false}/>
+    );
+  }
+
   return (
     <div className='photoInformation'>
       <h1>{photo} <span id='credit'>{credit}</span></h1>
@@ -96,6 +109,7 @@ export default function PhotoInformation({ info, url, api }) {
         <Info className='infoIcon'/>
         <h1>{language.information}</h1>
         <hr/>
+        {photoMap()}
         {/* fix console error by using fragment and key */}
         {info.location && info.location !== 'N/A' ? <Fragment key='location'>
           <LocationOn/>

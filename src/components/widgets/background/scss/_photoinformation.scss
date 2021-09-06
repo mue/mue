@@ -55,6 +55,14 @@
     padding: 2px;
   }
 
+  img {
+    height: 100px;
+    object-fit: cover;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
   span,
   svg {
     font-size: 2em;

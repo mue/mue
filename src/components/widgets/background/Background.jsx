@@ -108,11 +108,12 @@ export default class Background extends PureComponent {
         const backgroundAPI = localStorage.getItem('backgroundAPI');
         const apiCategory = localStorage.getItem('apiCategory');
         const apiQuality = localStorage.getItem('apiQuality');
+        const photoMap = localStorage.getItem('photoMap');
 
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            requestURL = `${window.constants.PROXY_URL}/images/unsplash?quality=${apiQuality}`;
+            requestURL = `${window.constants.PROXY_URL}/images/unsplash?quality=${apiQuality}&map=${(photoMap === 'true')}`;
             break;
           case 'pexels':
             requestURL = `${window.constants.PROXY_URL}/images/pexels?quality=${apiQuality}`;
@@ -154,7 +155,9 @@ export default class Background extends PureComponent {
             camera: data.camera,
             url: data.file,
             photographerURL: photographerURL,
-            photoURL: photoURL
+            photoURL: photoURL,
+            latitude: data.latitude || null,
+            longitude: data.longitude || null,
           }
         };
 
