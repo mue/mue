@@ -101,7 +101,9 @@ export default function PhotoInformation({ info, url, api }) {
     const tile = `https://a.tile.openstreetmap.org/12/${lon}/${lat}.png`;
 
     return (
-      <img src={ddgProxy ? window.constants.DDG_IMAGE_PROXY + tile : tile} alt='location' draggable={false}/>
+      <a href={`https://www.openstreetmap.org/?mlat=${info.latitude}&mlon=${info.longitude}`}>
+        <img src={ddgProxy ? window.constants.DDG_IMAGE_PROXY + tile : tile} alt='location' draggable={false}/>
+      </a>
     );
   }
 
