@@ -37,7 +37,6 @@ export function gradientStyleBuilder({ type, angle, gradient }) {
   };
 }
 
-
 // source: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#ECMAScript_.28JavaScript.2FActionScript.2C_etc..29
 export function lon2tile(lon, zoom) {
   return (Math.floor((lon + 180) / 360 * Math.pow(2, zoom)));

@@ -90,6 +90,22 @@ export default class Added extends PureComponent {
     }
   }
 
+  updateCheck() {
+    let updates = 0;
+    this.state.installed.forEach(async (item) => {
+      const data = await (await fetch('https://marketplace.muetab.com/item/' + item.name)).json();
+      if (data.version !== item.version) {
+        updates++;
+      }
+    });
+    
+    if (updates > 0) { 
+      toast('Updates available: ' + updates);
+    } else {
+      toast('No updates available');
+    }
+  }
+
   componentDidMount() {
     this.sortAddons(localStorage.getItem('sortAddons'), false);
   }
@@ -119,6 +135,7 @@ export default class Added extends PureComponent {
           <option value='a-z'>{this.language.sort.a_z}</option>
           <option value='z-a'>{this.language.sort.z_a}</option>
         </Dropdown>
+        <button className='addToMue sideload updateCheck' onClick={() => this.updateCheck()}>Check for updates</button>
         <br/>
         <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', input)} />        
       </>

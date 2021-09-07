@@ -158,6 +158,8 @@ export default class Background extends PureComponent {
             photoURL: photoURL,
             latitude: data.latitude || null,
             longitude: data.longitude || null,
+            // location map token from mapbox
+            maptoken: data.maptoken || null
           }
         };
 

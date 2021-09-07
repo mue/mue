@@ -53,7 +53,7 @@ export default class Sideload extends PureComponent {
           <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.installAddon(JSON.parse(e.target.result))} />
           <LocalMall/>
           <h1>{window.language.modals.main.addons.sideload}</h1>
-          <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{window.language.modals.main.settings.sections.background.source.upload}</button>
+          <button className='addToMue sideload updateCheck' onClick={() => document.getElementById('file-input').click()}>{window.language.modals.main.settings.sections.background.source.upload}</button>
         </div>
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showFailed: false })} isOpen={this.state.showFailed} className='Modal resetmodal mainModal sideloadModal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
           <SideloadFailedModal modalClose={() => this.setState({ showFailed: false })} reason={this.state.failedReason}/>

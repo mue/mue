@@ -55,12 +55,17 @@
     padding: 2px;
   }
 
-  img {
+  .locationMap {
     height: 100px;
     object-fit: cover;
     width: 100%;
     background-position: center center;
     background-repeat: no-repeat;
+  }
+
+  .mapboxLogo {
+    height: 20px;
+    width: auto;
   }
 
   span,
@@ -102,5 +107,9 @@
     &:hover {
       opacity: 0.8;
     }
+  }
+
+  .mapCopyright {
+    font-size: 0.9em;
   }
 }

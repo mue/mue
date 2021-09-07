@@ -92,18 +92,29 @@ export default function PhotoInformation({ info, url, api }) {
   };
 
   const photoMap = () => {
-    if (localStorage.getItem('photoMap') !== 'true' || info.latitude === null || info.longitude === null) {
+    if (localStorage.getItem('photoMap') !== 'true' || info.latitude === (null || undefined) || info.longitude === (null || undefined)) {
       return null;
     }
 
-    const lat = lat2tile(info.latitude, 12);
-    const lon = lon2tile(info.longitude, 12);
-    const tile = `https://a.tile.openstreetmap.org/12/${lon}/${lat}.png`;
+    const zoom = 12;
+    const lat = lat2tile(info.latitude, zoom);
+    const lon = lon2tile(info.longitude, zoom);
+    const tile = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/${zoom}/${lon}/${lat}?access_token=${info.maptoken}`;
+    
+    let icon = 'https://res.cloudinary.com/mue/image/upload/mapbox/mapbox-logo-dark.png';
+    if (document.body.classList.contains('dark')) {
+      icon = 'https://res.cloudinary.com/mue/image/upload/mapbox/mapbox-logo-white.png';
+    }
 
     return (
-      <a href={`https://www.openstreetmap.org/?mlat=${info.latitude}&mlon=${info.longitude}`}>
-        <img src={ddgProxy ? window.constants.DDG_IMAGE_PROXY + tile : tile} alt='location' draggable={false}/>
-      </a>
+      <Fragment key='test'>
+        <a href={`https://www.openstreetmap.org/?mlat=${info.latitude}&mlon=${info.longitude}`}>
+          <img className='locationMap' src={ddgProxy ? window.constants.DDG_IMAGE_PROXY + tile : tile} alt='location' draggable={false}/>
+        </a>
+        <br/>
+        <img className='mapboxLogo' src={icon} alt='mapbox logo' draggable={false}/>
+        <span className='mapCopyright'><a href='https://www.mapbox.com/about/maps/'> © Mapbox</a>, <a href='http://www.openstreetmap.org/about/'>© OpenStreetMap</a>. <a href='https://www.mapbox.com/map-feedback/'>Improve this map</a>.</span>
+      </Fragment>
     );
   }
 
