@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
 
 import Checkbox from '../../Checkbox';
@@ -16,7 +16,7 @@ export default class BackgroundSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
-      customBackground: localStorage.getItem('customBackground') || '',
+      customBackground: [''],
       backgroundType: localStorage.getItem('backgroundType') || 'api',
       backgroundCategories: [window.language.modals.main.loading]
     };
@@ -25,26 +25,54 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   resetCustom = () => {
-    localStorage.setItem('customBackground', '');
+    localStorage.setItem('customBackground', '[""]');
     this.setState({
-      customBackground: ''
+      customBackground: ['']
     });
     toast(window.language.toasts.reset);
     EventBus.dispatch('refresh', 'background');
   }
 
-  customBackground(e, text) {
+  customBackground(e, text, index) {
     const result = (text === true) ? e.target.value : e.target.result;
-    localStorage.setItem('customBackground', result);
+
+    const customBackground = this.state.customBackground;
+    customBackground[index] = result;
     this.setState({
-      customBackground: result
+      customBackground
     });
+    this.forceUpdate();
+
+    localStorage.setItem('customBackground', JSON.stringify(customBackground));
     EventBus.dispatch('refresh', 'background');
   }
 
-  videoCustomSettings = () => {
+  addCustomBackground() {
     const customBackground = this.state.customBackground;
+    customBackground.push('');
 
+    this.setState({
+      customBackground
+    });
+    this.forceUpdate();
+
+    localStorage.setItem('customBackground', JSON.stringify(customBackground));
+  }
+
+  removeCustomBackground(index) { 
+    const customBackground = this.state.customBackground;
+    customBackground.splice(index, 1);
+
+    this.setState({
+      customBackground
+    });
+    this.forceUpdate();
+
+    localStorage.setItem('customBackground', JSON.stringify(customBackground));
+  }
+
+  videoCustomSettings = (index) => {
+    const customBackground = this.state.customBackground[index];
     if (customBackground.startsWith('data:video/') || customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
       return (
         <>
@@ -63,6 +91,17 @@ export default class BackgroundSettings extends PureComponent {
     }
   }
 
+  getCustom() {
+    let data;
+    try {
+      data = JSON.parse(localStorage.getItem('customBackground'));
+    } catch (e) {
+      data = [localStorage.getItem('customBackground')];
+    }
+
+    return data;
+  }
+
   async getBackgroundCategories() {
     const data = await (await fetch(window.constants.API_URL + '/images/categories', { signal: this.controller.signal })).json();
 
@@ -76,6 +115,10 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   componentDidMount() {
+    this.setState({
+      customBackground: this.getCustom()
+    });
+
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return this.setState({
         backgroundCategories: [window.language.modals.update.offline.title]
@@ -144,11 +187,18 @@ export default class BackgroundSettings extends PureComponent {
       <>
         <ul>
           <p>{background.source.custom_background} <span className='modalLink' onClick={this.resetCustom}>{this.language.buttons.reset}</span></p>
-          <input type='text' value={this.state.customBackground} onChange={(e) => this.customBackground(e, true)}></input>
-          <span className='modalLink' onClick={() => document.getElementById('bg-input').click()}>{background.source.upload}</span>
+          {this.state.customBackground.map((_url, index) => (
+            <Fragment key={index}>
+              {this.state.customBackground.length > 1 ? <button className='reset round round-small' onClick={() => this.removeCustomBackground(index)}>x</button> : null}
+              <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)}></input>
+              <span className='modalLink' onClick={() => document.getElementById('bg-input').click(index)}>{background.source.upload}</span>
+              {this.videoCustomSettings(index)}
+              <br/><br/>  
+            </Fragment>
+          ))}
+          <button className='uploadbg' onClick={() => this.addCustomBackground()}>Add</button>
           <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e)} />
         </ul>
-        {this.videoCustomSettings()}
       </>
     );
 

@@ -189,14 +189,24 @@ export default class Background extends PureComponent {
       break;
 
       case 'custom':
-        const customBackground = localStorage.getItem('customBackground');
+        let customBackground;
+        try {
+          customBackground = JSON.parse(localStorage.getItem('customBackground'));
+        } catch (e) {
+          // move to new format
+          customBackground = [localStorage.getItem('customBackground')];
+          localStorage.setItem('customBackground', JSON.stringify(customBackground));
+        }
+
+        // pick random
+        customBackground = customBackground[Math.floor(Math.random() * customBackground.length)];
 
         // allow users to use offline images
         if (offline && !customBackground.startsWith('data:')) {
           return this.setState(offlineBackground());
         }
 
-        if (customBackground !== '' && customBackground !== 'undefined') {
+        if (customBackground !== '' && customBackground !== 'undefined' && customBackground !== ['']) {
           this.setState({
             url: customBackground,
             type: 'custom',

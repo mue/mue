@@ -149,7 +149,7 @@ export default class Create extends PureComponent {
         <p>{addons.create.metadata.screenshot_url}</p>
         <input type='text' value={this.state.addonMetadata.screenshot_url} onInput={(e) => setMetadata(e.target.value, 'screenshot_url')}/>
         <p>{addons.create.metadata.description}</p>
-        <textarea className='settingsTextarea' value={this.state.addonMetadata.description} onInput={(e) => setMetadata(e.target.value, 'description')}></textarea>
+        <textarea className='settingsTextarea' value={this.state.addonMetadata.description} onInput={(e) => setMetadata(e.target.value, 'description')}/>
         <br/>
         <button onClick={() => this.changeTab(1)} className='uploadbg' style={{ marginRight: '10px' }}>{welcome.buttons.previous}</button>
         <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' disabled={nextDescriptionDisabled}>{welcome.buttons.next}</button>
