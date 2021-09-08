@@ -44,7 +44,8 @@ export default class BackgroundSettings extends PureComponent {
     this.forceUpdate();
 
     localStorage.setItem('customBackground', JSON.stringify(customBackground));
-    EventBus.dispatch('refresh', 'background');
+    document.querySelector('.reminder-info').style.display = 'block';
+    localStorage.setItem('showReminder', true);
   }
 
   addCustomBackground() {
@@ -100,6 +101,15 @@ export default class BackgroundSettings extends PureComponent {
     }
 
     return data;
+  }
+
+  uploadCustombackground(index) {
+    document.getElementById('bg-input').setAttribute('index', index);
+    document.getElementById('bg-input').click();
+    // to fix loadFunction
+    this.setState({
+      currentBackgroundIndex: index
+    });
   }
 
   async getBackgroundCategories() {
@@ -191,13 +201,13 @@ export default class BackgroundSettings extends PureComponent {
             <Fragment key={index}>
               {this.state.customBackground.length > 1 ? <button className='reset round round-small' onClick={() => this.removeCustomBackground(index)}>x</button> : null}
               <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)}></input>
-              <span className='modalLink' onClick={() => document.getElementById('bg-input').click(index)}>{background.source.upload}</span>
+              <span className='modalLink' onClick={() => this.uploadCustombackground(index)}>{background.source.upload}</span>
               {this.videoCustomSettings(index)}
               <br/><br/>  
             </Fragment>
           ))}
           <button className='uploadbg' onClick={() => this.addCustomBackground()}>Add</button>
-          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e)} />
+          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
         </ul>
       </>
     );
