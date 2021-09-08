@@ -93,7 +93,7 @@ export default class Added extends PureComponent {
   updateCheck() {
     let updates = 0;
     this.state.installed.forEach(async (item) => {
-      const data = await (await fetch('https://marketplace.muetab.com/item/' + item.name)).json();
+      const data = await (await fetch(window.constants.MARKETPLACE_URL + '/item/' + item.name)).json();
       if (data.version !== item.version) {
         updates++;
       }

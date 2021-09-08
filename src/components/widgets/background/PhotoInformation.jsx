@@ -92,28 +92,30 @@ export default function PhotoInformation({ info, url, api }) {
   };
 
   const photoMap = () => {
-    if (localStorage.getItem('photoMap') !== 'true' || info.latitude === (null || undefined) || info.longitude === (null || undefined)) {
+    if (localStorage.getItem('photoMap') !== 'true' || !info.latitude || !info.longitude) {
       return null;
     }
 
     const zoom = 12;
     const lat = lat2tile(info.latitude, zoom);
     const lon = lon2tile(info.longitude, zoom);
-    const tile = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/${zoom}/${lon}/${lat}?access_token=${info.maptoken}`;
+    const tile = `${window.constants.MAPBOX_URL}/styles/v1/mapbox/streets-v11/tiles/${zoom}/${lon}/${lat}?access_token=${info.maptoken}`;
     
-    let icon = 'https://res.cloudinary.com/mue/image/upload/mapbox/mapbox-logo-dark.png';
+    let icon = window.constants.CDN_URL + '/mapbox/mapbox-logo-dark.png';
     if (document.body.classList.contains('dark')) {
-      icon = 'https://res.cloudinary.com/mue/image/upload/mapbox/mapbox-logo-white.png';
+      icon = window.constants.CDN_URL + '/mapbox/mapbox-logo-white.png';
     }
 
     return (
       <Fragment key='test'>
-        <a href={`https://www.openstreetmap.org/?mlat=${info.latitude}&mlon=${info.longitude}`}>
-          <img className='locationMap' src={ddgProxy ? window.constants.DDG_IMAGE_PROXY + tile : tile} alt='location' draggable={false}/>
+        <a href={`https://www.openstreetmap.org/?mlat=${info.latitude}&mlon=${info.longitude}`} target='_blank' rel='noopener noreferrer'>
+          <img className='locationMap' src={tile} alt='location' draggable={false}/>
         </a>
         <br/>
         <img className='mapboxLogo' src={icon} alt='mapbox logo' draggable={false}/>
-        <span className='mapCopyright'><a href='https://www.mapbox.com/about/maps/'> © Mapbox</a>, <a href='http://www.openstreetmap.org/about/'>© OpenStreetMap</a>. <a href='https://www.mapbox.com/map-feedback/'>Improve this map</a>.</span>
+        <span className='mapCopyright'>
+          <a href='https://www.mapbox.com/about/maps/' target='_blank' rel='noopener noreferrer'> © Mapbox</a>, <a href='https://www.openstreetmap.org/about/' target='_blank' rel='noopener noreferrer'>© OpenStreetMap</a>. <a href='https://www.mapbox.com/map-feedback/' target='_blank' rel='noopener noreferrer'>Improve this map</a>.
+        </span>
       </Fragment>
     );
   }
