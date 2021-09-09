@@ -111,15 +111,15 @@ export default class About extends PureComponent {
 
         <h3>{this.language.contributors}</h3>
         <p>{this.state.loading}</p>
-        {this.state.contributors.map(({ handle, avatar, login }) => (
-          <Tooltip title={handle} key={handle}>
-            <a href={'https://github.com/' + login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar + '&size=128'} alt={handle}></img></a>
+        {this.state.contributors.map(({ login, id }) => (
+          <Tooltip title={login} key={login}>
+            <a href={'https://github.com/' + login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={'https://avatars.githubusercontent.com/u/' + id + '?s=128'} alt={login}></img></a>
           </Tooltip>
         ))}
         { // for those who contributed without opening a pull request
-        this.state.other_contributors.map(({ handle, avatar, login }) => (
-          <Tooltip title={handle} key={handle}>
-            <a href={'https://github.com/' + login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar + '&size=128'} alt={handle}></img></a>
+        this.state.other_contributors.map(({ login, avatar_url }) => (
+          <Tooltip title={login} key={login}>
+            <a href={'https://github.com/' + login} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar_url + '&s=128'} alt={login}></img></a>
           </Tooltip>
         ))}
 
@@ -127,7 +127,7 @@ export default class About extends PureComponent {
         <p>{this.state.loading}</p>
         {this.state.sponsors.map(({ handle, avatar }) => (
           <Tooltip title={handle} key={handle}>
-            <a href={'https://github.com/' + handle} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar + '&size=128'} alt={handle}></img></a>
+            <a href={'https://github.com/' + handle} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar.split('?')[0] + '?s=128'} alt={handle}></img></a>
           </Tooltip>
         ))}
 
