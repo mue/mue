@@ -87,3 +87,26 @@
     font-size: 2em;
   }
 }
+
+.cleanButton {
+  background: none;
+  border: none;
+  vertical-align: middle;
+
+  svg {
+    fill: #ff4757;
+    border-radius: 100%;
+    background-color: var(--background);
+    height: 1.2em;
+    width: 1.2em;
+    cursor: pointer;
+    transition: ease 0.5s;
+
+    &:hover {
+      border-radius: 100%;
+      background: #ff4757;
+      fill: var(--background);
+      transition: ease 0.5s;
+    }
+  }
+}

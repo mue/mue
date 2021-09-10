@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
+import { Cancel } from '@material-ui/icons';
 
 import Checkbox from '../../Checkbox';
 import Dropdown from '../../Dropdown';
@@ -200,8 +201,10 @@ export default class BackgroundSettings extends PureComponent {
           <p>{this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage(this.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
           {this.state.customBackground.map((_url, index) => (
             <Fragment key={index}>
-              {this.state.customBackground.length > 1 ? <button className='reset round round-small' onClick={() => this.removeCustomBackground(index)}>x</button> : null}
               <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)}></input>
+              {this.state.customBackground.length > 1 ? <button className='cleanButton' onClick={() => this.removeCustomBackground(index)}>
+                <Cancel/>
+              </button> : null}
               <span className='modalLink' onClick={() => this.uploadCustombackground(index)}>{this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.ypload')}</span>
               {this.videoCustomSettings(index)}
               <br/><br/>  
