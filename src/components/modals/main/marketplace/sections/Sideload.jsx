@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { LocalMall } from '@material-ui/icons';
+import { LocalMall } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 

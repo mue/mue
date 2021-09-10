@@ -1,5 +1,5 @@
 import { PureComponent } from 'react';
-import { Checkbox as CheckboxUI, FormControlLabel } from '@material-ui/core';
+import { Checkbox as CheckboxUI, FormControlLabel } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@material-ui/icons';
+import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 import Hotkeys from 'react-hot-keys';
 

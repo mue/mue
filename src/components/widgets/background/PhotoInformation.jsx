@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { useState, Fragment } from 'react';
-import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@material-ui/icons';
+import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@mui/icons-material';
 import Hotkeys from 'react-hot-keys';
 import { lat2tile, lon2tile } from 'modules/helpers/background/widget';
 

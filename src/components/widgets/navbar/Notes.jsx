@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { FileCopyRounded, AssignmentRounded as NotesRounded, PushPin }from '@material-ui/icons';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { FileCopyRounded, AssignmentRounded as NotesRounded, PushPin }from '@mui/icons-material';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
 import Hotkeys from 'react-hot-keys';
 

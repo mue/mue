@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { Fullscreen } from '@material-ui/icons';
+import { Fullscreen } from '@mui/icons-material';
 import Hotkeys from 'react-hot-keys';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { Close, Delete } from '@material-ui/icons';
+import { Close, Delete } from '@mui/icons-material';
 import { setDefaultSettings } from 'modules/helpers/settings';
 
 export default function ResetModal({ modalClose }) {

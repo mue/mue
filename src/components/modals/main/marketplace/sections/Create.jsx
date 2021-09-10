@@ -5,7 +5,7 @@ import {
   SettingsRounded as Settings, 
   PhotoOutlined as Photos, 
   FormatQuoteOutlined as Quotes
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import { toast } from 'react-toastify';
 
 import { saveFile } from 'modules/helpers/settings/modals';

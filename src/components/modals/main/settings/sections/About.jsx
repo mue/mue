@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { Email, Twitter, Chat, Instagram, Facebook } from '@material-ui/icons';
+import { Email, Twitter, Chat, Instagram, Facebook } from '@mui/icons-material';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 

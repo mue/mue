@@ -23,7 +23,7 @@ import {
   AddCircleOutline as Added,
   CreateNewFolderOutlined as Create,
   KeyboardAltOutlined as Keybinds
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 
 function Tab({ label, currentTab, onClick, navbarTab }) {
   const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);

@@ -1,5 +1,5 @@
 import { PureComponent } from 'react';
-import { Switch as SwitchUI, FormControlLabel } from '@material-ui/core';
+import { Switch as SwitchUI, FormControlLabel } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { ErrorOutline } from '@material-ui/icons';
+import { ErrorOutline } from '@mui/icons-material';
 
 export default class ErrorBoundary extends PureComponent {
   constructor(props) {

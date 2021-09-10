@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
-import { Cancel } from '@material-ui/icons';
+import { Cancel } from '@mui/icons-material';
 
 import Checkbox from '../../Checkbox';
 import Dropdown from '../../Dropdown';

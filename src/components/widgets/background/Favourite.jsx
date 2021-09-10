@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { Star, StarBorder } from '@material-ui/icons';
+import { Star, StarBorder } from '@mui/icons-material';
 import Hotkeys from 'react-hot-keys';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';

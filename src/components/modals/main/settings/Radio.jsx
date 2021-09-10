@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { Radio as RadioUI, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core';
+import { Radio as RadioUI, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 

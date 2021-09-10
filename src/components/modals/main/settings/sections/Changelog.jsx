@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { WifiOff } from '@material-ui/icons';
+import { WifiOff } from '@mui/icons-material';
 import Modal from 'react-modal';
 
 import Lightbox from '../../marketplace/Lightbox';

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { CloudUpload, AutoAwesome, LightMode, DarkMode } from '@material-ui/icons';
+import { CloudUpload, AutoAwesome, LightMode, DarkMode } from '@mui/icons-material';
 
 import Radio from '../main/settings/Radio';
 import Checkbox from '../main/settings/Checkbox';

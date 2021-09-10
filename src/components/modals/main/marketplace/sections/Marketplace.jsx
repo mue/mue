@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { WifiOff, LocalMall } from '@material-ui/icons';
+import { WifiOff, LocalMall } from '@mui/icons-material';
 
 import Item from '../Item';
 import Items from '../Items';

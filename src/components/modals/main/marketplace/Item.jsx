@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
-import { ArrowBack } from '@material-ui/icons';
+import { ArrowBack } from '@mui/icons-material';
 import Modal from 'react-modal';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
