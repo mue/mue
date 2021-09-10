@@ -36,17 +36,17 @@ export default function PhotoInformation({ info, url, api }) {
   const pexels = variables.language.getMessage(variables.languagecode, 'widgets.background.pexels');
   const photographer = info.credit.split(` ${unsplash}`)[0].split(` ${pexels}`);
 
-  let credit;
-  let photo;
+  let credit = info.credit;
+  let photo = variables.language.getMessage(variables.languagecode, 'widgets.background.credit');
 
   // unsplash and pexels credit
   if (info.photographerURL && info.photographerURL !== '' && !info.offline && api) {
     if (api === 'unsplash') {
-      photo = <a href={info.photoURL + '?utm_source=mue'} target='_blank' rel='noopener noreferrer'>{variables.language.getMessage(variables.languagecode, 'widgets.background.credit')}</a>;
-      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{unsplash}</a></>;
+      photo = <a href={info.photoURL + '?utm_source=mue'} target='_blank' rel='noopener noreferrer'>{photo}</a>;
+      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{info.credit}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{unsplash}</a></>;
     } else {
-      photo = <a href={info.photoURL} target='_blank' rel='noopener noreferrer'>{variables.language.getMessage(variables.languagecode, 'widgets.background.credit')}</a>;
-      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{pexels}</a></>;
+      photo = <a href={info.photoURL} target='_blank' rel='noopener noreferrer'>{photo}</a>;
+      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{info.credit}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{pexels}</a></>;
     }
   }
 
@@ -142,7 +142,7 @@ export default function PhotoInformation({ info, url, api }) {
         <Resolution/>
         <span id='infoResolution'>{width}x{height}</span>
         <Photographer/>
-        <span>{info.credit}</span>
+        <span>{photographer}</span>
         {downloadEnabled ? 
           <>
             <Download/>
