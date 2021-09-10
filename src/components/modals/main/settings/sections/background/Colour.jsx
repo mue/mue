@@ -12,6 +12,7 @@ import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.
 export default class ColourSettings extends PureComponent {
   DefaultGradientSettings = { angle: '180', gradient: [{ colour: '#ffb032', stop: 0 }], type: 'linear' };
   GradientPickerInitalState = undefined;
+
   getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
   languagecode = variables.languagecode;
   

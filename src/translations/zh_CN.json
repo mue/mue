@@ -166,6 +166,7 @@
               "custom_colour": "自定义背景颜色",
               "upload": "上传",
               "add_colour": "添加颜色",
+              "add_background": "Add background",
               "disabled": "已禁用",
               "loop_video": "循环播放",
               "mute_video": "静音",
