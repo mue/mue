@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { Radio as RadioUI, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core';
 
@@ -20,7 +21,7 @@ export default class Radio extends PureComponent {
 
     if (this.props.name === 'language') {
       // old tab name
-      if (localStorage.getItem('tabName') === window.language.tabname) {
+      if (localStorage.getItem('tabName') === variables.language.getMessage(variables.languagecode, 'tabname')) {
         localStorage.setItem('tabName', require(`translations/${value.replace('-', '_')}.json`).tabname);
       }
     }

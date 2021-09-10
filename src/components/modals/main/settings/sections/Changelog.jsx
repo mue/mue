@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { WifiOff } from '@material-ui/icons';
 import Modal from 'react-modal';
@@ -12,7 +13,6 @@ export default class Changelog extends PureComponent {
       showLightbox: false,
       lightboxImg: null
     };
-    this.language = window.language.modals.update;
     this.offlineMode = (localStorage.getItem('offlineMode') === 'true');
     this.controller = new AbortController();
     this.changelog = createRef();
@@ -26,7 +26,7 @@ export default class Changelog extends PureComponent {
     }
 
     let date = new Date(data.date.split(' ')[0]);
-    date = date.toLocaleDateString(window.languagecode.replace('_', '-'), { 
+    date = date.toLocaleDateString(variables.languagecode.replace('_', '-'), { 
       year: 'numeric', 
       month: 'long', 
       day: 'numeric' 
@@ -75,6 +75,9 @@ export default class Changelog extends PureComponent {
   }
 
   render() {
+    const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+    const languagecode = variables.languagecode;
+
     const errorMessage = (msg) => {
       return (
         <div className='emptyitems'>
@@ -85,25 +88,23 @@ export default class Changelog extends PureComponent {
       );
     };
 
-    if (navigator.onLine === false || this.offlineMode) {
-      const language = window.language.modals.main.marketplace;
-    
+    if (navigator.onLine === false || this.offlineMode) {    
       return errorMessage(<>
         <WifiOff/>
-        <h1>{language.offline.title}</h1>
-        <p className='description'>{language.offline.description}</p>
+        <h1>{getMessage(languagecode, 'modals.main.marketplace.offline.title')}</h1>
+        <p className='description'>{getMessage(languagecode, 'modals.main.marketplace.offline.description')}</p>
       </>);
     }
   
     if (!this.state.title) {
-      return errorMessage(<h1>{window.language.modals.main.loading}</h1>);
+      return errorMessage(<h1>{getMessage(languagecode, 'modals.main.loading')}</h1>);
     }
 
     return (
       <div className='changelogtab' ref={this.changelog}>
         <h1>{this.state.title}</h1>
         <h5>{this.state.author} • {this.state.date}</h5>
-        {this.state.image ? <img draggable='false' src={this.state.image} alt={window.language.modals.update.title} className='updateimage'/> : null}
+        {this.state.image ? <img draggable='false' src={this.state.image} alt={this.state.title} className='updateimage'/> : null}
         <div className='updatechangelog' dangerouslySetInnerHTML={{ __html: this.state.html }}/>
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
           <Lightbox modalClose={() => this.setState({ showLightbox: false })} img={this.state.lightboxImg}/>

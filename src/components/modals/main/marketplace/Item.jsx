@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
 import { ArrowBack } from '@material-ui/icons';
@@ -26,7 +27,8 @@ export default class Item extends PureComponent {
   }
 
   render() {
-    const language = window.language.modals.main.marketplace.product;
+    const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+    const languagecode = variables.languagecode;
 
     if (!this.props.data.display_name) {
       return null;
@@ -37,8 +39,8 @@ export default class Item extends PureComponent {
       warningHTML = (
         <div className='productInformation'>
           <ul>
-            <li className='header'>{language.quote_warning.title}</li>
-            <li id='updated'>{language.quote_warning.description}</li>
+            <li className='header'>{getMessage(languagecode, 'modals.main.marketplace.product.quote_warning.title')}</li>
+            <li id='updated'>{getMessage(languagecode, 'modals.main.marketplace.product.quote_warning.description')}</li>
           </ul>
         </div>
       );
@@ -75,10 +77,10 @@ export default class Item extends PureComponent {
         <div className='side'>
           <div className='productInformation'>
             <ul>
-              <li className='header'>{language.version}</li>
+              <li className='header'>{getMessage(languagecode, 'modals.main.marketplace.product.version')}</li>
               {updateButton ? <li>{this.props.data.version} (Installed: {this.props.data.addonInstalledVersion})</li> : <li>{this.props.data.version}</li>}
               <br/>
-              <li className='header'>{language.author}</li>
+              <li className='header'>{getMessage(languagecode, 'modals.main.marketplace.product.author')}</li>
               <li>{this.props.data.author}</li>
              </ul>
           </div>
@@ -89,7 +91,7 @@ export default class Item extends PureComponent {
           <br/><br/>
         </div>
         <div className='informationContainer'>
-          <h1 className='overview'>{language.overview}</h1>
+          <h1 className='overview'>{getMessage(languagecode, 'modals.main.marketplace.product.overview')}</h1>
           <p className='description' dangerouslySetInnerHTML={{ __html: this.props.data.description }}></p>
         </div>
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>

@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import Checkbox from '../Checkbox';
@@ -11,7 +12,6 @@ export default class GreetingSettings extends PureComponent {
     this.state = {
       birthday: new Date(localStorage.getItem('birthday')) || new Date()
     };
-    this.language = window.language.modals.main.settings;
   }
 
   changeDate = (e) => {
@@ -23,21 +23,22 @@ export default class GreetingSettings extends PureComponent {
   }
 
   render() {
-    const { greeting } = this.language.sections;
+    const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+    const languagecode = variables.languagecode;
 
     return (
       <>
-        <h2>{greeting.title}</h2>
-        <Switch name='greeting' text={this.language.enabled} category='greeting' element='.greeting'/>
-        <Checkbox name='events' text={greeting.events} category='greeting'/>
-        <Checkbox name='defaultGreetingMessage' text={greeting.default} category='greeting'/>
-        <Text title={greeting.name} name='greetingName' category='greeting'/>
-        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomGreeting' min='10' max='400' default='100' display='%' category='greeting' />
+        <h2>{getMessage(languagecode, 'modals.main.settings.sections.greeting.title')}</h2>
+        <Switch name='greeting' text={getMessage(languagecode, 'modals.main.settings.enabled')} category='greeting' element='.greeting'/>
+        <Checkbox name='events' text={getMessage(languagecode, 'modals.main.settings.sections.greeting.events')} category='greeting'/>
+        <Checkbox name='defaultGreetingMessage' text={getMessage(languagecode, 'modals.main.settings.sections.greeting.default')} category='greeting'/>
+        <Text title={getMessage(languagecode, 'modals.main.settings.sections.greeting.name')} name='greetingName' category='greeting'/>
+        <Slider title={getMessage(languagecode, 'modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomGreeting' min='10' max='400' default='100' display='%' category='greeting' />
 
-        <h3>{greeting.birthday}</h3>
-        <Switch name='birthdayenabled' text={this.language.enabled} category='greeting'/>
-        <Checkbox name='birthdayage' text={greeting.birthday_age} category='greeting'/>
-        <p>{greeting.birthday_date}</p>
+        <h3>{getMessage(languagecode, 'modals.main.settings.sections.greeting.birthday')}</h3>
+        <Switch name='birthdayenabled' text={getMessage(languagecode, 'modals.main.settings.enabled')} category='greeting'/>
+        <Checkbox name='birthdayage' text={getMessage(languagecode, 'modals.main.settings.sections.greeting.birthday_age')} category='greeting'/>
+        <p>{getMessage(languagecode, 'modals.main.settings.sections.greeting.birthday_date')}</p>
         <input type='date' onChange={this.changeDate} value={this.state.birthday.toISOString().substr(0, 10)}/>
       </>
     );

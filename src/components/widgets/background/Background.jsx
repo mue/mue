@@ -1,4 +1,5 @@
 // todo: rewrite this mess
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import PhotoInformation from './PhotoInformation';
@@ -23,7 +24,6 @@ export default class Background extends PureComponent {
         photoURL: ''
       }
     };
-    this.language = window.language.widgets.background;
   }
 
   setBackground() {
@@ -134,12 +134,15 @@ export default class Background extends PureComponent {
         let credit = data.photographer;
         let photoURL, photographerURL;
 
+        const language = variables.language;
+        const languagecode = variables.languagecode;
+
         if (backgroundAPI === 'unsplash') {
-          credit = data.photographer + ` ${this.language.unsplash}`;
+          credit = data.photographer + ` ${language.getMessage(languagecode, 'background.unsplash')}`;
           photoURL = data.photo_page;
           photographerURL = data.photographer_page;
         } else if (backgroundAPI === 'pexels') {
-          credit = data.photographer + ` ${this.language.pexels}`;
+          credit = data.photographer + ` ${language.getMessage(languagecode, 'background.pexels')}`;
           photoURL = data.photo_page;
           photographerURL = data.photographer_page;
         }

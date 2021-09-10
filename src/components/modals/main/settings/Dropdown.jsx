@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -19,7 +20,7 @@ export default class Dropdown extends PureComponent {
   onChange = (e) => {
     const { value } = e.target;
 
-    if (value === window.language.modals.main.loading) {
+    if (value === variables.language.getMessage(variables.languagecode, 'modals.main.loading')) {
       return;
     }
 

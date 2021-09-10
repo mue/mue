@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import Radio from '../Radio';
@@ -5,11 +6,14 @@ import Radio from '../Radio';
 const languages = require('modules/languages.json');
 
 export default class BackgroundSettings extends PureComponent {
+  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  languagecode = variables.languagecode;
+
   constructor() {
     super();
     this.state = {
       quoteLanguages: [{
-        name: window.language.modals.main.loading,
+        name: this.getMessage(this.languagecode, 'modals.main.loading'),
         value: 'loading'
       }]
     };
@@ -40,7 +44,7 @@ export default class BackgroundSettings extends PureComponent {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return this.setState({
         quoteLanguages: [{
-          name: window.language.modals.main.marketplace.offline.description,
+          name: this.getMessage(this.languagecode, 'modals.main.marketplace.offline.description'),
           value: 'loading'
         }]
       });
@@ -55,13 +59,11 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   render() {
-    const language = window.language.modals.main.settings.sections.language;
-
     return (
       <>
-        <h2>{language.title}</h2>
+        <h2>{this.getMessage(this.languagecode, 'modals.main.settings.sections.language.title')}</h2>
         <Radio name='language' options={languages} element='.other' />
-        <h3>{language.quote}</h3>
+        <h3>{this.getMessage(this.languagecode, 'modals.main.settings.sections.language.quote')}</h3>
         <Radio name='quotelanguage' options={this.state.quoteLanguages} category='quote' />
       </>
     );

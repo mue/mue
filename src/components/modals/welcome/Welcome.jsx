@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -8,15 +9,17 @@ import ProgressBar from './ProgressBar';
 import './welcome.scss';
 
 export default class WelcomeModal extends PureComponent {
+  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  languagecode = variables.languagecode;
+
   constructor() {
     super();
     this.state = {
       image: './././icons/undraw_celebration.svg',
       currentTab: 0,
       finalTab: 4,
-      buttonText: window.language.modals.welcome.buttons.next
+      buttonText: this.getMessage(this.languagecode, 'modals.welcome.buttons.next')
     };
-    this.language = window.language.modals.welcome;
     this.images = [
       './././icons/undraw_celebration.svg', 
       './././icons/undraw_around_the_world_modified.svg', 
@@ -35,18 +38,18 @@ export default class WelcomeModal extends PureComponent {
       return this.setState({
         currentTab: this.state.currentTab - 1,
         image: this.images[this.state.currentTab - 1],
-        buttonText: this.language.buttons.next
+        buttonText: this.getMessage(this.languagecode, 'modals.welcome.buttons.next')
       });
     }
 
-    if (this.state.buttonText === this.language.buttons.close) {
+    if (this.state.buttonText === this.getMessage(this.languagecode, 'modals.welcome.buttons.close')) {
       return this.props.modalClose();
     }
 
     this.setState({
       currentTab: this.state.currentTab + 1,
       image: this.images[this.state.currentTab + 1],
-      buttonText: (this.state.currentTab !== this.state.finalTab) ? this.language.buttons.next : this.language.buttons.close
+      buttonText: (this.state.currentTab !== this.state.finalTab) ? this.getMessage(this.languagecode, 'modals.welcome.buttons.next') : this.getMessage(this.languagecode, 'modals.welcome.buttons.close')
     });
   }
 
@@ -55,7 +58,7 @@ export default class WelcomeModal extends PureComponent {
     this.setState({
       currentTab: tab,
       image: this.images[tab],
-      buttonText: (tab !== this.state.finalTab + 1) ? this.language.buttons.next : this.language.buttons.close
+      buttonText: (tab !== this.state.finalTab + 1) ? this.getMessage(this.languagecode, 'modals.welcome.buttons.next') : this.getMessage(this.languagecode, 'modals.welcome.buttons.close')
     });
 
     localStorage.setItem('bgtransition', true);
@@ -68,7 +71,7 @@ export default class WelcomeModal extends PureComponent {
       this.setState({
         currentTab: Number(welcomeTab),
         image: this.images[Number(welcomeTab)],
-        buttonText: (Number(welcomeTab) !== this.state.finalTab + 1) ? this.language.buttons.next : this.language.buttons.close
+        buttonText: (Number(welcomeTab) !== this.state.finalTab + 1) ? this.getMessage(this.languagecode, 'modals.welcome.buttons.next') : this.getMessage(this.languagecode, 'modals.welcome.buttons.close')
       });
     }
 
@@ -97,7 +100,7 @@ export default class WelcomeModal extends PureComponent {
             <WelcomeSections currentTab={this.state.currentTab} switchTab={(tab) => this.switchTab(tab)}/>
           </div>
           <div className='buttons'>
-            {(this.state.currentTab !== 0) ? <button className='close' style={{ marginRight: '20px' }} onClick={() => this.changeTab(true)}>{this.language.buttons.previous}</button> : null}
+            {(this.state.currentTab !== 0) ? <button className='close' style={{ marginRight: '20px' }} onClick={() => this.changeTab(true)}>{this.getMessage(this.languagecode, 'modals.welcome.buttons.previous')}</button> : null}
             <button className='close' onClick={() => this.changeTab()}>{this.state.buttonText}</button>
           </div>
         </section>

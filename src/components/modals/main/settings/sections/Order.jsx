@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { DragIndicator } from '@material-ui/icons';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
@@ -5,13 +6,14 @@ import { toast } from 'react-toastify';
 
 import EventBus from 'modules/helpers/eventbus';
 
-const settings = window.language.modals.main.settings.sections;
+const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+const languagecode = variables.languagecode;
 const widget_name = {
-  greeting: settings.greeting.title,
-  time: settings.time.title,
-  quicklinks: settings.quicklinks.title,
-  quote: settings.quote.title,
-  date: settings.time.date.title
+  greeting: getMessage(languagecode, 'modals.main.settings.sections.greeting.title'),
+  time: getMessage(languagecode, 'modals.main.settings.sections.time.title'),
+  quicklinks: getMessage(languagecode, 'modals.main.settings.sections.quicklinks.title'),
+  quote: getMessage(languagecode, 'modals.main.settings.sections.quote.title'),
+  date: getMessage(languagecode, 'modals.main.settings.sections.greeting.title')
 };
 
 const SortableItem = sortableElement(({ value }) => (
@@ -31,7 +33,6 @@ export default class OrderSettings extends PureComponent {
     this.state = {
       items: JSON.parse(localStorage.getItem('order'))
     };
-    this.language = window.language.modals.main.settings;
   }
 
   // based on https://stackoverflow.com/a/48301905
@@ -65,7 +66,7 @@ export default class OrderSettings extends PureComponent {
       items: JSON.parse(localStorage.getItem('order'))
     });
 
-    toast(window.language.toasts.reset);
+    toast(getMessage(languagecode, 'toats.reset'));
   }
 
   enabled = (setting) => {
@@ -86,8 +87,8 @@ export default class OrderSettings extends PureComponent {
   render() {
     return (
       <>
-        <h2>{this.language.sections.order.title}</h2>
-        <span className='modalLink' onClick={this.reset}>{this.language.buttons.reset}</span>
+        <h2>{getMessage(languagecode, 'modals.main.settings.sections.order.title')}</h2>
+        <span className='modalLink' onClick={this.reset}>{getMessage(languagecode, 'modals.main.settings.buttons.reset')}</span>
         <SortableContainer onSortEnd={this.onSortEnd} lockAxis='y' lockToContainerEdges disableAutoscroll>
           {this.state.items.map((value, index) => {
             if (!this.enabled(value)) { 

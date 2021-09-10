@@ -1,15 +1,18 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import Switch from '../Switch';
 import KeybindInput from '../KeybindInput';
 
 export default class KeybindSettings extends PureComponent {
+  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  languagecode = variables.languagecode;
+
   constructor() {
     super();
     this.state = {
       keybinds: JSON.parse(localStorage.getItem('keybinds')) || {}
     };
-    this.language = window.language.modals.main.settings;
   }
 
   showReminder() {
@@ -19,7 +22,7 @@ export default class KeybindSettings extends PureComponent {
 
   listen(type) {
     const currentKeybinds = this.state.keybinds;
-    currentKeybinds[type] = this.language.sections.keybinds.recording;
+    currentKeybinds[type] = this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.recording');
     this.setState({
       keybinds: currentKeybinds
     });
@@ -72,24 +75,22 @@ export default class KeybindSettings extends PureComponent {
   }
 
   render() {
-    const { keybinds } = this.language.sections;
-
     return (
       <>
-        <h2>{keybinds.title}</h2>
-        <Switch name='keybindsEnabled' text={this.language.enabled} element='.other' />
-        <KeybindInput name={keybinds.background.favourite} state={this.state.keybinds} settingsName='favouriteBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.background.maximise} state={this.state.keybinds} settingsName='maximiseBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.background.download} state={this.state.keybinds} settingsName='downloadBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.background.show_info} state={this.state.keybinds} settingsName='showBackgroundInformation' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.quote.favourite} state={this.state.keybinds} settingsName='favouriteQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.quote.copy} state={this.state.keybinds} settingsName='copyQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.quote.tweet} state={this.state.keybinds} settingsName='tweetQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.notes.pin} state={this.state.keybinds} settingsName='pinNotes' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.notes.copy} state={this.state.keybinds} settingsName='copyNotes' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.search} state={this.state.keybinds} settingsName='focusSearch' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.quicklinks} state={this.state.keybinds} settingsName='toggleQuicklinks' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
-        <KeybindInput name={keybinds.modal} state={this.state.keybinds} settingsName='toggleModal' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <h2>{this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.title')}</h2>
+        <Switch name='keybindsEnabled' text={this.getMessage(this.languagecode, 'modals.main.settings.enabled')} element='.other' />
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.background.favourite')} state={this.state.keybinds} settingsName='favouriteBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.background.maximise')} state={this.state.keybinds} settingsName='maximiseBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.background.download')} state={this.state.keybinds} settingsName='downloadBackground' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.background.show_info')} state={this.state.keybinds} settingsName='showBackgroundInformation' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.quote.favourite')} state={this.state.keybinds} settingsName='favouriteQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.quote.copy')} state={this.state.keybinds} settingsName='copyQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.quote.tweet')} state={this.state.keybinds} settingsName='tweetQuote' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.notes.pin')} state={this.state.keybinds} settingsName='pinNotes' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.notes.copy')} state={this.state.keybinds} settingsName='copyNotes' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.search')} state={this.state.keybinds} settingsName='focusSearch' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.quicklinks')} state={this.state.keybinds} settingsName='toggleQuicklinks' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
+        <KeybindInput name={this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.modal')} state={this.state.keybinds} settingsName='toggleModal' set={(e) => this.listen(e)} reset={(e) => this.reset(e)} cancel={(e) => this.cancel(e)}/>
       </>
     );
   }

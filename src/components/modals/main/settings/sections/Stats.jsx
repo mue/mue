@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import Switch from '../Switch';
@@ -10,7 +11,6 @@ export default class Stats extends PureComponent {
     this.state = {
       stats: JSON.parse(localStorage.getItem('statsData')) || {}
     };
-    this.language = window.language.modals.main.settings.sections.stats;
   }
 
   componentDidMount() { 
@@ -32,27 +32,30 @@ export default class Stats extends PureComponent {
   }
 
   render() {
+    const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+    const languagecode = variables.languagecode;
+
     if (localStorage.getItem('stats') === 'false') {
       return (
         <>
-          <h2>{window.language.modals.main.settings.reminder.title}</h2>
-          <p>{this.language.warning}</p>
-          <Switch name='stats' text={this.language.usage} category='stats'/>
+          <h2>{getMessage(languagecode, 'modals.main.settings.reminder.title')}</h2>
+          <p>{getMessage(languagecode, 'modals.main.settings.sections.stats.warning')}</p>
+          <Switch name='stats' text={getMessage(languagecode, 'modals.main.settings.sections.stats.usage')} category='stats'/>
         </>
       );
     }
 
     return (
       <>
-        <h2>{this.language.title}</h2>
-        <p>{this.language.sections.tabs_opened}: {this.state.stats['tabs-opened'] || 0}</p>
-        <p>{this.language.sections.backgrounds_favourited}: {this.state.stats.feature ? this.state.stats.feature['background-favourite'] || 0 : 0}</p>
-        <p>{this.language.sections.backgrounds_downloaded}: {this.state.stats.feature ? this.state.stats.feature['background-download'] || 0 : 0}</p>
-        <p>{this.language.sections.quotes_favourited}: {this.state.stats.feature ? this.state.stats.feature['quoted-favourite'] || 0 : 0}</p>
-        <p>{this.language.sections.quicklinks_added}: {this.state.stats.feature ? this.state.stats.feature['quicklink-add'] || 0 : 0}</p>
-        <p>{this.language.sections.settings_changed}: {this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0}</p>
-        <p>{this.language.sections.addons_installed}: {this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0}</p>
-        <Switch name='stats' text={this.language.usage} category='stats'/>
+        <h2>{getMessage(languagecode, 'modals.main.settings.sections.stats.title')}</h2>
+        <p>{getMessage(languagecode, 'modals.main.settings.sections.stats.sections.tabs_opened')}: {this.state.stats['tabs-opened'] || 0}</p>
+        <p>{getMessage(languagecode, 'modals.main.settings.sections.stats.sections.backgrounds_favourited')}: {this.state.stats.feature ? this.state.stats.feature['background-favourite'] || 0 : 0}</p>
+        <p>{getMessage(languagecode, 'modals.main.settings.sections.stats.sections.backgrounds_downloaded')}: {this.state.stats.feature ? this.state.stats.feature['background-download'] || 0 : 0}</p>
+        <p>{getMessage(languagecode, 'modals.main.settings.sections.stats.sections.quotes_favourited')}: {this.state.stats.feature ? this.state.stats.feature['quoted-favourite'] || 0 : 0}</p>
+        <p>{getMessage(languagecode, 'modals.main.settings.sections.stats.sections.quicklinks_added')}: {this.state.stats.feature ? this.state.stats.feature['quicklink-add'] || 0 : 0}</p>
+        <p>{getMessage(languagecode, 'modals.main.settings.sections.stats.sections.settings_changed')}: {this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0}</p>
+        <p>{getMessage(languagecode, 'modals.main.settings.sections.stats.sections.addons_installed')}: {this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0}</p>
+        <Switch name='stats' text={getMessage(languagecode, 'modals.main.settings.sections.stats.usage')} category='stats'/>
       </>
     );
   }

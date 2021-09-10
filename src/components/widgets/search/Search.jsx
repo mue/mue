@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { Search as SearchIcon, Mic } from '@material-ui/icons';
 import Hotkeys from 'react-hot-keys';
@@ -24,7 +25,6 @@ export default class Search extends PureComponent {
       suggestions: [],
       searchDropdown: 'hidden'
     };
-    this.language = window.language.widgets.search;
   }
 
   startSpeechRecognition = () => {
@@ -169,7 +169,7 @@ export default class Search extends PureComponent {
   }
 
   render() {
-    const customText = window.language.modals.main.settings.sections.search.custom.split(' ')[0];
+    const customText = variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.search.custom').split(' ')[0];
 
     return (
       <form onSubmit={this.searchButton} className='searchBar'>
@@ -194,7 +194,7 @@ export default class Search extends PureComponent {
         </div> : null}
         {this.state.microphone}
         <SearchIcon onClick={this.searchButton}/>
-        <AutocompleteInput placeholder={this.language} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
+        <AutocompleteInput placeholder={variables.language.getMessage(variables.languagecode, 'widgets.search')} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
         {window.keybinds.focusSearch && window.keybinds.focusSearch !== '' ? <Hotkeys keyName={window.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null}
       </form>
     );

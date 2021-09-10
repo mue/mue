@@ -35,7 +35,6 @@
     },
     "navbar": {
       "tooltips": {
-        "update": "Update Patch Notes",
         "refresh": "Refresh",
         "feedback": "Réactions"
       },
@@ -450,9 +449,7 @@
       "error": {
         "title": "Erreur",
         "description": "Impossible de se connecter au serveur"
-      },
-      "read_blog": "Lire sur le blog ",
-      "contact_support": "Contactez-nous "
+      }
     },
     "welcome": {
       "tip": "Quick Tip",

@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import Checkbox from '../Checkbox';
@@ -13,43 +14,43 @@ export default class TimeSettings extends PureComponent {
       timeType: localStorage.getItem('timeType') || 'digital',
       dateType: localStorage.getItem('dateType') || 'long'
     };
-    this.language = window.language.modals.main.settings;
   }
 
   render() {
-    const { time } = this.language.sections;
+    const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+    const languagecode = variables.languagecode;
 
     let timeSettings;
 
     const digitalOptions = [
       {
-        name: time.digital.twentyfourhour,
+        name: getMessage(languagecode, 'modals.main.settings.sections.time.digital.twentyfourhour'),
         value: 'twentyfourhour'
       },
       {
-        name: time.digital.twelvehour,
+        name: getMessage(languagecode, 'modals.main.settings.sections.time.digital.twelvehour'),
         value: 'twelvehour'
       }
     ];
 
     const digitalSettings = (
       <>
-        <h3>{time.digital.title}</h3>
-        <Radio title={time.format} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' />
+        <h3>{getMessage(languagecode, 'modals.main.settings.sections.time.digital.title')}</h3>
+        <Radio title={getMessage(languagecode, 'modals.main.settings.sections.time.format')} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' />
         <br/>
-        <Checkbox name='seconds' text={time.digital.seconds} category='clock' />
-        <Checkbox name='zero' text={time.digital.zero} category='clock' />
+        <Checkbox name='seconds' text={getMessage(languagecode, 'modals.main.settings.sections.time.digital.seconds')} category='clock' />
+        <Checkbox name='zero' text={getMessage(languagecode, 'modals.main.settings.sections.time.digital.zero')} category='clock' />
       </>
     );
 
     const analogSettings = (
       <>
-        <h3>{time.analogue.title}</h3>
-        <Checkbox name='secondHand' text={time.analogue.second_hand} category='clock' />
-        <Checkbox name='minuteHand' text={time.analogue.minute_hand} category='clock' />
-        <Checkbox name='hourHand' text={time.analogue.hour_hand} category='clock' />
-        <Checkbox name='hourMarks' text={time.analogue.hour_marks} category='clock' />
-        <Checkbox name='minuteMarks' text={time.analogue.minute_marks} category='clock' />
+        <h3>{getMessage(languagecode, 'modals.main.settings.sections.time.analogue.title')}</h3>
+        <Checkbox name='secondHand' text={getMessage(languagecode, 'modals.main.settings.sections.time.analogue.second_hand')} category='clock' />
+        <Checkbox name='minuteHand' text={getMessage(languagecode, 'modals.main.settings.sections.time.analogue.minute_hand')} category='clock' />
+        <Checkbox name='hourHand' text={getMessage(languagecode, 'modals.main.settings.sections.time.analogue.hour_hand')} category='clock' />
+        <Checkbox name='hourMarks' text={getMessage(languagecode, 'modals.main.settings.sections.time.analogue.hour_marks')} category='clock' />
+        <Checkbox name='minuteMarks' text={getMessage(languagecode, 'modals.main.settings.sections.time.analogue.minute_marks')} category='clock' />
       </>
     );
 
@@ -63,25 +64,25 @@ export default class TimeSettings extends PureComponent {
     
     const longSettings = (
       <>
-        <Checkbox name='dayofweek' text={time.date.day_of_week} category='date' />
-        <Checkbox name='datenth' text={time.date.datenth} category='date' />
+        <Checkbox name='dayofweek' text={getMessage(languagecode, 'modals.main.settings.sections.time.date.day_of_week')} category='date' />
+        <Checkbox name='datenth' text={getMessage(languagecode, 'modals.main.settings.sections.time.date.datenth')} category='date' />
       </>
     );
 
     const shortSettings = (
       <>
         <br/>
-        <Dropdown label={time.date.short_format} name='dateFormat' category='date'>
+        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.time.date.short_format')} name='dateFormat' category='date'>
           <option value='DMY'>DMY</option>
           <option value='MDY'>MDY</option>
           <option value='YMD'>YMD</option>
         </Dropdown>
         <br/><br/>
-        <Dropdown label={time.date.short_separator.title} name='shortFormat' category='date'>
-          <option value='dash'>{time.date.short_separator.dash}</option>
-          <option value='dots'>{time.date.short_separator.dots}</option>
-          <option value='gaps'>{time.date.short_separator.gaps}</option>
-          <option value='slashes'>{time.date.short_separator.slashes}</option>
+        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.time.date.short_separator.title')} name='shortFormat' category='date'>
+          <option value='dash'>{getMessage(languagecode, 'modals.main.settings.sections.time.date.short_separator.dash')}</option>
+          <option value='dots'>{getMessage(languagecode, 'modals.main.settings.sections.time.date.short_separator.dots')}</option>
+          <option value='gaps'>{getMessage(languagecode, 'modals.main.settings.sections.time.date.short_separator.gaps')}</option>
+          <option value='slashes'>{getMessage(languagecode, 'modals.main.settings.sections.time.date.short_separator.slashes')}</option>
        </Dropdown>
       </>
     );
@@ -94,29 +95,29 @@ export default class TimeSettings extends PureComponent {
 
     return (
       <>
-        <h2>{time.title}</h2>
-        <Switch name='time' text={this.language.enabled} category='clock' element='.clock-container' />
-        <Dropdown label={time.type} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock'>
-          <option value='digital'>{time.digital.title}</option>
-          <option value='analogue'>{time.analogue.title}</option>
-          <option value='percentageComplete'>{time.percentage_complete}</option>
+        <h2>{getMessage(languagecode, 'modals.main.settings.sections.time.title')}</h2>
+        <Switch name='time' text={getMessage(languagecode, 'modals.main.settings.enabled')} category='clock' element='.clock-container' />
+        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.time.type')} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock'>
+          <option value='digital'>{getMessage(languagecode, 'modals.main.settings.sections.time.digital.title')}</option>
+          <option value='analogue'>{getMessage(languagecode, 'modals.main.settings.sections.time.analogue.title')}</option>
+          <option value='percentageComplete'>{getMessage(languagecode, 'modals.main.settings.sections.time.percentage_complete')}</option>
         </Dropdown>
         {timeSettings}
         {this.state.timeType !== 'analogue' ? 
-          <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomClock' min='10' max='400' default='100' display='%' category='clock'/>
+          <Slider title={getMessage(languagecode, 'modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomClock' min='10' max='400' default='100' display='%' category='clock'/>
         : null}
 
-        <h3>{time.date.title}</h3>
-        <Switch name='date' text={this.language.enabled} category='date' element='.date'/>
-        <Dropdown label={time.type} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date'>
-          <option value='long'>{time.date.type.long}</option>
-          <option value='short'>{time.date.type.short}</option>
+        <h3>{getMessage(languagecode, 'modals.main.settings.sections.time.date.title')}</h3>
+        <Switch name='date' text={getMessage(languagecode, 'modals.main.settings.enabled')} category='date' element='.date'/>
+        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.time.type')} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date'>
+          <option value='long'>{getMessage(languagecode, 'modals.main.settings.sections.time.date.type.long')}</option>
+          <option value='short'>{getMessage(languagecode, 'modals.main.settings.sections.time.date.type.short')}</option>
         </Dropdown>
         <br/>
-        <Checkbox name='datezero' text={time.digital.zero} category='date'/>
-        <Checkbox name='weeknumber' text={time.date.week_number} category='date'/>
+        <Checkbox name='datezero' text={getMessage(languagecode, 'modals.main.settings.sections.time.digital.zero')} category='date'/>
+        <Checkbox name='weeknumber' text={getMessage(languagecode, 'modals.main.settings.sections.time.date.week_number')} category='date'/>
         {dateSettings}
-        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomDate' min='10' max='400' default='100' display='%' category='date'/>
+        <Slider title={getMessage(languagecode, 'modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomDate' min='10' max='400' default='100' display='%' category='date'/>
       </>
     );
   }

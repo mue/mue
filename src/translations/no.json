@@ -35,7 +35,6 @@
     },
     "navbar": {
       "tooltips": {
-        "update": "Update Patch Notes",
         "refresh": "Refresh",
         "feedback": "Feedback"
       },
@@ -450,9 +449,7 @@
       "error": {
         "title": "Error",
         "description": "Kan ikke koble til serveren."
-      },
-      "read_blog": "Read on the blog here",
-      "contact_support": "Contact us here"
+      }
     },
     "welcome": {
       "tip": "Quick Tip",

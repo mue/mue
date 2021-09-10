@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import Switch from '../Switch';
@@ -11,7 +12,6 @@ export default class TimeSettings extends PureComponent {
     this.state = {
       location: localStorage.getItem('location') || 'London'
     };
-    this.language = window.language.modals.main.settings;
   }
 
   componentDidUpdate() {
@@ -48,46 +48,47 @@ export default class TimeSettings extends PureComponent {
   }
 
   render() {
-    const language = window.language.modals.main.settings.sections.weather;
+    const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+    const languagecode = variables.languagecode;
 
     const tempFormat = [
       {
-        name: language.temp_format.celsius + ' (°C)',
+        name: getMessage(languagecode, 'modals.main.settings.sections.weather.temp_format.celsius') + ' (°C)',
         value: 'celsius'
       },
       {
-        name: language.temp_format.fahrenheit + ' (°F)',
+        name: getMessage(languagecode, 'modals.main.settings.sections.weather.temp_format.fahrenheit') + ' (°F)',
         value: 'fahrenheit'
       },
       {
-        name: language.temp_format.kelvin + ' (K)',
+        name: getMessage(languagecode, 'modals.main.settings.sections.weather.temp_format.kelvin') + ' (K)',
         value: 'kelvin'
       }
     ];
       
     return (
       <>
-        <h2>{language.title}</h2>
-        <Switch name='weatherEnabled' text={this.language.enabled} category='widgets'/>
+        <h2>{getMessage(languagecode, 'modals.main.settings.sections.weather.title')}</h2>
+        <Switch name='weatherEnabled' text={getMessage(languagecode, 'modals.main.settings.enabled')} category='widgets'/>
         <ul>
-          <p>{language.location} <span className='modalLink' onClick={() => this.getAuto()}>{language.auto}</span></p>
+          <p>{getMessage(languagecode, 'modals.main.settings.sections.weather.location')} <span className='modalLink' onClick={() => this.getAuto()}>{getMessage(languagecode, 'modals.main.settings.sections.weather.auto')}</span></p>
           <input type='text' value={this.state.location} onChange={(e) => this.changeLocation(e)}></input>
         </ul>
         <br/>
-        <Radio name='tempformat' title={language.temp_format.title} options={tempFormat} category='weather'/>
-        <Slider title={window.language.modals.main.settings.sections.appearance.accessibility.widget_zoom} name='zoomWeather' min='10' max='400' default='100' display='%' category='weather'/>
+        <Radio name='tempformat' title={getMessage(languagecode, 'modals.main.settings.sections.weather.temp_format.title')} options={tempFormat} category='weather'/>
+        <Slider title={getMessage(languagecode, 'modals.main.settings.appearance.accessibility.widget_zoom')} name='zoomWeather' min='10' max='400' default='100' display='%' category='weather'/>
 
-        <h3>{language.extra_info.title}</h3>
-        <Checkbox name='showlocation' text={language.extra_info.show_location} category='weather'/>
-        <Checkbox name='weatherdescription' text={language.extra_info.show_description} category='weather'/>
-        <Checkbox name='cloudiness' text={language.extra_info.cloudiness} category='weather'/>
-        <Checkbox name='humidity' text={language.extra_info.humidity} category='weather'/>
-        <Checkbox name='visibility' text={language.extra_info.visibility} category='weather'/>
-        <Checkbox name='windspeed' text={language.extra_info.wind_speed} category='weather'/>
-        <Checkbox name='windDirection' text={language.extra_info.wind_direction} category='weather'/>
-        <Checkbox name='mintemp' text={language.extra_info.min_temp} category='weather'/>
-        <Checkbox name='maxtemp' text={language.extra_info.max_temp} category='weather'/>
-        <Checkbox name='atmosphericpressure' text={language.extra_info.atmospheric_pressure} category='weather'/>
+        <h3>{getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.title')}</h3>
+        <Checkbox name='showlocation' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.show_location')} category='weather'/>
+        <Checkbox name='weatherdescription' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.show_description')} category='weather'/>
+        <Checkbox name='cloudiness' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.cloudiness')} category='weather'/>
+        <Checkbox name='humidity' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.humidity')} category='weather'/>
+        <Checkbox name='visibility' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.visibility')} category='weather'/>
+        <Checkbox name='windspeed' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.wind_speed')} category='weather'/>
+        <Checkbox name='windDirection' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.wind_direction')} category='weather'/>
+        <Checkbox name='mintemp' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.min_temp')} category='weather'/>
+        <Checkbox name='maxtemp' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.max_temp')} category='weather'/>
+        <Checkbox name='atmosphericpressure' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.atmospheric_pressure')} category='weather'/>
       </>
     );
   }

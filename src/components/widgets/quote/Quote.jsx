@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@material-ui/icons';
 import { toast } from 'react-toastify';
@@ -27,7 +28,6 @@ export default class Quote extends PureComponent {
       quoteLanguage: '',
       type: localStorage.getItem('quoteType') || 'api'
     };
-    this.language = window.language.widgets.quote;
     this.quote = createRef();
     this.quotediv = createRef();
     this.quoteauthor = createRef();
@@ -55,7 +55,7 @@ export default class Quote extends PureComponent {
   }
 
   getAuthorLink(author) {
-    let authorlink = `https://${window.languagecode.split('_')[0]}.wikipedia.org/wiki/${author.split(' ').join('_')}`;
+    let authorlink = `https://${variables.languagecode.split('_')[0]}.wikipedia.org/wiki/${author.split(' ').join('_')}`;
     if (localStorage.getItem('authorLink') === 'false' || author === 'Unknown') {
       authorlink = null;
     }
@@ -163,7 +163,7 @@ export default class Quote extends PureComponent {
   copyQuote() {
     window.stats.postEvent('feature', 'Quote copied');
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
-    toast(window.language.toasts.quote);
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.quote'));
   }
 
   tweetQuote() {

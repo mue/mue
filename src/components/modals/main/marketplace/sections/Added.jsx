@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { LocalMall } from '@material-ui/icons';
 import { toast } from 'react-toastify';
@@ -9,6 +10,9 @@ import Dropdown from '../../settings/Dropdown';
 import { uninstall, urlParser } from 'modules/helpers/marketplace';
 
 export default class Added extends PureComponent {
+  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  languagecode = variables.languagecode;
+
   constructor() {
     super();
     this.state = {
@@ -17,9 +21,8 @@ export default class Added extends PureComponent {
       button: ''
     };
     this.buttons = {
-      uninstall: <button className='removeFromMue' onClick={() => this.uninstall()}>{window.language.modals.main.marketplace.product.buttons.remove}</button>,
+      uninstall: <button className='removeFromMue' onClick={() => this.uninstall()}>{this.getMessage(this.languagecode, 'modals.main.marketplace.product.buttons.remove')}</button>,
     };
-    this.language = window.language.modals.main.addons;
   }
 
   toggle(type, data) {
@@ -52,7 +55,7 @@ export default class Added extends PureComponent {
   uninstall() {
     uninstall(this.state.item.type, this.state.item.display_name);
     
-    toast(window.language.toasts.uninstalled);
+    toast(this.getMessage(this.languagecode, 'toasts.uninstalled'));
 
     this.setState({
       button: '',
@@ -116,8 +119,8 @@ export default class Added extends PureComponent {
         <div className='emptyitems'>
           <div className='emptyMessage'>
             <LocalMall/>
-            <h1>{this.language.empty.title}</h1>
-            <p className='description'>{this.language.empty.description}</p>
+            <h1>{this.getMessage(this.languagecode, 'modals.main.addons.empty.title')}</h1>
+            <p className='description'>{this.getMessage(this.languagecode, 'modals.main.addons.empty.description')}</p>
           </div>
         </div>
       );
@@ -129,11 +132,11 @@ export default class Added extends PureComponent {
 
     return (
       <>
-        <Dropdown label={this.language.sort.title} name='sortAddons' onChange={(value) => this.sortAddons(value)}>
-          <option value='newest'>{this.language.sort.newest}</option>
-          <option value='oldest'>{this.language.sort.oldest}</option>
-          <option value='a-z'>{this.language.sort.a_z}</option>
-          <option value='z-a'>{this.language.sort.z_a}</option>
+        <Dropdown label={this.getMessage(this.languagecode, 'modals.main.addons.sort.title')} name='sortAddons' onChange={(value) => this.sortAddons(value)}>
+          <option value='newest'>{this.getMessage(this.languagecode, 'modals.main.addons.sort.newest')}</option>
+          <option value='oldest'>{this.getMessage(this.languagecode, 'modals.main.addons.sort.oldest')}</option>
+          <option value='a-z'>{this.getMessage(this.languagecode, 'modals.main.addons.sort.a_z')}</option>
+          <option value='z-a'>{this.getMessage(this.languagecode, 'modals.main.addons.sort.z_a')}</option>
         </Dropdown>
         <button className='addToMue sideload updateCheck' onClick={() => this.updateCheck()}>Check for updates</button>
         <br/>

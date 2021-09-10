@@ -1,9 +1,8 @@
+import variables from 'modules/variables';
 import { Close, Delete } from '@material-ui/icons';
 import { setDefaultSettings } from 'modules/helpers/settings';
 
 export default function ResetModal({ modalClose }) {
-  const language = window.language.modals.main.settings.sections.advanced.reset_modal;
-
   const reset = () => {
     window.stats.postEvent('setting', 'Reset');
     setDefaultSettings('reset');
@@ -12,10 +11,10 @@ export default function ResetModal({ modalClose }) {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center' }}>{language.title}</h1>
-      <span>{language.question}</span>
+      <h1 style={{ textAlign: 'center' }}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.advanced.reset_modal.title')}</h1>
+      <span>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.advanced.reset_modal.question')}</span>
       <br/><br/>
-      <span>{language.information}</span>
+      <span>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.advanced.reset_modal.information')}</span>
       <div className='resetfooter'>
         <button className='round reset' style={{ marginLeft: 0 }} onClick={() => reset()}>
           <Delete/>

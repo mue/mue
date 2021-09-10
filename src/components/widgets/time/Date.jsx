@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 
 import { nth, convertTimezone } from 'modules/helpers/date';
@@ -28,7 +29,7 @@ export default class DateWidget extends PureComponent {
     }
 
     this.setState({
-      weekNumber: `${window.language.widgets.date.week} ${1 + Math.ceil((firstThursday - dateToday) / 604800000)}`
+      weekNumber: `${variables.language.getMessage(variables.languagecode, 'widgets.date.week')} ${1 + Math.ceil((firstThursday - dateToday) / 604800000)}`
     });
   }
 
@@ -95,7 +96,7 @@ export default class DateWidget extends PureComponent {
       });
     } else {
       // Long date
-      const lang = window.languagecode.split('_')[0];
+      const lang = variables.languagecode.split('_')[0];
 
       const datenth = (localStorage.getItem('datenth') === 'true') ? nth(date.getDate()) : date.getDate();
 

@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { FileCopyRounded, AssignmentRounded as NotesRounded, PushPin }from '@material-ui/icons';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
@@ -12,7 +13,6 @@ export default class Notes extends PureComponent {
       visibility: (localStorage.getItem('notesPinned') === 'true') ? 'visible' : 'hidden',
       marginLeft: (localStorage.getItem('refresh') === 'false') ? '-200px' : '-150px'
     };
-    this.language = window.language.widgets.navbar.notes;
   }
 
   setNotes = (e) => {
@@ -41,7 +41,7 @@ export default class Notes extends PureComponent {
   copy() {
     window.stats.postEvent('feature', 'Notes copied');
     navigator.clipboard.writeText(this.state.notes);
-    toast(window.language.toasts.notes);
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.notes'));
   }
 
   render() {
@@ -49,9 +49,9 @@ export default class Notes extends PureComponent {
       <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility, marginLeft: this.state.marginLeft }}>
         <div className='topbarnotes'>
           <NotesRounded/>
-          <h3>{this.language.title}</h3>
+          <h3>{variables.language.getMessage(variables.languagecode, 'widgets.navbar.notes.title')}</h3>
         </div>
-        <TextareaAutosize rowsmax={50} placeholder={this.language.placeholder} value={this.state.notes} onChange={this.setNotes}/>
+        <TextareaAutosize rowsmax={50} placeholder={variables.language.getMessage(variables.languagecode, 'widgets.navbar.notes.placeholder')} value={this.state.notes} onChange={this.setNotes}/>
         <button onClick={() => this.pin()} className='pinNote'><PushPin/></button>
         <button onClick={() => this.copy()} className='copyNote'><FileCopyRounded/></button>
         {window.keybinds.pinNotes && window.keybinds.pinNotes !== '' ? <Hotkeys keyName={window.keybinds.pinNotes} onKeyDown={() => this.pin()}/> : null}

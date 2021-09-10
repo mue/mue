@@ -35,7 +35,6 @@
     },
     "navbar": {
       "tooltips": {
-        "update": "Update Hinweise",
         "refresh": "Neuladen",
         "feedback": "Feedback"
       },
@@ -451,9 +450,7 @@
       "error": {
         "title": "Fehler",
         "description": "Konnte keine Verbindung zum Server herstellen"
-      },
-      "read_blog": "Hier im Blog lesen",
-      "contact_support": "Kontaktieren Sie uns hier"
+      }
     },
     "welcome": {
       "tip": "Quick Tip",

@@ -1,4 +1,5 @@
 // todo: find a better method to do width of number input
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 
@@ -11,7 +12,6 @@ export default class Slider extends PureComponent {
       value: localStorage.getItem(this.props.name) || this.props.default,
       numberWidth: localStorage.getItem(this.props.name) ? ((localStorage.getItem(this.props.name).length + 1) * ((this.props.toast === true) ? 7.75 : 7)) : 32
     };
-    this.language = window.language.modals.main.settings;
     this.widthCalculation = (this.props.toast === true) ? 7.75 : 7;
   }
 
@@ -56,7 +56,7 @@ export default class Slider extends PureComponent {
         value: this.props.default || ''
       }
     });
-    toast(window.language.toasts.reset);
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.reset'));
   }
 
   render() {
@@ -64,7 +64,7 @@ export default class Slider extends PureComponent {
 
     return (
       <>
-        <p>{this.props.title} ({text}{this.props.display}) <span className='modalLink' onClick={this.resetItem}>{this.language.buttons.reset}</span></p>
+        <p>{this.props.title} ({text}{this.props.display}) <span className='modalLink' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
         <input className='range' type='range' min={this.props.min} max={this.props.max} step={this.props.step || 1} value={this.state.value} onChange={this.handleChange} />
       </>
     );

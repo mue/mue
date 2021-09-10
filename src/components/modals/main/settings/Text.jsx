@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 
@@ -9,7 +10,6 @@ export default class Text extends PureComponent {
     this.state = {
       value: localStorage.getItem(this.props.name) || ''
     };
-    this.language = window.language.modals.main.settings;
   }
 
   handleChange = (e) => {
@@ -41,13 +41,13 @@ export default class Text extends PureComponent {
         value: this.props.default || ''
       }
     });
-    toast(window.language.toasts.reset);
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.reset'));
   }
 
   render() {
     return (
       <>
-        <p>{this.props.title} <span className='modalLink' onClick={this.resetItem}>{this.language.buttons.reset}</span></p>
+        <p>{this.props.title} <span className='modalLink' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
         {(this.props.textarea === true) ? 
           <textarea className='settingsTextarea' spellCheck={false} value={this.state.value} onChange={this.handleChange}/>
           : <input type='text' value={this.state.value} onChange={this.handleChange}/>

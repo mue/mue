@@ -35,7 +35,6 @@
     },
     "navbar": {
       "tooltips": {
-        "update": "Update Patch Notes",
         "refresh": "Refresh",
         "feedback": "Feedback"
       },
@@ -451,9 +450,7 @@
         "title": "Ошибка",
         "description": "Could not connect to the server",
         "content": "Не удалось подключиться к серверу"
-      },
-      "read_blog": "Прочитайте об изменениях в блоге",
-      "contact_support": "Связаться с нами"
+      }
     },
     "welcome": {
       "tip": "Quick Tip",

@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { Fullscreen } from '@material-ui/icons';
 import Hotkeys from 'react-hot-keys';
@@ -56,7 +57,7 @@ export default class Maximise extends PureComponent {
 
   render() {
     return (
-      <Tooltip title={window.language.modals.main.settings.sections.background.buttons.view}>
+      <Tooltip title={variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.background.buttons.view')}>
         <Fullscreen onClick={this.maximise} className='topicons' />
         {window.keybinds.maximiseBackground && window.keybinds.maximiseBackground !== '' ? <Hotkeys keyName={window.keybinds.maximiseBackground} onKeyDown={this.maximise} /> : null}
       </Tooltip>

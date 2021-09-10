@@ -35,7 +35,6 @@
     },
     "navbar": {
       "tooltips": {
-        "update": "更新日志",
         "refresh": "刷新",
         "feedback": "用户反馈"
       },
@@ -450,9 +449,7 @@
       "error": {
         "title": "错误",
         "description": "无法连接到服务器"
-      },
-      "read_blog": "点此在我们的博客中阅读",
-      "contact_support": "点此联系我们"
+      }
     },
     "welcome": {
       "tip": "Quick Tip",

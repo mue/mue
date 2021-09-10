@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { LocalMall } from '@material-ui/icons';
 import { toast } from 'react-toastify';
@@ -10,6 +11,9 @@ import FileUpload from '../../settings/FileUpload';
 import { install } from 'modules/helpers/marketplace';
 
 export default class Sideload extends PureComponent {
+  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  languagecode = variables.languagecode;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +46,7 @@ export default class Sideload extends PureComponent {
     }
 
     install(input.type, input);
-    toast(window.language.toasts.installed);
+    toast(this.getMessage(this.languagecode, 'toasts.installed'));
     window.stats.postEvent('marketplace', 'Sideload');
   }
   
@@ -52,8 +56,8 @@ export default class Sideload extends PureComponent {
         <div className='emptyMessage'>
           <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.installAddon(JSON.parse(e.target.result))} />
           <LocalMall/>
-          <h1>{window.language.modals.main.addons.sideload}</h1>
-          <button className='addToMue sideload updateCheck' onClick={() => document.getElementById('file-input').click()}>{window.language.modals.main.settings.sections.background.source.upload}</button>
+          <h1>{this.getMessage(this.languagecode, 'modals.main.addons.sideload')}</h1>
+          <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.upload')}</button>
         </div>
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showFailed: false })} isOpen={this.state.showFailed} className='Modal resetmodal mainModal sideloadModal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
           <SideloadFailedModal modalClose={() => this.setState({ showFailed: false })} reason={this.state.failedReason}/>

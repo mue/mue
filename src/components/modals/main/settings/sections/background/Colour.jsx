@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { ColorPicker } from 'react-color-gradient-picker';
 import { toast } from 'react-toastify';
@@ -11,13 +12,14 @@ import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.
 export default class ColourSettings extends PureComponent {
   DefaultGradientSettings = { angle: '180', gradient: [{ colour: '#ffb032', stop: 0 }], type: 'linear' };
   GradientPickerInitalState = undefined;
+  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  languagecode = variables.languagecode;
   
   constructor() {
     super();
     this.state = {
       gradientSettings: this.DefaultGradientSettings
     };
-    this.language = window.language.modals.main.settings;
   }
 
   resetColour() {
@@ -25,7 +27,7 @@ export default class ColourSettings extends PureComponent {
     this.setState({
       gradientSettings: this.DefaultGradientSettings
     });
-    toast(window.language.toasts.reset);
+    toast(this.getMessage(this.languagecode, 'toasts.reset'));
   }
 
   initialiseColourPickerState(gradientSettings) {
@@ -109,7 +111,7 @@ export default class ColourSettings extends PureComponent {
         gradient: [...this.state.gradientSettings.gradient.map(g => { return { ...g, stop: clampNumber(+g.stop, 0, 100) } })].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
       });
     }
-    return this.language.sections.background.source.disabled;
+    return this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.disabled');
   }
 
   onColourPickerChange = (attrs, name) => {
@@ -141,8 +143,6 @@ export default class ColourSettings extends PureComponent {
   }
 
   render() {
-    const { background } = this.language.sections;
-
     let colourSettings = null;
     if (typeof this.state.gradientSettings === 'object') {
       const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
@@ -175,14 +175,14 @@ export default class ColourSettings extends PureComponent {
       colourSettings = (
         <>
           {gradientInputs}
-          {!gradientHasMoreThanOneColour ? (<><br/><br/><button type='button' className='add' onClick={this.addColour}>{background.source.add_colour}</button></>) : null}
+          {!gradientHasMoreThanOneColour ? (<><br/><br/><button type='button' className='add' onClick={this.addColour}>{this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.add_colour')}</button></>) : null}
         </>
       );
     }
 
     return (
       <>
-        <p>{background.source.custom_colour} <span className='modalLink' onClick={() => this.resetColour()}>{this.language.buttons.reset}</span></p>
+        <p>{this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.custom_colour')} <span className='modalLink' onClick={() => this.resetColour()}>{this.getMessage(this.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
         {colourSettings}
       </>
     );

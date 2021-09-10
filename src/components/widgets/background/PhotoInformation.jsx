@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { useState, Fragment } from 'react';
 import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@material-ui/icons';
 import Hotkeys from 'react-hot-keys';
@@ -26,26 +27,26 @@ export default function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 
-  const language = window.language.widgets.background;
-
   if (info.hidden === true || !info.credit) {
     return null;
   }
 
   // remove unsplash and pexels text
-  const photographer = info.credit.split(` ${language.unsplash}`)[0].split(` ${language.pexels}`);
+  const unsplash = variables.language.getMessage(variables.languagecode, 'widgets.background.unsplash');
+  const pexels = variables.language.getMessage(variables.languagecode, 'widgets.background.pexels');
+  const photographer = info.credit.split(` ${unsplash}`)[0].split(` ${pexels}`);
 
-  let credit = info.credit;
-  let photo = language.credit;
+  let credit;
+  let photo;
 
   // unsplash and pexels credit
   if (info.photographerURL && info.photographerURL !== '' && !info.offline && api) {
     if (api === 'unsplash') {
-      photo = <a href={info.photoURL + '?utm_source=mue'} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
-      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{language.unsplash}</a></>;
+      photo = <a href={info.photoURL + '?utm_source=mue'} target='_blank' rel='noopener noreferrer'>{variables.language.getMessage(variables.languagecode, 'widgets.background.credit')}</a>;
+      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://unsplash.com?utm_source=mue' target='_blank' rel='noopener noreferrer'>{unsplash}</a></>;
     } else {
-      photo = <a href={info.photoURL} target='_blank' rel='noopener noreferrer'>{language.credit}</a>;
-      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{language.pexels}</a></>;
+      photo = <a href={info.photoURL} target='_blank' rel='noopener noreferrer'>{variables.language.getMessage(variables.languagecode, 'widgets.background.credit')}</a>;
+      credit = <><a href={info.photographerURL} target='_blank' rel='noopener noreferrer'>{photographer}</a> <a href='https://pexels.com' target='_blank' rel='noopener noreferrer'>{pexels}</a></>;
     }
   }
 
@@ -126,7 +127,7 @@ export default function PhotoInformation({ info, url, api }) {
       <Info className='photoInformationHover'/>
       <div className='infoCard'>
         <Info className='infoIcon'/>
-        <h1>{language.information}</h1>
+        <h1>{variables.language.getMessage(variables.languagecode, 'widgets.background.information')}</h1>
         <hr/>
         {photoMap()}
         {/* fix console error by using fragment and key */}
@@ -141,11 +142,11 @@ export default function PhotoInformation({ info, url, api }) {
         <Resolution/>
         <span id='infoResolution'>{width}x{height}</span>
         <Photographer/>
-        <span>{photographer}</span>
+        <span>{info.credit}</span>
         {downloadEnabled ? 
           <>
             <Download/>
-            <span className='download' onClick={() => downloadImage(info)}>{language.download}</span>
+            <span className='download' onClick={() => downloadImage(info)}>{variables.language.getMessage(variables.languagecode, 'widgets.background.download')}</span>
           </> 
         : null}
       </div>

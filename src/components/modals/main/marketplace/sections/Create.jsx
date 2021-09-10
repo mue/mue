@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { 
   SettingsRounded as Settings, 
@@ -87,13 +88,12 @@ export default class Create extends PureComponent {
   render() {
     let tabContent;
 
-    const { time } = window.language.modals.main.settings.sections;
-    const { marketplace, addons } = window.language.modals.main;
-    const { welcome } = window.language.modals;
+    const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+    const languagecode = variables.languagecode;
 
     const chooseType = (
       <>
-        <h3>{time.type}</h3>
+        <h3>{getMessage(languagecode, 'modals.main.settings.sections.time.type')}</h3>
         <div className='themesToggleArea'>
           <div className='options'>
             {/* <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'photos')}>
@@ -107,7 +107,7 @@ export default class Create extends PureComponent {
            */}
             <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'settings')}>
               <Settings/>
-              <span>{marketplace.preset_settings}</span>
+              <span>{getMessage(languagecode, 'modals.main.marketplace.preset_settings')}</span>
             </div>
           </div>
         </div>
@@ -137,22 +137,22 @@ export default class Create extends PureComponent {
 
     const writeDescription = ( 
       <>
-        <h3>{marketplace.product.information}</h3>
-        <p>{addons.create.metadata.name}</p>
+        <h3>{getMessage(languagecode, 'modals.main.marketplace.product.information')}</h3>
+        <p>{getMessage(languagecode, 'modals.main.addons.create.metadata.name')}</p>
         <input type='text' value={this.state.addonMetadata.name} onInput={(e) => setMetadata(e.target.value, 'name')}/>
-        <p>{marketplace.product.version}</p>
+        <p>{getMessage(languagecode, 'modals.main.marketplace.product.version')}</p>
         <input type='text' value={this.state.addonMetadata.version} onInput={(e) => setMetadata(e.target.value, 'version')}/>
-        <p>{marketplace.product.author}</p>
+        <p>{getMessage(languagecode, 'modals.main.marketplace.product.author')}</p>
         <input type='text' value={this.state.addonMetadata.author} onInput={(e) => setMetadata(e.target.value, 'author')}/>
-        <p>{addons.create.metadata.icon_url}</p>
+        <p>{getMessage(languagecode, 'modals.main.addons.create.metadata.icon_url')}</p>
         <input type='text' value={this.state.addonMetadata.icon_url} onInput={(e) => setMetadata(e.target.value, 'icon_url')}/>
-        <p>{addons.create.metadata.screenshot_url}</p>
+        <p>{getMessage(languagecode, 'modals.main.addons.create.metadata.screenshot_url')}</p>
         <input type='text' value={this.state.addonMetadata.screenshot_url} onInput={(e) => setMetadata(e.target.value, 'screenshot_url')}/>
-        <p>{addons.create.metadata.description}</p>
+        <p>{getMessage(languagecode, 'modals.main.addons.create.metadata.description')}</p>
         <textarea className='settingsTextarea' value={this.state.addonMetadata.description} onInput={(e) => setMetadata(e.target.value, 'description')}/>
         <br/>
-        <button onClick={() => this.changeTab(1)} className='uploadbg' style={{ marginRight: '10px' }}>{welcome.buttons.previous}</button>
-        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' disabled={nextDescriptionDisabled}>{welcome.buttons.next}</button>
+        <button onClick={() => this.changeTab(1)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage(languagecode, 'modals.welcome.buttons.previous')}</button>
+        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' disabled={nextDescriptionDisabled}>{getMessage(languagecode, 'modals.welcome.buttons.next')}</button>
       </>
     );
 
@@ -160,44 +160,44 @@ export default class Create extends PureComponent {
     const nextSettingsDisabled = (this.state.addonData === '') ? true : false;
     const importSettings = (
       <>
-        <h3>{welcome.sections.settings.title}</h3>
+        <h3>{getMessage(languagecode, 'modals.mwelcome.sections.title')}</h3>
         <div className='themesToggleArea'>
           <div className='options'>
             <div className={this.state.settingsClasses.current} onClick={() => this.importSettings()}>
-              <span>{addons.create.settings.current}</span>
+              <span>{getMessage(languagecode, 'modals.main.addons.create.settings.current')}</span>
             </div>
             <div className={this.state.settingsClasses.json} onClick={() => document.getElementById('file-input').click()}>
-              <span>{addons.create.settings.json}</span>
+              <span>{getMessage(languagecode, 'modals.main.addons.create.settings.json')}</span>
             </div>
           </div>
         </div>
         <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.importSettings(JSON.parse(e.target.result))} />
         <br/><br/>
-        <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{welcome.buttons.previous}</button>
-        <button onClick={() => this.changeTab(3)} className='uploadbg' disabled={nextSettingsDisabled}>{welcome.buttons.next}</button>
+        <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage(languagecode, 'modals.welcome.buttons.previous')}</button>
+        <button onClick={() => this.changeTab(3)} className='uploadbg' disabled={nextSettingsDisabled}>{getMessage(languagecode, 'modals.welcome.buttons.next')}</button>
       </>
     );
     
     // quotes
     const addQuotes = (
       <>
-        <h3>{addons.create.quotes.title}</h3>
+        <h3>{getMessage(languagecode, 'modals.main.addons.create.quotes.title')}</h3>
       </>
     );
 
     // photos
     const addPhotos = (
       <>
-        <h3>{addons.create.photos.title}</h3>
+        <h3>{getMessage(languagecode, 'modals.main.addons.create.photos.title')}</h3>
       </>
     );
 
     const downloadAddon = (
       <>
-        <h3>{addons.create.finish.title}</h3>
-        <button onClick={() => this.downloadAddon()} className='upload'>{addons.create.finish.download}</button>
+        <h3>{getMessage(languagecode, 'modals.main.addons.create.finish.title')}</h3>
+        <button onClick={() => this.downloadAddon()} className='upload'>{getMessage(languagecode, 'modals.main.addons.create.finish.download')}</button>
         <br/><br/>
-        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' style={{ marginRight: '10px' }}>{welcome.buttons.previous}</button>
+        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage(languagecode, 'modals.welcome.buttons.previous')}</button>
       </>
     );
 
@@ -212,7 +212,7 @@ export default class Create extends PureComponent {
 
     return (
       <>
-        <h2>{addons.create.other_title}</h2>
+        <h2>{getMessage(languagecode, 'modals.main.addons.create.other_title')}</h2>
         {tabContent}
       </>
     );

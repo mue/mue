@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'weather-icons-react';
 
@@ -59,12 +60,12 @@ export default class Weather extends PureComponent {
     };
 
     if (!this.state.weather.temp) {
-      data = await (await fetch(window.constants.PROXY_URL + `/weather/current?city=${this.state.location}&lang=${window.languagecode}`)).json();
+      data = await (await fetch(window.constants.PROXY_URL + `/weather/current?city=${this.state.location}&lang=${variables.languagecode}`)).json();
     }
 
     if (data.cod === '404') {
       return this.setState({
-        location: window.language.widgets.weather.not_found
+        location: variables.language.getMessage(variables.languagecode, 'widgets.weather.not_found')
       });
     }
 
@@ -133,7 +134,7 @@ export default class Weather extends PureComponent {
       return (localStorage.getItem(setting) === 'true');
     };
 
-    if (this.state.location === window.language.widgets.weather.not_found) {
+    if (this.state.location === variables.language.getMessage(variables.languagecode, 'weather.not_found')) {
       return (<div className='weather'>
         <span className='loc'>{this.state.location}</span>
       </div>);
@@ -163,7 +164,7 @@ export default class Weather extends PureComponent {
         {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
         {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span> {enabled('windDirection') ? <WindDirectionIcon degrees={this.state.weather.wind_degrees}/> : null}</span> : null}
         {enabled('cloudiness') ? <span className='loc'><br/><WiCloud/>{this.state.weather.cloudiness}%</span> : null}
-        {enabled('visibility') ? <span className='loc'><br/>{this.state.weather.visibility} {window.language.widgets.weather.meters}</span> : null}
+        {enabled('visibility') ? <span className='loc'><br/>{this.state.weather.visibility} {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters')}</span> : null}
         {enabled('atmosphericpressure') ? <span className='loc'><br/><WiBarometer/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
         {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}

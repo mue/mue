@@ -35,7 +35,6 @@
     },
     "navbar": {
       "tooltips": {
-        "update": "Notas de actualización del parche",
         "refresh": "Recargar",
         "feedback": "Comentarios"
       },
@@ -450,9 +449,7 @@
       "error": {
         "title": "Error",
         "description": "No se pudo conectar con el servidor"
-      },
-      "read_blog": "Leer en el blog aquí",
-      "contact_support": "Contáctanos aquí"
+      }
     },
     "welcome": {
       "tip": "Truco",

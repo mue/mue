@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { RefreshRounded, SettingsRounded, AssignmentRounded as NotesRounded, SmsFailed as Report } from '@material-ui/icons';
 
@@ -67,18 +68,18 @@ export default class Navbar extends PureComponent {
         : null}
   
         {(window.constants.BETA_VERSION === true) ? 
-          <Tooltip title={window.language.widgets.navbar.tooltips.feedback}>
+          <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.tooltips.feedback')}>
             <Report className='topicons' onClick={() => this.props.openModal('feedbackModal')}/>
           </Tooltip>
         : null}
   
         {(this.refreshValue !== 'false') ?
-          <Tooltip title={window.language.widgets.navbar.tooltips.refresh}>
+          <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.tooltips.refresh')}>
             <RefreshRounded className='refreshicon topicons' onClick={() => this.refresh()}/>
           </Tooltip>
         : null}
   
-        <Tooltip title={window.language.modals.main.navbar.settings}>
+        <Tooltip title={variables.language.getMessage(variables.languagecode, 'modals.main.navbar.settings')}>
           <SettingsRounded className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')}/>
         </Tooltip>
       </div>

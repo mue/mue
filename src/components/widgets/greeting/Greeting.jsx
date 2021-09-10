@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 
 import { nth, convertTimezone } from 'modules/helpers/date';
@@ -12,7 +13,6 @@ export default class Greeting extends PureComponent {
       greeting: ''
     };
     this.timer = undefined;
-    this.language = window.language.widgets.greeting;
     this.greeting = createRef();
   }
 
@@ -27,13 +27,13 @@ export default class Greeting extends PureComponent {
 
     // If it's December 25th, set the greeting string to "Merry Christmas"
     if (month === 11 && date === 25) {
-      message = this.language.christmas;
+      message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.christmas');
     // If the date is January 1st, set the greeting string to "Happy new year"
     } else if (month === 0 && date === 1) {
-      message = this.language.newyear;
+      message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.newyear');
     // If it's October 31st, set the greeting string to "Happy Halloween"
     } else if (month === 9 && date === 31) {
-      message = this.language.halloween;
+      message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.halloween');
     }
 
     return message;
@@ -56,13 +56,13 @@ export default class Greeting extends PureComponent {
       const hour = now.getHours();
 
       // Set the default greeting string to "Good evening"
-      let message = this.language.evening;
+      let message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.evening');
       // If it's before 12am, set the greeting string to "Good morning"
       if (hour < 12) {
-        message = this.language.morning;
+        message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.morning');
       // If it's before 6pm, set the greeting string to "Good afternoon"
       } else if (hour < 18) {
-        message = this.language.afternoon;
+        message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.afternoon');
       }
 
       // Events and custom
@@ -95,10 +95,10 @@ export default class Greeting extends PureComponent {
 
         if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
           if (localStorage.getItem('birthdayage') === 'true') {
-            const text = this.language.birthday.split(' ');
+            const text = variables.language.getMessage(variables.languagecode, 'widgets.greeting.birthday').split(' ');
             message = `${text[0]} ${nth(this.calculateAge(birth))} ${text[1]}`;
           } else {
-            message = this.language.birthday;
+            message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.birthday');
           }
         }
       }

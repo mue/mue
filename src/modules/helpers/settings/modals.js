@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { toast } from 'react-toastify';
 
 export function saveFile(data, filename = 'file') {
@@ -28,12 +29,14 @@ export function exportSettings() {
 }
 
 export function importSettings(e) {
+  const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  const languagecode = variables.languagecode;
   const content = JSON.parse(e.target.result);
 
   Object.keys(content).forEach((key) => {
     localStorage.setItem(key, content[key]);
   });
 
-  toast(window.language.toasts.imported);
+  toast(getMessage(languagecode, 'toats.imported'));
   window.stats.postEvent('tab', 'Settings imported');
 }

@@ -19,7 +19,6 @@ export default class QuickLinks extends PureComponent {
       nameError: '',
       urlError: ''
     };
-    this.language = window.language.widgets.quicklinks;
     this.quicklinksContainer = createRef();
   }
 

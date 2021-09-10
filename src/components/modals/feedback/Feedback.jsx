@@ -1,8 +1,12 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import './feedback.scss';
 
 export default class FeedbackModal extends PureComponent {
+  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  languagecode = variables.languagecode;
+
   constructor() {
     super();
     this.state = {
@@ -18,7 +22,6 @@ export default class FeedbackModal extends PureComponent {
       },
       formsubmit: ''
     };
-    this.language = window.language.modals.feedback;
   }
 
   async submitForm(e) {
@@ -27,11 +30,11 @@ export default class FeedbackModal extends PureComponent {
     let question_two_error, question_four_error;
 
     if (this.state.question_two.value.length <= 0) {
-      question_two_error = this.language.not_filled;
+      question_two_error = this.getMessage(this.languagecode, 'modals.feedback.not_filled');
     }
 
     if (this.state.question_four.value.length <= 0) {
-      question_four_error = this.language.not_filled;
+      question_four_error = this.getMessage(this.languagecode, 'modals.feedback.not_filled');
     }
 
     if (question_two_error || question_four_error) {
@@ -58,7 +61,7 @@ export default class FeedbackModal extends PureComponent {
       });
 
       this.setState({
-        formsubmit: this.language.success
+        formsubmit: this.getMessage(this.languagecode, 'modals.feedback.success')
       });
 
       setTimeout(() => {
@@ -70,36 +73,36 @@ export default class FeedbackModal extends PureComponent {
   render() {
     return (
       <div className='feedback'>
-        <h1>{this.language.title}</h1>
+        <h1>{this.getMessage(this.languagecode, 'modals.feedback.title')}</h1>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <form>
           <input type='hidden' name='version' value={window.constants.VERSION} />
           <div className='question'>
-            <label>{this.language.question_one}</label>
+            <label>{this.getMessage(this.languagecode, 'modals.feedback.question_one')}</label>
             <br/><br/>
             <label className='values'>0</label>
             <input className='range' type='range' min='0' max='10' name='questionone' value={this.state.question_one} onChange={(e) => this.setState({ question_one: e.target.value })}/>
             <label className='values'>10 ({this.state.question_one})</label>
           </div>
           <div className='question'>
-            <label>{this.language.question_two}</label>
+            <label>{this.getMessage(this.languagecode, 'modals.feedback.question_two')}</label>
             <textarea name='questiontwo' onChange={(e) => this.setState({ question_two: { value: e.target.value }})}/>
             <p className='feedbackerror'>{this.state.question_two.error}</p>
           </div>
           <div className='question'>
-            <label>{this.language.question_three}</label>
+            <label>{this.getMessage(this.languagecode, 'modals.feedback.question_three')}</label>
             <br/><br/>
             <label className='values'>0</label>
             <input className='range' type='range' min='0' max='10' name='questionthree' value={this.state.question_three} onChange={(e) => this.setState({ question_three: e.target.value })}/>
             <label className='values'>10 ({this.state.question_three})</label>
           </div>
           <div className='question'>
-            <label>{this.language.question_four}</label>
+            <label>{this.getMessage(this.languagecode, 'modals.feedback.question_four')}</label>
             <textarea name='questionfour' value={this.state.question_four.value} onChange={(e) => this.setState({ question_four: { value: e.target.value }})}/>
             <p className='feedbackerror'>{this.state.question_four.error}</p>
           </div>
           <p>{this.state.formsubmit}</p>
-          <button onClick={(e) => this.submitForm(e)}>{this.language.submit}</button>
+          <button onClick={(e) => this.submitForm(e)}>{this.getMessage(this.languagecode, 'modals.feedback.submit')}</button>
         </form>
       </div>
     );

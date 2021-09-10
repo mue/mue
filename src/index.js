@@ -2,6 +2,7 @@ import { render } from 'react-dom';
 
 import App from './App';
 import * as Constants from 'modules/constants';
+import variables from './modules/variables';
 
 import './scss/index.scss';
 // the toast css is based on default so we need to import it
@@ -11,20 +12,31 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import Stats from 'modules/helpers/stats';
 
 // language
+import I18n from '@eartharoid/i18n';
 const languagecode = localStorage.getItem('language') || 'en_GB';
 
 // we set things to window. so we avoid passing the translation strings as props to each component
-window.languagecode = languagecode.replace('-', '_');
+variables.languagecode = languagecode.replace('-', '_');
 
 if (languagecode === 'en') {
-  window.languagecode = 'en_GB';
+  variables.languagecode = 'en_GB';
 }
 
-window.language = require(`./translations/${window.languagecode}.json`);
+variables.language = new I18n(variables.languagecode, {
+  de: require('./translations/de_DE.json'),
+  en_GB: require('./translations/en_GB.json'),
+  en_US: require('./translations/en_US.json'),
+  es: require('./translations/es.json'),
+  fr: require('./translations/fr.json'),
+  nl: require('./translations/nl.json'),
+  no: require('./translations/no.json'),
+  ru: require('./translations/ru.json'),
+  zh_CN: require('./translations/zh_CN.json')
+});
 
 // set html language tag
-if (window.languagecode !== 'en_GB' || window.languagecode !== 'en_US') {
-  document.documentElement.lang = window.languagecode.split('_')[0];
+if (variables.languagecode !== 'en_GB' || variables.languagecode !== 'en_US') {
+  document.documentElement.lang = variables.languagecode.split('_')[0];
 }
 
 window.constants = Constants;
