@@ -132,6 +132,7 @@
             "ddg_image_proxy": "Utilizar el proxy de imágenes de DuckDuckGo",
             "transition": "Transición fade-in",
             "photo_information": "Ver información de la foto",
+            "show_map": "Show location map on photo information if available",
             "category": "Categoría",
             "buttons": {
               "title": "Botones",

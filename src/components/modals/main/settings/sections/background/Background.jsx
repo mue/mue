@@ -21,7 +21,7 @@ export default class BackgroundSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
-      customBackground: [''],
+      customBackground: this.getCustom(),
       backgroundType: localStorage.getItem('backgroundType') || 'api',
       backgroundCategories: [this.getMessage(this.languagecode, 'modals.main.loading')]
     };
@@ -121,10 +121,6 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   componentDidMount() {
-    this.setState({
-      customBackground: this.getCustom()
-    });
-
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return this.setState({
         backgroundCategories: [this.getMessage(this.languagecode, 'modals.update.offline.title')]
@@ -227,7 +223,7 @@ export default class BackgroundSettings extends PureComponent {
         <Checkbox name='ddgProxy' text={getMessage(languagecode, 'modals.main.settings.sections.background.ddg_image_proxy')} element='.other' />
         <Checkbox name='bgtransition' text={getMessage(languagecode, 'modals.main.settings.sections.background.transition')} element='.other' />
         <Checkbox name='photoInformation' text={getMessage(languagecode, 'modals.main.settings.sections.background.photo_information')} element='.other' />
-        <Checkbox name='photoMap' text='Show location map on photo information if available' element='.other'/>
+        <Checkbox name='photoMap' text={getMessage(languagecode, 'modals.main.settings.sections.background.show_map')} element='.other'/>
 
         <h3>{getMessage(languagecode, 'modals.main.settings.sections.background.source.title')}</h3>
         <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.background.type.title')} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>

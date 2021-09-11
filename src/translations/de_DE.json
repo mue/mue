@@ -132,6 +132,7 @@
             "ddg_image_proxy": "DuckDuckGo Bilder Proxy verwenden",
             "transition": "Weicher übergang",
             "photo_information": "Foto-Informationen anzeigen",
+            "show_map": "Show location map on photo information if available",
             "category": "Kategorie",
             "buttons": {
               "title": "Schaltflächen",
