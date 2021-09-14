@@ -29,7 +29,7 @@ export default class QuoteSettings extends PureComponent {
     if (this.state.quoteType === 'custom') {
       customSettings = (
         <>
-          <Text title={this.getMessage(this.languagecode, 'modals.main.settings.sections.quote.custom_quote')} name='customQuote' category='quote' />
+          <Text title={this.getMessage(this.languagecode, 'modals.main.settings.sections.quote.custom')} name='customQuote' category='quote' />
           <Text title={this.getMessage(this.languagecode, 'modals.main.settings.sections.quote.custom_author')} name='customQuoteAuthor' category='quote'/>
         </>
       );

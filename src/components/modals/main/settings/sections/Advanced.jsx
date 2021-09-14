@@ -45,7 +45,7 @@ export default class AdvancedSettings extends PureComponent {
         <h3>{getMessage(languagecode, 'modals.main.settings.sections.advanced.customisation')}</h3>
         <Text title={getMessage(languagecode, 'modals.main.settings.sections.advanced.tab_name')} name='tabName' default={getMessage(languagecode, 'tabname')} category='other'/>
         <Text title={getMessage(languagecode, 'modals.main.settings.sections.advanced.custom_js')} name='customjs' textarea={true} category='other' element='other'/>
-        <Text title={getMessage(languagecode, 'modals.main.settings.sections.advanced.custom_Css')} name='customcss' textarea={true} category='other'/>
+        <Text title={getMessage(languagecode, 'modals.main.settings.sections.advanced.custom_css')} name='customcss' textarea={true} category='other'/>
 
         <h3>{getMessage(languagecode, 'modals.main.settings.sections.experimental.title')}</h3>
         <p style={{ maxWidth: '75%' }}>{getMessage(languagecode, 'modals.main.settings.sections.advanced.experimental_warning')}</p>

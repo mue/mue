@@ -31,3 +31,8 @@ div.color-preview-area > div > div:nth-child(5) {
 .gradient-type-item.active::after {
   border: 2px solid var(--modal-text) !important;
 }
+
+.text-input, .number-input {
+  background-color: var(--sidebar) !important;
+  color: var(--modal-text) !important;
+}

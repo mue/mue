@@ -105,7 +105,7 @@ export default class ColourSettings extends PureComponent {
   }
 
   currentGradientSettings = () => {
-    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.language.sections.background.source.disabled)) {
+    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.disabled'))) {
       const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
       return JSON.stringify({
         ...this.state.gradientSettings,

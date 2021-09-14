@@ -76,7 +76,7 @@ export default class TimeSettings extends PureComponent {
         </ul>
         <br/>
         <Radio name='tempformat' title={getMessage(languagecode, 'modals.main.settings.sections.weather.temp_format.title')} options={tempFormat} category='weather'/>
-        <Slider title={getMessage(languagecode, 'modals.main.settings.appearance.accessibility.widget_zoom')} name='zoomWeather' min='10' max='400' default='100' display='%' category='weather'/>
+        <Slider title={getMessage(languagecode, 'modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomWeather' min='10' max='400' default='100' display='%' category='weather'/>
 
         <h3>{getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.title')}</h3>
         <Checkbox name='showlocation' text={getMessage(languagecode, 'modals.main.settings.sections.weather.extra_info.show_location')} category='weather'/>
