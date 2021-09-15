@@ -24,9 +24,9 @@ const SortableItem = sortableElement(({ value }) => (
   </li>
 ));
   
-const SortableContainer = sortableContainer(({ children }) => {
-  return <ul className='sortablecontainer'>{children}</ul>;
-});
+const SortableContainer = sortableContainer(({ children }) => (
+  <ul className='sortablecontainer'>{children}</ul>
+));
 
 export default class OrderSettings extends PureComponent {
   constructor() {

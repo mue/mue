@@ -59,7 +59,9 @@ body {
   button,
   svg,
   input[type=text],
-  .MuiSwitch-switchBase {
+  .MuiSwitch-switchBase,
+  .tooltipTitle,
+  .quicklinks-container img {
     transition: none !important;
   }
 }
