@@ -33,7 +33,7 @@ export default function Settings() {
         <div label={getMessage(languagecode, 'modals.main.settings.sections.search.title')} name='search'><Search/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.quicklinks.title')} name='quicklinks'><QuickLinks/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.weather.title')} name='weather'><Weather/></div>
-        <div label='Message' name='message'><Message/></div>
+        <div label={getMessage(languagecode, 'modals.main.settings.sections.message.title')} name='message'><Message/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.appearance.title')} name='appearance'><Appearance/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.order.title')} name='order'><Order/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.language.title')} name='language'><Language/></div>
