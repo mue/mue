@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { TextareaAutosize } from '@mui/material';
 import Hotkeys from 'react-hot-keys';
@@ -9,6 +10,9 @@ import EventBus from 'modules/helpers/eventbus';
 import './quicklinks.scss';
 
 export default class QuickLinks extends PureComponent {
+  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
+  languagecode = variables.languagecode;
+
   constructor() {
     super();
     this.state = {
@@ -42,13 +46,13 @@ export default class QuickLinks extends PureComponent {
 
     let nameError, urlError;
     if (this.state.name.length <= 0) {
-      nameError = this.language.name_error;
+      nameError = this.getMessage(this.languagecode, 'widgets.quicklinks.name_error');
     }
 
     // regex: https://ihateregex.io/expr/url/
     // eslint-disable-next-line no-useless-escape
     if (url.length <= 0 || /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/.test(url) === false) {
-      urlError = this.language.url_error;
+      urlError = this.getMessage(this.languagecode, 'widgets.quicklinks.url_error');
     }
 
     if (nameError || urlError) {
@@ -65,6 +69,7 @@ export default class QuickLinks extends PureComponent {
     data.push({
       name: this.state.name,
       url: url,
+      icon: this.state.icon || '',
       key: Math.random().toString(36).substring(7) + 1
     });
 
@@ -141,13 +146,22 @@ export default class QuickLinks extends PureComponent {
 
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
     const useProxy = (localStorage.getItem('quicklinksddgProxy') !== 'false');
+    const useText = (localStorage.getItem('quicklinksText') === 'true');
 
     const quickLink = (item) => {
+      if (useText) {
+        return <a className='quicklinkstext' key={item.key} onContextMenu={(e) => this.deleteLink(item.key, e)} href={item.url} target={target} rel={rel} draggable={false}>{item.name}</a>;
+      }
+
       const url = useProxy ? 'https://icons.duckduckgo.com/ip2/' : 'https://www.google.com/s2/favicons?sz=32&domain=';
+      let img = url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '');
+      if (item.icon) {
+        img = item.icon;
+      }
 
       const link = (
         <a key={item.key} onContextMenu={(e) => this.deleteLink(item.key, e)} href={item.url} target={target} rel={rel} draggable={false}>
-          <img src={url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '')} alt={item.name} draggable={false}/>
+          <img src={img} alt={item.name} draggable={false}/>
         </a>
       );
 
@@ -168,12 +182,14 @@ export default class QuickLinks extends PureComponent {
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
         <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink, marginTop }}>
           <div className='topbarquicklinks' onKeyDown={this.topbarEnter}>
-            <h4>{this.language.new}</h4>
-            <TextareaAutosize rowsmax={1} placeholder={this.language.name} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
+            <h4>{this.getMessage(this.languagecode, 'widgets.quicklinks.new')}</h4>
+            <TextareaAutosize rowsmax={1} placeholder={this.getMessage(this.languagecode, 'widgets.quicklinks.name')} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
             <p>{this.state.nameError}</p>
-            <TextareaAutosize rowsmax={10} placeholder={this.language.url} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
+            <TextareaAutosize rowsmax={10} placeholder={this.getMessage(this.languagecode, 'widgets.quicklinks.url')} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
             <p>{this.state.urlError}</p>
-            <button className='pinNote' onClick={this.addLink}>{this.language.add}</button>
+            <TextareaAutosize rowsmax={10} placeholder={this.getMessage(this.languagecode, 'widgets.quicklinks.icon')} value={this.state.icon} onChange={(e) => this.setState({ icon: e.target.value })} />
+            <p></p>
+            <button className='pinNote' onClick={this.addLink}>{this.getMessage(this.languagecode, 'widgets.quicklinks.add')}</button>
           </div>
         </span>
         {window.keybinds.toggleQuicklinks && window.keybinds.toggleQuicklinks !== '' ? <Hotkeys keyName={window.keybinds.toggleQuicklinks} onKeyDown={this.toggleAdd} /> : null}

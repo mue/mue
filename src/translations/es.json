@@ -22,6 +22,7 @@
       "new": "Nuevo enlace",
       "name": "Nombre",
       "url": "URL",
+      "icon": "Icon (optional)",
       "add": "Añadir",
       "name_error": "Debe indicar el nombre",
       "url_error": "Debe indicar la URL"
@@ -224,7 +225,12 @@
           "quicklinks": {
             "title": "Enlaces rápidos",
             "open_new": "Abrir en una nueva pestaña",
-            "tooltip": "Descripción emergente"
+            "tooltip": "Descripción emergente",
+            "text_only": "Show text only"
+          },
+          "message": {
+            "title": "Message",
+            "text": "Text"
           },
           "appearance": {
             "title": "Apariencia",

@@ -13,7 +13,8 @@ const widget_name = {
   time: getMessage(languagecode, 'modals.main.settings.sections.time.title'),
   quicklinks: getMessage(languagecode, 'modals.main.settings.sections.quicklinks.title'),
   quote: getMessage(languagecode, 'modals.main.settings.sections.quote.title'),
-  date: getMessage(languagecode, 'modals.main.settings.sections.greeting.title')
+  date: getMessage(languagecode, 'modals.main.settings.sections.greeting.title'),
+  message: 'Message'
 };
 
 const SortableItem = sortableElement(({ value }) => (
@@ -60,7 +61,7 @@ export default class OrderSettings extends PureComponent {
   }
 
   reset = () => {
-    localStorage.setItem('order', JSON.stringify(['greeting', 'time', 'quicklinks', 'quote', 'date']));
+    localStorage.setItem('order', JSON.stringify(['greeting', 'time', 'quicklinks', 'quote', 'date', 'message']));
   
     this.setState({
       items: JSON.parse(localStorage.getItem('order'))

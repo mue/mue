@@ -90,3 +90,13 @@ textarea {
     margin: 5px;
   }
 }
+
+.quicklinkstext {
+  text-decoration: none;
+  color: white;
+  font-size: smaller;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

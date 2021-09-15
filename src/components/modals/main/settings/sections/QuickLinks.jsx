@@ -12,6 +12,7 @@ export default function QuickLinks() {
     <>
       <h2>{getMessage(languagecode, 'modals.main.settings.sections.quicklinks.title')}</h2>
       <Switch name='quicklinksenabled' text={getMessage(languagecode, 'modals.main.settings.enabled')} category='quicklinks' element='.quicklinks-container'/>
+      <Checkbox name='quicklinksText' text={getMessage(languagecode, 'modals.main.settings.sections.quicklinks.text_only')} category='quicklinks'/>
       <Checkbox name='quicklinksddgProxy' text={getMessage(languagecode, 'modals.main.settings.sections.background.ddg_image_proxy')} category='quicklinks'/>
       <Checkbox name='quicklinksnewtab' text={getMessage(languagecode, 'modals.main.settings.sections.quicklinks.open_new')} category='quicklinks'/>
       <Checkbox name='quicklinkstooltip' text={getMessage(languagecode, 'modals.main.settings.sections.quicklinks.tooltip')} category='quicklinks'/>

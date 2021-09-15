@@ -6,6 +6,7 @@ import Quote from './quote/Quote';
 import Search from './search/Search';
 import QuickLinks from './quicklinks/QuickLinks';
 import Date from './time/Date';
+import Message from './message/Message';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -25,7 +26,8 @@ export default class Widgets extends PureComponent {
       greeting: this.enabled('greeting') ? <Greeting/> : null,
       quote: this.enabled('quote') ? <Quote/> : null,
       date: this.enabled('date') ? <Date/> : null,
-      quicklinks: this.enabled('quicklinksenabled') && this.online ? <QuickLinks/> : null
+      quicklinks: this.enabled('quicklinksenabled') && this.online ? <QuickLinks/> : null,
+      message: this.enabled('message') ? <Message/> : null
     };
   }
 
@@ -58,7 +60,7 @@ export default class Widgets extends PureComponent {
       });
     } else {
       // prevent error
-      elements = [<Greeting/>, <Clock/>, <QuickLinks/>, <Quote/>, <Date/>];
+      elements = [<Greeting/>, <Clock/>, <QuickLinks/>, <Quote/>, <Date/>, <Message/>];
     }
 
     return (

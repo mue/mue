@@ -17,6 +17,7 @@ import QuickLinks from '../settings/sections/QuickLinks';
 import Weather from '../settings/sections/Weather';
 import Stats from '../settings/sections/Stats';
 import Keybinds from '../settings/sections/Keybinds';
+import Message from '../settings/sections/Message';
 
 export default function Settings() {
   const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
@@ -32,6 +33,7 @@ export default function Settings() {
         <div label={getMessage(languagecode, 'modals.main.settings.sections.search.title')} name='search'><Search/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.quicklinks.title')} name='quicklinks'><QuickLinks/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.weather.title')} name='weather'><Weather/></div>
+        <div label='Message' name='message'><Message/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.appearance.title')} name='appearance'><Appearance/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.order.title')} name='order'><Order/></div>
         <div label={getMessage(languagecode, 'modals.main.settings.sections.language.title')} name='language'><Language/></div>

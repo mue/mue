@@ -18,6 +18,7 @@ import {
   CloudOutlined as Weather,
   SettingsOutlined as Advanced,
   Link as QuickLinks,
+  SmsOutlined as Message,
   AssessmentOutlined as Stats,
   Code as Sideload,
   AddCircleOutline as Added,
@@ -56,6 +57,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage(languagecode, 'modals.main.settings.sections.quicklinks.title'): icon = <QuickLinks/>; break;
     case getMessage(languagecode, 'modals.main.settings.sections.appearance.title'): icon = <Appearance/>; break;
     case getMessage(languagecode, 'modals.main.settings.sections.order.title'): icon = <Order/>; break;
+    case getMessage(languagecode, 'modals.main.settings.sections.message.title'): icon = <Message/>; break;
     case getMessage(languagecode, 'modals.main.settings.sections.language.title'): icon = <Language/>; divider = true; break;
     case getMessage(languagecode, 'modals.main.settings.sections.advanced.title'): icon = <Advanced/>; break;
     case getMessage(languagecode, 'modals.main.settings.sections.keybinds.title'): icon = <Keybinds/>; break;

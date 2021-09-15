@@ -22,6 +22,7 @@
       "new": "新快捷方式",
       "name": "名称",
       "url": "链接",
+      "icon": "Icon (optional)",
       "add": "添加",
       "name_error": "请输入名称",
       "url_error": "请输入链接"
@@ -224,7 +225,12 @@
           "quicklinks": {
             "title": "快捷方式",
             "open_new": "在新标签页打开",
-            "tooltip": "光标停留时下方显示标题"
+            "tooltip": "光标停留时下方显示标题",
+            "text_only": "Show text only"
+          },
+          "message": {
+            "title": "Message",
+            "text": "Text"
           },
           "appearance": {
             "title": "显示",
