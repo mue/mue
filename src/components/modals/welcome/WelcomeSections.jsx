@@ -108,7 +108,6 @@ export default class WelcomeSections extends PureComponent {
   }
 
   render() {
-    const language = window.language.modals.welcome;
     let tabContent;
   
     const intro = (
@@ -195,7 +194,7 @@ export default class WelcomeSections extends PureComponent {
         <div className='themesToggleArea'>
           <div className='toggle' onClick={() => this.props.switchTab(1)}><span>{this.getMessage(this.languagecode, 'modals.main.settings.sections.language.title')}: {languages.find((i) => i.value === localStorage.getItem('language')).name}</span></div>
           <div className='toggle' onClick={() => this.props.switchTab(3)}><span>{this.getMessage(this.languagecode, 'modals.main.settings.sections.appearance.theme.title')}: {this.getSetting('theme')}</span></div>
-          {(this.state.importedSettings.length !== 0) ? <div className='toggle' onClick={() => this.props.switchTab(2)}>{language.sections.final.imported} {this.state.importedSettings.length} {this.getMessage(this.languagecode, 'modals.welcome.sections.final.settings')}</div> : null}
+          {(this.state.importedSettings.length !== 0) ? <div className='toggle' onClick={() => this.props.switchTab(2)}>{this.getMessage(this.languagecode, 'modals.main.settings.sections.final.imported')} {this.state.importedSettings.length} {this.getMessage(this.languagecode, 'modals.welcome.sections.final.settings')}</div> : null}
         </div>
       </>
     );
