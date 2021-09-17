@@ -75,8 +75,7 @@ export default class Changelog extends PureComponent {
   }
 
   render() {
-    const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-    const languagecode = variables.languagecode;
+    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
     const errorMessage = (msg) => {
       return (
@@ -91,13 +90,13 @@ export default class Changelog extends PureComponent {
     if (navigator.onLine === false || this.offlineMode) {    
       return errorMessage(<>
         <WifiOff/>
-        <h1>{getMessage(languagecode, 'modals.main.marketplace.offline.title')}</h1>
-        <p className='description'>{getMessage(languagecode, 'modals.main.marketplace.offline.description')}</p>
+        <h1>{getMessage('modals.main.marketplace.offline.title')}</h1>
+        <p className='description'>{getMessage('modals.main.marketplace.offline.description')}</p>
       </>);
     }
   
     if (!this.state.title) {
-      return errorMessage(<h1>{getMessage(languagecode, 'modals.main.loading')}</h1>);
+      return errorMessage(<h1>{getMessage('modals.main.loading')}</h1>);
     }
 
     return (

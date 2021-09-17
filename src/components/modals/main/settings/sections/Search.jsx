@@ -13,8 +13,7 @@ const searchEngines = require('components/widgets/search/search_engines.json');
 const autocompleteProviders = require('components/widgets/search/autocomplete_providers.json');
 
 export default class SearchSettings extends PureComponent {
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   constructor() {
     super();
@@ -31,7 +30,7 @@ export default class SearchSettings extends PureComponent {
       customValue: ''
     });
 
-    toast(this.getMessage(this.languagecode, 'toasts.reset'));
+    toast(this.getMessage('toasts.reset'));
   }
 
   componentDidMount() {
@@ -73,27 +72,27 @@ export default class SearchSettings extends PureComponent {
   render() {
     return (
       <>
-        <h2>{this.getMessage(this.languagecode, 'modals.main.settings.sections.search.title')}</h2>
-        <Switch name='searchBar' text={this.getMessage(this.languagecode, 'modals.main.settings.enabled')} category='widgets' />
+        <h2>{this.getMessage('modals.main.settings.sections.search.title')}</h2>
+        <Switch name='searchBar' text={this.getMessage('modals.main.settings.enabled')} category='widgets' />
         {/* not supported on firefox */}
         {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
-          <Checkbox name='voiceSearch' text={this.getMessage(this.languagecode, 'modals.main.settings.sections.search.voice_search')} category='search'/> 
+          <Checkbox name='voiceSearch' text={this.getMessage('modals.main.settings.sections.search.voice_search')} category='search'/> 
         : null}
-        <Checkbox name='searchDropdown' text={this.getMessage(this.languagecode, 'modals.main.settings.sections.search.dropdown')} category='search' element='.other'/>
-        <Dropdown label={this.getMessage(this.languagecode, 'modals.main.settings.sections.search.search_engine')} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
+        <Checkbox name='searchDropdown' text={this.getMessage('modals.main.settings.sections.search.dropdown')} category='search' element='.other'/>
+        <Dropdown label={this.getMessage('modals.main.settings.sections.search.search_engine')} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
           {searchEngines.map((engine) => (
             <option key={engine.name} value={engine.settingsName}>{engine.name}</option>
           ))}
-          <option value='custom'>{this.getMessage(this.languagecode, 'modals.main.settings.sections.search.custom').split(' ')[0]}</option>
+          <option value='custom'>{this.getMessage('modals.main.settings.sections.search.custom').split(' ')[0]}</option>
         </Dropdown>
         <ul style={{ display: this.state.customDisplay }}>
           <br/>
-          <p style={{ marginTop: '0px' }}>{this.getMessage(this.languagecode, 'modals.main.settings.sections.search.custom')} <span className='modalLink' onClick={() => this.resetSearch()}>{this.getMessage(this.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
+          <p style={{ marginTop: '0px' }}>{this.getMessage('modals.main.settings.sections.search.custom')} <span className='modalLink' onClick={() => this.resetSearch()}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
           <input type='text' value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })}></input>
         </ul>
         <br/>
-        <Checkbox name='autocomplete' text={this.getMessage(this.languagecode, 'modals.main.settings.sections.search.autocomplete')} category='search' />
-        <Radio title={this.getMessage(this.languagecode, 'modals.main.settings.sections.search.autocomplete_provider')} options={autocompleteProviders} name='autocompleteProvider' category='search'/>
+        <Checkbox name='autocomplete' text={this.getMessage('modals.main.settings.sections.search.autocomplete')} category='search' />
+        <Radio title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')} options={autocompleteProviders} name='autocompleteProvider' category='search'/>
       </>
     );
   }

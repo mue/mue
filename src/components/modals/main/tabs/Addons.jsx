@@ -6,14 +6,13 @@ import Sideload from '../marketplace/sections/Sideload';
 import Create from '../marketplace/sections/Create';
 
 export default function Addons() {
-  const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  const languagecode = variables.languagecode;
+  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   return (
     <Tabs>
-      <div label={getMessage(languagecode, 'modals.main.addons.added')} name='added'><Added/></div>
-      <div label={getMessage(languagecode, 'modals.main.addons.sideload')} name='sideload'><Sideload/></div>
-      <div label={getMessage(languagecode, 'modals.main.addons.create.title')} name='create'><Create/></div>
+      <div label={getMessage('modals.main.addons.added')} name='added'><Added/></div>
+      <div label={getMessage('modals.main.addons.sideload')} name='sideload'><Sideload/></div>
+      <div label={getMessage('modals.main.addons.create.title')} name='create'><Create/></div>
     </Tabs>
   );
 }

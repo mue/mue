@@ -13,8 +13,7 @@ export default class ColourSettings extends PureComponent {
   DefaultGradientSettings = { angle: '180', gradient: [{ colour: '#ffb032', stop: 0 }], type: 'linear' };
   GradientPickerInitalState = undefined;
 
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   
   constructor() {
     super();
@@ -28,7 +27,7 @@ export default class ColourSettings extends PureComponent {
     this.setState({
       gradientSettings: this.DefaultGradientSettings
     });
-    toast(this.getMessage(this.languagecode, 'toasts.reset'));
+    toast(this.getMessage('toasts.reset'));
   }
 
   initialiseColourPickerState(gradientSettings) {
@@ -105,14 +104,14 @@ export default class ColourSettings extends PureComponent {
   }
 
   currentGradientSettings = () => {
-    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.disabled'))) {
+    if (typeof this.state.gradientSettings === 'object' && this.state.gradientSettings.gradient.every(g => g.colour !== this.getMessage('modals.main.settings.sections.background.source.disabled'))) {
       const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
       return JSON.stringify({
         ...this.state.gradientSettings,
         gradient: [...this.state.gradientSettings.gradient.map(g => { return { ...g, stop: clampNumber(+g.stop, 0, 100) } })].sort((a, b) => (a.stop > b.stop) ? 1 : -1)
       });
     }
-    return this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.disabled');
+    return this.getMessage('modals.main.settings.sections.background.source.disabled');
   }
 
   onColourPickerChange = (attrs, name) => {
@@ -176,14 +175,14 @@ export default class ColourSettings extends PureComponent {
       colourSettings = (
         <>
           {gradientInputs}
-          {!gradientHasMoreThanOneColour ? (<><br/><br/><button type='button' className='add' onClick={this.addColour}>{this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.add_colour')}</button></>) : null}
+          {!gradientHasMoreThanOneColour ? (<><br/><br/><button type='button' className='add' onClick={this.addColour}>{this.getMessage('modals.main.settings.sections.background.source.add_colour')}</button></>) : null}
         </>
       );
     }
 
     return (
       <>
-        <p>{this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.custom_colour')} <span className='modalLink' onClick={() => this.resetColour()}>{this.getMessage(this.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
+        <p>{this.getMessage('modals.main.settings.sections.background.source.custom_colour')} <span className='modalLink' onClick={() => this.resetColour()}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
         {colourSettings}
       </>
     );

@@ -10,8 +10,7 @@ import EventBus from 'modules/helpers/eventbus';
 import './quicklinks.scss';
 
 export default class QuickLinks extends PureComponent {
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   constructor() {
     super();
@@ -46,13 +45,13 @@ export default class QuickLinks extends PureComponent {
 
     let nameError, urlError;
     if (this.state.name.length <= 0) {
-      nameError = this.getMessage(this.languagecode, 'widgets.quicklinks.name_error');
+      nameError = this.getMessage('widgets.quicklinks.name_error');
     }
 
     // regex: https://ihateregex.io/expr/url/
     // eslint-disable-next-line no-useless-escape
     if (url.length <= 0 || /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/.test(url) === false) {
-      urlError = this.getMessage(this.languagecode, 'widgets.quicklinks.url_error');
+      urlError = this.getMessage('widgets.quicklinks.url_error');
     }
 
     if (nameError || urlError) {
@@ -182,14 +181,14 @@ export default class QuickLinks extends PureComponent {
         <button className='quicklinks' onClick={this.toggleAdd}>+</button>
         <span className='quicklinkscontainer' style={{ visibility: this.state.showAddLink, marginTop }}>
           <div className='topbarquicklinks' onKeyDown={this.topbarEnter}>
-            <h4>{this.getMessage(this.languagecode, 'widgets.quicklinks.new')}</h4>
-            <TextareaAutosize rowsmax={1} placeholder={this.getMessage(this.languagecode, 'widgets.quicklinks.name')} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
+            <h4>{this.getMessage('widgets.quicklinks.new')}</h4>
+            <TextareaAutosize rowsmax={1} placeholder={this.getMessage('widgets.quicklinks.name')} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
             <p>{this.state.nameError}</p>
-            <TextareaAutosize rowsmax={10} placeholder={this.getMessage(this.languagecode, 'widgets.quicklinks.url')} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
+            <TextareaAutosize rowsmax={10} placeholder={this.getMessage('widgets.quicklinks.url')} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
             <p>{this.state.urlError}</p>
-            <TextareaAutosize rowsmax={10} placeholder={this.getMessage(this.languagecode, 'widgets.quicklinks.icon')} value={this.state.icon} onChange={(e) => this.setState({ icon: e.target.value })} />
+            <TextareaAutosize rowsmax={10} placeholder={this.getMessage('widgets.quicklinks.icon')} value={this.state.icon} onChange={(e) => this.setState({ icon: e.target.value })} />
             <p></p>
-            <button className='pinNote' onClick={this.addLink}>{this.getMessage(this.languagecode, 'widgets.quicklinks.add')}</button>
+            <button className='pinNote' onClick={this.addLink}>{this.getMessage('widgets.quicklinks.add')}</button>
           </div>
         </span>
         {window.keybinds.toggleQuicklinks && window.keybinds.toggleQuicklinks !== '' ? <Hotkeys keyName={window.keybinds.toggleQuicklinks} onKeyDown={this.toggleAdd} /> : null}

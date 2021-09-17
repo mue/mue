@@ -15,15 +15,14 @@ import ColourSettings from './Colour';
 import EventBus from 'modules/helpers/eventbus';
 
 export default class BackgroundSettings extends PureComponent {
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   constructor() {
     super();
     this.state = {
       customBackground: this.getCustom(),
       backgroundType: localStorage.getItem('backgroundType') || 'api',
-      backgroundCategories: [this.getMessage(this.languagecode, 'modals.main.loading')]
+      backgroundCategories: [this.getMessage('modals.main.loading')]
     };
     this.controller = new AbortController();
   }
@@ -33,7 +32,7 @@ export default class BackgroundSettings extends PureComponent {
     this.setState({
       customBackground: ['']
     });
-    toast(this.getMessage(this.languagecode, 'toasts.reset'));
+    toast(this.getMessage('toasts.reset'));
     EventBus.dispatch('refresh', 'background');
   }
 
@@ -73,8 +72,8 @@ export default class BackgroundSettings extends PureComponent {
     if (customBackground.startsWith('data:video/') || customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
       return (
         <>
-          <Checkbox name='backgroundVideoLoop' text={this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.loop_video')}/>
-          <Checkbox name='backgroundVideoMute' text={this.getMessage(this.languagecode, 'modals.main.settings.sections.background.source.mute_video')}/>
+          <Checkbox name='backgroundVideoLoop' text={this.getMessage('modals.main.settings.sections.background.source.loop_video')}/>
+          <Checkbox name='backgroundVideoMute' text={this.getMessage('modals.main.settings.sections.background.source.mute_video')}/>
         </>
       );
     } else {
@@ -84,7 +83,7 @@ export default class BackgroundSettings extends PureComponent {
 
   marketplaceType = () => {
     if (localStorage.getItem('photo_packs')) {
-      return <option value='photo_pack'>{this.getMessage(this.languagecode, 'modals.main.navbar.marketplace')}</option>;
+      return <option value='photo_pack'>{this.getMessage('modals.main.navbar.marketplace')}</option>;
     }
   }
 
@@ -123,7 +122,7 @@ export default class BackgroundSettings extends PureComponent {
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return this.setState({
-        backgroundCategories: [this.getMessage(this.languagecode, 'modals.update.offline.title')]
+        backgroundCategories: [this.getMessage('modals.update.offline.title')]
       });
     }
 

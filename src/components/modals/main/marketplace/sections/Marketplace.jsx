@@ -10,8 +10,7 @@ import Dropdown from '../../settings/Dropdown';
 import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
 
 export default class Marketplace extends PureComponent {
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   constructor() {
     super();
@@ -23,8 +22,8 @@ export default class Marketplace extends PureComponent {
       item: {}
     };
     this.buttons = {
-      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{this.getMessage(this.languagecode, 'modals.main.marketplace.product.buttons.remove')}</button>,
-      install: <button className='addToMue' onClick={() => this.manage('install')}>{this.getMessage(this.languagecode, 'modals.main.marketplace.product.buttons.addtomue')}</button>
+      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{this.getMessage('modals.main.marketplace.product.buttons.remove')}</button>,
+      install: <button className='addToMue' onClick={() => this.manage('install')}>{this.getMessage('modals.main.marketplace.product.buttons.addtomue')}</button>
     };
     this.controller = new AbortController();
   }
@@ -37,7 +36,7 @@ export default class Marketplace extends PureComponent {
         info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`, { signal: this.controller.signal })).json();
       } catch (e) {
         if (this.controller.signal.aborted === false) {
-          return toast(this.getMessage(this.languagecode, 'toasts.error'));
+          return toast(this.getMessage('toasts.error'));
         }
       }
 
@@ -112,7 +111,7 @@ export default class Marketplace extends PureComponent {
       uninstall(this.state.item.type, this.state.item.display_name);
     }
 
-    toast(this.getMessage(this.languagecode, 'toats.' + type + 'ed'));
+    toast(this.getMessage('toats.' + type + 'ed'));
     this.setState({
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
     });
@@ -176,13 +175,13 @@ export default class Marketplace extends PureComponent {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(<>
         <WifiOff/>
-        <h1>{this.getMessage(this.languagecode, 'modals.main.marketplace.offline.title')}</h1>
-        <p className='description'>{this.getMessage(this.languagecode, 'modals.main.marketplace.offline.description')}</p>
+        <h1>{this.getMessage('modals.main.marketplace.offline.title')}</h1>
+        <p className='description'>{this.getMessage('modals.main.marketplace.offline.description')}</p>
       </>);
     }
 
     if (this.state.done === false) {
-      return errorMessage(<h1>{this.getMessage(this.languagecode, 'modals.main.loading')}</h1>);
+      return errorMessage(<h1>{this.getMessage('modals.main.loading')}</h1>);
     }
 
     const featured = () => {
@@ -206,8 +205,8 @@ export default class Marketplace extends PureComponent {
           {featured()}
           {errorMessage(<>
             <LocalMall/>
-            <h1>{this.getMessage(this.languagecode, 'modals.main.addons.empty.title')}</h1>
-            <p className='description'>{this.getMessage(this.languagecode, 'modals.main.marketplace.no_items')}</p>
+            <h1>{this.getMessage('modals.main.addons.empty.title')}</h1>
+            <p className='description'>{this.getMessage('modals.main.marketplace.no_items')}</p>
           </>)}
         </>
       );
@@ -221,9 +220,9 @@ export default class Marketplace extends PureComponent {
       <>
         {featured()}
         <br/>
-        <Dropdown label={this.getMessage(this.languagecode, 'modals.main.addons.sort.title')} name='sortMarketplace' onChange={(value) => this.sortMarketplace(value)}>
-          <option value='a-z'>{this.getMessage(this.languagecode, 'modals.main.addons.sort.a_z')}</option>
-          <option value='z-a'>{this.getMessage(this.languagecode, 'modals.main.addons.sort.z_a')}</option>
+        <Dropdown label={this.getMessage('modals.main.addons.sort.title')} name='sortMarketplace' onChange={(value) => this.sortMarketplace(value)}>
+          <option value='a-z'>{this.getMessage('modals.main.addons.sort.a_z')}</option>
+          <option value='z-a'>{this.getMessage('modals.main.addons.sort.z_a')}</option>
         </Dropdown>
         <br/>
         <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />

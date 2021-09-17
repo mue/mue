@@ -29,14 +29,13 @@ export function exportSettings() {
 }
 
 export function importSettings(e) {
-  const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  const languagecode = variables.languagecode;
+  const getMessage = (languagecode, text) => variables.language.getMessage(variables.languagecode, text);
   const content = JSON.parse(e.target.result);
 
   Object.keys(content).forEach((key) => {
     localStorage.setItem(key, content[key]);
   });
 
-  toast(getMessage(languagecode, 'toats.imported'));
+  toast(getMessage('toasts.imported'));
   window.stats.postEvent('tab', 'Settings imported');
 }

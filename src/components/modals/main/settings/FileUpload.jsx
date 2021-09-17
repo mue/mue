@@ -3,8 +3,7 @@ import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 
 export default class FileUpload extends PureComponent {
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   componentDidMount() {
     document.getElementById(this.props.id).onchange = (e) => {
@@ -16,7 +15,7 @@ export default class FileUpload extends PureComponent {
       } else {
         // background upload
         if (file.size > 2000000) {
-          return toast(this.getMessage(this.languagecode, 'modals.main.file_upload_error'));
+          return toast(this.getMessage('modals.main.file_upload_error'));
         }
 
         reader.readAsDataURL(file);
