@@ -230,6 +230,8 @@ export default class BackgroundSettings extends PureComponent {
           <option value='api'>{getMessage('modals.main.settings.sections.background.type.api')}</option>
           <option value='custom'>{getMessage('modals.main.settings.sections.background.type.custom_image')}</option>
           <option value='colour'>{getMessage('modals.main.settings.sections.background.type.custom_colour')}</option>
+          <option value='random_colour'>{getMessage('modals.main.settings.sections.background.type.random_colour')}</option>
+          <option value='random_gradient'>{getMessage('modals.main.settings.sections.background.type.random_gradient')}</option>
         </Dropdown>
         <br/>
 

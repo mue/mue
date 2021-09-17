@@ -160,7 +160,9 @@
               "title": "来源",
               "api": "API",
               "custom_image": "自定义图像",
-              "custom_colour": "自定义背景颜色"
+              "custom_colour": "自定义背景颜色",
+              "random_colour": "Random colour",
+              "random_gradient": "Random gradient"
             },
             "source": {
               "title": "来源",

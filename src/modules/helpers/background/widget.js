@@ -37,6 +37,22 @@ export function gradientStyleBuilder({ type, angle, gradient }) {
   };
 }
 
+export function randomColourStyleBuilder(type) {
+  // randomColour based on https://stackoverflow.com/a/5092872
+  const randomColour = () => '#000000'.replace(/0/g, () => {return (~~(Math.random()*16)).toString(16)});
+  let style = `background:${randomColour()};`;
+
+  if (type === 'random_gradient') {
+    const directions = ['to right', 'to left', 'to bottom', 'to top', 'to bottom right', 'to bottom left', 'to top right', 'to top left'];
+    style = `background:linear-gradient(${directions[Math.floor(Math.random() * directions.length)]}, ${randomColour()}, ${randomColour()});`;
+  }
+
+  return {
+    type: 'colour',
+    style
+  }
+}
+
 // source: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#ECMAScript_.28JavaScript.2FActionScript.2C_etc..29
 export function lon2tile(lon, zoom) {
   return (Math.floor((lon + 180) / 360 * Math.pow(2, zoom)));

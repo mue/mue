@@ -160,7 +160,9 @@
               "title": "Type",
               "api": "API",
               "custom_image": "Benutzerdefiniertes Bild",
-              "custom_colour": "Benutzerdefinierte Farbe/Farbverlauf"
+              "custom_colour": "Benutzerdefinierte Farbe/Farbverlauf",
+              "random_colour": "Random colour",
+              "random_gradient": "Random gradient"
             },
             "source": {
               "title": "Quelle",

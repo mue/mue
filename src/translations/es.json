@@ -160,7 +160,9 @@
               "title": "Tipo",
               "api": "API",
               "custom_image": "Imagen personalizada",
-              "custom_colour": "Color/degradado personalizado"
+              "custom_colour": "Color/degradado personalizado",
+              "random_colour": "Random colour",
+              "random_gradient": "Random gradient"
             },
             "source": {
               "title": "Fuente",

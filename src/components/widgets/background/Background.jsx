@@ -5,7 +5,7 @@ import PhotoInformation from './PhotoInformation';
 
 import EventBus from 'modules/helpers/eventbus';
 import Interval from 'modules/helpers/interval';
-import { videoCheck, offlineBackground, gradientStyleBuilder } from 'modules/helpers/background/widget';
+import { videoCheck, offlineBackground, gradientStyleBuilder, randomColourStyleBuilder } from 'modules/helpers/background/widget';
 
 import './scss/index.scss';
 
@@ -92,7 +92,8 @@ export default class Background extends PureComponent {
       });
     }
 
-    switch (localStorage.getItem('backgroundType')) {
+    const type = localStorage.getItem('backgroundType');
+    switch (type) {
       case 'api':
         if (offline) {
           return this.setState(offlineBackground());
@@ -183,6 +184,11 @@ export default class Background extends PureComponent {
         if (typeof gradientSettings === 'object' && gradientSettings !== null) {
           return this.setState(gradientStyleBuilder(gradientSettings));
         }
+      break;
+
+      case 'random_colour':
+      case 'random_gradient':
+        this.setState(randomColourStyleBuilder(type));
       break;
 
       case 'custom':

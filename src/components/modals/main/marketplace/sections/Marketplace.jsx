@@ -111,7 +111,7 @@ export default class Marketplace extends PureComponent {
       uninstall(this.state.item.type, this.state.item.display_name);
     }
 
-    toast(this.getMessage('toats.' + type + 'ed'));
+    toast(this.getMessage('toasts.' + type + 'ed'));
     this.setState({
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
     });

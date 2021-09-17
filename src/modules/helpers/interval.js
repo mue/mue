@@ -1,8 +1,7 @@
 // based on https://stackoverflow.com/a/47009962
 export default function interval(callback, interval, name) {
   const key = name + 'interval';
-  const timeInMs = localStorage.getItem(key);
-
+  const ms = localStorage.getItem(key);
   const now = Date.now();
 
   const executeCallback = () => {
@@ -10,8 +9,8 @@ export default function interval(callback, interval, name) {
     callback();
   };
 
-  if (timeInMs) {
-    const delta = now - parseInt(timeInMs);
+  if (ms) {
+    const delta = now - parseInt(ms);
     if (delta > interval) {
       setInterval(executeCallback, interval);
     } else {
@@ -23,5 +22,6 @@ export default function interval(callback, interval, name) {
   } else {
     setInterval(executeCallback, interval);
   }
+
   localStorage.setItem(key, now);
 }
