@@ -77,14 +77,26 @@ export default class Quote extends PureComponent {
 
     switch (this.state.type) {
       case 'custom':
-        const customQuote = localStorage.getItem('customQuote');
-        const customQuoteAuthor = localStorage.getItem('customQuoteAuthor');
+        let customQuote;
+        try {
+          customQuote = JSON.parse(localStorage.getItem('customQuote'));
+        } catch (e) {
+          // move to new format
+          customQuote = [{
+            quote: localStorage.getItem('customQuote'),
+            author: localStorage.getItem('customQuoteAuthor')
+          }];
+          localStorage.setItem('customQuote', JSON.stringify(customQuote));
+        }
 
-        if (customQuote) {
+        // pick random
+        customQuote = customQuote[Math.floor(Math.random() * customQuote.length)];
+
+        if (customQuote !== '' && customQuote !== 'undefined' && customQuote !== ['']) {
           return this.setState({
-            quote: '"' + customQuote + '"',
-            author: customQuoteAuthor,
-            authorlink: this.getAuthorLink(customQuote)
+            quote: '"' + customQuote.quote + '"',
+            author: customQuote.author,
+            authorlink: this.getAuthorLink(customQuote.author)
           });
         }
         break;

@@ -135,7 +135,7 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   render() {
-    const { getMessage, languagecode } = this;
+    const { getMessage } = this;
 
     let backgroundSettings;
 
@@ -157,29 +157,29 @@ export default class BackgroundSettings extends PureComponent {
     const APISettings = (
       <>
         <br/>
-        <Radio title={getMessage(languagecode, 'modals.main.settings.sections.background.source.api')} options={apiOptions} name='backgroundAPI' category='background' element='#backgroundImage'/>
+        <Radio title={getMessage('modals.main.settings.sections.background.source.api')} options={apiOptions} name='backgroundAPI' category='background' element='#backgroundImage'/>
         <br/>
-        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.background.category')} name='apiCategory'>
+        <Dropdown label={getMessage('modals.main.settings.sections.background.category')} name='apiCategory'>
           {this.state.backgroundCategories.map((category) => (
             <option value={category} key={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</option>
           ))}
         </Dropdown>
         <br/><br/>
-        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.background.source.quality.title')} name='apiQuality' element='.other'>
-          <option value='original'>{getMessage(languagecode, 'modals.main.settings.sections.background.source.quality.original')}</option>
-          <option value='high'>{getMessage(languagecode, 'modals.main.settings.sections.background.source.quality.high')}</option>
-          <option value='normal'>{getMessage(languagecode, 'modals.main.settings.sections.background.source.quality.normal')}</option>
-          <option value='datasaver'>{getMessage(languagecode, 'modals.main.settings.sections.background.source.quality.datasaver')}</option>
+        <Dropdown label={getMessage('modals.main.settings.sections.background.source.quality.title')} name='apiQuality' element='.other'>
+          <option value='original'>{getMessage('modals.main.settings.sections.background.source.quality.original')}</option>
+          <option value='high'>{getMessage('modals.main.settings.sections.background.source.quality.high')}</option>
+          <option value='normal'>{getMessage('modals.main.settings.sections.background.source.quality.normal')}</option>
+          <option value='datasaver'>{getMessage('modals.main.settings.sections.background.source.quality.datasaver')}</option>
         </Dropdown>
         <br/><br/>
-        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.background.interval.title')} name='backgroundchange'>
-        <option value='refresh'>{getMessage(languagecode, 'tabname')}</option>
-          <option value='60000'>{getMessage(languagecode, 'modals.main.settings.sections.background.interval.minute')}</option>
-          <option value='1800000'>{getMessage(languagecode, 'modals.main.settings.sections.background.interval.half_hour')}</option>
-          <option value='3600000'>{getMessage(languagecode, 'modals.main.settings.sections.background.interval.hour')}</option>
-          <option value='86400000'>{getMessage(languagecode, 'modals.main.settings.sections.background.interval.day')}</option>
-          <option value='604800000'>{getMessage(languagecode, 'widgets.date.week')}</option>
-          <option value='2628000000'>{getMessage(languagecode, 'modals.main.settings.sections.background.interval.month')}</option>
+        <Dropdown label={getMessage('modals.main.settings.sections.background.interval.title')} name='backgroundchange'>
+        <option value='refresh'>{getMessage('tabname')}</option>
+          <option value='60000'>{getMessage('modals.main.settings.sections.background.interval.minute')}</option>
+          <option value='1800000'>{getMessage('modals.main.settings.sections.background.interval.half_hour')}</option>
+          <option value='3600000'>{getMessage('modals.main.settings.sections.background.interval.hour')}</option>
+          <option value='86400000'>{getMessage('modals.main.settings.sections.background.interval.day')}</option>
+          <option value='604800000'>{getMessage('widgets.date.week')}</option>
+          <option value='2628000000'>{getMessage('modals.main.settings.sections.background.interval.month')}</option>
         </Dropdown>
       </>
     );
@@ -187,19 +187,19 @@ export default class BackgroundSettings extends PureComponent {
     const customSettings = (
       <>
         <ul>
-          <p>{getMessage(languagecode, 'modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{getMessage(languagecode, 'modals.main.settings.buttons.reset')}</span></p>
+          <p>{getMessage('modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{getMessage('modals.main.settings.buttons.reset')}</span></p>
           {this.state.customBackground.map((_url, index) => (
             <Fragment key={index}>
               <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)}></input>
               {this.state.customBackground.length > 1 ? <button className='cleanButton' onClick={() => this.modifyCustomBackground('remove', index)}>
                 <Cancel/>
               </button> : null}
-              <span className='modalLink' onClick={() => this.uploadCustombackground(index)}>{getMessage(languagecode, 'modals.main.settings.sections.background.source.upload')}</span>
+              <span className='modalLink' onClick={() => this.uploadCustombackground(index)}>{getMessage('modals.main.settings.sections.background.source.upload')}</span>
               {this.videoCustomSettings(index)}
               <br/><br/>  
             </Fragment>
           ))}
-          <button className='uploadbg' onClick={() => this.modifyCustomBackground('add')}>{getMessage(languagecode, 'modals.main.settings.sections.background.source.add_background')}</button>
+          <button className='uploadbg' onClick={() => this.modifyCustomBackground('add')}>{getMessage('modals.main.settings.sections.background.source.add_background')}</button>
           <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
         </ul>
       </>
@@ -217,41 +217,41 @@ export default class BackgroundSettings extends PureComponent {
   
     return (
       <>
-        <h2>{getMessage(languagecode, 'modals.main.settings.sections.background.title')}</h2>
-        <Switch name='background' text={getMessage(languagecode, 'modals.main.settings.enabled')} category='background' element='#backgroundImage' />
-        <Checkbox name='ddgProxy' text={getMessage(languagecode, 'modals.main.settings.sections.background.ddg_image_proxy')} element='.other' />
-        <Checkbox name='bgtransition' text={getMessage(languagecode, 'modals.main.settings.sections.background.transition')} element='.other' />
-        <Checkbox name='photoInformation' text={getMessage(languagecode, 'modals.main.settings.sections.background.photo_information')} element='.other' />
-        <Checkbox name='photoMap' text={getMessage(languagecode, 'modals.main.settings.sections.background.show_map')} element='.other'/>
+        <h2>{getMessage('modals.main.settings.sections.background.title')}</h2>
+        <Switch name='background' text={getMessage('modals.main.settings.enabled')} category='background' element='#backgroundImage' />
+        <Checkbox name='ddgProxy' text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')} element='.other' />
+        <Checkbox name='bgtransition' text={getMessage('modals.main.settings.sections.background.transition')} element='.other' />
+        <Checkbox name='photoInformation' text={getMessage('modals.main.settings.sections.background.photo_information')} element='.other' />
+        <Checkbox name='photoMap' text={getMessage('modals.main.settings.sections.background.show_map')} element='.other'/>
 
-        <h3>{getMessage(languagecode, 'modals.main.settings.sections.background.source.title')}</h3>
-        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.background.type.title')} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>
+        <h3>{getMessage('modals.main.settings.sections.background.source.title')}</h3>
+        <Dropdown label={getMessage('modals.main.settings.sections.background.type.title')} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>
           {this.marketplaceType()}
-          <option value='api'>{getMessage(languagecode, 'modals.main.settings.sections.background.type.api')}</option>
-          <option value='custom'>{getMessage(languagecode, 'modals.main.settings.sections.background.type.custom_image')}</option>
-          <option value='colour'>{getMessage(languagecode, 'modals.main.settings.sections.background.type.custom_colour')}</option>
+          <option value='api'>{getMessage('modals.main.settings.sections.background.type.api')}</option>
+          <option value='custom'>{getMessage('modals.main.settings.sections.background.type.custom_image')}</option>
+          <option value='colour'>{getMessage('modals.main.settings.sections.background.type.custom_colour')}</option>
         </Dropdown>
         <br/>
 
         {backgroundSettings}
 
-        <h3>{getMessage(languagecode, 'modals.main.settings.sections.background.buttons.title')}</h3>
-        <Checkbox name='view' text={getMessage(languagecode, 'modals.main.settings.sections.background.buttons.view')} category='navbar' />
-        <Checkbox name='favouriteEnabled' text={getMessage(languagecode, 'modals.main.settings.sections.background.buttons.favourite')} category='navbar' />
-        <Checkbox name='downloadbtn' text={getMessage(languagecode, 'modals.main.settings.sections.background.buttons.download')} element='.other' />
+        <h3>{getMessage('modals.main.settings.sections.background.buttons.title')}</h3>
+        <Checkbox name='view' text={getMessage('modals.main.settings.sections.background.buttons.view')} category='navbar' />
+        <Checkbox name='favouriteEnabled' text={getMessage('modals.main.settings.sections.background.buttons.favourite')} category='navbar' />
+        <Checkbox name='downloadbtn' text={getMessage('modals.main.settings.sections.background.buttons.download')} element='.other' />
 
-        <h3>{getMessage(languagecode, 'modals.main.settings.sections.background.effects.title')}</h3>
-        <Slider title={getMessage(languagecode, 'modals.main.settings.sections.background.effects.blur')} name='blur' min='0' max='100' default='0' display='%' category='background' element='#backgroundImage' />
-        <Slider title={getMessage(languagecode, 'modals.main.settings.sections.background.effects.brightness')} name='brightness' min='0' max='100' default='90' display='%' category='background' element='#backgroundImage' />
+        <h3>{getMessage('modals.main.settings.sections.background.effects.title')}</h3>
+        <Slider title={getMessage('modals.main.settings.sections.background.effects.blur')} name='blur' min='0' max='100' default='0' display='%' category='background' element='#backgroundImage' />
+        <Slider title={getMessage('modals.main.settings.sections.background.effects.brightness')} name='brightness' min='0' max='100' default='90' display='%' category='background' element='#backgroundImage' />
         <br/><br/>
-        <Dropdown label={getMessage(languagecode, 'modals.main.settings.sections.background.effects.filters.title')} name='backgroundFilter' category='background' element='#backgroundImage'>
-          <option value='grayscale'>{getMessage(languagecode, 'modals.main.settings.sections.background.effects.filters.grayscale')}</option>
-          <option value='sepia'>{getMessage(languagecode, 'modals.main.settings.sections.background.effects.filters.sepia')}</option>
-          <option value='invert'>{getMessage(languagecode, 'modals.main.settings.sections.background.effects.filters.invert')}</option>
-          <option value='saturate'>{getMessage(languagecode, 'modals.main.settings.sections.background.effects.filters.saturate')}</option>
-          <option value='contrast'>{getMessage(languagecode, 'modals.main.settings.sections.background.effects.filters.contrast')}</option>
+        <Dropdown label={getMessage('modals.main.settings.sections.background.effects.filters.title')} name='backgroundFilter' category='background' element='#backgroundImage'>
+          <option value='grayscale'>{getMessage('modals.main.settings.sections.background.effects.filters.grayscale')}</option>
+          <option value='sepia'>{getMessage('modals.main.settings.sections.background.effects.filters.sepia')}</option>
+          <option value='invert'>{getMessage('modals.main.settings.sections.background.effects.filters.invert')}</option>
+          <option value='saturate'>{getMessage('modals.main.settings.sections.background.effects.filters.saturate')}</option>
+          <option value='contrast'>{getMessage('modals.main.settings.sections.background.effects.filters.contrast')}</option>
         </Dropdown>
-        <Slider title={getMessage(languagecode, 'modals.main.settings.sections.background.effects.filters.amount')} name='backgroundFilterAmount' min='0' max='100' default='0' display='%' category='background' element='#backgroundImage' />
+        <Slider title={getMessage('modals.main.settings.sections.background.effects.filters.amount')} name='backgroundFilterAmount' min='0' max='100' default='0' display='%' category='background' element='#backgroundImage' />
       </>
     );
   }
