@@ -8,7 +8,7 @@ export default class Message extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      messageText: localStorage.getItem('messageText')
+      messageText: ''
     };
     this.message = createRef();
   }
@@ -22,20 +22,20 @@ export default class Message extends PureComponent {
 
         this.message.current.style.display = 'block';
         this.message.current.style.fontSize = `${1.6 * Number((localStorage.getItem('zoomMessage') || 100) / 100)}em`;
-
-        this.setState({
-          messageText: localStorage.getItem('messageText')
-        });
       }
     });
 
     this.message.current.style.fontSize = `${1.6 * Number((localStorage.getItem('zoomMessage') || 100) / 100)}em`;
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    this.setState({
+      messageText: messages[Math.floor(Math.random() * messages.length)]
+    });
   }
 
   render() {
     return (
       <h2 className='message' ref={this.message}>
-        {localStorage.getItem('messageText')}
+        {this.state.messageText}
       </h2>
     );
   }

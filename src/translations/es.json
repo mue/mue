@@ -230,6 +230,7 @@
           },
           "message": {
             "title": "Message",
+            "add": "Add message",
             "text": "Text"
           },
           "appearance": {
