@@ -112,6 +112,7 @@
             "author_link": "Enlace del autor",
             "custom": "Cita personalizada",
             "custom_author": "Autor personalizado",
+            "add": "Add quote",
             "buttons": {
               "title": "Botones",
               "copy": "Botón de copiar",

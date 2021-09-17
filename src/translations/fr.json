@@ -112,6 +112,7 @@
             "author_link": "Lien auteur",
             "custom": "Citation personnalisé",
             "custom_author": "Auteur de devis personnalisé",
+            "add": "Add quote",
             "buttons": {
               "title": "Boutons",
               "copy": "Copier",

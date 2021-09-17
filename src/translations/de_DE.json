@@ -112,6 +112,7 @@
             "author_link": "Autor Link",
             "custom": "Benutzerdefiniertes Zitat",
             "custom_author": "Benutzerdefinierter Autor",
+            "add": "Add quote",
             "buttons": {
               "title": "Schaltflächen",
               "copy": "Kopieren",
