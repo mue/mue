@@ -31,7 +31,9 @@ export default class Dropdown extends PureComponent {
       title: e.target[e.target.selectedIndex].text
     });
   
-    localStorage.setItem(this.props.name, value);
+    if (!this.props.noSetting) {
+      localStorage.setItem(this.props.name, value);
+    }
   
     if (this.props.onChange) {
       this.props.onChange(value);
