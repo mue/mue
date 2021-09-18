@@ -21,7 +21,7 @@ export function setDefaultSettings(reset) {
     localStorage.setItem('language', 'en_GB');
   }
 
-  localStorage.setItem('tabName', getMessage(languagecode, 'tabName'));
+  localStorage.setItem('tabName', getMessage(localStorage.getItem('language'), 'tabname'));
 
   if (reset) {
     localStorage.setItem('showWelcome', false);
