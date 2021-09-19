@@ -22,40 +22,34 @@ if (languagecode === 'en') {
   variables.languagecode = 'en_GB';
 }
 
-variables.language = new I18n(variables.languagecode, {
-  de: require('./translations/de_DE.json'),
-  en_GB: require('./translations/en_GB.json'),
-  en_US: require('./translations/en_US.json'),
-  es: require('./translations/es.json'),
-  fr: require('./translations/fr.json'),
-  nl: require('./translations/nl.json'),
-  no: require('./translations/no.json'),
-  ru: require('./translations/ru.json'),
-  zh_CN: require('./translations/zh_CN.json')
+import('./translations/' + variables.languagecode + '.json').then((language) => {
+  variables.language = new I18n(variables.languagecode, {
+    [variables.languagecode]: language
+  });
+
+  // set html language tag
+  if (variables.languagecode !== 'en_GB' || variables.languagecode !== 'en_US') {
+    document.documentElement.lang = variables.languagecode.split('_')[0];
+  }
+
+  window.constants = Constants;
+  if (localStorage.getItem('stats') === 'true') {
+    window.stats = Stats;
+  } else {
+    window.stats = {
+      tabLoad: () => '',
+      postEvent: () => '' 
+    };
+  }
+
+  if (localStorage.getItem('keybindsEnabled') === 'true') {
+    window.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
+  } else {
+    window.keybinds = {};
+  }
+
+  render(
+    <App/>,
+    document.getElementById('root')
+  );
 });
-
-// set html language tag
-if (variables.languagecode !== 'en_GB' || variables.languagecode !== 'en_US') {
-  document.documentElement.lang = variables.languagecode.split('_')[0];
-}
-
-window.constants = Constants;
-if (localStorage.getItem('stats') === 'true') {
-  window.stats = Stats;
-} else {
-  window.stats = {
-    tabLoad: () => '',
-    postEvent: () => '' 
-  };
-}
-
-if (localStorage.getItem('keybindsEnabled') === 'true') {
-  window.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
-} else {
-  window.keybinds = {};
-}
-
-render(
-  <App/>,
-  document.getElementById('root')
-);
