@@ -69,7 +69,7 @@ export default class Create extends PureComponent {
       }
     });
 
-    toast(variables.getMessage(variables.languagecode, 'toasts.imported'));
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
   }
 
   updateQuotePackType(type) {
@@ -83,10 +83,7 @@ export default class Create extends PureComponent {
           author: this.state.addonMetadata.author,
           icon_url: this.state.addonMetadata.icon_url,
           screenshot_url: this.state.addonMetadata.screenshot_url,
-          quotes: [{
-            quote: '',
-            author: ''
-          }]
+          quotes: []
         }
       });
     } else {
@@ -119,6 +116,33 @@ export default class Create extends PureComponent {
     });
   }
 
+  importQuotes() {
+    this.setState({
+      addonData: {
+        quotes: JSON.parse(localStorage.getItem('customQuote')) || []
+      }
+    });
+
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
+  }
+
+  importPhotos() {
+    let data = [];
+    try {
+      data = JSON.parse(localStorage.getItem('customBackground'));
+      toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
+    } catch (e) {
+      console.log(e);
+      toast(variables.language.getMessage(variables.languagecode, 'toasts.error'));
+    }
+
+    this.setState({
+      addonData: {
+        photos: data
+      }
+    });
+  }
+
   downloadAddon() {
     saveFile({
       name: this.state.addonMetadata.name,
@@ -142,11 +166,10 @@ export default class Create extends PureComponent {
         <h3>{getMessage('modals.main.settings.sections.time.type')}</h3>
         <div className='themesToggleArea'>
           <div className='options'>
-            {/* <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'photos')}>
+            <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'photos')}>
               <Photos/>
-              <span>{marketplace.photo_packs}</span>
+              <span>{getMessage('modals.main.marketplace.photo_packs')}</span>
             </div>
-           */}
             <div className='toggle lightTheme' onClick={() => this.changeTab(2, 'quotes')}>
               <Quotes/>
               <span>{getMessage('modals.main.marketplace.quote_packs')}</span>
@@ -225,7 +248,8 @@ export default class Create extends PureComponent {
     );
     
     // quotes
-    const nextQuotesDisabled = (this.state.addonMetadata.type === 'quote_api' && this.state.addonData.url !== '' && this.state.addonData.name !== '' && this.state.addonData.author !== '') ? false : true;
+    const nextQuotesDisabled = ((this.state.addonMetadata.type === 'quote_api' && this.state.addonData.url !== '' && this.state.addonData.name !== '' && this.state.addonData.author !== '') 
+                               || (this.state.addonMetadata.type === 'quotes' && this.state.addonData.quotes !== '')) ? false : true;
     const addQuotes = (
       <>
         <h3>{getMessage('modals.main.addons.create.quotes.title')}</h3>
@@ -244,7 +268,8 @@ export default class Create extends PureComponent {
           <br/><br/>
         </> : <>
           <h3>{getMessage('modals.main.addons.create.quotes.local.title')}</h3>
-          <p>To be implemented</p>
+          <button onClick={() => this.importQuotes()} className='uploadbg' style={{ marginRight: '10px' }}>Import Current</button>
+          <br/><br/>
         </>}
         <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
         <button onClick={() => this.changeTab(3)} className='uploadbg' disabled={nextQuotesDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
@@ -252,9 +277,15 @@ export default class Create extends PureComponent {
     );
 
     // photos
+    const nextPhotosDisabled = (this.state.addonData.photos !== '' && this.state.addonData.photos !== []) ? false : true;
     const addPhotos = (
       <>
         <h3>{getMessage('modals.main.addons.create.photos.title')}</h3>
+        <h3>{getMessage('modals.main.addons.create.quotes.local.title')}</h3>
+        <button onClick={() => this.importPhotos()} className='uploadbg' style={{ marginRight: '10px' }}>Import Current</button>
+        <br/><br/>
+        <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
+        <button onClick={() => this.changeTab(3)} className='uploadbg' disabled={nextPhotosDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
       </>
     );
 
