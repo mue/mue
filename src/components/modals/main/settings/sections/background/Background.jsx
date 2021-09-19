@@ -154,6 +154,21 @@ export default class BackgroundSettings extends PureComponent {
       }
     ];
 
+    const interval = (
+      <>
+         <br/><br/>
+        <Dropdown label={getMessage('modals.main.settings.sections.background.interval.title')} name='backgroundchange'>
+        <option value='refresh'>{getMessage('tabname')}</option>
+          <option value='60000'>{getMessage('modals.main.settings.sections.background.interval.minute')}</option>
+          <option value='1800000'>{getMessage('modals.main.settings.sections.background.interval.half_hour')}</option>
+          <option value='3600000'>{getMessage('modals.main.settings.sections.background.interval.hour')}</option>
+          <option value='86400000'>{getMessage('modals.main.settings.sections.background.interval.day')}</option>
+          <option value='604800000'>{getMessage('widgets.date.week')}</option>
+          <option value='2628000000'>{getMessage('modals.main.settings.sections.background.interval.month')}</option>
+        </Dropdown>
+      </>
+    );
+
     const APISettings = (
       <>
         <br/>
@@ -171,16 +186,7 @@ export default class BackgroundSettings extends PureComponent {
           <option value='normal'>{getMessage('modals.main.settings.sections.background.source.quality.normal')}</option>
           <option value='datasaver'>{getMessage('modals.main.settings.sections.background.source.quality.datasaver')}</option>
         </Dropdown>
-        <br/><br/>
-        <Dropdown label={getMessage('modals.main.settings.sections.background.interval.title')} name='backgroundchange'>
-        <option value='refresh'>{getMessage('tabname')}</option>
-          <option value='60000'>{getMessage('modals.main.settings.sections.background.interval.minute')}</option>
-          <option value='1800000'>{getMessage('modals.main.settings.sections.background.interval.half_hour')}</option>
-          <option value='3600000'>{getMessage('modals.main.settings.sections.background.interval.hour')}</option>
-          <option value='86400000'>{getMessage('modals.main.settings.sections.background.interval.day')}</option>
-          <option value='604800000'>{getMessage('widgets.date.week')}</option>
-          <option value='2628000000'>{getMessage('modals.main.settings.sections.background.interval.month')}</option>
-        </Dropdown>
+        {interval}
       </>
     );
 
@@ -201,6 +207,7 @@ export default class BackgroundSettings extends PureComponent {
           ))}
           <button className='uploadbg' onClick={() => this.modifyCustomBackground('add')}>{getMessage('modals.main.settings.sections.background.source.add_background')}</button>
           <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
+          {interval}
         </ul>
       </>
     );

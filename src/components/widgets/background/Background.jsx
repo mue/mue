@@ -210,14 +210,18 @@ export default class Background extends PureComponent {
         }
 
         if (customBackground !== '' && customBackground !== 'undefined' && customBackground !== ['']) {
-          this.setState({
+          const object = {
             url: customBackground,
             type: 'custom',
             video: videoCheck(customBackground),
             photoInfo: {
               hidden: true
             }
-          });
+          };
+
+          this.setState(object);
+
+          localStorage.setItem('currentBackground', JSON.stringify(object));
         }
       break;
 
@@ -338,7 +342,8 @@ export default class Background extends PureComponent {
 
     const interval = localStorage.getItem('backgroundchange');
     if (interval && interval !== 'refresh') {
-      if (localStorage.getItem('backgroundType') === 'api') {
+      const type = localStorage.getItem('backgroundType')
+      if (type === 'api' || type === 'custom') {
         Interval(() => {
           try {
             document.getElementById('backgroundImage').classList.remove('fade-in');
@@ -352,6 +357,9 @@ export default class Background extends PureComponent {
         try {
           // todo: refactor this mess
           const current = JSON.parse(localStorage.getItem('currentBackground'));
+          if (current.type !== type) {
+            this.getBackground();
+          }
           const offline = localStorage.getItem('offlineMode');
           if (current.url.startsWith('http') && offline === 'false') {
             this.setState(current);
