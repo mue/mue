@@ -74,7 +74,7 @@ Please see the [documentation](https://docs.muetab.com/translations).
 
 ## Credits
 ### Developers
-[David Ralph](https://github.com/davidjcralph) - Lead development, photographer <br/>
+[David Ralph](https://github.com/davidcralph) - Lead development, photographer <br/>
 [Alex Sparkes](https://github.com/alexsparkes) - Name, lead design, photographer <br/>
 [Isaac Saunders](https://github.com/eartharoid) - QA, development, photographer <br/>
 [Wessel Tip](https://github.com/Wessel) - Development <br/>
