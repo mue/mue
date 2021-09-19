@@ -448,7 +448,16 @@
             "title": "Fotos hinzufügen"
           },
           "quotes": {
-            "title": "Zitate hinzufügen"
+            "title": "Zitate hinzufügen",
+            "api": {
+              "title": "API",
+              "url": "Quote URL",
+              "name": "JSON quote name",
+              "author": "JSON quote author (or override)"
+            },
+            "local": {
+              "title": "Local"
+            }
           }
         }
       }

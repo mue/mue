@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { 
@@ -70,14 +69,20 @@ export default class Create extends PureComponent {
       }
     });
 
-    toast('Imported settings!');
+    toast(variables.getMessage(variables.languagecode, 'toasts.imported'));
   }
 
-  updateQuotePackType(e) {
-    if (e === 'quotePack') {
+  updateQuotePackType(type) {
+    if (type === 'quotePack') {
       this.setState({ 
         addonMetadata: {
-          type: e,
+          type,
+          name: this.state.addonMetadata.name,
+          description: this.state.addonMetadata.description,
+          version: this.state.addonMetadata.version,
+          author: this.state.addonMetadata.author,
+          icon_url: this.state.addonMetadata.icon_url,
+          screenshot_url: this.state.addonMetadata.screenshot_url,
           quotes: [{
             quote: '',
             author: ''
@@ -87,12 +92,18 @@ export default class Create extends PureComponent {
     } else {
       this.setState({ 
         addonMetadata: {
-          type: e,
-          quote_api: {
-            url: '',
-            name: '',
-            author: ''
-          }
+          type,
+          name: this.state.addonMetadata.name,
+          description: this.state.addonMetadata.description,
+          version: this.state.addonMetadata.version,
+          author: this.state.addonMetadata.author,
+          icon_url: this.state.addonMetadata.icon_url,
+          screenshot_url: this.state.addonMetadata.screenshot_url
+        },
+        addonData: {
+          url: '',
+          name: '',
+          author: ''
         }
       });
     }
@@ -187,7 +198,7 @@ export default class Create extends PureComponent {
         <textarea className='settingsTextarea' value={this.state.addonMetadata.description} onInput={(e) => setMetadata(e.target.value, 'description')}/>
         <br/>
         <button onClick={() => this.changeTab(1)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
-        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg'>{getMessage('modals.welcome.buttons.next')}</button>
+        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' disabled={nextDescriptionDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
       </>
     );
 
@@ -218,21 +229,21 @@ export default class Create extends PureComponent {
     const addQuotes = (
       <>
         <h3>{getMessage('modals.main.addons.create.quotes.title')}</h3>
-        <Dropdown label='Type' noSetting onChange={(e) => this.updateQuotePackType(e)}>
-          <option value='quotes'>Local</option>
-          <option value='quote_api'>API</option>
+        <Dropdown label={getMessage('modals.main.settings.sections.time.type')} noSetting onChange={(e) => this.updateQuotePackType(e)}>
+          <option value='quotes'>{getMessage('modals.main.addons.create.quotes.local.title')}</option>
+          <option value='quote_api'>{getMessage('modals.main.addons.create.quotes.api.title')}</option>
         </Dropdown>
         {this.state.addonMetadata.type === 'quote_api' ? <>
-          <h3>API</h3>
-          <p>Quote URL</p>
+          <h3>{getMessage('modals.main.addons.create.quotes.api.title')}</h3>
+          <p>{getMessage('modals.main.addons.create.quotes.api.url')}</p>
           <input type='text' value={this.state.addonData.url} onChange={(e) => this.updateQuotePackAPI('url', e.target.value)}/>
-          <p>JSON Quote Name</p>
+          <p>{getMessage('modals.main.addons.create.quotes.api.name')}</p>
           <input type='text' value={this.state.addonData.name} onChange={(e) => this.updateQuotePackAPI('name', e.target.value)}/>
-          <p>JSON Quote Author (or override)</p>
+          <p>{getMessage('modals.main.addons.create.quotes.api.author')}</p>
           <input type='text' value={this.state.addonData.author} onChange={(e) => this.updateQuotePackAPI('author', e.target.value)}/>
           <br/><br/>
         </> : <>
-          <h3>Local</h3>
+          <h3>{getMessage('modals.main.addons.create.quotes.local.title')}</h3>
           <p>To be implemented</p>
         </>}
         <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
@@ -252,7 +263,7 @@ export default class Create extends PureComponent {
         <h3>{getMessage('modals.main.addons.create.finish.title')}</h3>
         <button onClick={() => this.downloadAddon()} className='upload'>{getMessage('modals.main.addons.create.finish.download')}</button>
         <br/><br/>
-        <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
+        <button onClick={() => this.changeTab((this.state.addonMetadata.type === 'quote_api') ? 'quotes' : this.state.addonMetadata.type)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
       </>
     );
 
