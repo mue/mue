@@ -245,8 +245,6 @@ export default class BackgroundSettings extends PureComponent {
         {backgroundSettings}
 
         <h3>{getMessage('modals.main.settings.sections.background.buttons.title')}</h3>
-        <Checkbox name='view' text={getMessage('modals.main.settings.sections.background.buttons.view')} category='navbar' />
-        <Checkbox name='favouriteEnabled' text={getMessage('modals.main.settings.sections.background.buttons.favourite')} category='navbar' />
         <Checkbox name='downloadbtn' text={getMessage('modals.main.settings.sections.background.buttons.download')} element='.other' />
 
         <h3>{getMessage('modals.main.settings.sections.background.effects.title')}</h3>

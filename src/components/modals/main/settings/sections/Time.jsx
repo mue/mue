@@ -11,8 +11,7 @@ export default class TimeSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
-      timeType: localStorage.getItem('timeType') || 'digital',
-      dateType: localStorage.getItem('dateType') || 'long'
+      timeType: localStorage.getItem('timeType') || 'digital'
     };
   }
 
@@ -59,39 +58,6 @@ export default class TimeSettings extends PureComponent {
       default: timeSettings = null; break;
     }
 
-    let dateSettings;
-    
-    const longSettings = (
-      <>
-        <Checkbox name='dayofweek' text={getMessage('modals.main.settings.sections.time.date.day_of_week')} category='date' />
-        <Checkbox name='datenth' text={getMessage('modals.main.settings.sections.time.date.datenth')} category='date' />
-      </>
-    );
-
-    const shortSettings = (
-      <>
-        <br/>
-        <Dropdown label={getMessage('modals.main.settings.sections.time.date.short_format')} name='dateFormat' category='date'>
-          <option value='DMY'>DMY</option>
-          <option value='MDY'>MDY</option>
-          <option value='YMD'>YMD</option>
-        </Dropdown>
-        <br/><br/>
-        <Dropdown label={getMessage('modals.main.settings.sections.time.date.short_separator.title')} name='shortFormat' category='date'>
-          <option value='dash'>{getMessage('modals.main.settings.sections.time.date.short_separator.dash')}</option>
-          <option value='dots'>{getMessage('modals.main.settings.sections.time.date.short_separator.dots')}</option>
-          <option value='gaps'>{getMessage('modals.main.settings.sections.time.date.short_separator.gaps')}</option>
-          <option value='slashes'>{getMessage('modals.main.settings.sections.time.date.short_separator.slashes')}</option>
-       </Dropdown>
-      </>
-    );
-
-    switch (this.state.dateType) {
-      case 'short': dateSettings = shortSettings; break;
-      case 'long': dateSettings = longSettings; break;
-      default: break;
-    }
-
     return (
       <>
         <h2>{getMessage('modals.main.settings.sections.time.title')}</h2>
@@ -105,18 +71,6 @@ export default class TimeSettings extends PureComponent {
         {this.state.timeType !== 'analogue' ? 
           <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomClock' min='10' max='400' default='100' display='%' category='clock'/>
         : null}
-
-        <h3>{getMessage('modals.main.settings.sections.time.date.title')}</h3>
-        <Switch name='date' text={getMessage('modals.main.settings.enabled')} category='date' element='.date'/>
-        <Dropdown label={getMessage('modals.main.settings.sections.time.type')} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date'>
-          <option value='long'>{getMessage('modals.main.settings.sections.time.date.type.long')}</option>
-          <option value='short'>{getMessage('modals.main.settings.sections.time.date.type.short')}</option>
-        </Dropdown>
-        <br/>
-        <Checkbox name='datezero' text={getMessage('modals.main.settings.sections.time.digital.zero')} category='date'/>
-        <Checkbox name='weeknumber' text={getMessage('modals.main.settings.sections.time.date.week_number')} category='date'/>
-        {dateSettings}
-        <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomDate' min='10' max='400' default='100' display='%' category='date'/>
       </>
     );
   }

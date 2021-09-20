@@ -29,19 +29,6 @@ export default function AppearanceSettings() {
       <h2>{getMessage('modals.main.settings.sections.appearance.title')}</h2>
       <Radio name='theme' title={getMessage('modals.main.settings.sections.appearance.theme.title')} options={themeOptions} category='other' />
 
-      <h3>{getMessage('modals.main.settings.sections.appearance.navbar.title')}</h3>
-      <Checkbox name='notesEnabled' text={getMessage('modals.main.settings.sections.appearance.navbar.notes')} category='navbar' />
-      <Dropdown label={getMessage('modals.main.settings.sections.appearance.navbar.refresh')} name='refresh' category='navbar'>
-        <option value='false'>{getMessage('modals.main.settings.sections.appearance.navbar.refresh_options.none')}</option>
-        <option value='background'>{getMessage('modals.main.settings.sections.background.title')}</option>
-        <option value='quote'>{getMessage('modals.main.settings.sections.quote.title')}</option>
-        <option value='quotebackground'>{getMessage('modals.main.settings.sections.quote.title')} + {getMessage('modals.main.settings.sections.background.title')}</option>
-        {/* before it was just a checkbox */}
-        <option value='true'>{getMessage('modals.main.settings.sections.appearance.navbar.refresh_options.page')}</option>
-      </Dropdown>
-      <br/>
-      <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomNavbar' min='10' max='400' default='100' display='%' category='navbar' />
-
       <h3>{getMessage('modals.main.settings.sections.appearance.font.title')}</h3>
       <Text title={getMessage('modals.main.settings.sections.appearance.font.custom')} name='font' upperCaseFirst={true} category='other' />
       <br/>

@@ -23,7 +23,9 @@ import {
   Code as Sideload,
   AddCircleOutline as Added,
   CreateNewFolderOutlined as Create,
-  KeyboardAltOutlined as Keybinds
+  KeyboardAltOutlined as Keybinds,
+  DateRangeOutlined as Date,
+  MenuOutlined as Navbar
 } from '@mui/icons-material';
 
 function Tab({ label, currentTab, onClick, navbarTab }) {
@@ -47,12 +49,14 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.navbar.addons'): icon = <Addons/>; break;
     case getMessage('modals.main.navbar.marketplace'): icon = <Marketplace/>; break;
 
+    case getMessage('modals.main.settings.sections.appearance.navbar.title'): icon = <Navbar/>; break;
     case getMessage('modals.main.settings.sections.time.title'): icon = <Time/>; break;
+    case getMessage('modals.main.settings.sections.time.date.title'): icon = <Date/>; break;
     case getMessage('modals.main.settings.sections.greeting.title'): icon = <Greeting/>; break;
     case getMessage('modals.main.settings.sections.quote.title'): icon = <Quote/>; break;
     case getMessage('modals.main.settings.sections.background.title'): icon = <Background/>; break;
     case getMessage('modals.main.settings.sections.search.title'): icon = <Search/>; break;
-    case getMessage('modals.main.settings.sections.weather.title'): icon = <Weather/>; break;
+    case getMessage('modals.main.settings.sections.weather.title'): icon = <Weather/>; divider = true; break;
     case getMessage('modals.main.settings.sections.quicklinks.title'): icon = <QuickLinks/>; break;
     case getMessage('modals.main.settings.sections.appearance.title'): icon = <Appearance/>; break;
     case getMessage('modals.main.settings.sections.order.title'): icon = <Order/>; break;

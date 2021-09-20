@@ -18,6 +18,8 @@ import Weather from '../settings/sections/Weather';
 import Stats from '../settings/sections/Stats';
 import Keybinds from '../settings/sections/Keybinds';
 import Message from '../settings/sections/Message';
+import Date from '../settings/sections/Date';
+import Navbar from '../settings/sections/Navbar';
 
 export default function Settings() {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
@@ -25,16 +27,18 @@ export default function Settings() {
   return (
     <>
       <Tabs>
-        <div label={getMessage('modals.main.settings.sections.time.title')} name='time'><Time/></div>
-        <div label={getMessage('modals.main.settings.sections.quote.title')} name='quote'><Quote/></div>
+        <div label={getMessage('modals.main.settings.sections.appearance.navbar.title')} name='navbar'><Navbar/></div>
         <div label={getMessage('modals.main.settings.sections.greeting.title')} name='greeting'><Greeting/></div>
+        <div label={getMessage('modals.main.settings.sections.time.title')} name='time'><Time/></div>
+        <div label={getMessage('modals.main.settings.sections.quicklinks.title')} name='quicklinks'><QuickLinks/></div>
+        <div label={getMessage('modals.main.settings.sections.quote.title')} name='quote'><Quote/></div>
+        <div label={getMessage('modals.main.settings.sections.time.date.title')} name='date'><Date/></div>
+        <div label={getMessage('modals.main.settings.sections.message.title')} name='message'><Message/></div>
         <div label={getMessage('modals.main.settings.sections.background.title')} name='background'><Background/></div>
         <div label={getMessage('modals.main.settings.sections.search.title')} name='search'><Search/></div>
-        <div label={getMessage('modals.main.settings.sections.quicklinks.title')} name='quicklinks'><QuickLinks/></div>
         <div label={getMessage('modals.main.settings.sections.weather.title')} name='weather'><Weather/></div>
-        <div label={getMessage('modals.main.settings.sections.message.title')} name='message'><Message/></div>
-        <div label={getMessage('modals.main.settings.sections.appearance.title')} name='appearance'><Appearance/></div>
         <div label={getMessage('modals.main.settings.sections.order.title')} name='order'><Order/></div>
+        <div label={getMessage('modals.main.settings.sections.appearance.title')} name='appearance'><Appearance/></div>
         <div label={getMessage('modals.main.settings.sections.language.title')} name='language'><Language/></div>
         <div label={getMessage('modals.main.settings.sections.advanced.title')} name='advanced'><Advanced/></div>
         <div label={getMessage('modals.main.settings.sections.keybinds.title')} name='keybinds'><Keybinds/></div>
