@@ -22,7 +22,7 @@
       "new": "新快捷方式",
       "name": "名称",
       "url": "链接",
-      "icon": "Icon (optional)",
+      "icon": "图标 (可选)",
       "add": "添加",
       "name_error": "请输入名称",
       "url_error": "请输入链接"
@@ -32,7 +32,7 @@
     },
     "weather": {
       "not_found": "未找到",
-      "meters": "meters"
+      "meters": "米"
     },
     "navbar": {
       "tooltips": {
@@ -40,7 +40,7 @@
         "feedback": "用户反馈"
       },
       "notes": {
-        "title": "备注",
+        "title": "便签",
         "placeholder": "请键入内容"
       }
     }
@@ -57,7 +57,7 @@
       },
       "error_boundary": {
         "title": "错误",
-        "message": "无法载入本板块",
+        "message": "无法载入该Mue组件",
         "refresh": "刷新"
       },
       "settings": {
@@ -75,8 +75,8 @@
               "title": "数字时钟",
               "seconds": "显示秒",
               "twentyfourhour": "使用 24 小时制",
-              "twelvehour": "12 小时制下显示",
-              "zero": "加零补足二位数字"
+              "twelvehour": "使用 12 小时制",
+              "zero": "加零补足两位数字"
             },
             "analogue": {
               "title": "模拟时钟",
@@ -86,15 +86,15 @@
               "hour_marks": "时钟刻度",
               "minute_marks": "分钟刻度"
             },
-            "percentage_complete": "经过时间百分比",
+            "percentage_complete": "今天过去了%几",
             "date": {
-              "title": "日期",
-              "week_number": "第几周",
-              "day_of_week": "星期几",
-              "datenth": "几日",
+              "title": "显示日期",
+              "week_number": "第n周",
+              "day_of_week": "星期n",
+              "datenth": "添加th后缀",
               "type": {
-                "short": "简写",
-                "long": "全称"
+                "short": "显示简写",
+                "long": "显示全部"
               },
               "short_date": "简写日期",
               "short_format": "简写格式",
@@ -108,16 +108,16 @@
             }
           },
           "quote": {
-            "title": "名言",
+            "title": "名言警句",
             "author_link": "出处链接",
             "custom": "自定义名言",
             "custom_author": "自定义出处",
-            "add": "Add quote",
+            "add": "继续添加名言",
             "buttons": {
-              "title": "按钮",
-              "copy": "复制按钮",
-              "tweet": "发推按钮",
-              "favourite": "收藏按钮"
+              "title": "下方按钮",
+              "copy": "显示复制按钮",
+              "tweet": "显示发推按钮",
+              "favourite": "显示收藏按钮"
             }
           },
           "greeting": {
@@ -126,85 +126,85 @@
             "default": "常规问候",
             "name": "您在问候中的名字",
             "birthday": "生日",
-            "birthday_age": "生日年龄",
+            "birthday_age": "显示年龄",
             "birthday_date": "生日日期"
           },
           "background": {
             "title": "背景",
             "ddg_image_proxy": "使用 DuckDuckGo 图像代理",
-            "transition": "渐变",
-            "photo_information": "Show photo information",
-            "show_map": "Show location map on photo information if available",
+            "transition": "过渡动画",
+            "photo_information": "显示图片信息",
+            "show_map": "在图片信息内显示位置信息 (如果可用)",
             "category": "分类",
             "buttons": {
-              "title": "按钮",
-              "view": "查看",
+              "title": "显示顶部按钮",
+              "view": "仅显示背景",
               "favourite": "收藏",
               "download": "下载"
             },
             "effects": {
-              "title": "效果",
-              "blur": "调整模糊",
-              "brightness": "调整亮度",
+              "title": "背景特效",
+              "blur": "模糊程度",
+              "brightness": "更改亮度",
               "filters": {
-                "title": "Background filter",
-                "amount": "Filter amount",
-                "grayscale": "Grayscale",
-                "sepia": "Sepia",
-                "invert": "Invert",
-                "saturate": "Saturate",
-                "contrast": "Contrast"
+                "title": "背景滤镜",
+                "amount": "数值",
+                "grayscale": "灰度",
+                "sepia": "相片",
+                "invert": "反色",
+                "saturate": "饱和度",
+                "contrast": "对比度"
               }
             },
             "type": {
               "title": "来源",
-              "api": "API",
-              "custom_image": "自定义图像",
-              "custom_colour": "自定义背景颜色",
-              "random_colour": "Random colour",
-              "random_gradient": "Random gradient"
+              "api": "网络图像库API",
+              "custom_image": "自定义图像/视频",
+              "custom_colour": "自定义纯色背景",
+              "random_colour": "随机纯色背景",
+              "random_gradient": "随机渐变色背景"
             },
             "source": {
               "title": "来源",
               "api": "背景来源",
-              "custom_background": "自定义背景",
+              "custom_background": "自定义背景 (支持图片/视频)",
               "custom_colour": "自定义背景颜色",
-              "upload": "上传",
+              "upload": "选择",
               "add_colour": "添加颜色",
-              "add_background": "Add background",
+              "add_background": "继续添加背景",
               "disabled": "已禁用",
               "loop_video": "循环播放",
               "mute_video": "静音",
               "quality": {
-                "title": "Quality",
-                "original": "Original",
-                "high": "High Quality",
-                "normal": "Normal Quality",
-                "datasaver": "Data Saver"
+                "title": "画质",
+                "original": "原画",
+                "high": "高画质",
+                "normal": "普通画质",
+                "datasaver": "省流模式"
               }
             },
             "interval": {
-              "title": "Change every",
-              "minute": "Minute",
-              "half_hour": "Half hour",
-              "hour": "Hour",
-              "day": "Day",
-              "month": "Month"
+              "title": "更改频率",
+              "minute": "每分钟",
+              "half_hour": "每半小时",
+              "hour": "每小时",
+              "day": "每天",
+              "month": "每月"
             }
           },
           "search": {
             "title": "搜索栏",
             "search_engine": "搜索引擎",
             "custom": "自定义搜索链接",
-            "autocomplete": "Autocomplete",
-            "autocomplete_provider": "Autocomplete Provider",
+            "autocomplete": "搜索联想",
+            "autocomplete_provider": "联想功能提供引擎",
             "voice_search": "语音搜索",
-            "dropdown": "Search dropdown"
+            "dropdown": "搜索框左侧显示搜索引擎选择框"
           },
           "weather": {
             "title": "天气",
             "location": "位置",
-            "auto": "自动",
+            "auto": "自动定位",
             "temp_format": {
               "title": "温度单位",
               "celsius": "摄氏度",
@@ -214,12 +214,12 @@
             "extra_info": {
               "title": "更多信息",
               "show_location": "显示位置",
-              "show_description": "Show description",
-              "cloudiness": "Cloudiness",
-              "humidity": "Humidity",
-              "visibility": "Visibility",
+              "show_description": "显示描述",
+              "cloudiness": "云量",
+              "humidity": "湿度",
+              "visibility": "能见度",
               "wind_speed": "风速",
-              "wind_direction": "Wind direction",
+              "wind_direction": "风向",
               "min_temp": "最低温度",
               "max_temp": "最高温度",
               "atmospheric_pressure": "大气压"
@@ -229,15 +229,15 @@
             "title": "快捷方式",
             "open_new": "在新标签页打开",
             "tooltip": "光标停留时下方显示标题",
-            "text_only": "Show text only"
+            "text_only": "仅显示标题"
           },
           "message": {
-            "title": "Message",
-            "add": "Add message",
-            "text": "Text"
+            "title": "消息",
+            "add": "继续添加消息",
+            "text": "文本"
           },
           "appearance": {
-            "title": "显示",
+            "title": "外观",
             "theme": {
               "title": "主题",
               "auto": "自动选择",
@@ -246,10 +246,10 @@
             },
             "navbar": {
               "title": "右上方功能键",
-              "notes": "备忘录",
+              "notes": "便签",
               "refresh": "刷新键",
               "refresh_options": {
-                "none": "None",
+                "none": "不显示",
                 "page": "页面"
               }
             },
@@ -258,7 +258,7 @@
               "custom": "自定义字体",
               "google": "从 Google Fonts 导入",
               "weight": {
-                "title": "字体厚度",
+                "title": "字体粗细",
                 "thin": "极细",
                 "extra_light": "细字",
                 "light": "较细",
@@ -277,8 +277,8 @@
             },
             "accessibility": {
               "title": "无障碍设定",
-              "animations": "动画",
-              "text_shadow": "Widget text shadow",
+              "animations": "动画效果",
+              "text_shadow": "加深字体阴影",
               "widget_zoom": "小部件缩放",
               "toast_duration": "窗口弹出时间长度",
               "milliseconds": "毫秒"
@@ -289,60 +289,60 @@
           },
           "advanced": {
             "title": "高级",
-            "offline_mode": "离线模式",
-            "data": "数据",
+            "offline_mode": "启用离线模式",
+            "data": "数据和设置",
             "reset_modal": {
               "title": "警告",
-              "question": "您是否想恢复 Mue 默认设定？",
+              "question": "您想要重置 Mue 的所有设置吗？",
               "information": "本操作将删除所有数据。若您想保留数据及设置，请先将其导出。",
               "cancel": "取消"
             },
-            "customisation": "定制",
+            "customisation": "自定义",
             "custom_css": "自定义 CSS",
             "custom_js": "自定义 JS",
-            "tab_name": "标签页名称",
+            "tab_name": "新标签页名称",
             "timezone": {
-              "title": "Time Zone",
-              "automatic": "Automatic"
+              "title": "时区",
+              "automatic": "自动"
             },
             "experimental_warning": "请注意 Mue 团队无法提供实验性功能的支持。若您遇到问题，请先关闭实验性功能，再寻求帮助。"
           },
           "stats": {
-            "title": "Stats",
-            "warning": "You need to enable usage data in order to use this feature. This data is only stored locally.",
+            "title": "统计",
+            "warning": "为了使用该功能，您需要启用统计功能。统计数据仅保存在本地。",
             "sections": {
-              "tabs_opened": "Tabs opened",
-              "backgrounds_favourited": "Backgrounds favourited",
-              "backgrounds_downloaded": "Backgrounds downloaded",
-              "quotes_favourited": "Quotes favourited",
-              "quicklinks_added": "Quicklinks added",
-              "settings_changed": "Settings changed",
-              "addons_installed": "Add-ons installed"
+              "tabs_opened": "页面打开次数",
+              "backgrounds_favourited": "收藏的背景",
+              "backgrounds_downloaded": "下载过背景",
+              "quotes_favourited": "收藏的名言警句",
+              "quicklinks_added": "添加的快捷方式",
+              "settings_changed": "更改的设置",
+              "addons_installed": "添加的插件"
             },
-            "usage": "Usage Stats"
+            "usage": "启用统计"
           },
           "keybinds": {
-            "title": "Keybinds",
-            "recording": "Recording...",
-            "click_to_record": "Click to record",
+            "title": "快捷键",
+            "recording": "等待按下快捷键...",
+            "click_to_record": "点击后输入快捷键",
             "background": {
-              "favourite": "Favourite background",
-              "maximise": "Maximise background",
-              "download": "Download background",
-              "show_info": "Show background information"
+              "favourite": "收藏背景",
+              "maximise": "仅显示背景",
+              "download": "下载背景",
+              "show_info": "显示背景图片信息"
             },
             "quote": {
-              "favourite": "Favourite quote",
-              "copy": "Copy quote",
-              "tweet": "Tweet quote"
+              "favourite": "收藏名言",
+              "copy": "复制名言",
+              "tweet": "发推名言"
             },
             "notes": {
-              "pin": "Pin notes",
-              "copy": "Copy notes"
+              "pin": "贴住便签",
+              "copy": "复制便签"
             },
-            "search": "Focus search",
-            "quicklinks": "Toggle add quick link",
-            "modal": "Toggle modal"
+            "search": "移动光标到搜索框",
+            "quicklinks": "显示添加快捷方式对话框",
+            "modal": "显示设置"
           },
           "experimental": {
             "title": "实验性功能",
@@ -364,21 +364,21 @@
               "no_update": "无可下载更新",
               "offline_mode": "离线模式下不能检查更新",
               "error": {
-                "title": "Failed to get update information",
-                "description": "An error occured"
+                "title": "获取更新信息失败",
+                "description": "错误"
               }
             },
             "contact_us": "联系我们",
-            "support_mue": "给我们打赏",
+            "support_mue": "支持 Mue",
             "resources_used": {
               "title": "使用资源",
               "bg_images": "离线背景",
               "welcome_img": "欢迎图像",
-              "pin_icon": "大头针图标"
+              "pin_icon": "便签图标"
             },
             "contributors": "贡献者",
-            "supporters": "打赏者",
-            "photographers": "摄影者"
+            "supporters": "支持者",
+            "photographers": "背景摄影者"
           }
         },
         "buttons": {
@@ -420,42 +420,42 @@
         },
         "sideload": "上传插件",
         "sort": {
-          "title": "Sort",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
-          "a_z": "Alphabetical (A-Z)",
-          "z_a": "Alphabetical (Z-A)"
+          "title": "排序",
+          "newest": "安装过 (从新到旧)",
+          "oldest": "安装过 (从旧到新)",
+          "a_z": "首字母 (A-Z)",
+          "z_a": "首字母 (Z-A)"
         },
         "create": {
-          "title": "Create",
-          "other_title": "Create Add-on",
+          "title": "创建",
+          "other_title": "创建插件",
           "metadata": {
-            "name": "Name",
-            "icon_url": "Icon URL",
-            "screenshot_url": "Screenshot URL",
-            "description": "Description"
+            "name": "名称",
+            "icon_url": "图标URL",
+            "screenshot_url": "示例图片URL",
+            "description": "描述"
           },
           "finish": {
-            "title": "Finish",
-            "download": "Download Add-on"
+            "title": "完成",
+            "download": "下载插件"
           },
           "settings": {
-            "current": "Import current setup",
-            "json": "Upload JSON"
+            "current": "导入当前设置",
+            "json": "上传 JSON文件"
           },
           "photos": {
-            "title": "Add Photos"
+            "title": "添加照片"
           },
           "quotes": {
-            "title": "Add Quotes",
+            "title": "添加名言",
             "api": {
               "title": "API",
-              "url": "Quote URL",
-              "name": "JSON quote name",
-              "author": "JSON quote author (or override)"
+              "url": "名言 URL",
+              "name": "JSON 名言名称",
+              "author": "JSON 名言作者 (或留空)"
             },
             "local": {
-              "title": "Local"
+              "title": "本地"
             }
           }
         }
@@ -473,49 +473,49 @@
       }
     },
     "welcome": {
-      "tip": "Quick Tip",
+      "tip": "快速提示",
       "sections": {
         "intro": {
-          "title": "欢迎使用 Mue Tab",
-          "description": "感谢您安装。祝您使用愉快。"
+          "title": "欢迎使用 Mue 新标签插件",
+          "description": "感谢您的安装。祝您使用愉快。"
         },
         "language": {
-          "title": "Choose your language",
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our"
+          "title": "更改语言",
+          "description": "Mue 支持以下语言。你也可以在这里添加新的翻译"
         },
         "theme": {
-          "title": "Select a theme",
-          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
-          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
+          "title": "选择一个主题",
+          "description": "Mue 支持日间和夜间主题，或者设置为自动选择，主题将跟随系统主题自动切换",
+          "tip": "使用自动选择将使用您的电脑的主题。这个设置也会影响设置界面和一些小组件的主题，比如天气和便签。"
         },
         "settings": {
-          "title": "Import Settings",
-          "description": "Installing Mue on a new device? Feel free to import your old settings!",
-          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
+          "title": "导入设置",
+          "description": "在新设备上安装 Mue? 可以直接导入之前的设置！",
+          "tip": "您可以通过在之前设备上点击右上角的设置，打开高级选项卡，然后点击导出按钮，浏览器将自动下载一个 json 文件。你可以在上面点击导入按钮导入该 json 文件来导入你之前的设置和偏好。"
         },
         "privacy": {
-          "title": "Privacy Options",
-          "description": "Enable settings to further protect your privacy with Mue.",
-          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
-          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
+          "title": "隐私设置",
+          "description": "进行一些设置来和 Mue 更好的保护您的隐私",
+          "offline_mode_description": "启用离线模式将会关闭所有服务的网络访问。该选项会关闭所有在线背景图片、在线名言警句、插件市场、天气、快捷方式、更新历史和一些关于信息的网络访问。",
+          "ddg_proxy_description": "你可以选择通过 DuckDuckGo 代理获取图像来保护您的信息。默认情况下，Mue的服务API会请求我们的开源服务器，图像请求会使用源服务器。关闭快捷方式图标代理将会访问Google而非DuckDuckGo来获取快捷方式的图标。插件商店默认始终使用 DuckDuckGo 的代理",
           "links": {
-            "title": "Links",
-            "privacy_policy": "Privacy Policy",
-            "source_code": "Source Code"
+            "title": "链接",
+            "privacy_policy": "隐私政策",
+            "source_code": "源代码"
           }
         },
         "final": {
-          "title": "Final step",
-          "description": "Your Mue Tab experience is about to begin.",
-          "changes": "Changes",
-          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "imported": "Imported",
-          "settings": "settings"
+          "title": "最后一步",
+          "description": "马上即可开始使用 Mue！",
+          "changes": "更改的设置",
+          "changes_description": "如果需要进一步设置，点击右上角的设置图标即可弹出完整设置对话框。如果显示不正常，刷新即可。",
+          "imported": "导入",
+          "settings": "设置"
         }
       },
       "buttons": {
-        "next": "Next",
-        "previous": "Previous",
+        "next": "下一步",
+        "previous": "上一步",
         "close": "关闭"
       }
     },
@@ -532,11 +532,11 @@
   },
   "toasts": {
     "quote": "名言已复制",
-    "notes": "Notes copied",
+    "notes": "便签已复制",
     "reset": "重置成功",
     "installed": "安装成功",
     "uninstalled": "卸载成功",
-    "error": "发生了错误",
+    "error": "发生错误",
     "imported": "导入成功"
   }
 }
