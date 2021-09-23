@@ -2,7 +2,7 @@ import { render } from 'react-dom';
 
 import App from './App';
 import * as Constants from 'modules/constants';
-import variables from './modules/variables';
+import variables from 'modules/variables';
 
 import './scss/index.scss';
 // the toast css is based on default so we need to import it

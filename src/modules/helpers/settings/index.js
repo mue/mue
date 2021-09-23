@@ -4,8 +4,7 @@ import experimentalInit from '../experimental';
 const defaultSettings = require('modules/default_settings.json');
 const languages = require('modules/languages.json');
 
-const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-const languagecode = variables.languagecode;
+const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
 export function setDefaultSettings(reset) {
   localStorage.clear();
@@ -21,7 +20,7 @@ export function setDefaultSettings(reset) {
     localStorage.setItem('language', 'en_GB');
   }
 
-  localStorage.setItem('tabName', getMessage(localStorage.getItem('language'), 'tabname'));
+  localStorage.setItem('tabName', getMessage('tabname'));
 
   if (reset) {
     localStorage.setItem('showWelcome', false);
@@ -47,7 +46,7 @@ export function loadSettings(hotreload) {
       document.body.classList.remove('dark');
   }
 
-  document.title = localStorage.getItem('tabName') || getMessage(languagecode, 'tabName');
+  document.title = localStorage.getItem('tabName') || getMessage('tabname');
 
   if (hotreload === true) {
     // remove old custom stuff and add new
