@@ -35,22 +35,12 @@ export default class OrderSettings extends PureComponent {
     };
   }
 
-  // based on https://stackoverflow.com/a/48301905
   arrayMove(array, oldIndex, newIndex) {
-    if (oldIndex === newIndex) {
-      return array;
-    }
+    const result = Array.from(array);
+    const [removed] = result.splice(oldIndex, 1);
+    result.splice(newIndex, 0, removed);
   
-    const newArray = [...array];
-    const target = newArray[oldIndex];
-    const inc = newIndex < oldIndex ? -1 : 1;
-  
-    for (let i = oldIndex; i !== newIndex; i += inc) {
-      newArray[i] = newArray[i + inc];
-    }
-  
-    newArray[newIndex] = target;
-    return newArray;
+    return result;
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {

@@ -2,9 +2,8 @@ import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { Cancel } from '@mui/icons-material';
 
+import Header from '../Header';
 import Checkbox from '../Checkbox';
-import Switch from '../Switch';
-import Slider from '../Slider';
 import Dropdown from '../Dropdown';
 
 export default class QuoteSettings extends PureComponent {
@@ -120,8 +119,7 @@ export default class QuoteSettings extends PureComponent {
 
     return (
       <>
-        <h2>{this.getMessage('modals.main.settings.sections.quote.title')}</h2>
-        <Switch name='quote' text={this.getMessage('modals.main.settings.enabled')} category='quote' element='.quotediv' />
+        <Header title={this.getMessage('modals.main.settings.sections.quote.title')} category='quote' element='.quotediv' zoomSetting='zoomQuote' category='quote'/>
         <Checkbox name='authorLink' text={this.getMessage('modals.main.settings.sections.quote.author_link')} element='.other' />
         <Dropdown label={this.getMessage('modals.main.settings.sections.background.type.title')} name='quoteType' onChange={(value) => this.setState({ quoteType: value })} category='quote'>
           {this.marketplaceType()}
@@ -129,7 +127,6 @@ export default class QuoteSettings extends PureComponent {
           <option value='custom'>{this.getMessage('modals.main.settings.sections.quote.custom')}</option>
         </Dropdown>
         {customSettings}
-        <Slider title={this.getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomQuote' min='10' max='400' default='100' display='%' category='quote' />
   
         <h3>{this.getMessage('modals.main.settings.sections.quote.buttons.title')}</h3>
         <Checkbox name='copyButton' text={this.getMessage('modals.main.settings.sections.quote.buttons.copy')} category='quote'/>

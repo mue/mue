@@ -1,15 +1,16 @@
 import variables from 'modules/variables';
+import { Cancel } from '@mui/icons-material';
 
 export default function KeybindInput(props) {
   const value = props.state[props.setting];
 
   const getButton = () => {
     if (!value) {
-      return null;
+      return <button className='cleanButton' style={{ visibility: 'hidden' }} onClick={() => props.action('reset', props.setting)}><Cancel/></button>;;
     } else if (value === variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.keybinds.recording')) {
       return <span className='modalLink' onClick={() => props.action('cancel', props.setting)}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.advanced.reset_modal.cancel')}</span>
     } else {
-      return <span className='modalLink' onClick={() => props.action('reset', props.setting)}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span>;
+      return <button className='cleanButton' onClick={() => props.action('reset', props.setting)}><Cancel/></button>;
     }
   }
 

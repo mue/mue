@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 
+import Header from '../Header';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
 import Switch from '../Switch';
@@ -72,6 +73,7 @@ export default class SearchSettings extends PureComponent {
   render() {
     return (
       <>
+        <Header title={this.getMessage('modals.main.settings.sections.search.title')} category='widgets'/>
         <h2>{this.getMessage('modals.main.settings.sections.search.title')}</h2>
         <Switch name='searchBar' text={this.getMessage('modals.main.settings.enabled')} category='widgets' />
         {/* not supported on firefox */}

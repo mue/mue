@@ -26,12 +26,9 @@ export default class Tabs extends PureComponent {
   };
 
   render() {
-    const language = variables.language;
-    const languagecode = variables.languagecode;
-
     let className = 'sidebar';
     let tabClass = 'tab-content';
-    let optionsText = (<h1>{language.getMessage(languagecode, 'modals.main.title')}</h1>);
+    let optionsText = (<h1>{variables.language.getMessage(variables.languagecode, 'modals.main.title')}</h1>);
 
     if (this.props.navbar) {
       className = 'modalNavbar';

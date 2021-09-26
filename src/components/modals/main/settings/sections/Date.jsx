@@ -1,10 +1,9 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
+import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
-import Switch from '../Switch';
-import Slider from '../Slider';
 
 export default class DateSettings extends PureComponent {
   constructor() {
@@ -52,8 +51,7 @@ export default class DateSettings extends PureComponent {
 
     return (
       <>
-        <h2>{getMessage('modals.main.settings.sections.time.date.title')}</h2>
-        <Switch name='date' text={getMessage('modals.main.settings.enabled')} category='date' element='.date'/>
+        <Header title={getMessage('modals.main.settings.sections.time.date.title')} category='date' element='.date' zoomSetting='zoomDate' category='date'/>
         <Dropdown label={getMessage('modals.main.settings.sections.time.type')} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date'>
           <option value='long'>{getMessage('modals.main.settings.sections.time.date.type.long')}</option>
           <option value='short'>{getMessage('modals.main.settings.sections.time.date.type.short')}</option>
@@ -62,7 +60,6 @@ export default class DateSettings extends PureComponent {
         <Checkbox name='datezero' text={getMessage('modals.main.settings.sections.time.digital.zero')} category='date'/>
         <Checkbox name='weeknumber' text={getMessage('modals.main.settings.sections.time.date.week_number')} category='date'/>
         {dateSettings}
-        <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomDate' min='10' max='400' default='100' display='%' category='date'/>
       </>
     );
   }

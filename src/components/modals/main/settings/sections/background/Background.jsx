@@ -3,11 +3,11 @@ import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
 import { Cancel } from '@mui/icons-material';
 
+import Header from '../../Header';
 import Checkbox from '../../Checkbox';
 import Dropdown from '../../Dropdown';
 import FileUpload from '../../FileUpload';
 import Slider from '../../Slider';
-import Switch from '../../Switch';
 import Radio from '../../Radio';
 
 import ColourSettings from './Colour';
@@ -156,7 +156,7 @@ export default class BackgroundSettings extends PureComponent {
 
     const interval = (
       <>
-         <br/><br/>
+        <br/><br/>
         <Dropdown label={getMessage('modals.main.settings.sections.background.interval.title')} name='backgroundchange'>
         <option value='refresh'>{getMessage('tabname')}</option>
           <option value='60000'>{getMessage('modals.main.settings.sections.background.interval.minute')}</option>
@@ -191,25 +191,23 @@ export default class BackgroundSettings extends PureComponent {
     );
 
     const customSettings = (
-      <>
-        <ul>
-          <p>{getMessage('modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{getMessage('modals.main.settings.buttons.reset')}</span></p>
-          {this.state.customBackground.map((_url, index) => (
-            <Fragment key={index}>
-              <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)}></input>
-              {this.state.customBackground.length > 1 ? <button className='cleanButton' onClick={() => this.modifyCustomBackground('remove', index)}>
-                <Cancel/>
-              </button> : null}
-              <span className='modalLink' onClick={() => this.uploadCustombackground(index)}>{getMessage('modals.main.settings.sections.background.source.upload')}</span>
-              {this.videoCustomSettings(index)}
-              <br/><br/>  
-            </Fragment>
-          ))}
-          <button className='uploadbg' onClick={() => this.modifyCustomBackground('add')}>{getMessage('modals.main.settings.sections.background.source.add_background')}</button>
-          <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
-          {interval}
-        </ul>
-      </>
+      <ul>
+        <p>{getMessage('modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{getMessage('modals.main.settings.buttons.reset')}</span></p>
+        {this.state.customBackground.map((_url, index) => (
+          <Fragment key={index}>
+            <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)}></input>
+            {this.state.customBackground.length > 1 ? <button className='cleanButton' onClick={() => this.modifyCustomBackground('remove', index)}>
+              <Cancel/>
+            </button> : null}
+            <span className='modalLink' onClick={() => this.uploadCustombackground(index)}>{getMessage('modals.main.settings.sections.background.source.upload')}</span>
+            {this.videoCustomSettings(index)}
+            <br/><br/>  
+          </Fragment>
+        ))}
+        <button className='uploadbg' onClick={() => this.modifyCustomBackground('add')}>{getMessage('modals.main.settings.sections.background.source.add_background')}</button>
+        <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
+        {interval}
+      </ul>
     );
 
     switch (this.state.backgroundType) {
@@ -224,8 +222,7 @@ export default class BackgroundSettings extends PureComponent {
   
     return (
       <>
-        <h2>{getMessage('modals.main.settings.sections.background.title')}</h2>
-        <Switch name='background' text={getMessage('modals.main.settings.enabled')} category='background' element='#backgroundImage' />
+        <Header title={getMessage('modals.main.settings.sections.background.title')} category='background' element='#backgroundImage'/>
         <Checkbox name='ddgProxy' text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')} element='.other' />
         <Checkbox name='bgtransition' text={getMessage('modals.main.settings.sections.background.transition')} element='.other' />
         <Checkbox name='photoInformation' text={getMessage('modals.main.settings.sections.background.photo_information')} element='.other' />

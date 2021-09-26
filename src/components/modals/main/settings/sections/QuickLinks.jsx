@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 
-import Switch from '../Switch';
+import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Slider from '../Slider';
 
@@ -9,8 +9,7 @@ export default function QuickLinks() {
 
   return (
     <>
-      <h2>{getMessage('modals.main.settings.sections.quicklinks.title')}</h2>
-      <Switch name='quicklinksenabled' text={getMessage('modals.main.settings.enabled')} category='quicklinks' element='.quicklinks-container'/>
+      <Header title={getMessage('modals.main.settings.sections.quicklinks.title')} category='quicklinks' element='.quicklinks-container' zoomSetting='zoomQuicklinks' category='quicklinks'/>
       <Checkbox name='quicklinksText' text={getMessage('modals.main.settings.sections.quicklinks.text_only')} category='quicklinks'/>
       <Checkbox name='quicklinksddgProxy' text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')} category='quicklinks'/>
       <Checkbox name='quicklinksnewtab' text={getMessage('modals.main.settings.sections.quicklinks.open_new')} category='quicklinks'/>

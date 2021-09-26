@@ -3,14 +3,13 @@ import { PureComponent, Fragment } from 'react';
 import { Cancel } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 
-import Switch from '../Switch';
+import Header from '../Header';
 import Slider from '../Slider';
 
 import EventBus from 'modules/helpers/eventbus';
 
 export default class Message extends PureComponent {
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   constructor() {
     super();
@@ -62,9 +61,8 @@ export default class Message extends PureComponent {
   render() {
     return (
       <>
-        <h2>{this.getMessage(this.languagecode, 'modals.main.settings.sections.message.title')}</h2>
-        <Switch name='message' text={this.getMessage(this.languagecode, 'modals.main.settings.enabled')} category='message' element='.message'/>
-        <p>{this.getMessage(this.languagecode, 'modals.main.settings.sections.message.text')}</p>
+        <Header title={this.getMessage('modals.main.settings.sections.message.title')} category='message' element='.message' zoomSetting='zoomMessage' category='message'/>
+        <p>{this.getMessage('modals.main.settings.sections.message.text')}</p>
         {this.state.messages.map((_url, index) => (
           <Fragment key={index}>
             <input type='text' value={this.state.messages[index]} onChange={(e) => this.message(e, true, index)}></input>
@@ -74,8 +72,8 @@ export default class Message extends PureComponent {
             <br/><br/>
           </Fragment>
         ))}
-        <button className='uploadbg' onClick={() => this.modifyMessage('add')}>{this.getMessage(this.languagecode, 'modals.main.settings.sections.message.add')}</button>
-        <Slider title={this.getMessage(this.languagecode, 'modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomMessage' min='10' max='400' default='100' display='%' category='message' />
+        <button className='uploadbg' onClick={() => this.modifyMessage('add')}>{this.getMessage('modals.main.settings.sections.message.add')}</button>
+        <Slider title={this.getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomMessage' min='10' max='400' default='100' display='%' category='message' />
       </>
     );
   }

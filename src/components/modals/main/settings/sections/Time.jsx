@@ -1,11 +1,10 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
+import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
-import Switch from '../Switch';
 import Radio from '../Radio';
-import Slider from '../Slider';
 
 export default class TimeSettings extends PureComponent {
   constructor() {
@@ -60,17 +59,13 @@ export default class TimeSettings extends PureComponent {
 
     return (
       <>
-        <h2>{getMessage('modals.main.settings.sections.time.title')}</h2>
-        <Switch name='time' text={getMessage('modals.main.settings.enabled')} category='clock' element='.clock-container' />
+        <Header title={getMessage('modals.main.settings.sections.time.title')} category='clock' element='.clock-container' zoomSetting='zoomClock' category='clock'/>
         <Dropdown label={getMessage('modals.main.settings.sections.time.type')} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock'>
           <option value='digital'>{getMessage('modals.main.settings.sections.time.digital.title')}</option>
           <option value='analogue'>{getMessage('modals.main.settings.sections.time.analogue.title')}</option>
           <option value='percentageComplete'>{getMessage('modals.main.settings.sections.time.percentage_complete')}</option>
         </Dropdown>
         {timeSettings}
-        {this.state.timeType !== 'analogue' ? 
-          <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomClock' min='10' max='400' default='100' display='%' category='clock'/>
-        : null}
       </>
     );
   }
