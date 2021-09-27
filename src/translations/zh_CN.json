@@ -32,7 +32,7 @@
     },
     "weather": {
       "not_found": "未找到",
-      "meters": "米"
+      "meters": "{amount}米"
     },
     "navbar": {
       "tooltips": {
@@ -86,25 +86,25 @@
               "hour_marks": "时钟刻度",
               "minute_marks": "分钟刻度"
             },
-            "percentage_complete": "今天过去了%几",
-            "date": {
-              "title": "显示日期",
-              "week_number": "第n周",
-              "day_of_week": "星期n",
-              "datenth": "添加th后缀",
-              "type": {
-                "short": "显示简写",
-                "long": "显示全部"
-              },
-              "short_date": "简写日期",
-              "short_format": "简写格式",
-              "short_separator": {
-                "title": "简写分隔",
-                "dots": "点",
-                "dash": "横杠",
-                "gaps": "空格",
-                "slashes": "斜杠"
-              }
+            "percentage_complete": "今天过去了%几"
+          },
+          "date": {
+            "title": "显示日期",
+            "week_number": "第n周",
+            "day_of_week": "星期n",
+            "datenth": "添加th后缀",
+            "type": {
+              "short": "显示简写",
+              "long": "显示全部"
+            },
+            "short_date": "简写日期",
+            "short_format": "简写格式",
+            "short_separator": {
+              "title": "简写分隔",
+              "dots": "点",
+              "dash": "横杠",
+              "gaps": "空格",
+              "slashes": "斜杠"
             }
           },
           "quote": {
@@ -353,7 +353,10 @@
             "title": "语言",
             "quote": "名言语言"
           },
-          "changelog": "更新日志",
+          "changelog": {
+            "title": "更新日志",
+            "by": "By {author}"
+          },
           "about": {
             "title": "关于",
             "copyright": "版权",
@@ -509,8 +512,7 @@
           "description": "马上即可开始使用 Mue！",
           "changes": "更改的设置",
           "changes_description": "如果需要进一步设置，点击右上角的设置图标即可弹出完整设置对话框。如果显示不正常，刷新即可。",
-          "imported": "导入",
-          "settings": "设置"
+          "imported": "导入{amount}设置"
         }
       },
       "buttons": {

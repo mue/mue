@@ -32,7 +32,7 @@
     },
     "weather": {
       "not_found": "Pas trouvé",
-      "meters": "mètres"
+      "meters": "{amount} mètres"
     },
     "navbar": {
       "tooltips": {
@@ -86,25 +86,25 @@
               "hour_marks": "Marques d'heure",
               "minute_marks": "Marques des minutes"
             },
-            "percentage_complete": "Pourcentage achevé",
-            "date": {
-              "title": "Date",
-              "week_number": "Numéro de semaine",
-              "day_of_week": "Jour de la semaine",
-              "datenth": "Date nth",
-              "type": {
-                "short": "Courtt",
-                "long": "Long"
-              },
-              "short_date": "Date courte",
-              "short_format": "Format court",
-              "short_separator": {
-                "title": "Séparateur court",
-                "dots": "Points",
-                "dash": "Tiret",
-                "gaps": "Blancs",
-                "slashes": "Barres"
-              }
+            "percentage_complete": "Pourcentage achevé"
+          },
+          "date": {
+            "title": "Date",
+            "week_number": "Numéro de semaine",
+            "day_of_week": "Jour de la semaine",
+            "datenth": "Date nth",
+            "type": {
+              "short": "Courtt",
+              "long": "Long"
+            },
+            "short_date": "Date courte",
+            "short_format": "Format court",
+            "short_separator": {
+              "title": "Séparateur court",
+              "dots": "Points",
+              "dash": "Tiret",
+              "gaps": "Blancs",
+              "slashes": "Barres"
             }
           },
           "quote": {
@@ -353,7 +353,10 @@
             "title": "Langue",
             "quote": "Citation langue"
           },
-          "changelog": "Journal des modifications",
+          "changelog": {
+            "title": "Journal des modifications",
+            "by": "By {author}"
+          },
           "about": {
             "title": "à propos de",
             "copyright": "Droits d'auteur",
@@ -509,8 +512,7 @@
           "description": "Your Mue Tab experience is about to begin.",
           "changes": "Changes",
           "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "imported": "Imported",
-          "settings": "settings"
+          "imported": "Imported {amount} settings"
         }
       },
       "buttons": {

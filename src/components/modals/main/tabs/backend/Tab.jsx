@@ -51,7 +51,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
     case getMessage('modals.main.settings.sections.appearance.navbar.title'): icon = <Navbar/>; break;
     case getMessage('modals.main.settings.sections.time.title'): icon = <Time/>; break;
-    case getMessage('modals.main.settings.sections.time.date.title'): icon = <Date/>; break;
+    case getMessage('modals.main.settings.sections.date.title'): icon = <Date/>; break;
     case getMessage('modals.main.settings.sections.greeting.title'): icon = <Greeting/>; break;
     case getMessage('modals.main.settings.sections.quote.title'): icon = <Quote/>; break;
     case getMessage('modals.main.settings.sections.background.title'): icon = <Background/>; break;
@@ -66,7 +66,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.settings.sections.keybinds.title'): icon = <Keybinds/>; break;
     case getMessage('modals.main.settings.sections.stats.title'): icon = <Stats/>; break;
     case getMessage('modals.main.settings.sections.experimental.title'): icon = <Experimental/>; divider = true; break;
-    case getMessage('modals.main.settings.sections.changelog'): icon = <Changelog/>; break;
+    case getMessage('modals.main.settings.sections.changelog.title'): icon = <Changelog/>; break;
     case getMessage('modals.main.settings.sections.about.title'): icon = <About/>; break;
 
     case getMessage('modals.main.addons.added'): icon = <Added/>; break;

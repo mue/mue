@@ -32,7 +32,7 @@
     },
     "weather": {
       "not_found": "Not Found",
-      "meters": "meters"
+      "meters": "{amount} meters"
     },
     "navbar": {
       "tooltips": {
@@ -86,25 +86,25 @@
               "hour_marks": "Hour marks",
               "minute_marks": "Minute marks"
             },
-            "percentage_complete": "Percentage complete",
-            "date": {
-              "title": "Date",
-              "week_number": "Week number",
-              "day_of_week": "Day of week",
-              "datenth": "Date nth",
-              "type": {
-                "short": "Short",
-                "long": "Long"
-              },
-              "short_date": "Short date",
-              "short_format": "Short format",
-              "short_separator": {
-                "title": "Short separator",
-                "dots": "Dots",
-                "dash": "Dash",
-                "gaps": "Gaps",
-                "slashes": "Slashes"
-              }
+            "percentage_complete": "Percentage complete"
+          },
+          "date": {
+            "title": "Date",
+            "week_number": "Week number",
+            "day_of_week": "Day of week",
+            "datenth": "Date nth",
+            "type": {
+              "short": "Short",
+              "long": "Long"
+            },
+            "short_date": "Short date",
+            "short_format": "Short format",
+            "short_separator": {
+              "title": "Short separator",
+              "dots": "Dots",
+              "dash": "Dash",
+              "gaps": "Gaps",
+              "slashes": "Slashes"
             }
           },
           "quote": {
@@ -353,7 +353,10 @@
             "title": "Language",
             "quote": "Quote language"
           },
-          "changelog": "Change Log",
+          "changelog": {
+            "title": "Change Log",
+            "by": "By {author}"
+          },
           "about": {
             "title": "About",
             "copyright": "Copyright",
@@ -509,8 +512,7 @@
           "description": "Your Mue Tab experience is about to begin.",
           "changes": "Changes",
           "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "imported": "Imported",
-          "settings": "settings"
+          "imported": "Imported {amount} settings"
         }
       },
       "buttons": {

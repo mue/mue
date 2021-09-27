@@ -164,7 +164,7 @@ export default class Weather extends PureComponent {
         {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
         {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span> {enabled('windDirection') ? <WindDirectionIcon degrees={this.state.weather.wind_degrees}/> : null}</span> : null}
         {enabled('cloudiness') ? <span className='loc'><br/><WiCloud/>{this.state.weather.cloudiness}%</span> : null}
-        {enabled('visibility') ? <span className='loc'><br/>{this.state.weather.visibility} {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters')}</span> : null}
+        {enabled('visibility') ? <span className='loc visibility'><br/>{variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', { amount: this.state.weather.visibility })}</span> : null}
         {enabled('atmosphericpressure') ? <span className='loc'><br/><WiBarometer/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
         <br/>
         {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}

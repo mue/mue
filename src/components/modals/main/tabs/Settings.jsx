@@ -32,7 +32,7 @@ export default function Settings() {
         <div label={getMessage('modals.main.settings.sections.time.title')} name='time'><Time/></div>
         <div label={getMessage('modals.main.settings.sections.quicklinks.title')} name='quicklinks'><QuickLinks/></div>
         <div label={getMessage('modals.main.settings.sections.quote.title')} name='quote'><Quote/></div>
-        <div label={getMessage('modals.main.settings.sections.time.date.title')} name='date'><Date/></div>
+        <div label={getMessage('modals.main.settings.sections.date.title')} name='date'><Date/></div>
         <div label={getMessage('modals.main.settings.sections.message.title')} name='message'><Message/></div>
         <div label={getMessage('modals.main.settings.sections.background.title')} name='background'><Background/></div>
         <div label={getMessage('modals.main.settings.sections.search.title')} name='search'><Search/></div>
@@ -44,7 +44,7 @@ export default function Settings() {
         <div label={getMessage('modals.main.settings.sections.keybinds.title')} name='keybinds'><Keybinds/></div>
         <div label={getMessage('modals.main.settings.sections.stats.title')} name='stats'><Stats/></div>
         <div label={getMessage('modals.main.settings.sections.experimental.title')} name='experimental'><Experimental/></div>
-        <div label={getMessage('modals.main.settings.sections.changelog')} name='changelog'><Changelog/></div>
+        <div label={getMessage('modals.main.settings.sections.changelog.title')} name='changelog'><Changelog/></div>
         <div label={getMessage('modals.main.settings.sections.about.title')} name='about'><About/></div>
       </Tabs>
     </>

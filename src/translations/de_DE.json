@@ -32,7 +32,7 @@
     },
     "weather": {
       "not_found": "Nicht gefunden",
-      "meters": "Meter"
+      "meters": "{amount} Meter"
     },
     "navbar": {
       "tooltips": {
@@ -86,25 +86,25 @@
               "hour_marks": "Stunden-Markierungen",
               "minute_marks": "Minuten-Markierungen"
             },
-            "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen",
-            "date": {
-              "title": "Datum",
-              "week_number": "Kalenderwoche",
-              "day_of_week": "Wochentag",
-              "datenth": "Mit nullen füllen",
-              "type": {
-                "short": "Kurz",
-                "long": "Lang"
-              },
-              "short_date": "Kurzes Datum",
-              "short_format": "Kurzes Format",
-              "short_separator": {
-                "title": "Kurzer Trenner",
-                "dots": "Punkte",
-                "dash": "Bindestrich",
-                "gaps": "Lücke",
-                "slashes": "Schrägstriche"
-              }
+            "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen"
+          },
+          "date": {
+            "title": "Datum",
+            "week_number": "Kalenderwoche",
+            "day_of_week": "Wochentag",
+            "datenth": "Mit nullen füllen",
+            "type": {
+              "short": "Kurz",
+              "long": "Lang"
+            },
+            "short_date": "Kurzes Datum",
+            "short_format": "Kurzes Format",
+            "short_separator": {
+              "title": "Kurzer Trenner",
+              "dots": "Punkte",
+              "dash": "Bindestrich",
+              "gaps": "Lücke",
+              "slashes": "Schrägstriche"
             }
           },
           "quote": {
@@ -354,7 +354,10 @@
             "title": "Sprache",
             "quote": "Zitat-Sprache"
           },
-          "changelog": "Änderungshinweise",
+          "changelog": {
+            "title": "Änderungshinweise",
+            "by": "By {author}"
+          },
           "about": {
             "title": "Über",
             "copyright": "Urheberrechte",
@@ -510,8 +513,7 @@
           "description": "Ihr Mue Tab Erlebnis kann beginnen.",
           "changes": "Änderungen",
           "changes_description": "Um die Einstellungen später zu ändern, klicken Sie auf das Einstellungssymbol in der oberen rechten Ecke Ihrer Registerkarte.",
-          "imported": "Importiert",
-          "settings": "Einstellung"
+          "imported": "Importiert {amount} Einstellung"
         }
       },
       "buttons": {
