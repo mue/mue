@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent, Suspense, lazy } from 'react';
 import Modal from 'react-modal';
 import Hotkeys from 'react-hot-keys';
@@ -29,7 +30,7 @@ export default class Modals extends PureComponent {
       this.setState({
         welcomeModal: true
       });
-      window.stats.postEvent('modal', 'Opened welcome');
+      variables.stats.postEvent('modal', 'Opened welcome');
     }
 
     if (window.location.search === '?nointro=true') {
@@ -59,7 +60,7 @@ export default class Modals extends PureComponent {
     });
 
     if (action !== false) {
-      window.stats.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
+      variables.stats.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
     }
   }
 
@@ -78,7 +79,7 @@ export default class Modals extends PureComponent {
             <Feedback modalClose={() => this.toggleModal('feedbackModal', false)}/>
           </Modal>
         </Suspense>
-        {window.keybinds.toggleModal && window.keybinds.toggleModal !== '' ? <Hotkeys keyName={window.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null} 
+        {variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null} 
       </>
     );
   }

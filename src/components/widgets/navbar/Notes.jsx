@@ -23,7 +23,7 @@ export default class Notes extends PureComponent {
   };
 
   pin() {
-    window.stats.postEvent('feature', 'Notes pin');
+    variables.stats.postEvent('feature', 'Notes pin');
 
     if (localStorage.getItem('notesPinned') === 'true') {
       localStorage.setItem('notesPinned', false);
@@ -39,7 +39,7 @@ export default class Notes extends PureComponent {
   }
 
   copy() {
-    window.stats.postEvent('feature', 'Notes copied');
+    variables.stats.postEvent('feature', 'Notes copied');
     navigator.clipboard.writeText(this.state.notes);
     toast(variables.language.getMessage(variables.languagecode, 'toasts.notes'));
   }
@@ -54,8 +54,8 @@ export default class Notes extends PureComponent {
         <TextareaAutosize rowsmax={50} placeholder={variables.language.getMessage(variables.languagecode, 'widgets.navbar.notes.placeholder')} value={this.state.notes} onChange={this.setNotes}/>
         <button onClick={() => this.pin()} className='pinNote'><PushPin/></button>
         <button onClick={() => this.copy()} className='copyNote'><FileCopyRounded/></button>
-        {window.keybinds.pinNotes && window.keybinds.pinNotes !== '' ? <Hotkeys keyName={window.keybinds.pinNotes} onKeyDown={() => this.pin()}/> : null}
-        {window.keybinds.copyNotes && window.keybinds.copyNotes !== '' ? <Hotkeys keyName={window.keybinds.copyNotes} onKeyDown={() => this.copy()}/> : null}
+        {variables.keybinds.pinNotes && variables.keybinds.pinNotes !== '' ? <Hotkeys keyName={variables.keybinds.pinNotes} onKeyDown={() => this.pin()}/> : null}
+        {variables.keybinds.copyNotes && variables.keybinds.copyNotes !== '' ? <Hotkeys keyName={variables.keybinds.copyNotes} onKeyDown={() => this.copy()}/> : null}
       </span>
     );
   }

@@ -33,7 +33,7 @@ export default class Marketplace extends PureComponent {
       let info;
       // get item info
       try {
-        info = await (await fetch(`${window.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`, { signal: this.controller.signal })).json();
+        info = await (await fetch(`${variables.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`, { signal: this.controller.signal })).json();
       } catch (e) {
         if (this.controller.signal.aborted === false) {
           return toast(this.getMessage('toasts.error'));
@@ -78,7 +78,7 @@ export default class Marketplace extends PureComponent {
         button: button
       });
 
-      window.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
+      variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
     } else {
       this.setState({
         item: {}
@@ -87,8 +87,8 @@ export default class Marketplace extends PureComponent {
   }
 
   async getItems() {
-    const { data } = await (await fetch(window.constants.MARKETPLACE_URL + '/items/' + this.props.type, { signal: this.controller.signal })).json();
-    const featured = await (await fetch(window.constants.MARKETPLACE_URL + '/featured', { signal: this.controller.signal })).json();
+    const { data } = await (await fetch(variables.constants.MARKETPLACE_URL + '/items/' + this.props.type, { signal: this.controller.signal })).json();
+    const featured = await (await fetch(variables.constants.MARKETPLACE_URL + '/featured', { signal: this.controller.signal })).json();
 
     if (this.controller.signal.aborted === true) {
       return;
@@ -116,8 +116,8 @@ export default class Marketplace extends PureComponent {
       button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
     });
 
-    window.stats.postEvent('marketplace-item', `${this.state.item.display_name} ${(type === 'install' ? 'installed': 'uninstalled')}`);
-    window.stats.postEvent('marketplace', (type === 'install' ? 'Install': 'Uninstall'));
+    variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} ${(type === 'install' ? 'installed': 'uninstalled')}`);
+    variables.stats.postEvent('marketplace', (type === 'install' ? 'Install': 'Uninstall'));
   }
 
   sortMarketplace(value, sendEvent) {
@@ -144,7 +144,7 @@ export default class Marketplace extends PureComponent {
     });
 
     if (sendEvent) {
-      window.stats.postEvent('marketplace', 'Sort');
+      variables.stats.postEvent('marketplace', 'Sort');
     }
   }
 
@@ -186,7 +186,7 @@ export default class Marketplace extends PureComponent {
 
     const featured = () => {
       const openFeatured = () => {
-        window.stats.postEvent('marketplace', 'Featured clicked');
+        variables.stats.postEvent('marketplace', 'Featured clicked');
         window.open(this.state.featured.buttonLink);
       };
 

@@ -43,7 +43,7 @@ export default class Search extends PureComponent {
       }
 
       setTimeout(() => {
-        window.stats.postEvent('feature', 'Voice search');
+        variables.stats.postEvent('feature', 'Voice search');
         window.location.href = this.state.url + `?${this.state.query}=` + searchText.value;
       }, 1000);
     };
@@ -52,7 +52,7 @@ export default class Search extends PureComponent {
   searchButton = (e) => {
     e.preventDefault();
     const value = e.target.value || document.getElementById('searchtext').value || 'mue fast';
-    window.stats.postEvent('feature', 'Search');
+    variables.stats.postEvent('feature', 'Search');
     window.location.href = this.state.url + `?${this.state.query}=` + value;
   }
 
@@ -195,7 +195,7 @@ export default class Search extends PureComponent {
         {this.state.microphone}
         <SearchIcon onClick={this.searchButton}/>
         <AutocompleteInput placeholder={variables.language.getMessage(variables.languagecode, 'widgets.search')} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
-        {window.keybinds.focusSearch && window.keybinds.focusSearch !== '' ? <Hotkeys keyName={window.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null}
+        {variables.keybinds.focusSearch && variables.keybinds.focusSearch !== '' ? <Hotkeys keyName={variables.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null}
       </form>
     );
   }

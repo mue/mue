@@ -100,7 +100,7 @@ export default class ColourSettings extends PureComponent {
       return newState;
     });
 
-    window.stats.postEvent('setting', 'Changed backgroundtype from colour to gradient');
+    variables.stats.postEvent('setting', 'Changed backgroundtype from colour to gradient');
   }
 
   currentGradientSettings = () => {

@@ -421,7 +421,17 @@
           "title": "Het is hier erg leeg",
           "description": "Ga naar de marktplaats om een paar extensies toe te voegen"
         },
-        "sideload": "Sideloaden",
+        "sideload": {
+          "title": "Sideloaden",
+          "failed": "Failed to sideload addon",
+          "errors": {
+            "no_name": "No name provided",
+            "no_author": "No author provided",
+            "no_type": "No type provided",
+            "invalid_photos": "Invalid photos object",
+            "invalid_quotes": "Invalid quotes object"
+          }
+        },
         "sort": {
           "title": "Sort",
           "newest": "Installed (Newest)",

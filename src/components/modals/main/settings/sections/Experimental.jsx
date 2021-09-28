@@ -5,14 +5,13 @@ import Slider from '../Slider';
 import EventBus from 'modules/helpers/eventbus';
 
 export default function ExperimentalSettings() {
-  const getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  const languagecode = variables.languagecode;
+  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   return (
     <>
-      <h2>{getMessage(languagecode, 'modals.main.settings.sections.experimental.title')}</h2>
-      <p>{getMessage(languagecode, 'modals.main.settings.sections.experimental.warning')}</p>
-      <h3>{getMessage(languagecode, 'modals.main.settings.sections.experimental.developer')}</h3>
+      <h2>{getMessage('modals.main.settings.sections.experimental.title')}</h2>
+      <p>{getMessage('modals.main.settings.sections.experimental.warning')}</p>
+      <h3>{getMessage('modals.main.settings.sections.experimental.developer')}</h3>
       <Checkbox name='debug' text='Debug hotkey (Ctrl + #)' element='.other'/>
       <Slider title='Debug timeout' name='debugtimeout' min='0' max='5000' default='0' step='100' display=' miliseconds' element='.other' />
       <br/>

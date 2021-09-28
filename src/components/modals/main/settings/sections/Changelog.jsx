@@ -19,7 +19,7 @@ export default class Changelog extends PureComponent {
   }
 
   async getUpdate() {
-    const data = await (await fetch(window.constants.BLOG_POST + '/index.json', { signal: this.controller.signal })).json();
+    const data = await (await fetch(variables.constants.BLOG_POST + '/index.json', { signal: this.controller.signal })).json();
 
     if (this.controller.signal.aborted === true) {
       return;

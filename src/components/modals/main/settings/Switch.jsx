@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { Switch as SwitchUI, FormControlLabel } from '@mui/material';
 
@@ -19,7 +20,7 @@ export default class Switch extends PureComponent {
       checked: value
     });
 
-    window.stats.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
+    variables.stats.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
 
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {

@@ -33,7 +33,7 @@ export default class TimeSettings extends PureComponent {
 
   getAuto() {
     navigator.geolocation.getCurrentPosition(async (position) => {
-      const data = await (await fetch(`${window.constants.PROXY_URL}/weather/autolocation?lat=${position.coords.latitude}&lon=${position.coords.longitude}`)).json();
+      const data = await (await fetch(`${variables.constants.PROXY_URL}/weather/autolocation?lat=${position.coords.latitude}&lon=${position.coords.longitude}`)).json();
       this.setState({
         location: data[0].name
       });

@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import Header from '../Header';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
-import Switch from '../Switch';
 import Radio from '../Radio';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -74,8 +73,6 @@ export default class SearchSettings extends PureComponent {
     return (
       <>
         <Header title={this.getMessage('modals.main.settings.sections.search.title')} category='widgets'/>
-        <h2>{this.getMessage('modals.main.settings.sections.search.title')}</h2>
-        <Switch name='searchBar' text={this.getMessage('modals.main.settings.enabled')} category='widgets' />
         {/* not supported on firefox */}
         {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
           <Checkbox name='voiceSearch' text={this.getMessage('modals.main.settings.sections.search.voice_search')} category='search'/> 

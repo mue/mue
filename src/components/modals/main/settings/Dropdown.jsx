@@ -24,7 +24,7 @@ export default class Dropdown extends PureComponent {
       return;
     }
 
-    window.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
+    variables.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
 
     this.setState({
       value,

@@ -1,25 +1,25 @@
 import variables from 'modules/variables';
 import Tabs from './backend/Tabs';
 
-import About from '../settings/sections/About';
-import Language from '../settings/sections/Language';
-import Search from '../settings/sections/Search';
+import Navbar from '../settings/sections/Navbar';
 import Greeting from '../settings/sections/Greeting';
 import Time from '../settings/sections/Time';
-import Quote from '../settings/sections/Quote';
-import Appearance from '../settings/sections/Appearance';
-import Background from '../settings/sections/background/Background';
-import Advanced from '../settings/sections/Advanced';
-import Changelog from '../settings/sections/Changelog';
-import Order from '../settings/sections/Order';
-import Experimental from '../settings/sections/Experimental';
 import QuickLinks from '../settings/sections/QuickLinks';
-import Weather from '../settings/sections/Weather';
-import Stats from '../settings/sections/Stats';
-import Keybinds from '../settings/sections/Keybinds';
-import Message from '../settings/sections/Message';
+import Quote from '../settings/sections/Quote';
 import Date from '../settings/sections/Date';
-import Navbar from '../settings/sections/Navbar';
+import Message from '../settings/sections/Message';
+import Background from '../settings/sections/background/Background';
+import Search from '../settings/sections/Search';
+import Weather from '../settings/sections/Weather';
+import Order from '../settings/sections/Order';
+import Appearance from '../settings/sections/Appearance';
+import Language from '../settings/sections/Language';
+import Advanced from '../settings/sections/Advanced';
+import Keybinds from '../settings/sections/Keybinds';
+import Stats from '../settings/sections/Stats';
+import Experimental from '../settings/sections/Experimental';
+import Changelog from '../settings/sections/Changelog';
+import About from '../settings/sections/About';
 
 export default function Settings() {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);

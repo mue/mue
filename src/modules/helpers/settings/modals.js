@@ -25,11 +25,11 @@ export function exportSettings() {
     settings[key] = localStorage.getItem(key);
   });
   saveFile(settings, 'mue-settings.json');
-  window.stats.postEvent('tab', 'Settings exported');
+  variables.stats.postEvent('tab', 'Settings exported');
 }
 
 export function importSettings(e) {
-  const getMessage = (languagecode, text) => variables.language.getMessage(variables.languagecode, text);
+  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   const content = JSON.parse(e.target.result);
 
   Object.keys(content).forEach((key) => {
@@ -37,5 +37,5 @@ export function importSettings(e) {
   });
 
   toast(getMessage('toasts.imported'));
-  window.stats.postEvent('tab', 'Settings imported');
+  variables.stats.postEvent('tab', 'Settings imported');
 }

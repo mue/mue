@@ -4,28 +4,30 @@ import {
   SettingsRounded as Settings,
   Widgets as Addons,
   ShoppingBasket as Marketplace,
-  AccessAlarm as Time,
+  MenuOutlined as Navbar,
+
   EmojiPeopleOutlined as Greeting,
+  AccessAlarm as Time,
   FormatQuoteOutlined as Quote,
+  Link as QuickLinks,
+  DateRangeOutlined as Date,
+  SmsOutlined as Message,
   PhotoOutlined as Background,
   Search,
+  CloudOutlined as Weather,
+  List as Order,
   FormatPaintOutlined as Appearance,
   Translate as Language,
+  SettingsOutlined as Advanced,
+  BugReportOutlined as Experimental,
+  KeyboardAltOutlined as Keybinds,
+  AssessmentOutlined as Stats,
   NewReleasesOutlined as Changelog,
   InfoOutlined as About,
-  BugReportOutlined as Experimental,
-  List as Order,
-  CloudOutlined as Weather,
-  SettingsOutlined as Advanced,
-  Link as QuickLinks,
-  SmsOutlined as Message,
-  AssessmentOutlined as Stats,
+
   Code as Sideload,
   AddCircleOutline as Added,
-  CreateNewFolderOutlined as Create,
-  KeyboardAltOutlined as Keybinds,
-  DateRangeOutlined as Date,
-  MenuOutlined as Navbar
+  CreateNewFolderOutlined as Create
 } from '@mui/icons-material';
 
 function Tab({ label, currentTab, onClick, navbarTab }) {
@@ -50,17 +52,18 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.navbar.marketplace'): icon = <Marketplace/>; break;
 
     case getMessage('modals.main.settings.sections.appearance.navbar.title'): icon = <Navbar/>; break;
-    case getMessage('modals.main.settings.sections.time.title'): icon = <Time/>; break;
-    case getMessage('modals.main.settings.sections.date.title'): icon = <Date/>; break;
     case getMessage('modals.main.settings.sections.greeting.title'): icon = <Greeting/>; break;
+    case getMessage('modals.main.settings.sections.time.title'): icon = <Time/>; break;
+    case getMessage('modals.main.settings.sections.quicklinks.title'): icon = <QuickLinks/>; break;
     case getMessage('modals.main.settings.sections.quote.title'): icon = <Quote/>; break;
+    case getMessage('modals.main.settings.sections.date.title'): icon = <Date/>; break;
+    case getMessage('modals.main.settings.sections.message.title'): icon = <Message/>; break;
     case getMessage('modals.main.settings.sections.background.title'): icon = <Background/>; break;
     case getMessage('modals.main.settings.sections.search.title'): icon = <Search/>; break;
     case getMessage('modals.main.settings.sections.weather.title'): icon = <Weather/>; divider = true; break;
-    case getMessage('modals.main.settings.sections.quicklinks.title'): icon = <QuickLinks/>; break;
-    case getMessage('modals.main.settings.sections.appearance.title'): icon = <Appearance/>; break;
     case getMessage('modals.main.settings.sections.order.title'): icon = <Order/>; break;
-    case getMessage('modals.main.settings.sections.message.title'): icon = <Message/>; break;
+
+    case getMessage('modals.main.settings.sections.appearance.title'): icon = <Appearance/>; break;
     case getMessage('modals.main.settings.sections.language.title'): icon = <Language/>; divider = true; break;
     case getMessage('modals.main.settings.sections.advanced.title'): icon = <Advanced/>; break;
     case getMessage('modals.main.settings.sections.keybinds.title'): icon = <Keybinds/>; break;
@@ -70,7 +73,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.settings.sections.about.title'): icon = <About/>; break;
 
     case getMessage('modals.main.addons.added'): icon = <Added/>; break;
-    case getMessage('modals.main.addons.sideload'): icon = <Sideload/>; break;
+    case getMessage('modals.main.addons.sideload.title'): icon = <Sideload/>; break;
     case getMessage('modals.main.addons.create.title'): icon = <Create/>; break;
 
     case getMessage('modals.main.marketplace.photo_packs'): icon = <Background/>; break;

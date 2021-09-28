@@ -43,7 +43,7 @@ export default class Added extends PureComponent {
         },
         button: this.buttons.uninstall
       });
-      window.stats.postEvent('marketplace', 'Item viewed');
+      variables.stats.postEvent('marketplace', 'Item viewed');
     } else {
       this.setState({
         item: {}
@@ -61,7 +61,7 @@ export default class Added extends PureComponent {
       installed: JSON.parse(localStorage.getItem('installed'))
     });
 
-    window.stats.postEvent('marketplace', 'Uninstall');
+    variables.stats.postEvent('marketplace', 'Uninstall');
   }
 
   sortAddons(value, sendEvent) {
@@ -88,14 +88,14 @@ export default class Added extends PureComponent {
     });
 
     if (sendEvent) {
-      window.stats.postEvent('marketplace', 'Sort');
+      variables.stats.postEvent('marketplace', 'Sort');
     }
   }
 
   updateCheck() {
     let updates = 0;
     this.state.installed.forEach(async (item) => {
-      const data = await (await fetch(window.constants.MARKETPLACE_URL + '/item/' + item.name)).json();
+      const data = await (await fetch(variables.constants.MARKETPLACE_URL + '/item/' + item.name)).json();
       if (data.version !== item.version) {
         updates++;
       }

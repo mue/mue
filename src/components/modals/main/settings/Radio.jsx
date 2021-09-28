@@ -32,7 +32,7 @@ export default class Radio extends PureComponent {
       value
     });
 
-    window.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
+    variables.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
     
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {

@@ -36,7 +36,7 @@ export default class QuickLinks extends PureComponent {
       items: data
     });
 
-    window.stats.postEvent('feature', 'Quicklink delete');
+    variables.stats.postEvent('feature', 'Quicklink delete');
   }
 
   addLink = () => {
@@ -80,7 +80,7 @@ export default class QuickLinks extends PureComponent {
       url: ''
     });
 
-    window.stats.postEvent('feature', 'Quicklink add');
+    variables.stats.postEvent('feature', 'Quicklink add');
 
     this.toggleAdd();
 
@@ -191,7 +191,7 @@ export default class QuickLinks extends PureComponent {
             <button className='pinNote' onClick={this.addLink}>{this.getMessage('widgets.quicklinks.add')}</button>
           </div>
         </span>
-        {window.keybinds.toggleQuicklinks && window.keybinds.toggleQuicklinks !== '' ? <Hotkeys keyName={window.keybinds.toggleQuicklinks} onKeyDown={this.toggleAdd} /> : null}
+        {variables.keybinds.toggleQuicklinks && variables.keybinds.toggleQuicklinks !== '' ? <Hotkeys keyName={variables.keybinds.toggleQuicklinks} onKeyDown={this.toggleAdd} /> : null}
       </div>
     );
   }

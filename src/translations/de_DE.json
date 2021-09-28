@@ -422,7 +422,17 @@
           "title": "Hier ist es leer",
           "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen"
         },
-        "sideload": "Hochladen",
+        "sideload": {
+          "title": "Hochladen",
+          "failed": "Failed to sideload addon",
+          "errors": {
+            "no_name": "No name provided",
+            "no_author": "No author provided",
+            "no_type": "No type provided",
+            "invalid_photos": "Invalid photos object",
+            "invalid_quotes": "Invalid quotes object"
+          }
+        },
         "sort": {
           "title": "Sortieren",
           "newest": "Installiert (Neueste)",

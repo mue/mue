@@ -29,7 +29,7 @@ export default class Background extends PureComponent {
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
-      const url = (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true && !this.state.url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + this.state.url : this.state.url;
+      const url = (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true && !this.state.url.startsWith('data:')) ? variables.constants.DDG_IMAGE_PROXY + this.state.url : this.state.url;
       const photoInformation = document.querySelector('.photoInformation');
 
       // just set the background
@@ -113,14 +113,14 @@ export default class Background extends PureComponent {
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            requestURL = `${window.constants.PROXY_URL}/images/unsplash?quality=${apiQuality}&map=${(photoMap === 'true')}`;
+            requestURL = `${variables.constants.PROXY_URL}/images/unsplash?quality=${apiQuality}&map=${(photoMap === 'true')}`;
             break;
           case 'pexels':
-            requestURL = `${window.constants.PROXY_URL}/images/pexels?quality=${apiQuality}`;
+            requestURL = `${variables.constants.PROXY_URL}/images/pexels?quality=${apiQuality}`;
             break;
           // Defaults to Mue
           default:
-            requestURL = `${window.constants.API_URL}/images/random?category=${apiCategory}&quality=${apiQuality}`;
+            requestURL = `${variables.constants.API_URL}/images/random?category=${apiCategory}&quality=${apiQuality}`;
             break;
         }
 

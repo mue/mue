@@ -88,7 +88,7 @@ export default class QuoteSettings extends PureComponent {
           <p>{this.getMessage('modals.main.settings.sections.quote.custom')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
           {this.state.customQuote.map((_url, index) => (
             <Fragment key={index}>
-              <input type='text' style={{marginRight: '10px'}} value={this.state.customQuote[index].quote} placeholder='Quote' onChange={(e) => this.customQuote(e, true, index, 'quote')}></input>
+              <input type='text' style={{ marginRight: '10px' }} value={this.state.customQuote[index].quote} placeholder='Quote' onChange={(e) => this.customQuote(e, true, index, 'quote')}></input>
               <input type='text' value={this.state.customQuote[index].author} placeholder='Author' onChange={(e) => this.customQuote(e, true, index, 'author')}></input>
               {this.state.customQuote.length > 1 ? <button className='cleanButton' onClick={() => this.modifyCustomQuote('remove', index)}>
                 <Cancel/>

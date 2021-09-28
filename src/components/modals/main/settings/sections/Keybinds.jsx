@@ -5,8 +5,7 @@ import Switch from '../Switch';
 import KeybindInput from '../KeybindInput';
 
 export default class KeybindSettings extends PureComponent {
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   constructor() {
     super();
@@ -22,7 +21,7 @@ export default class KeybindSettings extends PureComponent {
 
   listen(type) {
     const currentKeybinds = this.state.keybinds;
-    currentKeybinds[type] = this.getMessage(this.languagecode, 'modals.main.settings.sections.keybinds.recording');
+    currentKeybinds[type] = this.getMessage('modals.main.settings.sections.keybinds.recording');
     this.setState({
       keybinds: currentKeybinds
     });
@@ -98,32 +97,30 @@ export default class KeybindSettings extends PureComponent {
   }
 
   render() {
-    const { getMessage, languagecode } = this;
-
     return (
       <>
-        <h2>{getMessage(languagecode, 'modals.main.settings.sections.keybinds.title')}</h2>
-        <Switch name='keybindsEnabled' text={getMessage(languagecode, 'modals.main.settings.enabled')} element='.other' />
+        <h2>{this.getMessage('modals.main.settings.sections.keybinds.title')}</h2>
+        <Switch name='keybindsEnabled' text={this.getMessage('modals.main.settings.enabled')} element='.other' />
         <table className='keybind-table'>
           <tr>  
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.background.favourite')} state={this.state.keybinds} setting='favouriteBackground' action={(type, e) => this.action(type, e)}/></th>
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.background.maximise')} state={this.state.keybinds} setting='maximiseBackground' action={(type, e) => this.action(type, e)}/></th>
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.background.download')} state={this.state.keybinds} setting='downloadBackground' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.favourite')} state={this.state.keybinds} setting='favouriteBackground' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.maximise')} state={this.state.keybinds} setting='maximiseBackground' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.download')} state={this.state.keybinds} setting='downloadBackground' action={(type, e) => this.action(type, e)}/></th>
           </tr> 
           <tr>  
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.background.show_info')} state={this.state.keybinds} setting='showBackgroundInformation' action={(type, e) => this.action(type, e)}/></th>
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.quote.favourite')} state={this.state.keybinds} setting='favouriteQuote' action={(type, e) => this.action(type, e)}/></th>
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.quote.copy')} state={this.state.keybinds} setting='copyQuote' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.show_info')} state={this.state.keybinds} setting='showBackgroundInformation' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.quote.favourite')} state={this.state.keybinds} setting='favouriteQuote' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.quote.copy')} state={this.state.keybinds} setting='copyQuote' action={(type, e) => this.action(type, e)}/></th>
           </tr> 
           <tr>  
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.quote.tweet')} state={this.state.keybinds} setting='tweetQuote' action={(type, e) => this.action(type, e)}/></th>
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.notes.pin')} state={this.state.keybinds} setting='pinNotes' action={(type, e) => this.action(type, e)}/></th>
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.notes.copy')} state={this.state.keybinds} setting='copyNotes' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.quote.tweet')} state={this.state.keybinds} setting='tweetQuote' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.notes.pin')} state={this.state.keybinds} setting='pinNotes' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.notes.copy')} state={this.state.keybinds} setting='copyNotes' action={(type, e) => this.action(type, e)}/></th>
           </tr> 
           <tr>  
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.search')} state={this.state.keybinds} setting='focusSearch' action={(type, e) => this.action(type, e)}/></th>
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.quicklinks')} state={this.state.keybinds} setting='toggleQuicklinks' action={(type, e) => this.action(type, e)}/></th>
-            <th><KeybindInput name={getMessage(languagecode, 'modals.main.settings.sections.keybinds.modal')} state={this.state.keybinds} setting='toggleModal' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.search')} state={this.state.keybinds} setting='focusSearch' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.quicklinks')} state={this.state.keybinds} setting='toggleQuicklinks' action={(type, e) => this.action(type, e)}/></th>
+            <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.modal')} state={this.state.keybinds} setting='toggleModal' action={(type, e) => this.action(type, e)}/></th>
           </tr>  
       </table>
       </>

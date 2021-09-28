@@ -5,15 +5,14 @@ import Radio from '../Radio';
 
 const languages = require('modules/languages.json');
 
-export default class BackgroundSettings extends PureComponent {
-  getMessage = (languagecode, text) => variables.language.getMessage(languagecode, text);
-  languagecode = variables.languagecode;
+export default class LanguageSettings extends PureComponent {
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   constructor() {
     super();
     this.state = {
       quoteLanguages: [{
-        name: this.getMessage(this.languagecode, 'modals.main.loading'),
+        name: this.getMessage('modals.main.loading'),
         value: 'loading'
       }]
     };
@@ -21,7 +20,7 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   async getQuoteLanguages() {
-    const data = await (await fetch(window.constants.API_URL + '/quotes/languages', { signal: this.controller.signal })).json();
+    const data = await (await fetch(variables.constants.API_URL + '/quotes/languages', { signal: this.controller.signal })).json();
 
     if (this.controller.signal.aborted === true) {
       return;
@@ -44,7 +43,7 @@ export default class BackgroundSettings extends PureComponent {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return this.setState({
         quoteLanguages: [{
-          name: this.getMessage(this.languagecode, 'modals.main.marketplace.offline.description'),
+          name: this.getMessage('modals.main.marketplace.offline.description'),
           value: 'loading'
         }]
       });
@@ -61,9 +60,9 @@ export default class BackgroundSettings extends PureComponent {
   render() {
     return (
       <>
-        <h2>{this.getMessage(this.languagecode, 'modals.main.settings.sections.language.title')}</h2>
+        <h2>{this.getMessage('modals.main.settings.sections.language.title')}</h2>
         <Radio name='language' options={languages} element='.other' />
-        <h3>{this.getMessage(this.languagecode, 'modals.main.settings.sections.language.quote')}</h3>
+        <h3>{this.getMessage('modals.main.settings.sections.language.quote')}</h3>
         <Radio name='quotelanguage' options={this.state.quoteLanguages} category='quote' />
       </>
     );

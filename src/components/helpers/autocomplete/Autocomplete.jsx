@@ -59,26 +59,18 @@ export default class Autocomplete extends PureComponent {
     if (this.state.filtered.length > 0 && this.state.input.length > 0) {
       autocomplete = (
         <ul className='suggestions'>
-          {this.state.filtered.map((suggestion) => {
-            return (
-              <li key={suggestion} onClick={this.onClick}>
-                {suggestion}
-              </li>
-            );
-          })}
+          {this.state.filtered.map((suggestion) => (
+            <li key={suggestion} onClick={this.onClick}>
+              {suggestion}
+            </li>
+          ))}
         </ul>
       );
     }
 
     return (
       <>
-        <input
-          type='text'
-          onChange={this.onChange}
-          value={this.state.input}
-          placeholder={this.props.placeholder || ''}
-          autoComplete='off'
-          id={this.props.id || ''} />
+        <input type='text' onChange={this.onChange} value={this.state.input} placeholder={this.props.placeholder || ''} autoComplete='off' id={this.props.id || ''} />
         {autocomplete}
       </>
     );

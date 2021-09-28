@@ -421,7 +421,17 @@
           "title": "Vacío",
           "description": "Dirígete a la tienda para agregar algunos."
         },
-        "sideload": "Cargar localmente",
+        "sideload": {
+          "title": "Cargar localmente",
+          "failed": "Failed to sideload addon",
+          "errors": {
+            "no_name": "No name provided",
+            "no_author": "No author provided",
+            "no_type": "No type provided",
+            "invalid_photos": "Invalid photos object",
+            "invalid_quotes": "Invalid quotes object"
+          }
+        },
         "sort": {
           "title": "Ordenar",
           "newest": "Instalado (Nuevos)",

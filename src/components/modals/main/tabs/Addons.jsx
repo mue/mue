@@ -11,7 +11,7 @@ export default function Addons() {
   return (
     <Tabs>
       <div label={getMessage('modals.main.addons.added')} name='added'><Added/></div>
-      <div label={getMessage('modals.main.addons.sideload')} name='sideload'><Sideload/></div>
+      <div label={getMessage('modals.main.addons.sideload.title')} name='sideload'><Sideload/></div>
       <div label={getMessage('modals.main.addons.create.title')} name='create'><Create/></div>
     </Tabs>
   );

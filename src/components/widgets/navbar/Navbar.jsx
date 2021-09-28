@@ -67,7 +67,7 @@ export default class Navbar extends PureComponent {
           </div>
         : null}
   
-        {(window.constants.BETA_VERSION === true) ? 
+        {(variables.constants.BETA_VERSION === true) ? 
           <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.tooltips.feedback')}>
             <Report className='topicons' onClick={() => this.props.openModal('feedbackModal')}/>
           </Tooltip>

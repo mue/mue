@@ -4,7 +4,7 @@ import { setDefaultSettings } from 'modules/helpers/settings';
 
 export default function ResetModal({ modalClose }) {
   const reset = () => {
-    window.stats.postEvent('setting', 'Reset');
+    variables.stats.postEvent('setting', 'Reset');
     setDefaultSettings('reset');
     window.location.reload();
   };

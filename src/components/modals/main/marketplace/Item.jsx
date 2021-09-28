@@ -46,7 +46,7 @@ export default class Item extends PureComponent {
     }
   
     // prevent console error
-    let iconsrc = window.constants.DDG_IMAGE_PROXY + this.props.data.icon;
+    let iconsrc = variables.constants.DDG_IMAGE_PROXY + this.props.data.icon;
     if (!this.props.data.icon) {
       iconsrc = null;
     }

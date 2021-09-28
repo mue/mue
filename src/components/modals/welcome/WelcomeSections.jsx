@@ -123,7 +123,7 @@ export default class WelcomeSections extends PureComponent {
     const chooseLanguage = (
       <>
         <h1>{this.getMessage('modals.welcome.sections.language.title')}</h1>
-        <p>{this.getMessage('modals.welcome.sections.language.description')} <a href={window.constants.TRANSLATIONS_URL} className='resetLink' target='_blank' rel='noopener noreferrer'>GitHub</a>!</p>
+        <p>{this.getMessage('modals.welcome.sections.language.description')} <a href={variables.constants.TRANSLATIONS_URL} className='resetLink' target='_blank' rel='noopener noreferrer'>GitHub</a>!</p>
         <Radio name='language' options={languages} category='welcomeLanguage'/>
       </>
     );
@@ -178,9 +178,9 @@ export default class WelcomeSections extends PureComponent {
         <Checkbox name='ddgProxy' text={this.getMessage('modals.main.settings.sections.background.ddg_image_proxy') + ' (' +this.getMessage('modals.main.settings.sections.background.title') + ')'}/>
         <p>{this.getMessage('modals.welcome.sections.privacy.ddg_proxy_description')}</p>
         <h3 className='quicktip'>{this.getMessage('modals.welcome.sections.privacy.links.title')}</h3>
-        <a className='privacy' href={window.constants.PRIVACY_URL} target='_blank' rel='noopener noreferrer'>{this.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}</a>
+        <a className='privacy' href={variables.constants.PRIVACY_URL} target='_blank' rel='noopener noreferrer'>{this.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}</a>
         <br/><br/>
-        <a className='privacy' href={'https://github.com/' + window.constants.ORG_NAME} target='_blank' rel='noopener noreferrer'>{this.getMessage('modals.welcome.sections.privacy.links.source_code')}</a>
+        <a className='privacy' href={'https://github.com/' + variables.constants.ORG_NAME} target='_blank' rel='noopener noreferrer'>{this.getMessage('modals.welcome.sections.privacy.links.source_code')}</a>
       </>
     );
 

@@ -146,7 +146,7 @@ export default class Quote extends PureComponent {
         // First we try and get a quote from the API...
         try {
           const quotelanguage = localStorage.getItem('quotelanguage');
-          const data = await (await fetch(window.constants.API_URL + '/quotes/random?language=' + quotelanguage)).json();
+          const data = await (await fetch(variables.constants.API_URL + '/quotes/random?language=' + quotelanguage)).json();
 
           // If we hit the ratelimit, we fallback to local quotes
           if (data.statusCode === 429) {
@@ -173,13 +173,13 @@ export default class Quote extends PureComponent {
   }
 
   copyQuote() {
-    window.stats.postEvent('feature', 'Quote copied');
+    variables.stats.postEvent('feature', 'Quote copied');
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
     toast(variables.language.getMessage(variables.languagecode, 'toasts.quote'));
   }
 
   tweetQuote() {
-    window.stats.postEvent('feature', 'Quote tweet');
+    variables.stats.postEvent('feature', 'Quote tweet');
     window.open(`https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`, '_blank').focus();
   }
 
@@ -196,7 +196,7 @@ export default class Quote extends PureComponent {
       });
     }
 
-    window.stats.postEvent('feature', 'Quote favourite');
+    variables.stats.postEvent('feature', 'Quote favourite');
   }
 
   init() {
@@ -277,9 +277,9 @@ export default class Quote extends PureComponent {
           <br/>
           {this.state.copy} {this.state.tweet} {this.state.favourited}
         </h1>
-        {window.keybinds.favouriteQuote && window.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={window.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null}
-        {window.keybinds.tweetQuote && window.keybinds.tweetQuote !== '' ? <Hotkeys keyName={window.keybinds.tweetQuote} onKeyDown={() => this.tweetQuote()} /> : null}
-        {window.keybinds.copyQuote && window.keybinds.copyQuote !== '' ? <Hotkeys keyName={window.keybinds.copyQuote} onKeyDown={() => this.copyQuote()} /> : null}
+        {variables.keybinds.favouriteQuote && variables.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={variables.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null}
+        {variables.keybinds.tweetQuote && variables.keybinds.tweetQuote !== '' ? <Hotkeys keyName={variables.keybinds.tweetQuote} onKeyDown={() => this.tweetQuote()} /> : null}
+        {variables.keybinds.copyQuote && variables.keybinds.copyQuote !== '' ? <Hotkeys keyName={variables.keybinds.copyQuote} onKeyDown={() => this.copyQuote()} /> : null}
       </div>
     );
   }

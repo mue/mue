@@ -20,7 +20,7 @@ const downloadImage = async (info) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-  window.stats.postEvent('feature', 'Background download');
+  variables.stats.postEvent('feature', 'Background download');
 };
 
 export default function PhotoInformation({ info, url, api }) {
@@ -58,7 +58,7 @@ export default function PhotoInformation({ info, url, api }) {
     setWidth(event.target.width);
     setHeight(event.target.height);
   };
-  img.src = (ddgProxy && !info.offline && !url.startsWith('data:')) ? window.constants.DDG_IMAGE_PROXY + url : url;
+  img.src = (ddgProxy && !info.offline && !url.startsWith('data:')) ? variables.constants.DDG_IMAGE_PROXY + url : url;
 
   // info is still there because we want the favourite button to work
   if (localStorage.getItem('photoInformation') === 'false') {
@@ -100,11 +100,11 @@ export default function PhotoInformation({ info, url, api }) {
     const zoom = 12;
     const lat = lat2tile(info.latitude, zoom);
     const lon = lon2tile(info.longitude, zoom);
-    const tile = `${window.constants.MAPBOX_URL}/styles/v1/mapbox/streets-v11/tiles/${zoom}/${lon}/${lat}?access_token=${info.maptoken}`;
+    const tile = `${variables.constants.MAPBOX_URL}/styles/v1/mapbox/streets-v11/tiles/${zoom}/${lon}/${lat}?access_token=${info.maptoken}`;
     
-    let icon = window.constants.CDN_URL + '/mapbox/mapbox-logo-dark.png';
+    let icon = variables.constants.CDN_URL + '/mapbox/mapbox-logo-dark.png';
     if (document.body.classList.contains('dark')) {
-      icon = window.constants.CDN_URL + '/mapbox/mapbox-logo-white.png';
+      icon = variables.constants.CDN_URL + '/mapbox/mapbox-logo-white.png';
     }
 
     return (
@@ -150,8 +150,8 @@ export default function PhotoInformation({ info, url, api }) {
           </> 
         : null}
       </div>
-      {window.keybinds.downloadBackground && window.keybinds.downloadBackground !== '' ? <Hotkeys keyName={window.keybinds.downloadBackground} onKeyDown={() => downloadBackground()} /> : null}
-      {window.keybinds.showBackgroundInformation && window.keybinds.showBackgroundInformation !== '' ? <Hotkeys keyName={window.keybinds.showBackgroundInformation} onKeyDown={() => showBackgroundInformation()} /> : null}
+      {variables.keybinds.downloadBackground && variables.keybinds.downloadBackground !== '' ? <Hotkeys keyName={variables.keybinds.downloadBackground} onKeyDown={() => downloadBackground()} /> : null}
+      {variables.keybinds.showBackgroundInformation && variables.keybinds.showBackgroundInformation !== '' ? <Hotkeys keyName={variables.keybinds.showBackgroundInformation} onKeyDown={() => showBackgroundInformation()} /> : null}
     </div>
   );
 }

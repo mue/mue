@@ -96,7 +96,7 @@ export default class CustomSettings extends PureComponent {
         <p>{this.getMessage('modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
         {this.state.customBackground.map((_url, index) => (
           <Fragment key={index}>
-            <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)} autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/>
+            <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)} autoComplete='off' autoCorrect='off' autoCapitalize='off' spellCheck={false}/>
             {this.state.customBackground.length > 1 ? <button className='cleanButton' onClick={() => this.modifyCustomBackground('remove', index)}>
               <Cancel/>
             </button> : null}

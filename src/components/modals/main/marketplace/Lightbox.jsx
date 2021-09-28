@@ -1,5 +1,5 @@
 export default function Lightbox({ modalClose, img }) {
-  window.stats.postEvent('modal', 'Opened lightbox');
+  variables.stats.postEvent('modal', 'Opened lightbox');
 
   return (
     <>

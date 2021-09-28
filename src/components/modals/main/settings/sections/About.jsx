@@ -26,10 +26,10 @@ export default class About extends PureComponent {
     let contributors, sponsors, photographers, versionData;
 
     try {
-      versionData = await (await fetch(window.constants.GITHUB_URL + '/repos/' + window.constants.ORG_NAME + '/' + window.constants.REPO_NAME + '/releases', { signal: this.controller.signal })).json();
-      contributors = await (await fetch(window.constants.GITHUB_URL + '/repos/'+ window.constants.ORG_NAME + '/' + window.constants.REPO_NAME + '/contributors', { signal: this.controller.signal })).json();
-      sponsors = (await (await fetch(window.constants.SPONSORS_URL + '/list', { signal: this.controller.signal })).json()).sponsors;
-      photographers = await (await fetch(window.constants.API_URL + '/images/photographers', { signal: this.controller.signal })).json();
+      versionData = await (await fetch(variables.constants.GITHUB_URL + '/repos/' + variables.constants.ORG_NAME + '/' + variables.constants.REPO_NAME + '/releases', { signal: this.controller.signal })).json();
+      contributors = await (await fetch(variables.constants.GITHUB_URL + '/repos/'+ variables.constants.ORG_NAME + '/' + variables.constants.REPO_NAME + '/contributors', { signal: this.controller.signal })).json();
+      sponsors = (await (await fetch(variables.constants.SPONSORS_URL + '/list', { signal: this.controller.signal })).json()).sponsors;
+      photographers = await (await fetch(variables.constants.API_URL + '/images/photographers', { signal: this.controller.signal })).json();
     } catch (e) {
       if (this.controller.signal.aborted === true) {
         return;
@@ -48,7 +48,7 @@ export default class About extends PureComponent {
     const newVersion = versionData[0].tag_name;
 
     let update = this.getMessage('modals.main.settings.sections.about.version.no_update');
-    if (Number(window.constants.VERSION.replaceAll('.', '')) < Number(newVersion.replaceAll('.', ''))) {
+    if (Number(variables.constants.VERSION.replaceAll('.', '')) < Number(newVersion.replaceAll('.', ''))) {
       update = `${this.getMessage('modals.main.settings.sections.about.version.update_available')}: ${newVersion}`;
     }
 
@@ -85,22 +85,22 @@ export default class About extends PureComponent {
       <>
         <h2>{this.getMessage('modals.main.settings.sections.about.title')}</h2>
         <img draggable='false' className='aboutLogo' src='./././icons/logo_horizontal.png' alt='Logo'></img>
-        <p>{this.getMessage('modals.main.settings.sections.about.copyright')} {window.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()} <a href={'https://github.com/' + window.constants.ORG_NAME + '/' + window.constants.REPO_NAME + '/graphs/contributors'} className='aboutLink' target='_blank' rel='noopener noreferrer'>{window.constants.COPYRIGHT_NAME}</a> ({window.constants.COPYRIGHT_LICENSE})</p>
-        <p>{this.getMessage('modals.main.settings.sections.about.version.title')} {window.constants.VERSION} ({this.state.update})</p>
-        <a href={window.constants.PRIVACY_URL} className='aboutLink' target='_blank' rel='noopener noreferrer' style={{ fontSize: '1rem' }}>{this.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}</a>
+        <p>{this.getMessage('modals.main.settings.sections.about.copyright')} {variables.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()} <a href={'https://github.com/' + variables.constants.ORG_NAME + '/' + variables.constants.REPO_NAME + '/graphs/contributors'} className='aboutLink' target='_blank' rel='noopener noreferrer'>{variables.constants.COPYRIGHT_NAME}</a> ({variables.constants.COPYRIGHT_LICENSE})</p>
+        <p>{this.getMessage('modals.main.settings.sections.about.version.title')} {variables.constants.VERSION} ({this.state.update})</p>
+        <a href={variables.constants.PRIVACY_URL} className='aboutLink' target='_blank' rel='noopener noreferrer' style={{ fontSize: '1rem' }}>{this.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}</a>
 
         <h3>{this.getMessage('modals.main.settings.sections.about.contact_us')}</h3>
-        <a href={'mailto:' + window.constants.EMAIL} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Email/></a>
-        <a href={'https://twitter.com/' + window.constants.TWITTER_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Twitter/></a>
-        <a href={'https://instagram.com/' + window.constants.INSTAGRAM_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Instagram/></a>
-        <a href={'https://facebook.com/' + window.constants.FACEBOOK_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Facebook/></a>
-        <a href={'https://discord.gg/' + window.constants.DISCORD_SERVER} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Chat/></a>
+        <a href={'mailto:' + variables.constants.EMAIL} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Email/></a>
+        <a href={'https://twitter.com/' + variables.constants.TWITTER_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Twitter/></a>
+        <a href={'https://instagram.com/' + variables.constants.INSTAGRAM_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Instagram/></a>
+        <a href={'https://facebook.com/' + variables.constants.FACEBOOK_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Facebook/></a>
+        <a href={'https://discord.gg/' + variables.constants.DISCORD_SERVER} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Chat/></a>
 
         <h3>{this.getMessage('modals.main.settings.sections.about.support_mue')}</h3>
         <p>
-          <a href={'https://github.com/sponsors/' + window.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> 
-          &nbsp; • &nbsp;<a href={'https://ko-fi.com/' + window.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> 
-          &nbsp; • &nbsp;<a href={'https://patreon.com/' + window.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a>
+          <a href={'https://github.com/sponsors/' + variables.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> 
+          &nbsp; • &nbsp;<a href={'https://ko-fi.com/' + variables.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> 
+          &nbsp; • &nbsp;<a href={'https://patreon.com/' + variables.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a>
         </p>
 
         <h3>{this.getMessage('modals.main.settings.sections.about.resources_used.title')}</h3>

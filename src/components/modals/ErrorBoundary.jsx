@@ -12,7 +12,7 @@ export default class ErrorBoundary extends PureComponent {
 
   static getDerivedStateFromError(error) {
     console.log(error);
-    window.stats.postEvent('modal', 'Error occurred');
+    variables.stats.postEvent('modal', 'Error occurred');
     return { 
       error: true 
     };

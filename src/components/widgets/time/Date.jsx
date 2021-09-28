@@ -112,7 +112,6 @@ export default class DateWidget extends PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'date' || data === 'timezone') {
-
         if (localStorage.getItem('date') === 'false') {
           return this.date.current.style.display = 'none';
         }
@@ -124,7 +123,6 @@ export default class DateWidget extends PureComponent {
     });
 
     this.date.current.style.fontSize = `${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`;
-
     this.getDate();
   }
 

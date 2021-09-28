@@ -54,7 +54,8 @@ export default function AppearanceSettings() {
       <h3>{getMessage('modals.main.settings.sections.appearance.accessibility.title')}</h3>
       <Checkbox text={getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow')} name='textBorder' category='other'/>
       <Checkbox text={getMessage('modals.main.settings.sections.appearance.accessibility.animations')} name='animations' category='other'/>
-      <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.toast_duration')} name='toastDisplayTime' default='2500' step='100' min='500' max='5000' toast={true} display={' ' + getMessage('modals.main.settings.sections.appearance.accessibility.milliseconds')} />
+      <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.toast_duration')} name='toastDisplayTime' default='2500' step='100' min='500' max='5000' toast={true} 
+        display={' ' + getMessage('modals.main.settings.sections.appearance.accessibility.milliseconds')} />
     </>
   );
 }

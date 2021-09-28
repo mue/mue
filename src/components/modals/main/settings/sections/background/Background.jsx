@@ -29,7 +29,7 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   async getBackgroundCategories() {
-    const data = await (await fetch(window.constants.API_URL + '/images/categories', { signal: this.controller.signal })).json();
+    const data = await (await fetch(variables.constants.API_URL + '/images/categories', { signal: this.controller.signal })).json();
 
     if (this.controller.signal.aborted === true) {
       return;

@@ -44,14 +44,14 @@ export default class Maximise extends PureComponent {
       });
 
       this.setAttribute(0, 100);
-      window.stats.postEvent('feature', 'Background maximise');
+      variables.stats.postEvent('feature', 'Background maximise');
     } else {
       this.setState({
         hidden: false
       });
 
       this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'), true);
-      window.stats.postEvent('feature', 'Background unmaximise');
+      variables.stats.postEvent('feature', 'Background unmaximise');
     }
   }
 
@@ -59,7 +59,7 @@ export default class Maximise extends PureComponent {
     return (
       <Tooltip title={variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.background.buttons.view')}>
         <Fullscreen onClick={this.maximise} className='topicons' />
-        {window.keybinds.maximiseBackground && window.keybinds.maximiseBackground !== '' ? <Hotkeys keyName={window.keybinds.maximiseBackground} onKeyDown={this.maximise} /> : null}
+        {variables.keybinds.maximiseBackground && variables.keybinds.maximiseBackground !== '' ? <Hotkeys keyName={variables.keybinds.maximiseBackground} onKeyDown={this.maximise} /> : null}
       </Tooltip>
     );
   }

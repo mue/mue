@@ -24,7 +24,7 @@ export default class Favourite extends PureComponent {
       this.setState({
         favourited: this.buttons.unfavourited
       });
-      window.stats.postEvent('feature', 'Background favourite');
+      variables.stats.postEvent('feature', 'Background favourite');
     } else {
       const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
 
@@ -47,7 +47,7 @@ export default class Favourite extends PureComponent {
       this.setState({
         favourited: this.buttons.favourited
       });
-      window.stats.postEvent('feature', 'Background unfavourite');
+      variables.stats.postEvent('feature', 'Background unfavourite');
     }
   }
 
@@ -60,7 +60,7 @@ export default class Favourite extends PureComponent {
     return (
       <Tooltip title={variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.background.buttons.favourite')}>
         {this.state.favourited}
-        {window.keybinds.favouriteBackground && window.keybinds.favouriteBackground !== '' ? <Hotkeys keyName={window.keybinds.favouriteBackground} onKeyDown={() => this.favourite()} /> : null}
+        {variables.keybinds.favouriteBackground && variables.keybinds.favouriteBackground !== '' ? <Hotkeys keyName={variables.keybinds.favouriteBackground} onKeyDown={() => this.favourite()} /> : null}
       </Tooltip>
     );
   }

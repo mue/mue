@@ -55,7 +55,7 @@ export default class FeedbackModal extends PureComponent {
         }
       });
 
-      await fetch(window.constants.FEEDBACK_FORM, {
+      await fetch(variables.constants.FEEDBACK_FORM, {
         method: 'POST'
       });
 
@@ -75,7 +75,7 @@ export default class FeedbackModal extends PureComponent {
         <h1>{this.getMessage('modals.feedback.title')}</h1>
         <span className='closeModal' onClick={this.props.modalClose}>&times;</span>
         <form>
-          <input type='hidden' name='version' value={window.constants.VERSION} />
+          <input type='hidden' name='version' value={variables.constants.VERSION} />
           <div className='question'>
             <label>{this.getMessage('modals.feedback.question_one')}</label>
             <br/><br/>

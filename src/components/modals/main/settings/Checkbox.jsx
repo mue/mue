@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { Checkbox as CheckboxUI, FormControlLabel } from '@mui/material';
 
@@ -19,7 +20,7 @@ export default class Checkbox extends PureComponent {
       checked: value
     });
 
-    window.stats.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
+    variables.stats.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
 
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {

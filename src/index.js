@@ -1,7 +1,6 @@
 import { render } from 'react-dom';
 
 import App from './App';
-import * as Constants from 'modules/constants';
 import variables from 'modules/variables';
 
 import './scss/index.scss';
@@ -32,20 +31,12 @@ import('./translations/' + variables.languagecode + '.json').then((language) => 
     document.documentElement.lang = variables.languagecode.split('_')[0];
   }
 
-  window.constants = Constants;
   if (localStorage.getItem('stats') === 'true') {
-    window.stats = Stats;
-  } else {
-    window.stats = {
-      tabLoad: () => '',
-      postEvent: () => '' 
-    };
+    variables.stats = Stats;
   }
 
   if (localStorage.getItem('keybindsEnabled') === 'true') {
-    window.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
-  } else {
-    window.keybinds = {};
+    variables.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
   }
 
   render(

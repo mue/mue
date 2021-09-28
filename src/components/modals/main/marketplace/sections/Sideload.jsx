@@ -24,17 +24,17 @@ export default class Sideload extends PureComponent {
   installAddon(input) {
     let failedReason = '';
     if (!input.name) {
-      failedReason = 'No name provided';
+      failedReason = getMessage('modals.main.addons.sideload.errors.no_name');
     } else if (!input.author) {
-      failedReason = 'No author provided';
+      failedReason = getMessage('modals.main.addons.sideload.errors.no_author');
     } else if (!input.type) {
-      failedReason = 'No type provided';
+      failedReason = getMessage('modals.main.addons.sideload.errors.no_type');
     } else if (!input.version) {
-      failedReason = 'No version provided';
+      failedReason = getMessage('modals.main.addons.sideload.errors.no_version');
     } else if (input.type === 'photos' && (!input.photos || !input.photos.length || !input.photos[0].url.default || !input.photos[0].photographer || !input.photos[0].location)) {
-      failedReason = 'Invalid photos object';
+      failedReason = getMessage('modals.main.addons.sideload.errors.invalid_photos');
     } else if (input.type === 'quotes' && (!input.quotes || !input.quotes.length || !input.quotes[0].quote || !input.quotes[0].author)) {
-      failedReason = 'Invalid quotes object';
+      failedReason = getMessage('modals.main.addons.sideload.errors.invalid_quotes');
     }
 
     if (failedReason !== '') {
@@ -46,7 +46,7 @@ export default class Sideload extends PureComponent {
 
     install(input.type, input);
     toast(this.getMessage('toasts.installed'));
-    window.stats.postEvent('marketplace', 'Sideload');
+    variables.stats.postEvent('marketplace', 'Sideload');
   }
   
   render() {
@@ -55,7 +55,7 @@ export default class Sideload extends PureComponent {
         <div className='emptyMessage'>
           <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.installAddon(JSON.parse(e.target.result))} />
           <LocalMall/>
-          <h1>{this.getMessage('modals.main.addons.sideload')}</h1>
+          <h1>{this.getMessage('modals.main.addons.sideload.title')}</h1>
           <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.getMessage('modals.main.settings.sections.background.source.upload')}</button>
         </div>
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showFailed: false })} isOpen={this.state.showFailed} className='Modal resetmodal mainModal sideloadModal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>

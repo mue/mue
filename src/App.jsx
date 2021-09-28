@@ -1,3 +1,4 @@
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { ToastContainer } from 'react-toastify';
 
@@ -27,7 +28,7 @@ export default class App extends PureComponent {
       }
     });
 
-    window.stats.tabLoad();
+    variables.stats.tabLoad();
   }
 
   render() {
