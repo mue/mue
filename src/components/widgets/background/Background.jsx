@@ -1,4 +1,5 @@
 // todo: rewrite this mess
+import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
 import PhotoInformation from './PhotoInformation';

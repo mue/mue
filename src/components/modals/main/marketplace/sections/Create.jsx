@@ -249,7 +249,7 @@ export default class Create extends PureComponent {
     
     // quotes
     const nextQuotesDisabled = ((this.state.addonMetadata.type === 'quote_api' && this.state.addonData.url !== '' && this.state.addonData.name !== '' && this.state.addonData.author !== '') 
-                               || (this.state.addonMetadata.type === 'quotes' && this.state.addonData.quotes !== '')) ? false : true;
+      || (this.state.addonMetadata.type === 'quotes' && this.state.addonData.quotes !== '')) ? false : true;
     const addQuotes = (
       <>
         <h3>{getMessage('modals.main.addons.create.quotes.title')}</h3>
