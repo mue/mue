@@ -51,7 +51,7 @@ export default class DateSettings extends PureComponent {
 
     return (
       <>
-        <Header title={getMessage('modals.main.settings.sections.date.title')} category='date' element='.date' zoomSetting='zoomDate'/>
+        <Header title={getMessage('modals.main.settings.sections.date.title')} setting='date' category='date' element='.date' zoomSetting='zoomDate'/>
         <Dropdown label={getMessage('modals.main.settings.sections.time.type')} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date'>
           <option value='long'>{getMessage('modals.main.settings.sections.date.type.long')}</option>
           <option value='short'>{getMessage('modals.main.settings.sections.date.type.short')}</option>

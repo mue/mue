@@ -123,7 +123,7 @@ export default class BackgroundSettings extends PureComponent {
   
     return (
       <>
-        <Header title={getMessage('modals.main.settings.sections.background.title')} category='background' element='#backgroundImage'/>
+        <Header title={getMessage('modals.main.settings.sections.background.title')} setting='background' category='background' element='#backgroundImage'/>
         <Checkbox name='ddgProxy' text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')} element='.other' />
         <Checkbox name='bgtransition' text={getMessage('modals.main.settings.sections.background.transition')} element='.other' />
         <Checkbox name='photoInformation' text={getMessage('modals.main.settings.sections.background.photo_information')} element='.other' />
