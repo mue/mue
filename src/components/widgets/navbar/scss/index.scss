@@ -32,3 +32,21 @@
     }
   }
 }
+
+.navbar-hover {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  height: 50px;
+  width: 500px;
+
+  .navbar-container {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .navbar-container {
+      visibility: visible;
+    }
+  }
+}

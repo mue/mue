@@ -13,6 +13,7 @@ export default class Navbar extends PureComponent {
     return (
       <>
         <h2>{getMessage('modals.main.settings.sections.appearance.navbar.title')}</h2>
+        <Checkbox name='navbarHover' text={'Only display on hover'} category='navbar'/>
         <Checkbox name='notesEnabled' text={getMessage('modals.main.settings.sections.appearance.navbar.notes')} category='navbar' />
         <Checkbox name='view' text={getMessage('modals.main.settings.sections.background.buttons.view')} category='navbar' />
         <Checkbox name='favouriteEnabled' text={getMessage('modals.main.settings.sections.background.buttons.favourite')} category='navbar' />

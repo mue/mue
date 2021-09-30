@@ -54,8 +54,8 @@ export default class Navbar extends PureComponent {
 
   render() {
     const backgroundEnabled = (localStorage.getItem('background') === 'true');
-  
-    return (
+
+    const navbar = (
       <div className='navbar-container' ref={this.navbarContainer}>
         {(localStorage.getItem('view') === 'true' && backgroundEnabled) ? <Maximise/> : null}
         {(localStorage.getItem('favouriteEnabled') === 'true' && backgroundEnabled) ? <Favourite/> : null}
@@ -84,5 +84,11 @@ export default class Navbar extends PureComponent {
         </Tooltip>
       </div>
     );
+
+    if (localStorage.getItem('navbarHover') === 'true') {
+      return <div className='navbar-hover'>{navbar}</div>;
+    } else {
+      return navbar;
+    }
   }
 }
