@@ -119,7 +119,7 @@ export default class QuoteSettings extends PureComponent {
 
     return (
       <>
-        <Header title={this.getMessage('modals.main.settings.sections.quote.title')} category='quote' element='.quotediv' zoomSetting='zoomQuote' category='quote'/>
+        <Header title={this.getMessage('modals.main.settings.sections.quote.title')} setting='quote' category='quote' element='.quotediv' zoomSetting='zoomQuote'/>
         <Checkbox name='authorLink' text={this.getMessage('modals.main.settings.sections.quote.author_link')} element='.other' />
         <Dropdown label={this.getMessage('modals.main.settings.sections.background.type.title')} name='quoteType' onChange={(value) => this.setState({ quoteType: value })} category='quote'>
           {this.marketplaceType()}

@@ -27,7 +27,7 @@ export default class GreetingSettings extends PureComponent {
 
     return (
       <>
-        <Header title={getMessage('modals.main.settings.sections.greeting.title')} category='greeting' element='.greeting' zoomSetting='zoomGreeting' category='greeting'/>
+        <Header title={getMessage('modals.main.settings.sections.greeting.title')} category='greeting' element='.greeting' zoomSetting='zoomGreeting'/>
         <Checkbox name='events' text={getMessage('modals.main.settings.sections.greeting.events')} category='greeting'/>
         <Checkbox name='defaultGreetingMessage' text={getMessage('modals.main.settings.sections.greeting.default')} category='greeting'/>
         <Text title={getMessage('modals.main.settings.sections.greeting.name')} name='greetingName' category='greeting'/>

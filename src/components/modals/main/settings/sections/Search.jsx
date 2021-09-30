@@ -72,7 +72,7 @@ export default class SearchSettings extends PureComponent {
   render() {
     return (
       <>
-        <Header title={this.getMessage('modals.main.settings.sections.search.title')} category='widgets'/>
+        <Header title={this.getMessage('modals.main.settings.sections.search.title')} setting='searchBar' category='widgets'/>
         {/* not supported on firefox */}
         {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
           <Checkbox name='voiceSearch' text={this.getMessage('modals.main.settings.sections.search.voice_search')} category='search'/> 

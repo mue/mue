@@ -4,7 +4,6 @@ import { Cancel } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 
 import Header from '../Header';
-import Slider from '../Slider';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -61,7 +60,7 @@ export default class Message extends PureComponent {
   render() {
     return (
       <>
-        <Header title={this.getMessage('modals.main.settings.sections.message.title')} category='message' element='.message' zoomSetting='zoomMessage' category='message'/>
+        <Header title={this.getMessage('modals.main.settings.sections.message.title')} setting='message' category='message' element='.message' zoomSetting='zoomMessage'/>
         <p>{this.getMessage('modals.main.settings.sections.message.text')}</p>
         {this.state.messages.map((_url, index) => (
           <Fragment key={index}>
@@ -73,7 +72,6 @@ export default class Message extends PureComponent {
           </Fragment>
         ))}
         <button className='uploadbg' onClick={() => this.modifyMessage('add')}>{this.getMessage('modals.main.settings.sections.message.add')}</button>
-        <Slider title={this.getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomMessage' min='10' max='400' default='100' display='%' category='message' />
       </>
     );
   }

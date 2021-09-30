@@ -59,7 +59,7 @@ export default class TimeSettings extends PureComponent {
 
     return (
       <>
-        <Header title={getMessage('modals.main.settings.sections.time.title')} category='clock' element='.clock-container' zoomSetting='zoomClock' category='clock'/>
+        <Header title={getMessage('modals.main.settings.sections.time.title')} setting='time' category='clock' element='.clock-container' zoomSetting='zoomClock'/>
         <Dropdown label={getMessage('modals.main.settings.sections.time.type')} name='timeType' onChange={(value) => this.setState({ timeType: value })} category='clock'>
           <option value='digital'>{getMessage('modals.main.settings.sections.time.digital.title')}</option>
           <option value='analogue'>{getMessage('modals.main.settings.sections.time.analogue.title')}</option>

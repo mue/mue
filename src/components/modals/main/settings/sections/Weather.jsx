@@ -1,10 +1,9 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
-import Switch from '../Switch';
+import Header from '../Header';
 import Radio from '../Radio';
 import Checkbox from '../Checkbox';
-import Slider from '../Slider';
 
 export default class TimeSettings extends PureComponent {
   constructor() {
@@ -67,15 +66,13 @@ export default class TimeSettings extends PureComponent {
       
     return (
       <>
-        <h2>{getMessage('modals.main.settings.sections.weather.title')}</h2>
-        <Switch name='weatherEnabled' text={getMessage('modals.main.settings.enabled')} category='widgets'/>
+        <Header title={getMessage('modals.main.settings.sections.weather.title')} setting='weatherEnabled' category='widgets' zoomSetting='zoomWeather' zoomCategory='weather'/>
         <ul>
           <p>{getMessage('modals.main.settings.sections.weather.location')} <span className='modalLink' onClick={() => this.getAuto()}>{getMessage('modals.main.settings.sections.weather.auto')}</span></p>
           <input type='text' value={this.state.location} onChange={(e) => this.changeLocation(e)}></input>
         </ul>
         <br/>
         <Radio name='tempformat' title={getMessage('modals.main.settings.sections.weather.temp_format.title')} options={tempFormat} category='weather'/>
-        <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomWeather' min='10' max='400' default='100' display='%' category='weather'/>
 
         <h3>{getMessage('modals.main.settings.sections.weather.extra_info.title')}</h3>
         <Checkbox name='showlocation' text={getMessage('modals.main.settings.sections.weather.extra_info.show_location')} category='weather'/>

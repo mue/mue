@@ -14,7 +14,7 @@ export default class Header extends PureComponent {
         <h2>{this.props.title}</h2>
         <Switch name={this.props.setting} text={getMessage('modals.main.settings.enabled')} category={this.props.category} element={this.props.element || null} />
         {this.props.zoomSetting ? 
-          <><Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name={this.props.zoomSetting} min='10' max='400' default='100' display='%' category={this.props.category} /><br/><br/></>
+          <><Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name={this.props.zoomSetting} min='10' max='400' default='100' display='%' category={this.props.zoomCategory || this.props.category} /><br/><br/></>
         : null}
       </>
     );

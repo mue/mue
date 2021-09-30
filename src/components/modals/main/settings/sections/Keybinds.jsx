@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
-import Switch from '../Switch';
+import Header from '../Header';
 import KeybindInput from '../KeybindInput';
 
 export default class KeybindSettings extends PureComponent {
@@ -99,8 +99,7 @@ export default class KeybindSettings extends PureComponent {
   render() {
     return (
       <>
-        <h2>{this.getMessage('modals.main.settings.sections.keybinds.title')}</h2>
-        <Switch name='keybindsEnabled' text={this.getMessage('modals.main.settings.enabled')} element='.other' />
+        <Header title={this.getMessage('modals.main.settings.sections.keybinds.title')} setting='keybindsEnabled' element='.other' />
         <table className='keybind-table'>
           <tr>  
             <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.favourite')} state={this.state.keybinds} setting='favouriteBackground' action={(type, e) => this.action(type, e)}/></th>
