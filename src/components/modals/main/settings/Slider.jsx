@@ -1,22 +1,21 @@
-// todo: find a better method to do width of number input
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
+import { Slider } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 
-export default class Slider extends PureComponent {
+export default class SliderComponent extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: localStorage.getItem(this.props.name) || this.props.default,
-      numberWidth: localStorage.getItem(this.props.name) ? ((localStorage.getItem(this.props.name).length + 1) * ((this.props.toast === true) ? 7.75 : 7)) : 32
+      value: localStorage.getItem(this.props.name) || this.props.default
     };
-    this.widthCalculation = (this.props.toast === true) ? 7.75 : 7;
   }
 
   handleChange = (e, text) => {
     let { value } = e.target;
+    value = Number(value);
 
     if (text) {
       if (value === '') {
@@ -25,19 +24,18 @@ export default class Slider extends PureComponent {
         });
       }
 
-      if (Number(value) > this.props.max) {
+      if (value > this.props.max) {
         value = this.props.max;
       }
   
-      if (Number(value) < this.props.min) {
+      if (value < this.props.min) {
         value = this.props.min;
       }
     }
   
     localStorage.setItem(this.props.name, value);
     this.setState({
-      value,
-      numberWidth: ((value.length + 1) * this.widthCalculation)
+      value
     });
 
     if (this.props.element) {
@@ -60,12 +58,20 @@ export default class Slider extends PureComponent {
   }
 
   render() {
-    const text = <input className='sliderText' type='number' min={this.props.min} max={this.props.max} onChange={(e) => this.handleChange(e, 'text')} value={this.state.value} style={{ width: this.state.numberWidth }}/>;
-
     return (
       <>
-        <p>{this.props.title} ({text}{this.props.display}) <span className='modalLink' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
-        <input className='range' type='range' min={this.props.min} max={this.props.max} step={this.props.step || 1} value={this.state.value} onChange={this.handleChange} />
+        <p>{this.props.title}<span className='modalLink' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
+        <Slider 
+          value={Number(this.state.value)} 
+          onChange={this.handleChange} 
+          valueLabelDisplay='auto' 
+          default={Number(this.props.default)} 
+          min={Number(this.props.min)} 
+          max={Number(this.props.max)} 
+          step={this.props.step || 1} 
+          getAriaValueText={(value) => `${value}`} 
+          marks={this.props.marks || []}
+        />
       </>
     );
   }

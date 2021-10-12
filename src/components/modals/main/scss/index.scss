@@ -129,3 +129,13 @@ h3 {
 h5 {
   font-size: 0.8rem;
 }
+
+.tab-content {
+  hr {
+    height: 5px;
+    background: rgba(196, 196, 196, 0.74);
+    outline: none;
+    border: none;
+    margin: 50px 0 30px 0;
+  }
+}

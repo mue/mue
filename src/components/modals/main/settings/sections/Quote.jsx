@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { Cancel } from '@mui/icons-material';
+import { TextField } from '@mui/material';
 
 import Header from '../Header';
 import Checkbox from '../Checkbox';
@@ -88,12 +89,11 @@ export default class QuoteSettings extends PureComponent {
           <p>{this.getMessage('modals.main.settings.sections.quote.custom')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
           {this.state.customQuote.map((_url, index) => (
             <Fragment key={index}>
-              <input type='text' style={{ marginRight: '10px' }} value={this.state.customQuote[index].quote} placeholder='Quote' onChange={(e) => this.customQuote(e, true, index, 'quote')}></input>
-              <input type='text' value={this.state.customQuote[index].author} placeholder='Author' onChange={(e) => this.customQuote(e, true, index, 'author')}></input>
+              <TextField value={this.state.customQuote[index].quote} placeholder='Quote' onChange={(e) => this.customQuote(e, true, index, 'quote')} varient='outlined' />
+              <TextField value={this.state.customQuote[index].author} placeholder='Author' onChange={(e) => this.customQuote(e, true, index, 'author')} varient='outlined' />
               {this.state.customQuote.length > 1 ? <button className='cleanButton' onClick={() => this.modifyCustomQuote('remove', index)}>
                 <Cancel/>
               </button> : null}
-              <br/><br/>
             </Fragment>
           ))}
           <button className='uploadbg' onClick={() => this.modifyCustomQuote('add')}>{this.getMessage('modals.main.settings.sections.quote.add')}</button>
@@ -103,7 +103,6 @@ export default class QuoteSettings extends PureComponent {
       // api
       customSettings = (
         <>
-          <br/><br/>
           <Dropdown label={this.getMessage('modals.main.settings.sections.background.interval.title')} name='quotechange'>
             <option value='refresh'>{this.getMessage('tabname')}</option>
             <option value='60000'>{this.getMessage('modals.main.settings.sections.background.interval.minute')}</option>

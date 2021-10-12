@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
 import { Cancel } from '@mui/icons-material';
+import { TextField } from '@mui/material';
 
 import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
@@ -96,16 +97,17 @@ export default class CustomSettings extends PureComponent {
         <p>{this.getMessage('modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
         {this.state.customBackground.map((_url, index) => (
           <Fragment key={index}>
-            <input type='text' value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)} autoComplete='off' autoCorrect='off' autoCapitalize='off' spellCheck={false}/>
+            <TextField value={this.state.customBackground[index]} onChange={(e) => this.customBackground(e, true, index)} autoComplete='off' autoCorrect='off' autoCapitalize='off' spellCheck={false} varient='outlined' />
             {this.state.customBackground.length > 1 ? <button className='cleanButton' onClick={() => this.modifyCustomBackground('remove', index)}>
               <Cancel/>
             </button> : null}
             <span className='modalLink' onClick={() => this.uploadCustombackground(index)}>{this.getMessage('modals.main.settings.sections.background.source.upload')}</span>
             {this.videoCustomSettings(index)}
-            <br/><br/>  
           </Fragment>
         ))}
+        <br/><br/>
         <button className='uploadbg' onClick={() => this.modifyCustomBackground('add')}>{this.getMessage('modals.main.settings.sections.background.source.add_background')}</button>
+        <br/><br/>
         <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
         {this.props.interval}
       </ul>

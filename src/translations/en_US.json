@@ -36,8 +36,7 @@
     },
     "navbar": {
       "tooltips": {
-        "refresh": "Refresh Page",
-        "feedback": "Feedback"
+        "refresh": "Refresh Page"
       },
       "notes": {
         "title": "Notes",
@@ -530,16 +529,6 @@
         "previous": "Previous",
         "close": "Close"
       }
-    },
-    "feedback": {
-      "title": "Give us feedback",
-      "question_one": "How would you rate your experience of this Mue build?",
-      "question_two": "What bugs did you encounter in your use of Mue?",
-      "question_three": "How likely would you be to recommend this version of Mue to a friend or colleague?",
-      "question_four": "What do you want adding to the next Mue build?",
-      "not_filled": "Question box must be filled",
-      "success": "Sent successfully!",
-      "submit": "Submit"
     }
   },
   "toasts": {

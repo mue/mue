@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { RefreshRounded, SettingsRounded, AssignmentRounded as NotesRounded, SmsFailed as Report } from '@mui/icons-material';
+import { RefreshRounded, SettingsRounded, AssignmentRounded as NotesRounded } from '@mui/icons-material';
 
 import Notes from './Notes';
 import Maximise from '../background/Maximise';
@@ -66,13 +66,7 @@ export default class Navbar extends PureComponent {
             <Notes/>
           </div>
         : null}
-  
-        {(variables.constants.BETA_VERSION === true) ? 
-          <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.tooltips.feedback')}>
-            <Report className='topicons' onClick={() => this.props.openModal('feedbackModal')}/>
-          </Tooltip>
-        : null}
-  
+
         {(this.refreshValue !== 'false') ?
           <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.tooltips.refresh')}>
             <RefreshRounded className='refreshicon topicons' onClick={() => this.refresh()}/>

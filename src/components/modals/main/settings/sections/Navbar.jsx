@@ -6,6 +6,8 @@ import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Slider from '../Slider';
 
+import { values } from 'modules/helpers/settings/modals';
+
 export default class Navbar extends PureComponent {
   render() {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
@@ -13,6 +15,7 @@ export default class Navbar extends PureComponent {
     return (
       <>
         <h2>{getMessage('modals.main.settings.sections.appearance.navbar.title')}</h2>
+        <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomNavbar' min='10' max='400' default='100' display='%' marks={values('zoom')} category='navbar' />
         <Checkbox name='navbarHover' text={'Only display on hover'} category='navbar'/>
         <Checkbox name='notesEnabled' text={getMessage('modals.main.settings.sections.appearance.navbar.notes')} category='navbar' />
         <Checkbox name='view' text={getMessage('modals.main.settings.sections.background.buttons.view')} category='navbar' />
@@ -25,8 +28,6 @@ export default class Navbar extends PureComponent {
           {/* before it was just a checkbox */}
           <option value='true'>{getMessage('modals.main.settings.sections.appearance.navbar.refresh_options.page')}</option>
         </Dropdown>
-        <br/>
-        <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')} name='zoomNavbar' min='10' max='400' default='100' display='%' category='navbar' />
       </>
     );
   }

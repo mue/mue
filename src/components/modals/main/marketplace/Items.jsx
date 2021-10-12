@@ -1,3 +1,5 @@
+import variables from 'modules/variables';
+
 export default function Items({ items, toggleFunction }) {
   return (
     <div className='items'>

@@ -1,25 +1,12 @@
-@import 'modules/dropdown';
 @import 'modules/resetmodal';
 @import 'modules/material-ui';
-@import 'modules/slider';
 @import 'modules/reminder';
-@import 'modules/textarea';
 
 @import 'modules/tabs/about';
 @import 'modules/tabs/changelog';
 @import 'modules/tabs/order';
 
 input {
-  /* text input */
-  &[type=text] {
-    width: 200px;
-    color: var(--modal-text);
-    background: var(--sidebar);
-    border: none;
-    padding: 10px 10px;
-    border-radius: 5px;
-  }
-
   /* colour picker */
   &[type=color] {
     border-radius: 100%;
@@ -64,12 +51,13 @@ input {
 
   /* date picker */
   &[type=date] {
-    width: 200px;
+    width: 280px;
     color: var(--modal-text);
-    background: var(--sidebar);
-    border: none;
-    padding: 10px 10px;
-    border-radius: 5px;
+    background: var(--background);
+    border: solid white 1px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    display: flex !important;
   }
 }
 

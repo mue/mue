@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
+import { MenuItem, TextField } from '@mui/material';
 
 import Header from '../Header';
 import Dropdown from '../Dropdown';
@@ -78,18 +79,16 @@ export default class SearchSettings extends PureComponent {
           <Checkbox name='voiceSearch' text={this.getMessage('modals.main.settings.sections.search.voice_search')} category='search'/> 
         : null}
         <Checkbox name='searchDropdown' text={this.getMessage('modals.main.settings.sections.search.dropdown')} category='search' element='.other'/>
-        <Dropdown label={this.getMessage('modals.main.settings.sections.search.search_engine')} name='searchEngine' onChange={(value) => this.setSearchEngine(value)}>
+        <Dropdown label={this.getMessage('modals.main.settings.sections.search.search_engine')} name='searchEngine' onChange={(value) => this.setSearchEngine(value)} manual={true}>
           {searchEngines.map((engine) => (
-            <option key={engine.name} value={engine.settingsName}>{engine.name}</option>
+            <MenuItem key={engine.name} value={engine.settingsName}>{engine.name}</MenuItem>
           ))}
-          <option value='custom'>{this.getMessage('modals.main.settings.sections.search.custom').split(' ')[0]}</option>
+          <MenuItem value='custom'>{this.getMessage('modals.main.settings.sections.search.custom').split(' ')[0]}</MenuItem>
         </Dropdown>
         <ul style={{ display: this.state.customDisplay }}>
-          <br/>
-          <p style={{ marginTop: '0px' }}>{this.getMessage('modals.main.settings.sections.search.custom')} <span className='modalLink' onClick={() => this.resetSearch()}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
-          <input type='text' value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })}></input>
+          <p style={{ marginTop: '0px' }}><span className='modalLink' onClick={() => this.resetSearch()}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
+          <TextField label={this.getMessage('modals.main.settings.sections.search.custom')} value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })} varient='outlined' />
         </ul>
-        <br/>
         <Checkbox name='autocomplete' text={this.getMessage('modals.main.settings.sections.search.autocomplete')} category='search' />
         <Radio title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')} options={autocompleteProviders} name='autocompleteProvider' category='search'/>
       </>

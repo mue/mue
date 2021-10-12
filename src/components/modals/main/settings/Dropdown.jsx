@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
+import { InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -7,14 +8,10 @@ export default class Dropdown extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: localStorage.getItem(this.props.name) || '',
+      value: localStorage.getItem(this.props.name) || this.props.children[0].props.value,
       title: ''
     };
     this.dropdown = createRef();
-  }
-
-  getLabel() {
-    return this.props.label ? <label>{this.props.label}</label> : null;
   }
 
   onChange = (e) => {
@@ -27,8 +24,7 @@ export default class Dropdown extends PureComponent {
     variables.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
 
     this.setState({
-      value,
-      title: e.target[e.target.selectedIndex].text
+      value
     });
   
     if (!this.props.noSetting) {
@@ -49,21 +45,19 @@ export default class Dropdown extends PureComponent {
     EventBus.dispatch('refresh', this.props.category);
   }
 
-  // todo: find a better way to do this
-  componentDidMount() {
-    this.setState({
-      title: this.dropdown.current[this.dropdown.current.selectedIndex].text
-    });
-  }
-
   render() {
+    const id = 'dropdown' + this.props.name;
+    const label = this.props.label || '';
+
     return (
-      <>
-        {this.getLabel()}
-        <select id={this.props.name} ref={this.dropdown} value={this.state.value} onChange={this.onChange} style={{ width: `${(8*this.state.title.length) + 50}px` }}>
-          {this.props.children}
-        </select>
-      </>
+      <FormControl fullWidth>
+        <InputLabel id={id}>{label}</InputLabel>
+        <Select labelId={id} id={this.props.name} value={this.state.value} label={label} onChange={this.onChange} ref={this.dropdown} key={id}>
+          {this.props.manual ? this.props.children : this.props.children.map((e, index) => {
+            return e ? <MenuItem key={index} value={e.props ? e.props.value : ''}>{e.props ? e.props.children : ''}</MenuItem> : null
+          })}
+        </Select>
+      </FormControl>
     );
   }
 }

@@ -34,7 +34,6 @@ export default class TimeSettings extends PureComponent {
       <>
         <h3>{getMessage('modals.main.settings.sections.time.digital.title')}</h3>
         <Radio title={getMessage('modals.main.settings.sections.time.format')} name='timeformat' options={digitalOptions} smallTitle={true} category='clock' />
-        <br/>
         <Checkbox name='seconds' text={getMessage('modals.main.settings.sections.time.digital.seconds')} category='clock' />
         <Checkbox name='zero' text={getMessage('modals.main.settings.sections.time.digital.zero')} category='clock' />
       </>

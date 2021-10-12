@@ -4,12 +4,13 @@ import { PureComponent } from 'react';
 import Header from '../Header';
 import Radio from '../Radio';
 import Checkbox from '../Checkbox';
+import { TextField } from '@mui/material';
 
 export default class TimeSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
-      location: localStorage.getItem('location') || 'London'
+      location: localStorage.getItem('location') || ''
     };
   }
 
@@ -67,11 +68,8 @@ export default class TimeSettings extends PureComponent {
     return (
       <>
         <Header title={getMessage('modals.main.settings.sections.weather.title')} setting='weatherEnabled' category='widgets' zoomSetting='zoomWeather' zoomCategory='weather'/>
-        <ul>
-          <p>{getMessage('modals.main.settings.sections.weather.location')} <span className='modalLink' onClick={() => this.getAuto()}>{getMessage('modals.main.settings.sections.weather.auto')}</span></p>
-          <input type='text' value={this.state.location} onChange={(e) => this.changeLocation(e)}></input>
-        </ul>
-        <br/>
+        <TextField label={getMessage('modals.main.settings.sections.weather.location')} value={this.state.location} onChange={(e) => this.changeLocation(e)} placeholder='London' varient='outlined' />
+        <span className='modalLink' onClick={() => this.getAuto()}>{getMessage('modals.main.settings.sections.weather.auto')}</span>
         <Radio name='tempformat' title={getMessage('modals.main.settings.sections.weather.temp_format.title')} options={tempFormat} category='weather'/>
 
         <h3>{getMessage('modals.main.settings.sections.weather.extra_info.title')}</h3>

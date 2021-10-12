@@ -36,8 +36,7 @@
     },
     "navbar": {
       "tooltips": {
-        "refresh": "刷新",
-        "feedback": "用户反馈"
+        "refresh": "刷新"
       },
       "notes": {
         "title": "便签",
@@ -530,16 +529,6 @@
         "previous": "上一步",
         "close": "关闭"
       }
-    },
-    "feedback": {
-      "title": "给我们反馈",
-      "question_one": "您使用本 Mue 版本感受如何？",
-      "question_two": "您首次使用 Mue 时遇到过问题吗？",
-      "question_three": "您会向朋友和同事推荐 Mue 吗？",
-      "question_four": "您觉得下一个 Mue 版本需要什么改进？",
-      "not_filled": "必须回答本问题",
-      "success": "提交成功！",
-      "submit": "提交"
     }
   },
   "toasts": {

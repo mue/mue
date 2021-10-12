@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
+import { TextField } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -47,11 +48,11 @@ export default class Text extends PureComponent {
   render() {
     return (
       <>
-        <p>{this.props.title} <span className='modalLink' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span></p>
-        {(this.props.textarea === true) ? 
-          <textarea className='settingsTextarea' spellCheck={false} value={this.state.value} onChange={this.handleChange}/>
-          : <input type='text' value={this.state.value} onChange={this.handleChange}/>
+        {(this.props.textarea === true) ?
+          <TextField label={this.props.title} value={this.state.value} onChange={this.handleChange} varient='outlined' multiline spellCheck={false} minRows={4} maxRows={10} />
+          : <TextField label={this.props.title} value={this.state.value} onChange={this.handleChange} varient='outlined' />
         }
+        <span className='modalLink' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span>
       </>
     );
   }

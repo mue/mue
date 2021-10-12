@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { Cancel } from '@mui/icons-material';
+import { TextField } from '@mui/material';
 
 export default function KeybindInput(props) {
   const value = props.state[props.setting];
@@ -17,7 +18,7 @@ export default function KeybindInput(props) {
   return (
     <>
       <p>{props.name}</p>
-      <input type='text' onClick={() => props.action('listen', props.setting)} value={value || variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.keybinds.click_to_record')} readOnly/>
+      <TextField onClick={() => props.action('listen', props.setting)} value={value || variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.keybinds.click_to_record')} readOnly spellCheck={false} varient='outlined' />
       {getButton()}
     </>
   );

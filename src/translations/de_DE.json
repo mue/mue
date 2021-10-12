@@ -36,8 +36,7 @@
     },
     "navbar": {
       "tooltips": {
-        "refresh": "Neuladen",
-        "feedback": "Feedback"
+        "refresh": "Neuladen"
       },
       "notes": {
         "title": "Notizen",
@@ -531,16 +530,6 @@
         "previous": "Zurück",
         "close": "Schließen"
       }
-    },
-    "feedback": {
-      "title": "Geben Sie uns Feedback",
-      "question_one": "Wie würden Sie Ihre Erfahrungen mit dieser Mue Version bewerten?",
-      "question_two": "Auf welche Fehler sind Sie bei der Verwendung von Mue gestoßen?",
-      "question_three": "Wie wahrscheinlich ist es, dass Sie diese Version von Mue einem Freund oder Kollegen empfehlen würden?",
-      "question_four": "Was möchten Sie dem nächsten Mue-Build hinzufügen?",
-      "not_filled": "Frage Feld muss ausgefüllt werden",
-      "success": "Erfolgreich gesendet!",
-      "submit": "Senden"
     }
   },
   "toasts": {

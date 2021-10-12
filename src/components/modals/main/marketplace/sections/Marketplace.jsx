@@ -224,7 +224,6 @@ export default class Marketplace extends PureComponent {
           <option value='a-z'>{this.getMessage('modals.main.addons.sort.a_z')}</option>
           <option value='z-a'>{this.getMessage('modals.main.addons.sort.z_a')}</option>
         </Dropdown>
-        <br/>
         <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
       </>
     );

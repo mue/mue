@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { Cancel } from '@mui/icons-material';
 import { toast } from 'react-toastify';
+import { TextField } from '@mui/material';
 
 import Header from '../Header';
 
@@ -64,13 +65,13 @@ export default class Message extends PureComponent {
         <p>{this.getMessage('modals.main.settings.sections.message.text')}</p>
         {this.state.messages.map((_url, index) => (
           <Fragment key={index}>
-            <input type='text' value={this.state.messages[index]} onChange={(e) => this.message(e, true, index)}></input>
+            <TextField value={this.state.messages[index]} onChange={(e) => this.message(e, true, index)} varient='outlined' />
             {this.state.messages.length > 1 ? <button className='cleanButton' onClick={() => this.modifyMessage('remove', index)}>
               <Cancel/>
             </button> : null}
-            <br/><br/>
           </Fragment>
         ))}
+        <br/>
         <button className='uploadbg' onClick={() => this.modifyMessage('add')}>{this.getMessage('modals.main.settings.sections.message.add')}</button>
       </>
     );

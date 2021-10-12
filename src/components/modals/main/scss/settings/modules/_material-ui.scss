@@ -7,6 +7,7 @@
 .PrivateSwitchBase-input-4,
 .MuiRadio-root,
 .aboutLink,
+.MuiSlider-colorPrimary,
 legend {
   color: var(--modal-text) !important;
 }
@@ -45,4 +46,43 @@ legend {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1rem;
+}
+
+.MuiSlider-root {
+  margin-bottom: 30px !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: var(--modal-text) !important;
+}
+
+.MuiFormLabel-root-MuiInputLabel-root {
+  color: var(--modal-text) !important;
+}
+
+.MuiInputLabel-root,
+.MuiSlider-markLabel,
+.MuiInputLabel-root,
+.MuiSelect-icon,
+.MuiSelect-select,
+.Mui-focused,
+legend,
+.MuiOutlinedInput-input {
+  color: var(--modal-text) !important;
+}
+
+.MuiMenu-list {
+  background-color: var(--background) !important;
+  color: var(--modal-text) !important;
+}
+
+.Mui-selected {
+  background-color: var(--tab-active) !important;
+}
+
+.MuiTextField-root,
+.MuiFormControl-root,
+.MuiSlider-root {
+  width: 300px !important;
+  display: flex !important;
 }

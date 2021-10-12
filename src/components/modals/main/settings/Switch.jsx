@@ -40,7 +40,6 @@ export default class Switch extends PureComponent {
           label={this.props.text}
           labelPlacement='start'
         />
-        <br/>
       </>
     );
   }

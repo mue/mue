@@ -36,8 +36,7 @@
     },
     "navbar": {
       "tooltips": {
-        "refresh": "Recargar",
-        "feedback": "Comentarios"
+        "refresh": "Recargar"
       },
       "notes": {
         "title": "Notas",
@@ -530,16 +529,6 @@
         "previous": "Anterior",
         "close": "Cerrar"
       }
-    },
-    "feedback": {
-      "title": "Danos tu opinión",
-      "question_one": "¿Cómo calificaría su experiencia en esta versión de Mue?",
-      "question_two": "¿Qué errores has encontrado usando Mue?",
-      "question_three": "¿Qué probabilidad tendría de recomendar esta versión de Mue a un amigo?",
-      "question_four": "¿Qué te gustaría ver en la próxima versión de Mue?",
-      "not_filled": "La casilla de preguntas debe ser rellenada",
-      "success": "¡Enviado con éxito!",
-      "submit": "Enviar"
     }
   },
   "toasts": {

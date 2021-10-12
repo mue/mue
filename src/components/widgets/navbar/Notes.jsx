@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { FileCopyRounded, AssignmentRounded as NotesRounded, PushPin }from '@mui/icons-material';
+import { FileCopyRounded, AssignmentRounded as NotesRounded, PushPin } from '@mui/icons-material';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
 import Hotkeys from 'react-hot-keys';
@@ -46,7 +46,7 @@ export default class Notes extends PureComponent {
 
   render() {
     return (
-      <span id='noteContainer' className='notescontainer' style={{ visibility: this.state.visibility, marginLeft: this.state.marginLeft }}>
+      <span className='notescontainer' style={{ visibility: this.state.visibility, marginLeft: this.state.marginLeft }}>
         <div className='topbarnotes'>
           <NotesRounded/>
           <h3>{variables.language.getMessage(variables.languagecode, 'widgets.navbar.notes.title')}</h3>

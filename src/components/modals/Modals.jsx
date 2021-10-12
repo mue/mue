@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import Hotkeys from 'react-hot-keys';
 
 import Main from './main/Main';
-import Feedback from './feedback/Feedback';
 import Navbar from '../widgets/navbar/Navbar';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -74,9 +73,6 @@ export default class Modals extends PureComponent {
         <Suspense fallback={renderLoader()}>
           <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay welcomeoverlay' shouldCloseOnOverlayClick={false} ariaHideApp={false}>
             <Welcome modalClose={() => this.closeWelcome()}/>
-          </Modal>
-          <Modal closeTimeoutMS={300} onRequestClose={() => this.toggleModal('feedbackModal', false)} isOpen={this.state.feedbackModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
-            <Feedback modalClose={() => this.toggleModal('feedbackModal', false)}/>
           </Modal>
         </Suspense>
         {variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null} 

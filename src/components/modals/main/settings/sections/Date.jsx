@@ -27,13 +27,13 @@ export default class DateSettings extends PureComponent {
 
     const shortSettings = (
       <>
-        <br/>
+        
         <Dropdown label={getMessage('modals.main.settings.sections.date.short_format')} name='dateFormat' category='date'>
           <option value='DMY'>DMY</option>
           <option value='MDY'>MDY</option>
           <option value='YMD'>YMD</option>
         </Dropdown>
-        <br/><br/>
+        
         <Dropdown label={getMessage('modals.main.settings.sections.date.short_separator.title')} name='shortFormat' category='date'>
           <option value='dash'>{getMessage('modals.main.settings.sections.date.short_separator.dash')}</option>
           <option value='dots'>{getMessage('modals.main.settings.sections.date.short_separator.dots')}</option>
@@ -56,7 +56,7 @@ export default class DateSettings extends PureComponent {
           <option value='long'>{getMessage('modals.main.settings.sections.date.type.long')}</option>
           <option value='short'>{getMessage('modals.main.settings.sections.date.type.short')}</option>
         </Dropdown>
-        <br/>
+        
         <Checkbox name='datezero' text={getMessage('modals.main.settings.sections.time.digital.zero')} category='date'/>
         <Checkbox name='weeknumber' text={getMessage('modals.main.settings.sections.date.week_number')} category='date'/>
         {dateSettings}
