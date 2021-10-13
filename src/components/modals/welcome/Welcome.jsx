@@ -99,6 +99,7 @@ export default class WelcomeModal extends PureComponent {
             <WelcomeSections currentTab={this.state.currentTab} switchTab={(tab) => this.switchTab(tab)}/>
           </div>
           <div className='buttons'>
+            {(this.state.currentTab === 0) ? <button className='close' style={{ marginRight: '20px' }} onClick={() => this.props.modalSkip()}>Preview</button> : null} 
             {(this.state.currentTab !== 0) ? <button className='close' style={{ marginRight: '20px' }} onClick={() => this.changeTab(true)}>{this.getMessage('modals.welcome.buttons.previous')}</button> : null}
             <button className='close' onClick={() => this.changeTab()}>{this.state.buttonText}</button>
           </div>

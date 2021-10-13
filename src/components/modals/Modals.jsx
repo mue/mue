@@ -5,6 +5,7 @@ import Hotkeys from 'react-hot-keys';
 
 import Main from './main/Main';
 import Navbar from '../widgets/navbar/Navbar';
+import Preview from '../helpers/preview/Preview';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -20,7 +21,8 @@ export default class Modals extends PureComponent {
       mainModal: false,
       updateModal: false,
       welcomeModal: false,
-      feedbackModal: false
+      feedbackModal: false,
+      preview: false
     };
   }
 
@@ -49,8 +51,18 @@ export default class Modals extends PureComponent {
     this.setState({
       welcomeModal: false
     });
+    EventBus.dispatch('refresh', 'widgetsWelcomeDone');
     EventBus.dispatch('refresh', 'widgets');
     EventBus.dispatch('refresh', 'backgroundwelcome');
+  }
+
+  previewWelcome() {
+    localStorage.setItem('showWelcome', false);
+    this.setState({
+      welcomeModal: false,
+      preview: true
+    });
+    EventBus.dispatch('refresh', 'widgetsWelcome');
   }
 
   toggleModal(type, action) {
@@ -72,9 +84,10 @@ export default class Modals extends PureComponent {
         </Modal>
         <Suspense fallback={renderLoader()}>
           <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay welcomeoverlay' shouldCloseOnOverlayClick={false} ariaHideApp={false}>
-            <Welcome modalClose={() => this.closeWelcome()}/>
+            <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()}/>
           </Modal>
         </Suspense>
+        {this.state.preview ? <Preview setup={() => window.location.reload()}/> : null}
         {variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null} 
       </>
     );

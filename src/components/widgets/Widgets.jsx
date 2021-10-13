@@ -18,7 +18,8 @@ export default class Widgets extends PureComponent {
   constructor() {
     super();
     this.state = {
-      order: JSON.parse(localStorage.getItem('order'))
+      order: JSON.parse(localStorage.getItem('order')),
+      welcome: localStorage.getItem('showWelcome')
     };
     // widgets we can re-order
     this.widgets = {
@@ -42,12 +43,29 @@ export default class Widgets extends PureComponent {
           order: JSON.parse(localStorage.getItem('order'))
         });
       }
+
+      if (data === 'widgetsWelcome') { 
+        this.setState({
+          welcome: localStorage.getItem('showWelcome')
+        });
+        localStorage.setItem('showWelcome', true);
+        window.onbeforeunload = () => {
+          localStorage.clear();
+        }
+      }
+
+      if (data === 'widgetsWelcomeDone') {
+        this.setState({
+          welcome: localStorage.getItem('showWelcome')
+        });
+        window.onbeforeunload = null;
+      }
     });
   }
 
   render() {
     // don't show when welcome is there
-    if (localStorage.getItem('showWelcome') !== 'false') {
+    if (this.state.welcome !== 'false') {
       return <div id='widgets'></div>;
     }
 

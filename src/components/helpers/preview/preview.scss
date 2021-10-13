@@ -1,0 +1,15 @@
+.preview {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px;
+  color: var(--modal-text);
+  background: var(--background);
+  max-width: 300px;
+  border-radius: 0.7em;
+  z-index: 999;
+
+  h1 {
+    font-size: 1rem;
+  }
+}
