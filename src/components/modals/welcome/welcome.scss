@@ -88,6 +88,7 @@
     border-radius: 40px;
     padding: 20px;
     margin: 10px;
+    border: 3px solid var(--tab-active);
 
     &:hover {
       background: var(--tab-active);
@@ -132,6 +133,7 @@
   background: var(--sidebar);
   color: var(--modal-text);
   cursor: pointer;
+  border: 3px solid var(--tab-active);
 
   &:hover {
     background: var(--tab-active);

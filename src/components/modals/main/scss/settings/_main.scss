@@ -54,7 +54,7 @@ input {
     width: 280px;
     color: var(--modal-text);
     background: var(--background);
-    border: solid white 1px;
+    border: solid var(--modal-text) 1px;
     padding: 15px 20px;
     border-radius: 4px;
     display: flex !important;

@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import Modal from 'react-modal';
 import { MenuItem } from '@mui/material';
+import { Upload as ImportIcon, Download as ExportIcon, RestartAlt as ResetIcon } from '@mui/icons-material';
 
 import { exportSettings, importSettings } from 'modules/helpers/settings/modals';
 
@@ -36,11 +37,23 @@ export default class AdvancedSettings extends PureComponent {
           ))}
         </Dropdown>
 
-        <h3>{getMessage('modals.main.settings.sections.advanced.data')}</h3>
-        <br/>
-        <button className='reset' onClick={() => this.setState({ resetModal: true })}>{getMessage('modals.main.settings.buttons.reset')}</button>
-        <button className='export' onClick={() => exportSettings()}>{getMessage('modals.main.settings.buttons.export')}</button>
-        <button className='import' onClick={() => document.getElementById('file-input').click()}>{getMessage('modals.main.settings.buttons.import')}</button>
+        {localStorage.getItem('welcomePreview') !== 'true' ?
+         <>
+           <h3>{getMessage('modals.main.settings.sections.advanced.data')}</h3>
+           <br/>
+           <div className='data-buttons-row'>
+             <button onClick={() => this.setState({ resetModal: true })}>{getMessage('modals.main.settings.buttons.reset')}
+               <ResetIcon/>
+             </button>
+             <button onClick={() => exportSettings()}>{getMessage('modals.main.settings.buttons.export')}
+               <ExportIcon/>
+             </button>
+             <button onClick={() => document.getElementById('file-input').click()}>{getMessage('modals.main.settings.buttons.import')}
+               <ImportIcon/>
+             </button>
+           </div>
+         </>
+        : null}
         <FileUpload id='file-input' accept='application/json' type='settings' loadFunction={(e) => importSettings(e)}/>
 
         <h3>{getMessage('modals.main.settings.sections.advanced.customisation')}</h3>

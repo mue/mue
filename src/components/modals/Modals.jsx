@@ -58,6 +58,7 @@ export default class Modals extends PureComponent {
 
   previewWelcome() {
     localStorage.setItem('showWelcome', false);
+    localStorage.setItem('welcomePreview', true);
     this.setState({
       welcomeModal: false,
       preview: true

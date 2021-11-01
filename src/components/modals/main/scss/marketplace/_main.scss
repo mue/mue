@@ -14,11 +14,9 @@
     height: 80px;
     width: 260px;
     background: var(--sidebar);
-    transition: 0.5s;
     cursor: pointer;
     margin-right: 20px;
     margin-top: 20px;
-    box-shadow: 0 0 6px rgb(0 0 0 / 30%);
 
     img {
       height: 80px;
@@ -55,7 +53,7 @@
     }
 
     &:hover {
-      transform: scale(1.1);
+      background: var(--tab-active);
     }
   }
 }

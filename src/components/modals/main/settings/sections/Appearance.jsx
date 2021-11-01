@@ -46,7 +46,6 @@ export default function AppearanceSettings() {
         <option value='700'>{getMessage('modals.main.settings.sections.appearance.font.weight.bold')}</option>
         <option value='800'>{getMessage('modals.main.settings.sections.appearance.font.weight.extra_bold')}</option>
       </Dropdown>
-      <br/><br/>
       <Dropdown label={getMessage('modals.main.settings.sections.appearance.font.style.title')} name='fontstyle' category='other'>
         <option value='normal'>{getMessage('modals.main.settings.sections.appearance.font.style.normal')}</option>
         <option value='italic'>{getMessage('modals.main.settings.sections.appearance.font.style.italic')}</option>

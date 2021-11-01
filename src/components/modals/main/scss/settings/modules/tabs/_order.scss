@@ -27,3 +27,28 @@ ul {
     vertical-align: middle;
   }
 }
+
+.images-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+
+  div {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--sidebar);
+    border: 20px solid var(--sidebar);
+    border-radius: 20px;
+    margin: 0 20px 20px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    svg {
+      font-size: 1.9em;
+    }
+  }
+}

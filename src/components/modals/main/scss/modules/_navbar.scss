@@ -1,11 +1,17 @@
 .navbar-item {
   font-size: 22px;
   font-weight: 500;
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--photo-info);
 
   &:hover {
-    color: grey;
-    background: none;
+    svg {
+      background: var(--tab-active);
+    }
+
+    color: var(--modal-text)
   }
 
   span,
@@ -15,6 +21,10 @@
 
   svg {
     font-size: 1.2em !important;
+    width: 60px;
+    padding: 5px;
+    border-radius: 20px;
+    color: var(--photo-info);
   }
 }
 
@@ -30,6 +40,7 @@
   left: 20rem;
   top: 1rem;
   justify-content: center;
+  display: flex;
 
   svg {
     margin-right: 0.5rem;
@@ -53,19 +64,9 @@
 }
 
 .navbar-item-active {
-  background: map-get($theme-colours, 'gradient');
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--modal-text);
 
   svg {
-    color: orange;
-  }
-
-  &:hover {
-    background: map-get($theme-colours, 'gradient');
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    background: var(--sidebar);
   }
 }
