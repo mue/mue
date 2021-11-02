@@ -141,23 +141,31 @@ export default class BackgroundSettings extends PureComponent {
         
         {backgroundSettings}
 
-        <h3>{getMessage('modals.main.settings.sections.background.buttons.title')}</h3>
-        <Checkbox name='downloadbtn' text={getMessage('modals.main.settings.sections.background.buttons.download')} element='.other' />
-
-        <h3>{getMessage('modals.main.settings.sections.background.effects.title')}</h3>
-        <Slider title={getMessage('modals.main.settings.sections.background.effects.blur')} name='blur' min='0' max='100' default='0' display='%' marks={values('background')} category='background' element='#backgroundImage' />
-        <Slider title={getMessage('modals.main.settings.sections.background.effects.brightness')} name='brightness' min='0' max='100' default='90' display='%' marks={values('background')} category='background' element='#backgroundImage' />
-        <br/>
-        <Dropdown label={getMessage('modals.main.settings.sections.background.effects.filters.title')} name='backgroundFilter' onChange={(value) => this.setState({ backgroundFilter: value })} category='background' element='#backgroundImage'>
-          <option value='none'>None</option>
-          <option value='grayscale'>{getMessage('modals.main.settings.sections.background.effects.filters.grayscale')}</option>
-          <option value='sepia'>{getMessage('modals.main.settings.sections.background.effects.filters.sepia')}</option>
-          <option value='invert'>{getMessage('modals.main.settings.sections.background.effects.filters.invert')}</option>
-          <option value='saturate'>{getMessage('modals.main.settings.sections.background.effects.filters.saturate')}</option>
-          <option value='contrast'>{getMessage('modals.main.settings.sections.background.effects.filters.contrast')}</option>
-        </Dropdown>
-        {this.state.backgroundFilter !== 'none' ?
-          <Slider title={getMessage('modals.main.settings.sections.background.effects.filters.amount')} name='backgroundFilterAmount' min='0' max='100' default='0' display='%' marks={values('background')} category='background' element='#backgroundImage' />
+        {this.state.backgroundType === 'api' && APISettings ? 
+          <>
+            <h3>{getMessage('modals.main.settings.sections.background.buttons.title')}</h3>
+            <Checkbox name='downloadbtn' text={getMessage('modals.main.settings.sections.background.buttons.download')} element='.other' />
+          </>
+        : null}
+  
+        {this.state.backgroundType === 'api' || this.state.backgroundType === 'custom' || this.state.backgroundType === 'marketplace' ?
+          <>
+            <h3>{getMessage('modals.main.settings.sections.background.effects.title')}</h3>
+            <Slider title={getMessage('modals.main.settings.sections.background.effects.blur')} name='blur' min='0' max='100' default='0' display='%' marks={values('background')} category='background' element='#backgroundImage' />
+            <Slider title={getMessage('modals.main.settings.sections.background.effects.brightness')} name='brightness' min='0' max='100' default='90' display='%' marks={values('background')} category='background' element='#backgroundImage' />
+            <br/>
+            <Dropdown label={getMessage('modals.main.settings.sections.background.effects.filters.title')} name='backgroundFilter' onChange={(value) => this.setState({ backgroundFilter: value })} category='background' element='#backgroundImage'>
+              <option value='none'>None</option>
+              <option value='grayscale'>{getMessage('modals.main.settings.sections.background.effects.filters.grayscale')}</option>
+              <option value='sepia'>{getMessage('modals.main.settings.sections.background.effects.filters.sepia')}</option>
+              <option value='invert'>{getMessage('modals.main.settings.sections.background.effects.filters.invert')}</option>
+              <option value='saturate'>{getMessage('modals.main.settings.sections.background.effects.filters.saturate')}</option>
+              <option value='contrast'>{getMessage('modals.main.settings.sections.background.effects.filters.contrast')}</option>
+            </Dropdown>
+            {this.state.backgroundFilter !== 'none' ?
+              <Slider title={getMessage('modals.main.settings.sections.background.effects.filters.amount')} name='backgroundFilterAmount' min='0' max='100' default='0' display='%' marks={values('background')} category='background' element='#backgroundImage' />
+            : null}
+          </>
         : null}
       </>
     );

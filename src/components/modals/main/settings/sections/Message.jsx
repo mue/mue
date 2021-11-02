@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
-import { Cancel } from '@mui/icons-material';
+import { PureComponent } from 'react';
+import { Cancel, Add } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 import { TextField } from '@mui/material';
 
@@ -63,16 +63,18 @@ export default class Message extends PureComponent {
       <>
         <Header title={this.getMessage('modals.main.settings.sections.message.title')} setting='message' category='message' element='.message' zoomSetting='zoomMessage'/>
         <p>{this.getMessage('modals.main.settings.sections.message.text')}</p>
+        <div className='data-buttons-row'>
+          <button onClick={() => this.modifyMessage('add')}>{this.getMessage('modals.main.settings.sections.message.add')} <Add/></button>
+        </div>
         {this.state.messages.map((_url, index) => (
-          <Fragment key={index}>
+          <div style={{ display: 'flex' }} key={index}>
             <TextField value={this.state.messages[index]} onChange={(e) => this.message(e, true, index)} varient='outlined' />
             {this.state.messages.length > 1 ? <button className='cleanButton' onClick={() => this.modifyMessage('remove', index)}>
               <Cancel/>
             </button> : null}
-          </Fragment>
+          </div>
         ))}
         <br/>
-        <button className='uploadbg' onClick={() => this.modifyMessage('add')}>{this.getMessage('modals.main.settings.sections.message.add')}</button>
       </>
     );
   }

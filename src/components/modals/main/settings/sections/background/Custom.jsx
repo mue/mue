@@ -22,9 +22,9 @@ export default class CustomSettings extends PureComponent {
   }
 
   resetCustom = () => {
-    localStorage.setItem('customBackground', '[""]');
+    localStorage.setItem('customBackground', '[]');
     this.setState({
-      customBackground: ['']
+      customBackground: []
     });
     toast(this.getMessage('toasts.reset'));
     EventBus.dispatch('refresh', 'background');
@@ -107,6 +107,10 @@ export default class CustomSettings extends PureComponent {
     return (
       <ul>
         <p>{this.getMessage('modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
+        <div className='data-buttons-row'>
+          <button onClick={() => this.uploadCustomBackground()}>Add background <AddPhotoAlternate/> </button>
+          <button onClick={() => this.setState({ customURLModal: true })}>Add URL <AddLink/></button>
+        </div>
         <div className='images-row'>
           {this.state.customBackground.map((_url, index) => (
             <Fragment key={index}>
@@ -118,10 +122,6 @@ export default class CustomSettings extends PureComponent {
               {this.videoCustomSettings(index)}
             </Fragment>
           ))}
-        </div>
-        <div className='data-buttons-row'>
-          <button onClick={() => this.uploadCustomBackground()}>Add background <AddPhotoAlternate/> </button>
-          <button onClick={() => this.setState({ customURLModal: true })}>Add URL <AddLink/></button>
         </div>
         <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
         {this.props.interval}
