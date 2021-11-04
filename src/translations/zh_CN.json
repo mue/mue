@@ -171,6 +171,7 @@
               "upload": "选择",
               "add_colour": "添加颜色",
               "add_background": "继续添加背景",
+              "add_url": "Add URL",
               "disabled": "已禁用",
               "loop_video": "循环播放",
               "mute_video": "静音",
@@ -247,6 +248,7 @@
               "title": "右上方功能键",
               "notes": "便签",
               "refresh": "刷新键",
+              "hover": "Only display on hover",
               "refresh_options": {
                 "none": "不显示",
                 "page": "页面"
@@ -380,6 +382,7 @@
             },
             "contributors": "贡献者",
             "supporters": "支持者",
+            "no_supporters": "There are currently no Mue supporters",
             "photographers": "背景摄影者"
           }
         },

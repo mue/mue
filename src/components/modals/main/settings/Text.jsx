@@ -49,7 +49,7 @@ export default class Text extends PureComponent {
     return (
       <>
         {(this.props.textarea === true) ?
-          <TextField label={this.props.title} value={this.state.value} onChange={this.handleChange} varient='outlined' multiline spellCheck={false} minRows={4} maxRows={10}  InputLabelProps={{ shrink: true }} />
+          <TextField label={this.props.title} value={this.state.value} onChange={this.handleChange} varient='outlined' multiline spellCheck={false} minRows={4} maxRows={10} InputLabelProps={{ shrink: true }} />
           : <TextField label={this.props.title} value={this.state.value} onChange={this.handleChange} varient='outlined' />
         }
         <span className='modalLink' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span>

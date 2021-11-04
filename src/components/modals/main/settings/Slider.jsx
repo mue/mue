@@ -68,7 +68,7 @@ export default class SliderComponent extends PureComponent {
           default={Number(this.props.default)} 
           min={Number(this.props.min)} 
           max={Number(this.props.max)} 
-          step={this.props.step || 1} 
+          step={Number(this.props.step) || 1} 
           getAriaValueText={(value) => `${value}`} 
           marks={this.props.marks || []}
         />

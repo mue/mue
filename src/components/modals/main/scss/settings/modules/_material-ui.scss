@@ -84,3 +84,12 @@ legend,
   width: 300px !important;
   display: flex !important;
 }
+
+.Mui-disabled {
+  color: #818181 !important;
+  cursor: not-allowed;
+
+  .checkbox svg {
+    fill: #818181 !important;
+  }
+}

@@ -24,17 +24,17 @@ export default class Sideload extends PureComponent {
   installAddon(input) {
     let failedReason = '';
     if (!input.name) {
-      failedReason = getMessage('modals.main.addons.sideload.errors.no_name');
+      failedReason = this.getMessage('modals.main.addons.sideload.errors.no_name');
     } else if (!input.author) {
-      failedReason = getMessage('modals.main.addons.sideload.errors.no_author');
+      failedReason = this.getMessage('modals.main.addons.sideload.errors.no_author');
     } else if (!input.type) {
-      failedReason = getMessage('modals.main.addons.sideload.errors.no_type');
+      failedReason = this.getMessage('modals.main.addons.sideload.errors.no_type');
     } else if (!input.version) {
-      failedReason = getMessage('modals.main.addons.sideload.errors.no_version');
+      failedReason = this.getMessage('modals.main.addons.sideload.errors.no_version');
     } else if (input.type === 'photos' && (!input.photos || !input.photos.length || !input.photos[0].url.default || !input.photos[0].photographer || !input.photos[0].location)) {
-      failedReason = getMessage('modals.main.addons.sideload.errors.invalid_photos');
+      failedReason = this.getMessage('modals.main.addons.sideload.errors.invalid_photos');
     } else if (input.type === 'quotes' && (!input.quotes || !input.quotes.length || !input.quotes[0].quote || !input.quotes[0].author)) {
-      failedReason = getMessage('modals.main.addons.sideload.errors.invalid_quotes');
+      failedReason = this.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
     }
 
     if (failedReason !== '') {

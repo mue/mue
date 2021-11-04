@@ -171,6 +171,7 @@
               "upload": "Hochladen",
               "add_colour": "Farbe hinzufügen",
               "add_background": "Add background",
+              "add_url": "Add URL",
               "disabled": "Deaktiviert",
               "loop_video": "Video schleife",
               "mute_video": "Video stumm",
@@ -247,6 +248,7 @@
               "title": "Navigationsleiste",
               "notes": "Notizen",
               "refresh": "Aktualisieren",
+              "hover": "Only display on hover",
               "refresh_options": {
                 "none": "Keine",
                 "page": "Seite"
@@ -381,6 +383,7 @@
             },
             "contributors": "Mitwirkende",
             "supporters": "Unterstützer",
+            "no_supporters": "There are currently no Mue supporters",
             "photographers": "Photographers"
           }
         },

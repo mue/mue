@@ -32,6 +32,10 @@ export default class Radio extends PureComponent {
       value
     });
 
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
+
     variables.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
     
     if (this.props.element) {

@@ -5,7 +5,7 @@ export default function SideloadFailedModal({ modalClose, reason }) {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center' }}>{getMessage('modals.main.error_boundary.error')}</h1>
+      <h1>{getMessage('modals.main.error_boundary.title')}</h1>
       <span>{getMessage('modals.main.addons.sideload.failed')}</span>
       <br/><br/>
       <span>{reason}</span>

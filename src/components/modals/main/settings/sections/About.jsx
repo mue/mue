@@ -41,6 +41,10 @@ export default class About extends PureComponent {
       });
     }
 
+    if (sponsors.length === 0) { 
+      sponsors = [{ handle: 'empty' }];
+    }
+
     if (this.controller.signal.aborted === true) {
       return;
     }
@@ -126,11 +130,17 @@ export default class About extends PureComponent {
 
         <h3>{this.getMessage('modals.main.settings.sections.about.supporters')}</h3>
         <p>{this.state.loading}</p>
-        {this.state.sponsors.map(({ handle, avatar }) => (
-          <Tooltip title={handle} key={handle}>
-            <a href={'https://github.com/' + handle} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar.split('?')[0] + '?s=128'} alt={handle}></img></a>
-          </Tooltip>
-        ))}
+        {this.state.sponsors.map(({ handle, avatar }) => {
+          if (handle === 'empty') {
+            return <p>{this.getMessage('modals.main.settings.sections.about.no_supporters')}</p>;
+          }
+
+          return (
+            <Tooltip title={handle} key={handle}>
+              <a href={'https://github.com/' + handle} target='_blank' rel='noopener noreferrer'><img draggable='false' className='abouticon' src={avatar.split('?')[0] + '?s=128'} alt={handle}></img></a>
+            </Tooltip>
+          )
+        })}
 
         <h3>{this.getMessage('modals.main.settings.sections.about.photographers')}</h3>
         <p>{this.state.photographers}</p>

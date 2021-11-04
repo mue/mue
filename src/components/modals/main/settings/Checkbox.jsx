@@ -20,6 +20,10 @@ export default class Checkbox extends PureComponent {
       checked: value
     });
 
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
+
     variables.stats.postEvent('setting', `${this.props.name} ${(this.state.checked === true) ? 'enabled' : 'disabled'}`);
 
     if (this.props.element) {
@@ -36,7 +40,7 @@ export default class Checkbox extends PureComponent {
     return (
       <>
         <FormControlLabel
-          control={<CheckboxUI name={this.props.name} color='primary' className='checkbox' checked={this.state.checked} onChange={this.handleChange} />}
+          control={<CheckboxUI name={this.props.name} color='primary' className='checkbox' checked={this.state.checked} onChange={this.handleChange} disabled={this.props.disabled || false} />}
           label={this.props.text}
         />
         <br/>

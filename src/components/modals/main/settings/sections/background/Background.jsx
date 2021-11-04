@@ -21,7 +21,8 @@ export default class BackgroundSettings extends PureComponent {
     this.state = {
       backgroundType: localStorage.getItem('backgroundType') || 'api',
       backgroundFilter: localStorage.getItem('backgroundFilter') || 'none',
-      backgroundCategories: [this.getMessage('modals.main.loading')]
+      backgroundCategories: [this.getMessage('modals.main.loading')],
+      backgroundAPI: localStorage.getItem('backgroundAPI') || 'mue'
     };
     this.controller = new AbortController();
   }
@@ -93,8 +94,8 @@ export default class BackgroundSettings extends PureComponent {
 
     const APISettings = (
       <>
-        <Radio title={getMessage('modals.main.settings.sections.background.source.api')} options={apiOptions} name='backgroundAPI' category='background' element='#backgroundImage'/>
-        <Dropdown label={getMessage('modals.main.settings.sections.background.category')} name='apiCategory' manual={true}>
+        <Radio title={getMessage('modals.main.settings.sections.background.source.api')} options={apiOptions} name='backgroundAPI' category='background' element='#backgroundImage' onChange={(e) => this.setState({ backgroundAPI: e })}/>
+        <Dropdown label={getMessage('modals.main.settings.sections.background.category')} name='apiCategory'>
           {this.state.backgroundCategories.map((category) => (
             <MenuItem value={category} key={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
           ))}
@@ -120,14 +121,16 @@ export default class BackgroundSettings extends PureComponent {
     if (localStorage.getItem('photo_packs') && this.state.backgroundType !== 'custom' && this.state.backgroundType !== 'colour' && this.state.backgroundType !== 'api') {
       backgroundSettings = null;
     }
+
+    const usingImage = this.state.backgroundType !== 'colour' && this.state.backgroundType !== 'random_colour' && this.state.backgroundType !== 'random_gradient';
   
     return (
       <>
         <Header title={getMessage('modals.main.settings.sections.background.title')} setting='background' category='background' element='#backgroundImage'/>
-        <Checkbox name='ddgProxy' text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')} element='.other' />
-        <Checkbox name='bgtransition' text={getMessage('modals.main.settings.sections.background.transition')} element='.other' />
-        <Checkbox name='photoInformation' text={getMessage('modals.main.settings.sections.background.photo_information')} element='.other' />
-        <Checkbox name='photoMap' text={getMessage('modals.main.settings.sections.background.show_map')} element='.other'/>
+        <Checkbox name='ddgProxy' text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')} element='.other' disabled={!usingImage} />
+        <Checkbox name='bgtransition' text={getMessage('modals.main.settings.sections.background.transition')} element='.other' disabled={!usingImage} />
+        <Checkbox name='photoInformation' text={getMessage('modals.main.settings.sections.background.photo_information')} element='.other' disabled={this.state.backgroundType !== 'api' && this.state.backgroundType !== 'marketplace'} />
+        <Checkbox name='photoMap' text={getMessage('modals.main.settings.sections.background.show_map')} element='.other' disabled={this.state.backgroundAPI !== 'unsplash'}/>
 
         <h3>{getMessage('modals.main.settings.sections.background.source.title')}</h3>
         <Dropdown label={getMessage('modals.main.settings.sections.background.type.title')} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>
@@ -141,7 +144,7 @@ export default class BackgroundSettings extends PureComponent {
         
         {backgroundSettings}
 
-        {this.state.backgroundType === 'api' && APISettings ? 
+        {this.state.backgroundType === 'api' && APISettings && this.state.backgroundAPI === 'mue' ? 
           <>
             <h3>{getMessage('modals.main.settings.sections.background.buttons.title')}</h3>
             <Checkbox name='downloadbtn' text={getMessage('modals.main.settings.sections.background.buttons.download')} element='.other' />
@@ -155,7 +158,7 @@ export default class BackgroundSettings extends PureComponent {
             <Slider title={getMessage('modals.main.settings.sections.background.effects.brightness')} name='brightness' min='0' max='100' default='90' display='%' marks={values('background')} category='background' element='#backgroundImage' />
             <br/>
             <Dropdown label={getMessage('modals.main.settings.sections.background.effects.filters.title')} name='backgroundFilter' onChange={(value) => this.setState({ backgroundFilter: value })} category='background' element='#backgroundImage'>
-              <option value='none'>None</option>
+              <option value='none'>{getMessage('modals.main.settings.sections.appearance.navbar.refresh_options.none')}</option>
               <option value='grayscale'>{getMessage('modals.main.settings.sections.background.effects.filters.grayscale')}</option>
               <option value='sepia'>{getMessage('modals.main.settings.sections.background.effects.filters.sepia')}</option>
               <option value='invert'>{getMessage('modals.main.settings.sections.background.effects.filters.invert')}</option>

@@ -171,6 +171,7 @@
               "upload": "Subir",
               "add_colour": "Añadir color",
               "add_background": "Add background",
+              "add_url": "Add URL",
               "disabled": "Desactivado",
               "loop_video": "Vídeo en bucle",
               "mute_video": "Silenciar video",
@@ -247,6 +248,7 @@
               "title": "Barra de búsqueda",
               "notes": "Notas",
               "refresh": "Botón de recargar",
+              "hover": "Only display on hover",
               "refresh_options": {
                 "none": "None",
                 "page": "Página"
@@ -380,6 +382,7 @@
             },
             "contributors": "Contribuyentes",
             "supporters": "Partidarios",
+            "no_supporters": "There are currently no Mue supporters",
             "photographers": "Fotógrafos"
           }
         },

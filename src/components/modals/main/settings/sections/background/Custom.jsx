@@ -108,8 +108,8 @@ export default class CustomSettings extends PureComponent {
       <ul>
         <p>{this.getMessage('modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
         <div className='data-buttons-row'>
-          <button onClick={() => this.uploadCustomBackground()}>Add background <AddPhotoAlternate/> </button>
-          <button onClick={() => this.setState({ customURLModal: true })}>Add URL <AddLink/></button>
+          <button onClick={() => this.uploadCustomBackground()}>{this.getMessage('modals.main.settings.sections.background.source.add_background')} <AddPhotoAlternate/></button>
+          <button onClick={() => this.setState({ customURLModal: true })}>{this.getMessage('modals.main.settings.sections.background.source.add_url')} <AddLink/></button>
         </div>
         <div className='images-row'>
           {this.state.customBackground.map((_url, index) => (
@@ -125,8 +125,8 @@ export default class CustomSettings extends PureComponent {
         </div>
         <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
         {this.props.interval}
-        <Modal closeTimeoutMS={100} isOpen={this.state.customURLModal} className='Modal resetmodal mainModal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
-          <CustomURLModal modalClose={(e) => this.addCustomURL(e)} />
+        <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ customURLModal: false })} isOpen={this.state.customURLModal} className='Modal resetmodal mainModal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
+          <CustomURLModal modalClose={(e) => this.addCustomURL(e)} modalCloseOnly={() => this.setState({ customURLModal: false })} />
         </Modal>
       </ul>
     );

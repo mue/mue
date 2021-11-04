@@ -171,6 +171,7 @@
               "upload": "Upload",
               "add_colour": "Legg til farge",
               "add_background": "Add background",
+              "add_url": "Add URL",
               "disabled": "Disabled",
               "loop_video": "Loop video",
               "mute_video": "Mute video",
@@ -247,6 +248,7 @@
               "title": "Navbar",
               "notes": "Notes",
               "refresh": "Refresh button",
+              "hover": "Only display on hover",
               "refresh_options": {
                 "none": "None",
                 "page": "Page"
@@ -380,6 +382,7 @@
             },
             "contributors": "Contributors",
             "supporters": "Supporters",
+            "no_supporters": "There are currently no Mue supporters",
             "photographers": "Photographers"
           }
         },

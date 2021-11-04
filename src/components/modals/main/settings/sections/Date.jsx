@@ -52,13 +52,13 @@ export default class DateSettings extends PureComponent {
     return (
       <>
         <Header title={getMessage('modals.main.settings.sections.date.title')} setting='date' category='date' element='.date' zoomSetting='zoomDate'/>
+        <Checkbox name='weeknumber' text={getMessage('modals.main.settings.sections.date.week_number')} category='date'/>
         <Dropdown label={getMessage('modals.main.settings.sections.time.type')} name='dateType' onChange={(value) => this.setState({ dateType: value })} category='date'>
           <option value='long'>{getMessage('modals.main.settings.sections.date.type.long')}</option>
           <option value='short'>{getMessage('modals.main.settings.sections.date.type.short')}</option>
         </Dropdown>
         
         <Checkbox name='datezero' text={getMessage('modals.main.settings.sections.time.digital.zero')} category='date'/>
-        <Checkbox name='weeknumber' text={getMessage('modals.main.settings.sections.date.week_number')} category='date'/>
         {dateSettings}
       </>
     );

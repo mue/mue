@@ -5,6 +5,7 @@ import {
   PhotoOutlined as Photos, 
   FormatQuoteOutlined as Quotes
 } from '@mui/icons-material';
+import { TextField } from '@mui/material';
 import { toast } from 'react-toastify';
 
 import { saveFile } from 'modules/helpers/settings/modals';
@@ -207,18 +208,12 @@ export default class Create extends PureComponent {
     const writeDescription = ( 
       <>
         <h3>{getMessage('modals.main.marketplace.product.information')}</h3>
-        <p>{getMessage('modals.main.addons.create.metadata.name')}</p>
-        <input type='text' value={this.state.addonMetadata.name} onInput={(e) => setMetadata(e.target.value, 'name')}/>
-        <p>{getMessage('modals.main.marketplace.product.version')}</p>
-        <input type='text' value={this.state.addonMetadata.version} onInput={(e) => setMetadata(e.target.value, 'version')}/>
-        <p>{getMessage('modals.main.marketplace.product.author')}</p>
-        <input type='text' value={this.state.addonMetadata.author} onInput={(e) => setMetadata(e.target.value, 'author')}/>
-        <p>{getMessage('modals.main.addons.create.metadata.icon_url')}</p>
-        <input type='text' value={this.state.addonMetadata.icon_url} onInput={(e) => setMetadata(e.target.value, 'icon_url')}/>
-        <p>{getMessage('modals.main.addons.create.metadata.screenshot_url')}</p>
-        <input type='text' value={this.state.addonMetadata.screenshot_url} onInput={(e) => setMetadata(e.target.value, 'screenshot_url')}/>
-        <p>{getMessage('modals.main.addons.create.metadata.description')}</p>
-        <textarea className='settingsTextarea' value={this.state.addonMetadata.description} onInput={(e) => setMetadata(e.target.value, 'description')}/>
+        <TextField label={getMessage('modals.main.addons.create.metadata.name')} varient='outlined' value={this.state.addonMetadata.name} onInput={(e) => setMetadata(e.target.value, 'name')}/>
+        <TextField label={getMessage('modals.main.marketplace.product.version')} varient='outlined' value={this.state.addonMetadata.version} onInput={(e) => setMetadata(e.target.value, 'version')}/>
+        <TextField label={getMessage('modals.main.marketplace.product.author')} varient='outlined' value={this.state.addonMetadata.author} onInput={(e) => setMetadata(e.target.value, 'author')}/>
+        <TextField label={getMessage('modals.main.addons.create.metadata.icon_url')} varient='outlined' value={this.state.addonMetadata.icon_url} onInput={(e) => setMetadata(e.target.value, 'icon_url')}/>
+        <TextField label={getMessage('modals.main.addons.create.metadata.screenshot_url')} varient='outlined' value={this.state.addonMetadata.screenshot_url} onInput={(e) => setMetadata(e.target.value, 'screenshot_url')}/>
+        <TextField label={getMessage('modals.main.addons.create.metadata.description')} varient='outlined' multiline spellCheck={false} rows={4} InputLabelProps={{ shrink: true }} value={this.state.addonMetadata.description} onInput={(e) => setMetadata(e.target.value, 'description')}/>
         <br/>
         <button onClick={() => this.changeTab(1)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
         <button onClick={() => this.changeTab(this.state.addonMetadata.type)} className='uploadbg' disabled={nextDescriptionDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
