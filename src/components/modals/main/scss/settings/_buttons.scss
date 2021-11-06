@@ -53,6 +53,15 @@
   border-radius: 12px;
   margin-right: 25px;
   width: 220px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--tab-active);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .export,

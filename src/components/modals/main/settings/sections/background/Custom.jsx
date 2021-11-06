@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
 import { Cancel, AddLink, AddPhotoAlternate } from '@mui/icons-material';
+import EventBus from 'modules/helpers/eventbus';
 
 import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
@@ -61,9 +62,10 @@ export default class CustomSettings extends PureComponent {
     localStorage.setItem('customBackground', JSON.stringify(customBackground));
   }
     
-  videoCustomSettings = (index) => {
-    const customBackground = this.state.customBackground[index];
-    if (customBackground.startsWith('data:video/') || customBackground.endsWith('.mp4') || customBackground.endsWith('.webm') || customBackground.endsWith('.ogg')) { 
+  videoCustomSettings = () => {
+    const hasVideo = Object.keys(this.state.customBackground).filter(bg => bg.startsWith('data:video/') || bg.endsWith('.mp4') || bg.endsWith('.webm') || bg.endsWith('.ogg'));
+
+    if (hasVideo) { 
       return (
         <>
           <Checkbox name='backgroundVideoLoop' text={this.getMessage('modals.main.settings.sections.background.source.loop_video')}/>
@@ -119,12 +121,12 @@ export default class CustomSettings extends PureComponent {
                   <Cancel/>
                 </button> : null}
               </div>
-              {this.videoCustomSettings(index)}
             </Fragment>
           ))}
         </div>
         <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />
         {this.props.interval}
+        {this.videoCustomSettings()}
         <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ customURLModal: false })} isOpen={this.state.customURLModal} className='Modal resetmodal mainModal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
           <CustomURLModal modalClose={(e) => this.addCustomURL(e)} modalCloseOnly={() => this.setState({ customURLModal: false })} />
         </Modal>

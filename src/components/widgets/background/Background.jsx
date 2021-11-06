@@ -210,7 +210,7 @@ export default class Background extends PureComponent {
           return this.setState(offlineBackground());
         }
 
-        if (customBackground !== '' && customBackground !== 'undefined' && customBackground !== ['']) {
+        if (customBackground !== '' && customBackground !== 'undefined' && customBackground !== [''] && customBackground !== undefined) {
           const object = {
             url: customBackground,
             type: 'custom',
