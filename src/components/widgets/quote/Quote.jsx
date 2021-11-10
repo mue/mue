@@ -90,9 +90,9 @@ export default class Quote extends PureComponent {
         }
 
         // pick random
-        customQuote = customQuote[Math.floor(Math.random() * customQuote.length)];
+        customQuote = customQuote ? customQuote[Math.floor(Math.random() * customQuote.length)] : null;
 
-        if (customQuote !== '' && customQuote !== 'undefined' && customQuote !== ['']) {
+        if (customQuote && customQuote !== '' && customQuote !== 'undefined' && customQuote !== ['']) {
           return this.setState({
             quote: '"' + customQuote.quote + '"',
             author: customQuote.author,

@@ -87,7 +87,7 @@ export default class SearchSettings extends PureComponent {
         </Dropdown>
         <ul style={{ display: this.state.customDisplay }}>
           <p style={{ marginTop: '0px' }}><span className='modalLink' onClick={() => this.resetSearch()}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
-          <TextField label={this.getMessage('modals.main.settings.sections.search.custom')} value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })} varient='outlined' />
+          <TextField label={this.getMessage('modals.main.settings.sections.search.custom')} value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })} varient='outlined' InputLabelProps={{ shrink: true }} />
         </ul>
         <Checkbox name='autocomplete' text={this.getMessage('modals.main.settings.sections.search.autocomplete')} category='search' />
         <Radio title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')} options={autocompleteProviders} name='autocompleteProvider' category='search'/>

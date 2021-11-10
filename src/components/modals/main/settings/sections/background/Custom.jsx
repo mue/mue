@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
+import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { Cancel, AddLink, AddPhotoAlternate } from '@mui/icons-material';
+import { Cancel, AddLink, AddPhotoAlternate, PersonalVideo } from '@mui/icons-material';
 import EventBus from 'modules/helpers/eventbus';
 
 import Checkbox from '../../Checkbox';
@@ -60,12 +60,18 @@ export default class CustomSettings extends PureComponent {
     this.forceUpdate();
     
     localStorage.setItem('customBackground', JSON.stringify(customBackground));
+    document.querySelector('.reminder-info').style.display = 'block';
+    localStorage.setItem('showReminder', true);
+  }
+
+  videoCheck(url) {
+    return url.startsWith('data:video/') || url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg');
   }
     
   videoCustomSettings = () => {
-    const hasVideo = Object.keys(this.state.customBackground).filter(bg => bg.startsWith('data:video/') || bg.endsWith('.mp4') || bg.endsWith('.webm') || bg.endsWith('.ogg'));
+    const hasVideo = this.state.customBackground.filter(bg => this.videoCheck(bg));
 
-    if (hasVideo) { 
+    if (hasVideo.length > 0) { 
       return (
         <>
           <Checkbox name='backgroundVideoLoop' text={this.getMessage('modals.main.settings.sections.background.source.loop_video')}/>
@@ -114,14 +120,13 @@ export default class CustomSettings extends PureComponent {
           <button onClick={() => this.setState({ customURLModal: true })}>{this.getMessage('modals.main.settings.sections.background.source.add_url')} <AddLink/></button>
         </div>
         <div className='images-row'>
-          {this.state.customBackground.map((_url, index) => (
-            <Fragment key={index}>
-              <div style={{ backgroundImage: `url(${this.state.customBackground[index]})` }}> 
-                {this.state.customBackground.length > 0 ? <button className='cleanButton' onClick={() => this.modifyCustomBackground('remove', index)}>
-                  <Cancel/>
-                </button> : null}
-              </div>
-            </Fragment>
+          {this.state.customBackground.map((url, index) => (
+            <div style={{ backgroundImage: `url(${!this.videoCheck(url) ? this.state.customBackground[index] : ''})` }} key={index}>
+              {this.videoCheck(url) ? <PersonalVideo className='customvideoicon'/> : null} 
+              {this.state.customBackground.length > 0 ? <button className='cleanButton' onClick={() => this.modifyCustomBackground('remove', index)}>
+                <Cancel/>
+              </button> : null}
+            </div>
           ))}
         </div>
         <FileUpload id='bg-input' accept='image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg' loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)} />

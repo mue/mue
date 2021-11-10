@@ -105,26 +105,33 @@ export default class KeybindSettings extends PureComponent {
         <Header title={this.getMessage('modals.main.settings.sections.keybinds.title')} setting='keybindsEnabled' element='.other' />
         <table className='keybind-table'>
           <tbody>
-            <tr>  
+            <tr>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.favourite')} state={this.state.keybinds} setting='favouriteBackground' action={(type, e) => this.action(type, e)}/></th>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.maximise')} state={this.state.keybinds} setting='maximiseBackground' action={(type, e) => this.action(type, e)}/></th>
+            </tr>
+            <tr>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.download')} state={this.state.keybinds} setting='downloadBackground' action={(type, e) => this.action(type, e)}/></th>
-            </tr> 
-            <tr>  
+              <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.show_info')} state={this.state.keybinds} setting='showBackgroundInformation' action={(type, e) => this.action(type, e)}/></th>
+            </tr>
+            <tr>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.background.show_info')} state={this.state.keybinds} setting='showBackgroundInformation' action={(type, e) => this.action(type, e)}/></th>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.quote.favourite')} state={this.state.keybinds} setting='favouriteQuote' action={(type, e) => this.action(type, e)}/></th>
+            </tr>
+            <tr>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.quote.copy')} state={this.state.keybinds} setting='copyQuote' action={(type, e) => this.action(type, e)}/></th>
-            </tr> 
-            <tr>  
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.quote.tweet')} state={this.state.keybinds} setting='tweetQuote' action={(type, e) => this.action(type, e)}/></th>
+            </tr>
+            <tr>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.notes.pin')} state={this.state.keybinds} setting='pinNotes' action={(type, e) => this.action(type, e)}/></th>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.notes.copy')} state={this.state.keybinds} setting='copyNotes' action={(type, e) => this.action(type, e)}/></th>
-            </tr> 
-            <tr>  
+            </tr>
+            <tr>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.search')} state={this.state.keybinds} setting='focusSearch' action={(type, e) => this.action(type, e)}/></th>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.quicklinks')} state={this.state.keybinds} setting='toggleQuicklinks' action={(type, e) => this.action(type, e)}/></th>
+            </tr>
+            <tr>
               <th><KeybindInput name={this.getMessage('modals.main.settings.sections.keybinds.modal')} state={this.state.keybinds} setting='toggleModal' action={(type, e) => this.action(type, e)}/></th>
-            </tr>  
+            </tr>
           </tbody>
         </table>
       </>

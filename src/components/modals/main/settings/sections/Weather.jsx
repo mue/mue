@@ -68,7 +68,7 @@ export default class TimeSettings extends PureComponent {
     return (
       <>
         <Header title={getMessage('modals.main.settings.sections.weather.title')} setting='weatherEnabled' category='widgets' zoomSetting='zoomWeather' zoomCategory='weather'/>
-        <TextField label={getMessage('modals.main.settings.sections.weather.location')} value={this.state.location} onChange={(e) => this.changeLocation(e)} placeholder='London' varient='outlined' />
+        <TextField label={getMessage('modals.main.settings.sections.weather.location')} value={this.state.location} onChange={(e) => this.changeLocation(e)} placeholder='London' varient='outlined' InputLabelProps={{ shrink: true }} />
         <span className='modalLink' onClick={() => this.getAuto()}>{getMessage('modals.main.settings.sections.weather.auto')}</span>
         <Radio name='tempformat' title={getMessage('modals.main.settings.sections.weather.temp_format.title')} options={tempFormat} category='weather'/>
 

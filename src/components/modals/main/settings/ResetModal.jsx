@@ -19,7 +19,7 @@ export default function ResetModal({ modalClose }) {
         <button className='round reset' style={{ marginLeft: 0 }} onClick={() => reset()}>
           <Delete/>
         </button>
-        <button className='round import' style={{ marginLeft: '5px' }} onClick={modalClose}>
+        <button className='round add' style={{ marginLeft: '5px' }} onClick={modalClose}>
           <Close/>
         </button>
       </div>

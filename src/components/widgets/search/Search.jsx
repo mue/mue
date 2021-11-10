@@ -114,7 +114,7 @@ export default class Search extends PureComponent {
       autocompleteQuery,
       autocompleteCallback,
       microphone,
-      currentSearch: info.name
+      currentSearch: info ? info.name : 'Custom'
     });
   }
 
