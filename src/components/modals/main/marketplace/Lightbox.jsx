@@ -1,3 +1,5 @@
+import variables from 'modules/variables';
+
 export default function Lightbox({ modalClose, img }) {
   variables.stats.postEvent('modal', 'Opened lightbox');
 

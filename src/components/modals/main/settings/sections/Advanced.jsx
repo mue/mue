@@ -42,13 +42,16 @@ export default class AdvancedSettings extends PureComponent {
            <h3>{getMessage('modals.main.settings.sections.advanced.data')}</h3>
            <br/>
            <div className='data-buttons-row'>
-             <button onClick={() => this.setState({ resetModal: true })}>{getMessage('modals.main.settings.buttons.reset')}
+             <button onClick={() => this.setState({ resetModal: true })}>
+               {getMessage('modals.main.settings.buttons.reset')}
                <ResetIcon/>
              </button>
-             <button onClick={() => exportSettings()}>{getMessage('modals.main.settings.buttons.export')}
+             <button onClick={() => exportSettings()}>
+               {getMessage('modals.main.settings.buttons.export')}
                <ExportIcon/>
              </button>
-             <button onClick={() => document.getElementById('file-input').click()}>{getMessage('modals.main.settings.buttons.import')}
+             <button onClick={() => document.getElementById('file-input').click()}>
+               {getMessage('modals.main.settings.buttons.import')}
                <ImportIcon/>
              </button>
            </div>

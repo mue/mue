@@ -529,6 +529,7 @@
       },
       "buttons": {
         "next": "下一步",
+        "preview": "Preview",
         "previous": "上一步",
         "close": "关闭"
       },

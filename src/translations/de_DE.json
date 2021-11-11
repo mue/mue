@@ -530,6 +530,7 @@
       },
       "buttons": {
         "next": "Weiter",
+        "preview": "Preview",
         "previous": "Zurück",
         "close": "Schließen"
       },

@@ -529,6 +529,7 @@
       },
       "buttons": {
         "next": "Next",
+        "preview": "Preview",
         "previous": "Previous",
         "close": "Fermer"
       },

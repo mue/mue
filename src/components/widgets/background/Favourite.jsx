@@ -38,7 +38,7 @@ export default class Favourite extends PureComponent {
           }));
           break;
         default:
-          const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
+          const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '').replace(variables.constants.DDG_IMAGE_PROXY, '');
 
           if (!url) {
             return;
