@@ -30,15 +30,16 @@ export default class Background extends PureComponent {
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
-      const url = (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true && !this.state.url.startsWith('data:')) ? variables.constants.DDG_IMAGE_PROXY + this.state.url : this.state.url;
+      let url = this.state.url;
+      if (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true && !this.state.url.startsWith('data:')) {
+        url = variables.constants.DDG_IMAGE_PROXY + this.state.url;
+      }
+
       const photoInformation = document.querySelector('.photoInformation');
 
       // just set the background
       if (localStorage.getItem('bgtransition') === 'false') {
-        if (photoInformation) {
-          photoInformation.style.display = 'block';
-        }
-        backgroundImage.style.background = null;
+        photoInformation?.[photoInformation.style.display = 'block'];
         return backgroundImage.style.background = `url(${url})`;
       }
 
@@ -47,9 +48,7 @@ export default class Background extends PureComponent {
       backgroundImage.style.background = null;
 
       // same with photo information if not using custom background
-      if (photoInformation) {
-        photoInformation.classList.add('backgroundPreload');
-      }
+      photoInformation?.classList.add('backgroundPreload');
 
       // preloader for background transition, required so it loads in nice
       const preloader = document.createElement('img');
