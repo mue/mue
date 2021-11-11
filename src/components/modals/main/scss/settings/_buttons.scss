@@ -61,6 +61,13 @@
 
   &:disabled {
     cursor: not-allowed;
+    background: none;
+    border: 1px solid var(--tab-active);
+
+    &:hover {
+      background: none;
+      border: 1px solid var(--tab-active);
+    }
   }
 }
 

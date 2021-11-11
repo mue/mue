@@ -10,7 +10,8 @@ export default class KeybindSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
-      keybinds: JSON.parse(localStorage.getItem('keybinds')) || {}
+      keybinds: JSON.parse(localStorage.getItem('keybinds')) || {},
+      cancelled: false
     };
   }
 
@@ -23,14 +24,15 @@ export default class KeybindSettings extends PureComponent {
     const currentKeybinds = this.state.keybinds;
     currentKeybinds[type] = this.getMessage('modals.main.settings.sections.keybinds.recording');
     this.setState({
-      keybinds: currentKeybinds
+      keybinds: currentKeybinds,
+      cancelled: false
     });
     this.forceUpdate();
 
     let keys = '';
     let previouskey = '';
     this.keydown = document.addEventListener('keydown', (event) => {
-      if (event.key === previouskey) {
+      if (event.key === previouskey && this.state.cancelled === true) {
         return;
       }
 
@@ -44,6 +46,10 @@ export default class KeybindSettings extends PureComponent {
     });
 
     this.keyup = document.addEventListener('keyup', () => {
+      if (this.state.cancelled === true) {
+        return;
+      }
+
       document.removeEventListener('keydown', this.keydown);
       const keybinds = this.state.keybinds;
       keybinds[type] = keys.split('+').slice(0, 4).join('+');
@@ -66,7 +72,8 @@ export default class KeybindSettings extends PureComponent {
     delete currentKeybinds[type];
 
     this.setState({
-      keybinds: currentKeybinds
+      keybinds: currentKeybinds,
+      cancelled: true
     });
     this.forceUpdate();
   }
@@ -77,7 +84,8 @@ export default class KeybindSettings extends PureComponent {
     localStorage.setItem('keybinds', JSON.stringify(keybinds));
 
     this.setState({
-      keybinds: JSON.parse(localStorage.getItem('keybinds')) || {}
+      keybinds: JSON.parse(localStorage.getItem('keybinds')) || {},
+      cancelled: true
     });
 
     this.showReminder();

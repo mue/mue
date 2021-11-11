@@ -115,13 +115,15 @@ export function loadSettings(hotreload) {
     return;
   }
 
-  const js = localStorage.getItem('customjs');
-  if (js) {
-    try {
-      // eslint-disable-next-line no-eval
-      eval(js);
-    } catch (e) {
-      console.error('Failed to run custom JS: ', e);
+  if (window.location.href.startsWith('http://') || window.location.href.startsWith('https://')){
+    const js = localStorage.getItem('customjs');
+    if (js) {
+      try {
+        // eslint-disable-next-line no-eval
+        eval(js);
+      } catch (e) {
+        console.error('Failed to run custom JS: ', e);
+      }
     }
   }
 
