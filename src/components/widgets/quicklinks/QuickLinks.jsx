@@ -96,10 +96,21 @@ export default class QuickLinks extends PureComponent {
 
   // widget zoom
   setZoom(element) {
+    const zoom = localStorage.getItem('zoomQuicklinks') || 100;
+    if (localStorage.getItem('quicklinksText')) {
+      const links = element.getElementsByTagName('a');
+
+      for (const link of links) {
+        link.style.fontSize = `${0.87 * Number(zoom / 100)}em`;
+      }
+
+      return;
+    }
+
     const images = element.getElementsByTagName('img');
 
     for (const img of images) {
-      img.style.height = `${0.87 * Number((localStorage.getItem('zoomQuicklinks') || 100) / 100)}em`;
+      img.style.height = `${0.87 * Number(zoom / 100)}em`;
     }
   }
 
@@ -153,10 +164,7 @@ export default class QuickLinks extends PureComponent {
       }
 
       const url = useProxy ? 'https://icons.duckduckgo.com/ip2/' : 'https://www.google.com/s2/favicons?sz=32&domain=';
-      let img = url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '');
-      if (item.icon) {
-        img = item.icon;
-      }
+      const img = item.icon || url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '');
 
       const link = (
         <a key={item.key} onContextMenu={(e) => this.deleteLink(item.key, e)} href={item.url} target={target} rel={rel} draggable={false}>

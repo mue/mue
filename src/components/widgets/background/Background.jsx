@@ -6,7 +6,7 @@ import PhotoInformation from './PhotoInformation';
 
 import EventBus from 'modules/helpers/eventbus';
 import Interval from 'modules/helpers/interval';
-import { videoCheck, offlineBackground, gradientStyleBuilder, randomColourStyleBuilder } from 'modules/helpers/background/widget';
+import { videoCheck, offlineBackground, getGradient, randomColourStyleBuilder } from 'modules/helpers/background/widget';
 
 import './scss/index.scss';
 
@@ -81,15 +81,27 @@ export default class Background extends PureComponent {
       offline = true;
     }
 
-    const setFavourited = (favourited) => {
+    const setFavourited = ({ type, url, credit, location, camera }) => {
+      console.log(type)
+      if (type === 'random_colour' || type === 'random_gradient') { 
+        return this.setState({ 
+          type: 'colour',
+          style: `background:${url}`
+        });
+      }
       this.setState({
-        url: favourited.url,
+        url,
         photoInfo: {
-          credit: favourited.credit,
-          location: favourited.location,
-          camera: favourited.camera
+          credit,
+          location,
+          camera
         }
       });
+    }
+
+    const favourited = JSON.parse(localStorage.getItem('favourite'));
+    if (favourited) {
+      return setFavourited(favourited);
     }
 
     const type = localStorage.getItem('backgroundType');
@@ -99,21 +111,16 @@ export default class Background extends PureComponent {
           return this.setState(offlineBackground());
         }
 
-        const favourited = JSON.parse(localStorage.getItem('favourite'));
-        if (favourited) {
-          return setFavourited(favourited);
-        }
-
         // API background
         const backgroundAPI = localStorage.getItem('backgroundAPI');
         const apiCategory = localStorage.getItem('apiCategory');
         const apiQuality = localStorage.getItem('apiQuality');
-        const photoMap = localStorage.getItem('photoMap');
+        const photoMap = (localStorage.getItem('photoMap') === 'true');
 
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            requestURL = `${variables.constants.PROXY_URL}/images/unsplash?quality=${apiQuality}&map=${(photoMap === 'true')}`;
+            requestURL = `${variables.constants.PROXY_URL}/images/unsplash?quality=${apiQuality}&map=${photoMap}`;
             break;
           case 'pexels':
             requestURL = `${variables.constants.PROXY_URL}/images/pexels?quality=${apiQuality}`;
@@ -131,13 +138,9 @@ export default class Background extends PureComponent {
           return this.setState(offlineBackground());
         }
 
-        let credit = data.photographer;
         let photoURL, photographerURL;
 
-        if (backgroundAPI === 'unsplash') {
-          photoURL = data.photo_page;
-          photographerURL = data.photographer_page;
-        } else if (backgroundAPI === 'pexels') {
+        if (backgroundAPI === 'unsplash' || backgroundAPI === 'pexels') {
           photoURL = data.photo_page;
           photographerURL = data.photographer_page;
         }
@@ -148,12 +151,12 @@ export default class Background extends PureComponent {
           currentAPI: backgroundAPI,
           photoInfo: {
             hidden: false,
-            credit: credit,
+            credit: data.photographer,
             location: data.location,
             camera: data.camera,
             url: data.file,
-            photographerURL: photographerURL,
-            photoURL: photoURL,
+            photographerURL,
+            photoURL,
             latitude: data.latitude || null,
             longitude: data.longitude || null,
             // location map token from mapbox
@@ -164,32 +167,19 @@ export default class Background extends PureComponent {
         this.setState(object);
 
         localStorage.setItem('currentBackground', JSON.stringify(object));
-      break;
+        break;
 
       case 'colour':
-        const customBackgroundColour = localStorage.getItem('customBackgroundColour') || {'angle':'180','gradient':[{'colour':'#ffb032','stop':0}],'type':'linear'};
-
-        let gradientSettings = '';
-        try {
-          gradientSettings = JSON.parse(customBackgroundColour);
-        } catch (e) {
-          const hexColorRegex = /#[0-9a-fA-F]{6}/s;
-          if (hexColorRegex.exec(customBackgroundColour)) {
-            // Colour use to be simply a hex colour or a NULL value before it was a JSON object. This automatically upgrades the hex colour value to the new standard. (NULL would not trigger an exception)
-            gradientSettings = { 'type': 'linear', 'angle': '180', 'gradient': [{ 'colour': customBackgroundColour, 'stop': 0 }] };
-            localStorage.setItem('customBackgroundColour', JSON.stringify(gradientSettings));
-          }
+        const gradient = getGradient();
+        if (gradient) {
+          this.setState(gradient);
         }
-
-        if (typeof gradientSettings === 'object' && gradientSettings !== null) {
-          return this.setState(gradientStyleBuilder(gradientSettings));
-        }
-      break;
+        break;
 
       case 'random_colour':
       case 'random_gradient':
         this.setState(randomColourStyleBuilder(type));
-      break;
+        break;
 
       case 'custom':
         let customBackground;
@@ -223,7 +213,7 @@ export default class Background extends PureComponent {
 
           localStorage.setItem('currentBackground', JSON.stringify(object));
         }
-      break;
+        break;
 
       case 'photo_pack':
         if (offline) {
@@ -248,7 +238,7 @@ export default class Background extends PureComponent {
             }
           });
         }
-      break;
+        break;
       default:
         break;
     }
@@ -314,10 +304,8 @@ export default class Background extends PureComponent {
           if (backgroundType !== this.state.type || (this.state.type === 'api' && localStorage.getItem('backgroundAPI') !== this.state.currentAPI) || (this.state.type === 'custom' && localStorage.getItem('customBackground') !== this.state.url)) {
             return refresh();
           }
-        } else {
-          if (backgroundType !== this.state.type) {
-            return refresh();
-          }
+        } else if (backgroundType !== this.state.type) {
+          return refresh();
         }
 
         // background effects so we don't get another image again
@@ -342,7 +330,8 @@ export default class Background extends PureComponent {
 
     const interval = localStorage.getItem('backgroundchange');
     if (interval && interval !== 'refresh') {
-      const type = localStorage.getItem('backgroundType')
+      const type = localStorage.getItem('backgroundType');
+
       if (type === 'api' || type === 'custom') {
         Interval(() => {
           try {

@@ -16,7 +16,7 @@ export default class Maximise extends PureComponent {
   setAttribute(blur, brightness, filter) {
     // don't attempt to modify the background if it isn't an image
     const backgroundType = localStorage.getItem('backgroundType');
-    if (backgroundType === 'colour') {
+    if (backgroundType === 'colour' || backgroundType === 'random_colour' || backgroundType === 'random_gradient') {
       return;
     }
 

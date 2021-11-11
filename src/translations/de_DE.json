@@ -532,6 +532,10 @@
         "next": "Weiter",
         "previous": "Zurück",
         "close": "Schließen"
+      },
+      "preview": {
+        "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
+        "continue": "Continue setup"
       }
     }
   },

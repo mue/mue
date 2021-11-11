@@ -10,7 +10,8 @@ export default class TimeSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
-      location: localStorage.getItem('location') || ''
+      location: localStorage.getItem('location') || '',
+      windSpeed: (localStorage.getItem('windspeed') !== 'true')
     };
   }
 
@@ -78,8 +79,8 @@ export default class TimeSettings extends PureComponent {
         <Checkbox name='cloudiness' text={getMessage('modals.main.settings.sections.weather.extra_info.cloudiness')} category='weather'/>
         <Checkbox name='humidity' text={getMessage('modals.main.settings.sections.weather.extra_info.humidity')} category='weather'/>
         <Checkbox name='visibility' text={getMessage('modals.main.settings.sections.weather.extra_info.visibility')} category='weather'/>
-        <Checkbox name='windspeed' text={getMessage('modals.main.settings.sections.weather.extra_info.wind_speed')} category='weather'/>
-        <Checkbox name='windDirection' text={getMessage('modals.main.settings.sections.weather.extra_info.wind_direction')} category='weather'/>
+        <Checkbox name='windspeed' text={getMessage('modals.main.settings.sections.weather.extra_info.wind_speed')} category='weather' onChange={() => this.setState({ windSpeed: (localStorage.getItem('windspeed') !== 'true') })}/>
+        <Checkbox name='windDirection' text={getMessage('modals.main.settings.sections.weather.extra_info.wind_direction')} category='weather' disabled={this.state.windSpeed}/> 
         <Checkbox name='mintemp' text={getMessage('modals.main.settings.sections.weather.extra_info.min_temp')} category='weather'/>
         <Checkbox name='maxtemp' text={getMessage('modals.main.settings.sections.weather.extra_info.max_temp')} category='weather'/>
         <Checkbox name='atmosphericpressure' text={getMessage('modals.main.settings.sections.weather.extra_info.atmospheric_pressure')} category='weather'/>

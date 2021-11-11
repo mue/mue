@@ -172,31 +172,30 @@ export default class Search extends PureComponent {
     const customText = variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.search.custom').split(' ')[0];
 
     return (
-      <form onSubmit={this.searchButton} className='searchBar'>
-        {localStorage.getItem('searchDropdown') === 'true' ? 
-        <div className='searchDropdown'>
-          <span className='searchSelected' onClick={() => this.toggleDropdown()}>{this.state.currentSearch}</span>
-          <div style={{ visibility: this.state.searchDropdown }}>
+      <>
+        <div>
+          {localStorage.getItem('searchDropdown') === 'true' ? 
+          <div className='searchDropdown' style={{ visibility: this.state.searchDropdown }}>
             {searchEngines.map(({ name }) => {
               if (name === this.state.currentSearch) {
-                return null;
+                 return null;
               }
 
               return (
-                <Fragment key={name}>
-                  <span className='searchDropdownList' onClick={() => this.setSearch(name)}>{name}</span>
-                  <br/>
-                </Fragment>
+                <span className='searchDropdownList' onClick={() => this.setSearch(name)}>{name}</span>
               );
             })}
             {this.state.currentSearch !== customText ? <span className='searchDropdownList' onClick={() => this.setSearch(customText, 'custom')}>{customText}</span> : null}
-          </div>
-        </div> : null}
-        {this.state.microphone}
-        <SearchIcon onClick={this.searchButton}/>
-        <AutocompleteInput placeholder={variables.language.getMessage(variables.languagecode, 'widgets.search')} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
-        {variables.keybinds.focusSearch && variables.keybinds.focusSearch !== '' ? <Hotkeys keyName={variables.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null}
-      </form>
+          </div>: null}
+        </div>
+        <form onSubmit={this.searchButton} className='searchBar'>
+        {localStorage.getItem('searchDropdown') === 'true' ? <span className="dropdown-span" onClick={() => this.toggleDropdown()}>{this.state.currentSearch}</span> : ''}
+          {this.state.microphone}
+          <SearchIcon onClick={this.searchButton}/>
+          <AutocompleteInput placeholder={variables.language.getMessage(variables.languagecode, 'widgets.search')} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
+          {variables.keybinds.focusSearch && variables.keybinds.focusSearch !== '' ? <Hotkeys keyName={variables.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null}
+        </form>
+      </>
     );
   }
 }

@@ -26,23 +26,44 @@ export default class Favourite extends PureComponent {
       });
       variables.stats.postEvent('feature', 'Background favourite');
     } else {
-      const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
+      const type = localStorage.getItem('backgroundType');
+      switch (type) {
+        case 'colour':
+          return;
+        case 'random_colour':
+        case 'random_gradient':
+          localStorage.setItem('favourite', JSON.stringify({
+            type: localStorage.getItem('backgroundType'),
+            url: document.getElementById('backgroundImage').style.background
+          }));
+          break;
+        default:
+          const url = document.getElementById('backgroundImage').style.backgroundImage.replace('url("', '').replace('")', '');
 
-      if (!url) {
-        return;
+          if (!url) {
+            return;
+          }
+
+          if (type === 'custom') {
+            localStorage.setItem('favourite', JSON.stringify({
+              type,
+              url    
+            }));
+          } else {
+            // photo information now hides information if it isn't sent, unless if photoinformation hover is hidden
+            const location = document.getElementById('infoLocation');
+            const camera = document.getElementById('infoCamera');
+    
+            localStorage.setItem('favourite', JSON.stringify({
+              type,
+              url, 
+              credit: document.getElementById('credit').textContent || '',
+              location: location ? location.innerText : 'N/A',
+              camera: camera ? camera.innerText : 'N/A',
+              resolution: document.getElementById('infoResolution').textContent || '',          
+            }));
+          }
       }
-
-      // photo information now hides information if it isn't sent, unless if photoinformation hover is hidden
-      const location = document.getElementById('infoLocation');
-      const camera = document.getElementById('infoCamera');
-
-      localStorage.setItem('favourite', JSON.stringify({ 
-        url: url, 
-        credit: document.getElementById('credit').textContent,
-        location: location ? location.innerText : 'N/A',
-        camera: camera ? camera.innerText : 'N/A',
-        resolution: document.getElementById('infoResolution').textContent
-      }));
 
       this.setState({
         favourited: this.buttons.favourited
@@ -53,7 +74,7 @@ export default class Favourite extends PureComponent {
 
   render() {
     const backgroundType = localStorage.getItem('backgroundType');
-    if (backgroundType === 'colour' || backgroundType === 'custom') {
+    if (backgroundType === 'colour') {
       return null;
     }
 
