@@ -12,7 +12,7 @@ const widget_name = {
   time: getMessage('modals.main.settings.sections.time.title'),
   quicklinks: getMessage('modals.main.settings.sections.quicklinks.title'),
   quote: getMessage('modals.main.settings.sections.quote.title'),
-  date: getMessage('modals.main.settings.sections.greeting.title'),
+  date: getMessage('modals.main.settings.sections.date.title'),
   message: getMessage('modals.main.settings.sections.message.title')
 };
 
