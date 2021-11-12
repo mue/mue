@@ -22,15 +22,10 @@ export default class BackgroundSettings extends PureComponent {
       backgroundType: localStorage.getItem('backgroundType') || 'api',
       backgroundFilter: localStorage.getItem('backgroundFilter') || 'none',
       backgroundCategories: [this.getMessage('modals.main.loading')],
-      backgroundAPI: localStorage.getItem('backgroundAPI') || 'mue'
+      backgroundAPI: localStorage.getItem('backgroundAPI') || 'mue',
+      marketplaceEnabled: localStorage.getItem('photo_packs')
     };
     this.controller = new AbortController();
-  }
-
-  marketplaceType = () => {
-    if (localStorage.getItem('photo_packs')) {
-      return <option value='photo_pack'>{this.getMessage('modals.main.navbar.marketplace')}</option>;
-    }
   }
 
   async getBackgroundCategories() {
@@ -134,7 +129,7 @@ export default class BackgroundSettings extends PureComponent {
 
         <h3>{getMessage('modals.main.settings.sections.background.source.title')}</h3>
         <Dropdown label={getMessage('modals.main.settings.sections.background.type.title')} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>
-          {this.marketplaceType()}
+          {this.state.marketplaceEnabled ? <option value='photo_pack'>{this.getMessage('modals.main.navbar.marketplace')}</option> : null}
           <option value='api'>{getMessage('modals.main.settings.sections.background.type.api')}</option>
           <option value='custom'>{getMessage('modals.main.settings.sections.background.type.custom_image')}</option>
           <option value='colour'>{getMessage('modals.main.settings.sections.background.type.custom_colour')}</option>
@@ -151,7 +146,7 @@ export default class BackgroundSettings extends PureComponent {
           </>
         : null}
   
-        {this.state.backgroundType === 'api' || this.state.backgroundType === 'custom' || this.state.backgroundType === 'marketplace' ?
+        {this.state.backgroundType === 'api' || this.state.backgroundType === 'custom' || this.state.marketplaceEnabled ?
           <>
             <h3>{getMessage('modals.main.settings.sections.background.effects.title')}</h3>
             <Slider title={getMessage('modals.main.settings.sections.background.effects.blur')} name='blur' min='0' max='100' default='0' display='%' marks={values('background')} category='background' element='#backgroundImage' />

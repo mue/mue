@@ -309,12 +309,13 @@ export default class Background extends PureComponent {
         }
 
         // background effects so we don't get another image again
-        const backgroundFilter = localStorage.getItem('backgroundFilter');
+        const backgroundFilterSetting = localStorage.getItem('backgroundFilter');
+        const backgroundFilter = backgroundFilterSetting && backgroundFilterSetting !== 'none';
 
         if (this.state.video === true) {
-          document.getElementById('backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}`;
+          document.getElementById('backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilterSetting + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}`;
         } else {
-          element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}`;
+          element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilterSetting + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}`;
         }
       }
 

@@ -73,6 +73,10 @@
     font-size: 2em;
   }
 
+  span {
+    user-select: text;
+  }
+
   h1,
   .MuiSvgIcon-root {
     user-select: none;

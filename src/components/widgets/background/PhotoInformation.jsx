@@ -74,7 +74,7 @@ export default function PhotoInformation({ info, url, api }) {
     );
   }
 
-  const downloadEnabled = (localStorage.getItem('downloadbtn') === 'true') && !info.offline && !info.photographerURL;
+  const downloadEnabled = (localStorage.getItem('downloadbtn') === 'true') && !info.offline && !info.photographerURL && api;
   const downloadBackground = () => { 
     if (downloadEnabled) {
       downloadImage(info);
