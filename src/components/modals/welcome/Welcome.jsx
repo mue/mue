@@ -91,7 +91,7 @@ export default class WelcomeModal extends PureComponent {
     return (
       <div className='welcomeContent'>
         <section>
-          <img className='showcaseimg' alt='celebration' draggable={false} src={this.state.image} />
+          <img className='showcaseimg' alt='sidebar icon' draggable={false} src={this.state.image} />
           <ProgressBar count={this.images} currentTab={this.state.currentTab} switchTab={(tab) => this.switchTab(tab)}/>  
         </section>
         <section>

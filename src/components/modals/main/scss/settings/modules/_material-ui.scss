@@ -97,3 +97,7 @@ legend,
 .MuiPaper-root {
   background-color: var(--background) !important;
 }
+
+.MuiSlider-valueLabel {
+  background-color: var(--tab-active) !important;
+}
