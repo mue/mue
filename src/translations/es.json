@@ -111,7 +111,7 @@
             "author_link": "Enlace del autor",
             "custom": "Cita personalizada",
             "custom_author": "Autor personalizado",
-            "add": "Add quote",
+            "add": "Añadir cita",
             "buttons": {
               "title": "Botones",
               "copy": "Botón de copiar",
@@ -133,7 +133,7 @@
             "ddg_image_proxy": "Utilizar el proxy de imágenes de DuckDuckGo",
             "transition": "Transición fade-in",
             "photo_information": "Ver información de la foto",
-            "show_map": "Show location map on photo information if available",
+            "show_map": "Mostrar el mapa de la ubicación en la información de la foto si está disponible",
             "category": "Categoría",
             "buttons": {
               "title": "Botones",
@@ -160,8 +160,8 @@
               "api": "API",
               "custom_image": "Imagen personalizada",
               "custom_colour": "Color/degradado personalizado",
-              "random_colour": "Random colour",
-              "random_gradient": "Random gradient"
+              "random_colour": "Color aleatorio",
+              "random_gradient": "Degradado aleatorio"
             },
             "source": {
               "title": "Fuente",
@@ -170,8 +170,8 @@
               "custom_colour": "Color del fondo personalizado",
               "upload": "Subir",
               "add_colour": "Añadir color",
-              "add_background": "Add background",
-              "add_url": "Add URL",
+              "add_background": "Añadir fondo",
+              "add_url": "Añadir URL",
               "disabled": "Desactivado",
               "loop_video": "Vídeo en bucle",
               "mute_video": "Silenciar video",
@@ -229,12 +229,12 @@
             "title": "Enlaces rápidos",
             "open_new": "Abrir en una nueva pestaña",
             "tooltip": "Descripción emergente",
-            "text_only": "Show text only"
+            "text_only": "Mostrar solo texto"
           },
           "message": {
-            "title": "Message",
-            "add": "Add message",
-            "text": "Text"
+            "title": "Mensaje",
+            "add": "Añadir mensaje",
+            "text": "Texto"
           },
           "appearance": {
             "title": "Apariencia",
@@ -248,9 +248,9 @@
               "title": "Barra de búsqueda",
               "notes": "Notas",
               "refresh": "Botón de recargar",
-              "hover": "Only display on hover",
+              "hover": "Solo mostrar al pasar el cursor",
               "refresh_options": {
-                "none": "None",
+                "none": "Ninguno",
                 "page": "Página"
               }
             },
@@ -279,7 +279,7 @@
             "accessibility": {
               "title": "Accesibilidad",
               "animations": "Animaciones",
-              "text_shadow": "Widget text shadow",
+              "text_shadow": "Sombra de texto del widget",
               "widget_zoom": "Zoom del widget",
               "toast_duration": "Duración de la notificación",
               "milliseconds": "milisegundos"
@@ -324,13 +324,13 @@
           },
           "keybinds": {
             "title": "Keybinds",
-            "recording": "Recording...",
-            "click_to_record": "Click to record",
+            "recording": "Grabando...",
+            "click_to_record": "Click para grabar",
             "background": {
-              "favourite": "Favourite background",
-              "maximise": "Maximise background",
-              "download": "Download background",
-              "show_info": "Show background information"
+              "favourite": "Fondo favorito",
+              "maximise": "Maximizar fondo",
+              "download": "Descargar fondo",
+              "show_info": "Mostrar información del fondo"
             },
             "quote": {
               "favourite": "Favourite quote",
@@ -356,7 +356,7 @@
           },
           "changelog": {
             "title": "Registro de cambios",
-            "by": "By {author}"
+            "by": "Por {author}"
           },
           "about": {
             "title": "Acerca de",
@@ -382,7 +382,7 @@
             },
             "contributors": "Contribuyentes",
             "supporters": "Partidarios",
-            "no_supporters": "There are currently no Mue supporters",
+            "no_supporters": "Actualmente no hay partidarios de Mue",
             "photographers": "Fotógrafos"
           }
         },
@@ -406,7 +406,7 @@
           "buttons": {
             "addtomue": "Añadir a Mue",
             "remove": "Desinstalar",
-            "update_addon": "Update Add-on"
+            "update_addon": "Actualizar complemento"
           },
           "quote_warning": {
             "title": "Advertencia",
@@ -533,7 +533,7 @@
       },
       "buttons": {
         "next": "Siguiente",
-        "preview": "Preview",
+        "preview": "Vista previa",
         "previous": "Anterior",
         "close": "Cerrar"
       },
@@ -549,7 +549,7 @@
     "reset": "Restablecido correctamente",
     "installed": "Instalado correctamente",
     "uninstalled": "Desinstalado correctamente",
-    "updated": "Successfully updated",
+    "updated": "Actualizado correctamente",
     "error": "Algo salió mal",
     "imported": "Importado correctamente"
   }
