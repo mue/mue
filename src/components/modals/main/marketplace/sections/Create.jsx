@@ -254,16 +254,13 @@ export default class Create extends PureComponent {
         </Dropdown>
         {this.state.addonMetadata.type === 'quote_api' ? <>
           <h3>{getMessage('modals.main.addons.create.quotes.api.title')}</h3>
-          <p>{getMessage('modals.main.addons.create.quotes.api.url')}</p>
-          <input type='text' value={this.state.addonData.url} onChange={(e) => this.updateQuotePackAPI('url', e.target.value)}/>
-          <p>{getMessage('modals.main.addons.create.quotes.api.name')}</p>
-          <input type='text' value={this.state.addonData.name} onChange={(e) => this.updateQuotePackAPI('name', e.target.value)}/>
-          <p>{getMessage('modals.main.addons.create.quotes.api.author')}</p>
-          <input type='text' value={this.state.addonData.author} onChange={(e) => this.updateQuotePackAPI('author', e.target.value)}/>
+          <TextField label={getMessage('modals.main.addons.create.quotes.api.url')} varient='outlined' InputLabelProps={{ shrink: true }} value={this.state.addonData.url} onInput={(e) => this.updateQuotePack(e.target.value, 'url')}/>
+          <TextField label={getMessage('modals.main.addons.create.quotes.api.name')} varient='outlined' InputLabelProps={{ shrink: true }} value={this.state.addonData.name} onInput={(e) => this.updateQuotePack(e.target.value, 'name')}/>
+          <TextField label={getMessage('modals.main.addons.create.quotes.api.author')} varient='outlined' InputLabelProps={{ shrink: true }} value={this.state.addonData.author} onInput={(e) => this.updateQuotePack(e.target.value, 'author')}/>
           <br/><br/>
         </> : <>
           <h3>{getMessage('modals.main.addons.create.quotes.local.title')}</h3>
-          <button onClick={() => this.importQuotes()} className='uploadbg' style={{ marginRight: '10px' }}>Import Current</button>
+          <button onClick={() => this.importQuotes()} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.main.addons.create.settings.current')}</button>
           <br/><br/>
         </>}
         <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
@@ -277,7 +274,7 @@ export default class Create extends PureComponent {
       <>
         <h3>{getMessage('modals.main.addons.create.photos.title')}</h3>
         <h3>{getMessage('modals.main.addons.create.quotes.local.title')}</h3>
-        <button onClick={() => this.importPhotos()} className='uploadbg' style={{ marginRight: '10px' }}>Import Current</button>
+        <button onClick={() => this.importPhotos()} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.main.addons.create.settings.current')}</button>
         <br/><br/>
         <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
         <button onClick={() => this.changeTab(3)} className='uploadbg' disabled={nextPhotosDisabled}>{getMessage('modals.welcome.buttons.next')}</button>

@@ -20,7 +20,7 @@ export default class Item extends PureComponent {
   updateAddon() {
     uninstall(this.props.data.type, this.props.data.display_name);
     install(this.props.data.type, this.props.data);
-    toast('Successfully updated!');
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.updated'));
     this.setState({ 
       showUpdateButton: false 
     });
@@ -57,7 +57,7 @@ export default class Item extends PureComponent {
         <Fragment key='update'>
           <br/><br/>
           <button className='removeFromMue' onClick={() => this.updateAddon()}>
-            Update Add-on
+            {getMessage('modals.main.addons.product.buttons.update_addon')}
           </button>
         </Fragment>
       );

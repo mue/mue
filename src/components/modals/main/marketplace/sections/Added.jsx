@@ -102,9 +102,11 @@ export default class Added extends PureComponent {
     });
     
     if (updates > 0) { 
-      toast('Updates available: ' + updates);
+      toast(this.getMessage('modals.main.addons.updates_available', {
+        amount: updates
+      }));
     } else {
-      toast('No updates available');
+      toast(this.getMessage('modals.main.addons.no_updates'));
     }
   }
 
@@ -137,7 +139,7 @@ export default class Added extends PureComponent {
           <option value='a-z'>{this.getMessage('modals.main.addons.sort.a_z')}</option>
           <option value='z-a'>{this.getMessage('modals.main.addons.sort.z_a')}</option>
         </Dropdown>
-        <button className='addToMue sideload updateCheck' onClick={() => this.updateCheck()}>Check for updates</button>
+        <button className='addToMue sideload updateCheck' onClick={() => this.updateCheck()}>{this.getMessage('modals.main.addons.check_updates')}</button>
         <br/>
         <Items items={this.state.installed} toggleFunction={(input) => this.toggle('item', input)} />        
       </>

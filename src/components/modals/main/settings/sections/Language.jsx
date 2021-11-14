@@ -26,16 +26,16 @@ export default class LanguageSettings extends PureComponent {
       return;
     }
 
-    let array = [];
+    const quoteLanguages = [];
     data.forEach((item) => {
-      array.push({
+      quoteLanguages.push({
         name: item,
         value: item
       });
     });
 
     this.setState({
-      quoteLanguages: array
+      quoteLanguages
     });
   }
 

@@ -405,7 +405,8 @@
           "author": "Auteur",
           "buttons": {
             "addtomue": "Ajouter à Mue",
-            "remove": "Enlever"
+            "remove": "Enlever",
+            "update_addon": "Update Add-on"
           },
           "quote_warning": {
             "title": "Warning",
@@ -419,6 +420,9 @@
       },
       "addons": {
         "added": "Ajoutées",
+        "check_updates": "Check for updates",
+        "no_updates": "No updates available",
+        "updates_available": "Updates avaialble {amount}",
         "empty": {
           "title": "C'est vide par ici",
           "description": "Dirigez vous vers le marché pour ajouter des options"
@@ -545,6 +549,7 @@
     "reset": "Réinitialisé avec succès",
     "installed": "Installé avec succès",
     "uninstalled": "Enlevé avec succès",
+    "updated": "Successfully updated",
     "error": "Quelque chose s'est mal passé",
     "imported": "Importé avec succès"
   }

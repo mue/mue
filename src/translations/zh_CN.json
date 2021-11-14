@@ -405,7 +405,8 @@
           "author": "作者",
           "buttons": {
             "addtomue": "添加至 Mue",
-            "remove": "卸载"
+            "remove": "卸载",
+            "update_addon": "Update Add-on"
           },
           "quote_warning": {
             "title": "注意",
@@ -419,6 +420,9 @@
       },
       "addons": {
         "added": "已添加",
+        "check_updates": "Check for updates",
+        "no_updates": "No updates available",
+        "updates_available": "Updates avaialble {amount}",
         "empty": {
           "title": "这里空空如也",
           "description": "请访问插件市场来添加插件。"
@@ -545,6 +549,7 @@
     "reset": "重置成功",
     "installed": "安装成功",
     "uninstalled": "卸载成功",
+    "updated": "Successfully updated",
     "error": "发生错误",
     "imported": "导入成功"
   }

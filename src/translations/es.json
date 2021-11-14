@@ -405,7 +405,8 @@
           "author": "Autor",
           "buttons": {
             "addtomue": "Añadir a Mue",
-            "remove": "Desinstalar"
+            "remove": "Desinstalar",
+            "update_addon": "Update Add-on"
           },
           "quote_warning": {
             "title": "Advertencia",
@@ -419,6 +420,9 @@
       },
       "addons": {
         "added": "Añadidos",
+        "check_updates": "Check for updates",
+        "no_updates": "No updates available",
+        "updates_available": "Updates avaialble {amount}",
         "empty": {
           "title": "Vacío",
           "description": "Dirígete a la tienda para agregar algunos."
@@ -545,6 +549,7 @@
     "reset": "Restablecido correctamente",
     "installed": "Instalado correctamente",
     "uninstalled": "Desinstalado correctamente",
+    "updated": "Successfully updated",
     "error": "Algo salió mal",
     "imported": "Importado correctamente"
   }

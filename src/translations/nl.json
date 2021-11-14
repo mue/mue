@@ -405,7 +405,8 @@
           "author": "Maker",
           "buttons": {
             "addtomue": "Toevoegen aan Mue",
-            "remove": "Verwijderen"
+            "remove": "Verwijderen",
+            "update_addon": "Update Add-on"
           },
           "quote_warning": {
             "title": "Waarschuwing",
@@ -419,6 +420,9 @@
       },
       "addons": {
         "added": "Toegevoegd",
+        "check_updates": "Check for updates",
+        "no_updates": "No updates available",
+        "updates_available": "Updates avaialble {amount}",
         "empty": {
           "title": "Het is hier erg leeg",
           "description": "Ga naar de marktplaats om een paar extensies toe te voegen"
@@ -545,6 +549,7 @@
     "reset": "Het herstellen is voltooid",
     "installed": "De installatie is voltooid",
     "uninstalled": "Het verwijderen is voltooid",
+    "updated": "Successfully updated",
     "error": "Er is iets misgegaan",
     "imported": "Het importeren is voltooid"
   }

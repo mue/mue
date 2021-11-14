@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
+import { PureComponent } from 'react';
 import { Cancel, Add } from '@mui/icons-material';
 import { TextField } from '@mui/material';
 
