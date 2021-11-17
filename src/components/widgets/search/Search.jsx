@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { Search as SearchIcon, Mic } from '@mui/icons-material';
-import Hotkeys from 'react-hot-keys';
+//import Hotkeys from 'react-hot-keys';
 
 import AutocompleteInput from 'components/helpers/autocomplete/Autocomplete';
 
@@ -178,7 +178,7 @@ export default class Search extends PureComponent {
           <div className='searchDropdown' style={{ visibility: this.state.searchDropdown }}>
             {searchEngines.map(({ name }) => {
               if (name === this.state.currentSearch) {
-                 return null;
+                return null;
               }
 
               return (
@@ -193,7 +193,7 @@ export default class Search extends PureComponent {
           {this.state.microphone}
           <SearchIcon onClick={this.searchButton}/>
           <AutocompleteInput placeholder={variables.language.getMessage(variables.languagecode, 'widgets.search')} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
-          {variables.keybinds.focusSearch && variables.keybinds.focusSearch !== '' ? <Hotkeys keyName={variables.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null}
+          {/*variables.keybinds.focusSearch && variables.keybinds.focusSearch !== '' ? <Hotkeys keyName={variables.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null*/}
         </form>
       </>
     );

@@ -20,7 +20,7 @@ import {
   Translate as Language,
   SettingsOutlined as Advanced,
   BugReportOutlined as Experimental,
-  KeyboardAltOutlined as Keybinds,
+  //KeyboardAltOutlined as Keybinds,
   AssessmentOutlined as Stats,
   NewReleasesOutlined as Changelog,
   InfoOutlined as About,
@@ -66,7 +66,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.settings.sections.appearance.title'): icon = <Appearance/>; break;
     case getMessage('modals.main.settings.sections.language.title'): icon = <Language/>; divider = true; break;
     case getMessage('modals.main.settings.sections.advanced.title'): icon = <Advanced/>; break;
-    case getMessage('modals.main.settings.sections.keybinds.title'): icon = <Keybinds/>; break;
+    //case getMessage('modals.main.settings.sections.keybinds.title'): icon = <Keybinds/>; break;
     case getMessage('modals.main.settings.sections.stats.title'): icon = <Stats/>; break;
     case getMessage('modals.main.settings.sections.experimental.title'): icon = <Experimental/>; divider = true; break;
     case getMessage('modals.main.settings.sections.changelog.title'): icon = <Changelog/>; break;

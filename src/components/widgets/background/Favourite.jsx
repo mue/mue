@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { Star, StarBorder } from '@mui/icons-material';
-import Hotkeys from 'react-hot-keys';
+//import Hotkeys from 'react-hot-keys';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -81,7 +81,7 @@ export default class Favourite extends PureComponent {
     return (
       <Tooltip title={variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.background.buttons.favourite')}>
         {this.state.favourited}
-        {variables.keybinds.favouriteBackground && variables.keybinds.favouriteBackground !== '' ? <Hotkeys keyName={variables.keybinds.favouriteBackground} onKeyDown={() => this.favourite()} /> : null}
+        {/*variables.keybinds.favouriteBackground && variables.keybinds.favouriteBackground !== '' ? <Hotkeys keyName={variables.keybinds.favouriteBackground} onKeyDown={() => this.favourite()} /> : null*/}
       </Tooltip>
     );
   }

@@ -1,8 +1,8 @@
 import variables from 'modules/variables';
 import { useState, Fragment } from 'react';
 import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@mui/icons-material';
-import Hotkeys from 'react-hot-keys';
-import { lat2tile, lon2tile } from 'modules/helpers/background/widget';
+//import Hotkeys from 'react-hot-keys';
+//import { lat2tile, lon2tile } from 'modules/helpers/background/widget';
 
 const toDataURL = async (url) => {
   const res = await fetch(url);
@@ -75,7 +75,7 @@ export default function PhotoInformation({ info, url, api }) {
   }
 
   const downloadEnabled = (localStorage.getItem('downloadbtn') === 'true') && !info.offline && !info.photographerURL && api;
-  const downloadBackground = () => { 
+  /*const downloadBackground = () => { 
     if (downloadEnabled) {
       downloadImage(info);
     }
@@ -90,9 +90,9 @@ export default function PhotoInformation({ info, url, api }) {
         element.style.display = 'none';
       }
     }
-  };
+  };*/
 
-  const photoMap = () => {
+  {/*const photoMap = () => {
     if (localStorage.getItem('photoMap') !== 'true' || !info.latitude || !info.longitude) {
       return null;
     }
@@ -119,7 +119,7 @@ export default function PhotoInformation({ info, url, api }) {
         </span>
       </Fragment>
     );
-  }
+  }*/}
 
   return (
     <div className='photoInformation'>
@@ -129,7 +129,7 @@ export default function PhotoInformation({ info, url, api }) {
         <Info className='infoIcon'/>
         <h1>{variables.language.getMessage(variables.languagecode, 'widgets.background.information')}</h1>
         <hr/>
-        {photoMap()}
+        {/*photoMap()*/}
         {/* fix console error by using fragment and key */}
         {info.location && info.location !== 'N/A' ? <Fragment key='location'>
           <LocationOn/>
@@ -150,8 +150,8 @@ export default function PhotoInformation({ info, url, api }) {
           </> 
         : null}
       </div>
-      {variables.keybinds.downloadBackground && variables.keybinds.downloadBackground !== '' ? <Hotkeys keyName={variables.keybinds.downloadBackground} onKeyDown={() => downloadBackground()} /> : null}
-      {variables.keybinds.showBackgroundInformation && variables.keybinds.showBackgroundInformation !== '' ? <Hotkeys keyName={variables.keybinds.showBackgroundInformation} onKeyDown={() => showBackgroundInformation()} /> : null}
+      {/*variables.keybinds.downloadBackground && variables.keybinds.downloadBackground !== '' ? <Hotkeys keyName={variables.keybinds.downloadBackground} onKeyDown={() => downloadBackground()} /> : null*/}
+      {/*variables.keybinds.showBackgroundInformation && variables.keybinds.showBackgroundInformation !== '' ? <Hotkeys keyName={variables.keybinds.showBackgroundInformation} onKeyDown={() => showBackgroundInformation()} /> : null*/}
     </div>
   );
 }
