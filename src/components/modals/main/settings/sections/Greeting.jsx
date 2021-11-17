@@ -37,7 +37,7 @@ export default class GreetingSettings extends PureComponent {
         <br/>
         <Checkbox name='birthdayage' text={getMessage('modals.main.settings.sections.greeting.birthday_age')} category='greeting'/>
         <p>{getMessage('modals.main.settings.sections.greeting.birthday_date')}</p>
-        <input type='date' onChange={this.changeDate} value={this.state.birthday.toISOString().substr(0, 10)}/>
+        <input type='date' onChange={this.changeDate} value={this.state.birthday.toISOString().substr(0, 10)} required/>
       </>
     );
   }
