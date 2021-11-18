@@ -15,7 +15,7 @@ import Order from '../settings/sections/Order';
 import Appearance from '../settings/sections/Appearance';
 import Language from '../settings/sections/Language';
 import Advanced from '../settings/sections/Advanced';
-import Keybinds from '../settings/sections/Keybinds';
+//import Keybinds from '../settings/sections/Keybinds';
 import Stats from '../settings/sections/Stats';
 import Experimental from '../settings/sections/Experimental';
 import Changelog from '../settings/sections/Changelog';
@@ -41,7 +41,7 @@ export default function Settings() {
         <div label={getMessage('modals.main.settings.sections.appearance.title')} name='appearance'><Appearance/></div>
         <div label={getMessage('modals.main.settings.sections.language.title')} name='language'><Language/></div>
         <div label={getMessage('modals.main.settings.sections.advanced.title')} name='advanced'><Advanced/></div>
-        <div label={getMessage('modals.main.settings.sections.keybinds.title')} name='keybinds'><Keybinds/></div>
+        {/*<div label={getMessage('modals.main.settings.sections.keybinds.title')} name='keybinds'><Keybinds/></div>*/}
         <div label={getMessage('modals.main.settings.sections.stats.title')} name='stats'><Stats/></div>
         <div label={getMessage('modals.main.settings.sections.experimental.title')} name='experimental'><Experimental/></div>
         <div label={getMessage('modals.main.settings.sections.changelog.title')} name='changelog'><Changelog/></div>

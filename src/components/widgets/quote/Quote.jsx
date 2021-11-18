@@ -2,7 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@mui/icons-material';
 import { toast } from 'react-toastify';
-import Hotkeys from 'react-hot-keys';
+//import Hotkeys from 'react-hot-keys';
 
 import Interval from 'modules/helpers/interval';
 import EventBus from 'modules/helpers/eventbus';
@@ -277,9 +277,9 @@ export default class Quote extends PureComponent {
           <br/>
           {this.state.copy} {this.state.tweet} {this.state.favourited}
         </h1>
-        {variables.keybinds.favouriteQuote && variables.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={variables.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null}
-        {variables.keybinds.tweetQuote && variables.keybinds.tweetQuote !== '' ? <Hotkeys keyName={variables.keybinds.tweetQuote} onKeyDown={() => this.tweetQuote()} /> : null}
-        {variables.keybinds.copyQuote && variables.keybinds.copyQuote !== '' ? <Hotkeys keyName={variables.keybinds.copyQuote} onKeyDown={() => this.copyQuote()} /> : null}
+        {/*variables.keybinds.favouriteQuote && variables.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={variables.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null*/}
+        {/*variables.keybinds.tweetQuote && variables.keybinds.tweetQuote !== '' ? <Hotkeys keyName={variables.keybinds.tweetQuote} onKeyDown={() => this.tweetQuote()} /> : null*/}
+        {/*variables.keybinds.copyQuote && variables.keybinds.copyQuote !== '' ? <Hotkeys keyName={variables.keybinds.copyQuote} onKeyDown={() => this.copyQuote()} /> : null*/}
       </div>
     );
   }

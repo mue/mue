@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Suspense, lazy } from 'react';
 import Modal from 'react-modal';
-import Hotkeys from 'react-hot-keys';
+//import Hotkeys from 'react-hot-keys';
 
 import Main from './main/Main';
 import Navbar from '../widgets/navbar/Navbar';
@@ -89,7 +89,7 @@ export default class Modals extends PureComponent {
           </Modal>
         </Suspense>
         {this.state.preview ? <Preview setup={() => window.location.reload()}/> : null}
-        {variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null} 
+        {/*variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null*/} 
       </>
     );
   }

@@ -121,3 +121,9 @@ p.author {
   max-width: 250px;
   overflow-x: hidden;
 }
+
+@media (max-height: 1080px) { 
+  .dropdownsortAddons {
+    margin-top: 40px !important;
+  }
+}

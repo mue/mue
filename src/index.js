@@ -42,9 +42,9 @@ if (localStorage.getItem('stats') === 'true') {
   variables.stats = Stats;
 }
 
-if (localStorage.getItem('keybindsEnabled') === 'true') {
+/*if (localStorage.getItem('keybindsEnabled') === 'true') {
   variables.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
-}
+}*/
 
 render(
   <App/>,

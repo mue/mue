@@ -4,7 +4,7 @@
   "default_locale": "en",
   "name": "__MSG_name__",
   "description": "__MSG_description__",
-  "version": "5.3.3",
+  "version": "6.0.1",
   "homepage_url": "https://muetab.com",
   "browser_action": {
     "default_icon": "icons/128x128.png"

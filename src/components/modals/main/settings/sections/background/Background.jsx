@@ -125,7 +125,7 @@ export default class BackgroundSettings extends PureComponent {
         <Checkbox name='ddgProxy' text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')} element='.other' disabled={!usingImage} />
         <Checkbox name='bgtransition' text={getMessage('modals.main.settings.sections.background.transition')} element='.other' disabled={!usingImage} />
         <Checkbox name='photoInformation' text={getMessage('modals.main.settings.sections.background.photo_information')} element='.other' disabled={this.state.backgroundType !== 'api' && this.state.backgroundType !== 'marketplace'} />
-        <Checkbox name='photoMap' text={getMessage('modals.main.settings.sections.background.show_map')} element='.other' disabled={this.state.backgroundAPI !== 'unsplash'}/>
+        {/*<Checkbox name='photoMap' text={getMessage('modals.main.settings.sections.background.show_map')} element='.other' disabled={this.state.backgroundAPI !== 'unsplash'}/>*/}
 
         <h3>{getMessage('modals.main.settings.sections.background.source.title')}</h3>
         <Dropdown label={getMessage('modals.main.settings.sections.background.type.title')} name='backgroundType' onChange={(value) => this.setState({ backgroundType: value })} category='background'>
