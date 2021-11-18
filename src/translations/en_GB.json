@@ -422,7 +422,7 @@
         "added": "Added",
         "check_updates": "Check for updates",
         "no_updates": "No updates available",
-        "updates_available": "Updates avaialble {amount}",
+        "updates_available": "Updates available {amount}",
         "empty": {
           "title": "Empty",
           "description": "No addons are installed"
