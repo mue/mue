@@ -22,7 +22,7 @@
       "new": "Nuevo enlace",
       "name": "Nombre",
       "url": "URL",
-      "icon": "Icon (optional)",
+      "icon": "Icono (opcional)",
       "add": "Añadir",
       "name_error": "Debe indicar el nombre",
       "url_error": "Debe indicar la URL"
@@ -323,7 +323,7 @@
             "usage": "Estadísticas de uso"
           },
           "keybinds": {
-            "title": "Keybinds",
+            "title": "Asignación de teclas",
             "recording": "Grabando...",
             "click_to_record": "Click para grabar",
             "background": {
@@ -333,17 +333,17 @@
               "show_info": "Mostrar información del fondo"
             },
             "quote": {
-              "favourite": "Favourite quote",
-              "copy": "Copy quote",
-              "tweet": "Tweet quote"
+              "favourite": "Marcar la cita como favorita",
+              "copy": "Copiar cita",
+              "tweet": "Tuitear la cita"
             },
             "notes": {
-              "pin": "Pin notes",
-              "copy": "Copy notes"
+              "pin": "Fijar notas",
+              "copy": "Copiar notas"
             },
-            "search": "Focus search",
-            "quicklinks": "Toggle add quick link",
-            "modal": "Toggle modal"
+            "search": "Enfocar búsqueda",
+            "quicklinks": "Alternar añadir enlace rápido",
+            "modal": "Alternal modal"
           },
           "experimental": {
             "title": "Experimental",
@@ -420,22 +420,22 @@
       },
       "addons": {
         "added": "Añadidos",
-        "check_updates": "Check for updates",
-        "no_updates": "No updates available",
-        "updates_available": "Updates avaialble {amount}",
+        "check_updates": "Comprobar actualizaciones",
+        "no_updates": "No hay actualizaciones disponibles",
+        "updates_available": "Actualizaciones disponibles {amount}",
         "empty": {
           "title": "Vacío",
           "description": "Dirígete a la tienda para agregar algunos."
         },
         "sideload": {
           "title": "Cargar localmente",
-          "failed": "Failed to sideload addon",
+          "failed": "Fallo en la carga lateral del complemento",
           "errors": {
-            "no_name": "No name provided",
-            "no_author": "No author provided",
-            "no_type": "No type provided",
-            "invalid_photos": "Invalid photos object",
-            "invalid_quotes": "Invalid quotes object"
+            "no_name": "No se ha indicado el nombre",
+            "no_author": "No se ha indicado el autor",
+            "no_type": "No se ha indicado el tipo",
+            "invalid_photos": "Objeto de fotos inválido",
+            "invalid_quotes": "Objeto de citas inválido"
           }
         },
         "sort": {
@@ -492,7 +492,7 @@
       }
     },
     "welcome": {
-      "tip": "Truco",
+      "tip": "Consejo",
       "sections": {
         "intro": {
           "title": "Bienvenido a Mue Tab",
@@ -538,8 +538,8 @@
         "close": "Cerrar"
       },
       "preview": {
-        "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
-        "continue": "Continue setup"
+        "description": "Actualmente se encuentra en el modo de vista previa. La configuración se restablecerá al cerrar esta pestaña.",
+        "continue": "Continuar con la configuración"
       }
     }
   },
