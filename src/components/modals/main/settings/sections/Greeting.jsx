@@ -15,10 +15,10 @@ export default class GreetingSettings extends PureComponent {
   }
 
   changeDate = (e) => {
-    localStorage.setItem('birthday', e.target.value);
+    localStorage.setItem('birthday', e.target.value || new Date());
 
     this.setState({
-      birthday: new Date(e.target.value)
+      birthday: e.target.value ? new Date(e.target.value) : new Date()
     });
   }
 

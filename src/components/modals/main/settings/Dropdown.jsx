@@ -50,7 +50,7 @@ export default class Dropdown extends PureComponent {
     const label = this.props.label || '';
 
     return (
-      <FormControl fullWidth>
+      <FormControl fullWidth className={id}>
         <InputLabel id={id}>{label}</InputLabel>
         <Select labelId={id} id={this.props.name} value={this.state.value} label={label} onChange={this.onChange} ref={this.dropdown} key={id}>
           {this.props.manual ? this.props.children : this.props.children.map((e, index) => {
