@@ -22,7 +22,7 @@
       "new": "Nuevo enlace",
       "name": "Nombre",
       "url": "URL",
-      "icon": "Icon (optional)",
+      "icon": "Icono (opcional)",
       "add": "Añadir",
       "name_error": "Debe indicar el nombre",
       "url_error": "Debe indicar la URL"
@@ -111,7 +111,7 @@
             "author_link": "Enlace del autor",
             "custom": "Cita personalizada",
             "custom_author": "Autor personalizado",
-            "add": "Add quote",
+            "add": "Añadir cita",
             "buttons": {
               "title": "Botones",
               "copy": "Botón de copiar",
@@ -133,7 +133,7 @@
             "ddg_image_proxy": "Utilizar el proxy de imágenes de DuckDuckGo",
             "transition": "Transición fade-in",
             "photo_information": "Ver información de la foto",
-            "show_map": "Show location map on photo information if available",
+            "show_map": "Mostrar el mapa de la ubicación en la información de la foto si está disponible",
             "category": "Categoría",
             "buttons": {
               "title": "Botones",
@@ -160,8 +160,8 @@
               "api": "API",
               "custom_image": "Imagen personalizada",
               "custom_colour": "Color/degradado personalizado",
-              "random_colour": "Random colour",
-              "random_gradient": "Random gradient"
+              "random_colour": "Color aleatorio",
+              "random_gradient": "Degradado aleatorio"
             },
             "source": {
               "title": "Fuente",
@@ -170,8 +170,8 @@
               "custom_colour": "Color del fondo personalizado",
               "upload": "Subir",
               "add_colour": "Añadir color",
-              "add_background": "Add background",
-              "add_url": "Add URL",
+              "add_background": "Añadir fondo",
+              "add_url": "Añadir URL",
               "disabled": "Desactivado",
               "loop_video": "Vídeo en bucle",
               "mute_video": "Silenciar video",
@@ -229,12 +229,12 @@
             "title": "Enlaces rápidos",
             "open_new": "Abrir en una nueva pestaña",
             "tooltip": "Descripción emergente",
-            "text_only": "Show text only"
+            "text_only": "Mostrar solo texto"
           },
           "message": {
-            "title": "Message",
-            "add": "Add message",
-            "text": "Text"
+            "title": "Mensaje",
+            "add": "Añadir mensaje",
+            "text": "Texto"
           },
           "appearance": {
             "title": "Apariencia",
@@ -248,9 +248,9 @@
               "title": "Barra de búsqueda",
               "notes": "Notas",
               "refresh": "Botón de recargar",
-              "hover": "Only display on hover",
+              "hover": "Solo mostrar al pasar el cursor",
               "refresh_options": {
-                "none": "None",
+                "none": "Ninguno",
                 "page": "Página"
               }
             },
@@ -279,7 +279,7 @@
             "accessibility": {
               "title": "Accesibilidad",
               "animations": "Animaciones",
-              "text_shadow": "Widget text shadow",
+              "text_shadow": "Sombra de texto del widget",
               "widget_zoom": "Zoom del widget",
               "toast_duration": "Duración de la notificación",
               "milliseconds": "milisegundos"
@@ -323,27 +323,27 @@
             "usage": "Estadísticas de uso"
           },
           "keybinds": {
-            "title": "Keybinds",
-            "recording": "Recording...",
-            "click_to_record": "Click to record",
+            "title": "Asignación de teclas",
+            "recording": "Grabando...",
+            "click_to_record": "Click para grabar",
             "background": {
-              "favourite": "Favourite background",
-              "maximise": "Maximise background",
-              "download": "Download background",
-              "show_info": "Show background information"
+              "favourite": "Fondo favorito",
+              "maximise": "Maximizar fondo",
+              "download": "Descargar fondo",
+              "show_info": "Mostrar información del fondo"
             },
             "quote": {
-              "favourite": "Favourite quote",
-              "copy": "Copy quote",
-              "tweet": "Tweet quote"
+              "favourite": "Marcar la cita como favorita",
+              "copy": "Copiar cita",
+              "tweet": "Tuitear la cita"
             },
             "notes": {
-              "pin": "Pin notes",
-              "copy": "Copy notes"
+              "pin": "Fijar notas",
+              "copy": "Copiar notas"
             },
-            "search": "Focus search",
-            "quicklinks": "Toggle add quick link",
-            "modal": "Toggle modal"
+            "search": "Enfocar búsqueda",
+            "quicklinks": "Alternar añadir enlace rápido",
+            "modal": "Alternal modal"
           },
           "experimental": {
             "title": "Experimental",
@@ -356,7 +356,7 @@
           },
           "changelog": {
             "title": "Registro de cambios",
-            "by": "By {author}"
+            "by": "Por {author}"
           },
           "about": {
             "title": "Acerca de",
@@ -382,7 +382,7 @@
             },
             "contributors": "Contribuyentes",
             "supporters": "Partidarios",
-            "no_supporters": "There are currently no Mue supporters",
+            "no_supporters": "Actualmente no hay partidarios de Mue",
             "photographers": "Fotógrafos"
           }
         },
@@ -406,7 +406,7 @@
           "buttons": {
             "addtomue": "Añadir a Mue",
             "remove": "Desinstalar",
-            "update_addon": "Update Add-on"
+            "update_addon": "Actualizar complemento"
           },
           "quote_warning": {
             "title": "Advertencia",
@@ -420,22 +420,22 @@
       },
       "addons": {
         "added": "Añadidos",
-        "check_updates": "Check for updates",
-        "no_updates": "No updates available",
-        "updates_available": "Updates avaialble {amount}",
+        "check_updates": "Comprobar actualizaciones",
+        "no_updates": "No hay actualizaciones disponibles",
+        "updates_available": "Actualizaciones disponibles {amount}",
         "empty": {
           "title": "Vacío",
           "description": "Dirígete a la tienda para agregar algunos."
         },
         "sideload": {
           "title": "Cargar localmente",
-          "failed": "Failed to sideload addon",
+          "failed": "Fallo en la carga lateral del complemento",
           "errors": {
-            "no_name": "No name provided",
-            "no_author": "No author provided",
-            "no_type": "No type provided",
-            "invalid_photos": "Invalid photos object",
-            "invalid_quotes": "Invalid quotes object"
+            "no_name": "No se ha indicado el nombre",
+            "no_author": "No se ha indicado el autor",
+            "no_type": "No se ha indicado el tipo",
+            "invalid_photos": "Objeto de fotos inválido",
+            "invalid_quotes": "Objeto de citas inválido"
           }
         },
         "sort": {
@@ -492,7 +492,7 @@
       }
     },
     "welcome": {
-      "tip": "Truco",
+      "tip": "Consejo",
       "sections": {
         "intro": {
           "title": "Bienvenido a Mue Tab",
@@ -533,13 +533,13 @@
       },
       "buttons": {
         "next": "Siguiente",
-        "preview": "Preview",
+        "preview": "Vista previa",
         "previous": "Anterior",
         "close": "Cerrar"
       },
       "preview": {
-        "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
-        "continue": "Continue setup"
+        "description": "Actualmente se encuentra en el modo de vista previa. La configuración se restablecerá al cerrar esta pestaña.",
+        "continue": "Continuar con la configuración"
       }
     }
   },
@@ -549,7 +549,7 @@
     "reset": "Restablecido correctamente",
     "installed": "Instalado correctamente",
     "uninstalled": "Desinstalado correctamente",
-    "updated": "Successfully updated",
+    "updated": "Actualizado correctamente",
     "error": "Algo salió mal",
     "imported": "Importado correctamente"
   }
