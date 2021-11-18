@@ -422,7 +422,7 @@
         "added": "Ajoutées",
         "check_updates": "Check for updates",
         "no_updates": "No updates available",
-        "updates_available": "Updates avaialble {amount}",
+        "updates_available": "Updates available {amount}",
         "empty": {
           "title": "C'est vide par ici",
           "description": "Dirigez vous vers le marché pour ajouter des options"

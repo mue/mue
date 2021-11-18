@@ -422,7 +422,7 @@
         "added": "Toegevoegd",
         "check_updates": "Check for updates",
         "no_updates": "No updates available",
-        "updates_available": "Updates avaialble {amount}",
+        "updates_available": "Updates available {amount}",
         "empty": {
           "title": "Het is hier erg leeg",
           "description": "Ga naar de marktplaats om een paar extensies toe te voegen"

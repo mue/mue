@@ -423,7 +423,7 @@
         "added": "Hinzugefügt",
         "check_updates": "Check for updates",
         "no_updates": "No updates available",
-        "updates_available": "Updates avaialble {amount}",
+        "updates_available": "Updates available {amount}",
         "empty": {
           "title": "Hier ist es leer",
           "description": "Gehen Sie zum Marktplatz, um einige hinzuzufügen"

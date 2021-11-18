@@ -422,7 +422,7 @@
         "added": "Добавлен",
         "check_updates": "Check for updates",
         "no_updates": "No updates available",
-        "updates_available": "Updates avaialble {amount}",
+        "updates_available": "Updates available {amount}",
         "empty": {
           "title": "Здесь пусто",
           "description": "Зайдите в магазин, чтобы найти что-то интересное"

@@ -422,7 +422,7 @@
         "added": "Lagt til",
         "check_updates": "Check for updates",
         "no_updates": "No updates available",
-        "updates_available": "Updates avaialble {amount}",
+        "updates_available": "Updates available {amount}",
         "empty": {
           "title": "Det er tomt her.",
           "description": "Gå til markedsplassen å legg til noe"
