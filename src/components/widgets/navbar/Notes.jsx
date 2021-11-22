@@ -51,7 +51,7 @@ export default class Notes extends PureComponent {
           <NotesRounded/>
           <h3>{variables.language.getMessage(variables.languagecode, 'widgets.navbar.notes.title')}</h3>
         </div>
-        <TextareaAutosize rowsmax={50} placeholder={variables.language.getMessage(variables.languagecode, 'widgets.navbar.notes.placeholder')} value={this.state.notes} onChange={this.setNotes}/>
+        <TextareaAutosize placeholder={variables.language.getMessage(variables.languagecode, 'widgets.navbar.notes.placeholder')} value={this.state.notes} onChange={this.setNotes}/>
         <button onClick={() => this.pin()} className='pinNote'><PushPin/></button>
         <button onClick={() => this.copy()} className='copyNote'><FileCopyRounded/></button>
         {/*variables.keybinds.pinNotes && variables.keybinds.pinNotes !== '' ? <Hotkeys keyName={variables.keybinds.pinNotes} onKeyDown={() => this.pin()}/> : null*/}

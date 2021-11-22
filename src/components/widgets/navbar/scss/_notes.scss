@@ -23,6 +23,12 @@
   position: absolute;
   top: 80%;
   margin-left: -150px;
+  max-height: 80vh !important;
+
+  textarea {
+    max-height: 65vh !important;
+    overflow-y: visible !important;
+  }
 
   svg {
     float: left;
