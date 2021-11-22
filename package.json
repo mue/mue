@@ -40,7 +40,7 @@
     "@eartharoid/deep-merge": "^0.0.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-transform-react-class-to-function": "^1.2.2",
-    "copy-webpack-plugin": "^9.0.1",
+    "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^6.5.1",
     "eslint": "^8.2.0",
     "eslint-config-react-app": "^6.0.0",
