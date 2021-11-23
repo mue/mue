@@ -53,6 +53,7 @@ p.description {
   background: var(--sidebar);
   width: 350px;
   border-radius: 12px;
+  min-height: 180px;
 
   h4 {
     cursor: initial !important;
@@ -74,4 +75,5 @@ p.description {
 
 .overview {
   font-size: 30px !important;
+  margin-top: 33px;
 }

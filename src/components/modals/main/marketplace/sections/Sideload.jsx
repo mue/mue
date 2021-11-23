@@ -31,7 +31,7 @@ export default class Sideload extends PureComponent {
       failedReason = this.getMessage('modals.main.addons.sideload.errors.no_type');
     } else if (!input.version) {
       failedReason = this.getMessage('modals.main.addons.sideload.errors.no_version');
-    } else if (input.type === 'photos' && (!input.photos || !input.photos.length || !input.photos[0].url.default || !input.photos[0].photographer || !input.photos[0].location)) {
+    } else if (input.type === 'photos' && (!input.photos || !input.photos.length || !input.photos[0].url || !input.photos[0].url.default || !input.photos[0].photographer || !input.photos[0].location)) {
       failedReason = this.getMessage('modals.main.addons.sideload.errors.invalid_photos');
     } else if (input.type === 'quotes' && (!input.quotes || !input.quotes.length || !input.quotes[0].quote || !input.quotes[0].author)) {
       failedReason = this.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
