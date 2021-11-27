@@ -90,11 +90,19 @@ export default class BackgroundSettings extends PureComponent {
     const APISettings = (
       <>
         <Radio title={getMessage('modals.main.settings.sections.background.source.api')} options={apiOptions} name='backgroundAPI' category='background' element='#backgroundImage' onChange={(e) => this.setState({ backgroundAPI: e })}/>
-        <Dropdown label={getMessage('modals.main.settings.sections.background.category')} name='apiCategory'>
-          {this.state.backgroundCategories.map((category) => (
-            <MenuItem value={category} key={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
-          ))}
-        </Dropdown>
+        {this.state.backgroundCategories[0] === getMessage('modals.main.loading') ?
+          <>
+            <Dropdown label={getMessage('modals.main.settings.sections.background.category')} name='apiCategory'>
+              <MenuItem value='loading' key='loading'>{getMessage('modals.main.loading')}</MenuItem>
+              <MenuItem value='loading' key='loading'>{getMessage('modals.main.loading')}</MenuItem>
+            </Dropdown>
+          </> : 
+          <Dropdown label={getMessage('modals.main.settings.sections.background.category')} name='apiCategory' >
+            {this.state.backgroundCategories.map((category) => (
+              <MenuItem value={category} key={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
+            ))}
+          </Dropdown>
+        }
         <Dropdown label={getMessage('modals.main.settings.sections.background.source.quality.title')} name='apiQuality' element='.other'>
           <option value='original'>{getMessage('modals.main.settings.sections.background.source.quality.original')}</option>
           <option value='high'>{getMessage('modals.main.settings.sections.background.source.quality.high')}</option>

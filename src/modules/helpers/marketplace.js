@@ -48,6 +48,7 @@ export function install(type, input, sideload) {
       localStorage.setItem('quoteType', 'quote_pack');
       EventBus.dispatch('refresh', 'quote');
       break;
+
     default:
       break;
   }
@@ -78,6 +79,7 @@ export function uninstall(type, name) {
       });
       showReminder();
       break;
+
     case 'quotes':
       localStorage.removeItem('quote_packs');
       localStorage.removeItem('quoteAPI');
@@ -85,12 +87,14 @@ export function uninstall(type, name) {
       localStorage.removeItem('oldQuoteType');
       EventBus.dispatch('refresh', 'marketplacequoteuninstall');
       break;
+
     case 'photos':
       localStorage.removeItem('photo_packs');
       localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
       localStorage.removeItem('oldBackgroundType');
       EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');
       break;
+
     default:
       break;
   }
