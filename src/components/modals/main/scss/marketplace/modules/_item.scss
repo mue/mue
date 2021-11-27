@@ -73,6 +73,17 @@ p.description {
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .side {
+    margin-top: 222px;
+    float: none !important;
+  }
+
+  .overview {
+    margin-top: -160px !important;
+  }
+}
+
 .overview {
   font-size: 30px !important;
   margin-top: 33px;
