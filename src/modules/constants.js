@@ -29,4 +29,4 @@ export const DONATE_USERNAME = 'davidcralph'; // this only works if you use the 
 
 export const OFFLINE_IMAGES = 20;
 
-export const VERSION = '6.0.2'; 
+export const VERSION = '6.0.3'; 

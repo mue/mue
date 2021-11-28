@@ -68,8 +68,8 @@ export default class Create extends PureComponent {
     this.setState({
       addonData: settings,
       settingsClasses: {
-        current: input ? 'toggle lightTheme' : 'toggle lightTheme',
-        json: input ? 'toggle lightTheme' : 'toggle lightTheme'
+        current: input ? 'toggle lightTheme active' : 'toggle lightTheme',
+        json: input ? 'toggle lightTheme active' : 'toggle lightTheme'
       }
     });
 
