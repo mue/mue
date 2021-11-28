@@ -35,7 +35,12 @@ export default class Autocomplete extends PureComponent {
       input: e.target.innerText
     });
 
-    this.props.onClick(e);
+    this.props.onClick({
+      preventDefault: () => e.preventDefault(),
+      target: {
+        value: e.target.innerText
+      }
+    });
   };
 
   componentDidMount() {
