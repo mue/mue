@@ -68,8 +68,8 @@ export default class Create extends PureComponent {
     this.setState({
       addonData: settings,
       settingsClasses: {
-        current: input ? 'toggle lightTheme' : 'toggle lightTheme active',
-        json: input ? 'toggle lightTheme active' : 'toggle lightTheme'
+        current: input ? 'toggle lightTheme' : 'toggle lightTheme',
+        json: input ? 'toggle lightTheme' : 'toggle lightTheme'
       }
     });
 
@@ -232,9 +232,9 @@ export default class Create extends PureComponent {
     const nextSettingsDisabled = (this.state.addonData === '') ? true : false;
     const importSettings = (
       <>
-        <h3>{getMessage('modals.mwelcome.sections.title')}</h3>
-        <div className='themesToggleArea'>
-          <div className='options'>
+        <h3>{getMessage('modals.welcome.sections.settings.title')}</h3>
+        <div className='themesToggleArea' >
+          <div className='options' style={{ maxWidth: '512px' }}>
             <div className={this.state.settingsClasses.current} onClick={() => this.importSettings()}>
               <ExportIcon/>
               <span>{getMessage('modals.main.addons.create.settings.current')}</span>
@@ -268,11 +268,18 @@ export default class Create extends PureComponent {
           <TextField label={getMessage('modals.main.addons.create.quotes.api.author')} varient='outlined' InputLabelProps={{ shrink: true }} value={this.state.addonData.author} onInput={(e) => this.updateQuotePack(e.target.value, 'author')}/>
           <br/><br/>
         </> : <>
-          <button onClick={() => this.importQuotes()} className='uploadbg' style={{ margin: '10px' }}>{getMessage('modals.main.addons.create.settings.current')}</button>
-          <br/><br/>
+        <div className='themesToggleArea'>
+          <div className='options'>
+            <div onClick={() => this.importQuotes()} className='toggle lightTheme' style={{ width: '60%', margin: '10px 0 10px 0' }}>
+              <ExportIcon/>
+              <span>{getMessage('modals.main.addons.create.settings.current')}</span>
+            </div>
+          </div>
+        </div>
+        <br/>
         </>}
         <button onClick={() => this.changeTab(2)} className='uploadbg'>{getMessage('modals.welcome.buttons.previous')}</button>
-        <button onClick={() => this.changeTab(3)} className='uploadbg' style={{ margin: '10px' }}disabled={nextQuotesDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
+        <button onClick={() => this.changeTab(3)} className='uploadbg' style={{ margin: '10px' }} disabled={nextQuotesDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
       </>
     );
 
@@ -281,8 +288,15 @@ export default class Create extends PureComponent {
     const addPhotos = (
       <>
         <h3>{getMessage('modals.main.addons.create.photos.title')}</h3>
-        <button onClick={() => this.importPhotos()} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.main.addons.create.settings.current')}</button>
-        <br/><br/>
+        <div className='themesToggleArea'>
+          <div className='options'>
+            <div onClick={() => this.importPhotos()} className='toggle lightTheme' style={{ width: '60%', margin: '10px 0 10px 0' }}>
+              <ExportIcon/>
+              <span>{getMessage('modals.main.addons.create.settings.current')}</span>
+            </div>
+          </div>
+        </div>
+        <br/>
         <button onClick={() => this.changeTab(2)} className='uploadbg'>{getMessage('modals.welcome.buttons.previous')}</button>
         <button onClick={() => this.changeTab(3)} className='uploadbg' style={{ margin: '10px' }} disabled={nextPhotosDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
       </>
@@ -292,13 +306,13 @@ export default class Create extends PureComponent {
       <>
         <div className='themesToggleArea'>
           <div className='options'>
-            <div onClick={() => this.downloadAddon()} className='toggle lightTheme' style={{ width: '60%' }}>
+            <div onClick={() => this.downloadAddon()} className='toggle lightTheme' style={{ width: '60%', margin: '10px 0 10px 0' }}>
               <ExportIcon/>
               <span>{getMessage('modals.main.addons.create.finish.download')}</span>
             </div>
           </div>
         </div>
-        <br/><br/>
+        <br/>
         <button onClick={() => this.changeTab((this.state.addonMetadata.type === 'quote_api') ? 'quotes' : this.state.addonMetadata.type)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
       </>
     );

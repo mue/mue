@@ -79,7 +79,7 @@
 
 .themesToggleArea {
   .active {
-    background: var(--tab-active) !important;
+    background: var(--tab-active);
   }
 
   .toggle {
@@ -96,9 +96,10 @@
     align-content: center;
     justify-content: center;
 
+    cursor: pointer;
+
     &:hover {
       background: var(--tab-active);
-      cursor: pointer;
     }
 
     span {

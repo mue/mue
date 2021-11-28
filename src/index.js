@@ -22,7 +22,7 @@ if (languagecode === 'en') {
 }
 
 variables.language = new I18n(variables.languagecode, {
-  de: require('./translations/de_DE.json'),
+  de_DE: require('./translations/de_DE.json'),
   en_GB: require('./translations/en_GB.json'),
   en_US: require('./translations/en_US.json'),
   es: require('./translations/es.json'),
