@@ -58,7 +58,8 @@ export default class Create extends PureComponent {
     const data = input || localStorage;
     let settings = {};
     Object.keys(data).forEach((key) => {
-      if (key === 'statsData' || key === 'firstRun' || key === 'showWelcome' || key === 'language' || key === 'installed' || key === 'stats') {
+      if (key === 'statsData' || key === 'firstRun' || key === 'showWelcome' || key === 'language' || key === 'installed' || key === 'stats' || key === 'backup_settings' || key === 'showReminder' 
+      || key === 'experimental' || key === 'debugtimeout' || key === 'quotelanguage') {
         return;
       }
       settings[key] = localStorage.getItem(key);
@@ -270,7 +271,7 @@ export default class Create extends PureComponent {
           <button onClick={() => this.importQuotes()} className='uploadbg' style={{ margin: '10px' }}>{getMessage('modals.main.addons.create.settings.current')}</button>
           <br/><br/>
         </>}
-        <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ margin: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
+        <button onClick={() => this.changeTab(2)} className='uploadbg'>{getMessage('modals.welcome.buttons.previous')}</button>
         <button onClick={() => this.changeTab(3)} className='uploadbg' style={{ margin: '10px' }}disabled={nextQuotesDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
       </>
     );
@@ -282,15 +283,21 @@ export default class Create extends PureComponent {
         <h3>{getMessage('modals.main.addons.create.photos.title')}</h3>
         <button onClick={() => this.importPhotos()} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.main.addons.create.settings.current')}</button>
         <br/><br/>
-        <button onClick={() => this.changeTab(2)} className='uploadbg' style={{ margin: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
+        <button onClick={() => this.changeTab(2)} className='uploadbg'>{getMessage('modals.welcome.buttons.previous')}</button>
         <button onClick={() => this.changeTab(3)} className='uploadbg' style={{ margin: '10px' }} disabled={nextPhotosDisabled}>{getMessage('modals.welcome.buttons.next')}</button>
       </>
     );
 
     const downloadAddon = (
       <>
-        <h3>{getMessage('modals.main.addons.create.finish.title')}</h3>
-        <button onClick={() => this.downloadAddon()} className='upload'>{getMessage('modals.main.addons.create.finish.download')}</button>
+        <div className='themesToggleArea'>
+          <div className='options'>
+            <div onClick={() => this.downloadAddon()} className='toggle lightTheme' style={{ width: '60%' }}>
+              <ExportIcon/>
+              <span>{getMessage('modals.main.addons.create.finish.download')}</span>
+            </div>
+          </div>
+        </div>
         <br/><br/>
         <button onClick={() => this.changeTab((this.state.addonMetadata.type === 'quote_api') ? 'quotes' : this.state.addonMetadata.type)} className='uploadbg' style={{ marginRight: '10px' }}>{getMessage('modals.welcome.buttons.previous')}</button>
       </>

@@ -58,6 +58,11 @@ input {
     padding: 15px 20px;
     border-radius: 4px;
     display: flex !important;
+    cursor: pointer;
+
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
   }
 }
 
