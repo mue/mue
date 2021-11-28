@@ -6,8 +6,10 @@
   color: var(--modal-text);
   background: var(--background);
   max-width: 300px;
-  border-radius: 0.7em;
+  border-radius: .7em;
   z-index: 999;
+  text-align: left;
+  cursor: default;
 
   h1 {
     font-size: 1rem;

@@ -5,14 +5,14 @@ export const MARKETPLACE_URL = 'https://marketplace.muetab.com';
 export const SPONSORS_URL = 'https://sponsors.muetab.com';
 export const GITHUB_URL = 'https://api.github.com';
 export const DDG_IMAGE_PROXY = 'https://external-content.duckduckgo.com/iu/?u=';
-//export const MAPBOX_URL = 'https://api.mapbox.com';
+export const MAPBOX_URL = 'https://api.mapbox.com';
+export const OPENSTREETMAP_URL = 'https://www.openstreetmap.org';
 
 // Mue URLs
 export const WEBSITE_URL = 'https://muetab.com';
 export const PRIVACY_URL = 'https://muetab.com/privacy';
 export const BLOG_POST = 'https://blog.muetab.com/posts/version-6-0';
 export const TRANSLATIONS_URL = 'https://docs.muetab.com/translations/';
-export const CDN_URL = 'https://res.cloudinary.com/mue/image/upload';
 
 // Mue Info
 export const ORG_NAME = 'mue';

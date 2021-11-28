@@ -2,7 +2,6 @@ import variables from 'modules/variables';
 import { useState, Fragment } from 'react';
 import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@mui/icons-material';
 //import Hotkeys from 'react-hot-keys';
-//import { lat2tile, lon2tile } from 'modules/helpers/background/widget';
 
 const toDataURL = async (url) => {
   const res = await fetch(url);
@@ -26,6 +25,7 @@ const downloadImage = async (info) => {
 export default function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
+  const [usePhotoMap, setPhotoMap] = useState(false);
 
   if (info.hidden === true || !info.credit) {
     return null;
@@ -75,7 +75,7 @@ export default function PhotoInformation({ info, url, api }) {
   }
 
   const downloadEnabled = (localStorage.getItem('downloadbtn') === 'true') && !info.offline && !info.photographerURL && api;
-  /*const downloadBackground = () => { 
+  const downloadBackground = () => { 
     if (downloadEnabled) {
       downloadImage(info);
     }
@@ -90,36 +90,36 @@ export default function PhotoInformation({ info, url, api }) {
         element.style.display = 'none';
       }
     }
-  };*/
+  };
 
-  {/*const photoMap = () => {
-    if (localStorage.getItem('photoMap') !== 'true' || !info.latitude || !info.longitude) {
+  const photoMap = () => {
+    if (localStorage.getItem('photoMap') !== 'true' || !info.latitude || !info.longitude || usePhotoMap === false) {
       return null;
     }
 
     const zoom = 12;
-    const lat = lat2tile(info.latitude, zoom);
-    const lon = lon2tile(info.longitude, zoom);
-    const tile = `${variables.constants.MAPBOX_URL}/styles/v1/mapbox/streets-v11/tiles/${zoom}/${lon}/${lat}?access_token=${info.maptoken}`;
-    
-    let icon = variables.constants.CDN_URL + '/mapbox/mapbox-logo-dark.png';
-    if (document.body.classList.contains('dark')) {
-      icon = variables.constants.CDN_URL + '/mapbox/mapbox-logo-white.png';
-    }
+    const tile = `${variables.constants.MAPBOX_URL}/styles/v1/mapbox/streets-v11/static/pin-s+555555(${info.longitude},${info.latitude})/${info.longitude},${info.latitude},${zoom},0/300x100?access_token=${info.maptoken}`;
 
     return (
-      <Fragment key='test'>
-        <a href={`https://www.openstreetmap.org/?mlat=${info.latitude}&mlon=${info.longitude}`} target='_blank' rel='noopener noreferrer'>
+      <Fragment key='photomap'>
+        <a href={`${variables.constants.OPENSTREETMAP_URL}/?mlat=${info.latitude}&mlon=${info.longitude}`} target='_blank' rel='noopener noreferrer'>
           <img className='locationMap' src={tile} alt='location' draggable={false}/>
         </a>
         <br/>
-        <img className='mapboxLogo' src={icon} alt='mapbox logo' draggable={false}/>
         <span className='mapCopyright'>
           <a href='https://www.mapbox.com/about/maps/' target='_blank' rel='noopener noreferrer'> © Mapbox</a>, <a href='https://www.openstreetmap.org/about/' target='_blank' rel='noopener noreferrer'>© OpenStreetMap</a>. <a href='https://www.mapbox.com/map-feedback/' target='_blank' rel='noopener noreferrer'>Improve this map</a>.
         </span>
       </Fragment>
     );
-  }*/}
+  }
+
+  // only request map image if the user looks at the photo information
+  // this is to reduce requests to the api
+  try {
+    document.getElementsByClassName('photoInformation')[0].onmouseover = () => {
+      setPhotoMap(true);
+    }
+  } catch (e) {}
 
   return (
     <div className='photoInformation'>
@@ -129,7 +129,7 @@ export default function PhotoInformation({ info, url, api }) {
         <Info className='infoIcon'/>
         <h1>{variables.language.getMessage(variables.languagecode, 'widgets.background.information')}</h1>
         <hr/>
-        {/*photoMap()*/}
+        {photoMap()}
         {/* fix console error by using fragment and key */}
         {info.location && info.location !== 'N/A' ? <Fragment key='location'>
           <LocationOn/>

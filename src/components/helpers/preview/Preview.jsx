@@ -7,9 +7,9 @@ export default function Preview(props) {
 
   return (
     <div className='preview-mode'>
-      <h3>{getMessage('modals.main.settings.reminder.title')}</h3>
-      <h1>{getMessage('modals.welcome.preview.description')}</h1>
-      <button className='close' onClick={() => props.setup()}>{getMessage('modals.welcome.preview.continue')}</button>
+      <h1>{getMessage('modals.main.settings.reminder.title')}</h1>
+      <p>{getMessage('modals.welcome.preview.description')}</p>
+      <button className='pinNote' onClick={() => props.setup()}>{getMessage('modals.welcome.preview.continue')}</button>
     </div>
   );
 }
