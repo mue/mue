@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/mue/branding/main/logo/logo_round.png" align="left" width="180px" height="180px"/>
+<img src="assets/logo.png" align="left" width="180px" height="180px"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
 > <a href="https://muetab.com/">Mue</a>
