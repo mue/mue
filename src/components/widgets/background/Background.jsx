@@ -182,12 +182,15 @@ export default class Background extends PureComponent {
         break;
 
       case 'custom':
-        let customBackground;
+        let customBackground = [];
+        const customSaved = localStorage.getItem('customBackground');
         try {
-          customBackground = JSON.parse(localStorage.getItem('customBackground'));
+          customBackground = JSON.parse(customSaved);
         } catch (e) {
-          // move to new format
-          customBackground = [localStorage.getItem('customBackground')];
+          if (customSaved !== '') {
+            // move to new format
+            customBackground = [customSaved];
+          }
           localStorage.setItem('customBackground', JSON.stringify(customBackground));
         }
 

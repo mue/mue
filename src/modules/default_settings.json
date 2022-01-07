@@ -28,6 +28,10 @@
     "value": 90
   },
   {
+    "name": "zero",
+    "value": true
+  },
+  {
     "name": "events",
     "value": true
   },
