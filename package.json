@@ -17,7 +17,7 @@
     "@fontsource/lexend-deca": "4.4.5",
     "@fontsource/montserrat": "4.4.5",
     "@mui/icons-material": "5.3.1",
-    "@mui/material": "5.3.1",
+    "@mui/material": "5.4.0",
     "react": "17.0.2",
     "react-clock": "3.0.0",
     "react-color-gradient-picker": "0.1.2",
