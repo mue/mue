@@ -1,0 +1,27 @@
+name: Submit
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to submit, i.e 6.0.4"
+        required: true
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: latest
+      - name: Download Github Release Assets
+        uses: plasmo-corp/download-release-asset@v1.0.0
+        with:
+          tag: ${{ github.event.inputs.tag }}
+      - name: Browser Plugin Publish
+        uses: plasmo-corp/bpp@v1
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /opt/hostedtoolcache/chromium/latest/x64/chrome
+        with:
+          keys: ${{ secrets.SUBMIT_KEYS }}
