@@ -7,6 +7,9 @@ import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 
+import { toast } from 'react-toastify';
+import EventBus from 'modules/helpers/eventbus';
+
 export default class QuoteSettings extends PureComponent {
   getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 

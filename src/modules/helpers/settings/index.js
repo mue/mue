@@ -110,21 +110,9 @@ export function loadSettings(hotreload) {
     `);
   }
 
-  // everything below this either doesn't support hot reload (custom js) or shouldn't run on a hot reload event
+  // everything below this shouldn't run on a hot reload event
   if (hotreload === true) {
     return;
-  }
-
-  if (window.location.href.startsWith('http://') || window.location.href.startsWith('https://')){
-    const js = localStorage.getItem('customjs');
-    if (js) {
-      try {
-        // eslint-disable-next-line no-eval
-        eval(js);
-      } catch (e) {
-        console.error('Failed to run custom JS: ', e);
-      }
-    }
   }
 
   if (localStorage.getItem('experimental') === 'true') {

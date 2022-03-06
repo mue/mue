@@ -30,7 +30,8 @@ export default class Clock extends PureComponent {
       switch (localStorage.getItem('timeType')) {
         case 'percentageComplete':
           this.setState({
-            time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%'
+            time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%',
+            ampm: ''
           });
           break; 
         case 'analogue':

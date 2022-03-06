@@ -56,7 +56,7 @@ export default class OrderSettings extends PureComponent {
       items: JSON.parse(localStorage.getItem('order'))
     });
 
-    toast(getMessage('toats.reset'));
+    toast(getMessage('toasts.reset'));
   }
 
   enabled = (setting) => {

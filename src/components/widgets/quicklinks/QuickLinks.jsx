@@ -19,7 +19,6 @@ export default class QuickLinks extends PureComponent {
       name: '',
       url: '',
       showAddLink: 'hidden',
-      nameError: '',
       urlError: ''
     };
     this.quicklinksContainer = createRef();
@@ -43,10 +42,7 @@ export default class QuickLinks extends PureComponent {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
     let url = this.state.url;
 
-    let nameError, urlError;
-    if (this.state.name.length <= 0) {
-      nameError = this.getMessage('widgets.quicklinks.name_error');
-    }
+    let urlError;
 
     // regex: https://ihateregex.io/expr/url/
     // eslint-disable-next-line no-useless-escape
@@ -54,9 +50,8 @@ export default class QuickLinks extends PureComponent {
       urlError = this.getMessage('widgets.quicklinks.url_error');
     }
 
-    if (nameError || urlError) {
+    if (urlError) {
       return this.setState({
-        nameError,
         urlError
       });
     }
@@ -66,7 +61,7 @@ export default class QuickLinks extends PureComponent {
     }
 
     data.push({
-      name: this.state.name,
+      name: this.state.name || url,
       url: url,
       icon: this.state.icon || '',
       key: Math.random().toString(36).substring(7) + 1
@@ -191,7 +186,7 @@ export default class QuickLinks extends PureComponent {
           <div className='topbarquicklinks' onKeyDown={this.topbarEnter}>
             <h4>{this.getMessage('widgets.quicklinks.new')}</h4>
             <TextareaAutosize rowsmax={1} placeholder={this.getMessage('widgets.quicklinks.name')} value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
-            <p>{this.state.nameError}</p>
+            <p/>
             <TextareaAutosize rowsmax={10} placeholder={this.getMessage('widgets.quicklinks.url')} value={this.state.url} onChange={(e) => this.setState({ url: e.target.value })} />
             <p>{this.state.urlError}</p>
             <TextareaAutosize rowsmax={10} placeholder={this.getMessage('widgets.quicklinks.icon')} value={this.state.icon} onChange={(e) => this.setState({ icon: e.target.value })} />
