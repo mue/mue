@@ -30,7 +30,8 @@ variables.language = new I18n(variables.languagecode, {
   nl: require('./translations/nl.json'),
   no: require('./translations/no.json'),
   ru: require('./translations/ru.json'),
-  zh_CN: require('./translations/zh_CN.json')
+  zh_CN: require('./translations/zh_CN.json'),
+  id_ID: require('./translations/id_ID.json')
 });
 
 // set html language tag

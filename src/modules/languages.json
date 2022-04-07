@@ -34,5 +34,9 @@
   {
     "name": "中文 (简体)",
     "value": "zh_CN"
+  },
+  {
+    "name": "Bahasa Indonesia",
+    "value": "id_ID"
   }
 ]
