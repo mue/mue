@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { Close, Delete } from '@mui/icons-material';
+import { MdClose, MdRestartAlt } from 'react-icons/md';
 import { setDefaultSettings } from 'modules/helpers/settings';
 
 export default function ResetModal({ modalClose }) {
@@ -17,10 +17,10 @@ export default function ResetModal({ modalClose }) {
       <span>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.advanced.reset_modal.information')}</span>
       <div className='resetfooter'>
         <button className='round reset' style={{ marginLeft: 0 }} onClick={() => reset()}>
-          <Delete/>
+          <MdRestartAlt/>
         </button>
         <button className='round add' style={{ marginLeft: '5px' }} onClick={modalClose}>
-          <Close/>
+          <MdClose/>
         </button>
       </div>
     </>

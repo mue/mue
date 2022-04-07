@@ -2,7 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import Modal from 'react-modal';
 import { MenuItem } from '@mui/material';
-import { Upload as ImportIcon, Download as ExportIcon, RestartAlt as ResetIcon } from '@mui/icons-material';
+import { MdUpload as ImportIcon, MdDownload as ExportIcon, MdRestartAlt as ResetIcon } from 'react-icons/md';
 
 import { exportSettings, importSettings } from 'modules/helpers/settings/modals';
 

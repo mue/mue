@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { Cancel } from '@mui/icons-material';
+import { MdCancel } from 'react-icons/md';
 import { TextField } from '@mui/material';
 
 export default function KeybindInput(props) {
@@ -9,9 +9,9 @@ export default function KeybindInput(props) {
     if (!value) {
       return <button className='cleanButton' style={{ visibility: 'hidden' }} onClick={() => props.action('reset', props.setting)}><Cancel/></button>;;
     } else if (value === variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.keybinds.recording')) {
-      return <button className='cleanButton' onClick={() => props.action('cancel', props.setting)}><Cancel/></button>;
+      return <button className='cleanButton' onClick={() => props.action('cancel', props.setting)}><MdCancel/></button>;
     } else {
-      return <button className='cleanButton' onClick={() => props.action('reset', props.setting)}><Cancel/></button>;
+      return <button className='cleanButton' onClick={() => props.action('reset', props.setting)}><MdCancel/></button>;
     }
   }
 

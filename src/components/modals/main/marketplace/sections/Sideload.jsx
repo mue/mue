@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { LocalMall } from '@mui/icons-material';
+import { MdIntegrationInstructions } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
@@ -54,7 +54,7 @@ export default class Sideload extends PureComponent {
       <div className='emptyitems'>
         <div className='emptyMessage'>
           <FileUpload id='file-input' type='settings' accept='application/json' loadFunction={(e) => this.installAddon(JSON.parse(e.target.result))} />
-          <LocalMall/>
+          <MdIntegrationInstructions />
           <h1>{this.getMessage('modals.main.addons.sideload.title')}</h1>
           <button className='addToMue sideload' onClick={() => document.getElementById('file-input').click()}>{this.getMessage('modals.main.settings.sections.background.source.upload')}</button>
         </div>

@@ -1,34 +1,34 @@
 import variables from 'modules/variables';
 import { memo } from 'react';
 import {
-  SettingsRounded as Settings,
-  Widgets as Addons,
-  ShoppingBasket as Marketplace,
-  
-  MenuOutlined as Navbar,
-  EmojiPeopleOutlined as Greeting,
-  AccessAlarm as Time,
-  FormatQuoteOutlined as Quote,
-  Link as QuickLinks,
-  DateRangeOutlined as Date,
-  SmsOutlined as Message,
-  PhotoOutlined as Background,
-  Search,
-  CloudOutlined as Weather,
-  List as Order,
-  FormatPaintOutlined as Appearance,
-  Translate as Language,
-  SettingsOutlined as Advanced,
-  BugReportOutlined as Experimental,
+  MdSettings as Settings,
+  MdWidgets as Addons,
+  MdShoppingBasket as Marketplace,
+  MdMenu as Navbar,
+  MdEmojiPeople as Greeting,
+  MdAccessAlarm as Time,
+  MdOutlineFormatQuote as Quote,
+  MdLink as QuickLinks,
+  MdDateRange as Date,
+  MdOutlineTextsms as Message,
+  MdOutlinePhoto as Background,
+  MdSearch,
+  MdCloudQueue as Weather,
+  MdList as Order,
+  MdFormatPaint as Appearance,
+  MdTranslate as Language,
+  MdOutlineSettings as Advanced,
+  MdBugReport as Experimental,
   //KeyboardAltOutlined as Keybinds,
-  AssessmentOutlined as Stats,
-  NewReleasesOutlined as Changelog,
-  InfoOutlined as About,
+  MdOutlineAssessment as Stats,
+  MdOutlineNewReleases as Changelog,
+  MdInfoOutline as About,
+  MdEvent as Reminder,
+  MdCode as Sideload,
+  MdAddCircleOutline as Added,
+  MdAddCircleOutline as Create
+} from 'react-icons/md';
 
-  Code as Sideload,
-  AddCircleOutline as Added,
-  CreateNewFolderOutlined as Create
-} from '@mui/icons-material';
 
 function Tab({ label, currentTab, onClick, navbarTab }) {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
@@ -59,7 +59,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.settings.sections.date.title'): icon = <Date/>; break;
     case getMessage('modals.main.settings.sections.message.title'): icon = <Message/>; break;
     case getMessage('modals.main.settings.sections.background.title'): icon = <Background/>; break;
-    case getMessage('modals.main.settings.sections.search.title'): icon = <Search/>; break;
+    case getMessage('modals.main.settings.sections.search.title'): icon = <MdSearch/>; break;
     case getMessage('modals.main.settings.sections.weather.title'): icon = <Weather/>; divider = true; break;
     case getMessage('modals.main.settings.sections.order.title'): icon = <Order/>; break;
 

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { useState } from 'react';
-import { Add } from '@mui/icons-material';
+import { MdAdd } from 'react-icons/md';
 import { TextField } from '@mui/material'; 
 
 export default function CustomURLModal({ modalClose, modalCloseOnly }) {
@@ -13,7 +13,7 @@ export default function CustomURLModal({ modalClose, modalCloseOnly }) {
       <TextField value={url} onChange={(e) => setURL(e.target.value)} varient='outlined'/>
       <div className='resetfooter'>
         <button className='round import' style={{ marginLeft: '5px' }} onClick={() => modalClose(url)}>
-          <Add/>
+          <MdAdd/>
         </button>
       </div>
     </>

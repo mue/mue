@@ -1,14 +1,14 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { Star, StarBorder } from '@mui/icons-material';
+import { MdStar, MdStarBorder } from 'react-icons/md';
 //import Hotkeys from 'react-hot-keys';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 export default class Favourite extends PureComponent {
   buttons = {
-    favourited: <Star onClick={() => this.favourite()} className='topicons' />,
-    unfavourited: <StarBorder onClick={() => this.favourite()} className='topicons' />
+    favourited: <MdStar onClick={() => this.favourite()} className='topicons' />,
+    unfavourited: <MdStarBorder onClick={() => this.favourite()} className='topicons' />
   }
 
   constructor() {

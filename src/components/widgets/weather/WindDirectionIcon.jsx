@@ -1,4 +1,13 @@
-import { WiDirectionDownLeft, WiDirectionDownRight, WiDirectionDown, WiDirectionLeft, WiDirectionRight, WiDirectionUpLeft, WiDirectionUpRight, WiDirectionUp } from 'weather-icons-react';
+import {
+  WiDirectionDownLeft,
+  WiDirectionDownRight,
+  WiDirectionDown,
+  WiDirectionLeft,
+  WiDirectionRight,
+  WiDirectionUpLeft,
+  WiDirectionUpRight,
+  WiDirectionUp,
+} from 'react-icons/wi';
 
 // degrees is imported because of a potential bug, idk what causes it but now it is fixed
 export default function WindDirectionIcon({ degrees }) {

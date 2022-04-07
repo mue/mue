@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { Email, Twitter, Chat, Instagram, Facebook } from '@mui/icons-material';
+import { MdEmail } from 'react-icons/md';
+import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -94,11 +95,9 @@ export default class About extends PureComponent {
         <a href={variables.constants.PRIVACY_URL} className='aboutLink' target='_blank' rel='noopener noreferrer' style={{ fontSize: '1rem' }}>{this.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}</a>
 
         <h3 className='contacth3'>{this.getMessage('modals.main.settings.sections.about.contact_us')}</h3>
-        <a href={'mailto:' + variables.constants.EMAIL} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Email/></a>
-        <a href={'https://twitter.com/' + variables.constants.TWITTER_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Twitter/></a>
-        <a href={'https://instagram.com/' + variables.constants.INSTAGRAM_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Instagram/></a>
-        <a href={'https://facebook.com/' + variables.constants.FACEBOOK_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Facebook/></a>
-        <a href={'https://discord.gg/' + variables.constants.DISCORD_SERVER} className='aboutIcon' target='_blank' rel='noopener noreferrer'><Chat/></a>
+        <a href={'mailto:' + variables.constants.EMAIL} className='aboutIcon' target='_blank' rel='noopener noreferrer'><MdEmail/></a>
+        <a href={'https://twitter.com/' + variables.constants.TWITTER_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><FaTwitter/></a>
+        <a href={'https://discord.gg/' + variables.constants.DISCORD_SERVER} className='aboutIcon' target='_blank' rel='noopener noreferrer'><FaDiscord/></a>
 
         <h3>{this.getMessage('modals.main.settings.sections.about.support_mue')}</h3>
         <p>

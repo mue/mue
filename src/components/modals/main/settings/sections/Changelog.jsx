@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { WifiOff } from '@mui/icons-material';
+import { MdOutlineWifiOff } from 'react-icons/md';
 import Modal from 'react-modal';
 
 import Lightbox from '../../marketplace/Lightbox';
@@ -91,7 +91,7 @@ export default class Changelog extends PureComponent {
 
     if (navigator.onLine === false || this.offlineMode) {    
       return errorMessage(<>
-        <WifiOff/>
+        <MdOutlineWifiOff/>
         <h1>{getMessage('modals.main.marketplace.offline.title')}</h1>
         <p className='description'>{getMessage('modals.main.marketplace.offline.description')}</p>
       </>);

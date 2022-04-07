@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { FilterNone as FileCopy, Twitter, Star, StarBorder } from '@mui/icons-material';
+import { MdContentCopy, MdStarBorder, MdStar } from 'react-icons/md';
+import { FaTwitter } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 //import Hotkeys from 'react-hot-keys';
 
@@ -11,10 +12,10 @@ import './quote.scss';
 
 export default class Quote extends PureComponent {
   buttons = {
-    tweet: <Twitter className='copyButton' onClick={() => this.tweetQuote()} />,
-    copy: <FileCopy className='copyButton' onClick={() => this.copyQuote()} />,
-    unfavourited: <StarBorder className='copyButton' onClick={() => this.favourite()} />,
-    favourited: <Star className='copyButton' onClick={() => this.favourite()} />
+    tweet: <FaTwitter className='copyButton' onClick={() => this.tweetQuote()} />,
+    copy: <MdContentCopy className='copyButton' onClick={() => this.copyQuote()} />,
+    unfavourited: <MdStarBorder className='copyButton' onClick={() => this.favourite()} />,
+    favourited: <MdStar className='copyButton' onClick={() => this.favourite()} />
   }
 
   constructor() {

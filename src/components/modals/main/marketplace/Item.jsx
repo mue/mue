@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
-import { ArrowBack } from '@mui/icons-material';
+import { MdArrowBack } from 'react-icons/md';
 import Modal from 'react-modal';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
@@ -66,7 +66,7 @@ export default class Item extends PureComponent {
     return (
       <div id='item'>
         <br/>
-        <ArrowBack className='backArrow' onClick={this.props.toggleFunction}/>
+        <MdArrowBack className='backArrow' onClick={this.props.toggleFunction}/>
         <br/>
         <h1>{this.props.data.display_name}</h1>
         {this.props.button}

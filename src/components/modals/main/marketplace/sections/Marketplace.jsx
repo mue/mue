@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { WifiOff, LocalMall } from '@mui/icons-material';
+import { MdWifiOff, MdLocalMall } from 'react-icons/md';
 
 import Item from '../Item';
 import Items from '../Items';
@@ -174,7 +174,7 @@ export default class Marketplace extends PureComponent {
 
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return errorMessage(<>
-        <WifiOff/>
+        <MdWifiOff/>
         <h1>{this.getMessage('modals.main.marketplace.offline.title')}</h1>
         <p className='description'>{this.getMessage('modals.main.marketplace.offline.description')}</p>
       </>);
@@ -204,7 +204,7 @@ export default class Marketplace extends PureComponent {
         <>
           {featured()}
           {errorMessage(<>
-            <LocalMall/>
+            <MdLocalMall/>
             <h1>{this.getMessage('modals.main.addons.empty.title')}</h1>
             <p className='description'>{this.getMessage('modals.main.marketplace.no_items')}</p>
           </>)}

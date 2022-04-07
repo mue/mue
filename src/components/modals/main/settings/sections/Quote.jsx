@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { Cancel, Add } from '@mui/icons-material';
+import { MdCancel, MdAdd } from 'react-icons/md';
 import { TextField } from '@mui/material';
 
 import Header from '../Header';
@@ -91,14 +91,14 @@ export default class QuoteSettings extends PureComponent {
         <>
           <p>{this.getMessage('modals.main.settings.sections.quote.custom')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
           <div className='data-buttons-row'>
-            <button onClick={() => this.modifyCustomQuote('add')}>{this.getMessage('modals.main.settings.sections.quote.add')} <Add/></button>
+            <button onClick={() => this.modifyCustomQuote('add')}>{this.getMessage('modals.main.settings.sections.quote.add')} <MdAdd/></button>
           </div>
           {this.state.customQuote.map((_url, index) => (
             <div style={{ display: 'flex' }} key={index}>
               <TextField value={this.state.customQuote[index].quote} placeholder='Quote' onChange={(e) => this.customQuote(e, true, index, 'quote')} varient='outlined' style={{ marginRight: '10px' }} />
               <TextField value={this.state.customQuote[index].author} placeholder='Author' onChange={(e) => this.customQuote(e, true, index, 'author')} varient='outlined' />
               {this.state.customQuote.length > 1 ? <button className='cleanButton' onClick={() => this.modifyCustomQuote('remove', index)} style={{ marginBottom: '-14px' }}>
-                <Cancel/>
+                <MdCancel/>
               </button> : null}
             </div>
           ))}

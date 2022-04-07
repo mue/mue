@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { Close } from '@mui/icons-material';
+import { MdClose } from 'react-icons/md';
 
 export default function SideloadFailedModal({ modalClose, reason }) {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
@@ -12,7 +12,7 @@ export default function SideloadFailedModal({ modalClose, reason }) {
       <span>{reason}</span>
       <div className='resetfooter'>
         <button className='round import' style={{ marginLeft: '-30px' }} onClick={modalClose}>
-          <Close/>
+          <MdClose/>
         </button>
       </div>
     </>

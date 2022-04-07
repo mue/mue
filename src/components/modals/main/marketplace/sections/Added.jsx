@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { LocalMall } from '@mui/icons-material';
+import { MdLocalMall } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 import Item from '../Item';
@@ -119,7 +119,7 @@ export default class Added extends PureComponent {
       return (
         <div className='emptyitems'>
           <div className='emptyMessage'>
-            <LocalMall/>
+            <MdLocalMall/>
             <h1>{this.getMessage('modals.main.addons.empty.title')}</h1>
             <p className='description'>{this.getMessage('modals.main.addons.empty.description')}</p>
           </div>

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { RefreshRounded, SettingsRounded, AssignmentRounded as NotesRounded } from '@mui/icons-material';
+import { MdRefresh, MdSettings, MdAssignment } from 'react-icons/md';
 
 import Notes from './Notes';
 import Maximise from '../background/Maximise';
@@ -62,19 +62,19 @@ export default class Navbar extends PureComponent {
     
         {(localStorage.getItem('notesEnabled') === 'true') ?
           <div className='notes'>
-            <NotesRounded className='topicons'/>
+            <MdAssignment className='topicons'/>
             <Notes/>
           </div>
         : null}
 
         {(this.refreshValue !== 'false') ?
           <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.tooltips.refresh')}>
-            <RefreshRounded className='refreshicon topicons' onClick={() => this.refresh()}/>
+            <MdRefresh className='refreshicon topicons' onClick={() => this.refresh()}/>
           </Tooltip>
         : null}
   
         <Tooltip title={variables.language.getMessage(variables.languagecode, 'modals.main.navbar.settings')}>
-          <SettingsRounded className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')}/>
+          <MdSettings className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')}/>
         </Tooltip>
       </div>
     );

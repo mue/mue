@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'weather-icons-react';
+import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
 
 import WeatherIcon from './WeatherIcon';
 import WindDirectionIcon from './WindDirectionIcon';

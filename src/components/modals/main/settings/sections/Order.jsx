@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { DragIndicator } from '@mui/icons-material';
+import { MdOutlineDragIndicator } from 'react-icons/md';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';
 
@@ -18,7 +18,7 @@ const widget_name = {
 
 const SortableItem = sortableElement(({ value }) => (
   <li className='sortableitem'>
-    <DragIndicator style={{ verticalAlign: 'middle' }} />
+    <MdOutlineDragIndicator style={{ verticalAlign: 'middle' }} />
     {widget_name[value]}
   </li>
 ));

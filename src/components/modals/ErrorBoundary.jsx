@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { ErrorOutline } from '@mui/icons-material';
+import { MdErrorOutline } from 'react-icons/md';
 
 export default class ErrorBoundary extends PureComponent {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class ErrorBoundary extends PureComponent {
       return (
         <div className='emptyitems'>
           <div className='emptyMessage'>
-            <ErrorOutline/>
+            <MdErrorOutline/>
             <h1>{variables.language.getMessage(variables.languagecode, 'modals.main.error_boundary.title')}</h1>
             <p>{variables.language.getMessage(variables.languagecode, 'modals.main.error_boundary.message')}</p>
             <button className='refresh' onClick={() => window.location.reload()}>{variables.language.getMessage(variables.languagecode, 'modals.main.error_boundary.refresh')}</button>

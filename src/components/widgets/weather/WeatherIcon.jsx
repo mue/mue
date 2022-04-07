@@ -1,4 +1,17 @@
-import { WiDaySunny, WiNightClear, WiDayCloudy, WiNightCloudy, WiCloud, WiCloudy, WiDayShowers, WiNightShowers, WiRain, WiThunderstorm, WiSnow, WiFog } from 'weather-icons-react';
+import {
+  WiDaySunny,
+  WiNightClear,
+  WiDayCloudy,
+  WiNightCloudy,
+  WiCloud,
+  WiCloudy,
+  WiDayShowers,
+  WiNightShowers,
+  WiRain,
+  WiThunderstorm,
+  WiSnow,
+  WiFog,
+} from 'react-icons/wi';
 
 export default function WeatherIcon({ name }) {
   let icon;

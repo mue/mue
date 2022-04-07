@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { Cancel, AddLink, AddPhotoAlternate, PersonalVideo } from '@mui/icons-material';
+import { MdCancel, MdAddLink, MdAddPhotoAlternate, MdPersonalVideo } from 'react-icons/md';
 import EventBus from 'modules/helpers/eventbus';
 
 import Checkbox from '../../Checkbox';
@@ -116,15 +116,15 @@ export default class CustomSettings extends PureComponent {
       <ul>
         <p>{this.getMessage('modals.main.settings.sections.background.source.custom_background')} <span className='modalLink' onClick={this.resetCustom}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
         <div className='data-buttons-row'>
-          <button onClick={() => this.uploadCustomBackground()}>{this.getMessage('modals.main.settings.sections.background.source.add_background')} <AddPhotoAlternate/></button>
-          <button onClick={() => this.setState({ customURLModal: true })}>{this.getMessage('modals.main.settings.sections.background.source.add_url')} <AddLink/></button>
+          <button onClick={() => this.uploadCustomBackground()}>{this.getMessage('modals.main.settings.sections.background.source.add_background')} <MdAddPhotoAlternate/></button>
+          <button onClick={() => this.setState({ customURLModal: true })}>{this.getMessage('modals.main.settings.sections.background.source.add_url')} <MdAddLink/></button>
         </div>
         <div className='images-row'>
           {this.state.customBackground.map((url, index) => (
             <div style={{ backgroundImage: `url(${!this.videoCheck(url) ? this.state.customBackground[index] : ''})` }} key={index}>
-              {this.videoCheck(url) ? <PersonalVideo className='customvideoicon'/> : null} 
+              {this.videoCheck(url) ? <MdPersonalVideo className='customvideoicon'/> : null} 
               {this.state.customBackground.length > 0 ? <button className='cleanButton' onClick={() => this.modifyCustomBackground('remove', index)}>
-                <Cancel/>
+                <MdCancel/>
               </button> : null}
             </div>
           ))}

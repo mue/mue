@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
-import { Search as SearchIcon, Mic } from '@mui/icons-material';
+import { PureComponent } from 'react';
+import { MdSearch, MdMic } from 'react-icons/md';
 //import Hotkeys from 'react-hot-keys';
 
 import AutocompleteInput from 'components/helpers/autocomplete/Autocomplete';
@@ -95,7 +95,7 @@ export default class Search extends PureComponent {
     }
 
     if (localStorage.getItem('voiceSearch') === 'true') {
-      microphone = <Mic className='micIcon' onClick={this.startSpeechRecognition}/>;
+      microphone = <MdMic className='micIcon' onClick={this.startSpeechRecognition}/>;
     }
 
     let autocompleteURL, autocompleteQuery, autocompleteCallback;
@@ -191,7 +191,7 @@ export default class Search extends PureComponent {
         <form onSubmit={this.searchButton} className='searchBar'>
         {localStorage.getItem('searchDropdown') === 'true' ? <span className="dropdown-span" onClick={() => this.toggleDropdown()}>{this.state.currentSearch}</span> : ''}
           {this.state.microphone}
-          <SearchIcon onClick={this.searchButton}/>
+          <MdSearch onClick={this.searchButton}/>
           <AutocompleteInput placeholder={variables.language.getMessage(variables.languagecode, 'widgets.search')} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
           {/*variables.keybinds.focusSearch && variables.keybinds.focusSearch !== '' ? <Hotkeys keyName={variables.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null*/}
         </form>

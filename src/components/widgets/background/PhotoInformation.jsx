@@ -1,6 +1,13 @@
 import variables from 'modules/variables';
 import { useState, Fragment } from 'react';
-import { Info, LocationOn, PhotoCamera, Crop as Resolution, Person as Photographer, GetApp as Download } from '@mui/icons-material';
+import {
+  MdInfo,
+  MdLocationOn,
+  MdPhotoCamera,
+  MdCrop as Resolution,
+  MdPerson as Photographer,
+  MdGetApp as Download
+} from 'react-icons/md';
 //import Hotkeys from 'react-hot-keys';
 
 const toDataURL = async (url) => {
@@ -124,19 +131,19 @@ export default function PhotoInformation({ info, url, api }) {
   return (
     <div className='photoInformation'>
       <h1>{photo} <span id='credit'>{credit}</span></h1>
-      <Info className='photoInformationHover'/>
+      <MdInfo className='photoInformationHover'/>
       <div className='infoCard'>
-        <Info className='infoIcon'/>
+        <MdInfo className='infoIcon'/>
         <h1>{variables.language.getMessage(variables.languagecode, 'widgets.background.information')}</h1>
         <hr/>
         {photoMap()}
         {/* fix console error by using fragment and key */}
         {info.location && info.location !== 'N/A' ? <Fragment key='location'>
-          <LocationOn/>
+          <MdLocationOn/>
           <span id='infoLocation'>{info.location}</span>
         </Fragment> : null}
         {info.camera && info.camera !== 'N/A' ? <Fragment key='camera'>
-          <PhotoCamera/>
+          <MdPhotoCamera/>
           <span id='infoCamera'>{info.camera}</span>
         </Fragment> : null}
         <Resolution/>

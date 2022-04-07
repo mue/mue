@@ -35,7 +35,12 @@ export default class Message extends PureComponent {
   render() {
     return (
       <h2 className='message' ref={this.message}>
-        {this.state.messageText}
+        {this.state.messageText.split('\\n').map((item, i) => (
+          <span key={i}>
+            {item}
+            <br />
+          </span>
+        ))}
       </h2>
     );
   }

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { CloudUpload, AutoAwesome, LightMode, DarkMode } from '@mui/icons-material';
+import { MdCloudUpload, MdAutoAwesome, MdLightMode, MdDarkMode } from 'react-icons/md';
 
 import Radio from '../main/settings/Radio';
 import Checkbox from '../main/settings/Checkbox';
@@ -141,16 +141,16 @@ export default class WelcomeSections extends PureComponent {
         <p>{this.getMessage('modals.welcome.sections.theme.description')}</p>
         <div className='themesToggleArea'>
           <div className={this.state.autoClass} onClick={() => this.changeTheme('auto')}>
-            <AutoAwesome/>
+            <MdAutoAwesome/>
             <span>{this.getMessage('modals.main.settings.sections.appearance.theme.auto')}</span>
           </div>
           <div className='options'>
             <div className={this.state.lightClass} onClick={() => this.changeTheme('light')}>
-              <LightMode/>
+              <MdLightMode/>
               <span>{this.getMessage('modals.main.settings.sections.appearance.theme.light')}</span>
             </div>
             <div className={this.state.darkClass} onClick={() => this.changeTheme('dark')}>
-              <DarkMode/>
+              <MdDarkMode/>
               <span>{this.getMessage('modals.main.settings.sections.appearance.theme.dark')}</span>
             </div>
           </div>
@@ -165,7 +165,7 @@ export default class WelcomeSections extends PureComponent {
         <h1>{this.getMessage('modals.welcome.sections.settings.title')}</h1>
         <p>{this.getMessage('modals.welcome.sections.settings.description')}</p>
         <button className='upload' onClick={() => document.getElementById('file-input').click()}>
-          <CloudUpload/>
+          <MdCloudUpload/>
           <br/>
           <span>{this.getMessage('modals.main.settings.buttons.import')}</span>
         </button>
