@@ -376,9 +376,7 @@
             "support_mue": "Dukung Mue",
             "resources_used": {
               "title": "Resources yang kami gunakan",
-              "bg_images": "Offline background images",
-              "welcome_img": "Welcome image",
-              "pin_icon": "Ikon pin"
+              "bg_images": "Offline background images"
             },
             "contributors": "Kontributor",
             "supporters": "Suporter",

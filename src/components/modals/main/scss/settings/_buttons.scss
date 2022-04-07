@@ -103,6 +103,10 @@
     align-items: center;
     color: var(--modal-text);
 
+    svg {
+      font-size: 2em;
+    }
+
     &:hover {
       background: var(--tab-active);
       cursor: pointer;

@@ -23,7 +23,10 @@ export const DISCORD_SERVER = 'zv8C9F8';
 export const COPYRIGHT_NAME = 'The Mue Authors';
 export const COPYRIGHT_YEAR = '2018';
 export const COPYRIGHT_LICENSE = 'BSD-3-Clause License';
-export const DONATE_USERNAME = 'davidcralph'; // this only works if you use the same username for Patreon, GitHub and Ko-Fi
+export const SPONSORS_USERNAME = 'davidcralph';
+export const LIBERAPAY_USERNAME = 'mue';
+export const KOFI_USERNAME = 'davidcralph';
+export const PATREON_USERNAME = 'davidcralph';
 
 export const OFFLINE_IMAGES = 20;
 

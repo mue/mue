@@ -10,7 +10,7 @@ import {
   WiRain,
   WiThunderstorm,
   WiSnow,
-  WiFog,
+  WiFog
 } from 'react-icons/wi';
 
 export default function WeatherIcon({ name }) {

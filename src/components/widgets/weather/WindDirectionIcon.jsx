@@ -6,7 +6,7 @@ import {
   WiDirectionRight,
   WiDirectionUpLeft,
   WiDirectionUpRight,
-  WiDirectionUp,
+  WiDirectionUp
 } from 'react-icons/wi';
 
 // degrees is imported because of a potential bug, idk what causes it but now it is fixed

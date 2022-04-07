@@ -376,9 +376,7 @@
             "support_mue": "Apoya Mue",
             "resources_used": {
               "title": "Recursos usados",
-              "bg_images": "Imágenes de fondo sin conexión",
-              "welcome_img": "Imagen de bienvenida",
-              "pin_icon": "Icono de chincheta"
+              "bg_images": "Imágenes de fondo sin conexión"
             },
             "contributors": "Contribuyentes",
             "supporters": "Partidarios",

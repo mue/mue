@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdContentCopy, MdAssignment, MdPushPin } from 'react-icons/md';
+import { MdFileCopy, MdAssignment, MdPushPin } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
 //import Hotkeys from 'react-hot-keys';
@@ -53,7 +53,7 @@ export default class Notes extends PureComponent {
         </div>
         <TextareaAutosize placeholder={variables.language.getMessage(variables.languagecode, 'widgets.navbar.notes.placeholder')} value={this.state.notes} onChange={this.setNotes}/>
         <button onClick={() => this.pin()} className='pinNote'><MdPushPin/></button>
-        <button onClick={() => this.copy()} className='copyNote'><MdContentCopy/></button>
+        <button onClick={() => this.copy()} className='copyNote'><MdFileCopy/></button>
         {/*variables.keybinds.pinNotes && variables.keybinds.pinNotes !== '' ? <Hotkeys keyName={variables.keybinds.pinNotes} onKeyDown={() => this.pin()}/> : null*/}
         {/*variables.keybinds.copyNotes && variables.keybinds.copyNotes !== '' ? <Hotkeys keyName={variables.keybinds.copyNotes} onKeyDown={() => this.copy()}/> : null*/}
       </span>

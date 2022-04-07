@@ -376,9 +376,7 @@
             "support_mue": "Support Mue",
             "resources_used": {
               "title": "Resources used",
-              "bg_images": "Offline background images",
-              "welcome_img": "Welcome image",
-              "pin_icon": "Pin icon"
+              "bg_images": "Offline background images"
             },
             "contributors": "Contributors",
             "supporters": "Supporters",

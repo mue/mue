@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdEmail } from 'react-icons/md';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
+import { SiGithubsponsors, SiLiberapay, SiKofi, SiPatreon } from 'react-icons/si';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -99,19 +100,17 @@ export default class About extends PureComponent {
         <a href={'https://twitter.com/' + variables.constants.TWITTER_HANDLE} className='aboutIcon' target='_blank' rel='noopener noreferrer'><FaTwitter/></a>
         <a href={'https://discord.gg/' + variables.constants.DISCORD_SERVER} className='aboutIcon' target='_blank' rel='noopener noreferrer'><FaDiscord/></a>
 
-        <h3>{this.getMessage('modals.main.settings.sections.about.support_mue')}</h3>
-        <p>
-          <a href={'https://github.com/sponsors/' + variables.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>GitHub Sponsors</a> 
-          &nbsp; • &nbsp;<a href={'https://ko-fi.com/' + variables.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>Ko-Fi</a> 
-          &nbsp; • &nbsp;<a href={'https://patreon.com/' + variables.constants.DONATE_USERNAME} className='aboutLink' target='_blank' rel='noopener noreferrer'>Patreon</a>
-        </p>
+        <h3 className='contacth3'>{this.getMessage('modals.main.settings.sections.about.support_mue')}</h3>
+        <a href={'https://github.com/sponsors/' + variables.constants.SPONSORS_USERNAME} className='aboutIcon' target='_blank' rel='noopener noreferrer'><SiGithubsponsors/></a>
+        <a href={'https://liberapay.com/' + variables.constants.LIBERAPAY_USERNAME} className='aboutIcon' target='_blank' rel='noopener noreferrer'><SiLiberapay/></a>
+        <a href={'https://ko-fi.com/' + variables.constants.KOFI_USERNAME} className='aboutIcon' target='_blank' rel='noopener noreferrer'><SiKofi/></a>
+        <a href={'https://patreon.com/' + variables.constants.PATREON_USERNAME} className='aboutIcon' target='_blank' rel='noopener noreferrer'><SiPatreon/></a>
 
         <h3>{this.getMessage('modals.main.settings.sections.about.resources_used.title')}</h3>
         <p>
           <a href='https://www.pexels.com' className='aboutLink' target='_blank' rel='noopener noreferrer'>Pexels</a>
           , <a href='https://unsplash.com' className='aboutLink' target='_blank' rel='noopener noreferrer'>Unsplash</a> ({this.getMessage('modals.main.settings.sections.about.resources_used.bg_images')})
         </p>
-        <p><a href='https://undraw.co' className='aboutLink' target='_blank' rel='noopener noreferrer'>Undraw</a> ({this.getMessage('modals.main.settings.sections.about.resources_used.welcome_img')})</p>
 
         <h3>{this.getMessage('modals.main.settings.sections.about.contributors')}</h3>
         <p>{this.state.loading}</p>

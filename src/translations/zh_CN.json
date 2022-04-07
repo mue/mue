@@ -376,9 +376,7 @@
             "support_mue": "支持 Mue",
             "resources_used": {
               "title": "使用资源",
-              "bg_images": "离线背景",
-              "welcome_img": "欢迎图像",
-              "pin_icon": "便签图标"
+              "bg_images": "离线背景"
             },
             "contributors": "贡献者",
             "supporters": "支持者",

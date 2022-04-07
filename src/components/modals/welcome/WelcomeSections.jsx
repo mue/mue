@@ -28,7 +28,7 @@ export default class WelcomeSections extends PureComponent {
       importedSettings: []
     };
     this.changeWelcomeImg = this.changeWelcomeImg.bind(this);
-    this.welcomeImages = ['./welcome-images/example1.webp', './welcome-images/example2.webp', './welcome-images/example3.webp', './welcome-images/example4.webp'];
+    this.welcomeImages = 4;
   }
 
   changeTheme(type) {
@@ -50,7 +50,7 @@ export default class WelcomeSections extends PureComponent {
   importSettings(e) {
     importSettings(e);
 
-    let settings = [];
+    const settings = [];
     const data = JSON.parse(e.target.result);
     Object.keys(data).forEach((setting) => {
       // language and theme already shown, the others are only used internally
@@ -82,14 +82,14 @@ export default class WelcomeSections extends PureComponent {
     let welcomeImage = this.state.welcomeImage;
 
     this.setState({
-      welcomeImage: ++welcomeImage % this.welcomeImages.length
+      welcomeImage: ++welcomeImage % this.welcomeImages
     });
 
-    this.timeout = setTimeout(this.changeWelcomeImg, 3 * 1000);
+    this.timeout = setTimeout(this.changeWelcomeImg, 3000);
   }
 
   componentDidMount() {
-    this.timeout = setTimeout(this.changeWelcomeImg, 3 * 1000);
+    this.timeout = setTimeout(this.changeWelcomeImg, 3000);
   }
 
   componentWillUnmount() {
@@ -106,23 +106,19 @@ export default class WelcomeSections extends PureComponent {
         clearTimeout(this.timeout);
         this.timeout = null;
       }
-    } else {
-      if (!this.timeout) {
-        this.timeout = setTimeout(this.changeWelcomeImg, 3 * 1000);
-      }
+    } else if (!this.timeout) {
+      this.timeout = setTimeout(this.changeWelcomeImg, 3000);
     }
   }
 
-  render() {
-    let tabContent;
-  
+  render() {  
     const intro = (
       <>
         <h1>{this.getMessage('modals.welcome.sections.intro.title')}</h1>
         <p>{this.getMessage('modals.welcome.sections.intro.description')}</p>
         <h3 className='quicktip'>#shareyourmue</h3>
         <div className='examples'>
-          <img src={this.welcomeImages[this.state.welcomeImage]} alt='Example Mue setup' draggable={false}/>
+          <img src={`./welcome-images/example${[this.state.welcomeImage + 1]}.webp`} alt='Example Mue setup' draggable={false}/>
         </div>
       </>
     );
@@ -206,15 +202,13 @@ export default class WelcomeSections extends PureComponent {
     );
   
     switch (this.props.currentTab) {
-      case 1: tabContent = chooseLanguage; break;
-      case 2: tabContent = settings; break;
-      case 3: tabContent = theme; break;
-      case 4: tabContent = privacy; break;
-      case 5: tabContent = final; break;
+      case 1: return chooseLanguage;
+      case 2: return settings;
+      case 3: return theme;
+      case 4: return privacy;
+      case 5: return final;
       // 0
-      default: tabContent = intro;
+      default: return intro;
     }
-  
-    return tabContent;
   }
 }

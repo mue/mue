@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, Suspense, lazy } from 'react';
+import { PureComponent } from 'react';
 import Modal from 'react-modal';
 //import Hotkeys from 'react-hot-keys';
 
@@ -11,8 +11,7 @@ import EventBus from 'modules/helpers/eventbus';
 
 // Welcome modal is lazy loaded as the user won't use it every time they open a tab
 // We used to lazy load the main and feedback modals, but doing so broke the modal open animation on first click
-const Welcome = lazy(() => import('./welcome/Welcome'));
-const renderLoader = () => <></>;
+import Welcome from './welcome/Welcome';
 
 export default class Modals extends PureComponent {
   constructor() {
@@ -27,7 +26,7 @@ export default class Modals extends PureComponent {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('showWelcome') === 'true' && window.location.search !== '?nointro=true') {
+    if (localStorage.getItem('showWelcome') === 'true' && window.location.search !== '?nointro=true' && this.state.welcomeModal === false) {
       this.setState({
         welcomeModal: true
       });
@@ -83,11 +82,9 @@ export default class Modals extends PureComponent {
         <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.toggleModal('mainModal', false)} isOpen={this.state.mainModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
           <Main modalClose={() => this.toggleModal('mainModal', false)}/>
         </Modal>
-        <Suspense fallback={renderLoader()}>
-          <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay welcomeoverlay' shouldCloseOnOverlayClick={false} ariaHideApp={false}>
-            <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()}/>
-          </Modal>
-        </Suspense>
+        <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay welcomeoverlay' shouldCloseOnOverlayClick={false} ariaHideApp={false}>
+          <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()}/>
+        </Modal>
         {this.state.preview ? <Preview setup={() => window.location.reload()}/> : null}
         {/*variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null*/} 
       </>
