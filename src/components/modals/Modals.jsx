@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, Suspense, lazy } from 'react';
+import { PureComponent } from 'react';
 import Modal from 'react-modal';
 //import Hotkeys from 'react-hot-keys';
 
@@ -9,10 +9,7 @@ import Preview from '../helpers/preview/Preview';
 
 import EventBus from 'modules/helpers/eventbus';
 
-// Welcome modal is lazy loaded as the user won't use it every time they open a tab
-// We used to lazy load the main and feedback modals, but doing so broke the modal open animation on first click
-const Welcome = lazy(() => import('./welcome/Welcome'));
-const renderLoader = () => <></>;
+import Welcome from './welcome/Welcome';
 
 export default class Modals extends PureComponent {
   constructor() {
@@ -21,7 +18,6 @@ export default class Modals extends PureComponent {
       mainModal: false,
       updateModal: false,
       welcomeModal: false,
-      feedbackModal: false,
       preview: false,
     };
   }
@@ -96,8 +92,7 @@ export default class Modals extends PureComponent {
         >
           <Main modalClose={() => this.toggleModal('mainModal', false)} />
         </Modal>
-        <Suspense fallback={renderLoader()}>
-          <Modal
+        <Modal
             closeTimeoutMS={300}
             onRequestClose={() => this.closeWelcome()}
             isOpen={this.state.welcomeModal}
@@ -111,7 +106,6 @@ export default class Modals extends PureComponent {
               modalSkip={() => this.previewWelcome()}
             />
           </Modal>
-        </Suspense>
         {this.state.preview ? <Preview setup={() => window.location.reload()} /> : null}
         {/*variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null*/}
       </>
