@@ -1,0 +1,64 @@
+.notesContainer {
+  .flexTodo {
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
+    width: 223px;
+
+    .todoRows {
+      max-height: 65vh !important;
+      overflow-y: visible !important;
+      display: flex;
+      flex-flow: column;
+      gap: 15px;
+      overflow-x: hidden;
+    }
+  }
+}
+
+.todoRow {
+  @include basicIconButton(1px, 16px, ui);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding-right: 10px;
+  margin: 1px;
+
+  @include themed() {
+    color: t($color) !important;
+  }
+
+  textarea {
+    width: 120px;
+    @include themed() {
+      color: t($color) !important;
+    }
+  }
+
+  svg {
+    padding: 10px;
+    place-items: center;
+    display: grid;
+    cursor: pointer;
+
+    @include themed() {
+      color: t($color) !important;
+    }
+
+    &:hover {
+      @include themed() {
+        background: t($modal-sidebar);
+        border-radius: t($borderRadius);
+      }
+    }
+  }
+}
+
+.done {
+  text-decoration: line-through;
+
+  textarea {
+    cursor: not-allowed;
+  }
+}
+

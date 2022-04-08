@@ -1,5 +1,5 @@
-@import '../../../../../scss/modules/buttons';
-
+@import 'scss/modules/buttons';
+/*
 .refresh {
   @extend %settingsButton;
 
@@ -84,12 +84,8 @@
   width: 10px !important;
 }
 
-.data-buttons-row {
-  width: 350px;
-  display: flex;
-  flex-direction: row;
 
-  button {
+/*  button {
     background: var(--sidebar);
     text-align: center;
     border-radius: 20px;
@@ -102,20 +98,16 @@
     flex-direction: column-reverse;
     align-items: center;
     color: var(--modal-text);
-
-    svg {
-      font-size: 2em;
-    }
+    transition: 0.5s;
 
     &:hover {
       background: var(--tab-active);
       cursor: pointer;
     }
-  }
-}
 
 .customvideoicon {
   position: absolute;
   margin-bottom: 45px;
   font-size: 3em !important;
 }
+*/

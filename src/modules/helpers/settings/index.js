@@ -34,15 +34,18 @@ export function loadSettings(hotreload) {
   switch (localStorage.getItem('theme')) {
     case 'dark':
       document.body.classList.add('dark');
+      document.body.classList.remove('light');
       break;
     case 'auto':
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
       } else {
         document.body.classList.remove('dark');
+        document.body.classList.add('light');
       }
       break;
     default:
+      document.body.classList.add('light');
       document.body.classList.remove('dark');
   }
 
@@ -66,7 +69,11 @@ export function loadSettings(hotreload) {
     document.body.classList.remove('no-animations');
   }
 
-  if (localStorage.getItem('textBorder') === 'true') {
+  // technically, this is text SHADOW, and not BORDER
+  // however it's a mess and we'll just leave it at this for now
+  const textBorder = localStorage.getItem('textBorder');
+  // enable/disable old text border from before redesign
+  if (textBorder === 'true') {
     const elements = ['greeting', 'clock', 'quote', 'quoteauthor', 'date'];
     elements.forEach((element) => {
       try {
@@ -84,6 +91,13 @@ export function loadSettings(hotreload) {
         // Disregard exception 
       }
     });
+  }
+
+  // remove actual default shadow
+  if (textBorder === 'none') {
+    document.getElementById('center').classList.add('no-textBorder');
+  } else {
+    document.getElementById('center').classList.remove('no-textBorder');
   }
 
   const css = localStorage.getItem('customcss');

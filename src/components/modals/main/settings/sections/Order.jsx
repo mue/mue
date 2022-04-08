@@ -13,25 +13,26 @@ const widget_name = {
   quicklinks: getMessage('modals.main.settings.sections.quicklinks.title'),
   quote: getMessage('modals.main.settings.sections.quote.title'),
   date: getMessage('modals.main.settings.sections.date.title'),
-  message: getMessage('modals.main.settings.sections.message.title')
+  message: getMessage('modals.main.settings.sections.message.title'),
+  reminder: 'reminder',
 };
 
 const SortableItem = sortableElement(({ value }) => (
-  <li className='sortableitem'>
+  <li className="sortableItem">
     <MdOutlineDragIndicator style={{ verticalAlign: 'middle' }} />
     {widget_name[value]}
   </li>
 ));
-  
+
 const SortableContainer = sortableContainer(({ children }) => (
-  <ul className='sortablecontainer'>{children}</ul>
+  <ul className="sortablecontainer">{children}</ul>
 ));
 
 export default class OrderSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
-      items: JSON.parse(localStorage.getItem('order'))
+      items: JSON.parse(localStorage.getItem('order')),
     };
   }
 
@@ -39,34 +40,37 @@ export default class OrderSettings extends PureComponent {
     const result = Array.from(array);
     const [removed] = result.splice(oldIndex, 1);
     result.splice(newIndex, 0, removed);
-  
+
     return result;
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState({
-      items: this.arrayMove(this.state.items, oldIndex, newIndex)
+      items: this.arrayMove(this.state.items, oldIndex, newIndex),
     });
-  }
+  };
 
   reset = () => {
-    localStorage.setItem('order', JSON.stringify(['greeting', 'time', 'quicklinks', 'quote', 'date', 'message']));
-  
+    localStorage.setItem(
+      'order',
+      JSON.stringify(['greeting', 'time', 'quicklinks', 'quote', 'date', 'message', 'reminder']),
+    );
+
     this.setState({
-      items: JSON.parse(localStorage.getItem('order'))
+      items: JSON.parse(localStorage.getItem('order')),
     });
 
     toast(getMessage('toasts.reset'));
-  }
+  };
 
   enabled = (setting) => {
     switch (setting) {
       case 'quicklinks':
-        return (localStorage.getItem('quicklinksenabled') === 'true');
+        return localStorage.getItem('quicklinksenabled') === 'true';
       default:
-        return (localStorage.getItem(setting) === 'true');
+        return localStorage.getItem(setting) === 'true';
     }
-  }
+  };
 
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
@@ -77,17 +81,22 @@ export default class OrderSettings extends PureComponent {
   render() {
     return (
       <>
-        <h2>{getMessage('modals.main.settings.sections.order.title')}</h2>
-        <span className='modalLink' onClick={this.reset}>{getMessage('modals.main.settings.buttons.reset')}</span>
-        <SortableContainer onSortEnd={this.onSortEnd} lockAxis='y' lockToContainerEdges disableAutoscroll>
+        <span className="mainTitle">{getMessage('modals.main.settings.sections.order.title')}</span>
+        <span className="link" onClick={this.reset}>
+          {getMessage('modals.main.settings.buttons.reset')}
+        </span>
+        <SortableContainer
+          onSortEnd={this.onSortEnd}
+          lockAxis="y"
+          lockToContainerEdges
+          disableAutoscroll
+        >
           {this.state.items.map((value, index) => {
-            if (!this.enabled(value)) { 
+            if (!this.enabled(value)) {
               return null;
             }
 
-            return (
-              <SortableItem key={`item-${value}`} index={index} value={value} />
-            );
+            return <SortableItem key={`item-${value}`} index={index} value={value} />;
           })}
         </SortableContainer>
       </>

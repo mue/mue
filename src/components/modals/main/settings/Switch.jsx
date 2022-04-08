@@ -13,7 +13,7 @@ export default class Switch extends PureComponent {
   }
 
   handleChange = () => {
-    const value = (this.state.checked === true) ? false : true;
+    const value = (this.state.checked !== true);
     localStorage.setItem(this.props.name, value);
 
     this.setState({
@@ -24,7 +24,7 @@ export default class Switch extends PureComponent {
 
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {
-        document.querySelector('.reminder-info').style.display = 'block';
+        document.querySelector('.reminder-info').style.display = 'flex';
         return localStorage.setItem('showReminder', true);
       }
     }

@@ -80,7 +80,7 @@
     "value": true
   },
   {
-    "name": "tweetButton",
+    "name": "quoteShareButton",
     "value": false
   },
   {
@@ -125,7 +125,7 @@
   },
   {
     "name": "order",
-    "value": "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\", \"message\"]"
+    "value": "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\", \"message\", \"reminder\"]"
   },
   {
     "name": "theme",
@@ -222,7 +222,7 @@
   {
     "name": "photoInformation",
     "value": true
-  }, 
+  },
   {
     "name": "quicklinksddgProxy",
     "value": true
@@ -246,5 +246,13 @@
   {
     "name": "animations",
     "value": true
+  },
+  {
+    "name": "textBorder",
+    "value": "new"
+  },
+  {
+    "name": "widgetStyle",
+    "value": "new"
   }
 ]

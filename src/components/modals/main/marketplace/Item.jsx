@@ -1,19 +1,38 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
+import Tooltip from '../../../helpers/tooltip/Tooltip';
 import { toast } from 'react-toastify';
-import { MdArrowBack } from 'react-icons/md';
+import {
+  MdArrowBack,
+  MdFavoriteBorder,
+  MdIosShare,
+  MdFlag,
+  MdWarning,
+  MdAccountCircle,
+  MdBugReport,
+  MdFormatQuote,
+  MdImage,
+  MdTranslate,
+  MdKeyboardArrowDown,
+  MdKeyboardArrowUp,
+} from 'react-icons/md';
 import Modal from 'react-modal';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
 
 import Lightbox from './Lightbox';
+import ShareModal from '../../../helpers/sharemodal/ShareModal';
 
 export default class Item extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       showLightbox: false,
-      showUpdateButton: (this.props.addonInstalled === true && this.props.addonInstalledVersion !== this.props.data.version)
+      showUpdateButton:
+        this.props.addonInstalled === true &&
+        this.props.addonInstalledVersion !== this.props.data.version,
+      showMore: false,
+      shareModal: false,
     };
   }
 
@@ -21,9 +40,17 @@ export default class Item extends PureComponent {
     uninstall(this.props.data.type, this.props.data.display_name);
     install(this.props.data.type, this.props.data);
     toast(variables.language.getMessage(variables.languagecode, 'toasts.updated'));
-    this.setState({ 
-      showUpdateButton: false 
+    this.setState({
+      showUpdateButton: false,
     });
+  }
+
+  toggleShowMore() {
+    if (this.state.showMore === true) {
+      this.setState({ showMore: false });
+    } else {
+      this.setState({ showMore: true });
+    }
   }
 
   render() {
@@ -36,15 +63,20 @@ export default class Item extends PureComponent {
     let warningHTML;
     if (this.props.data.quote_api) {
       warningHTML = (
-        <div className='productInformation'>
-          <ul>
-            <li className='header'>{getMessage('modals.main.marketplace.product.quote_warning.title')}</li>
-            <li id='updated'>{getMessage('modals.main.marketplace.product.quote_warning.description')}</li>
-          </ul>
+        <div className="itemWarning">
+          <div className="topRow">
+            <MdWarning />
+            <div className="title">
+              {getMessage('modals.main.marketplace.product.quote_warning.title')}
+            </div>
+          </div>
+          <div className="subtitle">
+            {getMessage('modals.main.marketplace.product.quote_warning.description')}
+          </div>
         </div>
       );
     }
-  
+
     // prevent console error
     let iconsrc = variables.constants.DDG_IMAGE_PROXY + this.props.data.icon;
     if (!this.props.data.icon) {
@@ -54,48 +86,170 @@ export default class Item extends PureComponent {
     let updateButton;
     if (this.state.showUpdateButton) {
       updateButton = (
-        <Fragment key='update'>
-          <br/><br/>
-          <button className='removeFromMue' onClick={() => this.updateAddon()}>
+        <Fragment key="update">
+          <button className="removeFromMue" onClick={() => this.updateAddon()}>
             {getMessage('modals.main.addons.product.buttons.update_addon')}
           </button>
         </Fragment>
       );
-     }
-  
+    }
+
     return (
-      <div id='item'>
-        <br/>
-        <MdArrowBack className='backArrow' onClick={this.props.toggleFunction}/>
-        <br/>
-        <h1>{this.props.data.display_name}</h1>
-        {this.props.button}
-        {updateButton}
-        <br/><br/>
-        {iconsrc ? <img alt='product' draggable='false' src={iconsrc} onClick={() => this.setState({ showLightbox: true })}/> : null}
-        <div className='side'>
-          <div className='productInformation'>
-            <ul>
-              <li className='header'>{getMessage('modals.main.marketplace.product.version')}</li>
-              {updateButton ? <li>{this.props.data.version} (Installed: {this.props.data.addonInstalledVersion})</li> : <li>{this.props.data.version}</li>}
-              <br/>
-              <li className='header'>{getMessage('modals.main.marketplace.product.author')}</li>
-              <li>{this.props.data.author}</li>
-             </ul>
-          </div>
-          <br/>
-          {warningHTML} 
-        </div>
-        <div className='sidebr'>
-          <br/><br/>
-        </div>
-        <div className='informationContainer'>
-          <h1 className='overview'>{getMessage('modals.main.marketplace.product.overview')}</h1>
-          <p className='description' dangerouslySetInnerHTML={{ __html: this.props.data.description }}></p>
-        </div>
-        <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
-          <Lightbox modalClose={() => this.setState({ showLightbox: false })} img={iconsrc}/>
+      <div id="item">
+        <Modal
+          closeTimeoutMS={300}
+          isOpen={this.state.shareModal}
+          className="Modal mainModal"
+          overlayClassName="Overlay"
+          ariaHideApp={false}
+          onRequestClose={() => this.setState({ shareModal: false })}
+        >
+          <ShareModal
+            data={this.props.data}
+            modalClose={() => this.setState({ shareModal: false })}
+          />
         </Modal>
+        <div className="flexTopMarketplace">
+          <div className="returnButton">
+            <Tooltip title="back" key="cheese">
+              <MdArrowBack className="backArrow" onClick={this.props.toggleFunction} />
+            </Tooltip>
+          </div>
+          <span className="mainTitle">Marketplace</span>
+        </div>
+        <div className="itemPage">
+          <div className="itemShowcase">
+            <div className="titleTop">
+              <span className="itemTitle">{this.props.data.display_name}</span>
+              <span className="subtitle">{this.props.data.author}</span>
+            </div>
+            <img
+              alt="product"
+              draggable="false"
+              src={iconsrc}
+              onClick={() => this.setState({ showLightbox: true })}
+            />
+            <span className="title">Description</span>
+            <span
+              className={this.state.showMore ? 'description' : 'description truncate'}
+              dangerouslySetInnerHTML={{ __html: this.props.data.description }}
+            />
+            {this.props.data.description.length > 100 ? (
+              <div className="showMore" onClick={() => this.toggleShowMore()}>
+                {this.state.showMore === true ? (
+                  <>
+                    <span>Show Less</span>
+                    <MdKeyboardArrowDown />
+                  </>
+                ) : (
+                  <>
+                    <span>Show More</span>
+                    <MdKeyboardArrowUp />
+                  </>
+                )}
+              </div>
+            ) : null}
+            <div className="moreInfo">
+              <div className="infoItem">
+                <MdBugReport />
+                <div className="text">
+                  <span className="header">
+                    {getMessage('modals.main.marketplace.product.version')}
+                  </span>
+                  {updateButton ? (
+                    <span>
+                      {this.props.data.version} (Installed: {this.props.data.addonInstalledVersion})
+                    </span>
+                  ) : (
+                    <span>{this.props.data.version}</span>
+                  )}
+                </div>
+              </div>
+              <div className="infoItem">
+                <MdAccountCircle />
+                <div className="text">
+                  <span className="header">
+                    {getMessage('modals.main.marketplace.product.author')}
+                  </span>
+                  <span>{this.props.data.author}</span>
+                </div>
+              </div>
+              {this.props.data.data.quotes ? (
+                <div className="infoItem">
+                  <MdFormatQuote />
+                  <div className="text">
+                    <span className="header">No. Quotes</span>
+                    <span>{this.props.data.data.quotes.length}</span>
+                  </div>
+                </div>
+              ) : null}
+              {this.props.data.data.photos ? (
+                <div className="infoItem">
+                  <MdImage />
+                  <div className="text">
+                    <span className="header">No. Images</span>
+                    <span>{this.props.data.data.photos.length}</span>
+                  </div>
+                </div>
+              ) : null}
+              {!this.props.data.data.photos ? (
+                <div className="infoItem">
+                  <MdTranslate />
+                  <div className="text">
+                    <span className="header">Language</span>
+                    <span>English</span>
+                  </div>
+                </div>
+              ) : null}
+              <div className="infoItem">
+                <MdIosShare />
+                <div className="text">
+                  <span className="header">Shares</span>
+                  <span>324</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="itemInfo">
+            <img
+              alt="icon"
+              draggable="false"
+              src={variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}
+            />
+            {this.props.button}
+            <div className="iconButtons">
+              <Tooltip title="Share" key="cheese">
+                <MdIosShare onClick={() => this.setState({ shareModal: true })} />
+              </Tooltip>
+              <Tooltip title="Report" key="cheese">
+                <MdFlag
+                  onClick={() =>
+                    window.open(
+                      variables.constants.REPORT_ITEM +
+                        this.props.data.display_name.split(' ').join('+'),
+                      '_blank',
+                    )
+                  }
+                />
+              </Tooltip>
+            </div>
+            {this.props.data.data.collection ? (
+              <div className="inCollection">
+                <span className="subtitle">Part of</span>
+                <span className="title">Red Dead Collection</span>
+                <button>Explore</button>
+              </div>
+            ) : null}
+            {warningHTML}
+            {/*<div className="itemWarning">
+              <div className="topRow">
+                <NewReleasesRounded />
+                <div className="title">Update</div>
+              </div>
+              <div className="subtitle">React > Vue</div>
+            </div>*/}
+          </div>
+        </div>
       </div>
     );
   }

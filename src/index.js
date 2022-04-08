@@ -1,4 +1,4 @@
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import App from './App';
 import variables from 'modules/variables';
@@ -47,7 +47,7 @@ if (localStorage.getItem('stats') === 'true') {
   variables.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
 }*/
 
-render(
-  <App/>,
-  document.getElementById('root')
-);
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(<App/>);

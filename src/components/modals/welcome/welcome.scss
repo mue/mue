@@ -1,4 +1,5 @@
 @import '../main/scss/index.scss';
+@import 'scss/variables';
 
 .welcomemodal {
   position: absolute;
@@ -19,7 +20,9 @@
 
   section:nth-child(1) {
     float: left;
-    background: var(--sidebar);
+    @include themed() {
+      background: t($modal-sidebar);
+    }
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,15 +30,27 @@
 
   section:nth-child(2) {
     float: right;
-
+    @include themed() {
+      background: t($modal-background);
+    }
     .content {
       padding: 20px;
+      .mainTitle {
+        font-size: 38px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
     }
 
     .buttons {
       position: absolute;
       bottom: 2rem;
       right: 2rem;
+      display: flex;
+      button {
+        @include modal-button(standard);
+        width: 150px;
+      }
     }
 
     h1 {
@@ -78,57 +93,61 @@
 }
 
 .themesToggleArea {
-  .active {
-    background: var(--tab-active);
-  }
-
-  .toggle {
-    background: var(--sidebar);
-    text-align: center;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 10px;
-    border: 3px solid var(--tab-active);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    &:hover {
-      background: var(--tab-active);
+  @include themed() {
+    .active {
+      background: t($modal-sidebarActive);
     }
 
-    span {
-      font-size: 1rem;
-    }
+    .toggle {
+      background: t($modal-sidebar);
+      text-align: center;
+      border-radius: 20px;
+      padding: 20px;
+      border: 3px solid t($modal-sidebarActive);
+      transition: 0.33s;
 
-    svg {
-      font-size: 2.5em;
-    }
-  }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
 
-  .auto {
-    svg {
-      font-size: 12px;
-      padding-right: 5px;
-    }
-  }
+      cursor: pointer;
 
-  .options {
-    display: flex;
-    justify-content: space-between;
-
-    .lightTheme,
-    .darkTheme {
-      width: 40%;
-      padding: 50px;
+      &:hover {
+        background: t($modal-sidebarActive);
+      }
 
       span {
-        display: block;
+        font-size: 1rem;
+      }
+
+      svg {
+        font-size: 2.5em;
+      }
+    }
+
+    .auto {
+      svg {
+        font-size: 12px;
+        padding-right: 5px;
+      }
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      margin-top: 25px;
+
+      .lightTheme,
+      .darkTheme {
+        width: 40%;
+        padding: 50px;
+
+        span {
+          display: block;
+        }
       }
     }
   }
@@ -141,13 +160,14 @@
   border: none;
   outline: none;
   padding: 50px;
-  background: var(--sidebar);
-  color: var(--modal-text);
-  cursor: pointer;
-  border: 3px solid var(--tab-active);
-
-  &:hover {
-    background: var(--tab-active);
+  @include themed() {
+    background: t($modal-sidebar);
+    color: t($color);
+    cursor: pointer;
+    border: 3px solid t($modal-sidebarActive);
+    &:hover {
+      background: t($modal-sidebarActive);
+    }
   }
 
   svg {
@@ -220,14 +240,14 @@ a.privacy {
   }
 }
 
-@media (max-width: 1190px) { 
+@media (max-width: 1190px) {
   .welcomemodal {
     width: 90%;
     height: 90%;
   }
 }
 
-@media (max-width: 800px) { 
+@media (max-width: 800px) {
   .welcomemodal {
     width: 100%;
     height: 100%;
@@ -239,5 +259,16 @@ a.privacy {
 
   section {
     height: 140vh !important;
+  }
+}
+
+.createButtons {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  button {
+    width: 150px;
+    height: 40px;
   }
 }

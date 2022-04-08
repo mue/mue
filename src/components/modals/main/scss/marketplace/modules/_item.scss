@@ -1,46 +1,12 @@
-#item {
-  h1 {
-    font-size: 40px;
-    line-height: 20px;
-  }
-
-  img {
-    float: left;
-  }
-
-  a {
-    color: var(--modal-link);
-    cursor: pointer;
-  
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-}
-
 .side {
   float: right;
   margin-left: 20px;
 }
 
-#item>h1,
-#item>svg {
-  display: inline;
-}
 
 p.description {
-  margin-top: 0px;
+  margin-top: 0;
   max-width: 800px;
-}
-
-.backArrow {
-  cursor: pointer;
-  width: 2rem !important;
-  height: 2rem !important;
-
-  &:hover {
-    color: grey;
-  }
 }
 
 .informationContainer {
@@ -48,43 +14,71 @@ p.description {
   position: absolute;
 }
 
-.productInformation {
-  padding: 10px;
-  background: var(--sidebar);
-  width: 350px;
-  border-radius: 12px;
-  min-height: 180px;
-
-  h4 {
-    cursor: initial !important;
+.moreInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: calc(100% - 30px);
+  gap: 15px;
+  .items {
+    margin-top: 0 !important;
   }
-
-  li {
-    margin-left: -4px;
-    list-style: none;
-    font-size: 16px;
-    cursor: initial !important;
-
-    &.header {
+  .item {
+    flex: 1 0 40% !important;
+  }
+  @include themed() {
+    background: t($modal-sidebar);
+    box-shadow: 0 0 0 4px t($modal-sidebarActive);
+    border-radius: t($borderRadius);
+    padding: 15px;
+    .infoItem {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      gap: 15px;
+      flex: 1 0 44%;
+      svg {
+        font-size: 25px;
+        color: t($subColor);
+      }
+      .text {
+        display: flex;
+        flex-flow: column;
+      }
+    }
+    .header {
       text-transform: uppercase;
-      color: #787878;
-      margin-left: -5px;
+      color: t($subColor);
+    }
+    span {
+      color: t($color);
     }
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  .side {
-    margin-top: 222px;
-    float: none !important;
-  }
-
-  .overview {
-    margin-top: -160px !important;
+.itemTitle {
+  font-size: 38px;
+  font-weight: 600;
+  @include themed() {
+    color: t($color);
   }
 }
 
-.overview {
-  font-size: 30px !important;
-  margin-top: 33px;
+.titleTop {
+  display: flex;
+  flex-flow: column;
+  gap: 3px;
+}
+
+.showMore {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+  @include themed() {
+    &:hover {
+      color: t($subColor);
+    }
+  }
 }

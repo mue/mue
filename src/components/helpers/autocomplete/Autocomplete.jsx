@@ -1,5 +1,7 @@
 import { PureComponent } from 'react';
 
+import { InputBase } from '@mui/material';
+
 import EventBus from 'modules/helpers/eventbus';
 
 import './autocomplete.scss';
@@ -53,7 +55,7 @@ export default class Autocomplete extends PureComponent {
     });
   }
 
-  componentWillUnmount() {
+  componentWillUmount() {
     EventBus.off('refresh');
   }
 
@@ -63,21 +65,21 @@ export default class Autocomplete extends PureComponent {
     // length will only be > 0 if enabled
     if (this.state.filtered.length > 0 && this.state.input.length > 0) {
       autocomplete = (
-        <ul className='suggestions'>
+        <div className='suggestions'>
           {this.state.filtered.map((suggestion) => (
-            <li key={suggestion} onClick={this.onClick}>
+            <div key={suggestion} onClick={this.onClick}>
               {suggestion}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       );
     }
 
     return (
-      <>
-        <input type='text' onChange={this.onChange} value={this.state.input} placeholder={this.props.placeholder || ''} autoComplete='off' id={this.props.id || ''} />
+      <div style={{display: 'flex', flexFlow: 'column'}}>
+        <input type='text' onChange={this.onChange} value={this.state.input} placeholder={this.props.placeholder || ''} autoComplete='off' spellCheck={false} id={this.props.id || ''} />
         {autocomplete}
-      </>
+      </div>
     );
   }
 }

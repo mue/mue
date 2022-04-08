@@ -1,0 +1,59 @@
+@import '../../../scss/variables';
+
+.shareModal {
+    @extend %tabText;
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
+    padding: 15px;
+    @include themed() {
+      background: t($modal-background);
+    }
+    .buttons {
+      justify-content: space-between;
+      display: flex;
+      gap: 15px;
+    }
+    button {
+      place-items: center;
+      display: grid;
+      @include basicIconButton(11px, 1.3rem, modal);
+    }
+    .copy {
+      display: flex;
+      flex-flow: row;
+      gap: 15px;
+    }
+    input[type='text'] {
+      @include themed() {
+        background: t($modal-sidebar);
+        border-radius: t($borderRadius);
+        box-shadow: 0 0 0 4px t($modal-sidebarActive);
+        padding: 11px;
+        flex: 1;
+        color: t($color);
+      }
+      border: none;
+      outline: none;
+    }
+    .close {
+      padding: 15px;
+      place-items: center;
+      display: grid;
+      cursor: pointer;
+      &:hover {
+        @include themed() {
+          background: t($modal-sidebar);
+          border-radius: t($borderRadius);
+        }
+      }
+    }
+  }
+  
+  .shareHeader {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  

@@ -7,7 +7,7 @@ export default function KeybindInput(props) {
 
   const getButton = () => {
     if (!value) {
-      return <button className='cleanButton' style={{ visibility: 'hidden' }} onClick={() => props.action('reset', props.setting)}><Cancel/></button>;;
+      return <button className='cleanButton' style={{ visibility: 'hidden' }} onClick={() => props.action('reset', props.setting)}><MdCancel/></button>;;
     } else if (value === variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.keybinds.recording')) {
       return <button className='cleanButton' onClick={() => props.action('cancel', props.setting)}><MdCancel/></button>;
     } else {

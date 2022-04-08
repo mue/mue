@@ -1,17 +1,22 @@
+@import 'scss/variables';
+
 .preview-mode {
+  @extend %basic;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 1rem;
+  right: 1rem;
   padding: 15px;
-  color: var(--modal-text);
-  background: var(--background);
-  max-width: 300px;
-  border-radius: .7em;
+  max-width: 250px;
+  border-radius: 12px;
   z-index: 999;
   text-align: left;
   cursor: default;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
 
-  h1 {
-    font-size: 1rem;
+  button {
+    @include basicIconButton(10px, 14px, ui);
+    gap: 20px;
   }
 }

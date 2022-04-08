@@ -199,7 +199,8 @@
             "autocomplete": "Autovervollständigen",
             "autocomplete_provider": "Anbieter von Autovervollständigung",
             "voice_search": "Sprachsuche",
-            "dropdown": "Auswahlmenü Suche"
+            "dropdown": "Auswahlmenü Suche",
+            "focus": "Focus on tab open"
           },
           "weather": {
             "title": "Wetter",
@@ -377,7 +378,9 @@
             "support_mue": "Mue unterstützen",
             "resources_used": {
               "title": "Verwendete Ressourcen",
-              "bg_images": "Offline Hintergrundbilder"
+              "bg_images": "Offline Hintergrundbilder",
+              "welcome_img": "Willkommensbild",
+              "pin_icon": "Icon Anheften"
             },
             "contributors": "Mitwirkende",
             "supporters": "Unterstützer",

@@ -199,7 +199,8 @@
             "autocomplete": "Autocompletado",
             "autocomplete_provider": "Proveedor del autocompletado",
             "voice_search": "Búsqueda por voz",
-            "dropdown": "Search dropdown"
+            "dropdown": "Search dropdown",
+            "focus": "Focus on tab open"
           },
           "weather": {
             "title": "Clima",
@@ -376,7 +377,9 @@
             "support_mue": "Apoya Mue",
             "resources_used": {
               "title": "Recursos usados",
-              "bg_images": "Imágenes de fondo sin conexión"
+              "bg_images": "Imágenes de fondo sin conexión",
+              "welcome_img": "Imagen de bienvenida",
+              "pin_icon": "Icono de chincheta"
             },
             "contributors": "Contribuyentes",
             "supporters": "Partidarios",

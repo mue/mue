@@ -1,37 +1,79 @@
 // todo: possibly add tooltip placement option
+@import 'scss/variables';
+
 .tooltip {
   position: relative;
-  display: inline-block;
+  display: grid;
+}
 
-  .tooltipTitle {
-    min-width: 60px;
-    background-color: rgba(255, 255, 255, 0.89);
-    color: #000;
-    text-align: center;
-    font-size: 0.6rem;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    margin-left: -30px;
-    visibility: hidden;
-    cursor: initial;
-    user-select: none;
+@keyframes floating {
+  0% {
+    transform: translate(0, -5px);
     opacity: 0;
-    transition: 0.2s;
   }
 
-  &:hover {
-    .tooltipTitle {
-      visibility: visible;
-      opacity: 1;
+  100% {
+    transform: translate(0, -0px);
+    opacity: 1;
+  }
+}
+
+.tooltipTitle {
+  @extend %basic;
+  text-align: center;
+  font-size: 0.6rem;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  /*top: 100%;
+  left: 50%;
+  margin-top: 15px;
+  margin-left: -30px;*/
+  cursor: initial;
+  user-select: none;
+  opacity: 1;
+  animation-name: floating;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+}
+
+#modal {
+  .tooltipTitle {
+    @include themed() {
+      background: t($modal-sidebar);
+      box-shadow: 0 0 0 1px t($modal-sidebarActive);
+      color: t($color);
     }
   }
 }
 
-.dark .tooltipTitle {
-  background-color: rgba(0, 0, 0, 0.79);
-  color: #fff;
+#root {
+  .tooltipTitle {
+    @extend %basic;
+  }
+}
+
+.tooltipTitle:before {
+  transform: scale3d(0.2, 0.2, 1);
+  transition: all 0.2s ease-in-out;
+}
+.tooltipTitle:after {
+  transform: translate3d(0, 6px, 0);
+  transition: all 0.1s ease-in-out;
+}
+.tooltipTitle:hover:before,
+.tooltipTitle:hover:after {
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+}
+.tooltipTitle:hover:after {
+  transition: all 0.2s 0.1s ease-in-out;
+}
+
+#arrow {
+  position: absolute;
+  background: #333;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
 }

@@ -1,4 +1,5 @@
 @import 'modules/resetmodal';
+@import 'scss/variables';
 @import 'modules/material-ui';
 @import 'modules/reminder';
 
@@ -8,7 +9,7 @@
 
 input {
   /* colour picker */
-  &[type=color] {
+  &[type='color'] {
     border-radius: 100%;
     height: 30px;
     width: 30px;
@@ -29,7 +30,7 @@ input {
   }
 
   /* firefox fixes for colour picker (using "," didn't work) */
-  &[type=color]::-moz-color-swatch {
+  &[type='color']::-moz-color-swatch {
     border-radius: 100%;
     height: 30px;
     width: 30px;
@@ -50,11 +51,13 @@ input {
   }
 
   /* date picker */
-  &[type=date] {
-    width: 280px;
-    color: var(--modal-text);
-    background: var(--background);
-    border: solid var(--modal-text) 1px;
+  &[type='date'] {
+    width: 260px;
+    @include themed() {
+      background: t($modal-sidebar);
+      border: 3px solid t($modal-sidebarActive);
+      color: t($color);
+    }
     padding: 15px 20px;
     border-radius: 4px;
     display: flex !important;
@@ -82,5 +85,74 @@ h4 {
 
   th {
     padding-right: 10px;
+  }
+}
+
+.dropzone {
+  @include themed() {
+    background: t($modal-sidebar);
+    border: 3px solid t($modal-sidebarActive);
+    color: t($color);
+    border-radius: 12px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.5s;
+    padding: 45px 25px 45px 25px;
+    svg {
+      font-size: 48px;
+    }
+    .title {
+      font-size: 18px;
+    }
+    &:hover {
+      border-style: dashed;
+    }
+    button {
+      width: 80% !important;
+    }
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 100px;
+  row-gap: 100px;
+  padding: 25px;
+  div {
+    padding: 25px;
+    @include themed() {
+      padding: 45px;
+      border-radius: t($borderRadius);
+      background: t($modal-sidebar);
+      box-shadow: 0 0 0 4px t($modal-sidebarActive);
+      svg {
+        font-size: 50px;
+        color: t($subColor);
+      }
+    }
+  }
+  div:nth-child(1) {
+    grid-area: 1 / 1 / 3 / 3;
+  }
+  div:nth-child(2) {
+    grid-area: 3 / 1 / 4 / 3;
+  }
+  div:nth-child(3) {
+    grid-area: 1 / 3 / 4 / 4;
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    .subtitle {
+      text-transform: capitalize;
+    }
+    span {
+      font-size: 20px;
+    }
   }
 }

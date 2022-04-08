@@ -1,27 +1,29 @@
-.resetmodal {
-  min-height: 300px !important;
-  max-width: 300px !important;
-  margin: auto;
-  font-size: 1rem;
+@import '../../../../../../scss/variables';
 
-  h4 {
-    cursor: initial;
-    font-size: 1.1rem;
-  }
-}
-
-.resetfooter {
-  position: absolute;
-  bottom: 20px;
-  width: 300px;
-  justify-content: center;
+.resetModal {
+  @extend %tabText;
   display: flex;
-
-  button.reset {
-    margin-right: 43px;
+  flex-flow: column;
+  padding: 2rem;
+  justify-content: center;
+  gap: 15px;
+  @include themed() {
+    background: t($modal-background);
+  }
+  button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  button:nth-child(1) {
+    @include basicIconButton(11px, 1.3rem, modal-text);
+  }
+  button:nth-child(2) {
+    @include basicIconButton(11px, 1.3rem, modal);
   }
 }
-
-.resetoverlay {
-  background-color: rgba(0, 0, 0, 0.5);
+.resetFooter {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
 }

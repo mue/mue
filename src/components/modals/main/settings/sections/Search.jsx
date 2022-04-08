@@ -7,6 +7,7 @@ import Header from '../Header';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
 import Radio from '../Radio';
+import SettingsItem from '../SettingsItem';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -73,24 +74,31 @@ export default class SearchSettings extends PureComponent {
   render() {
     return (
       <>
-        <Header title={this.getMessage('modals.main.settings.sections.search.title')} setting='searchBar' category='widgets'/>
+        <Header title={this.getMessage('modals.main.settings.sections.search.title')} setting='searchBar' category='widgets' switch={true}/>
+        <SettingsItem title="Extra Options" subtitle="eeeee">
         {/* not supported on firefox */}
         {(navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined') ? 
           <Checkbox name='voiceSearch' text={this.getMessage('modals.main.settings.sections.search.voice_search')} category='search'/> 
         : null}
         <Checkbox name='searchDropdown' text={this.getMessage('modals.main.settings.sections.search.dropdown')} category='search' element='.other'/>
+        <Checkbox name='searchFocus' text={this.getMessage('modals.main.settings.sections.search.focus')} category='search' element='.other'/>
+        <ul style={{ display: this.state.customDisplay }}>
+          <p style={{ marginTop: '0px' }}><span className='link' onClick={() => this.resetSearch()}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
+          <TextField label={this.getMessage('modals.main.settings.sections.search.custom')} value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })} varient='outlined' InputLabelProps={{ shrink: true }} />
+        </ul>
+        <Checkbox name='autocomplete' text={this.getMessage('modals.main.settings.sections.search.autocomplete')} category='search' />
+        </SettingsItem>
+        <SettingsItem title={this.getMessage('modals.main.settings.sections.search.search_engine')} subtitle="cheese is gucci tbf">
         <Dropdown label={this.getMessage('modals.main.settings.sections.search.search_engine')} name='searchEngine' onChange={(value) => this.setSearchEngine(value)} manual={true}>
           {searchEngines.map((engine) => (
             <MenuItem key={engine.name} value={engine.settingsName}>{engine.name}</MenuItem>
           ))}
           <MenuItem value='custom'>{this.getMessage('modals.main.settings.sections.search.custom').split(' ')[0]}</MenuItem>
         </Dropdown>
-        <ul style={{ display: this.state.customDisplay }}>
-          <p style={{ marginTop: '0px' }}><span className='modalLink' onClick={() => this.resetSearch()}>{this.getMessage('modals.main.settings.buttons.reset')}</span></p>
-          <TextField label={this.getMessage('modals.main.settings.sections.search.custom')} value={this.state.customValue} onInput={(e) => this.setState({ customValue: e.target.value })} varient='outlined' InputLabelProps={{ shrink: true }} />
-        </ul>
-        <Checkbox name='autocomplete' text={this.getMessage('modals.main.settings.sections.search.autocomplete')} category='search' />
-        <Radio title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')} options={autocompleteProviders} name='autocompleteProvider' category='search'/>
+        </SettingsItem>
+        <SettingsItem title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')} subtitle="cheese">
+          <Radio options={autocompleteProviders} name='autocompleteProvider' category='search'/>
+        </SettingsItem>
       </>
     );
   }

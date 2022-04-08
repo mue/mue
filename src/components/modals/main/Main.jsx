@@ -1,56 +1,70 @@
 import variables from 'modules/variables';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useState } from 'react';
+
+import { MdClose } from 'react-icons/md';
 
 import Tabs from './tabs/backend/Tabs';
 
 import './scss/index.scss';
+import Tooltip from '../../helpers/tooltip/Tooltip';
 
 // Lazy load all the tabs instead of the modal itself
 const Settings = lazy(() => import('./tabs/Settings'));
 const Addons = lazy(() => import('./tabs/Addons'));
 const Marketplace = lazy(() => import('./tabs/Marketplace'));
 
-const renderLoader = () => (
-  <Tabs>
+const renderLoader = (current) => (
+  <Tabs current={current}>
     <div label={variables.language.getMessage(variables.languagecode, 'modals.main.loading')}>
-      <div className='emptyitems'>
-        <div className='emptyMessage'>
-          <h1>{variables.language.getMessage(variables.languagecode, 'modals.main.loading')}</h1>
+      <div className="emptyItems">
+        <div className="emptyMessage">
+          <div className="loaderHolder">
+            <div id="loader"></div>
+            <span className="subtitle">Just be a sec.</span>
+          </div>
         </div>
       </div>
     </div>
-    <div label='' style={{ display: 'none' }}></div>
+    <div label="" style={{ display: 'none' }}></div>
   </Tabs>
 );
 
 export default function MainModal({ modalClose }) {
-  const display = (localStorage.getItem('showReminder') === 'true') ? 'block' : 'none';
+  const display = localStorage.getItem('showReminder') === 'true' ? 'block' : 'none';
+  const [currentTab, setCurrentTab] = useState(0);
+
+  const changeTab = (type) => {
+    switch (type) {
+      case 'settings':
+        setCurrentTab(<Settings changeTab={changeTab} />);
+        break;
+      case 'addons':
+        setCurrentTab(<Addons changeTab={changeTab} />);
+        break;
+      case 'marketplace':
+        setCurrentTab(<Marketplace changeTab={changeTab} />);
+        break;
+      default:
+        break;
+    }
+  };
+
+  if (currentTab === 0) {
+    setCurrentTab(<Settings changeTab={changeTab} />);
+  }
 
   return (
-    <>
-      <span className='closeModal' onClick={modalClose}>&times;</span>
-      <Tabs navbar={true}>
-        <div label={variables.language.getMessage(variables.languagecode, 'modals.main.navbar.settings')} name='settings'>
-          <Suspense fallback={renderLoader()}>
-            <Settings/>
-          </Suspense>
-        </div>
-        <div label={variables.language.getMessage(variables.languagecode, 'modals.main.navbar.addons')} name='addons'>
-          <Suspense fallback={renderLoader()}>
-            <Addons/>
-          </Suspense>
-        </div>
-        <div label={variables.language.getMessage(variables.languagecode, 'modals.main.navbar.marketplace')} name='marketplace'>
-          <Suspense fallback={renderLoader()}>
-            <Marketplace/>
-          </Suspense>
-        </div>
-      </Tabs>
-      <div className='reminder-info' style={{ display }}>
-        <h1>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.reminder.title')}</h1>
-        <p>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.reminder.message')}</p>
-        <button className='pinNote' onClick={() => window.location.reload()}>{variables.language.getMessage(variables.languagecode, 'modals.main.error_boundary.refresh')}</button>
-      </div>
-    </>
+    <div className="frame">
+      <Tooltip
+        style={{ position: 'absolute', top: '3rem', right: '3rem' }}
+        title="close"
+        key="cheese"
+      >
+        <span className="closeModal" onClick={modalClose}>
+          <MdClose />
+        </span>
+      </Tooltip>
+      <Suspense fallback={renderLoader(currentTab)}>{currentTab}</Suspense>
+    </div>
   );
 }

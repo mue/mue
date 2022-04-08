@@ -1,14 +1,14 @@
 import EventBus from './eventbus';
 
 function showReminder() {
-  document.querySelector('.reminder-info').style.display = 'block';
+  document.querySelector('.reminder-info').style.display = 'flex';
   localStorage.setItem('showReminder', true);
 }
 
 // based on https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
 export function urlParser(input) {
   const urlPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&//=]*)/;
-  return input.replace(urlPattern, '<a href="$&" target="_blank">$&</a>');
+  return input.replace(urlPattern, '<br/><a href="$&" target="_blank">$&</a>');
 }
 
 export function install(type, input, sideload) {
@@ -32,7 +32,11 @@ export function install(type, input, sideload) {
       break;
 
     case 'photos':
-      localStorage.setItem('photo_packs', JSON.stringify(input.photos));
+      const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
+      input.photos.forEach(photo => {
+        currentPhotos.push(photo);
+      });
+      localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
       localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
       localStorage.setItem('backgroundType', 'photo_pack');
       EventBus.dispatch('refresh', 'background');
@@ -89,7 +93,16 @@ export function uninstall(type, name) {
       break;
 
     case 'photos':
-      localStorage.removeItem('photo_packs');
+      const installedContents = JSON.parse(localStorage.getItem('photo_packs'));
+      const packContents = JSON.parse(localStorage.getItem('installed')).find(content => content.name === name);
+      // todo: make it find in photo_packs all the ones in installed for that pack and remove
+      console.log(packContents)
+      installedContents.forEach((item, index) => {
+        if (packContents.photos.includes(item)) {
+          installedContents.splice(index, 1);
+        }
+      });
+      localStorage.setItem('photo_packs', JSON.stringify(installedContents));
       localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
       localStorage.removeItem('oldBackgroundType');
       EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');

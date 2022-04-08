@@ -1,8 +1,8 @@
+@import '../variables';
+
 .Toastify__toast-body {
-  color: var(--modal-text) !important;
   font-size: 16px !important;
   padding: 15px 20px !important;
-  background: var(--background) !important;
 }
 
 .Toastify__toast {
@@ -11,13 +11,11 @@
   height: auto !important;
   width: auto !important;
   min-width: auto !important;
-  padding: 0px !important;
+  padding: 10px !important;
 }
 
 .Toastify__close-button {
-  margin-top: 10px;
-  margin-right: 10px;
-  color: var(--modal-text) !important;
+  align-self: center !important;
 }
 
 .Toastify__progress-bar--default {
@@ -31,5 +29,5 @@
 }
 
 .Toastify__toast--default {
-  background: var(--background) !important;
+  @extend %basic;
 }

@@ -1,43 +1,95 @@
+@import '../../../../../scss/variables';
+
 .tab-content {
-  position: absolute;
+  button {
+    @include modal-button(standard);
+  }
+  @include themed() {
+    padding: 1rem 3rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: t($modal-background);
+    @extend %tabText;
+    hr {
+      width: 100%;
+      background: rgba(196, 196, 196, 0.74);
+      outline: none;
+    }
+    .settingsRow {
+      display: flex;
+      align-items: center;
+      min-height: 100px;
+      justify-content: space-between;
+      /*border-top: 1px solid #ccc;*/
+      border-bottom: 1px solid #ccc;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
 
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0;
+      &.settingsNoBorder {
+        border-bottom: none;
+      }
+      .content {
+        display: flex;
+        flex-flow: column;
+        max-width: 50%;
+      }
+      .action {
+        display: flex;
+        flex-flow: column;
+        align-items: flex-end;
+        width: 300px;
+        button {
+          margin-top: 10px;
+          width: 283px;
+        }
+      }
+    }
   }
 }
 
-@media only screen and (min-width: 2300px) {
-  .tab-content {
-    left: 350px;
-    top: 7%;
+.activityButtons {
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  align-content: space-between !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  button:not(:first-child) {
+    width: 40% !important;
+    height: 99px !important;
+    flex-flow: column-reverse !important;
+  }
+  button {
+    @include modal-button(standard);
   }
 }
 
-@media only screen and (max-width: 1920px) {
-  .tab-content {
-    left: 120px;
-    top: 60px;
-  }
-}
-
-@media only screen and (min-width: 1920px) {
-  .tab-content {
-    left: 350px;
-    top: 9%;
-  }
-}
-
-@media only screen and (max-width: 1400px),
-(min-width: 1400px) {
-  .tab-content {
-    left: 350px;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .tab-content {
-    left: 125px;
-    top: 90px;
+table {
+  @include themed() {
+    margin-top: 20px;
+    tr:first-child {
+      background: t($modal-sidebarActive);
+      th {
+        padding: 1rem;
+      }
+    }
+    tr {
+      th:last-child {
+        display: grid;
+        place-items: center;
+      }
+    }
+    tr:not(:first-child) {
+      background: t($modal-sidebar);
+      textarea {
+        width: 90%;
+        margin: 10px;
+        color: t($color);
+        ::placeholder {
+          color: t($color);
+        }
+      }
+    }
   }
 }

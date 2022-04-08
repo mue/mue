@@ -6,7 +6,12 @@ import PhotoInformation from './PhotoInformation';
 
 import EventBus from 'modules/helpers/eventbus';
 import Interval from 'modules/helpers/interval';
-import { videoCheck, offlineBackground, getGradient, randomColourStyleBuilder } from 'modules/helpers/background/widget';
+import {
+  videoCheck,
+  offlineBackground,
+  getGradient,
+  randomColourStyleBuilder,
+} from 'modules/helpers/background/widget';
 
 import './scss/index.scss';
 
@@ -21,8 +26,8 @@ export default class Background extends PureComponent {
         hidden: false,
         offline: false,
         photographerURL: '',
-        photoURL: ''
-      }
+        photoURL: '',
+      },
     };
   }
 
@@ -31,7 +36,11 @@ export default class Background extends PureComponent {
 
     if (this.state.url !== '') {
       let url = this.state.url;
-      if (localStorage.getItem('ddgProxy') === 'true' && this.state.photoInfo.offline !== true && !this.state.url.startsWith('data:')) {
+      if (
+        localStorage.getItem('ddgProxy') === 'true' &&
+        this.state.photoInfo.offline !== true &&
+        !this.state.url.startsWith('data:')
+      ) {
         url = variables.constants.DDG_IMAGE_PROXY + this.state.url;
       }
 
@@ -39,8 +48,8 @@ export default class Background extends PureComponent {
 
       // just set the background
       if (localStorage.getItem('bgtransition') === 'false') {
-        photoInformation?.[photoInformation.style.display = 'block'];
-        return backgroundImage.style.background = `url(${url})`;
+        photoInformation?.[(photoInformation.style.display = 'block')];
+        return (backgroundImage.style.background = `url(${url})`);
       }
 
       // firstly we set the background as hidden and make sure there is no background set currently
@@ -50,7 +59,7 @@ export default class Background extends PureComponent {
       // same with photo information if not using custom background
       photoInformation?.classList.add('backgroundPreload');
 
-      // preloader for background transition, required so it loads in nice
+      // preloader for background transition, required, so it loads in nice
       const preloader = document.createElement('img');
       preloader.src = url;
 
@@ -76,17 +85,17 @@ export default class Background extends PureComponent {
 
   // Main background getting function
   async getBackground() {
-    let offline = (localStorage.getItem('offlineMode') === 'true');
+    let offline = localStorage.getItem('offlineMode') === 'true';
     if (localStorage.getItem('showWelcome') === 'true') {
       offline = true;
     }
 
     const setFavourited = ({ type, url, credit, location, camera }) => {
-      console.log(type)
-      if (type === 'random_colour' || type === 'random_gradient') { 
-        return this.setState({ 
+      console.log(type);
+      if (type === 'random_colour' || type === 'random_gradient') {
+        return this.setState({
           type: 'colour',
-          style: `background:${url}`
+          style: `background:${url}`,
         });
       }
       this.setState({
@@ -94,10 +103,10 @@ export default class Background extends PureComponent {
         photoInfo: {
           credit,
           location,
-          camera
-        }
+          camera,
+        },
       });
-    }
+    };
 
     const favourited = JSON.parse(localStorage.getItem('favourite'));
     if (favourited) {
@@ -115,7 +124,7 @@ export default class Background extends PureComponent {
         const backgroundAPI = localStorage.getItem('backgroundAPI');
         const apiCategory = localStorage.getItem('apiCategory');
         const apiQuality = localStorage.getItem('apiQuality');
-        const photoMap = (localStorage.getItem('photoMap') === 'true');
+        const photoMap = localStorage.getItem('photoMap') === 'true';
 
         let requestURL, data;
         switch (backgroundAPI) {
@@ -160,8 +169,10 @@ export default class Background extends PureComponent {
             latitude: data.latitude || null,
             longitude: data.longitude || null,
             // location map token from mapbox
-            maptoken: data.maptoken || null
-          }
+            maptoken: data.maptoken || null,
+            views: data.views || null,
+            downloads: data.downloads || null,
+          },
         };
 
         this.setState(object);
@@ -180,7 +191,6 @@ export default class Background extends PureComponent {
       case 'random_gradient':
         this.setState(randomColourStyleBuilder(type));
         break;
-
       case 'custom':
         let customBackground = [];
         const customSaved = localStorage.getItem('customBackground');
@@ -202,14 +212,19 @@ export default class Background extends PureComponent {
           return this.setState(offlineBackground());
         }
 
-        if (customBackground !== '' && customBackground !== 'undefined' && customBackground !== [''] && customBackground !== undefined) {
+        if (
+          customBackground !== '' &&
+          customBackground !== 'undefined' &&
+          customBackground !== [''] &&
+          customBackground !== undefined
+        ) {
           const object = {
             url: customBackground,
             type: 'custom',
             video: videoCheck(customBackground),
             photoInfo: {
-              hidden: true
-            }
+              hidden: true,
+            },
           };
 
           this.setState(object);
@@ -237,8 +252,8 @@ export default class Background extends PureComponent {
             photoInfo: {
               hidden: false,
               credit: randomPhoto.photographer,
-              location: randomPhoto.location || 'N/A'
-            }
+              location: randomPhoto.location || 'N/A',
+            },
           });
         }
         break;
@@ -259,8 +274,8 @@ export default class Background extends PureComponent {
         type: '',
         video: false,
         photoInfo: {
-          hidden: true
-        }
+          hidden: true,
+        },
       });
       this.getBackground();
     };
@@ -279,9 +294,9 @@ export default class Background extends PureComponent {
 
           // video backgrounds
           if (this.state.video === true) {
-            return document.getElementById('backgroundVideo').style.display = 'none';
+            return (document.getElementById('backgroundVideo').style.display = 'none');
           } else {
-            return element.style.display = 'none';
+            return (element.style.display = 'none');
           }
         }
 
@@ -304,7 +319,13 @@ export default class Background extends PureComponent {
 
         if (this.state.photoInfo.offline !== true) {
           // basically check to make sure something has changed before we try getting another background
-          if (backgroundType !== this.state.type || (this.state.type === 'api' && localStorage.getItem('backgroundAPI') !== this.state.currentAPI) || (this.state.type === 'custom' && localStorage.getItem('customBackground') !== this.state.url)) {
+          if (
+            backgroundType !== this.state.type ||
+            (this.state.type === 'api' &&
+              localStorage.getItem('backgroundAPI') !== this.state.currentAPI) ||
+            (this.state.type === 'custom' &&
+              localStorage.getItem('customBackground') !== this.state.url)
+          ) {
             return refresh();
           }
         } else if (backgroundType !== this.state.type) {
@@ -316,14 +337,38 @@ export default class Background extends PureComponent {
         const backgroundFilter = backgroundFilterSetting && backgroundFilterSetting !== 'none';
 
         if (this.state.video === true) {
-          document.getElementById('backgroundVideo').style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilterSetting + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}`;
+          document.getElementById(
+            'backgroundVideo',
+          ).style.webkitFilter = `blur(${localStorage.getItem(
+            'blur',
+          )}px) brightness(${localStorage.getItem('brightness')}%) ${
+            backgroundFilter
+              ? backgroundFilterSetting +
+                '(' +
+                localStorage.getItem('backgroundFilterAmount') +
+                '%)'
+              : ''
+          }`;
         } else {
-          element.style.webkitFilter = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter ? backgroundFilterSetting + '(' + localStorage.getItem('backgroundFilterAmount') + '%)' : ''}`;
+          element.style.webkitFilter = `blur(${localStorage.getItem(
+            'blur',
+          )}px) brightness(${localStorage.getItem('brightness')}%) ${
+            backgroundFilter
+              ? backgroundFilterSetting +
+                '(' +
+                localStorage.getItem('backgroundFilterAmount') +
+                '%)'
+              : ''
+          }`;
         }
       }
 
       // uninstall photo pack reverts your background to what you had previously
-      if (data === 'marketplacebackgrounduninstall' || data === 'backgroundwelcome' || data === 'backgroundrefresh') {
+      if (
+        data === 'marketplacebackgrounduninstall' ||
+        data === 'backgroundwelcome' ||
+        data === 'backgroundrefresh'
+      ) {
         refresh();
       }
     });
@@ -337,16 +382,20 @@ export default class Background extends PureComponent {
       const type = localStorage.getItem('backgroundType');
 
       if (type === 'api' || type === 'custom') {
-        Interval(() => {
-          try {
-            document.getElementById('backgroundImage').classList.remove('fade-in');
-            document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
-          } catch (e) {
-            // Disregard exception
-          }
-          this.getBackground();
-        }, Number(interval), 'background');
-  
+        Interval(
+          () => {
+            try {
+              document.getElementById('backgroundImage').classList.remove('fade-in');
+              document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
+            } catch (e) {
+              // Disregard exception
+            }
+            this.getBackground();
+          },
+          Number(interval),
+          'background',
+        );
+
         try {
           // todo: refactor this mess
           const current = JSON.parse(localStorage.getItem('currentBackground'));
@@ -390,12 +439,22 @@ export default class Background extends PureComponent {
   render() {
     if (this.state.video === true) {
       const enabled = (setting) => {
-        return (localStorage.getItem(setting) === 'true');
+        return localStorage.getItem(setting) === 'true';
       };
 
       return (
-        <video autoPlay muted={enabled('backgroundVideoMute')} loop={enabled('backgroundVideoLoop')} style={{ WebkitFilter: `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%)` }} id='backgroundVideo'>
-          <source src={this.state.url}/>
+        <video
+          autoPlay
+          muted={enabled('backgroundVideoMute')}
+          loop={enabled('backgroundVideoLoop')}
+          style={{
+            WebkitFilter: `blur(${localStorage.getItem(
+              'blur',
+            )}px) brightness(${localStorage.getItem('brightness')}%)`,
+          }}
+          id="backgroundVideo"
+        >
+          <source src={this.state.url} />
         </video>
       );
     }
@@ -404,10 +463,25 @@ export default class Background extends PureComponent {
 
     return (
       <>
-        <div style={{ WebkitFilter: `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${backgroundFilter && backgroundFilter !== 'none' ? (backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)') : ''}` }} id='backgroundImage'/>
-        {(this.state.photoInfo.credit !== '') ?
-          <PhotoInformation info={this.state.photoInfo} api={this.state.currentAPI} url={this.state.url}/>
-        : null}
+        <div
+          style={{
+            WebkitFilter: `blur(${localStorage.getItem(
+              'blur',
+            )}px) brightness(${localStorage.getItem('brightness')}%) ${
+              backgroundFilter && backgroundFilter !== 'none'
+                ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)'
+                : ''
+            }`,
+          }}
+          id="backgroundImage"
+        />
+        {this.state.photoInfo.credit !== '' ? (
+          <PhotoInformation
+            info={this.state.photoInfo}
+            api={this.state.currentAPI}
+            url={this.state.url}
+          />
+        ) : null}
       </>
     );
   }

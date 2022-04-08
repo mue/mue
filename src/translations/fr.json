@@ -199,7 +199,8 @@
             "autocomplete": "Autocomplete",
             "autocomplete_provider": "Autocomplete Provider",
             "voice_search": "Recherche vocale",
-            "dropdown": "Search dropdown"
+            "dropdown": "Search dropdown",
+            "focus": "Focus on tab open"
           },
           "weather": {
             "title": "Météo",
@@ -376,7 +377,9 @@
             "support_mue": "Soutenir Mue",
             "resources_used": {
               "title": "Ressources utilisées",
-              "bg_images": "Images d'arrière-plan hors ligne"
+              "bg_images": "Images d'arrière-plan hors ligne",
+              "welcome_img": "Image de bienvenue",
+              "pin_icon": "Icône de broche"
             },
             "contributors": "Collaborateurs",
             "supporters": "Partisans",

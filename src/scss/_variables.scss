@@ -1,4 +1,19 @@
 @use 'sass:map';
+@import 'mixins';
+
+$background: 'background';
+$boxShadow: 'boxShadow';
+$borderRadius: 'borderRadius';
+$color: 'color';
+$btn-background: 'btn-background';
+$btn-backgroundHover: 'btn-backgroundHover';
+$subColor: 'subColor';
+$modal-background: 'modal-background';
+$modal-text: 'modal-text';
+$modal-sidebar: 'modal-sidebar';
+$modal-sidebarActive: 'modal-sidebarActive';
+$link: 'link';
+$weather: 'weather';
 
 $theme-colours: (
   'gradient': linear-gradient(90deg, #ffb032 0%, #dd3b67 100%),
@@ -6,7 +21,7 @@ $theme-colours: (
   'secondary': rgba(0, 0, 0, 1),
   'main-text-color': rgba(242, 243, 244, 1),
   'photo-info': #2d3436,
-  'photo-info-dark': #ffff
+  'photo-info-dark': #ffff,
 );
 
 $modal: (
@@ -21,15 +36,228 @@ $modal: (
   'sidebar-dark': rgb(53, 59, 72),
   'tab-active-dark': rgba(65, 71, 84, 0.9),
   'modal-link': #5352ed,
-  'modal-link-dark': #3498db
+  'modal-link-dark': #3498db,
 );
 
 $button-colours: (
   'confirm': rgba(46, 213, 115, 1),
   'reset': rgba(255, 71, 87, 1),
-  'other': rgba(83, 82, 237, 1)
+  'other': rgba(83, 82, 237, 1),
 );
 
-$main-parts: (
-  'shadow':  0 0 1rem 0 rgba(0, 0, 0, 0.2)
+$ui-elements: (
+  'background': rgba(0, 0, 0, 0.7),
+  'backgroundBlur': 15px,
+  'color': rgb(255, 255, 255),
+  'borderRadius': 12px,
+  'boxShadow': 0 0 0 1px #484848,
 );
+
+$themes: (
+  light: (
+    'weather': #333333,
+    'background': rgba(255, 255, 255, 0.7),
+    'backgroundBlur': 15px,
+    'color': rgb(0, 0, 0),
+    'subColor': #333333,
+    'borderRadius': 12px,
+    'boxShadow': 0 0 0 1px #E7E3E9,
+    'btn-background': #fff,
+    'btn-backgroundHover': rgba(247, 250, 252, 0.9),
+    'modal-background': #fff,
+    'modal-sidebar': rgba(240, 240, 240, 1),
+    'modal-sidebarActive': rgba(219, 219, 219, 0.72),
+    'link': rgba(83, 82, 237, 1),
+  ),
+  dark: (
+    'weather': #e7e7e7,
+    'background': rgba(0, 0, 0, 0.7),
+    'backgroundBlur': 15px,
+    'color': rgb(255, 255, 255),
+    'subColor': #c2c2c2,
+    'borderRadius': 12px,
+    'boxShadow': 0 0 0 1px #484848,
+    'btn-background': #222,
+    'btn-backgroundHover': #565656,
+    'modal-background': #2f3542,
+    'modal-sidebar': #353b48,
+    'modal-sidebarActive': rgba(65, 71, 84, 0.9),
+    'link': rgba(83, 82, 237, 1),
+  ),
+);
+
+%basic {
+  @include themed() {
+    background: t($background);
+    border-radius: t($borderRadius);
+    color: t($color);
+    box-shadow: t($boxShadow);
+  }
+  backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
+  .title {
+    font-size: 18px;
+    @include themed() {
+      color: t($color);
+    }
+  }
+  .subtitle {
+    font-size: 14px;
+    @include themed() {
+      color: t($subColor);
+    }
+  }
+}
+
+%tabText {
+  .mainTitle {
+    font-size: 38px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    @include themed() {
+      color: t($color);
+    }
+  }
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    @include themed() {
+      color: t($color);
+    }
+  }
+  .subtitle {
+    font-size: 16px;
+    @include themed() {
+      color: t($subColor);
+    }
+  }
+  .link {
+    font-size: 16px;
+    text-decoration: none;
+    @include themed() {
+      color: t($link);
+    }
+  }
+}
+
+@mixin modal-button($type) {
+  @include themed() {
+    @if $type == 'standard' {
+      background: t($modal-sidebar);
+      border: 3px solid t($modal-sidebarActive);
+      color: t($color);
+      &:hover {
+        background: t($modal-sidebarActive);
+      }
+    }
+    border-radius: 12px;
+    height: 40px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+    justify-content: center;
+    gap: 20px;
+    transition: 0.5s;
+    cursor: pointer;
+    &:hover {
+      background: t($modal-sidebarActive);
+    }
+    &:active {
+      background: t($modal-sidebarActive);
+      box-shadow: 0 0 0 1px t($color);
+    }
+    &:focus {
+      background: t($modal-sidebarActive);
+      box-shadow: 0 0 0 1px t($color);
+    }
+    &:disabled {
+      background: t($modal-sidebarActive);
+      cursor: not-allowed;
+    }
+  }
+}
+
+@mixin basicIconButton($padding, $font-size, $type) {
+  @include themed() {
+    @if $type == 'ui' {
+      background: t($btn-background);
+      color: t($color);
+      box-shadow: t($boxShadow);
+      border-radius: t($borderRadius);
+      &:hover {
+        background: t($btn-backgroundHover);
+      }
+      &:active {
+        background: t($btn-backgroundHover);
+        box-shadow: 0 0 0 1px t($color);
+      }
+      &:focus {
+        background: t($btn-backgroundHover);
+        box-shadow: 0 0 0 1px t($color);
+      }
+    }
+    @if $type == 'modal-text' {
+      color: t($color);
+      background: none;
+      border-radius: t($borderRadius);
+      &:hover {
+        background: t($modal-sidebarActive);
+        box-shadow: 3px solid t($modal-sidebarActive);
+      }
+    }
+    @if $type == 'modal' {
+      background: t($modal-sidebar);
+      border: 3px solid t($modal-sidebarActive);
+      color: t($color);
+      border-radius: t($borderRadius);
+      &:hover {
+        background: t($modal-sidebarActive);
+      }
+      &:active {
+        background: t($modal-sidebarActive);
+        box-shadow: 0 0 0 1px t($color);
+      }
+      &:focus {
+        background: t($modal-sidebarActive);
+        box-shadow: 0 0 0 1px t($color);
+      }
+    }
+    @if $type == 'legacy' {
+      background: none;
+      color: #fff;
+      border-radius: t($borderRadius);
+      box-shadow: 0 0 0 0 !important;
+      &:hover {
+        background-color: rgb(66 66 66 / 23%);
+      }
+      &:active {
+        background-color: rgb(66 66 66 / 23%);
+        box-shadow: 0 0 0 1px t($color);
+      }
+      &:focus {
+        background-color: rgb(66 66 66 / 23%);
+        box-shadow: 0 0 0 1px t($color);
+      }
+    }
+  }
+
+  padding: $padding;
+  font-size: $font-size;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.5s;
+  display: grid;
+  place-items: center;
+}
+
+@mixin legacyIconButton($padding, $font-size) {
+  @include themed() {
+    color: t($color);
+  }
+  &:hover {
+    @include themed() {
+      background: t($btn-background);
+    }
+  }
+}

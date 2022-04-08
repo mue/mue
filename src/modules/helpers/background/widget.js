@@ -59,7 +59,7 @@ export function getGradient() {
 
 export function randomColourStyleBuilder(type) {
   // randomColour based on https://stackoverflow.com/a/5092872
-  const randomColour = () => '#000000'.replace(/0/g, () => {return (~~(Math.random()*16)).toString(16)});
+  const randomColour = () => '#000000'.replace(/0/g, () => { return (~~(Math.random()*16)).toString(16) });
   let style = `background:${randomColour()};`;
 
   if (type === 'random_gradient') {

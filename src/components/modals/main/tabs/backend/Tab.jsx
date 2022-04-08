@@ -29,7 +29,6 @@ import {
   MdAddCircleOutline as Create
 } from 'react-icons/md';
 
-
 function Tab({ label, currentTab, onClick, navbarTab }) {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
@@ -62,6 +61,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.settings.sections.search.title'): icon = <MdSearch/>; break;
     case getMessage('modals.main.settings.sections.weather.title'): icon = <Weather/>; divider = true; break;
     case getMessage('modals.main.settings.sections.order.title'): icon = <Order/>; break;
+    case 'Reminder': icon = <Reminder/>; break;
 
     case getMessage('modals.main.settings.sections.appearance.title'): icon = <Appearance/>; break;
     case getMessage('modals.main.settings.sections.language.title'): icon = <Language/>; divider = true; break;
@@ -76,6 +76,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.addons.sideload.title'): icon = <Sideload/>; break;
     case getMessage('modals.main.addons.create.title'): icon = <Create/>; break;
 
+    case 'All': icon = <Addons/>; divider = true; break;
     case getMessage('modals.main.marketplace.photo_packs'): icon = <Background/>; break;
     case getMessage('modals.main.marketplace.quote_packs'): icon = <Quote/>; break;
     case getMessage('modals.main.marketplace.preset_settings'): icon = <Advanced/>; break;
@@ -91,9 +92,9 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   return (
     <>
-      <li className={className} onClick={() => onClick(label)}>
+      <button className={className} onClick={() => onClick(label)}>
       {icon} <span>{label}</span>
-      </li>
+      </button>
       {(divider === true) ? <hr/> : null}
     </>
   );

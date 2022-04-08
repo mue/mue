@@ -13,7 +13,7 @@ export default class Checkbox extends PureComponent {
   }
 
   handleChange = () => {
-    const value = (this.state.checked === true) ? false : true;
+    const value = (this.state.checked !== true);
     localStorage.setItem(this.props.name, value);
 
     this.setState({
@@ -28,7 +28,7 @@ export default class Checkbox extends PureComponent {
 
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {
-        document.querySelector('.reminder-info').style.display = 'block';
+        document.querySelector('.reminder-info').style.display = 'flex';
         return localStorage.setItem('showReminder', true);
       }
     }
@@ -43,7 +43,6 @@ export default class Checkbox extends PureComponent {
           control={<CheckboxUI name={this.props.name} color='primary' className='checkbox' checked={this.state.checked} onChange={this.handleChange} disabled={this.props.disabled || false} />}
           label={this.props.text}
         />
-        <br/>
       </>
     );
   }

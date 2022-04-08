@@ -1,94 +1,110 @@
-import variables from 'modules/variables';
-import { PureComponent } from 'react';
-import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
+import variables from "modules/variables";
+import { PureComponent } from "react";
+import { WiHumidity, WiWindy, WiBarometer, WiCloud } from "react-icons/wi";
+import { MdDisabledVisible } from "react-icons/md";
 
-import WeatherIcon from './WeatherIcon';
-import WindDirectionIcon from './WindDirectionIcon';
+import WeatherIcon from "./WeatherIcon";
+import WindDirectionIcon from "./WindDirectionIcon";
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from "modules/helpers/eventbus";
 
-import './weather.scss';
+import "./weather.scss";
 
 export default class Weather extends PureComponent {
   constructor() {
     super();
     this.state = {
-      location: localStorage.getItem('location') || 'London',
-      icon: '',
-      temp_text: '',
+      location: localStorage.getItem("location") || "London",
+      icon: "",
+      temp_text: "",
       weather: {
-        temp: '',
-        description: '',
-        temp_min: '',
-        temp_max: '',
-        humidity: '',
-        wind_speed: '',
-        wind_degrees: '',
-        cloudiness: '',
-        visibility: '',
-        pressure: ''
-      }
+        temp: "",
+        description: "",
+        temp_min: "",
+        temp_max: "",
+        temp_feels_like: "",
+        humidity: "",
+        wind_speed: "",
+        wind_degrees: "",
+        cloudiness: "",
+        visibility: "",
+        pressure: "",
+      },
     };
   }
 
   async getWeather() {
-    const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
-    document.querySelector('.weather').style.fontSize = zoomWeather;
+    const zoomWeather = `${Number(
+      (localStorage.getItem("zoomWeather") || 100) / 100
+    )}em`;
+    document.querySelector(".weather").style.fontSize = zoomWeather;
 
     let data = {
       weather: [
         {
           description: this.state.weather.description,
-          icon: this.state.icon
-        }
+          icon: this.state.icon,
+        },
       ],
       main: {
         temp: this.state.weather.original_temp,
         temp_min: this.state.weather.original_temp_min,
         temp_max: this.state.weather.original_temp_max,
+        temp_feels_like: this.state.weather.original_temp_feels_like,
         humidity: this.state.weather.humidity,
-        pressure: this.state.weather.pressure
+        pressure: this.state.weather.pressure,
       },
       visibility: this.state.weather.visibility,
       wind: {
         speed: this.state.weather.wind_speed,
-        deg: this.state.weather.wind_degrees
+        deg: this.state.weather.wind_degrees,
       },
       clouds: {
-        all: this.state.weather.cloudiness
-      }
+        all: this.state.weather.cloudiness,
+      },
     };
 
     if (!this.state.weather.temp) {
-      data = await (await fetch(variables.constants.PROXY_URL + `/weather/current?city=${this.state.location}&lang=${variables.languagecode}`)).json();
+      data = await (
+        await fetch(
+          variables.constants.PROXY_URL +
+            `/weather/current?city=${this.state.location}&lang=${variables.languagecode}`
+        )
+      ).json();
     }
 
-    if (data.cod === '404') {
+    if (data.cod === "404") {
       return this.setState({
-        location: variables.language.getMessage(variables.languagecode, 'widgets.weather.not_found')
+        location: variables.language.getMessage(
+          variables.languagecode,
+          "widgets.weather.not_found"
+        ),
       });
     }
 
     let temp = data.main.temp;
-    let temp_min = data.main.temp_min; 
+    let temp_min = data.main.temp_min;
     let temp_max = data.main.temp_max;
-    let temp_text = 'K';
+    let temp_feels_like = data.main.temp_feels_like;
+    let temp_text = "K";
 
-    switch (localStorage.getItem('tempformat')) {
-      case 'celsius':
-        temp = temp - 273.15;
-        temp_min = temp_min - 273.15;
-        temp_max = temp_max - 273.15;
-        temp_text = '°C';
+    switch (localStorage.getItem("tempformat")) {
+      case "celsius":
+        temp -= 273.15;
+        temp_min -= 273.15;
+        temp_max -= 273.15;
+        temp_feels_like -= 273.15;
+        temp_text = "°C";
         break;
-      case 'fahrenheit':
-        temp = ((temp - 273.15) * 1.8) + 32;
-        temp_min = ((temp_min - 273.15) * 1.8) + 32;
-        temp_max = ((temp_max - 273.15) * 1.8) + 32;
-        temp_text = '°F';
+      case "fahrenheit":
+        temp = (temp - 273.15) * 1.8 + 32;
+        temp_min = (temp_min - 273.15) * 1.8 + 32;
+        temp_max = (temp_max - 273.15) * 1.8 + 32;
+        temp_feels_like = (temp_feels_like - 273.15) * 1.8 + 32;
+        temp_text = "°F";
         break;
       // kelvin
-      default: 
+      default:
         break;
     }
 
@@ -100,6 +116,7 @@ export default class Weather extends PureComponent {
         description: data.weather[0].description,
         temp_min: Math.round(temp_min),
         temp_max: Math.round(temp_max),
+        temp_feels_like: Math.round(temp_feels_like),
         humidity: data.main.humidity,
         wind_speed: data.wind.speed,
         wind_degrees: data.wind.deg,
@@ -108,16 +125,17 @@ export default class Weather extends PureComponent {
         pressure: data.main.pressure,
         original_temp: data.main.temp,
         original_temp_min: data.main.temp_min,
-        original_temp_max: data.main.temp_max
-      }
+        original_temp_max: data.main.temp_max,
+        original_temp_feels_like: data.main.temp_feels_like,
+      },
     });
 
-    document.querySelector('.weather svg').style.fontSize = zoomWeather;
+    document.querySelector(".weather svg").style.fontSize = zoomWeather;
   }
-  
+
   componentDidMount() {
-    EventBus.on('refresh', (data) => {
-      if (data === 'weather') {
+    EventBus.on("refresh", (data) => {
+      if (data === "weather") {
         this.getWeather();
       }
     });
@@ -126,48 +144,150 @@ export default class Weather extends PureComponent {
   }
 
   componentWillUnmount() {
-    EventBus.off('refresh');
+    EventBus.off("refresh");
   }
 
   render() {
     const enabled = (setting) => {
-      return (localStorage.getItem(setting) === 'true');
+      return localStorage.getItem(setting) === "true";
     };
 
-    if (this.state.location === variables.language.getMessage(variables.languagecode, 'weather.not_found')) {
-      return (<div className='weather'>
-        <span className='loc'>{this.state.location}</span>
-      </div>);
+    if (
+      this.state.location ===
+      variables.language.getMessage(variables.languagecode, "weather.not_found")
+    ) {
+      return (
+        <div className="weather">
+          <span className="loc">{this.state.location}</span>
+        </div>
+      );
     }
 
     const minmax = () => {
-      const mintemp = enabled('mintemp');
-      const maxtemp = enabled('maxtemp');
-    
+      const mintemp = enabled("mintemp");
+      const maxtemp = enabled("maxtemp");
+
       if (!mintemp && !maxtemp) {
         return null;
       } else if (mintemp && !maxtemp) {
-        return <><br/>{this.state.weather.temp_min + this.state.temp_text}</>;
+        return (
+          <span className="subtitle">
+            {this.state.weather.temp_min + this.state.temp_text}
+          </span>
+        );
       } else if (maxtemp && !mintemp) {
-        return <><br/>{this.state.weather.temp_max + this.state.temp_text}</>;
+        return (
+          <span className="subtitle">
+            {this.state.weather.temp_max + this.state.temp_text}
+          </span>
+        );
       } else {
-        return <><br/>{this.state.weather.temp_min + this.state.temp_text} {this.state.weather.temp_max + this.state.temp_text}</>;
+        return (
+          <>
+            <span className="subtitle">
+              {this.state.weather.temp_min + this.state.temp_text}
+            </span>{" "}
+            <span className="subtitle">
+              {" "}
+              {this.state.weather.temp_max + this.state.temp_text}
+            </span>
+          </>
+        );
       }
     };
 
     return (
-      <div className='weather'>
-        <WeatherIcon name={this.state.icon}/>
-        <span>{this.state.weather.temp + this.state.temp_text}</span>
-        {enabled('weatherdescription') ? <span className='loc'><br/>{this.state.weather.description}</span> : null}
-        <span className='minmax'>{minmax()}</span>
-        {enabled('humidity') ? <span className='loc'><br/><WiHumidity/>{this.state.weather.humidity}%</span> : null}
-        {enabled('windspeed') ? <span className='loc'><br/><WiWindy/>{this.state.weather.wind_speed}<span className='minmax'> m/s</span> {enabled('windDirection') ? <WindDirectionIcon degrees={this.state.weather.wind_degrees}/> : null}</span> : null}
-        {enabled('cloudiness') ? <span className='loc'><br/><WiCloud/>{this.state.weather.cloudiness}%</span> : null}
-        {enabled('visibility') ? <span className='loc visibility'><br/>{variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', { amount: this.state.weather.visibility })}</span> : null}
-        {enabled('atmosphericpressure') ? <span className='loc'><br/><WiBarometer/>{this.state.weather.pressure}<span className='minmax'> hPa</span></span> : null}
-        <br/>
-        {enabled('showlocation') ? <span className='loc'>{this.state.location}</span> : null}
+      <div className="weather">
+        <div>
+          <div className="top-weather">
+            <div>
+              <WeatherIcon name={this.state.icon} />
+              <span>{this.state.weather.temp + this.state.temp_text}</span>
+            </div>
+            <span className="minmax">{minmax()}</span>
+          </div>
+          <div className="extra-info">
+            {/*{enabled('humidity') ? <span><WiHumidity/>{this.state.weather.humidity}%</span> : null}*/}
+            {enabled("feelsliketemp") ? (
+              <span>
+                Feels like{" "}
+                {this.state.weather.temp_feels_like + this.state.temp_text}
+              </span>
+            ) : null}
+            {enabled("showlocation") ? (
+              <span className="loc">{this.state.location}</span>
+            ) : null}
+          </div>
+          <div className="expanded-info">
+            <span className="subtitle">Upcoming Forecast</span>
+            <div className="upcomingForecast">
+              <div>
+                <WeatherIcon name={this.state.icon} />
+                <span className="period">15:00</span>
+                <span className="minmax">{minmax()}</span>
+              </div>
+              <div>
+                <WeatherIcon name={this.state.icon} />
+                <span className="period">16:00</span>
+                <span className="minmax">{minmax()}</span>
+              </div>
+              <div>
+                <WeatherIcon name={this.state.icon} />
+                <span className="period">17:00</span>
+                <span className="minmax">{minmax()}</span>
+              </div>
+            </div>
+            <span className="subtitle">Extra Information</span>
+            {enabled("cloudiness") ? (
+              <span>
+                <WiCloud className="weatherIcon" />
+                {this.state.weather.cloudiness}%
+              </span>
+            ) : null}
+            {enabled("windspeed") ? (
+              <span>
+                <WiWindy className="weatherIcon" />
+                {this.state.weather.wind_speed}
+                <span className="minmax"> m/s</span>{" "}
+                {enabled("windDirection") ? (
+                  <div className="weatherIcon">
+                    <WindDirectionIcon
+                      className="weatherIcon"
+                      degrees={this.state.weather.wind_degrees}
+                    />
+                  </div>
+                ) : null}
+              </span>
+            ) : null}
+            {enabled("atmosphericpressure") ? (
+              <span>
+                <WiBarometer className="weatherIcon" />
+                {this.state.weather.pressure}
+                <span className="minmax"> hPa</span>
+              </span>
+            ) : null}
+            {enabled("weatherdescription") ? (
+              <span>
+                <div className="weatherIcon">
+                  <WeatherIcon name={this.state.icon} />
+                </div>
+                {this.state.weather.description}
+              </span>
+            ) : null}
+            {enabled("visibility") ? (
+              <span>
+                <MdDisabledVisible style={{ padding: "3px" }} />
+                {variables.language.getMessage(
+                  variables.languagecode,
+                  "widgets.weather.meters",
+                  {
+                    amount: this.state.weather.visibility,
+                  }
+                )}
+              </span>
+            ) : null}
+          </div>
+        </div>
       </div>
     );
   }

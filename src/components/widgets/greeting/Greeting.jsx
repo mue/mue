@@ -10,7 +10,7 @@ export default class Greeting extends PureComponent {
   constructor() {
     super();
     this.state = {
-      greeting: ''
+      greeting: '',
     };
     this.timer = undefined;
     this.greeting = createRef();
@@ -28,10 +28,10 @@ export default class Greeting extends PureComponent {
     // If it's December 25th, set the greeting string to "Merry Christmas"
     if (month === 11 && date === 25) {
       message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.christmas');
-    // If the date is January 1st, set the greeting string to "Happy new year"
+      // If the date is January 1st, set the greeting string to "Happy new year"
     } else if (month === 0 && date === 1) {
       message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.newyear');
-    // If it's October 31st, set the greeting string to "Happy Halloween"
+      // If it's October 31st, set the greeting string to "Happy Halloween"
     } else if (month === 9 && date === 31) {
       message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.halloween');
     }
@@ -45,7 +45,7 @@ export default class Greeting extends PureComponent {
     return Math.abs(birthday.getUTCFullYear() - 1970);
   }
 
-  getGreeting(time = (60000 - Date.now() % 60000)) {
+  getGreeting(time = 60000 - (Date.now() % 60000)) {
     this.timer = setTimeout(() => {
       let now = new Date();
       const timezone = localStorage.getItem('timezone');
@@ -56,13 +56,19 @@ export default class Greeting extends PureComponent {
       const hour = now.getHours();
 
       // Set the default greeting string to "Good evening"
-      let message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.evening');
+      let message = variables.language.getMessage(
+        variables.languagecode,
+        'widgets.greeting.evening',
+      );
       // If it's before 12am, set the greeting string to "Good morning"
       if (hour < 12) {
         message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.morning');
-      // If it's before 6pm, set the greeting string to "Good afternoon"
+        // If it's before 6pm, set the greeting string to "Good afternoon"
       } else if (hour < 18) {
-        message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.afternoon');
+        message = variables.language.getMessage(
+          variables.languagecode,
+          'widgets.greeting.afternoon',
+        );
       }
 
       // Events and custom
@@ -95,19 +101,24 @@ export default class Greeting extends PureComponent {
 
         if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
           if (localStorage.getItem('birthdayage') === 'true') {
-            const text = variables.language.getMessage(variables.languagecode, 'widgets.greeting.birthday').split(' ');
+            const text = variables.language
+              .getMessage(variables.languagecode, 'widgets.greeting.birthday')
+              .split(' ');
             message = `${text[0]} ${nth(this.calculateAge(birth))} ${text[1]}`;
           } else {
-            message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.birthday');
+            message = variables.language.getMessage(
+              variables.languagecode,
+              'widgets.greeting.birthday',
+            );
           }
         }
       }
 
       // Set the state to the greeting string
       this.setState({
-        greeting: `${message}${name}`
+        greeting: `${message}${name}`,
       });
-  
+
       this.getGreeting();
     }, time);
   }
@@ -116,20 +127,24 @@ export default class Greeting extends PureComponent {
     EventBus.on('refresh', (data) => {
       if (data === 'greeting' || data === 'timezone') {
         if (localStorage.getItem('greeting') === 'false') {
-          return this.greeting.current.style.display = 'none';
+          return (this.greeting.current.style.display = 'none');
         }
 
         this.timer = null;
         this.getGreeting(0);
 
         this.greeting.current.style.display = 'block';
-        this.greeting.current.style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
+        this.greeting.current.style.fontSize = `${
+          1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)
+        }em`;
       }
     });
 
     // this comment can apply to all widget zoom features apart from the general one in the Accessibility section
-    // in a nutshell: 1.6 is the current font size and we do "localstorage || 100" so we don't have to try that 4.0 -> 5.0 thing again
-    this.greeting.current.style.fontSize = `${1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)}em`;
+    // in a nutshell: 1.6 is the current font size, and we do "localstorage || 100" so we don't have to try that 4.0 -> 5.0 thing again
+    this.greeting.current.style.fontSize = `${
+      1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)
+    }em`;
 
     this.getGreeting(0);
   }
@@ -140,9 +155,9 @@ export default class Greeting extends PureComponent {
 
   render() {
     return (
-      <h1 className='greeting' ref={this.greeting}>
+      <span className="greeting" ref={this.greeting}>
         {this.state.greeting}
-      </h1>
+      </span>
     );
   }
 }

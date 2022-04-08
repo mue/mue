@@ -1,6 +1,6 @@
 export default function ProgressBar({ count, currentTab, switchTab }) {
   return (
-    <div className='progressbar'>
+    <div className="progressbar">
       {count.map((num) => {
         let className = 'step';
 
@@ -9,7 +9,7 @@ export default function ProgressBar({ count, currentTab, switchTab }) {
           className = 'step active';
         }
 
-        return <div className={className} key={index} onClick={() => switchTab(index)}></div>;
+        return <div className={className} key={index} onClick={() => switchTab(index)} />;
       })}
     </div>
   );

@@ -32,7 +32,16 @@ div.color-preview-area > div > div:nth-child(5) {
   border: 2px solid var(--modal-text) !important;
 }
 
-.text-input, .number-input {
+.text-input,
+.number-input {
   background-color: var(--sidebar) !important;
   color: var(--modal-text) !important;
+}
+
+.colourInput {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row-reverse;
 }

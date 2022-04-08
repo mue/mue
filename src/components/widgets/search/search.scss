@@ -1,115 +1,69 @@
-@import '../../../scss/variables';
+@import 'scss/variables';
 
 .searchBar {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  color: map-get($theme-colours, 'main-text-color');
-
-  input[type=text] {
-    width: 140px;
-    margin-left: 40px;
-    border-radius: 24px;
-    font-size: calc(5px + 1.2vmin);
+  display: flex;
+  border-radius: 12px;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 10px;
+  input[type='text'] {
+    @extend %basic;
+    outline: none;
     border: none;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.7);
-    -webkit-transition: width 0.5s ease-in-out;
-    transition: width 0.5s ease-in-out;
-    color: black;
-    padding: 0.5rem 1rem;
-    user-select: none;
-
-    &:focus {
-      width: 400px;
-      background-color: rgba(255, 255, 255, 0.8);
-      user-select: text;
-    }
-
-    &::-webkit-input-placeholder {
-      color: black;
-    }
-
-    &::-moz-placeholder {
-      color: black;
+    font-size: 20px;
+    padding: 10px 0 10px 20px;
+    &::placeholder {
+      @include themed() {
+        color: t($color);
+      }
     }
   }
+}
 
-  svg {
-    position: absolute;
-    margin-top: 6px;
-    font-size: 30px;
-    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
-    cursor: pointer;
-    transition: all 0.5s ease 0s;
+.searchIcons {
+  display: flex;
+  gap: 10px;
+  margin-top: 1px;
+  .tooltip {
+    max-height: 44px;
+  }
+}
 
-    &:hover {
-      transform: scale(1.1);
-    }
+.searchComponents {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-flow: column;
+  button {
+    @include basicIconButton(12px, 20px, ui);
   }
 }
 
 .searchDropdown {
-  display: block;
-  margin-top: 10px;
-  font-size: calc(5px + 1.2vmin);
-  user-select: none;
-  position: absolute;
-  top: 2.5em;
-  left: 1em;
+  @extend %basic;
+  margin-top: 5px;
+  display: flex;
+  flex-flow: column;
+  align-content: flex-start;
   text-align: left;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
-  padding: 10px;
-  width: 250px;
-
+  font-size: 0.6em;
+  width: 200px;
+  transition: 0.5s;
   span {
-    display: block;
-  }
-
-  .searchDropdownList, .searchSelected {
+    padding: 0.5rem;
     cursor: pointer;
-
+    border-radius: 12px;
     &:hover {
-      color: rgb(214, 214, 214);
+      @include themed() {
+        background: t($btn-backgroundHover);
+      }
     }
   }
 }
 
-.micIcon {
-  margin-right: 10px;
-  position: relative !important;
-}
-
-.dark .searchBar {
-  input[type=text] {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-
-    &:focus {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    &::-webkit-input-placeholder {
-      color: white;
-    }
-
-    &::-moz-placeholder {
-      color: white;
-    }
-  }
-}
-
-.dropdown-span {
-  font-size: calc(5px + 1.2vmin);
-  display: inline-block;
-  padding-top: 8px;
-  vertical-align: top;
-  margin-right: 30px;
-  cursor: pointer;
-  user-select: none;
-
-  &:hover {
-    color: rgb(214, 214, 214);
-  }
+.searchMain {
+  display: flex;
+  flex-flow: row;
+  gap: 10px;
 }

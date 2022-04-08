@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-
+import { MdArrowForwardIos } from 'react-icons/md';
 import './preview.scss';
 
 export default function Preview(props) {
@@ -7,9 +7,9 @@ export default function Preview(props) {
 
   return (
     <div className='preview-mode'>
-      <h1>{getMessage('modals.main.settings.reminder.title')}</h1>
-      <p>{getMessage('modals.welcome.preview.description')}</p>
-      <button className='pinNote' onClick={() => props.setup()}>{getMessage('modals.welcome.preview.continue')}</button>
+      <span className='title'>{getMessage('modals.main.settings.reminder.title')}</span>
+      <span className='subtitle'>{getMessage('modals.welcome.preview.description')}</span>
+      <button onClick={() => props.setup()}>{getMessage('modals.welcome.preview.continue')}</button>
     </div>
   );
 }

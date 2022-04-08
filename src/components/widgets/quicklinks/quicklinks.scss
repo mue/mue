@@ -1,46 +1,40 @@
-.quicklinks {
-  position: relative;
-  user-select: none;
-  border: none;
-  color: #fff;
-  font-size: 42px;
-  background: none;
-  cursor: pointer;
-  text-shadow: 0 0 10px rgb(0 0 0 / 60%);
+@import 'scss/variables';
 
-  h3 {
-    text-shadow: none;
-    margin: 0;
-  }
+.quicklinks {
+  @include basicIconButton(10px, 14px, ui);
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 1px #484848;
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 0.5em;
+  padding: 10px 40px 10px 40px;
+  gap: 15px;
 }
 
 .quicklinkscontainer {
-  padding: 15px;
-  background-color: var(--background);
-  color: var(--modal-text);
-  text-align: center;
   border-radius: 12px;
-  position: absolute;
-  margin-left: -140px;
-  margin-top: 50px;
   z-index: 1;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 12px;
 
-  svg {
-    float: left;
+  textarea {
+    @extend %basic;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
   }
+
 
   ::placeholder {
     color: #636e72;
     opacity: 1;
   }
-}
-
-textarea {
-  border: none;
-  width: 200px;
-  resize: none;
-  height: 100px;
-  margin: 10px;
 }
 
 .topbarquicklinks {
@@ -64,13 +58,8 @@ textarea {
   }
 }
 
-.dark textarea {
-  background-color: #2f3542;
-  color: white;
-}
-
-.quicklinks-container>a,
-.quicklinks-container>.quicklinks>button {
+.quicklinks-container > a,
+.quicklinks-container > .quicklinks > button {
   display: inline;
 }
 
@@ -94,9 +83,65 @@ textarea {
 .quicklinkstext {
   text-decoration: none;
   color: white;
-  font-size: smaller;
+  font-size: 0.8em;
 
   &:hover {
     text-decoration: underline;
   }
+}
+
+/*  background-color: var(--background);
+  color: var(--modal-text);*/
+
+.quicklinksdropdown {
+  @extend %basic;
+  position: absolute;
+  z-index: 99;
+  display: none;
+  flex-flow: column;
+  padding: 15px;
+  box-shadow: 0 0 0 1px #484848;
+  gap: 5px;
+
+  &:hover {
+    .quicklinksdropdown {
+      display: block;
+    }
+  }
+
+  .dropdown-title {
+    font-size: 0.9em;
+  }
+
+  .dropdown-subtitle {
+    font-size: 0.4em;
+
+    @include themed() {
+      color: t($subColor);
+    }
+  }
+
+  button {
+    @include basicIconButton(10px, 0.9rem, ui);
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+.dropdown-error {
+  font-size: 0.4em;
+}
+
+button.quicklinks {
+  cursor: pointer;
+}
+
+.outOfScreen {
+  bottom: 515px;
 }

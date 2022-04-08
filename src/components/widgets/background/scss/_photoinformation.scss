@@ -1,26 +1,86 @@
-.photoInformation {
+@import 'scss/variables';
+
+.photoInformationHolder {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  font-size: calc(10px + 0.1vmin) !important;
+  flex-flow: column-reverse;
+  display: flex;
+  &:hover {
+    .photoInformation {
+      height: auto;
+      align-items: flex-start;
+      flex-flow: column;
+      .concept-buttons {
+        padding: 0 0 20px;
+        display: flex;
+      }
+      .extra-content {
+        display: flex;
+        flex-flow: column;
+        gap: 10px;
+        transition: 0.8s;
+      }
+      .concept-stats {
+        display: flex;
+        gap: 15px;
+        @include themed() {
+          color: t($subColor);
+        }
+        div {
+          display: flex;
+          align-items: center;
+          align-content: center;
+          flex-direction: row;
+          gap: 10px;
+          svg {
+            font-size: 1em;
+          }
+        }
+      }
+      .concept-copyright {
+        display: flex;
+        margin-top: 10px;
+        gap: 10px;
+        a {
+          text-decoration: none;
+          @include themed() {
+            color: t($subColor);
+          }
+        }
+      }
+      .photoInformation-content {
+        padding-left: 0;
+      }
+      .map-concept {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.photoInformation-legacy {
+  font-size: 1.36em;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
   z-index: 99;
   user-select: none;
   cursor: initial;
+  font-weight: bolder;
 
   svg {
-    float: left;
-    margin-right: 1rem;
-    font-size: calc(10px + 2vmin);
-    cursor: pointer;
+    font-size: 1.36em;
   }
 
-  svg,
-  h1 {
-    display: inline;
+  &:hover .infoCard {
+    display: block !important;
   }
 
-  svg:hover+.infoCard {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  svg:hover + .infoCard {
     display: block;
   }
 
@@ -78,7 +138,7 @@
   }
 
   h1,
-  svg {
+  .MuiSvgIcon-root {
     user-select: none;
     cursor: initial;
   }
@@ -115,5 +175,154 @@
 
   .mapCopyright {
     font-size: 0.9em;
+  }
+}
+
+.photoInformation {
+  @extend %basic;
+  font-size: 0.8em;
+  font-weight: 300;
+  z-index: 99;
+  padding: 20px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: 380px;
+  &:hover {
+    height: auto;
+    align-items: flex-start;
+    flex-flow: column;
+    .concept-buttons {
+      padding: 0 0 20px;
+      display: flex;
+    }
+    .extra-content {
+      display: flex;
+      flex-flow: column;
+      gap: 10px;
+      transition: 0.8s;
+    }
+    .concept-stats {
+      display: flex;
+      gap: 15px;
+      @include themed() {
+        color: t($subColor);
+      }
+      div {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        flex-direction: row;
+        gap: 10px;
+        svg {
+          font-size: 1em;
+        }
+      }
+    }
+    .concept-copyright {
+      display: flex;
+      margin-top: 10px;
+      gap: 10px;
+      a {
+        text-decoration: none;
+        @include themed() {
+          color: t($subColor);
+        }
+      }
+    }
+    .photoInformation-content {
+      padding-left: 0;
+    }
+    .map-concept {
+      width: 100%;
+    }
+  }
+  .map-concept {
+    @extend %basic;
+    height: 80px;
+    width: 80px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    svg {
+      font-size: 25px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+  }
+  .concept-location {
+    font-size: 1.9em;
+  }
+  .concept-credit {
+    font-size: 1.4em;
+    @include themed() {
+      color: t($subColor);
+    }
+    a {
+      @include themed() {
+        color: t($subColor);
+      }
+      &:nth-child(2) {
+        color: var(--modal-link);
+      }
+    }
+  }
+}
+
+.photoInformation-content {
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+  a {
+    color: #5352ed;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.extra-content {
+  display: none;
+  flex-flow: column;
+  width: 100%;
+  transition: 1s;
+  .concept-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    svg {
+      @include themed() {
+        color: t($subColor);
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.concept-copyright {
+  display: none;
+}
+
+.concept-stats {
+  display: none;
+}
+
+.concept-buttons {
+  align-items: center;
+  gap: 10px;
+  padding: 20px 20px 20px 0;
+  display: none;
+  svg {
+    @include basicIconButton(11px, 1.3rem, ui);
   }
 }

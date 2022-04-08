@@ -1,17 +1,12 @@
 .navbar-item {
-  font-size: 22px;
-  font-weight: 500;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--photo-info);
-
+  flex-flow: row !important;
+  padding: 0 15px 0 15px;
   &:hover {
     svg {
       background: var(--tab-active);
     }
 
-    color: var(--modal-text)
+    color: var(--modal-text);
   }
 
   span,
@@ -21,9 +16,6 @@
 
   svg {
     font-size: 1.2em !important;
-    width: 60px;
-    padding: 5px;
-    border-radius: 20px;
     color: var(--photo-info);
   }
 }
@@ -35,38 +27,21 @@
   }
 }
 
-.modalNavbar {
-  position: absolute;
-  left: 20rem;
-  top: 1rem;
-  justify-content: center;
+#modal {
   display: flex;
-
-  svg {
-    margin-right: 0.5rem;
-    padding: 3px;
-    vertical-align: middle;
-  }
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-@media only screen and (max-width: 1200px) {
-  .modalNavbar {
-    left: 6rem;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  li.navbar-item {
-    span {
-      display: none;
-    }
-  }
+.modalNavbar {
+  display: flex;
+  flex-flow: row;
+  gap: 25px;
+  margin-bottom: 1rem;
 }
 
 .navbar-item-active {
-  color: var(--modal-text);
-
-  svg {
-    background: var(--sidebar);
+  @include themed() {
+    background: t($modal-sidebarActive) !important;
   }
 }

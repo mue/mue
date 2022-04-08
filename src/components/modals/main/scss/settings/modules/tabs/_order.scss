@@ -1,54 +1,57 @@
-.sortableitem {
-  background: var(--sidebar) !important;
-  padding: 10px 80px;
-  padding-left: 10px;
-  border-radius: 15px;
-  margin-bottom: 10px;
-  font-size: 1.325rem;
-  color: var(--modal-text) !important;
-  cursor: move;
-  width: 150px;
-  z-index: 999 !important;
+@import '../../../../../../../scss/variables';
 
-  svg {
-    font-size: 1.3rem;
+.sortableItem {
+  @include themed() {
+    background: t($modal-sidebar) !important;
+    padding: 10px 80px 10px 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    font-size: 1.325rem;
+    color: t($color) !important;
+    cursor: move;
+    width: 150px;
+    z-index: 999 !important;
+
+    svg {
+      font-size: 1.3rem;
+    }
+
+    &:hover {
+      background: t($modal-sidebarActive) !important;
+    }
   }
 
-  &:hover {
-    background: var(--tab-active) !important;
-  }
-}
+  ul {
+    padding-left: 0;
+    margin: 0;
 
-ul {
-  padding-left: 0px;
-  margin: 0;
-
-  >label {
-    vertical-align: middle;
+    > label {
+      vertical-align: middle;
+    }
   }
 }
 
 .images-row {
-  display: flex;
-  flex-wrap: wrap;
-  width: 500px;
-
-  div {
-    width: 100px;
-    height: 100px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-color: var(--sidebar);
-    border: 20px solid var(--sidebar);
-    border-radius: 20px;
-    margin: 0 20px 20px 0;
+  @include themed() {
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-
-    svg {
-      font-size: 1.9em;
+    flex-wrap: wrap;
+    gap: 15px;
+    div {
+      background: t($modal-sidebar);
+      padding: 10px;
+      box-shadow: 0 0 0 4px t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      gap: 10px;
+      img {
+        width: auto;
+        height: 100px;
+        border-radius: t($borderRadius);
+      }
+    }
+    .iconButton {
+      width: calc(100% - 22px);
+      margin-top: 10px;
+      @include basicIconButton(11px, 1.3rem, modal);
     }
   }
 }

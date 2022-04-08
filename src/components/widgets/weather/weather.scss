@@ -1,51 +1,122 @@
+@import 'scss/variables';
+
 .weather {
+  @extend %basic;
   position: absolute;
   bottom: 1rem;
   right: 1rem;
   cursor: initial;
   user-select: none;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  color: black;
-  border-radius: 20px;
-
-  span {
-    text-shadow: 0 0 10px rgb(255 255 255 / 50%);
+  transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: auto;
+  display: grid;
+  place-items: center;
+  &:hover {
+    height: auto;
+    transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  svg {
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.1));
-    vertical-align: middle;
-    font-size: 35px;
+  .expanded-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .loc {
-    font-size: 0.7em;
-    margin: 0;
-    padding: 0;
-    text-transform: capitalize;
+  .extra-info {
+    font-size: 18px;
+    gap: 40px;
+    @include themed() {
+      color: t($weather);
+    }
   }
 
-  .minmax {
-    font-size: 0.5em;
-  }
-
-  .visibility { 
+  .visibility {
     text-transform: none !important;
+  }
+
+  .extra-info {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    span {
+      display: flex;
+      align-items: center;
+    }
   }
 }
 
-.dark .weather {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+.top-weather {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  div {
+    align-items: center;
+    display: flex;
+    svg {
+      font-size: 2em !important;
+    }
+    span {
+      font-size: 34px;
+    }
+  }
+  .minmax {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+  }
+}
+
+.expanded-info {
+  display: none;
+  font-size: 18px;
+  text-transform: capitalize;
+  gap: 10px;
+  margin-top: 15px;
 
   span {
-    text-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
+  @include themed() {
+    svg {
+      color: t($subColor);
+    }
+    .weatherIcon {
+      font-size: 1.4em;
+      display: grid;
+      align-items: center;
+    }
+  }
+}
 
-  svg {
-    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.1));
-    vertical-align: middle;
-    font-size: 35px;
+.upcomingForecast {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+  div {
+    @include themed() {
+      border-radius: t($borderRadius);
+      border: 1px solid t($btn-backgroundHover);
+      padding: 5px;
+      flex: 1;
+      svg {
+        font-size: 36px;
+      }
+      span {
+        justify-content: center;
+      }
+      .period {
+        color: t($color);
+        font-size: 15px;
+      }
+      .minmax {
+        margin-top: 5px;
+        flex-flow: column;
+        gap: 0 !important;
+      }
+    }
   }
 }

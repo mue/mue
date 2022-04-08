@@ -2,6 +2,7 @@
 node_modules/
 .vscode/
 build/
+.idea/
 
 # Files
 package-lock.json

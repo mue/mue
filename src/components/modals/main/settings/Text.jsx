@@ -28,7 +28,7 @@ export default class Text extends PureComponent {
 
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {
-        document.querySelector('.reminder-info').style.display = 'block';
+        document.querySelector('.reminder-info').style.display = 'flex';
         return localStorage.setItem('showReminder', true);
       }
     }
@@ -52,7 +52,7 @@ export default class Text extends PureComponent {
           <TextField label={this.props.title} value={this.state.value} onChange={this.handleChange} varient='outlined' multiline spellCheck={false} minRows={4} maxRows={10} InputLabelProps={{ shrink: true }} />
           : <TextField label={this.props.title} value={this.state.value} onChange={this.handleChange} varient='outlined' InputLabelProps={{ shrink: true }} />
         }
-        <span className='modalLink' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span>
+        <span className='link' onClick={this.resetItem}>{variables.language.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}</span>
       </>
     );
   }

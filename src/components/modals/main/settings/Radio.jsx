@@ -40,7 +40,7 @@ export default class Radio extends PureComponent {
     
     if (this.props.element) {
       if (!document.querySelector(this.props.element)) {
-        document.querySelector('.reminder-info').style.display = 'block';
+        document.querySelector('.reminder-info').style.display = 'flex';
         return localStorage.setItem('showReminder', true);
       }
     }

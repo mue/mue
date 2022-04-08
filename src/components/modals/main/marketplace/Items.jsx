@@ -1,17 +1,45 @@
 import variables from 'modules/variables';
 
-export default function Items({ items, toggleFunction }) {
+export default function Items({
+  type,
+  items,
+  collections,
+  toggleFunction,
+  collectionFunction,
+  onCollection,
+}) {
   return (
-    <div className='items'>
-      {items.map((item) => (
-        <div className='item' onClick={() => toggleFunction(item.name)} key={item.name}>
-          <img alt='icon' draggable='false' src={variables.constants.DDG_IMAGE_PROXY + item.icon_url} />
-          <div className='details'>
-            <h4>{item.display_name || item.name}</h4>
-            <p>{item.author}</p>
+    <>
+      {type === 'all' && !onCollection ? (
+        <>
+          {collections.map((collection) => (
+            <div className="collection">
+              <div className="content">
+                <span className="title">{collection.display_name}</span>
+                <span className="subtitle">{collection.description}</span>
+                <button onClick={() => collectionFunction(collection.name)}>
+                  Explore Collection
+                </button>
+              </div>
+            </div>
+          ))}
+        </>
+      ) : null}
+      <div className="items">
+        {items.map((item) => (
+          <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
+            <img
+              alt="icon"
+              draggable="false"
+              src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
+            />
+            <div className="card-details">
+              <span className="card-title">{item.display_name || item.name}</span>
+              <span className="card-subtitle">{item.author}</span>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }

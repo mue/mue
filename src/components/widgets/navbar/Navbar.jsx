@@ -3,19 +3,25 @@ import { PureComponent, createRef } from 'react';
 import { MdRefresh, MdSettings, MdAssignment } from 'react-icons/md';
 
 import Notes from './Notes';
+import Todo from './Todo';
 import Maximise from '../background/Maximise';
-import Favourite from '../background/Favourite';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
+import InfoTooltip from 'components/helpers/tooltip/infoTooltip';
 
 import EventBus from 'modules/helpers/eventbus';
 
 import './scss/index.scss';
+import { FaThemeisle } from 'react-icons/fa';
 
 export default class Navbar extends PureComponent {
   constructor() {
     super();
     this.navbarContainer = createRef();
-    this.refreshValue = localStorage.getItem('refresh');
+    this.refreshEnabled = localStorage.getItem('refresh');
+    this.refreshValue = localStorage.getItem('refreshOption');
+    this.state = {
+      classList: localStorage.getItem('widgetStyle') === 'legacy' ? 'navbar old' : 'navbar new',
+    };
   }
 
   setZoom() {
@@ -26,7 +32,8 @@ export default class Navbar extends PureComponent {
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'navbar' || data === 'background') {
-        this.refreshValue = localStorage.getItem('refresh');
+        this.refreshEnabled = localStorage.getItem('refresh');
+        this.refreshValue = localStorage.getItem('refreshOption');
         this.forceUpdate();
         this.setZoom();
       }
@@ -36,7 +43,7 @@ export default class Navbar extends PureComponent {
   }
 
   refresh() {
-    switch (this.refreshValue) { 
+    switch (this.refreshValue) {
       case 'background':
         EventBus.dispatch('refresh', 'backgroundrefresh');
         break;
@@ -53,36 +60,53 @@ export default class Navbar extends PureComponent {
   }
 
   render() {
-    const backgroundEnabled = (localStorage.getItem('background') === 'true');
+    const backgroundEnabled = localStorage.getItem('background') === 'true';
 
     const navbar = (
-      <div className='navbar-container' ref={this.navbarContainer}>
-        {(localStorage.getItem('view') === 'true' && backgroundEnabled) ? <Maximise/> : null}
-        {(localStorage.getItem('favouriteEnabled') === 'true' && backgroundEnabled) ? <Favourite/> : null}
-    
-        {(localStorage.getItem('notesEnabled') === 'true') ?
-          <div className='notes'>
-            <MdAssignment className='topicons'/>
-            <Notes/>
-          </div>
-        : null}
+      <div className="navbar-container">
+        <div className={this.state.classList} ref={this.navbarContainer}>
+          {localStorage.getItem('view') === 'true' && backgroundEnabled ? <Maximise /> : null}
+          {localStorage.getItem('notesEnabled') === 'true' ? <Notes /> : null}
+          {localStorage.getItem('todo') === 'true' ? <Todo /> : null}
 
-        {(this.refreshValue !== 'false') ?
-          <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.tooltips.refresh')}>
-            <MdRefresh className='refreshicon topicons' onClick={() => this.refresh()}/>
-          </Tooltip>
-        : null}
-  
-        <Tooltip title={variables.language.getMessage(variables.languagecode, 'modals.main.navbar.settings')}>
-          <MdSettings className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')}/>
-        </Tooltip>
+          {this.refreshEnabled !== 'false' ? (
+            <Tooltip
+              title={variables.language.getMessage(
+                variables.languagecode,
+                'widgets.navbar.tooltips.refresh',
+              )}
+            >
+              <button onClick={() => this.refresh()}>
+                <MdRefresh className="refreshicon topicons" />
+              </button>
+            </Tooltip>
+          ) : null}
+
+          <InfoTooltip
+            title="You can now sync your settings"
+            subtitle={'All settings, such as theme can now be synced across clients'}
+            linkURL={'https://www.youtube.com/watch?v=dQw4w9WgXcQ'}
+            linkText={'Learn more'}
+          >
+            <button onClick={() => this.props.openModal('mainModal')}>
+              <MdSettings className="settings-icon topicons" />
+            </button>
+          </InfoTooltip>
+        </div>
+        {/*<div className="notification">
+          <span className="title">New Update</span>
+          <span className="subtitle">
+            The newest update includes a lot of cheese plus urmm donate to david ralph on github.
+          </span>
+          <button>Learn More</button>
+        </div>*/}
       </div>
     );
 
-    if (localStorage.getItem('navbarHover') === 'true') {
-      return <div className='navbar-hover'>{navbar}</div>;
-    } else {
-      return navbar;
-    }
+    return localStorage.getItem('navbarHover') === 'true' ? (
+      <div className="navbar-hover">{navbar}</div>
+    ) : (
+      navbar
+    );
   }
 }

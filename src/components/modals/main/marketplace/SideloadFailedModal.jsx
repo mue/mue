@@ -8,11 +8,12 @@ export default function SideloadFailedModal({ modalClose, reason }) {
     <>
       <h1>{getMessage('modals.main.error_boundary.title')}</h1>
       <span>{getMessage('modals.main.addons.sideload.failed')}</span>
-      <br/><br/>
+      <br />
+      <br />
       <span>{reason}</span>
-      <div className='resetfooter'>
-        <button className='round import' style={{ marginLeft: '-30px' }} onClick={modalClose}>
-          <MdClose/>
+      <div className="resetFooter">
+        <button className="round import" style={{ marginLeft: '-30px' }} onClick={modalClose}>
+          <MdClose />
         </button>
       </div>
     </>

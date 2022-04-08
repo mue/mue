@@ -1,9 +1,9 @@
-import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
-import { MdOutlineWifiOff } from 'react-icons/md';
-import Modal from 'react-modal';
+import variables from "modules/variables";
+import { PureComponent, createRef } from "react";
+import { MdOutlineWifiOff } from "react-icons/md";
+import Modal from "react-modal";
 
-import Lightbox from '../../marketplace/Lightbox';
+import Lightbox from "../../marketplace/Lightbox";
 
 export default class Changelog extends PureComponent {
   constructor() {
@@ -11,63 +11,71 @@ export default class Changelog extends PureComponent {
     this.state = {
       title: null,
       showLightbox: false,
-      lightboxImg: null
+      lightboxImg: null,
     };
-    this.offlineMode = (localStorage.getItem('offlineMode') === 'true');
+    this.offlineMode = localStorage.getItem("offlineMode") === "true";
     this.controller = new AbortController();
     this.changelog = createRef();
   }
 
   async getUpdate() {
-    const data = await (await fetch(variables.constants.BLOG_POST + '/index.json', { signal: this.controller.signal })).json();
+    const data = await (
+      await fetch(variables.constants.BLOG_POST + "/index.json", {
+        signal: this.controller.signal,
+      })
+    ).json();
 
     if (this.controller.signal.aborted === true) {
       return;
     }
 
-    let date = new Date(data.date.split(' ')[0]);
-    date = date.toLocaleDateString(variables.languagecode.replace('_', '-'), { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    let date = new Date(data.date.split(" ")[0]);
+    date = date.toLocaleDateString(variables.languagecode.replace("_", "-"), {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
 
     this.setState({
       title: data.title,
       date,
       image: data.featured_image || null,
-      author: variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.changelog.by', {
-        author: data.authors.join(', ')
-      }),
-      html: data.html
+      author: variables.language.getMessage(
+        variables.languagecode,
+        "modals.main.settings.sections.changelog.by",
+        {
+          author: data.authors.join(", "),
+        }
+      ),
+      html: data.html,
     });
 
     // lightbox etc
-    const images = this.changelog.current.getElementsByTagName('img');
-    const links = this.changelog.current.getElementsByTagName('a');
+    const images = this.changelog.current.getElementsByTagName("img");
+    const links = this.changelog.current.getElementsByTagName("a");
 
     for (const img of images) {
       img.draggable = false;
       img.onclick = () => {
         this.setState({
           showLightbox: true,
-          lightboxImg: img.src
+          lightboxImg: img.src,
         });
       };
     }
 
     // open in new tab
     for (let link = 0; link < links.length; link++) {
-      links[link].target = '_blank';
-      links[link].rel = 'noopener noreferrer';
+      links[link].target = "_blank";
+      links[link].rel = "noopener noreferrer";
     }
   }
-  
+
   componentDidMount() {
     if (navigator.onLine === false || this.offlineMode) {
       return;
     }
-  
+
     this.getUpdate();
   }
 
@@ -77,38 +85,68 @@ export default class Changelog extends PureComponent {
   }
 
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
+    const getMessage = (text) =>
+      variables.language.getMessage(variables.languagecode, text);
 
     const errorMessage = (msg) => {
       return (
-        <div className='emptyitems'>
-          <div className='emptyMessage'>
-            {msg}
-          </div>
+        <div className="emptyItems">
+          <div className="emptyMessage">{msg}</div>
         </div>
       );
     };
 
-    if (navigator.onLine === false || this.offlineMode) {    
-      return errorMessage(<>
-        <MdOutlineWifiOff/>
-        <h1>{getMessage('modals.main.marketplace.offline.title')}</h1>
-        <p className='description'>{getMessage('modals.main.marketplace.offline.description')}</p>
-      </>);
+    if (navigator.onLine === false || this.offlineMode) {
+      return errorMessage(
+        <>
+          <MdOutlineWifiOff />
+          <h1>{getMessage("modals.main.marketplace.offline.title")}</h1>
+          <p className="description">
+            {getMessage("modals.main.marketplace.offline.description")}
+          </p>
+        </>
+      );
     }
-  
+
     if (!this.state.title) {
-      return errorMessage(<h1>{getMessage('modals.main.loading')}</h1>);
+      return errorMessage(
+        <div className="loaderHolder">
+          <div id="loader"></div>
+          <span className="subtitle">Just be a sec.</span>
+        </div>
+      );
     }
 
     return (
-      <div className='changelogtab' ref={this.changelog}>
+      <div className="changelogtab" ref={this.changelog}>
         <h1>{this.state.title}</h1>
-        <h5>{this.state.author} • {this.state.date}</h5>
-        {this.state.image ? <img draggable='false' src={this.state.image} alt={this.state.title} className='updateimage'/> : null}
-        <div className='updatechangelog' dangerouslySetInnerHTML={{ __html: this.state.html }}/>
-        <Modal closeTimeoutMS={100} onRequestClose={() => this.setState({ showLightbox: false })} isOpen={this.state.showLightbox} className='Modal lightboxmodal' overlayClassName='Overlay resetoverlay' ariaHideApp={false}>
-          <Lightbox modalClose={() => this.setState({ showLightbox: false })} img={this.state.lightboxImg}/>
+        <h5>
+          {this.state.author} • {this.state.date}
+        </h5>
+        {this.state.image ? (
+          <img
+            draggable="false"
+            src={this.state.image}
+            alt={this.state.title}
+            className="updateImage"
+          />
+        ) : null}
+        <div
+          className="updateChangelog"
+          dangerouslySetInnerHTML={{ __html: this.state.html }}
+        />
+        <Modal
+          closeTimeoutMS={100}
+          onRequestClose={() => this.setState({ showLightbox: false })}
+          isOpen={this.state.showLightbox}
+          className="Modal lightBoxModal"
+          overlayClassName="Overlay resetoverlay"
+          ariaHideApp={false}
+        >
+          <Lightbox
+            modalClose={() => this.setState({ showLightbox: false })}
+            img={this.state.lightboxImg}
+          />
         </Modal>
       </div>
     );
