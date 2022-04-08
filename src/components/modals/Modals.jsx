@@ -9,8 +9,6 @@ import Preview from '../helpers/preview/Preview';
 
 import EventBus from 'modules/helpers/eventbus';
 
-// Welcome modal is lazy loaded as the user won't use it every time they open a tab
-// We used to lazy load the main and feedback modals, but doing so broke the modal open animation on first click
 import Welcome from './welcome/Welcome';
 
 export default class Modals extends PureComponent {
@@ -20,13 +18,12 @@ export default class Modals extends PureComponent {
       mainModal: false,
       updateModal: false,
       welcomeModal: false,
-      feedbackModal: false,
       preview: false
     };
   }
 
   componentDidMount() {
-    if (localStorage.getItem('showWelcome') === 'true' && window.location.search !== '?nointro=true' && this.state.welcomeModal === false) {
+    if (localStorage.getItem('showWelcome') === 'true' && window.location.search !== '?nointro=true') {
       this.setState({
         welcomeModal: true
       });

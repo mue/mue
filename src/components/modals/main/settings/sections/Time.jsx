@@ -17,7 +17,7 @@ export default class TimeSettings extends PureComponent {
   render() {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
-    let timeSettings;
+    let timeSettings = null;
 
     const digitalOptions = [
       {
@@ -50,10 +50,10 @@ export default class TimeSettings extends PureComponent {
       </>
     );
 
-    switch (this.state.timeType) {
-      case 'digital': timeSettings = digitalSettings; break;
-      case 'analogue': timeSettings = analogSettings; break;
-      default: timeSettings = null; break;
+    if (this.state.timeType === 'digital') {
+      timeSettings = digitalSettings;
+    } else if (this.state.timeType === 'analogue') {
+      timeSettings = analogSettings;
     }
 
     return (

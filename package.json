@@ -9,7 +9,7 @@
   "homepage": "https://muetab.com",
   "bugs": "https://github.com/mue/mue/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BBUG%5D",
   "license": "BSD-3-Clause",
-  "version": "6.0.4",
+  "version": "6.0.5",
   "dependencies": {
     "@eartharoid/i18n": "1.0.2",
     "@emotion/react": "^11.9.0",

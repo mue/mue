@@ -43,10 +43,10 @@ export default class DateSettings extends PureComponent {
       </>
     );
 
-    switch (this.state.dateType) {
-      case 'short': dateSettings = shortSettings; break;
-      case 'long': dateSettings = longSettings; break;
-      default: break;
+    if (this.state.dateType === 'long') {
+      dateSettings = longSettings;
+    } else {
+      dateSettings = shortSettings;
     }
 
     return (

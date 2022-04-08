@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Release tag to submit, i.e 6.0.4"
+        description: "Release tag to submit, i.e 6.0.5"
         required: true
 
 jobs:
