@@ -59,13 +59,13 @@ export default class Tabs extends PureComponent {
 
     switch (this.props.current) {
       case "settings":
-        settingsActive = "navbar-item-active";
+        settingsActive = " navbar-item-active";
         break;
       case "addons":
-        addonsActive = "navbar-item-active";
+        addonsActive = " navbar-item-active";
         break;
       case "marketplace":
-        marketplaceActive = "navbar-item-active";
+        marketplaceActive = " navbar-item-active";
         break;
       default:
         break;
