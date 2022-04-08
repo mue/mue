@@ -82,16 +82,21 @@ export default class Navbar extends PureComponent {
             </Tooltip>
           ) : null}
 
-          <InfoTooltip
+          {/*<InfoTooltip
             title="You can now sync your settings"
             subtitle={'All settings, such as theme can now be synced across clients'}
             linkURL={'https://www.youtube.com/watch?v=dQw4w9WgXcQ'}
             linkText={'Learn more'}
-          >
-            <button onClick={() => this.props.openModal('mainModal')}>
-              <MdSettings className="settings-icon topicons" />
-            </button>
-          </InfoTooltip>
+              >
+              </InfoTooltip>*/}
+                          <Tooltip
+              title={variables.language.getMessage(
+                variables.languagecode,
+                'modals.main.navbar.settings',
+              )}
+            >            <button onClick={() => this.props.openModal('mainModal')}>
+            <MdSettings className="settings-icon topicons" />
+          </button></Tooltip>
         </div>
         {/*<div className="notification">
           <span className="title">New Update</span>
