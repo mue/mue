@@ -19,8 +19,8 @@ const widget_name = {
 
 const SortableItem = sortableElement(({ value }) => (
   <li className="sortableItem">
-    <MdOutlineDragIndicator style={{ verticalAlign: 'middle' }} />
     {widget_name[value]}
+    <MdOutlineDragIndicator />
   </li>
 ));
 

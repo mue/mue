@@ -93,3 +93,13 @@ table {
     }
   }
 }
+
+.donateButton {
+  @include modal-button(standard);
+  flex-flow: row !important;
+  text-decoration: none;
+  height: auto !important;
+  svg {
+    font-size: 1.5rem !important;
+  }
+}

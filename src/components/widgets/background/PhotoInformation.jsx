@@ -312,17 +312,6 @@ export default function PhotoInformation({ info, url, api }) {
                   <Photographer />
                   <span>{photographer}</span>
                 </div>
-                {downloadEnabled ? (
-                  <>
-                    <Download />
-                    <span className="download" onClick={() => downloadImage(info)}>
-                      {variables.language.getMessage(
-                        variables.languagecode,
-                        'widgets.background.download',
-                      )}
-                    </span>
-                  </>
-                ) : null}
               </div>
             </>
           ) : null}

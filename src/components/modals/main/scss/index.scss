@@ -181,4 +181,14 @@ h5 {
   display: flex;
   justify-content: space-between;
   padding: 15px 0 15px 0;
+  .link {
+    display: flex;
+    flex-flow: row;
+    gap: 15px;
+    align-items: center;
+    &:hover {
+      opacity: .8;
+      cursor: pointer;
+    }
+  }
 }

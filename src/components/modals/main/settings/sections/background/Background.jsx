@@ -279,31 +279,6 @@ export default class BackgroundSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={getMessage(
-            "modals.main.settings.sections.background.buttons.title"
-          )}
-          subtitle="cheese"
-        >
-          <Checkbox
-            name="favouriteEnabled"
-            text={getMessage(
-              "modals.main.settings.sections.background.buttons.favourite"
-            )}
-            category="navbar"
-          />
-          {this.state.backgroundType === "api" &&
-          APISettings &&
-          this.state.backgroundAPI === "mue" ? (
-            <Checkbox
-              name="downloadbtn"
-              text={getMessage(
-                "modals.main.settings.sections.background.buttons.download"
-              )}
-              element=".other"
-            />
-          ) : null}
-        </SettingsItem>
-        <SettingsItem
-          title={getMessage(
             "modals.main.settings.sections.background.source.title"
           )}
           subtitle="mucho gracias"

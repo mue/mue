@@ -2,18 +2,24 @@
 
 .sortableItem {
   @include themed() {
-    background: t($modal-sidebar) !important;
-    padding: 10px 80px 10px 10px;
-    border-radius: 15px;
+    padding: 15px;
     margin-bottom: 10px;
     font-size: 1.325rem;
     color: t($color) !important;
     cursor: move;
-    width: 150px;
+    width: 200px;
     z-index: 999 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: t($modal-sidebar);
+    border: 3px solid t($modal-sidebarActive);
+    border-radius: t($borderRadius);
 
     svg {
       font-size: 1.3rem;
+      color: t($subColor);
     }
 
     &:hover {
@@ -22,13 +28,20 @@
   }
 
   ul {
-    padding-left: 0;
-    margin: 0;
+    -webkit-padding-start: 0;
+    padding: 0;
+    list-style-type: none;
 
     > label {
       vertical-align: middle;
     }
   }
+}
+
+.sortablecontainer {
+  -webkit-padding-start: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .images-row {

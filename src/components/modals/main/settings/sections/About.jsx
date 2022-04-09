@@ -2,7 +2,8 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdEmail } from 'react-icons/md';
 import { FaDiscord, FaTwitter, FaPatreon, FaGithub } from 'react-icons/fa';
-import { SiKofi } from 'react-icons/si';
+import { SiGithubsponsors, SiLiberapay, SiKofi, SiPatreon } from 'react-icons/si';
+import { BiDonateHeart } from 'react-icons/bi';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -133,7 +134,7 @@ export default class About extends PureComponent {
         <span className="mainTitle">
           {this.getMessage('modals.main.settings.sections.about.title')}
         </span>
-        <SettingsItem>
+        <div className='settingsRow' style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
             <img draggable="false" className="aboutLogo" src={this.state.image} alt="Logo" />
             <span className="title">
@@ -171,7 +172,7 @@ export default class About extends PureComponent {
               </a>
             </span>
           </div>
-        </SettingsItem>
+        </div>
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
@@ -214,7 +215,46 @@ export default class About extends PureComponent {
           </span>
           <p>As Mue is entirely free, we rely on donations to cover pay the server bills and fund development</p>
           <div className="aboutContact">
-            <a class='button' href={variables.constants.DONATE_LINK}>Donate</a>
+            <a class='donateButton' href={variables.constants.DONATE_LINK}>
+              <BiDonateHeart />
+              Donate
+              </a>
+              <Tooltip title={'Github Sponsors'}>
+              <a
+                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SiGithubsponsors />
+              </a>
+            </Tooltip>
+            <Tooltip title={'Liberapay'}>
+              <a
+                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SiLiberapay />
+              </a>
+            </Tooltip>
+            <Tooltip title={'Ko-Fi'}>
+              <a
+                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SiKofi />
+              </a>
+            </Tooltip>
+            <Tooltip title={'Patreon'}>
+              <a
+                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SiPatreon />
+              </a>
+            </Tooltip>
           </div>
         </div>
 

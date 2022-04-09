@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import { Slider } from '@mui/material';
+import { MdRefresh } from 'react-icons/md';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -63,6 +64,7 @@ export default class SliderComponent extends PureComponent {
         <span className={'sliderTitle'}>
           {this.props.title}
           <span className="link" onClick={this.resetItem}>
+            <MdRefresh />
             {variables.language.getMessage(
               variables.languagecode,
               'modals.main.settings.buttons.reset',
