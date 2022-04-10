@@ -63,8 +63,8 @@ export default class Navbar extends PureComponent {
     const backgroundEnabled = localStorage.getItem('background') === 'true';
 
     const navbar = (
-      <div className="navbar-container">
-        <div className={this.state.classList} ref={this.navbarContainer}>
+      <div className="navbar-container" ref={this.navbarContainer}>
+        <div className={this.state.classList}>
           {localStorage.getItem('view') === 'true' && backgroundEnabled ? <Maximise /> : null}
           {localStorage.getItem('notesEnabled') === 'true' ? <Notes /> : null}
           {localStorage.getItem('todo') === 'true' ? <Todo /> : null}
@@ -94,7 +94,7 @@ export default class Navbar extends PureComponent {
                 variables.languagecode,
                 'modals.main.navbar.settings',
               )}
-            >            <button onClick={() => this.props.openModal('mainModal')}>
+            ><button onClick={() => this.props.openModal('mainModal')}>
             <MdSettings className="settings-icon topicons" />
           </button></Tooltip>
         </div>

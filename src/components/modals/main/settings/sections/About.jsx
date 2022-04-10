@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdEmail } from 'react-icons/md';
+import { MdEmail, MdContactPage } from 'react-icons/md';
 import { FaDiscord, FaTwitter, FaPatreon, FaGithub } from 'react-icons/fa';
 import { SiGithubsponsors, SiLiberapay, SiKofi, SiPatreon } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
@@ -179,6 +179,10 @@ export default class About extends PureComponent {
             {this.getMessage('modals.main.settings.sections.about.contact_us')}
           </span>
           <div className="aboutContact">
+              <a class='donateButton' href='https://muetab.com/contact'>
+                <MdContactPage />
+                Form
+              </a>
             <Tooltip title={'Email'}>
               <a
                 href={'mailto:' + variables.constants.EMAIL}
