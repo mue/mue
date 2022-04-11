@@ -63,7 +63,7 @@ export default class Quote extends PureComponent {
       copy: localStorage.getItem('copyButton') === 'false' ? null : this.buttons.copy,
       quoteLanguage: '',
       type: localStorage.getItem('quoteType') || 'api',
-      shareModal: false
+      shareModal: false,
     };
     this.quote = createRef();
     this.quotediv = createRef();
@@ -398,7 +398,7 @@ export default class Quote extends PureComponent {
         <span className="quote" ref={this.quote}>
           {this.state.quote}
         </span>
-        {localStorage.getItem('widgetStyle') === 'legacy' ? (
+        {(localStorage.getItem('widgetStyle') === 'legacy') ? (
           <>
             <div>
               <h1 className="quoteauthor" ref={this.quoteauthor}>
@@ -417,38 +417,42 @@ export default class Quote extends PureComponent {
             </div>
           </>
         ) : (
-          <div className="author-holder">
-            <div className="author">
-              <div
-                className="author-img"
-                style={{ backgroundImage: `url(${this.state.authorimg})` }}
-              >
-                {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
+          <>
+          {this.state.author !== '' ? (
+              <div className="author-holder">
+                <div className="author">
+                  <div
+                    className="author-img"
+                    style={{ backgroundImage: `url(${this.state.authorimg})` }}
+                  >
+                    {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
+                  </div>
+                  <div className="author-content" ref={this.quoteauthor}>
+                    <span className="title">{this.state.author}</span>
+                    {this.state.authorOccupation !== 'Unknown' ? (
+                      <span className="subtitle">{this.state.authorOccupation}</span>
+                    ) : null}
+                    <span className="author-license">{this.state.authorimglicense}</span>
+                  </div>
+                  <div className="quote-buttons">
+                    {this.state.authorOccupation !== 'Unknown' ? (
+                      <Tooltip title="Open">
+                        <a
+                          href={this.state.authorlink}
+                          className="quoteAuthorLink"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MdOpenInNew />
+                        </a>{' '}
+                      </Tooltip>
+                    ) : null}
+                    {this.state.copy} {this.state.share} {this.state.favourited}
+                  </div>
+                </div>
               </div>
-              <div className="author-content" ref={this.quoteauthor}>
-                <span className="title">{this.state.author}</span>
-                {this.state.authorOccupation !== 'Unknown' ? (
-                  <span className="subtitle">{this.state.authorOccupation}</span>
-                ) : null}
-                <span className="author-license">{this.state.authorimglicense}</span>
-              </div>
-              <div className="quote-buttons">
-                {this.state.authorOccupation !== 'Unknown' ? (
-                  <Tooltip title="Open">
-                    <a
-                      href={this.state.authorlink}
-                      className="quoteAuthorLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <MdOpenInNew />
-                    </a>{' '}
-                  </Tooltip>
-                ) : null}
-                {this.state.copy} {this.state.share} {this.state.favourited}
-              </div>
-            </div>
-          </div>
+          ) : <div ref={this.quoteauthor}></div> }
+          </>
         )}
         {/*variables.keybinds.favouriteQuote && variables.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={variables.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null*/}
         {/*variables.keybinds.tweetQuote && variables.keybinds.tweetQuote !== '' ? <Hotkeys keyName={variables.keybinds.tweetQuote} onKeyDown={() => this.tweetQuote()} /> : null*/}

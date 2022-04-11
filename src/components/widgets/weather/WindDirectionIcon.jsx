@@ -7,7 +7,7 @@ import {
   WiDirectionUpLeft,
   WiDirectionUpRight,
   WiDirectionUp,
-} from "react-icons/wi";
+} from 'react-icons/wi';
 
 // degrees are imported because of a potential bug, IDK what causes it, but now it is fixed
 export default function WindDirectionIcon({ degrees }) {
@@ -15,43 +15,41 @@ export default function WindDirectionIcon({ degrees }) {
 
   // convert the number OpenWeatherMap gives us to the closest direction or something
   const directions = [
-    "North",
-    "North-West",
-    "West",
-    "South-West",
-    "South",
-    "South-East",
-    "East",
-    "North-East",
+    'North',
+    'North-West',
+    'West',
+    'South-West',
+    'South',
+    'South-East',
+    'East',
+    'North-East',
   ];
   const direction =
-    directions[
-      Math.round(((degrees %= 360) < 0 ? degrees + 360 : degrees) / 45) % 8
-    ];
+    directions[Math.round(((degrees %= 360) < 0 ? degrees + 360 : degrees) / 45) % 8];
 
   switch (direction) {
-    case "North":
+    case 'North':
       icon = <WiDirectionUp />;
       break;
-    case "North-West":
+    case 'North-West':
       icon = <WiDirectionUpLeft />;
       break;
-    case "West":
+    case 'West':
       icon = <WiDirectionLeft />;
       break;
-    case "South-West":
+    case 'South-West':
       icon = <WiDirectionDownLeft />;
       break;
-    case "South":
+    case 'South':
       icon = <WiDirectionDown />;
       break;
-    case "South-East":
+    case 'South-East':
       icon = <WiDirectionDownRight />;
       break;
-    case "East":
+    case 'East':
       icon = <WiDirectionRight />;
       break;
-    case "North-East":
+    case 'North-East':
       icon = <WiDirectionUpRight />;
       break;
     default:

@@ -50,6 +50,7 @@
         }
       }
       .photoInformation-content {
+        padding: 20px;
         padding-left: 0;
       }
       .map-concept {
@@ -183,13 +184,14 @@
   font-size: 0.8em;
   font-weight: 300;
   z-index: 99;
-  padding: 20px;
   display: flex;
   flex-flow: row;
   align-items: center;
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-  width: 380px;
+  width: 300px;
+  padding: 10px;
   &:hover {
+    padding: 20px;
     height: auto;
     align-items: flex-start;
     flex-flow: column;
@@ -240,15 +242,15 @@
   }
   .map-concept {
     @extend %basic;
-    height: 80px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none !important;
     svg {
-      font-size: 25px;
+      font-size: 24px;
     }
     img {
       width: 100%;
@@ -281,7 +283,7 @@
 .photoInformation-content {
   display: flex;
   flex-flow: column;
-  padding: 20px;
+  padding-left: 20px;
   a {
     color: #5352ed;
     text-decoration: none;

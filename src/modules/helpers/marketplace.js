@@ -7,7 +7,8 @@ function showReminder() {
 
 // based on https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
 export function urlParser(input) {
-  const urlPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&//=]*)/;
+  const urlPattern =
+    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&//=]*)/;
   return input.replace(urlPattern, '<br/><a href="$&" target="_blank">$&</a>');
 }
 
@@ -20,7 +21,7 @@ export function install(type, input, sideload) {
       Object.keys(localStorage).forEach((key) => {
         oldSettings.push({
           name: key,
-          value: localStorage.getItem(key)
+          value: localStorage.getItem(key),
         });
       });
 
@@ -33,7 +34,7 @@ export function install(type, input, sideload) {
 
     case 'photos':
       const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
-      input.photos.forEach(photo => {
+      input.photos.forEach((photo) => {
         currentPhotos.push(photo);
       });
       localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
@@ -63,8 +64,8 @@ export function install(type, input, sideload) {
     installed.push({
       content: {
         updated: 'Unpublished',
-        data: input
-      }
+        data: input,
+      },
     });
   } else {
     installed.push(input);
@@ -94,9 +95,11 @@ export function uninstall(type, name) {
 
     case 'photos':
       const installedContents = JSON.parse(localStorage.getItem('photo_packs'));
-      const packContents = JSON.parse(localStorage.getItem('installed')).find(content => content.name === name);
+      const packContents = JSON.parse(localStorage.getItem('installed')).find(
+        (content) => content.name === name,
+      );
       // todo: make it find in photo_packs all the ones in installed for that pack and remove
-      console.log(packContents)
+      console.log(packContents);
       installedContents.forEach((item, index) => {
         if (packContents.photos.includes(item)) {
           installedContents.splice(index, 1);
@@ -121,4 +124,4 @@ export function uninstall(type, name) {
   }
 
   localStorage.setItem('installed', JSON.stringify(installed));
-};
+}

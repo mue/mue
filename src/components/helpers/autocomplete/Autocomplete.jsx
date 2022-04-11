@@ -12,20 +12,22 @@ export default class Autocomplete extends PureComponent {
     this.state = {
       filtered: [],
       input: '',
-      autocompleteDisabled: (localStorage.getItem('autocomplete') !== 'true')
+      autocompleteDisabled: localStorage.getItem('autocomplete') !== 'true',
     };
   }
 
   onChange = (e) => {
     if (this.state.autocompleteDisabled) {
       return this.setState({
-        input: e.target.value
+        input: e.target.value,
       });
     }
 
     this.setState({
-      filtered: this.props.suggestions.filter((suggestion) => suggestion.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1),
-      input: e.target.value
+      filtered: this.props.suggestions.filter(
+        (suggestion) => suggestion.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1,
+      ),
+      input: e.target.value,
     });
 
     this.props.onChange(e.target.value);
@@ -34,14 +36,14 @@ export default class Autocomplete extends PureComponent {
   onClick = (e) => {
     this.setState({
       filtered: [],
-      input: e.target.innerText
+      input: e.target.innerText,
     });
 
     this.props.onClick({
       preventDefault: () => e.preventDefault(),
       target: {
-        value: e.target.innerText
-      }
+        value: e.target.innerText,
+      },
     });
   };
 
@@ -49,7 +51,7 @@ export default class Autocomplete extends PureComponent {
     EventBus.on('refresh', (data) => {
       if (data === 'search') {
         this.setState({
-          autocompleteDisabled: (localStorage.getItem('autocomplete') !== 'true')
+          autocompleteDisabled: localStorage.getItem('autocomplete') !== 'true',
         });
       }
     });
@@ -65,7 +67,7 @@ export default class Autocomplete extends PureComponent {
     // length will only be > 0 if enabled
     if (this.state.filtered.length > 0 && this.state.input.length > 0) {
       autocomplete = (
-        <div className='suggestions'>
+        <div className="suggestions">
           {this.state.filtered.map((suggestion) => (
             <div key={suggestion} onClick={this.onClick}>
               {suggestion}
@@ -76,8 +78,16 @@ export default class Autocomplete extends PureComponent {
     }
 
     return (
-      <div style={{display: 'flex', flexFlow: 'column'}}>
-        <input type='text' onChange={this.onChange} value={this.state.input} placeholder={this.props.placeholder || ''} autoComplete='off' spellCheck={false} id={this.props.id || ''} />
+      <div style={{ display: 'flex', flexFlow: 'column' }}>
+        <input
+          type="text"
+          onChange={this.onChange}
+          value={this.state.input}
+          placeholder={this.props.placeholder || ''}
+          autoComplete="off"
+          spellCheck={false}
+          id={this.props.id || ''}
+        />
         {autocomplete}
       </div>
     );

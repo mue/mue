@@ -89,14 +89,16 @@ export default class Navbar extends PureComponent {
             linkText={'Learn more'}
               >
               </InfoTooltip>*/}
-                          <Tooltip
-              title={variables.language.getMessage(
-                variables.languagecode,
-                'modals.main.navbar.settings',
-              )}
-            ><button onClick={() => this.props.openModal('mainModal')}>
-            <MdSettings className="settings-icon topicons" />
-          </button></Tooltip>
+          <Tooltip
+            title={variables.language.getMessage(
+              variables.languagecode,
+              'modals.main.navbar.settings',
+            )}
+          >
+            <button onClick={() => this.props.openModal('mainModal')}>
+              <MdSettings className="settings-icon topicons" />
+            </button>
+          </Tooltip>
         </div>
         {/*<div className="notification">
           <span className="title">New Update</span>

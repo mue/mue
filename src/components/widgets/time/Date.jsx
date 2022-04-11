@@ -1,16 +1,16 @@
-import variables from "modules/variables";
-import { PureComponent, createRef } from "react";
+import variables from 'modules/variables';
+import { PureComponent, createRef } from 'react';
 
-import { nth, convertTimezone } from "modules/helpers/date";
-import EventBus from "modules/helpers/eventbus";
+import { nth, convertTimezone } from 'modules/helpers/date';
+import EventBus from 'modules/helpers/eventbus';
 
-import "./date.scss";
+import './date.scss';
 
 export default class DateWidget extends PureComponent {
   constructor() {
     super();
     this.state = {
-      date: "",
+      date: '',
       weekNumber: null,
     };
     this.date = createRef();
@@ -29,21 +29,20 @@ export default class DateWidget extends PureComponent {
     }
 
     this.setState({
-      weekNumber: `${variables.language.getMessage(
-        variables.languagecode,
-        "widgets.date.week"
-      )} ${1 + Math.ceil((firstThursday - dateToday) / 604800000)}`,
+      weekNumber: `${variables.language.getMessage(variables.languagecode, 'widgets.date.week')} ${
+        1 + Math.ceil((firstThursday - dateToday) / 604800000)
+      }`,
     });
   }
 
   getDate() {
     let date = new Date();
-    const timezone = localStorage.getItem("timezone");
-    if (timezone && timezone !== "auto") {
+    const timezone = localStorage.getItem('timezone');
+    if (timezone && timezone !== 'auto') {
       date = convertTimezone(date, timezone);
     }
 
-    if (localStorage.getItem("weeknumber") === "true") {
+    if (localStorage.getItem('weeknumber') === 'true') {
       this.getWeekNumber(date);
     } else if (this.state.weekNumber !== null) {
       this.setState({
@@ -51,23 +50,23 @@ export default class DateWidget extends PureComponent {
       });
     }
 
-    if (localStorage.getItem("dateType") === "short") {
+    if (localStorage.getItem('dateType') === 'short') {
       const dateDay = date.getDate();
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
 
-      const zero = localStorage.getItem("datezero") === "true";
+      const zero = localStorage.getItem('datezero') === 'true';
 
-      let day = zero ? ("00" + dateDay).slice(-2) : dateDay;
-      let month = zero ? ("00" + dateMonth).slice(-2) : dateMonth;
+      let day = zero ? ('00' + dateDay).slice(-2) : dateDay;
+      let month = zero ? ('00' + dateMonth).slice(-2) : dateMonth;
       let year = dateYear;
 
-      switch (localStorage.getItem("dateFormat")) {
-        case "MDY":
+      switch (localStorage.getItem('dateFormat')) {
+        case 'MDY':
           day = dateMonth;
           month = dateDay;
           break;
-        case "YMD":
+        case 'YMD':
           day = dateYear;
           year = dateDay;
           break;
@@ -77,17 +76,17 @@ export default class DateWidget extends PureComponent {
       }
 
       let format;
-      switch (localStorage.getItem("shortFormat")) {
-        case "dots":
+      switch (localStorage.getItem('shortFormat')) {
+        case 'dots':
           format = `${day}.${month}.${year}`;
           break;
-        case "dash":
+        case 'dash':
           format = `${day}-${month}-${year}`;
           break;
-        case "gaps":
+        case 'gaps':
           format = `${day} - ${month} - ${year}`;
           break;
-        case "slashes":
+        case 'slashes':
           format = `${day}/${month}/${year}`;
           break;
         default:
@@ -99,31 +98,29 @@ export default class DateWidget extends PureComponent {
       });
     } else {
       // Long date
-      const lang = variables.languagecode.split("_")[0];
+      const lang = variables.languagecode.split('_')[0];
 
       const datenth =
-        localStorage.getItem("datenth") === "true"
-          ? nth(date.getDate())
-          : date.getDate();
+        localStorage.getItem('datenth') === 'true' ? nth(date.getDate()) : date.getDate();
 
       const dateDay =
-        localStorage.getItem("dayofweek") === "true"
-          ? date.toLocaleDateString(lang, { weekday: "long" })
-          : "";
-      const dateMonth = date.toLocaleDateString(lang, { month: "long" });
+        localStorage.getItem('dayofweek') === 'true'
+          ? date.toLocaleDateString(lang, { weekday: 'long' })
+          : '';
+      const dateMonth = date.toLocaleDateString(lang, { month: 'long' });
       const dateYear = date.getFullYear();
 
-      let day = dateDay + " " + datenth;
+      let day = dateDay + ' ' + datenth;
       let month = dateMonth;
       let year = dateYear;
-      switch (localStorage.getItem("longFormat")) {
-        case "MDY":
+      switch (localStorage.getItem('longFormat')) {
+        case 'MDY':
           day = dateMonth;
-          month = dateDay + " " + datenth;;
+          month = dateDay + ' ' + datenth;
           break;
-        case "YMD":
+        case 'YMD':
           day = dateYear;
-          year = dateDay + " " + datenth;;
+          year = dateDay + ' ' + datenth;
           break;
         // DMY
         default:
@@ -137,28 +134,28 @@ export default class DateWidget extends PureComponent {
   }
 
   componentDidMount() {
-    EventBus.on("refresh", (data) => {
-      if (data === "date" || data === "timezone") {
-        if (localStorage.getItem("date") === "false") {
-          return (this.date.current.style.display = "none");
+    EventBus.on('refresh', (data) => {
+      if (data === 'date' || data === 'timezone') {
+        if (localStorage.getItem('date') === 'false') {
+          return (this.date.current.style.display = 'none');
         }
 
-        this.date.current.style.display = "block";
+        this.date.current.style.display = 'block';
         this.date.current.style.fontSize = `${Number(
-          (localStorage.getItem("zoomDate") || 100) / 100
+          (localStorage.getItem('zoomDate') || 100) / 100,
         )}em`;
         this.getDate();
       }
     });
 
     this.date.current.style.fontSize = `${Number(
-      (localStorage.getItem("zoomDate") || 100) / 100
+      (localStorage.getItem('zoomDate') || 100) / 100,
     )}em`;
     this.getDate();
   }
 
   componentWillUnmount() {
-    EventBus.off("refresh");
+    EventBus.off('refresh');
   }
 
   render() {

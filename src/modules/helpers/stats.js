@@ -21,7 +21,7 @@ export default class Stats {
 
   static async tabLoad() {
     const data = JSON.parse(localStorage.getItem('statsData'));
-    data['tabs-opened'] = data['tabs-opened'] + 1 || 1;        
+    data['tabs-opened'] = data['tabs-opened'] + 1 || 1;
     localStorage.setItem('statsData', JSON.stringify(data));
   }
 }

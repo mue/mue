@@ -31,7 +31,7 @@ variables.language = new I18n(variables.languagecode, {
   no: require('./translations/no.json'),
   ru: require('./translations/ru.json'),
   zh_CN: require('./translations/zh_CN.json'),
-  id_ID: require('./translations/id_ID.json')
+  id_ID: require('./translations/id_ID.json'),
 });
 
 // set html language tag
@@ -50,4 +50,4 @@ if (localStorage.getItem('stats') === 'true') {
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<App/>);
+root.render(<App />);

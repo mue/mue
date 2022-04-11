@@ -93,19 +93,16 @@ export default class Modals extends PureComponent {
           <Main modalClose={() => this.toggleModal('mainModal', false)} />
         </Modal>
         <Modal
-            closeTimeoutMS={300}
-            onRequestClose={() => this.closeWelcome()}
-            isOpen={this.state.welcomeModal}
-            className="Modal welcomemodal mainModal"
-            overlayClassName="Overlay welcomeoverlay"
-            shouldCloseOnOverlayClick={false}
-            ariaHideApp={false}
-          >
-            <Welcome
-              modalClose={() => this.closeWelcome()}
-              modalSkip={() => this.previewWelcome()}
-            />
-          </Modal>
+          closeTimeoutMS={300}
+          onRequestClose={() => this.closeWelcome()}
+          isOpen={this.state.welcomeModal}
+          className="Modal welcomemodal mainModal"
+          overlayClassName="Overlay welcomeoverlay"
+          shouldCloseOnOverlayClick={false}
+          ariaHideApp={false}
+        >
+          <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()} />
+        </Modal>
         {this.state.preview ? <Preview setup={() => window.location.reload()} /> : null}
         {/*variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null*/}
       </>

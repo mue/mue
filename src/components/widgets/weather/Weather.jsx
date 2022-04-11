@@ -1,43 +1,41 @@
-import variables from "modules/variables";
-import { PureComponent } from "react";
-import { WiHumidity, WiWindy, WiBarometer, WiCloud } from "react-icons/wi";
-import { MdDisabledVisible } from "react-icons/md";
+import variables from 'modules/variables';
+import { PureComponent } from 'react';
+import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
+import { MdDisabledVisible } from 'react-icons/md';
 
-import WeatherIcon from "./WeatherIcon";
-import WindDirectionIcon from "./WindDirectionIcon";
+import WeatherIcon from './WeatherIcon';
+import WindDirectionIcon from './WindDirectionIcon';
 
-import EventBus from "modules/helpers/eventbus";
+import EventBus from 'modules/helpers/eventbus';
 
-import "./weather.scss";
+import './weather.scss';
 
 export default class Weather extends PureComponent {
   constructor() {
     super();
     this.state = {
-      location: localStorage.getItem("location") || "London",
-      icon: "",
-      temp_text: "",
+      location: localStorage.getItem('location') || 'London',
+      icon: '',
+      temp_text: '',
       weather: {
-        temp: "",
-        description: "",
-        temp_min: "",
-        temp_max: "",
-        temp_feels_like: "",
-        humidity: "",
-        wind_speed: "",
-        wind_degrees: "",
-        cloudiness: "",
-        visibility: "",
-        pressure: "",
+        temp: '',
+        description: '',
+        temp_min: '',
+        temp_max: '',
+        temp_feels_like: '',
+        humidity: '',
+        wind_speed: '',
+        wind_degrees: '',
+        cloudiness: '',
+        visibility: '',
+        pressure: '',
       },
     };
   }
 
   async getWeather() {
-    const zoomWeather = `${Number(
-      (localStorage.getItem("zoomWeather") || 100) / 100
-    )}em`;
-    document.querySelector(".weather").style.fontSize = zoomWeather;
+    const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+    document.querySelector('.weather').style.fontSize = zoomWeather;
 
     let data = {
       weather: [
@@ -68,16 +66,16 @@ export default class Weather extends PureComponent {
       data = await (
         await fetch(
           variables.constants.PROXY_URL +
-            `/weather/current?city=${this.state.location}&lang=${variables.languagecode}`
+            `/weather/current?city=${this.state.location}&lang=${variables.languagecode}`,
         )
       ).json();
     }
 
-    if (data.cod === "404") {
+    if (data.cod === '404') {
       return this.setState({
         location: variables.language.getMessage(
           variables.languagecode,
-          "widgets.weather.not_found"
+          'widgets.weather.not_found',
         ),
       });
     }
@@ -86,22 +84,22 @@ export default class Weather extends PureComponent {
     let temp_min = data.main.temp_min;
     let temp_max = data.main.temp_max;
     let temp_feels_like = data.main.temp_feels_like;
-    let temp_text = "K";
+    let temp_text = 'K';
 
-    switch (localStorage.getItem("tempformat")) {
-      case "celsius":
+    switch (localStorage.getItem('tempformat')) {
+      case 'celsius':
         temp -= 273.15;
         temp_min -= 273.15;
         temp_max -= 273.15;
         temp_feels_like -= 273.15;
-        temp_text = "°C";
+        temp_text = '°C';
         break;
-      case "fahrenheit":
+      case 'fahrenheit':
         temp = (temp - 273.15) * 1.8 + 32;
         temp_min = (temp_min - 273.15) * 1.8 + 32;
         temp_max = (temp_max - 273.15) * 1.8 + 32;
         temp_feels_like = (temp_feels_like - 273.15) * 1.8 + 32;
-        temp_text = "°F";
+        temp_text = '°F';
         break;
       // kelvin
       default:
@@ -130,12 +128,12 @@ export default class Weather extends PureComponent {
       },
     });
 
-    document.querySelector(".weather svg").style.fontSize = zoomWeather;
+    document.querySelector('.weather svg').style.fontSize = zoomWeather;
   }
 
   componentDidMount() {
-    EventBus.on("refresh", (data) => {
-      if (data === "weather") {
+    EventBus.on('refresh', (data) => {
+      if (data === 'weather') {
         this.getWeather();
       }
     });
@@ -144,17 +142,17 @@ export default class Weather extends PureComponent {
   }
 
   componentWillUnmount() {
-    EventBus.off("refresh");
+    EventBus.off('refresh');
   }
 
   render() {
     const enabled = (setting) => {
-      return localStorage.getItem(setting) === "true";
+      return localStorage.getItem(setting) === 'true';
     };
 
     if (
       this.state.location ===
-      variables.language.getMessage(variables.languagecode, "weather.not_found")
+      variables.language.getMessage(variables.languagecode, 'weather.not_found')
     ) {
       return (
         <div className="weather">
@@ -164,33 +162,24 @@ export default class Weather extends PureComponent {
     }
 
     const minmax = () => {
-      const mintemp = enabled("mintemp");
-      const maxtemp = enabled("maxtemp");
+      const mintemp = enabled('mintemp');
+      const maxtemp = enabled('maxtemp');
 
       if (!mintemp && !maxtemp) {
         return null;
       } else if (mintemp && !maxtemp) {
         return (
-          <span className="subtitle">
-            {this.state.weather.temp_min + this.state.temp_text}
-          </span>
+          <span className="subtitle">{this.state.weather.temp_min + this.state.temp_text}</span>
         );
       } else if (maxtemp && !mintemp) {
         return (
-          <span className="subtitle">
-            {this.state.weather.temp_max + this.state.temp_text}
-          </span>
+          <span className="subtitle">{this.state.weather.temp_max + this.state.temp_text}</span>
         );
       } else {
         return (
           <>
-            <span className="subtitle">
-              {this.state.weather.temp_min + this.state.temp_text}
-            </span>{" "}
-            <span className="subtitle">
-              {" "}
-              {this.state.weather.temp_max + this.state.temp_text}
-            </span>
+            <span className="subtitle">{this.state.weather.temp_min + this.state.temp_text}</span>{' '}
+            <span className="subtitle"> {this.state.weather.temp_max + this.state.temp_text}</span>
           </>
         );
       }
@@ -208,15 +197,10 @@ export default class Weather extends PureComponent {
           </div>
           <div className="extra-info">
             {/*{enabled('humidity') ? <span><WiHumidity/>{this.state.weather.humidity}%</span> : null}*/}
-            {enabled("feelsliketemp") ? (
-              <span>
-                Feels like{" "}
-                {this.state.weather.temp_feels_like + this.state.temp_text}
-              </span>
+            {enabled('feelsliketemp') ? (
+              <span>Feels like {this.state.weather.temp_feels_like + this.state.temp_text}</span>
             ) : null}
-            {enabled("showlocation") ? (
-              <span className="loc">{this.state.location}</span>
-            ) : null}
+            {enabled('showlocation') ? <span className="loc">{this.state.location}</span> : null}
           </div>
           <div className="expanded-info">
             <span className="subtitle">Upcoming Forecast</span>
@@ -238,18 +222,18 @@ export default class Weather extends PureComponent {
               </div>
             </div>
             <span className="subtitle">Extra Information</span>
-            {enabled("cloudiness") ? (
+            {enabled('cloudiness') ? (
               <span>
                 <WiCloud className="weatherIcon" />
                 {this.state.weather.cloudiness}%
               </span>
             ) : null}
-            {enabled("windspeed") ? (
+            {enabled('windspeed') ? (
               <span>
                 <WiWindy className="weatherIcon" />
                 {this.state.weather.wind_speed}
-                <span className="minmax"> m/s</span>{" "}
-                {enabled("windDirection") ? (
+                <span className="minmax"> m/s</span>{' '}
+                {enabled('windDirection') ? (
                   <div className="weatherIcon">
                     <WindDirectionIcon
                       className="weatherIcon"
@@ -259,14 +243,14 @@ export default class Weather extends PureComponent {
                 ) : null}
               </span>
             ) : null}
-            {enabled("atmosphericpressure") ? (
+            {enabled('atmosphericpressure') ? (
               <span>
                 <WiBarometer className="weatherIcon" />
                 {this.state.weather.pressure}
                 <span className="minmax"> hPa</span>
               </span>
             ) : null}
-            {enabled("weatherdescription") ? (
+            {enabled('weatherdescription') ? (
               <span>
                 <div className="weatherIcon">
                   <WeatherIcon name={this.state.icon} />
@@ -274,16 +258,12 @@ export default class Weather extends PureComponent {
                 {this.state.weather.description}
               </span>
             ) : null}
-            {enabled("visibility") ? (
+            {enabled('visibility') ? (
               <span>
-                <MdDisabledVisible style={{ padding: "3px" }} />
-                {variables.language.getMessage(
-                  variables.languagecode,
-                  "widgets.weather.meters",
-                  {
-                    amount: this.state.weather.visibility,
-                  }
-                )}
+                <MdDisabledVisible style={{ padding: '3px' }} />
+                {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', {
+                  amount: this.state.weather.visibility,
+                })}
               </span>
             ) : null}
           </div>

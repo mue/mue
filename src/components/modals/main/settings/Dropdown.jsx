@@ -9,7 +9,7 @@ export default class Dropdown extends PureComponent {
     super(props);
     this.state = {
       value: localStorage.getItem(this.props.name) || this.props.children[0].props.value,
-      title: ''
+      title: '',
     };
     this.dropdown = createRef();
   }
@@ -24,13 +24,13 @@ export default class Dropdown extends PureComponent {
     variables.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
 
     this.setState({
-      value
+      value,
     });
-  
+
     if (!this.props.noSetting) {
       localStorage.setItem(this.props.name, value);
     }
-  
+
     if (this.props.onChange) {
       this.props.onChange(value);
     }
@@ -43,7 +43,7 @@ export default class Dropdown extends PureComponent {
     }
 
     EventBus.dispatch('refresh', this.props.category);
-  }
+  };
 
   render() {
     const id = 'dropdown' + this.props.name;
@@ -52,10 +52,24 @@ export default class Dropdown extends PureComponent {
     return (
       <FormControl fullWidth className={id}>
         <InputLabel id={id}>{label}</InputLabel>
-        <Select labelId={id} id={this.props.name} value={this.state.value} label={label} onChange={this.onChange} ref={this.dropdown} key={id}>
-          {this.props.manual ? this.props.children : this.props.children.map((e, index) => {
-            return e ? <MenuItem key={index} value={e.props ? e.props.value : ''}>{e.props ? e.props.children : ''}</MenuItem> : null
-          })}
+        <Select
+          labelId={id}
+          id={this.props.name}
+          value={this.state.value}
+          label={label}
+          onChange={this.onChange}
+          ref={this.dropdown}
+          key={id}
+        >
+          {this.props.manual
+            ? this.props.children
+            : this.props.children.map((e, index) => {
+                return e ? (
+                  <MenuItem key={index} value={e.props ? e.props.value : ''}>
+                    {e.props ? e.props.children : ''}
+                  </MenuItem>
+                ) : null;
+              })}
         </Select>
       </FormControl>
     );

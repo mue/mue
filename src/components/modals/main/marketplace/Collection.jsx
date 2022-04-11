@@ -1,26 +1,24 @@
-import variables from "modules/variables";
+import variables from 'modules/variables';
 
 export default function Collection({ items, toggleFunction }) {
   return [
-    <div className='collection starWars'>
-    <div className='content'>
-    <div className="tags">
+    <div className="collection starWars">
+      <div className="content">
+        <div className="tags">
           <div className="tag">
             <span>Star Wars</span>
           </div>
         </div>
-      <span className='title'>Star Wars Collection</span>
-      <span className='subtitle'>A Collection of stuff inspired by the film franchise star wars..</span>
-      <button>Explore Collection</button>
-    </div>
-  </div>,
-      <div className="items">
+        <span className="title">Star Wars Collection</span>
+        <span className="subtitle">
+          A Collection of stuff inspired by the film franchise star wars..
+        </span>
+        <button>Explore Collection</button>
+      </div>
+    </div>,
+    <div className="items">
       {items.map((item) => (
-        <div
-          className="item"
-          onClick={() => toggleFunction(item)}
-          key={item.name}
-        >
+        <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
           <img
             alt="icon"
             draggable="false"
@@ -33,7 +31,7 @@ export default function Collection({ items, toggleFunction }) {
               <div className="tag">
                 <span>{item.author}</span>
               </div>
-              <div className='moreTag'>
+              <div className="moreTag">
                 <span>1</span>
               </div>
             </div>

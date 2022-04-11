@@ -22,7 +22,8 @@ export default function ExperimentalInit() {
             debugger;
           }
           break;
-        default: break;
+        default:
+          break;
       }
     };
   }

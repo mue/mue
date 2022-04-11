@@ -6,9 +6,11 @@ export default class EventBus {
   }
 
   static dispatch(event, data) {
-    document.dispatchEvent(new CustomEvent(event, {
-      detail: data
-    }));
+    document.dispatchEvent(
+      new CustomEvent(event, {
+        detail: data,
+      }),
+    );
   }
 
   static off(event, callback) {

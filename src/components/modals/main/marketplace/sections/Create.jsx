@@ -1,5 +1,5 @@
-import variables from "modules/variables";
-import { PureComponent } from "react";
+import variables from 'modules/variables';
+import { PureComponent } from 'react';
 import {
   MdSettings as Settings,
   MdOutlineInsertPhoto as Photos,
@@ -9,18 +9,18 @@ import {
   MdArrowBack,
   MdDownload,
   MdOpenInNew,
-} from "react-icons/md";
-import { TextField } from "@mui/material";
-import { toast } from "react-toastify";
-import SettingsItem from "../../../main/settings/SettingsItem";
+} from 'react-icons/md';
+import { TextField } from '@mui/material';
+import { toast } from 'react-toastify';
+import SettingsItem from '../../../main/settings/SettingsItem';
 
-import { saveFile } from "modules/helpers/settings/modals";
-import Tooltip from "../../../../helpers/tooltip/Tooltip";
+import { saveFile } from 'modules/helpers/settings/modals';
+import Tooltip from '../../../../helpers/tooltip/Tooltip';
 
-import FileUpload from "../../settings/FileUpload";
-import Dropdown from "../../settings/Dropdown";
+import FileUpload from '../../settings/FileUpload';
+import Dropdown from '../../settings/Dropdown';
 
-import "../../../welcome/welcome.scss";
+import '../../../welcome/welcome.scss';
 
 export default class Create extends PureComponent {
   constructor() {
@@ -28,18 +28,18 @@ export default class Create extends PureComponent {
     this.state = {
       currentTab: 1,
       addonMetadata: {
-        name: "",
-        description: "",
-        type: "",
-        version: "",
-        author: "",
-        icon_url: "",
-        screenshot_url: "",
+        name: '',
+        description: '',
+        type: '',
+        version: '',
+        author: '',
+        icon_url: '',
+        screenshot_url: '',
       },
-      addonData: "",
+      addonData: '',
       settingsClasses: {
-        current: "toggle lightTheme",
-        json: "toggle lightTheme",
+        current: 'toggle lightTheme',
+        json: 'toggle lightTheme',
       },
     };
   }
@@ -64,17 +64,17 @@ export default class Create extends PureComponent {
     let settings = {};
     Object.keys(data).forEach((key) => {
       if (
-        key === "statsData" ||
-        key === "firstRun" ||
-        key === "showWelcome" ||
-        key === "language" ||
-        key === "installed" ||
-        key === "stats" ||
-        key === "backup_settings" ||
-        key === "showReminder" ||
-        key === "experimental" ||
-        key === "debugtimeout" ||
-        key === "quotelanguage"
+        key === 'statsData' ||
+        key === 'firstRun' ||
+        key === 'showWelcome' ||
+        key === 'language' ||
+        key === 'installed' ||
+        key === 'stats' ||
+        key === 'backup_settings' ||
+        key === 'showReminder' ||
+        key === 'experimental' ||
+        key === 'debugtimeout' ||
+        key === 'quotelanguage'
       ) {
         return;
       }
@@ -84,14 +84,12 @@ export default class Create extends PureComponent {
     this.setState({
       addonData: settings,
       settingsClasses: {
-        current: input ? "toggle lightTheme active" : "toggle lightTheme",
-        json: input ? "toggle lightTheme active" : "toggle lightTheme",
+        current: input ? 'toggle lightTheme active' : 'toggle lightTheme',
+        json: input ? 'toggle lightTheme active' : 'toggle lightTheme',
       },
     });
 
-    toast(
-      variables.language.getMessage(variables.languagecode, "toasts.imported")
-    );
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
   }
 
   updateQuotePackType(type) {
@@ -104,7 +102,7 @@ export default class Create extends PureComponent {
       icon_url: this.state.addonMetadata.icon_url,
       screenshot_url: this.state.addonMetadata.screenshot_url,
     };
-    if (type === "quotePack") {
+    if (type === 'quotePack') {
       this.setState({
         addonMetadata: {
           addonMetadata,
@@ -117,9 +115,9 @@ export default class Create extends PureComponent {
           addonMetadata,
         },
         addonData: {
-          url: "",
-          name: "",
-          author: "",
+          url: '',
+          name: '',
+          author: '',
         },
       });
     }
@@ -128,45 +126,38 @@ export default class Create extends PureComponent {
   updateQuotePackAPI(type, data) {
     this.setState({
       addonData: {
-        url: type === "url" ? data : this.state.addonData.url || "",
-        name: type === "name" ? data : this.state.addonData.name || "",
-        author: type === "author" ? data : this.state.addonData.author || "",
+        url: type === 'url' ? data : this.state.addonData.url || '',
+        name: type === 'name' ? data : this.state.addonData.name || '',
+        author: type === 'author' ? data : this.state.addonData.author || '',
       },
     });
   }
 
   importQuotes() {
     this.setState({
-      addonData: JSON.parse(localStorage.getItem("customQuote")) || [],
+      addonData: JSON.parse(localStorage.getItem('customQuote')) || [],
     });
 
-    toast(
-      variables.language.getMessage(variables.languagecode, "toasts.imported")
-    );
+    toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
   }
 
   importPhotos() {
     let data = [];
     try {
-      const current =
-        JSON.parse(localStorage.getItem("customBackground")) || [];
+      const current = JSON.parse(localStorage.getItem('customBackground')) || [];
       data = current.map((item) => {
         return {
-          photographer: "???",
-          location: "???",
+          photographer: '???',
+          location: '???',
           url: {
             default: item,
           },
         };
       });
-      toast(
-        variables.language.getMessage(variables.languagecode, "toasts.imported")
-      );
+      toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
     } catch (e) {
       console.log(e);
-      toast(
-        variables.language.getMessage(variables.languagecode, "toasts.error")
-      );
+      toast(variables.language.getMessage(variables.languagecode, 'toasts.error'));
     }
 
     this.setState({
@@ -180,23 +171,20 @@ export default class Create extends PureComponent {
         name: this.state.addonMetadata.name,
         description: this.state.addonMetadata.description,
         type:
-          this.state.addonMetadata.type === "quote_api"
-            ? "quotes"
-            : this.state.addonMetadata.type,
+          this.state.addonMetadata.type === 'quote_api' ? 'quotes' : this.state.addonMetadata.type,
         version: this.state.addonMetadata.version,
         author: this.state.addonMetadata.author,
         icon_url: this.state.addonMetadata.icon_url,
         screenshot_url: this.state.addonMetadata.screenshot_url,
         [this.state.addonMetadata.type]: this.state.addonData,
       },
-      this.state.addonMetadata.name + ".json"
+      this.state.addonMetadata.name + '.json',
     );
   }
 
   render() {
     let tabContent;
-    const getMessage = (text) =>
-      variables.language.getMessage(variables.languagecode, text);
+    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
     const chooseType = (
       <>
@@ -204,8 +192,7 @@ export default class Create extends PureComponent {
           <div className="content">
             <span className="title">Help Centre</span>
             <span className="subtitle">
-              Home of all docs and guides on creating addons for Mue's
-              marketplace
+              Home of all docs and guides on creating addons for Mue's marketplace
             </span>
           </div>
           <button>
@@ -215,28 +202,17 @@ export default class Create extends PureComponent {
         </div>
         <div className="themesToggleArea">
           <div className="options">
-            <div
-              className="toggle lightTheme"
-              onClick={() => this.changeTab(2, "photos")}
-            >
+            <div className="toggle lightTheme" onClick={() => this.changeTab(2, 'photos')}>
               <Photos />
-              <span>{getMessage("modals.main.marketplace.photo_packs")}</span>
+              <span>{getMessage('modals.main.marketplace.photo_packs')}</span>
             </div>
-            <div
-              className="toggle lightTheme"
-              onClick={() => this.changeTab(2, "quotes")}
-            >
+            <div className="toggle lightTheme" onClick={() => this.changeTab(2, 'quotes')}>
               <Quotes />
-              <span>{getMessage("modals.main.marketplace.quote_packs")}</span>
+              <span>{getMessage('modals.main.marketplace.quote_packs')}</span>
             </div>
-            <div
-              className="toggle lightTheme"
-              onClick={() => this.changeTab(2, "settings")}
-            >
+            <div className="toggle lightTheme" onClick={() => this.changeTab(2, 'settings')}>
               <Settings />
-              <span>
-                {getMessage("modals.main.marketplace.preset_settings")}
-              </span>
+              <span>{getMessage('modals.main.marketplace.preset_settings')}</span>
             </div>
           </div>
         </div>
@@ -256,19 +232,13 @@ export default class Create extends PureComponent {
     const setMetadata = (data, type) => {
       this.setState({
         addonMetadata: {
-          name: type === "name" ? data : this.state.addonMetadata.name,
-          description:
-            type === "description"
-              ? data
-              : this.state.addonMetadata.description,
-          version: type === "version" ? data : this.state.addonMetadata.version,
-          author: type === "author" ? data : this.state.addonMetadata.author,
-          icon_url:
-            type === "icon_url" ? data : this.state.addonMetadata.icon_url,
+          name: type === 'name' ? data : this.state.addonMetadata.name,
+          description: type === 'description' ? data : this.state.addonMetadata.description,
+          version: type === 'version' ? data : this.state.addonMetadata.version,
+          author: type === 'author' ? data : this.state.addonMetadata.author,
+          icon_url: type === 'icon_url' ? data : this.state.addonMetadata.icon_url,
           screenshot_url:
-            type === "screenshot_url"
-              ? data
-              : this.state.addonMetadata.screenshot_url,
+            type === 'screenshot_url' ? data : this.state.addonMetadata.screenshot_url,
           type: this.state.addonMetadata.type,
         },
       });
@@ -278,7 +248,7 @@ export default class Create extends PureComponent {
       <>
         <div className="smallBanner">
           <div className="content">
-            <span className="title" style={{ textTransform: "capitalize" }}>
+            <span className="title" style={{ textTransform: 'capitalize' }}>
               Create {this.state.addonMetadata.type} Pack
             </span>
             <span className="subtitle">Description of what is being made</span>
@@ -288,120 +258,97 @@ export default class Create extends PureComponent {
             <MdDownload />
           </button>
         </div>
-        <SettingsItem
-          title={getMessage("modals.main.addons.create.metadata.name")}
-        >
+        <SettingsItem title={getMessage('modals.main.addons.create.metadata.name')}>
           <TextField
-            label={getMessage("modals.main.addons.create.metadata.name")}
+            label={getMessage('modals.main.addons.create.metadata.name')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.name}
-            onInput={(e) => setMetadata(e.target.value, "name")}
+            onInput={(e) => setMetadata(e.target.value, 'name')}
           />
         </SettingsItem>
-        <SettingsItem
-          title={getMessage("modals.main.marketplace.product.version")}
-        >
+        <SettingsItem title={getMessage('modals.main.marketplace.product.version')}>
           <TextField
-            label={getMessage("modals.main.marketplace.product.version")}
+            label={getMessage('modals.main.marketplace.product.version')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.version}
-            onInput={(e) => setMetadata(e.target.value, "version")}
+            onInput={(e) => setMetadata(e.target.value, 'version')}
           />
         </SettingsItem>
-        <SettingsItem
-          title={getMessage("modals.main.marketplace.product.author")}
-        >
+        <SettingsItem title={getMessage('modals.main.marketplace.product.author')}>
           <TextField
-            label={getMessage("modals.main.marketplace.product.author")}
+            label={getMessage('modals.main.marketplace.product.author')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.author}
-            onInput={(e) => setMetadata(e.target.value, "author")}
+            onInput={(e) => setMetadata(e.target.value, 'author')}
           />
         </SettingsItem>
-        <SettingsItem
-          title={getMessage("modals.main.addons.create.metadata.icon_url")}
-        >
+        <SettingsItem title={getMessage('modals.main.addons.create.metadata.icon_url')}>
           <TextField
-            label={getMessage("modals.main.addons.create.metadata.icon_url")}
+            label={getMessage('modals.main.addons.create.metadata.icon_url')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.icon_url}
-            onInput={(e) => setMetadata(e.target.value, "icon_url")}
+            onInput={(e) => setMetadata(e.target.value, 'icon_url')}
           />
         </SettingsItem>
-        <SettingsItem
-          title={getMessage(
-            "modals.main.addons.create.metadata.screenshot_url"
-          )}
-        >
+        <SettingsItem title={getMessage('modals.main.addons.create.metadata.screenshot_url')}>
           <TextField
-            label={getMessage(
-              "modals.main.addons.create.metadata.screenshot_url"
-            )}
+            label={getMessage('modals.main.addons.create.metadata.screenshot_url')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.screenshot_url}
-            onInput={(e) => setMetadata(e.target.value, "screenshot_url")}
+            onInput={(e) => setMetadata(e.target.value, 'screenshot_url')}
           />
         </SettingsItem>
-        <SettingsItem
-          title={getMessage("modals.main.addons.create.metadata.description")}
-        >
+        <SettingsItem title={getMessage('modals.main.addons.create.metadata.description')}>
           <TextField
-            label={getMessage("modals.main.addons.create.metadata.description")}
+            label={getMessage('modals.main.addons.create.metadata.description')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             multiline
             spellCheck={false}
             rows={4}
             value={this.state.addonMetadata.description}
-            onInput={(e) => setMetadata(e.target.value, "description")}
+            onInput={(e) => setMetadata(e.target.value, 'description')}
           />
         </SettingsItem>
         <div className="createButtons">
           <button onClick={() => this.changeTab(1)}>
-            {getMessage("modals.welcome.buttons.previous")}
+            {getMessage('modals.welcome.buttons.previous')}
           </button>
           <button
             onClick={() => this.changeTab(this.state.addonMetadata.type)}
             disabled={nextDescriptionDisabled}
           >
-            {getMessage("modals.welcome.buttons.next")}
+            {getMessage('modals.welcome.buttons.next')}
           </button>
         </div>
       </>
     );
 
     // settings
-    const nextSettingsDisabled = this.state.addonData === "";
+    const nextSettingsDisabled = this.state.addonData === '';
     const importSettings = (
       <>
-        <SettingsItem
-          final={true}
-          title={getMessage("modals.welcome.sections.settings.title")}
-        >
+        <SettingsItem final={true} title={getMessage('modals.welcome.sections.settings.title')}>
           <div className="themesToggleArea">
-            <div className="options" style={{ maxWidth: "512px" }}>
+            <div className="options" style={{ maxWidth: '512px' }}>
               <div
                 className={this.state.settingsClasses.current}
                 onClick={() => this.importSettings()}
               >
                 <ExportIcon />
-                <span>
-                  {getMessage("modals.main.addons.create.settings.current")}
-                </span>
+                <span>{getMessage('modals.main.addons.create.settings.current')}</span>
               </div>
               <div
                 className={this.state.settingsClasses.json}
-                onClick={() => document.getElementById("file-input").click()}
+                onClick={() => document.getElementById('file-input').click()}
               >
                 <ImportIcon />
-                <span>
-                  {getMessage("modals.main.addons.create.settings.json")}
-                </span>
+                <span>{getMessage('modals.main.addons.create.settings.json')}</span>
               </div>
             </div>
           </div>
@@ -411,20 +358,15 @@ export default class Create extends PureComponent {
             id="file-input"
             type="settings"
             accept="application/json"
-            loadFunction={(e) =>
-              this.importSettings(JSON.parse(e.target.result))
-            }
+            loadFunction={(e) => this.importSettings(JSON.parse(e.target.result))}
           />
         </SettingsItem>
         <div className="createButtons">
           <button onClick={() => this.changeTab(2)}>
-            {getMessage("modals.welcome.buttons.previous")}
+            {getMessage('modals.welcome.buttons.previous')}
           </button>
-          <button
-            onClick={() => this.changeTab(3)}
-            disabled={nextSettingsDisabled}
-          >
-            {getMessage("modals.welcome.buttons.next")}
+          <button onClick={() => this.changeTab(3)} disabled={nextSettingsDisabled}>
+            {getMessage('modals.welcome.buttons.next')}
           </button>
         </div>
       </>
@@ -432,68 +374,68 @@ export default class Create extends PureComponent {
 
     // quotes
     const nextQuotesDisabled = !(
-      (this.state.addonMetadata.type === "quote_api" &&
-        this.state.addonData.url !== "" &&
-        this.state.addonData.name !== "" &&
-        this.state.addonData.author !== "") ||
-      (this.state.addonMetadata.type === "quotes" &&
-        this.state.addonData.quotes !== "")
+      (this.state.addonMetadata.type === 'quote_api' &&
+        this.state.addonData.url !== '' &&
+        this.state.addonData.name !== '' &&
+        this.state.addonData.author !== '') ||
+      (this.state.addonMetadata.type === 'quotes' && this.state.addonData.quotes !== '')
     );
     const addQuotes = (
       <>
-        <SettingsItem final={true} title={getMessage("modals.main.addons.create.quotes.title")}>
+        <SettingsItem final={true} title={getMessage('modals.main.addons.create.quotes.title')}>
           <Dropdown
-            label={getMessage("modals.main.settings.sections.time.type")}
+            label={getMessage('modals.main.settings.sections.time.type')}
             noSetting
             onChange={(e) => this.updateQuotePackType(e)}
           >
             <option value="quotes">
-              {getMessage("modals.main.addons.create.quotes.local.title")}
+              {getMessage('modals.main.addons.create.quotes.local.title')}
             </option>
             <option value="quote_api">
-              {getMessage("modals.main.addons.create.quotes.api.title")}
+              {getMessage('modals.main.addons.create.quotes.api.title')}
             </option>
           </Dropdown>
         </SettingsItem>
-        {this.state.addonMetadata.type === "quote_api" ? (
+        {this.state.addonMetadata.type === 'quote_api' ? (
           <>
             <TextField
-              label={getMessage("modals.main.addons.create.quotes.api.url")}
+              label={getMessage('modals.main.addons.create.quotes.api.url')}
               varient="outlined"
               InputLabelProps={{ shrink: true }}
               value={this.state.addonData.url}
-              onInput={(e) => this.updateQuotePack(e.target.value, "url")}
+              onInput={(e) => this.updateQuotePack(e.target.value, 'url')}
             />
             <TextField
-              label={getMessage("modals.main.addons.create.quotes.api.name")}
+              label={getMessage('modals.main.addons.create.quotes.api.name')}
               varient="outlined"
               InputLabelProps={{ shrink: true }}
               value={this.state.addonData.name}
-              onInput={(e) => this.updateQuotePack(e.target.value, "name")}
+              onInput={(e) => this.updateQuotePack(e.target.value, 'name')}
             />
             <TextField
-              label={getMessage("modals.main.addons.create.quotes.api.author")}
+              label={getMessage('modals.main.addons.create.quotes.api.author')}
               varient="outlined"
               InputLabelProps={{ shrink: true }}
               value={this.state.addonData.author}
-              onInput={(e) => this.updateQuotePack(e.target.value, "author")}
+              onInput={(e) => this.updateQuotePack(e.target.value, 'author')}
             />
             <br />
             <br />
           </>
         ) : (
-          <SettingsItem final={true} title={getMessage("modals.main.addons.create.settings.current")} >
+          <SettingsItem
+            final={true}
+            title={getMessage('modals.main.addons.create.settings.current')}
+          >
             <div className="themesToggleArea">
               <div className="options">
                 <div
                   onClick={() => this.importQuotes()}
                   className="toggle lightTheme"
-                  style={{ width: "60%", margin: "10px 0 10px 0" }}
+                  style={{ width: '60%', margin: '10px 0 10px 0' }}
                 >
                   <ExportIcon />
-                  <span>
-                    {getMessage("modals.main.addons.create.settings.current")}
-                  </span>
+                  <span>{getMessage('modals.main.addons.create.settings.current')}</span>
                 </div>
               </div>
             </div>
@@ -501,13 +443,10 @@ export default class Create extends PureComponent {
         )}
         <div className="createButtons">
           <button onClick={() => this.changeTab(2)}>
-            {getMessage("modals.welcome.buttons.previous")}
+            {getMessage('modals.welcome.buttons.previous')}
           </button>
-          <button
-            onClick={() => this.changeTab(3)}
-            disabled={nextQuotesDisabled}
-          >
-            {getMessage("modals.welcome.buttons.next")}
+          <button onClick={() => this.changeTab(3)} disabled={nextQuotesDisabled}>
+            {getMessage('modals.welcome.buttons.next')}
           </button>
         </div>
       </>
@@ -515,26 +454,24 @@ export default class Create extends PureComponent {
 
     // photos
     const nextPhotosDisabled = !(
-      this.state.addonData.photos !== "" && this.state.addonData.photos !== []
+      this.state.addonData.photos !== '' && this.state.addonData.photos !== []
     );
     const addPhotos = (
       <>
         <SettingsItem
           final={true}
-          title={getMessage("modals.main.addons.create.photos.title")}
-          subtitle={"Import from custom settings."}
+          title={getMessage('modals.main.addons.create.photos.title')}
+          subtitle={'Import from custom settings.'}
         >
           <div className="themesToggleArea">
             <div className="options">
               <div
                 onClick={() => this.importPhotos()}
                 className="toggle lightTheme"
-                style={{ width: "60%", margin: "10px 0 10px 0" }}
+                style={{ width: '60%', margin: '10px 0 10px 0' }}
               >
                 <ExportIcon />
-                <span>
-                  {getMessage("modals.main.addons.create.settings.current")}
-                </span>
+                <span>{getMessage('modals.main.addons.create.settings.current')}</span>
               </div>
             </div>
           </div>
@@ -542,13 +479,10 @@ export default class Create extends PureComponent {
         <br />
         <div className="createButtons">
           <button onClick={() => this.changeTab(2)}>
-            {getMessage("modals.welcome.buttons.previous")}
+            {getMessage('modals.welcome.buttons.previous')}
           </button>
-          <button
-            onClick={() => this.changeTab(3)}
-            disabled={nextPhotosDisabled}
-          >
-            {getMessage("modals.welcome.buttons.next")}
+          <button onClick={() => this.changeTab(3)} disabled={nextPhotosDisabled}>
+            {getMessage('modals.welcome.buttons.next')}
           </button>
         </div>
       </>
@@ -558,12 +492,11 @@ export default class Create extends PureComponent {
       <>
         <div className="smallBanner">
           <div className="content">
-            <span className="title" style={{ textTransform: "capitalize" }}>
+            <span className="title" style={{ textTransform: 'capitalize' }}>
               Next step, Publishing...
             </span>
             <span className="subtitle">
-              Visit the Mue Knowledgebase on information on how to publish your
-              newly created addon.
+              Visit the Mue Knowledgebase on information on how to publish your newly created addon.
             </span>
           </div>
           <button>
@@ -577,12 +510,10 @@ export default class Create extends PureComponent {
               <div
                 onClick={() => this.downloadAddon()}
                 className="toggle lightTheme"
-                style={{ width: "60%", margin: "10px 0 10px 0" }}
+                style={{ width: '60%', margin: '10px 0 10px 0' }}
               >
                 <ExportIcon />
-                <span>
-                  {getMessage("modals.main.addons.create.finish.download")}
-                </span>
+                <span>{getMessage('modals.main.addons.create.finish.download')}</span>
               </div>
             </div>
           </div>
@@ -591,14 +522,14 @@ export default class Create extends PureComponent {
           <button
             onClick={() =>
               this.changeTab(
-                this.state.addonMetadata.type === "quote_api"
-                  ? "quotes"
-                  : this.state.addonMetadata.type
+                this.state.addonMetadata.type === 'quote_api'
+                  ? 'quotes'
+                  : this.state.addonMetadata.type,
               )
             }
             disabled={nextDescriptionDisabled}
           >
-            {getMessage("modals.welcome.buttons.previous")}
+            {getMessage('modals.welcome.buttons.previous')}
           </button>
         </div>
         {/*<button
@@ -619,13 +550,13 @@ export default class Create extends PureComponent {
       case 2:
         tabContent = writeDescription;
         break;
-      case "settings":
+      case 'settings':
         tabContent = importSettings;
         break;
-      case "quotes":
+      case 'quotes':
         tabContent = addQuotes;
         break;
-      case "photos":
+      case 'photos':
         tabContent = addPhotos;
         break;
       case 3:
@@ -648,9 +579,7 @@ export default class Create extends PureComponent {
               </Tooltip>
             </div>
           )}
-          <span className="mainTitle">
-            {getMessage("modals.main.addons.create.other_title")}
-          </span>
+          <span className="mainTitle">{getMessage('modals.main.addons.create.other_title')}</span>
         </div>
         {tabContent}
       </>

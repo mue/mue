@@ -6,7 +6,7 @@ export default class ReminderSettings extends PureComponent {
   constructor() {
     super();
     this.state = {
-      colour: localStorage.getItem('reminderColour') || '#ffa500'
+      colour: localStorage.getItem('reminderColour') || '#ffa500',
     };
   }
 
@@ -20,9 +20,24 @@ export default class ReminderSettings extends PureComponent {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
     return (
       <>
-        <Header title='Reminder' setting='reminder' category='reminder' element='.reminder' zoomSetting='zoomReminder' switch={true}/>
-        <input type='color' name='colour' className='colour' onChange={(event) => this.updateColour(event)} value={this.state.colour}></input>
-        <label htmlFor={'colour'} className='customBackgroundHex'>{this.state.colour}</label>
+        <Header
+          title="Reminder"
+          setting="reminder"
+          category="reminder"
+          element=".reminder"
+          zoomSetting="zoomReminder"
+          switch={true}
+        />
+        <input
+          type="color"
+          name="colour"
+          className="colour"
+          onChange={(event) => this.updateColour(event)}
+          value={this.state.colour}
+        ></input>
+        <label htmlFor={'colour'} className="customBackgroundHex">
+          {this.state.colour}
+        </label>
       </>
     );
   }

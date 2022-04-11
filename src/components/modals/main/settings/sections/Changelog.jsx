@@ -1,9 +1,9 @@
-import variables from "modules/variables";
-import { PureComponent, createRef } from "react";
-import { MdOutlineWifiOff } from "react-icons/md";
-import Modal from "react-modal";
+import variables from 'modules/variables';
+import { PureComponent, createRef } from 'react';
+import { MdOutlineWifiOff } from 'react-icons/md';
+import Modal from 'react-modal';
 
-import Lightbox from "../../marketplace/Lightbox";
+import Lightbox from '../../marketplace/Lightbox';
 
 export default class Changelog extends PureComponent {
   constructor() {
@@ -13,14 +13,14 @@ export default class Changelog extends PureComponent {
       showLightbox: false,
       lightboxImg: null,
     };
-    this.offlineMode = localStorage.getItem("offlineMode") === "true";
+    this.offlineMode = localStorage.getItem('offlineMode') === 'true';
     this.controller = new AbortController();
     this.changelog = createRef();
   }
 
   async getUpdate() {
     const data = await (
-      await fetch(variables.constants.BLOG_POST + "/index.json", {
+      await fetch(variables.constants.BLOG_POST + '/index.json', {
         signal: this.controller.signal,
       })
     ).json();
@@ -29,11 +29,11 @@ export default class Changelog extends PureComponent {
       return;
     }
 
-    let date = new Date(data.date.split(" ")[0]);
-    date = date.toLocaleDateString(variables.languagecode.replace("_", "-"), {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    let date = new Date(data.date.split(' ')[0]);
+    date = date.toLocaleDateString(variables.languagecode.replace('_', '-'), {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
     });
 
     this.setState({
@@ -42,17 +42,17 @@ export default class Changelog extends PureComponent {
       image: data.featured_image || null,
       author: variables.language.getMessage(
         variables.languagecode,
-        "modals.main.settings.sections.changelog.by",
+        'modals.main.settings.sections.changelog.by',
         {
-          author: data.authors.join(", "),
-        }
+          author: data.authors.join(', '),
+        },
       ),
       html: data.html,
     });
 
     // lightbox etc
-    const images = this.changelog.current.getElementsByTagName("img");
-    const links = this.changelog.current.getElementsByTagName("a");
+    const images = this.changelog.current.getElementsByTagName('img');
+    const links = this.changelog.current.getElementsByTagName('a');
 
     for (const img of images) {
       img.draggable = false;
@@ -66,8 +66,8 @@ export default class Changelog extends PureComponent {
 
     // open in new tab
     for (let link = 0; link < links.length; link++) {
-      links[link].target = "_blank";
-      links[link].rel = "noopener noreferrer";
+      links[link].target = '_blank';
+      links[link].rel = 'noopener noreferrer';
     }
   }
 
@@ -85,8 +85,7 @@ export default class Changelog extends PureComponent {
   }
 
   render() {
-    const getMessage = (text) =>
-      variables.language.getMessage(variables.languagecode, text);
+    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
     const errorMessage = (msg) => {
       return (
@@ -100,11 +99,9 @@ export default class Changelog extends PureComponent {
       return errorMessage(
         <>
           <MdOutlineWifiOff />
-          <h1>{getMessage("modals.main.marketplace.offline.title")}</h1>
-          <p className="description">
-            {getMessage("modals.main.marketplace.offline.description")}
-          </p>
-        </>
+          <h1>{getMessage('modals.main.marketplace.offline.title')}</h1>
+          <p className="description">{getMessage('modals.main.marketplace.offline.description')}</p>
+        </>,
       );
     }
 
@@ -113,7 +110,7 @@ export default class Changelog extends PureComponent {
         <div className="loaderHolder">
           <div id="loader"></div>
           <span className="subtitle">Just be a sec.</span>
-        </div>
+        </div>,
       );
     }
 
@@ -131,10 +128,7 @@ export default class Changelog extends PureComponent {
             className="updateImage"
           />
         ) : null}
-        <div
-          className="updateChangelog"
-          dangerouslySetInnerHTML={{ __html: this.state.html }}
-        />
+        <div className="updateChangelog" dangerouslySetInnerHTML={{ __html: this.state.html }} />
         <Modal
           closeTimeoutMS={100}
           onRequestClose={() => this.setState({ showLightbox: false })}

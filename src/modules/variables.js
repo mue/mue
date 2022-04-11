@@ -5,10 +5,10 @@ const variables = {
   languagecode: '',
   stats: {
     tabLoad: () => '',
-    postEvent: () => ''
+    postEvent: () => '',
   },
   //keybinds: {},
-  constants: Constants
+  constants: Constants,
 };
 
 export default variables;

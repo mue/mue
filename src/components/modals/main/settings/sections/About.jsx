@@ -134,7 +134,7 @@ export default class About extends PureComponent {
         <span className="mainTitle">
           {this.getMessage('modals.main.settings.sections.about.title')}
         </span>
-        <div className='settingsRow' style={{ justifyContent: 'center' }}>
+        <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
             <img draggable="false" className="aboutLogo" src={this.state.image} alt="Logo" />
             <span className="title">
@@ -179,10 +179,10 @@ export default class About extends PureComponent {
             {this.getMessage('modals.main.settings.sections.about.contact_us')}
           </span>
           <div className="aboutContact">
-              <a class='donateButton' href='https://muetab.com/contact'>
-                <MdContactPage />
-                Form
-              </a>
+            <a class="donateButton" href="https://muetab.com/contact">
+              <MdContactPage />
+              Form
+            </a>
             <Tooltip title={'Email'}>
               <a
                 href={'mailto:' + variables.constants.EMAIL}
@@ -217,13 +217,16 @@ export default class About extends PureComponent {
           <span className="title">
             {this.getMessage('modals.main.settings.sections.about.support_mue')}
           </span>
-          <p>As Mue is entirely free, we rely on donations to cover pay the server bills and fund development</p>
+          <p>
+            As Mue is entirely free, we rely on donations to cover pay the server bills and fund
+            development
+          </p>
           <div className="aboutContact">
-            <a class='donateButton' href={variables.constants.DONATE_LINK}>
+            <a class="donateButton" href={variables.constants.DONATE_LINK}>
               <BiDonateHeart />
               Donate
-              </a>
-              <Tooltip title={'Github Sponsors'}>
+            </a>
+            <Tooltip title={'Github Sponsors'}>
               <a
                 href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
                 target="_blank"

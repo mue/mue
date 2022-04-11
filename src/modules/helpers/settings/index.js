@@ -12,7 +12,10 @@ export function setDefaultSettings(reset) {
 
   // Languages
   const languageCodes = languages.map(({ value }) => value);
-  const browserLanguage = (navigator.languages && navigator.languages.find((lang) => lang.replace('-', '_') && languageCodes.includes(lang))) || navigator.language.replace('-', '_');
+  const browserLanguage =
+    (navigator.languages &&
+      navigator.languages.find((lang) => lang.replace('-', '_') && languageCodes.includes(lang))) ||
+    navigator.language.replace('-', '_');
 
   if (languageCodes.includes(browserLanguage)) {
     localStorage.setItem('language', browserLanguage);
@@ -63,7 +66,7 @@ export function loadSettings(hotreload) {
     });
   }
 
-  if (localStorage.getItem('animations') === 'false') { 
+  if (localStorage.getItem('animations') === 'false') {
     document.body.classList.add('no-animations');
   } else {
     document.body.classList.remove('no-animations');
@@ -79,7 +82,7 @@ export function loadSettings(hotreload) {
       try {
         document.querySelector('.' + element).classList.add('textBorder');
       } catch (e) {
-        // Disregard exception 
+        // Disregard exception
       }
     });
   } else {
@@ -88,7 +91,7 @@ export function loadSettings(hotreload) {
       try {
         document.querySelector('.' + element).classList.remove('textBorder');
       } catch (e) {
-        // Disregard exception 
+        // Disregard exception
       }
     });
   }
@@ -112,7 +115,9 @@ export function loadSettings(hotreload) {
       url = `@import url('https://fonts.googleapis.com/css2?family=${font}&display=swap');`;
     }
 
-    document.head.insertAdjacentHTML('beforeend', `
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
       <style id='customfont'>
         ${url}
         * {
@@ -121,7 +126,8 @@ export function loadSettings(hotreload) {
           font-style: ${localStorage.getItem('fontstyle')};
         }
       </style>
-    `);
+    `,
+    );
   }
 
   // everything below this shouldn't run on a hot reload event
@@ -153,7 +159,7 @@ export function loadSettings(hotreload) {
 `);
 }
 
-// in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides 
+// in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides
 // the new settings with the old saved messages where they exist
 export function moveSettings() {
   const currentSettings = Object.keys(localStorage);

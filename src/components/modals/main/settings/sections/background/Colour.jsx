@@ -1,25 +1,24 @@
-import variables from "modules/variables";
-import { PureComponent, Fragment } from "react";
-import { ColorPicker } from "react-color-gradient-picker";
-import { toast } from "react-toastify";
-import SettingsItem from "../../SettingsItem";
+import variables from 'modules/variables';
+import { PureComponent, Fragment } from 'react';
+import { ColorPicker } from 'react-color-gradient-picker';
+import { toast } from 'react-toastify';
+import SettingsItem from '../../SettingsItem';
 
-import hexToRgb from "modules/helpers/background/hexToRgb";
-import rgbToHex from "modules/helpers/background/rgbToHex";
+import hexToRgb from 'modules/helpers/background/hexToRgb';
+import rgbToHex from 'modules/helpers/background/rgbToHex';
 
-import "react-color-gradient-picker/dist/index.css";
-import "../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss";
+import 'react-color-gradient-picker/dist/index.css';
+import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class ColourSettings extends PureComponent {
   DefaultGradientSettings = {
-    angle: "180",
-    gradient: [{ colour: "#ffb032", stop: 0 }],
-    type: "linear",
+    angle: '180',
+    gradient: [{ colour: '#ffb032', stop: 0 }],
+    type: 'linear',
   };
   GradientPickerInitialState = undefined;
 
-  getMessage = (text) =>
-    variables.language.getMessage(variables.languagecode, text);
+  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   constructor() {
     super();
@@ -29,11 +28,11 @@ export default class ColourSettings extends PureComponent {
   }
 
   resetColour() {
-    localStorage.setItem("customBackgroundColour", "");
+    localStorage.setItem('customBackgroundColour', '');
     this.setState({
       gradientSettings: this.DefaultGradientSettings,
     });
-    toast(this.getMessage("toasts.reset"));
+    toast(this.getMessage('toasts.reset'));
   }
 
   initialiseColourPickerState(gradientSettings) {
@@ -54,10 +53,10 @@ export default class ColourSettings extends PureComponent {
   }
 
   componentDidMount() {
-    const hex = localStorage.getItem("customBackgroundColour");
+    const hex = localStorage.getItem('customBackgroundColour');
     let gradientSettings = undefined;
 
-    if (hex !== "") {
+    if (hex !== '') {
       try {
         gradientSettings = JSON.parse(hex);
       } catch (e) {
@@ -75,10 +74,7 @@ export default class ColourSettings extends PureComponent {
   }
 
   componentDidUpdate() {
-    localStorage.setItem(
-      "customBackgroundColour",
-      this.currentGradientSettings()
-    );
+    localStorage.setItem('customBackgroundColour', this.currentGradientSettings());
   }
 
   onGradientChange = (event, index) => {
@@ -89,7 +85,7 @@ export default class ColourSettings extends PureComponent {
         gradientSettings: {
           ...s.gradientSettings,
           gradient: s.gradientSettings.gradient.map((g, i) =>
-            i === index ? { ...g, [name]: newValue } : g
+            i === index ? { ...g, [name]: newValue } : g,
           ),
         },
       });
@@ -100,8 +96,7 @@ export default class ColourSettings extends PureComponent {
 
   addColour = () => {
     this.setState((s) => {
-      const [lastGradient, ...initGradients] =
-        s.gradientSettings.gradient.reverse();
+      const [lastGradient, ...initGradients] = s.gradientSettings.gradient.reverse();
       return {
         gradientSettings: {
           ...s.gradientSettings,
@@ -109,10 +104,7 @@ export default class ColourSettings extends PureComponent {
             ...initGradients,
             lastGradient,
             {
-              colour:
-                localStorage.getItem("theme") === "dark"
-                  ? "#000000"
-                  : "#ffffff",
+              colour: localStorage.getItem('theme') === 'dark' ? '#000000' : '#ffffff',
               stop: 100,
             },
           ].sort((a, b) => (a.stop > b.stop ? 1 : -1)),
@@ -120,25 +112,18 @@ export default class ColourSettings extends PureComponent {
       };
     });
 
-    variables.stats.postEvent(
-      "setting",
-      "Changed backgroundType from colour to gradient"
-    );
+    variables.stats.postEvent('setting', 'Changed backgroundType from colour to gradient');
   };
 
   currentGradientSettings = () => {
     if (
-      typeof this.state.gradientSettings === "object" &&
+      typeof this.state.gradientSettings === 'object' &&
       this.state.gradientSettings.gradient.every(
         (g) =>
-          g.colour !==
-          this.getMessage(
-            "modals.main.settings.sections.background.source.disabled"
-          )
+          g.colour !== this.getMessage('modals.main.settings.sections.background.source.disabled'),
       )
     ) {
-      const clampNumber = (num, a, b) =>
-        Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
+      const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
       return JSON.stringify({
         ...this.state.gradientSettings,
         gradient: [
@@ -148,13 +133,11 @@ export default class ColourSettings extends PureComponent {
         ].sort((a, b) => (a.stop > b.stop ? 1 : -1)),
       });
     }
-    return this.getMessage(
-      "modals.main.settings.sections.background.source.disabled"
-    );
+    return this.getMessage('modals.main.settings.sections.background.source.disabled');
   };
 
   onColourPickerChange = (attrs, name) => {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === 'development') {
       console.log(attrs, name);
     }
 
@@ -163,7 +146,7 @@ export default class ColourSettings extends PureComponent {
         angle: attrs.degree,
         gradient: attrs.points.map((p) => {
           return {
-            colour: "#" + rgbToHex(p.red, p.green, p.blue),
+            colour: '#' + rgbToHex(p.red, p.green, p.blue),
             stop: p.left,
           };
         }),
@@ -175,18 +158,17 @@ export default class ColourSettings extends PureComponent {
   };
 
   showReminder() {
-    const reminderInfo = document.querySelector(".reminder-info");
-    if (reminderInfo.style.display !== "block") {
-      reminderInfo.style.display = "block";
-      localStorage.setItem("showReminder", true);
+    const reminderInfo = document.querySelector('.reminder-info');
+    if (reminderInfo.style.display !== 'block') {
+      reminderInfo.style.display = 'block';
+      localStorage.setItem('showReminder', true);
     }
   }
 
   render() {
     let colourSettings = null;
-    if (typeof this.state.gradientSettings === "object") {
-      const gradientHasMoreThanOneColour =
-        this.state.gradientSettings.gradient.length > 1;
+    if (typeof this.state.gradientSettings === 'object') {
+      const gradientHasMoreThanOneColour = this.state.gradientSettings.gradient.length > 1;
 
       let gradientInputs;
       if (gradientHasMoreThanOneColour) {
@@ -196,11 +178,9 @@ export default class ColourSettings extends PureComponent {
 
         gradientInputs = (
           <ColorPicker
-            onStartChange={(colour) =>
-              this.onColourPickerChange(colour, "start")
-            }
-            onChange={(colour) => this.onColourPickerChange(colour, "change")}
-            onEndChange={(colour) => this.onColourPickerChange(colour, "end")}
+            onStartChange={(colour) => this.onColourPickerChange(colour, 'start')}
+            onChange={(colour) => this.onColourPickerChange(colour, 'change')}
+            onEndChange={(colour) => this.onColourPickerChange(colour, 'end')}
             gradient={this.GradientPickerInitialState}
             isGradient
           />
@@ -210,14 +190,14 @@ export default class ColourSettings extends PureComponent {
           return (
             <Fragment key={i}>
               <input
-                id={"colour_" + i}
+                id={'colour_' + i}
                 type="color"
                 name="colour"
                 className="colour"
                 onChange={(event) => this.onGradientChange(event, i)}
                 value={g.colour}
               ></input>
-              <label htmlFor={"colour_" + i} className="customBackgroundHex">
+              <label htmlFor={'colour_' + i} className="customBackgroundHex">
                 {g.colour}
               </label>
             </Fragment>
@@ -231,9 +211,7 @@ export default class ColourSettings extends PureComponent {
           {!gradientHasMoreThanOneColour ? (
             <>
               <button type="button" className="add" onClick={this.addColour}>
-                {this.getMessage(
-                  "modals.main.settings.sections.background.source.add_colour"
-                )}
+                {this.getMessage('modals.main.settings.sections.background.source.add_colour')}
               </button>
             </>
           ) : null}
@@ -244,12 +222,10 @@ export default class ColourSettings extends PureComponent {
     return (
       <>
         <SettingsItem
-          title={this.getMessage(
-            "modals.main.settings.sections.background.source.custom_colour"
-          )}
+          title={this.getMessage('modals.main.settings.sections.background.source.custom_colour')}
         >
           <span className="link" onClick={() => this.resetColour()}>
-            {this.getMessage("modals.main.settings.buttons.reset")}
+            {this.getMessage('modals.main.settings.buttons.reset')}
           </span>
           {colourSettings}
         </SettingsItem>

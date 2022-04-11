@@ -7,36 +7,38 @@ module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
   mode: 'development',
   performance: {
-    hints: false
+    hints: false,
   },
   module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      use: ['babel-loader']
-    },
-    {
-      test: /\.(|sc|c)ss$/,
-      use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            publicPath: ''
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.(|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '',
+            },
           },
-        },
-        'css-loader',
-        'sass-loader'
-      ],
-    },
-    {
-      test: /\.(woff|woff2|svg)$/,
-      type: 'asset/resource'
-    },
-    {
-      test: /\.js$/,
-      enforce: 'pre',
-      use: ['source-map-loader']
-    }]
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.(woff|woff2|svg)$/,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -44,42 +46,43 @@ module.exports = {
       components: path.resolve(__dirname, './src/components'),
       modules: path.resolve(__dirname, './src/modules'),
       translations: path.resolve(__dirname, './src/translations'),
-      scss: path.resolve(__dirname, './src/scss')
-    }
+      scss: path.resolve(__dirname, './src/scss'),
+    },
   },
   output: {
     path: path.resolve(__dirname, './build'),
     filename: '[name].[chunkhash].js',
     chunkFilename: '[id].[chunkhash].chunk.js',
-    clean: true
+    clean: true,
   },
   devServer: {
     static: path.resolve(__dirname, './build'),
     open: true,
-    port: 3000
+    port: 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public/index.html')
+      template: path.resolve(__dirname, './public/index.html'),
     }),
     new CopyPlugin({
-      patterns: [{
+      patterns: [
+        {
           from: 'public/icons',
-          to: 'icons'
+          to: 'icons',
         },
         {
           from: 'public/offline-images',
-          to: 'offline-images'
+          to: 'offline-images',
         },
         {
           from: 'public/welcome-images',
-          to: 'welcome-images'
-        }
-      ]
+          to: 'welcome-images',
+        },
+      ],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[chunkhash].css',
-      chunkFilename: '[id].[chunkhash].chunk.css'
+      chunkFilename: '[id].[chunkhash].chunk.css',
     }),
-  ]
+  ],
 };

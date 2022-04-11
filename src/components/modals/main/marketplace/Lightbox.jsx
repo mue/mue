@@ -5,8 +5,10 @@ export default function Lightbox({ modalClose, img }) {
 
   return (
     <>
-      <span className='closeModal' onClick={modalClose}>&times;</span>
-      <img src={img} className='lightboximg' draggable={false} alt='Item screenshot'/>
+      <span className="closeModal" onClick={modalClose}>
+        &times;
+      </span>
+      <img src={img} className="lightboximg" draggable={false} alt="Item screenshot" />
     </>
   );
 }

@@ -93,6 +93,16 @@ h1.quoteauthor {
   align-items: center;
   justify-content: center;
   flex-flow: column;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .quote-buttons {
@@ -110,6 +120,7 @@ h1.quoteauthor {
 }
 
 .quotediv {
+  animation: fadeIn 1s;
   width: 40vw;
   display: flex;
   flex-direction: column;

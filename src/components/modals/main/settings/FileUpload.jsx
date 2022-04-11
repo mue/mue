@@ -28,6 +28,13 @@ export default class FileUpload extends PureComponent {
   }
 
   render() {
-    return <input id={this.props.id} type='file' style={{ display: 'none' }} accept={this.props.accept} />;
+    return (
+      <input
+        id={this.props.id}
+        type="file"
+        style={{ display: 'none' }}
+        accept={this.props.accept}
+      />
+    );
   }
 }
