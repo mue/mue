@@ -133,8 +133,12 @@ $themes: (
   .link {
     font-size: 16px;
     text-decoration: none;
+    cursor: pointer;
     @include themed() {
       color: t($link);
+    }
+    &:hover {
+      opacity: 0.8;    
     }
   }
 }
