@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdEmail, MdContactPage } from 'react-icons/md';
-import { FaDiscord, FaTwitter, FaPatreon, FaGithub } from 'react-icons/fa';
+import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { SiGithubsponsors, SiLiberapay, SiKofi, SiPatreon } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
@@ -228,7 +228,7 @@ export default class About extends PureComponent {
             </a>
             <Tooltip title={'Github Sponsors'}>
               <a
-                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+                href={'https://github.com/sponsors/' + variables.constants.SPONSORS_USERNAME}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -237,7 +237,7 @@ export default class About extends PureComponent {
             </Tooltip>
             <Tooltip title={'Liberapay'}>
               <a
-                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+                href={'https://liberapay.com/' + variables.constants.LIBERAPAY_USERNAME}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -246,7 +246,7 @@ export default class About extends PureComponent {
             </Tooltip>
             <Tooltip title={'Ko-Fi'}>
               <a
-                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+                href={'https://ko-fi.com/' + variables.constants.KOFI_USERNAME}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -255,7 +255,7 @@ export default class About extends PureComponent {
             </Tooltip>
             <Tooltip title={'Patreon'}>
               <a
-                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+                href={'https://patreon.com/' + variables.constants.PATREON_USERNAME}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -288,12 +288,6 @@ export default class About extends PureComponent {
               Unsplash
             </a>{' '}
             ({this.getMessage('modals.main.settings.sections.about.resources_used.bg_images')})
-          </span>
-          <span className="subtitle">
-            <a href="https://undraw.co" className="link" target="_blank" rel="noopener noreferrer">
-              Undraw
-            </a>{' '}
-            ({this.getMessage('modals.main.settings.sections.about.resources_used.welcome_img')})
           </span>
         </div>
 

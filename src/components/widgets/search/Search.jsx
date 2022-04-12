@@ -34,6 +34,10 @@ export default class Search extends PureComponent {
     const voiceSearch = new window.webkitSpeechRecognition();
     voiceSearch.start();
 
+    // todo: use ref, stop being lazy
+    const micIcon = document.getElementById('micBtn');
+    micIcon.classList.add('micActive');
+
     const searchText = document.getElementById('searchtext');
 
     voiceSearch.onresult = (event) => {
@@ -41,6 +45,7 @@ export default class Search extends PureComponent {
     };
 
     voiceSearch.onend = () => {
+      micIcon.classList.remove('micActive');
       if (searchText.value === '') {
         return;
       }
@@ -101,7 +106,7 @@ export default class Search extends PureComponent {
 
     if (localStorage.getItem('voiceSearch') === 'true') {
       microphone = (
-        <button onClick={this.startSpeechRecognition}>
+        <button onClick={this.startSpeechRecognition} id='micBtn'>
           <MdMic className="micIcon" />
         </button>
       );

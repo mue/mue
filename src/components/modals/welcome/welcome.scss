@@ -204,11 +204,6 @@ a.privacy {
   }
 }
 
-.showcaseimg {
-  width: 350px;
-  height: auto;
-}
-
 @media (max-width: 1820px) and (min-width: 1200px) {
   .welcomemodal {
     width: 85%;
@@ -271,4 +266,23 @@ a.privacy {
     width: 150px;
     height: 40px;
   }
+}
+
+.showcaseimg {
+  width: 350px;
+  height: auto;
+  /*animation-name: float-in;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in;*/
+}
+
+@keyframes float-in {
+  0% { 
+    transform: translate(0,  30px); 
+    opacity: 0;
+  }
+  100%   { 
+    transform: translate(0, 0px); 
+    opacity: 1;
+  }   
 }

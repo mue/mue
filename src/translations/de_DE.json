@@ -378,9 +378,7 @@
             "support_mue": "Mue unterstützen",
             "resources_used": {
               "title": "Verwendete Ressourcen",
-              "bg_images": "Offline Hintergrundbilder",
-              "welcome_img": "Willkommensbild",
-              "pin_icon": "Icon Anheften"
+              "bg_images": "Offline Hintergrundbilder"
             },
             "contributors": "Mitwirkende",
             "supporters": "Unterstützer",

@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client';
+import { render } from 'react-dom';
 
 import App from './App';
 import variables from 'modules/variables';
@@ -31,7 +31,7 @@ variables.language = new I18n(variables.languagecode, {
   no: require('./translations/no.json'),
   ru: require('./translations/ru.json'),
   zh_CN: require('./translations/zh_CN.json'),
-  id_ID: require('./translations/id_ID.json'),
+  id_ID: require('./translations/id_ID.json')
 });
 
 // set html language tag
@@ -47,7 +47,7 @@ if (localStorage.getItem('stats') === 'true') {
   variables.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
 }*/
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-
-root.render(<App />);
+render(
+  <App/>,
+  document.getElementById('root')
+);

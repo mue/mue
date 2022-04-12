@@ -436,7 +436,7 @@ export default class Quote extends PureComponent {
                   </div>
                   <div className="quote-buttons">
                     {this.state.authorOccupation !== 'Unknown' ? (
-                      <Tooltip title="Open">
+                      <Tooltip title="Open On Wikipedia">
                         <a
                           href={this.state.authorlink}
                           className="quoteAuthorLink"

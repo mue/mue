@@ -5,7 +5,6 @@
   border-radius: 12px;
   justify-content: flex-start;
   flex-direction: row;
-  gap: 10px;
   input[type='text'] {
     @extend %basic;
     outline: none;
@@ -24,6 +23,7 @@
   display: flex;
   gap: 10px;
   margin-top: 1px;
+  margin-right: 10px;
   .tooltip {
     max-height: 44px;
   }
@@ -65,5 +65,4 @@
 .searchMain {
   display: flex;
   flex-flow: row;
-  gap: 10px;
 }

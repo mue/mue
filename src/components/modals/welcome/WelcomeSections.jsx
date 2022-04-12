@@ -125,7 +125,7 @@ export default class WelcomeSections extends PureComponent {
         <h3 className="quicktip">#shareyourmue</h3>
         <div className="examples">
           <img
-            src={this.welcomeImages[this.state.welcomeImage]}
+            src={`./welcome-images/example${this.state.welcomeImage + 1}.webp`}
             alt="Example Mue setup"
             draggable={false}
           />

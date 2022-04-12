@@ -377,9 +377,7 @@
             "support_mue": "Soutenir Mue",
             "resources_used": {
               "title": "Ressources utilisées",
-              "bg_images": "Images d'arrière-plan hors ligne",
-              "welcome_img": "Image de bienvenue",
-              "pin_icon": "Icône de broche"
+              "bg_images": "Images d'arrière-plan hors ligne"
             },
             "contributors": "Collaborateurs",
             "supporters": "Partisans",
