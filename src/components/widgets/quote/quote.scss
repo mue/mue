@@ -8,6 +8,7 @@
   --shadow-shift: 0.125rem;
   color: #fff;
   font-weight: 600;
+  width: 40vw;
 }
 
 .quoteauthor {
@@ -122,10 +123,10 @@ h1.quoteauthor {
 
 .quotediv {
   animation: fadeIn 1s;
-  width: 40vw;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: center;
   button {
     @include basicIconButton(11px, 1.3rem, ui);
   }

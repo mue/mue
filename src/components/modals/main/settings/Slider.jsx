@@ -63,7 +63,7 @@ export default class SliderComponent extends PureComponent {
       <>
         <span className={'sliderTitle'}>
           {this.props.title}
-          {Number(this.state.value / 100)}x
+          <span>{Number(this.state.value / 100)}x</span>
           <span className="link" onClick={this.resetItem}>
             <MdRefresh />
             {variables.language.getMessage(
