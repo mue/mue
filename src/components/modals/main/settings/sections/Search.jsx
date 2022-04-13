@@ -11,8 +11,8 @@ import SettingsItem from '../SettingsItem';
 
 import EventBus from 'modules/helpers/eventbus';
 
-const searchEngines = require('components/widgets/search/search_engines.json');
-const autocompleteProviders = require('components/widgets/search/autocomplete_providers.json');
+import * as searchEngines from 'components/widgets/search/search_engines.json';
+import * as autocompleteProviders from 'components/widgets/search/autocomplete_providers.json';
 
 export default class SearchSettings extends PureComponent {
   getMessage = (text) => variables.language.getMessage(variables.languagecode, text);

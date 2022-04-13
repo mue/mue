@@ -10,8 +10,8 @@ import EventBus from 'modules/helpers/eventbus';
 
 import './search.scss';
 
-const searchEngines = require('./search_engines.json');
-const autocompleteProviders = require('./autocomplete_providers.json');
+import searchEngines from 'components/widgets/search/search_engines.json';
+import * as autocompleteProviders from 'components/widgets/search/autocomplete_providers.json';
 
 export default class Search extends PureComponent {
   constructor() {

@@ -1,8 +1,8 @@
 import variables from 'modules/variables';
 import experimentalInit from '../experimental';
 
-const defaultSettings = require('modules/default_settings.json');
-const languages = require('modules/languages.json');
+import * as defaultSettings from 'modules/default_settings.json';
+import * as languages from 'modules/languages.json';
 
 const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 

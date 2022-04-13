@@ -9,7 +9,7 @@ import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 import SettingsItem from '../SettingsItem';
 
-const other_contributors = require('modules/other_contributors.json');
+import other_contributors from 'modules/other_contributors.json';
 
 export default class About extends PureComponent {
   getMessage = (text) => variables.language.getMessage(variables.languagecode, text);

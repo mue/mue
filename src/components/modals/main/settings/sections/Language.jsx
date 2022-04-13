@@ -3,7 +3,7 @@ import { PureComponent } from 'react';
 
 import Radio from '../Radio';
 
-const languages = require('modules/languages.json');
+import languages from 'modules/languages.json';
 
 export default class LanguageSettings extends PureComponent {
   getMessage = (text) => variables.language.getMessage(variables.languagecode, text);

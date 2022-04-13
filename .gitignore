@@ -3,6 +3,7 @@ node_modules/
 .vscode/
 build/
 .idea/
+dist/
 
 # Files
 package-lock.json

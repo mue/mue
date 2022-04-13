@@ -18,7 +18,7 @@ import ResetModal from '../ResetModal';
 import Dropdown from '../Dropdown';
 import SettingsItem from '../SettingsItem';
 
-const time_zones = require('components/widgets/time/timezones.json');
+import time_zones from 'components/widgets/time/timezones.json';
 
 export default class AdvancedSettings extends PureComponent {
   constructor() {

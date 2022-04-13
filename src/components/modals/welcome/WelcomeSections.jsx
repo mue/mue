@@ -9,8 +9,8 @@ import FileUpload from '../main/settings/FileUpload';
 import { loadSettings } from 'modules/helpers/settings';
 import { importSettings } from 'modules/helpers/settings/modals';
 
-const languages = require('modules/languages.json');
-const default_settings = require('modules/default_settings.json');
+import * as default_settings from 'modules/default_settings.json';
+import * as languages from 'modules/languages.json';
 
 export default class WelcomeSections extends PureComponent {
   getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
