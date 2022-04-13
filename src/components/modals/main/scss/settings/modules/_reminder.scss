@@ -18,3 +18,54 @@
     @include modal-button(standard);
   }
 }
+
+.reminderSettingsHolder {
+  display: flex;
+  flex-flow: column;
+  @include themed() {
+    input[type='text'] {
+      width: 260px;
+      background: t($modal-sidebar);
+      border: 3px solid t($modal-sidebarActive);
+      color: t($color);
+      padding: 15px 20px;
+      border-radius: 4px;
+      display: flex !important;
+      cursor: pointer;
+
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+      }
+    }
+    .reminderSetting {
+      border-radius: t($borderRadius);
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      div {
+        display: flex;
+        flex-flow: column;
+        gap: 10px;
+        align-items: center;
+      }
+      background: t($modal-sidebar);
+      .colorPicker {
+        align-items: center;
+        padding: 10px 15px 10px 15px;
+        border-radius: 100px;
+        display: flex;
+        flex-flow: row;
+        gap: 25px;
+        background: t($modal-sidebarActive);
+        box-shadow: 0 0 0 1px t($modal-sidebar);
+      }
+    }
+  }
+}

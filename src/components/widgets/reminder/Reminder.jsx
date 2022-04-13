@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './reminder.scss';
-
+import Tooltip from '../../helpers/tooltip/Tooltip'
 import { MdClose, MdSnooze, MdWork } from 'react-icons/md';
 
 export default class Reminder extends React.PureComponent {
@@ -21,8 +21,8 @@ export default class Reminder extends React.PureComponent {
           <span className="subtitle">Time</span>
         </div>
         <div className="icons">
-          <MdClose />
-          <MdSnooze />
+          <Tooltip title='Remove'><MdClose /></Tooltip>
+          <Tooltip title='Snooze'><MdSnooze /></Tooltip>
         </div>
       </div>
     );

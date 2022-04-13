@@ -35,6 +35,8 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
+
+
 // todo: copy link to unsplash/pexels page not image url
 const copyImage = (info) => {
   variables.stats.postEvent('feature', 'Background copied');
@@ -133,6 +135,7 @@ export default function PhotoInformation({ info, url, api }) {
       </div>
     );
   }
+
 
   const downloadEnabled =
     localStorage.getItem('downloadbtn') === 'true' && !info.offline && !info.photographerURL && api;
@@ -279,6 +282,7 @@ export default function PhotoInformation({ info, url, api }) {
                   <Download onClick={() => downloadImage(info)} />
                 </Tooltip>
               </div>
+              <span className='subtitle' style={{marginBottom: '20px'}}>Description</span>
               <div className="extra-content">
                 <span className="subtitle">
                   {variables.language.getMessage(

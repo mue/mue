@@ -190,6 +190,16 @@
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   width: 300px;
   padding: 10px;
+  .link {
+    text-decoration: none;
+    cursor: pointer;
+    @include themed() {
+      color: t($link);
+    }
+    &:hover {
+      opacity: 0.8;    
+    }
+  }
   &:hover {
     padding: 20px;
     height: auto;
