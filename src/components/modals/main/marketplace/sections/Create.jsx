@@ -303,7 +303,7 @@ export default class Create extends PureComponent {
             onInput={(e) => setMetadata(e.target.value, 'screenshot_url')}
           />
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.addons.create.metadata.description')}>
+        <SettingsItem title={getMessage('modals.main.addons.create.metadata.description')} final={true}>
           <TextField
             label={getMessage('modals.main.addons.create.metadata.description')}
             varient="outlined"
@@ -571,7 +571,7 @@ export default class Create extends PureComponent {
         <div className="flexTopMarketplace">
           {this.state.currentTab !== 1 && (
             <div className="returnButton">
-              <Tooltip title="back" key="cheese">
+              <Tooltip title="Go back" key="cheese">
                 <MdArrowBack
                   className="backArrow"
                   onClick={() => this.changeTab(this.state.currentTab - 1)}

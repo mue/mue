@@ -69,10 +69,9 @@ export default class AdvancedSettings extends PureComponent {
             </div>
           </div>
         ) : null}
-        <SettingsItem title="This should really be in time">
+        <SettingsItem title={getMessage('modals.main.settings.sections.advanced.timezone.title')} subtitle='Choose a timezone from a list of hundreds instead of the automatic default.'>
           <Dropdown
             name="timezone"
-            label={getMessage('modals.main.settings.sections.advanced.timezone.title')}
             category="timezone"
             manual={true}
           >
@@ -88,7 +87,6 @@ export default class AdvancedSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem title={getMessage('modals.main.settings.sections.advanced.tab_name')}>
           <Text
-            title={getMessage('modals.main.settings.sections.advanced.tab_name')}
             name="tabName"
             default={getMessage('tabname')}
             category="other"
@@ -108,24 +106,17 @@ export default class AdvancedSettings extends PureComponent {
             category="other"
           />
         </SettingsItem>
-        <div className="settingsRow">
-          <div className="content">
-            <span className="title">
-              {getMessage('modals.main.settings.sections.experimental.title')}
-            </span>
-            <span className="subtitle">
-              {getMessage('modals.main.settings.sections.advanced.experimental_warning')}
-            </span>
-          </div>
-          <div className="action">
-            <Switch
-              name="experimental"
-              text={getMessage('modals.main.settings.enabled')}
-              element=".other"
-            />
-          </div>
-        </div>
-
+        <SettingsItem
+          title={getMessage('modals.main.settings.sections.experimental.title')}
+          subtitle={getMessage('modals.main.settings.sections.advanced.experimental_warning')}
+          final={true}
+        >
+          <Switch
+            name="experimental"
+            text={getMessage('modals.main.settings.enabled')}
+            element=".other"
+          />
+        </SettingsItem>
         <Modal
           closeTimeoutMS={100}
           onRequestClose={() => this.setState({ resetModal: false })}

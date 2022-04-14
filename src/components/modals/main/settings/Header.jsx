@@ -46,7 +46,28 @@ export default class Header extends PureComponent {
           </SettingsItem>
         ) : null}
         {this.props.zoomSetting ? (
-          <div className="settingsRow">
+          <SettingsItem
+            title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')}
+            subtitle="Slider to control how large the widget is"
+          >
+            <Slider
+              name={this.props.zoomSetting}
+              min="10"
+              max="400"
+              default="100"
+              display="%"
+              marks={values('zoom')}
+              category={this.props.zoomCategory || this.props.category}
+            />
+          </SettingsItem>
+        ) : null}
+      </>
+    );
+  }
+}
+
+{
+  /*<div className="settingsRow">
             <div className="content">
               <span className="title">
                 {getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')}
@@ -64,9 +85,5 @@ export default class Header extends PureComponent {
                 category={this.props.zoomCategory || this.props.category}
               />
             </div>
-          </div>
-        ) : null}
-      </>
-    );
-  }
+        </div>*/
 }

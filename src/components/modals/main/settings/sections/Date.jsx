@@ -88,9 +88,8 @@ export default class DateSettings extends PureComponent {
           zoomSetting="zoomDate"
           switch={true}
         />
-        <SettingsItem title="Date Type">
+        <SettingsItem title={getMessage('modals.main.settings.sections.time.type')}>
           <Dropdown
-            label={getMessage('modals.main.settings.sections.time.type')}
             name="dateType"
             onChange={(value) => this.setState({ dateType: value })}
             category="date"
@@ -103,7 +102,7 @@ export default class DateSettings extends PureComponent {
             </option>
           </Dropdown>
         </SettingsItem>
-        <SettingsItem title="Extra Options">
+        <SettingsItem title="Extra Options" final={true}>
           <Checkbox
             name="weeknumber"
             text={getMessage('modals.main.settings.sections.date.week_number')}

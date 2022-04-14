@@ -133,45 +133,40 @@ export default function AppearanceSettings() {
       <Checkbox text={getMessage('modals.main.settings.sections.appearance.accessibility.animations')} name='animations' category='other'/>
       <Slider title={getMessage('modals.main.settings.sections.appearance.accessibility.toast_duration')} name='toastDisplayTime' default='2500' step='100' min='500' max='5000' marks={values('toast')}
   display={' ' + getMessage('modals.main.settings.sections.appearance.accessibility.milliseconds')} />*/}
-      <div className="settingsRow">
-        <div className="content">
-          <span className="title">
-            {getMessage('modals.main.settings.sections.appearance.accessibility.title')}
-          </span>
-          <span className="subtitle">subtitle</span>
-        </div>
-        <div className="action">
-          <Dropdown
-            label={getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow')}
-            name="textBorder"
-            category="other"
-          >
-            <option value="new">New</option> {/* default */}
-            <option value="true">Old</option> {/* old checkbox setting */}
-            <option value="none">None</option>
-          </Dropdown>
-          <Checkbox
-            text={getMessage('modals.main.settings.sections.appearance.accessibility.animations')}
-            name="animations"
-            category="other"
-          />
-          <Slider
-            title={getMessage(
-              'modals.main.settings.sections.appearance.accessibility.toast_duration',
-            )}
-            name="toastDisplayTime"
-            default="2500"
-            step="100"
-            min="500"
-            max="5000"
-            marks={values('toast')}
-            display={
-              ' ' +
-              getMessage('modals.main.settings.sections.appearance.accessibility.milliseconds')
-            }
-          />
-        </div>
-      </div>
+      <SettingsItem
+        title={getMessage('modals.main.settings.sections.appearance.accessibility.title')}
+        subtitle="subtitle"
+        final={true}
+      >
+        <Dropdown
+          label={getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow')}
+          name="textBorder"
+          category="other"
+        >
+          <option value="new">New</option> {/* default */}
+          <option value="true">Old</option> {/* old checkbox setting */}
+          <option value="none">None</option>
+        </Dropdown>
+        <Checkbox
+          text={getMessage('modals.main.settings.sections.appearance.accessibility.animations')}
+          name="animations"
+          category="other"
+        />
+        <Slider
+          title={getMessage(
+            'modals.main.settings.sections.appearance.accessibility.toast_duration',
+          )}
+          name="toastDisplayTime"
+          default="2500"
+          step="100"
+          min="500"
+          max="5000"
+          marks={values('toast')}
+          display={
+            ' ' + getMessage('modals.main.settings.sections.appearance.accessibility.milliseconds')
+          }
+        />
+      </SettingsItem>
     </>
   );
 }

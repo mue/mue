@@ -38,3 +38,38 @@
   @extend %basic;
   padding: 1rem;
 }
+
+.pomodoro {
+  margin-top: -20px;
+  @extend %basic; 
+  padding: 5px 15px 5px 15px;
+  font-size: 12px;
+  display: flex;
+  flex-flow: row;
+  gap: 10px;
+  align-items: center;
+  .pomodoroTime {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 5px;
+    .timeRemaining {
+      
+    }
+    .type {
+      color: #ccc;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: grid;
+    }
+  }
+  .pomodoroControls {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    gap: 5px;
+  }
+  button {
+    @include basicIconButton(5px, 11px, ui);
+  }
+}

@@ -244,7 +244,7 @@ export default class Marketplace extends PureComponent {
       return errorMessage(
         <div className="loaderHolder">
           <div id="loader"></div>
-          <span className="subtitle">Just be a sec.</span>
+          <span className="subtitle">Loading</span>
         </div>,
       );
     }

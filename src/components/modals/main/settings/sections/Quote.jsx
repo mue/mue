@@ -218,11 +218,10 @@ export default class QuoteSettings extends PureComponent {
           <Checkbox name="quoteModern" text="Use modern style" />
         </SettingsItem>
         <SettingsItem
-          title={this.getMessage('modals.main.settings.sections.background.type.title')}
-          subtitle="subtitle"
+          title="Source"
+          subtitle="Choose the source of the quotes, pick between the following options"
         >
           <Dropdown
-            label={this.getMessage('modals.main.settings.sections.background.type.title')}
             name="quoteType"
             onChange={(value) => this.setState({ quoteType: value })}
             category="quote"

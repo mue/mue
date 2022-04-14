@@ -50,10 +50,10 @@ export default function Navbar() {
       {showRefreshOptions ? (
         <SettingsItem
           title={getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
+          subtitle='Choose what is refreshed when you click the refresh button'
           final={true}
         >
           <Dropdown
-            label={getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
             name="refreshOption"
             category="navbar"
           >

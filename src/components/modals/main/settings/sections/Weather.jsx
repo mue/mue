@@ -203,10 +203,19 @@ export default class TimeSettings extends PureComponent {
           text={getMessage('modals.main.settings.sections.weather.extra_info.max_temp')}
           category="weather"
         />
-        <Checkbox name="feelsliketemp" text={'Feels like temperature'} category="weather" />
+        <Checkbox 
+          name="feelsliketemp" 
+          text={'Feels like temperature'} 
+          category="weather" 
+        />
         <Checkbox
           name="atmosphericpressure"
           text={getMessage('modals.main.settings.sections.weather.extra_info.atmospheric_pressure')}
+          category="weather"
+        />
+        <Checkbox
+          name="upcomingForecast"
+          text="Upcoming Forecast"
           category="weather"
         />
       </>

@@ -187,6 +187,7 @@
   flex-flow: column;
   align-items: center;
   gap: 15px;
+  min-width: 100px;
   @include themed() {
     padding: 45px;
     border-radius: t($borderRadius);

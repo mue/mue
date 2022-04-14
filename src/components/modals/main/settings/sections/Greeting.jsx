@@ -59,6 +59,7 @@ export default class GreetingSettings extends PureComponent {
         <SettingsItem
           title={getMessage('modals.main.settings.sections.greeting.birthday')}
           subtitle={getMessage('modals.main.settings.enabled')}
+          final={true}
         >
           <Switch
             name="birthdayenabled"

@@ -26,4 +26,8 @@
   display: flex;
   flex-flow: row;
   justify-content: space-around;
+  button {
+    display: flex !important;
+    flex-flow: row;
+  }
 }
