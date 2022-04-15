@@ -33,7 +33,11 @@
     "@vitejs/plugin-react": "^1.3.0",
     "eslint": "^8.12.0",
     "eslint-config-react-app": "^7.0.0",
+    "prettier": "^2.6.2",
     "sass": "^1.50.0",
+    "stylelint": "^14.7.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^3.0.0",
     "vite": "^2.9.1"
   },
   "scripts": {
@@ -41,7 +45,9 @@
     "updatetranslations": "cd scripts && node updatetranslations.js",
     "build": "vite build",
     "chrome": "cp manifest/chrome.json dist/manifest.json && cp -r manifest/_locales dist/_locales && cp manifest/background-chrome.js dist/background-chrome.js",
-    "firefox": "rm -rf dist/_locales && cp manifest/firefox.json dist/manifest.json"
+    "firefox": "rm -rf dist/_locales && cp manifest/firefox.json dist/manifest.json",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json,scss}\"",
+    "stylelint": "npx stylelint \"**/*.scss\""
   },
   "browserslist": {
     "production": [
