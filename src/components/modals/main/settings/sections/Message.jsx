@@ -2,7 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdCancel, MdAdd } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import { TextField, TextareaAutosize } from '@mui/material';
+import { TextareaAutosize } from '@mui/material';
 import SettingsItem from '../SettingsItem';
 
 import Header from '../Header';

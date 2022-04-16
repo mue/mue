@@ -1,7 +1,5 @@
 import { PureComponent } from 'react';
 
-import { InputBase } from '@mui/material';
-
 import EventBus from 'modules/helpers/eventbus';
 
 import './autocomplete.scss';

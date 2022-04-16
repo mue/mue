@@ -29,7 +29,7 @@ export function setDefaultSettings(reset) {
     localStorage.setItem('showWelcome', false);
   }
 
-  // Finally we set this to true so it doesn't run the function on every load
+  // finally we set this to true so it doesn't run the function on every load
   localStorage.setItem('firstRun', true);
 }
 

@@ -10,7 +10,6 @@ import {
 
 import { exportSettings, importSettings } from 'modules/helpers/settings/modals';
 
-import Checkbox from '../Checkbox';
 import FileUpload from '../FileUpload';
 import Text from '../Text';
 import Switch from '../Switch';
@@ -69,12 +68,11 @@ export default class AdvancedSettings extends PureComponent {
             </div>
           </div>
         ) : null}
-        <SettingsItem title={getMessage('modals.main.settings.sections.advanced.timezone.title')} subtitle='Choose a timezone from a list of hundreds instead of the automatic default.'>
-          <Dropdown
-            name="timezone"
-            category="timezone"
-            manual={true}
-          >
+        <SettingsItem
+          title={getMessage('modals.main.settings.sections.advanced.timezone.title')}
+          subtitle="Choose a timezone from a list of hundreds instead of the automatic default."
+        >
+          <Dropdown name="timezone" category="timezone" manual={true}>
             <MenuItem value="auto">
               {getMessage('modals.main.settings.sections.advanced.timezone.automatic')}
             </MenuItem>
@@ -86,11 +84,7 @@ export default class AdvancedSettings extends PureComponent {
           </Dropdown>
         </SettingsItem>
         <SettingsItem title={getMessage('modals.main.settings.sections.advanced.tab_name')}>
-          <Text
-            name="tabName"
-            default={getMessage('tabname')}
-            category="other"
-          />
+          <Text name="tabName" default={getMessage('tabname')} category="other" />
         </SettingsItem>
         <FileUpload
           id="file-input"

@@ -11,6 +11,10 @@ import Reminder from './reminder/Reminder';
 
 import EventBus from 'modules/helpers/eventbus';
 
+// weather is lazy loaded due to the size of the weather icons module
+// since we're using react-icons this might not be accurate,
+// however, when we used the original module https://bundlephobia.com/package/weather-icons-react@1.2.0 
+// as seen here it is ridiculously large
 const Weather = lazy(() => import('./weather/Weather'));
 const renderLoader = () => <></>;
 
@@ -68,27 +72,26 @@ export default class Widgets extends PureComponent {
   render() {
     // don't show when welcome is there
     if (this.state.welcome !== 'false') {
-      return <div id="widgets"></div>;
+      return <div id="widgets" />;
     }
 
     // allow for re-ordering widgets
-    let elements = [];
+    // we have a default to prevent errors
+    let elements = [
+      <Greeting />,
+      <Clock />,
+      <QuickLinks />,
+      <Quote />,
+      <Date />,
+      <Message />,
+      <Reminder />,
+    ];
 
     if (this.state.order) {
+      elements = [];
       this.state.order.forEach((element) => {
         elements.push(<Fragment key={element}>{this.widgets[element]}</Fragment>);
       });
-    } else {
-      // prevent error
-      elements = [
-        <Greeting />,
-        <Clock />,
-        <QuickLinks />,
-        <Quote />,
-        <Date />,
-        <Message />,
-        <Reminder />,
-      ];
     }
 
     return (

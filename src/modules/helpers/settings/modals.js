@@ -17,6 +17,7 @@ export function saveFile(data, filename = 'file', type = 'text/json') {
   a.download = filename;
   a.dataset.downloadurl = [type, a.download, a.href].join(':');
 
+  // i need to see what all this actually does, i think wessel wrote this function
   event.initMouseEvent(
     'click',
     true,
@@ -39,9 +40,13 @@ export function saveFile(data, filename = 'file', type = 'text/json') {
 
 export function exportSettings() {
   const settings = {};
+
   Object.keys(localStorage).forEach((key) => {
     settings[key] = localStorage.getItem(key);
   });
+
+  // i think a good improvement would be to make the file names more descriptive, or allow for saving as custom
+  // otherwise you'll end up with mue-settings (6000).json and have absolutely no idea what any of them are for
   saveFile(settings, 'mue-settings.json');
   variables.stats.postEvent('tab', 'Settings exported');
 }

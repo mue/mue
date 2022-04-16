@@ -1,17 +1,15 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { MdRefresh, MdSettings, MdAssignment } from 'react-icons/md';
+import { MdRefresh, MdSettings } from 'react-icons/md';
 
 import Notes from './Notes';
 import Todo from './Todo';
 import Maximise from '../background/Maximise';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
-import InfoTooltip from 'components/helpers/tooltip/infoTooltip';
 
 import EventBus from 'modules/helpers/eventbus';
 
 import './scss/index.scss';
-import { FaThemeisle } from 'react-icons/fa';
 
 export default class Navbar extends PureComponent {
   constructor() {

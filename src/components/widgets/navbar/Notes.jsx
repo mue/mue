@@ -1,10 +1,11 @@
 import variables from 'modules/variables';
-import { PureComponent, useRef } from 'react';
+import { PureComponent } from 'react';
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
-import Tooltip from '../../helpers/tooltip/Tooltip'; //import Hotkeys from 'react-hot-keys';
+import Tooltip from '../../helpers/tooltip/Tooltip'; 
+//import Hotkeys from 'react-hot-keys';
 import { saveFile } from 'modules/helpers/settings/modals';
 
 class Notes extends PureComponent {

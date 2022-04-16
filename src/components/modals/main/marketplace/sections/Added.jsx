@@ -89,7 +89,7 @@ export default class Added extends PureComponent {
     }
 
     this.setState({
-      installed: installed,
+      installed,
     });
 
     if (sendEvent) {

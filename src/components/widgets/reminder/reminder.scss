@@ -8,6 +8,7 @@
   gap: 10px;
   height: 60px;
   text-align: left;
+
   .identifier {
     color: #fff;
     height: 60px;
@@ -17,15 +18,18 @@
     justify-content: center;
     align-items: center;
   }
+
   .content {
     display: flex;
     flex-flow: column;
     padding: 10px;
   }
+
   .icons {
     display: flex;
     gap: 10px;
     padding: 10px;
+
     svg {
       @include basicIconButton(10px, 0.9rem, ui);
     }

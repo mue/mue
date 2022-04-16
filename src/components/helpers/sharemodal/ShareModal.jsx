@@ -68,6 +68,9 @@ export default function ShareModal({ modalClose, data }) {
             <MdEmail />
           </button>
         </Tooltip>
+        {/* i think that wechat has no actual share function outside of qrcodes, as the only example of a share to wechat button i've seen used this api
+          * this requires some investigating before we deploy to production
+        */ }
         <Tooltip title="WeChat">
           <button
             onClick={() =>

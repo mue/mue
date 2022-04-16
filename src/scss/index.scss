@@ -1,7 +1,5 @@
 @import 'variables';
-
-@import 'modules/toast';
-@import 'modules/buttons';
+@import 'toast';
 
 body {
   background: #000;
@@ -86,6 +84,8 @@ body {
 }
 
 /* fonts (imported from fontsource) */
+// i don't even know what the unicode-range is for, but we're keeping it so that nothing breaks
+// same reason as why fontsource is never updated, it broke font loading last time so it flashed
 @font-face {
   font-family: 'Lexend Deca';
   font-style: normal;

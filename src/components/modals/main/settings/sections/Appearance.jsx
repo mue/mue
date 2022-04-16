@@ -12,32 +12,6 @@ import { values } from 'modules/helpers/settings/modals';
 export default function AppearanceSettings() {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
-  const themeOptions = [
-    {
-      name: getMessage('modals.main.settings.sections.appearance.theme.auto'),
-      value: 'auto',
-    },
-    {
-      name: getMessage('modals.main.settings.sections.appearance.theme.light'),
-      value: 'light',
-    },
-    {
-      name: getMessage('modals.main.settings.sections.appearance.theme.dark'),
-      value: 'dark',
-    },
-  ];
-
-  const styleOptions = [
-    {
-      name: 'Legacy',
-      value: 'legacy',
-    },
-    {
-      name: 'New',
-      value: 'new',
-    },
-  ];
-
   return (
     <>
       <span className="mainTitle">
@@ -51,7 +25,24 @@ export default function AppearanceSettings() {
           <span className="subtitle">subtitle</span>
         </div>
         <div className="action">
-          <Radio name="theme" options={themeOptions} category="other" />
+          <Radio
+            name="theme"
+            options={[
+              {
+                name: getMessage('modals.main.settings.sections.appearance.theme.auto'),
+                value: 'auto',
+              },
+              {
+                name: getMessage('modals.main.settings.sections.appearance.theme.light'),
+                value: 'light',
+              },
+              {
+                name: getMessage('modals.main.settings.sections.appearance.theme.dark'),
+                value: 'dark',
+              },
+            ]}
+            category="other"
+          />
         </div>
       </div>
       <div className="settingsRow">
@@ -125,7 +116,20 @@ export default function AppearanceSettings() {
         title="Widget Style"
         subtitle="Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling."
       >
-        <Radio name="widgetStyle" options={styleOptions} category="widgets" />
+        <Radio
+          name="widgetStyle"
+          options={[
+            {
+              name: 'Legacy',
+              value: 'legacy',
+            },
+            {
+              name: 'New',
+              value: 'new',
+            },
+          ]}
+          category="widgets"
+        />
       </SettingsItem>
 
       {/*<h3>{getMessage('modals.main.settings.sections.appearance.accessibility.title')}</h3>

@@ -41,48 +41,42 @@ class Todo extends PureComponent {
     }
   }
 
-  updateTodoState(todoContent) {
+  updateTodo(action, index, data) {
+    let todoContent = this.state.todo;
+    switch (action) {
+      case 'add':
+        todoContent.push({
+          value: '',
+          done: false,
+        });
+        break;
+      case 'remove':
+        todoContent.splice(index, 1);
+        if (todoContent.length === 0) {
+          todoContent.push({
+            value: '',
+            done: false,
+          });
+        }
+        break;
+      case 'set':
+        todoContent[index] = {
+          value: data.target.value,
+          done: todoContent[index].done,
+        };
+        break;
+      case 'done':
+        todoContent[index].done = !todoContent[index].done;
+        break;
+      default:
+        break;
+    }
+
     localStorage.setItem('todoContent', JSON.stringify(todoContent));
     this.setState({
       todo: todoContent,
     });
     this.forceUpdate();
-  }
-
-  setTodo(index, data) {
-    let todoContent = this.state.todo;
-    todoContent[index] = {
-      value: data.target.value,
-      done: todoContent[index].done,
-    };
-    this.updateTodoState(todoContent);
-  }
-
-  addTodo() {
-    let todoContent = this.state.todo;
-    todoContent.push({
-      value: '',
-      done: false,
-    });
-    this.updateTodoState(todoContent);
-  }
-
-  removeTodo(index) {
-    let todoContent = this.state.todo;
-    todoContent.splice(index, 1);
-    if (todoContent.length === 0) {
-      todoContent.push({
-        value: '',
-        done: false,
-      });
-    }
-    this.updateTodoState(todoContent);
-  }
-
-  doneTodo(index) {
-    let todoContent = this.state.todo;
-    todoContent[index].done = !todoContent[index].done;
-    this.updateTodoState(todoContent);
   }
 
   pin() {
@@ -134,20 +128,20 @@ class Todo extends PureComponent {
                   </button>
                 </Tooltip>
                 <Tooltip title={'Add'}>
-                  <button onClick={() => this.addTodo()}>
+                  <button onClick={() => this.updateTodo('add')}>
                     <MdPlaylistAdd />
                   </button>
                 </Tooltip>
               </div>
               <div className={'todoRows'}>
-                {this.state.todo.map((value, index) => (
+                {this.state.todo.map((_value, index) => (
                   <div
                     className={'todoRow' + (this.state.todo[index].done ? ' done' : '')}
                     key={index}
                   >
                     <Checkbox
                       checked={this.state.todo[index].done}
-                      onClick={() => this.doneTodo(index)}
+                      onClick={() => this.updateTodo('done', index)}
                     />
                     <TextareaAutosize
                       placeholder={variables.language.getMessage(
@@ -155,10 +149,10 @@ class Todo extends PureComponent {
                         'widgets.navbar.notes.placeholder',
                       )}
                       value={this.state.todo[index].value}
-                      onChange={(data) => this.setTodo(index, data)}
+                      onChange={(data) => this.updateTodo('set', index, data)}
                       readOnly={this.state.todo[index].done}
                     />
-                    <MdDelete onClick={() => this.removeTodo(index)} />
+                    <MdDelete onClick={() => this.updateTodo('remove', index)} />
                   </div>
                 ))}
               </div>
@@ -169,6 +163,7 @@ class Todo extends PureComponent {
     );
   }
 }
+
 export default function TodoWrapper() {
   const { x, y, reference, floating, strategy } = useFloating({
     placement: 'bottom',

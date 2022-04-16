@@ -4,7 +4,6 @@ import Tooltip from '../../../helpers/tooltip/Tooltip';
 import { toast } from 'react-toastify';
 import {
   MdArrowBack,
-  MdFavoriteBorder,
   MdIosShare,
   MdFlag,
   MdWarning,
@@ -20,7 +19,6 @@ import Modal from 'react-modal';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
 
-import Lightbox from './Lightbox';
 import ShareModal from '../../../helpers/sharemodal/ShareModal';
 
 export default class Item extends PureComponent {
@@ -111,7 +109,7 @@ export default class Item extends PureComponent {
         </Modal>
         <div className="flexTopMarketplace">
           <div className="returnButton">
-            <Tooltip title="back" key="cheese">
+            <Tooltip title="back" key="backArrow">
               <MdArrowBack className="backArrow" onClick={this.props.toggleFunction} />
             </Tooltip>
           </div>
@@ -197,7 +195,7 @@ export default class Item extends PureComponent {
                   <MdTranslate />
                   <div className="text">
                     <span className="header">Language</span>
-                    <span>English</span>
+                    <span>{this.props.data.data.language}</span>
                   </div>
                 </div>
               ) : null}
@@ -218,10 +216,10 @@ export default class Item extends PureComponent {
             />
             {this.props.button}
             <div className="iconButtons">
-              <Tooltip title="Share" key="cheese">
+              <Tooltip title="Share" key="share">
                 <MdIosShare onClick={() => this.setState({ shareModal: true })} />
               </Tooltip>
-              <Tooltip title="Report" key="cheese">
+              <Tooltip title="Report" key="report">
                 <MdFlag
                   onClick={() =>
                     window.open(

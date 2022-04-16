@@ -203,27 +203,27 @@ export default class Weather extends PureComponent {
             {enabled('showlocation') ? <span className="loc">{this.state.location}</span> : null}
           </div>
           <div className="expanded-info">
-          {enabled('upcomingForecast') ? (
-            <>
-            <span className="subtitle">Upcoming Forecast</span>
-            <div className="upcomingForecast">
-              <div>
-                <WeatherIcon name={this.state.icon} />
-                <span className="period">15:00</span>
-                <span className="minmax">{minmax()}</span>
-              </div>
-              <div>
-                <WeatherIcon name={this.state.icon} />
-                <span className="period">16:00</span>
-                <span className="minmax">{minmax()}</span>
-              </div>
-              <div>
-                <WeatherIcon name={this.state.icon} />
-                <span className="period">17:00</span>
-                <span className="minmax">{minmax()}</span>
-              </div>
-            </div>
-            </>
+            {enabled('upcomingForecast') ? (
+              <>
+                <span className="subtitle">Upcoming Forecast</span>
+                <div className="upcomingForecast">
+                  <div>
+                    <WeatherIcon name={this.state.icon} />
+                    <span className="period">15:00</span>
+                    <span className="minmax">{minmax()}</span>
+                  </div>
+                  <div>
+                    <WeatherIcon name={this.state.icon} />
+                    <span className="period">16:00</span>
+                    <span className="minmax">{minmax()}</span>
+                  </div>
+                  <div>
+                    <WeatherIcon name={this.state.icon} />
+                    <span className="period">17:00</span>
+                    <span className="minmax">{minmax()}</span>
+                  </div>
+                </div>
+              </>
             ) : null}
 
             <span className="subtitle">Extra Information</span>

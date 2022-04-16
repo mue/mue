@@ -13,6 +13,7 @@ import Stats from 'modules/helpers/stats';
 // language
 import I18n from '@eartharoid/i18n';
 
+// this is because of vite
 import * as de_DE from './translations/de_DE.json';
 import * as en_GB from './translations/en_GB.json';
 import * as en_US from './translations/en_US.json';

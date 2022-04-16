@@ -398,7 +398,7 @@ export default class Quote extends PureComponent {
         <span className="quote" ref={this.quote}>
           {this.state.quote}
         </span>
-        {(localStorage.getItem('widgetStyle') === 'legacy') ? (
+        {localStorage.getItem('widgetStyle') === 'legacy' ? (
           <>
             <div>
               <h1 className="quoteauthor" ref={this.quoteauthor}>
@@ -418,7 +418,7 @@ export default class Quote extends PureComponent {
           </>
         ) : (
           <>
-          {this.state.author !== '' ? (
+            {this.state.author !== '' ? (
               <div className="author-holder">
                 <div className="author">
                   <div
@@ -451,7 +451,9 @@ export default class Quote extends PureComponent {
                   </div>
                 </div>
               </div>
-          ) : <div ref={this.quoteauthor}></div> }
+            ) : (
+              <div ref={this.quoteauthor}></div>
+            )}
           </>
         )}
         {/*variables.keybinds.favouriteQuote && variables.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={variables.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null*/}

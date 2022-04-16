@@ -277,12 +277,12 @@ a.privacy {
 }
 
 @keyframes float-in {
-  0% { 
-    transform: translate(0,  30px); 
+  0% {
+    transform: translate(0, 30px);
     opacity: 0;
   }
-  100%   { 
-    transform: translate(0, 0px); 
+  100% {
+    transform: translate(0, 0px);
     opacity: 1;
-  }   
+  }
 }

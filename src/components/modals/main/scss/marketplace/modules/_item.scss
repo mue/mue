@@ -19,36 +19,44 @@ p.description {
   flex-wrap: wrap;
   width: calc(100% - 30px);
   gap: 15px;
+
   .items {
     margin-top: 0 !important;
   }
+
   .item {
     flex: 1 0 40% !important;
   }
+
   @include themed() {
     background: t($modal-sidebar);
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
     border-radius: t($borderRadius);
     padding: 15px;
+
     .infoItem {
       display: flex;
       flex-flow: row;
       align-items: center;
       gap: 15px;
       flex: 1 0 44%;
+
       svg {
         font-size: 25px;
         color: t($subColor);
       }
+
       .text {
         display: flex;
         flex-flow: column;
       }
     }
+
     .header {
       text-transform: uppercase;
       color: t($subColor);
     }
+
     span {
       color: t($color);
     }
@@ -58,6 +66,7 @@ p.description {
 .itemTitle {
   font-size: 38px;
   font-weight: 600;
+
   @include themed() {
     color: t($color);
   }
@@ -75,6 +84,7 @@ p.description {
   gap: 5px;
   transition: 0.5s;
   cursor: pointer;
+
   @include themed() {
     &:hover {
       color: t($subColor);

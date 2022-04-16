@@ -27,6 +27,7 @@ export default class Favourite extends PureComponent {
       variables.stats.postEvent('feature', 'Background favourite');
     } else {
       const type = localStorage.getItem('backgroundType');
+
       switch (type) {
         case 'colour':
           return;
@@ -86,8 +87,7 @@ export default class Favourite extends PureComponent {
   }
 
   render() {
-    const backgroundType = localStorage.getItem('backgroundType');
-    if (backgroundType === 'colour') {
+    if (localStorage.getItem('backgroundType') === 'colour') {
       return null;
     }
 

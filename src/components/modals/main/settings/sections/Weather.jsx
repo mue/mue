@@ -61,21 +61,6 @@ export default class TimeSettings extends PureComponent {
   render() {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
-    const tempFormat = [
-      {
-        name: getMessage('modals.main.settings.sections.weather.temp_format.celsius') + ' (°C)',
-        value: 'celsius',
-      },
-      {
-        name: getMessage('modals.main.settings.sections.weather.temp_format.fahrenheit') + ' (°F)',
-        value: 'fahrenheit',
-      },
-      {
-        name: getMessage('modals.main.settings.sections.weather.temp_format.kelvin') + ' (K)',
-        value: 'kelvin',
-      },
-    ];
-
     return (
       <>
         <Header
@@ -107,7 +92,28 @@ export default class TimeSettings extends PureComponent {
           </span>
         </SettingsItem>
         <SettingsItem title={getMessage('modals.main.settings.sections.weather.temp_format.title')}>
-          <Radio name="tempformat" options={tempFormat} category="weather" />
+          <Radio
+            name="tempformat"
+            options={[
+              {
+                name:
+                  getMessage('modals.main.settings.sections.weather.temp_format.celsius') + ' (°C)',
+                value: 'celsius',
+              },
+              {
+                name:
+                  getMessage('modals.main.settings.sections.weather.temp_format.fahrenheit') +
+                  ' (°F)',
+                value: 'fahrenheit',
+              },
+              {
+                name:
+                  getMessage('modals.main.settings.sections.weather.temp_format.kelvin') + ' (K)',
+                value: 'kelvin',
+              },
+            ]}
+            category="weather"
+          />
         </SettingsItem>
         {localStorage.getItem('weatherType') > 1 && (
           <SettingsItem title="Active bit" subtitle="idk a better word for it sorry">
@@ -203,21 +209,13 @@ export default class TimeSettings extends PureComponent {
           text={getMessage('modals.main.settings.sections.weather.extra_info.max_temp')}
           category="weather"
         />
-        <Checkbox 
-          name="feelsliketemp" 
-          text={'Feels like temperature'} 
-          category="weather" 
-        />
+        <Checkbox name="feelsliketemp" text={'Feels like temperature'} category="weather" />
         <Checkbox
           name="atmosphericpressure"
           text={getMessage('modals.main.settings.sections.weather.extra_info.atmospheric_pressure')}
           category="weather"
         />
-        <Checkbox
-          name="upcomingForecast"
-          text="Upcoming Forecast"
-          category="weather"
-        />
+        <Checkbox name="upcomingForecast" text="Upcoming Forecast" category="weather" />
       </>
     );
   }

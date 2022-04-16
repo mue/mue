@@ -25,23 +25,26 @@ export default class TimeSettings extends PureComponent {
 
     let timeSettings = null;
 
-    const digitalOptions = [
-      {
-        name: getMessage('modals.main.settings.sections.time.digital.twentyfourhour'),
-        value: 'twentyfourhour',
-      },
-      {
-        name: getMessage('modals.main.settings.sections.time.digital.twelvehour'),
-        value: 'twelvehour',
-      },
-    ];
-
     const digitalSettings = (
       <SettingsItem
         title={getMessage('modals.main.settings.sections.time.digital.title')}
         subtitle={getMessage('modals.main.settings.sections.time.format')}
       >
-        <Radio name="timeformat" options={digitalOptions} smallTitle={true} category="clock" />
+        <Radio
+          name="timeformat"
+          options={[
+            {
+              name: getMessage('modals.main.settings.sections.time.digital.twentyfourhour'),
+              value: 'twentyfourhour',
+            },
+            {
+              name: getMessage('modals.main.settings.sections.time.digital.twelvehour'),
+              value: 'twelvehour',
+            },
+          ]}
+          smallTitle={true}
+          category="clock"
+        />
         <Checkbox
           name="seconds"
           text={getMessage('modals.main.settings.sections.time.digital.seconds')}
@@ -132,10 +135,10 @@ export default class TimeSettings extends PureComponent {
           final={true}
         >
           <Switch
-            name='Pomodoro'
+            name="Pomodoro"
             text={getMessage('modals.main.settings.enabled')}
-            category='Pomodoro'
-            element='Pomodoro'
+            category="Pomodoro"
+            element="Pomodoro"
           />
           <Slider
             title="Work Length"
@@ -145,7 +148,7 @@ export default class TimeSettings extends PureComponent {
             min="5"
             max="60"
             marks={values('pomodoroWork')}
-            display={' ' + 'ms'}
+            display={' ms'}
           />
           <Slider
             title="Break Length"
@@ -155,7 +158,7 @@ export default class TimeSettings extends PureComponent {
             min="1"
             max="45"
             marks={values('pomodoroBreak')}
-            display={' ' + 'ms'}
+            display={' ms'}
           />
         </SettingsItem>
       </>

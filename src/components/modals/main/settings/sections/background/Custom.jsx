@@ -6,7 +6,6 @@ import EventBus from 'modules/helpers/eventbus';
 
 import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
-import SettingsItem from '../../SettingsItem';
 
 import Modal from 'react-modal';
 

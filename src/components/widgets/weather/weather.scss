@@ -12,6 +12,7 @@
   width: auto;
   display: grid;
   place-items: center;
+
   &:hover {
     height: auto;
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -26,6 +27,7 @@
   .extra-info {
     font-size: 18px;
     gap: 40px;
+
     @include themed() {
       color: t($weather);
     }
@@ -39,6 +41,7 @@
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
+
     span {
       display: flex;
       align-items: center;
@@ -50,16 +53,20 @@
   display: flex;
   justify-content: space-between;
   gap: 25px;
+
   div {
     align-items: center;
     display: flex;
+
     svg {
       font-size: 2em !important;
     }
+
     span {
       font-size: 34px;
     }
   }
+
   .minmax {
     display: flex;
     flex-flow: column;
@@ -79,10 +86,12 @@
     align-items: center;
     gap: 20px;
   }
+
   @include themed() {
     svg {
       color: t($subColor);
     }
+
     .weatherIcon {
       font-size: 1.4em;
       display: grid;
@@ -96,22 +105,27 @@
   width: 100%;
   justify-content: space-between;
   gap: 10px;
+
   div {
     @include themed() {
       border-radius: t($borderRadius);
       border: 1px solid t($btn-backgroundHover);
       padding: 5px;
       flex: 1;
+      
       svg {
         font-size: 36px;
       }
+
       span {
         justify-content: center;
       }
+
       .period {
         color: t($color);
         font-size: 15px;
       }
+      
       .minmax {
         margin-top: 5px;
         flex-flow: column;

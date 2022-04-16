@@ -1,3 +1,5 @@
+// one day it might be a good idea to replace all this with redux, but it'd take
+// a lot of rewriting
 export default class EventBus {
   static on(event, callback) {
     document.addEventListener(event, (e) => {

@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import Header from '../Header';
-import Text from '../Text';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import SettingsItem from '../SettingsItem';
 export default class ReminderSettings extends PureComponent {
@@ -45,45 +44,35 @@ export default class ReminderSettings extends PureComponent {
           zoomSetting="zoomReminder"
           switch={true}
         />
-        {/*<input
-          type="color"
-          name="colour"
-          className="colour"
-          onChange={(event) => this.updateColour(event)}
-          value={this.state.colour}
-        ></input>
-        <label htmlFor={'colour'} className="customBackgroundHex">
-          {this.state.colour}
-    </label>*/}
         <SettingsItem final={true} title="Add reminder" subtitle="Add reminder">
           <button onClick={() => this.addReminder()}>Add reminder</button>
         </SettingsItem>
         <div className="reminderSettingsHolder">
-            <div className="reminderSetting">
-              <div>
-                <div className="colorPicker">
-                  <input
-                    type="color"
-                    name="colour"
-                    className="colour"
-                    onChange={(event) => this.updateColour(event)}
-                    value={this.state.colour}
-                  ></input>
-                  <label htmlFor={'colour'} className="customBackgroundHex">
-                    {this.state.colour}
-                  </label>
-                </div>
-                <span className="link">
-                  <MdRemoveCircleOutline /> Remove
-                </span>
+          <div className="reminderSetting">
+            <div>
+              <div className="colorPicker">
+                <input
+                  type="color"
+                  name="colour"
+                  className="colour"
+                  onChange={(event) => this.updateColour(event)}
+                  value={this.state.colour}
+                ></input>
+                <label htmlFor={'colour'} className="customBackgroundHex">
+                  {this.state.colour}
+                </label>
               </div>
-              <div>
-                <span className="title">
-                  <input type="text" id="lname" placeholder="Name" />
-                </span>
-                <input type="date" required />
-              </div>
+              <span className="link">
+                <MdRemoveCircleOutline /> Remove
+              </span>
             </div>
+            <div>
+              <span className="title">
+                <input type="text" id="lname" placeholder="Name" />
+              </span>
+              <input type="date" required />
+            </div>
+          </div>
         </div>
       </>
     );

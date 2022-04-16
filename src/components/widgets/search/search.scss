@@ -5,12 +5,14 @@
   border-radius: 12px;
   justify-content: flex-start;
   flex-direction: row;
+
   input[type='text'] {
     @extend %basic;
     outline: none;
     border: none;
     font-size: 20px;
     padding: 10px 0 10px 20px;
+
     &::placeholder {
       @include themed() {
         color: t($color);
@@ -24,6 +26,7 @@
   gap: 10px;
   margin-top: 1px;
   margin-right: 10px;
+
   .tooltip {
     max-height: 44px;
   }
@@ -35,6 +38,7 @@
   left: 1rem;
   display: flex;
   flex-flow: column;
+
   button {
     @include basicIconButton(12px, 20px, ui);
   }
@@ -50,10 +54,12 @@
   font-size: 0.6em;
   width: 200px;
   transition: 0.5s;
+
   span {
     padding: 0.5rem;
     cursor: pointer;
     border-radius: 12px;
+
     &:hover {
       @include themed() {
         background: t($btn-backgroundHover);

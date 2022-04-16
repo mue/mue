@@ -68,7 +68,7 @@ export default class QuickLinks extends PureComponent {
 
     data.push({
       name: this.state.name || url,
-      url: url,
+      url,
       icon: this.state.icon || '',
       key: Math.random().toString(36).substring(7) + 1,
     });

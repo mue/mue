@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
+import { PureComponent } from 'react';
 import { MdSearch, MdMic, MdSettings } from 'react-icons/md';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 //import Hotkeys from 'react-hot-keys';
@@ -106,7 +106,7 @@ export default class Search extends PureComponent {
 
     if (localStorage.getItem('voiceSearch') === 'true') {
       microphone = (
-        <button onClick={this.startSpeechRecognition} id='micBtn'>
+        <button onClick={this.startSpeechRecognition} id="micBtn">
           <MdMic className="micIcon" />
         </button>
       );

@@ -1,8 +1,9 @@
+// this file is too long
 @import 'modules/item';
 @import 'modules/buttons';
 @import 'modules/featured';
 @import 'modules/lightbox';
-@import '../../../../../scss/variables';
+@import 'scss/variables';
 
 .items {
   display: flex;
@@ -188,11 +189,13 @@
   align-items: center;
   gap: 15px;
   min-width: 100px;
+
   @include themed() {
     padding: 45px;
     border-radius: t($borderRadius);
     background: t($modal-sidebar);
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
+
     svg {
       font-size: 50px;
       color: t($subColor);
@@ -288,6 +291,7 @@ p.author {
   }
 }
 
+// reminder to remove this url
 .collection {
   display: flex;
   justify-content: space-between;
@@ -296,22 +300,27 @@ p.author {
   background-image: linear-gradient(to left, transparent, #000),
     url('https://www.gonefullgeek.com/wp-content/uploads/2017/09/RDR2-Banner.jpg');
   align-items: center;
+
   @include themed() {
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
     border-radius: t($borderRadius);
   }
+
   .content {
     display: flex;
     flex-flow: column;
     gap: 15px;
     max-width: 250px;
+
     .title {
       color: #fff !important;
     }
+
     .subtitle {
       color: #ccc !important;
     }
   }
+
   .items {
     justify-content: center;
   }
@@ -321,16 +330,19 @@ p.author {
   button {
     padding: 0 15px 0 15px;
   }
+
   display: flex;
   justify-content: space-between;
   padding: 15px;
   margin-top: 15px;
   align-items: center;
+
   @include themed() {
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
     border-radius: t($borderRadius);
     background: t($modal-sidebar);
   }
+
   .content {
     display: flex;
     flex-flow: column;
@@ -346,16 +358,10 @@ p.author {
   flex-flow: column;
   gap: 15px;
   padding: 15px;
+
   @include themed() {
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
     border-radius: t($borderRadius);
   }
 }
 
-.starWars {
-  background-image: linear-gradient(to left, transparent, #000),
-    url(https://www.broadway.org.uk/sites/default/files/styles/banner_crop/public/2019-10/star-wars-the-rise-of-skywalker-banner-min.jpg?h=639d4ef1&itok=z4KZ-3Tt);
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-}

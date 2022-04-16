@@ -1,3 +1,7 @@
+// warning: this file is even worse than Background.jsx
+// if anyone wants to rewrite it to be actually decent, feel free
+// otherwise it will be cleaned up probably when alex asks me to add something here :(
+// - david
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import {
@@ -303,7 +307,10 @@ export default class Create extends PureComponent {
             onInput={(e) => setMetadata(e.target.value, 'screenshot_url')}
           />
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.addons.create.metadata.description')} final={true}>
+        <SettingsItem
+          title={getMessage('modals.main.addons.create.metadata.description')}
+          final={true}
+        >
           <TextField
             label={getMessage('modals.main.addons.create.metadata.description')}
             varient="outlined"

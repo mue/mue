@@ -1,5 +1,4 @@
 import variables from 'modules/variables';
-import { MdArrowForwardIos } from 'react-icons/md';
 import './preview.scss';
 
 export default function Preview(props) {

@@ -7,8 +7,6 @@ import { BiDonateHeart } from 'react-icons/bi';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
-import SettingsItem from '../SettingsItem';
-
 import other_contributors from 'modules/other_contributors.json';
 
 export default class About extends PureComponent {

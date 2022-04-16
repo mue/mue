@@ -2,8 +2,6 @@ import { PureComponent, Suspense, lazy } from 'react';
 
 import { convertTimezone } from 'modules/helpers/date';
 import EventBus from 'modules/helpers/eventbus';
-import { MdSkipNext, MdOutlineRestartAlt, MdPlayArrow } from 'react-icons/md';
-import Tooltip from '../../helpers/tooltip/Tooltip';
 
 import './clock.scss';
 import Pomodoro from './Pomodoro';
@@ -142,7 +140,10 @@ export default class Clock extends PureComponent {
           <span className="ampm">{this.state.ampm}</span>
         </span>
         {localStorage.getItem('Pomodoro') === 'true' ? (
-          <Pomodoro hours={this.state.nowGlobal.getHours} minutes={this.state.nowGlobal.getMinutes} />
+          <Pomodoro
+            hours={this.state.nowGlobal.getHours}
+            minutes={this.state.nowGlobal.getMinutes}
+          />
         ) : null}
       </>
     );

@@ -123,7 +123,7 @@ export default class SearchSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.search.search_engine')}
-          subtitle="cheese is gucci tbf"
+          subtitle="Choose search engine to use in the search bar"
         >
           <Dropdown
             label={this.getMessage('modals.main.settings.sections.search.search_engine')}

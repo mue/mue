@@ -1,3 +1,5 @@
+// since alex will no doubtedly be looking at this file often
+// here's a reminder: please add a new line when doing nested scss, otherwise it is messy!
 @use 'sass:map';
 @import 'mixins';
 
@@ -93,15 +95,20 @@ $themes: (
     color: t($color);
     box-shadow: t($boxShadow);
   }
+
   backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
+
   .title {
     font-size: 18px;
+
     @include themed() {
       color: t($color);
     }
   }
+
   .subtitle {
     font-size: 14px;
+  
     @include themed() {
       color: t($subColor);
     }
@@ -113,32 +120,40 @@ $themes: (
     font-size: 38px;
     font-weight: 600;
     margin-bottom: 15px;
+
     @include themed() {
       color: t($color);
     }
   }
+
   .title {
     font-size: 24px;
     font-weight: 600;
+
     @include themed() {
       color: t($color);
     }
   }
+
   .subtitle {
     font-size: 16px;
+
     @include themed() {
       color: t($subColor);
     }
   }
+
   .link {
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
+
     @include themed() {
       color: t($link);
     }
+
     &:hover {
-      opacity: 0.8;    
+      opacity: 0.8;
     }
   }
 }
@@ -149,10 +164,12 @@ $themes: (
       background: t($modal-sidebar);
       border: 3px solid t($modal-sidebarActive);
       color: t($color);
+
       &:hover {
         background: t($modal-sidebarActive);
       }
     }
+
     border-radius: 12px;
     height: 40px;
     font-size: 1rem;
@@ -163,17 +180,21 @@ $themes: (
     gap: 20px;
     transition: 0.5s;
     cursor: pointer;
+
     &:hover {
       background: t($modal-sidebarActive);
     }
+
     &:active {
       background: t($modal-sidebarActive);
       box-shadow: 0 0 0 1px t($color);
     }
+
     &:focus {
       background: t($modal-sidebarActive);
       box-shadow: 0 0 0 1px t($color);
     }
+
     &:disabled {
       background: t($modal-sidebarActive);
       cursor: not-allowed;
@@ -188,56 +209,69 @@ $themes: (
       color: t($color);
       box-shadow: t($boxShadow);
       border-radius: t($borderRadius);
+
       &:hover {
         background: t($btn-backgroundHover);
       }
+
       &:active {
         background: t($btn-backgroundHover);
         box-shadow: 0 0 0 1px t($color);
       }
+
       &:focus {
         background: t($btn-backgroundHover);
         box-shadow: 0 0 0 1px t($color);
       }
     }
+
     @if $type == 'modal-text' {
       color: t($color);
       background: none;
       border-radius: t($borderRadius);
+
       &:hover {
         background: t($modal-sidebarActive);
         box-shadow: 3px solid t($modal-sidebarActive);
       }
     }
+
     @if $type == 'modal' {
       background: t($modal-sidebar);
       border: 3px solid t($modal-sidebarActive);
       color: t($color);
       border-radius: t($borderRadius);
+
       &:hover {
         background: t($modal-sidebarActive);
       }
+
       &:active {
         background: t($modal-sidebarActive);
         box-shadow: 0 0 0 1px t($color);
       }
+
       &:focus {
         background: t($modal-sidebarActive);
         box-shadow: 0 0 0 1px t($color);
       }
     }
+
     @if $type == 'legacy' {
       background: none;
       color: #fff;
       border-radius: t($borderRadius);
       box-shadow: 0 0 0 0 !important;
+
       &:hover {
         background-color: rgb(66 66 66 / 23%);
       }
+
       &:active {
         background-color: rgb(66 66 66 / 23%);
         box-shadow: 0 0 0 1px t($color);
       }
+
       &:focus {
         background-color: rgb(66 66 66 / 23%);
         box-shadow: 0 0 0 1px t($color);
@@ -245,6 +279,7 @@ $themes: (
     }
   }
 
+  // this needs to be moved up!
   padding: $padding;
   font-size: $font-size;
   cursor: pointer;
@@ -259,6 +294,7 @@ $themes: (
   @include themed() {
     color: t($color);
   }
+
   &:hover {
     @include themed() {
       background: t($btn-background);
