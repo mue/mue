@@ -1,4 +1,5 @@
 // since there is so much code in the component, we have moved it to a separate file
+import offlineImages from './offlineImages.json';
 export function videoCheck(url) {
   return (
     url.startsWith('data:video/') ||
@@ -9,8 +10,6 @@ export function videoCheck(url) {
 }
 
 export function offlineBackground() {
-  const offlineImages = require('./offlineImages.json');
-
   // Get all photographers from the keys in offlineImages.json
   const photographers = Object.keys(offlineImages);
   const photographer = photographers[Math.floor(Math.random() * photographers.length)];

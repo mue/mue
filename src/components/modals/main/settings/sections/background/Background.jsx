@@ -207,7 +207,7 @@ export default class BackgroundSettings extends PureComponent {
           category="background"
           element="#backgroundImage"
         />
-        <SettingsItem title="cheese" subtitle="cheese">
+        <SettingsItem title="Display" subtitle="Change how background and photo information are loaded">
           <Checkbox
             name="ddgProxy"
             text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')}
@@ -237,7 +237,7 @@ export default class BackgroundSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={getMessage('modals.main.settings.sections.background.source.title')}
-          subtitle="mucho gracias"
+          subtitle="Source of background images"
         >
           <Dropdown
             label={getMessage('modals.main.settings.sections.background.type.title')}
@@ -273,7 +273,7 @@ export default class BackgroundSettings extends PureComponent {
         this.state.marketplaceEnabled ? (
           <SettingsItem
             title={getMessage('modals.main.settings.sections.background.effects.title')}
-            subtitle="cheese"
+            subtitle="Add effects to the background image"
           >
             <Slider
               title={getMessage('modals.main.settings.sections.background.effects.blur')}

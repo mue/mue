@@ -43,7 +43,7 @@ export default class Clock extends PureComponent {
           break;
         case 'analogue':
           // load analog clock css
-          require('react-clock/dist/Clock.css');
+          import('react-clock/dist/Clock.css');
 
           this.setState({
             time: now,

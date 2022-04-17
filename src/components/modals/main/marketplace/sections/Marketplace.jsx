@@ -300,7 +300,7 @@ export default class Marketplace extends PureComponent {
           <>
             <div className="flexTopMarketplace">
               <div className="returnButton">
-                <Tooltip title="back" key="cheese">
+                <Tooltip title="back" key="backArrow">
                   <MdArrowBack className="backArrow" onClick={() => this.returnToMain()} />
                 </Tooltip>
               </div>

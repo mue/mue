@@ -20,7 +20,7 @@ const renderLoader = (current) => (
         <div className="emptyMessage">
           <div className="loaderHolder">
             <div id="loader"></div>
-            <span className="subtitle">Loading</span>
+            <span className="subtitle">{variables.language.getMessage(variables.languagecode, 'modals.main.loading')}</span>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function MainModal({ modalClose }) {
       <Tooltip
         style={{ position: 'absolute', top: '3rem', right: '3rem' }}
         title="close"
-        key="cheese"
+        key="closeTooltip"
       >
         <span className="closeModal" onClick={modalClose}>
           <MdClose />

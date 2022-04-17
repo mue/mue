@@ -578,7 +578,7 @@ export default class Create extends PureComponent {
         <div className="flexTopMarketplace">
           {this.state.currentTab !== 1 && (
             <div className="returnButton">
-              <Tooltip title="Go back" key="cheese">
+              <Tooltip title="Go back" key="backArrow">
                 <MdArrowBack
                   className="backArrow"
                   onClick={() => this.changeTab(this.state.currentTab - 1)}

@@ -143,7 +143,7 @@ export default class SearchSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')}
-          subtitle="cheese"
+          subtitle="Search engine to use for autocomplete dropdown results"
         >
           <Radio options={autocompleteProviders} name="autocompleteProvider" category="search" />
         </SettingsItem>

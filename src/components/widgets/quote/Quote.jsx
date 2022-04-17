@@ -15,6 +15,8 @@ import { toast } from 'react-toastify';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import ShareModal from '../../helpers/sharemodal/ShareModal';
 
+import offline_quotes from './offline_quotes.json';
+
 import Interval from 'modules/helpers/interval';
 import EventBus from 'modules/helpers/eventbus';
 
@@ -81,10 +83,8 @@ export default class Quote extends PureComponent {
   }
 
   doOffline() {
-    const quotes = require('./offline_quotes.json');
-
-    // Get a random quote from our local package
-    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    // Get a random quote from our local JSON
+    const quote = offline_quotes[Math.floor(Math.random() * offline_quotes.length)];
 
     this.setState({
       quote: '"' + quote.quote + '"',
@@ -208,13 +208,14 @@ export default class Quote extends PureComponent {
           try {
             const data = await (await fetch(quotePackAPI.url)).json();
             const author = data[quotePackAPI.author] || quotePackAPI.author;
-            const authorimgdata = await this.getAuthorImg(author);
+            const installed = JSON.parse(localStorage.getItem('installed'));
+            // todo: make this actually get the correct quote pack, instead of the first available
+            const info = installed.find((i) => i.type === 'quotes');
 
             return this.setState({
               quote: '"' + data[quotePackAPI.quote] + '"',
               author,
-              authorimg: authorimgdata.authorimg,
-              authorimglicense: authorimgdata.authorimglicense,
+              authorimg: info.icon_url
             });
           } catch (e) {
             return this.doOffline();
@@ -228,14 +229,15 @@ export default class Quote extends PureComponent {
 
           if (quotePack) {
             const data = quotePack[Math.floor(Math.random() * quotePack.length)];
-            const authorimgdata = await this.getAuthorImg(data.author);
+            const installed = JSON.parse(localStorage.getItem('installed'));
+            // todo: make this actually get the correct quote pack, instead of the first available
+            const info = installed.find((i) => i.type === 'quotes');
 
             return this.setState({
               quote: '"' + data.quote + '"',
               author: data.author,
               authorlink: this.getAuthorLink(data.author),
-              authorimg: authorimgdata.authorimg,
-              authorimglicense: authorimgdata.authorimglicense,
+              authorimg: info.icon_url
             });
           } else {
             return this.doOffline();
