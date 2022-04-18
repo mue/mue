@@ -31,9 +31,10 @@ export default class Radio extends PureComponent {
         localStorage.getItem('tabName') ===
         variables.language.getMessage(variables.languagecode, 'tabname')
       ) {
+        // todo: fix this it doesn't work and shows as undefined
         localStorage.setItem(
           'tabName',
-          require(`translations/${value.replace('-', '_')}.json`).tabname,
+          import(`../../../../translations/${value.replace('-', '_')}.json`).tabname,
         );
       }
     }

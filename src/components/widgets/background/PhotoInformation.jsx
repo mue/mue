@@ -6,10 +6,10 @@ import {
   MdLocationOn,
   MdPhotoCamera,
   MdCrop as Resolution,
-  MdPerson as Photographer,
   MdGetApp as Download,
   MdVisibility as Views,
   MdIosShare as Share,
+  MdSource as Source,
 } from 'react-icons/md';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import ShareModal from '../../helpers/sharemodal/ShareModal';
@@ -312,8 +312,8 @@ export default function PhotoInformation({ info, url, api }) {
                   </span>
                 </div>
                 <div className="concept-row">
-                  <Photographer />
-                  <span>{photographer}</span>
+                  <Source/>
+                  <span id="infoSource">{api.charAt(0).toUpperCase() + api.slice(1)}</span>
                 </div>
               </div>
             </>
