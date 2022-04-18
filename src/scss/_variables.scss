@@ -108,7 +108,7 @@ $themes: (
 
   .subtitle {
     font-size: 14px;
-  
+
     @include themed() {
       color: t($subColor);
     }

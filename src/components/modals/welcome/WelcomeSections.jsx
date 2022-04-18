@@ -88,7 +88,7 @@ export default class WelcomeSections extends PureComponent {
     let welcomeImage = this.state.welcomeImage;
 
     this.setState({
-      welcomeImage: ++welcomeImage % this.welcomeImages.length,
+      welcomeImage: welcomeImage < 4 ? ++welcomeImage : 0,
     });
 
     this.timeout = setTimeout(this.changeWelcomeImg, 3000);
@@ -262,7 +262,7 @@ export default class WelcomeSections extends PureComponent {
         <p>{this.getMessage('modals.welcome.sections.final.description')}</p>
         <h3 className="quicktip">{this.getMessage('modals.welcome.sections.final.changes')}</h3>
         <p>{this.getMessage('modals.welcome.sections.final.changes_description')}</p>
-        <div className="themesToggleArea">
+        <div className="themesToggleArea themesToggleAreaWelcome">
           <div className="toggle" onClick={() => this.props.switchTab(1)}>
             <span>
               {this.getMessage('modals.main.settings.sections.language.title')}:{' '}

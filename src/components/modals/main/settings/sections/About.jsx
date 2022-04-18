@@ -23,8 +23,8 @@ export default class About extends PureComponent {
       loading: this.getMessage('modals.main.loading'),
       image:
         localStorage.getItem('theme') === 'dark'
-          ? './././icons/mue_dark.svg'
-          : './././icons/mue_light.svg',
+          ? 'public/icons/mue_dark.png'
+          : 'public/icons/mue_light.png',
     };
     this.controller = new AbortController();
   }
@@ -177,7 +177,12 @@ export default class About extends PureComponent {
             {this.getMessage('modals.main.settings.sections.about.contact_us')}
           </span>
           <div className="aboutContact">
-            <a class="donateButton" href="https://muetab.com/contact">
+            <a
+              class="donateButton"
+              href="https://muetab.com/contact"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MdContactPage />
               Form
             </a>

@@ -312,7 +312,7 @@ export default function PhotoInformation({ info, url, api }) {
                   </span>
                 </div>
                 <div className="concept-row">
-                  <Source/>
+                  <Source />
                   <span id="infoSource">{api.charAt(0).toUpperCase() + api.slice(1)}</span>
                 </div>
               </div>

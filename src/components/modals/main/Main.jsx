@@ -20,7 +20,9 @@ const renderLoader = (current) => (
         <div className="emptyMessage">
           <div className="loaderHolder">
             <div id="loader"></div>
-            <span className="subtitle">{variables.language.getMessage(variables.languagecode, 'modals.main.loading')}</span>
+            <span className="subtitle">
+              {variables.language.getMessage(variables.languagecode, 'modals.main.loading')}
+            </span>
           </div>
         </div>
       </div>

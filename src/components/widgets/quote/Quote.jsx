@@ -215,7 +215,7 @@ export default class Quote extends PureComponent {
             return this.setState({
               quote: '"' + data[quotePackAPI.quote] + '"',
               author,
-              authorimg: info.icon_url
+              authorimg: info.icon_url,
             });
           } catch (e) {
             return this.doOffline();
@@ -237,7 +237,7 @@ export default class Quote extends PureComponent {
               quote: '"' + data.quote + '"',
               author: data.author,
               authorlink: this.getAuthorLink(data.author),
-              authorimg: info.icon_url
+              authorimg: info.icon_url,
             });
           } else {
             return this.doOffline();

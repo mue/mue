@@ -13,7 +13,7 @@ import EventBus from 'modules/helpers/eventbus';
 
 // weather is lazy loaded due to the size of the weather icons module
 // since we're using react-icons this might not be accurate,
-// however, when we used the original module https://bundlephobia.com/package/weather-icons-react@1.2.0 
+// however, when we used the original module https://bundlephobia.com/package/weather-icons-react@1.2.0
 // as seen here it is ridiculously large
 const Weather = lazy(() => import('./weather/Weather'));
 const renderLoader = () => <></>;

@@ -207,7 +207,10 @@ export default class BackgroundSettings extends PureComponent {
           category="background"
           element="#backgroundImage"
         />
-        <SettingsItem title="Display" subtitle="Change how background and photo information are loaded">
+        <SettingsItem
+          title="Display"
+          subtitle="Change how background and photo information are loaded"
+        >
           <Checkbox
             name="ddgProxy"
             text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')}
