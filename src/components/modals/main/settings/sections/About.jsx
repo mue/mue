@@ -18,11 +18,11 @@ export default class About extends PureComponent {
       contributors: [],
       sponsors: [],
       other_contributors: [],
-      photographers: this.getMessage('modals.main.loading'),
+      photographers: [],
       update: this.getMessage('modals.main.settings.sections.about.version.checking_update'),
       loading: this.getMessage('modals.main.loading'),
       image:
-        localStorage.getItem('theme') === 'dark'
+        document.body.classList.contains('dark')
           ? 'public/icons/mue_dark.png'
           : 'public/icons/mue_light.png',
     };
@@ -178,7 +178,7 @@ export default class About extends PureComponent {
           </span>
           <div className="aboutContact">
             <a
-              class="donateButton"
+              className="donateButton"
               href="https://muetab.com/contact"
               target="_blank"
               rel="noopener noreferrer"
@@ -225,11 +225,11 @@ export default class About extends PureComponent {
             development
           </p>
           <div className="aboutContact">
-            <a class="donateButton" href={variables.constants.DONATE_LINK}>
+            <a className="donateButton" href={variables.constants.DONATE_LINK}>
               <BiDonateHeart />
               Donate
             </a>
-            <Tooltip title={'Github Sponsors'}>
+            <Tooltip title={'GitHub Sponsors'}>
               <a
                 href={'https://github.com/sponsors/' + variables.constants.SPONSORS_USERNAME}
                 target="_blank"
@@ -355,6 +355,7 @@ export default class About extends PureComponent {
           <span className="title">
             {this.getMessage('modals.main.settings.sections.about.photographers')}
           </span>
+          <p>{this.state.loading}</p>
           <span className="subtitle">{this.state.photographers}</span>
         </div>
       </>

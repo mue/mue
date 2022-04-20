@@ -269,19 +269,16 @@ export default function PhotoInformation({ info, url, api }) {
           {showExtraInfo || other ? (
             <>
               <div className="concept-buttons">
-                <Tooltip title="Share" key="other">
+                <Tooltip title="Share" key="share">
                   <Share onClick={() => copyImage(info)} />
                 </Tooltip>
-                <Tooltip title="Favourite" key="other">
+                <Tooltip title="Favourite" key="favourite">
                   <Favourite />
                 </Tooltip>
-                <Tooltip title="Download" key="other">
+                <Tooltip title="Download" key="download">
                   <Download onClick={() => downloadImage(info)} />
                 </Tooltip>
               </div>
-              <span className="subtitle" style={{ marginBottom: '20px' }}>
-                Description
-              </span>
               <div className="extra-content">
                 <span className="subtitle">
                   {variables.language.getMessage(
@@ -311,10 +308,10 @@ export default function PhotoInformation({ info, url, api }) {
                     {width}x{height}
                   </span>
                 </div>
-                <div className="concept-row">
+                {api ? <div className="concept-row">
                   <Source />
                   <span id="infoSource">{api.charAt(0).toUpperCase() + api.slice(1)}</span>
-                </div>
+                </div> : null}
               </div>
             </>
           ) : null}

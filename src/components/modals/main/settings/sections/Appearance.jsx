@@ -22,7 +22,7 @@ export default function AppearanceSettings() {
           <span className="title">
             {getMessage('modals.main.settings.sections.appearance.theme.title')}
           </span>
-          <span className="subtitle">subtitle</span>
+          <span className="subtitle">Change the theme of the Mue widgets and modals</span>
         </div>
         <div className="action">
           <Radio
@@ -50,7 +50,7 @@ export default function AppearanceSettings() {
           <span className="title">
             {getMessage('modals.main.settings.sections.appearance.font.title')}
           </span>
-          <span className="subtitle">subtitle</span>
+          <span className="subtitle">Change the font used in Mue</span>
         </div>
         <div className="action">
           <Checkbox

@@ -70,7 +70,7 @@ export default class AdvancedSettings extends PureComponent {
         ) : null}
         <SettingsItem
           title={getMessage('modals.main.settings.sections.advanced.timezone.title')}
-          subtitle="Choose a timezone from a list of hundreds instead of the automatic default."
+          subtitle="Choose a timezone from a list instead of the automatic default from your computer."
         >
           <Dropdown name="timezone" category="timezone" manual={true}>
             <MenuItem value="auto">

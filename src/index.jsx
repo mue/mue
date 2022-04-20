@@ -27,7 +27,7 @@ import * as id_ID from './translations/id_ID.json';
 
 const languagecode = localStorage.getItem('language') || 'en_GB';
 
-// we set things to window. so we avoid passing the translation strings as props to each component
+// we set things to variables. so we avoid passing the translation strings etc as props to each component
 variables.languagecode = languagecode.replace('-', '_');
 
 if (languagecode === 'en') {

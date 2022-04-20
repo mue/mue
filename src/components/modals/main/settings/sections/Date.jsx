@@ -17,8 +17,6 @@ export default class DateSettings extends PureComponent {
   render() {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
-    let dateSettings;
-
     const longSettings = (
       <>
         <Dropdown label="Long Format" name="longFormat" category="date">
@@ -72,12 +70,6 @@ export default class DateSettings extends PureComponent {
       </>
     );
 
-    if (this.state.dateType === 'long') {
-      dateSettings = longSettings;
-    } else {
-      dateSettings = shortSettings;
-    }
-
     return (
       <>
         <Header
@@ -113,7 +105,7 @@ export default class DateSettings extends PureComponent {
             text={getMessage('modals.main.settings.sections.time.digital.zero')}
             category="date"
           />
-          {dateSettings}
+          {(this.state.dateType === 'long') ? longSettings : shortSettings}
         </SettingsItem>
       </>
     );

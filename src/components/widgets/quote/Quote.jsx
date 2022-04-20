@@ -90,6 +90,7 @@ export default class Quote extends PureComponent {
       quote: '"' + quote.quote + '"',
       author: quote.author,
       authorlink: this.getAuthorLink(quote.author),
+      authorimg: ''
     });
   }
 
