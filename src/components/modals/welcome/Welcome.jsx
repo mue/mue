@@ -120,15 +120,6 @@ export default class WelcomeModal extends PureComponent {
             />
           </div>
           <div className="buttons">
-            {this.state.currentTab === 0 ? (
-              <button
-                className="close"
-                style={{ marginRight: '20px' }}
-                onClick={() => this.props.modalSkip()}
-              >
-                {this.getMessage('modals.welcome.buttons.preview')}
-              </button>
-            ) : null}
             {this.state.currentTab !== 0 ? (
               <button
                 className="close"
@@ -137,7 +128,15 @@ export default class WelcomeModal extends PureComponent {
               >
                 {this.getMessage('modals.welcome.buttons.previous')}
               </button>
-            ) : null}
+            ) : (
+              <button
+                className="close"
+                style={{ marginRight: '20px' }}
+                onClick={() => this.props.modalSkip()}
+              >
+                {this.getMessage('modals.welcome.buttons.preview')}
+              </button>
+            )}
             <button className="close" onClick={() => this.changeTab()}>
               {this.state.buttonText}
             </button>

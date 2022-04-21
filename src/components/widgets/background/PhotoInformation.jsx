@@ -12,6 +12,7 @@ import {
   MdSource as Source,
 } from 'react-icons/md';
 import Tooltip from '../../helpers/tooltip/Tooltip';
+import Modal from 'react-modal';
 import ShareModal from '../../helpers/sharemodal/ShareModal';
 //import Hotkeys from 'react-hot-keys';
 import { toast } from 'react-toastify';
@@ -50,6 +51,7 @@ export default function PhotoInformation({ info, url, api }) {
   const [showExtraInfo, setshowExtraInfo] = useState(false);
   const [showOld, setShowOld] = useState(true);
   const [other, setOther] = useState(false);
+  const [shareModal, openShareModal] = useState(false);
 
   if (info.hidden === true || !info.credit) {
     return null;
@@ -199,6 +201,19 @@ export default function PhotoInformation({ info, url, api }) {
       onMouseEnter={() => setOther(true)}
       onMouseLeave={() => setOther(false)}
     >
+      <Modal
+        closeTimeoutMS={300}
+        isOpen={shareModal}
+        className="Modal mainModal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+        onRequestClose={() => openShareModal(false)}
+      >
+        <ShareModal
+          data={info.url}
+          modalClose={() => openShareModal(false)}
+        />
+      </Modal>
       {localStorage.getItem('widgetStyle') === 'legacy' && (
         <div className="photoInformation-legacy">
           <MdInfo />
@@ -270,7 +285,7 @@ export default function PhotoInformation({ info, url, api }) {
             <>
               <div className="concept-buttons">
                 <Tooltip title="Share" key="share">
-                  <Share onClick={() => copyImage(info)} />
+                  <Share onClick={() => openShareModal(true)} />
                 </Tooltip>
                 <Tooltip title="Favourite" key="favourite">
                   <Favourite />
@@ -308,10 +323,12 @@ export default function PhotoInformation({ info, url, api }) {
                     {width}x{height}
                   </span>
                 </div>
-                {api ? <div className="concept-row">
-                  <Source />
-                  <span id="infoSource">{api.charAt(0).toUpperCase() + api.slice(1)}</span>
-                </div> : null}
+                {api ? (
+                  <div className="concept-row">
+                    <Source />
+                    <span id="infoSource">{api.charAt(0).toUpperCase() + api.slice(1)}</span>
+                  </div>
+                ) : null}
               </div>
             </>
           ) : null}

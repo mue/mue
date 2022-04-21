@@ -8,12 +8,12 @@ import { toast } from 'react-toastify';
 
 import './sharemodal.scss';
 
-export default function ShareModal({ modalClose, data }) {
+export default function ShareModal({ modalClose, data, type }) {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   const url = variables.constants.MARKETPLACE_URL + '/share/' + btoa(data.api_name);
 
   const copyLink = () => {
-    navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(data);
     toast('Link copied!');
   };
 
@@ -33,7 +33,7 @@ export default function ShareModal({ modalClose, data }) {
             onClick={() =>
               window
                 .open(
-                  `https://twitter.com/intent/tweet?text=Check out ${data.data.name} on @getmue marketplace: ${url}`,
+                  `https://twitter.com/intent/tweet?text=Check out ${data.data.name} on @getmue marketplace: ${data}`,
                   '_blank',
                 )
                 .focus()
@@ -45,7 +45,7 @@ export default function ShareModal({ modalClose, data }) {
         <Tooltip title="Facebook">
           <button
             onClick={() =>
-              window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank').focus()
+              window.open(`https://www.facebook.com/sharer/sharer.php?u=${data}`, '_blank').focus()
             }
           >
             <FaFacebookF />
@@ -59,7 +59,7 @@ export default function ShareModal({ modalClose, data }) {
                   'mailto:email@example.com?subject=Check%20out%20this%20Mue%20addon!&body=' +
                     data.data.name +
                     'on Mue: ' +
-                    url,
+                    data,
                   '_blank',
                 )
                 .focus()
@@ -76,7 +76,7 @@ export default function ShareModal({ modalClose, data }) {
             onClick={() =>
               window
                 .open(
-                  `https://api.qrserver.com/v1/create-qr-code/?size=154x154&data=${url}`,
+                  `https://api.qrserver.com/v1/create-qr-code/?size=154x154&data=${data}`,
                   '_blank',
                 )
                 .focus()
@@ -89,7 +89,7 @@ export default function ShareModal({ modalClose, data }) {
           <button
             onClick={() =>
               window
-                .open(`http://connect.qq.com/widget/shareqq/index.html?url=${url}`, '_blank')
+                .open(`http://connect.qq.com/widget/shareqq/index.html?url=${data}`, '_blank')
                 .focus()
             }
           >
@@ -98,7 +98,7 @@ export default function ShareModal({ modalClose, data }) {
         </Tooltip>
       </div>
       <div className="copy">
-        <input type="text" value={url} className="left field" readOnly />
+        <input type="text" value={data} className="left field" readOnly />
         <Tooltip title="Copy link" placement="top">
           <button onClick={() => copyLink()}>
             <MdContentCopy />

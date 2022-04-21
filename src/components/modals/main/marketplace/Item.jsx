@@ -103,7 +103,7 @@ export default class Item extends PureComponent {
           onRequestClose={() => this.setState({ shareModal: false })}
         >
           <ShareModal
-            data={this.props.data}
+            data={variables.constants.MARKETPLACE_URL + '/share/' + btoa(this.props.data.api_name)}
             modalClose={() => this.setState({ shareModal: false })}
           />
         </Modal>
