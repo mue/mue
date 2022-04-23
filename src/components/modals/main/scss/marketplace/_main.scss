@@ -6,17 +6,16 @@
 @import 'scss/variables';
 
 .items {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
   margin-top: 15px;
 
   .item {
     position: relative;
     border-radius: 12px;
     height: 70px;
-    width: 260px;
+    width: auto;
     padding: 10px;
     cursor: pointer;
     display: flex;
@@ -181,24 +180,6 @@
   }
 }
 
-@media (max-width: 1920px) {
-  .items {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 1680px) and (min-width: 1500px) {
-  .items {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 1440px) {
-  .items {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
 .emptyItems {
   width: 100%;
   height: 100%;
@@ -246,11 +227,6 @@ p.author {
   overflow-x: hidden;
 }
 
-@media (max-height: 1080px) {
-  .dropdownsortAddons {
-    margin-top: 40px !important;
-  }
-}
 
 .returnButton {
   display: grid;

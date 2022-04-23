@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 //import Hotkeys from 'react-hot-keys';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
+import Modal from 'react-modal';
 import ShareModal from '../../helpers/sharemodal/ShareModal';
 
 import offline_quotes from './offline_quotes.json';
@@ -21,12 +22,13 @@ import Interval from 'modules/helpers/interval';
 import EventBus from 'modules/helpers/eventbus';
 
 import './quote.scss';
+import { getInitColorSchemeScript } from '@mui/material';
 
 export default class Quote extends PureComponent {
   buttons = {
     share: (
       <Tooltip title="Share">
-        <button onClick={() => this.shareQuote()}>
+        <button onClick={() => this.setState({ shareModal: true })}>
           <MdIosShare className="copyButton" />
         </button>
       </Tooltip>
@@ -90,7 +92,7 @@ export default class Quote extends PureComponent {
       quote: '"' + quote.quote + '"',
       author: quote.author,
       authorlink: this.getAuthorLink(quote.author),
-      authorimg: ''
+      authorimg: '',
     });
   }
 
@@ -398,6 +400,16 @@ export default class Quote extends PureComponent {
   render() {
     return (
       <div className="quotediv" ref={this.quotediv}>
+        <Modal
+          closeTimeoutMS={300}
+          isOpen={this.state.shareModal}
+          className="Modal mainModal"
+          overlayClassName="Overlay"
+          ariaHideApp={false}
+          onRequestClose={() => this.setState({ shareModal: false })}
+        >
+          <ShareModal data={`${this.state.quote} - ${this.state.author}`} modalClose={() => this.setState({ shareModal: false })} />
+        </Modal>
         <span className="quote" ref={this.quote}>
           {this.state.quote}
         </span>
