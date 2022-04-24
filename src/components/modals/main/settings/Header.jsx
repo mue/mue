@@ -35,13 +35,14 @@ export default class Header extends PureComponent {
         {this.props.switch ? (
           <SettingsItem
             title={getMessage('modals.main.settings.enabled')}
-            subtitle={getMessage('modals.main.settings.enabled')}
+            subtitle='Choose whether or not to show this widget'
           >
             <Switch
               name={this.props.setting}
               text={getMessage('modals.main.settings.enabled')}
               category={this.props.category}
               element={this.props.element || null}
+              header={true}
             />
           </SettingsItem>
         ) : null}

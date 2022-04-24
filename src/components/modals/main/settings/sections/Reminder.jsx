@@ -3,6 +3,7 @@ import { PureComponent } from 'react';
 import Header from '../Header';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import SettingsItem from '../SettingsItem';
+
 export default class ReminderSettings extends PureComponent {
   constructor() {
     super();

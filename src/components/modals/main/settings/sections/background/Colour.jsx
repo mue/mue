@@ -81,14 +81,14 @@ export default class ColourSettings extends PureComponent {
     const newValue = event.target.value;
     const name = event.target.name;
     this.setState((s) => {
-      return (newState = {
+      return {
         gradientSettings: {
           ...s.gradientSettings,
           gradient: s.gradientSettings.gradient.map((g, i) =>
             i === index ? { ...g, [name]: newValue } : g,
           ),
         },
-      });
+      };
     });
 
     this.showReminder();

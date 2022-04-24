@@ -47,7 +47,7 @@ export default class Switch extends PureComponent {
               onChange={this.handleChange}
             />
           }
-          label={this.props.text}
+          label={this.props.header ? '' : this.props.text}
           labelPlacement="start"
         />
       </>

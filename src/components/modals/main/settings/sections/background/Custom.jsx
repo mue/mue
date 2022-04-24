@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 import { toast } from 'react-toastify';
 import { MdCancel, MdAddLink, MdAddPhotoAlternate, MdPersonalVideo } from 'react-icons/md';
 import EventBus from 'modules/helpers/eventbus';
@@ -20,6 +20,7 @@ export default class CustomSettings extends PureComponent {
       customBackground: this.getCustom(),
       customURLModal: false,
     };
+    this.customDnd = createRef(null);
   }
 
   resetCustom = () => {
@@ -122,6 +123,27 @@ export default class CustomSettings extends PureComponent {
     this.customBackground({ target: { value: e } }, true, this.state.customBackground.length);
   }
 
+  componentDidMount() {
+    const dnd = this.customDnd.current;
+    dnd.ondragover = dnd.ondragenter = (e) => {
+      e.preventDefault();
+    }
+
+    dnd.ondrop = (e) => {
+      e.preventDefault();
+      const file = e.dataTransfer.files[0];
+      const reader = new FileReader();
+      if (file.size > 2000000) {
+        return toast(this.getMessage('modals.main.file_upload_error'));
+      }
+      reader.onload = (e) => {
+        this.customBackground(e, false, this.state.customBackground.length);
+      };
+      reader.readAsDataURL(file);
+      e.preventDefault();
+    }
+  }
+
   render() {
     return (
       <>
@@ -150,7 +172,7 @@ export default class CustomSettings extends PureComponent {
           </div>
           <div className="action">
             {/*<button onClick={() => this.uploadCustomBackground()}>{this.getMessage('modals.main.settings.sections.background.source.add_background')} <MdAddPhotoAlternate/></button>*/}
-            <div className="dropzone">
+            <div className="dropzone" ref={this.customDnd}>
               <MdAddPhotoAlternate />
               <span className="title">Drop to upload</span>
               <span className="subtitle">

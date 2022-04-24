@@ -103,6 +103,13 @@ export default class Quote extends PureComponent {
   }
 
   async getAuthorImg(author) {
+    if (localStorage.getItem('authorImg') === 'false') { 
+      return {
+        authorimg: null,
+        authorimglicense: null
+      }
+    }
+
     const authorimgdata = await (
       await fetch(
         `https://en.wikipedia.org/w/api.php?action=query&titles=${author}&origin=*&prop=pageimages&format=json&pithumbsize=100`,
@@ -438,7 +445,7 @@ export default class Quote extends PureComponent {
                     <span className="author-license">{this.state.authorimglicense}</span>
                   </div>
                   <div className="quote-buttons">
-                    {this.state.authorOccupation !== 'Unknown' ? (
+                    {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== '' ? (
                       <Tooltip title="Open On Wikipedia">
                         <a
                           href={this.state.authorlink}

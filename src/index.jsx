@@ -1,4 +1,5 @@
 import { render } from 'react-dom';
+import * as Sentry from '@sentry/react';
 
 import App from './App';
 import variables from 'modules/variables';
@@ -59,5 +60,11 @@ if (localStorage.getItem('stats') === 'true') {
 /*if (localStorage.getItem('keybindsEnabled') === 'true') {
   variables.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
 }*/
+
+Sentry.init({
+  dsn: variables.constants.SENTRY_DSN,
+  defaultIntegrations: false,
+  autoSessionTracking: false
+});
 
 render(<App />, document.getElementById('root'));

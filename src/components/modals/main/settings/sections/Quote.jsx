@@ -209,6 +209,11 @@ export default class QuoteSettings extends PureComponent {
             text={this.getMessage('modals.main.settings.sections.quote.author_link')}
             element=".other"
           />
+          <Checkbox
+            name="authorImg"
+            text='Show author image'
+            element=".other"
+          />
         </SettingsItem>
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.background.type.title')}
