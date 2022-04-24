@@ -18,7 +18,7 @@ export default function ShareModal({ modalClose, data, type }) {
   };
 
   return (
-    <div className="shareModal">
+    <div className="smallModal">
       <div className="shareHeader">
         <span className="title">Share</span>
         <Tooltip title="Close">

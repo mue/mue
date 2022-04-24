@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { MdClose, MdRestartAlt } from 'react-icons/md';
 import { setDefaultSettings } from 'modules/helpers/settings';
+import Tooltip from '../../../helpers/tooltip/Tooltip';
 
 export default function ResetModal({ modalClose }) {
   const reset = () => {
@@ -10,27 +11,33 @@ export default function ResetModal({ modalClose }) {
   };
 
   return (
-    <div className="resetModal">
-      <span className="mainTitle" style={{ textAlign: 'center' }}>
+    <div className="smallModal">
+      <div className="shareHeader">
+        <span className="title">         
         {variables.language.getMessage(
           variables.languagecode,
           'modals.main.settings.sections.advanced.reset_modal.title',
-        )}
-      </span>
+        )}</span>
+        <Tooltip title="Close">
+          <div className="close" onClick={modalClose}>
+            <MdClose />
+          </div>
+        </Tooltip>
+      </div>
       <span className="title">
         {variables.language.getMessage(
           variables.languagecode,
           'modals.main.settings.sections.advanced.reset_modal.question',
         )}
       </span>
-      <span style={{ maxWidth: '450px' }} className="subtitle">
+      <span className="subtitle">
         {variables.language.getMessage(
           variables.languagecode,
           'modals.main.settings.sections.advanced.reset_modal.information',
         )}
       </span>
       <div className="resetFooter">
-        <button onClick={modalClose}>
+        <button className='textButton' onClick={modalClose}>
           <MdClose />
           Close
         </button>

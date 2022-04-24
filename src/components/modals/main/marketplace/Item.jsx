@@ -217,10 +217,12 @@ export default class Item extends PureComponent {
             {this.props.button}
             <div className="iconButtons">
               <Tooltip title="Share" key="share">
-                <MdIosShare onClick={() => this.setState({ shareModal: true })} />
+                <button onClick={() => this.setState({ shareModal: true })}>
+                  <MdIosShare />
+                </button>
               </Tooltip>
               <Tooltip title="Report" key="report">
-                <MdFlag
+                <button
                   onClick={() =>
                     window.open(
                       variables.constants.REPORT_ITEM +
@@ -228,7 +230,9 @@ export default class Item extends PureComponent {
                       '_blank',
                     )
                   }
-                />
+                >
+                  <MdFlag />
+                </button>
               </Tooltip>
             </div>
             {this.props.data.data.collection ? (

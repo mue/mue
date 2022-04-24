@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdLocalMall } from 'react-icons/md';
+import { MdLocalMall, MdUpdate } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 import Item from '../Item';
@@ -150,20 +150,22 @@ export default class Added extends PureComponent {
 
     return (
       <>
-        <Dropdown
-          label={this.getMessage('modals.main.addons.sort.title')}
-          name="sortAddons"
-          onChange={(value) => this.sortAddons(value)}
-        >
-          <option value="newest">{this.getMessage('modals.main.addons.sort.newest')}</option>
-          <option value="oldest">{this.getMessage('modals.main.addons.sort.oldest')}</option>
-          <option value="a-z">{this.getMessage('modals.main.addons.sort.a_z')}</option>
-          <option value="z-a">{this.getMessage('modals.main.addons.sort.z_a')}</option>
-        </Dropdown>
-        <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
-          {this.getMessage('modals.main.addons.check_updates')}
-        </button>
-        <br />
+        <span className="mainTitle">{this.getMessage('modals.main.addons.added')}</span>
+        <div className="filter">
+          <Dropdown
+            label={this.getMessage('modals.main.addons.sort.title')}
+            name="sortAddons"
+            onChange={(value) => this.sortAddons(value)}
+          >
+            <option value="newest">{this.getMessage('modals.main.addons.sort.newest')}</option>
+            <option value="oldest">{this.getMessage('modals.main.addons.sort.oldest')}</option>
+            <option value="a-z">{this.getMessage('modals.main.addons.sort.a_z')}</option>
+            <option value="z-a">{this.getMessage('modals.main.addons.sort.z_a')}</option>
+          </Dropdown>
+          <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
+            <MdUpdate />{this.getMessage('modals.main.addons.check_updates')}
+          </button>
+        </div>
         <Items
           items={this.state.installed}
           toggleFunction={(input) => this.toggle('item', input)}

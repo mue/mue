@@ -93,6 +93,8 @@
     flex-flow: column;
     gap: 15px;
     width: 170px;
+    box-sizing: border-box !important;
+
 
     img {
       width: 100%;
@@ -112,12 +114,13 @@
     }
 
     .iconButtons {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-
-      svg {
-        @include basicIconButton(11px, 1.3rem, modal);
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr; 
+      grid-gap: 20px;
+      button {
+        width: 100%;
+        padding: 0;
       }
     }
   }
@@ -283,6 +286,7 @@ p.author {
   padding: 15px;
   gap: 15px;
   justify-content: space-between;
+  align-items: center;
 
   @include themed() {
     background: t($modal-sidebar);
@@ -301,8 +305,10 @@ p.author {
   justify-content: space-between;
   padding: 15px;
   margin-top: 15px;
+  background-size: fill;
+  background-position: center;
   background-image: linear-gradient(to left, transparent, #000),
-    url('https://www.gonefullgeek.com/wp-content/uploads/2017/09/RDR2-Banner.jpg');
+    url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
   align-items: center;
 
   @include themed() {
@@ -357,7 +363,7 @@ p.author {
 
 .inCollection {
   background-image: linear-gradient(to left, transparent, #000),
-    url('https://www.gonefullgeek.com/wp-content/uploads/2017/09/RDR2-Banner.jpg');
+    url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
   display: flex;
   flex-flow: column;
   gap: 15px;
@@ -366,5 +372,16 @@ p.author {
   @include themed() {
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
     border-radius: t($borderRadius);
+  }
+}
+
+.createYourOwn {
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 30px;
+  svg {
+    font-size: 30px; 
   }
 }
