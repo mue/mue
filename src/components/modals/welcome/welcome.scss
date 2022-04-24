@@ -1,6 +1,10 @@
 @import '../main/scss/index.scss';
 @import 'scss/variables';
 
+.welcomeContent {
+  height: 100%;
+}
+
 .welcomemodal {
   position: absolute;
   margin: auto;
@@ -8,14 +12,15 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: 80%;
-  width: 60%;
+  height: 90vh;
+  width: clamp(60vw, 1400px, 90vw);
   padding: 0;
+  overflow-x: hidden !important;
 
   section {
     width: 50%;
     display: inline;
-    height: 80vh;
+    height: 100%;
   }
 
   section:nth-child(1) {
@@ -200,7 +205,7 @@ a.privacy {
   align-items: center;
 
   img {
-    width: 30rem !important;
+    width: clamp(20rem, 300px, 40rem);
     height: auto !important;
     display: block;
     margin: 30px;
@@ -208,58 +213,7 @@ a.privacy {
   }
 }
 
-@media (max-width: 1820px) and (min-width: 1200px) {
-  .welcomemodal {
-    width: 85%;
-    height: 90%;
-  }
 
-  section {
-    height: 90vh !important;
-  }
-}
-
-@media (max-width: 1300px) {
-  .welcomemodal {
-    overflow-x: hidden !important;
-  }
-
-  .examples img {
-    width: 20rem !important;
-  }
-
-  .buttons {
-    position: relative !important;
-    bottom: 1rem !important;
-    right: -1rem !important;
-  }
-
-  section {
-    height: 100vh !important;
-  }
-}
-
-@media (max-width: 1190px) {
-  .welcomemodal {
-    width: 90%;
-    height: 90%;
-  }
-}
-
-@media (max-width: 800px) {
-  .welcomemodal {
-    width: 100%;
-    height: 100%;
-  }
-
-  .examples img {
-    width: 15rem !important;
-  }
-
-  section {
-    height: 140vh !important;
-  }
-}
 
 .createButtons {
   display: flex;
