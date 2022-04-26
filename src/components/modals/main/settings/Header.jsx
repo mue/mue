@@ -17,7 +17,11 @@ export default class Header extends PureComponent {
       <>
         <span className="mainTitle">{this.props.title}</span>
         <div className="headerExtras">
-          <span className="link">
+          <span className="link"  onClick={() =>
+              window.open(
+                variables.constants.KNOWLEDGEBASE + '/' + this.props.setting.toLowerCase().replace('enabled', ''),
+                '_blank',
+              )}>
             <MdHelpOutline /> More Info
           </span>
           <span
@@ -65,26 +69,4 @@ export default class Header extends PureComponent {
       </>
     );
   }
-}
-
-{
-  /*<div className="settingsRow">
-            <div className="content">
-              <span className="title">
-                {getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')}
-              </span>
-              <span className="subtitle">eeeh course</span>
-            </div>
-            <div className="action">
-              <Slider
-                name={this.props.zoomSetting}
-                min="10"
-                max="400"
-                default="100"
-                display="%"
-                marks={values('zoom')}
-                category={this.props.zoomCategory || this.props.category}
-              />
-            </div>
-        </div>*/
 }

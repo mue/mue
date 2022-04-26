@@ -1,11 +1,23 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdChecklist, MdPushPin, MdDelete, MdPlaylistAdd } from 'react-icons/md';
+import { MdChecklist, MdPushPin, MdDelete, MdPlaylistAdd,  MdOutlineDragIndicator} from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
 //import Hotkeys from 'react-hot-keys';
+import { sortableContainer, sortableElement } from 'react-sortable-hoc';
+
+const SortableItem = sortableElement(({ value }) => (
+  <li>
+    {value}
+    <MdOutlineDragIndicator />
+  </li>
+));
+
+const SortableContainer = sortableContainer(({ children }) => (
+  <ul>{children}</ul>
+));
 
 class Todo extends PureComponent {
   constructor() {
@@ -22,6 +34,20 @@ class Todo extends PureComponent {
       showTodo: localStorage.getItem('todoPinned') === 'true',
     };
   }
+
+  arrayMove(array, oldIndex, newIndex) {
+    const result = Array.from(array);
+    const [removed] = result.splice(oldIndex, 1);
+    result.splice(newIndex, 0, removed);
+
+    return result;
+  }
+
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState({
+      todo: this.arrayMove(this.state.todo, oldIndex, newIndex),
+    });
+  };
 
   showTodo() {
     this.setState({
@@ -134,27 +160,42 @@ class Todo extends PureComponent {
                 </Tooltip>
               </div>
               <div className={'todoRows'}>
-                {this.state.todo.map((_value, index) => (
-                  <div
-                    className={'todoRow' + (this.state.todo[index].done ? ' done' : '')}
-                    key={index}
-                  >
-                    <Checkbox
-                      checked={this.state.todo[index].done}
-                      onClick={() => this.updateTodo('done', index)}
-                    />
-                    <TextareaAutosize
-                      placeholder={variables.language.getMessage(
-                        variables.languagecode,
-                        'widgets.navbar.notes.placeholder',
-                      )}
-                      value={this.state.todo[index].value}
-                      onChange={(data) => this.updateTodo('set', index, data)}
-                      readOnly={this.state.todo[index].done}
-                    />
-                    <MdDelete onClick={() => this.updateTodo('remove', index)} />
-                  </div>
-                ))}
+                <SortableContainer
+                  onSortEnd={this.onSortEnd}
+                  lockAxis="y"
+                  lockToContainerEdges
+                  disableAutoscroll
+                >
+                  {this.state.todo.map((_value, index) => (
+                    <div
+                      className={'todoRow' + (this.state.todo[index].done ? ' done' : '')}
+                      key={index}
+                    >
+                      <SortableItem
+                        key={`item-${index}`}
+                        index={index}
+                        value={
+                          <>
+                            <Checkbox
+                              checked={this.state.todo[index].done}
+                              onClick={() => this.updateTodo('done', index)}
+                            />
+                            <TextareaAutosize
+                              placeholder={variables.language.getMessage(
+                                variables.languagecode,
+                                'widgets.navbar.notes.placeholder',
+                              )}
+                              value={this.state.todo[index].value}
+                              onChange={(data) => this.updateTodo('set', index, data)}
+                              readOnly={this.state.todo[index].done}
+                            />
+                            <MdDelete onClick={() => this.updateTodo('remove', index)} />
+                          </>
+                        }
+                      />
+                    </div>
+                  ))}
+                </SortableContainer>
               </div>
             </div>
           </span>

@@ -11,7 +11,7 @@ export const OPENSTREETMAP_URL = 'https://www.openstreetmap.org';
 // Mue URLs
 export const WEBSITE_URL = 'https://muetab.com';
 export const PRIVACY_URL = 'https://muetab.com/privacy';
-export const BLOG_POST = 'https://blog.muetab.com/posts/version-7-0';
+export const BLOG_POST = 'https://blog.muetab.com/posts/version-6-0';
 export const TRANSLATIONS_URL = 'https://docs.muetab.com/translations/';
 export const REPORT_ITEM =
   'https://github.com/mue/marketplace/issues/new?assignees=&labels=item+report&template=item-report.md&title=%5BItem+Report%5D+';
@@ -19,6 +19,7 @@ export const BUG_REPORT =
   'https://github.com/mue/mue/issues/new?assignees=&labels=issue+report&template=bug-report.md&title=%5BBug%5D+';
 export const DONATE_LINK = 'https://muetab.com/donate';
 export const SENTRY_DSN = 'https://430352fd4b174d688ebd82fc85c22c58@o1217438.ingest.sentry.io/6359480';
+export const KNOWLEDGEBASE = 'https://knowledgebase.muetab.com';
 
 // Mue Info
 export const ORG_NAME = 'mue';

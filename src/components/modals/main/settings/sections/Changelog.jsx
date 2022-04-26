@@ -47,7 +47,7 @@ export default class Changelog extends PureComponent {
           author: data.authors.join(', '),
         },
       ),
-      html: data.html,
+      content: data.markdown,
     });
 
     // lightbox etc
@@ -128,7 +128,9 @@ export default class Changelog extends PureComponent {
             className="updateImage"
           />
         ) : null}
-        <div className="updateChangelog" dangerouslySetInnerHTML={{ __html: this.state.html }} />
+        <div className="updateChangelog">
+          {this.state.content}
+        </div>
         <Modal
           closeTimeoutMS={100}
           onRequestClose={() => this.setState({ showLightbox: false })}
