@@ -195,21 +195,25 @@
 }
 
 .emptyMessage {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  gap: 15px;
-  min-width: 100px;
+  display: grid;
+  place-items: center;
+  grid-gap: 5px;
+  width: 200px;
+  height: 200px;
+  padding: 50px;
 
   @include themed() {
-    padding: 45px;
     border-radius: t($borderRadius);
     background: t($modal-sidebar);
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
 
-    svg {
+    .sideloadIcon {
       font-size: 50px;
       color: t($subColor);
+    }
+    button {
+      display: flex;
+      flex-flow: row;
     }
   }
 }

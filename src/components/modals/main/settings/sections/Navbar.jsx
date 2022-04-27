@@ -23,7 +23,7 @@ export default function Navbar() {
         zoomSetting="zoomNavbar"
         zoomCategory="navbar"
       />
-      <SettingsItem title="Extra Options" subtitle="subtitle" final={!showRefreshOptions}>
+      <SettingsItem title="Extra Options" subtitle="Modify navbar style and which buttons you want to display" final={!showRefreshOptions}>
         <Checkbox
           name="navbarHover"
           text={getMessage('modals.main.settings.sections.appearance.navbar.hover')}

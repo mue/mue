@@ -1,7 +1,3 @@
-// warning: this file is even worse than Background.jsx
-// if anyone wants to rewrite it to be actually decent, feel free
-// otherwise it will be cleaned up probably when alex asks me to add something here :(
-// - david
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import {
@@ -22,7 +18,6 @@ import { saveFile } from 'modules/helpers/settings/modals';
 import Tooltip from '../../../../helpers/tooltip/Tooltip';
 
 import FileUpload from '../../settings/FileUpload';
-import Dropdown from '../../settings/Dropdown';
 
 import '../../../welcome/welcome.scss';
 
@@ -53,7 +48,7 @@ export default class Create extends PureComponent {
       return this.setState({
         currentTab: tab,
         addonMetadata: {
-          type: type,
+          type
         },
       });
     } else {
@@ -96,47 +91,6 @@ export default class Create extends PureComponent {
     toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
   }
 
-  updateQuotePackType(type) {
-    const addonMetadata = {
-      type,
-      name: this.state.addonMetadata.name,
-      description: this.state.addonMetadata.description,
-      version: this.state.addonMetadata.version,
-      author: this.state.addonMetadata.author,
-      icon_url: this.state.addonMetadata.icon_url,
-      screenshot_url: this.state.addonMetadata.screenshot_url,
-    };
-    if (type === 'quotePack') {
-      this.setState({
-        addonMetadata: {
-          addonMetadata,
-          quotes: [],
-        },
-      });
-    } else {
-      this.setState({
-        addonMetadata: {
-          addonMetadata,
-        },
-        addonData: {
-          url: '',
-          name: '',
-          author: '',
-        },
-      });
-    }
-  }
-
-  updateQuotePackAPI(type, data) {
-    this.setState({
-      addonData: {
-        url: type === 'url' ? data : this.state.addonData.url || '',
-        name: type === 'name' ? data : this.state.addonData.name || '',
-        author: type === 'author' ? data : this.state.addonData.author || '',
-      },
-    });
-  }
-
   importQuotes() {
     this.setState({
       addonData: JSON.parse(localStorage.getItem('customQuote')) || [],
@@ -175,7 +129,7 @@ export default class Create extends PureComponent {
         name: this.state.addonMetadata.name,
         description: this.state.addonMetadata.description,
         type:
-          this.state.addonMetadata.type === 'quote_api' ? 'quotes' : this.state.addonMetadata.type,
+          this.state.addonMetadata.type,
         version: this.state.addonMetadata.version,
         author: this.state.addonMetadata.author,
         icon_url: this.state.addonMetadata.icon_url,
@@ -264,7 +218,6 @@ export default class Create extends PureComponent {
         </div>
         <SettingsItem title={getMessage('modals.main.addons.create.metadata.name')}>
           <TextField
-            label={getMessage('modals.main.addons.create.metadata.name')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.name}
@@ -273,7 +226,6 @@ export default class Create extends PureComponent {
         </SettingsItem>
         <SettingsItem title={getMessage('modals.main.marketplace.product.version')}>
           <TextField
-            label={getMessage('modals.main.marketplace.product.version')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.version}
@@ -282,7 +234,6 @@ export default class Create extends PureComponent {
         </SettingsItem>
         <SettingsItem title={getMessage('modals.main.marketplace.product.author')}>
           <TextField
-            label={getMessage('modals.main.marketplace.product.author')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.author}
@@ -291,7 +242,6 @@ export default class Create extends PureComponent {
         </SettingsItem>
         <SettingsItem title={getMessage('modals.main.addons.create.metadata.icon_url')}>
           <TextField
-            label={getMessage('modals.main.addons.create.metadata.icon_url')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.icon_url}
@@ -300,7 +250,6 @@ export default class Create extends PureComponent {
         </SettingsItem>
         <SettingsItem title={getMessage('modals.main.addons.create.metadata.screenshot_url')}>
           <TextField
-            label={getMessage('modals.main.addons.create.metadata.screenshot_url')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.screenshot_url}
@@ -312,7 +261,6 @@ export default class Create extends PureComponent {
           final={true}
         >
           <TextField
-            label={getMessage('modals.main.addons.create.metadata.description')}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             multiline
@@ -381,55 +329,11 @@ export default class Create extends PureComponent {
 
     // quotes
     const nextQuotesDisabled = !(
-      (this.state.addonMetadata.type === 'quote_api' &&
-        this.state.addonData.url !== '' &&
-        this.state.addonData.name !== '' &&
-        this.state.addonData.author !== '') ||
       (this.state.addonMetadata.type === 'quotes' && this.state.addonData.quotes !== '')
     );
     const addQuotes = (
       <>
-        <SettingsItem final={true} title={getMessage('modals.main.addons.create.quotes.title')}>
-          <Dropdown
-            label={getMessage('modals.main.settings.sections.time.type')}
-            noSetting
-            onChange={(e) => this.updateQuotePackType(e)}
-          >
-            <option value="quotes">
-              {getMessage('modals.main.addons.create.quotes.local.title')}
-            </option>
-            <option value="quote_api">
-              {getMessage('modals.main.addons.create.quotes.api.title')}
-            </option>
-          </Dropdown>
-        </SettingsItem>
-        {this.state.addonMetadata.type === 'quote_api' ? (
-          <>
-            <TextField
-              label={getMessage('modals.main.addons.create.quotes.api.url')}
-              varient="outlined"
-              InputLabelProps={{ shrink: true }}
-              value={this.state.addonData.url}
-              onInput={(e) => this.updateQuotePack(e.target.value, 'url')}
-            />
-            <TextField
-              label={getMessage('modals.main.addons.create.quotes.api.name')}
-              varient="outlined"
-              InputLabelProps={{ shrink: true }}
-              value={this.state.addonData.name}
-              onInput={(e) => this.updateQuotePack(e.target.value, 'name')}
-            />
-            <TextField
-              label={getMessage('modals.main.addons.create.quotes.api.author')}
-              varient="outlined"
-              InputLabelProps={{ shrink: true }}
-              value={this.state.addonData.author}
-              onInput={(e) => this.updateQuotePack(e.target.value, 'author')}
-            />
-            <br />
-            <br />
-          </>
-        ) : (
+        <SettingsItem final={true} title={getMessage('modals.main.addons.create.quotes.title')}/>
           <SettingsItem
             final={true}
             title={getMessage('modals.main.addons.create.settings.current')}
@@ -447,7 +351,6 @@ export default class Create extends PureComponent {
               </div>
             </div>
           </SettingsItem>
-        )}
         <div className="createButtons">
           <button onClick={() => this.changeTab(2)}>
             {getMessage('modals.welcome.buttons.previous')}
@@ -529,9 +432,7 @@ export default class Create extends PureComponent {
           <button
             onClick={() =>
               this.changeTab(
-                this.state.addonMetadata.type === 'quote_api'
-                  ? 'quotes'
-                  : this.state.addonMetadata.type,
+                this.state.addonMetadata.type,
               )
             }
             disabled={nextDescriptionDisabled}
@@ -539,17 +440,6 @@ export default class Create extends PureComponent {
             {getMessage('modals.welcome.buttons.previous')}
           </button>
         </div>
-        {/*<button
-          onClick={() =>
-            this.changeTab(
-              this.state.addonMetadata.type === 'quote_api'
-                ? 'quotes'
-                : this.state.addonMetadata.type,
-            )
-          }
-        >
-          {getMessage('modals.welcome.buttons.previous')}
-        </button>*/}
       </>
     );
 

@@ -268,7 +268,7 @@ export default class About extends PureComponent {
           </div>
         </div>
 
-        <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
+        <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start',  minHeight: '70px'}}>
           <span className="title">
             {this.getMessage('modals.main.settings.sections.about.resources_used.title')}
           </span>
@@ -351,7 +351,7 @@ export default class About extends PureComponent {
             })}
           </div>
         </div>
-        <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
+        <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start',  minHeight: '10px', borderBottom: '0' }}>
           <span className="title">
             {this.getMessage('modals.main.settings.sections.about.photographers')}
           </span>

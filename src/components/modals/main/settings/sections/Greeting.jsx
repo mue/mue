@@ -38,7 +38,7 @@ export default class GreetingSettings extends PureComponent {
         />
         <SettingsItem
           title="Additional Settings"
-          subtitle={getMessage('modals.main.settings.enabled')}
+          subtitle="Settings for the greeting display"
         >
           <Checkbox
             name="events"
@@ -58,7 +58,7 @@ export default class GreetingSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={getMessage('modals.main.settings.sections.greeting.birthday')}
-          subtitle={getMessage('modals.main.settings.enabled')}
+          subtitle="Show a Happy Birthday message when it is your birthday"
           final={true}
         >
           <Switch
@@ -79,12 +79,6 @@ export default class GreetingSettings extends PureComponent {
             required
           />
         </SettingsItem>
-        {/*<h3>{getMessage('modals.main.settings.sections.greeting.birthday')}</h3>
-        <Switch name='birthdayenabled' text={getMessage('modals.main.settings.enabled')} category='greeting'/>
-        <br/>
-        <Checkbox name='birthdayage' text={getMessage('modals.main.settings.sections.greeting.birthday_age')} category='greeting'/>
-        <p>{getMessage('modals.main.settings.sections.greeting.birthday_date')}</p>
-    <input type='date' onChange={this.changeDate} value={this.state.birthday.toISOString().substr(0, 10)} required/>*/}
       </>
     );
   }

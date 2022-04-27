@@ -38,7 +38,9 @@ export function install(type, input, sideload) {
         currentPhotos.push(photo);
       });
       localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
-      localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
+      if (localStorage.getItem('backgroundType') !== 'photo_pack') {
+        localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
+      }
       localStorage.setItem('backgroundType', 'photo_pack');
       EventBus.dispatch('refresh', 'background');
       break;
@@ -49,7 +51,9 @@ export function install(type, input, sideload) {
       }
 
       localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
-      localStorage.setItem('oldQuoteType', localStorage.getItem('quoteType'));
+      if (localStorage.getItem('quoteType') !== 'quote_pack') {
+        localStorage.setItem('oldQuoteType', localStorage.getItem('quoteType'));
+      }
       localStorage.setItem('quoteType', 'quote_pack');
       EventBus.dispatch('refresh', 'quote');
       break;
@@ -88,7 +92,7 @@ export function uninstall(type, name) {
     case 'quotes':
       localStorage.removeItem('quote_packs');
       localStorage.removeItem('quoteAPI');
-      localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType'));
+      localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType') || 'api');
       localStorage.removeItem('oldQuoteType');
       EventBus.dispatch('refresh', 'marketplacequoteuninstall');
       break;
@@ -106,7 +110,7 @@ export function uninstall(type, name) {
         }
       });
       localStorage.setItem('photo_packs', JSON.stringify(installedContents));
-      localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
+      localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType') || 'api');
       localStorage.removeItem('oldBackgroundType');
       EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');
       break;

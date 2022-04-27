@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { MdOpenInNew, MdAutoFixHigh } from 'react-icons/md';
+import { MdAutoFixHigh } from 'react-icons/md';
 
 export default function Items({
   type,
@@ -41,7 +41,7 @@ export default function Items({
           </div>
         ))}
       </div>
-      {type === 'all' ? (
+      {type === 'all' && !onCollection ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />
           <span className="title">Can't find what you're looking for?</span>

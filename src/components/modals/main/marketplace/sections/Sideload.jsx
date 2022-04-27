@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdIntegrationInstructions } from 'react-icons/md';
+import { MdIntegrationInstructions, MdOutlineFileUpload } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
@@ -70,14 +70,13 @@ export default class Sideload extends PureComponent {
             accept="application/json"
             loadFunction={(e) => this.installAddon(JSON.parse(e.target.result))}
           />
-          <MdIntegrationInstructions />
+          <MdIntegrationInstructions className='sideloadIcon'/>
           <span className="title">{this.getMessage('modals.main.addons.sideload.title')}</span>
-          <span className="subtitle">idk something about it</span>
+          <span className="subtitle">Install a Mue addon not on the marketplace from your computer</span>
           <button
-            className="addToMue sideload"
             onClick={() => document.getElementById('file-input').click()}
           >
-            {this.getMessage('modals.main.settings.sections.background.source.upload')}
+            <MdOutlineFileUpload />{this.getMessage('modals.main.settings.sections.background.source.upload')}
           </button>
         </div>
         <Modal

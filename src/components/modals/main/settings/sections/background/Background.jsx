@@ -64,24 +64,8 @@ export default class BackgroundSettings extends PureComponent {
     const { getMessage } = this;
 
     let backgroundSettings;
-
-    const apiOptions = [
-      {
-        name: 'Mue',
-        value: 'mue',
-      },
-      {
-        name: 'Unsplash',
-        value: 'unsplash',
-      },
-      {
-        name: 'Pexels',
-        value: 'pexels',
-      },
-    ];
-
     const interval = (
-      <SettingsItem>
+      <SettingsItem title="Interval" subtitle="Change how often the background is updated">
         <Dropdown
           label={getMessage('modals.main.settings.sections.background.interval.title')}
           name="backgroundchange"
@@ -109,15 +93,10 @@ export default class BackgroundSettings extends PureComponent {
 
     const APISettings = (
       <>
-        <SettingsItem>
-          <Radio
-            title={getMessage('modals.main.settings.sections.background.source.api')}
-            options={apiOptions}
-            name="backgroundAPI"
-            category="background"
-            element="#backgroundImage"
-            onChange={(e) => this.setState({ backgroundAPI: e })}
-          />
+        <SettingsItem
+          title="API Settings"
+          subtitle="Options for the getting an image from an external service (API)"
+        >
           {this.state.backgroundCategories[0] === getMessage('modals.main.loading') ? (
             <>
               <Dropdown
@@ -162,6 +141,27 @@ export default class BackgroundSettings extends PureComponent {
               {getMessage('modals.main.settings.sections.background.source.quality.datasaver')}
             </option>
           </Dropdown>
+          <Radio
+            title="API"
+            options={[
+              {
+                name: 'Mue',
+                value: 'mue',
+              },
+              {
+                name: 'Unsplash',
+                value: 'unsplash',
+              },
+              {
+                name: 'Pexels',
+                value: 'pexels',
+              },
+            ]}
+            name="backgroundAPI"
+            category="background"
+            element="#backgroundImage"
+            onChange={(e) => this.setState({ backgroundAPI: e })}
+          />
         </SettingsItem>
         {interval}
       </>
@@ -240,7 +240,7 @@ export default class BackgroundSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={getMessage('modals.main.settings.sections.background.source.title')}
-          subtitle="Source of background images"
+          subtitle="Select where to get background images from"
         >
           <Dropdown
             label={getMessage('modals.main.settings.sections.background.type.title')}
@@ -277,6 +277,7 @@ export default class BackgroundSettings extends PureComponent {
           <SettingsItem
             title={getMessage('modals.main.settings.sections.background.effects.title')}
             subtitle="Add effects to the background image"
+            final={true}
           >
             <Slider
               title={getMessage('modals.main.settings.sections.background.effects.blur')}

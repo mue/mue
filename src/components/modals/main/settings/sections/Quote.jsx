@@ -98,7 +98,8 @@ export default class QuoteSettings extends PureComponent {
         <>
           <SettingsItem
             title={this.getMessage('modals.main.settings.sections.quote.custom')}
-            subtitle="subtitle"
+            subtitle="Set your own custom quotes"
+            final={true}
           >
             <button onClick={() => this.modifyCustomQuote('add')}>
               {this.getMessage('modals.main.settings.sections.quote.add')} <MdAdd />
@@ -148,7 +149,7 @@ export default class QuoteSettings extends PureComponent {
     } else {
       // api
       customSettings = (
-        <SettingsItem title="Additional Options">
+        <SettingsItem title="Additional Options" subtitle="Other settings to customise the style of the quote widget" final={true}>
           <Dropdown
             label={this.getMessage('modals.main.settings.sections.background.interval.title')}
             name="quotechange"
@@ -171,6 +172,12 @@ export default class QuoteSettings extends PureComponent {
               {this.getMessage('modals.main.settings.sections.background.interval.month')}
             </option>
           </Dropdown>
+          <Checkbox
+            name="authorLink"
+            text={this.getMessage('modals.main.settings.sections.quote.author_link')}
+            element=".other"
+          />
+          <Checkbox name="authorImg" text="Show author image" element=".other" />
         </SettingsItem>
       );
     }
@@ -187,7 +194,7 @@ export default class QuoteSettings extends PureComponent {
         />
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.quote.buttons.title')}
-          subtitle="subtitle"
+          subtitle="Choose which buttons to show on the quote"
         >
           <Checkbox
             name="copyButton"
@@ -204,22 +211,6 @@ export default class QuoteSettings extends PureComponent {
             text={this.getMessage('modals.main.settings.sections.quote.buttons.favourite')}
             category="quote"
           />
-          <Checkbox
-            name="authorLink"
-            text={this.getMessage('modals.main.settings.sections.quote.author_link')}
-            element=".other"
-          />
-          <Checkbox
-            name="authorImg"
-            text='Show author image'
-            element=".other"
-          />
-        </SettingsItem>
-        <SettingsItem
-          title={this.getMessage('modals.main.settings.sections.background.type.title')}
-          subtitle="subtitle"
-        >
-          <Checkbox name="quoteModern" text="Use modern style" />
         </SettingsItem>
         <SettingsItem
           title="Source"

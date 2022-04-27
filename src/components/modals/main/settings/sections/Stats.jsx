@@ -45,6 +45,7 @@ export default class Stats extends PureComponent {
           <SettingsItem
             title={getMessage('modals.main.settings.reminder.title')}
             subtitle={getMessage('modals.main.settings.sections.stats.warning')}
+            final={true}
           >
             <Switch
               name="stats"

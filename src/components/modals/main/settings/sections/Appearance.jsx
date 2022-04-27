@@ -139,7 +139,7 @@ export default function AppearanceSettings() {
   display={' ' + getMessage('modals.main.settings.sections.appearance.accessibility.milliseconds')} />*/}
       <SettingsItem
         title={getMessage('modals.main.settings.sections.appearance.accessibility.title')}
-        subtitle="subtitle"
+        subtitle="Accessibility settings for Mue"
         final={true}
       >
         <Dropdown

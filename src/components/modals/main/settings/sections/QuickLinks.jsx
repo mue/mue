@@ -20,7 +20,7 @@ export default function QuickLinks() {
         zoomSetting="zoomQuicklinks"
         switch={true}
       />
-      <SettingsItem title="Extra Options" subtitle="subtitle">
+      <SettingsItem title="Extra Options" subtitle="Additional settings for quick links display and functions" final={true}>
         <Checkbox
           name="quicklinksText"
           text={getMessage('modals.main.settings.sections.quicklinks.text_only')}
