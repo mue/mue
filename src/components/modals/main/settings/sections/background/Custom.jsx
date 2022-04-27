@@ -124,6 +124,7 @@ export default class CustomSettings extends PureComponent {
   }
 
   componentDidMount() {
+    // todo: make dnd use compression etc
     const dnd = this.customDnd.current;
     dnd.ondragover = dnd.ondragenter = (e) => {
       e.preventDefault();

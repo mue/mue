@@ -38,6 +38,7 @@ export function install(type, input, sideload) {
         currentPhotos.push(photo);
       });
       localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
+
       if (localStorage.getItem('backgroundType') !== 'photo_pack') {
         localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
       }
@@ -50,7 +51,12 @@ export function install(type, input, sideload) {
         localStorage.setItem('quoteAPI', JSON.stringify(input.quote_api));
       }
 
-      localStorage.setItem('quote_packs', JSON.stringify(input.quotes));
+      const currentQuotes = JSON.parse(localStorage.getItem('quote_packs')) || [];
+      input.quotes.forEach((quote) => {
+        currentQuotes.push(quote);
+      });
+      localStorage.setItem('quote_packs', JSON.stringify(currentQuotes));
+
       if (localStorage.getItem('quoteType') !== 'quote_pack') {
         localStorage.setItem('oldQuoteType', localStorage.getItem('quoteType'));
       }
@@ -79,6 +85,7 @@ export function install(type, input, sideload) {
 }
 
 export function uninstall(type, name) {
+  let installedContents, packContents;
   switch (type) {
     case 'settings':
       const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
@@ -89,29 +96,45 @@ export function uninstall(type, name) {
       showReminder();
       break;
 
+    // this and photos needs debugging
     case 'quotes':
-      localStorage.removeItem('quote_packs');
+      installedContents = JSON.parse(localStorage.getItem('quote_packs'));
+      packContents = JSON.parse(localStorage.getItem('installed')).find(
+        (content) => content.name === name,
+      );
+      installedContents.forEach((item, index) => {
+        const exists = packContents.quotes.find((content) => content.quote === item.quote || content.author === item.author);
+        if (exists !== undefined) {
+          installedContents.splice(index, 1);
+        }
+      });
+      localStorage.setItem('quote_packs', JSON.stringify(installedContents));
       localStorage.removeItem('quoteAPI');
-      localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType') || 'api');
-      localStorage.removeItem('oldQuoteType');
+      if (installedContents.length === 0) { 
+        localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType') || 'api');
+        localStorage.removeItem('oldQuoteType');
+        localStorage.removeItem('quote_packs');
+      }
       EventBus.dispatch('refresh', 'marketplacequoteuninstall');
       break;
 
     case 'photos':
-      const installedContents = JSON.parse(localStorage.getItem('photo_packs'));
-      const packContents = JSON.parse(localStorage.getItem('installed')).find(
+      installedContents = JSON.parse(localStorage.getItem('photo_packs'));
+      packContents = JSON.parse(localStorage.getItem('installed')).find(
         (content) => content.name === name,
       );
-      // todo: make it find in photo_packs all the ones in installed for that pack and remove
-      console.log(packContents);
       installedContents.forEach((item, index) => {
-        if (packContents.photos.includes(item)) {
+        const exists = packContents.photos.find((content) => content.photo === item.photo);
+        if (exists !== undefined) {
           installedContents.splice(index, 1);
         }
       });
       localStorage.setItem('photo_packs', JSON.stringify(installedContents));
-      localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType') || 'api');
-      localStorage.removeItem('oldBackgroundType');
+      if (installedContents.length === 0) {
+        localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType') || 'api');
+        localStorage.removeItem('oldBackgroundType');
+        localStorage.removeItem('photo_packs');
+      }
       EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');
       break;
 
