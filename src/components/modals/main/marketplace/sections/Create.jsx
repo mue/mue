@@ -16,6 +16,7 @@ import SettingsItem from '../../../main/settings/SettingsItem';
 
 import { saveFile } from 'modules/helpers/settings/modals';
 import Tooltip from '../../../../helpers/tooltip/Tooltip';
+import InfoTooltip from '../../../../helpers/tooltip/InfoTooltip';
 
 import FileUpload from '../../settings/FileUpload';
 
@@ -48,7 +49,7 @@ export default class Create extends PureComponent {
       return this.setState({
         currentTab: tab,
         addonMetadata: {
-          type
+          type,
         },
       });
     } else {
@@ -128,8 +129,7 @@ export default class Create extends PureComponent {
       {
         name: this.state.addonMetadata.name,
         description: this.state.addonMetadata.description,
-        type:
-          this.state.addonMetadata.type,
+        type: this.state.addonMetadata.type,
         version: this.state.addonMetadata.version,
         author: this.state.addonMetadata.author,
         icon_url: this.state.addonMetadata.icon_url,
@@ -224,14 +224,33 @@ export default class Create extends PureComponent {
             onInput={(e) => setMetadata(e.target.value, 'name')}
           />
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.marketplace.product.version')}>
+        {/*<SettingsItem title={getMessage('modals.main.marketplace.product.version')}>
           <TextField
             varient="outlined"
             InputLabelProps={{ shrink: true }}
             value={this.state.addonMetadata.version}
             onInput={(e) => setMetadata(e.target.value, 'version')}
           />
-        </SettingsItem>
+    </SettingsItem>*/}
+        <div className="settingsRow">
+          <div className="content">
+            <span className="title">{getMessage('modals.main.marketplace.product.version')}</span>
+            <span className="subtitle">
+              <InfoTooltip
+                title="Information"
+                subtitle="Running away is easy It's the leaving that's hard Running away is easy It's the leaving that's hard"
+              />
+            </span>
+          </div>
+          <div className="action">
+            <TextField
+              varient="outlined"
+              InputLabelProps={{ shrink: true }}
+              value={this.state.addonMetadata.version}
+              onInput={(e) => setMetadata(e.target.value, 'version')}
+            />
+          </div>
+        </div>
         <SettingsItem title={getMessage('modals.main.marketplace.product.author')}>
           <TextField
             varient="outlined"
@@ -329,28 +348,25 @@ export default class Create extends PureComponent {
 
     // quotes
     const nextQuotesDisabled = !(
-      (this.state.addonMetadata.type === 'quotes' && this.state.addonData.quotes !== '')
+      this.state.addonMetadata.type === 'quotes' && this.state.addonData.quotes !== ''
     );
     const addQuotes = (
       <>
-        <SettingsItem final={true} title={getMessage('modals.main.addons.create.quotes.title')}/>
-          <SettingsItem
-            final={true}
-            title={getMessage('modals.main.addons.create.settings.current')}
-          >
-            <div className="themesToggleArea">
-              <div className="options">
-                <div
-                  onClick={() => this.importQuotes()}
-                  className="toggle lightTheme"
-                  style={{ width: '60%', margin: '10px 0 10px 0' }}
-                >
-                  <ExportIcon />
-                  <span>{getMessage('modals.main.addons.create.settings.current')}</span>
-                </div>
+        <SettingsItem final={true} title={getMessage('modals.main.addons.create.quotes.title')} />
+        <SettingsItem final={true} title={getMessage('modals.main.addons.create.settings.current')}>
+          <div className="themesToggleArea">
+            <div className="options">
+              <div
+                onClick={() => this.importQuotes()}
+                className="toggle lightTheme"
+                style={{ width: '60%', margin: '10px 0 10px 0' }}
+              >
+                <ExportIcon />
+                <span>{getMessage('modals.main.addons.create.settings.current')}</span>
               </div>
             </div>
-          </SettingsItem>
+          </div>
+        </SettingsItem>
         <div className="createButtons">
           <button onClick={() => this.changeTab(2)}>
             {getMessage('modals.welcome.buttons.previous')}
@@ -430,11 +446,7 @@ export default class Create extends PureComponent {
         </SettingsItem>
         <div className="createButtons">
           <button
-            onClick={() =>
-              this.changeTab(
-                this.state.addonMetadata.type,
-              )
-            }
+            onClick={() => this.changeTab(this.state.addonMetadata.type)}
             disabled={nextDescriptionDisabled}
           >
             {getMessage('modals.welcome.buttons.previous')}

@@ -8,6 +8,8 @@ import Dropdown from '../Dropdown';
 import SettingsItem from '../SettingsItem';
 import Header from '../Header';
 
+import InfoTooltip from '../../../../helpers/tooltip/infoTooltip';
+
 export default function Navbar() {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   const [showRefreshOptions, setShowRefreshOptions] = useState(

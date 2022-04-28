@@ -1,43 +1,39 @@
 import { useState } from 'react';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
+import { MdClose, MdInfo, MdOpenInNew } from 'react-icons/md';
 import './tooltip.scss';
+import Tooltip from './/Tooltip';
 
-export default function InfoTooltip({
-  children,
-  title,
-  style,
-  placement,
-  subtitle,
-  linkText,
-  linkURL,
-}) {
-  const [showTooltip, setShowTooltip] = useState(true);
+export default function InfoTooltip({ children, title, style, placement, subtitle }) {
+  const [showTooltip, setShowTooltip] = useState(false);
   const { x, y, reference, floating, strategy } = useFloating({
-    placement: placement || 'bottom-end',
-    middleware: [flip(), offset(15), shift()],
+    placement: placement || 'top-start',
+    middleware: [flip(), offset(10), shift()],
   });
 
   return (
-    <div className="tooltip" style={style} ref={reference}>
-      {children}
+    <div className="infoTooltip" style={style} ref={reference}>
+      <MdInfo onClick={() => setShowTooltip(true)} />
       {showTooltip && (
         <div
-          className="notification"
           ref={floating}
           style={{
             position: strategy,
             top: y ?? '',
             left: x ?? '',
           }}
+          className="infoTooltipTitle"
         >
-          <span className="title">{title}</span>
-          <span className="subtitle">
-            {subtitle}{' '}
-            <a className="link" href={linkURL}>
-              {linkText}
-            </a>
-          </span>
-          <button onClick={() => setShowTooltip(false)}>Ok, Got it!</button>
+          <div className="tooltipHeader">
+            <span className="title">{title}</span>
+            <Tooltip title="Close">
+              <div className="close" onClick={() => setShowTooltip(false)}>
+                <MdClose />
+              </div>
+            </Tooltip>
+          </div>
+          <span className='subtitle'>{subtitle}</span>
+          <span className='link'>Open Knowledgebase <MdOpenInNew /></span>
         </div>
       )}
     </div>

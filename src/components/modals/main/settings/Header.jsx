@@ -8,6 +8,7 @@ import Switch from './Switch';
 import SettingsItem from './SettingsItem';
 
 import { values } from 'modules/helpers/settings/modals';
+import InfoTooltip from '../../../helpers/tooltip/infoTooltip';
 
 export default class Header extends PureComponent {
   render() {
@@ -17,11 +18,17 @@ export default class Header extends PureComponent {
       <>
         <span className="mainTitle">{this.props.title}</span>
         <div className="headerExtras">
-          <span className="link"  onClick={() =>
+          <span
+            className="link"
+            onClick={() =>
               window.open(
-                variables.constants.KNOWLEDGEBASE + '/' + this.props.setting.toLowerCase().replace('enabled', ''),
+                variables.constants.KNOWLEDGEBASE +
+                  '/' +
+                  this.props.setting.toLowerCase().replace('enabled', ''),
                 '_blank',
-              )}>
+              )
+            }
+          >
             <MdHelpOutline /> More Info
           </span>
           <span
@@ -39,7 +46,7 @@ export default class Header extends PureComponent {
         {this.props.switch ? (
           <SettingsItem
             title={getMessage('modals.main.settings.enabled')}
-            subtitle='Choose whether or not to show this widget'
+            subtitle="Choose whether or not to show this widget"
           >
             <Switch
               name={this.props.setting}
