@@ -198,8 +198,6 @@
   display: grid;
   place-items: center;
   grid-gap: 5px;
-  width: 200px;
-  height: 200px;
   padding: 50px;
 
   @include themed() {

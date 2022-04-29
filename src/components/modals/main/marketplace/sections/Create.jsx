@@ -15,7 +15,6 @@ import { toast } from 'react-toastify';
 import SettingsItem from '../../../main/settings/SettingsItem';
 
 import { saveFile } from 'modules/helpers/settings/modals';
-import Tooltip from '../../../../helpers/tooltip/Tooltip';
 import InfoTooltip from '../../../../helpers/tooltip/InfoTooltip';
 
 import FileUpload from '../../settings/FileUpload';
