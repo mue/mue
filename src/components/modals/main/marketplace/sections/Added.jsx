@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdLocalMall, MdUpdate } from 'react-icons/md';
+import { MdLocalMall, MdUpdate, MdOutlineExtensionOff } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 import Item from '../Item';
@@ -127,8 +127,13 @@ export default class Added extends PureComponent {
     if (this.state.installed.length === 0) {
       return (
         <div className="emptyItems">
-          <div className="emptyMessage">
-            <MdLocalMall />
+          <div className="emptyNewMessage">
+            {/*<MdLocalMall />
+            <span className="title">{this.getMessage('modals.main.addons.empty.title')}</span>
+            <span className="subtitle">
+              {this.getMessage('modals.main.addons.empty.description')}
+      </span>*/}
+            <MdOutlineExtensionOff />
             <span className="title">{this.getMessage('modals.main.addons.empty.title')}</span>
             <span className="subtitle">
               {this.getMessage('modals.main.addons.empty.description')}
@@ -163,7 +168,8 @@ export default class Added extends PureComponent {
             <option value="z-a">{this.getMessage('modals.main.addons.sort.z_a')}</option>
           </Dropdown>
           <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
-            <MdUpdate />{this.getMessage('modals.main.addons.check_updates')}
+            <MdUpdate />
+            {this.getMessage('modals.main.addons.check_updates')}
           </button>
         </div>
         <Items

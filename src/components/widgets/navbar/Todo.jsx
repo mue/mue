@@ -1,6 +1,12 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdChecklist, MdPushPin, MdDelete, MdPlaylistAdd,  MdOutlineDragIndicator} from 'react-icons/md';
+import {
+  MdChecklist,
+  MdPushPin,
+  MdDelete,
+  MdPlaylistAdd,
+  MdOutlineDragIndicator,
+} from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Checkbox from '@mui/material/Checkbox';
@@ -9,15 +15,12 @@ import { shift, useFloating } from '@floating-ui/react-dom';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 
 const SortableItem = sortableElement(({ value }) => (
-  <li>
+  <div>
     {value}
-    <MdOutlineDragIndicator />
-  </li>
+  </div>
 ));
 
-const SortableContainer = sortableContainer(({ children }) => (
-  <ul>{children}</ul>
-));
+const SortableContainer = sortableContainer(({ children }) => <div>{children}</div>);
 
 class Todo extends PureComponent {
   constructor() {
@@ -167,33 +170,32 @@ class Todo extends PureComponent {
                   disableAutoscroll
                 >
                   {this.state.todo.map((_value, index) => (
-                    <div
-                      className={'todoRow' + (this.state.todo[index].done ? ' done' : '')}
-                      key={index}
-                    >
-                      <SortableItem
-                        key={`item-${index}`}
-                        index={index}
-                        value={
-                          <>
-                            <Checkbox
-                              checked={this.state.todo[index].done}
-                              onClick={() => this.updateTodo('done', index)}
-                            />
-                            <TextareaAutosize
-                              placeholder={variables.language.getMessage(
-                                variables.languagecode,
-                                'widgets.navbar.notes.placeholder',
-                              )}
-                              value={this.state.todo[index].value}
-                              onChange={(data) => this.updateTodo('set', index, data)}
-                              readOnly={this.state.todo[index].done}
-                            />
-                            <MdDelete onClick={() => this.updateTodo('remove', index)} />
-                          </>
-                        }
-                      />
-                    </div>
+                    <SortableItem
+                      key={`item-${index}`}
+                      index={index}
+                      value={
+                        <div
+                          className={'todoRow' + (this.state.todo[index].done ? ' done' : '')}
+                          key={index}
+                        >
+                          <Checkbox
+                            checked={this.state.todo[index].done}
+                            onClick={() => this.updateTodo('done', index)}
+                          />
+                          <TextareaAutosize
+                            placeholder={variables.language.getMessage(
+                              variables.languagecode,
+                              'widgets.navbar.notes.placeholder',
+                            )}
+                            value={this.state.todo[index].value}
+                            onChange={(data) => this.updateTodo('set', index, data)}
+                            readOnly={this.state.todo[index].done}
+                          />
+                          <MdDelete onClick={() => this.updateTodo('remove', index)} />
+                          <MdOutlineDragIndicator />
+                        </div>
+                      }
+                    />
                   ))}
                 </SortableContainer>
               </div>

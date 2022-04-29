@@ -22,7 +22,7 @@
   flex-flow: row;
   align-items: center;
   padding-right: 10px;
-  margin: 1px;
+  margin: 10px 0 10px 0;
 
   @include themed() {
     color: t($color) !important;

@@ -23,8 +23,8 @@ export default class About extends PureComponent {
       loading: this.getMessage('modals.main.loading'),
       image:
         document.body.classList.contains('dark')
-          ? 'public/icons/mue_dark.png'
-          : 'public/icons/mue_light.png',
+          ? 'icons/mue_dark.png'
+          : 'icons/mue_light.png',
     };
     this.controller = new AbortController();
   }

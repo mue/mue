@@ -9,7 +9,7 @@ export default class ErrorBoundary extends PureComponent {
     this.state = {
       error: false,
       errorData: '',
-      showReport: true
+      showReport: true,
     };
   }
 
@@ -18,44 +18,48 @@ export default class ErrorBoundary extends PureComponent {
     variables.stats.postEvent('modal', 'Error occurred');
     return {
       error: true,
-      errorData: error
+      errorData: error,
     };
   }
 
   reportError() {
     captureException(this.state.errorData);
     this.setState({
-      showReport: false
-    })
+      showReport: false,
+    });
   }
 
   render() {
     if (this.state.error) {
       return (
         <div className="emptyItems">
-          <div className="emptyMessage">
+          <div className="emptyNewMessage">
             <MdErrorOutline />
-            <h1>
+            <span className="title">
               {variables.language.getMessage(
                 variables.languagecode,
                 'modals.main.error_boundary.title',
               )}
-            </h1>
-            <p>
+            </span>
+            <span className="subtitle">
               {variables.language.getMessage(
                 variables.languagecode,
                 'modals.main.error_boundary.message',
               )}
-            </p>
-            {this.state.showReport ? <button onClick={() => this.reportError()}>
-              Send Error Report
-            </button> : <button>Sent!</button>}
-            <button className="refresh" onClick={() => window.location.reload()}>
-              {variables.language.getMessage(
-                variables.languagecode,
-                'modals.main.error_boundary.refresh',
+            </span>
+            <div className="buttonsRow">
+              {this.state.showReport ? (
+                <button onClick={() => this.reportError()}>Send Error Report</button>
+              ) : (
+                <span className="subtitle">Sent!</span>
               )}
-            </button>
+              <button className="refresh" onClick={() => window.location.reload()}>
+                {variables.language.getMessage(
+                  variables.languagecode,
+                  'modals.main.error_boundary.refresh',
+                )}
+              </button>
+            </div>
           </div>
         </div>
       );

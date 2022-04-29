@@ -218,6 +218,30 @@
   }
 }
 
+.emptyNewMessage {
+  display: flex;
+  gap: 20px;
+  flex-flow: column;
+  text-align: center;
+  align-items: center;
+  img {
+    width: 200px;
+    height: auto;
+  }
+  svg {
+    font-size: 70px;
+   /* background: -webkit-linear-gradient(90deg,rgba(255,92,39,.7) 37%,rgba(255,70,110,.67) 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+  }
+  .buttonsRow {
+    display: flex;
+    flex-flow: row;
+    gap: 30px;
+    align-items: center;
+  }
+}
+
 p.author {
   margin-top: -5px;
 }
