@@ -1,6 +1,12 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MenuItem } from '@mui/material';
+import {
+  MdSource,
+  MdOutlineKeyboardArrowRight,
+  MdOutlineAutoAwesome,
+  MdArrowBack,
+} from 'react-icons/md';
 
 import Header from '../../Header';
 import Checkbox from '../../Checkbox';
@@ -8,6 +14,7 @@ import Dropdown from '../../Dropdown';
 import Slider from '../../Slider';
 import Radio from '../../Radio';
 import SettingsItem from '../../SettingsItem';
+import Tooltip from '../../../../../helpers/tooltip/Tooltip';
 
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';
@@ -25,6 +32,8 @@ export default class BackgroundSettings extends PureComponent {
       backgroundCategories: [this.getMessage('modals.main.loading')],
       backgroundAPI: localStorage.getItem('backgroundAPI') || 'mue',
       marketplaceEnabled: localStorage.getItem('photo_packs'),
+      effects: false,
+      backgroundSettingsSection: false,
     };
     this.controller = new AbortController();
   }
@@ -207,73 +216,162 @@ export default class BackgroundSettings extends PureComponent {
           category="background"
           element="#backgroundImage"
         />
-        <SettingsItem
-          title="Display"
-          subtitle="Change how background and photo information are loaded"
-        >
-          <Checkbox
-            name="ddgProxy"
-            text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')}
-            element=".other"
-            disabled={!usingImage}
-          />
-          <Checkbox
-            name="bgtransition"
-            text={getMessage('modals.main.settings.sections.background.transition')}
-            element=".other"
-            disabled={!usingImage}
-          />
-          <Checkbox
-            name="photoInformation"
-            text={getMessage('modals.main.settings.sections.background.photo_information')}
-            element=".other"
-            disabled={
-              this.state.backgroundType !== 'api' && this.state.backgroundType !== 'marketplace'
-            }
-          />
-          <Checkbox
-            name="photoMap"
-            text={getMessage('modals.main.settings.sections.background.show_map')}
-            element=".other"
-            disabled={this.state.backgroundAPI !== 'unsplash'}
-          />
-        </SettingsItem>
-        <SettingsItem
-          title={getMessage('modals.main.settings.sections.background.source.title')}
-          subtitle="Select where to get background images from"
-        >
-          <Dropdown
-            label={getMessage('modals.main.settings.sections.background.type.title')}
-            name="backgroundType"
-            onChange={(value) => this.setState({ backgroundType: value })}
-            category="background"
+        {this.state.effects ? (
+          <>
+            <div className="breadcrumb">
+              <div onClick={() => this.setState({ effects: false })}>
+                <Tooltip title="back" key="backArrow">
+                  <MdArrowBack />
+                </Tooltip>
+              </div>
+              <span className="subtitle">effects</span>
+            </div>
+          </>
+        ) : null}
+        {this.state.backgroundSettingsSection ? (
+          <div className="breadcrumb">
+            <div onClick={() => this.setState({ backgroundSettingsSection: false })}>
+              <Tooltip title="back" key="backArrow">
+                <MdArrowBack />
+              </Tooltip>
+            </div>
+            <span className="subtitle">Source</span>
+          </div>
+        ) : null}
+        {(this.state.backgroundSettingsSection !== true && this.state.effects !== true) ? (
+          <>
+            <div
+              className="moreSettings"
+              onClick={() => this.setState({ backgroundSettingsSection: true })}
+            >
+              <div className="left">
+                <MdSource />
+                <div className="content">
+                  <span className="title">
+                    {getMessage('modals.main.settings.sections.background.source.title')}
+                  </span>
+                  <span className="subtitle">Select where to get background images from</span>
+                </div>
+              </div>
+              <div className="action">
+                <Dropdown
+                  label={getMessage('modals.main.settings.sections.background.type.title')}
+                  name="backgroundType"
+                  onChange={(value) => this.setState({ backgroundType: value })}
+                  category="background"
+                >
+                  {this.state.marketplaceEnabled ? (
+                    <option value="photo_pack">
+                      {this.getMessage('modals.main.navbar.marketplace')}
+                    </option>
+                  ) : null}
+                  <option value="api">
+                    {getMessage('modals.main.settings.sections.background.type.api')}
+                  </option>
+                  <option value="custom">
+                    {getMessage('modals.main.settings.sections.background.type.custom_image')}
+                  </option>
+                  <option value="colour">
+                    {getMessage('modals.main.settings.sections.background.type.custom_colour')}
+                  </option>
+                  <option value="random_colour">
+                    {getMessage('modals.main.settings.sections.background.type.random_colour')}
+                  </option>
+                  <option value="random_gradient">
+                    {getMessage('modals.main.settings.sections.background.type.random_gradient')}
+                  </option>
+                </Dropdown>
+              </div>
+            </div>
+            <div className="moreSettings" onClick={() => this.setState({ effects: true })}>
+              <div className="left">
+                <MdOutlineAutoAwesome />
+                <div className="content">
+                  <span className="title">
+                    {getMessage('modals.main.settings.sections.background.effects.title')}
+                  </span>
+                  <span className="subtitle">Add effects to the background image</span>
+                </div>
+              </div>
+              <div className="action"></div>
+            </div>
+          </>
+        ) : null}
+        {this.state.backgroundSettingsSection !== true && this.state.effects !== true ? (
+          <SettingsItem
+            title="Display"
+            subtitle="Change how background and photo information are loaded"
+            final={true}
           >
-            {this.state.marketplaceEnabled ? (
-              <option value="photo_pack">
-                {this.getMessage('modals.main.navbar.marketplace')}
-              </option>
-            ) : null}
-            <option value="api">
-              {getMessage('modals.main.settings.sections.background.type.api')}
-            </option>
-            <option value="custom">
-              {getMessage('modals.main.settings.sections.background.type.custom_image')}
-            </option>
-            <option value="colour">
-              {getMessage('modals.main.settings.sections.background.type.custom_colour')}
-            </option>
-            <option value="random_colour">
-              {getMessage('modals.main.settings.sections.background.type.random_colour')}
-            </option>
-            <option value="random_gradient">
-              {getMessage('modals.main.settings.sections.background.type.random_gradient')}
-            </option>
-          </Dropdown>
-        </SettingsItem>
-        {backgroundSettings}
-        {this.state.backgroundType === 'api' ||
-        this.state.backgroundType === 'custom' ||
-        this.state.marketplaceEnabled ? (
+            <Checkbox
+              name="ddgProxy"
+              text={getMessage('modals.main.settings.sections.background.ddg_image_proxy')}
+              element=".other"
+              disabled={!usingImage}
+            />
+            <Checkbox
+              name="bgtransition"
+              text={getMessage('modals.main.settings.sections.background.transition')}
+              element=".other"
+              disabled={!usingImage}
+            />
+            <Checkbox
+              name="photoInformation"
+              text={getMessage('modals.main.settings.sections.background.photo_information')}
+              element=".other"
+              disabled={
+                this.state.backgroundType !== 'api' && this.state.backgroundType !== 'marketplace'
+              }
+            />
+            <Checkbox
+              name="photoMap"
+              text={getMessage('modals.main.settings.sections.background.show_map')}
+              element=".other"
+              disabled={this.state.backgroundAPI !== 'unsplash'}
+            />
+          </SettingsItem>
+        ) : null}
+        {this.state.backgroundSettingsSection ? (
+          <>
+            <SettingsItem
+              title={getMessage('modals.main.settings.sections.background.source.title')}
+              subtitle="Select where to get background images from"
+            >
+              <Dropdown
+                label={getMessage('modals.main.settings.sections.background.type.title')}
+                name="backgroundType"
+                onChange={(value) => this.setState({ backgroundType: value })}
+                category="background"
+              >
+                {this.state.marketplaceEnabled ? (
+                  <option value="photo_pack">
+                    {this.getMessage('modals.main.navbar.marketplace')}
+                  </option>
+                ) : null}
+                <option value="api">
+                  {getMessage('modals.main.settings.sections.background.type.api')}
+                </option>
+                <option value="custom">
+                  {getMessage('modals.main.settings.sections.background.type.custom_image')}
+                </option>
+                <option value="colour">
+                  {getMessage('modals.main.settings.sections.background.type.custom_colour')}
+                </option>
+                <option value="random_colour">
+                  {getMessage('modals.main.settings.sections.background.type.random_colour')}
+                </option>
+                <option value="random_gradient">
+                  {getMessage('modals.main.settings.sections.background.type.random_gradient')}
+                </option>
+              </Dropdown>
+            </SettingsItem>
+            {backgroundSettings}
+          </>
+        ) : null}
+        {(this.state.backgroundType === 'api' ||
+          this.state.backgroundType === 'custom' ||
+          this.state.marketplaceEnabled) &&
+        this.state.effects ? (
           <SettingsItem
             title={getMessage('modals.main.settings.sections.background.effects.title')}
             subtitle="Add effects to the background image"

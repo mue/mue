@@ -156,3 +156,26 @@ h4 {
     }
   }
 }
+
+.breadcrumb {
+  display: flex;
+  flex-flow: row;
+  padding-top: 20px;
+  gap: 10px;
+  align-items: center;
+  .returnButton {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-right: 25px;
+    svg {
+      font-size: 2em;
+    }
+    &:hover {
+      background: rgba(121, 121, 121, 0.226);
+    }
+  }
+}

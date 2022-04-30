@@ -105,11 +105,11 @@ export default class Quote extends PureComponent {
   }
 
   async getAuthorImg(author) {
-    if (localStorage.getItem('authorImg') === 'false') { 
+    if (localStorage.getItem('authorImg') === 'false') {
       return {
         authorimg: null,
-        authorimglicense: null
-      }
+        authorimglicense: null,
+      };
     }
 
     const authorimgdata = await (
@@ -415,7 +415,10 @@ export default class Quote extends PureComponent {
           ariaHideApp={false}
           onRequestClose={() => this.setState({ shareModal: false })}
         >
-          <ShareModal data={`${this.state.quote} - ${this.state.author}`} modalClose={() => this.setState({ shareModal: false })} />
+          <ShareModal
+            data={`${this.state.quote} - ${this.state.author}`}
+            modalClose={() => this.setState({ shareModal: false })}
+          />
         </Modal>
         <span className="quote" ref={this.quote}>
           {this.state.quote}
@@ -440,15 +443,15 @@ export default class Quote extends PureComponent {
           </>
         ) : (
           <>
-            {this.state.author !== '' ? (
-              <div className="author-holder">
-                <div className="author">
-                  <div
-                    className="author-img"
-                    style={{ backgroundImage: `url(${this.state.authorimg})` }}
-                  >
-                    {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
-                  </div>
+            <div className="author-holder">
+              <div className="author">
+                <div
+                  className="author-img"
+                  style={{ backgroundImage: `url(${this.state.authorimg})` }}
+                >
+                  {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
+                </div>
+                {this.state.author !== '' ? (
                   <div className="author-content" ref={this.quoteauthor}>
                     <span className="title">{this.state.author}</span>
                     {this.state.authorOccupation !== 'Unknown' ? (
@@ -456,26 +459,29 @@ export default class Quote extends PureComponent {
                     ) : null}
                     <span className="author-license">{this.state.authorimglicense}</span>
                   </div>
-                  <div className="quote-buttons">
-                    {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== '' ? (
-                      <Tooltip title="Open On Wikipedia">
-                        <a
-                          href={this.state.authorlink}
-                          className="quoteAuthorLink"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <MdOpenInNew />
-                        </a>{' '}
-                      </Tooltip>
-                    ) : null}
-                    {this.state.copy} {this.state.share} {this.state.favourited}
+                ) : (
+                  <div className="author-content whileLoading" ref={this.quoteauthor}>
+                    <span className="title">loading</span>
+                    <span className="subtitle">loading</span>
                   </div>
+                )}
+                <div className="quote-buttons">
+                  {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== '' ? (
+                    <Tooltip title="Open On Wikipedia">
+                      <a
+                        href={this.state.authorlink}
+                        className="quoteAuthorLink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <MdOpenInNew />
+                      </a>{' '}
+                    </Tooltip>
+                  ) : null}
+                  {this.state.copy} {this.state.share} {this.state.favourited}
                 </div>
               </div>
-            ) : (
-              <div ref={this.quoteauthor}></div>
-            )}
+            </div>
           </>
         )}
         {/*variables.keybinds.favouriteQuote && variables.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={variables.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null*/}

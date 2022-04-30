@@ -1,14 +1,14 @@
 import variables from 'modules/variables';
 
 import { PureComponent } from 'react';
-import { MdHelpOutline, MdFlag } from 'react-icons/md';
+import { MdHelpOutline, MdFlag, MdArrowBack } from 'react-icons/md';
 
 import Slider from './Slider';
 import Switch from './Switch';
 import SettingsItem from './SettingsItem';
 
 import { values } from 'modules/helpers/settings/modals';
-import InfoTooltip from '../../../helpers/tooltip/infoTooltip';
+import Tooltip from '../../../helpers/tooltip/Tooltip';
 
 export default class Header extends PureComponent {
   render() {
@@ -16,14 +16,23 @@ export default class Header extends PureComponent {
 
     return (
       <>
-        <span className="mainTitle">{this.props.title}</span>
+        <div className="flexTopMarketplace">
+          {this.props.backButton ? (
+            <div className="returnButton" onClick={this.props.clickEffect} >
+              <Tooltip title="back" key="backArrow">
+                <MdArrowBack className="backArrow" />
+              </Tooltip>
+            </div>
+          ) : null}
+          <span className="mainTitle">{this.props.title}</span>
+        </div>
         <div className="headerExtras">
           <span
             className="link"
             onClick={() =>
               window.open(
                 variables.constants.KNOWLEDGEBASE +
-                  '/' +
+                  '/settings/' +
                   this.props.setting.toLowerCase().replace('enabled', ''),
                 '_blank',
               )

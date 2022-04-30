@@ -342,7 +342,7 @@ p.author {
   align-items: center;
 
   @include themed() {
-    box-shadow: 0 0 0 4px t($modal-sidebarActive);
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
     border-radius: t($borderRadius);
   }
 

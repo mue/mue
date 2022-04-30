@@ -183,3 +183,39 @@ h5 {
     align-items: center;
   }
 }
+
+.moreSettings {
+  cursor: pointer;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 25px;
+  margin-top: 20px;
+  @include themed() {
+    background: t($modal-sidebar);
+    border-radius: t($borderRadius);
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+    &:hover {
+      background: t($modal-sidebarActive);
+    }
+  }
+  svg {
+    font-size: 20px;
+  }
+  .left {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 25px;
+  }
+  .content {
+    display: flex;
+    flex-flow: column;
+  }
+  .action {
+    display: flex;
+    flex-flow: row;
+    gap: 20px;
+    align-items: center;
+  }
+}
