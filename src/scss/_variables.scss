@@ -117,6 +117,8 @@ $themes: (
 
 %tabText {
   .mainTitle {
+    display: flex;
+    align-items: center;
     font-size: 38px;
     font-weight: 600;
     margin-bottom: 15px;

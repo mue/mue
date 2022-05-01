@@ -1,10 +1,10 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
 import './reminder.scss';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import { MdClose, MdSnooze, MdWork } from 'react-icons/md';
 
-export default class Reminder extends React.PureComponent {
+export default class Reminder extends PureComponent {
   render() {
     return (
       <div className="reminder">

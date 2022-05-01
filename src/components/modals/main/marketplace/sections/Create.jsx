@@ -16,6 +16,7 @@ import SettingsItem from '../../../main/settings/SettingsItem';
 
 import { saveFile } from 'modules/helpers/settings/modals';
 import InfoTooltip from '../../../../helpers/tooltip/infoTooltip';
+import Tooltip from '../../../../helpers/tooltip/Tooltip';
 
 import FileUpload from '../../settings/FileUpload';
 

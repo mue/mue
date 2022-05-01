@@ -208,6 +208,18 @@ export default class BackgroundSettings extends PureComponent {
       this.state.backgroundType !== 'random_colour' &&
       this.state.backgroundType !== 'random_gradient';
 
+    const breadcrumb = (name, toSet) => (
+      <div className="breadcrumb">
+      <div onClick={() => this.setState({ [toSet]: false })}>
+        <Tooltip title="back" key="backArrow">
+          <MdArrowBack />
+        </Tooltip>
+      </div>
+      <span className="subtitle">{name}</span>
+    </div>
+    );
+
+
     return (
       <>
         <Header
@@ -217,28 +229,12 @@ export default class BackgroundSettings extends PureComponent {
           element="#backgroundImage"
         />
         {this.state.effects ? (
-          <>
-            <div className="breadcrumb">
-              <div onClick={() => this.setState({ effects: false })}>
-                <Tooltip title="back" key="backArrow">
-                  <MdArrowBack />
-                </Tooltip>
-              </div>
-              <span className="subtitle">effects</span>
-            </div>
-          </>
+          breadcrumb('Effects', 'effects')
         ) : null}
         {this.state.backgroundSettingsSection ? (
-          <div className="breadcrumb">
-            <div onClick={() => this.setState({ backgroundSettingsSection: false })}>
-              <Tooltip title="back" key="backArrow">
-                <MdArrowBack />
-              </Tooltip>
-            </div>
-            <span className="subtitle">Source</span>
-          </div>
+          breadcrumb('Source', 'backgroundSettingsSection')
         ) : null}
-        {(this.state.backgroundSettingsSection !== true && this.state.effects !== true) ? (
+        {this.state.backgroundSettingsSection !== true && this.state.effects !== true ? (
           <>
             <div
               className="moreSettings"
@@ -293,7 +289,10 @@ export default class BackgroundSettings extends PureComponent {
                   <span className="subtitle">Add effects to the background image</span>
                 </div>
               </div>
-              <div className="action"></div>
+              <div className="action">
+                {' '}
+                <MdOutlineKeyboardArrowRight />
+              </div>
             </div>
           </>
         ) : null}

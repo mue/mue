@@ -15,7 +15,7 @@ import Weather from '../settings/sections/Weather';
 import Order from '../settings/sections/Order';
 import Appearance from '../settings/sections/Appearance';
 import Language from '../settings/sections/Language';
-import Advanced from '../settings/sections/Advanced';
+import Advanced from '../settings/sections/advanced/Advanced';
 //import Keybinds from '../settings/sections/Keybinds';
 import Stats from '../settings/sections/Stats';
 import Experimental from '../settings/sections/Experimental';
