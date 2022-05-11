@@ -190,7 +190,7 @@ export default class Item extends PureComponent {
                   </div>
                 </div>
               ) : null}
-              {!this.props.data.data.photos && this.props.data.data.language !== "" ? (
+              {!this.props.data.data.photos && this.props.data.data.language !== '' ? (
                 <div className="infoItem">
                   <MdTranslate />
                   <div className="text">

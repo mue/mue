@@ -163,6 +163,19 @@ h4 {
   padding-top: 20px;
   gap: 10px;
   align-items: center;
+
+  .settingsReturn {
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 4px;
+
+    svg {
+      font-size: 2em;
+    }
+    &:hover {
+      background: rgba(121, 121, 121, 0.226);
+    }
+  }
   .returnButton {
     display: grid;
     place-items: center;

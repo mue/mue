@@ -70,13 +70,14 @@ export default class Sideload extends PureComponent {
             accept="application/json"
             loadFunction={(e) => this.installAddon(JSON.parse(e.target.result))}
           />
-          <MdIntegrationInstructions className='sideloadIcon'/>
+          <MdIntegrationInstructions className="sideloadIcon" />
           <span className="title">{this.getMessage('modals.main.addons.sideload.title')}</span>
-          <span className="subtitle">Install a Mue addon not on the marketplace from your computer</span>
-          <button
-            onClick={() => document.getElementById('file-input').click()}
-          >
-            <MdOutlineFileUpload />{this.getMessage('modals.main.settings.sections.background.source.upload')}
+          <span className="subtitle">
+            Install a Mue addon not on the marketplace from your computer
+          </span>
+          <button onClick={() => document.getElementById('file-input').click()}>
+            <MdOutlineFileUpload />
+            {this.getMessage('modals.main.settings.sections.background.source.upload')}
           </button>
         </div>
         <Modal

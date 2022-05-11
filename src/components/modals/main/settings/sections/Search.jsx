@@ -80,7 +80,10 @@ export default class SearchSettings extends PureComponent {
           category="widgets"
           switch={true}
         />
-        <SettingsItem title="Extra Options" subtitle="Additional options for search widget display and functionality">
+        <SettingsItem
+          title="Extra Options"
+          subtitle="Additional options for search widget display and functionality"
+        >
           {/* not supported on firefox */}
           {navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined' ? (
             <Checkbox

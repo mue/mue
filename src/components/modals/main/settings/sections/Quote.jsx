@@ -149,7 +149,11 @@ export default class QuoteSettings extends PureComponent {
     } else {
       // api
       customSettings = (
-        <SettingsItem title="Additional Options" subtitle="Other settings to customise the style of the quote widget" final={true}>
+        <SettingsItem
+          title="Additional Options"
+          subtitle="Other settings to customise the style of the quote widget"
+          final={true}
+        >
           <Dropdown
             label={this.getMessage('modals.main.settings.sections.background.interval.title')}
             name="quotechange"

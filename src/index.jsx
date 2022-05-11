@@ -64,7 +64,7 @@ if (localStorage.getItem('stats') === 'true') {
 Sentry.init({
   dsn: variables.constants.SENTRY_DSN,
   defaultIntegrations: false,
-  autoSessionTracking: false
+  autoSessionTracking: false,
 });
 
 render(<App />, document.getElementById('root'));

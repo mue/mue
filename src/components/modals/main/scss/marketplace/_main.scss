@@ -99,7 +99,6 @@
     width: 170px;
     box-sizing: border-box !important;
 
-
     img {
       width: 100%;
       height: auto;
@@ -119,8 +118,8 @@
 
     .iconButtons {
       display: grid;
-      grid-template-columns: 1fr 1fr; 
-      grid-template-rows: 1fr; 
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
       grid-gap: 20px;
       button {
         width: 100%;
@@ -228,7 +227,7 @@
   }
   svg {
     font-size: 70px;
-   /* background: -webkit-linear-gradient(90deg,rgba(255,92,39,.7) 37%,rgba(255,70,110,.67) 60%);
+    /* background: -webkit-linear-gradient(90deg,rgba(255,92,39,.7) 37%,rgba(255,70,110,.67) 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;*/
   }
@@ -259,7 +258,6 @@ p.author {
   max-width: 250px;
   overflow-x: hidden;
 }
-
 
 .returnButton {
   display: grid;
@@ -412,6 +410,6 @@ p.author {
   align-items: center;
   margin-top: 30px;
   svg {
-    font-size: 30px; 
+    font-size: 30px;
   }
 }

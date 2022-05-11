@@ -36,7 +36,7 @@ export default class AdvancedSettings extends PureComponent {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
     if (this.state.showData) {
-      return <Data goBack={() => this.setState({ showData: false })}/>;
+      return <Data goBack={() => this.setState({ showData: false })} />;
     }
 
     return (

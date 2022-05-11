@@ -103,14 +103,16 @@ export function uninstall(type, name) {
         (content) => content.name === name,
       );
       installedContents.forEach((item, index) => {
-        const exists = packContents.quotes.find((content) => content.quote === item.quote || content.author === item.author);
+        const exists = packContents.quotes.find(
+          (content) => content.quote === item.quote || content.author === item.author,
+        );
         if (exists !== undefined) {
           installedContents.splice(index, 1);
         }
       });
       localStorage.setItem('quote_packs', JSON.stringify(installedContents));
       localStorage.removeItem('quoteAPI');
-      if (installedContents.length === 0) { 
+      if (installedContents.length === 0) {
         localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType') || 'api');
         localStorage.removeItem('oldQuoteType');
         localStorage.removeItem('quote_packs');

@@ -80,7 +80,10 @@ export default class DateSettings extends PureComponent {
           zoomSetting="zoomDate"
           switch={true}
         />
-        <SettingsItem title={getMessage('modals.main.settings.sections.time.type')} subtitle="Whether to display the date in long form or short form">
+        <SettingsItem
+          title={getMessage('modals.main.settings.sections.time.type')}
+          subtitle="Whether to display the date in long form or short form"
+        >
           <Dropdown
             name="dateType"
             onChange={(value) => this.setState({ dateType: value })}

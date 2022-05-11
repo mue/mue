@@ -13,11 +13,12 @@ export default function ResetModal({ modalClose }) {
   return (
     <div className="smallModal">
       <div className="shareHeader">
-        <span className="title">         
-        {variables.language.getMessage(
-          variables.languagecode,
-          'modals.main.settings.sections.advanced.reset_modal.title',
-        )}</span>
+        <span className="title">
+          {variables.language.getMessage(
+            variables.languagecode,
+            'modals.main.settings.sections.advanced.reset_modal.title',
+          )}
+        </span>
         <Tooltip title="Close">
           <div className="close" onClick={modalClose}>
             <MdClose />
@@ -37,7 +38,7 @@ export default function ResetModal({ modalClose }) {
         )}
       </span>
       <div className="resetFooter">
-        <button className='textButton' onClick={modalClose}>
+        <button className="textButton" onClick={modalClose}>
           <MdClose />
           Close
         </button>

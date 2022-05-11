@@ -128,7 +128,7 @@ export default class CustomSettings extends PureComponent {
     const dnd = this.customDnd.current;
     dnd.ondragover = dnd.ondragenter = (e) => {
       e.preventDefault();
-    }
+    };
 
     dnd.ondrop = (e) => {
       e.preventDefault();
@@ -142,7 +142,7 @@ export default class CustomSettings extends PureComponent {
       };
       reader.readAsDataURL(file);
       e.preventDefault();
-    }
+    };
   }
 
   render() {

@@ -100,7 +100,7 @@
   @include themed() {
     background-color: t($modal-background);
     border-radius: t($borderRadius);
-    box-shadow: 0 0 0 1px t($modal-sidebarActive);  
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
   }
   .tooltipHeader {
     display: flex;

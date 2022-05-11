@@ -209,10 +209,7 @@ export default function PhotoInformation({ info, url, api }) {
         ariaHideApp={false}
         onRequestClose={() => openShareModal(false)}
       >
-        <ShareModal
-          data={info.url}
-          modalClose={() => openShareModal(false)}
-        />
+        <ShareModal data={info.url} modalClose={() => openShareModal(false)} />
       </Modal>
       {localStorage.getItem('widgetStyle') === 'legacy' && (
         <div className="photoInformation-legacy">

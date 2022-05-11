@@ -18,7 +18,7 @@ export default class Header extends PureComponent {
       <>
         <div className="flexTopMarketplace">
           {this.props.backButton ? (
-            <div className="returnButton" onClick={this.props.clickEffect} >
+            <div className="returnButton" onClick={this.props.clickEffect}>
               <Tooltip title="back" key="backArrow">
                 <MdArrowBack className="backArrow" />
               </Tooltip>

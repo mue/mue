@@ -128,9 +128,7 @@ export default class Changelog extends PureComponent {
             className="updateImage"
           />
         ) : null}
-        <div className="updateChangelog">
-          {this.state.content}
-        </div>
+        <div className="updateChangelog">{this.state.content}</div>
         <Modal
           closeTimeoutMS={100}
           onRequestClose={() => this.setState({ showLightbox: false })}

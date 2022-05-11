@@ -72,7 +72,6 @@ export default class BackgroundSettings extends PureComponent {
   render() {
     const { getMessage } = this;
 
-    let backgroundSettings;
     const interval = (
       <SettingsItem title="Interval" subtitle="Change how often the background is updated">
         <Dropdown
@@ -176,6 +175,7 @@ export default class BackgroundSettings extends PureComponent {
       </>
     );
 
+    let backgroundSettings = APISettings;
     switch (this.state.backgroundType) {
       case 'custom':
         backgroundSettings = <CustomSettings interval={interval} />;
@@ -184,13 +184,10 @@ export default class BackgroundSettings extends PureComponent {
         backgroundSettings = <ColourSettings />;
         break;
       case 'random_colour':
-        backgroundSettings = <></>;
-        break;
       case 'random_gradient':
         backgroundSettings = <></>;
         break;
       default:
-        backgroundSettings = APISettings;
         break;
     }
 
@@ -210,15 +207,14 @@ export default class BackgroundSettings extends PureComponent {
 
     const breadcrumb = (name, toSet) => (
       <div className="breadcrumb">
-      <div onClick={() => this.setState({ [toSet]: false })}>
-        <Tooltip title="back" key="backArrow">
-          <MdArrowBack />
-        </Tooltip>
+        <div onClick={() => this.setState({ [toSet]: false })} className="settingsReturn">
+          <Tooltip title="back" key="backArrow">
+            <MdArrowBack />
+          </Tooltip>
+        </div>
+        <span className="subtitle">{name}</span>
       </div>
-      <span className="subtitle">{name}</span>
-    </div>
     );
-
 
     return (
       <>
@@ -228,12 +224,10 @@ export default class BackgroundSettings extends PureComponent {
           category="background"
           element="#backgroundImage"
         />
-        {this.state.effects ? (
-          breadcrumb('Effects', 'effects')
-        ) : null}
-        {this.state.backgroundSettingsSection ? (
-          breadcrumb('Source', 'backgroundSettingsSection')
-        ) : null}
+        {this.state.effects ? breadcrumb('Effects', 'effects') : null}
+        {this.state.backgroundSettingsSection
+          ? breadcrumb('Source', 'backgroundSettingsSection')
+          : null}
         {this.state.backgroundSettingsSection !== true && this.state.effects !== true ? (
           <>
             <div

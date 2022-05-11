@@ -32,8 +32,10 @@ export default function InfoTooltip({ children, title, style, placement, subtitl
               </div>
             </Tooltip>
           </div>
-          <span className='subtitle'>{subtitle}</span>
-          <span className='link'>Open Knowledgebase <MdOpenInNew /></span>
+          <span className="subtitle">{subtitle}</span>
+          <span className="link">
+            Open Knowledgebase <MdOpenInNew />
+          </span>
         </div>
       )}
     </div>

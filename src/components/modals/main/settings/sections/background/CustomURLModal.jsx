@@ -23,10 +23,15 @@ export default function CustomURLModal({ modalClose, modalCloseOnly }) {
         </Tooltip>
       </div>
       <div className="copy">
-        <input type='text' value={url} onChange={(e) => setURL(e.target.value)} varient="outlined" />
+        <input
+          type="text"
+          value={url}
+          onChange={(e) => setURL(e.target.value)}
+          varient="outlined"
+        />
         <Tooltip title="Add Link" placement="top">
           <button onClick={() => modalClose(url)}>
-          <MdAdd />
+            <MdAdd />
           </button>
         </Tooltip>
       </div>

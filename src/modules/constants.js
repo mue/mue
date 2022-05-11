@@ -18,7 +18,8 @@ export const REPORT_ITEM =
 export const BUG_REPORT =
   'https://github.com/mue/mue/issues/new?assignees=&labels=issue+report&template=bug-report.md&title=%5BBug%5D+';
 export const DONATE_LINK = 'https://muetab.com/donate';
-export const SENTRY_DSN = 'https://430352fd4b174d688ebd82fc85c22c58@o1217438.ingest.sentry.io/6359480';
+export const SENTRY_DSN =
+  'https://430352fd4b174d688ebd82fc85c22c58@o1217438.ingest.sentry.io/6359480';
 export const KNOWLEDGEBASE = 'https://knowledgebase.muetab.com';
 
 // Mue Info

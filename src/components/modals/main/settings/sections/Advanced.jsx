@@ -35,11 +35,11 @@ export default class AdvancedSettings extends PureComponent {
         <span className="mainTitle">
           {getMessage('modals.main.settings.sections.advanced.title')}
         </span>
-        <SettingsItem title={getMessage('modals.main.settings.sections.advanced.offline_mode')} subtitle="When enabled, all requests to online services will be disabled.">
-          <Switch
-            name="offlineMode"
-            element=".other"
-          />
+        <SettingsItem
+          title={getMessage('modals.main.settings.sections.advanced.offline_mode')}
+          subtitle="When enabled, all requests to online services will be disabled."
+        >
+          <Switch name="offlineMode" element=".other" />
         </SettingsItem>
         {localStorage.getItem('welcomePreview') !== 'true' ? (
           <div className="settingsRow">
@@ -48,7 +48,8 @@ export default class AdvancedSettings extends PureComponent {
                 {getMessage('modals.main.settings.sections.advanced.data')}
               </span>
               <span className="subtitle">
-                Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values.
+                Choose whether to export your Mue settings to your computer, import an existing
+                settings file, or reset your settings to their default values.
               </span>
             </div>
             <div className="action activityButtons">
@@ -82,7 +83,10 @@ export default class AdvancedSettings extends PureComponent {
             ))}
           </Dropdown>
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.settings.sections.advanced.tab_name')} subtitle="Change the name of the tab that appears in your browser.">
+        <SettingsItem
+          title={getMessage('modals.main.settings.sections.advanced.tab_name')}
+          subtitle="Change the name of the tab that appears in your browser."
+        >
           <Text name="tabName" default={getMessage('tabname')} category="other" />
         </SettingsItem>
         <FileUpload
@@ -91,12 +95,11 @@ export default class AdvancedSettings extends PureComponent {
           type="settings"
           loadFunction={(e) => importSettings(e)}
         />
-        <SettingsItem title={getMessage('modals.main.settings.sections.advanced.custom_css')} subtitle="Make Mue's styling customised to you with Cascading Style Sheets (CSS).">
-          <Text
-            name="customcss"
-            textarea={true}
-            category="other"
-          />
+        <SettingsItem
+          title={getMessage('modals.main.settings.sections.advanced.custom_css')}
+          subtitle="Make Mue's styling customised to you with Cascading Style Sheets (CSS)."
+        >
+          <Text name="customcss" textarea={true} category="other" />
         </SettingsItem>
         <SettingsItem
           title={getMessage('modals.main.settings.sections.experimental.title')}

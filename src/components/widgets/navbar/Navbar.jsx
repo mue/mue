@@ -90,9 +90,13 @@ export default class Navbar extends PureComponent {
           <Tooltip
             title={variables.language.getMessage(
               variables.languagecode,
-              'modals.main.navbar.settings', {
-                type: variables.language.getMessage(variables.languagecode, 'modals.main.navbar.tooltips.refresh_' + this.refreshValue),
-              }
+              'modals.main.navbar.settings',
+              {
+                type: variables.language.getMessage(
+                  variables.languagecode,
+                  'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
+                ),
+              },
             )}
           >
             <button onClick={() => this.props.openModal('mainModal')}>

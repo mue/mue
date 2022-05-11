@@ -14,11 +14,7 @@ import { shift, useFloating } from '@floating-ui/react-dom';
 //import Hotkeys from 'react-hot-keys';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 
-const SortableItem = sortableElement(({ value }) => (
-  <div>
-    {value}
-  </div>
-));
+const SortableItem = sortableElement(({ value }) => <div>{value}</div>);
 
 const SortableContainer = sortableContainer(({ children }) => <div>{children}</div>);
 

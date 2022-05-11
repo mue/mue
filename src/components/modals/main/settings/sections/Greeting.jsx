@@ -36,10 +36,7 @@ export default class GreetingSettings extends PureComponent {
           zoomSetting="zoomGreeting"
           switch={true}
         />
-        <SettingsItem
-          title="Additional Settings"
-          subtitle="Settings for the greeting display"
-        >
+        <SettingsItem title="Additional Settings" subtitle="Settings for the greeting display">
           <Checkbox
             name="events"
             text={getMessage('modals.main.settings.sections.greeting.events')}

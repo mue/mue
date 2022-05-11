@@ -15,15 +15,24 @@ export default class Data extends PureComponent {
 
     return (
       <>
-        <span className="mainTitle"  onClick={() => this.props.goBack()}>
+        <span className="mainTitle" onClick={() => this.props.goBack()}>
           {getMessage('modals.main.settings.sections.advanced.title')}
           <MdOutlineKeyboardArrowRight /> Data
         </span>
-        <div className='moreSettings' style={{ display: 'flex', flexFlow: 'column', alignItems: 'center', gap: '10px', padding: '30px'}}>
-            <MdOutlineSync />
-            <span className='title'>Sync</span>
-            {/*<span className='subtitle'>Last synced at: Sun 10:12PM, 1st May 2022</span>*/}
-            <span className='subtitle'>Sync is not setup yet.</span>
+        <div
+          className="moreSettings"
+          style={{
+            display: 'flex',
+            flexFlow: 'column',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '30px',
+          }}
+        >
+          <MdOutlineSync />
+          <span className="title">Sync</span>
+          {/*<span className='subtitle'>Last synced at: Sun 10:12PM, 1st May 2022</span>*/}
+          <span className="subtitle">Sync is not setup yet.</span>
         </div>
         <div className="settingsRow">
           <div className="content">
@@ -50,9 +59,7 @@ export default class Data extends PureComponent {
             </button>
           </div>
         </div>
-        <SettingsItem title='Sync' subtitle='Setup sync to sync lol'>
-            
-        </SettingsItem>
+        <SettingsItem title="Sync" subtitle="Setup sync to sync lol"></SettingsItem>
       </>
     );
   }
