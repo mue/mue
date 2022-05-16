@@ -16,11 +16,11 @@ jobs:
         with:
           chrome-version: latest
       - name: Download Github Release Assets
-        uses: plasmo-corp/download-release-asset@v1.0.0
+        uses: PlasmoHQ/download-release-asset@v1.0.0
         with:
           tag: ${{ github.event.inputs.tag }}
       - name: Browser Plugin Publish
-        uses: plasmo-corp/bpp@v1
+        uses: PlasmoHQ/bpp@v2
         env:
           PUPPETEER_EXECUTABLE_PATH: /opt/hostedtoolcache/chromium/latest/x64/chrome
         with:
