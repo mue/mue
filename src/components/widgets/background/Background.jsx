@@ -398,7 +398,6 @@ export default class Background extends PureComponent {
         );
 
         try {
-          // todo: refactor this mess
           const current = JSON.parse(localStorage.getItem('currentBackground'));
           if (current.type !== type) {
             this.getBackground();

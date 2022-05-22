@@ -1,3 +1,4 @@
+// todo: refactor all of this
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import {
@@ -177,7 +178,6 @@ export default class Create extends PureComponent {
       </>
     );
 
-    // todo: find a better way to do all this
     const nextDescriptionDisabled = !(
       this.state.addonMetadata.name !== undefined &&
       this.state.addonMetadata.description !== undefined &&

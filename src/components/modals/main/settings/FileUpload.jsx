@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
+import { videoCheck } from 'modules/helpers/background/widget';
 
 export default class FileUpload extends PureComponent {
   getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
@@ -21,9 +22,16 @@ export default class FileUpload extends PureComponent {
           settings[key] = localStorage.getItem(key);
         });
 
-        // todo: check for video and ignore (very easy)
-        // also look into changing the number
         const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
+        if (videoCheck(file) === true) {
+          if (settingsSize + file.size > 4850000) {
+            return toast('Not enough storage!');
+          }
+
+          return this.props.loadFunction(file);
+        }
+
+        // todo: change number
         compressAccurately(file, 200).then(async (res) => {
           if (settingsSize + res.size > 4850000) {
             return toast('Not enough storage!');

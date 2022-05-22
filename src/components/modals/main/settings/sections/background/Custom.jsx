@@ -3,6 +3,8 @@ import { PureComponent, createRef } from 'react';
 import { toast } from 'react-toastify';
 import { MdCancel, MdAddLink, MdAddPhotoAlternate, MdPersonalVideo } from 'react-icons/md';
 import EventBus from 'modules/helpers/eventbus';
+import { compressAccurately, filetoDataURL } from 'image-conversion';
+import { videoCheck } from 'modules/helpers/background/widget';
 
 import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
@@ -124,7 +126,6 @@ export default class CustomSettings extends PureComponent {
   }
 
   componentDidMount() {
-    // todo: make dnd use compression etc
     const dnd = this.customDnd.current;
     dnd.ondragover = dnd.ondragenter = (e) => {
       e.preventDefault();
@@ -133,14 +134,28 @@ export default class CustomSettings extends PureComponent {
     dnd.ondrop = (e) => {
       e.preventDefault();
       const file = e.dataTransfer.files[0];
-      const reader = new FileReader();
-      if (file.size > 2000000) {
-        return toast(this.getMessage('modals.main.file_upload_error'));
+      const settings = {};
+
+      Object.keys(localStorage).forEach((key) => {
+        settings[key] = localStorage.getItem(key);
+      });
+
+      const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
+      if (videoCheck(file) === true) {
+        if (settingsSize + file.size > 4850000) {
+          return toast('Not enough storage!');
+        }
+
+        return this.customBackground(file, false, this.state.currentBackgroundIndex);
       }
-      reader.onload = (e) => {
-        this.customBackground(e, false, this.state.customBackground.length);
-      };
-      reader.readAsDataURL(file);
+
+      compressAccurately(file, 200).then(async (res) => {
+        if (settingsSize + res.size > 4850000) {
+          return toast('Not enough storage!');
+        }
+
+        this.customBackground(await filetoDataURL(res), false, this.state.currentBackgroundIndex);
+      });
       e.preventDefault();
     };
   }

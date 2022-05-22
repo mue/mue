@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 import { MdSearch, MdMic, MdSettings } from 'react-icons/md';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 //import Hotkeys from 'react-hot-keys';
@@ -28,15 +28,14 @@ export default class Search extends PureComponent {
       classList:
         localStorage.getItem('widgetStyle') === 'legacy' ? 'searchIcons old' : 'searchIcons',
     };
+    this.micIcon = createRef();
   }
 
   startSpeechRecognition = () => {
     const voiceSearch = new window.webkitSpeechRecognition();
     voiceSearch.start();
 
-    // todo: use ref, stop being lazy
-    const micIcon = document.getElementById('micBtn');
-    micIcon.classList.add('micActive');
+    this.micIcon.current.classList.add('micActive');
 
     const searchText = document.getElementById('searchtext');
 
@@ -45,7 +44,7 @@ export default class Search extends PureComponent {
     };
 
     voiceSearch.onend = () => {
-      micIcon.classList.remove('micActive');
+      this.micIcon.current.classList.remove('micActive');
       if (searchText.value === '') {
         return;
       }
@@ -106,7 +105,7 @@ export default class Search extends PureComponent {
 
     if (localStorage.getItem('voiceSearch') === 'true') {
       microphone = (
-        <button onClick={this.startSpeechRecognition} id="micBtn">
+        <button onClick={this.startSpeechRecognition} ref={this.micIcon}>
           <MdMic className="micIcon" />
         </button>
       );
