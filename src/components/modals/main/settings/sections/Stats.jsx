@@ -59,8 +59,6 @@ export default class Stats extends PureComponent {
 
     return (
       <>
-        {/*<h2>{getMessage('modals.main.settings.sections.stats.title')}</h2>
-        <Switch name='stats' text={getMessage('modals.main.settings.sections.stats.usage')} category='stats'/>*/}
         <span className="mainTitle">{getMessage('modals.main.settings.sections.stats.title')}</span>
         <SettingsItem
           title={getMessage('modals.main.settings.reminder.title')}

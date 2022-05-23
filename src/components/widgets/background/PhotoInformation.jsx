@@ -36,13 +36,6 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
-// todo: copy link to unsplash/pexels page not image url
-const copyImage = (info) => {
-  variables.stats.postEvent('feature', 'Background copied');
-  navigator.clipboard.writeText(info.url);
-  toast('Background copied');
-};
-
 export default function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -63,7 +56,6 @@ export default function PhotoInformation({ info, url, api }) {
     'widgets.background.unsplash',
   );
   const pexels = variables.language.getMessage(variables.languagecode, 'widgets.background.pexels');
-  const photographer = info.credit.split(` ${unsplash}`)[0].split(` ${pexels}`);
 
   let credit = info.credit;
   let photo = variables.language.getMessage(variables.languagecode, 'widgets.background.credit');
@@ -121,22 +113,18 @@ export default function PhotoInformation({ info, url, api }) {
   // info is still there because we want the favourite button to work
   if (localStorage.getItem('photoInformation') === 'false') {
     return (
-      <div className="photoInformation">
-        <h1>
-          {photo} <span id="credit">{credit}</span>
-        </h1>
-        <div style={{ display: 'none' }}>
-          <span id="infoLocation">{info.location || 'N/A'}</span>
-          <span id="infoCamera">{info.camera || 'N/A'}</span>
-          <span id="infoResolution">
-            {width}x{height}
-          </span>
-        </div>
+      <div style={{ display: 'none' }}>
+        <span id="credit">{credit}</span>
+        <span id="infoLocation">{info.location || 'N/A'}</span>
+        <span id="infoCamera">{info.camera || 'N/A'}</span>
+        <span id="infoResolution">
+          {width}x{height}
+        </span>
       </div>
     );
   }
 
-  const downloadEnabled =
+  /*const downloadEnabled =
     localStorage.getItem('downloadbtn') === 'true' && !info.offline && !info.photographerURL && api;
   const downloadBackground = () => {
     if (downloadEnabled) {
@@ -153,7 +141,7 @@ export default function PhotoInformation({ info, url, api }) {
         element.style.display = 'none';
       }
     }
-  };
+  };*/
 
   let showingPhotoMap = false;
   const photoMap = () => {
@@ -209,7 +197,7 @@ export default function PhotoInformation({ info, url, api }) {
         ariaHideApp={false}
         onRequestClose={() => openShareModal(false)}
       >
-        <ShareModal data={info.url} modalClose={() => openShareModal(false)} />
+        <ShareModal data={info.photoURL || info.url} modalClose={() => openShareModal(false)} />
       </Modal>
       {localStorage.getItem('widgetStyle') === 'legacy' && (
         <div className="photoInformation-legacy">

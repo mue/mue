@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 import './sharemodal.scss';
 
-export default function ShareModal({ modalClose, data, type }) {
+export default function ShareModal({ modalClose, data }) {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   const url = variables.constants.MARKETPLACE_URL + '/share/' + btoa(data.api_name);
 
@@ -16,6 +16,10 @@ export default function ShareModal({ modalClose, data, type }) {
     navigator.clipboard.writeText(data);
     toast('Link copied!');
   };
+
+  if (!data.data) {
+    data.data.name = 'this image';
+  }
 
   return (
     <div className="smallModal">
@@ -33,7 +37,7 @@ export default function ShareModal({ modalClose, data, type }) {
             onClick={() =>
               window
                 .open(
-                  `https://twitter.com/intent/tweet?text=Check out ${data.data.name} on @getmue marketplace: ${data}`,
+                  `https://twitter.com/intent/tweet?text=Check out ${data.data.name} on @getmue: ${data}`,
                   '_blank',
                 )
                 .focus()
@@ -56,7 +60,7 @@ export default function ShareModal({ modalClose, data, type }) {
             onClick={() =>
               window
                 .open(
-                  'mailto:email@example.com?subject=Check%20out%20this%20Mue%20addon!&body=' +
+                  'mailto:email@example.com?subject=Check%20out%20this%20%on%20%Mue!&body=' +
                     data.data.name +
                     'on Mue: ' +
                     data,
@@ -68,9 +72,6 @@ export default function ShareModal({ modalClose, data, type }) {
             <MdEmail />
           </button>
         </Tooltip>
-        {/* i think that wechat has no actual share function outside of qrcodes, as the only example of a share to wechat button i've seen used this api
-         * this requires some investigating before we deploy to production
-         */}
         <Tooltip title="WeChat">
           <button
             onClick={() =>

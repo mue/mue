@@ -33,7 +33,11 @@ export default class Navbar extends PureComponent {
         this.refreshEnabled = localStorage.getItem('refresh');
         this.refreshValue = localStorage.getItem('refreshOption');
         this.forceUpdate();
-        this.setZoom();
+        try {
+          this.setZoom();
+        } catch (e) {
+          
+        }
       }
     });
 
@@ -104,13 +108,6 @@ export default class Navbar extends PureComponent {
             </button>
           </Tooltip>
         </div>
-        {/*<div className="notification">
-          <span className="title">New Update</span>
-          <span className="subtitle">
-            The newest update includes a lot of cheese plus urmm donate to david ralph on github.
-          </span>
-          <button>Learn More</button>
-        </div>*/}
       </div>
     );
 

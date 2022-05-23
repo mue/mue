@@ -224,14 +224,6 @@ export default class Create extends PureComponent {
             onInput={(e) => setMetadata(e.target.value, 'name')}
           />
         </SettingsItem>
-        {/*<SettingsItem title={getMessage('modals.main.marketplace.product.version')}>
-          <TextField
-            varient="outlined"
-            InputLabelProps={{ shrink: true }}
-            value={this.state.addonMetadata.version}
-            onInput={(e) => setMetadata(e.target.value, 'version')}
-          />
-    </SettingsItem>*/}
         <div className="settingsRow">
           <div className="content">
             <span className="title">{getMessage('modals.main.marketplace.product.version')}</span>

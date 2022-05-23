@@ -187,7 +187,6 @@ export default class CustomSettings extends PureComponent {
             </div>
           </div>
           <div className="action">
-            {/*<button onClick={() => this.uploadCustomBackground()}>{this.getMessage('modals.main.settings.sections.background.source.add_background')} <MdAddPhotoAlternate/></button>*/}
             <div className="dropzone" ref={this.customDnd}>
               <MdAddPhotoAlternate />
               <span className="title">Drop to upload</span>
@@ -200,12 +199,6 @@ export default class CustomSettings extends PureComponent {
               {this.getMessage('modals.main.settings.sections.background.source.add_url')}{' '}
               <MdAddLink />
             </button>
-            {/*<span className='subtitle'>
-              {this.getMessage('modals.main.settings.sections.background.source.custom_background')}{' '}
-              <span className="link" onClick={this.resetCustom}>
-                {this.getMessage('modals.main.settings.buttons.reset')}
-              </span>
-                  </span>*/}
           </div>
         </div>
         <FileUpload

@@ -128,11 +128,6 @@ export default class Added extends PureComponent {
       return (
         <div className="emptyItems">
           <div className="emptyNewMessage">
-            {/*<MdLocalMall />
-            <span className="title">{this.getMessage('modals.main.addons.empty.title')}</span>
-            <span className="subtitle">
-              {this.getMessage('modals.main.addons.empty.description')}
-      </span>*/}
             <MdOutlineExtensionOff />
             <span className="title">{this.getMessage('modals.main.addons.empty.title')}</span>
             <span className="subtitle">

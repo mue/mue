@@ -310,7 +310,6 @@ export default class Marketplace extends PureComponent {
         ) : (
           <span className="mainTitle">Marketplace</span>
         )}
-        {/*{featured()}*/}
         <div className="filter">
           <Dropdown
             label={this.getMessage('modals.main.addons.sort.title')}

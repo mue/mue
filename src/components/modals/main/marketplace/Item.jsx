@@ -243,13 +243,6 @@ export default class Item extends PureComponent {
               </div>
             ) : null}
             {warningHTML}
-            {/*<div className="itemWarning">
-              <div className="topRow">
-                <NewReleasesRounded />
-                <div className="title">Update</div>
-              </div>
-              <div className="subtitle">React > Vue</div>
-            </div>*/}
           </div>
         </div>
       </div>
