@@ -11,6 +11,5 @@ yarn-error.log
 .eslintcache
 stats.json
 yarn.lock
-*.zip
-
 keys.json
+*.zip

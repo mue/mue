@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
+import translations from 'modules/translations';
 
 export default class Radio extends PureComponent {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class Radio extends PureComponent {
     };
   }
 
-  handleChange = (e) => {
+  handleChange = async (e) => {
     const { value } = e.target;
 
     if (value === 'loading') {
@@ -31,10 +32,9 @@ export default class Radio extends PureComponent {
         localStorage.getItem('tabName') ===
         variables.language.getMessage(variables.languagecode, 'tabname')
       ) {
-        // todo: fix this it doesn't work and shows as undefined
         localStorage.setItem(
           'tabName',
-          import(`../../../../translations/${value.replace('-', '_')}.json`).tabname,
+          translations[value.replace('-', '_')].tabname,
         );
       }
     }

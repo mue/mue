@@ -15,7 +15,6 @@ import Tooltip from '../../helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
 import ShareModal from '../../helpers/sharemodal/ShareModal';
 //import Hotkeys from 'react-hot-keys';
-import { toast } from 'react-toastify';
 
 const toDataURL = async (url) => {
   const res = await fetch(url);

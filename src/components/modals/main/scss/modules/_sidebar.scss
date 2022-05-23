@@ -43,6 +43,7 @@
       border: none;
       background: none;
       min-width: calc(100% - 1.2em);
+      text-align: left;
 
       &:hover {
         background: t($modal-sidebarActive);

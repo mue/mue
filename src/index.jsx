@@ -15,16 +15,7 @@ import Stats from 'modules/helpers/stats';
 import I18n from '@eartharoid/i18n';
 
 // this is because of vite
-import * as de_DE from './translations/de_DE.json';
-import * as en_GB from './translations/en_GB.json';
-import * as en_US from './translations/en_US.json';
-import * as es from './translations/es.json';
-import * as fr from './translations/fr.json';
-import * as nl from './translations/nl.json';
-import * as no from './translations/no.json';
-import * as ru from './translations/ru.json';
-import * as zh_CN from './translations/zh_CN.json';
-import * as id_ID from './translations/id_ID.json';
+import translations from 'modules/translations';
 
 const languagecode = localStorage.getItem('language') || 'en_GB';
 
@@ -36,16 +27,16 @@ if (languagecode === 'en') {
 }
 
 variables.language = new I18n(variables.languagecode, {
-  de_DE,
-  en_GB,
-  en_US,
-  es,
-  fr,
-  nl,
-  no,
-  ru,
-  zh_CN,
-  id_ID,
+  de_DE: translations.de_DE,
+  en_GB: translations.en_GB,
+  en_US: translations.en_US,
+  es: translations.es,
+  fr: translations.fr,
+  nl: translations.nl,
+  no: translations.no,
+  ru: translations.ru,
+  zh_CN: translations.zh_CN,
+  id_ID: translations.id_ID,
 });
 
 // set html language tag
