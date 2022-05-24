@@ -147,7 +147,7 @@ export default class Weather extends PureComponent {
 
   render() {
     const enabled = (setting) => {
-      return localStorage.getItem(setting) === 'true';
+      return localStorage.getItem(setting) === 'true' && localStorage.getItem('weatherType') >= 3;
     };
 
     if (
@@ -162,7 +162,8 @@ export default class Weather extends PureComponent {
     }
 
     const minmax = () => {
-      const mintemp = enabled('mintemp');
+      {
+        /*const mintemp = enabled('mintemp');
       const maxtemp = enabled('maxtemp');
 
       if (!mintemp && !maxtemp) {
@@ -175,34 +176,20 @@ export default class Weather extends PureComponent {
         return (
           <span className="subtitle">{this.state.weather.temp_max + this.state.temp_text}</span>
         );
-      } else {
-        return (
-          <>
-            <span className="subtitle">{this.state.weather.temp_min + this.state.temp_text}</span>{' '}
-            <span className="subtitle"> {this.state.weather.temp_max + this.state.temp_text}</span>
-          </>
-        );
+      } else {*/
       }
+      return (
+        <>
+          <span className="subtitle">{this.state.weather.temp_min + this.state.temp_text}</span>{' '}
+          <span className="subtitle"> {this.state.weather.temp_max + this.state.temp_text}</span>
+        </>
+      );
     };
 
-    return (
-      <div className="weather">
-        <div>
-          <div className="top-weather">
-            <div>
-              <WeatherIcon name={this.state.icon} />
-              <span>{this.state.weather.temp + this.state.temp_text}</span>
-            </div>
-            <span className="minmax">{minmax()}</span>
-          </div>
-          <div className="extra-info">
-            {/*{enabled('humidity') ? <span><WiHumidity/>{this.state.weather.humidity}%</span> : null}*/}
-            {enabled('feelsliketemp') ? (
-              <span>Feels like {this.state.weather.temp_feels_like + this.state.temp_text}</span>
-            ) : null}
-            {enabled('showlocation') ? <span className="loc">{this.state.location}</span> : null}
-          </div>
-          <div className="expanded-info">
+    const expandedInfo = () => {
+      return (
+        <div className="expanded-info">
+          {/*}
             {enabled('upcomingForecast') ? (
               <>
                 <span className="subtitle">Upcoming Forecast</span>
@@ -225,54 +212,79 @@ export default class Weather extends PureComponent {
                 </div>
               </>
             ) : null}
-
+            */}
+          {localStorage.getItem('weatherType') >= 3 && (
             <span className="subtitle">Extra Information</span>
-            {enabled('cloudiness') ? (
-              <span>
-                <WiCloud className="weatherIcon" />
-                {this.state.weather.cloudiness}%
-              </span>
-            ) : null}
-            {enabled('windspeed') ? (
-              <span>
-                <WiWindy className="weatherIcon" />
-                {this.state.weather.wind_speed}
-                <span className="minmax"> m/s</span>{' '}
-                {enabled('windDirection') ? (
-                  <div className="weatherIcon">
-                    <WindDirectionIcon
-                      className="weatherIcon"
-                      degrees={this.state.weather.wind_degrees}
-                    />
-                  </div>
-                ) : null}
-              </span>
-            ) : null}
-            {enabled('atmosphericpressure') ? (
-              <span>
-                <WiBarometer className="weatherIcon" />
-                {this.state.weather.pressure}
-                <span className="minmax"> hPa</span>
-              </span>
-            ) : null}
-            {enabled('weatherdescription') ? (
-              <span>
+          )}
+          {enabled('cloudiness') ? (
+            <span>
+              <WiCloud className="weatherIcon" />
+              {this.state.weather.cloudiness}%
+            </span>
+          ) : null}
+          {enabled('windspeed') ? (
+            <span>
+              <WiWindy className="weatherIcon" />
+              {this.state.weather.wind_speed}
+              <span className="minmax"> m/s</span>{' '}
+              {enabled('windDirection') ? (
                 <div className="weatherIcon">
-                  <WeatherIcon name={this.state.icon} />
+                  <WindDirectionIcon
+                    className="weatherIcon"
+                    degrees={this.state.weather.wind_degrees}
+                  />
                 </div>
-                {this.state.weather.description}
-              </span>
-            ) : null}
-            {enabled('visibility') ? (
-              <span>
-                <MdDisabledVisible style={{ padding: '3px' }} />
-                {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', {
-                  amount: this.state.weather.visibility,
-                })}
-              </span>
-            ) : null}
-          </div>
+              ) : null}
+            </span>
+          ) : null}
+          {enabled('atmosphericpressure') ? (
+            <span>
+              <WiBarometer className="weatherIcon" />
+              {this.state.weather.pressure}
+              <span className="minmax"> hPa</span>
+            </span>
+          ) : null}
+          {enabled('weatherdescription') ? (
+            <span>
+              <div className="weatherIcon">
+                <WeatherIcon name={this.state.icon} />
+              </div>
+              {this.state.weather.description}
+            </span>
+          ) : null}
+          {enabled('visibility') ? (
+            <span>
+              <MdDisabledVisible style={{ padding: '3px' }} />
+              {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', {
+                amount: this.state.weather.visibility,
+              })}
+            </span>
+          ) : null}
         </div>
+      );
+    };
+
+    return (
+      <div className="weather">
+        <div>
+          <div className="top-weather">
+            {localStorage.getItem('weatherType') >= 1 && (
+              <div>
+                <WeatherIcon name={this.state.icon} />
+                <span>{this.state.weather.temp + this.state.temp_text}</span>
+              </div>
+            )}
+            {localStorage.getItem('weatherType') >= 2 && <span className="minmax">{minmax()}</span>}
+          </div>
+          {localStorage.getItem('weatherType') >= 2 && (
+            <div className="extra-info">
+              {/*{enabled('humidity') ? <span><WiHumidity/>{this.state.weather.humidity}%</span> : null}*/}
+              <span>Feels like {this.state.weather.temp_feels_like + this.state.temp_text}</span>
+              <span className="loc">{this.state.location}</span>
+            </div>
+          )}
+        </div>
+        {expandedInfo()}
       </div>
     );
   }

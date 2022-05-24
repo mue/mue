@@ -12,6 +12,8 @@
   width: auto;
   display: grid;
   place-items: center;
+  justify-items: start;
+  padding: 25px;
 
   &:hover {
     height: auto;

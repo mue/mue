@@ -76,6 +76,7 @@ export default class TimeSettings extends PureComponent {
             <option value="1">Basic</option>
             <option value="2">Standard</option>
             <option value="3">Expanded</option>
+            <option value="4">Custom</option>
           </Dropdown>
         </SettingsItem>
         <SettingsItem title={getMessage('modals.main.settings.sections.weather.location')}>
@@ -158,64 +159,70 @@ export default class TimeSettings extends PureComponent {
             </Dropdown>
           </SettingsItem>
         )}
-        <Checkbox
-          name="showlocation"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.show_location')}
-          category="weather"
-        />
-        <Checkbox
-          name="weatherdescription"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.show_description')}
-          category="weather"
-        />
-        <Checkbox
-          name="cloudiness"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.cloudiness')}
-          category="weather"
-        />
-        <Checkbox
-          name="humidity"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.humidity')}
-          category="weather"
-        />
-        <Checkbox
-          name="visibility"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.visibility')}
-          category="weather"
-        />
-        <Checkbox
-          name="windspeed"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.wind_speed')}
-          category="weather"
-          onChange={() =>
-            this.setState({
-              windSpeed: localStorage.getItem('windspeed') !== 'true',
-            })
-          }
-        />
-        <Checkbox
-          name="windDirection"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.wind_direction')}
-          category="weather"
-          disabled={this.state.windSpeed}
-        />
-        <Checkbox
-          name="mintemp"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.min_temp')}
-          category="weather"
-        />
-        <Checkbox
-          name="maxtemp"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.max_temp')}
-          category="weather"
-        />
-        <Checkbox name="feelsliketemp" text={'Feels like temperature'} category="weather" />
-        <Checkbox
-          name="atmosphericpressure"
-          text={getMessage('modals.main.settings.sections.weather.extra_info.atmospheric_pressure')}
-          category="weather"
-        />
-        <Checkbox name="upcomingForecast" text="Upcoming Forecast" category="weather" />
+        {localStorage.getItem('weatherType') == 4 && (
+          <SettingsItem title="Custom Settings">
+            <Checkbox
+              name="showlocation"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.show_location')}
+              category="weather"
+            />
+            <Checkbox
+              name="weatherdescription"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.show_description')}
+              category="weather"
+            />
+            <Checkbox
+              name="cloudiness"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.cloudiness')}
+              category="weather"
+            />
+            <Checkbox
+              name="humidity"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.humidity')}
+              category="weather"
+            />
+            <Checkbox
+              name="visibility"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.visibility')}
+              category="weather"
+            />
+            <Checkbox
+              name="windspeed"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.wind_speed')}
+              category="weather"
+              onChange={() =>
+                this.setState({
+                  windSpeed: localStorage.getItem('windspeed') !== 'true',
+                })
+              }
+            />
+            <Checkbox
+              name="windDirection"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.wind_direction')}
+              category="weather"
+              disabled={this.state.windSpeed}
+            />
+            <Checkbox
+              name="mintemp"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.min_temp')}
+              category="weather"
+            />
+            <Checkbox
+              name="maxtemp"
+              text={getMessage('modals.main.settings.sections.weather.extra_info.max_temp')}
+              category="weather"
+            />
+            <Checkbox name="feelsliketemp" text={'Feels like temperature'} category="weather" />
+            <Checkbox
+              name="atmosphericpressure"
+              text={getMessage(
+                'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
+              )}
+              category="weather"
+            />
+            <Checkbox name="upcomingForecast" text="Upcoming Forecast" category="weather" />
+          </SettingsItem>
+        )}
       </>
     );
   }

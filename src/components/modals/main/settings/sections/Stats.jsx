@@ -4,6 +4,7 @@ import { MdShowChart } from 'react-icons/md';
 
 import Switch from '../Switch';
 import SettingsItem from '../SettingsItem';
+import { FaTrophy } from 'react-icons/fa';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -71,19 +72,30 @@ export default class Stats extends PureComponent {
           />
         </SettingsItem>
         <div className="statsGrid">
-          <div>
-            <span>
-              {getMessage('modals.main.settings.sections.stats.sections.tabs_opened')}:{' '}
-              {this.state.stats['tabs-opened'] || 0}
-            </span>
+          <div className="statSection">
+            <span className="title">Achievements</span>
+            <div className="achievements">
+              {this.state.stats['tabs-opened'] > 10 && (
+                <div className="achievement">
+                  <FaTrophy />
+                  <div className="achievementContent">
+                    <span>10/10 IGN</span>
+                    <span className="subtitle">Opened 10 tabs</span>
+                  </div>
+                </div>
+              )}
+              {this.state.stats['tabs-opened'] > 100 && (
+                <div className="achievement">
+                  <FaTrophy />
+                  <div className="achievementContent">
+                    <span>Seasoning</span>
+                    <span className="subtitle">Opened 100 tabs</span>
+                  </div>
+                </div>
+              )}
           </div>
-          <div>
-            <span>
-              {getMessage('modals.main.settings.sections.stats.sections.tabs_opened')}:{' '}
-              {this.state.stats['tabs-opened'] || 0}
-            </span>
           </div>
-          <div>
+          <div className="statSection rightPanel">
             <MdShowChart />
             <span className="subtitle">
               {getMessage('modals.main.settings.sections.stats.sections.tabs_opened')}{' '}
