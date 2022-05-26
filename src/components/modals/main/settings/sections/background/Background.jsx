@@ -205,29 +205,39 @@ export default class BackgroundSettings extends PureComponent {
       this.state.backgroundType !== 'random_colour' &&
       this.state.backgroundType !== 'random_gradient';
 
-    const breadcrumb = (name, toSet) => (
-      <div className="breadcrumb">
-        <div onClick={() => this.setState({ [toSet]: false })} className="settingsReturn">
-          <Tooltip title="back" key="backArrow">
-            <MdArrowBack />
-          </Tooltip>
-        </div>
-        <span className="subtitle">{name}</span>
-      </div>
-    );
-
-    return (
-      <>
+    let header;
+    if (this.state.effects === true) {
+      header = (
+        <span className="mainTitle" onClick={() => this.setState({ effects: false })}>
+          {getMessage('modals.main.settings.sections.background.title')}{' '}
+          <MdOutlineKeyboardArrowRight />{' '}
+          {getMessage('modals.main.settings.sections.background.effects.title')}
+        </span>
+      );
+    } else if (this.state.backgroundSettingsSection === true) {
+      header = (
+        <span
+          className="mainTitle"
+          onClick={() => this.setState({ backgroundSettingsSection: false })}
+        >
+          {getMessage('modals.main.settings.sections.background.title')}{' '}
+          <MdOutlineKeyboardArrowRight />{' '}
+          {getMessage('modals.main.settings.sections.background.source.title')}
+        </span>
+      );
+    } else {
+      header = (
         <Header
           title={getMessage('modals.main.settings.sections.background.title')}
           setting="background"
           category="background"
           element="#backgroundImage"
         />
-        {this.state.effects ? breadcrumb('Effects', 'effects') : null}
-        {this.state.backgroundSettingsSection
-          ? breadcrumb('Source', 'backgroundSettingsSection')
-          : null}
+      );
+    }
+    return (
+      <>
+        {header}
         {this.state.backgroundSettingsSection !== true && this.state.effects !== true ? (
           <>
             <div

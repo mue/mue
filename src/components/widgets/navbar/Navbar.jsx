@@ -35,9 +35,7 @@ export default class Navbar extends PureComponent {
         this.forceUpdate();
         try {
           this.setZoom();
-        } catch (e) {
-          
-        }
+        } catch (e) {}
       }
     });
 

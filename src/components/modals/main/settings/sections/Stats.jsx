@@ -58,6 +58,16 @@ export default class Stats extends PureComponent {
       );
     }
 
+    const achievement = (name, description) => (
+      <div className="achievement">
+        <FaTrophy />
+        <div className="achievementContent">
+          <span>{name}</span>
+          <span className="subtitle">{description}</span>
+        </div>
+      </div>
+    );
+
     return (
       <>
         <span className="mainTitle">{getMessage('modals.main.settings.sections.stats.title')}</span>
@@ -72,28 +82,15 @@ export default class Stats extends PureComponent {
           />
         </SettingsItem>
         <div className="statsGrid">
-          <div className="statSection">
+          <div className="statSection leftPanel">
             <span className="title">Achievements</span>
             <div className="achievements">
-              {this.state.stats['tabs-opened'] > 10 && (
-                <div className="achievement">
-                  <FaTrophy />
-                  <div className="achievementContent">
-                    <span>10/10 IGN</span>
-                    <span className="subtitle">Opened 10 tabs</span>
-                  </div>
-                </div>
-              )}
-              {this.state.stats['tabs-opened'] > 100 && (
-                <div className="achievement">
-                  <FaTrophy />
-                  <div className="achievementContent">
-                    <span>Seasoning</span>
-                    <span className="subtitle">Opened 100 tabs</span>
-                  </div>
-                </div>
-              )}
-          </div>
+              {this.state.stats['tabs-opened'] >= 10 && achievement('10/10 IGN', 'Opened 10 tabs')}
+              {this.state.stats['tabs-opened'] >= 39 && achievement('Thank you', 'Opened 39 tabs')}
+              {this.state.stats['tabs-opened'] >= 100 && achievement('Seasoning', 'Opened 100 tabs')}
+              {(this.state.stats.marketplace && this.state.stats.marketplace['install']) >= 1 && achievement('Average Linux User', 'Installed an add-on')}
+              {(this.state.stats.marketplace && this.state.stats.marketplace['install']) >= 5 && achievement('Fully riced', 'Installed 5 add-ons')}
+            </div>
           </div>
           <div className="statSection rightPanel">
             <MdShowChart />

@@ -32,10 +32,7 @@ export default class Radio extends PureComponent {
         localStorage.getItem('tabName') ===
         variables.language.getMessage(variables.languagecode, 'tabname')
       ) {
-        localStorage.setItem(
-          'tabName',
-          translations[value.replace('-', '_')].tabname,
-        );
+        localStorage.setItem('tabName', translations[value.replace('-', '_')].tabname);
       }
     }
 

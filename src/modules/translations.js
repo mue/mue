@@ -10,16 +10,16 @@ import * as zh_CN from '../translations/zh_CN.json';
 import * as id_ID from '../translations/id_ID.json';
 
 const translations = {
-    de_DE,
-    en_GB,
-    en_US,
-    es,
-    fr,
-    nl,
-    no,
-    ru,
-    zh_CN,
-    id_ID
+  de_DE,
+  en_GB,
+  en_US,
+  es,
+  fr,
+  nl,
+  no,
+  ru,
+  zh_CN,
+  id_ID,
 };
 
 export default translations;
