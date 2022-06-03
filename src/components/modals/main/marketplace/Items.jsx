@@ -46,7 +46,11 @@ export default function Items({
           <MdAutoFixHigh />
           <span className="title">Can't find what you're looking for?</span>
           <span className="subtitle">
-            Visit the <a className="link">knowledgebase</a> to create your own.
+            Visit the{' '}
+            <a className="link" href="https://muetab.com">
+              knowledgebase
+            </a>{' '}
+            to create your own.
           </span>
         </div>
       ) : null}

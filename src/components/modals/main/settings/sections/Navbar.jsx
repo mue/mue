@@ -8,8 +8,6 @@ import Dropdown from '../Dropdown';
 import SettingsItem from '../SettingsItem';
 import Header from '../Header';
 
-import InfoTooltip from '../../../../helpers/tooltip/infoTooltip';
-
 export default function Navbar() {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   const [showRefreshOptions, setShowRefreshOptions] = useState(
@@ -26,8 +24,8 @@ export default function Navbar() {
         zoomCategory="navbar"
       />
       <SettingsItem
-        title="Extra Options"
-        subtitle="Modify navbar style and which buttons you want to display"
+        title={getMessage('modals.main.settings.additional_settings')}
+        subtitle={getMessage('modals.main.settings.sections.appearance.navbar.additional')}
         final={!showRefreshOptions}
       >
         <Checkbox
@@ -51,12 +49,12 @@ export default function Navbar() {
           category="navbar"
           onChange={setShowRefreshOptions}
         />
-        <Checkbox name="todo" text="Todos" category="navbar" />
+        <Checkbox name="todo" text={getMessage('widgets.navbar.todo')} category="navbar" />
       </SettingsItem>
       {showRefreshOptions ? (
         <SettingsItem
           title={getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
-          subtitle="Choose what is refreshed when you click the refresh button"
+          subtitle={getMessage('modals.main.settings.sections.appearance.navbar.refresh_subtitle')}
           final={true}
         >
           <Dropdown name="refreshOption" category="navbar">

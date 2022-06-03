@@ -77,6 +77,8 @@
       },
       "settings": {
         "enabled": "Enabled",
+        "open_knowledgebase": "Open Knowledgebase",
+        "additional_settings": "Additional Settings",
         "reminder": {
           "title": "NOTICE",
           "message": "In order for all of the changes to take place, the page must be refreshed."
@@ -116,8 +118,10 @@
             "datenth": "Date nth",
             "type": {
               "short": "Short",
-              "long": "Long"
+              "long": "Long",
+              "subtitle": "Whether to display the date in long form or short form"
             },
+            "type_settings": "Display settings and format for the selected date type",
             "short_date": "Short date",
             "short_format": "Short format",
             "short_separator": {
@@ -130,12 +134,18 @@
           },
           "quote": {
             "title": "Quote",
+            "additional": "Other settings to customise the style of the quote widget",
             "author_link": "Author link",
             "custom": "Custom quote",
+            "custom_subtitle": "Set your own custom quotes",
+            "author": "Author",
+            "custom_buttons": "Buttons",
             "custom_author": "Custom author",
+            "author_img": "Show author image",
             "add": "Add quote",
             "buttons": {
               "title": "Buttons",
+              "subtitle": "Choose which buttons to show on the quote",
               "copy": "Copy",
               "tweet": "Tweet",
               "favourite": "Favourite"
@@ -147,8 +157,10 @@
             "default": "Default greeting message",
             "name": "Name for greeting",
             "birthday": "Birthday",
+            "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
             "birthday_age": "Birthday age",
-            "birthday_date": "Birthday date"
+            "birthday_date": "Birthday date",
+            "additional": "Settings for the greeting display"
           },
           "background": {
             "title": "Background",
@@ -216,10 +228,13 @@
           },
           "search": {
             "title": "Search",
+            "additional": "Additional options for search widget display and functionality",
             "search_engine": "Search engine",
+            "search_engine_subtitle": "Choose search engine to use in the search bar",
             "custom": "Custom search URL",
             "autocomplete": "Autocomplete",
             "autocomplete_provider": "Autocomplete Provider",
+            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
             "voice_search": "Voice search",
             "dropdown": "Search dropdown",
             "focus": "Focus on tab open"
@@ -250,6 +265,7 @@
           },
           "quicklinks": {
             "title": "Quick Links",
+            "additional": "Additional settings for quick links display and functions",
             "open_new": "Open in new tab",
             "tooltip": "Tooltip",
             "text_only": "Show text only"
@@ -271,7 +287,9 @@
               "title": "Navbar",
               "notes": "Notes",
               "refresh": "Refresh button",
+              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
               "hover": "Only display on hover",
+              "additional": "Modify navbar style and which buttons you want to display",
               "refresh_options": {
                 "none": "None",
                 "page": "Page"
@@ -314,7 +332,9 @@
           "advanced": {
             "title": "Advanced",
             "offline_mode": "Offline mode",
+            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
             "data": "Data",
+            "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "reset_modal": {
               "title": "WARNING",
               "question": "Do you want to reset Mue?",
@@ -323,10 +343,13 @@
             },
             "customisation": "Customisation",
             "custom_css": "Custom CSS",
+            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
             "custom_js": "Custom JS",
             "tab_name": "Tab name",
+            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
             "timezone": {
               "title": "Time Zone",
+              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
               "automatic": "Automatic"
             },
             "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
@@ -397,6 +420,8 @@
             },
             "contact_us": "Contact Us",
             "support_mue": "Support Mue",
+            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
+            "support_donate": "Donate",
             "resources_used": {
               "title": "Resources used",
               "bg_images": "Offline background images"
@@ -414,6 +439,7 @@
         }
       },
       "marketplace": {
+        "all": "All",
         "photo_packs": "Photo Packs",
         "quote_packs": "Quote Packs",
         "preset_settings": "Preset Settings",
@@ -450,6 +476,7 @@
         },
         "sideload": {
           "title": "Sideload",
+          "description": "Install a Mue addon not on the marketplace from your computer",
           "failed": "Failed to sideload addon",
           "errors": {
             "no_name": "No name provided",
@@ -562,6 +589,10 @@
         "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
         "continue": "Continue setup"
       }
+    },
+    "share": {
+      "copy_link": "Copy link",
+      "email": "Email"
     }
   },
   "toasts": {
@@ -573,6 +604,7 @@
     "updated": "Successfully updated",
     "error": "Something went wrong",
     "imported": "Successfully imported",
-    "no_storage": "Not enough storage"
+    "no_storage": "Not enough storage",
+    "link_copied": "Link copied"
   }
 }

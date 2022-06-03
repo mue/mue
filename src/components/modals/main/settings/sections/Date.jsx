@@ -82,7 +82,7 @@ export default class DateSettings extends PureComponent {
         />
         <SettingsItem
           title={getMessage('modals.main.settings.sections.time.type')}
-          subtitle="Whether to display the date in long form or short form"
+          subtitle={getMessage('modals.main.settings.sections.date.type.subtitle')}
         >
           <Dropdown
             name="dateType"
@@ -103,7 +103,7 @@ export default class DateSettings extends PureComponent {
               ? getMessage('modals.main.settings.sections.date.type.long')
               : getMessage('modals.main.settings.sections.date.type.short')
           }
-          subtitle="Display settings and format for the selected date type"
+          subtitle={getMessage('modals.main.settings.sections.date.type_settings')}
           final={true}
         >
           {this.state.dateType === 'long' ? longSettings : shortSettings}

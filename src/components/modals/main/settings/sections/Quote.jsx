@@ -98,7 +98,7 @@ export default class QuoteSettings extends PureComponent {
         <>
           <SettingsItem
             title={this.getMessage('modals.main.settings.sections.quote.custom')}
-            subtitle="Set your own custom quotes"
+            subtitle={this.getMessage('modals.main.settings.sections.quote.custom_subtitle')}
             final={true}
           >
             <button onClick={() => this.modifyCustomQuote('add')}>
@@ -107,9 +107,9 @@ export default class QuoteSettings extends PureComponent {
           </SettingsItem>
           <table style={{ width: '100%' }}>
             <tr>
-              <th>Quote</th>
-              <th>Author</th>
-              <th>Buttons</th>
+              <th>{this.getMessage('modals.main.settings.sections.quote.title')}</th>
+              <th>{this.getMessage('modals.main.settings.sections.quote.author')}</th>
+              <th>{this.getMessage('modals.main.settings.sections.custom_buttons')}</th>
             </tr>
             {this.state.customQuote.map((_url, index) => (
               <tr>
@@ -150,8 +150,8 @@ export default class QuoteSettings extends PureComponent {
       // api
       customSettings = (
         <SettingsItem
-          title="Additional Options"
-          subtitle="Other settings to customise the style of the quote widget"
+          title={this.getMessage('modals.main.settings.additional_settings')}
+          subtitle={this.getMessage('modals.main.settings.sections.quote.additional')}
           final={true}
         >
           <Dropdown
@@ -181,7 +181,11 @@ export default class QuoteSettings extends PureComponent {
             text={this.getMessage('modals.main.settings.sections.quote.author_link')}
             element=".other"
           />
-          <Checkbox name="authorImg" text="Show author image" element=".other" />
+          <Checkbox
+            name="authorImg"
+            text={this.getMessage('modals.main.settings.sections.quote.author_img')}
+            element=".other"
+          />
         </SettingsItem>
       );
     }
@@ -198,7 +202,7 @@ export default class QuoteSettings extends PureComponent {
         />
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.quote.buttons.title')}
-          subtitle="Choose which buttons to show on the quote"
+          subtitle={this.getMessage('modals.main.settings.sections.quote.buttons.subtitle')}
         >
           <Checkbox
             name="copyButton"

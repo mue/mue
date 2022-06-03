@@ -14,7 +14,7 @@ export default function ShareModal({ modalClose, data }) {
 
   const copyLink = () => {
     navigator.clipboard.writeText(data);
-    toast('Link copied!');
+    toast(getMessage('modals.share.copy_link'));
   };
 
   if (!data.data) {
@@ -24,7 +24,7 @@ export default function ShareModal({ modalClose, data }) {
   return (
     <div className="smallModal">
       <div className="shareHeader">
-        <span className="title">Share</span>
+        <span className="title">{getMessage('widgets.quote.share')}</span>
         <Tooltip title="Close">
           <div className="close" onClick={modalClose}>
             <MdClose />
@@ -100,7 +100,7 @@ export default function ShareModal({ modalClose, data }) {
       </div>
       <div className="copy">
         <input type="text" value={data} className="left field" readOnly />
-        <Tooltip title="Copy link" placement="top">
+        <Tooltip title={getMessage('modals.share.copy_link')} placement="top">
           <button onClick={() => copyLink()}>
             <MdContentCopy />
           </button>

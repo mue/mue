@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 import { useState } from 'react';
 import { MdAdd, MdClose } from 'react-icons/md';
-import { TextField } from '@mui/material';
 import Tooltip from '../../../../../helpers/tooltip/Tooltip';
 
 export default function CustomURLModal({ modalClose, modalCloseOnly }) {
@@ -16,7 +15,12 @@ export default function CustomURLModal({ modalClose, modalCloseOnly }) {
             'modals.main.settings.sections.background.source.add_url',
           )}
         </span>
-        <Tooltip title="Close">
+        <Tooltip
+          title={variables.language.getMessage(
+            variables.languagecode,
+            'modals.main.settings.sections.advanced.reset_modal.cancel',
+          )}
+        >
           <div className="close" onClick={modalCloseOnly}>
             <MdClose />
           </div>
@@ -29,7 +33,13 @@ export default function CustomURLModal({ modalClose, modalCloseOnly }) {
           onChange={(e) => setURL(e.target.value)}
           varient="outlined"
         />
-        <Tooltip title="Add Link" placement="top">
+        <Tooltip
+          title={variables.language.getMessage(
+            variables.languagecode,
+            'modals.main.settings.sections.background.source.add_url',
+          )}
+          placement="top"
+        >
           <button onClick={() => modalClose(url)}>
             <MdAdd />
           </button>

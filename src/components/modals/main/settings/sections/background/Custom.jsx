@@ -131,6 +131,7 @@ export default class CustomSettings extends PureComponent {
       e.preventDefault();
     };
 
+    // todo: make this get from FileUpload.jsx to prevent duplication
     dnd.ondrop = (e) => {
       e.preventDefault();
       const file = e.dataTransfer.files[0];
@@ -143,7 +144,7 @@ export default class CustomSettings extends PureComponent {
       const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
       if (videoCheck(file) === true) {
         if (settingsSize + file.size > 4850000) {
-          return toast('Not enough storage!');
+          return toast(this.getMessage('toasts.no_storage'));
         }
 
         return this.customBackground(file, false, this.state.currentBackgroundIndex);
@@ -151,7 +152,7 @@ export default class CustomSettings extends PureComponent {
 
       compressAccurately(file, 200).then(async (res) => {
         if (settingsSize + res.size > 4850000) {
-          return toast('Not enough storage!');
+          return toast(this.getMessage('toasts.no_storage'));
         }
 
         this.customBackground(await filetoDataURL(res), false, this.state.currentBackgroundIndex);

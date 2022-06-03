@@ -32,7 +32,16 @@
     },
     "weather": {
       "not_found": "No encontrado",
-      "meters": "{amount} metros"
+      "meters": "{amount} metros",
+      "extra_information": "Extra Information",
+      "feels_like": "Feels like {amount}"
+    },
+    "quote": {
+      "link_tooltip": "Open on Wikipedia",
+      "share": "Share",
+      "copy": "Copy",
+      "favourite": "Favourite",
+      "unfavourite": "Unfavourite"
     },
     "navbar": {
       "tooltips": {
@@ -41,6 +50,11 @@
       "notes": {
         "title": "Notas",
         "placeholder": "Escribe aquí"
+      },
+      "todo": {
+        "title": "Todo",
+        "pin": "Pin",
+        "add": "Add"
       }
     }
   },
@@ -57,15 +71,25 @@
       "error_boundary": {
         "title": "Error",
         "message": "No se ha podido cargar este componente de Mue",
+        "report_error": "Send Error Report",
+        "sent": "Sent!",
         "refresh": "Recargar"
       },
       "settings": {
         "enabled": "Activado",
+        "open_knowledgebase": "Open Knowledgebase",
+        "additional_settings": "Additional Settings",
         "reminder": {
           "title": "AVISO",
           "message": "Para que se produzcan todos los cambios hay que recargar la página."
         },
         "sections": {
+          "header": {
+            "more_info": "More info",
+            "report_issue": "Report Issue",
+            "enabled": "Choose whether or not to show this widget",
+            "size": "Slider to control how large the widget is"
+          },
           "time": {
             "title": "Tiempo",
             "format": "Formato",
@@ -94,8 +118,10 @@
             "datenth": "Fecha nth",
             "type": {
               "short": "Corto",
-              "long": "Largo"
+              "long": "Largo",
+              "subtitle": "Whether to display the date in long form or short form"
             },
+            "type_settings": "Display settings and format for the selected date type",
             "short_date": "Fecha corta",
             "short_format": "Formato corto",
             "short_separator": {
@@ -108,12 +134,18 @@
           },
           "quote": {
             "title": "Cita",
+            "additional": "Other settings to customise the style of the quote widget",
             "author_link": "Enlace del autor",
             "custom": "Cita personalizada",
+            "custom_subtitle": "Set your own custom quotes",
+            "author": "Author",
+            "custom_buttons": "Buttons",
             "custom_author": "Autor personalizado",
+            "author_img": "Show author image",
             "add": "Añadir cita",
             "buttons": {
               "title": "Botones",
+              "subtitle": "Choose which buttons to show on the quote",
               "copy": "Botón de copiar",
               "tweet": "Botón de Tweet",
               "favourite": "Botón de favoritos"
@@ -125,8 +157,10 @@
             "default": "Mensaje del saludo por defecto",
             "name": "Nombre para el saludo",
             "birthday": "Cumpleaños",
+            "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
             "birthday_age": "Edad de cumpleaños",
-            "birthday_date": "Fecha de cumpleaños"
+            "birthday_date": "Fecha de cumpleaños",
+            "additional": "Settings for the greeting display"
           },
           "background": {
             "title": "Fondo",
@@ -194,10 +228,13 @@
           },
           "search": {
             "title": "Búsqueda",
+            "additional": "Additional options for search widget display and functionality",
             "search_engine": "Motor de búsqueda",
+            "search_engine_subtitle": "Choose search engine to use in the search bar",
             "custom": "URL de búsqueda personalizada",
             "autocomplete": "Autocompletado",
             "autocomplete_provider": "Proveedor del autocompletado",
+            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
             "voice_search": "Búsqueda por voz",
             "dropdown": "Search dropdown",
             "focus": "Focus on tab open"
@@ -228,6 +265,7 @@
           },
           "quicklinks": {
             "title": "Enlaces rápidos",
+            "additional": "Additional settings for quick links display and functions",
             "open_new": "Abrir en una nueva pestaña",
             "tooltip": "Descripción emergente",
             "text_only": "Mostrar solo texto"
@@ -249,7 +287,9 @@
               "title": "Barra de búsqueda",
               "notes": "Notas",
               "refresh": "Botón de recargar",
+              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
               "hover": "Solo mostrar al pasar el cursor",
+              "additional": "Modify navbar style and which buttons you want to display",
               "refresh_options": {
                 "none": "Ninguno",
                 "page": "Página"
@@ -292,7 +332,9 @@
           "advanced": {
             "title": "Avanzado",
             "offline_mode": "Modo sin conexión",
+            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
             "data": "Datos",
+            "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "reset_modal": {
               "title": "ADVERTENCIA",
               "question": "¿Quieres reiniciar Mue?",
@@ -301,10 +343,13 @@
             },
             "customisation": "Personalización",
             "custom_css": "CSS personalizado",
+            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
             "custom_js": "JS personalizado",
             "tab_name": "Nombre de la pestaña",
+            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
             "timezone": {
               "title": "Zona horaria",
+              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
               "automatic": "Automático"
             },
             "experimental_warning": "Por favor, ten en cuenta que el equipo de Mue no puede dar soporte si tienes el modo experimental activado. Por favor, desactívalo primero y comprueba si el problema sigue ocurriendo antes de contactar con el equipo de soporte."
@@ -375,6 +420,8 @@
             },
             "contact_us": "Contacto",
             "support_mue": "Apoya Mue",
+            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
+            "support_donate": "Donate",
             "resources_used": {
               "title": "Recursos usados",
               "bg_images": "Imágenes de fondo sin conexión"
@@ -392,6 +439,7 @@
         }
       },
       "marketplace": {
+        "all": "All",
         "photo_packs": "Paquetes de fotos",
         "quote_packs": "Paquetes de citas",
         "preset_settings": "Ajustes preestablecidos",
@@ -428,6 +476,7 @@
         },
         "sideload": {
           "title": "Cargar localmente",
+          "description": "Install a Mue addon not on the marketplace from your computer",
           "failed": "Fallo en la carga lateral del complemento",
           "errors": {
             "no_name": "No se ha indicado el nombre",
@@ -540,6 +589,10 @@
         "description": "Actualmente se encuentra en el modo de vista previa. La configuración se restablecerá al cerrar esta pestaña.",
         "continue": "Continuar con la configuración"
       }
+    },
+    "share": {
+      "copy_link": "Copy link",
+      "email": "Email"
     }
   },
   "toasts": {
@@ -550,6 +603,8 @@
     "uninstalled": "Desinstalado correctamente",
     "updated": "Actualizado correctamente",
     "error": "Algo salió mal",
-    "imported": "Importado correctamente"
+    "imported": "Importado correctamente",
+    "no_storage": "Not enough storage",
+    "link_copied": "Link copied"
   }
 }

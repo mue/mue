@@ -6,8 +6,8 @@ import {
   MdUpload as ImportIcon,
   MdDownload as ExportIcon,
   MdRestartAlt as ResetIcon,
-  MdDataUsage,
-  MdOutlineKeyboardArrowRight,
+  /* MdDataUsage, */
+  /* MdOutlineKeyboardArrowRight, */
 } from 'react-icons/md';
 
 import { exportSettings, importSettings } from 'modules/helpers/settings/modals';
@@ -44,7 +44,7 @@ export default class AdvancedSettings extends PureComponent {
         <span className="mainTitle">
           {getMessage('modals.main.settings.sections.advanced.title')}
         </span>
-        {localStorage.getItem('welcomePreview') !== 'true' ? (
+        {/* {localStorage.getItem('welcomePreview') !== 'true' ? (
           <div className="moreSettings" onClick={() => this.setState({ showData: true })}>
             <div className="left">
               <MdDataUsage />
@@ -62,14 +62,13 @@ export default class AdvancedSettings extends PureComponent {
               <MdOutlineKeyboardArrowRight />
             </div>
           </div>
-        ) : null}
+        ) : null} */}
         <SettingsItem
           title={getMessage('modals.main.settings.sections.advanced.offline_mode')}
           subtitle="When enabled, all requests to online services will be disabled."
         >
           <Switch name="offlineMode" element=".other" />
         </SettingsItem>
-        {/*
         {localStorage.getItem('welcomePreview') !== 'true' ? (
           <div className="settingsRow">
             <div className="content">
@@ -97,7 +96,6 @@ export default class AdvancedSettings extends PureComponent {
             </div>
           </div>
         ) : null}
-        */}
         <SettingsItem
           title={getMessage('modals.main.settings.sections.advanced.timezone.title')}
           subtitle="Choose a timezone from a list instead of the automatic default from your computer."

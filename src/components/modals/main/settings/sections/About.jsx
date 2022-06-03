@@ -219,14 +219,11 @@ export default class About extends PureComponent {
           <span className="title">
             {this.getMessage('modals.main.settings.sections.about.support_mue')}
           </span>
-          <p>
-            As Mue is entirely free, we rely on donations to cover pay the server bills and fund
-            development
-          </p>
+          <p>{this.getMessage('modals.main.settings.sections.about.support_subtitle')}</p>
           <div className="aboutContact">
             <a className="donateButton" href={variables.constants.DONATE_LINK}>
               <BiDonateHeart />
-              Donate
+              {this.getMessage('modals.main.settings.sections.about.support_donate')}
             </a>
             <Tooltip title={'GitHub Sponsors'}>
               <a

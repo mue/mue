@@ -118,6 +118,7 @@ export default function AppearanceSettings() {
       >
         <Radio
           name="widgetStyle"
+          element=".other"
           options={[
             {
               name: 'Legacy',

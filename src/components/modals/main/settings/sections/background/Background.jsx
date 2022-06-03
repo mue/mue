@@ -1,12 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MenuItem } from '@mui/material';
-import {
-  MdSource,
-  MdOutlineKeyboardArrowRight,
-  MdOutlineAutoAwesome,
-  MdArrowBack,
-} from 'react-icons/md';
+import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
 
 import Header from '../../Header';
 import Checkbox from '../../Checkbox';
@@ -14,7 +9,6 @@ import Dropdown from '../../Dropdown';
 import Slider from '../../Slider';
 import Radio from '../../Radio';
 import SettingsItem from '../../SettingsItem';
-import Tooltip from '../../../../../helpers/tooltip/Tooltip';
 
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';

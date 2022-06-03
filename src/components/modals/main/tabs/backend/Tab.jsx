@@ -129,7 +129,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
       icon = <Create />;
       break;
 
-    case 'All':
+    case getMessage('modals.main.marketplace.all'):
       icon = <Addons />;
       divider = true;
       break;

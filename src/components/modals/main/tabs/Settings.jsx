@@ -48,9 +48,9 @@ export default function Settings(props) {
       <div label={getMessage('modals.main.settings.sections.date.title')} name="date">
         <Date />
       </div>
-      <div label="Reminder" name="reminder">
+      {/*<div label="Reminder" name="reminder">
         <Reminder />
-      </div>
+  </div>*/}
       <div label={getMessage('modals.main.settings.sections.message.title')} name="message">
         <Message />
       </div>
@@ -63,7 +63,6 @@ export default function Settings(props) {
       <div label={getMessage('modals.main.settings.sections.weather.title')} name="weather">
         <Weather />
       </div>
-
       <div label={getMessage('modals.main.settings.sections.order.title')} name="order">
         <Order />
       </div>

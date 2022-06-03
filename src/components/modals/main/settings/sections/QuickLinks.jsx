@@ -21,8 +21,8 @@ export default function QuickLinks() {
         switch={true}
       />
       <SettingsItem
-        title="Extra Options"
-        subtitle="Additional settings for quick links display and functions"
+        title={getMessage('modals.main.settings.additional_settings')}
+        subtitle={getMessage('modals.main.settings.sections.quicklinks.additional')}
         final={true}
       >
         <Checkbox

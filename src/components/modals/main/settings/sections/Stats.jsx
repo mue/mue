@@ -87,9 +87,12 @@ export default class Stats extends PureComponent {
             <div className="achievements">
               {this.state.stats['tabs-opened'] >= 10 && achievement('10/10 IGN', 'Opened 10 tabs')}
               {this.state.stats['tabs-opened'] >= 39 && achievement('Thank you', 'Opened 39 tabs')}
-              {this.state.stats['tabs-opened'] >= 100 && achievement('Seasoning', 'Opened 100 tabs')}
-              {(this.state.stats.marketplace && this.state.stats.marketplace['install']) >= 1 && achievement('Average Linux User', 'Installed an add-on')}
-              {(this.state.stats.marketplace && this.state.stats.marketplace['install']) >= 5 && achievement('Fully riced', 'Installed 5 add-ons')}
+              {this.state.stats['tabs-opened'] >= 100 &&
+                achievement('Seasoning', 'Opened 100 tabs')}
+              {(this.state.stats.marketplace && this.state.stats.marketplace['install']) >= 1 &&
+                achievement('Average Linux User', 'Installed an add-on')}
+              {(this.state.stats.marketplace && this.state.stats.marketplace['install']) >= 5 &&
+                achievement('Fully riced', 'Installed 5 add-ons')}
             </div>
           </div>
           <div className="statSection rightPanel">

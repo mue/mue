@@ -35,7 +35,6 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
-
 const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
 export default function PhotoInformation({ info, url, api }) {

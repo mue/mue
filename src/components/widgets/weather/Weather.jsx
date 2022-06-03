@@ -214,7 +214,12 @@ export default class Weather extends PureComponent {
             ) : null}
             */}
           {localStorage.getItem('weatherType') >= 3 && (
-            <span className="subtitle">{variables.language.getMessage(variables.languagecode, 'widgets.weather.extra_information')}</span>
+            <span className="subtitle">
+              {variables.language.getMessage(
+                variables.languagecode,
+                'widgets.weather.extra_information',
+              )}
+            </span>
           )}
           {enabled('cloudiness') ? (
             <span>
@@ -279,9 +284,15 @@ export default class Weather extends PureComponent {
           {localStorage.getItem('weatherType') >= 2 && (
             <div className="extra-info">
               {/*{enabled('humidity') ? <span><WiHumidity/>{this.state.weather.humidity}%</span> : null}*/}
-              <span>{variables.language.getMessage(variables.languagecode, 'widgets.weather.feels_like', {
-                amount: this.state.weather.temp_feels_like + this.state.temp_text
-              })}</span>
+              <span>
+                {variables.language.getMessage(
+                  variables.languagecode,
+                  'widgets.weather.feels_like',
+                  {
+                    amount: this.state.weather.temp_feels_like + this.state.temp_text,
+                  },
+                )}
+              </span>
               <span className="loc">{this.state.location}</span>
             </div>
           )}

@@ -81,8 +81,8 @@ export default class SearchSettings extends PureComponent {
           switch={true}
         />
         <SettingsItem
-          title="Extra Options"
-          subtitle="Additional options for search widget display and functionality"
+          title={this.getMessage('modals.main.settings.additional_settings')}
+          subtitle={this.getMessage('modals.main.settings.sections.search.additional')}
         >
           {/* not supported on firefox */}
           {navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined' ? (
@@ -126,7 +126,7 @@ export default class SearchSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.search.search_engine')}
-          subtitle="Choose search engine to use in the search bar"
+          subtitle={this.getMessage('modals.main.settings.sections.search.search_engine_subtitle')}
         >
           <Dropdown
             name="searchEngine"
@@ -145,7 +145,9 @@ export default class SearchSettings extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')}
-          subtitle="Search engine to use for autocomplete dropdown results"
+          subtitle={this.getMessage(
+            'modals.main.settings.sections.search.autocomplete_provider_subtitle',
+          )}
           final={true}
         >
           <Radio options={autocompleteProviders} name="autocompleteProvider" category="search" />

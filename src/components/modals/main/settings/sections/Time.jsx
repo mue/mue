@@ -5,12 +5,12 @@ import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Radio from '../Radio';
-import Slider from '../Slider';
-import Switch from '../Switch';
+//import Slider from '../Slider';
+//import Switch from '../Switch';
 
 import SettingsItem from '../SettingsItem';
 
-import { values } from 'modules/helpers/settings/modals';
+//import { values } from 'modules/helpers/settings/modals';
 
 export default class TimeSettings extends PureComponent {
   constructor() {
@@ -128,7 +128,7 @@ export default class TimeSettings extends PureComponent {
           </Dropdown>
         </SettingsItem>
         {timeSettings}
-        <SettingsItem
+        {/*<SettingsItem
           title="Pomodoro"
           subtitle="The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, typically 25 minutes in length, separated by short breaks"
           final={true}
@@ -159,7 +159,7 @@ export default class TimeSettings extends PureComponent {
             marks={values('pomodoroBreak')}
             display={' ms'}
           />
-        </SettingsItem>
+    </SettingsItem>*/}
       </>
     );
   }
