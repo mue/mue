@@ -22,33 +22,34 @@ import Interval from 'modules/helpers/interval';
 import EventBus from 'modules/helpers/eventbus';
 
 import './quote.scss';
-import { getInitColorSchemeScript } from '@mui/material';
+
+const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
 export default class Quote extends PureComponent {
   buttons = {
     share: (
-      <Tooltip title="Share">
+      <Tooltip title={getMessage('widgets.quote.share')}>
         <button onClick={() => this.setState({ shareModal: true })}>
           <MdIosShare className="copyButton" />
         </button>
       </Tooltip>
     ),
     copy: (
-      <Tooltip title="Copy">
+      <Tooltip title={getMessage('widgets.quote.copy')}>
         <button onClick={() => this.copyQuote()}>
           <MdContentCopy className="copyButton" />
         </button>
       </Tooltip>
     ),
     unfavourited: (
-      <Tooltip title="Favourite">
+      <Tooltip title={getMessage('widgets.quote.favourite')}>
         <button onClick={() => this.favourite()}>
           <MdStarBorder className="copyButton" />
         </button>
       </Tooltip>
     ),
     favourited: (
-      <Tooltip title="Unfavourite">
+      <Tooltip title={getMessage('widgets.quote.unfavourite')}>
         <button onClick={() => this.favourite()}>
           <MdStar className="copyButton" />
         </button>
@@ -298,7 +299,7 @@ export default class Quote extends PureComponent {
   copyQuote() {
     variables.stats.postEvent('feature', 'Quote copied');
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
-    toast(variables.language.getMessage(variables.languagecode, 'toasts.quote'));
+    toast(getMessage('toasts.quote'));
   }
 
   tweetQuote() {
@@ -461,13 +462,14 @@ export default class Quote extends PureComponent {
                   </div>
                 ) : (
                   <div className="author-content whileLoading" ref={this.quoteauthor}>
+                    {/* these are placeholders for skeleton and as such don't need translating */}
                     <span className="title">loading</span>
                     <span className="subtitle">loading</span>
                   </div>
                 )}
                 <div className="quote-buttons">
                   {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== '' ? (
-                    <Tooltip title="Open On Wikipedia">
+                    <Tooltip title={getMessage('widgets.quote.link_tooltip')}>
                       <a
                         href={this.state.authorlink}
                         className="quoteAuthorLink"

@@ -19,7 +19,12 @@ export default function ResetModal({ modalClose }) {
             'modals.main.settings.sections.advanced.reset_modal.title',
           )}
         </span>
-        <Tooltip title="Close">
+        <Tooltip
+          title={variables.language.getMessage(
+            variables.languagecode,
+            'modals.main.settings.sections.advanced.reset_modal.cancel',
+          )}
+        >
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>
@@ -40,11 +45,17 @@ export default function ResetModal({ modalClose }) {
       <div className="resetFooter">
         <button className="textButton" onClick={modalClose}>
           <MdClose />
-          Close
+          {variables.language.getMessage(
+            variables.languagecode,
+            'modals.main.settings.sections.advanced.reset_modal.cancel',
+          )}
         </button>
         <button onClick={() => reset()}>
           <MdRestartAlt />
-          Reset
+          {variables.language.getMessage(
+            variables.languagecode,
+            'modals.main.settings.buttons.reset',
+          )}
         </button>
       </div>
     </div>

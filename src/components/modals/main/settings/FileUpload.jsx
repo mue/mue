@@ -25,7 +25,7 @@ export default class FileUpload extends PureComponent {
         const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
         if (videoCheck(file) === true) {
           if (settingsSize + file.size > 4850000) {
-            return toast('Not enough storage!');
+            return toast(this.getMessage('toasts.no_storage'));
           }
 
           return this.props.loadFunction(file);
@@ -34,7 +34,7 @@ export default class FileUpload extends PureComponent {
         // todo: change number
         compressAccurately(file, 200).then(async (res) => {
           if (settingsSize + res.size > 4850000) {
-            return toast('Not enough storage!');
+            return toast(this.getMessage('toasts.no_storage'));
           }
 
           this.props.loadFunction({

@@ -89,21 +89,37 @@ export default class Tabs extends PureComponent {
                 onClick={() => this.props.changeTab('settings')}
               >
                 <MdSettings />
-                <span>Settings</span>
+                <span>
+                  {' '}
+                  {variables.language.getMessage(
+                    variables.languagecode,
+                    'modals.main.navbar.settings',
+                  )}
+                </span>
               </button>
               <button
                 className={'navbar-item' + addonsActive}
                 onClick={() => this.props.changeTab('addons')}
               >
                 <MdOutlineExtension />
-                <span>Add-ons</span>
+                <span>
+                  {variables.language.getMessage(
+                    variables.languagecode,
+                    'modals.main.navbar.addons',
+                  )}
+                </span>
               </button>
               <button
                 className={'navbar-item' + marketplaceActive}
                 onClick={() => this.props.changeTab('marketplace')}
               >
                 <MdOutlineShoppingBasket />
-                <span>Marketplace</span>
+                <span>
+                  {variables.language.getMessage(
+                    variables.languagecode,
+                    'modals.main.navbar.marketplace',
+                  )}
+                </span>
               </button>
             </div>
             {this.props.children.map((tab) => {

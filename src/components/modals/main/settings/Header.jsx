@@ -38,7 +38,7 @@ export default class Header extends PureComponent {
               )
             }
           >
-            <MdHelpOutline /> More Info
+            <MdHelpOutline /> {getMessage('modals.main.settings.sections.header.more_info')}
           </span>
           <span
             className="link"
@@ -49,13 +49,13 @@ export default class Header extends PureComponent {
               )
             }
           >
-            <MdFlag /> Report Issue
+            <MdFlag /> {getMessage('modals.main.settings.sections.header.report_issue')}
           </span>
         </div>
         {this.props.switch ? (
           <SettingsItem
             title={getMessage('modals.main.settings.enabled')}
-            subtitle="Choose whether or not to show this widget"
+            subtitle={getMessage('modals.main.settings.sections.header.enabled')}
           >
             <Switch
               name={this.props.setting}
@@ -69,7 +69,7 @@ export default class Header extends PureComponent {
         {this.props.zoomSetting ? (
           <SettingsItem
             title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')}
-            subtitle="Slider to control how large the widget is"
+            subtitle={getMessage('modals.main.settings.sections.header.size')}
           >
             <Slider
               name={this.props.zoomSetting}

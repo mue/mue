@@ -17,7 +17,7 @@
     "@floating-ui/react-dom": "^0.7.0",
     "@fontsource/lexend-deca": "4.4.5",
     "@fontsource/montserrat": "4.4.5",
-    "@mui/material": "5.7.0",
+    "@mui/material": "5.8.2",
     "@sentry/react": "^6.19.7",
     "image-conversion": "^2.1.1",
     "react": "^18.1.0",
@@ -25,21 +25,21 @@
     "react-color-gradient-picker": "0.1.2",
     "react-dom": "^18.1.0",
     "react-hot-keys": "2.7.2",
-    "react-icons": "^4.3.1",
+    "react-icons": "^4.4.0",
     "react-modal": "3.15.1",
     "react-sortable-hoc": "2.0.0",
-    "react-toastify": "9.0.0"
+    "react-toastify": "9.0.3"
   },
   "devDependencies": {
     "@eartharoid/deep-merge": "^0.0.2",
     "@vitejs/plugin-react": "^1.3.2",
-    "eslint": "^8.15.0",
+    "eslint": "^8.16.0",
     "eslint-config-react-app": "^7.0.1",
     "prettier": "^2.6.2",
-    "sass": "^1.51.0",
-    "stylelint": "^14.8.2",
+    "sass": "^1.52.2",
+    "stylelint": "^14.8.5",
     "stylelint-config-prettier-scss": "^0.0.1",
-    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-config-standard-scss": "^4.0.0",
     "vite": "^2.9.9"
   },
   "scripts": {

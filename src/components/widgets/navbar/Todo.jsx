@@ -144,15 +144,15 @@ class Todo extends PureComponent {
             <div className="flexTodo">
               <div className="topBarNotes" style={{ display: 'flex' }}>
                 <MdChecklist />
-                <span>Todo</span>
+                <span>{variables.language.getMessage(variables.languagecode, 'widgets.navbar.todo.title')}</span>
               </div>
               <div className="notes-buttons">
-                <Tooltip title="Pin">
+                <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.todo.pin')}>
                   <button onClick={() => this.pin()}>
                     <MdPushPin />
                   </button>
                 </Tooltip>
-                <Tooltip title={'Add'}>
+                <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.todo.add')}>
                   <button onClick={() => this.updateTodo('add')}>
                     <MdPlaylistAdd />
                   </button>

@@ -49,9 +49,19 @@ export default class ErrorBoundary extends PureComponent {
             </span>
             <div className="buttonsRow">
               {this.state.showReport ? (
-                <button onClick={() => this.reportError()}>Send Error Report</button>
+                <button onClick={() => this.reportError()}>
+                  {variables.language.getMessage(
+                    variables.languagecode,
+                    'modals.main.error_boundary.report_error',
+                  )}
+                </button>
               ) : (
-                <span className="subtitle">Sent!</span>
+                <span className="subtitle">
+                  {variables.language.getMessage(
+                    variables.languagecode,
+                    'modals.main.error_boundary.sent',
+                  )}
+                </span>
               )}
               <button className="refresh" onClick={() => window.location.reload()}>
                 {variables.language.getMessage(

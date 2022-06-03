@@ -32,7 +32,16 @@
     },
     "weather": {
       "not_found": "Not Found",
-      "meters": "{amount} metres"
+      "meters": "{amount} metres",
+      "extra_information": "Extra Information",
+      "feels_like": "Feels like {amount}"
+    },
+    "quote": {
+      "link_tooltip": "Open on Wikipedia",
+      "share": "Share",
+      "copy": "Copy",
+      "favourite": "Favourite",
+      "unfavourite": "Unfavourite"
     },
     "navbar": {
       "tooltips": {
@@ -41,6 +50,11 @@
       "notes": {
         "title": "Notes",
         "placeholder": "Type here"
+      },
+      "todo": {
+        "title": "Todo",
+        "pin": "Pin",
+        "add": "Add"
       }
     }
   },
@@ -51,12 +65,14 @@
       "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Settings",
-        "addons": "My Add-ons",
+        "addons": "Add-ons",
         "marketplace": "Marketplace"
       },
       "error_boundary": {
         "title": "Error",
         "message": "Failed to load this component of Mue",
+        "report_error": "Send Error Report",
+        "sent": "Sent!",
         "refresh": "Refresh"
       },
       "settings": {
@@ -66,6 +82,12 @@
           "message": "In order for all of the changes to take place, the page must be refreshed."
         },
         "sections": {
+          "header": {
+            "more_info": "More info",
+            "report_issue": "Report Issue",
+            "enabled": "Choose whether or not to show this widget",
+            "size": "Slider to control how large the widget is"
+          },
           "time": {
             "title": "Time",
             "format": "Format",
@@ -550,6 +572,7 @@
     "uninstalled": "Successfully removed",
     "updated": "Successfully updated",
     "error": "Something went wrong",
-    "imported": "Successfully imported"
+    "imported": "Successfully imported",
+    "no_storage": "Not enough storage"
   }
 }

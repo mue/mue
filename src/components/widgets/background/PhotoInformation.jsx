@@ -35,13 +35,16 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
+
+const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
+
 export default function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [usePhotoMap, setPhotoMap] = useState(false);
   const [setMapIcon] = useState(true);
   const [showExtraInfo, setshowExtraInfo] = useState(false);
-  const [showOld, setShowOld] = useState(true);
+  //const [showOld, setShowOld] = useState(true);
   const [other, setOther] = useState(false);
   const [shareModal, openShareModal] = useState(false);
 
@@ -268,13 +271,13 @@ export default function PhotoInformation({ info, url, api }) {
           {showExtraInfo || other ? (
             <>
               <div className="concept-buttons">
-                <Tooltip title="Share" key="share">
+                <Tooltip title={getMessage('widgets.quote.share')} key="share">
                   <Share onClick={() => openShareModal(true)} />
                 </Tooltip>
-                <Tooltip title="Favourite" key="favourite">
+                <Tooltip title={getMessage('widgets.quote.favourite')} key="favourite">
                   <Favourite />
                 </Tooltip>
-                <Tooltip title="Download" key="download">
+                <Tooltip title={getMessage('widgets.background.download')} key="download">
                   <Download onClick={() => downloadImage(info)} />
                 </Tooltip>
               </div>
