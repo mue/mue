@@ -55,11 +55,13 @@
   align-content: space-between !important;
   flex-wrap: wrap !important;
   flex-direction: row !important;
+
   button:not(:first-child) {
     width: 40% !important;
     height: 99px !important;
     flex-flow: column-reverse !important;
   }
+
   button {
     @include modal-button(standard);
   }
@@ -74,21 +76,24 @@ table {
         padding: 1rem;
       }
     }
+
     tr {
       th:last-child {
         display: grid;
         place-items: center;
       }
     }
+
+    ::placeholder {
+      color: t($subColor);
+    }
+
     tr:not(:first-child) {
       background: t($modal-sidebar);
       textarea {
         width: 90%;
         margin: 10px;
         color: t($color);
-        ::placeholder {
-          color: t($color);
-        }
       }
     }
   }

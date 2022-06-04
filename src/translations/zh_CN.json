@@ -94,8 +94,10 @@
             "title": "时间",
             "format": "格式",
             "type": "类型",
+            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
             "digital": {
               "title": "数字时钟",
+              "subtitle": "Change how the digital clock looks",
               "seconds": "显示秒",
               "twentyfourhour": "使用 24 小时制",
               "twelvehour": "使用 12 小时制",
@@ -103,6 +105,7 @@
             },
             "analogue": {
               "title": "模拟时钟",
+              "subtitle": "Change how the analogue clock looks",
               "second_hand": "秒针",
               "minute_hand": "分针",
               "hour_hand": "时针",
@@ -205,6 +208,9 @@
               "upload": "选择",
               "add_colour": "添加颜色",
               "add_background": "继续添加背景",
+              "drop_to_upload": "Drop to upload",
+              "formats": "Available formats: {list}",
+              "select": "Or Select",
               "add_url": "Add URL",
               "disabled": "已禁用",
               "loop_video": "循环播放",
@@ -273,6 +279,7 @@
           "message": {
             "title": "消息",
             "add": "继续添加消息",
+            "messages": "Messages",
             "text": "文本"
           },
           "appearance": {
@@ -366,7 +373,8 @@
               "settings_changed": "更改的设置",
               "addons_installed": "添加的插件"
             },
-            "usage": "启用统计"
+            "usage": "启用统计",
+            "achievements": "Achievements"
           },
           "keybinds": {
             "title": "快捷键",
@@ -444,16 +452,29 @@
         "quote_packs": "名言包",
         "preset_settings": "预设设定",
         "no_items": "本类别为空",
+        "explore_collection": "Explore Collection",
+        "cant_find": "Can't find what you're looking for?",
+        "knowledgebase_one": "Visit the",
+        "knowledgebase_two": "knowledgebase",
+        "knowledgebase_three": "to create your own.",
         "product": {
           "overview": "总览",
           "information": "信息",
           "last_updated": "更新日期",
+          "description": "Description",
+          "show_more": "Show More",
+          "show_less": "Show Less",
+          "no_images": "No. Images",
+          "no_quotes": "No. Quotes",
           "version": "版本",
           "author": "作者",
+          "part_of": "Part of",
+          "explore": "Explore",
           "buttons": {
             "addtomue": "添加至 Mue",
             "remove": "卸载",
-            "update_addon": "Update Add-on"
+            "update_addon": "Update Add-on",
+            "back": "Back"
           },
           "quote_warning": {
             "title": "注意",

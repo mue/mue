@@ -49,7 +49,7 @@ export default function Navbar() {
           category="navbar"
           onChange={setShowRefreshOptions}
         />
-        <Checkbox name="todo" text={getMessage('widgets.navbar.todo')} category="navbar" />
+        <Checkbox name="todo" text={getMessage('widgets.navbar.todo.title')} category="navbar" />
       </SettingsItem>
       {showRefreshOptions ? (
         <SettingsItem

@@ -147,7 +147,7 @@ export default class Create extends PureComponent {
 
     const chooseType = (
       <>
-        <div className="smallBanner">
+        {/*<div className="smallBanner">
           <div className="content">
             <span className="title">Help Centre</span>
             <span className="subtitle">
@@ -158,7 +158,7 @@ export default class Create extends PureComponent {
             Open Site
             <MdOpenInNew />
           </button>
-        </div>
+    </div>*/}
         <div className="themesToggleArea">
           <div className="options">
             <div className="toggle lightTheme" onClick={() => this.changeTab(2, 'photos')}>

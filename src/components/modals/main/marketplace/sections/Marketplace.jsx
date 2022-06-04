@@ -244,7 +244,7 @@ export default class Marketplace extends PureComponent {
       return errorMessage(
         <div className="loaderHolder">
           <div id="loader"></div>
-          <span className="subtitle">Loading</span>
+          <span className="subtitle">{this.getMessage('modals.main.loading')}</span>
         </div>,
       );
     }
@@ -304,11 +304,11 @@ export default class Marketplace extends PureComponent {
                   <MdArrowBack className="backArrow" onClick={() => this.returnToMain()} />
                 </Tooltip>
               </div>
-              <span className="mainTitle">Marketplace</span>
+              <span className="mainTitle">{this.getMessage('modals.main.navbar.marketplace')}</span>
             </div>
           </>
         ) : (
-          <span className="mainTitle">Marketplace</span>
+          <span className="mainTitle">{this.getMessage('modals.main.navbar.marketplace')}</span>
         )}
         <div className="filter">
           <Dropdown

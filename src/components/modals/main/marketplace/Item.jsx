@@ -113,7 +113,7 @@ export default class Item extends PureComponent {
               <MdArrowBack className="backArrow" onClick={this.props.toggleFunction} />
             </Tooltip>
           </div>
-          <span className="mainTitle">Marketplace</span>
+          <span className="mainTitle">{getMessage('modals.main.navbar.marketplace')}</span>
         </div>
         <div className="itemPage">
           <div className="itemShowcase">
@@ -127,7 +127,7 @@ export default class Item extends PureComponent {
               src={iconsrc}
               onClick={() => this.setState({ showLightbox: true })}
             />
-            <span className="title">Description</span>
+            <span className="title">{getMessage('modals.main.marketplace.product.description')}</span>
             <span
               className={this.state.showMore ? 'description' : 'description truncate'}
               dangerouslySetInnerHTML={{ __html: this.props.data.description }}
@@ -136,12 +136,12 @@ export default class Item extends PureComponent {
               <div className="showMore" onClick={() => this.toggleShowMore()}>
                 {this.state.showMore === true ? (
                   <>
-                    <span>Show Less</span>
+                    <span>{getMessage('modals.main.marketplace.product.show_less')}</span>
                     <MdKeyboardArrowDown />
                   </>
                 ) : (
                   <>
-                    <span>Show More</span>
+                    <span>{getMessage('modals.main.marketplace.product.show_more')}</span>
                     <MdKeyboardArrowUp />
                   </>
                 )}
@@ -176,7 +176,7 @@ export default class Item extends PureComponent {
                 <div className="infoItem">
                   <MdFormatQuote />
                   <div className="text">
-                    <span className="header">No. Quotes</span>
+                    <span className="header">{getMessage('modals.main.marketplace.product.no_quotes')}</span>
                     <span>{this.props.data.data.quotes.length}</span>
                   </div>
                 </div>
@@ -185,7 +185,7 @@ export default class Item extends PureComponent {
                 <div className="infoItem">
                   <MdImage />
                   <div className="text">
-                    <span className="header">No. Images</span>
+                    <span className="header">{getMessage('modals.main.marketplace.product.no_images')}</span>
                     <span>{this.props.data.data.photos.length}</span>
                   </div>
                 </div>
@@ -194,18 +194,18 @@ export default class Item extends PureComponent {
                 <div className="infoItem">
                   <MdTranslate />
                   <div className="text">
-                    <span className="header">Language</span>
+                    <span className="header">{getMessage('modals.main.settings.sections.language')}</span>
                     <span>{this.props.data.data.language}</span>
                   </div>
                 </div>
               ) : null}
-              <div className="infoItem">
+              {/*<div className="infoItem">
                 <MdIosShare />
                 <div className="text">
-                  <span className="header">Shares</span>
+                  <span className="header">{getMessage('modals.main.marketplace.product.shares')}</span>
                   <span>324</span>
                 </div>
-              </div>
+              </div>*/}
             </div>
           </div>
           <div className="itemInfo">
@@ -237,9 +237,9 @@ export default class Item extends PureComponent {
             </div>
             {this.props.data.data.collection ? (
               <div className="inCollection">
-                <span className="subtitle">Part of</span>
-                <span className="title">Red Dead Collection</span>
-                <button>Explore</button>
+                <span className="subtitle">{getMessage('modals.main.marketplace.product.part_of')}</span>
+                <span className="title">{this.props.data.data.collection}</span>
+                <button>{getMessage('modals.main.marketplace.product.explore')}</button>
               </div>
             ) : null}
             {warningHTML}

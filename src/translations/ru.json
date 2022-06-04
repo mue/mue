@@ -94,8 +94,10 @@
             "title": "Время",
             "format": "Format",
             "type": "Type",
+            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Digital",
+              "subtitle": "Change how the digital clock looks",
               "seconds": "Секунды",
               "twentyfourhour": "24 Часа",
               "twelvehour": "12 часов",
@@ -103,6 +105,7 @@
             },
             "analogue": {
               "title": "Analogue",
+              "subtitle": "Change how the analogue clock looks",
               "second_hand": "Seconds hand",
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
@@ -205,6 +208,9 @@
               "upload": "Загрузить",
               "add_colour": "Добавить цвет",
               "add_background": "Add background",
+              "drop_to_upload": "Drop to upload",
+              "formats": "Available formats: {list}",
+              "select": "Or Select",
               "add_url": "Add URL",
               "disabled": "Выключен",
               "loop_video": "Loop video",
@@ -273,6 +279,7 @@
           "message": {
             "title": "Message",
             "add": "Add message",
+            "messages": "Messages",
             "text": "Text"
           },
           "appearance": {
@@ -366,7 +373,8 @@
               "settings_changed": "Settings changed",
               "addons_installed": "Add-ons installed"
             },
-            "usage": "Usage Stats"
+            "usage": "Usage Stats",
+            "achievements": "Achievements"
           },
           "keybinds": {
             "title": "Keybinds",
@@ -444,16 +452,29 @@
         "quote_packs": "Наборы цитат",
         "preset_settings": "Пресеты настроек",
         "no_items": "No items in this category",
+        "explore_collection": "Explore Collection",
+        "cant_find": "Can't find what you're looking for?",
+        "knowledgebase_one": "Visit the",
+        "knowledgebase_two": "knowledgebase",
+        "knowledgebase_three": "to create your own.",
         "product": {
           "overview": "Обзор",
           "information": "Информация",
           "last_updated": "Последнее обновление",
+          "description": "Description",
+          "show_more": "Show More",
+          "show_less": "Show Less",
+          "no_images": "No. Images",
+          "no_quotes": "No. Quotes",
           "version": "Версия",
           "author": "Автор",
+          "part_of": "Part of",
+          "explore": "Explore",
           "buttons": {
             "addtomue": "Добавить в Mue",
             "remove": "Удалить",
-            "update_addon": "Update Add-on"
+            "update_addon": "Update Add-on",
+            "back": "Back"
           },
           "quote_warning": {
             "title": "Предупреждение",

@@ -94,8 +94,10 @@
             "title": "Waktu",
             "format": "Format",
             "type": "Tipe",
+            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Digital",
+              "subtitle": "Change how the digital clock looks",
               "seconds": "Detik",
               "twentyfourhour": "24",
               "twelvehour": "12 (AM/PM)",
@@ -103,6 +105,7 @@
             },
             "analogue": {
               "title": "Analog",
+              "subtitle": "Change how the analogue clock looks",
               "second_hand": "Jarum Detik",
               "minute_hand": "Jarum Menit",
               "hour_hand": "Jarum Jam",
@@ -205,6 +208,9 @@
               "upload": "Unggah",
               "add_colour": "Tambah warna",
               "add_background": "Tambah background",
+              "drop_to_upload": "Drop to upload",
+              "formats": "Available formats: {list}",
+              "select": "Or Select",
               "add_url": "Tambah URL",
               "disabled": "Nonaktif",
               "loop_video": "Ulang video",
@@ -273,6 +279,7 @@
           "message": {
             "title": "Pesan",
             "add": "Tambahkan pesan",
+            "messages": "Messages",
             "text": "Teks"
           },
           "appearance": {
@@ -366,7 +373,8 @@
               "settings_changed": "Perubahan pengaturan",
               "addons_installed": "Add-ons ditambahkan"
             },
-            "usage": "Statistik Penggunaan"
+            "usage": "Statistik Penggunaan",
+            "achievements": "Achievements"
           },
           "keybinds": {
             "title": "Keybinds",
@@ -444,16 +452,29 @@
         "quote_packs": "Quote Packs",
         "preset_settings": "Preset Settings",
         "no_items": "Tidak ada item pada kategori ini",
+        "explore_collection": "Explore Collection",
+        "cant_find": "Can't find what you're looking for?",
+        "knowledgebase_one": "Visit the",
+        "knowledgebase_two": "knowledgebase",
+        "knowledgebase_three": "to create your own.",
         "product": {
           "overview": "Ikhtisar",
           "information": "Informasi",
           "last_updated": "Pembaruan Terakhir",
+          "description": "Description",
+          "show_more": "Show More",
+          "show_less": "Show Less",
+          "no_images": "No. Images",
+          "no_quotes": "No. Quotes",
           "version": "Versi",
           "author": "Kreator",
+          "part_of": "Part of",
+          "explore": "Explore",
           "buttons": {
             "addtomue": "Tambahkan ke Mue",
             "remove": "Hapus",
-            "update_addon": "Perbarui Add-on"
+            "update_addon": "Perbarui Add-on",
+            "back": "Back"
           },
           "quote_warning": {
             "title": "Peringatan",

@@ -31,7 +31,7 @@ export default class Message extends PureComponent {
   modifyMessage(type, index) {
     const messages = this.state.messages;
     if (type === 'add') {
-      messages.push(' ');
+      messages.push('');
     } else {
       messages.splice(index, 1);
     }
@@ -81,15 +81,15 @@ export default class Message extends PureComponent {
         </SettingsItem>
         <table style={{ width: '100%' }}>
           <tr>
-            <th>Messages</th>
-            <th>Buttons</th>
+            <th>{this.getMessage('modals.main.settings.sections.message.messages')}</th>
+            <th>{this.getMessage('modals.main.settings.sections.quote.custom_buttons')}</th>
           </tr>
           {this.state.messages.map((_url, index) => (
-            <tr>
+            <tr key={index}>
               <th>
                 <TextareaAutosize
                   value={this.state.messages[index]}
-                  placeholder="Message"
+                  placeholder={this.getMessage('modals.main.settings.sections.message.title')}
                   onChange={(e) => this.message(e, true, index)}
                   varient="outlined"
                 />

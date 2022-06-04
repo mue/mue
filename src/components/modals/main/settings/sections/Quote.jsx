@@ -109,10 +109,10 @@ export default class QuoteSettings extends PureComponent {
             <tr>
               <th>{this.getMessage('modals.main.settings.sections.quote.title')}</th>
               <th>{this.getMessage('modals.main.settings.sections.quote.author')}</th>
-              <th>{this.getMessage('modals.main.settings.sections.custom_buttons')}</th>
+              <th>{this.getMessage('modals.main.settings.sections.quote.custom_buttons')}</th>
             </tr>
             {this.state.customQuote.map((_url, index) => (
-              <tr>
+              <tr key={index}>
                 <th>
                   <TextareaAutosize
                     value={this.state.customQuote[index].quote}

@@ -190,11 +190,20 @@ export default class CustomSettings extends PureComponent {
           <div className="action">
             <div className="dropzone" ref={this.customDnd}>
               <MdAddPhotoAlternate />
-              <span className="title">Drop to upload</span>
-              <span className="subtitle">
-                Available formats, jpeg, png, webp, webm, gif, mp4, webm, ogg
+              <span className="title">
+                {this.getMessage('modals.main.settings.sections.background.source.drop_to_upload')}
               </span>
-              <button onClick={() => this.uploadCustomBackground()}>Or Select</button>
+              <span className="subtitle">
+                {this.getMessage(
+                  'modals.main.settings.sections.background.source.available_formats',
+                  {
+                    formats: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
+                  },
+                )}
+              </span>
+              <button onClick={() => this.uploadCustomBackground()}>
+                {this.getMessage('modals.main.settings.sections.background.source.select')}
+              </button>
             </div>
             <button onClick={() => this.setState({ customURLModal: true })}>
               {this.getMessage('modals.main.settings.sections.background.source.add_url')}{' '}

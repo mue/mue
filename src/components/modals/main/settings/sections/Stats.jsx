@@ -83,7 +83,7 @@ export default class Stats extends PureComponent {
         </SettingsItem>
         <div className="statsGrid">
           <div className="statSection leftPanel">
-            <span className="title">Achievements</span>
+            <span className="title">{getMessage('modals.main.settings.sections.stats.achievements')}</span>
             <div className="achievements">
               {this.state.stats['tabs-opened'] >= 10 && achievement('10/10 IGN', 'Opened 10 tabs')}
               {this.state.stats['tabs-opened'] >= 39 && achievement('Thank you', 'Opened 39 tabs')}

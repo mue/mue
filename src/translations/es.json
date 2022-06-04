@@ -94,8 +94,10 @@
             "title": "Tiempo",
             "format": "Formato",
             "type": "Tipo",
+            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Digital",
+              "subtitle": "Change how the digital clock looks",
               "seconds": "Segundos",
               "twentyfourhour": "24 Horas",
               "twelvehour": "12 Horas",
@@ -103,6 +105,7 @@
             },
             "analogue": {
               "title": "Analógico",
+              "subtitle": "Change how the analogue clock looks",
               "second_hand": "Manecilla de los segundos",
               "minute_hand": "Manecilla de los minutos",
               "hour_hand": "Manecilla de las horas",
@@ -205,6 +208,9 @@
               "upload": "Subir",
               "add_colour": "Añadir color",
               "add_background": "Añadir fondo",
+              "drop_to_upload": "Drop to upload",
+              "formats": "Available formats: {list}",
+              "select": "Or Select",
               "add_url": "Añadir URL",
               "disabled": "Desactivado",
               "loop_video": "Vídeo en bucle",
@@ -273,6 +279,7 @@
           "message": {
             "title": "Mensaje",
             "add": "Añadir mensaje",
+            "messages": "Messages",
             "text": "Texto"
           },
           "appearance": {
@@ -366,7 +373,8 @@
               "settings_changed": "Ajustes cambiados",
               "addons_installed": "Complementos instalados"
             },
-            "usage": "Estadísticas de uso"
+            "usage": "Estadísticas de uso",
+            "achievements": "Achievements"
           },
           "keybinds": {
             "title": "Asignación de teclas",
@@ -444,16 +452,29 @@
         "quote_packs": "Paquetes de citas",
         "preset_settings": "Ajustes preestablecidos",
         "no_items": "No hay artículos en esta categoría",
+        "explore_collection": "Explore Collection",
+        "cant_find": "Can't find what you're looking for?",
+        "knowledgebase_one": "Visit the",
+        "knowledgebase_two": "knowledgebase",
+        "knowledgebase_three": "to create your own.",
         "product": {
           "overview": "Vista general",
           "information": "Información",
           "last_updated": "Última actualización",
+          "description": "Description",
+          "show_more": "Show More",
+          "show_less": "Show Less",
+          "no_images": "No. Images",
+          "no_quotes": "No. Quotes",
           "version": "Versión",
           "author": "Autor",
+          "part_of": "Part of",
+          "explore": "Explore",
           "buttons": {
             "addtomue": "Añadir a Mue",
             "remove": "Desinstalar",
-            "update_addon": "Actualizar complemento"
+            "update_addon": "Actualizar complemento",
+            "back": "Back"
           },
           "quote_warning": {
             "title": "Advertencia",

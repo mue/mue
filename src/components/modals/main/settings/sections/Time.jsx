@@ -28,7 +28,7 @@ export default class TimeSettings extends PureComponent {
     const digitalSettings = (
       <SettingsItem
         title={getMessage('modals.main.settings.sections.time.digital.title')}
-        subtitle="Change how the digital clock looks"
+        subtitle={getMessage('modals.main.settings.sections.time.digital.subtitle')}
       >
         <Radio
           name="timeformat"
@@ -61,7 +61,7 @@ export default class TimeSettings extends PureComponent {
     const analogSettings = (
       <SettingsItem
         title={getMessage('modals.main.settings.sections.time.analogue.title')}
-        subtitle="Change how the analogue clock looks"
+        subtitle={getMessage('modals.main.settings.sections.time.analogue.subtitle')}
       >
         <Checkbox
           name="secondHand"
@@ -109,7 +109,7 @@ export default class TimeSettings extends PureComponent {
         />
         <SettingsItem
           title={getMessage('modals.main.settings.sections.time.type')}
-          subtitle="Choose whether to display the time in digital or analogue format, or a percentage completion of the day"
+          subtitle={getMessage('modals.main.settings.sections.time.type_subtitle')}
         >
           <Dropdown
             name="timeType"

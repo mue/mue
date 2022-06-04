@@ -94,8 +94,10 @@
             "title": "Uhrzeit",
             "format": "Format",
             "type": "Typ",
+            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Digital",
+              "subtitle": "Change how the digital clock looks",
               "seconds": "Sekunden",
               "twentyfourhour": "24 Stunden",
               "twelvehour": "12 Stunden",
@@ -103,6 +105,7 @@
             },
             "analogue": {
               "title": "Analog",
+              "subtitle": "Change how the analogue clock looks",
               "second_hand": "Sekundenzeiger",
               "minute_hand": "Minutenzeiger",
               "hour_hand": "Stundenzeiger",
@@ -205,6 +208,9 @@
               "upload": "Hochladen",
               "add_colour": "Farbe hinzufügen",
               "add_background": "Add background",
+              "drop_to_upload": "Drop to upload",
+              "formats": "Available formats: {list}",
+              "select": "Or Select",
               "add_url": "Add URL",
               "disabled": "Deaktiviert",
               "loop_video": "Video schleife",
@@ -273,6 +279,7 @@
           "message": {
             "title": "Message",
             "add": "Add message",
+            "messages": "Messages",
             "text": "Text"
           },
           "appearance": {
@@ -367,7 +374,8 @@
               "settings_changed": "Einstellungen geändert",
               "addons_installed": "Installierte Add-ons"
             },
-            "usage": "Nutzungsstatistiken"
+            "usage": "Nutzungsstatistiken",
+            "achievements": "Achievements"
           },
           "keybinds": {
             "title": "Tastenbindungen",
@@ -445,16 +453,29 @@
         "quote_packs": "Zitat-Pakete",
         "preset_settings": "Voreingestellte Einstellungen",
         "no_items": "Keine Einträge in dieser Kategorie",
+        "explore_collection": "Explore Collection",
+        "cant_find": "Can't find what you're looking for?",
+        "knowledgebase_one": "Visit the",
+        "knowledgebase_two": "knowledgebase",
+        "knowledgebase_three": "to create your own.",
         "product": {
           "overview": "Übersicht",
           "information": "Information",
           "last_updated": "Letzte Aktualisierung",
+          "description": "Description",
+          "show_more": "Show More",
+          "show_less": "Show Less",
+          "no_images": "No. Images",
+          "no_quotes": "No. Quotes",
           "version": "Version",
           "author": "Autor",
+          "part_of": "Part of",
+          "explore": "Explore",
           "buttons": {
             "addtomue": "Zu Mue hinzufügen",
             "remove": "Entfernen",
-            "update_addon": "Update Add-on"
+            "update_addon": "Update Add-on",
+            "back": "Back"
           },
           "quote_warning": {
             "title": "Warnung",

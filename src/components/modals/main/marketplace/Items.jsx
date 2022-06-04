@@ -9,6 +9,8 @@ export default function Items({
   collectionFunction,
   onCollection,
 }) {
+  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
+
   return (
     <>
       {type === 'all' && !onCollection ? (
@@ -19,7 +21,7 @@ export default function Items({
                 <span className="title">{collection.display_name}</span>
                 <span className="subtitle">{collection.description}</span>
                 <button onClick={() => collectionFunction(collection.name)}>
-                  Explore Collection
+                  {getMessage('modals.main.marketplace.explore_collection')}
                 </button>
               </div>
             </div>
@@ -44,13 +46,13 @@ export default function Items({
       {type === 'all' && !onCollection ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />
-          <span className="title">Can't find what you're looking for?</span>
+          <span className="title">{getMessage('modals.main.marketplace.cant_find')}</span>
           <span className="subtitle">
-            Visit the{' '}
+            {getMessage('modals.main.marketplace.knowledgebase_one')}{' '}
             <a className="link" href="https://muetab.com">
-              knowledgebase
+              {getMessage('modals.main.marketplace.knowledgebase_two')}
             </a>{' '}
-            to create your own.
+            {getMessage('modals.main.marketplace.knowledgebase_three')}
           </span>
         </div>
       ) : null}

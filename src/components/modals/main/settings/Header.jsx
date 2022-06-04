@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 
 import { PureComponent } from 'react';
-import { MdHelpOutline, MdFlag, MdArrowBack } from 'react-icons/md';
+import { /*MdHelpOutline,*/ MdFlag, MdArrowBack } from 'react-icons/md';
 
 import Slider from './Slider';
 import Switch from './Switch';
@@ -27,7 +27,7 @@ export default class Header extends PureComponent {
           <span className="mainTitle">{this.props.title}</span>
         </div>
         <div className="headerExtras">
-          <span
+          {/*<span
             className="link"
             onClick={() =>
               window.open(
@@ -39,7 +39,7 @@ export default class Header extends PureComponent {
             }
           >
             <MdHelpOutline /> {getMessage('modals.main.settings.sections.header.more_info')}
-          </span>
+          </span>*/}
           <span
             className="link"
             onClick={() =>
