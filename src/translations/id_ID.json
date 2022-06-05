@@ -180,6 +180,7 @@
             },
             "effects": {
               "title": "Efek",
+              "subtitle": "Add effects to the background images",
               "blur": "Sesuaikan blur",
               "brightness": "Sesuaikan kecerahan",
               "filters": {
@@ -202,6 +203,7 @@
             },
             "source": {
               "title": "Sumber",
+              "subtitle": "Select where to get background images from",
               "api": "Background API",
               "custom_background": "Background kustom",
               "custom_colour": "Background warna kustom",
@@ -223,8 +225,13 @@
                 "datasaver": "Data Saver"
               }
             },
+            "display": "Display",
+            "display_subtitle": "Change how background and photo information are loaded",
+            "api": "API Settings",
+            "api_subtitle": "Options for getting an image from an external service (API)",
             "interval": {
               "title": "Ubah setiap",
+              "subtitle": "Change how often the background is updated",
               "minute": "Menit",
               "half_hour": "Setengah jam",
               "hour": "Jam",
@@ -516,7 +523,22 @@
         },
         "create": {
           "title": "Buat",
+          "example": "Example",
           "other_title": "Buat Add-on",
+          "create_type": "Create {type} Pack",
+          "descriptions": {
+            "settings": "",
+            "photo_pack": "",
+            "quote_pack": ""
+          },
+          "information": "Information",
+          "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",
+          "import_custom": "Import from custom settings.",
+          "publishing": {
+            "title": "Next step, Publishing...",
+            "subtitle": "Visit the Mue Knowledgebase on information on how to publish your newly created addon.",
+            "button": "Learn more"
+          },
           "metadata": {
             "name": "Nama",
             "icon_url": "URL Ikon",

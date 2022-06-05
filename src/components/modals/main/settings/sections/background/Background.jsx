@@ -67,7 +67,10 @@ export default class BackgroundSettings extends PureComponent {
     const { getMessage } = this;
 
     const interval = (
-      <SettingsItem title="Interval" subtitle="Change how often the background is updated">
+      <SettingsItem
+        title={getMessage('modals.main.settings.sections.background.interval.title')}
+        subtitle={getMessage('modals.mani.settings.sections.background.intervanl.subtitle')}
+      >
         <Dropdown
           label={getMessage('modals.main.settings.sections.background.interval.title')}
           name="backgroundchange"
@@ -96,8 +99,8 @@ export default class BackgroundSettings extends PureComponent {
     const APISettings = (
       <>
         <SettingsItem
-          title="API Settings"
-          subtitle="Options for the getting an image from an external service (API)"
+          title={getMessage('modals.main.settings.sections.background.api')}
+          subtitle={getMessage('modals.main.settings.sections.background.api_subtitle')}
         >
           {this.state.backgroundCategories[0] === getMessage('modals.main.loading') ? (
             <>
@@ -244,7 +247,9 @@ export default class BackgroundSettings extends PureComponent {
                   <span className="title">
                     {getMessage('modals.main.settings.sections.background.source.title')}
                   </span>
-                  <span className="subtitle">Select where to get background images from</span>
+                  <span className="subtitle">
+                    {getMessage('modals.main.settings.sections.background.source.subtitle')}
+                  </span>
                 </div>
               </div>
               <div className="action">
@@ -284,7 +289,9 @@ export default class BackgroundSettings extends PureComponent {
                   <span className="title">
                     {getMessage('modals.main.settings.sections.background.effects.title')}
                   </span>
-                  <span className="subtitle">Add effects to the background image</span>
+                  <span className="subtitle">
+                    {getMessage('modals.main.settings.sections.background.effects.subtitle')}
+                  </span>
                 </div>
               </div>
               <div className="action">
@@ -296,8 +303,8 @@ export default class BackgroundSettings extends PureComponent {
         ) : null}
         {this.state.backgroundSettingsSection !== true && this.state.effects !== true ? (
           <SettingsItem
-            title="Display"
-            subtitle="Change how background and photo information are loaded"
+            title={getMessage('modals.main.settings.sections.background.display')}
+            subtitle={getMessage('modals.main.settings.sections.background.display_subtitle')}
             final={true}
           >
             <Checkbox
@@ -332,7 +339,7 @@ export default class BackgroundSettings extends PureComponent {
           <>
             <SettingsItem
               title={getMessage('modals.main.settings.sections.background.source.title')}
-              subtitle="Select where to get background images from"
+              subtitle={getMessage('modals.main.settings.sections.background.source.subtitle')}
             >
               <Dropdown
                 label={getMessage('modals.main.settings.sections.background.type.title')}
@@ -371,7 +378,7 @@ export default class BackgroundSettings extends PureComponent {
         this.state.effects ? (
           <SettingsItem
             title={getMessage('modals.main.settings.sections.background.effects.title')}
-            subtitle="Add effects to the background image"
+            subtitle={getMessage('modals.main.settings.sections.background.effects.subtitle')}
             final={true}
           >
             <Slider

@@ -207,12 +207,18 @@ export default class Create extends PureComponent {
         <div className="smallBanner">
           <div className="content">
             <span className="title" style={{ textTransform: 'capitalize' }}>
-              Create {this.state.addonMetadata.type} Pack
+              {getMessage('modals.main.addons.create.metadata.create_type', {
+                type: this.state.addonMetadata.type,
+              })}
             </span>
-            <span className="subtitle">Description of what is being made</span>
+            <span className="subtitle">
+              {getMessage(
+                'modals.main.addons.create.metadata.descriptions.' + this.addonMetadata.type,
+              ) || 'marketplace'}
+            </span>
           </div>
           <button>
-            Example
+            {getMessage('modals.main.addons.create.metadata.example')}
             <MdDownload />
           </button>
         </div>
@@ -229,8 +235,8 @@ export default class Create extends PureComponent {
             <span className="title">{getMessage('modals.main.marketplace.product.version')}</span>
             <span className="subtitle">
               <InfoTooltip
-                title="Information"
-                subtitle="Running away is easy It's the leaving that's hard Running away is easy It's the leaving that's hard"
+                title={getMessage('modals.main.addons.create.information')}
+                subtitle={getMessage('modals.main.addons.create.metadata.information_subtitle')}
               />
             </span>
           </div>
@@ -379,7 +385,7 @@ export default class Create extends PureComponent {
         <SettingsItem
           final={true}
           title={getMessage('modals.main.addons.create.photos.title')}
-          subtitle={'Import from custom settings.'}
+          subtitle={getMessage('modals.main.addons.create.import_custom')}
         >
           <div className="themesToggleArea">
             <div className="options">
@@ -411,14 +417,14 @@ export default class Create extends PureComponent {
         <div className="smallBanner">
           <div className="content">
             <span className="title" style={{ textTransform: 'capitalize' }}>
-              Next step, Publishing...
+              {getMessage('modals.main.addons.create.publishing.title')}
             </span>
             <span className="subtitle">
-              Visit the Mue Knowledgebase on information on how to publish your newly created addon.
+              {getMessage('modals.main.addons.create.publishing.subtitle')}
             </span>
           </div>
           <button>
-            Learn More
+            {getMessage('modals.main.addons.create.publishing.button')}
             <MdOpenInNew />
           </button>
         </div>

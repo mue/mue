@@ -180,6 +180,7 @@
             },
             "effects": {
               "title": "Effets",
+              "subtitle": "Add effects to the background images",
               "blur": "Ajuster le flou",
               "brightness": "Ajuster la luminosité",
               "filters": {
@@ -202,6 +203,7 @@
             },
             "source": {
               "title": "Source",
+              "subtitle": "Select where to get background images from",
               "api": "Source",
               "custom_background": "Arrière-plan personnalisé",
               "custom_colour": "Couleur d'arrière-plan personnalisée",
@@ -223,8 +225,13 @@
                 "datasaver": "Data Saver"
               }
             },
+            "display": "Display",
+            "display_subtitle": "Change how background and photo information are loaded",
+            "api": "API Settings",
+            "api_subtitle": "Options for getting an image from an external service (API)",
             "interval": {
               "title": "Change every",
+              "subtitle": "Change how often the background is updated",
               "minute": "Minute",
               "half_hour": "Half hour",
               "hour": "Hour",
@@ -516,7 +523,22 @@
         },
         "create": {
           "title": "Create",
+          "example": "Example",
           "other_title": "Create Add-on",
+          "create_type": "Create {type} Pack",
+          "descriptions": {
+            "settings": "",
+            "photo_pack": "",
+            "quote_pack": ""
+          },
+          "information": "Information",
+          "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",
+          "import_custom": "Import from custom settings.",
+          "publishing": {
+            "title": "Next step, Publishing...",
+            "subtitle": "Visit the Mue Knowledgebase on information on how to publish your newly created addon.",
+            "button": "Learn more"
+          },
           "metadata": {
             "name": "Name",
             "icon_url": "Icon URL",

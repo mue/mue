@@ -142,7 +142,7 @@ export default class CustomSettings extends PureComponent {
       });
 
       const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
-      if (videoCheck(file) === true) {
+      if (videoCheck(file.type) === true) {
         if (settingsSize + file.size > 4850000) {
           return toast(this.getMessage('toasts.no_storage'));
         }
@@ -150,7 +150,7 @@ export default class CustomSettings extends PureComponent {
         return this.customBackground(file, false, this.state.currentBackgroundIndex);
       }
 
-      compressAccurately(file, 200).then(async (res) => {
+      compressAccurately(file, 300).then(async (res) => {
         if (settingsSize + res.size > 4850000) {
           return toast(this.getMessage('toasts.no_storage'));
         }
@@ -165,7 +165,7 @@ export default class CustomSettings extends PureComponent {
     return (
       <>
         {this.props.interval}
-        <div className="settingsRow" style={{ alignItems: 'flex-start' }}>
+        <div className="settingsRow settingsNoBorder" style={{ alignItems: 'flex-start' }}>
           <div className="content">
             <div className="images-row">
               {this.state.customBackground.map((url, index) => (

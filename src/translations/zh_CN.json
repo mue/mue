@@ -180,6 +180,7 @@
             },
             "effects": {
               "title": "背景特效",
+              "subtitle": "Add effects to the background images",
               "blur": "模糊程度",
               "brightness": "更改亮度",
               "filters": {
@@ -202,6 +203,7 @@
             },
             "source": {
               "title": "来源",
+              "subtitle": "Select where to get background images from",
               "api": "背景来源",
               "custom_background": "自定义背景 (支持图片/视频)",
               "custom_colour": "自定义背景颜色",
@@ -223,8 +225,13 @@
                 "datasaver": "省流模式"
               }
             },
+            "display": "Display",
+            "display_subtitle": "Change how background and photo information are loaded",
+            "api": "API Settings",
+            "api_subtitle": "Options for getting an image from an external service (API)",
             "interval": {
               "title": "更改频率",
+              "subtitle": "Change how often the background is updated",
               "minute": "每分钟",
               "half_hour": "每半小时",
               "hour": "每小时",
@@ -516,7 +523,22 @@
         },
         "create": {
           "title": "创建",
+          "example": "Example",
           "other_title": "创建插件",
+          "create_type": "Create {type} Pack",
+          "descriptions": {
+            "settings": "",
+            "photo_pack": "",
+            "quote_pack": ""
+          },
+          "information": "Information",
+          "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",
+          "import_custom": "Import from custom settings.",
+          "publishing": {
+            "title": "Next step, Publishing...",
+            "subtitle": "Visit the Mue Knowledgebase on information on how to publish your newly created addon.",
+            "button": "Learn more"
+          },
           "metadata": {
             "name": "名称",
             "icon_url": "图标URL",
