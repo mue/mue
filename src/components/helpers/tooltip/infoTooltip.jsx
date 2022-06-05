@@ -30,7 +30,7 @@ export default function InfoTooltip({ title, style, placement, subtitle }) {
         >
           <div className="tooltipHeader">
             <span className="title">{title}</span>
-            <Tooltip title="Close">
+            <Tooltip title={getMessage('modals.welcome.buttons.close')}>
               <div className="close" onClick={() => setShowTooltip(false)}>
                 <MdClose />
               </div>

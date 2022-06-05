@@ -109,7 +109,7 @@ export default class Changelog extends PureComponent {
       return errorMessage(
         <div className="loaderHolder">
           <div id="loader"></div>
-          <span className="subtitle">Loading</span>
+          <span className="subtitle">{getMessage('modals.main.loading')}</span>
         </div>,
       );
     }

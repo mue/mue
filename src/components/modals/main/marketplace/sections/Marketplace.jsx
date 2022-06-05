@@ -300,7 +300,7 @@ export default class Marketplace extends PureComponent {
           <>
             <div className="flexTopMarketplace">
               <div className="returnButton">
-                <Tooltip title="back" key="backArrow">
+                <Tooltip title={this.getMessage('modals.main.navbar.marketplace.product.buttons.back')} key="backArrow">
                   <MdArrowBack className="backArrow" onClick={() => this.returnToMain()} />
                 </Tooltip>
               </div>

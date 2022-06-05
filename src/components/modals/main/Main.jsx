@@ -13,15 +13,17 @@ const Settings = lazy(() => import('./tabs/Settings'));
 const Addons = lazy(() => import('./tabs/Addons'));
 const Marketplace = lazy(() => import('./tabs/Marketplace'));
 
+const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
+
 const renderLoader = (current) => (
   <Tabs current={current}>
-    <div label={variables.language.getMessage(variables.languagecode, 'modals.main.loading')}>
+    <div label={getMessage('modals.main.loading')}>
       <div className="emptyItems">
         <div className="emptyMessage">
           <div className="loaderHolder">
             <div id="loader"></div>
             <span className="subtitle">
-              {variables.language.getMessage(variables.languagecode, 'modals.main.loading')}
+              {getMessage('modals.main.loading')}
             </span>
           </div>
         </div>
@@ -59,7 +61,7 @@ export default function MainModal({ modalClose }) {
     <div className="frame">
       <Tooltip
         style={{ position: 'absolute', top: '3rem', right: '3rem' }}
-        title="close"
+        title={getMessage('modals.welcome.buttons.close')}
         key="closeTooltip"
       >
         <span className="closeModal" onClick={modalClose}>

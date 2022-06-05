@@ -109,7 +109,7 @@ export default class Item extends PureComponent {
         </Modal>
         <div className="flexTopMarketplace">
           <div className="returnButton">
-            <Tooltip title="back" key="backArrow">
+            <Tooltip title={getMessage('modals.main.navbar.marketplace.product.buttons.back')} key="backArrow">
               <MdArrowBack className="backArrow" onClick={this.props.toggleFunction} />
             </Tooltip>
           </div>
@@ -194,7 +194,7 @@ export default class Item extends PureComponent {
                 <div className="infoItem">
                   <MdTranslate />
                   <div className="text">
-                    <span className="header">{getMessage('modals.main.settings.sections.language')}</span>
+                    <span className="header">{getMessage('modals.main.settings.sections.language.title')}</span>
                     <span>{this.props.data.data.language}</span>
                   </div>
                 </div>

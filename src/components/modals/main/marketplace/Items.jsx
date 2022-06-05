@@ -15,8 +15,8 @@ export default function Items({
     <>
       {type === 'all' && !onCollection ? (
         <>
-          {collections.map((collection) => (
-            <div className="collection">
+          {collections.map((collection, index) => (
+            <div className="collection" key={index}>
               <div className="content">
                 <span className="title">{collection.display_name}</span>
                 <span className="subtitle">{collection.description}</span>

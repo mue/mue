@@ -29,6 +29,7 @@ export default class TimeSettings extends PureComponent {
       <SettingsItem
         title={getMessage('modals.main.settings.sections.time.digital.title')}
         subtitle={getMessage('modals.main.settings.sections.time.digital.subtitle')}
+        final={true}
       >
         <Radio
           name="timeformat"
@@ -62,6 +63,7 @@ export default class TimeSettings extends PureComponent {
       <SettingsItem
         title={getMessage('modals.main.settings.sections.time.analogue.title')}
         subtitle={getMessage('modals.main.settings.sections.time.analogue.subtitle')}
+        final={true}
       >
         <Checkbox
           name="secondHand"
@@ -110,6 +112,7 @@ export default class TimeSettings extends PureComponent {
         <SettingsItem
           title={getMessage('modals.main.settings.sections.time.type')}
           subtitle={getMessage('modals.main.settings.sections.time.type_subtitle')}
+          final={this.state.timeType === 'percentageComplete'}
         >
           <Dropdown
             name="timeType"
