@@ -98,6 +98,7 @@ export default class BackgroundSettings extends PureComponent {
 
     const APISettings = (
       <>
+        {interval}
         <SettingsItem
           title={getMessage('modals.main.settings.sections.background.api')}
           subtitle={getMessage('modals.main.settings.sections.background.api_subtitle')}
@@ -168,7 +169,6 @@ export default class BackgroundSettings extends PureComponent {
             onChange={(e) => this.setState({ backgroundAPI: e })}
           />
         </SettingsItem>
-        {interval}
       </>
     );
 
@@ -217,7 +217,7 @@ export default class BackgroundSettings extends PureComponent {
           className="mainTitle"
           onClick={() => this.setState({ backgroundSettingsSection: false })}
         >
-          {getMessage('modals.main.settings.sections.background.title')}{' '}
+          <span className='backTitle'>{getMessage('modals.main.settings.sections.background.title')}{' '}</span>
           <MdOutlineKeyboardArrowRight />{' '}
           {getMessage('modals.main.settings.sections.background.source.title')}
         </span>

@@ -45,16 +45,20 @@
 }
 
 .images-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  height: 250px;
+  padding: 20px;
+  grid-gap: 20px;
   @include themed() {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
     div {
       background: t($modal-sidebar);
       padding: 10px;
       box-shadow: 0 0 0 4px t($modal-sidebarActive);
       border-radius: t($borderRadius);
       gap: 10px;
+      display: flex;
+      justify-content: center;
       img {
         width: auto;
         height: 100px;

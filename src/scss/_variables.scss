@@ -126,6 +126,16 @@ $themes: (
     @include themed() {
       color: t($color);
     }
+
+    .backTitle {
+      cursor: pointer;
+      @include themed() {
+        color: t($subColor);
+        &:hover {
+          color: t($color);
+        }
+      }  
+    }
   }
 
   .title {

@@ -1,7 +1,14 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { toast } from 'react-toastify';
-import { MdCancel, MdAddLink, MdAddPhotoAlternate, MdPersonalVideo } from 'react-icons/md';
+import {
+  MdCancel,
+  MdAddLink,
+  MdAddPhotoAlternate,
+  MdPersonalVideo,
+  MdOutlineFileUpload,
+  MdFolder,
+} from 'react-icons/md';
 import EventBus from 'modules/helpers/eventbus';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import { videoCheck } from 'modules/helpers/background/widget';
@@ -14,7 +21,7 @@ import Modal from 'react-modal';
 import CustomURLModal from './CustomURLModal';
 
 export default class CustomSettings extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
+  getMessage = (text, obj) => variables.language.getMessage(variables.languagecode, text, obj || {});
 
   constructor() {
     super();
@@ -165,9 +172,10 @@ export default class CustomSettings extends PureComponent {
     return (
       <>
         {this.props.interval}
-        <div className="settingsRow settingsNoBorder" style={{ alignItems: 'flex-start' }}>
+
+        {/*<div className="settingsRow settingsNoBorder" style={{ alignItems: 'flex-start' }}>
           <div className="content">
-            <div className="images-row">
+            {/*<div className="images-row">
               {this.state.customBackground.map((url, index) => (
                 <div key={index}>
                   <img
@@ -185,8 +193,9 @@ export default class CustomSettings extends PureComponent {
                   ) : null}
                 </div>
               ))}
-            </div>
+                  </div>
           </div>
+
           <div className="action">
             <div className="dropzone" ref={this.customDnd}>
               <MdAddPhotoAlternate />
@@ -209,6 +218,74 @@ export default class CustomSettings extends PureComponent {
               {this.getMessage('modals.main.settings.sections.background.source.add_url')}{' '}
               <MdAddLink />
             </button>
+          </div>
+        </div>*/}
+
+        <div className="dropzone" ref={this.customDnd}>
+          <div className="imagesTopBar">
+            <div>
+            <MdAddPhotoAlternate />
+            <div>
+              <span className="title">Custom Images</span>
+              <span className="subtitle">Select images from your local computer</span>
+            </div>
+            </div>
+            <div className='topbarbuttons'>
+              <button onClick={() => this.uploadCustomBackground()}>
+                Upload
+                <MdOutlineFileUpload />
+              </button>
+              <button onClick={() => this.setState({ customURLModal: true })}>
+                {this.getMessage('modals.main.settings.sections.background.source.add_url')}{' '}
+                <MdAddLink />
+              </button>
+            </div>
+          </div>
+          <div className="dropzone-content">
+            {this.state.customBackground.length > 0 ? (
+              <div className="images-row">
+                {this.state.customBackground.map((url, index) => (
+                  <div key={index}>
+                    <img
+                      alt={'Custom background ' + (index || 0)}
+                      src={`${!this.videoCheck(url) ? this.state.customBackground[index] : ''}`}
+                    />
+                    {this.videoCheck(url) ? <MdPersonalVideo className="customvideoicon" /> : null}
+                    {this.state.customBackground.length > 0 ? (
+                      <button
+                        className="iconButton"
+                        onClick={() => this.modifyCustomBackground('remove', index)}
+                      >
+                        <MdCancel />
+                      </button>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="photosEmpty">
+                <div className="emptyNewMessage">
+                  <MdAddPhotoAlternate />
+                  <span className="title">
+                    {this.getMessage(
+                      'modals.main.settings.sections.background.source.drop_to_upload',
+                    )}
+                  </span>
+                  <span className="subtitle">
+                    {this.getMessage(
+                      'modals.main.settings.sections.background.source.formats',
+                      {
+                        list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
+                      },
+                    )}
+                  </span>
+                  <button onClick={() => this.uploadCustomBackground()}>
+                    {this.getMessage('modals.main.settings.sections.background.source.select')}
+                    <MdFolder/>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <FileUpload

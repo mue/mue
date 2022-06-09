@@ -88,32 +88,44 @@ h4 {
   }
 }
 
-.dropzone {
-  @include themed() {
-    background: t($modal-sidebar);
-    border: 3px solid t($modal-sidebarActive);
-    color: t($color);
-    border-radius: 12px;
-    font-size: 1rem;
+.photosEmpty {
+  height: 400px;
+  display: grid;
+  place-items: center;
+  button {
+    padding: 0 20px 0 20px;
+  }
+}
+
+.imagesTopBar {
+  padding-top: 25px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  div:nth-child(1) {
     display: flex;
+    flex-flow: row;
     align-items: center;
-    flex-flow: column;
-    justify-content: center;
-    gap: 10px;
-    transition: 0.5s;
-    padding: 45px 25px 45px 25px;
+    gap: 20px;
     svg {
-      font-size: 48px;
+      font-size: 30px;
+      @include themed() {
+        color: t($subColor);
+      }
     }
-    .title {
-      font-size: 18px;
+    div {
+      display: flex;
+      flex-flow: column;
     }
-    &:hover {
-      border-style: dashed;
-    }
-    button {
-      width: 80% !important;
-    }
+  }
+  .topbarbuttons {
+    display: flex;
+    flex-flow: row;
+    gap: 25px;
+  }
+  button {
+    padding: 0 20px 0 20px;
   }
 }
 

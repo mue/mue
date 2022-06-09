@@ -231,6 +231,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;*/
   }
+  button {
+    svg {
+      font-size: 1rem;
+    }
+  }
   .buttonsRow {
     display: flex;
     flex-flow: row;
