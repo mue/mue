@@ -7,8 +7,8 @@
         "evening": "İyi Akşamlar",
         "christmas": "Mutlu Noeller",
         "newyear": "Yeni Yılınız Kutlu Olsun",
-        "halloween": "Mutlu Cadılar Bayramı",
-        "birthday": "Doğum Günün Kutlu Olsun"
+        "halloween": "Cadılar Bayramınız Kutlu Olsun",
+        "birthday": "Doğum Gününüz Kutlu Olsun"
       },
       "background": {
         "credit": "Fotoğraf",
@@ -155,7 +155,7 @@
               }
             },
             "greeting": {
-              "title": "Selamlar",
+              "title": "Karşılama Ekranı",
               "events": "Olaylar",
               "default": "Karşılama mesajları görünsün",
               "name": "İsminiz",
@@ -357,7 +357,7 @@
               },
               "customisation": "Özelleştirme",
               "custom_css": "Özel CSS",
-              "custom_css_subtitle": "Mue'nin stilini 'Basamaklı Stil Sayfaları (CSS)' ile özelleştirin.",
+              "custom_css_subtitle": "Mue'nin stilini 'Cascading Style Sheets (CSS)' ile özelleştirin.",
               "custom_js": "Özel JS",
               "tab_name": "Sekme adı",
               "tab_name_subtitle": "Tarayıcınızda görünen sekmenin adını değiştirin",
@@ -448,7 +448,7 @@
             }
           },
           "buttons": {
-            "reset": "Reset",
+            "reset": "Yenile",
             "import": "İçeri Aktar",
             "export": "Dışarı Aktar"
           }
@@ -595,7 +595,7 @@
           },
           "theme": {
             "title": "Bir tema seç",
-            "description": "Mue hem açık hem de koyu temada mevcuttur veya bu, sistem temanıza bağlı olarak otomatik olarak ayarlanabilir.",
+            "description": "Mue hem açık hem de koyu temada mevcuttur veya sistem temanıza bağlı olarak otomatik olarak ayarlanabilir.",
             "tip": "Otomatik ayarları kullanmak, bilgisayarınızdaki temayı kullanır. Bu ayar, modları ve ekranda görüntülenen hava durumu ve notlar gibi bazı widget'ları etkiler."
           },
           "settings": {
@@ -618,7 +618,7 @@
             "title": "Son adım",
             "description": "Mue Tab deneyiminiz başlamak üzere.",
             "changes": "Değişiklikler",
-            "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
+            "changes_description": "Ayarları daha sonra değiştirmek için sekmenizin sağ üst köşesindeki ayarlar simgesine tıklayın.",
             "imported": "Ayarlar {amount} eklendi"
           }
         },
