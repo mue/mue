@@ -37,6 +37,7 @@ variables.language = new I18n(variables.languagecode, {
   ru: translations.ru,
   zh_CN: translations.zh_CN,
   id_ID: translations.id_ID,
+  tr_TR: translations.tr_TR,
 });
 
 // set html language tag

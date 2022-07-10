@@ -17,16 +17,18 @@ This is the branch for the next version of Mue, 7.0. All development is occuring
 
 ## Table of contents
 
-- [Screenshots](#screenshot)
+- [NOTICE](#notice)
+- [Table of contents](#table-of-contents)
+- [Screenshots](#screenshots)
 - [Features](#features)
   - [Planned Features](#planned-features)
 - [Installation](#installation)
   - [Chrome](#chrome)
   - [Firefox](#firefox)
-  - [Edge Chromium](#edge-chromium)
+  - [Edge (Chromium)](#edge-chromium)
   - [Whale](#whale)
   - [Other](#other)
-- [Contributing](#development)
+- [Development](#development)
   - [Translations](#translations)
 - [Credits](#credits)
   - [Developers](#developers)
@@ -109,6 +111,7 @@ Please see the [documentation](https://docs.muetab.com/translations).
 [Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified) <br/>
 [FreeFun](https://github.com/xXFreeFunXx) - German <br/>
 [Aksal](https://github.com/aksalsf) - Indonesian <br/>
+[Kağan Can Şit](https://github.com/KaganCanSit) - Turkish <br/>
 
 ### Contributors
 
