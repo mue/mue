@@ -8,6 +8,7 @@ import * as no from '../translations/no.json';
 import * as ru from '../translations/ru.json';
 import * as zh_CN from '../translations/zh_CN.json';
 import * as id_ID from '../translations/id_ID.json';
+import * as tr_TR from '../translations/tr_TR.json';
 
 const translations = {
   de_DE,
@@ -20,6 +21,7 @@ const translations = {
   ru,
   zh_CN,
   id_ID,
+  tr_TR,
 };
 
 export default translations;
