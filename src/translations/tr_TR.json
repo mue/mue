@@ -167,7 +167,7 @@
             },
             "background": {
               "title": "Arka Plan",
-              "ddg_image_proxy": "DuckDuckGo Görüntü Proxy'sini Kullan.",
+              "ddg_image_proxy": "DuckDuckGo Görüntü Proxy'sini Kullan",
               "transition": "Geçiş Sırasında Solma",
               "photo_information": "Fotoğraf Bilgilerini Göster",
               "show_map": "Varsa Fotoğraf Bilgilerinde Konum Bilgisini Göster",
@@ -335,7 +335,7 @@
                 "title": "Ulaşılabilirlik",
                 "animations": "Animasyonlar",
                 "text_shadow": "Widget metin gölgesi",
-                "widget_zoom": "Widget yakınlaştırma",
+                "widget_zoom": "Widget Yakınlaştırma",
                 "toast_duration": "Bildirim süresi",
                 "milliseconds": "Milisaniye"
               }
