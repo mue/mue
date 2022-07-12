@@ -47,22 +47,30 @@
 .images-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  height: 250px;
   padding: 20px;
   grid-gap: 20px;
   @include themed() {
     div {
-      background: t($modal-sidebar);
-      padding: 10px;
-      box-shadow: 0 0 0 4px t($modal-sidebarActive);
       border-radius: t($borderRadius);
-      gap: 10px;
+      border: 5px t($modal-sidebar) solid;
       display: flex;
+      align-items: center;
       justify-content: center;
+      flex-flow: column;
+      gap: 5px;
       img {
-        width: auto;
-        height: 100px;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
         border-radius: t($borderRadius);
+      }
+      button {
+        padding: 0 30px 0 30px;
+        background: t($modal-background);
+        border: none !important;
+        &:hover {
+          background: t($modal-sidebarActive);
+        }
       }
     }
     .iconButton {
