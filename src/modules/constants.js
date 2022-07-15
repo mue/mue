@@ -20,7 +20,7 @@ export const BUG_REPORT =
 export const DONATE_LINK = 'https://muetab.com/donate';
 export const SENTRY_DSN =
   'https://430352fd4b174d688ebd82fc85c22c58@o1217438.ingest.sentry.io/6359480';
-export const KNOWLEDGEBASE = 'https://knowledgebase.muetab.com';
+export const KNOWLEDGEBASE = 'https://support.muetab.com';
 
 // Mue Info
 export const ORG_NAME = 'mue';

@@ -223,6 +223,7 @@ export default class ColourSettings extends PureComponent {
       <>
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.background.source.custom_colour')}
+          final={true}
         >
           <span className="link" onClick={() => this.resetColour()}>
             {this.getMessage('modals.main.settings.buttons.reset')}

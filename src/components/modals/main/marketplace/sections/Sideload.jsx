@@ -68,7 +68,7 @@ export default class Sideload extends PureComponent {
             id="file-input"
             type="settings"
             accept="application/json"
-            loadFunction={(e) => this.installAddon(JSON.parse(e.target.result))}
+            loadFunction={(e) => this.installAddon(JSON.parse(e))}
           />
           <MdIntegrationInstructions className="sideloadIcon" />
           <span className="title">{this.getMessage('modals.main.addons.sideload.title')}</span>

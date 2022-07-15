@@ -19,16 +19,20 @@ export default class Changelog extends PureComponent {
   }
 
   async getUpdate() {
-    const data = await (
-      await fetch(variables.constants.BLOG_POST + '/index.json', {
-        signal: this.controller.signal,
-      })
-    ).json();
+    const res = await fetch(variables.constants.BLOG_POST + '/index.json', {
+      signal: this.controller.signal,
+    });
+
+    if (res.status === 404) {
+      this.setState({ error: true });
+      return;
+    }
 
     if (this.controller.signal.aborted === true) {
       return;
     }
 
+    const data = await res.json();
     let date = new Date(data.date.split(' ')[0]);
     date = date.toLocaleDateString(variables.languagecode.replace('_', '-'), {
       year: 'numeric',
@@ -101,6 +105,16 @@ export default class Changelog extends PureComponent {
           <MdOutlineWifiOff />
           <h1>{getMessage('modals.main.marketplace.offline.title')}</h1>
           <p className="description">{getMessage('modals.main.marketplace.offline.description')}</p>
+        </>,
+      );
+    }
+
+    if (this.state.error === true) { 
+      return errorMessage(
+        <>
+          <MdOutlineWifiOff />
+          <h1>failed</h1>
+          <p className="description">error description</p>
         </>,
       );
     }

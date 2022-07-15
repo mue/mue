@@ -146,6 +146,7 @@
             "custom_author": "Custom author",
             "author_img": "Show author image",
             "add": "Add quote",
+            "source_subtitle": "Choose where to get quotes from",
             "buttons": {
               "title": "Buttons",
               "subtitle": "Choose which buttons to show on the quote",

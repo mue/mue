@@ -221,8 +221,8 @@ export default class QuoteSettings extends PureComponent {
           />
         </SettingsItem>
         <SettingsItem
-          title="Source"
-          subtitle="Choose the source of the quotes, pick between the following options"
+          title={this.getMessage('modals.main.settings.sections.background.source.title')}
+          subtitle={this.getMessage('modals.main.settings.sections.quote.source_subtitle')}
         >
           <Dropdown
             name="quoteType"
