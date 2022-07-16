@@ -213,7 +213,7 @@ export default class Create extends PureComponent {
             </span>
             <span className="subtitle">
               {getMessage(
-                'modals.main.addons.create.metadata.descriptions.' + this.addonMetadata.type,
+                'modals.main.addons.create.metadata.descriptions.' + this.state.addonMetadata.type,
               ) || 'marketplace'}
             </span>
           </div>

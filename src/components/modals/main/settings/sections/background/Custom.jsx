@@ -253,11 +253,11 @@ export default class CustomSettings extends PureComponent {
                     {this.videoCheck(url) ? <MdPersonalVideo className="customvideoicon" /> : null}
                     {this.state.customBackground.length > 0 ? (
                       <button
-                        className="iconButton"
                         onClick={() => this.modifyCustomBackground('remove', index)}
                       >
+                        Remove Image
                         <MdCancel />
-                      </button>
+                    </button>
                     ) : null}
                   </div>
                 ))}

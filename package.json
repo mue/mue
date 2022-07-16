@@ -43,7 +43,7 @@
     "vite": "^2.9.9"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "updatetranslations": "cd scripts && node updatetranslations.js",
     "build": "vite build",
     "chrome": "cp manifest/chrome.json dist/manifest.json && cp -r manifest/_locales dist/_locales && cp manifest/background-chrome.js dist/background-chrome.js",

@@ -49,7 +49,7 @@ export default function Items({
           <span className="title">{getMessage('modals.main.marketplace.cant_find')}</span>
           <span className="subtitle">
             {getMessage('modals.main.marketplace.knowledgebase_one')}{' '}
-            <a className="link" href="https://muetab.com">
+            <a className="link" target="_blank" href={variables.constants.KNOWLEDGEBASE} rel="noreferrer">
               {getMessage('modals.main.marketplace.knowledgebase_two')}
             </a>{' '}
             {getMessage('modals.main.marketplace.knowledgebase_three')}

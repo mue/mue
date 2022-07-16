@@ -110,13 +110,6 @@ export default class SearchSettings extends PureComponent {
                 {this.getMessage('modals.main.settings.buttons.reset')}
               </span>
             </p>
-            <TextField
-              label={this.getMessage('modals.main.settings.sections.search.custom')}
-              value={this.state.customValue}
-              onInput={(e) => this.setState({ customValue: e.target.value })}
-              varient="outlined"
-              InputLabelProps={{ shrink: true }}
-            />
           </ul>
           <Checkbox
             name="autocomplete"
@@ -142,6 +135,15 @@ export default class SearchSettings extends PureComponent {
               {this.getMessage('modals.main.settings.sections.search.custom').split(' ')[0]}
             </MenuItem>
           </Dropdown>
+        </SettingsItem>
+        <SettingsItem title={this.getMessage('modals.main.settings.sections.search.custom')}>
+        <TextField
+              label={this.getMessage('modals.main.settings.sections.search.custom')}
+              value={this.state.customValue}
+              onInput={(e) => this.setState({ customValue: e.target.value })}
+              varient="outlined"
+              InputLabelProps={{ shrink: true }}
+            />
         </SettingsItem>
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')}
