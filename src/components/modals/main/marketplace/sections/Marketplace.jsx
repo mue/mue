@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { MdWifiOff, MdLocalMall, MdArrowBack } from 'react-icons/md';
+import { MdWifiOff, MdLocalMall, MdArrowBack, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 import Tooltip from '../../../../helpers/tooltip/Tooltip';
 
@@ -299,12 +299,13 @@ export default class Marketplace extends PureComponent {
         {this.state.collection === true ? (
           <>
             <div className="flexTopMarketplace">
-              <div className="returnButton">
-                <Tooltip title={this.getMessage('modals.main.navbar.marketplace.product.buttons.back')} key="backArrow">
-                  <MdArrowBack className="backArrow" onClick={() => this.returnToMain()} />
-                </Tooltip>
-              </div>
-              <span className="mainTitle">{this.getMessage('modals.main.navbar.marketplace')}</span>
+              <span className="mainTitle" onClick={() => this.returnToMain()}>
+                <span className="backTitle">
+                  {this.getMessage('modals.main.settings.sections.background.title')}
+                </span>
+                <MdOutlineKeyboardArrowRight />{' '}
+                Collection
+              </span>
             </div>
           </>
         ) : (

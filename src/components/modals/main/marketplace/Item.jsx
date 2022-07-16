@@ -14,6 +14,7 @@ import {
   MdTranslate,
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
+  MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
 import Modal from 'react-modal';
 
@@ -108,26 +109,22 @@ export default class Item extends PureComponent {
           />
         </Modal>
         <div className="flexTopMarketplace">
-          <div className="returnButton">
-            <Tooltip title={getMessage('modals.main.navbar.marketplace.product.buttons.back')} key="backArrow">
-              <MdArrowBack className="backArrow" onClick={this.props.toggleFunction} />
-            </Tooltip>
-          </div>
-          <span className="mainTitle">{getMessage('modals.main.navbar.marketplace')}</span>
+          <span className="mainTitle" onClick={this.props.toggleFunction}>
+            <span className="backTitle">{getMessage('modals.main.navbar.marketplace')}</span>
+            <MdOutlineKeyboardArrowRight /> {this.props.data.display_name}
+          </span>
         </div>
         <div className="itemPage">
           <div className="itemShowcase">
-            <div className="titleTop">
-              <span className="itemTitle">{this.props.data.display_name}</span>
-              <span className="subtitle">{this.props.data.author}</span>
-            </div>
             <img
               alt="product"
               draggable="false"
               src={iconsrc}
               onClick={() => this.setState({ showLightbox: true })}
             />
-            <span className="title">{getMessage('modals.main.marketplace.product.description')}</span>
+            <span className="title">
+              {getMessage('modals.main.marketplace.product.description')}
+            </span>
             <span
               className={this.state.showMore ? 'description' : 'description truncate'}
               dangerouslySetInnerHTML={{ __html: this.props.data.description }}
@@ -176,7 +173,9 @@ export default class Item extends PureComponent {
                 <div className="infoItem">
                   <MdFormatQuote />
                   <div className="text">
-                    <span className="header">{getMessage('modals.main.marketplace.product.no_quotes')}</span>
+                    <span className="header">
+                      {getMessage('modals.main.marketplace.product.no_quotes')}
+                    </span>
                     <span>{this.props.data.data.quotes.length}</span>
                   </div>
                 </div>
@@ -185,7 +184,9 @@ export default class Item extends PureComponent {
                 <div className="infoItem">
                   <MdImage />
                   <div className="text">
-                    <span className="header">{getMessage('modals.main.marketplace.product.no_images')}</span>
+                    <span className="header">
+                      {getMessage('modals.main.marketplace.product.no_images')}
+                    </span>
                     <span>{this.props.data.data.photos.length}</span>
                   </div>
                 </div>
@@ -194,7 +195,9 @@ export default class Item extends PureComponent {
                 <div className="infoItem">
                   <MdTranslate />
                   <div className="text">
-                    <span className="header">{getMessage('modals.main.settings.sections.language.title')}</span>
+                    <span className="header">
+                      {getMessage('modals.main.settings.sections.language.title')}
+                    </span>
                     <span>{this.props.data.data.language}</span>
                   </div>
                 </div>
@@ -237,7 +240,9 @@ export default class Item extends PureComponent {
             </div>
             {this.props.data.data.collection ? (
               <div className="inCollection">
-                <span className="subtitle">{getMessage('modals.main.marketplace.product.part_of')}</span>
+                <span className="subtitle">
+                  {getMessage('modals.main.marketplace.product.part_of')}
+                </span>
                 <span className="title">{this.props.data.data.collection}</span>
                 <button>{getMessage('modals.main.marketplace.product.explore')}</button>
               </div>
