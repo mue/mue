@@ -71,7 +71,7 @@ export default class GreetingSettings extends PureComponent {
             text={getMessage('modals.main.settings.sections.greeting.birthday_age')}
             category="greeting"
           />
-          <p>{getMessage('modals.main.settings.sections.greeting.birthday_date')}</p>
+          <p style={{ marginRight: 'auto'}}>{getMessage('modals.main.settings.sections.greeting.birthday_date')}</p>
           <input
             type="date"
             onChange={this.changeDate}

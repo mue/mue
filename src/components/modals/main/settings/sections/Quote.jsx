@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import React, { PureComponent } from 'react';
-import { MdCancel, MdAdd } from 'react-icons/md';
+import { MdCancel, MdAdd, MdSource, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 import Header from '../Header';
@@ -19,6 +19,7 @@ export default class QuoteSettings extends PureComponent {
     this.state = {
       quoteType: localStorage.getItem('quoteType') || 'api',
       customQuote: this.getCustom(),
+      sourceSection: false,
     };
   }
 
@@ -93,7 +94,7 @@ export default class QuoteSettings extends PureComponent {
 
   render() {
     let customSettings;
-    if (this.state.quoteType === 'custom') {
+    if (this.state.quoteType === 'custom' && this.state.sourceSection === true) {
       customSettings = (
         <>
           <SettingsItem
@@ -116,7 +117,7 @@ export default class QuoteSettings extends PureComponent {
                 <th>
                   <TextareaAutosize
                     value={this.state.customQuote[index].quote}
-                    placeholder="Quote"
+                    placeholder={this.getMessage('modals.main.settings.sections.quote.title')}
                     onChange={(e) => this.customQuote(e, true, index, 'quote')}
                     varient="outlined"
                     style={{ marginRight: '10px' }}
@@ -125,7 +126,7 @@ export default class QuoteSettings extends PureComponent {
                 <th>
                   <TextareaAutosize
                     value={this.state.customQuote[index].author}
-                    placeholder="Author"
+                    placeholder={this.getMessage('modals.main.settings.sections.quote.author')}
                     onChange={(e) => this.customQuote(e, true, index, 'author')}
                     varient="outlined"
                   />
@@ -148,96 +149,120 @@ export default class QuoteSettings extends PureComponent {
       );
     } else {
       // api
-      customSettings = (
-        <SettingsItem
-          title={this.getMessage('modals.main.settings.additional_settings')}
-          subtitle={this.getMessage('modals.main.settings.sections.quote.additional')}
-          final={true}
-        >
-          <Dropdown
-            label={this.getMessage('modals.main.settings.sections.background.interval.title')}
-            name="quotechange"
-          >
-            <option value="refresh">{this.getMessage('tabname')}</option>
-            <option value="60000">
-              {this.getMessage('modals.main.settings.sections.background.interval.minute')}
-            </option>
-            <option value="1800000">
-              {this.getMessage('modals.main.settings.sections.background.interval.half_hour')}
-            </option>
-            <option value="3600000">
-              {this.getMessage('modals.main.settings.sections.background.interval.hour')}
-            </option>
-            <option value="86400000">
-              {this.getMessage('modals.main.settings.sections.background.interval.day')}
-            </option>
-            <option value="604800000">{this.getMessage('widgets.date.week')}</option>
-            <option value="2628000000">
-              {this.getMessage('modals.main.settings.sections.background.interval.month')}
-            </option>
-          </Dropdown>
-          <Checkbox
-            name="authorLink"
-            text={this.getMessage('modals.main.settings.sections.quote.author_link')}
-            element=".other"
-          />
-          <Checkbox
-            name="authorImg"
-            text={this.getMessage('modals.main.settings.sections.quote.author_img')}
-            element=".other"
-          />
-        </SettingsItem>
-      );
+      customSettings = <></>;
     }
 
     return (
       <>
-        <Header
-          title={this.getMessage('modals.main.settings.sections.quote.title')}
-          setting="quote"
-          category="quote"
-          element=".quotediv"
-          zoomSetting="zoomQuote"
-          switch={true}
-        />
-        <SettingsItem
-          title={this.getMessage('modals.main.settings.sections.quote.buttons.title')}
-          subtitle={this.getMessage('modals.main.settings.sections.quote.buttons.subtitle')}
-        >
-          <Checkbox
-            name="copyButton"
-            text={this.getMessage('modals.main.settings.sections.quote.buttons.copy')}
+        {this.state.sourceSection ? (
+          <span className="mainTitle" onClick={() => this.setState({ sourceSection: false })}>
+            <span className="backTitle">
+              {this.getMessage('modals.main.settings.sections.quote.title')}
+            </span>
+            <MdOutlineKeyboardArrowRight />{' '}
+            {this.getMessage('modals.main.settings.sections.background.source.title')}
+          </span>
+        ) : (
+          <Header
+            title={this.getMessage('modals.main.settings.sections.quote.title')}
+            setting="quote"
             category="quote"
+            element=".quotediv"
+            zoomSetting="zoomQuote"
+            switch={true}
           />
-          <Checkbox
-            name="quoteShareButton"
-            text={this.getMessage('modals.main.settings.sections.quote.buttons.tweet')}
-            category="quote"
-          />
-          <Checkbox
-            name="favouriteQuoteEnabled"
-            text={this.getMessage('modals.main.settings.sections.quote.buttons.favourite')}
-            category="quote"
-          />
-        </SettingsItem>
-        <SettingsItem
-          title={this.getMessage('modals.main.settings.sections.background.source.title')}
-          subtitle={this.getMessage('modals.main.settings.sections.quote.source_subtitle')}
-        >
-          <Dropdown
-            name="quoteType"
-            onChange={(value) => this.setState({ quoteType: value })}
-            category="quote"
-          >
-            {this.marketplaceType()}
-            <option value="api">
-              {this.getMessage('modals.main.settings.sections.background.type.api')}
-            </option>
-            <option value="custom">
-              {this.getMessage('modals.main.settings.sections.quote.custom')}
-            </option>
-          </Dropdown>
-        </SettingsItem>
+        )}
+        <div className="moreSettings" onClick={() => this.setState({ sourceSection: true })}>
+          <div className="left">
+            <MdSource />
+            <div className="content">
+              <span className="title">
+                {this.getMessage('modals.main.settings.sections.background.source.title')}
+              </span>
+              <span className="subtitle">
+                {this.getMessage('modals.main.settings.sections.quote.source_subtitle')}
+              </span>
+            </div>
+          </div>
+          <div className="action">
+            <Dropdown
+              name="quoteType"
+              label={this.getMessage('modals.main.settings.sections.background.type.title')}
+              onChange={(value) => this.setState({ quoteType: value })}
+              category="quote"
+            >
+              {this.marketplaceType()}
+              <option value="api">
+                {this.getMessage('modals.main.settings.sections.background.type.api')}
+              </option>
+              <option value="custom">
+                {this.getMessage('modals.main.settings.sections.quote.custom')}
+              </option>
+            </Dropdown>
+          </div>
+        </div>
+        {!this.state.sourceSection ? (
+          <>
+            <SettingsItem
+              title={this.getMessage('modals.main.settings.sections.quote.buttons.title')}
+              subtitle={this.getMessage('modals.main.settings.sections.quote.buttons.subtitle')}
+            >
+              <Checkbox
+                name="copyButton"
+                text={this.getMessage('modals.main.settings.sections.quote.buttons.copy')}
+                category="quote"
+              />
+              <Checkbox
+                name="quoteShareButton"
+                text={this.getMessage('modals.main.settings.sections.quote.buttons.tweet')}
+                category="quote"
+              />
+              <Checkbox
+                name="favouriteQuoteEnabled"
+                text={this.getMessage('modals.main.settings.sections.quote.buttons.favourite')}
+                category="quote"
+              />
+            </SettingsItem>
+
+            <SettingsItem
+              title={this.getMessage('modals.main.settings.additional_settings')}
+              subtitle={this.getMessage('modals.main.settings.sections.quote.additional')}
+            >
+              <Dropdown
+                label={this.getMessage('modals.main.settings.sections.background.interval.title')}
+                name="quotechange"
+              >
+                <option value="refresh">{this.getMessage('tabname')}</option>
+                <option value="60000">
+                  {this.getMessage('modals.main.settings.sections.background.interval.minute')}
+                </option>
+                <option value="1800000">
+                  {this.getMessage('modals.main.settings.sections.background.interval.half_hour')}
+                </option>
+                <option value="3600000">
+                  {this.getMessage('modals.main.settings.sections.background.interval.hour')}
+                </option>
+                <option value="86400000">
+                  {this.getMessage('modals.main.settings.sections.background.interval.day')}
+                </option>
+                <option value="604800000">{this.getMessage('widgets.date.week')}</option>
+                <option value="2628000000">
+                  {this.getMessage('modals.main.settings.sections.background.interval.month')}
+                </option>
+              </Dropdown>
+              <Checkbox
+                name="authorLink"
+                text={this.getMessage('modals.main.settings.sections.quote.author_link')}
+                element=".other"
+              />
+              <Checkbox
+                name="authorImg"
+                text={this.getMessage('modals.main.settings.sections.quote.author_img')}
+                element=".other"
+              />
+            </SettingsItem>
+          </>
+        ) : null}
         {customSettings}
       </>
     );
