@@ -108,3 +108,45 @@ table {
     font-size: 1.5rem !important;
   }
 }
+
+.messageMap {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 25px;
+  padding: 25px;
+  justify-content: space-between;
+  div:nth-child(1) {
+    display: flex;
+    flex-flow: row;
+    gap: 25px;
+    align-items: center;
+  }
+  .icon {
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
+    padding: 15px;
+    font-size: 25px;
+    @include themed() {
+      background: t($modal-sidebarActive);
+    }
+  }
+  .messageText {
+    display: flex;
+    flex-flow: column;
+  }
+  .messageAction {
+    float: right;
+  }
+  @include themed() {
+    background: t($modal-sidebar);
+    border-radius: t($borderRadius);
+  }
+}
+
+.messagesContainer {
+  display: flex;
+  flex-flow: column;
+  gap: 25px;
+}

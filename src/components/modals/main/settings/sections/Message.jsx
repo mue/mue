@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdCancel, MdAdd } from 'react-icons/md';
+import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';
 import SettingsItem from '../SettingsItem';
@@ -79,7 +79,7 @@ export default class Message extends PureComponent {
             {this.getMessage('modals.main.settings.sections.message.add')} <MdAdd />
           </button>
         </SettingsItem>
-        <table style={{ width: '100%' }}>
+        {/*<table style={{ width: '100%' }}>
           <tr>
             <th>{this.getMessage('modals.main.settings.sections.message.messages')}</th>
             <th>{this.getMessage('modals.main.settings.sections.quote.custom_buttons')}</th>
@@ -107,7 +107,56 @@ export default class Message extends PureComponent {
             </tr>
           ))}
         </table>
-        <br />
+            */}
+        <div className="messagesContainer">
+          {this.state.messages.map((_url, index) => (
+            <div className="messageMap">
+              <div>
+                <div className="icon">
+                  <MdOutlineTextsms />
+                </div>
+                <div className="messageText">
+                  <span className="subtitle">
+                    {this.getMessage('modals.main.settings.sections.message.title')}
+                  </span>
+                  <TextareaAutosize
+                    value={this.state.messages[index]}
+                    placeholder={this.getMessage('modals.main.settings.sections.message.title')}
+                    onChange={(e) => this.message(e, true, index)}
+                    varient="outlined"
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="messageAction">
+                  <button
+                    className="deleteButton"
+                    onClick={() => this.modifyMessage('remove', index)}
+                  >
+                    <MdCancel />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {this.state.messages.length === 0 ? (
+          <div className="photosEmpty">
+          <div className="emptyNewMessage">
+            <MdOutlineTextsms />
+            <span className="title">
+              No messages
+            </span>
+            <span className="subtitle">
+              Go ahead and add some.
+            </span>
+            <button onClick={() => this.modifyMessage('add')}>
+            {this.getMessage('modals.main.settings.sections.message.add')}
+              <MdAdd />
+            </button>
+          </div>
+        </div>
+        ) : null}
       </>
     );
   }

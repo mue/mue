@@ -27,6 +27,7 @@ import {
   MdCode as Sideload,
   MdAddCircleOutline as Added,
   MdAddCircleOutline as Create,
+  MdViewAgenda as Overview,
 } from 'react-icons/md';
 
 function Tab({ label, currentTab, onClick, navbarTab }) {
@@ -46,6 +47,9 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   let icon, divider;
   switch (label) {
+    case getMessage('modals.main.marketplace.product.overview'):
+      icon = <Overview />;
+      break;
     case getMessage('modals.main.navbar.settings'):
       icon = <Settings />;
       break;
@@ -58,6 +62,9 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
     case getMessage('modals.main.settings.sections.appearance.navbar.title'):
       icon = <Navbar />;
+      break;
+    case getMessage('modals.main.settings.sections.order.title'):
+      icon = <Order />;
       break;
     case getMessage('modals.main.settings.sections.greeting.title'):
       icon = <Greeting />;
@@ -86,9 +93,6 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.settings.sections.weather.title'):
       icon = <Weather />;
       divider = true;
-      break;
-    case getMessage('modals.main.settings.sections.order.title'):
-      icon = <Order />;
       break;
     case 'Reminder':
       icon = <Reminder />;
