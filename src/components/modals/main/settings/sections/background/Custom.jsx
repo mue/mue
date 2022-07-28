@@ -21,7 +21,8 @@ import Modal from 'react-modal';
 import CustomURLModal from './CustomURLModal';
 
 export default class CustomSettings extends PureComponent {
-  getMessage = (text, obj) => variables.language.getMessage(variables.languagecode, text, obj || {});
+  getMessage = (text, obj) =>
+    variables.language.getMessage(variables.languagecode, text, obj || {});
 
   constructor() {
     super();
@@ -224,13 +225,13 @@ export default class CustomSettings extends PureComponent {
         <div className="dropzone" ref={this.customDnd}>
           <div className="imagesTopBar">
             <div>
-            <MdAddPhotoAlternate />
-            <div>
-              <span className="title">Custom Images</span>
-              <span className="subtitle">Select images from your local computer</span>
+              <MdAddPhotoAlternate />
+              <div>
+                <span className="title">Custom Images</span>
+                <span className="subtitle">Select images from your local computer</span>
+              </div>
             </div>
-            </div>
-            <div className='topbarbuttons'>
+            <div className="topbarbuttons">
               <button onClick={() => this.uploadCustomBackground()}>
                 Upload
                 <MdOutlineFileUpload />
@@ -252,12 +253,10 @@ export default class CustomSettings extends PureComponent {
                     />
                     {this.videoCheck(url) ? <MdPersonalVideo className="customvideoicon" /> : null}
                     {this.state.customBackground.length > 0 ? (
-                      <button
-                        onClick={() => this.modifyCustomBackground('remove', index)}
-                      >
+                      <button onClick={() => this.modifyCustomBackground('remove', index)}>
                         Remove Image
                         <MdCancel />
-                    </button>
+                      </button>
                     ) : null}
                   </div>
                 ))}
@@ -272,16 +271,13 @@ export default class CustomSettings extends PureComponent {
                     )}
                   </span>
                   <span className="subtitle">
-                    {this.getMessage(
-                      'modals.main.settings.sections.background.source.formats',
-                      {
-                        list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
-                      },
-                    )}
+                    {this.getMessage('modals.main.settings.sections.background.source.formats', {
+                      list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
+                    })}
                   </span>
                   <button onClick={() => this.uploadCustomBackground()}>
                     {this.getMessage('modals.main.settings.sections.background.source.select')}
-                    <MdFolder/>
+                    <MdFolder />
                   </button>
                 </div>
               </div>

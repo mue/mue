@@ -142,20 +142,16 @@ export default class Message extends PureComponent {
         </div>
         {this.state.messages.length === 0 ? (
           <div className="photosEmpty">
-          <div className="emptyNewMessage">
-            <MdOutlineTextsms />
-            <span className="title">
-              No messages
-            </span>
-            <span className="subtitle">
-              Go ahead and add some.
-            </span>
-            <button onClick={() => this.modifyMessage('add')}>
-            {this.getMessage('modals.main.settings.sections.message.add')}
-              <MdAdd />
-            </button>
+            <div className="emptyNewMessage">
+              <MdOutlineTextsms />
+              <span className="title">No messages</span>
+              <span className="subtitle">Go ahead and add some.</span>
+              <button onClick={() => this.modifyMessage('add')}>
+                {this.getMessage('modals.main.settings.sections.message.add')}
+                <MdAdd />
+              </button>
+            </div>
           </div>
-        </div>
         ) : null}
       </>
     );

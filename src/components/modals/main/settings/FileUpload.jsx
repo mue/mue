@@ -16,7 +16,7 @@ export default class FileUpload extends PureComponent {
         reader.readAsText(file, 'UTF-8');
         reader.onload = (e) => {
           return this.props.loadFunction(e.target.result);
-        }
+        };
       } else {
         // background upload
         const settings = {};

@@ -15,7 +15,7 @@ export default class Stats extends PureComponent {
     super();
     this.state = {
       stats: JSON.parse(localStorage.getItem('statsData')) || {},
-      achievements: achievementsData.achievements
+      achievements: achievementsData.achievements,
     };
   }
 
@@ -26,7 +26,7 @@ export default class Stats extends PureComponent {
         case 'tabsOpened':
           if (this.state.stats['tabs-opened'] >= achievement.condition.amount) {
             achievement.achieved = true;
-           }
+          }
           break;
         case 'addonInstall':
           if (this.state.stats.marketplace) {
@@ -41,7 +41,7 @@ export default class Stats extends PureComponent {
     });
 
     this.setState({
-      achievements
+      achievements,
     });
   }
 
@@ -128,14 +128,15 @@ export default class Stats extends PureComponent {
               {getMessage('modals.main.settings.sections.stats.achievements')}
             </span>
             <br />
-            <span className="subtitle">{this.getUnlockedCount()}/{this.state.achievements.length} Unlocked</span>
+            <span className="subtitle">
+              {this.getUnlockedCount()}/{this.state.achievements.length} Unlocked
+            </span>
             <div className="achievements">
               {this.state.achievements.map((achievement) => {
                 if (achievement.achieved) {
                   return achievementElement(achievement.name, achievement.description);
                 }
-              }
-              )}
+              })}
             </div>
           </div>
           <div className="statSection rightPanel">
