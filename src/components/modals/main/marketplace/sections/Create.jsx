@@ -330,7 +330,7 @@ export default class Create extends PureComponent {
             id="file-input"
             type="settings"
             accept="application/json"
-            loadFunction={(e) => this.importSettings(JSON.parse(e.target.result))}
+            loadFunction={(e) => this.importSettings(JSON.parse(e))}
           />
         </SettingsItem>
         <div className="createButtons">
