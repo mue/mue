@@ -3,7 +3,14 @@ import { PureComponent } from 'react';
 import { MdOutlineDragIndicator } from 'react-icons/md';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';
+
 import Greeting from '../../../../widgets/greeting/Greeting';
+import Clock from '../../../../widgets/time/Clock';
+import Quote from '../../../../widgets/quote/Quote';
+import QuickLinks from '../../../../widgets/quicklinks/QuickLinks';
+import Date from '../../../../widgets/time/Date';
+import Message from '../../../../widgets/message/Message';
+import Reminder from '../../../../widgets/reminder/Reminder';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -73,6 +80,27 @@ export default class OrderSettings extends PureComponent {
     }
   };
 
+  getTab = (value) => {
+    switch (value) {
+      case 'greeting':
+        return <Greeting />;
+      case 'time':
+        return <Clock />;
+      case 'quicklinks':
+        return <QuickLinks />;
+      case 'quote':
+        return <Quote />;
+      case 'date':
+        return <Date />;
+      case 'message':
+        return <Message />;
+      case 'reminder':
+        return <Reminder />;
+      default:
+        return null;
+    }
+  };
+
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
     variables.stats.postEvent('setting', 'Widget order');
@@ -82,30 +110,33 @@ export default class OrderSettings extends PureComponent {
   render() {
     return (
       <>
-        <span className="mainTitle">
-        {getMessage('modals.main.marketplace.product.overview')}
-        </span>
+        <span className="mainTitle">{getMessage('modals.main.marketplace.product.overview')}</span>
         {/*<span className="title">{getMessage('modals.main.marketplace.product.overview')}</span>
         <span className="link" onClick={this.reset}>
           {getMessage('modals.main.settings.buttons.reset')}
     </span>*/}
         <div className="overviewGrid">
           <div>
-            <span className='title'>Preview</span>
-            <div className='tabPreview'>
-                <div className="previewItem">
-              {this.state.items.map((value, index) => {
-                if (!this.enabled(value)) {
-                  return null;
-                }
+            <span className="title">Preview</span>
+            <div className="tabPreview">
+              <div className="previewItem" style={{ maxWidth: '50%' }}>
+                {this.state.items.map((value, index) => {
+                  if (!this.enabled(value)) {
+                    return null;
+                  }
 
-                return <div className="previewItem" key={`item-${value}`} index={index} > {value}</div>;
-              })}
+                  return (
+                    <div className="previewItem" key={`item-${value}`} index={index}>
+                      {' '}
+                      {this.getTab(value)}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
           <div>
-          <span className='title'>{getMessage('modals.main.settings.sections.order.title')}</span>
+            <span className="title">{getMessage('modals.main.settings.sections.order.title')}</span>
             <SortableContainer
               onSortEnd={this.onSortEnd}
               lockAxis="y"

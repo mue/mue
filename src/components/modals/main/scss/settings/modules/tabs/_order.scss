@@ -98,10 +98,18 @@
     background: t($modal-sidebar);
     border-radius: t($borderRadius);
   }
+
   .previewContainer {
 
   }
-  .previewItem {
 
+  .previewItem {
+    .quotediv .quote {
+      max-width: 100%;
+    }
+
+    .quotediv .author-holder .author .author-content .title {
+      font-size: 1em !important;
+    }
   }
 }
