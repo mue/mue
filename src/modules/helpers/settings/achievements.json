@@ -4,42 +4,48 @@
             "name": "10/10 IGN",
             "description": "Opened 10 tabs",
             "condition": {
-                "tabsOpened": "10"
+                "type": "tabsOpened",
+                "amount": 10
             }
         },
         {
             "name": "Thank you",
             "description": "Opened 39 tabs",
             "condition": {
-                "tabsOpened": 39
+                "type": "tabsOpened",
+                "amount": 39
             }
         },
         {
             "name": "Seasoning",
             "description": "Opened 100 tabs",
             "condition": {
-                "tabsOpened": 100
+                "type": "tabsOpened",
+                "amount": 100
             }
         },
         {
             "name": "Mr Worldwide",
             "description": "Opened 305 tabs",
             "condition": {
-                "tabsOpened": 305
+                "type": "tabsOpened",
+                "amount": 305
             }
         },
         {
-            "name": "Average linux user",
+            "name": "Average Linux user",
             "description": "Installed an add-on",
             "condition": {
-                "addonInstall": 1
+                "type": "addonInstall",
+                "amount": 1
             }
         },
         {
             "name": "Fully riced",
             "description": "Installed 5 add-ons",
             "condition": {
-                "addonInstall": 5
+                "type": "addonInstall",
+                "amount": 5
             }
         }
     ]
