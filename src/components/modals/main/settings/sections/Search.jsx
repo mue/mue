@@ -104,13 +104,6 @@ export default class SearchSettings extends PureComponent {
             category="search"
             element=".other"
           />
-          <ul style={{ display: this.state.customDisplay }}>
-            <p style={{ marginTop: '0px' }}>
-              <span className="link" onClick={() => this.resetSearch()}>
-                {this.getMessage('modals.main.settings.buttons.reset')}
-              </span>
-            </p>
-          </ul>
           <Checkbox
             name="autocomplete"
             text={this.getMessage('modals.main.settings.sections.search.autocomplete')}
@@ -136,15 +129,22 @@ export default class SearchSettings extends PureComponent {
             </MenuItem>
           </Dropdown>
         </SettingsItem>
-        <SettingsItem title={this.getMessage('modals.main.settings.sections.search.custom')}>
-        <TextField
+        <div style={{ display: this.state.customDisplay }}>
+          <SettingsItem title={this.getMessage('modals.main.settings.sections.search.custom')}>
+            <TextField
               label={this.getMessage('modals.main.settings.sections.search.custom')}
               value={this.state.customValue}
               onInput={(e) => this.setState({ customValue: e.target.value })}
               varient="outlined"
               InputLabelProps={{ shrink: true }}
             />
-        </SettingsItem>
+            <p style={{ marginTop: '0px' }}>
+              <span className="link" onClick={() => this.resetSearch()}>
+                {this.getMessage('modals.main.settings.buttons.reset')}
+              </span>
+            </p>
+          </SettingsItem>
+        </div>
         <SettingsItem
           title={this.getMessage('modals.main.settings.sections.search.autocomplete_provider')}
           subtitle={this.getMessage(

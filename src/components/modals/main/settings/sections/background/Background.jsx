@@ -207,7 +207,9 @@ export default class BackgroundSettings extends PureComponent {
     if (this.state.effects === true) {
       header = (
         <span className="mainTitle" onClick={() => this.setState({ effects: false })}>
-          <span className='backTitle'>{getMessage('modals.main.settings.sections.background.title')}</span>
+          <span className="backTitle">
+            {getMessage('modals.main.settings.sections.background.title')}
+          </span>
           <MdOutlineKeyboardArrowRight />{' '}
           {getMessage('modals.main.settings.sections.background.effects.title')}
         </span>
@@ -218,7 +220,9 @@ export default class BackgroundSettings extends PureComponent {
           className="mainTitle"
           onClick={() => this.setState({ backgroundSettingsSection: false })}
         >
-          <span className='backTitle'>{getMessage('modals.main.settings.sections.background.title')}{' '}</span>
+          <span className="backTitle">
+            {getMessage('modals.main.settings.sections.background.title')}{' '}
+          </span>
           <MdOutlineKeyboardArrowRight />{' '}
           {getMessage('modals.main.settings.sections.background.source.title')}
         </span>
@@ -284,28 +288,34 @@ export default class BackgroundSettings extends PureComponent {
                 </Dropdown>
               </div>
             </div>
-            {(this.state.backgroundType === 'api' ||
-          this.state.backgroundType === 'custom' ||
-          this.state.marketplaceEnabled) ? <><div className="moreSettings" onClick={() => this.setState({ effects: true })}>
-              <div className="left">
-                <MdOutlineAutoAwesome />
-                <div className="content">
-                  <span className="title">
-                    {getMessage('modals.main.settings.sections.background.effects.title')}
-                  </span>
-                  <span className="subtitle">
-                    {getMessage('modals.main.settings.sections.background.effects.subtitle')}
-                  </span>
+            {this.state.backgroundType === 'api' ||
+            this.state.backgroundType === 'custom' ||
+            this.state.marketplaceEnabled ? (
+              <>
+                <div className="moreSettings" onClick={() => this.setState({ effects: true })}>
+                  <div className="left">
+                    <MdOutlineAutoAwesome />
+                    <div className="content">
+                      <span className="title">
+                        {getMessage('modals.main.settings.sections.background.effects.title')}
+                      </span>
+                      <span className="subtitle">
+                        {getMessage('modals.main.settings.sections.background.effects.subtitle')}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="action">
+                    {' '}
+                    <MdOutlineKeyboardArrowRight />
+                  </div>
                 </div>
-              </div>
-              <div className="action">
-                {' '}
-                <MdOutlineKeyboardArrowRight />
-              </div>
-            </div></> : null}
+              </>
+            ) : null}
           </>
         ) : null}
-        {this.state.backgroundSettingsSection !== true && this.state.effects !== true && (this.state.backgroundType === 'api' ||
+        {this.state.backgroundSettingsSection !== true &&
+        this.state.effects !== true &&
+        (this.state.backgroundType === 'api' ||
           this.state.backgroundType === 'custom' ||
           this.state.marketplaceEnabled) ? (
           <SettingsItem
@@ -346,7 +356,10 @@ export default class BackgroundSettings extends PureComponent {
             <SettingsItem
               title={getMessage('modals.main.settings.sections.background.source.title')}
               subtitle={getMessage('modals.main.settings.sections.background.source.subtitle')}
-              final={this.state.backgroundType === 'random_colour' || this.state.backgroundType === 'random_gradient'}
+              final={
+                this.state.backgroundType === 'random_colour' ||
+                this.state.backgroundType === 'random_gradient'
+              }
             >
               <Dropdown
                 label={getMessage('modals.main.settings.sections.background.type.title')}

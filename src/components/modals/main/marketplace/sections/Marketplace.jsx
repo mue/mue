@@ -1,9 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { MdWifiOff, MdLocalMall, MdArrowBack, MdOutlineKeyboardArrowRight } from 'react-icons/md';
-
-import Tooltip from '../../../../helpers/tooltip/Tooltip';
+import { MdWifiOff, MdLocalMall, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 import Item from '../Item';
 import Items from '../Items';
@@ -301,10 +299,9 @@ export default class Marketplace extends PureComponent {
             <div className="flexTopMarketplace">
               <span className="mainTitle" onClick={() => this.returnToMain()}>
                 <span className="backTitle">
-                  {this.getMessage('modals.main.settings.sections.background.title')}
+                  {this.getMessage('modals.main.navbar.marketplace')}
                 </span>
-                <MdOutlineKeyboardArrowRight />{' '}
-                Collection
+                <MdOutlineKeyboardArrowRight /> Collection
               </span>
             </div>
           </>

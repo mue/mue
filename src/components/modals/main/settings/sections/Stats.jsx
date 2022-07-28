@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdShowChart } from 'react-icons/md';
@@ -7,13 +8,51 @@ import SettingsItem from '../SettingsItem';
 import { FaTrophy } from 'react-icons/fa';
 
 import EventBus from 'modules/helpers/eventbus';
+import achievementsData from 'modules/helpers/settings/achievements.json';
 
 export default class Stats extends PureComponent {
   constructor() {
     super();
     this.state = {
       stats: JSON.parse(localStorage.getItem('statsData')) || {},
+      achievements: achievementsData.achievements,
     };
+  }
+
+  getAchivements() {
+    const achievements = this.state.achievements;
+    achievements.forEach((achievement) => {
+      switch (achievement.condition.type) {
+        case 'tabsOpened':
+          if (this.state.stats['tabs-opened'] >= achievement.condition.amount) {
+            achievement.achieved = true;
+          }
+          break;
+        case 'addonInstall':
+          if (this.state.stats.marketplace) {
+            if (this.state.stats.marketplace['install'] >= achievement.condition.amount) {
+              achievement.achieved = true;
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    });
+
+    this.setState({
+      achievements,
+    });
+  }
+
+  getUnlockedCount() {
+    let count = 0;
+    this.state.achievements.forEach((achievement) => {
+      if (achievement.achieved) {
+        count++;
+      }
+    });
+    return count;
   }
 
   componentDidMount() {
@@ -28,6 +67,8 @@ export default class Stats extends PureComponent {
         this.forceUpdate();
       }
     });
+
+    this.getAchivements();
   }
 
   componentWillUnmount() {
@@ -58,7 +99,7 @@ export default class Stats extends PureComponent {
       );
     }
 
-    const achievement = (name, description) => (
+    const achievementElement = (name, description) => (
       <div className="achievement">
         <FaTrophy />
         <div className="achievementContent">
@@ -83,18 +124,19 @@ export default class Stats extends PureComponent {
         </SettingsItem>
         <div className="statsGrid">
           <div className="statSection leftPanel">
-            <span className="title">{getMessage('modals.main.settings.sections.stats.achievements')}</span>
+            <span className="title">
+              {getMessage('modals.main.settings.sections.stats.achievements')}
+            </span>
             <br />
-            <span className='subtitle'>1/5 Unlocked</span>
+            <span className="subtitle">
+              {this.getUnlockedCount()}/{this.state.achievements.length} Unlocked
+            </span>
             <div className="achievements">
-              {this.state.stats['tabs-opened'] >= 10 && achievement('10/10 IGN', 'Opened 10 tabs')}
-              {this.state.stats['tabs-opened'] >= 39 && achievement('Thank you', 'Opened 39 tabs')}
-              {this.state.stats['tabs-opened'] >= 100 &&
-                achievement('Seasoning', 'Opened 100 tabs')}
-              {(this.state.stats.marketplace && this.state.stats.marketplace['install']) >= 1 &&
-                achievement('Average Linux User', 'Installed an add-on')}
-              {(this.state.stats.marketplace && this.state.stats.marketplace['install']) >= 5 &&
-                achievement('Fully riced', 'Installed 5 add-ons')}
+              {this.state.achievements.map((achievement) => {
+                if (achievement.achieved) {
+                  return achievementElement(achievement.name, achievement.description);
+                }
+              })}
             </div>
           </div>
           <div className="statSection rightPanel">

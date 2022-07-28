@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import Tabs from './backend/Tabs';
 
+import Overview from '../settings/sections/Overview';
 import Navbar from '../settings/sections/Navbar';
 import Greeting from '../settings/sections/Greeting';
 import Time from '../settings/sections/Time';
@@ -27,6 +28,9 @@ export default function Settings(props) {
 
   return (
     <Tabs changeTab={(type) => props.changeTab(type)} current="settings">
+      <div label={getMessage('modals.main.marketplace.product.overview')} name="order">
+        <Overview />
+      </div>
       <div
         label={getMessage('modals.main.settings.sections.appearance.navbar.title')}
         name="navbar"
@@ -63,9 +67,9 @@ export default function Settings(props) {
       <div label={getMessage('modals.main.settings.sections.weather.title')} name="weather">
         <Weather />
       </div>
-      <div label={getMessage('modals.main.settings.sections.order.title')} name="order">
+      {/*<div label={getMessage('modals.main.settings.sections.order.title')} name="order">
         <Order />
-      </div>
+</div>*/}
       <div label={getMessage('modals.main.settings.sections.appearance.title')} name="appearance">
         <Appearance />
       </div>

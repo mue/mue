@@ -80,3 +80,35 @@
     }
   }
 }
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 30px;
+}
+
+.tabPreview {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  @include themed() {
+    background: t($modal-sidebar);
+    border-radius: t($borderRadius);
+  }
+
+  .previewContainer {
+  }
+
+  .previewItem {
+    .quotediv .quote {
+      max-width: 100%;
+    }
+
+    .quotediv .author-holder .author .author-content .title {
+      font-size: 1em !important;
+    }
+  }
+}

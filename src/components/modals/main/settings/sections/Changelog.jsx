@@ -109,7 +109,7 @@ export default class Changelog extends PureComponent {
       );
     }
 
-    if (this.state.error === true) { 
+    if (this.state.error === true) {
       return errorMessage(
         <>
           <MdOutlineWifiOff />

@@ -52,7 +52,7 @@ export function exportSettings() {
 }
 
 export function importSettings(e) {
-  const content = JSON.parse(e.target.result);
+  const content = JSON.parse(e);
 
   Object.keys(content).forEach((key) => {
     localStorage.setItem(key, content[key]);
