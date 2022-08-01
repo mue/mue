@@ -28,6 +28,7 @@ import {
   MdAddCircleOutline as Added,
   MdAddCircleOutline as Create,
   MdViewAgenda as Overview,
+  MdCollectionsBookmark as Collections,
 } from 'react-icons/md';
 
 function Tab({ label, currentTab, onClick, navbarTab }) {
@@ -145,6 +146,9 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
       break;
     case getMessage('modals.main.marketplace.preset_settings'):
       icon = <Advanced />;
+      break;
+    case 'Collections':
+        icon = <Collections />;
       break;
 
     default:

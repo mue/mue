@@ -68,7 +68,9 @@
 }
 
 table {
+  border-collapse: separate;
   @include themed() {
+    border-radius: t($borderRadius);
     margin-top: 20px;
     tr:first-child {
       background: t($modal-sidebarActive);
@@ -76,7 +78,9 @@ table {
         padding: 1rem;
       }
     }
-
+    td {
+      padding: 15px;
+    }
     tr {
       th:last-child {
         display: grid;

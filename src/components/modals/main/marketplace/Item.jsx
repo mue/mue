@@ -159,7 +159,7 @@ export default class Item extends PureComponent {
                     <span>{this.props.data.version}</span>
                   )}
                 </div>
-              </div>
+              </div>        
               <div className="infoItem">
                 <MdAccountCircle />
                 <div className="text">
@@ -208,8 +208,24 @@ export default class Item extends PureComponent {
                   <span className="header">{getMessage('modals.main.marketplace.product.shares')}</span>
                   <span>324</span>
                 </div>
-              </div>*/}
+              </div>*/}           
             </div>
+            {this.props.data.data.quotes ? (
+              <>
+                <table>
+                  <tr>
+                    <th>Quote</th>
+                    <th>Author</th>
+                  </tr>
+                  {this.props.data.data.quotes.map((quote, index) => (
+                    <tr key={index}>
+                      <td>{quote.quote}</td>
+                      <td>{quote.author}</td>
+                    </tr>
+                  ))}
+                </table>
+              </>
+            ) : null}
           </div>
           <div className="itemInfo">
             <img

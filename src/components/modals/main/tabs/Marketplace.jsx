@@ -20,6 +20,9 @@ export default function Marketplace(props) {
       <div label={getMessage('modals.main.marketplace.preset_settings')} name="preset_settings">
         <MarketplaceTab type="preset_settings" />
       </div>
+      <div label='Collections' name="collection">
+        <MarketplaceTab type="collection" />
+      </div>
     </Tabs>
   );
 }

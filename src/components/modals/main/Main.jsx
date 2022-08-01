@@ -17,7 +17,7 @@ const getMessage = (text) => variables.language.getMessage(variables.languagecod
 
 const renderLoader = (current) => (
   <Tabs current={current}>
-    <div label={getMessage('modals.main.loading')}>
+    <div label="cheese">
       <div className="emptyItems">
         <div className="emptyMessage">
           <div className="loaderHolder">

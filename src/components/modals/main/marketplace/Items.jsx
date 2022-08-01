@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { MdAutoFixHigh } from 'react-icons/md';
+import { MdAutoFixHigh, MdOutlineArrowForward } from 'react-icons/md';
 
 export default function Items({
   type,
@@ -11,25 +11,33 @@ export default function Items({
 }) {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
+
   return (
     <>
-      {type === 'all' && !onCollection ? (
+      {(type === 'all' && !onCollection) || (type ==='collections') ? (
         <>
           {collections.map((collection, index) => (
-            <div className="collection" key={index}>
+            <div
+              className="collection"
+              key={index}
+              style={{
+                backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${collection.img}')`,
+              }}
+            >
               <div className="content">
                 <span className="title">{collection.display_name}</span>
                 <span className="subtitle">{collection.description}</span>
-                <button onClick={() => collectionFunction(collection.name)}>
-                  {getMessage('modals.main.marketplace.explore_collection')}
-                </button>
               </div>
+              <button className="nice-button" onClick={() => collectionFunction(collection.name)}>
+                <MdOutlineArrowForward /> {getMessage('modals.main.marketplace.explore_collection')}
+              </button>
             </div>
           ))}
         </>
       ) : null}
+
       <div className="items">
-        {items.map((item) => (
+        {items.slice(0, 99).map((item) => (
           <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
             <img
               alt="icon"
@@ -43,6 +51,7 @@ export default function Items({
           </div>
         ))}
       </div>
+      <div className="loader"></div>
       {type === 'all' && !onCollection ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />

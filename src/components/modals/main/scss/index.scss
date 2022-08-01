@@ -147,6 +147,14 @@ h5 {
   }
 }
 
+.marketplaceCondition {
+  display: flex;
+  flex-flow: row !important;
+  gap: -1px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .languageSettings {
   margin-bottom: 15px;
   .MuiFormGroup-root {

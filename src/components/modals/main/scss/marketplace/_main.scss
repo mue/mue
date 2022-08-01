@@ -320,6 +320,7 @@ p.author {
   gap: 15px;
   justify-content: space-between;
   align-items: center;
+  margin-top: 15px;
 
   @include themed() {
     background: t($modal-sidebar);
@@ -332,16 +333,15 @@ p.author {
   }
 }
 
-// reminder to remove this url
 .collection {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 24px;
   margin-top: 15px;
-  background-size: fill;
+  background-size: cover;
   background-position: center;
-  background-image: linear-gradient(to left, transparent, #000),
-    url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to left, transparent, #000);
   align-items: center;
 
   @include themed() {
@@ -366,6 +366,24 @@ p.author {
 
   .items {
     justify-content: center;
+  }
+  
+  button.nice-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1px 12px;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    color: #fff;
+    &:hover {
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(17, 25, 40, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.125);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { MdWifiOff, MdLocalMall, MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import { MdWifiOff, MdLocalMall, MdOutlineKeyboardArrowRight, MdRefresh } from 'react-icons/md';
 
 import Item from '../Item';
 import Items from '../Items';
@@ -204,6 +204,14 @@ export default class Marketplace extends PureComponent {
     });
   }
 
+  reloadItems() {
+    this.setState({
+      done: false,
+    });
+
+    this.getItems();
+  }
+
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return;
@@ -306,18 +314,25 @@ export default class Marketplace extends PureComponent {
             </div>
           </>
         ) : (
-          <span className="mainTitle">{this.getMessage('modals.main.navbar.marketplace')}</span>
+          <>
+            <div className="flexTopMarketplace">
+              <span className="mainTitle">{this.getMessage('modals.main.navbar.marketplace')}</span>
+            </div>
+            <div className="headerExtras marketplaceCondition">
+              <span className="link" onClick={() => this.reloadItems()}>
+                <MdRefresh /> Refresh
+              </span>
+              <Dropdown
+                label={this.getMessage('modals.main.addons.sort.title')}
+                name="sortMarketplace"
+                onChange={(value) => this.sortMarketplace(value)}
+              >
+                <option value="a-z">{this.getMessage('modals.main.addons.sort.a_z')}</option>
+                <option value="z-a">{this.getMessage('modals.main.addons.sort.z_a')}</option>
+              </Dropdown>
+            </div>
+          </>
         )}
-        <div className="filter">
-          <Dropdown
-            label={this.getMessage('modals.main.addons.sort.title')}
-            name="sortMarketplace"
-            onChange={(value) => this.sortMarketplace(value)}
-          >
-            <option value="a-z">{this.getMessage('modals.main.addons.sort.a_z')}</option>
-            <option value="z-a">{this.getMessage('modals.main.addons.sort.z_a')}</option>
-          </Dropdown>
-        </div>
         <Items
           type={this.props.type}
           items={this.state.items}
