@@ -228,9 +228,14 @@ export default class Marketplace extends PureComponent {
   render() {
     const errorMessage = (msg) => {
       return (
-        <div className="emptyItems">
-          <div className="emptyMessage">{msg}</div>
-        </div>
+        <>
+          <div className="flexTopMarketplace">
+            <span className="mainTitle">{this.getMessage('modals.main.navbar.marketplace')}</span>
+          </div>
+          <div className="emptyItems">
+            <div className="emptyMessage">{msg}</div>
+          </div>
+        </>
       );
     };
 
@@ -248,10 +253,12 @@ export default class Marketplace extends PureComponent {
 
     if (this.state.done === false) {
       return errorMessage(
-        <div className="loaderHolder">
-          <div id="loader"></div>
-          <span className="subtitle">{this.getMessage('modals.main.loading')}</span>
-        </div>,
+        <>
+          <div className="loaderHolder">
+            <div id="loader"></div>
+            <span className="subtitle">{this.getMessage('modals.main.loading')}</span>
+          </div>
+        </>,
       );
     }
 
@@ -312,14 +319,14 @@ export default class Marketplace extends PureComponent {
                 <MdOutlineKeyboardArrowRight /> Collection
               </span>
             </div>
-            <div className='collectionPage'>
+            <div className="collectionPage">
               <div className="content">
                 <span className="mainTitle">Red Dead Redemption</span>
-                <span className="subtitle">A Collection of stuff inspired by the video game series Red Dead.</span>
+                <span className="subtitle">
+                  A Collection of stuff inspired by the video game series Red Dead.
+                </span>
               </div>
-              <div className='nice-tag'>
-                Collection
-              </div>
+              <div className="nice-tag">Collection</div>
             </div>
           </>
         ) : (

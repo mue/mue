@@ -15,7 +15,9 @@ import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
   MdOutlineKeyboardArrowRight,
+  MdExpandMore,
 } from 'react-icons/md';
+import ImageCarousel from './imageCarousel';
 import Modal from 'react-modal';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
@@ -32,6 +34,7 @@ export default class Item extends PureComponent {
         this.props.addonInstalledVersion !== this.props.data.version,
       showMore: false,
       shareModal: false,
+      count: 5,
     };
   }
 
@@ -50,6 +53,10 @@ export default class Item extends PureComponent {
     } else {
       this.setState({ showMore: true });
     }
+  }
+
+  incrementCount() {
+    this.setState({ count: this.props.data.data.quotes.length });
   }
 
   render() {
@@ -116,12 +123,42 @@ export default class Item extends PureComponent {
         </div>
         <div className="itemPage">
           <div className="itemShowcase">
-            <img
-              alt="product"
-              draggable="false"
-              src={iconsrc}
-              onClick={() => this.setState({ showLightbox: true })}
-            />
+            {this.props.data.data.photos ? (
+              <div className="embla">
+                <div className="embla__container">
+                  <ImageCarousel data={this.props.data.data.photos} />
+                </div>
+              </div>
+            ) : null}
+            {this.props.data.data.quotes ? (
+              <>
+                <table>
+                  <tr>
+                    <th>Quote</th>
+                    <th>Author</th>
+                  </tr>
+                  {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
+                    <tr key={index}>
+                      <td>{quote.quote}</td>
+                      <td>{quote.author}</td>
+                    </tr>
+                  ))}
+                </table>
+                <div className="showMoreItems">
+                  <span className="link" onClick={() => this.incrementCount()}>
+                    <MdExpandMore /> Show All
+                  </span>
+                </div>
+              </>
+            ) : null}
+         {this.props.data.data.settings ? (
+                        <img
+                        alt="product"
+                        draggable="false"
+                        src={iconsrc}
+                        onClick={() => this.setState({ showLightbox: true })}
+                      />
+         ) : null}
             <span className="title">
               {getMessage('modals.main.marketplace.product.description')}
             </span>
@@ -159,7 +196,7 @@ export default class Item extends PureComponent {
                     <span>{this.props.data.version}</span>
                   )}
                 </div>
-              </div>        
+              </div>
               <div className="infoItem">
                 <MdAccountCircle />
                 <div className="text">
@@ -208,24 +245,8 @@ export default class Item extends PureComponent {
                   <span className="header">{getMessage('modals.main.marketplace.product.shares')}</span>
                   <span>324</span>
                 </div>
-              </div>*/}           
+              </div>*/}
             </div>
-            {this.props.data.data.quotes ? (
-              <>
-                <table>
-                  <tr>
-                    <th>Quote</th>
-                    <th>Author</th>
-                  </tr>
-                  {this.props.data.data.quotes.map((quote, index) => (
-                    <tr key={index}>
-                      <td>{quote.quote}</td>
-                      <td>{quote.author}</td>
-                    </tr>
-                  ))}
-                </table>
-              </>
-            ) : null}
           </div>
           <div className="itemInfo">
             <img

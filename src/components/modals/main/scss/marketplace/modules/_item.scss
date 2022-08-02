@@ -91,3 +91,11 @@ p.description {
     }
   }
 }
+
+.showMoreItems {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

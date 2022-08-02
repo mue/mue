@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
-import { MdAutoFixHigh, MdOutlineArrowForward } from 'react-icons/md';
+import React, { useState } from "react";
+import { MdAutoFixHigh, MdOutlineArrowForward, MdExpandMore } from 'react-icons/md';
 
 export default function Items({
   type,
@@ -10,7 +11,17 @@ export default function Items({
   onCollection,
 }) {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
+  const [count, setCount] = useState(8);
+  const incrementCount = () => {
+    if (count !== items.length && count <= items.length) {
+      if ((count + 8)  > items.length) {
+        setCount(count + (items.length - count));
+      }
+      else {
+        setCount(count + 8);
+      }
+    }
+  };
 
   return (
     <>
@@ -36,7 +47,7 @@ export default function Items({
         </>
       ) : null}
       <div className="items">
-        {items.slice(0, 99).map((item) => (
+        {items.slice(0, count).map((item) => (
           <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
             <img
               alt="icon"
@@ -49,6 +60,10 @@ export default function Items({
             </div>
           </div>
         ))}
+      </div>
+      <div className='showMoreItems'>
+        <span className='link' onClick={incrementCount}><MdExpandMore /> Show More</span>
+        <span className='subtitle'>Showing {count} / {items.length}</span>
       </div>
       <div className="loader"></div>
       {type === 'all' && !onCollection ? (

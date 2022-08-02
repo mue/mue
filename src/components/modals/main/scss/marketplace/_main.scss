@@ -10,6 +10,7 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem;
   margin-top: 15px;
+  margin-bottom: 30px;
 
   .item {
     position: relative;
@@ -474,5 +475,23 @@ p.author {
   margin-top: 30px;
   svg {
     font-size: 30px;
+  }
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  height: 350px;
+  width: 100px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 80% 100%;
   }
 }

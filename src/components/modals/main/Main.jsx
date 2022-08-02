@@ -17,7 +17,7 @@ const getMessage = (text) => variables.language.getMessage(variables.languagecod
 
 const renderLoader = (current) => (
   <Tabs current={current}>
-    <div label="cheese">
+    <div label={getMessage('modals.main.loading')}>
       <div className="emptyItems">
         <div className="emptyMessage">
           <div className="loaderHolder">
@@ -32,7 +32,7 @@ const renderLoader = (current) => (
 );
 
 export default function MainModal({ modalClose }) {
-  const display = localStorage.getItem('showReminder') === 'true' ? 'block' : 'none';
+  const display = localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none';
   const [currentTab, setCurrentTab] = useState(0);
 
   const changeTab = (type) => {
