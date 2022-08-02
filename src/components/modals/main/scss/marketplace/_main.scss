@@ -346,7 +346,7 @@ p.author {
   
   @include themed() {
     border-radius: t($borderRadius);
-    background-image: linear-gradient(to bottom, transparent, t($modal-background)),
+    background-image: linear-gradient(to bottom, transparent, #2f3542),
       url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
   }
   .nice-tag {
