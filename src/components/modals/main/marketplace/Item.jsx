@@ -163,9 +163,9 @@ export default class Item extends PureComponent {
               {getMessage('modals.main.marketplace.product.description')}
             </span>
             <span
-              className={this.state.showMore ? 'description' : 'description truncate'}
               dangerouslySetInnerHTML={{ __html: this.props.data.description }}
             />
+            {/*
             {this.props.data.description.length > 100 ? (
               <div className="showMore" onClick={() => this.toggleShowMore()}>
                 {this.state.showMore === true ? (
@@ -180,7 +180,7 @@ export default class Item extends PureComponent {
                   </>
                 )}
               </div>
-            ) : null}
+                ) : null}*/}
             <div className="moreInfo">
               <div className="infoItem">
                 <MdBugReport />
