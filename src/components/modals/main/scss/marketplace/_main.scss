@@ -533,18 +533,18 @@ p.author {
 .embla__button {
   outline: 0;
   cursor: pointer;
-  background-color: transparent;
   touch-action: manipulation;
   position: absolute;
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
   border: 0;
-  width: 30px;
-  height: 30px;
+  width: 30px !important;
+  height: 30px !important;
+  display: grid;
+  place-items: center;
   justify-content: center;
   align-items: center;
-  fill: #1bcacd;
   padding: 0;
 }
 

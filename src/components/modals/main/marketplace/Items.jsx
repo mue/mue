@@ -62,8 +62,14 @@ export default function Items({
         ))}
       </div>
       <div className='showMoreItems'>
-        <span className='link' onClick={incrementCount}><MdExpandMore /> Show More</span>
-        <span className='subtitle'>Showing {count} / {items.length}</span>
+        {(count !== items.length && items.length >= 8) ? (
+          <span className='link' onClick={incrementCount}><MdExpandMore /> Show More</span>
+        ) : null}
+        {items.length <= 8 ? (
+          <span className='subtitle'>Showing {items.length} / {items.length}</span>
+        ) : (
+          <span className='subtitle'>Showing {count} / {items.length}</span>
+        )}
       </div>
       <div className="loader"></div>
       {type === 'all' && !onCollection ? (
