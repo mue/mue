@@ -333,6 +333,46 @@ p.author {
   }
 }
 
+.collectionPage {
+  height: 200px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  @include themed() {
+    border-radius: t($borderRadius);
+    background-image: linear-gradient(to bottom, transparent, t($modal-background)),
+      url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
+  }
+  .nice-tag {
+    border-radius: 150px;
+    padding: 1px 12px;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    color: #fff;
+  }
+  .content {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    .mainTitle {
+      justify-content: center;
+      color: #fff !important;
+    }
+
+    .subtitle {
+      color: #ccc !important;
+    }
+  }
+}
+
 .collection {
   display: flex;
   justify-content: space-between;
@@ -367,7 +407,7 @@ p.author {
   .items {
     justify-content: center;
   }
-  
+
   button.nice-button {
     display: flex;
     align-items: center;

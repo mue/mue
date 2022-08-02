@@ -312,6 +312,15 @@ export default class Marketplace extends PureComponent {
                 <MdOutlineKeyboardArrowRight /> Collection
               </span>
             </div>
+            <div className='collectionPage'>
+              <div className="content">
+                <span className="mainTitle">Red Dead Redemption</span>
+                <span className="subtitle">A Collection of stuff inspired by the video game series Red Dead.</span>
+              </div>
+              <div className='nice-tag'>
+                Collection
+              </div>
+            </div>
           </>
         ) : (
           <>

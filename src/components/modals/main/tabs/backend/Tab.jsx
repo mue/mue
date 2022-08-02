@@ -46,10 +46,11 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     }
   }
 
-  let icon, divider;
+  let icon, divider, mue;
   switch (label) {
     case getMessage('modals.main.marketplace.product.overview'):
       icon = <Overview />;
+      mue = true;
       break;
     case getMessage('modals.main.navbar.settings'):
       icon = <Settings />;
@@ -163,6 +164,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   return (
     <>
+    {mue === true ? <span className='mainTitle'>Mue</span> : null}
       <button className={className} onClick={() => onClick(label)}>
         {icon} <span>{label}</span>
       </button>

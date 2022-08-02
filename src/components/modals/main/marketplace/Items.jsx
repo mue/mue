@@ -35,7 +35,6 @@ export default function Items({
           ))}
         </>
       ) : null}
-
       <div className="items">
         {items.slice(0, 99).map((item) => (
           <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
