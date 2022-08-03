@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdExpandMore } from 'react-icons/md';
 
 export default function Items({
@@ -14,36 +14,34 @@ export default function Items({
   const [count, setCount] = useState(8);
   const incrementCount = () => {
     if (count !== items.length && count <= items.length) {
-      if ((count + 8)  > items.length) {
+      if (count + 8 > items.length) {
         setCount(count + (items.length - count));
-      }
-      else {
+      } else {
         setCount(count + 8);
       }
     }
   };
 
+  const collection = collections[Math.floor(Math.random() * collections.length)];
+
   return (
     <>
-      {(type === 'all' && !onCollection) || (type ==='collections') ? (
+      {(type === 'all' && !onCollection) || type === 'collections' ? (
         <>
-          {collections.map((collection, index) => (
-            <div
-              className="collection"
-              key={index}
-              style={{
-                backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${collection.img}')`,
-              }}
-            >
-              <div className="content">
-                <span className="title">{collection.display_name}</span>
-                <span className="subtitle">{collection.description}</span>
-              </div>
-              <button className="nice-button" onClick={() => collectionFunction(collection.name)}>
-                <MdOutlineArrowForward /> {getMessage('modals.main.marketplace.explore_collection')}
-              </button>
+          <div
+            className="collection"
+            style={{
+              backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${collection.img}')`,
+            }}
+          >
+            <div className="content">
+              <span className="title">{collection.display_name}</span>
+              <span className="subtitle">{collection.description}</span>
             </div>
-          ))}
+            <button className="nice-button" onClick={() => collectionFunction(collection.name)}>
+              <MdOutlineArrowForward /> {getMessage('modals.main.marketplace.explore_collection')}
+            </button>
+          </div>
         </>
       ) : null}
       <div className="items">
@@ -61,14 +59,20 @@ export default function Items({
           </div>
         ))}
       </div>
-      <div className='showMoreItems'>
-        {(count !== items.length && items.length >= 8) ? (
-          <span className='link' onClick={incrementCount}><MdExpandMore /> Show More</span>
+      <div className="showMoreItems">
+        {count !== items.length && items.length >= 8 ? (
+          <span className="link" onClick={incrementCount}>
+            <MdExpandMore /> Show More
+          </span>
         ) : null}
         {items.length <= 8 ? (
-          <span className='subtitle'>Showing {items.length} / {items.length}</span>
+          <span className="subtitle">
+            Showing {items.length} / {items.length}
+          </span>
         ) : (
-          <span className='subtitle'>Showing {count} / {items.length}</span>
+          <span className="subtitle">
+            Showing {count} / {items.length}
+          </span>
         )}
       </div>
       <div className="loader"></div>

@@ -108,6 +108,9 @@ export default class Marketplace extends PureComponent {
       ).json();
       this.setState({
         items: collection.data.items,
+        collectionTitle: collection.data.name,
+        collectionDescription: collection.data.description,
+        collectionImg: collection.data.img,
         collection: true,
         done: true,
       });
@@ -319,12 +322,15 @@ export default class Marketplace extends PureComponent {
                 <MdOutlineKeyboardArrowRight /> Collection
               </span>
             </div>
-            <div className="collectionPage">
+            <div
+              className="collectionPage"
+              style={{
+                backgroundImage: `linear-gradient(to bottom, transparent, #2f3542), url('${this.state.collectionImg}')`,
+              }}
+            >
               <div className="content">
-                <span className="mainTitle">Red Dead Redemption</span>
-                <span className="subtitle">
-                  A Collection of stuff inspired by the video game series Red Dead.
-                </span>
+                <span className="mainTitle">{this.state.collectionTitle}</span>
+                <span className="subtitle">{this.state.collectionDescription}</span>
               </div>
               <div className="nice-tag">Collection</div>
             </div>
