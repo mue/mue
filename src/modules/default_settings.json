@@ -125,7 +125,7 @@
   },
   {
     "name": "order",
-    "value": "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\", \"message\", \"reminder\"]"
+    "value": "[\"greeting\", \"time\", \"quicklinks\", \"quote\", \"date\", \"message\"]"
   },
   {
     "name": "theme",

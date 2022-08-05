@@ -5,7 +5,7 @@ import { MdAutoFixHigh, MdOutlineArrowForward, MdExpandMore } from 'react-icons/
 export default function Items({
   type,
   items,
-  collections,
+  collections = [],
   toggleFunction,
   collectionFunction,
   onCollection,

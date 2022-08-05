@@ -96,10 +96,6 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
       icon = <Weather />;
       divider = true;
       break;
-    case 'Reminder':
-      icon = <Reminder />;
-      break;
-
     case getMessage('modals.main.settings.sections.appearance.title'):
       icon = <Appearance />;
       break;

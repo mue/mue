@@ -7,7 +7,6 @@ import Search from './search/Search';
 import QuickLinks from './quicklinks/QuickLinks';
 import Date from './time/Date';
 import Message from './message/Message';
-import Reminder from './reminder/Reminder';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -33,8 +32,7 @@ export default class Widgets extends PureComponent {
       quote: this.enabled('quote') ? <Quote /> : null,
       date: this.enabled('date') ? <Date /> : null,
       quicklinks: this.enabled('quicklinksenabled') && this.online ? <QuickLinks /> : null,
-      message: this.enabled('message') ? <Message /> : null,
-      reminder: this.enabled('reminder') ? <Reminder /> : null,
+      message: this.enabled('message') ? <Message /> : null
     };
   }
 
@@ -83,8 +81,7 @@ export default class Widgets extends PureComponent {
       <QuickLinks />,
       <Quote />,
       <Date />,
-      <Message />,
-      <Reminder />,
+      <Message />
     ];
 
     if (this.state.order) {

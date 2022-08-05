@@ -10,7 +10,6 @@ import Quote from '../../../../widgets/quote/Quote';
 import QuickLinks from '../../../../widgets/quicklinks/QuickLinks';
 import Date from '../../../../widgets/time/Date';
 import Message from '../../../../widgets/message/Message';
-import Reminder from '../../../../widgets/reminder/Reminder';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -21,8 +20,7 @@ const widget_name = {
   quicklinks: getMessage('modals.main.settings.sections.quicklinks.title'),
   quote: getMessage('modals.main.settings.sections.quote.title'),
   date: getMessage('modals.main.settings.sections.date.title'),
-  message: getMessage('modals.main.settings.sections.message.title'),
-  reminder: 'reminder',
+  message: getMessage('modals.main.settings.sections.message.title')
 };
 
 const SortableItem = sortableElement(({ value }) => (
@@ -61,7 +59,7 @@ export default class OrderSettings extends PureComponent {
   reset = () => {
     localStorage.setItem(
       'order',
-      JSON.stringify(['greeting', 'time', 'quicklinks', 'quote', 'date', 'message', 'reminder']),
+      JSON.stringify(['greeting', 'time', 'quicklinks', 'quote', 'date', 'message']),
     );
 
     this.setState({
@@ -94,8 +92,6 @@ export default class OrderSettings extends PureComponent {
         return <Date />;
       case 'message':
         return <Message />;
-      case 'reminder':
-        return <Reminder />;
       default:
         return null;
     }

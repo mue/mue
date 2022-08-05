@@ -8,12 +8,10 @@ import Time from '../settings/sections/Time';
 import QuickLinks from '../settings/sections/QuickLinks';
 import Quote from '../settings/sections/Quote';
 import Date from '../settings/sections/Date';
-import Reminder from '../settings/sections/Reminder';
 import Message from '../settings/sections/Message';
 import Background from '../settings/sections/background/Background';
 import Search from '../settings/sections/Search';
 import Weather from '../settings/sections/Weather';
-import Order from '../settings/sections/Order';
 import Appearance from '../settings/sections/Appearance';
 import Language from '../settings/sections/Language';
 import Advanced from '../settings/sections/advanced/Advanced';
@@ -52,9 +50,6 @@ export default function Settings(props) {
       <div label={getMessage('modals.main.settings.sections.date.title')} name="date">
         <Date />
       </div>
-      {/*<div label="Reminder" name="reminder">
-        <Reminder />
-  </div>*/}
       <div label={getMessage('modals.main.settings.sections.message.title')} name="message">
         <Message />
       </div>
@@ -67,9 +62,6 @@ export default function Settings(props) {
       <div label={getMessage('modals.main.settings.sections.weather.title')} name="weather">
         <Weather />
       </div>
-      {/*<div label={getMessage('modals.main.settings.sections.order.title')} name="order">
-        <Order />
-</div>*/}
       <div label={getMessage('modals.main.settings.sections.appearance.title')} name="appearance">
         <Appearance />
       </div>
