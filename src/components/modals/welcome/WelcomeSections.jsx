@@ -28,7 +28,7 @@ export default class WelcomeSections extends PureComponent {
       importedSettings: [],
     };
     this.changeWelcomeImg = this.changeWelcomeImg.bind(this);
-    this.welcomeImages = 4;
+    this.welcomeImages = 3;
   }
 
   changeTheme(type) {
@@ -88,7 +88,7 @@ export default class WelcomeSections extends PureComponent {
     let welcomeImage = this.state.welcomeImage;
 
     this.setState({
-      welcomeImage: welcomeImage < 4 ? ++welcomeImage : 0,
+      welcomeImage: welcomeImage < 3 ? ++welcomeImage : 0,
     });
 
     this.timeout = setTimeout(this.changeWelcomeImg, 3000);
@@ -121,16 +121,20 @@ export default class WelcomeSections extends PureComponent {
     const intro = (
       <>
         <span className="mainTitle">{this.getMessage('modals.welcome.sections.intro.title')}</span>
-        <span className="subtitle">
-          {this.getMessage('modals.welcome.sections.intro.description')}
-        </span>
-        <h3 className="quicktip">#shareyourmue</h3>
         <div className="examples">
           <img
             src={`./welcome-images/example${this.state.welcomeImage + 1}.webp`}
             alt="Example Mue setup"
             draggable={false}
           />
+        </div>
+
+        <h3 className="quicktip">#shareyourmue</h3>
+        <div>
+          <div>👏</div>
+          <span className="subtitle">
+            {this.getMessage('modals.welcome.sections.intro.description')}
+          </span>
         </div>
       </>
     );
@@ -144,7 +148,7 @@ export default class WelcomeSections extends PureComponent {
           {this.getMessage('modals.welcome.sections.language.description')}{' '}
           <a
             href={variables.constants.TRANSLATIONS_URL}
-            className="resetLink"
+            className="link"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -161,7 +165,9 @@ export default class WelcomeSections extends PureComponent {
     const theme = (
       <>
         <span className="mainTitle">{this.getMessage('modals.welcome.sections.theme.title')}</span>
-        <p>{this.getMessage('modals.welcome.sections.theme.description')}</p>
+        <span className="subtitle">
+          {this.getMessage('modals.welcome.sections.theme.description')}
+        </span>
         <div className="themesToggleArea">
           <div className={this.state.autoClass} onClick={() => this.changeTheme('auto')}>
             <MdAutoAwesome />
@@ -177,9 +183,9 @@ export default class WelcomeSections extends PureComponent {
               <span>{this.getMessage('modals.main.settings.sections.appearance.theme.dark')}</span>
             </div>
           </div>
-          <h3 className="quicktip">{this.getMessage('modals.welcome.tip')}</h3>
-          <p>{this.getMessage('modals.welcome.sections.theme.tip')}</p>
         </div>
+        <span className="title">{this.getMessage('modals.welcome.tip')}</span>
+        <span className="subtitle">{this.getMessage('modals.welcome.sections.theme.tip')}</span>
       </>
     );
 
@@ -188,10 +194,12 @@ export default class WelcomeSections extends PureComponent {
         <span className="mainTitle">
           {this.getMessage('modals.welcome.sections.settings.title')}
         </span>
-        <p>{this.getMessage('modals.welcome.sections.settings.description')}</p>
+        <span className="subtitle">
+          {this.getMessage('modals.welcome.sections.settings.description')}
+        </span>
         <button className="upload" onClick={() => document.getElementById('file-input').click()}>
           <MdCloudUpload />
-          <br />
+
           <span>{this.getMessage('modals.main.settings.buttons.import')}</span>
         </button>
         <FileUpload
@@ -200,8 +208,8 @@ export default class WelcomeSections extends PureComponent {
           type="settings"
           loadFunction={(e) => this.importSettings(e)}
         />
-        <h3 className="quicktip">{this.getMessage('modals.welcome.tip')}</h3>
-        <p>{this.getMessage('modals.welcome.sections.settings.tip')}</p>
+        <span className="title">{this.getMessage('modals.welcome.tip')}</span>
+        <span className="subtitle">{this.getMessage('modals.welcome.sections.settings.tip')}</span>
       </>
     );
 
@@ -210,13 +218,17 @@ export default class WelcomeSections extends PureComponent {
         <span className="mainTitle">
           {this.getMessage('modals.welcome.sections.privacy.title')}
         </span>
-        <p>{this.getMessage('modals.welcome.sections.privacy.description')}</p>
+        <span className="subtitle">
+          {this.getMessage('modals.welcome.sections.privacy.description')}
+        </span>
         <Checkbox
           name="offlineMode"
           text={this.getMessage('modals.main.settings.sections.advanced.offline_mode')}
           element=".other"
         />
-        <p>{this.getMessage('modals.welcome.sections.privacy.offline_mode_description')}</p>
+        <span className="subtitle">
+          {this.getMessage('modals.welcome.sections.privacy.offline_mode_description')}
+        </span>
         <Checkbox
           name="quicklinksddgProxy"
           text={
@@ -235,22 +247,23 @@ export default class WelcomeSections extends PureComponent {
             ')'
           }
         />
-        <p>{this.getMessage('modals.welcome.sections.privacy.ddg_proxy_description')}</p>
-        <h3 className="quicktip">
+        <span className="subtitle">
+          {this.getMessage('modals.welcome.sections.privacy.ddg_proxy_description')}
+        </span>
+        <span className="title">
           {this.getMessage('modals.welcome.sections.privacy.links.title')}
-        </h3>
+        </span>
         <a
-          className="privacy"
+          className="link"
           href={variables.constants.PRIVACY_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
           {this.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}
         </a>
-        <br />
-        <br />
+
         <a
-          className="privacy"
+          className="link"
           href={'https://github.com/' + variables.constants.ORG_NAME}
           target="_blank"
           rel="noopener noreferrer"
@@ -263,9 +276,13 @@ export default class WelcomeSections extends PureComponent {
     const final = (
       <>
         <span className="mainTitle">{this.getMessage('modals.welcome.sections.final.title')}</span>
-        <p>{this.getMessage('modals.welcome.sections.final.description')}</p>
-        <h3 className="quicktip">{this.getMessage('modals.welcome.sections.final.changes')}</h3>
-        <p>{this.getMessage('modals.welcome.sections.final.changes_description')}</p>
+        <span className="subtitle">
+          {this.getMessage('modals.welcome.sections.final.description')}
+        </span>
+        <span className="title">{this.getMessage('modals.welcome.sections.final.changes')}</span>
+        <span className="subtitle">
+          {this.getMessage('modals.welcome.sections.final.changes_description')}
+        </span>
         <div className="themesToggleArea themesToggleAreaWelcome">
           <div className="toggle" onClick={() => this.props.switchTab(1)}>
             <span>

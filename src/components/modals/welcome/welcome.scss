@@ -1,9 +1,18 @@
 @import '../main/scss/index.scss';
 @import 'scss/variables';
 
+.welcomemodal {
+  @include themed() {
+    background-color: t($modal-background);
+  }
+}
+
 .welcomeContent {
   @include themed() {
     background-color: t($modal-background);
+  }
+  .MuiFormControlLabel-root {
+    margin-right: 0;
   }
   @extend %tabText;
   height: 80vh;
@@ -25,7 +34,12 @@
     }
   }
   section:nth-child(2) {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    overflow-y: auto;
     .buttons {
+      z-index: 999;
       backdrop-filter: blur(2px);
       position: sticky;
       bottom: 0;
@@ -41,6 +55,7 @@
       display: flex;
       flex-flow: column;
       padding: 25px;
+      gap: 20px;
     }
   }
 }
@@ -142,6 +157,9 @@
   border: none;
   outline: none;
   padding: 50px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   @include themed() {
     background: t($modal-sidebar);
     color: t($color);
@@ -172,17 +190,11 @@ a.privacy {
 }
 
 .examples {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-
   img {
-    width: clamp(20rem, 300px, 40rem);
-    height: auto !important;
-    display: block;
-    margin: 30px;
-    border-radius: 12px;
+    width: 60%;
+    @include themed() {
+      border-radius: t($borderRadius);
+    }
   }
 }
 
@@ -225,5 +237,19 @@ a.privacy {
 .dark {
   .toggle.darkTheme {
     background-color: rgba(65, 71, 84, 0.9);
+  }
+}
+
+.welcomePart {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  .text {
+    display: flex;
+    flex-flow: column;
+  }
+  button {
+    @include modal-button(standard);
+    width: 150px;
   }
 }
