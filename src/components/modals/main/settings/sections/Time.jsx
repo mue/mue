@@ -128,6 +128,9 @@ export default class TimeSettings extends PureComponent {
             <option value="percentageComplete">
               {getMessage('modals.main.settings.sections.time.percentage_complete')}
             </option>
+            <option value="modernClock">
+              Modern Clock
+            </option>
           </Dropdown>
         </SettingsItem>
         {timeSettings}

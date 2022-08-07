@@ -16,6 +16,9 @@ export default class Clock extends PureComponent {
     this.timer = undefined;
     this.state = {
       time: '',
+      finalHour: '',
+      finalMinute: '',
+      finalSeconds: '',
       ampm: '',
       nowGlobal: new Date(),
     };
@@ -57,15 +60,24 @@ export default class Clock extends PureComponent {
 
           if (localStorage.getItem('seconds') === 'true') {
             sec = `:${('00' + now.getSeconds()).slice(-2)}`;
+            this.setState({ finalSeconds: `:${('00' + now.getSeconds()).slice(-2)}` });
           }
 
           if (localStorage.getItem('timeformat') === 'twentyfourhour') {
             if (zero === 'false') {
               time = `${now.getHours()}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+              this.setState({
+                finalHour: `${now.getHours()}`,
+                finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,
+              });
             } else {
               time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(
                 -2,
               )}${sec}`;
+              this.setState({
+                finalHour: `${('00' + now.getHours()).slice(-2)}`,
+                finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,
+              });
             }
 
             this.setState({
@@ -84,8 +96,16 @@ export default class Clock extends PureComponent {
 
             if (zero === 'false') {
               time = `${hours}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+              this.setState({
+                finalHour: `${hours}`,
+                finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,
+              });
             } else {
               time = `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+              this.setState({
+                finalHour: `${('00' + hours).slice(-2)}`,
+                finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,
+              });
             }
 
             this.setState({
@@ -167,6 +187,23 @@ export default class Clock extends PureComponent {
             />
           </div>
         </Suspense>
+      );
+    }
+
+    if (localStorage.getItem('timeType') === 'modernClock') {
+      clockHTML = (
+        <>
+          <span className="clock clock-container">
+            {this.state.time}
+            <span className="ampm">{this.state.ampm}</span>
+          </span>
+          <span className="new-clock clock">
+            {' '}
+            <div className="hour">{this.state.finalHour}</div>{' '}
+            <div className="minute">{this.state.finalMinute}</div>{' '}
+            <div className="seconds">{this.state.finalSeconds}</div>{' '}
+          </span>
+        </>
       );
     }
 
