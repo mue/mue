@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdCloudUpload, MdAutoAwesome, MdLightMode, MdDarkMode } from 'react-icons/md';
+import { MdCloudUpload, MdAutoAwesome, MdLightMode, MdDarkMode, MdCelebration, MdOpenInNew} from 'react-icons/md';
+import { FaDiscord, FaGithub } from 'react-icons/fa';
 
 import Radio from '../main/settings/Radio';
 import Checkbox from '../main/settings/Checkbox';
@@ -129,12 +130,35 @@ export default class WelcomeSections extends PureComponent {
           />
         </div>
 
-        <h3 className="quicktip">#shareyourmue</h3>
-        <div>
-          <div>👏</div>
-          <span className="subtitle">
-            {this.getMessage('modals.welcome.sections.intro.description')}
-          </span>
+        <span className="link">#shareyourmue</span>
+        <div className="welcomeNotice">
+          <div className="icon"><MdCelebration /></div>
+          <div className="text">
+            <span className="title">{this.getMessage('modals.welcome.sections.intro.title')}</span>
+            <span className="subtitle">
+              {this.getMessage('modals.welcome.sections.intro.description')}
+            </span>
+          </div>
+        </div>
+        <div className="welcomeNotice">
+          <div className="icon">
+            <FaDiscord />
+          </div>
+          <div className="text"> 
+            <span className="title">Join our discord</span>
+            <span className="subtitle">Join our community</span>
+          </div>
+          <button><MdOpenInNew /> Join</button>
+        </div>
+        <div className="welcomeNotice">
+          <div className="icon">
+            <FaGithub />
+          </div>
+          <div className="text"> 
+            <span className="title">Contribute on Github</span>
+            <span className="subtitle">Contribute</span>
+          </div>
+          <button><MdOpenInNew /> Open</button>
         </div>
       </>
     );

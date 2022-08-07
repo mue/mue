@@ -24,7 +24,6 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 
-
   section:nth-child(1) {
     display: flex;
     align-items: center;
@@ -59,7 +58,6 @@
     }
   }
 }
-
 
 .progressbar {
   position: fixed;
@@ -240,16 +238,36 @@ a.privacy {
   }
 }
 
-.welcomePart {
+.welcomeNotice {
   display: flex;
   flex-flow: row;
+  gap: 25px;
+  padding: 25px;
   align-items: center;
+
+  @include themed() {
+    background-color: t($modal-sidebar);
+    border-radius: t($borderRadius);
+  }
+  .icon {
+    @include themed() {
+      background-color: t($modal-sidebarActive);
+    }
+    height: 50px !important;
+    width: 50px !important;
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    flex-shrink: 0;
+  }
   .text {
     display: flex;
     flex-flow: column;
   }
   button {
+    margin-left: auto;
+    padding: 5px 20px;
     @include modal-button(standard);
-    width: 150px;
   }
 }
