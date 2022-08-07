@@ -145,7 +145,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
       icon = <Advanced />;
       break;
     case 'Collections':
-        icon = <Collections />;
+      icon = <Collections />;
       break;
 
     default:
@@ -160,7 +160,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   return (
     <>
-    {mue === true ? <span className='mainTitle'>Mue</span> : null}
+      {mue === true ? <span className="mainTitle">Mue</span> : null}
       <button className={className} onClick={() => onClick(label)}>
         {icon} <span>{label}</span>
       </button>

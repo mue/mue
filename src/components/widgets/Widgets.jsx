@@ -32,7 +32,7 @@ export default class Widgets extends PureComponent {
       quote: this.enabled('quote') ? <Quote /> : null,
       date: this.enabled('date') ? <Date /> : null,
       quicklinks: this.enabled('quicklinksenabled') && this.online ? <QuickLinks /> : null,
-      message: this.enabled('message') ? <Message /> : null
+      message: this.enabled('message') ? <Message /> : null,
     };
   }
 
@@ -75,14 +75,7 @@ export default class Widgets extends PureComponent {
 
     // allow for re-ordering widgets
     // we have a default to prevent errors
-    let elements = [
-      <Greeting />,
-      <Clock />,
-      <QuickLinks />,
-      <Quote />,
-      <Date />,
-      <Message />
-    ];
+    let elements = [<Greeting />, <Clock />, <QuickLinks />, <Quote />, <Date />, <Message />];
 
     if (this.state.order) {
       elements = [];

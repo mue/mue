@@ -121,7 +121,9 @@ export default class WelcomeSections extends PureComponent {
     const intro = (
       <>
         <span className="mainTitle">{this.getMessage('modals.welcome.sections.intro.title')}</span>
-        <p>{this.getMessage('modals.welcome.sections.intro.description')}</p>
+        <span className="subtitle">
+          {this.getMessage('modals.welcome.sections.intro.description')}
+        </span>
         <h3 className="quicktip">#shareyourmue</h3>
         <div className="examples">
           <img
@@ -138,7 +140,7 @@ export default class WelcomeSections extends PureComponent {
         <span className="mainTitle">
           {this.getMessage('modals.welcome.sections.language.title')}
         </span>
-        <p>
+        <span className="subtitle">
           {this.getMessage('modals.welcome.sections.language.description')}{' '}
           <a
             href={variables.constants.TRANSLATIONS_URL}
@@ -149,8 +151,10 @@ export default class WelcomeSections extends PureComponent {
             GitHub
           </a>
           !
-        </p>
-        <Radio name="language" options={languages} category="welcomeLanguage" />
+        </span>
+        <div className="languageSettings">
+          <Radio name="language" options={languages} category="welcomeLanguage" />
+        </div>
       </>
     );
 

@@ -1,8 +1,6 @@
 import variables from 'modules/variables';
 
-export default function Collection({
-  items,
-}) {
+export default function Collection({ items }) {
   const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
   return (

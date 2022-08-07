@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
-import { PrevButton, NextButton } from "./EmblaCarouselButtons";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import { FaPhotoVideo } from "react-icons/fa";
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { PrevButton, NextButton } from './CarouselButtons';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import './carousel.scss';
+import { FaPhotoVideo } from 'react-icons/fa';
 
 const EmblaCarousel = ({ data, options = { loop: false } }) => {
   const autoplay = useRef(
-    Autoplay(
-      { delay: 3000, stopOnInteraction: false },
-      (emblaRoot) => emblaRoot.parentElement
-    )
+    Autoplay({ delay: 3000, stopOnInteraction: false }, (emblaRoot) => emblaRoot.parentElement),
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [autoplay.current]);
@@ -37,7 +35,7 @@ const EmblaCarousel = ({ data, options = { loop: false } }) => {
   useEffect(() => {
     if (!emblaApi) return;
     onSelect();
-    emblaApi.on("select", onSelect);
+    emblaApi.on('select', onSelect);
   }, [emblaApi, onSelect]);
 
   return (
@@ -47,11 +45,7 @@ const EmblaCarousel = ({ data, options = { loop: false } }) => {
           {data.map((photo, index) => (
             <div className="embla__slide" key={index}>
               <div className="embla__slide__inner">
-                <img
-                  className="embla__slide__img"
-                  src={photo.url.default}
-                  alt="A cool cat."
-                />
+                <img className="embla__slide__img" src={photo.url.default} alt="A cool cat." />
               </div>
             </div>
           ))}

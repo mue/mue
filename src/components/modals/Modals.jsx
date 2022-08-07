@@ -97,7 +97,7 @@ export default class Modals extends PureComponent {
           onRequestClose={() => this.closeWelcome()}
           isOpen={this.state.welcomeModal}
           className="Modal welcomemodal mainModal"
-          overlayClassName="Overlay welcomeoverlay"
+          overlayClassName="Overlay mainModal"
           shouldCloseOnOverlayClick={false}
           ariaHideApp={false}
         >

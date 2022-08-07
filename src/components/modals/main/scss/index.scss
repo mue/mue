@@ -82,6 +82,9 @@
 #modal {
   height: 80vh;
   width: clamp(60vw, 1200px, 90vw);
+  @include themed() {
+    background-color: t($modal-background);
+  }
 }
 
 /* fixes for font size on extension */

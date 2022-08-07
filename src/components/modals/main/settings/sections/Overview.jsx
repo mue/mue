@@ -20,7 +20,7 @@ const widget_name = {
   quicklinks: getMessage('modals.main.settings.sections.quicklinks.title'),
   quote: getMessage('modals.main.settings.sections.quote.title'),
   date: getMessage('modals.main.settings.sections.date.title'),
-  message: getMessage('modals.main.settings.sections.message.title')
+  message: getMessage('modals.main.settings.sections.message.title'),
 };
 
 const SortableItem = sortableElement(({ value }) => (

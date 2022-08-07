@@ -2,76 +2,49 @@
 @import 'scss/variables';
 
 .welcomeContent {
-  height: 100%;
-}
-
-.welcomemodal {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 80vh;
-  width: clamp(70vw, 1200px, 90vw);
-  padding: 0;
-  overflow-x: hidden !important;
-
-  section {
-    width: 50%;
-    display: inline;
-    height: 100%;
+  @include themed() {
+    background-color: t($modal-background);
   }
+  @extend %tabText;
+  height: 80vh;
+  width: clamp(60vw, 1200px, 90vw);
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
 
   section:nth-child(1) {
-    float: left;
-    @include themed() {
-      background: t($modal-sidebar);
-    }
     display: flex;
-    justify-content: center;
     align-items: center;
-  }
-
-  section:nth-child(2) {
-    float: right;
+    justify-content: center;
     @include themed() {
-      background: t($modal-background);
+      background-color: t($modal-sidebar);
     }
-    .content {
-      padding: 20px;
-      .mainTitle {
-        font-size: 38px;
-        font-weight: 600;
-        margin-bottom: 15px;
-      }
-    }
-
+  }
+  section:nth-child(2) {
     .buttons {
-      position: absolute;
-      bottom: 2rem;
-      right: 2rem;
+      backdrop-filter: blur(2px);
+      position: sticky;
+      bottom: 0;
+      padding: 25px;
       display: flex;
+      justify-content: flex-end;
       button {
         @include modal-button(standard);
         width: 150px;
       }
     }
-
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    h3.quicktip {
-      text-transform: uppercase;
-      color: #5352ed;
+    .content {
+      display: flex;
+      flex-flow: column;
+      padding: 25px;
     }
   }
 }
 
-.welcomeoverlay {
-  background-color: rgba(0, 0, 0, 0.4);
-}
 
 .progressbar {
   position: fixed;
@@ -240,5 +213,17 @@ a.privacy {
   100% {
     transform: translate(0, 0px);
     opacity: 1;
+  }
+}
+
+.light {
+  .toggle.lightTheme {
+    background-color: rgba(219, 219, 219, 0.72);
+  }
+}
+
+.dark {
+  .toggle.darkTheme {
+    background-color: rgba(65, 71, 84, 0.9);
   }
 }

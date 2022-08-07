@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import Tooltip from '../../../helpers/tooltip/Tooltip';
+import ImageCarousel from '../../../helpers/carousel/Carousel';
 import { toast } from 'react-toastify';
 import {
   MdArrowBack,
@@ -17,7 +18,6 @@ import {
   MdOutlineKeyboardArrowRight,
   MdExpandMore,
 } from 'react-icons/md';
-import ImageCarousel from './imageCarousel';
 import Modal from 'react-modal';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
@@ -151,20 +151,18 @@ export default class Item extends PureComponent {
                 </div>
               </>
             ) : null}
-         {this.props.data.data.settings ? (
-                        <img
-                        alt="product"
-                        draggable="false"
-                        src={iconsrc}
-                        onClick={() => this.setState({ showLightbox: true })}
-                      />
-         ) : null}
+            {this.props.data.data.settings ? (
+              <img
+                alt="product"
+                draggable="false"
+                src={iconsrc}
+                onClick={() => this.setState({ showLightbox: true })}
+              />
+            ) : null}
             <span className="title">
               {getMessage('modals.main.marketplace.product.description')}
             </span>
-            <span
-              dangerouslySetInnerHTML={{ __html: this.props.data.description }}
-            />
+            <span dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
             {/*
             {this.props.data.description.length > 100 ? (
               <div className="showMore" onClick={() => this.toggleShowMore()}>
