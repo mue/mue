@@ -17,8 +17,13 @@ export default function ShareModal({ modalClose, data }) {
     toast(getMessage('modals.share.copy_link'));
   };
 
-  if (!data.data) {
-    data.data.name = 'this image';
+  // look into what's wrong with this
+  try {
+    if (!data.data) {
+      data.data.name = 'this image';
+    }
+  } catch (e) {
+
   }
 
   return (
