@@ -100,7 +100,7 @@ export default class TimeSettings extends PureComponent {
       </SettingsItem>
     );
 
-    const modernClock = (
+    const verticalClock = (
       <>
       <SettingsItem
         title="Change minute text colour"
@@ -127,8 +127,8 @@ export default class TimeSettings extends PureComponent {
       timeSettings = digitalSettings;
     } else if (this.state.timeType === 'analogue') {
       timeSettings = analogSettings;
-    } else if (this.state.timeType === 'modernClock') {
-      timeSettings = modernClock;
+    } else if (this.state.timeType === 'verticalClock') {
+      timeSettings = verticalClock;
     }
 
     return (
@@ -160,7 +160,7 @@ export default class TimeSettings extends PureComponent {
             <option value="percentageComplete">
               {getMessage('modals.main.settings.sections.time.percentage_complete')}
             </option>
-            <option value="modernClock">Modern Clock</option>
+            <option value="verticalClock">Vertical Clock</option>
           </Dropdown>
         </SettingsItem>
         {timeSettings}

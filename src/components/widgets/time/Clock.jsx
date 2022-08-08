@@ -191,7 +191,7 @@ export default class Clock extends PureComponent {
       );
     }
 
-    if (localStorage.getItem('timeType') === 'modernClock') {
+    if (localStorage.getItem('timeType') === 'verticalClock') {
       clockHTML = (
         <>
           <span className="new-clock clock-container">

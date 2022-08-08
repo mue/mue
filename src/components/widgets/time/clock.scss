@@ -84,4 +84,8 @@
 
 .new-clock {
   line-height: 100%;
+  .seconds {
+    font-size: 0.2em;
+    line-height: 0%;
+  }
 }
