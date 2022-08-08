@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import React, { useState } from 'react';
-import { MdAutoFixHigh, MdOutlineArrowForward, MdExpandMore } from 'react-icons/md';
+import { MdAutoFixHigh, MdOutlineArrowForward, MdExpandMore, MdOutlineOpenInNew } from 'react-icons/md';
 
 export default function Items({
   type,
@@ -30,17 +30,21 @@ export default function Items({
         <>
           <div
             className="collection"
-            style={{
-              backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${collection.img}')`,
-            }}
+            style={collection.news ? {backgroundColor: collection.background_colour} : {backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${collection.img}')`}}
           >
             <div className="content">
               <span className="title">{collection.display_name}</span>
               <span className="subtitle">{collection.description}</span>
             </div>
-            <button className="nice-button" onClick={() => collectionFunction(collection.name)}>
-              <MdOutlineArrowForward /> {getMessage('modals.main.marketplace.explore_collection')}
-            </button>
+            {collection.news === true ? (
+              <a className="nice-button" href={collection.news_link}>
+                Learn More <MdOutlineOpenInNew />
+              </a>
+            ) : (
+              <button className="nice-button" onClick={() => collectionFunction(collection.name)}>
+                <MdOutlineArrowForward /> {getMessage('modals.main.marketplace.explore_collection')}
+              </button>
+            )}
           </div>
         </>
       ) : null}

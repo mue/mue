@@ -381,7 +381,6 @@ p.author {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: linear-gradient(to left, transparent, #000);
   align-items: center;
 
   @include themed() {
@@ -408,7 +407,7 @@ p.author {
     justify-content: center;
   }
 
-  button.nice-button {
+  button.nice-button, a.nice-button{
     display: flex;
     align-items: center;
     gap: 15px;
@@ -424,6 +423,14 @@ p.author {
       background-color: rgba(17, 25, 40, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.125);
     }
+  }
+}
+
+a.nice-button {
+  height: 40px;
+  text-decoration: none;
+  @include themed() {
+    border-radius: t($borderRadius);
   }
 }
 
