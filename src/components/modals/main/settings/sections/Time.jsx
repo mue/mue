@@ -17,7 +17,14 @@ export default class TimeSettings extends PureComponent {
     super();
     this.state = {
       timeType: localStorage.getItem('timeType') || 'digital',
+      colour: localStorage.getItem('minuteColour') || '#ffa500',
     };
+  }
+
+  updateColour(event) {
+    const colour = event.target.value;
+    this.setState({ colour });
+    localStorage.setItem('minuteColour', colour);
   }
 
   render() {
@@ -93,10 +100,35 @@ export default class TimeSettings extends PureComponent {
       </SettingsItem>
     );
 
+    const modernClock = (
+      <>
+      <SettingsItem
+        title="Change minute text colour"
+        subtitle=""
+      >
+        <div className="colorPicker">
+          <input
+            type="color"
+            name="colour"
+            className="colour"
+            onChange={(event) => this.updateColour(event)}
+            value={this.state.colour}
+          ></input>
+          <label htmlFor={'colour'} className="customBackgroundHex">
+            {this.state.colour}
+          </label>
+        </div>
+      </SettingsItem>
+      {digitalSettings}
+      </>
+    );
+
     if (this.state.timeType === 'digital') {
       timeSettings = digitalSettings;
     } else if (this.state.timeType === 'analogue') {
       timeSettings = analogSettings;
+    } else if (this.state.timeType === 'modernClock') {
+      timeSettings = modernClock;
     }
 
     return (
@@ -128,9 +160,7 @@ export default class TimeSettings extends PureComponent {
             <option value="percentageComplete">
               {getMessage('modals.main.settings.sections.time.percentage_complete')}
             </option>
-            <option value="modernClock">
-              Modern Clock
-            </option>
+            <option value="modernClock">Modern Clock</option>
           </Dropdown>
         </SettingsItem>
         {timeSettings}
