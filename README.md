@@ -90,6 +90,8 @@ Please see the [documentation](https://docs.muetab.com/translations).
 [Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified) <br/>
 [FreeFun](https://github.com/xXFreeFunXx) - German <br/>
 [Aksal](https://github.com/aksalsf) - Indonesian <br/>
+efeaydal - Turkish <br/>
+
 ### Contributors
 Many thanks to the photographers [here](https://api.muetab.com/images/photographers) for letting us use their wonderful photographs.
 

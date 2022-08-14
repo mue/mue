@@ -1,0 +1,554 @@
+{
+    "tabname": "Yeni Sekme",
+    "widgets": {
+        "greeting": {
+            "morning": "Günaydın",
+            "afternoon": "Tünaydın",
+            "evening": "İyi akşamlar",
+            "christmas": "Mutlu Noeller",
+            "newyear": "Yeni Yılın Kutlu Olsun",
+            "halloween": "Cadılar Bayramın kutlu olsun",
+            "birthday": "Doğum günün kutlu olsun"
+        },
+        "background": {
+            "credit": "Fotoğrafı çeken",
+            "unsplash": "Unsplash",
+            "pexels": "Pexels",
+            "information": "Bilgi",
+            "download": "İndir"
+        },
+        "search": "Ara",
+        "quicklinks": {
+            "new": "Yeni Link",
+            "name": "İsim",
+            "url": "URL",
+            "icon": "İkon (opsiyonel)",
+            "add": "Ekle",
+            "name_error": "Bir isim eklemelisiniz",
+            "url_error": "Bir URL eklemelisiniz"
+        },
+        "date": {
+            "week": "Hafta"
+        },
+        "weather": {
+            "not_found": "Bulunamadı",
+            "meters": "{amount} metre"
+        },
+        "navbar": {
+            "tooltips": {
+                "refresh": "Sayfayı Yenile"
+            },
+            "notes": {
+                "title": "Notlar",
+                "placeholder": "Buraya yazın"
+            }
+        }
+    },
+    "modals": {
+        "main": {
+            "title": "Seçenekler",
+            "loading": "Yükleniyor...",
+            "file_upload_error": "Dosya 2MB'ı geçmemeli",
+            "navbar": {
+                "settings": "Ayarlar",
+                "addons": "Eklentiler",
+                "marketplace": "Mağaza"
+            },
+            "error_boundary": {
+                "title": "Hata",
+                "message": "Mue'nin bileşenleri yüklenirken hata oluştu",
+                "refresh": "Yenile"
+            },
+            "settings": {
+                "enabled": "Etkin",
+                "reminder": {
+                    "title": "Not",
+                    "message": "Tüm değişikliklerin gerçekleşmesi için sayfanın yenilenmesi gerekir"
+                },
+                "sections": {
+                    "time": {
+                        "title": "Zaman",
+                        "format": "Format",
+                        "type": "Tip",
+                        "digital": {
+                            "title": "Dijital",
+                            "seconds": "Saniye",
+                            "twentyfourhour": "24 Saat",
+                            "twelvehour": "12 Saat",
+                            "zero": "Sıfır dolgulu"
+                        },
+                        "analogue": {
+                            "title": "Analog",
+                            "second_hand": "Saniye ibresi",
+                            "minute_hand": "Dakika ibresi",
+                            "hour_hand": "Saat ibresi",
+                            "hour_marks": "Saat işareti",
+                            "minute_marks": "Dakika işareti"
+                        },
+                        "percentage_complete": "Oranında tamamlandı"
+                    },
+                    "date": {
+                        "title": "Tarih",
+                        "week_number": "Hafta sayısını göster",
+                        "day_of_week": "Gün ismini göster",
+                        "datenth": "Gün sayısının yanına th ekle",
+                        "type": {
+                            "short": "Kısa",
+                            "long": "Uzun"
+                        },
+                        "short_date": "Kısa tarih",
+                        "short_format": "Kısa biçim",
+                        "short_separator": {
+                            "title": "Kısa ayırıcı",
+                            "dots": "Nokta",
+                            "dash": "Kısa çizgi(-)",
+                            "gaps": "Boşluk",
+                            "slashes": "Eğik çizgi"
+                        }
+                    },
+                    "quote": {
+                        "title": "Alıntı sözler",
+                        "author_link": "Yazar linki",
+                        "custom": "Özel alıntı söz",
+                        "custom_author": "Özel yazar",
+                        "add": "Alıntı söz ekle",
+                        "buttons": {
+                            "title": "Butonlar",
+                            "copy": "Kopyala",
+                            "tweet": "Tweet",
+                            "favourite": "Favori"
+                        }
+                    },
+                    "greeting": {
+                        "title": "Karşılama",
+                        "events": "Etkinlikler",
+                        "default": "Varsayılan karşılama mesajı",
+                        "name": "Karşılanacak kişi ismi",
+                        "birthday": "Doğum günü",
+                        "birthday_age": "Yaş",
+                        "birthday_date": "Doğum Tarihi"
+                    },
+                    "background": {
+                        "title": "Arkaplan",
+                        "ddg_image_proxy": "DuckDuckGo resim proxysini kullan",
+                        "transition": "Animasyonlu açılışı etkinleştir",
+                        "photo_information": "Fotoğraf bilgilerini göster",
+                        "show_map": "Fotoğraf bilgilerinde konum haritası varsa göster",
+                        "category": "Kategori",
+                        "buttons": {
+                            "title": "Butonlar",
+                            "view": "Arkaplanı göster",
+                            "favourite": "Favorilere ekle",
+                            "download": "İndir"
+                        },
+                        "effects": {
+                            "title": "Efektler",
+                            "blur": "Bulanıklık",
+                            "brightness": "Parlaklık",
+                            "filters": {
+                                "title": "Arkaplan filtresi",
+                                "amount": "Filtre miktarı",
+                                "grayscale": "Gri tonlamalı",
+                                "sepia": "Sepya",
+                                "invert": "Renkleri Ters Çevir",
+                                "saturate": "Canlılık",
+                                "contrast": "Kontrast"
+                            }
+                        },
+                        "type": {
+                            "title": "Tür",
+                            "api": "API",
+                            "custom_image": "Custom image",
+                            "custom_colour": "Özel renk/gradyan",
+                            "random_colour": "Rastgele renk",
+                            "random_gradient": "Rastgele gradyan"
+                        },
+                        "source": {
+                            "title": "Kaynak",
+                            "api": "Arkaplan API",
+                            "custom_background": "Özel arkaplan",
+                            "custom_colour": "Özel arkaplan rengi",
+                            "upload": "Yükle",
+                            "add_colour": "Renk Ekle",
+                            "add_background": "Arkaplan Ekle",
+                            "add_url": "Link Ekle",
+                            "disabled": "Devre Dışı",
+                            "loop_video": "Videoyu Döngüye Al",
+                            "mute_video": "Videoyu sustur",
+                            "quality": {
+                                "title": "Kalite",
+                                "original": "Orjinal",
+                                "high": "Yüksek Kalite",
+                                "normal": "Normal Kalite",
+                                "datasaver": "Veri Tasarrufu"
+                            }
+                        },
+                        "interval": {
+                            "title": "Arkaplan değişme zamanı",
+                            "minute": "Dakika",
+                            "half_hour": "Yarım saat",
+                            "hour": "Saat",
+                            "day": "Gün",
+                            "month": "Ay"
+                        }
+                    },
+                    "search": {
+                        "title": "Ara",
+                        "search_engine": "Arama motoru",
+                        "custom": "Özel arama motoru",
+                        "autocomplete": "Otomatik Tamamlama",
+                        "autocomplete_provider": "Otomatik Tamamlama Sağlayıcısı",
+                        "voice_search": "Sesli Arama",
+                        "dropdown": "Arama sağlayıcılarını göster"
+                    },
+                    "weather": {
+                        "title": "Hava durumu",
+                        "location": "Konum",
+                        "auto": "Otomatik",
+                        "temp_format": {
+                            "title": "Sıcaklık formatı",
+                            "celsius": "Santigrat",
+                            "fahrenheit": "Fahrenhayt",
+                            "kelvin": ""
+                        },
+                        "extra_info": {
+                            "title": "Ek bilgiler",
+                            "show_location": "Konumu göster",
+                            "show_description": "Açıklamayı göster",
+                            "cloudiness": "Bulut oranı",
+                            "humidity": "Nem oranı",
+                            "visibility": "Görünebilirlik oranı",
+                            "wind_speed": "Rüzgar hızı",
+                            "wind_direction": "Rüzgar yönü",
+                            "min_temp": "Minimum sıcaklık",
+                            "max_temp": "Maksimum sıcaklık",
+                            "atmospheric_pressure": "Atmosferik basınç"
+                        }
+                    },
+                    "quicklinks": {
+                        "title": "Hızlı ulaşım linkleri",
+                        "open_new": "Yeni sekmede aç",
+                        "tooltip": "İpucu",
+                        "text_only": "Yalnızca metni göster"
+                    },
+                    "message": {
+                        "title": "Mesaj",
+                        "add": "Mesaj ekle",
+                        "text": "Mesaj içeriği"
+                    },
+                    "appearance": {
+                        "title": "Görünüm",
+                        "theme": {
+                            "title": "Tema",
+                            "auto": "Otomatik",
+                            "light": "Açık",
+                            "dark": "Koyu"
+                        },
+                        "navbar": {
+                            "title": "Gezinme çubuğu",
+                            "notes": "Notlar",
+                            "refresh": "Sayfayı Yenile",
+                            "hover": "Yalnızca fareyle üzerine gelindiğinde göster",
+                            "refresh_options": {
+                                "none": "Hiçbiri",
+                                "page": "Sayfa"
+                            }
+                        },
+                        "font": {
+                            "title": "Font",
+                            "custom": "Özel font",
+                            "google": "Google Fontlardan içeri aktar",
+                            "weight": {
+                                "title": "Font kalınlığı",
+                                "thin": "İnce",
+                                "extra_light": "Ekstra açık",
+                                "light": "Açık",
+                                "normal": "Normal",
+                                "medium": "Orta",
+                                "semi_bold": "Yarı Kalın",
+                                "bold": "Kalın",
+                                "extra_bold": "Ekstra Kalın"
+                            },
+                            "style": {
+                                "title": "Font stili",
+                                "normal": "Normal",
+                                "italic": "İtalik",
+                                "oblique": "Eğik"
+                            }
+                        },
+                        "accessibility": {
+                            "title": "Erişilebilirlik",
+                            "animations": "Animasyonlar",
+                            "text_shadow": "Widget metinlerinin gölgesi",
+                            "widget_zoom": "Widget büyüklüğü",
+                            "toast_duration": "Widget yüklenme süresi",
+                            "milliseconds": "Milisaniye"
+                        }
+                    },
+                    "order": {
+                        "title": "Widget Sıralaması"
+                    },
+                    "advanced": {
+                        "title": "Gelişmiş",
+                        "offline_mode": "Çevrimdışı mod",
+                        "data": "Veri",
+                        "reset_modal": {
+                            "title": "Uyarı",
+                            "question": "Mue'yu sıfırlamak istediğinizden emin misiniz?",
+                            "information": "Bu işlem, tüm verilerinizi silecektir. Verilerinizi ve tercihlerinizi saklamak istiyorsanız, lütfen önce bunları dışa aktarın.",
+                            "cancel": "İptal"
+                        },
+                        "customisation": "Özelleştirmek",
+                        "custom_css": "Özel CSS",
+                        "custom_js": "Özel JS",
+                        "tab_name": "Sekme ismi",
+                        "timezone": {
+                            "title": "Saat dilimi",
+                            "automatic": "Otomatik"
+                        },
+                        "experimental_warning": "Deneysel mod açıksa Mue ekibinin destek sağlayamadığını lütfen unutmayın. Lütfen önce deneysel modu devre dışı bırakın ve desteğe başvurmadan önce sorunun devam edip etmediğini görün."
+                    },
+                    "stats": {
+                        "title": "İstatistikler",
+                        "warning": "Bu özelliği kullanmak için kullanım verilerini etkinleştirmeniz gerekir. Bu veriler yalnızca yerel olarak depolanır.",
+                        "sections": {
+                            "tabs_opened": "Açılan sekme sayısı",
+                            "backgrounds_favourited": "Favorilere eklenen arkaplan sayısı",
+                            "backgrounds_downloaded": "İndirilen arkaplan sayısı",
+                            "quotes_favourited": "Favorilere eklenen alıntı söz sayısı",
+                            "quicklinks_added": "Eklenen Hızlı ulaşım linki sayısı",
+                            "settings_changed": "Değiştirilen ayar sayısı",
+                            "addons_installed": "Kurulan eklenti sayısı"
+                        },
+                        "usage": "Kullanım İstatistikleri"
+                    },
+                    "keybinds": {
+                        "title": "Tuş kombinasyonları",
+                        "recording": "Kaydediliyor...",
+                        "click_to_record": "Kaydetmek için tıklayın",
+                        "background": {
+                            "favourite": "Arkaplanı favorilere ekle",
+                            "maximise": "Arkaplanı büyüt",
+                            "download": "Arkaplanı indir",
+                            "show_info": "Arkaplan bilgilerini göster"
+                        },
+                        "quote": {
+                            "favourite": "Favori alıntı söz",
+                            "copy": "Alıntı sözü kopyala",
+                            "tweet": "Alıntı sözü Tweetle"
+                        },
+                        "notes": {
+                            "pin": "Notları sabitle",
+                            "copy": "Notu kopyala"
+                        },
+                        "search": "Aramaya odaklan",
+                        "quicklinks": "Hızlı bağlantı eklemeyi aç/kapat",
+                        "modal": "Modalı aç/kapat"
+                    },
+                    "experimental": {
+                        "title": "Deneysel",
+                        "warning": "Bu özellikler tam olarak test edilmedi ve düzgün çalışmayabilir!",
+                        "developer": "Geliştirici"
+                    },
+                    "language": {
+                        "title": "Dil",
+                        "quote": "Alıntı söz dili"
+                    },
+                    "changelog": {
+                        "title": "Yenilikler",
+                        "by": "{author} tarafından"
+                    },
+                    "about": {
+                        "title": "Hakkında",
+                        "copyright": "Telif Hakkı",
+                        "version": {
+                            "title": "Version",
+                            "checking_update": "Güncellemeler kontrol ediliyor",
+                            "update_available": "Güncelleme mevcut",
+                            "no_update": "Yeni bir güncelleme mevcut değil",
+                            "offline_mode": "Çevrimdışı modda güncelleme kontrol edilemez",
+                            "error": {
+                                "title": "Güncelleme bilgisi alınırken bir hata oluştu",
+                                "description": "Bir hata oluştu"
+                            }
+                        },
+                        "contact_us": "İletişime geç",
+                        "support_mue": "Mue'ye destekde bulun",
+                        "resources_used": {
+                            "title": "Kullanılan kaynaklar",
+                            "bg_images": "Çevrimdışı arkaplan resimleri"
+                        },
+                        "contributors": "Katkıda Bulunanlar",
+                        "supporters": "Destekçiler",
+                        "no_supporters": "Şu anda Mue destekçisi yok",
+                        "photographers": "Fotoğrafçılar"
+                    }
+                },
+                "buttons": {
+                    "reset": "Reset",
+                    "import": "İçe Aktar",
+                    "export": "Dışa Aktar"
+                }
+            },
+            "marketplace": {
+                "photo_packs": "Fotoğraf Paketleri",
+                "quote_packs": "Alıntı söz Paketleri",
+                "preset_settings": "Ön Ayar Ayarları",
+                "no_items": "Bu kategoride öğe mevcut değil",
+                "product": {
+                    "overview": "Genel Bakış",
+                    "information": "Bilgilendirme",
+                    "last_updated": "Son güncelleme",
+                    "version": "Version",
+                    "author": "Yapımcı",
+                    "buttons": {
+                        "addtomue": "Mue'ye Ekle",
+                        "remove": "Kaldır",
+                        "update_addon": "Eklentiyi Güncelle"
+                    },
+                    "quote_warning": {
+                        "title": "Uyarı",
+                        "description": "Bu alıntı söz paketi, sizi izleyebilecek harici sunuculara istekte bulunabilir!"
+                    }
+                },
+                "offline": {
+                    "title": "Çevrimdışı görünüyorsun",
+                    "description": "Lütfen internete bağlanın"
+                }
+            },
+            "addons": {
+                "added": "Eklendi",
+                "check_updates": "Güncellemeleri kontrol et",
+                "no_updates": "Güncelleme mevcut değil",
+                "updates_available": "{amount} güncelleme mevcut",
+                "empty": {
+                    "title": "Boş",
+                    "description": "Hiç eklenti kurulmamış"
+                },
+                "sideload": {
+                    "title": "Manuel Eklenti Ekle",
+                    "failed": "Sideload eklenti eklenirken bir hata oluştu",
+                    "errors": {
+                        "no_name": "İsim belirtilmedi",
+                        "no_author": "Yazar belirtilmedi",
+                        "no_type": "Tür belirtilmedi",
+                        "invalid_photos": "Geçersiz fotoğraf nesnesi",
+                        "invalid_quotes": "Geçersiz alıntı söz nesnesi"
+                    }
+                },
+                "sort": {
+                    "title": "Sırala",
+                    "newest": "Yüklenenler (Önce Yeni)",
+                    "oldest": "Yüklenenler (Önce Eski)",
+                    "a_z": "Alfabetik (A-Z)",
+                    "z_a": "Alfabetik (Z-A)"
+                },
+                "create": {
+                    "title": "Oluştur",
+                    "other_title": "Eklenti Oluştur",
+                    "metadata": {
+                        "name": "İsim",
+                        "icon_url": "İkon Linki",
+                        "screenshot_url": "Ekran Görüntüsü Linki",
+                        "description": "Açıklama"
+                    },
+                    "finish": {
+                        "title": "Bitir",
+                        "download": "Eklentiyi İndir"
+                    },
+                    "settings": {
+                        "current": "Mevcut kurulumu içe aktar",
+                        "json": "JSON Dosyasını Yükle"
+                    },
+                    "photos": {
+                        "title": "Fotoğraf Ekle"
+                    },
+                    "quotes": {
+                        "title": "Alıntı Söz Ekle",
+                        "api": {
+                            "title": "API",
+                            "url": "Alıntı Söz Linki",
+                            "name": "JSON alıntı sözü ismi",
+                            "author": "JSON alıntı söz Yazarı"
+                        },
+                        "local": {
+                            "title": "Yerel"
+                        }
+                    }
+                }
+            }
+        },
+        "update": {
+            "title": "Güncelle",
+            "offline": {
+                "title": "Çevrimdışı",
+                "description": "Çevrimdışı moddayken güncelleme günlükleri alınamaz"
+            },
+            "error": {
+                "title": "Hata",
+                "description": "Sunucuya bağlanılamadı"
+            }
+        },
+        "welcome": {
+            "tip": "Hızlı ipucu",
+            "sections": {
+                "intro": {
+                    "title": "Muetab'e Hoş Geldiniz",
+                    "description": "Mue'yi yüklediğiniz için teşekkür ederiz, umarız Mue ile iyi vakit geçirirsiniz"
+                },
+                "language": {
+                    "title": "Dilinizi seçin",
+                    "description": "Mue, aşağıda listelenen dillerde görüntülenebilir. Ayrıca sayfamıza yeni çeviriler de ekleyebilirsiniz"
+                },
+                "theme": {
+                    "title": "Tema seçin",
+                    "description": "Mue hem açık hem de koyu tema desteği sunar, veya sistem temanıza bağlı olarak otomatik olarak ayarlanabilir",
+                    "tip": "Otomatik tema ayarını kullanmak, bilgisayarınızda kullanılan temayı kullanır. Bu ayar, modları ve ekranda görüntülenen hava durumu ve notlar gibi bazı widgetların görünümünü etkiler"
+                },
+                "settings": {
+                    "title": "Ayarları İçe Aktar",
+                    "description": "Mue'yi yeni bir cihaza mı yüklüyorsunuz? Eski ayarlarınızı geri getirmekten çekinmeyin",
+                    "tip": "Eski Mue kurulumunuzda Gelişmiş sekmesine giderek eski ayarlarınızı dışa aktarabilirsiniz. Ardından, ayarlarınızın bulunduğu JSON dosyasını indirip yeni cihazınızda dışa aktar düğmesine tıklamanız ve JSON dosyasını yüklemeniz gerekir"
+                },
+                "privacy": {
+                    "title": "Gizlilik ayarları",
+                    "description": "Mue ile gizliliğinizi daha iyi korumak için bazı ek ayarları etkinleştirebilirsiniz",
+                    "offline_mode_description": "Çevrimdışı modu etkinleştirmek, herhangi bir hizmete yönelik tüm istekleri devre dışı bırakır. Bu, çevrimiçi arka planlar, çevrimiçi alıntı sözler, uygulama mağazası, hava durumu, hızlı bağlantılar, yenilikler ve bazı sekme bilgilerinin devre dışı bırakılmasına sebep olacaktır",
+                    "ddg_proxy_description": "Dilerseniz resim isteklerini DuckDuckGo üzerinden gerçekleştirebilirsiniz. Varsayılan olarak, API istekleri sunucularımızdan ve görüntü istekleri orijinal sunucudan geçer. Hızlı bağlantılar için bunu kapatmak, simgeleri DuckDuckGo yerine Google'dan alır. DuckDuckGo proxy, Mağaza için her zaman etkindir",
+                    "links": {
+                        "title": "Yararlı Bağlantılar",
+                        "privacy_policy": "Gizlilik Politikası",
+                        "source_code": "Mue Kaynak Kodu"
+                    }
+                },
+                "final": {
+                    "title": "Son adım",
+                    "description": "Mue Tab deneyiminiz başlamak üzere.",
+                    "changes": "Değişiklikler",
+                    "changes_description": "Ayarları daha sonra değiştirmek için sekmenizin sağ üst köşesindeki ayarlar simgesine tıklayabilirsiniz.",
+                    "imported": "{amount} ayar içe aktarıldı"
+                }
+            },
+            "buttons": {
+                "next": "İleri",
+                "preview": "Önizleme",
+                "previous": "Geri",
+                "close": "Kapat"
+            },
+            "preview": {
+                "description": "Şu anda önizleme modundasınız. Bu sekme kapatıldığında ayarlar sıfırlanacak.",
+                "continue": "Kuruluma devam et"
+            }
+        }
+    },
+    "toasts": {
+        "quote": "Alıntı söz kopyalandı",
+        "notes": "Notlar kopyalandı",
+        "reset": "Sıfırlama işlemi başarılı",
+        "installed": "Başarıyla yüklendi",
+        "uninstalled": "Başarıyla kaldırıldı",
+        "updated": "Başarıyla güncellendi",
+        "error": "Bir hata oluştu",
+        "imported": "Başarıyla içe aktarıldı"
+    }
+}
