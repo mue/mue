@@ -30,4 +30,4 @@ export const PATREON_USERNAME = 'davidcralph';
 
 export const OFFLINE_IMAGES = 20;
 
-export const VERSION = '6.0.5'; 
+export const VERSION = '6.0.6'; 
