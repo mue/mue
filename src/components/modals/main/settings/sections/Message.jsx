@@ -15,14 +15,14 @@ export default class Message extends PureComponent {
   constructor() {
     super();
     this.state = {
-      messages: JSON.parse(localStorage.getItem('messages')) || [''],
+      messages: JSON.parse(localStorage.getItem('messages')) || [],
     };
   }
 
   reset = () => {
-    localStorage.setItem('messages', '[""]');
+    localStorage.setItem('messages', '[]');
     this.setState({
-      messages: [''],
+      messages: [],
     });
     toast(this.getMessage(this.languagecode, 'toasts.reset'));
     EventBus.dispatch('refresh', 'message');
@@ -79,35 +79,6 @@ export default class Message extends PureComponent {
             {this.getMessage('modals.main.settings.sections.message.add')} <MdAdd />
           </button>
         </SettingsItem>
-        {/*<table style={{ width: '100%' }}>
-          <tr>
-            <th>{this.getMessage('modals.main.settings.sections.message.messages')}</th>
-            <th>{this.getMessage('modals.main.settings.sections.quote.custom_buttons')}</th>
-          </tr>
-          {this.state.messages.map((_url, index) => (
-            <tr key={index}>
-              <th>
-                <TextareaAutosize
-                  value={this.state.messages[index]}
-                  placeholder={this.getMessage('modals.main.settings.sections.message.title')}
-                  onChange={(e) => this.message(e, true, index)}
-                  varient="outlined"
-                />
-              </th>
-              <th>
-                {this.state.messages.length > 1 ? (
-                  <button
-                    className="deleteButton"
-                    onClick={() => this.modifyMessage('remove', index)}
-                  >
-                    <MdCancel />
-                  </button>
-                ) : null}
-              </th>
-            </tr>
-          ))}
-        </table>
-            */}
         <div className="messagesContainer">
           {this.state.messages.map((_url, index) => (
             <div className="messageMap">
