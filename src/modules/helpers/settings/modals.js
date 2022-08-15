@@ -70,18 +70,6 @@ export function values(type) {
       { value: 200, label: '2x' },
       { value: 400, label: '4x' },
     ],
-    pomodoroWork: [
-      { value: 5, label: '5m' },
-      { value: 25, label: '25m' },
-      { value: 45, label: '45m' },
-      { value: 60, label: '60m' },
-    ],
-    pomodoroBreak: [
-      { value: 1, label: '1s' },
-      { value: 5, label: '5m' },
-      { value: 25, label: '25m' },
-      { value: 45, label: '45m' },
-    ],
     toast: [
       { value: 500, label: '0.5s' },
       { value: 1000, label: '1s' },

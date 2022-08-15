@@ -4,7 +4,6 @@ import { convertTimezone } from 'modules/helpers/date';
 import EventBus from 'modules/helpers/eventbus';
 
 import './clock.scss';
-import Pomodoro from './Pomodoro';
 
 const Analog = lazy(() => import('react-clock'));
 const renderLoader = () => <></>;
@@ -160,12 +159,6 @@ export default class Clock extends PureComponent {
           {this.state.time}
           <span className="ampm">{this.state.ampm}</span>
         </span>
-        {localStorage.getItem('Pomodoro') === 'true' ? (
-          <Pomodoro
-            hours={this.state.nowGlobal.getHours}
-            minutes={this.state.nowGlobal.getMinutes}
-          />
-        ) : null}
       </>
     );
 

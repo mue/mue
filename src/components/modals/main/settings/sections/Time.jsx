@@ -164,38 +164,6 @@ export default class TimeSettings extends PureComponent {
           </Dropdown>
         </SettingsItem>
         {timeSettings}
-        {/*<SettingsItem
-          title="Pomodoro"
-          subtitle="The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, typically 25 minutes in length, separated by short breaks"
-          final={true}
-        >
-          <Switch
-            name="Pomodoro"
-            text={getMessage('modals.main.settings.enabled')}
-            category="Pomodoro"
-            element="Pomodoro"
-          />
-          <Slider
-            title="Work Length"
-            name="pomdoroWorkLength"
-            default="25"
-            step="1"
-            min="5"
-            max="60"
-            marks={values('pomodoroWork')}
-            display={' ms'}
-          />
-          <Slider
-            title="Break Length"
-            name="PomodoroBreakLength"
-            default="5"
-            step="1"
-            min="1"
-            max="45"
-            marks={values('pomodoroBreak')}
-            display={' ms'}
-          />
-    </SettingsItem>*/}
       </>
     );
   }

@@ -42,7 +42,7 @@ export default function ShareModal({ modalClose, data }) {
             onClick={() =>
               window
                 .open(
-                  `https://twitter.com/intent/tweet?text=Check out ${data.data.name} on @getmue: ${data}`,
+                  `https://twitter.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data}`,
                   '_blank',
                 )
                 .focus()
