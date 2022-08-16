@@ -230,3 +230,95 @@ h5 {
     align-items: center;
   }
 }
+
+.reminder-info {
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  bottom: 0;
+  padding: 15px;
+  gap: 15px;
+  @include themed() {
+    background-color: t($modal-sidebarActive);
+    border-radius: t($borderRadius);
+  }
+  button {
+    @include basicIconButton(5px, 5px, modal);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    svg {
+      margin: 0 !important;
+    }
+  }
+  @extend %tabText;
+}
+
+.quoteSkeleton {
+  margin-top: 5px;
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  align-items: center;
+  div {
+    display: flex;
+    flex-flow: row;
+  }
+  .text {
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+  }
+  .skeletonAuthor {
+    font-size: smaller;
+    padding: 5px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 25px;
+    padding: 0 20px 0 5px;
+    svg {
+      @include themed() {
+        background-color: t($modal-sidebar);
+        padding: 10px;
+        border-radius: t($borderRadius);
+        place-items: center;
+      }
+    }
+    @include themed() {
+      background-color: t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+    }
+    .title {
+      font-size: medium !important;
+    }
+    .subtitle {
+      font-size: smaller !important;
+    }
+  }
+}
+
+.quickLinksSkeleton {
+  .circles {
+    display: flex;
+    flex-flow: row;
+    gap: 5px;
+    div {
+      margin-top: 10px;
+      padding: 3px;
+      height: 20px;
+      width: 20px;
+      border-radius: 100%;
+      display: grid;
+      place-items: center;
+      @include themed() {
+        background-color: t($modal-sidebarActive);
+      }
+    }
+  }
+}
+
+.clockSkeleton {
+  font-size: 30px !important;
+  font-weight: bold;
+}

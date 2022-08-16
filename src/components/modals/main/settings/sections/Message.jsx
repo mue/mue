@@ -82,7 +82,7 @@ export default class Message extends PureComponent {
         <div className="messagesContainer">
           {this.state.messages.map((_url, index) => (
             <div className="messageMap">
-              <div>
+              <div className="flexGrow">
                 <div className="icon">
                   <MdOutlineTextsms />
                 </div>

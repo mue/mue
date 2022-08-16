@@ -214,7 +214,7 @@ export default class QuoteSettings extends PureComponent {
               />
               <Checkbox
                 name="quoteShareButton"
-                text={this.getMessage('modals.main.settings.sections.quote.buttons.tweet')}
+                text={this.getMessage('widgets.quote.share')}
                 category="quote"
               />
               <Checkbox

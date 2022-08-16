@@ -113,6 +113,9 @@ table {
   }
 }
 
+.flexGrow {
+  flex-grow: 1;
+}
 .messageMap {
   display: flex;
   flex-flow: row;
@@ -139,6 +142,12 @@ table {
   .messageText {
     display: flex;
     flex-flow: column;
+    flex-grow: 3; 
+    textarea {
+      @include themed() {
+        color: t($color);
+      }
+    }
   }
   .messageAction {
     float: right;

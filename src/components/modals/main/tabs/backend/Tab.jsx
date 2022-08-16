@@ -14,7 +14,6 @@ import {
   MdOutlinePhoto as Background,
   MdSearch,
   MdCloudQueue as Weather,
-  MdList as Order,
   MdFormatPaint as Appearance,
   MdTranslate as Language,
   MdOutlineSettings as Advanced,
@@ -64,9 +63,6 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
     case getMessage('modals.main.settings.sections.appearance.navbar.title'):
       icon = <Navbar />;
-      break;
-    case getMessage('modals.main.settings.sections.order.title'):
-      icon = <Order />;
       break;
     case getMessage('modals.main.settings.sections.greeting.title'):
       icon = <Greeting />;

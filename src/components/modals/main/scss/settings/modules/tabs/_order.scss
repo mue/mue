@@ -103,6 +103,9 @@
   }
 
   .previewItem {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     .quotediv .quote {
       max-width: 100%;
     }

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdSettings, MdOutlineShoppingBasket, MdOutlineExtension } from 'react-icons/md';
+import { MdSettings, MdOutlineShoppingBasket, MdOutlineExtension, MdRefresh } from 'react-icons/md';
 import Tab from './Tab';
 import ErrorBoundary from '../../../ErrorBoundary';
 
@@ -41,6 +41,7 @@ export default class Tabs extends PureComponent {
           )}
         </span>
         <button onClick={() => window.location.reload()}>
+          <MdRefresh />
           {variables.language.getMessage(
             variables.languagecode,
             'modals.main.error_boundary.refresh',
@@ -70,7 +71,6 @@ export default class Tabs extends PureComponent {
     return (
       <div style={{ display: 'flex', width: '100%' }}>
         <ul className="sidebar">
-          {reminderInfo}
           {this.props.children.map((tab, index) => (
             <Tab
               currentTab={this.state.currentTab}
@@ -80,6 +80,7 @@ export default class Tabs extends PureComponent {
               navbarTab={this.props.navbar || false}
             />
           ))}
+          {reminderInfo}
         </ul>
         <div className="tab-content" style={{ width: '100%' }}>
           <ErrorBoundary>

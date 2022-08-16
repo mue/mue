@@ -4,12 +4,12 @@ import { MdOutlineDragIndicator } from 'react-icons/md';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';
 
-import Greeting from '../../../../widgets/greeting/Greeting';
-import Clock from '../../../../widgets/time/Clock';
-import Quote from '../../../../widgets/quote/Quote';
-import QuickLinks from '../../../../widgets/quicklinks/QuickLinks';
-import Date from '../../../../widgets/time/Date';
-import Message from '../../../../widgets/message/Message';
+import Greeting from './overview_skeletons/Greeting';
+import Clock from './overview_skeletons/Clock';
+import Quote from './overview_skeletons/Quote';
+import QuickLinks from './overview_skeletons/QuickLinks';
+import Date from './overview_skeletons/Date';
+import Message from './overview_skeletons/Message';
 
 import EventBus from 'modules/helpers/eventbus';
 
