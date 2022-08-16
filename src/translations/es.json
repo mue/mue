@@ -146,6 +146,7 @@
             "custom_author": "Autor personalizado",
             "author_img": "Show author image",
             "add": "Añadir cita",
+            "source_subtitle": "Choose where to get quotes from",
             "buttons": {
               "title": "Botones",
               "subtitle": "Choose which buttons to show on the quote",
@@ -526,8 +527,15 @@
           "example": "Example",
           "other_title": "Crear complemento",
           "create_type": "Create {type} Pack",
+          "types": {
+            "settings": "Preset Settings Pack",
+            "photos": "Photo Pack",
+            "quotes": "Quotes Pack"
+          },
           "descriptions": {
             "settings": "",
+            "photos": "Collection of photos relating to a topic.",
+            "quotes": "Collection of quotes relating to a topic.",
             "photo_pack": "",
             "quote_pack": ""
           },
@@ -543,7 +551,8 @@
             "name": "Nombre",
             "icon_url": "URL del icono",
             "screenshot_url": "URL de la captura de pantalla",
-            "description": "Descripción"
+            "description": "Descripción",
+            "example": "Download example"
           },
           "finish": {
             "title": "Acabar",

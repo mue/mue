@@ -146,8 +146,9 @@ export default class Weather extends PureComponent {
   }
 
   render() {
+    const weatherType = localStorage.getItem('weatherType');
     const enabled = (setting) => {
-      return localStorage.getItem(setting) === 'true' && localStorage.getItem('weatherType') >= 3;
+      return localStorage.getItem(setting) === 'true' && weatherType >= 3;
     };
 
     if (
@@ -213,7 +214,7 @@ export default class Weather extends PureComponent {
               </>
             ) : null}
             */}
-          {localStorage.getItem('weatherType') >= 3 && (
+          {weatherType >= 3 && (
             <span className="subtitle">
               {variables.language.getMessage(
                 variables.languagecode,
@@ -221,13 +222,13 @@ export default class Weather extends PureComponent {
               )}
             </span>
           )}
-          {enabled('cloudiness') ? (
+          {enabled('cloudiness') || weatherType === 3 ? (
             <span>
               <WiCloud className="weatherIcon" />
               {this.state.weather.cloudiness}%
             </span>
           ) : null}
-          {enabled('windspeed') ? (
+          {enabled('windspeed') || weatherType === 3 ? (
             <span>
               <WiWindy className="weatherIcon" />
               {this.state.weather.wind_speed}
@@ -242,14 +243,14 @@ export default class Weather extends PureComponent {
               ) : null}
             </span>
           ) : null}
-          {enabled('atmosphericpressure') ? (
+          {enabled('atmosphericpressure') || weatherType === 3 ? (
             <span>
               <WiBarometer className="weatherIcon" />
               {this.state.weather.pressure}
               <span className="minmax"> hPa</span>
             </span>
           ) : null}
-          {enabled('weatherdescription') ? (
+          {enabled('weatherdescription') || weatherType === 3 ? (
             <span>
               <div className="weatherIcon">
                 <WeatherIcon name={this.state.icon} />
@@ -257,7 +258,7 @@ export default class Weather extends PureComponent {
               {this.state.weather.description}
             </span>
           ) : null}
-          {enabled('visibility') ? (
+          {enabled('visibility') || weatherType === 3 ? (
             <span>
               <MdDisabledVisible style={{ padding: '3px' }} />
               {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', {
@@ -297,7 +298,7 @@ export default class Weather extends PureComponent {
             </div>
           )}
         </div>
-        {expandedInfo()}
+        {weatherType == 3 ? expandedInfo() : null}
       </div>
     );
   }

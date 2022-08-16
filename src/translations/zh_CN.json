@@ -146,6 +146,7 @@
             "custom_author": "自定义出处",
             "author_img": "Show author image",
             "add": "继续添加名言",
+            "source_subtitle": "Choose where to get quotes from",
             "buttons": {
               "title": "下方按钮",
               "subtitle": "Choose which buttons to show on the quote",
@@ -526,8 +527,15 @@
           "example": "Example",
           "other_title": "创建插件",
           "create_type": "Create {type} Pack",
+          "types": {
+            "settings": "Preset Settings Pack",
+            "photos": "Photo Pack",
+            "quotes": "Quotes Pack"
+          },
           "descriptions": {
             "settings": "",
+            "photos": "Collection of photos relating to a topic.",
+            "quotes": "Collection of quotes relating to a topic.",
             "photo_pack": "",
             "quote_pack": ""
           },
@@ -543,7 +551,8 @@
             "name": "名称",
             "icon_url": "图标URL",
             "screenshot_url": "示例图片URL",
-            "description": "描述"
+            "description": "描述",
+            "example": "Download example"
           },
           "finish": {
             "title": "完成",

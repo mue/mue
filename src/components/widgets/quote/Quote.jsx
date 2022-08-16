@@ -118,10 +118,12 @@ export default class Quote extends PureComponent {
         `https://en.wikipedia.org/w/api.php?action=query&titles=${author}&origin=*&prop=pageimages&format=json&pithumbsize=100`,
       )
     ).json();
+
     let authorimg, authorimglicense;
     try {
       authorimg =
         authorimgdata.query.pages[Object.keys(authorimgdata.query.pages)[0]].thumbnail.source;
+
       const authorimglicensedata = await (
         await fetch(
           `https://en.wikipedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata&titles=File:${
@@ -129,6 +131,7 @@ export default class Quote extends PureComponent {
           }&origin=*&format=json`,
         )
       ).json();
+
       const license =
         authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]]
           .imageinfo[0].extmetadata.LicenseShortName;
@@ -136,6 +139,7 @@ export default class Quote extends PureComponent {
         authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]]
           .imageinfo[0].extmetadata.Attribution || 'Unknown';
       authorimglicense = `© ${photographer.value}. ${license.value}`;
+
       if (license.value === 'Public domain') {
         authorimglicense = null;
       } else if (photographer.value === 'Unknown' || !photographer) {
@@ -458,7 +462,7 @@ export default class Quote extends PureComponent {
                     {this.state.authorOccupation !== 'Unknown' ? (
                       <span className="subtitle">{this.state.authorOccupation}</span>
                     ) : null}
-                    <span className="author-license">{this.state.authorimglicense}</span>
+                    <span className="author-license">{this.state.authorimglicense ? this.state.authorimglicense.replace(' undefined. ', ' ') : null}</span>
                   </div>
                 ) : (
                   <div className="author-content whileLoading" ref={this.quoteauthor}>

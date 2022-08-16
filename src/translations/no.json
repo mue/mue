@@ -146,6 +146,7 @@
             "custom_author": "Custom author",
             "author_img": "Show author image",
             "add": "Add quote",
+            "source_subtitle": "Choose where to get quotes from",
             "buttons": {
               "title": "Buttons",
               "subtitle": "Choose which buttons to show on the quote",
@@ -526,8 +527,15 @@
           "example": "Example",
           "other_title": "Create Add-on",
           "create_type": "Create {type} Pack",
+          "types": {
+            "settings": "Preset Settings Pack",
+            "photos": "Photo Pack",
+            "quotes": "Quotes Pack"
+          },
           "descriptions": {
             "settings": "",
+            "photos": "Collection of photos relating to a topic.",
+            "quotes": "Collection of quotes relating to a topic.",
             "photo_pack": "",
             "quote_pack": ""
           },
@@ -543,7 +551,8 @@
             "name": "Name",
             "icon_url": "Icon URL",
             "screenshot_url": "Screenshot URL",
-            "description": "Description"
+            "description": "Description",
+            "example": "Download example"
           },
           "finish": {
             "title": "Finish",

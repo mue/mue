@@ -21,6 +21,7 @@ export default class Clock extends PureComponent {
       ampm: '',
       nowGlobal: new Date(),
       minuteColour: localStorage.getItem('minuteColour'),
+      hourColour: localStorage.getItem('hourColour'),
     };
   }
 
@@ -189,7 +190,7 @@ export default class Clock extends PureComponent {
         <>
           <span className="new-clock clock-container">
             {' '}
-            <div className="hour">{this.state.finalHour}</div>{' '}
+            <div className="hour" style={{ color: this.state.hourColour }}>{this.state.finalHour}</div>{' '}
             <div className="minute" style={{ color: this.state.minuteColour }}>{this.state.finalMinute}</div>{' '}
             <div className="seconds">{this.state.finalSeconds}</div>{' '}
           </span>

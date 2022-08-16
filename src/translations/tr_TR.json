@@ -146,6 +146,7 @@
             "custom_author": "Yazar Özelleştir",
             "author_img": "Yazar Resmini Göster",
             "add": "Alıntı Ekle.",
+            "source_subtitle": "Choose where to get quotes from",
             "buttons": {
               "title": "Butonlar",
               "subtitle": "Alıntıda hangi butonların gösterileceğini seçin.",
@@ -526,8 +527,15 @@
           "example": "Örnek",
           "other_title": "Eklenti Oluştur",
           "create_type": "{type} Paketi Oluştur",
+          "types": {
+            "settings": "Preset Settings Pack",
+            "photos": "Photo Pack",
+            "quotes": "Quotes Pack"
+          },
           "descriptions": {
             "settings": "",
+            "photos": "Collection of photos relating to a topic.",
+            "quotes": "Collection of quotes relating to a topic.",
             "photo_pack": "",
             "quote_pack": ""
           },
@@ -543,7 +551,8 @@
             "name": "İsmi",
             "icon_url": "İkon URL'si ",
             "screenshot_url": "Arka plan URL'si",
-            "description": "Açıklama"
+            "description": "Açıklama",
+            "example": "Download example"
           },
           "finish": {
             "title": "Bitiş",

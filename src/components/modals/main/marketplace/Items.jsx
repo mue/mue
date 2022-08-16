@@ -26,7 +26,7 @@ export default function Items({
 
   return (
     <>
-      {(type === 'all' && !onCollection) || type === 'collections' ? (
+      {(type === 'all' && !onCollection) || (type === 'collections' && !onCollection) ? (
         <>
           <div
             className="collection"

@@ -9,6 +9,23 @@ import { FaTrophy } from 'react-icons/fa';
 
 import EventBus from 'modules/helpers/eventbus';
 import achievementsData from 'modules/helpers/settings/achievements.json';
+import translations from 'modules/helpers/settings/achievement_translations/index';
+
+const achievementLanguage = {
+  de_DE: translations.de_DE,
+  en_GB: translations.en_GB,
+  en_US: translations.en_US,
+  es: translations.es,
+  fr: translations.fr,
+  nl: translations.nl,
+  no: translations.no,
+  ru: translations.ru,
+  zh_CN: translations.zh_CN,
+  id_ID: translations.id_ID,
+  tr_TR: translations.tr_TR,
+};
+
+console.log(achievementLanguage.en_GB)
 
 export default class Stats extends PureComponent {
   constructor() {
@@ -19,7 +36,7 @@ export default class Stats extends PureComponent {
     };
   }
 
-  getAchivements() {
+  getAchievements() {
     const achievements = this.state.achievements;
     achievements.forEach((achievement) => {
       switch (achievement.condition.type) {
@@ -68,7 +85,8 @@ export default class Stats extends PureComponent {
       }
     });
 
-    this.getAchivements();
+    this.getAchievements();
+    this.forceUpdate();
   }
 
   componentWillUnmount() {
@@ -99,12 +117,12 @@ export default class Stats extends PureComponent {
       );
     }
 
-    const achievementElement = (name, description) => (
+    const achievementElement = (key, name, description) => (
       <div className="achievement">
         <FaTrophy />
         <div className="achievementContent">
           <span>{name}</span>
-          <span className="subtitle">{description}</span>
+          <span className="subtitle">{achievementLanguage[localStorage.getItem('language')][key]}</span>
         </div>
       </div>
     );
@@ -132,9 +150,9 @@ export default class Stats extends PureComponent {
               {this.getUnlockedCount()}/{this.state.achievements.length} Unlocked
             </span>
             <div className="achievements">
-              {this.state.achievements.map((achievement) => {
+              {this.state.achievements.map((achievement, index) => {
                 if (achievement.achieved) {
-                  return achievementElement(achievement.name, achievement.description);
+                  return achievementElement(index, achievement.name, achievement.description);
                 }
               })}
             </div>

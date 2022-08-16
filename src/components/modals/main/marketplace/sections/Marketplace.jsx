@@ -1,7 +1,14 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { MdWifiOff, MdLocalMall, MdOutlineKeyboardArrowRight, MdRefresh } from 'react-icons/md';
+import {
+  MdWifiOff,
+  MdLocalMall,
+  MdOutlineKeyboardArrowRight,
+  MdRefresh,
+  MdOutlineArrowForward,
+  MdOutlineOpenInNew,
+} from 'react-icons/md';
 
 import Item from '../Item';
 import Items from '../Items';
@@ -122,8 +129,12 @@ export default class Marketplace extends PureComponent {
   }
 
   async getItems() {
+    const dataURL =
+      this.props.type === 'collections'
+        ? variables.constants.MARKETPLACE_URL + '/collections'
+        : variables.constants.MARKETPLACE_URL + '/items/' + this.props.type;
     const { data } = await (
-      await fetch(variables.constants.MARKETPLACE_URL + '/items/' + this.props.type, {
+      await fetch(dataURL, {
         signal: this.controller.signal,
       })
     ).json();
@@ -355,14 +366,46 @@ export default class Marketplace extends PureComponent {
             </div>
           </>
         )}
-        <Items
-          type={this.props.type}
-          items={this.state.items}
-          collections={this.state.collections}
-          onCollection={this.state.collection}
-          toggleFunction={(input) => this.toggle('item', input)}
-          collectionFunction={(input) => this.toggle('collection', input)}
-        />
+        {this.props.type === 'collections' && !this.state.collection ? (
+          this.state.items.map((item) => (
+            <>
+              {!item.news ? (
+                <div
+                  className="collection"
+                  style={
+                    item.news
+                      ? { backgroundColor: item.background_colour }
+                      : {
+                          backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
+                        }
+                  }
+                >
+                  <div className="content">
+                    <span className="title">{item.display_name}</span>
+                    <span className="subtitle">{item.description}</span>
+                  </div>
+                  <button
+                    className="nice-button"
+                    onClick={() => this.toggle('collection', item.name)}
+                  >
+                    <MdOutlineArrowForward />{' '}
+                    {this.getMessage('modals.main.marketplace.explore_collection')}
+                  </button>
+                  
+                </div>
+              ) : null}
+            </>
+          ))
+        ) : (
+          <Items
+            type={this.props.type}
+            items={this.state.items}
+            collections={this.state.collections}
+            onCollection={this.state.collection}
+            toggleFunction={(input) => this.toggle('item', input)}
+            collectionFunction={(input) => this.toggle('collection', input)}
+          />
+        )}
       </>
     );
   }

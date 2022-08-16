@@ -17,15 +17,32 @@ export default class TimeSettings extends PureComponent {
     super();
     this.state = {
       timeType: localStorage.getItem('timeType') || 'digital',
-      colour: localStorage.getItem('minuteColour') || '#ffa500',
+      hourColour: localStorage.getItem('hourColour') || '#fff',
+      minuteColour: localStorage.getItem('minuteColour') || '#fff',
     };
   }
 
-  updateColour(event) {
-    const colour = event.target.value;
-    this.setState({ colour });
-    localStorage.setItem('minuteColour', colour);
+  updateHourColour(event) {
+    const hourColour = event.target.value;
+    this.setState({ hourColour });
+    localStorage.setItem('hourColour', hourColour);
   }
+
+  updateMinuteColour(event) {
+    const minuteColour = event.target.value;
+    this.setState({ minuteColour });
+    localStorage.setItem('minuteColour', minuteColour);
+  }
+
+  resetHourColour() {
+    localStorage.setItem('hourColour', '#fff')
+  }
+
+  resetMinuteColour() {
+    localStorage.setItem('minuteColour', '#fff')
+  }
+
+
 
   render() {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
@@ -102,24 +119,41 @@ export default class TimeSettings extends PureComponent {
 
     const verticalClock = (
       <>
-      <SettingsItem
-        title="Change minute text colour"
-        subtitle=""
-      >
-        <div className="colorPicker">
-          <input
-            type="color"
-            name="colour"
-            className="colour"
-            onChange={(event) => this.updateColour(event)}
-            value={this.state.colour}
-          ></input>
-          <label htmlFor={'colour'} className="customBackgroundHex">
-            {this.state.colour}
-          </label>
-        </div>
-      </SettingsItem>
-      {digitalSettings}
+        <SettingsItem title="Change minute text hour colour" subtitle="">
+          <div className="colourInput">
+            <input
+              type="color"
+              name="minuteColour"
+              className="minuteColour"
+              onChange={(event) => this.updateHourColour(event)}
+              value={this.state.hourColour}
+            ></input>
+            <label htmlFor={'hourColour'} className="customBackgroundHex">
+              {this.state.hourColour}
+            </label>
+          </div>
+          <span className="link" onClick={() => this.resetHourColour()}>
+            {getMessage('modals.main.settings.buttons.reset')}
+          </span>
+        </SettingsItem>
+        <SettingsItem title="Change minute text minute colour" subtitle="">
+          <div className="colourInput">
+            <input
+              type="color"
+              name="minuteColour"
+              className="minuteColour"
+              onChange={(event) => this.updateMinuteColour(event)}
+              value={this.state.minuteColour}
+            ></input>
+            <label htmlFor={'minuteColour'} className="customBackgroundHex">
+              {this.state.minuteColour}
+            </label>
+          </div>
+          <span className="link" onClick={() => this.resetMinuteColour()}>
+            {getMessage('modals.main.settings.buttons.reset')}
+          </span>
+        </SettingsItem>
+        {digitalSettings}
       </>
     );
 

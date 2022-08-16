@@ -207,13 +207,13 @@ export default class Create extends PureComponent {
         <div className="smallBanner">
           <div className="content">
             <span className="title" style={{ textTransform: 'capitalize' }}>
-              {getMessage('modals.main.addons.create.metadata.create_type', {
-                type: this.state.addonMetadata.type,
-              })}
+            {getMessage(
+                'modals.main.addons.create.types.' + this.state.addonMetadata.type,
+              ) || 'marketplace'}
             </span>
             <span className="subtitle">
               {getMessage(
-                'modals.main.addons.create.metadata.descriptions.' + this.state.addonMetadata.type,
+                'modals.main.addons.create.descriptions.' + this.state.addonMetadata.type,
               ) || 'marketplace'}
             </span>
           </div>
@@ -236,7 +236,7 @@ export default class Create extends PureComponent {
             <span className="subtitle">
               <InfoTooltip
                 title={getMessage('modals.main.addons.create.information')}
-                subtitle={getMessage('modals.main.addons.create.metadata.information_subtitle')}
+                subtitle={getMessage('modals.main.addons.create.information_subtitle')}
               />
             </span>
           </div>

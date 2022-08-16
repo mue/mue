@@ -40,8 +40,9 @@
     }
 
     img {
-      height: 80% !important;
-      width: auto !important;
+      object-fit: cover !important;
+      height: 50px !important;
+      width: 50px !important;
       border-radius: 12px;
       transition: 0.5s;
 
@@ -407,7 +408,8 @@ p.author {
     justify-content: center;
   }
 
-  button.nice-button, a.nice-button{
+  button.nice-button,
+  a.nice-button {
     display: flex;
     align-items: center;
     gap: 15px;

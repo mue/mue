@@ -16,7 +16,7 @@ export default class WelcomeModal extends PureComponent {
     this.state = {
       image: './././icons/undraw_celebration.svg',
       currentTab: 0,
-      finalTab: 4,
+      finalTab: 5,
       buttonText: this.getMessage('modals.welcome.buttons.next'),
     };
     this.images = [
@@ -24,6 +24,7 @@ export default class WelcomeModal extends PureComponent {
       './././icons/undraw_around_the_world_modified.svg',
       './././icons/undraw_add_files_modified.svg',
       './././icons/undraw_dark_mode.svg',
+      './././icons/undraw_making_art.svg',
       './././icons/undraw_private_data_modified.svg',
       './././icons/undraw_upgrade_modified.svg',
     ];

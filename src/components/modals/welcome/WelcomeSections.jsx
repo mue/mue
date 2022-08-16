@@ -1,6 +1,15 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdCloudUpload, MdAutoAwesome, MdLightMode, MdDarkMode, MdCelebration, MdOpenInNew} from 'react-icons/md';
+import {
+  MdCloudUpload,
+  MdAutoAwesome,
+  MdLightMode,
+  MdDarkMode,
+  MdOutlineWavingHand,
+  MdOpenInNew,
+  MdOutlineWhatshot,
+  MdArchive,
+} from 'react-icons/md';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 
 import Radio from '../main/settings/Radio';
@@ -132,7 +141,9 @@ export default class WelcomeSections extends PureComponent {
 
         <span className="link">#shareyourmue</span>
         <div className="welcomeNotice">
-          <div className="icon"><MdCelebration /></div>
+          <div className="icon">
+            <MdOutlineWavingHand />
+          </div>
           <div className="text">
             <span className="title">{this.getMessage('modals.welcome.sections.intro.title')}</span>
             <span className="subtitle">
@@ -144,21 +155,25 @@ export default class WelcomeSections extends PureComponent {
           <div className="icon">
             <FaDiscord />
           </div>
-          <div className="text"> 
-            <span className="title">Join our discord</span>
-            <span className="subtitle">Join our community</span>
+          <div className="text">
+            <span className="title">Join our Discord</span>
+            <span className="subtitle">Talk with the Mue community and developers</span>
           </div>
-          <button><MdOpenInNew /> Join</button>
+          <button>
+            <MdOpenInNew /> Join
+          </button>
         </div>
         <div className="welcomeNotice">
           <div className="icon">
             <FaGithub />
           </div>
-          <div className="text"> 
-            <span className="title">Contribute on Github</span>
-            <span className="subtitle">Contribute</span>
+          <div className="text">
+            <span className="title">Contribute on GitHub</span>
+            <span className="subtitle">Report bugs, add features or donate</span>
           </div>
-          <button><MdOpenInNew /> Open</button>
+          <button>
+            <MdOpenInNew /> Open
+          </button>
         </div>
       </>
     );
@@ -212,6 +227,25 @@ export default class WelcomeSections extends PureComponent {
         <span className="subtitle">{this.getMessage('modals.welcome.sections.theme.tip')}</span>
       </>
     );
+
+    const style = (
+      <>
+        <span className='mainTitle'>Choose a theme</span>
+        <span className="subtitle">Mue currently offers the choice between the legacy styling and the newly released modern styling.</span>
+        <div className="themesToggleArea">
+          <div className="options">
+            <div className={this.state.lightClass} onClick={() => this.changeTheme('light')}>
+              <MdArchive />
+              <span>Legacy</span>
+            </div>
+            <div className={this.state.darkClass} onClick={() => this.changeTheme('dark')}>
+              <MdOutlineWhatshot />
+              <span>Modern</span>
+            </div>
+          </div>
+        </div>
+      </>
+    )
 
     const settings = (
       <>
@@ -340,8 +374,10 @@ export default class WelcomeSections extends PureComponent {
       case 3:
         return theme;
       case 4:
-        return privacy;
+        return style;
       case 5:
+        return privacy;
+      case 6:
         return final;
       // 0
       default:
