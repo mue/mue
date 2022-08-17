@@ -32,6 +32,9 @@ export default class WelcomeSections extends PureComponent {
       autoClass: 'toggle auto active',
       lightClass: 'toggle lightTheme',
       darkClass: 'toggle darkTheme',
+      // styles
+      newStyle: 'toggle newStyle active',
+      legacyStyle: 'toggle legacyStyle',
       // welcome
       welcomeImage: 0,
       // final
@@ -50,6 +53,14 @@ export default class WelcomeSections extends PureComponent {
 
     localStorage.setItem('theme', type);
     loadSettings(true);
+  }
+
+  changeStyle(type) { 
+    this.setState({
+      newStyle: type === 'new' ? 'toggle newStyle active' : 'toggle newStyle',
+      legacyStyle: type === 'legacy' ? 'toggle legacyStyle active' : 'toggle legacyStyle',
+    });
+    localStorage.setItem('widgetStyle', type);
   }
 
   getSetting(name) {
@@ -159,9 +170,9 @@ export default class WelcomeSections extends PureComponent {
             <span className="title">Join our Discord</span>
             <span className="subtitle">Talk with the Mue community and developers</span>
           </div>
-          <button>
+          <a href="https://discord.gg/zv8C9F8">
             <MdOpenInNew /> Join
-          </button>
+          </a>
         </div>
         <div className="welcomeNotice">
           <div className="icon">
@@ -171,9 +182,9 @@ export default class WelcomeSections extends PureComponent {
             <span className="title">Contribute on GitHub</span>
             <span className="subtitle">Report bugs, add features or donate</span>
           </div>
-          <button>
+          <a href="https://github.com/mue/mue">
             <MdOpenInNew /> Open
-          </button>
+          </a>
         </div>
       </>
     );
@@ -234,11 +245,11 @@ export default class WelcomeSections extends PureComponent {
         <span className="subtitle">Mue currently offers the choice between the legacy styling and the newly released modern styling.</span>
         <div className="themesToggleArea">
           <div className="options">
-            <div className={this.state.lightClass} onClick={() => this.changeTheme('light')}>
+            <div className={this.state.legacyStyle} onClick={() => this.changeStyle('legacy')}>
               <MdArchive />
               <span>Legacy</span>
             </div>
-            <div className={this.state.darkClass} onClick={() => this.changeTheme('dark')}>
+            <div className={this.state.newStyle} onClick={() => this.changeStyle('new')}>
               <MdOutlineWhatshot />
               <span>Modern</span>
             </div>

@@ -132,7 +132,9 @@
       margin-top: 25px;
 
       .lightTheme,
-      .darkTheme {
+      .darkTheme,
+      .legacyStyle,
+      .newStyle {
         width: 40%;
         padding: 50px;
 
@@ -265,9 +267,16 @@ a.privacy {
     display: flex;
     flex-flow: column;
   }
-  button {
+  a {
+    text-decoration: none;
     margin-left: auto;
-    padding: 5px 20px;
+    padding: 0 20px;
     @include modal-button(standard);
+  }
+}
+
+.toggle.active {
+  @include themed() {
+    background-color: t($modal-sidebarActive) !important;
   }
 }
