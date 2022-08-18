@@ -148,7 +148,7 @@ export default class Weather extends PureComponent {
   render() {
     const weatherType = localStorage.getItem('weatherType');
     const enabled = (setting) => {
-      return localStorage.getItem(setting) === 'true' && weatherType >= 3;
+      return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType == 3;
     };
 
     if (
