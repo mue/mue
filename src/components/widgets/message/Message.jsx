@@ -26,6 +26,7 @@ export default class Message extends PureComponent {
         }em`;
       }
     });
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
 
     this.message.current.style.fontSize = `${
       1.6 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
@@ -33,7 +34,6 @@ export default class Message extends PureComponent {
     if (messages.length === 0) {
       return (this.message.current.style.display = 'none');
     }
-    const messages = JSON.parse(localStorage.getItem('messages')) || [];
     this.setState({
       messageText: messages[Math.floor(Math.random() * messages.length)],
     });
@@ -48,7 +48,7 @@ export default class Message extends PureComponent {
             <br />
           </span>
         ))}
-      </h2>
+        </h2>
     );
   }
 }
