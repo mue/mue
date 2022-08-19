@@ -353,7 +353,7 @@ export default class Marketplace extends PureComponent {
             </div>
             <div className="headerExtras marketplaceCondition">
               <span className="link" onClick={() => this.reloadItems()}>
-                <MdRefresh /> Refresh
+                <MdRefresh /> {this.getMessage('widgets.navbar.tooltips.refresh')}
               </span>
               <Dropdown
                 label={this.getMessage('modals.main.addons.sort.title')}

@@ -17,8 +17,8 @@ export default class TimeSettings extends PureComponent {
     super();
     this.state = {
       timeType: localStorage.getItem('timeType') || 'digital',
-      hourColour: localStorage.getItem('hourColour') || '#fff',
-      minuteColour: localStorage.getItem('minuteColour') || '#fff',
+      hourColour: localStorage.getItem('hourColour') || '#ffffff',
+      minuteColour: localStorage.getItem('minuteColour') || '#ffffff',
     };
   }
 
@@ -35,11 +35,11 @@ export default class TimeSettings extends PureComponent {
   }
 
   resetHourColour() {
-    localStorage.setItem('hourColour', '#fff')
+    localStorage.setItem('hourColour', '#ffffff')
   }
 
   resetMinuteColour() {
-    localStorage.setItem('minuteColour', '#fff')
+    localStorage.setItem('minuteColour', '#ffffff')
   }
 
 
@@ -119,7 +119,7 @@ export default class TimeSettings extends PureComponent {
 
     const verticalClock = (
       <>
-        <SettingsItem title="Change minute text hour colour" subtitle="">
+        <SettingsItem title={getMessage('modals.main.settings.sections.time.vertical_clock.change_hour_colour')} subtitle="">
           <div className="colourInput">
             <input
               type="color"
@@ -136,7 +136,7 @@ export default class TimeSettings extends PureComponent {
             {getMessage('modals.main.settings.buttons.reset')}
           </span>
         </SettingsItem>
-        <SettingsItem title="Change minute text minute colour" subtitle="">
+        <SettingsItem title={getMessage('modals.main.settings.sections.time.vertical_clock.change_minute_colour')}  subtitle="">
           <div className="colourInput">
             <input
               type="color"
@@ -194,7 +194,7 @@ export default class TimeSettings extends PureComponent {
             <option value="percentageComplete">
               {getMessage('modals.main.settings.sections.time.percentage_complete')}
             </option>
-            <option value="verticalClock">Vertical Clock</option>
+            <option value="verticalClock">{getMessage('modals.main.settings.sections.time.vertical_clock.title')}</option>
           </Dropdown>
         </SettingsItem>
         {timeSettings}

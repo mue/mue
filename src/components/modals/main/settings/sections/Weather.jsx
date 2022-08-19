@@ -116,49 +116,6 @@ export default class TimeSettings extends PureComponent {
             category="weather"
           />
         </SettingsItem>
-        {localStorage.getItem('weatherType') > 1 && (
-          <SettingsItem title="Active bit" subtitle="idk a better word for it sorry">
-            <Dropdown label="Type" name="weatherActiveBit" category="weather">
-              <option value="weatherdescription">
-                {getMessage('modals.main.settings.sections.weather.extra_info.show_description')}{' '}
-              </option>
-              <option value="cloudiness">
-                {getMessage('modals.main.settings.sections.weather.extra_info.cloudiness')}
-              </option>
-              <option value="humidity">
-                {getMessage('modals.main.settings.sections.weather.extra_info.humidity')}
-              </option>
-              <option value="visibility">
-                {getMessage('modals.main.settings.sections.weather.extra_info.visibility')}
-              </option>
-              <option
-                value="windspeed"
-                onChange={() =>
-                  this.setState({
-                    windSpeed: localStorage.getItem('windspeed') !== 'true',
-                  })
-                }
-              >
-                {getMessage('modals.main.settings.sections.weather.extra_info.wind_speed')}
-              </option>
-              <option value="windDirection" disabled={this.state.windSpeed}>
-                {getMessage('modals.main.settings.sections.weather.extra_info.wind_direction')}
-              </option>
-              <option value="mintemp">
-                {getMessage('modals.main.settings.sections.weather.extra_info.min_temp')}
-              </option>
-              <option value="maxtemp">
-                {getMessage('modals.main.settings.sections.weather.extra_info.max_temp')}
-              </option>
-              <option value="feelsliketemp">Feels like temperature</option>
-              <option value="atmosphericpressure">
-                {getMessage(
-                  'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
-                )}
-              </option>
-            </Dropdown>
-          </SettingsItem>
-        )}
         {localStorage.getItem('weatherType') == 4 && (
           <SettingsItem title="Custom Settings">
             <Checkbox

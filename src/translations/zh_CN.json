@@ -112,7 +112,12 @@
               "hour_marks": "时钟刻度",
               "minute_marks": "分钟刻度"
             },
-            "percentage_complete": "今天过去了%几"
+            "percentage_complete": "今天过去了%几",
+            "vertical_clock": {
+              "title": "Vertical Clock",
+              "change_hour_colour": "Change hour text colour",
+              "change_minute_colour": "Change minute text colour"
+            }
           },
           "date": {
             "title": "显示日期",
@@ -461,6 +466,7 @@
         "preset_settings": "预设设定",
         "no_items": "本类别为空",
         "explore_collection": "Explore Collection",
+        "collection": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
         "knowledgebase_two": "knowledgebase",

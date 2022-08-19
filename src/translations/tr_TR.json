@@ -112,7 +112,12 @@
               "hour_marks": "Saat Çizgileri",
               "minute_marks": "Dakika Çizgileri"
             },
-            "percentage_complete": "Yüzdelik Gösterim"
+            "percentage_complete": "Yüzdelik Gösterim",
+            "vertical_clock": {
+              "title": "Vertical Clock",
+              "change_hour_colour": "Change hour text colour",
+              "change_minute_colour": "Change minute text colour"
+            }
           },
           "date": {
             "title": "Gün",
@@ -461,6 +466,7 @@
         "preset_settings": "Ön Ayar Ayarları",
         "no_items": "Bu kategoride öğe yok",
         "explore_collection": "Koleksiyonu Keşfedin",
+        "collection": "Collections",
         "cant_find": "Aradığınızı bulamıyor musunuz?",
         "knowledgebase_one": "Kendiniz oluşturmak için",
         "knowledgebase_two": "bilgilendirme sayfamızı",

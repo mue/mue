@@ -112,7 +112,12 @@
               "hour_marks": "Penanda Jam",
               "minute_marks": "Penanda Menit"
             },
-            "percentage_complete": "Persentase"
+            "percentage_complete": "Persentase",
+            "vertical_clock": {
+              "title": "Vertical Clock",
+              "change_hour_colour": "Change hour text colour",
+              "change_minute_colour": "Change minute text colour"
+            }
           },
           "date": {
             "title": "Tanggal",
@@ -461,6 +466,7 @@
         "preset_settings": "Preset Settings",
         "no_items": "Tidak ada item pada kategori ini",
         "explore_collection": "Explore Collection",
+        "collection": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
         "knowledgebase_two": "knowledgebase",

@@ -112,7 +112,12 @@
               "hour_marks": "Marques d'heure",
               "minute_marks": "Marques des minutes"
             },
-            "percentage_complete": "Pourcentage achevé"
+            "percentage_complete": "Pourcentage achevé",
+            "vertical_clock": {
+              "title": "Vertical Clock",
+              "change_hour_colour": "Change hour text colour",
+              "change_minute_colour": "Change minute text colour"
+            }
           },
           "date": {
             "title": "Date",
@@ -461,6 +466,7 @@
         "preset_settings": "Paramètres prédéfinis",
         "no_items": "Aucun article dans cette catégorie",
         "explore_collection": "Explore Collection",
+        "collection": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
         "knowledgebase_two": "knowledgebase",

@@ -112,7 +112,12 @@
               "hour_marks": "Stunden-Markierungen",
               "minute_marks": "Minuten-Markierungen"
             },
-            "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen"
+            "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen",
+            "vertical_clock": {
+              "title": "Vertical Clock",
+              "change_hour_colour": "Change hour text colour",
+              "change_minute_colour": "Change minute text colour"
+            }
           },
           "date": {
             "title": "Datum",
@@ -462,6 +467,7 @@
         "preset_settings": "Voreingestellte Einstellungen",
         "no_items": "Keine Einträge in dieser Kategorie",
         "explore_collection": "Explore Collection",
+        "collection": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
         "knowledgebase_two": "knowledgebase",

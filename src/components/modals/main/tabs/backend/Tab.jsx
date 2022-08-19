@@ -118,6 +118,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
       break;
 
     case getMessage('modals.main.addons.added'):
+      mue = true;
       icon = <Added />;
       break;
     case getMessage('modals.main.addons.sideload.title'):
@@ -130,6 +131,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.marketplace.all'):
       icon = <Addons />;
       divider = true;
+      mue = true;
       break;
     case getMessage('modals.main.marketplace.photo_packs'):
       icon = <Background />;
@@ -140,7 +142,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case getMessage('modals.main.marketplace.preset_settings'):
       icon = <Advanced />;
       break;
-    case 'Collections':
+    case getMessage('modals.main.marketplace.collection'):
       icon = <Collections />;
       break;
 

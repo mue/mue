@@ -6,6 +6,7 @@ import { MdDisabledVisible } from 'react-icons/md';
 import WeatherIcon from './WeatherIcon';
 import WindDirectionIcon from './WindDirectionIcon';
 
+import Tooltip from '../../helpers/tooltip/Tooltip';
 import EventBus from 'modules/helpers/eventbus';
 
 import './weather.scss';
@@ -190,30 +191,6 @@ export default class Weather extends PureComponent {
     const expandedInfo = () => {
       return (
         <div className="expanded-info">
-          {/*}
-            {enabled('upcomingForecast') ? (
-              <>
-                <span className="subtitle">Upcoming Forecast</span>
-                <div className="upcomingForecast">
-                  <div>
-                    <WeatherIcon name={this.state.icon} />
-                    <span className="period">15:00</span>
-                    <span className="minmax">{minmax()}</span>
-                  </div>
-                  <div>
-                    <WeatherIcon name={this.state.icon} />
-                    <span className="period">16:00</span>
-                    <span className="minmax">{minmax()}</span>
-                  </div>
-                  <div>
-                    <WeatherIcon name={this.state.icon} />
-                    <span className="period">17:00</span>
-                    <span className="minmax">{minmax()}</span>
-                  </div>
-                </div>
-              </>
-            ) : null}
-            */}
           {weatherType >= 3 && (
             <span className="subtitle">
               {variables.language.getMessage(
@@ -223,48 +200,88 @@ export default class Weather extends PureComponent {
             </span>
           )}
           {enabled('cloudiness') || weatherType === 3 ? (
-            <span>
-              <WiCloud className="weatherIcon" />
-              {this.state.weather.cloudiness}%
-            </span>
+            <Tooltip
+              title={variables.language.getMessage(
+                variables.languagecode,
+                'modals.main.settings.sections.weather.extra_info.cloudiness',
+              )}
+              placement="left"
+            >
+              <span>
+                <WiCloud className="weatherIcon" />
+                {this.state.weather.cloudiness}%
+              </span>
+            </Tooltip>
           ) : null}
           {enabled('windspeed') || weatherType === 3 ? (
-            <span>
-              <WiWindy className="weatherIcon" />
-              {this.state.weather.wind_speed}
-              <span className="minmax"> m/s</span>{' '}
-              {enabled('windDirection') ? (
-                <div className="weatherIcon">
-                  <WindDirectionIcon
-                    className="weatherIcon"
-                    degrees={this.state.weather.wind_degrees}
-                  />
-                </div>
-              ) : null}
-            </span>
+            <Tooltip
+              title={variables.language.getMessage(
+                variables.languagecode,
+                'modals.main.settings.sections.weather.extra_info.wind_speed',
+              )}
+              placement="left"
+            >
+              <span>
+                <WiWindy className="weatherIcon" />
+                {this.state.weather.wind_speed}
+                <span className="minmax"> m/s</span>{' '}
+                {enabled('windDirection') ? (
+                  <div className="weatherIcon">
+                    <WindDirectionIcon
+                      className="weatherIcon"
+                      degrees={this.state.weather.wind_degrees}
+                    />
+                  </div>
+                ) : null}
+              </span>
+            </Tooltip>
           ) : null}
           {enabled('atmosphericpressure') || weatherType === 3 ? (
-            <span>
-              <WiBarometer className="weatherIcon" />
-              {this.state.weather.pressure}
-              <span className="minmax"> hPa</span>
-            </span>
+            <Tooltip
+              title={variables.language.getMessage(
+                variables.languagecode,
+                'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
+              )}
+              placement="left"
+            >
+              <span>
+                <WiBarometer className="weatherIcon" />
+                {this.state.weather.pressure}
+                <span className="minmax"> hPa</span>
+              </span>
+            </Tooltip>
           ) : null}
           {enabled('weatherdescription') || weatherType === 3 ? (
-            <span>
-              <div className="weatherIcon">
-                <WeatherIcon name={this.state.icon} />
-              </div>
-              {this.state.weather.description}
-            </span>
+            <Tooltip
+              title={variables.language.getMessage(
+                variables.languagecode,
+                'modals.main.settings.sections.weather.extra_info.show_description',
+              )}
+              placement="left"
+            >
+              <span>
+                <div className="weatherIcon">
+                  <WeatherIcon name={this.state.icon} />
+                </div>
+                {this.state.weather.description}
+              </span>
+            </Tooltip>
           ) : null}
           {enabled('visibility') || weatherType === 3 ? (
-            <span>
-              <MdDisabledVisible style={{ padding: '3px' }} />
-              {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', {
-                amount: this.state.weather.visibility,
-              })}
-            </span>
+            <Tooltip
+              title={variables.language.getMessage(
+                variables.languagecode,
+                'modals.main.settings.sections.weather.extra_info.visibility',
+              )}
+              placement="left"
+            >
+              <span>
+                <MdDisabledVisible style={{ padding: '3px' }} />
+                {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', {
+                  amount: this.state.weather.visibility,
+                })}
+              </span>
+            </Tooltip>
           ) : null}
         </div>
       );

@@ -8,7 +8,7 @@ export default function Marketplace(props) {
 
   return (
     <Tabs changeTab={(type) => props.changeTab(type)} current="marketplace">
-      <div label="All" name="all">
+      <div label={getMessage('modals.main.marketplace.all')} name="all">
         <MarketplaceTab type="all" />
       </div>
       <div label={getMessage('modals.main.marketplace.photo_packs')} name="photo_packs">
@@ -20,7 +20,7 @@ export default function Marketplace(props) {
       <div label={getMessage('modals.main.marketplace.preset_settings')} name="preset_settings">
         <MarketplaceTab type="preset_settings" />
       </div>
-      <div label="Collections" name="collections">
+      <div label={getMessage('modals.main.marketplace.collection')} name="collections">
         <MarketplaceTab type="collections" />
       </div>
     </Tabs>

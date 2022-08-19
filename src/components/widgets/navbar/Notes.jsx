@@ -107,17 +107,30 @@ class Notes extends PureComponent {
                 </span>
               </div>
               <div className="notes-buttons">
-                <Tooltip title="Pin">
+                <Tooltip
+                  title={variables.language.getMessage(
+                    variables.languagecode,
+                    'widgets.navbar.todo.pin',
+                  )}
+                >
                   <button onClick={() => this.pin()}>
                     <MdPushPin />
                   </button>
                 </Tooltip>
-                <Tooltip title="Copy">
+                <Tooltip
+                  title={variables.language.getMessage(
+                    variables.languagecode,
+                    'widgets.quote.copy',
+                  )}
+                >
                   <button onClick={() => this.copy()}>
                     <MdContentCopy />
                   </button>
                 </Tooltip>
-                <Tooltip title="Download">
+                <Tooltip                   title={variables.language.getMessage(
+                    variables.languagecode,
+                    'widgets.background.download',
+                  )}>
                   <button onClick={() => this.download()}>
                     <MdDownload />
                   </button>

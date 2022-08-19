@@ -21,9 +21,13 @@
   }
 
   .expanded-info {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    .tooltip {
+      width: 100%;
+    }
   }
 
   .extra-info {
