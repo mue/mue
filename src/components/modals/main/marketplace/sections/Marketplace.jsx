@@ -391,7 +391,6 @@ export default class Marketplace extends PureComponent {
                     <MdOutlineArrowForward />{' '}
                     {this.getMessage('modals.main.marketplace.explore_collection')}
                   </button>
-                  
                 </div>
               ) : null}
             </>

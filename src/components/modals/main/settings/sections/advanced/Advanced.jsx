@@ -19,7 +19,7 @@ import ResetModal from '../../ResetModal';
 import Dropdown from '../../Dropdown';
 import SettingsItem from '../../SettingsItem';
 
-import Data from './Data';
+//import Data from './Data';
 
 import time_zones from 'components/widgets/time/timezones.json';
 
@@ -35,9 +35,9 @@ export default class AdvancedSettings extends PureComponent {
   render() {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
-    if (this.state.showData) {
+    /*if (this.state.showData) {
       return <Data goBack={() => this.setState({ showData: false })} />;
-    }
+    }*/
 
     return (
       <>

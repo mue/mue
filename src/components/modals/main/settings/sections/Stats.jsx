@@ -25,7 +25,7 @@ const achievementLanguage = {
   tr_TR: translations.tr_TR,
 };
 
-console.log(achievementLanguage.en_GB)
+console.log(achievementLanguage.en_GB);
 
 export default class Stats extends PureComponent {
   constructor() {
@@ -117,12 +117,14 @@ export default class Stats extends PureComponent {
       );
     }
 
-    const achievementElement = (key, name, description) => (
+    const achievementElement = (key, name) => (
       <div className="achievement">
         <FaTrophy />
         <div className="achievementContent">
           <span>{name}</span>
-          <span className="subtitle">{achievementLanguage[localStorage.getItem('language')][key]}</span>
+          <span className="subtitle">
+            {achievementLanguage[localStorage.getItem('language')][key]}
+          </span>
         </div>
       </div>
     );
@@ -152,7 +154,7 @@ export default class Stats extends PureComponent {
             <div className="achievements">
               {this.state.achievements.map((achievement, index) => {
                 if (achievement.achieved) {
-                  return achievementElement(index, achievement.name, achievement.description);
+                  return achievementElement(index, achievement.name);
                 }
               })}
             </div>

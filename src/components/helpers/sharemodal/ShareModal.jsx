@@ -22,9 +22,7 @@ export default function ShareModal({ modalClose, data }) {
     if (!data.data) {
       data.data.name = 'this image';
     }
-  } catch (e) {
-
-  }
+  } catch (e) {}
 
   return (
     <div className="smallModal">

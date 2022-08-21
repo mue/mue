@@ -5,12 +5,7 @@ import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Radio from '../Radio';
-//import Slider from '../Slider';
-//import Switch from '../Switch';
-
 import SettingsItem from '../SettingsItem';
-
-//import { values } from 'modules/helpers/settings/modals';
 
 export default class TimeSettings extends PureComponent {
   constructor() {
@@ -22,27 +17,11 @@ export default class TimeSettings extends PureComponent {
     };
   }
 
-  updateHourColour(event) {
-    const hourColour = event.target.value;
-    this.setState({ hourColour });
-    localStorage.setItem('hourColour', hourColour);
+  updateColour(type, event) {
+    const colour = event.target.value;
+    this.setState({ [type]: colour });
+    localStorage.setItem(type, colour);
   }
-
-  updateMinuteColour(event) {
-    const minuteColour = event.target.value;
-    this.setState({ minuteColour });
-    localStorage.setItem('minuteColour', minuteColour);
-  }
-
-  resetHourColour() {
-    localStorage.setItem('hourColour', '#ffffff')
-  }
-
-  resetMinuteColour() {
-    localStorage.setItem('minuteColour', '#ffffff')
-  }
-
-
 
   render() {
     const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
@@ -119,37 +98,45 @@ export default class TimeSettings extends PureComponent {
 
     const verticalClock = (
       <>
-        <SettingsItem title={getMessage('modals.main.settings.sections.time.vertical_clock.change_hour_colour')} subtitle="">
+        <SettingsItem
+          title={getMessage('modals.main.settings.sections.time.vertical_clock.change_hour_colour')}
+          subtitle=""
+        >
           <div className="colourInput">
             <input
               type="color"
-              name="minuteColour"
+              name="hourColour"
               className="minuteColour"
-              onChange={(event) => this.updateHourColour(event)}
+              onChange={(event) => this.updateColour('hour', event)}
               value={this.state.hourColour}
             ></input>
             <label htmlFor={'hourColour'} className="customBackgroundHex">
               {this.state.hourColour}
             </label>
           </div>
-          <span className="link" onClick={() => this.resetHourColour()}>
+          <span className="link" onClick={() => localStorage.setItem('hourColour', '#ffffff')}>
             {getMessage('modals.main.settings.buttons.reset')}
           </span>
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.settings.sections.time.vertical_clock.change_minute_colour')}  subtitle="">
+        <SettingsItem
+          title={getMessage(
+            'modals.main.settings.sections.time.vertical_clock.change_minute_colour',
+          )}
+          subtitle=""
+        >
           <div className="colourInput">
             <input
               type="color"
               name="minuteColour"
               className="minuteColour"
-              onChange={(event) => this.updateMinuteColour(event)}
+              onChange={(event) => this.updateColour('minute', event)}
               value={this.state.minuteColour}
             ></input>
             <label htmlFor={'minuteColour'} className="customBackgroundHex">
               {this.state.minuteColour}
             </label>
           </div>
-          <span className="link" onClick={() => this.resetMinuteColour()}>
+          <span className="link" onClick={() => localStorage.setItem('minuteColour', '#ffffff')}>
             {getMessage('modals.main.settings.buttons.reset')}
           </span>
         </SettingsItem>
@@ -194,7 +181,9 @@ export default class TimeSettings extends PureComponent {
             <option value="percentageComplete">
               {getMessage('modals.main.settings.sections.time.percentage_complete')}
             </option>
-            <option value="verticalClock">{getMessage('modals.main.settings.sections.time.vertical_clock.title')}</option>
+            <option value="verticalClock">
+              {getMessage('modals.main.settings.sections.time.vertical_clock.title')}
+            </option>
           </Dropdown>
         </SettingsItem>
         {timeSettings}

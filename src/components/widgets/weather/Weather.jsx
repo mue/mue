@@ -315,7 +315,7 @@ export default class Weather extends PureComponent {
             </div>
           )}
         </div>
-        {weatherType == 3 ? expandedInfo() : null}
+        {weatherType === 3 ? expandedInfo() : null}
       </div>
     );
   }

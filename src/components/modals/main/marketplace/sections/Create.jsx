@@ -207,9 +207,8 @@ export default class Create extends PureComponent {
         <div className="smallBanner">
           <div className="content">
             <span className="title" style={{ textTransform: 'capitalize' }}>
-            {getMessage(
-                'modals.main.addons.create.types.' + this.state.addonMetadata.type,
-              ) || 'marketplace'}
+              {getMessage('modals.main.addons.create.types.' + this.state.addonMetadata.type) ||
+                'marketplace'}
             </span>
             <span className="subtitle">
               {getMessage(

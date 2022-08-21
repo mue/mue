@@ -202,7 +202,7 @@ class Todo extends PureComponent {
                             onChange={(data) => this.updateTodo('set', index, data)}
                             readOnly={this.state.todo[index].done}
                           />
-                            <MdDelete onClick={() => this.updateTodo('remove', index)} />
+                          <MdDelete onClick={() => this.updateTodo('remove', index)} />
                           <MdOutlineDragIndicator />
                         </div>
                       }

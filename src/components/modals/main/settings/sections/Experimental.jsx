@@ -51,13 +51,20 @@ export default function ExperimentalSettings() {
           InputLabelProps={{ shrink: true }}
         />
       </SettingsItem>
-      <SettingsItem title={getMessage('modals.main.settings.sections.experimental.developer')} final={true}>
-      <button className="uploadbg" onClick={() => EventBus.dispatch(eventType, eventName)}>
-        Send
-      </button>
-      <button className="reset" style={{ marginLeft: '0px' }} onClick={() => localStorage.clear()}>
-        Clear LocalStorage
-      </button>
+      <SettingsItem
+        title={getMessage('modals.main.settings.sections.experimental.developer')}
+        final={true}
+      >
+        <button className="uploadbg" onClick={() => EventBus.dispatch(eventType, eventName)}>
+          Send
+        </button>
+        <button
+          className="reset"
+          style={{ marginLeft: '0px' }}
+          onClick={() => localStorage.clear()}
+        >
+          Clear LocalStorage
+        </button>
       </SettingsItem>
     </>
   );

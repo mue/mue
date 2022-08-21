@@ -127,10 +127,12 @@ class Notes extends PureComponent {
                     <MdContentCopy />
                   </button>
                 </Tooltip>
-                <Tooltip                   title={variables.language.getMessage(
+                <Tooltip
+                  title={variables.language.getMessage(
                     variables.languagecode,
                     'widgets.background.download',
-                  )}>
+                  )}
+                >
                   <button onClick={() => this.download()}>
                     <MdDownload />
                   </button>

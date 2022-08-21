@@ -142,7 +142,7 @@ table {
   .messageText {
     display: flex;
     flex-flow: column;
-    flex-grow: 3; 
+    flex-grow: 3;
     textarea {
       @include themed() {
         color: t($color);

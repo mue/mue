@@ -48,7 +48,7 @@ export default class Message extends PureComponent {
             <br />
           </span>
         ))}
-        </h2>
+      </h2>
     );
   }
 }

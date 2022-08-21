@@ -173,55 +173,6 @@ export default class CustomSettings extends PureComponent {
     return (
       <>
         {this.props.interval}
-
-        {/*<div className="settingsRow settingsNoBorder" style={{ alignItems: 'flex-start' }}>
-          <div className="content">
-            {/*<div className="images-row">
-              {this.state.customBackground.map((url, index) => (
-                <div key={index}>
-                  <img
-                    alt={'Custom background ' + (index || 0)}
-                    src={`${!this.videoCheck(url) ? this.state.customBackground[index] : ''}`}
-                  />
-                  {this.videoCheck(url) ? <MdPersonalVideo className="customvideoicon" /> : null}
-                  {this.state.customBackground.length > 0 ? (
-                    <button
-                      className="iconButton"
-                      onClick={() => this.modifyCustomBackground('remove', index)}
-                    >
-                      <MdCancel />
-                    </button>
-                  ) : null}
-                </div>
-              ))}
-                  </div>
-          </div>
-
-          <div className="action">
-            <div className="dropzone" ref={this.customDnd}>
-              <MdAddPhotoAlternate />
-              <span className="title">
-                {this.getMessage('modals.main.settings.sections.background.source.drop_to_upload')}
-              </span>
-              <span className="subtitle">
-                {this.getMessage(
-                  'modals.main.settings.sections.background.source.available_formats',
-                  {
-                    formats: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
-                  },
-                )}
-              </span>
-              <button onClick={() => this.uploadCustomBackground()}>
-                {this.getMessage('modals.main.settings.sections.background.source.select')}
-              </button>
-            </div>
-            <button onClick={() => this.setState({ customURLModal: true })}>
-              {this.getMessage('modals.main.settings.sections.background.source.add_url')}{' '}
-              <MdAddLink />
-            </button>
-          </div>
-        </div>*/}
-
         <div className="dropzone" ref={this.customDnd}>
           <div className="imagesTopBar">
             <div>

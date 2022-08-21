@@ -3,8 +3,8 @@ import { PureComponent } from 'react';
 import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';
-import SettingsItem from '../SettingsItem';
 
+import SettingsItem from '../SettingsItem';
 import Header from '../Header';
 
 import EventBus from 'modules/helpers/eventbus';

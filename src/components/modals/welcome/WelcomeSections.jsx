@@ -55,7 +55,7 @@ export default class WelcomeSections extends PureComponent {
     loadSettings(true);
   }
 
-  changeStyle(type) { 
+  changeStyle(type) {
     this.setState({
       newStyle: type === 'new' ? 'toggle newStyle active' : 'toggle newStyle',
       legacyStyle: type === 'legacy' ? 'toggle legacyStyle active' : 'toggle legacyStyle',
@@ -170,7 +170,7 @@ export default class WelcomeSections extends PureComponent {
             <span className="title">Join our Discord</span>
             <span className="subtitle">Talk with the Mue community and developers</span>
           </div>
-          <a href="https://discord.gg/zv8C9F8">
+          <a href="https://discord.gg/zv8C9F8" target="_blank" rel="noopener noreferrer">
             <MdOpenInNew /> Join
           </a>
         </div>
@@ -182,7 +182,7 @@ export default class WelcomeSections extends PureComponent {
             <span className="title">Contribute on GitHub</span>
             <span className="subtitle">Report bugs, add features or donate</span>
           </div>
-          <a href="https://github.com/mue/mue">
+          <a href="https://github.com/mue/mue" target="_blank" rel="noopener noreferrer">
             <MdOpenInNew /> Open
           </a>
         </div>
@@ -241,8 +241,11 @@ export default class WelcomeSections extends PureComponent {
 
     const style = (
       <>
-        <span className='mainTitle'>Choose a theme</span>
-        <span className="subtitle">Mue currently offers the choice between the legacy styling and the newly released modern styling.</span>
+        <span className="mainTitle">Choose a theme</span>
+        <span className="subtitle">
+          Mue currently offers the choice between the legacy styling and the newly released modern
+          styling.
+        </span>
         <div className="themesToggleArea">
           <div className="options">
             <div className={this.state.legacyStyle} onClick={() => this.changeStyle('legacy')}>
@@ -256,7 +259,7 @@ export default class WelcomeSections extends PureComponent {
           </div>
         </div>
       </>
-    )
+    );
 
     const settings = (
       <>
