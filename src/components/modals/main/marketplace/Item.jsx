@@ -4,7 +4,6 @@ import Tooltip from '../../../helpers/tooltip/Tooltip';
 import ImageCarousel from '../../../helpers/carousel/Carousel';
 import { toast } from 'react-toastify';
 import {
-  MdArrowBack,
   MdIosShare,
   MdFlag,
   MdWarning,
@@ -13,8 +12,6 @@ import {
   MdFormatQuote,
   MdImage,
   MdTranslate,
-  MdKeyboardArrowDown,
-  MdKeyboardArrowUp,
   MdOutlineKeyboardArrowRight,
   MdExpandMore,
 } from 'react-icons/md';

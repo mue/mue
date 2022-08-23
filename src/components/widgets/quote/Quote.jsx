@@ -115,7 +115,7 @@ export default class Quote extends PureComponent {
 
     const authorimgdata = await (
       await fetch(
-        `https://en.wikipedia.org/w/api.php?action=query&titles=${author}&origin=*&prop=pageimages&format=json&pithumbsize=100`,
+        `https://${variables.languagecode.split('_')[0]}.wikipedia.org/w/api.php?action=query&titles=${author}&origin=*&prop=pageimages&format=json&pithumbsize=100`,
       )
     ).json();
 
@@ -126,7 +126,7 @@ export default class Quote extends PureComponent {
 
       const authorimglicensedata = await (
         await fetch(
-          `https://en.wikipedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata&titles=File:${
+          `https://${variables.languagecode.split('_')[0]}.wikipedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata&titles=File:${
             authorimgdata.query.pages[Object.keys(authorimgdata.query.pages)[0]].pageimage
           }&origin=*&format=json`,
         )

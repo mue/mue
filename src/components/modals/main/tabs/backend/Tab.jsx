@@ -22,7 +22,6 @@ import {
   MdOutlineAssessment as Stats,
   MdOutlineNewReleases as Changelog,
   MdInfoOutline as About,
-  MdEvent as Reminder,
   MdCode as Sideload,
   MdAddCircleOutline as Added,
   MdAddCircleOutline as Create,
