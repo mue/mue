@@ -387,7 +387,8 @@
               "addons_installed": "添加的插件"
             },
             "usage": "启用统计",
-            "achievements": "Achievements"
+            "achievements": "Achievements",
+            "unlocked": "{count} Unlocked"
           },
           "keybinds": {
             "title": "快捷键",
@@ -602,7 +603,15 @@
       "sections": {
         "intro": {
           "title": "欢迎使用 Mue 新标签插件",
-          "description": "感谢您的安装。祝您使用愉快。"
+          "description": "感谢您的安装。祝您使用愉快。",
+          "notices": {
+            "discord_title": "Join our Discord",
+            "discord_description": "Talk with the Mue community and developers",
+            "discord_join": "Join",
+            "github_title": "Contribute on GitHub",
+            "github_description": "Report bugs, add features or donate",
+            "github_open": "Open"
+          }
         },
         "language": {
           "title": "更改语言",
@@ -612,6 +621,12 @@
           "title": "选择一个主题",
           "description": "Mue 支持日间和夜间主题，或者设置为自动选择，主题将跟随系统主题自动切换",
           "tip": "使用自动选择将使用您的电脑的主题。这个设置也会影响设置界面和一些小组件的主题，比如天气和便签。"
+        },
+        "style": {
+          "title": "Choose a style",
+          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
+          "legacy": "Legacy",
+          "modern": "Modern"
         },
         "settings": {
           "title": "导入设置",

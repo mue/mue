@@ -149,7 +149,13 @@ export default class Stats extends PureComponent {
             </span>
             <br />
             <span className="subtitle">
-              {this.getUnlockedCount()}/{this.state.achievements.length} Unlocked
+              {variables.language.getMessage(
+                variables.languagecode,
+                'modals.main.settings.sections.stats.unlocked',
+                {
+                  count: this.getUnlockedCount() + '/' + this.state.achievements.length,
+                },
+              )}
             </span>
             <div className="achievements">
               {this.state.achievements.map((achievement, index) => {

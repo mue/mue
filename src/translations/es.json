@@ -387,7 +387,8 @@
               "addons_installed": "Complementos instalados"
             },
             "usage": "Estadísticas de uso",
-            "achievements": "Achievements"
+            "achievements": "Achievements",
+            "unlocked": "{count} Unlocked"
           },
           "keybinds": {
             "title": "Asignación de teclas",
@@ -602,7 +603,15 @@
       "sections": {
         "intro": {
           "title": "Bienvenido a Mue Tab",
-          "description": "Gracias por instalar Mue, esperamos que disfrute de su tiempo con nuestra extensión."
+          "description": "Gracias por instalar Mue, esperamos que disfrute de su tiempo con nuestra extensión.",
+          "notices": {
+            "discord_title": "Join our Discord",
+            "discord_description": "Talk with the Mue community and developers",
+            "discord_join": "Join",
+            "github_title": "Contribute on GitHub",
+            "github_description": "Report bugs, add features or donate",
+            "github_open": "Open"
+          }
         },
         "language": {
           "title": "Elige el idioma",
@@ -612,6 +621,12 @@
           "title": "Selecciona un tema",
           "description": "Mue está disponible tanto en el tema claro como en el oscuro, también se puede configurar automáticamente en función del tema de su sistema.",
           "tip": "Si utiliza la configuración automática, utilizará el tema de su ordenador. Esta configuración afectará a los modales y a algunos de los widgets que aparecen en la pantalla, como el tiempo y las notas."
+        },
+        "style": {
+          "title": "Choose a style",
+          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
+          "legacy": "Legacy",
+          "modern": "Modern"
         },
         "settings": {
           "title": "Importa los ajustes",
