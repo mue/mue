@@ -240,21 +240,21 @@ export default class Quote extends PureComponent {
 		const installed = JSON.parse(localStorage.getItem('installed'));
 		installed.forEach(item => {
 			if (item.type === 'quotes') {
-				quotePack.push(...item.quotes)
+				const quotes = item.quotes.map(quote => ({
+					...quote,
+					fallbackauthorimg: item.icon_url
+				}));
+				quotePack.push(...quotes);
 			}
 		});
 
         if (quotePack) {
           const data = quotePack[Math.floor(Math.random() * quotePack.length)];
-          const installed = JSON.parse(localStorage.getItem('installed'));
-          // todo: make this actually get the correct quote pack, instead of the first available
-          const info = installed.find((i) => i.type === 'quotes');
-
           return this.setState({
             quote: '"' + data.quote + '"',
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
-            authorimg: info.icon_url,
+			authorimg: data.fallbackauthorimg,
           });
         } else {
           return this.doOffline();
