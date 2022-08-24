@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { useState, Fragment } from 'react';
+import { useState } from 'react';
 import Favourite from './Favourite';
 import {
   MdInfo,
@@ -160,16 +160,13 @@ export default function PhotoInformation({ info, url, api }) {
     showingPhotoMap = true;
 
     return (
-      <Fragment key="photomap">
-        <a
-          href={`${variables.constants.OPENSTREETMAP_URL}/?mlat=${info.latitude}&mlon=${info.longitude}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img className="locationMap" src={tile} alt="location" draggable={false} />
-        </a>
-        <br />
-      </Fragment>
+      <a
+        href={`${variables.constants.OPENSTREETMAP_URL}/?mlat=${info.latitude}&mlon=${info.longitude}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img className="locationMap" src={tile} alt="location" draggable={false} />
+      </a>
     );
   };
 
@@ -288,20 +285,16 @@ export default function PhotoInformation({ info, url, api }) {
                   )}
                 </span>
                 {info.location && info.location !== 'N/A' ? (
-                  <Fragment key="location">
-                    <div className="concept-row">
-                      <MdLocationOn />
-                      <span id="infoLocation">{info.location}</span>
-                    </div>
-                  </Fragment>
+                  <div className="concept-row">
+                    <MdLocationOn />
+                    <span id="infoLocation">{info.location}</span>
+                  </div>
                 ) : null}
                 {info.camera && info.camera !== 'N/A' ? (
-                  <Fragment key="camera">
-                    <div className="concept-row">
-                      <MdPhotoCamera />
-                      <span id="infoCamera">{info.camera}</span>
-                    </div>
-                  </Fragment>
+                  <div className="concept-row">
+                    <MdPhotoCamera />
+                    <span id="infoCamera">{info.camera}</span>
+                  </div>
                 ) : null}
                 <div className="concept-row">
                   <Resolution />
