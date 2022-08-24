@@ -149,7 +149,7 @@ export default class Weather extends PureComponent {
   render() {
     const weatherType = localStorage.getItem('weatherType');
     const enabled = (setting) => {
-      return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType == 3;
+      return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === "3";
     };
 
     if (
@@ -199,7 +199,7 @@ export default class Weather extends PureComponent {
               )}
             </span>
           )}
-          {enabled('cloudiness') || weatherType === 3 ? (
+          {enabled('cloudiness') ? (
             <Tooltip
               title={variables.language.getMessage(
                 variables.languagecode,
@@ -213,7 +213,7 @@ export default class Weather extends PureComponent {
               </span>
             </Tooltip>
           ) : null}
-          {enabled('windspeed') || weatherType === 3 ? (
+          {enabled('windspeed') ? (
             <Tooltip
               title={variables.language.getMessage(
                 variables.languagecode,
@@ -236,7 +236,7 @@ export default class Weather extends PureComponent {
               </span>
             </Tooltip>
           ) : null}
-          {enabled('atmosphericpressure') || weatherType === 3 ? (
+          {enabled('atmosphericpressure') ? (
             <Tooltip
               title={variables.language.getMessage(
                 variables.languagecode,
@@ -251,7 +251,7 @@ export default class Weather extends PureComponent {
               </span>
             </Tooltip>
           ) : null}
-          {enabled('weatherdescription') || weatherType === 3 ? (
+          {enabled('weatherdescription') ? (
             <Tooltip
               title={variables.language.getMessage(
                 variables.languagecode,
@@ -267,7 +267,7 @@ export default class Weather extends PureComponent {
               </span>
             </Tooltip>
           ) : null}
-          {enabled('visibility') || weatherType === 3 ? (
+          {enabled('visibility') ? (
             <Tooltip
               title={variables.language.getMessage(
                 variables.languagecode,
@@ -315,7 +315,7 @@ export default class Weather extends PureComponent {
             </div>
           )}
         </div>
-        {weatherType === 3 ? expandedInfo() : null}
+        {weatherType >= 3 ? expandedInfo() : null}
       </div>
     );
   }
