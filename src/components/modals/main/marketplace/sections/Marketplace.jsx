@@ -7,7 +7,6 @@ import {
   MdOutlineKeyboardArrowRight,
   MdRefresh,
   MdOutlineArrowForward,
-  MdOutlineOpenInNew,
 } from 'react-icons/md';
 
 import Item from '../Item';

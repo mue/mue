@@ -387,7 +387,8 @@
               "addons_installed": "Add-ons ditambahkan"
             },
             "usage": "Statistik Penggunaan",
-            "achievements": "Achievements"
+            "achievements": "Achievements",
+            "unlocked": "{count} Unlocked"
           },
           "keybinds": {
             "title": "Keybinds",
@@ -602,7 +603,15 @@
       "sections": {
         "intro": {
           "title": "Selamat datang di Mue Tab",
-          "description": "Terima kasih sudah menginstal Mue, kami harap Anda dapat menikmati pengalaman bersama Mue"
+          "description": "Terima kasih sudah menginstal Mue, kami harap Anda dapat menikmati pengalaman bersama Mue",
+          "notices": {
+            "discord_title": "Join our Discord",
+            "discord_description": "Talk with the Mue community and developers",
+            "discord_join": "Join",
+            "github_title": "Contribute on GitHub",
+            "github_description": "Report bugs, add features or donate",
+            "github_open": "Open"
+          }
         },
         "language": {
           "title": "Pilih bahasa",
@@ -612,6 +621,12 @@
           "title": "Pilih tema",
           "description": "Mue tersedia dalam tema terang dan gelap, atau kami juga bisa mengaturnya secara otomatis sesuai dengan preferensi sistem Anda.",
           "tip": "Pengaturan otomatis akan menyesuaikan dengan tema komputer Anda. Pengaturan ini akan mengubah tampilan modal dan beberapa widget, seperti Cuaca dan Catatan."
+        },
+        "style": {
+          "title": "Choose a style",
+          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
+          "legacy": "Legacy",
+          "modern": "Modern"
         },
         "settings": {
           "title": "Impor Pengaturan",

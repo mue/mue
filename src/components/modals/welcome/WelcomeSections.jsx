@@ -167,11 +167,15 @@ export default class WelcomeSections extends PureComponent {
             <FaDiscord />
           </div>
           <div className="text">
-            <span className="title">Join our Discord</span>
-            <span className="subtitle">Talk with the Mue community and developers</span>
+            <span className="title">
+              {this.getMessage('modals.welcome.sections.intro.notices.discord_title')}
+            </span>
+            <span className="subtitle">
+              {this.getMessage('modals.welcome.sections.intro.notices.discord_description')}
+            </span>
           </div>
           <a href="https://discord.gg/zv8C9F8" target="_blank" rel="noopener noreferrer">
-            <MdOpenInNew /> Join
+            <MdOpenInNew /> {this.getMessage('modals.welcome.sections.intro.notices.discord_join')}
           </a>
         </div>
         <div className="welcomeNotice">
@@ -179,11 +183,15 @@ export default class WelcomeSections extends PureComponent {
             <FaGithub />
           </div>
           <div className="text">
-            <span className="title">Contribute on GitHub</span>
-            <span className="subtitle">Report bugs, add features or donate</span>
+            <span className="title">
+              {this.getMessage('modals.welcome.sections.intro.notices.github_title')}
+            </span>
+            <span className="subtitle">
+              {this.getMessage('modals.welcome.sections.intro.notices.github_description')}
+            </span>
           </div>
           <a href="https://github.com/mue/mue" target="_blank" rel="noopener noreferrer">
-            <MdOpenInNew /> Open
+            <MdOpenInNew /> {this.getMessage('modals.welcome.sections.intro.notices.github_open')}
           </a>
         </div>
       </>
@@ -241,20 +249,25 @@ export default class WelcomeSections extends PureComponent {
 
     const style = (
       <>
-        <span className="mainTitle">Choose a theme</span>
+        <span className="mainTitle">
+          {this.getMessage('modals.main.settings.sections.appearance.style.title')}
+        </span>
         <span className="subtitle">
-          Mue currently offers the choice between the legacy styling and the newly released modern
-          styling.
+          {this.getMessage('modals.main.settings.sections.appearance.style.description')}
         </span>
         <div className="themesToggleArea">
           <div className="options">
             <div className={this.state.legacyStyle} onClick={() => this.changeStyle('legacy')}>
               <MdArchive />
-              <span>Legacy</span>
+              <span>
+                {this.getMessage('modals.main.settings.sections.appearance.style.legacy')}
+              </span>
             </div>
             <div className={this.state.newStyle} onClick={() => this.changeStyle('new')}>
               <MdOutlineWhatshot />
-              <span>Modern</span>
+              <span>
+                {this.getMessage('modals.main.settings.sections.appearance.style.modern')}
+              </span>
             </div>
           </div>
         </div>
@@ -271,7 +284,6 @@ export default class WelcomeSections extends PureComponent {
         </span>
         <button className="upload" onClick={() => document.getElementById('file-input').click()}>
           <MdCloudUpload />
-
           <span>{this.getMessage('modals.main.settings.buttons.import')}</span>
         </button>
         <FileUpload

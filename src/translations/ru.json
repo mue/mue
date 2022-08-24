@@ -387,7 +387,8 @@
               "addons_installed": "Add-ons installed"
             },
             "usage": "Usage Stats",
-            "achievements": "Achievements"
+            "achievements": "Achievements",
+            "unlocked": "{count} Unlocked"
           },
           "keybinds": {
             "title": "Keybinds",
@@ -603,7 +604,15 @@
       "sections": {
         "intro": {
           "title": "Welcome to Mue Tab",
-          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension."
+          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
+          "notices": {
+            "discord_title": "Join our Discord",
+            "discord_description": "Talk with the Mue community and developers",
+            "discord_join": "Join",
+            "github_title": "Contribute on GitHub",
+            "github_description": "Report bugs, add features or donate",
+            "github_open": "Open"
+          }
         },
         "language": {
           "title": "Choose your language",
@@ -613,6 +622,12 @@
           "title": "Select a theme",
           "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
           "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
+        },
+        "style": {
+          "title": "Choose a style",
+          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
+          "legacy": "Legacy",
+          "modern": "Modern"
         },
         "settings": {
           "title": "Import Settings",
