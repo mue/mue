@@ -244,7 +244,13 @@ export default class Background extends PureComponent {
           return setFavourited(photofavourited);
         }
 
-        const photoPack = JSON.parse(localStorage.getItem('photo_packs'));
+		const photoPack = [];
+		const installed = JSON.parse(localStorage.getItem('installed'));
+		installed.forEach(item => {
+			if (item.type === 'photos') {
+				photoPack.push(...item.photos)
+			}
+		});
         if (photoPack) {
           const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
           return this.setState({

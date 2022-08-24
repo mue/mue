@@ -236,29 +236,29 @@ export default class Quote extends PureComponent {
             return this.doOffline();
           }
         }
+		const quotePack = [];
+		const installed = JSON.parse(localStorage.getItem('installed'));
+		installed.forEach(item => {
+			if (item.type === 'quotes') {
+				quotePack.push(...item.quotes)
+			}
+		});
 
-        let quotePack = localStorage.getItem('quote_packs');
+        if (quotePack) {
+          const data = quotePack[Math.floor(Math.random() * quotePack.length)];
+          const installed = JSON.parse(localStorage.getItem('installed'));
+          // todo: make this actually get the correct quote pack, instead of the first available
+          const info = installed.find((i) => i.type === 'quotes');
 
-        if (quotePack !== null) {
-          quotePack = JSON.parse(quotePack);
-
-          if (quotePack) {
-            const data = quotePack[Math.floor(Math.random() * quotePack.length)];
-            const installed = JSON.parse(localStorage.getItem('installed'));
-            // todo: make this actually get the correct quote pack, instead of the first available
-            const info = installed.find((i) => i.type === 'quotes');
-
-            return this.setState({
-              quote: '"' + data.quote + '"',
-              author: data.author,
-              authorlink: this.getAuthorLink(data.author),
-              authorimg: info.icon_url,
-            });
-          } else {
-            return this.doOffline();
-          }
+          return this.setState({
+            quote: '"' + data.quote + '"',
+            author: data.author,
+            authorlink: this.getAuthorLink(data.author),
+            authorimg: info.icon_url,
+          });
+        } else {
+          return this.doOffline();
         }
-        break;
       case 'api':
         if (offline) {
           return this.doOffline();
