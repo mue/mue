@@ -42,53 +42,42 @@ export default class Widgets extends PureComponent {
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
-      if (data === 'widgets') {
-        this.setState({
-          order: JSON.parse(localStorage.getItem('order')),
-        });
-      }
-
-      if (data === 'widgetsWelcome') {
-        this.setState({
-          welcome: localStorage.getItem('showWelcome'),
-        });
-        localStorage.setItem('showWelcome', true);
-        window.onbeforeunload = () => {
-          localStorage.clear();
-        };
-      }
-
-      if (data === 'widgetsWelcomeDone') {
-        this.setState({
-          welcome: localStorage.getItem('showWelcome'),
-        });
-        window.onbeforeunload = null;
+      switch (data) {
+        case 'widgets':
+          return this.setState({
+            order: JSON.parse(localStorage.getItem('order')),
+          });
+        case 'widgetsWelcome':
+          this.setState({
+            welcome: localStorage.getItem('showWelcome'),
+          });
+          localStorage.setItem('showWelcome', true);
+          window.onbeforeunload = () => {
+            localStorage.clear();
+          };
+          break;
+        case 'widgetsWelcomeDone':
+          this.setState({
+            welcome: localStorage.getItem('showWelcome'),
+          });
+          return (window.onbeforeunload = null);
+        default:
+          break;
       }
     });
   }
 
   render() {
     // don't show when welcome is there
-    if (this.state.welcome !== 'false') {
-      return <div id="widgets" />;
-    }
-
-    // allow for re-ordering widgets
-    // we have a default to prevent errors
-    let elements = [<Greeting />, <Clock />, <QuickLinks />, <Quote />, <Date />, <Message />];
-
-    if (this.state.order) {
-      elements = [];
-      this.state.order.forEach((element) => {
-        elements.push(<Fragment key={element}>{this.widgets[element]}</Fragment>);
-      });
-    }
-
-    return (
+    return this.state.welcome !== 'false' ? (
+      <div id="widgets" />
+    ) : (
       <div id="widgets">
         <Suspense fallback={renderLoader()}>
           {this.enabled('searchBar') ? <Search /> : null}
-          {elements}
+          {this.state.order.map((element) => (
+            this.widgets[element]
+          ))}
           {this.enabled('weatherEnabled') && this.online ? <Weather /> : null}
         </Suspense>
       </div>

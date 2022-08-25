@@ -11,8 +11,6 @@ import {
 
 // degrees are imported because of a potential bug, IDK what causes it, but now it is fixed
 export default function WindDirectionIcon({ degrees }) {
-  let icon;
-
   // convert the number OpenWeatherMap gives us to the closest direction or something
   const directions = [
     'North',
@@ -29,33 +27,22 @@ export default function WindDirectionIcon({ degrees }) {
 
   switch (direction) {
     case 'North':
-      icon = <WiDirectionUp />;
-      break;
+      return <WiDirectionUp />;
     case 'North-West':
-      icon = <WiDirectionUpLeft />;
-      break;
+      return <WiDirectionUpLeft />;
     case 'West':
-      icon = <WiDirectionLeft />;
-      break;
+      return <WiDirectionLeft />;
     case 'South-West':
-      icon = <WiDirectionDownLeft />;
-      break;
+      return <WiDirectionDownLeft />;
     case 'South':
-      icon = <WiDirectionDown />;
-      break;
+      return <WiDirectionDown />;
     case 'South-East':
-      icon = <WiDirectionDownRight />;
-      break;
+      return <WiDirectionDownRight />;
     case 'East':
-      icon = <WiDirectionRight />;
-      break;
+      return <WiDirectionRight />;
     case 'North-East':
-      icon = <WiDirectionUpRight />;
-      break;
+      return <WiDirectionUpRight />;
     default:
-      icon = null;
-      break;
+      return null;
   }
-
-  return icon;
 }

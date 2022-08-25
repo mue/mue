@@ -14,56 +14,39 @@ import {
 } from 'react-icons/wi';
 
 export default function WeatherIcon({ name }) {
-  let icon;
-
   // name is the openweathermap icon name, see https://openweathermap.org/weather-conditions
   switch (name) {
     case '01d':
-      icon = <WiDaySunny />;
-      break;
+      return <WiDaySunny />;
     case '01n':
-      icon = <WiNightClear />;
-      break;
+      return <WiNightClear />;
     case '02d':
-      icon = <WiDayCloudy />;
-      break;
+      return <WiDayCloudy />;
     case '02n':
-      icon = <WiNightCloudy />;
-      break;
+      return <WiNightCloudy />;
     case '03d':
     case '03n':
-      icon = <WiCloud />;
-      break;
+      return <WiCloud />;
     case '04d':
     case '04n':
-      icon = <WiCloudy />;
-      break;
+      return <WiCloudy />;
     case '09d':
-      icon = <WiDayShowers />;
-      break;
+      return <WiDayShowers />;
     case '09n':
-      icon = <WiNightShowers />;
-      break;
+      return <WiNightShowers />;
     case '10d':
     case '10n':
-      icon = <WiRain />;
-      break;
+      return <WiRain />;
     case '11d':
     case '11n':
-      icon = <WiThunderstorm />;
-      break;
+      return <WiThunderstorm />;
     case '13d':
     case '13n':
-      icon = <WiSnow />;
-      break;
+      return <WiSnow />;
     case '50d':
     case '50n':
-      icon = <WiFog />;
-      break;
+      return <WiFog />;
     default:
-      icon = null;
-      break;
+      return null;
   }
-
-  return icon;
 }

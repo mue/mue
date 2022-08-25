@@ -12,4 +12,5 @@ yarn-error.log
 stats.json
 yarn.lock
 keys.json
+.DS_Store
 *.zip
