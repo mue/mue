@@ -181,6 +181,7 @@
 
 .photoInformation {
   @extend %basic;
+  min-width: 300px;
   font-size: 0.8em;
   font-weight: 300;
   z-index: 99;
