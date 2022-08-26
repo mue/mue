@@ -70,7 +70,7 @@ export default class Maximise extends PureComponent {
   render() {
     return (
       <Tooltip
-        title={variables.language.getMessage(
+        title={variables.getMessage(
           variables.languagecode,
           'modals.main.settings.sections.background.buttons.view',
         )}

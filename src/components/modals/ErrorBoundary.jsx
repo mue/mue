@@ -36,38 +36,23 @@ export default class ErrorBoundary extends PureComponent {
           <div className="emptyNewMessage">
             <MdErrorOutline />
             <span className="title">
-              {variables.language.getMessage(
-                variables.languagecode,
-                'modals.main.error_boundary.title',
-              )}
+              {variables.getMessage(variables.languagecode, 'modals.main.error_boundary.title')}
             </span>
             <span className="subtitle">
-              {variables.language.getMessage(
-                variables.languagecode,
-                'modals.main.error_boundary.message',
-              )}
+              {variables.getMessage(variables.languagecode, 'modals.main.error_boundary.message')}
             </span>
             <div className="buttonsRow">
               {this.state.showReport ? (
                 <button onClick={() => this.reportError()}>
-                  {variables.language.getMessage(
-                    variables.languagecode,
-                    'modals.main.error_boundary.report_error',
-                  )}
+                  {variables.getMessage('modals.main.error_boundary.report_error')}
                 </button>
               ) : (
                 <span className="subtitle">
-                  {variables.language.getMessage(
-                    variables.languagecode,
-                    'modals.main.error_boundary.sent',
-                  )}
+                  {variables.getMessage('modals.main.error_boundary.sent')}
                 </span>
               )}
               <button className="refresh" onClick={() => window.location.reload()}>
-                {variables.language.getMessage(
-                  variables.languagecode,
-                  'modals.main.error_boundary.refresh',
-                )}
+                {variables.getMessage(variables.languagecode, 'modals.main.error_boundary.refresh')}
               </button>
             </div>
           </div>

@@ -44,7 +44,7 @@ export default class Changelog extends PureComponent {
       title: data.title,
       date,
       image: data.featured_image || null,
-      author: variables.language.getMessage(
+      author: variables.getMessage(
         variables.languagecode,
         'modals.main.settings.sections.changelog.by',
         {
@@ -89,8 +89,6 @@ export default class Changelog extends PureComponent {
   }
 
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     const errorMessage = (msg) => {
       return (
         <div className="emptyItems">
@@ -103,8 +101,10 @@ export default class Changelog extends PureComponent {
       return errorMessage(
         <>
           <MdOutlineWifiOff />
-          <h1>{getMessage('modals.main.marketplace.offline.title')}</h1>
-          <p className="description">{getMessage('modals.main.marketplace.offline.description')}</p>
+          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
+          <p className="description">
+            {variables.getMessage('modals.main.marketplace.offline.description')}
+          </p>
         </>,
       );
     }
@@ -123,7 +123,7 @@ export default class Changelog extends PureComponent {
       return errorMessage(
         <div className="loaderHolder">
           <div id="loader"></div>
-          <span className="subtitle">{getMessage('modals.main.loading')}</span>
+          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
         </div>,
       );
     }

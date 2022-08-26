@@ -28,16 +28,14 @@ export default class AdvancedSettings extends PureComponent {
   }
 
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     return (
       <>
         <span className="mainTitle">
-          {getMessage('modals.main.settings.sections.advanced.title')}
+          {variables.getMessage('modals.main.settings.sections.advanced.title')}
         </span>
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.advanced.offline_mode')}
-          subtitle={getMessage('modals.main.settings.sections.advanced.offline_subtitle')}
+          title={variables.getMessage('modals.main.settings.sections.advanced.offline_mode')}
+          subtitle={variables.getMessage('modals.main.settings.sections.advanced.offline_subtitle')}
         >
           <Switch name="offlineMode" element=".other" />
         </SettingsItem>
@@ -45,35 +43,37 @@ export default class AdvancedSettings extends PureComponent {
           <div className="settingsRow">
             <div className="content">
               <span className="title">
-                {getMessage('modals.main.settings.sections.advanced.data')}
+                {variables.getMessage('modals.main.settings.sections.advanced.data')}
               </span>
               <span className="subtitle">
-                {getMessage('modals.main.settings.sections.advanced.data_subtitle')}
+                {variables.getMessage('modals.main.settings.sections.advanced.data_subtitle')}
               </span>
             </div>
             <div className="action activityButtons">
               <button onClick={() => this.setState({ resetModal: true })}>
-                {getMessage('modals.main.settings.buttons.reset')}
+                {variables.getMessage('modals.main.settings.buttons.reset')}
                 <ResetIcon />
               </button>
               <button onClick={() => exportSettings()}>
-                {getMessage('modals.main.settings.buttons.export')}
+                {variables.getMessage('modals.main.settings.buttons.export')}
                 <ExportIcon />
               </button>
               <button onClick={() => document.getElementById('file-input').click()}>
-                {getMessage('modals.main.settings.buttons.import')}
+                {variables.getMessage('modals.main.settings.buttons.import')}
                 <ImportIcon />
               </button>
             </div>
           </div>
         ) : null}
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.advanced.timezone.title')}
-          subtitle={getMessage('modals.main.settings.sections.advanced.timezone.subtitle')}
+          title={variables.getMessage('modals.main.settings.sections.advanced.timezone.title')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.advanced.timezone.subtitle',
+          )}
         >
           <Dropdown name="timezone" category="timezone" manual={true}>
             <MenuItem value="auto">
-              {getMessage('modals.main.settings.sections.advanced.timezone.automatic')}
+              {variables.getMessage('modals.main.settings.sections.advanced.timezone.automatic')}
             </MenuItem>
             {time_zones.map((timezone) => (
               <MenuItem value={timezone} key={timezone}>
@@ -83,10 +83,12 @@ export default class AdvancedSettings extends PureComponent {
           </Dropdown>
         </SettingsItem>
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.advanced.tab_name')}
-          subtitle={getMessage('modals.main.settings.sections.advanced.tab_name_subtitle')}
+          title={variables.getMessage('modals.main.settings.sections.advanced.tab_name')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.advanced.tab_name_subtitle',
+          )}
         >
-          <Text name="tabName" default={getMessage('tabname')} category="other" />
+          <Text name="tabName" default={variables.getMessage('tabname')} category="other" />
         </SettingsItem>
         <FileUpload
           id="file-input"
@@ -95,19 +97,23 @@ export default class AdvancedSettings extends PureComponent {
           loadFunction={(e) => importSettings(e)}
         />
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.advanced.custom_css')}
-          subtitle={getMessage('modals.main.settings.sections.advanced.custom_css_subtitle')}
+          title={variables.getMessage('modals.main.settings.sections.advanced.custom_css')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.advanced.custom_css_subtitle',
+          )}
         >
           <Text name="customcss" textarea={true} category="other" />
         </SettingsItem>
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.experimental.title')}
-          subtitle={getMessage('modals.main.settings.sections.advanced.experimental_warning')}
+          title={variables.getMessage('modals.main.settings.sections.experimental.title')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.advanced.experimental_warning',
+          )}
           final={true}
         >
           <Switch
             name="experimental"
-            text={getMessage('modals.main.settings.enabled')}
+            text={variables.getMessage('modals.main.settings.enabled')}
             element=".other"
           />
         </SettingsItem>

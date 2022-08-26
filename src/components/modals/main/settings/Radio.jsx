@@ -28,10 +28,7 @@ export default class Radio extends PureComponent {
 
     if (this.props.name === 'language') {
       // old tab name
-      if (
-        localStorage.getItem('tabName') ===
-        variables.language.getMessage(variables.languagecode, 'tabname')
-      ) {
+      if (localStorage.getItem('tabName') === variables.getMessage('tabname')) {
         localStorage.setItem('tabName', translations[value.replace('-', '_')].tabname);
       }
     }

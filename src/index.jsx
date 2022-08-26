@@ -40,6 +40,8 @@ variables.language = new I18n(variables.languagecode, {
   tr_TR: translations.tr_TR,
 });
 
+variables.getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
+
 // set html language tag
 if (variables.languagecode !== 'en_GB' || variables.languagecode !== 'en_US') {
   document.documentElement.lang = variables.languagecode.split('_')[0];

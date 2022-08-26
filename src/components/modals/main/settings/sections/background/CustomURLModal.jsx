@@ -10,16 +10,10 @@ export default function CustomURLModal({ modalClose, modalCloseOnly }) {
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
-          {variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.sections.background.source.add_url',
-          )}
+          {variables.getMessage('modals.main.settings.sections.background.source.add_url')}
         </span>
         <Tooltip
-          title={variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.sections.advanced.reset_modal.cancel',
-          )}
+          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
         >
           <div className="close" onClick={modalCloseOnly}>
             <MdClose />
@@ -34,10 +28,7 @@ export default function CustomURLModal({ modalClose, modalCloseOnly }) {
           varient="outlined"
         />
         <Tooltip
-          title={variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.sections.background.source.add_url',
-          )}
+          title={variables.getMessage('modals.main.settings.sections.background.source.add_url')}
           placement="top"
         >
           <button onClick={() => modalClose(url)}>

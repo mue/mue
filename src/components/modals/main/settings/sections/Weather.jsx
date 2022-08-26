@@ -59,12 +59,10 @@ export default class TimeSettings extends PureComponent {
   }
 
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     return (
       <>
         <Header
-          title={getMessage('modals.main.settings.sections.weather.title')}
+          title={variables.getMessage('modals.main.settings.sections.weather.title')}
           setting="weatherEnabled"
           category="widgets"
           zoomSetting="zoomWeather"
@@ -79,9 +77,11 @@ export default class TimeSettings extends PureComponent {
             <option value="4">Custom</option>
           </Dropdown>
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.settings.sections.weather.location')}>
+        <SettingsItem
+          title={variables.getMessage('modals.main.settings.sections.weather.location')}
+        >
           <TextField
-            label={getMessage('modals.main.settings.sections.weather.location')}
+            label={variables.getMessage('modals.main.settings.sections.weather.location')}
             value={this.state.location}
             onChange={(e) => this.changeLocation(e)}
             placeholder="London"
@@ -89,27 +89,33 @@ export default class TimeSettings extends PureComponent {
             InputLabelProps={{ shrink: true }}
           />
           <span className="link" onClick={() => this.getAuto()}>
-            {getMessage('modals.main.settings.sections.weather.auto')}
+            {variables.getMessage('modals.main.settings.sections.weather.auto')}
           </span>
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.settings.sections.weather.temp_format.title')}>
+        <SettingsItem
+          title={variables.getMessage('modals.main.settings.sections.weather.temp_format.title')}
+        >
           <Radio
             name="tempformat"
             options={[
               {
                 name:
-                  getMessage('modals.main.settings.sections.weather.temp_format.celsius') + ' (°C)',
+                  variables.getMessage(
+                    'modals.main.settings.sections.weather.temp_format.celsius',
+                  ) + ' (°C)',
                 value: 'celsius',
               },
               {
                 name:
-                  getMessage('modals.main.settings.sections.weather.temp_format.fahrenheit') +
-                  ' (°F)',
+                  variables.getMessage(
+                    'modals.main.settings.sections.weather.temp_format.fahrenheit',
+                  ) + ' (°F)',
                 value: 'fahrenheit',
               },
               {
                 name:
-                  getMessage('modals.main.settings.sections.weather.temp_format.kelvin') + ' (K)',
+                  variables.getMessage('modals.main.settings.sections.weather.temp_format.kelvin') +
+                  ' (K)',
                 value: 'kelvin',
               },
             ]}
@@ -120,32 +126,44 @@ export default class TimeSettings extends PureComponent {
           <SettingsItem title="Custom Settings">
             <Checkbox
               name="showlocation"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.show_location')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.show_location',
+              )}
               category="weather"
             />
             <Checkbox
               name="weatherdescription"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.show_description')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.show_description',
+              )}
               category="weather"
             />
             <Checkbox
               name="cloudiness"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.cloudiness')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.cloudiness',
+              )}
               category="weather"
             />
             <Checkbox
               name="humidity"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.humidity')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.humidity',
+              )}
               category="weather"
             />
             <Checkbox
               name="visibility"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.visibility')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.visibility',
+              )}
               category="weather"
             />
             <Checkbox
               name="windspeed"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.wind_speed')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.wind_speed',
+              )}
               category="weather"
               onChange={() =>
                 this.setState({
@@ -155,24 +173,30 @@ export default class TimeSettings extends PureComponent {
             />
             <Checkbox
               name="windDirection"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.wind_direction')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.wind_direction',
+              )}
               category="weather"
               disabled={this.state.windSpeed}
             />
             <Checkbox
               name="mintemp"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.min_temp')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.min_temp',
+              )}
               category="weather"
             />
             <Checkbox
               name="maxtemp"
-              text={getMessage('modals.main.settings.sections.weather.extra_info.max_temp')}
+              text={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.max_temp',
+              )}
               category="weather"
             />
             <Checkbox name="feelsliketemp" text={'Feels like temperature'} category="weather" />
             <Checkbox
               name="atmosphericpressure"
-              text={getMessage(
+              text={variables.getMessage(
                 'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
               )}
               category="weather"

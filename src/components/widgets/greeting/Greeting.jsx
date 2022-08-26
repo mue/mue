@@ -27,13 +27,13 @@ export default class Greeting extends PureComponent {
 
     // If it's December 25th, set the greeting string to "Merry Christmas"
     if (month === 11 && date === 25) {
-      message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.christmas');
+      message = variables.getMessage('widgets.greeting.christmas');
       // If the date is January 1st, set the greeting string to "Happy new year"
     } else if (month === 0 && date === 1) {
-      message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.newyear');
+      message = variables.getMessage('widgets.greeting.newyear');
       // If it's October 31st, set the greeting string to "Happy Halloween"
     } else if (month === 9 && date === 31) {
-      message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.halloween');
+      message = variables.getMessage('widgets.greeting.halloween');
     }
 
     return message;
@@ -56,19 +56,13 @@ export default class Greeting extends PureComponent {
       const hour = now.getHours();
 
       // Set the default greeting string to "Good evening"
-      let message = variables.language.getMessage(
-        variables.languagecode,
-        'widgets.greeting.evening',
-      );
+      let message = variables.getMessage(variables.languagecode, 'widgets.greeting.evening');
       // If it's before 12am, set the greeting string to "Good morning"
       if (hour < 12) {
-        message = variables.language.getMessage(variables.languagecode, 'widgets.greeting.morning');
+        message = variables.getMessage('widgets.greeting.morning');
         // If it's before 6pm, set the greeting string to "Good afternoon"
       } else if (hour < 18) {
-        message = variables.language.getMessage(
-          variables.languagecode,
-          'widgets.greeting.afternoon',
-        );
+        message = variables.getMessage(variables.languagecode, 'widgets.greeting.afternoon');
       }
 
       // Events and custom
@@ -101,15 +95,12 @@ export default class Greeting extends PureComponent {
 
         if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
           if (localStorage.getItem('birthdayage') === 'true') {
-            const text = variables.language
-              .getMessage(variables.languagecode, 'widgets.greeting.birthday')
+            const text = variables.language.variables
+              .getMessage('widgets.greeting.birthday')
               .split(' ');
             message = `${text[0]} ${nth(this.calculateAge(birth))} ${text[1]}`;
           } else {
-            message = variables.language.getMessage(
-              variables.languagecode,
-              'widgets.greeting.birthday',
-            );
+            message = variables.getMessage(variables.languagecode, 'widgets.greeting.birthday');
           }
         }
       }

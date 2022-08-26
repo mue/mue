@@ -24,25 +24,25 @@ export default class TimeSettings extends PureComponent {
   }
 
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     let timeSettings = null;
 
     const digitalSettings = (
       <SettingsItem
-        title={getMessage('modals.main.settings.sections.time.digital.title')}
-        subtitle={getMessage('modals.main.settings.sections.time.digital.subtitle')}
+        title={variables.getMessage('modals.main.settings.sections.time.digital.title')}
+        subtitle={variables.getMessage('modals.main.settings.sections.time.digital.subtitle')}
         final={true}
       >
         <Radio
           name="timeformat"
           options={[
             {
-              name: getMessage('modals.main.settings.sections.time.digital.twentyfourhour'),
+              name: variables.getMessage(
+                'modals.main.settings.sections.time.digital.twentyfourhour',
+              ),
               value: 'twentyfourhour',
             },
             {
-              name: getMessage('modals.main.settings.sections.time.digital.twelvehour'),
+              name: variables.getMessage('modals.main.settings.sections.time.digital.twelvehour'),
               value: 'twelvehour',
             },
           ]}
@@ -51,12 +51,12 @@ export default class TimeSettings extends PureComponent {
         />
         <Checkbox
           name="seconds"
-          text={getMessage('modals.main.settings.sections.time.digital.seconds')}
+          text={variables.getMessage('modals.main.settings.sections.time.digital.seconds')}
           category="clock"
         />
         <Checkbox
           name="zero"
-          text={getMessage('modals.main.settings.sections.time.digital.zero')}
+          text={variables.getMessage('modals.main.settings.sections.time.digital.zero')}
           category="clock"
         />
       </SettingsItem>
@@ -64,33 +64,33 @@ export default class TimeSettings extends PureComponent {
 
     const analogSettings = (
       <SettingsItem
-        title={getMessage('modals.main.settings.sections.time.analogue.title')}
-        subtitle={getMessage('modals.main.settings.sections.time.analogue.subtitle')}
+        title={variables.getMessage('modals.main.settings.sections.time.analogue.title')}
+        subtitle={variables.getMessage('modals.main.settings.sections.time.analogue.subtitle')}
         final={true}
       >
         <Checkbox
           name="secondHand"
-          text={getMessage('modals.main.settings.sections.time.analogue.second_hand')}
+          text={variables.getMessage('modals.main.settings.sections.time.analogue.second_hand')}
           category="clock"
         />
         <Checkbox
           name="minuteHand"
-          text={getMessage('modals.main.settings.sections.time.analogue.minute_hand')}
+          text={variables.getMessage('modals.main.settings.sections.time.analogue.minute_hand')}
           category="clock"
         />
         <Checkbox
           name="hourHand"
-          text={getMessage('modals.main.settings.sections.time.analogue.hour_hand')}
+          text={variables.getMessage('modals.main.settings.sections.time.analogue.hour_hand')}
           category="clock"
         />
         <Checkbox
           name="hourMarks"
-          text={getMessage('modals.main.settings.sections.time.analogue.hour_marks')}
+          text={variables.getMessage('modals.main.settings.sections.time.analogue.hour_marks')}
           category="clock"
         />
         <Checkbox
           name="minuteMarks"
-          text={getMessage('modals.main.settings.sections.time.analogue.minute_marks')}
+          text={variables.getMessage('modals.main.settings.sections.time.analogue.minute_marks')}
           category="clock"
         />
       </SettingsItem>
@@ -99,7 +99,9 @@ export default class TimeSettings extends PureComponent {
     const verticalClock = (
       <>
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.time.vertical_clock.change_hour_colour')}
+          title={variables.getMessage(
+            'modals.main.settings.sections.time.vertical_clock.change_hour_colour',
+          )}
           subtitle=""
         >
           <div className="colourInput">
@@ -115,11 +117,11 @@ export default class TimeSettings extends PureComponent {
             </label>
           </div>
           <span className="link" onClick={() => localStorage.setItem('hourColour', '#ffffff')}>
-            {getMessage('modals.main.settings.buttons.reset')}
+            {variables.getMessage('modals.main.settings.buttons.reset')}
           </span>
         </SettingsItem>
         <SettingsItem
-          title={getMessage(
+          title={variables.getMessage(
             'modals.main.settings.sections.time.vertical_clock.change_minute_colour',
           )}
           subtitle=""
@@ -137,7 +139,7 @@ export default class TimeSettings extends PureComponent {
             </label>
           </div>
           <span className="link" onClick={() => localStorage.setItem('minuteColour', '#ffffff')}>
-            {getMessage('modals.main.settings.buttons.reset')}
+            {variables.getMessage('modals.main.settings.buttons.reset')}
           </span>
         </SettingsItem>
         {digitalSettings}
@@ -155,7 +157,7 @@ export default class TimeSettings extends PureComponent {
     return (
       <>
         <Header
-          title={getMessage('modals.main.settings.sections.time.title')}
+          title={variables.getMessage('modals.main.settings.sections.time.title')}
           setting="time"
           category="clock"
           element=".clock-container"
@@ -163,8 +165,8 @@ export default class TimeSettings extends PureComponent {
           switch={true}
         />
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.time.type')}
-          subtitle={getMessage('modals.main.settings.sections.time.type_subtitle')}
+          title={variables.getMessage('modals.main.settings.sections.time.type')}
+          subtitle={variables.getMessage('modals.main.settings.sections.time.type_subtitle')}
           final={this.state.timeType === 'percentageComplete'}
         >
           <Dropdown
@@ -173,16 +175,16 @@ export default class TimeSettings extends PureComponent {
             category="clock"
           >
             <option value="digital">
-              {getMessage('modals.main.settings.sections.time.digital.title')}
+              {variables.getMessage('modals.main.settings.sections.time.digital.title')}
             </option>
             <option value="analogue">
-              {getMessage('modals.main.settings.sections.time.analogue.title')}
+              {variables.getMessage('modals.main.settings.sections.time.analogue.title')}
             </option>
             <option value="percentageComplete">
-              {getMessage('modals.main.settings.sections.time.percentage_complete')}
+              {variables.getMessage('modals.main.settings.sections.time.percentage_complete')}
             </option>
             <option value="verticalClock">
-              {getMessage('modals.main.settings.sections.time.vertical_clock.title')}
+              {variables.getMessage('modals.main.settings.sections.time.vertical_clock.title')}
             </option>
           </Dropdown>
         </SettingsItem>

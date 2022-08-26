@@ -10,8 +10,6 @@ import Dropdown from '../../settings/Dropdown';
 import { uninstall, urlParser } from 'modules/helpers/marketplace';
 
 export default class Added extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
@@ -22,7 +20,7 @@ export default class Added extends PureComponent {
     this.buttons = {
       uninstall: (
         <button className="removeFromMue" onClick={() => this.uninstall()}>
-          {this.getMessage('modals.main.marketplace.product.buttons.remove')}
+          {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
         </button>
       ),
     };
@@ -59,7 +57,7 @@ export default class Added extends PureComponent {
   uninstall() {
     uninstall(this.state.item.type, this.state.item.display_name);
 
-    toast(this.getMessage('toasts.uninstalled'));
+    toast(variables.getMessage('toasts.uninstalled'));
 
     this.setState({
       button: '',
@@ -110,12 +108,12 @@ export default class Added extends PureComponent {
 
     if (updates > 0) {
       toast(
-        this.getMessage('modals.main.addons.updates_available', {
+        variables.getMessage('modals.main.addons.updates_available', {
           amount: updates,
         }),
       );
     } else {
-      toast(this.getMessage('modals.main.addons.no_updates'));
+      toast(variables.getMessage('modals.main.addons.no_updates'));
     }
   }
 
@@ -129,9 +127,9 @@ export default class Added extends PureComponent {
         <div className="emptyItems">
           <div className="emptyNewMessage">
             <MdOutlineExtensionOff />
-            <span className="title">{this.getMessage('modals.main.addons.empty.title')}</span>
+            <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
             <span className="subtitle">
-              {this.getMessage('modals.main.addons.empty.description')}
+              {variables.getMessage('modals.main.addons.empty.description')}
             </span>
           </div>
         </div>
@@ -150,21 +148,21 @@ export default class Added extends PureComponent {
 
     return (
       <>
-        <span className="mainTitle">{this.getMessage('modals.main.addons.added')}</span>
+        <span className="mainTitle">{variables.getMessage('modals.main.addons.added')}</span>
         <div className="filter">
           <Dropdown
-            label={this.getMessage('modals.main.addons.sort.title')}
+            label={variables.getMessage('modals.main.addons.sort.title')}
             name="sortAddons"
             onChange={(value) => this.sortAddons(value)}
           >
-            <option value="newest">{this.getMessage('modals.main.addons.sort.newest')}</option>
-            <option value="oldest">{this.getMessage('modals.main.addons.sort.oldest')}</option>
-            <option value="a-z">{this.getMessage('modals.main.addons.sort.a_z')}</option>
-            <option value="z-a">{this.getMessage('modals.main.addons.sort.z_a')}</option>
+            <option value="newest">{variables.getMessage('modals.main.addons.sort.newest')}</option>
+            <option value="oldest">{variables.getMessage('modals.main.addons.sort.oldest')}</option>
+            <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
+            <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
           </Dropdown>
           <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
             <MdUpdate />
-            {this.getMessage('modals.main.addons.check_updates')}
+            {variables.getMessage('modals.main.addons.check_updates')}
           </button>
         </div>
         <Items

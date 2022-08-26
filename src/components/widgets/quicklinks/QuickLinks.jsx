@@ -11,8 +11,6 @@ import EventBus from 'modules/helpers/eventbus';
 import './quicklinks.scss';
 
 export default class QuickLinks extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
@@ -53,7 +51,7 @@ export default class QuickLinks extends PureComponent {
         url,
       ) === false
     ) {
-      urlError = this.getMessage('widgets.quicklinks.url_error');
+      urlError = variables.getMessage('widgets.quicklinks.url_error');
     }
 
     if (urlError) {
@@ -207,7 +205,7 @@ export default class QuickLinks extends PureComponent {
         </div>
         <div className="quicklinkscontainer">
           <button className="quicklinks" onClick={this.toggleAdd}>
-            <MdAddToPhotos /> {this.getMessage('widgets.quicklinks.add')}
+            <MdAddToPhotos /> {variables.getMessage('widgets.quicklinks.add')}
           </button>
         </div>
         <div className="quicklinkscontainer">
@@ -216,33 +214,33 @@ export default class QuickLinks extends PureComponent {
             onKeyDown={this.topbarEnter}
             style={{ display: this.state.showAddLink }}
           >
-            <span className="dropdown-title">{this.getMessage('widgets.quicklinks.new')}</span>
+            <span className="dropdown-title">{variables.getMessage('widgets.quicklinks.new')}</span>
             <span className="dropdown-subtitle">
-              {this.getMessage('widgets.quicklinks.new')} Description
+              {variables.getMessage('widgets.quicklinks.new')} Description
             </span>
             <TextareaAutosize
               maxRows={1}
-              placeholder={this.getMessage('widgets.quicklinks.name')}
+              placeholder={variables.getMessage('widgets.quicklinks.name')}
               value={this.state.name}
               onChange={(e) => this.setState({ name: e.target.value })}
             />
             <span className="dropdown-error" />
             <TextareaAutosize
               maxRows={10}
-              placeholder={this.getMessage('widgets.quicklinks.url')}
+              placeholder={variables.getMessage('widgets.quicklinks.url')}
               value={this.state.url}
               onChange={(e) => this.setState({ url: e.target.value })}
             />
             <span className="dropdown-error">{this.state.urlError}</span>
             <TextareaAutosize
               maxRows={10}
-              placeholder={this.getMessage('widgets.quicklinks.icon')}
+              placeholder={variables.getMessage('widgets.quicklinks.icon')}
               value={this.state.icon}
               onChange={(e) => this.setState({ icon: e.target.value })}
             />
             <span className="dropdown-error" />
             <button onClick={this.addLink}>
-              <MdAddToPhotos /> {this.getMessage('widgets.quicklinks.add')}
+              <MdAddToPhotos /> {variables.getMessage('widgets.quicklinks.add')}
             </button>
           </div>
           {/*variables.keybinds.toggleQuicklinks && variables.keybinds.toggleQuicklinks !== '' ? <Hotkeys keyName={variables.keybinds.toggleQuicklinks} onKeyDown={this.toggleAdd} /> : null*/}

@@ -14,16 +14,10 @@ export default function ResetModal({ modalClose }) {
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
-          {variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.sections.advanced.reset_modal.title',
-          )}
+          {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.title')}
         </span>
         <Tooltip
-          title={variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.sections.advanced.reset_modal.cancel',
-          )}
+          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
         >
           <div className="close" onClick={modalClose}>
             <MdClose />
@@ -31,13 +25,13 @@ export default function ResetModal({ modalClose }) {
         </Tooltip>
       </div>
       <span className="title">
-        {variables.language.getMessage(
+        {variables.getMessage(
           variables.languagecode,
           'modals.main.settings.sections.advanced.reset_modal.question',
         )}
       </span>
       <span className="subtitle">
-        {variables.language.getMessage(
+        {variables.getMessage(
           variables.languagecode,
           'modals.main.settings.sections.advanced.reset_modal.information',
         )}
@@ -45,17 +39,11 @@ export default function ResetModal({ modalClose }) {
       <div className="resetFooter">
         <button className="textButton" onClick={modalClose}>
           <MdClose />
-          {variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.sections.advanced.reset_modal.cancel',
-          )}
+          {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
         </button>
         <button onClick={() => reset()}>
           <MdRestartAlt />
-          {variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.buttons.reset',
-          )}
+          {variables.getMessage('modals.main.settings.buttons.reset')}
         </button>
       </div>
     </div>

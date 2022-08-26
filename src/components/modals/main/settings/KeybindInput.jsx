@@ -18,7 +18,7 @@ export default function KeybindInput(props) {
       );
     } else if (
       value ===
-      variables.language.getMessage(
+      variables.getMessage(
         variables.languagecode,
         'modals.main.settings.sections.keybinds.recording',
       )
@@ -43,11 +43,7 @@ export default function KeybindInput(props) {
         label={props.name}
         onClick={() => props.action('listen', props.setting)}
         value={
-          value ||
-          variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.sections.keybinds.click_to_record',
-          )
+          value || variables.getMessage('modals.main.settings.sections.keybinds.click_to_record')
         }
         readOnly
         spellCheck={false}

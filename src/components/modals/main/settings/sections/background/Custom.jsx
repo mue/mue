@@ -21,8 +21,7 @@ import Modal from 'react-modal';
 import CustomURLModal from './CustomURLModal';
 
 export default class CustomSettings extends PureComponent {
-  getMessage = (text, obj) =>
-    variables.language.getMessage(variables.languagecode, text, obj || {});
+  getMessage = (text, obj) => variables.getMessage(text, obj || {});
 
   constructor() {
     super();
@@ -38,7 +37,7 @@ export default class CustomSettings extends PureComponent {
     this.setState({
       customBackground: [],
     });
-    toast(this.getMessage('toasts.reset'));
+    toast(variables.getMessage('toasts.reset'));
     EventBus.dispatch('refresh', 'background');
   };
 
@@ -92,11 +91,15 @@ export default class CustomSettings extends PureComponent {
         <>
           <Checkbox
             name="backgroundVideoLoop"
-            text={this.getMessage('modals.main.settings.sections.background.source.loop_video')}
+            text={variables.getMessage(
+              'modals.main.settings.sections.background.source.loop_video',
+            )}
           />
           <Checkbox
             name="backgroundVideoMute"
-            text={this.getMessage('modals.main.settings.sections.background.source.mute_video')}
+            text={variables.getMessage(
+              'modals.main.settings.sections.background.source.mute_video',
+            )}
           />
         </>
       );
@@ -152,7 +155,7 @@ export default class CustomSettings extends PureComponent {
       const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
       if (videoCheck(file.type) === true) {
         if (settingsSize + file.size > 4850000) {
-          return toast(this.getMessage('toasts.no_storage'));
+          return toast(variables.getMessage('toasts.no_storage'));
         }
 
         return this.customBackground(file, false, this.state.currentBackgroundIndex);
@@ -160,7 +163,7 @@ export default class CustomSettings extends PureComponent {
 
       compressAccurately(file, 300).then(async (res) => {
         if (settingsSize + res.size > 4850000) {
-          return toast(this.getMessage('toasts.no_storage'));
+          return toast(variables.getMessage('toasts.no_storage'));
         }
 
         this.customBackground(await filetoDataURL(res), false, this.state.currentBackgroundIndex);
@@ -188,7 +191,7 @@ export default class CustomSettings extends PureComponent {
                 <MdOutlineFileUpload />
               </button>
               <button onClick={() => this.setState({ customURLModal: true })}>
-                {this.getMessage('modals.main.settings.sections.background.source.add_url')}{' '}
+                {variables.getMessage('modals.main.settings.sections.background.source.add_url')}{' '}
                 <MdAddLink />
               </button>
             </div>
@@ -217,17 +220,20 @@ export default class CustomSettings extends PureComponent {
                 <div className="emptyNewMessage">
                   <MdAddPhotoAlternate />
                   <span className="title">
-                    {this.getMessage(
+                    {variables.getMessage(
                       'modals.main.settings.sections.background.source.drop_to_upload',
                     )}
                   </span>
                   <span className="subtitle">
-                    {this.getMessage('modals.main.settings.sections.background.source.formats', {
-                      list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
-                    })}
+                    {variables.getMessage(
+                      'modals.main.settings.sections.background.source.formats',
+                      {
+                        list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
+                      },
+                    )}
                   </span>
                   <button onClick={() => this.uploadCustomBackground()}>
-                    {this.getMessage('modals.main.settings.sections.background.source.select')}
+                    {variables.getMessage('modals.main.settings.sections.background.source.select')}
                     <MdFolder />
                   </button>
                 </div>

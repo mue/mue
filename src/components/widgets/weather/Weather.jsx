@@ -74,10 +74,7 @@ export default class Weather extends PureComponent {
 
     if (data.cod === '404') {
       return this.setState({
-        location: variables.language.getMessage(
-          variables.languagecode,
-          'widgets.weather.not_found',
-        ),
+        location: variables.getMessage(variables.languagecode, 'widgets.weather.not_found'),
       });
     }
 
@@ -149,13 +146,10 @@ export default class Weather extends PureComponent {
   render() {
     const weatherType = localStorage.getItem('weatherType');
     const enabled = (setting) => {
-      return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === "3";
+      return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === '3';
     };
 
-    if (
-      this.state.location ===
-      variables.language.getMessage(variables.languagecode, 'weather.not_found')
-    ) {
+    if (this.state.location === variables.getMessage('weather.not_found')) {
       return (
         <div className="weather">
           <span className="loc">{this.state.location}</span>
@@ -193,15 +187,12 @@ export default class Weather extends PureComponent {
         <div className="expanded-info">
           {weatherType >= 3 && (
             <span className="subtitle">
-              {variables.language.getMessage(
-                variables.languagecode,
-                'widgets.weather.extra_information',
-              )}
+              {variables.getMessage(variables.languagecode, 'widgets.weather.extra_information')}
             </span>
           )}
           {enabled('cloudiness') ? (
             <Tooltip
-              title={variables.language.getMessage(
+              title={variables.getMessage(
                 variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.cloudiness',
               )}
@@ -215,7 +206,7 @@ export default class Weather extends PureComponent {
           ) : null}
           {enabled('windspeed') ? (
             <Tooltip
-              title={variables.language.getMessage(
+              title={variables.getMessage(
                 variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.wind_speed',
               )}
@@ -238,7 +229,7 @@ export default class Weather extends PureComponent {
           ) : null}
           {enabled('atmosphericpressure') ? (
             <Tooltip
-              title={variables.language.getMessage(
+              title={variables.getMessage(
                 variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
               )}
@@ -253,7 +244,7 @@ export default class Weather extends PureComponent {
           ) : null}
           {enabled('weatherdescription') ? (
             <Tooltip
-              title={variables.language.getMessage(
+              title={variables.getMessage(
                 variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.show_description',
               )}
@@ -269,7 +260,7 @@ export default class Weather extends PureComponent {
           ) : null}
           {enabled('visibility') ? (
             <Tooltip
-              title={variables.language.getMessage(
+              title={variables.getMessage(
                 variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.visibility',
               )}
@@ -277,7 +268,7 @@ export default class Weather extends PureComponent {
             >
               <span>
                 <MdDisabledVisible style={{ padding: '3px' }} />
-                {variables.language.getMessage(variables.languagecode, 'widgets.weather.meters', {
+                {variables.getMessage('widgets.weather.meters', {
                   amount: this.state.weather.visibility,
                 })}
               </span>
@@ -303,13 +294,9 @@ export default class Weather extends PureComponent {
             <div className="extra-info">
               {/*{enabled('humidity') ? <span><WiHumidity/>{this.state.weather.humidity}%</span> : null}*/}
               <span>
-                {variables.language.getMessage(
-                  variables.languagecode,
-                  'widgets.weather.feels_like',
-                  {
-                    amount: this.state.weather.temp_feels_like + this.state.temp_text,
-                  },
-                )}
+                {variables.getMessage(variables.languagecode, 'widgets.weather.feels_like', {
+                  amount: this.state.weather.temp_feels_like + this.state.temp_text,
+                })}
               </span>
               <span className="loc">{this.state.location}</span>
             </div>

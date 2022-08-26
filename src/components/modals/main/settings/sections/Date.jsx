@@ -15,8 +15,6 @@ export default class DateSettings extends PureComponent {
   }
 
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     const longSettings = (
       <>
         <Dropdown label="Long Format" name="longFormat" category="date">
@@ -26,12 +24,12 @@ export default class DateSettings extends PureComponent {
         </Dropdown>
         <Checkbox
           name="dayofweek"
-          text={getMessage('modals.main.settings.sections.date.day_of_week')}
+          text={variables.getMessage('modals.main.settings.sections.date.day_of_week')}
           category="date"
         />
         <Checkbox
           name="datenth"
-          text={getMessage('modals.main.settings.sections.date.datenth')}
+          text={variables.getMessage('modals.main.settings.sections.date.datenth')}
           category="date"
         />
       </>
@@ -40,7 +38,7 @@ export default class DateSettings extends PureComponent {
     const shortSettings = (
       <>
         <Dropdown
-          label={getMessage('modals.main.settings.sections.date.short_format')}
+          label={variables.getMessage('modals.main.settings.sections.date.short_format')}
           name="dateFormat"
           category="date"
         >
@@ -50,21 +48,21 @@ export default class DateSettings extends PureComponent {
         </Dropdown>
 
         <Dropdown
-          label={getMessage('modals.main.settings.sections.date.short_separator.title')}
+          label={variables.getMessage('modals.main.settings.sections.date.short_separator.title')}
           name="shortFormat"
           category="date"
         >
           <option value="dash">
-            {getMessage('modals.main.settings.sections.date.short_separator.dash')}
+            {variables.getMessage('modals.main.settings.sections.date.short_separator.dash')}
           </option>
           <option value="dots">
-            {getMessage('modals.main.settings.sections.date.short_separator.dots')}
+            {variables.getMessage('modals.main.settings.sections.date.short_separator.dots')}
           </option>
           <option value="gaps">
-            {getMessage('modals.main.settings.sections.date.short_separator.gaps')}
+            {variables.getMessage('modals.main.settings.sections.date.short_separator.gaps')}
           </option>
           <option value="slashes">
-            {getMessage('modals.main.settings.sections.date.short_separator.slashes')}
+            {variables.getMessage('modals.main.settings.sections.date.short_separator.slashes')}
           </option>
         </Dropdown>
       </>
@@ -73,7 +71,7 @@ export default class DateSettings extends PureComponent {
     return (
       <>
         <Header
-          title={getMessage('modals.main.settings.sections.date.title')}
+          title={variables.getMessage('modals.main.settings.sections.date.title')}
           setting="date"
           category="date"
           element=".date"
@@ -81,8 +79,8 @@ export default class DateSettings extends PureComponent {
           switch={true}
         />
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.time.type')}
-          subtitle={getMessage('modals.main.settings.sections.date.type.subtitle')}
+          title={variables.getMessage('modals.main.settings.sections.time.type')}
+          subtitle={variables.getMessage('modals.main.settings.sections.date.type.subtitle')}
         >
           <Dropdown
             name="dateType"
@@ -90,31 +88,31 @@ export default class DateSettings extends PureComponent {
             category="date"
           >
             <option value="long">
-              {getMessage('modals.main.settings.sections.date.type.long')}
+              {variables.getMessage('modals.main.settings.sections.date.type.long')}
             </option>
             <option value="short">
-              {getMessage('modals.main.settings.sections.date.type.short')}
+              {variables.getMessage('modals.main.settings.sections.date.type.short')}
             </option>
           </Dropdown>
         </SettingsItem>
         <SettingsItem
           title={
             this.state.dateType === 'long'
-              ? getMessage('modals.main.settings.sections.date.type.long')
-              : getMessage('modals.main.settings.sections.date.type.short')
+              ? variables.getMessage('modals.main.settings.sections.date.type.long')
+              : variables.getMessage('modals.main.settings.sections.date.type.short')
           }
-          subtitle={getMessage('modals.main.settings.sections.date.type_settings')}
+          subtitle={variables.getMessage('modals.main.settings.sections.date.type_settings')}
           final={true}
         >
           {this.state.dateType === 'long' ? longSettings : shortSettings}
           <Checkbox
             name="weeknumber"
-            text={getMessage('modals.main.settings.sections.date.week_number')}
+            text={variables.getMessage('modals.main.settings.sections.date.week_number')}
             category="date"
           />
           <Checkbox
             name="datezero"
-            text={getMessage('modals.main.settings.sections.time.digital.zero')}
+            text={variables.getMessage('modals.main.settings.sections.time.digital.zero')}
             category="date"
           />
         </SettingsItem>

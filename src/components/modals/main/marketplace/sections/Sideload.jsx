@@ -11,8 +11,6 @@ import FileUpload from '../../settings/FileUpload';
 import { install } from 'modules/helpers/marketplace';
 
 export default class Sideload extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor(props) {
     super(props);
     this.state = {
@@ -24,13 +22,13 @@ export default class Sideload extends PureComponent {
   installAddon(input) {
     let failedReason = '';
     if (!input.name) {
-      failedReason = this.getMessage('modals.main.addons.sideload.errors.no_name');
+      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_name');
     } else if (!input.author) {
-      failedReason = this.getMessage('modals.main.addons.sideload.errors.no_author');
+      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_author');
     } else if (!input.type) {
-      failedReason = this.getMessage('modals.main.addons.sideload.errors.no_type');
+      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_type');
     } else if (!input.version) {
-      failedReason = this.getMessage('modals.main.addons.sideload.errors.no_version');
+      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_version');
     } else if (
       input.type === 'photos' &&
       (!input.photos ||
@@ -40,12 +38,12 @@ export default class Sideload extends PureComponent {
         !input.photos[0].photographer ||
         !input.photos[0].location)
     ) {
-      failedReason = this.getMessage('modals.main.addons.sideload.errors.invalid_photos');
+      failedReason = variables.getMessage('modals.main.addons.sideload.errors.invalid_photos');
     } else if (
       input.type === 'quotes' &&
       (!input.quotes || !input.quotes.length || !input.quotes[0].quote || !input.quotes[0].author)
     ) {
-      failedReason = this.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
+      failedReason = variables.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
     }
 
     if (failedReason !== '') {
@@ -56,7 +54,7 @@ export default class Sideload extends PureComponent {
     }
 
     install(input.type, input);
-    toast(this.getMessage('toasts.installed'));
+    toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
   }
 
@@ -71,13 +69,13 @@ export default class Sideload extends PureComponent {
             loadFunction={(e) => this.installAddon(JSON.parse(e))}
           />
           <MdIntegrationInstructions className="sideloadIcon" />
-          <span className="title">{this.getMessage('modals.main.addons.sideload.title')}</span>
+          <span className="title">{variables.getMessage('modals.main.addons.sideload.title')}</span>
           <span className="subtitle">
-            {this.getMessage('modals.main.addons.sideload.description')}
+            {variables.getMessage('modals.main.addons.sideload.description')}
           </span>
           <button onClick={() => document.getElementById('file-input').click()}>
             <MdOutlineFileUpload />
-            {this.getMessage('modals.main.settings.sections.background.source.upload')}
+            {variables.getMessage('modals.main.settings.sections.background.source.upload')}
           </button>
         </div>
         <Modal

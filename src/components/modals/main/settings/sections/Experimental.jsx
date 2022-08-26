@@ -9,19 +9,20 @@ import { values } from 'modules/helpers/settings/modals';
 import SettingsItem from '../SettingsItem';
 
 export default function ExperimentalSettings() {
-  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   const [eventType, setEventType] = useState();
   const [eventName, setEventName] = useState();
 
   return (
     <>
       <span className="mainTitle">
-        {getMessage('modals.main.settings.sections.experimental.title')}
+        {variables.getMessage('modals.main.settings.sections.experimental.title')}
       </span>
       <span className="subtitle">
-        {getMessage('modals.main.settings.sections.experimental.warning')}
+        {variables.getMessage('modals.main.settings.sections.experimental.warning')}
       </span>
-      <SettingsItem title={getMessage('modals.main.settings.sections.experimental.developer')}>
+      <SettingsItem
+        title={variables.getMessage('modals.main.settings.sections.experimental.developer')}
+      >
         <Checkbox name="debug" text="Debug hotkey (Ctrl + #)" element=".other" />
         <Slider
           title="Debug timeout"
@@ -52,7 +53,7 @@ export default function ExperimentalSettings() {
         />
       </SettingsItem>
       <SettingsItem
-        title={getMessage('modals.main.settings.sections.experimental.developer')}
+        title={variables.getMessage('modals.main.settings.sections.experimental.developer')}
         final={true}
       >
         <button className="uploadbg" onClick={() => EventBus.dispatch(eventType, eventName)}>

@@ -17,7 +17,7 @@ export default class Dropdown extends PureComponent {
   onChange = (e) => {
     const { value } = e.target;
 
-    if (value === variables.language.getMessage(variables.languagecode, 'modals.main.loading')) {
+    if (value === variables.getMessage('modals.main.loading')) {
       return;
     }
 

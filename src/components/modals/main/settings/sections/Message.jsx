@@ -10,8 +10,6 @@ import Header from '../Header';
 import EventBus from 'modules/helpers/eventbus';
 
 export default class Message extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
@@ -24,7 +22,7 @@ export default class Message extends PureComponent {
     this.setState({
       messages: [],
     });
-    toast(this.getMessage(this.languagecode, 'toasts.reset'));
+    toast(variables.getMessage(this.languagecode, 'toasts.reset'));
     EventBus.dispatch('refresh', 'message');
   };
 
@@ -63,7 +61,7 @@ export default class Message extends PureComponent {
     return (
       <>
         <Header
-          title={this.getMessage('modals.main.settings.sections.message.title')}
+          title={variables.getMessage('modals.main.settings.sections.message.title')}
           setting="message"
           category="message"
           element=".message"
@@ -71,12 +69,12 @@ export default class Message extends PureComponent {
           switch={true}
         />
         <SettingsItem
-          title={this.getMessage('modals.main.settings.sections.message.text')}
+          title={variables.getMessage('modals.main.settings.sections.message.text')}
           subtitle=""
           final={true}
         >
           <button onClick={() => this.modifyMessage('add')}>
-            {this.getMessage('modals.main.settings.sections.message.add')} <MdAdd />
+            {variables.getMessage('modals.main.settings.sections.message.add')} <MdAdd />
           </button>
         </SettingsItem>
         <div className="messagesContainer">
@@ -88,11 +86,13 @@ export default class Message extends PureComponent {
                 </div>
                 <div className="messageText">
                   <span className="subtitle">
-                    {this.getMessage('modals.main.settings.sections.message.title')}
+                    {variables.getMessage('modals.main.settings.sections.message.title')}
                   </span>
                   <TextareaAutosize
                     value={this.state.messages[index]}
-                    placeholder={this.getMessage('modals.main.settings.sections.message.title')}
+                    placeholder={variables.getMessage(
+                      'modals.main.settings.sections.message.title',
+                    )}
                     onChange={(e) => this.message(e, true, index)}
                     varient="outlined"
                   />
@@ -118,7 +118,7 @@ export default class Message extends PureComponent {
               <span className="title">No messages</span>
               <span className="subtitle">Go ahead and add some.</span>
               <button onClick={() => this.modifyMessage('add')}>
-                {this.getMessage('modals.main.settings.sections.message.add')}
+                {variables.getMessage('modals.main.settings.sections.message.add')}
                 <MdAdd />
               </button>
             </div>

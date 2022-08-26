@@ -24,12 +24,10 @@ export default class GreetingSettings extends PureComponent {
   };
 
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     return (
       <>
         <Header
-          title={getMessage('modals.main.settings.sections.greeting.title')}
+          title={variables.getMessage('modals.main.settings.sections.greeting.title')}
           setting="greeting"
           category="greeting"
           element=".greeting"
@@ -37,42 +35,44 @@ export default class GreetingSettings extends PureComponent {
           switch={true}
         />
         <SettingsItem
-          title={getMessage('modals.main.settings.additional_settings')}
-          subtitle={getMessage('modals.main.settings.sections.greeting.additional')}
+          title={variables.getMessage('modals.main.settings.additional_settings')}
+          subtitle={variables.getMessage('modals.main.settings.sections.greeting.additional')}
         >
           <Checkbox
             name="events"
-            text={getMessage('modals.main.settings.sections.greeting.events')}
+            text={variables.getMessage('modals.main.settings.sections.greeting.events')}
             category="greeting"
           />
           <Checkbox
             name="defaultGreetingMessage"
-            text={getMessage('modals.main.settings.sections.greeting.default')}
+            text={variables.getMessage('modals.main.settings.sections.greeting.default')}
             category="greeting"
           />
           <Text
-            title={getMessage('modals.main.settings.sections.greeting.name')}
+            title={variables.getMessage('modals.main.settings.sections.greeting.name')}
             name="greetingName"
             category="greeting"
           />
         </SettingsItem>
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.greeting.birthday')}
-          subtitle={getMessage('modals.main.settings.sections.greeting.birthday_subtitle')}
+          title={variables.getMessage('modals.main.settings.sections.greeting.birthday')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.greeting.birthday_subtitle',
+          )}
           final={true}
         >
           <Switch
             name="birthdayenabled"
-            text={getMessage('modals.main.settings.enabled')}
+            text={variables.getMessage('modals.main.settings.enabled')}
             category="greeting"
           />
           <Checkbox
             name="birthdayage"
-            text={getMessage('modals.main.settings.sections.greeting.birthday_age')}
+            text={variables.getMessage('modals.main.settings.sections.greeting.birthday_age')}
             category="greeting"
           />
           <p style={{ marginRight: 'auto' }}>
-            {getMessage('modals.main.settings.sections.greeting.birthday_date')}
+            {variables.getMessage('modals.main.settings.sections.greeting.birthday_date')}
           </p>
           <input
             type="date"

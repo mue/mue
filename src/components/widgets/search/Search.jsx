@@ -191,8 +191,8 @@ export default class Search extends PureComponent {
   }
 
   render() {
-    const customText = variables.language
-      .getMessage(variables.languagecode, 'modals.main.settings.sections.search.custom')
+    const customText = variables
+      .getMessage('modals.main.settings.sections.search.custom')
       .split(' ')[0];
 
     return (
@@ -200,9 +200,7 @@ export default class Search extends PureComponent {
         <div className="searchMain">
           <div className={this.state.classList}>
             {localStorage.getItem('searchDropdown') === 'true' ? (
-              <Tooltip
-                title={variables.language.getMessage(variables.languagecode, 'widgets.search')}
-              >
+              <Tooltip title={variables.getMessage('widgets.search')}>
                 <button>
                   <MdSettings onClick={() => this.toggleDropdown()} />
                 </button>
@@ -210,24 +208,20 @@ export default class Search extends PureComponent {
             ) : (
               ''
             )}
-            <Tooltip
-              title={variables.language.getMessage(variables.languagecode, 'widgets.search')}
-            >
+            <Tooltip title={variables.getMessage('widgets.search')}>
               {this.state.microphone}
             </Tooltip>
           </div>
           <form onSubmit={this.searchButton} className="searchBar">
             <div className={this.state.classList}>
-              <Tooltip
-                title={variables.language.getMessage(variables.languagecode, 'widgets.search')}
-              >
+              <Tooltip title={variables.getMessage('widgets.search')}>
                 <button onClick={this.searchButton}>
                   <MdSearch />
                 </button>
               </Tooltip>
             </div>
             <AutocompleteInput
-              placeholder={variables.language.getMessage(variables.languagecode, 'widgets.search')}
+              placeholder={variables.getMessage('widgets.search')}
               id="searchtext"
               suggestions={this.state.suggestions}
               onChange={(e) => this.getSuggestions(e)}

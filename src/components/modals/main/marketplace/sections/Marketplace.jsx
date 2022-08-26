@@ -16,8 +16,6 @@ import Dropdown from '../../settings/Dropdown';
 import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
 
 export default class Marketplace extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
@@ -31,12 +29,12 @@ export default class Marketplace extends PureComponent {
     this.buttons = {
       uninstall: (
         <button onClick={() => this.manage('uninstall')}>
-          {this.getMessage('modals.main.marketplace.product.buttons.remove')}
+          {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
         </button>
       ),
       install: (
         <button onClick={() => this.manage('install')}>
-          {this.getMessage('modals.main.marketplace.product.buttons.addtomue')}
+          {variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
         </button>
       ),
     };
@@ -59,7 +57,7 @@ export default class Marketplace extends PureComponent {
         ).json();
       } catch (e) {
         if (this.controller.signal.aborted === false) {
-          return toast(this.getMessage('toasts.error'));
+          return toast(variables.getMessage('toasts.error'));
         }
       }
 
@@ -170,7 +168,7 @@ export default class Marketplace extends PureComponent {
       uninstall(this.state.item.type, this.state.item.display_name);
     }
 
-    toast(this.getMessage('toasts.' + type + 'ed'));
+    toast(variables.getMessage('toasts.' + type + 'ed'));
     this.setState({
       button: type === 'install' ? this.buttons.uninstall : this.buttons.install,
     });
@@ -243,7 +241,9 @@ export default class Marketplace extends PureComponent {
       return (
         <>
           <div className="flexTopMarketplace">
-            <span className="mainTitle">{this.getMessage('modals.main.navbar.marketplace')}</span>
+            <span className="mainTitle">
+              {variables.getMessage('modals.main.navbar.marketplace')}
+            </span>
           </div>
           <div className="emptyItems">
             <div className="emptyMessage">{msg}</div>
@@ -256,9 +256,9 @@ export default class Marketplace extends PureComponent {
       return errorMessage(
         <>
           <MdWifiOff />
-          <h1>{this.getMessage('modals.main.marketplace.offline.title')}</h1>
+          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
           <p className="description">
-            {this.getMessage('modals.main.marketplace.offline.description')}
+            {variables.getMessage('modals.main.marketplace.offline.description')}
           </p>
         </>,
       );
@@ -269,7 +269,7 @@ export default class Marketplace extends PureComponent {
         <>
           <div className="loaderHolder">
             <div id="loader"></div>
-            <span className="subtitle">{this.getMessage('modals.main.loading')}</span>
+            <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
           </div>
         </>,
       );
@@ -299,8 +299,10 @@ export default class Marketplace extends PureComponent {
           {errorMessage(
             <>
               <MdLocalMall />
-              <h1>{this.getMessage('modals.main.addons.empty.title')}</h1>
-              <p className="description">{this.getMessage('modals.main.marketplace.no_items')}</p>
+              <h1>{variables.getMessage('modals.main.addons.empty.title')}</h1>
+              <p className="description">
+                {variables.getMessage('modals.main.marketplace.no_items')}
+              </p>
             </>,
           )}
         </>
@@ -327,7 +329,7 @@ export default class Marketplace extends PureComponent {
             <div className="flexTopMarketplace">
               <span className="mainTitle" onClick={() => this.returnToMain()}>
                 <span className="backTitle">
-                  {this.getMessage('modals.main.navbar.marketplace')}
+                  {variables.getMessage('modals.main.navbar.marketplace')}
                 </span>
                 <MdOutlineKeyboardArrowRight /> Collection
               </span>
@@ -348,19 +350,21 @@ export default class Marketplace extends PureComponent {
         ) : (
           <>
             <div className="flexTopMarketplace">
-              <span className="mainTitle">{this.getMessage('modals.main.navbar.marketplace')}</span>
+              <span className="mainTitle">
+                {variables.getMessage('modals.main.navbar.marketplace')}
+              </span>
             </div>
             <div className="headerExtras marketplaceCondition">
               <span className="link" onClick={() => this.reloadItems()}>
-                <MdRefresh /> {this.getMessage('widgets.navbar.tooltips.refresh')}
+                <MdRefresh /> {variables.getMessage('widgets.navbar.tooltips.refresh')}
               </span>
               <Dropdown
-                label={this.getMessage('modals.main.addons.sort.title')}
+                label={variables.getMessage('modals.main.addons.sort.title')}
                 name="sortMarketplace"
                 onChange={(value) => this.sortMarketplace(value)}
               >
-                <option value="a-z">{this.getMessage('modals.main.addons.sort.a_z')}</option>
-                <option value="z-a">{this.getMessage('modals.main.addons.sort.z_a')}</option>
+                <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
+                <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
               </Dropdown>
             </div>
           </>
@@ -388,7 +392,7 @@ export default class Marketplace extends PureComponent {
                     onClick={() => this.toggle('collection', item.name)}
                   >
                     <MdOutlineArrowForward />{' '}
-                    {this.getMessage('modals.main.marketplace.explore_collection')}
+                    {variables.getMessage('modals.main.marketplace.explore_collection')}
                   </button>
                 </div>
               ) : null}

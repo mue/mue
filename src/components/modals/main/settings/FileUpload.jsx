@@ -5,8 +5,6 @@ import { compressAccurately, filetoDataURL } from 'image-conversion';
 import { videoCheck } from 'modules/helpers/background/widget';
 
 export default class FileUpload extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   componentDidMount() {
     document.getElementById(this.props.id).onchange = (e) => {
       const reader = new FileReader();
@@ -28,7 +26,7 @@ export default class FileUpload extends PureComponent {
         const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
         if (videoCheck(file.type) === true) {
           if (settingsSize + file.size > 4850000) {
-            return toast(this.getMessage('toasts.no_storage'));
+            return toast(variables.getMessage('toasts.no_storage'));
           }
 
           return this.props.loadFunction(file);
@@ -37,7 +35,7 @@ export default class FileUpload extends PureComponent {
         // todo: change number
         compressAccurately(file, 300).then(async (res) => {
           if (settingsSize + res.size > 4850000) {
-            return toast(this.getMessage('toasts.no_storage'));
+            return toast(variables.getMessage('toasts.no_storage'));
           }
 
           this.props.loadFunction({

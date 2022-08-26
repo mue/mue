@@ -9,7 +9,6 @@ import SettingsItem from '../SettingsItem';
 import Header from '../Header';
 
 export default function Navbar() {
-  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   const [showRefreshOptions, setShowRefreshOptions] = useState(
     localStorage.getItem('refresh') === 'true',
   );
@@ -17,57 +16,69 @@ export default function Navbar() {
   return (
     <>
       <Header
-        title={getMessage('modals.main.settings.sections.appearance.navbar.title')}
+        title={variables.getMessage('modals.main.settings.sections.appearance.navbar.title')}
         setting="navbar"
         category="widgets"
         zoomSetting="zoomNavbar"
         zoomCategory="navbar"
       />
       <SettingsItem
-        title={getMessage('modals.main.settings.additional_settings')}
-        subtitle={getMessage('modals.main.settings.sections.appearance.navbar.additional')}
+        title={variables.getMessage('modals.main.settings.additional_settings')}
+        subtitle={variables.getMessage(
+          'modals.main.settings.sections.appearance.navbar.additional',
+        )}
         final={!showRefreshOptions}
       >
         <Checkbox
           name="navbarHover"
-          text={getMessage('modals.main.settings.sections.appearance.navbar.hover')}
+          text={variables.getMessage('modals.main.settings.sections.appearance.navbar.hover')}
           category="navbar"
         />
         <Checkbox
           name="notesEnabled"
-          text={getMessage('modals.main.settings.sections.appearance.navbar.notes')}
+          text={variables.getMessage('modals.main.settings.sections.appearance.navbar.notes')}
           category="navbar"
         />
         <Checkbox
           name="view"
-          text={getMessage('modals.main.settings.sections.background.buttons.view')}
+          text={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
           category="navbar"
         />
         <Checkbox
           name="refresh"
-          text={getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
+          text={variables.getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
           category="navbar"
           onChange={setShowRefreshOptions}
         />
-        <Checkbox name="todo" text={getMessage('widgets.navbar.todo.title')} category="navbar" />
+        <Checkbox
+          name="todo"
+          text={variables.getMessage('widgets.navbar.todo.title')}
+          category="navbar"
+        />
       </SettingsItem>
       {showRefreshOptions ? (
         <SettingsItem
-          title={getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
-          subtitle={getMessage('modals.main.settings.sections.appearance.navbar.refresh_subtitle')}
+          title={variables.getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
+          )}
           final={true}
         >
           <Dropdown name="refreshOption" category="navbar">
             <option value="page">
-              {getMessage('modals.main.settings.sections.appearance.navbar.refresh_options.page')}
+              {variables.getMessage(
+                'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+              )}
             </option>
             <option value="background">
-              {getMessage('modals.main.settings.sections.background.title')}
+              {variables.getMessage('modals.main.settings.sections.background.title')}
             </option>
-            <option value="quote">{getMessage('modals.main.settings.sections.quote.title')}</option>
+            <option value="quote">
+              {variables.getMessage('modals.main.settings.sections.quote.title')}
+            </option>
             <option value="quotebackground">
-              {getMessage('modals.main.settings.sections.quote.title')} +{' '}
-              {getMessage('modals.main.settings.sections.background.title')}
+              {variables.getMessage('modals.main.settings.sections.quote.title')} +{' '}
+              {variables.getMessage('modals.main.settings.sections.background.title')}
             </option>
           </Dropdown>
         </SettingsItem>

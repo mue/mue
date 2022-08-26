@@ -28,24 +28,13 @@ export default class Tabs extends PureComponent {
   render() {
     const reminderInfo = (
       <div className="reminder-info" style={{ display: 'none' }}>
-        <span className="title">
-          {variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.reminder.title',
-          )}
-        </span>
+        <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
         <span className="subtitle">
-          {variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.reminder.message',
-          )}
+          {variables.getMessage('modals.main.settings.reminder.message')}
         </span>
         <button onClick={() => window.location.reload()}>
           <MdRefresh />
-          {variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.error_boundary.refresh',
-          )}
+          {variables.getMessage('modals.main.error_boundary.refresh')}
         </button>
       </div>
     );
@@ -90,37 +79,21 @@ export default class Tabs extends PureComponent {
                 onClick={() => this.props.changeTab('settings')}
               >
                 <MdSettings />
-                <span>
-                  {' '}
-                  {variables.language.getMessage(
-                    variables.languagecode,
-                    'modals.main.navbar.settings',
-                  )}
-                </span>
+                <span> {variables.getMessage('modals.main.navbar.settings')}</span>
               </button>
               <button
                 className={'navbar-item' + addonsActive}
                 onClick={() => this.props.changeTab('addons')}
               >
                 <MdOutlineExtension />
-                <span>
-                  {variables.language.getMessage(
-                    variables.languagecode,
-                    'modals.main.navbar.addons',
-                  )}
-                </span>
+                <span>{variables.getMessage('modals.main.navbar.addons')}</span>
               </button>
               <button
                 className={'navbar-item' + marketplaceActive}
                 onClick={() => this.props.changeTab('marketplace')}
               >
                 <MdOutlineShoppingBasket />
-                <span>
-                  {variables.language.getMessage(
-                    variables.languagecode,
-                    'modals.main.navbar.marketplace',
-                  )}
-                </span>
+                <span>{variables.getMessage('modals.main.navbar.marketplace')}</span>
               </button>
             </div>
             {this.props.children.map((tab) => {

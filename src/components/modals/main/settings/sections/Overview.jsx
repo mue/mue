@@ -13,14 +13,13 @@ import Message from './overview_skeletons/Message';
 
 import EventBus from 'modules/helpers/eventbus';
 
-const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 const widget_name = {
-  greeting: getMessage('modals.main.settings.sections.greeting.title'),
-  time: getMessage('modals.main.settings.sections.time.title'),
-  quicklinks: getMessage('modals.main.settings.sections.quicklinks.title'),
-  quote: getMessage('modals.main.settings.sections.quote.title'),
-  date: getMessage('modals.main.settings.sections.date.title'),
-  message: getMessage('modals.main.settings.sections.message.title'),
+  greeting: variables.getMessage('modals.main.settings.sections.greeting.title'),
+  time: variables.getMessage('modals.main.settings.sections.time.title'),
+  quicklinks: variables.getMessage('modals.main.settings.sections.quicklinks.title'),
+  quote: variables.getMessage('modals.main.settings.sections.quote.title'),
+  date: variables.getMessage('modals.main.settings.sections.date.title'),
+  message: variables.getMessage('modals.main.settings.sections.message.title'),
 };
 
 const SortableItem = sortableElement(({ value }) => (
@@ -66,7 +65,7 @@ export default class OrderSettings extends PureComponent {
       items: JSON.parse(localStorage.getItem('order')),
     });
 
-    toast(getMessage('toasts.reset'));
+    toast(variables.getMessage('toasts.reset'));
   };
 
   enabled = (setting) => {
@@ -106,10 +105,12 @@ export default class OrderSettings extends PureComponent {
   render() {
     return (
       <>
-        <span className="mainTitle">{getMessage('modals.main.marketplace.product.overview')}</span>
-        {/*<span className="title">{getMessage('modals.main.marketplace.product.overview')}</span>
+        <span className="mainTitle">
+          {variables.getMessage('modals.main.marketplace.product.overview')}
+        </span>
+        {/*<span className="title">{variables.getMessage('modals.main.marketplace.product.overview')}</span>
         <span className="link" onClick={this.reset}>
-          {getMessage('modals.main.settings.buttons.reset')}
+          {variables.getMessage('modals.main.settings.buttons.reset')}
     </span>*/}
         <div className="overviewGrid">
           <div>
@@ -132,7 +133,9 @@ export default class OrderSettings extends PureComponent {
             </div>
           </div>
           <div>
-            <span className="title">{getMessage('modals.main.settings.sections.order.title')}</span>
+            <span className="title">
+              {variables.getMessage('modals.main.settings.sections.order.title')}
+            </span>
             <SortableContainer
               onSortEnd={this.onSortEnd}
               lockAxis="y"

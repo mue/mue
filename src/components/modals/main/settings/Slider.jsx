@@ -55,7 +55,7 @@ export default class SliderComponent extends PureComponent {
         value: this.props.default || '',
       },
     });
-    toast(variables.language.getMessage(variables.languagecode, 'toasts.reset'));
+    toast(variables.getMessage('toasts.reset'));
   };
 
   render() {
@@ -66,10 +66,7 @@ export default class SliderComponent extends PureComponent {
           <span>{Number(this.state.value)}</span>
           <span className="link" onClick={this.resetItem}>
             <MdRefresh />
-            {variables.language.getMessage(
-              variables.languagecode,
-              'modals.main.settings.buttons.reset',
-            )}
+            {variables.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}
           </span>
         </span>
         <Slider

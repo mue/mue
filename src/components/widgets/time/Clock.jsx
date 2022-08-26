@@ -6,7 +6,6 @@ import EventBus from 'modules/helpers/eventbus';
 import './clock.scss';
 
 const Analog = lazy(() => import('react-clock'));
-const renderLoader = () => <></>;
 
 export default class Clock extends PureComponent {
   constructor() {
@@ -169,7 +168,7 @@ export default class Clock extends PureComponent {
 
     if (localStorage.getItem('timeType') === 'analogue') {
       clockHTML = (
-        <Suspense fallback={renderLoader()}>
+        <Suspense fallback={<></>}>
           <div className="clockBackground">
             <Analog
               className="analogclock clock-container"

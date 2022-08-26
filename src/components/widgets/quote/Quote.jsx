@@ -23,33 +23,31 @@ import EventBus from 'modules/helpers/eventbus';
 
 import './quote.scss';
 
-const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
 export default class Quote extends PureComponent {
   buttons = {
     share: (
-      <Tooltip title={getMessage('widgets.quote.share')}>
+      <Tooltip title={variables.getMessage('widgets.quote.share')}>
         <button onClick={() => this.setState({ shareModal: true })}>
           <MdIosShare className="copyButton" />
         </button>
       </Tooltip>
     ),
     copy: (
-      <Tooltip title={getMessage('widgets.quote.copy')}>
+      <Tooltip title={variables.getMessage('widgets.quote.copy')}>
         <button onClick={() => this.copyQuote()}>
           <MdContentCopy className="copyButton" />
         </button>
       </Tooltip>
     ),
     unfavourited: (
-      <Tooltip title={getMessage('widgets.quote.favourite')}>
+      <Tooltip title={variables.getMessage('widgets.quote.favourite')}>
         <button onClick={() => this.favourite()}>
           <MdStarBorder className="copyButton" />
         </button>
       </Tooltip>
     ),
     favourited: (
-      <Tooltip title={getMessage('widgets.quote.unfavourite')}>
+      <Tooltip title={variables.getMessage('widgets.quote.unfavourite')}>
         <button onClick={() => this.favourite()}>
           <MdStar className="copyButton" />
         </button>
@@ -115,7 +113,9 @@ export default class Quote extends PureComponent {
 
     const authorimgdata = await (
       await fetch(
-        `https://${variables.languagecode.split('_')[0]}.wikipedia.org/w/api.php?action=query&titles=${author}&origin=*&prop=pageimages&format=json&pithumbsize=100`,
+        `https://${
+          variables.languagecode.split('_')[0]
+        }.wikipedia.org/w/api.php?action=query&titles=${author}&origin=*&prop=pageimages&format=json&pithumbsize=100`,
       )
     ).json();
 
@@ -126,7 +126,9 @@ export default class Quote extends PureComponent {
 
       const authorimglicensedata = await (
         await fetch(
-          `https://${variables.languagecode.split('_')[0]}.wikipedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata&titles=File:${
+          `https://${
+            variables.languagecode.split('_')[0]
+          }.wikipedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata&titles=File:${
             authorimgdata.query.pages[Object.keys(authorimgdata.query.pages)[0]].pageimage
           }&origin=*&format=json`,
         )
@@ -236,17 +238,17 @@ export default class Quote extends PureComponent {
             return this.doOffline();
           }
         }
-		const quotePack = [];
-		const installed = JSON.parse(localStorage.getItem('installed'));
-		installed.forEach(item => {
-			if (item.type === 'quotes') {
-				const quotes = item.quotes.map(quote => ({
-					...quote,
-					fallbackauthorimg: item.icon_url
-				}));
-				quotePack.push(...quotes);
-			}
-		});
+        const quotePack = [];
+        const installed = JSON.parse(localStorage.getItem('installed'));
+        installed.forEach((item) => {
+          if (item.type === 'quotes') {
+            const quotes = item.quotes.map((quote) => ({
+              ...quote,
+              fallbackauthorimg: item.icon_url,
+            }));
+            quotePack.push(...quotes);
+          }
+        });
 
         if (quotePack) {
           const data = quotePack[Math.floor(Math.random() * quotePack.length)];
@@ -254,7 +256,7 @@ export default class Quote extends PureComponent {
             quote: '"' + data.quote + '"',
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
-			authorimg: data.fallbackauthorimg,
+            authorimg: data.fallbackauthorimg,
           });
         } else {
           return this.doOffline();
@@ -303,7 +305,7 @@ export default class Quote extends PureComponent {
   copyQuote() {
     variables.stats.postEvent('feature', 'Quote copied');
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
-    toast(getMessage('toasts.quote'));
+    toast(variables.getMessage('toasts.quote'));
   }
 
   tweetQuote() {
@@ -477,7 +479,7 @@ export default class Quote extends PureComponent {
                 )}
                 <div className="quote-buttons">
                   {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== '' ? (
-                    <Tooltip title={getMessage('widgets.quote.link_tooltip')}>
+                    <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
                       <a
                         href={this.state.authorlink}
                         className="quoteAuthorLink"

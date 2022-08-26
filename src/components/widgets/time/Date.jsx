@@ -29,7 +29,7 @@ export default class DateWidget extends PureComponent {
     }
 
     this.setState({
-      weekNumber: `${variables.language.getMessage(variables.languagecode, 'widgets.date.week')} ${
+      weekNumber: `${variables.getMessage('widgets.date.week')} ${
         1 + Math.ceil((firstThursday - dateToday) / 604800000)
       }`,
     });

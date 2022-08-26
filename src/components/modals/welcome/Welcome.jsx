@@ -9,15 +9,13 @@ import ProgressBar from './ProgressBar';
 import './welcome.scss';
 
 export default class WelcomeModal extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
       image: './././icons/undraw_celebration.svg',
       currentTab: 0,
       finalTab: 5,
-      buttonText: this.getMessage('modals.welcome.buttons.next'),
+      buttonText: variables.getMessage('modals.welcome.buttons.next'),
     };
     this.images = [
       './././icons/undraw_celebration.svg',
@@ -38,11 +36,11 @@ export default class WelcomeModal extends PureComponent {
       return this.setState({
         currentTab: this.state.currentTab - 1,
         image: this.images[this.state.currentTab - 1],
-        buttonText: this.getMessage('modals.welcome.buttons.next'),
+        buttonText: variables.getMessage('modals.welcome.buttons.next'),
       });
     }
 
-    if (this.state.buttonText === this.getMessage('modals.main.addons.create.finish.title')) {
+    if (this.state.buttonText === variables.getMessage('modals.main.addons.create.finish.title')) {
       return this.props.modalClose();
     }
 
@@ -51,8 +49,8 @@ export default class WelcomeModal extends PureComponent {
       image: this.images[this.state.currentTab + 1],
       buttonText:
         this.state.currentTab !== this.state.finalTab
-          ? this.getMessage('modals.welcome.buttons.next')
-          : this.getMessage('modals.main.addons.create.finish.title'),
+          ? variables.getMessage('modals.welcome.buttons.next')
+          : variables.getMessage('modals.main.addons.create.finish.title'),
     });
   }
 
@@ -63,8 +61,8 @@ export default class WelcomeModal extends PureComponent {
       image: this.images[tab],
       buttonText:
         tab !== this.state.finalTab + 1
-          ? this.getMessage('modals.welcome.buttons.next')
-          : this.getMessage('modals.main.addons.create.finish.title'),
+          ? variables.getMessage('modals.welcome.buttons.next')
+          : variables.getMessage('modals.main.addons.create.finish.title'),
     });
 
     localStorage.setItem('bgtransition', true);
@@ -79,8 +77,8 @@ export default class WelcomeModal extends PureComponent {
         image: this.images[Number(welcomeTab)],
         buttonText:
           Number(welcomeTab) !== this.state.finalTab + 1
-            ? this.getMessage('modals.welcome.buttons.next')
-            : this.getMessage('modals.main.addons.create.finish.title'),
+            ? variables.getMessage('modals.welcome.buttons.next')
+            : variables.getMessage('modals.main.addons.create.finish.title'),
       });
     }
 
@@ -127,7 +125,7 @@ export default class WelcomeModal extends PureComponent {
                 style={{ marginRight: '20px' }}
                 onClick={() => this.changeTab(true)}
               >
-                {this.getMessage('modals.welcome.buttons.previous')}
+                {variables.getMessage('modals.welcome.buttons.previous')}
               </button>
             ) : (
               <button
@@ -135,7 +133,7 @@ export default class WelcomeModal extends PureComponent {
                 style={{ marginRight: '20px' }}
                 onClick={() => this.props.modalSkip()}
               >
-                {this.getMessage('modals.welcome.buttons.preview')}
+                {variables.getMessage('modals.welcome.buttons.preview')}
               </button>
             )}
             <button className="close" onClick={() => this.changeTab()}>

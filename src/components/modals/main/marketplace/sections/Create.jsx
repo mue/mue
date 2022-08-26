@@ -90,7 +90,7 @@ export default class Create extends PureComponent {
       },
     });
 
-    toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
+    toast(variables.getMessage('toasts.imported'));
   }
 
   importQuotes() {
@@ -98,7 +98,7 @@ export default class Create extends PureComponent {
       addonData: JSON.parse(localStorage.getItem('customQuote')) || [],
     });
 
-    toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
+    toast(variables.getMessage('toasts.imported'));
   }
 
   importPhotos() {
@@ -114,10 +114,10 @@ export default class Create extends PureComponent {
           },
         };
       });
-      toast(variables.language.getMessage(variables.languagecode, 'toasts.imported'));
+      toast(variables.getMessage('toasts.imported'));
     } catch (e) {
       console.log(e);
-      toast(variables.language.getMessage(variables.languagecode, 'toasts.error'));
+      toast(variables.getMessage('toasts.error'));
     }
 
     this.setState({
@@ -143,7 +143,6 @@ export default class Create extends PureComponent {
 
   render() {
     let tabContent;
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
 
     const chooseType = (
       <>
@@ -163,15 +162,15 @@ export default class Create extends PureComponent {
           <div className="options">
             <div className="toggle lightTheme" onClick={() => this.changeTab(2, 'photos')}>
               <Photos />
-              <span>{getMessage('modals.main.marketplace.photo_packs')}</span>
+              <span>{variables.getMessage('modals.main.marketplace.photo_packs')}</span>
             </div>
             <div className="toggle lightTheme" onClick={() => this.changeTab(2, 'quotes')}>
               <Quotes />
-              <span>{getMessage('modals.main.marketplace.quote_packs')}</span>
+              <span>{variables.getMessage('modals.main.marketplace.quote_packs')}</span>
             </div>
             <div className="toggle lightTheme" onClick={() => this.changeTab(2, 'settings')}>
               <Settings />
-              <span>{getMessage('modals.main.marketplace.preset_settings')}</span>
+              <span>{variables.getMessage('modals.main.marketplace.preset_settings')}</span>
             </div>
           </div>
         </div>
@@ -207,21 +206,22 @@ export default class Create extends PureComponent {
         <div className="smallBanner">
           <div className="content">
             <span className="title" style={{ textTransform: 'capitalize' }}>
-              {getMessage('modals.main.addons.create.types.' + this.state.addonMetadata.type) ||
-                'marketplace'}
+              {variables.getMessage(
+                'modals.main.addons.create.types.' + this.state.addonMetadata.type,
+              ) || 'marketplace'}
             </span>
             <span className="subtitle">
-              {getMessage(
+              {variables.getMessage(
                 'modals.main.addons.create.descriptions.' + this.state.addonMetadata.type,
               ) || 'marketplace'}
             </span>
           </div>
           <button>
-            {getMessage('modals.main.addons.create.metadata.example')}
+            {variables.getMessage('modals.main.addons.create.metadata.example')}
             <MdDownload />
           </button>
         </div>
-        <SettingsItem title={getMessage('modals.main.addons.create.metadata.name')}>
+        <SettingsItem title={variables.getMessage('modals.main.addons.create.metadata.name')}>
           <TextField
             varient="outlined"
             InputLabelProps={{ shrink: true }}
@@ -231,11 +231,13 @@ export default class Create extends PureComponent {
         </SettingsItem>
         <div className="settingsRow">
           <div className="content">
-            <span className="title">{getMessage('modals.main.marketplace.product.version')}</span>
+            <span className="title">
+              {variables.getMessage('modals.main.marketplace.product.version')}
+            </span>
             <span className="subtitle">
               <InfoTooltip
-                title={getMessage('modals.main.addons.create.information')}
-                subtitle={getMessage('modals.main.addons.create.information_subtitle')}
+                title={variables.getMessage('modals.main.addons.create.information')}
+                subtitle={variables.getMessage('modals.main.addons.create.information_subtitle')}
               />
             </span>
           </div>
@@ -248,7 +250,7 @@ export default class Create extends PureComponent {
             />
           </div>
         </div>
-        <SettingsItem title={getMessage('modals.main.marketplace.product.author')}>
+        <SettingsItem title={variables.getMessage('modals.main.marketplace.product.author')}>
           <TextField
             varient="outlined"
             InputLabelProps={{ shrink: true }}
@@ -256,7 +258,7 @@ export default class Create extends PureComponent {
             onInput={(e) => setMetadata(e.target.value, 'author')}
           />
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.addons.create.metadata.icon_url')}>
+        <SettingsItem title={variables.getMessage('modals.main.addons.create.metadata.icon_url')}>
           <TextField
             varient="outlined"
             InputLabelProps={{ shrink: true }}
@@ -264,7 +266,9 @@ export default class Create extends PureComponent {
             onInput={(e) => setMetadata(e.target.value, 'icon_url')}
           />
         </SettingsItem>
-        <SettingsItem title={getMessage('modals.main.addons.create.metadata.screenshot_url')}>
+        <SettingsItem
+          title={variables.getMessage('modals.main.addons.create.metadata.screenshot_url')}
+        >
           <TextField
             varient="outlined"
             InputLabelProps={{ shrink: true }}
@@ -273,7 +277,7 @@ export default class Create extends PureComponent {
           />
         </SettingsItem>
         <SettingsItem
-          title={getMessage('modals.main.addons.create.metadata.description')}
+          title={variables.getMessage('modals.main.addons.create.metadata.description')}
           final={true}
         >
           <TextField
@@ -288,13 +292,13 @@ export default class Create extends PureComponent {
         </SettingsItem>
         <div className="createButtons">
           <button onClick={() => this.changeTab(1)}>
-            {getMessage('modals.welcome.buttons.previous')}
+            {variables.getMessage('modals.welcome.buttons.previous')}
           </button>
           <button
             onClick={() => this.changeTab(this.state.addonMetadata.type)}
             disabled={nextDescriptionDisabled}
           >
-            {getMessage('modals.welcome.buttons.next')}
+            {variables.getMessage('modals.welcome.buttons.next')}
           </button>
         </div>
       </>
@@ -304,7 +308,10 @@ export default class Create extends PureComponent {
     const nextSettingsDisabled = this.state.addonData === '';
     const importSettings = (
       <>
-        <SettingsItem final={true} title={getMessage('modals.welcome.sections.settings.title')}>
+        <SettingsItem
+          final={true}
+          title={variables.getMessage('modals.welcome.sections.settings.title')}
+        >
           <div className="themesToggleArea">
             <div className="options" style={{ maxWidth: '512px' }}>
               <div
@@ -312,14 +319,14 @@ export default class Create extends PureComponent {
                 onClick={() => this.importSettings()}
               >
                 <ExportIcon />
-                <span>{getMessage('modals.main.addons.create.settings.current')}</span>
+                <span>{variables.getMessage('modals.main.addons.create.settings.current')}</span>
               </div>
               <div
                 className={this.state.settingsClasses.json}
                 onClick={() => document.getElementById('file-input').click()}
               >
                 <ImportIcon />
-                <span>{getMessage('modals.main.addons.create.settings.json')}</span>
+                <span>{variables.getMessage('modals.main.addons.create.settings.json')}</span>
               </div>
             </div>
           </div>
@@ -334,10 +341,10 @@ export default class Create extends PureComponent {
         </SettingsItem>
         <div className="createButtons">
           <button onClick={() => this.changeTab(2)}>
-            {getMessage('modals.welcome.buttons.previous')}
+            {variables.getMessage('modals.welcome.buttons.previous')}
           </button>
           <button onClick={() => this.changeTab(3)} disabled={nextSettingsDisabled}>
-            {getMessage('modals.welcome.buttons.next')}
+            {variables.getMessage('modals.welcome.buttons.next')}
           </button>
         </div>
       </>
@@ -349,8 +356,14 @@ export default class Create extends PureComponent {
     );
     const addQuotes = (
       <>
-        <SettingsItem final={true} title={getMessage('modals.main.addons.create.quotes.title')} />
-        <SettingsItem final={true} title={getMessage('modals.main.addons.create.settings.current')}>
+        <SettingsItem
+          final={true}
+          title={variables.getMessage('modals.main.addons.create.quotes.title')}
+        />
+        <SettingsItem
+          final={true}
+          title={variables.getMessage('modals.main.addons.create.settings.current')}
+        >
           <div className="themesToggleArea">
             <div className="options">
               <div
@@ -359,17 +372,17 @@ export default class Create extends PureComponent {
                 style={{ width: '60%', margin: '10px 0 10px 0' }}
               >
                 <ExportIcon />
-                <span>{getMessage('modals.main.addons.create.settings.current')}</span>
+                <span>{variables.getMessage('modals.main.addons.create.settings.current')}</span>
               </div>
             </div>
           </div>
         </SettingsItem>
         <div className="createButtons">
           <button onClick={() => this.changeTab(2)}>
-            {getMessage('modals.welcome.buttons.previous')}
+            {variables.getMessage('modals.welcome.buttons.previous')}
           </button>
           <button onClick={() => this.changeTab(3)} disabled={nextQuotesDisabled}>
-            {getMessage('modals.welcome.buttons.next')}
+            {variables.getMessage('modals.welcome.buttons.next')}
           </button>
         </div>
       </>
@@ -383,8 +396,8 @@ export default class Create extends PureComponent {
       <>
         <SettingsItem
           final={true}
-          title={getMessage('modals.main.addons.create.photos.title')}
-          subtitle={getMessage('modals.main.addons.create.import_custom')}
+          title={variables.getMessage('modals.main.addons.create.photos.title')}
+          subtitle={variables.getMessage('modals.main.addons.create.import_custom')}
         >
           <div className="themesToggleArea">
             <div className="options">
@@ -394,7 +407,7 @@ export default class Create extends PureComponent {
                 style={{ width: '60%', margin: '10px 0 10px 0' }}
               >
                 <ExportIcon />
-                <span>{getMessage('modals.main.addons.create.settings.current')}</span>
+                <span>{variables.getMessage('modals.main.addons.create.settings.current')}</span>
               </div>
             </div>
           </div>
@@ -402,10 +415,10 @@ export default class Create extends PureComponent {
         <br />
         <div className="createButtons">
           <button onClick={() => this.changeTab(2)}>
-            {getMessage('modals.welcome.buttons.previous')}
+            {variables.getMessage('modals.welcome.buttons.previous')}
           </button>
           <button onClick={() => this.changeTab(3)} disabled={nextPhotosDisabled}>
-            {getMessage('modals.welcome.buttons.next')}
+            {variables.getMessage('modals.welcome.buttons.next')}
           </button>
         </div>
       </>
@@ -416,14 +429,14 @@ export default class Create extends PureComponent {
         <div className="smallBanner">
           <div className="content">
             <span className="title" style={{ textTransform: 'capitalize' }}>
-              {getMessage('modals.main.addons.create.publishing.title')}
+              {variables.getMessage('modals.main.addons.create.publishing.title')}
             </span>
             <span className="subtitle">
-              {getMessage('modals.main.addons.create.publishing.subtitle')}
+              {variables.getMessage('modals.main.addons.create.publishing.subtitle')}
             </span>
           </div>
           <button>
-            {getMessage('modals.main.addons.create.publishing.button')}
+            {variables.getMessage('modals.main.addons.create.publishing.button')}
             <MdOpenInNew />
           </button>
         </div>
@@ -436,7 +449,7 @@ export default class Create extends PureComponent {
                 style={{ width: '60%', margin: '10px 0 10px 0' }}
               >
                 <ExportIcon />
-                <span>{getMessage('modals.main.addons.create.finish.download')}</span>
+                <span>{variables.getMessage('modals.main.addons.create.finish.download')}</span>
               </div>
             </div>
           </div>
@@ -446,7 +459,7 @@ export default class Create extends PureComponent {
             onClick={() => this.changeTab(this.state.addonMetadata.type)}
             disabled={nextDescriptionDisabled}
           >
-            {getMessage('modals.welcome.buttons.previous')}
+            {variables.getMessage('modals.welcome.buttons.previous')}
           </button>
         </div>
       </>
@@ -485,7 +498,9 @@ export default class Create extends PureComponent {
               </Tooltip>
             </div>
           )}
-          <span className="mainTitle">{getMessage('modals.main.addons.create.other_title')}</span>
+          <span className="mainTitle">
+            {variables.getMessage('modals.main.addons.create.other_title')}
+          </span>
         </div>
         {tabContent}
       </>

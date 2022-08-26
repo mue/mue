@@ -15,7 +15,6 @@ import EventBus from 'modules/helpers/eventbus';
 // however, when we used the original module https://bundlephobia.com/package/weather-icons-react@1.2.0
 // as seen here it is ridiculously large
 const Weather = lazy(() => import('./weather/Weather'));
-const renderLoader = () => <></>;
 
 export default class Widgets extends PureComponent {
   online = localStorage.getItem('offlineMode') === 'false';
@@ -73,11 +72,9 @@ export default class Widgets extends PureComponent {
       <div id="widgets" />
     ) : (
       <div id="widgets">
-        <Suspense fallback={renderLoader()}>
+        <Suspense fallback={<></>}>
           {this.enabled('searchBar') ? <Search /> : null}
-          {this.state.order.map((element) => (
-            this.widgets[element]
-          ))}
+          {this.state.order.map((element) => this.widgets[element])}
           {this.enabled('weatherEnabled') && this.online ? <Weather /> : null}
         </Suspense>
       </div>

@@ -10,8 +10,6 @@ import Tooltip from 'components/helpers/tooltip/Tooltip';
 import other_contributors from 'modules/other_contributors.json';
 
 export default class About extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
@@ -19,8 +17,8 @@ export default class About extends PureComponent {
       sponsors: [],
       other_contributors: [],
       photographers: [],
-      update: this.getMessage('modals.main.settings.sections.about.version.checking_update'),
-      loading: this.getMessage('modals.main.loading'),
+      update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
+      loading: variables.getMessage('modals.main.loading'),
       image: document.body.classList.contains('dark')
         ? 'icons/mue_dark.png'
         : 'icons/mue_light.png',
@@ -72,8 +70,10 @@ export default class About extends PureComponent {
       }
 
       return this.setState({
-        update: this.getMessage('modals.main.settings.sections.about.version.error.title'),
-        loading: this.getMessage('modals.main.settings.sections.about.version.error.description'),
+        update: variables.getMessage('modals.main.settings.sections.about.version.error.title'),
+        loading: variables.getMessage(
+          'modals.main.settings.sections.about.version.error.description',
+        ),
       });
     }
 
@@ -87,12 +87,12 @@ export default class About extends PureComponent {
 
     const newVersion = versionData[0].tag_name;
 
-    let update = this.getMessage('modals.main.settings.sections.about.version.no_update');
+    let update = variables.getMessage('modals.main.settings.sections.about.version.no_update');
     if (
       Number(variables.constants.VERSION.replaceAll('.', '')) <
       Number(newVersion.replaceAll('.', ''))
     ) {
-      update = `${this.getMessage(
+      update = `${variables.getMessage(
         'modals.main.settings.sections.about.version.update_available',
       )}: ${newVersion}`;
     }
@@ -111,8 +111,8 @@ export default class About extends PureComponent {
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       this.setState({
-        update: this.getMessage('modals.main.settings.sections.about.version.checking_update'),
-        loading: this.getMessage('modals.main.marketplace.offline.description'),
+        update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
+        loading: variables.getMessage('modals.main.marketplace.offline.description'),
       });
       return;
     }
@@ -129,18 +129,18 @@ export default class About extends PureComponent {
     return (
       <>
         <span className="mainTitle">
-          {this.getMessage('modals.main.settings.sections.about.title')}
+          {variables.getMessage('modals.main.settings.sections.about.title')}
         </span>
         <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
             <img draggable="false" className="aboutLogo" src={this.state.image} alt="Logo" />
             <span className="title">
-              {this.getMessage('modals.main.settings.sections.about.version.title')}{' '}
+              {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
               {variables.constants.VERSION}
             </span>
             <span className="subtitle">({this.state.update})</span>
             <span className="subtitle">
-              {this.getMessage('modals.main.settings.sections.about.copyright')}{' '}
+              {variables.getMessage('modals.main.settings.sections.about.copyright')}{' '}
               {variables.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()}{' '}
               <a
                 className="link"
@@ -165,7 +165,7 @@ export default class About extends PureComponent {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {this.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}
+                {variables.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}
               </a>
             </span>
           </div>
@@ -173,7 +173,7 @@ export default class About extends PureComponent {
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
-            {this.getMessage('modals.main.settings.sections.about.contact_us')}
+            {variables.getMessage('modals.main.settings.sections.about.contact_us')}
           </span>
           <div className="aboutContact">
             <a
@@ -217,13 +217,13 @@ export default class About extends PureComponent {
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
-            {this.getMessage('modals.main.settings.sections.about.support_mue')}
+            {variables.getMessage('modals.main.settings.sections.about.support_mue')}
           </span>
-          <p>{this.getMessage('modals.main.settings.sections.about.support_subtitle')}</p>
+          <p>{variables.getMessage('modals.main.settings.sections.about.support_subtitle')}</p>
           <div className="aboutContact">
             <a className="donateButton" href={variables.constants.DONATE_LINK}>
               <BiDonateHeart />
-              {this.getMessage('modals.main.settings.sections.about.support_donate')}
+              {variables.getMessage('modals.main.settings.sections.about.support_donate')}
             </a>
             <Tooltip title={'GitHub Sponsors'}>
               <a
@@ -269,7 +269,7 @@ export default class About extends PureComponent {
           style={{ flexFlow: 'column', alignItems: 'flex-start', minHeight: '70px' }}
         >
           <span className="title">
-            {this.getMessage('modals.main.settings.sections.about.resources_used.title')}
+            {variables.getMessage('modals.main.settings.sections.about.resources_used.title')}
           </span>
           <span className="subtitle">
             <a
@@ -289,13 +289,13 @@ export default class About extends PureComponent {
             >
               Unsplash
             </a>{' '}
-            ({this.getMessage('modals.main.settings.sections.about.resources_used.bg_images')})
+            ({variables.getMessage('modals.main.settings.sections.about.resources_used.bg_images')})
           </span>
         </div>
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
-            {this.getMessage('modals.main.settings.sections.about.contributors')}
+            {variables.getMessage('modals.main.settings.sections.about.contributors')}
           </span>
           <p>{this.state.loading}</p>
           <div className="contributorImages">
@@ -325,14 +325,14 @@ export default class About extends PureComponent {
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
-            {this.getMessage('modals.main.settings.sections.about.supporters')}
+            {variables.getMessage('modals.main.settings.sections.about.supporters')}
           </span>
           <p>{this.state.loading}</p>
           <div className="contributorImages">
             {this.state.sponsors.map(({ handle, avatar }) => {
               if (handle === 'empty') {
                 return (
-                  <p>{this.getMessage('modals.main.settings.sections.about.no_supporters')}</p>
+                  <p>{variables.getMessage('modals.main.settings.sections.about.no_supporters')}</p>
                 );
               }
 
@@ -360,7 +360,7 @@ export default class About extends PureComponent {
           }}
         >
           <span className="title">
-            {this.getMessage('modals.main.settings.sections.about.photographers')}
+            {variables.getMessage('modals.main.settings.sections.about.photographers')}
           </span>
           <p>{this.state.loading}</p>
           <span className="subtitle">{this.state.photographers}</span>

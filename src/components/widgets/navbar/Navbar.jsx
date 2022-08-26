@@ -71,7 +71,7 @@ export default class Navbar extends PureComponent {
 
           {this.refreshEnabled !== 'false' ? (
             <Tooltip
-              title={variables.language.getMessage(
+              title={variables.getMessage(
                 variables.languagecode,
                 'widgets.navbar.tooltips.refresh',
               )}
@@ -90,16 +90,12 @@ export default class Navbar extends PureComponent {
               >
               </InfoTooltip>*/}
           <Tooltip
-            title={variables.language.getMessage(
-              variables.languagecode,
-              'modals.main.navbar.settings',
-              {
-                type: variables.language.getMessage(
-                  variables.languagecode,
-                  'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
-                ),
-              },
-            )}
+            title={variables.getMessage(variables.languagecode, 'modals.main.navbar.settings', {
+              type: variables.getMessage(
+                variables.languagecode,
+                'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
+              ),
+            })}
           >
             <button onClick={() => this.props.openModal('mainModal')}>
               <MdSettings className="settings-icon topicons" />

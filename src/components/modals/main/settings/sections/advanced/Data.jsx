@@ -11,12 +11,10 @@ import {
 
 export default class Data extends PureComponent {
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     return (
       <>
         <span className="mainTitle" onClick={() => this.props.goBack()}>
-          {getMessage('modals.main.settings.sections.advanced.title')}
+          {variables.getMessage('modals.main.settings.sections.advanced.title')}
           <MdOutlineKeyboardArrowRight /> Data
         </span>
         <div
@@ -37,7 +35,7 @@ export default class Data extends PureComponent {
         <div className="settingsRow">
           <div className="content">
             <span className="title">
-              {getMessage('modals.main.settings.sections.advanced.data')}
+              {variables.getMessage('modals.main.settings.sections.advanced.data')}
             </span>
             <span className="subtitle">
               Choose whether to export your Mue settings to your computer, import an existing
@@ -46,15 +44,15 @@ export default class Data extends PureComponent {
           </div>
           <div className="action activityButtons">
             <button>
-              {getMessage('modals.main.settings.buttons.reset')}
+              {variables.getMessage('modals.main.settings.buttons.reset')}
               <ResetIcon />
             </button>
             <button>
-              {getMessage('modals.main.settings.buttons.export')}
+              {variables.getMessage('modals.main.settings.buttons.export')}
               <ExportIcon />
             </button>
             <button>
-              {getMessage('modals.main.settings.buttons.import')}
+              {variables.getMessage('modals.main.settings.buttons.import')}
               <ImportIcon />
             </button>
           </div>

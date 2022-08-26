@@ -18,8 +18,6 @@ export default class ColourSettings extends PureComponent {
   };
   GradientPickerInitialState = undefined;
 
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
@@ -32,7 +30,7 @@ export default class ColourSettings extends PureComponent {
     this.setState({
       gradientSettings: this.DefaultGradientSettings,
     });
-    toast(this.getMessage('toasts.reset'));
+    toast(variables.getMessage('toasts.reset'));
   }
 
   initialiseColourPickerState(gradientSettings) {
@@ -120,7 +118,8 @@ export default class ColourSettings extends PureComponent {
       typeof this.state.gradientSettings === 'object' &&
       this.state.gradientSettings.gradient.every(
         (g) =>
-          g.colour !== this.getMessage('modals.main.settings.sections.background.source.disabled'),
+          g.colour !==
+          variables.getMessage('modals.main.settings.sections.background.source.disabled'),
       )
     ) {
       const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
@@ -133,7 +132,7 @@ export default class ColourSettings extends PureComponent {
         ].sort((a, b) => (a.stop > b.stop ? 1 : -1)),
       });
     }
-    return this.getMessage('modals.main.settings.sections.background.source.disabled');
+    return variables.getMessage('modals.main.settings.sections.background.source.disabled');
   };
 
   onColourPickerChange = (attrs, name) => {
@@ -211,7 +210,7 @@ export default class ColourSettings extends PureComponent {
           {!gradientHasMoreThanOneColour ? (
             <>
               <button type="button" className="add" onClick={this.addColour}>
-                {this.getMessage('modals.main.settings.sections.background.source.add_colour')}
+                {variables.getMessage('modals.main.settings.sections.background.source.add_colour')}
               </button>
             </>
           ) : null}
@@ -222,11 +221,13 @@ export default class ColourSettings extends PureComponent {
     return (
       <>
         <SettingsItem
-          title={this.getMessage('modals.main.settings.sections.background.source.custom_colour')}
+          title={variables.getMessage(
+            'modals.main.settings.sections.background.source.custom_colour',
+          )}
           final={true}
         >
           <span className="link" onClick={() => this.resetColour()}>
-            {this.getMessage('modals.main.settings.buttons.reset')}
+            {variables.getMessage('modals.main.settings.buttons.reset')}
           </span>
           {colourSettings}
         </SettingsItem>

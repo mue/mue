@@ -35,8 +35,6 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
-const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
 export default function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -52,14 +50,11 @@ export default function PhotoInformation({ info, url, api }) {
   }
 
   // remove unsplash and pexels text
-  const unsplash = variables.language.getMessage(
-    variables.languagecode,
-    'widgets.background.unsplash',
-  );
-  const pexels = variables.language.getMessage(variables.languagecode, 'widgets.background.pexels');
+  const unsplash = variables.getMessage(variables.languagecode, 'widgets.background.unsplash');
+  const pexels = variables.getMessage('widgets.background.pexels');
 
   let credit = info.credit;
-  let photo = variables.language.getMessage(variables.languagecode, 'widgets.background.credit');
+  let photo = variables.getMessage('widgets.background.credit');
 
   // unsplash and pexels credit
   if (info.photographerURL && info.photographerURL !== '' && !info.offline && api) {
@@ -267,22 +262,19 @@ export default function PhotoInformation({ info, url, api }) {
           {showExtraInfo || other ? (
             <>
               <div className="concept-buttons">
-                <Tooltip title={getMessage('widgets.quote.share')} key="share">
+                <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
                   <Share onClick={() => openShareModal(true)} />
                 </Tooltip>
-                <Tooltip title={getMessage('widgets.quote.favourite')} key="favourite">
+                <Tooltip title={variables.getMessage('widgets.quote.favourite')} key="favourite">
                   <Favourite />
                 </Tooltip>
-                <Tooltip title={getMessage('widgets.background.download')} key="download">
+                <Tooltip title={variables.getMessage('widgets.background.download')} key="download">
                   <Download onClick={() => downloadImage(info)} />
                 </Tooltip>
               </div>
               <div className="extra-content">
                 <span className="subtitle">
-                  {variables.language.getMessage(
-                    variables.languagecode,
-                    'widgets.background.information',
-                  )}
+                  {variables.getMessage('widgets.background.information')}
                 </span>
                 {info.location && info.location !== 'N/A' ? (
                   <div className="concept-row">

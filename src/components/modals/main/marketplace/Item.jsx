@@ -38,7 +38,7 @@ export default class Item extends PureComponent {
   updateAddon() {
     uninstall(this.props.data.type, this.props.data.display_name);
     install(this.props.data.type, this.props.data);
-    toast(variables.language.getMessage(variables.languagecode, 'toasts.updated'));
+    toast(variables.getMessage('toasts.updated'));
     this.setState({
       showUpdateButton: false,
     });
@@ -57,8 +57,6 @@ export default class Item extends PureComponent {
   }
 
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     if (!this.props.data.display_name) {
       return null;
     }
@@ -70,11 +68,11 @@ export default class Item extends PureComponent {
           <div className="topRow">
             <MdWarning />
             <div className="title">
-              {getMessage('modals.main.marketplace.product.quote_warning.title')}
+              {variables.getMessage('modals.main.marketplace.product.quote_warning.title')}
             </div>
           </div>
           <div className="subtitle">
-            {getMessage('modals.main.marketplace.product.quote_warning.description')}
+            {variables.getMessage('modals.main.marketplace.product.quote_warning.description')}
           </div>
         </div>
       );
@@ -91,7 +89,7 @@ export default class Item extends PureComponent {
       updateButton = (
         <Fragment key="update">
           <button className="removeFromMue" onClick={() => this.updateAddon()}>
-            {getMessage('modals.main.addons.product.buttons.update_addon')}
+            {variables.getMessage('modals.main.addons.product.buttons.update_addon')}
           </button>
         </Fragment>
       );
@@ -114,7 +112,9 @@ export default class Item extends PureComponent {
         </Modal>
         <div className="flexTopMarketplace">
           <span className="mainTitle" onClick={this.props.toggleFunction}>
-            <span className="backTitle">{getMessage('modals.main.navbar.marketplace')}</span>
+            <span className="backTitle">
+              {variables.getMessage('modals.main.navbar.marketplace')}
+            </span>
             <MdOutlineKeyboardArrowRight /> {this.props.data.display_name}
           </span>
         </div>
@@ -157,7 +157,7 @@ export default class Item extends PureComponent {
               />
             ) : null}
             <span className="title">
-              {getMessage('modals.main.marketplace.product.description')}
+              {variables.getMessage('modals.main.marketplace.product.description')}
             </span>
             <span dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
             {/*
@@ -165,12 +165,12 @@ export default class Item extends PureComponent {
               <div className="showMore" onClick={() => this.toggleShowMore()}>
                 {this.state.showMore === true ? (
                   <>
-                    <span>{getMessage('modals.main.marketplace.product.show_less')}</span>
+                    <span>{variables.getMessage('modals.main.marketplace.product.show_less')}</span>
                     <MdKeyboardArrowDown />
                   </>
                 ) : (
                   <>
-                    <span>{getMessage('modals.main.marketplace.product.show_more')}</span>
+                    <span>{variables.getMessage('modals.main.marketplace.product.show_more')}</span>
                     <MdKeyboardArrowUp />
                   </>
                 )}
@@ -181,7 +181,7 @@ export default class Item extends PureComponent {
                 <MdBugReport />
                 <div className="text">
                   <span className="header">
-                    {getMessage('modals.main.marketplace.product.version')}
+                    {variables.getMessage('modals.main.marketplace.product.version')}
                   </span>
                   {updateButton ? (
                     <span>
@@ -196,7 +196,7 @@ export default class Item extends PureComponent {
                 <MdAccountCircle />
                 <div className="text">
                   <span className="header">
-                    {getMessage('modals.main.marketplace.product.author')}
+                    {variables.getMessage('modals.main.marketplace.product.author')}
                   </span>
                   <span>{this.props.data.author}</span>
                 </div>
@@ -206,7 +206,7 @@ export default class Item extends PureComponent {
                   <MdFormatQuote />
                   <div className="text">
                     <span className="header">
-                      {getMessage('modals.main.marketplace.product.no_quotes')}
+                      {variables.getMessage('modals.main.marketplace.product.no_quotes')}
                     </span>
                     <span>{this.props.data.data.quotes.length}</span>
                   </div>
@@ -217,7 +217,7 @@ export default class Item extends PureComponent {
                   <MdImage />
                   <div className="text">
                     <span className="header">
-                      {getMessage('modals.main.marketplace.product.no_images')}
+                      {variables.getMessage('modals.main.marketplace.product.no_images')}
                     </span>
                     <span>{this.props.data.data.photos.length}</span>
                   </div>
@@ -228,7 +228,7 @@ export default class Item extends PureComponent {
                   <MdTranslate />
                   <div className="text">
                     <span className="header">
-                      {getMessage('modals.main.settings.sections.language.title')}
+                      {variables.getMessage('modals.main.settings.sections.language.title')}
                     </span>
                     <span>{this.props.data.data.language}</span>
                   </div>
@@ -237,7 +237,7 @@ export default class Item extends PureComponent {
               {/*<div className="infoItem">
                 <MdIosShare />
                 <div className="text">
-                  <span className="header">{getMessage('modals.main.marketplace.product.shares')}</span>
+                  <span className="header">{variables.getMessage('modals.main.marketplace.product.shares')}</span>
                   <span>324</span>
                 </div>
               </div>*/}
@@ -273,10 +273,10 @@ export default class Item extends PureComponent {
             {this.props.data.data.collection ? (
               <div className="inCollection">
                 <span className="subtitle">
-                  {getMessage('modals.main.marketplace.product.part_of')}
+                  {variables.getMessage('modals.main.marketplace.product.part_of')}
                 </span>
                 <span className="title">{this.props.data.data.collection}</span>
-                <button>{getMessage('modals.main.marketplace.product.explore')}</button>
+                <button>{variables.getMessage('modals.main.marketplace.product.explore')}</button>
               </div>
             ) : null}
             {warningHTML}

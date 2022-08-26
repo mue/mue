@@ -6,14 +6,12 @@ import Radio from '../Radio';
 import languages from 'modules/languages.json';
 
 export default class LanguageSettings extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
       quoteLanguages: [
         {
-          name: this.getMessage('modals.main.loading'),
+          name: variables.getMessage('modals.main.loading'),
           value: 'loading',
         },
       ],
@@ -50,7 +48,7 @@ export default class LanguageSettings extends PureComponent {
       return this.setState({
         quoteLanguages: [
           {
-            name: this.getMessage('modals.main.marketplace.offline.description'),
+            name: variables.getMessage('modals.main.marketplace.offline.description'),
             value: 'loading',
           },
         ],
@@ -69,13 +67,13 @@ export default class LanguageSettings extends PureComponent {
     return (
       <>
         <span className="mainTitle">
-          {this.getMessage('modals.main.settings.sections.language.title')}
+          {variables.getMessage('modals.main.settings.sections.language.title')}
         </span>
         <div className="languageSettings">
           <Radio name="language" options={languages} element=".other" />
         </div>
         <span className="mainTitle">
-          {this.getMessage('modals.main.settings.sections.language.quote')}
+          {variables.getMessage('modals.main.settings.sections.language.quote')}
         </span>
         <div className="languageSettings">
           <Radio name="quotelanguage" options={this.state.quoteLanguages} category="quote" />

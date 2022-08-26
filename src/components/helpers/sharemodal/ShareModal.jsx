@@ -9,12 +9,11 @@ import { toast } from 'react-toastify';
 import './sharemodal.scss';
 
 export default function ShareModal({ modalClose, data }) {
-  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
   const url = variables.constants.MARKETPLACE_URL + '/share/' + btoa(data.api_name);
 
   const copyLink = () => {
     navigator.clipboard.writeText(data);
-    toast(getMessage('modals.share.copy_link'));
+    toast(variables.getMessage('modals.share.copy_link'));
   };
 
   // look into what's wrong with this
@@ -27,8 +26,8 @@ export default function ShareModal({ modalClose, data }) {
   return (
     <div className="smallModal">
       <div className="shareHeader">
-        <span className="title">{getMessage('widgets.quote.share')}</span>
-        <Tooltip title={getMessage('modals.welcome.buttons.close')}>
+        <span className="title">{variables.getMessage('widgets.quote.share')}</span>
+        <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>
@@ -103,7 +102,7 @@ export default function ShareModal({ modalClose, data }) {
       </div>
       <div className="copy">
         <input type="text" value={data} className="left field" readOnly />
-        <Tooltip title={getMessage('modals.share.copy_link')} placement="top">
+        <Tooltip title={variables.getMessage('modals.share.copy_link')} placement="top">
           <button onClick={() => copyLink()}>
             <MdContentCopy />
           </button>

@@ -144,30 +144,15 @@ class Todo extends PureComponent {
             <div className="flexTodo">
               <div className="topBarNotes" style={{ display: 'flex' }}>
                 <MdChecklist />
-                <span>
-                  {variables.language.getMessage(
-                    variables.languagecode,
-                    'widgets.navbar.todo.title',
-                  )}
-                </span>
+                <span>{variables.getMessage('widgets.navbar.todo.title')}</span>
               </div>
               <div className="notes-buttons">
-                <Tooltip
-                  title={variables.language.getMessage(
-                    variables.languagecode,
-                    'widgets.navbar.todo.pin',
-                  )}
-                >
+                <Tooltip title={variables.getMessage('widgets.navbar.todo.pin')}>
                   <button onClick={() => this.pin()}>
                     <MdPushPin />
                   </button>
                 </Tooltip>
-                <Tooltip
-                  title={variables.language.getMessage(
-                    variables.languagecode,
-                    'widgets.navbar.todo.add',
-                  )}
-                >
+                <Tooltip title={variables.getMessage('widgets.navbar.todo.add')}>
                   <button onClick={() => this.updateTodo('add')}>
                     <MdPlaylistAdd />
                   </button>
@@ -194,7 +179,7 @@ class Todo extends PureComponent {
                             onClick={() => this.updateTodo('done', index)}
                           />
                           <TextareaAutosize
-                            placeholder={variables.language.getMessage(
+                            placeholder={variables.getMessage(
                               variables.languagecode,
                               'widgets.navbar.notes.placeholder',
                             )}

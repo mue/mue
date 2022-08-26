@@ -7,8 +7,6 @@ import Tooltip from './Tooltip';
 import './tooltip.scss';
 
 export default function InfoTooltip({ title, style, placement, subtitle }) {
-  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   const [showTooltip, setShowTooltip] = useState(false);
   const { x, y, reference, floating, strategy } = useFloating({
     placement: placement || 'top-start',
@@ -30,7 +28,7 @@ export default function InfoTooltip({ title, style, placement, subtitle }) {
         >
           <div className="tooltipHeader">
             <span className="title">{title}</span>
-            <Tooltip title={getMessage('modals.welcome.buttons.close')}>
+            <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
               <div className="close" onClick={() => setShowTooltip(false)}>
                 <MdClose />
               </div>
@@ -38,7 +36,7 @@ export default function InfoTooltip({ title, style, placement, subtitle }) {
           </div>
           <span className="subtitle">{subtitle}</span>
           <span className="link">
-            {getMessage('modals.main.settings.open_knowledgebase')} <MdOpenInNew />
+            {variables.getMessage('modals.main.settings.open_knowledgebase')} <MdOpenInNew />
           </span>
         </div>
       )}

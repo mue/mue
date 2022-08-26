@@ -61,7 +61,7 @@ class Notes extends PureComponent {
   copy() {
     variables.stats.postEvent('feature', 'Notes copied');
     navigator.clipboard.writeText(this.state.notes);
-    toast(variables.language.getMessage(variables.languagecode, 'toasts.notes'));
+    toast(variables.getMessage('toasts.notes'));
   }
 
   download() {
@@ -99,47 +99,27 @@ class Notes extends PureComponent {
             <div className="flexNotes">
               <div className="topBarNotes" style={{ display: 'flex' }}>
                 <MdAssignment />
-                <span>
-                  {variables.language.getMessage(
-                    variables.languagecode,
-                    'widgets.navbar.notes.title',
-                  )}
-                </span>
+                <span>{variables.getMessage('widgets.navbar.notes.title')}</span>
               </div>
               <div className="notes-buttons">
-                <Tooltip
-                  title={variables.language.getMessage(
-                    variables.languagecode,
-                    'widgets.navbar.todo.pin',
-                  )}
-                >
+                <Tooltip title={variables.getMessage('widgets.navbar.todo.pin')}>
                   <button onClick={() => this.pin()}>
                     <MdPushPin />
                   </button>
                 </Tooltip>
-                <Tooltip
-                  title={variables.language.getMessage(
-                    variables.languagecode,
-                    'widgets.quote.copy',
-                  )}
-                >
+                <Tooltip title={variables.getMessage('widgets.quote.copy')}>
                   <button onClick={() => this.copy()}>
                     <MdContentCopy />
                   </button>
                 </Tooltip>
-                <Tooltip
-                  title={variables.language.getMessage(
-                    variables.languagecode,
-                    'widgets.background.download',
-                  )}
-                >
+                <Tooltip title={variables.getMessage('widgets.background.download')}>
                   <button onClick={() => this.download()}>
                     <MdDownload />
                   </button>
                 </Tooltip>
               </div>
               <TextareaAutosize
-                placeholder={variables.language.getMessage(
+                placeholder={variables.getMessage(
                   variables.languagecode,
                   'widgets.navbar.notes.placeholder',
                 )}

@@ -42,7 +42,7 @@ export default class Text extends PureComponent {
         value: this.props.default || '',
       },
     });
-    toast(variables.language.getMessage(variables.languagecode, 'toasts.reset'));
+    toast(variables.getMessage('toasts.reset'));
   };
 
   render() {
@@ -70,10 +70,7 @@ export default class Text extends PureComponent {
           />
         )}
         <span className="link" onClick={this.resetItem}>
-          {variables.language.getMessage(
-            variables.languagecode,
-            'modals.main.settings.buttons.reset',
-          )}
+          {variables.getMessage('modals.main.settings.buttons.reset')}
         </span>
       </>
     );

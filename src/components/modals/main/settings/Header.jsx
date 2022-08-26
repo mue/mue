@@ -12,15 +12,13 @@ import Tooltip from '../../../helpers/tooltip/Tooltip';
 
 export default class Header extends PureComponent {
   render() {
-    const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
     return (
       <>
         <div className="flexTopMarketplace">
           {this.props.backButton ? (
             <div className="returnButton" onClick={this.props.clickEffect}>
               <Tooltip
-                title={getMessage('modals.main.navbar.marketplace.product.buttons.back')}
+                title={variables.getMessage('modals.main.navbar.marketplace.product.buttons.back')}
                 key="backArrow"
               >
                 <MdArrowBack className="backArrow" />
@@ -41,7 +39,7 @@ export default class Header extends PureComponent {
               )
             }
           >
-            <MdHelpOutline /> {getMessage('modals.main.settings.sections.header.more_info')}
+            <MdHelpOutline /> {variables.getMessage('modals.main.settings.sections.header.more_info')}
           </span>*/}
           <span
             className="link"
@@ -52,17 +50,17 @@ export default class Header extends PureComponent {
               )
             }
           >
-            <MdFlag /> {getMessage('modals.main.settings.sections.header.report_issue')}
+            <MdFlag /> {variables.getMessage('modals.main.settings.sections.header.report_issue')}
           </span>
         </div>
         {this.props.switch ? (
           <SettingsItem
-            title={getMessage('modals.main.settings.enabled')}
-            subtitle={getMessage('modals.main.settings.sections.header.enabled')}
+            title={variables.getMessage('modals.main.settings.enabled')}
+            subtitle={variables.getMessage('modals.main.settings.sections.header.enabled')}
           >
             <Switch
               name={this.props.setting}
-              text={getMessage('modals.main.settings.enabled')}
+              text={variables.getMessage('modals.main.settings.enabled')}
               category={this.props.category}
               element={this.props.element || null}
               header={true}
@@ -71,8 +69,10 @@ export default class Header extends PureComponent {
         ) : null}
         {this.props.zoomSetting ? (
           <SettingsItem
-            title={getMessage('modals.main.settings.sections.appearance.accessibility.widget_zoom')}
-            subtitle={getMessage('modals.main.settings.sections.header.size')}
+            title={variables.getMessage(
+              'modals.main.settings.sections.appearance.accessibility.widget_zoom',
+            )}
+            subtitle={variables.getMessage('modals.main.settings.sections.header.size')}
           >
             <Slider
               name={this.props.zoomSetting}
