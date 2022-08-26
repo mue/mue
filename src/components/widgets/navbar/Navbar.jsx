@@ -70,12 +70,7 @@ export default class Navbar extends PureComponent {
           {localStorage.getItem('todo') === 'true' ? <Todo /> : null}
 
           {this.refreshEnabled !== 'false' ? (
-            <Tooltip
-              title={variables.getMessage(
-                variables.languagecode,
-                'widgets.navbar.tooltips.refresh',
-              )}
-            >
+            <Tooltip title={variables.getMessage('widgets.navbar.tooltips.refresh')}>
               <button onClick={() => this.refresh()}>
                 <MdRefresh className="refreshicon topicons" />
               </button>
@@ -90,9 +85,8 @@ export default class Navbar extends PureComponent {
               >
               </InfoTooltip>*/}
           <Tooltip
-            title={variables.getMessage(variables.languagecode, 'modals.main.navbar.settings', {
+            title={variables.getMessage('modals.main.navbar.settings', {
               type: variables.getMessage(
-                variables.languagecode,
                 'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
               ),
             })}

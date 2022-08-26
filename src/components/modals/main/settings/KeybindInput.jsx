@@ -16,13 +16,7 @@ export default function KeybindInput(props) {
           <MdCancel />
         </button>
       );
-    } else if (
-      value ===
-      variables.getMessage(
-        variables.languagecode,
-        'modals.main.settings.sections.keybinds.recording',
-      )
-    ) {
+    } else if (value === variables.getMessage('modals.main.settings.sections.keybinds.recording')) {
       return (
         <button className="cleanButton" onClick={() => props.action('cancel', props.setting)}>
           <MdCancel />

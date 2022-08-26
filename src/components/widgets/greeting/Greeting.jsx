@@ -56,13 +56,13 @@ export default class Greeting extends PureComponent {
       const hour = now.getHours();
 
       // Set the default greeting string to "Good evening"
-      let message = variables.getMessage(variables.languagecode, 'widgets.greeting.evening');
+      let message = variables.getMessage('widgets.greeting.evening');
       // If it's before 12am, set the greeting string to "Good morning"
       if (hour < 12) {
         message = variables.getMessage('widgets.greeting.morning');
         // If it's before 6pm, set the greeting string to "Good afternoon"
       } else if (hour < 18) {
-        message = variables.getMessage(variables.languagecode, 'widgets.greeting.afternoon');
+        message = variables.getMessage('widgets.greeting.afternoon');
       }
 
       // Events and custom
@@ -100,7 +100,7 @@ export default class Greeting extends PureComponent {
               .split(' ');
             message = `${text[0]} ${nth(this.calculateAge(birth))} ${text[1]}`;
           } else {
-            message = variables.getMessage(variables.languagecode, 'widgets.greeting.birthday');
+            message = variables.getMessage('widgets.greeting.birthday');
           }
         }
       }

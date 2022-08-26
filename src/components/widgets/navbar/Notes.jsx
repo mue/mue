@@ -119,10 +119,7 @@ class Notes extends PureComponent {
                 </Tooltip>
               </div>
               <TextareaAutosize
-                placeholder={variables.getMessage(
-                  variables.languagecode,
-                  'widgets.navbar.notes.placeholder',
-                )}
+                placeholder={variables.getMessage('widgets.navbar.notes.placeholder')}
                 value={this.state.notes}
                 onChange={this.setNotes}
                 minRows={5}

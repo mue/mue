@@ -179,10 +179,7 @@ class Todo extends PureComponent {
                             onClick={() => this.updateTodo('done', index)}
                           />
                           <TextareaAutosize
-                            placeholder={variables.getMessage(
-                              variables.languagecode,
-                              'widgets.navbar.notes.placeholder',
-                            )}
+                            placeholder={variables.getMessage('widgets.navbar.notes.placeholder')}
                             value={this.state.todo[index].value}
                             onChange={(data) => this.updateTodo('set', index, data)}
                             readOnly={this.state.todo[index].done}

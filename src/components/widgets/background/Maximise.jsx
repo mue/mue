@@ -70,10 +70,7 @@ export default class Maximise extends PureComponent {
   render() {
     return (
       <Tooltip
-        title={variables.getMessage(
-          variables.languagecode,
-          'modals.main.settings.sections.background.buttons.view',
-        )}
+        title={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
       >
         <button>
           <MdCropFree onClick={this.maximise} className="topicons" />

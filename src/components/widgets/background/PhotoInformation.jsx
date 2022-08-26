@@ -50,7 +50,7 @@ export default function PhotoInformation({ info, url, api }) {
   }
 
   // remove unsplash and pexels text
-  const unsplash = variables.getMessage(variables.languagecode, 'widgets.background.unsplash');
+  const unsplash = variables.getMessage('widgets.background.unsplash');
   const pexels = variables.getMessage('widgets.background.pexels');
 
   let credit = info.credit;

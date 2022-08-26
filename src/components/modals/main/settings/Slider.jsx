@@ -66,7 +66,7 @@ export default class SliderComponent extends PureComponent {
           <span>{Number(this.state.value)}</span>
           <span className="link" onClick={this.resetItem}>
             <MdRefresh />
-            {variables.getMessage(variables.languagecode, 'modals.main.settings.buttons.reset')}
+            {variables.getMessage('modals.main.settings.buttons.reset')}
           </span>
         </span>
         <Slider

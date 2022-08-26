@@ -74,7 +74,7 @@ export default class Weather extends PureComponent {
 
     if (data.cod === '404') {
       return this.setState({
-        location: variables.getMessage(variables.languagecode, 'widgets.weather.not_found'),
+        location: variables.getMessage('widgets.weather.not_found'),
       });
     }
 
@@ -187,13 +187,12 @@ export default class Weather extends PureComponent {
         <div className="expanded-info">
           {weatherType >= 3 && (
             <span className="subtitle">
-              {variables.getMessage(variables.languagecode, 'widgets.weather.extra_information')}
+              {variables.getMessage('widgets.weather.extra_information')}
             </span>
           )}
           {enabled('cloudiness') ? (
             <Tooltip
               title={variables.getMessage(
-                variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.cloudiness',
               )}
               placement="left"
@@ -207,7 +206,6 @@ export default class Weather extends PureComponent {
           {enabled('windspeed') ? (
             <Tooltip
               title={variables.getMessage(
-                variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.wind_speed',
               )}
               placement="left"
@@ -230,7 +228,6 @@ export default class Weather extends PureComponent {
           {enabled('atmosphericpressure') ? (
             <Tooltip
               title={variables.getMessage(
-                variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
               )}
               placement="left"
@@ -245,7 +242,6 @@ export default class Weather extends PureComponent {
           {enabled('weatherdescription') ? (
             <Tooltip
               title={variables.getMessage(
-                variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.show_description',
               )}
               placement="left"
@@ -261,7 +257,6 @@ export default class Weather extends PureComponent {
           {enabled('visibility') ? (
             <Tooltip
               title={variables.getMessage(
-                variables.languagecode,
                 'modals.main.settings.sections.weather.extra_info.visibility',
               )}
               placement="left"
@@ -294,7 +289,7 @@ export default class Weather extends PureComponent {
             <div className="extra-info">
               {/*{enabled('humidity') ? <span><WiHumidity/>{this.state.weather.humidity}%</span> : null}*/}
               <span>
-                {variables.getMessage(variables.languagecode, 'widgets.weather.feels_like', {
+                {variables.getMessage('widgets.weather.feels_like', {
                   amount: this.state.weather.temp_feels_like + this.state.temp_text,
                 })}
               </span>

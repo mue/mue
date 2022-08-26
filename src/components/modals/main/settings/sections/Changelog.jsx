@@ -44,13 +44,9 @@ export default class Changelog extends PureComponent {
       title: data.title,
       date,
       image: data.featured_image || null,
-      author: variables.getMessage(
-        variables.languagecode,
-        'modals.main.settings.sections.changelog.by',
-        {
-          author: data.authors.join(', '),
-        },
-      ),
+      author: variables.getMessage('modals.main.settings.sections.changelog.by', {
+        author: data.authors.join(', '),
+      }),
       content: data.markdown,
     });
 

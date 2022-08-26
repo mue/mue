@@ -25,16 +25,10 @@ export default function ResetModal({ modalClose }) {
         </Tooltip>
       </div>
       <span className="title">
-        {variables.getMessage(
-          variables.languagecode,
-          'modals.main.settings.sections.advanced.reset_modal.question',
-        )}
+        {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.question')}
       </span>
       <span className="subtitle">
-        {variables.getMessage(
-          variables.languagecode,
-          'modals.main.settings.sections.advanced.reset_modal.information',
-        )}
+        {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.information')}
       </span>
       <div className="resetFooter">
         <button className="textButton" onClick={modalClose}>
