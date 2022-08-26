@@ -390,7 +390,7 @@ export default class Create extends PureComponent {
 
     // photos
     const nextPhotosDisabled = !(
-      this.state.addonData.photos !== '' && this.state.addonData.photos !== []
+      this.state.addonData.photos !== ''
     );
     const addPhotos = (
       <>

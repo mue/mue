@@ -204,8 +204,7 @@ export default class Quote extends PureComponent {
         if (
           customQuote &&
           customQuote !== '' &&
-          customQuote !== 'undefined' &&
-          customQuote !== ['']
+          customQuote !== 'undefined'
         ) {
           return this.setState({
             quote: '"' + customQuote.quote + '"',

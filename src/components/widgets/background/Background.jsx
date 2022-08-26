@@ -216,7 +216,6 @@ export default class Background extends PureComponent {
         if (
           customBackground !== '' &&
           customBackground !== 'undefined' &&
-          customBackground !== [''] &&
           customBackground !== undefined
         ) {
           const object = {

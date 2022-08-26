@@ -74,7 +74,9 @@ export default class Widgets extends PureComponent {
       <div id="widgets">
         <Suspense fallback={<></>}>
           {this.enabled('searchBar') ? <Search /> : null}
-          {this.state.order.map((element) => this.widgets[element])}
+          {this.state.order.map((element, key) => (
+            <Fragment key={key}>{this.widgets[element]}</Fragment>
+          ))}
           {this.enabled('weatherEnabled') && this.online ? <Weather /> : null}
         </Suspense>
       </div>
