@@ -369,9 +369,6 @@ export default class BackgroundSettings extends PureComponent {
                 'modals.main.settings.sections.background.photo_information',
               )}
               element=".other"
-              disabled={
-                this.state.backgroundType !== 'api' && this.state.backgroundType !== 'marketplace'
-              }
             />
             <Checkbox
               name="photoMap"
