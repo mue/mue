@@ -70,7 +70,7 @@ export default class TimeSettings extends PureComponent {
           switch={true}
         />
         <SettingsItem title="Widget Type">
-          <Dropdown label="Type" name="weatherType">
+          <Dropdown label="Type" name="weatherType" category="weather">
             <option value="1">Basic</option>
             <option value="2">Standard</option>
             <option value="3">Expanded</option>
@@ -125,13 +125,6 @@ export default class TimeSettings extends PureComponent {
         {localStorage.getItem('weatherType') == 4 && (
           <SettingsItem title="Custom Settings">
             <Checkbox
-              name="showlocation"
-              text={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.show_location',
-              )}
-              category="weather"
-            />
-            <Checkbox
               name="weatherdescription"
               text={variables.getMessage(
                 'modals.main.settings.sections.weather.extra_info.show_description',
@@ -180,28 +173,12 @@ export default class TimeSettings extends PureComponent {
               disabled={this.state.windSpeed}
             />
             <Checkbox
-              name="mintemp"
-              text={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.min_temp',
-              )}
-              category="weather"
-            />
-            <Checkbox
-              name="maxtemp"
-              text={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.max_temp',
-              )}
-              category="weather"
-            />
-            <Checkbox name="feelsliketemp" text={'Feels like temperature'} category="weather" />
-            <Checkbox
               name="atmosphericpressure"
               text={variables.getMessage(
                 'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
               )}
               category="weather"
             />
-            <Checkbox name="upcomingForecast" text="Upcoming Forecast" category="weather" />
           </SettingsItem>
         )}
       </>
