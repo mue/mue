@@ -157,31 +157,6 @@ export default class Weather extends PureComponent {
       );
     }
 
-    const minmax = () => {
-      {
-        /*const mintemp = enabled('mintemp');
-      const maxtemp = enabled('maxtemp');
-
-      if (!mintemp && !maxtemp) {
-        return null;
-      } else if (mintemp && !maxtemp) {
-        return (
-          <span className="subtitle">{this.state.weather.temp_min + this.state.temp_text}</span>
-        );
-      } else if (maxtemp && !mintemp) {
-        return (
-          <span className="subtitle">{this.state.weather.temp_max + this.state.temp_text}</span>
-        );
-      } else {*/
-      }
-      return (
-        <>
-          <span className="subtitle">{this.state.weather.temp_min + this.state.temp_text}</span>{' '}
-          <span className="subtitle"> {this.state.weather.temp_max + this.state.temp_text}</span>
-        </>
-      );
-    };
-
     const expandedInfo = () => {
       return (
         <div className="expanded-info">
@@ -283,11 +258,19 @@ export default class Weather extends PureComponent {
                 <span>{this.state.weather.temp + this.state.temp_text}</span>
               </div>
             )}
-            {localStorage.getItem('weatherType') >= 2 && <span className="minmax">{minmax()}</span>}
+            {localStorage.getItem('weatherType') >= 2 && (
+              <span className="minmax">
+                <span className="subtitle">
+                  {this.state.weather.temp_min + this.state.temp_text}
+                </span>
+                <span className="subtitle">
+                  {this.state.weather.temp_max + this.state.temp_text}
+                </span>
+              </span>
+            )}
           </div>
           {localStorage.getItem('weatherType') >= 2 && (
             <div className="extra-info">
-              {/*{enabled('humidity') ? <span><WiHumidity/>{this.state.weather.humidity}%</span> : null}*/}
               <span>
                 {variables.getMessage('widgets.weather.feels_like', {
                   amount: this.state.weather.temp_feels_like + this.state.temp_text,
