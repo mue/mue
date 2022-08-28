@@ -34,7 +34,13 @@
       "not_found": "Not Found",
       "meters": "{amount} metres",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}"
+      "feels_like": "Feels like {amount}",
+      "options": {
+        "basic": "Basic",
+        "standard": "Standard",
+        "expanded": "Expanded",
+        "custom": "Custom"
+      }
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -262,6 +268,7 @@
             "title": "Weather",
             "location": "Location",
             "auto": "Auto",
+            "widget_type": "Widget Type",
             "temp_format": {
               "title": "Temperature format",
               "celsius": "Celsius",
@@ -293,12 +300,21 @@
             "title": "Message",
             "add": "Add message",
             "messages": "Messages",
-            "text": "Text"
+            "text": "Text",
+            "no_messages": "No messages",
+            "add_some": "Go ahead and add some."
           },
           "appearance": {
             "title": "Appearance",
+            "style": {
+              "title": "Widget Style",
+              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
+              "legacy": "Legacy",
+              "new": "New"
+            },
             "theme": {
               "title": "Theme",
+              "description": "Change the theme of the Mue widgets and modals",
               "auto": "Auto",
               "light": "Light",
               "dark": "Dark"
@@ -317,6 +333,7 @@
             },
             "font": {
               "title": "Font",
+              "description": "Change the font used in Mue",
               "custom": "Custom font",
               "google": "Import from Google Fonts",
               "weight": {
@@ -339,8 +356,14 @@
             },
             "accessibility": {
               "title": "Accessibility",
+              "description": "Accessibility settings for Mue",
               "animations": "Animations",
-              "text_shadow": "Widget text shadow",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
               "widget_zoom": "Widget zoom",
               "toast_duration": "Toast duration",
               "milliseconds": "milliseconds"

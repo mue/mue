@@ -17,6 +17,9 @@ input {
     -webkit-appearance: none;
     vertical-align: middle;
     background: none;
+    @include themed() {
+      border: t($modal-sidebarActive) 1px solid;
+    } 
 
     &::-webkit-color-swatch-wrapper {
       padding: 0;

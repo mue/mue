@@ -109,8 +109,8 @@ export default class Changelog extends PureComponent {
       return errorMessage(
         <>
           <MdOutlineWifiOff />
-          <h1>failed</h1>
-          <p className="description">error description</p>
+          <span className='title'>{variables.getMessage('modals.main.error_boundary.title')}</span>
+          <span className="subtitle">{variables.getMessage('modals.main.error_boundary.message')}</span>
         </>,
       );
     }

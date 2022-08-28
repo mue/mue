@@ -115,8 +115,8 @@ export default class Message extends PureComponent {
           <div className="photosEmpty">
             <div className="emptyNewMessage">
               <MdOutlineTextsms />
-              <span className="title">No messages</span>
-              <span className="subtitle">Go ahead and add some.</span>
+              <span className="title">{variables.getMessage('modals.main.settings.sections.message.no_messages')}</span>
+              <span className="subtitle">{variables.getMessage('modals.main.settings.sections.message.add_some')}</span>
               <button onClick={() => this.modifyMessage('add')}>
                 {variables.getMessage('modals.main.settings.sections.message.add')}
                 <MdAdd />

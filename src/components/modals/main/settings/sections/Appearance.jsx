@@ -20,7 +20,7 @@ export default function AppearanceSettings() {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.appearance.theme.title')}
           </span>
-          <span className="subtitle">Change the theme of the Mue widgets and modals</span>
+          <span className="subtitle"> {variables.getMessage('modals.main.settings.sections.appearance.theme.description')}</span>
         </div>
         <div className="action">
           <Radio
@@ -48,7 +48,7 @@ export default function AppearanceSettings() {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.appearance.font.title')}
           </span>
-          <span className="subtitle">Change the font used in Mue</span>
+          <span className="subtitle">{variables.getMessage('modals.main.settings.sections.appearance.font.description')}</span>
         </div>
         <div className="action">
           <Checkbox
@@ -121,19 +121,19 @@ export default function AppearanceSettings() {
         </div>
       </div>
       <SettingsItem
-        title="Widget Style"
-        subtitle="Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling."
+        title={variables.getMessage('modals.main.settings.sections.appearance.style.title')}
+        subtitle={variables.getMessage('modals.main.settings.sections.appearance.style.description')}
       >
         <Radio
           name="widgetStyle"
           element=".other"
           options={[
             {
-              name: 'Legacy',
+              name: variables.getMessage('modals.main.settings.sections.appearance.style.legacy'),
               value: 'legacy',
             },
             {
-              name: 'New',
+              name: variables.getMessage('modals.main.settings.sections.appearance.style.new'),
               value: 'new',
             },
           ]}
@@ -143,19 +143,19 @@ export default function AppearanceSettings() {
 
       <SettingsItem
         title={variables.getMessage('modals.main.settings.sections.appearance.accessibility.title')}
-        subtitle="Accessibility settings for Mue"
+        subtitle={variables.getMessage('modals.main.settings.sections.appearance.accessibility.description')}
         final={true}
       >
         <Dropdown
           label={variables.getMessage(
-            'modals.main.settings.sections.appearance.accessibility.text_shadow',
+            'modals.main.settings.sections.appearance.accessibility.text_shadow.title',
           )}
           name="textBorder"
           category="other"
         >
-          <option value="new">New</option> {/* default */}
-          <option value="true">Old</option> {/* old checkbox setting */}
-          <option value="none">None</option>
+          <option value="new">{variables.getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow.new',)}</option> {/* default */}
+          <option value="true">{variables.getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow.old',)}</option> {/* old checkbox setting */}
+          <option value="none">{variables.getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow.none')}</option>
         </Dropdown>
         <Checkbox
           text={variables.getMessage(

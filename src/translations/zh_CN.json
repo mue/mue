@@ -34,7 +34,13 @@
       "not_found": "未找到",
       "meters": "{amount}米",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}"
+      "feels_like": "Feels like {amount}",
+      "options": {
+        "basic": "Basic",
+        "standard": "Standard",
+        "expanded": "Expanded",
+        "custom": "Custom"
+      }
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -262,6 +268,7 @@
             "title": "天气",
             "location": "位置",
             "auto": "自动定位",
+            "widget_type": "Widget Type",
             "temp_format": {
               "title": "温度单位",
               "celsius": "摄氏度",
@@ -293,12 +300,21 @@
             "title": "消息",
             "add": "继续添加消息",
             "messages": "Messages",
-            "text": "文本"
+            "text": "文本",
+            "no_messages": "No messages",
+            "add_some": "Go ahead and add some."
           },
           "appearance": {
             "title": "外观",
+            "style": {
+              "title": "Widget Style",
+              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
+              "legacy": "Legacy",
+              "new": "New"
+            },
             "theme": {
               "title": "主题",
+              "description": "Change the theme of the Mue widgets and modals",
               "auto": "自动选择",
               "light": "日间主题",
               "dark": "夜间主题"
@@ -317,6 +333,7 @@
             },
             "font": {
               "title": "字体",
+              "description": "Change the font used in Mue",
               "custom": "自定义字体",
               "google": "从 Google Fonts 导入",
               "weight": {
@@ -339,6 +356,7 @@
             },
             "accessibility": {
               "title": "无障碍设定",
+              "description": "Accessibility settings for Mue",
               "animations": "动画效果",
               "text_shadow": "加深字体阴影",
               "widget_zoom": "小部件缩放",

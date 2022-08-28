@@ -34,7 +34,13 @@
       "not_found": "Bulunamadı.",
       "meters": "{amount} metre",
       "extra_information": "Ek Bilgilendirme",
-      "feels_like": "{amount} gibi hissettiriyor."
+      "feels_like": "{amount} gibi hissettiriyor.",
+      "options": {
+        "basic": "Basic",
+        "standard": "Standard",
+        "expanded": "Expanded",
+        "custom": "Custom"
+      }
     },
     "quote": {
       "link_tooltip": "Wikipedia'da Aç",
@@ -262,6 +268,7 @@
             "title": "Hava Durumu",
             "location": "Konum",
             "auto": "Otomatik",
+            "widget_type": "Widget Type",
             "temp_format": {
               "title": "Sıcaklık formatı",
               "celsius": "Santigrat",
@@ -293,12 +300,21 @@
             "title": "Mesaj",
             "add": "Mesaj Ekle",
             "messages": "Mesajlar",
-            "text": "Metin"
+            "text": "Metin",
+            "no_messages": "No messages",
+            "add_some": "Go ahead and add some."
           },
           "appearance": {
             "title": "Görünüm",
+            "style": {
+              "title": "Widget Style",
+              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
+              "legacy": "Legacy",
+              "new": "New"
+            },
             "theme": {
               "title": "Tema",
+              "description": "Change the theme of the Mue widgets and modals",
               "auto": "Otomatik",
               "light": "Açık",
               "dark": "Koyu"
@@ -317,6 +333,7 @@
             },
             "font": {
               "title": "Yazı tipi",
+              "description": "Change the font used in Mue",
               "custom": "Özel yazı tipi",
               "google": "Google Fonts'tan içe aktar",
               "weight": {
@@ -339,6 +356,7 @@
             },
             "accessibility": {
               "title": "Ulaşılabilirlik",
+              "description": "Accessibility settings for Mue",
               "animations": "Animasyonlar",
               "text_shadow": "Widget metin gölgesi",
               "widget_zoom": "Widget Yakınlaştırma",

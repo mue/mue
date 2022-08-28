@@ -95,9 +95,7 @@ export default class Greeting extends PureComponent {
 
         if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
           if (localStorage.getItem('birthdayage') === 'true') {
-            const text = variables.language.variables
-              .getMessage('widgets.greeting.birthday')
-              .split(' ');
+            const text = variables.getMessage('widgets.greeting.birthday').split(' ');
             message = `${text[0]} ${nth(this.calculateAge(birth))} ${text[1]}`;
           } else {
             message = variables.getMessage('widgets.greeting.birthday');

@@ -69,12 +69,12 @@ export default class TimeSettings extends PureComponent {
           zoomCategory="weather"
           switch={true}
         />
-        <SettingsItem title="Widget Type">
+        <SettingsItem title={variables.getMessage('modals.main.settings.sections.weather.widget_type')}>
           <Dropdown label="Type" name="weatherType" category="weather">
-            <option value="1">Basic</option>
-            <option value="2">Standard</option>
-            <option value="3">Expanded</option>
-            <option value="4">Custom</option>
+            <option value="1">{variables.getMessage('widgets.weather.options.basic')}</option>
+            <option value="2">{variables.getMessage('widgets.weather.options.standard')}</option>
+            <option value="3">{variables.getMessage('widgets.weather.options.expanded')}</option>
+            <option value="4">{variables.getMessage('widgets.weather.options.custom')}</option>
           </Dropdown>
         </SettingsItem>
         <SettingsItem

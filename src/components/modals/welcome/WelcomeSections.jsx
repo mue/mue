@@ -264,23 +264,23 @@ export default class WelcomeSections extends PureComponent {
     const style = (
       <>
         <span className="mainTitle">
-          {variables.getMessage('modals.main.settings.sections.appearance.style.title')}
+          {variables.getMessage('modals.welcome.sections.style.title')}
         </span>
         <span className="subtitle">
-          {variables.getMessage('modals.main.settings.sections.appearance.style.description')}
+          {variables.getMessage('modals.welcome.sections.style.description')}
         </span>
         <div className="themesToggleArea">
           <div className="options">
             <div className={this.state.legacyStyle} onClick={() => this.changeStyle('legacy')}>
               <MdArchive />
               <span>
-                {variables.getMessage('modals.main.settings.sections.appearance.style.legacy')}
+                {variables.getMessage('modals.welcome.sections.style.legacy')}
               </span>
             </div>
             <div className={this.state.newStyle} onClick={() => this.changeStyle('new')}>
               <MdOutlineWhatshot />
               <span>
-                {variables.getMessage('modals.main.settings.sections.appearance.style.modern')}
+                {variables.getMessage('modals.welcome.sections.style.modern')}
               </span>
             </div>
           </div>

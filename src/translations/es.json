@@ -34,7 +34,13 @@
       "not_found": "No encontrado",
       "meters": "{amount} metros",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}"
+      "feels_like": "Feels like {amount}",
+      "options": {
+        "basic": "Basic",
+        "standard": "Standard",
+        "expanded": "Expanded",
+        "custom": "Custom"
+      }
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -262,6 +268,7 @@
             "title": "Clima",
             "location": "Ubicación",
             "auto": "Auto",
+            "widget_type": "Widget Type",
             "temp_format": {
               "title": "Formato de la temperatura",
               "celsius": "Celsius",
@@ -293,12 +300,21 @@
             "title": "Mensaje",
             "add": "Añadir mensaje",
             "messages": "Messages",
-            "text": "Texto"
+            "text": "Texto",
+            "no_messages": "No messages",
+            "add_some": "Go ahead and add some."
           },
           "appearance": {
             "title": "Apariencia",
+            "style": {
+              "title": "Widget Style",
+              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
+              "legacy": "Legacy",
+              "new": "New"
+            },
             "theme": {
               "title": "Tema",
+              "description": "Change the theme of the Mue widgets and modals",
               "auto": "Auto",
               "light": "Claro",
               "dark": "Oscuro"
@@ -317,6 +333,7 @@
             },
             "font": {
               "title": "Fuente",
+              "description": "Change the font used in Mue",
               "custom": "Fuente personalizada",
               "google": "Importar desde Google Fonts",
               "weight": {
@@ -339,6 +356,7 @@
             },
             "accessibility": {
               "title": "Accesibilidad",
+              "description": "Accessibility settings for Mue",
               "animations": "Animaciones",
               "text_shadow": "Sombra de texto del widget",
               "widget_zoom": "Zoom del widget",

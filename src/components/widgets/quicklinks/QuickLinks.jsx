@@ -215,9 +215,6 @@ export default class QuickLinks extends PureComponent {
             style={{ display: this.state.showAddLink }}
           >
             <span className="dropdown-title">{variables.getMessage('widgets.quicklinks.new')}</span>
-            <span className="dropdown-subtitle">
-              {variables.getMessage('widgets.quicklinks.new')} Description
-            </span>
             <TextareaAutosize
               maxRows={1}
               placeholder={variables.getMessage('widgets.quicklinks.name')}
