@@ -122,7 +122,7 @@ export default class TimeSettings extends PureComponent {
             category="weather"
           />
         </SettingsItem>
-        {localStorage.getItem('weatherType') == 4 && (
+        {localStorage.getItem('weatherType') === 4 && (
           <SettingsItem title="Custom Settings">
             <Checkbox
               name="weatherdescription"

@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client';
+import { render } from 'react-dom';
 import * as Sentry from '@sentry/react';
 
 import App from './App';
@@ -40,7 +40,7 @@ variables.language = new I18n(variables.languagecode, {
   tr_TR: translations.tr_TR,
 });
 
-variables.getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
+variables.getMessage = (text, optional) => variables.language.getMessage(variables.languagecode, text, optional || {});
 
 // set html language tag
 if (variables.languagecode !== 'en_GB' || variables.languagecode !== 'en_US') {
@@ -61,4 +61,4 @@ Sentry.init({
   autoSessionTracking: false,
 });
 
-createRoot(document.getElementById('root')).render(<App />);
+render(<App />, document.getElementById('root'));
