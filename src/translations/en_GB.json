@@ -34,13 +34,7 @@
       "not_found": "Not Found",
       "meters": "{amount} metres",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}",
-      "options": {
-        "basic": "Basic",
-        "standard": "Standard",
-        "expanded": "Expanded",
-        "custom": "Custom"
-      }
+      "feels_like": "Feels like {amount}"
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -235,7 +229,10 @@
                 "high": "High Quality",
                 "normal": "Normal Quality",
                 "datasaver": "Data Saver"
-              }
+              },
+              "custom_title": "Custom Images",
+              "custom_description": "Select images from your local computer",
+              "remove": "Remove Image"
             },
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
@@ -287,7 +284,14 @@
               "min_temp": "Minimum temperature",
               "max_temp": "Maximum temperature",
               "atmospheric_pressure": "Atmospheric pressure"
-            }
+            },
+            "options": {
+              "basic": "Basic",
+              "standard": "Standard",
+              "expanded": "Expanded",
+              "custom": "Custom"
+            },
+            "custom_settings": "Custom Settings"
           },
           "quicklinks": {
             "title": "Quick Links",
