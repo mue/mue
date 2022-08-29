@@ -331,7 +331,7 @@ export default class Marketplace extends PureComponent {
                 <span className="backTitle">
                   {variables.getMessage('modals.main.navbar.marketplace')}
                 </span>
-                <MdOutlineKeyboardArrowRight /> Collection
+                <MdOutlineKeyboardArrowRight /> {variables.getMessage('modals.main.marketplace.collection')}
               </span>
             </div>
             <div

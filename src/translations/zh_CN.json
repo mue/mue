@@ -235,7 +235,10 @@
                 "high": "高画质",
                 "normal": "普通画质",
                 "datasaver": "省流模式"
-              }
+              },
+              "custom_title": "Custom Images",
+              "custom_description": "Select images from your local computer",
+              "remove": "Remove Image"
             },
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
@@ -287,7 +290,14 @@
               "min_temp": "最低温度",
               "max_temp": "最高温度",
               "atmospheric_pressure": "大气压"
-            }
+            },
+            "options": {
+              "basic": "Basic",
+              "standard": "Standard",
+              "expanded": "Expanded",
+              "custom": "Custom"
+            },
+            "custom_settings": "Custom Settings"
           },
           "quicklinks": {
             "title": "快捷方式",
@@ -480,12 +490,14 @@
       },
       "marketplace": {
         "all": "All",
+        "learn_more": "Learn More",
         "photo_packs": "图片包",
         "quote_packs": "名言包",
         "preset_settings": "预设设定",
         "no_items": "本类别为空",
+        "collection": "Collection",
         "explore_collection": "Explore Collection",
-        "collection": "Collections",
+        "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
         "knowledgebase_two": "knowledgebase",
@@ -497,6 +509,7 @@
           "description": "Description",
           "show_more": "Show More",
           "show_less": "Show Less",
+          "showing": "Showing",
           "no_images": "No. Images",
           "no_quotes": "No. Quotes",
           "version": "版本",

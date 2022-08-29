@@ -139,7 +139,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case variables.getMessage('modals.main.marketplace.preset_settings'):
       icon = <Advanced />;
       break;
-    case variables.getMessage('modals.main.marketplace.collection'):
+    case variables.getMessage('modals.main.marketplace.collections'):
       icon = <Collections />;
       break;
 

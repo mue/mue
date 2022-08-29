@@ -235,7 +235,10 @@
                 "high": "Yüksek Kalite",
                 "normal": "Normal Kalite",
                 "datasaver": "Veri Tasarrufu"
-              }
+              },
+              "custom_title": "Custom Images",
+              "custom_description": "Select images from your local computer",
+              "remove": "Remove Image"
             },
             "display": "Görüntüleme",
             "display_subtitle": "Arka plan ve fotoğraf bilgilerinin nasıl yüklendiğini değiştirin.",
@@ -287,7 +290,14 @@
               "min_temp": "Minimum Sıcaklık",
               "max_temp": "Maksimum Sıcaklık",
               "atmospheric_pressure": "Atmosferik Basınç"
-            }
+            },
+            "options": {
+              "basic": "Basic",
+              "standard": "Standard",
+              "expanded": "Expanded",
+              "custom": "Custom"
+            },
+            "custom_settings": "Custom Settings"
           },
           "quicklinks": {
             "title": "Hızlı Linkler",
@@ -480,12 +490,14 @@
       },
       "marketplace": {
         "all": "Tümü",
+        "learn_more": "Learn More",
         "photo_packs": "Fotoğraf Paketleri",
         "quote_packs": "Alıntı Paketleri",
         "preset_settings": "Ön Ayar Ayarları",
         "no_items": "Bu kategoride öğe yok",
+        "collection": "Collection",
         "explore_collection": "Koleksiyonu Keşfedin",
-        "collection": "Collections",
+        "collections": "Collections",
         "cant_find": "Aradığınızı bulamıyor musunuz?",
         "knowledgebase_one": "Kendiniz oluşturmak için",
         "knowledgebase_two": "bilgilendirme sayfamızı",
@@ -497,6 +509,7 @@
           "description": "Açıklama/Tanım",
           "show_more": "Daha fazla göster",
           "show_less": "Daha az göster",
+          "showing": "Showing",
           "no_images": "Fotoğraf bulunamadı",
           "no_quotes": "Alıntı bulunamadı",
           "version": "Versiyon",

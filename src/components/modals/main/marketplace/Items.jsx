@@ -48,7 +48,7 @@ export default function Items({
             </div>
             {collection.news === true ? (
               <a className="nice-button" href={collection.news_link}>
-                Learn More <MdOutlineOpenInNew />
+                {variables.getMessage('modals.main.marketplace.learn_more')} <MdOutlineOpenInNew />
               </a>
             ) : (
               <button className="nice-button" onClick={() => collectionFunction(collection.name)}>
@@ -77,16 +77,16 @@ export default function Items({
       <div className="showMoreItems">
         {count !== items.length && items.length >= 8 ? (
           <span className="link" onClick={incrementCount}>
-            <MdExpandMore /> Show More
+            <MdExpandMore /> {variables.getMessage('modals.main.marketplace.product.show_more')}
           </span>
         ) : null}
         {items.length <= 8 ? (
           <span className="subtitle">
-            Showing {items.length} / {items.length}
+            {variables.getMessage('modals.main.marketplace.product.showing')} {items.length} / {items.length}
           </span>
         ) : (
           <span className="subtitle">
-            Showing {count} / {items.length}
+            {variables.getMessage('modals.main.marketplace.product.showing')} {count} / {items.length}
           </span>
         )}
       </div>

@@ -235,7 +235,10 @@
                 "high": "High Quality",
                 "normal": "Normal Quality",
                 "datasaver": "Data Saver"
-              }
+              },
+              "custom_title": "Custom Images",
+              "custom_description": "Select images from your local computer",
+              "remove": "Remove Image"
             },
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
@@ -287,7 +290,14 @@
               "min_temp": "Minimum temperature",
               "max_temp": "Maximum temperature",
               "atmospheric_pressure": "Atmospheric pressure"
-            }
+            },
+            "options": {
+              "basic": "Basic",
+              "standard": "Standard",
+              "expanded": "Expanded",
+              "custom": "Custom"
+            },
+            "custom_settings": "Custom Settings"
           },
           "quicklinks": {
             "title": "Quick Links",
@@ -480,12 +490,14 @@
       },
       "marketplace": {
         "all": "All",
+        "learn_more": "Learn More",
         "photo_packs": "Bilde pakker",
         "quote_packs": "Sitat pakker",
         "preset_settings": "Preset instillinger",
         "no_items": "No items in this category",
+        "collection": "Collection",
         "explore_collection": "Explore Collection",
-        "collection": "Collections",
+        "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
         "knowledgebase_two": "knowledgebase",
@@ -497,6 +509,7 @@
           "description": "Description",
           "show_more": "Show More",
           "show_less": "Show Less",
+          "showing": "Showing",
           "no_images": "No. Images",
           "no_quotes": "No. Quotes",
           "version": "Versjon",
