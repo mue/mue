@@ -47,7 +47,7 @@ export default class Marketplace extends PureComponent {
       // get item info
       try {
         let type = this.props.type;
-        if (type === 'all') {
+        if (type === 'all' || type === 'collections') {
           type = data.type;
         }
         info = await (
