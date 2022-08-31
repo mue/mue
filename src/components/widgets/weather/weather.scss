@@ -31,6 +31,7 @@
   }
 
   .extra-info {
+    width: 100%;
     font-size: 18px;
     gap: 40px;
 
@@ -56,6 +57,7 @@
 }
 
 .top-weather {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 25px;
@@ -99,9 +101,13 @@
     }
 
     .weatherIcon {
-      font-size: 1.4em !important;
+      font-size: 21px !important;
       display: grid;
       align-items: center;
+    }
+    .materialWeatherIcon {
+      font-size: 18px !important;
+      padding: 2px;
     }
   }
 }

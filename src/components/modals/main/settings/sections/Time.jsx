@@ -109,7 +109,7 @@ export default class TimeSettings extends PureComponent {
               type="color"
               name="hourColour"
               className="minuteColour"
-              onChange={(event) => this.updateColour('hour', event)}
+              onChange={(event) => this.updateColour('hourColour', event)}
               value={this.state.hourColour}
             ></input>
             <label htmlFor={'hourColour'} className="customBackgroundHex">
@@ -131,7 +131,7 @@ export default class TimeSettings extends PureComponent {
               type="color"
               name="minuteColour"
               className="minuteColour"
-              onChange={(event) => this.updateColour('minute', event)}
+              onChange={(event) => this.updateColour('minuteColour', event)}
               value={this.state.minuteColour}
             ></input>
             <label htmlFor={'minuteColour'} className="customBackgroundHex">

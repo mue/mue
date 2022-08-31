@@ -23,8 +23,9 @@ export default class Navbar extends PureComponent {
   }
 
   setZoom() {
-    const zoomNavbar = Number((localStorage.getItem('zoomNavbar') || 100) / 100);
-    this.navbarContainer.current.style.fontSize = `${zoomNavbar}em`;
+    this.setState({
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + "rem"
+    })
   }
 
   componentDidMount() {
@@ -60,27 +61,19 @@ export default class Navbar extends PureComponent {
     const backgroundEnabled = localStorage.getItem('background') === 'true';
 
     const navbar = (
-      <div className="navbar-container" ref={this.navbarContainer}>
-        <div className={this.state.classList}>
-          {localStorage.getItem('view') === 'true' && backgroundEnabled ? <Maximise /> : null}
-          {localStorage.getItem('notesEnabled') === 'true' ? <Notes /> : null}
-          {localStorage.getItem('todo') === 'true' ? <Todo /> : null}
+      <div className="navbar-container" >
+        <div className={this.state.classList} >
+          {localStorage.getItem('view') === 'true' && backgroundEnabled ? <Maximise fontSize={this.state.zoomFontSize} /> : null}
+          {localStorage.getItem('notesEnabled') === 'true' ? <Notes fontSize={this.state.zoomFontSize} /> : null}
+          {localStorage.getItem('todo') === 'true' ? <Todo fontSize={this.state.zoomFontSize} /> : null}
 
           {this.refreshEnabled !== 'false' ? (
             <Tooltip title={variables.getMessage('widgets.navbar.tooltips.refresh')}>
-              <button onClick={() => this.refresh()}>
+              <button onClick={() => this.refresh()} style={{ fontSize: this.state.zoomFontSize }}>
                 <MdRefresh className="refreshicon topicons" />
               </button>
             </Tooltip>
           ) : null}
-
-          {/*<InfoTooltip
-            title="You can now sync your settings"
-            subtitle={'All settings, such as theme can now be synced across clients'}
-            linkURL={'https://www.youtube.com/watch?v=dQw4w9WgXcQ'}
-            linkText={'Learn more'}
-              >
-              </InfoTooltip>*/}
           <Tooltip
             title={variables.getMessage('modals.main.navbar.settings', {
               type: variables.getMessage(
@@ -88,7 +81,7 @@ export default class Navbar extends PureComponent {
               ),
             })}
           >
-            <button onClick={() => this.props.openModal('mainModal')}>
+            <button onClick={() => this.props.openModal('mainModal')} style={{ fontSize: this.state.zoomFontSize }}>
               <MdSettings className="settings-icon topicons" />
             </button>
           </Tooltip>

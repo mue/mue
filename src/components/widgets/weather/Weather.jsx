@@ -144,7 +144,7 @@ export default class Weather extends PureComponent {
   }
 
   render() {
-    const weatherType = localStorage.getItem('weatherType');
+    const weatherType = localStorage.getItem('weatherType') || 1;
     const enabled = (setting) => {
       return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === '3';
     };
@@ -220,7 +220,7 @@ export default class Weather extends PureComponent {
               placement="left"
             >
               <span>
-                <WeatherIcon classsName="weatherIcon" name={this.state.icon} />
+                <WeatherIcon className="weatherIcon" name={this.state.icon} />
                 {this.state.weather.description}
               </span>
             </Tooltip>
@@ -233,7 +233,7 @@ export default class Weather extends PureComponent {
               placement="left"
             >
               <span>
-                <MdDisabledVisible style={{ padding: '3px' }} />
+                <MdDisabledVisible className="materialWeatherIcon" />
                 {variables.getMessage('widgets.weather.meters', {
                   amount: this.state.weather.visibility,
                 })}
@@ -248,8 +248,8 @@ export default class Weather extends PureComponent {
               placement="left"
             >
               <span>
-                <WiHumidity style={{ padding: '3px' }} />
-                {this.state.weather.humdity}
+                <WiHumidity className="materialWeatherIcon" />
+                {this.state.weather.humidity}
               </span>
             </Tooltip>
           ) : null}

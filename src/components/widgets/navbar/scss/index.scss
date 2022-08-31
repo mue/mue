@@ -34,16 +34,16 @@
 .old {
   .tooltip {
     button {
-      @include basicIconButton(12px, 20px, legacy);
+      @include basicIconButton(12px, 1.2rem, legacy);
     }
   }
   .first {
-    @include basicIconButton(12px, 20px, legacy);
+    @include basicIconButton(12px, 1.2rem, legacy);
   }
 }
 .new {
   button {
-    @include basicIconButton(12px, 20px, ui);
+    @include basicIconButton(12px, 1.2rem, ui);
   }
 }
 

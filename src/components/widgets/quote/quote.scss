@@ -56,7 +56,7 @@ h1.quoteauthor {
 }
 
 .author-license {
-  font-size: clamp(8px, 2.5vw, 0.25em);
+  font-size: clamp(8px, 2.5vw, 0.1em);
   @include themed() {
     color: t($subColor);
   }

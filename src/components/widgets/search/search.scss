@@ -10,7 +10,7 @@
     @extend %basic;
     outline: none;
     border: none;
-    font-size: 20px;
+    font-size: 1.2rem;
     padding: 10px 0 10px 20px;
 
     &::placeholder {
@@ -40,7 +40,7 @@
   flex-flow: column;
 
   button {
-    @include basicIconButton(12px, 20px, ui);
+    @include basicIconButton(12px, 1.2rem, ui);
   }
 }
 
