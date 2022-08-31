@@ -47,11 +47,11 @@ export default function Items({
               <span className="subtitle">{collection.description}</span>
             </div>
             {collection.news === true ? (
-              <a className="nice-button" href={collection.news_link}>
+              <a className="collectionButton" href={collection.news_link}>
                 {variables.getMessage('modals.main.marketplace.learn_more')} <MdOutlineOpenInNew />
               </a>
             ) : (
-              <button className="nice-button" onClick={() => collectionFunction(collection.name)}>
+              <button className="collectionButton" onClick={() => collectionFunction(collection.name)}>
                 <MdOutlineArrowForward />{' '}
                 {variables.getMessage('modals.main.marketplace.explore_collection')}
               </button>

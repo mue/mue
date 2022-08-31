@@ -47,14 +47,13 @@ export default function EmblaCarousel({ data }) {
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+    <div className="carousel">
+      <div className="carousel_viewport" ref={emblaRef}>
+        <div className="carousel_container">
           {data.map((photo, index) => (
-            <div className="embla__slide" key={index}>
-              <div className="embla__slide__inner">
+            <div className="carousel_slide" key={index}>
+              <div className="carousel_slide__inner">
                 <img
-                  className="embla__slide__img"
                   src={photo.url.default}
                   alt="Marketplace example screenshot"
                 />
@@ -64,7 +63,7 @@ export default function EmblaCarousel({ data }) {
         </div>
       </div>
       <button
-        className="embla__button embla__button--prev"
+        className="carousel_button prev"
         onClick={() => scroll('prev')}
         disabled={!prevBtnEnabled}
         title="Previous"
@@ -72,7 +71,7 @@ export default function EmblaCarousel({ data }) {
         <MdOutlineArrowBackIos />
       </button>
       <button
-        className="embla__button embla__button--next"
+        className="carousel_button next"
         onClick={() => scroll('next')}
         disabled={!nextBtnEnabled}
         title="Next"

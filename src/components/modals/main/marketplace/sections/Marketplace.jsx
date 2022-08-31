@@ -388,7 +388,7 @@ export default class Marketplace extends PureComponent {
                     <span className="subtitle">{item.description}</span>
                   </div>
                   <button
-                    className="nice-button"
+                    className="collectionButton"
                     onClick={() => this.toggle('collection', item.name)}
                   >
                     <MdOutlineArrowForward />{' '}

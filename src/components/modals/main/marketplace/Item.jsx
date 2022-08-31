@@ -103,8 +103,8 @@ export default class Item extends PureComponent {
         <div className="itemPage">
           <div className="itemShowcase">
             {this.props.data.data.photos ? (
-              <div className="embla">
-                <div className="embla__container">
+              <div className="carousel">
+                <div className="carousel_container">
                   <ImageCarousel data={this.props.data.data.photos} />
                 </div>
               </div>

@@ -408,8 +408,8 @@ p.author {
     justify-content: center;
   }
 
-  button.nice-button,
-  a.nice-button {
+  button.collectionButton,
+  a.collectionButton {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -428,7 +428,7 @@ p.author {
   }
 }
 
-a.nice-button {
+a.collectionButton {
   height: 40px;
   text-decoration: none;
   @include themed() {
