@@ -6,6 +6,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import { saveFile } from 'modules/helpers/settings/modals';
+import EventBus from 'modules/helpers/eventbus';
 
 class Notes extends PureComponent {
   constructor() {
@@ -15,6 +16,25 @@ class Notes extends PureComponent {
       visibility: localStorage.getItem('notesPinned') === 'true' ? 'visible' : 'hidden',
       showNotes: localStorage.getItem('notesPinned') === 'true' ? true : false,
     };
+  }
+
+  setZoom() {
+    this.setState({
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + "rem"
+    })
+  }
+
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'navbar' || data === 'background') {
+        this.forceUpdate();
+        try {
+          this.setZoom();
+        } catch (e) {}
+      }
+    });
+
+    this.setZoom();
   }
 
   setNotes = (e) => {
@@ -70,7 +90,7 @@ class Notes extends PureComponent {
           onFocus={() => this.showNotes()}
           onBlur={() => this.hideNotes()}
           ref={this.props.notesRef}
-          style={{ fontSize: this.props.fontSize }}
+          style={{ fontSize: this.state.zoomFontSize }}
         >
           <MdAssignment className="topicons"/>
         </button>

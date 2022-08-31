@@ -12,6 +12,7 @@ import Tooltip from '../../helpers/tooltip/Tooltip';
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
+import EventBus from 'modules/helpers/eventbus';
 
 const SortableItem = sortableElement(({ value }) => <div>{value}</div>);
 const SortableContainer = sortableContainer(({ children }) => <div>{children}</div>);
@@ -30,6 +31,25 @@ class Todo extends PureComponent {
       marginLeft: localStorage.getItem('refresh') === 'false' ? '-200px' : '-130px',
       showTodo: localStorage.getItem('todoPinned') === 'true',
     };
+  }
+
+  setZoom() {
+    this.setState({
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + "rem"
+    })
+  }
+
+  componentDidMount() {
+    EventBus.on('refresh', (data) => {
+      if (data === 'navbar' || data === 'background') {
+        this.forceUpdate();
+        try {
+          this.setZoom();
+        } catch (e) {}
+      }
+    });
+
+    this.setZoom();
   }
 
   arrayMove(array, oldIndex, newIndex) {
@@ -120,7 +140,7 @@ class Todo extends PureComponent {
           onFocus={() => this.hideTodo()}
           onBlur={() => this.showTodo()}
           ref={this.props.todoRef}
-          style={{ fontSize: this.props.fontSize }}
+          style={{ fontSize: this.state.zoomFontSize }}
         >
           <MdChecklist className="topicons" />
         </button>
