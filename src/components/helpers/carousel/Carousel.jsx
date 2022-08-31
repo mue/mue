@@ -52,7 +52,7 @@ export default function EmblaCarousel({ data }) {
         <div className="carousel_container">
           {data.map((photo, index) => (
             <div className="carousel_slide" key={index}>
-              <div className="carousel_slide__inner">
+              <div className="carousel_slide_inner">
                 <img
                   src={photo.url.default}
                   alt="Marketplace example screenshot"
