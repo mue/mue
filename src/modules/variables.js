@@ -7,7 +7,6 @@ const variables = {
     tabLoad: () => '',
     postEvent: () => '',
   },
-  //keybinds: {},
   constants,
 };
 

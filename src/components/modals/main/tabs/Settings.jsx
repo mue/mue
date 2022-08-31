@@ -15,7 +15,6 @@ import Weather from '../settings/sections/Weather';
 import Appearance from '../settings/sections/Appearance';
 import Language from '../settings/sections/Language';
 import Advanced from '../settings/sections/advanced/Advanced';
-//import Keybinds from '../settings/sections/Keybinds';
 import Stats from '../settings/sections/Stats';
 import Experimental from '../settings/sections/Experimental';
 import Changelog from '../settings/sections/Changelog';
@@ -93,7 +92,6 @@ export default function Settings(props) {
       >
         <Advanced />
       </div>
-      {/*<div label={variables.getMessage('modals.main.settings.sections.keybinds.title')} name='keybinds'><Keybinds/></div>*/}
       <div label={variables.getMessage('modals.main.settings.sections.stats.title')} name="stats">
         <Stats />
       </div>

@@ -18,7 +18,6 @@ import {
   MdTranslate as Language,
   MdOutlineSettings as Advanced,
   MdBugReport as Experimental,
-  //KeyboardAltOutlined as Keybinds,
   MdOutlineAssessment as Stats,
   MdOutlineNewReleases as Changelog,
   MdInfoOutline as About,
@@ -99,7 +98,6 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case variables.getMessage('modals.main.settings.sections.advanced.title'):
       icon = <Advanced />;
       break;
-    //case variables.getMessage('modals.main.settings.sections.keybinds.title'): icon = <Keybinds/>; break;
     case variables.getMessage('modals.main.settings.sections.stats.title'):
       icon = <Stats />;
       break;

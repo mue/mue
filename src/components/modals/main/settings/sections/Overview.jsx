@@ -114,7 +114,7 @@ export default class OrderSettings extends PureComponent {
     </span>*/}
         <div className="overviewGrid">
           <div>
-            <span className="title">Preview</span>
+            <span className="title">{variables.getMessage('modals.welcome.buttons.preview')}</span>
             <div className="tabPreview">
               <div className="previewItem" style={{ maxWidth: '50%' }}>
                 {this.state.items.map((value, index) => {

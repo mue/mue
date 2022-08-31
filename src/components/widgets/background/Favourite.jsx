@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdStar, MdStarBorder } from 'react-icons/md';
-//import Hotkeys from 'react-hot-keys';
 
 export default class Favourite extends PureComponent {
   buttons = {
@@ -91,11 +90,6 @@ export default class Favourite extends PureComponent {
       return null;
     }
 
-    return (
-      <>
-        {this.state.favourited}
-        {/*variables.keybinds.favouriteBackground && variables.keybinds.favouriteBackground !== '' ? <Hotkeys keyName={variables.keybinds.favouriteBackground} onKeyDown={() => this.favourite()} /> : null*/}
-      </>
-    );
+    return this.state.favourited;
   }
 }

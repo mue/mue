@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import Modal from 'react-modal';
-//import Hotkeys from 'react-hot-keys';
 
 import Main from './main/Main';
 import Navbar from '../widgets/navbar/Navbar';
@@ -104,7 +103,6 @@ export default class Modals extends PureComponent {
           <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()} />
         </Modal>
         {this.state.preview ? <Preview setup={() => window.location.reload()} /> : null}
-        {/*variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null*/}
       </>
     );
   }

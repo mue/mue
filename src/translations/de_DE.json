@@ -419,29 +419,6 @@
             "achievements": "Achievements",
             "unlocked": "{count} Unlocked"
           },
-          "keybinds": {
-            "title": "Tastenbindungen",
-            "recording": "Aufnahme...",
-            "click_to_record": "Klicken Sie zum Aufzeichnen",
-            "background": {
-              "favourite": "Bevorzugter Hintergrund",
-              "maximise": "Hintergrund maximieren",
-              "download": "Hintergrund herunterladen",
-              "show_info": "Hintergrundinformationen anzeigen"
-            },
-            "quote": {
-              "favourite": "Lieblings Zitate",
-              "copy": "Zitat kopieren",
-              "tweet": "Zitat twittern"
-            },
-            "notes": {
-              "pin": "Notizen Anheften",
-              "copy": "Notizen kopieren"
-            },
-            "search": "Fokus Suche",
-            "quicklinks": "Umschalten auf Quicklink hinzufügen",
-            "modal": "Modal umschalten"
-          },
           "experimental": {
             "title": "Experimentell",
             "warning": "Diese Einstellungen sind nicht vollständig getestet/implementiert und funktionieren möglicherweise nicht korrekt!",

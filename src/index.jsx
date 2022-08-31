@@ -51,10 +51,6 @@ if (localStorage.getItem('stats') === 'true') {
   variables.stats = Stats;
 }
 
-/*if (localStorage.getItem('keybindsEnabled') === 'true') {
-  variables.keybinds = JSON.parse(localStorage.getItem('keybinds') || '{}');
-}*/
-
 Sentry.init({
   dsn: variables.constants.SENTRY_DSN,
   defaultIntegrations: false,

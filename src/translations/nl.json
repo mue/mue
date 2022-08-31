@@ -418,29 +418,6 @@
             "achievements": "Achievements",
             "unlocked": "{count} Unlocked"
           },
-          "keybinds": {
-            "title": "Keybinds",
-            "recording": "Recording...",
-            "click_to_record": "Click to record",
-            "background": {
-              "favourite": "Favourite background",
-              "maximise": "Maximise background",
-              "download": "Download background",
-              "show_info": "Show background information"
-            },
-            "quote": {
-              "favourite": "Favourite quote",
-              "copy": "Copy quote",
-              "tweet": "Tweet quote"
-            },
-            "notes": {
-              "pin": "Pin notes",
-              "copy": "Copy notes"
-            },
-            "search": "Focus search",
-            "quicklinks": "Toggle add quick link",
-            "modal": "Toggle modal"
-          },
           "experimental": {
             "title": "Experimenteel",
             "warning": "These settings have not been fully tested/implemented and may not work correctly!",

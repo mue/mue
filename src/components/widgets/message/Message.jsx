@@ -26,14 +26,17 @@ export default class Message extends PureComponent {
         }em`;
       }
     });
+
     const messages = JSON.parse(localStorage.getItem('messages')) || [];
 
     this.message.current.style.fontSize = `${
       1.6 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
     }em`;
+    
     if (messages.length === 0) {
       return (this.message.current.style.display = 'none');
     }
+
     this.setState({
       messageText: messages[Math.floor(Math.random() * messages.length)],
     });

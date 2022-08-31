@@ -45,15 +45,12 @@ export default class Navbar extends PureComponent {
   refresh() {
     switch (this.refreshValue) {
       case 'background':
-        EventBus.dispatch('refresh', 'backgroundrefresh');
-        break;
+        return EventBus.dispatch('refresh', 'backgroundrefresh');
       case 'quote':
-        EventBus.dispatch('refresh', 'quoterefresh');
-        break;
+        return EventBus.dispatch('refresh', 'quoterefresh');
       case 'quotebackground':
         EventBus.dispatch('refresh', 'quoterefresh');
-        EventBus.dispatch('refresh', 'backgroundrefresh');
-        break;
+        return EventBus.dispatch('refresh', 'backgroundrefresh');
       default:
         window.location.reload();
     }

@@ -11,11 +11,9 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
-//import Hotkeys from 'react-hot-keys';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 
 const SortableItem = sortableElement(({ value }) => <div>{value}</div>);
-
 const SortableContainer = sortableContainer(({ children }) => <div>{children}</div>);
 
 class Todo extends PureComponent {
@@ -55,15 +53,9 @@ class Todo extends PureComponent {
   }
 
   hideTodo() {
-    if (localStorage.getItem('todoPinned') === 'true') {
-      this.setState({
-        showTodo: true,
-      });
-    } else {
-      this.setState({
-        showTodo: false,
-      });
-    }
+    this.setState({
+      showTodo: (localStorage.getItem('todoPinned') === 'true'),
+    });
   }
 
   updateTodo(action, index, data) {

@@ -418,29 +418,6 @@
             "achievements": "Achievements",
             "unlocked": "{count} Unlocked"
           },
-          "keybinds": {
-            "title": "快捷键",
-            "recording": "等待按下快捷键...",
-            "click_to_record": "点击后输入快捷键",
-            "background": {
-              "favourite": "收藏背景",
-              "maximise": "仅显示背景",
-              "download": "下载背景",
-              "show_info": "显示背景图片信息"
-            },
-            "quote": {
-              "favourite": "收藏名言",
-              "copy": "复制名言",
-              "tweet": "发推名言"
-            },
-            "notes": {
-              "pin": "贴住便签",
-              "copy": "复制便签"
-            },
-            "search": "移动光标到搜索框",
-            "quicklinks": "显示添加快捷方式对话框",
-            "modal": "显示设置"
-          },
           "experimental": {
             "title": "实验性功能",
             "warning": "以下设置仍未完成编写或测试，可能无法正常运作！",

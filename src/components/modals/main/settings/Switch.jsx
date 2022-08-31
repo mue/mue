@@ -37,20 +37,18 @@ export default class Switch extends PureComponent {
 
   render() {
     return (
-      <>
-        <FormControlLabel
-          control={
-            <SwitchUI
-              name={this.props.name}
-              color="primary"
-              checked={this.state.checked}
-              onChange={this.handleChange}
-            />
-          }
-          label={this.props.header ? '' : this.props.text}
-          labelPlacement="start"
-        />
-      </>
+      <FormControlLabel
+        control={
+          <SwitchUI
+            name={this.props.name}
+            color="primary"
+            checked={this.state.checked}
+            onChange={this.handleChange}
+          />
+        }
+        label={this.props.header ? '' : this.props.text}
+        labelPlacement="start"
+      />
     );
   }
 }

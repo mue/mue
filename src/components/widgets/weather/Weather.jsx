@@ -190,12 +190,10 @@ export default class Weather extends PureComponent {
                 {this.state.weather.wind_speed}
                 <span className="minmax"> m/s</span>{' '}
                 {enabled('windDirection') ? (
-                  <div className="weatherIcon">
-                    <WindDirectionIcon
-                      className="weatherIcon"
-                      degrees={this.state.weather.wind_degrees}
-                    />
-                  </div>
+                  <WindDirectionIcon
+                    className="weatherIcon"
+                    degrees={this.state.weather.wind_degrees}
+                  />
                 ) : null}
               </span>
             </Tooltip>
@@ -222,9 +220,7 @@ export default class Weather extends PureComponent {
               placement="left"
             >
               <span>
-                <div className="weatherIcon">
-                  <WeatherIcon name={this.state.icon} />
-                </div>
+                <WeatherIcon classsName="weatherIcon" name={this.state.icon} />
                 {this.state.weather.description}
               </span>
             </Tooltip>
@@ -244,42 +240,49 @@ export default class Weather extends PureComponent {
               </span>
             </Tooltip>
           ) : null}
+          {enabled('humidity') ? (
+            <Tooltip
+              title={variables.getMessage(
+                'modals.main.settings.sections.weather.extra_info.humidity',
+              )}
+              placement="left"
+            >
+              <span>
+                <WiHumidity style={{ padding: '3px' }} />
+                {this.state.weather.humdity}
+              </span>
+            </Tooltip>
+          ) : null}
         </div>
       );
     };
 
     return (
       <div className="weather">
-        <div>
-          <div className="top-weather">
-            {localStorage.getItem('weatherType') >= 1 && (
-              <div>
-                <WeatherIcon name={this.state.icon} />
-                <span>{this.state.weather.temp + this.state.temp_text}</span>
-              </div>
-            )}
-            {localStorage.getItem('weatherType') >= 2 && (
-              <span className="minmax">
-                <span className="subtitle">
-                  {this.state.weather.temp_min + this.state.temp_text}
-                </span>
-                <span className="subtitle">
-                  {this.state.weather.temp_max + this.state.temp_text}
-                </span>
-              </span>
-            )}
-          </div>
-          {localStorage.getItem('weatherType') >= 2 && (
-            <div className="extra-info">
-              <span>
-                {variables.getMessage('widgets.weather.feels_like', {
-                  amount: this.state.weather.temp_feels_like + this.state.temp_text,
-                })}
-              </span>
-              <span className="loc">{this.state.location}</span>
+        <div className="top-weather">
+          {weatherType >= 1 && (
+            <div>
+              <WeatherIcon name={this.state.icon} />
+              <span>{this.state.weather.temp + this.state.temp_text}</span>
             </div>
           )}
+          {weatherType >= 2 && (
+            <span className="minmax">
+              <span className="subtitle">{this.state.weather.temp_min + this.state.temp_text}</span>
+              <span className="subtitle">{this.state.weather.temp_max + this.state.temp_text}</span>
+            </span>
+          )}
         </div>
+        {weatherType >= 2 && (
+          <div className="extra-info">
+            <span>
+              {variables.getMessage('widgets.weather.feels_like', {
+                amount: this.state.weather.temp_feels_like + this.state.temp_text,
+              })}
+            </span>
+            <span className="loc">{this.state.location}</span>
+          </div>
+        )}
         {weatherType >= 3 ? expandedInfo() : null}
       </div>
     );

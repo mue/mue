@@ -5,7 +5,6 @@ import { useFloating, shift } from '@floating-ui/react-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
 import Tooltip from '../../helpers/tooltip/Tooltip';
-//import Hotkeys from 'react-hot-keys';
 import { saveFile } from 'modules/helpers/settings/modals';
 
 class Notes extends PureComponent {
@@ -32,30 +31,18 @@ class Notes extends PureComponent {
   }
 
   hideNotes() {
-    if (localStorage.getItem('notesPinned') === 'true') {
-      this.setState({
-        showNotes: true,
-      });
-    } else {
-      this.setState({
-        showNotes: false,
-      });
-    }
+    this.setState({
+      showNotes: (localStorage.getItem('notesPinned') === 'true'),
+    });
   }
 
   pin() {
     variables.stats.postEvent('feature', 'Notes pin');
-    if (localStorage.getItem('notesPinned') === 'true') {
-      localStorage.setItem('notesPinned', false);
-      this.setState({
-        showNotes: false,
-      });
-    } else {
-      localStorage.setItem('notesPinned', true);
-      this.setState({
-        showNotes: true,
-      });
-    }
+    const notesPinned = (localStorage.getItem('notesPinned') === 'true');
+    localStorage.setItem('notesPinned', !notesPinned);
+    this.setState({
+      showNotes: !notesPinned,
+    });
   }
 
   copy() {
@@ -124,8 +111,6 @@ class Notes extends PureComponent {
                 onChange={this.setNotes}
                 minRows={5}
               />
-              {/*variables.keybinds.pinNotes && variables.keybinds.pinNotes !== '' ? <Hotkeys keyName={variables.keybinds.pinNotes} onKeyDown={() => this.pin()}/> : null*/}
-              {/*variables.keybinds.copyNotes && variables.keybinds.copyNotes !== '' ? <Hotkeys keyName={variables.keybinds.copyNotes} onKeyDown={() => this.copy()}/> : null*/}
             </div>
           </span>
         )}

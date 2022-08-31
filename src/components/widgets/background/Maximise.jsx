@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdCropFree } from 'react-icons/md';
-//import Hotkeys from 'react-hot-keys';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -75,7 +74,6 @@ export default class Maximise extends PureComponent {
         <button>
           <MdCropFree onClick={this.maximise} className="topicons" />
         </button>
-        {/*variables.keybinds.maximiseBackground && variables.keybinds.maximiseBackground !== '' ? <Hotkeys keyName={variables.keybinds.maximiseBackground} onKeyDown={this.maximise} /> : null*/}
       </Tooltip>
     );
   }

@@ -41,21 +41,19 @@ export default class Checkbox extends PureComponent {
 
   render() {
     return (
-      <>
-        <FormControlLabel
-          control={
-            <CheckboxUI
-              name={this.props.name}
-              color="primary"
-              className="checkbox"
-              checked={this.state.checked}
-              onChange={this.handleChange}
-              disabled={this.props.disabled || false}
-            />
-          }
-          label={this.props.text}
-        />
-      </>
+      <FormControlLabel
+        control={
+          <CheckboxUI
+            name={this.props.name}
+            color="primary"
+            className="checkbox"
+            checked={this.state.checked}
+            onChange={this.handleChange}
+            disabled={this.props.disabled || false}
+          />
+        }
+        label={this.props.text}
+      />
     );
   }
 }

@@ -60,6 +60,7 @@ export default class TimeSettings extends PureComponent {
 
   render() {
     const weatherType = localStorage.getItem('weatherType');
+    
     return (
       <>
         <Header

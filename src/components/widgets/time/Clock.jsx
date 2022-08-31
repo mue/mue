@@ -153,21 +153,12 @@ export default class Clock extends PureComponent {
   }
 
   render() {
-    let clockHTML = (
-      <>
-        <span className="clock clock-container">
-          {this.state.time}
-          <span className="ampm">{this.state.ampm}</span>
-        </span>
-      </>
-    );
-
     const enabled = (setting) => {
       return localStorage.getItem(setting) === 'true';
     };
 
     if (localStorage.getItem('timeType') === 'analogue') {
-      clockHTML = (
+      return (
         <Suspense fallback={<></>}>
           <div className="clockBackground">
             <Analog
@@ -185,22 +176,25 @@ export default class Clock extends PureComponent {
     }
 
     if (localStorage.getItem('timeType') === 'verticalClock') {
-      clockHTML = (
-        <>
-          <span className="new-clock clock-container">
-            {' '}
-            <div className="hour" style={{ color: this.state.hourColour }}>
-              {this.state.finalHour}
-            </div>{' '}
-            <div className="minute" style={{ color: this.state.minuteColour }}>
-              {this.state.finalMinute}
-            </div>{' '}
-            <div className="seconds">{this.state.finalSeconds}</div>{' '}
-          </span>
-        </>
+      return (
+        <span className="new-clock clock-container">
+          {' '}
+          <div className="hour" style={{ color: this.state.hourColour }}>
+            {this.state.finalHour}
+          </div>{' '}
+          <div className="minute" style={{ color: this.state.minuteColour }}>
+            {this.state.finalMinute}
+          </div>{' '}
+          <div className="seconds">{this.state.finalSeconds}</div>{' '}
+        </span>
       );
     }
 
-    return clockHTML;
+    return (
+      <span className="clock clock-container">
+        {this.state.time}
+        <span className="ampm">{this.state.ampm}</span>
+      </span>
+    );
   }
 }

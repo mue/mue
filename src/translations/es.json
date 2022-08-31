@@ -418,29 +418,6 @@
             "achievements": "Achievements",
             "unlocked": "{count} Unlocked"
           },
-          "keybinds": {
-            "title": "Asignación de teclas",
-            "recording": "Grabando...",
-            "click_to_record": "Click para grabar",
-            "background": {
-              "favourite": "Fondo favorito",
-              "maximise": "Maximizar fondo",
-              "download": "Descargar fondo",
-              "show_info": "Mostrar información del fondo"
-            },
-            "quote": {
-              "favourite": "Marcar la cita como favorita",
-              "copy": "Copiar cita",
-              "tweet": "Tuitear la cita"
-            },
-            "notes": {
-              "pin": "Fijar notas",
-              "copy": "Copiar notas"
-            },
-            "search": "Enfocar búsqueda",
-            "quicklinks": "Alternar añadir enlace rápido",
-            "modal": "Alternal modal"
-          },
           "experimental": {
             "title": "Experimental",
             "warning": "Estos ajustes no han sido totalmente probados/implementados y pueden no funcionar correctamente.",

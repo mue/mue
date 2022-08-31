@@ -2,7 +2,6 @@ import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { MdSearch, MdMic, MdSettings } from 'react-icons/md';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
-//import Hotkeys from 'react-hot-keys';
 
 import AutocompleteInput from 'components/helpers/autocomplete/Autocomplete';
 
@@ -227,7 +226,6 @@ export default class Search extends PureComponent {
               onChange={(e) => this.getSuggestions(e)}
               onClick={this.searchButton}
             />
-            {/*variables.keybinds.focusSearch && variables.keybinds.focusSearch !== '' ? <Hotkeys keyName={variables.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null*/}
           </form>
         </div>
         <div>

@@ -418,29 +418,6 @@
             "achievements": "Başarılar",
             "unlocked": "{count} Unlocked"
           },
-          "keybinds": {
-            "title": "Tuş Atamaları",
-            "recording": "Kayıt Ediliyor...",
-            "click_to_record": "Kaydetmek için tıklayın.",
-            "background": {
-              "favourite": "Arka planı favorilere ekle.",
-              "maximise": "Arka planı büyüt.",
-              "download": "Arka planı indir.",
-              "show_info": "Arka plan bilgilerini göster."
-            },
-            "quote": {
-              "favourite": "Alıntıyı favorilere ekle",
-              "copy": "Alıntıyı kopyala",
-              "tweet": "Alıntıyı Tweet'le"
-            },
-            "notes": {
-              "pin": "Notları sabitle",
-              "copy": "Notları kopyala"
-            },
-            "search": "Odaklı arama",
-            "quicklinks": "Geçiş hızlı bağlantı ekle.",
-            "modal": "Modeli aç/kapat."
-          },
           "experimental": {
             "title": "Deneysel Özellikler",
             "warning": "Bu ayarlar tam olarak test edilmedi/uygulanmadı ve düzgün çalışmayabilir!",

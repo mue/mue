@@ -2,7 +2,6 @@ import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { TextareaAutosize } from '@mui/material';
 import { MdAddToPhotos } from 'react-icons/md';
-//import Hotkeys from 'react-hot-keys';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -240,7 +239,6 @@ export default class QuickLinks extends PureComponent {
               <MdAddToPhotos /> {variables.getMessage('widgets.quicklinks.add')}
             </button>
           </div>
-          {/*variables.keybinds.toggleQuicklinks && variables.keybinds.toggleQuicklinks !== '' ? <Hotkeys keyName={variables.keybinds.toggleQuicklinks} onKeyDown={this.toggleAdd} /> : null*/}
         </div>
       </>
     );

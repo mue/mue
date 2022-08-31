@@ -10,7 +10,6 @@ import {
 } from 'react-icons/md';
 
 import { toast } from 'react-toastify';
-//import Hotkeys from 'react-hot-keys';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
@@ -201,11 +200,7 @@ export default class Quote extends PureComponent {
           ? customQuote[Math.floor(Math.random() * customQuote.length)]
           : null;
 
-        if (
-          customQuote &&
-          customQuote !== '' &&
-          customQuote !== 'undefined'
-        ) {
+        if (customQuote && customQuote !== '' && customQuote !== 'undefined') {
           return this.setState({
             quote: '"' + customQuote.quote + '"',
             author: customQuote.author,
@@ -448,56 +443,51 @@ export default class Quote extends PureComponent {
             </div>
           </>
         ) : (
-          <>
-            <div className="author-holder">
-              <div className="author">
-                <div
-                  className="author-img"
-                  style={{ backgroundImage: `url(${this.state.authorimg})` }}
-                >
-                  {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
-                </div>
-                {this.state.author !== '' ? (
-                  <div className="author-content" ref={this.quoteauthor}>
-                    <span className="title">{this.state.author}</span>
-                    {this.state.authorOccupation !== 'Unknown' ? (
-                      <span className="subtitle">{this.state.authorOccupation}</span>
-                    ) : null}
-                    <span className="author-license">
-                      {this.state.authorimglicense
-                        ? this.state.authorimglicense.replace(' undefined. ', ' ')
-                        : null}
-                    </span>
-                  </div>
-                ) : (
-                  <div className="author-content whileLoading" ref={this.quoteauthor}>
-                    {/* these are placeholders for skeleton and as such don't need translating */}
-                    <span className="title">loading</span>
-                    <span className="subtitle">loading</span>
-                  </div>
-                )}
-                <div className="quote-buttons">
-                  {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== '' ? (
-                    <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
-                      <a
-                        href={this.state.authorlink}
-                        className="quoteAuthorLink"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <MdOpenInNew />
-                      </a>{' '}
-                    </Tooltip>
+          <div className="author-holder">
+            <div className="author">
+              <div
+                className="author-img"
+                style={{ backgroundImage: `url(${this.state.authorimg})` }}
+              >
+                {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
+              </div>
+              {this.state.author !== '' ? (
+                <div className="author-content" ref={this.quoteauthor}>
+                  <span className="title">{this.state.author}</span>
+                  {this.state.authorOccupation !== 'Unknown' ? (
+                    <span className="subtitle">{this.state.authorOccupation}</span>
                   ) : null}
-                  {this.state.copy} {this.state.share} {this.state.favourited}
+                  <span className="author-license">
+                    {this.state.authorimglicense
+                      ? this.state.authorimglicense.replace(' undefined. ', ' ')
+                      : null}
+                  </span>
                 </div>
+              ) : (
+                <div className="author-content whileLoading" ref={this.quoteauthor}>
+                  {/* these are placeholders for skeleton and as such don't need translating */}
+                  <span className="title">loading</span>
+                  <span className="subtitle">loading</span>
+                </div>
+              )}
+              <div className="quote-buttons">
+                {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== '' ? (
+                  <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
+                    <a
+                      href={this.state.authorlink}
+                      className="quoteAuthorLink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MdOpenInNew />
+                    </a>{' '}
+                  </Tooltip>
+                ) : null}
+                {this.state.copy} {this.state.share} {this.state.favourited}
               </div>
             </div>
-          </>
+          </div>
         )}
-        {/*variables.keybinds.favouriteQuote && variables.keybinds.favouriteQuote !== '' ? <Hotkeys keyName={variables.keybinds.favouriteQuote} onKeyDown={() => this.favourite()} /> : null*/}
-        {/*variables.keybinds.tweetQuote && variables.keybinds.tweetQuote !== '' ? <Hotkeys keyName={variables.keybinds.tweetQuote} onKeyDown={() => this.tweetQuote()} /> : null*/}
-        {/*variables.keybinds.copyQuote && variables.keybinds.copyQuote !== '' ? <Hotkeys keyName={variables.keybinds.copyQuote} onKeyDown={() => this.copyQuote()} /> : null*/}
       </div>
     );
   }
