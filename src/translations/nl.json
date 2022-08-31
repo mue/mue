@@ -498,10 +498,6 @@
             "remove": "Verwijderen",
             "update_addon": "Update Add-on",
             "back": "Back"
-          },
-          "quote_warning": {
-            "title": "Waarschuwing",
-            "description": "Deze citaatverzameling maakt verbinding met externe servers die kunnen worden gebruikt om je te internetverkeer te tracken!"
           }
         },
         "offline": {

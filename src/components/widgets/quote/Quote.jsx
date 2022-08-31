@@ -214,24 +214,6 @@ export default class Quote extends PureComponent {
           return this.doOffline();
         }
 
-        const quotePackAPI = JSON.parse(localStorage.getItem('quoteAPI'));
-        if (quotePackAPI) {
-          try {
-            const data = await (await fetch(quotePackAPI.url)).json();
-            const author = data[quotePackAPI.author] || quotePackAPI.author;
-            const installed = JSON.parse(localStorage.getItem('installed'));
-            // todo: make this actually get the correct quote pack, instead of the first available
-            const info = installed.find((i) => i.type === 'quotes');
-
-            return this.setState({
-              quote: '"' + data[quotePackAPI.quote] + '"',
-              author,
-              authorimg: info.icon_url,
-            });
-          } catch (e) {
-            return this.doOffline();
-          }
-        }
         const quotePack = [];
         const installed = JSON.parse(localStorage.getItem('installed'));
         installed.forEach((item) => {

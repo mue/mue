@@ -47,10 +47,6 @@ export function install(type, input, sideload) {
       break;
 
     case 'quotes':
-      if (input.quote_api) {
-        localStorage.setItem('quoteAPI', JSON.stringify(input.quote_api));
-      }
-
       const currentQuotes = JSON.parse(localStorage.getItem('quote_packs')) || [];
       input.quotes.forEach((quote) => {
         currentQuotes.push(quote);
@@ -111,7 +107,6 @@ export function uninstall(type, name) {
         }
       });
       localStorage.setItem('quote_packs', JSON.stringify(installedContents));
-      localStorage.removeItem('quoteAPI');
       if (installedContents.length === 0) {
         localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType') || 'api');
         localStorage.removeItem('oldQuoteType');

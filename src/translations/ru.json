@@ -498,10 +498,6 @@
             "remove": "Удалить",
             "update_addon": "Update Add-on",
             "back": "Back"
-          },
-          "quote_warning": {
-            "title": "Предупреждение",
-            "description": "Этот пакет цитат обращается к внешнему серверу и может отслеживать вас!"
           }
         },
         "offline": {

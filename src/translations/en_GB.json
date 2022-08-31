@@ -497,10 +497,6 @@
             "remove": "Remove",
             "update_addon": "Update Add-on",
             "back": "Back"
-          },
-          "quote_warning": {
-            "title": "Warning",
-            "description": "This quote pack requests to external servers that may track you!"
           }
         },
         "offline": {

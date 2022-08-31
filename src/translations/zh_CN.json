@@ -498,10 +498,6 @@
             "remove": "卸载",
             "update_addon": "Update Add-on",
             "back": "Back"
-          },
-          "quote_warning": {
-            "title": "注意",
-            "description": "本名言包会连接到可能会跟踪您的外部服务器！"
           }
         },
         "offline": {

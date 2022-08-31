@@ -498,10 +498,6 @@
             "remove": "Kaldır",
             "update_addon": "Eklentiyi Güncelle",
             "back": "Geri"
-          },
-          "quote_warning": {
-            "title": "Uyarı",
-            "description": "Bu teklif paketi, sizi izleyebilecek harici sunuculara istekte bulunur!"
           }
         },
         "offline": {

@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 import {
   MdIosShare,
   MdFlag,
-  MdWarning,
   MdAccountCircle,
   MdBugReport,
   MdFormatQuote,
@@ -59,23 +58,6 @@ export default class Item extends PureComponent {
   render() {
     if (!this.props.data.display_name) {
       return null;
-    }
-
-    let warningHTML;
-    if (this.props.data.quote_api) {
-      warningHTML = (
-        <div className="itemWarning">
-          <div className="topRow">
-            <MdWarning />
-            <div className="title">
-              {variables.getMessage('modals.main.marketplace.product.quote_warning.title')}
-            </div>
-          </div>
-          <div className="subtitle">
-            {variables.getMessage('modals.main.marketplace.product.quote_warning.description')}
-          </div>
-        </div>
-      );
     }
 
     // prevent console error
@@ -160,22 +142,6 @@ export default class Item extends PureComponent {
               {variables.getMessage('modals.main.marketplace.product.description')}
             </span>
             <span dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
-            {/*
-            {this.props.data.description.length > 100 ? (
-              <div className="showMore" onClick={() => this.toggleShowMore()}>
-                {this.state.showMore === true ? (
-                  <>
-                    <span>{variables.getMessage('modals.main.marketplace.product.show_less')}</span>
-                    <MdKeyboardArrowDown />
-                  </>
-                ) : (
-                  <>
-                    <span>{variables.getMessage('modals.main.marketplace.product.show_more')}</span>
-                    <MdKeyboardArrowUp />
-                  </>
-                )}
-              </div>
-                ) : null}*/}
             <div className="moreInfo">
               <div className="infoItem">
                 <MdBugReport />
@@ -279,7 +245,6 @@ export default class Item extends PureComponent {
                 <button>{variables.getMessage('modals.main.marketplace.product.explore')}</button>
               </div>
             ) : null}
-            {warningHTML}
           </div>
         </div>
       </div>

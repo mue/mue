@@ -498,10 +498,6 @@
             "remove": "Hapus",
             "update_addon": "Perbarui Add-on",
             "back": "Back"
-          },
-          "quote_warning": {
-            "title": "Peringatan",
-            "description": "Quote pack ini membutuhkan peladen eksternal yang mungkin melacak Anda!"
           }
         },
         "offline": {

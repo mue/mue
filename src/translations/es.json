@@ -498,10 +498,6 @@
             "remove": "Desinstalar",
             "update_addon": "Actualizar complemento",
             "back": "Back"
-          },
-          "quote_warning": {
-            "title": "Advertencia",
-            "description": "¡Este paquete de citas solicita a servidores externos que pueden rastrearte!"
           }
         },
         "offline": {
