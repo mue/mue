@@ -120,6 +120,7 @@ class Todo extends PureComponent {
           onFocus={() => this.hideTodo()}
           onBlur={() => this.showTodo()}
           ref={this.props.todoRef}
+          style={{ fontSize: this.props.fontSize }}
         >
           <MdChecklist className="topicons" />
         </button>

@@ -71,7 +71,7 @@ export default class Maximise extends PureComponent {
       <Tooltip
         title={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
       >
-        <button>
+        <button style={{ fontSize: this.props.fontSize }}>
           <MdCropFree onClick={this.maximise} className="topicons" />
         </button>
       </Tooltip>

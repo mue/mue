@@ -70,8 +70,9 @@ class Notes extends PureComponent {
           onFocus={() => this.showNotes()}
           onBlur={() => this.hideNotes()}
           ref={this.props.notesRef}
+          style={{ fontSize: this.props.fontSize }}
         >
-          <MdAssignment className="topicons" />
+          <MdAssignment className="topicons"/>
         </button>
         {this.state.showNotes && (
           <span
@@ -119,7 +120,7 @@ class Notes extends PureComponent {
   }
 }
 
-export default function NotesWrapper() {
+export default function NotesWrapper(props) {
   const { x, y, reference, floating, strategy } = useFloating({
     placement: 'bottom',
     middleware: [shift()],
