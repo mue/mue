@@ -13,6 +13,7 @@ import {
   MdTranslate,
   MdOutlineKeyboardArrowRight,
   MdExpandMore,
+  MdStyle,
 } from 'react-icons/md';
 import Modal from 'react-modal';
 
@@ -75,6 +76,15 @@ export default class Item extends PureComponent {
           </button>
         </Fragment>
       );
+    }
+
+    let type;
+    if (this.props.data.data.type === 'settings') {
+      type = 'Settings Pack';
+    } else if (this.props.data.data.type === 'quotes') {
+      type = 'Quote Pack';
+    } else if (this.props.data.data.type === 'photos') {
+      type = 'Photos Pack';
     }
 
     return (
@@ -200,13 +210,18 @@ export default class Item extends PureComponent {
                   </div>
                 </div>
               ) : null}
-              {/*<div className="infoItem">
-                <MdIosShare />
+              <div className="infoItem">
+                <MdStyle />
                 <div className="text">
-                  <span className="header">{variables.getMessage('modals.main.marketplace.product.shares')}</span>
-                  <span>324</span>
+                  <span className="header"> {variables.getMessage('modals.main.settings.sections.background.type.title')}</span>
+                  <span>
+                    {' '}
+                    {variables.getMessage(
+                      'modals.main.addons.create.types.' + this.props.data.data.type,
+                    ) || 'marketplace'}
+                  </span>
                 </div>
-              </div>*/}
+              </div>
             </div>
           </div>
           <div className="itemInfo">
