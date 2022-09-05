@@ -359,32 +359,37 @@ export default class Quote extends PureComponent {
       }
     });
 
-    const interval = localStorage.getItem('quotechange');
-    if (interval && interval !== 'refresh' && localStorage.getItem('quoteType') === 'api') {
-      Interval(
-        () => {
-          this.setZoom();
-          this.getQuote();
-        },
-        Number(interval),
-        'quote',
-      );
-
-      try {
-        this.setState(JSON.parse(localStorage.getItem('currentQuote')));
-      } catch (e) {
-        this.setZoom();
-        this.getQuote();
-      }
-    } else {
-      // don't bother with the checks if we're loading for the first time
+    if (localStorage.getItem('quotechange') === 'refresh') {
       this.setZoom();
       this.getQuote();
+      localStorage.setItem('quoteStartTime', Date.now());
     }
+
+    this.interval = setInterval(() => {
+      const targetTime = Number(
+        Number(localStorage.getItem('quoteStartTime')) +
+          Number(localStorage.getItem('quotechange')),
+      );
+      const currentTime = Number(Date.now());
+      if (currentTime >= targetTime) {
+        this.setZoom();
+        this.getQuote();
+        localStorage.setItem('quoteStartTime', Date.now());
+      } else {
+        console.log(localStorage.getItem('quotechange'));
+        try {
+          this.setState(JSON.parse(localStorage.getItem('currentQuote')));
+        } catch (e) {
+          this.setZoom();
+          this.getQuote();
+        }
+      }
+    });
   }
 
   componentWillUnmount() {
     EventBus.off('refresh');
+    clearInterval(this.interval);
   }
 
   render() {

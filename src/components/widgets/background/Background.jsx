@@ -383,25 +383,31 @@ export default class Background extends PureComponent {
       return this.setState(JSON.parse(localStorage.getItem('welcomeImage')));
     }
 
-    const interval = localStorage.getItem('backgroundchange');
-    if (interval && interval !== 'refresh') {
+    if (localStorage.getItem('backgroundchange') === 'refresh') {
+      try {
+        document.getElementById('backgroundImage').classList.remove('fade-in');
+        document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
+      } catch (e) {
+        // Disregard exception
+      }
+      this.getBackground();
+      localStorage.setItem('backgroundStartTime', Date.now());
+    }
+
+    this.interval = setInterval(() => {
+      const targetTime = Number(
+        Number(localStorage.getItem('backgroundStartTime')) +
+          Number(localStorage.getItem('backgroundchange')),
+      );
+      const currentTime = Number(Date.now());
       const type = localStorage.getItem('backgroundType');
 
-      if (type === 'api' || type === 'custom') {
-        Interval(
-          () => {
-            try {
-              document.getElementById('backgroundImage').classList.remove('fade-in');
-              document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
-            } catch (e) {
-              // Disregard exception
-            }
-            this.getBackground();
-          },
-          Number(interval),
-          'background',
-        );
-
+      if (currentTime >= targetTime) {
+        console.log('Is this true?')
+        this.getBackground();
+        localStorage.setItem('backgroundStartTime', Date.now());
+      } else {
+        console.log('Or this?')
         try {
           const current = JSON.parse(localStorage.getItem('currentBackground'));
           if (current.type !== type) {
@@ -412,24 +418,18 @@ export default class Background extends PureComponent {
             this.setState(current);
           } else if (current.url.startsWith('http')) {
             this.setState(offlineBackground());
-          } else {
-            if (offline === 'false') {
-              localStorage.removeItem('currentBackground');
-              return this.getBackground();
-            }
-            this.setState(current);
           }
+            this.setState(current);
         } catch (e) {
           this.setBackground();
         }
       }
-    } else {
-      this.getBackground();
-    }
+    });
   }
 
   // only set once we've got the info
   componentDidUpdate() {
+    clearInterval(this.interval);
     if (this.state.video === true) {
       return;
     }
@@ -439,6 +439,7 @@ export default class Background extends PureComponent {
 
   componentWillUnmount() {
     EventBus.off('refresh');
+    clearInterval(this.interval);
   }
 
   render() {

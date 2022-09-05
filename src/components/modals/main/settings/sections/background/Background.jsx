@@ -74,8 +74,13 @@ export default class BackgroundSettings extends PureComponent {
         <Dropdown
           label={variables.getMessage('modals.main.settings.sections.background.interval.title')}
           name="backgroundchange"
+          name2="backgroundStartTime"
+          value2={Date.now()}
         >
           <option value="refresh">{variables.getMessage('tabname')}</option>
+          <option value="10000">
+            10 secs
+          </option>
           <option value="60000">
             {variables.getMessage('modals.main.settings.sections.background.interval.minute')}
           </option>

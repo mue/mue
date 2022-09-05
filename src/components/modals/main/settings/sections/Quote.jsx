@@ -233,24 +233,26 @@ export default class QuoteSettings extends PureComponent {
                   'modals.main.settings.sections.background.interval.title',
                 )}
                 name="quotechange"
+                name2="quoteStartTime"
+                value2={Date.now()}
               >
                 <option value="refresh">{variables.getMessage('tabname')}</option>
-                <option value="60000">
+                <option value={60000}>
                   {variables.getMessage('modals.main.settings.sections.background.interval.minute')}
                 </option>
-                <option value="1800000">
+                <option value={1800000}>
                   {variables.getMessage(
                     'modals.main.settings.sections.background.interval.half_hour',
                   )}
                 </option>
-                <option value="3600000">
+                <option value={3600000}>
                   {variables.getMessage('modals.main.settings.sections.background.interval.hour')}
                 </option>
-                <option value="86400000">
+                <option value={86400000}>
                   {variables.getMessage('modals.main.settings.sections.background.interval.day')}
                 </option>
-                <option value="604800000">{variables.getMessage('widgets.date.week')}</option>
-                <option value="2628000000">
+                <option value={604800000}>{variables.getMessage('widgets.date.week')}</option>
+                <option value={2628000000}>
                   {variables.getMessage('modals.main.settings.sections.background.interval.month')}
                 </option>
               </Dropdown>
