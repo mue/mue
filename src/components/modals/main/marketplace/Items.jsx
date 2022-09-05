@@ -10,7 +10,7 @@ import {
 export default function Items({
   type,
   items,
-  collections = [],
+  collection,
   toggleFunction,
   collectionFunction,
   onCollection,
@@ -25,8 +25,6 @@ export default function Items({
       }
     }
   };
-
-  const collection = collections[Math.floor(Math.random() * collections.length)];
 
   return (
     <>

@@ -402,7 +402,7 @@ export default class Marketplace extends PureComponent {
           <Items
             type={this.props.type}
             items={this.state.items}
-            collections={this.state.collections}
+            collection={this.state.collections[Math.floor(Math.random() * this.state.collections.length)] || []}
             onCollection={this.state.collection}
             toggleFunction={(input) => this.toggle('item', input)}
             collectionFunction={(input) => this.toggle('collection', input)}
