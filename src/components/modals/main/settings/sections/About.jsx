@@ -2,7 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdEmail, MdContactPage } from 'react-icons/md';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { SiGithubsponsors, SiLiberapay, SiKofi, SiPatreon } from 'react-icons/si';
+import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
@@ -221,7 +221,10 @@ export default class About extends PureComponent {
           </span>
           <p>{variables.getMessage('modals.main.settings.sections.about.support_subtitle')}</p>
           <div className="aboutContact">
-            <a className="donateButton" href={variables.constants.DONATE_LINK}>
+            <a
+              className="donateButton"
+              href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
+            >
               <BiDonateHeart />
               {variables.getMessage('modals.main.settings.sections.about.support_donate')}
             </a>
@@ -234,31 +237,13 @@ export default class About extends PureComponent {
                 <SiGithubsponsors />
               </a>
             </Tooltip>
-            <Tooltip title={'Liberapay'}>
+            <Tooltip title={'Open Collective'}>
               <a
-                href={'https://liberapay.com/' + variables.constants.LIBERAPAY_USERNAME}
+                href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <SiLiberapay />
-              </a>
-            </Tooltip>
-            <Tooltip title={'Ko-Fi'}>
-              <a
-                href={'https://ko-fi.com/' + variables.constants.KOFI_USERNAME}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <SiKofi />
-              </a>
-            </Tooltip>
-            <Tooltip title={'Patreon'}>
-              <a
-                href={'https://patreon.com/' + variables.constants.PATREON_USERNAME}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <SiPatreon />
+                <SiOpencollective />
               </a>
             </Tooltip>
           </div>

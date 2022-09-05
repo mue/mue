@@ -38,6 +38,14 @@ export default class OrderSettings extends PureComponent {
     super();
     this.state = {
       items: JSON.parse(localStorage.getItem('order')),
+      news: {
+        title: '',
+        date: '',
+        description: '',
+        link: '',
+        linkText: ''
+      },
+      newsDone: false
     };
   }
 
@@ -96,10 +104,22 @@ export default class OrderSettings extends PureComponent {
     }
   };
 
+  async getNews() {
+    const data = await (await fetch('https://api.muetab.com/news')).json();
+    this.setState({
+      news: data.news,
+      newsDone: true
+    });
+  }
+
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
     variables.stats.postEvent('setting', 'Widget order');
     EventBus.dispatch('refresh', 'widgets');
+  }
+
+  componentDidMount() {
+    this.getNews();
   }
 
   render() {
@@ -130,6 +150,12 @@ export default class OrderSettings extends PureComponent {
                   );
                 })}
               </div>
+            </div>
+            <div style={{ display: "flex", flexFlow: "column" }}> 
+            <span className='title'>{this.state.news.title}</span>
+            <span className='subtitle'>{this.state.news.date}</span>
+            <span>{this.state.news.description}</span>
+            <a className='link' href={this.state.news.link}>{this.state.news.linkText}</a>
             </div>
           </div>
           <div>

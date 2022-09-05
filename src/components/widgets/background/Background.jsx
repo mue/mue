@@ -383,7 +383,7 @@ export default class Background extends PureComponent {
       return this.setState(JSON.parse(localStorage.getItem('welcomeImage')));
     }
 
-    if (localStorage.getItem('backgroundchange') === 'refresh') {
+    if (localStorage.getItem('backgroundchange') === 'refresh' || (localStorage.getItem('quotechange')) === null) {
       try {
         document.getElementById('backgroundImage').classList.remove('fade-in');
         document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
@@ -394,6 +394,8 @@ export default class Background extends PureComponent {
       localStorage.setItem('backgroundStartTime', Date.now());
     }
 
+    const test = localStorage.getItem('backgroundchange');
+
     this.interval = setInterval(() => {
       const targetTime = Number(
         Number(localStorage.getItem('backgroundStartTime')) +
@@ -402,26 +404,28 @@ export default class Background extends PureComponent {
       const currentTime = Number(Date.now());
       const type = localStorage.getItem('backgroundType');
 
-      if (currentTime >= targetTime) {
-        console.log('Is this true?')
-        this.getBackground();
-        localStorage.setItem('backgroundStartTime', Date.now());
-      } else {
-        console.log('Or this?')
-        try {
-          const current = JSON.parse(localStorage.getItem('currentBackground'));
-          if (current.type !== type) {
-            this.getBackground();
-          }
-          const offline = localStorage.getItem('offlineMode');
-          if (current.url.startsWith('http') && offline === 'false') {
+      if (test !== null) {
+        if (currentTime >= targetTime) {
+          console.log('Is this true?');
+          this.getBackground();
+          localStorage.setItem('backgroundStartTime', Date.now());
+        } else {
+          console.log('Or this?');
+          try {
+            const current = JSON.parse(localStorage.getItem('currentBackground'));
+            if (current.type !== type) {
+              this.getBackground();
+            }
+            const offline = localStorage.getItem('offlineMode');
+            if (current.url.startsWith('http') && offline === 'false') {
+              this.setState(current);
+            } else if (current.url.startsWith('http')) {
+              this.setState(offlineBackground());
+            }
             this.setState(current);
-          } else if (current.url.startsWith('http')) {
-            this.setState(offlineBackground());
+          } catch (e) {
+            this.setBackground();
           }
-            this.setState(current);
-        } catch (e) {
-          this.setBackground();
         }
       }
     });

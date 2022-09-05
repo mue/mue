@@ -359,13 +359,16 @@ export default class Quote extends PureComponent {
       }
     });
 
-    if (localStorage.getItem('quotechange') === 'refresh') {
+    if (localStorage.getItem('quotechange') === 'refresh' || (localStorage.getItem('quotechange')) === null ) {
       this.setZoom();
       this.getQuote();
       localStorage.setItem('quoteStartTime', Date.now());
     }
 
+    const test = localStorage.getItem('quotechange')
+
     this.interval = setInterval(() => {
+      if (test !== null ) {
       const targetTime = Number(
         Number(localStorage.getItem('quoteStartTime')) +
           Number(localStorage.getItem('quotechange')),
@@ -384,6 +387,7 @@ export default class Quote extends PureComponent {
           this.getQuote();
         }
       }
+    }
     });
   }
 
