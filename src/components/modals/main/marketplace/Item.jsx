@@ -232,7 +232,7 @@ export default class Item extends PureComponent {
             />
             {this.props.button}
             <div className="iconButtons">
-              <Tooltip title="Share" key="share">
+              <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
                 <button onClick={() => this.setState({ shareModal: true })}>
                   <MdIosShare />
                 </button>
