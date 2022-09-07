@@ -48,7 +48,7 @@ export default class Background extends PureComponent {
 
       // just set the background
       if (localStorage.getItem('bgtransition') === 'false') {
-        photoInformation?.[(photoInformation.style.display = 'block')];
+        photoInformation?.[(photoInformation.style.display = 'flex')];
         return (backgroundImage.style.background = `url(${url})`);
       }
 
@@ -310,7 +310,7 @@ export default class Background extends PureComponent {
         } else {
           if (this.state.photoInfo.hidden === false) {
             try {
-              document.querySelector('.photoInformation').style.display = 'block';
+              document.querySelector('.photoInformation').style.display = 'flex';
             } catch (e) {
               // Disregard exception
             }
@@ -431,7 +431,6 @@ export default class Background extends PureComponent {
 
   // only set once we've got the info
   componentDidUpdate() {
-    clearInterval(this.interval);
     if (this.state.video === true) {
       return;
     }

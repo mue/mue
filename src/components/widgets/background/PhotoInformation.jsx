@@ -261,15 +261,22 @@ export default function PhotoInformation({ info, url, api }) {
           {showExtraInfo || other ? (
             <>
               <div className="concept-buttons">
-                <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
-                  <Share onClick={() => openShareModal(true)} />
-                </Tooltip>
+                {!info.offline ? (
+                  <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
+                    <Share onClick={() => openShareModal(true)} />
+                  </Tooltip>
+                ) : null}
                 <Tooltip title={variables.getMessage('widgets.quote.favourite')} key="favourite">
                   <Favourite />
                 </Tooltip>
-                <Tooltip title={variables.getMessage('widgets.background.download')} key="download">
-                  <Download onClick={() => downloadImage(info)} />
-                </Tooltip>
+                {!info.offline ? (
+                  <Tooltip
+                    title={variables.getMessage('widgets.background.download')}
+                    key="download"
+                  >
+                    <Download onClick={() => downloadImage(info)} />
+                  </Tooltip>
+                ) : null}
               </div>
               <div className="extra-content">
                 <span className="subtitle">

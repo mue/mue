@@ -217,26 +217,18 @@ a.privacy {
   animation-timing-function: ease-in;*/
 }
 
-@keyframes float-in {
-  0% {
-    transform: translate(0, 30px);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(0, 0px);
-    opacity: 1;
-  }
-}
 
-.light {
-  .toggle.lightTheme {
-    background-color: rgba(219, 219, 219, 0.72);
+.welcomeContent {
+  .light {
+    .toggle.lightTheme {
+      background-color: rgba(219, 219, 219, 0.72);
+    }
   }
-}
 
-.dark {
-  .toggle.darkTheme {
-    background-color: rgba(65, 71, 84, 0.9);
+  .dark {
+    .toggle.darkTheme {
+      background-color: rgba(65, 71, 84, 0.9);
+    }
   }
 }
 
