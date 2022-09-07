@@ -415,6 +415,7 @@ export default class Quote extends PureComponent {
         <span className="quote" ref={this.quote}>
           {this.state.quote}
         </span>
+        
         {localStorage.getItem('widgetStyle') === 'legacy' ? (
           <>
             <div>
