@@ -6,7 +6,6 @@ import { PureComponent } from 'react';
 import PhotoInformation from './PhotoInformation';
 
 import EventBus from 'modules/helpers/eventbus';
-import Interval from 'modules/helpers/interval';
 import {
   videoCheck,
   offlineBackground,
@@ -92,7 +91,6 @@ export default class Background extends PureComponent {
     }
 
     const setFavourited = ({ type, url, credit, location, camera }) => {
-      console.log(type);
       if (type === 'random_colour' || type === 'random_gradient') {
         return this.setState({
           type: 'colour',
@@ -118,7 +116,7 @@ export default class Background extends PureComponent {
     switch (type) {
       case 'api':
         if (offline) {
-          return this.setState(offlineBackground());
+          return this.setState(offlineBackground('api'));
         }
 
         // API background
@@ -145,7 +143,7 @@ export default class Background extends PureComponent {
           data = await (await fetch(requestURL)).json();
         } catch (e) {
           // if requesting to the API fails, we get an offline image
-          return this.setState(offlineBackground());
+          return this.setState(offlineBackground('api'));
         }
 
         let photoURL, photographerURL;
@@ -210,7 +208,7 @@ export default class Background extends PureComponent {
 
         // allow users to use offline images
         if (offline && !customBackground.startsWith('data:')) {
-          return this.setState(offlineBackground());
+          return this.setState(offlineBackground('custom'));
         }
 
         if (
@@ -235,7 +233,7 @@ export default class Background extends PureComponent {
 
       case 'photo_pack':
         if (offline) {
-          return this.setState(offlineBackground());
+          return this.setState(offlineBackground('photo_pack'));
         }
 
         const photofavourited = JSON.parse(localStorage.getItem('favourite'));

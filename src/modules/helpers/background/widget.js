@@ -9,7 +9,7 @@ export function videoCheck(url) {
   );
 }
 
-export function offlineBackground() {
+export function offlineBackground(type) {
   // Get all photographers from the keys in offlineImages.json
   const photographers = Object.keys(offlineImages);
   const photographer = photographers[Math.floor(Math.random() * photographers.length)];
@@ -21,6 +21,7 @@ export function offlineBackground() {
 
   const object = {
     url: `./offline-images/${randomImage}.webp`,
+    type,
     photoInfo: {
       offline: true,
       credit: photographer,
