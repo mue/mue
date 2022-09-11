@@ -62,14 +62,16 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   render() {
-    const { getMessage } = this;
-
     const interval = (
       <SettingsItem
         title={variables.getMessage('modals.main.settings.sections.background.interval.title')}
         subtitle={variables.getMessage(
           'modals.mani.settings.sections.background.intervanl.subtitle',
         )}
+        final={localStorage.getItem('photo_packs') &&
+        this.state.backgroundType !== 'custom' &&
+        this.state.backgroundType !== 'colour' &&
+        this.state.backgroundType !== 'api'}
       >
         <Dropdown
           label={variables.getMessage('modals.main.settings.sections.background.interval.title')}
@@ -103,7 +105,6 @@ export default class BackgroundSettings extends PureComponent {
 
     const APISettings = (
       <>
-        {interval}
         <SettingsItem
           title={variables.getMessage('modals.main.settings.sections.background.api')}
           subtitle={variables.getMessage('modals.main.settings.sections.background.api_subtitle')}
@@ -189,7 +190,7 @@ export default class BackgroundSettings extends PureComponent {
     let backgroundSettings = APISettings;
     switch (this.state.backgroundType) {
       case 'custom':
-        backgroundSettings = <CustomSettings interval={interval} />;
+        backgroundSettings = <CustomSettings />;
         break;
       case 'colour':
         backgroundSettings = <ColourSettings />;
@@ -431,6 +432,10 @@ export default class BackgroundSettings extends PureComponent {
                 </option>
               </Dropdown>
             </SettingsItem>
+            {/* // todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
+            {(this.state.backgroundType === 'api' ||
+          this.state.backgroundType === 'custom' ||
+          this.state.marketplaceEnabled) ? interval : null}
             {backgroundSettings}
           </>
         ) : null}

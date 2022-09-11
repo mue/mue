@@ -175,7 +175,6 @@ export default class CustomSettings extends PureComponent {
   render() {
     return (
       <>
-        {this.props.interval}
         <div className="dropzone" ref={this.customDnd}>
           <div className="imagesTopBar">
             <div>
