@@ -382,7 +382,10 @@ export default class Background extends PureComponent {
       return this.setState(JSON.parse(localStorage.getItem('welcomeImage')));
     }
 
-    if (localStorage.getItem('backgroundchange') === 'refresh' || (localStorage.getItem('quotechange')) === null) {
+    if (
+      localStorage.getItem('backgroundchange') === 'refresh' ||
+      localStorage.getItem('quotechange') === null
+    ) {
       try {
         document.getElementById('backgroundImage').classList.remove('fade-in');
         document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
@@ -416,15 +419,17 @@ export default class Background extends PureComponent {
             }
             const offline = localStorage.getItem('offlineMode');
             if (current.url.startsWith('http') && offline === 'false') {
-              console.log('current.url one?')
-              this.setState(current);
+              console.log('current.url one?');
+              if (this.state.firstTime !== true) {
+                this.setState(current);
+              }
             } else if (current.url.startsWith('http')) {
               this.setState(offlineBackground());
             }
             if (this.state.firstTime !== true) {
               this.setState(current);
             }
-            this.setState({ firstTime: true })
+            this.setState({ firstTime: true });
           } catch (e) {
             this.setBackground();
           }
