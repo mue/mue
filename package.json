@@ -11,7 +11,7 @@
   "license": "BSD-3-Clause",
   "version": "7.0.0",
   "dependencies": {
-    "@eartharoid/i18n": "1.0.4",
+    "@eartharoid/i18n": "1.1.0",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@floating-ui/react-dom": "^1.0.0",

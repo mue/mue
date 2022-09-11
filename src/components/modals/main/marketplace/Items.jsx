@@ -45,11 +45,19 @@ export default function Items({
               <span className="subtitle">{collection.description}</span>
             </div>
             {collection.news === true ? (
-              <a className="collectionButton" href={collection.news_link}>
+              <a
+                className="collectionButton"
+                href={collection.news_link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {variables.getMessage('modals.main.marketplace.learn_more')} <MdOutlineOpenInNew />
               </a>
             ) : (
-              <button className="collectionButton" onClick={() => collectionFunction(collection.name)}>
+              <button
+                className="collectionButton"
+                onClick={() => collectionFunction(collection.name)}
+              >
                 <MdOutlineArrowForward />{' '}
                 {variables.getMessage('modals.main.marketplace.explore_collection')}
               </button>
@@ -80,11 +88,13 @@ export default function Items({
         ) : null}
         {items.length <= 8 ? (
           <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.product.showing')} {items.length} / {items.length}
+            {variables.getMessage('modals.main.marketplace.product.showing')} {items.length} /{' '}
+            {items.length}
           </span>
         ) : (
           <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.product.showing')} {count} / {items.length}
+            {variables.getMessage('modals.main.marketplace.product.showing')} {count} /{' '}
+            {items.length}
           </span>
         )}
       </div>
