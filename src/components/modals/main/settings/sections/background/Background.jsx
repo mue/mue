@@ -68,10 +68,12 @@ export default class BackgroundSettings extends PureComponent {
         subtitle={variables.getMessage(
           'modals.mani.settings.sections.background.intervanl.subtitle',
         )}
-        final={localStorage.getItem('photo_packs') &&
-        this.state.backgroundType !== 'custom' &&
-        this.state.backgroundType !== 'colour' &&
-        this.state.backgroundType !== 'api'}
+        final={
+          localStorage.getItem('photo_packs') &&
+          this.state.backgroundType !== 'custom' &&
+          this.state.backgroundType !== 'colour' &&
+          this.state.backgroundType !== 'api'
+        }
       >
         <Dropdown
           label={variables.getMessage('modals.main.settings.sections.background.interval.title')}
@@ -80,9 +82,7 @@ export default class BackgroundSettings extends PureComponent {
           value2={Date.now()}
         >
           <option value="refresh">{variables.getMessage('tabname')}</option>
-          <option value="10000">
-            10 secs
-          </option>
+          <option value="10000">10 secs</option>
           <option value="60000">
             {variables.getMessage('modals.main.settings.sections.background.interval.minute')}
           </option>
@@ -433,9 +433,11 @@ export default class BackgroundSettings extends PureComponent {
               </Dropdown>
             </SettingsItem>
             {/* // todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
-            {(this.state.backgroundType === 'api' ||
-          this.state.backgroundType === 'custom' ||
-          this.state.marketplaceEnabled) ? interval : null}
+            {this.state.backgroundType === 'api' ||
+            this.state.backgroundType === 'custom' ||
+            this.state.marketplaceEnabled
+              ? interval
+              : null}
             {backgroundSettings}
           </>
         ) : null}

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { MdSearch, MdMic, MdSettings } from 'react-icons/md';
+import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 import AutocompleteInput from 'components/helpers/autocomplete/Autocomplete';
@@ -133,15 +133,9 @@ export default class Search extends PureComponent {
   }
 
   toggleDropdown() {
-    if (this.state.searchDropdown === 'hidden') {
-      this.setState({
-        searchDropdown: 'visible',
-      });
-    } else {
-      this.setState({
-        searchDropdown: 'hidden',
-      });
-    }
+    this.setState({
+      searchDropdown: (this.state.searchDropdown === 'hidden') ? 'visible' : 'hidden',
+    });
   }
 
   setSearch(name, custom) {
@@ -201,7 +195,7 @@ export default class Search extends PureComponent {
             {localStorage.getItem('searchDropdown') === 'true' ? (
               <Tooltip title={variables.getMessage('widgets.search')}>
                 <button>
-                  <MdSettings onClick={() => this.toggleDropdown()} />
+                  <MdScreenSearchDesktop onClick={() => this.toggleDropdown()} />
                 </button>
               </Tooltip>
             ) : (

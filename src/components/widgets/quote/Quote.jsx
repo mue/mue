@@ -17,7 +17,6 @@ import ShareModal from '../../helpers/sharemodal/ShareModal';
 
 import offline_quotes from './offline_quotes.json';
 
-import Interval from 'modules/helpers/interval';
 import EventBus from 'modules/helpers/eventbus';
 
 import './quote.scss';

@@ -27,7 +27,10 @@ export default class Maximise extends PureComponent {
 
     let backgroundFilter;
     if (filter === true) {
-      backgroundFilter = localStorage.getItem('backgroundFilter');
+      const filterData = localStorage.getItem('backgroundFilter');
+      if (filterData !== 'none') {
+        backgroundFilter = filterData;
+      }
     }
 
     element.setAttribute(
