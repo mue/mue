@@ -22,6 +22,7 @@ export default class Background extends PureComponent {
       style: '',
       url: '',
       currentAPI: '',
+      firstTime: false,
       photoInfo: {
         hidden: false,
         offline: false,
@@ -408,7 +409,6 @@ export default class Background extends PureComponent {
           this.getBackground();
           localStorage.setItem('backgroundStartTime', Date.now());
         } else {
-          console.log('Or this?');
           try {
             const current = JSON.parse(localStorage.getItem('currentBackground'));
             if (current.type !== type) {
@@ -416,11 +416,15 @@ export default class Background extends PureComponent {
             }
             const offline = localStorage.getItem('offlineMode');
             if (current.url.startsWith('http') && offline === 'false') {
+              console.log('current.url one?')
               this.setState(current);
             } else if (current.url.startsWith('http')) {
               this.setState(offlineBackground());
             }
-            this.setState(current);
+            if (this.state.firstTime !== true) {
+              this.setState(current);
+            }
+            this.setState({ firstTime: true })
           } catch (e) {
             this.setBackground();
           }
