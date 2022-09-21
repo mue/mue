@@ -22,7 +22,7 @@ export default class Message extends PureComponent {
 
         this.message.current.style.display = 'block';
         this.message.current.style.fontSize = `${
-          1.6 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
+          1 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
         }em`;
       }
     });
@@ -30,7 +30,7 @@ export default class Message extends PureComponent {
     const messages = JSON.parse(localStorage.getItem('messages')) || [];
 
     this.message.current.style.fontSize = `${
-      1.6 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
+      1 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
     }em`;
     
     if (messages.length === 0) {

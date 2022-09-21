@@ -198,13 +198,19 @@ export default class Quote extends PureComponent {
         customQuote = customQuote
           ? customQuote[Math.floor(Math.random() * customQuote.length)]
           : null;
+          
 
-        if (customQuote && customQuote !== '' && customQuote !== 'undefined') {
+        if (customQuote !== undefined) {
           return this.setState({
             quote: '"' + customQuote.quote + '"',
             author: customQuote.author,
             authorlink: this.getAuthorLink(customQuote.author),
             authorimg: await this.getAuthorImg(customQuote.author),
+            noQuote: false
+          });
+        } else {
+          this.setState({
+            noQuote: true
           });
         }
         break;
@@ -396,6 +402,9 @@ export default class Quote extends PureComponent {
   }
 
   render() {
+    if (this.state.noQuote === true) {
+      return <></>;
+    }
     return (
       <div className="quotediv" ref={this.quotediv}>
         <Modal

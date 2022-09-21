@@ -104,33 +104,39 @@ export default class QuoteSettings extends PureComponent {
               {variables.getMessage('modals.main.settings.sections.quote.add')} <MdAdd />
             </button>
           </SettingsItem>
-          <table style={{ width: '100%' }}>
-            <tr>
-              <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
-              <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
-              <th>{variables.getMessage('modals.main.settings.sections.quote.custom_buttons')}</th>
-            </tr>
-            {this.state.customQuote.map((_url, index) => (
-              <tr key={index}>
+          {this.state.customQuote.length > 1 ? (
+            <table style={{ width: '100%' }}>
+              <tr>
+                <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
+                <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
                 <th>
-                  <TextareaAutosize
-                    value={this.state.customQuote[index].quote}
-                    placeholder={variables.getMessage('modals.main.settings.sections.quote.title')}
-                    onChange={(e) => this.customQuote(e, true, index, 'quote')}
-                    varient="outlined"
-                    style={{ marginRight: '10px' }}
-                  />
+                  {variables.getMessage('modals.main.settings.sections.quote.custom_buttons')}
                 </th>
-                <th>
-                  <TextareaAutosize
-                    value={this.state.customQuote[index].author}
-                    placeholder={variables.getMessage('modals.main.settings.sections.quote.author')}
-                    onChange={(e) => this.customQuote(e, true, index, 'author')}
-                    varient="outlined"
-                  />
-                </th>
-                <th>
-                  {this.state.customQuote.length > 1 ? (
+              </tr>
+              {this.state.customQuote.map((_url, index) => (
+                <tr key={index}>
+                  <th>
+                    <TextareaAutosize
+                      value={this.state.customQuote[index].quote}
+                      placeholder={variables.getMessage(
+                        'modals.main.settings.sections.quote.title',
+                      )}
+                      onChange={(e) => this.customQuote(e, true, index, 'quote')}
+                      varient="outlined"
+                      style={{ marginRight: '10px' }}
+                    />
+                  </th>
+                  <th>
+                    <TextareaAutosize
+                      value={this.state.customQuote[index].author}
+                      placeholder={variables.getMessage(
+                        'modals.main.settings.sections.quote.author',
+                      )}
+                      onChange={(e) => this.customQuote(e, true, index, 'author')}
+                      varient="outlined"
+                    />
+                  </th>
+                  <th>
                     <button
                       className="deleteButton"
                       onClick={() => this.modifyCustomQuote('remove', index)}
@@ -138,11 +144,25 @@ export default class QuoteSettings extends PureComponent {
                     >
                       <MdCancel />
                     </button>
-                  ) : null}
-                </th>
-              </tr>
-            ))}
-          </table>
+                  </th>
+                </tr>
+              ))}
+            </table>
+          ) : (
+            <div className="photosEmpty">
+              <div className="emptyNewMessage">
+                <span className="title">
+                  {variables.getMessage('modals.main.settings.sections.message.no_messages')}
+                </span>
+                <span className="subtitle">
+                  {variables.getMessage('modals.main.settings.sections.message.add_some')}
+                </span>
+                <button onClick={() => this.modifyCustomQuote('add')}>
+                  {variables.getMessage('modals.main.settings.sections.quote.add')} <MdAdd />
+                </button>
+              </div>
+            </div>
+          )}
         </>
       );
     } else {

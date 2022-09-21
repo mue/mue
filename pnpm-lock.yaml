@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@eartharoid/deep-merge': ^0.0.2
-  '@eartharoid/i18n': 1.0.4
+  '@eartharoid/i18n': 1.1.0
   '@emotion/react': ^11.10.0
   '@emotion/styled': ^11.10.0
   '@floating-ui/react-dom': ^1.0.0
@@ -32,7 +32,7 @@ specifiers:
   vite: ^3.0.9
 
 dependencies:
-  '@eartharoid/i18n': 1.0.4
+  '@eartharoid/i18n': 1.1.0
   '@emotion/react': 11.10.0_react@18.2.0
   '@emotion/styled': 11.10.0_g566eayvhbit5eqxocdac5mhdm
   '@floating-ui/react-dom': 1.0.0_biqbaboplfbrettd7655fr4n2y
@@ -1552,8 +1552,8 @@ packages:
     resolution: {integrity: sha512-t7kmNd6m7BOGxf25tE1YBhPZbgMEsXZT0tQyVV/Mlo+rcPEmiEEc6HV1DBnYm63MvMpgTk4o6yBkeAJYCMzvNg==}
     dev: true
 
-  /@eartharoid/i18n/1.0.4:
-    resolution: {integrity: sha512-jxILUazPjIpjiUN5h1Ql8m9eHpxaD0wijMUYQqIghrzT/KS8UBUHmxNUCZOUhXEVYnXtB99p3Xvav7sPFx8InQ==}
+  /@eartharoid/i18n/1.1.0:
+    resolution: {integrity: sha512-1bD92kOMaXbcUi0cHoB+NqVgBmNUjKErsPEi2lPHgv2nV7pnz3wJ1o3NyrcBVs2mmZ/6nEfrYztxAjlSffFZRQ==}
     dev: false
 
   /@emotion/babel-plugin/11.10.0:
