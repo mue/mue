@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import React, { PureComponent } from 'react';
-import { MdCancel, MdAdd, MdSource, MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import { MdCancel, MdAdd, MdSource, MdOutlineKeyboardArrowRight, MdOutlineFormatQuote } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 import Header from '../Header';
@@ -151,8 +151,9 @@ export default class QuoteSettings extends PureComponent {
           ) : (
             <div className="photosEmpty">
               <div className="emptyNewMessage">
+                <MdOutlineFormatQuote/>
                 <span className="title">
-                  {variables.getMessage('modals.main.settings.sections.message.no_messages')}
+                  {variables.getMessage('modals.main.settings.sections.quote.no_quotes')}
                 </span>
                 <span className="subtitle">
                   {variables.getMessage('modals.main.settings.sections.message.add_some')}
@@ -247,6 +248,7 @@ export default class QuoteSettings extends PureComponent {
             <SettingsItem
               title={variables.getMessage('modals.main.settings.additional_settings')}
               subtitle={variables.getMessage('modals.main.settings.sections.quote.additional')}
+              final={true}
             >
               <Dropdown
                 label={variables.getMessage(
