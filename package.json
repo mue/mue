@@ -32,10 +32,13 @@
     "react-toastify": "9.0.8"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@eartharoid/deep-merge": "^0.0.2",
     "@vitejs/plugin-react": "^2.0.1",
     "eslint": "^8.22.0",
     "eslint-config-react-app": "^7.0.1",
+    "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "sass": "^1.54.5",
     "stylelint": "^14.10.0",
@@ -50,7 +53,8 @@
     "chrome": "cp manifest/chrome.json dist/manifest.json && cp -r manifest/_locales dist/_locales && cp manifest/background-chrome.js dist/background-chrome.js",
     "firefox": "rm -rf dist/_locales && cp manifest/firefox.json dist/manifest.json",
     "pretty": "prettier --write \"./**/*.{js,jsx,json,scss}\"",
-    "stylelint": "npx stylelint \"**/*.scss\""
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "postinstall": "husky install"
   },
   "browserslist": {
     "production": [
