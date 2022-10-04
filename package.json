@@ -16,7 +16,7 @@
     "@emotion/styled": "^11.8.1",
     "@fontsource/lexend-deca": "4.4.5",
     "@fontsource/montserrat": "4.4.5",
-    "@mui/material": "5.10.7",
+    "@mui/material": "5.10.8",
     "react": "18.2.0",
     "react-clock": "3.1.0",
     "react-color-gradient-picker": "0.1.2",
