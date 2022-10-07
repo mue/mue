@@ -401,14 +401,14 @@ export default class Background extends PureComponent {
     this.interval = setInterval(() => {
       const targetTime = Number(
         Number(localStorage.getItem('backgroundStartTime')) +
-          Number(localStorage.getItem('backgroundchange')),
+          Number(test),
       );
       const currentTime = Number(Date.now());
       const type = localStorage.getItem('backgroundType');
 
-      if (test !== null) {
+      if (test !== null && test !== 'refresh') {
         if (currentTime >= targetTime) {
-          console.log('Is this true?');
+          element.classList.remove('fade-in');
           this.getBackground();
           localStorage.setItem('backgroundStartTime', Date.now());
         } else {
@@ -419,7 +419,6 @@ export default class Background extends PureComponent {
             }
             const offline = localStorage.getItem('offlineMode');
             if (current.url.startsWith('http') && offline === 'false') {
-              console.log('current.url one?');
               if (this.state.firstTime !== true) {
                 this.setState(current);
               }

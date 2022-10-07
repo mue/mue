@@ -313,7 +313,8 @@
             "messages": "Messages",
             "text": "文本",
             "no_messages": "No messages",
-            "add_some": "Go ahead and add some."
+            "add_some": "Go ahead and add some.",
+            "content": "Message Content"
           },
           "appearance": {
             "title": "外观",

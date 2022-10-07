@@ -69,7 +69,7 @@ export default class Message extends PureComponent {
           switch={true}
         />
         <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.message.text')}
+          title={variables.getMessage('modals.main.settings.sections.message.messages')}
           subtitle=""
           final={true}
         >
@@ -91,10 +91,11 @@ export default class Message extends PureComponent {
                   <TextareaAutosize
                     value={this.state.messages[index]}
                     placeholder={variables.getMessage(
-                      'modals.main.settings.sections.message.title',
+                      'modals.main.settings.sections.message.content',
                     )}
                     onChange={(e) => this.message(e, true, index)}
                     varient="outlined"
+                    style={{ padding: "0"}}
                   />
                 </div>
               </div>

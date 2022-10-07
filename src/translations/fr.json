@@ -313,7 +313,8 @@
             "messages": "Messages",
             "text": "Text",
             "no_messages": "No messages",
-            "add_some": "Go ahead and add some."
+            "add_some": "Go ahead and add some.",
+            "content": "Message Content"
           },
           "appearance": {
             "title": "Apparence",
