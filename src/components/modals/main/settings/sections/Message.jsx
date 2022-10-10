@@ -105,6 +105,7 @@ export default class Message extends PureComponent {
                     className="deleteButton"
                     onClick={() => this.modifyMessage('remove', index)}
                   >
+                    Remove
                     <MdCancel />
                   </button>
                 </div>

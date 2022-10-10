@@ -23,7 +23,7 @@ export default class Search extends PureComponent {
       autocompleteCallback: '',
       microphone: null,
       suggestions: [],
-      searchDropdown: 'hidden',
+      searchDropdown: true,
       classList:
         localStorage.getItem('widgetStyle') === 'legacy' ? 'searchIcons old' : 'searchIcons',
     };
@@ -195,7 +195,7 @@ export default class Search extends PureComponent {
             {localStorage.getItem('searchDropdown') === 'true' ? (
               <Tooltip title={variables.getMessage('widgets.search')}>
                 <button>
-                  <MdScreenSearchDesktop onClick={() => this.toggleDropdown()} />
+                  <MdScreenSearchDesktop onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })} />
                 </button>
               </Tooltip>
             ) : (
@@ -223,8 +223,8 @@ export default class Search extends PureComponent {
           </form>
         </div>
         <div>
-          {localStorage.getItem('searchDropdown') === 'true' ? (
-            <div className="searchDropdown" style={{ visibility: this.state.searchDropdown }}>
+          {localStorage.getItem('searchDropdown') === 'true' && this.state.searchDropdown === true ? (
+            <div className="searchDropdown">
               {searchEngines.map(({ name }) => {
                 if (name === this.state.currentSearch) {
                   return null;

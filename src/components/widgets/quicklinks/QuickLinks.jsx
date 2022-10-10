@@ -101,7 +101,7 @@ export default class QuickLinks extends PureComponent {
       }
     } else {
       for (const img of element.getElementsByTagName('img')) {
-        img.style.height = `${1.4 * Number(zoom / 100)}em`;
+        img.style.height = `${30 * Number(zoom / 100)}px`;
       }
     }
   }
@@ -149,15 +149,13 @@ export default class QuickLinks extends PureComponent {
 
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
     const useProxy = localStorage.getItem('quicklinksddgProxy') !== 'false';
-    const useText = localStorage.getItem('quicklinksText') === 'true';
 
     const quickLink = (item) => {
-      if (useText) {
+      if (localStorage.getItem('quickLinksStyle') === 'text') {
         return (
           <a
             className="quicklinkstext"
             key={item.key}
-            onContextMenu={(e) => this.deleteLink(item.key, e)}
             href={item.url}
             target={target}
             rel={rel}
@@ -175,10 +173,25 @@ export default class QuickLinks extends PureComponent {
         item.icon ||
         url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '');
 
+      if (localStorage.getItem('quickLinksStyle') === 'metro') {
+        return (
+          <a
+          className="quickLinksMetro"
+          key={item.key}
+          href={item.url}
+          target={target}
+          rel={rel}
+          draggable={false}
+        >
+              <img src={img} alt={item.name} draggable={false} />
+              <span className="subtitle">{item.name}</span>
+          </a>
+        );
+      }
+
       const link = (
         <a
           key={item.key}
-          onContextMenu={(e) => this.deleteLink(item.key, e)}
           href={item.url}
           target={target}
           rel={rel}
@@ -189,7 +202,7 @@ export default class QuickLinks extends PureComponent {
       );
 
       return tooltipEnabled === 'true' ? (
-        <Tooltip title={item.name} placement="top">
+        <Tooltip title={item.name} placement="bottom">
           {link}
         </Tooltip>
       ) : (
@@ -201,11 +214,6 @@ export default class QuickLinks extends PureComponent {
       <>
         <div className="quicklinkscontainer" ref={this.quicklinksContainer}>
           {this.state.items.map((item) => quickLink(item))}
-        </div>
-        <div className="quicklinkscontainer">
-          <button className="quicklinks" onClick={this.toggleAdd}>
-            <MdAddToPhotos /> {variables.getMessage('widgets.quicklinks.add')}
-          </button>
         </div>
         <div className="quicklinkscontainer">
           <div

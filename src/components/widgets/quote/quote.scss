@@ -135,6 +135,7 @@ h1.quoteauthor {
 .deleteButton {
   height: auto !important;
   @include basicIconButton(11px, 1.3rem, modal);
+  padding: 10px 20px;
 }
 
 .author-content.whileLoading {
