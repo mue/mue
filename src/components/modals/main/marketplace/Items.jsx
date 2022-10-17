@@ -1,4 +1,5 @@
 import variables from 'modules/variables';
+import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 import {
   MdAutoFixHigh,
@@ -16,6 +17,7 @@ export default function Items({
   onCollection,
 }) {
   const [count, setCount] = useState(8);
+  const [filter, setFilter] = useState('');
   const incrementCount = () => {
     if (count !== items.length && count <= items.length) {
       if (count + 8 > items.length) {
@@ -30,6 +32,9 @@ export default function Items({
     <>
       {(type === 'all' && !onCollection) || (type === 'collections' && !onCollection) ? (
         <>
+      <TextField style={{ width: '100%' }}fullWidth label="Search" name="filter" id="filter" value={filter}
+  onChange={event => setFilter(event.target.value)}/>
+
           <div
             className="collection"
             style={
@@ -65,7 +70,21 @@ export default function Items({
           </div>
         </>
       ) : null}
-      <div className="items">
+                <div className="items">
+          {items.filter(item => item.name.includes(filter) || filter === '')
+          .map(item => <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
+          <img
+            alt="icon"
+            draggable="false"
+            src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
+          />
+          <div className="card-details">
+            <span className="card-title">{item.display_name || item.name}</span>
+            <span className="card-subtitle">{item.author}</span>
+          </div>
+        </div>)}
+          </div>
+      {/*<div className="items">
         {items.slice(0, count).map((item) => (
           <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
             <img
@@ -79,7 +98,7 @@ export default function Items({
             </div>
           </div>
         ))}
-      </div>
+        </div>
       <div className="showMoreItems">
         {count !== items.length && items.length >= 8 ? (
           <span className="link" onClick={incrementCount}>
@@ -97,7 +116,7 @@ export default function Items({
             {items.length}
           </span>
         )}
-      </div>
+      </div>*/}
       <div className="loader"></div>
       {type === 'all' && !onCollection ? (
         <div className="createYourOwn">

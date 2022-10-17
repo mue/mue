@@ -95,13 +95,16 @@ export default class QuickLinks extends PureComponent {
   // widget zoom
   setZoom(element) {
     const zoom = localStorage.getItem('zoomQuicklinks') || 100;
-    if (localStorage.getItem('quicklinksText')) {
-      for (const link of element.getElementsByTagName('a')) {
-        link.style.fontSize = `${1.4 * Number(zoom / 100)}em`;
+    if (localStorage.getItem('quickLinksStyle') !== "text") {
+      for (const link of element.getElementsByTagName('span')) {
+        link.style.fontSize = `${14 * Number(zoom / 100)}px`;
       }
-    } else {
       for (const img of element.getElementsByTagName('img')) {
         img.style.height = `${30 * Number(zoom / 100)}px`;
+      }
+    } else {
+      for (const link of element.getElementsByTagName('span')) {
+        link.style.fontSize = `${14 * Number(zoom / 100)}px`;
       }
     }
   }

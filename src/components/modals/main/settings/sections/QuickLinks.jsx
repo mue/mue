@@ -84,10 +84,11 @@ export default class QuickLinks extends PureComponent {
 
     variables.stats.postEvent('feature', 'Quicklink add');
 
-    this.toggleAdd();
+    this.setState({
+      showAddLink: false,
+    });
 
-    // make sure image is correct size
-    this.setZoom(this.quicklinksContainer.current);
+    this.toggleAdd();
   };
 
   toggleAdd = () => {
@@ -95,20 +96,6 @@ export default class QuickLinks extends PureComponent {
       showAddModal: this.state.showAddLink === 'false' ? 'true' : 'false',
     });
   };
-
-  // widget zoom
-  setZoom(element) {
-    const zoom = localStorage.getItem('zoomQuicklinks') || 100;
-    if (localStorage.getItem('quicklinksText')) {
-      for (const link of element.getElementsByTagName('a')) {
-        link.style.fontSize = `${1.4 * Number(zoom / 100)}em`;
-      }
-    } else {
-      for (const img of element.getElementsByTagName('img')) {
-        img.style.height = `${1.4 * Number(zoom / 100)}em`;
-      }
-    }
-  }
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
@@ -118,15 +105,12 @@ export default class QuickLinks extends PureComponent {
         }
 
         this.quicklinksContainer.current.style.display = 'block';
-        this.setZoom(this.quicklinksContainer.current);
 
         this.setState({
           items: JSON.parse(localStorage.getItem('quicklinks')),
         });
       }
     });
-
-    this.setZoom(this.quicklinksContainer.current);
   }
 
   // allows you to add a link by pressing enter
