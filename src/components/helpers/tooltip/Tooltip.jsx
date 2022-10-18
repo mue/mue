@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
 import './tooltip.scss';
 
-export default function Tooltip({ children, title, style, placement }) {
+export default function Tooltip({ children, title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const { x, y, reference, floating, strategy } = useFloating({
     placement: placement || 'bottom',
@@ -27,10 +27,13 @@ export default function Tooltip({ children, title, style, placement }) {
             position: strategy,
             top: y ?? '',
             left: x ?? '',
+            display: 'flex',
+            flexFlow: 'column',
           }}
           className="tooltipTitle"
         >
           {title}
+          <span style={{ fontSize: '8px'}}>{subtitle}</span>
         </span>
       )}
     </div>
