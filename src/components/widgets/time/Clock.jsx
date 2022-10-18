@@ -164,6 +164,7 @@ export default class Clock extends PureComponent {
             <Analog
               className="analogclock clock-container"
               value={this.state.time}
+              size={1.5 * Number((localStorage.getItem('zoomClock') || 100))}
               renderMinuteMarks={enabled('minuteMarks')}
               renderHourMarks={enabled('hourMarks')}
               renderSecondHand={enabled('secondHand')}

@@ -1,4 +1,5 @@
 import variables from 'modules/variables';
+import TextField from '@mui/material/TextField';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -366,7 +367,7 @@ export default class Marketplace extends PureComponent {
                 <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
                 <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
               </Dropdown>
-            </div>
+        </div>
           </>
         )}
         {this.props.type === 'collections' && !this.state.collection ? (

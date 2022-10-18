@@ -461,6 +461,34 @@ a.collectionButton {
   }
 }
 
+.marketplaceSearch {
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  @include themed() {
+    background: t($modal-sidebarActive);
+    box-shadow: 0 0 0 3px t($modal-sidebarActive);
+      background: t($modal-sidebar);
+  }
+  input {
+    all: unset;
+  }
+  @include themed() {
+
+  &:focus-within {
+    background: t($modal-sidebarActive);
+    box-shadow: 0 0 0 1px t($color);
+  }
+
+  &:disabled {
+    background: t($modal-sidebarActive);
+    cursor: not-allowed;
+  }
+}
+}
+
 .inCollection {
   background-image: linear-gradient(to left, transparent, #000),
     url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
@@ -485,3 +513,4 @@ a.collectionButton {
     font-size: 30px;
   }
 }
+

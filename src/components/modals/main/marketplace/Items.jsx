@@ -6,6 +6,10 @@ import {
   MdOutlineArrowForward,
   MdExpandMore,
   MdOutlineOpenInNew,
+  MdOutlinePhoto as Background,
+  MdOutlineFormatQuote as Quote,
+  MdOutlineSettings as Advanced,
+  MdSearch,
 } from 'react-icons/md';
 
 export default function Items({
@@ -18,6 +22,8 @@ export default function Items({
 }) {
   const [count, setCount] = useState(8);
   const [filter, setFilter] = useState('');
+  const [cheese, setCheese] = useState('photo')
+  const [filteredCategory, setFilteredCategory] = useState('');
   const incrementCount = () => {
     if (count !== items.length && count <= items.length) {
       if (count + 8 > items.length) {
@@ -32,9 +38,18 @@ export default function Items({
     <>
       {(type === 'all' && !onCollection) || (type === 'collections' && !onCollection) ? (
         <>
-      <TextField style={{ width: '100%' }}fullWidth label="Search" name="filter" id="filter" value={filter}
-  onChange={event => setFilter(event.target.value)}/>
-
+          <div style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', gap: '30px' }}>
+            <form className="marketplaceSearch">
+              <input
+                label="Search"
+                name="filter"
+                id="filter"
+                value={filter}
+                onChange={(event) => setFilter(event.target.value)}
+              />
+            <MdSearch/>
+            </form>
+          </div>
           <div
             className="collection"
             style={
@@ -70,20 +85,29 @@ export default function Items({
           </div>
         </>
       ) : null}
-                <div className="items">
-          {items.filter(item => item.name.includes(filter) || filter === '')
-          .map(item => <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
-          <img
-            alt="icon"
-            draggable="false"
-            src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
-          />
-          <div className="card-details">
-            <span className="card-title">{item.display_name || item.name}</span>
-            <span className="card-subtitle">{item.author}</span>
-          </div>
-        </div>)}
-          </div>
+      <div className="items">
+        {items
+          .filter(
+            (item) =>
+              item.name.toLowerCase().includes(filter.toLowerCase()) ||
+              filter === '' ||
+              item.author.toLowerCase().includes(filter.toLowerCase()) ||
+              item.type.toLowerCase().includes(filter.toLowerCase() || cheese),
+          )
+          .map((item) => (
+            <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
+              <img
+                alt="icon"
+                draggable="false"
+                src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
+              />
+              <div className="card-details">
+                <span className="card-title">{item.display_name || item.name}</span>
+                <span className="card-subtitle">{item.author}</span>
+              </div>
+            </div>
+          ))}
+      </div>
       {/*<div className="items">
         {items.slice(0, count).map((item) => (
           <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
