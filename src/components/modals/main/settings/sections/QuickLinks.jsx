@@ -1,15 +1,13 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { TextareaAutosize } from '@mui/material';
-import { MdAddLink, MdLinkOff, MdClose, MdCancel, MdEdit } from 'react-icons/md';
+import { MdAddLink, MdLinkOff, MdCancel, MdEdit } from 'react-icons/md';
 import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import Modal from 'react-modal';
 
 import SettingsItem from '../SettingsItem';
-
-import Tooltip from 'components/helpers/tooltip/Tooltip';
+import AddModal from './quicklinks/AddModal';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -18,11 +16,10 @@ export default class QuickLinks extends PureComponent {
     super();
     this.state = {
       items: JSON.parse(localStorage.getItem('quicklinks')),
-      name: '',
-      url: '',
-      showAddLink: 'none',
-      nameError: '',
+      showAddModal: false,
       urlError: '',
+      edit: false,
+      editData: ''
     };
     this.quicklinksContainer = createRef();
   }
@@ -41,9 +38,8 @@ export default class QuickLinks extends PureComponent {
     variables.stats.postEvent('feature', 'Quicklink delete');
   }
 
-  addLink = () => {
+  addLink(name, url, icon) {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
-    let url = this.state.url;
     let urlError;
 
     // regex: https://ihateregex.io/expr/url/
@@ -68,9 +64,9 @@ export default class QuickLinks extends PureComponent {
     }
 
     data.push({
-      name: this.state.name || url,
+      name: name || url,
       url,
-      icon: this.state.icon || '',
+      icon: icon || '',
       key: Math.random().toString(36).substring(7) + 1,
     });
 
@@ -78,24 +74,34 @@ export default class QuickLinks extends PureComponent {
 
     this.setState({
       items: data,
-      name: '',
-      url: '',
+      showAddModal: false,
+      urlError: ''
     });
 
     variables.stats.postEvent('feature', 'Quicklink add');
-
-    this.setState({
-      showAddLink: false,
-    });
-
-    this.toggleAdd();
   };
 
-  toggleAdd = () => {
+  startEditLink(data) {
     this.setState({
-      showAddModal: this.state.showAddLink === 'false' ? 'true' : 'false',
+      edit: true,
+      editData: data,
+      showAddModal: true
     });
-  };
+  }
+
+  editLink(og, name, url, icon) {
+    const data = JSON.parse(localStorage.getItem('quicklinks'));
+    const dataobj = data.find(i => i.key === og.key);
+    dataobj.name = name || url;
+    dataobj.url = url;
+    dataobj.icon = icon || '';
+
+    localStorage.setItem('quicklinks', JSON.stringify(data));
+    this.setState({
+      items: data,
+      showAddModal: false
+    });
+  }
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
@@ -113,16 +119,6 @@ export default class QuickLinks extends PureComponent {
     });
   }
 
-  // allows you to add a link by pressing enter
-  topbarEnter = (e) => {
-    e = e || window.event;
-    const code = e.which || e.keyCode;
-    if (code === 13 && this.state.showAddLink === 'visible') {
-      this.addLink();
-      e.preventDefault();
-    }
-  };
-
   componentWillUnmount() {
     EventBus.off('refresh');
   }
@@ -135,7 +131,6 @@ export default class QuickLinks extends PureComponent {
       rel = 'noopener noreferrer';
     }
 
-    const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
     const useProxy = localStorage.getItem('quicklinksddgProxy') !== 'false';
     const useText = localStorage.getItem('quicklinksText') === 'true';
 
@@ -174,7 +169,7 @@ export default class QuickLinks extends PureComponent {
           </div>
           <div>
             <div className="messageAction">
-              <button className="deleteButton" onClick={() => this.modifyMessage('remove', index)}>
+              <button className="deleteButton" onClick={() => this.startEditLink(item)}>
                 Edit
                 <MdEdit />
               </button>
@@ -186,6 +181,7 @@ export default class QuickLinks extends PureComponent {
           </div>
         </div>
       );
+      
       return link;
     };
 
@@ -219,7 +215,7 @@ export default class QuickLinks extends PureComponent {
             category="quicklinks"
           />
         </SettingsItem>
-        <SettingsItem title="Quick Links' Styling" description="Customise Quick Links' Appearance.">
+        <SettingsItem title="Quick Links Styling" description="Customise Quick Links Appearance.">
           <Dropdown label="Style" name="quickLinksStyle" category="other">
             <option value="icon">Icon</option>
             <option value="text">Text Only</option>
@@ -228,7 +224,7 @@ export default class QuickLinks extends PureComponent {
         </SettingsItem>
 
         <SettingsItem title="Quick Links" subtitle="" final={true}>
-          <button onClick={this.toggleAdd}>
+          <button onClick={() => this.setState({ showAddModal: true })}>
             Add Link <MdAddLink />
           </button>
         </SettingsItem>
@@ -241,7 +237,7 @@ export default class QuickLinks extends PureComponent {
               <span className="subtitle">
                 {variables.getMessage('modals.main.settings.sections.message.add_some')}
               </span>
-              <button onClick={this.toggleAdd}>
+              <button onClick={() => this.setState({ showAddModal: true })}>
                 Add Link
                 <MdAddLink />
               </button>
@@ -254,48 +250,20 @@ export default class QuickLinks extends PureComponent {
         </div>
         <Modal
           closeTimeoutMS={100}
-          onRequestClose={() => this.setState({ showAddModal: false })}
+          onRequestClose={() => this.setState({ showAddModal: false, urlError: '' })}
           isOpen={this.state.showAddModal}
           className="Modal resetmodal mainModal"
           overlayClassName="Overlay resetoverlay"
           ariaHideApp={false}
         >
-          <div className="smallModal">
-            <div className="shareHeader">
-              <span className="title">{variables.getMessage('widgets.quicklinks.new')}</span>
-              <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
-                <div className="close" onClick={() => this.setState({ showAddModal: false })}>
-                  <MdClose />
-                </div>
-              </Tooltip>
-            </div>
-            <div className="quicklinkModalTextbox">
-              <TextareaAutosize
-                maxRows={1}
-                placeholder={variables.getMessage('widgets.quicklinks.name')}
-                value={this.state.name}
-                onChange={(e) => this.setState({ name: e.target.value })}
-              />
-              <span className="dropdown-error" />
-              <TextareaAutosize
-                maxRows={10}
-                placeholder={variables.getMessage('widgets.quicklinks.url')}
-                value={this.state.url}
-                onChange={(e) => this.setState({ url: e.target.value })}
-              />
-              <span className="dropdown-error">{this.state.urlError}</span>
-              <TextareaAutosize
-                maxRows={10}
-                placeholder={variables.getMessage('widgets.quicklinks.icon')}
-                value={this.state.icon}
-                onChange={(e) => this.setState({ icon: e.target.value })}
-              />
-              <span className="dropdown-error" />
-              <button onClick={this.addLink}>
-                <MdAddLink /> {variables.getMessage('widgets.quicklinks.add')}
-              </button>
-            </div>
-          </div>
+          <AddModal
+            urlError={this.state.urlError}
+            addLink={(name, url, icon) => this.addLink(name, url, icon)}
+            editLink={(og, name, url, icon) => this.editLink(og, name, url, icon)}
+            edit={this.state.edit}
+            editData={this.state.editData}
+            closeModal={() => this.setState({ showAddModal: false, urlError: '' })}
+          />
         </Modal>
       </>
     );
