@@ -132,13 +132,11 @@ export default class Quote extends PureComponent {
         )
       ).json();
 
-      const license =
-        authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]]
-          .imageinfo[0].extmetadata.LicenseShortName;
-      const photographer =
-        authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]]
-          .imageinfo[0].extmetadata.Attribution || 'Unknown';
-      authorimglicense = `© ${photographer.value}. ${license.value}`;
+      const metadata = authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]].imageinfo[0].extmetadata;
+      const license = metadata.LicenseShortName;
+      const photographer = metadata.Attribution.value || metadata.Artist?.value.match(/<a.+>(?<name>.+)<\/a>/i)?.groups.name || 'Unknown';
+      authorimglicense = `© ${photographer}. ${license.value}`;
+	  authorimglicense = authorimglicense.replace(/copyright\s/i, '').replace(/©\s©\s/, '© ');
 
       if (license.value === 'Public domain') {
         authorimglicense = null;
