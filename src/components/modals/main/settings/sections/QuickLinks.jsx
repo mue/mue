@@ -97,9 +97,11 @@ export default class QuickLinks extends PureComponent {
     dataobj.icon = icon || '';
 
     localStorage.setItem('quicklinks', JSON.stringify(data));
+
     this.setState({
       items: data,
-      showAddModal: false
+      showAddModal: false,
+      edit: false
     });
   }
 
