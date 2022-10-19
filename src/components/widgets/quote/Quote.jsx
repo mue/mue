@@ -262,7 +262,7 @@ export default class Quote extends PureComponent {
           const authorimgdata = await this.getAuthorImg(data.author);
 
           const object = {
-            quote: '"' + data.quote + '"',
+            quote: '"' + data.quote.replace(/\s+$/g, '') + '"',
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
             authorimg: authorimgdata.authorimg,
