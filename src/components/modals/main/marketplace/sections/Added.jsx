@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdUpdate, MdOutlineExtensionOff } from 'react-icons/md';
+import { MdUpdate, MdOutlineExtensionOff, MdCode } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
@@ -193,10 +193,16 @@ export default class Added extends PureComponent {
     if (this.state.installed.length === 0) {
       return (
         <>
+          <div className="flexTopMarketplace">
+            <span className="mainTitle">{variables.getMessage('modals.main.navbar.addons')}</span>
+          </div>
+          <div className="filter">
           {sideLoadBackendElements()}
-          <button onClick={() => document.getElementById('file-input').click()}>
+          <button className="sideload " onClick={() => document.getElementById('file-input').click()}>
             {variables.getMessage('modals.main.addons.sideload.title')}
+            <MdCode />
           </button>
+          </div>
           <div className="emptyItems">
             <div className="emptyNewMessage">
               <MdOutlineExtensionOff />
@@ -224,12 +230,19 @@ export default class Added extends PureComponent {
 
     return (
       <>
-        {sideLoadBackendElements()}
         <span className="mainTitle">{variables.getMessage('modals.main.addons.added')}</span>
-        <button onClick={() => document.getElementById('file-input').click()}>
-          {variables.getMessage('modals.main.addons.sideload.title')}
-        </button>
         <div className="filter">
+          {sideLoadBackendElements()}
+          <div className="buttonSection">
+          <button className="sideload " onClick={() => document.getElementById('file-input').click()}>
+            {variables.getMessage('modals.main.addons.sideload.title')}
+            <MdCode />
+          </button>
+          <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
+            <MdUpdate />
+            {variables.getMessage('modals.main.addons.check_updates')}
+          </button>
+          </div>
           <Dropdown
             label={variables.getMessage('modals.main.addons.sort.title')}
             name="sortAddons"
@@ -240,10 +253,6 @@ export default class Added extends PureComponent {
             <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
             <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
           </Dropdown>
-          <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
-            <MdUpdate />
-            {variables.getMessage('modals.main.addons.check_updates')}
-          </button>
         </div>
         <Items
           items={this.state.installed}

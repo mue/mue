@@ -330,6 +330,16 @@ p.author {
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
   }
 
+  .MuiFormControl-root {
+    margin-bottom: 10px;
+  }
+
+  .buttonSection {
+    display: flex;
+    flex-flow: row;
+    gap: 20px;
+  }
+
   .tags {
     max-width: 50%;
   }

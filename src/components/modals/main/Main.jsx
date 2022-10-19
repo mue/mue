@@ -56,7 +56,7 @@ export default function MainModal({ modalClose }) {
   return (
     <div className="frame">
       <Tooltip
-        style={{ position: 'absolute', top: '3rem', right: '3rem' }}
+        style={{ position: 'absolute', top: '1rem', right: '1rem' }}
         title={variables.getMessage('modals.welcome.buttons.close')}
         key="closeTooltip"
       >

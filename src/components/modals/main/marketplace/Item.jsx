@@ -13,6 +13,7 @@ import {
   MdTranslate,
   MdOutlineKeyboardArrowRight,
   MdExpandMore,
+  MdExpandLess,
   MdStyle,
 } from 'react-icons/md';
 import Modal from 'react-modal';
@@ -53,7 +54,11 @@ export default class Item extends PureComponent {
   }
 
   incrementCount() {
-    this.setState({ count: this.props.data.data.quotes.length });
+    if (this.state.count !== this.props.data.data.quotes.length) {
+      this.setState({ count: this.props.data.data.quotes.length });
+    } else {
+      this.setState({ count: 5 });
+    }
   }
 
   render() {
@@ -123,8 +128,8 @@ export default class Item extends PureComponent {
               <>
                 <table>
                   <tr>
-                    <th>Quote</th>
-                    <th>Author</th>
+                    <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
+                    <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
                   </tr>
                   {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
                     <tr key={index}>
@@ -135,7 +140,15 @@ export default class Item extends PureComponent {
                 </table>
                 <div className="showMoreItems">
                   <span className="link" onClick={() => this.incrementCount()}>
-                    <MdExpandMore /> Show All
+                    {this.state.count !== this.props.data.data.quotes.length ? (
+                      <>
+                        <MdExpandMore /> {variables.getMessage('modals.main.marketplace.product.show_all')}
+                      </>
+                    ) : (
+                      <>
+                        <MdExpandLess /> {variables.getMessage('modals.main.marketplace.product.show_less')}
+                      </>
+                    )}
                   </span>
                 </div>
               </>
@@ -213,7 +226,10 @@ export default class Item extends PureComponent {
               <div className="infoItem">
                 <MdStyle />
                 <div className="text">
-                  <span className="header"> {variables.getMessage('modals.main.settings.sections.background.type.title')}</span>
+                  <span className="header">
+                    {' '}
+                    {variables.getMessage('modals.main.settings.sections.background.type.title')}
+                  </span>
                   <span>
                     {' '}
                     {variables.getMessage(

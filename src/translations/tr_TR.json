@@ -488,6 +488,7 @@
           "description": "Açıklama/Tanım",
           "show_more": "Daha fazla göster",
           "show_less": "Daha az göster",
+          "show_all": "Show All",
           "showing": "Showing",
           "no_images": "Fotoğraf bulunamadı",
           "no_quotes": "Alıntı bulunamadı",

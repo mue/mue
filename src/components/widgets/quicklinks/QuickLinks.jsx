@@ -95,7 +95,7 @@ export default class QuickLinks extends PureComponent {
   // widget zoom
   setZoom(element) {
     const zoom = localStorage.getItem('zoomQuicklinks') || 100;
-    if (localStorage.getItem('quickLinksStyle') !== "text") {
+    if (localStorage.getItem('quickLinksStyle') !== 'text') {
       for (const link of element.getElementsByTagName('span')) {
         link.style.fontSize = `${14 * Number(zoom / 100)}px`;
       }
@@ -179,27 +179,21 @@ export default class QuickLinks extends PureComponent {
       if (localStorage.getItem('quickLinksStyle') === 'metro') {
         return (
           <a
-          className="quickLinksMetro"
-          key={item.key}
-          href={item.url}
-          target={target}
-          rel={rel}
-          draggable={false}
-        >
-              <img src={img} alt={item.name} draggable={false} />
-              <span className="subtitle">{item.name}</span>
+            className="quickLinksMetro"
+            key={item.key}
+            href={item.url}
+            target={target}
+            rel={rel}
+            draggable={false}
+          >
+            <img src={img} alt={item.name} draggable={false} />
+            <span className="subtitle">{item.name}</span>
           </a>
         );
       }
 
       const link = (
-        <a
-          key={item.key}
-          href={item.url}
-          target={target}
-          rel={rel}
-          draggable={false}
-        >
+        <a key={item.key} href={item.url} target={target} rel={rel} draggable={false}>
           <img src={img} alt={item.name} draggable={false} />
         </a>
       );

@@ -489,6 +489,7 @@
           "description": "Description",
           "show_more": "Show More",
           "show_less": "Show Less",
+          "show_all": "Show All",
           "showing": "Showing",
           "no_images": "No. Images",
           "no_quotes": "No. Quotes",
