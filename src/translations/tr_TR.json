@@ -305,7 +305,15 @@
             "additional": "Hızlı bağlantılar ekranı ve işlevleri için ek ayarlar.",
             "open_new": "Yeni Sekmede Aç",
             "tooltip": "İpucu",
-            "text_only": "Yalnızca Metni Göster"
+            "text_only": "Yalnızca Metni Göster",
+            "add_link": "Add Link",
+            "no_quicklinks": "No quicklinks",
+            "edit": "Edit",
+            "options": {
+              "icon": "Icon",
+              "text_only": "Text Only",
+              "metro": "Metro"
+            }
           },
           "message": {
             "title": "Mesaj",
@@ -500,7 +508,8 @@
             "addtomue": "Mue'ye Ekle",
             "remove": "Kaldır",
             "update_addon": "Eklentiyi Güncelle",
-            "back": "Geri"
+            "back": "Geri",
+            "report": "Report"
           }
         },
         "offline": {

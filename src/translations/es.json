@@ -305,7 +305,15 @@
             "additional": "Additional settings for quick links display and functions",
             "open_new": "Abrir en una nueva pestaña",
             "tooltip": "Descripción emergente",
-            "text_only": "Mostrar solo texto"
+            "text_only": "Mostrar solo texto",
+            "add_link": "Add Link",
+            "no_quicklinks": "No quicklinks",
+            "edit": "Edit",
+            "options": {
+              "icon": "Icon",
+              "text_only": "Text Only",
+              "metro": "Metro"
+            }
           },
           "message": {
             "title": "Mensaje",
@@ -500,7 +508,8 @@
             "addtomue": "Añadir a Mue",
             "remove": "Desinstalar",
             "update_addon": "Actualizar complemento",
-            "back": "Back"
+            "back": "Back",
+            "report": "Report"
           }
         },
         "offline": {

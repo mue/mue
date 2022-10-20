@@ -305,7 +305,15 @@
             "additional": "Additional settings for quick links display and functions",
             "open_new": "Open in new tab",
             "tooltip": "Tooltip",
-            "text_only": "Show text only"
+            "text_only": "Show text only",
+            "add_link": "Add Link",
+            "no_quicklinks": "No quicklinks",
+            "edit": "Edit",
+            "options": {
+              "icon": "Icon",
+              "text_only": "Text Only",
+              "metro": "Metro"
+            }
           },
           "message": {
             "title": "Message",
@@ -500,7 +508,8 @@
             "addtomue": "Добавить в Mue",
             "remove": "Удалить",
             "update_addon": "Update Add-on",
-            "back": "Back"
+            "back": "Back",
+            "report": "Report"
           }
         },
         "offline": {

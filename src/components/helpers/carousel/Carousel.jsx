@@ -66,7 +66,6 @@ export default function EmblaCarousel({ data }) {
         className="carousel_button prev"
         onClick={() => scroll('prev')}
         disabled={!prevBtnEnabled}
-        title="Previous"
       >
         <MdOutlineArrowBackIos />
       </button>
@@ -74,7 +73,6 @@ export default function EmblaCarousel({ data }) {
         className="carousel_button next"
         onClick={() => scroll('next')}
         disabled={!nextBtnEnabled}
-        title="Next"
       >
         <MdOutlineArrowForwardIos />
       </button>

@@ -305,7 +305,15 @@
             "additional": "Additional settings for quick links display and functions",
             "open_new": "在新标签页打开",
             "tooltip": "光标停留时下方显示标题",
-            "text_only": "仅显示标题"
+            "text_only": "仅显示标题",
+            "add_link": "Add Link",
+            "no_quicklinks": "No quicklinks",
+            "edit": "Edit",
+            "options": {
+              "icon": "Icon",
+              "text_only": "Text Only",
+              "metro": "Metro"
+            }
           },
           "message": {
             "title": "消息",
@@ -500,7 +508,8 @@
             "addtomue": "添加至 Mue",
             "remove": "卸载",
             "update_addon": "Update Add-on",
-            "back": "Back"
+            "back": "Back",
+            "report": "Report"
           }
         },
         "offline": {

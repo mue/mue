@@ -253,7 +253,7 @@ export default class Item extends PureComponent {
                   <MdIosShare />
                 </button>
               </Tooltip>
-              <Tooltip title="Report" key="report">
+              <Tooltip title={variables.getMessage('modals.main.marketplace.product.buttons.report')} key="report">
                 <button
                   onClick={() =>
                     window.open(
