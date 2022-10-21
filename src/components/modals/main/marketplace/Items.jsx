@@ -19,11 +19,12 @@ export default function Items({
   toggleFunction,
   collectionFunction,
   onCollection,
+  filter,
 }) {
   const [count, setCount] = useState(8);
-  const [filter, setFilter] = useState('');
   const [cheese, setCheese] = useState('photo')
   const [filteredCategory, setFilteredCategory] = useState('');
+  console.log(filter)
   const incrementCount = () => {
     if (count !== items.length && count <= items.length) {
       if (count + 8 > items.length) {
@@ -36,19 +37,9 @@ export default function Items({
 
   return (
     <>
-      {(type === 'all' && !onCollection) || (type === 'collections' && !onCollection) ? (
+      {(type === 'all' && !onCollection && (filter === null || filter === '')) || (type === 'collections' && !onCollection &&  (filter === null || filter === '')) ? (
         <>
           <div style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', gap: '30px' }}>
-            <form className="marketplaceSearch">
-              <input
-                label="Search"
-                name="filter"
-                id="filter"
-                value={filter}
-                onChange={(event) => setFilter(event.target.value)}
-              />
-            <MdSearch/>
-            </form>
           </div>
           <div
             className="collection"

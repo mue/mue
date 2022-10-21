@@ -471,12 +471,19 @@ a.collectionButton {
   }
 }
 
+.marketplaceRefresh {
+  display: flex;
+  flex-flow: row;
+  gap: 5px;
+  align-items: center;
+}
+
 .marketplaceSearch {
   display: flex;
   align-items: center;
   padding: 10px 30px;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 18px;
   @include themed() {
     background: t($modal-sidebarActive);
     box-shadow: 0 0 0 3px t($modal-sidebarActive);

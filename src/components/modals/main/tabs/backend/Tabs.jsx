@@ -59,7 +59,7 @@ export default class Tabs extends PureComponent {
 
     return (
       <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
-        <ul className="sidebar" style={{ display: marketplaceActive === ' navbar-item-active' || addonsActive === ' navbar-item-active' ? 'none' : 'block'}}>
+        <ul className="sidebar">
           {this.props.children.map((tab, index) => (
             <Tab
               currentTab={this.state.currentTab}

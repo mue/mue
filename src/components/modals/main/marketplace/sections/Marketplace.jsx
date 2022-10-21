@@ -7,6 +7,7 @@ import {
   MdLocalMall,
   MdOutlineKeyboardArrowRight,
   MdRefresh,
+  MdSearch,
   MdOutlineArrowForward,
 } from 'react-icons/md';
 
@@ -26,6 +27,7 @@ export default class Marketplace extends PureComponent {
       done: false,
       item: {},
       collection: false,
+      filter: '',
     };
     this.buttons = {
       uninstall: (
@@ -332,7 +334,8 @@ export default class Marketplace extends PureComponent {
                 <span className="backTitle">
                   {variables.getMessage('modals.main.navbar.marketplace')}
                 </span>
-                <MdOutlineKeyboardArrowRight /> {variables.getMessage('modals.main.marketplace.collection')}
+                <MdOutlineKeyboardArrowRight />{' '}
+                {variables.getMessage('modals.main.marketplace.collection')}
               </span>
             </div>
             <div
@@ -345,7 +348,9 @@ export default class Marketplace extends PureComponent {
                 <span className="mainTitle">{this.state.collectionTitle}</span>
                 <span className="subtitle">{this.state.collectionDescription}</span>
               </div>
-              <div className="nice-tag">Collection</div>
+              <div className="nice-tag">
+                {variables.getMessage('modals.main.marketplace.collection')}
+              </div>
             </div>
           </>
         ) : (
@@ -356,9 +361,24 @@ export default class Marketplace extends PureComponent {
               </span>
             </div>
             <div className="headerExtras marketplaceCondition">
-              <span className="link" onClick={() => this.reloadItems()}>
-                <MdRefresh /> {variables.getMessage('widgets.navbar.tooltips.refresh')}
-              </span>
+              {this.props.type !== 'collections' ? (
+                <div>
+                  <form className="marketplaceSearch">
+                    <input
+                      label="Search"
+                      placeholder="Search"
+                      name="filter"
+                      id="filter"
+                      value={this.state.filter}
+                      onChange={(event) => this.setState({ filter: event.target.value })}
+                    />
+                    <MdSearch />
+                  </form>
+                  {/*<span className="link marketplaceRefresh" onClick={() => this.reloadItems()}>
+                    <MdRefresh /> {variables.getMessage('widgets.navbar.tooltips.refresh')}
+              </span>*/}
+                </div>
+              ) : null}
               <Dropdown
                 label={variables.getMessage('modals.main.addons.sort.title')}
                 name="sortMarketplace"
@@ -367,10 +387,10 @@ export default class Marketplace extends PureComponent {
                 <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
                 <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
               </Dropdown>
-        </div>
+            </div>
           </>
         )}
-        {this.props.type === 'collections' && !this.state.collection ? (
+        {(this.props.type === 'collections' && !this.state.collection) ? (
           this.state.items.map((item) => (
             <>
               {!item.news ? (
@@ -403,10 +423,14 @@ export default class Marketplace extends PureComponent {
           <Items
             type={this.props.type}
             items={this.state.items}
-            collection={this.state.collections[Math.floor(Math.random() * this.state.collections.length)] || []}
+            collection={
+              this.state.collections[Math.floor(Math.random() * this.state.collections.length)] ||
+              []
+            }
             onCollection={this.state.collection}
             toggleFunction={(input) => this.toggle('item', input)}
             collectionFunction={(input) => this.toggle('collection', input)}
+            filter={this.state.filter}
           />
         )}
       </>

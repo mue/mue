@@ -142,6 +142,15 @@ h5 {
   display: flex;
   flex-flow: column;
   gap: -1px;
+  padding: 10px 0;
+  div:nth-child(1) {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+  }
+  form {
+    margin-top: 10px;
+  }
   .link {
     display: flex;
     flex-flow: row;
