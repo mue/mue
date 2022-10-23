@@ -148,6 +148,12 @@ table {
         color: t($color);
       }
     }
+    .subtitle {
+      @include themed() {
+        color: t($subColor);
+        font-size: 13px;
+      }
+    }
   }
   .messageAction {
     float: right;

@@ -128,6 +128,7 @@ export default class QuoteSettings extends PureComponent {
                       placeholder={variables.getMessage(
                         'modals.main.settings.sections.quote.author',
                       )}
+                      className="subtitle"
                       onChange={(e) => this.customQuote(e, true, index, 'author')}
                       varient="outlined"
                     />
