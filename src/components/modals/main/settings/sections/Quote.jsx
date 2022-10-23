@@ -1,6 +1,12 @@
 import variables from 'modules/variables';
 import React, { PureComponent } from 'react';
-import { MdCancel, MdAdd, MdSource, MdOutlineKeyboardArrowRight, MdOutlineFormatQuote } from 'react-icons/md';
+import {
+  MdCancel,
+  MdAdd,
+  MdSource,
+  MdOutlineKeyboardArrowRight,
+  MdOutlineFormatQuote,
+} from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 import Header from '../Header';
@@ -80,12 +86,7 @@ export default class QuoteSettings extends PureComponent {
   getCustom() {
     let data = JSON.parse(localStorage.getItem('customQuote'));
     if (data === null) {
-      data = [
-        {
-          quote: localStorage.getItem('customQuote') || '',
-          author: localStorage.getItem('customQuoteAuthor') || '',
-        },
-      ];
+      data = [];
     }
     return data;
   }
@@ -104,18 +105,15 @@ export default class QuoteSettings extends PureComponent {
               {variables.getMessage('modals.main.settings.sections.quote.add')} <MdAdd />
             </button>
           </SettingsItem>
-          {this.state.customQuote.length > 1 ? (
-            <table style={{ width: '100%' }}>
-              <tr>
-                <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
-                <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
-                <th>
-                  {variables.getMessage('modals.main.settings.sections.quote.custom_buttons')}
-                </th>
-              </tr>
+
+          {this.state.customQuote.length !== 0 ? (
+            <div className="messagesContainer">
               {this.state.customQuote.map((_url, index) => (
-                <tr key={index}>
-                  <th>
+                <div className="messageMap">
+                  <div className="icon">
+                    <MdOutlineFormatQuote />
+                  </div>
+                  <div className="messageText">
                     <TextareaAutosize
                       value={this.state.customQuote[index].quote}
                       placeholder={variables.getMessage(
@@ -123,10 +121,8 @@ export default class QuoteSettings extends PureComponent {
                       )}
                       onChange={(e) => this.customQuote(e, true, index, 'quote')}
                       varient="outlined"
-                      style={{ marginRight: '10px' }}
+                      style={{ fontSize: '22px', fontWeight: 'bold'}}
                     />
-                  </th>
-                  <th>
                     <TextareaAutosize
                       value={this.state.customQuote[index].author}
                       placeholder={variables.getMessage(
@@ -135,23 +131,26 @@ export default class QuoteSettings extends PureComponent {
                       onChange={(e) => this.customQuote(e, true, index, 'author')}
                       varient="outlined"
                     />
-                  </th>
-                  <th>
-                    <button
-                      className="deleteButton"
-                      onClick={() => this.modifyCustomQuote('remove', index)}
-                      style={{}}
-                    >
-                      <MdCancel />
-                    </button>
-                  </th>
-                </tr>
+                  </div>
+                  <div>
+                    <div className="messageAction">
+                      <button
+                        className="deleteButton"
+                        onClick={() => this.modifyCustomQuote('remove', index)}
+                        style={{}}
+                      >
+                        {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                        <MdCancel />
+                      </button>
+                    </div>
+                  </div>
+                </div>
               ))}
-            </table>
+            </div>
           ) : (
             <div className="photosEmpty">
               <div className="emptyNewMessage">
-                <MdOutlineFormatQuote/>
+                <MdOutlineFormatQuote />
                 <span className="title">
                   {variables.getMessage('modals.main.settings.sections.quote.no_quotes')}
                 </span>
