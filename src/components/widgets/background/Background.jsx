@@ -250,16 +250,53 @@ export default class Background extends PureComponent {
           }
         });
         if (photoPack) {
-          const randomPhoto = photoPack[Math.floor(Math.random() * photoPack.length)];
-          return this.setState({
-            url: randomPhoto.url.default,
-            type: 'photo_pack',
-            photoInfo: {
-              hidden: false,
-              credit: randomPhoto.photographer,
-              location: randomPhoto.location || 'N/A',
-            },
-          });
+          const randomNumber = Math.floor(Math.random() * photoPack.length)
+          const randomPhoto = photoPack[randomNumber];
+          if (
+            localStorage.getItem('backgroundchange') === 'refresh' ||
+            localStorage.getItem('backgroundchange') === null
+          ) {
+            localStorage.setItem('marketplaceNumber', randomNumber)
+            return this.setState({
+              url: randomPhoto.url.default,
+              type: 'photo_pack',
+              photoInfo: {
+                hidden: false,
+                credit: randomPhoto.photographer,
+                location: randomPhoto.location || 'N/A',
+              },
+            });
+          } else {
+            if (
+              Number(
+                Number(localStorage.getItem('backgroundStartTime')) +
+                  Number(localStorage.getItem('backgroundchange')) >=
+                  Number(Date.now()),
+              )
+            ) {
+            const randomPhoto = photoPack[localStorage.getItem('marketplaceNumber')];
+              return this.setState({
+                url: randomPhoto.url.default,
+                type: 'photo_pack',
+                photoInfo: {
+                  hidden: false,
+                  credit: randomPhoto.photographer,
+                  location: randomPhoto.location || 'N/A',
+                },
+              });
+            } else {
+              localStorage.setItem('marketplaceNumber', randomNumber)
+              return this.setState({
+                url: randomPhoto.url.default,
+                type: 'photo_pack',
+                photoInfo: {
+                  hidden: false,
+                  credit: randomPhoto.photographer,
+                  location: randomPhoto.location || 'N/A',
+                },
+              });
+            }
+          }
         }
         break;
       default:
@@ -384,7 +421,7 @@ export default class Background extends PureComponent {
 
     if (
       localStorage.getItem('backgroundchange') === 'refresh' ||
-      localStorage.getItem('quotechange') === null
+      localStorage.getItem('backgroundchange') === null
     ) {
       try {
         document.getElementById('backgroundImage').classList.remove('fade-in');
@@ -399,10 +436,7 @@ export default class Background extends PureComponent {
     const test = localStorage.getItem('backgroundchange');
 
     this.interval = setInterval(() => {
-      const targetTime = Number(
-        Number(localStorage.getItem('backgroundStartTime')) +
-          Number(test),
-      );
+      const targetTime = Number(Number(localStorage.getItem('backgroundStartTime')) + Number(test));
       const currentTime = Number(Date.now());
       const type = localStorage.getItem('backgroundType');
 

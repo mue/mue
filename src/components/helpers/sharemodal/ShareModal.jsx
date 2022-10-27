@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import './sharemodal.scss';
 
 export default function ShareModal({ modalClose, data }) {
-  const url = variables.constants.MARKETPLACE_URL + '/share/' + btoa(data.api_name);
+  const url = variables.constants.MARKETPLACE_URL + '/share/' + (btoa(data.api_name) || '');
 
   const copyLink = () => {
     navigator.clipboard.writeText(data);
