@@ -274,6 +274,7 @@ export default class Background extends PureComponent {
                   Number(Date.now()),
               )
             ) {
+              {/*}
             const randomPhoto = photoPack[localStorage.getItem('marketplaceNumber')];
               return this.setState({
                 url: randomPhoto.url.default,
@@ -284,6 +285,8 @@ export default class Background extends PureComponent {
                   location: randomPhoto.location || 'N/A',
                 },
               });
+            */}
+            break;
             } else {
               localStorage.setItem('marketplaceNumber', randomNumber)
               return this.setState({
