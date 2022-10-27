@@ -11,7 +11,7 @@
   "license": "BSD-3-Clause",
   "version": "6.0.6",
   "dependencies": {
-    "@eartharoid/i18n": "1.1.0",
+    "@eartharoid/i18n": "1.2.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@fontsource/lexend-deca": "4.4.5",
