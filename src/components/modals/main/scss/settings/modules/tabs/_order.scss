@@ -52,12 +52,13 @@
   @include themed() {
     div {
       border-radius: t($borderRadius);
-      border: 5px t($modal-sidebar) solid;
+      // border: 5px t($modal-sidebar) solid;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-flow: column;
       gap: 5px;
+      position: relative;
       img {
         width: 100%;
         height: 200px;
@@ -71,6 +72,11 @@
         &:hover {
           background: t($modal-sidebarActive);
         }
+      }
+      .tooltip {
+        position: absolute !important;
+        top: 5px !important;
+        right: 5px !important;
       }
     }
     .iconButton {

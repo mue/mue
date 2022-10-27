@@ -15,6 +15,8 @@ import { videoCheck } from 'modules/helpers/background/widget';
 
 import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
+import Tooltip from '../../../../../helpers/tooltip/Tooltip'
+
 
 import Modal from 'react-modal';
 
@@ -180,8 +182,16 @@ export default class CustomSettings extends PureComponent {
             <div>
               <MdAddPhotoAlternate />
               <div>
-                <span className="title">{variables.getMessage('modals.main.settings.sections.background.source.custom_title')}</span>
-                <span className="subtitle">{variables.getMessage('modals.main.settings.sections.background.source.custom_description')}</span>
+                <span className="title">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.background.source.custom_title',
+                  )}
+                </span>
+                <span className="subtitle">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.background.source.custom_description',
+                  )}
+                </span>
               </div>
             </div>
             <div className="topbarbuttons">
@@ -206,10 +216,15 @@ export default class CustomSettings extends PureComponent {
                     />
                     {this.videoCheck(url) ? <MdPersonalVideo className="customvideoicon" /> : null}
                     {this.state.customBackground.length > 0 ? (
-                      <button onClick={() => this.modifyCustomBackground('remove', index)}>
-                        {variables.getMessage('modals.main.settings.sections.background.source.remove')}{' '}
-                        <MdCancel />
-                      </button>
+                      <Tooltip
+                        title={variables.getMessage(
+                          'modals.main.settings.sections.background.source.remove',
+                        )}
+                      >
+                        <button onClick={() => this.modifyCustomBackground('remove', index)}>
+                          <MdCancel />
+                        </button>
+                      </Tooltip>
                     ) : null}
                   </div>
                 ))}
