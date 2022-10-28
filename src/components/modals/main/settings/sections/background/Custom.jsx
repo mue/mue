@@ -17,7 +17,6 @@ import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
 import Tooltip from '../../../../../helpers/tooltip/Tooltip'
 
-
 import Modal from 'react-modal';
 
 import CustomURLModal from './CustomURLModal';

@@ -21,7 +21,6 @@ import {
   MdOutlineAssessment as Stats,
   MdOutlineNewReleases as Changelog,
   MdInfoOutline as About,
-  MdCode as Sideload,
   MdAddCircleOutline as Added,
   MdAddCircleOutline as Create,
   MdViewAgenda as Overview,
@@ -115,9 +114,6 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     case variables.getMessage('modals.main.addons.added'):
       mue = true;
       icon = <Added />;
-      break;
-    case variables.getMessage('modals.main.addons.sideload.title'):
-      icon = <Sideload />;
       break;
     case variables.getMessage('modals.main.addons.create.title'):
       icon = <Create />;

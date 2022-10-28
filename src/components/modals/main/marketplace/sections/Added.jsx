@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
 import { MdUpdate, MdOutlineExtensionOff, MdCode } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
@@ -29,6 +29,7 @@ export default class Added extends PureComponent {
         </button>
       ),
     };
+    this.customDnd = createRef(null);
   }
 
   installAddon(input) {
@@ -163,6 +164,24 @@ export default class Added extends PureComponent {
 
   componentDidMount() {
     this.sortAddons(localStorage.getItem('sortAddons'), false);
+
+    const dnd = this.customDnd.current;
+    dnd.ondragover = dnd.ondragenter = (e) => {
+      e.preventDefault();
+    };
+
+    dnd.ondrop = (e) => {
+      e.preventDefault();
+      const reader = new FileReader();
+      const file = e.dataTransfer.files[0];
+
+      reader.readAsText(file, 'UTF-8');
+      reader.onload = (e) => {
+        console.log(e.target.result)
+        return this.installAddon(e.target.result);
+      };
+      e.preventDefault();
+    };
   }
 
   render() {
@@ -197,11 +216,15 @@ export default class Added extends PureComponent {
             <span className="mainTitle">{variables.getMessage('modals.main.navbar.addons')}</span>
           </div>
           <div className="filter">
-          {sideLoadBackendElements()}
-          <button className="sideload " onClick={() => document.getElementById('file-input').click()}>
-            {variables.getMessage('modals.main.addons.sideload.title')}
-            <MdCode />
-          </button>
+            {sideLoadBackendElements()}
+            <button
+              className="sideload"
+              onClick={() => document.getElementById('file-input').click()}
+              ref={this.customDnd}
+            >
+              {variables.getMessage('modals.main.addons.sideload.title')}
+              <MdCode />
+            </button>
           </div>
           <div className="emptyItems">
             <div className="emptyNewMessage">
@@ -234,14 +257,18 @@ export default class Added extends PureComponent {
         <div className="filter">
           {sideLoadBackendElements()}
           <div className="buttonSection">
-          <button className="sideload " onClick={() => document.getElementById('file-input').click()}>
-            {variables.getMessage('modals.main.addons.sideload.title')}
-            <MdCode />
-          </button>
-          <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
-            <MdUpdate />
-            {variables.getMessage('modals.main.addons.check_updates')}
-          </button>
+            <button
+              className="sideload"
+              onClick={() => document.getElementById('file-input').click()}
+              ref={this.customDnd}
+            >
+              {variables.getMessage('modals.main.addons.sideload.title')}
+              <MdCode />
+            </button>
+            <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
+              <MdUpdate />
+              {variables.getMessage('modals.main.addons.check_updates')}
+            </button>
           </div>
           <Dropdown
             label={variables.getMessage('modals.main.addons.sort.title')}
