@@ -29,7 +29,6 @@ export default class Added extends PureComponent {
         </button>
       ),
     };
-    this.customDnd = createRef(null);
   }
 
   installAddon(input) {
@@ -164,24 +163,6 @@ export default class Added extends PureComponent {
 
   componentDidMount() {
     this.sortAddons(localStorage.getItem('sortAddons'), false);
-
-    const dnd = this.customDnd.current;
-    dnd.ondragover = dnd.ondragenter = (e) => {
-      e.preventDefault();
-    };
-
-    dnd.ondrop = (e) => {
-      e.preventDefault();
-      const reader = new FileReader();
-      const file = e.dataTransfer.files[0];
-
-      reader.readAsText(file, 'UTF-8');
-      reader.onload = (e) => {
-        console.log(e.target.result)
-        return this.installAddon(e.target.result);
-      };
-      e.preventDefault();
-    };
   }
 
   render() {
@@ -191,7 +172,7 @@ export default class Added extends PureComponent {
           closeTimeoutMS={100}
           onRequestClose={() => this.setState({ showFailed: false })}
           isOpen={this.state.showFailed}
-          className="Modal resetmodal mainModal sideloadModal"
+          className="Modal resetmodal mainModal resetmodal"
           overlayClassName="Overlay resetoverlay"
           ariaHideApp={false}
         >
@@ -260,7 +241,6 @@ export default class Added extends PureComponent {
             <button
               className="sideload"
               onClick={() => document.getElementById('file-input').click()}
-              ref={this.customDnd}
             >
               {variables.getMessage('modals.main.addons.sideload.title')}
               <MdCode />
@@ -283,6 +263,7 @@ export default class Added extends PureComponent {
         </div>
         <Items
           items={this.state.installed}
+          filter=""
           toggleFunction={(input) => this.toggle('item', input)}
         />
       </>

@@ -257,10 +257,8 @@ export default class Background extends PureComponent {
             (localStorage.getItem('backgroundchange') === null && this.state.firstTime === true)
           ) {
             localStorage.setItem('marketplaceNumber', randomNumber);
-            console.log("APPLE BOTTOM JEANS")
-            console.log(this.state.firstTime)
-            this.setState({ firstTime: false })
             this.setState({
+              firstTime: false,
               url: randomPhoto.url.default,
               type: 'photo_pack',
               photoInfo: {
@@ -446,7 +444,7 @@ export default class Background extends PureComponent {
     this.interval = setInterval(() => {
       const targetTime = Number(Number(localStorage.getItem('backgroundStartTime')) + Number(test));
       const currentTime = Number(Date.now());
-      const type = localStorage.getItem('backgroundType');
+      const type = localStorage.getItem('backgroundType'); 
 
       if (test !== null && test !== 'refresh') {
         if (currentTime >= targetTime) {
