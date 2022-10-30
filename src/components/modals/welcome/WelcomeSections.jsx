@@ -330,15 +330,6 @@ export default class WelcomeSections extends PureComponent {
           {variables.getMessage('modals.welcome.sections.privacy.offline_mode_description')}
         </span>
         <Checkbox
-          name="quicklinksddgProxy"
-          text={
-            variables.getMessage('modals.main.settings.sections.background.ddg_image_proxy') +
-            ' (' +
-            variables.getMessage('modals.main.settings.sections.quicklinks.title') +
-            ')'
-          }
-        />
-        <Checkbox
           name="ddgProxy"
           text={
             variables.getMessage('modals.main.settings.sections.background.ddg_image_proxy') +

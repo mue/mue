@@ -19,7 +19,7 @@ export default class QuickLinks extends PureComponent {
       showAddModal: false,
       urlError: '',
       edit: false,
-      editData: ''
+      editData: '',
     };
     this.quicklinksContainer = createRef();
   }
@@ -75,23 +75,23 @@ export default class QuickLinks extends PureComponent {
     this.setState({
       items: data,
       showAddModal: false,
-      urlError: ''
+      urlError: '',
     });
 
     variables.stats.postEvent('feature', 'Quicklink add');
-  };
+  }
 
   startEditLink(data) {
     this.setState({
       edit: true,
       editData: data,
-      showAddModal: true
+      showAddModal: true,
     });
   }
 
   editLink(og, name, url, icon) {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
-    const dataobj = data.find(i => i.key === og.key);
+    const dataobj = data.find((i) => i.key === og.key);
     dataobj.name = name || url;
     dataobj.url = url;
     dataobj.icon = icon || '';
@@ -101,7 +101,7 @@ export default class QuickLinks extends PureComponent {
     this.setState({
       items: data,
       showAddModal: false,
-      edit: false
+      edit: false,
     });
   }
 
@@ -133,7 +133,6 @@ export default class QuickLinks extends PureComponent {
       rel = 'noopener noreferrer';
     }
 
-    const useProxy = localStorage.getItem('quicklinksddgProxy') !== 'false';
     const useText = localStorage.getItem('quicklinksText') === 'true';
 
     const quickLink = (item) => {
@@ -153,17 +152,19 @@ export default class QuickLinks extends PureComponent {
         );
       }
 
-      const url = useProxy
-        ? 'https://icons.duckduckgo.com/ip2/'
-        : 'https://www.google.com/s2/favicons?sz=32&domain=';
       const img =
         item.icon ||
-        url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '');
+        'https://icon.horse/icon/ ' + item.url.replace('https://', '').replace('http://', '');
 
       const link = (
         <div className="messageMap" key={item.key}>
           <div className="icon">
-            <img src={img} alt={item.name} draggable={false} style={{ height: '30px', width: '30px'}} />
+            <img
+              src={img}
+              alt={item.name}
+              draggable={false}
+              style={{ height: '30px', width: '30px' }}
+            />
           </div>
           <div className="messageText">
             <div className="title">{item.name}</div>
@@ -172,7 +173,7 @@ export default class QuickLinks extends PureComponent {
           <div>
             <div className="messageAction">
               <button className="deleteButton" onClick={() => this.startEditLink(item)}>
-              {variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
+                {variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
                 <MdEdit />
               </button>
               <button className="deleteButton" onClick={(e) => this.deleteLink(item.key, e)}>
@@ -183,7 +184,7 @@ export default class QuickLinks extends PureComponent {
           </div>
         </div>
       );
-      
+
       return link;
     };
 
@@ -202,11 +203,6 @@ export default class QuickLinks extends PureComponent {
           subtitle={variables.getMessage('modals.main.settings.sections.quicklinks.additional')}
         >
           <Checkbox
-            name="quicklinksddgProxy"
-            text={variables.getMessage('modals.main.settings.sections.background.ddg_image_proxy')}
-            category="quicklinks"
-          />
-          <Checkbox
             name="quicklinksnewtab"
             text={variables.getMessage('modals.main.settings.sections.quicklinks.open_new')}
             category="quicklinks"
@@ -219,15 +215,22 @@ export default class QuickLinks extends PureComponent {
         </SettingsItem>
         <SettingsItem title="Quick Links Styling" description="Customise Quick Links Appearance.">
           <Dropdown label="Style" name="quickLinksStyle" category="other">
-            <option value="icon">{variables.getMessage('modals.main.settings.sections.quicklinks.options.icon')}</option>
-            <option value="text">{variables.getMessage('modals.main.settings.sections.quicklinks.options.text_only')}</option>
-            <option value="metro">{variables.getMessage('modals.main.settings.sections.quicklinks.options.metro')}</option>
+            <option value="icon">
+              {variables.getMessage('modals.main.settings.sections.quicklinks.options.icon')}
+            </option>
+            <option value="text">
+              {variables.getMessage('modals.main.settings.sections.quicklinks.options.text_only')}
+            </option>
+            <option value="metro">
+              {variables.getMessage('modals.main.settings.sections.quicklinks.options.metro')}
+            </option>
           </Dropdown>
         </SettingsItem>
 
         <SettingsItem title="Quick Links" subtitle="" final={true}>
           <button onClick={() => this.setState({ showAddModal: true })}>
-          {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')} <MdAddLink />
+            {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}{' '}
+            <MdAddLink />
           </button>
         </SettingsItem>
 
@@ -235,12 +238,14 @@ export default class QuickLinks extends PureComponent {
           <div className="photosEmpty">
             <div className="emptyNewMessage">
               <MdLinkOff />
-              <span className="title">{variables.getMessage('modals.main.settings.sections.quicklinks.no_quicklinks')}</span>
+              <span className="title">
+                {variables.getMessage('modals.main.settings.sections.quicklinks.no_quicklinks')}
+              </span>
               <span className="subtitle">
                 {variables.getMessage('modals.main.settings.sections.message.add_some')}
               </span>
               <button onClick={() => this.setState({ showAddModal: true })}>
-              {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')} 
+                {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}
                 <MdAddLink />
               </button>
             </div>

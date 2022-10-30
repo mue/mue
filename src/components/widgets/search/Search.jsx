@@ -10,7 +10,6 @@ import EventBus from 'modules/helpers/eventbus';
 import './search.scss';
 
 import searchEngines from 'components/widgets/search/search_engines.json';
-import autocompleteProviders from 'components/widgets/search/autocomplete_providers.json';
 
 export default class Search extends PureComponent {
   constructor() {
@@ -18,9 +17,6 @@ export default class Search extends PureComponent {
     this.state = {
       url: '',
       query: '',
-      autocompleteURL: '',
-      autocompleteQuery: '',
-      autocompleteCallback: '',
       microphone: null,
       suggestions: [],
       searchDropdown: true,
@@ -67,21 +63,15 @@ export default class Search extends PureComponent {
       window.searchResults = results;
     };
 
-    const script = document.createElement('script');
-    script.src = `${this.state.autocompleteURL + this.state.autocompleteQuery + input}&${
-      this.state.autocompleteCallback
-    }=window.setResults`;
-    document.head.appendChild(script);
+    const results = await (await fetch(`https://ac.ecosia.org/?q=${input}`)).json();
 
     try {
       this.setState({
-        suggestions: window.searchResults[1].splice(0, 3),
+        suggestions: results.suggestions.splice(0, 3),
       });
     } catch (e) {
       // ignore error if empty
     }
-
-    document.head.removeChild(script);
   }
 
   init() {
@@ -110,23 +100,9 @@ export default class Search extends PureComponent {
       );
     }
 
-    let autocompleteURL, autocompleteQuery, autocompleteCallback;
-
-    if (localStorage.getItem('autocomplete') === 'true') {
-      const info = autocompleteProviders.find(
-        (i) => i.value === localStorage.getItem('autocompleteProvider'),
-      );
-      autocompleteURL = info.url;
-      autocompleteQuery = info.query;
-      autocompleteCallback = info.callback;
-    }
-
     this.setState({
       url,
       query,
-      autocompleteURL,
-      autocompleteQuery,
-      autocompleteCallback,
       microphone,
       currentSearch: info ? info.name : 'Custom',
     });

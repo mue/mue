@@ -6,13 +6,11 @@ import { MenuItem, TextField } from '@mui/material';
 import Header from '../Header';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
-import Radio from '../Radio';
 import SettingsItem from '../SettingsItem';
 
 import EventBus from 'modules/helpers/eventbus';
 
 import searchEngines from 'components/widgets/search/search_engines.json';
-import autocompleteProviders from 'components/widgets/search/autocomplete_providers.json';
 
 export default class SearchSettings extends PureComponent {
   constructor() {
@@ -145,15 +143,6 @@ export default class SearchSettings extends PureComponent {
             </p>
           </SettingsItem>
         </div>
-        <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.search.autocomplete_provider')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.search.autocomplete_provider_subtitle',
-          )}
-          final={true}
-        >
-          <Radio options={autocompleteProviders} name="autocompleteProvider" category="search" />
-        </SettingsItem>
       </>
     );
   }

@@ -59,7 +59,6 @@ export default class QuickLinks extends PureComponent {
     }
 
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
-    const useProxy = localStorage.getItem('quicklinksddgProxy') !== 'false';
 
     const quickLink = (item) => {
       if (localStorage.getItem('quickLinksStyle') === 'text') {
@@ -77,12 +76,9 @@ export default class QuickLinks extends PureComponent {
         );
       }
 
-      const url = useProxy
-        ? 'https://icons.duckduckgo.com/ip2/'
-        : 'https://www.google.com/s2/favicons?sz=32&domain=';
       const img =
         item.icon ||
-        url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '');
+        'https://icon.horse/icon/ ' + item.url.replace('https://', '').replace('http://', '');
 
       if (localStorage.getItem('quickLinksStyle') === 'metro') {
         return (
