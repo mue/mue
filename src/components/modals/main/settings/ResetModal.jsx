@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import variables from 'modules/variables';
 import { MdClose, MdRestartAlt } from 'react-icons/md';
 import { setDefaultSettings } from 'modules/helpers/settings';
 import Tooltip from '../../../helpers/tooltip/Tooltip';
 
-export default function ResetModal({ modalClose }) {
+function ResetModal({ modalClose }) {
   const reset = () => {
     variables.stats.postEvent('setting', 'Reset');
     setDefaultSettings('reset');
@@ -43,3 +44,5 @@ export default function ResetModal({ modalClose }) {
     </div>
   );
 }
+
+export default memo(ResetModal);

@@ -1,9 +1,11 @@
 import variables from 'modules/variables';
+import { memo } from 'react';
+
 import Tabs from './backend/Tabs';
 
 import MarketplaceTab from '../marketplace/sections/Marketplace';
 
-export default function Marketplace(props) {
+function Marketplace(props) {
   return (
     <Tabs changeTab={(type) => props.changeTab(type)} current="marketplace">
       <div label={variables.getMessage('modals.main.marketplace.all')} name="all">
@@ -27,3 +29,5 @@ export default function Marketplace(props) {
     </Tabs>
   );
 }
+
+export default memo(Marketplace);

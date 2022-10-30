@@ -1,4 +1,6 @@
-export default function SettingsItem(props) {
+import { memo } from 'react';
+
+function SettingsItem(props) {
   return (
     <div className={props.final ? 'settingsRow settingsNoBorder' : 'settingsRow'}>
       <div className="content">
@@ -9,3 +11,5 @@ export default function SettingsItem(props) {
     </div>
   );
 }
+
+export default memo(SettingsItem);

@@ -1,10 +1,11 @@
 import variables from 'modules/variables';
+import { memo } from 'react';
 import Tabs from './backend/Tabs';
 
 import Added from '../marketplace/sections/Added';
 import Create from '../marketplace/sections/Create';
 
-export default function Addons(props) {
+function Addons(props) {
   return (
     <Tabs changeTab={(type) => props.changeTab(type)} current="addons">
       <div label={variables.getMessage('modals.main.addons.added')} name="added">
@@ -16,3 +17,5 @@ export default function Addons(props) {
     </Tabs>
   );
 }
+
+export default memo(Addons);

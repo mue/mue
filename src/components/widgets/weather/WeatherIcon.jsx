@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import {
   WiDaySunny,
   WiNightClear,
@@ -13,7 +15,7 @@ import {
   WiFog,
 } from 'react-icons/wi';
 
-export default function WeatherIcon({ name }) {
+function WeatherIcon({ name }) {
   // name is the openweathermap icon name, see https://openweathermap.org/weather-conditions
   switch (name) {
     case '01d':
@@ -50,3 +52,5 @@ export default function WeatherIcon({ name }) {
       return null;
   }
 }
+
+export default memo(WeatherIcon);

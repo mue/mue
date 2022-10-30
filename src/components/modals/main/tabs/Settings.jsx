@@ -1,4 +1,6 @@
 import variables from 'modules/variables';
+import { memo } from 'react';
+
 import Tabs from './backend/Tabs';
 
 import Overview from '../settings/sections/Overview';
@@ -20,7 +22,7 @@ import Experimental from '../settings/sections/Experimental';
 import Changelog from '../settings/sections/Changelog';
 import About from '../settings/sections/About';
 
-export default function Settings(props) {
+function Settings(props) {
   return (
     <Tabs changeTab={(type) => props.changeTab(type)} current="settings">
       <div label={variables.getMessage('modals.main.marketplace.product.overview')} name="order">
@@ -113,3 +115,5 @@ export default function Settings(props) {
     </Tabs>
   );
 }
+
+export default memo(Settings);

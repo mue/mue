@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import variables from 'modules/variables';
 
 import Checkbox from '../Checkbox';
@@ -9,7 +11,7 @@ import SettingsItem from '../SettingsItem';
 
 import { values } from 'modules/helpers/settings/modals';
 
-export default function AppearanceSettings() {
+function AppearanceSettings() {
   return (
     <>
       <span className="mainTitle">
@@ -185,3 +187,5 @@ export default function AppearanceSettings() {
     </>
   );
 }
+
+export default memo(AppearanceSettings);

@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { SiKofi, SiPatreon } from 'react-icons/si';
 
-export default function QuicklinksSkeleton() {
+function QuicklinksSkeleton() {
   return (
     <div className="quickLinksSkeleton">
       <div className="circles">
@@ -21,3 +22,5 @@ export default function QuicklinksSkeleton() {
     </div>
   );
 }
+
+export default memo(QuicklinksSkeleton);

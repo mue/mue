@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { MdPerson } from 'react-icons/md';
 
-export default function QuoteSkeleton() {
+function QuoteSkeleton() {
   return (
     <div className="quoteSkeleton">
       <span className="subtitle">"Never gonna give you up"</span>
@@ -16,3 +17,5 @@ export default function QuoteSkeleton() {
     </div>
   );
 }
+
+export default memo(QuoteSkeleton);

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent, memo } from 'react';
 import {
   MdChecklist,
   MdPushPin,
@@ -211,7 +211,7 @@ class Todo extends PureComponent {
   }
 }
 
-export default function TodoWrapper() {
+function TodoWrapper() {
   const { x, y, reference, floating, strategy } = useFloating({
     placement: 'bottom',
     middleware: [shift()],
@@ -221,3 +221,5 @@ export default function TodoWrapper() {
     <Todo todoRef={reference} floatRef={floating} position={strategy} xPosition={x} yPosition={y} />
   );
 }
+
+export default memo(TodoWrapper);

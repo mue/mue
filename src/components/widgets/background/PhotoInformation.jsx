@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import Favourite from './Favourite';
 import {
   MdInfo,
@@ -34,7 +34,7 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
-export default function PhotoInformation({ info, url, api }) {
+function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [usePhotoMap, setPhotoMap] = useState(false);
@@ -295,3 +295,5 @@ export default function PhotoInformation({ info, url, api }) {
     </div>
   );
 }
+
+export default memo(PhotoInformation);

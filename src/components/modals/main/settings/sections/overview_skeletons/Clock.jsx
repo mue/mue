@@ -1,7 +1,7 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, memo } from 'react';
 const Analog = lazy(() => import('react-clock'));
 
-export default function ClockSkeleton() {
+function ClockSkeleton() {
   if (localStorage.getItem('timeType') === 'analogue') {
     return (
       <Suspense fallback={<></>}>
@@ -27,3 +27,5 @@ export default function ClockSkeleton() {
     return <span className="new-clock clock-container clockSkeleton">10:24</span>;
   }
 }
+
+export default memo(ClockSkeleton);

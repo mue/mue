@@ -1,4 +1,6 @@
-export default function ProgressBar({ count, currentTab, switchTab }) {
+import { memo } from 'react';
+
+function ProgressBar({ count, currentTab, switchTab }) {
   return (
     <div className="progressbar">
       {count.map((num) => {
@@ -14,3 +16,5 @@ export default function ProgressBar({ count, currentTab, switchTab }) {
     </div>
   );
 }
+
+export default memo(ProgressBar);

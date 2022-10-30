@@ -1,12 +1,12 @@
 import variables from 'modules/variables';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
 import { MdClose, MdInfo, MdOpenInNew } from 'react-icons/md';
 import Tooltip from './Tooltip';
 
 import './tooltip.scss';
 
-export default function InfoTooltip({ title, style, placement, subtitle }) {
+function InfoTooltip({ title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const { x, y, reference, floating, strategy } = useFloating({
     placement: placement || 'top-start',
@@ -43,3 +43,5 @@ export default function InfoTooltip({ title, style, placement, subtitle }) {
     </div>
   );
 }
+
+export default memo(InfoTooltip);

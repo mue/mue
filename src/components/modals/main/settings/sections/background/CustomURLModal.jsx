@@ -1,9 +1,9 @@
 import variables from 'modules/variables';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { MdAdd, MdClose } from 'react-icons/md';
 import Tooltip from '../../../../../helpers/tooltip/Tooltip';
 
-export default function CustomURLModal({ modalClose, modalCloseOnly }) {
+function CustomURLModal({ modalClose, modalCloseOnly }) {
   const [url, setURL] = useState();
 
   return (
@@ -39,3 +39,5 @@ export default function CustomURLModal({ modalClose, modalCloseOnly }) {
     </div>
   );
 }
+
+export default memo(CustomURLModal);

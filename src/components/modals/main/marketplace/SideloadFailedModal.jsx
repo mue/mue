@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import variables from 'modules/variables';
 import { MdClose } from 'react-icons/md';
 import Tooltip from '../../../helpers/tooltip/Tooltip';
 
-export default function SideloadFailedModal({ modalClose, reason }) {
+function SideloadFailedModal({ modalClose, reason }) {
   return (
     <div className="smallModal">
       <div className="shareHeader">
@@ -24,3 +25,5 @@ export default function SideloadFailedModal({ modalClose, reason }) {
     </div>
   );
 }
+
+export default memo(SideloadFailedModal);

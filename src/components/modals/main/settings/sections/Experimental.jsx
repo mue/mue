@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import Checkbox from '../Checkbox';
 import Slider from '../Slider';
 import { TextField } from '@mui/material';
@@ -8,7 +8,7 @@ import EventBus from 'modules/helpers/eventbus';
 import { values } from 'modules/helpers/settings/modals';
 import SettingsItem from '../SettingsItem';
 
-export default function ExperimentalSettings() {
+function ExperimentalSettings() {
   const [eventType, setEventType] = useState();
   const [eventName, setEventName] = useState();
 
@@ -70,3 +70,5 @@ export default function ExperimentalSettings() {
     </>
   );
 }
+
+export default memo(ExperimentalSettings);

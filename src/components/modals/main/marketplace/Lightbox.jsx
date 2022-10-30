@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import variables from 'modules/variables';
 
-export default function Lightbox({ modalClose, img }) {
+function Lightbox({ modalClose, img }) {
   variables.stats.postEvent('modal', 'Opened lightbox');
 
   return (
@@ -12,3 +13,5 @@ export default function Lightbox({ modalClose, img }) {
     </>
   );
 }
+
+export default memo(Lightbox);

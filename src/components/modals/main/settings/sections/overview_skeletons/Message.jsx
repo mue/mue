@@ -1,4 +1,6 @@
-export default function MessageSkeleton() {
+import { memo } from 'react';
+
+function MessageSkeleton() {
   return (
     <h2 className="message">
       <span>
@@ -8,3 +10,5 @@ export default function MessageSkeleton() {
     </h2>
   );
 }
+
+export default memo(MessageSkeleton);

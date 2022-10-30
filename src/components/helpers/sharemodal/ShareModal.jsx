@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import variables from 'modules/variables';
 import { MdClose, MdEmail, MdContentCopy } from 'react-icons/md';
 import { FaTwitter, FaFacebookF } from 'react-icons/fa';
@@ -8,7 +9,7 @@ import { toast } from 'react-toastify';
 
 import './sharemodal.scss';
 
-export default function ShareModal({ modalClose, data }) {
+function ShareModal({ modalClose, data }) {
   const url = variables.constants.MARKETPLACE_URL + '/share/' + (btoa(data.api_name) || '');
 
   const copyLink = () => {
@@ -111,3 +112,5 @@ export default function ShareModal({ modalClose, data }) {
     </div>
   );
 }
+
+export default memo(ShareModal);

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent, memo } from 'react';
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
@@ -144,7 +144,7 @@ class Notes extends PureComponent {
   }
 }
 
-export default function NotesWrapper() {
+function NotesWrapper() {
   const { x, y, reference, floating, strategy } = useFloating({
     placement: 'bottom',
     middleware: [shift()],
@@ -160,3 +160,5 @@ export default function NotesWrapper() {
     />
   );
 }
+
+export default memo(NotesWrapper);

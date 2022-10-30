@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
 import './tooltip.scss';
 
-export default function Tooltip({ children, title, style, placement, subtitle }) {
+function Tooltip({ children, title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const { x, y, reference, floating, strategy } = useFloating({
     placement: placement || 'bottom',
@@ -39,3 +39,5 @@ export default function Tooltip({ children, title, style, placement, subtitle })
     </div>
   );
 }
+
+export default memo(Tooltip);

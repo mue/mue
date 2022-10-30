@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
@@ -8,7 +8,7 @@ import Dropdown from '../Dropdown';
 import SettingsItem from '../SettingsItem';
 import Header from '../Header';
 
-export default function Navbar() {
+function Navbar() {
   const [showRefreshOptions, setShowRefreshOptions] = useState(
     localStorage.getItem('refresh') === 'true',
   );
@@ -86,3 +86,5 @@ export default function Navbar() {
     </>
   );
 }
+
+export default memo(Navbar);

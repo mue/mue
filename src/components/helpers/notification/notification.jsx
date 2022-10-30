@@ -1,7 +1,9 @@
+import { memo } from 'react';
+
 import variables from 'modules/variables';
 import './preview.scss';
 
-export default function Notification(props) {
+function Notification(props) {
   return (
     <div className="preview-mode">
       <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
@@ -12,3 +14,5 @@ export default function Notification(props) {
     </div>
   );
 }
+
+export default memo(Notification);

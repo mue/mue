@@ -161,7 +161,7 @@ export default class QuickLinks extends PureComponent {
         url + item.url.replace('https://', '').replace('http://', '') + (useProxy ? '.ico' : '');
 
       const link = (
-        <div className="messageMap">
+        <div className="messageMap" key={item.key}>
           <div className="icon">
             <img src={img} alt={item.name} draggable={false} style={{ height: '30px', width: '30px'}} />
           </div>

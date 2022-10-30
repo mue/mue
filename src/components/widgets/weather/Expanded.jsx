@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
 import { MdDisabledVisible } from 'react-icons/md';
 
@@ -6,7 +8,7 @@ import WindDirectionIcon from './WindDirectionIcon';
 
 import Tooltip from '../../helpers/tooltip/Tooltip';
 
-export default function Expanded({ state, weatherType, variables }) {
+function Expanded({ state, weatherType, variables }) {
   const enabled = (setting) => {
     return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === '3';
   };
@@ -107,3 +109,5 @@ export default function Expanded({ state, weatherType, variables }) {
     </div>
   );
 }
+
+export default memo(Expanded);

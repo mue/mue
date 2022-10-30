@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, memo } from 'react';
 import { MdOutlineArrowForwardIos, MdOutlineArrowBackIos } from 'react-icons/md';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
 import './carousel.scss';
 
-export default function EmblaCarousel({ data }) {
+function EmblaCarousel({ data }) {
   const autoplay = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: false }, (emblaRoot) => emblaRoot.parentElement),
   );
@@ -79,3 +79,5 @@ export default function EmblaCarousel({ data }) {
     </div>
   );
 }
+
+export default memo(EmblaCarousel);

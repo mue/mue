@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { Suspense, lazy, useState } from 'react';
 
+import { memo } from 'react';
 import { MdClose } from 'react-icons/md';
 
 import Tabs from './tabs/backend/Tabs';
@@ -29,7 +30,7 @@ const renderLoader = (current) => (
   </Tabs>
 );
 
-export default function MainModal({ modalClose }) {
+function MainModal({ modalClose }) {
   const [currentTab, setCurrentTab] = useState(0);
 
   const changeTab = (type) => {
@@ -67,3 +68,5 @@ export default function MainModal({ modalClose }) {
     </div>
   );
 }
+
+export default memo(MainModal);

@@ -1,3 +1,6 @@
+
+import { memo } from 'react';
+
 import {
   WiDirectionDownLeft,
   WiDirectionDownRight,
@@ -10,7 +13,7 @@ import {
 } from 'react-icons/wi';
 
 // degrees are imported because of a potential bug, IDK what causes it, but now it is fixed
-export default function WindDirectionIcon({ degrees }) {
+function WindDirectionIcon({ degrees }) {
   // convert the number OpenWeatherMap gives us to the closest direction or something
   const directions = [
     'North',
@@ -46,3 +49,5 @@ export default function WindDirectionIcon({ degrees }) {
       return null;
   }
 }
+
+export default memo(WindDirectionIcon);

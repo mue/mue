@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import TextField from '@mui/material/TextField';
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import {
   MdAutoFixHigh,
   MdOutlineArrowForward,
@@ -12,7 +12,7 @@ import {
   MdSearch,
 } from 'react-icons/md';
 
-export default function Items({
+function Items({
   type,
   items,
   collection,
@@ -154,3 +154,5 @@ export default function Items({
     </>
   );
 }
+
+export default memo(Items);
