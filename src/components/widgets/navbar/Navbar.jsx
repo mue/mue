@@ -15,11 +15,11 @@ export default class Navbar extends PureComponent {
   constructor() {
     super();
     this.navbarContainer = createRef();
-    this.refreshEnabled = localStorage.getItem('refresh');
-    this.refreshValue = localStorage.getItem('refreshOption');
     this.state = {
       classList: localStorage.getItem('widgetStyle') === 'legacy' ? 'navbar old' : 'navbar new',
       refreshText: '',
+      refreshEnabled: localStorage.getItem('refresh'),
+      refreshOption: localStorage.getItem('refreshOption') || ''
     };
   }
 
@@ -29,46 +29,57 @@ export default class Navbar extends PureComponent {
     });
   }
 
+  updateRefreshText() {
+    let refreshText;
+    switch (localStorage.getItem('refreshOption')) {
+      case 'background':
+        refreshText = variables.getMessage('modals.main.settings.sections.background.title');
+        break;
+      case 'quote':
+        refreshText = variables.getMessage('modals.main.settings.sections.quote.title');
+        break;
+      case 'quotebackground':
+        refreshText =
+          variables.getMessage('modals.main.settings.sections.quote.title') +
+          ' ' +
+          variables.getMessage('modals.main.settings.sections.background.title');
+        break;
+      default:
+        refreshText = variables.getMessage(
+          'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+        );
+        break;
+    }
+
+    this.setState({
+      refreshText,
+    });
+  }
+
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'navbar' || data === 'background') {
-        this.refreshEnabled = localStorage.getItem('refresh');
-        this.refreshValue = localStorage.getItem('refreshOption');
-        this.forceUpdate();
+        this.setState({
+          refreshEnabled: localStorage.getItem('refresh'),
+          refreshOption: localStorage.getItem('refreshOption')
+        });
         try {
+          this.updateRefreshText();
           this.setZoom();
         } catch (e) {}
       }
     });
 
-    if (localStorage.getItem('refreshOption') === 'background') {
-      this.setState({
-        refreshText: variables.getMessage('modals.main.settings.sections.background.title'),
-      });
-    } else if (localStorage.getItem('refreshOption') === 'quote') {
-      this.setState({
-        refreshText: variables.getMessage('modals.main.settings.sections.quote.title'),
-      });
-    } else if (localStorage.getItem('refreshOption') === 'quotebackground') {
-      this.setState({
-        refreshText:
-          variables.getMessage('modals.main.settings.sections.quote.title') +
-          ' ' +
-          variables.getMessage('modals.main.settings.sections.background.title'),
-      });
-    } else {
-      this.setState({
-        refreshText: variables.getMessage(
-          'modals.main.settings.sections.appearance.navbar.refresh_options.page',
-        ),
-      });
-    }
-
+    this.updateRefreshText();
     this.setZoom();
   }
 
+  componentWillUnmount() {
+    EventBus.off('refresh');
+  }
+
   refresh() {
-    switch (this.refreshValue) {
+    switch (this.state.refreshOption) {
       case 'background':
         return EventBus.dispatch('refresh', 'backgroundrefresh');
       case 'quote':

@@ -359,6 +359,7 @@ export default class Quote extends PureComponent {
       }
     }
     });
+
     EventBus.on('refresh', (data) => {
       if (data === 'quote') {
         if (localStorage.getItem('quote') === 'false') {

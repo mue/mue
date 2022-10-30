@@ -36,12 +36,12 @@ class Todo extends PureComponent {
   setZoom() {
     this.setState({
       zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + "rem"
-    })
+    });
   }
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
-      if (data === 'navbar' || data === 'background') {
+      if (data === 'navbar') {
         this.forceUpdate();
         try {
           this.setZoom();
@@ -50,6 +50,10 @@ class Todo extends PureComponent {
     });
 
     this.setZoom();
+  }
+
+  componentWillUnmount() {
+    EventBus.off('refresh');
   }
 
   arrayMove(array, oldIndex, newIndex) {
@@ -79,56 +83,50 @@ class Todo extends PureComponent {
   }
 
   updateTodo(action, index, data) {
-    let todoContent = this.state.todo;
+    let todo = this.state.todo;
     switch (action) {
       case 'add':
-        todoContent.push({
+        todo.push({
           value: '',
           done: false,
         });
         break;
       case 'remove':
-        todoContent.splice(index, 1);
-        if (todoContent.length === 0) {
-          todoContent.push({
+        todo.splice(index, 1);
+        if (todo.length === 0) {
+          todo.push({
             value: '',
             done: false,
           });
         }
         break;
       case 'set':
-        todoContent[index] = {
+        todo[index] = {
           value: data.target.value,
-          done: todoContent[index].done,
+          done: todo[index].done,
         };
         break;
       case 'done':
-        todoContent[index].done = !todoContent[index].done;
+        todo[index].done = !todo[index].done;
         break;
       default:
         break;
     }
 
-    localStorage.setItem('todoContent', JSON.stringify(todoContent));
+    localStorage.setItem('todo', JSON.stringify(todo));
     this.setState({
-      todo: todoContent,
+      todo,
     });
     this.forceUpdate();
   }
 
   pin() {
     variables.stats.postEvent('feature', 'Todo pin');
-    if (localStorage.getItem('todoPinned') === 'true') {
-      localStorage.setItem('todoPinned', false);
-      this.setState({
-        showTodo: false,
-      });
-    } else {
-      localStorage.setItem('todoPinned', true);
-      this.setState({
-        showTodo: true,
-      });
-    }
+    const todoPinned = (localStorage.getItem('todoPinned') === 'true');
+    localStorage.setItem('todoPinned', !todoPinned);
+    this.setState({
+      showTodo: !todoPinned,
+    });
   }
 
   render() {

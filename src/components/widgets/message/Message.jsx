@@ -28,18 +28,21 @@ export default class Message extends PureComponent {
     });
 
     const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    if (messages.length === 0) {
+      return (this.message.current.style.display = 'none');
+    }
 
     this.message.current.style.fontSize = `${
       1 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
     }em`;
     
-    if (messages.length === 0) {
-      return (this.message.current.style.display = 'none');
-    }
-
     this.setState({
       messageText: messages[Math.floor(Math.random() * messages.length)],
     });
+  }
+
+  componentWillUnmount() {
+    EventBus.off('refresh');
   }
 
   render() {

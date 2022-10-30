@@ -26,8 +26,10 @@ export default class Tabs extends PureComponent {
   };
 
   render() {
+    const display = localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none';
+
     const reminderInfo = (
-      <div className="reminder-info" style={{ display: 'none' }}>
+      <div className="reminder-info" style={{ display }}>
         <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
         <span className="subtitle">
           {variables.getMessage('modals.main.settings.reminder.message')}

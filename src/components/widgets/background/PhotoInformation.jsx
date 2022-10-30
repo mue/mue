@@ -119,25 +119,6 @@ export default function PhotoInformation({ info, url, api }) {
     );
   }
 
-  /*const downloadEnabled =
-    localStorage.getItem('downloadbtn') === 'true' && !info.offline && !info.photographerURL && api;
-  const downloadBackground = () => {
-    if (downloadEnabled) {
-      downloadImage(info);
-    }
-  };
-
-  const showBackgroundInformation = () => {
-    const element = document.querySelector('.infoCard');
-    if (element) {
-      if (element.style.display === 'none' || element.style.display === '') {
-        element.style.display = 'block';
-      } else {
-        element.style.display = 'none';
-      }
-    }
-  };*/
-
   let showingPhotoMap = false;
   const photoMap = () => {
     if (

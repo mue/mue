@@ -1,10 +1,5 @@
-import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { TextareaAutosize } from '@mui/material';
-import { MdAddToPhotos } from 'react-icons/md';
-
 import Tooltip from 'components/helpers/tooltip/Tooltip';
-
 import EventBus from 'modules/helpers/eventbus';
 
 import './quicklinks.scss';
@@ -14,97 +9,20 @@ export default class QuickLinks extends PureComponent {
     super();
     this.state = {
       items: JSON.parse(localStorage.getItem('quicklinks')),
-      name: '',
-      url: '',
-      showAddLink: 'none',
-      nameError: '',
-      urlError: '',
     };
     this.quicklinksContainer = createRef();
   }
 
-  deleteLink(key, event) {
-    event.preventDefault();
-
-    // remove link from array
-    const data = JSON.parse(localStorage.getItem('quicklinks')).filter((i) => i.key !== key);
-
-    localStorage.setItem('quicklinks', JSON.stringify(data));
-    this.setState({
-      items: data,
-    });
-
-    variables.stats.postEvent('feature', 'Quicklink delete');
-  }
-
-  addLink = () => {
-    const data = JSON.parse(localStorage.getItem('quicklinks'));
-    let url = this.state.url;
-    let urlError;
-
-    // regex: https://ihateregex.io/expr/url/
-    // eslint-disable-next-line no-useless-escape
-    if (
-      url.length <= 0 ||
-      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_.~#?&=]*)/.test(
-        url,
-      ) === false
-    ) {
-      urlError = variables.getMessage('widgets.quicklinks.url_error');
-    }
-
-    if (urlError) {
-      return this.setState({
-        urlError,
-      });
-    }
-
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      url = 'http://' + url;
-    }
-
-    data.push({
-      name: this.state.name || url,
-      url,
-      icon: this.state.icon || '',
-      key: Math.random().toString(36).substring(7) + 1,
-    });
-
-    localStorage.setItem('quicklinks', JSON.stringify(data));
-
-    this.setState({
-      items: data,
-      name: '',
-      url: '',
-    });
-
-    variables.stats.postEvent('feature', 'Quicklink add');
-
-    this.toggleAdd();
-
-    // make sure image is correct size
-    this.setZoom(this.quicklinksContainer.current);
-  };
-
-  toggleAdd = () => {
-    this.setState({
-      showAddLink: this.state.showAddLink === 'none' ? 'flex' : 'none',
-    });
-  };
-
   // widget zoom
   setZoom(element) {
     const zoom = localStorage.getItem('zoomQuicklinks') || 100;
+    for (const link of element.getElementsByTagName('span')) {
+      link.style.fontSize = `${14 * Number(zoom / 100)}px`;
+    }
+
     if (localStorage.getItem('quickLinksStyle') !== 'text') {
-      for (const link of element.getElementsByTagName('span')) {
-        link.style.fontSize = `${14 * Number(zoom / 100)}px`;
-      }
       for (const img of element.getElementsByTagName('img')) {
         img.style.height = `${30 * Number(zoom / 100)}px`;
-      }
-    } else {
-      for (const link of element.getElementsByTagName('span')) {
-        link.style.fontSize = `${14 * Number(zoom / 100)}px`;
       }
     }
   }
@@ -127,16 +45,6 @@ export default class QuickLinks extends PureComponent {
 
     this.setZoom(this.quicklinksContainer.current);
   }
-
-  // allows you to add a link by pressing enter
-  topbarEnter = (e) => {
-    e = e || window.event;
-    const code = e.which || e.keyCode;
-    if (code === 13 && this.state.showAddLink === 'visible') {
-      this.addLink();
-      e.preventDefault();
-    }
-  };
 
   componentWillUnmount() {
     EventBus.off('refresh');
@@ -199,7 +107,7 @@ export default class QuickLinks extends PureComponent {
       );
 
       return tooltipEnabled === 'true' ? (
-        <Tooltip title={item.name} placement="bottom">
+        <Tooltip title={item.name} placement="bottom" key={item.key}>
           {link}
         </Tooltip>
       ) : (
@@ -208,44 +116,9 @@ export default class QuickLinks extends PureComponent {
     };
 
     return (
-      <>
-        <div className="quicklinkscontainer" ref={this.quicklinksContainer}>
-          {this.state.items.map((item) => quickLink(item))}
-        </div>
-        <div className="quicklinkscontainer">
-          <div
-            className="quicklinksdropdown"
-            onKeyDown={this.topbarEnter}
-            style={{ display: this.state.showAddLink }}
-          >
-            <span className="dropdown-title">{variables.getMessage('widgets.quicklinks.new')}</span>
-            <TextareaAutosize
-              maxRows={1}
-              placeholder={variables.getMessage('widgets.quicklinks.name')}
-              value={this.state.name}
-              onChange={(e) => this.setState({ name: e.target.value })}
-            />
-            <span className="dropdown-error" />
-            <TextareaAutosize
-              maxRows={10}
-              placeholder={variables.getMessage('widgets.quicklinks.url')}
-              value={this.state.url}
-              onChange={(e) => this.setState({ url: e.target.value })}
-            />
-            <span className="dropdown-error">{this.state.urlError}</span>
-            <TextareaAutosize
-              maxRows={10}
-              placeholder={variables.getMessage('widgets.quicklinks.icon')}
-              value={this.state.icon}
-              onChange={(e) => this.setState({ icon: e.target.value })}
-            />
-            <span className="dropdown-error" />
-            <button onClick={this.addLink}>
-              <MdAddToPhotos /> {variables.getMessage('widgets.quicklinks.add')}
-            </button>
-          </div>
-        </div>
-      </>
+      <div className="quicklinkscontainer" ref={this.quicklinksContainer}>
+        {this.state.items.map((item) => quickLink(item))}
+      </div>
     );
   }
 }

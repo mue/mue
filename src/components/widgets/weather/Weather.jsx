@@ -1,12 +1,9 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
-import { MdDisabledVisible } from 'react-icons/md';
 
 import WeatherIcon from './WeatherIcon';
-import WindDirectionIcon from './WindDirectionIcon';
+import Expanded from './Expanded';
 
-import Tooltip from '../../helpers/tooltip/Tooltip';
 import EventBus from 'modules/helpers/eventbus';
 
 import './weather.scss';
@@ -16,21 +13,7 @@ export default class Weather extends PureComponent {
     super();
     this.state = {
       location: localStorage.getItem('location') || 'London',
-      icon: '',
-      temp_text: '',
-      weather: {
-        temp: '',
-        description: '',
-        temp_min: '',
-        temp_max: '',
-        temp_feels_like: '',
-        humidity: '',
-        wind_speed: '',
-        wind_degrees: '',
-        cloudiness: '',
-        visibility: '',
-        pressure: '',
-      },
+      done: false,
     };
   }
 
@@ -38,39 +21,16 @@ export default class Weather extends PureComponent {
     const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
     document.querySelector('.weather').style.fontSize = zoomWeather;
 
-    let data = {
-      weather: [
-        {
-          description: this.state.weather.description,
-          icon: this.state.icon,
-        },
-      ],
-      main: {
-        temp: this.state.weather.original_temp,
-        temp_min: this.state.weather.original_temp_min,
-        temp_max: this.state.weather.original_temp_max,
-        temp_feels_like: this.state.weather.original_temp_feels_like,
-        humidity: this.state.weather.humidity,
-        pressure: this.state.weather.pressure,
-      },
-      visibility: this.state.weather.visibility,
-      wind: {
-        speed: this.state.weather.wind_speed,
-        deg: this.state.weather.wind_degrees,
-      },
-      clouds: {
-        all: this.state.weather.cloudiness,
-      },
-    };
-
-    if (!this.state.weather.temp) {
-      data = await (
-        await fetch(
-          variables.constants.PROXY_URL +
-            `/weather/current?city=${this.state.location}&lang=${variables.languagecode}`,
-        )
-      ).json();
+    if (this.state.done === true) {
+      return;
     }
+
+    const data = await (
+      await fetch(
+        variables.constants.PROXY_URL +
+          `/weather/current?city=${this.state.location}&lang=${variables.languagecode}`,
+      )
+    ).json();
 
     if (data.cod === '404') {
       return this.setState({
@@ -84,24 +44,18 @@ export default class Weather extends PureComponent {
     let temp_feels_like = data.main.temp_feels_like;
     let temp_text = 'K';
 
-    switch (localStorage.getItem('tempformat')) {
-      case 'celsius':
-        temp -= 273.15;
-        temp_min -= 273.15;
-        temp_max -= 273.15;
-        temp_feels_like -= 273.15;
-        temp_text = '°C';
-        break;
-      case 'fahrenheit':
-        temp = (temp - 273.15) * 1.8 + 32;
-        temp_min = (temp_min - 273.15) * 1.8 + 32;
-        temp_max = (temp_max - 273.15) * 1.8 + 32;
-        temp_feels_like = (temp_feels_like - 273.15) * 1.8 + 32;
-        temp_text = '°F';
-        break;
-      // kelvin
-      default:
-        break;
+    if (localStorage.getItem('tempformat') === 'celsius') {
+      temp -= 273.15;
+      temp_min -= 273.15;
+      temp_max -= 273.15;
+      temp_feels_like -= 273.15;
+      temp_text = '°C';
+    } else {
+      temp = (temp - 273.15) * 1.8 + 32;
+      temp_min = (temp_min - 273.15) * 1.8 + 32;
+      temp_max = (temp_max - 273.15) * 1.8 + 32;
+      temp_feels_like = (temp_feels_like - 273.15) * 1.8 + 32;
+      temp_text = '°F';
     }
 
     this.setState({
@@ -118,12 +72,9 @@ export default class Weather extends PureComponent {
         wind_degrees: data.wind.deg,
         cloudiness: data.clouds.all,
         visibility: data.visibility,
-        pressure: data.main.pressure,
-        original_temp: data.main.temp,
-        original_temp_min: data.main.temp_min,
-        original_temp_max: data.main.temp_max,
-        original_temp_feels_like: data.main.temp_feels_like,
+        pressure: data.main.pressure
       },
+      done: true
     });
 
     document.querySelector('.weather svg').style.fontSize = zoomWeather;
@@ -144,10 +95,11 @@ export default class Weather extends PureComponent {
   }
 
   render() {
+    if (this.state.done === false) {
+      return <div className="weather"></div>;
+    }
+
     const weatherType = localStorage.getItem('weatherType') || 1;
-    const enabled = (setting) => {
-      return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === '3';
-    };
 
     if (this.state.location === variables.getMessage('weather.not_found')) {
       return (
@@ -156,107 +108,7 @@ export default class Weather extends PureComponent {
         </div>
       );
     }
-
-    const expandedInfo = () => {
-      return (
-        <div className="expanded-info">
-          {weatherType >= 3 && (
-            <span className="subtitle">
-              {variables.getMessage('widgets.weather.extra_information')}
-            </span>
-          )}
-          {enabled('cloudiness') ? (
-            <Tooltip
-              title={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.cloudiness',
-              )}
-              placement="left"
-            >
-              <span>
-                <WiCloud className="weatherIcon" />
-                {this.state.weather.cloudiness}%
-              </span>
-            </Tooltip>
-          ) : null}
-          {enabled('windspeed') ? (
-            <Tooltip
-              title={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.wind_speed',
-              )}
-              placement="left"
-            >
-              <span>
-                <WiWindy className="weatherIcon" />
-                {this.state.weather.wind_speed}
-                <span className="minmax"> m/s</span>{' '}
-                {enabled('windDirection') ? (
-                  <WindDirectionIcon
-                    className="weatherIcon"
-                    degrees={this.state.weather.wind_degrees}
-                  />
-                ) : null}
-              </span>
-            </Tooltip>
-          ) : null}
-          {enabled('atmosphericpressure') ? (
-            <Tooltip
-              title={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
-              )}
-              placement="left"
-            >
-              <span>
-                <WiBarometer className="weatherIcon" />
-                {this.state.weather.pressure}
-                <span className="minmax"> hPa</span>
-              </span>
-            </Tooltip>
-          ) : null}
-          {enabled('weatherdescription') ? (
-            <Tooltip
-              title={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.show_description',
-              )}
-              placement="left"
-            >
-              <span>
-                <WeatherIcon className="weatherIcon" name={this.state.icon} />
-                {this.state.weather.description}
-              </span>
-            </Tooltip>
-          ) : null}
-          {enabled('visibility') ? (
-            <Tooltip
-              title={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.visibility',
-              )}
-              placement="left"
-            >
-              <span>
-                <MdDisabledVisible className="materialWeatherIcon" />
-                {variables.getMessage('widgets.weather.meters', {
-                  amount: this.state.weather.visibility,
-                })}
-              </span>
-            </Tooltip>
-          ) : null}
-          {enabled('humidity') ? (
-            <Tooltip
-              title={variables.getMessage(
-                'modals.main.settings.sections.weather.extra_info.humidity',
-              )}
-              placement="left"
-            >
-              <span>
-                <WiHumidity className="materialWeatherIcon" />
-                {this.state.weather.humidity}
-              </span>
-            </Tooltip>
-          ) : null}
-        </div>
-      );
-    };
-
+  
     return (
       <div className="weather">
         <div className="top-weather">
@@ -283,7 +135,7 @@ export default class Weather extends PureComponent {
             <span className="loc">{this.state.location}</span>
           </div>
         )}
-        {weatherType >= 3 ? expandedInfo() : null}
+        {weatherType >= 3 ? <Expanded weatherType={weatherType} state={this.state} variables={variables}/> : null}
       </div>
     );
   }

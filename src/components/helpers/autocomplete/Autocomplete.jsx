@@ -55,7 +55,7 @@ export default class Autocomplete extends PureComponent {
     });
   }
 
-  componentWillUmount() {
+  componentWillUnmount() {
     EventBus.off('refresh');
   }
 

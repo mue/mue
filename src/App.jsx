@@ -31,6 +31,10 @@ export default class App extends PureComponent {
     variables.stats.tabLoad();
   }
 
+  componentWillUnmount() {
+    EventBus.off('refresh');
+  }
+
   render() {
     return (
       <>

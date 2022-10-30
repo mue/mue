@@ -66,6 +66,10 @@ export default class Widgets extends PureComponent {
     });
   }
 
+  componentWillUnmount() {
+    EventBus.off('refresh');
+  }
+
   render() {
     // don't show when welcome is there
     return this.state.welcome !== 'false' ? (

@@ -30,7 +30,6 @@ const renderLoader = (current) => (
 );
 
 export default function MainModal({ modalClose }) {
-  const display = localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none';
   const [currentTab, setCurrentTab] = useState(0);
 
   const changeTab = (type) => {

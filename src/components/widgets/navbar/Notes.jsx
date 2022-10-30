@@ -26,7 +26,7 @@ class Notes extends PureComponent {
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
-      if (data === 'navbar' || data === 'background') {
+      if (data === 'navbar') {
         this.forceUpdate();
         try {
           this.setZoom();
@@ -35,6 +35,10 @@ class Notes extends PureComponent {
     });
 
     this.setZoom();
+  }
+
+  componentWillUnmount() {
+    EventBus.off('refresh');
   }
 
   setNotes = (e) => {
@@ -140,7 +144,7 @@ class Notes extends PureComponent {
   }
 }
 
-export default function NotesWrapper(props) {
+export default function NotesWrapper() {
   const { x, y, reference, floating, strategy } = useFloating({
     placement: 'bottom',
     middleware: [shift()],
