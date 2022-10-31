@@ -295,7 +295,7 @@ export default class Marketplace extends PureComponent {
       );
     };
 
-    if (this.state.items.length === 0) {
+    if (this.state.items?.length === 0) {
       return (
         <>
           {featured()}

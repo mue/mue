@@ -77,8 +77,7 @@ function Items({
         </>
       ) : null}
       <div className="items">
-        {items
-          .filter(
+        {items?.filter(
             (item) =>
               item.name.toLowerCase().includes(filter.toLowerCase()) ||
               filter === '' ||
