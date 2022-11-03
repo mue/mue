@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client';
+import { render } from 'react-dom';
 import * as Sentry from '@sentry/react';
 
 import App from './App';
@@ -57,5 +57,7 @@ Sentry.init({
   autoSessionTracking: false,
 });
 
-const root = createRoot(document.getElementById('root'));
-root.render(<App />);
+render(
+  <App/>,
+  document.getElementById('root')
+);

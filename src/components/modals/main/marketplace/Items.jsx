@@ -1,15 +1,9 @@
 import variables from 'modules/variables';
-import TextField from '@mui/material/TextField';
-import React, { useState, memo } from 'react';
+import React, { memo } from 'react';
 import {
   MdAutoFixHigh,
   MdOutlineArrowForward,
-  MdExpandMore,
   MdOutlineOpenInNew,
-  MdOutlinePhoto as Background,
-  MdOutlineFormatQuote as Quote,
-  MdOutlineSettings as Advanced,
-  MdSearch,
 } from 'react-icons/md';
 
 function Items({
@@ -21,26 +15,10 @@ function Items({
   onCollection,
   filter,
 }) {
-  const [count, setCount] = useState(8);
-  const [cheese, setCheese] = useState('photo')
-  const [filteredCategory, setFilteredCategory] = useState('');
-  console.log(filter)
-  const incrementCount = () => {
-    if (count !== items.length && count <= items.length) {
-      if (count + 8 > items.length) {
-        setCount(count + (items.length - count));
-      } else {
-        setCount(count + 8);
-      }
-    }
-  };
-
   return (
     <>
       {(type === 'all' && !onCollection && (filter === null || filter === '')) || (type === 'collections' && !onCollection &&  (filter === null || filter === '')) ? (
         <>
-          <div style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', gap: '30px' }}>
-          </div>
           <div
             className="collection"
             style={
@@ -69,7 +47,7 @@ function Items({
                 className="collectionButton"
                 onClick={() => collectionFunction(collection.name)}
               >
-                <MdOutlineArrowForward />{' '}
+                <MdOutlineArrowForward />
                 {variables.getMessage('modals.main.marketplace.explore_collection')}
               </button>
             )}
@@ -82,7 +60,7 @@ function Items({
               item.name.toLowerCase().includes(filter.toLowerCase()) ||
               filter === '' ||
               item.author.toLowerCase().includes(filter.toLowerCase()) ||
-              item.type.toLowerCase().includes(filter.toLowerCase() || cheese),
+              item.type.toLowerCase().includes(filter.toLowerCase()),
           )
           .map((item) => (
             <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
@@ -98,46 +76,13 @@ function Items({
             </div>
           ))}
       </div>
-      {/*<div className="items">
-        {items.slice(0, count).map((item) => (
-          <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
-            <img
-              alt="icon"
-              draggable="false"
-              src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
-            />
-            <div className="card-details">
-              <span className="card-title">{item.display_name || item.name}</span>
-              <span className="card-subtitle">{item.author}</span>
-            </div>
-          </div>
-        ))}
-        </div>
-      <div className="showMoreItems">
-        {count !== items.length && items.length >= 8 ? (
-          <span className="link" onClick={incrementCount}>
-            <MdExpandMore /> {variables.getMessage('modals.main.marketplace.product.show_more')}
-          </span>
-        ) : null}
-        {items.length <= 8 ? (
-          <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.product.showing')} {items.length} /{' '}
-            {items.length}
-          </span>
-        ) : (
-          <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.product.showing')} {count} /{' '}
-            {items.length}
-          </span>
-        )}
-      </div>*/}
       <div className="loader"></div>
       {type === 'all' && !onCollection ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />
           <span className="title">{variables.getMessage('modals.main.marketplace.cant_find')}</span>
           <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.knowledgebase_one')}{' '}
+            {variables.getMessage('modals.main.marketplace.knowledgebase_one')}
             <a
               className="link"
               target="_blank"
@@ -145,7 +90,7 @@ function Items({
               rel="noreferrer"
             >
               {variables.getMessage('modals.main.marketplace.knowledgebase_two')}
-            </a>{' '}
+            </a>
             {variables.getMessage('modals.main.marketplace.knowledgebase_three')}
           </span>
         </div>

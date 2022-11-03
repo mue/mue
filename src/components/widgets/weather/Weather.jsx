@@ -77,7 +77,7 @@ export default class Weather extends PureComponent {
       done: true
     });
 
-    document.querySelector('.weather svg').style.fontSize = zoomWeather;
+    document.querySelector('.tweather svg').style.fontSize = zoomWeather;
   }
 
   componentDidMount() {
