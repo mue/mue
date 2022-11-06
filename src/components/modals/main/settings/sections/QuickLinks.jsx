@@ -213,7 +213,12 @@ export default class QuickLinks extends PureComponent {
             category="quicklinks"
           />
         </SettingsItem>
-        <SettingsItem title="Quick Links Styling" description="Customise Quick Links Appearance.">
+        <SettingsItem
+          title={variables.getMessage('modals.main.settings.sections.quicklinks.styling')}
+          description={variables.getMessage(
+            'modals.main.settings.sections.quicklinks.styling_description',
+          )}
+        >
           <Dropdown label="Style" name="quickLinksStyle" category="other">
             <option value="icon">
               {variables.getMessage('modals.main.settings.sections.quicklinks.options.icon')}
@@ -227,7 +232,11 @@ export default class QuickLinks extends PureComponent {
           </Dropdown>
         </SettingsItem>
 
-        <SettingsItem title="Quick Links" subtitle="" final={true}>
+        <SettingsItem
+          title={variables.getMessage('modals.main.settings.sections.quicklinks.title')}
+          subtitle=""
+          final={true}
+        >
           <button onClick={() => this.setState({ showAddModal: true })}>
             {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}{' '}
             <MdAddLink />

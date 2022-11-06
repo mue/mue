@@ -313,7 +313,9 @@
               "icon": "Icon",
               "text_only": "Text Only",
               "metro": "Metro"
-            }
+            },
+            "styling": "Quick Links Styling",
+            "styling_description": "Customise Quick Links appearance"
           },
           "message": {
             "title": "Mensaje",

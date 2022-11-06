@@ -19,7 +19,7 @@ export default class Search extends PureComponent {
       query: '',
       microphone: null,
       suggestions: [],
-      searchDropdown: true,
+      searchDropdown: false,
       classList:
         localStorage.getItem('widgetStyle') === 'legacy' ? 'searchIcons old' : 'searchIcons',
     };
@@ -108,12 +108,6 @@ export default class Search extends PureComponent {
     });
   }
 
-  toggleDropdown() {
-    this.setState({
-      searchDropdown: this.state.searchDropdown === 'hidden' ? 'visible' : 'hidden',
-    });
-  }
-
   setSearch(name, custom) {
     let url;
     let query = 'q';
@@ -134,7 +128,7 @@ export default class Search extends PureComponent {
       url,
       query,
       currentSearch: name,
-      searchDropdown: 'hidden',
+      searchDropdown: false,
     });
   }
 
@@ -170,10 +164,10 @@ export default class Search extends PureComponent {
           <div className={this.state.classList}>
             {localStorage.getItem('searchDropdown') === 'true' ? (
               <Tooltip title={variables.getMessage('widgets.search')}>
-                <button>
-                  <MdScreenSearchDesktop
-                    onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
-                  />
+                <button
+                  onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
+                >
+                  <MdScreenSearchDesktop />
                 </button>
               </Tooltip>
             ) : (
@@ -204,13 +198,17 @@ export default class Search extends PureComponent {
           {localStorage.getItem('searchDropdown') === 'true' &&
           this.state.searchDropdown === true ? (
             <div className="searchDropdown">
-              {searchEngines.map(({ name }) => {
+              {searchEngines.map(({ name }, key) => {
                 if (name === this.state.currentSearch) {
                   return null;
                 }
 
                 return (
-                  <span className="searchDropdownList" onClick={() => this.setSearch(name)}>
+                  <span
+                    className="searchDropdownList"
+                    onClick={() => this.setSearch(name)}
+                    key={key}
+                  >
                     {name}
                   </span>
                 );
