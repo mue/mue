@@ -72,9 +72,9 @@ export default class Weather extends PureComponent {
         wind_degrees: data.wind.deg,
         cloudiness: data.clouds.all,
         visibility: data.visibility,
-        pressure: data.main.pressure
+        pressure: data.main.pressure,
       },
-      done: true
+      done: true,
     });
 
     document.querySelector('.tweather svg').style.fontSize = zoomWeather;
@@ -108,7 +108,7 @@ export default class Weather extends PureComponent {
         </div>
       );
     }
-  
+
     return (
       <div className="weather">
         <div className="top-weather">
@@ -135,7 +135,9 @@ export default class Weather extends PureComponent {
             <span className="loc">{this.state.location}</span>
           </div>
         )}
-        {weatherType >= 3 ? <Expanded weatherType={weatherType} state={this.state} variables={variables}/> : null}
+        {weatherType >= 3 ? (
+          <Expanded weatherType={weatherType} state={this.state} variables={variables} />
+        ) : null}
       </div>
     );
   }

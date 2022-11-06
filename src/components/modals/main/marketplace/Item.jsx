@@ -142,11 +142,13 @@ export default class Item extends PureComponent {
                   <span className="link" onClick={() => this.incrementCount()}>
                     {this.state.count !== this.props.data.data.quotes.length ? (
                       <>
-                        <MdExpandMore /> {variables.getMessage('modals.main.marketplace.product.show_all')}
+                        <MdExpandMore />{' '}
+                        {variables.getMessage('modals.main.marketplace.product.show_all')}
                       </>
                     ) : (
                       <>
-                        <MdExpandLess /> {variables.getMessage('modals.main.marketplace.product.show_less')}
+                        <MdExpandLess />{' '}
+                        {variables.getMessage('modals.main.marketplace.product.show_less')}
                       </>
                     )}
                   </span>
@@ -253,7 +255,10 @@ export default class Item extends PureComponent {
                   <MdIosShare />
                 </button>
               </Tooltip>
-              <Tooltip title={variables.getMessage('modals.main.marketplace.product.buttons.report')} key="report">
+              <Tooltip
+                title={variables.getMessage('modals.main.marketplace.product.buttons.report')}
+                key="report"
+              >
                 <button
                   onClick={() =>
                     window.open(

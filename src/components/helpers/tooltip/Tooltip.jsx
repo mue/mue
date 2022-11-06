@@ -33,7 +33,7 @@ function Tooltip({ children, title, style, placement, subtitle }) {
           className="tooltipTitle"
         >
           {title}
-          <span style={{ fontSize: '8px'}}>{subtitle}</span>
+          <span style={{ fontSize: '8px' }}>{subtitle}</span>
         </span>
       )}
     </div>

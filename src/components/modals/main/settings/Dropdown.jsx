@@ -29,7 +29,7 @@ export default class Dropdown extends PureComponent {
 
     if (!this.props.noSetting) {
       localStorage.setItem(this.props.name, value);
-      localStorage.setItem(this.props.name2, this.props.value2)
+      localStorage.setItem(this.props.name2, this.props.value2);
     }
 
     if (this.props.onChange) {

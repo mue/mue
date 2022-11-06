@@ -43,9 +43,9 @@ export default class OrderSettings extends PureComponent {
         date: '',
         description: '',
         link: '',
-        linkText: ''
+        linkText: '',
       },
-      newsDone: false
+      newsDone: false,
     };
   }
 
@@ -108,7 +108,7 @@ export default class OrderSettings extends PureComponent {
     const data = await (await fetch('https://api.muetab.com/news')).json();
     this.setState({
       news: data.news,
-      newsDone: true
+      newsDone: true,
     });
   }
 
@@ -151,11 +151,13 @@ export default class OrderSettings extends PureComponent {
                 })}
               </div>
             </div>
-            <div style={{ display: "flex", flexFlow: "column" }}> 
-            <span className='title'>{this.state.news.title}</span>
-            <span className='subtitle'>{this.state.news.date}</span>
-            <span>{this.state.news.description}</span>
-            <a className='link' href={this.state.news.link}>{this.state.news.linkText}</a>
+            <div style={{ display: 'flex', flexFlow: 'column' }}>
+              <span className="title">{this.state.news.title}</span>
+              <span className="subtitle">{this.state.news.date}</span>
+              <span>{this.state.news.description}</span>
+              <a className="link" href={this.state.news.link}>
+                {this.state.news.linkText}
+              </a>
             </div>
           </div>
           <div>

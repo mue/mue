@@ -19,21 +19,21 @@ function WeatherIcon({ name }) {
   // name is the openweathermap icon name, see https://openweathermap.org/weather-conditions
   switch (name) {
     case '01d':
-      return <WiDaySunny className="weatherIcon"/>;
+      return <WiDaySunny className="weatherIcon" />;
     case '01n':
-      return <WiNightClear className="weatherIcon"/>;
+      return <WiNightClear className="weatherIcon" />;
     case '02d':
       return <WiDayCloudy className="weatherIcon" />;
     case '02n':
-      return <WiNightCloudy className="weatherIcon"/>;
+      return <WiNightCloudy className="weatherIcon" />;
     case '03d':
     case '03n':
-      return <WiCloud className="weatherIcon"/>;
+      return <WiCloud className="weatherIcon" />;
     case '04d':
     case '04n':
-      return <WiCloudy className="weatherIcon"/>;
+      return <WiCloudy className="weatherIcon" />;
     case '09d':
-      return <WiDayShowers className="weatherIcon"/>;
+      return <WiDayShowers className="weatherIcon" />;
     case '09n':
       return <WiNightShowers className="weatherIcon" />;
     case '10d':

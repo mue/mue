@@ -5,14 +5,14 @@ function ClockSkeleton() {
   if (localStorage.getItem('timeType') === 'analogue') {
     return (
       <Suspense fallback={<></>}>
-          <div className="clockBackground">
-            <Analog
-              className="analogclock clock-container"
-              value={'2022-10-07T17:00:00+00:00'}
-              size={50}
-            />
-          </div>
-        </Suspense>
+        <div className="clockBackground">
+          <Analog
+            className="analogclock clock-container"
+            value={'2022-10-07T17:00:00+00:00'}
+            size={50}
+          />
+        </div>
+      </Suspense>
     );
   } else if (localStorage.getItem('timeType') === 'percentageComplete') {
     return <span className="new-clock clock-container clockSkeleton">68%</span>;

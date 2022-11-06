@@ -19,7 +19,7 @@ export default class Navbar extends PureComponent {
       classList: localStorage.getItem('widgetStyle') === 'legacy' ? 'navbar old' : 'navbar new',
       refreshText: '',
       refreshEnabled: localStorage.getItem('refresh'),
-      refreshOption: localStorage.getItem('refreshOption') || ''
+      refreshOption: localStorage.getItem('refreshOption') || '',
     };
   }
 
@@ -61,7 +61,7 @@ export default class Navbar extends PureComponent {
       if (data === 'navbar' || data === 'background') {
         this.setState({
           refreshEnabled: localStorage.getItem('refresh'),
-          refreshOption: localStorage.getItem('refreshOption')
+          refreshOption: localStorage.getItem('refreshOption'),
         });
         try {
           this.updateRefreshText();

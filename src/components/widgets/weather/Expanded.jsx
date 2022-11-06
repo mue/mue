@@ -45,10 +45,7 @@ function Expanded({ state, weatherType, variables }) {
             {state.weather.wind_speed}
             <span className="minmax"> m/s</span>{' '}
             {enabled('windDirection') ? (
-              <WindDirectionIcon
-                className="weatherIcon"
-                degrees={state.weather.wind_degrees}
-              />
+              <WindDirectionIcon className="weatherIcon" degrees={state.weather.wind_degrees} />
             ) : null}
           </span>
         </Tooltip>

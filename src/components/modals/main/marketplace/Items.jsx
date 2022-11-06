@@ -1,10 +1,6 @@
 import variables from 'modules/variables';
 import React, { memo } from 'react';
-import {
-  MdAutoFixHigh,
-  MdOutlineArrowForward,
-  MdOutlineOpenInNew,
-} from 'react-icons/md';
+import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 
 function Items({
   type,
@@ -17,7 +13,8 @@ function Items({
 }) {
   return (
     <>
-      {(type === 'all' && !onCollection && (filter === null || filter === '')) || (type === 'collections' && !onCollection &&  (filter === null || filter === '')) ? (
+      {(type === 'all' && !onCollection && (filter === null || filter === '')) ||
+      (type === 'collections' && !onCollection && (filter === null || filter === '')) ? (
         <>
           <div
             className="collection"
@@ -55,7 +52,8 @@ function Items({
         </>
       ) : null}
       <div className="items">
-        {items?.filter(
+        {items
+          ?.filter(
             (item) =>
               item.name.toLowerCase().includes(filter.toLowerCase()) ||
               filter === '' ||

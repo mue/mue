@@ -40,7 +40,8 @@ variables.language = new I18n(variables.languagecode, {
   tr_TR: translations.tr_TR,
 });
 
-variables.getMessage = (text, optional) => variables.language.getMessage(variables.languagecode, text, optional || {});
+variables.getMessage = (text, optional) =>
+  variables.language.getMessage(variables.languagecode, text, optional || {});
 
 // set html language tag
 if (variables.languagecode !== 'en_GB' || variables.languagecode !== 'en_US') {
@@ -57,7 +58,4 @@ Sentry.init({
   autoSessionTracking: false,
 });
 
-render(
-  <App/>,
-  document.getElementById('root')
-);
+render(<App />, document.getElementById('root'));

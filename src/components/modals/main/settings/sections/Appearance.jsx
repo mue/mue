@@ -22,7 +22,10 @@ function AppearanceSettings() {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.appearance.theme.title')}
           </span>
-          <span className="subtitle"> {variables.getMessage('modals.main.settings.sections.appearance.theme.description')}</span>
+          <span className="subtitle">
+            {' '}
+            {variables.getMessage('modals.main.settings.sections.appearance.theme.description')}
+          </span>
         </div>
         <div className="action">
           <Radio
@@ -50,7 +53,9 @@ function AppearanceSettings() {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.appearance.font.title')}
           </span>
-          <span className="subtitle">{variables.getMessage('modals.main.settings.sections.appearance.font.description')}</span>
+          <span className="subtitle">
+            {variables.getMessage('modals.main.settings.sections.appearance.font.description')}
+          </span>
         </div>
         <div className="action">
           <Checkbox
@@ -124,7 +129,9 @@ function AppearanceSettings() {
       </div>
       <SettingsItem
         title={variables.getMessage('modals.main.settings.sections.appearance.style.title')}
-        subtitle={variables.getMessage('modals.main.settings.sections.appearance.style.description')}
+        subtitle={variables.getMessage(
+          'modals.main.settings.sections.appearance.style.description',
+        )}
       >
         <Radio
           name="widgetStyle"
@@ -145,7 +152,9 @@ function AppearanceSettings() {
 
       <SettingsItem
         title={variables.getMessage('modals.main.settings.sections.appearance.accessibility.title')}
-        subtitle={variables.getMessage('modals.main.settings.sections.appearance.accessibility.description')}
+        subtitle={variables.getMessage(
+          'modals.main.settings.sections.appearance.accessibility.description',
+        )}
         final={true}
       >
         <Dropdown
@@ -155,9 +164,23 @@ function AppearanceSettings() {
           name="textBorder"
           category="other"
         >
-          <option value="new">{variables.getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow.new',)}</option> {/* default */}
-          <option value="true">{variables.getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow.old',)}</option> {/* old checkbox setting */}
-          <option value="none">{variables.getMessage('modals.main.settings.sections.appearance.accessibility.text_shadow.none')}</option>
+          <option value="new">
+            {variables.getMessage(
+              'modals.main.settings.sections.appearance.accessibility.text_shadow.new',
+            )}
+          </option>{' '}
+          {/* default */}
+          <option value="true">
+            {variables.getMessage(
+              'modals.main.settings.sections.appearance.accessibility.text_shadow.old',
+            )}
+          </option>{' '}
+          {/* old checkbox setting */}
+          <option value="none">
+            {variables.getMessage(
+              'modals.main.settings.sections.appearance.accessibility.text_shadow.none',
+            )}
+          </option>
         </Dropdown>
         <Checkbox
           text={variables.getMessage(

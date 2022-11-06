@@ -35,7 +35,7 @@ class Todo extends PureComponent {
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + "rem"
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
     });
   }
 
@@ -78,7 +78,7 @@ class Todo extends PureComponent {
 
   hideTodo() {
     this.setState({
-      showTodo: (localStorage.getItem('todoPinned') === 'true'),
+      showTodo: localStorage.getItem('todoPinned') === 'true',
     });
   }
 
@@ -122,7 +122,7 @@ class Todo extends PureComponent {
 
   pin() {
     variables.stats.postEvent('feature', 'Todo pin');
-    const todoPinned = (localStorage.getItem('todoPinned') === 'true');
+    const todoPinned = localStorage.getItem('todoPinned') === 'true';
     localStorage.setItem('todoPinned', !todoPinned);
     this.setState({
       showTodo: !todoPinned,

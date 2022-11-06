@@ -480,23 +480,22 @@ a.collectionButton {
   @include themed() {
     background: t($modal-sidebarActive);
     box-shadow: 0 0 0 3px t($modal-sidebarActive);
-      background: t($modal-sidebar);
+    background: t($modal-sidebar);
   }
   input {
     all: unset;
   }
   @include themed() {
+    &:focus-within {
+      background: t($modal-sidebarActive);
+      box-shadow: 0 0 0 1px t($color);
+    }
 
-  &:focus-within {
-    background: t($modal-sidebarActive);
-    box-shadow: 0 0 0 1px t($color);
+    &:disabled {
+      background: t($modal-sidebarActive);
+      cursor: not-allowed;
+    }
   }
-
-  &:disabled {
-    background: t($modal-sidebarActive);
-    cursor: not-allowed;
-  }
-}
 }
 
 .inCollection {
@@ -523,4 +522,3 @@ a.collectionButton {
     font-size: 30px;
   }
 }
-

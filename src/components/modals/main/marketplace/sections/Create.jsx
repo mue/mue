@@ -389,9 +389,7 @@ export default class Create extends PureComponent {
     );
 
     // photos
-    const nextPhotosDisabled = !(
-      this.state.addonData.photos !== ''
-    );
+    const nextPhotosDisabled = !(this.state.addonData.photos !== '');
     const addPhotos = (
       <>
         <SettingsItem
@@ -490,7 +488,10 @@ export default class Create extends PureComponent {
         <div className="flexTopMarketplace">
           {this.state.currentTab !== 1 && (
             <div className="returnButton">
-              <Tooltip title={variables.getMessage('modals.main.navbar.marketplace.product.buttons.back')} key="backArrow">
+              <Tooltip
+                title={variables.getMessage('modals.main.navbar.marketplace.product.buttons.back')}
+                key="backArrow"
+              >
                 <MdArrowBack
                   className="backArrow"
                   onClick={() => this.changeTab(this.state.currentTab - 1)}

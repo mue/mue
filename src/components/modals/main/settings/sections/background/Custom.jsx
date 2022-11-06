@@ -15,7 +15,7 @@ import { videoCheck } from 'modules/helpers/background/widget';
 
 import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
-import Tooltip from '../../../../../helpers/tooltip/Tooltip'
+import Tooltip from '../../../../../helpers/tooltip/Tooltip';
 
 import Modal from 'react-modal';
 

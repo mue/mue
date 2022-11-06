@@ -121,7 +121,7 @@ export default class QuoteSettings extends PureComponent {
                       )}
                       onChange={(e) => this.customQuote(e, true, index, 'quote')}
                       varient="outlined"
-                      style={{ fontSize: '22px', fontWeight: 'bold'}}
+                      style={{ fontSize: '22px', fontWeight: 'bold' }}
                     />
                     <TextareaAutosize
                       value={this.state.customQuote[index].author}
@@ -259,9 +259,7 @@ export default class QuoteSettings extends PureComponent {
                 value2={Date.now()}
               >
                 <option value="refresh">{variables.getMessage('tabname')}</option>
-                <option value={10000}>
-                  10 seconds
-                </option>
+                <option value={10000}>10 seconds</option>
                 <option value={60000}>
                   {variables.getMessage('modals.main.settings.sections.background.interval.minute')}
                 </option>

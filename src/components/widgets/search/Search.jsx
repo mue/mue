@@ -110,7 +110,7 @@ export default class Search extends PureComponent {
 
   toggleDropdown() {
     this.setState({
-      searchDropdown: (this.state.searchDropdown === 'hidden') ? 'visible' : 'hidden',
+      searchDropdown: this.state.searchDropdown === 'hidden' ? 'visible' : 'hidden',
     });
   }
 
@@ -171,7 +171,9 @@ export default class Search extends PureComponent {
             {localStorage.getItem('searchDropdown') === 'true' ? (
               <Tooltip title={variables.getMessage('widgets.search')}>
                 <button>
-                  <MdScreenSearchDesktop onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })} />
+                  <MdScreenSearchDesktop
+                    onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
+                  />
                 </button>
               </Tooltip>
             ) : (
@@ -199,7 +201,8 @@ export default class Search extends PureComponent {
           </form>
         </div>
         <div>
-          {localStorage.getItem('searchDropdown') === 'true' && this.state.searchDropdown === true ? (
+          {localStorage.getItem('searchDropdown') === 'true' &&
+          this.state.searchDropdown === true ? (
             <div className="searchDropdown">
               {searchEngines.map(({ name }) => {
                 if (name === this.state.currentSearch) {

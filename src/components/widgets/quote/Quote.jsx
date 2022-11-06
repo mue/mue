@@ -132,11 +132,16 @@ export default class Quote extends PureComponent {
         )
       ).json();
 
-      const metadata = authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]].imageinfo[0].extmetadata;
+      const metadata =
+        authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]]
+          .imageinfo[0].extmetadata;
       const license = metadata.LicenseShortName;
-      const photographer = metadata.Attribution.value || metadata.Artist?.value.match(/<a.+>(?<name>.+)<\/a>/i)?.groups.name || 'Unknown';
+      const photographer =
+        metadata.Attribution.value ||
+        metadata.Artist?.value.match(/<a.+>(?<name>.+)<\/a>/i)?.groups.name ||
+        'Unknown';
       authorimglicense = `© ${photographer}. ${license.value}`;
-	  authorimglicense = authorimglicense.replace(/copyright\s/i, '').replace(/©\s©\s/, '© ');
+      authorimglicense = authorimglicense.replace(/copyright\s/i, '').replace(/©\s©\s/, '© ');
 
       if (license.value === 'Public domain') {
         authorimglicense = null;
@@ -196,7 +201,6 @@ export default class Quote extends PureComponent {
         customQuote = customQuote
           ? customQuote[Math.floor(Math.random() * customQuote.length)]
           : null;
-          
 
         if (customQuote !== undefined) {
           return this.setState({
@@ -204,11 +208,11 @@ export default class Quote extends PureComponent {
             author: customQuote.author,
             authorlink: this.getAuthorLink(customQuote.author),
             authorimg: await this.getAuthorImg(customQuote.author),
-            noQuote: false
+            noQuote: false,
           });
         } else {
           this.setState({
-            noQuote: true
+            noQuote: true,
           });
         }
         break;
@@ -335,29 +339,29 @@ export default class Quote extends PureComponent {
   }
 
   componentDidMount() {
-    const test = localStorage.getItem('quotechange')
+    const test = localStorage.getItem('quotechange');
 
     this.interval = setInterval(() => {
-      if (test !== null ) {
-      const targetTime = Number(
-        Number(localStorage.getItem('quoteStartTime')) +
-          Number(localStorage.getItem('quotechange')),
-      );
-      const currentTime = Number(Date.now());
-      if (currentTime >= targetTime) {
-        this.setZoom();
-        this.getQuote();
-        localStorage.setItem('quoteStartTime', Date.now());
-      } else {
-        console.log(localStorage.getItem('quotechange'));
-        try {
-          this.setState(JSON.parse(localStorage.getItem('currentQuote')));
-        } catch (e) {
+      if (test !== null) {
+        const targetTime = Number(
+          Number(localStorage.getItem('quoteStartTime')) +
+            Number(localStorage.getItem('quotechange')),
+        );
+        const currentTime = Number(Date.now());
+        if (currentTime >= targetTime) {
           this.setZoom();
           this.getQuote();
+          localStorage.setItem('quoteStartTime', Date.now());
+        } else {
+          console.log(localStorage.getItem('quotechange'));
+          try {
+            this.setState(JSON.parse(localStorage.getItem('currentQuote')));
+          } catch (e) {
+            this.setZoom();
+            this.getQuote();
+          }
         }
       }
-    }
     });
 
     EventBus.on('refresh', (data) => {
@@ -387,7 +391,10 @@ export default class Quote extends PureComponent {
       }
     });
 
-    if (localStorage.getItem('quotechange') === 'refresh' || (localStorage.getItem('quotechange')) === null ) {
+    if (
+      localStorage.getItem('quotechange') === 'refresh' ||
+      localStorage.getItem('quotechange') === null
+    ) {
       this.setZoom();
       this.getQuote();
       localStorage.setItem('quoteStartTime', Date.now());
@@ -421,7 +428,7 @@ export default class Quote extends PureComponent {
         <span className="quote" ref={this.quote}>
           {this.state.quote}
         </span>
-        
+
         {localStorage.getItem('widgetStyle') === 'legacy' ? (
           <>
             <div>

@@ -20,8 +20,8 @@ class Notes extends PureComponent {
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + "rem"
-    })
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
+    });
   }
 
   componentDidMount() {
@@ -56,13 +56,13 @@ class Notes extends PureComponent {
 
   hideNotes() {
     this.setState({
-      showNotes: (localStorage.getItem('notesPinned') === 'true'),
+      showNotes: localStorage.getItem('notesPinned') === 'true',
     });
   }
 
   pin() {
     variables.stats.postEvent('feature', 'Notes pin');
-    const notesPinned = (localStorage.getItem('notesPinned') === 'true');
+    const notesPinned = localStorage.getItem('notesPinned') === 'true';
     localStorage.setItem('notesPinned', !notesPinned);
     this.setState({
       showNotes: !notesPinned,
@@ -96,7 +96,7 @@ class Notes extends PureComponent {
           ref={this.props.notesRef}
           style={{ fontSize: this.state.zoomFontSize }}
         >
-          <MdAssignment className="topicons"/>
+          <MdAssignment className="topicons" />
         </button>
         {this.state.showNotes && (
           <span

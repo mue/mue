@@ -60,7 +60,7 @@ export default class TimeSettings extends PureComponent {
 
   render() {
     const weatherType = localStorage.getItem('weatherType');
-    
+
     return (
       <>
         <Header
@@ -71,12 +71,27 @@ export default class TimeSettings extends PureComponent {
           zoomCategory="weather"
           switch={true}
         />
-        <SettingsItem title={variables.getMessage('modals.main.settings.sections.weather.widget_type')}>
-          <Dropdown label={variables.getMessage('modals.main.settings.sections.time.type')} name="weatherType" category="weather" onChange={() => this.forceUpdate()}>
-            <option value="1">{variables.getMessage('modals.main.settings.sections.weather.options.basic')}</option>
-            <option value="2">{variables.getMessage('modals.main.settings.sections.weather.options.standard')}</option>
-            <option value="3">{variables.getMessage('modals.main.settings.sections.weather.options.expanded')}</option>
-            <option value="4">{variables.getMessage('modals.main.settings.sections.weather.options.custom')}</option>
+        <SettingsItem
+          title={variables.getMessage('modals.main.settings.sections.weather.widget_type')}
+        >
+          <Dropdown
+            label={variables.getMessage('modals.main.settings.sections.time.type')}
+            name="weatherType"
+            category="weather"
+            onChange={() => this.forceUpdate()}
+          >
+            <option value="1">
+              {variables.getMessage('modals.main.settings.sections.weather.options.basic')}
+            </option>
+            <option value="2">
+              {variables.getMessage('modals.main.settings.sections.weather.options.standard')}
+            </option>
+            <option value="3">
+              {variables.getMessage('modals.main.settings.sections.weather.options.expanded')}
+            </option>
+            <option value="4">
+              {variables.getMessage('modals.main.settings.sections.weather.options.custom')}
+            </option>
           </Dropdown>
         </SettingsItem>
         <SettingsItem
@@ -126,9 +141,10 @@ export default class TimeSettings extends PureComponent {
           />
         </SettingsItem>
         {weatherType === '4' && (
-          <SettingsItem title={variables.getMessage(
-            'modals.main.settings.sections.weather.custom_settings',
-          )} final={true}>
+          <SettingsItem
+            title={variables.getMessage('modals.main.settings.sections.weather.custom_settings')}
+            final={true}
+          >
             <Checkbox
               name="weatherdescription"
               text={variables.getMessage(

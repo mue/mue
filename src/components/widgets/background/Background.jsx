@@ -253,7 +253,8 @@ export default class Background extends PureComponent {
           const randomNumber = Math.floor(Math.random() * photoPack.length);
           const randomPhoto = photoPack[randomNumber];
           if (
-            (localStorage.getItem('backgroundchange') === 'refresh' && this.state.firstTime === true) ||
+            (localStorage.getItem('backgroundchange') === 'refresh' &&
+              this.state.firstTime === true) ||
             (localStorage.getItem('backgroundchange') === null && this.state.firstTime === true)
           ) {
             localStorage.setItem('marketplaceNumber', randomNumber);
@@ -268,31 +269,16 @@ export default class Background extends PureComponent {
               },
             });
           } else {
-              if (
-                Number(
-                  Number(localStorage.getItem('backgroundStartTime')) +
-                    Number(localStorage.getItem('backgroundchange')) >=
-                    Number(Date.now()),
-                )
-              ) {
-                const randomPhoto = photoPack[localStorage.getItem('marketplaceNumber')];
-                if (this.state.firstTime !== true) {
-                  this.setState({
-                    url: randomPhoto.url.default,
-                    type: 'photo_pack',
-                    photoInfo: {
-                      hidden: false,
-                      credit: randomPhoto.photographer,
-                      location: randomPhoto.location || 'N/A',
-                    },
-                  });
-                } else {
-                  this.setState({ firstTime: true });
-                }
-                this.setState({ firstTime: true });
-              } else {
-                localStorage.setItem('marketplaceNumber', randomNumber);
-                return this.setState({
+            if (
+              Number(
+                Number(localStorage.getItem('backgroundStartTime')) +
+                  Number(localStorage.getItem('backgroundchange')) >=
+                  Number(Date.now()),
+              )
+            ) {
+              const randomPhoto = photoPack[localStorage.getItem('marketplaceNumber')];
+              if (this.state.firstTime !== true) {
+                this.setState({
                   url: randomPhoto.url.default,
                   type: 'photo_pack',
                   photoInfo: {
@@ -301,7 +287,22 @@ export default class Background extends PureComponent {
                     location: randomPhoto.location || 'N/A',
                   },
                 });
+              } else {
+                this.setState({ firstTime: true });
               }
+              this.setState({ firstTime: true });
+            } else {
+              localStorage.setItem('marketplaceNumber', randomNumber);
+              return this.setState({
+                url: randomPhoto.url.default,
+                type: 'photo_pack',
+                photoInfo: {
+                  hidden: false,
+                  credit: randomPhoto.photographer,
+                  location: randomPhoto.location || 'N/A',
+                },
+              });
+            }
           }
         }
         break;
@@ -444,7 +445,7 @@ export default class Background extends PureComponent {
     this.interval = setInterval(() => {
       const targetTime = Number(Number(localStorage.getItem('backgroundStartTime')) + Number(test));
       const currentTime = Number(Date.now());
-      const type = localStorage.getItem('backgroundType'); 
+      const type = localStorage.getItem('backgroundType');
 
       if (test !== null && test !== 'refresh') {
         if (currentTime >= targetTime) {

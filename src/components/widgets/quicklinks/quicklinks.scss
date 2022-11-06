@@ -194,9 +194,9 @@ button.quicklinks {
   min-width: 100px;
   background-image: linear-gradient(to left, rgb(0, 0, 0), transparent, rgb(0, 0, 0)),
     url('https://media.cntraveller.com/photos/615ee85…/16:9/w_2580,c_limit/Best%20Cities%20in%20the%20World%20-%20Grid.jpg');
-    transition: 0.8s;
-    text-align: left;
-    padding: 20px 40px;
+  transition: 0.8s;
+  text-align: left;
+  padding: 20px 40px;
   @include themed() {
     &:hover {
       background: t($btn-backgroundHover);

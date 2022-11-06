@@ -35,7 +35,7 @@ export default class Message extends PureComponent {
     this.message.current.style.fontSize = `${
       1 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
     }em`;
-    
+
     this.setState({
       messageText: messages[Math.floor(Math.random() * messages.length)],
     });

@@ -390,7 +390,7 @@ export default class Marketplace extends PureComponent {
             </div>
           </>
         )}
-        {(this.props.type === 'collections' && !this.state.collection) ? (
+        {this.props.type === 'collections' && !this.state.collection ? (
           this.state.items.map((item) => (
             <>
               {!item.news ? (
