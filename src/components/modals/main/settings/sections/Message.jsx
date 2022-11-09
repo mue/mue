@@ -70,7 +70,6 @@ export default class Message extends PureComponent {
         />
         <SettingsItem
           title={variables.getMessage('modals.main.settings.sections.message.messages')}
-          subtitle=""
           final={true}
         >
           <button onClick={() => this.modifyMessage('add')}>

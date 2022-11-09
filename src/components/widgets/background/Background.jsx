@@ -257,17 +257,19 @@ export default class Background extends PureComponent {
               this.state.firstTime === true) ||
             (localStorage.getItem('backgroundchange') === null && this.state.firstTime === true)
           ) {
-            localStorage.setItem('marketplaceNumber', randomNumber);
-            this.setState({
-              firstTime: false,
-              url: randomPhoto.url.default,
-              type: 'photo_pack',
-              photoInfo: {
-                hidden: false,
-                credit: randomPhoto.photographer,
-                location: randomPhoto.location || 'N/A',
-              },
-            });
+            if (this.state.firstTime !== true) {
+              localStorage.setItem('marketplaceNumber', randomNumber);
+              this.setState({
+                firstTime: false,
+                url: randomPhoto.url.default,
+                type: 'photo_pack',
+                photoInfo: {
+                  hidden: false,
+                  credit: randomPhoto.photographer,
+                  location: randomPhoto.location || 'N/A',
+                },
+              });
+            }
           } else {
             if (
               Number(

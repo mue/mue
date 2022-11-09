@@ -234,7 +234,6 @@ export default class QuickLinks extends PureComponent {
 
         <SettingsItem
           title={variables.getMessage('modals.main.settings.sections.quicklinks.title')}
-          subtitle=""
           final={true}
         >
           <button onClick={() => this.setState({ showAddModal: true })}>

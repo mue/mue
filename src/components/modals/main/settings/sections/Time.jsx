@@ -102,7 +102,6 @@ export default class TimeSettings extends PureComponent {
           title={variables.getMessage(
             'modals.main.settings.sections.time.vertical_clock.change_hour_colour',
           )}
-          subtitle=""
         >
           <div className="colourInput">
             <input
@@ -124,7 +123,6 @@ export default class TimeSettings extends PureComponent {
           title={variables.getMessage(
             'modals.main.settings.sections.time.vertical_clock.change_minute_colour',
           )}
-          subtitle=""
         >
           <div className="colourInput">
             <input
