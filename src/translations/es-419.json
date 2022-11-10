@@ -199,7 +199,7 @@
             "autocomplete": "Autocompletado",
             "autocomplete_provider": "Proveedor del autocompletado",
             "voice_search": "Búsqueda por voz",
-            "dropdown": "Listado de búsqueda
+            "dropdown": "Listado de búsqueda"
           },
           "weather": {
             "title": "Clima",
@@ -352,7 +352,7 @@
           },
           "language": {
             "title": "Idioma",
-            "quote": "Idioma de las citas"
+            "quote": "Idioma de las citaciones"
           },
           "changelog": {
             "title": "Registro de cambios",
@@ -542,7 +542,7 @@
     }
   },
   "toasts": {
-    "quote": "Cita copiada",
+    "quote": "Citación copiada",
     "notes": "Notas copiadas",
     "reset": "Restablecido correctamente",
     "installed": "Instalado correctamente",
