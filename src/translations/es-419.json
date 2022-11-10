@@ -107,7 +107,7 @@
             }
           },
           "quote": {
-            "title": "Cita",
+            "title": "Citación",
             "author_link": "Enlace del autor",
             "custom": "Citación personalizada",
             "custom_author": "Autor personalizado",
@@ -316,7 +316,7 @@
               "backgrounds_favourited": "Fondos en tus favoritos",
               "backgrounds_downloaded": "Fondos descargados",
               "quotes_favourited": "Citaciones en favoritos ",
-              "quicklinks_added": "Enlaces rápidos agregados
+              "quicklinks_added": "Enlaces rápidos agregados",
               "settings_changed": "Ajustes cambiados",
               "addons_installed": "Complementos instalados"
             },
@@ -333,8 +333,8 @@
               "show_info": "Mostrar información del fondo"
             },
             "quote": {
-              "favourite": "Añadir citación a tus favoritos",
-              "copy": "Copiar cita",
+              "favourite": "Agregar citación a tus favoritos",
+              "copy": "Copiar citación",
               "tweet": "Tuitear citación"
             },
             "notes": {
@@ -408,7 +408,7 @@
           },
           "quote_warning": {
             "title": "Advertencia",
-            "description": "¡Este paquete de citas solicita a servidores externos que pueden rastrearte!"
+            "description": "¡Este paquete de citaciones solicita a servidores externos que pueden rastrearte!"
           }
         },
         "offline": {
@@ -439,7 +439,7 @@
         "sort": {
           "title": "Ordenar",
           "newest": "Instalados (Nuevos)",
-          "oldest": "Instalado (sAntiguos)",
+          "oldest": "Instalados (Antiguos)",
           "a_z": "Alfabético (A-Z)",
           "z_a": "Alfabético (Z-A)"
         },
