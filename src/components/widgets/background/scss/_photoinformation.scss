@@ -12,7 +12,7 @@
       align-items: flex-start;
       flex-flow: column;
       .concept-buttons {
-        padding: 0 0 20px;
+        padding: 30px 0 0 0;
         display: flex;
       }
       .extra-content {
@@ -23,7 +23,8 @@
       }
       .concept-stats {
         display: flex;
-        gap: 15px;
+		padding-top: 5px;
+        gap: 20px;
         @include themed() {
           color: t($subColor);
         }
@@ -32,7 +33,7 @@
           align-items: center;
           align-content: center;
           flex-direction: row;
-          gap: 10px;
+          gap: 5px;
           svg {
             font-size: 1em;
           }
@@ -207,7 +208,7 @@
     align-items: flex-start;
     flex-flow: column;
     .concept-buttons {
-      padding: 0 0 20px;
+      padding: 30px 0 0 0;
       display: flex;
     }
     .extra-content {
@@ -292,12 +293,15 @@
 }
 
 .photoInformation-content {
+	line-height: 2em;
   margin-right: 3px;
   display: flex;
   flex-flow: column;
   padding-left: 20px;
   a {
-    color: #5352ed;
+    @include themed() {
+      color: t($link);
+    }
     text-decoration: none;
     &:hover {
       opacity: 0.9;
@@ -333,8 +337,8 @@
 
 .concept-buttons {
   align-items: center;
-  gap: 10px;
-  padding: 20px 20px 20px 0;
+  gap: 20px;
+  padding: 20px 20px 0 0;
   display: none;
   svg {
     @include basicIconButton(11px, 1.3rem, ui);

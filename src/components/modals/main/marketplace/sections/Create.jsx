@@ -75,7 +75,7 @@ export default class Create extends PureComponent {
         key === 'showReminder' ||
         key === 'experimental' ||
         key === 'debugtimeout' ||
-        key === 'quotelanguage'
+        key === 'quoteLanguage'
       ) {
         return;
       }

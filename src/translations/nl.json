@@ -15,7 +15,17 @@
       "unsplash": "on Unsplash",
       "pexels": "on Pexels",
       "information": "Information",
-      "download": "Download"
+      "download": "Download",
+      "downloads": "Downloads",
+      "views": "Views",
+      "likes": "Likes",
+      "location": "Location",
+      "camera": "Camera",
+      "resolution": "Resolution",
+      "source": "Source",
+      "category": "Category",
+      "photo": "Photo",
+      "on": "on"
     },
     "search": "Zoeken",
     "quicklinks": {

@@ -105,7 +105,7 @@ export default class OrderSettings extends PureComponent {
   };
 
   async getNews() {
-    const data = await (await fetch('https://api.muetab.com/news')).json();
+    const data = await (await fetch(variables.constants.API_URL + '/news')).json();
     data.news.date = new window.Date(data.news.date).toLocaleDateString(variables.languagecode.replace('_', '-'), {
       year: 'numeric',
       month: 'long',

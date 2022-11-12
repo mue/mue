@@ -251,9 +251,9 @@ export default class Quote extends PureComponent {
 
         // First we try and get a quote from the API...
         try {
-          const quotelanguage = localStorage.getItem('quotelanguage');
+          const quoteLanguage = localStorage.getItem('quoteLanguage');
           const data = await (
-            await fetch(variables.constants.API_URL + '/quotes/random?language=' + quotelanguage)
+            await fetch(variables.constants.API_URL + '/quotes/random?language=' + quoteLanguage)
           ).json();
 
           // If we hit the ratelimit, we fall back to local quotes
@@ -269,7 +269,7 @@ export default class Quote extends PureComponent {
             authorlink: this.getAuthorLink(data.author),
             authorimg: authorimgdata.authorimg,
             authorimglicense: authorimgdata.authorimglicense,
-            quoteLanguage: quotelanguage,
+            quoteLanguage: quoteLanguage,
             authorOccupation: data.author_occupation,
           };
 
@@ -324,7 +324,7 @@ export default class Quote extends PureComponent {
 
     if (
       this.state.type !== quoteType ||
-      localStorage.getItem('quotelanguage') !== this.state.quoteLanguage ||
+      localStorage.getItem('quoteLanguage') !== this.state.quoteLanguage ||
       (quoteType === 'custom' && this.state.quote !== localStorage.getItem('customQuote')) ||
       (quoteType === 'custom' && this.state.author !== localStorage.getItem('customQuoteAuthor'))
     ) {

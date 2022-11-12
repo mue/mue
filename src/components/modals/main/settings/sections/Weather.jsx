@@ -39,7 +39,7 @@ export default class TimeSettings extends PureComponent {
       async (position) => {
         const data = await (
           await fetch(
-            `${variables.constants.PROXY_URL}/weather/autolocation?lat=${position.coords.latitude}&lon=${position.coords.longitude}`,
+            `${variables.constants.API_URL}/gps?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`,
           )
         ).json();
         this.setState({

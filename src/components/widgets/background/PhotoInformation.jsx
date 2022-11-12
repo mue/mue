@@ -10,6 +10,8 @@ import {
   MdVisibility as Views,
   MdIosShare as Share,
   MdSource as Source,
+  MdFavorite as MdFavourite,
+  MdCategory as Category
 } from 'react-icons/md';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
@@ -131,7 +133,7 @@ function PhotoInformation({ info, url, api }) {
     }
 
     const zoom = 12;
-    const tile = `${variables.constants.MAPBOX_URL}/styles/v1/mapbox/streets-v11/static/pin-s+555555(${info.longitude},${info.latitude})/${info.longitude},${info.latitude},${zoom},0/300x100?access_token=${info.maptoken}`;
+    const tile = variables.constants.API_URL + `/map?latitude=${info.latitude}&longitude=${info.longitude}`;
     showingPhotoMap = true;
 
     return (
@@ -221,26 +223,75 @@ function PhotoInformation({ info, url, api }) {
             </div>
           ) : null}
           <div className="photoInformation-content">
-            <span className="title">{info.location}</span>
+            <span className="title">{
+            (showExtraInfo || other) && info.description
+              ? (info.description.length > 40 ? info.description.substring(0, 40) + '...' : info.description)
+              : info.location?.split(',').slice(-2).join(', ').trim()
+            }</span>
             <span className="subtitle" id="credit">
-              {credit}
+              {photo} {credit}
             </span>
             {info.views && info.downloads !== null ? (
               <div className="concept-stats">
-                <div>
+                <div title={variables.getMessage('widgets.background.views')}>
                   <Views />
                   <span>{info.views.toLocaleString()}</span>
                 </div>
-                <div>
+                <div title={variables.getMessage('widgets.background.downloads')}>
                   <Download />
                   <span>{info.downloads.toLocaleString()}</span>
                 </div>
+                {!!info.likes ? (
+                  <div title={variables.getMessage('widgets.background.likes')}>
+                    <MdFavourite />
+                    <span>{info.likes.toLocaleString()}</span>
+                  </div>
+                ) : null}
               </div>
             ) : null}
           </div>
 
           {showExtraInfo || other ? (
             <>
+              <div className="extra-content">
+                <span className="subtitle">
+                  {variables.getMessage('widgets.background.information')}
+                </span>
+                {info.location && info.location !== 'N/A' ? (
+                  <div className="concept-row" title={variables.getMessage('widgets.background.location')}>
+                    <MdLocationOn />
+                    <span id="infoLocation">{info.location}</span>
+                  </div>
+                ) : null}
+                {info.camera && info.camera !== 'N/A' ? (
+                  <div className="concept-row" title={variables.getMessage('widgets.background.camera')}>
+                    <MdPhotoCamera />
+                    <span id="infoCamera">{info.camera}</span>
+                  </div>
+                ) : null}
+                <div className="concept-row" title={variables.getMessage('widgets.background.resolution')}>
+                  <Resolution />
+                  <span id="infoResolution">
+                    {width}x{height}
+                  </span>
+                </div>
+                {info.category ? (
+                  <div className="concept-row" title={variables.getMessage('widgets.background.category')}>
+                    <Category />
+                    <span id="infoCategory">{info.category[0].toUpperCase() + info.category.slice(1)}</span>
+                  </div>
+                ) : null}
+                {api ? (
+                  <div className="concept-row" title={variables.getMessage('widgets.background.source')}>
+                    <Source />
+                    <span id="infoSource">
+                      <a href={info.photoURL + '?utm_source=mue'} target="_blank" rel="noopener noreferrer" className="link">
+                        {api.charAt(0).toUpperCase() + api.slice(1)}
+                      </a>
+                    </span>
+                  </div>
+                ) : null}
+              </div>
               <div className="concept-buttons">
                 {!info.offline ? (
                   <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
@@ -257,35 +308,6 @@ function PhotoInformation({ info, url, api }) {
                   >
                     <Download onClick={() => downloadImage(info)} />
                   </Tooltip>
-                ) : null}
-              </div>
-              <div className="extra-content">
-                <span className="subtitle">
-                  {variables.getMessage('widgets.background.information')}
-                </span>
-                {info.location && info.location !== 'N/A' ? (
-                  <div className="concept-row">
-                    <MdLocationOn />
-                    <span id="infoLocation">{info.location}</span>
-                  </div>
-                ) : null}
-                {info.camera && info.camera !== 'N/A' ? (
-                  <div className="concept-row">
-                    <MdPhotoCamera />
-                    <span id="infoCamera">{info.camera}</span>
-                  </div>
-                ) : null}
-                <div className="concept-row">
-                  <Resolution />
-                  <span id="infoResolution">
-                    {width}x{height}
-                  </span>
-                </div>
-                {api ? (
-                  <div className="concept-row">
-                    <Source />
-                    <span id="infoSource">{api.charAt(0).toUpperCase() + api.slice(1)}</span>
-                  </div>
                 ) : null}
               </div>
             </>

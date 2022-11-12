@@ -15,7 +15,17 @@
       "unsplash": "sur Unsplash",
       "pexels": "sur Pexels",
       "information": "Information",
-      "download": "Téléchargement"
+      "download": "Téléchargement",
+      "downloads": "Downloads",
+      "views": "Views",
+      "likes": "Likes",
+      "location": "Location",
+      "camera": "Camera",
+      "resolution": "Resolution",
+      "source": "Source",
+      "category": "Category",
+      "photo": "Photo",
+      "on": "on"
     },
     "search": "Rechercher",
     "quicklinks": {

@@ -15,7 +15,17 @@
       "unsplash": "@ Unsplash",
       "pexels": "@ Pexels",
       "information": "信息",
-      "download": "下载"
+      "download": "下载",
+      "downloads": "Downloads",
+      "views": "Views",
+      "likes": "Likes",
+      "location": "Location",
+      "camera": "Camera",
+      "resolution": "Resolution",
+      "source": "Source",
+      "category": "Category",
+      "photo": "Photo",
+      "on": "on"
     },
     "search": "搜索",
     "quicklinks": {

@@ -19,7 +19,7 @@ export default class LanguageSettings extends PureComponent {
     this.controller = new AbortController();
   }
 
-  async getQuoteLanguages() {
+  async getquoteLanguages() {
     const data = await (
       await fetch(variables.constants.API_URL + '/quotes/languages', {
         signal: this.controller.signal,
@@ -55,7 +55,7 @@ export default class LanguageSettings extends PureComponent {
       });
     }
 
-    this.getQuoteLanguages();
+    this.getquoteLanguages();
   }
 
   componentWillUnmount() {
@@ -76,7 +76,7 @@ export default class LanguageSettings extends PureComponent {
           {variables.getMessage('modals.main.settings.sections.language.quote')}
         </span>
         <div className="languageSettings">
-          <Radio name="quotelanguage" options={this.state.quoteLanguages} category="quote" />
+          <Radio name="quoteLanguage" options={this.state.quoteLanguages} category="quote" />
         </div>
       </>
     );

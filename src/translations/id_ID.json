@@ -15,7 +15,17 @@
       "unsplash": "di Unsplash",
       "pexels": "di Pexels",
       "information": "Informasi",
-      "download": "Unduh"
+      "download": "Unduh",
+      "downloads": "Downloads",
+      "views": "Views",
+      "likes": "Likes",
+      "location": "Location",
+      "camera": "Camera",
+      "resolution": "Resolution",
+      "source": "Source",
+      "category": "Category",
+      "photo": "Photo",
+      "on": "on"
     },
     "search": "Cari",
     "quicklinks": {

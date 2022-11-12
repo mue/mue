@@ -114,7 +114,7 @@ export default class BackgroundSettings extends PureComponent {
             <>
               <Dropdown
                 label={variables.getMessage('modals.main.settings.sections.background.category')}
-                name="apiCategory"
+                name="apiCategories"
               >
                 <MenuItem value="loading" key="loading">
                   {variables.getMessage('modals.main.loading')}
@@ -127,11 +127,11 @@ export default class BackgroundSettings extends PureComponent {
           ) : (
             <Dropdown
               label={variables.getMessage('modals.main.settings.sections.background.category')}
-              name="apiCategory"
+              name="apiCategories"
             >
               {this.state.backgroundCategories.map((category) => (
-                <MenuItem value={category} key={category}>
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
+				  <MenuItem value={category.name} key={category.name}>
+                  {category.name.charAt(0).toUpperCase() + category.name.slice(1)} ({category.count})
                 </MenuItem>
               ))}
             </Dropdown>

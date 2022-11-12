@@ -1,11 +1,10 @@
 // API URLs
-export const API_URL = 'https://api.muetab.com';
-export const PROXY_URL = 'https://proxy.muetab.com';
+// export const API_URL = 'https://api.muetab.com/v2';
+export const API_URL = 'http://127.0.0.1:8787/v2';
 export const MARKETPLACE_URL = 'https://marketplace.muetab.com';
 export const SPONSORS_URL = 'https://sponsors.muetab.com';
 export const GITHUB_URL = 'https://api.github.com';
 export const DDG_IMAGE_PROXY = 'https://external-content.duckduckgo.com/iu/?u=';
-export const MAPBOX_URL = 'https://api.mapbox.com';
 export const OPENSTREETMAP_URL = 'https://www.openstreetmap.org';
 
 // Mue URLs

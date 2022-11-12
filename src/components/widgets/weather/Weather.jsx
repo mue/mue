@@ -27,12 +27,12 @@ export default class Weather extends PureComponent {
 
     const data = await (
       await fetch(
-        variables.constants.PROXY_URL +
-          `/weather/current?city=${this.state.location}&lang=${variables.languagecode}`,
+        variables.constants.API_URL +
+          `/weather?city=${this.state.location}&language=${variables.languagecode}`,
       )
     ).json();
 
-    if (data.cod === '404') {
+    if (data.status === 404) {
       return this.setState({
         location: variables.getMessage('widgets.weather.not_found'),
       });
@@ -41,20 +41,20 @@ export default class Weather extends PureComponent {
     let temp = data.main.temp;
     let temp_min = data.main.temp_min;
     let temp_max = data.main.temp_max;
-    let temp_feels_like = data.main.temp_feels_like;
+    let feels_like = data.main.feels_like;
     let temp_text = 'K';
 
     if (localStorage.getItem('tempformat') === 'celsius') {
       temp -= 273.15;
       temp_min -= 273.15;
       temp_max -= 273.15;
-      temp_feels_like -= 273.15;
+      feels_like -= 273.15;
       temp_text = '°C';
     } else {
       temp = (temp - 273.15) * 1.8 + 32;
       temp_min = (temp_min - 273.15) * 1.8 + 32;
       temp_max = (temp_max - 273.15) * 1.8 + 32;
-      temp_feels_like = (temp_feels_like - 273.15) * 1.8 + 32;
+      feels_like = (feels_like - 273.15) * 1.8 + 32;
       temp_text = '°F';
     }
 
@@ -66,7 +66,7 @@ export default class Weather extends PureComponent {
         description: data.weather[0].description,
         temp_min: Math.round(temp_min),
         temp_max: Math.round(temp_max),
-        temp_feels_like: Math.round(temp_feels_like),
+        feels_like: Math.round(feels_like),
         humidity: data.main.humidity,
         wind_speed: data.wind.speed,
         wind_degrees: data.wind.deg,
@@ -129,7 +129,7 @@ export default class Weather extends PureComponent {
           <div className="extra-info">
             <span>
               {variables.getMessage('widgets.weather.feels_like', {
-                amount: this.state.weather.temp_feels_like + this.state.temp_text,
+                amount: this.state.weather.feels_like + this.state.temp_text,
               })}
             </span>
             <span className="loc">{this.state.location}</span>

@@ -122,21 +122,20 @@ export default class Background extends PureComponent {
 
         // API background
         const backgroundAPI = localStorage.getItem('backgroundAPI');
-        const apiCategory = localStorage.getItem('apiCategory');
+        const apiCategories = JSON.parse(localStorage.getItem('apiCategories'));
         const apiQuality = localStorage.getItem('apiQuality');
-        const photoMap = localStorage.getItem('photoMap') === 'true';
 
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            requestURL = `${variables.constants.PROXY_URL}/images/unsplash?quality=${apiQuality}&map=${photoMap}`;
+            requestURL = `${variables.constants.API_URL}/images/unsplash?category=${apiCategories}&quality=${apiQuality}`;
             break;
           case 'pexels':
-            requestURL = `${variables.constants.PROXY_URL}/images/pexels?quality=${apiQuality}`;
+            requestURL = `${variables.constants.API_URL}/images/pexels?quality=${apiQuality}`;
             break;
           // Defaults to Mue
           default:
-            requestURL = `${variables.constants.API_URL}/images/random?category=${apiCategory}&quality=${apiQuality}`;
+            requestURL = `${variables.constants.API_URL}/images/random?category=${apiCategories}&quality=${apiQuality}`;
             break;
         }
 
@@ -160,18 +159,19 @@ export default class Background extends PureComponent {
           currentAPI: backgroundAPI,
           photoInfo: {
             hidden: false,
+            category: data.category,
             credit: data.photographer,
-            location: data.location,
+            location: data.location.name,
             camera: data.camera,
             url: data.file,
             photographerURL,
             photoURL,
-            latitude: data.latitude || null,
-            longitude: data.longitude || null,
-            // location map token from mapbox
-            maptoken: data.maptoken || null,
+            latitude: data.location.latitude || null,
+            longitude: data.location.longitude || null,
             views: data.views || null,
             downloads: data.downloads || null,
+            likes: data.likes || null,
+            description: data.description || null,
           },
         };
 

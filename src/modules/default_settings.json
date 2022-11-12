@@ -92,8 +92,8 @@
     "value": true
   },
   {
-    "name": "quotelanguage",
-    "value": "English"
+    "name": "quoteLanguage",
+    "value": "en"
   },
   {
     "name": "date",
@@ -254,5 +254,9 @@
   {
     "name": "widgetStyle",
     "value": "new"
+  },
+  {
+    "name": "backgroundExclude",
+    "value": "[]"
   }
 ]
