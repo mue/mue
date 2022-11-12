@@ -14,6 +14,7 @@ import {
 } from 'modules/helpers/background/widget';
 
 import './scss/index.scss';
+import { decodeBlurHash } from 'fast-blurhash';
 
 export default class Background extends PureComponent {
   constructor() {
@@ -32,7 +33,7 @@ export default class Background extends PureComponent {
     };
   }
 
-  setBackground() {
+  async setBackground() {
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
@@ -53,31 +54,60 @@ export default class Background extends PureComponent {
         return (backgroundImage.style.background = `url(${url})`);
       }
 
-      // firstly we set the background as hidden and make sure there is no background set currently
-      backgroundImage.classList.add('backgroundPreload');
+      // // firstly we set the background as hidden and make sure there is no background set currently
+      // backgroundImage.classList.add('backgroundPreload');
       backgroundImage.style.background = null;
 
-      // same with photo information if not using custom background
-      photoInformation?.classList.add('backgroundPreload');
+      // // same with photo information if not using custom background
+      // photoInformation?.classList.add('backgroundPreload');
 
-      // preloader for background transition, required, so it loads in nice
-      const preloader = document.createElement('img');
-      preloader.src = url;
+      // // preloader for background transition, required, so it loads in nice
+      // const preloader = document.createElement('img');
+      // preloader.src = url;
 
-      // once image has loaded, add the fade-in transition
-      preloader.addEventListener('load', () => {
-        backgroundImage.classList.remove('backgroundPreload');
+      // // once image has loaded, add the fade-in transition
+      // preloader.addEventListener('load', () => {
+      //   backgroundImage.classList.remove('backgroundPreload');
+      //   backgroundImage.classList.add('fade-in');
+
+      //   backgroundImage.style.background = `url(${url})`;
+      //   // remove the preloader element we created earlier
+      //   preloader.remove();
+
+      //   if (photoInformation) {
+      //     photoInformation.classList.remove('backgroundPreload');
+      //     photoInformation.classList.add('fade-in');
+      //   }
+      // });
+
+      if (this.state.photoInfo.blur_hash) {
+        backgroundImage.style.backgroundColor = this.state.photoInfo.colour;
         backgroundImage.classList.add('fade-in');
 
-        backgroundImage.style.background = `url(${url})`;
-        // remove the preloader element we created earlier
-        preloader.remove();
+        const canvas = document.createElement('canvas');
+        canvas.width = 32;
+        canvas.height = 32;
+        const ctx = canvas.getContext('2d');
+        const imageData = ctx.createImageData(32, 32);
+        imageData.data.set(decodeBlurHash(this.state.photoInfo.blur_hash, 32, 32));
+        ctx.putImageData(imageData, 0, 0);
+        // let blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        // const blobUrl = URL.createObjectURL(blob);
+        backgroundImage.style.backgroundImage = `url(${canvas.toDataURL()})`;
+      // backgroundImage.style.backgroundImage = `url(${blobUrl})`;
+      }
 
-        if (photoInformation) {
-          photoInformation.classList.remove('backgroundPreload');
-          photoInformation.classList.add('fade-in');
-        }
-      });
+      // const img = new Image();
+      // img.fetchPriority = 'high';
+      // img.decoding = 'async';
+      // img.src = url;
+      // await img.decode();
+      // this.state.photoInfo.width = img.width;
+      // this.state.photoInfo.height = img.height;
+      const blobUrl = URL.createObjectURL(await (await fetch(url)).blob()); // TODO: revoke this later
+      backgroundImage.style.backgroundImage = `url(${blobUrl})`;
+      // img.remove();
+      // URL.revokeObjectURL(blobUrl);
     } else {
       // custom colour
       backgroundImage.setAttribute('style', this.state.style);
@@ -128,14 +158,14 @@ export default class Background extends PureComponent {
         let requestURL, data;
         switch (backgroundAPI) {
           case 'unsplash':
-            requestURL = `${variables.constants.API_URL}/images/unsplash?category=${apiCategories}&quality=${apiQuality}`;
+            requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
             break;
           case 'pexels':
             requestURL = `${variables.constants.API_URL}/images/pexels?quality=${apiQuality}`;
             break;
           // Defaults to Mue
           default:
-            requestURL = `${variables.constants.API_URL}/images/random?category=${apiCategories}&quality=${apiQuality}`;
+            requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories}&quality=${apiQuality}`;
             break;
         }
 
@@ -172,6 +202,9 @@ export default class Background extends PureComponent {
             downloads: data.downloads || null,
             likes: data.likes || null,
             description: data.description || null,
+            colour: data.colour,
+            blur_hash: data.blur_hash,
+            pun: data.pun || null,
           },
         };
 
