@@ -5,6 +5,7 @@ import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'rea
 
 import Header from '../../Header';
 import Checkbox from '../../Checkbox';
+import ChipSelect from '../../ChipSelect';
 import Dropdown from '../../Dropdown';
 import Slider from '../../Slider';
 import Radio from '../../Radio';
@@ -125,16 +126,25 @@ export default class BackgroundSettings extends PureComponent {
               </Dropdown>
             </>
           ) : (
-            <Dropdown
-              label={variables.getMessage('modals.main.settings.sections.background.category')}
-              name="apiCategories"
-            >
-              {this.state.backgroundCategories.map((category) => (
-				  <MenuItem value={category.name} key={category.name}>
-                  {category.name.charAt(0).toUpperCase() + category.name.slice(1)} ({category.count})
-                </MenuItem>
-              ))}
-            </Dropdown>
+            <>
+              {/*<Dropdown
+                label={variables.getMessage('modals.main.settings.sections.background.category')}
+                name="apiCategories"
+              >
+                {this.state.backgroundCategories.map((category) => (
+                  <MenuItem value={category.name} key={category.name}>
+                    {category.name.charAt(0).toUpperCase() + category.name.slice(1)} (
+                    {category.count})
+                  </MenuItem>
+                ))}
+                    </Dropdown>
+              <ChipSelect
+                label={variables.getMessage('modals.main.settings.sections.background.category')}
+                options={this.state.backgroundCategories}
+                name="apiCategories"
+              ></ChipSelect>
+              */}
+            </>
           )}
           <Dropdown
             label={variables.getMessage(

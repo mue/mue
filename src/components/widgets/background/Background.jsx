@@ -83,7 +83,6 @@ export default class Background extends PureComponent {
       if (this.state.photoInfo.blur_hash) {
         backgroundImage.style.backgroundColor = this.state.photoInfo.colour;
         backgroundImage.classList.add('fade-in');
-
         const canvas = document.createElement('canvas');
         canvas.width = 32;
         canvas.height = 32;
@@ -105,6 +104,7 @@ export default class Background extends PureComponent {
       // this.state.photoInfo.width = img.width;
       // this.state.photoInfo.height = img.height;
       const blobUrl = URL.createObjectURL(await (await fetch(url)).blob()); // TODO: revoke this later
+      backgroundImage.classList.add('backgroundTransform');
       backgroundImage.style.backgroundImage = `url(${blobUrl})`;
       // img.remove();
       // URL.revokeObjectURL(blobUrl);
@@ -143,6 +143,14 @@ export default class Background extends PureComponent {
       return setFavourited(favourited);
     }
 
+    let apiCategories;
+
+    try {
+      let apiCategories = JSON.parse(localStorage.getItem('apiCategories'))
+    } catch (error) {
+      let apiCategories = localStorage.getItem('apiCategories')
+    }
+
     const type = localStorage.getItem('backgroundType');
     switch (type) {
       case 'api':
@@ -152,7 +160,6 @@ export default class Background extends PureComponent {
 
         // API background
         const backgroundAPI = localStorage.getItem('backgroundAPI');
-        const apiCategories = JSON.parse(localStorage.getItem('apiCategories'));
         const apiQuality = localStorage.getItem('apiQuality');
 
         let requestURL, data;
