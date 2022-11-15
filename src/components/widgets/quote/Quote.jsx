@@ -291,16 +291,6 @@ export default class Quote extends PureComponent {
     toast(variables.getMessage('toasts.quote'));
   }
 
-  tweetQuote() {
-    variables.stats.postEvent('feature', 'Quote tweet');
-    window
-      .open(
-        `https://twitter.com/intent/tweet?text=${this.state.quote} - ${this.state.author} on @getmue`,
-        '_blank',
-      )
-      .focus();
-  }
-
   favourite() {
     if (localStorage.getItem('favouriteQuote')) {
       localStorage.removeItem('favouriteQuote');
@@ -353,7 +343,6 @@ export default class Quote extends PureComponent {
           this.getQuote();
           localStorage.setItem('quoteStartTime', Date.now());
         } else {
-          console.log(localStorage.getItem('quotechange'));
           try {
             this.setState(JSON.parse(localStorage.getItem('currentQuote')));
           } catch (e) {
@@ -410,6 +399,7 @@ export default class Quote extends PureComponent {
     if (this.state.noQuote === true) {
       return <></>;
     }
+
     return (
       <div className="quotediv" ref={this.quotediv}>
         <Modal

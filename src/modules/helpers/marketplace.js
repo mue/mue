@@ -43,6 +43,7 @@ export function install(type, input, sideload) {
         localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
       }
       localStorage.setItem('backgroundType', 'photo_pack');
+      localStorage.removeItem('backgroundchange');
       EventBus.dispatch('refresh', 'background');
       break;
 
@@ -57,6 +58,7 @@ export function install(type, input, sideload) {
         localStorage.setItem('oldQuoteType', localStorage.getItem('quoteType'));
       }
       localStorage.setItem('quoteType', 'quote_pack');
+      localStorage.removeItem('quotechange');
       EventBus.dispatch('refresh', 'quote');
       break;
 
@@ -92,7 +94,6 @@ export function uninstall(type, name) {
       showReminder();
       break;
 
-    // this and photos needs debugging
     case 'quotes':
       installedContents = JSON.parse(localStorage.getItem('quote_packs'));
       packContents = JSON.parse(localStorage.getItem('installed')).find(
@@ -112,6 +113,7 @@ export function uninstall(type, name) {
         localStorage.removeItem('oldQuoteType');
         localStorage.removeItem('quote_packs');
       }
+      localStorage.removeItem('quotechange');
       EventBus.dispatch('refresh', 'marketplacequoteuninstall');
       break;
 
@@ -132,6 +134,7 @@ export function uninstall(type, name) {
         localStorage.removeItem('oldBackgroundType');
         localStorage.removeItem('photo_packs');
       }
+      localStorage.removeItem('backgroundchange');
       EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');
       break;
 

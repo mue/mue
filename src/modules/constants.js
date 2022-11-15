@@ -1,6 +1,6 @@
 // API URLs
 // export const API_URL = 'https://api.muetab.com/v2';
-export const API_URL = 'https://api.muetab.com/v2';
+export const API_URL = 'https://api.eartharoid.workers.dev/v2';
 export const MARKETPLACE_URL = 'https://marketplace.muetab.com';
 export const SPONSORS_URL = 'https://sponsors.muetab.com';
 export const GITHUB_URL = 'https://api.github.com';
