@@ -99,3 +99,10 @@ And finally, a big thank you to all the other [contributors](https://github.com/
 ### Resources
 [Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode <br/>
 [Undraw](https://undraw.co) - Welcome modal images
+
+<p>This project is supported by:</p>
+<p>
+  <a href="https://www.digitalocean.com/">
+    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
+  </a>
+</p>
