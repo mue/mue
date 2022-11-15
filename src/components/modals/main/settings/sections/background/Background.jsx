@@ -137,13 +137,13 @@ export default class BackgroundSettings extends PureComponent {
                     {category.count})
                   </MenuItem>
                 ))}
-                    </Dropdown>
+                    </Dropdown>*/}
               <ChipSelect
                 label={variables.getMessage('modals.main.settings.sections.background.category')}
                 options={this.state.backgroundCategories}
                 name="apiCategories"
               ></ChipSelect>
-              */}
+              
             </>
           )}
           <Dropdown

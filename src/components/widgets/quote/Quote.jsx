@@ -329,29 +329,32 @@ export default class Quote extends PureComponent {
   }
 
   componentDidMount() {
-    const test = localStorage.getItem('quotechange');
+    // const test = localStorage.getItem('quotechange');
 
-    this.interval = setInterval(() => {
-      if (test !== null) {
-        const targetTime = Number(
-          Number(localStorage.getItem('quoteStartTime')) +
-            Number(localStorage.getItem('quotechange')),
-        );
-        const currentTime = Number(Date.now());
-        if (currentTime >= targetTime) {
-          this.setZoom();
-          this.getQuote();
-          localStorage.setItem('quoteStartTime', Date.now());
-        } else {
-          try {
-            this.setState(JSON.parse(localStorage.getItem('currentQuote')));
-          } catch (e) {
-            this.setZoom();
-            this.getQuote();
-          }
-        }
-      }
-    });
+    // this.interval = setInterval(() => {
+    //   if (test !== null) {
+    //     const targetTime = Number(
+    //       Number(localStorage.getItem('quoteStartTime')) +
+    //         Number(localStorage.getItem('quotechange')),
+    //     );
+    //     const currentTime = Number(Date.now());
+    //     if (currentTime >= targetTime) {
+    //       this.setZoom();
+    //       this.getQuote();
+    //       localStorage.setItem('quoteStartTime', Date.now());
+    //     } else {
+    //       try {
+    //         this.setState(JSON.parse(localStorage.getItem('currentQuote')));
+    //       } catch (e) {
+    //         this.setZoom();
+    //         this.getQuote();
+    //       }
+    //     }
+    //   }
+    // });
+
+    this.setZoom();
+    this.getQuote();
 
     EventBus.on('refresh', (data) => {
       if (data === 'quote') {
