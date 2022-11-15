@@ -13,6 +13,7 @@
 .backgroundTransform {
   @include animation('fadein2 2s');
   -webkit-transition: background 2s;
+  -mov-transition: background 2s;
   -o-transition: background 2s;
   transition: background 2s;
 }
