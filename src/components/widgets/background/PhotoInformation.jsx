@@ -315,17 +315,18 @@ function PhotoInformation({ info, url, api }) {
               </div>
               <div className="concept-buttons">
                 {!info.offline ? (
-                  <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
+                  <Tooltip title={variables.getMessage('widgets.quote.share')} key="share" placement="top">
                     <Share onClick={() => openShareModal(true)} />
                   </Tooltip>
                 ) : null}
-                <Tooltip title={variables.getMessage('widgets.quote.favourite')} key="favourite">
+                <Tooltip title={variables.getMessage('widgets.quote.favourite')} key="favourite" placement="top">
                   <Favourite />
                 </Tooltip>
                 {!info.offline ? (
                   <Tooltip
                     title={variables.getMessage('widgets.background.download')}
                     key="download"
+                    placement="top"
                   >
                     <Download onClick={() => downloadImage(info)} />
                   </Tooltip>
@@ -334,6 +335,7 @@ function PhotoInformation({ info, url, api }) {
                   <Tooltip
                     title={variables.getMessage('widgets.background.exclude')}
                     key="exclude"
+                    placement="top"
                   >
                     <VisibilityOff onClick={() => excludeImage(info)} />
                   </Tooltip>
