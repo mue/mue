@@ -141,3 +141,10 @@ legend,
     width: 100%;
   }
 }
+
+.css-6od3lo-MuiChip-label {
+  @include themed() {
+    color: t($color) !important;
+  }
+  text-transform: capitalize;
+}
