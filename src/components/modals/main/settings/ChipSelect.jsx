@@ -1,4 +1,4 @@
-import { useState, memo, useEffect } from 'react';
+import { useState, memo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -9,8 +9,11 @@ import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 
 function ChipSelect({ label, options, name }) {
-  const [optionsSelected, setoptionsSelected] = useState([]);
+  let start = (localStorage.getItem('apiCategories') || "").split(',');
+  if (start[0] === "") start = [];
 
+  const [optionsSelected, setoptionsSelected] = useState(start);
+ 
   const handleChange = (event) => {
     const {
       target: { value },
@@ -18,9 +21,8 @@ function ChipSelect({ label, options, name }) {
     setoptionsSelected(
       typeof value === 'string' ? value.split(',') : value,
     );
-    localStorage.setItem('apiCategories', optionsSelected)
+    localStorage.setItem('apiCategories', value)
   };
-  console.log(localStorage.getItem('apiCategories'))
 
 
   return (
