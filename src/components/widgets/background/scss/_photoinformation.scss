@@ -199,6 +199,7 @@
 
 .photoInformation {
   @extend %basic;
+  animation: fadeIn 2s;
   min-width: 300px;
   font-size: 0.8em;
   font-weight: 300;
@@ -359,5 +360,14 @@
   display: none;
   svg {
     @include basicIconButton(11px, 1.3rem, ui);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

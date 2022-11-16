@@ -10,16 +10,18 @@ function Tooltip({ children, title, style, placement, subtitle }) {
   });
 
   return (
-    <div
-      className="tooltip"
-      style={style}
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
-      onFocus={() => setShowTooltip(true)}
-      onBlur={() => setShowTooltip(false)}
-      ref={reference}
-    >
-      {children}
+    <>
+      <div
+        className="tooltip"
+        style={style}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        onFocus={() => setShowTooltip(true)}
+        onBlur={() => setShowTooltip(false)}
+        ref={reference}
+      >
+        {children}
+      </div>
       {showTooltip && (
         <span
           ref={floating}
@@ -36,7 +38,7 @@ function Tooltip({ children, title, style, placement, subtitle }) {
           <span style={{ fontSize: '8px' }}>{subtitle}</span>
         </span>
       )}
-    </div>
+    </>
   );
 }
 
