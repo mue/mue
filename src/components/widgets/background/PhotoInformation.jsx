@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 import { useState, memo } from 'react';
 import Favourite from './Favourite';
+import EventBus from 'modules/helpers/eventbus';
 import {
   MdInfo,
   MdLocationOn,
@@ -11,7 +12,8 @@ import {
   MdIosShare as Share,
   MdSource as Source,
   MdFavorite as MdFavourite,
-  MdCategory as Category
+  MdCategory as Category,
+  MdVisibilityOff as VisibilityOff
 } from 'react-icons/md';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
@@ -29,11 +31,22 @@ const formatText = (text) => {
 const downloadImage = async (info) => {
   const link = document.createElement('a');
   link.href = await toDataURL(info.url);
-  link.download = `mue-${formatText(info.credit)}-${formatText(info.location)}.jpg`;
+  link.download = `mue-${formatText(info.credit)}-${formatText(info.location)}.jpg`; // image is more likely to be webp or avif btw
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
   variables.stats.postEvent('feature', 'Background download');
+};
+
+const excludeImage = async (info) => {
+  // eslint-disable-next-line no-restricted-globals
+  const confirmed = confirm(variables.getMessage('widgets.background.exclude_confirm', { category: info.category }));
+  if (!confirmed) return;
+  let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
+  backgroundExclude.push(info.pun);
+  backgroundExclude = JSON.stringify(backgroundExclude);
+  localStorage.setItem('backgroundExclude', backgroundExclude);
+  EventBus.dispatch('refresh', 'background');
 };
 
 function PhotoInformation({ info, url, api }) {
@@ -97,15 +110,15 @@ function PhotoInformation({ info, url, api }) {
   const ddgProxy = localStorage.getItem('ddgProxy') === 'true';
 
   // get resolution
-//   const img = new Image();
-//   img.onload = (event) => {
-//     setWidth(event.target.width);
-//     setHeight(event.target.height);
-//   };
-//   img.src =
-//     ddgProxy && !info.offline && !url.startsWith('data:')
-//       ? variables.constants.DDG_IMAGE_PROXY + url
-//       : url;
+  const img = new Image();
+  img.onload = (event) => {
+    setWidth(event.target.width);
+    setHeight(event.target.height);
+  };
+  img.src =
+    ddgProxy && !info.offline && !url.startsWith('data:')
+      ? variables.constants.DDG_IMAGE_PROXY + url
+      : url;
 
   // info is still there because we want the favourite button to work
   if (localStorage.getItem('photoInformation') === 'false') {
@@ -284,9 +297,18 @@ function PhotoInformation({ info, url, api }) {
                   <div className="concept-row" title={variables.getMessage('widgets.background.source')}>
                     <Source />
                     <span id="infoSource">
-                      <a href={info.photoURL + '?utm_source=mue'} target="_blank" rel="noopener noreferrer" className="link">
-                        {api.charAt(0).toUpperCase() + api.slice(1)}
-                      </a>
+                      {info.photoURL
+                        ? (
+                          <a href={info.photoURL + '?utm_source=mue'} target="_blank" rel="noopener noreferrer" className="link">
+                            {api.charAt(0).toUpperCase() + api.slice(1)}
+                          </a>
+                        ) 
+                        : (
+                          <a href={info.url} target="_blank" rel="noopener noreferrer" className="link">
+                            {api.charAt(0).toUpperCase() + api.slice(1)}
+                          </a>
+                        )
+                      }
                     </span>
                   </div>
                 ) : null}
@@ -306,6 +328,14 @@ function PhotoInformation({ info, url, api }) {
                     key="download"
                   >
                     <Download onClick={() => downloadImage(info)} />
+                  </Tooltip>
+                ) : null}
+                {info.pun ? (
+                  <Tooltip
+                    title={variables.getMessage('widgets.background.exclude')}
+                    key="exclude"
+                  >
+                    <VisibilityOff onClick={() => excludeImage(info)} />
                   </Tooltip>
                 ) : null}
               </div>

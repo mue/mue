@@ -146,9 +146,9 @@ export default class Background extends PureComponent {
     let apiCategories;
 
     try {
-      let apiCategories = JSON.parse(localStorage.getItem('apiCategories'))
+      apiCategories = JSON.parse(localStorage.getItem('apiCategories'))
     } catch (error) {
-      let apiCategories = localStorage.getItem('apiCategories')
+      apiCategories = localStorage.getItem('apiCategories')
     }
 
     const type = localStorage.getItem('backgroundType');
@@ -161,6 +161,7 @@ export default class Background extends PureComponent {
         // API background
         const backgroundAPI = localStorage.getItem('backgroundAPI');
         const apiQuality = localStorage.getItem('apiQuality');
+        const backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
 
         let requestURL, data;
         switch (backgroundAPI) {
@@ -172,7 +173,7 @@ export default class Background extends PureComponent {
             break;
           // Defaults to Mue
           default:
-            requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories}&quality=${apiQuality}`;
+            requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories}&quality=${apiQuality}&excludes=${backgroundExclude}`;
             break;
         }
 
@@ -415,7 +416,8 @@ export default class Background extends PureComponent {
             (this.state.type === 'api' &&
               localStorage.getItem('backgroundAPI') !== this.state.currentAPI) ||
             (this.state.type === 'custom' &&
-              localStorage.getItem('customBackground') !== this.state.url)
+              localStorage.getItem('customBackground') !== this.state.url) ||
+            JSON.parse(localStorage.getItem('backgroundExclude')).includes(this.state.photoInfo.pun)
           ) {
             return refresh();
           }

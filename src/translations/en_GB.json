@@ -23,7 +23,9 @@
       "camera": "Camera",
       "resolution": "Resolution",
       "source": "Source",
-      "category": "Category"
+      "category": "Category",
+      "exclude": "Don't show again",
+	  "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings."
     },
     "search": "Search",
     "quicklinks": {
@@ -186,7 +188,7 @@
             "transition": "Fade-in transition",
             "photo_information": "Show photo information",
             "show_map": "Show location map on photo information if available",
-            "category": "Category",
+            "categories": "Categories",
             "buttons": {
               "title": "Buttons",
               "view": "Maximise",

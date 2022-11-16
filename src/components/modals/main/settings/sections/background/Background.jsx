@@ -67,7 +67,7 @@ export default class BackgroundSettings extends PureComponent {
       <SettingsItem
         title={variables.getMessage('modals.main.settings.sections.background.interval.title')}
         subtitle={variables.getMessage(
-          'modals.mani.settings.sections.background.intervanl.subtitle',
+          'modals.main.settings.sections.background.interval.subtitle',
         )}
         final={
           localStorage.getItem('photo_packs') &&
@@ -139,7 +139,7 @@ export default class BackgroundSettings extends PureComponent {
                 ))}
                     </Dropdown>*/}
               <ChipSelect
-                label={variables.getMessage('modals.main.settings.sections.background.category')}
+                label={variables.getMessage('modals.main.settings.sections.background.categories')}
                 options={this.state.backgroundCategories}
                 name="apiCategories"
               ></ChipSelect>
