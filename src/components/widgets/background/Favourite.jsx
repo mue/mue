@@ -17,7 +17,7 @@ export default class Favourite extends PureComponent {
     };
   }
 
-  favourite() {
+  async favourite() {
     if (localStorage.getItem('favourite')) {
       localStorage.removeItem('favourite');
       this.setState({
@@ -41,7 +41,7 @@ export default class Favourite extends PureComponent {
           );
           break;
         default:
-          const url = document
+          let url = document
             .getElementById('backgroundImage')
             .style.backgroundImage.replace('url("', '')
             .replace('")', '')
@@ -49,6 +49,14 @@ export default class Favourite extends PureComponent {
 
           if (!url) {
             return;
+          }
+
+          if (url.startsWith('blob:')) {
+            const reader = new FileReader();
+            url = await new Promise(async resolve => {
+              reader.onloadend = () => resolve(reader.result);
+              reader.readAsDataURL(await (await fetch(url)).blob());
+            })
           }
 
           if (type === 'custom') {
@@ -70,8 +78,8 @@ export default class Favourite extends PureComponent {
                 type,
                 url,
                 credit: document.getElementById('credit').textContent || '',
-                location: location ? location.innerText : 'N/A',
-                camera: camera ? camera.innerText : 'N/A',
+                location: location?.innerText,
+                camera: camera?.innerText,
                 resolution: document.getElementById('infoResolution').textContent || '',
               }),
             );

@@ -91,10 +91,7 @@ export default class Background extends PureComponent {
         const imageData = ctx.createImageData(32, 32);
         imageData.data.set(decodeBlurHash(this.state.photoInfo.blur_hash, 32, 32));
         ctx.putImageData(imageData, 0, 0);
-        // let blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-        // const blobUrl = URL.createObjectURL(blob);
         backgroundImage.style.backgroundImage = `url(${canvas.toDataURL()})`;
-      // backgroundImage.style.backgroundImage = `url(${blobUrl})`;
       }
 
       // const img = new Image();
