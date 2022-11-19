@@ -15,6 +15,7 @@ import {
 
 import './scss/index.scss';
 import { decodeBlurHash } from 'fast-blurhash';
+import { supportsAVIF } from 'modules/helpers/background/avif';
 
 export default class Background extends PureComponent {
   constructor() {
@@ -177,8 +178,9 @@ export default class Background extends PureComponent {
             break;
         }
 
+        const accept = 'application/json, ' + (await supportsAVIF() ? 'image/avif' : 'image/webp');
         try {
-          data = await (await fetch(requestURL)).json();
+          data = await (await fetch(requestURL, { headers: { accept } })).json();
         } catch (e) {
           // if requesting to the API fails, we get an offline image
           return this.setState(offlineBackground('api'));
