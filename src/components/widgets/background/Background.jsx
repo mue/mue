@@ -21,6 +21,7 @@ export default class Background extends PureComponent {
   constructor() {
     super();
     this.state = {
+      blob: null,
       style: '',
       url: '',
       currentAPI: '',
@@ -35,6 +36,9 @@ export default class Background extends PureComponent {
   }
 
   async setBackground() {
+    // clean up the previous image to prevent a memory leak 
+    if (this.state.blob) URL.revokeObjectURL(this.state.blob);
+  
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
@@ -55,31 +59,7 @@ export default class Background extends PureComponent {
         return (backgroundImage.style.background = `url(${url})`);
       }
 
-      // // firstly we set the background as hidden and make sure there is no background set currently
-      // backgroundImage.classList.add('backgroundPreload');
       backgroundImage.style.background = null;
-
-      // // same with photo information if not using custom background
-      // photoInformation?.classList.add('backgroundPreload');
-
-      // // preloader for background transition, required, so it loads in nice
-      // const preloader = document.createElement('img');
-      // preloader.src = url;
-
-      // // once image has loaded, add the fade-in transition
-      // preloader.addEventListener('load', () => {
-      //   backgroundImage.classList.remove('backgroundPreload');
-      //   backgroundImage.classList.add('fade-in');
-
-      //   backgroundImage.style.background = `url(${url})`;
-      //   // remove the preloader element we created earlier
-      //   preloader.remove();
-
-      //   if (photoInformation) {
-      //     photoInformation.classList.remove('backgroundPreload');
-      //     photoInformation.classList.add('fade-in');
-      //   }
-      // });
 
       if (this.state.photoInfo.blur_hash) {
         backgroundImage.style.backgroundColor = this.state.photoInfo.colour;
@@ -94,18 +74,9 @@ export default class Background extends PureComponent {
         backgroundImage.style.backgroundImage = `url(${canvas.toDataURL()})`;
       }
 
-      // const img = new Image();
-      // img.fetchPriority = 'high';
-      // img.decoding = 'async';
-      // img.src = url;
-      // await img.decode();
-      // this.state.photoInfo.width = img.width;
-      // this.state.photoInfo.height = img.height;
-      const blobUrl = URL.createObjectURL(await (await fetch(url)).blob()); // TODO: revoke this later
+      this.state.blob = URL.createObjectURL(await (await fetch(url)).blob());
       backgroundImage.classList.add('backgroundTransform');
-      backgroundImage.style.backgroundImage = `url(${blobUrl})`;
-      // img.remove();
-      // URL.revokeObjectURL(blobUrl);
+      backgroundImage.style.backgroundImage = `url(${this.state.blob})`;
     } else {
       // custom colour
       backgroundImage.setAttribute('style', this.state.style);
