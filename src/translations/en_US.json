@@ -64,7 +64,7 @@
     },
     "navbar": {
       "tooltips": {
-        "refresh": "Refresh Page"
+        "refresh": "Refresh"
       },
       "notes": {
         "title": "Notes",
