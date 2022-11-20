@@ -13,7 +13,7 @@ import {
   MdSource as Source,
   MdFavorite as MdFavourite,
   MdCategory as Category,
-  MdVisibilityOff as VisibilityOff
+  MdVisibilityOff as VisibilityOff,
 } from 'react-icons/md';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
@@ -40,7 +40,9 @@ const downloadImage = async (info) => {
 
 const excludeImage = async (info) => {
   // eslint-disable-next-line no-restricted-globals
-  const confirmed = confirm(variables.getMessage('widgets.background.exclude_confirm', { category: info.category }));
+  const confirmed = confirm(
+    variables.getMessage('widgets.background.exclude_confirm', { category: info.category }),
+  );
   if (!confirmed) return;
   let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
   backgroundExclude.push(info.pun);
@@ -145,7 +147,8 @@ function PhotoInformation({ info, url, api }) {
       return null;
     }
 
-    const tile = variables.constants.API_URL + `/map?latitude=${info.latitude}&longitude=${info.longitude}`;
+    const tile =
+      variables.constants.API_URL + `/map?latitude=${info.latitude}&longitude=${info.longitude}`;
     showingPhotoMap = true;
 
     return (
@@ -197,6 +200,7 @@ function PhotoInformation({ info, url, api }) {
       {localStorage.getItem('widgetStyle') !== 'legacy' || other ? (
         <div
           className="photoInformation orHover"
+          style={{ padding: localStorage.getItem('widgetStyle') === 'legacy' ? '20px' : null }}
           onMouseEnter={() => setshowExtraInfo(true)}
           onMouseLeave={() => setshowExtraInfo(false)}
         >
@@ -235,11 +239,13 @@ function PhotoInformation({ info, url, api }) {
             </div>
           ) : null}
           <div className="photoInformation-content">
-            <span className="title">{
-            (showExtraInfo || other) && info.description
-              ? (info.description.length > 40 ? info.description.substring(0, 40) + '...' : info.description)
-              : info.location?.split(',').slice(-2).join(', ').trim()
-            }</span>
+            <span className="title">
+              {(showExtraInfo || other) && info.description
+                ? info.description.length > 40
+                  ? info.description.substring(0, 40) + '...'
+                  : info.description
+                : info.location?.split(',').slice(-2).join(', ').trim()}
+            </span>
             <span className="subtitle" id="credit">
               {photo} {credit}
             </span>
@@ -270,56 +276,88 @@ function PhotoInformation({ info, url, api }) {
                   {variables.getMessage('widgets.background.information')}
                 </span>
                 {info.location && info.location !== 'N/A' ? (
-                  <div className="concept-row" title={variables.getMessage('widgets.background.location')}>
+                  <div
+                    className="concept-row"
+                    title={variables.getMessage('widgets.background.location')}
+                  >
                     <MdLocationOn />
                     <span id="infoLocation">{info.location}</span>
                   </div>
                 ) : null}
                 {info.camera && info.camera !== 'N/A' ? (
-                  <div className="concept-row" title={variables.getMessage('widgets.background.camera')}>
+                  <div
+                    className="concept-row"
+                    title={variables.getMessage('widgets.background.camera')}
+                  >
                     <MdPhotoCamera />
                     <span id="infoCamera">{info.camera}</span>
                   </div>
                 ) : null}
-                <div className="concept-row" title={variables.getMessage('widgets.background.resolution')}>
+                <div
+                  className="concept-row"
+                  title={variables.getMessage('widgets.background.resolution')}
+                >
                   <Resolution />
                   <span id="infoResolution">
                     {width}x{height}
                   </span>
                 </div>
                 {info.category ? (
-                  <div className="concept-row" title={variables.getMessage('widgets.background.category')}>
+                  <div
+                    className="concept-row"
+                    title={variables.getMessage('widgets.background.category')}
+                  >
                     <Category />
-                    <span id="infoCategory">{info.category[0].toUpperCase() + info.category.slice(1)}</span>
+                    <span id="infoCategory">
+                      {info.category[0].toUpperCase() + info.category.slice(1)}
+                    </span>
                   </div>
                 ) : null}
                 {api ? (
-                  <div className="concept-row" title={variables.getMessage('widgets.background.source')}>
+                  <div
+                    className="concept-row"
+                    title={variables.getMessage('widgets.background.source')}
+                  >
                     <Source />
                     <span id="infoSource">
-                      {info.photoURL
-                        ? (
-                          <a href={info.photoURL + '?utm_source=mue'} target="_blank" rel="noopener noreferrer" className="link">
-                            {api.charAt(0).toUpperCase() + api.slice(1)}
-                          </a>
-                        ) 
-                        : (
-                          <a href={info.url} target="_blank" rel="noopener noreferrer" className="link">
-                            {api.charAt(0).toUpperCase() + api.slice(1)}
-                          </a>
-                        )
-                      }
+                      {info.photoURL ? (
+                        <a
+                          href={info.photoURL + '?utm_source=mue'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link"
+                        >
+                          {api.charAt(0).toUpperCase() + api.slice(1)}
+                        </a>
+                      ) : (
+                        <a
+                          href={info.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link"
+                        >
+                          {api.charAt(0).toUpperCase() + api.slice(1)}
+                        </a>
+                      )}
                     </span>
                   </div>
                 ) : null}
               </div>
               <div className="concept-buttons">
                 {!info.offline ? (
-                  <Tooltip title={variables.getMessage('widgets.quote.share')} key="share" placement="top">
+                  <Tooltip
+                    title={variables.getMessage('widgets.quote.share')}
+                    key="share"
+                    placement="top"
+                  >
                     <Share onClick={() => openShareModal(true)} />
                   </Tooltip>
                 ) : null}
-                <Tooltip title={variables.getMessage('widgets.quote.favourite')} key="favourite" placement="top">
+                <Tooltip
+                  title={variables.getMessage('widgets.quote.favourite')}
+                  key="favourite"
+                  placement="top"
+                >
                   <Favourite />
                 </Tooltip>
                 {!info.offline ? (
