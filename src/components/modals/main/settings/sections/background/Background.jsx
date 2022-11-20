@@ -83,7 +83,6 @@ export default class BackgroundSettings extends PureComponent {
           value2={Date.now()}
         >
           <option value="refresh">{variables.getMessage('tabname')}</option>
-          <option value="10000">10 secs</option>
           <option value="60000">
             {variables.getMessage('modals.main.settings.sections.background.interval.minute')}
           </option>
@@ -143,7 +142,6 @@ export default class BackgroundSettings extends PureComponent {
                 options={this.state.backgroundCategories}
                 name="apiCategories"
               ></ChipSelect>
-              
             </>
           )}
           <Dropdown
