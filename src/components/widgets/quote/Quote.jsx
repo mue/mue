@@ -354,7 +354,6 @@ export default class Quote extends PureComponent {
     // });
 
     this.setZoom();
-    this.getQuote();
 
     EventBus.on('refresh', (data) => {
       if (data === 'quote') {
