@@ -388,7 +388,7 @@ export default class BackgroundSettings extends PureComponent {
               name="photoMap"
               text={variables.getMessage('modals.main.settings.sections.background.show_map')}
               element=".other"
-              disabled={this.state.backgroundAPI !== 'unsplash'}
+              disabled={!usingImage}
             />
           </SettingsItem>
         ) : null}
