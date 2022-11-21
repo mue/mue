@@ -83,6 +83,75 @@ export default class Background extends PureComponent {
     }
   }
 
+  async getAPIImageData() {
+    let apiCategories;
+
+    try {
+      apiCategories = JSON.parse(localStorage.getItem('apiCategories'));
+    } catch (error) {
+      apiCategories = localStorage.getItem('apiCategories');
+    }
+
+    const backgroundAPI = localStorage.getItem('backgroundAPI');
+    const apiQuality = localStorage.getItem('apiQuality');
+    const backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
+
+    let requestURL, data;
+    switch (backgroundAPI) {
+      case 'unsplash':
+        requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
+        break;
+      case 'pexels':
+        requestURL = `${variables.constants.API_URL}/images/pexels?quality=${apiQuality}`;
+        break;
+      // Defaults to Mue
+      default:
+        requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories}&quality=${apiQuality}&excludes=${backgroundExclude}`;
+        break;
+    }
+
+    const accept = 'application/json, ' + (supportsAVIF ? 'image/avif' : 'image/webp');
+    try {
+      data = await (await fetch(requestURL, { headers: { accept } })).json();
+    } catch (e) {
+      // if requesting to the API fails, we get an offline image
+      this.setState(offlineBackground('api'));
+      return null;
+    }
+
+    let photoURL, photographerURL;
+
+    if (backgroundAPI === 'unsplash' || backgroundAPI === 'pexels') {
+      photoURL = data.photo_page;
+      photographerURL = data.photographer_page;
+    }
+
+    return {
+      url: data.file,
+      type: 'api',
+      currentAPI: backgroundAPI,
+      photoInfo: {
+        hidden: false,
+        category: data.category,
+        credit: data.photographer,
+        location: data.location.name,
+        camera: data.camera,
+        url: data.file,
+        photographerURL,
+        photoURL,
+        latitude: data.location.latitude || null,
+        longitude: data.location.longitude || null,
+        views: data.views || null,
+        downloads: data.downloads || null,
+        likes: data.likes || null,
+        description: data.description || null,
+        colour: data.colour,
+        blur_hash: data.blur_hash,
+        pun: data.pun || null,
+      },
+    };
+  }
+
   // Main background getting function
   async getBackground() {
     let offline = localStorage.getItem('offlineMode') === 'true';
@@ -112,14 +181,6 @@ export default class Background extends PureComponent {
       return setFavourited(favourited);
     }
 
-    let apiCategories;
-
-    try {
-      apiCategories = JSON.parse(localStorage.getItem('apiCategories'))
-    } catch (error) {
-      apiCategories = localStorage.getItem('apiCategories')
-    }
-
     const type = localStorage.getItem('backgroundType');
     switch (type) {
       case 'api':
@@ -127,68 +188,15 @@ export default class Background extends PureComponent {
           return this.setState(offlineBackground('api'));
         }
 
-        // API background
-        const backgroundAPI = localStorage.getItem('backgroundAPI');
-        const apiQuality = localStorage.getItem('apiQuality');
-        const backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
+       // API background
 
-        let requestURL, data;
-        switch (backgroundAPI) {
-          case 'unsplash':
-            requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
-            break;
-          case 'pexels':
-            requestURL = `${variables.constants.API_URL}/images/pexels?quality=${apiQuality}`;
-            break;
-          // Defaults to Mue
-          default:
-            requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories}&quality=${apiQuality}&excludes=${backgroundExclude}`;
-            break;
+        let data = JSON.parse(localStorage.getItem('nextImage')) || await this.getAPIImageData();
+        localStorage.setItem('nextImage', null);
+        if (data) {
+          this.setState(data);
+          localStorage.setItem('currentBackground', JSON.stringify(data));
+          localStorage.setItem('nextImage', JSON.stringify(await this.getAPIImageData())); // pre-fetch data about the next image
         }
-
-        const accept = 'application/json, ' + (await supportsAVIF() ? 'image/avif' : 'image/webp');
-        try {
-          data = await (await fetch(requestURL, { headers: { accept } })).json();
-        } catch (e) {
-          // if requesting to the API fails, we get an offline image
-          return this.setState(offlineBackground('api'));
-        }
-
-        let photoURL, photographerURL;
-
-        if (backgroundAPI === 'unsplash' || backgroundAPI === 'pexels') {
-          photoURL = data.photo_page;
-          photographerURL = data.photographer_page;
-        }
-
-        const object = {
-          url: data.file,
-          type: 'api',
-          currentAPI: backgroundAPI,
-          photoInfo: {
-            hidden: false,
-            category: data.category,
-            credit: data.photographer,
-            location: data.location.name,
-            camera: data.camera,
-            url: data.file,
-            photographerURL,
-            photoURL,
-            latitude: data.location.latitude || null,
-            longitude: data.location.longitude || null,
-            views: data.views || null,
-            downloads: data.downloads || null,
-            likes: data.likes || null,
-            description: data.description || null,
-            colour: data.colour,
-            blur_hash: data.blur_hash,
-            pun: data.pun || null,
-          },
-        };
-
-        this.setState(object);
-
-        localStorage.setItem('currentBackground', JSON.stringify(object));
         break;
 
       case 'colour':
