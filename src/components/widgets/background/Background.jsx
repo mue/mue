@@ -94,7 +94,13 @@ export default class Background extends PureComponent {
 
     const backgroundAPI = localStorage.getItem('backgroundAPI');
     const apiQuality = localStorage.getItem('apiQuality');
-    const backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
+    let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
+    if (!Array.isArray(backgroundExclude)) {
+      backgroundExclude = [];
+    }
+    if (this.state.photoInfo.pun) {
+      backgroundExclude.push(this.state.photoInfo.pun)
+    }
 
     let requestURL, data;
     switch (backgroundAPI) {
