@@ -83,7 +83,7 @@ export default class Background extends PureComponent {
     }
   }
 
-  async getAPIImageData() {
+  async getAPIImageData(currentPun) {
     let apiCategories;
 
     try {
@@ -98,8 +98,8 @@ export default class Background extends PureComponent {
     if (!Array.isArray(backgroundExclude)) {
       backgroundExclude = [];
     }
-    if (this.state.photoInfo.pun) {
-      backgroundExclude.push(this.state.photoInfo.pun)
+    if (currentPun) {
+      backgroundExclude.push(currentPun)
     }
 
     let requestURL, data;
@@ -195,13 +195,12 @@ export default class Background extends PureComponent {
         }
 
        // API background
-
         let data = JSON.parse(localStorage.getItem('nextImage')) || await this.getAPIImageData();
         localStorage.setItem('nextImage', null);
         if (data) {
           this.setState(data);
           localStorage.setItem('currentBackground', JSON.stringify(data));
-          localStorage.setItem('nextImage', JSON.stringify(await this.getAPIImageData())); // pre-fetch data about the next image
+          localStorage.setItem('nextImage', JSON.stringify(await this.getAPIImageData(data.photoInfo.pun))); // pre-fetch data about the next image
         }
         break;
 
