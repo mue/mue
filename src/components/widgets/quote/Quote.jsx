@@ -249,21 +249,17 @@ export default class Quote extends PureComponent {
           return this.doOffline();
         }
 
-        // First we try and get a quote from the API...
-        try {
+        const getAPIQuoteData = async () => {
           const quoteLanguage = localStorage.getItem('quoteLanguage');
           const data = await (
             await fetch(variables.constants.API_URL + '/quotes/random?language=' + quoteLanguage)
           ).json();
-
           // If we hit the ratelimit, we fall back to local quotes
           if (data.statusCode === 429) {
-            return this.doOffline();
+            return null;
           }
-
           const authorimgdata = await this.getAuthorImg(data.author);
-
-          const object = {
+          return {
             quote: '"' + data.quote.replace(/\s+$/g, '') + '"',
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
@@ -272,9 +268,19 @@ export default class Quote extends PureComponent {
             quoteLanguage: quoteLanguage,
             authorOccupation: data.author_occupation,
           };
+        };
 
-          this.setState(object);
-          localStorage.setItem('currentQuote', JSON.stringify(object));
+        // First we try and get a quote from the API...
+        try {
+          let data = JSON.parse(localStorage.getItem('nextQuote')) || await getAPIQuoteData();
+          localStorage.setItem('nextQuote', null);
+          if (data) {
+            this.setState(data);
+            localStorage.setItem('currentQuote', JSON.stringify(data));
+            localStorage.setItem('nextQuote', JSON.stringify(await getAPIQuoteData())); // pre-fetch data about the next quote
+          } else {
+            this.doOffline(); 
+          }      
         } catch (e) {
           // ...and if that fails we load one locally
           this.doOffline();
