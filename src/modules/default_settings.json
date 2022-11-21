@@ -258,5 +258,9 @@
   {
     "name": "backgroundExclude",
     "value": "[]"
+  },
+  {
+    "name": "photoMap",
+    "value": true
   }
 ]
