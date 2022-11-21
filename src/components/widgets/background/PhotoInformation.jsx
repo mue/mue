@@ -127,8 +127,8 @@ function PhotoInformation({ info, url, api }) {
     return (
       <div style={{ display: 'none' }}>
         <span id="credit">{credit}</span>
-        <span id="infoLocation">{info.location || 'N/A'}</span>
-        <span id="infoCamera">{info.camera || 'N/A'}</span>
+        <span id="infoLocation">{info.location}</span>
+        <span id="infoCamera">{info.camera}</span>
         <span id="infoResolution">
           {width}x{height}
         </span>
