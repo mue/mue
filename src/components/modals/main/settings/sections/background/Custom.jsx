@@ -162,7 +162,10 @@ export default class CustomSettings extends PureComponent {
         return this.customBackground(file, false, this.state.currentBackgroundIndex);
       }
 
-      compressAccurately(file, 300).then(async (res) => {
+      compressAccurately(file, {
+        size: 450,
+        accuracy: 0.9
+      }).then(async (res) => {
         if (settingsSize + res.size > 4850000) {
           return toast(variables.getMessage('toasts.no_storage'));
         }

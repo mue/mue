@@ -30,7 +30,6 @@ export const COPYRIGHT_NAME = 'The Mue Authors';
 export const COPYRIGHT_YEAR = '2018';
 export const COPYRIGHT_LICENSE = 'BSD-3-Clause License';
 export const OPENCOLLECTIVE_USERNAME = 'mue';
-export const SPONSORS_USERNAME = 'mue';
 
 export const OFFLINE_IMAGES = 20;
 

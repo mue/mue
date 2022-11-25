@@ -230,7 +230,7 @@ export default class About extends PureComponent {
             </a>
             <Tooltip title={'GitHub Sponsors'}>
               <a
-                href={'https://github.com/sponsors/' + variables.constants.SPONSORS_USERNAME}
+                href={'https://github.com/sponsors/' + variables.constants.ORG_NAME}
                 target="_blank"
                 rel="noopener noreferrer"
               >
