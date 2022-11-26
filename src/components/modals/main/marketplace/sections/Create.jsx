@@ -63,20 +63,25 @@ export default class Create extends PureComponent {
   importSettings(input) {
     const data = input || localStorage;
     let settings = {};
+    const ignore = [
+      'statsData',
+      'firstRun',
+      'showWelcome',
+      'language',
+      'installed',
+      'stats',
+      'backup_settings',
+      'showReminder',
+      'experimental',
+      'debugtimeout',
+      'quoteLanguage',
+      'birthday',
+      'location',
+      'greetingName',
+      'backgroundStartTime'
+    ];
     Object.keys(data).forEach((key) => {
-      if (
-        key === 'statsData' ||
-        key === 'firstRun' ||
-        key === 'showWelcome' ||
-        key === 'language' ||
-        key === 'installed' ||
-        key === 'stats' ||
-        key === 'backup_settings' ||
-        key === 'showReminder' ||
-        key === 'experimental' ||
-        key === 'debugtimeout' ||
-        key === 'quoteLanguage'
-      ) {
+      if (ignore.includes(key)) {
         return;
       }
       settings[key] = localStorage.getItem(key);
