@@ -272,15 +272,15 @@ export default class Quote extends PureComponent {
 
         // First we try and get a quote from the API...
         try {
-          let data = JSON.parse(localStorage.getItem('nextQuote')) || await getAPIQuoteData();
+          let data = JSON.parse(localStorage.getItem('nextQuote')) || (await getAPIQuoteData());
           localStorage.setItem('nextQuote', null);
           if (data) {
             this.setState(data);
             localStorage.setItem('currentQuote', JSON.stringify(data));
             localStorage.setItem('nextQuote', JSON.stringify(await getAPIQuoteData())); // pre-fetch data about the next quote
           } else {
-            this.doOffline(); 
-          }      
+            this.doOffline();
+          }
         } catch (e) {
           // ...and if that fails we load one locally
           this.doOffline();

@@ -106,12 +106,15 @@ export default class OrderSettings extends PureComponent {
 
   async getNews() {
     const data = await (await fetch(variables.constants.API_URL + '/news')).json();
-    data.date = new window.Date(data.date).toLocaleDateString(variables.languagecode.replace('_', '-'), {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-    
+    data.date = new window.Date(data.date).toLocaleDateString(
+      variables.languagecode.replace('_', '-'),
+      {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      },
+    );
+
     this.setState({
       news: data,
       newsDone: true,

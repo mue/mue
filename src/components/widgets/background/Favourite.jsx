@@ -53,10 +53,10 @@ export default class Favourite extends PureComponent {
 
           if (url.startsWith('blob:')) {
             const reader = new FileReader();
-            url = await new Promise(async resolve => {
+            url = await new Promise(async (resolve) => {
               reader.onloadend = () => resolve(reader.result);
               reader.readAsDataURL(await (await fetch(url)).blob());
-            })
+            });
           }
 
           if (type === 'custom') {

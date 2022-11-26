@@ -36,9 +36,9 @@ export default class Background extends PureComponent {
   }
 
   async setBackground() {
-    // clean up the previous image to prevent a memory leak 
+    // clean up the previous image to prevent a memory leak
     if (this.state.blob) URL.revokeObjectURL(this.state.blob);
-  
+
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
@@ -99,7 +99,7 @@ export default class Background extends PureComponent {
       backgroundExclude = [];
     }
     if (currentPun) {
-      backgroundExclude.push(currentPun)
+      backgroundExclude.push(currentPun);
     }
 
     let requestURL, data;
@@ -194,13 +194,16 @@ export default class Background extends PureComponent {
           return this.setState(offlineBackground('api'));
         }
 
-       // API background
-        let data = JSON.parse(localStorage.getItem('nextImage')) || await this.getAPIImageData();
+        // API background
+        let data = JSON.parse(localStorage.getItem('nextImage')) || (await this.getAPIImageData());
         localStorage.setItem('nextImage', null);
         if (data) {
           this.setState(data);
           localStorage.setItem('currentBackground', JSON.stringify(data));
-          localStorage.setItem('nextImage', JSON.stringify(await this.getAPIImageData(data.photoInfo.pun))); // pre-fetch data about the next image
+          localStorage.setItem(
+            'nextImage',
+            JSON.stringify(await this.getAPIImageData(data.photoInfo.pun)),
+          ); // pre-fetch data about the next image
         }
         break;
 

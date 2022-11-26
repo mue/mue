@@ -164,7 +164,7 @@ export default class CustomSettings extends PureComponent {
 
       compressAccurately(file, {
         size: 450,
-        accuracy: 0.9
+        accuracy: 0.9,
       }).then(async (res) => {
         if (settingsSize + res.size > 4850000) {
           return toast(variables.getMessage('toasts.no_storage'));

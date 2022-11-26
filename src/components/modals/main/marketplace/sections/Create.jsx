@@ -78,7 +78,7 @@ export default class Create extends PureComponent {
       'birthday',
       'location',
       'greetingName',
-      'backgroundStartTime'
+      'backgroundStartTime',
     ];
     Object.keys(data).forEach((key) => {
       if (ignore.includes(key)) {

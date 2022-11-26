@@ -31,6 +31,7 @@ variables.language = new I18n(variables.languagecode, {
   en_GB: translations.en_GB,
   en_US: translations.en_US,
   es: translations.es,
+  es_419: translations.es_419,
   fr: translations.fr,
   nl: translations.nl,
   no: translations.no,

@@ -62,20 +62,20 @@
 }
 
 .mapOn {
-    width: 100%;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    img {
-      flex-shrink: 0;
-      min-width: 100%;
-      min-height: 100%;
-    }
-    svg {
-      display: none;
-    }
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  svg {
+    display: none;
+  }
 }
 
 .photoInformation-legacy {

@@ -76,7 +76,11 @@ export default class LanguageSettings extends PureComponent {
           {variables.getMessage('modals.main.settings.sections.language.quote')}
         </span>
         <div className="languageSettings">
-          <Radio name="quoteLanguage" options={this.state.quoteLanguages.map(l => l.name)} category="quote" />
+          <Radio
+            name="quoteLanguage"
+            options={this.state.quoteLanguages.map((l) => l.name)}
+            category="quote"
+          />
         </div>
       </>
     );

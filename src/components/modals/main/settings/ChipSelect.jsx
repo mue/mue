@@ -9,21 +9,18 @@ import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 
 function ChipSelect({ label, options, name }) {
-  let start = (localStorage.getItem('apiCategories') || "").split(',');
-  if (start[0] === "") start = [];
+  let start = (localStorage.getItem('apiCategories') || '').split(',');
+  if (start[0] === '') start = [];
 
   const [optionsSelected, setoptionsSelected] = useState(start);
- 
+
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setoptionsSelected(
-      typeof value === 'string' ? value.split(',') : value,
-    );
-    localStorage.setItem('apiCategories', value)
+    setoptionsSelected(typeof value === 'string' ? value.split(',') : value);
+    localStorage.setItem('apiCategories', value);
   };
-
 
   return (
     <div>
