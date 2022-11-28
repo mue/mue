@@ -73,7 +73,8 @@ Please see our [roadmap](https://trello.com/b/w7zhS7Hi/mue-50).
 Please see the [documentation](https://docs.muetab.com/development#mue-tab).
 
 ### Translations
-Please see the [documentation](https://docs.muetab.com/translations).
+
+[![Contribute on Weblate](https://hosted.weblate.org/widgets/mue/-/open-graph.png)](https://hosted.weblate.org/engage/mue/)
 
 ## Credits
 ### Developers
