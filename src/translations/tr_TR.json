@@ -209,7 +209,7 @@
                             "title": "Sıcaklık formatı",
                             "celsius": "Santigrat",
                             "fahrenheit": "Fahrenhayt",
-                            "kelvin": ""
+                            "kelvin": "Kelvin"
                         },
                         "extra_info": {
                             "title": "Ek bilgiler",
