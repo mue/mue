@@ -1,555 +1,554 @@
 {
-  "tabname": "New Tab",
-  "widgets": {
-    "greeting": {
-      "morning": "Доброе утро",
-      "afternoon": "Добрый день",
-      "evening": "Добрый вечер",
-      "christmas": "С Рождеством",
-      "newyear": "С Новым Годом",
-      "halloween": "Счастливого Хэллоуина",
-      "birthday": "Happy Birthday"
-    },
-    "background": {
-      "credit": "Фото",
-      "unsplash": "on Unsplash",
-      "pexels": "on Pexels",
-      "information": "Information",
-      "download": "Download"
-    },
-    "search": "Поиск",
-    "quicklinks": {
-      "new": "New Link",
-      "name": "Name",
-      "url": "URL",
-      "icon": "Icon (optional)",
-      "add": "Add",
-      "name_error": "Must provide name",
-      "url_error": "Must provide URL"
-    },
-    "date": {
-      "week": "Week"
-    },
-    "weather": {
-      "not_found": "Not Found",
-      "meters": "{amount} метры"
-    },
-    "navbar": {
-      "tooltips": {
-        "refresh": "Refresh"
-      },
-      "notes": {
-        "title": "Notes",
-        "placeholder": "Type here"
-      }
-    }
-  },
   "modals": {
     "main": {
-      "title": "Options",
-      "loading": "Загрузка...",
-      "file_upload_error": "File is over 2MB",
-      "navbar": {
-        "settings": "Settings",
-        "addons": "My Add-ons",
-        "marketplace": "Marketplace"
+      "addons": {
+        "added": "Добавлен",
+        "check_updates": "Check for updates",
+        "create": {
+          "finish": {
+            "download": "Download Add-on",
+            "title": "Finish"
+          },
+          "metadata": {
+            "description": "Description",
+            "icon_url": "Icon URL",
+            "name": "Name",
+            "screenshot_url": "Screenshot URL"
+          },
+          "other_title": "Create Add-on",
+          "photos": {
+            "title": "Add Photos"
+          },
+          "quotes": {
+            "api": {
+              "author": "JSON quote author (or override)",
+              "name": "JSON quote name",
+              "title": "API",
+              "url": "Quote URL"
+            },
+            "local": {
+              "title": "Local"
+            },
+            "title": "Add Quotes"
+          },
+          "settings": {
+            "current": "Import current setup",
+            "json": "Upload JSON"
+          },
+          "title": "Create"
+        },
+        "empty": {
+          "description": "Зайдите в магазин, чтобы найти что-то интересное",
+          "title": "Здесь пусто"
+        },
+        "no_updates": "No updates available",
+        "sideload": {
+          "errors": {
+            "invalid_photos": "Invalid photos object",
+            "invalid_quotes": "Invalid quotes object",
+            "no_author": "No author provided",
+            "no_name": "No name provided",
+            "no_type": "No type provided"
+          },
+          "failed": "Failed to sideload addon",
+          "title": "Загрузить"
+        },
+        "sort": {
+          "a_z": "Alphabetical (A-Z)",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "title": "Sort",
+          "z_a": "Alphabetical (Z-A)"
+        },
+        "updates_available": "Updates available {amount}"
       },
       "error_boundary": {
-        "title": "Ошибка",
         "message": "Failed to load this component of Mue",
-        "refresh": "Обновить"
+        "refresh": "Обновить",
+        "title": "Ошибка"
       },
-      "settings": {
-        "enabled": "Enabled",
-        "reminder": {
-          "title": "NOTICE",
-          "message": "In order for all of the changes to take place, the page must be refreshed."
-        },
-        "sections": {
-          "time": {
-            "title": "Время",
-            "format": "Format",
-            "type": "Type",
-            "digital": {
-              "title": "Digital",
-              "seconds": "Секунды",
-              "twentyfourhour": "24 Часа",
-              "twelvehour": "12 часов",
-              "zero": "Дополнительный ноль"
-            },
-            "analogue": {
-              "title": "Analogue",
-              "second_hand": "Seconds hand",
-              "minute_hand": "Minutes hand",
-              "hour_hand": "Hours hand",
-              "hour_marks": "Hour marks",
-              "minute_marks": "Minute marks"
-            },
-            "percentage_complete": "Percentage complete"
-          },
-          "date": {
-            "title": "Date",
-            "week_number": "Week number",
-            "day_of_week": "Day of week",
-            "datenth": "Date nth",
-            "type": {
-              "short": "Short",
-              "long": "Long"
-            },
-            "short_date": "Short date",
-            "short_format": "Short format",
-            "short_separator": {
-              "title": "Short separator",
-              "dots": "Dots",
-              "dash": "Dash",
-              "gaps": "Gaps",
-              "slashes": "Slashes"
-            }
-          },
-          "quote": {
-            "title": "Цитата",
-            "author_link": "Author link",
-            "custom": "Custom quote",
-            "custom_author": "Custom author",
-            "add": "Add quote",
-            "buttons": {
-              "title": "Buttons",
-              "copy": "Кнопка копирования",
-              "tweet": "Кнопка твита",
-              "favourite": "Кнопка для оценки"
-            }
-          },
-          "greeting": {
-            "title": "Приветствие",
-            "events": "События",
-            "default": "Сообщение с приветствием по-умолчанию",
-            "name": "Имя для приветствия",
-            "birthday": "Birthday",
-            "birthday_age": "Birthday age",
-            "birthday_date": "Birthday date"
-          },
-          "background": {
-            "title": "Фон",
-            "ddg_image_proxy": "Use DuckDuckGo image proxy",
-            "transition": "Fade-in transition",
-            "photo_information": "Show photo information",
-            "show_map": "Show location map on photo information if available",
-            "category": "Category",
-            "buttons": {
-              "title": "Buttons",
-              "view": "Просмотр",
-              "favourite": "Любимые",
-              "download": "Download"
-            },
-            "effects": {
-              "title": "Effects",
-              "blur": "Размытие",
-              "brightness": "Яркость",
-              "filters": {
-                "title": "Background filter",
-                "amount": "Filter amount",
-                "grayscale": "Grayscale",
-                "sepia": "Sepia",
-                "invert": "Invert",
-                "saturate": "Saturate",
-                "contrast": "Contrast"
-              }
-            },
-            "type": {
-              "title": "Type",
-              "api": "API",
-              "custom_image": "Custom image",
-              "custom_colour": "Custom colour/gradient",
-              "random_colour": "Random colour",
-              "random_gradient": "Random gradient"
-            },
-            "source": {
-              "title": "Source",
-              "api": "API для фона",
-              "custom_background": "Пользовательский фон",
-              "custom_colour": "Пользовательский цвет фон",
-              "upload": "Загрузить",
-              "add_colour": "Добавить цвет",
-              "add_background": "Add background",
-              "add_url": "Add URL",
-              "disabled": "Выключен",
-              "loop_video": "Loop video",
-              "mute_video": "Mute video",
-              "quality": {
-                "title": "Quality",
-                "original": "Original",
-                "high": "High Quality",
-                "normal": "Normal Quality",
-                "datasaver": "Data Saver"
-              }
-            },
-            "interval": {
-              "title": "Change every",
-              "minute": "Minute",
-              "half_hour": "Half hour",
-              "hour": "Hour",
-              "day": "Day",
-              "month": "Month"
-            }
-          },
-          "search": {
-            "title": "Панель поиска",
-            "search_engine": "Поисковый движок",
-            "custom": "Пользовательский поисковый движок",
-            "autocomplete": "Autocomplete",
-            "autocomplete_provider": "Autocomplete Provider",
-            "voice_search": "Поиск голосом",
-            "dropdown": "Search dropdown"
-          },
-          "weather": {
-            "title": "Weather",
-            "location": "Location",
-            "auto": "Auto",
-            "temp_format": {
-              "title": "Temperature format",
-              "celsius": "Celsius",
-              "fahrenheit": "Fahrenheit",
-              "kelvin": "Kelvin"
-            },
-            "extra_info": {
-              "title": "Extra information",
-              "show_location": "Show location",
-              "show_description": "Show description",
-              "cloudiness": "Cloudiness",
-              "humidity": "Humidity",
-              "visibility": "Visibility",
-              "wind_speed": "Wind speed",
-              "wind_direction": "Wind direction",
-              "min_temp": "Minimum temperature",
-              "max_temp": "Maximum temperature",
-              "atmospheric_pressure": "Atmospheric pressure"
-            }
-          },
-          "quicklinks": {
-            "title": "Quick Links",
-            "open_new": "Open in new tab",
-            "tooltip": "Tooltip",
-            "text_only": "Show text only"
-          },
-          "message": {
-            "title": "Message",
-            "add": "Add message",
-            "text": "Text"
-          },
-          "appearance": {
-            "title": "Appearance",
-            "theme": {
-              "title": "Theme",
-              "auto": "Auto",
-              "light": "Light",
-              "dark": "Dark"
-            },
-            "navbar": {
-              "title": "Navbar",
-              "notes": "Notes",
-              "refresh": "Refresh button",
-              "hover": "Only display on hover",
-              "refresh_options": {
-                "none": "None",
-                "page": "Page"
-              }
-            },
-            "font": {
-              "title": "Font",
-              "custom": "Custom font",
-              "google": "Import from Google Fonts",
-              "weight": {
-                "title": "Font weight",
-                "thin": "Thin",
-                "extra_light": "Extra Light",
-                "light": "Light",
-                "normal": "Normal",
-                "medium": "Medium",
-                "semi_bold": "Semi-Bold",
-                "bold": "Bold",
-                "extra_bold": "Extra-Bold"
-              },
-              "style": {
-                "title": "Font style",
-                "normal": "Normal",
-                "italic": "Italic",
-                "oblique": "Oblique"
-              }
-            },
-            "accessibility": {
-              "title": "Accessibility",
-              "animations": "Анимации",
-              "text_shadow": "Widget text shadow",
-              "widget_zoom": "Widget zoom",
-              "toast_duration": "Toast duration",
-              "milliseconds": "milliseconds"
-            }
-          },
-          "order": {
-            "title": "Widget Order"
-          },
-          "advanced": {
-            "title": "Advanced",
-            "offline_mode": "Офлайн режим",
-            "data": "Data",
-            "reset_modal": {
-              "title": "WARNING",
-              "question": "Do you want to reset Mue?",
-              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
-              "cancel": "Cancel"
-            },
-            "customisation": "Customisation",
-            "custom_css": "Custom CSS",
-            "custom_js": "Custom JS",
-            "tab_name": "Tab name",
-            "timezone": {
-              "title": "Time Zone",
-              "automatic": "Automatic"
-            },
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
-          },
-          "stats": {
-            "title": "Stats",
-            "warning": "You need to enable usage data in order to use this feature. This data is only stored locally.",
-            "sections": {
-              "tabs_opened": "Tabs opened",
-              "backgrounds_favourited": "Backgrounds favourited",
-              "backgrounds_downloaded": "Backgrounds downloaded",
-              "quotes_favourited": "Quotes favourited",
-              "quicklinks_added": "Quicklinks added",
-              "settings_changed": "Settings changed",
-              "addons_installed": "Add-ons installed"
-            },
-            "usage": "Usage Stats"
-          },
-          "keybinds": {
-            "title": "Keybinds",
-            "recording": "Recording...",
-            "click_to_record": "Click to record",
-            "background": {
-              "favourite": "Favourite background",
-              "maximise": "Maximise background",
-              "download": "Download background",
-              "show_info": "Show background information"
-            },
-            "quote": {
-              "favourite": "Favourite quote",
-              "copy": "Copy quote",
-              "tweet": "Tweet quote"
-            },
-            "notes": {
-              "pin": "Pin notes",
-              "copy": "Copy notes"
-            },
-            "search": "Focus search",
-            "quicklinks": "Toggle add quick link",
-            "modal": "Toggle modal"
-          },
-          "experimental": {
-            "title": "Экспериментальные настройки",
-            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer"
-          },
-          "language": {
-            "title": "Язык",
-            "quote": "Quote language"
-          },
-          "changelog": {
-            "title": "Change Log",
-            "by": "By {author}"
-          },
-          "about": {
-            "title": "About",
-            "copyright": "Copyright",
-            "version": {
-              "title": "Version",
-              "checking_update": "Checking for update",
-              "update_available": "Update available",
-              "no_update": "No update available",
-              "offline_mode": "Cannot check for update in offline mode",
-              "error": {
-                "title": "Failed to get update information",
-                "description": "An error occured"
-              }
-            },
-            "contact_us": "Contact Us",
-            "support_mue": "Support Mue",
-            "resources_used": {
-              "title": "Resources used",
-              "bg_images": "Offline background images"
-            },
-            "contributors": "Contributors",
-            "supporters": "Supporters",
-            "no_supporters": "There are currently no Mue supporters",
-            "photographers": "Photographers"
-          }
-        },
-        "buttons": {
-          "reset": "Сбросить",
-          "import": "Импорт",
-          "export": "Экспорт"
-        }
-      },
+      "file_upload_error": "File is over 2MB",
+      "loading": "Загрузка...",
       "marketplace": {
-        "photo_packs": "Наборы фото",
-        "quote_packs": "Наборы цитат",
-        "preset_settings": "Пресеты настроек",
         "no_items": "No items in this category",
+        "offline": {
+          "description": "Пожалуйста, подключитесь к интернету",
+          "title": "Похоже, что вы офлайн"
+        },
+        "photo_packs": "Наборы фото",
+        "preset_settings": "Пресеты настроек",
         "product": {
-          "overview": "Обзор",
-          "information": "Информация",
-          "last_updated": "Последнее обновление",
-          "version": "Версия",
           "author": "Автор",
           "buttons": {
             "addtomue": "Добавить в Mue",
             "remove": "Удалить",
             "update_addon": "Update Add-on"
           },
+          "information": "Информация",
+          "last_updated": "Последнее обновление",
+          "overview": "Обзор",
           "quote_warning": {
-            "title": "Предупреждение",
-            "description": "Этот пакет цитат обращается к внешнему серверу и может отслеживать вас!"
-          }
+            "description": "Этот пакет цитат обращается к внешнему серверу и может отслеживать вас!",
+            "title": "Предупреждение"
+          },
+          "version": "Версия"
         },
-        "offline": {
-          "title": "Похоже, что вы офлайн",
-          "description": "Пожалуйста, подключитесь к интернету"
+        "quote_packs": "Наборы цитат"
+      },
+      "navbar": {
+        "addons": "My Add-ons",
+        "marketplace": "Marketplace",
+        "settings": "Settings"
+      },
+      "settings": {
+        "buttons": {
+          "export": "Экспорт",
+          "import": "Импорт",
+          "reset": "Сбросить"
+        },
+        "enabled": "Enabled",
+        "reminder": {
+          "message": "In order for all of the changes to take place, the page must be refreshed.",
+          "title": "NOTICE"
+        },
+        "sections": {
+          "about": {
+            "contact_us": "Contact Us",
+            "contributors": "Contributors",
+            "copyright": "Copyright",
+            "no_supporters": "There are currently no Mue supporters",
+            "photographers": "Photographers",
+            "resources_used": {
+              "bg_images": "Offline background images",
+              "title": "Resources used"
+            },
+            "support_mue": "Support Mue",
+            "supporters": "Supporters",
+            "title": "About",
+            "version": {
+              "checking_update": "Checking for update",
+              "error": {
+                "description": "An error occured",
+                "title": "Failed to get update information"
+              },
+              "no_update": "No update available",
+              "offline_mode": "Cannot check for update in offline mode",
+              "title": "Version",
+              "update_available": "Update available"
+            }
+          },
+          "advanced": {
+            "custom_css": "Custom CSS",
+            "custom_js": "Custom JS",
+            "customisation": "Customisation",
+            "data": "Data",
+            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support.",
+            "offline_mode": "Офлайн режим",
+            "reset_modal": {
+              "cancel": "Cancel",
+              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
+              "question": "Do you want to reset Mue?",
+              "title": "WARNING"
+            },
+            "tab_name": "Tab name",
+            "timezone": {
+              "automatic": "Automatic",
+              "title": "Time Zone"
+            },
+            "title": "Advanced"
+          },
+          "appearance": {
+            "accessibility": {
+              "animations": "Анимации",
+              "milliseconds": "milliseconds",
+              "text_shadow": "Widget text shadow",
+              "title": "Accessibility",
+              "toast_duration": "Toast duration",
+              "widget_zoom": "Widget zoom"
+            },
+            "font": {
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "style": {
+                "italic": "Italic",
+                "normal": "Normal",
+                "oblique": "Oblique",
+                "title": "Font style"
+              },
+              "title": "Font",
+              "weight": {
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "medium": "Medium",
+                "normal": "Normal",
+                "semi_bold": "Semi-Bold",
+                "thin": "Thin",
+                "title": "Font weight"
+              }
+            },
+            "navbar": {
+              "hover": "Only display on hover",
+              "notes": "Notes",
+              "refresh": "Refresh button",
+              "refresh_options": {
+                "none": "None",
+                "page": "Page"
+              },
+              "title": "Navbar"
+            },
+            "theme": {
+              "auto": "Auto",
+              "dark": "Dark",
+              "light": "Light",
+              "title": "Theme"
+            },
+            "title": "Appearance"
+          },
+          "background": {
+            "buttons": {
+              "download": "Download",
+              "favourite": "Любимые",
+              "title": "Buttons",
+              "view": "Просмотр"
+            },
+            "category": "Category",
+            "ddg_image_proxy": "Use DuckDuckGo image proxy",
+            "effects": {
+              "blur": "Размытие",
+              "brightness": "Яркость",
+              "filters": {
+                "amount": "Filter amount",
+                "contrast": "Contrast",
+                "grayscale": "Grayscale",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "sepia": "Sepia",
+                "title": "Background filter"
+              },
+              "title": "Effects"
+            },
+            "interval": {
+              "day": "Day",
+              "half_hour": "Half hour",
+              "hour": "Hour",
+              "minute": "Minute",
+              "month": "Month",
+              "title": "Change every"
+            },
+            "photo_information": "Show photo information",
+            "show_map": "Show location map on photo information if available",
+            "source": {
+              "add_background": "Add background",
+              "add_colour": "Добавить цвет",
+              "add_url": "Add URL",
+              "api": "API для фона",
+              "custom_background": "Пользовательский фон",
+              "custom_colour": "Пользовательский цвет фон",
+              "disabled": "Выключен",
+              "loop_video": "Loop video",
+              "mute_video": "Mute video",
+              "quality": {
+                "datasaver": "Data Saver",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "original": "Original",
+                "title": "Quality"
+              },
+              "title": "Source",
+              "upload": "Загрузить"
+            },
+            "title": "Фон",
+            "transition": "Fade-in transition",
+            "type": {
+              "api": "API",
+              "custom_colour": "Custom colour/gradient",
+              "custom_image": "Custom image",
+              "random_colour": "Random colour",
+              "random_gradient": "Random gradient",
+              "title": "Type"
+            }
+          },
+          "changelog": {
+            "by": "By {author}",
+            "title": "Change Log"
+          },
+          "date": {
+            "datenth": "Date nth",
+            "day_of_week": "Day of week",
+            "short_date": "Short date",
+            "short_format": "Short format",
+            "short_separator": {
+              "dash": "Dash",
+              "dots": "Dots",
+              "gaps": "Gaps",
+              "slashes": "Slashes",
+              "title": "Short separator"
+            },
+            "title": "Date",
+            "type": {
+              "long": "Long",
+              "short": "Short"
+            },
+            "week_number": "Week number"
+          },
+          "experimental": {
+            "developer": "Developer",
+            "title": "Экспериментальные настройки",
+            "warning": "These settings have not been fully tested/implemented and may not work correctly!"
+          },
+          "greeting": {
+            "birthday": "Birthday",
+            "birthday_age": "Birthday age",
+            "birthday_date": "Birthday date",
+            "default": "Сообщение с приветствием по-умолчанию",
+            "events": "События",
+            "name": "Имя для приветствия",
+            "title": "Приветствие"
+          },
+          "keybinds": {
+            "background": {
+              "download": "Download background",
+              "favourite": "Favourite background",
+              "maximise": "Maximise background",
+              "show_info": "Show background information"
+            },
+            "click_to_record": "Click to record",
+            "modal": "Toggle modal",
+            "notes": {
+              "copy": "Copy notes",
+              "pin": "Pin notes"
+            },
+            "quicklinks": "Toggle add quick link",
+            "quote": {
+              "copy": "Copy quote",
+              "favourite": "Favourite quote",
+              "tweet": "Tweet quote"
+            },
+            "recording": "Recording...",
+            "search": "Focus search",
+            "title": "Keybinds"
+          },
+          "language": {
+            "quote": "Quote language",
+            "title": "Язык"
+          },
+          "message": {
+            "add": "Add message",
+            "text": "Text",
+            "title": "Message"
+          },
+          "order": {
+            "title": "Widget Order"
+          },
+          "quicklinks": {
+            "open_new": "Open in new tab",
+            "text_only": "Show text only",
+            "title": "Quick Links",
+            "tooltip": "Tooltip"
+          },
+          "quote": {
+            "add": "Add quote",
+            "author_link": "Author link",
+            "buttons": {
+              "copy": "Кнопка копирования",
+              "favourite": "Кнопка для оценки",
+              "title": "Buttons",
+              "tweet": "Кнопка твита"
+            },
+            "custom": "Custom quote",
+            "custom_author": "Custom author",
+            "title": "Цитата"
+          },
+          "search": {
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
+            "custom": "Пользовательский поисковый движок",
+            "dropdown": "Search dropdown",
+            "search_engine": "Поисковый движок",
+            "title": "Панель поиска",
+            "voice_search": "Поиск голосом"
+          },
+          "stats": {
+            "sections": {
+              "addons_installed": "Add-ons installed",
+              "backgrounds_downloaded": "Backgrounds downloaded",
+              "backgrounds_favourited": "Backgrounds favourited",
+              "quicklinks_added": "Quicklinks added",
+              "quotes_favourited": "Quotes favourited",
+              "settings_changed": "Settings changed",
+              "tabs_opened": "Tabs opened"
+            },
+            "title": "Stats",
+            "usage": "Usage Stats",
+            "warning": "You need to enable usage data in order to use this feature. This data is only stored locally."
+          },
+          "time": {
+            "analogue": {
+              "hour_hand": "Hours hand",
+              "hour_marks": "Hour marks",
+              "minute_hand": "Minutes hand",
+              "minute_marks": "Minute marks",
+              "second_hand": "Seconds hand",
+              "title": "Analogue"
+            },
+            "digital": {
+              "seconds": "Секунды",
+              "title": "Digital",
+              "twelvehour": "12 часов",
+              "twentyfourhour": "24 Часа",
+              "zero": "Дополнительный ноль"
+            },
+            "format": "Format",
+            "percentage_complete": "Percentage complete",
+            "title": "Время",
+            "type": "Type"
+          },
+          "weather": {
+            "auto": "Auto",
+            "extra_info": {
+              "atmospheric_pressure": "Atmospheric pressure",
+              "cloudiness": "Cloudiness",
+              "humidity": "Humidity",
+              "max_temp": "Maximum temperature",
+              "min_temp": "Minimum temperature",
+              "show_description": "Show description",
+              "show_location": "Show location",
+              "title": "Extra information",
+              "visibility": "Visibility",
+              "wind_direction": "Wind direction",
+              "wind_speed": "Wind speed"
+            },
+            "location": "Location",
+            "temp_format": {
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin",
+              "title": "Temperature format"
+            },
+            "title": "Weather"
+          }
         }
       },
-      "addons": {
-        "added": "Добавлен",
-        "check_updates": "Check for updates",
-        "no_updates": "No updates available",
-        "updates_available": "Updates available {amount}",
-        "empty": {
-          "title": "Здесь пусто",
-          "description": "Зайдите в магазин, чтобы найти что-то интересное"
-        },
-        "sideload": {
-          "title": "Загрузить",
-          "failed": "Failed to sideload addon",
-          "errors": {
-            "no_name": "No name provided",
-            "no_author": "No author provided",
-            "no_type": "No type provided",
-            "invalid_photos": "Invalid photos object",
-            "invalid_quotes": "Invalid quotes object"
-          }
-        },
-        "sort": {
-          "title": "Sort",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
-          "a_z": "Alphabetical (A-Z)",
-          "z_a": "Alphabetical (Z-A)"
-        },
-        "create": {
-          "title": "Create",
-          "other_title": "Create Add-on",
-          "metadata": {
-            "name": "Name",
-            "icon_url": "Icon URL",
-            "screenshot_url": "Screenshot URL",
-            "description": "Description"
-          },
-          "finish": {
-            "title": "Finish",
-            "download": "Download Add-on"
-          },
-          "settings": {
-            "current": "Import current setup",
-            "json": "Upload JSON"
-          },
-          "photos": {
-            "title": "Add Photos"
-          },
-          "quotes": {
-            "title": "Add Quotes",
-            "api": {
-              "title": "API",
-              "url": "Quote URL",
-              "name": "JSON quote name",
-              "author": "JSON quote author (or override)"
-            },
-            "local": {
-              "title": "Local"
-            }
-          }
-        }
-      }
+      "title": "Options"
     },
     "update": {
-      "title": "Обновление",
-      "offline": {
-        "title": "Офлайн",
-        "description": "Не удалось получить журнал обновления в офлайн режиме"
-      },
       "error": {
-        "title": "Ошибка",
         "description": "Could not connect to the server",
-        "content": "Не удалось подключиться к серверу"
-      }
+        "title": "Ошибка"
+      },
+      "offline": {
+        "description": "Не удалось получить журнал обновления в офлайн режиме",
+        "title": "Офлайн"
+      },
+      "title": "Обновление"
     },
     "welcome": {
-      "tip": "Quick Tip",
-      "sections": {
-        "intro": {
-          "title": "Welcome to Mue Tab",
-          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension."
-        },
-        "language": {
-          "title": "Choose your language",
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our"
-        },
-        "theme": {
-          "title": "Select a theme",
-          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
-          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
-        },
-        "settings": {
-          "title": "Import Settings",
-          "description": "Installing Mue on a new device? Feel free to import your old settings!",
-          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
-        },
-        "privacy": {
-          "title": "Privacy Options",
-          "description": "Enable settings to further protect your privacy with Mue.",
-          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
-          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
-          "links": {
-            "title": "Links",
-            "privacy_policy": "Privacy Policy",
-            "source_code": "Source Code"
-          }
-        },
-        "final": {
-          "title": "Final step",
-          "description": "Your Mue Tab experience is about to begin.",
-          "changes": "Changes",
-          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "imported": "Imported {amount} settings"
-        }
-      },
       "buttons": {
+        "close": "Close",
         "next": "Next",
         "preview": "Preview",
-        "previous": "Previous",
-        "close": "Close"
+        "previous": "Previous"
       },
       "preview": {
-        "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
-        "continue": "Continue setup"
-      }
+        "continue": "Continue setup",
+        "description": "You are currently in preview mode. Settings will be reset on closing this tab."
+      },
+      "sections": {
+        "final": {
+          "changes": "Changes",
+          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
+          "description": "Your Mue Tab experience is about to begin.",
+          "imported": "Imported {amount} settings",
+          "title": "Final step"
+        },
+        "intro": {
+          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
+          "title": "Welcome to Mue Tab"
+        },
+        "language": {
+          "description": "Mue can be displayed the languages listed below. You can also add new translations on our",
+          "title": "Choose your language"
+        },
+        "privacy": {
+          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
+          "description": "Enable settings to further protect your privacy with Mue.",
+          "links": {
+            "privacy_policy": "Privacy Policy",
+            "source_code": "Source Code",
+            "title": "Links"
+          },
+          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
+          "title": "Privacy Options"
+        },
+        "settings": {
+          "description": "Installing Mue on a new device? Feel free to import your old settings!",
+          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation.",
+          "title": "Import Settings"
+        },
+        "theme": {
+          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
+          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes.",
+          "title": "Select a theme"
+        }
+      },
+      "tip": "Quick Tip"
     }
   },
+  "tabname": "New Tab",
   "toasts": {
-    "quote": "Цитата скопирована",
-    "notes": "Notes copied",
-    "reset": "Сброшено",
-    "installed": "Успешно установлено",
-    "uninstalled": "Успешно удалено",
-    "updated": "Successfully updated",
     "error": "Что-то пошло не так",
-    "imported": "Успешно импортировано"
+    "imported": "Успешно импортировано",
+    "installed": "Успешно установлено",
+    "notes": "Notes copied",
+    "quote": "Цитата скопирована",
+    "reset": "Сброшено",
+    "uninstalled": "Успешно удалено",
+    "updated": "Successfully updated"
+  },
+  "widgets": {
+    "background": {
+      "credit": "Фото",
+      "download": "Download",
+      "information": "Information",
+      "pexels": "on Pexels",
+      "unsplash": "on Unsplash"
+    },
+    "date": {
+      "week": "Week"
+    },
+    "greeting": {
+      "afternoon": "Добрый день",
+      "birthday": "Happy Birthday",
+      "christmas": "С Рождеством",
+      "evening": "Добрый вечер",
+      "halloween": "Счастливого Хэллоуина",
+      "morning": "Доброе утро",
+      "newyear": "С Новым Годом"
+    },
+    "navbar": {
+      "notes": {
+        "placeholder": "Type here",
+        "title": "Notes"
+      },
+      "tooltips": {
+        "refresh": "Refresh"
+      }
+    },
+    "quicklinks": {
+      "add": "Add",
+      "icon": "Icon (optional)",
+      "name": "Name",
+      "name_error": "Must provide name",
+      "new": "New Link",
+      "url": "URL",
+      "url_error": "Must provide URL"
+    },
+    "search": "Поиск",
+    "weather": {
+      "meters": "{amount} метры",
+      "not_found": "Not Found"
+    }
   }
 }
