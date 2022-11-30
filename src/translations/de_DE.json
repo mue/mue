@@ -67,8 +67,8 @@
         "refresh": "Neuladen",
         "title": "Fehler"
       },
-      "file_upload_error": "Datei ist größer als 2MB",
-      "loading": "Läd...",
+      "file_upload_error": "Datei ist größer als 2 MB",
+      "loading": "Wird geladen …",
       "marketplace": {
         "no_items": "Keine Einträge in dieser Kategorie",
         "offline": {
