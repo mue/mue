@@ -316,7 +316,7 @@
           },
           "quicklinks": {
             "title": "Hızlı Linkler",
-            "additional": "Hızlı bağlantılar ekranı ve işlevleri için ek ayarlar",
+            "additional": "Hızlı bağlantılar ekranı ve işlevleri için ek ayarlarınızı belirleyin.",
             "open_new": "Yeni Sekmede Aç",
             "tooltip": "İpucu",
             "text_only": "Yalnızca metni göster",
@@ -464,7 +464,7 @@
               "title": "Versiyon",
               "checking_update": "Güncellemeleri Kontrol Et",
               "update_available": "Güncelleme Mevcut!",
-              "no_update": "En Güncel Sürümdesiniz.",
+              "no_update": "En Güncel Sürümdesiniz",
               "offline_mode": "Çevrimdışı modda güncelleme kontrol edilemiyor.",
               "error": {
                 "title": "Güncelleme bilgisi alınamadı.",
@@ -663,7 +663,7 @@
         "settings": {
           "title": "Ayarları İçe Aktar",
           "description": "Mue'yi yeni bir cihaza mı yüklüyorsunuz? Eski ayarlarınızı almaktan çekinmeyin!",
-          "tip": "Eski Mue kurulumunuzdaki 'Gelişmiş' sekmesine giderek ayarlarınızı dışarıya aktarabilirsiniz. Bunun için JSON dosyasını indirecek olan 'dışa aktar' düğmesine tıklamanız gerekir. Önceki Mue kurulumunuzdan ayarlarınızı ve tercihlerinizi taşımak için bu dosyayı buraya yükleyebilirsiniz."
+          "tip": "Eski Mue kurulumunuzdaki 'Gelişmiş' sekmesine giderek ayarlarınızı dışarıya aktarabilirsiniz. Bunun için JSON dosyasını indirecek olan 'Dışarı Aktar' butonuna tıklamanız gerekir. Önceki Mue kurulumunuzdan ayarlarınızı ve tercihlerinizi taşımak için bu dosyayı buraya yükleyebilirsiniz."
         },
         "privacy": {
           "title": "Gizlilik Seçenekleri",
