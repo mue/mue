@@ -121,3 +121,27 @@
     }
   }
 }
+
+.overviewNews {
+  display: flex;
+  flex-flow: column;
+  margin-top: 16px;
+  padding: 25px;
+  .title {
+    font-size: 36px !important;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 12px !important;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .content {
+    margin: 20px 20px 0;
+  }
+  @include themed() {
+    background: t($modal-sidebar);
+    border-radius: t($borderRadius);
+  }
+}

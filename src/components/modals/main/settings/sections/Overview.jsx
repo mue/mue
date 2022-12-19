@@ -160,10 +160,10 @@ export default class OrderSettings extends PureComponent {
                 })}
               </div>
             </div>
-            <div style={{ display: 'flex', flexFlow: 'column' }}>
+            <div className="overviewNews">
               <span className="title">{this.state.news.title}</span>
               <span className="subtitle">{this.state.news.date}</span>
-              <span>{this.state.news.description}</span>
+              <span className="content">{this.state.news.description}</span>
               <a className="link" href={this.state.news.link}>
                 {this.state.news.linkText}
               </a>
