@@ -293,7 +293,7 @@ export default class Background extends PureComponent {
                 photoInfo: {
                   hidden: false,
                   credit: randomPhoto.photographer,
-                  location: randomPhoto.location || 'N/A',
+                  location: randomPhoto.location,
                 },
               });
             }
@@ -313,7 +313,7 @@ export default class Background extends PureComponent {
                   photoInfo: {
                     hidden: false,
                     credit: randomPhoto.photographer,
-                    location: randomPhoto.location || 'N/A',
+                    location: randomPhoto.location,
                   },
                 });
               } else {
@@ -328,7 +328,7 @@ export default class Background extends PureComponent {
                 photoInfo: {
                   hidden: false,
                   credit: randomPhoto.photographer,
-                  location: randomPhoto.location || 'N/A',
+                  location: randomPhoto.location,
                 },
               });
             }
