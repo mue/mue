@@ -1,5 +1,6 @@
 // since there is so much code in the component, we have moved it to a separate file
 import offlineImages from './offlineImages.json';
+
 export function videoCheck(url) {
   return (
     url.startsWith('data:video/') ||

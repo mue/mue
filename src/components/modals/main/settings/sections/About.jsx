@@ -103,7 +103,7 @@ export default class About extends PureComponent {
       sponsors,
       update,
       other_contributors,
-      photographers: photographers.sort().join(', '),
+      photographers,
       loading: null,
     });
   }
@@ -347,8 +347,15 @@ export default class About extends PureComponent {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.about.photographers')}
           </span>
-          <p>{this.state.loading}</p>
-          <span className="subtitle">{this.state.photographers}</span>
+          {!!this.state.loading ? <p>{this.state.loading}</p> : <></> }
+          <ul>
+            {this.state.photographers.map(({ name, count }) => <>
+              <li>
+                {name}
+                <span style={{ color: '#ccc' }}> ({count} images)</span>
+              </li>
+            </>)}
+          </ul>
         </div>
       </>
     );
