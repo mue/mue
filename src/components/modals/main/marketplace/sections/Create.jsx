@@ -494,12 +494,12 @@ export default class Create extends PureComponent {
           {this.state.currentTab !== 1 && (
             <div className="returnButton">
               <Tooltip
-                title={variables.getMessage('modals.main.navbar.marketplace.product.buttons.back')}
+                title={variables.getMessage('modals.main.marketplace.product.buttons.back')}
                 key="backArrow"
               >
                 <MdArrowBack
                   className="backArrow"
-                  onClick={() => this.changeTab(this.state.currentTab - 1)}
+                  onClick={() => this.changeTab(1)}
                 />
               </Tooltip>
             </div>

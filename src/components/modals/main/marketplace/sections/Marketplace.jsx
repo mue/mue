@@ -1,12 +1,10 @@
 import variables from 'modules/variables';
-import TextField from '@mui/material/TextField';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import {
   MdWifiOff,
   MdLocalMall,
   MdOutlineKeyboardArrowRight,
-  MdRefresh,
   MdSearch,
   MdOutlineArrowForward,
 } from 'react-icons/md';
@@ -365,8 +363,8 @@ export default class Marketplace extends PureComponent {
                 <div>
                   <form className="marketplaceSearch">
                     <input
-                      label="Search"
-                      placeholder="Search"
+                      label={variables.getMessage('widgets.search')}
+                      placeholder={variables.getMessage('widgets.search')}
                       name="filter"
                       id="filter"
                       value={this.state.filter}
