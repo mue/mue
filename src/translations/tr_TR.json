@@ -44,7 +44,7 @@
       "not_found": "Bulunamadı.",
       "meters": "{amount} metre",
       "extra_information": "Ek Bilgilendirme",
-      "feels_like": "{amount} gibi hissettiriyor.",
+      "feels_like": "{amount} gibi hissettiriyor."
     },
     "quote": {
       "link_tooltip": "Wikipedia'da Aç",
