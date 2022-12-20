@@ -25,10 +25,7 @@
       "source": "Kaynak",
       "category": "Kategori",
       "exclude": "Tekrar Gösterme",
-      "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: Eğer bu kategoriye ait \"{category}\" resimleri beğenmiyorsanız, arka plan kaynak ayarları kısmından kategorinin seçimini kaldırabilirsiniz.",
-      "categories": "Kategoriler",
-      "photo": "Fotoğraf",
-      "on": "Aç"
+      "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: Eğer bu kategoriye ait \"{category}\" resimleri beğenmiyorsanız, arka plan kaynak ayarları kısmından kategorinin seçimini kaldırabilirsiniz."
     },
     "search": "Arama",
     "quicklinks": {
@@ -48,12 +45,6 @@
       "meters": "{amount} metre",
       "extra_information": "Ek Bilgilendirme",
       "feels_like": "{amount} gibi hissettiriyor.",
-      "options": {
-        "basic": "Temel",
-        "standard": "Standart",
-        "expanded": "Genişletilmiş",
-        "custom": "Özelleştirilmiş"
-      }
     },
     "quote": {
       "link_tooltip": "Wikipedia'da Aç",
@@ -266,8 +257,7 @@
               "hour": "Saatte Bir",
               "day": "Günde Bir",
               "month": "Ayda Bir"
-            },
-            "category": "Kategori"
+            }
           },
           "search": {
             "title": "Arama",
@@ -394,7 +384,12 @@
               "title": "Erişebilirlik",
               "description": "Mue Erişebilirlik ayarlarını değiştirin",
               "animations": "Animasyonlar",
-              "text_shadow": "Widget metin gölgesi",
+              "text_shadow":{
+                "title": "Widget metin gölgesi",
+                "new": "Yeni",
+                "old": "Eski",
+                "none": "Hiçbiri"
+              } 
               "widget_zoom": "Widget Ölçeği",
               "toast_duration": "Bildirim süresi",
               "milliseconds": "Milisaniye"
@@ -572,11 +567,9 @@
             "quotes": "Alıntı Paketi"
           },
           "descriptions": {
-            "settings": "",
+            "settings": "Mue'yu özelleştirmek için hazır ayarların kullanılması.",
             "photos": "Bir konuyla ilgili fotoğraf koleksiyonu.",
             "quotes": "Bir konuyla ilgili alıntı koleksiyonu.",
-            "photo_pack": "",
-            "quote_pack": ""
           },
           "information": "Bilgilendirme",
           "information_subtitle": "Örneğin: 1.2.3 (büyük güncelleme, küçük güncelleme, yama güncellemesi)",
