@@ -384,12 +384,12 @@
               "title": "Erişebilirlik",
               "description": "Mue Erişebilirlik ayarlarını değiştirin",
               "animations": "Animasyonlar",
-              "text_shadow":{
+              "text_shadow": {
                 "title": "Widget metin gölgesi",
                 "new": "Yeni",
                 "old": "Eski",
                 "none": "Hiçbiri"
-              }, 
+              },
               "widget_zoom": "Widget Ölçeği",
               "toast_duration": "Bildirim süresi",
               "milliseconds": "Milisaniye"
@@ -569,7 +569,7 @@
           "descriptions": {
             "settings": "Mue'yu özelleştirmek için hazır ayarların kullanılması.",
             "photos": "Bir konuyla ilgili fotoğraf koleksiyonu.",
-            "quotes": "Bir konuyla ilgili alıntı koleksiyonu.",
+            "quotes": "Bir konuyla ilgili alıntı koleksiyonu."
           },
           "information": "Bilgilendirme",
           "information_subtitle": "Örneğin: 1.2.3 (büyük güncelleme, küçük güncelleme, yama güncellemesi)",
