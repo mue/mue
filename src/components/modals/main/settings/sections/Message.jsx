@@ -104,7 +104,7 @@ export default class Message extends PureComponent {
                     className="deleteButton"
                     onClick={() => this.modifyMessage('remove', index)}
                   >
-                    Remove
+                    {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
                     <MdCancel />
                   </button>
                 </div>

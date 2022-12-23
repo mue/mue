@@ -151,6 +151,7 @@
             "type_settings": "Seçilen tarih türü için ekran ayarları ve biçimi belirten özellikleri belirleyin.",
             "short_date": "Kısa Tarih",
             "short_format": "Kısa Tarih Formatı",
+            "long_format": "Long format",
             "short_separator": {
               "title": "Kısa Tarih Ayracı",
               "dots": "Nokta",
@@ -323,6 +324,7 @@
             "add_link": "Add Link",
             "no_quicklinks": "No quicklinks",
             "edit": "Edit",
+            "style": "Style",
             "options": {
               "icon": "Icon",
               "text_only": "Text Only",

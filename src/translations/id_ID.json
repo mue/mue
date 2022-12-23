@@ -151,6 +151,7 @@
             "type_settings": "Display settings and format for the selected date type",
             "short_date": "Tanggal Ringkas",
             "short_format": "Format Ringkas",
+            "long_format": "Long format",
             "short_separator": {
               "title": "Pemisah",
               "dots": "Titik",
@@ -323,6 +324,7 @@
             "add_link": "Add Link",
             "no_quicklinks": "No quicklinks",
             "edit": "Edit",
+            "style": "Style",
             "options": {
               "icon": "Icon",
               "text_only": "Text Only",
