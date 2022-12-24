@@ -1,0 +1,554 @@
+{
+  "modals": {
+    "main": {
+      "addons": {
+        "added": "",
+        "check_updates": "",
+        "create": {
+          "finish": {
+            "download": "",
+            "title": ""
+          },
+          "metadata": {
+            "description": "",
+            "icon_url": "",
+            "name": "",
+            "screenshot_url": ""
+          },
+          "other_title": "",
+          "photos": {
+            "title": ""
+          },
+          "quotes": {
+            "api": {
+              "author": "",
+              "name": "",
+              "title": "",
+              "url": ""
+            },
+            "local": {
+              "title": ""
+            },
+            "title": ""
+          },
+          "settings": {
+            "current": "",
+            "json": ""
+          },
+          "title": ""
+        },
+        "empty": {
+          "description": "",
+          "title": ""
+        },
+        "no_updates": "",
+        "sideload": {
+          "errors": {
+            "invalid_photos": "",
+            "invalid_quotes": "",
+            "no_author": "",
+            "no_name": "",
+            "no_type": ""
+          },
+          "failed": "",
+          "title": ""
+        },
+        "sort": {
+          "a_z": "",
+          "newest": "",
+          "oldest": "",
+          "title": "",
+          "z_a": ""
+        },
+        "updates_available": ""
+      },
+      "error_boundary": {
+        "message": "",
+        "refresh": "",
+        "title": ""
+      },
+      "file_upload_error": "",
+      "loading": "",
+      "marketplace": {
+        "no_items": "",
+        "offline": {
+          "description": "",
+          "title": ""
+        },
+        "photo_packs": "",
+        "preset_settings": "",
+        "product": {
+          "author": "",
+          "buttons": {
+            "addtomue": "",
+            "remove": "",
+            "update_addon": ""
+          },
+          "information": "",
+          "last_updated": "",
+          "overview": "",
+          "quote_warning": {
+            "description": "",
+            "title": ""
+          },
+          "version": ""
+        },
+        "quote_packs": ""
+      },
+      "navbar": {
+        "addons": "",
+        "marketplace": "",
+        "settings": ""
+      },
+      "settings": {
+        "buttons": {
+          "export": "",
+          "import": "",
+          "reset": ""
+        },
+        "enabled": "",
+        "reminder": {
+          "message": "",
+          "title": ""
+        },
+        "sections": {
+          "about": {
+            "contact_us": "",
+            "contributors": "",
+            "copyright": "",
+            "no_supporters": "",
+            "photographers": "",
+            "resources_used": {
+              "bg_images": "",
+              "title": ""
+            },
+            "support_mue": "",
+            "supporters": "",
+            "title": "",
+            "version": {
+              "checking_update": "",
+              "error": {
+                "description": "",
+                "title": ""
+              },
+              "no_update": "",
+              "offline_mode": "",
+              "title": "",
+              "update_available": ""
+            }
+          },
+          "advanced": {
+            "custom_css": "",
+            "custom_js": "",
+            "customisation": "",
+            "data": "",
+            "experimental_warning": "",
+            "offline_mode": "",
+            "reset_modal": {
+              "cancel": "",
+              "information": "",
+              "question": "",
+              "title": ""
+            },
+            "tab_name": "",
+            "timezone": {
+              "automatic": "",
+              "title": ""
+            },
+            "title": ""
+          },
+          "appearance": {
+            "accessibility": {
+              "animations": "",
+              "milliseconds": "",
+              "text_shadow": "",
+              "title": "",
+              "toast_duration": "",
+              "widget_zoom": ""
+            },
+            "font": {
+              "custom": "",
+              "google": "",
+              "style": {
+                "italic": "",
+                "normal": "",
+                "oblique": "",
+                "title": ""
+              },
+              "title": "",
+              "weight": {
+                "bold": "",
+                "extra_bold": "",
+                "extra_light": "",
+                "light": "",
+                "medium": "",
+                "normal": "",
+                "semi_bold": "",
+                "thin": "",
+                "title": ""
+              }
+            },
+            "navbar": {
+              "hover": "",
+              "notes": "",
+              "refresh": "",
+              "refresh_options": {
+                "none": "",
+                "page": ""
+              },
+              "title": ""
+            },
+            "theme": {
+              "auto": "",
+              "dark": "",
+              "light": "",
+              "title": ""
+            },
+            "title": ""
+          },
+          "background": {
+            "buttons": {
+              "download": "",
+              "favourite": "",
+              "title": "",
+              "view": ""
+            },
+            "category": "",
+            "ddg_image_proxy": "",
+            "effects": {
+              "blur": "",
+              "brightness": "",
+              "filters": {
+                "amount": "",
+                "contrast": "",
+                "grayscale": "",
+                "invert": "",
+                "saturate": "",
+                "sepia": "",
+                "title": ""
+              },
+              "title": ""
+            },
+            "interval": {
+              "day": "",
+              "half_hour": "",
+              "hour": "",
+              "minute": "",
+              "month": "",
+              "title": ""
+            },
+            "photo_information": "",
+            "show_map": "",
+            "source": {
+              "add_background": "",
+              "add_colour": "",
+              "add_url": "",
+              "api": "",
+              "custom_background": "",
+              "custom_colour": "",
+              "disabled": "",
+              "loop_video": "",
+              "mute_video": "",
+              "quality": {
+                "datasaver": "",
+                "high": "",
+                "normal": "",
+                "original": "",
+                "title": ""
+              },
+              "title": "",
+              "upload": ""
+            },
+            "title": "",
+            "transition": "",
+            "type": {
+              "api": "",
+              "custom_colour": "",
+              "custom_image": "",
+              "random_colour": "",
+              "random_gradient": "",
+              "title": ""
+            }
+          },
+          "changelog": {
+            "by": "",
+            "title": ""
+          },
+          "date": {
+            "datenth": "",
+            "day_of_week": "",
+            "short_date": "",
+            "short_format": "",
+            "short_separator": {
+              "dash": "",
+              "dots": "",
+              "gaps": "",
+              "slashes": "",
+              "title": ""
+            },
+            "title": "",
+            "type": {
+              "long": "",
+              "short": ""
+            },
+            "week_number": ""
+          },
+          "experimental": {
+            "developer": "",
+            "title": "",
+            "warning": ""
+          },
+          "greeting": {
+            "birthday": "",
+            "birthday_age": "",
+            "birthday_date": "",
+            "default": "",
+            "events": "",
+            "name": "",
+            "title": ""
+          },
+          "keybinds": {
+            "background": {
+              "download": "",
+              "favourite": "",
+              "maximise": "",
+              "show_info": ""
+            },
+            "click_to_record": "",
+            "modal": "",
+            "notes": {
+              "copy": "",
+              "pin": ""
+            },
+            "quicklinks": "",
+            "quote": {
+              "copy": "",
+              "favourite": "",
+              "tweet": ""
+            },
+            "recording": "",
+            "search": "",
+            "title": ""
+          },
+          "language": {
+            "quote": "",
+            "title": ""
+          },
+          "message": {
+            "add": "",
+            "text": "",
+            "title": ""
+          },
+          "order": {
+            "title": ""
+          },
+          "quicklinks": {
+            "open_new": "",
+            "text_only": "",
+            "title": "",
+            "tooltip": ""
+          },
+          "quote": {
+            "add": "",
+            "author_link": "",
+            "buttons": {
+              "copy": "",
+              "favourite": "",
+              "title": "",
+              "tweet": ""
+            },
+            "custom": "",
+            "custom_author": "",
+            "title": ""
+          },
+          "search": {
+            "autocomplete": "",
+            "autocomplete_provider": "",
+            "custom": "",
+            "dropdown": "",
+            "search_engine": "",
+            "title": "",
+            "voice_search": ""
+          },
+          "stats": {
+            "sections": {
+              "addons_installed": "",
+              "backgrounds_downloaded": "",
+              "backgrounds_favourited": "",
+              "quicklinks_added": "",
+              "quotes_favourited": "",
+              "settings_changed": "",
+              "tabs_opened": ""
+            },
+            "title": "",
+            "usage": "",
+            "warning": ""
+          },
+          "time": {
+            "analogue": {
+              "hour_hand": "",
+              "hour_marks": "",
+              "minute_hand": "",
+              "minute_marks": "",
+              "second_hand": "",
+              "title": ""
+            },
+            "digital": {
+              "seconds": "",
+              "title": "",
+              "twelvehour": "",
+              "twentyfourhour": "",
+              "zero": ""
+            },
+            "format": "",
+            "percentage_complete": "",
+            "title": "",
+            "type": ""
+          },
+          "weather": {
+            "auto": "",
+            "extra_info": {
+              "atmospheric_pressure": "",
+              "cloudiness": "",
+              "humidity": "",
+              "max_temp": "",
+              "min_temp": "",
+              "show_description": "",
+              "show_location": "",
+              "title": "",
+              "visibility": "",
+              "wind_direction": "",
+              "wind_speed": ""
+            },
+            "location": "",
+            "temp_format": {
+              "celsius": "",
+              "fahrenheit": "",
+              "kelvin": "",
+              "title": ""
+            },
+            "title": ""
+          }
+        }
+      },
+      "title": ""
+    },
+    "update": {
+      "error": {
+        "description": "",
+        "title": ""
+      },
+      "offline": {
+        "description": "",
+        "title": ""
+      },
+      "title": ""
+    },
+    "welcome": {
+      "buttons": {
+        "close": "",
+        "next": "",
+        "preview": "",
+        "previous": ""
+      },
+      "preview": {
+        "continue": "",
+        "description": ""
+      },
+      "sections": {
+        "final": {
+          "changes": "",
+          "changes_description": "",
+          "description": "",
+          "imported": "",
+          "title": ""
+        },
+        "intro": {
+          "description": "",
+          "title": ""
+        },
+        "language": {
+          "description": "",
+          "title": ""
+        },
+        "privacy": {
+          "ddg_proxy_description": "",
+          "description": "",
+          "links": {
+            "privacy_policy": "",
+            "source_code": "",
+            "title": ""
+          },
+          "offline_mode_description": "",
+          "title": ""
+        },
+        "settings": {
+          "description": "",
+          "tip": "",
+          "title": ""
+        },
+        "theme": {
+          "description": "",
+          "tip": "",
+          "title": ""
+        }
+      },
+      "tip": ""
+    }
+  },
+  "tabname": "",
+  "toasts": {
+    "error": "",
+    "imported": "",
+    "installed": "",
+    "notes": "",
+    "quote": "",
+    "reset": "",
+    "uninstalled": "",
+    "updated": ""
+  },
+  "widgets": {
+    "background": {
+      "credit": "",
+      "download": "",
+      "information": "",
+      "pexels": "",
+      "unsplash": ""
+    },
+    "date": {
+      "week": ""
+    },
+    "greeting": {
+      "afternoon": "",
+      "birthday": "",
+      "christmas": "",
+      "evening": "",
+      "halloween": "",
+      "morning": "",
+      "newyear": ""
+    },
+    "navbar": {
+      "notes": {
+        "placeholder": "",
+        "title": ""
+      },
+      "tooltips": {
+        "refresh": ""
+      }
+    },
+    "quicklinks": {
+      "add": "",
+      "icon": "",
+      "name": "",
+      "name_error": "",
+      "new": "",
+      "url": "",
+      "url_error": ""
+    },
+    "search": "",
+    "weather": {
+      "meters": "",
+      "not_found": ""
+    }
+  }
+}
