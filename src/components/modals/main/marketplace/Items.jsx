@@ -80,7 +80,7 @@ function Items({
           <MdAutoFixHigh />
           <span className="title">{variables.getMessage('modals.main.marketplace.cant_find')}</span>
           <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.knowledgebase_one')}
+            {variables.getMessage('modals.main.marketplace.knowledgebase_one') + ' '}
             <a
               className="link"
               target="_blank"
@@ -89,7 +89,7 @@ function Items({
             >
               {variables.getMessage('modals.main.marketplace.knowledgebase_two')}
             </a>
-            {variables.getMessage('modals.main.marketplace.knowledgebase_three')}
+            {' ' + variables.getMessage('modals.main.marketplace.knowledgebase_three')}
           </span>
         </div>
       ) : null}

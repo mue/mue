@@ -17,7 +17,7 @@ export default class DateSettings extends PureComponent {
   render() {
     const longSettings = (
       <>
-        <Dropdown label="Long Format" name="longFormat" category="date">
+        <Dropdown label={variables.getMessage('modals.main.settings.sections.date.long_format')} name="longFormat" category="date">
           <option value="DMY">DMY</option>
           <option value="MDY">MDY</option>
           <option value="YMD">YMD</option>

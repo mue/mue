@@ -219,7 +219,7 @@ export default class QuickLinks extends PureComponent {
             'modals.main.settings.sections.quicklinks.styling_description',
           )}
         >
-          <Dropdown label="Style" name="quickLinksStyle" category="other">
+          <Dropdown label={variables.getMessage('modals.main.settings.sections.quicklinks.style')} name="quickLinksStyle" category="other">
             <option value="icon">
               {variables.getMessage('modals.main.settings.sections.quicklinks.options.icon')}
             </option>

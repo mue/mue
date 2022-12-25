@@ -151,6 +151,7 @@
             "type_settings": "Display settings and format for the selected date type",
             "short_date": "Fecha corta",
             "short_format": "Formato corto",
+            "long_format": "Long format",
             "short_separator": {
               "title": "Separador corto",
               "dots": "Puntos",
@@ -323,6 +324,7 @@
             "add_link": "Add Link",
             "no_quicklinks": "No quicklinks",
             "edit": "Edit",
+            "style": "Style",
             "options": {
               "icon": "Icon",
               "text_only": "Text Only",

@@ -2,6 +2,7 @@ import * as de_DE from '../translations/de_DE.json';
 import * as en_GB from '../translations/en_GB.json';
 import * as en_US from '../translations/en_US.json';
 import * as es from '../translations/es.json';
+import * as es_419 from '../translations/es_419.json';
 import * as fr from '../translations/fr.json';
 import * as nl from '../translations/nl.json';
 import * as no from '../translations/no.json';
@@ -15,6 +16,7 @@ const translations = {
   en_GB,
   en_US,
   es,
+  es_419,
   fr,
   nl,
   no,

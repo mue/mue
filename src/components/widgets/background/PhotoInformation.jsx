@@ -162,6 +162,11 @@ function PhotoInformation({ info, url, api }) {
     );
   };
 
+  let photoMapClassList = 'map-concept';
+  if (usePhotoMap) {
+    photoMapClassList += ' photoMap';
+  }
+
   // only request map image if the user looks at the photo information
   // this is to reduce requests to the api
   try {
@@ -204,8 +209,8 @@ function PhotoInformation({ info, url, api }) {
           onMouseEnter={() => setshowExtraInfo(true)}
           onMouseLeave={() => setshowExtraInfo(false)}
         >
-          <div className="map-concept">
-            <MdLocationOn />
+          <div className={photoMapClassList}>
+            {!showingPhotoMap ? <MdLocationOn /> : ''}
             {photoMap()}
           </div>
           {showingPhotoMap ? (
