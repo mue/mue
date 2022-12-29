@@ -299,7 +299,7 @@
             },
             "options": {
               "basic": "Temel",
-              "standard": "Standard",
+              "standard": "Standart",
               "expanded": "Genişletilmiş",
               "custom": "Özelleştirilmiş"
             },
@@ -311,10 +311,10 @@
             "open_new": "Yeni Sekmede Aç",
             "tooltip": "İpucu",
             "text_only": "Yalnızca Metni Göster",
-            "add_link": "Add Link",
-            "no_quicklinks": "No quicklinks",
-            "edit": "Edit",
-            "style": "Style",
+            "add_link": "Link Ekle",
+            "no_quicklinks": "Hızlı bağlantı yok.",
+            "edit": "Düzenleme",
+            "style": "Stil",
             "options": {
               "icon": "İkon",
               "text_only": "Sadece Metin",
