@@ -3,7 +3,7 @@
   "widgets": {
     "greeting": {
       "morning": "Günaydın",
-      "afternoon": "İyi Öğlenler",
+      "afternoon": "Tünaydın",
       "evening": "İyi Akşamlar",
       "christmas": "Mutlu Noeller",
       "newyear": "Yeni Yılınız Kutlu Olsun",
@@ -11,24 +11,21 @@
       "birthday": "Doğum Gününüz Kutlu Olsun"
     },
     "background": {
-      "credit": "Fotoğraf",
+      "credit": "Fotoğraf Sahibi ",
       "unsplash": ", Unsplash",
       "pexels": ", Pexels",
       "information": "Bilgilendirme",
-      "download": "İndirme",
-      "downloads": "Downloads",
-      "views": "Views",
-      "likes": "Likes",
-      "location": "Location",
-      "camera": "Camera",
-      "resolution": "Resolution",
-      "source": "Source",
-      "category": "Category",
-      "exclude": "Don't show again",
-      "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "categories": "Categories",
-      "photo": "Photo",
-      "on": "on"
+      "download": "İndir",
+      "downloads": "İndirilenler",
+      "views": "Görüntülenme",
+      "likes": "Beğeni",
+      "location": "Konum",
+      "camera": "Kamera",
+      "resolution": "Çözünürlük",
+      "source": "Kaynak",
+      "category": "Kategori",
+      "exclude": "Tekrar Gösterme",
+      "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: Eğer bu kategoriye ait \"{category}\" resimleri beğenmiyorsanız, arka plan kaynak ayarları kısmından kategorinin seçimini kaldırabilirsiniz."
     },
     "search": "Arama",
     "quicklinks": {
@@ -37,8 +34,8 @@
       "url": "URL",
       "icon": "İkon (İsteğe Bağlı)",
       "add": "Ekle",
-      "name_error": "İsim Gerekli",
-      "url_error": "URL Gerekli"
+      "name_error": "İsim gerekli",
+      "url_error": "URL gerekli"
     },
     "date": {
       "week": "Haftada Bir"
@@ -47,13 +44,7 @@
       "not_found": "Bulunamadı.",
       "meters": "{amount} metre",
       "extra_information": "Ek Bilgilendirme",
-      "feels_like": "{amount} gibi hissettiriyor.",
-      "options": {
-        "basic": "Basic",
-        "standard": "Standard",
-        "expanded": "Expanded",
-        "custom": "Custom"
-      }
+      "feels_like": "{amount} gibi hissettiriyor."
     },
     "quote": {
       "link_tooltip": "Wikipedia'da Aç",
@@ -105,18 +96,18 @@
         "sections": {
           "header": {
             "more_info": "Daha fazla bilgi",
-            "report_issue": "Rapor Bildir",
-            "enabled": "Bu widget'ın gösterilip gösterilmeyeceğini seçin.",
-            "size": "Widget'ın büyüklüğünü kontrol etmek için kaydırın."
+            "report_issue": "Hata Bildir",
+            "enabled": "Bu widget'ınızın gösterilip gösterilmeyeceğini seçin.",
+            "size": "Widget'ınızın büyüklüğünü kontrol etmek için kaydırın."
           },
           "time": {
             "title": "Zaman",
             "format": "Biçim Formatı",
             "type": "Tür",
-            "type_subtitle": "Saat formatınızın dijital, analog veya günün tamamlanma yüzdesi olarak mı görüntüleneceğini seçin.",
+            "type_subtitle": "Saat formatınızın dijital, analog veya günün tamamlanma yüzdesi olmak üzere nasıl görüntüleneceğini belirleyin.",
             "digital": {
               "title": "Dijital",
-              "subtitle": "Dijital saatin nasıl göründüğünü değiştirin.",
+              "subtitle": "Dijital saatin görünümünü değiştirin.",
               "seconds": "Saniye",
               "twentyfourhour": "24 Saat",
               "twelvehour": "12 Saat",
@@ -124,18 +115,18 @@
             },
             "analogue": {
               "title": "Analog",
-              "subtitle": "Analog saatin nasıl göründüğünü değiştirin.",
-              "second_hand": "Saniye İbresi",
-              "minute_hand": " Yelkovan / Dakika İbresi",
-              "hour_hand": "Akrep / Saat İbresi",
-              "hour_marks": "Saat Çizgileri",
-              "minute_marks": "Dakika Çizgileri"
+              "subtitle": "Analog saatin nasıl görüntüleneceğini belirleyin.",
+              "second_hand": "Saniye ibresi",
+              "minute_hand": " Yelkovan (dakika) ibresi",
+              "hour_hand": "Akrep (saat) ibresi",
+              "hour_marks": "Saat çizgileri",
+              "minute_marks": "Dakika çizgileri"
             },
             "percentage_complete": "Yüzdelik Gösterim",
             "vertical_clock": {
-              "title": "Vertical Clock",
-              "change_hour_colour": "Change hour text colour",
-              "change_minute_colour": "Change minute text colour"
+              "title": "Dikey Saat",
+              "change_hour_colour": "Saat kısmının metin rengini değiştir.",
+              "change_minute_colour": "Dakika kısmının metin rengini değiştir."
             }
           },
           "date": {
@@ -155,27 +146,27 @@
             "short_separator": {
               "title": "Kısa Tarih Ayracı",
               "dots": "Nokta",
-              "dash": "Kısa Çizgi",
+              "dash": "Kısa çizgi",
               "gaps": "Boşluk",
-              "slashes": "Eğik Çizgi"
+              "slashes": "Eğik çizgi"
             }
           },
           "quote": {
             "title": "Alıntı",
             "additional": "Alıntı widget'ının stilini özelleştirmek için diğer ayarlar.",
-            "author_link": "Yazar Bağlantısını Göster",
-            "custom": "Not Özelleştir",
+            "author_link": "Yazara Dair",
+            "custom": "Notu Özelleştir",
             "custom_subtitle": "Kendi özel alıntınızı belirleyin, ekleyin.",
-            "no_quotes": "No quotes",
+            "no_quotes": "Alıntı yok!",
             "author": "Yazar",
             "custom_buttons": "Butonlar",
-            "custom_author": "Yazar Özelleştir",
-            "author_img": "Yazar Resmini Göster",
-            "add": "Alıntı Ekle.",
-            "source_subtitle": "Choose where to get quotes from",
+            "custom_author": "Özel yazar",
+            "author_img": "Yazar resmini göster.",
+            "add": "Alıntı Ekle",
+            "source_subtitle": "Alıntıyı nereden alacağınızı seçin.",
             "buttons": {
               "title": "Butonlar",
-              "subtitle": "Alıntıda hangi butonların gösterileceğini seçin.",
+              "subtitle": "Alıntı kısmı için hangi butonların gösterileceğini seçin.",
               "copy": "Kopyala",
               "tweet": "Tweet'le",
               "favourite": "Favorilere Ekle"
@@ -184,21 +175,21 @@
           "greeting": {
             "title": "Karşılama Ekranı",
             "events": "Olaylar",
-            "default": "Karşılama Mesajları Görünsün",
+            "default": "Karşılama mesajları görünsün.",
             "name": "İsminiz",
             "birthday": "Doğum Günü",
-            "birthday_subtitle": "Doğum günün olduğunda bir 'Mutlu Yıllar' mesajı göster.",
-            "birthday_age": "Doğum Gününde Yaş Bilgisi Gözüksün",
-            "birthday_date": "Doğum Günü Tarihi",
-            "additional": "Karşılama ekranı için ek ayarlar."
+            "birthday_subtitle": "Doğum günüm olduğunda bir 'Mutlu Yıllar' mesajı göster.",
+            "birthday_age": "Doğum günümde yaş bilgisi gözüksün.",
+            "birthday_date": "Doğum günü tarihim",
+            "additional": "Karşılama ekranı için ek ayarlarızı belirleyin."
           },
           "background": {
             "title": "Arka Plan",
-            "ddg_image_proxy": "DuckDuckGo Görüntü Proxy'sini Kullan",
-            "transition": "Geçiş Sırasında Solma",
-            "photo_information": "Fotoğraf Bilgilerini Göster",
-            "show_map": "Varsa Fotoğraf Bilgilerinde Konum Bilgisini Göster",
-            "categories": "Categories",
+            "ddg_image_proxy": "DuckDuckGo görüntü proxy'sini kullan.",
+            "transition": "Geçiş sırasında solma efekti uygula.",
+            "photo_information": "Fotoğraf bilgilerini göster.",
+            "show_map": "Varsa fotoğraf bilgilerinde konum bilgisini göster.",
+            "categories": "Kategoriler",
             "buttons": {
               "title": "Butonlar",
               "view": "Arka Planı Görüntüle",
@@ -207,7 +198,7 @@
             },
             "effects": {
               "title": "Görsel Efektler",
-              "subtitle": "Arka plan resimlerine efektler ekleyin.",
+              "subtitle": "Arka plan görseli için efektleri düzenleyin.",
               "blur": "Bulanıklığı ayarla",
               "brightness": "Parlaklığı ayarla",
               "filters": {
@@ -242,7 +233,7 @@
               "select": "Veya Seç",
               "add_url": "URL/Uzantı ekle",
               "disabled": "Kullanılamaz",
-              "loop_video": "Tekrarlanan video",
+              "loop_video": "Tekrarlayan video",
               "mute_video": "Videonun sesini kapat",
               "quality": {
                 "title": "Kalite",
@@ -251,9 +242,9 @@
                 "normal": "Normal Kalite",
                 "datasaver": "Veri Tasarrufu"
               },
-              "custom_title": "Custom Images",
-              "custom_description": "Select images from your local computer",
-              "remove": "Remove Image"
+              "custom_title": "Özel Arka Plan",
+              "custom_description": "Bilgisayarınızdan görseli seçin",
+              "remove": "Resmi Kaldır"
             },
             "display": "Görüntüleme",
             "display_subtitle": "Arka plan ve fotoğraf bilgilerinin nasıl yüklendiğini değiştirin.",
@@ -267,15 +258,14 @@
               "hour": "Saatte Bir",
               "day": "Günde Bir",
               "month": "Ayda Bir"
-            },
-            "category": "Kategori"
+            }
           },
           "search": {
             "title": "Arama",
             "additional": "Arama widget'ı ekranı ve işlevselliği için ek seçenekler.",
             "search_engine": "Arama Motoru",
             "search_engine_subtitle": "Arama çubuğunda kullanmak için arama motorunu seçin.",
-            "custom": "Özel arama URL'si",
+            "custom": "Özel URL/bağlantı",
             "autocomplete": "Otomatik Tamamlama",
             "autocomplete_provider": "Otomatik Tamamlama Sağlayıcısı",
             "autocomplete_provider_subtitle": "Otomatik tamamlama açılır sonuçları için kullanılacak arama motorunu belirleyin.",
@@ -287,7 +277,7 @@
             "title": "Hava Durumu",
             "location": "Konum",
             "auto": "Otomatik",
-            "widget_type": "Widget Type",
+            "widget_type": "Widget Türü",
             "temp_format": {
               "title": "Sıcaklık formatı",
               "celsius": "Santigrat",
@@ -308,51 +298,51 @@
               "atmospheric_pressure": "Atmosferik Basınç"
             },
             "options": {
-              "basic": "Basic",
-              "standard": "Standard",
-              "expanded": "Expanded",
-              "custom": "Custom"
+              "basic": "Temel",
+              "standard": "Standart",
+              "expanded": "Genişletilmiş",
+              "custom": "Özelleştirilmiş"
             },
-            "custom_settings": "Custom Settings"
+            "custom_settings": "Özel Ayarlar"
           },
           "quicklinks": {
             "title": "Hızlı Linkler",
-            "additional": "Hızlı bağlantılar ekranı ve işlevleri için ek ayarlar.",
+            "additional": "Hızlı bağlantılar ekranı ve işlevleri için ek ayarlarınızı belirleyin.",
             "open_new": "Yeni Sekmede Aç",
             "tooltip": "İpucu",
             "text_only": "Yalnızca Metni Göster",
-            "add_link": "Add Link",
-            "no_quicklinks": "No quicklinks",
-            "edit": "Edit",
-            "style": "Style",
+            "add_link": "Link Ekle",
+            "no_quicklinks": "Hızlı bağlantı yok.",
+            "edit": "Düzenleme",
+            "style": "Stil",
             "options": {
-              "icon": "Icon",
-              "text_only": "Text Only",
+              "icon": "İkon",
+              "text_only": "Sadece Metin",
               "metro": "Metro"
             },
-            "styling": "Quick Links Styling",
-            "styling_description": "Customise Quick Links appearance"
+            "styling": "Hızlı Bağlantı Görünümü",
+            "styling_description": "Hızlı Bağlantılar görünümünü özelleştirin"
           },
           "message": {
             "title": "Mesaj",
-            "add": "Mesaj Ekle",
+            "add": "Mesaj Ekle!",
             "messages": "Mesajlar",
             "text": "Metin",
-            "no_messages": "No messages",
-            "add_some": "Go ahead and add some.",
-            "content": "Message Content"
+            "no_messages": "Mesaj yok",
+            "add_some": "Devam et ve biraz ekle.",
+            "content": "Mesaj İçeriği"
           },
           "appearance": {
             "title": "Görünüm",
             "style": {
-              "title": "Widget Style",
-              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
-              "legacy": "Legacy",
-              "new": "New"
+              "title": "Widget Stili",
+              "description": "Eski (7.0 öncesi kullanıcılar için etkin) ve şık modern stilimiz olmak üzere iki stil arasından seçim yapın.",
+              "legacy": "Eski",
+              "new": "Yeni"
             },
             "theme": {
               "title": "Tema",
-              "description": "Change the theme of the Mue widgets and modals",
+              "description": "Mue widget'larının ve modellerinin temasını değiştirin.",
               "auto": "Otomatik",
               "light": "Açık",
               "dark": "Koyu"
@@ -362,8 +352,8 @@
               "notes": "Notlar",
               "refresh": "Yenile Butonu",
               "refresh_subtitle": "Yenile düğmesine tıkladığınızda neyin yenileneceğini seçin.",
-              "hover": "Yalnızca Fareyle Üzerine Gelindiğinde Göster",
-              "additional": "Gezinme çubuğu stilini ve hangi düğmeleri görüntülemek istediğinizi değiştirin.",
+              "hover": "Yalnızca fareyle üzerine gelindiğinde göster.",
+              "additional": "Gezinme çubuğu stilini ve hangi butonları görüntülemek istediğinizi değiştirin.",
               "refresh_options": {
                 "none": "Hiçbiri",
                 "page": "Sayfa"
@@ -371,17 +361,17 @@
             },
             "font": {
               "title": "Yazı tipi",
-              "description": "Change the font used in Mue",
+              "description": "Mue'da kullanılan yazı tipini değiştirin.",
               "custom": "Özel yazı tipi",
-              "google": "Google Fonts'tan içe aktar",
+              "google": "Google Fonts'tan içeri aktar.",
               "weight": {
                 "title": "Yazı tipi genişliği",
-                "thin": "En İnce",
-                "extra_light": "Ekstra İnce",
-                "light": "İnce",
+                "thin": "Ekstra İnce",
+                "extra_light": "İnce",
+                "light": "Hafif İnce",
                 "normal": "Normal",
                 "medium": "Orta",
-                "semi_bold": "Yarı Kalın",
+                "semi_bold": "Hafif Kalın",
                 "bold": "Kalın",
                 "extra_bold": "Ekstra Kalın"
               },
@@ -393,11 +383,16 @@
               }
             },
             "accessibility": {
-              "title": "Ulaşılabilirlik",
-              "description": "Accessibility settings for Mue",
+              "title": "Erişebilirlik",
+              "description": "Mue Erişebilirlik ayarlarını değiştirin",
               "animations": "Animasyonlar",
-              "text_shadow": "Widget metin gölgesi",
-              "widget_zoom": "Widget Yakınlaştırma",
+              "text_shadow": {
+                "title": "Widget metin gölgesi",
+                "new": "Yeni",
+                "old": "Eski",
+                "none": "Hiçbiri"
+              },
+              "widget_zoom": "Widget Ölçeği",
               "toast_duration": "Bildirim süresi",
               "milliseconds": "Milisaniye"
             }
@@ -407,10 +402,10 @@
           },
           "advanced": {
             "title": "Gelişmiş",
-            "offline_mode": "Çevrimdışı mod",
+            "offline_mode": "Çevrimdışı Mod",
             "offline_subtitle": "Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm istekler devre dışı bırakılır.",
             "data": "Veri",
-            "data_subtitle": "Mue ayarlarınızı bilgisayarınıza kaydetmeyi, mevcut bir ayar dosyasını başka bir bilgisayara aktarmayı veya ayarlarınızı varsayılan değerlerine sıfırlamayı seçin.",
+            "data_subtitle": "Mue Tab ayarlarınızı bilgisayarınıza kaydetmenize, mevcut ayarlarınızı başka bir bilgisayara aktarmanıza veya ayarlarınızı varsayılan değerlerine sıfırlamınıza olanak sağlar. İstediğiniz işlemi seçin.",
             "reset_modal": {
               "title": "UYARI",
               "question": "Mue'yu sıfırlamak istiyor musunuz?",
@@ -421,7 +416,7 @@
             "custom_css": "Özel CSS",
             "custom_css_subtitle": "Mue'nin stilini 'Cascading Style Sheets (CSS)' ile özelleştirin.",
             "custom_js": "Özel JS",
-            "tab_name": "Sekme adı",
+            "tab_name": "Sekme Adı",
             "tab_name_subtitle": "Tarayıcınızda görünen sekmenin adını değiştirin.",
             "timezone": {
               "title": "Saat Dilimi",
@@ -444,7 +439,7 @@
             },
             "usage": "Kullanım İstatistikleri",
             "achievements": "Başarılar",
-            "unlocked": "{count} Unlocked"
+            "unlocked": "{count} Kilidi Açıldı"
           },
           "experimental": {
             "title": "Deneysel Özellikler",
@@ -464,9 +459,9 @@
             "copyright": "Telif Hakkı",
             "version": {
               "title": "Versiyon",
-              "checking_update": "Güncellemeler kontrol et.",
-              "update_available": "Güncelleme mevcut!",
-              "no_update": "En güncel sürümdesiniz.",
+              "checking_update": "Güncellemeleri Kontrol Et",
+              "update_available": "Güncelleme Mevcut!",
+              "no_update": "En Güncel Sürümdesiniz",
               "offline_mode": "Çevrimdışı modda güncelleme kontrol edilemiyor.",
               "error": {
                 "title": "Güncelleme bilgisi alınamadı.",
@@ -475,11 +470,11 @@
             },
             "contact_us": "Bize Ulaşın!",
             "support_mue": "Mue Destek",
-            "support_subtitle": "Mue tamamen ücretsiz olduğu için sunucu faturalarını ve fon geliştirmeyi karşılamak için bağışlara güveniyoruz.",
+            "support_subtitle": "Mue tamamen ücretsiz olduğu için, sunucu faturalarını karşılamak ve geliştirme masraflarını finanse etmek için bağışları kullanıyoruz.",
             "support_donate": "Bağış Yap",
             "resources_used": {
               "title": "Kullanılan kaynaklar",
-              "bg_images": "Çevrimdışı arka plan resimleri"
+              "bg_images": "Çevrimdışı Arka Plan Resim İçerikleri"
             },
             "contributors": "Katkıda Bulunanlar",
             "supporters": "Destekleyenler",
@@ -495,27 +490,27 @@
       },
       "marketplace": {
         "all": "Tümü",
-        "learn_more": "Learn More",
+        "learn_more": "Daha Fazla Bilgi Edin",
         "photo_packs": "Fotoğraf Paketleri",
         "quote_packs": "Alıntı Paketleri",
-        "preset_settings": "Ön Ayar Ayarları",
+        "preset_settings": "Ön Ayar Paketleri",
         "no_items": "Bu kategoride öğe yok",
-        "collection": "Collection",
+        "collection": "Koleksiyon",
         "explore_collection": "Koleksiyonu Keşfedin",
-        "collections": "Collections",
+        "collections": "Koleksiyonlar",
         "cant_find": "Aradığınızı bulamıyor musunuz?",
-        "knowledgebase_one": "Kendiniz oluşturmak için",
-        "knowledgebase_two": "bilgilendirme sayfamızı",
+        "knowledgebase_one": "Kendiniz oluşturmak için ",
+        "knowledgebase_two": "bilgilendirme sayfamızı ",
         "knowledgebase_three": "ziyaret edin.",
         "product": {
           "overview": "Genel Bakış",
           "information": "Bilgi",
           "last_updated": "Son Güncelleme",
           "description": "Açıklama/Tanım",
-          "show_more": "Daha fazla göster",
-          "show_less": "Daha az göster",
-          "show_all": "Show All",
-          "showing": "Showing",
+          "show_more": "Daha Fazla Göster",
+          "show_less": "Daha Az Göster",
+          "show_all": "Hepsini Göster ↓",
+          "showing": "Gösteriliyor",
           "no_images": "Fotoğraf bulunamadı",
           "no_quotes": "Alıntı bulunamadı",
           "version": "Versiyon",
@@ -523,11 +518,11 @@
           "part_of": "Parçası",
           "explore": "Keşfet",
           "buttons": {
-            "addtomue": "Mue'ye Ekle",
+            "addtomue": "Mue Tab'ıma Ekle",
             "remove": "Kaldır",
             "update_addon": "Eklentiyi Güncelle",
             "back": "Geri",
-            "report": "Report"
+            "report": "Bildir/Raporla"
           }
         },
         "offline": {
@@ -569,20 +564,18 @@
           "other_title": "Eklenti Oluştur",
           "create_type": "{type} Paketi Oluştur",
           "types": {
-            "settings": "Preset Settings Pack",
-            "photos": "Photo Pack",
-            "quotes": "Quotes Pack"
+            "settings": "Önceden Ayarlanmış Ayarlar Paketi",
+            "photos": "Fatoğraf Paketi",
+            "quotes": "Alıntı Paketi"
           },
           "descriptions": {
-            "settings": "",
-            "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic.",
-            "photo_pack": "",
-            "quote_pack": ""
+            "settings": "Mue'yu özelleştirmek için hazır ayarların kullanılması.",
+            "photos": "Bir konuyla ilgili fotoğraf koleksiyonu.",
+            "quotes": "Bir konuyla ilgili alıntı koleksiyonu."
           },
           "information": "Bilgilendirme",
           "information_subtitle": "Örneğin: 1.2.3 (büyük güncelleme, küçük güncelleme, yama güncellemesi)",
-          "import_custom": "Özel ayarlardan içe aktarın.",
+          "import_custom": "Özel ayarlardan içeri aktarın.",
           "publishing": {
             "title": "Sonraki adım, Yayınla...",
             "subtitle": "Yeni oluşturduğunuz eklentiyi nasıl yayınlayacağınızla ilgili bilgiler için Mue Bilgi Bankası'nı ziyaret edin.",
@@ -593,10 +586,10 @@
             "icon_url": "İkon URL'si ",
             "screenshot_url": "Arka plan URL'si",
             "description": "Açıklama",
-            "example": "Download example"
+            "example": "Örneği İndir"
           },
           "finish": {
-            "title": "Bitiş",
+            "title": "Kurulumu Bitir",
             "download": "Eklentiyi İndir"
           },
           "settings": {
@@ -636,50 +629,50 @@
       "tip": "İpuçları",
       "sections": {
         "intro": {
-          "title": "Mue Sekmesine Hoş Geldiniz",
-          "description": "Mue'yi yüklediğiniz için teşekkür ederiz, umarız uzantımızla iyi vakit geçirirsiniz.",
+          "title": "Mue Tab'a Hoş Geldiniz!",
+          "description": "Mue Tab'ı yüklediğiniz için teşekkür ederiz, umarız uzantımızla iyi vakit geçirirsiniz.",
           "notices": {
-            "discord_title": "Join our Discord",
-            "discord_description": "Talk with the Mue community and developers",
-            "discord_join": "Join",
-            "github_title": "Contribute on GitHub",
-            "github_description": "Report bugs, add features or donate",
-            "github_open": "Open"
+            "discord_title": "Dicord Kanalımıza Katılın",
+            "discord_description": "Mue topluluğu ve geliştiricileri ile konuşun.",
+            "discord_join": "Katıl",
+            "github_title": "GitHub Üzerinden Katkıda Bulunun",
+            "github_description": "Hataları bildirin, özellikler ekleyin veya bağış yapın.",
+            "github_open": "Aç"
           }
         },
         "language": {
-          "title": "Dilinizi seçin",
+          "title": "Dilinizi Seçin",
           "description": "Mue, aşağıda listelenen dillerde görüntülenebilir. Ayrıca sayfamıza yeni çeviriler de ekleyebilirsiniz."
         },
         "theme": {
-          "title": "Bir tema seç",
-          "description": "Mue hem açık hem de koyu temada mevcuttur veya sistem temanıza bağlı olarak otomatik olarak ayarlanabilir.",
+          "title": "Bir Tema Seçin",
+          "description": "Mue için hem açık hem de koyu tema mevcuttur. İsterseniz sistem temanıza bağlı olarak otomatik olarak da ayarlanabilir.",
           "tip": "Otomatik ayarları kullanmak, bilgisayarınızdaki varsayılan temayı kullanır. Bu ayar, modları ve ekranda görüntülenen hava durumu ve notlar gibi bazı widget'ları etkiler."
         },
         "style": {
-          "title": "Choose a style",
-          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
-          "legacy": "Legacy",
+          "title": "Bir Stil Seçin",
+          "description": "Mue şu anda eski stil ile yeni çıkan modern stil arasında seçim yapma olanağı sunuyor.",
+          "legacy": "Eski",
           "modern": "Modern"
         },
         "settings": {
           "title": "Ayarları İçe Aktar",
           "description": "Mue'yi yeni bir cihaza mı yüklüyorsunuz? Eski ayarlarınızı almaktan çekinmeyin!",
-          "tip": "Eski Mue kurulumunuzdaki Gelişmiş sekmesine giderek eski ayarlarınızı dışa aktarabilirsiniz. Ardından, JSON dosyasını indirecek olan dışa aktar düğmesine tıklamanız gerekir. Önceki Mue kurulumunuzdan ayarlarınızı ve tercihlerinizi taşımak için bu dosyayı buraya yükleyebilirsiniz."
+          "tip": "Eski Mue kurulumunuzdaki 'Gelişmiş' sekmesine giderek ayarlarınızı dışarıya aktarabilirsiniz. Bunun için JSON dosyasını indirecek olan 'Dışarı Aktar' butonuna tıklamanız gerekir. Önceki Mue kurulumunuzdan ayarlarınızı ve tercihlerinizi taşımak için bu dosyayı buraya yükleyebilirsiniz."
         },
         "privacy": {
           "title": "Gizlilik Seçenekleri",
           "description": "Mue ile gizliliğinizi daha da korumak için ayarları etkinleştirin.",
-          "offline_mode_description": "Çevrimdışı modu etkinleştirmek, herhangi bir hizmete yönelik tüm istekleri devre dışı bırakır. Bu, çevrimiçi arka planlar, çevrimiçi alıntılar, market, hava durumu, hızlı bağlantılar, değişiklik günlüğü ve bazı sekme bilgilerinin devre dışı bırakılmasıyla sonuçlanacaktır.",
+          "offline_mode_description": "Çevrimdışı modu etkinleştirmek, herhangi bir hizmete yönelik tüm istekleri devre dışı bırakır. Bu durum çevrimiçi arka planlar, çevrimiçi alıntılar, market, hava durumu, hızlı bağlantılar, değişiklik günlüğü ve bazı sekme bilgilerinin devre dışı bırakılmasıyla sonuçlanacaktır.",
           "ddg_proxy_description": "Dilerseniz resim isteklerini DuckDuckGo üzerinden gerçekleştirebilirsiniz. Varsayılan olarak, API istekleri açık kaynak sunucularımızdan ve görüntü istekleri orijinal sunucudan geçer. Hızlı bağlantılar için bunu kapatmak, simgeleri DuckDuckGo yerine Google'dan alır. DuckDuckGo proxy, Market için her zaman etkindir.",
           "links": {
             "title": "Bağlantılar",
             "privacy_policy": "Gizlilik Politikası",
-            "source_code": "Kaynak kodu"
+            "source_code": "Kaynak Kodu"
           }
         },
         "final": {
-          "title": "Son adım",
+          "title": "Son Adım",
           "description": "Mue Tab deneyiminiz başlamak üzere.",
           "changes": "Değişiklikler",
           "changes_description": "Ayarları daha sonra değiştirmek için sekmenizin sağ üst köşesindeki ayarlar simgesine tıklayın.",
@@ -699,7 +692,7 @@
     },
     "share": {
       "copy_link": "Bağlantıyı kopyala",
-      "email": "E-mail"
+      "email": "E-posta"
     }
   },
   "toasts": {
