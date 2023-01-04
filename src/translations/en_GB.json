@@ -71,7 +71,7 @@
   "modals": {
     "main": {
       "title": "Options",
-      "loading": "Loading..",
+      "loading": "Loading...",
       "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Settings",
