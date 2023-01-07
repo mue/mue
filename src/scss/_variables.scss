@@ -16,6 +16,7 @@ $modal-sidebar: 'modal-sidebar';
 $modal-sidebarActive: 'modal-sidebarActive';
 $link: 'link';
 $weather: 'weather';
+$modal-secondaryColour: 'modal-secondaryColour';
 
 $theme-colours: (
   'gradient': linear-gradient(90deg, #ffb032 0%, #dd3b67 100%),
@@ -69,6 +70,7 @@ $themes: (
     'modal-background': #fff,
     'modal-sidebar': rgba(240, 240, 240, 1),
     'modal-sidebarActive': rgba(219, 219, 219, 0.72),
+    'modal-secondaryColour': #fafafa,
     'link': rgba(83, 82, 237, 1),
   ),
   dark: (
@@ -81,9 +83,10 @@ $themes: (
     'boxShadow': 0 0 0 1px #484848,
     'btn-background': #222,
     'btn-backgroundHover': #565656,
-    'modal-background': #2f3542,
-    'modal-sidebar': #353b48,
-    'modal-sidebarActive': rgba(65, 71, 84, 0.9),
+    'modal-background': #0a0a0a,
+    'modal-sidebar': #0e1013,
+    'modal-sidebarActive': #333,
+    'modal-secondaryColour': #111,
     'link': rgb(115, 115, 255),
   ),
 );
@@ -174,7 +177,8 @@ $themes: (
   @include themed() {
     @if $type == 'standard' {
       background: t($modal-sidebar);
-      border: 3px solid t($modal-sidebarActive);
+      box-shadow: t($boxShadow);
+      border: 0;
       color: t($color);
 
       &:hover {

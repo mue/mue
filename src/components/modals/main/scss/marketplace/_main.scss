@@ -15,17 +15,18 @@
   .item {
     position: relative;
     border-radius: 12px;
-    height: 70px;
     width: auto;
     padding: 10px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 15px;
     transition: 0.5s;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
 
     @include themed() {
-      background: t($modal-sidebar);
+      background: t($modal-secondaryColour);
       box-shadow: 0 0 0 1px t($modal-sidebarActive);
       &:hover {
         background: t($modal-sidebarActive);
@@ -56,6 +57,7 @@
     .card-details {
       display: flex;
       flex-flow: column;
+      gap: 5px;
 
       .card-title {
         font-size: 18px;
@@ -202,18 +204,15 @@
   padding: 50px;
 
   @include themed() {
-    border-radius: t($borderRadius);
-    background: t($modal-sidebar);
-    box-shadow: 0 0 0 4px t($modal-sidebarActive);
-
     .sideloadIcon {
       font-size: 50px;
       color: t($subColor);
     }
-    button {
-      display: flex;
-      flex-flow: row;
-    }
+  }
+
+  button {
+    display: flex;
+    flex-flow: row;
   }
 }
 

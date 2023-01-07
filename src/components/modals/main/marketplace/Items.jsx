@@ -22,7 +22,7 @@ function Items({
               collection.news
                 ? { backgroundColor: collection.background_colour }
                 : {
-                  backgroundImage: `linear-gradient(to right, rgba(0 ,0, 0, 0.9), rgba(0 ,0, 0, 0.7), transparent, rgba(0 ,0, 0, 0.7), rgba(0 ,0, 0, 0.9)), url('${collection.img}')`,
+                    backgroundImage: `linear-gradient(to right, rgba(0 ,0, 0, 0.9), rgba(0 ,0, 0, 0.7), transparent, rgba(0 ,0, 0, 0.7), rgba(0 ,0, 0, 0.9)), url('${collection.img}')`,
                   }
             }
           >
@@ -71,6 +71,7 @@ function Items({
                 <span className="card-title">{item.display_name || item.name}</span>
                 <span className="card-subtitle">{item.author}</span>
               </div>
+              {item.type}
             </div>
           ))}
       </div>
