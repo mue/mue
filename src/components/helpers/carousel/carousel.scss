@@ -1,6 +1,6 @@
 .carousel {
   position: relative;
-  width: 350px;
+  width: 100%;
   margin-left: 5px;
 }
 
@@ -14,6 +14,7 @@
   &.is-dragging {
     cursor: grabbing;
   }
+    border-radius: 15px !important;
 }
 
 .carousel_container {
@@ -45,7 +46,7 @@
 .carousel_slide_inner {
   position: relative;
   overflow: hidden;
-  height: 190px;
+  height: 250px;
 }
 
 .carousel_button {

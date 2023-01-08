@@ -529,7 +529,9 @@
             "update_addon": "Actualizar complemento",
             "back": "Back",
             "report": "Report"
-          }
+          },
+          "setting": "Setting",
+          "value": "Value"
         },
         "offline": {
           "title": "Parece que estás desconectado",

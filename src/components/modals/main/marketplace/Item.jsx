@@ -53,9 +53,9 @@ export default class Item extends PureComponent {
     }
   }
 
-  incrementCount() {
-    if (this.state.count !== this.props.data.data.quotes.length) {
-      this.setState({ count: this.props.data.data.quotes.length });
+  incrementCount(type) {
+    if (this.state.count !== this.props.data.data[type].length) {
+      this.setState({ count: this.props.data.data[type].length });
     } else {
       this.setState({ count: 5 });
     }
@@ -81,15 +81,6 @@ export default class Item extends PureComponent {
           </button>
         </Fragment>
       );
-    }
-
-    let type;
-    if (this.props.data.data.type === 'settings') {
-      type = 'Settings Pack';
-    } else if (this.props.data.data.type === 'quotes') {
-      type = 'Quote Pack';
-    } else if (this.props.data.data.type === 'photos') {
-      type = 'Photos Pack';
     }
 
     return (
@@ -124,6 +115,14 @@ export default class Item extends PureComponent {
                 </div>
               </div>
             ) : null}
+            {this.props.data.data.settings ? (
+              <img
+                alt="product"
+                draggable="false"
+                src={iconsrc}
+                onClick={() => this.setState({ showLightbox: true })}
+              />
+            ) : null}
             {this.props.data.data.quotes ? (
               <>
                 <table>
@@ -139,7 +138,7 @@ export default class Item extends PureComponent {
                   ))}
                 </table>
                 <div className="showMoreItems">
-                  <span className="link" onClick={() => this.incrementCount()}>
+                  <span className="link" onClick={() => this.incrementCount('quotes')}>
                     {this.state.count !== this.props.data.data.quotes.length ? (
                       <>
                         <MdExpandMore />{' '}
@@ -156,17 +155,42 @@ export default class Item extends PureComponent {
               </>
             ) : null}
             {this.props.data.data.settings ? (
-              <img
-                alt="product"
-                draggable="false"
-                src={iconsrc}
-                onClick={() => this.setState({ showLightbox: true })}
-              />
+              <>
+                <table>
+                  <tr>
+                    <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
+                    <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
+                  </tr>
+                  {Object.entries(this.props.data.data.settings).slice(0, this.state.count).map(([key, value]) => (
+                    <tr key={key}>
+                      <td>{key}</td>
+                      <td>{value}</td>
+                    </tr>
+                  ))}
+                </table>
+                <div className="showMoreItems">
+                  <span className="link" onClick={() => this.incrementCount('settings')}>
+                    {this.state.count !== this.props.data.data.settings.length ? (
+                      <>
+                        <MdExpandMore />{' '}
+                        {variables.getMessage('modals.main.marketplace.product.show_all')}
+                      </>
+                    ) : (
+                      <>
+                        <MdExpandLess />{' '}
+                        {variables.getMessage('modals.main.marketplace.product.show_less')}
+                      </>
+                    )}
+                  </span>
+                </div>
+              </>
             ) : null}
-            <span className="title">
-              {variables.getMessage('modals.main.marketplace.product.description')}
-            </span>
-            <span dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
+            <div>
+              <p className="title">
+                {variables.getMessage('modals.main.marketplace.product.description')}
+              </p>
+              <p dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
+            </div>
             <div className="moreInfo">
               <div className="infoItem">
                 <MdBugReport />
@@ -242,45 +266,48 @@ export default class Item extends PureComponent {
               </div>
             </div>
           </div>
-          <div className="itemInfo">
-            <img
-              alt="icon"
-              draggable="false"
-              src={variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}
-            />
-            {this.props.button}
-            <div className="iconButtons">
-              <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
-                <button onClick={() => this.setState({ shareModal: true })}>
-                  <MdIosShare />
-                </button>
-              </Tooltip>
-              <Tooltip
-                title={variables.getMessage('modals.main.marketplace.product.buttons.report')}
-                key="report"
-              >
-                <button
-                  onClick={() =>
-                    window.open(
-                      variables.constants.REPORT_ITEM +
-                        this.props.data.display_name.split(' ').join('+'),
-                      '_blank',
-                    )
-                  }
+          <div className="itemInfo" style={{ backgroundImage: `url("${variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}")` }}>
+            <div className="front">
+              <img
+                className="icon"
+                alt="icon"
+                draggable="false"
+                src={variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}
+              />
+              {this.props.button}
+              <div className="iconButtons">
+                <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
+                  <button onClick={() => this.setState({ shareModal: true })}>
+                    <MdIosShare />
+                  </button>
+                </Tooltip>
+                <Tooltip
+                  title={variables.getMessage('modals.main.marketplace.product.buttons.report')}
+                  key="report"
                 >
-                  <MdFlag />
-                </button>
-              </Tooltip>
-            </div>
-            {this.props.data.data.collection ? (
-              <div className="inCollection">
-                <span className="subtitle">
-                  {variables.getMessage('modals.main.marketplace.product.part_of')}
-                </span>
-                <span className="title">{this.props.data.data.collection}</span>
-                <button>{variables.getMessage('modals.main.marketplace.product.explore')}</button>
+                  <button
+                    onClick={() =>
+                      window.open(
+                        variables.constants.REPORT_ITEM +
+                        this.props.data.display_name.split(' ').join('+'),
+                        '_blank',
+                      )
+                    }
+                  >
+                    <MdFlag />
+                  </button>
+                </Tooltip>
               </div>
-            ) : null}
+              {this.props.data.data.collection ? (
+                <div className="inCollection">
+                  <span className="subtitle">
+                    {variables.getMessage('modals.main.marketplace.product.part_of')}
+                  </span>
+                  <span className="title">{this.props.data.data.collection}</span>
+                  <button>{variables.getMessage('modals.main.marketplace.product.explore')}</button>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

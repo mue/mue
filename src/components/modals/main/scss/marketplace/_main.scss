@@ -108,8 +108,9 @@
   .itemShowcase {
     display: flex;
     flex-flow: column;
-    gap: 15px;
-    width: 50%;
+    gap: 25px;
+    width: 60%;
+    max-width: 650px;
 
     .description {
       max-lines: 3;
@@ -120,24 +121,47 @@
       width: 100%;
       height: auto;
     }
+
+    table {
+      table-layout: fixed;
+      width: 100%;
+      max-width: 650px !important;
+      word-wrap: break-word !important;
+    }
   }
 
   .itemInfo {
-    display: flex;
-    flex-flow: column;
-    gap: 15px;
-    width: 170px;
-    box-sizing: border-box !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+    width: 25%;
+    max-height: 450px;
+  
+    .front {
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-flow: column;
+      gap: 15px;
+      width: 100%;
+      box-sizing: border-box !important;
+      border-radius: 12px 12px 0 0;
+      backdrop-filter: blur(40px) saturate(150%) brightness(75%);
+      -webkit-backdrop-filter: blur(40px) saturate(150%) brightness(75%);
+      @include themed() {
+      background-image: linear-gradient(to bottom, transparent, t($modal-background));
+      }
+    }
 
-    img {
+    
+    .icon {
       width: 100%;
       height: auto;
       border-radius: 12px;
-
-      @include themed() {
-        box-shadow: 0 0 0 3px t($modal-sidebarActive);
-      }
+      box-shadow: 0 5px 25px black;
     }
+  
     .divider {
       text-transform: uppercase;
 

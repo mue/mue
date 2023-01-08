@@ -530,7 +530,9 @@
             "update_addon": "Update Add-on",
             "back": "Back",
             "report": "Report"
-          }
+          },
+          "setting": "Setting",
+          "value": "Value"
         },
         "offline": {
           "title": "Sieht aus, als ob Sie offline sind",

@@ -339,7 +339,7 @@ export default class Marketplace extends PureComponent {
             <div
               className="collectionPage"
               style={{
-                backgroundImage: `linear-gradient(to bottom, transparent, #2f3542), url('${this.state.collectionImg}')`,
+                backgroundImage: `linear-gradient(to bottom, transparent, black), url('${this.state.collectionImg}')`,
               }}
             >
               <div className="content">

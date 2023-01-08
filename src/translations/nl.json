@@ -529,7 +529,9 @@
             "update_addon": "Update Add-on",
             "back": "Back",
             "report": "Report"
-          }
+          },
+          "setting": "Setting",
+          "value": "Value"
         },
         "offline": {
           "title": "Het lijkt er op dat je niet verbonden bent het internet",

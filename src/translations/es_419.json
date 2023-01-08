@@ -547,6 +547,8 @@
             "back": "Back",
             "report": "Report"
           },
+          "setting": "Setting",
+          "value": "Value",
           "quote_warning": {
             "title": "Advertencia",
             "description": "¡Este paquete de citaciones solicita a servidores externos que pueden rastrearte!"

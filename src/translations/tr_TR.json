@@ -524,7 +524,9 @@
             "update_addon": "Eklentiyi Güncelle",
             "back": "Geri",
             "report": "Bildir/Raporla"
-          }
+          },
+          "setting": "Setting",
+          "value": "Value"
         },
         "offline": {
           "title": "Çevrimdışı görünüyorsun.",

@@ -529,7 +529,9 @@
             "update_addon": "Perbarui Add-on",
             "back": "Back",
             "report": "Report"
-          }
+          },
+          "setting": "Setting",
+          "value": "Value"
         },
         "offline": {
           "title": "Sepertinya Anda sedang dalam mode luring",
