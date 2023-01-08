@@ -11,10 +11,6 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 
 <br>
 
-## NOTICE
-
-This is the branch for the next version of Mue, 7.0. All development is occuring in this branch which will be merged into main when it is finished. If you want the current code, see the main branch.
-
 ## Table of contents
 
 - [NOTICE](#notice)
@@ -111,7 +107,11 @@ Please see the [documentation](https://docs.muetab.com/translations).
 [Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified) <br/>
 [FreeFun](https://github.com/xXFreeFunXx) - German <br/>
 [Aksal](https://github.com/aksalsf) - Indonesian <br/>
+<<<<<<< HEAD
 [Kağan Can Şit](https://github.com/KaganCanSit) - Turkish <br/>
+=======
+efeaydal - Turkish <br/>
+>>>>>>> main
 
 ### Contributors
 
