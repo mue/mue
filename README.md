@@ -86,7 +86,7 @@ Please see the [documentation](https://docs.muetab.com/development#mue-tab).
 
 ### Translations
 
-Please see the [documentation](https://docs.muetab.com/translations).
+[![Contribute on Weblate](https://hosted.weblate.org/widgets/mue/-/open-graph.png)](https://hosted.weblate.org/engage/mue/)
 
 ## Credits
 
@@ -107,12 +107,8 @@ Please see the [documentation](https://docs.muetab.com/translations).
 [Austin Huang](https://github.com/austinhuang0131) - Chinese (Simplified) <br/>
 [FreeFun](https://github.com/xXFreeFunXx) - German <br/>
 [Aksal](https://github.com/aksalsf) - Indonesian <br/>
-<<<<<<< HEAD
 [Kağan Can Şit](https://github.com/KaganCanSit) - Turkish <br/>
-=======
 efeaydal - Turkish <br/>
->>>>>>> main
-
 ### Contributors
 
 Many thanks to the photographers [here](https://api.muetab.com/images/photographers) for letting us use their wonderful photographs.
@@ -123,3 +119,10 @@ And finally, a big thank you to all the other [contributors](https://github.com/
 
 [Pexels](https://pexels.com), [Unsplash](https://unsplash.com) - Stock photos used for offline mode <br/>
 [Undraw](https://undraw.co) - Welcome modal images
+
+<p>This project is supported by:</p>
+<p>
+  <a href="https://www.digitalocean.com/">
+    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
+  </a>
+</p>
