@@ -489,6 +489,7 @@
         }
       },
       "marketplace": {
+        "by": "by {author}",
         "all": "All",
         "learn_more": "Learn More",
         "photo_packs": "Photo Packs",
@@ -564,9 +565,9 @@
           "other_title": "Create Add-on",
           "create_type": "Create {type} Pack",
           "types": {
-            "settings": "Preset Settings Pack",
+            "settings": "Preset Settings",
             "photos": "Photo Pack",
-            "quotes": "Quotes Pack"
+            "quotes": "Quote Pack"
           },
           "descriptions": {
             "settings": "Collection of settings to customise Mue.",

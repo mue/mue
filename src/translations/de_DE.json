@@ -495,6 +495,7 @@
         }
       },
       "marketplace": {
+        "by": "by {author}",
         "all": "All",
         "learn_more": "Learn More",
         "photo_packs": "Fotopakete",

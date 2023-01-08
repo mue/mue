@@ -489,6 +489,7 @@
         }
       },
       "marketplace": {
+        "by": "by {author}",
         "all": "Tümü",
         "learn_more": "Daha Fazla Bilgi Edin",
         "photo_packs": "Fotoğraf Paketleri",

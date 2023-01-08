@@ -8,7 +8,7 @@
 .items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   margin-top: 15px;
   margin-bottom: 30px;
 
@@ -16,7 +16,6 @@
     position: relative;
     border-radius: 12px;
     width: auto;
-    padding: 10px;
     cursor: pointer;
     transition: 0.5s;
     display: flex;
@@ -24,14 +23,17 @@
     align-items: center;
     text-align: center;
     gap: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     @include themed() {
-      background: t($modal-secondaryColour);
+      background-color: t($modal-secondaryColour);
       box-shadow: 0 0 0 1px t($modal-sidebarActive);
       &:hover {
-        background: t($modal-sidebarActive);
+        background-color: t($modal-sidebarActive);
         img {
-          background: t($modal-sidebarActive);
+          background-color: t($modal-sidebarActive);
         }
       }
     }
@@ -40,21 +42,30 @@
       margin-top: 7px;
     }
 
-    img {
+     .item-back {
+       filter: blur(60px) saturate(180%) brightness(90%);
+       -webkit-filter: blur(60px) saturate(180%) brightness(90%);
+       position: absolute;
+       object-fit: cover !important;
+       height: 90px !important;
+       width: 100px !important;
+       border-radius: 100px;
+       transition: 0.5s;
+       margin-top: 30px;
+    }
+
+    .item-icon {
       object-fit: cover !important;
-      height: 50px !important;
-      width: 50px !important;
+      height: 60px !important;
+      width: 60px !important;
       border-radius: 12px;
       transition: 0.5s;
-
-      @include themed() {
-        background: t($modal-sidebar);
-      }
-
-      padding: 5px;
+      margin-top: 25px;
     }
 
     .card-details {
+      padding: 10px;
+      margin-bottom: 24px;
       display: flex;
       flex-flow: column;
       gap: 5px;
@@ -64,11 +75,26 @@
       }
 
       .card-subtitle {
-        font-size: 12px;
+        font-size: 14px;
 
         @include themed() {
           color: t($subColor);
         }
+      }
+
+      .card-type {
+        margin-top: 8px;
+        font-size: 12px;
+        font-weight: bolder;
+        @include themed() {
+          color: t($subColor);
+        }
+        border-radius: 150px;
+        padding: 2px 8px;
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(209, 213, 219, 0.3);
       }
     }
   }
@@ -379,8 +405,8 @@ p.author {
 .collection {
   display: flex;
   justify-content: space-between;
-  padding: 24px;
-  margin-top: 15px;
+  padding: 36px 48px;
+  margin: 15px 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
