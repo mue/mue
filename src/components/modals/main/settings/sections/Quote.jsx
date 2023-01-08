@@ -250,7 +250,7 @@ export default class QuoteSettings extends PureComponent {
               subtitle={variables.getMessage('modals.main.settings.sections.quote.additional')}
               final={true}
             >
-              <Dropdown
+              {/*<Dropdown
                 label={variables.getMessage(
                   'modals.main.settings.sections.background.interval.title',
                 )}
@@ -278,7 +278,7 @@ export default class QuoteSettings extends PureComponent {
                 <option value={2628000000}>
                   {variables.getMessage('modals.main.settings.sections.background.interval.month')}
                 </option>
-              </Dropdown>
+                  </Dropdown>*/}
               <Checkbox
                 name="authorLink"
                 text={variables.getMessage('modals.main.settings.sections.quote.author_link')}

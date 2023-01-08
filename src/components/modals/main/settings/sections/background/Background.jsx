@@ -441,11 +441,11 @@ export default class BackgroundSettings extends PureComponent {
               </Dropdown>
             </SettingsItem>
             {/* // todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
-            {this.state.backgroundType === 'api' ||
+            {/*{this.state.backgroundType === 'api' ||
             this.state.backgroundType === 'custom' ||
             this.state.marketplaceEnabled
               ? interval
-              : null}
+                  : null}*/}
             {backgroundSettings}
           </>
         ) : null}
