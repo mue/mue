@@ -648,7 +648,6 @@
       "likes": "Likes",
       "location": "Location",
       "pexels": "@ Pexels",
-      "photo": "Photo",
       "resolution": "Resolution",
       "source": "Source",
       "unsplash": "@ Unsplash",
@@ -703,7 +702,6 @@
       "meters": "{amount}米",
       "not_found": "未找到",
       "options": {
-        "custom": "Custom",
         "standard": "Standard"
       }
     }

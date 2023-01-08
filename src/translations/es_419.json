@@ -129,7 +129,6 @@
           "overview": "Vista general",
           "part_of": "Part of",
           "quote_warning": {
-            "description": "¡Este paquete de citaciones solicita a servidores externos que pueden rastrearte!",
             "title": "Advertencia"
           },
           "setting": "Setting",
@@ -217,7 +216,6 @@
               "animations": "Animaciones",
               "description": "Accessibility settings for Mue",
               "milliseconds": "milisegundos",
-              "text_shadow": "Sombra del texto del widget",
               "title": "Accesibilidad",
               "toast_duration": "Duración de la notificación",
               "widget_zoom": "Zoom del widget"
@@ -282,7 +280,6 @@
               "view": "Ver"
             },
             "categories": "Categories",
-            "category": "Categoría",
             "ddg_image_proxy": "Utilizar el proxy de imágenes de DuckDuckGo",
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
@@ -400,26 +397,18 @@
           },
           "keybinds": {
             "background": {
-              "download": "Descargar fondo",
               "favourite": "Fondo favorito",
-              "maximise": "Maximizar fondo",
               "show_info": "Mostrar información del fondo"
             },
-            "click_to_record": "Click para grabar",
             "modal": "Alternal modal",
             "notes": {
-              "copy": "Copiar notas",
               "pin": "Fijar notas"
             },
-            "quicklinks": "Alternar o añadir un enlace rápido",
             "quote": {
               "copy": "Copiar citación",
-              "favourite": "Agregar citación a tus favoritos",
               "tweet": "Tuitear citación"
             },
-            "recording": "Grabando...",
-            "search": "Enfocar búsqueda",
-            "title": "Asignación de teclas"
+            "search": "Enfocar búsqueda"
           },
           "language": {
             "quote": "Idioma de las citaciones",
@@ -667,7 +656,6 @@
   "widgets": {
     "background": {
       "camera": "Camera",
-      "categories": "Categories",
       "category": "Category",
       "credit": "Foto por",
       "download": "Descargar",
@@ -677,9 +665,7 @@
       "information": "Información",
       "likes": "Likes",
       "location": "Location",
-      "on": "on",
       "pexels": "en Pexels",
-      "photo": "Photo",
       "resolution": "Resolution",
       "source": "Source",
       "unsplash": "en Unsplash",

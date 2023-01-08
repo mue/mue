@@ -87,9 +87,6 @@
           "information": "Informações",
           "last_updated": "Ultima atualização",
           "overview": "Visão geral",
-          "quote_warning": {
-            "title": "Aviso"
-          },
           "version": "Versão"
         },
         "quote_packs": "Pacotes de citações"
@@ -306,18 +303,14 @@
           },
           "keybinds": {
             "background": {
-              "favourite": "Plano de fundo favorito",
               "show_info": "Mostrar informações de plano de fundo"
             },
-            "modal": "Alternar modal",
             "notes": {
               "pin": "Fixar notas"
             },
             "quote": {
-              "copy": "Copiar citação",
               "tweet": "Tweetar citação"
-            },
-            "search": "Pesquisa em foco"
+            }
           },
           "language": {
             "quote": "Idioma das citações",
