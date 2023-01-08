@@ -1,4 +1,4 @@
 module.exports = {
   extends: 'react-app',
-  parser: '@babel/eslint-parser'
+  parser: '@babel/eslint-parser',
 };

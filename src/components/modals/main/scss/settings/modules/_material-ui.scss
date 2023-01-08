@@ -1,4 +1,7 @@
 /* these are overrides for the material ui default styles */
+
+@import '../../../../../../scss/variables';
+
 .MuiCheckbox-colorPrimary.Mui-checked,
 .MuiSwitch-colorPrimary.Mui-checked,
 .MuIconButton-colorPrimary.Mui-checked,
@@ -9,19 +12,23 @@
 .aboutLink,
 .MuiSlider-colorPrimary,
 legend {
-  color: var(--modal-text) !important;
+  @include themed() {
+    color: t($color) !important;
+  }
 }
 
 .MuiFormControlLabel-labelPlacementStart {
-  margin-left: 0px !important;
+  margin-left: 0 !important;
 }
 
-.MuiSwitch-colorPrimary.Mui-checked+.MuiSwitch-track {
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
   background: darkgray !important;
 }
 
-.MuiIconButton-label>svg.MuiSvgIcon-root {
-  color: var(--modal-text) !important;
+.MuiIconButton-label > svg.MuiSvgIcon-root {
+  @include themed() {
+    color: t($color) !important;
+  }
 }
 
 .MuiTouchRipple-root {
@@ -33,7 +40,9 @@ legend {
 }
 
 .checkbox svg {
-  fill: var(--modal-text) !important;
+  @include themed() {
+    fill: t($color) !important;
+  }
 }
 
 .radio-title {
@@ -51,11 +60,15 @@ legend {
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: var(--modal-text) !important;
+  @include themed() {
+    border-color: t($color) !important;
+  }
 }
 
 .MuiFormLabel-root-MuiInputLabel-root {
-  color: var(--modal-text) !important;
+  @include themed() {
+    color: t($color) !important;
+  }
 }
 
 .MuiInputLabel-root,
@@ -66,23 +79,28 @@ legend {
 .Mui-focused,
 legend,
 .MuiOutlinedInput-input {
-  color: var(--modal-text) !important;
+  @include themed() {
+    color: t($color) !important;
+  }
 }
 
 .MuiMenu-list {
-  background-color: var(--background) !important;
-  color: var(--modal-text) !important;
+  @include themed() {
+    background-color: t($modal-background);
+    color: t($color);
+  }
 }
 
 .Mui-selected {
-  background-color: var(--tab-active) !important;
+  @include themed() {
+    background-color: t($modal-sidebarActive) !important;
+  }
 }
 
 .MuiTextField-root,
 .MuiFormControl-root,
 .MuiSlider-root {
   width: 300px !important;
-  display: flex !important;
 }
 
 .Mui-disabled {
@@ -95,9 +113,38 @@ legend,
 }
 
 .MuiPaper-root {
-  background-color: var(--background) !important;
+  @include themed() {
+    background-color: t($modal-background) !important;
+  }
 }
 
 .MuiSlider-valueLabel {
-  background-color: var(--tab-active) !important;
+  @include themed() {
+    background-color: t($modal-sidebarActive) !important;
+  }
+}
+
+.MuiFormControlLabel-labelPlacementStart {
+  justify-content: flex-end;
+}
+
+.settingsRow {
+  .MuiFormControlLabel-root {
+    flex-direction: row-reverse;
+    margin-right: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 0;
+  }
+  .MuiFormControlLabel-root {
+    width: 100%;
+  }
+}
+
+.css-6od3lo-MuiChip-label {
+  @include themed() {
+    color: t($color) !important;
+  }
+  text-transform: capitalize;
 }

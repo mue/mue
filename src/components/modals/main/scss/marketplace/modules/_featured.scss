@@ -1,10 +1,9 @@
 .featured {
-  margin-top: 40px;
   border-radius: 15px;
   padding: 50px;
   color: #fff;
-  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
-  width: 85%;
+  width: calc(100% - 6rem);
+  margin-top: 13px;
 
   button {
     float: left;

@@ -28,13 +28,8 @@
     "react-toastify": "9.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/eslint-parser": "^7.17.0",
-    "@babel/plugin-transform-react-constant-elements": "^7.17.6",
-    "@babel/plugin-transform-react-inline-elements": "^7.16.7",
-    "@babel/plugin-transform-runtime": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "@eartharoid/deep-merge": "^0.0.2",
     "babel-loader": "^9.0.0",
     "copy-webpack-plugin": "9.1.0",
@@ -51,11 +46,14 @@
     "webpack-dev-server": "^4.8.1"
   },
   "scripts": {
-    "start": "webpack serve",
+    "dev": "vite",
     "updatetranslations": "cd scripts && node updatetranslations.js",
-    "build": "webpack --mode=production",
-    "chrome": "cp manifest/chrome.json build/manifest.json && cp -r manifest/_locales build/_locales && cp manifest/background-chrome.js build/background-chrome.js",
-    "firefox": "rm -rf build/_locales && cp manifest/firefox.json build/manifest.json"
+    "build": "vite build",
+    "chrome": "cp manifest/chrome.json dist/manifest.json && cp -r manifest/_locales dist/_locales && cp manifest/background-chrome.js dist/background-chrome.js",
+    "firefox": "rm -rf dist/_locales && cp manifest/firefox.json dist/manifest.json",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json,scss}\"",
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "postinstall": "husky install"
   },
   "browserslist": {
     "production": [

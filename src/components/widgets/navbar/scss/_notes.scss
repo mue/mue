@@ -1,3 +1,5 @@
+@import 'scss/variables';
+
 .notes {
   position: relative;
 
@@ -8,32 +10,67 @@
     user-select: none;
   }
 
-  &:hover .notescontainer {
+  &:hover .notesContainer {
+    visibility: visible !important;
+  }
+
+  &:active .notesContainer {
+    visibility: visible !important;
+  }
+
+  &:focus .notesContainer {
     visibility: visible !important;
   }
 }
 
-.notescontainer {
+.notesContainer {
+  @extend %basic;
   padding: 15px;
-  visibility: hidden;
-  background-color: var(--background);
-  color: var(--modal-text);
   text-align: center;
   border-radius: 12px;
   position: absolute;
-  top: 80%;
-  margin-left: -150px;
   max-height: 80vh !important;
   font-size: 1rem !important;
+  /*top: 100%;
+  left: 50%;
+  margin-left: -130px;*/
 
-  textarea {
-    max-height: 65vh !important;
-    overflow-y: visible !important;
+  .notes-buttons {
+    button {
+      @include basicIconButton(11px, 1.3rem, ui);
+
+      @include themed() {
+        background: t($btn-background) !important;
+
+        &:hover {
+          background: t($btn-backgroundHover) !important;
+        }
+      }
+
+      flex-grow: 1;
+      display: grid;
+      place-items: center;
+
+      svg {
+        font-size: 1.3rem;
+      }
+    }
   }
 
-  svg {
-    float: left;
-    font-size: 1em !important;
+  .flexNotes {
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
+
+    textarea {
+      max-height: 65vh !important;
+      overflow-y: visible !important;
+      @extend %basic;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      width: 200px;
+    }
   }
 
   ::placeholder {
@@ -46,24 +83,29 @@ textarea {
   border: none;
   resize: none;
   background: none;
-  width: 200px;
-  height: 100px;
-  margin: 10px;
 }
 
-.topbarnotes {
+.topBarNotes {
+  @extend %basic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row;
+  height: 50px;
+  border-radius: 12px;
+  flex-flow: row;
+  gap: 5px;
+
   svg {
-    font-size: 46px !important;
-    padding: 9px;
-  }
-
-  h3 {
-    font-size: 46px;
-    margin-right: 20px;
+    font-size: 1.5rem;
   }
 }
 
-.dark textarea {
-  background-color: #2f3542;
-  color: white;
+.notes-buttons {
+  display: flex !important;
+  gap: 10px;
+
+  .tooltip {
+    flex: 1 !important;
+  }
 }

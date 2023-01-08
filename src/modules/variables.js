@@ -1,14 +1,13 @@
-import * as Constants from 'modules/constants';
+import * as constants from 'modules/constants';
 
 const variables = {
   language: {},
   languagecode: '',
   stats: {
     tabLoad: () => '',
-    postEvent: () => ''
+    postEvent: () => '',
   },
-  //keybinds: {},
-  constants: Constants
+  constants,
 };
 
 export default variables;

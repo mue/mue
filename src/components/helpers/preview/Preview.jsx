@@ -1,15 +1,17 @@
+import { memo } from 'react';
 import variables from 'modules/variables';
-
 import './preview.scss';
 
-export default function Preview(props) {
-  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
+function Preview(props) {
   return (
-    <div className='preview-mode'>
-      <h1>{getMessage('modals.main.settings.reminder.title')}</h1>
-      <p>{getMessage('modals.welcome.preview.description')}</p>
-      <button className='pinNote' onClick={() => props.setup()}>{getMessage('modals.welcome.preview.continue')}</button>
+    <div className="preview-mode">
+      <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
+      <span className="subtitle">{variables.getMessage('modals.welcome.preview.description')}</span>
+      <button onClick={() => props.setup()}>
+        {variables.getMessage('modals.welcome.preview.continue')}
+      </button>
     </div>
   );
 }
+
+export default memo(Preview);

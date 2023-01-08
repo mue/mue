@@ -18,7 +18,7 @@ export default class App extends PureComponent {
     if (!localStorage.getItem('firstRun') || !localStorage.getItem('stats')) {
       moveSettings();
       window.location.reload();
-    }    
+    }
 
     loadSettings();
 
@@ -31,14 +31,24 @@ export default class App extends PureComponent {
     variables.stats.tabLoad();
   }
 
+  componentWillUnmount() {
+    EventBus.off('refresh');
+  }
+
   render() {
     return (
       <>
-        {(localStorage.getItem('background') === 'true') ? <Background/> : null}
-        <ToastContainer position='bottom-right' autoClose={localStorage.getItem('toastDisplayTime') || 2500} newestOnTop={true} closeOnClick pauseOnFocusLoss/>
-        <div id='center'>
-          <Widgets/>
-          <Modals/>
+        {localStorage.getItem('background') === 'true' ? <Background /> : null}
+        <ToastContainer
+          position="bottom-right"
+          autoClose={localStorage.getItem('toastDisplayTime') || 2500}
+          newestOnTop={true}
+          closeOnClick
+          pauseOnFocusLoss
+        />
+        <div id="center">
+          <Widgets />
+          <Modals />
         </div>
       </>
     );

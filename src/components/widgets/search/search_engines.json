@@ -54,6 +54,7 @@
   {
     "name": "百度",
     "settingsName": "baidu",
-    "url": "https://www.baidu.com/s?wd="
+    "url": "https://www.baidu.com/s",
+    "query": "wd"
   }
 ]

@@ -1,43 +1,171 @@
+@import '../../../../../scss/variables';
+
 .tab-content {
-  position: absolute;
+  button {
+    @include modal-button(standard);
+  }
+  @include themed() {
+    padding: 1rem 3rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: t($modal-background);
+    @extend %tabText;
+    hr {
+      width: 100%;
+      background: rgba(196, 196, 196, 0.74);
+      outline: none;
+    }
+    .settingsRow {
+      display: flex;
+      align-items: center;
+      min-height: 100px;
+      justify-content: space-between;
+      /*border-top: 1px solid #ccc;*/
+      border-bottom: 1px solid #ccc;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
 
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0;
+      &.settingsNoBorder {
+        border-bottom: none;
+      }
+      .content {
+        display: flex;
+        flex-flow: column;
+        max-width: 50%;
+      }
+      .action {
+        display: flex;
+        flex-flow: column;
+        align-items: flex-end;
+        width: 300px;
+        button {
+          margin-top: 10px;
+          width: 283px;
+        }
+      }
+    }
   }
 }
 
-@media only screen and (min-width: 2300px) {
-  .tab-content {
-    left: 350px;
-    top: 7%;
+.activityButtons {
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  align-content: space-between !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+
+  button:not(:first-child) {
+    width: 40% !important;
+    height: 99px !important;
+    flex-flow: column-reverse !important;
+  }
+
+  button {
+    @include modal-button(standard);
   }
 }
 
-@media only screen and (max-width: 1920px) {
-  .tab-content {
-    left: 120px;
-    top: 60px;
+table {
+  border-collapse: separate;
+  @include themed() {
+    border-radius: t($borderRadius);
+    margin-top: 20px;
+    tr:first-child {
+      background: t($modal-sidebarActive);
+      th {
+        padding: 1rem;
+      }
+    }
+    td {
+      padding: 15px;
+    }
+    tr {
+      th:last-child {
+        display: grid;
+        place-items: center;
+      }
+    }
+
+    ::placeholder {
+      color: t($subColor);
+    }
+
+    tr:not(:first-child) {
+      background: t($modal-sidebar);
+      textarea {
+        width: 90%;
+        margin: 10px;
+        color: t($color);
+      }
+    }
   }
 }
 
-@media only screen and (min-width: 1920px) {
-  .tab-content {
-    left: 350px;
-    top: 9%;
+.donateButton {
+  @include modal-button(standard);
+  flex-flow: row !important;
+  text-decoration: none;
+  height: auto !important;
+  svg {
+    font-size: 1.5rem !important;
   }
 }
 
-@media only screen and (max-width: 1400px),
-(min-width: 1400px) {
-  .tab-content {
-    left: 350px;
+.flexGrow {
+  flex-grow: 1;
+}
+.messageMap {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 25px;
+  padding: 25px;
+  justify-content: space-between;
+  div:nth-child(1) {
+    display: flex;
+    flex-flow: row;
+    gap: 25px;
+    align-items: center;
+  }
+  .icon {
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
+    padding: 15px;
+    font-size: 25px;
+    @include themed() {
+      background: t($modal-sidebarActive);
+    }
+  }
+  .messageText {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 3;
+    textarea {
+      @include themed() {
+        color: t($color);
+      }
+    }
+    .subtitle {
+      @include themed() {
+        color: t($subColor);
+        font-size: 13px;
+      }
+    }
+  }
+  .messageAction {
+    float: right;
+  }
+  @include themed() {
+    background: t($modal-sidebar);
+    border-radius: t($borderRadius);
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  .tab-content {
-    left: 125px;
-    top: 90px;
-  }
+.messagesContainer {
+  display: flex;
+  flex-flow: column;
+  gap: 25px;
 }

@@ -1,4 +1,4 @@
-%storebutton {
+%storeButton {
   cursor: pointer;
   font-size: 18px;
   display: block;
@@ -14,7 +14,7 @@
   }
 }
 
-.dark %storebutton {
+.dark %storeButton {
   border: 2px solid map-get($theme-colours, 'main');
   color: map-get($theme-colours, 'main');
 
@@ -24,44 +24,13 @@
   }
 }
 
-.removeFromMue {
-  @extend %storebutton;
-
-  border: 2px solid #ff4757;
-  color: #ff4757;
-  float: right;
-  margin-top: -10px;
-
-  &:hover {
-    background: #ff4757;
-    color: map-get($theme-colours, 'main');
-  }
-}
-
-.addToMue {
-  @extend %storebutton;
-
-  float: right;
-  margin-top: -10px;
-}
-
 .sideload {
   display: inline;
-  margin-top: 0px;
+  margin-top: 0;
   float: none !important;
-}
-
-button.round {
-  margin-left: 5px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 3px;
-  vertical-align: middle;
-  padding: 10px;
+  width: 200px;
 }
 
 .updateCheck {
-  margin-top: 15px;
+  flex-flow: row !important;
 }

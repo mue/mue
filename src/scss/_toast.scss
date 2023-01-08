@@ -1,0 +1,33 @@
+@import 'variables';
+
+.Toastify__toast-body {
+  font-size: 16px !important;
+  padding: 15px 20px !important;
+}
+
+.Toastify__toast {
+  border-radius: 12px !important;
+  min-height: auto !important;
+  height: auto !important;
+  width: auto !important;
+  min-width: auto !important;
+  padding: 10px !important;
+}
+
+.Toastify__close-button {
+  align-self: center !important;
+}
+
+.Toastify__progress-bar--default {
+  height: 3px !important;
+  background: var(--modal-text) !important;
+  color: var(--modal-text) !important;
+}
+
+.Toastify__toast-container {
+  width: auto !important;
+}
+
+.Toastify__toast--default {
+  @extend %basic;
+}

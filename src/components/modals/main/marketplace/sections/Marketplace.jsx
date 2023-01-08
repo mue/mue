@@ -1,7 +1,13 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { MdWifiOff, MdLocalMall } from 'react-icons/md';
+import {
+  MdWifiOff,
+  MdLocalMall,
+  MdOutlineKeyboardArrowRight,
+  MdSearch,
+  MdOutlineArrowForward,
+} from 'react-icons/md';
 
 import Item from '../Item';
 import Items from '../Items';
@@ -10,8 +16,6 @@ import Dropdown from '../../settings/Dropdown';
 import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
 
 export default class Marketplace extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
@@ -19,11 +23,21 @@ export default class Marketplace extends PureComponent {
       button: '',
       featured: {},
       done: false,
-      item: {}
+      item: {},
+      collection: false,
+      filter: '',
     };
     this.buttons = {
-      uninstall: <button className='removeFromMue' onClick={() => this.manage('uninstall')}>{this.getMessage('modals.main.marketplace.product.buttons.remove')}</button>,
-      install: <button className='addToMue' onClick={() => this.manage('install')}>{this.getMessage('modals.main.marketplace.product.buttons.addtomue')}</button>
+      uninstall: (
+        <button onClick={() => this.manage('uninstall')}>
+          {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+        </button>
+      ),
+      install: (
+        <button onClick={() => this.manage('install')}>
+          {variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
+        </button>
+      ),
     };
     this.controller = new AbortController();
   }
@@ -33,10 +47,18 @@ export default class Marketplace extends PureComponent {
       let info;
       // get item info
       try {
-        info = await (await fetch(`${variables.constants.MARKETPLACE_URL}/item/${this.props.type}/${data}`, { signal: this.controller.signal })).json();
+        let type = this.props.type;
+        if (type === 'all' || type === 'collections') {
+          type = data.type;
+        }
+        info = await (
+          await fetch(`${variables.constants.MARKETPLACE_URL}/item/${type}/${data.name}`, {
+            signal: this.controller.signal,
+          })
+        ).json();
       } catch (e) {
         if (this.controller.signal.aborted === false) {
-          return toast(this.getMessage('toasts.error'));
+          return toast(variables.getMessage('toasts.error'));
         }
       }
 
@@ -73,22 +95,57 @@ export default class Marketplace extends PureComponent {
           icon: info.data.screenshot_url,
           data: info.data,
           addonInstalled,
-          addonInstalledVersion
+          addonInstalledVersion,
+          api_name: data.name,
         },
-        button: button
+        button: button,
       });
 
       variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
+    } else if (type === 'collection') {
+      this.setState({
+        done: false,
+      });
+      const collection = await (
+        await fetch(`${variables.constants.MARKETPLACE_URL}/collection/${data}`, {
+          signal: this.controller.signal,
+        })
+      ).json();
+      this.setState({
+        items: collection.data.items,
+        collectionTitle: collection.data.name,
+        collectionDescription: collection.data.description,
+        collectionImg: collection.data.img,
+        collection: true,
+        done: true,
+      });
     } else {
       this.setState({
-        item: {}
+        item: {},
       });
     }
   }
 
   async getItems() {
-    const { data } = await (await fetch(variables.constants.MARKETPLACE_URL + '/items/' + this.props.type, { signal: this.controller.signal })).json();
-    const featured = await (await fetch(variables.constants.MARKETPLACE_URL + '/featured', { signal: this.controller.signal })).json();
+    const dataURL =
+      this.props.type === 'collections'
+        ? variables.constants.MARKETPLACE_URL + '/collections'
+        : variables.constants.MARKETPLACE_URL + '/items/' + this.props.type;
+    const { data } = await (
+      await fetch(dataURL, {
+        signal: this.controller.signal,
+      })
+    ).json();
+    const featured = await (
+      await fetch(variables.constants.MARKETPLACE_URL + '/featured', {
+        signal: this.controller.signal,
+      })
+    ).json();
+    const collections = await (
+      await fetch(variables.constants.MARKETPLACE_URL + '/collections', {
+        signal: this.controller.signal,
+      })
+    ).json();
 
     if (this.controller.signal.aborted === true) {
       return;
@@ -98,7 +155,8 @@ export default class Marketplace extends PureComponent {
       items: data,
       oldItems: data,
       featured: featured.data,
-      done: true
+      collections: collections.data,
+      done: true,
     });
 
     this.sortMarketplace(localStorage.getItem('sortMarketplace'), false);
@@ -111,13 +169,16 @@ export default class Marketplace extends PureComponent {
       uninstall(this.state.item.type, this.state.item.display_name);
     }
 
-    toast(this.getMessage('toasts.' + type + 'ed'));
+    toast(variables.getMessage('toasts.' + type + 'ed'));
     this.setState({
-      button: (type === 'install') ? this.buttons.uninstall : this.buttons.install
+      button: type === 'install' ? this.buttons.uninstall : this.buttons.install,
     });
 
-    variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} ${(type === 'install' ? 'installed': 'uninstalled')}`);
-    variables.stats.postEvent('marketplace', (type === 'install' ? 'Install': 'Uninstall'));
+    variables.stats.postEvent(
+      'marketplace-item',
+      `${this.state.item.display_name} ${type === 'install' ? 'installed' : 'uninstalled'}`,
+    );
+    variables.stats.postEvent('marketplace', type === 'install' ? 'Install' : 'Uninstall');
   }
 
   sortMarketplace(value, sendEvent) {
@@ -140,12 +201,27 @@ export default class Marketplace extends PureComponent {
 
     this.setState({
       items: items,
-      sortType: value
+      sortType: value,
     });
 
     if (sendEvent) {
       variables.stats.postEvent('marketplace', 'Sort');
     }
+  }
+
+  returnToMain() {
+    this.setState({
+      items: this.state.oldItems,
+      collection: false,
+    });
+  }
+
+  reloadItems() {
+    this.setState({
+      done: false,
+    });
+
+    this.getItems();
   }
 
   componentDidMount() {
@@ -164,24 +240,40 @@ export default class Marketplace extends PureComponent {
   render() {
     const errorMessage = (msg) => {
       return (
-        <div className='emptyitems'>
-          <div className='emptyMessage'>
-            {msg}
+        <>
+          <div className="flexTopMarketplace">
+            <span className="mainTitle">
+              {variables.getMessage('modals.main.navbar.marketplace')}
+            </span>
           </div>
-        </div>
+          <div className="emptyItems">
+            <div className="emptyMessage">{msg}</div>
+          </div>
+        </>
       );
     };
 
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      return errorMessage(<>
-        <MdWifiOff/>
-        <h1>{this.getMessage('modals.main.marketplace.offline.title')}</h1>
-        <p className='description'>{this.getMessage('modals.main.marketplace.offline.description')}</p>
-      </>);
+      return errorMessage(
+        <>
+          <MdWifiOff />
+          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
+          <p className="description">
+            {variables.getMessage('modals.main.marketplace.offline.description')}
+          </p>
+        </>,
+      );
     }
 
     if (this.state.done === false) {
-      return errorMessage(<h1>{this.getMessage('modals.main.loading')}</h1>);
+      return errorMessage(
+        <>
+          <div className="loaderHolder">
+            <div id="loader"></div>
+            <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+          </div>
+        </>,
+      );
     }
 
     const featured = () => {
@@ -191,40 +283,154 @@ export default class Marketplace extends PureComponent {
       };
 
       return (
-        <div className='featured' style={{ backgroundColor: this.state.featured.colour }}>
+        <div className="featured" style={{ backgroundColor: this.state.featured.colour }}>
           <p>{this.state.featured.title}</p>
           <h1>{this.state.featured.name}</h1>
-          <button className='addToMue' onClick={() => openFeatured()}>{this.state.featured.buttonText}</button>
+          <button className="addToMue" onClick={() => openFeatured()}>
+            {this.state.featured.buttonText}
+          </button>
         </div>
       );
-    }
+    };
 
-    if (this.state.items.length === 0) {
+    if (this.state.items?.length === 0) {
       return (
         <>
           {featured()}
-          {errorMessage(<>
-            <MdLocalMall/>
-            <h1>{this.getMessage('modals.main.addons.empty.title')}</h1>
-            <p className='description'>{this.getMessage('modals.main.marketplace.no_items')}</p>
-          </>)}
+          {errorMessage(
+            <>
+              <MdLocalMall />
+              <h1>{variables.getMessage('modals.main.addons.empty.title')}</h1>
+              <p className="description">
+                {variables.getMessage('modals.main.marketplace.no_items')}
+              </p>
+            </>,
+          )}
         </>
       );
     }
 
     if (this.state.item.display_name) {
-      return <Item data={this.state.item} button={this.state.button} toggleFunction={() => this.toggle()} addonInstalled={this.state.item.addonInstalled} addonInstalledVersion={this.state.item.addonInstalledVersion}/>;
+      return (
+        <Item
+          data={this.state.item}
+          button={this.state.button}
+          toggleFunction={() => this.toggle()}
+          addonInstalled={this.state.item.addonInstalled}
+          addonInstalledVersion={this.state.item.addonInstalledVersion}
+          icon={this.state.item.screenshot_url}
+        />
+      );
     }
 
     return (
       <>
-        {featured()}
-        <br/>
-        <Dropdown label={this.getMessage('modals.main.addons.sort.title')} name='sortMarketplace' onChange={(value) => this.sortMarketplace(value)}>
-          <option value='a-z'>{this.getMessage('modals.main.addons.sort.a_z')}</option>
-          <option value='z-a'>{this.getMessage('modals.main.addons.sort.z_a')}</option>
-        </Dropdown>
-        <Items items={this.state.items} toggleFunction={(input) => this.toggle('item', input)} />
+        {this.state.collection === true ? (
+          <>
+            <div className="flexTopMarketplace">
+              <span className="mainTitle" onClick={() => this.returnToMain()}>
+                <span className="backTitle">
+                  {variables.getMessage('modals.main.navbar.marketplace')}
+                </span>
+                <MdOutlineKeyboardArrowRight />{' '}
+                {variables.getMessage('modals.main.marketplace.collection')}
+              </span>
+            </div>
+            <div
+              className="collectionPage"
+              style={{
+                backgroundImage: `linear-gradient(to bottom, transparent, black), url('${this.state.collectionImg}')`,
+              }}
+            >
+              <div className="content">
+                <span className="mainTitle">{this.state.collectionTitle}</span>
+                <span className="subtitle">{this.state.collectionDescription}</span>
+              </div>
+              <div className="nice-tag">
+                {variables.getMessage('modals.main.marketplace.collection')}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flexTopMarketplace">
+              <span className="mainTitle">
+                {variables.getMessage('modals.main.navbar.marketplace')}
+              </span>
+            </div>
+            <div className="headerExtras marketplaceCondition">
+              {this.props.type !== 'collections' ? (
+                <div>
+                  <form className="marketplaceSearch">
+                    <input
+                      label={variables.getMessage('widgets.search')}
+                      placeholder={variables.getMessage('widgets.search')}
+                      name="filter"
+                      id="filter"
+                      value={this.state.filter}
+                      onChange={(event) => this.setState({ filter: event.target.value })}
+                    />
+                    <MdSearch />
+                  </form>
+                  {/*<span className="link marketplaceRefresh" onClick={() => this.reloadItems()}>
+                    <MdRefresh /> {variables.getMessage('widgets.navbar.tooltips.refresh')}
+              </span>*/}
+                </div>
+              ) : null}
+              <Dropdown
+                label={variables.getMessage('modals.main.addons.sort.title')}
+                name="sortMarketplace"
+                onChange={(value) => this.sortMarketplace(value)}
+              >
+                <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
+                <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
+              </Dropdown>
+            </div>
+          </>
+        )}
+        {this.props.type === 'collections' && !this.state.collection ? (
+          this.state.items.map((item) => (
+            <>
+              {!item.news ? (
+                <div
+                  className="collection"
+                  style={
+                    item.news
+                      ? { backgroundColor: item.background_colour }
+                      : {
+                          backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
+                        }
+                  }
+                >
+                  <div className="content">
+                    <span className="title">{item.display_name}</span>
+                    <span className="subtitle">{item.description}</span>
+                  </div>
+                  <button
+                    className="collectionButton"
+                    onClick={() => this.toggle('collection', item.name)}
+                  >
+                    <MdOutlineArrowForward />{' '}
+                    {variables.getMessage('modals.main.marketplace.explore_collection')}
+                  </button>
+                </div>
+              ) : null}
+            </>
+          ))
+        ) : (
+          <Items
+            type={this.props.type}
+            items={this.state.items}
+            collection={
+              this.state.collections[Math.floor(Math.random() * this.state.collections.length)] ||
+              []
+            }
+            onCollection={this.state.collection}
+            toggleFunction={(input) => this.toggle('item', input)}
+            collectionFunction={(input) => this.toggle('collection', input)}
+            filter={this.state.filter}
+          />
+        )}
       </>
     );
   }

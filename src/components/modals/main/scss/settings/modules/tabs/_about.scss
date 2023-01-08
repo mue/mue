@@ -1,16 +1,3 @@
-.aboutIcon {
-  color: var(--modal-text) !important;
-  padding-right: 10px;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  svg {
-    font-size: 1.5em;
-  }
-}
-
 .aboutLink {
   &:hover {
     opacity: 0.8;
@@ -20,17 +7,28 @@
 .aboutLogo {
   height: 100px;
   width: auto;
-  margin-left: -15px;
+  margin: calc(1rem - 15px) 0 1rem 0;
+  align-self: center;
 }
 
-.abouticon {
-  width: 96px;
-  height: auto;
-  border-radius: 50%;
-  padding-right: 5px;
+.aboutContact {
+  flex-flow: row;
+  display: flex;
+  gap: 15px;
+  a {
+    @include basicIconButton(11px, 1.2rem, modal);
+  }
 }
 
-.contacth3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.8em !important;
+.contributorImages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  img {
+    width: 75px;
+    height: auto;
+    @include themed() {
+      border-radius: t($borderRadius);
+    }
+  }
 }

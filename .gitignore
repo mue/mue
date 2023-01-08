@@ -1,7 +1,10 @@
 # Directories
 node_modules/
+.history/
 .vscode/
 build/
+.idea/
+dist/
 
 # Files
 package-lock.json
@@ -9,6 +12,6 @@ yarn-error.log
 .eslintcache
 stats.json
 yarn.lock
-*.zip
-
 keys.json
+.DS_Store
+*.zip

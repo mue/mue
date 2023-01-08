@@ -16,6 +16,10 @@
     "value": "es"
   },
   {
+    "name": "Español (Latinoamérica)",
+    "value": "es_419"
+  },
+  {
     "name": "Français",
     "value": "fr"
   },
@@ -32,15 +36,11 @@
     "value": "ru"
   },
   {
-    "name": "中文 (简体)",
-    "value": "zh_CN"
-  },
-  {
-    "name": "Bahasa Indonesia",
-    "value": "id_ID"
-  },
-  {
     "name": "Türkçe",
     "value": "tr_TR"
+  },
+  {
+    "name": "中文 (简体)",
+    "value": "zh_CN"
   }
 ]

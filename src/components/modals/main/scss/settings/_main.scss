@@ -1,6 +1,6 @@
 @import 'modules/resetmodal';
+@import 'scss/variables';
 @import 'modules/material-ui';
-@import 'modules/reminder';
 
 @import 'modules/tabs/about';
 @import 'modules/tabs/changelog';
@@ -8,7 +8,7 @@
 
 input {
   /* colour picker */
-  &[type=color] {
+  &[type='color'] {
     border-radius: 100%;
     height: 30px;
     width: 30px;
@@ -17,6 +17,9 @@ input {
     -webkit-appearance: none;
     vertical-align: middle;
     background: none;
+    @include themed() {
+      border: t($modal-sidebarActive) 1px solid;
+    }
 
     &::-webkit-color-swatch-wrapper {
       padding: 0;
@@ -29,7 +32,7 @@ input {
   }
 
   /* firefox fixes for colour picker (using "," didn't work) */
-  &[type=color]::-moz-color-swatch {
+  &[type='color']::-moz-color-swatch {
     border-radius: 100%;
     height: 30px;
     width: 30px;
@@ -50,11 +53,13 @@ input {
   }
 
   /* date picker */
-  &[type=date] {
-    width: 280px;
-    color: var(--modal-text);
-    background: var(--background);
-    border: solid var(--modal-text) 1px;
+  &[type='date'] {
+    width: 260px;
+    @include themed() {
+      background: t($modal-sidebar);
+      border: 3px solid t($modal-sidebarActive);
+      color: t($color);
+    }
     padding: 15px 20px;
     border-radius: 4px;
     display: flex !important;
@@ -77,10 +82,151 @@ h4 {
   cursor: pointer;
 }
 
-.keybind-table {
-  text-align: left;
+.photosEmpty {
+  height: 400px;
+  display: grid;
+  place-items: center;
+  button {
+    padding: 0 20px 0 20px;
+  }
+}
 
-  th {
-    padding-right: 10px;
+.imagesTopBar {
+  padding-top: 25px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  div:nth-child(1) {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 20px;
+    svg {
+      font-size: 30px;
+      @include themed() {
+        color: t($subColor);
+      }
+    }
+    div {
+      display: flex;
+      flex-flow: column;
+    }
+  }
+  .topbarbuttons {
+    display: flex;
+    flex-flow: row;
+    gap: 25px;
+  }
+  button {
+    padding: 0 20px 0 20px;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 45px;
+  row-gap: 100px;
+  padding-top: 45px;
+  .leftPanel {
+    grid-area: 1 / 1 / 3 / 3;
+  }
+  .rightPanel {
+    grid-area: 1 / 3 / 4 / 4;
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    .subtitle {
+      text-transform: capitalize;
+    }
+    span {
+      font-size: 20px;
+    }
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  flex-flow: row;
+  padding-top: 20px;
+  gap: 10px;
+  align-items: center;
+
+  .settingsReturn {
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 4px;
+
+    svg {
+      font-size: 2em;
+    }
+    &:hover {
+      background: rgba(121, 121, 121, 0.226);
+    }
+  }
+  .returnButton {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-right: 25px;
+    svg {
+      font-size: 2em;
+    }
+    &:hover {
+      background: rgba(121, 121, 121, 0.226);
+    }
+  }
+}
+
+.achievements {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+
+.achievement {
+  padding: 20px 10px 20px 10px;
+  display: flex;
+  flex-flow: row !important;
+  align-items: center;
+  @include themed() {
+    background: t($modal-sidebarActive);
+    border-radius: t($borderRadius);
+    gap: 10px;
+  }
+  svg {
+    font-size: 20px !important;
+    padding: 15px;
+    border-radius: 100%;
+    @include themed() {
+      background: t($modal-sidebar);
+    }
+  }
+}
+
+.statSection.rightPanel {
+  padding: 25px;
+  @include themed() {
+    border-radius: t($borderRadius);
+    background: t($modal-sidebar);
+    box-shadow: 0 0 0 4px t($modal-sidebarActive);
+    svg {
+      font-size: 50px;
+      color: t($subColor);
+    }
+  }
+}
+
+.achievementContent {
+  display: flex;
+  flex-flow: column;
+  span {
+    font-size: 15px;
   }
 }

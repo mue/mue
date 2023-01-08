@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
-import { MdSearch, MdMic } from 'react-icons/md';
-//import Hotkeys from 'react-hot-keys';
+import { PureComponent, createRef } from 'react';
+import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 import AutocompleteInput from 'components/helpers/autocomplete/Autocomplete';
 
@@ -9,8 +9,7 @@ import EventBus from 'modules/helpers/eventbus';
 
 import './search.scss';
 
-const searchEngines = require('./search_engines.json');
-const autocompleteProviders = require('./autocomplete_providers.json');
+import searchEngines from 'components/widgets/search/search_engines.json';
 
 export default class Search extends PureComponent {
   constructor() {
@@ -18,18 +17,20 @@ export default class Search extends PureComponent {
     this.state = {
       url: '',
       query: '',
-      autocompleteURL: '',
-      autocompleteQuery: '',
-      autocompleteCallback: '',
       microphone: null,
       suggestions: [],
-      searchDropdown: 'hidden'
+      searchDropdown: false,
+      classList:
+        localStorage.getItem('widgetStyle') === 'legacy' ? 'searchIcons old' : 'searchIcons',
     };
+    this.micIcon = createRef();
   }
 
   startSpeechRecognition = () => {
     const voiceSearch = new window.webkitSpeechRecognition();
     voiceSearch.start();
+
+    this.micIcon.current.classList.add('micActive');
 
     const searchText = document.getElementById('searchtext');
 
@@ -38,6 +39,7 @@ export default class Search extends PureComponent {
     };
 
     voiceSearch.onend = () => {
+      this.micIcon.current.classList.remove('micActive');
       if (searchText.value === '') {
         return;
       }
@@ -47,33 +49,29 @@ export default class Search extends PureComponent {
         window.location.href = this.state.url + `?${this.state.query}=` + searchText.value;
       }, 1000);
     };
-  }
+  };
 
   searchButton = (e) => {
     e.preventDefault();
     const value = e.target.value || document.getElementById('searchtext').value || 'mue fast';
     variables.stats.postEvent('feature', 'Search');
     window.location.href = this.state.url + `?${this.state.query}=` + value;
-  }
+  };
 
   async getSuggestions(input) {
-    window.setResults = (results) => { 
+    window.setResults = (results) => {
       window.searchResults = results;
     };
 
-    const script = document.createElement('script');
-    script.src = `${this.state.autocompleteURL + this.state.autocompleteQuery + input}&${this.state.autocompleteCallback}=window.setResults`;
-    document.head.appendChild(script);
+    const results = await (await fetch(`https://ac.ecosia.org/?q=${input}`)).json();
 
     try {
       this.setState({
-        suggestions: window.searchResults[1].splice(0, 3)
+        suggestions: results.suggestions.splice(0, 3),
       });
     } catch (e) {
       // ignore error if empty
     }
-
-    document.head.removeChild(script);
   }
 
   init() {
@@ -95,39 +93,19 @@ export default class Search extends PureComponent {
     }
 
     if (localStorage.getItem('voiceSearch') === 'true') {
-      microphone = <MdMic className='micIcon' onClick={this.startSpeechRecognition}/>;
-    }
-
-    let autocompleteURL, autocompleteQuery, autocompleteCallback;
-
-    if (localStorage.getItem('autocomplete') === 'true') {
-      const info = autocompleteProviders.find((i) => i.value === localStorage.getItem('autocompleteProvider'));
-      autocompleteURL = info.url;
-      autocompleteQuery = info.query;
-      autocompleteCallback = info.callback;
+      microphone = (
+        <button onClick={this.startSpeechRecognition} ref={this.micIcon}>
+          <MdMic className="micIcon" />
+        </button>
+      );
     }
 
     this.setState({
       url,
       query,
-      autocompleteURL,
-      autocompleteQuery,
-      autocompleteCallback,
       microphone,
-      currentSearch: info ? info.name : 'Custom'
+      currentSearch: info ? info.name : 'Custom',
     });
-  }
-
-  toggleDropdown() {
-    if (this.state.searchDropdown === 'hidden') {
-      this.setState({
-        searchDropdown: 'visible'
-      });
-    } else {
-      this.setState({
-        searchDropdown: 'hidden'
-      });
-    }
   }
 
   setSearch(name, custom) {
@@ -150,7 +128,7 @@ export default class Search extends PureComponent {
       url,
       query,
       currentSearch: name,
-      searchDropdown: 'hidden'
+      searchDropdown: false,
     });
   }
 
@@ -160,8 +138,15 @@ export default class Search extends PureComponent {
         this.init();
       }
     });
-  
+
     this.init();
+
+    if (localStorage.getItem('searchFocus') === 'true') {
+      const element = document.getElementById('searchtext');
+      if (element) {
+        element.focus();
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -169,33 +154,77 @@ export default class Search extends PureComponent {
   }
 
   render() {
-    const customText = variables.language.getMessage(variables.languagecode, 'modals.main.settings.sections.search.custom').split(' ')[0];
+    const customText = variables
+      .getMessage('modals.main.settings.sections.search.custom')
+      .split(' ')[0];
 
     return (
-      <>
-        <div>
-          {localStorage.getItem('searchDropdown') === 'true' ? 
-          <div className='searchDropdown' style={{ visibility: this.state.searchDropdown }}>
-            {searchEngines.map(({ name }) => {
-              if (name === this.state.currentSearch) {
-                return null;
-              }
-
-              return (
-                <span className='searchDropdownList' onClick={() => this.setSearch(name)}>{name}</span>
-              );
-            })}
-            {this.state.currentSearch !== customText ? <span className='searchDropdownList' onClick={() => this.setSearch(customText, 'custom')}>{customText}</span> : null}
-          </div>: null}
+      <div className="searchComponents">
+        <div className="searchMain">
+          <div className={this.state.classList}>
+            {localStorage.getItem('searchDropdown') === 'true' ? (
+              <Tooltip title={variables.getMessage('widgets.search')}>
+                <button
+                  onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
+                >
+                  <MdScreenSearchDesktop />
+                </button>
+              </Tooltip>
+            ) : (
+              ''
+            )}
+            <Tooltip title={variables.getMessage('widgets.search')}>
+              {this.state.microphone}
+            </Tooltip>
+          </div>
+          <form onSubmit={this.searchButton} className="searchBar">
+            <div className={this.state.classList}>
+              <Tooltip title={variables.getMessage('widgets.search')}>
+                <button onClick={this.searchButton}>
+                  <MdSearch />
+                </button>
+              </Tooltip>
+            </div>
+            <AutocompleteInput
+              placeholder={variables.getMessage('widgets.search')}
+              id="searchtext"
+              suggestions={this.state.suggestions}
+              onChange={(e) => this.getSuggestions(e)}
+              onClick={this.searchButton}
+            />
+          </form>
         </div>
-        <form onSubmit={this.searchButton} className='searchBar'>
-        {localStorage.getItem('searchDropdown') === 'true' ? <span className="dropdown-span" onClick={() => this.toggleDropdown()}>{this.state.currentSearch}</span> : ''}
-          {this.state.microphone}
-          <MdSearch onClick={this.searchButton}/>
-          <AutocompleteInput placeholder={variables.language.getMessage(variables.languagecode, 'widgets.search')} id='searchtext' suggestions={this.state.suggestions} onChange={(e) => this.getSuggestions(e)} onClick={this.searchButton}/>
-          {/*variables.keybinds.focusSearch && variables.keybinds.focusSearch !== '' ? <Hotkeys keyName={variables.keybinds.focusSearch} onKeyDown={() => document.getElementById('searchtext').focus()}/> : null*/}
-        </form>
-      </>
+        <div>
+          {localStorage.getItem('searchDropdown') === 'true' &&
+          this.state.searchDropdown === true ? (
+            <div className="searchDropdown">
+              {searchEngines.map(({ name }, key) => {
+                if (name === this.state.currentSearch) {
+                  return null;
+                }
+
+                return (
+                  <span
+                    className="searchDropdownList"
+                    onClick={() => this.setSearch(name)}
+                    key={key}
+                  >
+                    {name}
+                  </span>
+                );
+              })}
+              {this.state.currentSearch !== customText ? (
+                <span
+                  className="searchDropdownList"
+                  onClick={() => this.setSearch(customText, 'custom')}
+                >
+                  {customText}
+                </span>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      </div>
     );
   }
 }

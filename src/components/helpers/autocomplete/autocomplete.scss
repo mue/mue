@@ -1,23 +1,19 @@
+@use 'scss/variables';
+
 .suggestions {
+  @extend %basic;
   text-align: left;
-  font-size: calc(5px + 1.2vmin);
-  background-color: rgba(255, 255, 255, 0.8);
-  color: black;
   border-top-width: 0;
   list-style: none;
-  margin-top: 40px;
-  max-height: 143px;
   overflow: hidden;
   position: relative;
   display: inline-block;
-  margin-left: 40px;
-  border-radius: 24px;
-  width: 430px;
-  opacity: 0;
+  opacity: 1;
+  margin-top: 5px;
 
-  li {
-    padding: 0.5rem;
-    padding-left: 20px;
+  div {
+    padding: 0.5rem 0.5rem 0.5rem 20px;
+    font-size: 0.6em;
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.8);
@@ -27,24 +23,22 @@
 }
 
 .searchBar {
-  input[type=text]:focus+.suggestions {
+  input[type='text']:focus + .suggestions {
     opacity: 1;
   }
 }
 
-@media screen and (min-width: 1400px) {
-  .suggestions {
-    margin-top: 50px;
-  }
-}
-
 .dark .suggestions {
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   color: white;
 
   li {
     &:hover {
-      background-color: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
     }
   }
+}
+
+.micActive {
+  box-shadow: 0px 0px 50px 1px #e74c3c !important;
 }

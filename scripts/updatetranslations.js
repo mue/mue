@@ -7,7 +7,10 @@ fs.readdirSync('../src/translations').forEach((file) => {
     return;
   }
 
-  const newdata = merge(require('../src/translations/en_GB.json'), require('../src/translations/' + file));
+  const newdata = merge(
+    require('../src/translations/en_GB.json'),
+    require('../src/translations/' + file),
+  );
   fs.writeFileSync('../src/translations/' + file, JSON.stringify(newdata, null, 2));
   // add new line
   fs.appendFileSync('../src/translations/' + file, '\n');

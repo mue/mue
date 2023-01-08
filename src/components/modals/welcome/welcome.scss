@@ -1,56 +1,62 @@
 @import '../main/scss/index.scss';
+@import 'scss/variables';
 
 .welcomemodal {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 80%;
-  width: 60%;
-  padding: 0;
-
-  section {
-    width: 50%;
-    display: inline;
-    height: 80vh;
-  }
-
-  section:nth-child(1) {
-    float: left;
-    background: var(--sidebar);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  section:nth-child(2) {
-    float: right;
-
-    .content {
-      padding: 20px;
-    }
-
-    .buttons {
-      position: absolute;
-      bottom: 2rem;
-      right: 2rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    h3.quicktip {
-      text-transform: uppercase;
-      color: #5352ed;
-    }
+  @include themed() {
+    background-color: t($modal-background);
   }
 }
 
-.welcomeoverlay {
-  background-color: rgba(0, 0, 0, 0.4);
+.welcomeContent {
+  @include themed() {
+    background-color: t($modal-background);
+  }
+  .MuiFormControlLabel-root {
+    margin-right: 0;
+  }
+  @extend %tabText;
+  height: 80vh;
+  width: clamp(60vw, 1200px, 90vw);
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  section:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include themed() {
+      background-color: t($modal-sidebar);
+    }
+  }
+  section:nth-child(2) {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    .buttons {
+      z-index: 999;
+      backdrop-filter: blur(2px);
+      position: sticky;
+      bottom: 0;
+      padding: 25px;
+      display: flex;
+      justify-content: flex-end;
+      button {
+        @include modal-button(standard);
+        width: 150px;
+      }
+    }
+    .content {
+      display: flex;
+      flex-flow: column;
+      padding: 25px;
+      gap: 20px;
+    }
+  }
 }
 
 .progressbar {
@@ -78,60 +84,70 @@
 }
 
 .themesToggleArea {
-  .active {
-    background: var(--tab-active);
-  }
-
-  .toggle {
-    background: var(--sidebar);
-    text-align: center;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 10px;
-    border: 3px solid var(--tab-active);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    &:hover {
-      background: var(--tab-active);
+  @include themed() {
+    .active {
+      background: t($modal-sidebarActive);
     }
 
-    span {
-      font-size: 1rem;
-    }
+    .toggle {
+      background: t($modal-sidebar);
+      text-align: center;
+      border-radius: 20px;
+      padding: 20px;
+      border: 3px solid t($modal-sidebarActive);
+      transition: 0.33s;
 
-    svg {
-      font-size: 2.5em;
-    }
-  }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
 
-  .auto {
-    svg {
-      font-size: 12px;
-      padding-right: 5px;
-    }
-  }
+      cursor: pointer;
 
-  .options {
-    display: flex;
-    justify-content: space-between;
-
-    .lightTheme,
-    .darkTheme {
-      width: 40%;
-      padding: 50px;
+      &:hover {
+        background: t($modal-sidebarActive);
+      }
 
       span {
-        display: block;
+        font-size: 1rem;
+      }
+
+      svg {
+        font-size: 2.5em;
+      }
+    }
+
+    .auto {
+      svg {
+        font-size: 12px;
+        padding-right: 5px;
+      }
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      margin-top: 25px;
+
+      .lightTheme,
+      .darkTheme,
+      .legacyStyle,
+      .newStyle {
+        width: 40%;
+        padding: 50px;
+
+        span {
+          display: block;
+        }
       }
     }
   }
+}
+
+.themesToggleArea .toggle {
+  margin-bottom: 10px;
 }
 
 .upload {
@@ -141,13 +157,17 @@
   border: none;
   outline: none;
   padding: 50px;
-  background: var(--sidebar);
-  color: var(--modal-text);
-  cursor: pointer;
-  border: 3px solid var(--tab-active);
-
-  &:hover {
-    background: var(--tab-active);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  @include themed() {
+    background: t($modal-sidebar);
+    color: t($color);
+    cursor: pointer;
+    border: 3px solid t($modal-sidebarActive);
+    &:hover {
+      background: t($modal-sidebarActive);
+    }
   }
 
   svg {
@@ -170,74 +190,84 @@ a.privacy {
 }
 
 .examples {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-
   img {
-    width: 30rem !important;
-    height: auto !important;
-    display: block;
-    margin: 30px;
-    border-radius: 12px;
+    width: 60%;
+    @include themed() {
+      border-radius: t($borderRadius);
+    }
+  }
+}
+
+.createButtons {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  button {
+    width: 150px;
+    height: 40px;
   }
 }
 
 .showcaseimg {
   width: 350px;
   height: auto;
+  /*animation-name: float-in;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in;*/
 }
 
-@media (max-width: 1820px) and (min-width: 1200px) {
-  .welcomemodal {
-    width: 85%;
-    height: 90%;
+.welcomeContent {
+  .light {
+    .toggle.lightTheme {
+      background-color: rgba(219, 219, 219, 0.72);
+    }
   }
 
-  section {
-    height: 90vh !important;
-  }
-}
-
-@media (max-width: 1300px) {
-  .welcomemodal {
-    overflow-x: hidden !important;
-  }
-
-  .examples img {
-    width: 20rem !important;
-  }
-
-  .buttons {
-    position: relative !important;
-    bottom: 1rem !important;
-    right: -1rem !important;
-  }
-
-  section {
-    height: 100vh !important;
+  .dark {
+    .toggle.darkTheme {
+      background-color: rgba(65, 71, 84, 0.9);
+    }
   }
 }
 
-@media (max-width: 1190px) { 
-  .welcomemodal {
-    width: 90%;
-    height: 90%;
+.welcomeNotice {
+  display: flex;
+  flex-flow: row;
+  gap: 25px;
+  padding: 25px;
+  align-items: center;
+
+  @include themed() {
+    background-color: t($modal-sidebar);
+    border-radius: t($borderRadius);
+  }
+  .icon {
+    @include themed() {
+      background-color: t($modal-sidebarActive);
+    }
+    height: 50px !important;
+    width: 50px !important;
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .text {
+    display: flex;
+    flex-flow: column;
+  }
+  a {
+    text-decoration: none;
+    margin-left: auto;
+    padding: 0 20px;
+    @include modal-button(standard);
   }
 }
 
-@media (max-width: 800px) { 
-  .welcomemodal {
-    width: 100%;
-    height: 100%;
-  }
-
-  .examples img {
-    width: 15rem !important;
-  }
-
-  section {
-    height: 140vh !important;
+.toggle.active {
+  @include themed() {
+    background-color: t($modal-sidebarActive) !important;
   }
 }

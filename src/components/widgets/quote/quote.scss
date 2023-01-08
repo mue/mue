@@ -1,19 +1,14 @@
-@import '../../../scss/variables';
+@import 'scss/variables';
 
 .quote {
   font-size: 0.8em;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   cursor: initial;
   user-select: none;
-
   --shadow-shift: 0.125rem;
-}
-
-@media screen and (min-width: 600px) {
-  .quote {
-    margin-left: 30%;
-    margin-right: 30%;
-  }
+  color: #fff;
+  font-weight: 600;
+  width: 40vw;
 }
 
 .quoteauthor {
@@ -29,23 +24,132 @@
   }
 }
 
-.copyButton {
-  cursor: pointer;
-  vertical-align: middle;
-  transition: ease 0.2s !important;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
 i.material-icons,
 h1.quoteauthor {
   display: inline;
 }
 
-.quoteauthorlink {
+.quoteAuthorLink {
   text-decoration: none;
   color: white;
   user-select: none;
+}
+
+.author {
+  @extend %basic;
+  display: flex;
+  flex-flow: row;
+  height: 70px;
+  font-weight: 300;
+  margin: 10px;
+}
+
+.author-name {
+  font-size: clamp(15px, 2.5vw, 0.6em);
+}
+
+.author-knownfor {
+  font-size: clamp(13px, 2.5vw, 0.4em);
+  @include themed() {
+    color: t($subColor);
+  }
+}
+
+.author-license {
+  font-size: clamp(8px, 2.5vw, 0.1em);
+  @include themed() {
+    color: t($subColor);
+  }
+}
+
+.author img {
+  height: 100%;
+  width: auto;
+  border-radius: 12px 0 0 12px;
+}
+
+.author-img {
+  @extend %basic;
+  height: 100%;
+  width: 70px;
+  border-radius: 12px 0 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: initial;
+}
+
+.author-content {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  text-align: left;
+}
+
+.author-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.quote-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 20px 20px 0;
+
+  a {
+    display: flex;
+  }
+  a {
+    @include basicIconButton(11px, 1.3rem, ui);
+  }
+}
+
+.quotediv {
+  animation: fadeIn 1s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  button {
+    @include basicIconButton(11px, 1.3rem, ui);
+  }
+}
+
+.deleteButton {
+  height: auto !important;
+  @include basicIconButton(11px, 1.3rem, modal);
+  padding: 10px 20px;
+}
+
+.author-content.whileLoading {
+  @include themed() {
+    gap: 5px;
+    .title {
+      color: transparent;
+      width: 100px;
+      background: t($modal-sidebar);
+    }
+    .subtitle {
+      color: transparent;
+      width: 50px;
+      background: t($modal-sidebarActive);
+    }
+  }
 }

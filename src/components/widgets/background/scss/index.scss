@@ -1,5 +1,5 @@
 @import 'photoinformation';
-@import '../../../../scss/mixins';
+@import 'scss/mixins';
 
 #backgroundImage {
   height: 100vh;
@@ -8,6 +8,24 @@
   background-position: center !important;
   background-attachment: fixed !important;
   zoom: 100% !important;
+}
+
+.backgroundTransform {
+  @include animation('fadein2 2s');
+  -webkit-transition: background 2s;
+  -mov-transition: background 2s;
+  -o-transition: background 2s;
+  transition: background 2s;
+}
+
+@include keyframes(fadein2) {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .backgroundPreload {

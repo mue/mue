@@ -80,7 +80,7 @@
     "value": true
   },
   {
-    "name": "tweetButton",
+    "name": "quoteShareButton",
     "value": false
   },
   {
@@ -92,8 +92,8 @@
     "value": true
   },
   {
-    "name": "quotelanguage",
-    "value": "English"
+    "name": "quoteLanguage",
+    "value": "en"
   },
   {
     "name": "date",
@@ -222,7 +222,7 @@
   {
     "name": "photoInformation",
     "value": true
-  }, 
+  },
   {
     "name": "quicklinksddgProxy",
     "value": true
@@ -245,6 +245,22 @@
   },
   {
     "name": "animations",
+    "value": true
+  },
+  {
+    "name": "textBorder",
+    "value": "new"
+  },
+  {
+    "name": "widgetStyle",
+    "value": "new"
+  },
+  {
+    "name": "backgroundExclude",
+    "value": "[]"
+  },
+  {
+    "name": "photoMap",
     "value": true
   }
 ]

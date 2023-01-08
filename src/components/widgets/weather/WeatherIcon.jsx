@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import {
   WiDaySunny,
   WiNightClear,
@@ -10,28 +12,45 @@ import {
   WiRain,
   WiThunderstorm,
   WiSnow,
-  WiFog
+  WiFog,
 } from 'react-icons/wi';
 
-export default function WeatherIcon({ name }) {
-  let icon;
-
+function WeatherIcon({ name }) {
   // name is the openweathermap icon name, see https://openweathermap.org/weather-conditions
   switch (name) {
-    case '01d': icon = <WiDaySunny/>; break;
-    case '01n': icon = <WiNightClear/>; break;
-    case '02d': icon = <WiDayCloudy/>; break;
-    case '02n': icon = <WiNightCloudy/>; break;
-    case '03d': case '03n': icon = <WiCloud/>; break;
-    case '04d': case '04n': icon = <WiCloudy/>; break;
-    case '09d': icon = <WiDayShowers/>; break;
-    case '09n': icon = <WiNightShowers/>; break;
-    case '10d': case '10n': icon = <WiRain/>; break;
-    case '11d': case '11n': icon = <WiThunderstorm/>; break;
-    case '13d': case '13n': icon = <WiSnow/>; break;
-    case '50d': case '50n': icon = <WiFog/>; break;
-    default: icon = null; break;
+    case '01d':
+      return <WiDaySunny className="weatherIcon" />;
+    case '01n':
+      return <WiNightClear className="weatherIcon" />;
+    case '02d':
+      return <WiDayCloudy className="weatherIcon" />;
+    case '02n':
+      return <WiNightCloudy className="weatherIcon" />;
+    case '03d':
+    case '03n':
+      return <WiCloud className="weatherIcon" />;
+    case '04d':
+    case '04n':
+      return <WiCloudy className="weatherIcon" />;
+    case '09d':
+      return <WiDayShowers className="weatherIcon" />;
+    case '09n':
+      return <WiNightShowers className="weatherIcon" />;
+    case '10d':
+    case '10n':
+      return <WiRain className="weatherIcon" />;
+    case '11d':
+    case '11n':
+      return <WiThunderstorm className="weatherIcon" />;
+    case '13d':
+    case '13n':
+      return <WiSnow className="weatherIcon" />;
+    case '50d':
+    case '50n':
+      return <WiFog className="weatherIcon" />;
+    default:
+      return null;
   }
-
-  return icon;
 }
+
+export default memo(WeatherIcon);

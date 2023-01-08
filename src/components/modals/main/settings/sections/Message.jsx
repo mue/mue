@@ -1,31 +1,30 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdCancel, MdAdd } from 'react-icons/md';
+import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import { TextField } from '@mui/material';
+import { TextareaAutosize } from '@mui/material';
 
+import SettingsItem from '../SettingsItem';
 import Header from '../Header';
 
 import EventBus from 'modules/helpers/eventbus';
 
 export default class Message extends PureComponent {
-  getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
   constructor() {
     super();
     this.state = {
-      messages: JSON.parse(localStorage.getItem('messages')) || [''],
+      messages: JSON.parse(localStorage.getItem('messages')) || [],
     };
   }
 
   reset = () => {
-    localStorage.setItem('messages', '[""]');
+    localStorage.setItem('messages', '[]');
     this.setState({
-      messages: ['']
+      messages: [],
     });
-    toast(this.getMessage(this.languagecode, 'toasts.reset'));
+    toast(variables.getMessage(this.languagecode, 'toasts.reset'));
     EventBus.dispatch('refresh', 'message');
-  }
+  };
 
   modifyMessage(type, index) {
     const messages = this.state.messages;
@@ -36,7 +35,7 @@ export default class Message extends PureComponent {
     }
 
     this.setState({
-      messages
+      messages,
     });
     this.forceUpdate();
 
@@ -44,37 +43,92 @@ export default class Message extends PureComponent {
   }
 
   message(e, text, index) {
-    const result = (text === true) ? e.target.value : e.target.result;
+    const result = text === true ? e.target.value : e.target.result;
 
     const messages = this.state.messages;
     messages[index] = result;
     this.setState({
-      messages
+      messages,
     });
     this.forceUpdate();
 
     localStorage.setItem('messages', JSON.stringify(messages));
-    document.querySelector('.reminder-info').style.display = 'block';
+    document.querySelector('.reminder-info').style.display = 'flex';
     localStorage.setItem('showReminder', true);
   }
-  
+
   render() {
     return (
       <>
-        <Header title={this.getMessage('modals.main.settings.sections.message.title')} setting='message' category='message' element='.message' zoomSetting='zoomMessage'/>
-        <p>{this.getMessage('modals.main.settings.sections.message.text')}</p>
-        <div className='data-buttons-row'>
-          <button onClick={() => this.modifyMessage('add')}>{this.getMessage('modals.main.settings.sections.message.add')} <MdAdd/></button>
+        <Header
+          title={variables.getMessage('modals.main.settings.sections.message.title')}
+          setting="message"
+          category="message"
+          element=".message"
+          zoomSetting="zoomMessage"
+          switch={true}
+        />
+        <SettingsItem
+          title={variables.getMessage('modals.main.settings.sections.message.messages')}
+          final={true}
+        >
+          <button onClick={() => this.modifyMessage('add')}>
+            {variables.getMessage('modals.main.settings.sections.message.add')} <MdAdd />
+          </button>
+        </SettingsItem>
+        <div className="messagesContainer">
+          {this.state.messages.map((_url, index) => (
+            <div className="messageMap">
+              <div className="flexGrow">
+                <div className="icon">
+                  <MdOutlineTextsms />
+                </div>
+                <div className="messageText">
+                  <span className="subtitle">
+                    {variables.getMessage('modals.main.settings.sections.message.title')}
+                  </span>
+                  <TextareaAutosize
+                    value={this.state.messages[index]}
+                    placeholder={variables.getMessage(
+                      'modals.main.settings.sections.message.content',
+                    )}
+                    onChange={(e) => this.message(e, true, index)}
+                    varient="outlined"
+                    style={{ padding: '0' }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="messageAction">
+                  <button
+                    className="deleteButton"
+                    onClick={() => this.modifyMessage('remove', index)}
+                  >
+                    {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                    <MdCancel />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        {this.state.messages.map((_url, index) => (
-          <div style={{ display: 'flex' }} key={index}>
-            <TextField value={this.state.messages[index]} onChange={(e) => this.message(e, true, index)} varient='outlined' />
-            {this.state.messages.length > 1 ? <button className='cleanButton' onClick={() => this.modifyMessage('remove', index)}>
-              <MdCancel/>
-            </button> : null}
+        {this.state.messages.length === 0 ? (
+          <div className="photosEmpty">
+            <div className="emptyNewMessage">
+              <MdOutlineTextsms />
+              <span className="title">
+                {variables.getMessage('modals.main.settings.sections.message.no_messages')}
+              </span>
+              <span className="subtitle">
+                {variables.getMessage('modals.main.settings.sections.message.add_some')}
+              </span>
+              <button onClick={() => this.modifyMessage('add')}>
+                {variables.getMessage('modals.main.settings.sections.message.add')}
+                <MdAdd />
+              </button>
+            </div>
           </div>
-        ))}
-        <br/>
+        ) : null}
       </>
     );
   }

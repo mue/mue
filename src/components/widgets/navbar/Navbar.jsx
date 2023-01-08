@@ -1,10 +1,10 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { MdRefresh, MdSettings, MdAssignment } from 'react-icons/md';
+import { MdRefresh, MdSettings } from 'react-icons/md';
 
 import Notes from './Notes';
+import Todo from './Todo';
 import Maximise from '../background/Maximise';
-import Favourite from '../background/Favourite';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -15,74 +15,131 @@ export default class Navbar extends PureComponent {
   constructor() {
     super();
     this.navbarContainer = createRef();
-    this.refreshValue = localStorage.getItem('refresh');
+    this.state = {
+      classList: localStorage.getItem('widgetStyle') === 'legacy' ? 'navbar old' : 'navbar new',
+      refreshText: '',
+      refreshEnabled: localStorage.getItem('refresh'),
+      refreshOption: localStorage.getItem('refreshOption') || '',
+    };
   }
 
   setZoom() {
-    const zoomNavbar = Number((localStorage.getItem('zoomNavbar') || 100) / 100);
-    this.navbarContainer.current.style.fontSize = `${zoomNavbar}em`;
+    this.setState({
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
+    });
+  }
+
+  updateRefreshText() {
+    let refreshText;
+    switch (localStorage.getItem('refreshOption')) {
+      case 'background':
+        refreshText = variables.getMessage('modals.main.settings.sections.background.title');
+        break;
+      case 'quote':
+        refreshText = variables.getMessage('modals.main.settings.sections.quote.title');
+        break;
+      case 'quotebackground':
+        refreshText =
+          variables.getMessage('modals.main.settings.sections.quote.title') +
+          ' ' +
+          variables.getMessage('modals.main.settings.sections.background.title');
+        break;
+      default:
+        refreshText = variables.getMessage(
+          'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+        );
+        break;
+    }
+
+    this.setState({
+      refreshText,
+    });
   }
 
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'navbar' || data === 'background') {
-        this.refreshValue = localStorage.getItem('refresh');
-        this.forceUpdate();
-        this.setZoom();
+        this.setState({
+          refreshEnabled: localStorage.getItem('refresh'),
+          refreshOption: localStorage.getItem('refreshOption'),
+        });
+        try {
+          this.updateRefreshText();
+          this.setZoom();
+        } catch (e) {}
       }
     });
 
+    this.updateRefreshText();
     this.setZoom();
   }
 
+  componentWillUnmount() {
+    EventBus.off('refresh');
+  }
+
   refresh() {
-    switch (this.refreshValue) { 
+    switch (this.state.refreshOption) {
       case 'background':
-        EventBus.dispatch('refresh', 'backgroundrefresh');
-        break;
+        return EventBus.dispatch('refresh', 'backgroundrefresh');
       case 'quote':
-        EventBus.dispatch('refresh', 'quoterefresh');
-        break;
+        return EventBus.dispatch('refresh', 'quoterefresh');
       case 'quotebackground':
         EventBus.dispatch('refresh', 'quoterefresh');
-        EventBus.dispatch('refresh', 'backgroundrefresh');
-        break;
+        return EventBus.dispatch('refresh', 'backgroundrefresh');
       default:
         window.location.reload();
     }
   }
 
   render() {
-    const backgroundEnabled = (localStorage.getItem('background') === 'true');
+    const backgroundEnabled = localStorage.getItem('background') === 'true';
 
     const navbar = (
-      <div className='navbar-container' ref={this.navbarContainer}>
-        {(localStorage.getItem('view') === 'true' && backgroundEnabled) ? <Maximise/> : null}
-        {(localStorage.getItem('favouriteEnabled') === 'true' && backgroundEnabled) ? <Favourite/> : null}
-    
-        {(localStorage.getItem('notesEnabled') === 'true') ?
-          <div className='notes'>
-            <MdAssignment className='topicons'/>
-            <Notes/>
-          </div>
-        : null}
+      <div className="navbar-container">
+        <div className={this.state.classList}>
+          {localStorage.getItem('view') === 'true' && backgroundEnabled ? (
+            <Maximise fontSize={this.state.zoomFontSize} />
+          ) : null}
+          {localStorage.getItem('notesEnabled') === 'true' ? (
+            <Notes fontSize={this.state.zoomFontSize} />
+          ) : null}
+          {localStorage.getItem('todo') === 'true' ? (
+            <Todo fontSize={this.state.zoomFontSize} />
+          ) : null}
 
-        {(this.refreshValue !== 'false') ?
-          <Tooltip title={variables.language.getMessage(variables.languagecode, 'widgets.navbar.tooltips.refresh')}>
-            <MdRefresh className='refreshicon topicons' onClick={() => this.refresh()}/>
+          {this.refreshEnabled !== 'false' ? (
+            <Tooltip
+              title={variables.getMessage('widgets.navbar.tooltips.refresh')}
+              subtitle={this.state.refreshText}
+            >
+              <button onClick={() => this.refresh()} style={{ fontSize: this.state.zoomFontSize }}>
+                <MdRefresh className="refreshicon topicons" />
+              </button>
+            </Tooltip>
+          ) : null}
+          <Tooltip
+            title={variables.getMessage('modals.main.navbar.settings', {
+              type: variables.getMessage(
+                'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
+              ),
+            })}
+          >
+            <button
+              onClick={() => this.props.openModal('mainModal')}
+              style={{ fontSize: this.state.zoomFontSize }}
+            >
+              <MdSettings className="settings-icon topicons" />
+            </button>
           </Tooltip>
-        : null}
-  
-        <Tooltip title={variables.language.getMessage(variables.languagecode, 'modals.main.navbar.settings')}>
-          <MdSettings className='settings-icon topicons' onClick={() => this.props.openModal('mainModal')}/>
-        </Tooltip>
+        </div>
       </div>
     );
 
-    if (localStorage.getItem('navbarHover') === 'true') {
-      return <div className='navbar-hover'>{navbar}</div>;
-    } else {
-      return navbar;
-    }
+    return localStorage.getItem('navbarHover') === 'true' ? (
+      <div className="navbar-hover">{navbar}</div>
+    ) : (
+      navbar
+    );
   }
 }

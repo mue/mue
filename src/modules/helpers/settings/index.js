@@ -1,10 +1,8 @@
 import variables from 'modules/variables';
 import experimentalInit from '../experimental';
 
-const defaultSettings = require('modules/default_settings.json');
-const languages = require('modules/languages.json');
-
-const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
+import defaultSettings from 'modules/default_settings.json';
+import languages from 'modules/languages.json';
 
 export function setDefaultSettings(reset) {
   localStorage.clear();
@@ -12,7 +10,10 @@ export function setDefaultSettings(reset) {
 
   // Languages
   const languageCodes = languages.map(({ value }) => value);
-  const browserLanguage = (navigator.languages && navigator.languages.find((lang) => lang.replace('-', '_') && languageCodes.includes(lang))) || navigator.language.replace('-', '_');
+  const browserLanguage =
+    (navigator.languages &&
+      navigator.languages.find((lang) => lang.replace('-', '_') && languageCodes.includes(lang))) ||
+    navigator.language.replace('-', '_');
 
   if (languageCodes.includes(browserLanguage)) {
     localStorage.setItem('language', browserLanguage);
@@ -20,13 +21,13 @@ export function setDefaultSettings(reset) {
     localStorage.setItem('language', 'en_GB');
   }
 
-  localStorage.setItem('tabName', getMessage('tabname'));
+  localStorage.setItem('tabName', variables.getMessage('tabname'));
 
   if (reset) {
     localStorage.setItem('showWelcome', false);
   }
 
-  // Finally we set this to true so it doesn't run the function on every load
+  // finally we set this to true so it doesn't run the function on every load
   localStorage.setItem('firstRun', true);
 }
 
@@ -34,19 +35,22 @@ export function loadSettings(hotreload) {
   switch (localStorage.getItem('theme')) {
     case 'dark':
       document.body.classList.add('dark');
+      document.body.classList.remove('light');
       break;
     case 'auto':
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
       } else {
         document.body.classList.remove('dark');
+        document.body.classList.add('light');
       }
       break;
     default:
+      document.body.classList.add('light');
       document.body.classList.remove('dark');
   }
 
-  document.title = localStorage.getItem('tabName') || getMessage('tabname');
+  document.title = localStorage.getItem('tabName') || variables.getMessage('tabname');
 
   if (hotreload === true) {
     // remove old custom stuff and add new
@@ -60,19 +64,23 @@ export function loadSettings(hotreload) {
     });
   }
 
-  if (localStorage.getItem('animations') === 'false') { 
+  if (localStorage.getItem('animations') === 'false') {
     document.body.classList.add('no-animations');
   } else {
     document.body.classList.remove('no-animations');
   }
 
-  if (localStorage.getItem('textBorder') === 'true') {
+  // technically, this is text SHADOW, and not BORDER
+  // however it's a mess and we'll just leave it at this for now
+  const textBorder = localStorage.getItem('textBorder');
+  // enable/disable old text border from before redesign
+  if (textBorder === 'true') {
     const elements = ['greeting', 'clock', 'quote', 'quoteauthor', 'date'];
     elements.forEach((element) => {
       try {
         document.querySelector('.' + element).classList.add('textBorder');
       } catch (e) {
-        // Disregard exception 
+        // Disregard exception
       }
     });
   } else {
@@ -81,9 +89,16 @@ export function loadSettings(hotreload) {
       try {
         document.querySelector('.' + element).classList.remove('textBorder');
       } catch (e) {
-        // Disregard exception 
+        // Disregard exception
       }
     });
+  }
+
+  // remove actual default shadow
+  if (textBorder === 'none') {
+    document.getElementById('center').classList.add('no-textBorder');
+  } else {
+    document.getElementById('center').classList.remove('no-textBorder');
   }
 
   const css = localStorage.getItem('customcss');
@@ -98,7 +113,9 @@ export function loadSettings(hotreload) {
       url = `@import url('https://fonts.googleapis.com/css2?family=${font}&display=swap');`;
     }
 
-    document.head.insertAdjacentHTML('beforeend', `
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
       <style id='customfont'>
         ${url}
         * {
@@ -107,7 +124,8 @@ export function loadSettings(hotreload) {
           font-style: ${localStorage.getItem('fontstyle')};
         }
       </style>
-    `);
+    `,
+    );
   }
 
   // everything below this shouldn't run on a hot reload event
@@ -139,7 +157,7 @@ export function loadSettings(hotreload) {
 `);
 }
 
-// in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides 
+// in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides
 // the new settings with the old saved messages where they exist
 export function moveSettings() {
   const currentSettings = Object.keys(localStorage);

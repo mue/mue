@@ -1,20 +1,25 @@
+import { memo } from 'react';
 import variables from 'modules/variables';
 import { MdClose } from 'react-icons/md';
+import Tooltip from '../../../helpers/tooltip/Tooltip';
 
-export default function SideloadFailedModal({ modalClose, reason }) {
-  const getMessage = (text) => variables.language.getMessage(variables.languagecode, text);
-
+function SideloadFailedModal({ modalClose, reason }) {
   return (
-    <>
-      <h1>{getMessage('modals.main.error_boundary.title')}</h1>
-      <span>{getMessage('modals.main.addons.sideload.failed')}</span>
-      <br/><br/>
-      <span>{reason}</span>
-      <div className='resetfooter'>
-        <button className='round import' style={{ marginLeft: '-30px' }} onClick={modalClose}>
-          <MdClose/>
-        </button>
+    <div className="smallModal">
+      <div className="shareHeader">
+        <span className="title">{variables.getMessage('modals.main.error_boundary.title')}</span>
+        <Tooltip
+          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+        >
+          <div className="close" onClick={modalClose}>
+            <MdClose />
+          </div>
+        </Tooltip>
       </div>
-    </>
+      <span>{variables.getMessage('modals.main.addons.sideload.failed')}</span>
+      <span className="subtitle">{reason}</span>
+    </div>
   );
 }
+
+export default memo(SideloadFailedModal);

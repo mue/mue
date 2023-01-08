@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import Modal from 'react-modal';
-//import Hotkeys from 'react-hot-keys';
 
 import Main from './main/Main';
 import Navbar from '../widgets/navbar/Navbar';
@@ -18,14 +17,17 @@ export default class Modals extends PureComponent {
       mainModal: false,
       updateModal: false,
       welcomeModal: false,
-      preview: false
+      preview: false,
     };
   }
 
   componentDidMount() {
-    if (localStorage.getItem('showWelcome') === 'true' && window.location.search !== '?nointro=true') {
+    if (
+      localStorage.getItem('showWelcome') === 'true' &&
+      window.location.search !== '?nointro=true'
+    ) {
       this.setState({
-        welcomeModal: true
+        welcomeModal: true,
       });
       variables.stats.postEvent('modal', 'Opened welcome');
     }
@@ -45,7 +47,7 @@ export default class Modals extends PureComponent {
   closeWelcome() {
     localStorage.setItem('showWelcome', false);
     this.setState({
-      welcomeModal: false
+      welcomeModal: false,
     });
     EventBus.dispatch('refresh', 'widgetsWelcomeDone');
     EventBus.dispatch('refresh', 'widgets');
@@ -57,14 +59,14 @@ export default class Modals extends PureComponent {
     localStorage.setItem('welcomePreview', true);
     this.setState({
       welcomeModal: false,
-      preview: true
+      preview: true,
     });
     EventBus.dispatch('refresh', 'widgetsWelcome');
   }
 
   toggleModal(type, action) {
     this.setState({
-      [type]: action
+      [type]: action,
     });
 
     if (action !== false) {
@@ -75,15 +77,32 @@ export default class Modals extends PureComponent {
   render() {
     return (
       <>
-        {this.state.welcomeModal === false ? <Navbar openModal={(modal) => this.toggleModal(modal, true)}/> : null}
-        <Modal closeTimeoutMS={300} id='modal' onRequestClose={() => this.toggleModal('mainModal', false)} isOpen={this.state.mainModal} className='Modal mainModal' overlayClassName='Overlay' ariaHideApp={false}>
-          <Main modalClose={() => this.toggleModal('mainModal', false)}/>
+        {this.state.welcomeModal === false ? (
+          <Navbar openModal={(modal) => this.toggleModal(modal, true)} />
+        ) : null}
+        <Modal
+          closeTimeoutMS={300}
+          id="modal"
+          onRequestClose={() => this.toggleModal('mainModal', false)}
+          isOpen={this.state.mainModal}
+          className="Modal mainModal"
+          overlayClassName="Overlay"
+          ariaHideApp={false}
+        >
+          <Main modalClose={() => this.toggleModal('mainModal', false)} />
         </Modal>
-        <Modal closeTimeoutMS={300} onRequestClose={() => this.closeWelcome()} isOpen={this.state.welcomeModal} className='Modal welcomemodal mainModal' overlayClassName='Overlay welcomeoverlay' shouldCloseOnOverlayClick={false} ariaHideApp={false}>
-          <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()}/>
+        <Modal
+          closeTimeoutMS={300}
+          onRequestClose={() => this.closeWelcome()}
+          isOpen={this.state.welcomeModal}
+          className="Modal welcomemodal mainModal"
+          overlayClassName="Overlay mainModal"
+          shouldCloseOnOverlayClick={false}
+          ariaHideApp={false}
+        >
+          <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()} />
         </Modal>
-        {this.state.preview ? <Preview setup={() => window.location.reload()}/> : null}
-        {/*variables.keybinds.toggleModal && variables.keybinds.toggleModal !== '' ? <Hotkeys keyName={variables.keybinds.toggleModal} onKeyDown={() => this.toggleModal('mainModal', (this.state.mainModal === true ? false : true))}/> : null*/} 
+        {this.state.preview ? <Preview setup={() => window.location.reload()} /> : null}
       </>
     );
   }

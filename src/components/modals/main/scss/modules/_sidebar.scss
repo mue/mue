@@ -1,87 +1,75 @@
-ul.sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding-left: 0;
-  background: var(--sidebar);
-  border-radius: 12px 0 0 12px;
-  text-align: left;
-  font-size: 24px;
-  min-height: 110vh;
+@import '../.../../../../../././../scss/variables';
 
-  h1 {
-    text-align: center;
-    font-size: 1.8em;
-  }
+.sidebar {
+  @include themed() {
+    top: 0;
+    left: 0;
+    position: sticky;
+    margin: 0;
+    padding: 0;
+    background: t($modal-sidebar);
+    border-radius: 12px 0 0 12px;
+    overflow-y: auto;
+    height: 80vh;
+    min-width: 250px;
+    overflow-x: hidden;
 
-  svg {
-    vertical-align: middle;
-    padding: 5px;
-  }
-
-  hr {
-    height: 3px;
-    background: rgba(196, 196, 196, 0.74);
-    width: 75%;
-    outline: none;
-    border: none;
-  }
-}
-
-@media (max-height: 999px) and (min-height: 920px) {
-  ul.sidebar {
-    min-height: 160vh;
-  }
-}
-
-@media (max-height: 919px) and (min-height: 700px) {
-  ul.sidebar {
-    min-height: 200vh;
-  }
-}
-
-@media (max-height: 699px) and (min-height: 400px) {
-  ul.sidebar {
-    min-height: 260vh;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  ul.sidebar {
-    width: 310px;
-    align-items: center;
-  }
-}
-
-li {
-  list-style: none;
-  font-size: 24px;
-  padding: 5px 30px 5px 30px;
-  cursor: pointer;
-  margin-top: 2px;
-}
-
-.tab-list-active {
-  background: var(--tab-active);
-}
-
-@media only screen and (max-width: 1200px) {
-  li.tab-list-item {
-    span {
-      display: none;
+    .mainTitle {
+      text-align: center;
+      font-size: 35px;
+      display: flex;
+      justify-content: center;
+      padding: 25px;
     }
-  }
 
-  ul.sidebar {
-    h1 {
-      display: none;
+    svg {
+      margin-left: 20px;
+      margin-right: 20px;
+      color: t($subColor);
+      font-size: 17px;
     }
-  }
-}
 
-.tab-list-item {
-  &:hover {
-    background: var(--tab-active);
+    hr {
+      height: 1px;
+      background: #ccc;
+      margin: 0 1.75rem 0 1.75rem;
+      border: none;
+    }
+
+    button {
+      color: t($color);
+      font-size: 18px;
+      list-style: none;
+      cursor: pointer;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      margin: 0.2rem;
+      padding: 0.5rem;
+      transition: 0.5s;
+      outline: none;
+      border: none;
+      background: none;
+      min-width: calc(100% - 1.2em);
+      text-align: left;
+
+      &:hover {
+        background: t($modal-sidebarActive);
+      }
+
+      &:active {
+        background: t($modal-sidebarActive);
+        box-shadow: 0 0 0 0.5px t($color);
+      }
+
+      &:focus {
+        background: t($modal-sidebarActive);
+        box-shadow: 0 0 0 0.5px t($color);
+      }
+    }
+
+    .tab-list-active {
+      background: t($modal-sidebarActive);
+    }
   }
 }
