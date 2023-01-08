@@ -88,7 +88,6 @@
           "last_updated": "Ultima atualização",
           "overview": "Visão geral",
           "quote_warning": {
-            "description": "Este pacote de cotações solicita servidores externos que podem rastreá-lo!",
             "title": "Aviso"
           },
           "version": "Versão"
@@ -161,7 +160,6 @@
             "accessibility": {
               "animations": "Animações",
               "milliseconds": "milissegundos",
-              "text_shadow": "Sombra de texto do widget",
               "title": "Acessibilidade",
               "toast_duration": "Duração do Toast de notificação",
               "widget_zoom": "Zoom do widget"
@@ -213,7 +211,6 @@
               "title": "Botões",
               "view": "Maximizar"
             },
-            "category": "Categoria",
             "ddg_image_proxy": "Use o proxy de imagem DuckDuckGo",
             "effects": {
               "blur": "Ajustar desfoque",
@@ -309,26 +306,18 @@
           },
           "keybinds": {
             "background": {
-              "download": "Baixar plano de fundo",
               "favourite": "Plano de fundo favorito",
-              "maximise": "Maximizar plano de fundo",
               "show_info": "Mostrar informações de plano de fundo"
             },
-            "click_to_record": "Clique para gravar",
             "modal": "Alternar modal",
             "notes": {
-              "copy": "Copiar notas",
               "pin": "Fixar notas"
             },
-            "quicklinks": "Alternar adicionar link rápido",
             "quote": {
               "copy": "Copiar citação",
-              "favourite": "Citação favorita",
               "tweet": "Tweetar citação"
             },
-            "recording": "Gravando...",
-            "search": "Pesquisa em foco",
-            "title": "Teclas de atalho"
+            "search": "Pesquisa em foco"
           },
           "language": {
             "quote": "Idioma das citações",
