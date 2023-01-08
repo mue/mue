@@ -8,7 +8,8 @@
           "create_type": "Create {type} Pack",
           "descriptions": {
             "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic."
+            "quotes": "Collection of quotes relating to a topic.",
+            "settings": "Collection of settings to customise Mue."
           },
           "example": "Example",
           "finish": {
@@ -138,7 +139,7 @@
         "quote_packs": "Quote Packs"
       },
       "navbar": {
-        "addons": "My Add-ons",
+        "addons": "Add-ons",
         "marketplace": "Marketplace",
         "settings": "Settings"
       },
@@ -213,6 +214,12 @@
               "animations": "Animations",
               "description": "Accessibility settings for Mue",
               "milliseconds": "milliseconds",
+              "text_shadow": {
+                "new": "New",
+                "none": "None",
+                "old": "Old",
+                "title": "Widget text shadow"
+              },
               "title": "Accessibility",
               "toast_duration": "Toast duration",
               "widget_zoom": "Widget zoom"
@@ -700,10 +707,7 @@
       "extra_information": "Extra Information",
       "feels_like": "Feels like {amount}",
       "meters": "{amount} meters",
-      "not_found": "Not Found",
-      "options": {
-        "standard": "Standard"
-      }
+      "not_found": "Not Found"
     }
   }
 }
