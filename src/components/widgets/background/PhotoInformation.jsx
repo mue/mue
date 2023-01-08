@@ -210,7 +210,8 @@ function PhotoInformation({ info, url, api }) {
           onMouseLeave={() => setshowExtraInfo(false)}
         >
           <div className={photoMapClassList}>
-            {!showingPhotoMap ? <MdLocationOn /> : ''}
+            {photoMap !== null ? <MdLocationOn /> : ''}
+            <h1>{photoMap}</h1>
             {photoMap()}
           </div>
           {showingPhotoMap ? (

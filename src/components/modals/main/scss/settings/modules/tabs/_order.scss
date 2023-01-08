@@ -119,6 +119,9 @@
 
     .quotediv .author-holder .author .author-content .title {
       font-size: 1em !important;
+      @include themed() {
+        color: t($color) !important;
+      }
     }
   }
 }

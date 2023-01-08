@@ -71,7 +71,6 @@ function Items({
                 <span className="card-title">{item.display_name || item.name}</span>
                 <span className="card-subtitle">{item.author}</span>
               </div>
-              {item.type}
             </div>
           ))}
       </div>
