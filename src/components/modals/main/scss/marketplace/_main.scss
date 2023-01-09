@@ -415,6 +415,7 @@ p.author {
     display: flex;
     flex-flow: column;
     text-align: center;
+    text-shadow: #000 0 0 15px;
     .mainTitle {
       justify-content: center;
       color: #fff !important;
@@ -446,6 +447,7 @@ p.author {
     flex-flow: column;
     gap: 15px;
     max-width: 250px;
+    text-shadow: #000 0 0 15px;
 
     .title {
       color: #fff !important;
