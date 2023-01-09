@@ -1,709 +1,717 @@
 {
+  "tabname": "New Tab",
+  "widgets": {
+    "greeting": {
+      "morning": "Goedemorgen",
+      "afternoon": "Goedemiddag",
+      "evening": "Goedenavond",
+      "christmas": "Fijne kerstdagen",
+      "newyear": "Gelukkig nieuwjaar",
+      "halloween": "Fijne Halloween",
+      "birthday": "Happy Birthday"
+    },
+    "background": {
+      "credit": "Foto van",
+      "unsplash": "on Unsplash",
+      "pexels": "on Pexels",
+      "information": "Information",
+      "download": "Download",
+      "downloads": "Downloads",
+      "views": "Views",
+      "likes": "Likes",
+      "location": "Location",
+      "camera": "Camera",
+      "resolution": "Resolution",
+      "source": "Source",
+      "category": "Category",
+      "exclude": "Don't show again",
+      "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings."
+    },
+    "search": "Zoeken",
+    "quicklinks": {
+      "new": "New Link",
+      "name": "Name",
+      "url": "URL",
+      "icon": "Icon (optional)",
+      "add": "Add",
+      "name_error": "Must provide name",
+      "url_error": "Must provide URL"
+    },
+    "date": {
+      "week": "Week"
+    },
+    "weather": {
+      "not_found": "Not Found",
+      "meters": "{amount} meter",
+      "extra_information": "Extra Information",
+      "feels_like": "Feels like {amount}",
+      "options": {
+        "standard": "Standard"
+      }
+    },
+    "quote": {
+      "link_tooltip": "Open on Wikipedia",
+      "share": "Share",
+      "copy": "Copy",
+      "favourite": "Favourite",
+      "unfavourite": "Unfavourite"
+    },
+    "navbar": {
+      "tooltips": {
+        "refresh": "Refresh"
+      },
+      "notes": {
+        "title": "Notes",
+        "placeholder": "Type here"
+      },
+      "todo": {
+        "title": "Todo",
+        "pin": "Pin",
+        "add": "Add"
+      }
+    }
+  },
   "modals": {
     "main": {
+      "title": "Opties",
+      "loading": "Bezig met laden…",
+      "file_upload_error": "File is over 2MB",
+      "navbar": {
+        "settings": "Instellingen",
+        "addons": "Mijn extensies",
+        "marketplace": "Marktplaats"
+      },
+      "error_boundary": {
+        "title": "Foutmelding",
+        "message": "Failed to load this component of Mue",
+        "report_error": "Send Error Report",
+        "sent": "Sent!",
+        "refresh": "Refresh"
+      },
+      "settings": {
+        "enabled": "Enabled",
+        "open_knowledgebase": "Open Knowledgebase",
+        "additional_settings": "Additional Settings",
+        "reminder": {
+          "title": "NOTICE",
+          "message": "In order for all of the changes to take place, the page must be refreshed."
+        },
+        "sections": {
+          "header": {
+            "more_info": "More info",
+            "report_issue": "Report Issue",
+            "enabled": "Choose whether or not to show this widget",
+            "size": "Slider to control how large the widget is"
+          },
+          "time": {
+            "title": "Tijd",
+            "format": "Format",
+            "type": "Type",
+            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
+            "digital": {
+              "title": "Digital",
+              "subtitle": "Change how the digital clock looks",
+              "seconds": "Seconden tonen",
+              "twentyfourhour": "24-uursklok gebruiken",
+              "twelvehour": "12-uursklok gebruiken",
+              "zero": "Nulopvulling"
+            },
+            "analogue": {
+              "title": "Analogue",
+              "subtitle": "Change how the analogue clock looks",
+              "second_hand": "Seconds hand",
+              "minute_hand": "Minutes hand",
+              "hour_hand": "Hours hand",
+              "hour_marks": "Hour marks",
+              "minute_marks": "Minute marks",
+              "round_clock": "Rounded background"
+            },
+            "percentage_complete": "Percentage complete",
+            "vertical_clock": {
+              "title": "Vertical Clock",
+              "change_hour_colour": "Change hour text colour",
+              "change_minute_colour": "Change minute text colour"
+            }
+          },
+          "date": {
+            "title": "Date",
+            "week_number": "Week number",
+            "day_of_week": "Day of week",
+            "datenth": "Date nth",
+            "type": {
+              "short": "Short",
+              "long": "Long",
+              "subtitle": "Whether to display the date in long form or short form"
+            },
+            "type_settings": "Display settings and format for the selected date type",
+            "short_date": "Short date",
+            "short_format": "Short format",
+            "long_format": "Long format",
+            "short_separator": {
+              "title": "Short separator",
+              "dots": "Dots",
+              "dash": "Dash",
+              "gaps": "Gaps",
+              "slashes": "Slashes"
+            }
+          },
+          "quote": {
+            "title": "Citaat",
+            "additional": "Other settings to customise the style of the quote widget",
+            "author_link": "Author link",
+            "custom": "Custom quote",
+            "custom_subtitle": "Set your own custom quotes",
+            "no_quotes": "No quotes",
+            "author": "Author",
+            "custom_buttons": "Buttons",
+            "custom_author": "Custom author",
+            "author_img": "Show author image",
+            "add": "Add quote",
+            "source_subtitle": "Choose where to get quotes from",
+            "buttons": {
+              "title": "Buttons",
+              "subtitle": "Choose which buttons to show on the quote",
+              "copy": "Kopieerknop",
+              "tweet": "Tweetknop",
+              "favourite": "Knop 'Toevoegen aan favorieten'"
+            }
+          },
+          "greeting": {
+            "title": "Begroetingen",
+            "events": "Gebeurtenissen",
+            "default": "Standaard begroetingsnaam",
+            "name": "Naam van begroeting",
+            "birthday": "Birthday",
+            "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
+            "birthday_age": "Birthday age",
+            "birthday_date": "Birthday date",
+            "additional": "Settings for the greeting display"
+          },
+          "background": {
+            "title": "Achtergrond",
+            "ddg_image_proxy": "Use DuckDuckGo image proxy",
+            "transition": "Fade-in transition",
+            "photo_information": "Show photo information",
+            "show_map": "Show location map on photo information if available",
+            "categories": "Categories",
+            "buttons": {
+              "title": "Buttons",
+              "view": "Weergave",
+              "favourite": "Favourite",
+              "download": "Download"
+            },
+            "effects": {
+              "title": "Effects",
+              "subtitle": "Add effects to the background images",
+              "blur": "Vervaging instellen",
+              "brightness": "Adjust brightness",
+              "filters": {
+                "title": "Background filter",
+                "amount": "Filter amount",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "contrast": "Contrast"
+              }
+            },
+            "type": {
+              "title": "Type",
+              "api": "API",
+              "custom_image": "Custom image",
+              "custom_colour": "Custom colour/gradient",
+              "random_colour": "Random colour",
+              "random_gradient": "Random gradient"
+            },
+            "source": {
+              "title": "Source",
+              "subtitle": "Select where to get background images from",
+              "api": "Achtergrond-api",
+              "custom_background": "Aangepaste achtergrond",
+              "custom_colour": "Aangepaste achtergrondkleur",
+              "upload": "Uploaden",
+              "add_colour": "Kleur toevoegen",
+              "add_background": "Add background",
+              "drop_to_upload": "Drop to upload",
+              "formats": "Available formats: {list}",
+              "select": "Or Select",
+              "add_url": "Add URL",
+              "disabled": "Uitgeschakeld",
+              "loop_video": "Loop video",
+              "mute_video": "Mute video",
+              "quality": {
+                "title": "Quality",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              },
+              "custom_title": "Custom Images",
+              "custom_description": "Select images from your local computer",
+              "remove": "Remove Image"
+            },
+            "display": "Display",
+            "display_subtitle": "Change how background and photo information are loaded",
+            "api": "API Settings",
+            "api_subtitle": "Options for getting an image from an external service (API)",
+            "interval": {
+              "title": "Change every",
+              "subtitle": "Change how often the background is updated",
+              "minute": "Minute",
+              "half_hour": "Half hour",
+              "hour": "Hour",
+              "day": "Day",
+              "month": "Month"
+            }
+          },
+          "search": {
+            "title": "Zoekbalk",
+            "additional": "Additional options for search widget display and functionality",
+            "search_engine": "Zoekmachine",
+            "search_engine_subtitle": "Choose search engine to use in the search bar",
+            "custom": "Aangepaste zoekmachine-url",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Autocomplete Provider",
+            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
+            "voice_search": "Spraakgestuurd zoeken gebruiken",
+            "dropdown": "Search dropdown",
+            "focus": "Focus on tab open"
+          },
+          "weather": {
+            "title": "Weather",
+            "location": "Location",
+            "auto": "Auto",
+            "widget_type": "Widget Type",
+            "temp_format": {
+              "title": "Temperature format",
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Extra information",
+              "show_location": "Show location",
+              "show_description": "Show description",
+              "cloudiness": "Cloudiness",
+              "humidity": "Humidity",
+              "visibility": "Visibility",
+              "wind_speed": "Wind speed",
+              "wind_direction": "Wind direction",
+              "min_temp": "Minimum temperature",
+              "max_temp": "Maximum temperature",
+              "atmospheric_pressure": "Atmospheric pressure"
+            },
+            "options": {
+              "basic": "Basic",
+              "standard": "Standard",
+              "expanded": "Expanded",
+              "custom": "Custom"
+            },
+            "custom_settings": "Custom Settings"
+          },
+          "quicklinks": {
+            "title": "Quick Links",
+            "additional": "Additional settings for quick links display and functions",
+            "open_new": "Open in new tab",
+            "tooltip": "Tooltip",
+            "text_only": "Show text only",
+            "add_link": "Add Link",
+            "no_quicklinks": "No quicklinks",
+            "edit": "Edit",
+            "style": "Style",
+            "options": {
+              "icon": "Icon",
+              "text_only": "Text Only",
+              "metro": "Metro"
+            },
+            "styling": "Quick Links Styling",
+            "styling_description": "Customise Quick Links appearance"
+          },
+          "message": {
+            "title": "Message",
+            "add": "Add message",
+            "messages": "Messages",
+            "text": "Text",
+            "no_messages": "No messages",
+            "add_some": "Go ahead and add some.",
+            "content": "Message Content"
+          },
+          "appearance": {
+            "title": "Appearance",
+            "style": {
+              "title": "Widget Style",
+              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
+              "legacy": "Legacy",
+              "new": "New"
+            },
+            "theme": {
+              "title": "Theme",
+              "description": "Change the theme of the Mue widgets and modals",
+              "auto": "Auto",
+              "light": "Light",
+              "dark": "Dark"
+            },
+            "navbar": {
+              "title": "Navbar",
+              "notes": "Notes",
+              "refresh": "Refresh button",
+              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
+              "hover": "Only display on hover",
+              "additional": "Modify navbar style and which buttons you want to display",
+              "refresh_options": {
+                "none": "None",
+                "page": "Page"
+              }
+            },
+            "font": {
+              "title": "Font",
+              "description": "Change the font used in Mue",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "accessibility": {
+              "title": "Accessibility",
+              "description": "Accessibility settings for Mue",
+              "animations": "Animations",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
+              "widget_zoom": "Widget zoom",
+              "toast_duration": "Toast duration",
+              "milliseconds": "milliseconds"
+            }
+          },
+          "order": {
+            "title": "Widget Order"
+          },
+          "advanced": {
+            "title": "Advanced",
+            "offline_mode": "Offline-modus",
+            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
+            "data": "Data",
+            "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
+            "reset_modal": {
+              "title": "WARNING",
+              "question": "Do you want to reset Mue?",
+              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
+              "cancel": "Cancel"
+            },
+            "customisation": "Customisation",
+            "custom_css": "Custom CSS",
+            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
+            "custom_js": "Custom JS",
+            "tab_name": "Tab name",
+            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
+            "timezone": {
+              "title": "Time Zone",
+              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
+              "automatic": "Automatic"
+            },
+            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
+          },
+          "stats": {
+            "title": "Stats",
+            "warning": "You need to enable usage data in order to use this feature. This data is only stored locally.",
+            "sections": {
+              "tabs_opened": "Tabs opened",
+              "backgrounds_favourited": "Backgrounds favourited",
+              "backgrounds_downloaded": "Backgrounds downloaded",
+              "quotes_favourited": "Quotes favourited",
+              "quicklinks_added": "Quicklinks added",
+              "settings_changed": "Settings changed",
+              "addons_installed": "Add-ons installed"
+            },
+            "usage": "Usage Stats",
+            "achievements": "Achievements",
+            "unlocked": "{count} Unlocked"
+          },
+          "experimental": {
+            "title": "Experimenteel",
+            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
+            "developer": "Developer"
+          },
+          "language": {
+            "title": "Taal",
+            "quote": "Quote language"
+          },
+          "changelog": {
+            "title": "Change Log",
+            "by": "By {author}"
+          },
+          "about": {
+            "title": "About",
+            "copyright": "Copyright",
+            "version": {
+              "title": "Version",
+              "checking_update": "Checking for update",
+              "update_available": "Update available",
+              "no_update": "No update available",
+              "offline_mode": "Cannot check for update in offline mode",
+              "error": {
+                "title": "Failed to get update information",
+                "description": "An error occured"
+              }
+            },
+            "contact_us": "Contact Us",
+            "support_mue": "Support Mue",
+            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
+            "support_donate": "Donate",
+            "resources_used": {
+              "title": "Resources used",
+              "bg_images": "Offline background images"
+            },
+            "contributors": "Contributors",
+            "supporters": "Supporters",
+            "no_supporters": "There are currently no Mue supporters",
+            "photographers": "Photographers"
+          }
+        },
+        "buttons": {
+          "reset": "Herstellen",
+          "import": "Importeren",
+          "export": "Exporteren"
+        }
+      },
+      "marketplace": {
+        "by": "by {author}",
+        "all": "All",
+        "learn_more": "Learn More",
+        "photo_packs": "Fotoverzamelingen",
+        "quote_packs": "Citaatverzamelingen",
+        "preset_settings": "Voorinstellingen",
+        "no_items": "No items in this category",
+        "collection": "Collection",
+        "explore_collection": "Explore Collection",
+        "collections": "Collections",
+        "cant_find": "Can't find what you're looking for?",
+        "knowledgebase_one": "Visit the",
+        "knowledgebase_two": "knowledgebase",
+        "knowledgebase_three": "to create your own.",
+        "product": {
+          "overview": "Overzicht",
+          "information": "Informatie",
+          "last_updated": "Laatst geüpdatet",
+          "description": "Description",
+          "show_more": "Show More",
+          "show_less": "Show Less",
+          "show_all": "Show All",
+          "showing": "Showing",
+          "no_images": "No. Images",
+          "no_quotes": "No. Quotes",
+          "version": "Versie",
+          "author": "Maker",
+          "part_of": "Part of",
+          "explore": "Explore",
+          "buttons": {
+            "addtomue": "Toevoegen aan Mue",
+            "remove": "Verwijderen",
+            "update_addon": "Update Add-on",
+            "back": "Back",
+            "report": "Report"
+          },
+          "setting": "Setting",
+          "value": "Value"
+        },
+        "offline": {
+          "title": "Het lijkt er op dat je niet verbonden bent het internet",
+          "description": "Maak verbinding met het internet"
+        }
+      },
       "addons": {
         "added": "Toegevoegd",
         "check_updates": "Check for updates",
+        "no_updates": "No updates available",
+        "updates_available": "Updates available {amount}",
+        "empty": {
+          "title": "Het is hier erg leeg",
+          "description": "Ga naar de marktplaats om een paar extensies toe te voegen"
+        },
+        "sideload": {
+          "title": "Sideloaden",
+          "description": "Install a Mue addon not on the marketplace from your computer",
+          "failed": "Failed to sideload addon",
+          "errors": {
+            "no_name": "No name provided",
+            "no_author": "No author provided",
+            "no_type": "No type provided",
+            "invalid_photos": "Invalid photos object",
+            "invalid_quotes": "Invalid quotes object"
+          }
+        },
+        "sort": {
+          "title": "Sort",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "a_z": "Alphabetical (A-Z)",
+          "z_a": "Alphabetical (Z-A)"
+        },
         "create": {
+          "title": "Create",
+          "example": "Example",
+          "other_title": "Create Add-on",
           "create_type": "Create {type} Pack",
+          "types": {
+            "settings": "Preset Settings Pack",
+            "photos": "Photo Pack",
+            "quotes": "Quotes Pack"
+          },
           "descriptions": {
+            "settings": "Collection of settings to customise Mue.",
             "photos": "Collection of photos relating to a topic.",
             "quotes": "Collection of quotes relating to a topic."
           },
-          "example": "Example",
-          "finish": {
-            "download": "Download Add-on",
-            "title": "Finish"
-          },
-          "import_custom": "Import from custom settings.",
           "information": "Information",
           "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",
-          "metadata": {
-            "description": "Description",
-            "example": "Download example",
-            "icon_url": "Icon URL",
-            "name": "Name",
-            "screenshot_url": "Screenshot URL"
-          },
-          "other_title": "Create Add-on",
-          "photos": {
-            "title": "Add Photos"
-          },
+          "import_custom": "Import from custom settings.",
           "publishing": {
-            "button": "Learn more",
+            "title": "Next step, Publishing...",
             "subtitle": "Visit the Mue Knowledgebase on information on how to publish your newly created addon.",
-            "title": "Next step, Publishing..."
+            "button": "Learn more"
           },
-          "quotes": {
-            "api": {
-              "author": "JSON quote author (or override)",
-              "name": "JSON quote name",
-              "title": "API",
-              "url": "Quote URL"
-            },
-            "local": {
-              "title": "Local"
-            },
-            "title": "Add Quotes"
+          "metadata": {
+            "name": "Name",
+            "icon_url": "Icon URL",
+            "screenshot_url": "Screenshot URL",
+            "description": "Description",
+            "example": "Download example"
+          },
+          "finish": {
+            "title": "Finish",
+            "download": "Download Add-on"
           },
           "settings": {
             "current": "Import current setup",
             "json": "Upload JSON"
           },
-          "title": "Create",
-          "types": {
-            "photos": "Photo Pack",
-            "quotes": "Quotes Pack",
-            "settings": "Preset Settings Pack"
-          }
-        },
-        "empty": {
-          "description": "Ga naar de marktplaats om een paar extensies toe te voegen",
-          "title": "Het is hier erg leeg"
-        },
-        "no_updates": "No updates available",
-        "sideload": {
-          "description": "Install a Mue addon not on the marketplace from your computer",
-          "errors": {
-            "invalid_photos": "Invalid photos object",
-            "invalid_quotes": "Invalid quotes object",
-            "no_author": "No author provided",
-            "no_name": "No name provided",
-            "no_type": "No type provided"
+          "photos": {
+            "title": "Add Photos"
           },
-          "failed": "Failed to sideload addon",
-          "title": "Sideloaden"
-        },
-        "sort": {
-          "a_z": "Alphabetical (A-Z)",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
-          "title": "Sort",
-          "z_a": "Alphabetical (Z-A)"
-        },
-        "updates_available": "Updates available {amount}"
-      },
-      "error_boundary": {
-        "message": "Failed to load this component of Mue",
-        "refresh": "Refresh",
-        "report_error": "Send Error Report",
-        "sent": "Sent!",
-        "title": "Foutmelding"
-      },
-      "file_upload_error": "File is over 2MB",
-      "loading": "Bezig met laden…",
-      "marketplace": {
-        "all": "All",
-        "by": "by {author}",
-        "cant_find": "Can't find what you're looking for?",
-        "collection": "Collection",
-        "collections": "Collections",
-        "explore_collection": "Explore Collection",
-        "knowledgebase_one": "Visit the",
-        "knowledgebase_three": "to create your own.",
-        "knowledgebase_two": "knowledgebase",
-        "learn_more": "Learn More",
-        "no_items": "No items in this category",
-        "offline": {
-          "description": "Maak verbinding met het internet",
-          "title": "Het lijkt er op dat je niet verbonden bent het internet"
-        },
-        "photo_packs": "Fotoverzamelingen",
-        "preset_settings": "Voorinstellingen",
-        "product": {
-          "author": "Maker",
-          "buttons": {
-            "addtomue": "Toevoegen aan Mue",
-            "back": "Back",
-            "remove": "Verwijderen",
-            "report": "Report",
-            "update_addon": "Update Add-on"
-          },
-          "description": "Description",
-          "explore": "Explore",
-          "information": "Informatie",
-          "last_updated": "Laatst geüpdatet",
-          "no_images": "No. Images",
-          "no_quotes": "No. Quotes",
-          "overview": "Overzicht",
-          "part_of": "Part of",
-          "setting": "Setting",
-          "show_all": "Show All",
-          "show_less": "Show Less",
-          "show_more": "Show More",
-          "showing": "Showing",
-          "value": "Value",
-          "version": "Versie"
-        },
-        "quote_packs": "Citaatverzamelingen"
-      },
-      "navbar": {
-        "addons": "Mijn extensies",
-        "marketplace": "Marktplaats",
-        "settings": "Instellingen"
-      },
-      "settings": {
-        "additional_settings": "Additional Settings",
-        "buttons": {
-          "export": "Exporteren",
-          "import": "Importeren",
-          "reset": "Herstellen"
-        },
-        "enabled": "Enabled",
-        "open_knowledgebase": "Open Knowledgebase",
-        "reminder": {
-          "message": "In order for all of the changes to take place, the page must be refreshed.",
-          "title": "NOTICE"
-        },
-        "sections": {
-          "about": {
-            "contact_us": "Contact Us",
-            "contributors": "Contributors",
-            "copyright": "Copyright",
-            "no_supporters": "There are currently no Mue supporters",
-            "photographers": "Photographers",
-            "resources_used": {
-              "bg_images": "Offline background images",
-              "title": "Resources used"
+          "quotes": {
+            "title": "Add Quotes",
+            "api": {
+              "title": "API",
+              "url": "Quote URL",
+              "name": "JSON quote name",
+              "author": "JSON quote author (or override)"
             },
-            "support_donate": "Donate",
-            "support_mue": "Support Mue",
-            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
-            "supporters": "Supporters",
-            "title": "About",
-            "version": {
-              "checking_update": "Checking for update",
-              "error": {
-                "description": "An error occured",
-                "title": "Failed to get update information"
-              },
-              "no_update": "No update available",
-              "offline_mode": "Cannot check for update in offline mode",
-              "title": "Version",
-              "update_available": "Update available"
+            "local": {
+              "title": "Local"
             }
-          },
-          "advanced": {
-            "custom_css": "Custom CSS",
-            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
-            "custom_js": "Custom JS",
-            "customisation": "Customisation",
-            "data": "Data",
-            "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support.",
-            "offline_mode": "Offline-modus",
-            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
-            "reset_modal": {
-              "cancel": "Cancel",
-              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
-              "question": "Do you want to reset Mue?",
-              "title": "WARNING"
-            },
-            "tab_name": "Tab name",
-            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
-            "timezone": {
-              "automatic": "Automatic",
-              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
-              "title": "Time Zone"
-            },
-            "title": "Advanced"
-          },
-          "appearance": {
-            "accessibility": {
-              "animations": "Animations",
-              "description": "Accessibility settings for Mue",
-              "milliseconds": "milliseconds",
-              "title": "Accessibility",
-              "toast_duration": "Toast duration",
-              "widget_zoom": "Widget zoom"
-            },
-            "font": {
-              "custom": "Custom font",
-              "description": "Change the font used in Mue",
-              "google": "Import from Google Fonts",
-              "style": {
-                "italic": "Italic",
-                "normal": "Normal",
-                "oblique": "Oblique",
-                "title": "Font style"
-              },
-              "title": "Font",
-              "weight": {
-                "bold": "Bold",
-                "extra_bold": "Extra-Bold",
-                "extra_light": "Extra Light",
-                "light": "Light",
-                "medium": "Medium",
-                "normal": "Normal",
-                "semi_bold": "Semi-Bold",
-                "thin": "Thin",
-                "title": "Font weight"
-              }
-            },
-            "navbar": {
-              "additional": "Modify navbar style and which buttons you want to display",
-              "hover": "Only display on hover",
-              "notes": "Notes",
-              "refresh": "Refresh button",
-              "refresh_options": {
-                "none": "None",
-                "page": "Page"
-              },
-              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
-              "title": "Navbar"
-            },
-            "style": {
-              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
-              "legacy": "Legacy",
-              "new": "New",
-              "title": "Widget Style"
-            },
-            "theme": {
-              "auto": "Auto",
-              "dark": "Dark",
-              "description": "Change the theme of the Mue widgets and modals",
-              "light": "Light",
-              "title": "Theme"
-            },
-            "title": "Appearance"
-          },
-          "background": {
-            "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)",
-            "buttons": {
-              "download": "Download",
-              "favourite": "Favourite",
-              "title": "Buttons",
-              "view": "Weergave"
-            },
-            "categories": "Categories",
-            "ddg_image_proxy": "Use DuckDuckGo image proxy",
-            "display": "Display",
-            "display_subtitle": "Change how background and photo information are loaded",
-            "effects": {
-              "blur": "Vervaging instellen",
-              "brightness": "Adjust brightness",
-              "filters": {
-                "amount": "Filter amount",
-                "contrast": "Contrast",
-                "grayscale": "Grayscale",
-                "invert": "Invert",
-                "saturate": "Saturate",
-                "sepia": "Sepia",
-                "title": "Background filter"
-              },
-              "subtitle": "Add effects to the background images",
-              "title": "Effects"
-            },
-            "interval": {
-              "day": "Day",
-              "half_hour": "Half hour",
-              "hour": "Hour",
-              "minute": "Minute",
-              "month": "Month",
-              "subtitle": "Change how often the background is updated",
-              "title": "Change every"
-            },
-            "photo_information": "Show photo information",
-            "show_map": "Show location map on photo information if available",
-            "source": {
-              "add_background": "Add background",
-              "add_colour": "Kleur toevoegen",
-              "add_url": "Add URL",
-              "api": "Achtergrond-api",
-              "custom_background": "Aangepaste achtergrond",
-              "custom_colour": "Aangepaste achtergrondkleur",
-              "custom_description": "Select images from your local computer",
-              "custom_title": "Custom Images",
-              "disabled": "Uitgeschakeld",
-              "drop_to_upload": "Drop to upload",
-              "formats": "Available formats: {list}",
-              "loop_video": "Loop video",
-              "mute_video": "Mute video",
-              "quality": {
-                "datasaver": "Data Saver",
-                "high": "High Quality",
-                "normal": "Normal Quality",
-                "original": "Original",
-                "title": "Quality"
-              },
-              "remove": "Remove Image",
-              "select": "Or Select",
-              "subtitle": "Select where to get background images from",
-              "title": "Source",
-              "upload": "Uploaden"
-            },
-            "title": "Achtergrond",
-            "transition": "Fade-in transition",
-            "type": {
-              "api": "API",
-              "custom_colour": "Custom colour/gradient",
-              "custom_image": "Custom image",
-              "random_colour": "Random colour",
-              "random_gradient": "Random gradient",
-              "title": "Type"
-            }
-          },
-          "changelog": {
-            "by": "By {author}",
-            "title": "Change Log"
-          },
-          "date": {
-            "datenth": "Date nth",
-            "day_of_week": "Day of week",
-            "long_format": "Long format",
-            "short_date": "Short date",
-            "short_format": "Short format",
-            "short_separator": {
-              "dash": "Dash",
-              "dots": "Dots",
-              "gaps": "Gaps",
-              "slashes": "Slashes",
-              "title": "Short separator"
-            },
-            "title": "Date",
-            "type": {
-              "long": "Long",
-              "short": "Short",
-              "subtitle": "Whether to display the date in long form or short form"
-            },
-            "type_settings": "Display settings and format for the selected date type",
-            "week_number": "Week number"
-          },
-          "experimental": {
-            "developer": "Developer",
-            "title": "Experimenteel",
-            "warning": "These settings have not been fully tested/implemented and may not work correctly!"
-          },
-          "greeting": {
-            "additional": "Settings for the greeting display",
-            "birthday": "Birthday",
-            "birthday_age": "Birthday age",
-            "birthday_date": "Birthday date",
-            "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
-            "default": "Standaard begroetingsnaam",
-            "events": "Gebeurtenissen",
-            "name": "Naam van begroeting",
-            "title": "Begroetingen"
-          },
-          "header": {
-            "enabled": "Choose whether or not to show this widget",
-            "more_info": "More info",
-            "report_issue": "Report Issue",
-            "size": "Slider to control how large the widget is"
-          },
-          "language": {
-            "quote": "Quote language",
-            "title": "Taal"
-          },
-          "message": {
-            "add": "Add message",
-            "add_some": "Go ahead and add some.",
-            "content": "Message Content",
-            "messages": "Messages",
-            "no_messages": "No messages",
-            "text": "Text",
-            "title": "Message"
-          },
-          "order": {
-            "title": "Widget Order"
-          },
-          "quicklinks": {
-            "add_link": "Add Link",
-            "additional": "Additional settings for quick links display and functions",
-            "edit": "Edit",
-            "no_quicklinks": "No quicklinks",
-            "open_new": "Open in new tab",
-            "options": {
-              "icon": "Icon",
-              "metro": "Metro",
-              "text_only": "Text Only"
-            },
-            "style": "Style",
-            "styling": "Quick Links Styling",
-            "styling_description": "Customise Quick Links appearance",
-            "text_only": "Show text only",
-            "title": "Quick Links",
-            "tooltip": "Tooltip"
-          },
-          "quote": {
-            "add": "Add quote",
-            "additional": "Other settings to customise the style of the quote widget",
-            "author": "Author",
-            "author_img": "Show author image",
-            "author_link": "Author link",
-            "buttons": {
-              "copy": "Kopieerknop",
-              "favourite": "Knop 'Toevoegen aan favorieten'",
-              "subtitle": "Choose which buttons to show on the quote",
-              "title": "Buttons",
-              "tweet": "Tweetknop"
-            },
-            "custom": "Custom quote",
-            "custom_author": "Custom author",
-            "custom_buttons": "Buttons",
-            "custom_subtitle": "Set your own custom quotes",
-            "no_quotes": "No quotes",
-            "source_subtitle": "Choose where to get quotes from",
-            "title": "Citaat"
-          },
-          "search": {
-            "additional": "Additional options for search widget display and functionality",
-            "autocomplete": "Autocomplete",
-            "autocomplete_provider": "Autocomplete Provider",
-            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
-            "custom": "Aangepaste zoekmachine-url",
-            "dropdown": "Search dropdown",
-            "focus": "Focus on tab open",
-            "search_engine": "Zoekmachine",
-            "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "title": "Zoekbalk",
-            "voice_search": "Spraakgestuurd zoeken gebruiken"
-          },
-          "stats": {
-            "achievements": "Achievements",
-            "sections": {
-              "addons_installed": "Add-ons installed",
-              "backgrounds_downloaded": "Backgrounds downloaded",
-              "backgrounds_favourited": "Backgrounds favourited",
-              "quicklinks_added": "Quicklinks added",
-              "quotes_favourited": "Quotes favourited",
-              "settings_changed": "Settings changed",
-              "tabs_opened": "Tabs opened"
-            },
-            "title": "Stats",
-            "unlocked": "{count} Unlocked",
-            "usage": "Usage Stats",
-            "warning": "You need to enable usage data in order to use this feature. This data is only stored locally."
-          },
-          "time": {
-            "analogue": {
-              "hour_hand": "Hours hand",
-              "hour_marks": "Hour marks",
-              "minute_hand": "Minutes hand",
-              "minute_marks": "Minute marks",
-              "second_hand": "Seconds hand",
-              "subtitle": "Change how the analogue clock looks",
-              "title": "Analogue"
-            },
-            "digital": {
-              "seconds": "Seconden tonen",
-              "subtitle": "Change how the digital clock looks",
-              "title": "Digital",
-              "twelvehour": "12-uursklok gebruiken",
-              "twentyfourhour": "24-uursklok gebruiken",
-              "zero": "Nulopvulling"
-            },
-            "format": "Format",
-            "percentage_complete": "Percentage complete",
-            "title": "Tijd",
-            "type": "Type",
-            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
-            "vertical_clock": {
-              "change_hour_colour": "Change hour text colour",
-              "change_minute_colour": "Change minute text colour",
-              "title": "Vertical Clock"
-            }
-          },
-          "weather": {
-            "auto": "Auto",
-            "custom_settings": "Custom Settings",
-            "extra_info": {
-              "atmospheric_pressure": "Atmospheric pressure",
-              "cloudiness": "Cloudiness",
-              "humidity": "Humidity",
-              "max_temp": "Maximum temperature",
-              "min_temp": "Minimum temperature",
-              "show_description": "Show description",
-              "show_location": "Show location",
-              "title": "Extra information",
-              "visibility": "Visibility",
-              "wind_direction": "Wind direction",
-              "wind_speed": "Wind speed"
-            },
-            "location": "Location",
-            "options": {
-              "basic": "Basic",
-              "custom": "Custom",
-              "expanded": "Expanded",
-              "standard": "Standard"
-            },
-            "temp_format": {
-              "celsius": "Celsius",
-              "fahrenheit": "Fahrenheit",
-              "kelvin": "Kelvin",
-              "title": "Temperature format"
-            },
-            "title": "Weather",
-            "widget_type": "Widget Type"
           }
         }
+      }
+    },
+    "update": {
+      "title": "Update",
+      "offline": {
+        "title": "Offline",
+        "description": "Cannot get update logs while in offline mode"
       },
-      "title": "Opties"
+      "error": {
+        "title": "Error",
+        "description": "Could not connect to the server"
+      }
+    },
+    "welcome": {
+      "tip": "Quick Tip",
+      "sections": {
+        "intro": {
+          "title": "Welcome to Mue Tab",
+          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
+          "notices": {
+            "discord_title": "Join our Discord",
+            "discord_description": "Talk with the Mue community and developers",
+            "discord_join": "Join",
+            "github_title": "Contribute on GitHub",
+            "github_description": "Report bugs, add features or donate",
+            "github_open": "Open"
+          }
+        },
+        "language": {
+          "title": "Choose your language",
+          "description": "Mue can be displayed the languages listed below. You can also add new translations on our"
+        },
+        "theme": {
+          "title": "Select a theme",
+          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
+          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
+        },
+        "style": {
+          "title": "Choose a style",
+          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
+          "legacy": "Legacy",
+          "modern": "Modern"
+        },
+        "settings": {
+          "title": "Import Settings",
+          "description": "Installing Mue on a new device? Feel free to import your old settings!",
+          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
+        },
+        "privacy": {
+          "title": "Privacy Options",
+          "description": "Enable settings to further protect your privacy with Mue.",
+          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
+          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
+          "links": {
+            "title": "Links",
+            "privacy_policy": "Privacy Policy",
+            "source_code": "Source Code"
+          }
+        },
+        "final": {
+          "title": "Final step",
+          "description": "Your Mue Tab experience is about to begin.",
+          "changes": "Changes",
+          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
+          "imported": "Imported {amount} settings"
+        }
+      },
+      "buttons": {
+        "next": "Next",
+        "preview": "Preview",
+        "previous": "Previous",
+        "close": "Close"
+      },
+      "preview": {
+        "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
+        "continue": "Continue setup"
+      }
     },
     "share": {
       "copy_link": "Copy link",
       "email": "Email"
-    },
-    "update": {
-      "error": {
-        "description": "Could not connect to the server",
-        "title": "Error"
-      },
-      "offline": {
-        "description": "Cannot get update logs while in offline mode",
-        "title": "Offline"
-      },
-      "title": "Update"
-    },
-    "welcome": {
-      "buttons": {
-        "close": "Close",
-        "next": "Next",
-        "preview": "Preview",
-        "previous": "Previous"
-      },
-      "preview": {
-        "continue": "Continue setup",
-        "description": "You are currently in preview mode. Settings will be reset on closing this tab."
-      },
-      "sections": {
-        "final": {
-          "changes": "Changes",
-          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "description": "Your Mue Tab experience is about to begin.",
-          "imported": "Imported {amount} settings",
-          "title": "Final step"
-        },
-        "intro": {
-          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
-          "notices": {
-            "discord_description": "Talk with the Mue community and developers",
-            "discord_join": "Join",
-            "discord_title": "Join our Discord",
-            "github_description": "Report bugs, add features or donate",
-            "github_open": "Open",
-            "github_title": "Contribute on GitHub"
-          },
-          "title": "Welcome to Mue Tab"
-        },
-        "language": {
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our",
-          "title": "Choose your language"
-        },
-        "privacy": {
-          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
-          "description": "Enable settings to further protect your privacy with Mue.",
-          "links": {
-            "privacy_policy": "Privacy Policy",
-            "source_code": "Source Code",
-            "title": "Links"
-          },
-          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
-          "title": "Privacy Options"
-        },
-        "settings": {
-          "description": "Installing Mue on a new device? Feel free to import your old settings!",
-          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation.",
-          "title": "Import Settings"
-        },
-        "style": {
-          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
-          "legacy": "Legacy",
-          "modern": "Modern",
-          "title": "Choose a style"
-        },
-        "theme": {
-          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
-          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes.",
-          "title": "Select a theme"
-        }
-      },
-      "tip": "Quick Tip"
     }
   },
-  "tabname": "New Tab",
   "toasts": {
+    "quote": "Het citaat is gekopieerd",
+    "notes": "Notes copied",
+    "reset": "Het herstellen is voltooid",
+    "installed": "De installatie is voltooid",
+    "uninstalled": "Het verwijderen is voltooid",
+    "updated": "Successfully updated",
     "error": "Er is iets misgegaan",
     "imported": "Het importeren is voltooid",
-    "installed": "De installatie is voltooid",
-    "link_copied": "Link copied",
     "no_storage": "Not enough storage",
-    "notes": "Notes copied",
-    "quote": "Het citaat is gekopieerd",
-    "reset": "Het herstellen is voltooid",
-    "uninstalled": "Het verwijderen is voltooid",
-    "updated": "Successfully updated"
-  },
-  "widgets": {
-    "background": {
-      "camera": "Camera",
-      "category": "Category",
-      "credit": "Foto van",
-      "download": "Download",
-      "downloads": "Downloads",
-      "exclude": "Don't show again",
-      "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "information": "Information",
-      "likes": "Likes",
-      "location": "Location",
-      "pexels": "on Pexels",
-      "resolution": "Resolution",
-      "source": "Source",
-      "unsplash": "on Unsplash",
-      "views": "Views"
-    },
-    "date": {
-      "week": "Week"
-    },
-    "greeting": {
-      "afternoon": "Goedemiddag",
-      "birthday": "Happy Birthday",
-      "christmas": "Fijne kerstdagen",
-      "evening": "Goedenavond",
-      "halloween": "Fijne Halloween",
-      "morning": "Goedemorgen",
-      "newyear": "Gelukkig nieuwjaar"
-    },
-    "navbar": {
-      "notes": {
-        "placeholder": "Type here",
-        "title": "Notes"
-      },
-      "todo": {
-        "add": "Add",
-        "pin": "Pin",
-        "title": "Todo"
-      },
-      "tooltips": {
-        "refresh": "Refresh"
-      }
-    },
-    "quicklinks": {
-      "add": "Add",
-      "icon": "Icon (optional)",
-      "name": "Name",
-      "name_error": "Must provide name",
-      "new": "New Link",
-      "url": "URL",
-      "url_error": "Must provide URL"
-    },
-    "quote": {
-      "copy": "Copy",
-      "favourite": "Favourite",
-      "link_tooltip": "Open on Wikipedia",
-      "share": "Share",
-      "unfavourite": "Unfavourite"
-    },
-    "search": "Zoeken",
-    "weather": {
-      "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}",
-      "meters": "{amount} meter",
-      "not_found": "Not Found",
-      "options": {
-        "standard": "Standard"
-      }
-    }
+    "link_copied": "Link copied"
   }
 }

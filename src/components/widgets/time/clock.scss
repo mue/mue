@@ -39,6 +39,10 @@
 .clockBackground {
   @extend %basic;
   padding: 1rem;
+
+  &.round {
+    border-radius: 100% !important;
+  }
 }
 
 .new-clock {

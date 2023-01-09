@@ -120,7 +120,8 @@
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
               "hour_marks": "Hour marks",
-              "minute_marks": "Minute marks"
+              "minute_marks": "Minute marks",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "Percentage complete",
             "vertical_clock": {

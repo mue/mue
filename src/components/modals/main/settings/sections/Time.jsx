@@ -93,6 +93,11 @@ export default class TimeSettings extends PureComponent {
           text={variables.getMessage('modals.main.settings.sections.time.analogue.minute_marks')}
           category="clock"
         />
+        <Checkbox
+          name="roundClock"
+          text={variables.getMessage('modals.main.settings.sections.time.analogue.round_clock')}
+          category="clock"
+        />
       </SettingsItem>
     );
 

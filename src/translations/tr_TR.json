@@ -120,7 +120,8 @@
               "minute_hand": " Yelkovan (dakika) ibresi",
               "hour_hand": "Akrep (saat) ibresi",
               "hour_marks": "Saat çizgileri",
-              "minute_marks": "Dakika çizgileri"
+              "minute_marks": "Dakika çizgileri",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "Yüzdelik Gösterim",
             "vertical_clock": {
