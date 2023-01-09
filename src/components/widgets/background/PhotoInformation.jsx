@@ -55,7 +55,7 @@ function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [usePhotoMap, setPhotoMap] = useState(false);
-  const [, setMapIcon] = useState(true);
+  const [useMapIcon, setMapIcon] = useState(true);
   const [showExtraInfo, setshowExtraInfo] = useState(false);
   //const [showOld, setShowOld] = useState(true);
   const [other, setOther] = useState(false);
@@ -210,7 +210,7 @@ function PhotoInformation({ info, url, api }) {
           onMouseLeave={() => setshowExtraInfo(false)}
         >
           <div className={photoMapClassList}>
-            {!usePhotoMap ? <MdLocationOn /> : ''}
+            {useMapIcon || photoMap() === null ? <MdLocationOn /> : ''}
             <h1>{photoMap}</h1>
             {photoMap()}
           </div>
