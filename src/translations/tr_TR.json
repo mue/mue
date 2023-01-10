@@ -94,8 +94,9 @@
       "file_upload_error": "Dosya 2 MB'ın üzerinde",
       "loading": "Yükleniyor...",
       "marketplace": {
+        "add_all": "Add All To Mue",
         "all": "Tümü",
-        "by": "Yayınlayan: {author}",
+        "by": "by {author}",
         "cant_find": "Aradığınızı bulamıyor musunuz?",
         "collection": "Koleksiyon",
         "collections": "Koleksiyonlar",
@@ -105,10 +106,6 @@
         "knowledgebase_two": "bilgilendirme sayfamızı ",
         "learn_more": "Daha Fazla Bilgi Edin",
         "no_items": "Bu kategoride öğe yok",
-        "offline": {
-          "description": "Lütfen internete bağlanın.",
-          "title": "Çevrimdışı görünüyorsun."
-        },
         "photo_packs": "Fotoğraf Paketleri",
         "preset_settings": "Ön Ayar Paketleri",
         "product": {
@@ -128,13 +125,31 @@
           "no_quotes": "Alıntı bulunamadı",
           "overview": "Genel Bakış",
           "part_of": "Parçası",
-          "setting": "Ayar",
           "show_all": "Hepsini Göster ↓",
           "show_less": "Daha Az Göster",
           "show_more": "Daha Fazla Göster",
           "showing": "Gösteriliyor",
-          "value": "Değer",
-          "version": "Versiyon"
+          "version": "Versiyon",
+          "weather": {
+            "custom_settings": "Özel Ayarlar",
+            "extra_info": {
+              "cloudiness": "Bulutlu",
+              "max_temp": "Maksimum Sıcaklık",
+              "show_description": "Açıklama Göster",
+              "title": "Ekstra Bilgilendirme",
+              "wind_direction": "Rüzgar Yönü"
+            },
+            "location": "Konum",
+            "options": {
+              "custom": "Özelleştirilmiş",
+              "standard": "Standart"
+            },
+            "temp_format": {
+              "fahrenheit": "Fahrenhayt",
+              "title": "Sıcaklık biçimi"
+            },
+            "widget_type": "Widget Türü"
+          }
         },
         "quote_packs": "Alıntı Paketleri"
       },
@@ -185,6 +200,12 @@
             }
           },
           "advanced": {
+            "analogue": {
+              "hour_marks": "Saat çizgileri",
+              "minute_hand": " Yelkovan (dakika) ibresi",
+              "round_clock": "Rounded background",
+              "subtitle": "Analog saatin nasıl görüntüleneceğini belirleyin."
+            },
             "custom_css": "Özel CSS",
             "custom_css_subtitle": "Mue'nin stilini 'Cascading Style Sheets (CSS)' ile özelleştirin.",
             "custom_js": "Özel JS",
@@ -199,16 +220,6 @@
               "information": "Bu, tüm verileri silecektir. Verilerinizi ve tercihlerinizi saklamak istiyorsanız, lütfen önce bunları dışa aktarın.",
               "question": "Mue'yu sıfırlamak istiyor musunuz?",
               "title": "UYARI"
-            },
-            "analogue": {
-              "title": "Analog",
-              "subtitle": "Analog saatin nasıl görüntüleneceğini belirleyin.",
-              "second_hand": "Saniye ibresi",
-              "minute_hand": " Yelkovan (dakika) ibresi",
-              "hour_hand": "Akrep (saat) ibresi",
-              "hour_marks": "Saat çizgileri",
-              "minute_marks": "Dakika çizgileri",
-              "round_clock": "Rounded background"
             },
             "title": "Gelişmiş"
           },
@@ -504,87 +515,8 @@
               "twentyfourhour": "24 Saat",
               "zero": "Sıfır Eklenmiş"
             },
-            "contributors": "Katkıda Bulunanlar",
-            "supporters": "Destekleyenler",
-            "no_supporters": "Şu anda Mue destekçisi yok",
-            "photographers": "Fotoğrafçılar"
-          }
-        },
-        "buttons": {
-          "reset": "Yenile",
-          "import": "İçeri Aktar",
-          "export": "Dışarı Aktar"
-        }
-      },
-      "marketplace": {
-        "by": "by {author}",
-        "all": "Tümü",
-        "learn_more": "Daha Fazla Bilgi Edin",
-        "photo_packs": "Fotoğraf Paketleri",
-        "quote_packs": "Alıntı Paketleri",
-        "preset_settings": "Ön Ayar Paketleri",
-        "no_items": "Bu kategoride öğe yok",
-        "collection": "Koleksiyon",
-        "explore_collection": "Koleksiyonu Keşfedin",
-        "add_all": "Add All To Mue",
-        "collections": "Koleksiyonlar",
-        "cant_find": "Aradığınızı bulamıyor musunuz?",
-        "knowledgebase_one": "Kendiniz oluşturmak için ",
-        "knowledgebase_two": "bilgilendirme sayfamızı ",
-        "knowledgebase_three": "ziyaret edin.",
-        "product": {
-          "overview": "Genel Bakış",
-          "information": "Bilgi",
-          "last_updated": "Son Güncelleme",
-          "description": "Açıklama/Tanım",
-          "show_more": "Daha Fazla Göster",
-          "show_less": "Daha Az Göster",
-          "show_all": "Hepsini Göster ↓",
-          "showing": "Gösteriliyor",
-          "no_images": "Fotoğraf bulunamadı",
-          "no_quotes": "Alıntı bulunamadı",
-          "version": "Versiyon",
-          "author": "Yazar",
-          "part_of": "Parçası",
-          "explore": "Keşfet",
-          "buttons": {
-            "addtomue": "Mue Tab'ıma Ekle",
-            "remove": "Kaldır",
-            "update_addon": "Eklentiyi Güncelle",
-            "back": "Geri",
-            "report": "Bildir/Raporla"
-          },
-          "weather": {
-            "auto": "Otomatik",
-            "custom_settings": "Özel Ayarlar",
-            "extra_info": {
-              "atmospheric_pressure": "Atmosferik Basınç",
-              "cloudiness": "Bulutlu",
-              "humidity": "Nem",
-              "max_temp": "Maksimum Sıcaklık",
-              "min_temp": "Minimum Sıcaklık",
-              "show_description": "Açıklama Göster",
-              "show_location": "Lokasyonu Göster",
-              "title": "Ekstra Bilgilendirme",
-              "visibility": "Görüş Mesafesi",
-              "wind_direction": "Rüzgar Yönü",
-              "wind_speed": "Rüzgar Hızı"
-            },
-            "location": "Konum",
-            "options": {
-              "basic": "Temel",
-              "custom": "Özelleştirilmiş",
-              "expanded": "Genişletilmiş",
-              "standard": "Standart"
-            },
-            "temp_format": {
-              "celsius": "Santigrat",
-              "fahrenheit": "Fahrenhayt",
-              "kelvin": "Kelvin",
-              "title": "Sıcaklık biçimi"
-            },
-            "title": "Hava Durumu",
-            "widget_type": "Widget Türü"
+            "photographers": "Fotoğrafçılar",
+            "supporters": "Destekleyenler"
           }
         }
       },
