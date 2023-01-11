@@ -323,7 +323,6 @@ p.author {
   height: 48px;
   border-radius: 12px;
   cursor: pointer;
-  margin-right: 25px;
 
   svg {
     font-size: 2em;
@@ -336,6 +335,13 @@ p.author {
 
 .flexTopMarketplace {
   display: flex;
+  margin-bottom: 15px;
+  .tooltip {
+    margin-right: 25px;
+  }
+  .mainTitle {
+    margin-bottom: 0 !important;
+  }
 }
 
 .itemWarning {

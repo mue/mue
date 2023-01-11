@@ -211,6 +211,7 @@ h5 {
   justify-content: space-between;
   padding: 25px;
   margin-top: 20px;
+  transition: 0.5s;
   @include themed() {
     background: t($modal-sidebar);
     border-radius: t($borderRadius);
@@ -248,8 +249,9 @@ h5 {
   padding: 15px;
   gap: 15px;
   @include themed() {
-    background-color: t($modal-sidebarActive);
+    background-color: t($modal-secondaryColour);
     border-radius: t($borderRadius);
+    border: 1px solid t($modal-sidebarActive);
   }
   button {
     @include basicIconButton(5px, 5px, modal);

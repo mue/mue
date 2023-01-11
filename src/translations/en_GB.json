@@ -473,6 +473,7 @@
             "support_mue": "Support Mue",
             "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
             "support_donate": "Donate",
+            "form_button": "Form",
             "resources_used": {
               "title": "Resources used",
               "bg_images": "Offline background images"
