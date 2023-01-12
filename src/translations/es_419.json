@@ -401,11 +401,6 @@
             "report_issue": "Report Issue",
             "size": "Slider to control how large the widget is"
           },
-          "keybinds": {
-            "notes": {
-              "pin": "Fijar notas"
-            }
-          },
           "language": {
             "quote": "Idioma de las citaciones",
             "title": "Idioma"

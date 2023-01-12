@@ -138,15 +138,10 @@
           "version": "Versiyon",
           "weather": {
             "extra_info": {
-              "cloudiness": "Bulutlu",
-              "show_description": "Açıklama Göster",
-              "wind_direction": "Rüzgar Yönü"
+              "show_description": "Açıklama Göster"
             },
             "options": {
               "custom": "Özelleştirilmiş"
-            },
-            "temp_format": {
-              "fahrenheit": "Fahrenhayt"
             },
             "widget_type": "Widget Türü"
           }
@@ -202,7 +197,6 @@
           },
           "advanced": {
             "analogue": {
-              "minute_hand": " Yelkovan (dakika) ibresi",
               "subtitle": "Analog saatin nasıl görüntüleneceğini belirleyin."
             },
             "custom_css": "Özel CSS",
@@ -524,7 +518,6 @@
             },
             "format": "Format",
             "percentage_complete": "Percentage complete",
-            "supporters": "Destekleyenler",
             "title": "Time",
             "type": "Type",
             "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
