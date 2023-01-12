@@ -352,9 +352,9 @@ export default class About extends PureComponent {
           {!!this.state.loading ? <p>{this.state.loading}</p> : <></> }
           <ul>
             {this.state.photographers.map(({ name, count }) => <>
-              <li>
+              <li className="subtitle-photographers">
                 {name}
-                <span style={{ color: '#ccc' }}> ({count} images)</span>
+                <span> ({count} images)</span>
               </li>
             </>)}
           </ul>
