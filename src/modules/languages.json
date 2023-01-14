@@ -42,5 +42,9 @@
   {
     "name": "中文 (简体)",
     "value": "zh_CN"
+  },
+  {
+    "name": "Portuguese (Brazil)",
+    "value": "pt_BR"
   }
 ]
