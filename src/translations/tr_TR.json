@@ -135,12 +135,7 @@
           "show_more": "Daha Fazla Göster",
           "showing": "Gösteriliyor",
           "value": "Value",
-          "version": "Versiyon",
-          "weather": {
-            "options": {
-              "custom": "Özelleştirilmiş"
-            }
-          }
+          "version": "Versiyon"
         },
         "quote_packs": "Alıntı Paketleri"
       },
