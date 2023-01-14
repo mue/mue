@@ -137,13 +137,9 @@
           "value": "Value",
           "version": "Versiyon",
           "weather": {
-            "extra_info": {
-              "show_description": "Açıklama Göster"
-            },
             "options": {
               "custom": "Özelleştirilmiş"
-            },
-            "widget_type": "Widget Türü"
+            }
           }
         },
         "quote_packs": "Alıntı Paketleri"
@@ -196,9 +192,6 @@
             }
           },
           "advanced": {
-            "analogue": {
-              "subtitle": "Analog saatin nasıl görüntüleneceğini belirleyin."
-            },
             "custom_css": "Özel CSS",
             "custom_css_subtitle": "Mue'nin stilini 'Cascading Style Sheets (CSS)' ile özelleştirin.",
             "custom_js": "Özel JS",
