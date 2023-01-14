@@ -163,7 +163,7 @@ function PhotoInformation({ info, url, api }) {
   };
 
   let photoMapClassList = 'map-concept';
-  if (usePhotoMap) {
+  if (photoMap() !== null) {
     photoMapClassList += ' photoMap';
   }
 

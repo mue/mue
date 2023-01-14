@@ -1,6 +1,12 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdSettings, MdOutlineShoppingBasket, MdOutlineExtension, MdRefresh } from 'react-icons/md';
+import {
+  MdSettings,
+  MdOutlineShoppingBasket,
+  MdOutlineExtension,
+  MdRefresh,
+  MdClose,
+} from 'react-icons/md';
 import Tab from './Tab';
 import ErrorBoundary from '../../../ErrorBoundary';
 
@@ -30,7 +36,14 @@ export default class Tabs extends PureComponent {
 
     const reminderInfo = (
       <div className="reminder-info" style={{ display }}>
-        <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
+        <div className="shareHeader">
+          <span className="title">
+            {variables.getMessage('modals.main.settings.reminder.title')}
+          </span>
+          <span className="closeModal" onClick={ () => localStorage.setItem('showReminder', false)}>
+            <MdClose />
+          </span>
+        </div>
         <span className="subtitle">
           {variables.getMessage('modals.main.settings.reminder.message')}
         </span>

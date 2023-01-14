@@ -371,3 +371,26 @@
     opacity: 1;
   }
 }
+
+.photoMap {
+  img {
+    height: 50px !important;
+    width: 50px !important;
+  }
+  a {
+    height: 50px;
+  }
+}
+
+.photoInformation:hover {
+  .photoMap {
+    height: auto !important;
+    img {
+      height: auto !important;
+      width: auto !important;
+    }
+    a {
+      height: auto !important;
+    }
+  }
+}
