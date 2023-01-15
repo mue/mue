@@ -683,7 +683,7 @@
       "todo": {
         "add": "Adicionar",
         "pin": "Fixar",
-        "title": "Afazeres"
+        "title": "Tarefas"
       },
       "tooltips": {
         "refresh": "Atualizar"
