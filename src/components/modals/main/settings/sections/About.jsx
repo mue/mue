@@ -183,7 +183,7 @@ export default class About extends PureComponent {
               rel="noopener noreferrer"
             >
               <MdContactPage />
-              Form
+              {variables.getMessage('modals.main.settings.sections.about.form_button')}
             </a>
             <Tooltip title={'Email'}>
               <a
@@ -224,6 +224,8 @@ export default class About extends PureComponent {
             <a
               className="donateButton"
               href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <BiDonateHeart />
               {variables.getMessage('modals.main.settings.sections.about.support_donate')}
@@ -350,9 +352,9 @@ export default class About extends PureComponent {
           {!!this.state.loading ? <p>{this.state.loading}</p> : <></> }
           <ul>
             {this.state.photographers.map(({ name, count }) => <>
-              <li>
+              <li className="subtitle-photographers">
                 {name}
-                <span style={{ color: '#ccc' }}> ({count} images)</span>
+                <span> ({count} images)</span>
               </li>
             </>)}
           </ul>

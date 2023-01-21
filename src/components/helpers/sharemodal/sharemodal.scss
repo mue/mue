@@ -50,7 +50,7 @@
       @include themed() {
         background: t($modal-sidebar);
         border-radius: t($borderRadius);
-        box-shadow: 0 0 0 4px t($modal-sidebarActive);
+        box-shadow: 0 0 0 1px t($modal-sidebarActive);
         padding: 11px;
         flex: 1;
         color: t($color);
@@ -63,7 +63,7 @@
     @include themed() {
       background: t($modal-sidebar);
       border-radius: t($borderRadius);
-      box-shadow: 0 0 0 4px t($modal-sidebarActive);
+      box-shadow: 0 0 0 1px t($modal-sidebarActive);
       padding: 11px;
       flex: 1;
       color: t($color);

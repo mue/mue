@@ -60,40 +60,37 @@ function Items({
               item.author.toLowerCase().includes(filter.toLowerCase()) ||
               item.type.toLowerCase().includes(filter.toLowerCase()),
           )
-          .map((item) => {
-            console.log(item, item.type.split('_')[0].endsWith('s')
-              ? item.type.split('_')[0]
-              : item.type.split('_')[0] + 's'); return (
+          .map((item) => (
             <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
-                <img
-                  className="item-back"
-                  draggable="false"
-                  src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
-                  aria-hidden="true"
-                />
-                <img
-                  className="item-icon"
-                  alt="icon"
-                  draggable="false"
-                  src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
-                />
-                <div className="card-details">
-                  <span className="card-title">{item.display_name || item.name}</span>
-                  <span className="card-subtitle">{variables.getMessage('modals.main.marketplace.by', {author: item.author})}</span>
-                  {
+              <img
+                className="item-back"
+                alt=""
+                draggable="false"
+                src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
+                aria-hidden="true"
+              />
+              <img
+                className="item-icon"
+                alt="icon"
+                draggable="false"
+                src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
+              />
+              <div className="card-details">
+                <span className="card-title">{item.display_name || item.name}</span>
+                <span className="card-subtitle">{variables.getMessage('modals.main.marketplace.by', { author: item.author })}</span>
+                {
                   type === 'all' && !onCollection
                     ? <span className="card-type">
-                        {variables.getMessage(`modals.main.addons.create.types.${
-                          item.type.split('_')[0] === "preset"
-                            ? "settings"
-                            : item.type.split('_')[0] + 's'
+                      {variables.getMessage(`modals.main.addons.create.types.${item.type.split('_')[0] === "preset"
+                          ? "settings"
+                          : item.type.split('_')[0] + 's'
                         }`)}
-                      </span>
-                    : null} 
-                
+                    </span>
+                    : null
+                  }
               </div>
             </div>
-          )})}
+          ))}
       </div>
       <div className="loader"></div>
       {type === 'all' && !onCollection ? (

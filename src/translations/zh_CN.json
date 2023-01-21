@@ -25,10 +25,7 @@
       "source": "Source",
       "category": "Category",
       "exclude": "Don't show again",
-      "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "categories": "Categories",
-      "photo": "Photo",
-      "on": "on"
+      "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings."
     },
     "search": "搜索",
     "quicklinks": {
@@ -47,13 +44,7 @@
       "not_found": "未找到",
       "meters": "{amount}米",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}",
-      "options": {
-        "basic": "Basic",
-        "standard": "Standard",
-        "expanded": "Expanded",
-        "custom": "Custom"
-      }
+      "feels_like": "Feels like {amount}"
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -129,7 +120,8 @@
               "minute_hand": "分针",
               "hour_hand": "时针",
               "hour_marks": "时钟刻度",
-              "minute_marks": "分钟刻度"
+              "minute_marks": "分钟刻度",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "今天过去了%几",
             "vertical_clock": {
@@ -267,8 +259,7 @@
               "hour": "每小时",
               "day": "每天",
               "month": "每月"
-            },
-            "category": "分类"
+            }
           },
           "search": {
             "title": "搜索栏",
@@ -396,7 +387,12 @@
               "title": "无障碍设定",
               "description": "Accessibility settings for Mue",
               "animations": "动画效果",
-              "text_shadow": "加深字体阴影",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
               "widget_zoom": "小部件缩放",
               "toast_duration": "窗口弹出时间长度",
               "milliseconds": "毫秒"
@@ -477,6 +473,7 @@
             "support_mue": "支持 Mue",
             "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
             "support_donate": "Donate",
+            "form_button": "Form",
             "resources_used": {
               "title": "使用资源",
               "bg_images": "离线背景"
@@ -503,6 +500,7 @@
         "no_items": "本类别为空",
         "collection": "Collection",
         "explore_collection": "Explore Collection",
+        "add_all": "Add All To Mue",
         "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
@@ -577,11 +575,9 @@
             "quotes": "Quotes Pack"
           },
           "descriptions": {
-            "settings": "",
+            "settings": "Collection of settings to customise Mue.",
             "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic.",
-            "photo_pack": "",
-            "quote_pack": ""
+            "quotes": "Collection of quotes relating to a topic."
           },
           "information": "Information",
           "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",

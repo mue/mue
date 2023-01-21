@@ -27,11 +27,13 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    @include themed() {
+    @include themed {
       background-color: t($modal-secondaryColour);
       box-shadow: 0 0 0 1px t($modal-sidebarActive);
+
       &:hover {
         background-color: t($modal-sidebarActive);
+
         img {
           background-color: t($modal-sidebarActive);
         }
@@ -42,16 +44,16 @@
       margin-top: 7px;
     }
 
-     .item-back {
-       filter: blur(60px) saturate(180%) brightness(90%);
-       -webkit-filter: blur(60px) saturate(180%) brightness(90%);
-       position: absolute;
-       object-fit: cover !important;
-       height: 90px !important;
-       width: 100px !important;
-       border-radius: 100px;
-       transition: 0.5s;
-       margin-top: 30px;
+    .item-back {
+      filter: blur(60px) saturate(180%) brightness(90%);
+      filter: blur(60px) saturate(180%) brightness(90%);
+      position: absolute;
+      object-fit: cover !important;
+      height: 90px !important;
+      width: 100px !important;
+      border-radius: 100px;
+      transition: 0.5s;
+      margin-top: 30px;
     }
 
     .item-icon {
@@ -77,7 +79,7 @@
       .card-subtitle {
         font-size: 14px;
 
-        @include themed() {
+        @include themed {
           color: t($subColor);
         }
       }
@@ -86,15 +88,14 @@
         margin-top: 8px;
         font-size: 12px;
         font-weight: bolder;
-        @include themed() {
+        @include themed {
           color: t($subColor);
         }
+
         border-radius: 150px;
         padding: 2px 8px;
-        backdrop-filter: blur(16px) saturate(180%);
-        -webkit-backdrop-filter: blur(16px) saturate(180%);
-        background-color: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(209, 213, 219, 0.3);
+        background-color: rgb(255 255 255 / 10%);
+        border: 1px solid rgb(209 213 219 / 30%);
       }
     }
   }
@@ -137,7 +138,7 @@
     border-radius: 15px;
     width: 25%;
     max-height: 450px;
-  
+
     .front {
       padding: 20px;
       height: 100%;
@@ -148,24 +149,23 @@
       box-sizing: border-box !important;
       border-radius: 12px 12px 0 0;
       backdrop-filter: blur(40px) saturate(150%) brightness(75%);
-      -webkit-backdrop-filter: blur(40px) saturate(150%) brightness(75%);
-      @include themed() {
-      background-image: linear-gradient(to bottom, transparent, t($modal-background));
+      backdrop-filter: blur(40px) saturate(150%) brightness(75%);
+      @include themed {
+        background-image: linear-gradient(to bottom, transparent, t($modal-background));
       }
     }
 
-    
     .icon {
       width: 100%;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 5px 25px black;
     }
-  
+
     .divider {
       text-transform: uppercase;
 
-      @include themed() {
+      @include themed {
         color: t($subColor);
       }
     }
@@ -175,6 +175,7 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       grid-gap: 20px;
+
       button {
         width: 100%;
         padding: 0;
@@ -192,17 +193,17 @@
 }
 
 .tag {
-  padding: 2px 10px 2px 10px;
+  padding: 2px 10px;
   border-radius: 12px;
   font-size: 12px;
   display: grid;
   place-items: center;
-  @include themed() {
+  @include themed {
     background: t($modal-sidebar);
     box-shadow: 0 0 0 3px t($modal-sidebarActive);
 
     span {
-      &:before {
+      &::before {
         content: '#';
         color: t($subColor);
         margin-right: 5px;
@@ -216,18 +217,18 @@
 }
 
 .moreTag {
-  padding: 2px 10px 2px 10px;
+  padding: 2px 10px;
   border-radius: 12px;
   font-size: 12px;
   display: grid;
   place-items: center;
 
-  @include themed() {
+  @include themed {
     background: t($modal-sidebar);
     box-shadow: 0 0 0 3px t($modal-sidebarActive);
 
     span {
-      &:before {
+      &::before {
         content: '+';
         color: t($subColor);
         margin-right: 5px;
@@ -253,7 +254,7 @@
   grid-gap: 5px;
   padding: 50px;
 
-  @include themed() {
+  @include themed {
     .sideloadIcon {
       font-size: 50px;
       color: t($subColor);
@@ -272,21 +273,26 @@
   flex-flow: column;
   text-align: center;
   align-items: center;
+
   img {
     width: 200px;
     height: auto;
   }
+
   svg {
     font-size: 70px;
+
     /* background: -webkit-linear-gradient(90deg,rgba(255,92,39,.7) 37%,rgba(255,70,110,.67) 60%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;*/
+    -webkit-text-fill-color: transparent; */
   }
+
   button {
     svg {
       font-size: 1rem;
     }
   }
+
   .buttonsRow {
     display: flex;
     flex-flow: row;
@@ -315,17 +321,25 @@ p.author {
   height: 48px;
   border-radius: 12px;
   cursor: pointer;
-  margin-right: 25px;
+
   svg {
     font-size: 2em;
   }
+
   &:hover {
-    background: rgba(121, 121, 121, 0.226);
+    background: rgb(121 121 121 / 22.6%);
   }
 }
 
 .flexTopMarketplace {
   display: flex;
+  margin-bottom: 15px;
+  .tooltip {
+    margin-right: 25px;
+  }
+  .mainTitle {
+    margin-bottom: 0 !important;
+  }
 }
 
 .itemWarning {
@@ -333,7 +347,7 @@ p.author {
   flex-direction: column;
   align-items: center;
 
-  @include themed() {
+  @include themed {
     background: t($modal-sidebar);
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
     border-radius: t($borderRadius);
@@ -366,7 +380,7 @@ p.author {
   align-items: center;
   margin-top: 15px;
 
-  @include themed() {
+  @include themed {
     background: t($modal-sidebar);
     border-radius: t($borderRadius);
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
@@ -388,17 +402,18 @@ p.author {
 }
 
 .collectionPage {
-  height: 200px;
+  // height: 200px;
+  padding: 1.5rem;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 15px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  @include themed() {
+  @include themed {
     border-radius: t($borderRadius);
   }
 
@@ -406,15 +421,18 @@ p.author {
     border-radius: 150px;
     padding: 1px 12px;
     backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(209, 213, 219, 0.3);
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgb(255 255 255 / 10%);
+    border: 1px solid rgb(209 213 219 / 30%);
     color: #fff;
   }
+
   .content {
     display: flex;
     flex-flow: column;
     text-align: center;
+    text-shadow: #000 0 0 15px;
+
     .mainTitle {
       justify-content: center;
       color: #fff !important;
@@ -422,6 +440,26 @@ p.author {
 
     .subtitle {
       color: #ccc !important;
+    }
+  }
+
+  .addAllButton {
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1px 12px;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    background-color: rgb(255 255 255 / 10%) !important;
+    border: 1px solid rgb(209 213 219 / 30%) !important;
+    color: #fff !important;
+
+    &:hover {
+      backdrop-filter: blur(16px) saturate(180%) !important;
+      backdrop-filter: blur(16px) saturate(180%) !important;
+      background-color: rgb(17 25 40 / 20%) !important;
+      border: 1px solid rgb(255 255 255 / 12.5%) !important;
     }
   }
 }
@@ -436,7 +474,7 @@ p.author {
   background-repeat: no-repeat;
   align-items: center;
 
-  @include themed() {
+  @include themed {
     box-shadow: 0 0 0 1px t($modal-sidebarActive);
     border-radius: t($borderRadius);
   }
@@ -446,6 +484,7 @@ p.author {
     flex-flow: column;
     gap: 15px;
     max-width: 250px;
+    text-shadow: #000 0 0 15px;
 
     .title {
       color: #fff !important;
@@ -467,15 +506,16 @@ p.author {
     gap: 15px;
     padding: 1px 12px;
     backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(209, 213, 219, 0.3);
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgb(255 255 255 / 10%);
+    border: 1px solid rgb(209 213 219 / 30%);
     color: #fff;
+
     &:hover {
       backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      background-color: rgba(17, 25, 40, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.125);
+      backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgb(17 25 40 / 20%);
+      border: 1px solid rgb(255 255 255 / 12.5%);
     }
   }
 }
@@ -483,14 +523,14 @@ p.author {
 a.collectionButton {
   height: 40px;
   text-decoration: none;
-  @include themed() {
+  @include themed {
     border-radius: t($borderRadius);
   }
 }
 
 .smallBanner {
   button {
-    padding: 0 15px 0 15px;
+    padding: 0 15px;
   }
 
   display: flex;
@@ -499,7 +539,7 @@ a.collectionButton {
   margin-top: 15px;
   align-items: center;
 
-  @include themed() {
+  @include themed {
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
     border-radius: t($borderRadius);
     background: t($modal-sidebar);
@@ -526,15 +566,15 @@ a.collectionButton {
   padding: 10px 30px;
   border-radius: 10px;
   font-size: 18px;
-  @include themed() {
-    background: t($modal-sidebarActive);
+  @include themed {
     box-shadow: 0 0 0 3px t($modal-sidebarActive);
     background: t($modal-sidebar);
   }
+
   input {
     all: unset;
   }
-  @include themed() {
+  @include themed {
     &:focus-within {
       background: t($modal-sidebarActive);
       box-shadow: 0 0 0 1px t($color);
@@ -555,7 +595,7 @@ a.collectionButton {
   gap: 15px;
   padding: 15px;
 
-  @include themed() {
+  @include themed {
     box-shadow: 0 0 0 4px t($modal-sidebarActive);
     border-radius: t($borderRadius);
   }
@@ -567,6 +607,7 @@ a.collectionButton {
   gap: 20px;
   align-items: center;
   margin-top: 30px;
+
   svg {
     font-size: 30px;
   }

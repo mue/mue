@@ -126,16 +126,18 @@ export default class Item extends PureComponent {
             {this.props.data.data.quotes ? (
               <>
                 <table>
-                  <tr>
-                    <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
-                    <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
-                  </tr>
-                  {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
-                    <tr key={index}>
-                      <td>{quote.quote}</td>
-                      <td>{quote.author}</td>
+                  <tbody>
+                    <tr>
+                      <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
+                      <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
                     </tr>
-                  ))}
+                    {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
+                      <tr key={index}>
+                        <td>{quote.quote}</td>
+                        <td>{quote.author}</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
                 <div className="showMoreItems">
                   <span className="link" onClick={() => this.incrementCount('quotes')}>
@@ -157,16 +159,18 @@ export default class Item extends PureComponent {
             {this.props.data.data.settings ? (
               <>
                 <table>
-                  <tr>
-                    <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
-                    <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
-                  </tr>
-                  {Object.entries(this.props.data.data.settings).slice(0, this.state.count).map(([key, value]) => (
-                    <tr key={key}>
-                      <td>{key}</td>
-                      <td>{value}</td>
+                  <tbody>
+                    <tr>
+                      <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
+                      <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
                     </tr>
-                  ))}
+                    {Object.entries(this.props.data.data.settings).slice(0, this.state.count).map(([key, value]) => (
+                      <tr key={key}>
+                        <td>{key}</td>
+                        <td>{value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
                 <div className="showMoreItems">
                   <span className="link" onClick={() => this.incrementCount('settings')}>

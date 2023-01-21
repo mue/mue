@@ -39,6 +39,7 @@ variables.language = new I18n(variables.languagecode, {
   zh_CN: translations.zh_CN,
   id_ID: translations.id_ID,
   tr_TR: translations.tr_TR,
+  pt_BR: translations.pt_BR,
 });
 
 variables.getMessage = (text, optional) =>

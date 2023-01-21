@@ -80,6 +80,14 @@
 .infoTooltip {
   position: relative;
   display: grid;
+  svg {
+    cursor: pointer;
+    &:hover {
+      @include themed() {
+        color: t($color);
+      }
+    }
+  }
 }
 
 .infoTooltipTitle {

@@ -89,7 +89,10 @@ export default class Search extends PureComponent {
     }
 
     if (setting === 'custom') {
-      url = localStorage.getItem('customSearchEngine');
+      const custom = localStorage.getItem('customSearchEngine');
+      if (custom !== null) {
+        url = custom;
+      }
     }
 
     if (localStorage.getItem('voiceSearch') === 'true') {
@@ -121,7 +124,12 @@ export default class Search extends PureComponent {
     }
 
     if (custom) {
-      url = localStorage.getItem('customSearchEngine');
+      const customSetting = localStorage.getItem('customSearchEngine');
+      if (customSetting !== null) {
+        url = customSetting;
+      } else {
+        url = this.state.url;
+      }
     }
 
     this.setState({

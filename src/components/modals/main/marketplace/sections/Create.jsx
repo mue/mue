@@ -492,17 +492,14 @@ export default class Create extends PureComponent {
       <>
         <div className="flexTopMarketplace">
           {this.state.currentTab !== 1 && (
-            <div className="returnButton">
-              <Tooltip
-                title={variables.getMessage('modals.main.marketplace.product.buttons.back')}
-                key="backArrow"
-              >
-                <MdArrowBack
-                  className="backArrow"
-                  onClick={() => this.changeTab(1)}
-                />
-              </Tooltip>
-            </div>
+            <Tooltip
+              title={variables.getMessage('modals.main.marketplace.product.buttons.back')}
+              key="backArrow"
+            >
+              <div className="returnButton">
+                <MdArrowBack className="backArrow" onClick={() => this.changeTab(1)} />
+              </div>
+            </Tooltip>
           )}
           <span className="mainTitle">
             {variables.getMessage('modals.main.addons.create.other_title')}

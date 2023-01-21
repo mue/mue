@@ -111,6 +111,7 @@ export default class SearchSettings extends PureComponent {
           subtitle={variables.getMessage(
             'modals.main.settings.sections.search.search_engine_subtitle',
           )}
+          final={ this.state.customDisplay === 'none' ? true : false}
         >
           <Dropdown
             name="searchEngine"
@@ -128,7 +129,7 @@ export default class SearchSettings extends PureComponent {
           </Dropdown>
         </SettingsItem>
         <div style={{ display: this.state.customDisplay }}>
-          <SettingsItem title={variables.getMessage('modals.main.settings.sections.search.custom')}>
+          <SettingsItem title={variables.getMessage('modals.main.settings.sections.search.custom')} final={true}>
             <TextField
               label={variables.getMessage('modals.main.settings.sections.search.custom')}
               value={this.state.customValue}

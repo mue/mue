@@ -120,7 +120,8 @@
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
               "hour_marks": "Hour marks",
-              "minute_marks": "Minute marks"
+              "minute_marks": "Minute marks",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "Percentage complete",
             "vertical_clock": {
@@ -472,6 +473,7 @@
             "support_mue": "Support Mue",
             "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
             "support_donate": "Donate",
+            "form_button": "Form",
             "resources_used": {
               "title": "Resources used",
               "bg_images": "Offline background images"
@@ -498,6 +500,7 @@
         "no_items": "No items in this category",
         "collection": "Collection",
         "explore_collection": "Explore Collection",
+        "add_all": "Add All To Mue",
         "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
