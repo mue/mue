@@ -10,7 +10,7 @@ specifiers:
   '@floating-ui/react-dom': ^1.0.1
   '@fontsource/lexend-deca': 4.5.12
   '@fontsource/montserrat': 4.5.13
-  '@mui/material': 5.11.4
+  '@mui/material': 5.11.5
   '@sentry/react': ^7.21.1
   '@vitejs/plugin-react': 3.0.1
   embla-carousel-autoplay: ^7.0.5
@@ -42,7 +42,7 @@ dependencies:
   '@floating-ui/react-dom': 1.1.2_biqbaboplfbrettd7655fr4n2y
   '@fontsource/lexend-deca': 4.5.12
   '@fontsource/montserrat': 4.5.13
-  '@mui/material': 5.11.4_5rzy53przelm5jchjmb5vr6dxy
+  '@mui/material': 5.11.5_5rzy53przelm5jchjmb5vr6dxy
   '@sentry/react': 7.29.0_react@18.2.0
   embla-carousel-autoplay: 7.0.5
   embla-carousel-react: 7.0.5_react@18.2.0
@@ -2064,8 +2064,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@mui/base/5.0.0-alpha.113_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-XSjvyQWATM8uk+EJZvYna8D21kOXC42lwb3q4K70btuGieKlCIQLaHTTDV2OfD4+JfT4o3NJy3I4Td2co31RZA==}
+  /@mui/base/5.0.0-alpha.114_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-ZpsG2I+zTOAnVTj3Un7TxD2zKRA2OhEPGMcWs/9ylPlS6VuGQSXowPooZiqarjT7TZ0+1bOe8titk/t8dLFiGw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
@@ -2087,12 +2087,12 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /@mui/core-downloads-tracker/5.11.4:
-    resolution: {integrity: sha512-jWVwGM3vG4O0sXcW0VcIl+njCWbGCBF5vvjRpuKJajrz51AD7D6+fP1SkInZXVk5pRHf6Bnk/Yj9Of9gXxb/hA==}
+  /@mui/core-downloads-tracker/5.11.5:
+    resolution: {integrity: sha512-MIuWGjitOsugpRhp64CQY3ZEVMIu9M/L9ioql6QLSkz73+bGIlC9FEhfi670/GZ8pQIIGmtiGGwofYzlwEWjig==}
     dev: false
 
-  /@mui/material/5.11.4_5rzy53przelm5jchjmb5vr6dxy:
-    resolution: {integrity: sha512-ZL/czK9ynrQJ6uyDwQgK+j7m1iKA1XKPON+rEPupwAu/bJ1XJxD+H/H2bkMM8UpOkzaucx/WuMbJJGQ60l7gBg==}
+  /@mui/material/5.11.5_5rzy53przelm5jchjmb5vr6dxy:
+    resolution: {integrity: sha512-5fzjBbRYaB5MoEpvA32oalAWltOZ3/kSyuovuVmPc6UF6AG42lTtbdMLpdCygurFSGUMZYTg4Cjij52fKlDDgg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0
@@ -2111,9 +2111,9 @@ packages:
       '@babel/runtime': 7.20.7
       '@emotion/react': 11.10.5_react@18.2.0
       '@emotion/styled': 11.10.5_hp5f5nkljdiwilp4rgxyefcplu
-      '@mui/base': 5.0.0-alpha.113_biqbaboplfbrettd7655fr4n2y
-      '@mui/core-downloads-tracker': 5.11.4
-      '@mui/system': 5.11.4_dovxhg2tvkkxkdnqyoum6wzcxm
+      '@mui/base': 5.0.0-alpha.114_biqbaboplfbrettd7655fr4n2y
+      '@mui/core-downloads-tracker': 5.11.5
+      '@mui/system': 5.11.5_dovxhg2tvkkxkdnqyoum6wzcxm
       '@mui/types': 7.2.3
       '@mui/utils': 5.11.2_react@18.2.0
       '@types/react-transition-group': 4.4.5
@@ -2164,8 +2164,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@mui/system/5.11.4_dovxhg2tvkkxkdnqyoum6wzcxm:
-    resolution: {integrity: sha512-fE2Ts33V5zh7ouciwXgMm/a6sLvjIj9OMeojuHNYY7BStTxparC/Fp9CNUZNJwt76U6ZJC59aYScFSRQKbW08g==}
+  /@mui/system/5.11.5_dovxhg2tvkkxkdnqyoum6wzcxm:
+    resolution: {integrity: sha512-KNVsJ0sgRRp2XBqhh4wPS5aacteqjwxgiYTVwVnll2fgkgunZKo3DsDiGMrFlCg25ZHA3Ax58txWGE9w58zp0w==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0

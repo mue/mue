@@ -104,7 +104,7 @@
             "title": "Time",
             "format": "Format",
             "type": "Type",
-            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
+            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Digital",
               "subtitle": "Change how the digital clock looks",

@@ -508,7 +508,7 @@
             "percentage_complete": "Porcentaje completado",
             "title": "Tiempo",
             "type": "Tipo",
-            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
+            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
             "vertical_clock": {
               "change_hour_colour": "Change hour text colour",
               "change_minute_colour": "Change minute text colour",
