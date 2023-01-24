@@ -168,7 +168,16 @@ export default class QuickLinks extends PureComponent {
           </div>
           <div className="messageText">
             <div className="title">{item.name}</div>
-            <div className="subtitle">{item.url}</div>
+            <div className="subtitle">
+              <a
+                className="quicklinknostyle"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={item.url}
+              >
+                {item.url}
+              </a>
+            </div>
           </div>
           <div>
             <div className="messageAction">
@@ -219,7 +228,11 @@ export default class QuickLinks extends PureComponent {
             'modals.main.settings.sections.quicklinks.styling_description',
           )}
         >
-          <Dropdown label={variables.getMessage('modals.main.settings.sections.quicklinks.style')} name="quickLinksStyle" category="other">
+          <Dropdown
+            label={variables.getMessage('modals.main.settings.sections.quicklinks.style')}
+            name="quickLinksStyle"
+            category="other"
+          >
             <option value="icon">
               {variables.getMessage('modals.main.settings.sections.quicklinks.options.icon')}
             </option>

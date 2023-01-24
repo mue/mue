@@ -207,3 +207,11 @@ button.quicklinks {
     align-self: center;
   }
 }
+
+.quicklinknostyle {
+  text-decoration: none;
+  font-size: 14px;
+  @include themed() {
+    color: t($subColor);
+  }
+}
