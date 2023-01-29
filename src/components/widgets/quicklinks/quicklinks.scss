@@ -163,10 +163,9 @@ button.quicklinks {
   @include themed() {
     textarea {
       background: t($modal-sidebar);
-      border: 3px solid t($modal-sidebarActive);
+      border: 1px solid t($modal-sidebarActive);
       color: t($color);
       border-radius: t($borderRadius);
-      width: 270px;
       padding: 10px 20px;
 
       &:hover {

@@ -8,7 +8,7 @@
   padding: 15px;
   width: 320px;
   @include themed() {
-    background: t($modal-background);
+    background: t($modal-secondaryColour);
   }
   .resetFooter {
     display: flex;

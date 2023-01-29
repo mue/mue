@@ -11,7 +11,7 @@ function AddModal({ urlError, addLink, closeModal, edit, editData, editLink }) {
   const [icon, setIcon] = useState(edit ? editData.url : '');
 
   return (
-    <div className="smallModal">
+    <div className="smallModal" style={{ width: '260px' }}>
       <div className="shareHeader">
         <span className="title">{variables.getMessage('widgets.quicklinks.new')}</span>
         <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
@@ -43,11 +43,23 @@ function AddModal({ urlError, addLink, closeModal, edit, editData, editLink }) {
         />
         <span className="dropdown-error" />
         {edit ? (
-          <button onClick={() => editLink(editData, name, url, icon)}>
-            <MdAddLink /> Edit
+          <button
+            style={{
+              height: '16px',
+              fontSize: '15px',
+            }}
+            onClick={() => editLink(editData, name, url, icon)}
+          >
+            <MdAddLink /> {variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
           </button>
         ) : (
-          <button onClick={() => addLink(name, url, icon)}>
+          <button
+            style={{
+              height: '16px',
+              fontSize: '15px',
+            }}
+            onClick={() => addLink(name, url, icon)}
+          >
             <MdAddLink /> {variables.getMessage('widgets.quicklinks.add')}
           </button>
         )}
