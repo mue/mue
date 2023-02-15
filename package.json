@@ -17,7 +17,7 @@
     "@floating-ui/react-dom": "^1.0.1",
     "@fontsource/lexend-deca": "4.5.12",
     "@fontsource/montserrat": "4.5.13",
-    "@mui/material": "5.11.8",
+    "@mui/material": "5.11.9",
     "@sentry/react": "^7.21.1",
     "embla-carousel-autoplay": "^7.0.5",
     "embla-carousel-react": "^7.0.5",
