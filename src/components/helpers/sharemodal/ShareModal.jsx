@@ -10,17 +10,22 @@ import { toast } from 'react-toastify';
 import './sharemodal.scss';
 
 function ShareModal({ modalClose, data }) {
+  if (data.startsWith('https://cdn.')) {
+    data = {
+      url: data,
+      name: 'this image',
+    };
+  } else {
+    data = {
+      url: data,
+      name: 'this marketplace item',
+    };
+  }
+
   const copyLink = () => {
-    navigator.clipboard.writeText(data);
+    navigator.clipboard.writeText(data.url);
     toast(variables.getMessage('modals.share.copy_link'));
   };
-
-  // look into what's wrong with this
-  try {
-    if (!data.data) {
-      data.data.name = 'this image';
-    }
-  } catch (e) {}
 
   return (
     <div className="smallModal">
@@ -38,7 +43,7 @@ function ShareModal({ modalClose, data }) {
             onClick={() =>
               window
                 .open(
-                  `https://twitter.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data}`,
+                  `https://twitter.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data.url}`,
                   '_blank',
                 )
                 .focus()
@@ -50,7 +55,7 @@ function ShareModal({ modalClose, data }) {
         <Tooltip title="Facebook">
           <button
             onClick={() =>
-              window.open(`https://www.facebook.com/sharer/sharer.php?u=${data}`, '_blank').focus()
+              window.open(`https://www.facebook.com/sharer/sharer.php?u=${data.url}`, '_blank').focus()
             }
           >
             <FaFacebookF />
@@ -78,7 +83,7 @@ function ShareModal({ modalClose, data }) {
             onClick={() =>
               window
                 .open(
-                  `https://api.qrserver.com/v1/create-qr-code/?size=154x154&data=${data}`,
+                  `https://api.qrserver.com/v1/create-qr-code/?size=154x154&data=${data.url}`,
                   '_blank',
                 )
                 .focus()
@@ -91,7 +96,7 @@ function ShareModal({ modalClose, data }) {
           <button
             onClick={() =>
               window
-                .open(`http://connect.qq.com/widget/shareqq/index.html?url=${data}`, '_blank')
+                .open(`http://connect.qq.com/widget/shareqq/index.html?url=${data.url}`, '_blank')
                 .focus()
             }
           >
@@ -100,7 +105,7 @@ function ShareModal({ modalClose, data }) {
         </Tooltip>
       </div>
       <div className="copy">
-        <input type="text" value={data} className="left field" readOnly />
+        <input type="text" value={data.url} className="left field" readOnly />
         <Tooltip title={variables.getMessage('modals.share.copy_link')} placement="top">
           <button onClick={() => copyLink()}>
             <MdContentCopy />

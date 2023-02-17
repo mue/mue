@@ -364,7 +364,7 @@ function PhotoInformation({ info, url, api }) {
                   key="favourite"
                   placement="top"
                 >
-                  <Favourite />
+                  <Favourite pun={info.pun} offline={info.offline} credit={info.credit} photoURL={info.url} />
                 </Tooltip>
                 {!info.offline ? (
                   <Tooltip

@@ -31,6 +31,11 @@ export default class Tabs extends PureComponent {
     });
   };
 
+  hideReminder() {
+    localStorage.setItem('showReminder', false);
+    document.querySelector('.reminder-info').style.display = 'none';
+  }
+
   render() {
     const display = localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none';
 
@@ -40,7 +45,7 @@ export default class Tabs extends PureComponent {
           <span className="title">
             {variables.getMessage('modals.main.settings.reminder.title')}
           </span>
-          <span className="closeModal" onClick={ () => localStorage.setItem('showReminder', false)}>
+          <span className="closeModal" onClick={() => this.hideReminder()}>
             <MdClose />
           </span>
         </div>

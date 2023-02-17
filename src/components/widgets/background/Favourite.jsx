@@ -77,10 +77,12 @@ export default class Favourite extends PureComponent {
               JSON.stringify({
                 type,
                 url,
-                credit: document.getElementById('credit').textContent || '',
+                credit: this.props.credit || '',
                 location: location?.innerText,
                 camera: camera?.innerText,
                 resolution: document.getElementById('infoResolution').textContent || '',
+                offline: this.props.offline,
+                pun: this.props.pun,
               }),
             );
           }
