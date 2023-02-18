@@ -1,3 +1,4 @@
+@import 'scss/variables';
 // The following CSS is to work around some assumptions made by the react-color-gradient-picker
 * {
   // workaround for https://github.com/arthay/react-color-gradient-picker/issues/11
@@ -10,8 +11,12 @@ div.color-preview-area > div > div:nth-child(5) {
 }
 
 .ui-color-picker {
-  margin: 8px -12px;
-  background-color: var(--background) !important;
+  padding: 10px;
+  @include themed() {
+    background: t($modal-secondaryColour);
+    border-radius: t($borderRadius);
+    box-shadow: t($boxShadow);
+  }
 }
 
 .input-field .label {
@@ -34,14 +39,30 @@ div.color-preview-area > div > div:nth-child(5) {
 
 .text-input,
 .number-input {
-  background-color: var(--sidebar) !important;
-  color: var(--modal-text) !important;
+  @include themed() {
+    background-color: t($modal-secondaryColour) !important;
+    color: t($color) !important;
+  }
 }
 
 .colourInput {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
   flex-flow: row-reverse;
+}
+.gradient-controls {
+  margin-bottom: 10px !important;
+  width: auto !important;
+}
+
+.colourReset {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-field .input-container .input {
+  text-align: center;
 }

@@ -22,7 +22,15 @@ legend {
 }
 
 .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
-  background: darkgray !important;
+  @include themed() {
+    background-color: t($subColor) !important;
+  }
+}
+
+.MuiSwitch-track {
+  @include themed() {
+    background-color: t($subColor) !important;
+  }
 }
 
 .MuiIconButton-label > svg.MuiSvgIcon-root {

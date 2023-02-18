@@ -226,10 +226,12 @@ export default class ColourSettings extends PureComponent {
           )}
           final={true}
         >
-          <span className="link" onClick={() => this.resetColour()}>
-            {variables.getMessage('modals.main.settings.buttons.reset')}
-          </span>
           {colourSettings}
+          <div className="colourReset">
+            <span className="link" onClick={() => this.resetColour()}>
+              {variables.getMessage('modals.main.settings.buttons.reset')}
+            </span>
+          </div>
         </SettingsItem>
       </>
     );
