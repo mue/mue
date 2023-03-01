@@ -508,7 +508,7 @@
             "percentage_complete": "Porcentagem concluída",
             "title": "Hora",
             "type": "Modelo",
-            "type_subtitle": "Escolha se deseja exibir a hora em formato digital ou analógico ou uma porcentagem de conclusão do dia",
+            "type_subtitle": "Escolha se deseja exibir a hora em formato digital, analógico ou em uma porcentagem de duração do dia",
             "vertical_clock": {
               "change_hour_colour": "Alterar a cor das horas",
               "change_minute_colour": "Alterar a cor dos minutos",
