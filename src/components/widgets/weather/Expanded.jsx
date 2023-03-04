@@ -43,9 +43,11 @@ function Expanded({ state, weatherType, variables }) {
           <span>
             <WiWindy className="weatherIcon" />
             {state.weather.wind_speed}
-            <span className="minmax"> m/s</span>{' '}
+            <span className="minmax">m/s</span>{' '}
             {enabled('windDirection') ? (
+              <div style={{ fontSize: "25px", display: "grid" }}>
               <WindDirectionIcon className="weatherIcon" degrees={state.weather.wind_degrees} />
+              </div>
             ) : null}
           </span>
         </Tooltip>
@@ -60,7 +62,7 @@ function Expanded({ state, weatherType, variables }) {
           <span>
             <WiBarometer className="weatherIcon" />
             {state.weather.pressure}
-            <span className="minmax"> hPa</span>
+            <span className="minmax">hPa</span>
           </span>
         </Tooltip>
       ) : null}
