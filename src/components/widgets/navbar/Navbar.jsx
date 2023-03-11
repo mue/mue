@@ -104,7 +104,7 @@ export default class Navbar extends PureComponent {
           {localStorage.getItem('notesEnabled') === 'true' ? (
             <Notes fontSize={this.state.zoomFontSize} />
           ) : null}
-          {localStorage.getItem('todo') === 'true' ? (
+          {localStorage.getItem('todoEnabled') === 'true' ? (
             <Todo fontSize={this.state.zoomFontSize} />
           ) : null}
 

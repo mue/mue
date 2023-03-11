@@ -51,7 +51,7 @@ function Navbar() {
           onChange={setShowRefreshOptions}
         />
         <Checkbox
-          name="todo"
+          name="todoEnabled"
           text={variables.getMessage('widgets.navbar.todo.title')}
           category="navbar"
         />

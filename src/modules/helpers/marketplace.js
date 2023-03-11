@@ -5,6 +5,10 @@ function showReminder() {
   localStorage.setItem('showReminder', true);
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 // based on https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
 export function urlParser(input) {
   const urlPattern =
@@ -45,6 +49,9 @@ export function install(type, input, sideload) {
       localStorage.setItem('backgroundType', 'photo_pack');
       localStorage.removeItem('backgroundchange');
       EventBus.dispatch('refresh', 'background');
+      // TODO: make this legitimately good and work without a reload - currently we just refresh
+      sleep(4000);
+      window.location.reload();
       break;
 
     case 'quotes':
