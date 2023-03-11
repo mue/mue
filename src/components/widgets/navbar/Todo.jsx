@@ -6,6 +6,8 @@ import {
   MdDelete,
   MdPlaylistAdd,
   MdOutlineDragIndicator,
+  MdOutlineTextsms,
+  MdAdd
 } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Tooltip from '../../helpers/tooltip/Tooltip';
@@ -21,12 +23,7 @@ class Todo extends PureComponent {
   constructor() {
     super();
     this.state = {
-      todo: JSON.parse(localStorage.getItem('todoContent')) || [
-        {
-          value: '',
-          done: false,
-        },
-      ],
+      todo: JSON.parse(localStorage.getItem('todoContent')) || [],
       visibility: localStorage.getItem('todoPinned') === 'true' ? 'visible' : 'hidden',
       marginLeft: localStorage.getItem('refresh') === 'false' ? '-200px' : '-130px',
       showTodo: localStorage.getItem('todoPinned') === 'true',
@@ -93,12 +90,6 @@ class Todo extends PureComponent {
         break;
       case 'remove':
         todo.splice(index, 1);
-        if (todo.length === 0) {
-          todo.push({
-            value: '',
-            done: false,
-          });
-        }
         break;
       case 'set':
         todo[index] = {
@@ -170,6 +161,23 @@ class Todo extends PureComponent {
                 </Tooltip>
               </div>
               <div className={'todoRows'}>
+                {this.state.todo.length === 0 ? (
+                   <div className="photosEmpty">
+                   <div className="emptyNewMessage">
+                     <MdOutlineTextsms />
+                     <span className="title">
+                       {variables.getMessage('modals.main.settings.sections.message.no_messages')}
+                     </span>
+                     <span className="subtitle">
+                       {variables.getMessage('modals.main.settings.sections.message.add_some')}
+                     </span>
+                     <button onClick={() => this.modifyMessage('add')}>
+                       {variables.getMessage('modals.main.settings.sections.message.add')}
+                       <MdAdd />
+                     </button>
+                   </div>
+                 </div>
+                ) : 
                 <SortableContainer
                   onSortEnd={this.onSortEnd}
                   lockAxis="y"
@@ -202,6 +210,7 @@ class Todo extends PureComponent {
                     />
                   ))}
                 </SortableContainer>
+                }
               </div>
             </div>
           </span>
