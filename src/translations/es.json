@@ -25,7 +25,8 @@
       "source": "Source",
       "category": "Category",
       "exclude": "Don't show again",
-      "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings."
+      "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
+      "confirm": "Confirm"
     },
     "search": "Buscar",
     "quicklinks": {
@@ -64,7 +65,8 @@
       "todo": {
         "title": "Todo",
         "pin": "Pin",
-        "add": "Add"
+        "add": "Add",
+        "no_todos": "No Todos"
       }
     }
   },

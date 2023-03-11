@@ -68,6 +68,12 @@
   }
 }
 
+.searchDropdownListActive {
+  @include themed() {
+    background: t($btn-backgroundHover);
+  }
+}
+
 .searchMain {
   display: flex;
   flex-flow: row;

@@ -29,7 +29,6 @@
   text-align: center;
   border-radius: 12px;
   position: absolute;
-  max-height: 80vh !important;
   font-size: 1rem !important;
   /*top: 100%;
   left: 50%;
@@ -95,6 +94,7 @@ textarea {
   border-radius: 12px;
   flex-flow: row;
   gap: 5px;
+  user-select: none;
 
   svg {
     font-size: 1.5rem;

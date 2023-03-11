@@ -1,6 +1,9 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
+import { BsGoogle } from 'react-icons/bs';
+import { SiDuckduckgo, SiMicrosoftbing, SiYahoo, SiBaidu } from 'react-icons/si';
+import { FaYandex } from 'react-icons/fa';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 import AutocompleteInput from 'components/helpers/autocomplete/Autocomplete';
@@ -130,6 +133,8 @@ export default class Search extends PureComponent {
       } else {
         url = this.state.url;
       }
+    } else {
+      localStorage.setItem('searchEngine', info.settingsName);
     }
 
     this.setState({
@@ -161,6 +166,26 @@ export default class Search extends PureComponent {
     EventBus.off('refresh');
   }
 
+  getSearchDropdownicon(name) {
+    switch (name) {
+      case 'Google':
+        return <BsGoogle />;
+      case 'DuckDuckGo':
+        return <SiDuckduckgo />;
+      case 'Bing':
+        return <SiMicrosoftbing />;
+      case 'Yahoo':
+      case 'Yahoo! JAPAN':
+        return <SiYahoo />;
+      case 'Яндекс':
+        return <FaYandex />;
+      case '百度':
+        return <SiBaidu />;
+      default:
+        return <MdScreenSearchDesktop />;
+    }
+  }
+
   render() {
     const customText = variables
       .getMessage('modals.main.settings.sections.search.custom')
@@ -175,7 +200,7 @@ export default class Search extends PureComponent {
                 <button
                   onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
                 >
-                  <MdScreenSearchDesktop />
+                  {this.getSearchDropdownicon(this.state.currentSearch)}
                 </button>
               </Tooltip>
             ) : (
@@ -207,13 +232,9 @@ export default class Search extends PureComponent {
           this.state.searchDropdown === true ? (
             <div className="searchDropdown">
               {searchEngines.map(({ name }, key) => {
-                if (name === this.state.currentSearch) {
-                  return null;
-                }
-
                 return (
                   <span
-                    className="searchDropdownList"
+                    className={"searchDropdownList" + (this.state.currentSearch === name ? " searchDropdownListActive" : "")}
                     onClick={() => this.setSearch(name)}
                     key={key}
                   >
@@ -221,14 +242,12 @@ export default class Search extends PureComponent {
                   </span>
                 );
               })}
-              {this.state.currentSearch !== customText ? (
                 <span
-                  className="searchDropdownList"
+                  className={"searchDropdownList" + (this.state.currentSearch === customText ? " searchDropdownListActive" : "")}
                   onClick={() => this.setSearch(customText, 'custom')}
                 >
                   {customText}
                 </span>
-              ) : null}
             </div>
           ) : null}
         </div>

@@ -25,7 +25,7 @@ specifiers:
   react-clock: 4.1.0
   react-color-gradient-picker: 0.1.2
   react-dom: ^18.2.0
-  react-icons: ^4.6.0
+  react-icons: ^4.8.0
   react-modal: 3.16.1
   react-sortable-hoc: 2.0.0
   react-toastify: 9.1.1
@@ -52,7 +52,7 @@ dependencies:
   react-clock: 4.1.0_biqbaboplfbrettd7655fr4n2y
   react-color-gradient-picker: 0.1.2_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
-  react-icons: 4.7.1_react@18.2.0
+  react-icons: 4.8.0_react@18.2.0
   react-modal: 3.16.1_biqbaboplfbrettd7655fr4n2y
   react-sortable-hoc: 2.0.0_biqbaboplfbrettd7655fr4n2y
   react-toastify: 9.1.1_biqbaboplfbrettd7655fr4n2y
@@ -4904,8 +4904,8 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-icons/4.7.1_react@18.2.0:
-    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
+  /react-icons/4.8.0_react@18.2.0:
+    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
     peerDependencies:
       react: '*'
     dependencies:

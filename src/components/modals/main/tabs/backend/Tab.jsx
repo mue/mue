@@ -137,6 +137,10 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
       icon = <Collections />;
       break;
 
+    case variables.getMessage('modals.main.loading'):
+      mue = true;
+      break;
+
     default:
       break;
   }

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { SiKofi, SiPatreon } from 'react-icons/si';
+import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
 
 function QuicklinksSkeleton() {
   return (
@@ -13,10 +13,10 @@ function QuicklinksSkeleton() {
           <FaTwitter />
         </div>
         <div>
-          <SiKofi />
+          <SiGithubsponsors />
         </div>
         <div>
-          <SiPatreon />
+          <SiOpencollective />
         </div>
       </div>
     </div>

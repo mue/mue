@@ -8,11 +8,16 @@
     .todoRows {
       max-height: 65vh !important;
       overflow-y: visible !important;
+      overflow-x: hidden;
       display: flex;
       flex-flow: column;
       gap: 15px;
-      overflow-x: hidden;
     }
+  }
+  .todosEmpty {
+    height: 200px;
+    display: grid;
+    place-items: center;
   }
 }
 
@@ -21,9 +26,7 @@
   display: flex;
   flex-flow: row;
   align-items: center;
-  padding-right: 10px;
-  margin: 10px 0 10px 0;
-
+  margin: 15px 5px 15px 5px;
   @include themed() {
     color: t($color) !important;
   }

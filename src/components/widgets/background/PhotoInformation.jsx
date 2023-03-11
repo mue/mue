@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 import { useState, memo } from 'react';
 import Favourite from './Favourite';
-import EventBus from 'modules/helpers/eventbus';
 import {
   MdInfo,
   MdLocationOn,
@@ -18,6 +17,7 @@ import {
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
 import ShareModal from '../../helpers/sharemodal/ShareModal';
+import ExcludeModal from './ExcludeModal';
 
 const toDataURL = async (url) => {
   const res = await fetch(url);
@@ -38,19 +38,6 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
-const excludeImage = async (info) => {
-  // eslint-disable-next-line no-restricted-globals
-  const confirmed = confirm(
-    variables.getMessage('widgets.background.exclude_confirm', { category: info.category }),
-  );
-  if (!confirmed) return;
-  let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
-  backgroundExclude.push(info.pun);
-  backgroundExclude = JSON.stringify(backgroundExclude);
-  localStorage.setItem('backgroundExclude', backgroundExclude);
-  EventBus.dispatch('refresh', 'background');
-};
-
 function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -60,6 +47,7 @@ function PhotoInformation({ info, url, api }) {
   //const [showOld, setShowOld] = useState(true);
   const [other, setOther] = useState(false);
   const [shareModal, openShareModal] = useState(false);
+  const [excludeModal, openExcludeModal] = useState(false);
 
   if (info.hidden === true || !info.credit) {
     return null;
@@ -193,6 +181,16 @@ function PhotoInformation({ info, url, api }) {
         onRequestClose={() => openShareModal(false)}
       >
         <ShareModal data={info.photoURL || info.url} modalClose={() => openShareModal(false)} />
+      </Modal>
+      <Modal
+        closeTimeoutMS={300}
+        isOpen={excludeModal}
+        className="Modal mainModal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+        onRequestClose={() => openExcludeModal(false)}
+      >
+        <ExcludeModal info={info} modalClose={() => openExcludeModal(false)} />
       </Modal>
       {localStorage.getItem('widgetStyle') === 'legacy' && (
         <div className="photoInformation-legacy">
@@ -381,7 +379,7 @@ function PhotoInformation({ info, url, api }) {
                     key="exclude"
                     placement="top"
                   >
-                    <VisibilityOff onClick={() => excludeImage(info)} />
+                    <VisibilityOff onClick={() => openExcludeModal(true)} />
                   </Tooltip>
                 ) : null}
               </div>

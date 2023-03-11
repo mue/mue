@@ -6,24 +6,24 @@ import {
   MdDelete,
   MdPlaylistAdd,
   MdOutlineDragIndicator,
-  MdOutlineTextsms,
-  MdAdd
+  MdPlaylistRemove,
 } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Tooltip from '../../helpers/tooltip/Tooltip';
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
-import { sortableContainer, sortableElement } from 'react-sortable-hoc';
+import { sortableContainer, sortableElement, sortableHandle } from 'react-sortable-hoc';
 import EventBus from 'modules/helpers/eventbus';
 
 const SortableItem = sortableElement(({ value }) => <div>{value}</div>);
 const SortableContainer = sortableContainer(({ children }) => <div>{children}</div>);
+const SortableHandle = sortableHandle(() => <MdOutlineDragIndicator />);
 
 class Todo extends PureComponent {
   constructor() {
     super();
     this.state = {
-      todo: JSON.parse(localStorage.getItem('todoContent')) || [],
+      todo: JSON.parse(localStorage.getItem('todo')) || [],
       visibility: localStorage.getItem('todoPinned') === 'true' ? 'visible' : 'hidden',
       marginLeft: localStorage.getItem('refresh') === 'false' ? '-200px' : '-130px',
       showTodo: localStorage.getItem('todoPinned') === 'true',
@@ -162,55 +162,52 @@ class Todo extends PureComponent {
               </div>
               <div className={'todoRows'}>
                 {this.state.todo.length === 0 ? (
-                   <div className="photosEmpty">
-                   <div className="emptyNewMessage">
-                     <MdOutlineTextsms />
-                     <span className="title">
-                       {variables.getMessage('modals.main.settings.sections.message.no_messages')}
-                     </span>
-                     <span className="subtitle">
-                       {variables.getMessage('modals.main.settings.sections.message.add_some')}
-                     </span>
-                     <button onClick={() => this.modifyMessage('add')}>
-                       {variables.getMessage('modals.main.settings.sections.message.add')}
-                       <MdAdd />
-                     </button>
-                   </div>
-                 </div>
-                ) : 
-                <SortableContainer
-                  onSortEnd={this.onSortEnd}
-                  lockAxis="y"
-                  lockToContainerEdges
-                  disableAutoscroll
-                >
-                  {this.state.todo.map((_value, index) => (
-                    <SortableItem
-                      key={`item-${index}`}
-                      index={index}
-                      value={
-                        <div
-                          className={'todoRow' + (this.state.todo[index].done ? ' done' : '')}
-                          key={index}
-                        >
-                          <Checkbox
-                            checked={this.state.todo[index].done}
-                            onClick={() => this.updateTodo('done', index)}
-                          />
-                          <TextareaAutosize
-                            placeholder={variables.getMessage('widgets.navbar.notes.placeholder')}
-                            value={this.state.todo[index].value}
-                            onChange={(data) => this.updateTodo('set', index, data)}
-                            readOnly={this.state.todo[index].done}
-                          />
-                          <MdDelete onClick={() => this.updateTodo('remove', index)} />
-                          <MdOutlineDragIndicator />
-                        </div>
-                      }
-                    />
-                  ))}
-                </SortableContainer>
-                }
+                  <div className="todosEmpty">
+                    <div className="emptyNewMessage">
+                      <MdPlaylistRemove />
+                      <span className="title">
+                        {variables.getMessage('widgets.navbar.todo.no_todos')}
+                      </span>
+                      <span className="subtitle">
+                        {variables.getMessage('modals.main.settings.sections.message.add_some')}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <SortableContainer
+                    onSortEnd={this.onSortEnd}
+                    lockAxis="y"
+                    lockToContainerEdges
+                    disableAutoscroll
+                    useDragHandle
+                  >
+                    {this.state.todo.map((_value, index) => (
+                      <SortableItem
+                        key={`item-${index}`}
+                        index={index}
+                        value={
+                          <div
+                            className={'todoRow' + (this.state.todo[index].done ? ' done' : '')}
+                            key={index}
+                          >
+                            <Checkbox
+                              checked={this.state.todo[index].done}
+                              onClick={() => this.updateTodo('done', index)}
+                            />
+                            <TextareaAutosize
+                              placeholder={variables.getMessage('widgets.navbar.notes.placeholder')}
+                              value={this.state.todo[index].value}
+                              onChange={(data) => this.updateTodo('set', index, data)}
+                              readOnly={this.state.todo[index].done}
+                            />
+                            <MdDelete onClick={() => this.updateTodo('remove', index)} />
+                            <SortableHandle/>
+                          </div>
+                        }
+                      />
+                    ))}
+                  </SortableContainer>
+                )}
               </div>
             </div>
           </span>
