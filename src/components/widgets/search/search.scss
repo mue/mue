@@ -8,13 +8,14 @@
 
   input[type='text'] {
     @extend %basic;
+
     outline: none;
     border: none;
     font-size: 1.2rem;
     padding: 10px 0 10px 20px;
 
     &::placeholder {
-      @include themed() {
+      @include themed {
         color: t($color);
       }
     }
@@ -46,6 +47,7 @@
 
 .searchDropdown {
   @extend %basic;
+
   margin-top: 5px;
   display: flex;
   flex-flow: column;
@@ -61,7 +63,7 @@
     border-radius: 12px;
 
     &:hover {
-      @include themed() {
+      @include themed {
         background: t($btn-backgroundHover);
       }
     }
@@ -69,7 +71,7 @@
 }
 
 .searchDropdownListActive {
-  @include themed() {
+  @include themed {
     background: t($btn-backgroundHover);
   }
 }
@@ -77,4 +79,15 @@
 .searchMain {
   display: flex;
   flex-flow: row;
+  animation: fadeIn 2s;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 }

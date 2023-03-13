@@ -2,6 +2,7 @@
 
 .suggestions {
   @extend %basic;
+
   text-align: left;
   border-top-width: 0;
   list-style: none;
@@ -16,7 +17,7 @@
     font-size: 0.6em;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgb(255 255 255 / 80%);
       cursor: pointer;
     }
   }
@@ -29,16 +30,16 @@
 }
 
 .dark .suggestions {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(0 0 0 / 70%);
   color: white;
 
   li {
     &:hover {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgb(0 0 0 / 70%);
     }
   }
 }
 
 .micActive {
-  box-shadow: 0px 0px 50px 1px #e74c3c !important;
+  box-shadow: 0 0 50px 1px #e74c3c !important;
 }

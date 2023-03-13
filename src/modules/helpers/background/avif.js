@@ -8,4 +8,4 @@ export const supportsAVIF = () => {
     image.onload = () => resolve(true);
     image.onerror = () => resolve(false);
   });
-}
+};

@@ -118,7 +118,7 @@ export default class Background extends PureComponent {
         break;
     }
 
-    const accept = 'application/json, ' + (await supportsAVIF() ? 'image/avif' : 'image/webp');
+    const accept = 'application/json, ' + ((await supportsAVIF()) ? 'image/avif' : 'image/webp');
     try {
       data = await (await fetch(requestURL, { headers: { accept } })).json();
     } catch (e) {

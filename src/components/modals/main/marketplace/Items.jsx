@@ -77,17 +77,20 @@ function Items({
               />
               <div className="card-details">
                 <span className="card-title">{item.display_name || item.name}</span>
-                <span className="card-subtitle">{variables.getMessage('modals.main.marketplace.by', { author: item.author })}</span>
-                {
-                  type === 'all' && !onCollection
-                    ? <span className="card-type">
-                      {variables.getMessage(`modals.main.addons.create.types.${item.type.split('_')[0] === "preset"
-                          ? "settings"
+                <span className="card-subtitle">
+                  {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
+                </span>
+                {type === 'all' && !onCollection ? (
+                  <span className="card-type">
+                    {variables.getMessage(
+                      `modals.main.addons.create.types.${
+                        item.type.split('_')[0] === 'preset'
+                          ? 'settings'
                           : item.type.split('_')[0] + 's'
-                        }`)}
-                    </span>
-                    : null
-                  }
+                      }`,
+                    )}
+                  </span>
+                ) : null}
               </div>
             </div>
           ))}

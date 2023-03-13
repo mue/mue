@@ -1,7 +1,7 @@
 @import '../.../../../../../././../scss/variables';
 
 .sidebar {
-  @include themed() {
+  @include themed {
     top: 0;
     left: 0;
     position: sticky;
@@ -32,7 +32,7 @@
     hr {
       height: 1px;
       background: #ccc;
-      margin: 0 1.75rem 0 1.75rem;
+      margin: 0 1.75rem;
       border: none;
     }
 

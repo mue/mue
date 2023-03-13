@@ -46,7 +46,6 @@
 
     .item-back {
       filter: blur(60px) saturate(180%) brightness(90%);
-      filter: blur(60px) saturate(180%) brightness(90%);
       position: absolute;
       object-fit: cover !important;
       height: 90px !important;
@@ -148,7 +147,6 @@
       width: 100%;
       box-sizing: border-box !important;
       border-radius: 12px 12px 0 0;
-      backdrop-filter: blur(40px) saturate(150%) brightness(75%);
       backdrop-filter: blur(40px) saturate(150%) brightness(75%);
       @include themed {
         background-image: linear-gradient(to bottom, transparent, t($modal-background));
@@ -335,9 +333,11 @@ p.author {
 .flexTopMarketplace {
   display: flex;
   margin-bottom: 15px;
+
   .tooltip {
     margin-right: 25px;
   }
+
   .mainTitle {
     margin-bottom: 0 !important;
   }
@@ -422,7 +422,6 @@ p.author {
     border-radius: 150px;
     padding: 1px 12px;
     backdrop-filter: blur(16px) saturate(180%);
-    backdrop-filter: blur(16px) saturate(180%);
     background-color: rgb(255 255 255 / 10%);
     border: 1px solid rgb(209 213 219 / 30%);
     color: #fff;
@@ -451,13 +450,11 @@ p.author {
     gap: 15px;
     padding: 1px 12px;
     backdrop-filter: blur(16px) saturate(180%) !important;
-    backdrop-filter: blur(16px) saturate(180%) !important;
     background-color: rgb(255 255 255 / 10%) !important;
     border: 1px solid rgb(209 213 219 / 30%) !important;
     color: #fff !important;
 
     &:hover {
-      backdrop-filter: blur(16px) saturate(180%) !important;
       backdrop-filter: blur(16px) saturate(180%) !important;
       background-color: rgb(17 25 40 / 20%) !important;
       border: 1px solid rgb(255 255 255 / 12.5%) !important;
@@ -507,13 +504,11 @@ p.author {
     gap: 15px;
     padding: 1px 12px;
     backdrop-filter: blur(16px) saturate(180%);
-    backdrop-filter: blur(16px) saturate(180%);
     background-color: rgb(255 255 255 / 10%);
     border: 1px solid rgb(209 213 219 / 30%);
     color: #fff;
 
     &:hover {
-      backdrop-filter: blur(16px) saturate(180%);
       backdrop-filter: blur(16px) saturate(180%);
       background-color: rgb(17 25 40 / 20%);
       border: 1px solid rgb(255 255 255 / 12.5%);

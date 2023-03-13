@@ -17,67 +17,62 @@ $modal-sidebarActive: 'modal-sidebarActive';
 $link: 'link';
 $weather: 'weather';
 $modal-secondaryColour: 'modal-secondaryColour';
-
 $theme-colours: (
   'gradient': linear-gradient(90deg, #ffb032 0%, #dd3b67 100%),
-  'main': rgba(242, 243, 244, 1),
-  'secondary': rgba(0, 0, 0, 1),
-  'main-text-color': rgba(242, 243, 244, 1),
+  'main': rgb(242 243 244 / 100%),
+  'secondary': rgb(0 0 0 / 100%),
+  'main-text-color': rgb(242 243 244 / 100%),
   'photo-info': #2d3436,
   'photo-info-dark': #ffff,
 );
-
 $modal: (
   'background': #fff,
   'background-dark': #2f3542,
-  'text': rgba(0, 0, 0, 1),
-  'tab-underline': rgba(204, 204, 204, 1),
-  'tab-underline-active': rgba(0, 0, 0, 1),
+  'text': rgb(0 0 0 / 100%),
+  'tab-underline': rgb(204 204 204 / 100%),
+  'tab-underline-active': rgb(0 0 0 / 100%),
   'border-radius': 12px,
-  'sidebar': rgb(240, 240, 240),
-  'tab-active': rgba(219, 219, 219, 0.72),
-  'sidebar-dark': rgb(53, 59, 72),
-  'tab-active-dark': rgba(65, 71, 84, 0.9),
+  'sidebar': rgb(240 240 240),
+  'tab-active': rgb(219 219 219 / 72%),
+  'sidebar-dark': rgb(53 59 72),
+  'tab-active-dark': rgb(65 71 84 / 90%),
   'modal-link': #5352ed,
   'modal-link-dark': #3498db,
 );
-
 $button-colours: (
-  'confirm': rgba(46, 213, 115, 1),
-  'reset': rgba(255, 71, 87, 1),
-  'other': rgba(83, 82, 237, 1),
+  'confirm': rgb(46 213 115 / 100%),
+  'reset': rgb(255 71 87 / 100%),
+  'other': rgb(83 82 237 / 100%),
 );
-
 $ui-elements: (
-  'background': rgba(0, 0, 0, 0.7),
+  'background': rgb(0 0 0 / 70%),
   'backgroundBlur': 15px,
-  'color': rgb(255, 255, 255),
+  'color': rgb(255 255 255),
   'borderRadius': 12px,
   'boxShadow': 0 0 0 1px #484848,
 );
-
 $themes: (
   light: (
-    'weather': #333333,
-    'background': rgba(255, 255, 255, 0.7),
+    'weather': #333,
+    'background': rgb(255 255 255 / 70%),
     'backgroundBlur': 15px,
-    'color': rgb(0, 0, 0),
-    'subColor': #333333,
+    'color': rgb(0 0 0),
+    'subColor': #333,
     'borderRadius': 12px,
     'boxShadow': 0 0 0 1px #e7e3e9,
     'btn-background': #fff,
-    'btn-backgroundHover': rgba(247, 250, 252, 0.9),
+    'btn-backgroundHover': rgb(247 250 252 / 90%),
     'modal-background': #fff,
-    'modal-sidebar': rgba(240, 240, 240, 1),
-    'modal-sidebarActive': rgba(219, 219, 219, 0.72),
+    'modal-sidebar': rgb(240 240 240 / 100%),
+    'modal-sidebarActive': rgb(219 219 219 / 72%),
     'modal-secondaryColour': #fafafa,
-    'link': rgba(83, 82, 237, 1),
+    'link': rgb(83 82 237 / 100%),
   ),
   dark: (
     'weather': #e7e7e7,
-    'background': rgba(0, 0, 0, 0.7),
+    'background': rgb(0 0 0 / 70%),
     'backgroundBlur': 15px,
-    'color': rgb(255, 255, 255),
+    'color': rgb(255 255 255),
     'subColor': #c2c2c2,
     'borderRadius': 12px,
     'boxShadow': 0 0 0 1px #484848,
@@ -87,12 +82,12 @@ $themes: (
     'modal-sidebar': #0e1013,
     'modal-sidebarActive': #333,
     'modal-secondaryColour': #111,
-    'link': rgb(115, 115, 255),
+    'link': rgb(115 115 255),
   ),
 );
 
 %basic {
-  @include themed() {
+  @include themed {
     background: t($background);
     border-radius: t($borderRadius);
     color: t($color);
@@ -104,7 +99,7 @@ $themes: (
   .title {
     font-size: 18px;
 
-    @include themed() {
+    @include themed {
       color: t($color);
     }
   }
@@ -112,7 +107,7 @@ $themes: (
   .subtitle {
     font-size: 14px;
 
-    @include themed() {
+    @include themed {
       color: t($subColor);
     }
   }
@@ -126,14 +121,15 @@ $themes: (
     font-weight: 600;
     margin-bottom: 15px;
 
-    @include themed() {
+    @include themed {
       color: t($color);
     }
 
     .backTitle {
       cursor: pointer;
-      @include themed() {
+      @include themed {
         color: t($subColor);
+
         &:hover {
           color: t($color);
         }
@@ -145,7 +141,7 @@ $themes: (
     font-size: 24px;
     font-weight: 600;
 
-    @include themed() {
+    @include themed {
       color: t($color);
     }
   }
@@ -153,7 +149,7 @@ $themes: (
   .subtitle {
     font-size: 16px;
 
-    @include themed() {
+    @include themed {
       color: t($subColor);
     }
   }
@@ -163,7 +159,7 @@ $themes: (
     text-decoration: none;
     cursor: pointer;
 
-    @include themed() {
+    @include themed {
       color: t($link);
     }
 
@@ -174,7 +170,7 @@ $themes: (
 }
 
 @mixin modal-button($type) {
-  @include themed() {
+  @include themed {
     @if $type == 'standard' {
       background: t($modal-sidebar);
       box-shadow: t($boxShadow);
@@ -219,7 +215,7 @@ $themes: (
 }
 
 @mixin basicIconButton($padding, $font-size, $type) {
-  @include themed() {
+  @include themed {
     @if $type == 'ui' {
       background: t($btn-background);
       color: t($color);
@@ -307,12 +303,12 @@ $themes: (
 }
 
 @mixin legacyIconButton($padding, $font-size) {
-  @include themed() {
+  @include themed {
     color: t($color);
   }
 
   &:hover {
-    @include themed() {
+    @include themed {
       background: t($btn-background);
     }
   }

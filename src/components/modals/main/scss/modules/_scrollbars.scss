@@ -4,14 +4,15 @@
   width: 6px;
   height: 6px;
   border-radius: 12px;
-  @include themed() {
+  @include themed {
     background: t($modal-sidebar);
   }
 }
 
 ::-webkit-scrollbar-thumb {
-  @include themed() {
+  @include themed {
     background: t($modal-sidebarActive);
   }
+
   border-radius: 12px;
 }

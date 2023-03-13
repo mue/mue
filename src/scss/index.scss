@@ -8,7 +8,7 @@ body {
 }
 
 * {
-  font-family: 'Lexend Deca', 'Montserrat', sans-serif !important;
+  font-family: 'Lexend Deca', Montserrat, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   outline: none;
@@ -22,7 +22,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 25px rgb(0 0 0 / 30%);
   display: grid;
   place-items: center;
   margin: 0;
@@ -46,9 +46,10 @@ body {
 }
 
 ::placeholder {
-  @include themed() {
+  @include themed {
     color: t($color);
   }
+
   opacity: 1;
 }
 
@@ -57,7 +58,7 @@ body {
 }
 
 #root {
-  @include themed() {
+  @include themed {
     color: t($color);
   }
 }
@@ -110,7 +111,7 @@ body {
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   font-style: normal;
   font-display: swap;
   font-weight: 400;

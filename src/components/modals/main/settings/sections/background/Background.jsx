@@ -63,7 +63,7 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   render() {
-    const interval = (
+    /* const interval = (
       <SettingsItem
         title={variables.getMessage('modals.main.settings.sections.background.interval.title')}
         subtitle={variables.getMessage(
@@ -101,7 +101,7 @@ export default class BackgroundSettings extends PureComponent {
           </option>
         </Dropdown>
       </SettingsItem>
-    );
+    );*/
 
     const APISettings = (
       <>

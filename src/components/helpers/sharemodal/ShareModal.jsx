@@ -55,7 +55,9 @@ function ShareModal({ modalClose, data }) {
         <Tooltip title="Facebook">
           <button
             onClick={() =>
-              window.open(`https://www.facebook.com/sharer/sharer.php?u=${data.url}`, '_blank').focus()
+              window
+                .open(`https://www.facebook.com/sharer/sharer.php?u=${data.url}`, '_blank')
+                .focus()
             }
           >
             <FaFacebookF />

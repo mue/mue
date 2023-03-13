@@ -12,7 +12,7 @@
 .aboutLink,
 .MuiSlider-colorPrimary,
 legend {
-  @include themed() {
+  @include themed {
     color: t($color) !important;
   }
 }
@@ -22,19 +22,19 @@ legend {
 }
 
 .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
-  @include themed() {
+  @include themed {
     background-color: t($subColor) !important;
   }
 }
 
 .MuiSwitch-track {
-  @include themed() {
+  @include themed {
     background-color: t($subColor) !important;
   }
 }
 
 .MuiIconButton-label > svg.MuiSvgIcon-root {
-  @include themed() {
+  @include themed {
     color: t($color) !important;
   }
 }
@@ -48,7 +48,7 @@ legend {
 }
 
 .checkbox svg {
-  @include themed() {
+  @include themed {
     fill: t($color) !important;
   }
 }
@@ -68,13 +68,13 @@ legend {
 }
 
 .MuiOutlinedInput-notchedOutline {
-  @include themed() {
+  @include themed {
     border-color: t($color) !important;
   }
 }
 
 .MuiFormLabel-root-MuiInputLabel-root {
-  @include themed() {
+  @include themed {
     color: t($color) !important;
   }
 }
@@ -87,20 +87,20 @@ legend {
 .Mui-focused,
 legend,
 .MuiOutlinedInput-input {
-  @include themed() {
+  @include themed {
     color: t($color) !important;
   }
 }
 
 .MuiMenu-list {
-  @include themed() {
+  @include themed {
     background-color: t($modal-background);
     color: t($color);
   }
 }
 
 .Mui-selected {
-  @include themed() {
+  @include themed {
     background-color: t($modal-sidebarActive) !important;
   }
 }
@@ -121,13 +121,13 @@ legend,
 }
 
 .MuiPaper-root {
-  @include themed() {
+  @include themed {
     background-color: t($modal-background) !important;
   }
 }
 
 .MuiSlider-valueLabel {
-  @include themed() {
+  @include themed {
     background-color: t($modal-sidebarActive) !important;
   }
 }
@@ -145,14 +145,16 @@ legend,
     width: 100%;
     margin-left: 0;
   }
+
   .MuiFormControlLabel-root {
     width: 100%;
   }
 }
 
 .css-6od3lo-MuiChip-label {
-  @include themed() {
+  @include themed {
     color: t($color) !important;
   }
+
   text-transform: capitalize;
 }

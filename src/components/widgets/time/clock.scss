@@ -6,6 +6,7 @@
   cursor: initial;
   user-select: none;
   font-weight: 600;
+
   --shadow-shift: 0.4rem;
 }
 
@@ -17,10 +18,11 @@
 .react-clock__face {
   margin: 0 auto;
   border-radius: 100%;
-  /*box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.3);*/
+
+  /* box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.3); */
   border: none !important;
 
-  @include themed() {
+  @include themed {
     border: 1px solid t($color) !important;
   }
 
@@ -30,14 +32,16 @@
 
 .react-clock__hand__body,
 .react-clock__mark__body {
-  @include themed() {
+  @include themed {
     background: t($color) !important;
   }
-  /*box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);*/
+
+  /* box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); */
 }
 
 .clockBackground {
   @extend %basic;
+
   padding: 1rem;
 
   &.round {
@@ -47,6 +51,7 @@
 
 .new-clock {
   line-height: 100%;
+
   .seconds {
     font-size: 0.2em;
     line-height: 0%;

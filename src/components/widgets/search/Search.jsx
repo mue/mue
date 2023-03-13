@@ -234,7 +234,10 @@ export default class Search extends PureComponent {
               {searchEngines.map(({ name }, key) => {
                 return (
                   <span
-                    className={"searchDropdownList" + (this.state.currentSearch === name ? " searchDropdownListActive" : "")}
+                    className={
+                      'searchDropdownList' +
+                      (this.state.currentSearch === name ? ' searchDropdownListActive' : '')
+                    }
                     onClick={() => this.setSearch(name)}
                     key={key}
                   >
@@ -242,12 +245,15 @@ export default class Search extends PureComponent {
                   </span>
                 );
               })}
-                <span
-                  className={"searchDropdownList" + (this.state.currentSearch === customText ? " searchDropdownListActive" : "")}
-                  onClick={() => this.setSearch(customText, 'custom')}
-                >
-                  {customText}
-                </span>
+              <span
+                className={
+                  'searchDropdownList' +
+                  (this.state.currentSearch === customText ? ' searchDropdownListActive' : '')
+                }
+                onClick={() => this.setSearch(customText, 'custom')}
+              >
+                {customText}
+              </span>
             </div>
           ) : null}
         </div>

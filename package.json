@@ -38,34 +38,29 @@
     "@eartharoid/deep-merge": "^0.0.2",
     "@vitejs/plugin-react": "3.1.0",
     "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
     "eslint-config-react-app": "^7.0.1",
     "husky": "^8.0.3",
+    "postcss-scss": "^4.0.6",
     "prettier": "^2.8.4",
     "sass": "^1.59.2",
     "stylelint": "^15.2.0",
+    "stylelint-checkstyle-formatter": "^0.1.2",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard-scss": "^7.0.1",
+    "stylelint-scss": "^4.4.0",
     "vite": "4.1.4"
   },
   "scripts": {
     "dev": "vite",
-    "updatetranslations": "cd scripts && node updatetranslations.js",
+    "dev:host": "vite --host",
+    "translations": "cd scripts && node updatetranslations.js",
     "build": "vite build",
-    "chrome": "cp manifest/chrome.json dist/manifest.json && cp -r manifest/_locales dist/_locales && cp manifest/background-chrome.js dist/background-chrome.js",
-    "firefox": "rm -rf dist/_locales && cp manifest/firefox.json dist/manifest.json",
-    "pretty": "prettier --write \"./**/*.{js,jsx,json,scss}\"",
-    "stylelint": "npx stylelint \"**/*.scss\"",
+    "prepare:chrome": "cp manifest/chrome.json dist/manifest.json && cp -r manifest/_locales dist/_locales && cp manifest/background-chrome.js dist/background-chrome.js",
+    "prepare:firefox": "rm -rf dist/_locales && cp manifest/firefox.json dist/manifest.json",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json,scss,css}\"",
+    "lint": "eslint --ext .js,.jsx src/** && stylelint \"**/*.scss\"",
+    "lint:fix": "eslint --ext .js,.jsx src/** --fix && stylelint \"**/*.scss\" --fix",
     "postinstall": "husky install"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version"
-    ]
   }
 }

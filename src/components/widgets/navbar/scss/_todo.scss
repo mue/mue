@@ -14,6 +14,7 @@
       gap: 15px;
     }
   }
+
   .todosEmpty {
     height: 200px;
     display: grid;
@@ -23,17 +24,18 @@
 
 .todoRow {
   @include basicIconButton(1px, 16px, ui);
+
   display: flex;
   flex-flow: row;
   align-items: center;
-  margin: 15px 5px 15px 5px;
-  @include themed() {
+  margin: 15px 5px;
+  @include themed {
     color: t($color) !important;
   }
 
   textarea {
     width: 120px;
-    @include themed() {
+    @include themed {
       color: t($color) !important;
     }
   }
@@ -44,12 +46,12 @@
     display: grid;
     cursor: pointer;
 
-    @include themed() {
+    @include themed {
       color: t($color) !important;
     }
 
     &:hover {
-      @include themed() {
+      @include themed {
         background: t($modal-sidebar);
         border-radius: t($borderRadius);
       }

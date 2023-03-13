@@ -1,7 +1,7 @@
 @import '../../../../../../../scss/variables';
 
 .sortableItem {
-  @include themed() {
+  @include themed {
     padding: 15px;
     margin-bottom: 10px;
     font-size: 1.325rem;
@@ -12,7 +12,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background: t($modal-secondaryColour);
     border-radius: t($borderRadius);
     box-shadow: t($boxShadow);
@@ -49,9 +48,10 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   padding: 20px;
   grid-gap: 20px;
-  @include themed() {
+  @include themed {
     div {
       border-radius: t($borderRadius);
+
       // border: 5px t($modal-sidebar) solid;
       display: flex;
       align-items: center;
@@ -59,26 +59,31 @@
       flex-flow: column;
       gap: 5px;
       position: relative;
+
       img {
         width: 100%;
         height: 200px;
         object-fit: cover;
         border-radius: t($borderRadius);
       }
+
       button {
-        padding: 0 30px 0 30px;
+        padding: 0 30px;
         background: t($modal-background);
         border: none !important;
+
         &:hover {
           background: t($modal-sidebarActive);
         }
       }
+
       .tooltip {
         position: absolute !important;
         top: 5px !important;
         right: 5px !important;
       }
     }
+
     .iconButton {
       width: calc(100% - 22px);
       margin-top: 10px;
@@ -100,7 +105,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 16px;
-  @include themed() {
+  @include themed {
     background: t($modal-secondaryColour);
     border-radius: t($borderRadius);
     box-shadow: t($boxShadow);
@@ -113,13 +118,14 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+
     .quotediv .quote {
       max-width: 100%;
     }
 
     .quotediv .author-holder .author .author-content .title {
       font-size: 1em !important;
-      @include themed() {
+      @include themed {
         color: t($color) !important;
       }
     }
@@ -131,20 +137,23 @@
   flex-flow: column;
   margin-top: 16px;
   padding: 25px;
+
   .title {
     font-size: 36px !important;
     text-align: center;
   }
+
   .subtitle {
     font-size: 12px !important;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
+
   .content {
     margin: 20px 20px 0;
   }
-  @include themed() {
+  @include themed {
     background: t($modal-secondaryColour);
     border-radius: t($borderRadius);
     box-shadow: t($boxShadow);

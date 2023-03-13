@@ -1,15 +1,17 @@
 .navbar-item {
   flex-flow: row !important;
-  padding: 0 15px 0 15px;
-  @include themed() {
+  padding: 0 15px;
+  @include themed {
     background: t($modal-secondaryColour) !important;
     border-radius: t($borderRadius) !important;
     box-shadow: t($boxShadow) !important;
-    border: 0px !important;
+    border: 0 !important;
+
     &:hover {
       background: t($modal-sidebarActive) !important;
     }
   }
+
   &:hover {
     svg {
       background: var(--tab-active);
@@ -50,7 +52,7 @@
 }
 
 .navbar-item-active {
-  @include themed() {
+  @include themed {
     background: t($modal-sidebarActive) !important;
   }
 }

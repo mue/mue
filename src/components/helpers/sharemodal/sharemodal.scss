@@ -2,52 +2,62 @@
 
 .smallModal {
   @extend %tabText;
+
   display: flex;
   flex-flow: column;
   gap: 15px;
   padding: 15px;
   width: 320px;
-  @include themed() {
+  @include themed {
     background: t($modal-secondaryColour);
   }
+
   .resetFooter {
     display: flex;
     flex-flow: row;
     justify-content: flex-end;
     gap: 20px;
+
     button {
       gap: 20px;
       display: flex;
       flex-flow: row;
     }
   }
+
   .textButton {
     @include basicIconButton(11px, 1.3rem, modal-text);
+
     border: none !important;
   }
+
   .tooltipTitle {
-    @include themed() {
+    @include themed {
       background: t($modal-sidebar);
       box-shadow: 0 0 0 1px t($modal-sidebarActive);
       color: t($color);
     }
   }
+
   .buttons {
     justify-content: space-between;
     display: flex;
     gap: 15px;
   }
+
   button {
     place-items: center;
     display: grid;
     @include basicIconButton(11px, 1.3rem, modal);
   }
+
   .copy {
     display: flex;
     flex-flow: row;
     gap: 15px;
+
     input[type='text'] {
-      @include themed() {
+      @include themed {
         background: t($modal-sidebar);
         border-radius: t($borderRadius);
         box-shadow: 0 0 0 1px t($modal-sidebarActive);
@@ -55,12 +65,14 @@
         flex: 1;
         color: t($color);
       }
+
       border: none;
       outline: none;
     }
   }
+
   input[type='text'] {
-    @include themed() {
+    @include themed {
       background: t($modal-sidebar);
       border-radius: t($borderRadius);
       box-shadow: 0 0 0 1px t($modal-sidebarActive);
@@ -68,16 +80,19 @@
       flex: 1;
       color: t($color);
     }
+
     border: none;
     outline: none;
   }
+
   .close {
     padding: 15px;
     place-items: center;
     display: grid;
     cursor: pointer;
+
     &:hover {
-      @include themed() {
+      @include themed {
         background: t($modal-sidebar);
         border-radius: t($borderRadius);
       }

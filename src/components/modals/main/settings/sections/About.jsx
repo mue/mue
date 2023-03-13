@@ -349,14 +349,16 @@ export default class About extends PureComponent {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.about.photographers')}
           </span>
-          {!!this.state.loading ? <p>{this.state.loading}</p> : <></> }
+          {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
-            {this.state.photographers.map(({ name, count }) => <>
-              <li className="subtitle-photographers">
-                {name}
-                <span> ({count} images)</span>
-              </li>
-            </>)}
+            {this.state.photographers.map(({ name, count }) => (
+              <>
+                <li className="subtitle-photographers">
+                  {name}
+                  <span> ({count} images)</span>
+                </li>
+              </>
+            ))}
           </ul>
         </div>
       </>

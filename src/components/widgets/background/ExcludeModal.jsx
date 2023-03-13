@@ -15,7 +15,7 @@ function ExcludeModal({ modalClose, info }) {
   };
 
   return (
-<div className="smallModal">
+    <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
           {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.title')}
@@ -29,8 +29,7 @@ function ExcludeModal({ modalClose, info }) {
         </Tooltip>
       </div>
       <span className="subtitle">
-      {      variables.getMessage('widgets.background.exclude_confirm', { category: info.category })}
-
+        {variables.getMessage('widgets.background.exclude_confirm', { category: info.category })}
       </span>
       <div className="resetFooter">
         <button className="textButton" onClick={modalClose}>
@@ -43,7 +42,7 @@ function ExcludeModal({ modalClose, info }) {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
 export default memo(ExcludeModal);

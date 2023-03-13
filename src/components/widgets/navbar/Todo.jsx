@@ -201,7 +201,7 @@ class Todo extends PureComponent {
                               readOnly={this.state.todo[index].done}
                             />
                             <MdDelete onClick={() => this.updateTodo('remove', index)} />
-                            <SortableHandle/>
+                            <SortableHandle />
                           </div>
                         }
                       />

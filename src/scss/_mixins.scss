@@ -11,17 +11,15 @@
     }
   }
 
-  -webkit-animation: $animations;
-  -moz-animation: $animations;
   animation: $animations;
 }
 
 @mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
+  @keyframes #{$animationName} {
     @content;
   }
 
-  @-moz-keyframes #{$animationName} {
+  @keyframes #{$animationName} {
     @content;
   }
 
@@ -44,6 +42,7 @@
         ) !global;
       }
       @content;
+
       $theme-map: null !global;
     }
   }

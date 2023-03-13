@@ -28,9 +28,9 @@ p.description {
     flex: 1 0 40% !important;
   }
 
-  @include themed() {
+  @include themed {
     background: t($modal-sidebar);
-    box-shadow: t(boxShadow);
+    box-shadow: t(boxshadow);
     border-radius: t($borderRadius);
     padding: 15px;
 
@@ -67,7 +67,7 @@ p.description {
   font-size: 38px;
   font-weight: 600;
 
-  @include themed() {
+  @include themed {
     color: t($color);
   }
 }
@@ -85,7 +85,7 @@ p.description {
   transition: 0.5s;
   cursor: pointer;
 
-  @include themed() {
+  @include themed {
     &:hover {
       color: t($subColor);
     }

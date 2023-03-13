@@ -384,7 +384,9 @@ export default class WelcomeSections extends PureComponent {
           <div className="toggle" onClick={() => this.props.switchTab(3)}>
             <span>
               {variables.getMessage('modals.main.settings.sections.appearance.theme.title')}:{' '}
-              {variables.getMessage('modals.main.settings.sections.appearance.theme.' + localStorage.getItem('theme'))}
+              {variables.getMessage(
+                'modals.main.settings.sections.appearance.theme.' + localStorage.getItem('theme'),
+              )}
             </span>
           </div>
           {this.state.importedSettings.length !== 0 ? (

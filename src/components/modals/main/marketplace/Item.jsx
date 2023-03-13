@@ -164,12 +164,14 @@ export default class Item extends PureComponent {
                       <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
                       <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
                     </tr>
-                    {Object.entries(this.props.data.data.settings).slice(0, this.state.count).map(([key, value]) => (
-                      <tr key={key}>
-                        <td>{key}</td>
-                        <td>{value}</td>
-                      </tr>
-                    ))}
+                    {Object.entries(this.props.data.data.settings)
+                      .slice(0, this.state.count)
+                      .map(([key, value]) => (
+                        <tr key={key}>
+                          <td>{key}</td>
+                          <td>{value}</td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 <div className="showMoreItems">
@@ -270,7 +272,14 @@ export default class Item extends PureComponent {
               </div>
             </div>
           </div>
-          <div className="itemInfo" style={{ backgroundImage: `url("${variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}")` }}>
+          <div
+            className="itemInfo"
+            style={{
+              backgroundImage: `url("${
+                variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url
+              }")`,
+            }}
+          >
             <div className="front">
               <img
                 className="icon"
@@ -293,7 +302,7 @@ export default class Item extends PureComponent {
                     onClick={() =>
                       window.open(
                         variables.constants.REPORT_ITEM +
-                        this.props.data.display_name.split(' ').join('+'),
+                          this.props.data.display_name.split(' ').join('+'),
                         '_blank',
                       )
                     }

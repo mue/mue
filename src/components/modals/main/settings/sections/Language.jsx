@@ -32,7 +32,9 @@ export default class LanguageSettings extends PureComponent {
 
     const quoteLanguages = data.map((language) => {
       return {
-        name: languages.find((l) => l.value === language.name) ? languages.find((l) => l.value === language.name).name : 'English',
+        name: languages.find((l) => l.value === language.name)
+          ? languages.find((l) => l.value === language.name).name
+          : 'English',
         value: language,
       };
     });
@@ -77,7 +79,9 @@ export default class LanguageSettings extends PureComponent {
         <div className="languageSettings">
           <Radio
             name="quoteLanguage"
-            options={this.state.quoteLanguages.map((language) => { return { name: language.name, value: language.value.name }; })}
+            options={this.state.quoteLanguages.map((language) => {
+              return { name: language.name, value: language.value.name };
+            })}
             defaultValue={this.state.quoteLanguages[0].name}
             category="quote"
           />
