@@ -1,4 +1,3 @@
-// mainly this is just to make life easier when debugging stuff like hover
 export default function ExperimentalInit() {
   if (localStorage.getItem('debug') === 'true') {
     document.onkeydown = (e) => {

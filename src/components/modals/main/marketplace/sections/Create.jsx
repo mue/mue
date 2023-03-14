@@ -226,7 +226,14 @@ export default class Create extends PureComponent {
               ) || 'marketplace'}
             </span>
           </div>
-          <button onClick={() => saveFile(this.state.addonMetadata.type, `mue-marketplace-${this.state.addonMetadata.type}.json`)}>
+          <button
+            onClick={() =>
+              saveFile(
+                this.state.addonMetadata.type,
+                `mue-marketplace-${this.state.addonMetadata.type}.json`,
+              )
+            }
+          >
             {variables.getMessage('modals.main.addons.create.metadata.example')}
             <MdDownload />
           </button>

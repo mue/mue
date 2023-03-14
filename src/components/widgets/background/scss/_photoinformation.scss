@@ -13,7 +13,7 @@
       align-items: flex-start;
       flex-flow: column;
 
-      .concept-buttons {
+      .buttons {
         padding: 30px 0 0;
         display: flex;
       }
@@ -25,7 +25,7 @@
         transition: 0.8s;
       }
 
-      .concept-stats {
+      .stats {
         display: flex;
         padding-top: 5px;
         gap: 20px;
@@ -46,7 +46,7 @@
         }
       }
 
-      .concept-copyright {
+      .copyright {
         display: flex;
         margin-top: 10px;
         gap: 10px;
@@ -124,7 +124,7 @@
     }
   }
 
-  +.photoInformation {
+  + .photoInformation {
     animation: none !important;
   }
 }
@@ -247,7 +247,7 @@
     align-items: flex-start;
     flex-flow: column;
 
-    .concept-buttons {
+    .buttons {
       padding: 30px 0 0;
       display: flex;
     }
@@ -259,7 +259,7 @@
       transition: 0.8s;
     }
 
-    .concept-stats {
+    .stats {
       display: flex;
       gap: 15px;
       @include themed {
@@ -279,7 +279,7 @@
       }
     }
 
-    .concept-copyright {
+    .copyright {
       display: flex;
       margin-top: 10px;
       gap: 10px;
@@ -326,11 +326,11 @@
     }
   }
 
-  .concept-location {
+  .location {
     font-size: 1.9em;
   }
 
-  .concept-credit {
+  .credit {
     font-size: 1.4em;
     @include themed {
       color: t($subColor);
@@ -374,7 +374,7 @@
   width: 100%;
   transition: 1s;
 
-  .concept-row {
+  .row {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -388,15 +388,15 @@
   }
 }
 
-.concept-copyright {
+.copyright {
   display: none;
 }
 
-.concept-stats {
+.stats {
   display: none;
 }
 
-.concept-buttons {
+.buttons {
   align-items: center;
   gap: 20px;
   padding: 20px 20px 0 0;
@@ -428,7 +428,8 @@
   }
 }
 
-.photoInformation:hover, .photoInformation-legacy +.photoInformation {
+.photoInformation:hover,
+.photoInformation-legacy + .photoInformation {
   .photoMap {
     height: auto !important;
 

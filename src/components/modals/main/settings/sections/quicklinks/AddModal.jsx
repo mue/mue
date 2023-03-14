@@ -25,14 +25,14 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
           maxRows={1}
           placeholder={variables.getMessage('widgets.quicklinks.name')}
           value={name}
-          onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ""))}
+          onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
         />
         <span className="dropdown-error" />
         <TextareaAutosize
           maxRows={10}
           placeholder={variables.getMessage('widgets.quicklinks.url')}
           value={url}
-          onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ""))}
+          onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
         />
         <span className="dropdown-error">{urlError}</span>
         <TextareaAutosize
@@ -40,7 +40,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
           maxLines={1}
           placeholder={variables.getMessage('widgets.quicklinks.icon')}
           value={icon}
-          onChange={(e) => setIcon(e.target.value.replace(/(\r\n|\n|\r)/gm, ""))}
+          onChange={(e) => setIcon(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
         />
         <span className="dropdown-error">{iconError}</span>
         {edit ? (

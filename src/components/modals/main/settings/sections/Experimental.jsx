@@ -51,14 +51,11 @@ function ExperimentalSettings() {
           varient="outlined"
           InputLabelProps={{ shrink: true }}
         />
-                <button className="uploadbg" onClick={() => EventBus.dispatch(eventType, eventName)}>
+        <button className="uploadbg" onClick={() => EventBus.dispatch(eventType, eventName)}>
           Send
         </button>
       </SettingsItem>
-      <SettingsItem
-        title='Data'
-        final={true}
-      >
+      <SettingsItem title="Data" final={true}>
         <button
           className="reset"
           style={{ marginLeft: '0px' }}

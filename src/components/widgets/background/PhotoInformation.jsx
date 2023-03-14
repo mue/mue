@@ -215,7 +215,7 @@ function PhotoInformation({ info, url, api }) {
             {photoMap()}
           </div>
           {showingPhotoMap ? (
-            <div className="concept-copyright">
+            <div className="copyright">
               <a
                 href="https://www.mapbox.com/about/maps/"
                 target="_blank"
@@ -256,7 +256,7 @@ function PhotoInformation({ info, url, api }) {
               {photo} {credit}
             </span>
             {info.views && info.downloads !== null ? (
-              <div className="concept-stats">
+              <div className="stats">
                 <div title={variables.getMessage('widgets.background.views')}>
                   <Views />
                   <span>{info.views.toLocaleString()}</span>
@@ -282,37 +282,25 @@ function PhotoInformation({ info, url, api }) {
                   {variables.getMessage('widgets.background.information')}
                 </span>
                 {info.location && info.location !== 'N/A' ? (
-                  <div
-                    className="concept-row"
-                    title={variables.getMessage('widgets.background.location')}
-                  >
+                  <div className="row" title={variables.getMessage('widgets.background.location')}>
                     <MdLocationOn />
                     <span id="infoLocation">{info.location}</span>
                   </div>
                 ) : null}
                 {info.camera && info.camera !== 'N/A' ? (
-                  <div
-                    className="concept-row"
-                    title={variables.getMessage('widgets.background.camera')}
-                  >
+                  <div className="row" title={variables.getMessage('widgets.background.camera')}>
                     <MdPhotoCamera />
                     <span id="infoCamera">{info.camera}</span>
                   </div>
                 ) : null}
-                <div
-                  className="concept-row"
-                  title={variables.getMessage('widgets.background.resolution')}
-                >
+                <div className="row" title={variables.getMessage('widgets.background.resolution')}>
                   <Resolution />
                   <span id="infoResolution">
                     {width}x{height}
                   </span>
                 </div>
                 {info.category ? (
-                  <div
-                    className="concept-row"
-                    title={variables.getMessage('widgets.background.category')}
-                  >
+                  <div className="row" title={variables.getMessage('widgets.background.category')}>
                     <Category />
                     <span id="infoCategory">
                       {info.category[0].toUpperCase() + info.category.slice(1)}
@@ -320,10 +308,7 @@ function PhotoInformation({ info, url, api }) {
                   </div>
                 ) : null}
                 {api ? (
-                  <div
-                    className="concept-row"
-                    title={variables.getMessage('widgets.background.source')}
-                  >
+                  <div className="row" title={variables.getMessage('widgets.background.source')}>
                     <Source />
                     <span id="infoSource">
                       {info.photoURL ? (
@@ -349,7 +334,7 @@ function PhotoInformation({ info, url, api }) {
                   </div>
                 ) : null}
               </div>
-              <div className="concept-buttons">
+              <div className="buttons">
                 {!info.offline ? (
                   <Tooltip
                     title={variables.getMessage('widgets.quote.share')}
