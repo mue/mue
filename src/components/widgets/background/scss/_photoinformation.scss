@@ -123,6 +123,10 @@
       text-decoration: underline;
     }
   }
+
+  +.photoInformation {
+    animation: none !important;
+  }
 }
 
 .infoCard {
@@ -424,7 +428,7 @@
   }
 }
 
-.photoInformation:hover {
+.photoInformation:hover, .photoInformation-legacy +.photoInformation {
   .photoMap {
     height: auto !important;
 

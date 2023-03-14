@@ -166,6 +166,8 @@ function PhotoInformation({ info, url, api }) {
     };
   } catch (e) {}
 
+  const widgetStyle = localStorage.getItem('widgetStyle');
+
   return (
     <div
       className="photoInformationHolder"
@@ -192,7 +194,7 @@ function PhotoInformation({ info, url, api }) {
       >
         <ExcludeModal info={info} modalClose={() => openExcludeModal(false)} />
       </Modal>
-      {localStorage.getItem('widgetStyle') === 'legacy' && (
+      {widgetStyle === 'legacy' && (
         <div className="photoInformation-legacy">
           <MdInfo />
           <span className="title">
@@ -200,10 +202,10 @@ function PhotoInformation({ info, url, api }) {
           </span>
         </div>
       )}
-      {localStorage.getItem('widgetStyle') !== 'legacy' || other ? (
+      {widgetStyle !== 'legacy' || other ? (
         <div
           className="photoInformation orHover"
-          style={{ padding: localStorage.getItem('widgetStyle') === 'legacy' ? '20px' : null }}
+          style={{ padding: widgetStyle === 'legacy' ? '20px' : null }}
           onMouseEnter={() => setshowExtraInfo(true)}
           onMouseLeave={() => setshowExtraInfo(false)}
         >
