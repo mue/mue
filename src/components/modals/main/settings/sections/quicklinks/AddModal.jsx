@@ -5,7 +5,7 @@ import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 import variables from 'modules/variables';
 
-function AddModal({ urlError, addLink, closeModal, edit, editData, editLink }) {
+function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, editLink }) {
   const [name, setName] = useState(edit ? editData.name : '');
   const [url, setUrl] = useState(edit ? editData.url : '');
   const [icon, setIcon] = useState(edit ? editData.url : '');
@@ -25,23 +25,24 @@ function AddModal({ urlError, addLink, closeModal, edit, editData, editLink }) {
           maxRows={1}
           placeholder={variables.getMessage('widgets.quicklinks.name')}
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ""))}
         />
         <span className="dropdown-error" />
         <TextareaAutosize
           maxRows={10}
           placeholder={variables.getMessage('widgets.quicklinks.url')}
           value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ""))}
         />
         <span className="dropdown-error">{urlError}</span>
         <TextareaAutosize
           maxRows={10}
+          maxLines={1}
           placeholder={variables.getMessage('widgets.quicklinks.icon')}
           value={icon}
-          onChange={(e) => setIcon(e.target.value)}
+          onChange={(e) => setIcon(e.target.value.replace(/(\r\n|\n|\r)/gm, ""))}
         />
-        <span className="dropdown-error" />
+        <span className="dropdown-error">{iconError}</span>
         {edit ? (
           <button
             style={{

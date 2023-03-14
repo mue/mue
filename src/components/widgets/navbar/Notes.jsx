@@ -135,6 +135,7 @@ class Notes extends PureComponent {
                 value={this.state.notes}
                 onChange={this.setNotes}
                 minRows={5}
+                maxLength={10000}
               />
             </div>
           </span>

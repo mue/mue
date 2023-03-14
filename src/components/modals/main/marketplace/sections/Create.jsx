@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // todo: refactor all of this
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
@@ -20,6 +21,10 @@ import InfoTooltip from '../../../../helpers/tooltip/infoTooltip';
 import Tooltip from '../../../../helpers/tooltip/Tooltip';
 
 import FileUpload from '../../settings/FileUpload';
+
+import photos from '../examples/photos.json';
+import quotes from '../examples/quotes.json';
+import settings from '../examples/settings.json';
 
 import '../../../welcome/welcome.scss';
 
@@ -221,7 +226,7 @@ export default class Create extends PureComponent {
               ) || 'marketplace'}
             </span>
           </div>
-          <button>
+          <button onClick={() => saveFile(this.state.addonMetadata.type, `mue-marketplace-${this.state.addonMetadata.type}.json`)}>
             {variables.getMessage('modals.main.addons.create.metadata.example')}
             <MdDownload />
           </button>
