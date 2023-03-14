@@ -11,9 +11,9 @@ import {
 
 import { toast } from 'react-toastify';
 
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
-import ShareModal from '../../helpers/sharemodal/ShareModal';
+import ShareModal from 'components/helpers/sharemodal/ShareModal';
 
 import offline_quotes from './offline_quotes.json';
 

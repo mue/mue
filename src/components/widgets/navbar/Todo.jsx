@@ -9,7 +9,7 @@ import {
   MdPlaylistRemove,
 } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
 import { sortableContainer, sortableElement, sortableHandle } from 'react-sortable-hoc';

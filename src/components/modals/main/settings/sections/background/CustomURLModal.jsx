@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { useState, memo } from 'react';
 import { MdAdd, MdClose } from 'react-icons/md';
-import Tooltip from '../../../../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 function CustomURLModal({ modalClose, modalCloseOnly }) {
   const [url, setURL] = useState();

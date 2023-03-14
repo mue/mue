@@ -7,7 +7,7 @@ import { MdClose } from 'react-icons/md';
 import Tabs from './tabs/backend/Tabs';
 
 import './scss/index.scss';
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 // Lazy load all the tabs instead of the modal itself
 const Settings = lazy(() => import('./tabs/Settings'));

@@ -4,7 +4,7 @@ import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/
 import { useFloating, shift } from '@floating-ui/react-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 import { saveFile } from 'modules/helpers/settings/modals';
 import EventBus from 'modules/helpers/eventbus';
 

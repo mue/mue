@@ -54,6 +54,7 @@ export default class Text extends PureComponent {
             value={this.state.value}
             onChange={this.handleChange}
             varient="outlined"
+            className={this.props.customcss ? 'customcss' : ''}
             multiline
             spellCheck={false}
             minRows={4}

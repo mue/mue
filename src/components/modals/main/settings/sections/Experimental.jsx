@@ -34,7 +34,7 @@ function ExperimentalSettings() {
           marks={values('experimental')}
           element=".other"
         />
-        <p>Send Event</p>
+        <p style={{ textAlign: 'left' }}>Send Event</p>
         <TextField
           label={'Type'}
           value={eventType}
@@ -51,14 +51,14 @@ function ExperimentalSettings() {
           varient="outlined"
           InputLabelProps={{ shrink: true }}
         />
-      </SettingsItem>
-      <SettingsItem
-        title={variables.getMessage('modals.main.settings.sections.experimental.developer')}
-        final={true}
-      >
-        <button className="uploadbg" onClick={() => EventBus.dispatch(eventType, eventName)}>
+                <button className="uploadbg" onClick={() => EventBus.dispatch(eventType, eventName)}>
           Send
         </button>
+      </SettingsItem>
+      <SettingsItem
+        title='Data'
+        final={true}
+      >
         <button
           className="reset"
           style={{ marginLeft: '0px' }}

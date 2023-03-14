@@ -6,7 +6,7 @@ import { MdDisabledVisible } from 'react-icons/md';
 import WeatherIcon from './WeatherIcon';
 import WindDirectionIcon from './WindDirectionIcon';
 
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 function Expanded({ state, weatherType, variables }) {
   const enabled = (setting) => {

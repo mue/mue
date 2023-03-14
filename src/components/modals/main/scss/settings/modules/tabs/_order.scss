@@ -1,4 +1,4 @@
-@import '../../../../../../../scss/variables';
+@import 'scss/variables';
 
 .sortableItem {
   @include themed {
@@ -111,9 +111,6 @@
     box-shadow: t($boxShadow);
   }
 
-  .previewContainer {
-  }
-
   .previewItem {
     display: flex;
     flex-flow: column;
@@ -153,6 +150,7 @@
   .content {
     margin: 20px 20px 0;
   }
+
   @include themed {
     background: t($modal-secondaryColour);
     border-radius: t($borderRadius);

@@ -8,7 +8,7 @@ import Switch from './Switch';
 import SettingsItem from './SettingsItem';
 
 import { values } from 'modules/helpers/settings/modals';
-import Tooltip from '../../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 export default class Header extends PureComponent {
   render() {

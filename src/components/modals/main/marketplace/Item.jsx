@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
-import Tooltip from '../../../helpers/tooltip/Tooltip';
-import ImageCarousel from '../../../helpers/carousel/Carousel';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
+import ImageCarousel from 'components/helpers/carousel/Carousel';
 import { toast } from 'react-toastify';
 import {
   MdIosShare,
@@ -20,7 +20,7 @@ import Modal from 'react-modal';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
 
-import ShareModal from '../../../helpers/sharemodal/ShareModal';
+import ShareModal from 'components/helpers/sharemodal/ShareModal';
 
 export default class Item extends PureComponent {
   constructor(props) {

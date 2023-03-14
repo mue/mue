@@ -14,9 +14,9 @@ import {
   MdCategory as Category,
   MdVisibilityOff as VisibilityOff,
 } from 'react-icons/md';
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
-import ShareModal from '../../helpers/sharemodal/ShareModal';
+import ShareModal from 'components/helpers/sharemodal/ShareModal';
 import ExcludeModal from './ExcludeModal';
 
 const toDataURL = async (url) => {

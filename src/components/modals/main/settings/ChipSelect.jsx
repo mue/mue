@@ -9,7 +9,9 @@ import Chip from '@mui/material/Chip';
 
 function ChipSelect({ label, options, name }) {
   let start = (localStorage.getItem('apiCategories') || '').split(',');
-  if (start[0] === '') start = [];
+  if (start[0] === '') {
+    start = [];
+  }
 
   const [optionsSelected, setoptionsSelected] = useState(start);
 
