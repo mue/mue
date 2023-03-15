@@ -75,7 +75,7 @@ export default class Stats extends PureComponent {
     const achievementElement = (key, name, achieved) => (
       <div className="achievement">
         <FaTrophy />
-        <div className={"achievementContent" + (achieved ? ' achieved' : '')}>
+        <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
           <span>{name}</span>
           <span className="subtitle">
             {achievementLanguage[localStorage.getItem('language')][key]}
@@ -89,7 +89,84 @@ export default class Stats extends PureComponent {
         <span className="mainTitle">
           {variables.getMessage('modals.main.settings.sections.stats.title')}
         </span>
-        <div className="statsGrid">
+        <div className="stats">
+          <div className="statSection rightPanel">
+            <div className="statIcon">
+              <MdShowChart />
+            </div>
+            <div className="statGrid">
+              <div>
+                <span className="subtitle">
+                  {variables.getMessage('modals.main.settings.sections.stats.sections.tabs_opened')}{' '}
+                </span>
+                <span>{this.state.stats['tabs-opened'] || 0}</span>
+              </div>
+              <div>
+                <span className="subtitle">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.stats.sections.backgrounds_favourited',
+                  )}{' '}
+                </span>
+                <span>
+                  {this.state.stats.feature
+                    ? this.state.stats.feature['background-favourite'] || 0
+                    : 0}
+                </span>
+              </div>
+              <div>
+                <span className="subtitle">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.stats.sections.backgrounds_downloaded',
+                  )}{' '}
+                </span>
+                <span>
+                  {this.state.stats.feature
+                    ? this.state.stats.feature['background-download'] || 0
+                    : 0}
+                </span>
+              </div>
+              <div>
+                <span className="subtitle">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.stats.sections.quotes_favourited',
+                  )}{' '}
+                </span>
+                <span>
+                  {this.state.stats.feature ? this.state.stats.feature['quoted-favourite'] || 0 : 0}
+                </span>
+              </div>
+              <div>
+                <span className="subtitle">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.stats.sections.quicklinks_added',
+                  )}{' '}
+                </span>
+                <span>
+                  {this.state.stats.feature ? this.state.stats.feature['quicklink-add'] || 0 : 0}
+                </span>
+              </div>
+              <div>
+                <span className="subtitle">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.stats.sections.settings_changed',
+                  )}{' '}
+                </span>
+                <span>
+                  {this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0}
+                </span>
+              </div>
+              <div>
+                <span className="subtitle">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.stats.sections.addons_installed',
+                  )}{' '}
+                </span>
+                <span>
+                  {this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0}
+                </span>
+              </div>
+            </div>
+          </div>
           <div className="statSection leftPanel">
             <span className="title">
               {variables.getMessage('modals.main.settings.sections.stats.achievements')}
@@ -100,66 +177,11 @@ export default class Stats extends PureComponent {
                 count: this.getUnlockedCount() + '/' + this.state.achievements.length,
               })}
             </span>
-            <div className="achievements">
-              {this.state.achievements.map((achievement, index) => (
-                achievementElement(index, achievement.name, achievement.achieved)
-              ))}
-            </div>
           </div>
-          <div className="statSection rightPanel">
-            <MdShowChart />
-            <span className="subtitle">
-              {variables.getMessage('modals.main.settings.sections.stats.sections.tabs_opened')}{' '}
-            </span>
-            <span>{this.state.stats['tabs-opened'] || 0}</span>
-            <span className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.stats.sections.backgrounds_favourited',
-              )}{' '}
-            </span>
-            <span>
-              {this.state.stats.feature ? this.state.stats.feature['background-favourite'] || 0 : 0}
-            </span>
-            <span className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.stats.sections.backgrounds_downloaded',
-              )}{' '}
-            </span>
-            <span>
-              {this.state.stats.feature ? this.state.stats.feature['background-download'] || 0 : 0}
-            </span>
-            <span className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.stats.sections.quotes_favourited',
-              )}{' '}
-            </span>
-            <span>
-              {this.state.stats.feature ? this.state.stats.feature['quoted-favourite'] || 0 : 0}
-            </span>
-            <span className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.stats.sections.quicklinks_added',
-              )}{' '}
-            </span>
-            <span>
-              {this.state.stats.feature ? this.state.stats.feature['quicklink-add'] || 0 : 0}
-            </span>
-            <span className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.stats.sections.settings_changed',
-              )}{' '}
-            </span>
-            <span>
-              {this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0}
-            </span>
-            <span className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.stats.sections.addons_installed',
-              )}{' '}
-            </span>
-            <span>
-              {this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0}
-            </span>
+          <div className="achievements">
+            {this.state.achievements.map((achievement, index) =>
+              achievementElement(index, achievement.name, achievement.achieved),
+            )}
           </div>
         </div>
       </>
