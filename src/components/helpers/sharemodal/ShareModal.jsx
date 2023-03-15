@@ -37,7 +37,7 @@ function ShareModal({ modalClose, data }) {
           </div>
         </Tooltip>
       </div>
-      <div className="buttons">
+      <div className="shareButtons">
         <Tooltip title="Twitter">
           <button
             onClick={() =>

@@ -97,6 +97,15 @@ legend,
     background-color: t($modal-background);
     color: t($color);
   }
+
+  li{
+    &:hover {
+      @include themed {
+        background-color: t($modal-sidebarActive);
+        transition: 0.5s;
+      }
+    }
+  }
 }
 
 .Mui-selected {
@@ -151,9 +160,12 @@ legend,
   }
 }
 
-.css-6od3lo-MuiChip-label {
+.css-w66kx-MuiChip-root {
   @include themed {
     color: t($color) !important;
+    border: 1px solid t($modal-sidebarActive);
+    background: t($modal-sidebar) !important;
+    border-radius: t($borderRadius);
   }
 
   text-transform: capitalize;

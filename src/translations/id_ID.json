@@ -291,6 +291,7 @@
               "title": "Informasi Tambahan",
               "show_location": "Tampilkan lokasi",
               "show_description": "Tampilkan deskripsi",
+              "weather_description": "Weather description",
               "cloudiness": "Kondisi awan",
               "humidity": "Kelembapan",
               "visibility": "Jarak pandang",
@@ -430,7 +431,6 @@
           },
           "stats": {
             "title": "Statistik",
-            "warning": "Anda harus mengizinkan penggunaan data untuk menggunakan fitur ini. Data hanya akan disimpan di perangkat Anda saja.",
             "sections": {
               "tabs_opened": "Riwayat tab terbuka",
               "backgrounds_favourited": "Backgrounds favorit",

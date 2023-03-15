@@ -291,6 +291,7 @@
               "title": "Zusätzliche informationen",
               "show_location": "Standort anzeigen",
               "show_description": "Beschreibung anzeigen",
+              "weather_description": "Weather description",
               "cloudiness": "Bewölkungsgrad",
               "humidity": "Luftfeuchtigkeit",
               "visibility": "Sichtbarkeit",
@@ -430,7 +431,6 @@
           },
           "stats": {
             "title": "Statistiken",
-            "warning": "Sie müssen die Nutzungsdaten aktivieren, um diese Funktion nutzen zu können. Diese Daten werden nur lokal gespeichert.",
             "sections": {
               "tabs_opened": "Geöffnete Tabs",
               "backgrounds_favourited": "Bevorzugte Hintergründe",

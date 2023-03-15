@@ -120,12 +120,12 @@ class Notes extends PureComponent {
                   </button>
                 </Tooltip>
                 <Tooltip title={variables.getMessage('widgets.quote.copy')}>
-                  <button onClick={() => this.copy()}>
+                  <button onClick={() => this.copy()} disabled={this.state.notes === ""}>
                     <MdContentCopy />
                   </button>
                 </Tooltip>
                 <Tooltip title={variables.getMessage('widgets.background.download')}>
-                  <button onClick={() => this.download()}>
+                  <button onClick={() => this.download()} disabled={this.state.notes === ""}>
                     <MdDownload />
                   </button>
                 </Tooltip>

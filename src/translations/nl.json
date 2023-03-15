@@ -291,6 +291,7 @@
               "title": "Extra information",
               "show_location": "Show location",
               "show_description": "Show description",
+              "weather_description": "Weather description",
               "cloudiness": "Cloudiness",
               "humidity": "Humidity",
               "visibility": "Visibility",
@@ -430,7 +431,6 @@
           },
           "stats": {
             "title": "Stats",
-            "warning": "You need to enable usage data in order to use this feature. This data is only stored locally.",
             "sections": {
               "tabs_opened": "Tabs opened",
               "backgrounds_favourited": "Backgrounds favourited",

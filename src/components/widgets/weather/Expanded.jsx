@@ -67,7 +67,7 @@ function Expanded({ state, weatherType, variables }) {
       {enabled('weatherdescription') ? (
         <Tooltip
           title={variables.getMessage(
-            'modals.main.settings.sections.weather.extra_info.show_description',
+            'modals.main.settings.sections.weather.extra_info.weather_description',
           )}
           placement="left"
         >

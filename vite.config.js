@@ -65,14 +65,6 @@ export default defineConfig({
     react(),
     prepareBuilds(),
     progress(),
-    checker({
-      eslint: {
-        lintCommand: 'eslint ./src/**/*.{js,jsx} --fix'
-      },
-      stylelint: {
-        lintCommand: 'stylelint ./src/**/*.{scss,css} --fix',
-      }
-    }),
   ],
   server: {
     open: true,

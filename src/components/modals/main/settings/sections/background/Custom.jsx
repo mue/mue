@@ -29,6 +29,7 @@ export default class CustomSettings extends PureComponent {
     this.state = {
       customBackground: this.getCustom(),
       customURLModal: false,
+      urlError: '',
     };
     this.customDnd = createRef(null);
   }
@@ -130,6 +131,16 @@ export default class CustomSettings extends PureComponent {
   }
 
   addCustomURL(e) {
+    // regex: https://ihateregex.io/expr/url/
+    // eslint-disable-next-line no-useless-escape
+    const urlRegex =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_.~#?&=]*)/;
+    if (urlRegex.test(e) === false) {
+      return this.setState({
+        urlError: variables.getMessage('widgets.quicklinks.url_error'),
+      });
+    }
+
     this.setState({
       customURLModal: false,
       currentBackgroundIndex: this.state.customBackground.length,
@@ -273,6 +284,7 @@ export default class CustomSettings extends PureComponent {
         >
           <CustomURLModal
             modalClose={(e) => this.addCustomURL(e)}
+            urlError={this.state.urlError}
             modalCloseOnly={() => this.setState({ customURLModal: false })}
           />
         </Modal>

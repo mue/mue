@@ -196,7 +196,7 @@ export default class Search extends PureComponent {
         <div className="searchMain">
           <div className={this.state.classList}>
             {localStorage.getItem('searchDropdown') === 'true' ? (
-              <Tooltip title={variables.getMessage('widgets.search')}>
+              <Tooltip title={variables.getMessage('modals.main.settings.sections.search.search_engine')}>
                 <button
                   onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
                 >
@@ -206,7 +206,7 @@ export default class Search extends PureComponent {
             ) : (
               ''
             )}
-            <Tooltip title={variables.getMessage('widgets.search')}>
+            <Tooltip title={variables.getMessage('modals.main.settings.sections.search.voice_search')}>
               {this.state.microphone}
             </Tooltip>
           </div>

@@ -4,8 +4,6 @@ import { Suspense, lazy, useState } from 'react';
 import { memo } from 'react';
 import { MdClose } from 'react-icons/md';
 
-import Tabs from './tabs/backend/Tabs';
-
 import './scss/index.scss';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -14,9 +12,12 @@ const Settings = lazy(() => import('./tabs/Settings'));
 const Addons = lazy(() => import('./tabs/Addons'));
 const Marketplace = lazy(() => import('./tabs/Marketplace'));
 
-const renderLoader = (current) => (
-  <Tabs current={current}>
-    <div label={variables.getMessage('modals.main.loading')}>
+const renderLoader = () => (
+  <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
+    <ul className="sidebar">
+      <span className="mainTitle">Mue</span>
+    </ul>
+    <div className="tab-content" style={{ width: '100%' }}>
       <div className="emptyItems">
         <div className="emptyMessage">
           <div className="loaderHolder">
@@ -26,8 +27,7 @@ const renderLoader = (current) => (
         </div>
       </div>
     </div>
-    <div label="" style={{ display: 'none' }}></div>
-  </Tabs>
+  </div>
 );
 
 function MainModal({ modalClose }) {
@@ -64,7 +64,7 @@ function MainModal({ modalClose }) {
           <MdClose />
         </span>
       </Tooltip>
-      <Suspense fallback={renderLoader(currentTab)}>{currentTab}</Suspense>
+      <Suspense fallback={renderLoader()}>{currentTab}</Suspense>
     </div>
   );
 }

@@ -2,9 +2,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdShowChart } from 'react-icons/md';
-
-import Switch from '../Switch';
-import SettingsItem from '../SettingsItem';
 import { FaTrophy } from 'react-icons/fa';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -92,31 +89,10 @@ export default class Stats extends PureComponent {
   }
 
   render() {
-    if (localStorage.getItem('stats') === 'false') {
-      return (
-        <>
-          <span className="mainTitle">
-            {variables.getMessage('modals.main.settings.sections.stats.title')}
-          </span>
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.reminder.title')}
-            subtitle={variables.getMessage('modals.main.settings.sections.stats.warning')}
-            final={true}
-          >
-            <Switch
-              name="stats"
-              text={variables.getMessage('modals.main.settings.sections.stats.usage')}
-              category="stats"
-            />
-          </SettingsItem>
-        </>
-      );
-    }
-
-    const achievementElement = (key, name) => (
+    const achievementElement = (key, name, achieved) => (
       <div className="achievement">
         <FaTrophy />
-        <div className="achievementContent">
+        <div className={"achievementContent" + (achieved ? ' achieved' : '')}>
           <span>{name}</span>
           <span className="subtitle">
             {achievementLanguage[localStorage.getItem('language')][key]}
@@ -130,16 +106,6 @@ export default class Stats extends PureComponent {
         <span className="mainTitle">
           {variables.getMessage('modals.main.settings.sections.stats.title')}
         </span>
-        <SettingsItem
-          title={variables.getMessage('modals.main.settings.reminder.title')}
-          subtitle={variables.getMessage('modals.main.settings.sections.stats.warning')}
-        >
-          <Switch
-            name="stats"
-            text={variables.getMessage('modals.main.settings.sections.stats.usage')}
-            category="stats"
-          />
-        </SettingsItem>
         <div className="statsGrid">
           <div className="statSection leftPanel">
             <span className="title">
@@ -152,11 +118,9 @@ export default class Stats extends PureComponent {
               })}
             </span>
             <div className="achievements">
-              {this.state.achievements.map((achievement, index) => {
-                if (achievement.achieved) {
-                  return achievementElement(index, achievement.name);
-                }
-              })}
+              {this.state.achievements.map((achievement, index) => (
+                achievementElement(index, achievement.name, achievement.achieved)
+              ))}
             </div>
           </div>
           <div className="statSection rightPanel">

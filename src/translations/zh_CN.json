@@ -291,6 +291,7 @@
               "title": "更多信息",
               "show_location": "显示位置",
               "show_description": "显示描述",
+              "weather_description": "Weather description",
               "cloudiness": "云量",
               "humidity": "湿度",
               "visibility": "能见度",
@@ -430,7 +431,6 @@
           },
           "stats": {
             "title": "统计",
-            "warning": "为了使用该功能，您需要启用统计功能。统计数据仅保存在本地。",
             "sections": {
               "tabs_opened": "页面打开次数",
               "backgrounds_favourited": "收藏的背景",

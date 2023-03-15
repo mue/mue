@@ -108,6 +108,14 @@ textarea {
 .notes-buttons {
   display: flex !important;
   gap: 10px;
+  button {
+  &:disabled {
+    @include themed() {
+      background: t($modal-sidebar) !important;
+    }
+    cursor: not-allowed;
+  }
+}
 
   .tooltip {
     flex: 1 !important;
