@@ -2,24 +2,30 @@
 const fs = require('fs');
 const merge = require('@eartharoid/deep-merge');
 
+const compareAndRemoveKeys = (json1, json2) => {
+  for (let key in json1) {
+    if (json2.hasOwnProperty(key)) {
+      if (typeof json1[key] === 'object' && typeof json2[key] === 'object') {
+        compareAndRemoveKeys(json1[key], json2[key]);
+      }
+    } else {
+      delete json1[key];
+    }
+  }
+}
+
 fs.readdirSync('../src/translations').forEach((file) => {
   if (file === 'en_GB.json') {
     return;
   }
 
-  const newdata = merge(
-    require('../src/translations/en_GB.json'),
-    require('../src/translations/' + file),
-  );
-
-  // remove unused strings
   const en = require('../src/translations/en_GB.json');
-  const keys = Object.keys(newdata);
-  const enkeys = Object.keys(en);
-  const unused = keys.filter((key) => !enkeys.includes(key));
-  unused.forEach((key) => {
-    delete newdata[key];
-  });
+  const newdata = merge(en, require('../src/translations/' + file));
+
+  // remove strings not in english file
+  compareAndRemoveKeys(newdata, en);
+
+  // write new file
   fs.writeFileSync('../src/translations/' + file, JSON.stringify(newdata, null, 2));
 
   // add new line
