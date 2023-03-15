@@ -29,6 +29,7 @@
         display: flex;
         padding-top: 5px;
         gap: 20px;
+
         @include themed {
           color: t($subColor);
         }
@@ -53,6 +54,7 @@
 
         a {
           text-decoration: none;
+
           @include themed {
             color: t($subColor);
           }
@@ -232,6 +234,7 @@
   .link {
     text-decoration: none;
     cursor: pointer;
+
     @include themed {
       color: t($link);
     }
@@ -262,6 +265,7 @@
     .stats {
       display: flex;
       gap: 15px;
+
       @include themed {
         color: t($subColor);
       }
@@ -286,6 +290,7 @@
 
       a {
         text-decoration: none;
+
         @include themed {
           color: t($subColor);
         }
@@ -332,6 +337,7 @@
 
   .credit {
     font-size: 1.4em;
+
     @include themed {
       color: t($subColor);
     }

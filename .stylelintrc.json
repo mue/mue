@@ -1,8 +1,6 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
-  "formatter": "stylelint-checkstyle-formatter",
+  "extends": ["stylelint-config-standard-scss"],
   "plugins": ["stylelint-scss"],
-  "customSyntax": "postcss-scss",
   "rules": {
     "selector-class-pattern": null,
     "no-descending-specificity": null

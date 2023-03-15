@@ -1,13 +1,10 @@
 @import 'scss/variables';
-
 @import 'modules/sidebar';
 @import 'modules/navbar';
 @import 'modules/tab-content';
 @import 'modules/links';
 @import 'modules/scrollbars';
-
 @import 'settings/main';
-
 @import 'marketplace/main';
 
 .Overlay {
@@ -84,6 +81,7 @@
 #modal {
   height: 80vh;
   width: clamp(60vw, 1200px, 90vw);
+
   @include themed {
     background-color: t($modal-background);
   }
@@ -120,6 +118,7 @@ h5 {
   display: inline-block;
   width: 50px;
   height: 50px;
+
   @include themed {
     border: 3px solid t($modal-sidebar);
     border-radius: 50%;
@@ -134,6 +133,7 @@ h5 {
     transform: rotate(360deg);
   }
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -188,6 +188,7 @@ h5 {
       flex-direction: row-reverse;
       justify-content: space-between;
       padding: 5px 5px 5px 20px;
+
       @include themed {
         background: t($modal-sidebar);
         border-radius: t($borderRadius);
@@ -222,6 +223,7 @@ h5 {
   padding: 25px;
   margin-top: 20px;
   transition: 0.5s;
+
   @include themed {
     background: t($modal-sidebar);
     border-radius: t($borderRadius);
@@ -263,6 +265,7 @@ h5 {
   bottom: 0;
   padding: 15px;
   gap: 15px;
+
   @include themed {
     background-color: t($modal-secondaryColour);
     border-radius: t($borderRadius);
@@ -284,6 +287,7 @@ h5 {
   svg {
     margin: 0 !important;
   }
+
   @extend %tabText;
 }
 
@@ -321,6 +325,7 @@ h5 {
         place-items: center;
       }
     }
+
     @include themed {
       background-color: t($modal-sidebarActive);
       border-radius: t($borderRadius);
@@ -350,6 +355,7 @@ h5 {
       border-radius: 100%;
       display: grid;
       place-items: center;
+
       @include themed {
         background-color: t($modal-sidebarActive);
       }

@@ -8,6 +8,7 @@
   gap: 15px;
   padding: 15px;
   width: 320px;
+
   @include themed {
     background: t($modal-secondaryColour);
   }
@@ -48,6 +49,7 @@
   button {
     place-items: center;
     display: grid;
+
     @include basicIconButton(11px, 1.3rem, modal);
   }
 

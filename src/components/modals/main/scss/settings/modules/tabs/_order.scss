@@ -48,6 +48,7 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   padding: 20px;
   grid-gap: 20px;
+
   @include themed {
     div {
       border-radius: t($borderRadius);
@@ -87,6 +88,7 @@
     .iconButton {
       width: calc(100% - 22px);
       margin-top: 10px;
+
       @include basicIconButton(11px, 1.3rem, modal);
     }
   }
@@ -105,6 +107,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 16px;
+
   @include themed {
     background: t($modal-secondaryColour);
     border-radius: t($borderRadius);
@@ -122,6 +125,7 @@
 
     .quotediv .author-holder .author .author-content .title {
       font-size: 1em !important;
+
       @include themed {
         color: t($color) !important;
       }

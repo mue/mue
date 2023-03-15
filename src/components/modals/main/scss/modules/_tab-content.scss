@@ -4,12 +4,14 @@
   button {
     @include modal-button(standard);
   }
+
   @include themed {
     padding: 1rem 3rem 3rem;
     display: flex;
     flex-direction: column;
     width: 100%;
     background: t($modal-background);
+
     @extend %tabText;
 
     hr {
@@ -73,6 +75,7 @@
 
 table {
   border-collapse: separate;
+
   @include themed {
     border-radius: t($borderRadius);
     margin-top: 20px;
@@ -149,6 +152,7 @@ table {
     place-items: center;
     padding: 15px;
     font-size: 25px;
+
     @include themed {
       background: t($modal-sidebarActive);
     }
@@ -176,6 +180,7 @@ table {
   .messageAction {
     float: right;
   }
+
   @include themed {
     background: t($modal-sidebar);
     border-radius: t($borderRadius);

@@ -53,6 +53,7 @@ h1.quoteauthor {
 
 .author-knownfor {
   font-size: clamp(13px, 2.5vw, 0.4em);
+
   @include themed {
     color: t($subColor);
   }
@@ -60,6 +61,7 @@ h1.quoteauthor {
 
 .author-license {
   font-size: clamp(8px, 2.5vw, 0.1em);
+
   @include themed {
     color: t($subColor);
   }
@@ -141,6 +143,7 @@ h1.quoteauthor {
 
 .deleteButton {
   height: auto !important;
+
   @include basicIconButton(11px, 1.3rem, modal);
 
   padding: 10px 20px;

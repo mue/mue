@@ -15,6 +15,7 @@
   .MuiFormControlLabel-root {
     margin-right: 0;
   }
+
   @extend %tabText;
 
   height: 80vh;
@@ -28,6 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     @include themed {
       background-color: t($modal-sidebar);
     }
@@ -163,6 +165,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+
   @include themed {
     background: t($modal-sidebar);
     color: t($color);
@@ -196,6 +199,7 @@ a.privacy {
 .examples {
   img {
     width: 60%;
+
     @include themed {
       border-radius: t($borderRadius);
     }
@@ -272,6 +276,7 @@ a.privacy {
     text-decoration: none;
     margin-left: auto;
     padding: 0 20px;
+
     @include modal-button(standard);
   }
 }

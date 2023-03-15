@@ -1,6 +1,7 @@
 .navbar-item {
   flex-flow: row !important;
   padding: 0 15px;
+
   @include themed {
     background: t($modal-secondaryColour) !important;
     border-radius: t($borderRadius) !important;

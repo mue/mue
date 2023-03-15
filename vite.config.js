@@ -4,6 +4,8 @@ import path from 'path';
 import fs from 'fs';
 import ADMZip from 'adm-zip';
 import * as pkg from './package.json';
+import progress from 'vite-plugin-progress';
+import checker from 'vite-plugin-checker';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -59,15 +61,42 @@ const prepareBuilds = () => ({
 });
 
 export default defineConfig({
-  plugins: [react(), prepareBuilds()],
+  plugins: [
+    react(),
+    prepareBuilds(),
+    progress(),
+    checker({
+      eslint: {
+        lintCommand: 'eslint ./src/**/*.{js,jsx} --fix'
+      },
+      stylelint: {
+        lintCommand: 'stylelint ./src/**/*.{scss,css} --fix',
+      }
+    }),
+  ],
   server: {
+    open: true,
     hmr: {
       protocol: 'ws',
       host: 'localhost',
     },
   },
   build: {
-    minify: isProd,
+    minify: isProd ? 'esbuild' : false,
+    sourcemap: !isProd,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('@mui')) {
+              return 'vendor_mui';
+            }
+
+            return 'vendor';
+          }
+        },
+      },
+    },
   },
   resolve: {
     extensions: ['.js', '.jsx'],

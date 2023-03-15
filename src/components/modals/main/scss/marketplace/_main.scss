@@ -87,6 +87,7 @@
         margin-top: 8px;
         font-size: 12px;
         font-weight: bolder;
+
         @include themed {
           color: t($subColor);
         }
@@ -148,6 +149,7 @@
       box-sizing: border-box !important;
       border-radius: 12px 12px 0 0;
       backdrop-filter: blur(40px) saturate(150%) brightness(75%);
+
       @include themed {
         background-image: linear-gradient(to bottom, transparent, t($modal-background));
       }
@@ -196,6 +198,7 @@
   font-size: 12px;
   display: grid;
   place-items: center;
+
   @include themed {
     background: t($modal-sidebar);
     box-shadow: 0 0 0 3px t($modal-sidebarActive);
@@ -519,6 +522,7 @@ p.author {
 a.collectionButton {
   height: 40px;
   text-decoration: none;
+
   @include themed {
     border-radius: t($borderRadius);
   }
@@ -562,6 +566,7 @@ a.collectionButton {
   padding: 10px 30px;
   border-radius: 10px;
   font-size: 18px;
+
   @include themed {
     box-shadow: 0 0 0 3px t($modal-sidebarActive);
     background: t($modal-sidebar);
@@ -570,6 +575,7 @@ a.collectionButton {
   input {
     all: unset;
   }
+
   @include themed {
     &:focus-within {
       background: t($modal-sidebarActive);

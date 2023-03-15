@@ -66,6 +66,7 @@
     textarea {
       max-height: 65vh !important;
       overflow-y: visible !important;
+
       @extend %basic;
 
       border: none;

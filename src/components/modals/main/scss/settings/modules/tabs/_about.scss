@@ -29,6 +29,7 @@
   img {
     width: 75px;
     height: auto;
+
     @include themed {
       border-radius: t($borderRadius);
     }
@@ -37,6 +38,7 @@
 
 .subtitle-photographers {
   font-size: 16px;
+
   @include themed {
     color: t($color);
 

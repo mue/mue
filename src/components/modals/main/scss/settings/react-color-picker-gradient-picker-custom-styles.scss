@@ -13,6 +13,7 @@ div.color-preview-area > div > div:nth-child(5) {
 
 .ui-color-picker {
   padding: 10px;
+
   @include themed {
     background: t($modal-secondaryColour);
     border-radius: t($borderRadius);

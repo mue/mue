@@ -166,6 +166,7 @@ button.quicklinks {
     padding-left: 5px;
     color: #e74c3c;
   }
+
   @include themed {
     textarea {
       background: t($modal-sidebar);
@@ -203,6 +204,7 @@ button.quicklinks {
   transition: 0.8s;
   text-align: left;
   padding: 20px 40px;
+
   @include themed {
     &:hover {
       background: t($btn-backgroundHover);
@@ -218,6 +220,7 @@ button.quicklinks {
 .quicklinknostyle {
   text-decoration: none;
   font-size: 14px;
+
   @include themed {
     color: t($subColor);
   }

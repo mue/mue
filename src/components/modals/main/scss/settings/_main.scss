@@ -1,7 +1,6 @@
 @import 'modules/resetmodal';
 @import 'scss/variables';
 @import 'modules/material-ui';
-
 @import 'modules/tabs/about';
 @import 'modules/tabs/changelog';
 @import 'modules/tabs/order';
@@ -17,6 +16,7 @@ input {
     appearance: none;
     vertical-align: middle;
     background: none;
+
     @include themed {
       border: t($modal-sidebarActive) 1px solid;
     }
@@ -55,6 +55,7 @@ input {
   /* date picker */
   &[type='date'] {
     width: 260px;
+
     @include themed {
       background: t($modal-sidebar);
       border: 3px solid t($modal-sidebarActive);
@@ -108,6 +109,7 @@ h4 {
 
     svg {
       font-size: 30px;
+
       @include themed {
         color: t($subColor);
       }
@@ -210,6 +212,7 @@ h4 {
   display: flex;
   flex-flow: row !important;
   align-items: center;
+
   @include themed {
     background: t($modal-sidebarActive);
     border-radius: t($borderRadius);
@@ -220,6 +223,7 @@ h4 {
     font-size: 20px !important;
     padding: 15px;
     border-radius: 100%;
+
     @include themed {
       background: t($modal-sidebar);
     }
@@ -228,6 +232,7 @@ h4 {
 
 .statSection.rightPanel {
   padding: 25px;
+
   @include themed {
     border-radius: t($borderRadius);
     background: t($modal-sidebar);

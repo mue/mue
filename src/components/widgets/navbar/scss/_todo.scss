@@ -29,12 +29,14 @@
   flex-flow: row;
   align-items: center;
   margin: 15px 5px;
+
   @include themed {
     color: t($color) !important;
   }
 
   textarea {
     width: 120px;
+
     @include themed {
       color: t($color) !important;
     }
