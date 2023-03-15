@@ -20,9 +20,7 @@ document.documentElement.lang = languagecode.replace('_', '-');
 variables.getMessage = (text, optional) =>
   variables.language.getMessage(variables.languagecode, text, optional || {});
 
-if (localStorage.getItem('stats') === 'true') {
-  variables.stats = Stats;
-}
+variables.stats = Stats;
 
 Sentry.init({
   dsn: variables.constants.SENTRY_DSN,

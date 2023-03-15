@@ -4,7 +4,6 @@ import { PureComponent } from 'react';
 import { MdShowChart } from 'react-icons/md';
 import { FaTrophy } from 'react-icons/fa';
 
-import EventBus from 'modules/helpers/eventbus';
 import achievementsData from 'modules/helpers/settings/achievements.json';
 import translations from 'modules/helpers/settings/achievement_translations/index';
 
@@ -68,24 +67,8 @@ export default class Stats extends PureComponent {
   }
 
   componentDidMount() {
-    EventBus.on('refresh', (data) => {
-      if (data === 'stats') {
-        if (localStorage.getItem('stats') === 'false') {
-          localStorage.setItem('statsData', JSON.stringify({}));
-          return this.setState({
-            stats: {},
-          });
-        }
-        this.forceUpdate();
-      }
-    });
-
     this.getAchievements();
     this.forceUpdate();
-  }
-
-  componentWillUnmount() {
-    EventBus.off('refresh');
   }
 
   render() {
