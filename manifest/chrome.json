@@ -18,6 +18,6 @@
     "128": "icons/128x128.png"
   },
   "background": {
-    "service_worker": "background-chrome.js"
+    "service_worker": "background.js"
   }
 }
