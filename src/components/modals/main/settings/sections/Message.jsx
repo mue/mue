@@ -23,7 +23,7 @@ export default class Message extends PureComponent {
       messages: [],
     });
     toast(variables.getMessage(this.languagecode, 'toasts.reset'));
-    EventBus.dispatch('refresh', 'message');
+    EventBus.emit('refresh', 'message');
   };
 
   modifyMessage(type, index) {

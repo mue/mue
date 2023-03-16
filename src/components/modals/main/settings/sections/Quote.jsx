@@ -46,7 +46,7 @@ export default class QuoteSettings extends PureComponent {
       ],
     });
     toast(variables.getMessage('toasts.reset'));
-    EventBus.dispatch('refresh', 'background');
+    EventBus.emit('refresh', 'background');
   };
 
   customQuote(e, text, index, type) {

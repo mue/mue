@@ -114,6 +114,12 @@ export default class Search extends PureComponent {
     });
   }
 
+  /**
+   * If the user selects a search engine from the dropdown menu, the function will set the state of the
+   * search engine to the selected search engine.
+   * @param {string} name - The name of the search engine
+   * @param {boolean} custom - If the search engine is custom
+   */
   setSearch(name, custom) {
     let url;
     let query = 'q';
@@ -166,6 +172,11 @@ export default class Search extends PureComponent {
     EventBus.off('refresh');
   }
 
+  /**
+   * Gets the icon for the search engine dropdown.
+   * @param {string} name - The name of the search engine.
+   * @returns A React component.
+   */
   getSearchDropdownicon(name) {
     switch (name) {
       case 'Google':
@@ -196,7 +207,9 @@ export default class Search extends PureComponent {
         <div className="searchMain">
           <div className={this.state.classList}>
             {localStorage.getItem('searchDropdown') === 'true' ? (
-              <Tooltip title={variables.getMessage('modals.main.settings.sections.search.search_engine')}>
+              <Tooltip
+                title={variables.getMessage('modals.main.settings.sections.search.search_engine')}
+              >
                 <button
                   onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
                 >
@@ -206,7 +219,9 @@ export default class Search extends PureComponent {
             ) : (
               ''
             )}
-            <Tooltip title={variables.getMessage('modals.main.settings.sections.search.voice_search')}>
+            <Tooltip
+              title={variables.getMessage('modals.main.settings.sections.search.voice_search')}
+            >
               {this.state.microphone}
             </Tooltip>
           </div>

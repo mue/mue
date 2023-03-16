@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 import variables from 'modules/variables';
 import { MdClose } from 'react-icons/md';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
@@ -21,5 +22,10 @@ function SideloadFailedModal({ modalClose, reason }) {
     </div>
   );
 }
+
+SideloadFailedModal.propTypes = {
+  modalClose: PropTypes.func.isRequired,
+  reason: PropTypes.string.isRequired,
+};
 
 export default memo(SideloadFailedModal);

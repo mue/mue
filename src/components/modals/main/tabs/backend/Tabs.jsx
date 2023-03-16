@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import {
   MdSettings,
   MdOutlineShoppingBasket,
@@ -10,7 +11,7 @@ import {
 import Tab from './Tab';
 import ErrorBoundary from '../../../ErrorBoundary';
 
-export default class Tabs extends PureComponent {
+class Tabs extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -129,3 +130,16 @@ export default class Tabs extends PureComponent {
     );
   }
 }
+
+Tabs.propTypes = {
+  children: PropTypes.instanceOf(Array).isRequired,
+  current: PropTypes.string.isRequired,
+  changeTab: PropTypes.func.isRequired,
+  navbar: PropTypes.bool,
+};
+
+Tabs.defaultProps = {
+  navbar: false,
+};
+
+export default Tabs;

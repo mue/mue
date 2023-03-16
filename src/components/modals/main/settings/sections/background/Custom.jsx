@@ -40,7 +40,7 @@ export default class CustomSettings extends PureComponent {
       customBackground: [],
     });
     toast(variables.getMessage('toasts.reset'));
-    EventBus.dispatch('refresh', 'background');
+    EventBus.emit('refresh', 'background');
   };
 
   customBackground(e, text, index) {

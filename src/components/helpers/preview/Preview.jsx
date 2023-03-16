@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 import variables from 'modules/variables';
 import './preview.scss';
 
@@ -13,5 +14,9 @@ function Preview(props) {
     </div>
   );
 }
+
+Preview.propTypes = {
+  setup: PropTypes.func.isRequired,
+};
 
 export default memo(Preview);

@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { useState, memo } from 'react';
+import PropTypes from 'prop-types';
 import Favourite from './Favourite';
 import {
   MdInfo,
@@ -19,15 +20,29 @@ import Modal from 'react-modal';
 import ShareModal from 'components/helpers/sharemodal/ShareModal';
 import ExcludeModal from './ExcludeModal';
 
+/**
+ * It takes a URL, fetches the resource, and returns a URL to the resource.
+ * @param {string} url The URL to fetch.
+ * @returns A promise that resolves to a blob URL.
+ */
 const toDataURL = async (url) => {
   const res = await fetch(url);
   return URL.createObjectURL(await res.blob());
 };
 
+/**
+ * It takes a string, makes it lowercase, removes commas, and replaces spaces with dashes.
+ * @param {string} text The string to format.
+ * @returns A function that takes a string and returns a string.
+ */
 const formatText = (text) => {
   return text.toLowerCase().replaceAll(',', '').replaceAll(' ', '-');
 };
 
+/**
+ * It downloads an image from a URL and saves it to the user's computer.
+ * @param {object} info The photo information.
+ */
 const downloadImage = async (info) => {
   const link = document.createElement('a');
   link.href = await toDataURL(info.url);
@@ -382,5 +397,11 @@ function PhotoInformation({ info, url, api }) {
     </div>
   );
 }
+
+PhotoInformation.propTypes = {
+  info: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired,
+  api: PropTypes.string.isRequired,
+};
 
 export default memo(PhotoInformation);

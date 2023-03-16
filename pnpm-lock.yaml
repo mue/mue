@@ -23,6 +23,7 @@ specifiers:
   husky: ^8.0.3
   image-conversion: ^2.1.1
   prettier: ^2.8.4
+  prop-types: ^15.8.1
   react: ^18.2.0
   react-clock: 4.1.0
   react-color-gradient-picker: 0.1.2
@@ -52,13 +53,14 @@ dependencies:
   embla-carousel-react: 7.1.0_react@18.2.0
   fast-blurhash: 1.1.2
   image-conversion: 2.1.1
+  prop-types: 15.8.1
   react: 18.2.0
   react-clock: 4.1.0_biqbaboplfbrettd7655fr4n2y
   react-color-gradient-picker: 0.1.2_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.8.0_react@18.2.0
   react-modal: 3.16.1_biqbaboplfbrettd7655fr4n2y
-  react-sortable-hoc: 2.0.0_biqbaboplfbrettd7655fr4n2y
+  react-sortable-hoc: 2.0.0_v2m5e27vhdewzwhryxwfaorcca
   react-toastify: 9.1.1_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
@@ -5207,9 +5209,10 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /react-sortable-hoc/2.0.0_biqbaboplfbrettd7655fr4n2y:
+  /react-sortable-hoc/2.0.0_v2m5e27vhdewzwhryxwfaorcca:
     resolution: {integrity: sha512-JZUw7hBsAHXK7PTyErJyI7SopSBFRcFHDjWW5SWjcugY0i6iH7f+eJkY8cJmGMlZ1C9xz1J3Vjz0plFpavVeRg==}
     peerDependencies:
+      prop-types: ^15.5.7
       react: ^16.3.0 || ^17.0.0
       react-dom: ^16.3.0 || ^17.0.0
     dependencies:

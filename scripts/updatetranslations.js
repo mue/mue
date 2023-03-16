@@ -2,6 +2,12 @@
 const fs = require('fs');
 const merge = require('@eartharoid/deep-merge');
 
+/**
+ * It recursively compares the keys of two JSON objects and removes the keys from the first object that
+ * are not present in the second object
+ * @param json1 - The JSON object that you want to remove keys from.
+ * @param json2 - The JSON object that you want to compare against.
+ */
 const compareAndRemoveKeys = (json1, json2) => {
   for (let key in json1) {
     if (json2.hasOwnProperty(key)) {
@@ -12,7 +18,7 @@ const compareAndRemoveKeys = (json1, json2) => {
       delete json1[key];
     }
   }
-}
+};
 
 fs.readdirSync('../src/translations').forEach((file) => {
   if (file === 'en_GB.json') {

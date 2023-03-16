@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -8,7 +9,7 @@ import ProgressBar from './ProgressBar';
 
 import './welcome.scss';
 
-export default class WelcomeModal extends PureComponent {
+class WelcomeModal extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -145,3 +146,10 @@ export default class WelcomeModal extends PureComponent {
     );
   }
 }
+
+WelcomeModal.propTypes = {
+  modalClose: PropTypes.func.isRequired,
+  modalSkip: PropTypes.func.isRequired,
+};
+
+export default WelcomeModal;

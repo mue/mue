@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import {
   Radio as RadioUI,
   RadioGroup,
@@ -11,7 +12,7 @@ import {
 import EventBus from 'modules/helpers/eventbus';
 import translations from 'modules/translations';
 
-export default class Radio extends PureComponent {
+class Radio extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,7 +53,7 @@ export default class Radio extends PureComponent {
       }
     }
 
-    EventBus.dispatch('refresh', this.props.category);
+    EventBus.emit('refresh', this.props.category);
   };
 
   render() {
@@ -83,3 +84,20 @@ export default class Radio extends PureComponent {
     );
   }
 }
+
+Radio.propTypes = {
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  onChange: PropTypes.func,
+  category: PropTypes.string,
+  element: PropTypes.string,
+  smallTitle: PropTypes.bool,
+};
+
+export default Radio;

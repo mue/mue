@@ -124,7 +124,7 @@ export default class OrderSettings extends PureComponent {
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
     variables.stats.postEvent('setting', 'Widget order');
-    EventBus.dispatch('refresh', 'widgets');
+    EventBus.emit('refresh', 'widgets');
   }
 
   componentDidMount() {

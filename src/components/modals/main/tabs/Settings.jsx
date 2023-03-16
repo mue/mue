@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import Tabs from './backend/Tabs';
 
@@ -115,5 +116,9 @@ function Settings(props) {
     </Tabs>
   );
 }
+
+Settings.propTypes = {
+  changeTab: PropTypes.func.isRequired,
+};
 
 export default memo(Settings);

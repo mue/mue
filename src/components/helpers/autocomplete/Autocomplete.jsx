@@ -1,10 +1,11 @@
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import EventBus from 'modules/helpers/eventbus';
 
 import './autocomplete.scss';
 
-export default class Autocomplete extends PureComponent {
+class Autocomplete extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,3 +92,12 @@ export default class Autocomplete extends PureComponent {
     );
   }
 }
+
+Autocomplete.propTypes = {
+  suggestions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+};
+
+export default Autocomplete;

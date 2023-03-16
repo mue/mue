@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 import ImageCarousel from 'components/helpers/carousel/Carousel';
 import { toast } from 'react-toastify';
@@ -22,7 +23,7 @@ import { install, uninstall } from 'modules/helpers/marketplace';
 
 import ShareModal from 'components/helpers/sharemodal/ShareModal';
 
-export default class Item extends PureComponent {
+class Item extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -327,3 +328,12 @@ export default class Item extends PureComponent {
     );
   }
 }
+
+Item.propTypes = {
+  data: PropTypes.object,
+  addonInstalled: PropTypes.bool,
+  addonInstalledVersion: PropTypes.string,
+  toggleFunction: PropTypes.func,
+};
+
+export default Item;

@@ -1,9 +1,11 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import { MdErrorOutline } from 'react-icons/md';
 import { captureException } from '@sentry/react';
 
-export default class ErrorBoundary extends PureComponent {
+class ErrorBoundary extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +15,11 @@ export default class ErrorBoundary extends PureComponent {
     };
   }
 
+  /**
+   * If an error occurs, log the error, and set the state to error: true, and errorData: error.
+   * @param {Error} error The error that occurred.
+   * @returns An object with two properties: error and errorData.
+   */
   static getDerivedStateFromError(error) {
     console.log(error);
     variables.stats.postEvent('modal', 'Error occurred');
@@ -63,3 +70,9 @@ export default class ErrorBoundary extends PureComponent {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default ErrorBoundary;

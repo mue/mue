@@ -1,5 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, memo } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   MdChecklist,
   MdPushPin,
@@ -53,6 +55,13 @@ class Todo extends PureComponent {
     EventBus.off('refresh');
   }
 
+  /**
+   * It takes an array, removes an item from it, and then inserts it at a new index.
+   * @param {Array} array The array to move the item in.
+   * @param {Number} oldIndex The index of the item to move.
+   * @param {Number} newIndex The index to move the item to.
+   * @returns The result of the splice method.
+   */
   arrayMove(array, oldIndex, newIndex) {
     const result = Array.from(array);
     const [removed] = result.splice(oldIndex, 1);
@@ -79,6 +88,12 @@ class Todo extends PureComponent {
     });
   }
 
+  /**
+   * This function takes in an action, an index, and data, and then updates the todo list accordingly.
+   * @param {String} action The action to perform. Can be 'add', 'remove', 'set', or 'done'.
+   * @param {Number} index The index of the item to perform the action on.
+   * @param {Object} data The data to use for the action.
+   */
   updateTodo(action, index, data) {
     let todo = this.state.todo;
     switch (action) {
@@ -227,5 +242,13 @@ function TodoWrapper() {
     <Todo todoRef={reference} floatRef={floating} position={strategy} xPosition={x} yPosition={y} />
   );
 }
+
+Todo.propTypes = {
+  todoRef: PropTypes.object,
+  floatRef: PropTypes.object,
+  position: PropTypes.string,
+  xPosition: PropTypes.string,
+  yPosition: PropTypes.string,
+};
 
 export default memo(TodoWrapper);

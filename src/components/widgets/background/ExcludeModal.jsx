@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 import EventBus from 'modules/helpers/eventbus';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 import { MdClose, MdDone } from 'react-icons/md';
@@ -10,7 +11,7 @@ function ExcludeModal({ modalClose, info }) {
     backgroundExclude.push(info.pun);
     backgroundExclude = JSON.stringify(backgroundExclude);
     localStorage.setItem('backgroundExclude', backgroundExclude);
-    EventBus.dispatch('refresh', 'background');
+    EventBus.emit('refresh', 'background');
     modalClose();
   };
 
@@ -44,5 +45,10 @@ function ExcludeModal({ modalClose, info }) {
     </div>
   );
 }
+
+ExcludeModal.propTypes = {
+  modalClose: PropTypes.func.isRequired,
+  info: PropTypes.object.isRequired,
+};
 
 export default memo(ExcludeModal);

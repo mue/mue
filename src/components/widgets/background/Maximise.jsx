@@ -1,10 +1,12 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import { MdCropFree } from 'react-icons/md';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
-export default class Maximise extends PureComponent {
+class Maximise extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -81,3 +83,9 @@ export default class Maximise extends PureComponent {
     );
   }
 }
+
+Maximise.propTypes = {
+  fontSize: PropTypes.number,
+};
+
+export default Maximise;

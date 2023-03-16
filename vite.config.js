@@ -61,11 +61,7 @@ const prepareBuilds = () => ({
 });
 
 export default defineConfig({
-  plugins: [
-    react(),
-    prepareBuilds(),
-    progress(),
-  ],
+  plugins: [react(), prepareBuilds(), progress()],
   server: {
     open: true,
     hmr: {

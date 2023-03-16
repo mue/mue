@@ -51,7 +51,7 @@ function ExperimentalSettings() {
           varient="outlined"
           InputLabelProps={{ shrink: true }}
         />
-        <button className="uploadbg" onClick={() => EventBus.dispatch(eventType, eventName)}>
+        <button className="uploadbg" onClick={() => EventBus.emit(eventType, eventName)}>
           Send
         </button>
       </SettingsItem>

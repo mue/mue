@@ -1,3 +1,11 @@
+/**
+ * It takes three numbers, converts them to hexadecimal, and returns a string of the three hexadecimal
+ * numbers concatenated together
+ * @param red - The red value of the color (0-255)
+ * @param green - 0
+ * @param blue - 0
+ * @returns a string of the hexadecimal value of the rgb values passed in.
+ */
 export default function rgbToHex(red, green, blue) {
   let r16 = red.toString(16);
   let g16 = green.toString(16);

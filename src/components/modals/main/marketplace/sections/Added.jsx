@@ -13,8 +13,8 @@ import Dropdown from '../../settings/Dropdown';
 import { install, uninstall, urlParser } from 'modules/helpers/marketplace';
 
 export default class Added extends PureComponent {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       installed: JSON.parse(localStorage.getItem('installed')),
       item: {},

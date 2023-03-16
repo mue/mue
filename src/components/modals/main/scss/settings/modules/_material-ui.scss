@@ -98,7 +98,7 @@ legend,
     color: t($color);
   }
 
-  li{
+  li {
     &:hover {
       @include themed {
         background-color: t($modal-sidebarActive);

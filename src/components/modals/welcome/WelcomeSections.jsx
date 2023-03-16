@@ -1,5 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   MdCloudUpload,
   MdAutoAwesome,
@@ -22,7 +24,7 @@ import { importSettings } from 'modules/helpers/settings/modals';
 import default_settings from 'modules/default_settings.json';
 import languages from 'modules/languages.json';
 
-export default class WelcomeSections extends PureComponent {
+class WelcomeSections extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -420,3 +422,10 @@ export default class WelcomeSections extends PureComponent {
     }
   }
 }
+
+WelcomeSections.propTypes = {
+  currentTab: PropTypes.number.isRequired,
+  switchTab: PropTypes.func.isRequired,
+};
+
+export default WelcomeSections;

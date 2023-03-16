@@ -1,8 +1,9 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { MdStar, MdStarBorder } from 'react-icons/md';
 
-export default class Favourite extends PureComponent {
+class Favourite extends PureComponent {
   buttons = {
     favourited: <MdStar onClick={() => this.favourite()} className="topicons" />,
     unfavourited: <MdStarBorder onClick={() => this.favourite()} className="topicons" />,
@@ -103,3 +104,9 @@ export default class Favourite extends PureComponent {
     return this.state.favourited;
   }
 }
+
+Favourite.propTypes = {
+  credit: PropTypes.string,
+  offline: PropTypes.bool,
+  pun: PropTypes.string,
+};

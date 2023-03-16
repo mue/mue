@@ -47,7 +47,7 @@ export default class SearchSettings extends PureComponent {
       localStorage.setItem('customSearchEngine', this.state.customValue);
     }
 
-    EventBus.dispatch('refresh', 'search');
+    EventBus.emit('refresh', 'search');
   }
 
   setSearchEngine(input) {
@@ -64,7 +64,7 @@ export default class SearchSettings extends PureComponent {
       localStorage.setItem('searchEngine', input);
     }
 
-    EventBus.dispatch('refresh', 'search');
+    EventBus.emit('refresh', 'search');
   }
 
   render() {

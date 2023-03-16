@@ -35,8 +35,8 @@ export default class Modals extends PureComponent {
     if (window.location.search === '?nointro=true') {
       if (localStorage.getItem('showWelcome') === 'true') {
         localStorage.setItem('showWelcome', false);
-        EventBus.dispatch('refresh', 'widgets');
-        EventBus.dispatch('refresh', 'backgroundwelcome');
+        EventBus.emit('refresh', 'widgets');
+        EventBus.emit('refresh', 'backgroundwelcome');
       }
     }
 
@@ -49,9 +49,9 @@ export default class Modals extends PureComponent {
     this.setState({
       welcomeModal: false,
     });
-    EventBus.dispatch('refresh', 'widgetsWelcomeDone');
-    EventBus.dispatch('refresh', 'widgets');
-    EventBus.dispatch('refresh', 'backgroundwelcome');
+    EventBus.emit('refresh', 'widgetsWelcomeDone');
+    EventBus.emit('refresh', 'widgets');
+    EventBus.emit('refresh', 'backgroundwelcome');
   }
 
   previewWelcome() {
@@ -61,7 +61,7 @@ export default class Modals extends PureComponent {
       welcomeModal: false,
       preview: true,
     });
-    EventBus.dispatch('refresh', 'widgetsWelcome');
+    EventBus.emit('refresh', 'widgetsWelcome');
   }
 
   toggleModal(type, action) {

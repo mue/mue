@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   WiDirectionDownLeft,
@@ -53,5 +54,9 @@ function WindDirectionIcon({ degrees }) {
 
   return direction ? direction.icon : null;
 }
+
+WindDirectionIcon.propTypes = {
+  degrees: PropTypes.number.isRequired,
+};
 
 export default memo(WindDirectionIcon);

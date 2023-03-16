@@ -48,7 +48,7 @@ export function install(type, input, sideload) {
       }
       localStorage.setItem('backgroundType', 'photo_pack');
       localStorage.removeItem('backgroundchange');
-      EventBus.dispatch('refresh', 'background');
+      EventBus.emit('refresh', 'background');
       // TODO: make this legitimately good and work without a reload - currently we just refresh
       sleep(4000);
       window.location.reload();
@@ -66,7 +66,7 @@ export function install(type, input, sideload) {
       }
       localStorage.setItem('quoteType', 'quote_pack');
       localStorage.removeItem('quotechange');
-      EventBus.dispatch('refresh', 'quote');
+      EventBus.emit('refresh', 'quote');
       break;
 
     default:
@@ -121,7 +121,7 @@ export function uninstall(type, name) {
         localStorage.removeItem('quote_packs');
       }
       localStorage.removeItem('quotechange');
-      EventBus.dispatch('refresh', 'marketplacequoteuninstall');
+      EventBus.emit('refresh', 'marketplacequoteuninstall');
       break;
 
     case 'photos':
@@ -142,7 +142,7 @@ export function uninstall(type, name) {
         localStorage.removeItem('photo_packs');
       }
       localStorage.removeItem('backgroundchange');
-      EventBus.dispatch('refresh', 'marketplacebackgrounduninstall');
+      EventBus.emit('refresh', 'marketplacebackgrounduninstall');
       break;
 
     default:

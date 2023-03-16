@@ -1,10 +1,11 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { Checkbox as CheckboxUI, FormControlLabel } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 
-export default class Checkbox extends PureComponent {
+class Checkbox extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +37,7 @@ export default class Checkbox extends PureComponent {
       }
     }
 
-    EventBus.dispatch('refresh', this.props.category);
+    EventBus.emit('refresh', this.props.category);
   };
 
   render() {
@@ -57,3 +58,14 @@ export default class Checkbox extends PureComponent {
     );
   }
 }
+
+Checkbox.propTypes = {
+  name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  category: PropTypes.string,
+  element: PropTypes.string,
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
+};
+
+export default Checkbox;

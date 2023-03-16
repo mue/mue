@@ -1,6 +1,7 @@
 import variables from 'modules/variables';
 
 import { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { /*MdHelpOutline,*/ MdFlag, MdArrowBack } from 'react-icons/md';
 
 import Slider from './Slider';
@@ -10,7 +11,7 @@ import SettingsItem from './SettingsItem';
 import { values } from 'modules/helpers/settings/modals';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
-export default class Header extends PureComponent {
+class Header extends PureComponent {
   render() {
     return (
       <>
@@ -89,3 +90,17 @@ export default class Header extends PureComponent {
     );
   }
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  setting: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  element: PropTypes.string,
+  backButton: PropTypes.bool,
+  clickEffect: PropTypes.func,
+  switch: PropTypes.bool,
+  zoomSetting: PropTypes.string,
+  zoomCategory: PropTypes.string,
+};
+
+export default Header;

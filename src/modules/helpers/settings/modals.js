@@ -1,6 +1,12 @@
 import variables from 'modules/variables';
 import { toast } from 'react-toastify';
 
+/**
+ * It creates a link to a file, and then clicks it
+ * @param data - the data you want to save
+ * @param [filename=file] - the name of the file to be saved
+ * @param [type=text/json] - the type of file you want to save.
+ */
 export function saveFile(data, filename = 'file', type = 'text/json') {
   if (typeof data === 'object') {
     data = JSON.stringify(data, undefined, 4);
@@ -36,6 +42,9 @@ export function saveFile(data, filename = 'file', type = 'text/json') {
   a.dispatchEvent(event);
 }
 
+/**
+ * It takes all the settings from localStorage and saves them to a file
+ */
 export function exportSettings() {
   const settings = {};
 
@@ -49,6 +58,11 @@ export function exportSettings() {
   variables.stats.postEvent('tab', 'Settings exported');
 }
 
+/**
+ * It takes a JSON file of Mue settings, parses it, and then sets the localStorage values to the values in the
+ * file.
+ * @param e - The JSON settings string to import
+ */
 export function importSettings(e) {
   const content = JSON.parse(e);
 
@@ -60,6 +74,11 @@ export function importSettings(e) {
   variables.stats.postEvent('tab', 'Settings imported');
 }
 
+/**
+ * It returns an array of objects with a value and label property for the Mue sliders.
+ * @param type - The type of slider you want to use.
+ * @returns An object with keys of either zoom, toast, background or experimental.
+ */
 export function values(type) {
   const marks = {
     zoom: [
@@ -98,5 +117,5 @@ export function values(type) {
     ],
   };
 
-  return marks[type];
+  return marks[type] || [];
 }

@@ -4,6 +4,11 @@ import setRgba from './setRgba';
 const hexRegexp = /(^#{0,1}[0-9A-F]{6}$)|(^#{0,1}[0-9A-F]{3}$)|(^#{0,1}[0-9A-F]{8}$)/i;
 const regexp = /([0-9A-F])([0-9A-F])([0-9A-F])/i;
 
+/**
+ * It takes a hex color code and returns an object with the color's RGB and HSV values
+ * @param value - The hex value to convert to RGB.
+ * @returns An object with the properties red, green, blue, alpha, hue, saturation, and value.
+ */
 export default function hexToRgb(value) {
   const valid = hexRegexp.test(value);
 

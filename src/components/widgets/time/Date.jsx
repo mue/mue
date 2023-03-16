@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 
-import { nth, convertTimezone } from 'modules/helpers/date';
+import { nth, convertTimezone } from '../../../modules/helpers/date';
 import EventBus from 'modules/helpers/eventbus';
 
 import './date.scss';
@@ -16,6 +16,10 @@ export default class DateWidget extends PureComponent {
     this.date = createRef();
   }
 
+  /**
+   * Get the week number of the year for the given date.
+   * @param {Date} date
+   */
   getWeekNumber(date) {
     const dateToday = new Date(date.valueOf());
     const dayNumber = (dateToday.getDay() + 6) % 7;

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
 import { MdDisabledVisible } from 'react-icons/md';
@@ -9,6 +10,12 @@ import WindDirectionIcon from './WindDirectionIcon';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 function Expanded({ state, weatherType, variables }) {
+  /**
+   * If the localStorage item is true and the weatherType is greater than or equal to 3, or if the
+   * weatherType is equal to 3, then return true.
+   * @param {string} setting - The localStorage item to check.
+   * @returns a boolean value.
+   */
   const enabled = (setting) => {
     return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === '3';
   };
@@ -106,5 +113,11 @@ function Expanded({ state, weatherType, variables }) {
     </div>
   );
 }
+
+Expanded.propTypes = {
+  state: PropTypes.object.isRequired,
+  weatherType: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  variables: PropTypes.object.isRequired,
+};
 
 export default memo(Expanded);

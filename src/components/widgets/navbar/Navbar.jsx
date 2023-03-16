@@ -1,5 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
+import PropTypes from 'prop-types';
+
 import { MdRefresh, MdSettings } from 'react-icons/md';
 
 import Notes from './Notes';
@@ -11,7 +13,7 @@ import EventBus from 'modules/helpers/eventbus';
 
 import './scss/index.scss';
 
-export default class Navbar extends PureComponent {
+class Navbar extends PureComponent {
   constructor() {
     super();
     this.navbarContainer = createRef();
@@ -81,12 +83,12 @@ export default class Navbar extends PureComponent {
   refresh() {
     switch (this.state.refreshOption) {
       case 'background':
-        return EventBus.dispatch('refresh', 'backgroundrefresh');
+        return EventBus.emit('refresh', 'backgroundrefresh');
       case 'quote':
-        return EventBus.dispatch('refresh', 'quoterefresh');
+        return EventBus.emit('refresh', 'quoterefresh');
       case 'quotebackground':
-        EventBus.dispatch('refresh', 'quoterefresh');
-        return EventBus.dispatch('refresh', 'backgroundrefresh');
+        EventBus.emit('refresh', 'quoterefresh');
+        return EventBus.emit('refresh', 'backgroundrefresh');
       default:
         window.location.reload();
     }
@@ -143,3 +145,9 @@ export default class Navbar extends PureComponent {
     );
   }
 }
+
+Navbar.propTypes = {
+  openModal: PropTypes.func,
+};
+
+export default Navbar;
