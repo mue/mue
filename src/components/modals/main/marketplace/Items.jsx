@@ -66,14 +66,14 @@ function Items({
               <img
                 className="item-back"
                 alt=""
-                draggable="false"
+                draggable={false}
                 src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
                 aria-hidden="true"
               />
               <img
                 className="item-icon"
                 alt="icon"
-                draggable="false"
+                draggable={false}
                 src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
               />
               <div className="card-details">

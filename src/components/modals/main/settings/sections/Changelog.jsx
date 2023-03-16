@@ -134,7 +134,7 @@ export default class Changelog extends PureComponent {
         </h5>
         {this.state.image ? (
           <img
-            draggable="false"
+            draggable={false}
             src={this.state.image}
             alt={this.state.title}
             className="updateImage"

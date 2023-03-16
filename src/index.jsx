@@ -1,6 +1,6 @@
 /* eslint-disable import/first */
-if (process.env.NODE_ENV==='development') {
-  import("preact/debug");
+if (process.env.NODE_ENV === 'development') {
+  import('preact/debug');
 }
 
 import { render } from 'preact';

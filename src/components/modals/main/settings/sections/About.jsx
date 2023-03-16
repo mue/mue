@@ -133,7 +133,7 @@ export default class About extends PureComponent {
         </span>
         <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
-            <img draggable="false" className="aboutLogo" src={this.state.image} alt="Logo" />
+            <img draggable={false} className="aboutLogo" src={this.state.image} alt="Logo" />
             <span className="title">
               {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
               {variables.constants.VERSION}
@@ -290,7 +290,7 @@ export default class About extends PureComponent {
               <Tooltip title={login} key={login}>
                 <a href={'https://github.com/' + login} target="_blank" rel="noopener noreferrer">
                   <img
-                    draggable="false"
+                    draggable={false}
                     src={'https://avatars.githubusercontent.com/u/' + id + '?s=128'}
                     alt={login}
                   ></img>
@@ -302,7 +302,7 @@ export default class About extends PureComponent {
               this.state.other_contributors.map(({ login, avatar_url }) => (
                 <Tooltip title={login} key={login}>
                   <a href={'https://github.com/' + login} target="_blank" rel="noopener noreferrer">
-                    <img draggable="false" src={avatar_url + '&s=128'} alt={login}></img>
+                    <img draggable={false} src={avatar_url + '&s=128'} alt={login}></img>
                   </a>
                 </Tooltip>
               ))
@@ -330,7 +330,7 @@ export default class About extends PureComponent {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img draggable="false" src={avatar.split('?')[0] + '?s=128'} alt={handle}></img>
+                    <img draggable={false} src={avatar.split('?')[0] + '?s=128'} alt={handle}></img>
                   </a>
                 </Tooltip>
               );

@@ -119,7 +119,7 @@ class Item extends PureComponent {
             {this.props.data.data.settings ? (
               <img
                 alt="product"
-                draggable="false"
+                draggable={false}
                 src={iconsrc}
                 onClick={() => this.setState({ showLightbox: true })}
               />
@@ -285,7 +285,7 @@ class Item extends PureComponent {
               <img
                 className="icon"
                 alt="icon"
-                draggable="false"
+                draggable={false}
                 src={variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}
               />
               {this.props.button}
