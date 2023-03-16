@@ -110,3 +110,5 @@ Favourite.propTypes = {
   offline: PropTypes.bool,
   pun: PropTypes.string,
 };
+
+export default Favourite;
