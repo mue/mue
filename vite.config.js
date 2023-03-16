@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import preact from '@preact/preset-vite';
 import path from 'path';
 import fs from 'fs';
 import ADMZip from 'adm-zip';
@@ -61,7 +61,7 @@ const prepareBuilds = () => ({
 });
 
 export default defineConfig({
-  plugins: [react(), prepareBuilds(), progress()],
+  plugins: [preact(), prepareBuilds(), progress()],
   server: {
     open: true,
     hmr: {
@@ -86,13 +86,17 @@ export default defineConfig({
       },
     },
   },
+  alias: {
+    react: 'preact/compat',
+    'react-dom': 'preact/compat',
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
       components: path.resolve(__dirname, './src/components'),
       modules: path.resolve(__dirname, './src/modules'),
       translations: path.resolve(__dirname, './src/translations'),
-      scss: path.resolve(__dirname, './src/scss'),
+      scss: path.resolve(__dirname, './src/scss')
     },
   },
 });

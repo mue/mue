@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { Suspense, lazy, useState, memo } from 'react';
+import { Suspense, lazy, useState, memo } from 'preact/compat';
 import PropTypes from 'prop-types';
 
 import { MdClose } from 'react-icons/md';

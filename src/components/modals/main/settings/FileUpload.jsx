@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { compressAccurately, filetoDataURL } from 'image-conversion';

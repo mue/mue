@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
+import { PureComponent, Fragment } from 'preact/compat';
 import PropTypes from 'prop-types';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 import ImageCarousel from 'components/helpers/carousel/Carousel';

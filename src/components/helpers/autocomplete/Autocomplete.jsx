@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import PropTypes from 'prop-types';
 
 import EventBus from 'modules/helpers/eventbus';

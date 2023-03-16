@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
+import { PureComponent, createRef } from 'preact/compat';
 import { MdAddLink, MdLinkOff, MdCancel, MdEdit } from 'react-icons/md';
 import Header from '../Header';
 import Checkbox from '../Checkbox';

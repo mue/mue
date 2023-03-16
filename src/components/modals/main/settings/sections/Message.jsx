@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';

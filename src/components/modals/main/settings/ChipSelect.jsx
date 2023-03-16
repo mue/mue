@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState, memo } from 'preact/compat';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';

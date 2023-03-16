@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
+import { PureComponent, createRef } from 'preact/compat';
 
 import { nth, convertTimezone } from 'modules/helpers/date';
 import EventBus from 'modules/helpers/eventbus';

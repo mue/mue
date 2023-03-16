@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
+import { PureComponent, createRef } from 'preact/compat';
 import {
   MdContentCopy,
   MdStarBorder,

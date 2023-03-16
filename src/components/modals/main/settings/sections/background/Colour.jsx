@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
+import { PureComponent, Fragment } from 'preact/compat';
 import { ColorPicker } from 'react-color-gradient-picker';
 import { toast } from 'react-toastify';
 import SettingsItem from '../../SettingsItem';

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { useState, memo } from 'react';
+import { useState, memo } from 'preact/compat';
 import PropTypes from 'prop-types';
 import Favourite from './Favourite';
 import {

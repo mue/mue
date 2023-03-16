@@ -1,4 +1,4 @@
-import { PureComponent, Fragment, Suspense, lazy } from 'react';
+import { PureComponent, Fragment, Suspense, lazy } from 'preact/compat';
 
 import Clock from './time/Clock';
 import Greeting from './greeting/Greeting';

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { useState, memo } from 'react';
+import { useState, memo } from 'preact/compat';
 import Checkbox from '../Checkbox';
 import Slider from '../Slider';
 import { TextField } from '@mui/material';

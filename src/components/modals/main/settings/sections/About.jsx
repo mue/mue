@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import { MdEmail, MdContactPage } from 'react-icons/md';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
