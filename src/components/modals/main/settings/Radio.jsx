@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
-import translations from 'modules/translations';
+import { translations } from 'modules/translations';
 
 class Radio extends PureComponent {
   constructor(props) {

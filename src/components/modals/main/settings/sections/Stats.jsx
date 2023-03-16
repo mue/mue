@@ -1,8 +1,9 @@
 /* eslint-disable array-callback-return */
 import variables from 'modules/variables';
 import { PureComponent } from 'preact/compat';
-import { MdShowChart } from 'react-icons/md';
+import { MdShowChart, MdRestartAlt } from 'react-icons/md';
 import { FaTrophy } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 import achievementsData from 'modules/helpers/settings/achievements.json';
 import translations from 'modules/helpers/settings/achievement_translations/index';
@@ -64,6 +65,16 @@ export default class Stats extends PureComponent {
       }
     });
     return count;
+  }
+
+  resetStats() {
+    localStorage.setItem('statsData', JSON.stringify({}));
+    this.setState({
+      stats: {},
+    });
+    toast.success('Stats reset');
+    this.getAchievements();
+    this.forceUpdate();
   }
 
   componentDidMount() {
@@ -167,6 +178,9 @@ export default class Stats extends PureComponent {
               </div>
             </div>
           </div>
+          <div className="statsReset">
+          <button onClick={() => this.resetStats()}><MdRestartAlt /> {variables.getMessage('modals.main.settings.buttons.reset')}</button>
+        </div>
           <div className="statSection leftPanel">
             <span className="title">
               {variables.getMessage('modals.main.settings.sections.stats.achievements')}
