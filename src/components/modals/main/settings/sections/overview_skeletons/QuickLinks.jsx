@@ -1,4 +1,4 @@
-import { memo } from 'preact/compat';
+import { memo } from 'react';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
 

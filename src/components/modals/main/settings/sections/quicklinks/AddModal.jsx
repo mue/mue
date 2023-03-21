@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 
-import { useState, memo } from 'preact/compat';
+import { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import { TextareaAutosize } from '@mui/material';
 import { MdAddLink, MdClose } from 'react-icons/md';

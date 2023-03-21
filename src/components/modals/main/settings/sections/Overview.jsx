@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'preact/compat';
+import { PureComponent } from 'react';
 import { MdOutlineDragIndicator } from 'react-icons/md';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';

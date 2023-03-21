@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // todo: refactor all of this
 import variables from 'modules/variables';
-import { PureComponent } from 'preact/compat';
+import { PureComponent } from 'react';
 import {
   MdSettings as Settings,
   MdOutlineInsertPhoto as Photos,

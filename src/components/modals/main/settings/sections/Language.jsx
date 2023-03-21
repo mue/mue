@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'preact/compat';
+import { PureComponent } from 'react';
 
 import Radio from '../Radio';
 

@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 
-import { useState, memo } from 'preact/compat';
+import { useState, memo } from 'react';
 
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';

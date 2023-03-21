@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 // todo: rewrite this mess
 import variables from 'modules/variables';
-import { PureComponent } from 'preact/compat';
+import { PureComponent } from 'react';
 
 import PhotoInformation from './PhotoInformation';
 

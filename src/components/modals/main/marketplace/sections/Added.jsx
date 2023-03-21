@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'preact/compat';
+import { PureComponent } from 'react';
 import { MdUpdate, MdOutlineExtensionOff, MdCode } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';

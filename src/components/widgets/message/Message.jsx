@@ -1,4 +1,4 @@
-import { PureComponent, createRef } from 'preact/compat';
+import { PureComponent, createRef } from 'react';
 
 import EventBus from 'modules/helpers/eventbus';
 

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'preact/compat';
+import { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { MdRefresh, MdSettings } from 'react-icons/md';

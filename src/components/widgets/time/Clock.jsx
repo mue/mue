@@ -1,4 +1,4 @@
-import { PureComponent, Suspense, lazy } from 'preact/compat';
+import { PureComponent, Suspense, lazy } from 'react';
 
 import { convertTimezone } from 'modules/helpers/date';
 import EventBus from 'modules/helpers/eventbus';

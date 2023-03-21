@@ -1,4 +1,4 @@
-import { memo } from 'preact/compat';
+import { memo } from 'react';
 
 function MessageSkeleton() {
   return (

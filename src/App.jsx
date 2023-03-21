@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'preact/compat';
+import { PureComponent } from 'react';
 import { ToastContainer } from 'react-toastify';
 
 import Background from 'components/widgets/background/Background';

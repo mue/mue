@@ -1,4 +1,4 @@
-import { PureComponent, createRef } from 'preact/compat';
+import { PureComponent, createRef } from 'react';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 import EventBus from 'modules/helpers/eventbus';
 

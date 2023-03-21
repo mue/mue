@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'preact/compat';
+import { PureComponent, createRef } from 'react';
 import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
 import { BsGoogle } from 'react-icons/bs';
 import { SiDuckduckgo, SiMicrosoftbing, SiYahoo, SiBaidu } from 'react-icons/si';

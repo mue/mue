@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, memo } from 'preact/compat';
+import { PureComponent, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';

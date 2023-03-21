@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { memo } from 'preact/compat';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import EventBus from 'modules/helpers/eventbus';
 import Tooltip from 'components/helpers/tooltip/Tooltip';

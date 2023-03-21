@@ -1,4 +1,4 @@
-import { memo } from 'preact/compat';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import variables from 'modules/variables';
 import './preview.scss';

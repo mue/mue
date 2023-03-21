@@ -1,9 +1,4 @@
-/* eslint-disable import/first */
-if (process.env.NODE_ENV === 'development') {
-  import('preact/debug');
-}
-
-import { render } from 'preact';
+import { render } from 'react-dom';
 import * as Sentry from '@sentry/react';
 
 import App from './App';

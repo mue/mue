@@ -1,4 +1,4 @@
-import { Suspense, lazy, memo } from 'preact/compat';
+import { Suspense, lazy, memo } from 'react';
 const Analog = lazy(() => import('react-clock'));
 
 function ClockSkeleton() {

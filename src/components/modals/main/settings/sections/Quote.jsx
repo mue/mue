@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import React, { PureComponent } from 'preact/compat';
+import React, { PureComponent } from 'react';
 import {
   MdCancel,
   MdAdd,

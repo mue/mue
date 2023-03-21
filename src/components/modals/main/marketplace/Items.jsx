@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import React, { memo } from 'preact/compat';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 

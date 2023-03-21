@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'preact/compat';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { MdErrorOutline } from 'react-icons/md';
