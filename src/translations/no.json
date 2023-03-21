@@ -26,9 +26,7 @@
       "category": "Category",
       "exclude": "Don't show again",
       "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "categories": "Categories",
-      "photo": "Photo",
-      "on": "on"
+      "confirm": "Confirm"
     },
     "search": "Søk",
     "quicklinks": {
@@ -47,13 +45,7 @@
       "not_found": "Not Found",
       "meters": "{amount} meter",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}",
-      "options": {
-        "basic": "Basic",
-        "standard": "Standard",
-        "expanded": "Expanded",
-        "custom": "Custom"
-      }
+      "feels_like": "Feels like {amount}"
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -73,7 +65,8 @@
       "todo": {
         "title": "Todo",
         "pin": "Pin",
-        "add": "Add"
+        "add": "Add",
+        "no_todos": "No Todos"
       }
     }
   },
@@ -129,7 +122,8 @@
               "minute_hand": "Minutes hand",
               "hour_hand": "Hours hand",
               "hour_marks": "Hour marks",
-              "minute_marks": "Minute marks"
+              "minute_marks": "Minute marks",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "Percentage complete",
             "vertical_clock": {
@@ -267,8 +261,7 @@
               "hour": "Hour",
               "day": "Day",
               "month": "Month"
-            },
-            "category": "Category"
+            }
           },
           "search": {
             "title": "Søkebar",
@@ -298,6 +291,7 @@
               "title": "Extra information",
               "show_location": "Show location",
               "show_description": "Show description",
+              "weather_description": "Weather description",
               "cloudiness": "Cloudiness",
               "humidity": "Humidity",
               "visibility": "Visibility",
@@ -396,7 +390,12 @@
               "title": "Accessibility",
               "description": "Accessibility settings for Mue",
               "animations": "Animasjoner",
-              "text_shadow": "Widget text shadow",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
               "widget_zoom": "Widget zoom",
               "toast_duration": "Toast duration",
               "milliseconds": "milliseconds"
@@ -432,7 +431,6 @@
           },
           "stats": {
             "title": "Stats",
-            "warning": "You need to enable usage data in order to use this feature. This data is only stored locally.",
             "sections": {
               "tabs_opened": "Tabs opened",
               "backgrounds_favourited": "Backgrounds favourited",
@@ -477,6 +475,7 @@
             "support_mue": "Support Mue",
             "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
             "support_donate": "Donate",
+            "form_button": "Form",
             "resources_used": {
               "title": "Resources used",
               "bg_images": "Offline background images"
@@ -503,6 +502,7 @@
         "no_items": "No items in this category",
         "collection": "Collection",
         "explore_collection": "Explore Collection",
+        "add_all": "Add All To Mue",
         "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
@@ -577,11 +577,9 @@
             "quotes": "Quotes Pack"
           },
           "descriptions": {
-            "settings": "",
+            "settings": "Collection of settings to customise Mue.",
             "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic.",
-            "photo_pack": "",
-            "quote_pack": ""
+            "quotes": "Collection of quotes relating to a topic."
           },
           "information": "Information",
           "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",

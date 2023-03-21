@@ -25,21 +25,22 @@
 
 .notesContainer {
   @extend %basic;
+
   padding: 15px;
   text-align: center;
   border-radius: 12px;
   position: absolute;
-  max-height: 80vh !important;
   font-size: 1rem !important;
-  /*top: 100%;
+
+  /* top: 100%;
   left: 50%;
-  margin-left: -130px;*/
+  margin-left: -130px; */
 
   .notes-buttons {
     button {
       @include basicIconButton(11px, 1.3rem, ui);
 
-      @include themed() {
+      @include themed {
         background: t($btn-background) !important;
 
         &:hover {
@@ -65,7 +66,9 @@
     textarea {
       max-height: 65vh !important;
       overflow-y: visible !important;
+
       @extend %basic;
+
       border: none;
       padding: 15px;
       border-radius: 12px;
@@ -87,14 +90,15 @@ textarea {
 
 .topBarNotes {
   @extend %basic;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-flow: row;
   height: 50px;
   border-radius: 12px;
   flex-flow: row;
   gap: 5px;
+  user-select: none;
 
   svg {
     font-size: 1.5rem;
@@ -104,6 +108,14 @@ textarea {
 .notes-buttons {
   display: flex !important;
   gap: 10px;
+  button {
+    &:disabled {
+      @include themed() {
+        background: t($modal-sidebar) !important;
+      }
+      cursor: not-allowed;
+    }
+  }
 
   .tooltip {
     flex: 1 !important;

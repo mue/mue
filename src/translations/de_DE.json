@@ -26,9 +26,7 @@
       "category": "Category",
       "exclude": "Don't show again",
       "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "categories": "Categories",
-      "photo": "Photo",
-      "on": "on"
+      "confirm": "Confirm"
     },
     "search": "Suche",
     "quicklinks": {
@@ -47,13 +45,7 @@
       "not_found": "Nicht gefunden",
       "meters": "{amount} Meter",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}",
-      "options": {
-        "basic": "Basic",
-        "standard": "Standard",
-        "expanded": "Expanded",
-        "custom": "Custom"
-      }
+      "feels_like": "Feels like {amount}"
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -73,7 +65,8 @@
       "todo": {
         "title": "Todo",
         "pin": "Pin",
-        "add": "Add"
+        "add": "Add",
+        "no_todos": "No Todos"
       }
     }
   },
@@ -129,7 +122,8 @@
               "minute_hand": "Minutenzeiger",
               "hour_hand": "Stundenzeiger",
               "hour_marks": "Stunden-Markierungen",
-              "minute_marks": "Minuten-Markierungen"
+              "minute_marks": "Minuten-Markierungen",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "Denn Tages fotschritt in Prozent anzeigen",
             "vertical_clock": {
@@ -267,8 +261,7 @@
               "hour": "Stunde",
               "day": "Tag",
               "month": "Monat"
-            },
-            "category": "Kategorie"
+            }
           },
           "search": {
             "title": "Suche",
@@ -298,6 +291,7 @@
               "title": "Zusätzliche informationen",
               "show_location": "Standort anzeigen",
               "show_description": "Beschreibung anzeigen",
+              "weather_description": "Weather description",
               "cloudiness": "Bewölkungsgrad",
               "humidity": "Luftfeuchtigkeit",
               "visibility": "Sichtbarkeit",
@@ -396,12 +390,16 @@
               "title": "Barrierefreiheit",
               "description": "Accessibility settings for Mue",
               "animations": "Animations",
-              "text_shadow": "Widget-Textschatten",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
               "widget_zoom": "Widget größe",
               "toast_duration": "Toast Dauer",
               "milliseconds": "ms"
-            },
-            "animations": "Animationen"
+            }
           },
           "order": {
             "title": "Widget Sortieren"
@@ -433,7 +431,6 @@
           },
           "stats": {
             "title": "Statistiken",
-            "warning": "Sie müssen die Nutzungsdaten aktivieren, um diese Funktion nutzen zu können. Diese Daten werden nur lokal gespeichert.",
             "sections": {
               "tabs_opened": "Geöffnete Tabs",
               "backgrounds_favourited": "Bevorzugte Hintergründe",
@@ -478,6 +475,7 @@
             "support_mue": "Mue unterstützen",
             "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
             "support_donate": "Donate",
+            "form_button": "Form",
             "resources_used": {
               "title": "Verwendete Ressourcen",
               "bg_images": "Offline Hintergrundbilder"
@@ -504,6 +502,7 @@
         "no_items": "Keine Einträge in dieser Kategorie",
         "collection": "Collection",
         "explore_collection": "Explore Collection",
+        "add_all": "Add All To Mue",
         "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
@@ -578,11 +577,9 @@
             "quotes": "Quotes Pack"
           },
           "descriptions": {
-            "settings": "",
+            "settings": "Collection of settings to customise Mue.",
             "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic.",
-            "photo_pack": "",
-            "quote_pack": ""
+            "quotes": "Collection of quotes relating to a topic."
           },
           "information": "Information",
           "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",

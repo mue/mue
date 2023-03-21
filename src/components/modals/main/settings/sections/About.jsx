@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import { MdEmail, MdContactPage } from 'react-icons/md';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
@@ -133,7 +133,7 @@ export default class About extends PureComponent {
         </span>
         <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
-            <img draggable="false" className="aboutLogo" src={this.state.image} alt="Logo" />
+            <img draggable={false} className="aboutLogo" src={this.state.image} alt="Logo" />
             <span className="title">
               {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
               {variables.constants.VERSION}
@@ -183,7 +183,7 @@ export default class About extends PureComponent {
               rel="noopener noreferrer"
             >
               <MdContactPage />
-              Form
+              {variables.getMessage('modals.main.settings.sections.about.form_button')}
             </a>
             <Tooltip title={'Email'}>
               <a
@@ -224,6 +224,8 @@ export default class About extends PureComponent {
             <a
               className="donateButton"
               href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <BiDonateHeart />
               {variables.getMessage('modals.main.settings.sections.about.support_donate')}
@@ -288,7 +290,7 @@ export default class About extends PureComponent {
               <Tooltip title={login} key={login}>
                 <a href={'https://github.com/' + login} target="_blank" rel="noopener noreferrer">
                   <img
-                    draggable="false"
+                    draggable={false}
                     src={'https://avatars.githubusercontent.com/u/' + id + '?s=128'}
                     alt={login}
                   ></img>
@@ -300,7 +302,7 @@ export default class About extends PureComponent {
               this.state.other_contributors.map(({ login, avatar_url }) => (
                 <Tooltip title={login} key={login}>
                   <a href={'https://github.com/' + login} target="_blank" rel="noopener noreferrer">
-                    <img draggable="false" src={avatar_url + '&s=128'} alt={login}></img>
+                    <img draggable={false} src={avatar_url + '&s=128'} alt={login}></img>
                   </a>
                 </Tooltip>
               ))
@@ -328,7 +330,7 @@ export default class About extends PureComponent {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img draggable="false" src={avatar.split('?')[0] + '?s=128'} alt={handle}></img>
+                    <img draggable={false} src={avatar.split('?')[0] + '?s=128'} alt={handle}></img>
                   </a>
                 </Tooltip>
               );
@@ -347,14 +349,16 @@ export default class About extends PureComponent {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.about.photographers')}
           </span>
-          {!!this.state.loading ? <p>{this.state.loading}</p> : <></> }
+          {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
-            {this.state.photographers.map(({ name, count }) => <>
-              <li>
-                {name}
-                <span style={{ color: '#ccc' }}> ({count} images)</span>
-              </li>
-            </>)}
+            {this.state.photographers.map(({ name, count }) => (
+              <>
+                <li className="subtitle-photographers">
+                  {name}
+                  <span> ({count} images)</span>
+                </li>
+              </>
+            ))}
           </ul>
         </div>
       </>

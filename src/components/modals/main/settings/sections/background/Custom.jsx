@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
+import { PureComponent, createRef } from 'preact/compat';
 import { toast } from 'react-toastify';
 import {
   MdCancel,
@@ -15,7 +15,7 @@ import { videoCheck } from 'modules/helpers/background/widget';
 
 import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
-import Tooltip from '../../../../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 import Modal from 'react-modal';
 
@@ -29,6 +29,7 @@ export default class CustomSettings extends PureComponent {
     this.state = {
       customBackground: this.getCustom(),
       customURLModal: false,
+      urlError: '',
     };
     this.customDnd = createRef(null);
   }
@@ -39,7 +40,7 @@ export default class CustomSettings extends PureComponent {
       customBackground: [],
     });
     toast(variables.getMessage('toasts.reset'));
-    EventBus.dispatch('refresh', 'background');
+    EventBus.emit('refresh', 'background');
   };
 
   customBackground(e, text, index) {
@@ -130,6 +131,16 @@ export default class CustomSettings extends PureComponent {
   }
 
   addCustomURL(e) {
+    // regex: https://ihateregex.io/expr/url/
+    // eslint-disable-next-line no-useless-escape
+    const urlRegex =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_.~#?&=]*)/;
+    if (urlRegex.test(e) === false) {
+      return this.setState({
+        urlError: variables.getMessage('widgets.quicklinks.url_error'),
+      });
+    }
+
     this.setState({
       customURLModal: false,
       currentBackgroundIndex: this.state.customBackground.length,
@@ -273,6 +284,7 @@ export default class CustomSettings extends PureComponent {
         >
           <CustomURLModal
             modalClose={(e) => this.addCustomURL(e)}
+            urlError={this.state.urlError}
             modalCloseOnly={() => this.setState({ customURLModal: false })}
           />
         </Modal>

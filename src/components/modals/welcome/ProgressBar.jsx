@@ -1,4 +1,5 @@
-import { memo } from 'react';
+import { memo } from 'preact/compat';
+import PropTypes from 'prop-types';
 
 function ProgressBar({ count, currentTab, switchTab }) {
   return (
@@ -16,5 +17,11 @@ function ProgressBar({ count, currentTab, switchTab }) {
     </div>
   );
 }
+
+ProgressBar.propTypes = {
+  count: PropTypes.arrayOf(PropTypes.number).isRequired,
+  currentTab: PropTypes.number.isRequired,
+  switchTab: PropTypes.func.isRequired,
+};
 
 export default memo(ProgressBar);

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 
 import Header from '../Header';
 import Checkbox from '../Checkbox';
@@ -91,6 +91,11 @@ export default class TimeSettings extends PureComponent {
         <Checkbox
           name="minuteMarks"
           text={variables.getMessage('modals.main.settings.sections.time.analogue.minute_marks')}
+          category="clock"
+        />
+        <Checkbox
+          name="roundClock"
+          text={variables.getMessage('modals.main.settings.sections.time.analogue.round_clock')}
           category="clock"
         />
       </SettingsItem>

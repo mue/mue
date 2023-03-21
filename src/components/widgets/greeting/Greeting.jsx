@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
+import { PureComponent, createRef } from 'preact/compat';
 
 import { nth, convertTimezone } from 'modules/helpers/date';
 import EventBus from 'modules/helpers/eventbus';
@@ -16,6 +16,13 @@ export default class Greeting extends PureComponent {
     this.greeting = createRef();
   }
 
+  /**
+   * Change the greeting message for the events of Christmas, New Year and Halloween.
+   * If the events setting is disabled, then the greeting message will not be changed.
+   * @param {Date} time The current time.
+   * @param {String} message The current greeting message.
+   * @returns The message variable is being returned.
+   */
   doEvents(time, message) {
     if (localStorage.getItem('events') === 'false') {
       return message;
@@ -39,6 +46,11 @@ export default class Greeting extends PureComponent {
     return message;
   }
 
+  /**
+   * It takes a date object and returns the age of the person in years.
+   * @param {Date} date The date of birth.
+   * @returns The age of the person.
+   */
   calculateAge(date) {
     const diff = Date.now() - date.getTime();
     const birthday = new Date(diff);

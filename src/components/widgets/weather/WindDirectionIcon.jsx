@@ -1,4 +1,5 @@
-import { memo } from 'react';
+import { memo } from 'preact/compat';
+import PropTypes from 'prop-types';
 
 import {
   WiDirectionDownLeft,
@@ -15,38 +16,47 @@ import {
 function WindDirectionIcon({ degrees }) {
   // convert the number OpenWeatherMap gives us to the closest direction or something
   const directions = [
-    'North',
-    'North-West',
-    'West',
-    'South-West',
-    'South',
-    'South-East',
-    'East',
-    'North-East',
+    {
+      name: 'North',
+      icon: <WiDirectionUp />,
+    },
+    {
+      name: 'North-West',
+      icon: <WiDirectionUpLeft />,
+    },
+    {
+      name: 'West',
+      icon: <WiDirectionLeft />,
+    },
+    {
+      name: 'South-West',
+      icon: <WiDirectionDownLeft />,
+    },
+    {
+      name: 'South',
+      icon: <WiDirectionDown />,
+    },
+    {
+      name: 'South-East',
+      icon: <WiDirectionDownRight />,
+    },
+    {
+      name: 'East',
+      icon: <WiDirectionRight />,
+    },
+    {
+      name: 'North-East',
+      icon: <WiDirectionUpRight />,
+    },
   ];
   const direction =
     directions[Math.round(((degrees %= 360) < 0 ? degrees + 360 : degrees) / 45) % 8];
 
-  switch (direction) {
-    case 'North':
-      return <WiDirectionUp />;
-    case 'North-West':
-      return <WiDirectionUpLeft />;
-    case 'West':
-      return <WiDirectionLeft />;
-    case 'South-West':
-      return <WiDirectionDownLeft />;
-    case 'South':
-      return <WiDirectionDown />;
-    case 'South-East':
-      return <WiDirectionDownRight />;
-    case 'East':
-      return <WiDirectionRight />;
-    case 'North-East':
-      return <WiDirectionUpRight />;
-    default:
-      return null;
-  }
+  return direction ? direction.icon : null;
 }
+
+WindDirectionIcon.propTypes = {
+  degrees: PropTypes.number.isRequired,
+};
 
 export default memo(WindDirectionIcon);

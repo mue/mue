@@ -1,4 +1,5 @@
-import { memo } from 'react';
+import { memo } from 'preact/compat';
+import PropTypes from 'prop-types';
 
 import {
   WiDaySunny,
@@ -52,5 +53,9 @@ function WeatherIcon({ name }) {
       return null;
   }
 }
+
+WeatherIcon.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 export default memo(WeatherIcon);

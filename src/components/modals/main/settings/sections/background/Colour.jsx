@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
+import { PureComponent, Fragment } from 'preact/compat';
 import { ColorPicker } from 'react-color-gradient-picker';
 import { toast } from 'react-toastify';
 import SettingsItem from '../../SettingsItem';
@@ -226,10 +226,12 @@ export default class ColourSettings extends PureComponent {
           )}
           final={true}
         >
-          <span className="link" onClick={() => this.resetColour()}>
-            {variables.getMessage('modals.main.settings.buttons.reset')}
-          </span>
           {colourSettings}
+          <div className="colourReset">
+            <span className="link" onClick={() => this.resetColour()}>
+              {variables.getMessage('modals.main.settings.buttons.reset')}
+            </span>
+          </div>
         </SettingsItem>
       </>
     );

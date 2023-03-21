@@ -1,6 +1,11 @@
 // since there is so much code in the component, we have moved it to a separate file
 import offlineImages from './offlineImages.json';
 
+/**
+ * If the URL starts with `data:video/` or ends with `.mp4`, `.webm`, or `.ogg`, then it's a video.
+ * @param url - The URL of the file to be checked.
+ * @returns A function that takes a url and returns a boolean.
+ */
 export function videoCheck(url) {
   return (
     url.startsWith('data:video/') ||
@@ -10,8 +15,19 @@ export function videoCheck(url) {
   );
 }
 
+/**
+ * It gets a random photographer from the offlineImages.json file, then gets a random image from that
+ * photographer, and returns an object with the image's URL, type, and photoInfo.
+ * </code>
+ * @param type - 'background' or 'thumbnail'
+ * @returns An object with the following properties:
+ * url: A string that is the path to the image.
+ * type: A string that is the type of image.
+ * photoInfo: An object with the following properties:
+ * offline: A boolean that is true.
+ * credit: A string that is the name of the photographer.
+ */
 export function offlineBackground(type) {
-  // Get all photographers from the keys in offlineImages.json
   const photographers = Object.keys(offlineImages);
   const photographer = photographers[Math.floor(Math.random() * photographers.length)];
 
@@ -33,6 +49,10 @@ export function offlineBackground(type) {
   return object;
 }
 
+/**
+ * It takes a gradient object and returns a style object
+ * @returns An object with two properties: type and style.
+ */
 function gradientStyleBuilder({ type, angle, gradient }) {
   // Note: Append the gradient for additional browser support.
   const steps = gradient?.map((v) => `${v.colour} ${v.stop}%`);
@@ -44,6 +64,10 @@ function gradientStyleBuilder({ type, angle, gradient }) {
   };
 }
 
+/**
+ * It gets the gradient settings from localStorage, parses it, and returns the gradient style.
+ * @returns A string.
+ */
 export function getGradient() {
   const customBackgroundColour = localStorage.getItem('customBackgroundColour') || {
     angle: '180',
@@ -72,6 +96,11 @@ export function getGradient() {
   }
 }
 
+/**
+ * It returns a random colour or random gradient as a style object
+ * @param type - The type of the style. This is used to determine which style builder to use.
+ * @returns An object with two properties: type and style.
+ */
 export function randomColourStyleBuilder(type) {
   // randomColour based on https://stackoverflow.com/a/5092872
   const randomColour = () =>

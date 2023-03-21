@@ -6,54 +6,66 @@
   left: 1rem;
   flex-flow: column-reverse;
   display: flex;
+
   &:hover {
     .photoInformation {
       height: auto;
       align-items: flex-start;
       flex-flow: column;
-      .concept-buttons {
-        padding: 30px 0 0 0;
+
+      .buttons {
+        padding: 30px 0 0;
         display: flex;
       }
+
       .extra-content {
         display: flex;
         flex-flow: column;
         gap: 10px;
         transition: 0.8s;
       }
-      .concept-stats {
+
+      .stats {
         display: flex;
         padding-top: 5px;
         gap: 20px;
-        @include themed() {
+
+        @include themed {
           color: t($subColor);
         }
+
         div {
           display: flex;
           align-items: center;
           align-content: center;
           flex-direction: row;
           gap: 5px;
+
           svg {
             font-size: 1em;
           }
         }
       }
-      .concept-copyright {
+
+      .copyright {
         display: flex;
         margin-top: 10px;
         gap: 10px;
+
         a {
           text-decoration: none;
-          @include themed() {
+
+          @include themed {
             color: t($subColor);
           }
         }
       }
+
       .photoInformation-content {
         padding: 20px;
         padding-left: 0;
       }
+
       .map-concept {
         width: 100%;
       }
@@ -68,11 +80,13 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
   img {
     flex-shrink: 0;
     min-width: 100%;
     min-height: 100%;
   }
+
   svg {
     display: none;
   }
@@ -80,7 +94,7 @@
 
 .photoInformation-legacy {
   font-size: 1.36em;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 10px rgb(0 0 0 / 30%);
   color: #fff;
   z-index: 99;
   user-select: none;
@@ -111,12 +125,16 @@
       text-decoration: underline;
     }
   }
+
+  + .photoInformation {
+    animation: none !important;
+  }
 }
 
 .infoCard {
   display: none;
   background: var(--background);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
   color: var(--modal-text);
   position: fixed;
   bottom: 2.9rem;
@@ -199,6 +217,7 @@
 
 .photoInformation {
   @extend %basic;
+
   animation: fadeIn 2s;
   min-width: 300px;
   font-size: 0.8em;
@@ -208,70 +227,88 @@
   flex-flow: row;
   align-items: center;
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+
   //   width: 300px;
   padding: 10px;
+
   .link {
     text-decoration: none;
     cursor: pointer;
-    @include themed() {
+
+    @include themed {
       color: t($link);
     }
+
     &:hover {
       opacity: 0.8;
     }
   }
+
   &:hover {
     padding: 20px;
     height: auto;
     align-items: flex-start;
     flex-flow: column;
-    .concept-buttons {
-      padding: 30px 0 0 0;
+
+    .buttons {
+      padding: 30px 0 0;
       display: flex;
     }
+
     .extra-content {
       display: flex;
       flex-flow: column;
       gap: 10px;
       transition: 0.8s;
     }
-    .concept-stats {
+
+    .stats {
       display: flex;
       gap: 15px;
-      @include themed() {
+
+      @include themed {
         color: t($subColor);
       }
+
       div {
         display: flex;
         align-items: center;
         align-content: center;
         flex-direction: row;
         gap: 10px;
+
         svg {
           font-size: 1em;
         }
       }
     }
-    .concept-copyright {
+
+    .copyright {
       display: flex;
       margin-top: 10px;
       gap: 10px;
+
       a {
         text-decoration: none;
-        @include themed() {
+
+        @include themed {
           color: t($subColor);
         }
       }
     }
+
     .photoInformation-content {
       padding-left: 0;
     }
+
     .map-concept {
       width: 100%;
     }
   }
+
   .map-concept {
     @extend %basic;
+
     height: 50px;
     width: 50px;
     border-radius: 12px;
@@ -279,9 +316,11 @@
     align-items: center;
     justify-content: center;
     border: none !important;
+
     svg {
       font-size: 24px;
     }
+
     img {
       width: 100%;
       height: 100%;
@@ -291,18 +330,23 @@
       border-radius: 12px;
     }
   }
-  .concept-location {
+
+  .location {
     font-size: 1.9em;
   }
-  .concept-credit {
+
+  .credit {
     font-size: 1.4em;
-    @include themed() {
+
+    @include themed {
       color: t($subColor);
     }
+
     a {
-      @include themed() {
+      @include themed {
         color: t($subColor);
       }
+
       &:nth-child(2) {
         color: var(--modal-link);
       }
@@ -316,11 +360,14 @@
   display: flex;
   flex-flow: column;
   padding-left: 20px;
+
   a {
-    @include themed() {
+    @include themed {
       color: t($link);
     }
+
     text-decoration: none;
+
     &:hover {
       opacity: 0.9;
     }
@@ -332,12 +379,14 @@
   flex-flow: column;
   width: 100%;
   transition: 1s;
-  .concept-row {
+
+  .row {
     display: flex;
     align-items: center;
     gap: 20px;
+
     svg {
-      @include themed() {
+      @include themed {
         color: t($subColor);
         font-size: 18px;
       }
@@ -345,19 +394,20 @@
   }
 }
 
-.concept-copyright {
+.copyright {
   display: none;
 }
 
-.concept-stats {
+.stats {
   display: none;
 }
 
-.concept-buttons {
+.buttons {
   align-items: center;
   gap: 20px;
   padding: 20px 20px 0 0;
   display: none;
+
   svg {
     @include basicIconButton(11px, 1.3rem, ui);
   }
@@ -367,7 +417,35 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
+  }
+}
+
+.photoMap {
+  img {
+    height: 50px !important;
+    width: 50px !important;
+  }
+
+  a {
+    height: 50px;
+  }
+}
+
+.photoInformation:hover,
+.photoInformation-legacy + .photoInformation {
+  .photoMap {
+    height: auto !important;
+
+    img {
+      height: auto !important;
+      width: auto !important;
+    }
+
+    a {
+      height: auto !important;
+    }
   }
 }

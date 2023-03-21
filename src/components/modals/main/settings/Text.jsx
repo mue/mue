@@ -1,11 +1,12 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { TextField } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 
-export default class Text extends PureComponent {
+class Text extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +34,7 @@ export default class Text extends PureComponent {
       }
     }
 
-    EventBus.dispatch('refresh', this.props.category);
+    EventBus.emit('refresh', this.props.category);
   };
 
   resetItem = () => {
@@ -54,6 +55,7 @@ export default class Text extends PureComponent {
             value={this.state.value}
             onChange={this.handleChange}
             varient="outlined"
+            className={this.props.customcss ? 'customcss' : ''}
             multiline
             spellCheck={false}
             minRows={4}
@@ -76,3 +78,16 @@ export default class Text extends PureComponent {
     );
   }
 }
+
+Text.propTypes = {
+  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  default: PropTypes.string,
+  element: PropTypes.string,
+  customcss: PropTypes.bool,
+  textarea: PropTypes.bool,
+  upperCaseFirst: PropTypes.bool,
+};
+
+export default Text;

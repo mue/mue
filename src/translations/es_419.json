@@ -16,8 +16,8 @@
       "pexels": "en Pexels",
       "information": "Información",
       "download": "Descargar",
-      "downloads": "Downloads",
-      "views": "Views",
+      "downloads": "Descargas",
+      "views": "Vistas",
       "likes": "Likes",
       "location": "Location",
       "camera": "Camera",
@@ -26,9 +26,7 @@
       "category": "Category",
       "exclude": "Don't show again",
       "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "categories": "Categories",
-      "photo": "Photo",
-      "on": "on"
+      "confirm": "Confirm"
     },
     "search": "Buscar",
     "quicklinks": {
@@ -67,7 +65,8 @@
       "todo": {
         "title": "Todo",
         "pin": "Pin",
-        "add": "Add"
+        "add": "Add",
+        "no_todos": "No Todos"
       }
     }
   },
@@ -107,7 +106,7 @@
             "title": "Tiempo",
             "format": "Formato",
             "type": "Tipo",
-            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
+            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Digital",
               "subtitle": "Change how the digital clock looks",
@@ -123,7 +122,8 @@
               "minute_hand": "Manecilla de los minutos",
               "hour_hand": "Manecilla de las horas",
               "hour_marks": "Marcas de las horas",
-              "minute_marks": "Marcas de los minutos"
+              "minute_marks": "Marcas de los minutos",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "Porcentaje completado",
             "vertical_clock": {
@@ -261,8 +261,7 @@
               "hour": "Hora",
               "day": "Día",
               "month": "Mes"
-            },
-            "category": "Categoría"
+            }
           },
           "search": {
             "title": "Búsqueda",
@@ -292,6 +291,7 @@
               "title": "Información extra",
               "show_location": "Mostrar ubicación",
               "show_description": "Mostrar descripción",
+              "weather_description": "Weather description",
               "cloudiness": "Nubosidad",
               "humidity": "Humedad",
               "visibility": "Visibilidad",
@@ -390,7 +390,12 @@
               "title": "Accesibilidad",
               "description": "Accessibility settings for Mue",
               "animations": "Animaciones",
-              "text_shadow": "Sombra del texto del widget",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
               "widget_zoom": "Zoom del widget",
               "toast_duration": "Duración de la notificación",
               "milliseconds": "milisegundos"
@@ -426,7 +431,6 @@
           },
           "stats": {
             "title": "Estadísticas",
-            "warning": "Tienes que activar las estadísticas de uso para poder utilizar esta función. Estos datos se almacenarán localmente en su computadora.",
             "sections": {
               "tabs_opened": "Pestañas abiertas",
               "backgrounds_favourited": "Fondos en tus favoritos",
@@ -471,37 +475,15 @@
             "support_mue": "Apoya Mue",
             "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
             "support_donate": "Donate",
+            "form_button": "Form",
             "resources_used": {
               "title": "Recursos usados",
               "bg_images": "Fondos sin conexión"
             },
             "contributors": "Contribuidores",
-            "supporters": "",
+            "supporters": "Supporters",
             "no_supporters": "Actualmente no hay partidarios de Mue",
             "photographers": "Fotógrafos"
-          },
-          "keybinds": {
-            "title": "Asignación de teclas",
-            "recording": "Grabando...",
-            "click_to_record": "Click para grabar",
-            "background": {
-              "favourite": "Fondo favorito",
-              "maximise": "Maximizar fondo",
-              "download": "Descargar fondo",
-              "show_info": "Mostrar información del fondo"
-            },
-            "quote": {
-              "favourite": "Agregar citación a tus favoritos",
-              "copy": "Copiar citación",
-              "tweet": "Tuitear citación"
-            },
-            "notes": {
-              "pin": "Fijar notas",
-              "copy": "Copiar notas"
-            },
-            "search": "Enfocar búsqueda",
-            "quicklinks": "Alternar o añadir un enlace rápido",
-            "modal": "Alternal modal"
           }
         },
         "buttons": {
@@ -520,6 +502,7 @@
         "no_items": "No hay artículos en esta categoría",
         "collection": "Collection",
         "explore_collection": "Explore Collection",
+        "add_all": "Add All To Mue",
         "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
@@ -548,11 +531,7 @@
             "report": "Report"
           },
           "setting": "Setting",
-          "value": "Value",
-          "quote_warning": {
-            "title": "Advertencia",
-            "description": "¡Este paquete de citaciones solicita a servidores externos que pueden rastrearte!"
-          }
+          "value": "Value"
         },
         "offline": {
           "title": "Parece que estás desconectado",

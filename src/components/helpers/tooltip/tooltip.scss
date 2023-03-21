@@ -12,22 +12,24 @@
   }
 
   100% {
-    transform: translate(0, -0px);
+    transform: translate(0, -0);
     opacity: 1;
   }
 }
 
 .tooltipTitle {
   @extend %basic;
+
   text-align: center;
   font-size: 0.6rem;
   padding: 5px 10px;
   position: absolute;
   z-index: 1;
-  /*top: 100%;
+
+  /* top: 100%;
   left: 50%;
   margin-top: 15px;
-  margin-left: -30px;*/
+  margin-left: -30px; */
   cursor: initial;
   user-select: none;
   opacity: 1;
@@ -38,7 +40,7 @@
 
 #modal {
   .tooltipTitle {
-    @include themed() {
+    @include themed {
       background: t($modal-sidebar);
       box-shadow: 0 0 0 1px t($modal-sidebarActive);
       color: t($color);
@@ -52,20 +54,23 @@
   }
 }
 
-.tooltipTitle:before {
+.tooltipTitle::before {
   transform: scale3d(0.2, 0.2, 1);
   transition: all 0.2s ease-in-out;
 }
-.tooltipTitle:after {
+
+.tooltipTitle::after {
   transform: translate3d(0, 6px, 0);
   transition: all 0.1s ease-in-out;
 }
-.tooltipTitle:hover:before,
-.tooltipTitle:hover:after {
+
+.tooltipTitle:hover::before,
+.tooltipTitle:hover::after {
   opacity: 1;
   transform: scale3d(1, 1, 1);
 }
-.tooltipTitle:hover:after {
+
+.tooltipTitle:hover::after {
   transition: all 0.2s 0.1s ease-in-out;
 }
 
@@ -80,11 +85,20 @@
 .infoTooltip {
   position: relative;
   display: grid;
+
+  svg {
+    cursor: pointer;
+
+    &:hover {
+      @include themed {
+        color: t($color);
+      }
+    }
+  }
 }
 
 .infoTooltipTitle {
   min-width: 200px;
-  text-align: center;
   position: absolute;
   z-index: 1;
   cursor: initial;
@@ -96,30 +110,35 @@
   justify-content: center;
   flex-flow: column;
   gap: 10px;
-  @include themed() {
+
+  @include themed {
     background-color: t($modal-background);
     border-radius: t($borderRadius);
     box-shadow: 0 0 0 1px t($modal-sidebarActive);
   }
+
   .tooltipHeader {
     display: flex;
     flex-flow: row;
     align-items: center;
     gap: 25px;
   }
+
   .link {
     display: flex;
     gap: 10px;
     align-items: center;
   }
+
   .close {
     font-size: 20px;
     padding: 15px;
     place-items: center;
     display: grid;
     cursor: pointer;
+
     &:hover {
-      @include themed() {
+      @include themed {
         background: t($modal-sidebar);
         border-radius: t($borderRadius);
       }

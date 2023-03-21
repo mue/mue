@@ -1,7 +1,8 @@
 import variables from 'modules/variables';
-import { PureComponent, Fragment } from 'react';
-import Tooltip from '../../../helpers/tooltip/Tooltip';
-import ImageCarousel from '../../../helpers/carousel/Carousel';
+import { PureComponent, Fragment } from 'preact/compat';
+import PropTypes from 'prop-types';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
+import ImageCarousel from 'components/helpers/carousel/Carousel';
 import { toast } from 'react-toastify';
 import {
   MdIosShare,
@@ -20,9 +21,9 @@ import Modal from 'react-modal';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
 
-import ShareModal from '../../../helpers/sharemodal/ShareModal';
+import ShareModal from 'components/helpers/sharemodal/ShareModal';
 
-export default class Item extends PureComponent {
+class Item extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -118,7 +119,7 @@ export default class Item extends PureComponent {
             {this.props.data.data.settings ? (
               <img
                 alt="product"
-                draggable="false"
+                draggable={false}
                 src={iconsrc}
                 onClick={() => this.setState({ showLightbox: true })}
               />
@@ -126,16 +127,18 @@ export default class Item extends PureComponent {
             {this.props.data.data.quotes ? (
               <>
                 <table>
-                  <tr>
-                    <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
-                    <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
-                  </tr>
-                  {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
-                    <tr key={index}>
-                      <td>{quote.quote}</td>
-                      <td>{quote.author}</td>
+                  <tbody>
+                    <tr>
+                      <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
+                      <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
                     </tr>
-                  ))}
+                    {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
+                      <tr key={index}>
+                        <td>{quote.quote}</td>
+                        <td>{quote.author}</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
                 <div className="showMoreItems">
                   <span className="link" onClick={() => this.incrementCount('quotes')}>
@@ -157,16 +160,20 @@ export default class Item extends PureComponent {
             {this.props.data.data.settings ? (
               <>
                 <table>
-                  <tr>
-                    <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
-                    <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
-                  </tr>
-                  {Object.entries(this.props.data.data.settings).slice(0, this.state.count).map(([key, value]) => (
-                    <tr key={key}>
-                      <td>{key}</td>
-                      <td>{value}</td>
+                  <tbody>
+                    <tr>
+                      <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
+                      <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
                     </tr>
-                  ))}
+                    {Object.entries(this.props.data.data.settings)
+                      .slice(0, this.state.count)
+                      .map(([key, value]) => (
+                        <tr key={key}>
+                          <td>{key}</td>
+                          <td>{value}</td>
+                        </tr>
+                      ))}
+                  </tbody>
                 </table>
                 <div className="showMoreItems">
                   <span className="link" onClick={() => this.incrementCount('settings')}>
@@ -266,12 +273,19 @@ export default class Item extends PureComponent {
               </div>
             </div>
           </div>
-          <div className="itemInfo" style={{ backgroundImage: `url("${variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}")` }}>
+          <div
+            className="itemInfo"
+            style={{
+              backgroundImage: `url("${
+                variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url
+              }")`,
+            }}
+          >
             <div className="front">
               <img
                 className="icon"
                 alt="icon"
-                draggable="false"
+                draggable={false}
                 src={variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}
               />
               {this.props.button}
@@ -289,7 +303,7 @@ export default class Item extends PureComponent {
                     onClick={() =>
                       window.open(
                         variables.constants.REPORT_ITEM +
-                        this.props.data.display_name.split(' ').join('+'),
+                          this.props.data.display_name.split(' ').join('+'),
                         '_blank',
                       )
                     }
@@ -314,3 +328,12 @@ export default class Item extends PureComponent {
     );
   }
 }
+
+Item.propTypes = {
+  data: PropTypes.object,
+  addonInstalled: PropTypes.bool,
+  addonInstalledVersion: PropTypes.string,
+  toggleFunction: PropTypes.func,
+};
+
+export default Item;

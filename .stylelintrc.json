@@ -1,3 +1,9 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"]
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "scss/no-global-function-names": null
+  }
 }

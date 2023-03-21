@@ -1,7 +1,6 @@
 @import 'modules/resetmodal';
 @import 'scss/variables';
 @import 'modules/material-ui';
-
 @import 'modules/tabs/about';
 @import 'modules/tabs/changelog';
 @import 'modules/tabs/order';
@@ -14,10 +13,11 @@ input {
     width: 30px;
     border: none;
     outline: none;
-    -webkit-appearance: none;
+    appearance: none;
     vertical-align: middle;
     background: none;
-    @include themed() {
+
+    @include themed {
       border: t($modal-sidebarActive) 1px solid;
     }
 
@@ -38,7 +38,7 @@ input {
     width: 30px;
     border: none;
     outline: none;
-    -moz-appearance: none;
+    appearance: none;
     vertical-align: middle;
     background: none;
 
@@ -55,11 +55,13 @@ input {
   /* date picker */
   &[type='date'] {
     width: 260px;
-    @include themed() {
+
+    @include themed {
       background: t($modal-sidebar);
       border: 3px solid t($modal-sidebarActive);
       color: t($color);
     }
+
     padding: 15px 20px;
     border-radius: 4px;
     display: flex !important;
@@ -86,8 +88,9 @@ h4 {
   height: 400px;
   display: grid;
   place-items: center;
+
   button {
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
   }
 }
 
@@ -97,50 +100,64 @@ h4 {
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
+
   div:nth-child(1) {
     display: flex;
     flex-flow: row;
     align-items: center;
     gap: 20px;
+
     svg {
       font-size: 30px;
-      @include themed() {
+
+      @include themed {
         color: t($subColor);
       }
     }
+
     div {
       display: flex;
       flex-flow: column;
     }
   }
+
   .topbarbuttons {
     display: flex;
     flex-flow: row;
     gap: 25px;
   }
+
   button {
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
   }
 }
 
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  column-gap: 45px;
-  row-gap: 100px;
-  padding-top: 45px;
-  .leftPanel {
-    grid-area: 1 / 1 / 3 / 3;
-  }
+.stats {
+  display: flex;
+  flex-flow: column;
+  gap: 30px;
+  width: 100%;
+
   .rightPanel {
-    grid-area: 1 / 3 / 4 / 4;
-    display: flex;
-    flex-flow: column;
-    gap: 10px;
+    .statIcon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .statGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 10px;
+      div {
+        display: flex;
+        flex-flow: column;
+      }
+    }
+
     .subtitle {
       text-transform: capitalize;
     }
+
     span {
       font-size: 20px;
     }
@@ -162,10 +179,12 @@ h4 {
     svg {
       font-size: 2em;
     }
+
     &:hover {
-      background: rgba(121, 121, 121, 0.226);
+      background: rgb(121 121 121 / 22.6%);
     }
   }
+
   .returnButton {
     display: grid;
     place-items: center;
@@ -174,48 +193,55 @@ h4 {
     border-radius: 12px;
     cursor: pointer;
     margin-right: 25px;
+
     svg {
       font-size: 2em;
     }
+
     &:hover {
-      background: rgba(121, 121, 121, 0.226);
+      background: rgb(121 121 121 / 22.6%);
     }
   }
 }
 
 .achievements {
-  margin-top: 25px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 10px;
 }
 
 .achievement {
-  padding: 20px 10px 20px 10px;
+  padding: 20px 10px;
   display: flex;
   flex-flow: row !important;
   align-items: center;
-  @include themed() {
-    background: t($modal-sidebarActive);
+
+  @include themed {
+    background: t($modal-secondaryColour);
+    border: 1px solid t($modal-sidebarActive);
     border-radius: t($borderRadius);
     gap: 10px;
   }
+
   svg {
     font-size: 20px !important;
     padding: 15px;
     border-radius: 100%;
-    @include themed() {
-      background: t($modal-sidebar);
+
+    @include themed {
+      background: t($modal-sidebarActive);
     }
   }
 }
 
 .statSection.rightPanel {
   padding: 25px;
-  @include themed() {
+
+  @include themed {
     border-radius: t($borderRadius);
-    background: t($modal-sidebar);
-    box-shadow: 0 0 0 4px t($modal-sidebarActive);
+    background: t($modal-secondaryColour);
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+
     svg {
       font-size: 50px;
       color: t($subColor);
@@ -226,7 +252,19 @@ h4 {
 .achievementContent {
   display: flex;
   flex-flow: column;
-  span {
+  gap: 2px;
+
+  span:first-child {
+    font-weight: bold;
     font-size: 15px;
   }
+  .subtitle {
+    font-size: 13px !important;
+  }
+}
+
+.customcss textarea {
+  font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
+    'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco,
+    'Courier New', Courier, monospace !important;
 }

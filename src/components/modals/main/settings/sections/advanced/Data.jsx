@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import SettingsItem from '../../SettingsItem';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import {
   MdOutlineKeyboardArrowRight,
   MdUpload as ImportIcon,

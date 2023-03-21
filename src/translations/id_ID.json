@@ -26,9 +26,7 @@
       "category": "Category",
       "exclude": "Don't show again",
       "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "categories": "Categories",
-      "photo": "Photo",
-      "on": "on"
+      "confirm": "Confirm"
     },
     "search": "Cari",
     "quicklinks": {
@@ -47,13 +45,7 @@
       "not_found": "Tidak Ditemukan",
       "meters": "{amount} meter",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}",
-      "options": {
-        "basic": "Basic",
-        "standard": "Standard",
-        "expanded": "Expanded",
-        "custom": "Custom"
-      }
+      "feels_like": "Feels like {amount}"
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -73,7 +65,8 @@
       "todo": {
         "title": "Todo",
         "pin": "Pin",
-        "add": "Add"
+        "add": "Add",
+        "no_todos": "No Todos"
       }
     }
   },
@@ -113,7 +106,7 @@
             "title": "Waktu",
             "format": "Format",
             "type": "Tipe",
-            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
+            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Digital",
               "subtitle": "Change how the digital clock looks",
@@ -129,7 +122,8 @@
               "minute_hand": "Jarum Menit",
               "hour_hand": "Jarum Jam",
               "hour_marks": "Penanda Jam",
-              "minute_marks": "Penanda Menit"
+              "minute_marks": "Penanda Menit",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "Persentase",
             "vertical_clock": {
@@ -267,8 +261,7 @@
               "hour": "Jam",
               "day": "Hari",
               "month": "Bulan"
-            },
-            "category": "Kategori"
+            }
           },
           "search": {
             "title": "Cari",
@@ -298,6 +291,7 @@
               "title": "Informasi Tambahan",
               "show_location": "Tampilkan lokasi",
               "show_description": "Tampilkan deskripsi",
+              "weather_description": "Weather description",
               "cloudiness": "Kondisi awan",
               "humidity": "Kelembapan",
               "visibility": "Jarak pandang",
@@ -396,7 +390,12 @@
               "title": "Aksesibilitas",
               "description": "Accessibility settings for Mue",
               "animations": "Animasi",
-              "text_shadow": "Widget text shadow",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
               "widget_zoom": "Widget zoom",
               "toast_duration": "Durasi toast",
               "milliseconds": "milliseconds"
@@ -432,7 +431,6 @@
           },
           "stats": {
             "title": "Statistik",
-            "warning": "Anda harus mengizinkan penggunaan data untuk menggunakan fitur ini. Data hanya akan disimpan di perangkat Anda saja.",
             "sections": {
               "tabs_opened": "Riwayat tab terbuka",
               "backgrounds_favourited": "Backgrounds favorit",
@@ -477,6 +475,7 @@
             "support_mue": "Dukung Mue",
             "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
             "support_donate": "Donate",
+            "form_button": "Form",
             "resources_used": {
               "title": "Resources yang kami gunakan",
               "bg_images": "Offline background images"
@@ -503,6 +502,7 @@
         "no_items": "Tidak ada item pada kategori ini",
         "collection": "Collection",
         "explore_collection": "Explore Collection",
+        "add_all": "Add All To Mue",
         "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
@@ -577,11 +577,9 @@
             "quotes": "Quotes Pack"
           },
           "descriptions": {
-            "settings": "",
+            "settings": "Collection of settings to customise Mue.",
             "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic.",
-            "photo_pack": "",
-            "quote_pack": ""
+            "quotes": "Collection of quotes relating to a topic."
           },
           "information": "Information",
           "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",

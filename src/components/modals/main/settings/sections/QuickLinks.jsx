@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
+import { PureComponent, createRef } from 'preact/compat';
 import { MdAddLink, MdLinkOff, MdCancel, MdEdit } from 'react-icons/md';
 import Header from '../Header';
 import Checkbox from '../Checkbox';
@@ -18,6 +18,7 @@ export default class QuickLinks extends PureComponent {
       items: JSON.parse(localStorage.getItem('quicklinks')),
       showAddModal: false,
       urlError: '',
+      iconError: '',
       edit: false,
       editData: '',
     };
@@ -40,22 +41,20 @@ export default class QuickLinks extends PureComponent {
 
   addLink(name, url, icon) {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
-    let urlError;
 
     // regex: https://ihateregex.io/expr/url/
     // eslint-disable-next-line no-useless-escape
-    if (
-      url.length <= 0 ||
-      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_.~#?&=]*)/.test(
-        url,
-      ) === false
-    ) {
-      urlError = variables.getMessage('widgets.quicklinks.url_error');
+    const urlRegex =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_.~#?&=]*)/;
+    if (url.length <= 0 || urlRegex.test(url) === false) {
+      return this.setState({
+        urlError: variables.getMessage('widgets.quicklinks.url_error'),
+      });
     }
 
-    if (urlError) {
+    if (icon.length > 0 && urlRegex.test(icon) === false) {
       return this.setState({
-        urlError,
+        iconError: variables.getMessage('widgets.quicklinks.url_error'),
       });
     }
 
@@ -76,6 +75,7 @@ export default class QuickLinks extends PureComponent {
       items: data,
       showAddModal: false,
       urlError: '',
+      iconError: '',
     });
 
     variables.stats.postEvent('feature', 'Quicklink add');
@@ -168,7 +168,16 @@ export default class QuickLinks extends PureComponent {
           </div>
           <div className="messageText">
             <div className="title">{item.name}</div>
-            <div className="subtitle">{item.url}</div>
+            <div className="subtitle">
+              <a
+                className="quicklinknostyle"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={item.url}
+              >
+                {item.url}
+              </a>
+            </div>
           </div>
           <div>
             <div className="messageAction">
@@ -219,7 +228,11 @@ export default class QuickLinks extends PureComponent {
             'modals.main.settings.sections.quicklinks.styling_description',
           )}
         >
-          <Dropdown label={variables.getMessage('modals.main.settings.sections.quicklinks.style')} name="quickLinksStyle" category="other">
+          <Dropdown
+            label={variables.getMessage('modals.main.settings.sections.quicklinks.style')}
+            name="quickLinksStyle"
+            category="quicklinks"
+          >
             <option value="icon">
               {variables.getMessage('modals.main.settings.sections.quicklinks.options.icon')}
             </option>
@@ -265,7 +278,7 @@ export default class QuickLinks extends PureComponent {
         </div>
         <Modal
           closeTimeoutMS={100}
-          onRequestClose={() => this.setState({ showAddModal: false, urlError: '' })}
+          onRequestClose={() => this.setState({ showAddModal: false, urlError: '', iconError: '' })}
           isOpen={this.state.showAddModal}
           className="Modal resetmodal mainModal"
           overlayClassName="Overlay resetoverlay"
@@ -277,7 +290,7 @@ export default class QuickLinks extends PureComponent {
             editLink={(og, name, url, icon) => this.editLink(og, name, url, icon)}
             edit={this.state.edit}
             editData={this.state.editData}
-            closeModal={() => this.setState({ showAddModal: false, urlError: '' })}
+            closeModal={() => this.setState({ showAddModal: false, urlError: '', iconError: '' })}
           />
         </Modal>
       </>

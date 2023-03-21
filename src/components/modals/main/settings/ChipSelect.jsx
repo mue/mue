@@ -1,5 +1,6 @@
-import { useState, memo } from 'react';
-import { useTheme } from '@mui/material/styles';
+import { useState, memo } from 'preact/compat';
+import PropTypes from 'prop-types';
+
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,7 +11,9 @@ import Chip from '@mui/material/Chip';
 
 function ChipSelect({ label, options, name }) {
   let start = (localStorage.getItem('apiCategories') || '').split(',');
-  if (start[0] === '') start = [];
+  if (start[0] === '') {
+    start = [];
+  }
 
   const [optionsSelected, setoptionsSelected] = useState(start);
 
@@ -51,5 +54,11 @@ function ChipSelect({ label, options, name }) {
     </div>
   );
 }
+
+ChipSelect.propTypes = {
+  label: PropTypes.string,
+  options: PropTypes.array,
+  name: PropTypes.string,
+};
 
 export default memo(ChipSelect);

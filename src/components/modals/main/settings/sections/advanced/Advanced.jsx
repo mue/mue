@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import Modal from 'react-modal';
 import { MenuItem } from '@mui/material';
 import {
@@ -130,7 +130,7 @@ export default class AdvancedSettings extends PureComponent {
             'modals.main.settings.sections.advanced.custom_css_subtitle',
           )}
         >
-          <Text name="customcss" textarea={true} category="other" />
+          <Text name="customcss" textarea={true} category="other" customcss={true} />
         </SettingsItem>
         <SettingsItem
           title={variables.getMessage('modals.main.settings.sections.experimental.title')}

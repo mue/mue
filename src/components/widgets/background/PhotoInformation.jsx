@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
-import { useState, memo } from 'react';
+import { useState, memo } from 'preact/compat';
+import PropTypes from 'prop-types';
 import Favourite from './Favourite';
-import EventBus from 'modules/helpers/eventbus';
 import {
   MdInfo,
   MdLocationOn,
@@ -15,19 +15,34 @@ import {
   MdCategory as Category,
   MdVisibilityOff as VisibilityOff,
 } from 'react-icons/md';
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 import Modal from 'react-modal';
-import ShareModal from '../../helpers/sharemodal/ShareModal';
+import ShareModal from 'components/helpers/sharemodal/ShareModal';
+import ExcludeModal from './ExcludeModal';
 
+/**
+ * It takes a URL, fetches the resource, and returns a URL to the resource.
+ * @param {string} url The URL to fetch.
+ * @returns A promise that resolves to a blob URL.
+ */
 const toDataURL = async (url) => {
   const res = await fetch(url);
   return URL.createObjectURL(await res.blob());
 };
 
+/**
+ * It takes a string, makes it lowercase, removes commas, and replaces spaces with dashes.
+ * @param {string} text The string to format.
+ * @returns A function that takes a string and returns a string.
+ */
 const formatText = (text) => {
   return text.toLowerCase().replaceAll(',', '').replaceAll(' ', '-');
 };
 
+/**
+ * It downloads an image from a URL and saves it to the user's computer.
+ * @param {object} info The photo information.
+ */
 const downloadImage = async (info) => {
   const link = document.createElement('a');
   link.href = await toDataURL(info.url);
@@ -38,28 +53,16 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
-const excludeImage = async (info) => {
-  // eslint-disable-next-line no-restricted-globals
-  const confirmed = confirm(
-    variables.getMessage('widgets.background.exclude_confirm', { category: info.category }),
-  );
-  if (!confirmed) return;
-  let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
-  backgroundExclude.push(info.pun);
-  backgroundExclude = JSON.stringify(backgroundExclude);
-  localStorage.setItem('backgroundExclude', backgroundExclude);
-  EventBus.dispatch('refresh', 'background');
-};
-
 function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [usePhotoMap, setPhotoMap] = useState(false);
-  const [setMapIcon] = useState(true);
+  const [useMapIcon, setMapIcon] = useState(true);
   const [showExtraInfo, setshowExtraInfo] = useState(false);
   //const [showOld, setShowOld] = useState(true);
   const [other, setOther] = useState(false);
   const [shareModal, openShareModal] = useState(false);
+  const [excludeModal, openExcludeModal] = useState(false);
 
   if (info.hidden === true || !info.credit) {
     return null;
@@ -163,7 +166,7 @@ function PhotoInformation({ info, url, api }) {
   };
 
   let photoMapClassList = 'map-concept';
-  if (usePhotoMap) {
+  if (photoMap() !== null) {
     photoMapClassList += ' photoMap';
   }
 
@@ -177,6 +180,8 @@ function PhotoInformation({ info, url, api }) {
       } catch (e) {}
     };
   } catch (e) {}
+
+  const widgetStyle = localStorage.getItem('widgetStyle');
 
   return (
     <div
@@ -194,7 +199,17 @@ function PhotoInformation({ info, url, api }) {
       >
         <ShareModal data={info.photoURL || info.url} modalClose={() => openShareModal(false)} />
       </Modal>
-      {localStorage.getItem('widgetStyle') === 'legacy' && (
+      <Modal
+        closeTimeoutMS={300}
+        isOpen={excludeModal}
+        className="Modal mainModal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+        onRequestClose={() => openExcludeModal(false)}
+      >
+        <ExcludeModal info={info} modalClose={() => openExcludeModal(false)} />
+      </Modal>
+      {widgetStyle === 'legacy' && (
         <div className="photoInformation-legacy">
           <MdInfo />
           <span className="title">
@@ -202,20 +217,20 @@ function PhotoInformation({ info, url, api }) {
           </span>
         </div>
       )}
-      {localStorage.getItem('widgetStyle') !== 'legacy' || other ? (
+      {widgetStyle !== 'legacy' || other ? (
         <div
           className="photoInformation orHover"
-          style={{ padding: localStorage.getItem('widgetStyle') === 'legacy' ? '20px' : null }}
+          style={{ padding: widgetStyle === 'legacy' ? '20px' : null }}
           onMouseEnter={() => setshowExtraInfo(true)}
           onMouseLeave={() => setshowExtraInfo(false)}
         >
           <div className={photoMapClassList}>
-            {photoMap !== null ? <MdLocationOn /> : ''}
+            {useMapIcon || photoMap() === null ? <MdLocationOn /> : ''}
             <h1>{photoMap}</h1>
             {photoMap()}
           </div>
           {showingPhotoMap ? (
-            <div className="concept-copyright">
+            <div className="copyright">
               <a
                 href="https://www.mapbox.com/about/maps/"
                 target="_blank"
@@ -256,7 +271,7 @@ function PhotoInformation({ info, url, api }) {
               {photo} {credit}
             </span>
             {info.views && info.downloads !== null ? (
-              <div className="concept-stats">
+              <div className="stats">
                 <div title={variables.getMessage('widgets.background.views')}>
                   <Views />
                   <span>{info.views.toLocaleString()}</span>
@@ -282,37 +297,25 @@ function PhotoInformation({ info, url, api }) {
                   {variables.getMessage('widgets.background.information')}
                 </span>
                 {info.location && info.location !== 'N/A' ? (
-                  <div
-                    className="concept-row"
-                    title={variables.getMessage('widgets.background.location')}
-                  >
+                  <div className="row" title={variables.getMessage('widgets.background.location')}>
                     <MdLocationOn />
                     <span id="infoLocation">{info.location}</span>
                   </div>
                 ) : null}
                 {info.camera && info.camera !== 'N/A' ? (
-                  <div
-                    className="concept-row"
-                    title={variables.getMessage('widgets.background.camera')}
-                  >
+                  <div className="row" title={variables.getMessage('widgets.background.camera')}>
                     <MdPhotoCamera />
                     <span id="infoCamera">{info.camera}</span>
                   </div>
                 ) : null}
-                <div
-                  className="concept-row"
-                  title={variables.getMessage('widgets.background.resolution')}
-                >
+                <div className="row" title={variables.getMessage('widgets.background.resolution')}>
                   <Resolution />
                   <span id="infoResolution">
                     {width}x{height}
                   </span>
                 </div>
                 {info.category ? (
-                  <div
-                    className="concept-row"
-                    title={variables.getMessage('widgets.background.category')}
-                  >
+                  <div className="row" title={variables.getMessage('widgets.background.category')}>
                     <Category />
                     <span id="infoCategory">
                       {info.category[0].toUpperCase() + info.category.slice(1)}
@@ -320,10 +323,7 @@ function PhotoInformation({ info, url, api }) {
                   </div>
                 ) : null}
                 {api ? (
-                  <div
-                    className="concept-row"
-                    title={variables.getMessage('widgets.background.source')}
-                  >
+                  <div className="row" title={variables.getMessage('widgets.background.source')}>
                     <Source />
                     <span id="infoSource">
                       {info.photoURL ? (
@@ -349,7 +349,7 @@ function PhotoInformation({ info, url, api }) {
                   </div>
                 ) : null}
               </div>
-              <div className="concept-buttons">
+              <div className="buttons">
                 {!info.offline ? (
                   <Tooltip
                     title={variables.getMessage('widgets.quote.share')}
@@ -364,7 +364,12 @@ function PhotoInformation({ info, url, api }) {
                   key="favourite"
                   placement="top"
                 >
-                  <Favourite />
+                  <Favourite
+                    pun={info.pun}
+                    offline={info.offline}
+                    credit={info.credit}
+                    photoURL={info.url}
+                  />
                 </Tooltip>
                 {!info.offline ? (
                   <Tooltip
@@ -381,7 +386,7 @@ function PhotoInformation({ info, url, api }) {
                     key="exclude"
                     placement="top"
                   >
-                    <VisibilityOff onClick={() => excludeImage(info)} />
+                    <VisibilityOff onClick={() => openExcludeModal(true)} />
                   </Tooltip>
                 ) : null}
               </div>
@@ -392,5 +397,11 @@ function PhotoInformation({ info, url, api }) {
     </div>
   );
 }
+
+PhotoInformation.propTypes = {
+  info: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired,
+  api: PropTypes.string.isRequired,
+};
 
 export default memo(PhotoInformation);

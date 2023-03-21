@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo } from 'preact/compat';
 
 function GreetingSkeleton() {
   return <span className="greeting">Good Morning</span>;

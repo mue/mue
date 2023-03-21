@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import { MdOutlineDragIndicator } from 'react-icons/md';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import { toast } from 'react-toastify';
@@ -124,7 +124,7 @@ export default class OrderSettings extends PureComponent {
   componentDidUpdate() {
     localStorage.setItem('order', JSON.stringify(this.state.items));
     variables.stats.postEvent('setting', 'Widget order');
-    EventBus.dispatch('refresh', 'widgets');
+    EventBus.emit('refresh', 'widgets');
   }
 
   componentDidMount() {

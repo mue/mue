@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import Modal from 'react-modal';
 import { MenuItem } from '@mui/material';
 import {

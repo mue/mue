@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 
 import WeatherIcon from './WeatherIcon';
 import Expanded from './Expanded';

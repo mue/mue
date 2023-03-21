@@ -25,7 +25,8 @@
       "source": "Kaynak",
       "category": "Kategori",
       "exclude": "Tekrar Gösterme",
-      "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: Eğer bu kategoriye ait \"{category}\" resimleri beğenmiyorsanız, arka plan kaynak ayarları kısmından kategorinin seçimini kaldırabilirsiniz."
+      "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: Eğer bu kategoriye ait \"{category}\" resimleri beğenmiyorsanız, arka plan kaynak ayarları kısmından kategorinin seçimini kaldırabilirsiniz.",
+      "confirm": "Confirm"
     },
     "search": "Arama",
     "quicklinks": {
@@ -62,9 +63,10 @@
         "placeholder": "Buraya Yaz!"
       },
       "todo": {
-        "title": "Todo",
+        "title": "Yapılacaklar",
         "pin": "Tuttur",
-        "add": "Ekle"
+        "add": "Ekle",
+        "no_todos": "No Todos"
       }
     }
   },
@@ -101,10 +103,10 @@
             "size": "Widget'ınızın büyüklüğünü kontrol etmek için kaydırın."
           },
           "time": {
-            "title": "Zaman",
-            "format": "Biçim Formatı",
-            "type": "Tür",
-            "type_subtitle": "Saat formatınızın dijital, analog veya günün tamamlanma yüzdesi olmak üzere nasıl görüntüleneceğini belirleyin.",
+            "title": "Time",
+            "format": "Format",
+            "type": "Type",
+            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Dijital",
               "subtitle": "Dijital saatin görünümünü değiştirin.",
@@ -120,13 +122,14 @@
               "minute_hand": " Yelkovan (dakika) ibresi",
               "hour_hand": "Akrep (saat) ibresi",
               "hour_marks": "Saat çizgileri",
-              "minute_marks": "Dakika çizgileri"
+              "minute_marks": "Dakika çizgileri",
+              "round_clock": "Rounded background"
             },
-            "percentage_complete": "Yüzdelik Gösterim",
+            "percentage_complete": "Percentage complete",
             "vertical_clock": {
-              "title": "Dikey Saat",
-              "change_hour_colour": "Saat kısmının metin rengini değiştir.",
-              "change_minute_colour": "Dakika kısmının metin rengini değiştir."
+              "title": "Vertical Clock",
+              "change_hour_colour": "Change hour text colour",
+              "change_minute_colour": "Change minute text colour"
             }
           },
           "date": {
@@ -137,12 +140,12 @@
             "type": {
               "short": "Kısa",
               "long": "Uzun",
-              "subtitle": "Tarih formatınızın uzun veya kısa olmak üzere hangi formda görüntüleneceğini seçin."
+              "subtitle": "Tarihin uzun veya kısa olmak üzere hangi biçimde görüntüleneceğini seçin"
             },
             "type_settings": "Seçilen tarih türü için ekran ayarları ve biçimi belirten özellikleri belirleyin.",
             "short_date": "Kısa Tarih",
-            "short_format": "Kısa Tarih Formatı",
-            "long_format": "Long format",
+            "short_format": "Kısa biçim",
+            "long_format": "Uzun biçim",
             "short_separator": {
               "title": "Kısa Tarih Ayracı",
               "dots": "Nokta",
@@ -274,36 +277,37 @@
             "focus": "Açık Sekmeye Odaklan"
           },
           "weather": {
-            "title": "Hava Durumu",
-            "location": "Konum",
-            "auto": "Otomatik",
-            "widget_type": "Widget Türü",
+            "title": "Weather",
+            "location": "Location",
+            "auto": "Auto",
+            "widget_type": "Widget Type",
             "temp_format": {
-              "title": "Sıcaklık formatı",
-              "celsius": "Santigrat",
-              "fahrenheit": "Fahrenhayt",
+              "title": "Temperature format",
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
               "kelvin": "Kelvin"
             },
             "extra_info": {
-              "title": "Ekstra Bilgilendirme",
-              "show_location": "Lokasyonu Göster",
-              "show_description": "Açıklama Göster",
-              "cloudiness": "Bulutlu",
-              "humidity": "Nem",
-              "visibility": "Görüş Mesafesi",
-              "wind_speed": "Rüzgar Hızı",
-              "wind_direction": "Rüzgar Yönü",
-              "min_temp": "Minimum Sıcaklık",
-              "max_temp": "Maksimum Sıcaklık",
-              "atmospheric_pressure": "Atmosferik Basınç"
+              "title": "Extra information",
+              "show_location": "Show location",
+              "show_description": "Show description",
+              "weather_description": "Weather description",
+              "cloudiness": "Cloudiness",
+              "humidity": "Humidity",
+              "visibility": "Visibility",
+              "wind_speed": "Wind speed",
+              "wind_direction": "Wind direction",
+              "min_temp": "Minimum temperature",
+              "max_temp": "Maximum temperature",
+              "atmospheric_pressure": "Atmospheric pressure"
             },
             "options": {
-              "basic": "Temel",
-              "standard": "Standart",
-              "expanded": "Genişletilmiş",
-              "custom": "Özelleştirilmiş"
+              "basic": "Basic",
+              "standard": "Standard",
+              "expanded": "Expanded",
+              "custom": "Custom"
             },
-            "custom_settings": "Özel Ayarlar"
+            "custom_settings": "Custom Settings"
           },
           "quicklinks": {
             "title": "Hızlı Linkler",
@@ -416,18 +420,17 @@
             "custom_css": "Özel CSS",
             "custom_css_subtitle": "Mue'nin stilini 'Cascading Style Sheets (CSS)' ile özelleştirin.",
             "custom_js": "Özel JS",
-            "tab_name": "Sekme Adı",
-            "tab_name_subtitle": "Tarayıcınızda görünen sekmenin adını değiştirin.",
+            "tab_name": "Tab name",
+            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
             "timezone": {
-              "title": "Saat Dilimi",
-              "subtitle": "Bilgisayarınızdan otomatik varsayılan yerine listeden bir saat dilimi seçin.",
-              "automatic": "Otomatik"
+              "title": "Time Zone",
+              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
+              "automatic": "Automatic"
             },
             "experimental_warning": "Deneysel modunuz açıksa Mue ekibinin destek sağlayamadığını lütfen unutmayın. Lütfen önce devre dışı bırakın ve desteğe başvurmadan önce sorunun devam edip etmediğini görün."
           },
           "stats": {
             "title": "İstatistikler",
-            "warning": "Bu özelliği kullanmak için kullanım verilerini etkinleştirmeniz gerekir. Bu veriler yalnızca yerel olarak depolanır.",
             "sections": {
               "tabs_opened": "Sekme açıldı.",
               "backgrounds_favourited": "Arka plan favorilere eklendi.",
@@ -472,6 +475,7 @@
             "support_mue": "Mue Destek",
             "support_subtitle": "Mue tamamen ücretsiz olduğu için, sunucu faturalarını karşılamak ve geliştirme masraflarını finanse etmek için bağışları kullanıyoruz.",
             "support_donate": "Bağış Yap",
+            "form_button": "Form",
             "resources_used": {
               "title": "Kullanılan kaynaklar",
               "bg_images": "Çevrimdışı Arka Plan Resim İçerikleri"
@@ -498,6 +502,7 @@
         "no_items": "Bu kategoride öğe yok",
         "collection": "Koleksiyon",
         "explore_collection": "Koleksiyonu Keşfedin",
+        "add_all": "Add All To Mue",
         "collections": "Koleksiyonlar",
         "cant_find": "Aradığınızı bulamıyor musunuz?",
         "knowledgebase_one": "Kendiniz oluşturmak için ",
@@ -529,8 +534,8 @@
           "value": "Value"
         },
         "offline": {
-          "title": "Çevrimdışı görünüyorsun.",
-          "description": "Lütfen internete bağlanın."
+          "title": "Looks like you're offline",
+          "description": "Please connect to the internet"
         }
       },
       "addons": {

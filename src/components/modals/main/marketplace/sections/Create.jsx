@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 // todo: refactor all of this
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import {
   MdSettings as Settings,
   MdOutlineInsertPhoto as Photos,
@@ -20,6 +21,10 @@ import InfoTooltip from '../../../../helpers/tooltip/infoTooltip';
 import Tooltip from '../../../../helpers/tooltip/Tooltip';
 
 import FileUpload from '../../settings/FileUpload';
+
+import photos from '../examples/photos.json';
+import quotes from '../examples/quotes.json';
+import settings from '../examples/settings.json';
 
 import '../../../welcome/welcome.scss';
 
@@ -221,7 +226,14 @@ export default class Create extends PureComponent {
               ) || 'marketplace'}
             </span>
           </div>
-          <button>
+          <button
+            onClick={() =>
+              saveFile(
+                this.state.addonMetadata.type,
+                `mue-marketplace-${this.state.addonMetadata.type}.json`,
+              )
+            }
+          >
             {variables.getMessage('modals.main.addons.create.metadata.example')}
             <MdDownload />
           </button>
@@ -492,17 +504,14 @@ export default class Create extends PureComponent {
       <>
         <div className="flexTopMarketplace">
           {this.state.currentTab !== 1 && (
-            <div className="returnButton">
-              <Tooltip
-                title={variables.getMessage('modals.main.marketplace.product.buttons.back')}
-                key="backArrow"
-              >
-                <MdArrowBack
-                  className="backArrow"
-                  onClick={() => this.changeTab(1)}
-                />
-              </Tooltip>
-            </div>
+            <Tooltip
+              title={variables.getMessage('modals.main.marketplace.product.buttons.back')}
+              key="backArrow"
+            >
+              <div className="returnButton">
+                <MdArrowBack className="backArrow" onClick={() => this.changeTab(1)} />
+              </div>
+            </Tooltip>
           )}
           <span className="mainTitle">
             {variables.getMessage('modals.main.addons.create.other_title')}

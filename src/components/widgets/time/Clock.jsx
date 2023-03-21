@@ -1,4 +1,4 @@
-import { PureComponent, Suspense, lazy } from 'react';
+import { PureComponent, Suspense, lazy } from 'preact/compat';
 
 import { convertTimezone } from 'modules/helpers/date';
 import EventBus from 'modules/helpers/eventbus';
@@ -160,7 +160,7 @@ export default class Clock extends PureComponent {
     if (localStorage.getItem('timeType') === 'analogue') {
       return (
         <Suspense fallback={<></>}>
-          <div className="clockBackground">
+          <div className={`clockBackground ${enabled('roundClock') ? 'round' : ''}`}>
             <Analog
               className="analogclock clock-container"
               value={this.state.time}

@@ -8,6 +8,7 @@ dist/
 
 # Files
 package-lock.json
+.stylelintcache
 yarn-error.log
 .eslintcache
 stats.json

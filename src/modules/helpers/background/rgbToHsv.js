@@ -1,3 +1,10 @@
+/**
+ * It converts RGB values to HSV values
+ * @returns An object with the hue, saturation, and value of the color.
+ * @param red - The red value of the color.
+ * @param green - 0-255
+ * @param blue - The blue value of the color.
+ */
 export default function rgbToHSv({ red, green, blue }) {
   let rr, gg, bb, h, s;
 

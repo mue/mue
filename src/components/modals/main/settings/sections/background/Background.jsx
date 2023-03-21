@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import { MenuItem } from '@mui/material';
 import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
 
@@ -63,7 +63,7 @@ export default class BackgroundSettings extends PureComponent {
   }
 
   render() {
-    const interval = (
+    /* const interval = (
       <SettingsItem
         title={variables.getMessage('modals.main.settings.sections.background.interval.title')}
         subtitle={variables.getMessage(
@@ -101,7 +101,7 @@ export default class BackgroundSettings extends PureComponent {
           </option>
         </Dropdown>
       </SettingsItem>
-    );
+    );*/
 
     const APISettings = (
       <>

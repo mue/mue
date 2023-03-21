@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import {
   MdWifiOff,
@@ -7,6 +8,7 @@ import {
   MdOutlineKeyboardArrowRight,
   MdSearch,
   MdOutlineArrowForward,
+  MdLibraryAdd,
 } from 'react-icons/md';
 
 import Item from '../Item';
@@ -15,7 +17,7 @@ import Dropdown from '../../settings/Dropdown';
 
 import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
 
-export default class Marketplace extends PureComponent {
+class Marketplace extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -36,6 +38,7 @@ export default class Marketplace extends PureComponent {
       install: (
         <button onClick={() => this.manage('install')}>
           {variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
+          <MdLibraryAdd />
         </button>
       ),
     };
@@ -179,6 +182,30 @@ export default class Marketplace extends PureComponent {
       `${this.state.item.display_name} ${type === 'install' ? 'installed' : 'uninstalled'}`,
     );
     variables.stats.postEvent('marketplace', type === 'install' ? 'Install' : 'Uninstall');
+  }
+
+  async installCollection() {
+    this.setState({ busy: true });
+    try {
+      const installed = JSON.parse(localStorage.getItem('installed'));
+      for (const item of this.state.items) {
+        if (installed.some((i) => i.name === item.display_name)) continue; // don't install if already installed
+        let { data } = await (
+          await fetch(`${variables.constants.MARKETPLACE_URL}/item/${item.type}/${item.name}`, {
+            signal: this.controller.signal,
+          })
+        ).json();
+        install(data.type, data);
+        variables.stats.postEvent('marketplace-item', `${item.display_name} installed}`);
+        variables.stats.postEvent('marketplace', 'Install');
+      }
+      toast(variables.getMessage('toasts.installed'));
+    } catch (error) {
+      console.error(error);
+      toast(variables.getMessage('toasts.error'));
+    } finally {
+      this.setState({ busy: false });
+    }
   }
 
   sortMarketplace(value, sendEvent) {
@@ -342,13 +369,22 @@ export default class Marketplace extends PureComponent {
                 backgroundImage: `linear-gradient(to bottom, transparent, black), url('${this.state.collectionImg}')`,
               }}
             >
+              <div className="nice-tag">
+                {variables.getMessage('modals.main.marketplace.collection')}
+              </div>
               <div className="content">
                 <span className="mainTitle">{this.state.collectionTitle}</span>
                 <span className="subtitle">{this.state.collectionDescription}</span>
               </div>
-              <div className="nice-tag">
-                {variables.getMessage('modals.main.marketplace.collection')}
-              </div>
+
+              <button
+                className="addAllButton"
+                onClick={() => this.installCollection()}
+                disabled={this.state.busy}
+              >
+                {variables.getMessage('modals.main.marketplace.add_all')}
+                <MdLibraryAdd />
+              </button>
             </div>
           </>
         ) : (
@@ -435,3 +471,9 @@ export default class Marketplace extends PureComponent {
     );
   }
 }
+
+Marketplace.propTypes = {
+  type: PropTypes.string,
+};
+
+export default Marketplace;

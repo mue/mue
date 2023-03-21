@@ -1,0 +1,13 @@
+{
+  "name": "Example Settings",
+  "description": "This is an example.",
+  "type": "settings",
+  "version": "1.0.0",
+  "author": "Mue",
+  "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
+  "screenshot_url": "https://github.com/mue/mue/raw/main/assets/screenshot.webp",
+  "settings": {
+    "searchBar": false,
+    "weather": true
+  }
+}

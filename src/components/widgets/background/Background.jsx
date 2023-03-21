@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 // todo: rewrite this mess
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 
 import PhotoInformation from './PhotoInformation';
 
@@ -37,7 +37,9 @@ export default class Background extends PureComponent {
 
   async setBackground() {
     // clean up the previous image to prevent a memory leak
-    if (this.state.blob) URL.revokeObjectURL(this.state.blob);
+    if (this.blob) {
+      URL.revokeObjectURL(this.blob);
+    }
 
     const backgroundImage = document.getElementById('backgroundImage');
 
@@ -74,9 +76,9 @@ export default class Background extends PureComponent {
         backgroundImage.style.backgroundImage = `url(${canvas.toDataURL()})`;
       }
 
-      this.state.blob = URL.createObjectURL(await (await fetch(url)).blob());
+      this.blob = URL.createObjectURL(await (await fetch(url)).blob());
       backgroundImage.classList.add('backgroundTransform');
-      backgroundImage.style.backgroundImage = `url(${this.state.blob})`;
+      backgroundImage.style.backgroundImage = `url(${this.blob})`;
     } else {
       // custom colour
       backgroundImage.setAttribute('style', this.state.style);
@@ -116,7 +118,7 @@ export default class Background extends PureComponent {
         break;
     }
 
-    const accept = 'application/json, ' + (await supportsAVIF() ? 'image/avif' : 'image/webp');
+    const accept = 'application/json, ' + ((await supportsAVIF()) ? 'image/avif' : 'image/webp');
     try {
       data = await (await fetch(requestURL, { headers: { accept } })).json();
     } catch (e) {
@@ -165,7 +167,7 @@ export default class Background extends PureComponent {
       offline = true;
     }
 
-    const setFavourited = ({ type, url, credit, location, camera }) => {
+    const setFavourited = ({ type, url, credit, location, camera, pun, offline }) => {
       if (type === 'random_colour' || type === 'random_gradient') {
         return this.setState({
           type: 'colour',
@@ -178,6 +180,9 @@ export default class Background extends PureComponent {
           credit,
           location,
           camera,
+          pun,
+          offline,
+          url,
         },
       });
     };

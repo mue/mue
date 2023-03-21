@@ -11,17 +11,15 @@
     }
   }
 
-  -webkit-animation: $animations;
-  -moz-animation: $animations;
   animation: $animations;
 }
 
 @mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
+  @keyframes #{$animationName} {
     @content;
   }
 
-  @-moz-keyframes #{$animationName} {
+  @keyframes #{$animationName} {
     @content;
   }
 
@@ -34,6 +32,7 @@
   @each $theme, $map in $themes {
     .#{$theme} & {
       $theme-map: () !global;
+
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
         $theme-map: map-merge(
@@ -44,6 +43,7 @@
         ) !global;
       }
       @content;
+
       $theme-map: null !global;
     }
   }

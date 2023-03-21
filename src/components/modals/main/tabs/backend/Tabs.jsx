@@ -1,10 +1,17 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
-import { MdSettings, MdOutlineShoppingBasket, MdOutlineExtension, MdRefresh } from 'react-icons/md';
+import { PureComponent } from 'preact/compat';
+import PropTypes from 'prop-types';
+import {
+  MdSettings,
+  MdOutlineShoppingBasket,
+  MdOutlineExtension,
+  MdRefresh,
+  MdClose,
+} from 'react-icons/md';
 import Tab from './Tab';
 import ErrorBoundary from '../../../ErrorBoundary';
 
-export default class Tabs extends PureComponent {
+class Tabs extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -25,12 +32,24 @@ export default class Tabs extends PureComponent {
     });
   };
 
+  hideReminder() {
+    localStorage.setItem('showReminder', false);
+    document.querySelector('.reminder-info').style.display = 'none';
+  }
+
   render() {
     const display = localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none';
 
     const reminderInfo = (
       <div className="reminder-info" style={{ display }}>
-        <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
+        <div className="shareHeader">
+          <span className="title">
+            {variables.getMessage('modals.main.settings.reminder.title')}
+          </span>
+          <span className="closeModal" onClick={() => this.hideReminder()}>
+            <MdClose />
+          </span>
+        </div>
         <span className="subtitle">
           {variables.getMessage('modals.main.settings.reminder.message')}
         </span>
@@ -111,3 +130,16 @@ export default class Tabs extends PureComponent {
     );
   }
 }
+
+Tabs.propTypes = {
+  children: PropTypes.instanceOf(Array).isRequired,
+  current: PropTypes.string.isRequired,
+  changeTab: PropTypes.func.isRequired,
+  navbar: PropTypes.bool,
+};
+
+Tabs.defaultProps = {
+  navbar: false,
+};
+
+export default Tabs;

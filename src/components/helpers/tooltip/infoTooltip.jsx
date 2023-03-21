@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
-import { useState, memo } from 'react';
+import { useState, memo } from 'preact/compat';
+import PropTypes from 'prop-types';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
 import { MdClose, MdInfo, MdOpenInNew } from 'react-icons/md';
 import Tooltip from './Tooltip';
@@ -43,5 +44,12 @@ function InfoTooltip({ title, style, placement, subtitle }) {
     </div>
   );
 }
+
+InfoTooltip.propTypes = {
+  title: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  placement: PropTypes.string,
+  subtitle: PropTypes.string.isRequired,
+};
 
 export default memo(InfoTooltip);

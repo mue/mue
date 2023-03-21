@@ -1,6 +1,9 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
+import { PureComponent, createRef } from 'preact/compat';
 import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
+import { BsGoogle } from 'react-icons/bs';
+import { SiDuckduckgo, SiMicrosoftbing, SiYahoo, SiBaidu } from 'react-icons/si';
+import { FaYandex } from 'react-icons/fa';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 import AutocompleteInput from 'components/helpers/autocomplete/Autocomplete';
@@ -89,7 +92,10 @@ export default class Search extends PureComponent {
     }
 
     if (setting === 'custom') {
-      url = localStorage.getItem('customSearchEngine');
+      const custom = localStorage.getItem('customSearchEngine');
+      if (custom !== null) {
+        url = custom;
+      }
     }
 
     if (localStorage.getItem('voiceSearch') === 'true') {
@@ -108,6 +114,12 @@ export default class Search extends PureComponent {
     });
   }
 
+  /**
+   * If the user selects a search engine from the dropdown menu, the function will set the state of the
+   * search engine to the selected search engine.
+   * @param {string} name - The name of the search engine
+   * @param {boolean} custom - If the search engine is custom
+   */
   setSearch(name, custom) {
     let url;
     let query = 'q';
@@ -121,7 +133,14 @@ export default class Search extends PureComponent {
     }
 
     if (custom) {
-      url = localStorage.getItem('customSearchEngine');
+      const customSetting = localStorage.getItem('customSearchEngine');
+      if (customSetting !== null) {
+        url = customSetting;
+      } else {
+        url = this.state.url;
+      }
+    } else {
+      localStorage.setItem('searchEngine', info.settingsName);
     }
 
     this.setState({
@@ -153,6 +172,31 @@ export default class Search extends PureComponent {
     EventBus.off('refresh');
   }
 
+  /**
+   * Gets the icon for the search engine dropdown.
+   * @param {string} name - The name of the search engine.
+   * @returns A React component.
+   */
+  getSearchDropdownicon(name) {
+    switch (name) {
+      case 'Google':
+        return <BsGoogle />;
+      case 'DuckDuckGo':
+        return <SiDuckduckgo />;
+      case 'Bing':
+        return <SiMicrosoftbing />;
+      case 'Yahoo':
+      case 'Yahoo! JAPAN':
+        return <SiYahoo />;
+      case 'Яндекс':
+        return <FaYandex />;
+      case '百度':
+        return <SiBaidu />;
+      default:
+        return <MdScreenSearchDesktop />;
+    }
+  }
+
   render() {
     const customText = variables
       .getMessage('modals.main.settings.sections.search.custom')
@@ -163,17 +207,21 @@ export default class Search extends PureComponent {
         <div className="searchMain">
           <div className={this.state.classList}>
             {localStorage.getItem('searchDropdown') === 'true' ? (
-              <Tooltip title={variables.getMessage('widgets.search')}>
+              <Tooltip
+                title={variables.getMessage('modals.main.settings.sections.search.search_engine')}
+              >
                 <button
                   onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
                 >
-                  <MdScreenSearchDesktop />
+                  {this.getSearchDropdownicon(this.state.currentSearch)}
                 </button>
               </Tooltip>
             ) : (
               ''
             )}
-            <Tooltip title={variables.getMessage('widgets.search')}>
+            <Tooltip
+              title={variables.getMessage('modals.main.settings.sections.search.voice_search')}
+            >
               {this.state.microphone}
             </Tooltip>
           </div>
@@ -199,13 +247,12 @@ export default class Search extends PureComponent {
           this.state.searchDropdown === true ? (
             <div className="searchDropdown">
               {searchEngines.map(({ name }, key) => {
-                if (name === this.state.currentSearch) {
-                  return null;
-                }
-
                 return (
                   <span
-                    className="searchDropdownList"
+                    className={
+                      'searchDropdownList' +
+                      (this.state.currentSearch === name ? ' searchDropdownListActive' : '')
+                    }
                     onClick={() => this.setSearch(name)}
                     key={key}
                   >
@@ -213,14 +260,15 @@ export default class Search extends PureComponent {
                   </span>
                 );
               })}
-              {this.state.currentSearch !== customText ? (
-                <span
-                  className="searchDropdownList"
-                  onClick={() => this.setSearch(customText, 'custom')}
-                >
-                  {customText}
-                </span>
-              ) : null}
+              <span
+                className={
+                  'searchDropdownList' +
+                  (this.state.currentSearch === customText ? ' searchDropdownListActive' : '')
+                }
+                onClick={() => this.setSearch(customText, 'custom')}
+              >
+                {customText}
+              </span>
             </div>
           ) : null}
         </div>

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, createRef } from 'react';
+import { PureComponent, createRef } from 'preact/compat';
 import { MdOutlineWifiOff } from 'react-icons/md';
 import Modal from 'react-modal';
 
@@ -134,7 +134,7 @@ export default class Changelog extends PureComponent {
         </h5>
         {this.state.image ? (
           <img
-            draggable="false"
+            draggable={false}
             src={this.state.image}
             alt={this.state.title}
             className="updateImage"

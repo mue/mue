@@ -1,27 +1,32 @@
-@import '../../../../../scss/variables';
+@import 'scss/variables';
 
 .tab-content {
   button {
     @include modal-button(standard);
   }
-  @include themed() {
-    padding: 1rem 3rem 3rem 3rem;
+
+  @include themed {
+    padding: 1rem 3rem 3rem;
     display: flex;
     flex-direction: column;
     width: 100%;
     background: t($modal-background);
+
     @extend %tabText;
+
     hr {
       width: 100%;
-      background: rgba(196, 196, 196, 0.74);
+      background: rgb(196 196 196 / 74%);
       outline: none;
     }
+
     .settingsRow {
       display: flex;
       align-items: center;
       min-height: 100px;
       justify-content: space-between;
-      /*border-top: 1px solid #ccc;*/
+
+      /* border-top: 1px solid #ccc; */
       border-bottom: 1px solid #ccc;
       padding-top: 1rem;
       padding-bottom: 1rem;
@@ -29,16 +34,19 @@
       &.settingsNoBorder {
         border-bottom: none;
       }
+
       .content {
         display: flex;
         flex-flow: column;
         max-width: 50%;
       }
+
       .action {
         display: flex;
         flex-flow: column;
         align-items: flex-end;
         width: 300px;
+
         button {
           margin-top: 10px;
           width: 283px;
@@ -49,12 +57,10 @@
 }
 
 .activityButtons {
-  flex-wrap: wrap !important;
   justify-content: space-between !important;
   align-items: flex-end !important;
   align-content: space-between !important;
-  flex-wrap: wrap !important;
-  flex-direction: row !important;
+  flex-flow: row wrap !important;
 
   button:not(:first-child) {
     width: 40% !important;
@@ -69,18 +75,23 @@
 
 table {
   border-collapse: separate;
-  @include themed() {
+
+  @include themed {
     border-radius: t($borderRadius);
     margin-top: 20px;
+
     tr:first-child {
       background: t($modal-sidebarActive);
+
       th {
         padding: 1rem;
       }
     }
+
     td {
       padding: 15px;
     }
+
     tr {
       th:last-child {
         display: grid;
@@ -94,6 +105,7 @@ table {
 
     tr:not(:first-child) {
       background: t($modal-sidebar);
+
       textarea {
         width: 90%;
         margin: 10px;
@@ -105,9 +117,11 @@ table {
 
 .donateButton {
   @include modal-button(standard);
+
   flex-flow: row !important;
   text-decoration: none;
   height: auto !important;
+
   svg {
     font-size: 1.5rem !important;
   }
@@ -116,6 +130,7 @@ table {
 .flexGrow {
   flex-grow: 1;
 }
+
 .messageMap {
   display: flex;
   flex-flow: row;
@@ -123,42 +138,50 @@ table {
   gap: 25px;
   padding: 25px;
   justify-content: space-between;
+
   div:nth-child(1) {
     display: flex;
     flex-flow: row;
     gap: 25px;
     align-items: center;
   }
+
   .icon {
     border-radius: 100%;
     display: grid;
     place-items: center;
     padding: 15px;
     font-size: 25px;
-    @include themed() {
+
+    @include themed {
       background: t($modal-sidebarActive);
     }
   }
+
   .messageText {
     display: flex;
     flex-flow: column;
     flex-grow: 3;
+
     textarea {
-      @include themed() {
+      @include themed {
         color: t($color);
       }
     }
+
     .subtitle {
-      @include themed() {
+      @include themed {
         color: t($subColor);
         font-size: 13px;
       }
     }
   }
+
   .messageAction {
     float: right;
   }
-  @include themed() {
+
+  @include themed {
     background: t($modal-sidebar);
     border-radius: t($borderRadius);
   }

@@ -1,4 +1,5 @@
-import { memo } from 'react';
+import { memo } from 'preact/compat';
+import PropTypes from 'prop-types';
 import variables from 'modules/variables';
 
 function Lightbox({ modalClose, img }) {
@@ -13,5 +14,10 @@ function Lightbox({ modalClose, img }) {
     </>
   );
 }
+
+Lightbox.propTypes = {
+  modalClose: PropTypes.func.isRequired,
+  img: PropTypes.string.isRequired,
+};
 
 export default memo(Lightbox);

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import { toast } from 'react-toastify';
 import { MenuItem, TextField } from '@mui/material';
 
@@ -47,7 +47,7 @@ export default class SearchSettings extends PureComponent {
       localStorage.setItem('customSearchEngine', this.state.customValue);
     }
 
-    EventBus.dispatch('refresh', 'search');
+    EventBus.emit('refresh', 'search');
   }
 
   setSearchEngine(input) {
@@ -64,7 +64,7 @@ export default class SearchSettings extends PureComponent {
       localStorage.setItem('searchEngine', input);
     }
 
-    EventBus.dispatch('refresh', 'search');
+    EventBus.emit('refresh', 'search');
   }
 
   render() {
@@ -111,6 +111,7 @@ export default class SearchSettings extends PureComponent {
           subtitle={variables.getMessage(
             'modals.main.settings.sections.search.search_engine_subtitle',
           )}
+          final={this.state.customDisplay === 'none' ? true : false}
         >
           <Dropdown
             name="searchEngine"
@@ -128,7 +129,10 @@ export default class SearchSettings extends PureComponent {
           </Dropdown>
         </SettingsItem>
         <div style={{ display: this.state.customDisplay }}>
-          <SettingsItem title={variables.getMessage('modals.main.settings.sections.search.custom')}>
+          <SettingsItem
+            title={variables.getMessage('modals.main.settings.sections.search.custom')}
+            final={true}
+          >
             <TextField
               label={variables.getMessage('modals.main.settings.sections.search.custom')}
               value={this.state.customValue}

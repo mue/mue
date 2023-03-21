@@ -1,10 +1,11 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
+import PropTypes from 'prop-types';
 import { Switch as SwitchUI, FormControlLabel } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 
-export default class Switch extends PureComponent {
+class Switch extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +33,7 @@ export default class Switch extends PureComponent {
       }
     }
 
-    EventBus.dispatch('refresh', this.props.category);
+    EventBus.emit('refresh', this.props.category);
   };
 
   render() {
@@ -52,3 +53,13 @@ export default class Switch extends PureComponent {
     );
   }
 }
+
+Switch.propTypes = {
+  name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  category: PropTypes.string,
+  element: PropTypes.string,
+  header: PropTypes.bool,
+};
+
+export default Switch;

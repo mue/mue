@@ -7,21 +7,23 @@
 .carousel_viewport {
   overflow: hidden;
   width: 100%;
+
   &.is-draggable {
     cursor: move;
     cursor: grab;
   }
+
   &.is-dragging {
     cursor: grabbing;
   }
-    border-radius: 15px !important;
+
+  border-radius: 15px !important;
 }
 
 .carousel_container {
   display: flex;
-  user-select: none;
   -webkit-touch-callout: none;
-  -khtml-user-select: none;
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
   margin-left: -10px;
 }
@@ -30,6 +32,7 @@
   position: relative;
   min-width: 100%;
   padding-left: 10px;
+
   img {
     position: absolute;
     display: block;
@@ -65,13 +68,16 @@
   justify-content: center;
   align-items: center;
   padding: 0;
+
   &:disabled {
     cursor: default;
     opacity: 0.3;
   }
+
   &.prev {
     left: 27px;
   }
+
   &.next {
     right: 27px;
   }

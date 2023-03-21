@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import { MdUpdate, MdOutlineExtensionOff, MdCode } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
@@ -13,8 +13,8 @@ import Dropdown from '../../settings/Dropdown';
 import { install, uninstall, urlParser } from 'modules/helpers/marketplace';
 
 export default class Added extends PureComponent {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       installed: JSON.parse(localStorage.getItem('installed')),
       item: {},

@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';
@@ -23,7 +23,7 @@ export default class Message extends PureComponent {
       messages: [],
     });
     toast(variables.getMessage(this.languagecode, 'toasts.reset'));
-    EventBus.dispatch('refresh', 'message');
+    EventBus.emit('refresh', 'message');
   };
 
   modifyMessage(type, index) {
@@ -78,7 +78,7 @@ export default class Message extends PureComponent {
         </SettingsItem>
         <div className="messagesContainer">
           {this.state.messages.map((_url, index) => (
-            <div className="messageMap">
+            <div className="messageMap" key={index}>
               <div className="flexGrow">
                 <div className="icon">
                   <MdOutlineTextsms />

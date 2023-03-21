@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent } from 'react';
+import { PureComponent } from 'preact/compat';
 
 import Radio from '../Radio';
 
@@ -30,12 +30,13 @@ export default class LanguageSettings extends PureComponent {
       return;
     }
 
-    const quoteLanguages = [];
-    data.forEach((item) => {
-      quoteLanguages.push({
-        name: item,
-        value: item,
-      });
+    const quoteLanguages = data.map((language) => {
+      return {
+        name: languages.find((l) => l.value === language.name)
+          ? languages.find((l) => l.value === language.name).name
+          : 'English',
+        value: language,
+      };
     });
 
     this.setState({
@@ -78,7 +79,10 @@ export default class LanguageSettings extends PureComponent {
         <div className="languageSettings">
           <Radio
             name="quoteLanguage"
-            options={this.state.quoteLanguages.map((l) => l.name)}
+            options={this.state.quoteLanguages.map((language) => {
+              return { name: language.name, value: language.value.name };
+            })}
+            defaultValue={this.state.quoteLanguages[0].name}
             category="quote"
           />
         </div>

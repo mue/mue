@@ -2,6 +2,7 @@
 
 .quicklinks {
   @include basicIconButton(10px, 14px, ui);
+
   outline: none;
   border: none;
   box-shadow: 0 0 0 1px #484848;
@@ -11,7 +12,7 @@
   align-items: center;
   justify-content: space-evenly;
   font-size: 0.5em;
-  padding: 10px 40px 10px 40px;
+  padding: 10px 40px;
   gap: 15px;
 }
 
@@ -25,6 +26,7 @@
 
   textarea {
     @extend %basic;
+
     border: none;
     padding: 15px;
     border-radius: 12px;
@@ -53,7 +55,7 @@
     font-size: 16px;
     cursor: initial;
     user-select: none;
-    color: rgba(255, 71, 87, 1);
+    color: rgb(255 71 87 / 100%);
   }
 }
 
@@ -90,10 +92,11 @@
 }
 
 /*  background-color: var(--background);
-  color: var(--modal-text);*/
+  color: var(--modal-text); */
 
 .quicklinksdropdown {
   @extend %basic;
+
   position: absolute;
   z-index: 99;
   display: none;
@@ -115,13 +118,14 @@
   .dropdown-subtitle {
     font-size: 0.4em;
 
-    @include themed() {
+    @include themed {
       color: t($subColor);
     }
   }
 
   button {
     @include basicIconButton(10px, 0.9rem, ui);
+
     border-radius: 12px;
     border: none;
     outline: none;
@@ -149,24 +153,26 @@ button.quicklinks {
   display: flex;
   flex-flow: column;
   gap: 5px;
+
   button {
     display: flex;
     flex-flow: row;
     gap: 20px;
     justify-content: center;
   }
+
   .dropdown-error {
     font-size: 13px;
     padding-left: 5px;
     color: #e74c3c;
   }
-  @include themed() {
+
+  @include themed {
     textarea {
       background: t($modal-sidebar);
-      border: 3px solid t($modal-sidebarActive);
+      border: 1px solid t($modal-sidebarActive);
       color: t($color);
       border-radius: t($borderRadius);
-      width: 270px;
       padding: 10px 20px;
 
       &:hover {
@@ -186,24 +192,36 @@ button.quicklinks {
 
 .quickLinksMetro {
   @extend %basic;
+
   text-decoration: none;
   gap: 10px;
   display: flex;
   flex-flow: column;
   align-items: center;
   min-width: 100px;
-  background-image: linear-gradient(to left, rgb(0, 0, 0), transparent, rgb(0, 0, 0)),
+  background-image: linear-gradient(to left, rgb(0 0 0), transparent, rgb(0 0 0)),
     url('https://media.cntraveller.com/photos/615ee85…/16:9/w_2580,c_limit/Best%20Cities%20in%20the%20World%20-%20Grid.jpg');
   transition: 0.8s;
   text-align: left;
   padding: 20px 40px;
-  @include themed() {
+
+  @include themed {
     &:hover {
       background: t($btn-backgroundHover);
     }
   }
+
   img {
     width: auto;
     align-self: center;
+  }
+}
+
+.quicklinknostyle {
+  text-decoration: none;
+  font-size: 14px;
+
+  @include themed {
+    color: t($subColor);
   }
 }

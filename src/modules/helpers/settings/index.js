@@ -4,6 +4,10 @@ import experimentalInit from '../experimental';
 import defaultSettings from 'modules/default_settings.json';
 import languages from 'modules/languages.json';
 
+/**
+ * It sets the default settings for the extension
+ * @param reset - boolean
+ */
 export function setDefaultSettings(reset) {
   localStorage.clear();
   defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
@@ -31,6 +35,10 @@ export function setDefaultSettings(reset) {
   localStorage.setItem('firstRun', true);
 }
 
+/**
+ * It loads the settings from localStorage and applies them to the page.
+ * @param hotreload - boolean
+ */
 export function loadSettings(hotreload) {
   switch (localStorage.getItem('theme')) {
     case 'dark':
@@ -157,8 +165,11 @@ export function loadSettings(hotreload) {
 `);
 }
 
-// in a nutshell, this function saves all of the current settings, resets them, sets the defaults and then overrides
-// the new settings with the old saved messages where they exist
+/**
+ * Saves all of the current settings, resets them, sets the defaults and then overrides
+ * the new settings with the old saved messages where they exist.
+ * @returns the result of the setDefaultSettings() function.
+ */
 export function moveSettings() {
   const currentSettings = Object.keys(localStorage);
   if (currentSettings.length === 0) {

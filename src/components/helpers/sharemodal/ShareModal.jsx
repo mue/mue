@@ -1,4 +1,5 @@
-import { memo } from 'react';
+import { memo } from 'preact/compat';
+import PropTypes from 'prop-types';
 import variables from 'modules/variables';
 import { MdClose, MdEmail, MdContentCopy } from 'react-icons/md';
 import { FaTwitter, FaFacebookF } from 'react-icons/fa';
@@ -10,35 +11,40 @@ import { toast } from 'react-toastify';
 import './sharemodal.scss';
 
 function ShareModal({ modalClose, data }) {
+  if (data.startsWith('https://cdn.')) {
+    data = {
+      url: data,
+      name: 'this image',
+    };
+  } else {
+    data = {
+      url: data,
+      name: 'this marketplace item',
+    };
+  }
+
   const copyLink = () => {
-    navigator.clipboard.writeText(data);
+    navigator.clipboard.writeText(data.url);
     toast(variables.getMessage('modals.share.copy_link'));
   };
-
-  // look into what's wrong with this
-  try {
-    if (!data.data) {
-      data.data.name = 'this image';
-    }
-  } catch (e) {}
 
   return (
     <div className="smallModal">
       <div className="shareHeader">
-        <p className="title">{variables.getMessage('widgets.quote.share')}</p>
+        <span className="title">{variables.getMessage('widgets.quote.share')}</span>
         <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>
         </Tooltip>
       </div>
-      <div className="buttons">
+      <div className="shareButtons">
         <Tooltip title="Twitter">
           <button
             onClick={() =>
               window
                 .open(
-                  `https://twitter.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data}`,
+                  `https://twitter.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data.url}`,
                   '_blank',
                 )
                 .focus()
@@ -50,7 +56,9 @@ function ShareModal({ modalClose, data }) {
         <Tooltip title="Facebook">
           <button
             onClick={() =>
-              window.open(`https://www.facebook.com/sharer/sharer.php?u=${data}`, '_blank').focus()
+              window
+                .open(`https://www.facebook.com/sharer/sharer.php?u=${data.url}`, '_blank')
+                .focus()
             }
           >
             <FaFacebookF />
@@ -78,7 +86,7 @@ function ShareModal({ modalClose, data }) {
             onClick={() =>
               window
                 .open(
-                  `https://api.qrserver.com/v1/create-qr-code/?size=154x154&data=${data}`,
+                  `https://api.qrserver.com/v1/create-qr-code/?size=154x154&data=${data.url}`,
                   '_blank',
                 )
                 .focus()
@@ -91,7 +99,7 @@ function ShareModal({ modalClose, data }) {
           <button
             onClick={() =>
               window
-                .open(`http://connect.qq.com/widget/shareqq/index.html?url=${data}`, '_blank')
+                .open(`http://connect.qq.com/widget/shareqq/index.html?url=${data.url}`, '_blank')
                 .focus()
             }
           >
@@ -100,7 +108,7 @@ function ShareModal({ modalClose, data }) {
         </Tooltip>
       </div>
       <div className="copy">
-        <input type="text" value={data} className="left field" readOnly />
+        <input type="text" value={data.url} className="left field" readOnly />
         <Tooltip title={variables.getMessage('modals.share.copy_link')} placement="top">
           <button onClick={() => copyLink()}>
             <MdContentCopy />
@@ -110,5 +118,10 @@ function ShareModal({ modalClose, data }) {
     </div>
   );
 }
+
+ShareModal.propTypes = {
+  modalClose: PropTypes.func.isRequired,
+  data: PropTypes.string.isRequired,
+};
 
 export default memo(ShareModal);

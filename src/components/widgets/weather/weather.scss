@@ -2,12 +2,12 @@
 
 .weather {
   @extend %basic;
+
   position: absolute;
   bottom: 1rem;
   right: 1rem;
   cursor: initial;
   user-select: none;
-  padding: 20px;
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   width: auto;
   display: grid;
@@ -25,9 +25,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
     .tooltip {
       width: 100%;
     }
+
     .tooltipTitle {
       max-height: 12px;
     }
@@ -38,7 +40,7 @@
     font-size: 18px;
     gap: 40px;
 
-    @include themed() {
+    @include themed {
       color: t($weather);
     }
   }
@@ -98,7 +100,7 @@
     gap: 10px;
   }
 
-  @include themed() {
+  @include themed {
     svg {
       color: t($subColor);
     }
@@ -108,6 +110,7 @@
       display: grid;
       align-items: center;
     }
+
     .materialWeatherIcon {
       font-size: 18px !important;
       padding: 2px;
@@ -122,7 +125,7 @@
   gap: 10px;
 
   div {
-    @include themed() {
+    @include themed {
       border-radius: t($borderRadius);
       border: 1px solid t($btn-backgroundHover);
       padding: 5px;

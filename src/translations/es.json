@@ -26,9 +26,7 @@
       "category": "Category",
       "exclude": "Don't show again",
       "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "categories": "Categories",
-      "photo": "Photo",
-      "on": "on"
+      "confirm": "Confirm"
     },
     "search": "Buscar",
     "quicklinks": {
@@ -47,13 +45,7 @@
       "not_found": "No encontrado",
       "meters": "{amount} metros",
       "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}",
-      "options": {
-        "basic": "Basic",
-        "standard": "Standard",
-        "expanded": "Expanded",
-        "custom": "Custom"
-      }
+      "feels_like": "Feels like {amount}"
     },
     "quote": {
       "link_tooltip": "Open on Wikipedia",
@@ -73,7 +65,8 @@
       "todo": {
         "title": "Todo",
         "pin": "Pin",
-        "add": "Add"
+        "add": "Add",
+        "no_todos": "No Todos"
       }
     }
   },
@@ -113,7 +106,7 @@
             "title": "Tiempo",
             "format": "Formato",
             "type": "Tipo",
-            "type_subtitle": "Choose whether to display the time in digital or analogue format, or a percentage completion of the day",
+            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
             "digital": {
               "title": "Digital",
               "subtitle": "Change how the digital clock looks",
@@ -129,7 +122,8 @@
               "minute_hand": "Manecilla de los minutos",
               "hour_hand": "Manecilla de las horas",
               "hour_marks": "Marcas de las horas",
-              "minute_marks": "Marcas de los minutos"
+              "minute_marks": "Marcas de los minutos",
+              "round_clock": "Rounded background"
             },
             "percentage_complete": "Porcentaje completado",
             "vertical_clock": {
@@ -267,8 +261,7 @@
               "hour": "Hora",
               "day": "Día",
               "month": "Mes"
-            },
-            "category": "Categoría"
+            }
           },
           "search": {
             "title": "Búsqueda",
@@ -298,6 +291,7 @@
               "title": "Información extra",
               "show_location": "Mostrar ubicación",
               "show_description": "Mostrar descripción",
+              "weather_description": "Weather description",
               "cloudiness": "Nubosidad",
               "humidity": "Humedad",
               "visibility": "Visibilidad",
@@ -396,7 +390,12 @@
               "title": "Accesibilidad",
               "description": "Accessibility settings for Mue",
               "animations": "Animaciones",
-              "text_shadow": "Sombra de texto del widget",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
               "widget_zoom": "Zoom del widget",
               "toast_duration": "Duración de la notificación",
               "milliseconds": "milisegundos"
@@ -432,7 +431,6 @@
           },
           "stats": {
             "title": "Estadísticas",
-            "warning": "Tienes que activar las estadísticas de uso para poder utilizar esta función. This data is only stored locally.",
             "sections": {
               "tabs_opened": "Pestañas abiertas",
               "backgrounds_favourited": "Fondos favoritos",
@@ -477,6 +475,7 @@
             "support_mue": "Apoya Mue",
             "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
             "support_donate": "Donate",
+            "form_button": "Form",
             "resources_used": {
               "title": "Recursos usados",
               "bg_images": "Imágenes de fondo sin conexión"
@@ -503,6 +502,7 @@
         "no_items": "No hay artículos en esta categoría",
         "collection": "Collection",
         "explore_collection": "Explore Collection",
+        "add_all": "Add All To Mue",
         "collections": "Collections",
         "cant_find": "Can't find what you're looking for?",
         "knowledgebase_one": "Visit the",
@@ -577,11 +577,9 @@
             "quotes": "Quotes Pack"
           },
           "descriptions": {
-            "settings": "",
+            "settings": "Collection of settings to customise Mue.",
             "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic.",
-            "photo_pack": "",
-            "quote_pack": ""
+            "quotes": "Collection of quotes relating to a topic."
           },
           "information": "Information",
           "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",

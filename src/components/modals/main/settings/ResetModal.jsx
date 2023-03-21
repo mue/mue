@@ -1,8 +1,9 @@
-import { memo } from 'react';
+import { memo } from 'preact/compat';
+import PropTypes from 'prop-types';
 import variables from 'modules/variables';
 import { MdClose, MdRestartAlt } from 'react-icons/md';
 import { setDefaultSettings } from 'modules/helpers/settings';
-import Tooltip from '../../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 function ResetModal({ modalClose }) {
   const reset = () => {
@@ -44,5 +45,9 @@ function ResetModal({ modalClose }) {
     </div>
   );
 }
+
+ResetModal.propTypes = {
+  modalClose: PropTypes.func.isRequired,
+};
 
 export default memo(ResetModal);

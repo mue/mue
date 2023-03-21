@@ -1,0 +1,25 @@
+{
+  "name": "Example Photos",
+  "description": "This is an example.",
+  "type": "photos",
+  "version": "1.0.0",
+  "author": "Mue",
+  "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
+  "screenshot_url": "https://github.com/mue/mue/raw/main/assets/screenshot.webp",
+  "photos": [
+    {
+      "photographer": "Example photographer",
+      "location": "Example location",
+      "url": {
+        "default": "https://github.com/mue/mue/raw/main/assets/screenshot.webp"
+      }
+    },
+    {
+      "photographer": "Example photographer 2",
+      "location": "Example location 2",
+      "url": {
+        "default": "https://github.com/mue/mue/raw/main/assets/screenshot2.webp"
+      }
+    }
+  ]
+}

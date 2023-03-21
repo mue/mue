@@ -1,10 +1,12 @@
 import variables from 'modules/variables';
-import { PureComponent, memo } from 'react';
+import { PureComponent, memo } from 'preact/compat';
+import PropTypes from 'prop-types';
+
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
-import Tooltip from '../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/helpers/tooltip/Tooltip';
 import { saveFile } from 'modules/helpers/settings/modals';
 import EventBus from 'modules/helpers/eventbus';
 
@@ -120,12 +122,12 @@ class Notes extends PureComponent {
                   </button>
                 </Tooltip>
                 <Tooltip title={variables.getMessage('widgets.quote.copy')}>
-                  <button onClick={() => this.copy()}>
+                  <button onClick={() => this.copy()} disabled={this.state.notes === ''}>
                     <MdContentCopy />
                   </button>
                 </Tooltip>
                 <Tooltip title={variables.getMessage('widgets.background.download')}>
-                  <button onClick={() => this.download()}>
+                  <button onClick={() => this.download()} disabled={this.state.notes === ''}>
                     <MdDownload />
                   </button>
                 </Tooltip>
@@ -135,6 +137,7 @@ class Notes extends PureComponent {
                 value={this.state.notes}
                 onChange={this.setNotes}
                 minRows={5}
+                maxLength={10000}
               />
             </div>
           </span>
@@ -160,5 +163,13 @@ function NotesWrapper() {
     />
   );
 }
+
+Notes.propTypes = {
+  notesRef: PropTypes.object,
+  floatRef: PropTypes.object,
+  position: PropTypes.string,
+  xPosition: PropTypes.number,
+  yPosition: PropTypes.number,
+};
 
 export default memo(NotesWrapper);
