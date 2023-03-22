@@ -31,7 +31,7 @@
     "react-icons": "^4.8.0",
     "react-modal": "3.16.1",
     "react-sortable-hoc": "2.0.0",
-    "react-toastify": "9.1.1"
+    "react-toastify": "9.1.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
