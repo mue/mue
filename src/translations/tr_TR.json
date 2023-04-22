@@ -26,7 +26,7 @@
       "category": "Kategori",
       "exclude": "Tekrar Gösterme",
       "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: Eğer bu kategoriye ait \"{category}\" resimleri beğenmiyorsanız, arka plan kaynak ayarları kısmından kategorinin seçimini kaldırabilirsiniz.",
-      "confirm": "Confirm"
+      "confirm": "Evet"
     },
     "search": "Arama",
     "quicklinks": {
@@ -66,7 +66,7 @@
         "title": "Yapılacaklar",
         "pin": "Tuttur",
         "add": "Ekle",
-        "no_todos": "No Todos"
+        "no_todos": "Yapılacak bir şey yok"
       }
     }
   },
@@ -104,7 +104,7 @@
           },
           "time": {
             "title": "Time",
-            "format": "Format",
+            "format": "Format", 
             "type": "Type",
             "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
             "digital": {
@@ -277,9 +277,9 @@
             "focus": "Açık Sekmeye Odaklan"
           },
           "weather": {
-            "title": "Weather",
-            "location": "Location",
-            "auto": "Auto",
+            "title": "Hava Durumu",
+            "location": "Konum",
+            "auto": "Otomatik",
             "widget_type": "Widget Type",
             "temp_format": {
               "title": "Temperature format",
@@ -289,25 +289,25 @@
             },
             "extra_info": {
               "title": "Extra information",
-              "show_location": "Show location",
-              "show_description": "Show description",
+              "show_location": "Konumu Göster",
+              "show_description": "Açıklamayı Göster",
               "weather_description": "Weather description",
               "cloudiness": "Cloudiness",
               "humidity": "Humidity",
               "visibility": "Visibility",
-              "wind_speed": "Wind speed",
-              "wind_direction": "Wind direction",
+              "wind_speed": "Rüzgar Hızı",
+              "wind_direction": "Rüzgar Yönü",
               "min_temp": "Minimum temperature",
               "max_temp": "Maximum temperature",
-              "atmospheric_pressure": "Atmospheric pressure"
+              "atmospheric_pressure": "Atmosferik Basınç"
             },
             "options": {
-              "basic": "Basic",
-              "standard": "Standard",
+              "basic": "Basit",
+              "standard": "Standart",
               "expanded": "Expanded",
-              "custom": "Custom"
+              "custom": "Kişisel"
             },
-            "custom_settings": "Custom Settings"
+            "custom_settings": "Kişisel Ayarlar"
           },
           "quicklinks": {
             "title": "Hızlı Linkler",
@@ -423,9 +423,9 @@
             "tab_name": "Tab name",
             "tab_name_subtitle": "Change the name of the tab that appears in your browser",
             "timezone": {
-              "title": "Time Zone",
+              "title": "Zaman Dilimi",
               "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
-              "automatic": "Automatic"
+              "automatic": "Otomatik"
             },
             "experimental_warning": "Deneysel modunuz açıksa Mue ekibinin destek sağlayamadığını lütfen unutmayın. Lütfen önce devre dışı bırakın ve desteğe başvurmadan önce sorunun devam edip etmediğini görün."
           },
@@ -502,7 +502,7 @@
         "no_items": "Bu kategoride öğe yok",
         "collection": "Koleksiyon",
         "explore_collection": "Koleksiyonu Keşfedin",
-        "add_all": "Add All To Mue",
+        "add_all": "Hepsini Ekle",
         "collections": "Koleksiyonlar",
         "cant_find": "Aradığınızı bulamıyor musunuz?",
         "knowledgebase_one": "Kendiniz oluşturmak için ",
@@ -530,12 +530,12 @@
             "back": "Geri",
             "report": "Bildir/Raporla"
           },
-          "setting": "Setting",
+          "setting": "Ayarlar",
           "value": "Value"
         },
         "offline": {
-          "title": "Looks like you're offline",
-          "description": "Please connect to the internet"
+          "title": "Görünüşe bakılırsa Çevrimdışısın",
+          "description": "Lütfen İnternete bağlan"
         }
       },
       "addons": {
