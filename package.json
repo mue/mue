@@ -46,7 +46,7 @@
     "prettier": "^2.8.4",
     "sass": "^1.59.2",
     "stylelint": "^15.2.0",
-    "stylelint-config-standard-scss": "^8.0.0",
+    "stylelint-config-standard-scss": "^9.0.0",
     "stylelint-scss": "^4.4.0",
     "vite": "4.3.5",
     "vite-plugin-checker": "^0.5.6",
