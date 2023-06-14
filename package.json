@@ -18,7 +18,7 @@
     "@fontsource/lexend-deca": "4.5.14",
     "@fontsource/montserrat": "4.5.14",
     "@mui/material": "5.12.0",
-    "@sentry/react": "^7.42.0",
+    "@sentry/react": "^7.55.0",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
     "fast-blurhash": "^1.1.2",
