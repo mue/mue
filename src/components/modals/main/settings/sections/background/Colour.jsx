@@ -1,13 +1,13 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
-import { ColorPicker } from 'react-color-gradient-picker';
+import { ColorPicker } from '@muetab/react-color-gradient-picker';
 import { toast } from 'react-toastify';
 import SettingsItem from '../../SettingsItem';
 
 import hexToRgb from 'modules/helpers/background/hexToRgb';
 import rgbToHex from 'modules/helpers/background/rgbToHex';
 
-import 'react-color-gradient-picker/dist/index.css';
+import '@muetab/react-color-gradient-picker/dist/index.css';
 import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss';
 
 export default class ColourSettings extends PureComponent {

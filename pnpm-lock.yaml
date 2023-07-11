@@ -19,6 +19,9 @@ dependencies:
   '@fontsource/montserrat':
     specifier: 5.0.5
     version: 5.0.5
+  '@muetab/react-color-gradient-picker':
+    specifier: 0.1.2
+    version: 0.1.2(react-dom@18.2.0)(react@18.2.0)
   '@mui/material':
     specifier: 5.13.7
     version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(react-dom@18.2.0)(react@18.2.0)
@@ -46,9 +49,6 @@ dependencies:
   react-clock:
     specifier: 4.2.0
     version: 4.2.0(react-dom@18.2.0)(react@18.2.0)
-  react-color-gradient-picker:
-    specifier: 0.1.2
-    version: 0.1.2(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -2255,6 +2255,16 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@muetab/react-color-gradient-picker@0.1.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Du/FbMpH+N6OuCfOQvUH6h6KaTopFn9R0aNc0DRvY5cm5bO6iJwdrNlOKdnijUvPIa0MNxWvwTuXJfEBEaXLsg==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@mui/base@5.0.0-beta.6(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-jcHy6HwOX7KzRhRtL8nvIvUlxvLx2Fl6NMRCyUSQSvMTyfou9kndekz0H4HJaXvG1Y4WEifk23RYedOlrD1kEQ==}
@@ -5238,16 +5248,6 @@ packages:
       clsx: 1.2.1
       get-user-locale: 2.3.0
       prop-types: 15.8.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /react-color-gradient-picker@0.1.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-/woJfVZbp/lEwqdNfk/vxmuUj7K9imyF6C5mrsfvwvtF1uFr7THHRyEDPLZd4mD9N3opPl6Z7G7SZrFQ8qBq9w==}
-    peerDependencies:
-      react: ^16.13.1
-      react-dom: ^16.13.1
-    dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
