@@ -193,9 +193,11 @@ export default class Stats extends PureComponent {
             </span>
           </div>
           <div className="achievements">
-            {this.state.achievements.map((achievement, index) =>
-              achievementElement(index, achievement.name, achievement.achieved),
-            )}
+            {this.state.achievements.map((achievement, index) => {
+              if (achievement.achieved) {
+                return achievementElement(index, achievement.name, achievement.achieved)
+              }
+            })}
           </div>
         </div>
       </>
