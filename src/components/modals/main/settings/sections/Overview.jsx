@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { MdOutlineDragIndicator } from 'react-icons/md';
-import { sortableContainer, sortableElement } from 'react-sortable-hoc';
+import { sortableContainer, sortableElement } from '@muetab/react-sortable-hoc';
 import { toast } from 'react-toastify';
 
 import Greeting from './overview_skeletons/Greeting';

@@ -14,7 +14,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
-import { sortableContainer, sortableElement, sortableHandle } from 'react-sortable-hoc';
+import { sortableContainer, sortableElement, sortableHandle } from '@muetab/react-sortable-hoc';
 import EventBus from 'modules/helpers/eventbus';
 
 const SortableItem = sortableElement(({ value }) => <div>{value}</div>);
