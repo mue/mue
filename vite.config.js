@@ -5,7 +5,6 @@ import fs from 'fs';
 import ADMZip from 'adm-zip';
 import * as pkg from './package.json';
 import progress from 'vite-plugin-progress';
-import checker from 'vite-plugin-checker';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -13,6 +12,10 @@ const prepareBuilds = () => ({
   name: 'prepareBuilds',
   buildEnd() {
     if (isProd) {
+      // make directories if not exist
+      fs.mkdirSync(path.resolve(__dirname, './build'), { recursive: true });
+      fs.mkdirSync(path.resolve(__dirname, './dist'), { recursive: true });
+
       // chrome
       fs.mkdirSync(path.resolve(__dirname, './build/chrome'), { recursive: true });
       fs.copyFileSync(

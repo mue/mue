@@ -18,7 +18,7 @@
     "@fontsource/lexend-deca": "5.0.5",
     "@fontsource/montserrat": "5.0.5",
     "@muetab/react-color-gradient-picker": "0.1.2",
-    "@muetab/react-sortable-hoc": "^2.0.0",
+    "@muetab/react-sortable-hoc": "^2.0.1",
     "@mui/material": "5.13.7",
     "@sentry/react": "^7.57.0",
     "embla-carousel-autoplay": "8.0.0-rc10",
@@ -49,7 +49,6 @@
     "stylelint-config-standard-scss": "^10.0.0",
     "stylelint-scss": "^5.0.1",
     "vite": "4.4.2",
-    "vite-plugin-checker": "^0.6.1",
     "vite-plugin-progress": "^0.0.7"
   },
   "scripts": {
