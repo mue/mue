@@ -40,7 +40,7 @@
     "@vitejs/plugin-react-swc": "^3.3.2",
     "adm-zip": "^0.5.10",
     "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-config-react-app": "^7.0.1",
     "husky": "^8.0.3",
     "prettier": "^3.0.0",
