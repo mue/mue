@@ -44,7 +44,7 @@
     "eslint-config-react-app": "^7.0.1",
     "husky": "^8.0.3",
     "prettier": "^3.0.0",
-    "sass": "^1.63.6",
+    "sass": "^1.65.1",
     "stylelint": "^15.10.1",
     "stylelint-config-standard-scss": "^10.0.0",
     "stylelint-scss": "^5.0.1",
