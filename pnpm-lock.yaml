@@ -50,8 +50,8 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0
   react-clock:
-    specifier: 4.2.0
-    version: 4.2.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: 4.5.0
+    version: 4.5.0(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -2887,8 +2887,8 @@ packages:
       - '@swc/helpers'
     dev: true
 
-  /@wojtekmaj/date-utils@1.4.1:
-    resolution: {integrity: sha512-Fjs0KJz0//0AmlJVFx9AQmWpmxOTw4foDo4DKoswWVVjHsna4rdu+fXwid5YHNgzv/wHi9AkZCRPmHWsf890lg==}
+  /@wojtekmaj/date-utils@1.5.0:
+    resolution: {integrity: sha512-0mq88lCND6QiffnSDWp+TbOxzJSwy2V/3XN+HwWZ7S2n19QAgR5dy5hRVhlECXvQIq2r+VcblBu+S9V+yMcxXw==}
     dev: false
 
   /JSONStream@1.3.5:
@@ -3264,6 +3264,11 @@ packages:
 
   /clsx@1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
+
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
     engines: {node: '>=6'}
     dev: false
 
@@ -5232,15 +5237,18 @@ packages:
       '@types/node': 10.17.60
     dev: true
 
-  /react-clock@4.2.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-H/700hJPu34ADDGH3fCjY6+4aTwvuVOhvpiOPrl2K67kwxa6npe2UNdO7nwayrTiGtZfgn2j2x2KRsn9TIHv1g==}
+  /react-clock@4.5.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-0LnNG1NbEOOl0M4v3Ul1D/4U1898S3JIc5GMunR6PGMv+ntGqOV/flV9MbIIXoFu8TEgS6xC/RVHZWCmaKJXhA==}
     peerDependencies:
+      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
     dependencies:
-      '@types/react': 18.2.14
-      '@wojtekmaj/date-utils': 1.4.1
-      clsx: 1.2.1
+      '@wojtekmaj/date-utils': 1.5.0
+      clsx: 2.0.0
       get-user-locale: 2.3.0
       prop-types: 15.8.1
       react: 18.2.0
