@@ -97,6 +97,7 @@ class Notes extends PureComponent {
           onBlur={() => this.hideNotes()}
           ref={this.props.notesRef}
           style={{ fontSize: this.state.zoomFontSize }}
+          aria-label={variables.getMessage('widgets.navbar.notes.title')}
         >
           <MdAssignment className="topicons" />
         </button>

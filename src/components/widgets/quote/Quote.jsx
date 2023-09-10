@@ -25,28 +25,28 @@ export default class Quote extends PureComponent {
   buttons = {
     share: (
       <Tooltip title={variables.getMessage('widgets.quote.share')}>
-        <button onClick={() => this.setState({ shareModal: true })}>
+        <button onClick={() => this.setState({ shareModal: true })} aria-label={variables.getMessage('widgets.quote.share')}>
           <MdIosShare className="copyButton" />
         </button>
       </Tooltip>
     ),
     copy: (
       <Tooltip title={variables.getMessage('widgets.quote.copy')}>
-        <button onClick={() => this.copyQuote()}>
+        <button onClick={() => this.copyQuote()} aria-label={variables.getMessage('widgets.quote.copy')}>
           <MdContentCopy className="copyButton" />
         </button>
       </Tooltip>
     ),
     unfavourited: (
       <Tooltip title={variables.getMessage('widgets.quote.favourite')}>
-        <button onClick={() => this.favourite()}>
+        <button onClick={() => this.favourite()} aria-label={variables.getMessage('widgets.quote.favourite')}>
           <MdStarBorder className="copyButton" />
         </button>
       </Tooltip>
     ),
     favourited: (
       <Tooltip title={variables.getMessage('widgets.quote.unfavourite')}>
-        <button onClick={() => this.favourite()}>
+        <button onClick={() => this.favourite()} aria-label={variables.getMessage('widgets.quote.unfavourite')}>
           <MdStar className="copyButton" />
         </button>
       </Tooltip>
@@ -436,6 +436,7 @@ export default class Quote extends PureComponent {
                   className="quoteAuthorLink"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Learn about the author of the quote."
                 >
                   {this.state.author}
                 </a>
@@ -481,6 +482,7 @@ export default class Quote extends PureComponent {
                       className="quoteAuthorLink"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Learn about the author of the quote."
                     >
                       <MdOpenInNew />
                     </a>{' '}

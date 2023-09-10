@@ -115,7 +115,11 @@ class Navbar extends PureComponent {
               title={variables.getMessage('widgets.navbar.tooltips.refresh')}
               subtitle={this.state.refreshText}
             >
-              <button onClick={() => this.refresh()} style={{ fontSize: this.state.zoomFontSize }}>
+              <button
+                onClick={() => this.refresh()}
+                style={{ fontSize: this.state.zoomFontSize }}
+                aria-label={variables.getMessage('widgets.navbar.tooltips.refresh')}
+              >
                 <MdRefresh className="refreshicon topicons" />
               </button>
             </Tooltip>
@@ -130,6 +134,11 @@ class Navbar extends PureComponent {
             <button
               onClick={() => this.props.openModal('mainModal')}
               style={{ fontSize: this.state.zoomFontSize }}
+              aria-label={variables.getMessage('modals.main.navbar.settings', {
+                type: variables.getMessage(
+                  'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
+                ),
+              })}
             >
               <MdSettings className="settings-icon topicons" />
             </button>
