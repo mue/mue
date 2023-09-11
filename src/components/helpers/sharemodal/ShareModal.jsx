@@ -16,6 +16,11 @@ function ShareModal({ modalClose, data }) {
       url: data,
       name: 'this image',
     };
+  } else if (data.startsWith('"')) {
+    data = {
+      url: data,
+      name: 'this quote',
+    };
   } else {
     data = {
       url: data,
