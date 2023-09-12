@@ -188,6 +188,7 @@ h5 {
       flex-direction: row-reverse;
       justify-content: space-between;
       padding: 5px 5px 5px 20px;
+      transition: 0.3s;
 
       @include themed {
         background: t($modal-sidebar);

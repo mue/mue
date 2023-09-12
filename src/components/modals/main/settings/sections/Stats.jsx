@@ -72,7 +72,7 @@ export default class Stats extends PureComponent {
     this.setState({
       stats: {},
     });
-    toast.success('Stats reset');
+    toast('Stats reset');
     this.getAchievements();
     this.forceUpdate();
   }
@@ -97,9 +97,16 @@ export default class Stats extends PureComponent {
 
     return (
       <>
-        <span className="mainTitle">
-          {variables.getMessage('modals.main.settings.sections.stats.title')}
-        </span>
+        <div className="statsTopBar">
+          <span className="mainTitle">
+            {variables.getMessage('modals.main.settings.sections.stats.title')}
+          </span>
+          <div className="statsReset">
+            <button onClick={() => this.resetStats()}>
+              <MdRestartAlt /> {variables.getMessage('modals.main.settings.buttons.reset')}
+            </button>
+          </div>{' '}
+        </div>
         <div className="stats">
           <div className="statSection rightPanel">
             <div className="statIcon">
@@ -178,9 +185,6 @@ export default class Stats extends PureComponent {
               </div>
             </div>
           </div>
-          <div className="statsReset">
-          <button onClick={() => this.resetStats()}><MdRestartAlt /> {variables.getMessage('modals.main.settings.buttons.reset')}</button>
-        </div>
           <div className="statSection leftPanel">
             <span className="title">
               {variables.getMessage('modals.main.settings.sections.stats.achievements')}
@@ -195,7 +199,7 @@ export default class Stats extends PureComponent {
           <div className="achievements">
             {this.state.achievements.map((achievement, index) => {
               if (achievement.achieved) {
-                return achievementElement(index, achievement.name, achievement.achieved)
+                return achievementElement(index, achievement.name, achievement.achieved);
               }
             })}
           </div>

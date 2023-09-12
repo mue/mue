@@ -165,6 +165,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+  transition: 0.3s;
 
   @include themed {
     background: t($modal-sidebar);
