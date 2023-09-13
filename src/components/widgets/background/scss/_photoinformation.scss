@@ -449,3 +449,17 @@
     }
   }
 }
+
+.unsplashStats {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  gap: 40px;
+  margin-right: 40px;
+  div {
+    display: flex;
+    flex-flow: row;
+    gap: 10px;
+    align-items: center;
+  }
+}

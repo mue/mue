@@ -271,7 +271,7 @@ function PhotoInformation({ info, url, api }) {
               {photo} {credit}
             </span>
             {info.views && info.downloads !== null ? (
-              <div className="stats">
+              <div className="unsplashStats">
                 <div title={variables.getMessage('widgets.background.views')}>
                   <Views />
                   <span>{info.views.toLocaleString()}</span>
