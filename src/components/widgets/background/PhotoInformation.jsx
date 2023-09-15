@@ -68,48 +68,29 @@ function PhotoInformation({ info, url, api }) {
     return null;
   }
 
-  // remove unsplash and pexels text
+  // remove unsplash text
   const unsplash = variables.getMessage('widgets.background.unsplash');
-  const pexels = variables.getMessage('widgets.background.pexels');
 
   let credit = info.credit;
   let photo = variables.getMessage('widgets.background.credit');
 
-  // unsplash and pexels credit
+  // unsplash credit
   if (info.photographerURL && info.photographerURL !== '' && !info.offline && api) {
-    if (api === 'unsplash') {
-      photo = (
-        <a href={info.photoURL + '?utm_source=mue'} target="_blank" rel="noopener noreferrer">
-          {photo}
+    photo = (
+      <a href={info.photoURL + '?utm_source=mue'} target="_blank" rel="noopener noreferrer">
+        {photo}
+      </a>
+    );
+    credit = (
+      <>
+        <a href={info.photographerURL} target="_blank" rel="noopener noreferrer">
+          {info.credit}
+        </a>{' '}
+        <a href="https://unsplash.com?utm_source=mue" target="_blank" rel="noopener noreferrer">
+          {unsplash}
         </a>
-      );
-      credit = (
-        <>
-          <a href={info.photographerURL} target="_blank" rel="noopener noreferrer">
-            {info.credit}
-          </a>{' '}
-          <a href="https://unsplash.com?utm_source=mue" target="_blank" rel="noopener noreferrer">
-            {unsplash}
-          </a>
-        </>
-      );
-    } else {
-      photo = (
-        <a href={info.photoURL} target="_blank" rel="noopener noreferrer">
-          {photo}
-        </a>
-      );
-      credit = (
-        <>
-          <a href={info.photographerURL} target="_blank" rel="noopener noreferrer">
-            {info.credit}
-          </a>{' '}
-          <a href="https://pexels.com" target="_blank" rel="noopener noreferrer">
-            {pexels}
-          </a>
-        </>
-      );
-    }
+      </>
+    );
   }
 
   const ddgProxy = localStorage.getItem('ddgProxy') === 'true';

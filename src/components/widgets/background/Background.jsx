@@ -107,10 +107,8 @@ export default class Background extends PureComponent {
     let requestURL, data;
     switch (backgroundAPI) {
       case 'unsplash':
-        requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
-        break;
       case 'pexels':
-        requestURL = `${variables.constants.API_URL}/images/pexels?quality=${apiQuality}`;
+        requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
         break;
       // Defaults to Mue
       default:
@@ -129,7 +127,7 @@ export default class Background extends PureComponent {
 
     let photoURL, photographerURL;
 
-    if (backgroundAPI === 'unsplash' || backgroundAPI === 'pexels') {
+    if (backgroundAPI === 'unsplash') {
       photoURL = data.photo_page;
       photographerURL = data.photographer_page;
     }
