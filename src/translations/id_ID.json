@@ -567,57 +567,9 @@
         },
         "create": {
           "title": "Buat",
-          "example": "Example",
-          "other_title": "Buat Add-on",
-          "create_type": "Create {type} Pack",
-          "types": {
-            "settings": "Preset Settings Pack",
-            "photos": "Photo Pack",
-            "quotes": "Quotes Pack"
-          },
-          "descriptions": {
-            "settings": "Collection of settings to customise Mue.",
-            "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic."
-          },
-          "information": "Information",
-          "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",
-          "import_custom": "Import from custom settings.",
-          "publishing": {
-            "title": "Next step, Publishing...",
-            "subtitle": "Visit the Mue Knowledgebase on information on how to publish your newly created addon.",
-            "button": "Learn more"
-          },
-          "metadata": {
-            "name": "Nama",
-            "icon_url": "URL Ikon",
-            "screenshot_url": "URL Screenshot",
-            "description": "Deskripsi",
-            "example": "Download example"
-          },
-          "finish": {
-            "title": "Selesai",
-            "download": "Unduh Add-on"
-          },
-          "settings": {
-            "current": "Impor",
-            "json": "Unggah JSON"
-          },
-          "photos": {
-            "title": "Tambahkan foto"
-          },
-          "quotes": {
-            "title": "Tambahkan Kutipan",
-            "api": {
-              "title": "API",
-              "url": "URL Kutipan",
-              "name": "Nama Kutipan",
-              "author": "Penulis kutipan"
-            },
-            "local": {
-              "title": "Lokal"
-            }
-          }
+          "moved_title": "Create add-on has moved!",
+          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
+          "moved_button": "Get Started"
         }
       }
     },

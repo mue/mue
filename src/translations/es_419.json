@@ -567,57 +567,9 @@
         },
         "create": {
           "title": "Crear",
-          "example": "Example",
-          "other_title": "Crear complemento",
-          "create_type": "Create {type} Pack",
-          "types": {
-            "settings": "Preset Settings Pack",
-            "photos": "Photo Pack",
-            "quotes": "Quotes Pack"
-          },
-          "descriptions": {
-            "settings": "Collection of settings to customise Mue.",
-            "photos": "Collection of photos relating to a topic.",
-            "quotes": "Collection of quotes relating to a topic."
-          },
-          "information": "Information",
-          "information_subtitle": "For example: 1.2.3 (major update, minor update, patch update)",
-          "import_custom": "Import from custom settings.",
-          "publishing": {
-            "title": "Next step, Publishing...",
-            "subtitle": "Visit the Mue Knowledgebase on information on how to publish your newly created addon.",
-            "button": "Learn more"
-          },
-          "metadata": {
-            "name": "Nombre",
-            "icon_url": "URL del icono",
-            "screenshot_url": "URL de la captura de pantalla",
-            "description": "Descripción",
-            "example": "Download example"
-          },
-          "finish": {
-            "title": "Terminar",
-            "download": "Descargar complemento"
-          },
-          "settings": {
-            "current": "Importar la configuración actual",
-            "json": "Subir JSON"
-          },
-          "photos": {
-            "title": "Añadir fotos"
-          },
-          "quotes": {
-            "title": "Añadir citación",
-            "api": {
-              "title": "API",
-              "url": "Quote URL",
-              "name": "JSON quote name",
-              "author": "JSON quote author (or override)"
-            },
-            "local": {
-              "title": "Local"
-            }
-          }
+          "moved_title": "Create add-on has moved!",
+          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
+          "moved_button": "Get Started"
         }
       }
     },
