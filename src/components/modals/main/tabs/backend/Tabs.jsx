@@ -38,10 +38,11 @@ class Tabs extends PureComponent {
   }
 
   render() {
-    const display = localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none';
-
     const reminderInfo = (
-      <div className="reminder-info" style={{ display }}>
+      <div
+        className="reminder-info"
+        style={{ display: localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none' }}
+      >
         <div className="shareHeader">
           <span className="title">
             {variables.getMessage('modals.main.settings.reminder.title')}
@@ -59,24 +60,6 @@ class Tabs extends PureComponent {
         </button>
       </div>
     );
-
-    let settingsActive = '';
-    let addonsActive = '';
-    let marketplaceActive = '';
-
-    switch (this.props.current) {
-      case 'settings':
-        settingsActive = ' navbar-item-active';
-        break;
-      case 'addons':
-        addonsActive = ' navbar-item-active';
-        break;
-      case 'marketplace':
-        marketplaceActive = ' navbar-item-active';
-        break;
-      default:
-        break;
-    }
 
     return (
       <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
@@ -96,21 +79,31 @@ class Tabs extends PureComponent {
           <ErrorBoundary>
             <div className="modalNavbar">
               <button
-                className={'navbar-item' + settingsActive}
+                className={
+                  this.props.current === 'settings'
+                    ? 'navbar-item navbar-item-active'
+                    : 'navbar-item'
+                }
                 onClick={() => this.props.changeTab('settings')}
               >
                 <MdSettings />
-                <span> {variables.getMessage('modals.main.navbar.settings')}</span>
+                <span>{variables.getMessage('modals.main.navbar.settings')}</span>
               </button>
               <button
-                className={'navbar-item' + addonsActive}
+                className={
+                  this.props.current === 'addons' ? 'navbar-item navbar-item-active' : 'navbar-item'
+                }
                 onClick={() => this.props.changeTab('addons')}
               >
                 <MdOutlineExtension />
                 <span>{variables.getMessage('modals.main.navbar.addons')}</span>
               </button>
               <button
-                className={'navbar-item' + marketplaceActive}
+                className={
+                  this.props.current === 'marketplace'
+                    ? 'navbar-item navbar-item-active'
+                    : 'navbar-item'
+                }
                 onClick={() => this.props.changeTab('marketplace')}
               >
                 <MdOutlineShoppingBasket />

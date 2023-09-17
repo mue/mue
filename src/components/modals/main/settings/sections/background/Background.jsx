@@ -180,7 +180,7 @@ export default class BackgroundSettings extends PureComponent {
               {
                 name: 'Unsplash',
                 value: 'unsplash',
-              }
+              },
             ]}
             name="backgroundAPI"
             category="background"

@@ -100,7 +100,11 @@ export default class Search extends PureComponent {
 
     if (localStorage.getItem('voiceSearch') === 'true') {
       microphone = (
-        <button onClick={this.startSpeechRecognition} ref={this.micIcon} aria-label="Microphone Search">
+        <button
+          onClick={this.startSpeechRecognition}
+          ref={this.micIcon}
+          aria-label="Microphone Search"
+        >
           <MdMic className="micIcon" />
         </button>
       );

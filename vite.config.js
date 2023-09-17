@@ -95,7 +95,7 @@ export default defineConfig({
       components: path.resolve(__dirname, './src/components'),
       modules: path.resolve(__dirname, './src/modules'),
       translations: path.resolve(__dirname, './src/translations'),
-      scss: path.resolve(__dirname, './src/scss')
+      scss: path.resolve(__dirname, './src/scss'),
     },
   },
 });

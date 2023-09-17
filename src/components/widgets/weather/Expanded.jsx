@@ -52,8 +52,8 @@ function Expanded({ state, weatherType, variables }) {
             {state.weather.wind_speed}
             <span className="minmax">m/s</span>{' '}
             {enabled('windDirection') ? (
-              <div style={{ fontSize: "25px", display: "grid" }}>
-              <WindDirectionIcon className="weatherIcon" degrees={state.weather.wind_degrees} />
+              <div style={{ fontSize: '25px', display: 'grid' }}>
+                <WindDirectionIcon className="weatherIcon" degrees={state.weather.wind_degrees} />
               </div>
             ) : null}
           </span>

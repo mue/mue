@@ -41,17 +41,17 @@ export function initTranslations(locale) {
 }
 
 export const translations = {
-    de_DE,
-    en_GB,
-    en_US,
-    es,
-    es_419,
-    fr,
-    nl,
-    no,
-    ru,
-    zh_CN,
-    id_ID,
-    tr_TR,
-    pt_BR,
-}
+  de_DE,
+  en_GB,
+  en_US,
+  es,
+  es_419,
+  fr,
+  nl,
+  no,
+  ru,
+  zh_CN,
+  id_ID,
+  tr_TR,
+  pt_BR,
+};
