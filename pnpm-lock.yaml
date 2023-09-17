@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@eartharoid/i18n':
     specifier: 1.2.1
@@ -106,8 +110,8 @@ devDependencies:
     specifier: ^11.0.0
     version: 11.0.0(postcss@8.4.29)(stylelint@15.10.3)
   stylelint-scss:
-    specifier: ^5.1.0
-    version: 5.1.0(stylelint@15.10.3)
+    specifier: ^5.2.0
+    version: 5.2.0(stylelint@15.10.3)
   vite:
     specifier: 4.4.9
     version: 4.4.9(@types/node@20.4.7)(sass@1.67.0)
@@ -5871,7 +5875,7 @@ packages:
       postcss-scss: 4.0.8(postcss@8.4.29)
       stylelint: 15.10.3(typescript@5.2.2)
       stylelint-config-recommended: 13.0.0(stylelint@15.10.3)
-      stylelint-scss: 5.1.0(stylelint@15.10.3)
+      stylelint-scss: 5.2.0(stylelint@15.10.3)
     dev: true
 
   /stylelint-config-recommended@13.0.0(stylelint@15.10.3):
@@ -5908,8 +5912,8 @@ packages:
       stylelint-config-recommended: 13.0.0(stylelint@15.10.3)
     dev: true
 
-  /stylelint-scss@5.1.0(stylelint@15.10.3):
-    resolution: {integrity: sha512-E+KlQFXv1Euha43qw3q+wKBSli557wxbbo6/39DWhRNXlUa9Cz+FYrcgz+PT6ag0l6UisCYjAGCNhoSl4FcwlA==}
+  /stylelint-scss@5.2.0(stylelint@15.10.3):
+    resolution: {integrity: sha512-m/os6B7xHKakM9TkEbnity0gnDEqNbISpclvjOwIU+xIHk/8dQNGcTI2UlC5/QLzaG+tzQ9eMFZH8Iq7roQI2w==}
     peerDependencies:
       stylelint: ^14.5.1 || ^15.0.0
     dependencies:
@@ -6445,7 +6449,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
