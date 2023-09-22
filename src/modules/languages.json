@@ -46,5 +46,13 @@
   {
     "name": "Portuguese (Brazil)",
     "value": "pt_BR"
+  },
+  {
+    "name": "বাংলা",
+    "value": "bn"
+  },
+  {
+    "name": "bahasa Indonesia",
+    "value": "id_ID"
   }
 ]

@@ -20,6 +20,7 @@ const achievementLanguage = {
   zh_CN: translations.zh_CN,
   id_ID: translations.id_ID,
   tr_TR: translations.tr_TR,
+  bn: translations.bn,
 };
 
 export default class Stats extends PureComponent {
