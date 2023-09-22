@@ -193,10 +193,8 @@ export default class Added extends PureComponent {
     if (this.state.installed.length === 0) {
       return (
         <>
-          <div className="flexTopMarketplace">
+          <div className="flexTopMarketplace topAddons">
             <span className="mainTitle">{variables.getMessage('modals.main.navbar.addons')}</span>
-          </div>
-          <div className="filter">
             {sideLoadBackendElements()}
             <button
               className="sideload"
@@ -234,33 +232,35 @@ export default class Added extends PureComponent {
 
     return (
       <>
-        <span className="mainTitle">{variables.getMessage('modals.main.addons.added')}</span>
-        <div className="filter">
-          {sideLoadBackendElements()}
-          <div className="buttonSection">
-            <button
-              className="sideload"
-              onClick={() => document.getElementById('file-input').click()}
-            >
-              {variables.getMessage('modals.main.addons.sideload.title')}
-              <MdCode />
-            </button>
-            <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
-              <MdUpdate />
-              {variables.getMessage('modals.main.addons.check_updates')}
-            </button>
+        <div className="flexTopMarketplace topAddons">
+          <span className="mainTitle">{variables.getMessage('modals.main.addons.added')}</span>
+          <div className="filter">
+            {sideLoadBackendElements()}
+            <div className="buttonSection">
+              <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
+                <MdUpdate />
+                {variables.getMessage('modals.main.addons.check_updates')}
+              </button>
+              <button
+                className="sideload"
+                onClick={() => document.getElementById('file-input').click()}
+              >
+                {variables.getMessage('modals.main.addons.sideload.title')}
+                <MdCode />
+              </button>
+            </div>
           </div>
-          <Dropdown
-            label={variables.getMessage('modals.main.addons.sort.title')}
-            name="sortAddons"
-            onChange={(value) => this.sortAddons(value)}
-          >
-            <option value="newest">{variables.getMessage('modals.main.addons.sort.newest')}</option>
-            <option value="oldest">{variables.getMessage('modals.main.addons.sort.oldest')}</option>
-            <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
-            <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
-          </Dropdown>
         </div>
+        <Dropdown
+          label={variables.getMessage('modals.main.addons.sort.title')}
+          name="sortAddons"
+          onChange={(value) => this.sortAddons(value)}
+        >
+          <option value="newest">{variables.getMessage('modals.main.addons.sort.newest')}</option>
+          <option value="oldest">{variables.getMessage('modals.main.addons.sort.oldest')}</option>
+          <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
+          <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
+        </Dropdown>
         <Items
           items={this.state.installed}
           filter=""

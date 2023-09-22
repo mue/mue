@@ -378,17 +378,9 @@ p.author {
 .filter {
   display: flex;
   flex-flow: row;
-  padding: 15px;
   gap: 15px;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
-
-  @include themed {
-    background: t($modal-sidebar);
-    border-radius: t($borderRadius);
-    box-shadow: 0 0 0 4px t($modal-sidebarActive);
-  }
 
   .MuiFormControl-root {
     margin-bottom: 10px;
@@ -613,4 +605,10 @@ a.collectionButton {
   svg {
     font-size: 30px;
   }
+}
+
+.topAddons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
