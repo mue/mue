@@ -1,5 +1,13 @@
 [
   {
+    "name": "Bahasa Indonesia",
+    "value": "id_ID"
+  },
+  {
+    "name": "বাংলা",
+    "value": "bn"
+  },
+  {
     "name": "Deutsch",
     "value": "de_DE"
   },
@@ -46,13 +54,5 @@
   {
     "name": "Portuguese (Brazil)",
     "value": "pt_BR"
-  },
-  {
-    "name": "বাংলা",
-    "value": "bn"
-  },
-  {
-    "name": "bahasa Indonesia",
-    "value": "id_ID"
   }
 ]

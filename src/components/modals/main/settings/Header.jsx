@@ -2,7 +2,12 @@ import variables from 'modules/variables';
 
 import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { /*MdHelpOutline,*/ MdFlag, MdArrowBack } from 'react-icons/md';
+import {
+  /*MdHelpOutline,*/ MdFlag,
+  MdArrowBack,
+  MdOutlineVisibilityOff,
+  MdOutlineVisibility,
+} from 'react-icons/md';
 
 import Slider from './Slider';
 import Switch from './Switch';
@@ -15,7 +20,7 @@ class Header extends PureComponent {
   render() {
     return (
       <>
-        <div className="flexTopMarketplace">
+        <div className="flexTopMarketplace topAddons">
           {this.props.backButton ? (
             <div className="returnButton" onClick={this.props.clickEffect}>
               <Tooltip
@@ -27,6 +32,30 @@ class Header extends PureComponent {
             </div>
           ) : null}
           <span className="mainTitle">{this.props.title}</span>
+          {this.props.switch && (
+            <button
+              className="sideload"
+              onClick={() => {
+                if (localStorage.getItem(this.props.settings) === 'true') {
+                  localStorage.setItem(this.props.setting, false);
+                } else {
+                  localStorage.setItem(this.props.setting, true);
+                }
+              }}
+            >
+              {localStorage.getItem(this.props.setting) === 'true' ? (
+                <>
+                  Hide
+                  <MdOutlineVisibilityOff />
+                </>
+              ) : (
+                <>
+                  Show
+                  <MdOutlineVisibility />
+                </>
+              )}
+            </button>
+          )}
         </div>
         <div className="headerExtras">
           {/*<span
