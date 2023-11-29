@@ -39,8 +39,8 @@ dependencies:
     specifier: 8.0.0-rc12
     version: 8.0.0-rc12(embla-carousel@8.0.0-rc12)
   embla-carousel-react:
-    specifier: 8.0.0-rc12
-    version: 8.0.0-rc12(react@18.2.0)
+    specifier: 8.0.0-rc15
+    version: 8.0.0-rc15(react@18.2.0)
   fast-blurhash:
     specifier: ^1.1.2
     version: 1.1.2
@@ -3538,26 +3538,30 @@ packages:
       embla-carousel: 8.0.0-rc12
     dev: false
 
-  /embla-carousel-react@8.0.0-rc12(react@18.2.0):
-    resolution: {integrity: sha512-Tyd9TNH9i8bb/0S9/WZsmEvfZm8jlFU9sgaWNNgLzbPsUtz/L6UTYuRGOBDOt2oh6VPhaL1G8vRuOAuH81G5Cg==}
+  /embla-carousel-react@8.0.0-rc15(react@18.2.0):
+    resolution: {integrity: sha512-PePOkyPMWsUDNJKYRhUmGScYhex9mfpEiYiKT8OgwP/4K60plW0qk8cAXWvS9N61A/3RkUq7uz+hQsmhAtYMcA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      embla-carousel: 8.0.0-rc12
-      embla-carousel-reactive-utils: 8.0.0-rc12(embla-carousel@8.0.0-rc12)
+      embla-carousel: 8.0.0-rc15
+      embla-carousel-reactive-utils: 8.0.0-rc15(embla-carousel@8.0.0-rc15)
       react: 18.2.0
     dev: false
 
-  /embla-carousel-reactive-utils@8.0.0-rc12(embla-carousel@8.0.0-rc12):
-    resolution: {integrity: sha512-sHYqMYW2qk9UXNMLoBmo4PRe+8qOW8CJDDqfkMB0WlSfrzgi9fCc36nArQz6k9olHsVfEc3haw00KiqRBvVwEg==}
+  /embla-carousel-reactive-utils@8.0.0-rc15(embla-carousel@8.0.0-rc15):
+    resolution: {integrity: sha512-17Pr+N2vULFS8Lxzi2jaebwVloiFJLpdJMJLKJKQ26NzEmX8pVtHSu3uuTWc8HPwye5HFugqCPJ2QoWWhKs6Kg==}
     peerDependencies:
-      embla-carousel: 8.0.0-rc12
+      embla-carousel: 8.0.0-rc15
     dependencies:
-      embla-carousel: 8.0.0-rc12
+      embla-carousel: 8.0.0-rc15
     dev: false
 
   /embla-carousel@8.0.0-rc12:
     resolution: {integrity: sha512-/Xkf5zp9gs9Y45lSAT1Witn+r+o+EtoIIZg4V2lYTCaaqdDTxyO0Ddn+z00ya38JGNZrGH9U8wLGK5Hi76CRxw==}
+    dev: false
+
+  /embla-carousel@8.0.0-rc15:
+    resolution: {integrity: sha512-s7VPexK2h8VEYjEVQFnJAPcRnY5YqJYicFxKVVyWXP3Hk9FFDkT0kqVxMM1PcL187qHOUgmGVHOrfC8xWy3OKQ==}
     dev: false
 
   /emoji-regex@8.0.0:
