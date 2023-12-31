@@ -224,7 +224,7 @@ export default class QuickLinks extends PureComponent {
         </SettingsItem>
         <SettingsItem
           title={variables.getMessage('modals.main.settings.sections.quicklinks.styling')}
-          description={variables.getMessage(
+          subtitle={variables.getMessage(
             'modals.main.settings.sections.quicklinks.styling_description',
           )}
         >

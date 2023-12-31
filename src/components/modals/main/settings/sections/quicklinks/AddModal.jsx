@@ -9,12 +9,16 @@ import Tooltip from 'components/helpers/tooltip/Tooltip';
 function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, editLink }) {
   const [name, setName] = useState(edit ? editData.name : '');
   const [url, setUrl] = useState(edit ? editData.url : '');
-  const [icon, setIcon] = useState(edit ? editData.url : '');
+  const [icon, setIcon] = useState(edit ? editData.icon : '');
 
   return (
     <div className="smallModal" style={{ width: '260px' }}>
       <div className="shareHeader">
-        <span className="title">{variables.getMessage('widgets.quicklinks.new')}</span>
+        <span className="title">
+          {edit
+            ? variables.getMessage('widgets.quicklinks.edit')
+            : variables.getMessage('widgets.quicklinks.new')}
+        </span>
         <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
           <div className="close" onClick={() => closeModal()}>
             <MdClose />

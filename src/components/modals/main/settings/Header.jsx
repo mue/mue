@@ -12,11 +12,43 @@ import {
 import Slider from './Slider';
 import Switch from './Switch';
 import SettingsItem from './SettingsItem';
+import EventBus from 'modules/helpers/eventbus';
 
 import { values } from 'modules/helpers/settings/modals';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
 class Header extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      [this.props.setting]: localStorage.getItem(this.props.setting) === 'true',
+    };
+  }
+
+  changeSetting() {
+    if (localStorage.getItem(this.props.setting) === 'true') {
+      localStorage.setItem(this.props.setting, false);
+      this.setState({ [this.props.setting]: false });
+    } else {
+      localStorage.setItem(this.props.setting, true);
+      this.setState({ [this.props.setting]: true });
+    }
+
+    variables.stats.postEvent(
+      'setting',
+      `${this.props.name} ${this.state.checked === true ? 'enabled' : 'disabled'}`,
+    );
+
+    if (this.props.element) {
+      if (!document.querySelector(this.props.element)) {
+        document.querySelector('.reminder-info').style.display = 'flex';
+        return localStorage.setItem('showReminder', true);
+      }
+    }
+
+    EventBus.emit('refresh', this.props.category);
+  }
+
   render() {
     return (
       <>
@@ -35,15 +67,9 @@ class Header extends PureComponent {
           {this.props.switch && (
             <button
               className="sideload"
-              onClick={() => {
-                if (localStorage.getItem(this.props.settings) === 'true') {
-                  localStorage.setItem(this.props.setting, false);
-                } else {
-                  localStorage.setItem(this.props.setting, true);
-                }
-              }}
+              onClick={() => this.changeSetting()}
             >
-              {localStorage.getItem(this.props.setting) === 'true' ? (
+              {this.state[this.props.setting] ? (
                 <>
                   Hide
                   <MdOutlineVisibilityOff />
@@ -83,20 +109,6 @@ class Header extends PureComponent {
             <MdFlag /> {variables.getMessage('modals.main.settings.sections.header.report_issue')}
           </span>
         </div>
-        {this.props.switch ? (
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.enabled')}
-            subtitle={variables.getMessage('modals.main.settings.sections.header.enabled')}
-          >
-            <Switch
-              name={this.props.setting}
-              text={variables.getMessage('modals.main.settings.enabled')}
-              category={this.props.category}
-              element={this.props.element || null}
-              header={true}
-            />
-          </SettingsItem>
-        ) : null}
         {this.props.zoomSetting ? (
           <SettingsItem
             title={variables.getMessage(
