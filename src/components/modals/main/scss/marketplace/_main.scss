@@ -255,6 +255,14 @@
   grid-gap: 5px;
   padding: 50px;
 
+  .title, svg {
+    margin: 10px;
+  }
+
+  svg {
+    font-size: 70px;
+  }
+
   @include themed {
     .sideloadIcon {
       font-size: 50px;

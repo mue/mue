@@ -23,7 +23,6 @@ class Marketplace extends PureComponent {
     this.state = {
       items: [],
       button: '',
-      featured: {},
       done: false,
       item: {},
       collection: false,
@@ -139,11 +138,6 @@ class Marketplace extends PureComponent {
         signal: this.controller.signal,
       })
     ).json();
-    const featured = await (
-      await fetch(variables.constants.MARKETPLACE_URL + '/featured', {
-        signal: this.controller.signal,
-      })
-    ).json();
     const collections = await (
       await fetch(variables.constants.MARKETPLACE_URL + '/collections', {
         signal: this.controller.signal,
@@ -157,7 +151,6 @@ class Marketplace extends PureComponent {
     this.setState({
       items: data,
       oldItems: data,
-      featured: featured.data,
       collections: collections.data,
       done: true,
     });
@@ -284,10 +277,10 @@ class Marketplace extends PureComponent {
       return errorMessage(
         <>
           <MdWifiOff />
-          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
-          <p className="description">
+          <span className="title">{variables.getMessage('modals.main.marketplace.offline.title')}</span>
+          <span className="subtitle">
             {variables.getMessage('modals.main.marketplace.offline.description')}
-          </p>
+          </span>
         </>,
       );
     }
@@ -303,34 +296,16 @@ class Marketplace extends PureComponent {
       );
     }
 
-    const featured = () => {
-      const openFeatured = () => {
-        variables.stats.postEvent('marketplace', 'Featured clicked');
-        window.open(this.state.featured.buttonLink);
-      };
-
-      return (
-        <div className="featured" style={{ backgroundColor: this.state.featured.colour }}>
-          <p>{this.state.featured.title}</p>
-          <h1>{this.state.featured.name}</h1>
-          <button className="addToMue" onClick={() => openFeatured()}>
-            {this.state.featured.buttonText}
-          </button>
-        </div>
-      );
-    };
-
     if (this.state.items?.length === 0) {
       return (
         <>
-          {featured()}
           {errorMessage(
             <>
               <MdLocalMall />
-              <h1>{variables.getMessage('modals.main.addons.empty.title')}</h1>
-              <p className="description">
+              <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
+              <span className="subtitle">
                 {variables.getMessage('modals.main.marketplace.no_items')}
-              </p>
+              </span>
             </>,
           )}
         </>

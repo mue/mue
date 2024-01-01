@@ -83,13 +83,7 @@ function Items({
                 </span>
                 {type === 'all' && !onCollection ? (
                   <span className="card-type">
-                    {variables.getMessage(
-                      `modals.main.addons.create.types.${
-                        item.type.split('_')[0] === 'preset'
-                          ? 'settings'
-                          : item.type.split('_')[0] + 's'
-                      }`,
-                    )}
+                    {variables.getMessage('modals.main.marketplace.' + item.type)}
                   </span>
                 ) : null}
               </div>
