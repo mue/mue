@@ -113,6 +113,11 @@ export default class Quote extends PureComponent {
           .join('_')}`;
   }
 
+  stripHTML(html) {
+    const tmpdoc = new DOMParser().parseFromString(html, 'text/html');
+    return tmpdoc.body.textContent || "";
+}
+
   async getAuthorImg(author) {
     if (localStorage.getItem('authorImg') === 'false') {
       return {
@@ -150,7 +155,7 @@ export default class Quote extends PureComponent {
       const license = metadata.LicenseShortName;
       const photographer =
         metadata.Attribution.value ||
-        metadata.Artist?.value.match(/<a.+>(?<name>.+)<\/a>/i)?.groups.name ||
+        this.stripHTML(metadata.Artist?.value || '').replace(/ \(talk\)/, '') || // talk page link (if applicable) is only removed for English
         'Unknown';
       authorimglicense = `© ${photographer}. ${license.value}`;
       authorimglicense = authorimglicense.replace(/copyright\s/i, '').replace(/©\s©\s/, '© ');
