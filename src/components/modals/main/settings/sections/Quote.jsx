@@ -220,7 +220,7 @@ export default class QuoteSettings extends PureComponent {
             </Dropdown>
           </div>
         </div>
-        {!this.state.sourceSection ? (
+        {!this.state.sourceSection && (
           <>
             <SettingsItem
               title={variables.getMessage('modals.main.settings.sections.quote.buttons.title')}
@@ -291,7 +291,7 @@ export default class QuoteSettings extends PureComponent {
               />
             </SettingsItem>
           </>
-        ) : null}
+        )}
         {customSettings}
       </>
     );

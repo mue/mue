@@ -26,12 +26,12 @@ export default class Widgets extends PureComponent {
     };
     // widgets we can re-order
     this.widgets = {
-      time: this.enabled('time') ? <Clock /> : null,
-      greeting: this.enabled('greeting') ? <Greeting /> : null,
-      quote: this.enabled('quote') ? <Quote /> : null,
-      date: this.enabled('date') ? <Date /> : null,
+      time: this.enabled('time') && <Clock />,
+      greeting: this.enabled('greeting') && <Greeting />,
+      quote: this.enabled('quote') && <Quote />,
+      date: this.enabled('date') && <Date />,
       quicklinks: this.enabled('quicklinksenabled') && this.online ? <QuickLinks /> : null,
-      message: this.enabled('message') ? <Message /> : null,
+      message: this.enabled('message') && <Message />,
     };
   }
 
@@ -77,7 +77,7 @@ export default class Widgets extends PureComponent {
     ) : (
       <div id="widgets">
         <Suspense fallback={<></>}>
-          {this.enabled('searchBar') ? <Search /> : null}
+          {this.enabled('searchBar') && <Search />}
           {this.state.order.map((element, key) => (
             <Fragment key={key}>{this.widgets[element]}</Fragment>
           ))}

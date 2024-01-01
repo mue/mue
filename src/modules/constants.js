@@ -26,11 +26,11 @@ export const REPO_NAME = 'mue';
 export const EMAIL = 'hello@muetab.com';
 export const TWITTER_HANDLE = 'getmue';
 export const DISCORD_SERVER = 'zv8C9F8';
-export const COPYRIGHT_NAME = 'The Mue Authors';
+export const COPYRIGHT_NAME = 'The Mue Authors & Kaiso One Ltd';
 export const COPYRIGHT_YEAR = '2018';
 export const COPYRIGHT_LICENSE = 'BSD-3-Clause License';
 export const OPENCOLLECTIVE_USERNAME = 'mue';
 
 export const OFFLINE_IMAGES = 20;
 
-export const VERSION = '7.0.0';
+export const VERSION = '7.0.1';

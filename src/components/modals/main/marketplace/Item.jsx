@@ -109,22 +109,22 @@ class Item extends PureComponent {
         </div>
         <div className="itemPage">
           <div className="itemShowcase">
-            {this.props.data.data.photos ? (
+            {this.props.data.data.photos && (
               <div className="carousel">
                 <div className="carousel_container">
                   <ImageCarousel data={this.props.data.data.photos} />
                 </div>
               </div>
-            ) : null}
-            {this.props.data.data.settings ? (
+            )}
+            {this.props.data.data.settings && (
               <img
                 alt="product"
                 draggable={false}
                 src={iconsrc}
                 onClick={() => this.setState({ showLightbox: true })}
               />
-            ) : null}
-            {this.props.data.data.quotes ? (
+            )}
+            {this.props.data.data.quotes && (
               <>
                 <table>
                   <tbody>
@@ -156,8 +156,8 @@ class Item extends PureComponent {
                   </span>
                 </div>
               </>
-            ) : null}
-            {this.props.data.data.settings ? (
+            )}
+            {this.props.data.data.settings && (
               <>
                 <table>
                   <tbody>
@@ -191,7 +191,7 @@ class Item extends PureComponent {
                   </span>
                 </div>
               </>
-            ) : null}
+            )}
             <div>
               <p className="title">
                 {variables.getMessage('modals.main.marketplace.product.description')}
@@ -223,7 +223,7 @@ class Item extends PureComponent {
                   <span>{this.props.data.author}</span>
                 </div>
               </div>
-              {this.props.data.data.quotes ? (
+              {this.props.data.data.quotes && (
                 <div className="infoItem">
                   <MdFormatQuote />
                   <div className="text">
@@ -233,8 +233,8 @@ class Item extends PureComponent {
                     <span>{this.props.data.data.quotes.length}</span>
                   </div>
                 </div>
-              ) : null}
-              {this.props.data.data.photos ? (
+              )}
+              {this.props.data.data.photos && (
                 <div className="infoItem">
                   <MdImage />
                   <div className="text">
@@ -244,7 +244,7 @@ class Item extends PureComponent {
                     <span>{this.props.data.data.photos.length}</span>
                   </div>
                 </div>
-              ) : null}
+              )}
               {this.props.data.data.quotes && this.props.data.data.language !== '' ? (
                 <div className="infoItem">
                   <MdTranslate />
@@ -312,7 +312,7 @@ class Item extends PureComponent {
                   </button>
                 </Tooltip>
               </div>
-              {this.props.data.data.collection ? (
+              {this.props.data.data.collection && (
                 <div className="inCollection">
                   <span className="subtitle">
                     {variables.getMessage('modals.main.marketplace.product.part_of')}
@@ -320,7 +320,7 @@ class Item extends PureComponent {
                   <span className="title">{this.props.data.data.collection}</span>
                   <button>{variables.getMessage('modals.main.marketplace.product.explore')}</button>
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
         </div>

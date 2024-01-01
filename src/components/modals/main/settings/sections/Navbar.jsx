@@ -56,7 +56,7 @@ function Navbar() {
           category="navbar"
         />
       </SettingsItem>
-      {showRefreshOptions ? (
+      {showRefreshOptions && (
         <SettingsItem
           title={variables.getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
           subtitle={variables.getMessage(
@@ -82,7 +82,7 @@ function Navbar() {
             </option>
           </Dropdown>
         </SettingsItem>
-      ) : null}
+      )}
     </>
   );
 }

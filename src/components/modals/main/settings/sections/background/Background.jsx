@@ -287,11 +287,11 @@ export default class BackgroundSettings extends PureComponent {
                   onChange={(value) => this.setState({ backgroundType: value })}
                   category="background"
                 >
-                  {this.state.marketplaceEnabled ? (
+                  {this.state.marketplaceEnabled && (
                     <option value="photo_pack">
                       {variables.getMessage('modals.main.navbar.marketplace')}
                     </option>
-                  ) : null}
+                  )}
                   <option value="api">
                     {variables.getMessage('modals.main.settings.sections.background.type.api')}
                   </option>
@@ -406,11 +406,11 @@ export default class BackgroundSettings extends PureComponent {
                 onChange={(value) => this.setState({ backgroundType: value })}
                 category="background"
               >
-                {this.state.marketplaceEnabled ? (
+                {this.state.marketplaceEnabled && (
                   <option value="photo_pack">
                     {variables.getMessage('modals.main.navbar.marketplace')}
                   </option>
-                ) : null}
+                )}
                 <option value="api">
                   {variables.getMessage('modals.main.settings.sections.background.type.api')}
                 </option>
@@ -520,7 +520,7 @@ export default class BackgroundSettings extends PureComponent {
                 )}
               </option>
             </Dropdown>
-            {this.state.backgroundFilter !== 'none' ? (
+            {this.state.backgroundFilter !== 'none' && (
               <Slider
                 title={variables.getMessage(
                   'modals.main.settings.sections.background.effects.filters.amount',
@@ -534,7 +534,7 @@ export default class BackgroundSettings extends PureComponent {
                 category="background"
                 element="#backgroundImage"
               />
-            ) : null}
+            )}
           </SettingsItem>
         ) : null}
       </>

@@ -470,13 +470,12 @@ export default class Quote extends PureComponent {
               {this.state.author !== '' ? (
                 <div className="author-content" ref={this.quoteauthor}>
                   <span className="title">{this.state.author}</span>
-                  {this.state.authorOccupation !== 'Unknown' ? (
+                  {this.state.authorOccupation !== 'Unknown' && (
                     <span className="subtitle">{this.state.authorOccupation}</span>
-                  ) : null}
+                  )}
                   <span className="author-license">
-                    {this.state.authorimglicense
-                      ? this.state.authorimglicense.replace(' undefined. ', ' ')
-                      : null}
+                    {this.state.authorimglicense &&
+                      this.state.authorimglicense.replace(' undefined. ', ' ')}
                   </span>
                 </div>
               ) : (

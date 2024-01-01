@@ -112,7 +112,7 @@ export default class Message extends PureComponent {
             </div>
           ))}
         </div>
-        {this.state.messages.length === 0 ? (
+        {this.state.messages.length === 0 && (
           <div className="photosEmpty">
             <div className="emptyNewMessage">
               <MdOutlineTextsms />
@@ -128,7 +128,7 @@ export default class Message extends PureComponent {
               </button>
             </div>
           </div>
-        ) : null}
+        )}
       </>
     );
   }

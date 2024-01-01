@@ -395,7 +395,7 @@ class Marketplace extends PureComponent {
               </span>
             </div>
             <div className="headerExtras marketplaceCondition">
-              {this.props.type !== 'collections' ? (
+              {this.props.type !== 'collections' && (
                 <div>
                   <form className="marketplaceSearch">
                     <input
@@ -412,7 +412,7 @@ class Marketplace extends PureComponent {
                     <MdRefresh /> {variables.getMessage('widgets.navbar.tooltips.refresh')}
               </span>*/}
                 </div>
-              ) : null}
+              )}
               <Dropdown
                 label={variables.getMessage('modals.main.addons.sort.title')}
                 name="sortMarketplace"

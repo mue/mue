@@ -132,14 +132,14 @@ export default class Changelog extends PureComponent {
         <h5>
           {this.state.author} • {this.state.date}
         </h5>
-        {this.state.image ? (
+        {this.state.image && (
           <img
             draggable={false}
             src={this.state.image}
             alt={this.state.title}
             className="updateImage"
           />
-        ) : null}
+        )}
         <div className="updateChangelog">{this.state.content}</div>
         <Modal
           closeTimeoutMS={100}

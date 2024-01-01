@@ -154,11 +154,11 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   return (
     <>
-      {mue === true ? <span className="mainTitle">Mue</span> : null}
+      {mue === true && <span className="mainTitle">Mue</span>}
       <button className={className} onClick={() => onClick(label)}>
         {icon} <span>{label}</span>
       </button>
-      {divider === true ? <hr /> : null}
+      {divider === true && <hr />}
     </>
   );
 }

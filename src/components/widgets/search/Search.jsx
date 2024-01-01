@@ -249,7 +249,7 @@ export default class Search extends PureComponent {
         </div>
         <div>
           {localStorage.getItem('searchDropdown') === 'true' &&
-          this.state.searchDropdown === true ? (
+          this.state.searchDropdown === true && (
             <div className="searchDropdown">
               {searchEngines.map(({ name }, key) => {
                 return (
@@ -275,7 +275,7 @@ export default class Search extends PureComponent {
                 {customText}
               </span>
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     );

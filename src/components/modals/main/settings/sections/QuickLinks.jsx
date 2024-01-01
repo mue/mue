@@ -39,7 +39,7 @@ export default class QuickLinks extends PureComponent {
     variables.stats.postEvent('feature', 'Quicklink delete');
   }
 
-  addLink(name, url, icon) {
+  async addLink(name, url, icon) {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
 
     // regex: https://ihateregex.io/expr/url/
@@ -63,7 +63,7 @@ export default class QuickLinks extends PureComponent {
     }
 
     data.push({
-      name: name || url,
+      name: name || await this.getTitle(url),
       url,
       icon: icon || '',
       key: Math.random().toString(36).substring(7) + 1,
@@ -89,10 +89,10 @@ export default class QuickLinks extends PureComponent {
     });
   }
 
-  editLink(og, name, url, icon) {
+  async editLink(og, name, url, icon) {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
     const dataobj = data.find((i) => i.key === og.key);
-    dataobj.name = name || url;
+    dataobj.name = name || await this.getTitle(url);
     dataobj.url = url;
     dataobj.icon = icon || '';
 
@@ -103,6 +103,24 @@ export default class QuickLinks extends PureComponent {
       showAddModal: false,
       edit: false,
     });
+  }
+
+  async getTitle(url) {
+    let title;
+    try {
+      let response = await fetch(url);
+      if (response.redirected) {
+        response = await fetch(response.url);
+      }
+      const html = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      title = doc.title;
+    } catch (e) {
+      title = url;
+    }
+
+    return title;
   }
 
   componentDidMount() {
@@ -255,7 +273,7 @@ export default class QuickLinks extends PureComponent {
           </button>
         </SettingsItem>
 
-        {this.state.items.length === 0 ? (
+        {this.state.items.length === 0 && (
           <div className="photosEmpty">
             <div className="emptyNewMessage">
               <MdLinkOff />
@@ -271,7 +289,7 @@ export default class QuickLinks extends PureComponent {
               </button>
             </div>
           </div>
-        ) : null}
+        )}
 
         <div className="messagesContainer" ref={this.quicklinksContainer}>
           {this.state.items.map((item) => quickLink(item))}

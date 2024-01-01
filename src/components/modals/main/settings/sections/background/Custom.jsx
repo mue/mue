@@ -227,8 +227,8 @@ export default class CustomSettings extends PureComponent {
                       alt={'Custom background ' + (index || 0)}
                       src={`${!this.videoCheck(url) ? this.state.customBackground[index] : ''}`}
                     />
-                    {this.videoCheck(url) ? <MdPersonalVideo className="customvideoicon" /> : null}
-                    {this.state.customBackground.length > 0 ? (
+                    {this.videoCheck(url) && <MdPersonalVideo className="customvideoicon" />}
+                    {this.state.customBackground.length > 0 && (
                       <Tooltip
                         title={variables.getMessage(
                           'modals.main.settings.sections.background.source.remove',
@@ -238,7 +238,7 @@ export default class CustomSettings extends PureComponent {
                           <MdCancel />
                         </button>
                       </Tooltip>
-                    ) : null}
+                    )}
                   </div>
                 ))}
               </div>

@@ -52,7 +52,7 @@ function WindDirectionIcon({ degrees }) {
   const direction =
     directions[Math.round(((degrees %= 360) < 0 ? degrees + 360 : degrees) / 45) % 8];
 
-  return direction ? direction.icon : null;
+  return direction && direction.icon;
 }
 
 WindDirectionIcon.propTypes = {

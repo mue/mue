@@ -66,11 +66,11 @@ class Dropdown extends PureComponent {
           {this.props.manual
             ? this.props.children
             : this.props.children.map((e, index) => {
-                return e ? (
+                return e && (
                   <MenuItem key={index} value={e.props ? e.props.value : ''}>
                     {e.props ? e.props.children : ''}
                   </MenuItem>
-                ) : null;
+                );
               })}
         </Select>
       </FormControl>

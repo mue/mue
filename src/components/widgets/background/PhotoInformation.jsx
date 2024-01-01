@@ -201,7 +201,7 @@ function PhotoInformation({ info, url, api }) {
       {widgetStyle !== 'legacy' || other ? (
         <div
           className="photoInformation orHover"
-          style={{ padding: widgetStyle === 'legacy' ? '20px' : null }}
+          style={{ padding: widgetStyle === 'legacy' && '20px' }}
           onMouseEnter={() => setshowExtraInfo(true)}
           onMouseLeave={() => setshowExtraInfo(false)}
         >
@@ -210,7 +210,7 @@ function PhotoInformation({ info, url, api }) {
             <h1>{photoMap}</h1>
             {photoMap()}
           </div>
-          {showingPhotoMap ? (
+          {showingPhotoMap && (
             <div className="copyright">
               <a
                 href="https://www.mapbox.com/about/maps/"
@@ -239,7 +239,7 @@ function PhotoInformation({ info, url, api }) {
                 Improve this map{' '}
               </a>
             </div>
-          ) : null}
+          )}
           <div className="photoInformation-content">
             <span className="title">
               {(showExtraInfo || other) && info.description
@@ -295,15 +295,15 @@ function PhotoInformation({ info, url, api }) {
                     {width}x{height}
                   </span>
                 </div>
-                {info.category ? (
+                {info.category && (
                   <div className="row" title={variables.getMessage('widgets.background.category')}>
                     <Category />
                     <span id="infoCategory">
                       {info.category[0].toUpperCase() + info.category.slice(1)}
                     </span>
                   </div>
-                ) : null}
-                {api ? (
+                )}
+                {api && (
                   <div className="row" title={variables.getMessage('widgets.background.source')}>
                     <Source />
                     <span id="infoSource">
@@ -328,10 +328,10 @@ function PhotoInformation({ info, url, api }) {
                       )}
                     </span>
                   </div>
-                ) : null}
+                )}
               </div>
               <div className="buttons">
-                {!info.offline ? (
+                {!info.offline && (
                   <Tooltip
                     title={variables.getMessage('widgets.quote.share')}
                     key="share"
@@ -339,7 +339,7 @@ function PhotoInformation({ info, url, api }) {
                   >
                     <Share onClick={() => openShareModal(true)} />
                   </Tooltip>
-                ) : null}
+                )}
                 <Tooltip
                   title={variables.getMessage('widgets.quote.favourite')}
                   key="favourite"
@@ -352,7 +352,7 @@ function PhotoInformation({ info, url, api }) {
                     photoURL={info.url}
                   />
                 </Tooltip>
-                {!info.offline ? (
+                {!info.offline && (
                   <Tooltip
                     title={variables.getMessage('widgets.background.download')}
                     key="download"
@@ -360,8 +360,8 @@ function PhotoInformation({ info, url, api }) {
                   >
                     <Download onClick={() => downloadImage(info)} />
                   </Tooltip>
-                ) : null}
-                {info.pun ? (
+                )}
+                {info.pun && (
                   <Tooltip
                     title={variables.getMessage('widgets.background.exclude')}
                     key="exclude"
@@ -369,7 +369,7 @@ function PhotoInformation({ info, url, api }) {
                   >
                     <VisibilityOff onClick={() => openExcludeModal(true)} />
                   </Tooltip>
-                ) : null}
+                )}
               </div>
             </>
           ) : null}

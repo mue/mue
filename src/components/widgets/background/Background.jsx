@@ -564,13 +564,13 @@ export default class Background extends PureComponent {
           }}
           id="backgroundImage"
         />
-        {this.state.photoInfo.credit !== '' ? (
+        {this.state.photoInfo.credit !== '' && (
           <PhotoInformation
             info={this.state.photoInfo}
             api={this.state.currentAPI}
             url={this.state.url}
           />
-        ) : null}
+        )}
       </>
     );
   }

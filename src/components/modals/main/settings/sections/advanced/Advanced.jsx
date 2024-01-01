@@ -67,7 +67,7 @@ export default class AdvancedSettings extends PureComponent {
         >
           <Switch name="offlineMode" element=".other" />
         </SettingsItem>
-        {localStorage.getItem('welcomePreview') !== 'true' ? (
+        {localStorage.getItem('welcomePreview') !== 'true' && (
           <div className="settingsRow">
             <div className="content">
               <span className="title">
@@ -92,7 +92,7 @@ export default class AdvancedSettings extends PureComponent {
               </button>
             </div>
           </div>
-        ) : null}
+        )}
         <SettingsItem
           title={variables.getMessage('modals.main.settings.sections.advanced.timezone.title')}
           subtitle={variables.getMessage(

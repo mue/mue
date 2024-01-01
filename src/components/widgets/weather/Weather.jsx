@@ -135,9 +135,9 @@ export default class Weather extends PureComponent {
             <span className="loc">{this.state.location}</span>
           </div>
         )}
-        {weatherType >= 3 ? (
+        {weatherType >= 3 && (
           <Expanded weatherType={weatherType} state={this.state} variables={variables} />
-        ) : null}
+        )}
       </div>
     );
   }

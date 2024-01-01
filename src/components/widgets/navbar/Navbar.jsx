@@ -103,14 +103,14 @@ class Navbar extends PureComponent {
           {localStorage.getItem('view') === 'true' && backgroundEnabled ? (
             <Maximise fontSize={this.state.zoomFontSize} />
           ) : null}
-          {localStorage.getItem('notesEnabled') === 'true' ? (
+          {localStorage.getItem('notesEnabled') === 'true' && (
             <Notes fontSize={this.state.zoomFontSize} />
-          ) : null}
-          {localStorage.getItem('todoEnabled') === 'true' ? (
+          )}
+          {localStorage.getItem('todoEnabled') === 'true' && (
             <Todo fontSize={this.state.zoomFontSize} />
-          ) : null}
+          )}
 
-          {this.refreshEnabled !== 'false' ? (
+          {this.refreshEnabled !== 'false' && (
             <Tooltip
               title={variables.getMessage('widgets.navbar.tooltips.refresh')}
               subtitle={this.state.refreshText}
@@ -123,7 +123,7 @@ class Navbar extends PureComponent {
                 <MdRefresh className="refreshicon topicons" />
               </button>
             </Tooltip>
-          ) : null}
+          )}
           <Tooltip
             title={variables.getMessage('modals.main.navbar.settings', {
               type: variables.getMessage(

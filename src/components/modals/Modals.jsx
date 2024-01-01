@@ -77,9 +77,9 @@ export default class Modals extends PureComponent {
   render() {
     return (
       <>
-        {this.state.welcomeModal === false ? (
+        {this.state.welcomeModal === false && (
           <Navbar openModal={(modal) => this.toggleModal(modal, true)} />
-        ) : null}
+        )}
         <Modal
           closeTimeoutMS={300}
           id="modal"
@@ -102,7 +102,7 @@ export default class Modals extends PureComponent {
         >
           <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()} />
         </Modal>
-        {this.state.preview ? <Preview setup={() => window.location.reload()} /> : null}
+        {this.state.preview && <Preview setup={() => window.location.reload()} />}
       </>
     );
   }

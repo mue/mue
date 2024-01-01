@@ -38,7 +38,7 @@ export default class App extends PureComponent {
   render() {
     return (
       <>
-        {localStorage.getItem('background') === 'true' ? <Background /> : null}
+        {localStorage.getItem('background') === 'true' && <Background />}
         <ToastContainer
           position="bottom-right"
           autoClose={localStorage.getItem('toastDisplayTime') || 2500}

@@ -391,14 +391,14 @@ class WelcomeSections extends PureComponent {
               )}
             </span>
           </div>
-          {this.state.importedSettings.length !== 0 ? (
+          {this.state.importedSettings.length !== 0 && (
             <div className="toggle" onClick={() => this.props.switchTab(2)}>
               {variables.getMessage('modals.main.settings.sections.final.imported', {
                 amount: this.state.importedSettings.length,
               })}{' '}
               {this.state.importedSettings.length}
             </div>
-          ) : null}
+          )}
         </div>
       </>
     );

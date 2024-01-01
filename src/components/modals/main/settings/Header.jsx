@@ -10,7 +10,6 @@ import {
 } from 'react-icons/md';
 
 import Slider from './Slider';
-import Switch from './Switch';
 import SettingsItem from './SettingsItem';
 import EventBus from 'modules/helpers/eventbus';
 
@@ -53,7 +52,7 @@ class Header extends PureComponent {
     return (
       <>
         <div className="flexTopMarketplace topAddons">
-          {this.props.backButton ? (
+          {this.props.backButton && (
             <div className="returnButton" onClick={this.props.clickEffect}>
               <Tooltip
                 title={variables.getMessage('modals.main.navbar.marketplace.product.buttons.back')}
@@ -62,7 +61,7 @@ class Header extends PureComponent {
                 <MdArrowBack className="backArrow" />
               </Tooltip>
             </div>
-          ) : null}
+          )}
           <span className="mainTitle">{this.props.title}</span>
           {this.props.switch && (
             <button
@@ -109,7 +108,7 @@ class Header extends PureComponent {
             <MdFlag /> {variables.getMessage('modals.main.settings.sections.header.report_issue')}
           </span>
         </div>
-        {this.props.zoomSetting ? (
+        {this.props.zoomSetting && (
           <SettingsItem
             title={variables.getMessage(
               'modals.main.settings.sections.appearance.accessibility.widget_zoom',
@@ -126,7 +125,7 @@ class Header extends PureComponent {
               category={this.props.zoomCategory || this.props.category}
             />
           </SettingsItem>
-        ) : null}
+        )}
       </>
     );
   }

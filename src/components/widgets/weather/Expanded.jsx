@@ -27,7 +27,7 @@ function Expanded({ state, weatherType, variables }) {
           {variables.getMessage('widgets.weather.extra_information')}
         </span>
       )}
-      {enabled('cloudiness') ? (
+      {enabled('cloudiness') && (
         <Tooltip
           title={variables.getMessage(
             'modals.main.settings.sections.weather.extra_info.cloudiness',
@@ -39,8 +39,8 @@ function Expanded({ state, weatherType, variables }) {
             {state.weather.cloudiness}%
           </span>
         </Tooltip>
-      ) : null}
-      {enabled('windspeed') ? (
+      )}
+      {enabled('windspeed') && (
         <Tooltip
           title={variables.getMessage(
             'modals.main.settings.sections.weather.extra_info.wind_speed',
@@ -51,15 +51,15 @@ function Expanded({ state, weatherType, variables }) {
             <WiWindy className="weatherIcon" />
             {state.weather.wind_speed}
             <span className="minmax">m/s</span>{' '}
-            {enabled('windDirection') ? (
+            {enabled('windDirection') && (
               <div style={{ fontSize: '25px', display: 'grid' }}>
                 <WindDirectionIcon className="weatherIcon" degrees={state.weather.wind_degrees} />
               </div>
-            ) : null}
+            )}
           </span>
         </Tooltip>
-      ) : null}
-      {enabled('atmosphericpressure') ? (
+      )}
+      {enabled('atmosphericpressure') && (
         <Tooltip
           title={variables.getMessage(
             'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
@@ -72,8 +72,8 @@ function Expanded({ state, weatherType, variables }) {
             <span className="minmax">hPa</span>
           </span>
         </Tooltip>
-      ) : null}
-      {enabled('weatherdescription') ? (
+      )}
+      {enabled('weatherdescription') && (
         <Tooltip
           title={variables.getMessage(
             'modals.main.settings.sections.weather.extra_info.weather_description',
@@ -85,8 +85,8 @@ function Expanded({ state, weatherType, variables }) {
             {state.weather.description}
           </span>
         </Tooltip>
-      ) : null}
-      {enabled('visibility') ? (
+      )}
+      {enabled('visibility') && (
         <Tooltip
           title={variables.getMessage(
             'modals.main.settings.sections.weather.extra_info.visibility',
@@ -100,8 +100,8 @@ function Expanded({ state, weatherType, variables }) {
             })}
           </span>
         </Tooltip>
-      ) : null}
-      {enabled('humidity') ? (
+      )}
+      {enabled('humidity') && (
         <Tooltip
           title={variables.getMessage('modals.main.settings.sections.weather.extra_info.humidity')}
           placement="left"
@@ -111,7 +111,7 @@ function Expanded({ state, weatherType, variables }) {
             {state.weather.humidity}
           </span>
         </Tooltip>
-      ) : null}
+      )}
     </div>
   );
 }
