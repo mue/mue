@@ -64,10 +64,7 @@ class Header extends PureComponent {
           )}
           <span className="mainTitle">{this.props.title}</span>
           {this.props.switch && (
-            <button
-              className="sideload"
-              onClick={() => this.changeSetting()}
-            >
+            <button className="sideload" onClick={() => this.changeSetting()}>
               {this.state[this.props.setting] ? (
                 <>
                   Hide

@@ -419,18 +419,17 @@ export default class Background extends PureComponent {
         const backgroundFilter = backgroundFilterSetting && backgroundFilterSetting !== 'none';
 
         if (this.state.video === true) {
-          document.getElementById(
-            'backgroundVideo',
-          ).style.webkitFilter = `blur(${localStorage.getItem(
-            'blur',
-          )}px) brightness(${localStorage.getItem('brightness')}%) ${
-            backgroundFilter
-              ? backgroundFilterSetting +
-                '(' +
-                localStorage.getItem('backgroundFilterAmount') +
-                '%)'
-              : ''
-          }`;
+          document.getElementById('backgroundVideo').style.webkitFilter =
+            `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem(
+              'brightness',
+            )}%) ${
+              backgroundFilter
+                ? backgroundFilterSetting +
+                  '(' +
+                  localStorage.getItem('backgroundFilterAmount') +
+                  '%)'
+                : ''
+            }`;
         } else {
           element.style.webkitFilter = `blur(${localStorage.getItem(
             'blur',

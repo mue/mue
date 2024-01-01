@@ -249,33 +249,33 @@ export default class Search extends PureComponent {
         </div>
         <div>
           {localStorage.getItem('searchDropdown') === 'true' &&
-          this.state.searchDropdown === true && (
-            <div className="searchDropdown">
-              {searchEngines.map(({ name }, key) => {
-                return (
-                  <span
-                    className={
-                      'searchDropdownList' +
-                      (this.state.currentSearch === name ? ' searchDropdownListActive' : '')
-                    }
-                    onClick={() => this.setSearch(name)}
-                    key={key}
-                  >
-                    {name}
-                  </span>
-                );
-              })}
-              <span
-                className={
-                  'searchDropdownList' +
-                  (this.state.currentSearch === customText ? ' searchDropdownListActive' : '')
-                }
-                onClick={() => this.setSearch(customText, 'custom')}
-              >
-                {customText}
-              </span>
-            </div>
-          )}
+            this.state.searchDropdown === true && (
+              <div className="searchDropdown">
+                {searchEngines.map(({ name }, key) => {
+                  return (
+                    <span
+                      className={
+                        'searchDropdownList' +
+                        (this.state.currentSearch === name ? ' searchDropdownListActive' : '')
+                      }
+                      onClick={() => this.setSearch(name)}
+                      key={key}
+                    >
+                      {name}
+                    </span>
+                  );
+                })}
+                <span
+                  className={
+                    'searchDropdownList' +
+                    (this.state.currentSearch === customText ? ' searchDropdownListActive' : '')
+                  }
+                  onClick={() => this.setSearch(customText, 'custom')}
+                >
+                  {customText}
+                </span>
+              </div>
+            )}
         </div>
       </div>
     );

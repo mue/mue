@@ -63,7 +63,7 @@ export default class QuickLinks extends PureComponent {
     }
 
     data.push({
-      name: name || await this.getTitle(url),
+      name: name || (await this.getTitle(url)),
       url,
       icon: icon || '',
       key: Math.random().toString(36).substring(7) + 1,
@@ -92,7 +92,7 @@ export default class QuickLinks extends PureComponent {
   async editLink(og, name, url, icon) {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
     const dataobj = data.find((i) => i.key === og.key);
-    dataobj.name = name || await this.getTitle(url);
+    dataobj.name = name || (await this.getTitle(url));
     dataobj.url = url;
     dataobj.icon = icon || '';
 
