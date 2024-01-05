@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { PureComponent, memo } from 'react';
+import { PureComponent, memo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -233,13 +233,18 @@ class Todo extends PureComponent {
 }
 
 function TodoWrapper() {
-  const { x, y, reference, floating, strategy } = useFloating({
+  const [reference, setReference] = useState(null);
+
+  const { x, y, refs, strategy } = useFloating({
     placement: 'bottom',
     middleware: [shift()],
+    elements: {
+      reference,
+    },
   });
 
   return (
-    <Todo todoRef={reference} floatRef={floating} position={strategy} xPosition={x} yPosition={y} />
+    <Todo todoRef={setReference} floatRef={refs.setFloating} position={strategy} xPosition={x} yPosition={y} />
   );
 }
 

@@ -9,17 +9,21 @@ import './tooltip.scss';
 
 function InfoTooltip({ title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
-  const { x, y, reference, floating, strategy } = useFloating({
+  const [reference, setReference] = useState(null);
+  const { x, y, refs, strategy } = useFloating({
     placement: placement || 'top-start',
     middleware: [flip(), offset(10), shift()],
+    elements: {
+      reference,
+    },
   });
 
   return (
-    <div className="infoTooltip" style={style} ref={reference}>
+    <div className="infoTooltip" style={style} ref={setReference}>
       <MdInfo onClick={() => setShowTooltip(true)} />
       {showTooltip && (
         <div
-          ref={floating}
+          ref={refs.setFloating}
           style={{
             position: strategy,
             top: y ?? '',

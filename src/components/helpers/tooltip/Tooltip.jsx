@@ -5,9 +5,14 @@ import './tooltip.scss';
 
 function Tooltip({ children, title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
-  const { x, y, reference, floating, strategy } = useFloating({
+  const [reference, setReference] = useState(null);
+
+  const { x, y, refs, strategy } = useFloating({
     placement: placement || 'bottom',
     middleware: [flip(), offset(15), shift()],
+    elements: {
+      reference,
+    },
   });
 
   return (
@@ -19,13 +24,13 @@ function Tooltip({ children, title, style, placement, subtitle }) {
         onMouseLeave={() => setShowTooltip(false)}
         onFocus={() => setShowTooltip(true)}
         onBlur={() => setShowTooltip(false)}
-        ref={reference}
+        ref={setReference}
       >
         {children}
       </div>
       {showTooltip && (
         <span
-          ref={floating}
+          ref={refs.setFloating}
           style={{
             position: strategy,
             top: y ?? '',
