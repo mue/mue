@@ -241,16 +241,23 @@ function PhotoInformation({ info, url, api }) {
             </div>
           )}
           <div className="photoInformation-content">
-            <span className="title">
-              {(showExtraInfo || other) && info.description
-                ? info.description.length > 40
-                  ? info.description.substring(0, 40) + '...'
-                  : info.description
-                : info.location?.split(',').slice(-2).join(', ').trim()}
-            </span>
-            <span className="subtitle" id="credit">
-              {photo} {credit}
-            </span>
+            <div className="photoInfomration-text">
+              <span
+                className="title"
+                title={
+                  (showExtraInfo || other) && info.description ? info.description : info.location
+                }
+              >
+                {(showExtraInfo || other) && info.description
+                  ? info.description.length > 40
+                    ? info.description.substring(0, 40) + '...'
+                    : info.description
+                  : info.location?.split(',').slice(-2).join(', ').trim()}
+              </span>
+              <span className="subtitle" id="credit">
+                {photo} {credit}
+              </span>
+            </div>
             {info.views && info.downloads !== null ? (
               <div className="unsplashStats">
                 <div title={variables.getMessage('widgets.background.views')}>

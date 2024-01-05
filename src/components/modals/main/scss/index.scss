@@ -164,6 +164,14 @@ h5 {
   }
 }
 
+.headerActions {
+  display: flex;
+  flex-flow: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
 .marketplaceCondition {
   display: flex;
   flex-flow: row !important;

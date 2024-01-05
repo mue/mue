@@ -54,7 +54,7 @@ class Marketplace extends PureComponent {
           type = data.type;
         }
         info = await (
-          await fetch(`${variables.constants.MARKETPLACE_URL}/item/${type}/${data.name}`, {
+          await fetch(`${variables.constants.API_URL}/marketplace/item/${type}/${data.name}`, {
             signal: this.controller.signal,
           })
         ).json();
@@ -109,7 +109,7 @@ class Marketplace extends PureComponent {
         done: false,
       });
       const collection = await (
-        await fetch(`${variables.constants.MARKETPLACE_URL}/collection/${data}`, {
+        await fetch(`${variables.constants.API_URL}/marketplace/collection/${data}`, {
           signal: this.controller.signal,
         })
       ).json();
@@ -131,15 +131,15 @@ class Marketplace extends PureComponent {
   async getItems() {
     const dataURL =
       this.props.type === 'collections'
-        ? variables.constants.MARKETPLACE_URL + '/collections'
-        : variables.constants.MARKETPLACE_URL + '/items/' + this.props.type;
+        ? variables.constants.API_URL + '/marketplace/collections'
+        : variables.constants.API_URL + '/marketplace/items/' + this.props.type;
     const { data } = await (
       await fetch(dataURL, {
         signal: this.controller.signal,
       })
     ).json();
     const collections = await (
-      await fetch(variables.constants.MARKETPLACE_URL + '/collections', {
+      await fetch(variables.constants.API_URL + '/marketplace/collections', {
         signal: this.controller.signal,
       })
     ).json();
@@ -184,7 +184,7 @@ class Marketplace extends PureComponent {
       for (const item of this.state.items) {
         if (installed.some((i) => i.name === item.display_name)) continue; // don't install if already installed
         let { data } = await (
-          await fetch(`${variables.constants.MARKETPLACE_URL}/item/${item.type}/${item.name}`, {
+          await fetch(`${variables.constants.API_URL}/marketplace/item/${item.type}/${item.name}`, {
             signal: this.controller.signal,
           })
         ).json();
@@ -277,7 +277,9 @@ class Marketplace extends PureComponent {
       return errorMessage(
         <>
           <MdWifiOff />
-          <span className="title">{variables.getMessage('modals.main.marketplace.offline.title')}</span>
+          <span className="title">
+            {variables.getMessage('modals.main.marketplace.offline.title')}
+          </span>
           <span className="subtitle">
             {variables.getMessage('modals.main.marketplace.offline.description')}
           </span>
@@ -302,7 +304,9 @@ class Marketplace extends PureComponent {
           {errorMessage(
             <>
               <MdLocalMall />
-              <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
+              <span className="title">
+                {variables.getMessage('modals.main.addons.empty.title')}
+              </span>
               <span className="subtitle">
                 {variables.getMessage('modals.main.marketplace.no_items')}
               </span>

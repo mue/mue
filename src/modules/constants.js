@@ -1,6 +1,5 @@
 // API URLs
 export const API_URL = 'https://api.muetab.com/v2';
-export const MARKETPLACE_URL = 'https://marketplace.muetab.com';
 export const SPONSORS_URL = 'https://sponsors.muetab.com';
 export const GITHUB_URL = 'https://api.github.com';
 export const DDG_IMAGE_PROXY = 'https://external-content.duckduckgo.com/iu/?u=';

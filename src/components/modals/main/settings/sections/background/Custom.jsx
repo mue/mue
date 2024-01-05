@@ -76,17 +76,8 @@ export default class CustomSettings extends PureComponent {
     localStorage.setItem('showReminder', true);
   }
 
-  videoCheck(url) {
-    return (
-      url.startsWith('data:video/') ||
-      url.endsWith('.mp4') ||
-      url.endsWith('.webm') ||
-      url.endsWith('.ogg')
-    );
-  }
-
   videoCustomSettings = () => {
-    const hasVideo = this.state.customBackground.filter((bg) => this.videoCheck(bg));
+    const hasVideo = this.state.customBackground.filter((bg) => videoCheck(bg));
 
     if (hasVideo.length > 0) {
       return (
@@ -225,9 +216,9 @@ export default class CustomSettings extends PureComponent {
                   <div key={index}>
                     <img
                       alt={'Custom background ' + (index || 0)}
-                      src={`${!this.videoCheck(url) ? this.state.customBackground[index] : ''}`}
+                      src={`${!videoCheck(url) ? this.state.customBackground[index] : ''}`}
                     />
-                    {this.videoCheck(url) && <MdPersonalVideo className="customvideoicon" />}
+                    {videoCheck(url) && <MdPersonalVideo className="customvideoicon" />}
                     {this.state.customBackground.length > 0 && (
                       <Tooltip
                         title={variables.getMessage(

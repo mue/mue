@@ -143,7 +143,7 @@ export default class Added extends PureComponent {
     let updates = 0;
     this.state.installed.forEach(async (item) => {
       const data = await (
-        await fetch(variables.constants.MARKETPLACE_URL + '/item/' + item.name)
+        await fetch(variables.constants.API_URL + 'marketplace//item/' + item.name)
       ).json();
       if (data.version !== item.version) {
         updates++;

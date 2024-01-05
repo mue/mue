@@ -31,7 +31,6 @@ class Item extends PureComponent {
       showUpdateButton:
         this.props.addonInstalled === true &&
         this.props.addonInstalledVersion !== this.props.data.version,
-      showMore: false,
       shareModal: false,
       count: 5,
     };
@@ -46,19 +45,24 @@ class Item extends PureComponent {
     });
   }
 
-  toggleShowMore() {
-    if (this.state.showMore === true) {
-      this.setState({ showMore: false });
-    } else {
-      this.setState({ showMore: true });
-    }
-  }
-
   incrementCount(type) {
     if (this.state.count !== this.props.data.data[type].length) {
       this.setState({ count: this.props.data.data[type].length });
     } else {
       this.setState({ count: 5 });
+    }
+  }
+
+  getName(name) {
+    switch (name) {
+      case 'photos':
+        return 'photo_packs';
+      case 'quotes':
+        return 'quote_packs';
+      case 'settings':
+        return 'preset_settings';
+      default:
+        return name;
     }
   }
 
@@ -95,7 +99,9 @@ class Item extends PureComponent {
           onRequestClose={() => this.setState({ shareModal: false })}
         >
           <ShareModal
-            data={variables.constants.MARKETPLACE_URL + '/share/' + btoa(this.props.data.api_name)}
+            data={
+              variables.constants.API_URL + '/marketplace/share/' + btoa(this.props.data.api_name)
+            }
             modalClose={() => this.setState({ shareModal: false })}
           />
         </Modal>
@@ -266,7 +272,7 @@ class Item extends PureComponent {
                   <span>
                     {' '}
                     {variables.getMessage(
-                      'modals.main.addons.create.types.' + this.props.data.data.type,
+                      'modals.main.marketplace.' + this.getName(this.props.data.data.type),
                     ) || 'marketplace'}
                   </span>
                 </div>

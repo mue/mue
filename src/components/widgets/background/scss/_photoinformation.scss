@@ -358,8 +358,12 @@
   line-height: 2em;
   margin-right: 3px;
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
+  align-items: center;
+  gap: 20px;
   padding-left: 20px;
+  width: 100%;
+  justify-content: space-between;
 
   a {
     @include themed {
@@ -452,14 +456,17 @@
 
 .unsplashStats {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: space-between;
-  gap: 40px;
-  margin-right: 40px;
   div {
     display: flex;
     flex-flow: row;
     gap: 10px;
     align-items: center;
   }
+}
+
+.photoInfomration-text {
+  display: flex;
+  flex-flow: column;
 }

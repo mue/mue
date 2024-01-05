@@ -105,10 +105,16 @@ export default class Background extends PureComponent {
     }
 
     let requestURL, data;
+
     switch (backgroundAPI) {
       case 'unsplash':
       case 'pexels':
-        requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
+        const collection = localStorage.getItem('apiCollection');
+        if (collection) {
+          requestURL = `${variables.constants.API_URL}/images/unsplash?collection=${collection}&quality=${apiQuality}`;
+        } else {
+          requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
+        }
         break;
       // Defaults to Mue
       default:

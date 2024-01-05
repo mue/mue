@@ -63,47 +63,34 @@ class Header extends PureComponent {
             </div>
           )}
           <span className="mainTitle">{this.props.title}</span>
-          {this.props.switch && (
-            <button className="sideload" onClick={() => this.changeSetting()}>
-              {this.state[this.props.setting] ? (
-                <>
-                  Hide
-                  <MdOutlineVisibilityOff />
-                </>
-              ) : (
-                <>
-                  Show
-                  <MdOutlineVisibility />
-                </>
-              )}
+          <div className="headerActions">
+            <button
+              className="sideload"
+              onClick={() =>
+                window.open(
+                  variables.constants.BUG_REPORT + this.props.title.split(' ').join('+'),
+                  '_blank',
+                )
+              }
+            >
+              {variables.getMessage('modals.main.settings.sections.header.report_issue')} <MdFlag />
             </button>
-          )}
-        </div>
-        <div className="headerExtras">
-          {/*<span
-            className="link"
-            onClick={() =>
-              window.open(
-                variables.constants.KNOWLEDGEBASE +
-                  '/settings/' +
-                  this.props.setting.toLowerCase().replace('enabled', ''),
-                '_blank',
-              )
-            }
-          >
-            <MdHelpOutline /> {variables.getMessage('modals.main.settings.sections.header.more_info')}
-          </span>*/}
-          <span
-            className="link"
-            onClick={() =>
-              window.open(
-                variables.constants.BUG_REPORT + this.props.title.split(' ').join('+'),
-                '_blank',
-              )
-            }
-          >
-            <MdFlag /> {variables.getMessage('modals.main.settings.sections.header.report_issue')}
-          </span>
+            {this.props.switch && (
+              <button className="sideload" onClick={() => this.changeSetting()}>
+                {this.state[this.props.setting] ? (
+                  <>
+                    Hide
+                    <MdOutlineVisibilityOff />
+                  </>
+                ) : (
+                  <>
+                    Show
+                    <MdOutlineVisibility />
+                  </>
+                )}
+              </button>
+            )}
+          </div>
         </div>
         {this.props.zoomSetting && (
           <SettingsItem

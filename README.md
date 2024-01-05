@@ -12,6 +12,7 @@ Mue is a fast, open and free-to-use browser extension that gives a new, fresh an
 <br>
 
 ## Table of contents
+
 - [Table of contents](#table-of-contents)
 - [Screenshots](#screenshots)
 - [Features](#features)
@@ -107,6 +108,7 @@ Please see the [documentation](https://docs.muetab.com/development#mue-tab).
 [Aksal](https://github.com/aksalsf) - Indonesian <br/>
 [Kağan Can Şit](https://github.com/KaganCanSit) - Turkish <br/>
 efeaydal - Turkish <br/>
+
 ### Contributors
 
 Many thanks to the photographers [here](https://api.muetab.com/images/photographers) for letting us use their wonderful photographs.

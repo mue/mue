@@ -120,6 +120,7 @@ $themes: (
     font-size: 38px;
     font-weight: 600;
     margin-bottom: 15px;
+    text-transform: capitalize;
 
     @include themed {
       color: t($color);

@@ -125,24 +125,11 @@ export default class BackgroundSettings extends PureComponent {
               </Dropdown>
             </>
           ) : (
-            <>
-              {/*<Dropdown
-                label={variables.getMessage('modals.main.settings.sections.background.category')}
-                name="apiCategories"
-              >
-                {this.state.backgroundCategories.map((category) => (
-                  <MenuItem value={category.name} key={category.name}>
-                    {category.name.charAt(0).toUpperCase() + category.name.slice(1)} (
-                    {category.count})
-                  </MenuItem>
-                ))}
-                    </Dropdown>*/}
-              <ChipSelect
-                label={variables.getMessage('modals.main.settings.sections.background.categories')}
-                options={this.state.backgroundCategories}
-                name="apiCategories"
-              ></ChipSelect>
-            </>
+            <ChipSelect
+              label={variables.getMessage('modals.main.settings.sections.background.categories')}
+              options={this.state.backgroundCategories}
+              name="apiCategories"
+            />
           )}
           <Dropdown
             label={variables.getMessage(
@@ -388,7 +375,7 @@ export default class BackgroundSettings extends PureComponent {
             />
           </SettingsItem>
         ) : null}
-        {this.state.backgroundSettingsSection ? (
+        {this.state.backgroundSettingsSection && (
           <>
             <SettingsItem
               title={variables.getMessage('modals.main.settings.sections.background.source.title')}
@@ -444,7 +431,7 @@ export default class BackgroundSettings extends PureComponent {
                   : null}*/}
             {backgroundSettings}
           </>
-        ) : null}
+        )}
         {(this.state.backgroundType === 'api' ||
           this.state.backgroundType === 'custom' ||
           this.state.marketplaceEnabled) &&
