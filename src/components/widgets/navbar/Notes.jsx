@@ -161,8 +161,7 @@ function NotesWrapper() {
 
   return (
     <Notes
-      notes
-      ref={setReference}
+      notesRef={setReference}
       floatRef={refs.setFloating}
       position={strategy}
       xPosition={x}
