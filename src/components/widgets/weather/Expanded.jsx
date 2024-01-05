@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import PropTypes from 'prop-types';
 
 import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
 import { MdDisabledVisible } from 'react-icons/md';
@@ -115,11 +114,5 @@ function Expanded({ state, weatherType, variables }) {
     </div>
   );
 }
-
-Expanded.propTypes = {
-  state: PropTypes.object.isRequired,
-  weatherType: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  variables: PropTypes.object.isRequired,
-};
 
 export default memo(Expanded);

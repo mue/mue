@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { MdStar, MdStarBorder } from 'react-icons/md';
 
 class Favourite extends PureComponent {
@@ -104,11 +103,5 @@ class Favourite extends PureComponent {
     return this.state.favourited;
   }
 }
-
-Favourite.propTypes = {
-  credit: PropTypes.string,
-  offline: PropTypes.bool,
-  pun: PropTypes.string,
-};
 
 export default Favourite;

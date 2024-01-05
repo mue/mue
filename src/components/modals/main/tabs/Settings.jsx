@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { memo } from 'react';
-import PropTypes from 'prop-types';
 
 import Tabs from './backend/Tabs';
 
@@ -17,7 +16,7 @@ import Search from '../settings/sections/Search';
 import Weather from '../settings/sections/Weather';
 import Appearance from '../settings/sections/Appearance';
 import Language from '../settings/sections/Language';
-import Advanced from '../settings/sections/advanced/Advanced';
+import Advanced from '../settings/sections/Advanced';
 import Stats from '../settings/sections/Stats';
 import Experimental from '../settings/sections/Experimental';
 import Changelog from '../settings/sections/Changelog';
@@ -116,9 +115,5 @@ function Settings(props) {
     </Tabs>
   );
 }
-
-Settings.propTypes = {
-  changeTab: PropTypes.func.isRequired,
-};
 
 export default memo(Settings);

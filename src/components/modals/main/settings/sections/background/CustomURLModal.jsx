@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { useState, memo } from 'react';
-import PropTypes from 'prop-types';
 import { MdClose, MdOutlineAddLink } from 'react-icons/md';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -41,11 +40,5 @@ function CustomURLModal({ modalClose, urlError, modalCloseOnly }) {
     </div>
   );
 }
-
-CustomURLModal.propTypes = {
-  modalClose: PropTypes.func.isRequired,
-  urlError: PropTypes.string.isRequired,
-  modalCloseOnly: PropTypes.func.isRequired,
-};
 
 export default memo(CustomURLModal);

@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 
 import { useState, memo } from 'react';
-import PropTypes from 'prop-types';
 import { TextareaAutosize } from '@mui/material';
 import { MdAddLink, MdClose } from 'react-icons/md';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
@@ -73,15 +72,5 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
     </div>
   );
 }
-
-AddModal.propTypes = {
-  urlError: PropTypes.string.isRequired,
-  iconError: PropTypes.string.isRequired,
-  addLink: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  edit: PropTypes.bool.isRequired,
-  editData: PropTypes.object.isRequired,
-  editLink: PropTypes.func.isRequired,
-};
 
 export default memo(AddModal);

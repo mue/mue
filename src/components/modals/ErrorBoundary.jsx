@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 
 import { MdErrorOutline } from 'react-icons/md';
 import { captureException } from '@sentry/react';
@@ -70,9 +69,5 @@ class ErrorBoundary extends PureComponent {
     return this.props.children;
   }
 }
-
-ErrorBoundary.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default ErrorBoundary;

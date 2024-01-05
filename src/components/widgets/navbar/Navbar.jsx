@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import PropTypes from 'prop-types';
 
 import { MdRefresh, MdSettings } from 'react-icons/md';
 
@@ -154,9 +153,5 @@ class Navbar extends PureComponent {
     );
   }
 }
-
-Navbar.propTypes = {
-  openModal: PropTypes.func,
-};
 
 export default Navbar;

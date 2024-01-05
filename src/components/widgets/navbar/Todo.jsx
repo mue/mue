@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent, memo, useState } from 'react';
-import PropTypes from 'prop-types';
 
 import {
   MdChecklist,
@@ -247,13 +246,5 @@ function TodoWrapper() {
     <Todo todoRef={setReference} floatRef={refs.setFloating} position={strategy} xPosition={x} yPosition={y} />
   );
 }
-
-Todo.propTypes = {
-  todoRef: PropTypes.object,
-  floatRef: PropTypes.object,
-  position: PropTypes.string,
-  xPosition: PropTypes.string,
-  yPosition: PropTypes.string,
-};
 
 export default memo(TodoWrapper);

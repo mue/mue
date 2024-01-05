@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent, memo, useState } from 'react';
-import PropTypes from 'prop-types';
 
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
@@ -169,13 +168,5 @@ function NotesWrapper() {
     />
   );
 }
-
-Notes.propTypes = {
-  notesRef: PropTypes.object,
-  floatRef: PropTypes.object,
-  position: PropTypes.string,
-  xPosition: PropTypes.number,
-  yPosition: PropTypes.number,
-};
 
 export default memo(NotesWrapper);

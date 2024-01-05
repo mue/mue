@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { memo } from 'react';
-import PropTypes from 'prop-types';
 
 import Tabs from './backend/Tabs';
 import MarketplaceTab from '../marketplace/sections/Marketplace';
@@ -29,9 +28,5 @@ function Marketplace(props) {
     </Tabs>
   );
 }
-
-Marketplace.propTypes = {
-  changeTab: PropTypes.func.isRequired,
-};
 
 export default memo(Marketplace);

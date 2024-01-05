@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { TextField } from '@mui/material';
 
@@ -78,16 +77,5 @@ class Text extends PureComponent {
     );
   }
 }
-
-Text.propTypes = {
-  title: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  default: PropTypes.string,
-  element: PropTypes.string,
-  customcss: PropTypes.bool,
-  textarea: PropTypes.bool,
-  upperCaseFirst: PropTypes.bool,
-};
 
 export default Text;

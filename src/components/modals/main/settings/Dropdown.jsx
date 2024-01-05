@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import PropTypes from 'prop-types';
 import { InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -79,17 +78,5 @@ class Dropdown extends PureComponent {
     );
   }
 }
-
-Dropdown.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  category: PropTypes.string,
-  element: PropTypes.string,
-  onChange: PropTypes.func,
-  noSetting: PropTypes.bool,
-  manual: PropTypes.bool,
-  value2: PropTypes.string,
-  name2: PropTypes.string,
-};
 
 export default Dropdown;

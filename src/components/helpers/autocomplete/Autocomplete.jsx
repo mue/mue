@@ -1,5 +1,4 @@
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -92,12 +91,5 @@ class Autocomplete extends PureComponent {
     );
   }
 }
-
-Autocomplete.propTypes = {
-  suggestions: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-};
 
 export default Autocomplete;

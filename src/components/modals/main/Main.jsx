@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { Suspense, lazy, useState, memo } from 'react';
-import PropTypes from 'prop-types';
 
 import { MdClose } from 'react-icons/md';
 
@@ -68,9 +67,5 @@ function MainModal({ modalClose }) {
     </div>
   );
 }
-
-MainModal.propTypes = {
-  modalClose: PropTypes.func.isRequired,
-};
 
 export default memo(MainModal);

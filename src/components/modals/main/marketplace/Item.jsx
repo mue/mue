@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 import ImageCarousel from 'components/helpers/carousel/Carousel';
 import { toast } from 'react-toastify';
@@ -334,12 +333,5 @@ class Item extends PureComponent {
     );
   }
 }
-
-Item.propTypes = {
-  data: PropTypes.object,
-  addonInstalled: PropTypes.bool,
-  addonInstalledVersion: PropTypes.string,
-  toggleFunction: PropTypes.func,
-};
 
 export default Item;

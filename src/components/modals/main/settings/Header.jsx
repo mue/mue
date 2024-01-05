@@ -1,7 +1,6 @@
 import variables from 'modules/variables';
 
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import {
   /*MdHelpOutline,*/ MdFlag,
   MdArrowBack,
@@ -114,17 +113,5 @@ class Header extends PureComponent {
     );
   }
 }
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  setting: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  element: PropTypes.string,
-  backButton: PropTypes.bool,
-  clickEffect: PropTypes.func,
-  switch: PropTypes.bool,
-  zoomSetting: PropTypes.string,
-  zoomCategory: PropTypes.string,
-};
 
 export default Header;

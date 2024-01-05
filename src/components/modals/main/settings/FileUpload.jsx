@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import { videoCheck } from 'modules/helpers/background/widget';
@@ -62,12 +61,5 @@ class FileUpload extends PureComponent {
     );
   }
 }
-
-FileUpload.propTypes = {
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  loadFunction: PropTypes.func.isRequired,
-  accept: PropTypes.string,
-};
 
 export default FileUpload;

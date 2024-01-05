@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 
 import { MdCropFree } from 'react-icons/md';
 
@@ -87,9 +86,5 @@ class Maximise extends PureComponent {
     );
   }
 }
-
-Maximise.propTypes = {
-  fontSize: PropTypes.number,
-};
 
 export default Maximise;

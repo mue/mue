@@ -1,5 +1,4 @@
 import { useState, memo } from 'react';
-import PropTypes from 'prop-types';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
 import './tooltip.scss';
 
@@ -47,13 +46,5 @@ function Tooltip({ children, title, style, placement, subtitle }) {
     </>
   );
 }
-
-Tooltip.propTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  style: PropTypes.object,
-  placement: PropTypes.string,
-  subtitle: PropTypes.string.isRequired,
-};
 
 export default memo(Tooltip);

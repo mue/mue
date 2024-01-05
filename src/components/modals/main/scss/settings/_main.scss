@@ -1,5 +1,5 @@
-@import 'modules/resetmodal';
 @import 'scss/variables';
+
 @import 'modules/material-ui';
 @import 'modules/tabs/about';
 @import 'modules/tabs/changelog';
@@ -160,46 +160,6 @@ h4 {
 
     span {
       font-size: 20px;
-    }
-  }
-}
-
-.breadcrumb {
-  display: flex;
-  flex-flow: row;
-  padding-top: 20px;
-  gap: 10px;
-  align-items: center;
-
-  .settingsReturn {
-    border-radius: 12px;
-    cursor: pointer;
-    padding: 4px;
-
-    svg {
-      font-size: 2em;
-    }
-
-    &:hover {
-      background: rgb(121 121 121 / 22.6%);
-    }
-  }
-
-  .returnButton {
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-right: 25px;
-
-    svg {
-      font-size: 2em;
-    }
-
-    &:hover {
-      background: rgb(121 121 121 / 22.6%);
     }
   }
 }

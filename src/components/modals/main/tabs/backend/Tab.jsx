@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { memo } from 'react';
-import PropTypes from 'prop-types';
 import {
   MdSettings as Settings,
   MdWidgets as Addons,
@@ -162,12 +161,5 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     </>
   );
 }
-
-Tab.propTypes = {
-  label: PropTypes.string.isRequired,
-  currentTab: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  navbarTab: PropTypes.bool,
-};
 
 export default memo(Tab);

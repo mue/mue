@@ -117,38 +117,3 @@
     }
   }
 }
-
-.upcomingForecast {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap: 10px;
-
-  div {
-    @include themed {
-      border-radius: t($borderRadius);
-      border: 1px solid t($btn-backgroundHover);
-      padding: 5px;
-      flex: 1;
-
-      svg {
-        font-size: 36px;
-      }
-
-      span {
-        justify-content: center;
-      }
-
-      .period {
-        color: t($color);
-        font-size: 15px;
-      }
-
-      .minmax {
-        margin-top: 5px;
-        flex-flow: column;
-        gap: 0 !important;
-      }
-    }
-  }
-}

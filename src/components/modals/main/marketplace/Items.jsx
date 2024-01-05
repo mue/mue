@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 
 function Items({
@@ -112,15 +111,5 @@ function Items({
     </>
   );
 }
-
-Items.propTypes = {
-  type: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  collection: PropTypes.object,
-  toggleFunction: PropTypes.func.isRequired,
-  collectionFunction: PropTypes.func.isRequired,
-  onCollection: PropTypes.bool.isRequired,
-  filter: PropTypes.string,
-};
 
 export default memo(Items);

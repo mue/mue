@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import {
   MdWifiOff,
@@ -450,9 +449,5 @@ class Marketplace extends PureComponent {
     );
   }
 }
-
-Marketplace.propTypes = {
-  type: PropTypes.string,
-};
 
 export default Marketplace;

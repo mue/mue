@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback, useRef, memo } from 'react';
-import PropTypes from 'prop-types';
 import { MdOutlineArrowForwardIos, MdOutlineArrowBackIos } from 'react-icons/md';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -77,9 +76,5 @@ function EmblaCarousel({ data }) {
     </div>
   );
 }
-
-EmblaCarousel.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 export default memo(EmblaCarousel);

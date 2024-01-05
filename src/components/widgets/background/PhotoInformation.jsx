@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { useState, memo } from 'react';
-import PropTypes from 'prop-types';
 import Favourite from './Favourite';
 import {
   MdInfo,
@@ -385,11 +384,5 @@ function PhotoInformation({ info, url, api }) {
     </div>
   );
 }
-
-PhotoInformation.propTypes = {
-  info: PropTypes.object.isRequired,
-  url: PropTypes.string.isRequired,
-  api: PropTypes.string.isRequired,
-};
 
 export default memo(PhotoInformation);

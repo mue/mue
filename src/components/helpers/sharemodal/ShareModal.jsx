@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import PropTypes from 'prop-types';
 import variables from 'modules/variables';
 import { MdClose, MdEmail, MdContentCopy } from 'react-icons/md';
 import { FaTwitter, FaFacebookF } from 'react-icons/fa';
@@ -123,10 +122,5 @@ function ShareModal({ modalClose, data }) {
     </div>
   );
 }
-
-ShareModal.propTypes = {
-  modalClose: PropTypes.func.isRequired,
-  data: PropTypes.string.isRequired,
-};
 
 export default memo(ShareModal);

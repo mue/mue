@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 
 import {
   MdCloudUpload,
@@ -422,10 +421,5 @@ class WelcomeSections extends PureComponent {
     }
   }
 }
-
-WelcomeSections.propTypes = {
-  currentTab: PropTypes.number.isRequired,
-  switchTab: PropTypes.func.isRequired,
-};
 
 export default WelcomeSections;

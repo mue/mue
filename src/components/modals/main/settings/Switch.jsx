@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { Switch as SwitchUI, FormControlLabel } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -53,13 +52,5 @@ class Switch extends PureComponent {
     );
   }
 }
-
-Switch.propTypes = {
-  name: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  category: PropTypes.string,
-  element: PropTypes.string,
-  header: PropTypes.bool,
-};
 
 export default Switch;

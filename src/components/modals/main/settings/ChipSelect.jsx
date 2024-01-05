@@ -1,5 +1,4 @@
 import { useState, memo } from 'react';
-import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -54,11 +53,5 @@ function ChipSelect({ label, options, name }) {
     </div>
   );
 }
-
-ChipSelect.propTypes = {
-  label: PropTypes.string,
-  options: PropTypes.array,
-  name: PropTypes.string,
-};
 
 export default memo(ChipSelect);

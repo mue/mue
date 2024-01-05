@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import PropTypes from 'prop-types';
 
 function SettingsItem({ final, title, subtitle, children }) {
   return (
@@ -12,12 +11,5 @@ function SettingsItem({ final, title, subtitle, children }) {
     </div>
   );
 }
-
-SettingsItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  final: PropTypes.bool,
-};
 
 export default memo(SettingsItem);

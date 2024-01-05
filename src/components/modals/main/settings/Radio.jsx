@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import {
   Radio as RadioUI,
   RadioGroup,
@@ -84,20 +83,5 @@ class Radio extends PureComponent {
     );
   }
 }
-
-Radio.propTypes = {
-  name: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  onChange: PropTypes.func,
-  category: PropTypes.string,
-  element: PropTypes.string,
-  smallTitle: PropTypes.bool,
-};
 
 export default Radio;

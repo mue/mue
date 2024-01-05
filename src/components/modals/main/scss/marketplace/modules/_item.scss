@@ -8,11 +8,6 @@ p.description {
   max-width: 800px;
 }
 
-.informationContainer {
-  margin-top: 150px;
-  position: absolute;
-}
-
 .moreInfo {
   display: flex;
   justify-content: space-between;
@@ -59,35 +54,6 @@ p.description {
 
     span {
       color: t($color);
-    }
-  }
-}
-
-.itemTitle {
-  font-size: 38px;
-  font-weight: 600;
-
-  @include themed {
-    color: t($color);
-  }
-}
-
-.titleTop {
-  display: flex;
-  flex-flow: column;
-  gap: 3px;
-}
-
-.showMore {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: 0.5s;
-  cursor: pointer;
-
-  @include themed {
-    &:hover {
-      color: t($subColor);
     }
   }
 }

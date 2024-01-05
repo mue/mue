@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { Slider } from '@mui/material';
 import { MdRefresh } from 'react-icons/md';
@@ -85,17 +84,5 @@ class SliderComponent extends PureComponent {
     );
   }
 }
-
-SliderComponent.propTypes = {
-  name: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  default: PropTypes.number.isRequired,
-  min: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
-  step: PropTypes.number,
-  marks: PropTypes.array,
-  element: PropTypes.string,
-  category: PropTypes.string,
-};
 
 export default SliderComponent;

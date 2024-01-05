@@ -1,6 +1,5 @@
 import variables from 'modules/variables';
 import { memo } from 'react';
-import PropTypes from 'prop-types';
 import Tabs from './backend/Tabs';
 
 import Added from '../marketplace/sections/Added';
@@ -18,9 +17,5 @@ function Addons(props) {
     </Tabs>
   );
 }
-
-Addons.propTypes = {
-  changeTab: PropTypes.func.isRequired,
-};
 
 export default memo(Addons);
