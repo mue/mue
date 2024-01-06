@@ -1,138 +1,95 @@
 {
-  "tabname": "নতুন ট্যাব খুলুন",
-  "widgets": {
-    "greeting": {
-      "morning": "শুভ সকাল",
-      "afternoon": "শুভ অপরাহ্ণ",
-      "evening": "শুভ সন্ধ্যা",
-      "christmas": "শুভ বড়দিন",
-      "newyear": "শুভ নব বর্ষ",
-      "halloween": "শুভ হ্যালোইন",
-      "birthday": "শুভ জন্মদিন"
-    },
-    "background": {
-      "credit": "ছবি তুলেছেন",
-      "unsplash": "Unsplash - এ আছে",
-      "information": "তথ্য",
-      "download": "ডাউনলোড করুন",
-      "downloads": "ডাউনলোডগুলি",
-      "views": "দর্শক",
-      "likes": "পছন্দসমূহ",
-      "location": "অবস্থান",
-      "camera": "ক্যামেরা",
-      "resolution": "রেজোলিউশন",
-      "source": "উৎস",
-      "category": "শ্রেণী",
-      "exclude": "আবার দেখাবেন না",
-      "exclude_confirm": "আপনি কি নিশ্চিত যে আপনি এই ছবিটি আবার দেখতে চান না?\nদ্রষ্টব্য: আপনি যদি \"{category}\" ছবিগুলি পছন্দ না করেন, তাহলে আপনি ব্যাকগ্রাউন্ড সোর্স সেটিংসে বিভাগটি অনির্বাচন করতে পারেন।",
-      "confirm": "নিশ্চিত করুন"
-    },
-    "search": "অনুসন্ধান করুন",
-    "quicklinks": {
-      "new": "নতুন লিঙ্ক",
-      "name": "নাম",
-      "url": "URL",
-      "icon": "আইকন (ঐচ্ছিক)",
-      "add": "যোগ করুন",
-      "name_error": "অবশ্যই নাম দিতে হবে",
-      "url_error": "অবশ্যই URL দিতে হবে"
-    },
-    "date": {
-      "week": "সপ্তাহ"
-    },
-    "weather": {
-      "not_found": "পাওয়া যায়নি",
-      "meters": "{amount} মিটার",
-      "extra_information": "অতিরিক্ত তথ্য",
-      "feels_like": "মনে হচ্ছে {amount}"
-    },
-    "quote": {
-      "link_tooltip": "উইকিপিডিয়াতে খুলুন",
-      "share": "শেয়ার করুন",
-      "copy": "কপি করুন",
-      "favourite": "প্রিয়",
-      "unfavourite": "অপছন্দ"
-    },
-    "navbar": {
-      "tooltips": {
-        "refresh": "রিফ্রেশ"
-      },
-      "notes": {
-        "title": "মন্তব্য",
-        "placeholder": "এখানে লিখুন"
-      },
-      "todo": {
-        "title": "সব",
-        "pin": "পিন",
-        "add": "যোগ করুন",
-        "no_todos": "সব নেই"
-      }
-    }
-  },
   "modals": {
     "main": {
-      "title": "অপশন",
-      "loading": "লোড হচ্ছে..।",
-      "file_upload_error": "ফাইল ২ মেগাবাইট এর বেশি",
-      "navbar": {
-        "settings": "সেটিংস",
-        "addons": "অ্যাড-অন",
-        "marketplace": "মার্কেটপ্লেস"
+      "addons": {
+        "added": "Added",
+        "check_updates": "Check for updates",
+        "create": {
+          "moved_button": "Get Started",
+          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
+          "moved_title": "Create add-on has moved!",
+          "title": "Create"
+        },
+        "empty": {
+          "description": "No addons are installed",
+          "title": "Empty"
+        },
+        "no_updates": "No updates available",
+        "sideload": {
+          "description": "Install a Mue addon not on the marketplace from your computer",
+          "errors": {
+            "invalid_photos": "Invalid photos object",
+            "invalid_quotes": "Invalid quotes object",
+            "no_author": "No author provided",
+            "no_name": "No name provided",
+            "no_type": "No type provided"
+          },
+          "failed": "Failed to sideload addon",
+          "title": "Sideload"
+        },
+        "sort": {
+          "a_z": "Alphabetical (A-Z)",
+          "newest": "Installed (Newest)",
+          "oldest": "Installed (Oldest)",
+          "title": "Sort",
+          "z_a": "Alphabetical (Z-A)"
+        },
+        "updates_available": "Updates available {amount}"
       },
       "error_boundary": {
-        "title": "ত্রুটি",
         "message": "Mue এর এই উপাদানটি লোড করতে ব্যর্থ হয়েছে",
+        "refresh": "রিফ্রেশ",
         "report_error": "ত্রুটি প্রতিবেদন পাঠানো",
         "sent": "প্রেরিত !",
-        "refresh": "রিফ্রেশ"
+        "title": "ত্রুটি"
       },
       "file_upload_error": "ফাইল ২ মেগাবাইট এর বেশি",
       "loading": "লোড হচ্ছে..।",
       "marketplace": {
-        "add_all": "মিউতে সব যোগ করুন",
-        "all": "সব",
-        "by": "{author} দ্বারা",
-        "cant_find": "আপনি যা খুঁজছেন তা খুঁজে পাচ্ছেন না?",
-        "collection": "সংগ্রহ",
-        "collections": "সংগ্রহগুলি",
-        "explore_collection": "সংগ্রহ ঘুরে দেখুন",
-        "knowledgebase_one": "পরিদর্শন",
-        "knowledgebase_three": "আপনার নিজের তৈরি করতে।",
-        "knowledgebase_two": "জ্ঞানভিত্তিক",
-        "learn_more": "আরও জানুন",
-        "no_items": "এই বিভাগে কোন আইটেম নেই",
+        "add_all": "Add All To Mue",
+        "all": "All",
+        "by": "by {author}",
+        "cant_find": "Can't find what you're looking for?",
+        "collection": "Collection",
+        "collections": "Collections",
+        "explore_collection": "Explore Collection",
+        "knowledgebase_one": "Visit the",
+        "knowledgebase_three": "to create your own.",
+        "knowledgebase_two": "knowledgebase",
+        "learn_more": "Learn More",
+        "no_items": "No items in this category",
         "offline": {
           "description": "Please connect to the internet",
           "title": "Looks like you're offline"
         },
-        "photo_packs": "ফটো প্যাক",
-        "preset_settings": "প্রিসেট সেটিংস",
+        "photo_packs": "Photo Packs",
+        "preset_settings": "Preset Settings",
         "product": {
           "author": "Author",
           "buttons": {
             "addtomue": "Add To Mue",
             "back": "Back",
-            "remove": "অপসারণ",
+            "remove": "Remove",
             "report": "Report",
             "update_addon": "Update Add-on"
           },
-          "description": "বর্ণনা",
+          "description": "Description",
           "explore": "Explore",
-          "information": "তথ্য",
-          "last_updated": "সর্বশেষ সংষ্করণ",
-          "no_images": "নং ছবি",
-          "no_quotes": "নং উদ্ধৃতি",
-          "overview": "পরিদর্শন",
+          "information": "Information",
+          "last_updated": "Last Updated",
+          "no_images": "No. Images",
+          "no_quotes": "No. Quotes",
+          "overview": "Overview",
           "part_of": "Part of",
           "setting": "Setting",
-          "show_all": "সবগুলো দেখান",
-          "show_less": "কম দেখান",
-          "show_more": "আরো দেখুন",
-          "showing": "দেখাচ্ছে",
+          "show_all": "Show All",
+          "show_less": "Show Less",
+          "show_more": "Show More",
+          "showing": "Showing",
           "value": "Value",
           "version": "Version"
         },
-        "quote_packs": "উদ্ধৃতি প্যাক"
+        "quote_packs": "Quote Packs"
       },
       "navbar": {
         "addons": "অ্যাড-অন",
@@ -142,44 +99,43 @@
       "settings": {
         "additional_settings": "অতিরিক্ত সেটিংস",
         "buttons": {
-          "export": "রপ্তানি",
-          "import": "আমদানি",
-          "reset": "রিসেট"
+          "export": "Export",
+          "import": "Import",
+          "reset": "Reset"
         },
         "enabled": "সক্রিয়",
         "open_knowledgebase": "উন্মুক্ত জ্ঞানভিত্তিক",
-        "additional_settings": "অতিরিক্ত সেটিংস",
         "reminder": {
-          "title": "নোটিশ",
-          "message": "সমস্ত পরিবর্তন ঘটানোর জন্য, পৃষ্ঠাটি অবশ্যই রিফ্রেশ করা উচিত।"
+          "message": "সমস্ত পরিবর্তন ঘটানোর জন্য, পৃষ্ঠাটি অবশ্যই রিফ্রেশ করা উচিত।",
+          "title": "নোটিশ"
         },
         "sections": {
           "about": {
-            "contact_us": "যোগাযোগ করুন",
-            "contributors": "অবদানকারী",
-            "copyright": "কপিরাইট",
-            "form_button": "ফর্ম",
-            "no_supporters": "বর্তমানে কোন Mue-এর সমর্থক নেই",
-            "photographers": "ফটোগ্রাফাররা",
+            "contact_us": "Contact Us",
+            "contributors": "Contributors",
+            "copyright": "Copyright",
+            "form_button": "Form",
+            "no_supporters": "There are currently no Mue supporters",
+            "photographers": "Photographers",
             "resources_used": {
-              "bg_images": "অফলাইনে পটভূমির ছবি",
-              "title": "ব্যবহৃত সম্পদ"
+              "bg_images": "Offline background images",
+              "title": "Resources used"
             },
-            "support_donate": "দান করুন",
-            "support_mue": "Mue-কে সমর্থন করুন",
-            "support_subtitle": "যেহেতু Mue সম্পূর্ণ বিনামূল্যে, আমরা সার্ভার বিল এবং তহবিল উন্নয়নের জন্য অনুদানের উপর নির্ভর করি",
-            "supporters": "সমর্থকরা",
-            "title": "সম্পর্কিত",
+            "support_donate": "Donate",
+            "support_mue": "Support Mue",
+            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
+            "supporters": "Supporters",
+            "title": "About",
             "version": {
-              "checking_update": "আপডেট খোঁজা হচ্ছে",
+              "checking_update": "Checking for update",
               "error": {
-                "description": "একটি ত্রুটি ঘটেছে",
-                "title": "আপডেট তথ্য পেতে ব্যর্থ"
+                "description": "An error occured",
+                "title": "Failed to get update information"
               },
-              "no_update": "কোন আপডেট উপলব্ধ নেই",
-              "offline_mode": "অফলাইন মোডে আপডেট চেক করা যাচ্ছে না",
-              "title": "সংস্করণ",
-              "update_available": "আপডেট উপলব্ধ"
+              "no_update": "No update available",
+              "offline_mode": "Cannot check for update in offline mode",
+              "title": "Version",
+              "update_available": "Update available"
             }
           },
           "advanced": {
@@ -209,128 +165,86 @@
           },
           "appearance": {
             "accessibility": {
-              "animations": "অ্যানিমেশন",
-              "description": "Mue এর জন্য প্রবেশাধিকার সেটিংস",
-              "milliseconds": "মিলিসেকেন্ড",
+              "animations": "Animations",
+              "description": "Accessibility settings for Mue",
+              "milliseconds": "milliseconds",
               "text_shadow": {
-                "new": "নতুন",
-                "none": "কোনোটিই নয়",
-                "old": "পুরাতন",
-                "title": "উইজেট পাঠ্যের ছায়া"
+                "new": "New",
+                "none": "None",
+                "old": "Old",
+                "title": "Widget text shadow"
               },
-              "title": "প্রবেশাধিকার",
-              "toast_duration": "টোস্টের সময়কাল",
-              "widget_zoom": "উইজেট জুম"
+              "title": "Accessibility",
+              "toast_duration": "Toast duration",
+              "widget_zoom": "Widget zoom"
             },
             "font": {
-              "custom": "মনের মতো ফন্ট",
-              "description": "Mue তে ব্যবহৃত ফন্ট পরিবর্তন করুন",
-              "google": "গুগল ফন্ট থেকে আমদানি করুন",
+              "custom": "Custom font",
+              "description": "Change the font used in Mue",
+              "google": "Import from Google Fonts",
               "style": {
-                "italic": "বাঁকা",
-                "normal": "স্বাভাবিক",
-                "oblique": "তির্যক",
-                "title": "ফন্ট স্টাইল"
+                "italic": "Italic",
+                "normal": "Normal",
+                "oblique": "Oblique",
+                "title": "Font style"
               },
-              "title": "হরফ",
+              "title": "Font",
               "weight": {
-                "bold": "মোটা",
-                "extra_bold": "অতিরিক্ত-মোটা",
-                "extra_light": "অতিরিক্ত পাতলা",
-                "light": "পাতলা",
-                "medium": "মধ্যম",
-                "normal": "স্বাভাবিক",
-                "semi_bold": "সেমি-বোল্ড",
-                "thin": "পাতলা",
-                "title": "হরফের ওজন"
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "medium": "Medium",
+                "normal": "Normal",
+                "semi_bold": "Semi-Bold",
+                "thin": "Thin",
+                "title": "Font weight"
               }
             },
             "navbar": {
-              "additional": "ন্যাভবার স্টাইল এবং আপনি কোন বোতামগুলি প্রদর্শন করতে চান তা পরিবর্তন করুন",
-              "hover": "শুধুমাত্র হোভারে প্রদর্শন করুন",
-              "notes": "মন্তব্য",
-              "refresh": "রিফ্রেশ বোতাম",
+              "additional": "Modify navbar style and which buttons you want to display",
+              "hover": "Only display on hover",
+              "notes": "Notes",
+              "refresh": "Refresh button",
               "refresh_options": {
-                "none": "কোনোটিই নয়",
-                "page": "পাতা"
+                "none": "None",
+                "page": "Page"
               },
-              "refresh_subtitle": "রিফ্রেশ বোতামে ক্লিক করলে কি রিফ্রেশ হবে তা বেছে নিন",
-              "title": "ন্যাভবার"
+              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
+              "title": "Navbar"
             },
             "style": {
-              "description": "দুটি স্টাইলের মধ্যে বেছে নিন, পুরাতন (প্রাক 7.0 ব্যবহারকারীদের জন্য সক্ষম) এবং আমাদের চটকদার আধুনিক স্টাইলিং।",
-              "legacy": "উত্তরাধিকার",
-              "new": "নতুন",
-              "title": "উইজেটের স্টাইল"
+              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
+              "legacy": "Legacy",
+              "new": "New",
+              "title": "Widget Style"
             },
             "theme": {
-              "auto": "অটো",
-              "dark": "অন্ধকার",
-              "description": "Mue উইজেট এবং মডালের থিম পরিবর্তন করুন",
-              "light": "আলো",
-              "title": "থিম"
+              "auto": "Auto",
+              "dark": "Dark",
+              "description": "Change the theme of the Mue widgets and modals",
+              "light": "Light",
+              "title": "Theme"
             },
-            "title": "চেহারা"
-          },
-          "quote": {
-            "title": "উদ্ধৃতি",
-            "additional": "উদ্ধৃতি উইজেটের শৈলী কাস্টমাইজ করার জন্য অন্যান্য সেটিংস",
-            "author_link": "লেখকের লিঙ্ক",
-            "custom": "কাস্টম উদ্ধৃতি",
-            "custom_subtitle": "আপনার নিজস্ব কাস্টম উদ্ধৃতি সেট করুন",
-            "no_quotes": "কোন উদ্ধৃতি নেই",
-            "author": "লেখক",
-            "custom_buttons": "বোতাম",
-            "custom_author": "কাস্টম লেখক",
-            "author_img": "লেখকের ছবি দেখান",
-            "add": "উদ্ধৃতি যোগ করুন",
-            "source_subtitle": "কোথা থেকে উদ্ধৃতি পেতে চয়ন করুন",
-            "buttons": {
-              "title": "বোতাম",
-              "subtitle": "উদ্ধৃতিটিতে কোন বোতামগুলি দেখাতে হবে তা নির্বাচন করুন",
-              "copy": "কপি",
-              "tweet": "টুইট",
-              "favourite": "প্রিয়"
-            }
-          },
-          "greeting": {
-            "title": "শুভেচ্ছা",
-            "events": "ঘটনা",
-            "default": "ডিফল্ট শুভেচ্ছা বার্তা",
-            "name": "অভিবাদনের জন্য নাম",
-            "birthday": "জন্মদিন",
-            "birthday_subtitle": "আপনার জন্মদিন হলে একটি শুভ জন্মদিনের বার্তা দেখান",
-            "birthday_age": "জন্মদিনের বয়স",
-            "birthday_date": "জন্মদিনের তারিখ",
-            "additional": "অভিবাদন প্রদর্শনের জন্য সেটিংস"
+            "title": "Appearance"
           },
           "background": {
-            "title": "পটভূমি",
-            "ddg_image_proxy": "DuckDuckGo ইমেজ প্রক্সি ব্যবহার করুন",
-            "transition": "ফেইড-ইন ট্রানজিশন",
-            "photo_information": "ছবির তথ্য দেখান",
-            "show_map": "উপলব্ধ থাকলে ছবির তথ্যে অবস্থান মানচিত্র দেখান",
-            "categories": "ক্যাটাগরি",
             "buttons": {
-              "title": "বোতাম",
-              "view": "বড় করুন",
+              "download": "ডাউনলোড",
               "favourite": "প্রিয়",
-              "download": "ডাউনলোড"
+              "title": "বোতাম",
+              "view": "বড় করুন"
             },
             "categories": "ক্যাটাগরি",
             "ddg_image_proxy": "DuckDuckGo ইমেজ প্রক্সি ব্যবহার করুন",
             "display": "প্রদর্শন",
             "display_subtitle": "পটভূমি এবং ছবির তথ্য কিভাবে লোড হয় তা পরিবর্তন করুন",
             "effects": {
-              "title": "প্রভাব",
-              "subtitle": "ব্যাকগ্রাউন্ড ইমেজ প্রভাব যোগ করুন",
               "blur": "অস্পষ্টতা পরিবর্তন করুন",
               "brightness": "উজ্জ্বলতা সমন্বয়",
               "filters": {
-                "title": "ব্যাকগ্রাউন্ড ফিল্টার",
                 "amount": "ফিল্টারের পরিমাণ",
                 "grayscale": "গ্রেস্কেল",
-                "sepia": "সেপিয়া",
                 "invert": "উল্টানো",
                 "saturate": "পরিপূর্ণ",
                 "sepia": "সেপিয়া",
@@ -339,14 +253,8 @@
               "subtitle": "পটভূমির ছবির প্রভাব যোগ করুন",
               "title": "প্রভাব"
             },
-            "type": {
-              "title": "ধরন",
-              "api": "API",
-              "custom_image": "কাস্টম ইমেজ",
-              "custom_colour": "কাস্টম রঙ/গ্রেডিয়েন্ট",
-              "random_colour": "এলোমেলো রঙ",
-              "random_gradient": "এলোমেলো গ্রেডিয়েন্ট"
-            },
+            "photo_information": "ছবির তথ্য দেখান",
+            "show_map": "উপলব্ধ থাকলে ছবির তথ্যে অবস্থান মানচিত্র দেখান",
             "source": {
               "add_background": "পটভূমি যোগ করুন",
               "add_colour": "রঙ যোগ করুন",
@@ -359,17 +267,14 @@
               "disabled": "অক্ষম",
               "drop_to_upload": "আপলোড করতে ড্রপ করুন",
               "formats": "উপলব্ধ ফরম্যাট: {list}",
-              "select": "অথবা নির্বাচন করুন",
-              "add_url": "URL যোগ করুন",
-              "disabled": "অক্ষম",
               "loop_video": "ভিডিও পুনরায় চালান",
               "mute_video": "ভিডিও নিঃশব্দ করুন",
               "quality": {
-                "title": "গুণমান",
-                "original": "আসল",
+                "datasaver": "ডেটা সাশ্রয়",
                 "high": "উচ্চ গুণমান",
                 "normal": "স্বাভাবিক গুণমান",
-                "datasaver": "ডেটা সাশ্রয়"
+                "original": "আসল",
+                "title": "গুণমান"
               },
               "remove": "ছবি সরান",
               "select": "অথবা নির্বাচন করুন",
@@ -389,41 +294,8 @@
             }
           },
           "changelog": {
-            "by": "{author} দ্বারা",
-            "title": "পরিবর্তনের বিবরণ"
-          },
-          "weather": {
-            "title": "আবহাওয়া",
-            "location": "অবস্থান",
-            "auto": "অটো",
-            "widget_type": "উইজেটের ধরণ",
-            "temp_format": {
-              "title": "তাপমাত্রা বিন্যাস",
-              "celsius": "সেলসিয়াস",
-              "fahrenheit": "ফারেনহাইট",
-              "kelvin": "কেলভিন"
-            },
-            "extra_info": {
-              "title": "অতিরিক্ত তথ্য",
-              "show_location": "অবস্থান দেখান",
-              "show_description": "বিবরণ দেখান",
-              "weather_description": "আবহাওয়ার বিবরণ",
-              "cloudiness": "মেঘলা",
-              "humidity": "আর্দ্রতা",
-              "visibility": "দৃশ্যমানতা",
-              "wind_speed": "বাতাসের গতি",
-              "wind_direction": "বাতাসের দিক",
-              "min_temp": "সর্বনিম্ন তাপমাত্রা",
-              "max_temp": "সর্বোচ্চ তাপমাত্রা",
-              "atmospheric_pressure": "বায়ুমণ্ডলীয় চাপ"
-            },
-            "options": {
-              "basic": "মৌলিক",
-              "standard": "স্ট্যান্ডার্ড",
-              "expanded": "প্রসারিত",
-              "custom": "কাস্টম"
-            },
-            "custom_settings": "কাস্টম সেটিংস"
+            "by": "By {author}",
+            "title": "Change Log"
           },
           "experimental": {
             "developer": "Developer",
@@ -448,8 +320,8 @@
             "size": "উইজেট কত বড় তা নিয়ন্ত্রণ করার স্লাইডার"
           },
           "language": {
-            "quote": "উদ্ধৃতির ভাষা",
-            "title": "ভাষা"
+            "quote": "Quote language",
+            "title": "Language"
           },
           "message": {
             "add": "বার্তা যোগ করুন",
@@ -459,71 +331,6 @@
             "no_messages": "কোন বার্তা নেই",
             "text": "পাঠ্য",
             "title": "বার্তা"
-          },
-          "appearance": {
-            "title": "Appearance",
-            "style": {
-              "title": "Widget Style",
-              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
-              "legacy": "Legacy",
-              "new": "New"
-            },
-            "theme": {
-              "title": "Theme",
-              "description": "Change the theme of the Mue widgets and modals",
-              "auto": "Auto",
-              "light": "Light",
-              "dark": "Dark"
-            },
-            "navbar": {
-              "title": "Navbar",
-              "notes": "Notes",
-              "refresh": "Refresh button",
-              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
-              "hover": "Only display on hover",
-              "additional": "Modify navbar style and which buttons you want to display",
-              "refresh_options": {
-                "none": "None",
-                "page": "Page"
-              }
-            },
-            "font": {
-              "title": "Font",
-              "description": "Change the font used in Mue",
-              "custom": "Custom font",
-              "google": "Import from Google Fonts",
-              "weight": {
-                "title": "Font weight",
-                "thin": "Thin",
-                "extra_light": "Extra Light",
-                "light": "Light",
-                "normal": "Normal",
-                "medium": "Medium",
-                "semi_bold": "Semi-Bold",
-                "bold": "Bold",
-                "extra_bold": "Extra-Bold"
-              },
-              "style": {
-                "title": "Font style",
-                "normal": "Normal",
-                "italic": "Italic",
-                "oblique": "Oblique"
-              }
-            },
-            "accessibility": {
-              "title": "Accessibility",
-              "description": "Accessibility settings for Mue",
-              "animations": "Animations",
-              "text_shadow": {
-                "title": "Widget text shadow",
-                "new": "New",
-                "old": "Old",
-                "none": "None"
-              },
-              "widget_zoom": "Widget zoom",
-              "toast_duration": "Toast duration",
-              "milliseconds": "milliseconds"
-            }
           },
           "order": {
             "title": "উইজেটের বিন্যাস"
@@ -558,8 +365,7 @@
               "subtitle": "উদ্ধৃতিটিতে কোন বোতামগুলি দেখাতে হবে তা নির্বাচন করুন",
               "title": "বোতাম",
               "tweet": "টুইট"
-            },
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
+            }
           },
           "stats": {
             "achievements": "অর্জনগুলি",
@@ -606,222 +412,204 @@
               "title": "উল্লম্ব ঘড়ি"
             }
           },
-          "language": {
-            "title": "Language",
-            "quote": "Quote language"
-          },
-          "changelog": {
-            "title": "Change Log",
-            "by": "By {author}"
-          },
-          "about": {
-            "title": "About",
-            "copyright": "Copyright",
-            "version": {
-              "title": "Version",
-              "checking_update": "Checking for update",
-              "update_available": "Update available",
-              "no_update": "No update available",
-              "offline_mode": "Cannot check for update in offline mode",
-              "error": {
-                "title": "Failed to get update information",
-                "description": "An error occured"
-              }
+          "weather": {
+            "auto": "অটো",
+            "custom_settings": "কাস্টম সেটিংস",
+            "extra_info": {
+              "atmospheric_pressure": "বায়ুমণ্ডলীয় চাপ",
+              "cloudiness": "মেঘলা",
+              "humidity": "আর্দ্রতা",
+              "max_temp": "সর্বোচ্চ তাপমাত্রা",
+              "min_temp": "সর্বনিম্ন তাপমাত্রা",
+              "show_description": "বিবরণ দেখান",
+              "show_location": "অবস্থান দেখান",
+              "title": "অতিরিক্ত তথ্য",
+              "visibility": "দৃশ্যমানতা",
+              "weather_description": "আবহাওয়ার বিবরণ",
+              "wind_direction": "বাতাসের দিক",
+              "wind_speed": "বাতাসের গতি"
             },
-            "contact_us": "Contact Us",
-            "support_mue": "Support Mue",
-            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
-            "support_donate": "Donate",
-            "form_button": "Form",
-            "resources_used": {
-              "title": "Resources used",
-              "bg_images": "Offline background images"
+            "location": "অবস্থান",
+            "options": {
+              "basic": "মৌলিক",
+              "custom": "কাস্টম",
+              "expanded": "প্রসারিত",
+              "standard": "স্ট্যান্ডার্ড"
             },
-            "contributors": "Contributors",
-            "supporters": "Supporters",
-            "no_supporters": "There are currently no Mue supporters",
-            "photographers": "Photographers"
+            "temp_format": {
+              "celsius": "সেলসিয়াস",
+              "fahrenheit": "ফারেনহাইট",
+              "kelvin": "কেলভিন",
+              "title": "তাপমাত্রা বিন্যাস"
+            },
+            "title": "আবহাওয়া",
+            "widget_type": "উইজেটের ধরণ"
           }
-        },
-        "buttons": {
-          "reset": "Reset",
-          "import": "Import",
-          "export": "Export"
         }
       },
-      "marketplace": {
-        "by": "by {author}",
-        "all": "All",
-        "learn_more": "Learn More",
-        "photo_packs": "Photo Packs",
-        "quote_packs": "Quote Packs",
-        "preset_settings": "Preset Settings",
-        "no_items": "No items in this category",
-        "collection": "Collection",
-        "explore_collection": "Explore Collection",
-        "add_all": "Add All To Mue",
-        "collections": "Collections",
-        "cant_find": "Can't find what you're looking for?",
-        "knowledgebase_one": "Visit the",
-        "knowledgebase_two": "knowledgebase",
-        "knowledgebase_three": "to create your own.",
-        "product": {
-          "overview": "Overview",
-          "information": "Information",
-          "last_updated": "Last Updated",
-          "description": "Description",
-          "show_more": "Show More",
-          "show_less": "Show Less",
-          "show_all": "Show All",
-          "showing": "Showing",
-          "no_images": "No. Images",
-          "no_quotes": "No. Quotes",
-          "version": "Version",
-          "author": "Author",
-          "part_of": "Part of",
-          "explore": "Explore",
-          "buttons": {
-            "addtomue": "Add To Mue",
-            "remove": "Remove",
-            "update_addon": "Update Add-on",
-            "back": "Back",
-            "report": "Report"
-          },
-          "setting": "Setting",
-          "value": "Value"
-        },
-        "offline": {
-          "title": "Looks like you're offline",
-          "description": "Please connect to the internet"
-        }
-      },
-      "addons": {
-        "added": "Added",
-        "check_updates": "Check for updates",
-        "no_updates": "No updates available",
-        "updates_available": "Updates available {amount}",
-        "empty": {
-          "title": "Empty",
-          "description": "No addons are installed"
-        },
-        "sideload": {
-          "title": "Sideload",
-          "description": "Install a Mue addon not on the marketplace from your computer",
-          "failed": "Failed to sideload addon",
-          "errors": {
-            "no_name": "No name provided",
-            "no_author": "No author provided",
-            "no_type": "No type provided",
-            "invalid_photos": "Invalid photos object",
-            "invalid_quotes": "Invalid quotes object"
-          }
-        },
-        "sort": {
-          "title": "Sort",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
-          "a_z": "Alphabetical (A-Z)",
-          "z_a": "Alphabetical (Z-A)"
-        },
-        "create": {
-          "title": "Create",
-          "moved_title": "Create add-on has moved!",
-          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_button": "Get Started"
-        }
-      }
-    },
-    "update": {
-      "title": "Update",
-      "offline": {
-        "title": "Offline",
-        "description": "Cannot get update logs while in offline mode"
-      },
-      "error": {
-        "title": "Error",
-        "description": "Could not connect to the server"
-      }
-    },
-    "welcome": {
-      "tip": "Quick Tip",
-      "sections": {
-        "intro": {
-          "title": "Welcome to Mue Tab",
-          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
-          "notices": {
-            "discord_title": "Join our Discord",
-            "discord_description": "Talk with the Mue community and developers",
-            "discord_join": "Join",
-            "github_title": "Contribute on GitHub",
-            "github_description": "Report bugs, add features or donate",
-            "github_open": "Open"
-          }
-        },
-        "language": {
-          "title": "Choose your language",
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our"
-        },
-        "theme": {
-          "title": "Select a theme",
-          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
-          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
-        },
-        "style": {
-          "title": "Choose a style",
-          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
-          "legacy": "Legacy",
-          "modern": "Modern"
-        },
-        "settings": {
-          "title": "Import Settings",
-          "description": "Installing Mue on a new device? Feel free to import your old settings!",
-          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
-        },
-        "privacy": {
-          "title": "Privacy Options",
-          "description": "Enable settings to further protect your privacy with Mue.",
-          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
-          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
-          "links": {
-            "title": "Links",
-            "privacy_policy": "Privacy Policy",
-            "source_code": "Source Code"
-          }
-        },
-        "final": {
-          "title": "Final step",
-          "description": "Your Mue Tab experience is about to begin.",
-          "changes": "Changes",
-          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "imported": "Imported {amount} settings"
-        }
-      },
-      "buttons": {
-        "next": "Next",
-        "preview": "Preview",
-        "previous": "Previous",
-        "close": "Close"
-      },
-      "preview": {
-        "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
-        "continue": "Continue setup"
-      }
+      "title": "অপশন"
     },
     "share": {
       "copy_link": "Copy link",
       "email": "Email"
+    },
+    "update": {
+      "error": {
+        "description": "Could not connect to the server",
+        "title": "Error"
+      },
+      "offline": {
+        "description": "Cannot get update logs while in offline mode",
+        "title": "Offline"
+      },
+      "title": "Update"
+    },
+    "welcome": {
+      "buttons": {
+        "close": "Close",
+        "next": "Next",
+        "preview": "Preview",
+        "previous": "Previous"
+      },
+      "preview": {
+        "continue": "Continue setup",
+        "description": "You are currently in preview mode. Settings will be reset on closing this tab."
+      },
+      "sections": {
+        "final": {
+          "changes": "Changes",
+          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
+          "description": "Your Mue Tab experience is about to begin.",
+          "imported": "Imported {amount} settings",
+          "title": "Final step"
+        },
+        "intro": {
+          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
+          "notices": {
+            "discord_description": "Talk with the Mue community and developers",
+            "discord_join": "Join",
+            "discord_title": "Join our Discord",
+            "github_description": "Report bugs, add features or donate",
+            "github_open": "Open",
+            "github_title": "Contribute on GitHub"
+          },
+          "title": "Welcome to Mue Tab"
+        },
+        "language": {
+          "description": "Mue can be displayed the languages listed below. You can also add new translations on our",
+          "title": "Choose your language"
+        },
+        "privacy": {
+          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
+          "description": "Enable settings to further protect your privacy with Mue.",
+          "links": {
+            "privacy_policy": "Privacy Policy",
+            "source_code": "Source Code",
+            "title": "Links"
+          },
+          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
+          "title": "Privacy Options"
+        },
+        "settings": {
+          "description": "Installing Mue on a new device? Feel free to import your old settings!",
+          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation.",
+          "title": "Import Settings"
+        },
+        "style": {
+          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
+          "legacy": "Legacy",
+          "modern": "Modern",
+          "title": "Choose a style"
+        },
+        "theme": {
+          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
+          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes.",
+          "title": "Select a theme"
+        }
+      },
+      "tip": "Quick Tip"
     }
   },
+  "tabname": "নতুন ট্যাব খুলুন",
   "toasts": {
-    "quote": "Quote copied",
-    "notes": "Notes copied",
-    "reset": "Reset successfully",
-    "installed": "Successfully installed",
-    "uninstalled": "Successfully removed",
-    "updated": "Successfully updated",
     "error": "Something went wrong",
     "imported": "Successfully imported",
+    "installed": "Successfully installed",
+    "link_copied": "Link copied",
     "no_storage": "Not enough storage",
-    "link_copied": "Link copied"
+    "notes": "Notes copied",
+    "quote": "Quote copied",
+    "reset": "Reset successfully",
+    "uninstalled": "Successfully removed",
+    "updated": "Successfully updated"
+  },
+  "widgets": {
+    "background": {
+      "camera": "ক্যামেরা",
+      "category": "শ্রেণী",
+      "confirm": "নিশ্চিত করুন",
+      "credit": "ছবি তুলেছেন",
+      "download": "ডাউনলোড করুন",
+      "downloads": "ডাউনলোডগুলি",
+      "exclude": "আবার দেখাবেন না",
+      "exclude_confirm": "আপনি কি নিশ্চিত যে আপনি এই ছবিটি আবার দেখতে চান না?\nদ্রষ্টব্য: আপনি যদি \"{category}\" ছবিগুলি পছন্দ না করেন, তাহলে আপনি ব্যাকগ্রাউন্ড সোর্স সেটিংসে বিভাগটি অনির্বাচন করতে পারেন।",
+      "information": "তথ্য",
+      "likes": "পছন্দসমূহ",
+      "location": "অবস্থান",
+      "resolution": "রেজোলিউশন",
+      "source": "উৎস",
+      "unsplash": "Unsplash - এ আছে",
+      "views": "দর্শক"
+    },
+    "date": {
+      "week": "সপ্তাহ"
+    },
+    "greeting": {
+      "afternoon": "শুভ অপরাহ্ণ",
+      "birthday": "শুভ জন্মদিন",
+      "christmas": "শুভ বড়দিন",
+      "evening": "শুভ সন্ধ্যা",
+      "halloween": "শুভ হ্যালোইন",
+      "morning": "শুভ সকাল",
+      "newyear": "শুভ নব বর্ষ"
+    },
+    "navbar": {
+      "notes": {
+        "placeholder": "এখানে লিখুন",
+        "title": "মন্তব্য"
+      },
+      "todo": {
+        "add": "যোগ করুন",
+        "no_todos": "সব নেই",
+        "pin": "পিন",
+        "title": "সব"
+      },
+      "tooltips": {
+        "refresh": "রিফ্রেশ"
+      }
+    },
+    "quicklinks": {
+      "add": "যোগ করুন",
+      "icon": "আইকন (ঐচ্ছিক)",
+      "name": "নাম",
+      "name_error": "অবশ্যই নাম দিতে হবে",
+      "new": "নতুন লিঙ্ক",
+      "url": "URL",
+      "url_error": "অবশ্যই URL দিতে হবে"
+    },
+    "quote": {
+      "copy": "কপি করুন",
+      "favourite": "প্রিয়",
+      "link_tooltip": "উইকিপিডিয়াতে খুলুন",
+      "share": "শেয়ার করুন",
+      "unfavourite": "অপছন্দ"
+    },
+    "search": "অনুসন্ধান করুন",
+    "weather": {
+      "extra_information": "অতিরিক্ত তথ্য",
+      "feels_like": "মনে হচ্ছে {amount}",
+      "meters": "{amount} মিটার",
+      "not_found": "পাওয়া যায়নি"
+    }
   }
 }
