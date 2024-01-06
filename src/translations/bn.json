@@ -86,7 +86,66 @@
         "sent": "প্রেরিত !",
         "refresh": "রিফ্রেশ"
       },
+      "file_upload_error": "ফাইল ২ মেগাবাইট এর বেশি",
+      "loading": "লোড হচ্ছে..।",
+      "marketplace": {
+        "add_all": "মিউতে সব যোগ করুন",
+        "all": "সব",
+        "by": "{author} দ্বারা",
+        "cant_find": "আপনি যা খুঁজছেন তা খুঁজে পাচ্ছেন না?",
+        "collection": "সংগ্রহ",
+        "collections": "সংগ্রহগুলি",
+        "explore_collection": "সংগ্রহ ঘুরে দেখুন",
+        "knowledgebase_one": "পরিদর্শন",
+        "knowledgebase_three": "আপনার নিজের তৈরি করতে।",
+        "knowledgebase_two": "জ্ঞানভিত্তিক",
+        "learn_more": "আরও জানুন",
+        "no_items": "এই বিভাগে কোন আইটেম নেই",
+        "offline": {
+          "description": "Please connect to the internet",
+          "title": "Looks like you're offline"
+        },
+        "photo_packs": "ফটো প্যাক",
+        "preset_settings": "প্রিসেট সেটিংস",
+        "product": {
+          "author": "Author",
+          "buttons": {
+            "addtomue": "Add To Mue",
+            "back": "Back",
+            "remove": "অপসারণ",
+            "report": "Report",
+            "update_addon": "Update Add-on"
+          },
+          "description": "বর্ণনা",
+          "explore": "Explore",
+          "information": "তথ্য",
+          "last_updated": "সর্বশেষ সংষ্করণ",
+          "no_images": "নং ছবি",
+          "no_quotes": "নং উদ্ধৃতি",
+          "overview": "পরিদর্শন",
+          "part_of": "Part of",
+          "setting": "Setting",
+          "show_all": "সবগুলো দেখান",
+          "show_less": "কম দেখান",
+          "show_more": "আরো দেখুন",
+          "showing": "দেখাচ্ছে",
+          "value": "Value",
+          "version": "Version"
+        },
+        "quote_packs": "উদ্ধৃতি প্যাক"
+      },
+      "navbar": {
+        "addons": "অ্যাড-অন",
+        "marketplace": "মার্কেটপ্লেস",
+        "settings": "সেটিংস"
+      },
       "settings": {
+        "additional_settings": "অতিরিক্ত সেটিংস",
+        "buttons": {
+          "export": "রপ্তানি",
+          "import": "আমদানি",
+          "reset": "রিসেট"
+        },
         "enabled": "সক্রিয়",
         "open_knowledgebase": "উন্মুক্ত জ্ঞানভিত্তিক",
         "additional_settings": "অতিরিক্ত সেটিংস",
@@ -95,63 +154,123 @@
           "message": "সমস্ত পরিবর্তন ঘটানোর জন্য, পৃষ্ঠাটি অবশ্যই রিফ্রেশ করা উচিত।"
         },
         "sections": {
-          "header": {
-            "more_info": "আরও তথ্য",
-            "report_issue": "রিপোর্ট ইস্যু",
-            "enabled": "এই উইজেটটি দেখাবেন কি না তা নির্বাচন করুন",
-            "size": "উইজেট কত বড় তা নিয়ন্ত্রণ করার স্লাইডার"
-          },
-          "time": {
-            "title": "সময়",
-            "format": "বিন্যাস",
-            "type": "টাইপ",
-            "type_subtitle": "ডিজিটাল বিন্যাসে, অ্যানালগ বিন্যাসে বা দিনের একটি শতাংশ সমাপ্তিতে সময় প্রদর্শন করবেন কিনা তা চয়ন করুন",
-            "digital": {
-              "title": "ডিজিটাল",
-              "subtitle": "ডিজিটাল ঘড়ি দেখতে কেমন তা পরিবর্তন করুন",
-              "seconds": "সেকেন্ড",
-              "twentyfourhour": "২৪ ঘণ্টা",
-              "twelvehour": "১২ ঘণ্টা",
-              "zero": "জিরো-প্যাডেড"
+          "about": {
+            "contact_us": "যোগাযোগ করুন",
+            "contributors": "অবদানকারী",
+            "copyright": "কপিরাইট",
+            "form_button": "ফর্ম",
+            "no_supporters": "বর্তমানে কোন Mue-এর সমর্থক নেই",
+            "photographers": "ফটোগ্রাফাররা",
+            "resources_used": {
+              "bg_images": "অফলাইনে পটভূমির ছবি",
+              "title": "ব্যবহৃত সম্পদ"
             },
-            "analogue": {
-              "title": "অ্যানালগ",
-              "subtitle": "অ্যানালগ ঘড়িটি কেমন দেখায় তা পরিবর্তন করুন",
-              "second_hand": "সেকেন্ডের কাঁটা",
-              "minute_hand": "মিনিটের কাঁটা",
-              "hour_hand": "ঘণ্টার কাঁটা",
-              "hour_marks": "ঘন্টা চিহ্ন",
-              "minute_marks": "মিনিটের চিহ্ন",
-              "round_clock": "গোলাকার পটভূমি"
-            },
-            "percentage_complete": "শতাংশ সম্পূর্ণ",
-            "vertical_clock": {
-              "title": "উল্লম্ব ঘড়ি",
-              "change_hour_colour": "ঘন্টার পাঠ্যের রঙ পরিবর্তন করুন",
-              "change_minute_colour": "মিনিটের পাঠ্যের রঙ পরিবর্তন করুন"
+            "support_donate": "দান করুন",
+            "support_mue": "Mue-কে সমর্থন করুন",
+            "support_subtitle": "যেহেতু Mue সম্পূর্ণ বিনামূল্যে, আমরা সার্ভার বিল এবং তহবিল উন্নয়নের জন্য অনুদানের উপর নির্ভর করি",
+            "supporters": "সমর্থকরা",
+            "title": "সম্পর্কিত",
+            "version": {
+              "checking_update": "আপডেট খোঁজা হচ্ছে",
+              "error": {
+                "description": "একটি ত্রুটি ঘটেছে",
+                "title": "আপডেট তথ্য পেতে ব্যর্থ"
+              },
+              "no_update": "কোন আপডেট উপলব্ধ নেই",
+              "offline_mode": "অফলাইন মোডে আপডেট চেক করা যাচ্ছে না",
+              "title": "সংস্করণ",
+              "update_available": "আপডেট উপলব্ধ"
             }
           },
-          "date": {
-            "title": "তারিখ",
-            "week_number": "সপ্তাহের সংখ্যা",
-            "day_of_week": "সপ্তাহের দিন",
-            "datenth": "তারিখ তম",
-            "type": {
-              "short": "সংক্ষিপ্ত",
-              "long": "দীর্ঘ",
-              "subtitle": "তারিখটি দীর্ঘ আকারে বা সংক্ষিপ্ত আকারে প্রদর্শন করবেন কিনা"
+          "advanced": {
+            "custom_css": "মনের মতো CSS",
+            "custom_css_subtitle": "ক্যাসকেডিং স্টাইল শীট (CSS) দিয়ে আপনার জন্য Mue-এর স্টাইলিং কাস্টমাইজ করুন।",
+            "custom_js": "মনের মতো JS",
+            "customisation": "কাস্টমাইজেশন",
+            "data": "ডেটা",
+            "data_subtitle": "আপনার কম্পিউটারে আপনার Mue সেটিংস রপ্তানি করতে, একটি বিদ্যমান সেটিংস ফাইল আমদানি করতে বা আপনার সেটিংসকে তাদের ডিফল্ট মানগুলিতে পুনরায় সেট করতে চান তা চয়ন করুন",
+            "experimental_warning": "অনুগ্রহ করে মনে রাখবেন যে আপনার পরীক্ষামূলক মোড চালু থাকলে Mue টিম সাহায্য প্রদান করতে পারবে না। অনুগ্রহ করে প্রথমে এটি বন্ধ করুন এবং সাপোর্টের সাথে যোগাযোগ করার আগে সমস্যাটি ঘটতে থাকে কিনা তা দেখুন।",
+            "offline_mode": "নীরব কার্যপদ্ধতি",
+            "offline_subtitle": "সক্রিয় করা হলে, অনলাইন পরিষেবাগুলির সমস্ত অনুরোধ অক্ষম করা হবে।",
+            "reset_modal": {
+              "cancel": "বাতিল করুন",
+              "information": "এটি সমস্ত ডেটা মুছে ফেলবে। আপনি যদি আপনার ডেটা এবং পছন্দগুলি রাখতে চান তবে অনুগ্রহ করে প্রথমে সেগুলি রপ্তানি করুন।",
+              "question": "আপনি কি Mue রিসেট করতে চান?",
+              "title": "সতর্কতা"
             },
-            "type_settings": "নির্বাচিত তারিখ প্রকারের জন্য সেটিংস এবং বিন্যাস প্রদর্শন করুন",
-            "short_date": "সংক্ষিপ্ত তারিখ",
-            "short_format": "সংক্ষিপ্ত বিন্যাস",
-            "long_format": "দীর্ঘ বিন্যাস",
-            "short_separator": {
-              "title": "সংক্ষিপ্ত বিভাজক",
-              "dots": "বিন্দু",
-              "dash": "ড্যাশ",
-              "gaps": "ফাঁক",
-              "slashes": "স্ল্যাশ"
-            }
+            "tab_name": "Tab name",
+            "tab_name_subtitle": "আপনার ব্রাউজারে প্রদর্শিত ট্যাবের নাম পরিবর্তন করুন",
+            "timezone": {
+              "automatic": "স্বয়ংক্রিয়",
+              "subtitle": "আপনার কম্পিউটার থেকে স্বয়ংক্রিয় ডিফল্টের পরিবর্তে তালিকা থেকে একটি টাইমজোন বেছে নিন",
+              "title": "টাইম জোন"
+            },
+            "title": "উন্নত"
+          },
+          "appearance": {
+            "accessibility": {
+              "animations": "অ্যানিমেশন",
+              "description": "Mue এর জন্য প্রবেশাধিকার সেটিংস",
+              "milliseconds": "মিলিসেকেন্ড",
+              "text_shadow": {
+                "new": "নতুন",
+                "none": "কোনোটিই নয়",
+                "old": "পুরাতন",
+                "title": "উইজেট পাঠ্যের ছায়া"
+              },
+              "title": "প্রবেশাধিকার",
+              "toast_duration": "টোস্টের সময়কাল",
+              "widget_zoom": "উইজেট জুম"
+            },
+            "font": {
+              "custom": "মনের মতো ফন্ট",
+              "description": "Mue তে ব্যবহৃত ফন্ট পরিবর্তন করুন",
+              "google": "গুগল ফন্ট থেকে আমদানি করুন",
+              "style": {
+                "italic": "বাঁকা",
+                "normal": "স্বাভাবিক",
+                "oblique": "তির্যক",
+                "title": "ফন্ট স্টাইল"
+              },
+              "title": "হরফ",
+              "weight": {
+                "bold": "মোটা",
+                "extra_bold": "অতিরিক্ত-মোটা",
+                "extra_light": "অতিরিক্ত পাতলা",
+                "light": "পাতলা",
+                "medium": "মধ্যম",
+                "normal": "স্বাভাবিক",
+                "semi_bold": "সেমি-বোল্ড",
+                "thin": "পাতলা",
+                "title": "হরফের ওজন"
+              }
+            },
+            "navbar": {
+              "additional": "ন্যাভবার স্টাইল এবং আপনি কোন বোতামগুলি প্রদর্শন করতে চান তা পরিবর্তন করুন",
+              "hover": "শুধুমাত্র হোভারে প্রদর্শন করুন",
+              "notes": "মন্তব্য",
+              "refresh": "রিফ্রেশ বোতাম",
+              "refresh_options": {
+                "none": "কোনোটিই নয়",
+                "page": "পাতা"
+              },
+              "refresh_subtitle": "রিফ্রেশ বোতামে ক্লিক করলে কি রিফ্রেশ হবে তা বেছে নিন",
+              "title": "ন্যাভবার"
+            },
+            "style": {
+              "description": "দুটি স্টাইলের মধ্যে বেছে নিন, পুরাতন (প্রাক 7.0 ব্যবহারকারীদের জন্য সক্ষম) এবং আমাদের চটকদার আধুনিক স্টাইলিং।",
+              "legacy": "উত্তরাধিকার",
+              "new": "নতুন",
+              "title": "উইজেটের স্টাইল"
+            },
+            "theme": {
+              "auto": "অটো",
+              "dark": "অন্ধকার",
+              "description": "Mue উইজেট এবং মডালের থিম পরিবর্তন করুন",
+              "light": "আলো",
+              "title": "থিম"
+            },
+            "title": "চেহারা"
           },
           "quote": {
             "title": "উদ্ধৃতি",
@@ -198,6 +317,10 @@
               "favourite": "প্রিয়",
               "download": "ডাউনলোড"
             },
+            "categories": "ক্যাটাগরি",
+            "ddg_image_proxy": "DuckDuckGo ইমেজ প্রক্সি ব্যবহার করুন",
+            "display": "প্রদর্শন",
+            "display_subtitle": "পটভূমি এবং ছবির তথ্য কিভাবে লোড হয় তা পরিবর্তন করুন",
             "effects": {
               "title": "প্রভাব",
               "subtitle": "ব্যাকগ্রাউন্ড ইমেজ প্রভাব যোগ করুন",
@@ -210,8 +333,11 @@
                 "sepia": "সেপিয়া",
                 "invert": "উল্টানো",
                 "saturate": "পরিপূর্ণ",
-                "contrast": "বৈপরীত্য"
-              }
+                "sepia": "সেপিয়া",
+                "title": "পটভূমির ফিল্টার"
+              },
+              "subtitle": "পটভূমির ছবির প্রভাব যোগ করুন",
+              "title": "প্রভাব"
             },
             "type": {
               "title": "ধরন",
@@ -222,14 +348,15 @@
               "random_gradient": "এলোমেলো গ্রেডিয়েন্ট"
             },
             "source": {
-              "title": "উৎস",
-              "subtitle": "ব্যাকগ্রাউন্ড ইমেজ কোথা থেকে পাবেন তা নির্বাচন করুন",
-              "api": "ব্যাকগ্রাউন্ড এপিআই",
-              "custom_background": "কাস্টম ব্যাকগ্রাউন্ড",
-              "custom_colour": "কাস্টম ব্যাকগ্রাউন্ড রঙ",
-              "upload": "আপলোড",
+              "add_background": "পটভূমি যোগ করুন",
               "add_colour": "রঙ যোগ করুন",
-              "add_background": "ব্যাকগ্রাউন্ড যোগ করুন",
+              "add_url": "URL যোগ করুন",
+              "api": "পটভূমি এপিআই",
+              "custom_background": "মনের মতো পটভূমি",
+              "custom_colour": "মনের মতো পটভূমির রঙ",
+              "custom_description": "আপনার স্থানীয় কম্পিউটার থেকে ছবি নির্বাচন করুন",
+              "custom_title": "কাস্টম ছবি",
+              "disabled": "অক্ষম",
               "drop_to_upload": "আপলোড করতে ড্রপ করুন",
               "formats": "উপলব্ধ ফরম্যাট: {list}",
               "select": "অথবা নির্বাচন করুন",
@@ -244,36 +371,26 @@
                 "normal": "স্বাভাবিক গুণমান",
                 "datasaver": "ডেটা সাশ্রয়"
               },
-              "custom_title": "কাস্টম ছবি",
-              "custom_description": "আপনার স্থানীয় কম্পিউটার থেকে ছবি নির্বাচন করুন",
-              "remove": "ছবি সরান"
+              "remove": "ছবি সরান",
+              "select": "অথবা নির্বাচন করুন",
+              "subtitle": "পটভূমির ছবি কোথা থেকে পাবেন তা নির্বাচন করুন",
+              "title": "উৎস",
+              "upload": "আপলোড"
             },
-            "display": "প্রদর্শন",
-            "display_subtitle": "ব্যাকগ্রাউন্ড এবং ছবির তথ্য কিভাবে লোড হয় তা পরিবর্তন করুন",
-            "api": "এপিআই সেটিংস",
-            "api_subtitle": "একটি বহিরাগত পরিষেবা (এপিআই) থেকে একটি ছবি পাওয়ার বিকল্পগুলি",
-            "interval": {
-              "title": "প্রতিটি পরিবর্তন",
-              "subtitle": "ব্যাকগ্রাউন্ড কতক্ষণ আপডেট করা হবে তা পরিবর্তন করুন",
-              "minute": "মিনিট",
-              "half_hour": "আধা ঘন্টা",
-              "hour": "ঘন্টা",
-              "day": "দিন",
-              "month": "মাস"
+            "title": "পটভূমি",
+            "transition": "ফেইড-ইন ট্রানজিশন",
+            "type": {
+              "api": "API",
+              "custom_colour": "মনের মতো রঙ/গ্রেডিয়েন্ট",
+              "custom_image": "কাস্টম ইমেজ",
+              "random_colour": "এলোমেলো রঙ",
+              "random_gradient": "এলোমেলো গ্রেডিয়েন্ট",
+              "title": "টাইপ"
             }
           },
-          "search": {
-            "title": "খুঁজুন",
-            "additional": "অনুসন্ধান উইজেট প্রদর্শন এবং কার্যকারিতা জন্য অতিরিক্ত বিকল্প",
-            "search_engine": "সার্চ ইঞ্জিন",
-            "search_engine_subtitle": "সার্চ বারে ব্যবহার করার জন্য সার্চ ইঞ্জিন বেছে নিন",
-            "custom": "কাস্টম অনুসন্ধান URL",
-            "autocomplete": "স্বয়ংসম্পূর্ণ",
-            "autocomplete_provider": "স্বয়ংসম্পূর্ণ প্রদানকারী",
-            "autocomplete_provider_subtitle": "স্বয়ংসম্পূর্ণ ড্রপডাউন ফলাফলের জন্য ব্যবহার করার জন্য সার্চ ইঞ্জিন",
-            "voice_search": "কন্ঠ দিয়ে অনুসন্ধান করুন",
-            "dropdown": "ড্রপডাউন অনুসন্ধান করুন",
-            "focus": "ট্যাব খোলার সময় ফোকাস করুন"
+          "changelog": {
+            "by": "{author} দ্বারা",
+            "title": "পরিবর্তনের বিবরণ"
           },
           "weather": {
             "title": "আবহাওয়া",
@@ -308,32 +425,40 @@
             },
             "custom_settings": "কাস্টম সেটিংস"
           },
-          "quicklinks": {
-            "title": "দ্রুতগামী লিঙ্ক",
-            "additional": "দ্রুতগামী লিঙ্ক প্রদর্শন এবং ফাংশনের জন্য অতিরিক্ত সেটিংস",
-            "open_new": "নতুন ট্যাবে খুলুন",
-            "tooltip": "টুলটিপ",
-            "text_only": "শুধুমাত্র টেক্সট দেখান",
-            "add_link": "Add Link",
-            "no_quicklinks": "No quicklinks",
-            "edit": "Edit",
-            "style": "Style",
-            "options": {
-              "icon": "Icon",
-              "text_only": "Text Only",
-              "metro": "Metro"
-            },
-            "styling": "Quick Links Styling",
-            "styling_description": "Customise Quick Links appearance"
+          "experimental": {
+            "developer": "Developer",
+            "title": "পরীক্ষামূলক",
+            "warning": "এই সেটিংস সম্পূর্ণরূপে পরীক্ষিত/বাস্তবায়িত করা হয়নি এবং সঠিকভাবে কাজ নাও করতে পারে!"
+          },
+          "greeting": {
+            "additional": "অভিবাদন প্রদর্শনের জন্য সেটিংস",
+            "birthday": "জন্মদিন",
+            "birthday_age": "জন্মদিনের বয়স",
+            "birthday_date": "জন্মদিনের তারিখ",
+            "birthday_subtitle": "আপনার জন্মদিন হলে একটি শুভ জন্মদিনের বার্তা দেখান",
+            "default": "ডিফল্ট শুভেচ্ছা বার্তা",
+            "events": "ঘটনা",
+            "name": "অভিবাদনের জন্য নাম",
+            "title": "শুভেচ্ছা"
+          },
+          "header": {
+            "enabled": "এই উইজেটটি দেখাবেন কি না তা নির্বাচন করুন",
+            "more_info": "আরও তথ্য",
+            "report_issue": "সমস্যা দাখিল করুন",
+            "size": "উইজেট কত বড় তা নিয়ন্ত্রণ করার স্লাইডার"
+          },
+          "language": {
+            "quote": "উদ্ধৃতির ভাষা",
+            "title": "ভাষা"
           },
           "message": {
-            "title": "Message",
-            "add": "Add message",
-            "messages": "Messages",
-            "text": "Text",
-            "no_messages": "No messages",
-            "add_some": "Go ahead and add some.",
-            "content": "Message Content"
+            "add": "বার্তা যোগ করুন",
+            "add_some": "এগিয়ে যান এবং কিছু যোগ করুন।",
+            "content": "বার্তার বিষয়বস্তু",
+            "messages": "বার্তাগুলি",
+            "no_messages": "কোন বার্তা নেই",
+            "text": "পাঠ্য",
+            "title": "বার্তা"
           },
           "appearance": {
             "title": "Appearance",
@@ -401,52 +526,85 @@
             }
           },
           "order": {
-            "title": "Widget Order"
+            "title": "উইজেটের বিন্যাস"
           },
-          "advanced": {
-            "title": "Advanced",
-            "offline_mode": "Offline mode",
-            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
-            "data": "Data",
-            "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
-            "reset_modal": {
-              "title": "WARNING",
-              "question": "Do you want to reset Mue?",
-              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
-              "cancel": "Cancel"
+          "quicklinks": {
+            "add_link": "লিঙ্ক যোগ করুন",
+            "additional": "দ্রুতগামী লিঙ্ক প্রদর্শন এবং ফাংশনের জন্য অতিরিক্ত সেটিংস",
+            "edit": "সম্পাদনা করুন",
+            "no_quicklinks": "কোন দ্রুত লিঙ্ক নেই",
+            "open_new": "নতুন ট্যাবে খুলুন",
+            "options": {
+              "icon": "আইকন",
+              "metro": "মেট্রো",
+              "text_only": "শুধুমাত্র পাঠ্য"
             },
-            "customisation": "Customisation",
-            "custom_css": "Custom CSS",
-            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
-            "custom_js": "Custom JS",
-            "tab_name": "Tab name",
-            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
-            "timezone": {
-              "title": "Time Zone",
-              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
-              "automatic": "Automatic"
+            "style": "স্টাইল",
+            "styling": "দ্রুত লিঙ্কের স্টাইল",
+            "styling_description": "দ্রুত লিঙ্কের চেহারা কাস্টমাইজ করুন",
+            "text_only": "শুধুমাত্র টেক্সট দেখান",
+            "title": "দ্রুতগামী লিঙ্ক",
+            "tooltip": "টুলটিপ"
+          },
+          "quote": {
+            "add": "উদ্ধৃতি যোগ করুন",
+            "additional": "উদ্ধৃতি উইজেটের শৈলী কাস্টমাইজ করার জন্য অন্যান্য সেটিংস",
+            "author": "লেখক",
+            "author_img": "লেখকের ছবি দেখান",
+            "author_link": "লেখকের লিঙ্ক",
+            "buttons": {
+              "copy": "কপি",
+              "favourite": "প্রিয়",
+              "subtitle": "উদ্ধৃতিটিতে কোন বোতামগুলি দেখাতে হবে তা নির্বাচন করুন",
+              "title": "বোতাম",
+              "tweet": "টুইট"
             },
             "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
           },
           "stats": {
-            "title": "Stats",
+            "achievements": "অর্জনগুলি",
             "sections": {
-              "tabs_opened": "Tabs opened",
-              "backgrounds_favourited": "Backgrounds favourited",
-              "backgrounds_downloaded": "Backgrounds downloaded",
-              "quotes_favourited": "Quotes favourited",
-              "quicklinks_added": "Quicklinks added",
-              "settings_changed": "Settings changed",
-              "addons_installed": "Add-ons installed"
+              "addons_installed": "অ্যাড-অন ইনস্টল করা হয়েছে",
+              "backgrounds_downloaded": "ডাউনলোড করা পটভূমি",
+              "backgrounds_favourited": "পটভূমি পছন্দসই",
+              "quicklinks_added": "দ্রুত লিঙ্ক যোগ করা হয়েছে",
+              "quotes_favourited": "উদ্ধৃতি পছন্দসই",
+              "settings_changed": "সেটিংস পরিবর্তন করা হয়েছে",
+              "tabs_opened": "ট্যাব খোলা হয়েছে"
             },
-            "usage": "Usage Stats",
-            "achievements": "Achievements",
-            "unlocked": "{count} Unlocked"
+            "title": "Stats",
+            "unlocked": "{count} আনলক করা হয়েছে",
+            "usage": "ব্যবহারের পরিসংখ্যান"
           },
-          "experimental": {
-            "title": "Experimental",
-            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer"
+          "time": {
+            "analogue": {
+              "hour_hand": "ঘণ্টার কাঁটা",
+              "hour_marks": "ঘণ্টার চিহ্ন",
+              "minute_hand": "মিনিটের কাঁটা",
+              "minute_marks": "মিনিটের চিহ্ন",
+              "round_clock": "গোলাকার পটভূমি",
+              "second_hand": "সেকেন্ডের কাঁটা",
+              "subtitle": "অ্যানালগ ঘড়িটি কেমন দেখায় তা পরিবর্তন করুন",
+              "title": "অ্যানালগ"
+            },
+            "digital": {
+              "seconds": "সেকেন্ড",
+              "subtitle": "ডিজিটাল ঘড়ি দেখতে কেমন তা পরিবর্তন করুন",
+              "title": "ডিজিটাল",
+              "twelvehour": "১২ ঘণ্টা",
+              "twentyfourhour": "২৪ ঘণ্টা",
+              "zero": "শুন্য-প্যাডেড"
+            },
+            "format": "বিন্যাস",
+            "percentage_complete": "শতাংশ সম্পূর্ণ",
+            "title": "সময়",
+            "type": "টাইপ",
+            "type_subtitle": "ডিজিটাল বিন্যাসে, অ্যানালগ বিন্যাসে বা দিনের একটি শতাংশ সমাপ্তিতে সময় প্রদর্শন করবেন কিনা তা চয়ন করুন",
+            "vertical_clock": {
+              "change_hour_colour": "ঘন্টার পাঠ্যের রঙ পরিবর্তন করুন",
+              "change_minute_colour": "মিনিটের পাঠ্যের রঙ পরিবর্তন করুন",
+              "title": "উল্লম্ব ঘড়ি"
+            }
           },
           "language": {
             "title": "Language",
