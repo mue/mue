@@ -109,7 +109,7 @@ class Item extends PureComponent {
             <span className="backTitle">
               {variables.getMessage('modals.main.navbar.marketplace')}
             </span>
-            <MdOutlineKeyboardArrowRight /> {this.props.data.display_name}
+            <MdOutlineKeyboardArrowRight /> {this.props.data.data.display_name}
           </span>
         </div>
         <div className="itemPage">
