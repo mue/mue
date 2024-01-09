@@ -68,6 +68,7 @@ class Text extends PureComponent {
             onChange={this.handleChange}
             varient="outlined"
             InputLabelProps={{ shrink: true }}
+            placeholder={this.props.placeholder || ''}
           />
         )}
         <span className="link" onClick={this.resetItem}>

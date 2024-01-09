@@ -10,6 +10,7 @@ import Dropdown from '../../Dropdown';
 import Slider from '../../Slider';
 import Radio from '../../Radio';
 import SettingsItem from '../../SettingsItem';
+import Text from '../../Text';
 
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';
@@ -42,9 +43,36 @@ export default class BackgroundSettings extends PureComponent {
       return;
     }
 
+    if (this.state.backgroundAPI !== 'mue') {
+      // remove counts from unsplash categories
+      data.forEach((category) => {
+        delete category.count;
+      });
+    }
+
     this.setState({
       backgroundCategories: data,
+      backgroundCategoriesOG: data,
     });
+  }
+
+  updateAPI(e) {
+    if (e === 'mue') {
+      this.setState({
+        backgroundCategories: this.state.backgroundCategoriesOG,
+        backgroundAPI: 'mue',
+      });
+    } else {
+      const data = this.state.backgroundCategories;
+      data.forEach((category) => {
+        delete category.count;
+      });
+
+      this.setState({
+        backgroundAPI: 'unsplash',
+        backgroundCategories: data,
+      });
+    }
   }
 
   componentDidMount() {
@@ -108,7 +136,7 @@ export default class BackgroundSettings extends PureComponent {
         <SettingsItem
           title={variables.getMessage('modals.main.settings.sections.background.api')}
           subtitle={variables.getMessage('modals.main.settings.sections.background.api_subtitle')}
-          final={true}
+          final={this.state.backgroundAPI === 'mue'}
         >
           {this.state.backgroundCategories[0] === variables.getMessage('modals.main.loading') ? (
             <>
@@ -172,9 +200,25 @@ export default class BackgroundSettings extends PureComponent {
             name="backgroundAPI"
             category="background"
             element="#backgroundImage"
-            onChange={(e) => this.setState({ backgroundAPI: e })}
+            onChange={(e) => this.updateAPI(e)}
           />
         </SettingsItem>
+        {this.state.backgroundAPI === 'unsplash' && (
+          <SettingsItem
+            title="Unsplash Collection(s)"
+            subtitle="Select the collection(s) you want to use for your background"
+            final={true}
+          >
+            <Text
+              title="Collection ID(s)"
+              subtitle="Enter the collection ID(s) you want to use for your background"
+              placeholder="e.g. 123456, 654321"
+              name="unsplashCollections"
+              category="background"
+              element="#backgroundImage"
+            />
+          </SettingsItem>
+        )}
       </>
     );
 

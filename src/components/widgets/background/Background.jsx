@@ -109,9 +109,9 @@ export default class Background extends PureComponent {
     switch (backgroundAPI) {
       case 'unsplash':
       case 'pexels':
-        const collection = localStorage.getItem('apiCollection');
+        const collection = localStorage.getItem('unsplashCollections');
         if (collection) {
-          requestURL = `${variables.constants.API_URL}/images/unsplash?collection=${collection}&quality=${apiQuality}`;
+          requestURL = `${variables.constants.API_URL}/images/unsplash?collections=${collection}&quality=${apiQuality}`;
         } else {
           requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
         }

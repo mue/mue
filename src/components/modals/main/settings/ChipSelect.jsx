@@ -45,7 +45,8 @@ function ChipSelect({ label, options, name }) {
         >
           {options.map((option) => (
             <MenuItem key={option.name} value={option.name}>
-              {option.name.charAt(0).toUpperCase() + option.name.slice(1)} ({option.count})
+              {option.name.charAt(0).toUpperCase() + option.name.slice(1)}{' '}
+              {option.count && `(${option.count})`}
             </MenuItem>
           ))}
         </Select>
