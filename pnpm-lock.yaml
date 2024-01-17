@@ -63,8 +63,8 @@ dependencies:
     specifier: 3.16.1
     version: 3.16.1(react-dom@18.2.0)(react@18.2.0)
   react-toastify:
-    specifier: 10.0.1
-    version: 10.0.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: 10.0.3
+    version: 10.0.3(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@commitlint/cli':
@@ -5530,8 +5530,8 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /react-toastify@10.0.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-gQ/S2StRDl/6T6gUtfQyDhlYyWx37Q469nGi94Jddx3Wq220ym2mw80Wlvx3/PNvamEvQuCjw86ZZAILA7fXPg==}
+  /react-toastify@10.0.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PBJwXjFKKM73tgb6iSld4GMs9ShBWGUvc9zPHmdDgT4CdSr32iqSNh6y/fFN/tosvkTS6/tBLptDxXiXgcjvuw==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
