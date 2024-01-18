@@ -42,7 +42,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
     "husky": "^8.0.3",
-    "prettier": "^3.2.3",
+    "prettier": "^3.2.4",
     "sass": "^1.70.0",
     "stylelint": "^16.1.0",
     "stylelint-config-standard-scss": "^13.0.0",
