@@ -19,7 +19,7 @@
     "@fontsource/montserrat": "5.0.16",
     "@muetab/react-color-gradient-picker": "0.1.2",
     "@muetab/react-sortable-hoc": "^2.0.1",
-    "@mui/material": "5.15.4",
+    "@mui/material": "5.15.5",
     "@sentry/react": "^7.93.0",
     "embla-carousel-autoplay": "8.0.0-rc19",
     "embla-carousel-react": "8.0.0-rc19",
