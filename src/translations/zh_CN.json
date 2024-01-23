@@ -30,6 +30,7 @@
     "search": "搜索",
     "quicklinks": {
       "new": "新快捷方式",
+      "edit": "Edit Link",
       "name": "名称",
       "url": "链接",
       "icon": "图标 (可选)",

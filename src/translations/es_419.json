@@ -30,6 +30,7 @@
     "search": "Buscar",
     "quicklinks": {
       "new": "Nuevo enlace",
+      "edit": "Edit Link",
       "name": "Nombre",
       "url": "URL",
       "icon": "Icono (opcional)",

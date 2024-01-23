@@ -30,6 +30,7 @@
     "search": "Zoeken",
     "quicklinks": {
       "new": "New Link",
+      "edit": "Edit Link",
       "name": "Name",
       "url": "URL",
       "icon": "Icon (optional)",

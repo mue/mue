@@ -30,6 +30,7 @@
     "search": "Поиск",
     "quicklinks": {
       "new": "Новая ссылка",
+      "edit": "Edit Link",
       "name": "Name",
       "url": "URL",
       "icon": "Значок (необязательно)",
