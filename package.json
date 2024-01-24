@@ -20,7 +20,7 @@
     "@muetab/react-color-gradient-picker": "0.1.2",
     "@muetab/react-sortable-hoc": "^2.0.1",
     "@mui/material": "5.15.6",
-    "@sentry/react": "^7.94.1",
+    "@sentry/react": "^7.95.0",
     "embla-carousel-autoplay": "8.0.0-rc19",
     "embla-carousel-react": "8.0.0-rc19",
     "fast-blurhash": "^1.1.2",
