@@ -1,5 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
+import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-icons/md';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -50,7 +51,7 @@ class WelcomeModal extends PureComponent {
       buttonText:
         this.state.currentTab !== this.state.finalTab
           ? variables.getMessage('modals.welcome.buttons.next')
-          : variables.getMessage('modals.main.addons.create.finish.title'),
+          : variables.getMessage('modals.welcome.buttons.finish'),
     });
   }
 
@@ -62,7 +63,7 @@ class WelcomeModal extends PureComponent {
       buttonText:
         tab !== this.state.finalTab + 1
           ? variables.getMessage('modals.welcome.buttons.next')
-          : variables.getMessage('modals.main.addons.create.finish.title'),
+          : variables.getMessage('modals.welcome.buttons.finish'),
     });
 
     localStorage.setItem('bgtransition', true);
@@ -78,7 +79,7 @@ class WelcomeModal extends PureComponent {
         buttonText:
           Number(welcomeTab) !== this.state.finalTab + 1
             ? variables.getMessage('modals.welcome.buttons.next')
-            : variables.getMessage('modals.main.addons.create.finish.title'),
+            : variables.getMessage('modals.welcome.buttons.next'),
       });
     }
 
@@ -118,25 +119,28 @@ class WelcomeModal extends PureComponent {
               switchTab={(tab) => this.switchTab(tab)}
             />
           </div>
-          <div className="buttons">
+          <div className="welcomeButtons">
             {this.state.currentTab !== 0 ? (
               <button
-                className="close"
+                className="sideload"
                 style={{ marginRight: '20px' }}
                 onClick={() => this.changeTab(true)}
               >
                 {variables.getMessage('modals.welcome.buttons.previous')}
+                <MdArrowBackIosNew />
               </button>
             ) : (
               <button
-                className="close"
+                className="sideload"
                 style={{ marginRight: '20px' }}
                 onClick={() => this.props.modalSkip()}
               >
                 {variables.getMessage('modals.welcome.buttons.preview')}
+                <MdOutlinePreview />
               </button>
             )}
-            <button className="close" onClick={() => this.changeTab()}>
+            <button className="sideload" onClick={() => this.changeTab()}>
+              <MdArrowForwardIos />
               {this.state.buttonText}
             </button>
           </div>

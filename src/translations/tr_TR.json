@@ -643,7 +643,8 @@
         "next": "Sonraki",
         "preview": "Ön İzleme",
         "previous": "Öncesi",
-        "close": "Kapat"
+        "close": "Kapat",
+        "finish": "Finish"
       },
       "preview": {
         "description": "Şu anda önizleme modundasınız. Bu sekme kapatıldığında ayarlar sıfırlanacak.",
