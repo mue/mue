@@ -11,7 +11,11 @@ function ProgressBar({ count, currentTab, switchTab }) {
           className = 'step active';
         }
 
-        return <div className={className} key={index} onClick={() => switchTab(index)} />;
+        return (
+          <div className={className} key={index} onClick={() => switchTab(index)}>
+            <span>{index + 1}</span>
+          </div>
+        );
       })}
     </div>
   );

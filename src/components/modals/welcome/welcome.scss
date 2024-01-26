@@ -67,13 +67,11 @@
 
   .step {
     display: inline-block;
-    width: 50px;
-    background: #8395a7;
-    height: 10px;
+    border-bottom: 2px solid grey;
+    padding: 10px 20px 10px 20px;
     margin: 5px;
     transition: 0.2s ease-in-out;
     cursor: pointer;
-    border-radius: 15px;
     &:hover {
       background: #7575e5;
     }
@@ -81,6 +79,8 @@
 
   .active {
     background: #5352ed;
+    border-bottom: 2px solid #5352ed;
+    border-radius: 10px;
   }
 }
 
