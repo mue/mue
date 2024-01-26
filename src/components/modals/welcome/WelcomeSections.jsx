@@ -10,6 +10,7 @@ import {
   MdOpenInNew,
   MdOutlineWhatshot,
   MdArchive,
+  MdOutlineOpenInNew,
 } from 'react-icons/md';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 
@@ -209,16 +210,16 @@ class WelcomeSections extends PureComponent {
         </span>
         <span className="subtitle">
           {variables.getMessage('modals.welcome.sections.language.description')}{' '}
-          <a
-            href={variables.constants.TRANSLATIONS_URL}
-            className="link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          !
         </span>
+        <a
+          href={variables.constants.TRANSLATIONS_URL}
+          className="link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+          <MdOutlineOpenInNew />
+        </a>
         <div className="languageSettings">
           <Radio name="language" options={languages} category="welcomeLanguage" />
         </div>
@@ -348,6 +349,7 @@ class WelcomeSections extends PureComponent {
           rel="noopener noreferrer"
         >
           {variables.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}
+          <MdOutlineOpenInNew />
         </a>
 
         <a
@@ -357,6 +359,7 @@ class WelcomeSections extends PureComponent {
           rel="noopener noreferrer"
         >
           {variables.getMessage('modals.welcome.sections.privacy.links.source_code')}
+          <MdOutlineOpenInNew />
         </a>
       </>
     );

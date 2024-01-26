@@ -643,7 +643,8 @@
         "next": "Selanjutnya",
         "preview": "Pratinjau",
         "previous": "Kembali",
-        "close": "Tutup"
+        "close": "Tutup",
+        "finish": "Finish"
       },
       "preview": {
         "description": "Kamu dalam mode Pratinjau. Pengaturan akan direset ketika tab ini ditutup.",

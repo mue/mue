@@ -643,7 +643,8 @@
         "next": "Siguiente",
         "preview": "Vista previa",
         "previous": "Anterior",
-        "close": "Cerrar"
+        "close": "Cerrar",
+        "finish": "Finish"
       },
       "preview": {
         "description": "Actualmente se encuentra en el modo de vista previa. La configuración se restablecerá al cerrar esta pestaña.",

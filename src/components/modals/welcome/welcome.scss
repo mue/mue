@@ -16,6 +16,13 @@
     margin-right: 0;
   }
 
+  .link {
+    display: flex;
+    flex-flow: row;
+    gap: 15px;
+    align-items: center;
+  }
+
   @extend %tabText;
 
   height: 80vh;
@@ -41,22 +48,6 @@
     justify-content: space-between;
     overflow-y: auto;
 
-    .buttons {
-      z-index: 999;
-      backdrop-filter: blur(2px);
-      position: sticky;
-      bottom: 0;
-      padding: 25px;
-      display: flex;
-      justify-content: flex-end;
-
-      button {
-        @include modal-button(standard);
-
-        width: 150px;
-      }
-    }
-
     .content {
       display: flex;
       flex-flow: column;
@@ -78,11 +69,14 @@
     display: inline-block;
     width: 50px;
     background: #8395a7;
-    height: 4px;
-    margin: 10px;
-    transition: 0.2s ease;
+    height: 10px;
+    margin: 5px;
+    transition: 0.2s ease-in-out;
     cursor: pointer;
     border-radius: 15px;
+    &:hover {
+      background: #7575e5;
+    }
   }
 
   .active {
@@ -285,5 +279,19 @@ a.privacy {
 .toggle.active {
   @include themed {
     background-color: t($modal-sidebarActive) !important;
+  }
+}
+
+.welcomeButtons {
+  z-index: 999;
+  backdrop-filter: blur(2px);
+  position: sticky;
+  bottom: 0;
+  padding: 25px;
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    @include modal-button(standard);
   }
 }

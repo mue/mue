@@ -643,7 +643,8 @@
         "next": "Weiter",
         "preview": "Vorschau",
         "previous": "Zurück",
-        "close": "Schließen"
+        "close": "Schließen",
+        "finish": "Finish"
       },
       "preview": {
         "description": "Sie befinden sich derzeit im Vorschaumodus. Die Einstellungen werden beim Schließen dieser Registerkarte zurückgesetzt.",

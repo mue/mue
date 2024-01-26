@@ -643,7 +643,8 @@
         "next": "Próximo",
         "preview": "Pré-visualizar",
         "previous": "Anterior",
-        "close": "Fechar"
+        "close": "Fechar",
+        "finish": "Finish"
       },
       "preview": {
         "description": "Está atualmente no modo de visualização. As configurações serão redefinidas ao fechar esta guia.",

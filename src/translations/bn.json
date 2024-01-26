@@ -643,7 +643,8 @@
         "next": "Next",
         "preview": "Preview",
         "previous": "Previous",
-        "close": "Close"
+        "close": "Close",
+        "finish": "Finish"
       },
       "preview": {
         "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
