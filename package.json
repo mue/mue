@@ -14,7 +14,7 @@
     "@eartharoid/i18n": "1.2.1",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@floating-ui/react-dom": "2.0.6",
+    "@floating-ui/react-dom": "2.0.7",
     "@fontsource/lexend-deca": "5.0.8",
     "@fontsource/montserrat": "5.0.16",
     "@muetab/react-color-gradient-picker": "0.1.2",
