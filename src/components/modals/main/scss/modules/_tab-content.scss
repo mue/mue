@@ -51,6 +51,14 @@
           margin-top: 10px;
           width: 283px;
         }
+
+        .link {
+          margin-top: 10px;
+          display: flex;
+          flex-flow: row;
+          gap: 15px;
+          align-items: center;
+        }
       }
     }
   }

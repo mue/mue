@@ -2,6 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import { TextField } from '@mui/material';
+import { MdRefresh } from 'react-icons/md';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -72,6 +73,7 @@ class Text extends PureComponent {
           />
         )}
         <span className="link" onClick={this.resetItem}>
+          <MdRefresh />
           {variables.getMessage('modals.main.settings.buttons.reset')}
         </span>
       </>

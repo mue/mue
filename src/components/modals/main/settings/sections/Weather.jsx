@@ -1,6 +1,8 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
+import { MdAutoAwesome } from 'react-icons/md';
+
 import Header from '../Header';
 import Radio from '../Radio';
 import Dropdown from '../Dropdown';
@@ -106,6 +108,7 @@ export default class TimeSettings extends PureComponent {
             InputLabelProps={{ shrink: true }}
           />
           <span className="link" onClick={() => this.getAuto()}>
+            <MdAutoAwesome />
             {variables.getMessage('modals.main.settings.sections.weather.auto')}
           </span>
         </SettingsItem>
