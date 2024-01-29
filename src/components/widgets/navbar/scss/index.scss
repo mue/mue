@@ -61,11 +61,14 @@
   width: 500px;
 
   .navbar {
+    opacity: 0;
+    transition: visibility 0.2s linear, opacity 0.2s linear;
     visibility: hidden;
   }
 
   &:hover {
     .navbar {
+      opacity: 1;
       visibility: visible;
     }
   }
