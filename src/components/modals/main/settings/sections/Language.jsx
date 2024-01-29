@@ -1,6 +1,8 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
 
+import { MdOutlineOpenInNew } from 'react-icons/md';
+
 import Radio from '../Radio';
 
 import languages from 'modules/languages.json';
@@ -67,9 +69,26 @@ export default class LanguageSettings extends PureComponent {
   render() {
     return (
       <>
-        <span className="mainTitle">
-          {variables.getMessage('modals.main.settings.sections.language.title')}
-        </span>
+        <div className="flexTopMarketplace topAddons">
+          <span className="mainTitle">
+            {variables.getMessage('modals.main.settings.sections.language.title')}
+          </span>
+          <div className="headerActions">
+            {/*<a className="link" href="" target="_blank" rel="noopener noreferrer">
+              Improve
+              <MdOutlineOpenInNew />
+    </a>*/}
+            <a
+              className="link"
+              href="https://hosted.weblate.org/new-lang/mue/mue-tab/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Add translation
+              <MdOutlineOpenInNew />
+            </a>
+          </div>
+        </div>
         <div className="languageSettings">
           <Radio name="language" options={languages} element=".other" />
         </div>

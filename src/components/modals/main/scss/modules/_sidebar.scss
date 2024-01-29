@@ -6,7 +6,7 @@
     left: 0;
     position: sticky;
     margin: 0;
-    padding: 0;
+    padding: 0 5px 0 5px;
     background: t($modal-sidebar);
     border-radius: 12px 0 0 12px;
     overflow-y: auto;
@@ -72,4 +72,9 @@
       background: t($modal-sidebarActive);
     }
   }
+}
+
+.css-j204z7-MuiFormControlLabel-root {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }

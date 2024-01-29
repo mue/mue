@@ -10,6 +10,7 @@ export const WEBSITE_URL = 'https://muetab.com';
 export const PRIVACY_URL = 'https://muetab.com/privacy';
 export const BLOG_POST = 'https://blog.muetab.com/posts/version-7-0';
 export const TRANSLATIONS_URL = 'https://docs.muetab.com/translations/';
+export const WEBLATE_URL = 'https://hosted.weblate.org/projects/mue/mue-tab/';
 export const REPORT_ITEM =
   'https://github.com/mue/marketplace/issues/new?assignees=&labels=item+report&template=item-report.md&title=%5BItem+Report%5D+';
 export const BUG_REPORT =

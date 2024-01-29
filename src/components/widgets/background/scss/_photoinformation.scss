@@ -311,6 +311,8 @@
 
     height: 50px;
     width: 50px;
+    flex-grow: 0;
+    flex-shrink: 0;
     border-radius: 12px;
     display: flex;
     align-items: center;

@@ -150,9 +150,8 @@ class WelcomeSections extends PureComponent {
             alt="Example Mue setup"
             draggable={false}
           />
+          <span className="shareYourMue">#shareyourmue</span>
         </div>
-
-        <span className="link">#shareyourmue</span>
         <div className="welcomeNotice">
           <div className="icon">
             <MdOutlineWavingHand />
@@ -218,6 +217,15 @@ class WelcomeSections extends PureComponent {
           rel="noopener noreferrer"
         >
           GitHub
+          <MdOutlineOpenInNew />
+        </a>
+        <a
+          href={variables.constants.WEBLATE_URL}
+          className="link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Weblate
           <MdOutlineOpenInNew />
         </a>
         <div className="languageSettings">

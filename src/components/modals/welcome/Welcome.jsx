@@ -41,7 +41,7 @@ class WelcomeModal extends PureComponent {
       });
     }
 
-    if (this.state.buttonText === variables.getMessage('modals.main.addons.create.finish.title')) {
+    if (this.state.buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
       return this.props.modalClose();
     }
 
@@ -79,7 +79,7 @@ class WelcomeModal extends PureComponent {
         buttonText:
           Number(welcomeTab) !== this.state.finalTab + 1
             ? variables.getMessage('modals.welcome.buttons.next')
-            : variables.getMessage('modals.welcome.buttons.next'),
+            : variables.getMessage('modals.welcome.buttons.finish'),
       });
     }
 

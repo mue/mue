@@ -72,14 +72,17 @@
     margin: 5px;
     transition: 0.2s ease-in-out;
     cursor: pointer;
+    border-radius: 10px 10px 0x 0;
     &:hover {
-      background: #7575e5;
+      background: #dd4038;
+      border-radius: 10px;
+      border-bottom: 2px solid #dd4038;
     }
   }
 
   .active {
-    background: #5352ed;
-    border-bottom: 2px solid #5352ed;
+    background: #d21a11;
+    border-bottom: 2px solid #d21a11;
     border-radius: 10px;
   }
 }
@@ -192,12 +195,23 @@ a.privacy {
 }
 
 .examples {
+  display: flex;
+  flex-flow: column;
+  .shareYourMue {
+    width: fit-content;
+  }
   img {
-    width: 60%;
+    max-width: 60%;
+    border-radius: 10px 10px 10px 0px;
+  }
+}
 
-    @include themed {
-      border-radius: t($borderRadius);
-    }
+.shareYourMue {
+  padding: 8px 20px 8px 20px;
+  border-radius: 0px 0px 10px 10px;
+  letter-spacing: 2px;
+  @include themed {
+    background-color: t($modal-sidebarActive);
   }
 }
 
@@ -249,9 +263,10 @@ a.privacy {
   }
 
   .icon {
-    @include themed {
+    background: linear-gradient(238.7deg, #ff5c25 13.8%, #d21a11 49.49%, #ff456e 87.48%);
+    /*@include themed {
       background-color: t($modal-sidebarActive);
-    }
+    }*/
 
     height: 50px !important;
     width: 50px !important;
@@ -260,6 +275,8 @@ a.privacy {
     place-items: center;
     text-align: center;
     flex-shrink: 0;
+    color: #f18d91;
+    font-size: 24px;
   }
 
   .text {

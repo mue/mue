@@ -63,17 +63,6 @@ class Header extends PureComponent {
           )}
           <span className="mainTitle">{this.props.title}</span>
           <div className="headerActions">
-            <button
-              className="sideload"
-              onClick={() =>
-                window.open(
-                  variables.constants.BUG_REPORT + this.props.title.split(' ').join('+'),
-                  '_blank',
-                )
-              }
-            >
-              {variables.getMessage('modals.main.settings.sections.header.report_issue')} <MdFlag />
-            </button>
             {this.props.switch && (
               <button className="sideload" onClick={() => this.changeSetting()}>
                 {this.state[this.props.setting] ? (
@@ -89,6 +78,17 @@ class Header extends PureComponent {
                 )}
               </button>
             )}
+            <button
+              className="sideload"
+              onClick={() =>
+                window.open(
+                  variables.constants.BUG_REPORT + this.props.title.split(' ').join('+'),
+                  '_blank',
+                )
+              }
+            >
+              {variables.getMessage('modals.main.settings.sections.header.report_issue')} <MdFlag />
+            </button>
           </div>
         </div>
         {this.props.zoomSetting && (
