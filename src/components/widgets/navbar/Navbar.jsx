@@ -1,7 +1,7 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 
-import { MdRefresh, MdSettings } from 'react-icons/md';
+import { MdRefresh, MdSettings, MdOutlineApps } from 'react-icons/md';
 
 import Notes from './Notes';
 import Todo from './Todo';
@@ -21,6 +21,7 @@ class Navbar extends PureComponent {
       refreshText: '',
       refreshEnabled: localStorage.getItem('refresh'),
       refreshOption: localStorage.getItem('refreshOption') || '',
+      appsOpen: false,
     };
   }
 
@@ -123,6 +124,21 @@ class Navbar extends PureComponent {
               </button>
             </Tooltip>
           )}
+
+          {localStorage.getItem('appsEnabled') === 'true' && (
+            <>
+              <Tooltip title={variables.getMessage('widgets.navbar.apps.title')}>
+                <button
+                  style={{ fontSize: this.state.zoomFontSize }}
+                  onClick={() => this.props.openModal('appsModal')}
+                  id="appsShortcutBtn"
+                >
+                  <MdOutlineApps className="topicons" />
+                </button>
+              </Tooltip>
+            </>
+          )}
+
           <Tooltip
             title={variables.getMessage('modals.main.navbar.settings', {
               type: variables.getMessage(

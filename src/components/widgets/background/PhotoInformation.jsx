@@ -206,7 +206,6 @@ function PhotoInformation({ info, url, api }) {
         >
           <div className={photoMapClassList}>
             {useMapIcon || photoMap() === null ? <MdLocationOn /> : ''}
-            <h1>{photoMap}</h1>
             {photoMap()}
           </div>
           {showingPhotoMap && (
