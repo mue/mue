@@ -1,0 +1,77 @@
+@import 'scss/variables';
+
+$appsWidth: 21rem;
+
+.appsShortcutContainer {
+	max-height: 35rem;
+	overflow-y: auto;
+	// scrollbar-width: thin;
+	border-radius: 0.8em;
+	padding: 1.2em;
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	grid-auto-rows: 100px;
+	gap: 10px;
+	place-items: center;
+
+	@include themed {
+		background: t($modal-secondaryColour);
+	}
+
+	.noAppsContainer {
+		h3 {
+			margin: 0;
+			display: flex;
+			align-items: center;
+		}
+		
+		svg {
+			font-size: 30px;
+			margin-left: 10px;
+		}
+	}
+}
+
+.appsIcon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-decoration: none;
+	padding: 10px;
+	border-radius: 0.8em;
+	cursor: pointer;
+	width: 5rem;
+	height: 4.7rem;
+	transition: 0.5s;
+
+	img {
+		border-radius: 0.6rem;
+	}
+	
+	span {
+		display: inline-block;
+		width: 100%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	&:hover {
+		span {
+			white-space: initial;
+		}
+
+		height: max-content;
+	}
+
+	@include themed {
+		color: t($color);
+
+		&:hover {
+			background: t($modal-sidebarActive);
+		}
+	}
+}

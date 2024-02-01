@@ -262,5 +262,13 @@
   {
     "name": "photoMap",
     "value": true
+  },
+  {
+    "name": "appsEnabled",
+    "value": false
+  },
+  {
+    "name": "applinks",
+    "value": "[]"
   }
 ]

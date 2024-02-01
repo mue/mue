@@ -67,6 +67,10 @@
         "pin": "Pin",
         "add": "Add",
         "no_todos": "No Todos"
+      },
+      "apps": {
+        "title": "Apps",
+        "no_apps": "No app links found"
       }
     }
   },
@@ -361,7 +365,8 @@
               "refresh_options": {
                 "none": "None",
                 "page": "Page"
-              }
+              },
+              "apps_subtitle": "Create a shortcut of your other commonly used websites."
             },
             "font": {
               "title": "Font",

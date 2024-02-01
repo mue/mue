@@ -81,3 +81,13 @@
   display: flex;
   flex-flow: column;
 }
+
+.appsmodal {
+	width: fit-content;
+	padding: 10px;
+	border-radius: 1em;
+	
+	@include themed {
+		background: t($modal-sidebarActive);
+	}
+}

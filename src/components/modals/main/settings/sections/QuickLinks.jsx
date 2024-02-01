@@ -10,6 +10,8 @@ import SettingsItem from '../SettingsItem';
 import AddModal from './quicklinks/AddModal';
 
 import EventBus from 'modules/helpers/eventbus';
+import QuickLink from './quicklinks/QuickLink';
+import { getTitleFromUrl, isValidUrl } from './utils/utils';
 
 export default class QuickLinks extends PureComponent {
   constructor() {
@@ -42,28 +44,24 @@ export default class QuickLinks extends PureComponent {
   async addLink(name, url, icon) {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
 
-    // regex: https://ihateregex.io/expr/url/
-    // eslint-disable-next-line no-useless-escape
-    const urlRegex =
-      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_.~#?&=]*)/;
-    if (url.length <= 0 || urlRegex.test(url) === false) {
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'http://' + url;
+    }
+
+    if (url.length <= 0 || isValidUrl(url) === false) {
       return this.setState({
         urlError: variables.getMessage('widgets.quicklinks.url_error'),
       });
     }
 
-    if (icon.length > 0 && urlRegex.test(icon) === false) {
+    if (icon.length > 0 && isValidUrl(icon) === false) {
       return this.setState({
         iconError: variables.getMessage('widgets.quicklinks.url_error'),
       });
     }
 
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      url = 'http://' + url;
-    }
-
     data.push({
-      name: name || (await this.getTitle(url)),
+      name: name || (await getTitleFromUrl(url)),
       url,
       icon: icon || '',
       key: Math.random().toString(36).substring(7) + 1,
@@ -92,7 +90,7 @@ export default class QuickLinks extends PureComponent {
   async editLink(og, name, url, icon) {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
     const dataobj = data.find((i) => i.key === og.key);
-    dataobj.name = name || (await this.getTitle(url));
+    dataobj.name = name || (await getTitleFromUrl(url));
     dataobj.url = url;
     dataobj.icon = icon || '';
 
@@ -103,24 +101,6 @@ export default class QuickLinks extends PureComponent {
       showAddModal: false,
       edit: false,
     });
-  }
-
-  async getTitle(url) {
-    let title;
-    try {
-      let response = await fetch(url);
-      if (response.redirected) {
-        response = await fetch(response.url);
-      }
-      const html = await response.text();
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      title = doc.title;
-    } catch (e) {
-      title = url;
-    }
-
-    return title;
   }
 
   componentDidMount() {
@@ -144,77 +124,6 @@ export default class QuickLinks extends PureComponent {
   }
 
   render() {
-    let target,
-      rel = null;
-    if (localStorage.getItem('quicklinksnewtab') === 'true') {
-      target = '_blank';
-      rel = 'noopener noreferrer';
-    }
-
-    const useText = localStorage.getItem('quicklinksText') === 'true';
-
-    const quickLink = (item) => {
-      if (useText) {
-        return (
-          <a
-            className="quicklinkstext"
-            key={item.key}
-            onContextMenu={(e) => this.deleteLink(item.key, e)}
-            href={item.url}
-            target={target}
-            rel={rel}
-            draggable={false}
-          >
-            {item.name}
-          </a>
-        );
-      }
-
-      const img =
-        item.icon ||
-        'https://icon.horse/icon/ ' + item.url.replace('https://', '').replace('http://', '');
-
-      const link = (
-        <div className="messageMap" key={item.key}>
-          <div className="icon">
-            <img
-              src={img}
-              alt={item.name}
-              draggable={false}
-              style={{ height: '30px', width: '30px' }}
-            />
-          </div>
-          <div className="messageText">
-            <div className="title">{item.name}</div>
-            <div className="subtitle">
-              <a
-                className="quicklinknostyle"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={item.url}
-              >
-                {item.url}
-              </a>
-            </div>
-          </div>
-          <div>
-            <div className="messageAction">
-              <button className="deleteButton" onClick={() => this.startEditLink(item)}>
-                {variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
-                <MdEdit />
-              </button>
-              <button className="deleteButton" onClick={(e) => this.deleteLink(item.key, e)}>
-                {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-                <MdCancel />
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-
-      return link;
-    };
-
     return (
       <>
         <Header
@@ -292,7 +201,14 @@ export default class QuickLinks extends PureComponent {
         )}
 
         <div className="messagesContainer" ref={this.quicklinksContainer}>
-          {this.state.items.map((item) => quickLink(item))}
+          {this.state.items.map((item, i) => (
+            <QuickLink
+              key={i}
+              item={item}
+              startEditLink={() => this.startEditLink(item)}
+              deleteLink={(key, e) => this.deleteLink(key, e)}
+            />
+          ))}
         </div>
         <Modal
           closeTimeoutMS={100}
@@ -308,7 +224,9 @@ export default class QuickLinks extends PureComponent {
             editLink={(og, name, url, icon) => this.editLink(og, name, url, icon)}
             edit={this.state.edit}
             editData={this.state.editData}
-            closeModal={() => this.setState({ showAddModal: false, urlError: '', iconError: '' })}
+            closeModal={() =>
+              this.setState({ showAddModal: false, urlError: '', iconError: '', edit: false })
+            }
           />
         </Modal>
       </>

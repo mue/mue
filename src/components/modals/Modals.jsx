@@ -10,6 +10,8 @@ import EventBus from 'modules/helpers/eventbus';
 
 import Welcome from './welcome/Welcome';
 
+import Apps from './apps/Apps';
+
 export default class Modals extends PureComponent {
   constructor() {
     super();
@@ -17,6 +19,7 @@ export default class Modals extends PureComponent {
       mainModal: false,
       updateModal: false,
       welcomeModal: false,
+      appsModal: false,
       preview: false,
     };
   }
@@ -75,6 +78,9 @@ export default class Modals extends PureComponent {
   }
 
   render() {
+    const navZoom = localStorage.getItem('zoomNavbar');
+    const appsInfo = JSON.parse(localStorage.getItem('applinks'));
+
     return (
       <>
         {this.state.welcomeModal === false && (
@@ -102,6 +108,27 @@ export default class Modals extends PureComponent {
         >
           <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()} />
         </Modal>
+
+        <Modal
+          closeTimeoutMS={300}
+          onRequestClose={() => this.toggleModal('appsModal', false)}
+          isOpen={this.state.appsModal}
+          className="Modal appsmodal"
+          overlayClassName="Overlay"
+          shouldCloseOnOverlayClick={true}
+          ariaHideApp={false}
+          style={{
+            content: {
+              position: 'absolute',
+              right: '1rem',
+              top: `calc(1rem + ${55 + Math.ceil((navZoom / 20) * (navZoom * 0.01))}px)`,
+              overflow: 'visible',
+            },
+          }}
+        >
+          <Apps appsInfo={appsInfo} />
+        </Modal>
+
         {this.state.preview && <Preview setup={() => window.location.reload()} />}
       </>
     );
