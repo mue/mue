@@ -667,7 +667,7 @@
     },
     "search": "Zoeken",
     "weather": {
-      "extra_information": "Extra information",
+      "extra_information": "Extra Informatie",
       "feels_like": "Voelt als {amount}",
       "meters": "{amount} meter",
       "not_found": "Niet Gevonden"
