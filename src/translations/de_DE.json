@@ -203,6 +203,7 @@
             },
             "navbar": {
               "additional": "Ändern Sie den Stil der Navigationsleiste und der gewünschten Schaltflächen",
+              "apps_subtitle": "Erstellen Sie eine Verknüpfung Ihrer anderen häufig verwendeten Websites.",
               "hover": "Nur beim Hovern anzeigen",
               "notes": "Notizen",
               "refresh": "Aktualisieren",
@@ -629,6 +630,10 @@
       "newyear": "Frohes neues Jahr"
     },
     "navbar": {
+      "apps": {
+        "no_apps": "Keine App Links gefunden",
+        "title": "Apps"
+      },
       "notes": {
         "placeholder": "Hier eingeben",
         "title": "Notizen"
