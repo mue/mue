@@ -203,6 +203,7 @@
             },
             "navbar": {
               "additional": "Gezinme çubuğu stilini ve hangi butonları görüntülemek istediğinizi değiştirin.",
+              "apps_subtitle": "Diğer yaygın olarak kullanılan web sitelerinin kısayolunu oluşturun.",
               "hover": "Yalnızca fareyle üzerine gelindiğinde göster.",
               "notes": "Notlar",
               "refresh": "Yenile Butonu",
@@ -629,6 +630,10 @@
       "newyear": "Yeni Yılınız Kutlu Olsun"
     },
     "navbar": {
+      "apps": {
+        "no_apps": "Hiçbir uygulama bağlantıları bulunamadı",
+        "title": "Uygulamalar"
+      },
       "notes": {
         "placeholder": "Buraya Yaz!",
         "title": "Notlar"
