@@ -5,9 +5,9 @@
         "added": "Adicionado",
         "check_updates": "Verifique se há atualizações",
         "create": {
-          "moved_button": "Get Started",
-          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_title": "Create add-on has moved!",
+          "moved_button": "Começar",
+          "moved_description": "Após a atualização 7.1, a criação de addons mudou-se para a interface web",
+          "moved_title": "Criar add-on mudou-se!",
           "title": "Criar"
         },
         "empty": {
