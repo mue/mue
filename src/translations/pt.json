@@ -522,7 +522,7 @@
     "welcome": {
       "buttons": {
         "close": "Fechar",
-        "finish": "Finish",
+        "finish": "Finalizar",
         "next": "Próximo",
         "preview": "Pré-visualizar",
         "previous": "Anterior"
