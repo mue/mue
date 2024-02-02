@@ -203,6 +203,7 @@
             },
             "navbar": {
               "additional": "Modifique el estilo de la barra de navegación y los botones que desea mostrar",
+              "apps_subtitle": "Cree un atajo de sus otros sitios web utilizados comúnmente.",
               "hover": "Solo mostrar al pasar el cursor",
               "notes": "Notas",
               "refresh": "Botón de recargar",
@@ -629,6 +630,10 @@
       "newyear": "Feliz año nuevo"
     },
     "navbar": {
+      "apps": {
+        "no_apps": "No hay enlaces de aplicaciones encontrados",
+        "title": "Aplicaciones"
+      },
       "notes": {
         "placeholder": "Escribe aquí",
         "title": "Notas"
