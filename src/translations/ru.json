@@ -5,7 +5,7 @@
         "added": "Добавлен",
         "check_updates": "Проверка обновлений",
         "create": {
-          "moved_button": "Get Started",
+          "moved_button": "Начните",
           "moved_description": "После обновления 7.1, создание дополнений теперь переместилось в веб-UI",
           "moved_title": "Создание аддонов переместилось!",
           "title": "Создать"
