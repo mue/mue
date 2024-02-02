@@ -631,7 +631,7 @@
     },
     "navbar": {
       "apps": {
-        "no_apps": "Geen app links gevonden",
+        "no_apps": "Geen app-links gevonden",
         "title": "Applicaties"
       },
       "notes": {
