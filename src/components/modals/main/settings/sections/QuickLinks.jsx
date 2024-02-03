@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
-import { MdAddLink, MdLinkOff, MdCancel, MdEdit } from 'react-icons/md';
+import { MdAddLink, MdLinkOff } from 'react-icons/md';
 import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
@@ -124,10 +124,12 @@ export default class QuickLinks extends PureComponent {
   }
 
   render() {
+    const QUICKLINKS_SECTION = 'modals.main.settings.sections.quicklinks';
+
     return (
       <>
         <Header
-          title={variables.getMessage('modals.main.settings.sections.quicklinks.title')}
+          title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)}
           setting="quicklinksenabled"
           category="quicklinks"
           element=".quicklinks-container"
@@ -136,49 +138,45 @@ export default class QuickLinks extends PureComponent {
         />
         <SettingsItem
           title={variables.getMessage('modals.main.settings.additional_settings')}
-          subtitle={variables.getMessage('modals.main.settings.sections.quicklinks.additional')}
+          subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.additional`)}
         >
           <Checkbox
             name="quicklinksnewtab"
-            text={variables.getMessage('modals.main.settings.sections.quicklinks.open_new')}
+            text={variables.getMessage(`${QUICKLINKS_SECTION}.open_new`)}
             category="quicklinks"
           />
           <Checkbox
             name="quicklinkstooltip"
-            text={variables.getMessage('modals.main.settings.sections.quicklinks.tooltip')}
+            text={variables.getMessage(`${QUICKLINKS_SECTION}.tooltip`)}
             category="quicklinks"
           />
         </SettingsItem>
         <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.quicklinks.styling')}
+          title={variables.getMessage(`${QUICKLINKS_SECTION}.styling`)}
           subtitle={variables.getMessage(
             'modals.main.settings.sections.quicklinks.styling_description',
           )}
         >
           <Dropdown
-            label={variables.getMessage('modals.main.settings.sections.quicklinks.style')}
+            label={variables.getMessage(`${QUICKLINKS_SECTION}.style`)}
             name="quickLinksStyle"
             category="quicklinks"
           >
             <option value="icon">
-              {variables.getMessage('modals.main.settings.sections.quicklinks.options.icon')}
+              {variables.getMessage(`${QUICKLINKS_SECTION}.options.icon`)}
             </option>
             <option value="text">
-              {variables.getMessage('modals.main.settings.sections.quicklinks.options.text_only')}
+              {variables.getMessage(`${QUICKLINKS_SECTION}.options.text_only`)}
             </option>
             <option value="metro">
-              {variables.getMessage('modals.main.settings.sections.quicklinks.options.metro')}
+              {variables.getMessage(`${QUICKLINKS_SECTION}.options.metro`)}
             </option>
           </Dropdown>
         </SettingsItem>
 
-        <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.quicklinks.title')}
-          final={true}
-        >
+        <SettingsItem title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)} final={true}>
           <button onClick={() => this.setState({ showAddModal: true })}>
-            {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}{' '}
-            <MdAddLink />
+            {variables.getMessage(`${QUICKLINKS_SECTION}.add_link`)} <MdAddLink />
           </button>
         </SettingsItem>
 
@@ -187,13 +185,13 @@ export default class QuickLinks extends PureComponent {
             <div className="emptyNewMessage">
               <MdLinkOff />
               <span className="title">
-                {variables.getMessage('modals.main.settings.sections.quicklinks.no_quicklinks')}
+                {variables.getMessage(`${QUICKLINKS_SECTION}.no_quicklinks`)}
               </span>
               <span className="subtitle">
                 {variables.getMessage('modals.main.settings.sections.message.add_some')}
               </span>
               <button onClick={() => this.setState({ showAddModal: true })}>
-                {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}
+                {variables.getMessage(`${QUICKLINKS_SECTION}.add_link`)}
                 <MdAddLink />
               </button>
             </div>

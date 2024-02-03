@@ -110,10 +110,12 @@ function Navbar() {
     variables.stats.postEvent('feature', 'App link delete');
   };
 
+  const NAVBAR_SECTION = 'modals.main.settings.sections.appearance.navbar';
+
   return (
     <>
       <Header
-        title={variables.getMessage('modals.main.settings.sections.appearance.navbar.title')}
+        title={variables.getMessage(`${NAVBAR_SECTION}.title`)}
         setting="navbar"
         category="widgets"
         zoomSetting="zoomNavbar"
@@ -128,12 +130,12 @@ function Navbar() {
       >
         <Checkbox
           name="navbarHover"
-          text={variables.getMessage('modals.main.settings.sections.appearance.navbar.hover')}
+          text={variables.getMessage(`${NAVBAR_SECTION}.hover`)}
           category="navbar"
         />
         <Checkbox
           name="notesEnabled"
-          text={variables.getMessage('modals.main.settings.sections.appearance.navbar.notes')}
+          text={variables.getMessage(`${NAVBAR_SECTION}.notes`)}
           category="navbar"
         />
         <Checkbox
@@ -143,7 +145,7 @@ function Navbar() {
         />
         <Checkbox
           name="refresh"
-          text={variables.getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
+          text={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
           category="navbar"
           onChange={setShowRefreshOptions}
         />
@@ -161,7 +163,7 @@ function Navbar() {
       </SettingsItem>
       {showRefreshOptions && (
         <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.appearance.navbar.refresh')}
+          title={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
           subtitle={variables.getMessage(
             'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
           )}

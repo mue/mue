@@ -68,46 +68,48 @@ export default class SearchSettings extends PureComponent {
   }
 
   render() {
+    const SEARCH_SECTION = 'modals.main.settings.sections.search';
+
     return (
       <>
         <Header
-          title={variables.getMessage('modals.main.settings.sections.search.title')}
+          title={variables.getMessage(`${SEARCH_SECTION}.title`)}
           setting="searchBar"
           category="widgets"
           switch={true}
         />
         <SettingsItem
           title={variables.getMessage('modals.main.settings.additional_settings')}
-          subtitle={variables.getMessage('modals.main.settings.sections.search.additional')}
+          subtitle={variables.getMessage(`${SEARCH_SECTION}.additional`)}
         >
           {/* not supported on firefox */}
           {navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined' ? (
             <Checkbox
               name="voiceSearch"
-              text={variables.getMessage('modals.main.settings.sections.search.voice_search')}
+              text={variables.getMessage(`${SEARCH_SECTION}.voice_search`)}
               category="search"
             />
           ) : null}
           <Checkbox
             name="searchDropdown"
-            text={variables.getMessage('modals.main.settings.sections.search.dropdown')}
+            text={variables.getMessage(`${SEARCH_SECTION}.dropdown`)}
             category="search"
             element=".other"
           />
           <Checkbox
             name="searchFocus"
-            text={variables.getMessage('modals.main.settings.sections.search.focus')}
+            text={variables.getMessage(`${SEARCH_SECTION}.focus`)}
             category="search"
             element=".other"
           />
           <Checkbox
             name="autocomplete"
-            text={variables.getMessage('modals.main.settings.sections.search.autocomplete')}
+            text={variables.getMessage(`${SEARCH_SECTION}.autocomplete`)}
             category="search"
           />
         </SettingsItem>
         <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.search.search_engine')}
+          title={variables.getMessage(`${SEARCH_SECTION}.search_engine`)}
           subtitle={variables.getMessage(
             'modals.main.settings.sections.search.search_engine_subtitle',
           )}
@@ -124,17 +126,14 @@ export default class SearchSettings extends PureComponent {
               </MenuItem>
             ))}
             <MenuItem value="custom">
-              {variables.getMessage('modals.main.settings.sections.search.custom').split(' ')[0]}
+              {variables.getMessage(`${SEARCH_SECTION}.custom`).split(' ')[0]}
             </MenuItem>
           </Dropdown>
         </SettingsItem>
         <div style={{ display: this.state.customDisplay }}>
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.search.custom')}
-            final={true}
-          >
+          <SettingsItem title={variables.getMessage(`${SEARCH_SECTION}.custom`)} final={true}>
             <TextField
-              label={variables.getMessage('modals.main.settings.sections.search.custom')}
+              label={variables.getMessage(`${SEARCH_SECTION}.custom`)}
               value={this.state.customValue}
               onInput={(e) => this.setState({ customValue: e.target.value })}
               varient="outlined"
