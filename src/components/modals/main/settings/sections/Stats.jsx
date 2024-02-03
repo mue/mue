@@ -1,9 +1,11 @@
 /* eslint-disable array-callback-return */
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdShowChart, MdRestartAlt } from 'react-icons/md';
+import { MdShowChart, MdRestartAlt, MdDownload } from 'react-icons/md';
 import { FaTrophy } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+
+import { saveFile } from 'modules/helpers/settings/modals';
 
 import achievementsData from 'modules/helpers/settings/achievements.json';
 import translations from 'modules/helpers/settings/achievement_translations/index';
@@ -21,6 +23,7 @@ const achievementLanguage = {
   id_ID: translations.id_ID,
   tr_TR: translations.tr_TR,
   bn: translations.bn,
+  pt_BR: translations.pt_BR,
 };
 
 export default class Stats extends PureComponent {
@@ -78,6 +81,14 @@ export default class Stats extends PureComponent {
     this.forceUpdate();
   }
 
+  downloadStats() {
+    let date = new Date();
+    // Format the date as YYYY-MM-DD_HH-MM-SS
+    let formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}_${date.getHours().toString().padStart(2, '0')}-${date.getMinutes().toString().padStart(2, '0')}-${date.getSeconds().toString().padStart(2, '0')}`;
+    let filename = `mue_stats_${formattedDate}.json`;
+    saveFile(JSON.stringify(this.state.stats, null, 2), filename);
+  }
+
   componentDidMount() {
     this.getAchievements();
     this.forceUpdate();
@@ -102,7 +113,10 @@ export default class Stats extends PureComponent {
           <span className="mainTitle">
             {variables.getMessage('modals.main.settings.sections.stats.title')}
           </span>
-          <div className="statsReset">
+          <div className="headerActions">
+            <button onClick={() => this.downloadStats()}>
+              <MdDownload /> {variables.getMessage('widgets.background.download')}
+            </button>
             <button onClick={() => this.resetStats()}>
               <MdRestartAlt /> {variables.getMessage('modals.main.settings.buttons.reset')}
             </button>

@@ -464,7 +464,6 @@
           },
           "about": {
             "title": "About",
-            "copyright": "Copyright",
             "version": {
               "title": "Version",
               "checking_update": "Checking for update",

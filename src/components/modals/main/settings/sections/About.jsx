@@ -20,8 +20,8 @@ export default class About extends PureComponent {
       update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
       loading: variables.getMessage('modals.main.loading'),
       image: document.body.classList.contains('dark')
-        ? 'icons/mue_dark.png'
-        : 'icons/mue_light.png',
+        ? 'icons/mue_about.png'
+        : 'icons/mue_about.png',
     };
     this.controller = new AbortController();
   }
@@ -128,36 +128,51 @@ export default class About extends PureComponent {
   render() {
     return (
       <>
-        <span className="mainTitle">
-          {variables.getMessage('modals.main.settings.sections.about.title')}
-        </span>
         <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
             <img draggable={false} className="aboutLogo" src={this.state.image} alt="Logo" />
-            <span className="title">
-              {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
-              {variables.constants.VERSION}
-            </span>
-            <span className="subtitle">({this.state.update})</span>
-            <span className="subtitle">
-              {variables.getMessage('modals.main.settings.sections.about.copyright')}{' '}
-              {variables.constants.COPYRIGHT_YEAR}-{new Date().getFullYear()}{' '}
-              <a
-                className="link"
-                href={
-                  'https://github.com/' +
-                  variables.constants.ORG_NAME +
-                  '/' +
-                  variables.constants.REPO_NAME +
-                  '/graphs/contributors'
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {variables.constants.COPYRIGHT_NAME}
-              </a>{' '}
-              ({variables.constants.COPYRIGHT_LICENSE})
-            </span>
+            <div className="aboutText">
+              <span className="title">Mue, By Kaiso</span>
+              <span className="subtitle">
+                {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
+                {variables.constants.VERSION}
+              </span>
+              <span className="subtitle">({this.state.update})</span>
+            </div>
+            <div>
+              <span className="subtitle">
+                Copyright 2018-
+                {new Date().getFullYear()}{' '}
+                <a
+                  className="link"
+                  href={
+                    'https://github.com/' +
+                    variables.constants.ORG_NAME +
+                    '/' +
+                    variables.constants.REPO_NAME +
+                    '/graphs/contributors'
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  The Mue Authors
+                </a>
+                ,{' '}
+              </span>
+              <span className="subtitle">
+                Copyright 2023-2024{' '}
+                <a
+                  className="link"
+                  href="https://kaiso.one"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {' '}
+                  Kaiso One Ltd
+                </a>
+              </span>
+            </div>
+            <span className="subtitle">Licensed under the BSD-3-Clause License</span>
             <span className="subtitle">
               <a
                 href={variables.constants.PRIVACY_URL}

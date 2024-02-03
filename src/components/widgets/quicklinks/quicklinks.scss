@@ -149,10 +149,40 @@ button.quicklinks {
   bottom: 515px;
 }
 
+.addLinkModal {
+  @extend %tabText;
+  padding: 15px;
+
+  @include themed {
+    background: t($modal-secondaryColour);
+  }
+
+  button {
+    @include modal-button(standard);
+    padding: 10px 30px 10px 30px;
+    float: right;
+  }
+
+  .addFooter {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dropdown-error {
+    font-size: 16px;
+    padding-left: 5px;
+    color: #e74c3c;
+  }
+}
+
 .quicklinkModalTextbox {
-  display: flex;
-  flex-flow: column;
-  gap: 5px;
+  display: grid;
+  grid-template-rows: auto 1fr; /* Two rows: first auto-sized, second filling remaining space */
+  grid-template-columns: repeat(2, 1fr); /* Two equal-width columns for the first row */
+  grid-gap: 10px; /* Optional gap between items */
+  padding: 15px 0 15px 0;
 
   button {
     display: flex;
@@ -162,7 +192,7 @@ button.quicklinks {
   }
 
   .dropdown-error {
-    font-size: 13px;
+    font-size: 30px;
     padding-left: 5px;
     color: #e74c3c;
   }

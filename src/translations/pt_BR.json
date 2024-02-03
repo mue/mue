@@ -43,9 +43,9 @@
     },
     "weather": {
       "not_found": "Não encontrado",
-      "meters": "{quantidade} metros",
+      "meters": "{amount} metros",
       "extra_information": "Informação extra",
-      "feels_like": "Parece {quantia}"
+      "feels_like": "Parece {amount}"
     },
     "quote": {
       "link_tooltip": "Abrir na Wikipédia",
@@ -459,7 +459,6 @@
           },
           "about": {
             "title": "Sobre",
-            "copyright": "Direito autoral",
             "version": {
               "title": "Versão",
               "checking_update": "Verificando atualização",

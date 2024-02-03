@@ -459,7 +459,6 @@
           },
           "about": {
             "title": "关于",
-            "copyright": "版权",
             "version": {
               "title": "版本",
               "checking_update": "正在检查更新……",

@@ -8,7 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 
-function ChipSelect({ label, options, name }) {
+function ChipSelect({ label, options }) {
   let start = (localStorage.getItem('apiCategories') || '').split(',');
   if (start[0] === '') {
     start = [];

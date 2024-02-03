@@ -103,7 +103,7 @@ function ShareModal({ modalClose, data }) {
           <button
             onClick={() =>
               window
-                .open(`http://connect.qq.com/widget/shareqq/index.html?url=${data.url}`, '_blank')
+                .open(`https://connect.qq.com/widget/shareqq/index.html?url=${data.url}`, '_blank')
                 .focus()
             }
           >

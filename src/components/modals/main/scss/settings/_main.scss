@@ -42,10 +42,6 @@ input {
     vertical-align: middle;
     background: none;
 
-    &::-moz-color-swatch-wrapper {
-      padding: 0;
-    }
-
     &::-moz-color-swatch {
       border: none;
       border-radius: 100%;

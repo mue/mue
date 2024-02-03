@@ -459,7 +459,6 @@
           },
           "about": {
             "title": "Acerca de",
-            "copyright": "Copyright",
             "version": {
               "title": "Versión",
               "checking_update": "Comprobando actualizaciones",

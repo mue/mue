@@ -10,6 +10,7 @@ import zh_CN from './zh_CN.json';
 import id_ID from './id_ID.json';
 import tr_TR from './tr_TR.json';
 import bn from './bn.json';
+import pt_BR from './pt_BR.json';
 
 const translations = {
   de_DE,
@@ -24,6 +25,7 @@ const translations = {
   id_ID,
   tr_TR,
   bn,
+  pt_BR,
 };
 
 export default translations;

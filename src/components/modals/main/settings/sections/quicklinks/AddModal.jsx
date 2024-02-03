@@ -11,7 +11,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
   const [icon, setIcon] = useState(edit ? editData.icon : '');
 
   return (
-    <div className="smallModal" style={{ width: '260px' }}>
+    <div className="addLinkModal">
       <div className="shareHeader">
         <span className="title">
           {edit
@@ -30,15 +30,14 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
           placeholder={variables.getMessage('widgets.quicklinks.name')}
           value={name}
           onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
+          style={{ gridColumn: 'span 2' }}
         />
-        <span className="dropdown-error" />
         <TextareaAutosize
           maxRows={10}
           placeholder={variables.getMessage('widgets.quicklinks.url')}
           value={url}
           onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
         />
-        <span className="dropdown-error">{urlError}</span>
         <TextareaAutosize
           maxRows={10}
           maxLines={1}
@@ -46,7 +45,11 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
           value={icon}
           onChange={(e) => setIcon(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
         />
-        <span className="dropdown-error">{iconError}</span>
+      </div>
+      <div className="addFooter">
+        <span className="dropdown-error">
+          {iconError} {urlError}
+        </span>
         {edit ? (
           <button
             style={{
@@ -63,6 +66,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               height: '16px',
               fontSize: '15px',
             }}
+            className="sideload"
             onClick={() => addLink(name, url, icon)}
           >
             <MdAddLink /> {variables.getMessage('widgets.quicklinks.add')}

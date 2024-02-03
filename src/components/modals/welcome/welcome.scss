@@ -72,7 +72,7 @@
     margin: 5px;
     transition: 0.2s ease-in-out;
     cursor: pointer;
-    border-radius: 10px 10px 0x 0;
+    border-radius: 10px 10px 0 0;
     &:hover {
       background: #dd4038;
       border-radius: 10px;
@@ -202,13 +202,13 @@ a.privacy {
   }
   img {
     max-width: 60%;
-    border-radius: 10px 10px 10px 0px;
+    border-radius: 10px 10px 10px 0;
   }
 }
 
 .shareYourMue {
   padding: 8px 20px 8px 20px;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0 0 10px 10px;
   letter-spacing: 2px;
   @include themed {
     background-color: t($modal-sidebarActive);

@@ -77,7 +77,7 @@ export default class GreetingSettings extends PureComponent {
           <input
             type="date"
             onChange={this.changeDate}
-            value={this.state.birthday.toISOString().substr(0, 10)}
+            value={this.state.birthday.toISOString().substring(0, 10)}
             required
           />
         </SettingsItem>

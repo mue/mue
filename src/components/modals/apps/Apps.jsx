@@ -1,6 +1,9 @@
-import Tooltip from 'components/helpers/tooltip/Tooltip';
-import './scss/index.scss';
+import variables from 'modules/variables';
 import { MdLinkOff } from 'react-icons/md';
+
+import Tooltip from 'components/helpers/tooltip/Tooltip';
+
+import './scss/index.scss';
 
 const Apps = ({ appsInfo }) => {
   return (
@@ -29,10 +32,12 @@ const Apps = ({ appsInfo }) => {
         ))
       ) : (
         <div className="noAppsContainer">
-          <h3>
-            No app links found
+          <div className="emptyNewMessage">
             <MdLinkOff />
-          </h3>
+            <span className="title">
+              {variables.language.getMessage(variables.languagecode, 'widgets.navbar.apps.no_apps')}
+            </span>
+          </div>
         </div>
       )}
     </div>
