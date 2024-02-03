@@ -62,7 +62,9 @@
 
   .navbar {
     opacity: 0;
-    transition: visibility 0.2s linear, opacity 0.2s linear;
+    transition:
+      visibility 0.2s linear,
+      opacity 0.2s linear;
     visibility: hidden;
   }
 
@@ -83,11 +85,11 @@
 }
 
 .appsmodal {
-	width: fit-content;
-	padding: 10px;
-	border-radius: 1em;
-	
-	@include themed {
-		background: t($modal-sidebarActive);
-	}
+  width: fit-content;
+  padding: 5px;
+  border-radius: 1em;
+
+  @include themed {
+    background: t($modal-sidebarActive);
+  }
 }
