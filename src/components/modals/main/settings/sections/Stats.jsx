@@ -107,12 +107,12 @@ export default class Stats extends PureComponent {
       </div>
     );
 
+    const STATS_SECTION = 'modals.main.settings.sections.stats';
+
     return (
       <>
         <div className="statsTopBar">
-          <span className="mainTitle">
-            {variables.getMessage('modals.main.settings.sections.stats.title')}
-          </span>
+          <span className="mainTitle">{variables.getMessage(`${STATS_SECTION}.title`)}</span>
           <div className="headerActions">
             <button onClick={() => this.downloadStats()}>
               <MdDownload /> {variables.getMessage('widgets.background.download')}
@@ -130,7 +130,7 @@ export default class Stats extends PureComponent {
             <div className="statGrid">
               <div>
                 <span className="subtitle">
-                  {variables.getMessage('modals.main.settings.sections.stats.sections.tabs_opened')}{' '}
+                  {variables.getMessage(`${STATS_SECTION}.sections.tabs_opened`)}{' '}
                 </span>
                 <span>{this.state.stats['tabs-opened'] || 0}</span>
               </div>
@@ -201,12 +201,10 @@ export default class Stats extends PureComponent {
             </div>
           </div>
           <div className="statSection leftPanel">
-            <span className="title">
-              {variables.getMessage('modals.main.settings.sections.stats.achievements')}
-            </span>
+            <span className="title">{variables.getMessage(`${STATS_SECTION}.achievements`)}</span>
             <br />
             <span className="subtitle">
-              {variables.getMessage('modals.main.settings.sections.stats.unlocked', {
+              {variables.getMessage(`${STATS_SECTION}.unlocked`, {
                 count: this.getUnlockedCount() + '/' + this.state.achievements.length,
               })}
             </span>

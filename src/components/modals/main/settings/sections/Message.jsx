@@ -58,22 +58,21 @@ export default class Message extends PureComponent {
   }
 
   render() {
+    const MESSAGE_SECTION = 'modals.main.settings.sections.message';
+
     return (
       <>
         <Header
-          title={variables.getMessage('modals.main.settings.sections.message.title')}
+          title={variables.getMessage(`${MESSAGE_SECTION}.title`)}
           setting="message"
           category="message"
           element=".message"
           zoomSetting="zoomMessage"
           switch={true}
         />
-        <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.message.messages')}
-          final={true}
-        >
+        <SettingsItem title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} final={true}>
           <button onClick={() => this.modifyMessage('add')}>
-            {variables.getMessage('modals.main.settings.sections.message.add')} <MdAdd />
+            {variables.getMessage(`${MESSAGE_SECTION}.add`)} <MdAdd />
           </button>
         </SettingsItem>
         <div className="messagesContainer">
@@ -85,7 +84,7 @@ export default class Message extends PureComponent {
                 </div>
                 <div className="messageText">
                   <span className="subtitle">
-                    {variables.getMessage('modals.main.settings.sections.message.title')}
+                    {variables.getMessage(`${MESSAGE_SECTION}.title`)}
                   </span>
                   <TextareaAutosize
                     value={this.state.messages[index]}
@@ -117,13 +116,13 @@ export default class Message extends PureComponent {
             <div className="emptyNewMessage">
               <MdOutlineTextsms />
               <span className="title">
-                {variables.getMessage('modals.main.settings.sections.message.no_messages')}
+                {variables.getMessage(`${MESSAGE_SECTION}.no_messages`)}
               </span>
               <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.message.add_some')}
+                {variables.getMessage(`${MESSAGE_SECTION}.add_some`)}
               </span>
               <button onClick={() => this.modifyMessage('add')}>
-                {variables.getMessage('modals.main.settings.sections.message.add')}
+                {variables.getMessage(`${MESSAGE_SECTION}.add`)}
                 <MdAdd />
               </button>
             </div>

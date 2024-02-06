@@ -24,10 +24,12 @@ export default class GreetingSettings extends PureComponent {
   };
 
   render() {
+    const GREETING_SECTION = 'modals.main.settings.sections.greeting';
+
     return (
       <>
         <Header
-          title={variables.getMessage('modals.main.settings.sections.greeting.title')}
+          title={variables.getMessage(`${GREETING_SECTION}.title`)}
           setting="greeting"
           category="greeting"
           element=".greeting"
@@ -36,26 +38,26 @@ export default class GreetingSettings extends PureComponent {
         />
         <SettingsItem
           title={variables.getMessage('modals.main.settings.additional_settings')}
-          subtitle={variables.getMessage('modals.main.settings.sections.greeting.additional')}
+          subtitle={variables.getMessage(`${GREETING_SECTION}.additional`)}
         >
           <Checkbox
             name="events"
-            text={variables.getMessage('modals.main.settings.sections.greeting.events')}
+            text={variables.getMessage(`${GREETING_SECTION}.events`)}
             category="greeting"
           />
           <Checkbox
             name="defaultGreetingMessage"
-            text={variables.getMessage('modals.main.settings.sections.greeting.default')}
+            text={variables.getMessage(`${GREETING_SECTION}.default`)}
             category="greeting"
           />
           <Text
-            title={variables.getMessage('modals.main.settings.sections.greeting.name')}
+            title={variables.getMessage(`${GREETING_SECTION}.name`)}
             name="greetingName"
             category="greeting"
           />
         </SettingsItem>
         <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.greeting.birthday')}
+          title={variables.getMessage(`${GREETING_SECTION}.birthday`)}
           subtitle={variables.getMessage(
             'modals.main.settings.sections.greeting.birthday_subtitle',
           )}
@@ -68,11 +70,11 @@ export default class GreetingSettings extends PureComponent {
           />
           <Checkbox
             name="birthdayage"
-            text={variables.getMessage('modals.main.settings.sections.greeting.birthday_age')}
+            text={variables.getMessage(`${GREETING_SECTION}.birthday_age`)}
             category="greeting"
           />
           <p style={{ marginRight: 'auto' }}>
-            {variables.getMessage('modals.main.settings.sections.greeting.birthday_date')}
+            {variables.getMessage(`${GREETING_SECTION}.birthday_date`)}
           </p>
           <input
             type="date"
