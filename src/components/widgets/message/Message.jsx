@@ -1,60 +1,45 @@
-import { PureComponent, createRef } from 'react';
-
+import { useState, useEffect, useRef } from 'react';
 import EventBus from 'modules/helpers/eventbus';
-
 import './message.scss';
 
-export default class Message extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      messageText: '',
-    };
-    this.message = createRef();
-  }
+const Message = () => {
+  const [messageText, setMessageText] = useState('');
+  const [display, setDisplay] = useState('none');
+  const [fontSize, setFontSize] = useState('1em');
+  const message = useRef();
 
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  useEffect(() => {
+    const handleRefresh = (data) => {
       if (data === 'message') {
-        if (localStorage.getItem('message') === 'false') {
-          return (this.message.current.style.display = 'none');
-        }
-
-        this.message.current.style.display = 'block';
-        this.message.current.style.fontSize = `${
-          1 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
-        }em`;
+        const messageSetting = localStorage.getItem('message');
+        const zoomMessage = localStorage.getItem('zoomMessage');
+        setDisplay(messageSetting === 'false' ? 'none' : 'block');
+        setFontSize(`${1 * Number((zoomMessage || 100) / 100)}em`);
       }
-    });
+    };
 
     const messages = JSON.parse(localStorage.getItem('messages')) || [];
-    if (messages.length === 0) {
-      return (this.message.current.style.display = 'none');
+    if (messages.length > 0) {
+      setMessageText(messages[Math.floor(Math.random() * messages.length)]);
+      setDisplay('block');
     }
 
-    this.message.current.style.fontSize = `${
-      1 * Number((localStorage.getItem('zoomMessage') || 100) / 100)
-    }em`;
+    EventBus.on('refresh', handleRefresh);
+    return () => {
+      EventBus.off('refresh');
+    };
+  }, []);
 
-    this.setState({
-      messageText: messages[Math.floor(Math.random() * messages.length)],
-    });
-  }
+  return (
+    <h2 className="message" ref={message} style={{ display, fontSize }}>
+      {messageText.split('\\n').map((item) => (
+        <span key={item}>
+          {item}
+          <br />
+        </span>
+      ))}
+    </h2>
+  );
+};
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
-
-  render() {
-    return (
-      <h2 className="message" ref={this.message}>
-        {this.state.messageText.split('\\n').map((item, i) => (
-          <span key={i}>
-            {item}
-            <br />
-          </span>
-        ))}
-      </h2>
-    );
-  }
-}
+export default Message;

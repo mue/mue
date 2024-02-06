@@ -1,5 +1,5 @@
 import variables from 'modules/variables';
-import { memo } from 'react';
+import { memo, useState, useEffect } from 'react';
 import {
   MdSettings as Settings,
   MdWidgets as Addons,
@@ -27,137 +27,76 @@ import {
   MdCollectionsBookmark as Collections,
 } from 'react-icons/md';
 
+const iconMapping = {
+  [variables.getMessage('modals.main.marketplace.product.overview')]: <Overview />,
+  [variables.getMessage('modals.main.navbar.settings')]: <Settings />,
+  [variables.getMessage('modals.main.navbar.addons')]: <Addons />,
+  [variables.getMessage('modals.main.navbar.marketplace')]: <Marketplace />,
+  [variables.getMessage('modals.main.settings.sections.appearance.navbar.title')]: <Navbar />,
+  [variables.getMessage('modals.main.settings.sections.greeting.title')]: <Greeting />,
+  [variables.getMessage('modals.main.settings.sections.time.title')]: <Time />,
+  [variables.getMessage('modals.main.settings.sections.quicklinks.title')]: <QuickLinks />,
+  [variables.getMessage('modals.main.settings.sections.quote.title')]: <Quote />,
+  [variables.getMessage('modals.main.settings.sections.date.title')]: <Date />,
+  [variables.getMessage('modals.main.settings.sections.message.title')]: <Message />,
+  [variables.getMessage('modals.main.settings.sections.background.title')]: <Background />,
+  [variables.getMessage('modals.main.settings.sections.search.title')]: <MdSearch />,
+  [variables.getMessage('modals.main.settings.sections.weather.title')]: <Weather />,
+  [variables.getMessage('modals.main.settings.sections.appearance.title')]: <Appearance />,
+  [variables.getMessage('modals.main.settings.sections.language.title')]: <Language />,
+  [variables.getMessage('modals.main.settings.sections.advanced.title')]: <Advanced />,
+  [variables.getMessage('modals.main.settings.sections.stats.title')]: <Stats />,
+  [variables.getMessage('modals.main.settings.sections.experimental.title')]: <Experimental />,
+  [variables.getMessage('modals.main.settings.sections.changelog.title')]: <Changelog />,
+  [variables.getMessage('modals.main.settings.sections.about.title')]: <About />,
+  [variables.getMessage('modals.main.addons.added')]: <Added />,
+  [variables.getMessage('modals.main.addons.create.title')]: <Create />,
+  [variables.getMessage('modals.main.marketplace.all')]: <Addons />,
+  [variables.getMessage('modals.main.marketplace.photo_packs')]: <Background />,
+  [variables.getMessage('modals.main.marketplace.quote_packs')]: <Quote />,
+  [variables.getMessage('modals.main.marketplace.preset_settings')]: <Advanced />,
+  [variables.getMessage('modals.main.marketplace.collections')]: <Collections />,
+};
+
 function Tab({ label, currentTab, onClick, navbarTab }) {
-  let className = 'tab-list-item';
+  const [isExperimental, setIsExperimental] = useState(true);
+
+  useEffect(() => {
+    setIsExperimental(localStorage.getItem('experimental') !== 'false');
+  }, []);
+
+  let className = navbarTab ? 'navbar-item' : 'tab-list-item';
   if (currentTab === label) {
-    className += ' tab-list-active';
+    className += navbarTab ? ' navbar-item-active' : ' tab-list-active';
   }
 
-  if (navbarTab === true) {
-    className = 'navbar-item';
-    if (currentTab === label) {
-      className += ' navbar-item-active';
-    }
-  }
+  const icon = iconMapping[label];
+  const divider = [
+    variables.getMessage('modals.main.settings.sections.weather.title'),
+    variables.getMessage('modals.main.settings.sections.language.title'),
+    variables.getMessage('modals.main.marketplace.all'),
+    variables.getMessage('modals.main.settings.sections.experimental.title'),
+  ].includes(label);
+  const mue = [
+    variables.getMessage('modals.main.marketplace.product.overview'),
+    variables.getMessage('modals.main.addons.added'),
+    variables.getMessage('modals.main.marketplace.all'),
+  ].includes(label);
 
-  let icon, divider, mue;
-  switch (label) {
-    case variables.getMessage('modals.main.marketplace.product.overview'):
-      icon = <Overview />;
-      mue = true;
-      break;
-    case variables.getMessage('modals.main.navbar.settings'):
-      icon = <Settings />;
-      break;
-    case variables.getMessage('modals.main.navbar.addons'):
-      icon = <Addons />;
-      break;
-    case variables.getMessage('modals.main.navbar.marketplace'):
-      icon = <Marketplace />;
-      break;
-
-    case variables.getMessage('modals.main.settings.sections.appearance.navbar.title'):
-      icon = <Navbar />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.greeting.title'):
-      icon = <Greeting />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.time.title'):
-      icon = <Time />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.quicklinks.title'):
-      icon = <QuickLinks />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.quote.title'):
-      icon = <Quote />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.date.title'):
-      icon = <Date />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.message.title'):
-      icon = <Message />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.background.title'):
-      icon = <Background />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.search.title'):
-      icon = <MdSearch />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.weather.title'):
-      icon = <Weather />;
-      divider = true;
-      break;
-    case variables.getMessage('modals.main.settings.sections.appearance.title'):
-      icon = <Appearance />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.language.title'):
-      icon = <Language />;
-      divider = true;
-      break;
-    case variables.getMessage('modals.main.settings.sections.advanced.title'):
-      icon = <Advanced />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.stats.title'):
-      icon = <Stats />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.experimental.title'):
-      icon = <Experimental />;
-      divider = true;
-      break;
-    case variables.getMessage('modals.main.settings.sections.changelog.title'):
-      icon = <Changelog />;
-      break;
-    case variables.getMessage('modals.main.settings.sections.about.title'):
-      icon = <About />;
-      break;
-
-    case variables.getMessage('modals.main.addons.added'):
-      mue = true;
-      icon = <Added />;
-      break;
-    case variables.getMessage('modals.main.addons.create.title'):
-      icon = <Create />;
-      break;
-
-    case variables.getMessage('modals.main.marketplace.all'):
-      icon = <Addons />;
-      divider = true;
-      mue = true;
-      break;
-    case variables.getMessage('modals.main.marketplace.photo_packs'):
-      icon = <Background />;
-      break;
-    case variables.getMessage('modals.main.marketplace.quote_packs'):
-      icon = <Quote />;
-      break;
-    case variables.getMessage('modals.main.marketplace.preset_settings'):
-      icon = <Advanced />;
-      break;
-    case variables.getMessage('modals.main.marketplace.collections'):
-      icon = <Collections />;
-      break;
-
-    case variables.getMessage('modals.main.loading'):
-      mue = true;
-      break;
-
-    default:
-      break;
-  }
-
-  if (label === variables.getMessage('modals.main.settings.sections.experimental.title')) {
-    if (localStorage.getItem('experimental') === 'false') {
-      return <hr />;
-    }
+  if (
+    label === variables.getMessage('modals.main.settings.sections.experimental.title') &&
+    !isExperimental
+  ) {
+    return <hr />;
   }
 
   return (
     <>
-      {mue === true && <span className="mainTitle">Mue</span>}
+      {mue && <span className="mainTitle">Mue</span>}
       <button className={className} onClick={() => onClick(label)}>
         {icon} <span>{label}</span>
       </button>
-      {divider === true && <hr />}
+      {divider && <hr />}
     </>
   );
 }
