@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
 import { MdDisabledVisible } from 'react-icons/md';
@@ -8,16 +8,18 @@ import WindDirectionIcon from './WindDirectionIcon';
 
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
-function Expanded({ state, weatherType, variables }) {
+function Expanded({ state: { weather, icon }, weatherType, variables }) {
   /**
    * If the localStorage item is true and the weatherType is greater than or equal to 3, or if the
    * weatherType is equal to 3, then return true.
    * @param {string} setting - The localStorage item to check.
    * @returns a boolean value.
    */
-  const enabled = (setting) => {
-    return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === '3';
-  };
+  const enabled = useMemo(() => {
+    return (setting) => {
+      return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === '3';
+    };
+  }, [weatherType]);
 
   return (
     <div className="expanded-info">
@@ -35,7 +37,7 @@ function Expanded({ state, weatherType, variables }) {
         >
           <span>
             <WiCloud className="weatherIcon" />
-            {state.weather.cloudiness}%
+            {weather.cloudiness}%
           </span>
         </Tooltip>
       )}
@@ -48,11 +50,11 @@ function Expanded({ state, weatherType, variables }) {
         >
           <span>
             <WiWindy className="weatherIcon" />
-            {state.weather.wind_speed}
+            {weather.wind_speed}
             <span className="minmax">m/s</span>{' '}
             {enabled('windDirection') && (
               <div style={{ fontSize: '25px', display: 'grid' }}>
-                <WindDirectionIcon className="weatherIcon" degrees={state.weather.wind_degrees} />
+                <WindDirectionIcon className="weatherIcon" degrees={weather.wind_degrees} />
               </div>
             )}
           </span>
@@ -67,7 +69,7 @@ function Expanded({ state, weatherType, variables }) {
         >
           <span>
             <WiBarometer className="weatherIcon" />
-            {state.weather.pressure}
+            {weather.pressure}
             <span className="minmax">hPa</span>
           </span>
         </Tooltip>
@@ -80,8 +82,8 @@ function Expanded({ state, weatherType, variables }) {
           placement="left"
         >
           <span>
-            <WeatherIcon className="weatherIcon" name={state.icon} />
-            {state.weather.description}
+            <WeatherIcon className="weatherIcon" name={icon} />
+            {weather.description}
           </span>
         </Tooltip>
       )}
@@ -95,7 +97,7 @@ function Expanded({ state, weatherType, variables }) {
           <span>
             <MdDisabledVisible className="materialWeatherIcon" />
             {variables.getMessage('widgets.weather.meters', {
-              amount: state.weather.visibility,
+              amount: weather.visibility,
             })}
           </span>
         </Tooltip>
@@ -107,7 +109,7 @@ function Expanded({ state, weatherType, variables }) {
         >
           <span>
             <WiHumidity className="materialWeatherIcon" />
-            {state.weather.humidity}
+            {weather.humidity}
           </span>
         </Tooltip>
       )}

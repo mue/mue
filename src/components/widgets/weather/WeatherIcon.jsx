@@ -15,42 +15,30 @@ import {
   WiFog,
 } from 'react-icons/wi';
 
+const iconMap = {
+  '01d': WiDaySunny,
+  '01n': WiNightClear,
+  '02d': WiDayCloudy,
+  '02n': WiNightCloudy,
+  '03d': WiCloud,
+  '03n': WiCloud,
+  '04d': WiCloudy,
+  '04n': WiCloudy,
+  '09d': WiDayShowers,
+  '09n': WiNightShowers,
+  '10d': WiRain,
+  '10n': WiRain,
+  '11d': WiThunderstorm,
+  '11n': WiThunderstorm,
+  '13d': WiSnow,
+  '13n': WiSnow,
+  '50d': WiFog,
+  '50n': WiFog,
+};
+
 function WeatherIcon({ name }) {
-  // name is the openweathermap icon name, see https://openweathermap.org/weather-conditions
-  switch (name) {
-    case '01d':
-      return <WiDaySunny className="weatherIcon" />;
-    case '01n':
-      return <WiNightClear className="weatherIcon" />;
-    case '02d':
-      return <WiDayCloudy className="weatherIcon" />;
-    case '02n':
-      return <WiNightCloudy className="weatherIcon" />;
-    case '03d':
-    case '03n':
-      return <WiCloud className="weatherIcon" />;
-    case '04d':
-    case '04n':
-      return <WiCloudy className="weatherIcon" />;
-    case '09d':
-      return <WiDayShowers className="weatherIcon" />;
-    case '09n':
-      return <WiNightShowers className="weatherIcon" />;
-    case '10d':
-    case '10n':
-      return <WiRain className="weatherIcon" />;
-    case '11d':
-    case '11n':
-      return <WiThunderstorm className="weatherIcon" />;
-    case '13d':
-    case '13n':
-      return <WiSnow className="weatherIcon" />;
-    case '50d':
-    case '50n':
-      return <WiFog className="weatherIcon" />;
-    default:
-      return null;
-  }
+  const IconComponent = iconMap[name];
+  return IconComponent ? <IconComponent className="weatherIcon" /> : null;
 }
 
 export default memo(WeatherIcon);

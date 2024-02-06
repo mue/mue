@@ -8,6 +8,15 @@ import EventBus from 'modules/helpers/eventbus';
 
 import './weather.scss';
 
+const convertTemperature = (temp, format) => {
+  if (format === 'celsius') {
+    return Math.round(temp - 273.15);
+  } else if (format === 'fahrenheit') {
+    return Math.round((temp - 273.15) * 1.8 + 32);
+  }
+  return Math.round(temp);
+};
+
 export default class Weather extends PureComponent {
   constructor() {
     super();
@@ -18,64 +27,61 @@ export default class Weather extends PureComponent {
   }
 
   async getWeather() {
-    const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
-    document.querySelector('.weather').style.fontSize = zoomWeather;
-
     if (this.state.done === true) {
       return;
     }
 
-    const data = await (
-      await fetch(
+    const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+    document.querySelector('.weather').style.fontSize = zoomWeather;
+
+    try {
+      const response = await fetch(
         variables.constants.API_URL +
           `/weather?city=${this.state.location}&language=${variables.languagecode}`,
-      )
-    ).json();
+      );
 
-    if (data.status === 404) {
-      return this.setState({
-        location: variables.getMessage('widgets.weather.not_found'),
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+
+      if (data.status === 404) {
+        return this.setState({
+          location: variables.getMessage('widgets.weather.not_found'),
+        });
+      }
+
+      const { temp, temp_min, temp_max, feels_like } = data.main;
+      const tempFormat = localStorage.getItem('tempformat');
+
+      const tempSymbols = {
+        celsius: '°C',
+        kelvin: 'K',
+        fahrenheit: '°F',
+      };
+
+      this.setState({
+        icon: data.weather[0].icon,
+        temp_text: tempSymbols[tempFormat] || 'K',
+        weather: {
+          temp: convertTemperature(temp, tempFormat),
+          description: data.weather[0].description,
+          temp_min: convertTemperature(temp_min, tempFormat),
+          temp_max: convertTemperature(temp_max, tempFormat),
+          feels_like: convertTemperature(feels_like, tempFormat),
+          humidity: data.main.humidity,
+          wind_speed: data.wind.speed,
+          wind_degrees: data.wind.deg,
+          cloudiness: data.clouds.all,
+          visibility: data.visibility,
+          pressure: data.main.pressure,
+        },
+        done: true,
       });
+    } catch (error) {
+      console.error('Fetch Error: ', error);
     }
-
-    let temp = data.main.temp;
-    let temp_min = data.main.temp_min;
-    let temp_max = data.main.temp_max;
-    let feels_like = data.main.feels_like;
-    let temp_text = 'K';
-
-    if (localStorage.getItem('tempformat') === 'celsius') {
-      temp -= 273.15;
-      temp_min -= 273.15;
-      temp_max -= 273.15;
-      feels_like -= 273.15;
-      temp_text = '°C';
-    } else {
-      temp = (temp - 273.15) * 1.8 + 32;
-      temp_min = (temp_min - 273.15) * 1.8 + 32;
-      temp_max = (temp_max - 273.15) * 1.8 + 32;
-      feels_like = (feels_like - 273.15) * 1.8 + 32;
-      temp_text = '°F';
-    }
-
-    this.setState({
-      icon: data.weather[0].icon,
-      temp_text,
-      weather: {
-        temp: Math.round(temp),
-        description: data.weather[0].description,
-        temp_min: Math.round(temp_min),
-        temp_max: Math.round(temp_max),
-        feels_like: Math.round(feels_like),
-        humidity: data.main.humidity,
-        wind_speed: data.wind.speed,
-        wind_degrees: data.wind.deg,
-        cloudiness: data.clouds.all,
-        visibility: data.visibility,
-        pressure: data.main.pressure,
-      },
-      done: true,
-    });
 
     document.querySelector('.top-weather svg').style.fontSize = zoomWeather;
   }
@@ -115,13 +121,13 @@ export default class Weather extends PureComponent {
           {weatherType >= 1 && (
             <div>
               <WeatherIcon name={this.state.icon} />
-              <span>{this.state.weather.temp + this.state.temp_text}</span>
+              <span>{`${this.state.weather.temp}${this.state.temp_text}`}</span>
             </div>
           )}
           {weatherType >= 2 && (
             <span className="minmax">
-              <span className="subtitle">{this.state.weather.temp_min + this.state.temp_text}</span>
-              <span className="subtitle">{this.state.weather.temp_max + this.state.temp_text}</span>
+              <span className="subtitle">{`${this.state.weather.temp_min}${this.state.temp_text}`}</span>
+              <span className="subtitle">{`${this.state.weather.temp_max}${this.state.temp_text}`}</span>
             </span>
           )}
         </div>
@@ -129,7 +135,7 @@ export default class Weather extends PureComponent {
           <div className="extra-info">
             <span>
               {variables.getMessage('widgets.weather.feels_like', {
-                amount: this.state.weather.feels_like + this.state.temp_text,
+                amount: `${this.state.weather.feels_like}${this.state.temp_text}`,
               })}
             </span>
             <span className="loc">{this.state.location}</span>
