@@ -149,12 +149,18 @@ export default class TimeSettings extends PureComponent {
       </>
     );
 
-    if (this.state.timeType === 'digital') {
-      timeSettings = digitalSettings;
-    } else if (this.state.timeType === 'analogue') {
-      timeSettings = analogSettings;
-    } else if (this.state.timeType === 'verticalClock') {
-      timeSettings = verticalClock;
+    switch (this.state.timeType) {
+      case 'digital':
+        timeSettings = digitalSettings;
+        break;
+      case 'analogue':
+        timeSettings = analogSettings;
+        break;
+      case 'verticalClock':
+        timeSettings = verticalClock;
+        break;
+      default:
+        timeSettings = null;
     }
 
     return (

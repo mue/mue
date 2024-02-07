@@ -130,3 +130,8 @@ body {
     padding-right: 20px;
   }
 }
+
+.inactiveSetting {
+  opacity: 0.5;
+  pointer-events: none;
+}

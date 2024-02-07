@@ -36,75 +36,13 @@ export default class TimeSettings extends PureComponent {
     this.showReminder();
   }
 
-  getAuto() {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const data = await (
-          await fetch(
-            `${variables.constants.API_URL}/gps?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`,
-          )
-        ).json();
-        this.setState({
-          location: data[0].name,
-        });
-
-        this.showReminder();
-      },
-      (error) => {
-        // firefox requires this 2nd function
-        console.log(error);
-      },
-      {
-        enableHighAccuracy: true,
-      },
-    );
-  }
-
   render() {
     const weatherType = localStorage.getItem('weatherType');
 
     const WEATHER_SECTION = 'modals.main.settings.sections.weather';
 
-    const weatherOptions = [
-      {
-        name: 'weatherdescription',
-        textKey: `${WEATHER_SECTION}.extra_info.show_description`,
-      },
-      {
-        name: 'cloudiness',
-        textKey: `${WEATHER_SECTION}.extra_info.cloudiness`,
-      },
-      { name: 'humidity', textKey: `${WEATHER_SECTION}.extra_info.humidity` },
-      {
-        name: 'visibility',
-        textKey: `${WEATHER_SECTION}.extra_info.visibility`,
-      },
-      {
-        name: 'windspeed',
-        textKey: `${WEATHER_SECTION}.extra_info.wind_speed`,
-        onChange: () => this.setState({ windSpeed: localStorage.getItem('windspeed') !== 'true' }),
-      },
-      {
-        name: 'windDirection',
-        textKey: `${WEATHER_SECTION}.extra_info.wind_direction`,
-        disabled: this.state.windSpeed,
-      },
-      {
-        name: 'atmosphericpressure',
-        textKey: `${WEATHER_SECTION}.extra_info.atmospheric_pressure`,
-      },
-    ];
-
-    return (
-      <>
-        <Header
-          title={variables.getMessage(`${WEATHER_SECTION}.title`)}
-          setting="weatherEnabled"
-          category="widgets"
-          zoomSetting="zoomWeather"
-          zoomCategory="weather"
-          switch={true}
-        />
+    const WidgetType = () => {
+      return (
         <SettingsItem title={variables.getMessage(`${WEATHER_SECTION}.widget_type`)}>
           <Dropdown
             label={variables.getMessage('modals.main.settings.sections.time.type')}
@@ -118,6 +56,34 @@ export default class TimeSettings extends PureComponent {
             <option value="4">{variables.getMessage(`${WEATHER_SECTION}.options.custom`)}</option>
           </Dropdown>
         </SettingsItem>
+      );
+    };
+
+    const LocationSetting = () => {
+      const getAuto = () => {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            const data = await (
+              await fetch(
+                `${variables.constants.API_URL}/gps?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`,
+              )
+            ).json();
+            this.setState({
+              location: data[0].name,
+            });
+
+            this.showReminder();
+          },
+          (error) => {
+            // firefox requires this 2nd function
+            console.log(error);
+          },
+          {
+            enableHighAccuracy: true,
+          },
+        );
+      };
+      return (
         <SettingsItem title={variables.getMessage(`${WEATHER_SECTION}.location`)}>
           <TextField
             label={variables.getMessage(`${WEATHER_SECTION}.location`)}
@@ -127,11 +93,16 @@ export default class TimeSettings extends PureComponent {
             varient="outlined"
             InputLabelProps={{ shrink: true }}
           />
-          <span className="link" onClick={() => this.getAuto()}>
+          <span className="link" onClick={getAuto}>
             <MdAutoAwesome />
             {variables.getMessage(`${WEATHER_SECTION}.auto`)}
           </span>
         </SettingsItem>
+      );
+    };
+
+    const TemperatureFormat = () => {
+      return (
         <SettingsItem
           title={variables.getMessage(`${WEATHER_SECTION}.temp_format.title`)}
           final={weatherType !== '4'}
@@ -155,23 +126,75 @@ export default class TimeSettings extends PureComponent {
             category="weather"
           />
         </SettingsItem>
-        {weatherType === '4' && (
-          <SettingsItem
-            title={variables.getMessage(`${WEATHER_SECTION}.custom_settings`)}
-            final={true}
-          >
-            {weatherOptions.map((item) => (
-              <Checkbox
-                key={item.name}
-                name={item.name}
-                text={variables.getMessage(item.textKey)}
-                category="weather"
-                onChange={item.onChange}
-                disabled={item.disabled}
-              />
-            ))}
-          </SettingsItem>
-        )}
+      );
+    };
+
+    const CustomOptions = () => {
+      const weatherOptions = [
+        {
+          name: 'weatherdescription',
+          textKey: `${WEATHER_SECTION}.extra_info.show_description`,
+        },
+        {
+          name: 'cloudiness',
+          textKey: `${WEATHER_SECTION}.extra_info.cloudiness`,
+        },
+        { name: 'humidity', textKey: `${WEATHER_SECTION}.extra_info.humidity` },
+        {
+          name: 'visibility',
+          textKey: `${WEATHER_SECTION}.extra_info.visibility`,
+        },
+        {
+          name: 'windspeed',
+          textKey: `${WEATHER_SECTION}.extra_info.wind_speed`,
+          onChange: () =>
+            this.setState({ windSpeed: localStorage.getItem('windspeed') !== 'true' }),
+        },
+        {
+          name: 'windDirection',
+          textKey: `${WEATHER_SECTION}.extra_info.wind_direction`,
+          disabled: this.state.windSpeed,
+        },
+        {
+          name: 'atmosphericpressure',
+          textKey: `${WEATHER_SECTION}.extra_info.atmospheric_pressure`,
+        },
+      ];
+
+      return (
+        <SettingsItem
+          title={variables.getMessage(`${WEATHER_SECTION}.custom_settings`)}
+          final={true}
+        >
+          {weatherOptions.map((item) => (
+            <Checkbox
+              key={item.name}
+              name={item.name}
+              text={variables.getMessage(item.textKey)}
+              category="weather"
+              onChange={item.onChange}
+              disabled={item.disabled}
+            />
+          ))}
+        </SettingsItem>
+      );
+    };
+
+    return (
+      <>
+        <Header
+          title={variables.getMessage(`${WEATHER_SECTION}.title`)}
+          setting="weatherEnabled"
+          category="widgets"
+          zoomSetting="zoomWeather"
+          zoomCategory="weather"
+          switch={true}
+        />
+        <WidgetType />
+        {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}
+        {LocationSetting()}
+        <TemperatureFormat />
+        {weatherType === '4' && <CustomOptions />}
       </>
     );
   }
