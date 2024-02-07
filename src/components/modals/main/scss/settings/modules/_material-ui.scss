@@ -173,6 +173,7 @@ legend,
 
 .MuiChip-root {
   text-transform: capitalize;
+
   @include themed {
     background: t($modal-sidebarActive) !important;
     color: t($color) !important;

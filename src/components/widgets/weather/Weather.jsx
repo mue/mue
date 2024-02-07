@@ -41,6 +41,10 @@ export default class Weather extends PureComponent {
       );
 
       if (!response.ok) {
+        this.setState({
+          location: variables.getMessage('modals.main.error_boundary.title'),
+          done: true,
+        });
         throw new Error('Network response was not ok');
       }
 
@@ -49,6 +53,7 @@ export default class Weather extends PureComponent {
       if (data.status === 404) {
         return this.setState({
           location: variables.getMessage('widgets.weather.not_found'),
+          done: true,
         });
       }
 
@@ -107,7 +112,7 @@ export default class Weather extends PureComponent {
 
     const weatherType = localStorage.getItem('weatherType') || 1;
 
-    if (this.state.location === variables.getMessage('weather.not_found')) {
+    if (!this.state.weather) {
       return (
         <div className="weather">
           <span className="loc">{this.state.location}</span>

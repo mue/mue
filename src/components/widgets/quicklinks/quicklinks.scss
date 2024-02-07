@@ -20,8 +20,7 @@
   border-radius: 12px;
   z-index: 1;
   display: flex;
-  align-content: center;
-  justify-content: center;
+  place-content: center center;
   gap: 12px;
 
   textarea {
@@ -151,6 +150,7 @@ button.quicklinks {
 
 .addLinkModal {
   @extend %tabText;
+
   padding: 15px;
 
   @include themed {
@@ -159,7 +159,8 @@ button.quicklinks {
 
   button {
     @include modal-button(standard);
-    padding: 10px 30px 10px 30px;
+
+    padding: 10px 30px;
     float: right;
   }
 
@@ -182,7 +183,7 @@ button.quicklinks {
   grid-template-rows: auto 1fr; /* Two rows: first auto-sized, second filling remaining space */
   grid-template-columns: repeat(2, 1fr); /* Two equal-width columns for the first row */
   grid-gap: 10px; /* Optional gap between items */
-  padding: 15px 0 15px 0;
+  padding: 15px 0;
 
   button {
     display: flex;

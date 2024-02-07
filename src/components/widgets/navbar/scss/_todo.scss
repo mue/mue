@@ -7,8 +7,7 @@
 
     .todoRows {
       max-height: 65vh !important;
-      overflow-y: visible !important;
-      overflow-x: hidden;
+      overflow: hidden visible !important;
       display: flex;
       flex-flow: column;
       gap: 15px;

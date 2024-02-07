@@ -115,8 +115,8 @@ export default class Quote extends PureComponent {
 
   stripHTML(html) {
     const tmpdoc = new DOMParser().parseFromString(html, 'text/html');
-    return tmpdoc.body.textContent || "";
-}
+    return tmpdoc.body.textContent || '';
+  }
 
   async getAuthorImg(author) {
     if (localStorage.getItem('authorImg') === 'false') {

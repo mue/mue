@@ -10,10 +10,7 @@
 .Overlay {
   position: fixed;
   z-index: 100;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -170,6 +167,7 @@ h5 {
   gap: 20px;
   justify-content: center;
   align-items: center;
+
   .link {
     display: flex;
     flex-flow: row;

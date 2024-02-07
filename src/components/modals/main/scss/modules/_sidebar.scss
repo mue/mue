@@ -6,13 +6,12 @@
     left: 0;
     position: sticky;
     margin: 0;
-    padding: 0 5px 0 5px;
+    padding: 0 5px;
     background: t($modal-sidebar);
     border-radius: 12px 0 0 12px;
-    overflow-y: auto;
+    overflow: hidden auto;
     height: 80vh;
     min-width: 250px;
-    overflow-x: hidden;
 
     .mainTitle {
       text-align: center;

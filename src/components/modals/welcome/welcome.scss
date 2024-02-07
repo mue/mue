@@ -68,11 +68,12 @@
   .step {
     display: inline-block;
     border-bottom: 2px solid grey;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
     margin: 5px;
     transition: 0.2s ease-in-out;
     cursor: pointer;
     border-radius: 10px 10px 0 0;
+
     &:hover {
       background: #dd4038;
       border-radius: 10px;
@@ -103,8 +104,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      align-content: center;
-      justify-content: center;
+      place-content: center center;
       cursor: pointer;
 
       &:hover {
@@ -197,9 +197,11 @@ a.privacy {
 .examples {
   display: flex;
   flex-flow: column;
+
   .shareYourMue {
     width: fit-content;
   }
+
   img {
     max-width: 60%;
     border-radius: 10px 10px 10px 0;
@@ -207,9 +209,10 @@ a.privacy {
 }
 
 .shareYourMue {
-  padding: 8px 20px 8px 20px;
+  padding: 8px 20px;
   border-radius: 0 0 10px 10px;
   letter-spacing: 2px;
+
   @include themed {
     background-color: t($modal-sidebarActive);
   }
@@ -264,9 +267,10 @@ a.privacy {
 
   .icon {
     background: linear-gradient(238.7deg, #ff5c25 13.8%, #d21a11 49.49%, #ff456e 87.48%);
-    /*@include themed {
+
+    /* @include themed {
       background-color: t($modal-sidebarActive);
-    }*/
+    } */
 
     height: 50px !important;
     width: 50px !important;

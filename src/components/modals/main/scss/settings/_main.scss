@@ -1,5 +1,4 @@
 @import 'scss/variables';
-
 @import 'modules/material-ui';
 @import 'modules/tabs/about';
 @import 'modules/tabs/changelog';
@@ -140,10 +139,12 @@ h4 {
       justify-content: center;
       margin-bottom: 30px;
     }
+
     .statGrid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       grid-gap: 10px;
+
       div {
         display: flex;
         flex-flow: column;
@@ -214,6 +215,7 @@ h4 {
     font-weight: bold;
     font-size: 15px;
   }
+
   .subtitle {
     font-size: 13px !important;
   }

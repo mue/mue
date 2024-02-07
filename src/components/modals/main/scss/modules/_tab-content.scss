@@ -65,9 +65,8 @@
 }
 
 .activityButtons {
-  justify-content: space-between !important;
+  place-content: space-between space-between !important;
   align-items: flex-end !important;
-  align-content: space-between !important;
   flex-flow: row wrap !important;
 
   button:not(:first-child) {

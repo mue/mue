@@ -243,7 +243,13 @@ function TodoWrapper() {
   });
 
   return (
-    <Todo todoRef={setReference} floatRef={refs.setFloating} position={strategy} xPosition={x} yPosition={y} />
+    <Todo
+      todoRef={setReference}
+      floatRef={refs.setFloating}
+      position={strategy}
+      xPosition={x}
+      yPosition={y}
+    />
   );
 }
 

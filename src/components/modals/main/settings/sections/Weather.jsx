@@ -61,6 +61,10 @@ export default class TimeSettings extends PureComponent {
 
     const LocationSetting = () => {
       const getAuto = () => {
+        this.setState({
+          location: variables.getMessage('modals.main.loading'),
+        });
+
         navigator.geolocation.getCurrentPosition(
           async (position) => {
             const data = await (
