@@ -28,6 +28,33 @@ export default class TimeSettings extends PureComponent {
 
     const TIME_SECTION = 'modals.main.settings.sections.time';
 
+    const WidgetType = () => {
+      return (
+        <SettingsItem
+          title={variables.getMessage(`${TIME_SECTION}.type`)}
+          subtitle={variables.getMessage(`${TIME_SECTION}.type_subtitle`)}
+          final={this.state.timeType === 'percentageComplete'}
+        >
+          <Dropdown
+            name="timeType"
+            onChange={(value) => this.setState({ timeType: value })}
+            category="clock"
+          >
+            <option value="digital">{variables.getMessage(`${TIME_SECTION}.digital.title`)}</option>
+            <option value="analogue">
+              {variables.getMessage(`${TIME_SECTION}.analogue.title`)}
+            </option>
+            <option value="percentageComplete">
+              {variables.getMessage(`${TIME_SECTION}.percentage_complete`)}
+            </option>
+            <option value="verticalClock">
+              {variables.getMessage(`${TIME_SECTION}.vertical_clock.title`)}
+            </option>
+          </Dropdown>
+        </SettingsItem>
+      );
+    };
+
     const digitalSettings = (
       <SettingsItem
         title={variables.getMessage(`${TIME_SECTION}.digital.title`)}
@@ -173,28 +200,7 @@ export default class TimeSettings extends PureComponent {
           zoomSetting="zoomClock"
           switch={true}
         />
-        <SettingsItem
-          title={variables.getMessage(`${TIME_SECTION}.type`)}
-          subtitle={variables.getMessage(`${TIME_SECTION}.type_subtitle`)}
-          final={this.state.timeType === 'percentageComplete'}
-        >
-          <Dropdown
-            name="timeType"
-            onChange={(value) => this.setState({ timeType: value })}
-            category="clock"
-          >
-            <option value="digital">{variables.getMessage(`${TIME_SECTION}.digital.title`)}</option>
-            <option value="analogue">
-              {variables.getMessage(`${TIME_SECTION}.analogue.title`)}
-            </option>
-            <option value="percentageComplete">
-              {variables.getMessage(`${TIME_SECTION}.percentage_complete`)}
-            </option>
-            <option value="verticalClock">
-              {variables.getMessage(`${TIME_SECTION}.vertical_clock.title`)}
-            </option>
-          </Dropdown>
-        </SettingsItem>
+        <WidgetType />
         {timeSettings}
       </>
     );

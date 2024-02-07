@@ -9,6 +9,7 @@ import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
 import { TextField } from '@mui/material';
 import SettingsItem from '../SettingsItem';
+import PreferencesWrapper from '../PreferencesWrapper';
 
 export default class TimeSettings extends PureComponent {
   constructor() {
@@ -194,11 +195,18 @@ export default class TimeSettings extends PureComponent {
           zoomCategory="weather"
           switch={true}
         />
-        <WidgetType />
-        {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}
-        {LocationSetting()}
-        <TemperatureFormat />
-        {weatherType === '4' && <CustomOptions />}
+        <PreferencesWrapper
+          setting="weatherEnabled"
+          zoomSetting="zoomWeather"
+          zoomCategory="weather"
+          switch={true}
+        >
+          <WidgetType />
+          {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}
+          {LocationSetting()}
+          <TemperatureFormat />
+          {weatherType === '4' && <CustomOptions />}
+        </PreferencesWrapper>
       </>
     );
   }

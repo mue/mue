@@ -27,9 +27,11 @@ class Header extends PureComponent {
     if (localStorage.getItem(this.props.setting) === 'true') {
       localStorage.setItem(this.props.setting, false);
       this.setState({ [this.props.setting]: false });
+      EventBus.emit('toggle', this.props.setting);
     } else {
       localStorage.setItem(this.props.setting, true);
       this.setState({ [this.props.setting]: true });
+      EventBus.emit('toggle', this.props.setting);
     }
 
     variables.stats.postEvent(
@@ -91,24 +93,6 @@ class Header extends PureComponent {
             </button>
           </div>
         </div>
-        {this.props.zoomSetting && (
-          <SettingsItem
-            title={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.widget_zoom',
-            )}
-            subtitle={variables.getMessage('modals.main.settings.sections.header.size')}
-          >
-            <Slider
-              name={this.props.zoomSetting}
-              min="10"
-              max="400"
-              default="100"
-              display="%"
-              marks={values('zoom')}
-              category={this.props.zoomCategory || this.props.category}
-            />
-          </SettingsItem>
-        )}
       </>
     );
   }
