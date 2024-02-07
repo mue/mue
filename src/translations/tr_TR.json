@@ -67,6 +67,10 @@
         "pin": "Tuttur",
         "add": "Ekle",
         "no_todos": "Yapılacak bir şey yok"
+      },
+      "apps": {
+        "title": "Apps",
+        "no_apps": "No app links found"
       }
     }
   },
@@ -222,6 +226,12 @@
               "random_colour": "Özel renk",
               "random_gradient": "Özel gradyan"
             },
+            "unsplash": {
+              "title": "Unsplash Collection(s)",
+              "subtitle": "Select the collection(s) you want to use for your background",
+              "id": "Collection ID(s)",
+              "id_subtitle": "Enter a comma separated list of Unsplash IDs"
+            },
             "source": {
               "title": "Kaynak",
               "subtitle": "Arka plan resimlerinin nereden alınacağını seçin.",
@@ -361,7 +371,8 @@
               "refresh_options": {
                 "none": "Hiçbiri",
                 "page": "Sayfa"
-              }
+              },
+              "apps_subtitle": "Create a shortcut of your other commonly used websites."
             },
             "font": {
               "title": "Yazı tipi",

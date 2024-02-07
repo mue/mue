@@ -67,6 +67,10 @@
         "pin": "Fixar",
         "add": "Adicionar",
         "no_todos": "Sem afazeres"
+      },
+      "apps": {
+        "title": "Apps",
+        "no_apps": "No app links found"
       }
     }
   },
@@ -222,6 +226,12 @@
               "random_colour": "cor aleatória",
               "random_gradient": "Gradiente aleatório"
             },
+            "unsplash": {
+              "title": "Unsplash Collection(s)",
+              "subtitle": "Select the collection(s) you want to use for your background",
+              "id": "Collection ID(s)",
+              "id_subtitle": "Enter a comma separated list of Unsplash IDs"
+            },
             "source": {
               "title": "Fonte",
               "subtitle": "Selecione de onde obter as imagens de plano de fundo",
@@ -361,7 +371,8 @@
               "refresh_options": {
                 "none": "Nenhum",
                 "page": "Página"
-              }
+              },
+              "apps_subtitle": "Create a shortcut of your other commonly used websites."
             },
             "font": {
               "title": "Fonte",

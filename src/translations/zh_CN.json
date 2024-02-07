@@ -67,6 +67,10 @@
         "pin": "Pin",
         "add": "Add",
         "no_todos": "No Todos"
+      },
+      "apps": {
+        "title": "Apps",
+        "no_apps": "No app links found"
       }
     }
   },
@@ -222,6 +226,12 @@
               "random_colour": "随机纯色背景",
               "random_gradient": "随机渐变色背景"
             },
+            "unsplash": {
+              "title": "Unsplash Collection(s)",
+              "subtitle": "Select the collection(s) you want to use for your background",
+              "id": "Collection ID(s)",
+              "id_subtitle": "Enter a comma separated list of Unsplash IDs"
+            },
             "source": {
               "title": "来源",
               "subtitle": "Select where to get background images from",
@@ -361,7 +371,8 @@
               "refresh_options": {
                 "none": "不显示",
                 "page": "页面"
-              }
+              },
+              "apps_subtitle": "Create a shortcut of your other commonly used websites."
             },
             "font": {
               "title": "字体",

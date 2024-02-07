@@ -226,6 +226,12 @@
               "random_colour": "Random colour",
               "random_gradient": "Random gradient"
             },
+            "unsplash": {
+              "title": "Unsplash Collection(s)",
+              "subtitle": "Select the collection(s) you want to use for your background",
+              "id": "Collection ID(s)",
+              "id_subtitle": "Enter a comma separated list of Unsplash IDs"
+            },
             "source": {
               "title": "Source",
               "subtitle": "Select where to get background images from",
