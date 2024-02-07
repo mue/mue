@@ -8,6 +8,7 @@ import SettingsItem from '../SettingsItem';
 import Header from '../Header';
 
 import EventBus from 'modules/helpers/eventbus';
+import PreferencesWrapper from '../PreferencesWrapper';
 
 export default class Message extends PureComponent {
   constructor() {
@@ -70,64 +71,66 @@ export default class Message extends PureComponent {
           zoomSetting="zoomMessage"
           switch={true}
         />
-        <SettingsItem title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} final={true}>
-          <button onClick={() => this.modifyMessage('add')}>
-            {variables.getMessage(`${MESSAGE_SECTION}.add`)} <MdAdd />
-          </button>
-        </SettingsItem>
-        <div className="messagesContainer">
-          {this.state.messages.map((_url, index) => (
-            <div className="messageMap" key={index}>
-              <div className="flexGrow">
-                <div className="icon">
-                  <MdOutlineTextsms />
+        <PreferencesWrapper setting="message" switch={true} zoomSetting="zoomMessage">
+          <SettingsItem title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} final={true}>
+            <button onClick={() => this.modifyMessage('add')}>
+              {variables.getMessage(`${MESSAGE_SECTION}.add`)} <MdAdd />
+            </button>
+          </SettingsItem>
+          <div className="messagesContainer">
+            {this.state.messages.map((_url, index) => (
+              <div className="messageMap" key={index}>
+                <div className="flexGrow">
+                  <div className="icon">
+                    <MdOutlineTextsms />
+                  </div>
+                  <div className="messageText">
+                    <span className="subtitle">
+                      {variables.getMessage(`${MESSAGE_SECTION}.title`)}
+                    </span>
+                    <TextareaAutosize
+                      value={this.state.messages[index]}
+                      placeholder={variables.getMessage(
+                        'modals.main.settings.sections.message.content',
+                      )}
+                      onChange={(e) => this.message(e, true, index)}
+                      varient="outlined"
+                      style={{ padding: '0' }}
+                    />
+                  </div>
                 </div>
-                <div className="messageText">
-                  <span className="subtitle">
-                    {variables.getMessage(`${MESSAGE_SECTION}.title`)}
-                  </span>
-                  <TextareaAutosize
-                    value={this.state.messages[index]}
-                    placeholder={variables.getMessage(
-                      'modals.main.settings.sections.message.content',
-                    )}
-                    onChange={(e) => this.message(e, true, index)}
-                    varient="outlined"
-                    style={{ padding: '0' }}
-                  />
+                <div>
+                  <div className="messageAction">
+                    <button
+                      className="deleteButton"
+                      onClick={() => this.modifyMessage('remove', index)}
+                    >
+                      {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                      <MdCancel />
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div>
-                <div className="messageAction">
-                  <button
-                    className="deleteButton"
-                    onClick={() => this.modifyMessage('remove', index)}
-                  >
-                    {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-                    <MdCancel />
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        {this.state.messages.length === 0 && (
-          <div className="photosEmpty">
-            <div className="emptyNewMessage">
-              <MdOutlineTextsms />
-              <span className="title">
-                {variables.getMessage(`${MESSAGE_SECTION}.no_messages`)}
-              </span>
-              <span className="subtitle">
-                {variables.getMessage(`${MESSAGE_SECTION}.add_some`)}
-              </span>
-              <button onClick={() => this.modifyMessage('add')}>
-                {variables.getMessage(`${MESSAGE_SECTION}.add`)}
-                <MdAdd />
-              </button>
-            </div>
+            ))}
           </div>
-        )}
+          {this.state.messages.length === 0 && (
+            <div className="photosEmpty">
+              <div className="emptyNewMessage">
+                <MdOutlineTextsms />
+                <span className="title">
+                  {variables.getMessage(`${MESSAGE_SECTION}.no_messages`)}
+                </span>
+                <span className="subtitle">
+                  {variables.getMessage(`${MESSAGE_SECTION}.add_some`)}
+                </span>
+                <button onClick={() => this.modifyMessage('add')}>
+                  {variables.getMessage(`${MESSAGE_SECTION}.add`)}
+                  <MdAdd />
+                </button>
+              </div>
+            </div>
+          )}
+        </PreferencesWrapper>
       </>
     );
   }

@@ -205,13 +205,15 @@ export default class BackgroundSettings extends PureComponent {
         </SettingsItem>
         {this.state.backgroundAPI === 'unsplash' && (
           <SettingsItem
-            title="Unsplash Collection(s)"
-            subtitle="Select the collection(s) you want to use for your background"
+            title={variables.getMessage('modals.main.settings.sections.background.unsplash.title')}
+            subtitle={variables.getMessage('modals.main.settings.sections.background.subtitle')}
             final={true}
           >
             <Text
-              title="Collection ID(s)"
-              subtitle="Enter the collection ID(s) you want to use for your background"
+              title={variables.getMessage('modals.main.settings.sections.background.id')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.background.id_subtitle',
+              )}
               placeholder="e.g. 123456, 654321"
               name="unsplashCollections"
               category="background"

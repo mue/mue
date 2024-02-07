@@ -129,7 +129,12 @@ body {
   }
 }
 
-.inactiveSetting {
+.preferences {
+  transition: 0.4s ease-in-out;
+}
+
+.preferencesInactive {
   opacity: 0.5;
   pointer-events: none;
+  transition: 0.4s ease-in-out;
 }

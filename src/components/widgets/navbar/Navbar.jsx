@@ -1,10 +1,11 @@
 import variables from 'modules/variables';
 import { PureComponent, createRef } from 'react';
 
-import { MdRefresh, MdSettings, MdOutlineApps } from 'react-icons/md';
+import { MdRefresh, MdSettings } from 'react-icons/md';
 
 import Notes from './Notes';
 import Todo from './Todo';
+import Apps from './Apps';
 import Maximise from '../background/Maximise';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
@@ -109,6 +110,9 @@ class Navbar extends PureComponent {
           {localStorage.getItem('todoEnabled') === 'true' && (
             <Todo fontSize={this.state.zoomFontSize} />
           )}
+          {localStorage.getItem('appsEnabled') === 'true' && (
+            <Apps fontSize={this.state.zoomFontSize} />
+          )}
 
           {this.refreshEnabled !== 'false' && (
             <Tooltip
@@ -123,20 +127,6 @@ class Navbar extends PureComponent {
                 <MdRefresh className="refreshicon topicons" />
               </button>
             </Tooltip>
-          )}
-
-          {localStorage.getItem('appsEnabled') === 'true' && (
-            <>
-              <Tooltip title={variables.getMessage('widgets.navbar.apps.title')}>
-                <button
-                  style={{ fontSize: this.state.zoomFontSize }}
-                  onClick={() => this.props.openModal('appsModal')}
-                  id="appsShortcutBtn"
-                >
-                  <MdOutlineApps className="topicons" />
-                </button>
-              </Tooltip>
-            </>
           )}
 
           <Tooltip

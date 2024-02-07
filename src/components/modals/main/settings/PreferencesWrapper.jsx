@@ -16,7 +16,7 @@ const PreferencesWrapper = ({ children, ...props }) => {
   });
 
   return (
-    <div className={shown ? '' : 'inactiveSetting'}>
+    <div className={shown ? 'preferences' : 'preferencesInactive'}>
       {props.zoomSetting && (
         <SettingsItem
           title={variables.getMessage(

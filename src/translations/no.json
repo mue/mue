@@ -268,7 +268,7 @@
             "additional": "Additional options for search widget display and functionality",
             "search_engine": "Søkemotor",
             "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "custom": "Custom search URL",
+            "custom": "Custom Search",
             "autocomplete": "Autocomplete",
             "autocomplete_provider": "Autocomplete Provider",
             "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
@@ -324,7 +324,7 @@
               "text_only": "Text Only",
               "metro": "Metro"
             },
-            "styling": "Quick Links Styling",
+            "styling": "Styling",
             "styling_description": "Customise Quick Links appearance"
           },
           "message": {
@@ -354,7 +354,7 @@
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
-              "refresh": "Refresh button",
+              "refresh": "Refresh Button",
               "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
               "hover": "Only display on hover",
               "additional": "Modify navbar style and which buttons you want to display",
@@ -396,8 +396,8 @@
                 "old": "Old",
                 "none": "None"
               },
-              "widget_zoom": "Widget zoom",
-              "toast_duration": "Toast duration",
+              "widget_zoom": "Widget Zoom",
+              "toast_duration": "Toast Duration",
               "milliseconds": "milliseconds"
             }
           },

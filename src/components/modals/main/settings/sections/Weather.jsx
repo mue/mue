@@ -11,7 +11,7 @@ import { TextField } from '@mui/material';
 import SettingsItem from '../SettingsItem';
 import PreferencesWrapper from '../PreferencesWrapper';
 
-export default class TimeSettings extends PureComponent {
+export default class WeatherSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

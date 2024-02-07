@@ -17,7 +17,7 @@ const convertTemperature = (temp, format) => {
   return Math.round(temp);
 };
 
-export default class Weather extends PureComponent {
+export default class WeatherSettings extends PureComponent {
   constructor() {
     super();
     this.state = {

@@ -174,8 +174,8 @@
                 "title": "Widget text shadow"
               },
               "title": "Accessibility",
-              "toast_duration": "Toast duration",
-              "widget_zoom": "Widget zoom"
+              "toast_duration": "Toast Duration",
+              "widget_zoom": "Widget Zoom"
             },
             "font": {
               "custom": "Custom font",
@@ -205,7 +205,7 @@
               "apps_subtitle": "Maak een snelkoppeling van je andere vaak gebruikte websites.",
               "hover": "Only display on hover",
               "notes": "Notes",
-              "refresh": "Refresh button",
+              "refresh": "Refresh Button",
               "refresh_options": {
                 "none": "None",
                 "page": "Page"

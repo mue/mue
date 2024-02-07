@@ -266,7 +266,7 @@
           "search": {
             "title": "Barre de Recherche",
             "additional": "Additional options for search widget display and functionality",
-            "search_engine": "Moteur de recherche",
+            "search_engine": "Moteur de Recherche",
             "search_engine_subtitle": "Choose search engine to use in the search bar",
             "custom": "URL de recherche personnalisée",
             "autocomplete": "Autocomplete",
@@ -324,7 +324,7 @@
               "text_only": "Text Only",
               "metro": "Metro"
             },
-            "styling": "Quick Links Styling",
+            "styling": "Styling",
             "styling_description": "Customise Quick Links appearance"
           },
           "message": {
@@ -354,7 +354,7 @@
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
-              "refresh": "Refresh button",
+              "refresh": "Refresh Button",
               "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
               "hover": "Only display on hover",
               "additional": "Modify navbar style and which buttons you want to display",

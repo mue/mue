@@ -12,7 +12,7 @@ import Dropdown from '../Dropdown';
 
 import SettingsItem from '../SettingsItem';
 import Header from '../Header';
-import { getTitleFromUrl, isValidUrl } from './utils/utils';
+import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
 import QuickLink from './quicklinks/QuickLink';
 
 function Navbar() {
@@ -32,7 +32,7 @@ function Navbar() {
     const data = JSON.parse(localStorage.getItem('applinks'));
 
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      url = 'http://' + url;
+      url = 'https://' + url;
     }
 
     if (url.length <= 0 || isValidUrl(url) === false) {

@@ -266,7 +266,7 @@
           "search": {
             "title": "Búsqueda",
             "additional": "Additional options for search widget display and functionality",
-            "search_engine": "Motor de búsqueda",
+            "search_engine": "Motor de Búsqueda",
             "search_engine_subtitle": "Choose search engine to use in the search bar",
             "custom": "URL de búsqueda personalizada",
             "autocomplete": "Autocompletado",
@@ -324,7 +324,7 @@
               "text_only": "Text Only",
               "metro": "Metro"
             },
-            "styling": "Quick Links Styling",
+            "styling": "Styling",
             "styling_description": "Customise Quick Links appearance"
           },
           "message": {

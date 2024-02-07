@@ -20,6 +20,8 @@ $appsWidth: 21rem;
   }
 
   .noAppsContainer {
+    grid-column: 1/3;
+
     h3 {
       margin: 0;
       display: flex;

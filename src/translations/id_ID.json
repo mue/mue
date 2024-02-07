@@ -268,7 +268,7 @@
             "additional": "Additional options for search widget display and functionality",
             "search_engine": "Mesin pencari",
             "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "custom": "URL kustom",
+            "custom": "URL Kustom",
             "autocomplete": "Autocomplete",
             "autocomplete_provider": "Provider Autocomplete",
             "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
@@ -324,7 +324,7 @@
               "text_only": "Text Only",
               "metro": "Metro"
             },
-            "styling": "Quick Links Styling",
+            "styling": "Styling",
             "styling_description": "Customise Quick Links appearance"
           },
           "message": {
@@ -396,7 +396,7 @@
                 "old": "Old",
                 "none": "None"
               },
-              "widget_zoom": "Widget zoom",
+              "widget_zoom": "Widget Zoom",
               "toast_duration": "Durasi toast",
               "milliseconds": "milliseconds"
             }

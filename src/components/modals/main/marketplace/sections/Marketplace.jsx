@@ -114,7 +114,7 @@ class Marketplace extends PureComponent {
       ).json();
       this.setState({
         items: collection.data.items,
-        collectionTitle: collection.data.name,
+        collectionTitle: collection.data.display_name,
         collectionDescription: collection.data.description,
         collectionImg: collection.data.img,
         collection: true,
@@ -235,14 +235,6 @@ class Marketplace extends PureComponent {
     });
   }
 
-  reloadItems() {
-    this.setState({
-      done: false,
-    });
-
-    this.getItems();
-  }
-
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return;
@@ -344,7 +336,7 @@ class Marketplace extends PureComponent {
             <div
               className="collectionPage"
               style={{
-                backgroundImage: `linear-gradient(to bottom, transparent, black), url('${this.state.collectionImg}')`,
+                backgroundImage: `linear-gradient(to bottom, transparent, black), url('${variables.constants.DDG_IMAGE_PROXY + this.state.collectionImg}')`,
               }}
             >
               <div className="nice-tag">
@@ -386,9 +378,6 @@ class Marketplace extends PureComponent {
                     />
                     <MdSearch />
                   </form>
-                  {/*<span className="link marketplaceRefresh" onClick={() => this.reloadItems()}>
-                    <MdRefresh /> {variables.getMessage('widgets.navbar.tooltips.refresh')}
-              </span>*/}
                 </div>
               )}
               <Dropdown
@@ -412,7 +401,7 @@ class Marketplace extends PureComponent {
                     item.news
                       ? { backgroundColor: item.background_colour }
                       : {
-                          backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
+                          backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${variables.constants.DDG_IMAGE_PROXY + item.img}')`,
                         }
                   }
                 >
