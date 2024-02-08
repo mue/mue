@@ -1,4 +1,5 @@
-import { createRoot } from 'react-dom/client';
+import { render } from 'react-dom';
+
 import * as Sentry from '@sentry/react';
 
 import App from './App';
@@ -25,5 +26,9 @@ Sentry.init({
 });
 
 const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(<App />);
+render(<App />, container);
+
+// TODO: Fix marketplace not loading on react 18 before upgrading
+// import { createRoot } from 'react-dom/client';
+// const root = createRoot(container);
+// root.render(<App />);

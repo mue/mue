@@ -289,7 +289,9 @@ class Marketplace extends PureComponent {
       );
     }
 
-    if (this.state.items?.length === 0) {
+    // TODO: Fix marketplace not loading on react 18, this is a temporary fix but ungraceful
+    // this.getItems();
+    if (!this.state.items || this.state.items?.length === 0) {
       return (
         <>
           {errorMessage(
