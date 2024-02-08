@@ -13,6 +13,8 @@ import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 import SettingsItem from '../SettingsItem';
+import Section from '../Section';
+import PreferencesWrapper from '../PreferencesWrapper';
 
 import { toast } from 'react-toastify';
 import EventBus from 'modules/helpers/eventbus';
@@ -93,6 +95,69 @@ export default class QuoteSettings extends PureComponent {
 
   render() {
     const QUOTE_SECTION = 'modals.main.settings.sections.quote';
+
+    const ButtonOptions = () => {
+      return (
+        <SettingsItem
+          title={variables.getMessage(`${QUOTE_SECTION}.buttons.title`)}
+          subtitle={variables.getMessage('modals.main.settings.sections.quote.buttons.subtitle')}
+        >
+          <Checkbox
+            name="copyButton"
+            text={variables.getMessage(`${QUOTE_SECTION}.buttons.copy`)}
+            category="quote"
+          />
+          <Checkbox
+            name="quoteShareButton"
+            text={variables.getMessage('widgets.quote.share')}
+            category="quote"
+          />
+          <Checkbox
+            name="favouriteQuoteEnabled"
+            text={variables.getMessage(`${QUOTE_SECTION}.buttons.favourite`)}
+            category="quote"
+          />
+        </SettingsItem>
+      );
+    };
+
+    const SourceDropdown = () => {
+      return (
+        <Dropdown
+          name="quoteType"
+          label={variables.getMessage('modals.main.settings.sections.background.type.title')}
+          onChange={(value) => this.setState({ quoteType: value })}
+          category="quote"
+        >
+          {this.marketplaceType()}
+          <option value="api">
+            {variables.getMessage('modals.main.settings.sections.background.type.api')}
+          </option>
+          <option value="custom">{variables.getMessage(`${QUOTE_SECTION}.custom`)}</option>
+        </Dropdown>
+      );
+    };
+
+    const AdditionalOptions = () => {
+      return (
+        <SettingsItem
+          title={variables.getMessage('modals.main.settings.additional_settings')}
+          subtitle={variables.getMessage(`${QUOTE_SECTION}.additional`)}
+          final={true}
+        >
+          <Checkbox
+            name="authorLink"
+            text={variables.getMessage(`${QUOTE_SECTION}.author_link`)}
+            element=".other"
+          />
+          <Checkbox
+            name="authorImg"
+            text={variables.getMessage(`${QUOTE_SECTION}.author_img`)}
+            element=".other"
+          />
+        </SettingsItem>
+      );
+    };
 
     let customSettings;
     if (this.state.quoteType === 'custom' && this.state.sourceSection === true) {
@@ -189,104 +254,28 @@ export default class QuoteSettings extends PureComponent {
             switch={true}
           />
         )}
-        <div className="moreSettings" onClick={() => this.setState({ sourceSection: true })}>
-          <div className="left">
-            <MdSource />
-            <div className="content">
-              <span className="title">
-                {variables.getMessage('modals.main.settings.sections.background.source.title')}
-              </span>
-              <span className="subtitle">
-                {variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
-              </span>
-            </div>
-          </div>
-          <div className="action">
-            <Dropdown
-              name="quoteType"
-              label={variables.getMessage('modals.main.settings.sections.background.type.title')}
-              onChange={(value) => this.setState({ quoteType: value })}
-              category="quote"
-            >
-              {this.marketplaceType()}
-              <option value="api">
-                {variables.getMessage('modals.main.settings.sections.background.type.api')}
-              </option>
-              <option value="custom">{variables.getMessage(`${QUOTE_SECTION}.custom`)}</option>
-            </Dropdown>
-          </div>
-        </div>
+        {this.state.sourceSection && (
+          <SettingsItem
+            title={variables.getMessage('modals.main.settings.sections.background.source.title')}
+            subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
+            final={true}
+          >
+            <SourceDropdown />
+          </SettingsItem>
+        )}
         {!this.state.sourceSection && (
-          <>
-            <SettingsItem
-              title={variables.getMessage(`${QUOTE_SECTION}.buttons.title`)}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.quote.buttons.subtitle',
-              )}
+          <PreferencesWrapper setting="quote" zoomSetting="zoomQuote" switch={true}>
+            <Section
+              icon={<MdSource />}
+              title={variables.getMessage('modals.main.settings.sections.background.source.title')}
+              subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
+              onClick={() => this.setState({ sourceSection: true })}
             >
-              <Checkbox
-                name="copyButton"
-                text={variables.getMessage(`${QUOTE_SECTION}.buttons.copy`)}
-                category="quote"
-              />
-              <Checkbox
-                name="quoteShareButton"
-                text={variables.getMessage('widgets.quote.share')}
-                category="quote"
-              />
-              <Checkbox
-                name="favouriteQuoteEnabled"
-                text={variables.getMessage(`${QUOTE_SECTION}.buttons.favourite`)}
-                category="quote"
-              />
-            </SettingsItem>
-
-            <SettingsItem
-              title={variables.getMessage('modals.main.settings.additional_settings')}
-              subtitle={variables.getMessage(`${QUOTE_SECTION}.additional`)}
-              final={true}
-            >
-              {/*<Dropdown
-                label={variables.getMessage(
-                  'modals.main.settings.sections.background.interval.title',
-                )}
-                name="quotechange"
-                name2="quoteStartTime"
-                value2={Date.now()}
-              >
-                <option value="refresh">{variables.getMessage('tabname')}</option>
-                <option value={10000}>10 seconds</option>
-                <option value={60000}>
-                  {variables.getMessage('modals.main.settings.sections.background.interval.minute')}
-                </option>
-                <option value={1800000}>
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.interval.half_hour',
-                  )}
-                </option>
-                <option value={3600000}>
-                  {variables.getMessage('modals.main.settings.sections.background.interval.hour')}
-                </option>
-                <option value={86400000}>
-                  {variables.getMessage('modals.main.settings.sections.background.interval.day')}
-                </option>
-                <option value={604800000}>{variables.getMessage('widgets.date.week')}</option>
-                <option value={2628000000}>
-                  {variables.getMessage('modals.main.settings.sections.background.interval.month')}
-                </option>
-                  </Dropdown>*/}
-              <Checkbox
-                name="authorLink"
-                text={variables.getMessage(`${QUOTE_SECTION}.author_link`)}
-                element=".other"
-              />
-              <Checkbox
-                name="authorImg"
-                text={variables.getMessage(`${QUOTE_SECTION}.author_img`)}
-                element=".other"
-              />
-            </SettingsItem>
-          </>
+              <SourceDropdown />
+            </Section>
+            <ButtonOptions />
+            <AdditionalOptions />
+          </PreferencesWrapper>
         )}
         {customSettings}
       </>

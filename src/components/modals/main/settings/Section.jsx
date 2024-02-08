@@ -1,6 +1,7 @@
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import React from 'react';
 
-export default function Section({ title, subtitle, icon, onClick }) {
+export default function Section({ title, subtitle, icon, onClick, children }) {
   return (
     <div className="moreSettings" onClick={onClick}>
       <div className="left">
@@ -11,7 +12,7 @@ export default function Section({ title, subtitle, icon, onClick }) {
         </div>
       </div>
       <div className="action">
-        <MdOutlineKeyboardArrowRight />
+      {React.Children.count(children) === 0 ? <MdOutlineKeyboardArrowRight /> : children}
       </div>
     </div>
   );

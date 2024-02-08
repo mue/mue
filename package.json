@@ -19,7 +19,7 @@
     "@fontsource/montserrat": "5.0.16",
     "@muetab/react-color-gradient-picker": "0.1.2",
     "@muetab/react-sortable-hoc": "^2.0.1",
-    "@mui/material": "5.15.7",
+    "@mui/material": "5.15.9",
     "@sentry/react": "^7.100.1",
     "embla-carousel-autoplay": "8.0.0-rc22",
     "embla-carousel-react": "8.0.0-rc22",
@@ -47,7 +47,7 @@
     "stylelint": "^16.2.1",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-scss": "^6.1.0",
-    "vite": "5.0.12",
+    "vite": "5.1.0",
     "vite-plugin-progress": "^0.0.7"
   },
   "scripts": {
