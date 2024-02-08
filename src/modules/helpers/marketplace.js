@@ -12,7 +12,7 @@ function sleep(ms) {
 // based on https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
 export function urlParser(input) {
   const urlPattern =
-    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&//=]*)/;
+    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,63}\b([-a-zA-Z0-9()!@:%_+.~#?&//=]*)/;
   return input.replace(urlPattern, '<br/><a class="link" href="$&" target="_blank">$&</a>');
 }
 
