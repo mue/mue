@@ -8,8 +8,10 @@ import Radio from '../Radio';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
 import { TextField } from '@mui/material';
-import SettingsItem from '../SettingsItem';
+
 import PreferencesWrapper from '../PreferencesWrapper';
+
+import { Row, Content, Action } from '../SettingsItem';
 
 export default class WeatherSettings extends PureComponent {
   constructor() {
@@ -44,19 +46,26 @@ export default class WeatherSettings extends PureComponent {
 
     const WidgetType = () => {
       return (
-        <SettingsItem title={variables.getMessage(`${WEATHER_SECTION}.widget_type`)}>
-          <Dropdown
-            label={variables.getMessage('modals.main.settings.sections.time.type')}
-            name="weatherType"
-            category="weather"
-            onChange={() => this.forceUpdate()}
-          >
-            <option value="1">{variables.getMessage(`${WEATHER_SECTION}.options.basic`)}</option>
-            <option value="2">{variables.getMessage(`${WEATHER_SECTION}.options.standard`)}</option>
-            <option value="3">{variables.getMessage(`${WEATHER_SECTION}.options.expanded`)}</option>
-            <option value="4">{variables.getMessage(`${WEATHER_SECTION}.options.custom`)}</option>
-          </Dropdown>
-        </SettingsItem>
+        <Row>
+          <Content title={variables.getMessage(`${WEATHER_SECTION}.widget_type`)} />
+          <Action>
+            <Dropdown
+              label={variables.getMessage('modals.main.settings.sections.time.type')}
+              name="weatherType"
+              category="weather"
+              onChange={() => this.forceUpdate()}
+            >
+              <option value="1">{variables.getMessage(`${WEATHER_SECTION}.options.basic`)}</option>
+              <option value="2">
+                {variables.getMessage(`${WEATHER_SECTION}.options.standard`)}
+              </option>
+              <option value="3">
+                {variables.getMessage(`${WEATHER_SECTION}.options.expanded`)}
+              </option>
+              <option value="4">{variables.getMessage(`${WEATHER_SECTION}.options.custom`)}</option>
+            </Dropdown>
+          </Action>
+        </Row>
       );
     };
 
@@ -89,48 +98,51 @@ export default class WeatherSettings extends PureComponent {
         );
       };
       return (
-        <SettingsItem title={variables.getMessage(`${WEATHER_SECTION}.location`)}>
-          <TextField
-            label={variables.getMessage(`${WEATHER_SECTION}.location`)}
-            value={this.state.location}
-            onChange={(e) => this.changeLocation(e)}
-            placeholder="London"
-            varient="outlined"
-            InputLabelProps={{ shrink: true }}
-          />
-          <span className="link" onClick={getAuto}>
-            <MdAutoAwesome />
-            {variables.getMessage(`${WEATHER_SECTION}.auto`)}
-          </span>
-        </SettingsItem>
+        <Row>
+          <Content title={variables.getMessage(`${WEATHER_SECTION}.location`)} />
+          <Action>
+            <TextField
+              label={variables.getMessage(`${WEATHER_SECTION}.location`)}
+              value={this.state.location}
+              onChange={(e) => this.changeLocation(e)}
+              placeholder="London"
+              varient="outlined"
+              InputLabelProps={{ shrink: true }}
+            />
+            <span className="link" onClick={getAuto}>
+              <MdAutoAwesome />
+              {variables.getMessage(`${WEATHER_SECTION}.auto`)}
+            </span>
+          </Action>
+        </Row>
       );
     };
 
     const TemperatureFormat = () => {
       return (
-        <SettingsItem
-          title={variables.getMessage(`${WEATHER_SECTION}.temp_format.title`)}
-          final={weatherType !== '4'}
-        >
-          <Radio
-            name="tempformat"
-            options={[
-              {
-                name: variables.getMessage(`${WEATHER_SECTION}.temp_format.celsius`) + ' (°C)',
-                value: 'celsius',
-              },
-              {
-                name: variables.getMessage(`${WEATHER_SECTION}.temp_format.fahrenheit`) + ' (°F)',
-                value: 'fahrenheit',
-              },
-              {
-                name: variables.getMessage(`${WEATHER_SECTION}.temp_format.kelvin`) + ' (K)',
-                value: 'kelvin',
-              },
-            ]}
-            category="weather"
-          />
-        </SettingsItem>
+        <Row final={weatherType !== '4'}>
+          <Content title={variables.getMessage(`${WEATHER_SECTION}.temp_format.title`)} />
+          <Action>
+            <Radio
+              name="tempformat"
+              options={[
+                {
+                  name: variables.getMessage(`${WEATHER_SECTION}.temp_format.celsius`) + ' (°C)',
+                  value: 'celsius',
+                },
+                {
+                  name: variables.getMessage(`${WEATHER_SECTION}.temp_format.fahrenheit`) + ' (°F)',
+                  value: 'fahrenheit',
+                },
+                {
+                  name: variables.getMessage(`${WEATHER_SECTION}.temp_format.kelvin`) + ' (K)',
+                  value: 'kelvin',
+                },
+              ]}
+              category="weather"
+            />
+          </Action>
+        </Row>
       );
     };
 
@@ -167,21 +179,21 @@ export default class WeatherSettings extends PureComponent {
       ];
 
       return (
-        <SettingsItem
-          title={variables.getMessage(`${WEATHER_SECTION}.custom_settings`)}
-          final={true}
-        >
-          {weatherOptions.map((item) => (
-            <Checkbox
-              key={item.name}
-              name={item.name}
-              text={variables.getMessage(item.textKey)}
-              category="weather"
-              onChange={item.onChange}
-              disabled={item.disabled}
-            />
-          ))}
-        </SettingsItem>
+        <Row final={true}>
+          <Content title={variables.getMessage(`${WEATHER_SECTION}.custom_settings`)} />
+          <Action>
+            {weatherOptions.map((item) => (
+              <Checkbox
+                key={item.name}
+                name={item.name}
+                text={variables.getMessage(item.textKey)}
+                category="weather"
+                onChange={item.onChange}
+                disabled={item.disabled}
+              />
+            ))}
+          </Action>
+        </Row>
       );
     };
 

@@ -12,7 +12,8 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
-import SettingsItem from '../SettingsItem';
+
+import { Row, Content, Action } from '../SettingsItem';
 import Section from '../Section';
 import PreferencesWrapper from '../PreferencesWrapper';
 
@@ -98,26 +99,29 @@ export default class QuoteSettings extends PureComponent {
 
     const ButtonOptions = () => {
       return (
-        <SettingsItem
-          title={variables.getMessage(`${QUOTE_SECTION}.buttons.title`)}
-          subtitle={variables.getMessage('modals.main.settings.sections.quote.buttons.subtitle')}
-        >
-          <Checkbox
-            name="copyButton"
-            text={variables.getMessage(`${QUOTE_SECTION}.buttons.copy`)}
-            category="quote"
+        <Row>
+          <Content
+            title={variables.getMessage(`${QUOTE_SECTION}.buttons.title`)}
+            subtitle={variables.getMessage('modals.main.settings.sections.quote.buttons.subtitle')}
           />
-          <Checkbox
-            name="quoteShareButton"
-            text={variables.getMessage('widgets.quote.share')}
-            category="quote"
-          />
-          <Checkbox
-            name="favouriteQuoteEnabled"
-            text={variables.getMessage(`${QUOTE_SECTION}.buttons.favourite`)}
-            category="quote"
-          />
-        </SettingsItem>
+          <Action>
+            <Checkbox
+              name="copyButton"
+              text={variables.getMessage(`${QUOTE_SECTION}.buttons.copy`)}
+              category="quote"
+            />
+            <Checkbox
+              name="quoteShareButton"
+              text={variables.getMessage('widgets.quote.share')}
+              category="quote"
+            />
+            <Checkbox
+              name="favouriteQuoteEnabled"
+              text={variables.getMessage(`${QUOTE_SECTION}.buttons.favourite`)}
+              category="quote"
+            />
+          </Action>
+        </Row>
       );
     };
 
@@ -140,22 +144,24 @@ export default class QuoteSettings extends PureComponent {
 
     const AdditionalOptions = () => {
       return (
-        <SettingsItem
-          title={variables.getMessage('modals.main.settings.additional_settings')}
-          subtitle={variables.getMessage(`${QUOTE_SECTION}.additional`)}
-          final={true}
-        >
-          <Checkbox
-            name="authorLink"
-            text={variables.getMessage(`${QUOTE_SECTION}.author_link`)}
-            element=".other"
+        <Row final={true}>
+          <Content
+            title={variables.getMessage('modals.main.settings.additional_settings')}
+            subtitle={variables.getMessage(`${QUOTE_SECTION}.additional`)}
           />
-          <Checkbox
-            name="authorImg"
-            text={variables.getMessage(`${QUOTE_SECTION}.author_img`)}
-            element=".other"
-          />
-        </SettingsItem>
+          <Action>
+            <Checkbox
+              name="authorLink"
+              text={variables.getMessage(`${QUOTE_SECTION}.author_link`)}
+              element=".other"
+            />
+            <Checkbox
+              name="authorImg"
+              text={variables.getMessage(`${QUOTE_SECTION}.author_img`)}
+              element=".other"
+            />
+          </Action>
+        </Row>
       );
     };
 
@@ -163,15 +169,17 @@ export default class QuoteSettings extends PureComponent {
     if (this.state.quoteType === 'custom' && this.state.sourceSection === true) {
       customSettings = (
         <>
-          <SettingsItem
-            title={variables.getMessage(`${QUOTE_SECTION}.custom`)}
-            subtitle={variables.getMessage(`${QUOTE_SECTION}.custom_subtitle`)}
-            final={true}
-          >
-            <button onClick={() => this.modifyCustomQuote('add')}>
-              {variables.getMessage(`${QUOTE_SECTION}.add`)} <MdAdd />
-            </button>
-          </SettingsItem>
+          <Row final={true}>
+            <Content
+              title={variables.getMessage(`${QUOTE_SECTION}.custom`)}
+              subtitle={variables.getMessage(`${QUOTE_SECTION}.custom_subtitle`)}
+            />
+            <Action>
+              <button onClick={() => this.modifyCustomQuote('add')}>
+                {variables.getMessage(`${QUOTE_SECTION}.add`)} <MdAdd />
+              </button>
+            </Action>
+          </Row>
 
           {this.state.customQuote.length !== 0 ? (
             <div className="messagesContainer">
@@ -255,13 +263,15 @@ export default class QuoteSettings extends PureComponent {
           />
         )}
         {this.state.sourceSection && (
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.background.source.title')}
-            subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
-            final={true}
-          >
-            <SourceDropdown />
-          </SettingsItem>
+          <Row final={true}>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.background.source.title')}
+              subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
+            />
+            <Action>
+              <SourceDropdown />
+            </Action>
+          </Row>
         )}
         {!this.state.sourceSection && (
           <PreferencesWrapper setting="quote" zoomSetting="zoomQuote" switch={true}>

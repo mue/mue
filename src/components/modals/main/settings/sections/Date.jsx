@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
-import SettingsItem from '../SettingsItem';
+
+import { Row, Content, Action } from '../SettingsItem';
 import PreferencesWrapper from '../PreferencesWrapper';
 
 export default function Date() {
@@ -77,47 +78,52 @@ export default function Date() {
         switch={true}
       />
       <PreferencesWrapper setting="date" switch={true} zoomSetting="zoomDate">
-        <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.time.type')}
-          subtitle={variables.getMessage('modals.main.settings.sections.date.type.subtitle')}
-        >
-          <Dropdown
-            name="dateType"
-            onChange={(value) => {
-              setDateType(value);
-              localStorage.setItem('dateType', value);
-            }}
-            category="date"
-          >
-            <option value="long">
-              {variables.getMessage('modals.main.settings.sections.date.type.long')}
-            </option>
-            <option value="short">
-              {variables.getMessage('modals.main.settings.sections.date.type.short')}
-            </option>
-          </Dropdown>
-        </SettingsItem>
-        <SettingsItem
-          title={
-            dateType === 'long'
-              ? variables.getMessage('modals.main.settings.sections.date.type.long')
-              : variables.getMessage('modals.main.settings.sections.date.type.short')
-          }
-          subtitle={variables.getMessage('modals.main.settings.sections.date.type_settings')}
-          final={true}
-        >
-          {dateType === 'long' ? longSettings : shortSettings}
-          <Checkbox
-            name="weeknumber"
-            text={variables.getMessage('modals.main.settings.sections.date.week_number')}
-            category="date"
+        <Row>
+          <Content
+            title={variables.getMessage('modals.main.settings.sections.time.type')}
+            subtitle={variables.getMessage('modals.main.settings.sections.date.type.subtitle')}
           />
-          <Checkbox
-            name="datezero"
-            text={variables.getMessage('modals.main.settings.sections.time.digital.zero')}
-            category="date"
+          <Action>
+            <Dropdown
+              name="dateType"
+              onChange={(value) => {
+                setDateType(value);
+                localStorage.setItem('dateType', value);
+              }}
+              category="date"
+            >
+              <option value="long">
+                {variables.getMessage('modals.main.settings.sections.date.type.long')}
+              </option>
+              <option value="short">
+                {variables.getMessage('modals.main.settings.sections.date.type.short')}
+              </option>
+            </Dropdown>
+          </Action>
+        </Row>
+        <Row final={true}>
+          <Content
+            title={
+              dateType === 'long'
+                ? variables.getMessage('modals.main.settings.sections.date.type.long')
+                : variables.getMessage('modals.main.settings.sections.date.type.short')
+            }
+            subtitle={variables.getMessage('modals.main.settings.sections.date.type_settings')}
           />
-        </SettingsItem>
+          <Action>
+            {dateType === 'long' ? longSettings : shortSettings}
+            <Checkbox
+              name="weeknumber"
+              text={variables.getMessage('modals.main.settings.sections.date.week_number')}
+              category="date"
+            />
+            <Checkbox
+              name="datezero"
+              text={variables.getMessage('modals.main.settings.sections.time.digital.zero')}
+              category="date"
+            />
+          </Action>
+        </Row>
       </PreferencesWrapper>
     </>
   );

@@ -17,7 +17,8 @@ import Text from '../Text';
 import Switch from '../Switch';
 import ResetModal from '../ResetModal';
 import Dropdown from '../Dropdown';
-import SettingsItem from '../SettingsItem';
+
+import { Row, Content, Action } from '../SettingsItem';
 import Section from '../Section';
 
 import time_zones from 'components/widgets/time/timezones.json';
@@ -92,67 +93,83 @@ export default function AdvancedSettings() {
             onClick={() => setData(true)}
             icon={<MdDataUsage />}
           />
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.advanced.offline_mode')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.advanced.offline_subtitle',
-            )}
-          >
-            <Switch name="offlineMode" element=".other" />
-          </SettingsItem>
+          <Row>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.advanced.offline_mode')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.advanced.offline_subtitle',
+              )}
+            />
+            <Action>
+              <Switch name="offlineMode" element=".other" />
+            </Action>
+          </Row>
 
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.advanced.timezone.title')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.advanced.timezone.subtitle',
-            )}
-          >
-            <Dropdown name="timezone" category="timezone" manual={true}>
-              <MenuItem value="auto">
-                {variables.getMessage('modals.main.settings.sections.advanced.timezone.automatic')}
-              </MenuItem>
-              {time_zones.map((timezone) => (
-                <MenuItem value={timezone} key={timezone}>
-                  {timezone}
+          <Row>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.advanced.timezone.title')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.advanced.timezone.subtitle',
+              )}
+            />
+            <Action>
+              <Dropdown name="timezone" category="timezone" manual={true}>
+                <MenuItem value="auto">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.advanced.timezone.automatic',
+                  )}
                 </MenuItem>
-              ))}
-            </Dropdown>
-          </SettingsItem>
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.advanced.tab_name')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.advanced.tab_name_subtitle',
-            )}
-          >
-            <Text name="tabName" default={variables.getMessage('tabname')} category="other" />
-          </SettingsItem>
+                {time_zones.map((timezone) => (
+                  <MenuItem value={timezone} key={timezone}>
+                    {timezone}
+                  </MenuItem>
+                ))}
+              </Dropdown>
+            </Action>
+          </Row>
+          <Row>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.advanced.tab_name')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.advanced.tab_name_subtitle',
+              )}
+            />
+            <Action>
+              <Text name="tabName" default={variables.getMessage('tabname')} category="other" />
+            </Action>
+          </Row>
           <FileUpload
             id="file-input"
             accept="application/json"
             type="settings"
             loadFunction={(e) => importSettings(e)}
           />
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.advanced.custom_css')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.advanced.custom_css_subtitle',
-            )}
-          >
-            <Text name="customcss" textarea={true} category="other" customcss={true} />
-          </SettingsItem>
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.experimental.title')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.advanced.experimental_warning',
-            )}
-            final={true}
-          >
-            <Switch
-              name="experimental"
-              text={variables.getMessage('modals.main.settings.enabled')}
-              element=".other"
+          <Row>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.advanced.custom_css')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.advanced.custom_css_subtitle',
+              )}
             />
-          </SettingsItem>
+            <Action>
+              <Text name="customcss" textarea={true} category="other" customcss={true} />
+            </Action>
+          </Row>
+          <Row final={true}>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.experimental.title')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.advanced.experimental_warning',
+              )}
+            />
+            <Action>
+              <Switch
+                name="experimental"
+                text={variables.getMessage('modals.main.settings.enabled')}
+                element=".other"
+              />
+            </Action>
+          </Row>
           <Modal
             closeTimeoutMS={100}
             onRequestClose={() => setResetModal(false)}

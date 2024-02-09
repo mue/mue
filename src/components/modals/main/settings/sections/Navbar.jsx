@@ -10,7 +10,7 @@ import AddModal from './quicklinks/AddModal';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
 
-import SettingsItem from '../SettingsItem';
+import { Row, Content, Action } from '../SettingsItem';
 import Header from '../Header';
 import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
 import QuickLink from './quicklinks/QuickLink';
@@ -121,86 +121,92 @@ function Navbar() {
         zoomSetting="zoomNavbar"
         zoomCategory="navbar"
       />
-      <SettingsItem
-        title={variables.getMessage('modals.main.settings.additional_settings')}
-        subtitle={variables.getMessage(
-          'modals.main.settings.sections.appearance.navbar.additional',
-        )}
-        final={false}
-      >
-        <Checkbox
-          name="navbarHover"
-          text={variables.getMessage(`${NAVBAR_SECTION}.hover`)}
-          category="navbar"
-        />
-        <Checkbox
-          name="notesEnabled"
-          text={variables.getMessage(`${NAVBAR_SECTION}.notes`)}
-          category="navbar"
-        />
-        <Checkbox
-          name="view"
-          text={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
-          category="navbar"
-        />
-        <Checkbox
-          name="refresh"
-          text={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
-          category="navbar"
-          onChange={setShowRefreshOptions}
-        />
-        <Checkbox
-          name="todoEnabled"
-          text={variables.getMessage('widgets.navbar.todo.title')}
-          category="navbar"
-        />
-
-        <Checkbox
-          name="appsEnabled"
-          text={variables.getMessage('widgets.navbar.apps.title')}
-          category="navbar"
-        />
-      </SettingsItem>
-      {showRefreshOptions && (
-        <SettingsItem
-          title={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
+      <Row final={false}>
+        <Content
+          title={variables.getMessage('modals.main.settings.additional_settings')}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
+            'modals.main.settings.sections.appearance.navbar.additional',
           )}
-          final={false}
-        >
-          <Dropdown name="refreshOption" category="navbar">
-            <option value="page">
-              {variables.getMessage(
-                'modals.main.settings.sections.appearance.navbar.refresh_options.page',
-              )}
-            </option>
-            <option value="background">
-              {variables.getMessage('modals.main.settings.sections.background.title')}
-            </option>
-            <option value="quote">
-              {variables.getMessage('modals.main.settings.sections.quote.title')}
-            </option>
-            <option value="quotebackground">
-              {variables.getMessage('modals.main.settings.sections.quote.title')} +{' '}
-              {variables.getMessage('modals.main.settings.sections.background.title')}
-            </option>
-          </Dropdown>
-        </SettingsItem>
+        />
+        <Action>
+          <Checkbox
+            name="navbarHover"
+            text={variables.getMessage(`${NAVBAR_SECTION}.hover`)}
+            category="navbar"
+          />
+          <Checkbox
+            name="notesEnabled"
+            text={variables.getMessage(`${NAVBAR_SECTION}.notes`)}
+            category="navbar"
+          />
+          <Checkbox
+            name="view"
+            text={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
+            category="navbar"
+          />
+          <Checkbox
+            name="refresh"
+            text={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
+            category="navbar"
+            onChange={setShowRefreshOptions}
+          />
+          <Checkbox
+            name="todoEnabled"
+            text={variables.getMessage('widgets.navbar.todo.title')}
+            category="navbar"
+          />
+
+          <Checkbox
+            name="appsEnabled"
+            text={variables.getMessage('widgets.navbar.apps.title')}
+            category="navbar"
+          />
+        </Action>
+      </Row>
+      {showRefreshOptions && (
+        <Row final={false}>
+          <Content
+            title={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
+            subtitle={variables.getMessage(
+              'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
+            )}
+          />
+          <Action>
+            <Dropdown name="refreshOption" category="navbar">
+              <option value="page">
+                {variables.getMessage(
+                  'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+                )}
+              </option>
+              <option value="background">
+                {variables.getMessage('modals.main.settings.sections.background.title')}
+              </option>
+              <option value="quote">
+                {variables.getMessage('modals.main.settings.sections.quote.title')}
+              </option>
+              <option value="quotebackground">
+                {variables.getMessage('modals.main.settings.sections.quote.title')} +{' '}
+                {variables.getMessage('modals.main.settings.sections.background.title')}
+              </option>
+            </Dropdown>
+          </Action>
+        </Row>
       )}
 
-      <SettingsItem
-        title={variables.getMessage('widgets.navbar.apps.title')}
-        subtitle={variables.getMessage(
-          'modals.main.settings.sections.appearance.navbar.apps_subtitle',
-        )}
-        final={true}
-      >
-        <button onClick={() => setAppsModalInfo((oldState) => ({ ...oldState, newLink: true }))}>
-          {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}
-          <MdAddLink />
-        </button>
-      </SettingsItem>
+      <Row final={true}>
+        <Content
+          title={variables.getMessage('widgets.navbar.apps.title')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.appearance.navbar.apps_subtitle',
+          )}
+        />
+        <Action>
+          <button onClick={() => setAppsModalInfo((oldState) => ({ ...oldState, newLink: true }))}>
+            {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}
+            <MdAddLink />
+          </button>
+        </Action>
+      </Row>
 
       <div className="messagesContainer">
         {appsModalInfo.items.map((item, i) => (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SettingsItem from './SettingsItem';
+import { Row, Content, Action } from './SettingsItem';
 import variables from 'modules/variables';
 import Slider from './Slider';
 
@@ -18,22 +18,25 @@ const PreferencesWrapper = ({ children, ...props }) => {
   return (
     <div className={shown ? 'preferences' : 'preferencesInactive'}>
       {props.zoomSetting && (
-        <SettingsItem
-          title={variables.getMessage(
-            'modals.main.settings.sections.appearance.accessibility.widget_zoom',
-          )}
-          subtitle={variables.getMessage('modals.main.settings.sections.header.size')}
-        >
-          <Slider
-            name={props.zoomSetting}
-            min="10"
-            max="400"
-            default="100"
-            display="%"
-            marks={values('zoom')}
-            category={props.zoomCategory || props.category}
+        <Row>
+          <Content
+            title={variables.getMessage(
+              'modals.main.settings.sections.appearance.accessibility.widget_zoom',
+            )}
+            subtitle={variables.getMessage('modals.main.settings.sections.header.size')}
           />
-        </SettingsItem>
+          <Action>
+            <Slider
+              name={props.zoomSetting}
+              min="10"
+              max="400"
+              default="100"
+              display="%"
+              marks={values('zoom')}
+              category={props.zoomCategory || props.category}
+            />
+          </Action>
+        </Row>
       )}
       {children}
     </div>

@@ -6,7 +6,8 @@ import { MenuItem, TextField } from '@mui/material';
 import Header from '../Header';
 import Dropdown from '../Dropdown';
 import Checkbox from '../Checkbox';
-import SettingsItem from '../SettingsItem';
+
+import { Row, Content, Action } from '../SettingsItem';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -69,63 +70,68 @@ export default class SearchSettings extends PureComponent {
 
     const AdditionalOptions = () => {
       return (
-        <SettingsItem
-          title={variables.getMessage('modals.main.settings.additional_settings')}
-          subtitle={variables.getMessage(`${SEARCH_SECTION}.additional`)}
-        >
-          {/* not supported on firefox */}
-          {navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined' ? (
+        <Row>
+          <Content
+            title={variables.getMessage('modals.main.settings.additional_settings')}
+            subtitle={variables.getMessage(`${SEARCH_SECTION}.additional`)}
+          />
+          <Action>
+            {/* not supported on firefox */}
+            {navigator.userAgent.includes('Chrome') && typeof InstallTrigger === 'undefined' ? (
+              <Checkbox
+                name="voiceSearch"
+                text={variables.getMessage(`${SEARCH_SECTION}.voice_search`)}
+                category="search"
+              />
+            ) : null}
             <Checkbox
-              name="voiceSearch"
-              text={variables.getMessage(`${SEARCH_SECTION}.voice_search`)}
+              name="searchDropdown"
+              text={variables.getMessage(`${SEARCH_SECTION}.dropdown`)}
+              category="search"
+              element=".other"
+            />
+            <Checkbox
+              name="searchFocus"
+              text={variables.getMessage(`${SEARCH_SECTION}.focus`)}
+              category="search"
+              element=".other"
+            />
+            <Checkbox
+              name="autocomplete"
+              text={variables.getMessage(`${SEARCH_SECTION}.autocomplete`)}
               category="search"
             />
-          ) : null}
-          <Checkbox
-            name="searchDropdown"
-            text={variables.getMessage(`${SEARCH_SECTION}.dropdown`)}
-            category="search"
-            element=".other"
-          />
-          <Checkbox
-            name="searchFocus"
-            text={variables.getMessage(`${SEARCH_SECTION}.focus`)}
-            category="search"
-            element=".other"
-          />
-          <Checkbox
-            name="autocomplete"
-            text={variables.getMessage(`${SEARCH_SECTION}.autocomplete`)}
-            category="search"
-          />
-        </SettingsItem>
+          </Action>
+        </Row>
       );
     };
 
     const SearchEngineSelection = () => {
       return (
-        <SettingsItem
-          title={variables.getMessage(`${SEARCH_SECTION}.search_engine`)}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.search.search_engine_subtitle',
-          )}
-          final={!this.state.customEnabled}
-        >
-          <Dropdown
-            name="searchEngine"
-            onChange={(value) => this.setSearchEngine(value)}
-            manual={true}
-          >
-            {searchEngines.map((engine) => (
-              <MenuItem key={engine.name} value={engine.settingsName}>
-                {engine.name}
+        <Row final={!this.state.customEnabled}>
+          <Content
+            title={variables.getMessage(`${SEARCH_SECTION}.search_engine`)}
+            subtitle={variables.getMessage(
+              'modals.main.settings.sections.search.search_engine_subtitle',
+            )}
+          />
+          <Action>
+            <Dropdown
+              name="searchEngine"
+              onChange={(value) => this.setSearchEngine(value)}
+              manual={true}
+            >
+              {searchEngines.map((engine) => (
+                <MenuItem key={engine.name} value={engine.settingsName}>
+                  {engine.name}
+                </MenuItem>
+              ))}
+              <MenuItem value="custom">
+                {variables.getMessage(`${SEARCH_SECTION}.custom`).split(' ')[0]}
               </MenuItem>
-            ))}
-            <MenuItem value="custom">
-              {variables.getMessage(`${SEARCH_SECTION}.custom`).split(' ')[0]}
-            </MenuItem>
-          </Dropdown>
-        </SettingsItem>
+            </Dropdown>
+          </Action>
+        </Row>
       );
     };
 
@@ -141,20 +147,23 @@ export default class SearchSettings extends PureComponent {
           <AdditionalOptions />
           <SearchEngineSelection />
           {this.state.customEnabled && (
-            <SettingsItem title={variables.getMessage(`${SEARCH_SECTION}.custom`)} final={true}>
-              <TextField
-                label={variables.getMessage(`${SEARCH_SECTION}.custom`)}
-                value={this.state.customValue}
-                onInput={(e) => this.setState({ customValue: e.target.value })}
-                varient="outlined"
-                InputLabelProps={{ shrink: true }}
-              />
-              <p style={{ marginTop: '0px' }}>
-                <span className="link" onClick={() => this.resetSearch()}>
-                  {variables.getMessage('modals.main.settings.buttons.reset')}
-                </span>
-              </p>
-            </SettingsItem>
+            <Row final={true}>
+              <Content title={variables.getMessage(`${SEARCH_SECTION}.custom`)} />
+              <Action>
+                <TextField
+                  label={variables.getMessage(`${SEARCH_SECTION}.custom`)}
+                  value={this.state.customValue}
+                  onInput={(e) => this.setState({ customValue: e.target.value })}
+                  varient="outlined"
+                  InputLabelProps={{ shrink: true }}
+                />
+                <p style={{ marginTop: '0px' }}>
+                  <span className="link" onClick={() => this.resetSearch()}>
+                    {variables.getMessage('modals.main.settings.buttons.reset')}
+                  </span>
+                </p>
+              </Action>
+            </Row>
           )}
         </PreferencesWrapper>
       </>

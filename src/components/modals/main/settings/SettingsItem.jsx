@@ -1,15 +1,22 @@
-import { memo } from 'react';
-
-function SettingsItem({ final, title, subtitle, children }) {
+function Row(props) {
   return (
-    <div className={final ? 'settingsRow settingsNoBorder' : 'settingsRow'}>
-      <div className="content">
-        <span className="title">{title}</span>
-        <span className="subtitle">{subtitle}</span>
-      </div>
-      <div className="action">{children}</div>
+    <div className={props.final ? 'settingsRow settingsNoBorder' : 'settingsRow'}>
+      {props.children}
     </div>
   );
 }
 
-export default memo(SettingsItem);
+function Content(props) {
+  return (
+    <div className="content">
+      <span className="title">{props.title}</span>
+      <span className="subtitle">{props.subtitle}</span>
+    </div>
+  );
+}
+
+function Action(props) {
+  return <div className="action">{props.children}</div>;
+}
+
+export { Row, Content, Action };

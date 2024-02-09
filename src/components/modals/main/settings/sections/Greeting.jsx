@@ -5,7 +5,8 @@ import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Switch from '../Switch';
 import Text from '../Text';
-import SettingsItem from '../SettingsItem';
+
+import { Row, Content, Action } from '../SettingsItem';
 import PreferencesWrapper from '../PreferencesWrapper';
 
 const GreetingSettings = () => {
@@ -23,56 +24,63 @@ const GreetingSettings = () => {
 
   const AdditionalOptions = () => {
     return (
-      <SettingsItem
-        title={variables.getMessage('modals.main.settings.additional_settings')}
-        subtitle={variables.getMessage(`${GREETING_SECTION}.additional`)}
-      >
-        <Checkbox
-          name="events"
-          text={variables.getMessage(`${GREETING_SECTION}.events`)}
-          category="greeting"
+      <Row>
+        <Content
+          title={variables.getMessage('modals.main.settings.additional_settings')}
+          subtitle={variables.getMessage(`${GREETING_SECTION}.additional`)}
         />
-        <Checkbox
-          name="defaultGreetingMessage"
-          text={variables.getMessage(`${GREETING_SECTION}.default`)}
-          category="greeting"
-        />
-        <Text
-          title={variables.getMessage(`${GREETING_SECTION}.name`)}
-          name="greetingName"
-          category="greeting"
-        />
-      </SettingsItem>
+        <Action>
+          <Checkbox
+            name="events"
+            text={variables.getMessage(`${GREETING_SECTION}.events`)}
+            category="greeting"
+          />
+          <Checkbox
+            name="defaultGreetingMessage"
+            text={variables.getMessage(`${GREETING_SECTION}.default`)}
+            category="greeting"
+          />
+          <Text
+            title={variables.getMessage(`${GREETING_SECTION}.name`)}
+            name="greetingName"
+            category="greeting"
+          />
+        </Action>
+      </Row>
     );
   };
 
   const BirthdayOptions = () => {
     return (
-      <SettingsItem
-        title={variables.getMessage(`${GREETING_SECTION}.birthday`)}
-        subtitle={variables.getMessage('modals.main.settings.sections.greeting.birthday_subtitle')}
-        final={true}
-      >
-        <Switch
-          name="birthdayenabled"
-          text={variables.getMessage('modals.main.settings.enabled')}
-          category="greeting"
+      <Row final={true}>
+        <Content
+          title={variables.getMessage(`${GREETING_SECTION}.birthday`)}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.greeting.birthday_subtitle',
+          )}
         />
-        <Checkbox
-          name="birthdayage"
-          text={variables.getMessage(`${GREETING_SECTION}.birthday_age`)}
-          category="greeting"
-        />
-        <p style={{ marginRight: 'auto' }}>
-          {variables.getMessage(`${GREETING_SECTION}.birthday_date`)}
-        </p>
-        <input
-          type="date"
-          onChange={changeDate}
-          value={birthday.toISOString().substring(0, 10)}
-          required
-        />
-      </SettingsItem>
+        <Action>
+          <Switch
+            name="birthdayenabled"
+            text={variables.getMessage('modals.main.settings.enabled')}
+            category="greeting"
+          />
+          <Checkbox
+            name="birthdayage"
+            text={variables.getMessage(`${GREETING_SECTION}.birthday_age`)}
+            category="greeting"
+          />
+          <p style={{ marginRight: 'auto' }}>
+            {variables.getMessage(`${GREETING_SECTION}.birthday_date`)}
+          </p>
+          <input
+            type="date"
+            onChange={changeDate}
+            value={birthday.toISOString().substring(0, 10)}
+            required
+          />
+        </Action>
+      </Row>
     );
   };
 

@@ -2,7 +2,7 @@ import variables from 'modules/variables';
 import { PureComponent, Fragment } from 'react';
 import { ColorPicker } from '@muetab/react-color-gradient-picker';
 import { toast } from 'react-toastify';
-import SettingsItem from '../../SettingsItem';
+import { Row, Content, Action } from '../../SettingsItem';
 
 import hexToRgb from 'modules/helpers/background/hexToRgb';
 import rgbToHex from 'modules/helpers/background/rgbToHex';
@@ -220,19 +220,21 @@ export default class ColourSettings extends PureComponent {
 
     return (
       <>
-        <SettingsItem
-          title={variables.getMessage(
-            'modals.main.settings.sections.background.source.custom_colour',
-          )}
-          final={true}
-        >
-          {colourSettings}
-          <div className="colourReset">
-            <span className="link" onClick={() => this.resetColour()}>
-              {variables.getMessage('modals.main.settings.buttons.reset')}
-            </span>
-          </div>
-        </SettingsItem>
+        <Row final={true}>
+          <Content
+            title={variables.getMessage(
+              'modals.main.settings.sections.background.source.custom_colour',
+            )}
+          />
+          <Action>
+            {colourSettings}
+            <div className="colourReset">
+              <span className="link" onClick={() => this.resetColour()}>
+                {variables.getMessage('modals.main.settings.buttons.reset')}
+              </span>
+            </div>
+          </Action>
+        </Row>
       </>
     );
   }

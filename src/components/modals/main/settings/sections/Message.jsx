@@ -4,7 +4,7 @@ import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';
 
-import SettingsItem from '../SettingsItem';
+import { Row, Content, Action } from '../SettingsItem';
 import Header from '../Header';
 
 import EventBus from 'modules/helpers/eventbus';
@@ -72,11 +72,14 @@ export default class Message extends PureComponent {
           switch={true}
         />
         <PreferencesWrapper setting="message" switch={true} zoomSetting="zoomMessage">
-          <SettingsItem title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} final={true}>
-            <button onClick={() => this.modifyMessage('add')}>
-              {variables.getMessage(`${MESSAGE_SECTION}.add`)} <MdAdd />
-            </button>
-          </SettingsItem>
+          <Row final={true}>
+            <Content title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} />
+            <Action>
+              <button onClick={() => this.modifyMessage('add')}>
+                {variables.getMessage(`${MESSAGE_SECTION}.add`)} <MdAdd />
+              </button>
+            </Action>
+          </Row>
           <div className="messagesContainer">
             {this.state.messages.map((_url, index) => (
               <div className="messageMap" key={index}>

@@ -9,7 +9,7 @@ import ChipSelect from '../../ChipSelect';
 import Dropdown from '../../Dropdown';
 import Slider from '../../Slider';
 import Radio from '../../Radio';
-import SettingsItem from '../../SettingsItem';
+import { Row, Content, Action } from '../../SettingsItem';
 import Text from '../../Text';
 
 import ColourSettings from './Colour';
@@ -92,11 +92,7 @@ export default class BackgroundSettings extends PureComponent {
 
   render() {
     /* const interval = (
-      <SettingsItem
-        title={variables.getMessage('modals.main.settings.sections.background.interval.title')}
-        subtitle={variables.getMessage(
-          'modals.main.settings.sections.background.interval.subtitle',
-        )}
+      <Row
         final={
           localStorage.getItem('photo_packs') &&
           this.state.backgroundType !== 'custom' &&
@@ -104,6 +100,11 @@ export default class BackgroundSettings extends PureComponent {
           this.state.backgroundType !== 'api'
         }
       >
+      <Content         title={variables.getMessage('modals.main.settings.sections.background.interval.title')}
+        subtitle={variables.getMessage(
+          'modals.main.settings.sections.background.interval.subtitle',
+        )} />
+        <Action>
         <Dropdown
           label={variables.getMessage('modals.main.settings.sections.background.interval.title')}
           name="backgroundchange"
@@ -128,98 +129,107 @@ export default class BackgroundSettings extends PureComponent {
             {variables.getMessage('modals.main.settings.sections.background.interval.month')}
           </option>
         </Dropdown>
-      </SettingsItem>
+        </Action>
+      </Row>
     );*/
 
     const APISettings = (
       <>
-        <SettingsItem
-          title={variables.getMessage('modals.main.settings.sections.background.api')}
-          subtitle={variables.getMessage('modals.main.settings.sections.background.api_subtitle')}
-          final={this.state.backgroundAPI === 'mue'}
-        >
-          {this.state.backgroundCategories[0] === variables.getMessage('modals.main.loading') ? (
-            <>
-              <Dropdown
-                label={variables.getMessage('modals.main.settings.sections.background.category')}
-                name="apiCategories"
-              >
-                <MenuItem value="loading" key="loading">
-                  {variables.getMessage('modals.main.loading')}
-                </MenuItem>
-                <MenuItem value="loading" key="loading">
-                  {variables.getMessage('modals.main.loading')}
-                </MenuItem>
-              </Dropdown>
-            </>
-          ) : (
-            <ChipSelect
-              label={variables.getMessage('modals.main.settings.sections.background.categories')}
-              options={this.state.backgroundCategories}
-              name="apiCategories"
-            />
-          )}
-          <Dropdown
-            label={variables.getMessage(
-              'modals.main.settings.sections.background.source.quality.title',
-            )}
-            name="apiQuality"
-            element=".other"
-          >
-            <option value="original">
-              {variables.getMessage(
-                'modals.main.settings.sections.background.source.quality.original',
-              )}
-            </option>
-            <option value="high">
-              {variables.getMessage('modals.main.settings.sections.background.source.quality.high')}
-            </option>
-            <option value="normal">
-              {variables.getMessage(
-                'modals.main.settings.sections.background.source.quality.normal',
-              )}
-            </option>
-            <option value="datasaver">
-              {variables.getMessage(
-                'modals.main.settings.sections.background.source.quality.datasaver',
-              )}
-            </option>
-          </Dropdown>
-          <Radio
-            title="API"
-            options={[
-              {
-                name: 'Mue',
-                value: 'mue',
-              },
-              {
-                name: 'Unsplash',
-                value: 'unsplash',
-              },
-            ]}
-            name="backgroundAPI"
-            category="background"
-            element="#backgroundImage"
-            onChange={(e) => this.updateAPI(e)}
+        <Row final={this.state.backgroundAPI === 'mue'}>
+          <Content
+            title={variables.getMessage('modals.main.settings.sections.background.api')}
+            subtitle={variables.getMessage('modals.main.settings.sections.background.api_subtitle')}
           />
-        </SettingsItem>
-        {this.state.backgroundAPI === 'unsplash' && (
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.background.unsplash.title')}
-            subtitle={variables.getMessage('modals.main.settings.sections.background.subtitle')}
-            final={true}
-          >
-            <Text
-              title={variables.getMessage('modals.main.settings.sections.background.id')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.id_subtitle',
+          <Action>
+            {this.state.backgroundCategories[0] === variables.getMessage('modals.main.loading') ? (
+              <>
+                <Dropdown
+                  label={variables.getMessage('modals.main.settings.sections.background.category')}
+                  name="apiCategories"
+                >
+                  <MenuItem value="loading" key="loading">
+                    {variables.getMessage('modals.main.loading')}
+                  </MenuItem>
+                  <MenuItem value="loading" key="loading">
+                    {variables.getMessage('modals.main.loading')}
+                  </MenuItem>
+                </Dropdown>
+              </>
+            ) : (
+              <ChipSelect
+                label={variables.getMessage('modals.main.settings.sections.background.categories')}
+                options={this.state.backgroundCategories}
+                name="apiCategories"
+              />
+            )}
+            <Dropdown
+              label={variables.getMessage(
+                'modals.main.settings.sections.background.source.quality.title',
               )}
-              placeholder="e.g. 123456, 654321"
-              name="unsplashCollections"
+              name="apiQuality"
+              element=".other"
+            >
+              <option value="original">
+                {variables.getMessage(
+                  'modals.main.settings.sections.background.source.quality.original',
+                )}
+              </option>
+              <option value="high">
+                {variables.getMessage(
+                  'modals.main.settings.sections.background.source.quality.high',
+                )}
+              </option>
+              <option value="normal">
+                {variables.getMessage(
+                  'modals.main.settings.sections.background.source.quality.normal',
+                )}
+              </option>
+              <option value="datasaver">
+                {variables.getMessage(
+                  'modals.main.settings.sections.background.source.quality.datasaver',
+                )}
+              </option>
+            </Dropdown>
+            <Radio
+              title="API"
+              options={[
+                {
+                  name: 'Mue',
+                  value: 'mue',
+                },
+                {
+                  name: 'Unsplash',
+                  value: 'unsplash',
+                },
+              ]}
+              name="backgroundAPI"
               category="background"
               element="#backgroundImage"
+              onChange={(e) => this.updateAPI(e)}
             />
-          </SettingsItem>
+          </Action>
+        </Row>
+        {this.state.backgroundAPI === 'unsplash' && (
+          <Row final={true}>
+            <Action
+              title={variables.getMessage(
+                'modals.main.settings.sections.background.unsplash.title',
+              )}
+              subtitle={variables.getMessage('modals.main.settings.sections.background.subtitle')}
+            />
+            <Action>
+              <Text
+                title={variables.getMessage('modals.main.settings.sections.background.id')}
+                subtitle={variables.getMessage(
+                  'modals.main.settings.sections.background.id_subtitle',
+                )}
+                placeholder="e.g. 123456, 654321"
+                name="unsplashCollections"
+                category="background"
+                element="#backgroundImage"
+              />
+            </Action>
+          </Row>
         )}
       </>
     );
@@ -385,90 +395,100 @@ export default class BackgroundSettings extends PureComponent {
         (this.state.backgroundType === 'api' ||
           this.state.backgroundType === 'custom' ||
           this.state.marketplaceEnabled) ? (
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.background.display')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.background.display_subtitle',
-            )}
-            final={true}
-          >
-            <Checkbox
-              name="ddgProxy"
-              text={variables.getMessage(
-                'modals.main.settings.sections.background.ddg_image_proxy',
+          <Row final={true}>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.background.display')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.background.display_subtitle',
               )}
-              element=".other"
-              disabled={!usingImage}
             />
-            <Checkbox
-              name="bgtransition"
-              text={variables.getMessage('modals.main.settings.sections.background.transition')}
-              element=".other"
-              disabled={!usingImage}
-            />
-            <Checkbox
-              name="photoInformation"
-              text={variables.getMessage(
-                'modals.main.settings.sections.background.photo_information',
-              )}
-              element=".other"
-            />
-            <Checkbox
-              name="photoMap"
-              text={variables.getMessage('modals.main.settings.sections.background.show_map')}
-              element=".other"
-              disabled={!usingImage}
-            />
-          </SettingsItem>
+            <Action>
+              <Checkbox
+                name="ddgProxy"
+                text={variables.getMessage(
+                  'modals.main.settings.sections.background.ddg_image_proxy',
+                )}
+                element=".other"
+                disabled={!usingImage}
+              />
+              <Checkbox
+                name="bgtransition"
+                text={variables.getMessage('modals.main.settings.sections.background.transition')}
+                element=".other"
+                disabled={!usingImage}
+              />
+              <Checkbox
+                name="photoInformation"
+                text={variables.getMessage(
+                  'modals.main.settings.sections.background.photo_information',
+                )}
+                element=".other"
+              />
+              <Checkbox
+                name="photoMap"
+                text={variables.getMessage('modals.main.settings.sections.background.show_map')}
+                element=".other"
+                disabled={!usingImage}
+              />
+            </Action>
+          </Row>
         ) : null}
         {this.state.backgroundSettingsSection && (
           <>
-            <SettingsItem
-              title={variables.getMessage('modals.main.settings.sections.background.source.title')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.source.subtitle',
-              )}
+            <Row
               final={
                 this.state.backgroundType === 'random_colour' ||
                 this.state.backgroundType === 'random_gradient'
               }
             >
-              <Dropdown
-                label={variables.getMessage('modals.main.settings.sections.background.type.title')}
-                name="backgroundType"
-                onChange={(value) => this.setState({ backgroundType: value })}
-                category="background"
-              >
-                {this.state.marketplaceEnabled && (
-                  <option value="photo_pack">
-                    {variables.getMessage('modals.main.navbar.marketplace')}
-                  </option>
+              <Content
+                title={variables.getMessage(
+                  'modals.main.settings.sections.background.source.title',
                 )}
-                <option value="api">
-                  {variables.getMessage('modals.main.settings.sections.background.type.api')}
-                </option>
-                <option value="custom">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.type.custom_image',
+                subtitle={variables.getMessage(
+                  'modals.main.settings.sections.background.source.subtitle',
+                )}
+              />
+              <Action>
+                <Dropdown
+                  label={variables.getMessage(
+                    'modals.main.settings.sections.background.type.title',
                   )}
-                </option>
-                <option value="colour">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.type.custom_colour',
+                  name="backgroundType"
+                  onChange={(value) => this.setState({ backgroundType: value })}
+                  category="background"
+                >
+                  {this.state.marketplaceEnabled && (
+                    <option value="photo_pack">
+                      {variables.getMessage('modals.main.navbar.marketplace')}
+                    </option>
                   )}
-                </option>
-                <option value="random_colour">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.type.random_colour',
-                  )}
-                </option>
-                <option value="random_gradient">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.type.random_gradient',
-                  )}
-                </option>
-              </Dropdown>
-            </SettingsItem>
+                  <option value="api">
+                    {variables.getMessage('modals.main.settings.sections.background.type.api')}
+                  </option>
+                  <option value="custom">
+                    {variables.getMessage(
+                      'modals.main.settings.sections.background.type.custom_image',
+                    )}
+                  </option>
+                  <option value="colour">
+                    {variables.getMessage(
+                      'modals.main.settings.sections.background.type.custom_colour',
+                    )}
+                  </option>
+                  <option value="random_colour">
+                    {variables.getMessage(
+                      'modals.main.settings.sections.background.type.random_colour',
+                    )}
+                  </option>
+                  <option value="random_gradient">
+                    {variables.getMessage(
+                      'modals.main.settings.sections.background.type.random_gradient',
+                    )}
+                  </option>
+                </Dropdown>
+              </Action>
+            </Row>
             {/* // todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
             {/*{this.state.backgroundType === 'api' ||
             this.state.backgroundType === 'custom' ||
@@ -482,83 +502,19 @@ export default class BackgroundSettings extends PureComponent {
           this.state.backgroundType === 'custom' ||
           this.state.marketplaceEnabled) &&
         this.state.effects ? (
-          <SettingsItem
-            title={variables.getMessage('modals.main.settings.sections.background.effects.title')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.background.effects.subtitle',
-            )}
-            final={true}
-          >
-            <Slider
-              title={variables.getMessage('modals.main.settings.sections.background.effects.blur')}
-              name="blur"
-              min="0"
-              max="100"
-              default="0"
-              display="%"
-              marks={values('background')}
-              category="background"
-              element="#backgroundImage"
-            />
-            <Slider
-              title={variables.getMessage(
-                'modals.main.settings.sections.background.effects.brightness',
+          <Row final={true}>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.background.effects.title')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.background.effects.subtitle',
               )}
-              name="brightness"
-              min="0"
-              max="100"
-              default="90"
-              display="%"
-              marks={values('background')}
-              category="background"
-              element="#backgroundImage"
             />
-            <Dropdown
-              label={variables.getMessage(
-                'modals.main.settings.sections.background.effects.filters.title',
-              )}
-              name="backgroundFilter"
-              onChange={(value) => this.setState({ backgroundFilter: value })}
-              category="background"
-              element="#backgroundImage"
-            >
-              <option value="none">
-                {variables.getMessage(
-                  'modals.main.settings.sections.appearance.navbar.refresh_options.none',
-                )}
-              </option>
-              <option value="grayscale">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.effects.filters.grayscale',
-                )}
-              </option>
-              <option value="sepia">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.effects.filters.sepia',
-                )}
-              </option>
-              <option value="invert">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.effects.filters.invert',
-                )}
-              </option>
-              <option value="saturate">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.effects.filters.saturate',
-                )}
-              </option>
-              <option value="contrast">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.effects.filters.contrast',
-                )}
-              </option>
-            </Dropdown>
-            {this.state.backgroundFilter !== 'none' && (
+            <Action>
               <Slider
                 title={variables.getMessage(
-                  'modals.main.settings.sections.background.effects.filters.amount',
+                  'modals.main.settings.sections.background.effects.blur',
                 )}
-                name="backgroundFilterAmount"
+                name="blur"
                 min="0"
                 max="100"
                 default="0"
@@ -567,8 +523,76 @@ export default class BackgroundSettings extends PureComponent {
                 category="background"
                 element="#backgroundImage"
               />
-            )}
-          </SettingsItem>
+              <Slider
+                title={variables.getMessage(
+                  'modals.main.settings.sections.background.effects.brightness',
+                )}
+                name="brightness"
+                min="0"
+                max="100"
+                default="90"
+                display="%"
+                marks={values('background')}
+                category="background"
+                element="#backgroundImage"
+              />
+              <Dropdown
+                label={variables.getMessage(
+                  'modals.main.settings.sections.background.effects.filters.title',
+                )}
+                name="backgroundFilter"
+                onChange={(value) => this.setState({ backgroundFilter: value })}
+                category="background"
+                element="#backgroundImage"
+              >
+                <option value="none">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.appearance.navbar.refresh_options.none',
+                  )}
+                </option>
+                <option value="grayscale">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.background.effects.filters.grayscale',
+                  )}
+                </option>
+                <option value="sepia">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.background.effects.filters.sepia',
+                  )}
+                </option>
+                <option value="invert">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.background.effects.filters.invert',
+                  )}
+                </option>
+                <option value="saturate">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.background.effects.filters.saturate',
+                  )}
+                </option>
+                <option value="contrast">
+                  {variables.getMessage(
+                    'modals.main.settings.sections.background.effects.filters.contrast',
+                  )}
+                </option>
+              </Dropdown>
+              {this.state.backgroundFilter !== 'none' && (
+                <Slider
+                  title={variables.getMessage(
+                    'modals.main.settings.sections.background.effects.filters.amount',
+                  )}
+                  name="backgroundFilterAmount"
+                  min="0"
+                  max="100"
+                  default="0"
+                  display="%"
+                  marks={values('background')}
+                  category="background"
+                  element="#backgroundImage"
+                />
+              )}
+            </Action>
+          </Row>
         ) : null}
       </>
     );

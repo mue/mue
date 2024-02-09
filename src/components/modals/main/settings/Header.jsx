@@ -9,7 +9,6 @@ import {
 } from 'react-icons/md';
 
 import Slider from './Slider';
-import SettingsItem from './SettingsItem';
 import EventBus from 'modules/helpers/eventbus';
 
 import { values } from 'modules/helpers/settings/modals';

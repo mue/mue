@@ -256,6 +256,14 @@ h5 {
     flex-flow: row;
     align-items: center;
     gap: 25px;
+    svg {
+      @include themed() {
+        background-color: t($modal-sidebar);
+        box-shadow: t($boxShadow);
+      }
+      padding: 15px;
+      border-radius: 100%;
+    }
   }
 
   .content {
