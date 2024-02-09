@@ -1,12 +1,10 @@
 import variables from 'modules/variables';
 import { Suspense, lazy, useState, memo } from 'react';
-
 import { MdClose } from 'react-icons/md';
 
 import './scss/index.scss';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 
-// Lazy load all the tabs instead of the modal itself
 const Settings = lazy(() => import('./tabs/Settings'));
 const Addons = lazy(() => import('./tabs/Addons'));
 const Marketplace = lazy(() => import('./tabs/Marketplace'));
@@ -30,27 +28,22 @@ const renderLoader = () => (
 );
 
 function MainModal({ modalClose }) {
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = useState('settings');
 
   const changeTab = (type) => {
-    switch (type) {
-      case 'settings':
-        setCurrentTab(<Settings changeTab={changeTab} />);
-        break;
-      case 'addons':
-        setCurrentTab(<Addons changeTab={changeTab} />);
-        break;
-      case 'marketplace':
-        setCurrentTab(<Marketplace changeTab={changeTab} />);
-        break;
-      default:
-        break;
-    }
+    setCurrentTab(type);
   };
 
-  if (currentTab === 0) {
-    setCurrentTab(<Settings changeTab={changeTab} />);
-  }
+  const renderTab = () => {
+    switch (currentTab) {
+      case 'addons':
+        return <Addons changeTab={changeTab} />;
+      case 'marketplace':
+        return <Marketplace changeTab={changeTab} />;
+      default:
+        return <Settings changeTab={changeTab} />;
+    }
+  };
 
   return (
     <div className="frame">
@@ -63,7 +56,7 @@ function MainModal({ modalClose }) {
           <MdClose />
         </span>
       </Tooltip>
-      <Suspense fallback={renderLoader()}>{currentTab}</Suspense>
+      <Suspense fallback={renderLoader()}>{renderTab()}</Suspense>
     </div>
   );
 }
