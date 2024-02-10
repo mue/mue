@@ -5,6 +5,9 @@ import { MdShowChart, MdRestartAlt, MdDownload } from 'react-icons/md';
 import { FaTrophy } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
+import Button from '../../settings/Button';
+import Header, { CustomActions } from '../../settings/Header';
+
 import { saveFile } from 'modules/helpers/settings/modals';
 
 import achievementsData from 'modules/helpers/settings/achievements.json';
@@ -111,17 +114,22 @@ export default class Stats extends PureComponent {
 
     return (
       <>
-        <div className="statsTopBar">
-          <span className="mainTitle">{variables.getMessage(`${STATS_SECTION}.title`)}</span>
-          <div className="headerActions">
-            <button onClick={() => this.downloadStats()}>
-              <MdDownload /> {variables.getMessage('widgets.background.download')}
-            </button>
-            <button onClick={() => this.resetStats()}>
-              <MdRestartAlt /> {variables.getMessage('modals.main.settings.buttons.reset')}
-            </button>
-          </div>{' '}
-        </div>
+        <Header title={variables.getMessage(`${STATS_SECTION}.title`)} report={false}>
+          <CustomActions>
+            <Button
+              type="settings"
+              onClick={() => this.downloadStats()}
+              icon={<MdDownload />}
+              label={variables.getMessage('widgets.background.download')}
+            />
+            <Button
+              type="settings"
+              onClick={() => this.resetStats()}
+              icon={<MdRestartAlt />}
+              label={variables.getMessage('modals.main.settings.buttons.reset')}
+            />
+          </CustomActions>
+        </Header>
         <div className="stats">
           <div className="statSection rightPanel">
             <div className="statIcon">

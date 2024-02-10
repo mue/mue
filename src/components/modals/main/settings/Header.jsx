@@ -9,7 +9,11 @@ import {
 import EventBus from 'modules/helpers/eventbus';
 import Button from './Button';
 
-const Header = (props) => {
+export const CustomActions = ({ children }) => {
+  return children;
+};
+
+export default function Header(props) {
   const [setting, setSetting] = useState(localStorage.getItem(props.setting) === 'true');
 
   useEffect(() => {
@@ -82,6 +86,7 @@ const Header = (props) => {
       </div>
     </>
   );
-};
+}
 
-export default Header;
+// Remove the export statement for customActions
+// export { customActions };

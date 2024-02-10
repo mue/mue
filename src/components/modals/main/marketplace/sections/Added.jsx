@@ -9,7 +9,7 @@ import FileUpload from '../../settings/FileUpload';
 import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
-import Header from '../../settings/Header';
+import Header, { CustomActions } from '../../settings/Header';
 import Button from '../../settings/Button';
 
 import { install, uninstall, urlParser } from 'modules/helpers/marketplace';
@@ -208,7 +208,7 @@ export default class Added extends PureComponent {
       return (
         <>
           <Header title={variables.getMessage('modals.main.navbar.addons')} report={false}>
-            {this.getSideloadButton()}
+            <CustomActions>{this.getSideloadButton()}</CustomActions>
           </Header>
           <div className="emptyItems">
             <div className="emptyNewMessage">
