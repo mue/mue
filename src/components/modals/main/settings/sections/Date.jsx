@@ -75,9 +75,9 @@ export default function Date() {
         category="date"
         element=".date"
         zoomSetting="zoomDate"
-        switch={true}
+        visibilityToggle={true}
       />
-      <PreferencesWrapper setting="date" switch={true} zoomSetting="zoomDate">
+      <PreferencesWrapper setting="date" visibilityToggle={true} zoomSetting="zoomDate">
         <Row>
           <Content
             title={variables.getMessage('modals.main.settings.sections.time.type')}

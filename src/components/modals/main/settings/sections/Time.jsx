@@ -212,9 +212,9 @@ const TimeSettings = () => {
         category="clock"
         element=".clock-container"
         zoomSetting="zoomClock"
-        switch={true}
+        visibilityToggle={true}
       />
-      <PreferencesWrapper setting="time" zoomSetting="zoomClock" switch={true}>
+      <PreferencesWrapper setting="time" zoomSetting="zoomClock" visibilityToggle={true}>
         <WidgetType />
         {timeSettings}
       </PreferencesWrapper>

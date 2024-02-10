@@ -6,6 +6,7 @@ import EventBus from 'modules/helpers/eventbus';
 
 import WelcomeSections from './WelcomeSections';
 import ProgressBar from './ProgressBar';
+import Button from '../main/settings/Button';
 
 import './welcome.scss';
 
@@ -121,28 +122,27 @@ class WelcomeModal extends PureComponent {
           </div>
           <div className="welcomeButtons">
             {this.state.currentTab !== 0 ? (
-              <button
-                className="sideload"
-                style={{ marginRight: '20px' }}
+              <Button
+                type="settings"
                 onClick={() => this.changeTab(true)}
-              >
-                {variables.getMessage('modals.welcome.buttons.previous')}
-                <MdArrowBackIosNew />
-              </button>
+                icon={<MdArrowBackIosNew />}
+                label={variables.getMessage('modals.welcome.buttons.previous')}
+              />
             ) : (
-              <button
-                className="sideload"
-                style={{ marginRight: '20px' }}
+              <Button
+                type="settings"
                 onClick={() => this.props.modalSkip()}
-              >
-                {variables.getMessage('modals.welcome.buttons.preview')}
-                <MdOutlinePreview />
-              </button>
+                icon={<MdOutlinePreview />}
+                label={variables.getMessage('modals.welcome.buttons.preview')}
+              />
             )}
-            <button className="sideload" onClick={() => this.changeTab()}>
-              <MdArrowForwardIos />
-              {this.state.buttonText}
-            </button>
+            <Button
+              type="settings"
+              onClick={() => this.changeTab()}
+              icon={<MdArrowForwardIos />}
+              label={this.state.buttonText}
+              iconPlacement={'right'}
+            />
           </div>
         </section>
       </div>

@@ -4,6 +4,8 @@ import { PureComponent } from 'react';
 import { MdErrorOutline, MdRefresh } from 'react-icons/md';
 import { captureException } from '@sentry/react';
 
+import Button from './main/settings/Button';
+
 class ErrorBoundary extends PureComponent {
   constructor(props) {
     super(props);
@@ -49,19 +51,23 @@ class ErrorBoundary extends PureComponent {
             </span>
             <div className="buttonsRow">
               {this.state.showReport ? (
-                <button className="sideload" onClick={() => this.reportError()}>
-                  {variables.getMessage('modals.main.error_boundary.report_error')}
-                  <MdErrorOutline />
-                </button>
+                <Button
+                  type="settings"
+                  icon={<MdErrorOutline />}
+                  label={variables.getMessage('modals.main.error_boundary.report_error')}
+                  onClick={() => this.reportError()}
+                />
               ) : (
                 <span className="subtitle">
                   {variables.getMessage('modals.main.error_boundary.sent')}
                 </span>
               )}
-              <button className="sideload" onClick={() => window.location.reload()}>
-                {variables.getMessage('modals.main.error_boundary.refresh')}
-                <MdRefresh />
-              </button>
+              <Button
+                type="settings"
+                icon={<MdRefresh />}
+                label={variables.getMessage('modals.main.error_boundary.refresh')}
+                onClick={() => window.location.reload()}
+              />
             </div>
           </div>
         </div>

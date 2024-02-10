@@ -135,9 +135,13 @@ export default class QuickLinks extends PureComponent {
           category="quicklinks"
           element=".quicklinks-container"
           zoomSetting="zoomQuicklinks"
-          switch={true}
+          visibilityToggle={true}
         />
-        <PreferencesWrapper setting="quicklinksenabled" switch={true} zoomSetting="zoomQuicklinks">
+        <PreferencesWrapper
+          setting="quicklinksenabled"
+          visibilityToggle={true}
+          zoomSetting="zoomQuicklinks"
+        >
           <Row>
             <Content
               title={variables.getMessage('modals.main.settings.additional_settings')}

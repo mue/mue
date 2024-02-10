@@ -69,9 +69,9 @@ export default class Message extends PureComponent {
           category="message"
           element=".message"
           zoomSetting="zoomMessage"
-          switch={true}
+          visibilityToggle={true}
         />
-        <PreferencesWrapper setting="message" switch={true} zoomSetting="zoomMessage">
+        <PreferencesWrapper setting="message" visibilityToggle={true} zoomSetting="zoomMessage">
           <Row final={true}>
             <Content title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} />
             <Action>

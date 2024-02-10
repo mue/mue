@@ -205,13 +205,13 @@ export default class WeatherSettings extends PureComponent {
           category="widgets"
           zoomSetting="zoomWeather"
           zoomCategory="weather"
-          switch={true}
+          visibilityToggle={true}
         />
         <PreferencesWrapper
           setting="weatherEnabled"
           zoomSetting="zoomWeather"
           zoomCategory="weather"
-          switch={true}
+          visibilityToggle={true}
         >
           <WidgetType />
           {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}

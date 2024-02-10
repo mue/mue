@@ -92,9 +92,9 @@ const GreetingSettings = () => {
         category="greeting"
         element=".greeting"
         zoomSetting="zoomGreeting"
-        switch={true}
+        visibilityToggle={true}
       />
-      <PreferencesWrapper setting="greeting" zoomSetting="zoomGreeting" switch={true}>
+      <PreferencesWrapper setting="greeting" zoomSetting="zoomGreeting" visibilityToggle={true}>
         <AdditionalOptions />
         {BirthdayOptions()}
       </PreferencesWrapper>

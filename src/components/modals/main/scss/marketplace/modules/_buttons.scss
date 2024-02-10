@@ -24,15 +24,21 @@
   }
 }
 
-.sideload {
+.updateCheck {
+  flex-flow: row !important;
+}
+
+.btn-settings {
+  @include modal-button(standard);
   display: inline;
   margin-top: 0;
   float: none !important;
   padding: 0 20px;
-
-  // width: 200px;
 }
 
-.updateCheck {
-  flex-flow: row !important;
+.btn-navigation {
+}
+
+.flowReverse {
+  flex-flow: row-reverse !important;
 }

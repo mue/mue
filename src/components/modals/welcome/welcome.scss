@@ -311,6 +311,7 @@ a.privacy {
   padding: 25px;
   display: flex;
   justify-content: flex-end;
+  gap: 20px;
 
   button {
     @include modal-button(standard);

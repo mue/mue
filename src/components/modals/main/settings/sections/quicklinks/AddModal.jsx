@@ -66,7 +66,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               height: '16px',
               fontSize: '15px',
             }}
-            className="sideload"
+            className="btn-settings"
             onClick={() => addLink(name, url, icon)}
           >
             <MdAddLink /> {variables.getMessage('widgets.quicklinks.add')}

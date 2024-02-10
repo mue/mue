@@ -7,6 +7,7 @@ import {
   MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
 import EventBus from 'modules/helpers/eventbus';
+import Button from './Button';
 
 const Header = (props) => {
   const [setting, setSetting] = useState(localStorage.getItem(props.setting) === 'true');
@@ -38,31 +39,24 @@ const Header = (props) => {
   };
 
   const VisibilityToggle = () => (
-    <button className="sideload" onClick={changeSetting}>
-      {setting ? (
-        <>
-          Hide
-          <MdOutlineVisibilityOff />
-        </>
-      ) : (
-        <>
-          Show
-          <MdOutlineVisibility />
-        </>
-      )}
-    </button>
+    <Button
+      type="settings"
+      onClick={changeSetting}
+      icon={setting ? <MdOutlineVisibilityOff /> : <MdOutlineVisibility />}
+      label={setting ? 'Hide' : 'Show'}
+    />
   );
 
   const ReportButton = () => {
     return (
-      <button
-        className="sideload"
+      <Button
+        type="settings"
         onClick={() =>
           window.open(variables.constants.BUG_REPORT + props.title.split(' ').join('+'), '_blank')
         }
-      >
-        {variables.getMessage('modals.main.settings.sections.header.report_issue')} <MdFlag />
-      </button>
+        icon={<MdFlag />}
+        label={variables.getMessage('modals.main.settings.sections.header.report_issue')}
+      />
     );
   };
 
@@ -70,20 +64,18 @@ const Header = (props) => {
     <>
       <div className="modalHeader">
         <span className="mainTitle">
-          {props.secondaryTitle ? (
+          {props.secondaryTitle && (
             <>
               <span className="backTitle" onClick={props.goBack}>
                 {props.title}
               </span>
               <MdOutlineKeyboardArrowRight />
-              {props.secondaryTitle}
             </>
-          ) : (
-            <>{props.title}</>
           )}
+          {props.secondaryTitle || props.title}
         </span>
         <div className="headerActions">
-          {props.switch && <VisibilityToggle />}
+          {props.visibilityToggle && <VisibilityToggle />}
           {props.report !== false && <ReportButton />}
           {props.children}
         </div>

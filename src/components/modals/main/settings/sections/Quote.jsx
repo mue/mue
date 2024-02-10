@@ -262,7 +262,7 @@ export default class QuoteSettings extends PureComponent {
             category="quote"
             element=".quotediv"
             zoomSetting="zoomQuote"
-            switch={true}
+            visibilityToggle={true}
           />
         )}
         {this.state.sourceSection && (
@@ -277,7 +277,7 @@ export default class QuoteSettings extends PureComponent {
           </Row>
         )}
         {!this.state.sourceSection && (
-          <PreferencesWrapper setting="quote" zoomSetting="zoomQuote" switch={true}>
+          <PreferencesWrapper setting="quote" zoomSetting="zoomQuote" visibilityToggle={true}>
             <Section
               icon={<MdSource />}
               title={variables.getMessage('modals.main.settings.sections.background.source.title')}

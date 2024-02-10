@@ -10,6 +10,7 @@ import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 import Header from '../../settings/Header';
+import Button from '../../settings/Button';
 
 import { install, uninstall, urlParser } from 'modules/helpers/marketplace';
 
@@ -73,14 +74,13 @@ export default class Added extends PureComponent {
 
   getSideloadButton() {
     return (
-      <button
-        className="sideload"
+      <Button
+        type="settings"
         onClick={() => document.getElementById('file-input').click()}
         ref={this.customDnd}
-      >
-        {variables.getMessage('modals.main.addons.sideload.title')}
-        <MdCode />
-      </button>
+        icon={<MdCode />}
+        label={variables.getMessage('modals.main.addons.sideload.title')}
+      />
     );
   }
 
@@ -242,17 +242,18 @@ export default class Added extends PureComponent {
           <div className="filter">
             {sideLoadBackendElements()}
             <div className="buttonSection">
-              <button className="addToMue sideload updateCheck" onClick={() => this.updateCheck()}>
-                <MdUpdate />
-                {variables.getMessage('modals.main.addons.check_updates')}
-              </button>
-              <button
-                className="sideload"
+              <Button
+                type="settings"
+                onClick={() => this.updateCheck()}
+                icon={<MdUpdate />}
+                label={variables.getMessage('modals.main.addons.check_updates')}
+              />
+              <Button
+                type="settings"
                 onClick={() => document.getElementById('file-input').click()}
-              >
-                {variables.getMessage('modals.main.addons.sideload.title')}
-                <MdCode />
-              </button>
+                icon={<MdCode />}
+                label={variables.getMessage('modals.main.addons.sideload.title')}
+              />
             </div>
           </div>
         </div>

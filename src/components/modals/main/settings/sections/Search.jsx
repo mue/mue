@@ -141,9 +141,9 @@ export default class SearchSettings extends PureComponent {
           title={variables.getMessage(`${SEARCH_SECTION}.title`)}
           setting="searchBar"
           category="widgets"
-          switch={true}
+          visibilityToggle={true}
         />
-        <PreferencesWrapper setting="searchBar" category="widgets" switch={true}>
+        <PreferencesWrapper setting="searchBar" category="widgets" visibilityToggle={true}>
           <AdditionalOptions />
           <SearchEngineSelection />
           {this.state.customEnabled && (
