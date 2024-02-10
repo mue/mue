@@ -3,6 +3,8 @@ import { MdOutlineArrowForwardIos, MdOutlineArrowBackIos } from 'react-icons/md'
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
+import variables from 'modules/variables';
+
 import './carousel.scss';
 
 function EmblaCarousel({ data }) {
@@ -53,26 +55,33 @@ function EmblaCarousel({ data }) {
           {data.map((photo, index) => (
             <div className="carousel_slide" key={index}>
               <div className="carousel_slide_inner">
-                <img src={photo.url.default} alt="Marketplace example screenshot" />
+                <img
+                  src={variables.constants.DDG_IMAGE_PROXY + photo.url.default}
+                  alt="Marketplace example screenshot"
+                />
               </div>
             </div>
           ))}
         </div>
       </div>
-      <button
-        className="carousel_button prev"
-        onClick={() => scroll('prev')}
-        disabled={!prevBtnEnabled}
-      >
-        <MdOutlineArrowBackIos />
-      </button>
-      <button
-        className="carousel_button next"
-        onClick={() => scroll('next')}
-        disabled={!nextBtnEnabled}
-      >
-        <MdOutlineArrowForwardIos />
-      </button>
+      {data.length > 1 && (
+        <>
+          <button
+            className="carousel_button prev"
+            onClick={() => scroll('prev')}
+            disabled={!prevBtnEnabled}
+          >
+            <MdOutlineArrowBackIos />
+          </button>
+          <button
+            className="carousel_button next"
+            onClick={() => scroll('next')}
+            disabled={!nextBtnEnabled}
+          >
+            <MdOutlineArrowForwardIos />
+          </button>
+        </>
+      )}
     </div>
   );
 }

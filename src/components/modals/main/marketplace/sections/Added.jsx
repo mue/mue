@@ -60,7 +60,7 @@ export default class Added extends PureComponent {
       failedReason = variables.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
     }
 
-    if (failedReason !== '') {
+    if (failedReason !== '' && this.state.showFailed === false) {
       return this.setState({
         failedReason,
         showFailed: true,

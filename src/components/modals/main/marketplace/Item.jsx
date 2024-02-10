@@ -11,7 +11,6 @@ import {
   MdFormatQuote,
   MdImage,
   MdTranslate,
-  MdOutlineKeyboardArrowRight,
   MdExpandMore,
   MdExpandLess,
   MdStyle,
@@ -47,24 +46,21 @@ class Item extends PureComponent {
   }
 
   incrementCount(type) {
-    if (this.state.count !== this.props.data.data[type].length) {
-      this.setState({ count: this.props.data.data[type].length });
-    } else {
-      this.setState({ count: 5 });
-    }
+    const newCount =
+      this.state.count !== this.props.data.data[type].length
+        ? this.props.data.data[type].length
+        : 5;
+
+    this.setState({ count: newCount });
   }
 
   getName(name) {
-    switch (name) {
-      case 'photos':
-        return 'photo_packs';
-      case 'quotes':
-        return 'quote_packs';
-      case 'settings':
-        return 'preset_settings';
-      default:
-        return name;
-    }
+    const nameMappings = {
+      photos: 'photo_packs',
+      quotes: 'quote_packs',
+      settings: 'preset_settings',
+    };
+    return nameMappings[name] || name;
   }
 
   render() {
@@ -88,6 +84,16 @@ class Item extends PureComponent {
         </Fragment>
       );
     }
+
+    const moreInfoItem = (icon, header, text) => (
+      <div className="infoItem">
+        {icon}
+        <div className="text">
+          <span className="header">{header}</span>
+          <span>{text}</span>
+        </div>
+      </div>
+    );
 
     return (
       <div id="item">
@@ -204,78 +210,48 @@ class Item extends PureComponent {
               <p dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
             </div>
             <div className="moreInfo">
-              <div className="infoItem">
-                <MdBugReport />
-                <div className="text">
-                  <span className="header">
-                    {variables.getMessage('modals.main.marketplace.product.version')}
-                  </span>
-                  {updateButton ? (
-                    <span>
-                      {this.props.data.version} (Installed: {this.props.data.addonInstalledVersion})
-                    </span>
-                  ) : (
-                    <span>{this.props.data.version}</span>
-                  )}
-                </div>
-              </div>
-              <div className="infoItem">
-                <MdAccountCircle />
-                <div className="text">
-                  <span className="header">
-                    {variables.getMessage('modals.main.marketplace.product.author')}
-                  </span>
-                  <span>{this.props.data.author}</span>
-                </div>
-              </div>
-              {this.props.data.data.quotes && (
-                <div className="infoItem">
-                  <MdFormatQuote />
-                  <div className="text">
-                    <span className="header">
-                      {variables.getMessage('modals.main.marketplace.product.no_quotes')}
-                    </span>
-                    <span>{this.props.data.data.quotes.length}</span>
-                  </div>
-                </div>
-              )}
-              {this.props.data.data.photos && (
-                <div className="infoItem">
-                  <MdImage />
-                  <div className="text">
-                    <span className="header">
-                      {variables.getMessage('modals.main.marketplace.product.no_images')}
-                    </span>
-                    <span>{this.props.data.data.photos.length}</span>
-                  </div>
-                </div>
-              )}
-              {this.props.data.data.quotes && this.props.data.data.language !== '' ? (
-                <div className="infoItem">
-                  <MdTranslate />
-                  <div className="text">
-                    <span className="header">
-                      {variables.getMessage('modals.main.settings.sections.language.title')}
-                    </span>
-                    <span>{this.props.data.data.language}</span>
-                  </div>
-                </div>
-              ) : null}
-              <div className="infoItem">
-                <MdStyle />
-                <div className="text">
-                  <span className="header">
-                    {' '}
-                    {variables.getMessage('modals.main.settings.sections.background.type.title')}
-                  </span>
+              {moreInfoItem(
+                <MdBugReport />,
+                variables.getMessage('modals.main.marketplace.product.version'),
+                updateButton ? (
                   <span>
-                    {' '}
-                    {variables.getMessage(
-                      'modals.main.marketplace.' + this.getName(this.props.data.data.type),
-                    ) || 'marketplace'}
+                    {this.props.data.version} (Installed: {this.props.data.addonInstalledVersion})
                   </span>
-                </div>
-              </div>
+                ) : (
+                  <span>{this.props.data.version}</span>
+                ),
+              )}
+              {moreInfoItem(
+                <MdAccountCircle />,
+                variables.getMessage('modals.main.marketplace.product.author'),
+                this.props.data.author,
+              )}
+              {this.props.data.data.quotes &&
+                moreInfoItem(
+                  <MdFormatQuote />,
+                  variables.getMessage('modals.main.marketplace.product.no_quotes'),
+                  this.props.data.data.quotes.length,
+                )}
+              {this.props.data.data.photos &&
+                moreInfoItem(
+                  <MdImage />,
+                  variables.getMessage('modals.main.marketplace.product.no_images'),
+                  this.props.data.data.photos.length,
+                )}
+              {this.props.data.data.quotes && this.props.data.data.language !== ''
+                ? moreInfoItem(
+                    <MdTranslate />,
+                    variables.getMessage('modals.main.settings.sections.language.title'),
+                    this.props.data.data.language,
+                  )
+                : null}
+              {moreInfoItem(
+                <MdStyle />,
+                variables.getMessage('modals.main.settings.sections.background.type.title'),
+                variables.getMessage(
+                  'modals.main.marketplace.' + this.getName(this.props.data.data.type),
+                ) || 'marketplace',
+              )}
             </div>
           </div>
           <div
