@@ -267,26 +267,23 @@ export default class BackgroundSettings extends PureComponent {
     let header;
     if (this.state.effects === true) {
       header = (
-        <span className="mainTitle" onClick={() => this.setState({ effects: false })}>
-          <span className="backTitle">
-            {variables.getMessage('modals.main.settings.sections.background.title')}
-          </span>
-          <MdOutlineKeyboardArrowRight />{' '}
-          {variables.getMessage('modals.main.settings.sections.background.effects.title')}
-        </span>
+        <Header
+          title={variables.getMessage('modals.main.settings.sections.background.title')}
+          secondaryTitle={variables.getMessage(
+            'modals.main.settings.sections.background.effects.title',
+          )}
+          goBack={() => this.setState({ effects: false })}
+        />
       );
     } else if (this.state.backgroundSettingsSection === true) {
       header = (
-        <span
-          className="mainTitle"
-          onClick={() => this.setState({ backgroundSettingsSection: false })}
-        >
-          <span className="backTitle">
-            {variables.getMessage('modals.main.settings.sections.background.title')}{' '}
-          </span>
-          <MdOutlineKeyboardArrowRight />{' '}
-          {variables.getMessage('modals.main.settings.sections.background.source.title')}
-        </span>
+        <Header
+          title={variables.getMessage('modals.main.settings.sections.background.title')}
+          secondaryTitle={variables.getMessage(
+            'modals.main.settings.sections.background.source.title',
+          )}
+          goBack={() => this.setState({ backgroundSettingsSection: false })}
+        />
       );
     } else {
       header = (

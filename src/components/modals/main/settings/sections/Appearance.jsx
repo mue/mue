@@ -7,6 +7,7 @@ import Dropdown from '../Dropdown';
 import Radio from '../Radio';
 import Slider from '../Slider';
 import Text from '../Text';
+import Header from '../Header';
 
 import { Row, Content, Action } from '../SettingsItem';
 
@@ -234,20 +235,21 @@ function AppearanceSettings() {
   let header;
   if (accessibility) {
     header = (
-      <span className="mainTitle">
-        <span className="backTitle" onClick={() => setAccessibility(false)}>
-          {variables.getMessage('modals.main.settings.sections.appearance.title')}
-        </span>
-        <MdOutlineKeyboardArrowRight />
-        {variables.getMessage('modals.main.settings.sections.appearance.accessibility.title')}
-      </span>
+      <Header
+        title={variables.getMessage('modals.main.settings.sections.appearance.title')}
+        secondaryTitle={variables.getMessage(
+          'modals.main.settings.sections.appearance.accessibility.title',
+        )}
+        goBack={() => setAccessibility(false)}
+        report={false}
+      />
     );
   } else {
     header = (
-      <span className="mainTitle">
-        {' '}
-        {variables.getMessage('modals.main.settings.sections.appearance.title')}
-      </span>
+      <Header
+        title={variables.getMessage('modals.main.settings.sections.appearance.title')}
+        report={false}
+      />
     );
   }
   return (

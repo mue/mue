@@ -508,3 +508,18 @@ a.collectionButton {
   align-items: center;
   justify-content: space-between;
 }
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  .tooltip {
+    margin-right: 25px;
+  }
+
+  .mainTitle {
+    margin-bottom: 0 !important;
+  }
+}

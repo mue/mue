@@ -13,6 +13,7 @@ import {
 import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
+import Header from '../../settings/Header';
 
 import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
 
@@ -325,15 +326,12 @@ class Marketplace extends PureComponent {
       <>
         {this.state.collection === true ? (
           <>
-            <div className="flexTopMarketplace">
-              <span className="mainTitle" onClick={() => this.returnToMain()}>
-                <span className="backTitle">
-                  {variables.getMessage('modals.main.navbar.marketplace')}
-                </span>
-                <MdOutlineKeyboardArrowRight />{' '}
-                {variables.getMessage('modals.main.marketplace.collection')}
-              </span>
-            </div>
+            <Header
+              title={variables.getMessage('modals.main.navbar.marketplace')}
+              secondaryTitle={variables.getMessage('modals.main.marketplace.collection')}
+              report={false}
+              goBack={() => this.returnToMain()}
+            />
             <div
               className="collectionPage"
               style={{

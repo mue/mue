@@ -1,100 +1,95 @@
 import variables from 'modules/variables';
-
-import { PureComponent } from 'react';
+import { useState, useEffect } from 'react';
 import {
-  /*MdHelpOutline,*/ MdFlag,
-  MdArrowBack,
+  MdFlag,
   MdOutlineVisibilityOff,
   MdOutlineVisibility,
+  MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
-
-import Slider from './Slider';
 import EventBus from 'modules/helpers/eventbus';
 
-import { values } from 'modules/helpers/settings/modals';
-import Tooltip from 'components/helpers/tooltip/Tooltip';
+const Header = (props) => {
+  const [setting, setSetting] = useState(localStorage.getItem(props.setting) === 'true');
 
-class Header extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      [this.props.setting]: localStorage.getItem(this.props.setting) === 'true',
-    };
-  }
+  useEffect(() => {
+    setSetting(localStorage.getItem(props.setting) === 'true');
+  }, [props.setting]);
 
-  changeSetting() {
-    if (localStorage.getItem(this.props.setting) === 'true') {
-      localStorage.setItem(this.props.setting, false);
-      this.setState({ [this.props.setting]: false });
-      EventBus.emit('toggle', this.props.setting);
-    } else {
-      localStorage.setItem(this.props.setting, true);
-      this.setState({ [this.props.setting]: true });
-      EventBus.emit('toggle', this.props.setting);
-    }
+  const changeSetting = () => {
+    const toggle = localStorage.getItem(props.setting) === 'true';
+    localStorage.setItem(props.setting, !toggle);
+    setSetting(!toggle);
 
     variables.stats.postEvent(
       'setting',
-      `${this.props.name} ${this.state.checked === true ? 'enabled' : 'disabled'}`,
+      `${props.name} ${setting === true ? 'enabled' : 'disabled'}`,
     );
 
-    if (this.props.element) {
-      if (!document.querySelector(this.props.element)) {
+    EventBus.emit('toggle', props.setting);
+
+    if (props.element) {
+      if (!document.querySelector(props.element)) {
         document.querySelector('.reminder-info').style.display = 'flex';
         return localStorage.setItem('showReminder', true);
       }
     }
 
-    EventBus.emit('refresh', this.props.category);
-  }
+    EventBus.emit('refresh', props.category);
+  };
 
-  render() {
+  const VisibilityToggle = () => (
+    <button className="sideload" onClick={changeSetting}>
+      {setting ? (
+        <>
+          Hide
+          <MdOutlineVisibilityOff />
+        </>
+      ) : (
+        <>
+          Show
+          <MdOutlineVisibility />
+        </>
+      )}
+    </button>
+  );
+
+  const ReportButton = () => {
     return (
-      <>
-        <div className="flexTopMarketplace topAddons">
-          {this.props.backButton && (
-            <div className="returnButton" onClick={this.props.clickEffect}>
-              <Tooltip
-                title={variables.getMessage('modals.main.navbar.marketplace.product.buttons.back')}
-                key="backArrow"
-              >
-                <MdArrowBack className="backArrow" />
-              </Tooltip>
-            </div>
-          )}
-          <span className="mainTitle">{this.props.title}</span>
-          <div className="headerActions">
-            {this.props.switch && (
-              <button className="sideload" onClick={() => this.changeSetting()}>
-                {this.state[this.props.setting] ? (
-                  <>
-                    Hide
-                    <MdOutlineVisibilityOff />
-                  </>
-                ) : (
-                  <>
-                    Show
-                    <MdOutlineVisibility />
-                  </>
-                )}
-              </button>
-            )}
-            <button
-              className="sideload"
-              onClick={() =>
-                window.open(
-                  variables.constants.BUG_REPORT + this.props.title.split(' ').join('+'),
-                  '_blank',
-                )
-              }
-            >
-              {variables.getMessage('modals.main.settings.sections.header.report_issue')} <MdFlag />
-            </button>
-          </div>
-        </div>
-      </>
+      <button
+        className="sideload"
+        onClick={() =>
+          window.open(variables.constants.BUG_REPORT + props.title.split(' ').join('+'), '_blank')
+        }
+      >
+        {variables.getMessage('modals.main.settings.sections.header.report_issue')} <MdFlag />
+      </button>
     );
-  }
-}
+  };
+
+  return (
+    <>
+      <div className="modalHeader">
+        <span className="mainTitle">
+          {props.secondaryTitle ? (
+            <>
+              <span className="backTitle" onClick={props.goBack}>
+                {props.title}
+              </span>
+              <MdOutlineKeyboardArrowRight />
+              {props.secondaryTitle}
+            </>
+          ) : (
+            <>{props.title}</>
+          )}
+        </span>
+        <div className="headerActions">
+          {props.switch && <VisibilityToggle />}
+          {props.report !== false && <ReportButton />}
+          {props.children}
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Header;

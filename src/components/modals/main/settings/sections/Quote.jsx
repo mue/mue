@@ -247,11 +247,14 @@ export default class QuoteSettings extends PureComponent {
     return (
       <>
         {this.state.sourceSection ? (
-          <span className="mainTitle" onClick={() => this.setState({ sourceSection: false })}>
-            <span className="backTitle">{variables.getMessage(`${QUOTE_SECTION}.title`)}</span>
-            <MdOutlineKeyboardArrowRight />{' '}
-            {variables.getMessage('modals.main.settings.sections.background.source.title')}
-          </span>
+          <Header
+            title={variables.getMessage(`${QUOTE_SECTION}.title`)}
+            secondaryTitle={variables.getMessage(
+              'modals.main.settings.sections.background.source.title',
+            )}
+            goBack={() => this.setState({ sourceSection: false })}
+            report={false}
+          />
         ) : (
           <Header
             title={variables.getMessage(`${QUOTE_SECTION}.title`)}

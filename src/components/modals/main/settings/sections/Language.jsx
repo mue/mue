@@ -69,7 +69,7 @@ export default class LanguageSettings extends PureComponent {
   render() {
     return (
       <>
-        <div className="flexTopMarketplace topAddons">
+        <div className="modalHeader">
           <span className="mainTitle">
             {variables.getMessage('modals.main.settings.sections.language.title')}
           </span>

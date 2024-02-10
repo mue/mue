@@ -9,6 +9,7 @@ import FileUpload from '../../settings/FileUpload';
 import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
+import Header from '../../settings/Header';
 
 import { install, uninstall, urlParser } from 'modules/helpers/marketplace';
 
@@ -68,6 +69,19 @@ export default class Added extends PureComponent {
     install(input.type, input);
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
+  }
+
+  getSideloadButton() {
+    return (
+      <button
+        className="sideload"
+        onClick={() => document.getElementById('file-input').click()}
+        ref={this.customDnd}
+      >
+        {variables.getMessage('modals.main.addons.sideload.title')}
+        <MdCode />
+      </button>
+    );
   }
 
   toggle(type, data) {
@@ -193,18 +207,9 @@ export default class Added extends PureComponent {
     if (this.state.installed.length === 0) {
       return (
         <>
-          <div className="flexTopMarketplace topAddons">
-            <span className="mainTitle">{variables.getMessage('modals.main.navbar.addons')}</span>
-            {sideLoadBackendElements()}
-            <button
-              className="sideload"
-              onClick={() => document.getElementById('file-input').click()}
-              ref={this.customDnd}
-            >
-              {variables.getMessage('modals.main.addons.sideload.title')}
-              <MdCode />
-            </button>
-          </div>
+          <Header title={variables.getMessage('modals.main.navbar.addons')} report={false}>
+            {this.getSideloadButton()}
+          </Header>
           <div className="emptyItems">
             <div className="emptyNewMessage">
               <MdOutlineExtensionOff />
@@ -232,7 +237,7 @@ export default class Added extends PureComponent {
 
     return (
       <>
-        <div className="flexTopMarketplace topAddons">
+        <div className="modalHeader">
           <span className="mainTitle">{variables.getMessage('modals.main.addons.added')}</span>
           <div className="filter">
             {sideLoadBackendElements()}

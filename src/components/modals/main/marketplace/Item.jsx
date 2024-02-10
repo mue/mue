@@ -18,6 +18,8 @@ import {
 } from 'react-icons/md';
 import Modal from 'react-modal';
 
+import Header from '../settings/Header';
+
 import { install, uninstall } from 'modules/helpers/marketplace';
 
 import ShareModal from 'components/helpers/sharemodal/ShareModal';
@@ -104,14 +106,12 @@ class Item extends PureComponent {
             modalClose={() => this.setState({ shareModal: false })}
           />
         </Modal>
-        <div className="flexTopMarketplace">
-          <span className="mainTitle" onClick={this.props.toggleFunction}>
-            <span className="backTitle">
-              {variables.getMessage('modals.main.navbar.marketplace')}
-            </span>
-            <MdOutlineKeyboardArrowRight /> {this.props.data.data.display_name}
-          </span>
-        </div>
+        <Header
+          title={variables.getMessage('modals.main.navbar.marketplace')}
+          secondaryTitle={this.props.data.data.display_name}
+          report={false}
+          goBack={this.props.toggleFunction}
+        />
         <div className="itemPage">
           <div className="itemShowcase">
             {this.props.data.data.photos && (

@@ -75,48 +75,44 @@ class Tabs extends PureComponent {
           {reminderInfo}
         </ul>
         <div className="tab-content" style={{ width: '100%' }}>
-          <ErrorBoundary>
-            <div className="modalNavbar">
-              <button
-                className={
-                  this.props.current === 'settings'
-                    ? 'navbar-item navbar-item-active'
-                    : 'navbar-item'
-                }
-                onClick={() => this.props.changeTab('settings')}
-              >
-                <MdSettings />
-                <span>{variables.getMessage('modals.main.navbar.settings')}</span>
-              </button>
-              <button
-                className={
-                  this.props.current === 'addons' ? 'navbar-item navbar-item-active' : 'navbar-item'
-                }
-                onClick={() => this.props.changeTab('addons')}
-              >
-                <MdOutlineExtension />
-                <span>{variables.getMessage('modals.main.navbar.addons')}</span>
-              </button>
-              <button
-                className={
-                  this.props.current === 'marketplace'
-                    ? 'navbar-item navbar-item-active'
-                    : 'navbar-item'
-                }
-                onClick={() => this.props.changeTab('marketplace')}
-              >
-                <MdOutlineShoppingBasket />
-                <span>{variables.getMessage('modals.main.navbar.marketplace')}</span>
-              </button>
-            </div>
-            {this.props.children.map((tab) => {
-              if (tab.props.label !== this.state.currentTab) {
-                return undefined;
+          <div className="modalNavbar">
+            <button
+              className={
+                this.props.current === 'settings' ? 'navbar-item navbar-item-active' : 'navbar-item'
               }
+              onClick={() => this.props.changeTab('settings')}
+            >
+              <MdSettings />
+              <span>{variables.getMessage('modals.main.navbar.settings')}</span>
+            </button>
+            <button
+              className={
+                this.props.current === 'addons' ? 'navbar-item navbar-item-active' : 'navbar-item'
+              }
+              onClick={() => this.props.changeTab('addons')}
+            >
+              <MdOutlineExtension />
+              <span>{variables.getMessage('modals.main.navbar.addons')}</span>
+            </button>
+            <button
+              className={
+                this.props.current === 'marketplace'
+                  ? 'navbar-item navbar-item-active'
+                  : 'navbar-item'
+              }
+              onClick={() => this.props.changeTab('marketplace')}
+            >
+              <MdOutlineShoppingBasket />
+              <span>{variables.getMessage('modals.main.navbar.marketplace')}</span>
+            </button>
+          </div>
+          {this.props.children.map((tab) => {
+            if (tab.props.label !== this.state.currentTab) {
+              return undefined;
+            }
 
-              return tab.props.children;
-            })}
-          </ErrorBoundary>
+            return <ErrorBoundary>{tab.props.children}</ErrorBoundary>;
+          })}
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import * as Sentry from '@sentry/react';
 
 import App from './App';
+import ErrorBoundary from './ErrorBoundary';
 import variables from './modules/variables';
 
 import './scss/index.scss';
@@ -27,4 +28,8 @@ Sentry.init({
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<App />);
+root.render(
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>,
+);

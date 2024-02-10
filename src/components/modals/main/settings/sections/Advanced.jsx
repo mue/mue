@@ -17,6 +17,7 @@ import Text from '../Text';
 import Switch from '../Switch';
 import ResetModal from '../ResetModal';
 import Dropdown from '../Dropdown';
+import Header from '../Header';
 
 import { Row, Content, Action } from '../SettingsItem';
 import Section from '../Section';
@@ -64,18 +65,15 @@ export default function AdvancedSettings() {
   let header;
   if (data) {
     header = (
-      <span className="mainTitle">
-        <span className="backTitle" onClick={() => setData(false)}>
-          {variables.getMessage(`${ADVANCED_SECTION}.title`)}
-        </span>
-        <MdOutlineKeyboardArrowRight />
-        {variables.getMessage(`${ADVANCED_SECTION}.data`)}
-      </span>
+      <Header
+        title={variables.getMessage(`${ADVANCED_SECTION}.title`)}
+        secondaryTitle={variables.getMessage(`${ADVANCED_SECTION}.data`)}
+        goBack={() => setData(false)}
+        report={false}
+      />
     );
   } else {
-    header = (
-      <span className="mainTitle"> {variables.getMessage(`${ADVANCED_SECTION}.title`)}</span>
-    );
+    header = <Header title={variables.getMessage(`${ADVANCED_SECTION}.title`)} report={false} />;
   }
 
   return (
