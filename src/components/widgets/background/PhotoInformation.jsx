@@ -239,7 +239,7 @@ function PhotoInformation({ info, url, api }) {
             </div>
           )}
           <div className="photoInformation-content">
-            <div className="photoInfomration-text">
+            <div className="photoInformation-text">
               <span
                 className="title"
                 title={
