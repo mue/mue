@@ -17,6 +17,7 @@ $modal-sidebarActive: 'modal-sidebarActive';
 $link: 'link';
 $weather: 'weather';
 $modal-secondaryColour: 'modal-secondaryColour';
+$slightGradient: 'slightGradient';
 $theme-colours: (
   'gradient': linear-gradient(90deg, #ffb032 0%, #dd3b67 100%),
   'main': rgb(242 243 244 / 100%),
@@ -67,6 +68,7 @@ $themes: (
     'modal-sidebarActive': rgb(219 219 219 / 72%),
     'modal-secondaryColour': #fafafa,
     'link': #5352ed,
+    'slightGradient': linear-gradient(#ffffff, #dddddd),
   ),
   dark: (
     'weather': #e7e7e7,
@@ -83,6 +85,7 @@ $themes: (
     'modal-sidebarActive': #333,
     'modal-secondaryColour': #111,
     'link': rgb(115 115 255),
+    'slightGradient': linear-gradient(#0e1013, #322a2a),
   ),
 );
 
