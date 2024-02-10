@@ -2,6 +2,8 @@ import variables from 'modules/variables';
 import React, { memo } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 
+import Button from '../settings/Button';
+
 function Items({
   type,
   items,
@@ -32,7 +34,7 @@ function Items({
             </div>
             {collection.news === true ? (
               <a
-                className="collectionButton"
+                className="btn-collection"
                 href={collection.news_link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -40,13 +42,13 @@ function Items({
                 {variables.getMessage('modals.main.marketplace.learn_more')} <MdOutlineOpenInNew />
               </a>
             ) : (
-              <button
-                className="collectionButton"
+              <Button
+                type="collection"
                 onClick={() => collectionFunction(collection.name)}
-              >
-                <MdOutlineArrowForward />
-                {variables.getMessage('modals.main.marketplace.explore_collection')}
-              </button>
+                icon={<MdOutlineArrowForward />}
+                label={variables.getMessage('modals.main.marketplace.explore_collection')}
+                iconPlacement={'right'}
+              />
             )}
           </div>
         </>

@@ -135,6 +135,28 @@ export default class SearchSettings extends PureComponent {
       );
     };
 
+    const CustomOptions = () => {
+      return (
+        <Row final={true}>
+          <Content title={variables.getMessage(`${SEARCH_SECTION}.custom`)} />
+          <Action>
+            <TextField
+              label={variables.getMessage(`${SEARCH_SECTION}.custom`)}
+              value={this.state.customValue}
+              onInput={(e) => this.setState({ customValue: e.target.value })}
+              varient="outlined"
+              InputLabelProps={{ shrink: true }}
+            />
+            <p style={{ marginTop: '0px' }}>
+              <span className="link" onClick={() => this.resetSearch()}>
+                {variables.getMessage('modals.main.settings.buttons.reset')}
+              </span>
+            </p>
+          </Action>
+        </Row>
+      );
+    };
+
     return (
       <>
         <Header
@@ -146,25 +168,7 @@ export default class SearchSettings extends PureComponent {
         <PreferencesWrapper setting="searchBar" category="widgets" visibilityToggle={true}>
           <AdditionalOptions />
           <SearchEngineSelection />
-          {this.state.customEnabled && (
-            <Row final={true}>
-              <Content title={variables.getMessage(`${SEARCH_SECTION}.custom`)} />
-              <Action>
-                <TextField
-                  label={variables.getMessage(`${SEARCH_SECTION}.custom`)}
-                  value={this.state.customValue}
-                  onInput={(e) => this.setState({ customValue: e.target.value })}
-                  varient="outlined"
-                  InputLabelProps={{ shrink: true }}
-                />
-                <p style={{ marginTop: '0px' }}>
-                  <span className="link" onClick={() => this.resetSearch()}>
-                    {variables.getMessage('modals.main.settings.buttons.reset')}
-                  </span>
-                </p>
-              </Action>
-            </Row>
-          )}
+          {this.state.customEnabled && CustomOptions()}
         </PreferencesWrapper>
       </>
     );

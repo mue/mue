@@ -14,7 +14,7 @@ const renderLoader = () => (
     <ul className="sidebar">
       <span className="mainTitle">Mue</span>
     </ul>
-    <div className="tab-content" style={{ width: '100%' }}>
+    <div className="tab-content">
       <div className="emptyItems">
         <div className="emptyMessage">
           <div className="loaderHolder">

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import Tooltip from '../../../helpers/tooltip/Tooltip';
 
-const Button = forwardRef(({ icon, label, type, iconPlacement, onClick, children }, ref) => {
+const Button = forwardRef(({ icon, label, type, iconPlacement, onClick, active }, ref) => {
   let className;
 
   switch (type) {
@@ -14,12 +14,19 @@ const Button = forwardRef(({ icon, label, type, iconPlacement, onClick, children
     case 'navigation':
       className = 'btn-navigation';
       break;
+    case 'collection':
+      className = 'btn-collection';
+      break;
     default:
       className = 'btn-default';
   }
 
   if (iconPlacement === 'right') {
     className += ' flowReverse';
+  }
+
+  if (active) {
+    className += ` ${className}-active`;
   }
 
   const button = (

@@ -1,44 +1,3 @@
-.navbar-item {
-  flex-flow: row !important;
-  padding: 0 15px;
-
-  @include themed {
-    background: t($modal-secondaryColour) !important;
-    border-radius: t($borderRadius) !important;
-    box-shadow: t($boxShadow) !important;
-    border: 0 !important;
-
-    &:hover {
-      background: t($modal-sidebarActive) !important;
-    }
-  }
-
-  &:hover {
-    svg {
-      background: var(--tab-active);
-    }
-
-    color: var(--modal-text);
-  }
-
-  span,
-  svg {
-    font-size: 1.1em !important;
-  }
-
-  svg {
-    font-size: 1.2em !important;
-    color: var(--photo-info);
-  }
-}
-
-/* safari fix */
-@supports (-webkit-hyphens: none) {
-  .navbar-item {
-    display: inline-block !important;
-  }
-}
-
 #modal {
   display: flex;
   align-items: flex-start;
@@ -50,10 +9,4 @@
   flex-flow: row;
   gap: 25px;
   margin-bottom: 1rem;
-}
-
-.navbar-item-active {
-  @include themed {
-    background: t($modal-sidebarActive) !important;
-  }
 }

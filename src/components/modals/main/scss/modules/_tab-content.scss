@@ -1,6 +1,8 @@
 @import 'scss/variables';
 
 .tab-content {
+  width: 100% !important;
+
   button {
     @include modal-button(standard);
   }

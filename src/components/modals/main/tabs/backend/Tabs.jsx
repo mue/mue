@@ -8,6 +8,7 @@ import {
   MdClose,
 } from 'react-icons/md';
 import Tab from './Tab';
+import Button from '../../settings/Button';
 import ErrorBoundary from '../../../ErrorBoundary';
 
 class Tabs extends PureComponent {
@@ -37,6 +38,21 @@ class Tabs extends PureComponent {
   }
 
   render() {
+    const navbarButtons = [
+      {
+        tab: 'settings',
+        icon: <MdSettings />,
+      },
+      {
+        tab: 'addons',
+        icon: <MdOutlineExtension />,
+      },
+      {
+        tab: 'marketplace',
+        icon: <MdOutlineShoppingBasket />,
+      },
+    ];
+
     const reminderInfo = (
       <div
         className="reminder-info"
@@ -74,37 +90,17 @@ class Tabs extends PureComponent {
           ))}
           {reminderInfo}
         </ul>
-        <div className="tab-content" style={{ width: '100%' }}>
+        <div className="tab-content">
           <div className="modalNavbar">
-            <button
-              className={
-                this.props.current === 'settings' ? 'navbar-item navbar-item-active' : 'navbar-item'
-              }
-              onClick={() => this.props.changeTab('settings')}
-            >
-              <MdSettings />
-              <span>{variables.getMessage('modals.main.navbar.settings')}</span>
-            </button>
-            <button
-              className={
-                this.props.current === 'addons' ? 'navbar-item navbar-item-active' : 'navbar-item'
-              }
-              onClick={() => this.props.changeTab('addons')}
-            >
-              <MdOutlineExtension />
-              <span>{variables.getMessage('modals.main.navbar.addons')}</span>
-            </button>
-            <button
-              className={
-                this.props.current === 'marketplace'
-                  ? 'navbar-item navbar-item-active'
-                  : 'navbar-item'
-              }
-              onClick={() => this.props.changeTab('marketplace')}
-            >
-              <MdOutlineShoppingBasket />
-              <span>{variables.getMessage('modals.main.navbar.marketplace')}</span>
-            </button>
+            {navbarButtons.map(({ tab, icon }) => (
+              <Button
+                type="navigation"
+                onClick={() => this.props.changeTab(tab)}
+                icon={icon}
+                label={variables.getMessage(`modals.main.navbar.${tab}`)}
+                active={this.props.current === tab}
+              />
+            ))}
           </div>
           {this.props.children.map((tab) => {
             if (tab.props.label !== this.state.currentTab) {

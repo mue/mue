@@ -412,33 +412,6 @@ p.author {
   .items {
     justify-content: center;
   }
-
-  button.collectionButton,
-  a.collectionButton {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 1px 12px;
-    backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgb(255 255 255 / 10%);
-    border: 1px solid rgb(209 213 219 / 30%);
-    color: #fff;
-
-    &:hover {
-      backdrop-filter: blur(16px) saturate(180%);
-      background-color: rgb(17 25 40 / 20%);
-      border: 1px solid rgb(255 255 255 / 12.5%);
-    }
-  }
-}
-
-a.collectionButton {
-  height: 40px;
-  text-decoration: none;
-
-  @include themed {
-    border-radius: t($borderRadius);
-  }
 }
 
 .marketplaceRefresh {

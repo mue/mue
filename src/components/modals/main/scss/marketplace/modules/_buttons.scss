@@ -37,6 +37,76 @@
 }
 
 .btn-navigation {
+  @include modal-button(standard);
+  padding: 0 15px;
+
+  @include themed {
+    background: t($modal-secondaryColour) !important;
+    border-radius: t($borderRadius) !important;
+    box-shadow: t($boxShadow) !important;
+    border: 0 !important;
+
+    &:hover {
+      background: t($modal-sidebarActive) !important;
+    }
+  }
+
+  &:hover {
+    svg {
+      background: var(--tab-active);
+    }
+
+    color: var(--modal-text);
+  }
+
+  span,
+  svg {
+    font-size: 1.1em !important;
+  }
+
+  svg {
+    font-size: 1.2em !important;
+    color: var(--photo-info);
+  }
+}
+
+/* safari fix */
+@supports (-webkit-hyphens: none) {
+  .btn-navigation {
+    display: inline-block !important;
+  }
+}
+
+.btn-navigation-active {
+  @include themed {
+    background: t($modal-sidebarActive) !important;
+  }
+}
+
+.btn-collection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 1px 12px;
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(209 213 219 / 30%);
+  color: #fff;
+
+  &:hover {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgb(17 25 40 / 20%);
+    border: 1px solid rgb(255 255 255 / 12.5%);
+  }
+}
+
+a.btn-collection {
+  height: 40px;
+  text-decoration: none;
+
+  @include themed {
+    border-radius: t($borderRadius);
+  }
 }
 
 .flowReverse {
