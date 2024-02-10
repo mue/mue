@@ -1,9 +1,6 @@
 function Row(props) {
-  return (
-    <div className={props.final ? 'settingsRow settingsNoBorder' : 'settingsRow'}>
-      {props.children}
-    </div>
-  );
+  const classes = `${props.final ? 'settingsRow settingsNoBorder' : 'settingsRow'} ${props.inactive ? 'preferencesInactive' : ''}`;
+  return <div className={classes}>{props.children}</div>;
 }
 
 function Content(props) {

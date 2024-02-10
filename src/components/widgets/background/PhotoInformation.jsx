@@ -278,10 +278,10 @@ function PhotoInformation({ info, url, api }) {
 
           {showExtraInfo || other ? (
             <>
+              <span className="subtitle">
+                {variables.getMessage('widgets.background.information')}
+              </span>
               <div className="extra-content">
-                <span className="subtitle">
-                  {variables.getMessage('widgets.background.information')}
-                </span>
                 {info.location && info.location !== 'N/A' ? (
                   <div className="row" title={variables.getMessage('widgets.background.location')}>
                     <MdLocationOn />

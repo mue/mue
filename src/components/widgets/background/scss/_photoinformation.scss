@@ -19,8 +19,9 @@
       }
 
       .extra-content {
-        display: flex;
-        flex-flow: column;
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: auto auto;
         gap: 10px;
         transition: 0.8s;
       }

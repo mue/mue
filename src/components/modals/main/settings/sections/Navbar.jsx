@@ -14,11 +14,13 @@ import { Row, Content, Action } from '../SettingsItem';
 import Header from '../Header';
 import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
 import QuickLink from './quicklinks/QuickLink';
+import Apps from '../../../../widgets/navbar/Apps';
 
 function Navbar() {
   const [showRefreshOptions, setShowRefreshOptions] = useState(
     localStorage.getItem('refresh') === 'true',
   );
+  const [appsEnabled, setAppsEnabled] = useState(localStorage.getItem('appsEnabled') === 'true');
   const [appsModalInfo, setAppsModalInfo] = useState({
     newLink: false,
     edit: false,
@@ -112,15 +114,8 @@ function Navbar() {
 
   const NAVBAR_SECTION = 'modals.main.settings.sections.appearance.navbar';
 
-  return (
-    <>
-      <Header
-        title={variables.getMessage(`${NAVBAR_SECTION}.title`)}
-        setting="navbar"
-        category="widgets"
-        zoomSetting="zoomNavbar"
-        zoomCategory="navbar"
-      />
+  const AdditionalSettings = () => {
+    return (
       <Row final={false}>
         <Content
           title={variables.getMessage('modals.main.settings.additional_settings')}
@@ -160,40 +155,48 @@ function Navbar() {
             name="appsEnabled"
             text={variables.getMessage('widgets.navbar.apps.title')}
             category="navbar"
+            onChange={setAppsEnabled}
           />
         </Action>
       </Row>
-      {showRefreshOptions && (
-        <Row final={false}>
-          <Content
-            title={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
-            )}
-          />
-          <Action>
-            <Dropdown name="refreshOption" category="navbar">
-              <option value="page">
-                {variables.getMessage(
-                  'modals.main.settings.sections.appearance.navbar.refresh_options.page',
-                )}
-              </option>
-              <option value="background">
-                {variables.getMessage('modals.main.settings.sections.background.title')}
-              </option>
-              <option value="quote">
-                {variables.getMessage('modals.main.settings.sections.quote.title')}
-              </option>
-              <option value="quotebackground">
-                {variables.getMessage('modals.main.settings.sections.quote.title')} +{' '}
-                {variables.getMessage('modals.main.settings.sections.background.title')}
-              </option>
-            </Dropdown>
-          </Action>
-        </Row>
-      )}
+    );
+  };
 
-      <Row final={true}>
+  const RefreshOptions = () => {
+    return (
+      <Row final={false} inactive={!showRefreshOptions}>
+        <Content
+          title={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
+          )}
+        />
+        <Action>
+          <Dropdown name="refreshOption" category="navbar">
+            <option value="page">
+              {variables.getMessage(
+                'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+              )}
+            </option>
+            <option value="background">
+              {variables.getMessage('modals.main.settings.sections.background.title')}
+            </option>
+            <option value="quote">
+              {variables.getMessage('modals.main.settings.sections.quote.title')}
+            </option>
+            <option value="quotebackground">
+              {variables.getMessage('modals.main.settings.sections.quote.title')} +{' '}
+              {variables.getMessage('modals.main.settings.sections.background.title')}
+            </option>
+          </Dropdown>
+        </Action>
+      </Row>
+    );
+  };
+
+  const AppsOptions = () => {
+    return (
+      <Row final={true} inactive={!appsEnabled}>
         <Content
           title={variables.getMessage('widgets.navbar.apps.title')}
           subtitle={variables.getMessage(
@@ -207,6 +210,21 @@ function Navbar() {
           </button>
         </Action>
       </Row>
+    );
+  };
+
+  return (
+    <>
+      <Header
+        title={variables.getMessage(`${NAVBAR_SECTION}.title`)}
+        setting="navbar"
+        category="widgets"
+        zoomSetting="zoomNavbar"
+        zoomCategory="navbar"
+      />
+      <AdditionalSettings />
+      <RefreshOptions />
+      <AppsOptions />
 
       <div className="messagesContainer">
         {appsModalInfo.items.map((item, i) => (
