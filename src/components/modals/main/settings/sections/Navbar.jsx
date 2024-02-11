@@ -9,6 +9,7 @@ import AddModal from './quicklinks/AddModal';
 
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
+import Button from '../Button';
 
 import { Row, Content, Action } from '../SettingsItem';
 import Header from '../Header';
@@ -204,10 +205,12 @@ function Navbar() {
           )}
         />
         <Action>
-          <button onClick={() => setAppsModalInfo((oldState) => ({ ...oldState, newLink: true }))}>
-            {variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}
-            <MdAddLink />
-          </button>
+          <Button
+            type="settings"
+            onClick={() => setAppsModalInfo((oldState) => ({ ...oldState, newLink: true }))}
+            icon={<MdAddLink />}
+            label={variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}
+          />
         </Action>
       </Row>
     );

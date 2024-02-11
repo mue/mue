@@ -195,7 +195,7 @@ class WelcomeSections extends PureComponent {
             </span>
           </div>
           <a href="https://github.com/mue/mue" target="_blank" rel="noopener noreferrer">
-            <MdOpenInNew />{' '}
+            <MdOpenInNew />
             {variables.getMessage('modals.welcome.sections.intro.notices.github_open')}
           </a>
         </div>
