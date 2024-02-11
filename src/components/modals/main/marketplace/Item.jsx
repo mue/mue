@@ -18,6 +18,7 @@ import {
 import Modal from 'react-modal';
 
 import Header from '../settings/Header';
+import Button from '../settings/Button';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
 
@@ -271,27 +272,22 @@ class Item extends PureComponent {
               />
               {this.props.button}
               <div className="iconButtons">
-                <Tooltip title={variables.getMessage('widgets.quote.share')} key="share">
-                  <button onClick={() => this.setState({ shareModal: true })}>
-                    <MdIosShare />
-                  </button>
-                </Tooltip>
-                <Tooltip
-                  title={variables.getMessage('modals.main.marketplace.product.buttons.report')}
-                  key="report"
-                >
-                  <button
-                    onClick={() =>
-                      window.open(
-                        variables.constants.REPORT_ITEM +
-                          this.props.data.display_name.split(' ').join('+'),
-                        '_blank',
-                      )
-                    }
-                  >
-                    <MdFlag />
-                  </button>
-                </Tooltip>
+                <Button
+                  type="icon"
+                  onClick={() => this.setState({ shareModal: true })}
+                  icon={<MdIosShare />}
+                  tooltipTitle={variables.getMessage('widgets.quote.share')}
+                  tooltipKey="share"
+                />
+                <Button
+                  type="icon"
+                  onClick={() => this.setState({ shareModal: true })}
+                  icon={<MdFlag />}
+                  tooltipTitle={variables.getMessage(
+                    'modals.main.marketplace.product.buttons.report',
+                  )}
+                  tooltipKey="report"
+                />
               </div>
               {this.props.data.data.collection && (
                 <div className="inCollection">

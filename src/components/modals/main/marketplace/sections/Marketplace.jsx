@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import {
   MdWifiOff,
   MdLocalMall,
-  MdOutlineKeyboardArrowRight,
+  MdClose,
   MdSearch,
   MdOutlineArrowForward,
   MdLibraryAdd,
@@ -14,6 +14,7 @@ import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 import Header from '../../settings/Header';
+import Button from '../../settings/Button';
 
 import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
 
@@ -30,15 +31,20 @@ class Marketplace extends PureComponent {
     };
     this.buttons = {
       uninstall: (
-        <button onClick={() => this.manage('uninstall')}>
-          {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-        </button>
+        <Button
+          type="settings"
+          onClick={() => this.manage('uninstall')}
+          icon={<MdClose />}
+          label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+        />
       ),
       install: (
-        <button onClick={() => this.manage('install')}>
-          {variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
-          <MdLibraryAdd />
-        </button>
+        <Button
+          type="settings"
+          onClick={() => this.manage('install')}
+          icon={<MdLibraryAdd />}
+          label={variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
+        />
       ),
     };
     this.controller = new AbortController();
@@ -346,14 +352,13 @@ class Marketplace extends PureComponent {
                 <span className="subtitle">{this.state.collectionDescription}</span>
               </div>
 
-              <button
-                className="addAllButton"
+              <Button
+                type="collection"
                 onClick={() => this.installCollection()}
                 disabled={this.state.busy}
-              >
-                {variables.getMessage('modals.main.marketplace.add_all')}
-                <MdLibraryAdd />
-              </button>
+                icon={<MdLibraryAdd />}
+                label={variables.getMessage('modals.main.marketplace.add_all')}
+              />
             </div>
           </>
         ) : (
@@ -408,13 +413,13 @@ class Marketplace extends PureComponent {
                     <span className="title">{item.display_name}</span>
                     <span className="subtitle">{item.description}</span>
                   </div>
-                  <button
-                    className="collectionButton"
+                  <Button
+                    type="collection"
                     onClick={() => this.toggle('collection', item.name)}
-                  >
-                    <MdOutlineArrowForward />{' '}
-                    {variables.getMessage('modals.main.marketplace.explore_collection')}
-                  </button>
+                    icon={<MdOutlineArrowForward />}
+                    label={variables.getMessage('modals.main.marketplace.explore_collection')}
+                    iconPlacement="right"
+                  />
                 </div>
               ) : null}
             </>

@@ -3,9 +3,9 @@
 .tab-content {
   width: 100% !important;
 
-  button {
+  /* button {
     @include modal-button(standard);
-  }
+  }*/
 
   @include themed {
     padding: 1rem 3rem 3rem;
