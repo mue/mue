@@ -3,6 +3,7 @@
 @import 'modules/tabs/about';
 @import 'modules/tabs/changelog';
 @import 'modules/tabs/order';
+@import 'modules/tabs/stats';
 
 input {
   /* colour picker */
@@ -127,102 +128,18 @@ h4 {
   }
 }
 
-.stats {
-  display: flex;
-  flex-flow: column;
-  gap: 30px;
-  width: 100%;
-
-  .rightPanel {
-    .statIcon {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-    }
-
-    .statGrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      grid-gap: 10px;
-
-      div {
-        display: flex;
-        flex-flow: column;
-      }
-    }
-
-    .subtitle {
-      text-transform: capitalize;
-    }
-
-    span {
-      font-size: 20px;
-    }
-  }
-}
-
-.achievements {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 10px;
-}
-
-.achievement {
-  padding: 20px 10px;
-  display: flex;
-  flex-flow: row !important;
-  align-items: center;
-
-  @include themed {
-    background: t($modal-secondaryColour);
-    border: 1px solid t($modal-sidebarActive);
-    border-radius: t($borderRadius);
-    gap: 10px;
-  }
-
-  svg {
-    font-size: 20px !important;
-    padding: 15px;
-    border-radius: 100%;
-
-    @include themed {
-      background: t($modal-sidebarActive);
-    }
-  }
-}
-
-.statSection.rightPanel {
-  padding: 25px;
-
-  @include themed {
-    border-radius: t($borderRadius);
-    background: t($modal-secondaryColour);
-    box-shadow: 0 0 0 1px t($modal-sidebarActive);
-
-    svg {
-      font-size: 50px;
-      color: t($subColor);
-    }
-  }
-}
-
-.achievementContent {
-  display: flex;
-  flex-flow: column;
-  gap: 2px;
-
-  span:first-child {
-    font-weight: bold;
-    font-size: 15px;
-  }
-
-  .subtitle {
-    font-size: 13px !important;
-  }
-}
-
 .customcss textarea {
   font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
     'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco,
     'Courier New', Courier, monospace !important;
+}
+
+.preferences {
+  transition: 0.4s ease-in-out;
+}
+
+.preferencesInactive {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: 0.4s ease-in-out;
 }

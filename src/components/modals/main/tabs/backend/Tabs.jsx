@@ -99,6 +99,7 @@ class Tabs extends PureComponent {
                 icon={icon}
                 label={variables.getMessage(`modals.main.navbar.${tab}`)}
                 active={this.props.current === tab}
+                key={tab}
               />
             ))}
           </div>
