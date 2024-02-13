@@ -67,14 +67,14 @@ function EmblaCarousel({ data }) {
       {data.length > 1 && (
         <>
           <button
-            className="carousel_button prev"
+            className="carousel_button prev btn-icon"
             onClick={() => scroll('prev')}
             disabled={!prevBtnEnabled}
           >
             <MdOutlineArrowBackIos />
           </button>
           <button
-            className="carousel_button next"
+            className="carousel_button next btn-icon"
             onClick={() => scroll('next')}
             disabled={!nextBtnEnabled}
           >
