@@ -146,14 +146,17 @@ export default class BackgroundSettings extends PureComponent {
                 <Dropdown
                   label={variables.getMessage('modals.main.settings.sections.background.category')}
                   name="apiCategories"
-                >
-                  <MenuItem value="loading" key="loading">
-                    {variables.getMessage('modals.main.loading')}
-                  </MenuItem>
-                  <MenuItem value="loading" key="loading">
-                    {variables.getMessage('modals.main.loading')}
-                  </MenuItem>
-                </Dropdown>
+                  items={[
+                    {
+                      value: 'loading',
+                      text: variables.getMessage('modals.main.loading'),
+                    },
+                    {
+                      value: 'loading',
+                      text: variables.getMessage('modals.main.loading'),
+                    },
+                  ]}
+                />
               </>
             ) : (
               <ChipSelect
@@ -168,28 +171,33 @@ export default class BackgroundSettings extends PureComponent {
               )}
               name="apiQuality"
               element=".other"
-            >
-              <option value="original">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.source.quality.original',
-                )}
-              </option>
-              <option value="high">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.source.quality.high',
-                )}
-              </option>
-              <option value="normal">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.source.quality.normal',
-                )}
-              </option>
-              <option value="datasaver">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.source.quality.datasaver',
-                )}
-              </option>
-            </Dropdown>
+              items={[
+                {
+                  value: 'original',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.quality.original',
+                  ),
+                },
+                {
+                  value: 'high',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.quality.high',
+                  ),
+                },
+                {
+                  value: 'normal',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.quality.normal',
+                  ),
+                },
+                {
+                  value: 'datasaver',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.quality.datasaver',
+                  ),
+                },
+              ]}
+            />
             <Radio
               title="API"
               options={[
@@ -326,36 +334,43 @@ export default class BackgroundSettings extends PureComponent {
                   name="backgroundType"
                   onChange={(value) => this.setState({ backgroundType: value })}
                   category="background"
-                >
-                  {this.state.marketplaceEnabled && (
-                    <option value="photo_pack">
-                      {variables.getMessage('modals.main.navbar.marketplace')}
-                    </option>
-                  )}
-                  <option value="api">
-                    {variables.getMessage('modals.main.settings.sections.background.type.api')}
-                  </option>
-                  <option value="custom">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.type.custom_image',
-                    )}
-                  </option>
-                  <option value="colour">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.type.custom_colour',
-                    )}
-                  </option>
-                  <option value="random_colour">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.type.random_colour',
-                    )}
-                  </option>
-                  <option value="random_gradient">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.type.random_gradient',
-                    )}
-                  </option>
-                </Dropdown>
+                  items={[
+                    this.state.marketplaceEnabled && {
+                      value: 'photo_pack',
+                      text: variables.getMessage('modals.main.navbar.marketplace'),
+                    },
+                    {
+                      value: 'api',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.api',
+                      ),
+                    },
+                    {
+                      value: 'custom',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.custom_image',
+                      ),
+                    },
+                    {
+                      value: 'colour',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.custom_colour',
+                      ),
+                    },
+                    {
+                      value: 'random_colour',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.random_colour',
+                      ),
+                    },
+                    {
+                      value: 'random_gradient',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.random_gradient',
+                      ),
+                    },
+                  ]}
+                />
               </div>
             </div>
             {this.state.backgroundType === 'api' ||
@@ -454,36 +469,43 @@ export default class BackgroundSettings extends PureComponent {
                   name="backgroundType"
                   onChange={(value) => this.setState({ backgroundType: value })}
                   category="background"
-                >
-                  {this.state.marketplaceEnabled && (
-                    <option value="photo_pack">
-                      {variables.getMessage('modals.main.navbar.marketplace')}
-                    </option>
-                  )}
-                  <option value="api">
-                    {variables.getMessage('modals.main.settings.sections.background.type.api')}
-                  </option>
-                  <option value="custom">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.type.custom_image',
-                    )}
-                  </option>
-                  <option value="colour">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.type.custom_colour',
-                    )}
-                  </option>
-                  <option value="random_colour">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.type.random_colour',
-                    )}
-                  </option>
-                  <option value="random_gradient">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.type.random_gradient',
-                    )}
-                  </option>
-                </Dropdown>
+                  items={[
+                    this.state.marketplaceEnabled && {
+                      value: 'photo_pack',
+                      text: variables.getMessage('modals.main.navbar.marketplace'),
+                    },
+                    {
+                      value: 'api',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.api',
+                      ),
+                    },
+                    {
+                      value: 'custom',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.custom_image',
+                      ),
+                    },
+                    {
+                      value: 'colour',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.custom_colour',
+                      ),
+                    },
+                    {
+                      value: 'random_colour',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.random_colour',
+                      ),
+                    },
+                    {
+                      value: 'random_gradient',
+                      text: variables.getMessage(
+                        'modals.main.settings.sections.background.type.random_gradient',
+                      ),
+                    },
+                  ]}
+                />
               </Action>
             </Row>
             {/* // todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
@@ -541,38 +563,45 @@ export default class BackgroundSettings extends PureComponent {
                 onChange={(value) => this.setState({ backgroundFilter: value })}
                 category="background"
                 element="#backgroundImage"
-              >
-                <option value="none">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.appearance.navbar.refresh_options.none',
-                  )}
-                </option>
-                <option value="grayscale">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.effects.filters.grayscale',
-                  )}
-                </option>
-                <option value="sepia">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.effects.filters.sepia',
-                  )}
-                </option>
-                <option value="invert">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.effects.filters.invert',
-                  )}
-                </option>
-                <option value="saturate">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.effects.filters.saturate',
-                  )}
-                </option>
-                <option value="contrast">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.effects.filters.contrast',
-                  )}
-                </option>
-              </Dropdown>
+                items={[
+                  {
+                    value: 'none',
+                    text: variables.getMessage(
+                      'modals.main.settings.sections.appearance.navbar.refresh_options.none',
+                    ),
+                  },
+                  {
+                    value: 'grayscale',
+                    text: variables.getMessage(
+                      'modals.main.settings.sections.background.effects.filters.grayscale',
+                    ),
+                  },
+                  {
+                    value: 'sepia',
+                    text: variables.getMessage(
+                      'modals.main.settings.sections.background.effects.filters.sepia',
+                    ),
+                  },
+                  {
+                    value: 'invert',
+                    text: variables.getMessage(
+                      'modals.main.settings.sections.background.effects.filters.invert',
+                    ),
+                  },
+                  {
+                    value: 'saturate',
+                    text: variables.getMessage(
+                      'modals.main.settings.sections.background.effects.filters.saturate',
+                    ),
+                  },
+                  {
+                    value: 'contrast',
+                    text: variables.getMessage(
+                      'modals.main.settings.sections.background.effects.filters.contrast',
+                    ),
+                  },
+                ]}
+              />
               {this.state.backgroundFilter !== 'none' && (
                 <Slider
                   title={variables.getMessage(

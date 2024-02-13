@@ -8,7 +8,7 @@ class Dropdown extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: localStorage.getItem(this.props.name) || this.props.children[0].props.value,
+      value: localStorage.getItem(this.props.name) || this.props.items[0].value,
       title: '',
     };
     this.dropdown = createRef();
@@ -62,17 +62,11 @@ class Dropdown extends PureComponent {
           ref={this.dropdown}
           key={id}
         >
-          {this.props.manual
-            ? this.props.children
-            : this.props.children.map((e, index) => {
-                return (
-                  e && (
-                    <MenuItem key={index} value={e.props ? e.props.value : ''}>
-                      {e.props ? e.props.children : ''}
-                    </MenuItem>
-                  )
-                );
-              })}
+          {this.props.items.map(({ value, text }) => (
+            <MenuItem key={id + value} value={value}>
+              {text}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     );

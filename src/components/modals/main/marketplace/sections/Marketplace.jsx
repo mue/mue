@@ -388,10 +388,17 @@ class Marketplace extends PureComponent {
                 label={variables.getMessage('modals.main.addons.sort.title')}
                 name="sortMarketplace"
                 onChange={(value) => this.sortMarketplace(value)}
-              >
-                <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
-                <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
-              </Dropdown>
+                items={[
+                  {
+                    value: 'a-z',
+                    text: variables.getMessage('modals.main.addons.sort.a_z'),
+                  },
+                  {
+                    value: 'z-a',
+                    text: variables.getMessage('modals.main.addons.sort.z_a'),
+                  },
+                ]}
+              />
             </div>
           </>
         )}

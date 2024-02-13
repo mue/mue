@@ -261,12 +261,25 @@ export default class Added extends PureComponent {
           label={variables.getMessage('modals.main.addons.sort.title')}
           name="sortAddons"
           onChange={(value) => this.sortAddons(value)}
-        >
-          <option value="newest">{variables.getMessage('modals.main.addons.sort.newest')}</option>
-          <option value="oldest">{variables.getMessage('modals.main.addons.sort.oldest')}</option>
-          <option value="a-z">{variables.getMessage('modals.main.addons.sort.a_z')}</option>
-          <option value="z-a">{variables.getMessage('modals.main.addons.sort.z_a')}</option>
-        </Dropdown>
+          items={[
+            {
+              value: 'newest',
+              text: variables.getMessage('modals.main.addons.sort.newest'),
+            },
+            {
+              value: 'oldest',
+              text: variables.getMessage('modals.main.addons.sort.oldest'),
+            },
+            {
+              value: 'a-z',
+              text: variables.getMessage('modals.main.addons.sort.a_z'),
+            },
+            {
+              value: 'z-a',
+              text: variables.getMessage('modals.main.addons.sort.z_a'),
+            },
+          ]}
+        />
         <Items
           items={this.state.installed}
           filter=""

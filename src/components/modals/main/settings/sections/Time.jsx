@@ -40,18 +40,23 @@ const TimeSettings = () => {
           subtitle={variables.getMessage(`${TIME_SECTION}.type_subtitle`)}
         />
         <Action>
-          <Dropdown name="timeType" onChange={(value) => setTimeType(value)} category="clock">
-            <option value="digital">{variables.getMessage(`${TIME_SECTION}.digital.title`)}</option>
-            <option value="analogue">
-              {variables.getMessage(`${TIME_SECTION}.analogue.title`)}
-            </option>
-            <option value="percentageComplete">
-              {variables.getMessage(`${TIME_SECTION}.percentage_complete`)}
-            </option>
-            <option value="verticalClock">
-              {variables.getMessage(`${TIME_SECTION}.vertical_clock.title`)}
-            </option>
-          </Dropdown>
+          <Dropdown
+            name="timeType"
+            onChange={(value) => setTimeType(value)}
+            category="clock"
+            items={[
+              { value: 'digital', text: variables.getMessage(`${TIME_SECTION}.digital.title`) },
+              { value: 'analogue', text: variables.getMessage(`${TIME_SECTION}.analogue.title`) },
+              {
+                value: 'percentageComplete',
+                text: variables.getMessage(`${TIME_SECTION}.percentage_complete`),
+              },
+              {
+                value: 'verticalClock',
+                text: variables.getMessage(`${TIME_SECTION}.vertical_clock.title`),
+              },
+            ]}
+          />
         </Action>
       </Row>
     );

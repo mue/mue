@@ -54,16 +54,19 @@ export default class WeatherSettings extends PureComponent {
               name="weatherType"
               category="weather"
               onChange={() => this.forceUpdate()}
-            >
-              <option value="1">{variables.getMessage(`${WEATHER_SECTION}.options.basic`)}</option>
-              <option value="2">
-                {variables.getMessage(`${WEATHER_SECTION}.options.standard`)}
-              </option>
-              <option value="3">
-                {variables.getMessage(`${WEATHER_SECTION}.options.expanded`)}
-              </option>
-              <option value="4">{variables.getMessage(`${WEATHER_SECTION}.options.custom`)}</option>
-            </Dropdown>
+              items={[
+                { value: '1', text: variables.getMessage(`${WEATHER_SECTION}.options.basic`) },
+                {
+                  value: '2',
+                  text: variables.getMessage(`${WEATHER_SECTION}.options.standard`),
+                },
+                {
+                  value: '3',
+                  text: variables.getMessage(`${WEATHER_SECTION}.options.expanded`),
+                },
+                { value: '4', text: variables.getMessage(`${WEATHER_SECTION}.options.custom`) },
+              ]}
+            />
           </Action>
         </Row>
       );

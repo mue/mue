@@ -1,12 +1,6 @@
 import variables from 'modules/variables';
 import React, { PureComponent } from 'react';
-import {
-  MdCancel,
-  MdAdd,
-  MdSource,
-  MdOutlineKeyboardArrowRight,
-  MdOutlineFormatQuote,
-} from 'react-icons/md';
+import { MdCancel, MdAdd, MdSource, MdOutlineFormatQuote } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 import Header from '../Header';
@@ -29,14 +23,6 @@ export default class QuoteSettings extends PureComponent {
       sourceSection: false,
     };
   }
-
-  marketplaceType = () => {
-    if (localStorage.getItem('quote_packs')) {
-      return (
-        <option value="quote_pack">{variables.getMessage('modals.main.navbar.marketplace')}</option>
-      );
-    }
-  };
 
   resetCustom = () => {
     localStorage.setItem('customQuote', '[{"quote": "", "author": ""}]');
@@ -132,13 +118,19 @@ export default class QuoteSettings extends PureComponent {
           label={variables.getMessage('modals.main.settings.sections.background.type.title')}
           onChange={(value) => this.setState({ quoteType: value })}
           category="quote"
-        >
-          {this.marketplaceType()}
-          <option value="api">
-            {variables.getMessage('modals.main.settings.sections.background.type.api')}
-          </option>
-          <option value="custom">{variables.getMessage(`${QUOTE_SECTION}.custom`)}</option>
-        </Dropdown>
+          items={[
+            localStorage.getItem('quote_packs') && {
+              value: 'quote_pack',
+              text: variables.getMessage('modals.main.navbar.marketplace'),
+            },
+            { value: 'quote_pack', text: variables.getMessage('modals.main.navbar.marketplace') },
+            {
+              value: 'api',
+              text: variables.getMessage('modals.main.settings.sections.background.type.api'),
+            },
+            { value: 'custom', text: variables.getMessage(`${QUOTE_SECTION}.custom`) },
+          ]}
+        />
       );
     };
 

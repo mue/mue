@@ -119,17 +119,17 @@ export default class SearchSettings extends PureComponent {
             <Dropdown
               name="searchEngine"
               onChange={(value) => this.setSearchEngine(value)}
-              manual={true}
-            >
-              {searchEngines.map((engine) => (
-                <MenuItem key={engine.name} value={engine.settingsName}>
-                  {engine.name}
-                </MenuItem>
-              ))}
-              <MenuItem value="custom">
-                {variables.getMessage(`${SEARCH_SECTION}.custom`).split(' ')[0]}
-              </MenuItem>
-            </Dropdown>
+              items={[
+                searchEngines.map((engine) => ({
+                  value: engine.settingsName,
+                  text: engine.name,
+                })),
+                {
+                  value: 'custom',
+                  text: variables.getMessage(`${SEARCH_SECTION}.custom`),
+                },
+              ]}
+            />
           </Action>
         </Row>
       );

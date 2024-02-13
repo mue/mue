@@ -13,10 +13,9 @@ import { Row, Content, Action } from '../SettingsItem';
 
 import Section from '../Section';
 
-import { MdSource, MdOutlineKeyboardArrowRight, MdAccessibility } from 'react-icons/md';
+import { MdAccessibility } from 'react-icons/md';
 
 import { values } from 'modules/helpers/settings/modals';
-import Settings from '../../tabs/Settings';
 
 function AppearanceSettings() {
   const [accessibility, setAccessibility] = useState(false);
@@ -55,6 +54,7 @@ function AppearanceSettings() {
   };
 
   const FontOptions = () => {
+    const fontWeight = 'modals.main.settings.sections.appearance.font.weight';
     return (
       <Row>
         <Content
@@ -75,62 +75,75 @@ function AppearanceSettings() {
             upperCaseFirst={true}
             category="other"
           />
+          {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
           <Dropdown
             label={variables.getMessage(
               'modals.main.settings.sections.appearance.font.weight.title',
             )}
             name="fontweight"
             category="other"
-          >
-            {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
-            <option value="100">
-              {variables.getMessage('modals.main.settings.sections.appearance.font.weight.thin')}
-            </option>
-            <option value="200">
-              {variables.getMessage(
-                'modals.main.settings.sections.appearance.font.weight.extra_light',
-              )}
-            </option>
-            <option value="300">
-              {variables.getMessage('modals.main.settings.sections.appearance.font.weight.light')}
-            </option>
-            <option value="400">
-              {variables.getMessage('modals.main.settings.sections.appearance.font.weight.normal')}
-            </option>
-            <option value="500">
-              {variables.getMessage('modals.main.settings.sections.appearance.font.weight.medium')}
-            </option>
-            <option value="600">
-              {variables.getMessage(
-                'modals.main.settings.sections.appearance.font.weight.semi_bold',
-              )}
-            </option>
-            <option value="700">
-              {variables.getMessage('modals.main.settings.sections.appearance.font.weight.bold')}
-            </option>
-            <option value="800">
-              {variables.getMessage(
-                'modals.main.settings.sections.appearance.font.weight.extra_bold',
-              )}
-            </option>
-          </Dropdown>
+            items={[
+              {
+                value: '100',
+                text: variables.getMessage(fontWeight + '.thin'),
+              },
+              {
+                value: '200',
+                text: variables.getMessage(fontWeight + '.extra_light'),
+              },
+              {
+                value: '300',
+                text: variables.getMessage(fontWeight + '.light'),
+              },
+              {
+                value: '400',
+                text: variables.getMessage(fontWeight + '.normal'),
+              },
+              {
+                value: '500',
+                text: variables.getMessage(fontWeight + '.medium'),
+              },
+              {
+                value: '600',
+                text: variables.getMessage(fontWeight + '.semi_bold'),
+              },
+              {
+                value: '700',
+                text: variables.getMessage(fontWeight + '.bold'),
+              },
+              {
+                value: '800',
+                text: variables.getMessage(fontWeight + '.extra_bold'),
+              },
+            ]}
+          />
           <Dropdown
             label={variables.getMessage(
               'modals.main.settings.sections.appearance.font.style.title',
             )}
             name="fontstyle"
             category="other"
-          >
-            <option value="normal">
-              {variables.getMessage('modals.main.settings.sections.appearance.font.style.normal')}
-            </option>
-            <option value="italic">
-              {variables.getMessage('modals.main.settings.sections.appearance.font.style.italic')}
-            </option>
-            <option value="oblique">
-              {variables.getMessage('modals.main.settings.sections.appearance.font.style.oblique')}
-            </option>
-          </Dropdown>
+            items={[
+              {
+                value: 'normal',
+                text: variables.getMessage(
+                  'modals.main.settings.sections.appearance.font.style.normal',
+                ),
+              },
+              {
+                value: 'italic',
+                text: variables.getMessage(
+                  'modals.main.settings.sections.appearance.font.style.italic',
+                ),
+              },
+              {
+                value: 'oblique',
+                text: variables.getMessage(
+                  'modals.main.settings.sections.appearance.font.style.oblique',
+                ),
+              },
+            ]}
+          />
         </Action>
       </Row>
     );
@@ -184,25 +197,27 @@ function AppearanceSettings() {
             )}
             name="textBorder"
             category="other"
-          >
-            <option value="new">
-              {variables.getMessage(
-                'modals.main.settings.sections.appearance.accessibility.text_shadow.new',
-              )}
-            </option>{' '}
-            {/* default */}
-            <option value="true">
-              {variables.getMessage(
-                'modals.main.settings.sections.appearance.accessibility.text_shadow.old',
-              )}
-            </option>{' '}
-            {/* old checkbox setting */}
-            <option value="none">
-              {variables.getMessage(
-                'modals.main.settings.sections.appearance.accessibility.text_shadow.none',
-              )}
-            </option>
-          </Dropdown>
+            items={[
+              {
+                value: 'new',
+                text: variables.getMessage(
+                  'modals.main.settings.sections.appearance.accessibility.text_shadow.new',
+                ),
+              },
+              {
+                value: 'true',
+                text: variables.getMessage(
+                  'modals.main.settings.sections.appearance.accessibility.text_shadow.old',
+                ),
+              },
+              {
+                value: 'none',
+                text: variables.getMessage(
+                  'modals.main.settings.sections.appearance.accessibility.text_shadow.none',
+                ),
+              },
+            ]}
+          />
           <Checkbox
             text={variables.getMessage(
               'modals.main.settings.sections.appearance.accessibility.animations',

@@ -10,17 +10,21 @@ import PreferencesWrapper from '../PreferencesWrapper';
 
 export default function Date() {
   const [dateType, setDateType] = useState(localStorage.getItem('dateType') || 'long');
+  const dateFormats = ['DMY', 'MDY', 'YMD'];
+
   const longSettings = (
     <>
       <Dropdown
         label={variables.getMessage('modals.main.settings.sections.date.long_format')}
         name="longFormat"
         category="date"
-      >
-        <option value="DMY">DMY</option>
-        <option value="MDY">MDY</option>
-        <option value="YMD">YMD</option>
-      </Dropdown>
+        items={dateFormats.map((format) => {
+          return {
+            value: format,
+            text: format,
+          };
+        })}
+      />
       <Checkbox
         name="dayofweek"
         text={variables.getMessage('modals.main.settings.sections.date.day_of_week')}
@@ -40,30 +44,39 @@ export default function Date() {
         label={variables.getMessage('modals.main.settings.sections.date.short_format')}
         name="dateFormat"
         category="date"
-      >
-        <option value="DMY">DMY</option>
-        <option value="MDY">MDY</option>
-        <option value="YMD">YMD</option>
-      </Dropdown>
+        items={dateFormats.map((format) => {
+          return {
+            value: format,
+            text: format,
+          };
+        })}
+      />
 
       <Dropdown
         label={variables.getMessage('modals.main.settings.sections.date.short_separator.title')}
         name="shortFormat"
         category="date"
-      >
-        <option value="dash">
-          {variables.getMessage('modals.main.settings.sections.date.short_separator.dash')}
-        </option>
-        <option value="dots">
-          {variables.getMessage('modals.main.settings.sections.date.short_separator.dots')}
-        </option>
-        <option value="gaps">
-          {variables.getMessage('modals.main.settings.sections.date.short_separator.gaps')}
-        </option>
-        <option value="slashes">
-          {variables.getMessage('modals.main.settings.sections.date.short_separator.slashes')}
-        </option>
-      </Dropdown>
+        items={[
+          {
+            value: 'dash',
+            text: variables.getMessage('modals.main.settings.sections.date.short_separator.dash'),
+          },
+          {
+            value: 'dots',
+            text: variables.getMessage('modals.main.settings.sections.date.short_separator.dots'),
+          },
+          {
+            value: 'gaps',
+            text: variables.getMessage('modals.main.settings.sections.date.short_separator.gaps'),
+          },
+          {
+            value: 'slashes',
+            text: variables.getMessage(
+              'modals.main.settings.sections.date.short_separator.slashes',
+            ),
+          },
+        ]}
+      />
     </>
   );
 
@@ -91,14 +104,17 @@ export default function Date() {
                 localStorage.setItem('dateType', value);
               }}
               category="date"
-            >
-              <option value="long">
-                {variables.getMessage('modals.main.settings.sections.date.type.long')}
-              </option>
-              <option value="short">
-                {variables.getMessage('modals.main.settings.sections.date.type.short')}
-              </option>
-            </Dropdown>
+              items={[
+                {
+                  value: 'long',
+                  text: variables.getMessage('modals.main.settings.sections.date.type.long'),
+                },
+                {
+                  value: 'short',
+                  text: variables.getMessage('modals.main.settings.sections.date.type.short'),
+                },
+              ]}
+            />
           </Action>
         </Row>
         <Row final={true}>

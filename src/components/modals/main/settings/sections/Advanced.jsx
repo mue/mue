@@ -1,12 +1,10 @@
 import variables from 'modules/variables';
 import { useState } from 'react';
 import Modal from 'react-modal';
-import { MenuItem } from '@mui/material';
 import {
   MdUpload as ImportIcon,
   MdDownload as ExportIcon,
   MdRestartAlt as ResetIcon,
-  MdOutlineKeyboardArrowRight,
   MdDataUsage,
 } from 'react-icons/md';
 
@@ -111,18 +109,19 @@ export default function AdvancedSettings() {
               )}
             />
             <Action>
-              <Dropdown name="timezone" category="timezone" manual={true}>
-                <MenuItem value="auto">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.advanced.timezone.automatic',
-                  )}
-                </MenuItem>
-                {time_zones.map((timezone) => (
-                  <MenuItem value={timezone} key={timezone}>
-                    {timezone}
-                  </MenuItem>
-                ))}
-              </Dropdown>
+              <Dropdown
+                name="timezone"
+                category="timezone"
+                items={[
+                  {
+                    value: 'auto',
+                    text: variables.getMessage(
+                      'modals.main.settings.sections.advanced.timezone.automatic',
+                    ),
+                  },
+                  ...time_zones.map((timezone) => ({ value: timezone, text: timezone })),
+                ]}
+              />
             </Action>
           </Row>
           <Row>

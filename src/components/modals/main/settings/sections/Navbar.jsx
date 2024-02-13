@@ -15,7 +15,6 @@ import { Row, Content, Action } from '../SettingsItem';
 import Header from '../Header';
 import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
 import QuickLink from './quicklinks/QuickLink';
-import Apps from '../../../../widgets/navbar/Apps';
 
 function Navbar() {
   const [showRefreshOptions, setShowRefreshOptions] = useState(
@@ -173,23 +172,33 @@ function Navbar() {
           )}
         />
         <Action>
-          <Dropdown name="refreshOption" category="navbar">
-            <option value="page">
-              {variables.getMessage(
-                'modals.main.settings.sections.appearance.navbar.refresh_options.page',
-              )}
-            </option>
-            <option value="background">
-              {variables.getMessage('modals.main.settings.sections.background.title')}
-            </option>
-            <option value="quote">
-              {variables.getMessage('modals.main.settings.sections.quote.title')}
-            </option>
-            <option value="quotebackground">
-              {variables.getMessage('modals.main.settings.sections.quote.title')} +{' '}
-              {variables.getMessage('modals.main.settings.sections.background.title')}
-            </option>
-          </Dropdown>
+          <Dropdown
+            name="refreshOption"
+            category="navbar"
+            items={[
+              {
+                value: 'page',
+                text: variables.getMessage(
+                  'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+                ),
+              },
+              {
+                value: 'background',
+                text: variables.getMessage('modals.main.settings.sections.background.title'),
+              },
+              {
+                value: 'quote',
+                text: variables.getMessage('modals.main.settings.sections.quote.title'),
+              },
+              {
+                value: 'quotebackground',
+                text:
+                  variables.getMessage('modals.main.settings.sections.quote.title') +
+                  ' + ' +
+                  variables.getMessage('modals.main.settings.sections.background.title'),
+              },
+            ]}
+          />
         </Action>
       </Row>
     );

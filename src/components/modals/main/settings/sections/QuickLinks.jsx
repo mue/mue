@@ -165,17 +165,21 @@ export default class QuickLinks extends PureComponent {
               label={variables.getMessage(`${QUICKLINKS_SECTION}.style`)}
               name="quickLinksStyle"
               category="quicklinks"
-            >
-              <option value="icon">
-                {variables.getMessage(`${QUICKLINKS_SECTION}.options.icon`)}
-              </option>
-              <option value="text">
-                {variables.getMessage(`${QUICKLINKS_SECTION}.options.text_only`)}
-              </option>
-              <option value="metro">
-                {variables.getMessage(`${QUICKLINKS_SECTION}.options.metro`)}
-              </option>
-            </Dropdown>
+              items={[
+                {
+                  value: 'icon',
+                  text: variables.getMessage(`${QUICKLINKS_SECTION}.options.icon`),
+                },
+                {
+                  value: 'text',
+                  text: variables.getMessage(`${QUICKLINKS_SECTION}.options.text_only`),
+                },
+                {
+                  value: 'metro',
+                  text: variables.getMessage(`${QUICKLINKS_SECTION}.options.metro`),
+                },
+              ]}
+            />
           </Action>
         </Row>
       );
