@@ -1,9 +1,10 @@
 // TODO: make it work with pins or on click or smth
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, memo, useState } from 'react';
 
 import { MdPlaylistRemove, MdOutlineApps } from 'react-icons/md';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
+import { Tooltip } from 'components/Elements';
+
 import { shift, useFloating } from '@floating-ui/react-dom';
 import EventBus from 'modules/helpers/eventbus';
 

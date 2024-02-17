@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 
 import { useState, memo } from 'react';
 
@@ -9,7 +9,7 @@ import AddModal from './quicklinks/AddModal';
 
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
-import Button from '../Button';
+import { Button } from 'components/Elements';
 
 import { Row, Content, Action } from '../SettingsItem';
 import Header from '../Header';

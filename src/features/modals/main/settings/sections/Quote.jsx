@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import React, { PureComponent } from 'react';
 import { MdCancel, MdAdd, MdSource, MdOutlineFormatQuote } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';

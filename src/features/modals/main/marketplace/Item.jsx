@@ -1,6 +1,6 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, Fragment } from 'react';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
+import { Tooltip } from 'components/Elements';
 import ImageCarousel from 'features/helpers/carousel/Carousel';
 import { toast } from 'react-toastify';
 import {
@@ -18,11 +18,11 @@ import {
 import Modal from 'react-modal';
 
 import Header from '../settings/Header';
-import Button from '../settings/Button';
+import { Button } from 'components/Elements';
 
 import { install, uninstall } from 'modules/helpers/marketplace';
 
-import ShareModal from 'features/helpers/sharemodal/ShareModal';
+import { ShareModal } from 'components/Elements';
 
 class Item extends PureComponent {
   constructor(props) {

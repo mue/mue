@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { useState, useEffect } from 'react';
 import {
   MdFlag,
@@ -7,7 +7,7 @@ import {
   MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
 import EventBus from 'modules/helpers/eventbus';
-import Button from './Button';
+import { Button } from 'components/Elements';
 
 export const CustomActions = ({ children }) => {
   return children;

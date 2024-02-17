@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, Fragment } from 'react';
 import { ColorPicker } from '@muetab/react-color-gradient-picker';
 import { toast } from 'react-toastify';

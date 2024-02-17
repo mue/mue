@@ -1,8 +1,8 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import React, { memo } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 
-import Button from '../settings/Button';
+import { Button } from 'components/Elements';
 
 function Items({
   type,

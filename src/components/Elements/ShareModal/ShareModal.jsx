@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { MdClose, MdEmail, MdContentCopy } from 'react-icons/md';
 import { FaTwitter, FaFacebookF } from 'react-icons/fa';
 import { AiFillWechat } from 'react-icons/ai';
 import { SiTencentqq } from 'react-icons/si';
-import Tooltip from '../tooltip/Tooltip';
+import Tooltip from '../Tooltip/Tooltip';
 import { toast } from 'react-toastify';
 
 import './sharemodal.scss';
@@ -123,4 +123,6 @@ function ShareModal({ modalClose, data }) {
   );
 }
 
-export default memo(ShareModal);
+const MemoizedSharemodal = memo(ShareModal);
+
+export { MemoizedSharemodal as default, MemoizedSharemodal as ShareModal };

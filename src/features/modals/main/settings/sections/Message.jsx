@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';

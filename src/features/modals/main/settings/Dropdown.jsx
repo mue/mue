@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 

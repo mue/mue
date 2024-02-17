@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { memo, useState, useEffect } from 'react';
 import {
   MdSettings as Settings,

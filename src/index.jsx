@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/react';
 
 import App from './App';
 import ErrorBoundary from './ErrorBoundary';
-import variables from './modules/variables';
+import variables from './config/variables';
 
 import './scss/index.scss';
 // the toast css is based on default so we need to import it

@@ -1,11 +1,12 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, memo, useState } from 'react';
 
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
+import { Tooltip } from 'components/Elements';
+
 import { saveFile } from 'modules/helpers/settings/modals';
 import EventBus from 'modules/helpers/eventbus';
 

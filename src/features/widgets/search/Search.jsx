@@ -1,11 +1,10 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
 import { BsGoogle } from 'react-icons/bs';
 import { SiDuckduckgo, SiMicrosoftbing, SiYahoo, SiBaidu } from 'react-icons/si';
 import { FaYandex } from 'react-icons/fa';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
-
+import { Tooltip } from 'components/Elements';
 import AutocompleteInput from 'features/helpers/autocomplete/Autocomplete';
 
 import EventBus from 'modules/helpers/eventbus';

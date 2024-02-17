@@ -47,4 +47,6 @@ function Tooltip({ children, title, style, placement, subtitle }) {
   );
 }
 
-export default memo(Tooltip);
+const MemoizedTooltip = memo(Tooltip);
+
+export { MemoizedTooltip as default, MemoizedTooltip as Tooltip };

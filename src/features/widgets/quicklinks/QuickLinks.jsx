@@ -1,5 +1,6 @@
 import { PureComponent, createRef } from 'react';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
+import { Tooltip } from 'components/Elements';
+
 import EventBus from 'modules/helpers/eventbus';
 
 import './quicklinks.scss';

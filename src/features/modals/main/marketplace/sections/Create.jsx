@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdOutlineExtensionOff } from 'react-icons/md';
 

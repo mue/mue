@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import './preview.scss';
 
 function Preview(props) {

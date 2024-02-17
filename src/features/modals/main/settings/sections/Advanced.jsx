@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import {

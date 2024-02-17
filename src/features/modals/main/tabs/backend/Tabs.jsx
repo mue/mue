@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import {
   MdSettings,
@@ -8,7 +8,7 @@ import {
   MdClose,
 } from 'react-icons/md';
 import Tab from './Tab';
-import Button from '../../settings/Button';
+import { Button } from 'components/Elements';
 import ErrorBoundary from '../../../ErrorBoundary';
 
 class Tabs extends PureComponent {

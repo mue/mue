@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import {
   MdContentCopy,
@@ -11,9 +11,10 @@ import {
 
 import { toast } from 'react-toastify';
 
-import Tooltip from 'features/helpers/tooltip/Tooltip';
+import { Tooltip } from 'components/Elements';
+
 import Modal from 'react-modal';
-import ShareModal from 'features/helpers/sharemodal/ShareModal';
+import { ShareModal } from 'components/Elements';
 
 import offline_quotes from './offline_quotes.json';
 

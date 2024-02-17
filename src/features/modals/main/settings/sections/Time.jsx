@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import React, { useState } from 'react';
 
 import Header from '../Header';

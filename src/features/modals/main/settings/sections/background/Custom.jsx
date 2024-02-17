@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -15,8 +15,7 @@ import { videoCheck } from 'modules/helpers/background/widget';
 
 import Checkbox from '../../Checkbox';
 import FileUpload from '../../FileUpload';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
-
+import { Tooltip } from 'components/Elements';
 import Modal from 'react-modal';
 
 import CustomURLModal from './CustomURLModal';

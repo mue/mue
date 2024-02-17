@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { memo } from 'react';
 
 import Tabs from './backend/Tabs';

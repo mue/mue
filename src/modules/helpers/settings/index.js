@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import experimentalInit from '../experimental';
 
 import defaultSettings from 'modules/default_settings.json';

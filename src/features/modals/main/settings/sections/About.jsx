@@ -1,12 +1,11 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdEmail, MdContactPage } from 'react-icons/md';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
-import Tooltip from 'features/helpers/tooltip/Tooltip';
-
+import { Tooltip } from 'components/Elements';
 import other_contributors from 'modules/other_contributors.json';
 
 export default class About extends PureComponent {

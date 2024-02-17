@@ -1,11 +1,11 @@
 /* eslint-disable array-callback-return */
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdShowChart, MdRestartAlt, MdDownload } from 'react-icons/md';
 import { FaTrophy } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
-import Button from '../Button';
+import { Button } from 'components/Elements';
 import Header, { CustomActions } from '../Header';
 
 import { saveFile } from 'modules/helpers/settings/modals';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Content, Action } from './SettingsItem';
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import Slider from './Slider';
 
 import { values } from 'modules/helpers/settings/modals';

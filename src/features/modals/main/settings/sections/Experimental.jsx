@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { useState, memo } from 'react';
 import Checkbox from '../Checkbox';
 import Slider from '../Slider';

@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 
-import variables from 'modules/variables';
+import variables from 'config/variables';
 
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';

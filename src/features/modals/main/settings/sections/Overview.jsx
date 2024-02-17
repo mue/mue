@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdOutlineDragIndicator } from 'react-icons/md';
 import { sortableContainer, sortableElement } from '@muetab/react-sortable-hoc';

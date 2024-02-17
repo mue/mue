@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -10,7 +10,7 @@ import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 import Header, { CustomActions } from '../../settings/Header';
-import Button from '../../settings/Button';
+import { Button } from 'components/Elements';
 
 import { install, uninstall, urlParser } from 'modules/helpers/marketplace';
 

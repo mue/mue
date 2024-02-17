@@ -1,4 +1,4 @@
-import * as constants from 'modules/constants';
+import * as constants from 'config/constants';
 import Stats from 'modules/helpers/stats';
 
 const variables = {

@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -14,7 +14,7 @@ import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../settings/Dropdown';
 import Header from '../../settings/Header';
-import Button from '../../settings/Button';
+import { Button } from 'components/Elements';
 
 import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
 

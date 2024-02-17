@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-icons/md';
 
@@ -6,7 +6,7 @@ import EventBus from 'modules/helpers/eventbus';
 
 import WelcomeSections from './WelcomeSections';
 import ProgressBar from './ProgressBar';
-import Button from '../main/settings/Button';
+import { Button } from 'components/Elements';
 
 import './welcome.scss';
 

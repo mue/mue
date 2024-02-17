@@ -1,10 +1,10 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { MdAddLink, MdLinkOff } from 'react-icons/md';
 import Header from '../Header';
 import Checkbox from '../Checkbox';
 import Dropdown from '../Dropdown';
-import Button from '../Button';
+import { Button } from 'components/Elements';
 import Modal from 'react-modal';
 
 import { Row, Content, Action } from '../SettingsItem';

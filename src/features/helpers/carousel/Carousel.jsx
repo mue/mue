@@ -3,7 +3,7 @@ import { MdOutlineArrowForwardIos, MdOutlineArrowBackIos } from 'react-icons/md'
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-import variables from 'modules/variables';
+import variables from 'config/variables';
 
 import './carousel.scss';
 

@@ -1,10 +1,9 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 
 import { MdCropFree } from 'react-icons/md';
 
-import Tooltip from 'features/helpers/tooltip/Tooltip';
-
+import { Tooltip } from 'components/Elements';
 class Maximise extends PureComponent {
   constructor() {
     super();

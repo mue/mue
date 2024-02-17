@@ -1,10 +1,9 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { Suspense, lazy, useState, memo } from 'react';
 import { MdClose } from 'react-icons/md';
 
 import './scss/index.scss';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
-
+import { Tooltip } from 'components/Elements';
 const Settings = lazy(() => import('./tabs/Settings'));
 const Addons = lazy(() => import('./tabs/Addons'));
 const Marketplace = lazy(() => import('./tabs/Marketplace'));

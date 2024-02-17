@@ -1,7 +1,8 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { memo } from 'react';
 import EventBus from 'modules/helpers/eventbus';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
+import { Tooltip } from 'components/Elements';
+
 import { MdClose, MdDone } from 'react-icons/md';
 
 function ExcludeModal({ modalClose, info }) {

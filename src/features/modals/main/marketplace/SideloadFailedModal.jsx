@@ -1,8 +1,7 @@
 import { memo } from 'react';
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { MdClose } from 'react-icons/md';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
-
+import { Tooltip } from 'components/Elements';
 function SideloadFailedModal({ modalClose, reason }) {
   return (
     <div className="smallModal">

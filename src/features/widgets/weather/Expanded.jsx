@@ -6,8 +6,7 @@ import { MdDisabledVisible } from 'react-icons/md';
 import WeatherIcon from './WeatherIcon';
 import WindDirectionIcon from './WindDirectionIcon';
 
-import Tooltip from 'features/helpers/tooltip/Tooltip';
-
+import { Tooltip } from 'components/Elements';
 function Expanded({ state: { weather, icon }, weatherType, variables }) {
   /**
    * If the localStorage item is true and the weatherType is greater than or equal to 3, or if the

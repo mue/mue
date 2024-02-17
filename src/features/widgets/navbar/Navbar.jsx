@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 
 import { MdRefresh, MdSettings } from 'react-icons/md';
@@ -7,8 +7,7 @@ import Notes from './Notes';
 import Todo from './Todo';
 import Apps from './Apps';
 import Maximise from '../background/Maximise';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
-
+import { Tooltip } from 'components/Elements';
 import EventBus from 'modules/helpers/eventbus';
 
 import './scss/index.scss';

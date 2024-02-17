@@ -1,10 +1,10 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent } from 'react';
 
 import { MdErrorOutline, MdRefresh } from 'react-icons/md';
 import { captureException } from '@sentry/react';
 
-import Button from './main/settings/Button';
+import { Button } from 'components/Elements';
 
 class ErrorBoundary extends PureComponent {
   constructor(props) {

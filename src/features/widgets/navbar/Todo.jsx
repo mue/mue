@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { PureComponent, memo, useState } from 'react';
 
 import {
@@ -10,7 +10,8 @@ import {
   MdPlaylistRemove,
 } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
+import { Tooltip } from 'components/Elements';
+
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
 import { sortableContainer, sortableElement, sortableHandle } from '@muetab/react-sortable-hoc';

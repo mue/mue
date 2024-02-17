@@ -1,4 +1,4 @@
-import variables from 'modules/variables';
+import variables from 'config/variables';
 import { useState, memo } from 'react';
 import Favourite from './Favourite';
 import {
@@ -14,9 +14,10 @@ import {
   MdCategory as Category,
   MdVisibilityOff as VisibilityOff,
 } from 'react-icons/md';
-import Tooltip from 'features/helpers/tooltip/Tooltip';
+import { Tooltip } from 'components/Elements';
+
 import Modal from 'react-modal';
-import ShareModal from 'features/helpers/sharemodal/ShareModal';
+import { ShareModal } from 'components/Elements';
 import ExcludeModal from './ExcludeModal';
 
 /**

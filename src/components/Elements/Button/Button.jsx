@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import Tooltip from '../../../helpers/tooltip/Tooltip';
+import Tooltip from 'components/Elements/Tooltip/Tooltip';
 
 const Button = forwardRef(
   (
@@ -50,4 +50,4 @@ const Button = forwardRef(
   },
 );
 
-export default Button;
+export { Button as default, Button };
