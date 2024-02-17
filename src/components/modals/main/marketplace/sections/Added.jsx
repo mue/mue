@@ -1,6 +1,6 @@
 import variables from 'modules/variables';
 import { PureComponent } from 'react';
-import { MdUpdate, MdOutlineExtensionOff, MdCode } from 'react-icons/md';
+import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
@@ -78,7 +78,7 @@ export default class Added extends PureComponent {
         type="settings"
         onClick={() => document.getElementById('file-input').click()}
         ref={this.customDnd}
-        icon={<MdCode />}
+        icon={<MdSendTimeExtension />}
         label={variables.getMessage('modals.main.addons.sideload.title')}
       />
     );
@@ -251,7 +251,7 @@ export default class Added extends PureComponent {
               <Button
                 type="settings"
                 onClick={() => document.getElementById('file-input').click()}
-                icon={<MdCode />}
+                icon={<MdSendTimeExtension />}
                 label={variables.getMessage('modals.main.addons.sideload.title')}
               />
             </div>

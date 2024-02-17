@@ -145,6 +145,121 @@ function PhotoInformation({ info, url, api }) {
     );
   };
 
+  const InformationItems = () => {
+    return (
+      <div className="extra-content">
+        {info.location && info.location !== 'N/A' ? (
+          <div className="row" title={variables.getMessage('widgets.background.location')}>
+            <MdLocationOn />
+            <span id="infoLocation">{info.location}</span>
+          </div>
+        ) : null}
+        {info.camera && info.camera !== 'N/A' ? (
+          <div className="row" title={variables.getMessage('widgets.background.camera')}>
+            <MdPhotoCamera />
+            <span id="infoCamera">{info.camera}</span>
+          </div>
+        ) : null}
+        <div className="row" title={variables.getMessage('widgets.background.resolution')}>
+          <Resolution />
+          <span id="infoResolution">
+            {width}x{height}
+          </span>
+        </div>
+        {info.category && (
+          <div className="row" title={variables.getMessage('widgets.background.category')}>
+            <Category />
+            <span id="infoCategory">{info.category[0].toUpperCase() + info.category.slice(1)}</span>
+          </div>
+        )}
+        {api && (
+          <div className="row" title={variables.getMessage('widgets.background.source')}>
+            <Source />
+            <span id="infoSource">
+              {info.photoURL ? (
+                <a
+                  href={info.photoURL + '?utm_source=mue'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link"
+                >
+                  {api.charAt(0).toUpperCase() + api.slice(1)}
+                </a>
+              ) : (
+                <a href={info.url} target="_blank" rel="noopener noreferrer" className="link">
+                  {api.charAt(0).toUpperCase() + api.slice(1)}
+                </a>
+              )}
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const ActionButtons = () => {
+    return (
+      <div className="buttons">
+        {!info.offline && (
+          <Tooltip title={variables.getMessage('widgets.quote.share')} key="share" placement="top">
+            <Share onClick={() => openShareModal(true)} />
+          </Tooltip>
+        )}
+        <Tooltip
+          title={variables.getMessage('widgets.quote.favourite')}
+          key="favourite"
+          placement="top"
+        >
+          <Favourite
+            pun={info.pun}
+            offline={info.offline}
+            credit={info.credit}
+            photoURL={info.url}
+          />
+        </Tooltip>
+        {!info.offline && (
+          <Tooltip
+            title={variables.getMessage('widgets.background.download')}
+            key="download"
+            placement="top"
+          >
+            <Download onClick={() => downloadImage(info)} />
+          </Tooltip>
+        )}
+        {info.pun && (
+          <Tooltip
+            title={variables.getMessage('widgets.background.exclude')}
+            key="exclude"
+            placement="top"
+          >
+            <VisibilityOff onClick={() => openExcludeModal(true)} />
+          </Tooltip>
+        )}
+      </div>
+    );
+  };
+
+  const UnsplashStats = () => {
+    return (
+      <div className="unsplashStats">
+        <div title={variables.getMessage('widgets.background.views')}>
+          <Views />
+          <span>{info.views.toLocaleString()}</span>
+        </div>
+        <div title={variables.getMessage('widgets.background.downloads')}>
+          <Download />
+          <span>{info.downloads.toLocaleString()}</span>
+        </div>
+        {!!info.likes ? (
+          <div title={variables.getMessage('widgets.background.likes')}>
+            <MdFavourite />
+            <span>{info.likes.toLocaleString()}</span>
+          </div>
+        ) : null}
+      </div>
+    );
+  };
+
   let photoMapClassList = 'map-concept';
   if (photoMap() !== null) {
     photoMapClassList += ' photoMap';
@@ -256,24 +371,7 @@ function PhotoInformation({ info, url, api }) {
                 {photo} {credit}
               </span>
             </div>
-            {info.views && info.downloads !== null ? (
-              <div className="unsplashStats">
-                <div title={variables.getMessage('widgets.background.views')}>
-                  <Views />
-                  <span>{info.views.toLocaleString()}</span>
-                </div>
-                <div title={variables.getMessage('widgets.background.downloads')}>
-                  <Download />
-                  <span>{info.downloads.toLocaleString()}</span>
-                </div>
-                {!!info.likes ? (
-                  <div title={variables.getMessage('widgets.background.likes')}>
-                    <MdFavourite />
-                    <span>{info.likes.toLocaleString()}</span>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
+            {info.views && info.downloads !== null ? <UnsplashStats /> : null}
           </div>
 
           {showExtraInfo || other ? (
@@ -281,101 +379,8 @@ function PhotoInformation({ info, url, api }) {
               <span className="subtitle">
                 {variables.getMessage('widgets.background.information')}
               </span>
-              <div className="extra-content">
-                {info.location && info.location !== 'N/A' ? (
-                  <div className="row" title={variables.getMessage('widgets.background.location')}>
-                    <MdLocationOn />
-                    <span id="infoLocation">{info.location}</span>
-                  </div>
-                ) : null}
-                {info.camera && info.camera !== 'N/A' ? (
-                  <div className="row" title={variables.getMessage('widgets.background.camera')}>
-                    <MdPhotoCamera />
-                    <span id="infoCamera">{info.camera}</span>
-                  </div>
-                ) : null}
-                <div className="row" title={variables.getMessage('widgets.background.resolution')}>
-                  <Resolution />
-                  <span id="infoResolution">
-                    {width}x{height}
-                  </span>
-                </div>
-                {info.category && (
-                  <div className="row" title={variables.getMessage('widgets.background.category')}>
-                    <Category />
-                    <span id="infoCategory">
-                      {info.category[0].toUpperCase() + info.category.slice(1)}
-                    </span>
-                  </div>
-                )}
-                {api && (
-                  <div className="row" title={variables.getMessage('widgets.background.source')}>
-                    <Source />
-                    <span id="infoSource">
-                      {info.photoURL ? (
-                        <a
-                          href={info.photoURL + '?utm_source=mue'}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link"
-                        >
-                          {api.charAt(0).toUpperCase() + api.slice(1)}
-                        </a>
-                      ) : (
-                        <a
-                          href={info.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link"
-                        >
-                          {api.charAt(0).toUpperCase() + api.slice(1)}
-                        </a>
-                      )}
-                    </span>
-                  </div>
-                )}
-              </div>
-              <div className="buttons">
-                {!info.offline && (
-                  <Tooltip
-                    title={variables.getMessage('widgets.quote.share')}
-                    key="share"
-                    placement="top"
-                  >
-                    <Share onClick={() => openShareModal(true)} />
-                  </Tooltip>
-                )}
-                <Tooltip
-                  title={variables.getMessage('widgets.quote.favourite')}
-                  key="favourite"
-                  placement="top"
-                >
-                  <Favourite
-                    pun={info.pun}
-                    offline={info.offline}
-                    credit={info.credit}
-                    photoURL={info.url}
-                  />
-                </Tooltip>
-                {!info.offline && (
-                  <Tooltip
-                    title={variables.getMessage('widgets.background.download')}
-                    key="download"
-                    placement="top"
-                  >
-                    <Download onClick={() => downloadImage(info)} />
-                  </Tooltip>
-                )}
-                {info.pun && (
-                  <Tooltip
-                    title={variables.getMessage('widgets.background.exclude')}
-                    key="exclude"
-                    placement="top"
-                  >
-                    <VisibilityOff onClick={() => openExcludeModal(true)} />
-                  </Tooltip>
-                )}
-              </div>
+              <InformationItems />
+              <ActionButtons />
             </>
           ) : null}
         </div>

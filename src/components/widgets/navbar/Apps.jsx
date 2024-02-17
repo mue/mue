@@ -2,7 +2,7 @@
 import variables from 'modules/variables';
 import { PureComponent, memo, useState } from 'react';
 
-import { MdLinkOff, MdOutlineApps } from 'react-icons/md';
+import { MdPlaylistRemove, MdOutlineApps } from 'react-icons/md';
 import Tooltip from 'components/helpers/tooltip/Tooltip';
 import { shift, useFloating } from '@floating-ui/react-dom';
 import EventBus from 'modules/helpers/eventbus';
@@ -78,6 +78,12 @@ class Apps extends PureComponent {
               left: this.props.xPosition ?? '',
             }}
           >
+            <div className="flexTodo">
+              <div className="topBarNotes" style={{ display: 'flex' }}>
+                <MdOutlineApps />
+                <span>{variables.getMessage('widgets.navbar.apps.title')}</span>
+              </div>
+            </div>
             {appsInfo.length > 0 ? (
               <div className="appsShortcutContainer">
                 {appsInfo.map((info, i) => (
@@ -103,9 +109,9 @@ class Apps extends PureComponent {
                 ))}
               </div>
             ) : (
-              <div className="noAppsContainer">
+              <div className="todosEmpty">
                 <div className="emptyNewMessage">
-                  <MdLinkOff />
+                  <MdPlaylistRemove />
                   <span className="title">
                     {variables.language.getMessage(
                       variables.languagecode,
