@@ -7,12 +7,12 @@ import { MdAddLink } from 'react-icons/md';
 
 import AddModal from './quicklinks/AddModal';
 
-import Checkbox from '../Checkbox';
-import Dropdown from '../Dropdown';
+import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
+import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
 import { Button } from 'components/Elements';
 
-import { Row, Content, Action } from '../SettingsItem';
-import Header from '../Header';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
 import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
 import QuickLink from './quicklinks/QuickLink';
 

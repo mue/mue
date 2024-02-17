@@ -1,13 +1,13 @@
 import variables from 'config/variables';
 import { useState, memo } from 'react';
-import Checkbox from '../Checkbox';
-import Slider from '../Slider';
+import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
+import Slider from '../../../../../components/Form/Settings/Slider/Slider';
 import { TextField } from '@mui/material';
 
 import EventBus from 'modules/helpers/eventbus';
 import { values } from 'modules/helpers/settings/modals';
 
-import { Row, Content, Action } from '../SettingsItem';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 
 function ExperimentalSettings() {
   const [eventType, setEventType] = useState();

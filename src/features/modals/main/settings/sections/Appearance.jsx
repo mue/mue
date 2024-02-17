@@ -2,16 +2,16 @@ import { memo, useState } from 'react';
 
 import variables from 'config/variables';
 
-import Checkbox from '../Checkbox';
-import Dropdown from '../Dropdown';
-import Radio from '../Radio';
-import Slider from '../Slider';
-import Text from '../Text';
-import Header from '../Header';
+import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
+import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import Radio from '../../../../../components/Form/Settings/Radio/Radio';
+import Slider from '../../../../../components/Form/Settings/Slider/Slider';
+import Text from '../../../../../components/Form/Settings/Text/Text';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
 
-import { Row, Content, Action } from '../SettingsItem';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 
-import Section from '../Section';
+import Section from '../../../../../components/Layout/Settings/Section/Section';
 
 import { MdAccessibility } from 'react-icons/md';
 

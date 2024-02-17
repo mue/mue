@@ -3,14 +3,18 @@ import { PureComponent } from 'react';
 import { MenuItem } from '@mui/material';
 import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
 
-import Header from '../../Header';
-import Checkbox from '../../Checkbox';
-import ChipSelect from '../../ChipSelect';
-import Dropdown from '../../Dropdown';
-import Slider from '../../Slider';
-import Radio from '../../Radio';
-import { Row, Content, Action } from '../../SettingsItem';
-import Text from '../../Text';
+import Header from '../../../../../../components/Layout/Settings/Header/Header';
+import Checkbox from '../../../../../../components/Form/Settings/Checkbox/Checkbox';
+import ChipSelect from '../../../../../../components/Form/Settings/ChipSelect/ChipSelect';
+import Dropdown from '../../../../../../components/Form/Settings/Dropdown/Dropdown';
+import Slider from '../../../../../../components/Form/Settings/Slider/Slider';
+import Radio from '../../../../../../components/Form/Settings/Radio/Radio';
+import {
+  Row,
+  Content,
+  Action,
+} from '../../../../../../components/Layout/Settings/Item/SettingsItem';
+import Text from '../../../../../../components/Form/Settings/Text/Text';
 
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';

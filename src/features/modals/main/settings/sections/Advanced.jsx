@@ -10,15 +10,15 @@ import {
 
 import { exportSettings, importSettings } from 'modules/helpers/settings/modals';
 
-import FileUpload from '../FileUpload';
-import Text from '../Text';
-import Switch from '../Switch';
+import FileUpload from '../../../../../components/Form/Settings/FileUpload/FileUpload';
+import Text from '../../../../../components/Form/Settings/Text/Text';
+import Switch from '../../../../../components/Form/Settings/Switch/Switch';
 import ResetModal from '../ResetModal';
-import Dropdown from '../Dropdown';
-import Header from '../Header';
+import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
 
-import { Row, Content, Action } from '../SettingsItem';
-import Section from '../Section';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
+import Section from '../../../../../components/Layout/Settings/Section/Section';
 
 import time_zones from 'features/widgets/time/timezones.json';
 

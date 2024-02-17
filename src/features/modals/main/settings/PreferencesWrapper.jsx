@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Row, Content, Action } from './SettingsItem';
+import { Row, Content, Action } from '../../../../components/Layout/Settings/Item/SettingsItem';
 import variables from 'config/variables';
-import Slider from './Slider';
+import Slider from '../../../../components/Form/Settings/Slider/Slider';
 
 import { values } from 'modules/helpers/settings/modals';
 import EventBus from 'modules/helpers/eventbus';

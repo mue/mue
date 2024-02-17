@@ -14,9 +14,9 @@ import {
 } from 'react-icons/md';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 
-import Radio from '../main/settings/Radio';
-import Checkbox from '../main/settings/Checkbox';
-import FileUpload from '../main/settings/FileUpload';
+import Radio from '../../../components/Form/Settings/Radio/Radio';
+import Checkbox from '../../../components/Form/Settings/Checkbox/Checkbox';
+import FileUpload from '../../../components/Form/Settings/FileUpload/FileUpload';
 
 import { loadSettings } from 'modules/helpers/settings';
 import { importSettings } from 'modules/helpers/settings/modals';

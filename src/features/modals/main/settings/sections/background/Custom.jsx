@@ -13,8 +13,8 @@ import EventBus from 'modules/helpers/eventbus';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import { videoCheck } from 'modules/helpers/background/widget';
 
-import Checkbox from '../../Checkbox';
-import FileUpload from '../../FileUpload';
+import Checkbox from '../../../../../../components/Form/Settings/Checkbox/Checkbox';
+import FileUpload from '../../../../../../components/Form/Settings/FileUpload/FileUpload';
 import { Tooltip } from 'components/Elements';
 import Modal from 'react-modal';
 

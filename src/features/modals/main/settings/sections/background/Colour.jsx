@@ -2,7 +2,11 @@ import variables from 'config/variables';
 import { PureComponent, Fragment } from 'react';
 import { ColorPicker } from '@muetab/react-color-gradient-picker';
 import { toast } from 'react-toastify';
-import { Row, Content, Action } from '../../SettingsItem';
+import {
+  Row,
+  Content,
+  Action,
+} from '../../../../../../components/Layout/Settings/Item/SettingsItem';
 
 import hexToRgb from 'modules/helpers/background/hexToRgb';
 import rgbToHex from 'modules/helpers/background/rgbToHex';

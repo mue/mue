@@ -12,8 +12,8 @@ import {
 
 import Item from '../Item';
 import Items from '../Items';
-import Dropdown from '../../settings/Dropdown';
-import Header from '../../settings/Header';
+import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
 import { Button } from 'components/Elements';
 
 import { install, urlParser, uninstall } from 'modules/helpers/marketplace';

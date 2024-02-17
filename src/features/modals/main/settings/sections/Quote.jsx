@@ -3,12 +3,12 @@ import React, { PureComponent } from 'react';
 import { MdCancel, MdAdd, MdSource, MdOutlineFormatQuote } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
-import Header from '../Header';
-import Checkbox from '../Checkbox';
-import Dropdown from '../Dropdown';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
+import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
+import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
 
-import { Row, Content, Action } from '../SettingsItem';
-import Section from '../Section';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
+import Section from '../../../../../components/Layout/Settings/Section/Section';
 import PreferencesWrapper from '../PreferencesWrapper';
 
 import { toast } from 'react-toastify';

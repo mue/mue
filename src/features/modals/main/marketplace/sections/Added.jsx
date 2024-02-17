@@ -5,11 +5,11 @@ import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 import SideloadFailedModal from '../SideloadFailedModal';
-import FileUpload from '../../settings/FileUpload';
+import FileUpload from '../../../../../components/Form/Settings/FileUpload/FileUpload';
 import Item from '../Item';
 import Items from '../Items';
-import Dropdown from '../../settings/Dropdown';
-import Header, { CustomActions } from '../../settings/Header';
+import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import Header, { CustomActions } from '../../../../../components/Layout/Settings/Header/Header';
 import { Button } from 'components/Elements';
 
 import { install, uninstall, urlParser } from 'modules/helpers/marketplace';

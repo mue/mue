@@ -1,13 +1,13 @@
 import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { MdAddLink, MdLinkOff } from 'react-icons/md';
-import Header from '../Header';
-import Checkbox from '../Checkbox';
-import Dropdown from '../Dropdown';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
+import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
+import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
 import { Button } from 'components/Elements';
 import Modal from 'react-modal';
 
-import { Row, Content, Action } from '../SettingsItem';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 import AddModal from './quicklinks/AddModal';
 
 import EventBus from 'modules/helpers/eventbus';

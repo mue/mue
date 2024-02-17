@@ -4,8 +4,8 @@ import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';
 
-import { Row, Content, Action } from '../SettingsItem';
-import Header from '../Header';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
 
 import EventBus from 'modules/helpers/eventbus';
 import PreferencesWrapper from '../PreferencesWrapper';

@@ -3,7 +3,7 @@ import { PureComponent } from 'react';
 
 import { MdOutlineOpenInNew } from 'react-icons/md';
 
-import Radio from '../Radio';
+import Radio from '../../../../../components/Form/Settings/Radio/Radio';
 
 import languages from '@/i18n/languages.json';
 

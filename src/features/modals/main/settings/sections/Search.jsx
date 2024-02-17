@@ -3,11 +3,11 @@ import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import { MenuItem, TextField } from '@mui/material';
 
-import Header from '../Header';
-import Dropdown from '../Dropdown';
-import Checkbox from '../Checkbox';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
+import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
 
-import { Row, Content, Action } from '../SettingsItem';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 
 import EventBus from 'modules/helpers/eventbus';
 

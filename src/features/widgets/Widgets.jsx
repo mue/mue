@@ -7,6 +7,7 @@ import Search from './search/Search';
 import QuickLinks from './quicklinks/QuickLinks';
 import Date from './time/Date';
 import Message from './message/Message';
+import { WidgetsLayout } from 'components/Layout';
 
 import EventBus from 'modules/helpers/eventbus';
 
@@ -73,9 +74,9 @@ export default class Widgets extends PureComponent {
   render() {
     // don't show when welcome is there
     return this.state.welcome !== 'false' ? (
-      <div id="widgets" />
+      <WidgetsLayout />
     ) : (
-      <div id="widgets">
+      <WidgetsLayout>
         <Suspense fallback={<></>}>
           {this.enabled('searchBar') && <Search />}
           {this.state.order.map((element, key) => (
@@ -83,7 +84,7 @@ export default class Widgets extends PureComponent {
           ))}
           {this.enabled('weatherEnabled') && this.online ? <Weather /> : null}
         </Suspense>
-      </div>
+      </WidgetsLayout>
     );
   }
 }

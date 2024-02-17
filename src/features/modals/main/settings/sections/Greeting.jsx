@@ -1,12 +1,12 @@
 import variables from 'config/variables';
 import { useState } from 'react';
 
-import Header from '../Header';
-import Checkbox from '../Checkbox';
-import Switch from '../Switch';
-import Text from '../Text';
+import Header from '../../../../../components/Layout/Settings/Header/Header';
+import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
+import Switch from '../../../../../components/Form/Settings/Switch/Switch';
+import Text from '../../../../../components/Form/Settings/Text/Text';
 
-import { Row, Content, Action } from '../SettingsItem';
+import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 import PreferencesWrapper from '../PreferencesWrapper';
 
 const GreetingSettings = () => {
