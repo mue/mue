@@ -92,9 +92,10 @@ export default defineConfig({
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      components: path.resolve(__dirname, './src/components'),
+      '@': path.resolve(__dirname, './src'),
+      features: path.resolve(__dirname, './src/features'),
       modules: path.resolve(__dirname, './src/modules'),
-      translations: path.resolve(__dirname, './src/translations'),
+      translations: path.resolve(__dirname, './src/i18n/translations'),
       scss: path.resolve(__dirname, './src/scss'),
     },
   },

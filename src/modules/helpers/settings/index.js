@@ -2,7 +2,7 @@ import variables from 'modules/variables';
 import experimentalInit from '../experimental';
 
 import defaultSettings from 'modules/default_settings.json';
-import languages from 'modules/languages.json';
+import languages from '@/i18n/languages.json';
 
 /**
  * It sets the default settings for the extension
