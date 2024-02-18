@@ -19,8 +19,8 @@ export default class About extends PureComponent {
       update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
       loading: variables.getMessage('modals.main.loading'),
       image: document.body.classList.contains('dark')
-        ? 'icons/mue_about.png'
-        : 'icons/mue_about.png',
+        ? 'src/assets/icons/mue_about.png'
+        : 'src/assets/icons/mue_about.png',
     };
     this.controller = new AbortController();
   }

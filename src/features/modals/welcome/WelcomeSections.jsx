@@ -13,10 +13,7 @@ import {
   MdOutlineOpenInNew,
 } from 'react-icons/md';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
-
-import Radio from '../../../components/Form/Settings/Radio/Radio';
-import Checkbox from '../../../components/Form/Settings/Checkbox/Checkbox';
-import FileUpload from '../../../components/Form/Settings/FileUpload/FileUpload';
+import { Radio, Checkbox, FileUpload } from 'components/Form/Settings';
 
 import { loadSettings } from 'modules/helpers/settings';
 import { importSettings } from 'modules/helpers/settings/modals';
@@ -146,7 +143,7 @@ class WelcomeSections extends PureComponent {
         </span>
         <div className="examples">
           <img
-            src={`./welcome-images/example${this.state.welcomeImage + 1}.webp`}
+            src={`/src/assets/welcome-images/example${this.state.welcomeImage + 1}.webp`}
             alt="Example Mue setup"
             draggable={false}
           />

@@ -4,29 +4,39 @@ import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-ic
 
 import EventBus from 'modules/helpers/eventbus';
 
-import WelcomeSections from './WelcomeSections';
-import ProgressBar from './ProgressBar';
+import { ProgressBar } from './components/Elements';
 import { Button } from 'components/Elements';
+import { Wrapper, Panel } from './components/Layout';
 
 import './welcome.scss';
+
+import {
+  Intro,
+  ChooseLanguage,
+  ImportSettings,
+  ThemeSelection,
+  StyleSelection,
+  PrivacyOptions,
+  Final,
+} from './Sections';
 
 class WelcomeModal extends PureComponent {
   constructor() {
     super();
     this.state = {
-      image: './././icons/undraw_celebration.svg',
+      image: '/src/assets/icons/undraw_celebration.svg',
       currentTab: 0,
       finalTab: 5,
       buttonText: variables.getMessage('modals.welcome.buttons.next'),
     };
     this.images = [
-      './././icons/undraw_celebration.svg',
-      './././icons/undraw_around_the_world_modified.svg',
-      './././icons/undraw_add_files_modified.svg',
-      './././icons/undraw_dark_mode.svg',
-      './././icons/undraw_making_art.svg',
-      './././icons/undraw_private_data_modified.svg',
-      './././icons/undraw_upgrade_modified.svg',
+      '/src/assets/icons/undraw_celebration.svg',
+      '/src/assets/icons/undraw_around_the_world_modified.svg',
+      '/src/assets/icons/undraw_add_files_modified.svg',
+      '/src/assets/icons/undraw_dark_mode.svg',
+      '/src/assets/icons/undraw_making_art.svg',
+      '/src/assets/icons/undraw_private_data_modified.svg',
+      '/src/assets/icons/undraw_upgrade_modified.svg',
     ];
   }
 
@@ -98,9 +108,20 @@ class WelcomeModal extends PureComponent {
   }
 
   render() {
+    const tabComponents = {
+      0: <Intro />,
+      1: <ChooseLanguage />,
+      2: <ImportSettings switchTab={(tab) => this.switchTab(tab)} />,
+      3: <ThemeSelection />,
+      4: <StyleSelection />,
+      5: <PrivacyOptions />,
+      6: <Final currentTab={this.state.currentTab} switchTab={(tab) => this.switchTab(tab)} />,
+    };
+
+    let CurrentSection = tabComponents[this.state.currentTab] || <Intro />;
     return (
-      <div className="welcomeContent">
-        <section>
+      <Wrapper>
+        <Panel type="aside">
           <img
             className="showcaseimg"
             alt="sidebar icon"
@@ -112,14 +133,9 @@ class WelcomeModal extends PureComponent {
             currentTab={this.state.currentTab}
             switchTab={(tab) => this.switchTab(tab)}
           />
-        </section>
-        <section>
-          <div className="content">
-            <WelcomeSections
-              currentTab={this.state.currentTab}
-              switchTab={(tab) => this.switchTab(tab)}
-            />
-          </div>
+        </Panel>
+        <Panel type="content">
+          {CurrentSection}
           <div className="welcomeButtons">
             {this.state.currentTab !== 0 ? (
               <Button
@@ -144,8 +160,8 @@ class WelcomeModal extends PureComponent {
               iconPlacement={'right'}
             />
           </div>
-        </section>
-      </div>
+        </Panel>
+      </Wrapper>
     );
   }
 }

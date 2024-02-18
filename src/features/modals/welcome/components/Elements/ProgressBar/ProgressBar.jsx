@@ -21,4 +21,7 @@ function ProgressBar({ count, currentTab, switchTab }) {
   );
 }
 
-export default memo(ProgressBar);
+const MemoizedProgressBar = memo(ProgressBar);
+
+export default MemoizedProgressBar;
+export { MemoizedProgressBar as ProgressBar };
