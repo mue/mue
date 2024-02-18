@@ -8,9 +8,9 @@ import Modal from 'react-modal';
 
 import AddModal from './quicklinks/AddModal';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 import QuickLink from './quicklinks/QuickLink';
-import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
+import { getTitleFromUrl, isValidUrl } from 'utils/helpers/settings/modals';
 
 export default class QuickLinks extends PureComponent {
   constructor() {

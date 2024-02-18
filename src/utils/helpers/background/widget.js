@@ -1,5 +1,5 @@
 // since there is so much code in the component, we have moved it to a separate file
-import offlineImages from './offlineImages.json';
+import offlineImages from 'utils/data/offline_images.json';
 
 /**
  * If the URL starts with `data:video/` or ends with `.mp4`, `.webm`, or `.ogg`, then it's a video.

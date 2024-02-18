@@ -1,8 +1,8 @@
 import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 
-import { nth, convertTimezone } from '../../../modules/helpers/date';
-import EventBus from 'modules/helpers/eventbus';
+import { nth, convertTimezone } from 'utils/helpers/date';
+import EventBus from 'utils/helpers/eventbus';
 
 import './date.scss';
 

@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { Switch as SwitchUI, FormControlLabel } from '@mui/material';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 class Switch extends PureComponent {
   constructor(props) {

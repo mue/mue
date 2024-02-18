@@ -8,10 +8,10 @@ import { toast } from 'react-toastify';
 import { Button } from 'components/Elements';
 import { Header, CustomActions } from 'components/Layout/Settings';
 
-import { saveFile } from 'modules/helpers/settings/modals';
+import { saveFile } from 'utils/helpers/settings/modals';
 
-import achievementsData from 'modules/helpers/settings/achievements.json';
-import translations from 'modules/helpers/settings/achievement_translations/index';
+import achievementsData from 'utils/data/achievements.json';
+import translations from 'i18n/locales/achievements/index';
 
 const achievementLanguage = {
   de_DE: translations.de_DE,

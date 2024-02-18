@@ -10,7 +10,7 @@ import './scss/index.scss';
 // the toast css is based on default so we need to import it
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import { initTranslations } from './modules/translations';
+import { initTranslations } from 'utils/translations';
 
 const languagecode = localStorage.getItem('language') || 'en_GB';
 variables.language = initTranslations(languagecode);

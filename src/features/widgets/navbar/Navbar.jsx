@@ -8,7 +8,7 @@ import Todo from './Todo';
 import Apps from './Apps';
 import Maximise from '../background/Maximise';
 import { Tooltip } from 'components/Elements';
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 import './scss/index.scss';
 

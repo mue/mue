@@ -13,7 +13,7 @@ import { Button } from 'components/Elements';
 
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 import { Header } from 'components/Layout/Settings';
-import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
+import { getTitleFromUrl, isValidUrl } from 'utils/helpers/settings/modals';
 import QuickLink from './quicklinks/QuickLink';
 
 function Navbar() {

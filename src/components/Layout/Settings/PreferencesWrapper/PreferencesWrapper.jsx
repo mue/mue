@@ -3,8 +3,8 @@ import { Row, Content, Action } from '../Item/SettingsItem';
 import variables from 'config/variables';
 import Slider from '../../../Form/Settings/Slider/Slider';
 
-import { values } from 'modules/helpers/settings/modals';
-import EventBus from 'modules/helpers/eventbus';
+import { values } from 'utils/helpers/settings/modals';
+import EventBus from 'utils/helpers/eventbus';
 
 const PreferencesWrapper = ({ children, ...props }) => {
   const [shown, setShown] = useState(localStorage.getItem(props.setting) === 'true');

@@ -4,7 +4,7 @@ import { PureComponent } from 'react';
 import WeatherIcon from './WeatherIcon';
 import Expanded from './Expanded';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 import './weather.scss';
 

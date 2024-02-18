@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';
 
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 export default class Message extends PureComponent {
   constructor() {

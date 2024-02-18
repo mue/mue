@@ -7,7 +7,7 @@ import { FaYandex } from 'react-icons/fa';
 import { Tooltip } from 'components/Elements';
 import AutocompleteInput from 'features/helpers/autocomplete/Autocomplete';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 import './search.scss';
 

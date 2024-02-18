@@ -5,17 +5,17 @@ import { PureComponent } from 'react';
 
 import PhotoInformation from './PhotoInformation';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 import {
   videoCheck,
   offlineBackground,
   getGradient,
   randomColourStyleBuilder,
-} from 'modules/helpers/background/widget';
+} from 'utils/helpers/background/widget';
 
 import './scss/index.scss';
 import { decodeBlurHash } from 'fast-blurhash';
-import { supportsAVIF } from 'modules/helpers/background/avif';
+import { supportsAVIF } from 'utils/helpers/background/avif';
 
 export default class Background extends PureComponent {
   constructor() {

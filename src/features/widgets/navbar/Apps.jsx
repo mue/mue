@@ -6,7 +6,7 @@ import { MdPlaylistRemove, MdOutlineApps } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
 
 import { shift, useFloating } from '@floating-ui/react-dom';
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 class Apps extends PureComponent {
   constructor() {

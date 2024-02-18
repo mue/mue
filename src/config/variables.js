@@ -1,5 +1,5 @@
 import * as constants from 'config/constants';
-import Stats from 'modules/helpers/stats';
+import Stats from 'utils/helpers/stats';
 
 const variables = {
   language: {},

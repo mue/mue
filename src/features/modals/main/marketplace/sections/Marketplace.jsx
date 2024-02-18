@@ -16,7 +16,7 @@ import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown'
 import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
-import { install, urlParser, uninstall } from 'modules/helpers/marketplace';
+import { install, urlParser, uninstall } from 'utils/helpers/marketplace';
 
 class Marketplace extends PureComponent {
   constructor() {

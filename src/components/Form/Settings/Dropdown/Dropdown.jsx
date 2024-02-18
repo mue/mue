@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 class Dropdown extends PureComponent {
   constructor(props) {

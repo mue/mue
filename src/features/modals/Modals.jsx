@@ -6,7 +6,7 @@ import Main from './main/Main';
 import Navbar from '../widgets/navbar/Navbar';
 import Preview from '../helpers/preview/Preview';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 import Welcome from './welcome/Welcome';
 

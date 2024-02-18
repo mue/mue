@@ -7,7 +7,7 @@ import { Header, Section, Row, Content, Action } from 'components/Layout/Setting
 
 import { MdAccessibility } from 'react-icons/md';
 
-import { values } from 'modules/helpers/settings/modals';
+import { values } from 'utils/helpers/settings/modals';
 
 function AppearanceSettings() {
   const [accessibility, setAccessibility] = useState(false);

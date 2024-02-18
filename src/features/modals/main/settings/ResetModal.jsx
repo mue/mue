@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import variables from 'config/variables';
 import { MdClose, MdRestartAlt } from 'react-icons/md';
-import { setDefaultSettings } from 'modules/helpers/settings';
+import { setDefaultSettings } from 'utils/helpers/settings';
 import { Tooltip } from 'components/Elements';
 function ResetModal({ modalClose }) {
   const reset = () => {

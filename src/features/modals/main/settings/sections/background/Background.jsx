@@ -19,7 +19,7 @@ import Text from '../../../../../../components/Form/Settings/Text/Text';
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';
 
-import { values } from 'modules/helpers/settings/modals';
+import { values } from 'utils/helpers/settings/modals';
 
 export default class BackgroundSettings extends PureComponent {
   constructor() {

@@ -98,9 +98,10 @@ export default defineConfig(({ command, mode }) => {
       extensions: ['.js', '.jsx'],
       alias: {
         '@': path.resolve(__dirname, './src'),
+        i18n: path.resolve(__dirname, './src/i18n'),
         features: path.resolve(__dirname, './src/features'),
         components: path.resolve(__dirname, './src/components'),
-        modules: path.resolve(__dirname, './src/modules'),
+        utils: path.resolve(__dirname, './src/utils'),
         translations: path.resolve(__dirname, './src/i18n/locales'),
         config: path.resolve(__dirname, './src/config'),
         scss: path.resolve(__dirname, './src/scss'),

@@ -6,7 +6,7 @@ import {
   MdOutlineVisibility,
   MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 import { Button } from 'components/Elements';
 
 export const CustomActions = ({ children }) => {

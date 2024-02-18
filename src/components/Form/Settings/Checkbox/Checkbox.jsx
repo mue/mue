@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { Checkbox as CheckboxUI, FormControlLabel } from '@mui/material';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 class Checkbox extends PureComponent {
   constructor(props) {

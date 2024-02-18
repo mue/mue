@@ -11,7 +11,7 @@ import QuickLinks from './overview_skeletons/QuickLinks';
 import Date from './overview_skeletons/Date';
 import Message from './overview_skeletons/Message';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 const widget_name = {
   greeting: variables.getMessage('modals.main.settings.sections.greeting.title'),

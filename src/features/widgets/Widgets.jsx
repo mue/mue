@@ -9,7 +9,7 @@ import Date from './time/Date';
 import Message from './message/Message';
 import { WidgetsLayout } from 'components/Layout';
 
-import EventBus from 'modules/helpers/eventbus';
+import EventBus from 'utils/helpers/eventbus';
 
 // weather is lazy loaded due to the size of the weather icons module
 // since we're using react-icons this might not be accurate,

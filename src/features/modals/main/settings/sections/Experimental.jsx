@@ -4,8 +4,8 @@ import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox'
 import Slider from '../../../../../components/Form/Settings/Slider/Slider';
 import { TextField } from '@mui/material';
 
-import EventBus from 'modules/helpers/eventbus';
-import { values } from 'modules/helpers/settings/modals';
+import EventBus from 'utils/helpers/eventbus';
+import { values } from 'utils/helpers/settings/modals';
 
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 

@@ -8,8 +8,8 @@ import {
   FormLabel,
 } from '@mui/material';
 
-import EventBus from 'modules/helpers/eventbus';
-import { translations } from 'modules/translations';
+import EventBus from 'utils/helpers/eventbus';
+import { translations } from 'utils/translations';
 
 class Radio extends PureComponent {
   constructor(props) {

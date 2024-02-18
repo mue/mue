@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import experimentalInit from '../experimental';
 
-import defaultSettings from 'modules/default_settings.json';
+import defaultSettings from 'utils/data/default_settings.json';
 import languages from '@/i18n/languages.json';
 
 /**

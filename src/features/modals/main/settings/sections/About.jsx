@@ -6,7 +6,7 @@ import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
 import { Tooltip } from 'components/Elements';
-import other_contributors from 'modules/other_contributors.json';
+import other_contributors from 'utils/data/other_contributors.json';
 
 export default class About extends PureComponent {
   constructor() {
