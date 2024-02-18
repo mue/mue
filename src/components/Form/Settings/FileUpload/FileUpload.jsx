@@ -62,4 +62,4 @@ class FileUpload extends PureComponent {
   }
 }
 
-export default FileUpload;
+export { FileUpload as default, FileUpload };

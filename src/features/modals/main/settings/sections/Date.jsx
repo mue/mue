@@ -2,11 +2,9 @@ import variables from 'config/variables';
 import { useState } from 'react';
 
 import { Header } from 'components/Layout/Settings';
-import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
-import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import { Checkbox, Dropdown } from 'components/Form/Settings';
 
-import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
-import PreferencesWrapper from '../../../../../components/Layout/Settings/PreferencesWrapper/PreferencesWrapper';
+import { Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 
 export default function Date() {
   const [dateType, setDateType] = useState(localStorage.getItem('dateType') || 'long');

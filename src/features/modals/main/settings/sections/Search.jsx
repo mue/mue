@@ -3,16 +3,12 @@ import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import { MenuItem, TextField } from '@mui/material';
 
-import { Header } from 'components/Layout/Settings';
-import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
-import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
-
-import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
+import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Dropdown, Checkbox } from 'components/Form/Settings';
 
 import EventBus from 'modules/helpers/eventbus';
 
 import searchEngines from 'features/widgets/search/search_engines.json';
-import PreferencesWrapper from '../../../../../components/Layout/Settings/PreferencesWrapper/PreferencesWrapper';
 
 export default class SearchSettings extends PureComponent {
   constructor() {

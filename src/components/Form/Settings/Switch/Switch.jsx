@@ -53,4 +53,4 @@ class Switch extends PureComponent {
   }
 }
 
-export default Switch;
+export { Switch as default, Switch };

@@ -1,19 +1,16 @@
 import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { MdAddLink, MdLinkOff } from 'react-icons/md';
-import { Header } from 'components/Layout/Settings';
-import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
-import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Checkbox, Dropdown } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import Modal from 'react-modal';
 
-import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 import AddModal from './quicklinks/AddModal';
 
 import EventBus from 'modules/helpers/eventbus';
 import QuickLink from './quicklinks/QuickLink';
 import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
-import PreferencesWrapper from '../../../../../components/Layout/Settings/PreferencesWrapper/PreferencesWrapper';
 
 export default class QuickLinks extends PureComponent {
   constructor() {

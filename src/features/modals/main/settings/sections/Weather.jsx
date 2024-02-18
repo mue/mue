@@ -3,15 +3,9 @@ import { PureComponent } from 'react';
 
 import { MdAutoAwesome } from 'react-icons/md';
 
-import { Header } from 'components/Layout/Settings';
-import Radio from '../../../../../components/Form/Settings/Radio/Radio';
-import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
-import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
+import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Radio, Dropdown, Checkbox } from 'components/Form/Settings';
 import { TextField } from '@mui/material';
-
-import PreferencesWrapper from '../../../../../components/Layout/Settings/PreferencesWrapper/PreferencesWrapper';
-
-import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 
 export default class WeatherSettings extends PureComponent {
   constructor() {
