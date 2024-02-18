@@ -122,12 +122,6 @@ body {
   place-items: center;
   width: 100vw;
   height: 100vh;
-  .criticalError-message {
-    color: #fff;
-  }
-  p {
-    color: #ffffffc0;
-  }
 
   .criticalError-actions {
     display: flex;
@@ -137,10 +131,7 @@ body {
 
   button,
   a {
-    background: #0e1013;
-    box-shadow: 0 0 0 1px #484848;
     border: 0;
-    color: #fff;
     border-radius: 12px;
     padding: 10px 30px 10px 30px;
     font-size: 1rem;
@@ -152,9 +143,58 @@ body {
     transition: 0.5s;
     cursor: pointer;
     text-decoration: none;
+  }
+}
 
-    &:hover {
-      background: #1e1e1e;
+/* light theme critical error */
+@media (prefers-color-scheme: dark) {
+  * {
+    background-color: #000000 !important;
+  }
+
+  .criticalError {
+    .criticalError-message {
+      color: #fff;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.7529411765);
+    }
+
+    a {
+      background: #0e1013;
+      box-shadow: 0 0 0 1px #484848;
+      color: #fff;
+
+      &:hover {
+        background: #1e1e1e;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  * {
+    background-color: #ffffff !important;
+  }
+
+  .criticalError {
+    .criticalError-message {
+      color: #000;
+    }
+
+    p {
+      color: rgba(0, 0, 0, 0.7529411765);
+    }
+
+    a {
+      background: #fdfdfd;
+      box-shadow: 0 0 0 1px #484848;
+      color: #000;
+
+      &:hover {
+        background: #f5f5f5;
+      }
     }
   }
 }
