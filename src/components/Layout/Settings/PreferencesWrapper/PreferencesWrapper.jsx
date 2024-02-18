@@ -43,4 +43,4 @@ const PreferencesWrapper = ({ children, ...props }) => {
   );
 };
 
-export default PreferencesWrapper;
+export { PreferencesWrapper as default, PreferencesWrapper };
