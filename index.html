@@ -11,28 +11,103 @@
   <body>
     <noscript>
       <style>
-        *,
-        a {
+        @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400&display=swap');
+
+        * {
           font-family: 'Lexend Deca', sans-serif;
-          text-align: center;
-          color: black;
-          background: white !important;
+          overflow: hidden;
+        }
+
+        .criticalError {
+          display: grid;
+          place-items: center;
+          width: 100vw;
+          height: 100vh;
+        }
+
+        .criticalError .criticalError-actions {
+          display: flex;
+          flex-flow: row;
+          gap: 20px;
+        }
+
+        .criticalError a {
+          border: 0;
+          border-radius: 12px;
+          padding: 10px 30px 10px 30px;
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          flex-flow: row;
+          justify-content: center;
+          gap: 20px;
+          transition: 0.5s;
+          cursor: pointer;
+          text-decoration: none;
         }
 
         @media (prefers-color-scheme: dark) {
-          *,
-          a {
-            color: white;
-            background: #0a0a0a !important;
+          * {
+            background-color: #000000;
+          }
+
+          .criticalError .criticalError-message {
+            color: #fff;
+          }
+
+          .criticalError p {
+            color: rgba(255, 255, 255, 0.7529411765);
+          }
+
+          .criticalError a {
+            background: #0e1013;
+            box-shadow: 0 0 0 1px #484848;
+            color: #fff;
+          }
+
+          .criticalError a:hover {
+            background: #1e1e1e;
+          }
+        }
+
+        @media (prefers-color-scheme: light) {
+          * {
+            background-color: #ffffff;
+          }
+
+          .criticalError .criticalError-message {
+            color: #000;
+          }
+
+          .criticalError p {
+            color: rgba(0, 0, 0, 0.7529411765);
+          }
+
+          .criticalError a {
+            background: #fdfdfd;
+            box-shadow: 0 0 0 1px #484848;
+            color: #000;
+          }
+
+          .criticalError a:hover {
+            background: #f5f5f5;
           }
         }
       </style>
-      <h1>Error</h1>
-      <h2>You need to enable JavaScript to use Mue</h2>
-      <p>
-        Having trouble? Contact us:
-        <a href="https://muetab.com/contact">https://muetab.com/contact</a>
-      </p>
+      <div class="criticalError">
+        <div class="criticalError-message">
+          <h1>A critical error has occurred</h1>
+          <p>The new tab could not be loaded. Please enable JavaScript and try again.</p>
+          <div class="criticalError-actions">
+            <a href="https://github.com/mue/mue/issues/new/choose" target="_blank" rel="noreferrer"
+              >Report Issue</a
+            >
+            <a href="https://discord.gg/zv8C9F8" target="_blank" rel="noreferrer"
+              >Support Discord</a
+            >
+          </div>
+        </div>
+      </div>
     </noscript>
     <div id="root"></div>
     <script type="module" src="/src/index.jsx"></script>

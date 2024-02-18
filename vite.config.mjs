@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 import fs from 'fs';
@@ -63,39 +63,48 @@ const prepareBuilds = () => ({
   },
 });
 
-export default defineConfig({
-  plugins: [react(), prepareBuilds(), progress()],
-  server: {
-    open: true,
-    hmr: {
-      protocol: 'ws',
-      host: 'localhost',
+export default defineConfig(({ command, mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  return {
+    define: {
+      __APP_ENV__: JSON.stringify(env.APP_ENV),
     },
-  },
-  build: {
-    minify: isProd ? 'esbuild' : false,
-    sourcemap: !isProd,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('@mui')) {
-              return 'vendor_mui';
-            }
+    plugins: [react(), prepareBuilds(), progress()],
+    server: {
+      open: true,
+      hmr: {
+        protocol: 'ws',
+        host: 'localhost',
+      },
+    },
+    build: {
+      minify: isProd ? 'esbuild' : false,
+      sourcemap: !isProd,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('@mui')) {
+                return 'vendor_mui';
+              }
 
-            return 'vendor';
-          }
+              return 'vendor';
+            }
+          },
         },
       },
     },
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    alias: {
-      components: path.resolve(__dirname, './src/components'),
-      modules: path.resolve(__dirname, './src/modules'),
-      translations: path.resolve(__dirname, './src/translations'),
-      scss: path.resolve(__dirname, './src/scss'),
+    resolve: {
+      extensions: ['.js', '.jsx'],
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+        features: path.resolve(__dirname, './src/features'),
+        components: path.resolve(__dirname, './src/components'),
+        modules: path.resolve(__dirname, './src/modules'),
+        translations: path.resolve(__dirname, './src/i18n/locales'),
+        config: path.resolve(__dirname, './src/config'),
+        scss: path.resolve(__dirname, './src/scss'),
+      },
     },
-  },
+  };
 });

@@ -20,20 +20,20 @@ const compareAndRemoveKeys = (json1, json2) => {
   }
 };
 
-fs.readdirSync('../src/translations').forEach((file) => {
+fs.readdirSync('../src/i18n/locales').forEach((file) => {
   if (file === 'en_GB.json') {
     return;
   }
 
-  const en = require('../src/translations/en_GB.json');
-  const newdata = merge(en, require('../src/translations/' + file));
+  const en = require('../src/i18n/locales/en_GB.json');
+  const newdata = merge(en, require('../src/i18n/locales/' + file));
 
   // remove strings not in english file
   compareAndRemoveKeys(newdata, en);
 
   // write new file
-  fs.writeFileSync('../src/translations/' + file, JSON.stringify(newdata, null, 2));
+  fs.writeFileSync('../src/i18n/locales/' + file, JSON.stringify(newdata, null, 2));
 
   // add new line
-  fs.appendFileSync('../src/translations/' + file, '\n');
+  fs.appendFileSync('../src/i18n/locales/' + file, '\n');
 });
