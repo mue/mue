@@ -3,7 +3,7 @@ import { PureComponent } from 'react';
 import { MenuItem } from '@mui/material';
 import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
 
-import Header from '../../../../../../components/Layout/Settings/Header/Header';
+import { Header } from 'components/Layout/Settings';
 import Checkbox from '../../../../../../components/Form/Settings/Checkbox/Checkbox';
 import ChipSelect from '../../../../../../components/Form/Settings/ChipSelect/ChipSelect';
 import Dropdown from '../../../../../../components/Form/Settings/Dropdown/Dropdown';

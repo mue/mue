@@ -13,7 +13,7 @@ export const CustomActions = ({ children }) => {
   return children;
 };
 
-export default function Header(props) {
+function Header(props) {
   const [setting, setSetting] = useState(localStorage.getItem(props.setting) === 'true');
 
   useEffect(() => {
@@ -88,5 +88,4 @@ export default function Header(props) {
   );
 }
 
-// Remove the export statement for customActions
-// export { customActions };
+export { Header as default, Header };

@@ -84,4 +84,4 @@ class Radio extends PureComponent {
   }
 }
 
-export default Radio;
+export { Radio as default, Radio };

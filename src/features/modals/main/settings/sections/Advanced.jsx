@@ -15,7 +15,7 @@ import Text from '../../../../../components/Form/Settings/Text/Text';
 import Switch from '../../../../../components/Form/Settings/Switch/Switch';
 import ResetModal from '../ResetModal';
 import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
-import Header from '../../../../../components/Layout/Settings/Header/Header';
+import { Header } from 'components/Layout/Settings';
 
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 import Section from '../../../../../components/Layout/Settings/Section/Section';

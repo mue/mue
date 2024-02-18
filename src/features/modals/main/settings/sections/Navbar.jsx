@@ -12,7 +12,7 @@ import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown'
 import { Button } from 'components/Elements';
 
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
-import Header from '../../../../../components/Layout/Settings/Header/Header';
+import { Header } from 'components/Layout/Settings';
 import { getTitleFromUrl, isValidUrl } from 'modules/helpers/settings/modals';
 import QuickLink from './quicklinks/QuickLink';
 

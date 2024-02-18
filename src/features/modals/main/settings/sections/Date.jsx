@@ -1,12 +1,12 @@
 import variables from 'config/variables';
 import { useState } from 'react';
 
-import Header from '../../../../../components/Layout/Settings/Header/Header';
+import { Header } from 'components/Layout/Settings';
 import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
 import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
 
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
-import PreferencesWrapper from '../PreferencesWrapper';
+import PreferencesWrapper from '../../../../../components/Layout/Settings/PreferencesWrapper/PreferencesWrapper';
 
 export default function Date() {
   const [dateType, setDateType] = useState(localStorage.getItem('dateType') || 'long');

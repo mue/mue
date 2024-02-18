@@ -9,7 +9,7 @@ import FileUpload from '../../../../../components/Form/Settings/FileUpload/FileU
 import Item from '../Item';
 import Items from '../Items';
 import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
-import Header, { CustomActions } from '../../../../../components/Layout/Settings/Header/Header';
+import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, uninstall, urlParser } from 'modules/helpers/marketplace';

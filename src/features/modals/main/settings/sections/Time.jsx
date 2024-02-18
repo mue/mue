@@ -1,12 +1,12 @@
 import variables from 'config/variables';
 import React, { useState } from 'react';
 
-import Header from '../../../../../components/Layout/Settings/Header/Header';
+import { Header } from 'components/Layout/Settings';
 import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
 import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
 import Radio from '../../../../../components/Form/Settings/Radio/Radio';
 
-import PreferencesWrapper from '../PreferencesWrapper';
+import PreferencesWrapper from '../../../../../components/Layout/Settings/PreferencesWrapper/PreferencesWrapper';
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 
 import { MdRefresh } from 'react-icons/md';

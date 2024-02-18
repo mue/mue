@@ -81,4 +81,4 @@ class Text extends PureComponent {
   }
 }
 
-export default Text;
+export { Text as default, Text };

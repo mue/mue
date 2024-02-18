@@ -85,4 +85,4 @@ class SliderComponent extends PureComponent {
   }
 }
 
-export default SliderComponent;
+export { SliderComponent as default, SliderComponent as Slider };

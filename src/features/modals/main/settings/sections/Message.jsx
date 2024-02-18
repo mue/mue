@@ -5,10 +5,10 @@ import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';
 
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
-import Header from '../../../../../components/Layout/Settings/Header/Header';
+import { Header } from 'components/Layout/Settings';
 
 import EventBus from 'modules/helpers/eventbus';
-import PreferencesWrapper from '../PreferencesWrapper';
+import PreferencesWrapper from '../../../../../components/Layout/Settings/PreferencesWrapper/PreferencesWrapper';
 
 export default class Message extends PureComponent {
   constructor() {

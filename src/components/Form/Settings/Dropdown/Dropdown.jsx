@@ -73,4 +73,4 @@ class Dropdown extends PureComponent {
   }
 }
 
-export default Dropdown;
+export { Dropdown as default, Dropdown };

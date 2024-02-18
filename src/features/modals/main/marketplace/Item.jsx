@@ -17,7 +17,7 @@ import {
 } from 'react-icons/md';
 import Modal from 'react-modal';
 
-import Header from '../../../../components/Layout/Settings/Header/Header';
+import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, uninstall } from 'modules/helpers/marketplace';

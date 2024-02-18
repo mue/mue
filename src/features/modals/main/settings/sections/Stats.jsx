@@ -6,7 +6,7 @@ import { FaTrophy } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 import { Button } from 'components/Elements';
-import Header, { CustomActions } from '../../../../../components/Layout/Settings/Header/Header';
+import { Header, CustomActions } from 'components/Layout/Settings';
 
 import { saveFile } from 'modules/helpers/settings/modals';
 
