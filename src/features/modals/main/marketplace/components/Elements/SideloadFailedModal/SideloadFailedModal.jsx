@@ -2,6 +2,7 @@ import { memo } from 'react';
 import variables from 'config/variables';
 import { MdClose } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
+
 function SideloadFailedModal({ modalClose, reason }) {
   return (
     <div className="smallModal">
@@ -21,4 +22,7 @@ function SideloadFailedModal({ modalClose, reason }) {
   );
 }
 
-export default memo(SideloadFailedModal);
+const MemoizedSideloadFailedModal = memo(SideloadFailedModal);
+
+export default MemoizedSideloadFailedModal;
+export { MemoizedSideloadFailedModal as SideloadFailedModal };

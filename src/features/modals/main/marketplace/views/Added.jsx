@@ -4,11 +4,10 @@ import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension } from 'react-icon
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
-import SideloadFailedModal from '../SideloadFailedModal';
-import FileUpload from '../../../../../components/Form/Settings/FileUpload/FileUpload';
-import Item from '../Item';
-import Items from '../Items';
-import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import { SideloadFailedModal } from '../components/Elements/SideloadFailedModal/SideloadFailedModal';
+import Item from '../components/Items/Item';
+import Items from '../components/Items/Items';
+import { Dropdown, FileUpload } from 'components/Form/Settings';
 import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 

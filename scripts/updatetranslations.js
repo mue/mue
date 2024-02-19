@@ -37,3 +37,32 @@ fs.readdirSync('../src/i18n/locales').forEach((file) => {
   // add new line
   fs.appendFileSync('../src/i18n/locales/' + file, '\n');
 });
+
+
+// do the same with achievements
+fs.readdirSync('../src/i18n/achievements').forEach((file) => {
+  if (file === 'en_GB.json') {
+    return;
+  }
+
+  const en = require('../src/i18n/achievements/en_GB.json');
+  const newdata = merge(en, require('../src/i18n/achievements/' + file));
+
+  // remove strings not in english file
+  compareAndRemoveKeys(newdata, en);
+
+  // write new file
+  fs.writeFileSync('../src/i18n/achievements/' + file, JSON.stringify(newdata, null, 2));
+
+  // add new line
+  fs.appendFileSync('../src/i18n/achievements/' + file, '\n');
+
+  // if missing translations from locales/ add them to achievements/
+  const locales = fs.readdirSync('../src/i18n/locales');
+  locales.forEach((locale) => {
+    if (!fs.existsSync('../src/i18n/achievements/' + locale)) {
+      fs.writeFileSync('../src/i18n/achievements/' + locale, JSON.stringify(en, null, 2));
+      fs.appendFileSync('../src/i18n/achievements/' + locale, '\n');
+    }
+  });
+});

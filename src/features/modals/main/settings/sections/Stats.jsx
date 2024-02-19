@@ -10,31 +10,14 @@ import { Header, CustomActions } from 'components/Layout/Settings';
 
 import { saveFile } from 'utils/saveFile';
 
-import achievementsData from 'utils/data/achievements.json';
-import translations from 'i18n/locales/achievements/index';
-
-const achievementLanguage = {
-  de_DE: translations.de_DE,
-  en_GB: translations.en_GB,
-  en_US: translations.en_US,
-  es: translations.es,
-  fr: translations.fr,
-  nl: translations.nl,
-  no: translations.no,
-  ru: translations.ru,
-  zh_CN: translations.zh_CN,
-  id_ID: translations.id_ID,
-  tr_TR: translations.tr_TR,
-  bn: translations.bn,
-  pt_BR: translations.pt_BR,
-};
+import { translations, achievements } from 'utils/achievements';
 
 export default class Stats extends PureComponent {
   constructor() {
     super();
     this.state = {
       stats: JSON.parse(localStorage.getItem('statsData')) || {},
-      achievements: achievementsData.achievements,
+      achievements,
     };
   }
 
@@ -79,7 +62,7 @@ export default class Stats extends PureComponent {
     this.setState({
       stats: {},
     });
-    toast('Stats reset');
+    toast(variables.getMessage('toasts.stats_reset'));
     this.getAchievements();
     this.forceUpdate();
   }
@@ -92,23 +75,35 @@ export default class Stats extends PureComponent {
     saveFile(JSON.stringify(this.state.stats, null, 2), filename);
   }
 
+  getLocalisedAchievementData(id) {
+    const localised = translations[variables.languagecode][id] ||
+      translations.en_GB[id] || { name: id, description: '' };
+
+    return {
+      name: localised.name,
+      description: localised.description,
+    };
+  }
+
   componentDidMount() {
     this.getAchievements();
     this.forceUpdate();
   }
 
   render() {
-    const achievementElement = (key, name, achieved) => (
-      <div className="achievement">
-        <FaTrophy />
-        <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
-          <span>{name}</span>
-          <span className="subtitle">
-            {achievementLanguage[localStorage.getItem('language')][key]}
-          </span>
+    const achievementElement = (key, id, achieved) => {
+      const { name, description } = this.getLocalisedAchievementData(id);
+
+      return (
+        <div className="achievement" key={key}>
+          <FaTrophy />
+          <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
+            <span>{name}</span>
+            <span className="subtitle">{description}</span>
+          </div>
         </div>
-      </div>
-    );
+      );
+    };
 
     const STATS_SECTION = 'modals.main.settings.sections.stats';
 
@@ -220,7 +215,7 @@ export default class Stats extends PureComponent {
           <div className="achievements">
             {this.state.achievements.map((achievement, index) => {
               if (achievement.achieved) {
-                return achievementElement(index, achievement.name, achievement.achieved);
+                return achievementElement(index, achievement.id, achievement.achieved);
               }
             })}
           </div>

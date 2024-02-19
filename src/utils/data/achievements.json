@@ -1,52 +1,86 @@
-{
-  "achievements": [
-    {
-      "name": "10/10 IGN",
-      "description": "Opened 10 tabs",
-      "condition": {
-        "type": "tabsOpened",
-        "amount": 10
-      }
-    },
-    {
-      "name": "Thank you",
-      "description": "Opened 39 tabs",
-      "condition": {
-        "type": "tabsOpened",
-        "amount": 39
-      }
-    },
-    {
-      "name": "Seasoning",
-      "description": "Opened 100 tabs",
-      "condition": {
-        "type": "tabsOpened",
-        "amount": 100
-      }
-    },
-    {
-      "name": "Mr Worldwide",
-      "description": "Opened 305 tabs",
-      "condition": {
-        "type": "tabsOpened",
-        "amount": 305
-      }
-    },
-    {
-      "name": "Average Linux user",
-      "description": "Installed an add-on",
-      "condition": {
-        "type": "addonInstall",
-        "amount": 1
-      }
-    },
-    {
-      "name": "Fully riced",
-      "description": "Installed 5 add-ons",
-      "condition": {
-        "type": "addonInstall",
-        "amount": 5
-      }
+[
+  {
+    "id": "10tabs",
+    "condition": {
+      "type": "tabsOpened",
+      "amount": 10
     }
-  ]
-}
+  },
+  {
+    "id": "thankyou",
+    "condition": {
+      "type": "tabsOpened",
+      "amount": 39
+    }
+  },
+  {
+    "id": "seasoning",
+    "condition": {
+      "type": "tabsOpened",
+      "amount": 100
+    }
+  },
+  {
+    "id": "mrworldwide",
+    "condition": {
+      "type": "tabsOpened",
+      "amount": 305
+    }
+  },
+  {
+    "id": "tabaholic",
+    "condition": {
+      "type": "tabsOpened",
+      "amount": 500
+    }
+  },
+  {
+    "id": "727",
+    "condition": {
+      "type": "tabsOpened",
+      "amount": 727
+    }
+  },
+  {
+    "id": "808sandtabs",
+    "condition": {
+      "type": "tabsOpened",
+      "amount": 808
+    }
+  },
+  {
+    "id": "1337",
+    "condition": {
+      "type": "tabsOpened",
+      "amount": 1337
+    }
+  },
+  {
+    "id": "averagelinuxuser",
+    "condition": {
+      "type": "addonInstall",
+      "amount": 1
+    }
+  },
+  {
+    "id": "fullyriced",
+    "condition": {
+      "type": "addonInstall",
+      "amount": 5
+    }
+  },
+  {
+    "id": "21addons",
+    "condition": {
+      "type": "addonInstall",
+      "amount": 21
+    }
+  },
+  {
+    "id": "overload",
+    "condition": {
+      "type": "addonInstall",
+      "amount": 50
+    }
+  }
+]

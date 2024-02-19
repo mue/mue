@@ -3,7 +3,7 @@ import { PureComponent, createRef } from 'react';
 import { MdOutlineWifiOff } from 'react-icons/md';
 import Modal from 'react-modal';
 
-import Lightbox from '../../marketplace/Lightbox';
+import Lightbox from '../../marketplace/components/Elements/Lightbox/Lightbox';
 
 export default class Changelog extends PureComponent {
   constructor() {

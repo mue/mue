@@ -86,4 +86,6 @@ function EmblaCarousel({ data }) {
   );
 }
 
-export default memo(EmblaCarousel);
+const Carousel = memo(EmblaCarousel);
+
+export { Carousel as default, Carousel };

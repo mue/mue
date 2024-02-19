@@ -1,7 +1,5 @@
 import variables from 'config/variables';
 import { PureComponent, Fragment } from 'react';
-import { Tooltip } from 'components/Elements';
-import ImageCarousel from 'features/helpers/carousel/Carousel';
 import { toast } from 'react-toastify';
 import {
   MdIosShare,
@@ -21,7 +19,7 @@ import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, uninstall } from 'utils/marketplace';
-
+import { Carousel } from '../Elements/Carousel';
 import { ShareModal } from 'components/Elements';
 
 class Item extends PureComponent {
@@ -124,7 +122,7 @@ class Item extends PureComponent {
             {this.props.data.data.photos && (
               <div className="carousel">
                 <div className="carousel_container">
-                  <ImageCarousel data={this.props.data.data.photos} />
+                  <Carousel data={this.props.data.data.photos} />
                 </div>
               </div>
             )}
@@ -306,4 +304,4 @@ class Item extends PureComponent {
   }
 }
 
-export default Item;
+export { Item as default, Item };

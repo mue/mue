@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 
 import { Button } from 'components/Elements';
+import MemoizedLightbox from '../Elements/Lightbox/Lightbox';
 
 function Items({
   type,
@@ -114,4 +115,5 @@ function Items({
   );
 }
 
-export default memo(Items);
+const MemoizedItems = memo(Items);
+export { MemoizedItems as default, MemoizedItems as Items };
