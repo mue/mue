@@ -8,7 +8,7 @@ import {
   MdDataUsage,
 } from 'react-icons/md';
 
-import { exportSettings, importSettings } from 'utils/helpers/settings/modals';
+import { exportSettings, importSettings } from 'utils/settings';
 
 import { FileUpload, Text, Switch, Dropdown } from 'components/Form/Settings';
 import ResetModal from '../ResetModal';

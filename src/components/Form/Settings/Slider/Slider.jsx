@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { Slider } from '@mui/material';
 import { MdRefresh } from 'react-icons/md';
 
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 class SliderComponent extends PureComponent {
   constructor(props) {

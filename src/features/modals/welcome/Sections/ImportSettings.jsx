@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { useState } from 'react';
 import { FileUpload } from 'components/Form/Settings';
 import { MdCloudUpload } from 'react-icons/md';
-import { importSettings as importSettingsFunction } from 'utils/helpers/settings/modals';
+import { importSettings as importSettingsFunction } from 'utils/settings';
 import { Header } from '../components/Layout';
 import default_settings from 'utils/data/default_settings.json';
 

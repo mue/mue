@@ -12,7 +12,7 @@ import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown'
 import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
-import { install, uninstall, urlParser } from 'utils/helpers/marketplace';
+import { install, uninstall, urlParser } from 'utils/marketplace';
 
 export default class Added extends PureComponent {
   constructor() {

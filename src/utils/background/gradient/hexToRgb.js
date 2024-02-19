@@ -1,5 +1,5 @@
 import rgbToHsv from './rgbToHsv';
-import setRgba from './setRgba';
+import { setRGBA } from './setRgba';
 
 const hexRegexp = /(^#{0,1}[0-9A-F]{6}$)|(^#{0,1}[0-9A-F]{3}$)|(^#{0,1}[0-9A-F]{8}$)/i;
 const regexp = /([0-9A-F])([0-9A-F])([0-9A-F])/i;
@@ -26,7 +26,7 @@ export default function hexToRgb(value) {
     const blue = parseInt(value.substr(4, 2), 16);
     const alpha = parseInt(value.substr(6, 2), 16) / 255;
 
-    const color = setRgba(red, green, blue, alpha);
+    const color = setRGBA(red, green, blue, alpha);
     const hsv = rgbToHsv({ ...color });
 
     return {

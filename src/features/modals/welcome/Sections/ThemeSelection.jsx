@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { useState } from 'react';
 import { MdAutoAwesome, MdLightMode, MdDarkMode } from 'react-icons/md';
-import { loadSettings } from 'utils/helpers/settings';
+import { loadSettings } from 'utils/settings';
 import { Header } from '../components/Layout';
 
 function ThemeSelection() {

@@ -14,7 +14,7 @@ import {
 import { Checkbox, Dropdown } from 'components/Form/Settings';
 
 import { toast } from 'react-toastify';
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 export default class QuoteSettings extends PureComponent {
   constructor() {

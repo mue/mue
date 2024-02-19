@@ -3,8 +3,8 @@ import { Row, Content, Action } from '../Item/SettingsItem';
 import variables from 'config/variables';
 import Slider from '../../../Form/Settings/Slider/Slider';
 
-import { values } from 'utils/helpers/settings/modals';
-import EventBus from 'utils/helpers/eventbus';
+import values from 'utils/data/slider_values.json';
+import EventBus from 'utils/eventbus';
 
 const PreferencesWrapper = ({ children, ...props }) => {
   const [shown, setShown] = useState(localStorage.getItem(props.setting) === 'true');
@@ -32,7 +32,7 @@ const PreferencesWrapper = ({ children, ...props }) => {
               max="400"
               default="100"
               display="%"
-              marks={values('zoom')}
+              marks={values.zoom}
               category={props.zoomCategory || props.category}
             />
           </Action>

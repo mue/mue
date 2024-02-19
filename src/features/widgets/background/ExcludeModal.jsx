@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 import { memo } from 'react';
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 import { Tooltip } from 'components/Elements';
 
 import { MdClose, MdDone } from 'react-icons/md';

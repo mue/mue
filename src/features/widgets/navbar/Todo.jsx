@@ -15,7 +15,7 @@ import { Tooltip } from 'components/Elements';
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
 import { sortableContainer, sortableElement, sortableHandle } from '@muetab/react-sortable-hoc';
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 const SortableItem = sortableElement(({ value }) => <div>{value}</div>);
 const SortableContainer = sortableContainer(({ children }) => <div>{children}</div>);

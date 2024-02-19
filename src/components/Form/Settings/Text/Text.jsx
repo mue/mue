@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { TextField } from '@mui/material';
 import { MdRefresh } from 'react-icons/md';
 
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 class Text extends PureComponent {
   constructor(props) {

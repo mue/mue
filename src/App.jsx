@@ -6,9 +6,9 @@ import Background from 'features/widgets/background/Background';
 import Widgets from 'features/widgets/Widgets';
 import Modals from 'features/modals/Modals';
 
-import { loadSettings, moveSettings } from 'utils/helpers/settings';
+import { loadSettings, moveSettings } from 'utils/settings';
 
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 export default class App extends PureComponent {
   componentDidMount() {

@@ -8,8 +8,7 @@ import {
   Action,
 } from '../../../../../../components/Layout/Settings/Item/SettingsItem';
 
-import hexToRgb from 'utils/helpers/background/hexToRgb';
-import rgbToHex from 'utils/helpers/background/rgbToHex';
+import { hexToRgb, rgbToHex } from 'utils/background/gradient';
 
 //import '@muetab/react-color-gradient-picker/dist/index.css';
 import '../../../scss/settings/react-color-picker-gradient-picker-custom-styles.scss';

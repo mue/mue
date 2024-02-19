@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-icons/md';
 
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 import { ProgressBar } from './components/Elements';
 import { Button } from 'components/Elements';

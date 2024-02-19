@@ -99,12 +99,13 @@ export default defineConfig(({ command, mode }) => {
       alias: {
         '@': path.resolve(__dirname, './src'),
         i18n: path.resolve(__dirname, './src/i18n'),
-        features: path.resolve(__dirname, './src/features'),
         components: path.resolve(__dirname, './src/components'),
-        utils: path.resolve(__dirname, './src/utils'),
-        translations: path.resolve(__dirname, './src/i18n/locales'),
         config: path.resolve(__dirname, './src/config'),
+        features: path.resolve(__dirname, './src/features'),
+        lib: path.resolve(__dirname, './src/lib'),
         scss: path.resolve(__dirname, './src/scss'),
+        translations: path.resolve(__dirname, './src/i18n/locales'),
+        utils: path.resolve(__dirname, './src/utils'),
       },
     },
   };

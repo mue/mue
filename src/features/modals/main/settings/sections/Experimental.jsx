@@ -4,8 +4,8 @@ import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox'
 import Slider from '../../../../../components/Form/Settings/Slider/Slider';
 import { TextField } from '@mui/material';
 
-import EventBus from 'utils/helpers/eventbus';
-import { values } from 'utils/helpers/settings/modals';
+import EventBus from 'utils/eventbus';
+import values from 'utils/data/slider_values.json';
 
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 
@@ -34,7 +34,7 @@ function ExperimentalSettings() {
             max="5000"
             default="0"
             step="100"
-            marks={values('experimental')}
+            marks={values.experimental}
             element=".other"
           />
           <p style={{ textAlign: 'left' }}>Send Event</p>

@@ -18,7 +18,7 @@ import { ShareModal } from 'components/Elements';
 
 import offline_quotes from './offline_quotes.json';
 
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 import './quote.scss';
 

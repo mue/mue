@@ -3,7 +3,7 @@
  * @param value - The value to check.
  * @returns A function that takes a value and returns a boolean.
  */
-const isValidRGBValue = (value) => {
+export function isValidRGBValue(value) {
   return typeof value === 'number' && Number.isNaN(value) === false && value >= 0 && value <= 255;
 };
 
@@ -18,7 +18,7 @@ const isValidRGBValue = (value) => {
  * @param alpha - The alpha value of the color.
  * @returns An object with the properties red, green, blue, and alpha.
  */
-export default function setRGBA(red, green, blue, alpha) {
+export function setRGBA(red, green, blue, alpha) {
   if (isValidRGBValue(red) && isValidRGBValue(green) && isValidRGBValue(blue)) {
     const color = {
       red: red | 0,

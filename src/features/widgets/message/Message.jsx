@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 import './message.scss';
 
 const Message = () => {

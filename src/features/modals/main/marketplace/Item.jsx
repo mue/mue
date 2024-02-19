@@ -20,7 +20,7 @@ import Modal from 'react-modal';
 import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
-import { install, uninstall } from 'utils/helpers/marketplace';
+import { install, uninstall } from 'utils/marketplace';
 
 import { ShareModal } from 'components/Elements';
 

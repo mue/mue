@@ -1,7 +1,7 @@
 import { PureComponent, Suspense, lazy } from 'react';
 
-import { convertTimezone } from 'utils/helpers/date';
-import EventBus from 'utils/helpers/eventbus';
+import { convertTimezone } from 'utils/date';
+import EventBus from 'utils/eventbus';
 
 import './clock.scss';
 

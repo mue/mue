@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 import './autocomplete.scss';
 

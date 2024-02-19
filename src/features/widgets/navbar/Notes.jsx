@@ -7,8 +7,8 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
 import { Tooltip } from 'components/Elements';
 
-import { saveFile } from 'utils/helpers/settings/modals';
-import EventBus from 'utils/helpers/eventbus';
+import { saveFile } from 'utils/saveFile';
+import EventBus from 'utils/eventbus';
 
 class Notes extends PureComponent {
   constructor() {

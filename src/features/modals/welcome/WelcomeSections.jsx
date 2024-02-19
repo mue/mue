@@ -15,8 +15,7 @@ import {
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 import { Radio, Checkbox, FileUpload } from 'components/Form/Settings';
 
-import { loadSettings } from 'utils/helpers/settings';
-import { importSettings } from 'utils/helpers/settings/modals';
+import { loadSettings, importSettings } from 'utils/settings';
 
 import default_settings from 'utils/data/default_settings.json';
 import languages from '@/i18n/languages.json';

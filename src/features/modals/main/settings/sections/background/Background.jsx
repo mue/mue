@@ -1,6 +1,5 @@
 import variables from 'config/variables';
 import { PureComponent } from 'react';
-import { MenuItem } from '@mui/material';
 import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
 
 import { Header } from 'components/Layout/Settings';
@@ -19,7 +18,7 @@ import Text from '../../../../../../components/Form/Settings/Text/Text';
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';
 
-import { values } from 'utils/helpers/settings/modals';
+import values from 'utils/data/slider_values.json';
 
 export default class BackgroundSettings extends PureComponent {
   constructor() {
@@ -542,7 +541,7 @@ export default class BackgroundSettings extends PureComponent {
                 max="100"
                 default="0"
                 display="%"
-                marks={values('background')}
+                marks={values.background}
                 category="background"
                 element="#backgroundImage"
               />
@@ -555,7 +554,7 @@ export default class BackgroundSettings extends PureComponent {
                 max="100"
                 default="90"
                 display="%"
-                marks={values('background')}
+                marks={values.background}
                 category="background"
                 element="#backgroundImage"
               />
@@ -616,7 +615,7 @@ export default class BackgroundSettings extends PureComponent {
                   max="100"
                   default="0"
                   display="%"
-                  marks={values('background')}
+                  marks={values.background}
                   category="background"
                   element="#backgroundImage"
                 />

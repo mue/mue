@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { Button } from 'components/Elements';
 import { Header, CustomActions } from 'components/Layout/Settings';
 
-import { saveFile } from 'utils/helpers/settings/modals';
+import { saveFile } from 'utils/saveFile';
 
 import achievementsData from 'utils/data/achievements.json';
 import translations from 'i18n/locales/achievements/index';

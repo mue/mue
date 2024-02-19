@@ -6,7 +6,7 @@ import { MenuItem, TextField } from '@mui/material';
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { Dropdown, Checkbox } from 'components/Form/Settings';
 
-import EventBus from 'utils/helpers/eventbus';
+import EventBus from 'utils/eventbus';
 
 import searchEngines from 'features/widgets/search/search_engines.json';
 
