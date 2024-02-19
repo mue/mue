@@ -3,11 +3,11 @@ import { MdOutlineOpenInNew } from 'react-icons/md';
 import languages from '@/i18n/languages.json';
 
 import { Radio } from 'components/Form/Settings';
-import { Header } from '../components/Layout';
+import { Header, Content } from '../components/Layout';
 
 function ChooseLanguage() {
   return (
-    <>
+    <Content>
       <Header
         title={variables.getMessage('modals.welcome.sections.language.title')}
         subtitle={variables.getMessage('modals.welcome.sections.language.description')}
@@ -33,7 +33,7 @@ function ChooseLanguage() {
       <div className="languageSettings">
         <Radio name="language" options={languages} category="welcomeLanguage" />
       </div>
-    </>
+    </Content>
   );
 }
 

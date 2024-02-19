@@ -1,22 +1,26 @@
 import { memo } from 'react';
 
-function ProgressBar({ count, currentTab, switchTab }) {
+const Step = memo(({ isActive, index, onClick }) => {
+  const className = isActive ? 'step active' : 'step';
+
+  return (
+    <div className={className} onClick={onClick}>
+      <span>{index + 1}</span>
+    </div>
+  );
+});
+
+function ProgressBar({ numberOfTabs, currentTab, switchTab }) {
   return (
     <div className="progressbar">
-      {count.map((num) => {
-        let className = 'step';
-
-        const index = count.indexOf(num);
-        if (index === currentTab) {
-          className = 'step active';
-        }
-
-        return (
-          <div className={className} key={index} onClick={() => switchTab(index)}>
-            <span>{index + 1}</span>
-          </div>
-        );
-      })}
+      {Array.from({ length: numberOfTabs }, (_, index) => (
+        <Step
+          key={index}
+          isActive={index === currentTab}
+          index={index}
+          onClick={() => switchTab(index)}
+        />
+      ))}
     </div>
   );
 }

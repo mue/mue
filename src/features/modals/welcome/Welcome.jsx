@@ -37,7 +37,6 @@ class WelcomeModal extends PureComponent {
     if (minus) {
       return this.setState({
         currentTab: this.state.currentTab - 1,
-        image: this.images[this.state.currentTab - 1],
         buttonText: variables.getMessage('modals.welcome.buttons.next'),
       });
     }
@@ -48,7 +47,7 @@ class WelcomeModal extends PureComponent {
 
     this.setState({
       currentTab: this.state.currentTab + 1,
-      image: this.images[this.state.currentTab + 1],
+      image: [this.state.currentTab + 1],
       buttonText:
         this.state.currentTab !== this.state.finalTab
           ? variables.getMessage('modals.welcome.buttons.next')
@@ -60,7 +59,6 @@ class WelcomeModal extends PureComponent {
   switchTab(tab) {
     this.setState({
       currentTab: tab,
-      image: this.images[tab],
       buttonText:
         tab !== this.state.finalTab + 1
           ? variables.getMessage('modals.welcome.buttons.next')
@@ -76,7 +74,6 @@ class WelcomeModal extends PureComponent {
     if (welcomeTab) {
       this.setState({
         currentTab: Number(welcomeTab),
-        image: this.images[Number(welcomeTab)],
         buttonText:
           Number(welcomeTab) !== this.state.finalTab + 1
             ? variables.getMessage('modals.welcome.buttons.next')
@@ -97,6 +94,38 @@ class WelcomeModal extends PureComponent {
     EventBus.off('refresh');
   }
 
+  renderButtons() {
+    const { currentTab, buttonText } = this.state;
+    const { modalSkip } = this.props;
+
+    return (
+      <div className="welcomeButtons">
+        {currentTab !== 0 ? (
+          <Button
+            type="settings"
+            onClick={() => this.changeTab(true)}
+            icon={<MdArrowBackIosNew />}
+            label={variables.getMessage('modals.welcome.buttons.previous')}
+          />
+        ) : (
+          <Button
+            type="settings"
+            onClick={() => modalSkip()}
+            icon={<MdOutlinePreview />}
+            label={variables.getMessage('modals.welcome.buttons.preview')}
+          />
+        )}
+        <Button
+          type="settings"
+          onClick={() => this.changeTab()}
+          icon={<MdArrowForwardIos />}
+          label={buttonText}
+          iconPlacement={'right'}
+        />
+      </div>
+    );
+  }
+
   render() {
     const tabComponents = {
       0: <Intro />,
@@ -114,37 +143,14 @@ class WelcomeModal extends PureComponent {
         <Panel type="aside">
           <AsideImage currentTab={this.state.currentTab} />
           <ProgressBar
-            count={this.images}
+            numberOfTabs={this.state.finalTab + 2}
             currentTab={this.state.currentTab}
             switchTab={(tab) => this.switchTab(tab)}
           />
         </Panel>
         <Panel type="content">
           {CurrentSection}
-          <div className="welcomeButtons">
-            {this.state.currentTab !== 0 ? (
-              <Button
-                type="settings"
-                onClick={() => this.changeTab(true)}
-                icon={<MdArrowBackIosNew />}
-                label={variables.getMessage('modals.welcome.buttons.previous')}
-              />
-            ) : (
-              <Button
-                type="settings"
-                onClick={() => this.props.modalSkip()}
-                icon={<MdOutlinePreview />}
-                label={variables.getMessage('modals.welcome.buttons.preview')}
-              />
-            )}
-            <Button
-              type="settings"
-              onClick={() => this.changeTab()}
-              icon={<MdArrowForwardIos />}
-              label={this.state.buttonText}
-              iconPlacement={'right'}
-            />
-          </div>
+          {this.renderButtons()}
         </Panel>
       </Wrapper>
     );

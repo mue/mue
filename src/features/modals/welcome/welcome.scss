@@ -89,6 +89,16 @@
 }
 
 .themesToggleArea {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  div:nth-child(1) {
+    grid-column: span 1 / span 1 !important;
+  }
+  div:nth-child(2),
+  div:nth-child(3) {
+    grid-column: span 1 / span 1 !important;
+  }
   @include themed {
     .active {
       background: t($modal-sidebarActive);
@@ -199,6 +209,7 @@ a.privacy {
   flex-flow: column;
 
   .shareYourMue {
+    width: -moz-fit-content;
     width: fit-content;
   }
 
@@ -305,6 +316,7 @@ a.privacy {
 
 .welcomeButtons {
   z-index: 999;
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   position: sticky;
   bottom: 0;

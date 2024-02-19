@@ -1,15 +1,11 @@
 import variables from 'config/variables';
 import { MdOutlineOpenInNew } from 'react-icons/md';
 import { Checkbox } from 'components/Form/Settings';
-import { Header } from '../components/Layout';
+import { Header, Content } from '../components/Layout';
 
-function PrivacyOptions() {
+function OfflineMode() {
   return (
     <>
-      <Header
-        title={variables.getMessage('modals.welcome.sections.privacy.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.privacy.description')}
-      />
       <Checkbox
         name="offlineMode"
         text={variables.getMessage('modals.main.settings.sections.advanced.offline_mode')}
@@ -18,18 +14,27 @@ function PrivacyOptions() {
       <span className="subtitle">
         {variables.getMessage('modals.welcome.sections.privacy.offline_mode_description')}
       </span>
+    </>
+  );
+}
+
+function DuckDuckGoProxy() {
+  return (
+    <>
       <Checkbox
         name="ddgProxy"
-        text={
-          variables.getMessage('modals.main.settings.sections.background.ddg_image_proxy') +
-          ' (' +
-          variables.getMessage('modals.main.settings.sections.background.title') +
-          ')'
-        }
+        text={`${variables.getMessage('modals.main.settings.sections.background.ddg_image_proxy')} (${variables.getMessage('modals.main.settings.sections.background.title')})`}
       />
       <span className="subtitle">
         {variables.getMessage('modals.welcome.sections.privacy.ddg_proxy_description')}
       </span>
+    </>
+  );
+}
+
+function Links() {
+  return (
+    <>
       <span className="title">
         {variables.getMessage('modals.welcome.sections.privacy.links.title')}
       </span>
@@ -45,7 +50,7 @@ function PrivacyOptions() {
 
       <a
         className="link"
-        href={'https://github.com/' + variables.constants.ORG_NAME}
+        href={`https://github.com/${variables.constants.ORG_NAME}`}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -53,6 +58,20 @@ function PrivacyOptions() {
         <MdOutlineOpenInNew />
       </a>
     </>
+  );
+}
+
+function PrivacyOptions() {
+  return (
+    <Content>
+      <Header
+        title={variables.getMessage('modals.welcome.sections.privacy.title')}
+        subtitle={variables.getMessage('modals.welcome.sections.privacy.description')}
+      />
+      <OfflineMode />
+      <DuckDuckGoProxy />
+      <Links />
+    </Content>
   );
 }
 

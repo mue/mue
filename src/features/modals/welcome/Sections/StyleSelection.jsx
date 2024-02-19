@@ -1,41 +1,53 @@
 import variables from 'config/variables';
 import { MdArchive, MdOutlineWhatshot } from 'react-icons/md';
 import { useState } from 'react';
-import { Header } from '../components/Layout';
+import { Header, Content } from '../components/Layout';
 
-function StyleSelection() {
-    const widgetStyle = localStorage.getItem('widgetStyle');
-    const [style, setStyle] = useState({
-      newStyle: widgetStyle === 'legacy' ? 'toggle newStyle' : 'toggle newStyle active',
-      legacyStyle: widgetStyle === 'legacy' ? 'toggle legacyStyle active' : 'toggle legacyStyle',
-    });
-    
-      const changeStyle = (type) => {
-        setStyle({
-          newStyle: type === 'new' ? 'toggle newStyle active' : 'toggle newStyle',
-          legacyStyle: type === 'legacy' ? 'toggle legacyStyle active' : 'toggle legacyStyle',
-        });
-    
-        localStorage.setItem('widgetStyle', type);
-      };
+const STYLES = {
+  NEW: 'new',
+  LEGACY: 'legacy',
+};
 
-    return (
-        <>
-        <Header title={variables.getMessage('modals.welcome.sections.style.title')} subtitle={variables.getMessage('modals.welcome.sections.style.description')} />
-        <div className="themesToggleArea">
-          <div className="options">
-            <div className={style.legacyStyle} onClick={() => changeStyle('legacy')}>
-              <MdArchive />
-              <span>{variables.getMessage('modals.welcome.sections.style.legacy')}</span>
+const StyleSelection = () => {
+  const widgetStyle = localStorage.getItem('widgetStyle') || STYLES.NEW;
+  const [style, setStyle] = useState(widgetStyle);
+
+  const changeStyle = (type) => {
+    setStyle(type);
+    localStorage.setItem('widgetStyle', type);
+  };
+
+  const styleMapping = {
+    [STYLES.LEGACY]: {
+      className: style === STYLES.LEGACY ? 'toggle legacyStyle active' : 'toggle legacyStyle',
+      icon: <MdArchive />,
+      text: variables.getMessage('modals.welcome.sections.style.legacy'),
+    },
+    [STYLES.NEW]: {
+      className: style === STYLES.NEW ? 'toggle newStyle active' : 'toggle newStyle',
+      icon: <MdOutlineWhatshot />,
+      text: variables.getMessage('modals.welcome.sections.style.modern'),
+    },
+  };
+
+  return (
+    <Content>
+      <Header
+        title={variables.getMessage('modals.welcome.sections.style.title')}
+        subtitle={variables.getMessage('modals.welcome.sections.style.description')}
+      />
+      <div className="themesToggleArea">
+        <div className="options">
+          {Object.entries(styleMapping).map(([type, { className, icon, text }]) => (
+            <div className={className} onClick={() => changeStyle(type)} key={type}>
+              {icon}
+              <span>{text}</span>
             </div>
-            <div className={style.newStyle} onClick={() => changeStyle('new')}>
-              <MdOutlineWhatshot />
-              <span>{variables.getMessage('modals.welcome.sections.style.modern')}</span>
-            </div>
-          </div>
+          ))}
         </div>
-      </>
-    )
-}
+      </div>
+    </Content>
+  );
+};
 
 export { StyleSelection as default, StyleSelection };

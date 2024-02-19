@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FileUpload } from 'components/Form/Settings';
 import { MdCloudUpload } from 'react-icons/md';
 import { importSettings as importSettingsFunction } from 'utils/settings';
-import { Header } from '../components/Layout';
+import { Header, Content } from '../components/Layout';
 import default_settings from 'utils/data/default_settings.json';
 
 function ImportSettings(props) {
@@ -43,7 +43,7 @@ function ImportSettings(props) {
     props.switchTab(5);
   };
   return (
-    <>
+    <Content>
       <Header
         title={variables.getMessage('modals.welcome.sections.settings.title')}
         subtitle={variables.getMessage('modals.welcome.sections.settings.description')}
@@ -62,7 +62,7 @@ function ImportSettings(props) {
       <span className="subtitle">
         {variables.getMessage('modals.welcome.sections.settings.tip')}
       </span>
-    </>
+    </Content>
   );
 }
 

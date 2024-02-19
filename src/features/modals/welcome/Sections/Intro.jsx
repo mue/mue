@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { useState, useEffect } from 'react';
 
-import { Header } from '../components/Layout';
+import { Header, Content } from '../components/Layout';
 import { MdOutlineWavingHand, MdOpenInNew } from 'react-icons/md';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 
@@ -18,7 +18,7 @@ useEffect(() => {
   }, [welcomeImage]);
 
   return (
-    <>
+    <Content>
       <Header title={variables.getMessage('modals.welcome.sections.intro.title')} />
       <div className="examples">
         <img
@@ -75,7 +75,7 @@ useEffect(() => {
           {variables.getMessage('modals.welcome.sections.intro.notices.github_open')}
         </a>
       </div>
-    </>
+    </Content>
   );
 }
 

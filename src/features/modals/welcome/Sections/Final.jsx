@@ -1,10 +1,10 @@
 import variables from 'config/variables';
 import languages from '@/i18n/languages.json';
-import { Header } from '../components/Layout';
+import { Header, Content } from '../components/Layout';
 
 function Final(props) {
   return (
-    <>
+    <Content>
       <Header
         title={variables.getMessage('modals.welcome.sections.final.title')}
         subtitle={variables.getMessage('modals.welcome.sections.final.description')}
@@ -38,7 +38,7 @@ function Final(props) {
           </div>
         )}*/}
       </div>
-    </>
+    </Content>
   );
 }
 
