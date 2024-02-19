@@ -4,7 +4,7 @@ import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-ic
 
 import EventBus from 'utils/eventbus';
 
-import { ProgressBar } from './components/Elements';
+import { ProgressBar, AsideImage } from './components/Elements';
 import { Button } from 'components/Elements';
 import { Wrapper, Panel } from './components/Layout';
 
@@ -24,20 +24,10 @@ class WelcomeModal extends PureComponent {
   constructor() {
     super();
     this.state = {
-      image: '/src/assets/icons/undraw_celebration.svg',
       currentTab: 0,
       finalTab: 5,
       buttonText: variables.getMessage('modals.welcome.buttons.next'),
     };
-    this.images = [
-      '/src/assets/icons/undraw_celebration.svg',
-      '/src/assets/icons/undraw_around_the_world_modified.svg',
-      '/src/assets/icons/undraw_add_files_modified.svg',
-      '/src/assets/icons/undraw_dark_mode.svg',
-      '/src/assets/icons/undraw_making_art.svg',
-      '/src/assets/icons/undraw_private_data_modified.svg',
-      '/src/assets/icons/undraw_upgrade_modified.svg',
-    ];
   }
 
   changeTab(minus) {
@@ -122,12 +112,7 @@ class WelcomeModal extends PureComponent {
     return (
       <Wrapper>
         <Panel type="aside">
-          <img
-            className="showcaseimg"
-            alt="sidebar icon"
-            draggable={false}
-            src={this.state.image}
-          />
+          <AsideImage currentTab={this.state.currentTab} />
           <ProgressBar
             count={this.images}
             currentTab={this.state.currentTab}
