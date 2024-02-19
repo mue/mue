@@ -1,5 +1,13 @@
 const Panel = ({ children, type }) => (
-  <section> {type === 'content' ? <div className="content">{children}</div> : children}</section>
+  <section className={type}>
+    {type === 'content' ? (
+      <div className="content">{children}</div>
+    ) : type === 'aside' ? (
+      <>{children}</>
+    ) : (
+      children
+    )}
+  </section>
 );
 
 export { Panel as default, Panel };

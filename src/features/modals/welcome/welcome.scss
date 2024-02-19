@@ -32,7 +32,7 @@
   grid-template-rows: repeat(1, 1fr);
   grid-gap: 0;
 
-  section:nth-child(1) {
+  section.aside {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +42,7 @@
     }
   }
 
-  section:nth-child(2) {
+  section.content {
     display: flex;
     flex-flow: column;
     justify-content: space-between;

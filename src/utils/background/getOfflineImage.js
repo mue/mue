@@ -22,7 +22,7 @@ export function offlineBackground(type) {
     ];
 
   const object = {
-    url: `./offline-images/${randomImage}.webp`,
+    url: `src/assets/offline-images/${randomImage}.webp`,
     type,
     photoInfo: {
       offline: true,
