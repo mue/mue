@@ -1,0 +1,17 @@
+[
+  {
+    "id": "widgets.greeting.christmas",
+    "month": 12,
+    "date": 25
+  },
+  {
+    "id": "widgets.greeting.newyear",
+    "month": 1,
+    "date": 1
+  },
+  {
+    "id": "widgets.greeting.halloween",
+    "month": 10,
+    "date": 31
+  }
+]

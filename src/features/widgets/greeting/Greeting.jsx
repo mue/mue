@@ -5,7 +5,9 @@ import { nth, convertTimezone } from 'utils/date';
 import EventBus from 'utils/eventbus';
 
 import './greeting.scss';
+import events from './events.json';
 
+const isEventsEnabled = localStorage.getItem('events') !== 'false';
 export default class Greeting extends PureComponent {
   constructor() {
     super();
@@ -24,7 +26,7 @@ export default class Greeting extends PureComponent {
    * @returns The message variable is being returned.
    */
   doEvents(time, message) {
-    if (localStorage.getItem('events') === 'false') {
+    if (!isEventsEnabled) {
       return message;
     }
 
@@ -32,15 +34,9 @@ export default class Greeting extends PureComponent {
     const month = time.getMonth();
     const date = time.getDate();
 
-    // If it's December 25th, set the greeting string to "Merry Christmas"
-    if (month === 11 && date === 25) {
-      message = variables.getMessage('widgets.greeting.christmas');
-      // If the date is January 1st, set the greeting string to "Happy new year"
-    } else if (month === 0 && date === 1) {
-      message = variables.getMessage('widgets.greeting.newyear');
-      // If it's October 31st, set the greeting string to "Happy Halloween"
-    } else if (month === 9 && date === 31) {
-      message = variables.getMessage('widgets.greeting.halloween');
+    const event = events.find((e) => e.month - 1 === month && e.date === date);
+    if (event) {
+      message = variables.getMessage(event.id);
     }
 
     return message;
@@ -67,14 +63,17 @@ export default class Greeting extends PureComponent {
 
       const hour = now.getHours();
 
-      // Set the default greeting string to "Good evening"
-      let message = variables.getMessage('widgets.greeting.evening');
-      // If it's before 12am, set the greeting string to "Good morning"
-      if (hour < 12) {
-        message = variables.getMessage('widgets.greeting.morning');
-        // If it's before 6pm, set the greeting string to "Good afternoon"
-      } else if (hour < 18) {
-        message = variables.getMessage('widgets.greeting.afternoon');
+      let message;
+      switch (true) {
+        case hour < 12:
+          message = variables.getMessage('widgets.greeting.morning');
+          break;
+        case hour < 18:
+          message = variables.getMessage('widgets.greeting.afternoon');
+          break;
+        default:
+          message = variables.getMessage('widgets.greeting.evening');
+          break;
       }
 
       // Events and custom

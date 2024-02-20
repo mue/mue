@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { PureComponent } from 'react';
 
-import WeatherIcon from './WeatherIcon';
+import WeatherIcon from './components/WeatherIcon';
 import Expanded from './Expanded';
 
 import EventBus from 'utils/eventbus';

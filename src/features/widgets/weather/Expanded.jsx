@@ -3,7 +3,7 @@ import { memo, useMemo } from 'react';
 import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
 import { MdDisabledVisible } from 'react-icons/md';
 
-import WeatherIcon from './WeatherIcon';
+import WeatherIcon from './components/WeatherIcon';
 import WindDirectionIcon from './WindDirectionIcon';
 
 import { Tooltip } from 'components/Elements';
