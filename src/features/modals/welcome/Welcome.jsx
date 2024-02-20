@@ -1,10 +1,10 @@
+import { useState, useEffect } from 'react';
 import variables from 'config/variables';
-import { PureComponent } from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-icons/md';
 
 import EventBus from 'utils/eventbus';
 
-import { ProgressBar, AsideImage } from './components/Elements';
+import { ProgressBar, AsideImage, Navigation } from './components/Elements';
 import { Button } from 'components/Elements';
 import { Wrapper, Panel } from './components/Layout';
 
@@ -20,90 +20,81 @@ import {
   Final,
 } from './Sections';
 
-class WelcomeModal extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      currentTab: 0,
-      finalTab: 5,
-      buttonText: variables.getMessage('modals.welcome.buttons.next'),
-    };
-  }
+function WelcomeModal({ modalClose, modalSkip }) {
+  const [currentTab, setCurrentTab] = useState(0);
+  const [buttonText, setButtonText] = useState(variables.getMessage('modals.welcome.buttons.next'));
+  const finalTab = 6;
 
-  changeTab(minus) {
+  useEffect(() => {
+    const welcomeTab = localStorage.getItem('welcomeTab');
+    if (welcomeTab) {
+      const tab = Number(welcomeTab);
+      setCurrentTab(tab);
+      setButtonText(
+        tab !== finalTab + 1
+          ? variables.getMessage('modals.welcome.buttons.next')
+          : variables.getMessage('modals.welcome.buttons.finish'),
+      );
+    }
+
+    const refreshListener = (data) => {
+      if (data === 'welcomeLanguage') {
+        localStorage.setItem('welcomeTab', currentTab);
+        localStorage.setItem('bgtransition', false);
+        window.location.reload();
+      }
+    };
+
+    EventBus.on('refresh', refreshListener);
+
+    return () => {
+      EventBus.off('refresh', refreshListener);
+    };
+  }, [currentTab, finalTab]);
+
+  const changeTab = (minus) => {
     localStorage.setItem('bgtransition', true);
     localStorage.removeItem('welcomeTab');
 
     if (minus) {
-      return this.setState({
-        currentTab: this.state.currentTab - 1,
-        buttonText: variables.getMessage('modals.welcome.buttons.next'),
-      });
+      setCurrentTab(currentTab - 1);
+      setButtonText(variables.getMessage('modals.welcome.buttons.next'));
+      return;
     }
 
-    if (this.state.buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
-      return this.props.modalClose();
+    if (buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
+      modalClose();
+      return;
     }
 
-    this.setState({
-      currentTab: this.state.currentTab + 1,
-      image: [this.state.currentTab + 1],
-      buttonText:
-        this.state.currentTab !== this.state.finalTab
-          ? variables.getMessage('modals.welcome.buttons.next')
-          : variables.getMessage('modals.welcome.buttons.finish'),
-    });
-  }
+    const newTab = currentTab + 1;
+    setCurrentTab(newTab);
+    setButtonText(
+      newTab !== finalTab
+        ? variables.getMessage('modals.welcome.buttons.next')
+        : variables.getMessage('modals.welcome.buttons.finish'),
+    );
+  };
 
-  // specific
-  switchTab(tab) {
-    this.setState({
-      currentTab: tab,
-      buttonText:
-        tab !== this.state.finalTab + 1
-          ? variables.getMessage('modals.welcome.buttons.next')
-          : variables.getMessage('modals.welcome.buttons.finish'),
-    });
+  const switchTab = (tab) => {
+    setCurrentTab(tab);
+    setButtonText(
+      tab !== finalTab + 1
+        ? variables.getMessage('modals.welcome.buttons.next')
+        : variables.getMessage('modals.welcome.buttons.finish'),
+    );
 
     localStorage.setItem('bgtransition', true);
     localStorage.removeItem('welcomeTab');
-  }
+  };
 
-  componentDidMount() {
-    const welcomeTab = localStorage.getItem('welcomeTab');
-    if (welcomeTab) {
-      this.setState({
-        currentTab: Number(welcomeTab),
-        buttonText:
-          Number(welcomeTab) !== this.state.finalTab + 1
-            ? variables.getMessage('modals.welcome.buttons.next')
-            : variables.getMessage('modals.welcome.buttons.finish'),
-      });
-    }
-
-    EventBus.on('refresh', (data) => {
-      if (data === 'welcomeLanguage') {
-        localStorage.setItem('welcomeTab', this.state.currentTab);
-        localStorage.setItem('bgtransition', false);
-        window.location.reload();
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
-
-  renderButtons() {
-    const { currentTab, buttonText } = this.state;
-    const { modalSkip } = this.props;
-
+  const Navigation = () => {
     return (
       <div className="welcomeButtons">
         {currentTab !== 0 ? (
           <Button
             type="settings"
-            onClick={() => this.changeTab(true)}
+            onClick={() => changeTab(true)}
             icon={<MdArrowBackIosNew />}
             label={variables.getMessage('modals.welcome.buttons.previous')}
           />
@@ -117,44 +108,44 @@ class WelcomeModal extends PureComponent {
         )}
         <Button
           type="settings"
-          onClick={() => this.changeTab()}
+          onClick={() => changeTab()}
           icon={<MdArrowForwardIos />}
           label={buttonText}
           iconPlacement={'right'}
         />
       </div>
     );
-  }
+  };
 
-  render() {
-    const tabComponents = {
-      0: <Intro />,
-      1: <ChooseLanguage />,
-      2: <ImportSettings switchTab={(tab) => this.switchTab(tab)} />,
-      3: <ThemeSelection />,
-      4: <StyleSelection />,
-      5: <PrivacyOptions />,
-      6: <Final currentTab={this.state.currentTab} switchTab={(tab) => this.switchTab(tab)} />,
-    };
+  const tabComponents = {
+    0: <Intro />,
+    1: <ChooseLanguage />,
+    2: <ImportSettings switchTab={switchTab} />,
+    3: <ThemeSelection />,
+    4: <StyleSelection />,
+    5: <PrivacyOptions />,
+    6: <Final currentTab={currentTab} switchTab={switchTab} />,
+  };
 
-    let CurrentSection = tabComponents[this.state.currentTab] || <Intro />;
-    return (
-      <Wrapper>
-        <Panel type="aside">
-          <AsideImage currentTab={this.state.currentTab} />
-          <ProgressBar
-            numberOfTabs={this.state.finalTab + 2}
-            currentTab={this.state.currentTab}
-            switchTab={(tab) => this.switchTab(tab)}
-          />
-        </Panel>
-        <Panel type="content">
-          {CurrentSection}
-          {this.renderButtons()}
-        </Panel>
-      </Wrapper>
-    );
-  }
+  let CurrentTab = tabComponents[currentTab] || <Intro />;
+
+  return (
+    <Wrapper>
+      <Panel type="aside">
+        <AsideImage currentTab={currentTab} />
+        <ProgressBar numberOfTabs={finalTab + 1} currentTab={currentTab} switchTab={switchTab} />
+      </Panel>
+      <Panel type="content">
+        {CurrentTab}
+        <Navigation
+          currentTab={currentTab}
+          changeTab={changeTab}
+          buttonText={buttonText}
+          modalSkip={modalSkip}
+        />
+      </Panel>
+    </Wrapper>
+  );
 }
 
 export default WelcomeModal;
