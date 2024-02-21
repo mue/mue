@@ -4,7 +4,7 @@ import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-ic
 
 import EventBus from 'utils/eventbus';
 
-import { ProgressBar, AsideImage, Navigation } from './components/Elements';
+import { ProgressBar, AsideImage } from './components/Elements';
 import { Button } from 'components/Elements';
 import { Wrapper, Panel } from './components/Layout';
 
@@ -52,40 +52,32 @@ function WelcomeModal({ modalClose, modalSkip }) {
     };
   }, [currentTab, finalTab]);
 
-  const changeTab = (minus) => {
-    localStorage.setItem('bgtransition', true);
-    localStorage.removeItem('welcomeTab');
-
-    if (minus) {
-      setCurrentTab(currentTab - 1);
-      setButtonText(variables.getMessage('modals.welcome.buttons.next'));
-      return;
-    }
-
-    if (buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
-      modalClose();
-      return;
-    }
-
-    const newTab = currentTab + 1;
+  const updateTabAndButtonText = (newTab) => {
     setCurrentTab(newTab);
     setButtonText(
       newTab !== finalTab
         ? variables.getMessage('modals.welcome.buttons.next')
         : variables.getMessage('modals.welcome.buttons.finish'),
     );
-  };
-
-  const switchTab = (tab) => {
-    setCurrentTab(tab);
-    setButtonText(
-      tab !== finalTab + 1
-        ? variables.getMessage('modals.welcome.buttons.next')
-        : variables.getMessage('modals.welcome.buttons.finish'),
-    );
 
     localStorage.setItem('bgtransition', true);
     localStorage.removeItem('welcomeTab');
+  };
+
+  const goBackward = () => {
+    updateTabAndButtonText(currentTab - 1);
+  };
+
+  const goForward = () => {
+    if (buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
+      modalClose();
+      return;
+    }
+    updateTabAndButtonText(currentTab + 1);
+  };
+
+  const switchToTab = (tab) => {
+    updateTabAndButtonText(tab);
   };
 
   const Navigation = () => {
@@ -94,7 +86,7 @@ function WelcomeModal({ modalClose, modalSkip }) {
         {currentTab !== 0 ? (
           <Button
             type="settings"
-            onClick={() => changeTab(true)}
+            onClick={() => goBackward()}
             icon={<MdArrowBackIosNew />}
             label={variables.getMessage('modals.welcome.buttons.previous')}
           />
@@ -108,7 +100,7 @@ function WelcomeModal({ modalClose, modalSkip }) {
         )}
         <Button
           type="settings"
-          onClick={() => changeTab()}
+          onClick={() => goForward()}
           icon={<MdArrowForwardIos />}
           label={buttonText}
           iconPlacement={'right'}
@@ -120,11 +112,11 @@ function WelcomeModal({ modalClose, modalSkip }) {
   const tabComponents = {
     0: <Intro />,
     1: <ChooseLanguage />,
-    2: <ImportSettings switchTab={switchTab} />,
+    2: <ImportSettings switchTab={switchToTab} />,
     3: <ThemeSelection />,
     4: <StyleSelection />,
     5: <PrivacyOptions />,
-    6: <Final currentTab={currentTab} switchTab={switchTab} />,
+    6: <Final currentTab={currentTab} switchTab={switchToTab} />,
   };
 
   let CurrentTab = tabComponents[currentTab] || <Intro />;
@@ -133,13 +125,13 @@ function WelcomeModal({ modalClose, modalSkip }) {
     <Wrapper>
       <Panel type="aside">
         <AsideImage currentTab={currentTab} />
-        <ProgressBar numberOfTabs={finalTab + 1} currentTab={currentTab} switchTab={switchTab} />
+        <ProgressBar numberOfTabs={finalTab + 1} currentTab={currentTab} switchTab={switchToTab} />
       </Panel>
       <Panel type="content">
         {CurrentTab}
         <Navigation
           currentTab={currentTab}
-          changeTab={changeTab}
+          changeTab={switchToTab}
           buttonText={buttonText}
           modalSkip={modalSkip}
         />
