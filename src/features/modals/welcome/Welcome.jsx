@@ -64,11 +64,11 @@ function WelcomeModal({ modalClose, modalSkip }) {
     localStorage.removeItem('welcomeTab');
   };
 
-  const goBackward = () => {
+  const prevTab = () => {
     updateTabAndButtonText(currentTab - 1);
   };
 
-  const goForward = () => {
+  const nextTab = () => {
     if (buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
       modalClose();
       return;
@@ -86,7 +86,7 @@ function WelcomeModal({ modalClose, modalSkip }) {
         {currentTab !== 0 ? (
           <Button
             type="settings"
-            onClick={() => goBackward()}
+            onClick={() => prevTab()}
             icon={<MdArrowBackIosNew />}
             label={variables.getMessage('modals.welcome.buttons.previous')}
           />
@@ -100,7 +100,7 @@ function WelcomeModal({ modalClose, modalSkip }) {
         )}
         <Button
           type="settings"
-          onClick={() => goForward()}
+          onClick={() => nextTab()}
           icon={<MdArrowForwardIos />}
           label={buttonText}
           iconPlacement={'right'}

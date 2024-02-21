@@ -12,6 +12,7 @@ const TimeSettings = () => {
   const [minuteColour, setMinuteColour] = useState(
     localStorage.getItem('minuteColour') || '#ffffff',
   );
+  const TIME_SECTION = 'modals.main.settings.sections.time';
 
   const updateColour = (type, event) => {
     const colour = event.target.value;
@@ -22,10 +23,6 @@ const TimeSettings = () => {
     }
     localStorage.setItem(type, colour);
   };
-
-  let timeSettings = null;
-
-  const TIME_SECTION = 'modals.main.settings.sections.time';
 
   const WidgetType = () => {
     return (
@@ -190,19 +187,18 @@ const TimeSettings = () => {
     </>
   );
 
-  switch (timeType) {
-    case 'digital':
-      timeSettings = digitalSettings;
-      break;
-    case 'analogue':
-      timeSettings = analogSettings;
-      break;
-    case 'verticalClock':
-      timeSettings = verticalClock;
-      break;
-    default:
-      timeSettings = null;
-  }
+  const getTimeSettings = () => {
+    switch (timeType) {
+      case 'digital':
+        return digitalSettings;
+      case 'analogue':
+        return analogSettings;
+      case 'verticalClock':
+        return verticalClock;
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
@@ -216,7 +212,7 @@ const TimeSettings = () => {
       />
       <PreferencesWrapper setting="time" zoomSetting="zoomClock" visibilityToggle={true}>
         <WidgetType />
-        {timeSettings}
+        {getTimeSettings()}
       </PreferencesWrapper>
     </>
   );
