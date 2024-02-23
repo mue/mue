@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 
 import WeatherIcon from './components/WeatherIcon';
-import Expanded from './Expanded';
+import Expanded from './components/Expanded';
 
 import EventBus from 'utils/eventbus';
 
@@ -122,30 +122,30 @@ export default class WeatherSettings extends PureComponent {
 
     return (
       <div className="weather">
-        <div className="top-weather">
-          {weatherType >= 1 && (
-            <div>
+        <div className="weatherCore">
+          <div className="iconAndTemps">
+            <div className="weathericon">
               <WeatherIcon name={this.state.icon} />
               <span>{`${this.state.weather.temp}${this.state.temp_text}`}</span>
             </div>
-          )}
+            {weatherType >= 2 && (
+              <span className="minmax">
+                <span className="subtitle">{`${this.state.weather.temp_min}${this.state.temp_text}`}</span>
+                <span className="subtitle">{`${this.state.weather.temp_max}${this.state.temp_text}`}</span>
+              </span>
+            )}
+          </div>
           {weatherType >= 2 && (
-            <span className="minmax">
-              <span className="subtitle">{`${this.state.weather.temp_min}${this.state.temp_text}`}</span>
-              <span className="subtitle">{`${this.state.weather.temp_max}${this.state.temp_text}`}</span>
-            </span>
+            <div className="extra-info">
+              <span>
+                {variables.getMessage('widgets.weather.feels_like', {
+                  amount: `${this.state.weather.feels_like}${this.state.temp_text}`,
+                })}
+              </span>
+              <span className="loc">{this.state.location}</span>
+            </div>
           )}
         </div>
-        {weatherType >= 2 && (
-          <div className="extra-info">
-            <span>
-              {variables.getMessage('widgets.weather.feels_like', {
-                amount: `${this.state.weather.feels_like}${this.state.temp_text}`,
-              })}
-            </span>
-            <span className="loc">{this.state.location}</span>
-          </div>
-        )}
         {weatherType >= 3 && (
           <Expanded weatherType={weatherType} state={this.state} variables={variables} />
         )}

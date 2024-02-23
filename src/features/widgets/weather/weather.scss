@@ -10,11 +10,8 @@
   cursor: initial;
   user-select: none;
   transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-  width: auto;
-  display: grid;
-  place-items: center;
-  justify-items: start;
-  padding: 25px;
+  display: flex;
+  flex-flow: column;
 
   &:hover {
     height: auto;
@@ -22,14 +19,9 @@
   }
 
   .expanded-info {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    .tooltip {
-      width: 100%;
-    }
 
     .tooltipTitle {
       max-height: 12px;
@@ -39,7 +31,7 @@
   .extra-info {
     width: 100%;
     font-size: 18px;
-    gap: 40px;
+    gap: 25px;
 
     @include themed {
       color: t($weather);
@@ -62,11 +54,14 @@
   }
 }
 
-.top-weather {
-  width: 100%;
+.weatherCore {
   display: flex;
+  flex-flow: column;
   justify-content: space-between;
-  gap: 25px;
+  padding: 25px;
+  @include themed() {
+    border-bottom: 1px solid t($btn-backgroundHover);
+  }
 
   div {
     align-items: center;
@@ -74,10 +69,6 @@
 
     svg {
       font-size: 2em !important;
-    }
-
-    span {
-      font-size: 34px;
     }
   }
 
@@ -88,17 +79,39 @@
   }
 }
 
+.weatherIcon {
+  display: grid;
+  align-items: center;
+}
+
+.iconAndTemps {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  justify-content: space-between;
+  svg {
+    font-size: 2em !important;
+  }
+  span {
+    font-size: 34px;
+  }
+}
+
 .expanded-info {
   display: none;
   font-size: 18px;
   text-transform: capitalize;
   gap: 10px;
-  margin-top: 15px;
+  padding: 15px 25px 25px 25px;
 
   span {
     display: flex;
     align-items: center;
     gap: 10px;
+  }
+
+  .tooltip {
+    width: 100%;
   }
 
   @include themed {
