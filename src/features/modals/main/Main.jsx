@@ -10,10 +10,10 @@ const Marketplace = lazy(() => import('./tabs/Marketplace'));
 
 const renderLoader = () => (
   <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
-    <ul className="sidebar">
+    <div className="modalSidebar">
       <span className="mainTitle">Mue</span>
-    </ul>
-    <div className="tab-content">
+    </div>
+    <div className="modalTabContent">
       <div className="emptyItems">
         <div className="emptyMessage">
           <div className="loaderHolder">

@@ -78,7 +78,7 @@ class Tabs extends PureComponent {
 
     return (
       <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
-        <ul className="sidebar">
+        <div className="modalSidebar">
           {this.props.children.map((tab, index) => (
             <Tab
               currentTab={this.state.currentTab}
@@ -89,8 +89,8 @@ class Tabs extends PureComponent {
             />
           ))}
           {reminderInfo}
-        </ul>
-        <div className="tab-content">
+        </div>
+        <div className="modalTabContent">
           <div className="modalNavbar">
             {navbarButtons.map(({ tab, icon }) => (
               <Button

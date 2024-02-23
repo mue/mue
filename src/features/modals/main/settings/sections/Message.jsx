@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@mui/material';
 
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Button } from 'components/Elements';
 import EventBus from 'utils/eventbus';
 
 export default class Message extends PureComponent {
@@ -72,9 +73,12 @@ export default class Message extends PureComponent {
           <Row final={true}>
             <Content title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} />
             <Action>
-              <button onClick={() => this.modifyMessage('add')}>
-                {variables.getMessage(`${MESSAGE_SECTION}.add`)} <MdAdd />
-              </button>
+              <Button
+                type="settings"
+                onClick={() => this.modifyMessage('add')}
+                icon={<MdAdd />}
+                label={variables.getMessage(`${MESSAGE_SECTION}.add`)}
+              />
             </Action>
           </Row>
           <div className="messagesContainer">
@@ -123,10 +127,12 @@ export default class Message extends PureComponent {
                 <span className="subtitle">
                   {variables.getMessage(`${MESSAGE_SECTION}.add_some`)}
                 </span>
-                <button onClick={() => this.modifyMessage('add')}>
-                  {variables.getMessage(`${MESSAGE_SECTION}.add`)}
-                  <MdAdd />
-                </button>
+                <Button
+                  type="settings"
+                  onClick={() => this.modifyMessage('add')}
+                  icon={<MdAdd />}
+                  label={variables.getMessage(`${MESSAGE_SECTION}.add`)}
+                />
               </div>
             </div>
           )}
