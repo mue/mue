@@ -6,16 +6,9 @@ import Expanded from './components/Expanded';
 
 import EventBus from 'utils/eventbus';
 
-import './weather.scss';
+import { getWeather } from './api/WeatherAPI.js';
 
-const convertTemperature = (temp, format) => {
-  if (format === 'celsius') {
-    return Math.round(temp - 273.15);
-  } else if (format === 'fahrenheit') {
-    return Math.round((temp - 273.15) * 1.8 + 32);
-  }
-  return Math.round(temp);
-};
+import './weather.scss';
 
 export default class WeatherSettings extends PureComponent {
   constructor() {
@@ -26,79 +19,17 @@ export default class WeatherSettings extends PureComponent {
     };
   }
 
-  async getWeather() {
-    if (this.state.done === true) {
-      return;
-    }
-
-    const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
-    document.querySelector('.weather').style.fontSize = zoomWeather;
-
-    try {
-      const response = await fetch(
-        variables.constants.API_URL +
-          `/weather?city=${this.state.location}&language=${variables.languagecode}`,
-      );
-
-      if (!response.ok) {
-        this.setState({
-          location: variables.getMessage('modals.main.error_boundary.title'),
-          done: true,
-        });
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-
-      if (data.status === 404) {
-        return this.setState({
-          location: variables.getMessage('widgets.weather.not_found'),
-          done: true,
-        });
-      }
-
-      const { temp, temp_min, temp_max, feels_like } = data.main;
-      const tempFormat = localStorage.getItem('tempformat');
-
-      const tempSymbols = {
-        celsius: '°C',
-        kelvin: 'K',
-        fahrenheit: '°F',
-      };
-
-      this.setState({
-        icon: data.weather[0].icon,
-        temp_text: tempSymbols[tempFormat] || 'K',
-        weather: {
-          temp: convertTemperature(temp, tempFormat),
-          description: data.weather[0].description,
-          temp_min: convertTemperature(temp_min, tempFormat),
-          temp_max: convertTemperature(temp_max, tempFormat),
-          feels_like: convertTemperature(feels_like, tempFormat),
-          humidity: data.main.humidity,
-          wind_speed: data.wind.speed,
-          wind_degrees: data.wind.deg,
-          cloudiness: data.clouds.all,
-          visibility: data.visibility,
-          pressure: data.main.pressure,
-        },
-        done: true,
-      });
-    } catch (error) {
-      console.error('Fetch Error: ', error);
-    }
-
-    document.querySelector('.top-weather svg').style.fontSize = zoomWeather;
-  }
-
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  async componentDidMount() {
+    EventBus.on('refresh', async (data) => {
+      // Convert the callback function to an async function
       if (data === 'weather') {
-        this.getWeather();
+        const weatherData = await getWeather(this.state.location, this.state.done);
+        this.setState(weatherData);
       }
     });
 
-    this.getWeather();
+    const weatherData = await getWeather(this.state.location, this.state.done);
+    this.setState(weatherData);
   }
 
   componentWillUnmount() {
