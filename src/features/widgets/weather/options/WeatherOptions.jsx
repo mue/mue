@@ -7,7 +7,7 @@ import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Lay
 import { Radio, Dropdown, Checkbox } from 'components/Form/Settings';
 import { TextField } from '@mui/material';
 
-export default class WeatherSettings extends PureComponent {
+class WeatherOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -220,3 +220,5 @@ export default class WeatherSettings extends PureComponent {
     );
   }
 }
+
+export { WeatherOptions as default, WeatherOptions };

@@ -5,7 +5,7 @@ import EventBus from 'utils/eventbus';
 
 import './quicklinks.scss';
 
-export default class QuickLinks extends PureComponent {
+class QuickLinks extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -119,3 +119,5 @@ export default class QuickLinks extends PureComponent {
     );
   }
 }
+
+export { QuickLinks as default, QuickLinks };

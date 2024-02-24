@@ -76,4 +76,5 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
   );
 }
 
-export default memo(AddModal);
+const MemoizedAddModal = memo(AddModal);
+export { MemoizedAddModal as default, MemoizedAddModal as AddModal}

@@ -8,7 +8,7 @@ import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Lay
 import { Button } from 'components/Elements';
 import EventBus from 'utils/eventbus';
 
-export default class Message extends PureComponent {
+class MessageOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -141,3 +141,5 @@ export default class Message extends PureComponent {
     );
   }
 }
+
+export { MessageOptions as default, MessageOptions };

@@ -6,13 +6,13 @@ import { Checkbox, Dropdown } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import Modal from 'react-modal';
 
-import AddModal from './quicklinks/AddModal';
+import { AddModal } from 'components/Elements/AddModal';
 
 import EventBus from 'utils/eventbus';
-import QuickLink from './quicklinks/QuickLink';
+import { QuickLink } from '../QuickLinks';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
 
-export default class QuickLinks extends PureComponent {
+class QuickLinksOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -271,3 +271,5 @@ export default class QuickLinks extends PureComponent {
     );
   }
 }
+
+export { QuickLinksOptions as default, QuickLinksOptions };

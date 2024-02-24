@@ -5,7 +5,7 @@ import { useState, memo } from 'react';
 import Modal from 'react-modal';
 import { MdAddLink } from 'react-icons/md';
 
-import AddModal from './quicklinks/AddModal';
+import { AddModal } from 'components/Elements/AddModal';
 
 import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
 import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
@@ -14,7 +14,7 @@ import { Button } from 'components/Elements';
 import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
 import { Header } from 'components/Layout/Settings';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
-import QuickLink from './quicklinks/QuickLink';
+import { QuickLinks } from 'features/widgets/quicklinks';
 
 function Navbar() {
   const [showRefreshOptions, setShowRefreshOptions] = useState(
@@ -240,7 +240,7 @@ function Navbar() {
 
       <div className="messagesContainer">
         {appsModalInfo.items.map((item, i) => (
-          <QuickLink
+          <QuickLinks
             key={i}
             item={item}
             startEditLink={() => startEditLink(item)}

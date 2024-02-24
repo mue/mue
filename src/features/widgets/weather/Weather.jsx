@@ -10,7 +10,7 @@ import { getWeather } from './api/WeatherAPI.js';
 
 import './weather.scss';
 
-export default class WeatherSettings extends PureComponent {
+class WeatherWidget extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -84,3 +84,5 @@ export default class WeatherSettings extends PureComponent {
     );
   }
 }
+
+export { WeatherWidget as default, WeatherWidget };
