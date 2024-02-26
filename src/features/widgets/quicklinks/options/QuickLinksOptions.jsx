@@ -9,7 +9,7 @@ import Modal from 'react-modal';
 import { AddModal } from 'components/Elements/AddModal';
 
 import EventBus from 'utils/eventbus';
-import { QuickLink } from '../QuickLinks';
+import { QuickLink } from './QuickLink';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
 
 class QuickLinksOptions extends PureComponent {

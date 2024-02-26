@@ -6,7 +6,7 @@ import Expanded from './components/Expanded';
 
 import EventBus from 'utils/eventbus';
 
-import { getWeather } from './api/WeatherAPI.js';
+import { getWeather } from './api/getWeather.js';
 
 import './weather.scss';
 
@@ -53,6 +53,7 @@ class WeatherWidget extends PureComponent {
 
     return (
       <div className="weather">
+        {this.state.done === false ? <h1>cheese</h1> : <h1>loading finished</h1>}
         <div className="weatherCore">
           <div className="iconAndTemps">
             <div className="weathericon">
