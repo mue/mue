@@ -73,7 +73,19 @@ export default function AdvancedSettings() {
     <>
       {header}
       {data ? (
-        <Data />
+        <>
+          <Data />
+          <Modal
+            closeTimeoutMS={100}
+            onRequestClose={() => setResetModal(false)}
+            isOpen={resetModal}
+            className="Modal resetmodal mainModal"
+            overlayClassName="Overlay resetoverlay"
+            ariaHideApp={false}
+          >
+            <ResetModal modalClose={() => setResetModal(false)} />
+          </Modal>
+        </>
       ) : (
         <>
           <Section
@@ -162,16 +174,6 @@ export default function AdvancedSettings() {
               />
             </Action>
           </Row>
-          <Modal
-            closeTimeoutMS={100}
-            onRequestClose={() => setResetModal(false)}
-            isOpen={resetModal}
-            className="Modal resetmodal mainModal"
-            overlayClassName="Overlay resetoverlay"
-            ariaHideApp={false}
-          >
-            <ResetModal modalClose={() => setResetModal(false)} />
-          </Modal>
         </>
       )}
     </>
