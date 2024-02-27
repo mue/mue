@@ -22,7 +22,7 @@ import EventBus from 'utils/eventbus';
 
 import './quote.scss';
 
-export default class Quote extends PureComponent {
+class Quote extends PureComponent {
   buttons = {
     share: (
       <Tooltip title={variables.getMessage('widgets.quote.share')}>
@@ -514,3 +514,5 @@ export default class Quote extends PureComponent {
     );
   }
 }
+
+export { Quote as default, Quote };

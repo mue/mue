@@ -7,16 +7,15 @@ import { MdAddLink } from 'react-icons/md';
 
 import { AddModal } from 'components/Elements/AddModal';
 
-import Checkbox from '../../../../../components/Form/Settings/Checkbox/Checkbox';
-import Dropdown from '../../../../../components/Form/Settings/Dropdown/Dropdown';
+import { Checkbox, Dropdown } from 'components/Form';
 import { Button } from 'components/Elements';
 
-import { Row, Content, Action } from '../../../../../components/Layout/Settings/Item/SettingsItem';
+import { Row, Content, Action } from 'components/Layout/Settings';
 import { Header } from 'components/Layout/Settings';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
 import { QuickLinks } from 'features/widgets/quicklinks';
 
-function Navbar() {
+function NavbarOptions() {
   const [showRefreshOptions, setShowRefreshOptions] = useState(
     localStorage.getItem('refresh') === 'true',
   );
@@ -274,4 +273,6 @@ function Navbar() {
   );
 }
 
-export default memo(Navbar);
+const MemoizedNavbarOptions = memo(NavbarOptions);
+
+export { MemoizedNavbarOptions as default, MemoizedNavbarOptions as NavbarOptions };

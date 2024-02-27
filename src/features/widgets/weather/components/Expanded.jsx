@@ -77,15 +77,17 @@ function Expanded({ state: { weather, icon }, weatherType, variables }) {
 
   return (
     anyTooltipEnabled && (
-      <div className="expanded-info">
+      <div className="weatherExpandedInfo">
         {weatherType >= 3 && (
           <span className="subtitle">
             {variables.getMessage('widgets.weather.extra_information')}
           </span>
         )}
-        {Object.keys(weatherTypes).map((type) => (
-          <WeatherTooltip key={type} type={type} />
-        ))}
+        <div className="weatherExpandedInfoItems">
+          {Object.keys(weatherTypes).map((type) => (
+            <WeatherTooltip key={type} type={type} />
+          ))}
+        </div>
       </div>
     )
   );

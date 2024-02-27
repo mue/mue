@@ -53,7 +53,7 @@ class WeatherWidget extends PureComponent {
 
     return (
       <div className="weather">
-        {this.state.done === false ? <h1>cheese</h1> : <h1>loading finished</h1>}
+        {/*{this.state.done === false ? <h1>cheese</h1> : <h1>loading finished</h1>}*/}
         <div className="weatherCore">
           <div className="iconAndTemps">
             <div className="weathericon">

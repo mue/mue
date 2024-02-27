@@ -6,7 +6,7 @@ import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
 
 import { MdRefresh } from 'react-icons/md';
 
-const TimeSettings = () => {
+const TimeOptions = () => {
   const [timeType, setTimeType] = useState(localStorage.getItem('timeType') || 'digital');
   const [hourColour, setHourColour] = useState(localStorage.getItem('hourColour') || '#ffffff');
   const [minuteColour, setMinuteColour] = useState(
@@ -218,4 +218,4 @@ const TimeSettings = () => {
   );
 };
 
-export default TimeSettings;
+export { TimeOptions as default, TimeOptions };

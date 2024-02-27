@@ -18,16 +18,6 @@
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  .expanded-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    .tooltipTitle {
-      max-height: 12px;
-    }
-  }
-
   .extra-info {
     width: 100%;
     font-size: 18px;
@@ -97,12 +87,21 @@
   }
 }
 
-.expanded-info {
-  display: none;
+.weatherExpandedInfo {
+  padding: 0 25px 25px 25px;
+  text-align: left;
+}
+
+.weatherExpandedInfoItems {
   font-size: 18px;
   text-transform: capitalize;
   gap: 10px;
-  padding: 15px 25px 25px 25px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  .tooltipTitle {
+    max-height: 12px;
+  }
 
   span {
     display: flex;

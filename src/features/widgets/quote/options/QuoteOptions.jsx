@@ -16,7 +16,7 @@ import { Checkbox, Dropdown } from 'components/Form/Settings';
 import { toast } from 'react-toastify';
 import EventBus from 'utils/eventbus';
 
-export default class QuoteSettings extends PureComponent {
+class QuoteOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -289,3 +289,5 @@ export default class QuoteSettings extends PureComponent {
     );
   }
 }
+
+export { QuoteOptions as default, QuoteOptions };
