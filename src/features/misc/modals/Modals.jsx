@@ -8,7 +8,7 @@ import Preview from '../../helpers/preview/Preview';
 
 import EventBus from 'utils/eventbus';
 
-import Welcome from './welcome/Welcome';
+import Welcome from 'features/welcome/Welcome';
 
 export default class Modals extends PureComponent {
   constructor() {

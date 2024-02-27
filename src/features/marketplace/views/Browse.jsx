@@ -12,7 +12,7 @@ import {
 
 import Item from '../components/Items/Item';
 import Items from '../components/Items/Items';
-import Dropdown from '../../../../../../components/Form/Settings/Dropdown/Dropdown';
+import Dropdown from '../../../components/Form/Settings/Dropdown/Dropdown';
 import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
