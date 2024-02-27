@@ -11,7 +11,7 @@ import {
 import { exportSettings, importSettings } from 'utils/settings';
 
 import { FileUpload, Text, Switch, Dropdown } from 'components/Form/Settings';
-import ResetModal from '../ResetModal';
+import { ResetModal } from 'components/Elements';
 
 import { Header, Section, Row, Content, Action } from 'components/Layout/Settings';
 

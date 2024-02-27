@@ -44,4 +44,6 @@ function ResetModal({ modalClose }) {
   );
 }
 
-export default memo(ResetModal);
+const MemoizedResetModal = memo(ResetModal);
+
+export { MemoizedResetModal as default, MemoizedResetModal as ResetModal };

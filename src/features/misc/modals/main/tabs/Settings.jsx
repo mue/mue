@@ -6,10 +6,9 @@ import Tabs from './backend/Tabs';
 import Overview from '../settings/sections/Overview';
 import { NavbarOptions } from 'features/navbar';
 import { GreetingOptions } from 'features/greeting';
-import { TimeOptions } from 'features/time';
+import { TimeOptions, DateOptions } from 'features/time';
 import { QuickLinksOptions } from 'features/quicklinks';
 import { QuoteOptions } from 'features/quote';
-import Date from '../settings/sections/Date';
 import { MessageOptions } from 'features/message';
 import { BackgroundOptions } from 'features/background';
 import { SearchOptions } from 'features/search';
@@ -41,7 +40,7 @@ const sections = [
     component: QuickLinksOptions,
   },
   { label: 'modals.main.settings.sections.quote.title', name: 'quote', component: QuoteOptions },
-  { label: 'modals.main.settings.sections.date.title', name: 'date', component: Date },
+  { label: 'modals.main.settings.sections.date.title', name: 'date', component: DateOptions },
   {
     label: 'modals.main.settings.sections.message.title',
     name: 'message',
