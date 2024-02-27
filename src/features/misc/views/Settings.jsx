@@ -1,9 +1,9 @@
 import variables from 'config/variables';
 import { memo } from 'react';
 
-import Tabs from './backend/Tabs';
+import Tabs from '../../../components/Elements/MainModal/backend/Tabs';
 
-import Overview from '../settings/sections/Overview';
+import Overview from '../modals/main/settings/sections/Overview';
 import { NavbarOptions } from 'features/navbar';
 import { GreetingOptions } from 'features/greeting';
 import { TimeOptions, DateOptions } from 'features/time';
@@ -13,13 +13,13 @@ import { MessageOptions } from 'features/message';
 import { BackgroundOptions } from 'features/background';
 import { SearchOptions } from 'features/search';
 import { WeatherOptions } from 'features/weather';
-import Appearance from '../settings/sections/Appearance';
-import Language from '../settings/sections/Language';
-import Advanced from '../settings/sections/Advanced';
-import Stats from '../settings/sections/Stats';
-import Experimental from '../settings/sections/Experimental';
-import Changelog from '../settings/sections/Changelog';
-import About from '../settings/sections/About';
+import Appearance from '../modals/main/settings/sections/Appearance';
+import Language from '../modals/main/settings/sections/Language';
+import Advanced from '../modals/main/settings/sections/Advanced';
+import Stats from '../modals/main/settings/sections/Stats';
+import Experimental from '../modals/main/settings/sections/Experimental';
+import Changelog from '../modals/main/settings/sections/Changelog';
+import About from '../modals/main/settings/sections/About';
 
 const sections = [
   { label: 'modals.main.marketplace.product.overview', name: 'order', component: Overview },

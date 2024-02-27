@@ -1,9 +1,9 @@
 import variables from 'config/variables';
 import { memo } from 'react';
-import Tabs from './backend/Tabs';
+import Tabs from '../../../components/Elements/MainModal/backend/Tabs';
 
-import Added from '../../../../marketplace/views/Added';
-import Create from '../../../../marketplace/views/Create';
+import Added from '../../marketplace/views/Added';
+import Create from '../../marketplace/views/Create';
 
 function Addons(props) {
   return (

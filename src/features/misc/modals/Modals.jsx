@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import Modal from 'react-modal';
 
-import Main from './main/Main';
+import { MainModal } from 'components/Elements';
 import Navbar from '../../navbar/Navbar';
 import Preview from '../../helpers/preview/Preview';
 
@@ -90,7 +90,7 @@ export default class Modals extends PureComponent {
           overlayClassName="Overlay"
           ariaHideApp={false}
         >
-          <Main modalClose={() => this.toggleModal('mainModal', false)} />
+          <MainModal modalClose={() => this.toggleModal('mainModal', false)} />
         </Modal>
         <Modal
           closeTimeoutMS={300}

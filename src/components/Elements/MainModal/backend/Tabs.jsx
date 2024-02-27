@@ -9,7 +9,7 @@ import {
 } from 'react-icons/md';
 import Tab from './Tab';
 import { Button } from 'components/Elements';
-import ErrorBoundary from '../../../ErrorBoundary';
+import ErrorBoundary from '../../../../features/misc/modals/ErrorBoundary';
 
 class Tabs extends PureComponent {
   constructor(props) {

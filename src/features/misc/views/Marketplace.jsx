@@ -1,8 +1,8 @@
 import variables from 'config/variables';
 import { memo } from 'react';
 
-import Tabs from './backend/Tabs';
-import MarketplaceTab from '../../../../marketplace/views/Browse';
+import Tabs from '../../../components/Elements/MainModal/backend/Tabs';
+import MarketplaceTab from '../../marketplace/views/Browse';
 
 function Marketplace(props) {
   return (

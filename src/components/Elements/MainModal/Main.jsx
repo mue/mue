@@ -4,9 +4,9 @@ import { MdClose } from 'react-icons/md';
 
 import './scss/index.scss';
 import { Tooltip } from 'components/Elements';
-const Settings = lazy(() => import('./tabs/Settings'));
-const Addons = lazy(() => import('./tabs/Addons'));
-const Marketplace = lazy(() => import('./tabs/Marketplace'));
+const Settings = lazy(() => import('../../../features/misc/views/Settings'));
+const Addons = lazy(() => import('../../../features/misc/views/Addons'));
+const Marketplace = lazy(() => import('../../../features/misc/views/Marketplace'));
 
 const renderLoader = () => (
   <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
@@ -60,4 +60,5 @@ function MainModal({ modalClose }) {
   );
 }
 
-export default memo(MainModal);
+const MemoizedMainModal = memo(MainModal);
+export { MemoizedMainModal as default, MemoizedMainModal as MainModal };
