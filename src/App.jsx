@@ -2,9 +2,9 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import Background from 'features/widgets/background/Background';
-import Widgets from 'features/widgets/Widgets';
-import Modals from 'features/modals/Modals';
+import Background from 'features/background/Background';
+import Widgets from 'features/misc/views/Widgets';
+import Modals from 'features/misc/modals/Modals';
 
 import { loadSettings, moveSettings } from 'utils/settings';
 
