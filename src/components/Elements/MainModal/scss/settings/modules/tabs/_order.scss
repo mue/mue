@@ -1,14 +1,16 @@
 @import 'scss/variables';
 
 .sortableItem {
+  transition: 0.5s;
+  cursor: move;
+  width: 200px;
+  z-index: 999 !important;
+  padding: 15px;
+  margin-bottom: 10px;
+  font-size: 1.325rem;
+
   @include themed {
-    padding: 15px;
-    margin-bottom: 10px;
-    font-size: 1.325rem;
     color: t($color) !important;
-    cursor: move;
-    width: 200px;
-    z-index: 999 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
