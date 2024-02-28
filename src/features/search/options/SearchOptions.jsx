@@ -116,7 +116,7 @@ class SearchOptions extends PureComponent {
               name="searchEngine"
               onChange={(value) => this.setSearchEngine(value)}
               items={[
-                searchEngines.map((engine) => ({
+                ...searchEngines.map((engine) => ({
                   value: engine.settingsName,
                   text: engine.name,
                 })),

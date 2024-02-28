@@ -62,11 +62,13 @@ class Dropdown extends PureComponent {
           ref={this.dropdown}
           key={id}
         >
-          {this.props.items.map(({ value, text }) => (
-            <MenuItem key={id + value} value={value}>
-              {text}
-            </MenuItem>
-          ))}
+          {this.props.items.map((item) =>
+            item !== null ? (
+              <MenuItem key={id + item.value} value={item.value}>
+                {item.text}
+              </MenuItem>
+            ) : null,
+          )}
         </Select>
       </FormControl>
     );
