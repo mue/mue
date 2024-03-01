@@ -3,14 +3,14 @@
 import variables from 'config/variables';
 import { PureComponent } from 'react';
 
-import PhotoInformation from './PhotoInformation';
+import PhotoInformation from './components/PhotoInformation';
 
 import EventBus from 'utils/eventbus';
 import {
   videoCheck,
   offlineBackground,
   randomColourStyleBuilder,
-  supportsAVIF
+  supportsAVIF,
 } from 'utils/background';
 
 import { getGradient } from 'utils/background/gradient';
