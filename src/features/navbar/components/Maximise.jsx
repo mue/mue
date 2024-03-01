@@ -86,4 +86,4 @@ class Maximise extends PureComponent {
   }
 }
 
-export default Maximise;
+export { Maximise as default, Maximise };

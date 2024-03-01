@@ -7,9 +7,8 @@ import { MdSettings } from 'react-icons/md';
 // import Todo from './buttons/Todo';
 // import Apps from './buttons/Apps';
 
-import { Notes, Todo, Apps, Refresh } from './components';
+import { Notes, Todo, Apps, Refresh, Maximise } from './components';
 
-import Maximise from '../background/Maximise';
 import { Tooltip } from 'components/Elements';
 import EventBus from 'utils/eventbus';
 
