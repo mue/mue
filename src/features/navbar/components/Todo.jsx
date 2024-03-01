@@ -254,4 +254,5 @@ function TodoWrapper() {
   );
 }
 
-export default memo(TodoWrapper);
+const MemoizedTodoWrapper = memo(TodoWrapper);
+export { MemoizedTodoWrapper as default, MemoizedTodoWrapper as Todo };

@@ -170,4 +170,5 @@ function NotesWrapper() {
   );
 }
 
-export default memo(NotesWrapper);
+const MemoizedNotesWrapper = memo(NotesWrapper);
+export { MemoizedNotesWrapper as default, MemoizedNotesWrapper as Notes };

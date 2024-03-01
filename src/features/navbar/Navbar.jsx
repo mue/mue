@@ -1,11 +1,14 @@
 import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 
-import { MdRefresh, MdSettings } from 'react-icons/md';
+import { MdSettings } from 'react-icons/md';
 
-import Notes from './Notes';
-import Todo from './Todo';
-import Apps from './Apps';
+// import Notes from './buttons/Notes';
+// import Todo from './buttons/Todo';
+// import Apps from './buttons/Apps';
+
+import { Notes, Todo, Apps, Refresh } from './components';
+
 import Maximise from '../background/Maximise';
 import { Tooltip } from 'components/Elements';
 import EventBus from 'utils/eventbus';
@@ -113,20 +116,7 @@ class Navbar extends PureComponent {
             <Apps fontSize={this.state.zoomFontSize} />
           )}
 
-          {this.refreshEnabled !== 'false' && (
-            <Tooltip
-              title={variables.getMessage('widgets.navbar.tooltips.refresh')}
-              subtitle={this.state.refreshText}
-            >
-              <button
-                onClick={() => this.refresh()}
-                style={{ fontSize: this.state.zoomFontSize }}
-                aria-label={variables.getMessage('widgets.navbar.tooltips.refresh')}
-              >
-                <MdRefresh className="refreshicon topicons" />
-              </button>
-            </Tooltip>
-          )}
+          {this.refreshEnabled !== 'false' && <Refresh fontSize={this.state.zoomFontSize} />}
 
           <Tooltip
             title={variables.getMessage('modals.main.navbar.settings', {

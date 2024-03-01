@@ -151,4 +151,5 @@ function AppsWrapper() {
   );
 }
 
-export default memo(AppsWrapper);
+const MemoizedAppsWrapper = memo(AppsWrapper);
+export { MemoizedAppsWrapper as default, MemoizedAppsWrapper as Apps };
