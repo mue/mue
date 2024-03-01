@@ -3,9 +3,9 @@ import { PureComponent, createRef } from 'react';
 import { MdOutlineWifiOff } from 'react-icons/md';
 import Modal from 'react-modal';
 
-import Lightbox from '../../../../../marketplace/components/Elements/Lightbox/Lightbox';
+import Lightbox from '../../marketplace/components/Elements/Lightbox/Lightbox';
 
-export default class Changelog extends PureComponent {
+class Changelog extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -158,3 +158,5 @@ export default class Changelog extends PureComponent {
     );
   }
 }
+
+export { Changelog as default, Changelog };

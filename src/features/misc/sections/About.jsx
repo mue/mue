@@ -8,7 +8,7 @@ import { BiDonateHeart } from 'react-icons/bi';
 import { Tooltip } from 'components/Elements';
 import other_contributors from 'utils/data/other_contributors.json';
 
-export default class About extends PureComponent {
+class About extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -379,3 +379,5 @@ export default class About extends PureComponent {
     );
   }
 }
+
+export { About as default, About };

@@ -7,7 +7,7 @@ import { Radio } from 'components/Form/Settings';
 
 import languages from '@/i18n/languages.json';
 
-export default class LanguageSettings extends PureComponent {
+class LanguageOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -109,3 +109,5 @@ export default class LanguageSettings extends PureComponent {
     );
   }
 }
+
+export { LanguageOptions as default, LanguageOptions };

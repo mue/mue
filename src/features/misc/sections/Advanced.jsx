@@ -17,7 +17,7 @@ import { Header, Section, Row, Content, Action } from 'components/Layout/Setting
 
 import time_zones from 'features/time/timezones.json';
 
-export default function AdvancedSettings() {
+function AdvancedOptions() {
   const [resetModal, setResetModal] = useState(false);
   const [data, setData] = useState(false);
   const ADVANCED_SECTION = 'modals.main.settings.sections.advanced';
@@ -179,3 +179,5 @@ export default function AdvancedSettings() {
     </>
   );
 }
+
+export { AdvancedOptions as default, AdvancedOptions };

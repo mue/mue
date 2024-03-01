@@ -1,19 +1,15 @@
 import variables from 'config/variables';
 import { useState, memo } from 'react';
-import Checkbox from '../../../../../../components/Form/Settings/Checkbox/Checkbox';
-import Slider from '../../../../../../components/Form/Settings/Slider/Slider';
+import Checkbox from '../../../components/Form/Settings/Checkbox/Checkbox';
+import Slider from '../../../components/Form/Settings/Slider/Slider';
 import { TextField } from '@mui/material';
 
 import EventBus from 'utils/eventbus';
 import values from 'utils/data/slider_values.json';
 
-import {
-  Row,
-  Content,
-  Action,
-} from '../../../../../../components/Layout/Settings/Item/SettingsItem';
+import { Row, Content, Action } from '../../../components/Layout/Settings/Item/SettingsItem';
 
-function ExperimentalSettings() {
+function ExperimentalOptions() {
   const [eventType, setEventType] = useState();
   const [eventName, setEventName] = useState();
 
@@ -79,4 +75,8 @@ function ExperimentalSettings() {
   );
 }
 
-export default memo(ExperimentalSettings);
+const MemoizedExperimentalOptions = memo(ExperimentalOptions);
+export {
+  MemoizedExperimentalOptions as default,
+  MemoizedExperimentalOptions as ExperimentalOptions,
+};

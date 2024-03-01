@@ -9,7 +9,7 @@ import { MdAccessibility } from 'react-icons/md';
 
 import values from 'utils/data/slider_values.json';
 
-function AppearanceSettings() {
+function AppearanceOptions() {
   const [accessibility, setAccessibility] = useState(false);
 
   const ThemeSelection = () => {
@@ -285,4 +285,5 @@ function AppearanceSettings() {
   );
 }
 
-export default memo(AppearanceSettings);
+const MemoizedAppearanceOptions = memo(AppearanceOptions);
+export { MemoizedAppearanceOptions as default, MemoizedAppearanceOptions as AppearanceOptions };

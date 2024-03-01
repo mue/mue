@@ -33,7 +33,7 @@ const SortableContainer = sortableContainer(({ children }) => (
   <ul className="sortablecontainer">{children}</ul>
 ));
 
-export default class OrderSettings extends PureComponent {
+class Overview extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -193,3 +193,5 @@ export default class OrderSettings extends PureComponent {
     );
   }
 }
+
+export { Overview as default, Overview };

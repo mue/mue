@@ -12,7 +12,7 @@ import { saveFile } from 'utils/saveFile';
 
 import { translations, achievements } from 'utils/achievements';
 
-export default class Stats extends PureComponent {
+class Stats extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -224,3 +224,5 @@ export default class Stats extends PureComponent {
     );
   }
 }
+
+export { Stats as default, Stats };
