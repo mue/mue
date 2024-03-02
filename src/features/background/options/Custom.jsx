@@ -11,7 +11,7 @@ import {
 } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
-import { videoCheck } from 'utils/background';
+import videoCheck from '../api/videoCheck';
 
 import Checkbox from '../../../components/Form/Settings/Checkbox/Checkbox';
 import FileUpload from '../../../components/Form/Settings/FileUpload/FileUpload';

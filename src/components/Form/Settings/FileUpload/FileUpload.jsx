@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
-import { videoCheck } from 'utils/background';
+import videoCheck from 'features/background/api/videoCheck';
 
 class FileUpload extends PureComponent {
   componentDidMount() {

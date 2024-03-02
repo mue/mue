@@ -1,4 +1,4 @@
-import offlineImages from 'utils/data/offline_images.json';
+import offlineImages from '../offline_images.json';
 
 /**
  * It gets a random photographer from the offlineImages.json file, then gets a random image from that
@@ -12,7 +12,7 @@ import offlineImages from 'utils/data/offline_images.json';
  * offline: A boolean that is true.
  * credit: A string that is the name of the photographer.
  */
-export function offlineBackground(type) {
+export function getOfflineImage(type) {
   const photographers = Object.keys(offlineImages);
   const photographer = photographers[Math.floor(Math.random() * photographers.length)];
 

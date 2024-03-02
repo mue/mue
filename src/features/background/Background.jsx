@@ -6,14 +6,12 @@ import { PureComponent } from 'react';
 import PhotoInformation from './components/PhotoInformation';
 
 import EventBus from 'utils/eventbus';
-import {
-  videoCheck,
-  offlineBackground,
-  randomColourStyleBuilder,
-  supportsAVIF,
-} from 'utils/background';
 
-import { getGradient } from 'utils/background/gradient';
+import { supportsAVIF } from './api/avif';
+import { getOfflineImage } from './api/getOfflineImage';
+import videoCheck from './api/videoCheck';
+import { getGradient } from './api/gradient';
+import { randomColourStyleBuilder } from './api/randomColour';
 
 import './scss/index.scss';
 import { decodeBlurHash } from 'fast-blurhash';
@@ -128,7 +126,7 @@ export default class Background extends PureComponent {
       data = await (await fetch(requestURL, { headers: { accept } })).json();
     } catch (e) {
       // if requesting to the API fails, we get an offline image
-      this.setState(offlineBackground('api'));
+      this.setState(getOfflineImage('api'));
       return null;
     }
 
@@ -201,7 +199,7 @@ export default class Background extends PureComponent {
     switch (type) {
       case 'api':
         if (offline) {
-          return this.setState(offlineBackground('api'));
+          return this.setState(getOfflineImage('api'));
         }
 
         // API background
@@ -246,7 +244,7 @@ export default class Background extends PureComponent {
 
         // allow users to use offline images
         if (offline && !customBackground.startsWith('data:')) {
-          return this.setState(offlineBackground('custom'));
+          return this.setState(getOfflineImage('custom'));
         }
 
         if (
@@ -271,7 +269,7 @@ export default class Background extends PureComponent {
 
       case 'photo_pack':
         if (offline) {
-          return this.setState(offlineBackground('photo_pack'));
+          return this.setState(getOfflineImage('photo_pack'));
         }
 
         const photofavourited = JSON.parse(localStorage.getItem('favourite'));
@@ -503,7 +501,7 @@ export default class Background extends PureComponent {
                 this.setState(current);
               }
             } else if (current.url.startsWith('http')) {
-              this.setState(offlineBackground());
+              this.setState(getOfflineImage());
             }
             if (this.state.firstTime !== true) {
               this.setState(current);

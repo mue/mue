@@ -2,6 +2,7 @@ import variables from 'config/variables';
 import { useState, memo } from 'react';
 import { MdClose, MdOutlineAddLink } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
+
 function CustomURLModal({ modalClose, urlError, modalCloseOnly }) {
   const [url, setURL] = useState();
 

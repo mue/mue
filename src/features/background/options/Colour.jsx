@@ -4,7 +4,7 @@ import { ColorPicker } from '@muetab/react-color-gradient-picker';
 import { toast } from 'react-toastify';
 import { Row, Content, Action } from '../../../components/Layout/Settings/Item/SettingsItem';
 
-import { hexToRgb, rgbToHex } from 'utils/background/gradient';
+import { hexToRgb, rgbToHex } from '../api/gradient';
 
 //import '@muetab/react-color-gradient-picker/dist/index.css';
 import '../scss/react-color-picker-gradient-picker-custom-styles.scss';
