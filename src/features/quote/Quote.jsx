@@ -220,7 +220,7 @@ class Quote extends PureComponent {
           ? customQuote[Math.floor(Math.random() * customQuote.length)]
           : null;
 
-        if (customQuote !== undefined) {
+        if (customQuote !== undefined && customQuote !== null) {
           return this.setState({
             quote: '"' + customQuote.quote + '"',
             author: customQuote.author,
@@ -467,12 +467,14 @@ class Quote extends PureComponent {
         ) : (
           <div className="author-holder">
             <div className="author">
-              <div
-                className="author-img"
-                style={{ backgroundImage: `url(${this.state.authorimg})` }}
-              >
-                {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
-              </div>
+              {localStorage.getItem('authorImg') !== 'false' ? (
+                <div
+                  className="author-img"
+                  style={{ backgroundImage: `url(${this.state.authorimg})` }}
+                >
+                  {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
+                </div>
+              ) : null}
               {this.state.author !== null ? (
                 <div className="author-content" ref={this.quoteauthor}>
                   <span className="title">{this.state.author}</span>
@@ -492,7 +494,7 @@ class Quote extends PureComponent {
                 </div>
               )}
               <div className="quote-buttons">
-                {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== '' ? (
+                {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null ? (
                   <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
                     <a
                       href={this.state.authorlink}
