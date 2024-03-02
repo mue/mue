@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^18.6.1",
-    "@commitlint/config-conventional": "^18.6.2",
+    "@commitlint/config-conventional": "^19.0.3",
     "@eartharoid/deep-merge": "^0.0.2",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "adm-zip": "^0.5.10",
