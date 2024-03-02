@@ -24,10 +24,10 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - OS: [e.g. Windows, Ubuntu]
- - OS Version: [e.g 10, 19.10]
+ - OS Version: [e.g 11, 23.10]
  - Browser: [e.g. Chrome, Firefox]
- - Browser Version: [e.g. 70]
- - Mue Version: [e.g. 0.5]
+ - Browser Version: [e.g. 115]
+ - Mue Version: [e.g. 7.1.0]
  - Resolution: [e.g 1920x1080]
 
 **Additional context**
