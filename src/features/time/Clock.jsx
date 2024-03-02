@@ -1,26 +1,24 @@
-import { PureComponent, Suspense, lazy } from 'react';
+import { PureComponent } from 'react';
 
 import { convertTimezone } from 'utils/date';
+import { AnalogClock } from './components/AnalogClock';
+import { VerticalClock } from './components/VerticalClock';
 import EventBus from 'utils/eventbus';
 
 import './clock.scss';
-
-const Analog = lazy(() => import('react-clock'));
-
 export default class Clock extends PureComponent {
   constructor() {
     super();
 
     this.timer = undefined;
     this.state = {
+      timeType: localStorage.getItem('timeType'),
       time: '',
       finalHour: '',
       finalMinute: '',
       finalSeconds: '',
       ampm: '',
       nowGlobal: new Date(),
-      minuteColour: localStorage.getItem('minuteColour'),
-      hourColour: localStorage.getItem('hourColour'),
     };
   }
 
@@ -153,41 +151,17 @@ export default class Clock extends PureComponent {
   }
 
   render() {
-    const enabled = (setting) => {
-      return localStorage.getItem(setting) === 'true';
-    };
-
     if (localStorage.getItem('timeType') === 'analogue') {
-      return (
-        <Suspense fallback={<></>}>
-          <div className={`clockBackground ${enabled('roundClock') ? 'round' : ''}`}>
-            <Analog
-              className="analogclock clock-container"
-              value={this.state.time}
-              size={1.5 * Number(localStorage.getItem('zoomClock') || 100)}
-              renderMinuteMarks={enabled('minuteMarks')}
-              renderHourMarks={enabled('hourMarks')}
-              renderSecondHand={enabled('secondHand')}
-              renderMinuteHand={enabled('minuteHand')}
-              renderHourHand={enabled('hourHand')}
-            />
-          </div>
-        </Suspense>
-      );
+      return <AnalogClock time={this.state.time} />;
     }
 
     if (localStorage.getItem('timeType') === 'verticalClock') {
       return (
-        <span className="new-clock clock-container">
-          {' '}
-          <div className="hour" style={{ color: this.state.hourColour }}>
-            {this.state.finalHour}
-          </div>{' '}
-          <div className="minute" style={{ color: this.state.minuteColour }}>
-            {this.state.finalMinute}
-          </div>{' '}
-          <div className="seconds">{this.state.finalSeconds}</div>{' '}
-        </span>
+        <VerticalClock
+          finalHour={this.state.finalHour}
+          finalMinute={this.state.finalMinute}
+          finalSeconds={this.state.finalSeconds}
+        />
       );
     }
 

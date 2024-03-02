@@ -69,9 +69,9 @@ class Quote extends PureComponent {
   constructor() {
     super();
     this.state = {
-      quote: '',
-      author: '',
-      authorOccupation: '',
+      quote: null,
+      author: null,
+      authorOccupation: null,
       favourited: this.useFavourite(),
       share: localStorage.getItem('quoteShareButton') === 'false' ? null : this.buttons.share,
       copy: localStorage.getItem('copyButton') === 'false' ? null : this.buttons.copy,
@@ -473,7 +473,7 @@ class Quote extends PureComponent {
               >
                 {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
               </div>
-              {this.state.author !== '' ? (
+              {this.state.author !== null ? (
                 <div className="author-content" ref={this.quoteauthor}>
                   <span className="title">{this.state.author}</span>
                   {this.state.authorOccupation !== 'Unknown' && (

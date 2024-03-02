@@ -74,10 +74,6 @@ class LanguageOptions extends PureComponent {
             {variables.getMessage('modals.main.settings.sections.language.title')}
           </span>
           <div className="headerActions">
-            {/*<a className="link" href="" target="_blank" rel="noopener noreferrer">
-              Improve
-              <MdOutlineOpenInNew />
-    </a>*/}
             <a
               className="link"
               href="https://hosted.weblate.org/new-lang/mue/mue-tab/"
