@@ -19,7 +19,7 @@
           "description": "Установить аддон Mue, не представленную на торговой площадке, со своего компьютера",
           "errors": {
             "invalid_photos": "Недопустимый объект фотографии",
-            "invalid_quotes": "Invalid quotes object",
+            "invalid_quotes": "Неправильный объект цитаты",
             "no_author": "Автор не указан",
             "no_name": "Название не указано",
             "no_type": "Тип не указан"
@@ -28,11 +28,11 @@
           "title": "Загрузить"
         },
         "sort": {
-          "a_z": "Alphabetical (A-Z)",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
+          "a_z": "Алфавитный (A-Z)",
+          "newest": "Установлено (Новое)",
+          "oldest": "Установлено (Старое)",
           "title": "Сортировка",
-          "z_a": "Alphabetical (Z-A)"
+          "z_a": "Алфавитный (Z-A)"
         },
         "updates_available": "Доступны обновления {amount}"
       },
@@ -127,7 +127,7 @@
             "supporters": "Поддержка",
             "title": "О программе",
             "version": {
-              "checking_update": "Проверка обновлений",
+              "checking_update": "Проверяю обновления",
               "error": {
                 "description": "Обнаружена ошибка",
                 "title": "Не удалось получить информацию об обновлении"
@@ -279,7 +279,7 @@
               "custom_title": "Пользовательские изображения",
               "disabled": "Выключен",
               "drop_to_upload": "Перетащите, чтобы загрузить",
-              "formats": "Доступные форматы: {список}",
+              "formats": "Доступные форматы: {list}",
               "loop_video": "Зацикленное видео",
               "mute_video": "Отключить звук видео",
               "quality": {
@@ -510,7 +510,7 @@
     },
     "update": {
       "error": {
-        "description": "Could not connect to the server",
+        "description": "Невозможно подключиться к серверу",
         "title": "Ошибка"
       },
       "offline": {
@@ -522,7 +522,7 @@
     "welcome": {
       "buttons": {
         "close": "Закрыть",
-        "finish": "Finish",
+        "finish": "Завершить",
         "next": "Next",
         "preview": "Preview",
         "previous": "Previous"
@@ -540,7 +540,7 @@
           "title": "Последний шаг"
         },
         "intro": {
-          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
+          "description": "Спасибо за установку Mue, мы надеемся, что вам понравится ваше время с нашим расширением.",
           "notices": {
             "discord_description": "Поговорите с сообществом Mue и разработчиками",
             "discord_join": "Присоединиться",
@@ -552,7 +552,7 @@
           "title": "Добро пожаловать в Mue Tab"
         },
         "language": {
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our",
+          "description": "Mue может отображаться на языках, перечисленных ниже. Вы также можете добавить новые переводы на свой",
           "title": "Выберите свой язык"
         },
         "privacy": {
@@ -567,7 +567,7 @@
           "title": "Privacy Options"
         },
         "settings": {
-          "description": "Installing Mue on a new device? Feel free to import your old settings!",
+          "description": "Установили Мue на новом устройстве? Не стесняйтесь импортировать свои старые настройки!",
           "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation.",
           "title": "Импортировать настройки"
         },
@@ -578,12 +578,12 @@
           "title": "Выберите стиль"
         },
         "theme": {
-          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
-          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes.",
+          "description": "Mue доступен как в светлой, так и в темной теме, или это может быть автоматически установлено в зависимости от темы вашей системы.",
+          "tip": "С помощью настроек авто будет использоваться тема на вашем компьютере. Эта настройка повлияет на модалы и некоторые виджеты, отображаемые на экране, такие как погода и заметки.",
           "title": "Выберите тему"
         }
       },
-      "tip": "Quick Tip"
+      "tip": "Быстрый совет"
     }
   },
   "tabname": "Новая вкладка",
