@@ -650,7 +650,7 @@
     },
     "quicklinks": {
       "add": "Add",
-      "edit": "Edit Link",
+      "edit": "Изменить ссылку",
       "icon": "Значок (необязательно)",
       "name": "Name",
       "name_error": "Должно содержать имя",
