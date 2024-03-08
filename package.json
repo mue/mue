@@ -58,6 +58,6 @@
     "pretty": "prettier --write \"./**/*.{js,jsx,json,scss,css}\"",
     "lint": "eslint \"./src/**/*.{js,jsx}\" && stylelint \"./src/**/*.{scss,css}\"",
     "lint:fix": "eslint \"./src/**/*.{js,jsx}\" --fix && stylelint \"./src/**/*.{scss,css}\" --fix",
-    "postinstall": "husky install"
+    "postinstall": "husky"
   }
 }
