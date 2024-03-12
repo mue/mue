@@ -33,7 +33,7 @@
     "react-toastify": "10.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.0.3",
+    "@commitlint/cli": "^19.1.0",
     "@commitlint/config-conventional": "^19.0.3",
     "@eartharoid/deep-merge": "^0.0.2",
     "@vitejs/plugin-react-swc": "^3.6.0",
