@@ -37,7 +37,7 @@
     "@commitlint/config-conventional": "^19.0.3",
     "@eartharoid/deep-merge": "^0.0.2",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "adm-zip": "^0.5.10",
+    "adm-zip": "^0.5.12",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
