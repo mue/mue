@@ -23,7 +23,7 @@ const prepareBuilds = () => ({
         path.resolve(__dirname, './build/chrome/manifest.json'),
       );
       fs.copyFileSync(
-        path.resolve(__dirname, './manifest/background-chrome.js'),
+        path.resolve(__dirname, './manifest/background.js'),
         path.resolve(__dirname, './build/chrome/background.js'),
       );
       fs.cpSync(
@@ -36,6 +36,13 @@ const prepareBuilds = () => ({
       fs.cpSync(path.resolve(__dirname, './dist'), path.resolve(__dirname, './build/chrome/'), {
         recursive: true,
       });
+      fs.cpSync(
+        path.resolve(__dirname, './src/assets/icons'),
+        path.resolve(__dirname, './build/chrome/icons'),
+        {
+          recursive: true,
+        },
+      );
 
       // firefox
       fs.mkdirSync(path.resolve(__dirname, './build/firefox'), { recursive: true });
@@ -44,12 +51,19 @@ const prepareBuilds = () => ({
         path.resolve(__dirname, './build/firefox/manifest.json'),
       );
       fs.copyFileSync(
-        path.resolve(__dirname, './manifest/background-firefox.js'),
+        path.resolve(__dirname, './manifest/background.js'),
         path.resolve(__dirname, './build/firefox/background.js'),
       );
       fs.cpSync(path.resolve(__dirname, './dist'), path.resolve(__dirname, './build/firefox/'), {
         recursive: true,
       });
+      fs.cpSync(
+        path.resolve(__dirname, './src/assets/icons'),
+        path.resolve(__dirname, './build/firefox/icons'),
+        {
+          recursive: true,
+        },
+      );
 
       // create zip
       const zip = new ADMZip();
