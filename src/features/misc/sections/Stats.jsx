@@ -10,7 +10,7 @@ import { Header, CustomActions } from 'components/Layout/Settings';
 
 import { saveFile } from 'utils/saveFile';
 
-import { translations, achievements } from 'utils/achievements';
+import { getLocalisedAchievementData, achievements, checkAchievements } from 'utils/achievements';
 
 class Stats extends PureComponent {
   constructor() {
@@ -21,29 +21,10 @@ class Stats extends PureComponent {
     };
   }
 
-  getAchievements() {
-    const achievements = this.state.achievements;
-    achievements.forEach((achievement) => {
-      switch (achievement.condition.type) {
-        case 'tabsOpened':
-          if (this.state.stats['tabs-opened'] >= achievement.condition.amount) {
-            achievement.achieved = true;
-          }
-          break;
-        case 'addonInstall':
-          if (this.state.stats.marketplace) {
-            if (this.state.stats.marketplace['install'] >= achievement.condition.amount) {
-              achievement.achieved = true;
-            }
-          }
-          break;
-        default:
-          break;
-      }
-    });
-
+  updateAchievements() {
+    const achieved = checkAchievements(this.state.stats);
     this.setState({
-      achievements,
+      achievements: achieved,
     });
   }
 
@@ -59,11 +40,13 @@ class Stats extends PureComponent {
 
   resetStats() {
     localStorage.setItem('statsData', JSON.stringify({}));
+    localStorage.setItem('achievements', JSON.stringify(achievements));
     this.setState({
       stats: {},
+      achievements,
     });
     toast(variables.getMessage('toasts.stats_reset'));
-    this.getAchievements();
+    this.updateAchievements();
     this.forceUpdate();
   }
 
@@ -75,31 +58,21 @@ class Stats extends PureComponent {
     saveFile(JSON.stringify(this.state.stats, null, 2), filename);
   }
 
-  getLocalisedAchievementData(id) {
-    const localised = translations[variables.languagecode][id] ||
-      translations.en_GB[id] || { name: id, description: '' };
-
-    return {
-      name: localised.name,
-      description: localised.description,
-    };
-  }
-
   componentDidMount() {
-    this.getAchievements();
+    this.updateAchievements();
     this.forceUpdate();
   }
 
   render() {
     const achievementElement = (key, id, achieved) => {
-      const { name, description } = this.getLocalisedAchievementData(id);
+      const { name, description } = getLocalisedAchievementData(id);
 
       return (
         <div className="achievement" key={key}>
           <FaTrophy />
           <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
             <span>{name}</span>
-            <span className="subtitle">{description}</span>
+            <span className="subtitle">{achieved ? description : '?????'}</span>
           </div>
         </div>
       );
@@ -213,11 +186,21 @@ class Stats extends PureComponent {
             </span>
           </div>
           <div className="achievements">
-            {this.state.achievements.map((achievement, index) => {
-              if (achievement.achieved) {
-                return achievementElement(index, achievement.id, achievement.achieved);
-              }
-            })}
+            <div className="achievementsGrid">
+              {this.state.achievements.map((achievement, index) => {
+                if (achievement.achieved) {
+                  return achievementElement(index, achievement.id, achievement.achieved);
+                }
+              })}
+            </div>
+            <span className="title">Locked</span>
+            <div className="achievementsGrid preferencesInactive">
+              {this.state.achievements.map((achievement, index) => {
+                if (!achievement.achieved) {
+                  return achievementElement(index, achievement.id, achievement.achieved);
+                }
+              })}
+            </div>
           </div>
         </div>
       </>

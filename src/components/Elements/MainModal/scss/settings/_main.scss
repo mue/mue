@@ -51,6 +51,8 @@ input {
   /* date picker */
   &[type='date'] {
     width: 260px;
+    display: flex;
+    flex-flow: column;
 
     @include themed {
       background: t($modal-sidebar);

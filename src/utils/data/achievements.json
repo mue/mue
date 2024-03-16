@@ -42,7 +42,7 @@
     }
   },
   {
-    "id": "808sandtabs",
+    "id": "808s",
     "condition": {
       "type": "tabsOpened",
       "amount": 808

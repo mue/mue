@@ -493,22 +493,27 @@ class Quote extends PureComponent {
                   <span className="subtitle">loading</span>
                 </div>
               )}
-              <div className="quote-buttons">
-                {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null ? (
-                  <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
-                    <a
-                      href={this.state.authorlink}
-                      className="quoteAuthorLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Learn about the author of the quote."
-                    >
-                      <MdOpenInNew />
-                    </a>{' '}
-                  </Tooltip>
-                ) : null}
-                {this.state.copy} {this.state.share} {this.state.favourited}
-              </div>
+              {(this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null) ||
+              this.state.copy ||
+              this.state.share ||
+              this.state.favourited ? (
+                <div className="quote-buttons">
+                  {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null ? (
+                    <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
+                      <a
+                        href={this.state.authorlink}
+                        className="quoteAuthorLink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Learn about the author of the quote."
+                      >
+                        <MdOpenInNew />
+                      </a>{' '}
+                    </Tooltip>
+                  ) : null}
+                  {this.state.copy} {this.state.share} {this.state.favourited}
+                </div>
+              ) : null}
             </div>
           </div>
         )}

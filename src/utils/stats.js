@@ -1,4 +1,17 @@
+import { newAchievements, getLocalisedAchievementData } from './achievements';
+import { toast } from 'react-toastify';
+
 export default class Stats {
+  static async achievementTrigger(stats) {
+    const newAchievement = newAchievements(stats);
+    newAchievement.forEach((achievement) => {
+      if (achievement) {
+        const { name } = getLocalisedAchievementData(achievement.id);
+        toast(`Achievement Unlocked: ${name}`);
+      }
+    });
+  }
+
   /**
    * It takes two arguments, a type and a name, and then it increments the value of the name in the type
    * object in localStorage
@@ -24,6 +37,7 @@ export default class Stats {
       data[type][value] = data[type][value] + 1;
     }
     localStorage.setItem('statsData', JSON.stringify(data));
+    this.achievementTrigger(data);
   }
 
   /**
@@ -33,5 +47,6 @@ export default class Stats {
     const data = JSON.parse(localStorage.getItem('statsData'));
     data['tabs-opened'] = data['tabs-opened'] + 1 || 1;
     localStorage.setItem('statsData', JSON.stringify(data));
+    this.achievementTrigger(data);
   }
 }
