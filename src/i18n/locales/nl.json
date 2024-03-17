@@ -676,6 +676,7 @@
     "error": "Er is iets misgegaan",
     "imported": "Het importeren is voltooid",
     "no_storage": "Niet genoeg opslag",
-    "link_copied": "Link gekopieerd"
+    "link_copied": "Link gekopieerd",
+    "stats_reset": "Stats reset"
   }
 }

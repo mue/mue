@@ -676,6 +676,7 @@
     "error": "Algo salió mal",
     "imported": "Importado correctamente",
     "no_storage": "No hay espacio suficiente",
-    "link_copied": "Enlace copiado"
+    "link_copied": "Enlace copiado",
+    "stats_reset": "Stats reset"
   }
 }

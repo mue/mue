@@ -676,6 +676,7 @@
     "error": "Bir şeyler yanlış gitti.",
     "imported": "Başarıyla içe aktarıldı.",
     "no_storage": "Yeteri kadar yer yok.",
-    "link_copied": "Bağlantı kopyalandı."
+    "link_copied": "Bağlantı kopyalandı.",
+    "stats_reset": "Stats reset"
   }
 }

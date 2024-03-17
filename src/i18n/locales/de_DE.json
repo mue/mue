@@ -676,6 +676,7 @@
     "error": "Etwas ist schief gelaufen",
     "imported": "Erfolgreich importiert",
     "no_storage": "Nicht genügend Speicherplatz",
-    "link_copied": "Link kopiert"
+    "link_copied": "Link kopiert",
+    "stats_reset": "Stats reset"
   }
 }

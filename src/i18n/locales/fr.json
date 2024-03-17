@@ -676,6 +676,7 @@
     "error": "Quelque chose s'est mal passé",
     "imported": "Importé avec succès",
     "no_storage": "Not enough storage",
-    "link_copied": "Link copied"
+    "link_copied": "Link copied",
+    "stats_reset": "Stats reset"
   }
 }
