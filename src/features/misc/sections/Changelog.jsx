@@ -18,10 +18,36 @@ class Changelog extends PureComponent {
     this.changelog = createRef();
   }
 
+  parseMarkdown = (text) => {
+    text = text.replace(/^\* /gm, '<li>').replace(/\n/g, '</li>');
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/^## (.*$)/gm, '<h3>$1</h3>');
+    text = text.replace(
+      /((http|https):\/\/[^\s]+)/g,
+      '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>',
+    );
+
+    return text;
+  }
+
   async getUpdate() {
-    const res = await fetch(variables.constants.BLOG_POST + '/index.json', {
-      signal: this.controller.signal,
-    });
+    const releases = await fetch(
+      `https://api.github.com/repos/${variables.constants.ORG_NAME}/${variables.constants.REPO_NAME}/releases`,
+      {
+        signal: this.controller.signal,
+      },
+    );
+
+    // get the release which tag_name is the same as the current version
+    const data = await releases.json();
+    const release = data.find((release) => release.tag_name === `7.0.0`);
+
+    if (this.controller.signal.aborted === true) {
+      return;
+    }
+
+    // request the changelog
+    const res = await fetch(release.url, { signal: this.controller.signal });
 
     if (res.status === 404) {
       this.setState({ error: true });
@@ -32,43 +58,12 @@ class Changelog extends PureComponent {
       return;
     }
 
-    const data = await res.json();
-    let date = new Date(data.date.split(' ')[0]);
-    date = date.toLocaleDateString(variables.languagecode.replace('_', '-'), {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-
+    const changelog = await res.json();
     this.setState({
-      title: data.title,
-      date,
-      image: data.featured_image || null,
-      author: variables.getMessage('modals.main.settings.sections.changelog.by', {
-        author: data.authors.join(', '),
-      }),
-      content: data.markdown,
+      title: changelog.name,
+      content: this.parseMarkdown(changelog.body),
+      date: new Date(changelog.published_at).toLocaleDateString(),
     });
-
-    // lightbox etc
-    const images = this.changelog.current.getElementsByTagName('img');
-    const links = this.changelog.current.getElementsByTagName('a');
-
-    for (const img of images) {
-      img.draggable = false;
-      img.onclick = () => {
-        this.setState({
-          showLightbox: true,
-          lightboxImg: img.src,
-        });
-      };
-    }
-
-    // open in new tab
-    for (let link = 0; link < links.length; link++) {
-      links[link].target = '_blank';
-      links[link].rel = 'noopener noreferrer';
-    }
   }
 
   componentDidMount() {
@@ -129,9 +124,7 @@ class Changelog extends PureComponent {
     return (
       <div className="changelogtab" ref={this.changelog}>
         <h1>{this.state.title}</h1>
-        <h5>
-          {this.state.author} • {this.state.date}
-        </h5>
+        <h5>Released on {this.state.date}</h5>
         {this.state.image && (
           <img
             draggable={false}
@@ -140,7 +133,7 @@ class Changelog extends PureComponent {
             className="updateImage"
           />
         )}
-        <div className="updateChangelog">{this.state.content}</div>
+        <div className="updateChangelog" dangerouslySetInnerHTML={{ __html: this.state.content }} />
         <Modal
           closeTimeoutMS={100}
           onRequestClose={() => this.setState({ showLightbox: false })}

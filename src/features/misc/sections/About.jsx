@@ -131,7 +131,7 @@ class About extends PureComponent {
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
             <img draggable={false} className="aboutLogo" src={this.state.image} alt="Logo" />
             <div className="aboutText">
-              <span className="title">Mue, By Kaiso</span>
+              <span className="title">Mue, by Kaiso</span>
               <span className="subtitle">
                 {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
                 {variables.constants.VERSION}
@@ -156,8 +156,8 @@ class About extends PureComponent {
                 >
                   The Mue Authors
                 </a>
-                ,{' '}
               </span>
+              <br></br>
               <span className="subtitle">
                 Copyright 2023-2024{' '}
                 <a
@@ -366,12 +366,10 @@ class About extends PureComponent {
           {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
             {this.state.photographers.map(({ name, count }) => (
-              <>
-                <li className="subtitle-photographers">
-                  {name}
-                  <span> ({count} images)</span>
-                </li>
-              </>
+              <li className="subtitle-photographers">
+                {name}
+                <span> ({count} images)</span>
+              </li>
             ))}
           </ul>
         </div>
