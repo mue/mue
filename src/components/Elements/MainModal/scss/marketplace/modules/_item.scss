@@ -22,41 +22,50 @@ p.description {
   .item {
     flex: 1 0 40% !important;
   }
+  .infoItem {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 15px;
+    flex: 1 0 44%;
 
-  @include themed {
-    background: t($modal-sidebar);
-    box-shadow: t(boxshadow);
-    border-radius: t($borderRadius);
-    padding: 15px;
-
-    .infoItem {
-      display: flex;
-      flex-flow: row;
-      align-items: center;
-      gap: 15px;
-      flex: 1 0 44%;
-
-      svg {
-        font-size: 25px;
-        color: t($subColor);
+    svg {
+      @include themed() {
+        background-image: t($slightGradient);
       }
-
-      .text {
-        display: flex;
-        flex-flow: column;
-      }
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 20px;
+      border-radius: 100%;
     }
 
-    .header {
-      text-transform: uppercase;
+    .text {
+      display: flex;
+      flex-flow: column;
+    }
+  }
+
+  .header {
+    text-transform: uppercase;
+    @include themed {
       color: t($subColor);
     }
+  }
 
-    span {
+  span {
+    @include themed {
       color: t($color);
     }
   }
+
+  @include themed {
+    background: t($modal-sidebar);
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+    border-radius: t($borderRadius);
+    padding: 15px;
+  }
 }
+
 
 .showMoreItems {
   display: flex;
@@ -64,4 +73,10 @@ p.description {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.marketplaceDescription {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
 }

@@ -13,9 +13,8 @@ import EventBus from 'utils/eventbus';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from '../api/videoCheck';
 
-import Checkbox from '../../../components/Form/Settings/Checkbox/Checkbox';
-import FileUpload from '../../../components/Form/Settings/FileUpload/FileUpload';
-import { Tooltip } from 'components/Elements';
+import { Checkbox, FileUpload } from 'components/Form/Settings';
+import { Tooltip, Button } from 'components/Elements';
 import Modal from 'react-modal';
 
 import CustomURLModal from './CustomURLModal';
@@ -198,14 +197,8 @@ export default class CustomSettings extends PureComponent {
               </div>
             </div>
             <div className="topbarbuttons">
-              <button onClick={() => this.uploadCustomBackground()}>
-                {variables.getMessage('modals.main.settings.sections.background.source.upload')}{' '}
-                <MdOutlineFileUpload />
-              </button>
-              <button onClick={() => this.setState({ customURLModal: true })}>
-                {variables.getMessage('modals.main.settings.sections.background.source.add_url')}{' '}
-                <MdAddLink />
-              </button>
+              <Button type="settings" onClick={() => this.uploadCustomBackground()} icon={<MdOutlineFileUpload />} label={variables.getMessage('modals.main.settings.sections.background.source.upload')} />
+              <Button type="settings" onClick={() => this.setState({ customURLModal: true })} icon={<MdAddLink />} label={variables.getMessage('modals.main.settings.sections.background.source.add_url')} />
             </div>
           </div>
           <div className="dropzone-content">
@@ -224,9 +217,7 @@ export default class CustomSettings extends PureComponent {
                           'modals.main.settings.sections.background.source.remove',
                         )}
                       >
-                        <button onClick={() => this.modifyCustomBackground('remove', index)}>
-                          <MdCancel />
-                        </button>
+                        <Button type="settings" onClick={() => this.modifyCustomBackground('remove', index)} icon={<MdCancel />} />
                       </Tooltip>
                     )}
                   </div>
@@ -249,10 +240,7 @@ export default class CustomSettings extends PureComponent {
                       },
                     )}
                   </span>
-                  <button onClick={() => this.uploadCustomBackground()}>
-                    {variables.getMessage('modals.main.settings.sections.background.source.select')}
-                    <MdFolder />
-                  </button>
+                  <Button type="settings" onClick={() => this.uploadCustomBackground()} icon={<MdFolder />} label={variables.getMessage('modals.main.settings.sections.background.source.select')} />
                 </div>
               </div>
             )}

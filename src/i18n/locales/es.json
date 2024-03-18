@@ -420,6 +420,7 @@
             "offline_mode": "Modo sin conexión",
             "offline_subtitle": "Cuando esté activada, se desactivarán todas las solicitudes a los servicios en línea.",
             "data": "Datos",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Elija si desea exportar la configuración de Mue a su ordenador, importar un archivo de configuración existente o restablecer los valores predeterminados",
             "reset_modal": {
               "title": "ADVERTENCIA",
@@ -453,7 +454,8 @@
             },
             "usage": "Estadísticas de uso",
             "achievements": "Logros",
-            "unlocked": "{count} Desbloqueado"
+            "unlocked": "{count} Desbloqueado",
+            "locked": "Locked"
           },
           "experimental": {
             "title": "Experimental",

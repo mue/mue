@@ -148,6 +148,11 @@ table {
   gap: 25px;
   padding: 25px;
   justify-content: space-between;
+  @include themed {
+    background: t($modal-sidebar);
+    border-radius: t($borderRadius);
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+  }
 
   div:nth-child(1) {
     display: flex;
@@ -157,15 +162,13 @@ table {
   }
 
   .icon {
-    border-radius: 100%;
-    display: grid;
-    place-items: center;
-    padding: 15px;
-    font-size: 25px;
-
-    @include themed {
-      background: t($modal-sidebarActive);
+    @include themed() {
+      background-image: t($slightGradient);
+      box-shadow: t($boxShadow);
     }
+    padding: 15px;
+    border-radius: 100%;
+    font-size: 25px;
   }
 
   .messageText {
@@ -189,11 +192,6 @@ table {
 
   .messageAction {
     float: right;
-  }
-
-  @include themed {
-    background: t($modal-sidebar);
-    border-radius: t($borderRadius);
   }
 }
 

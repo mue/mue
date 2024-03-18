@@ -12,6 +12,7 @@ import {
   PreferencesWrapper,
 } from 'components/Layout/Settings';
 import { Checkbox, Dropdown } from 'components/Form/Settings';
+import { Button } from 'components/Elements';
 
 import { toast } from 'react-toastify';
 import EventBus from 'utils/eventbus';
@@ -169,9 +170,7 @@ class QuoteOptions extends PureComponent {
               subtitle={variables.getMessage(`${QUOTE_SECTION}.custom_subtitle`)}
             />
             <Action>
-              <button onClick={() => this.modifyCustomQuote('add')}>
-                {variables.getMessage(`${QUOTE_SECTION}.add`)} <MdAdd />
-              </button>
+              <Button type="settings" onClick={() => this.modifyCustomQuote('add')} icon={<MdAdd />} label={variables.getMessage(`${QUOTE_SECTION}.add`)} />
             </Action>
           </Row>
 
@@ -204,14 +203,7 @@ class QuoteOptions extends PureComponent {
                   </div>
                   <div>
                     <div className="messageAction">
-                      <button
-                        className="deleteButton"
-                        onClick={() => this.modifyCustomQuote('remove', index)}
-                        style={{}}
-                      >
-                        {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-                        <MdCancel />
-                      </button>
+                      <Button type="settings" onClick={() => this.modifyCustomQuote('remove', index)} icon={<MdCancel />} label={variables.getMessage('modals.main.marketplace.product.buttons.remove')} />
                     </div>
                   </div>
                 </div>
@@ -225,9 +217,7 @@ class QuoteOptions extends PureComponent {
                 <span className="subtitle">
                   {variables.getMessage('modals.main.settings.sections.message.add_some')}
                 </span>
-                <button onClick={() => this.modifyCustomQuote('add')}>
-                  {variables.getMessage(`${QUOTE_SECTION}.add`)} <MdAdd />
-                </button>
+                <Button type="settings" onClick={() => this.modifyCustomQuote('add')} icon={<MdAdd />} label={variables.getMessage(`${QUOTE_SECTION}.add`)} />
               </div>
             </div>
           )}

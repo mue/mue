@@ -75,6 +75,7 @@ class Maximise extends PureComponent {
         title={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
       >
         <button
+        className="navbarButton"
           style={{ fontSize: this.props.fontSize }}
           onClick={this.maximise}
           aria-label={variables.getMessage('modals.main.settings.sections.background.buttons.view')}

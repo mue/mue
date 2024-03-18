@@ -2,6 +2,7 @@
 import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdOutlineExtensionOff } from 'react-icons/md';
+import { Button } from 'components/Elements';
 
 export default class Create extends PureComponent {
   constructor() {
@@ -27,7 +28,7 @@ export default class Create extends PureComponent {
               {variables.getMessage('modals.main.addons.create.moved_description')}
             </span>
             <div className="createButtons">
-              <button>Coming soon...</button>
+              <Button type="settings" label={variables.getMessage('modals.main.addons.create.moved_button')} />
             </div>
           </div>
         </div>

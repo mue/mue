@@ -420,6 +420,7 @@
             "offline_mode": "নীরব কার্যপদ্ধতি",
             "offline_subtitle": "সক্রিয় করা হলে, অনলাইন পরিষেবাগুলির সমস্ত অনুরোধ অক্ষম করা হবে।",
             "data": "ডেটা",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "আপনার কম্পিউটারে আপনার Mue সেটিংস রপ্তানি করতে, একটি বিদ্যমান সেটিংস ফাইল আমদানি করতে বা আপনার সেটিংসকে তাদের ডিফল্ট মানগুলিতে পুনরায় সেট করতে চান তা চয়ন করুন",
             "reset_modal": {
               "title": "সতর্কতা",
@@ -453,7 +454,8 @@
             },
             "usage": "ব্যবহারের পরিসংখ্যান",
             "achievements": "অর্জনগুলি",
-            "unlocked": "{count} আনলক করা হয়েছে"
+            "unlocked": "{count} আনলক করা হয়েছে",
+            "locked": "Locked"
           },
           "experimental": {
             "title": "পরীক্ষামূলক",

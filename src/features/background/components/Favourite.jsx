@@ -23,6 +23,7 @@ class Favourite extends PureComponent {
       this.setState({
         favourited: this.buttons.unfavourited,
       });
+      this.props.tooltipText(variables.getMessage('widgets.quote.favourite'));
       variables.stats.postEvent('feature', 'Background favourite');
     } else {
       const type = localStorage.getItem('backgroundType');
@@ -91,6 +92,7 @@ class Favourite extends PureComponent {
       this.setState({
         favourited: this.buttons.favourited,
       });
+      this.props.tooltipText(variables.getMessage('widgets.quote.unfavourite'));
       variables.stats.postEvent('feature', 'Background unfavourite');
     }
   }
@@ -99,6 +101,12 @@ class Favourite extends PureComponent {
     if (localStorage.getItem('backgroundType') === 'colour') {
       return null;
     }
+
+    this.props.tooltipText(
+      localStorage.getItem('favourite')
+        ? variables.getMessage('widgets.quote.unfavourite')
+        : variables.getMessage('widgets.quote.favourite'),
+    );
 
     return this.state.favourited;
   }

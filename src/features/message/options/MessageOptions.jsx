@@ -105,13 +105,7 @@ class MessageOptions extends PureComponent {
                 </div>
                 <div>
                   <div className="messageAction">
-                    <button
-                      className="deleteButton"
-                      onClick={() => this.modifyMessage('remove', index)}
-                    >
-                      {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-                      <MdCancel />
-                    </button>
+                    <Button type="settings" onClick={() => this.modifyMessage('remove', index)} icon={<MdCancel />} label={variables.getMessage('modals.main.marketplace.product.buttons.remove')} />
                   </div>
                 </div>
               </div>

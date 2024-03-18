@@ -2,7 +2,9 @@ import variables from 'config/variables';
 import { PureComponent, Fragment } from 'react';
 import { ColorPicker } from '@muetab/react-color-gradient-picker';
 import { toast } from 'react-toastify';
-import { Row, Content, Action } from '../../../components/Layout/Settings/Item/SettingsItem';
+import { Row, Content, Action } from 'components/Layout/Settings';
+import { Button } from 'components/Elements';
+import { MdAdd, MdRefresh } from 'react-icons/md';
 
 import { hexToRgb, rgbToHex } from '../api/gradient';
 
@@ -208,9 +210,7 @@ export default class ColourSettings extends PureComponent {
           <div className="colourInput">{gradientInputs}</div>
           {!gradientHasMoreThanOneColour && (
             <>
-              <button type="button" className="add" onClick={this.addColour}>
-                {variables.getMessage('modals.main.settings.sections.background.source.add_colour')}
-              </button>
+              <Button type="settings" onClick={this.addColour} icon={<MdAdd />} label={variables.getMessage('modals.main.settings.sections.background.source.add_colour')} />
             </>
           )}
         </>
@@ -229,6 +229,7 @@ export default class ColourSettings extends PureComponent {
             {colourSettings}
             <div className="colourReset">
               <span className="link" onClick={() => this.resetColour()}>
+                <MdRefresh />
                 {variables.getMessage('modals.main.settings.buttons.reset')}
               </span>
             </div>

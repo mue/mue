@@ -63,6 +63,7 @@ function PhotoInformation({ info, url, api }) {
   const [other, setOther] = useState(false);
   const [shareModal, openShareModal] = useState(false);
   const [excludeModal, openExcludeModal] = useState(false);
+  const [favouriteTooltipText, setFavouriteTooltipText] = useState(variables.getMessage('widgets.quote.favourite'));
 
   if (info.hidden === true || !info.credit) {
     return null;
@@ -207,7 +208,7 @@ function PhotoInformation({ info, url, api }) {
           </Tooltip>
         )}
         <Tooltip
-          title={variables.getMessage('widgets.quote.favourite')}
+          title={favouriteTooltipText}
           key="favourite"
           placement="top"
         >
@@ -216,6 +217,7 @@ function PhotoInformation({ info, url, api }) {
             offline={info.offline}
             credit={info.credit}
             photoURL={info.url}
+            tooltipText={(text) => setFavouriteTooltipText(text)}
           />
         </Tooltip>
         {!info.offline && (

@@ -420,6 +420,7 @@
             "offline_mode": "Çevrimdışı Mod",
             "offline_subtitle": "Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm istekler devre dışı bırakılır.",
             "data": "Veri",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Mue Tab ayarlarınızı bilgisayarınıza kaydetmenize, mevcut ayarlarınızı başka bir bilgisayara aktarmanıza veya ayarlarınızı varsayılan değerlerine sıfırlamınıza olanak sağlar. İstediğiniz işlemi seçin.",
             "reset_modal": {
               "title": "UYARI",
@@ -453,7 +454,8 @@
             },
             "usage": "Kullanım İstatistikleri",
             "achievements": "Başarılar",
-            "unlocked": "{count} Kilidi Açıldı"
+            "unlocked": "{count} Kilidi Açıldı",
+            "locked": "Locked"
           },
           "experimental": {
             "title": "Deneysel Özellikler",

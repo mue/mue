@@ -143,7 +143,7 @@ function AppearanceOptions() {
 
   const WidgetStyle = () => {
     return (
-      <Row>
+      <Row final={true}>
         <Content
           title={variables.getMessage('modals.main.settings.sections.appearance.style.title')}
           subtitle={variables.getMessage(

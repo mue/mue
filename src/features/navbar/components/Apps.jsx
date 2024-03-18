@@ -60,7 +60,7 @@ class Apps extends PureComponent {
     return (
       <div className="notes" onMouseLeave={() => this.hideApps()} onFocus={() => this.showApps()}>
         <button
-          className="first"
+          className="navbarButton"
           onMouseEnter={() => this.showApps()}
           onFocus={() => this.hideApps()}
           onBlur={() => this.showApps()}

@@ -100,6 +100,7 @@ export default class Search extends PureComponent {
     if (localStorage.getItem('voiceSearch') === 'true') {
       microphone = (
         <button
+          className="navbarButton"
           onClick={this.startSpeechRecognition}
           ref={this.micIcon}
           aria-label="Microphone Search"
@@ -214,6 +215,7 @@ export default class Search extends PureComponent {
                 title={variables.getMessage('modals.main.settings.sections.search.search_engine')}
               >
                 <button
+                  className="navbarButton"
                   aria-label="Search Engine"
                   onClick={() => this.setState({ searchDropdown: !this.state.searchDropdown })}
                 >
@@ -232,7 +234,7 @@ export default class Search extends PureComponent {
           <form onSubmit={this.searchButton} className="searchBar">
             <div className={this.state.classList}>
               <Tooltip title={variables.getMessage('widgets.search')}>
-                <button onClick={this.searchButton} aria-label="Search">
+                <button className="navbarButton" onClick={this.searchButton} aria-label="Search">
                   <MdSearch />
                 </button>
               </Tooltip>

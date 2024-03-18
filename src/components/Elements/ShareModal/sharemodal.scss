@@ -87,19 +87,6 @@
     outline: none;
   }
 
-  .close {
-    padding: 15px;
-    place-items: center;
-    display: grid;
-    cursor: pointer;
-
-    &:hover {
-      @include themed {
-        background: t($modal-sidebar);
-        border-radius: t($borderRadius);
-      }
-    }
-  }
 }
 
 .shareHeader {
@@ -107,4 +94,20 @@
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
+  .close {
+    padding: 15px;
+    place-items: center;
+    display: grid;
+    cursor: pointer;
+    transition: 0.3s;
+    @include themed {
+      border-radius: t($borderRadius);
+    }
+
+    &:hover {
+      @include themed {
+        background: t($modal-sidebarActive);
+      }
+    }
+  }
 }

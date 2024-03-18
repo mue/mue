@@ -24,34 +24,36 @@ function AdvancedOptions() {
 
   const Data = () => {
     return (
-      <>
-        {localStorage.getItem('welcomePreview') !== 'true' && (
-          <div className="settingsRow">
-            <div className="content">
-              <span className="title">
-                {variables.getMessage('modals.main.settings.sections.advanced.data')}
-              </span>
-              <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.advanced.data_subtitle')}
-              </span>
-            </div>
-            <div className="action activityButtons">
-              <button onClick={() => setResetModal(true)}>
-                {variables.getMessage('modals.main.settings.buttons.reset')}
-                <ResetIcon />
-              </button>
-              <button onClick={() => exportSettings()}>
-                {variables.getMessage('modals.main.settings.buttons.export')}
-                <ExportIcon />
-              </button>
-              <button onClick={() => document.getElementById('file-input').click()}>
-                {variables.getMessage('modals.main.settings.buttons.import')}
-                <ImportIcon />
-              </button>
-            </div>
+      localStorage.getItem('welcomePreview') !== 'true' && (
+        <Row final={true}>
+          <Content
+            title={variables.getMessage('modals.main.settings.sections.advanced.data')}
+            subtitle={variables.getMessage(
+              'modals.main.settings.sections.advanced.data_description',
+            )}
+          />
+          <div className="action activityButtons">
+            <button onClick={() => setResetModal(true)}>
+              {variables.getMessage('modals.main.settings.buttons.reset')}
+              <ResetIcon />
+            </button>
+            <button onClick={() => exportSettings()}>
+              {variables.getMessage('modals.main.settings.buttons.export')}
+              <ExportIcon />
+            </button>
+            <button onClick={() => document.getElementById('file-input').click()}>
+              {variables.getMessage('modals.main.settings.buttons.import')}
+              <ImportIcon />
+            </button>
           </div>
-        )}
-      </>
+          <FileUpload
+            id="file-input"
+            accept="application/json"
+            type="settings"
+            loadFunction={(e) => importSettings(e)}
+          />
+        </Row>
+      )
     );
   };
 
@@ -90,9 +92,7 @@ function AdvancedOptions() {
         <>
           <Section
             title={variables.getMessage(`${ADVANCED_SECTION}.data`)}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.description',
-            )}
+            subtitle={variables.getMessage(`${ADVANCED_SECTION}.data_subtitle`)}
             onClick={() => setData(true)}
             icon={<MdDataUsage />}
           />
@@ -142,12 +142,6 @@ function AdvancedOptions() {
               <Text name="tabName" default={variables.getMessage('tabname')} category="other" />
             </Action>
           </Row>
-          <FileUpload
-            id="file-input"
-            accept="application/json"
-            type="settings"
-            loadFunction={(e) => importSettings(e)}
-          />
           <Row>
             <Content
               title={variables.getMessage('modals.main.settings.sections.advanced.custom_css')}

@@ -44,7 +44,7 @@ class QuickLinksOptions extends PureComponent {
     const data = JSON.parse(localStorage.getItem('quicklinks'));
 
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      url = 'http://' + url;
+      url = 'https://' + url;
     }
 
     if (url.length <= 0 || isValidUrl(url) === false) {

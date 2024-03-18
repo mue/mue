@@ -21,6 +21,7 @@ import { Button } from 'components/Elements';
 import { install, uninstall } from 'utils/marketplace';
 import { Carousel } from '../Elements/Carousel';
 import { ShareModal } from 'components/Elements';
+import { MdClose } from 'react-icons/md';
 
 class Item extends PureComponent {
   constructor(props) {
@@ -77,9 +78,11 @@ class Item extends PureComponent {
     if (this.state.showUpdateButton) {
       updateButton = (
         <Fragment key="update">
-          <button className="removeFromMue" onClick={() => this.updateAddon()}>
-            {variables.getMessage('modals.main.addons.product.buttons.update_addon')}
-          </button>
+          <Button
+            type="settings"
+            onClick={() => this.updateAddon()}
+            label={variables.getMessage('modals.main.addons.product.buttons.update_addon')}
+          />
         </Fragment>
       );
     }
@@ -202,11 +205,11 @@ class Item extends PureComponent {
                 </div>
               </>
             )}
-            <div>
-              <p className="title">
+            <div className="marketplaceDescription">
+              <span className="title">
                 {variables.getMessage('modals.main.marketplace.product.description')}
-              </p>
-              <p dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
+              </span>
+              <span className="subtitle" dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
             </div>
             <div className="moreInfo">
               {moreInfoItem(
@@ -279,7 +282,13 @@ class Item extends PureComponent {
                 />
                 <Button
                   type="icon"
-                  onClick={() => this.setState({ shareModal: true })}
+                  onClick={() =>
+                    window.open(
+                      variables.constants.REPORT_ITEM +
+                        this.props.data.datadisplay_name.split(' ').join('+'),
+                      '_blank',
+                    )
+                  }
                   icon={<MdFlag />}
                   tooltipTitle={variables.getMessage(
                     'modals.main.marketplace.product.buttons.report',

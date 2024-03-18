@@ -420,6 +420,7 @@
             "offline_mode": "Офлайн режим",
             "offline_subtitle": "При включении все запросы к онлайн-сервисам будут отключены.",
             "data": "Data",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Выберите, следует ли экспортировать настройки Mue на компьютер, импортировать существующий файл настроек или сбросить настройки до значений по умолчанию",
             "reset_modal": {
               "title": "WARNING",
@@ -453,7 +454,8 @@
             },
             "usage": "Статистика использования",
             "achievements": "Достижения",
-            "unlocked": "{count} разблокировано"
+            "unlocked": "{count} разблокировано",
+            "locked": "Locked"
           },
           "experimental": {
             "title": "Экспериментальные настройки",

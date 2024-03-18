@@ -37,19 +37,13 @@
 }
 
 .old {
-  .tooltip {
-    button {
-      @include basicIconButton(12px, 1.2rem, legacy);
-    }
-  }
-
-  .first {
+  button.navbarButton {
     @include basicIconButton(12px, 1.2rem, legacy);
   }
 }
 
 .new {
-  button {
+  button.navbarButton {
     @include basicIconButton(12px, 1.2rem, ui);
   }
 }

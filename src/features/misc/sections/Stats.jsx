@@ -14,7 +14,7 @@ import { getLocalisedAchievementData, achievements, checkAchievements } from 'ut
 
 class Stats extends PureComponent {
   constructor() {
-    super();
+  super();
     this.state = {
       stats: JSON.parse(localStorage.getItem('statsData')) || {},
       achievements,
@@ -193,7 +193,7 @@ class Stats extends PureComponent {
                 }
               })}
             </div>
-            <span className="title">Locked</span>
+            <span className="title">{variables.getMessage(`${STATS_SECTION}.locked`)}</span>
             <div className="achievementsGrid preferencesInactive">
               {this.state.achievements.map((achievement, index) => {
                 if (!achievement.achieved) {

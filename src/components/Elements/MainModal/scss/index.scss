@@ -49,13 +49,16 @@
   padding: 0.5em;
   border-radius: 12px;
   cursor: pointer;
+  transition: 0.5s;
 
   svg {
     font-size: 2em;
   }
 
   &:hover {
-    background: rgb(121 121 121 / 22.6%);
+    @include themed {
+      background: t($modal-sidebarActive);
+    }
   }
 }
 

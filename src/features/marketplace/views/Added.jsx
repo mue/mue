@@ -25,9 +25,7 @@ export default class Added extends PureComponent {
     };
     this.buttons = {
       uninstall: (
-        <button className="removeFromMue" onClick={() => this.uninstall()}>
-          {variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-        </button>
+        <Button type="settings" onClick={() => this.uninstall()} label={variables.getMessage('modals.main.marketplace.product.buttons.remove')} />
       ),
     };
   }

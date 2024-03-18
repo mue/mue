@@ -125,6 +125,7 @@ class Navbar extends PureComponent {
             })}
           >
             <button
+              className="navbarButton"
               onClick={() => this.props.openModal('mainModal')}
               style={{ fontSize: this.state.zoomFontSize }}
               aria-label={variables.getMessage('modals.main.navbar.settings', {

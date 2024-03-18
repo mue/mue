@@ -61,6 +61,7 @@ function Refresh() {
   return (
     <Tooltip title={variables.getMessage('widgets.navbar.tooltips.refresh')} subtitle={refreshText}>
       <button
+        className="navbarButton"
         onClick={refresh}
         aria-label={variables.getMessage('widgets.navbar.tooltips.refresh')}
       >

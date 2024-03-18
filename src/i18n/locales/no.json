@@ -326,7 +326,7 @@
             "tooltip": "Tooltip",
             "text_only": "Show text only",
             "add_link": "Add Link",
-            "no_quicklinks": "No quicklinks",
+            "no_quicklinks": "No quick links",
             "edit": "Edit",
             "style": "Style",
             "options": {
@@ -420,6 +420,7 @@
             "offline_mode": "Frakoblet Modus",
             "offline_subtitle": "When enabled, all requests to online services will be disabled.",
             "data": "Data",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "reset_modal": {
               "title": "WARNING",
@@ -453,7 +454,8 @@
             },
             "usage": "Usage Stats",
             "achievements": "Achievements",
-            "unlocked": "{count} Unlocked"
+            "unlocked": "{count} Unlocked",
+            "locked": "Locked"
           },
           "experimental": {
             "title": "Eksperimental",

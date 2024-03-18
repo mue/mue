@@ -326,7 +326,7 @@
             "tooltip": "Tooltip",
             "text_only": "Show text only",
             "add_link": "Add Link",
-            "no_quicklinks": "No quicklinks",
+            "no_quicklinks": "No quick links",
             "edit": "Edit",
             "style": "Style",
             "options": {
@@ -420,7 +420,8 @@
             "offline_mode": "Offline mode",
             "offline_subtitle": "When enabled, all requests to online services will be disabled.",
             "data": "Data",
-            "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
+            "data_subtitle": "Manage your data on Mue.",
             "reset_modal": {
               "title": "WARNING",
               "question": "Do you want to reset Mue?",
@@ -453,7 +454,8 @@
             },
             "usage": "Usage Stats",
             "achievements": "Achievements",
-            "unlocked": "{count} Unlocked"
+            "unlocked": "{count} Unlocked",
+            "locked": "Locked"
           },
           "experimental": {
             "title": "Experimental",
@@ -580,7 +582,7 @@
           "title": "Create",
           "moved_title": "Create add-on has moved!",
           "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_button": "Get Started"
+          "moved_button": "Coming Soon...."
         }
       }
     },

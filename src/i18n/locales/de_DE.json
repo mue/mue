@@ -420,6 +420,7 @@
             "offline_mode": "Offline Modus",
             "offline_subtitle": "Wenn diese Option aktiviert ist, werden alle Anfragen an Online-Dienste deaktiviert.",
             "data": "Daten",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Wählen Sie, ob Sie Ihre Mue-Einstellungen auf Ihren Computer exportieren, eine vorhandene Einstellungsdatei importieren oder Ihre Einstellungen auf die Standardwerte zurücksetzen möchten",
             "reset_modal": {
               "title": "ACHTUNG",
@@ -453,7 +454,8 @@
             },
             "usage": "Nutzungsstatistiken",
             "achievements": "Errungenschaften",
-            "unlocked": "{count} Freigeschaltet"
+            "unlocked": "{count} Freigeschaltet",
+            "locked": "Locked"
           },
           "experimental": {
             "title": "Experimentell",

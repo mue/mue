@@ -420,6 +420,7 @@
             "offline_mode": "Offline-modus",
             "offline_subtitle": "Indien ingeschakeld worden alle verzoeken naar online diensten uitgeschakeld.",
             "data": "Data",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Kies of je jou Mue-instellingen naar je computer wilt exporteren, een bestaand instellingenbestand wilt importeren of je instellingen wilt terugzetten naar hun standaardwaarden",
             "reset_modal": {
               "title": "WARNING",
@@ -453,7 +454,8 @@
             },
             "usage": "Usage Stats",
             "achievements": "Prestaties",
-            "unlocked": "{count} Ontgrendeld"
+            "unlocked": "{count} Ontgrendeld",
+            "locked": "Locked"
           },
           "experimental": {
             "title": "Experimenteel",

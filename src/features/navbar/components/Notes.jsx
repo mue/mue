@@ -91,7 +91,7 @@ class Notes extends PureComponent {
     return (
       <div className="notes" onMouseLeave={() => this.hideNotes()} onFocus={() => this.showNotes()}>
         <button
-          className="first"
+          className="navbarButton"
           onMouseEnter={() => this.showNotes()}
           onFocus={() => this.showNotes()}
           onBlur={() => this.hideNotes()}

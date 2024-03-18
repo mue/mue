@@ -139,7 +139,7 @@ class Todo extends PureComponent {
     return (
       <div className="notes" onMouseLeave={() => this.hideTodo()} onFocus={() => this.showTodo()}>
         <button
-          className="first"
+          className="navbarButton"
           onMouseEnter={() => this.showTodo()}
           onFocus={() => this.hideTodo()}
           onBlur={() => this.showTodo()}
