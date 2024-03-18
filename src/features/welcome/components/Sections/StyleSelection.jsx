@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { MdArchive, MdOutlineWhatshot } from 'react-icons/md';
 import { useState } from 'react';
-import { Header, Content } from '../components/Layout';
+import { Header, Content } from '../Layout';
 
 const STYLES = {
   NEW: 'new',

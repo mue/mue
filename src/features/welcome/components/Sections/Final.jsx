@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 import languages from '@/i18n/languages.json';
-import { Header, Content } from '../components/Layout';
+import { Header, Content } from '../Layout';
 
 function Final(props) {
   return (

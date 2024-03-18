@@ -3,7 +3,7 @@ import { MdOutlineOpenInNew } from 'react-icons/md';
 import languages from '@/i18n/languages.json';
 
 import { Radio } from 'components/Form/Settings';
-import { Header, Content } from '../components/Layout';
+import { Header, Content } from '../Layout';
 
 function ChooseLanguage() {
   return (

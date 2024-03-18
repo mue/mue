@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { useState } from 'react';
 import { MdAutoAwesome, MdLightMode, MdDarkMode } from 'react-icons/md';
 import { loadSettings } from 'utils/settings';
-import { Header, Content } from '../components/Layout';
+import { Header, Content } from '../Layout';
 
 const THEMES = {
   AUTO: 'auto',
@@ -13,7 +13,6 @@ const THEMES = {
 function ThemeSelection() {
   const currentTheme = localStorage.getItem('theme') || THEMES.AUTO;
   const [theme, setTheme] = useState(currentTheme);
-  
 
   const changeTheme = (type) => {
     setTheme(type);
@@ -46,7 +45,10 @@ function ThemeSelection() {
         subtitle={variables.getMessage('modals.welcome.sections.theme.description')}
       />
       <div className="themesToggleArea">
-        <div className={themeMapping[THEMES.AUTO].className} onClick={() => changeTheme(THEMES.AUTO)}>
+        <div
+          className={themeMapping[THEMES.AUTO].className}
+          onClick={() => changeTheme(THEMES.AUTO)}
+        >
           {themeMapping[THEMES.AUTO].icon}
           <span>{themeMapping[THEMES.AUTO].text}</span>
         </div>

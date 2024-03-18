@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FileUpload } from 'components/Form/Settings';
 import { MdCloudUpload } from 'react-icons/md';
 import { importSettings as importSettingsFunction } from 'utils/settings';
-import { Header, Content } from '../components/Layout';
+import { Header, Content } from '../Layout';
 import default_settings from 'utils/data/default_settings.json';
 
 function ImportSettings(props) {

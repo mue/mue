@@ -19,7 +19,7 @@ import {
   StyleSelection,
   PrivacyOptions,
   Final,
-} from './Sections';
+} from './components/Sections';
 
 // WelcomeModal component
 function WelcomeModal({ modalClose, modalSkip }) {
