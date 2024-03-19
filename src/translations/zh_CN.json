@@ -203,7 +203,6 @@
             },
             "navbar": {
               "additional": "Modify navbar style and which buttons you want to display",
-              "apps_subtitle": "",
               "hover": "Only display on hover",
               "notes": "便签",
               "refresh": "刷新键",
@@ -630,10 +629,6 @@
       "newyear": "新年快乐"
     },
     "navbar": {
-      "apps": {
-        "no_apps": "",
-        "title": ""
-      },
       "notes": {
         "placeholder": "请键入内容",
         "title": "便签"

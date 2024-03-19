@@ -203,7 +203,6 @@
             },
             "navbar": {
               "additional": "Modify navbar style and which buttons you want to display",
-              "apps_subtitle": "",
               "hover": "Only display on hover",
               "notes": "Notes",
               "refresh": "Refresh button",
@@ -630,10 +629,6 @@
       "newyear": "Godt Nyttår"
     },
     "navbar": {
-      "apps": {
-        "no_apps": "",
-        "title": ""
-      },
       "notes": {
         "placeholder": "Type here",
         "title": "Notes"
