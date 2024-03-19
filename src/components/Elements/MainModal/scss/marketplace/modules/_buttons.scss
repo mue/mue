@@ -4,6 +4,7 @@
 
 .btn-settings {
   @include modal-button(standard);
+
   display: inline;
   margin-top: 0;
   float: none !important;
@@ -12,6 +13,7 @@
 
 .btn-navigation {
   @include modal-button(standard);
+
   padding: 0 15px;
 
   @include themed {
@@ -58,15 +60,11 @@
 }
 
 .btn-collection {
-  display: flex;
-  align-items: center;
-  gap: 15px;
   padding: 1px 12px;
   backdrop-filter: blur(16px) saturate(180%);
   background-color: rgb(255 255 255 / 10%);
   border: 1px solid rgb(209 213 219 / 30%);
   color: #fff;
-
   border-radius: 12px;
   height: 40px;
   font-size: 1rem;
@@ -85,21 +83,21 @@
   }
 
   &:active {
-    @include themed() {
+    @include themed {
       background: t($modal-sidebarActive);
       box-shadow: 0 0 0 1px t($color);
     }
   }
 
   &:focus {
-    @include themed() {
+    @include themed {
       background: t($modal-sidebarActive);
       box-shadow: 0 0 0 1px t($color);
     }
   }
 
   &:disabled {
-    @include themed() {
+    @include themed {
       background: t($modal-sidebarActive);
       cursor: not-allowed;
     }

@@ -197,8 +197,22 @@ export default class CustomSettings extends PureComponent {
               </div>
             </div>
             <div className="topbarbuttons">
-              <Button type="settings" onClick={() => this.uploadCustomBackground()} icon={<MdOutlineFileUpload />} label={variables.getMessage('modals.main.settings.sections.background.source.upload')} />
-              <Button type="settings" onClick={() => this.setState({ customURLModal: true })} icon={<MdAddLink />} label={variables.getMessage('modals.main.settings.sections.background.source.add_url')} />
+              <Button
+                type="settings"
+                onClick={() => this.uploadCustomBackground()}
+                icon={<MdOutlineFileUpload />}
+                label={variables.getMessage(
+                  'modals.main.settings.sections.background.source.upload',
+                )}
+              />
+              <Button
+                type="settings"
+                onClick={() => this.setState({ customURLModal: true })}
+                icon={<MdAddLink />}
+                label={variables.getMessage(
+                  'modals.main.settings.sections.background.source.add_url',
+                )}
+              />
             </div>
           </div>
           <div className="dropzone-content">
@@ -217,7 +231,11 @@ export default class CustomSettings extends PureComponent {
                           'modals.main.settings.sections.background.source.remove',
                         )}
                       >
-                        <Button type="settings" onClick={() => this.modifyCustomBackground('remove', index)} icon={<MdCancel />} />
+                        <Button
+                          type="settings"
+                          onClick={() => this.modifyCustomBackground('remove', index)}
+                          icon={<MdCancel />}
+                        />
                       </Tooltip>
                     )}
                   </div>
@@ -240,7 +258,14 @@ export default class CustomSettings extends PureComponent {
                       },
                     )}
                   </span>
-                  <Button type="settings" onClick={() => this.uploadCustomBackground()} icon={<MdFolder />} label={variables.getMessage('modals.main.settings.sections.background.source.select')} />
+                  <Button
+                    type="settings"
+                    onClick={() => this.uploadCustomBackground()}
+                    icon={<MdFolder />}
+                    label={variables.getMessage(
+                      'modals.main.settings.sections.background.source.select',
+                    )}
+                  />
                 </div>
               </div>
             )}

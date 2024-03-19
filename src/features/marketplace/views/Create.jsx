@@ -28,7 +28,10 @@ export default class Create extends PureComponent {
               {variables.getMessage('modals.main.addons.create.moved_description')}
             </span>
             <div className="createButtons">
-              <Button type="settings" label={variables.getMessage('modals.main.addons.create.moved_button')} />
+              <Button
+                type="settings"
+                label={variables.getMessage('modals.main.addons.create.moved_button')}
+              />
             </div>
           </div>
         </div>

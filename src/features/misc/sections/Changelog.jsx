@@ -28,7 +28,7 @@ class Changelog extends PureComponent {
     );
 
     return text;
-  }
+  };
 
   async getUpdate() {
     const releases = await fetch(

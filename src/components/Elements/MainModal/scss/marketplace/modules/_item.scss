@@ -22,6 +22,7 @@ p.description {
   .item {
     flex: 1 0 40% !important;
   }
+
   .infoItem {
     display: flex;
     flex-flow: row;
@@ -30,10 +31,11 @@ p.description {
     flex: 1 0 44%;
 
     svg {
-      @include themed() {
+      @include themed {
         background-image: t($slightGradient);
       }
-      -webkit-background-clip: text;
+
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       font-size: 20px;
       border-radius: 100%;
@@ -47,6 +49,7 @@ p.description {
 
   .header {
     text-transform: uppercase;
+
     @include themed {
       color: t($subColor);
     }
@@ -65,7 +68,6 @@ p.description {
     padding: 15px;
   }
 }
-
 
 .showMoreItems {
   display: flex;

@@ -210,7 +210,14 @@ export default class ColourSettings extends PureComponent {
           <div className="colourInput">{gradientInputs}</div>
           {!gradientHasMoreThanOneColour && (
             <>
-              <Button type="settings" onClick={this.addColour} icon={<MdAdd />} label={variables.getMessage('modals.main.settings.sections.background.source.add_colour')} />
+              <Button
+                type="settings"
+                onClick={this.addColour}
+                icon={<MdAdd />}
+                label={variables.getMessage(
+                  'modals.main.settings.sections.background.source.add_colour',
+                )}
+              />
             </>
           )}
         </>

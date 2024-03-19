@@ -5,7 +5,7 @@
  */
 export function isValidRGBValue(value) {
   return typeof value === 'number' && Number.isNaN(value) === false && value >= 0 && value <= 255;
-};
+}
 
 /**
  * "If the red, green, and blue values are valid, return an object with the red, green, and blue

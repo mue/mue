@@ -209,7 +209,10 @@ class Item extends PureComponent {
               <span className="title">
                 {variables.getMessage('modals.main.marketplace.product.description')}
               </span>
-              <span className="subtitle" dangerouslySetInnerHTML={{ __html: this.props.data.description }} />
+              <span
+                className="subtitle"
+                dangerouslySetInnerHTML={{ __html: this.props.data.description }}
+              />
             </div>
             <div className="moreInfo">
               {moreInfoItem(

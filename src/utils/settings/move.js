@@ -1,4 +1,4 @@
-import { setDefaultSettings } from "./default";
+import { setDefaultSettings } from './default';
 
 /**
  * Saves all of the current settings, resets them, sets the defaults and then overrides

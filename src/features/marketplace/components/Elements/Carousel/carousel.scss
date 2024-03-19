@@ -22,7 +22,7 @@
 .carousel_container {
   display: flex;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   margin-left: -10px;

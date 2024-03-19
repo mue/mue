@@ -76,18 +76,21 @@
   flex-flow: row;
   width: 100%;
   justify-content: space-between;
+
   svg {
     font-size: 2em !important;
   }
+
   span {
     font-size: 34px;
   }
 }
 
 .weatherExpandedInfo {
-  padding: 0 25px 25px 25px;
+  padding: 0 25px 25px;
   text-align: left;
-  @include themed() {
+
+  @include themed {
     border-top: 1px solid t($btn-backgroundHover);
   }
 }

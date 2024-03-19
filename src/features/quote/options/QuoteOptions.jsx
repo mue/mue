@@ -169,7 +169,12 @@ class QuoteOptions extends PureComponent {
               subtitle={variables.getMessage(`${QUOTE_SECTION}.custom_subtitle`)}
             />
             <Action>
-              <Button type="settings" onClick={() => this.modifyCustomQuote('add')} icon={<MdAdd />} label={variables.getMessage(`${QUOTE_SECTION}.add`)} />
+              <Button
+                type="settings"
+                onClick={() => this.modifyCustomQuote('add')}
+                icon={<MdAdd />}
+                label={variables.getMessage(`${QUOTE_SECTION}.add`)}
+              />
             </Action>
           </Row>
 
@@ -202,7 +207,14 @@ class QuoteOptions extends PureComponent {
                   </div>
                   <div>
                     <div className="messageAction">
-                      <Button type="settings" onClick={() => this.modifyCustomQuote('remove', index)} icon={<MdCancel />} label={variables.getMessage('modals.main.marketplace.product.buttons.remove')} />
+                      <Button
+                        type="settings"
+                        onClick={() => this.modifyCustomQuote('remove', index)}
+                        icon={<MdCancel />}
+                        label={variables.getMessage(
+                          'modals.main.marketplace.product.buttons.remove',
+                        )}
+                      />
                     </div>
                   </div>
                 </div>
@@ -216,7 +228,12 @@ class QuoteOptions extends PureComponent {
                 <span className="subtitle">
                   {variables.getMessage('modals.main.settings.sections.message.add_some')}
                 </span>
-                <Button type="settings" onClick={() => this.modifyCustomQuote('add')} icon={<MdAdd />} label={variables.getMessage(`${QUOTE_SECTION}.add`)} />
+                <Button
+                  type="settings"
+                  onClick={() => this.modifyCustomQuote('add')}
+                  icon={<MdAdd />}
+                  label={variables.getMessage(`${QUOTE_SECTION}.add`)}
+                />
               </div>
             </div>
           )}

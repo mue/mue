@@ -25,7 +25,11 @@ export default class Added extends PureComponent {
     };
     this.buttons = {
       uninstall: (
-        <Button type="settings" onClick={() => this.uninstall()} label={variables.getMessage('modals.main.marketplace.product.buttons.remove')} />
+        <Button
+          type="settings"
+          onClick={() => this.uninstall()}
+          label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+        />
       ),
     };
   }

@@ -1,5 +1,5 @@
-import variables from "config/variables";
-import ExperimentalInit from "utils/experimental";
+import variables from 'config/variables';
+import ExperimentalInit from 'utils/experimental';
 
 /**
  * It loads the settings from localStorage and applies them to the page.

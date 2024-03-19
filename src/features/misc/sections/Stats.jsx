@@ -14,7 +14,7 @@ import { getLocalisedAchievementData, achievements, checkAchievements } from 'ut
 
 class Stats extends PureComponent {
   constructor() {
-  super();
+    super();
     this.state = {
       stats: JSON.parse(localStorage.getItem('statsData')) || {},
       achievements,

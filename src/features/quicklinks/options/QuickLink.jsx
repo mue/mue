@@ -52,8 +52,18 @@ const QuickLink = ({ item, deleteLink, startEditLink }) => {
       </div>
       <div>
         <div className="messageAction">
-        <Button type="settings" onClick={() => startEditLink(item)} icon={<MdEdit />} label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')} />
-          <Button type="settings" onClick={(e) => deleteLink(item.key, e)} icon={ <MdCancel />} label={variables.getMessage('modals.main.marketplace.product.buttons.remove')} />
+          <Button
+            type="settings"
+            onClick={() => startEditLink(item)}
+            icon={<MdEdit />}
+            label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
+          />
+          <Button
+            type="settings"
+            onClick={(e) => deleteLink(item.key, e)}
+            icon={<MdCancel />}
+            label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+          />
         </div>
       </div>
     </div>

@@ -133,7 +133,7 @@ body {
   a {
     border: 0;
     border-radius: 12px;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 30px;
     font-size: 1rem;
     display: flex;
     align-items: center;
@@ -150,7 +150,7 @@ body {
 @media (prefers-color-scheme: dark) {
   /** {
     background-color: #000000 !important;
-  }*/
+  } */
 
   .criticalError {
     .criticalError-message {
@@ -158,7 +158,7 @@ body {
     }
 
     p {
-      color: rgba(255, 255, 255, 0.7529411765);
+      color: rgb(255 255 255 / 75.3%);
     }
 
     a {
@@ -175,7 +175,7 @@ body {
 
 @media (prefers-color-scheme: light) {
   * {
-    background-color: #ffffff !important;
+    background-color: #fff !important;
   }
 
   .criticalError {
@@ -184,7 +184,7 @@ body {
     }
 
     p {
-      color: rgba(0, 0, 0, 0.7529411765);
+      color: rgb(0 0 0 / 75.3%);
     }
 
     a {

@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
-if (typeof browser === "undefined") {
+if (typeof browser === 'undefined') {
   var browser = chrome;
 }
 

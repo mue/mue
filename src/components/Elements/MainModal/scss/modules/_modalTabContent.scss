@@ -5,7 +5,7 @@
 
   /* button {
     @include modal-button(standard);
-  }*/
+  } */
 
   @include themed {
     padding: 1rem 3rem 3rem;
@@ -148,6 +148,7 @@ table {
   gap: 25px;
   padding: 25px;
   justify-content: space-between;
+
   @include themed {
     background: t($modal-sidebar);
     border-radius: t($borderRadius);
@@ -162,10 +163,11 @@ table {
   }
 
   .icon {
-    @include themed() {
+    @include themed {
       background-image: t($slightGradient);
       box-shadow: t($boxShadow);
     }
+
     padding: 15px;
     border-radius: 100%;
     font-size: 25px;
