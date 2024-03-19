@@ -399,7 +399,7 @@
             },
             "accessibility": {
               "title": "Accessibilité",
-              "description": "Accessibility settings for Mue",
+              "description": "Make Mue comfortable and accessible",
               "animations": "Animations",
               "text_shadow": {
                 "title": "Widget text shadow",

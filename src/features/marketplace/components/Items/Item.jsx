@@ -285,7 +285,7 @@ class Item extends PureComponent {
                   onClick={() =>
                     window.open(
                       variables.constants.REPORT_ITEM +
-                        this.props.data.datadisplay_name.split(' ').join('+'),
+                        this.props.data.data.display_name.split(' ').join('+'),
                       '_blank',
                     )
                   }

@@ -207,6 +207,7 @@ export default class Added extends PureComponent {
           <Header title={variables.getMessage('modals.main.navbar.addons')} report={false}>
             <CustomActions>{this.getSideloadButton()}</CustomActions>
           </Header>
+          {sideLoadBackendElements()}
           <div className="emptyItems">
             <div className="emptyNewMessage">
               <MdOutlineExtensionOff />
@@ -235,7 +236,9 @@ export default class Added extends PureComponent {
     return (
       <>
         <div className="modalHeader">
-          <span className="mainTitle">{variables.getMessage('modals.main.addons.added')}</span>
+          <Header title={variables.getMessage('modals.main.addons.added')} report={false}>
+            <CustomActions>{this.getSideloadButton()}</CustomActions>
+          </Header>
           <div className="filter">
             {sideLoadBackendElements()}
             <div className="buttonSection">

@@ -126,7 +126,6 @@ class QuoteOptions extends PureComponent {
               value: 'quote_pack',
               text: variables.getMessage('modals.main.navbar.marketplace'),
             },
-            { value: 'quote_pack', text: variables.getMessage('modals.main.navbar.marketplace') },
             {
               value: 'api',
               text: variables.getMessage('modals.main.settings.sections.background.type.api'),
