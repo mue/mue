@@ -11,6 +11,15 @@
   padding: 0 20px;
 }
 
+.btn-secondary {
+  @include modal-button(secondary);
+
+  display: inline;
+  margin-top: 0;
+  float: none !important;
+  padding: 0 20px;
+}
+
 .btn-navigation {
   @include modal-button(standard);
 

@@ -3,7 +3,7 @@
     "id": "10tabs",
     "condition": {
       "type": "tabsOpened",
-      "amount": 10
+      "amount": 3
     }
   },
   {

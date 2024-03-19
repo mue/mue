@@ -455,7 +455,11 @@
             "usage": "Usage Stats",
             "achievements": "Achievements",
             "unlocked": "{count} Unlocked",
-            "locked": "Locked"
+            "locked": "Locked",
+            "clear_modal": {
+              "question": "Do you want to clear your stats?",
+              "information": "This will clear all achievements and usage statistics."
+            }
           },
           "experimental": {
             "title": "Experimental",

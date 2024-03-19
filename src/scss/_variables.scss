@@ -187,6 +187,17 @@ $themes: (
       }
     }
 
+    @if $type == 'secondary' {
+      background: t($modal-sidebarActive);
+      box-shadow: t($boxShadow);
+      border: 0;
+      color: t($color);
+
+      &:hover {
+        background: t($modal-sidebar) !important;
+      }
+    }
+
     border-radius: 12px;
     height: 40px;
     font-size: 1rem;

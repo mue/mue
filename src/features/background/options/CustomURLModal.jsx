@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { useState, memo } from 'react';
 import { MdClose, MdOutlineAddLink } from 'react-icons/md';
-import { Tooltip } from 'components/Elements';
+import { Tooltip, Button } from 'components/Elements';
 
 function CustomURLModal({ modalClose, urlError, modalCloseOnly }) {
   const [url, setURL] = useState();
@@ -28,14 +28,18 @@ function CustomURLModal({ modalClose, urlError, modalCloseOnly }) {
       />
       <span className="dropdown-error">{urlError}</span>
       <div className="resetFooter">
-        <button className="textButton" onClick={modalCloseOnly}>
-          <MdClose />
-          {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
-        </button>
-        <button onClick={() => modalClose(url)}>
-          <MdOutlineAddLink />
-          {variables.getMessage('modals.main.settings.sections.background.source.add_url')}
-        </button>
+        <Button
+          type="secondary"
+          onClick={modalCloseOnly}
+          icon={<MdClose />}
+          label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+        />
+        <Button
+          type="settings"
+          onClick={() => modalClose(url)}
+          icon={<MdOutlineAddLink />}
+          label={variables.getMessage('modals.main.settings.sections.background.source.add_url')}
+        />
       </div>
     </div>
   );

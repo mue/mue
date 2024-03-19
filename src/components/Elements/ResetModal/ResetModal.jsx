@@ -3,6 +3,7 @@ import variables from 'config/variables';
 import { MdClose, MdRestartAlt } from 'react-icons/md';
 import { setDefaultSettings } from 'utils/settings';
 import { Tooltip } from 'components/Elements';
+
 function ResetModal({ modalClose }) {
   const reset = () => {
     variables.stats.postEvent('setting', 'Reset');

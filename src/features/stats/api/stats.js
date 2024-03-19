@@ -7,7 +7,7 @@ export default class Stats {
     newAchievement.forEach((achievement) => {
       if (achievement) {
         const { name } = getLocalisedAchievementData(achievement.id);
-        toast(`Achievement Unlocked: ${name}`);
+        toast.success(`Achievement Unlocked: ${name}`);
       }
     });
   }
@@ -48,5 +48,8 @@ export default class Stats {
     data['tabs-opened'] = data['tabs-opened'] + 1 || 1;
     localStorage.setItem('statsData', JSON.stringify(data));
     this.achievementTrigger(data);
+    /*toast.success(`Achievement Unlocked: Test`, {
+      icon: '🚀',
+    });*/
   }
 }

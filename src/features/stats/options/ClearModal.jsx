@@ -1,20 +1,9 @@
-import variables from 'config/variables';
 import { memo } from 'react';
-import EventBus from 'utils/eventbus';
+import variables from 'config/variables';
+import { MdClose, MdRestartAlt } from 'react-icons/md';
 import { Tooltip, Button } from 'components/Elements';
 
-import { MdClose, MdDone } from 'react-icons/md';
-
-function ExcludeModal({ modalClose, info }) {
-  const excludeImage = async () => {
-    let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
-    backgroundExclude.push(info.pun);
-    backgroundExclude = JSON.stringify(backgroundExclude);
-    localStorage.setItem('backgroundExclude', backgroundExclude);
-    EventBus.emit('refresh', 'background');
-    modalClose();
-  };
-
+function ClearModal({ modalClose, resetStats }) {
   return (
     <div className="smallModal">
       <div className="shareHeader">
@@ -29,8 +18,11 @@ function ExcludeModal({ modalClose, info }) {
           </div>
         </Tooltip>
       </div>
+      <span className="title">
+        {variables.getMessage('modals.main.settings.sections.stats.clear_modal.question')}
+      </span>
       <span className="subtitle">
-        {variables.getMessage('widgets.background.exclude_confirm', { category: info.category })}
+        {variables.getMessage('modals.main.settings.sections.stats.clear_modal.information')}
       </span>
       <div className="resetFooter">
         <Button
@@ -41,13 +33,15 @@ function ExcludeModal({ modalClose, info }) {
         />
         <Button
           type="settings"
-          onClick={() => excludeImage()}
-          icon={<MdDone />}
-          label={variables.getMessage('widgets.background.confirm')}
+          onClick={() => resetStats()}
+          icon={<MdRestartAlt />}
+          label={variables.getMessage('modals.main.settings.buttons.reset')}
         />
       </div>
     </div>
   );
 }
 
-export default memo(ExcludeModal);
+const MemoizedClearModal = memo(ClearModal);
+
+export { MemoizedClearModal as default, MemoizedClearModal as ClearModal };

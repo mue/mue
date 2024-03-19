@@ -1,16 +1,21 @@
 /* eslint-disable array-callback-return */
 import variables from 'config/variables';
 import { PureComponent } from 'react';
-import { MdShowChart, MdRestartAlt, MdDownload } from 'react-icons/md';
+import { MdShowChart, MdRestartAlt, MdDownload, MdAccessTime, MdLock } from 'react-icons/md';
 import { FaTrophy } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import Modal from 'react-modal';
 
 import { Button } from 'components/Elements';
 import { Header, CustomActions } from 'components/Layout/Settings';
+import { ClearModal } from './ClearModal';
 
 import { saveFile } from 'utils/saveFile';
-
-import { getLocalisedAchievementData, achievements, checkAchievements } from 'utils/achievements';
+import {
+  getLocalisedAchievementData,
+  achievements,
+  checkAchievements,
+} from 'features/stats/api/achievements';
 
 class Stats extends PureComponent {
   constructor() {
@@ -18,6 +23,7 @@ class Stats extends PureComponent {
     this.state = {
       stats: JSON.parse(localStorage.getItem('statsData')) || {},
       achievements,
+      clearmodal: false,
     };
   }
 
@@ -44,6 +50,7 @@ class Stats extends PureComponent {
     this.setState({
       stats: {},
       achievements,
+      clearmodal: false,
     });
     toast(variables.getMessage('toasts.stats_reset'));
     this.updateAchievements();
@@ -64,16 +71,31 @@ class Stats extends PureComponent {
   }
 
   render() {
-    const achievementElement = (key, id, achieved) => {
+    const achievementElement = (key, id, achieved, timestamp) => {
       const { name, description } = getLocalisedAchievementData(id);
+      console.log(timestamp);
 
       return (
         <div className="achievement" key={key}>
-          <FaTrophy />
+          {achieved ? <FaTrophy className="trophy" /> : <MdLock className="trophyLocked" />}
           <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
-            <span>{name}</span>
+            {achieved ? (
+              <span className="timestamp">
+                <MdAccessTime /> {new Date(timestamp).toLocaleDateString()}
+              </span>
+            ) : null}
+            <span className="achievementTitle">{name}</span>
             <span className="subtitle">{achieved ? description : '?????'}</span>
           </div>
+        </div>
+      );
+    };
+
+    const statsElement = (title, value) => {
+      return (
+        <div>
+          <span className="subtitle">{title}</span>
+          <span>{value}</span>
         </div>
       );
     };
@@ -92,88 +114,59 @@ class Stats extends PureComponent {
             />
             <Button
               type="settings"
-              onClick={() => this.resetStats()}
+              onClick={() => this.setState({ clearmodal: true })}
               icon={<MdRestartAlt />}
               label={variables.getMessage('modals.main.settings.buttons.reset')}
             />
           </CustomActions>
         </Header>
+        <Modal
+          closeTimeoutMS={100}
+          onRequestClose={() => this.setState({ clearmodal: false })}
+          isOpen={this.state.clearmodal}
+          className="Modal ClearModal mainModal"
+          overlayClassName="Overlay resetoverlay"
+          ariaHideApp={false}
+        >
+          <ClearModal
+            modalClose={() => this.setState({ clearmodal: false })}
+            resetStats={() => this.resetStats()}
+          />
+        </Modal>
         <div className="stats">
           <div className="statSection rightPanel">
             <div className="statIcon">
               <MdShowChart />
             </div>
             <div className="statGrid">
-              <div>
-                <span className="subtitle">
-                  {variables.getMessage(`${STATS_SECTION}.sections.tabs_opened`)}{' '}
-                </span>
-                <span>{this.state.stats['tabs-opened'] || 0}</span>
-              </div>
-              <div>
-                <span className="subtitle">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.stats.sections.backgrounds_favourited',
-                  )}{' '}
-                </span>
-                <span>
-                  {this.state.stats.feature
-                    ? this.state.stats.feature['background-favourite'] || 0
-                    : 0}
-                </span>
-              </div>
-              <div>
-                <span className="subtitle">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.stats.sections.backgrounds_downloaded',
-                  )}{' '}
-                </span>
-                <span>
-                  {this.state.stats.feature
-                    ? this.state.stats.feature['background-download'] || 0
-                    : 0}
-                </span>
-              </div>
-              <div>
-                <span className="subtitle">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.stats.sections.quotes_favourited',
-                  )}{' '}
-                </span>
-                <span>
-                  {this.state.stats.feature ? this.state.stats.feature['quoted-favourite'] || 0 : 0}
-                </span>
-              </div>
-              <div>
-                <span className="subtitle">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.stats.sections.quicklinks_added',
-                  )}{' '}
-                </span>
-                <span>
-                  {this.state.stats.feature ? this.state.stats.feature['quicklink-add'] || 0 : 0}
-                </span>
-              </div>
-              <div>
-                <span className="subtitle">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.stats.sections.settings_changed',
-                  )}{' '}
-                </span>
-                <span>
-                  {this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0}
-                </span>
-              </div>
-              <div>
-                <span className="subtitle">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.stats.sections.addons_installed',
-                  )}{' '}
-                </span>
-                <span>
-                  {this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0}
-                </span>
-              </div>
+              {statsElement(
+                variables.getMessage(`${STATS_SECTION}.sections.tabs_opened`),
+                this.state.stats['tabs-opened'] || 0,
+              )}
+              {statsElement(
+                variables.getMessage(`${STATS_SECTION}.sections.backgrounds_favourited`),
+                this.state.stats['background-favourite'] || 0,
+              )}
+              {statsElement(
+                variables.getMessage(`${STATS_SECTION}.sections.backgrounds_downloaded`),
+                this.state.stats.feature ? this.state.stats.feature['background-download'] || 0 : 0,
+              )}
+              {statsElement(
+                variables.getMessage(`${STATS_SECTION}.sections.quotes_favourited`),
+                this.state.stats.feature ? this.state.stats.feature['quoted-favourite'] || 0 : 0,
+              )}
+              {statsElement(
+                variables.getMessage(`${STATS_SECTION}.sections.quicklinks_added`),
+                this.state.stats.feature ? this.state.stats.feature['quicklink-add'] || 0 : 0,
+              )}
+              {statsElement(
+                variables.getMessage(`${STATS_SECTION}.sections.settings_changed`),
+                this.state.stats.setting ? Object.keys(this.state.stats.setting).length : 0,
+              )}
+              {statsElement(
+                variables.getMessage(`${STATS_SECTION}.sections.addons_installed`),
+                this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0,
+              )}
             </div>
           </div>
           <div className="statSection leftPanel">
@@ -188,8 +181,14 @@ class Stats extends PureComponent {
           <div className="achievements">
             <div className="achievementsGrid">
               {this.state.achievements.map((achievement, index) => {
+                console.log(achievement);
                 if (achievement.achieved) {
-                  return achievementElement(index, achievement.id, achievement.achieved);
+                  return achievementElement(
+                    index,
+                    achievement.id,
+                    achievement.achieved,
+                    achievement.timestamp,
+                  );
                 }
               })}
             </div>

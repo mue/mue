@@ -57,14 +57,42 @@
     gap: 10px;
   }
 
-  svg {
+  .timestamp {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .achievementTitle {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  svg.trophy {
     font-size: 20px !important;
+    @include themed {
+      background-image: t($slightGradient);
+      box-shadow: t($boxShadow);
+    }
+
     padding: 15px;
     border-radius: 100%;
+  }
 
+  svg.trophyLocked {
+    font-size: 20px !important;
     @include themed {
-      background: t($modal-sidebarActive);
+      background-image: t($modal-sidebarActive);
+      box-shadow: t($boxShadow);
     }
+
+    padding: 15px;
+    border-radius: 100%;
   }
 }
 
@@ -87,11 +115,6 @@
   display: flex;
   flex-flow: column;
   gap: 2px;
-
-  span:first-child {
-    font-weight: bold;
-    font-size: 15px;
-  }
 
   .subtitle {
     font-size: 13px !important;

@@ -12,6 +12,7 @@ import { MessageOptions } from 'features/message';
 import { BackgroundOptions } from 'features/background';
 import { SearchOptions } from 'features/search';
 import { WeatherOptions } from 'features/weather';
+import { Stats } from 'features/stats';
 import {
   About,
   AdvancedOptions,
@@ -20,7 +21,6 @@ import {
   ExperimentalOptions,
   LanguageOptions,
   Overview,
-  Stats,
 } from '../sections';
 
 const sections = [

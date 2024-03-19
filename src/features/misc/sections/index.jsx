@@ -5,4 +5,3 @@ export * from './Changelog';
 export * from './Experimental';
 export * from './Language';
 export * from './Overview';
-export * from './Stats';

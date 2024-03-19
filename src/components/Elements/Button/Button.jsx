@@ -12,6 +12,9 @@ const Button = forwardRef(
       case 'settings':
         className = 'btn-settings';
         break;
+      case 'secondary':
+        className = 'btn-secondary';
+        break;
       case 'icon':
         className = 'btn-icon';
         break;
