@@ -203,6 +203,7 @@
             },
             "navbar": {
               "additional": "Modify navbar style and which buttons you want to display",
+              "apps_subtitle": "",
               "hover": "Only display on hover",
               "notes": "Notes",
               "refresh": "Refresh button",
@@ -629,6 +630,10 @@
       "newyear": "শুভ নব বর্ষ"
     },
     "navbar": {
+      "apps": {
+        "no_apps": "",
+        "title": ""
+      },
       "notes": {
         "placeholder": "এখানে লিখুন",
         "title": "মন্তব্য"
