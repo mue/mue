@@ -1,10 +1,21 @@
 import variables from 'config/variables';
 import { useState } from 'react';
 
-import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import {
+  Header,
+  Row,
+  Content,
+  Action,
+  PreferencesWrapper,
+  Section,
+} from 'components/Layout/Settings';
 import { Checkbox, Switch, Text } from 'components/Form/Settings';
 
+import { MdEventNote } from 'react-icons/md';
+
 const GreetingOptions = () => {
+  const [events, setEvents] = useState(false);
+
   const [birthday, setBirthday] = useState(
     new Date(localStorage.getItem('birthday')) || new Date(),
   );
@@ -19,17 +30,12 @@ const GreetingOptions = () => {
 
   const AdditionalOptions = () => {
     return (
-      <Row>
+      <Row final={true}>
         <Content
           title={variables.getMessage('modals.main.settings.additional_settings')}
           subtitle={variables.getMessage(`${GREETING_SECTION}.additional`)}
         />
         <Action>
-          <Checkbox
-            name="events"
-            text={variables.getMessage(`${GREETING_SECTION}.events`)}
-            category="greeting"
-          />
           <Checkbox
             name="defaultGreetingMessage"
             text={variables.getMessage(`${GREETING_SECTION}.default`)}
@@ -79,8 +85,18 @@ const GreetingOptions = () => {
     );
   };
 
-  return (
-    <>
+  let header;
+  if (events) {
+    header = (
+      <Header
+        title={variables.getMessage(`${GREETING_SECTION}.title`)}
+        secondaryTitle="Events"
+        goBack={() => setEvents(false)}
+        report={false}
+      />
+    );
+  } else {
+    header = (
       <Header
         title={variables.getMessage(`${GREETING_SECTION}.title`)}
         setting="greeting"
@@ -89,10 +105,37 @@ const GreetingOptions = () => {
         zoomSetting="zoomGreeting"
         visibilityToggle={true}
       />
-      <PreferencesWrapper setting="greeting" zoomSetting="zoomGreeting" visibilityToggle={true}>
-        <AdditionalOptions />
-        {BirthdayOptions()}
-      </PreferencesWrapper>
+    );
+  }
+
+  return (
+    <>
+      {header}
+      {events ? (
+        <>
+          <Row>
+            <Content title="Events" subtitle="Enable events." />
+            <Action>
+              <Checkbox
+                name="events"
+                text={variables.getMessage(`${GREETING_SECTION}.events`)}
+                category="greeting"
+              />
+            </Action>
+          </Row>
+          {BirthdayOptions()}
+        </>
+      ) : (
+        <PreferencesWrapper setting="greeting" zoomSetting="zoomGreeting" visibilityToggle={true}>
+          <AdditionalOptions />
+          <Section
+            title="Events"
+            subtitle="Control events on Mue such as birthdays."
+            onClick={() => setEvents(true)}
+            icon={<MdEventNote />}
+          />
+        </PreferencesWrapper>
+      )}
     </>
   );
 };
