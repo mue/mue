@@ -10,10 +10,16 @@ import {
   Section,
 } from 'components/Layout/Settings';
 import { Checkbox, Switch, Text } from 'components/Form/Settings';
+import { TextareaAutosize } from '@mui/material';
+import { Button } from 'components/Elements';
+import defaultEvents from '../events.json';
 
-import { MdEventNote } from 'react-icons/md';
+import { MdEventNote, MdAdd, MdCancel, MdRefresh } from 'react-icons/md';
 
 const GreetingOptions = () => {
+  const [customEvents, setCustomEvents] = useState(
+    JSON.parse(localStorage.getItem('customEvents')) || [],
+  );
   const [events, setEvents] = useState(false);
 
   const [birthday, setBirthday] = useState(
@@ -27,6 +33,49 @@ const GreetingOptions = () => {
   };
 
   const GREETING_SECTION = 'modals.main.settings.sections.greeting';
+
+  function addEvent() {
+    // Retrieve the current array of events from localStorage
+    const customEvents = JSON.parse(localStorage.getItem('customEvents')) || [];
+
+    // Create a new event
+    const newEvent = {
+      id: 'widgets.greeting.halloween',
+      name: '',
+      month: 10,
+      date: 31,
+    };
+
+    // Add the new event to the array
+    const updatedEvents = [...customEvents, newEvent];
+
+    // Add the new event to the array
+    customEvents.push(newEvent);
+
+    // Store the updated array back in localStorage
+    localStorage.setItem('customEvents', JSON.stringify(customEvents));
+
+    setCustomEvents(updatedEvents);
+  }
+
+  function removeEvent(index) {
+    // Remove the event at the given index
+    const updatedEvents = customEvents.filter((_, i) => i !== index);
+
+    // Store the updated array back in localStorage
+    localStorage.setItem('customEvents', JSON.stringify(updatedEvents));
+
+    // Update the state
+    setCustomEvents(updatedEvents);
+  }
+
+  function resetEvents() {
+    // Reset the events array in localStorage
+    localStorage.setItem('customEvents', JSON.stringify(defaultEvents));
+
+    // Update the state
+    setCustomEvents(defaultEvents);
+  }
 
   const AdditionalOptions = () => {
     return (
@@ -53,7 +102,7 @@ const GreetingOptions = () => {
 
   const BirthdayOptions = () => {
     return (
-      <Row final={true}>
+      <Row>
         <Content
           title={variables.getMessage(`${GREETING_SECTION}.birthday`)}
           subtitle={variables.getMessage(
@@ -82,6 +131,71 @@ const GreetingOptions = () => {
           />
         </Action>
       </Row>
+    );
+  };
+
+  const CustomEventsSection = () => {
+    return (
+      <>
+        <Row final={true}>
+          <Content title="Custom Events" />
+          <Action>
+            <div className="headerActions">
+              <Button type="settings" onClick={resetEvents} icon={<MdRefresh />} label="Reset" />
+              <Button type="settings" onClick={addEvent} icon={<MdAdd />} label="Add" />
+            </div>
+          </Action>
+        </Row>
+        <div className="messagesContainer">
+          {customEvents.map((event, index) => (
+            <div className="messageMap" key={index}>
+              <div className="flexGrow">
+                <div className="icon">
+                  <MdEventNote />
+                </div>
+                <div className="messageText">
+                  <span className="subtitle">Event Name</span>
+                  <TextareaAutosize
+                    value={event.name}
+                    placeholder="Event Name"
+                    onChange={(e) => this.message(e, true, index)}
+                    varient="outlined"
+                    style={{ padding: '0' }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="messageAction">
+                  <div className="eventDateControl">
+                    <label>Month</label>
+                    <input id="number" type="number" value={event.month} />
+                  </div>
+                  <div className="eventDateControl">
+                    <label>Day</label>
+                    <input id="number" type="number" value={event.date} />
+                  </div>
+                  <Button
+                    type="settings"
+                    onClick={() => removeEvent(index)}
+                    icon={<MdCancel />}
+                    label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {customEvents.length === 0 && (
+          <div className="photosEmpty">
+            <div className="emptyNewMessage">
+              <MdEventNote />
+              <span className="title">No Events</span>
+              <span className="subtitle">Add Some Events</span>
+              <Button type="settings" onClick={addEvent} icon={<MdAdd />} label="Add Event" />
+            </div>
+          </div>
+        )}
+      </>
     );
   };
 
@@ -124,6 +238,7 @@ const GreetingOptions = () => {
             </Action>
           </Row>
           {BirthdayOptions()}
+          {CustomEventsSection()}
         </>
       ) : (
         <PreferencesWrapper setting="greeting" zoomSetting="zoomGreeting" visibilityToggle={true}>

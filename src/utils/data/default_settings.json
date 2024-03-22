@@ -270,5 +270,9 @@
   {
     "name": "applinks",
     "value": "[]"
+  },
+  {
+    "name": "customEvents",
+    "value": "[]"
   }
 ]
