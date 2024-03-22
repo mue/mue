@@ -38,7 +38,7 @@ export default class Greeting extends PureComponent {
 
     const event = customEvents.find((e) => e.month - 1 === month && e.date === date);
     if (event) {
-      message = variables.getMessage(event.id);
+      message = event.name;
     }
 
     return message;
