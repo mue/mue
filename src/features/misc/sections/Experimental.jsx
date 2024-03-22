@@ -1,13 +1,13 @@
 import variables from 'config/variables';
 import { useState, memo } from 'react';
-import Checkbox from '../../../components/Form/Settings/Checkbox/Checkbox';
-import Slider from '../../../components/Form/Settings/Slider/Slider';
+import { Checkbox, Slider } from 'components/Form/Settings';
+import { Button } from 'components/Elements';
 import { TextField } from '@mui/material';
 
 import EventBus from 'utils/eventbus';
 import values from 'utils/data/slider_values.json';
 
-import { Row, Content, Action } from '../../../components/Layout/Settings/Item/SettingsItem';
+import { Row, Content, Action } from 'components/Layout/Settings/Item/SettingsItem';
 
 function ExperimentalOptions() {
   const [eventType, setEventType] = useState();
@@ -54,21 +54,17 @@ function ExperimentalOptions() {
             varient="outlined"
             InputLabelProps={{ shrink: true }}
           />
-          <button className="uploadbg" onClick={() => EventBus.emit(eventType, eventName)}>
-            Send
-          </button>
+          <Button
+            type="settings"
+            onClick={() => EventBus.emit(eventType, eventName)}
+            label="send"
+          />
         </Action>
       </Row>
       <Row final={true}>
         <Content title="Data" />
         <Action>
-          <button
-            className="reset"
-            style={{ marginLeft: '0px' }}
-            onClick={() => localStorage.clear()}
-          >
-            Clear LocalStorage
-          </button>
+          <Button type="settings" onClick={() => localStorage.clear()} label="Clear LocalStorage" />
         </Action>
       </Row>
     </>
