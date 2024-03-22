@@ -77,6 +77,20 @@ const GreetingOptions = () => {
     setCustomEvents(defaultEvents);
   }
 
+  function updateEvent(index, updatedEvent) {
+    // Update the event in your state
+    setCustomEvents((prevEvents) => {
+      const newEvents = [...prevEvents];
+      newEvents[index] = updatedEvent;
+      return newEvents;
+    });
+
+    // Update the event in localStorage
+    const customEvents = JSON.parse(localStorage.getItem('customEvents') || '[]');
+    customEvents[index] = updatedEvent;
+    localStorage.setItem('customEvents', JSON.stringify(customEvents));
+  }
+
   const AdditionalOptions = () => {
     return (
       <Row final={true}>
@@ -158,7 +172,10 @@ const GreetingOptions = () => {
                   <TextareaAutosize
                     value={event.name}
                     placeholder="Event Name"
-                    onChange={(e) => this.message(e, true, index)}
+                    onChange={(e) => {
+                      const updatedEvent = { ...event, name: e.target.value };
+                      updateEvent(index, updatedEvent);
+                    }}
                     varient="outlined"
                     style={{ padding: '0' }}
                   />
@@ -168,11 +185,27 @@ const GreetingOptions = () => {
                 <div className="messageAction">
                   <div className="eventDateControl">
                     <label>Month</label>
-                    <input id="number" type="number" value={event.month} />
+                    <input
+                      id="month"
+                      type="number"
+                      value={event.month}
+                      onChange={(e) => {
+                        const updatedEvent = { ...event, month: parseInt(e.target.value, 10) };
+                        updateEvent(index, updatedEvent);
+                      }}
+                    />
                   </div>
                   <div className="eventDateControl">
                     <label>Day</label>
-                    <input id="number" type="number" value={event.date} />
+                    <input
+                      id="day"
+                      type="number"
+                      value={event.date}
+                      onChange={(e) => {
+                        const updatedEvent = { ...event, date: parseInt(e.target.value, 10) };
+                        updateEvent(index, updatedEvent);
+                      }}
+                    />
                   </div>
                   <Button
                     type="settings"

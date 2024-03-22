@@ -5,7 +5,6 @@ import { nth, convertTimezone } from 'utils/date';
 import EventBus from 'utils/eventbus';
 
 import './greeting.scss';
-import events from './events.json';
 
 const isEventsEnabled = localStorage.getItem('events') !== 'false';
 export default class Greeting extends PureComponent {
@@ -34,7 +33,10 @@ export default class Greeting extends PureComponent {
     const month = time.getMonth();
     const date = time.getDate();
 
-    const event = events.find((e) => e.month - 1 === month && e.date === date);
+    // Parse the customEvents from localStorage
+    const customEvents = JSON.parse(localStorage.getItem('customEvents') || '[]');
+
+    const event = customEvents.find((e) => e.month - 1 === month && e.date === date);
     if (event) {
       message = variables.getMessage(event.id);
     }
