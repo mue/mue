@@ -110,7 +110,7 @@ class About extends PureComponent {
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       this.setState({
-        update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
+        update: variables.getMessage('modals.main.marketplace.offline.description'),
         loading: variables.getMessage('modals.main.marketplace.offline.description'),
       });
       return;
