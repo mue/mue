@@ -42,8 +42,8 @@ const GreetingOptions = () => {
     const newEvent = {
       id: 'widgets.greeting.halloween',
       name: '',
-      month: 10,
-      date: 31,
+      month: 1,
+      date: 1,
     };
 
     // Add the new event to the array
@@ -183,26 +183,25 @@ const GreetingOptions = () => {
               </div>
               <div>
                 <div className="messageAction">
-                  <div className="eventDateControl">
-                    <label>Month</label>
-                    <input
-                      id="month"
-                      type="number"
-                      value={event.month}
-                      onChange={(e) => {
-                        const updatedEvent = { ...event, month: parseInt(e.target.value, 10) };
-                        updateEvent(index, updatedEvent);
-                      }}
-                    />
-                  </div>
-                  <div className="eventDateControl">
-                    <label>Day</label>
+                  <div className="eventDateSelection">
+                    <label className="subtitle">Day:</label>
                     <input
                       id="day"
-                      type="number"
+                      type="tel"
                       value={event.date}
                       onChange={(e) => {
                         const updatedEvent = { ...event, date: parseInt(e.target.value, 10) };
+                        updateEvent(index, updatedEvent);
+                      }}
+                    />
+                    <hr />
+                    <label className="subtitle">Month:</label>
+                    <input
+                      id="month"
+                      type="tel"
+                      value={event.month}
+                      onChange={(e) => {
+                        const updatedEvent = { ...event, month: parseInt(e.target.value, 10) };
                         updateEvent(index, updatedEvent);
                       }}
                     />
