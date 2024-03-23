@@ -55,7 +55,7 @@ input {
 
     @include themed {
       background: t($modal-sidebar);
-      border: 3px solid t($modal-sidebarActive);
+      border: 1px solid t($modal-sidebarActive);
       color: t($color);
     }
 

@@ -19,13 +19,24 @@ class Changelog extends PureComponent {
   }
 
   parseMarkdown = (text) => {
-    text = text.replace(/^\* /gm, '<li>').replace(/\n/g, '</li>');
-    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    text = text.replace(/^## (.*$)/gm, '<h3>$1</h3>');
-    text = text.replace(
-      /((http|https):\/\/[^\s]+)/g,
-      '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>',
-    );
+    if (typeof text !== 'string') {
+      throw new Error('Input must be a string');
+    }
+
+    // Replace list items
+    text = text.replace(/^\* (.*$)/gm, '<li>$1</li>');
+
+    // Wrap list items in <ul></ul>
+    text = text.replace(/((<li>.*<\/li>\s*)+)/g, '<ul>$1</ul>');
+
+    // Replace other markdown syntax
+    text = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/^## (.*$)/gm, '<span class="title">$1</span>')
+      .replace(
+        /((http|https):\/\/[^\s]+)/g,
+        '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>',
+      );
 
     return text;
   };
@@ -123,8 +134,8 @@ class Changelog extends PureComponent {
 
     return (
       <div className="changelogtab" ref={this.changelog}>
-        <h1>{this.state.title}</h1>
-        <h5>Released on {this.state.date}</h5>
+        <span className="mainTitle">{this.state.title}</span>
+        <span className="subtitle">Released on {this.state.date}</span>
         {this.state.image && (
           <img
             draggable={false}
