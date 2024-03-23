@@ -364,7 +364,7 @@
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
-              "refresh": "Refresh Button",
+              "refresh": "Refresh",
               "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
               "hover": "Only display on hover",
               "additional": "Modify navbar style and which buttons you want to display",

@@ -88,3 +88,48 @@
     background: t($modal-sidebarActive);
   }
 }
+
+.navbarButtonOptions {
+  display: flex;
+  flex-flow: row;
+  gap: 10px;
+  .navbarButtonOption {
+    .subtitle {
+      font-size: 12px;
+    }
+    svg {
+      background: linear-gradient(238.7deg, #ff5c25 13.8%, #d21a11 49.49%, #ff456e 87.48%);
+      padding: 5px;
+      border-radius: 100%;
+    }
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    @include themed {
+      border-radius: t($borderRadius);
+      box-shadow: 0 0 0 1px t($color);
+    }
+  }
+  .disabled {
+    @include themed {
+      background: t($modal-sidebar);
+      box-shadow: 0 0 0 1px t($modal-sidebarActive);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+      }
+    }
+    svg {
+      @include themed {
+        background-image: t($slightGradient);
+        box-shadow: t($boxShadow);
+      }
+    }
+  }
+}

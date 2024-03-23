@@ -3,7 +3,14 @@ import variables from 'config/variables';
 import { useState, memo } from 'react';
 
 import Modal from 'react-modal';
-import { MdAddLink } from 'react-icons/md';
+import {
+  MdAddLink,
+  MdAssignment,
+  MdCropFree,
+  MdRefresh,
+  MdChecklist,
+  MdOutlineApps,
+} from 'react-icons/md';
 
 import { AddModal } from 'components/Elements/AddModal';
 
@@ -128,6 +135,57 @@ function NavbarOptions() {
             text={variables.getMessage(`${NAVBAR_SECTION}.hover`)}
             category="navbar"
           />
+        </Action>
+      </Row>
+    );
+  };
+
+  const NavbarOptions = () => {
+    return (
+      <>
+        <Row>
+          <Content title="Navbar Options" />
+          <Action>
+            <div className="navbarButtonOptions">
+              <div className="navbarButtonOption disabled">
+                <MdAssignment />
+                <span className="subtitle">{variables.getMessage(`${NAVBAR_SECTION}.notes`)}</span>
+              </div>
+              <div className="navbarButtonOption">
+                <MdCropFree />
+                <span className="subtitle">
+                  {variables.getMessage('modals.main.settings.sections.background.buttons.view')}
+                </span>
+              </div>
+              <div className="navbarButtonOption">
+                <MdRefresh />
+                <span className="subtitle">
+                  {variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
+                </span>
+              </div>
+              <div className="navbarButtonOption">
+                <MdChecklist />
+                <span className="subtitle">
+                  {variables.getMessage('widgets.navbar.todo.title')}
+                </span>
+              </div>
+              <div className="navbarButtonOption">
+                <MdOutlineApps />
+                <span className="subtitle">
+                  {variables.getMessage('widgets.navbar.apps.title')}
+                </span>
+              </div>
+            </div>
+          </Action>
+        </Row>
+        {/*<Row final={false}>
+        <Content
+          title={variables.getMessage('modals.main.settings.additional_settings')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.appearance.navbar.additional',
+          )}
+        />
+        <Action>
           <Checkbox
             name="notesEnabled"
             text={variables.getMessage(`${NAVBAR_SECTION}.notes`)}
@@ -157,7 +215,8 @@ function NavbarOptions() {
             onChange={setAppsEnabled}
           />
         </Action>
-      </Row>
+          </Row>*/}
+      </>
     );
   };
 
@@ -234,6 +293,7 @@ function NavbarOptions() {
         zoomCategory="navbar"
       />
       <AdditionalSettings />
+      <NavbarOptions />
       <RefreshOptions />
       <AppsOptions />
 

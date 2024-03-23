@@ -364,7 +364,7 @@
             "navbar": {
               "title": "Navbar",
               "notes": "Notes",
-              "refresh": "Refresh Button",
+              "refresh": "Refresh",
               "refresh_subtitle": "Kies wat vernieuwd wordt als je op de vernieuw knop klikt",
               "hover": "Only display on hover",
               "additional": "Bewerk de navigatiebalk stijl en welke knoppen worden laten zien",
