@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 
-import { useState, memo } from 'react';
+import { useState, memo, useEffect } from 'react';
 
 import Modal from 'react-modal';
 import {
@@ -16,6 +16,7 @@ import { AddModal } from 'components/Elements/AddModal';
 
 import { Checkbox, Dropdown } from 'components/Form';
 import { Button } from 'components/Elements';
+import EventBus from 'utils/eventbus';
 
 import { Row, Content, Action } from 'components/Layout/Settings';
 import { Header } from 'components/Layout/Settings';
@@ -141,40 +142,66 @@ function NavbarOptions() {
   };
 
   const NavbarOptions = () => {
+    const NavbarButton = ({ icon, messageKey, settingName }) => {
+      const [isDisabled, setIsDisabled] = useState(localStorage.getItem(settingName) === 'false');
+
+      useEffect(() => {
+        localStorage.setItem(settingName, isDisabled ? 'false' : 'true');
+      }, [isDisabled]);
+
+      const handleClick = () => {
+        setIsDisabled(!isDisabled);
+        variables.stats.postEvent(
+          'setting',
+          `${settingName} ${!isDisabled === true ? 'enabled' : 'disabled'}`,
+        );
+        EventBus.emit('refresh', 'navbar');
+      };
+
+      return (
+        <button
+          onClick={handleClick}
+          className={`navbarButtonOption ${isDisabled ? 'disabled' : ''}`}
+        >
+          {icon}
+          <span className="subtitle">{variables.getMessage(messageKey)}</span>
+        </button>
+      );
+    };
+
+    const buttons = [
+      {
+        icon: <MdAssignment />,
+        settingName: 'notesEnabled',
+        messageKey: `${NAVBAR_SECTION}.notes`,
+      },
+      {
+        icon: <MdCropFree />,
+        settingName: 'view',
+        messageKey: 'modals.main.settings.sections.background.buttons.view',
+      },
+      { icon: <MdRefresh />, settingName: 'refresh', messageKey: `${NAVBAR_SECTION}.refresh` },
+      {
+        icon: <MdChecklist />,
+        settingName: 'todoEnabled',
+        messageKey: 'widgets.navbar.todo.title',
+      },
+      {
+        icon: <MdOutlineApps />,
+        settingName: 'appsEnabled',
+        messageKey: 'widgets.navbar.apps.title',
+      },
+    ];
+
     return (
       <>
         <Row>
           <Content title="Navbar Options" />
           <Action>
             <div className="navbarButtonOptions">
-              <div className="navbarButtonOption disabled">
-                <MdAssignment />
-                <span className="subtitle">{variables.getMessage(`${NAVBAR_SECTION}.notes`)}</span>
-              </div>
-              <div className="navbarButtonOption">
-                <MdCropFree />
-                <span className="subtitle">
-                  {variables.getMessage('modals.main.settings.sections.background.buttons.view')}
-                </span>
-              </div>
-              <div className="navbarButtonOption">
-                <MdRefresh />
-                <span className="subtitle">
-                  {variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
-                </span>
-              </div>
-              <div className="navbarButtonOption">
-                <MdChecklist />
-                <span className="subtitle">
-                  {variables.getMessage('widgets.navbar.todo.title')}
-                </span>
-              </div>
-              <div className="navbarButtonOption">
-                <MdOutlineApps />
-                <span className="subtitle">
-                  {variables.getMessage('widgets.navbar.apps.title')}
-                </span>
-              </div>
+              {buttons.map((button, index) => (
+                <NavbarButton key={index} {...button} />
+              ))}
             </div>
           </Action>
         </Row>

@@ -101,8 +101,15 @@
       background: linear-gradient(238.7deg, #ff5c25 13.8%, #d21a11 49.49%, #ff456e 87.48%);
       padding: 5px;
       border-radius: 100%;
+      @include themed {
+        color: t($color);
+      }
     }
-    width: 70px;
+    cursor: pointer;
+    width: 70px !important;
+    border: none;
+    outline: none;
+    margin-top: 0 !important;
     height: 70px;
     padding: 5px;
     display: flex;
@@ -112,8 +119,12 @@
     text-align: center;
     gap: 10px;
     @include themed {
+      background: t($modal-sidebarActive);
       border-radius: t($borderRadius);
-      box-shadow: 0 0 0 1px t($color);
+      box-shadow: 0 0 0 1px t($btn-backgroundHover);
+      &:hover {
+        background: t($modal-sidebar);
+      }
     }
   }
   .disabled {
