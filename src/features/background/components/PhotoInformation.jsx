@@ -227,7 +227,7 @@ function PhotoInformation({ info, url, api }) {
             <Download onClick={() => downloadImage(info)} />
           </Tooltip>
         )}
-        {info.pun && (
+        {(info.pun && info.category) && (
           <Tooltip
             title={variables.getMessage('widgets.background.exclude')}
             key="exclude"
@@ -375,7 +375,7 @@ function PhotoInformation({ info, url, api }) {
             {info.views && info.downloads !== null ? <UnsplashStats /> : null}
           </div>
 
-          {showExtraInfo || other ? (
+          {(showExtraInfo || other) && excludeModal === false ? (
             <>
               <span className="subtitle">
                 {variables.getMessage('widgets.background.information')}

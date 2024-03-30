@@ -135,6 +135,9 @@ class Marketplace extends PureComponent {
   }
 
   async getItems() {
+    this.setState({
+      done: false,
+    });
     const dataURL =
       this.props.type === 'collections'
         ? variables.constants.API_URL + '/marketplace/collections'

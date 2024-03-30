@@ -26,6 +26,7 @@ function WelcomeModal({ modalClose, modalSkip }) {
   // State variables
   const [currentTab, setCurrentTab] = useState(0);
   const [buttonText, setButtonText] = useState(variables.getMessage('modals.welcome.buttons.next'));
+  const [importedSettings, setImportedSettings] = useState([]);
   const finalTab = 6;
 
   // useEffect hook to handle tab changes and event bus listener
@@ -125,11 +126,13 @@ function WelcomeModal({ modalClose, modalSkip }) {
   const tabComponents = {
     0: <Intro />,
     1: <ChooseLanguage />,
-    2: <ImportSettings switchTab={switchToTab} />,
+    2: <ImportSettings setImportedSettings={setImportedSettings} switchTab={switchToTab} />,
     3: <ThemeSelection />,
     4: <StyleSelection />,
     5: <PrivacyOptions />,
-    6: <Final currentTab={currentTab} switchTab={switchToTab} />,
+    6: (
+      <Final currentTab={currentTab} switchTab={switchToTab} importedSettings={importedSettings} />
+    ),
   };
 
   // Current tab component

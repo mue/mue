@@ -28,15 +28,14 @@ function Final(props) {
             )}
           </span>
         </div>
-        {/*}
-        {this.state.importedSettings.length !== 0 && (
-          <div className="toggle" onClick={() => this.props.switchTab(2)}>
-            {variables.getMessage('modals.main.settings.sections.final.imported', {
-              amount: this.state.importedSettings.length,
+        {props.importedSettings.length !== 0 && (
+          <div className="toggle" onClick={() => props.switchTab(3)}>
+            {variables.getMessage('modals.main.welcome.sections.final.imported', {
+              amount: props.importedSettings.length,
             })}{' '}
-            {this.state.importedSettings.length}
+            {props.importedSettings.length}
           </div>
-        )}*/}
+        )}
       </div>
     </Content>
   );

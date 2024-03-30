@@ -1,5 +1,4 @@
 import variables from 'config/variables';
-import { useState } from 'react';
 import { FileUpload } from 'components/Form/Settings';
 import { MdCloudUpload } from 'react-icons/md';
 import { importSettings as importSettingsFunction } from 'utils/settings';
@@ -7,13 +6,11 @@ import { Header, Content } from '../Layout';
 import default_settings from 'utils/data/default_settings.json';
 
 function ImportSettings(props) {
-  const [importedSettings, setImportedSettings] = useState([]);
-
   const importSettings = (e) => {
     importSettingsFunction(e);
 
     const settings = [];
-    const data = JSON.parse(e.target.result);
+    const data = JSON.parse(e);
     Object.keys(data).forEach((setting) => {
       // language and theme already shown, the others are only used internally
       if (
@@ -39,8 +36,8 @@ function ImportSettings(props) {
       });
     });
 
-    setImportedSettings(settings);
-    props.switchTab(5);
+    props.setImportedSettings(settings);
+    props.switchTab(6);
   };
   return (
     <Content>
