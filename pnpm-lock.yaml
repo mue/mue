@@ -104,8 +104,8 @@ devDependencies:
     specifier: ^16.3.1
     version: 16.3.1(typescript@5.3.3)
   stylelint-config-standard-scss:
-    specifier: ^13.0.0
-    version: 13.0.0(postcss@8.4.38)(stylelint@16.3.1)
+    specifier: ^13.1.0
+    version: 13.1.0(postcss@8.4.38)(stylelint@16.3.1)
   stylelint-scss:
     specifier: ^6.2.1
     version: 6.2.1(stylelint@16.3.1)
@@ -5911,12 +5911,12 @@ packages:
       stylelint: 16.3.1(typescript@5.3.3)
     dev: true
 
-  /stylelint-config-standard-scss@13.0.0(postcss@8.4.38)(stylelint@16.3.1):
-    resolution: {integrity: sha512-WaLvkP689qSYUpJQPCo30TFJSSc3VzvvoWnrgp+7PpVby5o8fRUY1cZcP0sePZfjrFl9T8caGhcKg0GO34VDiQ==}
+  /stylelint-config-standard-scss@13.1.0(postcss@8.4.38)(stylelint@16.3.1):
+    resolution: {integrity: sha512-Eo5w7/XvwGHWkeGLtdm2FZLOMYoZl1omP2/jgFCXyl2x5yNz7/8vv4Tj6slHvMSSUNTaGoam/GAZ0ZhukvalfA==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
       postcss: ^8.3.3
-      stylelint: ^16.1.0
+      stylelint: ^16.3.1
     peerDependenciesMeta:
       postcss:
         optional: true
