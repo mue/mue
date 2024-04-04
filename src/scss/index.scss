@@ -5,6 +5,8 @@ body {
   background: #000;
   margin: 0;
   overflow: hidden;
+  text-rendering: optimizeLegibility !important;
+  -moz-text-rendering: optimizeLegibility !important;
 }
 
 * {

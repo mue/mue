@@ -147,7 +147,7 @@ function NavbarOptions() {
 
       useEffect(() => {
         localStorage.setItem(settingName, isDisabled ? 'false' : 'true');
-      }, [isDisabled]);
+      }, [isDisabled, settingName]);
 
       const handleClick = () => {
         setIsDisabled(!isDisabled);
