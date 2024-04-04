@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^3.2.5
     version: 3.2.5
   sass:
-    specifier: ^1.72.0
-    version: 1.72.0
+    specifier: ^1.74.1
+    version: 1.74.1
   stylelint:
     specifier: ^16.3.1
     version: 16.3.1(typescript@5.3.3)
@@ -111,7 +111,7 @@ devDependencies:
     version: 6.2.1(stylelint@16.3.1)
   vite:
     specifier: 5.2.7
-    version: 5.2.7(@types/node@20.11.19)(sass@1.72.0)
+    version: 5.2.7(@types/node@20.11.19)(sass@1.74.1)
   vite-plugin-progress:
     specifier: ^0.0.7
     version: 0.0.7(vite@5.2.7)
@@ -2972,7 +2972,7 @@ packages:
       vite: ^4 || ^5
     dependencies:
       '@swc/core': 1.4.1
-      vite: 5.2.7(@types/node@20.11.19)(sass@1.72.0)
+      vite: 5.2.7(@types/node@20.11.19)(sass@1.74.1)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -5688,14 +5688,14 @@ packages:
       is-regex: 1.1.4
     dev: true
 
-  /sass@1.72.0:
-    resolution: {integrity: sha512-Gpczt3WA56Ly0Mn8Sl21Vj94s1axi9hDIzDFn9Ph9x3C3p4nNyvsqJoQyVXKou6cBlfFWEgRW4rT8Tb4i3XnVA==}
+  /sass@1.74.1:
+    resolution: {integrity: sha512-w0Z9p/rWZWelb88ISOLyvqTWGmtmu2QJICqDBGyNnfG4OUnPX9BBjjYIXUpXCMOOg5MQWNpqzt876la1fsTvUA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
       chokidar: 3.6.0
       immutable: 4.3.5
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /scheduler@0.23.0:
@@ -5777,11 +5777,6 @@ packages:
       ansi-styles: 4.3.0
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
-    dev: true
-
-  /source-map-js@1.0.2:
-    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
-    engines: {node: '>=0.10.0'}
     dev: true
 
   /source-map-js@1.2.0:
@@ -6223,10 +6218,10 @@ packages:
       picocolors: 1.0.0
       progress: 2.0.3
       rd: 2.0.1
-      vite: 5.2.7(@types/node@20.11.19)(sass@1.72.0)
+      vite: 5.2.7(@types/node@20.11.19)(sass@1.74.1)
     dev: true
 
-  /vite@5.2.7(@types/node@20.11.19)(sass@1.72.0):
+  /vite@5.2.7(@types/node@20.11.19)(sass@1.74.1):
     resolution: {integrity: sha512-k14PWOKLI6pMaSzAuGtT+Cf0YmIx12z9YGon39onaJNy8DLBfBJrzg9FQEmkAM5lpHBZs9wksWAsyF/HkpEwJA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6258,7 +6253,7 @@ packages:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.13.0
-      sass: 1.72.0
+      sass: 1.74.1
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
