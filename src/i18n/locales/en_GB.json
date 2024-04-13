@@ -363,6 +363,7 @@
             },
             "navbar": {
               "title": "Navbar",
+              "widgets": "Navbar Widgets",
               "notes": "Notes",
               "refresh": "Refresh",
               "refresh_subtitle": "Choose what is refreshed when you click the refresh button",

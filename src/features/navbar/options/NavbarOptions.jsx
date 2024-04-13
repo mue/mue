@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 
-import { useState, memo, useEffect } from 'react';
+import { useState, memo } from 'react';
 
 import Modal from 'react-modal';
 import {
@@ -144,24 +144,29 @@ function NavbarOptions() {
   const NavbarOptions = () => {
     const NavbarButton = ({ icon, messageKey, settingName }) => {
       const [isDisabled, setIsDisabled] = useState(localStorage.getItem(settingName) === 'false');
-
-      useEffect(() => {
-        localStorage.setItem(settingName, isDisabled ? 'false' : 'true');
-      }, [isDisabled, settingName]);
-
       const handleClick = () => {
+        localStorage.setItem(settingName, !isDisabled);
+
+        if (settingName === 'refresh') {
+          setShowRefreshOptions(!showRefreshOptions);
+        } else if (settingName === 'appsEnabled') {
+          setAppsEnabled(!appsEnabled);
+        }
+
         setIsDisabled(!isDisabled);
+
         variables.stats.postEvent(
           'setting',
           `${settingName} ${!isDisabled === true ? 'enabled' : 'disabled'}`,
         );
+
         EventBus.emit('refresh', 'navbar');
       };
 
       return (
         <button
           onClick={handleClick}
-          className={`navbarButtonOption ${isDisabled ? 'disabled' : ''}`}
+          className={`navbarButtonOption ${isDisabled === true ? 'disabled' : ''}`}
         >
           {icon}
           <span className="subtitle">{variables.getMessage(messageKey)}</span>
@@ -194,56 +199,18 @@ function NavbarOptions() {
     ];
 
     return (
-      <>
-        <Row>
-          <Content title="Navbar Options" />
-          <Action>
-            <div className="navbarButtonOptions">
-              {buttons.map((button, index) => (
-                <NavbarButton key={index} {...button} />
-              ))}
-            </div>
-          </Action>
-        </Row>
-        {/*<Row final={false}>
+      <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.additional_settings')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.navbar.additional',
-          )}
+          title={variables.getMessage('modals.main.settings.sections.appearance.navbar.widgets')}
         />
         <Action>
-          <Checkbox
-            name="notesEnabled"
-            text={variables.getMessage(`${NAVBAR_SECTION}.notes`)}
-            category="navbar"
-          />
-          <Checkbox
-            name="view"
-            text={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
-            category="navbar"
-          />
-          <Checkbox
-            name="refresh"
-            text={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
-            category="navbar"
-            onChange={setShowRefreshOptions}
-          />
-          <Checkbox
-            name="todoEnabled"
-            text={variables.getMessage('widgets.navbar.todo.title')}
-            category="navbar"
-          />
-
-          <Checkbox
-            name="appsEnabled"
-            text={variables.getMessage('widgets.navbar.apps.title')}
-            category="navbar"
-            onChange={setAppsEnabled}
-          />
+          <div className="navbarButtonOptions">
+            {buttons.map((button, index) => (
+              <NavbarButton key={index} {...button} />
+            ))}
+          </div>
         </Action>
-          </Row>*/}
-      </>
+      </Row>
     );
   };
 

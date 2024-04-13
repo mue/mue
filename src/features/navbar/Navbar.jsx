@@ -3,13 +3,9 @@ import { PureComponent, createRef } from 'react';
 
 import { MdSettings } from 'react-icons/md';
 
-// import Notes from './buttons/Notes';
-// import Todo from './buttons/Todo';
-// import Apps from './buttons/Apps';
-
 import { Notes, Todo, Apps, Refresh, Maximise } from './components';
-
 import { Tooltip } from 'components/Elements';
+
 import EventBus from 'utils/eventbus';
 
 import './scss/index.scss';
@@ -67,6 +63,9 @@ class Navbar extends PureComponent {
           refreshEnabled: localStorage.getItem('refresh'),
           refreshOption: localStorage.getItem('refreshOption'),
         });
+
+        this.forceUpdate();
+
         try {
           this.updateRefreshText();
           this.setZoom();

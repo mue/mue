@@ -418,7 +418,18 @@ export default class Background extends PureComponent {
         } else if (backgroundType !== this.state.type) {
           return refresh();
         }
+      }
 
+      // uninstall photo pack reverts your background to what you had previously
+      if (
+        data === 'marketplacebackgrounduninstall' ||
+        data === 'backgroundwelcome' ||
+        data === 'backgroundrefresh'
+      ) {
+        refresh();
+      }
+
+      if (data === 'backgroundeffect') {
         // background effects so we don't get another image again
         const backgroundFilterSetting = localStorage.getItem('backgroundFilter');
         const backgroundFilter = backgroundFilterSetting && backgroundFilterSetting !== 'none';
@@ -448,15 +459,6 @@ export default class Background extends PureComponent {
           }`;
         }
       }
-
-      // uninstall photo pack reverts your background to what you had previously
-      if (
-        data === 'marketplacebackgrounduninstall' ||
-        data === 'backgroundwelcome' ||
-        data === 'backgroundrefresh'
-      ) {
-        refresh();
-      }
     });
 
     if (localStorage.getItem('welcomeTab')) {
@@ -476,43 +478,6 @@ export default class Background extends PureComponent {
       this.getBackground();
       localStorage.setItem('backgroundStartTime', Date.now());
     }
-
-    const test = localStorage.getItem('backgroundchange');
-
-    this.interval = setInterval(() => {
-      const targetTime = Number(Number(localStorage.getItem('backgroundStartTime')) + Number(test));
-      const currentTime = Number(Date.now());
-      const type = localStorage.getItem('backgroundType');
-
-      if (test !== null && test !== 'refresh') {
-        if (currentTime >= targetTime) {
-          element.classList.remove('fade-in');
-          this.getBackground();
-          localStorage.setItem('backgroundStartTime', Date.now());
-        } else {
-          try {
-            const current = JSON.parse(localStorage.getItem('currentBackground'));
-            if (current.type !== type) {
-              this.getBackground();
-            }
-            const offline = localStorage.getItem('offlineMode');
-            if (current.url.startsWith('http') && offline === 'false') {
-              if (this.state.firstTime !== true) {
-                this.setState(current);
-              }
-            } else if (current.url.startsWith('http')) {
-              this.setState(getOfflineImage());
-            }
-            if (this.state.firstTime !== true) {
-              this.setState(current);
-            }
-            this.setState({ firstTime: true });
-          } catch (e) {
-            this.setBackground();
-          }
-        }
-      }
-    });
   }
 
   // only set once we've got the info
@@ -526,7 +491,6 @@ export default class Background extends PureComponent {
 
   componentWillUnmount() {
     EventBus.off('refresh');
-    clearInterval(this.interval);
   }
 
   render() {

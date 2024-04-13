@@ -30,7 +30,7 @@ function Final(props) {
         </div>
         {props.importedSettings.length !== 0 && (
           <div className="toggle" onClick={() => props.switchTab(3)}>
-            {variables.getMessage('modals.main.welcome.sections.final.imported', {
+            {variables.getMessage('modals.welcome.sections.final.imported', {
               amount: props.importedSettings.length,
             })}{' '}
             {props.importedSettings.length}

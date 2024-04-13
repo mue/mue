@@ -551,7 +551,7 @@ class BackgroundOptions extends PureComponent {
                 default="90"
                 display="%"
                 marks={values.background}
-                category="background"
+                category="backgroundeffect"
                 element="#backgroundImage"
               />
               <Dropdown
@@ -560,7 +560,7 @@ class BackgroundOptions extends PureComponent {
                 )}
                 name="backgroundFilter"
                 onChange={(value) => this.setState({ backgroundFilter: value })}
-                category="background"
+                category="backgroundeffect"
                 element="#backgroundImage"
                 items={[
                   {
@@ -612,7 +612,7 @@ class BackgroundOptions extends PureComponent {
                   default="0"
                   display="%"
                   marks={values.background}
-                  category="background"
+                  category="backgroundeffect"
                   element="#backgroundImage"
                 />
               )}
