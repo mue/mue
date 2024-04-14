@@ -273,7 +273,7 @@ const GreetingOptions = () => {
           {CustomEventsSection()}
         </>
       ) : (
-        <PreferencesWrapper setting="greeting" zoomSetting="zoomGreeting" visibilityToggle={true}>
+        <PreferencesWrapper setting="greeting" zoomSetting="zoomGreeting" category="greeting" visibilityToggle={true}>
           <AdditionalOptions />
           <Section
             title="Events"

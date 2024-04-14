@@ -73,16 +73,17 @@ class Stats extends PureComponent {
   render() {
     const achievementElement = (key, id, achieved, timestamp) => {
       const { name, description } = getLocalisedAchievementData(id);
-      console.log(timestamp);
 
       return (
         <div className="achievement" key={key}>
           {achieved ? <FaTrophy className="trophy" /> : <MdLock className="trophyLocked" />}
           <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
             {achieved ? (
-              <span className="timestamp">
-                <MdAccessTime /> {new Date(timestamp).toLocaleDateString()}
-              </span>
+              timestamp !== undefined ? (
+                <span className="timestamp">
+                  <MdAccessTime /> {new Date(timestamp).toLocaleDateString()}
+                </span>
+              ) : null
             ) : null}
             <span className="achievementTitle">{name}</span>
             <span className="subtitle">{achieved ? description : '?????'}</span>
@@ -165,7 +166,7 @@ class Stats extends PureComponent {
               )}
               {statsElement(
                 variables.getMessage(`${STATS_SECTION}.sections.addons_installed`),
-                this.state.stats.marketplace ? this.state.stats.marketplace['install'] : 0,
+                this.state.stats.marketplace['install'] ? this.state.stats.marketplace['install'].length : 0,
               )}
             </div>
           </div>

@@ -65,26 +65,24 @@ function Header(props) {
   };
 
   return (
-    <>
-      <div className="modalHeader">
-        <span className="mainTitle">
-          {props.secondaryTitle && (
-            <>
-              <span className="backTitle" onClick={props.goBack}>
-                {props.title}
-              </span>
-              <MdOutlineKeyboardArrowRight />
-            </>
-          )}
-          {props.secondaryTitle || props.title}
-        </span>
-        <div className="headerActions">
-          {props.visibilityToggle && <VisibilityToggle />}
-          {props.report !== false && <ReportButton />}
-          {props.children}
-        </div>
+    <div className="modalHeader">
+      <span className="mainTitle">
+        {props.secondaryTitle && (
+          <>
+            <span className="backTitle" onClick={props.goBack}>
+              {props.title}
+            </span>
+            <MdOutlineKeyboardArrowRight />
+          </>
+        )}
+        {props.secondaryTitle || props.title}
+      </span>
+      <div className="headerActions">
+        {props.visibilityToggle && <VisibilityToggle />}
+        {props.report !== false && <ReportButton />}
+        {props.children}
       </div>
-    </>
+    </div>
   );
 }
 

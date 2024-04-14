@@ -6,7 +6,7 @@ import variables from 'config/variables';
  * file.
  * @param e - The JSON settings string to import
  */
-export function importSettings(e) {
+export function importSettings(e, initial = false) {
   const content = JSON.parse(e);
 
   Object.keys(content).forEach((key) => {
@@ -14,5 +14,8 @@ export function importSettings(e) {
   });
 
   toast(variables.getMessage('toasts.imported'));
-  variables.stats.postEvent('tab', 'Settings imported');
+  // don't show achievements on welcome
+  if (!initial) {
+    variables.stats.postEvent('tab', 'Settings imported');
+  }
 }

@@ -210,7 +210,12 @@ const TimeOptions = () => {
         zoomSetting="zoomClock"
         visibilityToggle={true}
       />
-      <PreferencesWrapper setting="time" zoomSetting="zoomClock" visibilityToggle={true}>
+      <PreferencesWrapper
+        setting="time"
+        zoomSetting="zoomClock"
+        category="clock"
+        visibilityToggle={true}
+      >
         <WidgetType />
         {getTimeSettings()}
       </PreferencesWrapper>

@@ -277,7 +277,12 @@ class QuoteOptions extends PureComponent {
           </Row>
         )}
         {!this.state.sourceSection && (
-          <PreferencesWrapper setting="quote" zoomSetting="zoomQuote" visibilityToggle={true}>
+          <PreferencesWrapper
+            setting="quote"
+            zoomSetting="zoomQuote"
+            category="quote"
+            visibilityToggle={true}
+          >
             <Section
               icon={<MdSource />}
               title={variables.getMessage('modals.main.settings.sections.background.source.title')}

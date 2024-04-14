@@ -35,7 +35,6 @@ class WeatherOptions extends PureComponent {
 
   render() {
     const weatherType = localStorage.getItem('weatherType');
-
     const WEATHER_SECTION = 'modals.main.settings.sections.weather';
 
     const WidgetType = () => {

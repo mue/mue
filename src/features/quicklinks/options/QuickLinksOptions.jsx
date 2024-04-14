@@ -210,6 +210,7 @@ class QuickLinksOptions extends PureComponent {
         />
         <PreferencesWrapper
           setting="quicklinksenabled"
+          category="quicklinks"
           visibilityToggle={true}
           zoomSetting="zoomQuicklinks"
         >

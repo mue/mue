@@ -7,7 +7,7 @@ import default_settings from 'utils/data/default_settings.json';
 
 function ImportSettings(props) {
   const importSettings = (e) => {
-    importSettingsFunction(e);
+    importSettingsFunction(e, true);
 
     const settings = [];
     const data = JSON.parse(e);

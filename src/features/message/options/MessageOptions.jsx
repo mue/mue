@@ -69,7 +69,12 @@ class MessageOptions extends PureComponent {
           zoomSetting="zoomMessage"
           visibilityToggle={true}
         />
-        <PreferencesWrapper setting="message" visibilityToggle={true} zoomSetting="zoomMessage">
+        <PreferencesWrapper
+          setting="message"
+          visibilityToggle={true}
+          category="message"
+          zoomSetting="zoomMessage"
+        >
           <Row final={true}>
             <Content title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} />
             <Action>

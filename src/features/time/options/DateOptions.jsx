@@ -88,7 +88,7 @@ function DateOptions() {
         zoomSetting="zoomDate"
         visibilityToggle={true}
       />
-      <PreferencesWrapper setting="date" visibilityToggle={true} zoomSetting="zoomDate">
+      <PreferencesWrapper setting="date" visibilityToggle={true} category="date" zoomSetting="zoomDate">
         <Row>
           <Content
             title={variables.getMessage('modals.main.settings.sections.time.type')}

@@ -15,16 +15,16 @@ function ClockSkeleton() {
       </Suspense>
     );
   } else if (localStorage.getItem('timeType') === 'percentageComplete') {
-    return <span className="new-clock clock-container clockSkeleton">68%</span>;
+    return <span className="vertical-clock clock-container clockSkeleton">68%</span>;
   } else if (localStorage.getItem('timeType') === 'verticalClock') {
     return (
-      <span className="new-clock clock-container" style={{ fontSize: '30px' }}>
+      <span className="vertical-clock clock-container" style={{ fontSize: '30px' }}>
         <div className="hour">10</div>
         <div className="minute">23</div>
       </span>
     );
   } else {
-    return <span className="new-clock clock-container clockSkeleton">10:24</span>;
+    return <span className="vertical-clock clock-container clockSkeleton">10:24</span>;
   }
 }
 

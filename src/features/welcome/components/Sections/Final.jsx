@@ -29,11 +29,10 @@ function Final(props) {
           </span>
         </div>
         {props.importedSettings.length !== 0 && (
-          <div className="toggle" onClick={() => props.switchTab(3)}>
+          <div className="toggle" onClick={() => props.switchTab(2)}>
             {variables.getMessage('modals.welcome.sections.final.imported', {
               amount: props.importedSettings.length,
             })}{' '}
-            {props.importedSettings.length}
           </div>
         )}
       </div>

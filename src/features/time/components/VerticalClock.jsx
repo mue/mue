@@ -3,7 +3,7 @@ function VerticalClock({ finalHour, finalMinute, finalSeconds }) {
   const minuteColour = localStorage.getItem('minuteColour') || '#ƒff';
 
   return (
-    <span className="new-clock clock-container">
+    <span className="vertical-clock clock-container">
       <div className="hour" style={{ color: hourColour }}>
         {finalHour}
       </div>

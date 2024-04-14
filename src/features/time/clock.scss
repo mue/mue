@@ -49,8 +49,9 @@
   }
 }
 
-.new-clock {
+.vertical-clock {
   line-height: 100%;
+  user-select: none;
 
   .seconds {
     font-size: 0.2em;

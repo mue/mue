@@ -21,15 +21,20 @@ class WeatherWidget extends PureComponent {
 
   async componentDidMount() {
     EventBus.on('refresh', async (data) => {
-      // Convert the callback function to an async function
       if (data === 'weather') {
         const weatherData = await getWeather(this.state.location, this.state.done);
         this.setState(weatherData);
+
+        const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+        document.querySelector('.weather').style.fontSize = zoomWeather;
       }
     });
 
     const weatherData = await getWeather(this.state.location, this.state.done);
     this.setState(weatherData);
+
+    const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
+    document.querySelector('.weather').style.fontSize = zoomWeather;
   }
 
   componentWillUnmount() {

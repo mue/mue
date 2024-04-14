@@ -37,7 +37,7 @@ function ExperimentalOptions() {
             marks={values.experimental}
             element=".other"
           />
-          <p style={{ textAlign: 'left' }}>Send Event</p>
+          <p style={{ textAlign: 'left', width: '100%' }}>Send Event</p>
           <TextField
             label={'Type'}
             value={eventType}
@@ -57,7 +57,7 @@ function ExperimentalOptions() {
           <Button
             type="settings"
             onClick={() => EventBus.emit(eventType, eventName)}
-            label="send"
+            label="Send"
           />
         </Action>
       </Row>

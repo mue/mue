@@ -14,9 +14,6 @@ export const getWeather = async (location, done) => {
     return;
   }
 
-  const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
-  document.querySelector('.weather').style.fontSize = zoomWeather;
-
   try {
     const response = await fetch(
       variables.constants.API_URL + `/weather?city=${location}&language=${variables.languagecode}`,
@@ -65,6 +62,4 @@ export const getWeather = async (location, done) => {
   } catch (error) {
     console.error('Fetch Error: ', error);
   }
-
-  document.querySelector('.top-weather svg').style.fontSize = zoomWeather;
 };
