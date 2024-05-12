@@ -30,8 +30,8 @@ dependencies:
     specifier: ^2.0.1
     version: 2.0.1(prop-types@15.8.1)(react-dom@18.2.0)(react@18.3.1)
   '@mui/material':
-    specifier: 5.15.15
-    version: 5.15.15(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(react-dom@18.2.0)(react@18.3.1)
+    specifier: 5.15.17
+    version: 5.15.17(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(react-dom@18.2.0)(react@18.3.1)
   '@sentry/react':
     specifier: ^7.110.0
     version: 7.110.0(react@18.3.1)
@@ -2256,12 +2256,12 @@ packages:
       react-dom: 18.2.0(react@18.3.1)
     dev: false
 
-  /@mui/core-downloads-tracker@5.15.15:
-    resolution: {integrity: sha512-aXnw29OWQ6I5A47iuWEI6qSSUfH6G/aCsW9KmW3LiFqr7uXZBK4Ks+z8G+qeIub8k0T5CMqlT2q0L+ZJTMrqpg==}
+  /@mui/core-downloads-tracker@5.15.17:
+    resolution: {integrity: sha512-DVAejDQkjNnIac7MfP8sLzuo7fyrBPxNdXe+6bYqOqg1z2OPTlfFAejSNzWe7UenRMuFu9/AyFXj/X2vN2w6dA==}
     dev: false
 
-  /@mui/material@5.15.15(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(react-dom@18.2.0)(react@18.3.1):
-    resolution: {integrity: sha512-3zvWayJ+E1kzoIsvwyEvkTUKVKt1AjchFFns+JtluHCuvxgKcLSRJTADw37k0doaRtVAsyh8bz9Afqzv+KYrIA==}
+  /@mui/material@5.15.17(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(react-dom@18.2.0)(react@18.3.1):
+    resolution: {integrity: sha512-ru/MLvTkCh0AZXmqwIpqGTOoVBS/sX48zArXq/DvktxXZx4fskiRA2PEc7Rk5ZlFiZhKh4moL4an+l8zZwq49Q==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0
@@ -2281,7 +2281,7 @@ packages:
       '@emotion/react': 11.11.4(react@18.3.1)
       '@emotion/styled': 11.11.5(@emotion/react@11.11.4)(react@18.3.1)
       '@mui/base': 5.0.0-beta.40(react-dom@18.2.0)(react@18.3.1)
-      '@mui/core-downloads-tracker': 5.15.15
+      '@mui/core-downloads-tracker': 5.15.17
       '@mui/system': 5.15.15(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(react@18.3.1)
       '@mui/types': 7.2.14
       '@mui/utils': 5.15.14(react@18.3.1)
