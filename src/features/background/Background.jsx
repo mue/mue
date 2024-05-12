@@ -44,14 +44,6 @@ export default class Background extends PureComponent {
 
     if (this.state.url !== '') {
       let url = this.state.url;
-      if (
-        localStorage.getItem('ddgProxy') === 'true' &&
-        this.state.photoInfo.offline !== true &&
-        !this.state.url.startsWith('data:')
-      ) {
-        url = variables.constants.DDG_IMAGE_PROXY + this.state.url;
-      }
-
       const photoInformation = document.querySelector('.photoInformation');
 
       // just set the background

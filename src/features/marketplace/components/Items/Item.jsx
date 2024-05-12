@@ -21,7 +21,6 @@ import { Button } from 'components/Elements';
 import { install, uninstall } from 'utils/marketplace';
 import { Carousel } from '../Elements/Carousel';
 import { ShareModal } from 'components/Elements';
-import { MdClose } from 'react-icons/md';
 
 class Item extends PureComponent {
   constructor(props) {
@@ -69,7 +68,7 @@ class Item extends PureComponent {
     }
 
     // prevent console error
-    let iconsrc = variables.constants.DDG_IMAGE_PROXY + this.props.data.icon;
+    let iconsrc = this.props.data.icon;
     if (!this.props.data.icon) {
       iconsrc = null;
     }
@@ -263,7 +262,7 @@ class Item extends PureComponent {
             className="itemInfo"
             style={{
               backgroundImage: `url("${
-                variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url
+                this.props.data.data.icon_url
               }")`,
             }}
           >
@@ -272,7 +271,7 @@ class Item extends PureComponent {
                 className="icon"
                 alt="icon"
                 draggable={false}
-                src={variables.constants.DDG_IMAGE_PROXY + this.props.data.data.icon_url}
+                src={this.props.data.data.icon_url}
               />
               {this.props.button}
               <div className="iconButtons">

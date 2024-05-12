@@ -415,14 +415,6 @@ class BackgroundOptions extends PureComponent {
             />
             <Action>
               <Checkbox
-                name="ddgProxy"
-                text={variables.getMessage(
-                  'modals.main.settings.sections.background.ddg_image_proxy',
-                )}
-                element=".other"
-                disabled={!usingImage}
-              />
-              <Checkbox
                 name="bgtransition"
                 text={variables.getMessage('modals.main.settings.sections.background.transition')}
                 element=".other"

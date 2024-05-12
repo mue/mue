@@ -2,8 +2,8 @@ import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
 import { BsGoogle } from 'react-icons/bs';
-import { SiDuckduckgo, SiMicrosoftbing, SiYahoo, SiBaidu } from 'react-icons/si';
-import { FaYandex } from 'react-icons/fa';
+import { SiDuckduckgo, SiMicrosoftbing, SiBaidu } from 'react-icons/si';
+import { FaYandex, FaYahoo } from 'react-icons/fa';
 import { Tooltip } from 'components/Elements';
 import { Autocomplete as AutocompleteInput } from './components/autocomplete';
 
@@ -191,7 +191,7 @@ export default class Search extends PureComponent {
         return <SiMicrosoftbing />;
       case 'Yahoo':
       case 'Yahoo! JAPAN':
-        return <SiYahoo />;
+        return <FaYahoo />;
       case 'Яндекс':
         return <FaYandex />;
       case '百度':

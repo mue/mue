@@ -224,10 +224,6 @@
     "value": true
   },
   {
-    "name": "quicklinksddgProxy",
-    "value": true
-  },
-  {
     "name": "backgroundFilterAmount",
     "value": 0
   },

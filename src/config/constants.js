@@ -2,7 +2,6 @@
 export const API_URL = 'https://api.muetab.com/v2';
 export const SPONSORS_URL = 'https://sponsors.muetab.com';
 export const GITHUB_URL = 'https://api.github.com';
-export const DDG_IMAGE_PROXY = 'https://external-content.duckduckgo.com/iu/?u=';
 export const OPENSTREETMAP_URL = 'https://www.openstreetmap.org';
 
 // Mue URLs
@@ -27,4 +26,4 @@ export const TWITTER_HANDLE = 'getmue';
 export const DISCORD_SERVER = 'zv8C9F8';
 export const OPENCOLLECTIVE_USERNAME = 'mue';
 
-export const VERSION = '7.0.1';
+export const VERSION = '7.1.0';

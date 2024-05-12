@@ -45,8 +45,7 @@ class Favourite extends PureComponent {
           let url = document
             .getElementById('backgroundImage')
             .style.backgroundImage.replace('url("', '')
-            .replace('")', '')
-            .replace(variables.constants.DDG_IMAGE_PROXY, '');
+            .replace('")', '');
 
           if (!url) {
             return;

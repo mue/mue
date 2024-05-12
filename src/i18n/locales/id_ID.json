@@ -192,7 +192,6 @@
           },
           "background": {
             "title": "Background",
-            "ddg_image_proxy": "Gunakan proksi gambar DuckDuckGo",
             "transition": "Transisi Fade-in",
             "photo_information": "Tampilkan informasi foto",
             "show_map": "Tampilkan informasi lokasi foto jika ada",
@@ -636,7 +635,6 @@
           "title": "Opsi Privasi",
           "description": "Aktifkan pegaturan sehingga Mue dapat melindungi privasi Anda.",
           "offline_mode_description": "Mengaktifkan mode luring akan menghalangi request ke semua layanan, termasuk Background Online, Kutipan Daring, Marketplace, Cuaca, Pranala Cepat, Change Log, dan beberapa informasi tentang tab.",
-          "ddg_proxy_description": "Anda dapat membuat permintaan gambar melalui DuckDuckGo jika Anda mau. Secara bawaan, permintaan API dilakukan melalui peladen terbuka kami sedangkan permintaan gambar melalui peladen original. Menonaktifkan pengaturan ini untuk Pranala Cepat akan mendapatkan ikon dari Google, bukan DuckDuckGo. Proksi DuckDuckGo selalu diaktifkan untuk Marketplace.",
           "links": {
             "title": "Pranala",
             "privacy_policy": "Kebijakan Privasi",

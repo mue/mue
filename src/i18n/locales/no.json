@@ -192,7 +192,6 @@
           },
           "background": {
             "title": "Bakgrunn",
-            "ddg_image_proxy": "Use DuckDuckGo image proxy",
             "transition": "Fade-in transition",
             "photo_information": "Show photo information",
             "show_map": "Show location map on photo information if available",
@@ -636,7 +635,6 @@
           "title": "Privacy Options",
           "description": "Enable settings to further protect your privacy with Mue.",
           "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
-          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
           "links": {
             "title": "Links",
             "privacy_policy": "Privacy Policy",

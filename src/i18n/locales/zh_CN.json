@@ -192,7 +192,6 @@
           },
           "background": {
             "title": "背景",
-            "ddg_image_proxy": "使用 DuckDuckGo 图像代理",
             "transition": "过渡动画",
             "photo_information": "显示图片信息",
             "show_map": "在图片信息内显示位置信息 (如果可用)",
@@ -636,7 +635,6 @@
           "title": "隐私设置",
           "description": "进行一些设置来和 Mue 更好的保护您的隐私",
           "offline_mode_description": "启用离线模式将会关闭所有服务的网络访问。该选项会关闭所有在线背景图片、在线名言警句、插件市场、天气、快捷方式、更新历史和一些关于信息的网络访问。",
-          "ddg_proxy_description": "你可以选择通过 DuckDuckGo 代理获取图像来保护您的信息。默认情况下，Mue的服务API会请求我们的开源服务器，图像请求会使用源服务器。关闭快捷方式图标代理将会访问Google而非DuckDuckGo来获取快捷方式的图标。插件商店默认始终使用 DuckDuckGo 的代理",
           "links": {
             "title": "链接",
             "privacy_policy": "隐私政策",

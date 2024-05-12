@@ -3,7 +3,6 @@ import React, { memo } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 
 import { Button } from 'components/Elements';
-import MemoizedLightbox from '../Elements/Lightbox/Lightbox';
 
 function Items({
   type,
@@ -69,14 +68,14 @@ function Items({
                 className="item-back"
                 alt=""
                 draggable={false}
-                src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
+                src={item.icon_url}
                 aria-hidden="true"
               />
               <img
                 className="item-icon"
                 alt="icon"
                 draggable={false}
-                src={variables.constants.DDG_IMAGE_PROXY + item.icon_url}
+                src={item.icon_url}
               />
               <div className="card-details">
                 <span className="card-title">{item.display_name || item.name}</span>

@@ -2,15 +2,16 @@ import { MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 import { Button } from 'components/Elements';
 import variables from 'config/variables';
 
-const Collection = ({ collection, toggle, collectionFunction }) => {
-  const { news, background_colour, img, display_name, description, name } = collection;
+const Collection = ({ collection, collectionFunction }) => {
+  const { news, background_colour, img, display_name, description } = collection;
 
   const getStyle = () => {
     if (news) {
       return { backgroundColor: background_colour };
     }
+
     return {
-      backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${variables.constants.DDG_IMAGE_PROXY + img}')`,
+      backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${img}')`,
     };
   };
 
@@ -38,16 +39,8 @@ const Collection = ({ collection, toggle, collectionFunction }) => {
           iconPlacement={'right'}
         />
       )}
-      {/*<Button
-                type="collection"
-                onClick={() => toggle('collection', name)}
-                icon={<MdOutlineArrowForward />}
-                label={variables.getMessage('modals.main.marketplace.explore_collection')}
-                iconPlacement="right"
-            />*/}
     </div>
   );
 };
 
-export default Collection;
-export { Collection };
+export { Collection as default, Collection };

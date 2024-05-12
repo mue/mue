@@ -3,8 +3,6 @@ import { MdOutlineArrowForwardIos, MdOutlineArrowBackIos } from 'react-icons/md'
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-import variables from 'config/variables';
-
 import './carousel.scss';
 
 function EmblaCarousel({ data }) {
@@ -56,7 +54,7 @@ function EmblaCarousel({ data }) {
             <div className="carousel_slide" key={index}>
               <div className="carousel_slide_inner">
                 <img
-                  src={variables.constants.DDG_IMAGE_PROXY + photo.url.default}
+                  src={photo.url.default}
                   alt="Marketplace example screenshot"
                 />
               </div>

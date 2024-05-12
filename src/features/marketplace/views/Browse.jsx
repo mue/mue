@@ -344,7 +344,7 @@ class Marketplace extends PureComponent {
             <div
               className="collectionPage"
               style={{
-                backgroundImage: `linear-gradient(to bottom, transparent, black), url('${variables.constants.DDG_IMAGE_PROXY + this.state.collectionImg}')`,
+                backgroundImage: `linear-gradient(to bottom, transparent, black), url('${this.state.collectionImg}')`,
               }}
             >
               <div className="nice-tag">
@@ -415,7 +415,7 @@ class Marketplace extends PureComponent {
                     item.news
                       ? { backgroundColor: item.background_colour }
                       : {
-                          backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${variables.constants.DDG_IMAGE_PROXY + item.img}')`,
+                          backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
                         }
                   }
                 >

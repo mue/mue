@@ -96,18 +96,13 @@ function PhotoInformation({ info, url, api }) {
     );
   }
 
-  const ddgProxy = localStorage.getItem('ddgProxy') === 'true';
-
   // get resolution
   const img = new Image();
   img.onload = (event) => {
     setWidth(event.target.width);
     setHeight(event.target.height);
   };
-  img.src =
-    ddgProxy && !info.offline && !url.startsWith('data:')
-      ? variables.constants.DDG_IMAGE_PROXY + url
-      : url;
+  img.src = url;
 
   // info is still there because we want the favourite button to work
   if (localStorage.getItem('photoInformation') === 'false') {

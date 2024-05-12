@@ -192,7 +192,6 @@
           },
           "background": {
             "title": "Arka Plan",
-            "ddg_image_proxy": "DuckDuckGo görüntü proxy'sini kullan.",
             "transition": "Geçiş sırasında solma efekti uygula.",
             "photo_information": "Fotoğraf bilgilerini göster.",
             "show_map": "Varsa fotoğraf bilgilerinde konum bilgisini göster.",
@@ -636,7 +635,6 @@
           "title": "Gizlilik Seçenekleri",
           "description": "Mue ile gizliliğinizi daha da korumak için ayarları etkinleştirin.",
           "offline_mode_description": "Çevrimdışı modu etkinleştirmek, herhangi bir hizmete yönelik tüm istekleri devre dışı bırakır. Bu durum çevrimiçi arka planlar, çevrimiçi alıntılar, market, hava durumu, hızlı bağlantılar, değişiklik günlüğü ve bazı sekme bilgilerinin devre dışı bırakılmasıyla sonuçlanacaktır.",
-          "ddg_proxy_description": "Dilerseniz resim isteklerini DuckDuckGo üzerinden gerçekleştirebilirsiniz. Varsayılan olarak, API istekleri açık kaynak sunucularımızdan ve görüntü istekleri orijinal sunucudan geçer. Hızlı bağlantılar için bunu kapatmak, simgeleri DuckDuckGo yerine Google'dan alır. DuckDuckGo proxy, Market için her zaman etkindir.",
           "links": {
             "title": "Bağlantılar",
             "privacy_policy": "Gizlilik Politikası",

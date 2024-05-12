@@ -192,7 +192,6 @@
           },
           "background": {
             "title": "Fondo",
-            "ddg_image_proxy": "Utilizar el proxy de imágenes de DuckDuckGo",
             "transition": "Transición fade-in",
             "photo_information": "Ver información de la foto",
             "show_map": "Mostrar el mapa de la ubicación en la información de la foto si está disponible",
@@ -636,7 +635,6 @@
           "title": "Opciones de privacidad",
           "description": "Activa estos ajustes para proteger aún más tu privacidad con Mue.",
           "offline_mode_description": "Al activar el modo offline se deshabilitarán todas las peticiones a cualquier servicio. Esto hará que se desactiven los fondos en línea, las citas en línea, la tienda, el tiempo, los enlaces rápidos, el registro de cambios y alguna información de la pestaña Acerca de.",
-          "ddg_proxy_description": "Puedes hacer que las solicitudes de imágenes pasen por DuckDuckGo si lo deseas. Por defecto, las solicitudes a la API van a tráves de nuestros servidores de código abierto y las solicitudes de imágenes van a través del servidor original. Si desactivas esta opción para los enlaces rápidos y los iconos de obtendrán de Google en lugar de DuckDuckGo. El proxy de DuckDuckGo está siempre activado para la tienda.",
           "links": {
             "title": "Enlaces",
             "privacy_policy": "Política de privacidad",

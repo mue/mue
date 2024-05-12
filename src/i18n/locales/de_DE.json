@@ -192,7 +192,6 @@
           },
           "background": {
             "title": "Hintergrund",
-            "ddg_image_proxy": "DuckDuckGo Bilder Proxy verwenden",
             "transition": "Weicher übergang",
             "photo_information": "Foto-Informationen anzeigen",
             "show_map": "Standortkarte auf dem Foto anzeigen, falls verfügbar",
@@ -636,7 +635,6 @@
           "title": "Datenschutz Optionen",
           "description": "Aktivieren Sie die Einstellungen, um Ihre Privatsphäre mit Mue weiter zu schützen.",
           "offline_mode_description": "Wenn Sie den Offline-Modus aktivieren, werden alle Anfragen an jeden Dienst deaktiviert. Dies hat zur Folge, dass Online-Hintergründe, Online-Zitate, Marktplatz, Wetter, Quicklinks, Änderungshinweise und einige Informationen über die Registerkarte deaktiviert werden.",
-          "ddg_proxy_description": "Sie können Bildanfragen über DuckDuckGo laufen lassen, wenn Sie dies wünschen. Standardmäßig laufen API-Anfragen über unsere Open-Source-Server und Bildanfragen über den ursprünglichen Server. Wenn Sie dies für Quicklinks deaktivieren, werden die Symbole von Google statt von DuckDuckGo abgerufen. Der DuckDuckGo-Proxy ist für den Marketplace immer aktiviert.",
           "links": {
             "title": "Links",
             "privacy_policy": "Datenschutzerklärung",

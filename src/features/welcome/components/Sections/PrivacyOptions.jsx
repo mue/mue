@@ -18,20 +18,6 @@ function OfflineMode() {
   );
 }
 
-function DuckDuckGoProxy() {
-  return (
-    <>
-      <Checkbox
-        name="ddgProxy"
-        text={`${variables.getMessage('modals.main.settings.sections.background.ddg_image_proxy')} (${variables.getMessage('modals.main.settings.sections.background.title')})`}
-      />
-      <span className="subtitle">
-        {variables.getMessage('modals.welcome.sections.privacy.ddg_proxy_description')}
-      </span>
-    </>
-  );
-}
-
 function Links() {
   return (
     <>
@@ -69,7 +55,6 @@ function PrivacyOptions() {
         subtitle={variables.getMessage('modals.welcome.sections.privacy.description')}
       />
       <OfflineMode />
-      <DuckDuckGoProxy />
       <Links />
     </Content>
   );
