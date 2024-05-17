@@ -2,7 +2,7 @@ import { memo } from 'react';
 import variables from 'config/variables';
 import { MdClose, MdRestartAlt } from 'react-icons/md';
 import { setDefaultSettings } from 'utils/settings';
-import { Tooltip } from 'components/Elements';
+import { Tooltip, Button } from 'components/Elements';
 
 function ResetModal({ modalClose }) {
   const reset = () => {
@@ -32,14 +32,8 @@ function ResetModal({ modalClose }) {
         {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.information')}
       </span>
       <div className="resetFooter">
-        <button className="textButton" onClick={modalClose}>
-          <MdClose />
-          {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
-        </button>
-        <button onClick={() => reset()}>
-          <MdRestartAlt />
-          {variables.getMessage('modals.main.settings.buttons.reset')}
-        </button>
+        <Button type="secondary" onClick={modalClose} icon={<MdClose />} label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')} />
+        <Button type="settings" onClick={() => reset()} icon={<MdRestartAlt />} label={variables.getMessage('modals.main.settings.buttons.reset')} />
       </div>
     </div>
   );

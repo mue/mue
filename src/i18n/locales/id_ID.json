@@ -261,16 +261,7 @@
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
             "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)",
-            "interval": {
-              "title": "Ubah setiap",
-              "subtitle": "Change how often the background is updated",
-              "minute": "Menit",
-              "half_hour": "Setengah jam",
-              "hour": "Jam",
-              "day": "Hari",
-              "month": "Bulan"
-            }
+            "api_subtitle": "Options for getting an image from an external service (API)"
           },
           "search": {
             "title": "Cari",

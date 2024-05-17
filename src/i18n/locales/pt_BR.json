@@ -261,16 +261,7 @@
             "display": "Tela",
             "display_subtitle": "Alterar como as informações de plano de fundo e foto são carregadas",
             "api": "Configurações da API",
-            "api_subtitle": "Opções para obter uma imagem de um serviço externo (API)",
-            "interval": {
-              "title": "mudar a cada",
-              "subtitle": "Alterar a frequência com que o plano de fundo é atualizado",
-              "minute": "Minuto",
-              "half_hour": "Meia hora",
-              "hour": "Hora",
-              "day": "Dia",
-              "month": "Mês"
-            }
+            "api_subtitle": "Opções para obter uma imagem de um serviço externo (API)"
           },
           "search": {
             "title": "Pesquisar",

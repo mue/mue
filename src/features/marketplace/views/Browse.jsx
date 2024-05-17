@@ -337,7 +337,7 @@ class Marketplace extends PureComponent {
           <>
             <Header
               title={variables.getMessage('modals.main.navbar.marketplace')}
-              secondaryTitle={variables.getMessage('modals.main.marketplace.collection')}
+              secondaryTitle={this.state.collectionTitle}
               report={false}
               goBack={() => this.returnToMain()}
             />

@@ -11,7 +11,7 @@ import {
 import { exportSettings, importSettings } from 'utils/settings';
 
 import { FileUpload, Text, Switch, Dropdown } from 'components/Form/Settings';
-import { ResetModal } from 'components/Elements';
+import { ResetModal, Button } from 'components/Elements';
 
 import { Header, Section, Row, Content, Action } from 'components/Layout/Settings';
 
@@ -32,19 +32,10 @@ function AdvancedOptions() {
               'modals.main.settings.sections.advanced.data_description',
             )}
           />
-          <div className="action activityButtons">
-            <button onClick={() => setResetModal(true)}>
-              {variables.getMessage('modals.main.settings.buttons.reset')}
-              <ResetIcon />
-            </button>
-            <button onClick={() => exportSettings()}>
-              {variables.getMessage('modals.main.settings.buttons.export')}
-              <ExportIcon />
-            </button>
-            <button onClick={() => document.getElementById('file-input').click()}>
-              {variables.getMessage('modals.main.settings.buttons.import')}
-              <ImportIcon />
-            </button>
+          <div className="resetDataButtonsLayout">
+            <Button onClick={() => setResetModal(true)} icon={<ResetIcon />} label={variables.getMessage('modals.main.settings.buttons.reset')} />
+            <Button onClick={() => exportSettings()} icon={<ExportIcon />} label={variables.getMessage('modals.main.settings.buttons.export')} />
+            <Button onClick={() => document.getElementById('file-input').click()} icon={<ImportIcon />} label={variables.getMessage('modals.main.settings.buttons.import')} />
           </div>
           <FileUpload
             id="file-input"

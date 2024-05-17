@@ -261,16 +261,7 @@
             "display": "Anzeige",
             "display_subtitle": "Ändern Sie, wie Hintergrund- und Fotodaten geladen werden",
             "api": "API Einstellung",
-            "api_subtitle": "Optionen für den Abruf eines Bildes von einem externen Anbieter (API)",
-            "interval": {
-              "title": "Ändern Sie alle",
-              "subtitle": "Ändern Sie, wie oft der Hintergrund aktualisiert wird",
-              "minute": "Minute",
-              "half_hour": "Halbe Stunde",
-              "hour": "Stunde",
-              "day": "Tag",
-              "month": "Monat"
-            }
+            "api_subtitle": "Optionen für den Abruf eines Bildes von einem externen Anbieter (API)"
           },
           "search": {
             "title": "Suche",

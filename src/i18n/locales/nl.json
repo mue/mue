@@ -261,16 +261,7 @@
             "display": "Weergave",
             "display_subtitle": "Verander hoe achtergrond- en foto informatie geladen wordt",
             "api": "API Instellingen",
-            "api_subtitle": "Opties voor het verkrijgen van afbeeldingen van externe bronnen (API)",
-            "interval": {
-              "title": "Change every",
-              "subtitle": "Verander hoe vaak de achtergrond geüpdatet wordt",
-              "minute": "Minute",
-              "half_hour": "Half hour",
-              "hour": "Hour",
-              "day": "Day",
-              "month": "Month"
-            }
+            "api_subtitle": "Opties voor het verkrijgen van afbeeldingen van externe bronnen (API)"
           },
           "search": {
             "title": "Zoekbalk",

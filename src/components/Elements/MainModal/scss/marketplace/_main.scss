@@ -433,15 +433,17 @@ p.author {
 }
 
 .inCollection {
-  background-image: linear-gradient(to left, transparent, #000),
-    url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
+  // background-image: linear-gradient(to left, transparent, #000),
+  //  url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
   display: flex;
   flex-flow: column;
   gap: 15px;
   padding: 15px;
+  margin-top: 15px;
 
   @include themed {
-    box-shadow: 0 0 0 4px t($modal-sidebarActive);
+    background-color: t($modal-secondaryColour);
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
     border-radius: t($borderRadius);
   }
 }

@@ -10,7 +10,6 @@ import EventBus from 'utils/eventbus';
 import { supportsAVIF } from './api/avif';
 import { getOfflineImage } from './api/getOfflineImage';
 import videoCheck from './api/videoCheck';
-import { getGradient } from './api/gradient';
 import { randomColourStyleBuilder } from './api/randomColour';
 
 import './scss/index.scss';
@@ -208,10 +207,23 @@ export default class Background extends PureComponent {
         break;
 
       case 'colour':
-        const gradient = getGradient();
-        if (gradient) {
-          this.setState(gradient);
+        let customBackgroundColour = localStorage.getItem('customBackgroundColour');
+        // check if its a json object
+        if (customBackgroundColour && customBackgroundColour.startsWith('{')) {
+          const customBackground = JSON.parse(customBackgroundColour);
+          // move to new format
+          try {
+            localStorage.setItem('customBackgroundColour', customBackground.gradient[0].colour);
+            customBackgroundColour = customBackground.gradient.colour;
+          } catch (e) {
+            // give up
+            customBackgroundColour = 'rgb(0,0,0)';
+          }
         }
+        this.setState({
+          type: 'colour',
+          style: `background: ${customBackgroundColour || 'rgb(0,0,0)'}`,
+        });
         break;
 
       case 'random_colour':

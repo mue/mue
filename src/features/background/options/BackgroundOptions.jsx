@@ -3,18 +3,15 @@ import { PureComponent } from 'react';
 import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
 
 import { Header } from 'components/Layout/Settings';
-import Checkbox from '../../../components/Form/Settings/Checkbox/Checkbox';
-import ChipSelect from '../../../components/Form/Settings/ChipSelect/ChipSelect';
-import Dropdown from '../../../components/Form/Settings/Dropdown/Dropdown';
-import Slider from '../../../components/Form/Settings/Slider/Slider';
-import Radio from '../../../components/Form/Settings/Radio/Radio';
-import { Row, Content, Action } from '../../../components/Layout/Settings/Item/SettingsItem';
-import Text from '../../../components/Form/Settings/Text/Text';
+import { Checkbox, Dropdown, Slider, Radio, Text, ChipSelect } from 'components/Form/Settings';
+import { Row, Content, Action } from 'components/Layout/Settings/Item/SettingsItem';
+//import Text from 'components/Form/Settings/Text/Text';
 
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';
 
 import values from 'utils/data/slider_values.json';
+import { APIQualityOptions, backgroundImageEffects, getBackgroundOptionItems } from './optionTypes';
 
 class BackgroundOptions extends PureComponent {
   constructor() {
@@ -90,47 +87,6 @@ class BackgroundOptions extends PureComponent {
   }
 
   render() {
-    /* const interval = (
-      <Row
-        final={
-          localStorage.getItem('photo_packs') &&
-          this.state.backgroundType !== 'custom' &&
-          this.state.backgroundType !== 'colour' &&
-          this.state.backgroundType !== 'api'
-        }
-      >
-      <Content         title={variables.getMessage('modals.main.settings.sections.background.interval.title')}
-        subtitle={variables.getMessage(
-          'modals.main.settings.sections.background.interval.subtitle',
-        )} />
-        <Action>
-        <Dropdown
-          label={variables.getMessage('modals.main.settings.sections.background.interval.title')}
-          name="backgroundchange"
-          name2="backgroundStartTime"
-          value2={Date.now()}
-        >
-          <option value="refresh">{variables.getMessage('tabname')}</option>
-          <option value="60000">
-            {variables.getMessage('modals.main.settings.sections.background.interval.minute')}
-          </option>
-          <option value="1800000">
-            {variables.getMessage('modals.main.settings.sections.background.interval.half_hour')}
-          </option>
-          <option value="3600000">
-            {variables.getMessage('modals.main.settings.sections.background.interval.hour')}
-          </option>
-          <option value="86400000">
-            {variables.getMessage('modals.main.settings.sections.background.interval.day')}
-          </option>
-          <option value="604800000">{variables.getMessage('widgets.date.week')}</option>
-          <option value="2628000000">
-            {variables.getMessage('modals.main.settings.sections.background.interval.month')}
-          </option>
-        </Dropdown>
-        </Action>
-      </Row>
-    );*/
 
     const APISettings = (
       <>
@@ -170,32 +126,7 @@ class BackgroundOptions extends PureComponent {
               )}
               name="apiQuality"
               element=".other"
-              items={[
-                {
-                  value: 'original',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.quality.original',
-                  ),
-                },
-                {
-                  value: 'high',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.quality.high',
-                  ),
-                },
-                {
-                  value: 'normal',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.quality.normal',
-                  ),
-                },
-                {
-                  value: 'datasaver',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.quality.datasaver',
-                  ),
-                },
-              ]}
+              items={APIQualityOptions}
             />
             <Radio
               title="API"
@@ -333,42 +264,7 @@ class BackgroundOptions extends PureComponent {
                   name="backgroundType"
                   onChange={(value) => this.setState({ backgroundType: value })}
                   category="background"
-                  items={[
-                    this.state.marketplaceEnabled && {
-                      value: 'photo_pack',
-                      text: variables.getMessage('modals.main.navbar.marketplace'),
-                    },
-                    {
-                      value: 'api',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.api',
-                      ),
-                    },
-                    {
-                      value: 'custom',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.custom_image',
-                      ),
-                    },
-                    {
-                      value: 'colour',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.custom_colour',
-                      ),
-                    },
-                    {
-                      value: 'random_colour',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.random_colour',
-                      ),
-                    },
-                    {
-                      value: 'random_gradient',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.random_gradient',
-                      ),
-                    },
-                  ]}
+                  items={getBackgroundOptionItems(this.state.marketplaceEnabled)}
                 />
               </div>
             </div>
@@ -460,51 +356,11 @@ class BackgroundOptions extends PureComponent {
                   name="backgroundType"
                   onChange={(value) => this.setState({ backgroundType: value })}
                   category="background"
-                  items={[
-                    this.state.marketplaceEnabled && {
-                      value: 'photo_pack',
-                      text: variables.getMessage('modals.main.navbar.marketplace'),
-                    },
-                    {
-                      value: 'api',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.api',
-                      ),
-                    },
-                    {
-                      value: 'custom',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.custom_image',
-                      ),
-                    },
-                    {
-                      value: 'colour',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.custom_colour',
-                      ),
-                    },
-                    {
-                      value: 'random_colour',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.random_colour',
-                      ),
-                    },
-                    {
-                      value: 'random_gradient',
-                      text: variables.getMessage(
-                        'modals.main.settings.sections.background.type.random_gradient',
-                      ),
-                    },
-                  ]}
+                  items={getBackgroundOptionItems(this.state.marketplaceEnabled)}
                 />
               </Action>
             </Row>
-            {/* // todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
-            {/*{this.state.backgroundType === 'api' ||
-            this.state.backgroundType === 'custom' ||
-            this.state.marketplaceEnabled
-              ? interval
-                  : null}*/}
+            {/*  todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
             {backgroundSettings}
           </>
         )}
@@ -530,7 +386,7 @@ class BackgroundOptions extends PureComponent {
                 default="0"
                 display="%"
                 marks={values.background}
-                category="background"
+                category="backgroundeffect"
                 element="#backgroundImage"
               />
               <Slider
@@ -554,44 +410,7 @@ class BackgroundOptions extends PureComponent {
                 onChange={(value) => this.setState({ backgroundFilter: value })}
                 category="backgroundeffect"
                 element="#backgroundImage"
-                items={[
-                  {
-                    value: 'none',
-                    text: variables.getMessage(
-                      'modals.main.settings.sections.appearance.navbar.refresh_options.none',
-                    ),
-                  },
-                  {
-                    value: 'grayscale',
-                    text: variables.getMessage(
-                      'modals.main.settings.sections.background.effects.filters.grayscale',
-                    ),
-                  },
-                  {
-                    value: 'sepia',
-                    text: variables.getMessage(
-                      'modals.main.settings.sections.background.effects.filters.sepia',
-                    ),
-                  },
-                  {
-                    value: 'invert',
-                    text: variables.getMessage(
-                      'modals.main.settings.sections.background.effects.filters.invert',
-                    ),
-                  },
-                  {
-                    value: 'saturate',
-                    text: variables.getMessage(
-                      'modals.main.settings.sections.background.effects.filters.saturate',
-                    ),
-                  },
-                  {
-                    value: 'contrast',
-                    text: variables.getMessage(
-                      'modals.main.settings.sections.background.effects.filters.contrast',
-                    ),
-                  },
-                ]}
+                items={backgroundImageEffects}
               />
               {this.state.backgroundFilter !== 'none' && (
                 <Slider

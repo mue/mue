@@ -261,16 +261,7 @@
             "display": "প্রদর্শন",
             "display_subtitle": "পটভূমি এবং ছবির তথ্য কিভাবে লোড হয় তা পরিবর্তন করুন",
             "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)",
-            "interval": {
-              "title": "Change every",
-              "subtitle": "Change how often the background is updated",
-              "minute": "Minute",
-              "half_hour": "Half hour",
-              "hour": "Hour",
-              "day": "Day",
-              "month": "Month"
-            }
+            "api_subtitle": "Options for getting an image from an external service (API)"
           },
           "search": {
             "title": "Search",

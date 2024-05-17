@@ -261,16 +261,7 @@
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
             "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)",
-            "interval": {
-              "title": "Cambiar cada",
-              "subtitle": "Change how often the background is updated",
-              "minute": "Minuto",
-              "half_hour": "Media hora",
-              "hour": "Hora",
-              "day": "Día",
-              "month": "Mes"
-            }
+            "api_subtitle": "Options for getting an image from an external service (API)"
           },
           "search": {
             "title": "Búsqueda",

@@ -76,6 +76,7 @@ class Overview extends PureComponent {
     toast(variables.getMessage('toasts.reset'));
   };
 
+  
   enabled = (setting) => {
     switch (setting) {
       case 'quicklinks':
@@ -160,14 +161,14 @@ class Overview extends PureComponent {
                 })}
               </div>
             </div>
-            <div className="overviewNews">
+            {/*<div className="overviewNews">
               <span className="title">{this.state.news.title}</span>
               <span className="subtitle">{this.state.news.date}</span>
               <span className="content">{this.state.news.description}</span>
               <a className="link" href={this.state.news.link}>
                 {this.state.news.linkText}
               </a>
-            </div>
+              </div>*/}
           </div>
           <div>
             <span className="title">

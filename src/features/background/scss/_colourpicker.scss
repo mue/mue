@@ -1,0 +1,41 @@
+@import 'scss/variables';
+
+#rbgcp-solid-btn,
+#rbgcp-hex-input,
+#rbgcp-input,
+#rbgcp-eyedropper-btn,
+#rbgcp-advanced-btn,
+#rbgcp-comparibles-btn,
+#rbgcp-color-model-btn,
+#rbgcp-gradient-controls-wrap div {
+  @include themed {
+    background: t($btn-background) !important;
+  }
+}
+
+#rbgcp-gradient-btn:hover,
+#rbgcp-solid-btn:hover,
+#rbgcp-eyedropper-btn:hover,
+#rbgcp-advanced-btn:hover,
+#rbgcp-comparibles-btn:hover,
+#rbgcp-color-model-btn:hover,
+#rbgcp-point-delete-btn:hover,
+#rbgcp-gradient-controls-wrap div:hover {
+  cursor: pointer;
+
+  @include themed {
+    background: t($btn-backgroundHover) !important;
+  }
+}
+
+#rbgcp-gradient-controls-wrap {
+  background: none !important;
+}
+
+#rbgcp-point-delete-btn {
+  @include themed {
+    background: t($btn-background) !important;
+  }
+
+  height: 28px;
+}

@@ -55,4 +55,5 @@ function ChipSelect({ label, options }) {
   );
 }
 
-export default memo(ChipSelect);
+const MemoizedChipSelect = memo(ChipSelect);
+export { ChipSelect as default, MemoizedChipSelect as ChipSelect };

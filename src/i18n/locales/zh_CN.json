@@ -261,16 +261,7 @@
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
             "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)",
-            "interval": {
-              "title": "更改频率",
-              "subtitle": "Change how often the background is updated",
-              "minute": "每分钟",
-              "half_hour": "每半小时",
-              "hour": "每小时",
-              "day": "每天",
-              "month": "每月"
-            }
+            "api_subtitle": "Options for getting an image from an external service (API)"
           },
           "search": {
             "title": "搜索栏",

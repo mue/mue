@@ -166,7 +166,7 @@ class Stats extends PureComponent {
               )}
               {statsElement(
                 variables.getMessage(`${STATS_SECTION}.sections.addons_installed`),
-                this.state.stats.marketplace['install'] ? this.state.stats.marketplace['install'].length : 0,
+                this.state.stats.marketplace && this.state.stats.marketplace['install'] ? this.state.stats.marketplace['install'].length : 0,
               )}
             </div>
           </div>

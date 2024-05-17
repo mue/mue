@@ -261,16 +261,7 @@
             "display": "Mostrar",
             "display_subtitle": "Cambiar cómo se carga la información de fondo y de la foto",
             "api": "Configuración de la API",
-            "api_subtitle": "Opciones para obtener una imagen de un servicio externo (API)",
-            "interval": {
-              "title": "Cambiar cada",
-              "subtitle": "Cambiar la frecuencia de actualización del fondo",
-              "minute": "Minuto",
-              "half_hour": "Media hora",
-              "hour": "Hora",
-              "day": "Día",
-              "month": "Mes"
-            }
+            "api_subtitle": "Opciones para obtener una imagen de un servicio externo (API)"
           },
           "search": {
             "title": "Búsqueda",

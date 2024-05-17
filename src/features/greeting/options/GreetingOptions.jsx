@@ -26,6 +26,14 @@ const GreetingOptions = () => {
     new Date(localStorage.getItem('birthday')) || new Date(),
   );
 
+  const [enableBirthday, setEnableBirthday] = useState(
+    localStorage.getItem('birthdayenabled') === 'true' ? '' : 'preferencesInactive'
+  );
+
+  const [enableCustomEvents, setEnableCustomEvents] = useState(
+    localStorage.getItem('events') === 'true' ? '' : 'preferencesInactive'
+  );
+
   const changeDate = (e) => {
     const newDate = e.target.value ? new Date(e.target.value) : new Date();
     localStorage.setItem('birthday', newDate);
@@ -34,7 +42,7 @@ const GreetingOptions = () => {
 
   const GREETING_SECTION = 'modals.main.settings.sections.greeting';
 
-  function addEvent() {
+  const addEvent = () => {
     // Retrieve the current array of events from localStorage
     const customEvents = JSON.parse(localStorage.getItem('customEvents')) || [];
 
@@ -56,9 +64,9 @@ const GreetingOptions = () => {
     localStorage.setItem('customEvents', JSON.stringify(customEvents));
 
     setCustomEvents(updatedEvents);
-  }
+  };
 
-  function removeEvent(index) {
+  const removeEvent = (index) => {
     // Remove the event at the given index
     const updatedEvents = customEvents.filter((_, i) => i !== index);
 
@@ -67,17 +75,18 @@ const GreetingOptions = () => {
 
     // Update the state
     setCustomEvents(updatedEvents);
-  }
+  };
 
-  function resetEvents() {
+  const resetEvents = () => {
     // Reset the events array in localStorage
     localStorage.setItem('customEvents', JSON.stringify(defaultEvents));
 
     // Update the state
     setCustomEvents(defaultEvents);
-  }
+    toast(variables.getMessage('toasts.reset'));
+  };
 
-  function updateEvent(index, updatedEvent) {
+  const updateEvent = (index, updatedEvent) => {
     // Update the event in your state
     setCustomEvents((prevEvents) => {
       const newEvents = [...prevEvents];
@@ -89,7 +98,7 @@ const GreetingOptions = () => {
     const customEvents = JSON.parse(localStorage.getItem('customEvents') || '[]');
     customEvents[index] = updatedEvent;
     localStorage.setItem('customEvents', JSON.stringify(customEvents));
-  }
+  };
 
   const AdditionalOptions = () => {
     return (
@@ -129,20 +138,22 @@ const GreetingOptions = () => {
             text={variables.getMessage('modals.main.settings.enabled')}
             category="greeting"
           />
-          <Checkbox
-            name="birthdayage"
-            text={variables.getMessage(`${GREETING_SECTION}.birthday_age`)}
-            category="greeting"
-          />
-          <p style={{ marginRight: 'auto' }}>
-            {variables.getMessage(`${GREETING_SECTION}.birthday_date`)}
-          </p>
-          <input
-            type="date"
-            onChange={changeDate}
-            value={birthday.toISOString().substring(0, 10)}
-            required
-          />
+          <div class={enableBirthday}>
+            <Checkbox
+              name="birthdayage"
+              text={variables.getMessage(`${GREETING_SECTION}.birthday_age`)}
+              category="greeting"
+            />
+            <p style={{ marginRight: 'auto' }}>
+              {variables.getMessage(`${GREETING_SECTION}.birthday_date`)}
+            </p>
+            <input
+              type="date"
+              onChange={changeDate}
+              value={birthday.toISOString().substring(0, 10)}
+              required
+            />
+          </div>
         </Action>
       </Row>
     );
@@ -150,13 +161,23 @@ const GreetingOptions = () => {
 
   const CustomEventsSection = () => {
     return (
-      <>
+      <div class={enableCustomEvents}>
         <Row final={true}>
-          <Content title="Custom Events" />
+          <Content title={variables.getMessage(`${GREETING_SECTION}.custom`)} />
           <Action>
             <div className="headerActions">
-              <Button type="settings" onClick={resetEvents} icon={<MdRefresh />} label="Reset" />
-              <Button type="settings" onClick={addEvent} icon={<MdAdd />} label="Add" />
+              <Button
+                type="settings"
+                onClick={resetEvents}
+                icon={<MdRefresh />}
+                label={variables.getMessage('modals.main.settings.buttons.reset')}
+              />
+              <Button
+                type="settings"
+                onClick={addEvent}
+                icon={<MdAdd />}
+                label={variables.getMessage('widgets.quicklinks.add')}
+              />
             </div>
           </Action>
         </Row>
@@ -168,10 +189,12 @@ const GreetingOptions = () => {
                   <MdEventNote />
                 </div>
                 <div className="messageText">
-                  <span className="subtitle">Event Name</span>
+                  <span className="subtitle">
+                    {variables.getMessage(`${GREETING_SECTION}.event_name`)}
+                  </span>
                   <TextareaAutosize
                     value={event.name}
-                    placeholder="Event Name"
+                    placeholder={variables.getMessage(`${GREETING_SECTION}.event_name`)}
                     onChange={(e) => {
                       const updatedEvent = { ...event, name: e.target.value };
                       updateEvent(index, updatedEvent);
@@ -184,7 +207,9 @@ const GreetingOptions = () => {
               <div>
                 <div className="messageAction">
                   <div className="eventDateSelection">
-                    <label className="subtitle">Day:</label>
+                    <label className="subtitle">
+                      {variables.getMessage(`${GREETING_SECTION}.day`)}:
+                    </label>
                     <input
                       id="day"
                       type="tel"
@@ -195,7 +220,9 @@ const GreetingOptions = () => {
                       }}
                     />
                     <hr />
-                    <label className="subtitle">Month:</label>
+                    <label className="subtitle">
+                      {variables.getMessage(`${GREETING_SECTION}.month`)}:
+                    </label>
                     <input
                       id="month"
                       type="tel"
@@ -221,13 +248,20 @@ const GreetingOptions = () => {
           <div className="photosEmpty">
             <div className="emptyNewMessage">
               <MdEventNote />
-              <span className="title">No Events</span>
-              <span className="subtitle">Add Some Events</span>
-              <Button type="settings" onClick={addEvent} icon={<MdAdd />} label="Add Event" />
+              <span className="title">{variables.getMessage(`${GREETING_SECTION}.no_events`)}</span>
+              <span className="subtitle">
+                {variables.getMessage(`${GREETING_SECTION}.no_events_description`)}
+              </span>
+              <Button
+                type="settings"
+                onClick={addEvent}
+                icon={<MdAdd />}
+                label={variables.getMessage(`${GREETING_SECTION}.add_event`)}
+              />
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   };
 
@@ -260,7 +294,10 @@ const GreetingOptions = () => {
       {events ? (
         <>
           <Row>
-            <Content title="Events" subtitle="Enable events." />
+            <Content
+              title={variables.getMessage(`${GREETING_SECTION}.events`)}
+              subtitle={variables.getMessage(`${GREETING_SECTION}.enable_events`)}
+            />
             <Action>
               <Checkbox
                 name="events"
@@ -273,11 +310,16 @@ const GreetingOptions = () => {
           {CustomEventsSection()}
         </>
       ) : (
-        <PreferencesWrapper setting="greeting" zoomSetting="zoomGreeting" category="greeting" visibilityToggle={true}>
+        <PreferencesWrapper
+          setting="greeting"
+          zoomSetting="zoomGreeting"
+          category="greeting"
+          visibilityToggle={true}
+        >
           <AdditionalOptions />
           <Section
-            title="Events"
-            subtitle="Control events on Mue such as birthdays."
+            title={variables.getMessage(`${GREETING_SECTION}.events`)}
+            subtitle={variables.getMessage(`${GREETING_SECTION}.events_description`)}
             onClick={() => setEvents(true)}
             icon={<MdEventNote />}
           />

@@ -261,16 +261,7 @@
             "display": "Görüntüleme",
             "display_subtitle": "Arka plan ve fotoğraf bilgilerinin nasıl yüklendiğini değiştirin.",
             "api": "API Ayarları",
-            "api_subtitle": "Harici bir hizmetten (API) aracılığıyla görüntü alma seçeneklerini belirleyin.",
-            "interval": {
-              "title": "Değiştirme Sıklığı",
-              "subtitle": "Arka planın ne sıklıkla güncelleneceğini değiştirin.",
-              "minute": "Dakikada Bir",
-              "half_hour": "Yarım Saatte Bir",
-              "hour": "Saatte Bir",
-              "day": "Günde Bir",
-              "month": "Ayda Bir"
-            }
+            "api_subtitle": "Harici bir hizmetten (API) aracılığıyla görüntü alma seçeneklerini belirleyin."
           },
           "search": {
             "title": "Arama",

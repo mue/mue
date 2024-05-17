@@ -114,7 +114,11 @@ class Item extends PureComponent {
           />
         </Modal>
         <Header
-          title={variables.getMessage('modals.main.navbar.marketplace')}
+          title={
+            this.props.data.data.in_collections.length > 0
+              ? this.props.data.data.in_collections[0].display_name
+              : variables.getMessage('modals.main.navbar.marketplace')
+          }
           secondaryTitle={this.props.data.data.display_name}
           report={false}
           goBack={this.props.toggleFunction}
@@ -261,9 +265,7 @@ class Item extends PureComponent {
           <div
             className="itemInfo"
             style={{
-              backgroundImage: `url("${
-                this.props.data.data.icon_url
-              }")`,
+              backgroundImage: `url("${this.props.data.data.icon_url}")`,
             }}
           >
             <div className="front">
@@ -298,16 +300,15 @@ class Item extends PureComponent {
                   tooltipKey="report"
                 />
               </div>
-              {this.props.data.data.collection && (
-                <div className="inCollection">
-                  <span className="subtitle">
-                    {variables.getMessage('modals.main.marketplace.product.part_of')}
-                  </span>
-                  <span className="title">{this.props.data.data.collection}</span>
-                  <button>{variables.getMessage('modals.main.marketplace.product.explore')}</button>
-                </div>
-              )}
             </div>
+            {this.props.data.data.in_collections.length > 0 && (
+              <div className="inCollection">
+                <span className="subtitle">
+                  {variables.getMessage('modals.main.marketplace.product.part_of')}
+                </span>
+                <span className="title">{this.props.data.data.in_collections[0].display_name}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

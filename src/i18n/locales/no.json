@@ -261,16 +261,7 @@
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
             "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)",
-            "interval": {
-              "title": "Change every",
-              "subtitle": "Change how often the background is updated",
-              "minute": "Minute",
-              "half_hour": "Half hour",
-              "hour": "Hour",
-              "day": "Day",
-              "month": "Month"
-            }
+            "api_subtitle": "Options for getting an image from an external service (API)"
           },
           "search": {
             "title": "Søkebar",

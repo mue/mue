@@ -15,7 +15,8 @@ function Items({
 }) {
   return (
     <>
-      {(type === 'all' && !onCollection && (filter === null || filter === '')) ||
+      {(!onCollection &&
+        (filter === null || filter === '')) ||
       (type === 'collections' && !onCollection && (filter === null || filter === '')) ? (
         <>
           <div
@@ -57,10 +58,10 @@ function Items({
         {items
           ?.filter(
             (item) =>
-              item.name.toLowerCase().includes(filter.toLowerCase()) ||
+              item.name?.toLowerCase().includes(filter.toLowerCase()) ||
               filter === '' ||
-              item.author.toLowerCase().includes(filter.toLowerCase()) ||
-              item.type.toLowerCase().includes(filter.toLowerCase()),
+              item.author?.toLowerCase().includes(filter.toLowerCase()) ||
+              item.type?.toLowerCase().includes(filter.toLowerCase()),
           )
           .map((item) => (
             <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
@@ -71,12 +72,7 @@ function Items({
                 src={item.icon_url}
                 aria-hidden="true"
               />
-              <img
-                className="item-icon"
-                alt="icon"
-                draggable={false}
-                src={item.icon_url}
-              />
+              <img className="item-icon" alt="icon" draggable={false} src={item.icon_url} />
               <div className="card-details">
                 <span className="card-title">{item.display_name || item.name}</span>
                 <span className="card-subtitle">
@@ -92,7 +88,7 @@ function Items({
           ))}
       </div>
       <div className="loader"></div>
-      {type === 'all' && !onCollection ? (
+      {!onCollection ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />
           <span className="title">{variables.getMessage('modals.main.marketplace.cant_find')}</span>

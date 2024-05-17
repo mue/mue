@@ -4,6 +4,7 @@ import { useState, memo } from 'react';
 import { TextareaAutosize } from '@mui/material';
 import { MdAddLink, MdClose } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
+
 function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, editLink }) {
   const [name, setName] = useState(edit ? editData.name : '');
   const [url, setUrl] = useState(edit ? editData.url : '');

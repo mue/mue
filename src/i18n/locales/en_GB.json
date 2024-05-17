@@ -182,13 +182,22 @@
           "greeting": {
             "title": "Greeting",
             "events": "Events",
+            "events_description": "Control events on Mue such as birthdays.",
+            "enable_events": "Show messages on special days",
             "default": "Default greeting message",
             "name": "Name for greeting",
             "birthday": "Birthday",
             "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
             "birthday_age": "Birthday age",
             "birthday_date": "Birthday date",
-            "additional": "Settings for the greeting display"
+            "additional": "Settings for the greeting display",
+            "custom": "Custom events",
+            "event_name": "Event Name",
+            "day": "Day",
+            "month": "Month",
+            "no_events": "No Events",
+            "no_events_description": "Add Some Events",
+            "add_event": "Add Event"
           },
           "background": {
             "title": "Background",
@@ -261,16 +270,7 @@
             "display": "Display",
             "display_subtitle": "Change how background and photo information are loaded",
             "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)",
-            "interval": {
-              "title": "Change every",
-              "subtitle": "Change how often the background is updated",
-              "minute": "Minute",
-              "half_hour": "Half hour",
-              "hour": "Hour",
-              "day": "Day",
-              "month": "Month"
-            }
+            "api_subtitle": "Options for getting an image from an external service (API)"
           },
           "search": {
             "title": "Search",

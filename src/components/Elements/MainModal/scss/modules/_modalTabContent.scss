@@ -52,7 +52,6 @@
 
         button {
           margin-top: 10px;
-          width: 283px;
         }
 
         .link {
@@ -67,21 +66,21 @@
   }
 }
 
-.activityButtons {
-  place-content: space-between space-between !important;
-  align-items: flex-end !important;
-  flex-flow: row wrap !important;
-
-  button:not(:first-child) {
-    width: 40% !important;
-    height: 99px !important;
-    flex-flow: column-reverse !important;
+.resetDataButtonsLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;  
+  
+  :nth-child(1) {
+    grid-column: span 2;
   }
 
   button {
     @include modal-button(standard);
+    padding: 5px 10px 5px 10px;
   }
 }
+
 
 table {
   border-collapse: separate;
