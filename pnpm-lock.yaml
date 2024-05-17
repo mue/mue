@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^3.2.5
     version: 3.2.5
   sass:
-    specifier: ^1.77.1
-    version: 1.77.1
+    specifier: ^1.77.2
+    version: 1.77.2
   stylelint:
     specifier: ^16.5.0
     version: 16.5.0(typescript@5.4.5)
@@ -111,7 +111,7 @@ devDependencies:
     version: 6.3.0(stylelint@16.5.0)
   vite:
     specifier: 5.2.11
-    version: 5.2.11(@types/node@20.12.7)(sass@1.77.1)
+    version: 5.2.11(@types/node@20.12.7)(sass@1.77.2)
   vite-plugin-progress:
     specifier: ^0.0.7
     version: 0.0.7(vite@5.2.11)
@@ -2968,7 +2968,7 @@ packages:
       vite: ^4 || ^5
     dependencies:
       '@swc/core': 1.4.13
-      vite: 5.2.11(@types/node@20.12.7)(sass@1.77.1)
+      vite: 5.2.11(@types/node@20.12.7)(sass@1.77.2)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -5653,8 +5653,8 @@ packages:
       is-regex: 1.1.4
     dev: true
 
-  /sass@1.77.1:
-    resolution: {integrity: sha512-OMEyfirt9XEfyvocduUIOlUSkWOXS/LAt6oblR/ISXCTukyavjex+zQNm51pPCOiFKY1QpWvEH1EeCkgyV3I6w==}
+  /sass@1.77.2:
+    resolution: {integrity: sha512-eb4GZt1C3avsX3heBNlrc7I09nyT00IUuo4eFhAbeXWU2fvA7oXI53SxODVAA+zgZCk9aunAZgO+losjR3fAwA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -6186,10 +6186,10 @@ packages:
       picocolors: 1.0.0
       progress: 2.0.3
       rd: 2.0.1
-      vite: 5.2.11(@types/node@20.12.7)(sass@1.77.1)
+      vite: 5.2.11(@types/node@20.12.7)(sass@1.77.2)
     dev: true
 
-  /vite@5.2.11(@types/node@20.12.7)(sass@1.77.1):
+  /vite@5.2.11(@types/node@20.12.7)(sass@1.77.2):
     resolution: {integrity: sha512-HndV31LWW05i1BLPMUCE1B9E9GFbOu1MbenhS58FuK6owSO5qHm7GiCotrNY1YE5rMeQSFBGmT5ZaLEjFizgiQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6221,7 +6221,7 @@ packages:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.14.2
-      sass: 1.77.1
+      sass: 1.77.2
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
