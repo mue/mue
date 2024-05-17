@@ -62,7 +62,7 @@ p.description {
   }
 
   @include themed {
-    background: t($modal-sidebar);
+    background: t($modal-secondaryColour);
     box-shadow: 0 0 0 1px t($modal-sidebarActive);
     border-radius: t($borderRadius);
     padding: 15px;
