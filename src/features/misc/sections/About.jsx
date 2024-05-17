@@ -122,12 +122,11 @@ class About extends PureComponent {
   }
 
   render() {
-    const MUE_LOGO = new URL('/src/assets/icons/mue.svg', import.meta.url).href;
     return (
       <>
         <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
-            <img draggable={false} className="aboutLogo" src={MUE_LOGO} alt="Logo" />
+            <img draggable={false} className="aboutLogo" src={'src/assets/icons/mue_about.png'} alt="Logo" />
             <div className="aboutText">
               <span className="title">Mue, by Kaiso</span>
               <span className="subtitle">
