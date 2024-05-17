@@ -17,10 +17,7 @@ class About extends PureComponent {
       other_contributors: [],
       photographers: [],
       update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
-      loading: variables.getMessage('modals.main.loading'),
-      image: document.body.classList.contains('dark')
-        ? 'src/assets/icons/mue_about.png'
-        : 'src/assets/icons/mue_about.png',
+      loading: variables.getMessage('modals.main.loading')
     };
     this.controller = new AbortController();
   }
@@ -125,11 +122,12 @@ class About extends PureComponent {
   }
 
   render() {
+    const MUE_LOGO = new URL('/src/assets/icons/mue.svg', import.meta.url).href;
     return (
       <>
         <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
-            <img draggable={false} className="aboutLogo" src={this.state.image} alt="Logo" />
+            <img draggable={false} className="aboutLogo" src={MUE_LOGO} alt="Logo" />
             <div className="aboutText">
               <span className="title">Mue, by Kaiso</span>
               <span className="subtitle">

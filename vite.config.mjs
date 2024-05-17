@@ -43,6 +43,14 @@ const prepareBuilds = () => ({
           recursive: true,
         },
       );
+      fs.mkdirSync(path.resolve(__dirname, './build/chrome/src/assets'), { recursive: true });
+      fs.cpSync(
+        path.resolve(__dirname, './src/assets'),
+        path.resolve(__dirname, './build/chrome/src/assets'),
+        {
+          recursive: true,
+        },
+      );
 
       // firefox
       fs.mkdirSync(path.resolve(__dirname, './build/firefox'), { recursive: true });
@@ -60,6 +68,13 @@ const prepareBuilds = () => ({
       fs.cpSync(
         path.resolve(__dirname, './src/assets/icons'),
         path.resolve(__dirname, './build/firefox/icons'),
+        {
+          recursive: true,
+        },
+      );
+      fs.cpSync(
+        path.resolve(__dirname, './src/assets'),
+        path.resolve(__dirname, './build/firefox/src/assets'),
         {
           recursive: true,
         },
