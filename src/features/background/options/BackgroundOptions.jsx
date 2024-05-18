@@ -87,7 +87,6 @@ class BackgroundOptions extends PureComponent {
   }
 
   render() {
-
     const APISettings = (
       <>
         <Row final={this.state.backgroundAPI === 'mue'}>
@@ -149,17 +148,19 @@ class BackgroundOptions extends PureComponent {
         </Row>
         {this.state.backgroundAPI === 'unsplash' && (
           <Row final={true}>
-            <Action
+            <Content
               title={variables.getMessage(
                 'modals.main.settings.sections.background.unsplash.title',
               )}
-              subtitle={variables.getMessage('modals.main.settings.sections.background.subtitle')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.background.unsplash.subtitle',
+              )}
             />
             <Action>
               <Text
-                title={variables.getMessage('modals.main.settings.sections.background.id')}
+                title={variables.getMessage('modals.main.settings.sections.background.unsplash.id')}
                 subtitle={variables.getMessage(
-                  'modals.main.settings.sections.background.id_subtitle',
+                  'modals.main.settings.sections.background.unsplash.id_subtitle',
                 )}
                 placeholder="e.g. 123456, 654321"
                 name="unsplashCollections"

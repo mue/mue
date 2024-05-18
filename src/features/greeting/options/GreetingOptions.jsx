@@ -12,6 +12,8 @@ import {
 import { Checkbox, Switch, Text } from 'components/Form/Settings';
 import { TextareaAutosize } from '@mui/material';
 import { Button } from 'components/Elements';
+import { toast } from 'react-toastify';
+
 import defaultEvents from '../events.json';
 
 import { MdEventNote, MdAdd, MdCancel, MdRefresh } from 'react-icons/md';
@@ -27,11 +29,11 @@ const GreetingOptions = () => {
   );
 
   const [enableBirthday, setEnableBirthday] = useState(
-    localStorage.getItem('birthdayenabled') === 'true' ? '' : 'preferencesInactive'
+    localStorage.getItem('birthdayenabled') === 'true' ? 'preferences' : 'preferencesInactive'
   );
 
   const [enableCustomEvents, setEnableCustomEvents] = useState(
-    localStorage.getItem('events') === 'true' ? '' : 'preferencesInactive'
+    localStorage.getItem('events') === 'true' ? 'preferences' : 'preferencesInactive'
   );
 
   const changeDate = (e) => {
@@ -137,8 +139,9 @@ const GreetingOptions = () => {
             name="birthdayenabled"
             text={variables.getMessage('modals.main.settings.enabled')}
             category="greeting"
+            onChange={(value) => { setEnableBirthday(value ? 'preferences' : 'preferencesInactive'); }}
           />
-          <div class={enableBirthday}>
+          <div className={enableBirthday}>
             <Checkbox
               name="birthdayage"
               text={variables.getMessage(`${GREETING_SECTION}.birthday_age`)}
@@ -161,7 +164,7 @@ const GreetingOptions = () => {
 
   const CustomEventsSection = () => {
     return (
-      <div class={enableCustomEvents}>
+      <div className={enableCustomEvents}>
         <Row final={true}>
           <Content title={variables.getMessage(`${GREETING_SECTION}.custom`)} />
           <Action>
@@ -303,6 +306,7 @@ const GreetingOptions = () => {
                 name="events"
                 text={variables.getMessage(`${GREETING_SECTION}.events`)}
                 category="greeting"
+                onChange={(value) => { setEnableCustomEvents(value ? 'preferences' : 'preferencesInactive'); }}
               />
             </Action>
           </Row>

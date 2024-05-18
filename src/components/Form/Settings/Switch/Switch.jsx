@@ -20,6 +20,10 @@ class Switch extends PureComponent {
       checked: value,
     });
 
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
+
     variables.stats.postEvent(
       'setting',
       `${this.props.name} ${this.state.checked === true ? 'enabled' : 'disabled'}`,
