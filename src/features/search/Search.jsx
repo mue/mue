@@ -1,5 +1,6 @@
 import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
+
 import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
 import { BsGoogle } from 'react-icons/bs';
 import { SiDuckduckgo, SiMicrosoftbing, SiBaidu } from 'react-icons/si';
@@ -65,11 +66,11 @@ export default class Search extends PureComponent {
       window.searchResults = results;
     };
 
-    const results = await (await fetch(`https://ac.ecosia.org/?q=${input}`)).json();
+    const results = await (await fetch(`${variables.constants.API_URL}/search/autocomplete?q=${input}`)).json();
 
     try {
       this.setState({
-        suggestions: results.suggestions.splice(0, 3),
+        suggestions: results.suggestions.splice(0, 5),
       });
     } catch (e) {
       // ignore error if empty
