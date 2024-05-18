@@ -363,7 +363,7 @@ class About extends PureComponent {
           {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
             {this.state.photographers.map(({ name, count }) => (
-              <li className="subtitle-photographers">
+              <li key={name} className="subtitle-photographers">
                 {name}
                 <span> ({count} images)</span>
               </li>
