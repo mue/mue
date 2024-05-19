@@ -7,6 +7,8 @@ import { SiTencentqq } from 'react-icons/si';
 import Tooltip from '../Tooltip/Tooltip';
 import { toast } from 'react-toastify';
 
+import { Button } from 'components/Elements';
+
 import './sharemodal.scss';
 
 function ShareModal({ modalClose, data }) {
@@ -43,81 +45,77 @@ function ShareModal({ modalClose, data }) {
         </Tooltip>
       </div>
       <div className="shareButtons">
-        <Tooltip title="Twitter">
-          <button
-            onClick={() =>
-              window
-                .open(
-                  `https://twitter.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data.url}`,
-                  '_blank',
-                )
-                .focus()
-            }
-          >
-            <FaTwitter />
-          </button>
-        </Tooltip>
-        <Tooltip title="Facebook">
-          <button
-            onClick={() =>
-              window
-                .open(`https://www.facebook.com/sharer/sharer.php?u=${data.url}`, '_blank')
-                .focus()
-            }
-          >
-            <FaFacebookF />
-          </button>
-        </Tooltip>
-        <Tooltip title="Email">
-          <button
-            onClick={() =>
-              window
-                .open(
-                  'mailto:email@example.com?subject=Check%20out%20this%20%on%20%Mue!&body=' +
-                    data.data.name +
-                    'on Mue: ' +
-                    data,
-                  '_blank',
-                )
-                .focus()
-            }
-          >
-            <MdEmail />
-          </button>
-        </Tooltip>
-        <Tooltip title="WeChat">
-          <button
-            onClick={() =>
-              window
-                .open(
-                  `https://api.qrserver.com/v1/create-qr-code/?size=154x154&data=${data.url}`,
-                  '_blank',
-                )
-                .focus()
-            }
-          >
-            <AiFillWechat />
-          </button>
-        </Tooltip>
-        <Tooltip title="Tencent QQ">
-          <button
-            onClick={() =>
-              window
-                .open(`https://connect.qq.com/widget/shareqq/index.html?url=${data.url}`, '_blank')
-                .focus()
-            }
-          >
-            <SiTencentqq />
-          </button>
-        </Tooltip>
+        <Button
+          onClick={() =>
+            window
+              .open(
+                `https://twitter.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data.url}`,
+                '_blank',
+              )
+              .focus()
+          }
+          icon={<FaTwitter />}
+          tooltipTitle="Twitter"
+          type="icon"
+        />
+        <Button
+          onClick={() =>
+            window
+              .open(`https://www.facebook.com/sharer/sharer.php?u=${data.url}`, '_blank')
+              .focus()
+          }
+          icon={<FaFacebookF />}
+          tooltipTitle="Twitter"
+          type="icon"
+        />
+        <Button
+          onClick={() =>
+            window
+              .open(
+                'mailto:email@example.com?subject=Check%20out%20this%20%on%20%Mue!&body=' +
+                  data.data.name +
+                  'on Mue: ' +
+                  data,
+                '_blank',
+              )
+              .focus()
+          }
+          icon={<MdEmail />}
+          tooltipTitle="Email"
+          type="icon"
+        />
+        <Button
+          onClick={() =>
+            window
+              .open(
+                `https://api.qrserver.com/v1/create-qr-code/?size=154x154&data=${data.url}`,
+                '_blank',
+              )
+              .focus()
+          }
+          icon={<AiFillWechat />}
+          tooltipTitle="WeChat"
+          type="icon"
+        />
+        <Button
+          onClick={() =>
+            window
+              .open(`https://connect.qq.com/widget/shareqq/index.html?url=${data.url}`, '_blank')
+              .focus()
+          }
+          icon={<SiTencentqq />}
+          tooltipTitle="Tencent QQ"
+          type="icon"
+        />
       </div>
       <div className="copy">
         <input type="text" value={data.url} className="left field" readOnly />
-        <Tooltip title={variables.getMessage('modals.share.copy_link')} placement="top">
-          <button onClick={() => copyLink()}>
-            <MdContentCopy />
-          </button>
-        </Tooltip>
+        <Button
+          onClick={() => copyLink()}
+          icon={<MdContentCopy />}
+          tooltipTitle={variables.getMessage('modals.share.copy_link')}
+          type="icon"
+        />
       </div>
     </div>
   );

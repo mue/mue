@@ -4,6 +4,35 @@ import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-
 
 import { Button } from 'components/Elements';
 
+function filterItems(item, filter) {
+  const lowerCaseFilter = filter.toLowerCase();
+  return (
+    item.name?.toLowerCase().includes(lowerCaseFilter) ||
+    filter === '' ||
+    item.author?.toLowerCase().includes(lowerCaseFilter) ||
+    item.type?.toLowerCase().includes(lowerCaseFilter)
+  );
+}
+function Item({ item, toggleFunction, type, onCollection }) {
+  return (
+    <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
+      <img className="item-back" alt="" draggable={false} src={item.icon_url} aria-hidden="true" />
+      <img className="item-icon" alt="icon" draggable={false} src={item.icon_url} />
+      <div className="card-details">
+        <span className="card-title">{item.display_name || item.name}</span>
+        <span className="card-subtitle">
+          {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
+        </span>
+        {type === 'all' && !onCollection ? (
+          <span className="card-type">
+            {variables.getMessage('modals.main.marketplace.' + item.type)}
+          </span>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 function Items({
   type,
   items,
@@ -13,30 +42,32 @@ function Items({
   onCollection,
   filter,
 }) {
+  const shouldShowCollection =
+    (!onCollection && (filter === null || filter === '')) ||
+    (type === 'collections' && !onCollection && (filter === null || filter === ''));
+
   return (
     <>
-      {(!onCollection &&
-        (filter === null || filter === '')) ||
-      (type === 'collections' && !onCollection && (filter === null || filter === '')) ? (
+      {shouldShowCollection && (
         <>
           <div
             className="collection"
             style={
-              collection.news
-                ? { backgroundColor: collection.background_colour }
+              collection?.news
+                ? { backgroundColor: collection?.background_colour }
                 : {
-                    backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent, rgba(0, 0, 0, 0.7), rgba(0 ,0, 0, 0.9)), url('${collection.img}')`,
+                    backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent, rgba(0, 0, 0, 0.7), rgba(0 ,0, 0, 0.9)), url('${collection?.img}')`,
                   }
             }
           >
             <div className="content">
-              <span className="title">{collection.display_name}</span>
-              <span className="subtitle">{collection.description}</span>
+              <span className="title">{collection?.display_name}</span>
+              <span className="subtitle">{collection?.description}</span>
             </div>
-            {collection.news === true ? (
+            {collection?.news === true ? (
               <a
                 className="btn-collection"
-                href={collection.news_link}
+                href={collection?.news_link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -45,7 +76,7 @@ function Items({
             ) : (
               <Button
                 type="collection"
-                onClick={() => collectionFunction(collection.name)}
+                onClick={() => collectionFunction(collection?.name)}
                 icon={<MdOutlineArrowForward />}
                 label={variables.getMessage('modals.main.marketplace.explore_collection')}
                 iconPlacement={'right'}
@@ -53,38 +84,17 @@ function Items({
             )}
           </div>
         </>
-      ) : null}
+      )}
       <div className="items">
         {items
-          ?.filter(
-            (item) =>
-              item.name?.toLowerCase().includes(filter.toLowerCase()) ||
-              filter === '' ||
-              item.author?.toLowerCase().includes(filter.toLowerCase()) ||
-              item.type?.toLowerCase().includes(filter.toLowerCase()),
-          )
+          ?.filter((item) => filterItems(item, filter))
           .map((item) => (
-            <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
-              <img
-                className="item-back"
-                alt=""
-                draggable={false}
-                src={item.icon_url}
-                aria-hidden="true"
-              />
-              <img className="item-icon" alt="icon" draggable={false} src={item.icon_url} />
-              <div className="card-details">
-                <span className="card-title">{item.display_name || item.name}</span>
-                <span className="card-subtitle">
-                  {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
-                </span>
-                {type === 'all' && !onCollection ? (
-                  <span className="card-type">
-                    {variables.getMessage('modals.main.marketplace.' + item.type)}
-                  </span>
-                ) : null}
-              </div>
-            </div>
+            <Item
+              item={item}
+              toggleFunction={toggleFunction}
+              type={type}
+              onCollection={onCollection}
+            />
           ))}
       </div>
       <div className="loader"></div>

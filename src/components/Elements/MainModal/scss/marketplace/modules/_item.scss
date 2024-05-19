@@ -33,11 +33,10 @@ p.description {
     svg {
       @include themed {
         background-image: t($slightGradient);
+        box-shadow: t($boxShadow);
       }
 
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 20px;
+      padding: 7px;
       border-radius: 100%;
     }
 

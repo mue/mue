@@ -69,6 +69,7 @@
       display: flex;
       flex-flow: column;
       gap: 5px;
+      align-items: center;
 
       .card-title {
         font-size: 18px;
@@ -92,7 +93,7 @@
         }
 
         border-radius: 150px;
-        padding: 2px 8px;
+        padding: 2px 15px;
         background-color: rgb(255 255 255 / 10%);
         border: 1px solid rgb(209 213 219 / 30%);
       }
@@ -126,7 +127,7 @@
       table-layout: fixed;
       width: 100%;
       max-width: 650px !important;
-      word-wrap: break-word !important;
+      word-wrap: break-word !important;    
     }
   }
 
@@ -136,7 +137,7 @@
     background-size: cover;
     border-radius: 15px;
     width: 30%;
-    max-width: 300px;
+    max-width: 250px;
     max-height: 600px;
 
     .front {
@@ -450,7 +451,9 @@ p.author {
 
   .title:hover {
     cursor: pointer;
+    text-decoration: underline;
   }
+
 }
 
 .createYourOwn {

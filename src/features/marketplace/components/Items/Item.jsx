@@ -158,17 +158,9 @@ class Item extends PureComponent {
                 </table>
                 <div className="showMoreItems">
                   <span className="link" onClick={() => this.incrementCount('quotes')}>
-                    {this.state.count !== this.props.data.data.quotes.length ? (
-                      <>
-                        <MdExpandMore />{' '}
-                        {variables.getMessage('modals.main.marketplace.product.show_all')}
-                      </>
-                    ) : (
-                      <>
-                        <MdExpandLess />{' '}
-                        {variables.getMessage('modals.main.marketplace.product.show_less')}
-                      </>
-                    )}
+                    {this.state.count !== this.props.data.data.quotes.length
+                      ? variables.getMessage('modals.main.marketplace.product.show_all')
+                      : variables.getMessage('modals.main.marketplace.product.show_less')}
                   </span>
                 </div>
               </>
@@ -193,17 +185,9 @@ class Item extends PureComponent {
                 </table>
                 <div className="showMoreItems">
                   <span className="link" onClick={() => this.incrementCount('settings')}>
-                    {this.state.count !== this.props.data.data.settings.length ? (
-                      <>
-                        <MdExpandMore />{' '}
-                        {variables.getMessage('modals.main.marketplace.product.show_all')}
-                      </>
-                    ) : (
-                      <>
-                        <MdExpandLess />{' '}
-                        {variables.getMessage('modals.main.marketplace.product.show_less')}
-                      </>
-                    )}
+                    {this.state.count !== this.props.data.data.settings.length
+                      ? variables.getMessage('modals.main.marketplace.product.show_all')
+                      : variables.getMessage('modals.main.marketplace.product.show_less')}
                   </span>
                 </div>
               </>
@@ -248,10 +232,10 @@ class Item extends PureComponent {
                 )}
               {this.props.data.data.quotes && this.props.data.data.language !== ''
                 ? moreInfoItem(
-                  <MdTranslate />,
-                  variables.getMessage('modals.main.settings.sections.language.title'),
-                  this.props.data.data.language,
-                )
+                    <MdTranslate />,
+                    variables.getMessage('modals.main.settings.sections.language.title'),
+                    this.props.data.data.language,
+                  )
                 : null}
               {moreInfoItem(
                 <MdStyle />,
@@ -289,7 +273,7 @@ class Item extends PureComponent {
                   onClick={() =>
                     window.open(
                       variables.constants.REPORT_ITEM +
-                      this.props.data.data.display_name.split(' ').join('+'),
+                        this.props.data.data.display_name.split(' ').join('+'),
                       '_blank',
                     )
                   }
@@ -306,7 +290,9 @@ class Item extends PureComponent {
                     <span className="subtitle">
                       {variables.getMessage('modals.main.marketplace.product.part_of')}
                     </span>
-                    <span className="title" onClick={this.props.toggleFunction}>{this.props.data.data.in_collections[0].display_name}</span>
+                    <span className="title" onClick={this.props.toggleFunction}>
+                      {this.props.data.data.in_collections[0].display_name}
+                    </span>
                   </div>
                 </div>
               )}
