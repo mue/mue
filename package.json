@@ -30,7 +30,8 @@
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
     "react-modal": "3.16.1",
-    "react-toastify": "10.0.5"
+    "react-toastify": "10.0.5",
+    "use-debounce": "^10.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
