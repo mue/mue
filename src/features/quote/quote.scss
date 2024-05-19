@@ -64,6 +64,10 @@ h1.quoteauthor {
 
 .author-license {
   font-size: clamp(8px, 2.5vw, 0.1em);
+  // max-width: 150px;
+  // white-space: nowrap;
+  // overflow-x: hidden;
+  // text-overflow: ellipsis;
 
   @include themed {
     color: t($subColor);

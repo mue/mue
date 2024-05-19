@@ -136,27 +136,25 @@ class Quote extends PureComponent {
     ).json();
 
     let authorimg, authorimglicense;
+    const authorPage = authorimgdata.query.pages[Object.keys(authorimgdata.query.pages)[0]];
     try {
-      authorimg =
-        authorimgdata.query.pages[Object.keys(authorimgdata.query.pages)[0]].thumbnail.source;
+      authorimg = authorPage?.thumbnail?.source;
 
       const authorimglicensedata = await (
         await fetch(
           `https://${
             variables.languagecode.split('_')[0]
           }.wikipedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata&titles=File:${
-            authorimgdata.query.pages[Object.keys(authorimgdata.query.pages)[0]].pageimage
+          authorPage.pageimage
           }&origin=*&format=json`,
         )
       ).json();
 
-      const metadata =
-        authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]]
-          .imageinfo[0].extmetadata;
-      const license = metadata.LicenseShortName;
+      const authorImagePage = authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]];
+      const metadata = authorImagePage?.imageinfo[0]?.extmetadata;
+      const license = metadata?.LicenseShortName;
       const photographer =
-        metadata.Attribution.value ||
-        this.stripHTML(metadata.Artist?.value || '').replace(/ \(talk\)/, '') || // talk page link (if applicable) is only removed for English
+        this.stripHTML(metadata.Attribution?.value || metadata.Artist?.value || '').replace(/ \(talk\)/, '') || // talk page link (if applicable) is only removed for English
         'Unknown';
       authorimglicense = `© ${photographer}. ${license.value}`;
       authorimglicense = authorimglicense.replace(/copyright\s/i, '').replace(/©\s©\s/, '© ');
@@ -168,6 +166,7 @@ class Quote extends PureComponent {
         authorimg = null;
       }
     } catch (e) {
+      console.error(e);
       authorimg = null;
       authorimglicense = null;
     }
@@ -282,7 +281,7 @@ class Quote extends PureComponent {
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
             authorimg: authorimgdata.authorimg,
-            authorimglicense: authorimgdata.authorimglicense,
+            authorimglicense: authorimgdata.authorimglicense && authorimgdata.authorimglicense.replace(' undefined. ', ' '),
             quoteLanguage: quoteLanguage,
             authorOccupation: data.author_occupation,
           };
@@ -456,9 +455,8 @@ class Quote extends PureComponent {
                   {this.state.authorOccupation !== 'Unknown' && (
                     <span className="subtitle">{this.state.authorOccupation}</span>
                   )}
-                  <span className="author-license">
-                    {this.state.authorimglicense &&
-                      this.state.authorimglicense.replace(' undefined. ', ' ')}
+                    <span className="author-license" title={this.state.authorimglicense}>
+                      {this.state.authorimglicense && (this.state.authorimglicense.substring(0, 40) + (this.state.authorimglicense.length > 40 ? '…' : ''))}
                   </span>
                 </div>
               ) : (
