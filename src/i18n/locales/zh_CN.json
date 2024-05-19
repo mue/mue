@@ -182,13 +182,22 @@
           "greeting": {
             "title": "问候",
             "events": "节日问候",
+            "events_description": "Control events on Mue such as birthdays.",
+            "enable_events": "Show messages on special days",
             "default": "常规问候",
             "name": "您在问候中的名字",
             "birthday": "生日",
             "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
             "birthday_age": "显示年龄",
             "birthday_date": "生日日期",
-            "additional": "Settings for the greeting display"
+            "additional": "Settings for the greeting display",
+            "custom": "Custom events",
+            "event_name": "Event Name",
+            "day": "Day",
+            "month": "Month",
+            "no_events": "No Events",
+            "no_events_description": "Add Some Events",
+            "add_event": "Add Event"
           },
           "background": {
             "title": "背景",
@@ -353,6 +362,7 @@
             },
             "navbar": {
               "title": "右上方功能键",
+              "widgets": "Navbar Widgets",
               "notes": "便签",
               "refresh": "刷新键",
               "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
@@ -445,7 +455,11 @@
             "usage": "启用统计",
             "achievements": "Achievements",
             "unlocked": "{count} Unlocked",
-            "locked": "Locked"
+            "locked": "Locked",
+            "clear_modal": {
+              "question": "Do you want to clear your stats?",
+              "information": "This will clear all achievements and usage statistics."
+            }
           },
           "experimental": {
             "title": "实验性功能",
@@ -485,7 +499,8 @@
             "contributors": "贡献者",
             "supporters": "支持者",
             "no_supporters": "There are currently no Mue supporters",
-            "photographers": "背景摄影者"
+            "photographers": "背景摄影者",
+            "curators": "Add-on creators"
           }
         },
         "buttons": {

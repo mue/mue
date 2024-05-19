@@ -182,13 +182,22 @@
           "greeting": {
             "title": "Saudações",
             "events": "Eventos",
+            "events_description": "Control events on Mue such as birthdays.",
+            "enable_events": "Show messages on special days",
             "default": "Mensagem de saudação padrão",
             "name": "Nome para saudação",
             "birthday": "Aniversário",
             "birthday_subtitle": "Mostrar uma mensagem de feliz aniversário quando for o seu aniversário",
             "birthday_age": "idade de aniversário",
             "birthday_date": "Data de nascimento",
-            "additional": "Configurações para a exibição de saudação"
+            "additional": "Configurações para a exibição de saudação",
+            "custom": "Custom events",
+            "event_name": "Event Name",
+            "day": "Day",
+            "month": "Month",
+            "no_events": "No Events",
+            "no_events_description": "Add Some Events",
+            "add_event": "Add Event"
           },
           "background": {
             "title": "Plano de fundo",
@@ -353,6 +362,7 @@
             },
             "navbar": {
               "title": "Barra de navegação",
+              "widgets": "Navbar Widgets",
               "notes": "Notas",
               "refresh": "Botão atualizar",
               "refresh_subtitle": "Escolha o que é atualizado quando clica no botão de atualização",
@@ -445,7 +455,11 @@
             "usage": "Estatísticas de uso",
             "achievements": "Conquistas",
             "unlocked": "{count} Desbloqueado",
-            "locked": "Locked"
+            "locked": "Locked",
+            "clear_modal": {
+              "question": "Do you want to clear your stats?",
+              "information": "This will clear all achievements and usage statistics."
+            }
           },
           "experimental": {
             "title": "Experimental",
@@ -485,7 +499,8 @@
             "contributors": "Contribuintes",
             "supporters": "Apoiadores",
             "no_supporters": "Atualmente não há apoiadores do Mue",
-            "photographers": "Fotógrafos"
+            "photographers": "Fotógrafos",
+            "curators": "Add-on creators"
           }
         },
         "buttons": {

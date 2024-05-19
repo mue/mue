@@ -182,13 +182,22 @@
           "greeting": {
             "title": "Greeting",
             "events": "Events",
+            "events_description": "Control events on Mue such as birthdays.",
+            "enable_events": "Show messages on special days",
             "default": "Default greeting message",
             "name": "Name for greeting",
             "birthday": "Birthday",
             "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
             "birthday_age": "Birthday age",
             "birthday_date": "Birthday date",
-            "additional": "Settings for the greeting display"
+            "additional": "Settings for the greeting display",
+            "custom": "Custom events",
+            "event_name": "Event Name",
+            "day": "Day",
+            "month": "Month",
+            "no_events": "No Events",
+            "no_events_description": "Add Some Events",
+            "add_event": "Add Event"
           },
           "background": {
             "title": "Background",
@@ -353,6 +362,7 @@
             },
             "navbar": {
               "title": "Navbar",
+              "widgets": "Navbar Widgets",
               "notes": "Notes",
               "refresh": "Refresh",
               "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
@@ -445,7 +455,11 @@
             "usage": "Usage Stats",
             "achievements": "Achievements",
             "unlocked": "{count} Unlocked",
-            "locked": "Locked"
+            "locked": "Locked",
+            "clear_modal": {
+              "question": "Do you want to clear your stats?",
+              "information": "This will clear all achievements and usage statistics."
+            }
           },
           "experimental": {
             "title": "Experimental",
@@ -485,7 +499,8 @@
             "contributors": "Contributors",
             "supporters": "Supporters",
             "no_supporters": "There are currently no Mue supporters",
-            "photographers": "Photographers"
+            "photographers": "Photographers",
+            "curators": "Add-on creators"
           }
         },
         "buttons": {

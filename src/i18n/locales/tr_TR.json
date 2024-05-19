@@ -182,13 +182,22 @@
           "greeting": {
             "title": "Karşılama Ekranı",
             "events": "Olaylar",
+            "events_description": "Control events on Mue such as birthdays.",
+            "enable_events": "Show messages on special days",
             "default": "Karşılama mesajları görünsün.",
             "name": "İsminiz",
             "birthday": "Doğum Günü",
             "birthday_subtitle": "Doğum günüm olduğunda bir 'Mutlu Yıllar' mesajı göster.",
             "birthday_age": "Doğum günümde yaş bilgisi gözüksün.",
             "birthday_date": "Doğum günü tarihim",
-            "additional": "Karşılama ekranı için ek ayarlarınızı belirleyin."
+            "additional": "Karşılama ekranı için ek ayarlarınızı belirleyin.",
+            "custom": "Custom events",
+            "event_name": "Event Name",
+            "day": "Day",
+            "month": "Month",
+            "no_events": "No Events",
+            "no_events_description": "Add Some Events",
+            "add_event": "Add Event"
           },
           "background": {
             "title": "Arka Plan",
@@ -353,6 +362,7 @@
             },
             "navbar": {
               "title": "Gezinme Çubuğu",
+              "widgets": "Navbar Widgets",
               "notes": "Notlar",
               "refresh": "Yenile Butonu",
               "refresh_subtitle": "Yenile düğmesine tıkladığınızda yenilenecek öğeleri seçin.",
@@ -445,7 +455,11 @@
             "usage": "Kullanım İstatistikleri",
             "achievements": "Başarılar",
             "unlocked": "{count} Kilidi Açıldı",
-            "locked": "Locked"
+            "locked": "Locked",
+            "clear_modal": {
+              "question": "Do you want to clear your stats?",
+              "information": "This will clear all achievements and usage statistics."
+            }
           },
           "experimental": {
             "title": "Deneysel Özellikler",
@@ -485,7 +499,8 @@
             "contributors": "Katkıda Bulunanlar",
             "supporters": "Destekleyenler",
             "no_supporters": "Şu anda Mue destekçisi yok!",
-            "photographers": "Fotoğrafçılar"
+            "photographers": "Fotoğrafçılar",
+            "curators": "Add-on creators"
           }
         },
         "buttons": {

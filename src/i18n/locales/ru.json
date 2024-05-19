@@ -182,13 +182,22 @@
           "greeting": {
             "title": "Приветствие",
             "events": "События",
+            "events_description": "Control events on Mue such as birthdays.",
+            "enable_events": "Show messages on special days",
             "default": "Сообщение с приветствием по-умолчанию",
             "name": "Имя для приветствия",
             "birthday": "День рождения",
             "birthday_subtitle": "Показать сообщение с днем рождения, когда это ваш день рождения",
             "birthday_age": "Возраст рождения",
             "birthday_date": "Дата рождения",
-            "additional": "Настройки отображения приветствия"
+            "additional": "Настройки отображения приветствия",
+            "custom": "Custom events",
+            "event_name": "Event Name",
+            "day": "Day",
+            "month": "Month",
+            "no_events": "No Events",
+            "no_events_description": "Add Some Events",
+            "add_event": "Add Event"
           },
           "background": {
             "title": "Фон",
@@ -353,6 +362,7 @@
             },
             "navbar": {
               "title": "Навбар",
+              "widgets": "Navbar Widgets",
               "notes": "Notes",
               "refresh": "Кнопка перезагрузки",
               "refresh_subtitle": "Выберите, что будет обновляться при нажатии кнопки обновления",
@@ -445,7 +455,11 @@
             "usage": "Статистика использования",
             "achievements": "Достижения",
             "unlocked": "{count} разблокировано",
-            "locked": "Locked"
+            "locked": "Locked",
+            "clear_modal": {
+              "question": "Do you want to clear your stats?",
+              "information": "This will clear all achievements and usage statistics."
+            }
           },
           "experimental": {
             "title": "Экспериментальные настройки",
@@ -485,7 +499,8 @@
             "contributors": "Участники",
             "supporters": "Поддержка",
             "no_supporters": "В настоящее время нет поддержки Mue",
-            "photographers": "Фотографы"
+            "photographers": "Фотографы",
+            "curators": "Add-on creators"
           }
         },
         "buttons": {
