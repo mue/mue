@@ -135,8 +135,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 15px;
-    width: 25%;
-    max-height: 450px;
+    width: 30%;
+    max-width: 300px;
+    max-height: min-content;
 
     .front {
       padding: 20px;
@@ -437,14 +438,18 @@ p.author {
   //  url('https://external-preview.redd.it/JyhsEoGMhKIMi3kvfBS24L0IllAO_KrIm4UI-dA1Ax4.jpg?auto=webp&s=b5adf9859b2c1855a5b3085f9453a6e878548505');
   display: flex;
   flex-flow: column;
-  gap: 15px;
-  padding: 15px;
-  margin-top: 15px;
+  gap: 5px;
+  padding: 5px;
+  margin: 10px 0;
 
   @include themed {
-    background-color: t($modal-secondaryColour);
-    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+    // background-color: t($modal-secondaryColour);
+    // box-shadow: 0 0 0 1px t($modal-sidebarActive);
     border-radius: t($borderRadius);
+  }
+
+  .title:hover {
+    cursor: pointer;
   }
 }
 

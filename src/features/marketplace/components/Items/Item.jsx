@@ -248,10 +248,10 @@ class Item extends PureComponent {
                 )}
               {this.props.data.data.quotes && this.props.data.data.language !== ''
                 ? moreInfoItem(
-                    <MdTranslate />,
-                    variables.getMessage('modals.main.settings.sections.language.title'),
-                    this.props.data.data.language,
-                  )
+                  <MdTranslate />,
+                  variables.getMessage('modals.main.settings.sections.language.title'),
+                  this.props.data.data.language,
+                )
                 : null}
               {moreInfoItem(
                 <MdStyle />,
@@ -289,7 +289,7 @@ class Item extends PureComponent {
                   onClick={() =>
                     window.open(
                       variables.constants.REPORT_ITEM +
-                        this.props.data.data.display_name.split(' ').join('+'),
+                      this.props.data.data.display_name.split(' ').join('+'),
                       '_blank',
                     )
                   }
@@ -300,15 +300,17 @@ class Item extends PureComponent {
                   tooltipKey="report"
                 />
               </div>
+              {this.props.data.data.in_collections.length > 0 && (
+                <div>
+                  <div className="inCollection">
+                    <span className="subtitle">
+                      {variables.getMessage('modals.main.marketplace.product.part_of')}
+                    </span>
+                    <span className="title" onClick={this.props.toggleFunction}>{this.props.data.data.in_collections[0].display_name}</span>
+                  </div>
+                </div>
+              )}
             </div>
-            {this.props.data.data.in_collections.length > 0 && (
-              <div className="inCollection">
-                <span className="subtitle">
-                  {variables.getMessage('modals.main.marketplace.product.part_of')}
-                </span>
-                <span className="title">{this.props.data.data.in_collections[0].display_name}</span>
-              </div>
-            )}
           </div>
         </div>
       </div>
