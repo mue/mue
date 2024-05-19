@@ -151,7 +151,7 @@ class Quote extends PureComponent {
       ).json();
 
       const authorImagePage = authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]];
-      const metadata = authorImagePage?.imageinfo[0]?.extmetadata;
+      const metadata = authorImagePage?.imageinfo?.[0]?.extmetadata;
       const license = metadata?.LicenseShortName;
       const photographer =
         this.stripHTML(metadata.Attribution?.value || metadata.Artist?.value || '').replace(/ \(talk\)/, '') || // talk page link (if applicable) is only removed for English
