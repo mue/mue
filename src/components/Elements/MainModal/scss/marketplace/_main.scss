@@ -161,7 +161,9 @@
       height: auto;
       border-radius: 12px;
       box-shadow: 0 5px 25px black;
-    }
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+    } 
 
     .divider {
       text-transform: uppercase;

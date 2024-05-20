@@ -239,28 +239,24 @@ export default class Added extends PureComponent {
 
     return (
       <>
-        <div className="modalHeader">
-          <Header title={variables.getMessage('modals.main.addons.added')} report={false}>
-            <CustomActions>{this.getSideloadButton()}</CustomActions>
-          </Header>
-          <div className="filter">
+        <Header title={variables.getMessage('modals.main.addons.added')} report={false}>
+          <CustomActions>
+            {this.getSideloadButton()}
             {sideLoadBackendElements()}
-            <div className="buttonSection">
-              <Button
-                type="settings"
-                onClick={() => this.updateCheck()}
-                icon={<MdUpdate />}
-                label={variables.getMessage('modals.main.addons.check_updates')}
-              />
-              <Button
+            <Button
+              type="settings"
+              onClick={() => this.updateCheck()}
+              icon={<MdUpdate />}
+              label={variables.getMessage('modals.main.addons.check_updates')}
+            />
+            {/*<Button
                 type="settings"
                 onClick={() => document.getElementById('file-input').click()}
                 icon={<MdSendTimeExtension />}
                 label={variables.getMessage('modals.main.addons.sideload.title')}
-              />
-            </div>
-          </div>
-        </div>
+    `       />*/}
+          </CustomActions>
+        </Header>
         <Dropdown
           label={variables.getMessage('modals.main.addons.sort.title')}
           name="sortAddons"
