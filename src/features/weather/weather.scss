@@ -13,6 +13,8 @@
   display: flex;
   flex-flow: column;
 
+  animation: fadeIn 1s;
+
   &:hover {
     height: auto;
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);

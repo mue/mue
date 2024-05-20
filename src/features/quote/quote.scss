@@ -101,6 +101,10 @@ h1.quoteauthor {
   align-items: flex-start;
   padding: 20px;
   text-align: left;
+
+  .title, .subtitle {
+    text-transform: capitalize;
+  }
 }
 
 .author-holder {
