@@ -157,14 +157,17 @@ class Marketplace extends PureComponent {
       return;
     }
 
+    const sorted = this.sortMarketplace(data, false);
+
     this.setState({
-      items: data,
-      oldItems: data,
+      items: sorted.items,
+      sortType: sorted.sortType,
+      oldItems: sorted.items,
       collections: collections.data,
+      displayedCollection:
+        collections.data[Math.floor(Math.random() * collections.data.length)] || [],
       done: true,
     });
-
-    this.sortMarketplace(localStorage.getItem('sortMarketplace'), false);
   }
 
   manage(type) {
@@ -210,15 +213,26 @@ class Marketplace extends PureComponent {
     }
   }
 
-  sortMarketplace(value, sendEvent) {
-    let items = this.state.oldItems;
+  sortMarketplace(data, sendEvent) {
+    const value = localStorage.getItem('sortMarketplace');
+    let items = data || this.state.items;
+    if (!items) {
+      return;
+    }
+
     switch (value) {
       case 'a-z':
-        items.sort();
-        // fix sort not working sometimes
-        if (this.state.sortType === 'z-a') {
-          items.reverse();
-        }
+        // sort by name key alphabetically
+        const sorted = items.sort((a, b) => {
+          if (a.display_name < b.display_name) {
+            return -1;
+          }
+          if (a.display_name > b.display_name) {
+            return 1;
+          }
+          return 0;
+        });
+        items = sorted;
         break;
       case 'z-a':
         items.sort();
@@ -228,14 +242,19 @@ class Marketplace extends PureComponent {
         break;
     }
 
-    this.setState({
-      items: items,
-      sortType: value,
-    });
-
     if (sendEvent) {
       variables.stats.postEvent('marketplace', 'Sort');
     }
+
+    return {
+      items: items,
+      sortType: value,
+    };
+  }
+
+  changeSort(value) {
+    localStorage.setItem('sortMarketplace', value);
+    this.setState(this.sortMarketplace(null, true));
   }
 
   returnToMain() {
@@ -390,7 +409,7 @@ class Marketplace extends PureComponent {
               <Dropdown
                 label={variables.getMessage('modals.main.addons.sort.title')}
                 name="sortMarketplace"
-                onChange={(value) => this.sortMarketplace(value)}
+                onChange={(value) => this.changeSort(value)}
                 items={[
                   {
                     value: 'a-z',
@@ -406,42 +425,37 @@ class Marketplace extends PureComponent {
           </>
         )}
         {this.props.type === 'collections' && !this.state.collection ? (
-          this.state.items.map((item) => (
-            <>
-              {!item.news ? (
-                <div
-                  className="collection"
-                  style={
-                    item.news
-                      ? { backgroundColor: item.background_colour }
-                      : {
-                          backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
-                        }
-                  }
-                >
-                  <div className="content">
-                    <span className="title">{item.display_name}</span>
-                    <span className="subtitle">{item.description}</span>
-                  </div>
-                  <Button
-                    type="collection"
-                    onClick={() => this.toggle('collection', item.name)}
-                    icon={<MdOutlineArrowForward />}
-                    label={variables.getMessage('modals.main.marketplace.explore_collection')}
-                    iconPlacement="right"
-                  />
+          this.state.items.map((item) =>
+            !item.news ? (
+              <div
+                className="collection"
+                style={
+                  item.news
+                    ? { backgroundColor: item.background_colour }
+                    : {
+                        backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
+                      }
+                }
+              >
+                <div className="content">
+                  <span className="title">{item.display_name}</span>
+                  <span className="subtitle">{item.description}</span>
                 </div>
-              ) : null}
-            </>
-          ))
+                <Button
+                  type="collection"
+                  onClick={() => this.toggle('collection', item.name)}
+                  icon={<MdOutlineArrowForward />}
+                  label={variables.getMessage('modals.main.marketplace.explore_collection')}
+                  iconPlacement="right"
+                />
+              </div>
+            ) : null,
+          )
         ) : (
           <Items
             type={this.props.type}
             items={this.state.items}
-            collection={
-              this.state.collections[Math.floor(Math.random() * this.state.collections.length)] ||
-              []
-            }
+            collection={this.state.displayedCollection}
             onCollection={this.state.collection}
             toggleFunction={(input) => this.toggle('item', input)}
             collectionFunction={(input) => this.toggle('collection', input)}

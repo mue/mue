@@ -154,7 +154,7 @@ class Quote extends PureComponent {
       const metadata = authorImagePage?.imageinfo?.[0]?.extmetadata;
       const license = metadata?.LicenseShortName;
       const photographer =
-        this.stripHTML(metadata.Attribution?.value || metadata.Artist?.value || '').replace(/ \(talk\)/, '') || // talk page link (if applicable) is only removed for English
+        this.stripHTML(metadata?.Attribution?.value || metadata?.Artist?.value || '').replace(/ \(talk\)/, '') || // talk page link (if applicable) is only removed for English
         'Unknown';
       authorimglicense = `© ${photographer}. ${license.value}`;
       authorimglicense = authorimglicense.replace(/copyright\s/i, '').replace(/©\s©\s/, '© ');
@@ -462,8 +462,8 @@ class Quote extends PureComponent {
               ) : (
                 <div className="author-content whileLoading" ref={this.quoteauthor}>
                   {/* these are placeholders for skeleton and as such don't need translating */}
-                  <span className="title">loading</span>
-                  <span className="subtitle">loading</span>
+                  <span className="title pulse">loading</span>
+                  <span className="subtitle pulse">loading</span>
                 </div>
               )}
               {(this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null) ||

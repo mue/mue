@@ -71,9 +71,6 @@ function PhotoInformation({ info, url, api }) {
     return null;
   }
 
-  // remove unsplash text
-  const unsplash = variables.getMessage('widgets.background.unsplash');
-
   let credit = info.credit;
   let photo = variables.getMessage('widgets.background.credit');
 
@@ -88,9 +85,6 @@ function PhotoInformation({ info, url, api }) {
       <>
         <a href={info.photographerURL} target="_blank" rel="noopener noreferrer">
           {info.credit}
-        </a>{' '}
-        <a href="https://unsplash.com?utm_source=mue" target="_blank" rel="noopener noreferrer">
-          {unsplash}
         </a>
       </>
     );

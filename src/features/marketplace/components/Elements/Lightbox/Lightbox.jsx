@@ -15,5 +15,4 @@ function Lightbox({ modalClose, img }) {
 }
 
 const MemoizedLightbox = memo(Lightbox);
-export default MemoizedLightbox;
-export { MemoizedLightbox as Lightbox };
+export { MemoizedLightbox as default, MemoizedLightbox as Lightbox };

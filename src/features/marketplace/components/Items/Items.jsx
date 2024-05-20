@@ -1,8 +1,7 @@
 import variables from 'config/variables';
 import React, { memo } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
-import placeholderIcon from '../../../../assets/icons/marketplace-placeholder.png';
-
+import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
 import { Button } from 'components/Elements';
 
@@ -15,16 +14,41 @@ function filterItems(item, filter) {
     item.type?.toLowerCase().includes(lowerCaseFilter)
   );
 }
-function Item({ item, toggleFunction, type, onCollection }) {
+
+function Item({ item, toggleFunction, type, onCollection, hideCurator }) {
   return (
     <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
-      <img className="item-back" alt="" draggable={false} src={item.icon_url} onError={(e)=>{e.target.onerror = null; e.target.src=placeholderIcon}} aria-hidden="true" />
-      <img className="item-icon" alt="icon" draggable={false} src={item.icon_url}   onError={(e)=>{e.target.onerror = null; e.target.src=placeholderIcon}} />
+      <img
+        className="item-back"
+        alt=""
+        draggable={false}
+        src={item.icon_url}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = placeholderIcon;
+        }}
+        aria-hidden="true"
+      />
+      <img
+        className="item-icon"
+        alt="icon"
+        draggable={false}
+        src={item.icon_url}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = placeholderIcon;
+        }}
+      />
       <div className="card-details">
         <span className="card-title">{item.display_name || item.name}</span>
-        <span className="card-subtitle">
-          {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
-        </span>
+        {!hideCurator ? (
+          <span className="card-subtitle">
+            {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
+          </span>
+        ) : (
+          ''
+        )}
+
         {type === 'all' && !onCollection ? (
           <span className="card-type">
             {variables.getMessage('modals.main.marketplace.' + item.type)}
@@ -36,6 +60,7 @@ function Item({ item, toggleFunction, type, onCollection }) {
 }
 
 function Items({
+  hideCurator,
   type,
   items,
   collection,
@@ -45,53 +70,52 @@ function Items({
   filter,
 }) {
   const shouldShowCollection =
-    (!onCollection && (filter === null || filter === '')) ||
+    (collection && !onCollection && (filter === null || filter === '')) ||
     (type === 'collections' && !onCollection && (filter === null || filter === ''));
 
   return (
     <>
       {shouldShowCollection && (
-        <>
-          <div
-            className="collection"
-            style={
-              collection?.news
-                ? { backgroundColor: collection?.background_colour }
-                : {
-                    backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent, rgba(0, 0, 0, 0.7), rgba(0 ,0, 0, 0.9)), url('${collection?.img}')`,
-                  }
-            }
-          >
-            <div className="content">
-              <span className="title">{collection?.display_name}</span>
-              <span className="subtitle">{collection?.description}</span>
-            </div>
-            {collection?.news === true ? (
-              <a
-                className="btn-collection"
-                href={collection?.news_link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {variables.getMessage('modals.main.marketplace.learn_more')} <MdOutlineOpenInNew />
-              </a>
-            ) : (
-              <Button
-                type="collection"
-                onClick={() => collectionFunction(collection?.name)}
-                icon={<MdOutlineArrowForward />}
-                label={variables.getMessage('modals.main.marketplace.explore_collection')}
-                iconPlacement={'right'}
-              />
-            )}
+        <div
+          className="collection"
+          style={
+            collection?.news
+              ? { backgroundColor: collection?.background_colour }
+              : {
+                  backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent, rgba(0, 0, 0, 0.7), rgba(0 ,0, 0, 0.9)), url('${collection?.img}')`,
+                }
+          }
+        >
+          <div className="content">
+            <span className="title">{collection?.display_name}</span>
+            <span className="subtitle">{collection?.description}</span>
           </div>
-        </>
+          {collection?.news === true ? (
+            <a
+              className="btn-collection"
+              href={collection?.news_link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {variables.getMessage('modals.main.marketplace.learn_more')} <MdOutlineOpenInNew />
+            </a>
+          ) : (
+            <Button
+              type="collection"
+              onClick={() => collectionFunction(collection?.name)}
+              icon={<MdOutlineArrowForward />}
+              label={variables.getMessage('modals.main.marketplace.explore_collection')}
+              iconPlacement={'right'}
+            />
+          )}
+        </div>
       )}
       <div className="items">
         {items
           ?.filter((item) => filterItems(item, filter))
           .map((item) => (
             <Item
+              hideCurator={hideCurator}
               item={item}
               toggleFunction={toggleFunction}
               type={type}

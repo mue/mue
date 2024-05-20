@@ -135,3 +135,63 @@
     }
   }
 }
+
+.weather.skeleton {
+  .iconAndTemps {
+    gap: 10px;
+  }
+
+  .weatherCore {
+    gap: 10px;
+  }
+
+  .weathericon {
+    gap: 10px;
+  }
+
+  .minmax {
+    max-width: fit-content;
+    background: transparent !important;
+    .subtitle {
+      margin-bottom: 5px;
+    }
+  }
+
+  .weatherExpandedInfoItems {
+    padding-top: 10px;
+  }
+
+  .mainSkeletonIcon {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+  }
+
+  .infoItemSkeleton {
+    display: flex;
+    flex-flow: row;
+    gap: 5px;
+    align-items: center;
+
+    .subtitle {
+      font-size: 18px;
+    }
+  }
+
+  .smallSkeletonIcon {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+  }
+
+  .title,
+  span {
+    color: transparent;
+    width: 100px;
+  }
+
+  .subtitle {
+    color: transparent;
+    width: 50px;
+  }
+}

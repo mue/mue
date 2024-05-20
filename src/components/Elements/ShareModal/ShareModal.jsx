@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import variables from 'config/variables';
 import { MdClose, MdEmail, MdContentCopy } from 'react-icons/md';
-import { FaTwitter, FaFacebookF } from 'react-icons/fa';
+import { FaFacebookF } from 'react-icons/fa';
 import { AiFillWechat } from 'react-icons/ai';
-import { SiTencentqq } from 'react-icons/si';
+import { SiTencentqq, SiX } from 'react-icons/si';
 import Tooltip from '../Tooltip/Tooltip';
 import { toast } from 'react-toastify';
 
@@ -49,13 +49,13 @@ function ShareModal({ modalClose, data }) {
           onClick={() =>
             window
               .open(
-                `https://twitter.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data.url}`,
+                `https://x.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data.url}`,
                 '_blank',
               )
               .focus()
           }
-          icon={<FaTwitter />}
-          tooltipTitle="Twitter"
+          icon={<SiX />}
+          tooltipTitle="X (Twitter)"
           type="icon"
         />
         <Button
@@ -65,7 +65,7 @@ function ShareModal({ modalClose, data }) {
               .focus()
           }
           icon={<FaFacebookF />}
-          tooltipTitle="Twitter"
+          tooltipTitle="Facebook"
           type="icon"
         />
         <Button

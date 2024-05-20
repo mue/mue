@@ -53,6 +53,7 @@ class BackgroundOptions extends PureComponent {
   }
 
   updateAPI(e) {
+    localStorage.setItem('nextImage', null);
     if (e === 'mue') {
       this.setState({
         backgroundCategories: this.state.backgroundCategoriesOG,

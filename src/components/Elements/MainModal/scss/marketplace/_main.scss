@@ -395,6 +395,10 @@ p.author {
 
     .subtitle {
       color: #ccc !important;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
     }
   }
 

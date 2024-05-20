@@ -3,6 +3,8 @@ import { PureComponent } from 'react';
 
 import WeatherIcon from './components/WeatherIcon';
 import Expanded from './components/Expanded';
+import WeatherSkeleton from './components/WeatherSkeleton';
+
 
 import EventBus from 'utils/eventbus';
 
@@ -42,11 +44,12 @@ class WeatherWidget extends PureComponent {
   }
 
   render() {
-    if (this.state.done === false) {
-      return <div className="weather"></div>;
-    }
 
     const weatherType = localStorage.getItem('weatherType') || 1;
+
+    if (this.state.done === false) {
+      return <WeatherSkeleton weatherType={weatherType} />;
+    }
 
     if (!this.state.weather) {
       return (

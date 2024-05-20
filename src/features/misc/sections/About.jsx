@@ -1,8 +1,8 @@
 import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdEmail, MdContactPage } from 'react-icons/md';
-import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
+import { FaDiscord } from 'react-icons/fa';
+import { SiGithubsponsors, SiOpencollective, SiX } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
 import { Tooltip, Button } from 'components/Elements';
@@ -215,9 +215,9 @@ class About extends PureComponent {
             />
             <Button
               type="linkIconButton"
-              href={'https://twitter.com/' + variables.constants.TWITTER_HANDLE}
-              icon={<FaTwitter />}
-              tooltipTitle="Twitter"
+              href={'https://x.com/' + variables.constants.TWITTER_HANDLE}
+              icon={<SiX />}
+              tooltipTitle="X (Twitter)"
             />
             <Button
               type="linkIconButton"

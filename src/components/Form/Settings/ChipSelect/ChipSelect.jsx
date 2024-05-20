@@ -25,33 +25,31 @@ function ChipSelect({ label, options }) {
   };
 
   return (
-    <div>
-      <FormControl>
-        <InputLabel id="chipSelect-label">{label}</InputLabel>
-        <Select
-          labelId="chipSelect-label"
-          id="chipSelect"
-          multiple
-          value={optionsSelected}
-          onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label={label} />}
-          renderValue={(optionsSelected) => (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-              {optionsSelected.map((value) => (
-                <Chip key={value} label={value} />
-              ))}
-            </Box>
-          )}
-        >
-          {options.map((option) => (
-            <MenuItem key={option.name} value={option.name}>
-              {option.name.charAt(0).toUpperCase() + option.name.slice(1)}{' '}
-              {option.count && `(${option.count})`}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl>
+      <InputLabel id="chipSelect-label">{label}</InputLabel>
+      <Select
+        labelId="chipSelect-label"
+        id="chipSelect"
+        multiple
+        value={optionsSelected}
+        onChange={handleChange}
+        input={<OutlinedInput id="select-multiple-chip" label={label} />}
+        renderValue={(optionsSelected) => (
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+            {optionsSelected.map((value) => (
+              <Chip key={value} label={value} />
+            ))}
+          </Box>
+        )}
+      >
+        {options.map((option) => (
+          <MenuItem key={option.name} value={option.name}>
+            {option.name.charAt(0).toUpperCase() + option.name.slice(1)}{' '}
+            {option.count && `(${option.count})`}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 }
 

@@ -202,3 +202,42 @@ body {
     }
   }
 }
+
+
+
+// credit to Kendrick Arnett https://codepen.io/kendrick/pen/WxNwdE
+.light {
+  .pulse {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(-90deg, #efefef 0%, #cccccc 50%, #efefef 100%);
+    background-size: 400% 400%;
+    animation: pulse 1.2s ease-in-out infinite;
+    @keyframes pulse {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: -135% 0%;
+      }
+    }
+  }
+}
+
+.dark {
+  .pulse {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(-90deg, #000000 0%, rgb(83, 83, 83) 50%, #000000 100%);
+    background-size: 400% 400%;
+    animation: pulse 1.2s ease-in-out infinite;
+    @keyframes pulse {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: -135% 0%;
+      }
+    }
+  }
+}

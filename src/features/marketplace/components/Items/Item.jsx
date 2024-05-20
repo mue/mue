@@ -21,6 +21,8 @@ import { Button } from 'components/Elements';
 import { install, uninstall } from 'utils/marketplace';
 import { Carousel } from '../Elements/Carousel';
 import { ShareModal } from 'components/Elements';
+import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
+import { Items } from './Items';
 
 class Item extends PureComponent {
   constructor(props) {
@@ -32,7 +34,36 @@ class Item extends PureComponent {
         this.props.addonInstalledVersion !== this.props.data.version,
       shareModal: false,
       count: 5,
+      moreByCurator: [],
     };
+  }
+
+  async getCurator(name) {
+    try {
+      const { data } = await (
+        await fetch(`${variables.constants.API_URL}/marketplace/curator/${name}`)
+      ).json();
+      const convertedType = (() => {
+        const map = {
+          photos: 'photo_packs',
+          quotes: 'quote_packs',
+          settings: 'preset_settings',
+        };
+        return map[this.props.data.data.type];
+      })();
+      this.setState({
+        moreByCurator: data.items.filter(
+          (item) => item.type !== convertedType && item.name !== this.props.data.data.name,
+        ),
+      });
+      console.log(this.state.curator);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  componentDidMount() {
+    this.getCurator(this.props.data.author);
   }
 
   updateAddon() {
@@ -125,6 +156,13 @@ class Item extends PureComponent {
         />
         <div className="itemPage">
           <div className="itemShowcase">
+            <div className="subHeader">
+              {moreInfoItem(
+                <MdAccountCircle />,
+                variables.getMessage('modals.main.marketplace.product.created_by'),
+                this.props.data.author,
+              )}
+            </div>
             {this.props.data.data.photos && (
               <div className="carousel">
                 <div className="carousel_container">
@@ -138,8 +176,21 @@ class Item extends PureComponent {
                 draggable={false}
                 src={iconsrc}
                 onClick={() => this.setState({ showLightbox: true })}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = placeholderIcon;
+                }}
               />
             )}
+            <div className="marketplaceDescription">
+              <span className="title">
+                {variables.getMessage('modals.main.marketplace.product.description')}
+              </span>
+              <span
+                className="subtitle"
+                dangerouslySetInnerHTML={{ __html: this.props.data.description }}
+              />
+            </div>
             {this.props.data.data.quotes && (
               <>
                 <table>
@@ -194,56 +245,47 @@ class Item extends PureComponent {
             )}
             <div className="marketplaceDescription">
               <span className="title">
-                {variables.getMessage('modals.main.marketplace.product.description')}
+                {variables.getMessage('modals.main.marketplace.product.details')}
               </span>
-              <span
-                className="subtitle"
-                dangerouslySetInnerHTML={{ __html: this.props.data.description }}
-              />
-            </div>
-            <div className="moreInfo">
-              {moreInfoItem(
-                <MdBugReport />,
-                variables.getMessage('modals.main.marketplace.product.version'),
-                updateButton ? (
-                  <span>
-                    {this.props.data.version} (Installed: {this.props.data.addonInstalledVersion})
-                  </span>
-                ) : (
-                  <span>{this.props.data.version}</span>
-                ),
-              )}
-              {moreInfoItem(
-                <MdAccountCircle />,
-                variables.getMessage('modals.main.marketplace.product.author'),
-                this.props.data.author,
-              )}
-              {this.props.data.data.quotes &&
-                moreInfoItem(
-                  <MdFormatQuote />,
-                  variables.getMessage('modals.main.marketplace.product.no_quotes'),
-                  this.props.data.data.quotes.length,
+              <div className="moreInfo">
+                {moreInfoItem(
+                  <MdBugReport />,
+                  variables.getMessage('modals.main.marketplace.product.version'),
+                  updateButton ? (
+                    <span>
+                      {this.props.data.version} (Installed: {this.props.data.addonInstalledVersion})
+                    </span>
+                  ) : (
+                    <span>{this.props.data.version}</span>
+                  ),
                 )}
-              {this.props.data.data.photos &&
-                moreInfoItem(
-                  <MdImage />,
-                  variables.getMessage('modals.main.marketplace.product.no_images'),
-                  this.props.data.data.photos.length,
+                {this.props.data.data.quotes &&
+                  moreInfoItem(
+                    <MdFormatQuote />,
+                    variables.getMessage('modals.main.marketplace.product.no_quotes'),
+                    this.props.data.data.quotes.length,
+                  )}
+                {this.props.data.data.photos &&
+                  moreInfoItem(
+                    <MdImage />,
+                    variables.getMessage('modals.main.marketplace.product.no_images'),
+                    this.props.data.data.photos.length,
+                  )}
+                {this.props.data.data.quotes && this.props.data.data.language
+                  ? moreInfoItem(
+                      <MdTranslate />,
+                      variables.getMessage('modals.main.settings.sections.language.title'),
+                      this.props.data.data.language,
+                    )
+                  : null}
+                {moreInfoItem(
+                  <MdStyle />,
+                  variables.getMessage('modals.main.settings.sections.background.type.title'),
+                  variables.getMessage(
+                    'modals.main.marketplace.' + this.getName(this.props.data.data.type),
+                  ) || 'marketplace',
                 )}
-              {this.props.data.data.quotes && this.props.data.data.language !== ''
-                ? moreInfoItem(
-                    <MdTranslate />,
-                    variables.getMessage('modals.main.settings.sections.language.title'),
-                    this.props.data.data.language,
-                  )
-                : null}
-              {moreInfoItem(
-                <MdStyle />,
-                variables.getMessage('modals.main.settings.sections.background.type.title'),
-                variables.getMessage(
-                  'modals.main.marketplace.' + this.getName(this.props.data.data.type),
-                ) || 'marketplace',
-              )}
+              </div>
             </div>
           </div>
           <div
@@ -258,6 +300,10 @@ class Item extends PureComponent {
                 alt="icon"
                 draggable={false}
                 src={this.props.data.data.icon_url}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = placeholderIcon;
+                }}
               />
               {this.props.button}
               <div className="iconButtons">
@@ -290,7 +336,15 @@ class Item extends PureComponent {
                     <span className="subtitle">
                       {variables.getMessage('modals.main.marketplace.product.part_of')}
                     </span>
-                    <span className="title" onClick={this.props.toggleFunction}>
+                    <span
+                      className="title"
+                      onClick={() =>
+                        this.props.toggleFunction(
+                          'collection',
+                          this.props.data.data.in_collections[0].name,
+                        )
+                      }
+                    >
                       {this.props.data.data.in_collections[0].display_name}
                     </span>
                   </div>
@@ -299,6 +353,37 @@ class Item extends PureComponent {
             </div>
           </div>
         </div>
+        {this.state.moreByCurator.length > 1 ? (
+          <div className="moreFromCurator">
+            <span className="title">
+              {variables.getMessage('modals.main.marketplace.product.more_from_curator', {
+                name: this.props.data.author,
+              })}
+            </span>
+            <div>
+              {/* {this.state.curator.items
+                    .filter(
+                      (item) =>
+                        item.name !== this.props.data.data.name &&
+                        item.type !== this.props.data.data.type,
+                    )
+                    .map((item) => (
+                      <div key={`${item.type}/${item.name}`}>{item.display_name}</div>
+                    ))} */}
+              <Items
+                hideCurator={true}
+                type={'all'}
+                items={this.state.moreByCurator}
+                onCollection={this.state.collection}
+                toggleFunction={(input) => this.props.toggleFunction('item', input)}
+                collectionFunction={(input) => this.props.toggleFunction('collection', input)}
+                filter={''}
+              />
+            </div>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     );
   }

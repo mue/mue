@@ -77,6 +77,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     variables.getMessage('modals.main.marketplace.all'),
     variables.getMessage('modals.main.settings.sections.experimental.title'),
   ].includes(label);
+
   const mue = [
     variables.getMessage('modals.main.marketplace.product.overview'),
     variables.getMessage('modals.main.addons.added'),

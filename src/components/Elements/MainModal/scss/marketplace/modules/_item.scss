@@ -47,7 +47,8 @@ p.description {
   }
 
   .header {
-    text-transform: uppercase;
+    // text-transform: uppercase;
+    font-size: small;
 
     @include themed {
       color: t($subColor);
@@ -68,6 +69,59 @@ p.description {
   }
 }
 
+.subHeader {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: calc(100% - 30px);
+  gap: 25px;
+
+  .items {
+    margin-top: 0 !important;
+  }
+
+  .item {
+    flex: 1 0 40% !important;
+  }
+
+  .infoItem {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 15px;
+    flex: 1 0 44%;
+
+    svg {
+      @include themed {
+        background-image: t($slightGradient);
+        box-shadow: t($boxShadow);
+      }
+
+      padding: 7px;
+      border-radius: 100%;
+    }
+
+    .text {
+      display: flex;
+      flex-flow: column;
+    }
+  }
+
+  .header {
+    font-size: small;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  span {
+    @include themed {
+      color: t($color);
+    }
+  }
+}
+
 .showMoreItems {
   display: flex;
   flex-flow: column;
@@ -77,6 +131,13 @@ p.description {
 }
 
 .marketplaceDescription {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+}
+
+.moreFromCurator {
+  margin-top: 50px;
   display: flex;
   flex-flow: column;
   gap: 15px;
