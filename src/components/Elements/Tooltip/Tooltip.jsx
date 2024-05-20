@@ -1,10 +1,11 @@
-import { useState, memo } from 'react';
+import { useState, memo, useRef } from 'react';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
 import './tooltip.scss';
 
 function Tooltip({ children, title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [reference, setReference] = useState(null);
+  const tooltipId = useRef(`tooltip-${Math.random()}`);
 
   const { x, y, refs, strategy } = useFloating({
     placement: placement || 'bottom',
@@ -24,6 +25,7 @@ function Tooltip({ children, title, style, placement, subtitle }) {
         onFocus={() => setShowTooltip(true)}
         onBlur={() => setShowTooltip(false)}
         ref={setReference}
+        aria-describedby={tooltipId.current}
       >
         {children}
       </div>

@@ -3,7 +3,7 @@ import Tooltip from 'components/Elements/Tooltip/Tooltip';
 
 const Button = forwardRef(
   (
-    { icon, label, type, iconPlacement, onClick, active, disabled, tooltipTitle, tooltipKey },
+    { icon, label, type, iconPlacement, onClick, active, disabled, tooltipTitle, tooltipKey, href },
     ref,
   ) => {
     let className;
@@ -24,6 +24,12 @@ const Button = forwardRef(
       case 'collection':
         className = 'btn-collection';
         break;
+      case 'linkIconButton':
+        className = 'btn-icon';
+        break;
+      case 'linkButton':
+        className = 'btn-settings';
+        break;
       default:
         className = 'btn-default';
     }
@@ -43,13 +49,44 @@ const Button = forwardRef(
       </button>
     );
 
-    return type === 'icon' ? (
-      <Tooltip title={tooltipTitle} key={tooltipKey}>
-        {button}
-      </Tooltip>
-    ) : (
-      button
+    const linkButton = (
+      <a className={className} onClick={onClick} ref={ref} disabled={disabled} href={href}>
+        {icon}
+        {label}
+      </a>
     );
+
+    const linkIconButton = (
+      <Tooltip title={tooltipTitle} key={tooltipKey}>
+        <a
+          className={className}
+          onClick={onClick}
+          ref={ref}
+          disabled={disabled}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {icon}
+          {label}
+        </a>
+      </Tooltip>
+    );
+
+    switch (type) {
+      case 'linkIconButton':
+        return linkIconButton;
+      case 'linkButton':
+        return linkButton;
+      case 'icon':
+        return (
+          <Tooltip title={tooltipTitle} key={tooltipKey}>
+            {button}
+          </Tooltip>
+        );
+      default:
+        return button;
+    }
   },
 );
 

@@ -5,7 +5,7 @@ import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { SiGithubsponsors, SiOpencollective } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
-import { Tooltip } from 'components/Elements';
+import { Tooltip, Button } from 'components/Elements';
 import other_contributors from 'utils/data/other_contributors.json';
 
 class About extends PureComponent {
@@ -18,7 +18,7 @@ class About extends PureComponent {
       photographers: [],
       curators: [],
       update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
-      loading: variables.getMessage('modals.main.loading')
+      loading: variables.getMessage('modals.main.loading'),
     };
     this.controller = new AbortController();
   }
@@ -61,11 +61,13 @@ class About extends PureComponent {
           signal: this.controller.signal,
         })
       ).json();
-      curators = (await (
-        await fetch(variables.constants.API_URL + '/marketplace/curators', {
-          signal: this.controller.signal,
-        })
-      ).json()).data;
+      curators = (
+        await (
+          await fetch(variables.constants.API_URL + '/marketplace/curators', {
+            signal: this.controller.signal,
+          })
+        ).json()
+      ).data;
     } catch (e) {
       if (this.controller.signal.aborted === true) {
         return;
@@ -133,7 +135,12 @@ class About extends PureComponent {
       <>
         <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
-            <img draggable={false} className="aboutLogo" src={'src/assets/icons/mue_about.png'} alt="Logo" />
+            <img
+              draggable={false}
+              className="aboutLogo"
+              src={'src/assets/icons/mue_about.png'}
+              alt="Logo"
+            />
             <div className="aboutText">
               <span className="title">Mue, by Kaiso</span>
               <span className="subtitle">
@@ -194,42 +201,30 @@ class About extends PureComponent {
             {variables.getMessage('modals.main.settings.sections.about.contact_us')}
           </span>
           <div className="aboutContact">
-            <a
-              className="donateButton"
+            <Button
+              type="linkButton"
               href="https://muetab.com/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MdContactPage />
-              {variables.getMessage('modals.main.settings.sections.about.form_button')}
-            </a>
-            <Tooltip title={'Email'}>
-              <a
-                href={'mailto:' + variables.constants.EMAIL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MdEmail />
-              </a>
-            </Tooltip>
-            <Tooltip title={'Twitter'}>
-              <a
-                href={'https://twitter.com/' + variables.constants.TWITTER_HANDLE}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter />
-              </a>
-            </Tooltip>
-            <Tooltip title={'Discord'}>
-              <a
-                href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaDiscord />
-              </a>
-            </Tooltip>
+              icon={<MdContactPage />}
+              label={variables.getMessage('modals.main.settings.sections.about.form_button')}
+            />
+            <Button
+              type="linkIconButton"
+              href={'mailto:' + variables.constants.EMAIL}
+              icon={<MdEmail />}
+              tooltipTitle="Email"
+            />
+            <Button
+              type="linkIconButton"
+              href={'https://twitter.com/' + variables.constants.TWITTER_HANDLE}
+              icon={<FaTwitter />}
+              tooltipTitle="Twitter"
+            />
+            <Button
+              type="linkIconButton"
+              href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
+              icon={<FaDiscord />}
+              tooltipTitle="Discord"
+            />
           </div>
         </div>
 
@@ -239,33 +234,24 @@ class About extends PureComponent {
           </span>
           <p>{variables.getMessage('modals.main.settings.sections.about.support_subtitle')}</p>
           <div className="aboutContact">
-            <a
-              className="donateButton"
+            <Button
+              type="linkButton"
               href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BiDonateHeart />
-              {variables.getMessage('modals.main.settings.sections.about.support_donate')}
-            </a>
-            <Tooltip title={'GitHub Sponsors'}>
-              <a
-                href={'https://github.com/sponsors/' + variables.constants.ORG_NAME}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <SiGithubsponsors />
-              </a>
-            </Tooltip>
-            <Tooltip title={'Open Collective'}>
-              <a
-                href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <SiOpencollective />
-              </a>
-            </Tooltip>
+              icon={<BiDonateHeart />}
+              label={variables.getMessage('modals.main.settings.sections.about.support_donate')}
+            />
+            <Button
+              type="linkIconButton"
+              href={'https://github.com/sponsors/' + variables.constants.ORG_NAME}
+              icon={<SiGithubsponsors />}
+              tooltipTitle="Github Sponsors"
+            />
+            <Button
+              type="linkIconButton"
+              href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
+              icon={<SiOpencollective />}
+              tooltipTitle="Open Collective"
+            />
           </div>
         </div>
 
@@ -391,9 +377,7 @@ class About extends PureComponent {
           {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
             {this.state.curators.map((name) => (
-              <li key={name}>
-                {name}
-              </li>
+              <li key={name}>{name}</li>
             ))}
           </ul>
         </div>

@@ -127,5 +127,9 @@ a.btn-collection {
 }
 
 .btn-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
   @include modal-button(standard);
 }
