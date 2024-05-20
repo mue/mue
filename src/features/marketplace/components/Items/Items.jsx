@@ -15,7 +15,7 @@ function filterItems(item, filter) {
   );
 }
 
-function Item({ item, toggleFunction, type, onCollection, hideCurator }) {
+function Item({ item, toggleFunction, type, onCollection, isCurator }) {
   return (
     <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
       <img
@@ -41,7 +41,7 @@ function Item({ item, toggleFunction, type, onCollection, hideCurator }) {
       />
       <div className="card-details">
         <span className="card-title">{item.display_name || item.name}</span>
-        {!hideCurator ? (
+        {!isCurator ? (
           <span className="card-subtitle">
             {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
           </span>
@@ -60,7 +60,7 @@ function Item({ item, toggleFunction, type, onCollection, hideCurator }) {
 }
 
 function Items({
-  hideCurator,
+  isCurator,
   type,
   items,
   collection,
@@ -115,7 +115,7 @@ function Items({
           ?.filter((item) => filterItems(item, filter))
           .map((item) => (
             <Item
-              hideCurator={hideCurator}
+              isCurator={isCurator}
               item={item}
               toggleFunction={toggleFunction}
               type={type}
@@ -124,7 +124,7 @@ function Items({
           ))}
       </div>
       <div className="loader"></div>
-      {!onCollection ? (
+      {!onCollection && !isCurator ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />
           <span className="title">{variables.getMessage('modals.main.marketplace.cant_find')}</span>

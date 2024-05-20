@@ -53,7 +53,7 @@ class Item extends PureComponent {
       })();
       this.setState({
         moreByCurator: data.items.filter(
-          (item) => item.type !== convertedType && item.name !== this.props.data.data.name,
+          (item) => item.type === convertedType && item.name !== this.props.data.data.name,
         ),
       });
       console.log(this.state.curator);
@@ -371,7 +371,7 @@ class Item extends PureComponent {
                       <div key={`${item.type}/${item.name}`}>{item.display_name}</div>
                     ))} */}
               <Items
-                hideCurator={true}
+                isCurator={true}
                 type={'all'}
                 items={this.state.moreByCurator}
                 onCollection={this.state.collection}
