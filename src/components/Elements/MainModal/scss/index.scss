@@ -80,7 +80,7 @@
 
 #modal {
   height: 80vh;
-  width: clamp(60vw, 1200px, 90vw);
+  width: clamp(60vw, 1400px, 90vw);
 
   @include themed {
     background-color: t($modal-background);

@@ -10,6 +10,9 @@
  }
   .item-back {
     margin: 0 !important;
+    filter: blur(40px) saturate(180%) brightness(90%) !important;
+    height: 15px !important;
+    width: 200px !important;
   }
   .item-icon {
     margin: 0 !important;
@@ -63,8 +66,8 @@
       filter: blur(60px) saturate(180%) brightness(90%);
       position: absolute;
       object-fit: cover !important;
-      height: 90px !important;
-      width: 100px !important;
+      height: 90px;
+      width: 100px;
       border-radius: 100px;
       transition: 0.5s;
       margin-top: 30px;
@@ -80,6 +83,7 @@
     }
 
     .card-details {
+      z-index: 1;
       padding: 10px;
       margin-bottom: 24px;
       display: flex;
@@ -143,7 +147,7 @@
       table-layout: fixed;
       width: 100%;
       max-width: 650px !important;
-      word-wrap: break-word !important;    
+      word-wrap: break-word !important;
     }
   }
 
@@ -153,8 +157,8 @@
     background-size: cover;
     border-radius: 15px;
     width: 30%;
-    max-width: 250px;
-    max-height: 600px;
+    max-width: 300px;
+    max-height: 700px;
 
     .front {
       padding: 20px;
@@ -180,7 +184,7 @@
       box-shadow: 0 5px 25px black;
       aspect-ratio: 1 / 1;
       object-fit: contain;
-    } 
+    }
 
     .divider {
       text-transform: uppercase;
