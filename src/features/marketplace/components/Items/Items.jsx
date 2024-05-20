@@ -68,6 +68,7 @@ function Items({
   collectionFunction,
   onCollection,
   filter,
+  moreByCreator,
 }) {
   const shouldShowCollection =
     (collection && !onCollection && (filter === null || filter === '')) ||
@@ -110,7 +111,7 @@ function Items({
           )}
         </div>
       )}
-      <div className="items">
+      <div className={`items ${moreByCreator ? 'creatorItems' : ''}`}>
         {items
           ?.filter((item) => filterItems(item, filter))
           .map((item) => (

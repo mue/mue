@@ -127,6 +127,9 @@ class Item extends PureComponent {
       </div>
     );
 
+    const locale = localStorage.getItem('language');
+    let languageNames = new Intl.DisplayNames(["en"], { type: "language" });
+
     return (
       <div id="item">
         <Modal
@@ -275,7 +278,7 @@ class Item extends PureComponent {
                   ? moreInfoItem(
                       <MdTranslate />,
                       variables.getMessage('modals.main.settings.sections.language.title'),
-                      this.props.data.data.language,
+                      languageNames.of(this.props.data.data.language),
                     )
                   : null}
                 {moreInfoItem(
@@ -369,6 +372,7 @@ class Item extends PureComponent {
                 toggleFunction={(input) => this.props.toggleFunction('item', input)}
                 collectionFunction={(input) => this.props.toggleFunction('collection', input)}
                 filter={''}
+                moreByCreator={true}
               />
             </div>
           </div>

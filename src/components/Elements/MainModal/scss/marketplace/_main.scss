@@ -4,6 +4,22 @@
 @import 'modules/lightbox';
 @import 'scss/variables';
 
+.creatorItems {
+ .item {
+  flex-flow: row !important;
+ }
+  .item-back {
+    margin: 0 !important;
+  }
+  .item-icon {
+    margin: 0 !important;
+  }
+  .card-details {
+    margin: 0 !important;
+    text-align: left;
+  }
+}
+
 .items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
