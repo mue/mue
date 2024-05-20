@@ -530,6 +530,8 @@
           "information": "Informasi",
           "last_updated": "Pembaruan Terakhir",
           "description": "Description",
+          "details": "Details",
+          "more_from_curator": "More from {name}",
           "show_more": "Show More",
           "show_less": "Show Less",
           "show_all": "Show All",
@@ -537,7 +539,7 @@
           "no_images": "No. Images",
           "no_quotes": "No. Quotes",
           "version": "Versi",
-          "author": "Kreator",
+          "created_by": "Created by",
           "part_of": "Part of",
           "explore": "Explore",
           "buttons": {

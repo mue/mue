@@ -530,6 +530,8 @@
           "information": "Informações",
           "last_updated": "Ultima atualização",
           "description": "Descrição",
+          "details": "Details",
+          "more_from_curator": "More from {name}",
           "show_more": "Mostrar mais",
           "show_less": "Mostrar menos",
           "show_all": "Mostrar tudo",
@@ -537,7 +539,7 @@
           "no_images": "Sem imagens",
           "no_quotes": "Sem citações",
           "version": "Versão",
-          "author": "Autor",
+          "created_by": "Created by",
           "part_of": "Parte de",
           "explore": "Explorar",
           "buttons": {
