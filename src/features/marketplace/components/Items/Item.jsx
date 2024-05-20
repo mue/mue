@@ -361,18 +361,9 @@ class Item extends PureComponent {
               })}
             </span>
             <div>
-              {/* {this.state.curator.items
-                    .filter(
-                      (item) =>
-                        item.name !== this.props.data.data.name &&
-                        item.type !== this.props.data.data.type,
-                    )
-                    .map((item) => (
-                      <div key={`${item.type}/${item.name}`}>{item.display_name}</div>
-                    ))} */}
               <Items
                 isCurator={true}
-                type={'all'}
+                type={this.props.data.data.type}
                 items={this.state.moreByCurator}
                 onCollection={this.state.collection}
                 toggleFunction={(input) => this.props.toggleFunction('item', input)}
