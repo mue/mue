@@ -3,7 +3,7 @@ import { memo, createRef, useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
 import { BsGoogle } from 'react-icons/bs';
-import { SiDuckduckgo, SiMicrosoftbing, SiBaidu } from 'react-icons/si';
+import { SiDuckduckgo, SiMicrosoftbing, SiBaidu, SiNaver } from 'react-icons/si';
 import { FaYandex, FaYahoo } from 'react-icons/fa';
 import { Tooltip } from 'components/Elements';
 import { Autocomplete as AutocompleteInput } from './components/autocomplete';
@@ -22,8 +22,6 @@ function Search() {
   const [searchDropdown, setSearchDropdown] = useState(false);
   const [classList] = useState(localStorage.getItem('widgetStyle') === 'legacy' ? 'searchIcons old' : 'searchIcons');
   const [currentSearch, setCurrentSearch] = useState('');
-
-
 
   useEffect(() => {
     EventBus.on('refresh', (data) => {
@@ -44,7 +42,6 @@ function Search() {
   });
 
   let micIcon = createRef();
-
 
   const customText = variables
     .getMessage('modals.main.settings.sections.search.custom')
@@ -198,6 +195,8 @@ function Search() {
         return <FaYandex />;
       case '百度':
         return <SiBaidu />;
+      case 'NAVER':
+        return <SiNaver />;
       default:
         return <MdScreenSearchDesktop />;
     }

@@ -19,7 +19,7 @@ const Collection = ({ collection, collectionFunction }) => {
     <div className="collection" style={getStyle()}>
       <div className="content">
         <span className="title">{display_name} using component</span>
-        <span className="subtitle">{description}</span>
+        <span className="subtitle">{description ? description.substr(0, 75) : ''}</span>
       </div>
       {collection.news === true ? (
         <a

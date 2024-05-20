@@ -50,7 +50,7 @@ function EmblaCarousel({ data }) {
     <div className="carousel">
       <div className="carousel_viewport" ref={emblaRef}>
         <div className="carousel_container">
-          {data.map((photo, index) => (
+          {data?.slice(0, 5).map((photo, index) => (
             <div className="carousel_slide" key={index}>
               <div className="carousel_slide_inner">
                 <img

@@ -1,6 +1,8 @@
 import variables from 'config/variables';
 import React, { memo } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
+import placeholderIcon from '../../../../assets/icons/marketplace-placeholder.png';
+
 
 import { Button } from 'components/Elements';
 
@@ -16,8 +18,8 @@ function filterItems(item, filter) {
 function Item({ item, toggleFunction, type, onCollection }) {
   return (
     <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
-      <img className="item-back" alt="" draggable={false} src={item.icon_url} aria-hidden="true" />
-      <img className="item-icon" alt="icon" draggable={false} src={item.icon_url} />
+      <img className="item-back" alt="" draggable={false} src={item.icon_url} onError={(e)=>{e.target.onerror = null; e.target.src=placeholderIcon}} aria-hidden="true" />
+      <img className="item-icon" alt="icon" draggable={false} src={item.icon_url}   onError={(e)=>{e.target.onerror = null; e.target.src=placeholderIcon}} />
       <div className="card-details">
         <span className="card-title">{item.display_name || item.name}</span>
         <span className="card-subtitle">

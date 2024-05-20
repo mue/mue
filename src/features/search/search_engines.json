@@ -56,5 +56,11 @@
     "settingsName": "baidu",
     "url": "https://www.baidu.com/s",
     "query": "wd"
+  },
+  {
+    "name": "NAVER",
+    "settingsName": "naver",
+    "url": "https://search.naver.com/search.naver",
+    "query": "query"
   }
 ]
