@@ -215,7 +215,11 @@ class Todo extends PureComponent {
                               onChange={(data) => this.updateTodo('set', index, data)}
                               readOnly={this.state.todo[index].done}
                             />
-                            <Tooltip title={variables.getMessage('modals.main.marketplace.product.buttons.remove')}>
+                            <Tooltip
+                              title={variables.getMessage(
+                                'modals.main.marketplace.product.buttons.remove',
+                              )}
+                            >
                               <MdDelete onClick={() => this.updateTodo('remove', index)} />
                             </Tooltip>
                             <SortableHandle />

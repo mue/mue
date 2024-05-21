@@ -176,20 +176,24 @@ function NavbarOptions() {
 
     const buttons = [
       {
+        icon: <MdCropFree />,
+        settingName: 'view',
+        messageKey: 'modals.main.settings.sections.background.buttons.view',
+      },
+      {
         icon: <MdAssignment />,
         settingName: 'notesEnabled',
         messageKey: `${NAVBAR_SECTION}.notes`,
       },
       {
-        icon: <MdCropFree />,
-        settingName: 'view',
-        messageKey: 'modals.main.settings.sections.background.buttons.view',
-      },
-      { icon: <MdRefresh />, settingName: 'refresh', messageKey: `${NAVBAR_SECTION}.refresh` },
-      {
         icon: <MdChecklist />,
         settingName: 'todoEnabled',
         messageKey: 'widgets.navbar.todo.title',
+      },
+      {
+        icon: <MdRefresh />,
+        settingName: 'refresh',
+        messageKey: `${NAVBAR_SECTION}.refresh`,
       },
       {
         icon: <MdOutlineApps />,

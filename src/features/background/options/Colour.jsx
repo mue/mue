@@ -8,20 +8,22 @@ import { MdRefresh } from 'react-icons/md';
 import '../scss/_colourpicker.scss';
 
 const ColourOptions = () => {
-  const [colour, setColour] = useState(localStorage.getItem('customBackgroundColour') || 'rgba(0, 0, 0, 0)');
+  const [colour, setColour] = useState(
+    localStorage.getItem('customBackgroundColour') || 'rgba(0, 0, 0, 0)',
+  );
 
   const changeColour = (output) => {
     setColour(output);
     localStorage.setItem('customBackgroundColour', output);
     showReminder();
-  }
+  };
 
   const resetColour = () => {
     setColour('rgba(0, 0, 0, 0)');
     localStorage.setItem('customBackgroundColour', 'rgba(0, 0, 0, 0)');
     toast(variables.getMessage('toasts.reset'));
     showReminder();
-  }
+  };
 
   const showReminder = () => {
     const reminderInfo = document.querySelector('.reminder-info');
@@ -29,7 +31,7 @@ const ColourOptions = () => {
       reminderInfo.style.display = 'block';
       localStorage.setItem('showReminder', true);
     }
-  }
+  };
 
   return (
     <Row final={true}>
@@ -39,7 +41,7 @@ const ColourOptions = () => {
         )}
       />
       <Action>
-        <ColorPicker 
+        <ColorPicker
           value={colour}
           onChange={changeColour}
           hideEyeDrop={true}

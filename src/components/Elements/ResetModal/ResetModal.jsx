@@ -32,8 +32,18 @@ function ResetModal({ modalClose }) {
         {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.information')}
       </span>
       <div className="resetFooter">
-        <Button type="secondary" onClick={modalClose} icon={<MdClose />} label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')} />
-        <Button type="settings" onClick={() => reset()} icon={<MdRestartAlt />} label={variables.getMessage('modals.main.settings.buttons.reset')} />
+        <Button
+          type="secondary"
+          onClick={modalClose}
+          icon={<MdClose />}
+          label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+        />
+        <Button
+          type="settings"
+          onClick={() => reset()}
+          icon={<MdRestartAlt />}
+          label={variables.getMessage('modals.main.settings.buttons.reset')}
+        />
       </div>
     </div>
   );

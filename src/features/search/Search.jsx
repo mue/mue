@@ -20,7 +20,9 @@ function Search() {
   const [microphone, setMicrophone] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [searchDropdown, setSearchDropdown] = useState(false);
-  const [classList] = useState(localStorage.getItem('widgetStyle') === 'legacy' ? 'searchIcons old' : 'searchIcons');
+  const [classList] = useState(
+    localStorage.getItem('widgetStyle') === 'legacy' ? 'searchIcons old' : 'searchIcons',
+  );
   const [currentSearch, setCurrentSearch] = useState('');
 
   useEffect(() => {
@@ -69,7 +71,7 @@ function Search() {
     }
 
     if (localStorage.getItem('voiceSearch') === 'true') {
-      setMicrophone((
+      setMicrophone(
         <button
           className="navbarButton"
           onClick={startSpeechRecognition}
@@ -77,15 +79,14 @@ function Search() {
           aria-label="Microphone Search"
         >
           <MdMic className="micIcon" />
-        </button>
-      ));
+        </button>,
+      );
     }
 
     setURL(_url);
     setQuery(_query);
     setCurrentSearch(info ? info.name : 'Custom');
   }
-
 
   function startSpeechRecognition() {
     const voiceSearch = new window.webkitSpeechRecognition();
@@ -110,15 +111,14 @@ function Search() {
         window.location.href = url + `?${query}=` + searchText.value;
       }, 1000);
     };
-  };
+  }
 
   function searchButton(e) {
     e.preventDefault();
     const value = e.target.value || document.getElementById('searchtext').value || 'mue fast';
     variables.stats.postEvent('feature', 'Search');
     window.location.href = url + `?${query}=` + value;
-  };
-
+  }
 
   async function getSuggestions(input) {
     if (input === '') {
@@ -126,12 +126,14 @@ function Search() {
       return;
     }
 
-    const results = await (await fetch(`${variables.constants.API_URL}/search/autocomplete?q=${input}`)).json();
+    const results = await (
+      await fetch(`${variables.constants.API_URL}/search/autocomplete?q=${input}`)
+    ).json();
 
     try {
       setSuggestions(results.suggestions.splice(0, 5));
     } catch (e) {
-      console.error(e)
+      console.error(e);
       // ignore error if empty
     }
   }
@@ -173,7 +175,6 @@ function Search() {
     setCurrentSearch(name);
     setSearchDropdown(false);
   }
-
 
   /**
    * Gets the icon for the search engine dropdown.
@@ -245,39 +246,37 @@ function Search() {
         </form>
       </div>
       <div>
-        {localStorage.getItem('searchDropdown') === 'true' &&
-          searchDropdown === true && (
-            <div className="searchDropdown">
-              {searchEngines.map(({ name }, key) => {
-                return (
-                  <span
-                    className={
-                      'searchDropdownList' +
-                      (currentSearch === name ? ' searchDropdownListActive' : '')
-                    }
-                    onClick={() => setSearch(name)}
-                    key={key}
-                  >
-                    {name}
-                  </span>
-                );
-              })}
-              <span
-                className={
-                  'searchDropdownList' +
-                  (currentSearch === customText ? ' searchDropdownListActive' : '')
-                }
-                onClick={() => setSearch(customText, 'custom')}
-              >
-                {customText}
-              </span>
-            </div>
-          )}
+        {localStorage.getItem('searchDropdown') === 'true' && searchDropdown === true && (
+          <div className="searchDropdown">
+            {searchEngines.map(({ name }, key) => {
+              return (
+                <span
+                  className={
+                    'searchDropdownList' +
+                    (currentSearch === name ? ' searchDropdownListActive' : '')
+                  }
+                  onClick={() => setSearch(name)}
+                  key={key}
+                >
+                  {name}
+                </span>
+              );
+            })}
+            <span
+              className={
+                'searchDropdownList' +
+                (currentSearch === customText ? ' searchDropdownListActive' : '')
+              }
+              onClick={() => setSearch(customText, 'custom')}
+            >
+              {customText}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
 }
-
 
 const MemoizedSearch = memo(Search);
 export { MemoizedSearch as default, MemoizedSearch as Search };

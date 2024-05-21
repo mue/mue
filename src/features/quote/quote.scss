@@ -102,7 +102,8 @@ h1.quoteauthor {
   padding: 20px;
   text-align: left;
 
-  .title, .subtitle {
+  .title,
+  .subtitle {
     text-transform: capitalize;
   }
 }

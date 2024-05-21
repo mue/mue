@@ -5,7 +5,6 @@ import WeatherIcon from './components/WeatherIcon';
 import Expanded from './components/Expanded';
 import WeatherSkeleton from './components/WeatherSkeleton';
 
-
 import EventBus from 'utils/eventbus';
 
 import { getWeather } from './api/getWeather.js';
@@ -44,7 +43,6 @@ class WeatherWidget extends PureComponent {
   }
 
   render() {
-
     const weatherType = localStorage.getItem('weatherType') || 1;
 
     if (this.state.done === false) {

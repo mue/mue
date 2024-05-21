@@ -69,8 +69,8 @@
 .resetDataButtonsLayout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;  
-  
+  grid-gap: 20px;
+
   :nth-child(1) {
     grid-column: span 2;
   }
@@ -80,7 +80,6 @@
     padding: 5px 10px 5px 10px;
   }
 }
-
 
 table {
   border-collapse: separate;

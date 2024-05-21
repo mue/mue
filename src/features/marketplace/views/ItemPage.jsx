@@ -157,7 +157,11 @@ class ItemPage extends PureComponent {
     );
 
     const dateObj = new Date(this.props.data.data.updated_at);
-    const formattedDate = new Intl.DateTimeFormat(shortLocale, { year: 'numeric', month: 'long', day: '2-digit' }).format(dateObj);
+    const formattedDate = new Intl.DateTimeFormat(shortLocale, {
+      year: 'numeric',
+      month: 'long',
+      day: '2-digit',
+    }).format(dateObj);
 
     return (
       <>
@@ -340,7 +344,11 @@ class ItemPage extends PureComponent {
               {localStorage.getItem('welcomePreview') !== 'true' ? (
                 this.props.button
               ) : (
-                <p style={{ textAlign: 'center' }}>{variables.getMessage('modals.main.marketplace.product.buttons.not_available_preview')}</p>
+                <p style={{ textAlign: 'center' }}>
+                  {variables.getMessage(
+                    'modals.main.marketplace.product.buttons.not_available_preview',
+                  )}
+                </p>
               )}
               {this.props.data.data.sideload !== true && (
                 <div className="iconButtons">

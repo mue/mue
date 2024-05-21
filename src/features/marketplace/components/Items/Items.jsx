@@ -73,7 +73,8 @@ function Items({
 }) {
   const shouldShowCollection =
     ((collection && !onCollection && (filter === null || filter === '')) ||
-    (type === 'collections' && !onCollection && (filter === null || filter === ''))) && type !== 'preset_settings';
+      (type === 'collections' && !onCollection && (filter === null || filter === ''))) &&
+    type !== 'preset_settings';
 
   return (
     <>

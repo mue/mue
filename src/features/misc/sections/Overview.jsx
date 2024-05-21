@@ -76,7 +76,6 @@ class Overview extends PureComponent {
     toast(variables.getMessage('toasts.reset'));
   };
 
-  
   enabled = (setting) => {
     switch (setting) {
       case 'quicklinks':

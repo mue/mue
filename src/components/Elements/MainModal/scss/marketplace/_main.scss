@@ -5,9 +5,9 @@
 @import 'scss/variables';
 
 .creatorItems {
- .item {
-  flex-flow: row !important;
- }
+  .item {
+    flex-flow: row !important;
+  }
   .item-back {
     margin: 0 !important;
     filter: blur(40px) saturate(180%) brightness(90%) !important;
@@ -482,7 +482,6 @@ p.author {
     cursor: pointer;
     text-decoration: underline;
   }
-
 }
 
 .createYourOwn {

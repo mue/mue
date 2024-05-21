@@ -29,11 +29,11 @@ const GreetingOptions = () => {
   );
 
   const [enableBirthday, setEnableBirthday] = useState(
-    localStorage.getItem('birthdayenabled') === 'true' ? 'preferences' : 'preferencesInactive'
+    localStorage.getItem('birthdayenabled') === 'true' ? 'preferences' : 'preferencesInactive',
   );
 
   const [enableCustomEvents, setEnableCustomEvents] = useState(
-    localStorage.getItem('events') === 'true' ? 'preferences' : 'preferencesInactive'
+    localStorage.getItem('events') === 'true' ? 'preferences' : 'preferencesInactive',
   );
 
   const changeDate = (e) => {
@@ -139,7 +139,9 @@ const GreetingOptions = () => {
             name="birthdayenabled"
             text={variables.getMessage('modals.main.settings.enabled')}
             category="greeting"
-            onChange={(value) => { setEnableBirthday(value ? 'preferences' : 'preferencesInactive'); }}
+            onChange={(value) => {
+              setEnableBirthday(value ? 'preferences' : 'preferencesInactive');
+            }}
           />
           <div className={enableBirthday}>
             <Checkbox
@@ -306,7 +308,9 @@ const GreetingOptions = () => {
                 name="events"
                 text={variables.getMessage(`${GREETING_SECTION}.events`)}
                 category="greeting"
-                onChange={(value) => { setEnableCustomEvents(value ? 'preferences' : 'preferencesInactive'); }}
+                onChange={(value) => {
+                  setEnableCustomEvents(value ? 'preferences' : 'preferencesInactive');
+                }}
               />
             </Action>
           </Row>

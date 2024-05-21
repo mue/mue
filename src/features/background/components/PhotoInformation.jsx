@@ -216,7 +216,7 @@ function PhotoInformation({ info, url, api }) {
             <Download onClick={() => downloadImage(info)} />
           </Tooltip>
         )}
-        {(info.pun && info.category) && (
+        {info.pun && info.category && (
           <Tooltip
             title={variables.getMessage('widgets.background.exclude')}
             key="exclude"

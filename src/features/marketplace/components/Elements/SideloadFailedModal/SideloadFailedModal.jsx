@@ -23,4 +23,7 @@ function SideloadFailedModal({ modalClose, reason }) {
 }
 
 const MemoizedSideloadFailedModal = memo(SideloadFailedModal);
-export { MemoizedSideloadFailedModal as default, MemoizedSideloadFailedModal as SideloadFailedModal };
+export {
+  MemoizedSideloadFailedModal as default,
+  MemoizedSideloadFailedModal as SideloadFailedModal,
+};

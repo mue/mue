@@ -193,8 +193,7 @@ export default class Added extends PureComponent {
       this.state.installed.forEach((item) => {
         uninstall(item.type, item.name);
       });
-    } catch (e) {
-    }
+    } catch (e) {}
 
     localStorage.setItem('installed', JSON.stringify([]));
 
@@ -281,7 +280,12 @@ export default class Added extends PureComponent {
               icon={<MdUpdate />}
               label={variables.getMessage('modals.main.addons.check_updates')}
             />
-            <Button type="settings" onClick={() => this.removeAll()} icon={<MdOutlineExtensionOff />} label="Remove all addons" />
+            <Button
+              type="settings"
+              onClick={() => this.removeAll()}
+              icon={<MdOutlineExtensionOff />}
+              label="Remove all addons"
+            />
             {/*<Button
                 type="settings"
                 onClick={() => document.getElementById('file-input').click()}
