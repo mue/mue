@@ -1,0 +1,58 @@
+name: Report a bug
+description: Report an issue with the extension.
+title: "[Bug] Insert issue name here"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a Mue issue!
+  - type: textarea
+    id: description 
+    attributes:
+      label: Description
+      description: Describe the issue you are having with the extension
+      placeholder: e.g. It does not save my settings upon editing the Greeting widget
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of Mue are you running?
+      options:
+        - 7.0.0
+        - 6.0.6
+        - 6.0.5
+        - 6.0.4
+        - 6.0.3
+        - 6.0.2
+        - 6.0.1
+        - 6.0.0
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browser(s) are you seeing the problem on?
+      multiple: true
+      options:
+        - Mozilla Firefox
+        - Google Chrome
+        - Naver Whale
+        - Microsoft Edge
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/mue/.github/blob/main/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
