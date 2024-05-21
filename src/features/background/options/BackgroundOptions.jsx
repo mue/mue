@@ -4,7 +4,7 @@ import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'rea
 
 import { Header } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Slider, Radio, Text, ChipSelect } from 'components/Form/Settings';
-import { Row, Content, Action } from 'components/Layout/Settings/Item/SettingsItem';
+import { Row, Content, Action } from 'components/Layout/Settings/Item';
 //import Text from 'components/Form/Settings/Text/Text';
 
 import ColourSettings from './Colour';

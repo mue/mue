@@ -252,7 +252,7 @@
               "drop_to_upload": "Yüklemek için bırakın!",
               "formats": "Kullanılabilir biçimler: {list}",
               "select": "Veya Seç",
-              "add_url": "URL/Uzantı Ekle",
+              "add_url": "URL Ekle",
               "disabled": "Kullanılamaz",
               "loop_video": "Tekrarlayan video",
               "mute_video": "Videonun sesini kapat.",
@@ -277,7 +277,7 @@
             "additional": "Arama widget'ı ekranı ve işlevselliği için ek seçenekleri belirleyin.",
             "search_engine": "Arama Motoru",
             "search_engine_subtitle": "Arama çubuğunda kullanmak için arama motorunu seçin.",
-            "custom": "Özel URL/bağlantı",
+            "custom": "Özel URL",
             "autocomplete": "Otomatik Tamamlama",
             "autocomplete_provider": "Otomatik Tamamlama Sağlayıcısı",
             "autocomplete_provider_subtitle": "Otomatik tamamlama açılır sonuçları için kullanılacak arama motorunu belirleyin.",
@@ -463,7 +463,7 @@
           },
           "experimental": {
             "title": "Deneysel Özellikler",
-            "warning": "Bu ayarlar tam olarak test edilmedi/uygulanmadı ve düzgün çalışmayabilir!",
+            "warning": "Bu ayarlar tam olarak test edilmedi ve düzgün çalışmayabilir!",
             "developer": "Geliştirici"
           },
           "language": {
@@ -525,13 +525,14 @@
         "knowledgebase_one": "Kendiniz oluşturmak için ",
         "knowledgebase_two": "bilgilendirme sayfamızı ",
         "knowledgebase_three": "ziyaret edin.",
+        "installing": "Installing",
         "product": {
           "overview": "Genel Bakış",
           "information": "Bilgi",
           "last_updated": "Son Güncelleme",
-          "description": "Açıklama/Tanım",
+          "description": "Açıklama",
           "details": "Details",
-          "more_from_curator": "More from {name}",
+          "more_from_curator": "More like this from {name}",
           "show_more": "Daha Fazla Göster",
           "show_less": "Daha Az Göster",
           "show_all": "Hepsini Göster",
@@ -547,10 +548,11 @@
             "remove": "Kaldır",
             "update_addon": "Eklentiyi Güncelle",
             "back": "Geri",
-            "report": "Bildir/Raporla"
+            "report": "Raporla"
           },
           "not_in_language": "This add-on is not in your language",
           "third_party_api": "This add-on uses a third-party API",
+          "sideload_warning": "This add-on has been sideloaded.",
           "setting": "Ayarlar",
           "value": "Değer"
         },

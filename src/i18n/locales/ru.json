@@ -525,13 +525,14 @@
         "knowledgebase_one": "Посетить",
         "knowledgebase_two": "база знаний",
         "knowledgebase_three": "чтобы создать свой собственный.",
+        "installing": "Installing",
         "product": {
           "overview": "Обзор",
           "information": "Информация",
           "last_updated": "Последнее обновление",
           "description": "Описание",
           "details": "Details",
-          "more_from_curator": "More from {name}",
+          "more_from_curator": "More like this from {name}",
           "show_more": "Показать больше",
           "show_less": "Показать меньше",
           "show_all": "Показать все",
@@ -551,6 +552,7 @@
           },
           "not_in_language": "This add-on is not in your language",
           "third_party_api": "This add-on uses a third-party API",
+          "sideload_warning": "This add-on has been sideloaded.",
           "setting": "Параметр",
           "value": "Цена"
         },

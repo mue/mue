@@ -1,9 +1,8 @@
 import variables from 'config/variables';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import ColorPicker from 'react-best-gradient-color-picker';
 import { toast } from 'react-toastify';
-import { Row, Content, Action } from 'components/Layout/Settings';
-import { Button } from 'components/Elements';
+import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { MdRefresh } from 'react-icons/md';
 
 import '../scss/_colourpicker.scss';

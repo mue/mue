@@ -7,7 +7,7 @@ import { TextField } from '@mui/material';
 import EventBus from 'utils/eventbus';
 import values from 'utils/data/slider_values.json';
 
-import { Row, Content, Action } from 'components/Layout/Settings/Item/SettingsItem';
+import { Row, Content, Action } from 'components/Layout/Settings/Item';
 
 function ExperimentalOptions() {
   const [eventType, setEventType] = useState();

@@ -10,7 +10,7 @@ function showReminder() {
   localStorage.setItem('showReminder', true);
 }
 
-export function install(type, input, sideload) {
+export function install(type, input, sideload, collection) {
   switch (type) {
     case 'settings':
       localStorage.removeItem('backup_settings');
@@ -45,7 +45,9 @@ export function install(type, input, sideload) {
       EventBus.emit('refresh', 'background');
       // TODO: make this legitimately good and work without a reload - currently we just refresh
       sleep(4000);
-      window.location.reload();
+      if (!collection) {
+        window.location.reload();
+      }
       break;
 
     case 'quotes':
@@ -70,15 +72,10 @@ export function install(type, input, sideload) {
   const installed = JSON.parse(localStorage.getItem('installed'));
 
   if (sideload) {
-    installed.push({
-      content: {
-        updated: 'Unpublished',
-        data: input,
-      },
-    });
-  } else {
-    installed.push(input);
+    input.sideload = true;
   }
+
+  installed.push(input);
 
   localStorage.setItem('installed', JSON.stringify(installed));
 }

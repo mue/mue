@@ -10,7 +10,7 @@ import {
   MdLibraryAdd,
 } from 'react-icons/md';
 
-import Item from '../components/Items/Item';
+import ItemPage from './ItemPage';
 import Items from '../components/Items/Items';
 import Dropdown from '../../../components/Form/Settings/Dropdown/Dropdown';
 import { Header } from 'components/Layout/Settings';
@@ -200,11 +200,12 @@ class Marketplace extends PureComponent {
             signal: this.controller.signal,
           })
         ).json();
-        install(data.type, data);
+        install(data.type, data, false, true);
         variables.stats.postEvent('marketplace-item', `${item.display_name} installed}`);
         variables.stats.postEvent('marketplace', 'Install');
       }
       toast(variables.getMessage('toasts.installed'));
+      window.location.reload();
     } catch (error) {
       console.error(error);
       toast(variables.getMessage('toasts.error'));
@@ -339,7 +340,7 @@ class Marketplace extends PureComponent {
 
     if (this.state.item.display_name) {
       return (
-        <Item
+        <ItemPage
           data={this.state.item}
           button={this.state.button}
           toggleFunction={() => this.toggle()}
@@ -379,7 +380,7 @@ class Marketplace extends PureComponent {
                 onClick={() => this.installCollection()}
                 disabled={this.state.busy}
                 icon={<MdLibraryAdd />}
-                label={variables.getMessage('modals.main.marketplace.add_all')}
+                label={this.state.busy ? variables.getMessage('modals.main.marketplace.installing') : variables.getMessage('modals.main.marketplace.add_all')}
               />
             </div>
           </>
@@ -460,6 +461,7 @@ class Marketplace extends PureComponent {
             toggleFunction={(input) => this.toggle('item', input)}
             collectionFunction={(input) => this.toggle('collection', input)}
             filter={this.state.filter}
+            showCreateYourOwn={true}
           />
         )}
       </>

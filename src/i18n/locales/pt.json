@@ -525,13 +525,14 @@
         "knowledgebase_one": "Visite a",
         "knowledgebase_two": "base de conhecimento",
         "knowledgebase_three": "para criar o seu próprio.",
+        "installing": "Installing",
         "product": {
           "overview": "Visão geral",
           "information": "Informações",
           "last_updated": "Ultima atualização",
           "description": "Descrição",
           "details": "Details",
-          "more_from_curator": "More from {name}",
+          "more_from_curator": "More like this from {name}",
           "show_more": "Mostrar mais",
           "show_less": "Mostrar menos",
           "show_all": "Mostrar tudo",
@@ -551,6 +552,7 @@
           },
           "not_in_language": "This add-on is not in your language",
           "third_party_api": "This add-on uses a third-party API",
+          "sideload_warning": "This add-on has been sideloaded.",
           "setting": "Configuração",
           "value": "Valor"
         },

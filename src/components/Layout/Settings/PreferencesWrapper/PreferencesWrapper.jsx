@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Content, Action } from '../Item/SettingsItem';
+import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import variables from 'config/variables';
 import Slider from '../../../Form/Settings/Slider/Slider';
 

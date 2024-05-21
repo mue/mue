@@ -15,7 +15,7 @@ function filterItems(item, filter) {
   );
 }
 
-function Item({ item, toggleFunction, type, onCollection, isCurator }) {
+function ItemPage({ item, toggleFunction, type, onCollection, isCurator }) {
   return (
     <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
       <img
@@ -69,6 +69,7 @@ function Items({
   onCollection,
   filter,
   moreByCreator,
+  showCreateYourOwn,
 }) {
   const shouldShowCollection =
     (collection && !onCollection && (filter === null || filter === '')) ||
@@ -115,7 +116,7 @@ function Items({
         {items
           ?.filter((item) => filterItems(item, filter))
           .map((item) => (
-            <Item
+            <ItemPage
               isCurator={isCurator}
               item={item}
               toggleFunction={toggleFunction}
@@ -125,7 +126,7 @@ function Items({
           ))}
       </div>
       <div className="loader"></div>
-      {!onCollection && !isCurator ? (
+      {showCreateYourOwn ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />
           <span className="title">{variables.getMessage('modals.main.marketplace.cant_find')}</span>

@@ -18,7 +18,7 @@ import { Checkbox, Dropdown } from 'components/Form';
 import { Button } from 'components/Elements';
 import EventBus from 'utils/eventbus';
 
-import { Row, Content, Action } from 'components/Layout/Settings';
+import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { Header } from 'components/Layout/Settings';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
 import { QuickLinks } from 'features/quicklinks';

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 import { SideloadFailedModal } from '../components/Elements/SideloadFailedModal/SideloadFailedModal';
-import Item from '../components/Items/Item';
+import ItemPage from './ItemPage';
 import Items from '../components/Items/Items';
 import { Dropdown, FileUpload } from 'components/Form/Settings';
 import { Header, CustomActions } from 'components/Layout/Settings';
@@ -68,9 +68,12 @@ export default class Added extends PureComponent {
       });
     }
 
-    install(input.type, input);
+    install(input.type, input, true, false);
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
+    this.setState({
+      installed: JSON.parse(localStorage.getItem('installed')),
+    });
   }
 
   getSideloadButton() {
@@ -105,7 +108,7 @@ export default class Added extends PureComponent {
         },
         button: this.buttons.uninstall,
       });
-      variables.stats.postEvent('marketplace', 'Item viewed');
+      variables.stats.postEvent('marketplace', 'ItemPage viewed');
     } else {
       this.setState({
         item: {},
@@ -121,6 +124,7 @@ export default class Added extends PureComponent {
     this.setState({
       button: '',
       installed: JSON.parse(localStorage.getItem('installed')),
+      item: {},
     });
 
     variables.stats.postEvent('marketplace', 'Uninstall');
@@ -135,7 +139,15 @@ export default class Added extends PureComponent {
       case 'oldest':
         break;
       case 'a-z':
-        installed.sort();
+        installed.sort((a, b) => {
+          if (a.display_name < b.display_name) {
+            return -1;
+          }
+          if (a.display_name > b.display_name) {
+            return 1;
+          }
+          return 0;
+        });
         break;
       case 'z-a':
         installed.sort();
@@ -158,7 +170,7 @@ export default class Added extends PureComponent {
     let updates = 0;
     this.state.installed.forEach(async (item) => {
       const data = await (
-        await fetch(variables.constants.API_URL + 'marketplace//item/' + item.name)
+        await fetch(variables.constants.API_URL + 'marketplace/item/' + item.name)
       ).json();
       if (data.version !== item.version) {
         updates++;
@@ -174,6 +186,25 @@ export default class Added extends PureComponent {
     } else {
       toast(variables.getMessage('modals.main.addons.no_updates'));
     }
+  }
+
+  removeAll() {
+    try {
+      this.state.installed.forEach((item) => {
+        uninstall(item.type, item.name);
+      });
+    } catch (e) {
+    }
+
+    localStorage.setItem('installed', JSON.stringify([]));
+
+    toast(variables.getMessage('toasts.uninstalled_all'));
+
+    this.setState({
+      installed: [],
+    });
+
+    this.forceUpdate();
   }
 
   componentDidMount() {
@@ -229,9 +260,10 @@ export default class Added extends PureComponent {
 
     if (this.state.item.display_name) {
       return (
-        <Item
+        <ItemPage
           data={this.state.item}
           button={this.state.button}
+          addons={true}
           toggleFunction={() => this.toggle()}
         />
       );
@@ -249,6 +281,7 @@ export default class Added extends PureComponent {
               icon={<MdUpdate />}
               label={variables.getMessage('modals.main.addons.check_updates')}
             />
+            <Button type="settings" onClick={() => this.removeAll()} icon={<MdOutlineExtensionOff />} label="Remove all addons" />
             {/*<Button
                 type="settings"
                 onClick={() => document.getElementById('file-input').click()}
@@ -282,8 +315,10 @@ export default class Added extends PureComponent {
         />
         <Items
           items={this.state.installed}
+          isAdded={true}
           filter=""
           toggleFunction={(input) => this.toggle('item', input)}
+          showCreateYourOwn={false}
         />
       </>
     );

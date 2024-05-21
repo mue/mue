@@ -97,6 +97,7 @@ $themes: (
     box-shadow: t($boxShadow);
   }
 
+  -webkit-backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
   backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
 
   .title {
@@ -131,6 +132,7 @@ $themes: (
 
     .backTitle {
       cursor: pointer;
+      transition: 0.5s;
 
       @include themed {
         color: t($subColor);

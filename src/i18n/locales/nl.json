@@ -525,13 +525,14 @@
         "knowledgebase_one": "Bezoek de",
         "knowledgebase_two": "kennisbank",
         "knowledgebase_three": "Om je eigen te creëren.",
+        "installing": "Installing",
         "product": {
           "overview": "Overzicht",
           "information": "Informatie",
           "last_updated": "Laatst geüpdatet",
           "description": "Beschrijving",
           "details": "Details",
-          "more_from_curator": "More from {name}",
+          "more_from_curator": "More like this from {name}",
           "show_more": "Toon Meer",
           "show_less": "Toon Minder",
           "show_all": "Toon Alles",
@@ -551,6 +552,7 @@
           },
           "not_in_language": "This add-on is not in your language",
           "third_party_api": "This add-on uses a third-party API",
+          "sideload_warning": "This add-on has been sideloaded.",
           "setting": "Instelling",
           "value": "Waarde"
         },

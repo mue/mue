@@ -9,7 +9,7 @@ function Lightbox({ modalClose, img }) {
       <span className="closeModal" onClick={modalClose}>
         &times;
       </span>
-      <img src={img} className="lightboximg" draggable={false} alt="Item screenshot" />
+      <img src={img} className="lightboximg" draggable={false} alt="ItemPage screenshot" />
     </>
   );
 }
