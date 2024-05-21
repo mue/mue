@@ -128,7 +128,9 @@ class Item extends PureComponent {
     );
 
     const locale = localStorage.getItem('language');
-    let languageNames = new Intl.DisplayNames(["en"], { type: "language" });
+    console.log(locale);
+    const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
+    let languageNames = new Intl.DisplayNames([shortLocale], { type: "language" });
 
     return (
       <div id="item">
