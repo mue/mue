@@ -549,6 +549,7 @@
             "back": "Terug",
             "report": "Rapporteer"
           },
+          "not_in_language": "This add-on is not in your language",
           "setting": "Instelling",
           "value": "Waarde"
         },

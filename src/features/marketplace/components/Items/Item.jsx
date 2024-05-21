@@ -9,8 +9,7 @@ import {
   MdFormatQuote,
   MdImage,
   MdTranslate,
-  MdExpandMore,
-  MdExpandLess,
+  MdOutlineWarning,
   MdStyle,
 } from 'react-icons/md';
 import Modal from 'react-modal';
@@ -28,7 +27,6 @@ class Item extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      showLightbox: false,
       showUpdateButton:
         this.props.addonInstalled === true &&
         this.props.addonInstalledVersion !== this.props.data.version,
@@ -94,6 +92,10 @@ class Item extends PureComponent {
   }
 
   render() {
+    const locale = localStorage.getItem('language');
+    const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
+    let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
+
     if (!this.props.data.display_name) {
       return null;
     }
@@ -117,6 +119,23 @@ class Item extends PureComponent {
       );
     }
 
+    let itemWarning;
+    if (
+      this.props.data.data.language !== undefined &&
+      this.props.data.data.language !== null &&
+      shortLocale !== this.props.data.data.language
+    ) {
+      itemWarning = (
+        <div className="itemWarning">
+          <MdOutlineWarning />
+          <div className="text">
+            <span className="header">Warning</span>
+            <span>{variables.getMessage('modals.main.marketplace.product.not_in_language')}</span>
+          </div>
+        </div>
+      );
+    }
+
     const moreInfoItem = (icon, header, text) => (
       <div className="infoItem">
         {icon}
@@ -127,13 +146,34 @@ class Item extends PureComponent {
       </div>
     );
 
-    const locale = localStorage.getItem('language');
-    console.log(locale);
-    const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
-    let languageNames = new Intl.DisplayNames([shortLocale], { type: "language" });
+    const DataTable = ({ data, title, value, incrementCount, count }) => (
+      <>
+        <table>
+          <tbody>
+            <tr>
+              <th>{variables.getMessage(title)}</th>
+              <th>{variables.getMessage(value)}</th>
+            </tr>
+            {data.slice(0, count).map((item, index) => (
+              <tr key={index}>
+                <td>{item.quote || item.key}</td>
+                <td>{item.author || item.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="showMoreItems">
+          <span className="link" onClick={incrementCount}>
+            {count !== data.length
+              ? variables.getMessage('modals.main.marketplace.product.show_all')
+              : variables.getMessage('modals.main.marketplace.product.show_less')}
+          </span>
+        </div>
+      </>
+    );
 
     return (
-      <div id="item">
+      <>
         <Modal
           closeTimeoutMS={300}
           isOpen={this.state.shareModal}
@@ -167,6 +207,7 @@ class Item extends PureComponent {
                 variables.getMessage('modals.main.marketplace.product.created_by'),
                 this.props.data.author,
               )}
+              {itemWarning}
             </div>
             {this.props.data.data.photos && (
               <div className="carousel">
@@ -180,7 +221,6 @@ class Item extends PureComponent {
                 alt="product"
                 draggable={false}
                 src={iconsrc}
-                onClick={() => this.setState({ showLightbox: true })}
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = placeholderIcon;
@@ -197,56 +237,22 @@ class Item extends PureComponent {
               />
             </div>
             {this.props.data.data.quotes && (
-              <>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
-                      <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
-                    </tr>
-                    {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
-                      <tr key={index}>
-                        <td>{quote.quote}</td>
-                        <td>{quote.author}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <div className="showMoreItems">
-                  <span className="link" onClick={() => this.incrementCount('quotes')}>
-                    {this.state.count !== this.props.data.data.quotes.length
-                      ? variables.getMessage('modals.main.marketplace.product.show_all')
-                      : variables.getMessage('modals.main.marketplace.product.show_less')}
-                  </span>
-                </div>
-              </>
+              <DataTable
+                data={this.props.data.data.quotes}
+                title="modals.main.settings.sections.quote.title"
+                value="modals.main.settings.sections.quote.author"
+                incrementCount={() => this.incrementCount('quotes')}
+                count={this.state.count}
+              />
             )}
             {this.props.data.data.settings && (
-              <>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
-                      <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
-                    </tr>
-                    {Object.entries(this.props.data.data.settings)
-                      .slice(0, this.state.count)
-                      .map(([key, value]) => (
-                        <tr key={key}>
-                          <td>{key}</td>
-                          <td>{value}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-                <div className="showMoreItems">
-                  <span className="link" onClick={() => this.incrementCount('settings')}>
-                    {this.state.count !== this.props.data.data.settings.length
-                      ? variables.getMessage('modals.main.marketplace.product.show_all')
-                      : variables.getMessage('modals.main.marketplace.product.show_less')}
-                  </span>
-                </div>
-              </>
+              <DataTable
+                data={Object.entries(this.props.data.data.settings)}
+                title="modals.main.marketplace.product.setting"
+                value="modals.main.marketplace.product.value"
+                incrementCount={() => this.incrementCount('settings')}
+                count={this.state.count}
+              />
             )}
             <div className="marketplaceDescription">
               <span className="title">
@@ -358,7 +364,7 @@ class Item extends PureComponent {
             </div>
           </div>
         </div>
-        {this.state.moreByCurator.length > 1 ? (
+        {this.state.moreByCurator.length > 1 && (
           <div className="moreFromCurator">
             <span className="title">
               {variables.getMessage('modals.main.marketplace.product.more_from_curator', {
@@ -378,10 +384,8 @@ class Item extends PureComponent {
               />
             </div>
           </div>
-        ) : (
-          ''
         )}
-      </div>
+      </>
     );
   }
 }

@@ -9,11 +9,9 @@ p.description {
 }
 
 .moreInfo {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: calc(100% - 30px);
-  gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
 
   .items {
     margin-top: 0 !important;
@@ -28,7 +26,6 @@ p.description {
     flex-flow: row;
     align-items: center;
     gap: 15px;
-    flex: 1 0 44%;
 
     svg {
       @include themed {
@@ -71,10 +68,38 @@ p.description {
 
 .subHeader {
   display: flex;
+  flex-flow: row;
   justify-content: space-between;
-  flex-wrap: wrap;
-  width: calc(100% - 30px);
   gap: 25px;
+
+  .itemWarning {
+    padding: 10px 20px;
+    display: flex;
+    flex-flow: row;
+    gap: 15px;
+    align-items: center;
+
+    .text {
+      display: flex;
+      flex-flow: column;
+    }
+
+    svg {
+      @include themed {
+        background-image: t($slightGradient);
+        box-shadow: t($boxShadow);
+      }
+
+      padding: 7px;
+      border-radius: 100%;
+    }
+
+    @include themed {
+      background: t($modal-sidebar);
+      border-radius: t($borderRadius);
+      box-shadow: 0 0 0 1px t($modal-sidebarActive);
+    }
+  }
 
   .items {
     margin-top: 0 !important;

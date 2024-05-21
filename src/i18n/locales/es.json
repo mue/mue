@@ -549,6 +549,7 @@
             "back": "Atrás",
             "report": "Informe"
           },
+          "not_in_language": "This add-on is not in your language",
           "setting": "Ajustes",
           "value": "Valor"
         },
