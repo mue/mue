@@ -550,6 +550,7 @@
             "report": "Bildir/Raporla"
           },
           "not_in_language": "This add-on is not in your language",
+          "third_party_api": "This add-on uses a third-party API",
           "setting": "Ayarlar",
           "value": "Değer"
         },

@@ -11,9 +11,21 @@
 }
 
 ::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+
   @include themed {
     background: t($modal-sidebarActive);
   }
 
-  border-radius: 12px;
+  &:hover {
+    @include themed {
+      background: t($btn-backgroundHover);
+    }
+  }
+
+  &:active {
+    @include themed {
+      background: t($btn-backgroundHover);
+    }
+  }
 }

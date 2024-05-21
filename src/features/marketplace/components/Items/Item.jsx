@@ -136,6 +136,18 @@ class Item extends PureComponent {
       );
     }
 
+    if (this.props.data.data.image_api === true) {
+      itemWarning = (
+        <div className="itemWarning">
+          <MdOutlineWarning />
+          <div className="text">
+            <span className="header">Warning</span>
+            <span>{variables.getMessage('modals.main.marketplace.product.third_party_api')}</span>
+          </div>
+        </div>
+      );
+    }
+
     const moreInfoItem = (icon, header, text) => (
       <div className="infoItem">
         {icon}
