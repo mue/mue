@@ -3,6 +3,7 @@ import { useState, memo } from 'react';
 import { Checkbox, Slider } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import { TextField } from '@mui/material';
+import { toast } from 'react-toastify';
 
 import EventBus from 'utils/eventbus';
 import values from 'utils/data/slider_values.json';
@@ -58,6 +59,16 @@ function ExperimentalOptions() {
             type="settings"
             onClick={() => EventBus.emit(eventType, eventName)}
             label="Send"
+          />
+          <Button
+            type="settings"
+            onClick={() => toast('Toasted successfully')}
+            label="Normal Toast"
+          />
+          <Button
+            type="settings"
+            onClick={() => toast.success('Toasted successfully')}
+            label="Achievement Unlocked Toast"
           />
         </Action>
       </Row>

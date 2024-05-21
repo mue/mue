@@ -32,3 +32,8 @@
 .Toastify__toast--default {
   @extend %basic;
 }
+
+.Toastify__toast--success {
+  @extend %basic;
+}
+

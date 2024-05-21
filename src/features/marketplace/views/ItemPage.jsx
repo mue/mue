@@ -54,7 +54,6 @@ class ItemPage extends PureComponent {
           (item) => item.type === convertedType && item.name !== this.props.data.data.name,
         ),
       });
-      console.log(this.state.curator);
     } catch (e) {
       console.error(e);
     }
@@ -156,8 +155,6 @@ class ItemPage extends PureComponent {
         </div>
       </div>
     );
-
-    console.log(this.props.data.data)
 
     return (
       <>

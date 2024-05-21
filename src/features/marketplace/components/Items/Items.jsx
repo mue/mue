@@ -72,8 +72,8 @@ function Items({
   showCreateYourOwn,
 }) {
   const shouldShowCollection =
-    (collection && !onCollection && (filter === null || filter === '')) ||
-    (type === 'collections' && !onCollection && (filter === null || filter === ''));
+    ((collection && !onCollection && (filter === null || filter === '')) ||
+    (type === 'collections' && !onCollection && (filter === null || filter === ''))) && type !== 'preset_settings';
 
   return (
     <>
@@ -126,7 +126,7 @@ function Items({
           ))}
       </div>
       <div className="loader"></div>
-      {showCreateYourOwn ? (
+      {!onCollection && showCreateYourOwn ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />
           <span className="title">{variables.getMessage('modals.main.marketplace.cant_find')}</span>

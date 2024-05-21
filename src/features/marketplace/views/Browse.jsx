@@ -310,31 +310,23 @@ class Marketplace extends PureComponent {
 
     if (this.state.done === false) {
       return errorMessage(
-        <>
-          <div className="loaderHolder">
-            <div id="loader"></div>
-            <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
-          </div>
-        </>,
+        <div className="loaderHolder">
+          <div id="loader"></div>
+          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+        </div>,
       );
     }
 
     if (!this.state.items || this.state.items?.length === 0) {
       this.getItems();
-      return (
+      return errorMessage(
         <>
-          {errorMessage(
-            <>
-              <MdLocalMall />
-              <span className="title">
-                {variables.getMessage('modals.main.addons.empty.title')}
-              </span>
-              <span className="subtitle">
-                {variables.getMessage('modals.main.marketplace.no_items')}
-              </span>
-            </>,
-          )}
-        </>
+          <MdLocalMall />
+          <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
+          <span className="subtitle">
+            {variables.getMessage('modals.main.marketplace.no_items')}
+          </span>
+        </>,
       );
     }
 
@@ -380,7 +372,11 @@ class Marketplace extends PureComponent {
                 onClick={() => this.installCollection()}
                 disabled={this.state.busy}
                 icon={<MdLibraryAdd />}
-                label={this.state.busy ? variables.getMessage('modals.main.marketplace.installing') : variables.getMessage('modals.main.marketplace.add_all')}
+                label={
+                  this.state.busy
+                    ? variables.getMessage('modals.main.marketplace.installing')
+                    : variables.getMessage('modals.main.marketplace.add_all')
+                }
               />
             </div>
           </>
