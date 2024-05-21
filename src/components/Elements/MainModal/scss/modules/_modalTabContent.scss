@@ -77,7 +77,8 @@
 
   button {
     @include modal-button(standard);
-    padding: 5px 10px 5px 10px;
+
+    padding: 5px 10px;
   }
 }
 
@@ -206,38 +207,40 @@ table {
   flex-flow: row !important;
   gap: 5px !important;
   text-align: center !important;
-  @include themed() {
+
+  @include themed {
     background: t($modal-sidebar);
     box-shadow: t($boxShadow);
     color: t($color) !important;
   }
+
   hr {
     height: 100%;
     margin-right: 5px;
+
     @include themed {
       border-color: t($modal-secondaryColour);
     }
   }
-  text-align: center;
+
   border-radius: 12px;
   height: 40px;
   font-size: 1rem;
-  display: flex;
   align-items: center;
-  flex-flow: row;
   justify-content: center;
-  gap: 20px;
   transition: 0.5s;
   cursor: pointer;
   border: 0;
   padding-left: 10px;
   padding-right: 5px;
+
   input[type='tel'] {
     background: none;
     outline: none;
     border: none;
     max-width: 20px;
     text-align: center;
+
     @include themed {
       color: t($color) !important;
     }

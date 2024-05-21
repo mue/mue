@@ -161,7 +161,7 @@ p.description {
   gap: 15px;
 
   .subtitle {
-    -webkit-user-select: text !important;
+    user-select: text !important;
     user-select: text !important;
   }
 }

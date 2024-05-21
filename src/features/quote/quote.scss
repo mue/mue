@@ -4,7 +4,7 @@
   font-size: 0.8em;
   text-shadow: 0 0 10px rgb(0 0 0 / 30%);
   cursor: initial;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 
   --shadow-shift: 0.125rem;
@@ -17,7 +17,7 @@
 .quoteauthor {
   font-size: 0.9em;
   letter-spacing: 0.5px;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 
   --shadow-shift: 0.125rem;
@@ -36,7 +36,7 @@ h1.quoteauthor {
 .quoteAuthorLink {
   text-decoration: none;
   color: white;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 }
 
@@ -64,6 +64,7 @@ h1.quoteauthor {
 
 .author-license {
   font-size: clamp(8px, 2.5vw, 0.1em);
+
   // max-width: 150px;
   // white-space: nowrap;
   // overflow-x: hidden;

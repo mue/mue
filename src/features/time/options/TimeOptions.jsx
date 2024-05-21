@@ -12,6 +12,9 @@ const TimeOptions = () => {
   const [minuteColour, setMinuteColour] = useState(
     localStorage.getItem('minuteColour') || '#ffffff',
   );
+  const [secondColour, setSecondColour] = useState(
+    localStorage.getItem('secondColour') || '#ffffff',
+  );
   const TIME_SECTION = 'modals.main.settings.sections.time';
 
   const updateColour = (type, event) => {
@@ -20,6 +23,8 @@ const TimeOptions = () => {
       setHourColour(colour);
     } else if (type === 'minuteColour') {
       setMinuteColour(colour);
+    } else if (type === 'secondColour') {
+      setSecondColour(colour);
     }
     localStorage.setItem(type, colour);
   };
@@ -183,6 +188,32 @@ const TimeOptions = () => {
           </span>
         </Action>
       </Row>
+      <Row>
+        <Content
+          title={variables.getMessage(
+            'modals.main.settings.sections.time.vertical_clock.change_second_colour',
+          )}
+        />
+        <Action>
+          <div className="colourInput">
+            <input
+              type="color"
+              name="secondColour"
+              className="secondColour"
+              onChange={(event) => updateColour('secondColour', event)}
+              value={secondColour}
+            ></input>
+            <label htmlFor={'secondColour'} className="customBackgroundHex">
+              {secondColour}
+            </label>
+          </div>
+          <span className="link" onClick={() => localStorage.setItem('secondColour', '#ffffff')}>
+            <MdRefresh />
+            {variables.getMessage('modals.main.settings.buttons.reset')}
+          </span>
+        </Action>
+      </Row>
+      
       {digitalSettings}
     </>
   );

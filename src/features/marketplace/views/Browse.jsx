@@ -215,7 +215,7 @@ class Marketplace extends PureComponent {
   }
 
   sortMarketplace(data, sendEvent) {
-    const value = localStorage.getItem('sortMarketplace');
+    const value = localStorage.getItem('sortMarketplace') || 'a-z';
     let items = data || this.state.items;
     if (!items) {
       return;

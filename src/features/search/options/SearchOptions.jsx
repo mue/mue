@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { toast } from 'react-toastify';
-import { MenuItem, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { Dropdown, Checkbox } from 'components/Form/Settings';

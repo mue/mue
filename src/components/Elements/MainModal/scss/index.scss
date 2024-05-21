@@ -162,6 +162,12 @@ h5 {
     gap: 15px;
     align-items: center;
   }
+
+  .MuiOutlinedInput-notchedOutline {
+    @include themed {
+      border-color: t($modal-sidebarActive) !important;
+    }
+  }
 }
 
 .headerActions {

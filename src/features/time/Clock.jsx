@@ -58,12 +58,12 @@ export default class Clock extends PureComponent {
 
           if (localStorage.getItem('seconds') === 'true') {
             sec = `:${('00' + now.getSeconds()).slice(-2)}`;
-            this.setState({ finalSeconds: `:${('00' + now.getSeconds()).slice(-2)}` });
+            this.setState({ finalSeconds: `${('00' + now.getSeconds()).slice(-2)}` });
           }
 
           if (localStorage.getItem('timeformat') === 'twentyfourhour') {
             if (zero === 'false') {
-              time = `${now.getHours()}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
+              time = `${now.getHours()}:${('00' + now.getMinutes()).slice(-2)}:${sec}`;
               this.setState({
                 finalHour: `${now.getHours()}`,
                 finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,

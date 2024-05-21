@@ -5,8 +5,8 @@ body {
   background: #000;
   margin: 0;
   overflow: hidden;
-  text-rendering: optimizeLegibility !important;
-  -moz-text-rendering: optimizeLegibility !important;
+  text-rendering: optimizelegibility !important;
+  -moz-text-rendering: optimizelegibility !important;
 }
 
 * {
@@ -33,7 +33,6 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
-
     animation: fadeIn 1s;
   }
 
@@ -208,13 +207,15 @@ body {
   .pulse {
     height: 100%;
     width: 100%;
-    background: linear-gradient(-90deg, #efefef 0%, #cccccc 50%, #efefef 100%);
+    background: linear-gradient(-90deg, #efefef 0%, #ccc 50%, #efefef 100%);
     background-size: 400% 400%;
     animation: pulse 1.2s ease-in-out infinite;
+
     @keyframes pulse {
       0% {
         background-position: 0% 0%;
       }
+
       100% {
         background-position: -135% 0%;
       }
@@ -226,13 +227,15 @@ body {
   .pulse {
     height: 100%;
     width: 100%;
-    background: linear-gradient(-90deg, #000000 0%, rgb(83, 83, 83) 50%, #000000 100%);
+    background: linear-gradient(-90deg, #000 0%, rgb(83 83 83) 50%, #000 100%);
     background-size: 400% 400%;
     animation: pulse 1.2s ease-in-out infinite;
+
     @keyframes pulse {
       0% {
         background-position: 0% 0%;
       }
+
       100% {
         background-position: -135% 0%;
       }

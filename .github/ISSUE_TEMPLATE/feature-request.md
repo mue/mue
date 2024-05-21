@@ -1,6 +1,6 @@
 ---
-name: Feature Request
-about: Request things to be added to mue
+name: Request a feature
+about: Request something to be implemented in the extension
 title: "[Feature Request]"
 labels: enhancement
 assignees: ''

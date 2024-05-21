@@ -97,7 +97,7 @@ $themes: (
     box-shadow: t($boxShadow);
   }
 
-  -webkit-backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
+  backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
   backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
 
   .title {

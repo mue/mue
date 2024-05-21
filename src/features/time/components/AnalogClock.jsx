@@ -1,10 +1,12 @@
 import { Suspense, lazy } from 'react';
+
 const Analog = lazy(() => import('react-clock'));
 
 function AnalogClock({ time }) {
   const enabled = (setting) => {
     return localStorage.getItem(setting) === 'true';
   };
+
   return (
     <Suspense fallback={<></>}>
       <div className={`clockBackground ${enabled('roundClock') ? 'round' : ''}`}>

@@ -63,6 +63,7 @@
     align-items: center;
     gap: 5px;
     font-size: 12px;
+
     @include themed {
       color: t($subColor);
     }
@@ -75,6 +76,7 @@
 
   svg.trophy {
     font-size: 20px !important;
+
     @include themed {
       background-image: t($slightGradient);
       box-shadow: t($boxShadow);
@@ -86,6 +88,7 @@
 
   svg.trophyLocked {
     font-size: 20px !important;
+
     @include themed {
       background-image: t($modal-sidebarActive);
       box-shadow: t($boxShadow);

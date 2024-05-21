@@ -116,13 +116,14 @@ function Items({
       <div className={`items ${moreByCreator ? 'creatorItems' : ''}`}>
         {items
           ?.filter((item) => filterItems(item, filter))
-          .map((item) => (
+          .map((item, index) => (
             <ItemPage
               isCurator={isCurator}
               item={item}
               toggleFunction={toggleFunction}
               type={type}
               onCollection={onCollection}
+              key={index}
             />
           ))}
       </div>
