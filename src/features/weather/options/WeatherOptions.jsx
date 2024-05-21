@@ -26,6 +26,7 @@ class WeatherOptions extends PureComponent {
   }
 
   changeLocation(e) {
+    localStorage.removeItem('currentWeather');
     this.setState({
       location: e.target.value,
     });

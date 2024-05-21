@@ -439,7 +439,11 @@
               "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
               "automatic": "Automatic"
             },
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support."
+            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support.",
+            "preview_data_disabled": {
+              "title": "Data Settings Disabled",
+              "description": "Data settings are disabled in preview mode. Please exit preview mode to use this feature."
+            }
           },
           "stats": {
             "title": "Stats",
@@ -541,6 +545,7 @@
           "no_quotes": "No. Quotes",
           "version": "Versjon",
           "created_by": "Created by",
+          "updated_at": "Updated at",
           "part_of": "Part of",
           "explore": "Explore",
           "buttons": {
@@ -548,7 +553,8 @@
             "remove": "Fjern",
             "update_addon": "Update Add-on",
             "back": "Back",
-            "report": "Report"
+            "report": "Report",
+            "not_available_preview": "Unavailable on Preview"
           },
           "not_in_language": "This add-on is not in your language",
           "third_party_api": "This add-on uses a third-party API",

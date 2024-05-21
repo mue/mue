@@ -439,7 +439,11 @@
               "subtitle": "আপনার কম্পিউটার থেকে স্বয়ংক্রিয় ডিফল্টের পরিবর্তে তালিকা থেকে একটি টাইমজোন বেছে নিন",
               "automatic": "স্বয়ংক্রিয়"
             },
-            "experimental_warning": "অনুগ্রহ করে মনে রাখবেন যে আপনার পরীক্ষামূলক মোড চালু থাকলে Mue টিম সাহায্য প্রদান করতে পারবে না। অনুগ্রহ করে প্রথমে এটি বন্ধ করুন এবং সাপোর্টের সাথে যোগাযোগ করার আগে সমস্যাটি ঘটতে থাকে কিনা তা দেখুন।"
+            "experimental_warning": "অনুগ্রহ করে মনে রাখবেন যে আপনার পরীক্ষামূলক মোড চালু থাকলে Mue টিম সাহায্য প্রদান করতে পারবে না। অনুগ্রহ করে প্রথমে এটি বন্ধ করুন এবং সাপোর্টের সাথে যোগাযোগ করার আগে সমস্যাটি ঘটতে থাকে কিনা তা দেখুন।",
+            "preview_data_disabled": {
+              "title": "Data Settings Disabled",
+              "description": "Data settings are disabled in preview mode. Please exit preview mode to use this feature."
+            }
           },
           "stats": {
             "title": "Stats",
@@ -541,6 +545,7 @@
           "no_quotes": "No. Quotes",
           "version": "Version",
           "created_by": "Created by",
+          "updated_at": "Updated at",
           "part_of": "Part of",
           "explore": "Explore",
           "buttons": {
@@ -548,7 +553,8 @@
             "remove": "Remove",
             "update_addon": "Update Add-on",
             "back": "Back",
-            "report": "Report"
+            "report": "Report",
+            "not_available_preview": "Unavailable on Preview"
           },
           "not_in_language": "This add-on is not in your language",
           "third_party_api": "This add-on uses a third-party API",

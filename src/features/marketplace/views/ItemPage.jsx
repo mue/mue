@@ -5,7 +5,7 @@ import {
   MdIosShare,
   MdFlag,
   MdAccountCircle,
-  MdBugReport,
+  MdCalendarMonth,
   MdFormatQuote,
   MdImage,
   MdTranslate,
@@ -156,6 +156,9 @@ class ItemPage extends PureComponent {
       </div>
     );
 
+    const dateObj = new Date(this.props.data.data.updated_at);
+    const formattedDate = new Intl.DateTimeFormat(shortLocale, { year: 'numeric', month: 'long', day: '2-digit' }).format(dateObj);
+
     return (
       <>
         <Modal
@@ -181,7 +184,11 @@ class ItemPage extends PureComponent {
                 ? this.props.data.data.in_collections[0].display_name
                 : variables.getMessage('modals.main.navbar.marketplace')
           }
-          secondaryTitle={this.props.data.data.sideload ? this.props.data.data.name : this.props.data.data.display_name}
+          secondaryTitle={
+            this.props.data.data.sideload
+              ? this.props.data.data.name
+              : this.props.data.data.display_name
+          }
           report={false}
           goBack={this.props.toggleFunction}
         />
@@ -280,15 +287,9 @@ class ItemPage extends PureComponent {
               </span>
               <div className="moreInfo">
                 {moreInfoItem(
-                  <MdBugReport />,
-                  variables.getMessage('modals.main.marketplace.product.version'),
-                  updateButton ? (
-                    <span>
-                      {this.props.data.version} (Installed: {this.props.data.addonInstalledVersion})
-                    </span>
-                  ) : (
-                    <span>{this.props.data.version}</span>
-                  ),
+                  <MdCalendarMonth />,
+                  variables.getMessage('modals.main.marketplace.product.updated_at'),
+                  formattedDate,
                 )}
                 {this.props.data.data.quotes &&
                   moreInfoItem(
@@ -336,31 +337,37 @@ class ItemPage extends PureComponent {
                   e.target.src = placeholderIcon;
                 }}
               />
-              {this.props.button}
-              <div className="iconButtons">
-                <Button
-                  type="icon"
-                  onClick={() => this.setState({ shareModal: true })}
-                  icon={<MdIosShare />}
-                  tooltipTitle={variables.getMessage('widgets.quote.share')}
-                  tooltipKey="share"
-                />
-                <Button
-                  type="icon"
-                  onClick={() =>
-                    window.open(
-                      variables.constants.REPORT_ITEM +
-                        this.props.data.data.display_name.split(' ').join('+'),
-                      '_blank',
-                    )
-                  }
-                  icon={<MdFlag />}
-                  tooltipTitle={variables.getMessage(
-                    'modals.main.marketplace.product.buttons.report',
-                  )}
-                  tooltipKey="report"
-                />
-              </div>
+              {localStorage.getItem('welcomePreview') !== 'true' ? (
+                this.props.button
+              ) : (
+                <p style={{ textAlign: 'center' }}>{variables.getMessage('modals.main.marketplace.product.buttons.not_available_preview')}</p>
+              )}
+              {this.props.data.data.sideload !== true && (
+                <div className="iconButtons">
+                  <Button
+                    type="icon"
+                    onClick={() => this.setState({ shareModal: true })}
+                    icon={<MdIosShare />}
+                    tooltipTitle={variables.getMessage('widgets.quote.share')}
+                    tooltipKey="share"
+                  />
+                  <Button
+                    type="icon"
+                    onClick={() =>
+                      window.open(
+                        variables.constants.REPORT_ITEM +
+                          this.props.data.data.display_name.split(' ').join('+'),
+                        '_blank',
+                      )
+                    }
+                    icon={<MdFlag />}
+                    tooltipTitle={variables.getMessage(
+                      'modals.main.marketplace.product.buttons.report',
+                    )}
+                    tooltipKey="report"
+                  />
+                </div>
+              )}
               {this.props.data.data.in_collections?.length > 0 && (
                 <div>
                   <div className="inCollection">

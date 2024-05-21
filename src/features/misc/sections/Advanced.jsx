@@ -6,6 +6,7 @@ import {
   MdDownload as ExportIcon,
   MdRestartAlt as ResetIcon,
   MdDataUsage,
+  MdError,
 } from 'react-icons/md';
 
 import { exportSettings, importSettings } from 'utils/settings';
@@ -23,28 +24,55 @@ function AdvancedOptions() {
   const ADVANCED_SECTION = 'modals.main.settings.sections.advanced';
 
   const Data = () => {
-    return (
-      localStorage.getItem('welcomePreview') !== 'true' && (
-        <Row final={true}>
-          <Content
-            title={variables.getMessage('modals.main.settings.sections.advanced.data')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.advanced.data_description',
-            )}
+    return localStorage.getItem('welcomePreview') !== 'true' ? (
+      <Row final={true}>
+        <Content
+          title={variables.getMessage('modals.main.settings.sections.advanced.data')}
+          subtitle={variables.getMessage('modals.main.settings.sections.advanced.data_description')}
+        />
+        <div className="resetDataButtonsLayout">
+          <Button
+            onClick={() => setResetModal(true)}
+            icon={<ResetIcon />}
+            label={variables.getMessage('modals.main.settings.buttons.reset')}
           />
-          <div className="resetDataButtonsLayout">
-            <Button onClick={() => setResetModal(true)} icon={<ResetIcon />} label={variables.getMessage('modals.main.settings.buttons.reset')} />
-            <Button onClick={() => exportSettings()} icon={<ExportIcon />} label={variables.getMessage('modals.main.settings.buttons.export')} />
-            <Button onClick={() => document.getElementById('file-input').click()} icon={<ImportIcon />} label={variables.getMessage('modals.main.settings.buttons.import')} />
+          <Button
+            onClick={() => exportSettings()}
+            icon={<ExportIcon />}
+            label={variables.getMessage('modals.main.settings.buttons.export')}
+          />
+          <Button
+            onClick={() => document.getElementById('file-input').click()}
+            icon={<ImportIcon />}
+            label={variables.getMessage('modals.main.settings.buttons.import')}
+          />
+        </div>
+        <FileUpload
+          id="file-input"
+          accept="application/json"
+          type="settings"
+          loadFunction={(e) => importSettings(e)}
+        />
+      </Row>
+    ) : (
+      <div className="emptyItems">
+        <div className="emptyMessage">
+          <div className="loaderHolder">
+            <MdError />
+
+            <span className="title">
+              {variables.getMessage(
+                'modals.main.settings.sections.advanced.preview_data_disabled.title',
+              )}
+            </span>
+            <span className="subtitle">
+              {variables.getMessage(
+                'modals.main.settings.sections.advanced.preview_data_disabled.description',
+              )}
+            </span>
           </div>
-          <FileUpload
-            id="file-input"
-            accept="application/json"
-            type="settings"
-            loadFunction={(e) => importSettings(e)}
-          />
-        </Row>
-      )
+        </div>
+      </div>
     );
   };
 

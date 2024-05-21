@@ -14,6 +14,15 @@ export const getWeather = async (location, done) => {
     return;
   }
 
+  let cached = localStorage.getItem('currentWeather');
+  if (cached) {
+    cached = JSON.parse(cached);
+    // 300 seconds (in ms) = 5 minutes
+    if (Date.now() - cached.cachedAt < 3e5) {
+      return cached.data;
+    }
+  }
+
   try {
     const response = await fetch(
       variables.constants.API_URL + `/weather?city=${location}&language=${variables.languagecode}`,
@@ -41,7 +50,7 @@ export const getWeather = async (location, done) => {
       fahrenheit: '°F',
     };
 
-    return {
+    const cacheable = {
       icon: data.weather[0].icon,
       temp_text: tempSymbols[tempFormat] || 'K',
       weather: {
@@ -59,6 +68,8 @@ export const getWeather = async (location, done) => {
       },
       done: true,
     };
+    localStorage.setItem('currentWeather', JSON.stringify({ data: cacheable, cachedAt: Date.now() }));
+    return cacheable 
   } catch (error) {
     console.error('Fetch Error: ', error);
   }
