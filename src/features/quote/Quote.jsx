@@ -160,10 +160,10 @@ class Quote extends PureComponent {
           '',
         ) || // talk page link (if applicable) is only removed for English
         'Unknown';
-      authorimglicense = `© ${photographer}. ${license.value}`;
+      authorimglicense = `© ${photographer}. ${license?.value}`;
       authorimglicense = authorimglicense.replace(/copyright\s/i, '').replace(/©\s©\s/, '© ');
 
-      if (license.value === 'Public domain') {
+      if (license?.value === 'Public domain') {
         authorimglicense = null;
       } else if (photographer.value === 'Unknown' || !photographer) {
         authorimglicense = null;

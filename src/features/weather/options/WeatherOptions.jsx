@@ -87,7 +87,7 @@ class WeatherOptions extends PureComponent {
           },
           (error) => {
             // firefox requires this 2nd function
-            console.log(error);
+            console.error(error);
           },
           {
             enableHighAccuracy: true,

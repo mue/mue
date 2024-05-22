@@ -22,7 +22,7 @@ class ErrorBoundary extends PureComponent {
    * @returns An object with two properties: error and errorData.
    */
   static getDerivedStateFromError(error) {
-    console.log(error);
+    console.error(error);
     variables.stats.postEvent('modal', 'Error occurred');
     return {
       error: true,
