@@ -84,40 +84,53 @@
 
 table {
   border-collapse: separate;
-
+  border-radius: 10px;
+  margin-top: 20px;
   @include themed {
-    border-radius: t($borderRadius);
-    margin-top: 20px;
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+    padding: 0;
+    border: 0;
+    outline: none;
+  }
 
-    tr:first-child {
-      background: t($modal-sidebarActive);
+  tr:first-child {
+    @include themed {
+      border-radius: t($borderRadius);
+      color: t($subColor);
 
-      th {
-        padding: 1rem;
-      }
     }
-
-    td {
-      padding: 15px;
+    letter-spacing: 2px;
+    th {
+      padding: 20px;
     }
+  }
 
-    tr {
-      th:last-child {
-        display: grid;
-        place-items: center;
-      }
+  td {
+    padding: 15px;
+  }
+
+  tr {
+    th:last-child {
+      display: grid;
+      place-items: center;
     }
+  }
 
-    ::placeholder {
+  ::placeholder {
+    @include themed {
       color: t($subColor);
     }
+  }
 
-    tr:not(:first-child) {
-      background: t($modal-sidebar);
+  tr:not(:first-child) {
+    @include themed {
+      background: t($modal-secondaryColour);
+    }
 
-      textarea {
-        width: 90%;
-        margin: 10px;
+    textarea {
+      width: 90%;
+      margin: 10px;
+      @include themed {
         color: t($color);
       }
     }
