@@ -48,9 +48,9 @@ function NavbarOptions() {
 
   const NavbarOptions = () => {
     const NavbarButton = ({ icon, messageKey, settingName }) => {
-      const [isDisabled, setIsDisabled] = useState(localStorage.getItem(settingName) === 'false');
+      const [isDisabled, setIsDisabled] = useState(localStorage.getItem(settingName) !== 'true');
       const handleClick = () => {
-        localStorage.setItem(settingName, !isDisabled);
+        localStorage.setItem(settingName, isDisabled);
 
         if (settingName === 'refresh') {
           setShowRefreshOptions(!showRefreshOptions);
