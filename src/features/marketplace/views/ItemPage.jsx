@@ -41,18 +41,8 @@ class ItemPage extends PureComponent {
       const { data } = await (
         await fetch(`${variables.constants.API_URL}/marketplace/curator/${name}`)
       ).json();
-      const convertedType = (() => {
-        const map = {
-          photos: 'photo_packs',
-          quotes: 'quote_packs',
-          settings: 'preset_settings',
-        };
-        return map[this.props.data.data.type];
-      })();
       this.setState({
-        moreByCurator: data.items.filter(
-          (item) => item.type === convertedType && item.name !== this.props.data.data.name,
-        ),
+        moreByCurator: data.items,
       });
     } catch (e) {
       console.error(e);
@@ -94,6 +84,18 @@ class ItemPage extends PureComponent {
     const locale = localStorage.getItem('language');
     const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
     let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
+    const convertedType = (() => {
+      const map = {
+        photos: 'photo_packs',
+        quotes: 'quote_packs',
+        settings: 'preset_settings',
+      };
+      return map[this.props.data.data.type];
+    })();
+    const moreByCurator = this.state.moreByCurator
+      .filter((item) => item.type === convertedType && item.name !== this.props.data.data.name)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3);
 
     if (!this.props.data.display_name) {
       return null;
@@ -184,7 +186,7 @@ class ItemPage extends PureComponent {
           title={
             this.props.addons
               ? variables.getMessage('modals.main.addons.added')
-              : this.props.data.data.in_collections?.length > 0
+              : this.props.data.onCollection && this.props.data.data.in_collections?.length > 0
                 ? this.props.data.data.in_collections[0].display_name
                 : variables.getMessage('modals.main.navbar.marketplace')
           }
@@ -399,7 +401,7 @@ class ItemPage extends PureComponent {
             </div>
           </div>
         </div>
-        {this.state.moreByCurator.length > 1 && (
+        {moreByCurator.length > 1 && (
           <div className="moreFromCurator">
             <span className="title">
               {variables.getMessage('modals.main.marketplace.product.more_from_curator', {
@@ -410,7 +412,7 @@ class ItemPage extends PureComponent {
               <Items
                 isCurator={true}
                 type={this.props.data.data.type}
-                items={this.state.moreByCurator.sort(() => 0.5 - Math.random()).slice(0, 3)}
+                items={moreByCurator}
                 onCollection={this.state.collection}
                 toggleFunction={(input) => this.props.toggleFunction('item', input)}
                 collectionFunction={(input) => this.props.toggleFunction('collection', input)}

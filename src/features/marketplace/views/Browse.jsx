@@ -50,8 +50,10 @@ class Marketplace extends PureComponent {
     this.controller = new AbortController();
   }
 
-  async toggle(type, data) {
-    if (type === 'item') {
+  async toggle(pageType, data) {
+    console.log(pageType, data)
+    console.log('props', this.props)
+    if (pageType === 'item') {
       let info;
       // get item info
       try {
@@ -94,6 +96,7 @@ class Marketplace extends PureComponent {
 
       this.setState({
         item: {
+          onCollection: data._onCollection,
           type: info.data.type,
           display_name: info.data.name,
           author: info.data.author,
@@ -108,17 +111,21 @@ class Marketplace extends PureComponent {
         },
         button: button,
       });
-
+      document.querySelector('#modal').scrollTop = 0;
       variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
-    } else if (type === 'collection') {
+    } else if (pageType === 'collection') {
+      console.log(1)
       this.setState({
         done: false,
+        item: {},
       });
+      console.log(2)
       const collection = await (
         await fetch(`${variables.constants.API_URL}/marketplace/collection/${data}`, {
           signal: this.controller.signal,
         })
       ).json();
+      console.log(3)
       this.setState({
         items: collection.data.items,
         collectionTitle: collection.data.display_name,
@@ -127,7 +134,9 @@ class Marketplace extends PureComponent {
         collection: true,
         done: true,
       });
+      console.log(4)
     } else {
+      console.log(69)
       this.setState({
         item: {},
       });
@@ -335,7 +344,7 @@ class Marketplace extends PureComponent {
         <ItemPage
           data={this.state.item}
           button={this.state.button}
-          toggleFunction={() => this.toggle()}
+          toggleFunction={(...args) => this.toggle(...args)}
           addonInstalled={this.state.item.addonInstalled}
           addonInstalledVersion={this.state.item.addonInstalledVersion}
           icon={this.state.item.screenshot_url}

@@ -15,7 +15,8 @@ function filterItems(item, filter) {
   );
 }
 
-function ItemPage({ item, toggleFunction, type, onCollection, isCurator }) {
+function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
+  item._onCollection = onCollection
   return (
     <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
       <img
@@ -117,7 +118,7 @@ function Items({
         {items
           ?.filter((item) => filterItems(item, filter))
           .map((item, index) => (
-            <ItemPage
+            <ItemCard
               isCurator={isCurator}
               item={item}
               toggleFunction={toggleFunction}
