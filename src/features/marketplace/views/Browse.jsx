@@ -51,8 +51,6 @@ class Marketplace extends PureComponent {
   }
 
   async toggle(pageType, data) {
-    console.log(pageType, data)
-    console.log('props', this.props)
     if (pageType === 'item') {
       let info;
       // get item info
@@ -114,18 +112,15 @@ class Marketplace extends PureComponent {
       document.querySelector('#modal').scrollTop = 0;
       variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
     } else if (pageType === 'collection') {
-      console.log(1)
       this.setState({
         done: false,
         item: {},
       });
-      console.log(2)
       const collection = await (
         await fetch(`${variables.constants.API_URL}/marketplace/collection/${data}`, {
           signal: this.controller.signal,
         })
       ).json();
-      console.log(3)
       this.setState({
         items: collection.data.items,
         collectionTitle: collection.data.display_name,
@@ -134,9 +129,7 @@ class Marketplace extends PureComponent {
         collection: true,
         done: true,
       });
-      console.log(4)
     } else {
-      console.log(69)
       this.setState({
         item: {},
       });
