@@ -29,7 +29,10 @@ function Refresh() {
         text = variables.getMessage('modals.main.settings.sections.quote.title');
         break;
       case 'quotebackground':
-        text = new Intl.ListFormat('en-GB', { style: 'long', type: 'conjunction' }).format([
+        text = new Intl.ListFormat(localStorage.getItem('language')?.replace(/_/gm, '-') || 'en-GB', {
+          style: 'long',
+          type: 'conjunction',
+        }).format([
           variables.getMessage('modals.main.settings.sections.quote.title'),
           variables.getMessage('modals.main.settings.sections.background.title'),
         ]);
