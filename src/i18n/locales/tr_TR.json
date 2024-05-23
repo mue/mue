@@ -133,7 +133,8 @@
             "vertical_clock": {
               "title": "Dikey Saat",
               "change_hour_colour": "Saat Metni Rengini Değiştirin",
-              "change_minute_colour": "Dakika Metni Rengini Değiştirin"
+              "change_minute_colour": "Dakika Metni Rengini Değiştirin",
+              "change_second_colour": "Change second text colour"
             }
           },
           "date": {
@@ -458,6 +459,7 @@
             },
             "usage": "Kullanım İstatistikleri",
             "achievements": "Başarılar",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
             "unlocked": "{count} Kilidi Açıldı",
             "locked": "Locked",
             "clear_modal": {

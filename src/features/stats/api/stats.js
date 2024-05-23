@@ -1,5 +1,6 @@
 import { newAchievements, getLocalisedAchievementData } from './achievements';
 import { toast } from 'react-toastify';
+import variables from 'config/variables';
 
 export default class Stats {
   static async achievementTrigger(stats) {
@@ -7,7 +8,13 @@ export default class Stats {
     newAchievement.forEach((achievement) => {
       if (achievement) {
         const { name } = getLocalisedAchievementData(achievement.id);
-        toast.success(`Achievement Unlocked: ${name}`);
+        //toast.success(`{varia}: ${name}`);
+        toast.success(
+          `🏆 ${variables.getMessage('modals.main.settings.sections.stats.achievement_unlocked', { name: name })}`,
+          {
+            icon: false,
+          },
+        );
       }
     });
   }

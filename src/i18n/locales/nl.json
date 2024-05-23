@@ -133,7 +133,8 @@
             "vertical_clock": {
               "title": "Verticale Klok",
               "change_hour_colour": "Wijzig de kleur van de uurtekst",
-              "change_minute_colour": "Wijzig de kleur van de minuuttekst"
+              "change_minute_colour": "Wijzig de kleur van de minuuttekst",
+              "change_second_colour": "Change second text colour"
             }
           },
           "date": {
@@ -458,6 +459,7 @@
             },
             "usage": "Usage Stats",
             "achievements": "Prestaties",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
             "unlocked": "{count} Ontgrendeld",
             "locked": "Locked",
             "clear_modal": {

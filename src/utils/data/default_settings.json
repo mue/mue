@@ -156,6 +156,10 @@
     "value": false
   },
   {
+    "name": "weatherType",
+    "value": 2
+  },
+  {
     "name": "tempformat",
     "value": "celsius"
   },

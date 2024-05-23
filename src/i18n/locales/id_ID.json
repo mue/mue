@@ -133,7 +133,8 @@
             "vertical_clock": {
               "title": "Jam Vertikal",
               "change_hour_colour": "Ubah warna teks jam",
-              "change_minute_colour": "Ubah warna teks menit"
+              "change_minute_colour": "Ubah warna teks menit",
+              "change_second_colour": "Change second text colour"
             }
           },
           "date": {
@@ -458,6 +459,7 @@
             },
             "usage": "Statistik Penggunaan",
             "achievements": "Achievements",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
             "unlocked": "{count} Unlocked",
             "locked": "Locked",
             "clear_modal": {

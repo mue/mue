@@ -459,6 +459,7 @@
             },
             "usage": "Usage Stats",
             "achievements": "Achievements",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
             "unlocked": "{count} Unlocked",
             "locked": "Locked",
             "clear_modal": {

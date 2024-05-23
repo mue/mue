@@ -133,7 +133,8 @@
             "vertical_clock": {
               "title": "Reloj en vertical",
               "change_hour_colour": "Cambiar el color de las horas",
-              "change_minute_colour": "Cambiar el color de los minutos"
+              "change_minute_colour": "Cambiar el color de los minutos",
+              "change_second_colour": "Change second text colour"
             }
           },
           "date": {
@@ -458,6 +459,7 @@
             },
             "usage": "Estadísticas de uso",
             "achievements": "Logros",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
             "unlocked": "{count} Desbloqueado",
             "locked": "Locked",
             "clear_modal": {

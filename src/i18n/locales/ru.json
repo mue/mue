@@ -133,7 +133,8 @@
             "vertical_clock": {
               "title": "Вертикальные часы",
               "change_hour_colour": "Изменить цвет текста часа",
-              "change_minute_colour": "Изменить цвет текста минут"
+              "change_minute_colour": "Изменить цвет текста минут",
+              "change_second_colour": "Change second text colour"
             }
           },
           "date": {
@@ -458,6 +459,7 @@
             },
             "usage": "Статистика использования",
             "achievements": "Достижения",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
             "unlocked": "{count} разблокировано",
             "locked": "Locked",
             "clear_modal": {

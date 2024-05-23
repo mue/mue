@@ -133,7 +133,8 @@
             "vertical_clock": {
               "title": "Vertikale Uhr",
               "change_hour_colour": "Textfarbe der Stunde ändern",
-              "change_minute_colour": "Textfarbe der Minute ändern"
+              "change_minute_colour": "Textfarbe der Minute ändern",
+              "change_second_colour": "Change second text colour"
             }
           },
           "date": {
@@ -458,6 +459,7 @@
             },
             "usage": "Nutzungsstatistiken",
             "achievements": "Errungenschaften",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
             "unlocked": "{count} Freigeschaltet",
             "locked": "Locked",
             "clear_modal": {

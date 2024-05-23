@@ -133,7 +133,8 @@
             "vertical_clock": {
               "title": "উল্লম্ব ঘড়ি",
               "change_hour_colour": "ঘন্টার পাঠ্যের রঙ পরিবর্তন করুন",
-              "change_minute_colour": "মিনিটের পাঠ্যের রঙ পরিবর্তন করুন"
+              "change_minute_colour": "মিনিটের পাঠ্যের রঙ পরিবর্তন করুন",
+              "change_second_colour": "Change second text colour"
             }
           },
           "date": {
@@ -458,6 +459,7 @@
             },
             "usage": "ব্যবহারের পরিসংখ্যান",
             "achievements": "অর্জনগুলি",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
             "unlocked": "{count} আনলক করা হয়েছে",
             "locked": "Locked",
             "clear_modal": {
