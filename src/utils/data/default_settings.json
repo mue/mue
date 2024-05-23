@@ -164,6 +164,10 @@
     "value": "celsius"
   },
   {
+    "name": "authorImg",
+    "value": true
+  },
+  {
     "name": "authorLink",
     "value": true
   },
