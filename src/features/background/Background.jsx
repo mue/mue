@@ -103,12 +103,12 @@ export default class Background extends PureComponent {
         if (collection) {
           requestURL = `${variables.constants.API_URL}/images/unsplash?collections=${collection}&quality=${apiQuality}`;
         } else {
-          requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories}&quality=${apiQuality}`;
+          requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories || ''}&quality=${apiQuality}`;
         }
         break;
       // Defaults to Mue
       default:
-        requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories}&quality=${apiQuality}&excludes=${backgroundExclude}`;
+        requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories || ''}&quality=${apiQuality}&excludes=${backgroundExclude}`;
         break;
     }
 
