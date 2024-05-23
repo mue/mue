@@ -29,10 +29,10 @@ function Refresh() {
         text = variables.getMessage('modals.main.settings.sections.quote.title');
         break;
       case 'quotebackground':
-        text =
-          variables.getMessage('modals.main.settings.sections.quote.title') +
-          ' ' +
-          variables.getMessage('modals.main.settings.sections.background.title');
+        text = new Intl.ListFormat('en-GB', { style: 'long', type: 'conjunction' }).format([
+          variables.getMessage('modals.main.settings.sections.quote.title'),
+          variables.getMessage('modals.main.settings.sections.background.title'),
+        ]);
         break;
       default:
         text = variables.getMessage(
