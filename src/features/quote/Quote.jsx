@@ -154,20 +154,24 @@ class Quote extends PureComponent {
         authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]];
       const metadata = authorImagePage?.imageinfo?.[0]?.extmetadata;
       const license = metadata?.LicenseShortName;
-      const photographer =
-        this.stripHTML(metadata?.Attribution?.value || metadata?.Artist?.value || '').replace(
-          / \(talk\)/,
-          '',
-        ) || // talk page link (if applicable) is only removed for English
-        'Unknown';
-      authorimglicense = `© ${photographer}. ${license?.value}`;
-      authorimglicense = authorimglicense.replace(/copyright\s/i, '').replace(/©\s©\s/, '© ');
+      const photographer = this.stripHTML(
+        metadata?.Attribution?.value || metadata?.Artist?.value || '',
+      )
+        .replace(/©\s/, '')
+        .replace(/ \(talk\)/, ''); // talk page link (if applicable) is only removed for English
 
-      if (license?.value === 'Public domain') {
-        authorimglicense = null;
-      } else if (photographer.value === 'Unknown' || !photographer) {
-        authorimglicense = null;
+      if (!photographer) {
         authorimg = null;
+        authorimglicense = null;
+      } else if (license?.value === 'Public domain') {
+        authorimglicense = null;
+      } else {
+        if (photographer) {
+          authorimglicense = `© ${photographer}${license ? `. ${license.value}` : ''}`;
+        } else if (license) {
+          authorimglicense = license.value;
+        }
+        authorimglicense = authorimglicense.replace(/copyright\s/i, '');
       }
     } catch (e) {
       console.error(e);
@@ -285,9 +289,7 @@ class Quote extends PureComponent {
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
             authorimg: authorimgdata.authorimg,
-            authorimglicense:
-              authorimgdata.authorimglicense &&
-              authorimgdata.authorimglicense.replace(' undefined. ', ' '),
+            authorimglicense: authorimgdata.authorimglicense,
             quoteLanguage: quoteLanguage,
             authorOccupation: data.author_occupation,
           };
