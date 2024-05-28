@@ -40,7 +40,7 @@ export default class App extends PureComponent {
       <>
         {localStorage.getItem('background') === 'true' && <Background />}
         <ToastContainer
-          position="bottom-right"
+          position="top-center"
           autoClose={localStorage.getItem('toastDisplayTime') || 2500}
           newestOnTop={true}
           closeOnClick
