@@ -184,7 +184,6 @@ class Stats extends PureComponent {
           <div className="achievements">
             <div className="achievementsGrid">
               {this.state.achievements.map((achievement, index) => {
-                console.log(achievement);
                 if (achievement.achieved) {
                   return achievementElement(
                     index,

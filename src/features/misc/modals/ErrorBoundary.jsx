@@ -23,7 +23,6 @@ class ErrorBoundary extends PureComponent {
    */
   static getDerivedStateFromError(error) {
     console.error(error);
-    variables.stats.postEvent('modal', 'Error occurred');
     return {
       error: true,
       errorData: error,
