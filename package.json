@@ -19,7 +19,7 @@
     "@fontsource/montserrat": "5.0.17",
     "@muetab/react-sortable-hoc": "^2.0.1",
     "@mui/material": "5.15.18",
-    "@sentry/react": "^8.4.0",
+    "@sentry/react": "^8.5.0",
     "embla-carousel-autoplay": "8.1.3",
     "embla-carousel-react": "8.1.3",
     "fast-blurhash": "^1.1.2",
