@@ -377,7 +377,9 @@ class About extends PureComponent {
           {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
             {this.state.curators.map((name) => (
-              <li key={name}>{name}</li>
+              <li key={name} className="subtitle-photographers">
+                {name}
+              </li>
             ))}
           </ul>
         </div>

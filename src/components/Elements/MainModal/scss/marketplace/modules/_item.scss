@@ -33,6 +33,7 @@ p.description {
         box-shadow: t($boxShadow);
       }
 
+      font-size: 18px;
       padding: 7px;
       border-radius: 100%;
     }
@@ -40,6 +41,7 @@ p.description {
     .text {
       display: flex;
       flex-flow: column;
+      font-size: medium;
     }
   }
 
@@ -122,11 +124,13 @@ p.description {
         box-shadow: t($boxShadow);
       }
 
+      font-size: 18px;
       padding: 7px;
       border-radius: 100%;
     }
 
     .text {
+      font-size: medium;
       display: flex;
       flex-flow: column;
     }
