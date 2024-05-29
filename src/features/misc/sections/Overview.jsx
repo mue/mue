@@ -1,9 +1,9 @@
-import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { MdOutlineDragIndicator } from 'react-icons/md';
 import { sortableContainer, sortableElement } from '@muetab/react-sortable-hoc';
 import { toast } from 'react-toastify';
 
+import variables from 'config/variables';
 import Greeting from './overview_skeletons/Greeting';
 import Clock from './overview_skeletons/Clock';
 import Quote from './overview_skeletons/Quote';
@@ -30,53 +30,40 @@ const SortableItem = sortableElement(({ value }) => (
 ));
 
 const SortableContainer = sortableContainer(({ children }) => (
-  <ul className="sortablecontainer">{children}</ul>
+  <ul className="sortableContainer">{children}</ul>
 ));
 
-class Overview extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      items: JSON.parse(localStorage.getItem('order')),
-      news: {
-        title: '',
-        date: '',
-        description: '',
-        link: '',
-        linkText: '',
-      },
-      newsDone: false,
-    };
-  }
+const Overview = () => {
+  const [items, setItems] = useState(() => JSON.parse(localStorage.getItem('order')) || ['greeting', 'time', 'quicklinks', 'quote', 'date', 'message']);
+  const [news, setNews] = useState({
+    title: '',
+    date: '',
+    description: '',
+    link: '',
+    linkText: '',
+  });
+  const [newsDone, setNewsDone] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  arrayMove(array, oldIndex, newIndex) {
+  const arrayMove = (array, oldIndex, newIndex) => {
     const result = Array.from(array);
     const [removed] = result.splice(oldIndex, 1);
     result.splice(newIndex, 0, removed);
-
     return result;
-  }
-
-  onSortEnd = ({ oldIndex, newIndex }) => {
-    this.setState({
-      items: this.arrayMove(this.state.items, oldIndex, newIndex),
-    });
   };
 
-  reset = () => {
-    localStorage.setItem(
-      'order',
-      JSON.stringify(['greeting', 'time', 'quicklinks', 'quote', 'date', 'message']),
-    );
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    setItems((prevItems) => arrayMove(prevItems, oldIndex, newIndex));
+  };
 
-    this.setState({
-      items: JSON.parse(localStorage.getItem('order')),
-    });
-
+  const reset = () => {
+    const defaultOrder = ['greeting', 'time', 'quicklinks', 'quote', 'date', 'message'];
+    localStorage.setItem('order', JSON.stringify(defaultOrder));
+    setItems(defaultOrder);
     toast(variables.getMessage('toasts.reset'));
   };
 
-  enabled = (setting) => {
+  const enabled = (setting) => {
     switch (setting) {
       case 'quicklinks':
         return localStorage.getItem('quicklinksenabled') === 'true';
@@ -85,7 +72,7 @@ class Overview extends PureComponent {
     }
   };
 
-  getTab = (value) => {
+  const getTab = (value) => {
     switch (value) {
       case 'greeting':
         return <Greeting />;
@@ -104,94 +91,81 @@ class Overview extends PureComponent {
     }
   };
 
-  async getNews() {
-    const data = await (await fetch(variables.constants.API_URL + '/news')).json();
-    data.date = new window.Date(data.date).toLocaleDateString(
-      variables.languagecode.replace('_', '-'),
-      {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      },
-    );
+  const getNews = useCallback(async () => {
+    try {
+      const response = await fetch(`${variables.constants.API_URL}/news`);
+      const data = await response.json();
+      data.date = new window.Date(data.date).toLocaleDateString(
+        variables.languagecode.replace('_', '-'),
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }
+      );
+      setNews(data);
+      setNewsDone(true);
+    } catch (error) {
+      console.error('Failed to fetch news:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-    this.setState({
-      news: data,
-      newsDone: true,
-    });
-  }
+  useEffect(() => {
+    getNews();
+  }, [getNews]);
 
-  componentDidUpdate() {
-    localStorage.setItem('order', JSON.stringify(this.state.items));
+  useEffect(() => {
+    localStorage.setItem('order', JSON.stringify(items));
     variables.stats.postEvent('setting', 'Widget order');
     EventBus.emit('refresh', 'widgets');
-  }
+  }, [items]);
 
-  componentDidMount() {
-    this.getNews();
-  }
-
-  render() {
-    return (
-      <>
-        <span className="mainTitle">
-          {variables.getMessage('modals.main.marketplace.product.overview')}
-        </span>
-        {/*<span className="title">{variables.getMessage('modals.main.marketplace.product.overview')}</span>
-        <span className="link" onClick={this.reset}>
-          {variables.getMessage('modals.main.settings.buttons.reset')}
-    </span>*/}
-        <div className="overviewGrid">
-          <div>
-            <span className="title">{variables.getMessage('modals.welcome.buttons.preview')}</span>
-            <div className="tabPreview">
-              <div className="previewItem" style={{ maxWidth: '50%' }}>
-                {this.state.items.map((value, index) => {
-                  if (!this.enabled(value)) {
-                    return null;
-                  }
-
-                  return (
-                    <div className="previewItem" key={`item-${value}`} index={index}>
-                      {' '}
-                      {this.getTab(value)}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            {/*<div className="overviewNews">
-              <span className="title">{this.state.news.title}</span>
-              <span className="subtitle">{this.state.news.date}</span>
-              <span className="content">{this.state.news.description}</span>
-              <a className="link" href={this.state.news.link}>
-                {this.state.news.linkText}
-              </a>
-              </div>*/}
-          </div>
-          <div>
-            <span className="title">
-              {variables.getMessage('modals.main.settings.sections.order.title')}
-            </span>
-            <SortableContainer
-              onSortEnd={this.onSortEnd}
-              lockAxis="y"
-              lockToContainerEdges
-              disableAutoscroll
-            >
-              {this.state.items.map((value, index) => {
-                if (!this.enabled(value)) {
+  return (
+    <>
+      <span className="mainTitle">
+        {variables.getMessage('modals.main.marketplace.product.overview')}
+      </span>
+      <div className="overviewGrid">
+        <div>
+          <span className="title">{variables.getMessage('modals.welcome.buttons.preview')}</span>
+          <div className="tabPreview">
+            <div className="previewItem" style={{ maxWidth: '50%' }}>
+              {items.map((value, index) => {
+                if (!enabled(value)) {
                   return null;
                 }
-
-                return <SortableItem key={`item-${value}`} index={index} value={value} />;
+                return (
+                  <div className="previewItem" key={`item-${value}`} index={index}>
+                    {getTab(value)}
+                  </div>
+                );
               })}
-            </SortableContainer>
+            </div>
           </div>
         </div>
-      </>
-    );
-  }
-}
+        <div>
+          <span className="title">
+            {variables.getMessage('modals.main.settings.sections.order.title')}
+          </span>
+          <SortableContainer
+            onSortEnd={onSortEnd}
+            lockAxis="y"
+            lockToContainerEdges
+            disableAutoscroll
+          >
+            {items.map((value, index) => {
+              if (!enabled(value)) {
+                return null;
+              }
+              return <SortableItem key={`item-${value}`} index={index} value={value} />;
+            })}
+          </SortableContainer>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export { Overview as default, Overview };

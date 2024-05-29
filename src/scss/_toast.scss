@@ -32,10 +32,10 @@
   @extend %basic;
 }
 
-.Toastify__toast--success {
+.Toastify__toast--info {
   @extend %basic;
 }
 
-.Toastify__progress-bar--success {
+.Toastify__progress-bar--info {
   background-color: gold !important;
 }
