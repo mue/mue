@@ -1,56 +1,75 @@
-import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
-
 import Background from 'features/background/Background';
 import Widgets from 'features/misc/views/Widgets';
 import Modals from 'features/misc/modals/Modals';
-
 import { loadSettings, moveSettings } from 'utils/settings';
-
 import EventBus from 'utils/eventbus';
+import variables from 'config/variables';
 
-export default class App extends PureComponent {
-  componentDidMount() {
-    // 4.0 -> 5.0 (the key below is only on 5.0)
-    // now featuring 5.0 -> 5.1
-    // the firstRun check was moved here because the old function was useless
-    if (!localStorage.getItem('firstRun') || !localStorage.getItem('stats')) {
+const useAppSetup = () => {
+  useEffect(() => {
+    const firstRun = localStorage.getItem('firstRun');
+    const stats = localStorage.getItem('stats');
+
+    if (!firstRun || !stats) {
       moveSettings();
       window.location.reload();
     }
 
     loadSettings();
 
-    EventBus.on('refresh', (data) => {
+    const refreshHandler = (data) => {
       if (data === 'other') {
         loadSettings(true);
       }
-    });
+    };
+
+    EventBus.on('refresh', refreshHandler);
 
     variables.stats.tabLoad();
-  }
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
+    return () => {
+      EventBus.off('refresh', refreshHandler);
+    };
+  }, []);
+};
 
-  render() {
-    return (
-      <>
-        {localStorage.getItem('background') === 'true' && <Background />}
-        <ToastContainer
-          position="top-center"
-          autoClose={localStorage.getItem('toastDisplayTime') || 2500}
-          newestOnTop={true}
-          closeOnClick
-          pauseOnFocusLoss
-        />
-        <div id="center">
-          <Widgets />
-          <Modals />
-        </div>
-      </>
-    );
-  }
-}
+const App = () => {
+  const [toastDisplayTime, setToastDisplayTime] = useState(2500);
+  const [showBackground, setShowBackground] = useState(false);
+
+  useEffect(() => {
+    const storedToastDisplayTime = localStorage.getItem('toastDisplayTime');
+    const storedBackground = localStorage.getItem('background');
+
+    if (storedToastDisplayTime) {
+      setToastDisplayTime(parseInt(storedToastDisplayTime, 10));
+    }
+
+    if (storedBackground === 'true') {
+      setShowBackground(true);
+    }
+  }, []);
+
+  useAppSetup();
+
+  return (
+    <>
+      {showBackground && <Background />}
+      <ToastContainer
+        position="top-center"
+        autoClose={toastDisplayTime}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnFocusLoss
+      />
+      <div id="center">
+        <Widgets />
+        <Modals />
+      </div>
+    </>
+  );
+};
+
+export default App;
