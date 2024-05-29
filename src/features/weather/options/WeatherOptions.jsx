@@ -1,19 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { MdAutoAwesome } from 'react-icons/md';
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { useLocalStorageState } from 'utils/useLocalStorageState';
 import { Radio, Dropdown, Checkbox } from 'components/Form/Settings';
 import { TextField } from '@mui/material';
 import variables from 'config/variables';
-
-const useLocalStorageState = (key, initialValue) => {
-  const [state, setState] = useState(() => localStorage.getItem(key) || initialValue);
-
-  useEffect(() => {
-    localStorage.setItem(key, state);
-  }, [key, state]);
-
-  return [state, setState];
-};
 
 const useWeatherSettings = () => {
   const [location, setLocation] = useLocalStorageState('location', '');
