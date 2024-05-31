@@ -4,6 +4,7 @@ import { useState, memo } from 'react';
 import { TextareaAutosize } from '@mui/material';
 import { MdAddLink, MdClose } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
+import { Button } from 'components/Elements';
 
 function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, editLink }) {
   const [name, setName] = useState(edit ? editData.name : '');
@@ -51,26 +52,9 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
           {iconError} {urlError}
         </span>
         {edit ? (
-          <button
-            style={{
-              height: '16px',
-              fontSize: '15px',
-            }}
-            onClick={() => editLink(editData, name, url, icon)}
-          >
-            <MdAddLink /> {variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
-          </button>
+          <Button type="settings" onClick={() => editLink(editData, name, url, icon)} icon={<MdAddLink />} label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')} />
         ) : (
-          <button
-            style={{
-              height: '16px',
-              fontSize: '15px',
-            }}
-            className="btn-settings"
-            onClick={() => addLink(name, url, icon)}
-          >
-            <MdAddLink /> {variables.getMessage('widgets.quicklinks.add')}
-          </button>
+          <Button type="settings" onClick={() => addLink(name, url, icon)} icon={<MdAddLink />} label={variables.getMessage('widgets.quicklinks.add')} />
         )}
       </div>
     </div>

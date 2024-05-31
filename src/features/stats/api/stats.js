@@ -8,10 +8,11 @@ export default class Stats {
     newAchievement.forEach((achievement) => {
       if (achievement) {
         const { name } = getLocalisedAchievementData(achievement.id);
-        toast.success(
+        toast.info(
           `🏆 ${variables.getMessage('modals.main.settings.sections.stats.achievement_unlocked', { name: name })}`,
           {
             icon: false,
+            closeButton: false
           },
         );
       }

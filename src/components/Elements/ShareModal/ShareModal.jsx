@@ -31,7 +31,7 @@ function ShareModal({ modalClose, data }) {
 
   const copyLink = () => {
     navigator.clipboard.writeText(data.url);
-    toast(variables.getMessage('modals.share.copy_link'));
+    toast(data.startsWith('"') ? variables.getMessage('toasts.quote') : variables.getMessage('toasts.link_copied'));
   };
 
   return (
@@ -73,9 +73,9 @@ function ShareModal({ modalClose, data }) {
             window
               .open(
                 'mailto:email@example.com?subject=Check%20out%20this%20%on%20%Mue!&body=' +
-                  data.data.name +
+                  data.name +
                   'on Mue: ' +
-                  data,
+                  data.url,
                 '_blank',
               )
               .focus()
