@@ -1,5 +1,5 @@
 ---
-name: Bug Report
+name: Bug Report (Legacy)
 about: Report a bug to help improve Mue
 title: "[Bug]"
 labels: bug
