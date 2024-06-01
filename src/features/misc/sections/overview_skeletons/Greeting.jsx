@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 function GreetingSkeleton() {
-  return <span className="greeting">Good Morning</span>;
+  return <span className="greeting preview">Good Morning</span>;
 }
 
 export default memo(GreetingSkeleton);
