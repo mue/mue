@@ -114,7 +114,7 @@ class Navbar extends PureComponent {
             <Apps fontSize={this.state.zoomFontSize} />
           )}
 
-          {this.refreshEnabled !== 'false' && <Refresh fontSize={this.state.zoomFontSize} />}
+          {this.state.refreshEnabled !== 'false' && <Refresh fontSize={this.state.zoomFontSize} />}
 
           <Tooltip
             title={variables.getMessage('modals.main.navbar.settings', {
