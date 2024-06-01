@@ -133,7 +133,7 @@ class Changelog extends PureComponent {
     }
 
     return (
-      <div className="changelogtab" ref={this.changelog}>
+      <div className="modalInfoPage changelogtab" ref={this.changelog}>
         <span className="mainTitle">{this.state.title}</span>
         <span className="subtitle">Released on {this.state.date}</span>
         {this.state.image && (

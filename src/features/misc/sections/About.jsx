@@ -132,7 +132,7 @@ class About extends PureComponent {
 
   render() {
     return (
-      <>
+      <div className="modalInfoPage">
         <div className="settingsRow" style={{ justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
             <img
@@ -383,7 +383,7 @@ class About extends PureComponent {
             ))}
           </ul>
         </div>
-      </>
+      </div>
     );
   }
 }

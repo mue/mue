@@ -111,7 +111,7 @@ const Stats = () => {
           resetStats={resetStats}
         />
       </Modal>
-      <div className="stats">
+      <div className="modalInfoPage stats">
         <div className="statSection rightPanel">
           <div className="statIcon">
             <MdShowChart />

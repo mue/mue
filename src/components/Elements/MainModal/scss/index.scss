@@ -35,6 +35,10 @@
   &:focus {
     outline: 0;
   }
+
+  .modalInfoPage {
+    user-select: text;
+  }
 }
 
 .closePositioning {
