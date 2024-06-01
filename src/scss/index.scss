@@ -53,10 +53,6 @@ body {
   opacity: 1;
 }
 
-::selection {
-  background-color: #c2c2c2;
-}
-
 #root {
   @include themed {
     color: t($color);
