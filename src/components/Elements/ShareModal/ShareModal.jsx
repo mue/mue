@@ -31,7 +31,11 @@ function ShareModal({ modalClose, data }) {
 
   const copyLink = () => {
     navigator.clipboard.writeText(data.url);
-    toast(data.startsWith('"') ? variables.getMessage('toasts.quote') : variables.getMessage('toasts.link_copied'));
+    toast(
+      data.startsWith('"')
+        ? variables.getMessage('toasts.quote')
+        : variables.getMessage('toasts.link_copied'),
+    );
   };
 
   return (

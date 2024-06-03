@@ -213,7 +213,7 @@ const TimeOptions = () => {
           </span>
         </Action>
       </Row>
-      
+
       {digitalSettings}
     </>
   );

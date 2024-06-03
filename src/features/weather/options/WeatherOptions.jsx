@@ -28,7 +28,7 @@ const useWeatherSettings = () => {
       async (position) => {
         const data = await (
           await fetch(
-            `${variables.constants.API_URL}/gps?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
+            `${variables.constants.API_URL}/gps?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`,
           )
         ).json();
         setLocation(data[0].name);
@@ -39,7 +39,7 @@ const useWeatherSettings = () => {
       },
       {
         enableHighAccuracy: true,
-      }
+      },
     );
   }, [setLocation, showReminder]);
 
@@ -53,7 +53,8 @@ const useWeatherSettings = () => {
 };
 
 const WeatherOptions = () => {
-  const { location, windSpeed, setWindSpeed, changeLocation, getAutoLocation } = useWeatherSettings();
+  const { location, windSpeed, setWindSpeed, changeLocation, getAutoLocation } =
+    useWeatherSettings();
   const weatherType = localStorage.getItem('weatherType');
   const WEATHER_SECTION = 'modals.main.settings.sections.weather';
 
@@ -190,7 +191,7 @@ const WeatherOptions = () => {
         visibilityToggle={true}
       >
         <WidgetType />
-         {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}
+        {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}
         {LocationSetting()}
         <TemperatureFormat />
         {weatherType === '4' && <CustomOptions />}

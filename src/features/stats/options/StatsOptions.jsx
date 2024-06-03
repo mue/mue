@@ -32,7 +32,7 @@ const Stats = () => {
   }, [stats, updateAchievements]);
 
   const getUnlockedCount = useMemo(() => {
-    return achievements.filter(achievement => achievement.achieved).length;
+    return achievements.filter((achievement) => achievement.achieved).length;
   }, [achievements]);
 
   const resetStats = () => {
@@ -106,10 +106,7 @@ const Stats = () => {
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}
       >
-        <ClearModal
-          modalClose={() => setClearmodal(false)}
-          resetStats={resetStats}
-        />
+        <ClearModal modalClose={() => setClearmodal(false)} resetStats={resetStats} />
       </Modal>
       <div className="modalInfoPage stats">
         <div className="statSection rightPanel">
@@ -151,7 +148,9 @@ const Stats = () => {
           <span className="title">{variables.getMessage(`${STATS_SECTION}.achievements`)}</span>
           <br />
           <span className="subtitle">
-            {variables.getMessage(`${STATS_SECTION}.unlocked`, { count: `${getUnlockedCount}/${achievements.length}` })}
+            {variables.getMessage(`${STATS_SECTION}.unlocked`, {
+              count: `${getUnlockedCount}/${achievements.length}`,
+            })}
           </span>
         </div>
         <div className="achievements">

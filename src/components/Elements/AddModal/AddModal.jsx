@@ -52,9 +52,19 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
           {iconError} {urlError}
         </span>
         {edit ? (
-          <Button type="settings" onClick={() => editLink(editData, name, url, icon)} icon={<MdAddLink />} label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')} />
+          <Button
+            type="settings"
+            onClick={() => editLink(editData, name, url, icon)}
+            icon={<MdAddLink />}
+            label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
+          />
         ) : (
-          <Button type="settings" onClick={() => addLink(name, url, icon)} icon={<MdAddLink />} label={variables.getMessage('widgets.quicklinks.add')} />
+          <Button
+            type="settings"
+            onClick={() => addLink(name, url, icon)}
+            icon={<MdAddLink />}
+            label={variables.getMessage('widgets.quicklinks.add')}
+          />
         )}
       </div>
     </div>

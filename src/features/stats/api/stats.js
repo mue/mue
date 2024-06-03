@@ -12,7 +12,7 @@ export default class Stats {
           `🏆 ${variables.getMessage('modals.main.settings.sections.stats.achievement_unlocked', { name: name })}`,
           {
             icon: false,
-            closeButton: false
+            closeButton: false,
           },
         );
       }

@@ -213,7 +213,7 @@ a.privacy {
   flex-flow: column;
 
   .shareYourMue {
-    width: -moz-fit-content;
+    width: fit-content;
     width: fit-content;
   }
 
@@ -320,7 +320,7 @@ a.privacy {
 
 .welcomeButtons {
   z-index: 999;
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   position: sticky;
   bottom: 0;

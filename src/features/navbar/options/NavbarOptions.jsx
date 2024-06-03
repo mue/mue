@@ -2,13 +2,7 @@ import variables from 'config/variables';
 
 import { useState, memo } from 'react';
 
-import {
-  MdAssignment,
-  MdCropFree,
-  MdRefresh,
-  MdChecklist,
-  MdOutlineApps,
-} from 'react-icons/md';
+import { MdAssignment, MdCropFree, MdRefresh, MdChecklist, MdOutlineApps } from 'react-icons/md';
 
 import { Checkbox, Dropdown } from 'components/Form';
 import EventBus from 'utils/eventbus';

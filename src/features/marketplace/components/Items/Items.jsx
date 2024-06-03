@@ -16,7 +16,7 @@ function filterItems(item, filter) {
 }
 
 function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
-  item._onCollection = onCollection
+  item._onCollection = onCollection;
   return (
     <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
       <img

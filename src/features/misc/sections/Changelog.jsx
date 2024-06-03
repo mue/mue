@@ -51,7 +51,7 @@ class Changelog extends PureComponent {
 
     // get the release which tag_name is the same as the current version
     const data = await releases.json();
-    const release = data.find((release) => release.tag_name === `7.0.0`);
+    const release = data.find((release) => release.tag_name === variables.constants.VERSION);
 
     if (this.controller.signal.aborted === true) {
       return;

@@ -3,9 +3,7 @@ import variables from 'config/variables';
 import { useState, memo } from 'react';
 
 import Modal from 'react-modal';
-import {
-  MdAddLink,
-} from 'react-icons/md';
+import { MdAddLink } from 'react-icons/md';
 
 import { AddModal } from 'components/Elements/AddModal';
 import { Button } from 'components/Elements';

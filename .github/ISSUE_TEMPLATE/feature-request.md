@@ -1,6 +1,6 @@
 ---
 name: Request a feature
-about: Request something to be implemented in the extension
+about: Request something to be implemented in the extension.
 title: "[Feature Request]"
 labels: enhancement
 assignees: ''

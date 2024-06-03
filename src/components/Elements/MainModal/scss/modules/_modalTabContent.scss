@@ -86,6 +86,7 @@ table {
   border-collapse: separate;
   border-radius: 10px;
   margin-top: 20px;
+
   @include themed {
     box-shadow: 0 0 0 1px t($modal-sidebarActive);
     padding: 0;
@@ -97,9 +98,10 @@ table {
     @include themed {
       border-radius: t($borderRadius);
       color: t($subColor);
-
     }
-  letter-spacing: 2px;
+
+    letter-spacing: 2px;
+
     th {
       padding: 20px;
     }
@@ -130,6 +132,7 @@ table {
     textarea {
       width: 90%;
       margin: 10px;
+
       @include themed {
         color: t($color);
       }

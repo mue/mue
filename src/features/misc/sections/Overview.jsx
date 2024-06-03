@@ -34,7 +34,17 @@ const SortableContainer = sortableContainer(({ children }) => (
 ));
 
 const Overview = () => {
-  const [items, setItems] = useState(() => JSON.parse(localStorage.getItem('order')) || ['greeting', 'time', 'quicklinks', 'quote', 'date', 'message']);
+  const [items, setItems] = useState(
+    () =>
+      JSON.parse(localStorage.getItem('order')) || [
+        'greeting',
+        'time',
+        'quicklinks',
+        'quote',
+        'date',
+        'message',
+      ],
+  );
   const [news, setNews] = useState({
     title: '',
     date: '',
@@ -101,7 +111,7 @@ const Overview = () => {
           year: 'numeric',
           month: 'long',
           day: 'numeric',
-        }
+        },
       );
       setNews(data);
       setNewsDone(true);
