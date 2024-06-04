@@ -1,45 +1,18 @@
 import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
+import Markdown from 'markdown-to-jsx';
 import { MdOutlineWifiOff } from 'react-icons/md';
-import Modal from 'react-modal';
-
-import Lightbox from '../../marketplace/components/Elements/Lightbox/Lightbox';
 
 class Changelog extends PureComponent {
   constructor() {
     super();
     this.state = {
       title: null,
-      showLightbox: false,
-      lightboxImg: null,
     };
     this.offlineMode = localStorage.getItem('offlineMode') === 'true';
     this.controller = new AbortController();
     this.changelog = createRef();
   }
-
-  parseMarkdown = (text) => {
-    if (typeof text !== 'string') {
-      throw new Error('Input must be a string');
-    }
-
-    // Replace list items
-    text = text.replace(/^\* (.*$)/gm, '<li>$1</li>');
-
-    // Wrap list items in <ul></ul>
-    text = text.replace(/((<li>.*<\/li>\s*)+)/g, '<ul>$1</ul>');
-
-    // Replace other markdown syntax
-    text = text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/^## (.*$)/gm, '<span class="title">$1</span>')
-      .replace(
-        /((http|https):\/\/[^\s]+)/g,
-        '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>',
-      );
-
-    return text;
-  };
 
   async getUpdate() {
     const releases = await fetch(
@@ -72,7 +45,7 @@ class Changelog extends PureComponent {
     const changelog = await res.json();
     this.setState({
       title: changelog.name,
-      content: this.parseMarkdown(changelog.body),
+      content: changelog.body,
       date: new Date(changelog.published_at).toLocaleDateString(),
     });
   }
@@ -133,32 +106,13 @@ class Changelog extends PureComponent {
     }
 
     return (
-      <div className="modalInfoPage changelogtab" ref={this.changelog}>
-        <span className="mainTitle">{this.state.title}</span>
-        <span className="subtitle">Released on {this.state.date}</span>
-        {this.state.image && (
-          <img
-            draggable={false}
-            src={this.state.image}
-            alt={this.state.title}
-            className="updateImage"
-          />
-        )}
-        <div className="updateChangelog" dangerouslySetInnerHTML={{ __html: this.state.content }} />
-        <Modal
-          closeTimeoutMS={100}
-          onRequestClose={() => this.setState({ showLightbox: false })}
-          isOpen={this.state.showLightbox}
-          className="Modal lightBoxModal"
-          overlayClassName="Overlay resetoverlay"
-          ariaHideApp={false}
-        >
-          <Lightbox
-            modalClose={() => this.setState({ showLightbox: false })}
-            img={this.state.lightboxImg}
-          />
-        </Modal>
-      </div>
+      <article className="changelogtab prose dark:prose-invert" ref={this.changelog}>
+        <div className="not-prose">
+          <span className="mainTitle">{this.state.title}</span>
+          <span className="subtitle">Released on {this.state.date}</span>
+        </div>
+        <Markdown>{this.state.content}</Markdown>
+      </article>
     );
   }
 }
