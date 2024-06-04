@@ -5,6 +5,7 @@ import { MdOutlineOpenInNew } from 'react-icons/md';
 
 import { Radio } from 'components/Form/Settings';
 
+
 import languages from '@/i18n/languages.json';
 
 class LanguageOptions extends PureComponent {
@@ -100,7 +101,7 @@ class LanguageOptions extends PureComponent {
             defaultValue={this.state.quoteLanguages[0].name}
             category="quote"
           />
-        </div>
+          </div>
       </>
     );
   }

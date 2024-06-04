@@ -1,5 +1,8 @@
 @import 'variables';
 @import 'toast';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   background: #000;
@@ -14,6 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   outline: none;
+  box-sizing: initial;
 }
 
 #center {

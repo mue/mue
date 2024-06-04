@@ -1,6 +1,9 @@
 import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
-import { InputLabel, MenuItem, FormControl, Select } from '@mui/material';
+// import { InputLabel, MenuItem, FormControl, Select } from '@mui/material';
+import { Description, Field, Label, Select } from '@headlessui/react';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import clsx from 'clsx';
 
 import EventBus from 'utils/eventbus';
 
@@ -51,7 +54,8 @@ class Dropdown extends PureComponent {
     const label = this.props.label || '';
 
     return (
-      <FormControl fullWidth className={id}>
+      {
+        /*<FormControl fullWidth className={id}>
         <InputLabel id={id}>{label}</InputLabel>
         <Select
           labelId={id}
@@ -70,7 +74,51 @@ class Dropdown extends PureComponent {
             ) : null,
           )}
         </Select>
-      </FormControl>
+        </FormControl>*/
+      },
+      (
+        <div className="w-[100%] max-w-md">
+          <Field
+            id={this.props.name}
+            value={this.state.value}
+            label={label}
+            onChange={this.onChange}
+            ref={this.dropdown}
+            key={id}
+          >
+            <Label
+              className="text-sm/6 font-medium text-white"
+              id={this.props.name}
+              value={this.state.value}
+              label={label}
+              onChange={this.onChange}
+              ref={this.dropdown}
+              key={id}
+            >
+              {label}
+            </Label>
+            <div className="relative">
+              <Select
+                className={clsx(
+                  'border border-[#484848] block w-full appearance-none rounded-lg bg-white/5 py-1.5 px-3 text-sm/6 text-white',
+                  'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25',
+                  // Make the text of each option black on Windows
+                  '*:text-black box-border',
+                )}
+              >
+                {this.props.items.map((item) =>
+                  item !== null ? (
+                    <option key={id + item.value} value={item.value}>
+                      {item.text}
+                    </option>
+                  ) : null,
+                )}
+              </Select>
+              <MdKeyboardArrowDown className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60" />
+            </div>
+          </Field>
+        </div>
+      )
     );
   }
 }
