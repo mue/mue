@@ -111,7 +111,9 @@ class Changelog extends PureComponent {
           <span className="mainTitle">{this.state.title}</span>
           <span className="subtitle">Released on {this.state.date}</span>
         </div>
-        <Markdown>{this.state.content}</Markdown>
+        <Markdown options={{ overrides: { a: { props: { target: '_blank' } } } }}>
+          {this.state.content}
+        </Markdown>
       </article>
     );
   }

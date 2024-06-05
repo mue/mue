@@ -1,6 +1,7 @@
 import variables from 'config/variables';
 import { useEffect, useState } from 'react';
 import { Checkbox as CheckboxUI, Field, Label } from '@headlessui/react';
+import { MdCheckBox } from "react-icons/md";
 import EventBus from 'utils/eventbus';
 
 const Checkbox = (props) => {
@@ -36,25 +37,14 @@ const Checkbox = (props) => {
   };
 
   return (
-    <Field className="flex flex-row-reverse items-center gap-2">
+    <Field className="w-[300px] h-9 my-1 flex flex-row-reverse items-center gap-2 justify-between text-left">
       <CheckboxUI
         checked={checked}
         onChange={handleChange}
         disabled={props.disabled || false}
-        className="group block size-4 rounded border bg-white data-[checked]:bg-blue-500"
+        className="border border-[#484848] bg-white/5 group size-4 rounded data-[checked]:bg-neutral-900 cursor-pointer grid place-content-center"
       >
-        <svg
-          className="stroke-white opacity-0 group-data-[checked]:opacity-100"
-          viewBox="0 0 14 14"
-          fill="none"
-        >
-          <path
-            d="M3 8L6 11L11 3.5"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+          <MdCheckBox className="stroke-white opacity-0 group-data-[checked]:opacity-100 size-6" />
       </CheckboxUI>
       <Label>{props.text}</Label>
     </Field>

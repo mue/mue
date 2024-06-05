@@ -11,7 +11,7 @@ import { Dropdown, FileUpload } from 'components/Form/Settings';
 import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
-import { install, uninstall, urlParser } from 'utils/marketplace';
+import { install, uninstall } from 'utils/marketplace';
 
 export default class Added extends PureComponent {
   constructor() {
@@ -100,7 +100,7 @@ export default class Added extends PureComponent {
           type: info.data.type,
           display_name: info.data.name,
           author: info.data.author,
-          description: urlParser(info.data.description.replace(/\n/g, '<br>')),
+          description: info.data.description,
           //updated: info.updated,
           version: info.data.version,
           icon: info.data.screenshot_url,

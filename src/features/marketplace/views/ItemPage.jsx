@@ -23,6 +23,8 @@ import { ShareModal } from 'components/Elements';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { Items } from '../components/Items/Items';
 
+import Markdown from 'markdown-to-jsx';
+
 class ItemPage extends PureComponent {
   constructor(props) {
     super(props);
@@ -230,10 +232,7 @@ class ItemPage extends PureComponent {
               <span className="title">
                 {variables.getMessage('modals.main.marketplace.product.description')}
               </span>
-              <span
-                className="subtitle"
-                dangerouslySetInnerHTML={{ __html: this.props.data.description }}
-              />
+              <Markdown>{this.props.data.data.description}</Markdown>
             </div>
             {this.props.data.data.quotes && (
               <>
