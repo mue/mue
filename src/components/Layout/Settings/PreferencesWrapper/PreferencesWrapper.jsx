@@ -16,7 +16,7 @@ const PreferencesWrapper = ({ children, ...props }) => {
   });
 
   return (
-    <div className={shown ? 'preferences' : 'preferencesInactive'}>
+    <div className={shown ? 'preferences' : 'opacity-50 pointer-events-none transition-400 ease-in-out'}>
       {props.zoomSetting && (
         <Row>
           <Content
