@@ -1,61 +1,64 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
-import { Checkbox as CheckboxUI, FormControlLabel } from '@mui/material';
-
+import { useEffect, useState } from 'react';
+import { Checkbox as CheckboxUI, Field, Label } from '@headlessui/react';
 import EventBus from 'utils/eventbus';
 
-class Checkbox extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: localStorage.getItem(this.props.name) === 'true',
-    };
-  }
+const Checkbox = (props) => {
+  const [checked, setChecked] = useState(localStorage.getItem(props.name) === 'true');
 
-  handleChange = () => {
-    const value = this.state.checked !== true;
-    localStorage.setItem(this.props.name, value);
+  useEffect(() => {
+    setChecked(localStorage.getItem(props.name) === 'true');
+  }, [props.name]);
 
-    this.setState({
-      checked: value,
-    });
+  const handleChange = () => {
+    const value = !checked;
+    localStorage.setItem(props.name, value.toString());
 
-    if (this.props.onChange) {
-      this.props.onChange(value);
+    setChecked(value);
+
+    if (props.onChange) {
+      props.onChange(value);
     }
 
     variables.stats.postEvent(
       'setting',
-      `${this.props.name} ${this.state.checked === true ? 'enabled' : 'disabled'}`,
+      `${props.name} ${value ? 'enabled' : 'disabled'}`,
     );
 
-    if (this.props.element) {
-      if (!document.querySelector(this.props.element)) {
+    if (props.element) {
+      if (!document.querySelector(props.element)) {
         document.querySelector('.reminder-info').style.display = 'flex';
-        return localStorage.setItem('showReminder', true);
+        localStorage.setItem('showReminder', 'true');
       }
     }
 
-    EventBus.emit('refresh', this.props.category);
+    EventBus.emit('refresh', props.category);
   };
 
-  render() {
-    return (
-      <FormControlLabel
-        control={
-          <CheckboxUI
-            name={this.props.name}
-            color="primary"
-            className="checkbox"
-            checked={this.state.checked}
-            onChange={this.handleChange}
-            disabled={this.props.disabled || false}
+  return (
+    <Field className="flex flex-row-reverse items-center gap-2">
+      <CheckboxUI
+        checked={checked}
+        onChange={handleChange}
+        disabled={props.disabled || false}
+        className="group block size-4 rounded border bg-white data-[checked]:bg-blue-500"
+      >
+        <svg
+          className="stroke-white opacity-0 group-data-[checked]:opacity-100"
+          viewBox="0 0 14 14"
+          fill="none"
+        >
+          <path
+            d="M3 8L6 11L11 3.5"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
-        }
-        label={this.props.text}
-      />
-    );
-  }
-}
+        </svg>
+      </CheckboxUI>
+      <Label>{props.text}</Label>
+    </Field>
+  );
+};
 
 export { Checkbox as default, Checkbox };
