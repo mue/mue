@@ -13,7 +13,7 @@ import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
 import { QuickLinks } from 'features/quicklinks';
 
-function AppsOptions(appsEnabled) {
+function AppsOptions({ appsEnabled }) {
   const [appsModalInfo, setAppsModalInfo] = useState({
     newLink: false,
     edit: false,
@@ -160,5 +160,4 @@ function AppsOptions(appsEnabled) {
   );
 }
 
-const MemorizedAppsOptions = memo(AppsOptions);
-export { MemorizedAppsOptions as default, MemorizedAppsOptions as AppsOptions };
+export { AppsOptions as default, AppsOptions }
