@@ -48,8 +48,8 @@ dependencies:
     specifier: ^18.3.1
     version: 18.3.1
   react-best-gradient-color-picker:
-    specifier: ^3.0.7
-    version: 3.0.7(react-dom@18.3.1)(react@18.3.1)
+    specifier: ^3.0.8
+    version: 3.0.8(react-dom@18.3.1)(react@18.3.1)
   react-clock:
     specifier: 5.0.0
     version: 5.0.0(react-dom@18.3.1)(react@18.3.1)
@@ -5415,8 +5415,8 @@ packages:
       '@types/node': 10.17.60
     dev: true
 
-  /react-best-gradient-color-picker@3.0.7(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-yNlPbKvSZOD8XCbPPqiKz30OUeZrY8GZfu/CSPsFSRrzjMPBMNXbDDspQ6dknXI4Tkc5dhOMiBjjyCFSa+w0+Q==}
+  /react-best-gradient-color-picker@3.0.8(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-dq9VYxx1TtrvzKBHX3DYmuyMJY+F3/uB16AhmLag3hqMxULm2PZubmdQp9JB8Bg20Irg+E5YD6bIIw2GUo44kQ==}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
