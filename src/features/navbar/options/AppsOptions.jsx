@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 
-import { useState, memo } from 'react';
+import { useState } from 'react';
 
 import Modal from 'react-modal';
 import { MdAddLink } from 'react-icons/md';

@@ -23,20 +23,25 @@ class Changelog extends PureComponent {
       throw new Error('Input must be a string');
     }
 
-    // Replace list items
-    text = text.replace(/^\* (.*$)/gm, '<li>$1</li>');
-
-    // Wrap list items in <ul></ul>
-    text = text.replace(/((<li>.*<\/li>\s*)+)/g, '<ul>$1</ul>');
-
-    // Replace other markdown syntax
+    // Replace markdown syntax
     text = text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/^## (.*$)/gm, '<span class="title">$1</span>')
       .replace(
         /((http|https):\/\/[^\s]+)/g,
         '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>',
+      )
+      // resolve @ to github user link
+      .replace(
+        /@([a-zA-Z0-9-_]+)/g,
+        '<a href="https://github.com/$1" target="_blank" class="changelogAt">@$1</a>',
       );
+
+    // Replace list items
+    text = text.replace(/^\* (.*$)/gm, '<li>$1</li>');
+
+    // Wrap list items in <ul></ul>
+    text = text.replace(/((<li>.*<\/li>\s*)+)/g, '<ul>$1</ul>');
 
     return text;
   };
@@ -49,12 +54,16 @@ class Changelog extends PureComponent {
       },
     );
 
-    // get the release which tag_name is the same as the current version
-    const data = await releases.json();
-    const release = data.find((release) => release.tag_name === variables.constants.VERSION);
-
     if (this.controller.signal.aborted === true) {
       return;
+    }
+
+    // get the release which tag_name is the same as the current version
+    const data = await releases.json();
+    let release = data.find((release) => release.tag_name === variables.constants.VERSION);
+
+    if (!release) {
+      release = data[0];
     }
 
     // request the changelog
