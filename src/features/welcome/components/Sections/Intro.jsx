@@ -56,7 +56,7 @@ function Intro() {
   return (
     <Content>
       <Header title={variables.getMessage('modals.welcome.sections.intro.title')} />
-      {ShareYourMue}
+      {/*{ShareYourMue}*/}
       <WelcomeNotice
         config={{
           icon: MdOutlineWavingHand,

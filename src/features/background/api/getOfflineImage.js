@@ -1,4 +1,5 @@
 import offlineImages from '../offline_images.json';
+let lastImage = null;
 
 /**
  * It gets a random photographer from the offlineImages.json file, then gets a random image from that
@@ -14,12 +15,18 @@ import offlineImages from '../offline_images.json';
  */
 export function getOfflineImage(type) {
   const photographers = Object.keys(offlineImages);
-  const photographer = photographers[Math.floor(Math.random() * photographers.length)];
+  let photographer;
+  let randomImage;
 
-  const randomImage =
-    offlineImages[photographer].photo[
-      Math.floor(Math.random() * offlineImages[photographer].photo.length)
-    ];
+  do {
+    photographer = photographers[Math.floor(Math.random() * photographers.length)];
+    randomImage =
+      offlineImages[photographer].photo[
+        Math.floor(Math.random() * offlineImages[photographer].photo.length)
+      ];
+  } while (lastImage === randomImage);
+
+  lastImage = randomImage;
 
   const object = {
     url: `src/assets/offline-images/${randomImage}.webp`,

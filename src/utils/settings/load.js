@@ -68,11 +68,14 @@ export function loadSettings(hotreload) {
     });
   }
 
+  let center = document.getElementById('center');
   // remove actual default shadow
-  if (textBorder === 'none') {
-    document.getElementById('center').classList.add('no-textBorder');
-  } else {
-    document.getElementById('center').classList.remove('no-textBorder');
+  if (center) {
+    if (textBorder === 'none') {
+      document.getElementById('center').classList.add('no-textBorder');
+    } else {
+      document.getElementById('center').classList.remove('no-textBorder');
+    }
   }
 
   const css = localStorage.getItem('customcss');

@@ -12,6 +12,12 @@
     background-color: t($modal-background);
   }
 
+  .welcomeCredit {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+  }
+
   .MuiFormControlLabel-root {
     margin-right: 0;
   }
@@ -25,8 +31,8 @@
 
   @extend %tabText;
 
-  height: 80vh;
-  width: clamp(60vw, 1200px, 90vw);
+  height: 100vh;
+  width: 100vw;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, 1fr);
@@ -42,11 +48,18 @@
     }
   }
 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   section.content {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
     overflow-y: auto;
+    overflow-x: hidden;
 
     .content {
       display: flex;
@@ -167,7 +180,6 @@
 }
 
 .upload {
-  width: 100%;
   height: 100%;
   border-radius: 20px;
   border: none;

@@ -7,6 +7,8 @@ import { loadSettings, moveSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
 
+import Welcome from 'features/welcome/Welcome';
+
 const useAppSetup = () => {
   useEffect(() => {
     const firstRun = localStorage.getItem('firstRun');
@@ -53,6 +55,14 @@ const App = () => {
   }, []);
 
   useAppSetup();
+
+  if (localStorage.getItem('showWelcome')) {
+    return (
+      <>
+        <Welcome />
+      </>
+    );
+  }
 
   return (
     <>
