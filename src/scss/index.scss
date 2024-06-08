@@ -151,9 +151,9 @@ body {
 
 /* light theme critical error */
 @media (prefers-color-scheme: dark) {
-  /** {
-    background-color: #000000 !important;
-  } */
+  body {
+    background-color: #000;
+  }
 
   .criticalError {
     .criticalError-message {
@@ -177,8 +177,8 @@ body {
 }
 
 @media (prefers-color-scheme: light) {
-  * {
-    background-color: #fff !important;
+  body {
+    background-color: #fff;
   }
 
   .criticalError {

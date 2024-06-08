@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 
-import { useState, memo } from 'react';
+import { useState } from 'react';
 
 import Modal from 'react-modal';
 import { MdAddLink } from 'react-icons/md';
@@ -11,9 +11,9 @@ import { Button } from 'components/Elements';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
-import { QuickLinks } from 'features/quicklinks';
+import { QuickLink } from 'features/quicklinks/options/QuickLink';
 
-function AppsOptions(appsEnabled) {
+function AppsOptions({ appsEnabled }) {
   const [appsModalInfo, setAppsModalInfo] = useState({
     newLink: false,
     edit: false,
@@ -126,7 +126,7 @@ function AppsOptions(appsEnabled) {
 
       <div className="messagesContainer">
         {appsModalInfo.items.map((item, i) => (
-          <QuickLinks
+          <QuickLink
             key={i}
             item={item}
             startEditLink={() => startEditLink(item)}
@@ -160,5 +160,4 @@ function AppsOptions(appsEnabled) {
   );
 }
 
-const MemorizedAppsOptions = memo(AppsOptions);
-export { MemorizedAppsOptions as default, MemorizedAppsOptions as AppsOptions };
+export { AppsOptions as default, AppsOptions };

@@ -160,12 +160,15 @@ class ItemPage extends PureComponent {
       </div>
     );
 
-    const dateObj = new Date(this.props.data.data.updated_at);
-    const formattedDate = new Intl.DateTimeFormat(shortLocale, {
-      year: 'numeric',
-      month: 'long',
-      day: '2-digit',
-    }).format(dateObj);
+    let dateObj, formattedDate;
+    if (this.props.data.data.updated_at) {
+      dateObj = new Date(this.props.data.data.updated_at);
+      formattedDate = new Intl.DateTimeFormat(shortLocale, {
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit',
+      }).format(dateObj);
+    }
 
     return (
       <>
@@ -291,11 +294,12 @@ class ItemPage extends PureComponent {
                 {variables.getMessage('modals.main.marketplace.product.details')}
               </span>
               <div className="moreInfo">
-                {moreInfoItem(
-                  <MdCalendarMonth />,
-                  variables.getMessage('modals.main.marketplace.product.updated_at'),
-                  formattedDate,
-                )}
+                {this.props.data.data.updated_at &&
+                  moreInfoItem(
+                    <MdCalendarMonth />,
+                    variables.getMessage('modals.main.marketplace.product.updated_at'),
+                    formattedDate,
+                  )}
                 {this.props.data.data.quotes &&
                   moreInfoItem(
                     <MdFormatQuote />,
