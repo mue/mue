@@ -42,6 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 999;
 
     @include themed {
       background-color: t($modal-sidebar);
@@ -59,7 +60,6 @@
     flex-flow: column;
     justify-content: space-between;
     overflow-y: auto;
-    overflow-x: hidden;
 
     .content {
       display: flex;
@@ -340,6 +340,9 @@ a.privacy {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 
   button {
     @include modal-button(standard);
