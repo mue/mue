@@ -1,6 +1,7 @@
 import variables from 'config/variables';
 import { PureComponent } from 'react';
-import { Switch as SwitchUI, FormControlLabel } from '@mui/material';
+//import { Switch as SwitchUI, FormControlLabel } from '@mui/material';
+import { Field, Label, Switch as SwitchUI } from '@headlessui/react';
 
 import EventBus from 'utils/eventbus';
 
@@ -41,7 +42,8 @@ class Switch extends PureComponent {
 
   render() {
     return (
-      <FormControlLabel
+      {
+        /*<FormControlLabel
         control={
           <SwitchUI
             name={this.props.name}
@@ -52,7 +54,24 @@ class Switch extends PureComponent {
         }
         label={this.props.header ? '' : this.props.text}
         labelPlacement="start"
-      />
+      />*/
+      },
+      (
+        <Field className="flex flex-row items-center justify-between w-[100%]">
+          <Label>{this.props.header ? '' : this.props.text}</Label>
+          <SwitchUI
+            checked={this.state.checked}
+            onChange={this.handleChange}
+            className="box-border group relative flex h-7 w-14 cursor-pointer rounded-full bg-white/10 p-1 transition-colors duration-200 ease-in-out focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+          >
+            {' '}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none inline-block size-5 translate-x-0 rounded-full bg-white ring-0 shadow-lg transition duration-200 ease-in-out group-data-[checked]:translate-x-7"
+            />
+          </SwitchUI>
+        </Field>
+      )
     );
   }
 }

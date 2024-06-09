@@ -392,7 +392,7 @@ class Marketplace extends PureComponent {
             <div className="headerExtras marketplaceCondition">
               {this.props.type !== 'collections' && (
                 <div>
-                  <form className="marketplaceSearch">
+                  <form className="max-w-md mx-auto relative">
                     <input
                       label={variables.getMessage('widgets.search')}
                       placeholder={variables.getMessage('widgets.search')}
@@ -400,8 +400,11 @@ class Marketplace extends PureComponent {
                       id="filter"
                       value={this.state.filter}
                       onChange={(event) => this.setState({ filter: event.target.value })}
+                      className="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-[#484848] rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white/5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-neutral-100"
                     />
-                    <MdSearch />
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <MdSearch />
+                    </div>
                   </form>
                 </div>
               )}
