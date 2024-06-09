@@ -1,5 +1,6 @@
 import { useState, memo, useRef } from 'react';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import './tooltip.scss';
 
 function Tooltip({ children, title, style, placement, subtitle }) {
@@ -17,7 +18,7 @@ function Tooltip({ children, title, style, placement, subtitle }) {
 
   return (
     <>
-      <div
+      <motion.div
         className="tooltip"
         style={style}
         onMouseEnter={() => setShowTooltip(true)}
@@ -26,25 +27,34 @@ function Tooltip({ children, title, style, placement, subtitle }) {
         onBlur={() => setShowTooltip(false)}
         ref={setReference}
         aria-describedby={tooltipId.current}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.2 }}
       >
         {children}
-      </div>
-      {showTooltip && (
-        <span
-          ref={refs.setFloating}
-          style={{
-            position: strategy,
-            top: y ?? '',
-            left: x ?? '',
-            display: 'flex',
-            flexFlow: 'column',
-          }}
-          className="tooltipTitle"
-        >
-          {title}
-          <span style={{ fontSize: '8px' }}>{subtitle}</span>
-        </span>
-      )}
+      </motion.div>
+      <AnimatePresence>
+        {showTooltip && (
+          <motion.span
+            ref={refs.setFloating}
+            style={{
+              position: strategy,
+              top: y ?? '',
+              left: x ?? '',
+              display: 'flex',
+              flexFlow: 'column',
+            }}
+            className="tooltipTitle"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.2 }}
+          >
+            {title}
+            <span style={{ fontSize: '8px' }}>{subtitle}</span>
+          </motion.span>
+        )}
+      </AnimatePresence>
     </>
   );
 }

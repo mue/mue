@@ -33,9 +33,6 @@
   cursor: initial;
   user-select: none;
   opacity: 1;
-  animation-name: floating;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in;
 }
 
 #modal {
@@ -52,26 +49,6 @@
   .tooltipTitle {
     @extend %basic;
   }
-}
-
-.tooltipTitle::before {
-  transform: scale3d(0.2, 0.2, 1);
-  transition: all 0.2s ease-in-out;
-}
-
-.tooltipTitle::after {
-  transform: translate3d(0, 6px, 0);
-  transition: all 0.1s ease-in-out;
-}
-
-.tooltipTitle:hover::before,
-.tooltipTitle:hover::after {
-  opacity: 1;
-  transform: scale3d(1, 1, 1);
-}
-
-.tooltipTitle:hover::after {
-  transition: all 0.2s 0.1s ease-in-out;
 }
 
 #arrow {
@@ -95,38 +72,4 @@
       }
     }
   }
-}
-
-#floating {
-  transition-property: opacity, transform;
-}
-
-#floating[data-status='open'],
-#floating[data-status='close'] {
-  transition-duration: 250ms;
-}
-
-#floating[data-status='initial'],
-#floating[data-status='close'] {
-  opacity: 0;
-}
-
-#floating[data-status='initial'][data-placement^='top'],
-#floating[data-status='close'][data-placement^='top'] {
-  transform: translateY(5px);
-}
-
-#floating[data-status='initial'][data-placement^='bottom'],
-#floating[data-status='close'][data-placement^='bottom'] {
-  transform: translateY(-5px);
-}
-
-#floating[data-status='initial'][data-placement^='left'],
-#floating[data-status='close'][data-placement^='left'] {
-  transform: translateX(5px);
-}
-
-#floating[data-status='initial'][data-placement^='right'],
-#floating[data-status='close'][data-placement^='right'] {
-  transform: translateX(-5px);
 }
