@@ -229,7 +229,7 @@ function WelcomeModal() {
             animate="center"
             exit="exit"
             transition={{ type: 'tween', duration: 0.8 }}
-            style={{ position: 'absolute', height: '100%' }}
+            style={{ position: 'absolute', height: '100%', width: '50%' }}
           >
             <div style={{ height: '100%', overflow: 'auto' }}>{tabs[currentTab]}</div>
           </motion.div>
