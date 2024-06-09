@@ -164,16 +164,16 @@ function WelcomeModal() {
 
   const variants = {
     enter: (direction) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 1,
     }),
     center: {
       x: 0,
       opacity: 1,
     },
     exit: (direction) => ({
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
+      x: direction < 0 ? '100%' : '-100%',
+      opacity: 1,
     }),
   };
 
@@ -196,7 +196,7 @@ function WelcomeModal() {
           transition={{ type: 'spring', duration: 3 }}
         >
           <motion.span
-            className="text-[40px] font-bold max-w-[50%]"
+            className="text-6xl font-bold max-w-[50%]"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 0 }}
