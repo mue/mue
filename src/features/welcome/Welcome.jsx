@@ -102,6 +102,14 @@ function WelcomeModal() {
     updateTabAndButtonText(tab);
   };
 
+  const modalSkip = () => {
+    localStorage.setItem('showWelcome', false);
+    localStorage.setItem('welcomePreview', true);
+    window.location.reload();
+  };
+
+  console.log(localStorage.getItem('showWelcome'));
+
   const Navigation = () => {
     return (
       <div className="welcomeButtons">
@@ -115,7 +123,7 @@ function WelcomeModal() {
         ) : (
           <Button
             type="settings"
-            //onClick={() => modalSkip()}
+            onClick={() => modalSkip()}
             icon={<MdOutlinePreview />}
             label={variables.getMessage('modals.welcome.buttons.preview')}
           />
@@ -216,7 +224,7 @@ function WelcomeModal() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ type: 'tween', duration: 1 }}
+            transition={{ type: 'tween', duration: 0.8 }}
             style={{ position: 'absolute', height: '100%' }}
           >
             <div style={{ height: '100%', overflow: 'auto' }}>{tabs[currentTab]}</div>

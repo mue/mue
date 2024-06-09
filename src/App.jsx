@@ -6,6 +6,7 @@ import Modals from 'features/misc/modals/Modals';
 import { loadSettings, moveSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
+import Preview from 'features/helpers/preview/Preview';
 
 import Welcome from 'features/welcome/Welcome';
 
@@ -56,12 +57,8 @@ const App = () => {
 
   useAppSetup();
 
-  if (localStorage.getItem('showWelcome')) {
-    return (
-      <>
-        <Welcome />
-      </>
-    );
+  if (localStorage.getItem('showWelcome') === 'true') {
+    return <Welcome />;
   }
 
   return (
@@ -78,6 +75,9 @@ const App = () => {
         <Widgets />
         <Modals />
       </div>
+      {localStorage.getItem('welcomePreview') === 'true' && (
+        <Preview setup={() => window.location.reload()} />
+      )}
     </>
   );
 };

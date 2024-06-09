@@ -102,8 +102,8 @@ export default class Modals extends PureComponent {
           ariaHideApp={false}
         >
           <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()} />
-        </Modal>*/}
-        {this.state.preview && <Preview setup={() => window.location.reload()} />}
+        </Modal>
+        {this.state.preview && <Preview setup={() => window.location.reload()} />}*/}
       </>
     );
   }
