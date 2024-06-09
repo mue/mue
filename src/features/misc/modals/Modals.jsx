@@ -92,18 +92,6 @@ export default class Modals extends PureComponent {
         >
           <MainModal modalClose={() => this.toggleModal('mainModal', false)} />
         </Modal>
-        {/*<Modal
-          closeTimeoutMS={300}
-          onRequestClose={() => this.closeWelcome()}
-          isOpen={this.state.welcomeModal}
-          className="Modal welcomemodal mainModal"
-          overlayClassName="Overlay mainModal"
-          shouldCloseOnOverlayClick={false}
-          ariaHideApp={false}
-        >
-          <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()} />
-        </Modal>
-        {this.state.preview && <Preview setup={() => window.location.reload()} />}*/}
       </>
     );
   }

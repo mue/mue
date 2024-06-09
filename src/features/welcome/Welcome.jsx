@@ -91,7 +91,7 @@ function WelcomeModal() {
   const nextTab = () => {
     setDirection(1);
     if (buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
-      // modalClose();
+      completeSetup();
       return;
     }
     updateTabAndButtonText(currentTab + 1);
@@ -108,7 +108,11 @@ function WelcomeModal() {
     window.location.reload();
   };
 
-  console.log(localStorage.getItem('showWelcome'));
+  const completeSetup = () => {
+    localStorage.setItem('showWelcome', false);
+    localStorage.setItem('welcomePreview', false);
+    window.location.reload();
+  };
 
   const Navigation = () => {
     return (

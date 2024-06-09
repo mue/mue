@@ -1,4 +1,6 @@
 import { memo } from 'react';
+import { MdArrowForwardIos } from 'react-icons/md';
+import { Button } from 'components/Elements';
 import variables from 'config/variables';
 import './preview.scss';
 
@@ -13,9 +15,13 @@ function Preview(props) {
     <div className="preview-mode">
       <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
       <span className="subtitle">{variables.getMessage('modals.welcome.preview.description')}</span>
-      <button onClick={() => setup()}>
-        {variables.getMessage('modals.welcome.preview.continue')}
-      </button>
+      <Button
+        type="settings"
+        onClick={() => setup()}
+        icon={<MdArrowForwardIos />}
+        label={variables.getMessage('modals.welcome.preview.continue')}
+        iconPlacement={'right'}
+      />
     </div>
   );
 }
