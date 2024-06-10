@@ -50,13 +50,13 @@ const Dropdown = (props) => {
   return (
     <div className="w-[100%] max-w-md">
       <Field id={props.name} value={value} label={label} onChange={onChange} ref={dropdown} key={id}>
-        <Label className="text-sm/6 font-medium text-white" id={props.name} value={value} label={label} onChange={onChange} ref={dropdown} key={id}>
+        <Label id={props.name} value={value} label={label} onChange={onChange} ref={dropdown} key={id}>
           {label}
         </Label>
         <div className="relative">
           <Select
             className={clsx(
-              'border border-[#484848] block w-full appearance-none rounded-lg bg-white/5 py-1.5 px-3 text-sm/6 text-white',
+              'mt-3 border border-[#484848] block w-full appearance-none rounded-lg bg-white/5 py-1.5 px-3 text-sm/6 text-white',
               'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25',
               '*:text-black box-border',
             )}

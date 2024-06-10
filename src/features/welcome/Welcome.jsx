@@ -191,19 +191,19 @@ function WelcomeModal() {
           className="grid place-items-center text-center"
           key={currentTab}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.8 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ type: 'spring', duration: 3 }}
         >
           <motion.span
-            className="text-6xl font-bold max-w-[50%]"
+            className="text-6xl font-bold max-w-[50%] leading-normal"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 0 }}
             transition={{ type: 'spring', duration: 2 }}
             key={currentTab}
           >
-            "{quote}"
+            <mark className="bg-[#ff6b6b]">"{quote}"</mark>
           </motion.span>
         </motion.div>
         <div className="welcomeCredit">
