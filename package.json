@@ -48,7 +48,7 @@
     "stylelint": "^16.6.0",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-scss": "^6.3.1",
-    "vite": "5.2.12",
+    "vite": "5.2.13",
     "vite-plugin-progress": "^0.0.7"
   },
   "scripts": {
