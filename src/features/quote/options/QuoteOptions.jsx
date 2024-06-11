@@ -16,12 +16,13 @@ import { Button } from 'components/Elements';
 
 import { toast } from 'react-toastify';
 import EventBus from 'utils/eventbus';
+import defaults from './default';
 
 class QuoteOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
-      quoteType: localStorage.getItem('quoteType') || 'api',
+      quoteType: localStorage.getItem('quoteType') || defaults.quoteType,
       customQuote: this.getCustom(),
       sourceSection: false,
     };

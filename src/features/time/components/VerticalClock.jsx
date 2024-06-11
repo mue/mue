@@ -1,7 +1,9 @@
+import defaults from '../options/default';
+
 function VerticalClock({ finalHour, finalMinute, finalSeconds }) {
-  const hourColour = localStorage.getItem('hourColour') || '#fff';
-  const minuteColour = localStorage.getItem('minuteColour') || '#fff';
-  const secondColour = localStorage.getItem('secondColour') || '#fff';
+  const hourColour = localStorage.getItem('hourColour') || defaults.time.hourColour;
+  const minuteColour = localStorage.getItem('minuteColour') || defaults.time.minuteColour;
+  const secondColour = localStorage.getItem('secondColour') || defaults.time.secondColour;
 
   return (
     <span className="vertical-clock clock-container">

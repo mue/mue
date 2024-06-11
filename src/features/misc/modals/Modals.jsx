@@ -24,7 +24,7 @@ export default class Modals extends PureComponent {
 
   componentDidMount() {
     if (
-      localStorage.getItem('showWelcome') === 'true' &&
+      localStorage.getItem('showWelcome') !== 'false' &&
       window.location.search !== '?nointro=true'
     ) {
       this.setState({
@@ -34,7 +34,7 @@ export default class Modals extends PureComponent {
     }
 
     if (window.location.search === '?nointro=true') {
-      if (localStorage.getItem('showWelcome') === 'true') {
+      if (localStorage.getItem('showWelcome') !== 'false') {
         localStorage.setItem('showWelcome', false);
         EventBus.emit('refresh', 'widgets');
         EventBus.emit('refresh', 'backgroundwelcome');

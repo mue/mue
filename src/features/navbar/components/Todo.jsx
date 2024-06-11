@@ -16,6 +16,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
 import { sortableContainer, sortableElement, sortableHandle } from '@muetab/react-sortable-hoc';
 import EventBus from 'utils/eventbus';
+import defaults from '../options/default';
 
 const SortableItem = sortableElement(({ value }) => <div>{value}</div>);
 const SortableContainer = sortableContainer(({ children }) => <div>{children}</div>);
@@ -25,7 +26,7 @@ class Todo extends PureComponent {
   constructor() {
     super();
     this.state = {
-      todo: JSON.parse(localStorage.getItem('todo')) || [],
+      todo: JSON.parse(localStorage.getItem('todo')) || defaults.todo,
       visibility: localStorage.getItem('todoPinned') === 'true' ? 'visible' : 'hidden',
       marginLeft: localStorage.getItem('refresh') === 'false' ? '-200px' : '-130px',
       showTodo: localStorage.getItem('todoPinned') === 'true',
@@ -34,7 +35,7 @@ class Todo extends PureComponent {
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
     });
   }
 

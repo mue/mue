@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import Background from 'features/background/Background';
 import Widgets from 'features/misc/views/Widgets';
 import Modals from 'features/misc/modals/Modals';
-import { loadSettings, moveSettings } from 'utils/settings';
+import { loadSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
 import Preview from 'features/helpers/preview/Preview';
@@ -12,14 +12,6 @@ import Welcome from 'features/welcome/Welcome';
 
 const useAppSetup = () => {
   useEffect(() => {
-    const firstRun = localStorage.getItem('firstRun');
-    const stats = localStorage.getItem('stats');
-
-    if (!firstRun || !stats) {
-      moveSettings();
-      window.location.reload();
-    }
-
     loadSettings();
 
     const refreshHandler = (data) => {
@@ -57,7 +49,7 @@ const App = () => {
 
   useAppSetup();
 
-  if (localStorage.getItem('showWelcome') === 'true') {
+  if (localStorage.getItem('showWelcome') !== 'false') {
     return <Welcome />;
   }
 

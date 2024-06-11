@@ -13,14 +13,16 @@ import CustomSettings from './Custom';
 import values from 'utils/data/slider_values.json';
 import { APIQualityOptions, backgroundImageEffects, getBackgroundOptionItems } from './optionTypes';
 
+import defaults from './default';
+
 class BackgroundOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
-      backgroundType: localStorage.getItem('backgroundType') || 'api',
+      backgroundType: localStorage.getItem('backgroundType') || defaults.backgroundType,
       backgroundFilter: localStorage.getItem('backgroundFilter') || 'none',
       backgroundCategories: [variables.getMessage('modals.main.loading')],
-      backgroundAPI: localStorage.getItem('backgroundAPI') || 'mue',
+      backgroundAPI: localStorage.getItem('backgroundAPI') || defaults.backgroundAPI,
       marketplaceEnabled: localStorage.getItem('photo_packs'),
       effects: false,
       backgroundSettingsSection: false,

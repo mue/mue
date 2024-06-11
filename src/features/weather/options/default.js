@@ -1,7 +1,7 @@
 const DefaultOptions = {
   weather: false,
   windspeed: true,
-  weatherType: 2,
+  weatherType: 1,
   tempformat: 'celsius',
   weatherdescription: false,
   cloudiness: false,
@@ -10,6 +10,7 @@ const DefaultOptions = {
   windDirection: false,
   atmosphericpressure: false,
   zoomWeather: 100,
+  location: 'London'
 };
 
 export default DefaultOptions;

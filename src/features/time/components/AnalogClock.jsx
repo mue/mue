@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react';
+import defaults from '../options/default';
 
 const Analog = lazy(() => import('react-clock'));
 
@@ -13,7 +14,7 @@ function AnalogClock({ time }) {
         <Analog
           className="analogclock clock-container"
           value={time}
-          size={1.5 * Number(localStorage.getItem('zoomClock') || 100)}
+          size={1.5 * Number(localStorage.getItem('zoomClock') || defaults.zoomClock)}
           renderMinuteMarks={enabled('minuteMarks')}
           renderHourMarks={enabled('hourMarks')}
           renderSecondHand={enabled('secondHand')}

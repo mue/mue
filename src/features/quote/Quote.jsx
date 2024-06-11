@@ -19,6 +19,7 @@ import { ShareModal } from 'components/Elements';
 import offline_quotes from './offline_quotes.json';
 
 import EventBus from 'utils/eventbus';
+import defaults from './options/default';
 
 import './quote.scss';
 
@@ -76,7 +77,7 @@ class Quote extends PureComponent {
       share: localStorage.getItem('quoteShareButton') === 'false' ? null : this.buttons.share,
       copy: localStorage.getItem('copyButton') === 'false' ? null : this.buttons.copy,
       quoteLanguage: '',
-      type: localStorage.getItem('quoteType') || 'api',
+      type: localStorage.getItem('quoteType') || defaults.quoteType,
       shareModal: false,
     };
     this.quote = createRef();
@@ -354,7 +355,7 @@ class Quote extends PureComponent {
   }
 
   setZoom() {
-    const zoomQuote = Number((localStorage.getItem('zoomQuote') || 100) / 100);
+    const zoomQuote = Number((localStorage.getItem('zoomQuote') || defaults.zoomQuote) / 100);
     this.quote.current.style.fontSize = `${0.8 * zoomQuote}em`;
     this.quoteauthor.current.style.fontSize = `${0.9 * zoomQuote}em`;
   }

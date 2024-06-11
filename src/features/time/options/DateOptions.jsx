@@ -6,8 +6,10 @@ import { Checkbox, Dropdown } from 'components/Form/Settings';
 
 import { Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 
+import defaults from './default';
+
 function DateOptions() {
-  const [dateType, setDateType] = useState(localStorage.getItem('dateType') || 'long');
+  const [dateType, setDateType] = useState(localStorage.getItem('dateType') || defaults.date.dateType);
   const dateFormats = ['DMY', 'MDY', 'YMD'];
 
   const longSettings = (

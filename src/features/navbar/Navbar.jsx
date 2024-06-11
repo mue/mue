@@ -5,6 +5,7 @@ import { MdSettings } from 'react-icons/md';
 
 import { Notes, Todo, Apps, Refresh, Maximise } from './components';
 import { Tooltip } from 'components/Elements';
+import defaults from './options/default';
 
 import EventBus from 'utils/eventbus';
 
@@ -18,14 +19,14 @@ class Navbar extends PureComponent {
       classList: localStorage.getItem('widgetStyle') === 'legacy' ? 'navbar old' : 'navbar new',
       refreshText: '',
       refreshEnabled: localStorage.getItem('refresh'),
-      refreshOption: localStorage.getItem('refreshOption') || '',
+      refreshOption: localStorage.getItem('refreshOption') || defaults.refreshOption,
       appsOpen: false,
     };
   }
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
     });
   }
 

@@ -4,7 +4,9 @@ import * as Sentry from '@sentry/react';
 
 import App from './App';
 import ErrorBoundary from './ErrorBoundary';
-import variables from './config/variables';
+
+import variables from 'config/variables';
+import defaults from 'config/default';
 
 import './scss/index.scss';
 // the toast css is based on default so we need to import it
@@ -12,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 import { initTranslations } from 'lib/translations';
 
-const languagecode = localStorage.getItem('language') || 'en_GB';
+const languagecode = localStorage.getItem('language') || defaults.language;
 variables.language = initTranslations(languagecode);
 variables.languagecode = languagecode;
 document.documentElement.lang = languagecode.replace('_', '-');

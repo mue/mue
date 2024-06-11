@@ -1,9 +1,10 @@
 const DefaultOptions = {
   installed: [],
+  language: 'en_GB',
   toastDisplayTime: 2500,
   fontstyle: 'normal',
   fontweight: 400,
-  order: '["greeting", "time", "quicklinks", "quote", "date", "message"]',
+  order: ["greeting", "time", "quicklinks", "quote", "date", "message"],
   theme: 'auto',
   experimental: false,
   debugtimeout: 0,

@@ -3,6 +3,7 @@ import { PureComponent, createRef } from 'react';
 
 import { nth, convertTimezone } from 'utils/date';
 import EventBus from 'utils/eventbus';
+import defaults from './options/default';
 
 import './greeting.scss';
 
@@ -34,7 +35,7 @@ export default class Greeting extends PureComponent {
     const date = time.getDate();
 
     // Parse the customEvents from localStorage
-    const customEvents = JSON.parse(localStorage.getItem('customEvents') || '[]');
+    const customEvents = JSON.parse(localStorage.getItem('customEvents') || defaults.customEvents);
 
     const event = customEvents.find((e) => e.month - 1 === month && e.date === date);
     if (event) {
@@ -137,7 +138,7 @@ export default class Greeting extends PureComponent {
 
         this.greeting.current.style.display = 'block';
         this.greeting.current.style.fontSize = `${
-          1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)
+          1.6 * Number((localStorage.getItem('zoomGreeting') || defaults.zoomGreeting) / 100)
         }em`;
       }
     });
@@ -145,7 +146,7 @@ export default class Greeting extends PureComponent {
     // this comment can apply to all widget zoom features apart from the general one in the Accessibility section
     // in a nutshell: 1.6 is the current font size, and we do "localstorage || 100" so we don't have to try that 4.0 -> 5.0 thing again
     this.greeting.current.style.fontSize = `${
-      1.6 * Number((localStorage.getItem('zoomGreeting') || 100) / 100)
+      1.6 * Number((localStorage.getItem('zoomGreeting') || defaults.zoomGreeting) / 100)
     }em`;
 
     this.getGreeting(0);

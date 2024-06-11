@@ -1,5 +1,8 @@
 import EventBus from 'utils/eventbus';
 
+import BackgroundOptions from 'features/background/options/default';
+import QuoteOptions from 'features/quote/options/default';
+
 // todo: relocate this function
 function showReminder() {
   document.querySelector('.reminder-info').style.display = 'flex';
@@ -33,7 +36,7 @@ export function uninstall(type, name) {
       });
       localStorage.setItem('quote_packs', JSON.stringify(installedContents));
       if (installedContents.length === 0) {
-        localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType') || 'api');
+        localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType') || QuoteOptions.quoteType);
         localStorage.removeItem('oldQuoteType');
         localStorage.removeItem('quote_packs');
       }
@@ -54,7 +57,7 @@ export function uninstall(type, name) {
       });
       localStorage.setItem('photo_packs', JSON.stringify(installedContents));
       if (installedContents.length === 0) {
-        localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType') || 'api');
+        localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType') || BackgroundOptions.backgroundType);
         localStorage.removeItem('oldBackgroundType');
         localStorage.removeItem('photo_packs');
       }

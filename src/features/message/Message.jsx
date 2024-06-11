@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import EventBus from 'utils/eventbus';
+import defaults from './options/default';
 import './message.scss';
 
 const Message = () => {
   const calculateFontSize = () => {
-    const zoomMessage = localStorage.getItem('zoomMessage') || 100;
+    const zoomMessage = localStorage.getItem('zoomMessage') || defaults.zoomMessage;
     return `${1 * Number((zoomMessage || 100) / 100)}em`;
   };
 
@@ -22,7 +23,7 @@ const Message = () => {
       }
     };
 
-    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    const messages = JSON.parse(localStorage.getItem('messages')) || defaults.messages;
     if (messages.length > 0) {
       setMessageText(messages[Math.floor(Math.random() * messages.length)]);
       setDisplay('block');

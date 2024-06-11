@@ -14,18 +14,19 @@ import { TextareaAutosize } from '@mui/material';
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
 
+import defaults from './default';
 import defaultEvents from '../events.json';
 
 import { MdEventNote, MdAdd, MdCancel, MdRefresh } from 'react-icons/md';
 
 const GreetingOptions = () => {
   const [customEvents, setCustomEvents] = useState(
-    JSON.parse(localStorage.getItem('customEvents')) || [],
+    JSON.parse(localStorage.getItem('customEvents')) || defaultEvents
   );
   const [events, setEvents] = useState(false);
 
   const [birthday, setBirthday] = useState(
-    new Date(localStorage.getItem('birthday')) || new Date(),
+    new Date(localStorage.getItem('birthday')) || defaults.birthday
   );
 
   const [enableBirthday, setEnableBirthday] = useState(
@@ -97,7 +98,7 @@ const GreetingOptions = () => {
     });
 
     // Update the event in localStorage
-    const customEvents = JSON.parse(localStorage.getItem('customEvents') || '[]');
+    const customEvents = JSON.parse(localStorage.getItem('customEvents') || defaults.customEvents);
     customEvents[index] = updatedEvent;
     localStorage.setItem('customEvents', JSON.stringify(customEvents));
   };

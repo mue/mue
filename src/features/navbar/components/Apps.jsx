@@ -6,6 +6,7 @@ import { MdPlaylistRemove, MdOutlineApps } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
 
 import { shift, useFloating } from '@floating-ui/react-dom';
+import defaults from '../options/default';
 import EventBus from 'utils/eventbus';
 
 class Apps extends PureComponent {
@@ -21,7 +22,7 @@ class Apps extends PureComponent {
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
     });
   }
 

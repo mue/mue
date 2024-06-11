@@ -4,8 +4,10 @@ import { convertTimezone } from 'utils/date';
 import { AnalogClock } from './components/AnalogClock';
 import { VerticalClock } from './components/VerticalClock';
 import EventBus from 'utils/eventbus';
+import defaults from './options/default';
 
 import './clock.scss';
+
 export default class Clock extends PureComponent {
   constructor() {
     super();
@@ -132,14 +134,14 @@ export default class Clock extends PureComponent {
 
         element.style.display = 'block';
         element.style.fontSize = `${
-          4 * Number((localStorage.getItem('zoomClock') || 100) / 100)
+          4 * Number((localStorage.getItem('zoomClock') || defaults.zoomClock) / 100)
         }em`;
       }
     });
 
     if (localStorage.getItem('timeType') !== 'analogue') {
       document.querySelector('.clock-container').style.fontSize = `${
-        4 * Number((localStorage.getItem('zoomClock') || 100) / 100)
+        4 * Number((localStorage.getItem('zoomClock') || defaults.zoomClock) / 100)
       }em`;
     }
 

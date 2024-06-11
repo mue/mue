@@ -157,7 +157,7 @@ export default class Background extends PureComponent {
   // Main background getting function
   async getBackground() {
     let offline = localStorage.getItem('offlineMode') === 'true';
-    if (localStorage.getItem('showWelcome') === 'true') {
+    if (localStorage.getItem('showWelcome') !== 'false') {
       offline = true;
     }
 

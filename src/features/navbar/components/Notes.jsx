@@ -9,12 +9,13 @@ import { Tooltip } from 'components/Elements';
 
 import { saveFile } from 'utils/saveFile';
 import EventBus from 'utils/eventbus';
+import defaults from '../options/default';
 
 class Notes extends PureComponent {
   constructor() {
     super();
     this.state = {
-      notes: localStorage.getItem('notes') || '',
+      notes: localStorage.getItem('notes') || defaults.notes,
       visibility: localStorage.getItem('notesPinned') === 'true' ? 'visible' : 'hidden',
       showNotes: localStorage.getItem('notesPinned') === 'true' ? true : false,
     };
@@ -22,7 +23,7 @@ class Notes extends PureComponent {
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
+      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
     });
   }
 

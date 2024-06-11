@@ -2,6 +2,7 @@ import { PureComponent, createRef } from 'react';
 import { Tooltip } from 'components/Elements';
 
 import EventBus from 'utils/eventbus';
+import defaults from './options/default';
 
 import './quicklinks.scss';
 
@@ -16,7 +17,7 @@ class QuickLinks extends PureComponent {
 
   // widget zoom
   setZoom(element) {
-    const zoom = localStorage.getItem('zoomQuicklinks') || 100;
+    const zoom = localStorage.getItem('zoomQuicklinks') || defaults.zoomQuicklinks;
     for (const link of element.getElementsByTagName('span')) {
       link.style.fontSize = `${14 * Number(zoom / 100)}px`;
     }
@@ -62,7 +63,8 @@ class QuickLinks extends PureComponent {
     const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
 
     const quickLink = (item) => {
-      if (localStorage.getItem('quickLinksStyle') === 'text') {
+      const quicklinksStyle = localStorage.getItem('quickLinksStyle');
+      if (quicklinksStyle === 'text') {
         return (
           <a
             className="quicklinkstext"
@@ -81,7 +83,7 @@ class QuickLinks extends PureComponent {
         item.icon ||
         'https://icon.horse/icon/ ' + item.url.replace('https://', '').replace('http://', '');
 
-      if (localStorage.getItem('quickLinksStyle') === 'metro') {
+      if (quicklinksStyle === 'metro') {
         return (
           <a
             className="quickLinksMetro"

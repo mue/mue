@@ -6,14 +6,16 @@ import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
 
 import { MdRefresh } from 'react-icons/md';
 
+import defaults from './default';
+
 const TimeOptions = () => {
-  const [timeType, setTimeType] = useState(localStorage.getItem('timeType') || 'digital');
-  const [hourColour, setHourColour] = useState(localStorage.getItem('hourColour') || '#ffffff');
+  const [timeType, setTimeType] = useState(localStorage.getItem('timeType') || defaults.time.timeType);
+  const [hourColour, setHourColour] = useState(localStorage.getItem('hourColour') || defaults.time.hourColour);
   const [minuteColour, setMinuteColour] = useState(
-    localStorage.getItem('minuteColour') || '#ffffff',
+    localStorage.getItem('minuteColour') || defaults.time.minuteColour,
   );
   const [secondColour, setSecondColour] = useState(
-    localStorage.getItem('secondColour') || '#ffffff',
+    localStorage.getItem('secondColour') || defaults.time.secondColour,
   );
   const TIME_SECTION = 'modals.main.settings.sections.time';
 

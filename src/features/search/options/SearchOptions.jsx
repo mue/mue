@@ -9,13 +9,14 @@ import { Dropdown, Checkbox } from 'components/Form/Settings';
 import EventBus from 'utils/eventbus';
 
 import searchEngines from '../search_engines.json';
+import defaults from './default';
 
 class SearchOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
       customEnabled: false,
-      customValue: localStorage.getItem('customSearchEngine') || '',
+      customValue: localStorage.getItem('customSearchEngine') || defaults.customSearchEngine,
     };
   }
 

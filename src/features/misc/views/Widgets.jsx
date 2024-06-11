@@ -10,6 +10,7 @@ import Message from '../../message/Message';
 import { WidgetsLayout } from 'components/Layout';
 
 import EventBus from 'utils/eventbus';
+import defaults from 'config/default';
 
 // weather is lazy loaded due to the size of the weather icons module
 // since we're using react-icons this might not be accurate,
@@ -22,7 +23,7 @@ export default class Widgets extends PureComponent {
   constructor() {
     super();
     this.state = {
-      order: JSON.parse(localStorage.getItem('order')),
+      order: JSON.parse(localStorage.getItem('order')) || defaults.order,
       welcome: localStorage.getItem('showWelcome'),
     };
     // widgets we can re-order
@@ -45,7 +46,7 @@ export default class Widgets extends PureComponent {
       switch (data) {
         case 'widgets':
           return this.setState({
-            order: JSON.parse(localStorage.getItem('order')),
+            order: JSON.parse(localStorage.getItem('order')) || defaults.order,
           });
         case 'widgetsWelcome':
           this.setState({

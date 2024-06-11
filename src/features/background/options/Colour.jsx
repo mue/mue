@@ -4,12 +4,13 @@ import ColorPicker from 'react-best-gradient-color-picker';
 import { toast } from 'react-toastify';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { MdRefresh } from 'react-icons/md';
+import defaults from './default';
 
 import '../scss/_colourpicker.scss';
 
 const ColourOptions = () => {
   const [colour, setColour] = useState(
-    localStorage.getItem('customBackgroundColour') || 'rgba(0, 0, 0, 0)',
+    localStorage.getItem('customBackgroundColour') || defaults.customBackgroundColour,
   );
 
   const changeColour = (output) => {
