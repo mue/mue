@@ -139,7 +139,6 @@ function Search() {
   }
 
   const getSuggestionsDebounced = useDebouncedCallback(getSuggestions, 100);
-  // const getSuggestionsDebounced = getSuggestions;
 
   /**
    * If the user selects a search engine from the dropdown menu, the function will set the state of the

@@ -11,17 +11,18 @@ function Refresh() {
   useEffect(() => {
     EventBus.on('refresh', (data) => {
       if (data === 'navbar' || data === 'background') {
-        setRefreshOption(localStorage.getItem('refreshOption'));
-        updateRefreshText();
+        const newRefreshOption = localStorage.getItem('refreshOption');
+        setRefreshOption(newRefreshOption);
+        updateRefreshText(newRefreshOption);
       }
     });
 
     updateRefreshText();
-  }, []);
+  });
 
   function updateRefreshText() {
     let text;
-    switch (localStorage.getItem('refreshOption')) {
+    switch (refreshOption) {
       case 'background':
         text = variables.getMessage('modals.main.settings.sections.background.title');
         break;

@@ -3,18 +3,22 @@ import EventBus from 'utils/eventbus';
 import './message.scss';
 
 const Message = () => {
+  const calculateFontSize = () => {
+    const zoomMessage = localStorage.getItem('zoomMessage') || 100;
+    return `${1 * Number((zoomMessage || 100) / 100)}em`;
+  };
+
   const [messageText, setMessageText] = useState('');
   const [display, setDisplay] = useState('none');
-  const [fontSize, setFontSize] = useState('1em');
+  const [fontSize, setFontSize] = useState(calculateFontSize());
   const message = useRef();
 
   useEffect(() => {
     const handleRefresh = (data) => {
       if (data === 'message') {
         const messageSetting = localStorage.getItem('message');
-        const zoomMessage = localStorage.getItem('zoomMessage');
         setDisplay(messageSetting === 'false' ? 'none' : 'block');
-        setFontSize(`${1 * Number((zoomMessage || 100) / 100)}em`);
+        setFontSize(calculateFontSize());
       }
     };
 
@@ -25,6 +29,7 @@ const Message = () => {
     }
 
     EventBus.on('refresh', handleRefresh);
+
     return () => {
       EventBus.off('refresh');
     };
