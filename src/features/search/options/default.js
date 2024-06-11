@@ -1,5 +1,5 @@
 const DefaultOptions = {
-  search: false,
+  searchBar: true,
   searchEngine: 'duckduckgo',
   customSearchEngine: '',
   voiceSearch: false,

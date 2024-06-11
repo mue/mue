@@ -1,7 +1,7 @@
 const DefaultOptions = {
   weather: false,
   windspeed: true,
-  weatherType: 'basic',
+  weatherType: 2,
   tempformat: 'celsius',
   weatherdescription: false,
   cloudiness: false,

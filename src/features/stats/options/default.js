@@ -1,5 +1,5 @@
 const DefaultOptions = {
-  stats: true,
+  stats: false,
   statsData: {},
 };
 
