@@ -1,702 +1,676 @@
 {
-  "tabname": "Новая вкладка",
-  "widgets": {
-    "greeting": {
-      "morning": "Доброе утро",
-      "afternoon": "Добрый день",
-      "evening": "Добрый вечер",
-      "christmas": "С Рождеством",
-      "newyear": "С Новым Годом",
-      "halloween": "Счастливого Хэллоуина",
-      "birthday": "С Днём рождения"
-    },
-    "background": {
-      "credit": "Фото",
-      "unsplash": "на Unsplash",
-      "information": "Information",
-      "download": "Download",
-      "downloads": "Загрузки",
-      "views": "Просмотры",
-      "likes": "Нравится",
-      "location": "Локация",
-      "camera": "Камера",
-      "resolution": "Разрешение",
-      "source": "Источник",
-      "category": "Категория",
-      "exclude": "Больше не показывать",
-      "exclude_confirm": "Вы уверены, что больше не хотите видеть это изображение?\nПримечание: если вам не нравятся изображения \"{category}\", вы можете отменить выбор категории в настройках источника фона.",
-      "confirm": "Подтверждаю"
-    },
-    "search": "Поиск",
-    "quicklinks": {
-      "new": "Новая ссылка",
-      "edit": "Edit Link",
-      "name": "Name",
-      "url": "URL",
-      "icon": "Значок (необязательно)",
-      "add": "Add",
-      "name_error": "Должно содержать имя",
-      "url_error": "Должно содержать URL"
-    },
-    "date": {
-      "week": "Неделя"
-    },
-    "weather": {
-      "not_found": "Не найдено",
-      "meters": "{amount} метры",
-      "extra_information": "Дополнительная информация",
-      "feels_like": "По ощущениям {amount}"
-    },
-    "quote": {
-      "link_tooltip": "Открыть в Википедии",
-      "share": "Поделиться",
-      "copy": "Копировать",
-      "favourite": "Избранное",
-      "unfavourite": "Не нравится"
-    },
-    "navbar": {
-      "tooltips": {
-        "refresh": "Перезагрузить"
-      },
-      "notes": {
-        "title": "Notes",
-        "placeholder": "Напишите здесь"
-      },
-      "todo": {
-        "title": "Задачи",
-        "pin": "Прикрепить",
-        "add": "Добавить",
-        "no_todos": "Нет задач"
-      },
-      "apps": {
-        "title": "Apps",
-        "no_apps": "No app links found"
-      }
-    }
-  },
   "modals": {
     "main": {
-      "title": "Options",
-      "loading": "Загрузка...",
-      "file_upload_error": "Файл больше 2 МБ",
-      "navbar": {
-        "settings": "Настройки",
-        "addons": "Аддоны",
-        "marketplace": "Магазин"
+      "addons": {
+        "added": "Добавлен",
+        "check_updates": "Проверка обновлений",
+        "create": {
+          "moved_button": "Начните",
+          "moved_description": "После обновления 7.1, создание дополнений теперь переместилось в веб-UI",
+          "moved_title": "Создание аддонов переместилось!",
+          "title": "Создать"
+        },
+        "empty": {
+          "description": "Зайдите в магазин, чтобы найти что-то интересное",
+          "title": "Здесь пусто"
+        },
+        "no_updates": "Обновления отсутствуют",
+        "sideload": {
+          "description": "Установить аддон Mue, не представленную на торговой площадке, со своего компьютера",
+          "errors": {
+            "invalid_photos": "Недопустимый объект фотографии",
+            "invalid_quotes": "Неправильный объект цитаты",
+            "no_author": "Автор не указан",
+            "no_name": "Название не указано",
+            "no_type": "Тип не указан"
+          },
+          "failed": "Не удалось загрузить аддоны",
+          "title": "Загрузить"
+        },
+        "sort": {
+          "a_z": "Алфавитный (A-Z)",
+          "newest": "Установлено (Новое)",
+          "oldest": "Установлено (Старое)",
+          "title": "Сортировка",
+          "z_a": "Алфавитный (Z-A)"
+        },
+        "updates_available": "Доступны обновления {amount}"
       },
       "error_boundary": {
-        "title": "Ошибка",
         "message": "Не удалось загрузить этот компонент Mue",
+        "refresh": "Обновить",
         "report_error": "Отправить сообщение об ошибке",
         "sent": "Отправил!",
-        "refresh": "Обновить"
+        "title": "Ошибка"
+      },
+      "file_upload_error": "Файл больше 2 МБ",
+      "loading": "Загрузка...",
+      "marketplace": {
+        "add_all": "Добавить все в Mue",
+        "all": "Все",
+        "by": "от {author}",
+        "cant_find": "Не можете найти то, что ищете?",
+        "collection": "Коллекция",
+        "collections": "Коллекции",
+        "explore_collection": "Исследуйте коллекцию",
+        "knowledgebase_one": "Посетить",
+        "knowledgebase_three": "чтобы создать свой собственный.",
+        "knowledgebase_two": "база знаний",
+        "learn_more": "Узнать больше",
+        "no_items": "Нет элементов в этой категории",
+        "offline": {
+          "description": "Пожалуйста, подключитесь к интернету",
+          "title": "Похоже, что вы офлайн"
+        },
+        "photo_packs": "Наборы фото",
+        "preset_settings": "Пресеты настроек",
+        "product": {
+          "author": "Автор",
+          "buttons": {
+            "addtomue": "Добавить в Mue",
+            "back": "Назад",
+            "remove": "Удалить",
+            "report": "Жалоба",
+            "update_addon": "Update Add-on"
+          },
+          "description": "Описание",
+          "explore": "Обзор",
+          "information": "Информация",
+          "last_updated": "Последнее обновление",
+          "no_images": "№ Изображения",
+          "no_quotes": "Цитаты",
+          "overview": "Обзор",
+          "part_of": "Часть",
+          "setting": "Параметр",
+          "show_all": "Показать все",
+          "show_less": "Показать меньше",
+          "show_more": "Показать больше",
+          "showing": "Показаны",
+          "value": "Цена",
+          "version": "Версия"
+        },
+        "quote_packs": "Наборы цитат"
+      },
+      "navbar": {
+        "addons": "Аддоны",
+        "marketplace": "Магазин",
+        "settings": "Настройки"
       },
       "settings": {
+        "additional_settings": "Дополнительные настройки",
+        "buttons": {
+          "export": "Экспорт",
+          "import": "Импорт",
+          "reset": "Сбросить"
+        },
         "enabled": "Включено",
         "open_knowledgebase": "Открытая база знаний",
-        "additional_settings": "Дополнительные настройки",
         "reminder": {
-          "title": "NOTICE",
-          "message": "Для того чтобы все изменения произошли, необходимо обновить страницу."
+          "message": "Для того чтобы все изменения произошли, необходимо обновить страницу.",
+          "title": "NOTICE"
         },
         "sections": {
-          "header": {
-            "more_info": "Больше информации",
-            "report_issue": "Сообщить о проблеме",
-            "enabled": "Выберите, показывать ли этот виджет",
-            "size": "Ползунок для управления размером виджета"
-          },
-          "time": {
-            "title": "Время",
-            "format": "Format",
-            "type": "Type",
-            "type_subtitle": "Выберите, в каком формате будет отображаться время: в цифровом, аналоговом или в процентах завершения дня",
-            "digital": {
-              "title": "Цифровые",
-              "subtitle": "Измените внешний вид цифровых часов",
-              "seconds": "Секунды",
-              "twentyfourhour": "24 Часа",
-              "twelvehour": "12 часов",
-              "zero": "Дополнительный ноль"
+          "about": {
+            "contact_us": "Contact Us",
+            "contributors": "Участники",
+            "copyright": "Copyright",
+            "form_button": "Форма",
+            "no_supporters": "В настоящее время нет поддержки Mue",
+            "photographers": "Фотографы",
+            "resources_used": {
+              "bg_images": "Фоновые изображения в оффлайне",
+              "title": "Используемые ресурсы"
             },
-            "analogue": {
-              "title": "Аналоговые",
-              "subtitle": "Измените внешний вид аналоговых часов",
-              "second_hand": "Секундная стрелка",
-              "minute_hand": "Минутная стрелка",
-              "hour_hand": "Часовая стрелка",
-              "hour_marks": "Часовые метки",
-              "minute_marks": "Минутные метки",
-              "round_clock": "Округлый фон"
-            },
-            "percentage_complete": "Процент завершения",
-            "vertical_clock": {
-              "title": "Вертикальные часы",
-              "change_hour_colour": "Изменить цвет текста часа",
-              "change_minute_colour": "Изменить цвет текста минут",
-              "change_second_colour": "Change second text colour"
-            }
-          },
-          "date": {
-            "title": "Date",
-            "week_number": "Число недели",
-            "day_of_week": "День недели",
-            "datenth": "Дата n-ая",
-            "type": {
-              "short": "Короткая",
-              "long": "Длинная",
-              "subtitle": "Отображать ли дату в длинной или короткой форме"
-            },
-            "type_settings": "Настройки отображения и формат для выбранного типа даты",
-            "short_date": "Короткая дата",
-            "short_format": "Короткий формат",
-            "long_format": "Длинный формат",
-            "short_separator": {
-              "title": "Короткий разделитель",
-              "dots": "Точки",
-              "dash": "Тире",
-              "gaps": "Пробелы",
-              "slashes": "Слэшы"
-            }
-          },
-          "quote": {
-            "title": "Цитата",
-            "additional": "Другие настройки для настройки стиля виджета котировок",
-            "author_link": "Author link",
-            "custom": "Пользовательская цитата",
-            "custom_subtitle": "Установите свои собственные пользовательские цитаты",
-            "no_quotes": "Без кавычек",
-            "author": "Автор",
-            "custom_buttons": "Кнопки",
-            "custom_author": "Пользовательский автор",
-            "author_img": "Показать изображение автора",
-            "add": "Добавить цитату",
-            "source_subtitle": "Выберите, откуда брать цитаты",
-            "buttons": {
-              "title": "Кнопки",
-              "subtitle": "Выберите, какие кнопки отображать в котировке",
-              "copy": "Кнопка копирования",
-              "tweet": "Кнопка твита",
-              "favourite": "Кнопка для оценки"
-            }
-          },
-          "greeting": {
-            "title": "Приветствие",
-            "events": "События",
-            "events_description": "Control events on Mue such as birthdays.",
-            "enable_events": "Show messages on special days",
-            "default": "Сообщение с приветствием по-умолчанию",
-            "name": "Имя для приветствия",
-            "birthday": "День рождения",
-            "birthday_subtitle": "Показать сообщение с днем рождения, когда это ваш день рождения",
-            "birthday_age": "Возраст рождения",
-            "birthday_date": "Дата рождения",
-            "additional": "Настройки отображения приветствия",
-            "custom": "Custom events",
-            "event_name": "Event Name",
-            "day": "Day",
-            "month": "Month",
-            "no_events": "No Events",
-            "no_events_description": "Add Some Events",
-            "add_event": "Add Event"
-          },
-          "background": {
-            "title": "Фон",
-            "transition": "Затухающий переход",
-            "photo_information": "Показать информацию о фотографии",
-            "show_map": "Показывать карту местоположения на фотографии, если она доступна",
-            "categories": "Категории",
-            "buttons": {
-              "title": "Кнопки",
-              "view": "Просмотр",
-              "favourite": "Любимые",
-              "download": "Download"
-            },
-            "effects": {
-              "title": "Эффекты",
-              "subtitle": "Добавляйте эффекты к фоновым изображениям",
-              "blur": "Размытие",
-              "brightness": "Яркость",
-              "filters": {
-                "title": "Фильтр фона",
-                "amount": "Количество фильтров",
-                "grayscale": "Градации серого",
-                "sepia": "Сепия",
-                "invert": "Негатив",
-                "saturate": "Насыщенность",
-                "contrast": "Контраст"
-              }
-            },
-            "type": {
-              "title": "Type",
-              "api": "API",
-              "custom_image": "Пользовательское изображение",
-              "custom_colour": "Пользовательский цвет/градиент",
-              "random_colour": "Случайный цвет",
-              "random_gradient": "Случайный градиент"
-            },
-            "unsplash": {
-              "title": "Unsplash Collection(s)",
-              "subtitle": "Select the collection(s) you want to use for your background",
-              "id": "Collection ID(s)",
-              "id_subtitle": "Enter a comma separated list of Unsplash IDs"
-            },
-            "source": {
-              "title": "Source",
-              "subtitle": "Выберите, откуда брать фоновые изображения",
-              "api": "API для фона",
-              "custom_background": "Пользовательский фон",
-              "custom_colour": "Пользовательский цвет фон",
-              "upload": "Загрузить",
-              "add_colour": "Добавить цвет",
-              "add_background": "Добавить фон",
-              "drop_to_upload": "Перетащите, чтобы загрузить",
-              "formats": "Доступные форматы: {список}",
-              "select": "Или выберите",
-              "add_url": "Add URL",
-              "disabled": "Выключен",
-              "loop_video": "Зацикленное видео",
-              "mute_video": "Отключить звук видео",
-              "quality": {
-                "title": "Качество",
-                "original": "Original",
-                "high": "Высокое качество",
-                "normal": "Нормальное качество",
-                "datasaver": "Data Saver"
+            "support_donate": "Пожертвовать",
+            "support_mue": "Support Mue",
+            "support_subtitle": "Поскольку Mue полностью бесплатен, мы полагаемся на пожертвования для покрытия счетов за сервер и финансирования развития",
+            "supporters": "Поддержка",
+            "title": "О программе",
+            "version": {
+              "checking_update": "Проверяю обновления",
+              "error": {
+                "description": "Обнаружена ошибка",
+                "title": "Не удалось получить информацию об обновлении"
               },
-              "custom_title": "Пользовательские изображения",
-              "custom_description": "Выберите изображения с вашего локального компьютера",
-              "remove": "Удалить изображение"
-            },
-            "display": "Отображать",
-            "display_subtitle": "Изменение способа загрузки фона и информации о фотографии",
-            "api": "Настройки API",
-            "api_subtitle": "Варианты получения изображения из внешнего сервиса (API)"
+              "no_update": "Нет доступных обновлений",
+              "offline_mode": "Невозможно проверить наличие обновления в автономном режиме",
+              "title": "Version",
+              "update_available": "Обновление доступно"
+            }
           },
-          "search": {
-            "title": "Панель поиска",
-            "additional": "Дополнительные параметры отображения и функциональности поискового виджета",
-            "search_engine": "Поисковый движок",
-            "search_engine_subtitle": "Выберите поисковую систему для использования в строке поиска",
-            "custom": "Пользовательский поисковый движок",
-            "autocomplete": "Автозаполнение",
-            "autocomplete_provider": "Поставщик автозаполнения",
-            "autocomplete_provider_subtitle": "Поисковая система, используемая для выпадающих результатов автозаполнения",
-            "voice_search": "Поиск голосом",
-            "dropdown": "Выпадающий список поиска",
-            "focus": "Фокус на открытой вкладке"
-          },
-          "weather": {
-            "title": "Погода",
-            "location": "Локация",
-            "auto": "Auto",
-            "widget_type": "Тип виджета",
-            "temp_format": {
-              "title": "Формат температуры",
-              "celsius": "Цельсии",
-              "fahrenheit": "Фаренгейт",
-              "kelvin": "Кельвин"
+          "advanced": {
+            "custom_css": "Пользовательский CSS",
+            "custom_css_subtitle": "Настройте стиль Mue под себя с помощью каскадных таблиц стилей (CSS).",
+            "custom_js": "Пользовательский JS",
+            "customisation": "Кастомизация",
+            "data": "Data",
+            "data_subtitle": "Выберите, следует ли экспортировать настройки Mue на компьютер, импортировать существующий файл настроек или сбросить настройки до значений по умолчанию",
+            "experimental_warning": "Обратите внимание, что команда Mue не может оказать поддержку, если у вас включен экспериментальный режим. Пожалуйста, сначала отключите его и посмотрите, сохранится ли проблема, прежде чем обращаться в службу поддержки.",
+            "offline_mode": "Офлайн режим",
+            "offline_subtitle": "При включении все запросы к онлайн-сервисам будут отключены.",
+            "reset_modal": {
+              "cancel": "Отменить",
+              "information": "Это приведет к удалению всех данных. Если вы хотите сохранить свои данные и предпочтения, сначала экспортируйте их.",
+              "question": "Вы хотите сбросить Mue?",
+              "title": "WARNING"
             },
-            "extra_info": {
-              "title": "Extra information",
-              "show_location": "Показать расположение",
-              "show_description": "Показать описание",
-              "weather_description": "Описание погоды",
-              "cloudiness": "Облачность",
-              "humidity": "Влажность",
-              "visibility": "Видимость",
-              "wind_speed": "Сила ветра",
-              "wind_direction": "Направление ветра",
-              "min_temp": "Минимальная температура",
-              "max_temp": "Максимальная температура",
-              "atmospheric_pressure": "Атмосферное давление"
+            "tab_name": "Tab name",
+            "tab_name_subtitle": "Измените название вкладки, которая появляется в вашем браузере",
+            "timezone": {
+              "automatic": "Автоматически",
+              "subtitle": "Выберите часовой пояс из списка вместо автоматического по умолчанию с вашего компьютера",
+              "title": "Часовой пояс"
             },
-            "options": {
-              "basic": "Базовый",
-              "standard": "Стандарт",
-              "expanded": "Расширенный",
-              "custom": "Свой"
-            },
-            "custom_settings": "Пользовательские настройки"
-          },
-          "quicklinks": {
-            "title": "Быстрые ссылки",
-            "additional": "Дополнительные настройки отображения и функций быстрых ссылок",
-            "open_new": "Открывать в новой вкладке",
-            "tooltip": "Всплывающая подсказка",
-            "text_only": "Показывать только текст",
-            "add_link": "Добавить ссылку",
-            "no_quicklinks": "Нет быстрых ссылок",
-            "edit": "Редактировать",
-            "style": "Стиль",
-            "options": {
-              "icon": "Иконка",
-              "text_only": "Только текст",
-              "metro": "Метро"
-            },
-            "styling": "Стиль быстрых ссылок",
-            "styling_description": "Настройка внешнего вида быстрых ссылок"
-          },
-          "message": {
-            "title": "Message",
-            "add": "Add message",
-            "messages": "Сообщения",
-            "text": "Text",
-            "no_messages": "Нет сообщений",
-            "add_some": "Идем дальше и добавить некоторые.",
-            "content": "Содержание сообщения"
+            "title": "Дополнительно"
           },
           "appearance": {
-            "title": "Оформление",
-            "style": {
-              "title": "Стиль виджета",
-              "description": "Выберите один из двух стилей: устаревший (доступен для пользователей, предшествующих версии 7.0) и наш стильный современный стиль.",
-              "legacy": "Устаревшее",
-              "new": "Новый"
+            "accessibility": {
+              "animations": "Анимации",
+              "description": "Настройки специальных возможностей для Mue",
+              "milliseconds": "миллисекунды",
+              "text_shadow": {
+                "new": "Новое",
+                "none": "None",
+                "old": "Old",
+                "title": "Тень текста виджета"
+              },
+              "title": "Доступность",
+              "toast_duration": "Продолжительность подсказки",
+              "widget_zoom": "Widget zoom"
             },
-            "theme": {
-              "title": "Theme",
-              "description": "Измените тему виджетов и модальных окон Mue",
-              "auto": "Auto",
-              "light": "Светлая",
-              "dark": "Тёмная"
+            "font": {
+              "custom": "Пользовательский шрифт",
+              "description": "Измените шрифт, используемый в Mue",
+              "google": "Импортировать из Google Fonts",
+              "style": {
+                "italic": "Italic",
+                "normal": "Normal",
+                "oblique": "Курсив",
+                "title": "Font style"
+              },
+              "title": "Font",
+              "weight": {
+                "bold": "Жирный",
+                "extra_bold": "Сверхжирный",
+                "extra_light": "Очень тонкий",
+                "light": "Лёгкий",
+                "medium": "Medium",
+                "normal": "Normal",
+                "semi_bold": "Полужирный",
+                "thin": "Тонкий",
+                "title": "Толщина шрифта"
+              }
             },
             "navbar": {
-              "title": "Навбар",
-              "widgets": "Navbar Widgets",
+              "additional": "Измените стиль панели навигации и какие кнопки вы хотите отображать",
+              "apps_subtitle": "Создайте ярлык других широко используемых веб-сайтов.",
+              "hover": "Отображение только при наведении",
               "notes": "Notes",
               "refresh": "Кнопка перезагрузки",
-              "refresh_subtitle": "Выберите, что будет обновляться при нажатии кнопки обновления",
-              "hover": "Отображение только при наведении",
-              "additional": "Измените стиль панели навигации и какие кнопки вы хотите отображать",
               "refresh_options": {
                 "none": "None",
                 "page": "Page"
               },
-              "apps_subtitle": "Create a shortcut of your other commonly used websites."
+              "refresh_subtitle": "Выберите, что будет обновляться при нажатии кнопки обновления",
+              "title": "Навбар"
             },
-            "font": {
-              "title": "Font",
-              "description": "Измените шрифт, используемый в Mue",
-              "custom": "Пользовательский шрифт",
-              "google": "Импортировать из Google Fonts",
-              "weight": {
-                "title": "Толщина шрифта",
-                "thin": "Тонкий",
-                "extra_light": "Очень тонкий",
-                "light": "Лёгкий",
-                "normal": "Normal",
-                "medium": "Medium",
-                "semi_bold": "Полужирный",
-                "bold": "Жирный",
-                "extra_bold": "Сверхжирный"
-              },
-              "style": {
-                "title": "Font style",
-                "normal": "Normal",
-                "italic": "Italic",
-                "oblique": "Курсив"
-              }
+            "style": {
+              "description": "Выберите один из двух стилей: устаревший (доступен для пользователей, предшествующих версии 7.0) и наш стильный современный стиль.",
+              "legacy": "Устаревшее",
+              "new": "Новый",
+              "title": "Стиль виджета"
             },
-            "accessibility": {
-              "title": "Доступность",
-              "description": "Настройки специальных возможностей для Mue",
-              "animations": "Анимации",
-              "text_shadow": {
-                "title": "Тень текста виджета",
-                "new": "Новое",
-                "old": "Old",
-                "none": "None"
+            "theme": {
+              "auto": "Auto",
+              "dark": "Тёмная",
+              "description": "Измените тему виджетов и модальных окон Mue",
+              "light": "Светлая",
+              "title": "Theme"
+            },
+            "title": "Оформление"
+          },
+          "background": {
+            "api": "Настройки API",
+            "api_subtitle": "Варианты получения изображения из внешнего сервиса (API)",
+            "buttons": {
+              "download": "Download",
+              "favourite": "Любимые",
+              "title": "Кнопки",
+              "view": "Просмотр"
+            },
+            "categories": "Категории",
+            "ddg_image_proxy": "Использование прокси-сервера изображений DuckDuckGo",
+            "display": "Отображать",
+            "display_subtitle": "Изменение способа загрузки фона и информации о фотографии",
+            "effects": {
+              "blur": "Размытие",
+              "brightness": "Яркость",
+              "filters": {
+                "amount": "Количество фильтров",
+                "contrast": "Контраст",
+                "grayscale": "Градации серого",
+                "invert": "Негатив",
+                "saturate": "Насыщенность",
+                "sepia": "Сепия",
+                "title": "Фильтр фона"
               },
-              "widget_zoom": "Widget Zoom",
-              "toast_duration": "Продолжительность подсказки",
-              "milliseconds": "миллисекунды"
+              "subtitle": "Добавляйте эффекты к фоновым изображениям",
+              "title": "Эффекты"
+            },
+            "interval": {
+              "day": "Day",
+              "half_hour": "Полчаса",
+              "hour": "Час",
+              "minute": "Minute",
+              "month": "Месяц",
+              "subtitle": "Изменить частоту обновления фона",
+              "title": "Менять каждые"
+            },
+            "photo_information": "Показать информацию о фотографии",
+            "show_map": "Показывать карту местоположения на фотографии, если она доступна",
+            "source": {
+              "add_background": "Добавить фон",
+              "add_colour": "Добавить цвет",
+              "add_url": "Add URL",
+              "api": "API для фона",
+              "custom_background": "Пользовательский фон",
+              "custom_colour": "Пользовательский цвет фон",
+              "custom_description": "Выберите изображения с вашего локального компьютера",
+              "custom_title": "Пользовательские изображения",
+              "disabled": "Выключен",
+              "drop_to_upload": "Перетащите, чтобы загрузить",
+              "formats": "Доступные форматы: {list}",
+              "loop_video": "Зацикленное видео",
+              "mute_video": "Отключить звук видео",
+              "quality": {
+                "datasaver": "Data Saver",
+                "high": "Высокое качество",
+                "normal": "Нормальное качество",
+                "original": "Original",
+                "title": "Качество"
+              },
+              "remove": "Удалить изображение",
+              "select": "Или выберите",
+              "subtitle": "Выберите, откуда брать фоновые изображения",
+              "title": "Source",
+              "upload": "Загрузить"
+            },
+            "title": "Фон",
+            "transition": "Затухающий переход",
+            "type": {
+              "api": "API",
+              "custom_colour": "Пользовательский цвет/градиент",
+              "custom_image": "Пользовательское изображение",
+              "random_colour": "Случайный цвет",
+              "random_gradient": "Случайный градиент",
+              "title": "Type"
             }
+          },
+          "changelog": {
+            "by": "By {author}",
+            "title": "Журнал изменений"
+          },
+          "date": {
+            "datenth": "Дата n-ая",
+            "day_of_week": "День недели",
+            "long_format": "Длинный формат",
+            "short_date": "Короткая дата",
+            "short_format": "Короткий формат",
+            "short_separator": {
+              "dash": "Тире",
+              "dots": "Точки",
+              "gaps": "Пробелы",
+              "slashes": "Слэшы",
+              "title": "Короткий разделитель"
+            },
+            "title": "Date",
+            "type": {
+              "long": "Длинная",
+              "short": "Короткая",
+              "subtitle": "Отображать ли дату в длинной или короткой форме"
+            },
+            "type_settings": "Настройки отображения и формат для выбранного типа даты",
+            "week_number": "Число недели"
+          },
+          "experimental": {
+            "developer": "Developer",
+            "title": "Экспериментальные настройки",
+            "warning": "Данные настройки не были полностью протестированы/реализованы и могут работать некорректно!"
+          },
+          "greeting": {
+            "additional": "Настройки отображения приветствия",
+            "birthday": "День рождения",
+            "birthday_age": "Возраст рождения",
+            "birthday_date": "Дата рождения",
+            "birthday_subtitle": "Показать сообщение с днем рождения, когда это ваш день рождения",
+            "default": "Сообщение с приветствием по-умолчанию",
+            "events": "События",
+            "name": "Имя для приветствия",
+            "title": "Приветствие"
+          },
+          "header": {
+            "enabled": "Выберите, показывать ли этот виджет",
+            "more_info": "Больше информации",
+            "report_issue": "Сообщить о проблеме",
+            "size": "Ползунок для управления размером виджета"
+          },
+          "language": {
+            "quote": "Язык цитат",
+            "title": "Язык"
+          },
+          "message": {
+            "add": "Add message",
+            "add_some": "Идем дальше и добавить некоторые.",
+            "content": "Содержание сообщения",
+            "messages": "Сообщения",
+            "no_messages": "Нет сообщений",
+            "text": "Text",
+            "title": "Message"
           },
           "order": {
             "title": "Порядок виджетов"
           },
-          "advanced": {
-            "title": "Дополнительно",
-            "offline_mode": "Офлайн режим",
-            "offline_subtitle": "При включении все запросы к онлайн-сервисам будут отключены.",
-            "data": "Data",
-            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
-            "data_subtitle": "Выберите, следует ли экспортировать настройки Mue на компьютер, импортировать существующий файл настроек или сбросить настройки до значений по умолчанию",
-            "reset_modal": {
-              "title": "WARNING",
-              "question": "Вы хотите сбросить Mue?",
-              "information": "Это приведет к удалению всех данных. Если вы хотите сохранить свои данные и предпочтения, сначала экспортируйте их.",
-              "cancel": "Отменить"
+          "quicklinks": {
+            "add_link": "Добавить ссылку",
+            "additional": "Дополнительные настройки отображения и функций быстрых ссылок",
+            "edit": "Редактировать",
+            "no_quicklinks": "Нет быстрых ссылок",
+            "open_new": "Открывать в новой вкладке",
+            "options": {
+              "icon": "Иконка",
+              "metro": "Метро",
+              "text_only": "Только текст"
             },
-            "customisation": "Кастомизация",
-            "custom_css": "Пользовательский CSS",
-            "custom_css_subtitle": "Настройте стиль Mue под себя с помощью каскадных таблиц стилей (CSS).",
-            "custom_js": "Пользовательский JS",
-            "tab_name": "Tab name",
-            "tab_name_subtitle": "Измените название вкладки, которая появляется в вашем браузере",
-            "timezone": {
-              "title": "Часовой пояс",
-              "subtitle": "Выберите часовой пояс из списка вместо автоматического по умолчанию с вашего компьютера",
-              "automatic": "Автоматически"
+            "style": "Стиль",
+            "styling": "Стиль быстрых ссылок",
+            "styling_description": "Настройка внешнего вида быстрых ссылок",
+            "text_only": "Показывать только текст",
+            "title": "Быстрые ссылки",
+            "tooltip": "Всплывающая подсказка"
+          },
+          "quote": {
+            "add": "Добавить цитату",
+            "additional": "Другие настройки для настройки стиля виджета котировок",
+            "author": "Автор",
+            "author_img": "Показать изображение автора",
+            "author_link": "Author link",
+            "buttons": {
+              "copy": "Кнопка копирования",
+              "favourite": "Кнопка для оценки",
+              "subtitle": "Выберите, какие кнопки отображать в котировке",
+              "title": "Кнопки",
+              "tweet": "Кнопка твита"
             },
-            "experimental_warning": "Обратите внимание, что команда Mue не может оказать поддержку, если у вас включен экспериментальный режим. Пожалуйста, сначала отключите его и посмотрите, сохранится ли проблема, прежде чем обращаться в службу поддержки.",
-            "preview_data_disabled": {
-              "title": "Data Settings Disabled",
-              "description": "Data settings are disabled in preview mode. Please exit preview mode to use this feature."
-            }
+            "custom": "Пользовательская цитата",
+            "custom_author": "Пользовательский автор",
+            "custom_buttons": "Кнопки",
+            "custom_subtitle": "Установите свои собственные пользовательские цитаты",
+            "no_quotes": "Без кавычек",
+            "source_subtitle": "Выберите, откуда брать цитаты",
+            "title": "Цитата"
+          },
+          "search": {
+            "additional": "Дополнительные параметры отображения и функциональности поискового виджета",
+            "autocomplete": "Автозаполнение",
+            "autocomplete_provider": "Поставщик автозаполнения",
+            "autocomplete_provider_subtitle": "Поисковая система, используемая для выпадающих результатов автозаполнения",
+            "custom": "Пользовательский поисковый движок",
+            "dropdown": "Выпадающий список поиска",
+            "focus": "Фокус на открытой вкладке",
+            "search_engine": "Поисковый движок",
+            "search_engine_subtitle": "Выберите поисковую систему для использования в строке поиска",
+            "title": "Панель поиска",
+            "voice_search": "Поиск голосом"
           },
           "stats": {
-            "title": "Stats",
-            "sections": {
-              "tabs_opened": "Открытые вкладки",
-              "backgrounds_favourited": "Избранные фоны",
-              "backgrounds_downloaded": "Загруженные фоны",
-              "quotes_favourited": "Избранные цитаты",
-              "quicklinks_added": "Добавлены быстрые ссылки",
-              "settings_changed": "Изменены настройки",
-              "addons_installed": "Установленные аддоны"
-            },
-            "usage": "Статистика использования",
             "achievements": "Достижения",
-            "achievement_unlocked": "Achievement Unlocked: {name}",
+            "sections": {
+              "addons_installed": "Установленные аддоны",
+              "backgrounds_downloaded": "Загруженные фоны",
+              "backgrounds_favourited": "Избранные фоны",
+              "quicklinks_added": "Добавлены быстрые ссылки",
+              "quotes_favourited": "Избранные цитаты",
+              "settings_changed": "Изменены настройки",
+              "tabs_opened": "Открытые вкладки"
+            },
+            "title": "Stats",
             "unlocked": "{count} разблокировано",
-            "locked": "Locked",
-            "clear_modal": {
-              "question": "Do you want to clear your stats?",
-              "information": "This will clear all achievements and usage statistics."
+            "usage": "Статистика использования"
+          },
+          "time": {
+            "analogue": {
+              "hour_hand": "Часовая стрелка",
+              "hour_marks": "Часовые метки",
+              "minute_hand": "Минутная стрелка",
+              "minute_marks": "Минутные метки",
+              "round_clock": "Округлый фон",
+              "second_hand": "Секундная стрелка",
+              "subtitle": "Измените внешний вид аналоговых часов",
+              "title": "Аналоговые"
+            },
+            "digital": {
+              "seconds": "Секунды",
+              "subtitle": "Измените внешний вид цифровых часов",
+              "title": "Цифровые",
+              "twelvehour": "12 часов",
+              "twentyfourhour": "24 Часа",
+              "zero": "Дополнительный ноль"
+            },
+            "format": "Format",
+            "percentage_complete": "Процент завершения",
+            "title": "Время",
+            "type": "Type",
+            "type_subtitle": "Выберите, в каком формате будет отображаться время: в цифровом, аналоговом или в процентах завершения дня",
+            "vertical_clock": {
+              "change_hour_colour": "Изменить цвет текста часа",
+              "change_minute_colour": "Изменить цвет текста минут",
+              "title": "Вертикальные часы"
             }
           },
-          "experimental": {
-            "title": "Экспериментальные настройки",
-            "warning": "Данные настройки не были полностью протестированы/реализованы и могут работать некорректно!",
-            "developer": "Developer"
-          },
-          "language": {
-            "title": "Язык",
-            "quote": "Язык цитат"
-          },
-          "changelog": {
-            "title": "Журнал изменений",
-            "by": "By {author}"
-          },
-          "about": {
-            "title": "О программе",
-            "version": {
-              "title": "Version",
-              "checking_update": "Проверка обновлений",
-              "update_available": "Обновление доступно",
-              "no_update": "Нет доступных обновлений",
-              "offline_mode": "Невозможно проверить наличие обновления в автономном режиме",
-              "error": {
-                "title": "Не удалось получить информацию об обновлении",
-                "description": "Обнаружена ошибка"
-              }
+          "weather": {
+            "auto": "Auto",
+            "custom_settings": "Пользовательские настройки",
+            "extra_info": {
+              "atmospheric_pressure": "Атмосферное давление",
+              "cloudiness": "Облачность",
+              "humidity": "Влажность",
+              "max_temp": "Максимальная температура",
+              "min_temp": "Минимальная температура",
+              "show_description": "Показать описание",
+              "show_location": "Показать расположение",
+              "title": "Extra information",
+              "visibility": "Видимость",
+              "weather_description": "Описание погоды",
+              "wind_direction": "Направление ветра",
+              "wind_speed": "Сила ветра"
             },
-            "contact_us": "Contact Us",
-            "support_mue": "Support Mue",
-            "support_subtitle": "Поскольку Mue полностью бесплатен, мы полагаемся на пожертвования для покрытия счетов за сервер и финансирования развития",
-            "support_donate": "Пожертвовать",
-            "form_button": "Форма",
-            "resources_used": {
-              "title": "Используемые ресурсы",
-              "bg_images": "Фоновые изображения в оффлайне"
+            "location": "Локация",
+            "options": {
+              "basic": "Базовый",
+              "custom": "Свой",
+              "expanded": "Расширенный",
+              "standard": "Стандарт"
             },
-            "contributors": "Участники",
-            "supporters": "Поддержка",
-            "no_supporters": "В настоящее время нет поддержки Mue",
-            "photographers": "Фотографы",
-            "curators": "Add-on creators"
+            "temp_format": {
+              "celsius": "Цельсии",
+              "fahrenheit": "Фаренгейт",
+              "kelvin": "Кельвин",
+              "title": "Формат температуры"
+            },
+            "title": "Погода",
+            "widget_type": "Тип виджета"
           }
-        },
-        "buttons": {
-          "reset": "Сбросить",
-          "import": "Импорт",
-          "export": "Экспорт"
         }
       },
-      "marketplace": {
-        "by": "от {author}",
-        "all": "Все",
-        "learn_more": "Узнать больше",
-        "photo_packs": "Наборы фото",
-        "quote_packs": "Наборы цитат",
-        "preset_settings": "Пресеты настроек",
-        "no_items": "Нет элементов в этой категории",
-        "collection": "Коллекция",
-        "explore_collection": "Исследуйте коллекцию",
-        "add_all": "Добавить все в Mue",
-        "collections": "Коллекции",
-        "cant_find": "Не можете найти то, что ищете?",
-        "knowledgebase_one": "Посетить",
-        "knowledgebase_two": "база знаний",
-        "knowledgebase_three": "чтобы создать свой собственный.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Обзор",
-          "information": "Информация",
-          "last_updated": "Последнее обновление",
-          "description": "Описание",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Показать больше",
-          "show_less": "Показать меньше",
-          "show_all": "Показать все",
-          "showing": "Показаны",
-          "no_images": "№ Изображения",
-          "no_quotes": "Цитаты",
-          "version": "Версия",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Часть",
-          "explore": "Обзор",
-          "buttons": {
-            "addtomue": "Добавить в Mue",
-            "remove": "Удалить",
-            "update_addon": "Update Add-on",
-            "back": "Назад",
-            "report": "Жалоба",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Параметр",
-          "value": "Цена"
-        },
-        "offline": {
-          "title": "Похоже, что вы офлайн",
-          "description": "Пожалуйста, подключитесь к интернету"
-        }
-      },
-      "addons": {
-        "added": "Добавлен",
-        "check_updates": "Проверка обновлений",
-        "no_updates": "Обновления отсутствуют",
-        "updates_available": "Доступны обновления {amount}",
-        "empty": {
-          "title": "Здесь пусто",
-          "description": "Зайдите в магазин, чтобы найти что-то интересное"
-        },
-        "sideload": {
-          "title": "Загрузить",
-          "description": "Установить аддон Mue, не представленную на торговой площадке, со своего компьютера",
-          "failed": "Не удалось загрузить аддоны",
-          "errors": {
-            "no_name": "Название не указано",
-            "no_author": "Автор не указан",
-            "no_type": "Тип не указан",
-            "invalid_photos": "Недопустимый объект фотографии",
-            "invalid_quotes": "Invalid quotes object"
-          }
-        },
-        "sort": {
-          "title": "Сортировка",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
-          "a_z": "Alphabetical (A-Z)",
-          "z_a": "Alphabetical (Z-A)"
-        },
-        "create": {
-          "title": "Создать",
-          "moved_title": "Создание аддонов переместилось!",
-          "moved_description": "После обновления 7.1, создание дополнений теперь переместилось в веб-UI",
-          "moved_button": "Get Started"
-        }
-      }
-    },
-    "update": {
-      "title": "Обновление",
-      "offline": {
-        "title": "Офлайн",
-        "description": "Не удалось получить журнал обновления в офлайн режиме"
-      },
-      "error": {
-        "title": "Ошибка",
-        "description": "Could not connect to the server"
-      }
-    },
-    "welcome": {
-      "tip": "Quick Tip",
-      "sections": {
-        "intro": {
-          "title": "Добро пожаловать в Mue Tab",
-          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
-          "notices": {
-            "discord_title": "Присоединяйтесь к нашему дискорду",
-            "discord_description": "Поговорите с сообществом Mue и разработчиками",
-            "discord_join": "Присоединиться",
-            "github_title": "Внесите свой вклад в GitHub",
-            "github_description": "Сообщайте об ошибках, добавляйте функции или пожертвуйте",
-            "github_open": "Открыть"
-          }
-        },
-        "language": {
-          "title": "Выберите свой язык",
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our"
-        },
-        "theme": {
-          "title": "Выберите тему",
-          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
-          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
-        },
-        "style": {
-          "title": "Выберите стиль",
-          "description": "В настоящее время Mue предлагает выбор между устаревшим стилем и недавно выпущенным современным стилем.",
-          "legacy": "Устаревший",
-          "modern": "Современное"
-        },
-        "settings": {
-          "title": "Импортировать настройки",
-          "description": "Installing Mue on a new device? Feel free to import your old settings!",
-          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
-        },
-        "privacy": {
-          "title": "Privacy Options",
-          "description": "Enable settings to further protect your privacy with Mue.",
-          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
-          "links": {
-            "title": "Links",
-            "privacy_policy": "Privacy Policy",
-            "source_code": "Source Code"
-          }
-        },
-        "final": {
-          "title": "Последний шаг",
-          "description": "Your Mue Tab experience is about to begin.",
-          "changes": "Изменения",
-          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "imported": "Imported {amount} settings"
-        }
-      },
-      "buttons": {
-        "next": "Next",
-        "preview": "Preview",
-        "previous": "Previous",
-        "close": "Закрыть",
-        "finish": "Finish"
-      },
-      "preview": {
-        "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
-        "continue": "Продолжить установку"
-      }
+      "title": "Options"
     },
     "share": {
       "copy_link": "Копировать ссылку",
       "email": "Эл. адрес"
+    },
+    "update": {
+      "error": {
+        "description": "Невозможно подключиться к серверу",
+        "title": "Ошибка"
+      },
+      "offline": {
+        "description": "Не удалось получить журнал обновления в офлайн режиме",
+        "title": "Офлайн"
+      },
+      "title": "Обновление"
+    },
+    "welcome": {
+      "buttons": {
+        "close": "Закрыть",
+        "finish": "Завершить",
+        "next": "Next",
+        "preview": "Preview",
+        "previous": "Previous"
+      },
+      "preview": {
+        "continue": "Продолжить установку",
+        "description": "You are currently in preview mode. Settings will be reset on closing this tab."
+      },
+      "sections": {
+        "final": {
+          "changes": "Изменения",
+          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
+          "description": "Your Mue Tab experience is about to begin.",
+          "imported": "Imported {amount} settings",
+          "title": "Последний шаг"
+        },
+        "intro": {
+          "description": "Спасибо за установку Mue, мы надеемся, что вам понравится ваше время с нашим расширением.",
+          "notices": {
+            "discord_description": "Поговорите с сообществом Mue и разработчиками",
+            "discord_join": "Присоединиться",
+            "discord_title": "Присоединяйтесь к нашему дискорду",
+            "github_description": "Сообщайте об ошибках, добавляйте функции или пожертвуйте",
+            "github_open": "Открыть",
+            "github_title": "Внесите свой вклад в GitHub"
+          },
+          "title": "Добро пожаловать в Mue Tab"
+        },
+        "language": {
+          "description": "Mue может отображаться на языках, перечисленных ниже. Вы также можете добавить новые переводы на свой",
+          "title": "Выберите свой язык"
+        },
+        "privacy": {
+          "ddg_proxy_description": "You can make image requests go through DuckDuckGo if you wish. By default, API requests go through our open source servers and image requests go through the original server. Turning this off for quick links will get the icons from Google instead of DuckDuckGo. DuckDuckGo proxy is always enabled for the Marketplace.",
+          "description": "Enable settings to further protect your privacy with Mue.",
+          "links": {
+            "privacy_policy": "Privacy Policy",
+            "source_code": "Source Code",
+            "title": "Links"
+          },
+          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
+          "title": "Privacy Options"
+        },
+        "settings": {
+          "description": "Установили Мue на новом устройстве? Не стесняйтесь импортировать свои старые настройки!",
+          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation.",
+          "title": "Импортировать настройки"
+        },
+        "style": {
+          "description": "В настоящее время Mue предлагает выбор между устаревшим стилем и недавно выпущенным современным стилем.",
+          "legacy": "Устаревший",
+          "modern": "Современное",
+          "title": "Выберите стиль"
+        },
+        "theme": {
+          "description": "Mue доступен как в светлой, так и в темной теме, или это может быть автоматически установлено в зависимости от темы вашей системы.",
+          "tip": "С помощью настроек авто будет использоваться тема на вашем компьютере. Эта настройка повлияет на модалы и некоторые виджеты, отображаемые на экране, такие как погода и заметки.",
+          "title": "Выберите тему"
+        }
+      },
+      "tip": "Быстрый совет"
     }
   },
+  "tabname": "Новая вкладка",
   "toasts": {
-    "quote": "Цитата скопирована",
-    "notes": "Notes copied",
-    "reset": "Сброшено",
-    "installed": "Успешно установлено",
-    "uninstalled": "Успешно удалено",
-    "updated": "Successfully updated",
     "error": "Что-то пошло не так",
     "imported": "Успешно импортировано",
-    "no_storage": "Недостаточно места",
+    "installed": "Успешно установлено",
     "link_copied": "Ссылка скопирована",
-    "stats_reset": "Stats reset"
+    "no_storage": "Недостаточно места",
+    "notes": "Notes copied",
+    "quote": "Цитата скопирована",
+    "reset": "Сброшено",
+    "uninstalled": "Успешно удалено",
+    "updated": "Successfully updated"
+  },
+  "widgets": {
+    "background": {
+      "camera": "Камера",
+      "category": "Категория",
+      "confirm": "Подтверждаю",
+      "credit": "Фото",
+      "download": "Download",
+      "downloads": "Загрузки",
+      "exclude": "Больше не показывать",
+      "exclude_confirm": "Вы уверены, что больше не хотите видеть это изображение?\nПримечание: если вам не нравятся изображения \"{category}\", вы можете отменить выбор категории в настройках источника фона.",
+      "information": "Information",
+      "likes": "Нравится",
+      "location": "Локация",
+      "resolution": "Разрешение",
+      "source": "Источник",
+      "unsplash": "на Unsplash",
+      "views": "Просмотры"
+    },
+    "date": {
+      "week": "Неделя"
+    },
+    "greeting": {
+      "afternoon": "Добрый день",
+      "birthday": "С Днём рождения",
+      "christmas": "С Рождеством",
+      "evening": "Добрый вечер",
+      "halloween": "Счастливого Хэллоуина",
+      "morning": "Доброе утро",
+      "newyear": "С Новым Годом"
+    },
+    "navbar": {
+      "apps": {
+        "no_apps": "Не найдено ссылок приложений",
+        "title": "Приложения"
+      },
+      "notes": {
+        "placeholder": "Напишите здесь",
+        "title": "Notes"
+      },
+      "todo": {
+        "add": "Добавить",
+        "no_todos": "Нет задач",
+        "pin": "Прикрепить",
+        "title": "Задачи"
+      },
+      "tooltips": {
+        "refresh": "Перезагрузить"
+      }
+    },
+    "quicklinks": {
+      "add": "Add",
+      "edit": "Изменить ссылку",
+      "icon": "Значок (необязательно)",
+      "name": "Name",
+      "name_error": "Должно содержать имя",
+      "new": "Новая ссылка",
+      "url": "URL",
+      "url_error": "Должно содержать URL"
+    },
+    "quote": {
+      "copy": "Копировать",
+      "favourite": "Избранное",
+      "link_tooltip": "Открыть в Википедии",
+      "share": "Поделиться",
+      "unfavourite": "Не нравится"
+    },
+    "search": "Поиск",
+    "weather": {
+      "extra_information": "Дополнительная информация",
+      "feels_like": "По ощущениям {amount}",
+      "meters": "{amount} метры",
+      "not_found": "Не найдено"
+    }
   }
 }
