@@ -3,7 +3,7 @@
     "main": {
       "addons": {
         "added": "Eklentiler",
-        "check_updates": "Güncellemeleri kontrol et.",
+        "check_updates": "Güncellemeleri kontrol et",
         "create": {
           "moved_button": "Başlayın",
           "moved_description": "7.1 güncellemesinden sonra, eklentilerin oluşturulması web kullanıcı arayüzüne taşındı",
@@ -11,20 +11,20 @@
           "title": "Oluştur"
         },
         "empty": {
-          "description": "Hiçbir eklenti yüklü değil.",
+          "description": "Hiçbir eklenti yüklü değil",
           "title": "Boş"
         },
-        "no_updates": "Güncelleme mevcut değil.",
+        "no_updates": "Güncelleme mevcut değil",
         "sideload": {
           "description": "Bilgisayarınızdan markette olmayan bir Mue eklentisi yükleyin.",
           "errors": {
             "invalid_photos": "Geçersiz fotoğraf nesnesi",
             "invalid_quotes": "Geçersiz alıntı nesnesi",
-            "no_author": "Yazar belirtilmedi.",
-            "no_name": "İsim belirtilmedi.",
-            "no_type": "Tür sağlanmadı."
+            "no_author": "Yazar belirtilmedi",
+            "no_name": "İsim belirtilmedi",
+            "no_type": "Tür sağlanmadı"
           },
-          "failed": "Eklenti yüklenemedi.",
+          "failed": "Eklenti yüklenemedi",
           "title": "Diğer Eklentiler"
         },
         "sort": {
@@ -34,12 +34,12 @@
           "title": "Sırala",
           "z_a": "Alfabetik (Z-A)"
         },
-        "updates_available": "Güncellemeler mevcut {amount} !"
+        "updates_available": "Güncellemeler mevcut {amount}"
       },
       "error_boundary": {
-        "message": "Mue bileşeni yüklenemedi.",
+        "message": "Mue bileşeni yüklenemedi",
         "refresh": "Yenile",
-        "report_error": "Hata Raporunu Gönder!",
+        "report_error": "Hata Raporunu Gönder",
         "sent": "Gönder!",
         "title": "Hata"
       },
@@ -55,7 +55,7 @@
         "explore_collection": "Koleksiyonu Keşfedin",
         "knowledgebase_one": "Kendiniz oluşturmak için",
         "knowledgebase_three": "ziyaret edin.",
-        "knowledgebase_two": "bilgilendirme sayfamızı ",
+        "knowledgebase_two": "bilgilendirme sayfamızı",
         "learn_more": "Daha Fazla Bilgi Edin",
         "no_items": "Bu kategoride öğe yok",
         "offline": {
@@ -107,7 +107,7 @@
         "open_knowledgebase": "Bilgilendirme Sayfasını Aç",
         "reminder": {
           "message": "Tüm değişikliklerin gerçekleşmesi için sayfanın yenilenmesi gerekir.",
-          "title": "UYARI"
+          "title": "BİLDİRİM"
         },
         "sections": {
           "about": {
@@ -115,7 +115,7 @@
             "contributors": "Katkıda Bulunanlar",
             "copyright": "Telif Hakkı",
             "form_button": "Form",
-            "no_supporters": "Şu anda Mue destekçisi yok!",
+            "no_supporters": "Şu anda Mue destekçisi yok",
             "photographers": "Fotoğrafçılar",
             "resources_used": {
               "bg_images": "Çevrimdışı Arka Plan Resim İçerikleri",
@@ -135,7 +135,7 @@
               "no_update": "En Güncel Sürümdesiniz",
               "offline_mode": "Çevrimdışı modda güncelleme kontrol edilemiyor",
               "title": "Versiyon",
-              "update_available": "Güncelleme Mevcut!"
+              "update_available": "Güncelleme Mevcut"
             }
           },
           "advanced": {
@@ -372,9 +372,9 @@
           },
           "quicklinks": {
             "add_link": "Link Ekle",
-            "additional": "Hızlı bağlantılar ekranı ve işlevleri için ek ayarlarınızı belirleyin.",
+            "additional": "Hızlı bağlantıların açılış ekranı ve işlevleri için ek ayarlarınızı belirleyin.",
             "edit": "Düzenleme",
-            "no_quicklinks": "Hızlı bağlantı yok.",
+            "no_quicklinks": "Hızlı bağlantı yok",
             "open_new": "Yeni Sekmede Aç",
             "options": {
               "icon": "İkon",
@@ -397,7 +397,7 @@
             "buttons": {
               "copy": "Kopyala",
               "favourite": "Favorilere Ekle",
-              "subtitle": "Alıntı kısmı için hangi butonların gösterileceğini seçin.",
+              "subtitle": "Alıntı kısmında hangi butonların gösterileceğini seçin.",
               "title": "Butonlar",
               "tweet": "Tweet'le"
             },
@@ -405,7 +405,7 @@
             "custom_author": "Özel yazar",
             "custom_buttons": "Butonlar",
             "custom_subtitle": "Kendi özel alıntınızı belirleyin, ekleyin.",
-            "no_quotes": "Alıntı yok!",
+            "no_quotes": "Alıntı yok",
             "source_subtitle": "Alıntıyı nereden alacağınızı seçin.",
             "title": "Alıntı"
           },
@@ -418,7 +418,7 @@
             "dropdown": "Arama Motorları Açılır Menüsü",
             "focus": "Açık Sekmeye Odaklan",
             "search_engine": "Arama Motoru",
-            "search_engine_subtitle": "Arama çubuğunda kullanmak için arama motorunu seçin.",
+            "search_engine_subtitle": "Arama çubuğunda kullanılacak arama motorunu seçin.",
             "title": "Arama",
             "voice_search": "Sesli Arama"
           },
@@ -449,12 +449,12 @@
               "title": "Analog"
             },
             "digital": {
-              "seconds": "Saniye gösterilsin.",
+              "seconds": "Saniye göster",
               "subtitle": "Dijital saatin görünümünü değiştirin",
               "title": "Dijital",
               "twelvehour": "12 Saat",
               "twentyfourhour": "24 Saat",
-              "zero": "Sıfır eklensin."
+              "zero": "Sıfır ekle"
             },
             "format": "Format",
             "percentage_complete": "Yüzdelik Gösterim",
@@ -528,7 +528,7 @@
         "previous": "Öncesi"
       },
       "preview": {
-        "continue": "Kuruluma devam et.",
+        "continue": "Kuruluma devam et",
         "description": "Şu anda önizleme modundasınız. Bu sekme kapatıldığında ayarlar sıfırlanacak."
       },
       "sections": {
@@ -549,7 +549,7 @@
             "github_open": "Aç",
             "github_title": "GitHub Üzerinden Katkıda Bulunun"
           },
-          "title": "Mue Tab'a Hoş Geldiniz!"
+          "title": "Mue Tab'a Hoş Geldiniz"
         },
         "language": {
           "description": "Mue, aşağıda listelenen dillerde görüntülenebilir. Ayrıca sayfamıza yeni çeviriler de ekleyebilirsiniz.",
@@ -588,16 +588,16 @@
   },
   "tabname": "Yeni Sekme",
   "toasts": {
-    "error": "Bir şeyler yanlış gitti.",
-    "imported": "Başarıyla içe aktarıldı.",
-    "installed": "Başarıyla yüklendi.",
-    "link_copied": "Bağlantı kopyalandı.",
-    "no_storage": "Yeteri kadar yer yok.",
-    "notes": "Not kopyalandı.",
-    "quote": "Alıntı kopyalandı.",
-    "reset": "Başarıyla resetlendi.",
-    "uninstalled": "Başarıyla kaldırıldı.",
-    "updated": "Başarıyla güncellendi."
+    "error": "Bir şeyler yanlış gitti",
+    "imported": "Başarıyla içe aktarıldı",
+    "installed": "Başarıyla yüklendi",
+    "link_copied": "Bağlantı kopyalandı",
+    "no_storage": "Yeteri kadar yer yok",
+    "notes": "Not kopyalandı",
+    "quote": "Alıntı kopyalandı",
+    "reset": "Başarıyla resetlendi",
+    "uninstalled": "Başarıyla kaldırıldı",
+    "updated": "Başarıyla güncellendi"
   },
   "widgets": {
     "background": {
