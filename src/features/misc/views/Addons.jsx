@@ -7,7 +7,7 @@ import Create from '../../marketplace/views/Create';
 
 function Addons(props) {
   return (
-    <Tabs changeTab={(type) => props.changeTab(type)} current="addons">
+    <Tabs changeTab={(type) => props.changeTab(type)} current="addons" modalClose={props.modalClose}>
       <div label={variables.getMessage('modals.main.addons.added')} name="added">
         <Added />
       </div>

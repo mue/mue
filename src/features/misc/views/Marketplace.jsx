@@ -6,7 +6,7 @@ import MarketplaceTab from '../../marketplace/views/Browse';
 
 function Marketplace(props) {
   return (
-    <Tabs changeTab={(type) => props.changeTab(type)} current="marketplace">
+    <Tabs changeTab={(type) => props.changeTab(type)} current="marketplace" modalClose={props.modalClose}>
       <div label={variables.getMessage('modals.main.marketplace.all')} name="all">
         <MarketplaceTab type="all" />
       </div>

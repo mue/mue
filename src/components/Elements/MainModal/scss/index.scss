@@ -50,10 +50,12 @@
 .closeModal {
   display: grid;
   place-items: center;
-  padding: 0.5em;
+  height: 40px;
+  width: 40px;
   border-radius: 12px;
   cursor: pointer;
   transition: 0.5s;
+  align-self: flex-end;
 
   svg {
     font-size: 2em;
@@ -87,7 +89,7 @@
   width: clamp(60vw, 1400px, 90vw);
 
   @include themed {
-    background-color: t($modal-background);
+    background-color: t($modal-sidebar);
   }
 }
 

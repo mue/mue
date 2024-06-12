@@ -93,11 +93,11 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   return (
     <>
-      {mue && <span className="mainTitle">Mue</span>}
+      {/*{mue && <span className="mainTitle">Mue</span>}*/}
       <button className={className} onClick={() => onClick(label)}>
         {icon} <span>{label}</span>
       </button>
-      {divider && <hr />}
+      {/*{divider && <hr />}*/}
     </>
   );
 }

@@ -36,25 +36,16 @@ function MainModal({ modalClose }) {
   const renderTab = () => {
     switch (currentTab) {
       case 'addons':
-        return <Addons changeTab={changeTab} />;
+        return <Addons modalClose={modalClose} changeTab={changeTab} />;
       case 'marketplace':
-        return <Marketplace changeTab={changeTab} />;
+        return <Marketplace modalClose={modalClose} changeTab={changeTab} />;
       default:
-        return <Settings changeTab={changeTab} />;
+        return <Settings modalClose={modalClose} changeTab={changeTab} />;
     }
   };
 
   return (
     <div className="frame">
-      <Tooltip
-        style={{ position: 'absolute', top: '1rem', right: '1rem' }}
-        title={variables.getMessage('modals.welcome.buttons.close')}
-        key="closeTooltip"
-      >
-        <span className="closeModal" onClick={modalClose}>
-          <MdClose />
-        </span>
-      </Tooltip>
       <Suspense fallback={renderLoader()}>{renderTab()}</Suspense>
     </div>
   );
