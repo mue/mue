@@ -16,7 +16,7 @@
         },
         "no_updates": "Güncelleme mevcut değil.",
         "sideload": {
-          "description": "Bilgisayarınızdan pazar yerinde olmayan bir Mue eklentisi yükleyin.",
+          "description": "Bilgisayarınızdan markette olmayan bir Mue eklentisi yükleyin.",
           "errors": {
             "invalid_photos": "Geçersiz fotoğraf nesnesi",
             "invalid_quotes": "Geçersiz alıntı nesnesi",
@@ -46,21 +46,21 @@
       "file_upload_error": "Dosya 2 MB'ın üzerinde",
       "loading": "Yükleniyor...",
       "marketplace": {
-        "add_all": "Hepsini Ekle",
+        "add_all": "Tümünü Mue'ya Ekle",
         "all": "Tümü",
-        "by": "by {author}",
+        "by": "{author}",
         "cant_find": "Aradığınızı bulamıyor musunuz?",
         "collection": "Koleksiyon",
         "collections": "Koleksiyonlar",
         "explore_collection": "Koleksiyonu Keşfedin",
-        "knowledgebase_one": "Kendiniz oluşturmak için ",
+        "knowledgebase_one": "Kendiniz oluşturmak için",
         "knowledgebase_three": "ziyaret edin.",
         "knowledgebase_two": "bilgilendirme sayfamızı ",
         "learn_more": "Daha Fazla Bilgi Edin",
         "no_items": "Bu kategoride öğe yok",
         "offline": {
-          "description": "Lütfen internete bağlanın ve tekrar deneyin.",
-          "title": "Görünüşe bakılırsa çevrimdışısınız!"
+          "description": "Lütfen internete bağlanın",
+          "title": "Görünüşe göre çevrimdışısın"
         },
         "photo_packs": "Fotoğraf Paketleri",
         "preset_settings": "Ön Ayar Paketleri",
@@ -73,7 +73,7 @@
             "report": "Bildir/Raporla",
             "update_addon": "Eklentiyi Güncelle"
           },
-          "description": "Açıklama/Tanım",
+          "description": "Açıklama",
           "explore": "Keşfet",
           "information": "Bilgi",
           "last_updated": "Son Güncelleme",
@@ -81,7 +81,7 @@
           "no_quotes": "Alıntı bulunamadı",
           "overview": "Genel Bakış",
           "part_of": "Parçası",
-          "setting": "Ayarlar",
+          "setting": "Ayar",
           "show_all": "Hepsini Göster ↓",
           "show_less": "Daha Az Göster",
           "show_more": "Daha Fazla Göster",
@@ -101,7 +101,7 @@
         "buttons": {
           "export": "Dışarı Aktar",
           "import": "İçeri Aktar",
-          "reset": "Yenile"
+          "reset": "Sıfırla"
         },
         "enabled": "Etkinleştir",
         "open_knowledgebase": "Bilgilendirme Sayfasını Aç",
@@ -111,7 +111,7 @@
         },
         "sections": {
           "about": {
-            "contact_us": "Bize Ulaşın!",
+            "contact_us": "Bize Ulaşın",
             "contributors": "Katkıda Bulunanlar",
             "copyright": "Telif Hakkı",
             "form_button": "Form",
@@ -129,11 +129,11 @@
             "version": {
               "checking_update": "Güncellemeleri Kontrol Et",
               "error": {
-                "description": "Bir hata oluştu.",
-                "title": "Güncelleme bilgisi alınamadı."
+                "description": "Bir hata oluştu",
+                "title": "Güncelleme bilgisi alınamadı"
               },
               "no_update": "En Güncel Sürümdesiniz",
-              "offline_mode": "Çevrimdışı modda güncelleme kontrol edilemiyor.",
+              "offline_mode": "Çevrimdışı modda güncelleme kontrol edilemiyor",
               "title": "Versiyon",
               "update_available": "Güncelleme Mevcut!"
             }
@@ -158,8 +158,8 @@
             "tab_name_subtitle": "Tarayıcınızda görünen sekmenin adını değiştirin.",
             "timezone": {
               "automatic": "Otomatik",
-              "subtitle": "Bilgisayarınızın otomatik varsayılanından ziyade listeden bir zaman dilimi seçin.",
-              "title": "Zaman Dilimi"
+              "subtitle": "Bilgisayarınızdaki otomatik varsayılan saat dilimi yerine listeden bir saat dilimi seçin.",
+              "title": "Saat Dilimi"
             },
             "title": "Gelişmiş"
           },
@@ -372,7 +372,7 @@
           },
           "quicklinks": {
             "add_link": "Link Ekle",
-            "additional": "Hızlı bağlantılar ekranı ve işlevleri için ek ayarlarınızı belirleyin",
+            "additional": "Hızlı bağlantılar ekranı ve işlevleri için ek ayarlarınızı belirleyin.",
             "edit": "Düzenleme",
             "no_quicklinks": "Hızlı bağlantı yok.",
             "open_new": "Yeni Sekmede Aç",
@@ -425,13 +425,13 @@
           "stats": {
             "achievements": "Başarılar",
             "sections": {
-              "addons_installed": "Eklentiler yüklendi.",
-              "backgrounds_downloaded": "Arka plan indirildi.",
-              "backgrounds_favourited": "Arka plan favorilere eklendi.",
-              "quicklinks_added": "Hızlı bağlantılar eklendi.",
-              "quotes_favourited": "Alıntı favorilere eklendi.",
-              "settings_changed": "Ayarlar değişti.",
-              "tabs_opened": "Sekme açıldı."
+              "addons_installed": "Eklentiler yüklendi",
+              "backgrounds_downloaded": "Arka plan indirildi",
+              "backgrounds_favourited": "Arka plan favorilere eklendi",
+              "quicklinks_added": "Hızlı bağlantılar eklendi",
+              "quotes_favourited": "Alıntı favorilere eklendi",
+              "settings_changed": "Ayarlar değişti",
+              "tabs_opened": "Sekme açıldı"
             },
             "title": "İstatistikler",
             "unlocked": "{count} Kilidi Açıldı",
@@ -478,7 +478,7 @@
               "min_temp": "Minimum Sıcaklık",
               "show_description": "Açıklama Göster",
               "show_location": "Lokasyonu Göster",
-              "title": "Ek Bilgi",
+              "title": "Ekstra Bilgilendirme",
               "visibility": "Görüş Mesafesi",
               "weather_description": "Hava durumu açıklaması",
               "wind_direction": "Rüzgar Yönü",
@@ -544,7 +544,7 @@
           "notices": {
             "discord_description": "Mue topluluğu ve geliştiricileri ile konuşun.",
             "discord_join": "Katıl",
-            "discord_title": "Dicord Kanalımıza Katılın",
+            "discord_title": "Discord Kanalımıza Katılın",
             "github_description": "Hataları bildirin, özellikler ekleyin veya bağış yapın.",
             "github_open": "Aç",
             "github_title": "GitHub Üzerinden Katkıda Bulunun"
@@ -640,7 +640,7 @@
       },
       "todo": {
         "add": "Ekle",
-        "no_todos": "Yapılacak herhangi bir şey yok",
+        "no_todos": "Yapılacaklar listesi şu an boş",
         "pin": "Tuttur",
         "title": "Yapılacaklar"
       },
@@ -668,7 +668,7 @@
     "search": "Arama",
     "weather": {
       "extra_information": "Ek Bilgilendirme",
-      "feels_like": "{amount} gibi hissettiriyor.",
+      "feels_like": "Hissedilen {amount}",
       "meters": "{amount} metre",
       "not_found": "Bulunamadı"
     }
