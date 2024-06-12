@@ -69,8 +69,8 @@
         "no_todos": "Sin tareas"
       },
       "apps": {
-        "title": "Apps",
-        "no_apps": "No app links found"
+        "title": "Aplicaciones",
+        "no_apps": "No hay enlaces de aplicaciones encontrados"
       }
     }
   },
@@ -138,7 +138,7 @@
             }
           },
           "date": {
-            "title": "Fecha",
+            "title": "Apariencia",
             "week_number": "Número de la semana",
             "day_of_week": "Día de la semana",
             "datenth": "Fecha nth",
@@ -147,56 +147,17 @@
               "long": "Largo",
               "subtitle": "Visualización de la fecha en formato largo o corto"
             },
-            "font": {
-              "custom": "Fuente personalizada",
-              "description": "Cambiar la tipografía utilizada en Mue",
-              "google": "Importar desde Google Fonts",
-              "style": {
-                "italic": "Cursiva",
-                "normal": "Normal",
-                "oblique": "Oblicua",
-                "title": "Estilo de la fuente"
-              },
-              "title": "Fuente",
-              "weight": {
-                "bold": "Negrita",
-                "extra_bold": "Extra negrita",
-                "extra_light": "Extra fino",
-                "light": "Fino",
-                "medium": "Mediano",
-                "normal": "Normal",
-                "semi_bold": "Semi negrita",
-                "thin": "Delgado",
-                "title": "Tipo de la fuente"
-              }
-            },
-            "navbar": {
-              "additional": "Modifique el estilo de la barra de navegación y los botones que desea mostrar",
-              "apps_subtitle": "Cree un atajo de sus otros sitios web utilizados comúnmente.",
-              "hover": "Solo mostrar al pasar el cursor",
-              "notes": "Notas",
-              "refresh": "Botón de recargar",
-              "refresh_options": {
-                "none": "Ninguno",
-                "page": "Página"
-              },
-              "refresh_subtitle": "Elija qué se actualiza al pulsar el botón de actualización",
-              "title": "Barra de búsqueda"
-            },
-            "style": {
-              "description": "Elige entre dos estilos, el antiguo (habilitado para usuarios anteriores a la versión 7.0) y nuestro elegante estilo moderno.",
-              "legacy": "Legado",
-              "new": "Nuevo",
-              "title": "Estilo del widget"
-            },
-            "theme": {
-              "auto": "Auto",
-              "dark": "Oscuro",
-              "description": "Cambiar el tema de los widgets y formas de Mue",
-              "light": "Claro",
-              "title": "Tema"
-            },
-            "title": "Apariencia"
+            "type_settings": "Display settings and format for the selected date type",
+            "short_date": "Short date",
+            "short_format": "Short format",
+            "long_format": "Long format",
+            "short_separator": {
+              "title": "Short separator",
+              "dots": "Dots",
+              "dash": "Dash",
+              "gaps": "Gaps",
+              "slashes": "Slashes"
+            }
           },
           "quote": {
             "title": "Cita",
@@ -736,85 +697,6 @@
     "imported": "Importado correctamente",
     "no_storage": "No hay espacio suficiente",
     "link_copied": "Enlace copiado",
-    "no_storage": "No hay espacio suficiente",
-    "notes": "Notas copiadas",
-    "quote": "Cita copiada",
-    "reset": "Restablecido correctamente",
-    "uninstalled": "Desinstalado correctamente",
-    "updated": "Actualizado correctamente"
-  },
-  "widgets": {
-    "background": {
-      "camera": "Cámara",
-      "category": "Categoría",
-      "confirm": "Confirmar",
-      "credit": "Foto por",
-      "download": "Descargar",
-      "downloads": "Descargas",
-      "exclude": "No mostrar de nuevo",
-      "exclude_confirm": "¿Estás seguro de que no quieres volver a ver esta imagen?\nNota: si no te gustan las imágenes de \"{category}\", puedes anular la selección de la categoría en la configuración de la fuente de fondo.",
-      "information": "Información",
-      "likes": "Me gustas",
-      "location": "Ubicación",
-      "resolution": "Resolución",
-      "source": "Fuente",
-      "unsplash": "en Unsplash",
-      "views": "Vistas"
-    },
-    "date": {
-      "week": "Semana"
-    },
-    "greeting": {
-      "afternoon": "Buenas tardes",
-      "birthday": "Feliz cumpleaños",
-      "christmas": "Feliz Navidad",
-      "evening": "Buenas noches",
-      "halloween": "Feliz Halloween",
-      "morning": "Buenos días",
-      "newyear": "Feliz año nuevo"
-    },
-    "navbar": {
-      "apps": {
-        "no_apps": "No hay enlaces de aplicaciones encontrados",
-        "title": "Aplicaciones"
-      },
-      "notes": {
-        "placeholder": "Escribe aquí",
-        "title": "Notas"
-      },
-      "todo": {
-        "add": "Añadir",
-        "no_todos": "Sin tareas",
-        "pin": "Pin",
-        "title": "Tareas"
-      },
-      "tooltips": {
-        "refresh": "Recargar"
-      }
-    },
-    "quicklinks": {
-      "add": "Añadir",
-      "edit": "Modificar el enlace",
-      "icon": "Icono (opcional)",
-      "name": "Nombre",
-      "name_error": "Debe indicar el nombre",
-      "new": "Nuevo enlace",
-      "url": "URL",
-      "url_error": "Debe indicar la URL"
-    },
-    "quote": {
-      "copy": "Copiar",
-      "favourite": "Favorito",
-      "link_tooltip": "Abrir en la Wikipedia",
-      "share": "Compartir",
-      "unfavourite": "No favorito"
-    },
-    "search": "Buscar",
-    "weather": {
-      "extra_information": "Información adicional",
-      "feels_like": "Parece que {amount}",
-      "meters": "{amount} metros",
-      "not_found": "No encontrado"
-    }
+    "stats_reset": "Stats reset"
   }
 }
