@@ -72,7 +72,7 @@ const Tabs = (props) => {
       viewBox="0 0 123 123"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-10 h-10"
+      className="w-[40px] h-[40px]"
     >
       <g filter="url(#filter0_d_2473_27)">
         <circle cx="61.5" cy="61.5" r="50.5" fill="url(#paint0_linear_2473_27)" />
@@ -184,41 +184,49 @@ const Tabs = (props) => {
 
   return (
     <div className="flex flex-col w-[100%] min-w-[100%]">
-      <div className="flex flex-row gap-5 p-5">
+      <div className="flex flex-row gap-5 p-5 items-center">
         {navbarLogo}
-        {navbarButtons.map(({ tab, icon }, index) => (
-          <Button
-            type="navigation"
-            onClick={() => props.changeTab(tab)}
-            icon={icon}
-            label={variables.getMessage(`modals.main.navbar.${tab}`)}
-            active={props.current === tab}
-            key={`${tab}-${index}`}
-          />
-        ))}
-        <Tooltip
-          style={{ marginLeft: 'auto', justifSelf: 'flex-end' }}
-          title={variables.getMessage('modals.welcome.buttons.close')}
-          key="closeTooltip"
+        {/*<span className="text-2xl font-bold">{currentTab}</span>*/}
+        <div
+          className="flex flex-row gap-5"
+          style={{ marginLeft: 'auto', justifySelf: 'flex-end' }}
         >
-          <span className="closeModal" onClick={props.modalClose}>
-            <MdClose />
-          </span>
-        </Tooltip>
-      </div>
-      <div className="flex w-[100%] min-w-[100%]">
-        <div className="modalSidebar">
-          {props.children.map((tab, index) => (
-            <Tab
-              currentTab={currentTab}
-              key={index}
-              label={tab.props.label}
-              onClick={(nextTab) => onClick(nextTab, tab.props.name)}
-              navbarTab={props.navbar || false}
+          {navbarButtons.map(({ tab, icon }, index) => (
+            <Button
+              type="navigation"
+              onClick={() => props.changeTab(tab)}
+              icon={icon}
+              label={variables.getMessage(`modals.main.navbar.${tab}`)}
+              active={props.current === tab}
+              key={`${tab}-${index}`}
             />
           ))}
-          {reminderInfo}
+          <Tooltip
+            style={{ marginLeft: 'auto', justifySelf: 'flex-end' }}
+            title={variables.getMessage('modals.welcome.buttons.close')}
+            key="closeTooltip"
+          >
+            <span className="closeModal" onClick={props.modalClose}>
+              <MdClose />
+            </span>
+          </Tooltip>
         </div>
+      </div>
+      <div className="flex w-[100%] min-w-[100%]">
+        {props.current === 'settings' && (
+          <div className="modalSidebar">
+            {props.children.map((tab, index) => (
+              <Tab
+                currentTab={currentTab}
+                key={index}
+                label={tab.props.label}
+                onClick={(nextTab) => onClick(nextTab, tab.props.name)}
+                navbarTab={props.navbar || false}
+              />
+            ))}
+            {reminderInfo}
+          </div>
+        )}
         <div className="modalTabContent">
           {props.children.map((tab, index) => {
             if (tab.props.label !== currentTab) {
