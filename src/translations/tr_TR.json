@@ -37,7 +37,7 @@
         "updates_available": "Güncellemeler mevcut {amount} !"
       },
       "error_boundary": {
-        "message": "Mue'nin bu bileşeni yüklenemedi.",
+        "message": "Mue bileşeni yüklenemedi.",
         "refresh": "Yenile",
         "report_error": "Hata Raporunu Gönder!",
         "sent": "Gönder!",
@@ -104,7 +104,7 @@
           "reset": "Yenile"
         },
         "enabled": "Etkinleştir",
-        "open_knowledgebase": "Bilgilendirme Sayfasını Aç.",
+        "open_knowledgebase": "Bilgilendirme Sayfasını Aç",
         "reminder": {
           "message": "Tüm değişikliklerin gerçekleşmesi için sayfanın yenilenmesi gerekir.",
           "title": "UYARI"
@@ -231,7 +231,7 @@
           },
           "background": {
             "api": "API Ayarları",
-            "api_subtitle": "Harici bir hizmetten (API) aracılığıyla görüntü alma seçeneklerini belirleyin.",
+            "api_subtitle": "Harici bir hizmet (API) aracılığıyla görüntü alma seçeneklerini belirleyin.",
             "buttons": {
               "download": "İndir",
               "favourite": "Favorilere Ekle",
@@ -241,7 +241,7 @@
             "categories": "Kategoriler",
             "ddg_image_proxy": "DuckDuckGo görüntü proxy'sini kullan.",
             "display": "Görüntüleme",
-            "display_subtitle": "Arka plan ve fotoğraf bilgilerinin nasıl yüklendiğini değiştirin.",
+            "display_subtitle": "Arka plan ve fotoğraf bilgilerinin nasıl yükleneceğini değiştirin",
             "effects": {
               "blur": "Bulanıklığı ayarla",
               "brightness": "Parlaklığı ayarla",
@@ -254,7 +254,7 @@
                 "sepia": "Sepya",
                 "title": "Arka plan filtresi"
               },
-              "subtitle": "Arka plan görseli için efektleri düzenleyin.",
+              "subtitle": "Arka plan görseli için efektler ekleyin.",
               "title": "Görsel Efektler"
             },
             "interval": {
@@ -263,7 +263,7 @@
               "hour": "Saatte Bir",
               "minute": "Dakikada Bir",
               "month": "Ayda Bir",
-              "subtitle": "Arka planın ne sıklıkla güncelleneceğini değiştirin.",
+              "subtitle": "Arka planın ne sıklıkla güncelleneceğini değiştirin",
               "title": "Değiştirme Sıklığı"
             },
             "photo_information": "Fotoğraf bilgilerini göster.",
@@ -273,15 +273,15 @@
               "add_colour": "Renk Ekle",
               "add_url": "URL/Uzantı Ekle",
               "api": "Arka plan API",
-              "custom_background": "Özel arka plan resmi",
+              "custom_background": "Özel arka plan görseli",
               "custom_colour": "Özel Arka Plan Rengi",
-              "custom_description": "Bilgisayarınızdan görseli seçin.",
+              "custom_description": "Bilgisayarınızdan görseli seçin",
               "custom_title": "Özel Arka Plan",
               "disabled": "Kullanılamaz",
-              "drop_to_upload": "Yüklemek için bırakın!",
-              "formats": "Kullanılabilir biçimler: {list}",
+              "drop_to_upload": "Yüklemek için bırakın",
+              "formats": "Kullanılabilir formatlar: {list}",
               "loop_video": "Tekrarlayan video",
-              "mute_video": "Videonun sesini kapat.",
+              "mute_video": "Videonun sesini kapat",
               "quality": {
                 "datasaver": "Veri Tasarrufu",
                 "high": "Yüksek Kalite",
@@ -289,9 +289,9 @@
                 "original": "Orjinal",
                 "title": "Kalite"
               },
-              "remove": "Resmi Kaldır",
+              "remove": "Görseli Kaldır",
               "select": "Veya Seç",
-              "subtitle": "Arka plan resimlerinin nereden alınacağını seçin.",
+              "subtitle": "Arka plan görüntülerinin nereden alınacağını seçin.",
               "title": "Kaynak",
               "upload": "Yükle"
             },
@@ -300,7 +300,7 @@
             "type": {
               "api": "API",
               "custom_colour": "Özel renk/gradyan",
-              "custom_image": "Özel resim",
+              "custom_image": "Özel görsel",
               "random_colour": "Özel renk",
               "random_gradient": "Özel gradyan",
               "title": "Tip"
@@ -327,9 +327,9 @@
             "type": {
               "long": "Uzun",
               "short": "Kısa",
-              "subtitle": "Tarihin uzun veya kısa olmak üzere hangi biçimde görüntüleneceğini seçin."
+              "subtitle": "Tarihin uzun veya kısa olmak üzere hangi biçimde görüntüleneceğini seçin"
             },
-            "type_settings": "Seçilen tarih türü için ekran ayarları ve biçimi belirten özellikleri belirleyin.",
+            "type_settings": "Seçilen tarih türüne ilişkin görüntelenme ayarlarını ve formatları belirleyin",
             "week_number": "Hafta Sayısı"
           },
           "experimental": {
@@ -345,14 +345,14 @@
             "birthday_subtitle": "Doğum günüm olduğunda bir 'Mutlu Yıllar' mesajı göster.",
             "default": "Karşılama mesajları görünsün.",
             "events": "Olaylar",
-            "name": "İsminiz",
+            "name": "Karşılama için isim",
             "title": "Karşılama Ekranı"
           },
           "header": {
-            "enabled": "Bu widget'ınızın gösterilip gösterilmeyeceğini seçin.",
+            "enabled": "Bu widget'ın gösterilip gösterilmeyeceğini seçin.",
             "more_info": "Daha fazla bilgi",
             "report_issue": "Hata Bildir",
-            "size": "Widget'ınızın büyüklüğünü kontrol etmek için kaydırın."
+            "size": "Widget'ın büyüklüğünü kontrol etmek için kaydırın."
           },
           "language": {
             "quote": "Alıntı dili",
@@ -390,7 +390,7 @@
           },
           "quote": {
             "add": "Alıntı Ekle",
-            "additional": "Alıntı widget'ının stilini özelleştirmek için diğer ayarlar.",
+            "additional": "Alıntı widget'ının stilini özelleştirmek için diğer ayarlar",
             "author": "Yazar",
             "author_img": "Yazar resmini göster.",
             "author_link": "Yazara dair bilgilendirme bağlantısı göster.",
@@ -410,7 +410,7 @@
             "title": "Alıntı"
           },
           "search": {
-            "additional": "Arama widget'ı ekranı ve işlevselliği için ek seçenekleri belirleyin.",
+            "additional": "Arama widget'ı için ekran ve işlevsellik seçeneklerini belirleyin.",
             "autocomplete": "Otomatik Tamamlama",
             "autocomplete_provider": "Otomatik Tamamlama Sağlayıcısı",
             "autocomplete_provider_subtitle": "Otomatik tamamlama açılır sonuçları için kullanılacak arama motorunu belirleyin.",
@@ -443,27 +443,27 @@
               "hour_marks": "Saat çizgileri",
               "minute_hand": "Yelkovan (dakika) ibresi",
               "minute_marks": "Dakika çizgileri",
-              "round_clock": "Yuvarlanmış arka plan",
+              "round_clock": "Yuvarlatılmış arka plan",
               "second_hand": "Saniye ibresi",
-              "subtitle": "Analog saatin nasıl görüntüleneceğini belirleyin.",
+              "subtitle": "Analog saatin nasıl görüntüleneceğini belirleyin",
               "title": "Analog"
             },
             "digital": {
               "seconds": "Saniye gösterilsin.",
-              "subtitle": "Dijital saatin görünümünü değiştirin.",
+              "subtitle": "Dijital saatin görünümünü değiştirin",
               "title": "Dijital",
               "twelvehour": "12 Saat",
               "twentyfourhour": "24 Saat",
               "zero": "Sıfır eklensin."
             },
             "format": "Format",
-            "percentage_complete": "Tamamlanma Yüzdesi",
+            "percentage_complete": "Yüzdelik Gösterim",
             "title": "Saat",
-            "type": "Tip",
-            "type_subtitle": "Saat formatını dijital olarak, analog olarak veya günün tamamlanma yüzdesi olarak göstermeyi seçin.",
+            "type": "Tür",
+            "type_subtitle": "Saatin dijital, analog veya günün tamamlanma yüzdesi olmak üzere nasıl görüntüleneceğini belirleyin",
             "vertical_clock": {
-              "change_hour_colour": "Saat Metni Rengini Değiştirin",
-              "change_minute_colour": "Dakika Metni Rengini Değiştirin",
+              "change_hour_colour": "Saat kısmının metin rengini değiştirin",
+              "change_minute_colour": "Dakika kısmının metin rengini değiştirin",
               "title": "Dikey Saat"
             }
           },
@@ -472,15 +472,15 @@
             "custom_settings": "Kişisel Ayarlar",
             "extra_info": {
               "atmospheric_pressure": "Atmosferik Basınç",
-              "cloudiness": "Bulutluluk",
+              "cloudiness": "Bulutlanma",
               "humidity": "Nem",
               "max_temp": "Maksimum Sıcaklık",
               "min_temp": "Minimum Sıcaklık",
-              "show_description": "Açıklamayı Göster",
-              "show_location": "Konumu Göster",
+              "show_description": "Açıklama Göster",
+              "show_location": "Lokasyonu Göster",
               "title": "Ek Bilgi",
               "visibility": "Görüş Mesafesi",
-              "weather_description": "Hava açıklaması",
+              "weather_description": "Hava durumu açıklaması",
               "wind_direction": "Rüzgar Yönü",
               "wind_speed": "Rüzgar Hızı"
             },
@@ -492,13 +492,13 @@
               "standard": "Standart"
             },
             "temp_format": {
-              "celsius": "Celsius",
+              "celsius": "Santigrat",
               "fahrenheit": "Fahrenhayt",
               "kelvin": "Kelvin",
-              "title": "Sıcaklık Formatı"
+              "title": "Sıcaklık Ölçü Birimi"
             },
             "title": "Hava Durumu",
-            "widget_type": "Hava Tipi Formatı"
+            "widget_type": "Widget Türü"
           }
         }
       },
@@ -603,12 +603,12 @@
     "background": {
       "camera": "Kamera",
       "category": "Kategori",
-      "confirm": "Evet",
+      "confirm": "Onayla",
       "credit": "Fotoğraf sahibi",
       "download": "İndir",
       "downloads": "İndirilenler",
       "exclude": "Tekrar Gösterme",
-      "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: Eğer bu kategoriye ait \"{category}\" resimleri beğenmiyorsanız, arka plan kaynak ayarları kısmından kategorinin seçimini kaldırabilirsiniz.",
+      "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: \"{category}\" kategorisine ait görselleri beğenmediyseniz, arka plan kaynağı ayarlarından kategorinin seçimini kaldırabilirsiniz.",
       "information": "Bilgilendirme",
       "likes": "Beğeni",
       "location": "Konum",
@@ -618,7 +618,7 @@
       "views": "Görüntülenme"
     },
     "date": {
-      "week": "Haftada Bir"
+      "week": "Hafta"
     },
     "greeting": {
       "afternoon": "Tünaydın",
@@ -631,21 +631,21 @@
     },
     "navbar": {
       "apps": {
-        "no_apps": "Hiçbir uygulama bağlantıları bulunamadı",
+        "no_apps": "Uygulama bağlantısı bulunamadı",
         "title": "Uygulamalar"
       },
       "notes": {
-        "placeholder": "Buraya Yaz!",
+        "placeholder": "Buraya yaz",
         "title": "Notlar"
       },
       "todo": {
         "add": "Ekle",
-        "no_todos": "Yapılacak bir şey yok",
+        "no_todos": "Yapılacak herhangi bir şey yok",
         "pin": "Tuttur",
         "title": "Yapılacaklar"
       },
       "tooltips": {
-        "refresh": "Sayfayı Yenile"
+        "refresh": "Yenile"
       }
     },
     "quicklinks": {
@@ -653,10 +653,10 @@
       "edit": "Bağlantıyı Düzenle",
       "icon": "İkon (İsteğe Bağlı)",
       "name": "İsim",
-      "name_error": "İsim gerekli",
+      "name_error": "İsim belirtilmelidir",
       "new": "Yeni Bağlantı",
       "url": "URL",
-      "url_error": "URL gerekli"
+      "url_error": "URL sağlanmalıdır"
     },
     "quote": {
       "copy": "Kopyala",
@@ -670,7 +670,7 @@
       "extra_information": "Ek Bilgilendirme",
       "feels_like": "{amount} gibi hissettiriyor.",
       "meters": "{amount} metre",
-      "not_found": "Bulunamadı."
+      "not_found": "Bulunamadı"
     }
   }
 }
