@@ -486,7 +486,7 @@
             },
             "location": "Konum",
             "options": {
-              "basic": "Basit",
+              "basic": "Temel",
               "custom": "Kişiselleştirlmiş",
               "expanded": "Genişletilmiş",
               "standard": "Standart"
