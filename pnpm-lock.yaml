@@ -33,8 +33,8 @@ dependencies:
     specifier: ^8.9.2
     version: 8.9.2(react@18.3.1)
   embla-carousel-autoplay:
-    specifier: 8.1.3
-    version: 8.1.3(embla-carousel@8.1.3)
+    specifier: 8.1.4
+    version: 8.1.4(embla-carousel@8.1.4)
   embla-carousel-react:
     specifier: 8.1.4
     version: 8.1.4(react@18.3.1)
@@ -3643,12 +3643,12 @@ packages:
     resolution: {integrity: sha512-i/A2UB0sxYViMN0M2zIotQFRIOt1jLuVXudACHBDiJ5gGuAUzf/crZxwlBTdA0O52Hy4CNtTzS7AKRAacs/08Q==}
     dev: true
 
-  /embla-carousel-autoplay@8.1.3(embla-carousel@8.1.3):
-    resolution: {integrity: sha512-nMPuOZ+f3yp/RzUEYDOWjO7EkhdNHfdxEoRxfwqIvTGdSQ04LAFAnMLiLWSetAXzB1bP30L391mZb9keZXRcWQ==}
+  /embla-carousel-autoplay@8.1.4(embla-carousel@8.1.4):
+    resolution: {integrity: sha512-lsQkKiU5sIVg5vuaWo6BTzQT+7Z6AEMnCIQho4bS6KFeBE8FtsL/HOmtLx7fLu2reH6keJ1vNmLn6L/w9CQj+Q==}
     peerDependencies:
-      embla-carousel: 8.1.3
+      embla-carousel: 8.1.4
     dependencies:
-      embla-carousel: 8.1.3
+      embla-carousel: 8.1.4
     dev: false
 
   /embla-carousel-react@8.1.4(react@18.3.1):
@@ -3667,10 +3667,6 @@ packages:
       embla-carousel: 8.1.4
     dependencies:
       embla-carousel: 8.1.4
-    dev: false
-
-  /embla-carousel@8.1.3:
-    resolution: {integrity: sha512-GiRpKtzidV3v50oVMly8S+D7iE1r96ttt7fSlvtyKHoSkzrAnVcu8fX3c4j8Ol2hZSQlVfDqDIqdrFPs0u5TWQ==}
     dev: false
 
   /embla-carousel@8.1.4:
