@@ -20,8 +20,8 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
   item._onCollection = onCollection;
   return (
     <motion.div
-    whileHover={{ y: -10 }}
-    transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
+      whileHover={{ y: -10 }}
+      transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
       className="item"
       onClick={() => toggleFunction(item)}
       key={item.name}
@@ -121,6 +121,35 @@ function Items({
           )}
         </div>
       )}
+      <div className="flex flex-row gap-2 my-3">
+        <div
+          onClick={() => {
+            this.setState({ type: 'all' });
+            this.getItems();
+          }}
+          className="transition-all duration-200	bg-white rounded-full px-6 py-2 text-base text-black"
+        >
+          All
+        </div>
+        <div
+          onClick={() => {
+            this.setState({ type: 'photo_packs' });
+            this.getItems();
+          }}
+          className="transition-all duration-200	bg-[#333] hover:bg-[#222222] cursor-pointer rounded-full px-6 py-2 text-base text-white"
+        >
+          Photo Packs
+        </div>
+        <div
+          onClick={() => {
+            this.setState({ type: 'quote_packs' });
+            this.getItems();
+          }}
+          className="transition-all duration-200	bg-[#333] hover:bg-[#222222] cursor-pointer rounded-full px-6 py-2 text-base text-white"
+        >
+          Quote Packs
+        </div>
+      </div>
       <div className={`items ${moreByCreator ? 'creatorItems' : ''}`}>
         {items
           ?.filter((item) => filterItems(item, filter))

@@ -1,6 +1,13 @@
 import variables from 'config/variables';
 import { Suspense, lazy, useState, memo } from 'react';
-import { MdSettings, MdOutlineShoppingBasket, MdOutlineExtension, MdClose } from 'react-icons/md';
+import {
+  MdSettings,
+  MdOutlineShoppingBasket,
+  MdOutlineExtension,
+  MdClose,
+  MdSearch,
+  MdOutlineKeyboardArrowRight,
+} from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from 'components/Elements';
 
@@ -152,7 +159,7 @@ let tabs = [
 
 function MainModal({ modalClose }) {
   let [activeTab, setActiveTab] = useState(tabs[0].id);
-  let [subTab, setSubTab] = useState("");
+  let [subTab, setSubTab] = useState('');
   let [direction, setDirection] = useState(1);
 
   const variants = {
@@ -188,6 +195,7 @@ function MainModal({ modalClose }) {
 
     setDirection(newIndex > currentIndex ? 1 : -1);
     setActiveTab(type);
+    setSubTab('');
   };
 
   const renderTab = () => {
@@ -204,13 +212,44 @@ function MainModal({ modalClose }) {
   return (
     <>
       <div className="flex flex-col w-[100%] min-w-[100%]">
-        <div className="flex flex-row gap-5 p-5 items-center">
-          {navbarLogo}
-          <span className="text-xl capitalize tracking-normal">{subTab}</span>
-          <div
-            className="flex flex-row gap-5"
-            style={{ marginLeft: 'auto', justifySelf: 'flex-end' }}
-          >
+        <div className="flex flex-row gap-5 p-5 items-center justify-between">
+          <div className="flex flex-row gap-5 items-center">
+            {navbarLogo}
+            <div className="flex flex-row items-center gap-2">
+              <span className="text-xl capitalize tracking-normal">{activeTab}</span>
+              {subTab !== '' && (
+                <>
+                  <MdOutlineKeyboardArrowRight />
+                  <span className="text-xl capitalize tracking-normal">{subTab}</span>
+                </>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-row gap-5">
+            <AnimatePresence>
+              {activeTab === 'marketplace' && (
+                <motion.div
+                  initial={{ opacity: 0, y: '-100%' }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: '-100%' }}
+                >
+                  <form className="max-w-md mx-auto relative mr-10">
+                    <input
+                      label={variables.getMessage('widgets.search')}
+                      placeholder={variables.getMessage('widgets.search')}
+                      name="filter"
+                      id="filter"
+                      //value={this.state.filter}
+                      //onChange={(event) => this.setState({ filter: event.target.value })}
+                      className="h-[40px] block w-full px-4 ps-10 text-sm text-gray-900 border border-[#484848] rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white/5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-neutral-100"
+                    />
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <MdSearch />
+                    </div>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
             <div className="flex space-x-1">
               {tabs.map((tab) => (
                 <button
@@ -218,7 +257,7 @@ function MainModal({ modalClose }) {
                   onClick={() => changeTab(tab.id)}
                   className={`${
                     activeTab === tab.id ? '' : 'hover:text-white/60'
-                  } flex flex-row gap-5 items-center relative rounded-sm px-3 py-1.5 text-sm text-white outline-sky-400 transition focus-visible:outline-2`}
+                  } flex flex-row gap-2 items-center relative rounded-sm px-3 py-1.5 text-sm text-white outline-sky-400 transition focus-visible:outline-2`}
                   style={{
                     WebkitTapHighlightColor: 'transparent',
                   }}
