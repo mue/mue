@@ -48,7 +48,7 @@
       "marketplace": {
         "add_all": "Hepsini Ekle",
         "all": "Tümü",
-        "by": "by {author}",
+        "by": "{author}",
         "cant_find": "Aradığınızı bulamıyor musunuz?",
         "collection": "Koleksiyon",
         "collections": "Koleksiyonlar",
@@ -317,7 +317,7 @@
             }
           },
           "changelog": {
-            "by": "By {author}",
+            "by": "{author}",
             "title": "Değişiklik Günlüğü"
           },
           "date": {
