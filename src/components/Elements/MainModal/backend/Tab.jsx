@@ -88,7 +88,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
     label === variables.getMessage('modals.main.settings.sections.experimental.title') &&
     !isExperimental
   ) {
-    return <hr />;
+    return null;
   }
 
   return (
