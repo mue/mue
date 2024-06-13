@@ -21,6 +21,8 @@ body:
       label: Version
       description: What version of Mue are you running?
       options:
+        - 7.1.1
+        - 7.1.0
         - 7.0.0
         - 6.0.6
         - 6.0.5
