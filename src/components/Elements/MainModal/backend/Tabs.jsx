@@ -22,6 +22,7 @@ const Tabs = (props) => {
     }
     setCurrentTab(tab);
     setCurrentName(name);
+    props.setSubTab(name);
   };
 
   const hideReminder = () => {

@@ -90,7 +90,7 @@ const sections = [
 
 function Settings(props) {
   return (
-    <Tabs changeTab={(type) => props.changeTab(type)} current="settings" modalClose={props.modalClose}>
+    <Tabs setSubTab={props.setSubTab} changeTab={(type) => props.changeTab(type)} current="settings" modalClose={props.modalClose}>
       {sections.map(({ label, name, component: Component }) => (
         <div key={name} label={variables.getMessage(label)} name={name}>
           <Component />

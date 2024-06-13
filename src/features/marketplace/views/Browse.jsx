@@ -28,6 +28,7 @@ class Marketplace extends PureComponent {
       item: {},
       collection: false,
       filter: '',
+      type: 'all',
     };
     this.buttons = {
       uninstall: (
@@ -426,6 +427,35 @@ class Marketplace extends PureComponent {
             </div>
           </>
         )}
+        <div className="flex flex-row gap-2">
+          <div
+            onClick={() => {
+              this.setState({ type: 'all' });
+              this.getItems();
+            }}
+            className="transition-all duration-200	bg-white rounded-full px-6 py-2 text-base text-black"
+          >
+            All
+          </div>
+          <div
+            onClick={() => {
+              this.setState({ type: 'photo_packs' });
+              this.getItems();
+            }}
+            className="transition-all duration-200	bg-[#333] hover:bg-[#222222] cursor-pointer rounded-full px-6 py-2 text-base text-white"
+          >
+            Photo Packs
+          </div>
+          <div
+            onClick={() => {
+              this.setState({ type: 'quote_packs' });
+              this.getItems();
+            }}
+            className="transition-all duration-200	bg-[#333] hover:bg-[#222222] cursor-pointer rounded-full px-6 py-2 text-base text-white"
+          >
+            Quote Packs
+          </div>
+        </div>
         {this.props.type === 'collections' && !this.state.collection ? (
           this.state.items.map((item) =>
             !item.news ? (
@@ -455,7 +485,7 @@ class Marketplace extends PureComponent {
           )
         ) : (
           <Items
-            type={this.props.type}
+            type={this.state.type}
             items={this.state.items}
             collection={this.state.displayedCollection}
             onCollection={this.state.collection}

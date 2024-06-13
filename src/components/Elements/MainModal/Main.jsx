@@ -152,7 +152,8 @@ let tabs = [
 
 function MainModal({ modalClose }) {
   let [activeTab, setActiveTab] = useState(tabs[0].id);
-  const [direction, setDirection] = useState(1);
+  let [subTab, setSubTab] = useState("");
+  let [direction, setDirection] = useState(1);
 
   const variants = {
     enter: (direction) => ({
@@ -196,7 +197,7 @@ function MainModal({ modalClose }) {
       case 'marketplace':
         return <Marketplace modalClose={modalClose} />;
       default:
-        return <Settings modalClose={modalClose} />;
+        return <Settings setSubTab={setSubTab} modalClose={modalClose} />;
     }
   };
 
@@ -205,6 +206,7 @@ function MainModal({ modalClose }) {
       <div className="flex flex-col w-[100%] min-w-[100%]">
         <div className="flex flex-row gap-5 p-5 items-center">
           {navbarLogo}
+          <span className="text-xl capitalize tracking-normal">{subTab}</span>
           <div
             className="flex flex-row gap-5"
             style={{ marginLeft: 'auto', justifySelf: 'flex-end' }}

@@ -2,6 +2,7 @@ import variables from 'config/variables';
 import React, { memo } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
+import { motion } from 'framer-motion';
 
 import { Button } from 'components/Elements';
 
@@ -18,7 +19,13 @@ function filterItems(item, filter) {
 function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
   item._onCollection = onCollection;
   return (
-    <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
+    <motion.div
+    whileHover={{ y: -10 }}
+    transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
+      className="item"
+      onClick={() => toggleFunction(item)}
+      key={item.name}
+    >
       <img
         className="item-back"
         alt=""
@@ -56,7 +63,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
           </span>
         ) : null}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
