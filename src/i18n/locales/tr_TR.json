@@ -3,28 +3,28 @@
     "main": {
       "addons": {
         "added": "Eklentiler",
-        "check_updates": "Güncellemeleri kontrol et.",
+        "check_updates": "Güncellemeleri kontrol et",
         "create": {
-          "moved_button": "Başlayın",
+          "moved_button": "Çok Yakında....",
           "moved_description": "7.1 güncellemesinden sonra, eklentilerin oluşturulması web kullanıcı arayüzüne taşındı",
           "moved_title": "Eklenti oluşturma taşındı!",
           "title": "Oluştur"
         },
         "empty": {
-          "description": "Hiçbir eklenti yüklü değil.",
+          "description": "Hiçbir eklenti yüklü değil",
           "title": "Boş"
         },
-        "no_updates": "Güncelleme mevcut değil.",
+        "no_updates": "Güncelleme mevcut değil",
         "sideload": {
           "description": "Bilgisayarınızdan pazar yerinde olmayan bir Mue eklentisi yükleyin.",
           "errors": {
             "invalid_photos": "Geçersiz fotoğraf nesnesi",
             "invalid_quotes": "Geçersiz alıntı nesnesi",
-            "no_author": "Yazar belirtilmedi.",
-            "no_name": "İsim belirtilmedi.",
-            "no_type": "Tür sağlanmadı."
+            "no_author": "Yazar belirtilmedi",
+            "no_name": "İsim belirtilmedi",
+            "no_type": "Tür sağlanmadı"
           },
-          "failed": "Eklenti yüklenemedi.",
+          "failed": "Eklenti dışarıdan yüklenemedi",
           "title": "Diğer Eklentiler"
         },
         "sort": {
@@ -34,7 +34,7 @@
           "title": "Sırala",
           "z_a": "Alfabetik (Z-A)"
         },
-        "updates_available": "Güncellemeler mevcut {amount} !"
+        "updates_available": "Güncellemeler mevcut {amount}"
       },
       "error_boundary": {
         "message": "Mue bileşeni yüklenemedi",
@@ -53,15 +53,15 @@
         "collection": "Koleksiyon",
         "collections": "Koleksiyonlar",
         "explore_collection": "Koleksiyonu Keşfedin",
-        "installing": "Installing",
-        "knowledgebase_one": "Kendiniz oluşturmak için ",
+        "installing": "Kurulum",
+        "knowledgebase_one": "Kendiniz oluşturmak için",
         "knowledgebase_three": "ziyaret edin.",
-        "knowledgebase_two": "bilgilendirme sayfamızı ",
+        "knowledgebase_two": "bilgilendirme sayfamızı",
         "learn_more": "Daha Fazla Bilgi Edin",
         "no_items": "Bu kategoride öğe yok",
         "offline": {
-          "description": "Lütfen internete bağlanın ve tekrar deneyin.",
-          "title": "Görünüşe bakılırsa çevrimdışısınız!"
+          "description": "Lütfen internete bağlanın",
+          "title": "Görünüşe bakılırsa çevrimdışısınız"
         },
         "photo_packs": "Fotoğraf Paketleri",
         "preset_settings": "Ön Ayar Paketleri",
@@ -69,31 +69,31 @@
           "buttons": {
             "addtomue": "Mue Tab'ıma Ekle",
             "back": "Geri",
-            "not_available_preview": "Unavailable on Preview",
+            "not_available_preview": "Önizlemede Kullanılamıyor",
             "remove": "Kaldır",
             "report": "Raporla",
             "update_addon": "Eklentiyi Güncelle"
           },
-          "created_by": "Created by",
+          "created_by": "Oluşturan",
           "description": "Açıklama",
           "details": "Details",
           "explore": "Keşfet",
           "information": "Bilgi",
           "last_updated": "Son Güncelleme",
-          "more_from_curator": "More like this from {name}",
+          "more_from_curator": "{name} tarafından sağlanan buna benzer diğer içerikler",
           "no_images": "Fotoğraf bulunamadı",
           "no_quotes": "Alıntı bulunamadı",
-          "not_in_language": "This add-on is not in your language",
+          "not_in_language": "Bu eklenti sizin dilinizde değil",
           "overview": "Genel Bakış",
           "part_of": "Parçası",
-          "setting": "Ayarlar",
+          "setting": "Ayar",
           "show_all": "Hepsini Göster",
           "show_less": "Daha Az Göster",
           "show_more": "Daha Fazla Göster",
           "showing": "Gösteriliyor",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "third_party_api": "This add-on uses a third-party API",
-          "updated_at": "Updated on",
+          "sideload_warning": "Bu eklenti dışarıdan yüklenmiştir.",
+          "third_party_api": "Bu eklenti üçüncü taraf bir API kullanır",
+          "updated_at": "Tarihinde güncellendi",
           "value": "Değer",
           "version": "Versiyon"
         },
@@ -121,7 +121,7 @@
           "about": {
             "contact_us": "Bize Ulaşın",
             "contributors": "Katkıda Bulunanlar",
-            "curators": "Add-on creators",
+            "curators": "Eklenti yaratıcıları",
             "form_button": "Form",
             "no_supporters": "Şu anda Mue destekçisi yok",
             "photographers": "Fotoğrafçılar",
@@ -147,34 +147,34 @@
             }
           },
           "advanced": {
-            "custom_css": "Custom CSS",
-            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
-            "custom_js": "Custom JS",
-            "customisation": "Customisation",
+            "custom_css": "Özel CSS",
+            "custom_css_subtitle": "Mue'nin stilini Cascading Style Sheets (CSS) ile özelleştirin.",
+            "custom_js": "Özel JS",
+            "customisation": "Özelleştirme",
             "data": "Data",
-            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
-            "data_subtitle": "Manage your data on Mue.",
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support.",
+            "data_description": "Mue ayarlarınızı bilgisayarınıza aktarmayı, mevcut bir ayar dosyasını içe aktarmayı veya ayarlarınızı varsayılan değerlerine sıfırlamayı seçin.",
+            "data_subtitle": "Mue'daki verilerinizi yönetin.",
+            "experimental_warning": "Deneysel modunuz açıksa Mue ekibinin destek sağlayamadığını lütfen unutmayın. Lütfen önce devre dışı bırakın ve desteğe başvurmadan önce sorunun devam edip etmediğini görün.",
             "offline_mode": "Offline mode",
-            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
+            "offline_subtitle": "Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm talepler devre dışı bırakılır.",
             "preview_data_disabled": {
-              "description": "Data settings are disabled in preview mode. Please exit preview mode to use this feature.",
-              "title": "Data Settings Disabled"
+              "description": "Veri ayarları önizleme modunda devre dışıdır. Bu özelliği kullanmak için lütfen önizleme modundan çıkın.",
+              "title": "Veri Ayarları Devre Dışı"
             },
             "reset_modal": {
-              "cancel": "Cancel",
-              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
-              "question": "Do you want to reset Mue?",
+              "cancel": "İptal",
+              "information": "Bu işlem tüm verileri silecektir. Verilerinizi ve tercihlerinizi saklamak istiyorsanız, lütfen önce bunları dışa aktarın.",
+              "question": "Mue'yu sıfırlamak istiyor musunuz?",
               "title": "WARNING"
             },
             "tab_name": "Tab name",
-            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
+            "tab_name_subtitle": "Tarayıcınızda görünen sekmenin adını değiştirin.",
             "timezone": {
-              "automatic": "Automatic",
-              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
-              "title": "Time Zone"
+              "automatic": "Otomatik",
+              "subtitle": "Bilgisayarınızdan otomatik varsayılan yerine listeden bir saat dilimi seçin.",
+              "title": "Saat Dilimi"
             },
-            "title": "Advanced"
+            "title": "Gelişmiş"
           },
           "appearance": {
             "accessibility": {
@@ -216,7 +216,7 @@
             },
             "navbar": {
               "additional": "Gezinme çubuğu stilini ve hangi butonları görüntülemek istediğinizi değiştirin.",
-              "apps_subtitle": "Create a shortcut of your other commonly used websites.",
+              "apps_subtitle": "Sık kullandığınız diğer web sitelerinin kısayollarını oluşturun.",
               "hover": "Yalnızca fareyle üzerine gelindiğinde göster.",
               "notes": "Notlar",
               "refresh": "Yenile Butonu",
@@ -226,7 +226,7 @@
               },
               "refresh_subtitle": "Yenile düğmesine tıkladığınızda yenilenecek öğeleri seçin.",
               "title": "Gezinme Çubuğu",
-              "widgets": "Navbar Widgets"
+              "widgets": "Gezinme Çubuğu Araçları"
             },
             "style": {
               "description": "Eski (7.0 öncesi kullanıcılar için etkin) ve şık modern stilimiz olmak üzere iki stil arasından seçim yapın.",
@@ -260,7 +260,7 @@
               "brightness": "Parlaklığı ayarla",
               "filters": {
                 "amount": "Filtre miktarı",
-                "contrast": "Contrast",
+                "contrast": "Kontrast",
                 "grayscale": "Gri tonlama",
                 "invert": "Ters çevir",
                 "saturate": "Doygunluk",
@@ -270,11 +270,11 @@
               "subtitle": "Arka plan görseli için efektler ekleyin.",
               "title": "Görsel Efektler"
             },
-            "photo_information": "Show photo information",
-            "show_map": "Show location map on photo information if available",
+            "photo_information": "Fotoğraf bilgilerini göster.",
+            "show_map": "Varsa fotoğraf bilgilerinde konum bilgisini göster.",
             "source": {
-              "add_background": "Add background",
-              "add_colour": "Add colour",
+              "add_background": "Arka Plan Ekle",
+              "add_colour": "Renk Ekle",
               "add_url": "Add URL",
               "api": "Arka plan API",
               "custom_background": "Özel arka plan görseli",
@@ -310,28 +310,28 @@
               "title": "Tip"
             },
             "unsplash": {
-              "id": "Collection ID(s)",
-              "id_subtitle": "Enter a comma separated list of Unsplash IDs",
-              "subtitle": "Select the collection(s) you want to use for your background",
-              "title": "Unsplash Collection(s)"
+              "id": "Koleksiyon Kimliği",
+              "id_subtitle": "Unsplash ID'lerinin virgülle ayrılmış bir listesini girin.",
+              "subtitle": "Arka planınız için kullanmak istediğiniz koleksiyonu seçin.",
+              "title": "Unsplash Koleksiyonu"
             }
           },
           "changelog": {
             "by": "By {author}",
-            "title": "Change Log"
+            "title": "Değişiklik Günlüğü"
           },
           "date": {
             "datenth": "Gün Vurgusu",
             "day_of_week": "Haftanın Günü",
-            "long_format": "Long format",
-            "short_date": "Short date",
-            "short_format": "Short format",
+            "long_format": "Uzun biçim",
+            "short_date": "Kısa Tarih",
+            "short_format": "Kısa biçim",
             "short_separator": {
-              "dash": "Dash",
-              "dots": "Dots",
-              "gaps": "Gaps",
-              "slashes": "Slashes",
-              "title": "Short separator"
+              "dash": "Kısa çizgi",
+              "dots": "Nokta",
+              "gaps": "Boşluk",
+              "slashes": "Eğik çizgi",
+              "title": "Kısa Tarih Ayracı"
             },
             "title": "Görünüm",
             "type": {
@@ -339,13 +339,13 @@
               "short": "Kısa",
               "subtitle": "Tarihin uzun veya kısa olmak üzere hangi biçimde görüntüleneceğini seçin."
             },
-            "type_settings": "Display settings and format for the selected date type",
+            "type_settings": "Seçilen tarih türü için ekran ayarlarını ve biçimi belirten özellikleri belirleyin.",
             "week_number": "Hafta Sayısı"
           },
           "experimental": {
             "developer": "Developer",
-            "title": "Experimental",
-            "warning": "These settings have not been fully tested/implemented and may not work correctly!"
+            "title": "Deneysel",
+            "warning": "Bu ayarlar tam olarak test edilmemiştir/uygulanmamıştır ve doğru çalışmayabilir!"
           },
           "greeting": {
             "add_event": "Add Event",
@@ -354,17 +354,17 @@
             "birthday_age": "Doğum günümde yaş bilgisi gözüksün.",
             "birthday_date": "Doğum günü tarihim",
             "birthday_subtitle": "Doğum günüm olduğunda bir 'Mutlu Yıllar' mesajı göster.",
-            "custom": "Custom events",
+            "custom": "Özel olaylar",
             "day": "Day",
             "default": "Karşılama mesajları görünsün.",
-            "enable_events": "Show messages on special days",
+            "enable_events": "Özel günlerde mesaj göster.",
             "event_name": "Event Name",
             "events": "Olaylar",
-            "events_description": "Control events on Mue such as birthdays.",
-            "month": "Month",
+            "events_description": "Mue'da doğum günleri gibi etkinlikleri kontrol edin.",
+            "month": "Ay",
             "name": "Karşılama için isim",
             "no_events": "No Events",
-            "no_events_description": "Add Some Events",
+            "no_events_description": "Bazı Olaylar Ekleyin",
             "title": "Karşılama Ekranı"
           },
           "header": {
@@ -442,13 +442,13 @@
             "voice_search": "Sesli Arama"
           },
           "stats": {
-            "achievement_unlocked": "Achievement Unlocked: {name}",
+            "achievement_unlocked": "Başarım Açıldı: {name}",
             "achievements": "Başarılar",
             "clear_modal": {
-              "information": "This will clear all achievements and usage statistics.",
-              "question": "Do you want to clear your stats?"
+              "information": "Bu, tüm başarıları ve kullanım istatistiklerini temizleyecektir.",
+              "question": "İstatistiklerinizi temizlemek istiyor musunuz?"
             },
-            "locked": "Locked",
+            "locked": "Kilitli",
             "sections": {
               "addons_installed": "Eklentiler yüklendi",
               "backgrounds_downloaded": "Arka plan indirildi",
@@ -489,7 +489,7 @@
             "vertical_clock": {
               "change_hour_colour": "Saat kısmının metin rengini değiştirin",
               "change_minute_colour": "Dakika kısmının metin rengini değiştirin",
-              "change_second_colour": "Change second text colour",
+              "change_second_colour": "Saniye kısmının metin rengini değiştirin",
               "title": "Dikey Saat"
             }
           },
@@ -554,7 +554,7 @@
         "previous": "Öncesi"
       },
       "preview": {
-        "continue": "Kuruluma devam et.",
+        "continue": "Kuruluma devam et",
         "description": "Şu anda önizleme modundasınız. Bu sekme kapatıldığında ayarlar sıfırlanacak."
       },
       "sections": {
@@ -608,7 +608,7 @@
           "title": "Bir Tema Seçin"
         }
       },
-      "tip": "Quick Tip"
+      "tip": "Hızlı ipucu"
     }
   },
   "tabname": "Yeni Sekme",
