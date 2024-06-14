@@ -148,7 +148,7 @@ const TabNavbar = ({ modalClose }) => {
           {subTab !== '' && (
             <>
               <MdOutlineKeyboardArrowRight />
-              <span onClick={() => setSubSection('')} className={clsx("text-xl capitalize tracking-normal", { 'text-neutral-300 cursor-pointer': subSection !== '' })}>{subTab}</span>
+              <span onClick={() => setSubSection('')} className={clsx("text-xl capitalize tracking-normal transition-all duration-300 ease-in-out", { 'text-neutral-300 cursor-pointer hover:text-neutral-100': subSection !== '' })}>{subTab}</span>
             </>
           )}
           {subSection !== '' && (

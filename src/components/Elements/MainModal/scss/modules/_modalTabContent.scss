@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background: t($modal-background);
+    background: t($modal-sidebar);
 
     @extend %tabText;
 

@@ -299,7 +299,6 @@ const GreetingOptions = () => {
   return (
     <>
       {header}
-      {subSection}
       {subSection === "events" ? (
         <>
           <Row>
