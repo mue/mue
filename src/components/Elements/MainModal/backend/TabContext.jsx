@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import variables from 'config/variables';
 
 const TabContext = createContext();
 
@@ -8,7 +9,7 @@ export const useTab = () => {
 
 export const TabProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState('settings');
-  const [subTab, setSubTab] = useState('Overview');
+  const [subTab, setSubTab] = useState(variables.getMessage('modals.main.marketplace.product.overview'));
   const [subSection, setSubSection] = useState('');
   const [direction, setDirection] = useState(1);
 
@@ -24,7 +25,11 @@ export const TabProvider = ({ children }) => {
 
     setDirection(newIndex > currentIndex ? 1 : -1);
     setActiveTab(type);
-    setSubTab('');
+    if(type === 'settings') {
+      setSubTab(variables.getMessage('modals.main.marketplace.product.overview'));
+    } else {
+      setSubTab('');
+    }
   };
 
   const setSection = (type) => {

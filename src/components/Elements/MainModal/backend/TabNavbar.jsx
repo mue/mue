@@ -144,11 +144,11 @@ const TabNavbar = ({ modalClose }) => {
       <div className="flex flex-row gap-5 items-center">
         {navbarLogo}
         <div className="flex flex-row items-center gap-2">
-          <span className="text-xl capitalize tracking-normal">{activeTab}</span>
+          <span className="text-xl capitalize tracking-normal">{variables.getMessage(`modals.main.navbar.${activeTab}`)}</span>
           {subTab !== '' && (
             <>
               <MdOutlineKeyboardArrowRight />
-              <span onClick={() => setSubSection('')} className={clsx("text-xl capitalize tracking-normal transition-all duration-300 ease-in-out", { 'text-neutral-300 cursor-pointer hover:text-neutral-100': subSection !== '' })}>{subTab}</span>
+              <span onClick={() => setSubSection('')} className={clsx("text-xl capitalize tracking-normal transition-all duration-150 ease-in-out", { 'text-neutral-300 cursor-pointer hover:text-neutral-100': subSection !== '' })}>{subTab}</span>
             </>
           )}
           {subSection !== '' && (

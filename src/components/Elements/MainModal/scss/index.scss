@@ -89,7 +89,7 @@
   width: clamp(60vw, 1400px, 90vw);
   background: rgba(14, 16, 19, .85);
   backdrop-filter: blur(60px);
-  border: 3px solid rgba(14, 16, 19, .1);
+  border: 3px solid rgba(14, 16, 19, .3);
 
   /*@include themed {
     background-color: t($modal-sidebar);
