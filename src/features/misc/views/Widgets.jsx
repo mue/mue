@@ -34,7 +34,7 @@ export function Widgets() {
   };
 
   function enabled(key) {
-    return localStorage.getItem(key) === 'true';
+    return localStorage.getItem(key) !== 'falses';
   }
 
   useEffect(() => {

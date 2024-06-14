@@ -15,6 +15,8 @@ import { randomColourStyleBuilder } from './api/randomColour';
 import './scss/index.scss';
 import { decodeBlurHash } from 'fast-blurhash';
 
+import defaults from './options/default';
+
 export default class Background extends PureComponent {
   constructor() {
     super();
@@ -84,8 +86,8 @@ export default class Background extends PureComponent {
       apiCategories = localStorage.getItem('apiCategories');
     }
 
-    const backgroundAPI = localStorage.getItem('backgroundAPI');
-    const apiQuality = localStorage.getItem('apiQuality');
+    const backgroundAPI = localStorage.getItem('backgroundAPI') || defaults.backgroundAPI;
+    const apiQuality = localStorage.getItem('apiQuality') || defaults.apiQuality;
     let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
     if (!Array.isArray(backgroundExclude)) {
       backgroundExclude = [];
@@ -99,7 +101,8 @@ export default class Background extends PureComponent {
     switch (backgroundAPI) {
       case 'unsplash':
       case 'pexels':
-        const collection = localStorage.getItem('unsplashCollections');
+        const collection =
+          localStorage.getItem('unsplashCollections') || defaults.unsplashCollections;
         if (collection) {
           requestURL = `${variables.constants.API_URL}/images/unsplash?collections=${collection}&quality=${apiQuality}`;
         } else {
@@ -186,7 +189,7 @@ export default class Background extends PureComponent {
       return setFavourited(favourited);
     }
 
-    const type = localStorage.getItem('backgroundType');
+    const type = localStorage.getItem('backgroundType') || defaults.backgroundType;
     switch (type) {
       case 'api':
         if (offline) {
@@ -232,7 +235,7 @@ export default class Background extends PureComponent {
         break;
       case 'custom':
         let customBackground = [];
-        const customSaved = localStorage.getItem('customBackground');
+        const customSaved = localStorage.getItem('customBackground') || defaults.customBackground;
         try {
           customBackground = JSON.parse(customSaved);
         } catch (e) {
@@ -405,7 +408,7 @@ export default class Background extends PureComponent {
           element.style.display = 'block';
         }
 
-        const backgroundType = localStorage.getItem('backgroundType');
+        const backgroundType = localStorage.getItem('backgroundType') || defaults.backgroundType;
 
         if (this.state.photoInfo.offline !== true) {
           // basically check to make sure something has changed before we try getting another background
@@ -435,7 +438,8 @@ export default class Background extends PureComponent {
 
       if (data === 'backgroundeffect') {
         // background effects so we don't get another image again
-        const backgroundFilterSetting = localStorage.getItem('backgroundFilter');
+        const backgroundFilterSetting =
+          localStorage.getItem('backgroundFilter') || defaults.backgroundFilter;
         const backgroundFilter = backgroundFilterSetting && backgroundFilterSetting !== 'none';
 
         if (this.state.video === true) {
@@ -457,7 +461,8 @@ export default class Background extends PureComponent {
             backgroundFilter
               ? backgroundFilterSetting +
                 '(' +
-                localStorage.getItem('backgroundFilterAmount') +
+                (localStorage.getItem('backgroundFilterAmount') ||
+                  defaults.backgroundFilterAmount) +
                 '%)'
               : ''
           }`;
@@ -511,7 +516,7 @@ export default class Background extends PureComponent {
           style={{
             WebkitFilter: `blur(${localStorage.getItem(
               'blur',
-            )}px) brightness(${localStorage.getItem('brightness')}%)`,
+            )}px) brightness(${localStorage.getItem('brightness') || defaults.brightness}%)`,
           }}
           id="backgroundVideo"
         >
@@ -520,17 +525,21 @@ export default class Background extends PureComponent {
       );
     }
 
-    const backgroundFilter = localStorage.getItem('backgroundFilter');
+    const backgroundFilter = localStorage.getItem('backgroundFilter') || defaults.backgroundFilter;
 
     return (
       <>
         <div
           style={{
-            WebkitFilter: `blur(${localStorage.getItem(
-              'blur',
-            )}px) brightness(${localStorage.getItem('brightness')}%) ${
+            WebkitFilter: `blur(${
+              localStorage.getItem('blur') || defaults.blur
+            }px) brightness(${localStorage.getItem('brightness') || defaults.brightness}%) ${
               backgroundFilter && backgroundFilter !== 'none'
-                ? backgroundFilter + '(' + localStorage.getItem('backgroundFilterAmount') + '%)'
+                ? backgroundFilter +
+                  '(' +
+                  (localStorage.getItem('backgroundFilterAmount') ||
+                    defaults.backgroundFilterAmount) +
+                  '%)'
                 : ''
             }`,
           }}

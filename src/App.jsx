@@ -10,6 +10,8 @@ import Preview from 'features/helpers/preview/Preview';
 
 import Welcome from 'features/welcome/Welcome';
 
+import BackgroundDefaults from 'features/background/options/default';
+
 const useAppSetup = () => {
   useEffect(() => {
     loadSettings();
@@ -36,13 +38,13 @@ const App = () => {
 
   useEffect(() => {
     const storedToastDisplayTime = localStorage.getItem('toastDisplayTime');
-    const storedBackground = localStorage.getItem('background');
+    const storedBackground = localStorage.getItem('background') || BackgroundDefaults.background;
 
     if (storedToastDisplayTime) {
       setToastDisplayTime(parseInt(storedToastDisplayTime, 10));
     }
 
-    if (storedBackground === 'true') {
+    if (storedBackground === 'true' || storedBackground === true) {
       setShowBackground(true);
     }
   }, []);

@@ -9,7 +9,7 @@ const DefaultOptions = {
   photoInformation: true,
   photoMap: true,
   blur: 0,
-  brightness: 0,
+  brightness: 100,
   backgroundEffect: 'none',
   backgroundFilterAmount: 0,
   customBackgroundColour: 'rgba(0, 0, 0, 0)',

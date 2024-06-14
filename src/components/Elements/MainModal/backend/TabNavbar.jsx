@@ -205,7 +205,7 @@ const TabNavbar = ({ modalClose }) => {
               {variables.getMessage(`modals.main.navbar.${tab.id}`)}
               {tab.id === 'addons' && (
                 <span className="px-3 py-1 bg-[#424242] rounded-lg text-xs">
-                  {JSON.parse(localStorage.getItem('installed')).length}
+                  {(JSON.parse(localStorage.getItem('installed')) || []).length}
                 </span>
               )}
               {tab.id === 'marketplace' && (
