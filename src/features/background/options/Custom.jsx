@@ -41,14 +41,16 @@ export default class CustomSettings extends PureComponent {
     EventBus.emit('refresh', 'background');
   };
 
-  customBackground(e, text, index) {
-    const result = text === true ? e.target.value : e.target.result;
+  customBackground(e, index) {
+    const result = e.target.result;
 
     const customBackground = this.state.customBackground;
-    customBackground[index] = result;
+    customBackground[index || customBackground.length] = result;
+
     this.setState({
       customBackground,
     });
+
     this.forceUpdate();
 
     localStorage.setItem('customBackground', JSON.stringify(customBackground));
@@ -159,7 +161,7 @@ export default class CustomSettings extends PureComponent {
           return toast(variables.getMessage('toasts.no_storage'));
         }
 
-        return this.customBackground(file, false, this.state.currentBackgroundIndex);
+        return this.customBackground(file, this.state.currentBackgroundIndex);
       }
 
       compressAccurately(file, {
@@ -170,7 +172,11 @@ export default class CustomSettings extends PureComponent {
           return toast(variables.getMessage('toasts.no_storage'));
         }
 
-        this.customBackground(await filetoDataURL(res), false, this.state.currentBackgroundIndex);
+        this.customBackground({
+          target: {
+            result: await filetoDataURL(res),
+          }
+        }, this.state.currentBackgroundIndex);
       });
       e.preventDefault();
     };
@@ -274,7 +280,7 @@ export default class CustomSettings extends PureComponent {
         <FileUpload
           id="bg-input"
           accept="image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg"
-          loadFunction={(e) => this.customBackground(e, false, this.state.currentBackgroundIndex)}
+          loadFunction={(e) => this.customBackground(e, this.state.currentBackgroundIndex)}
         />
         {this.videoCustomSettings()}
         <Modal
