@@ -11,6 +11,8 @@ import {
   MdTranslate,
   MdOutlineWarning,
   MdStyle,
+  MdClose,
+  MdLibraryAdd,
 } from 'react-icons/md';
 import Modal from 'react-modal';
 
@@ -28,13 +30,31 @@ import Markdown from 'markdown-to-jsx';
 class ItemPage extends PureComponent {
   constructor(props) {
     super(props);
+    console.log(this.props)
     this.state = {
       showUpdateButton:
-        this.props.addonInstalled === true &&
-        this.props.addonInstalledVersion !== this.props.data.version,
+        this.props.data.local.installed === true && this.props.data.local.version !== this.props.data.version,
       shareModal: false,
       count: 5,
       moreByCurator: [],
+    };
+    this.buttons = {
+      uninstall: (
+        <Button
+          type="settings"
+          onClick={() => this.manage('uninstall')}
+          icon={<MdClose />}
+          label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+        />
+      ),
+      install: (
+        <Button
+          type="settings"
+          onClick={() => this.manage('install')}
+          icon={<MdLibraryAdd />}
+          label={variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
+        />
+      ),
     };
   }
 
@@ -53,6 +73,10 @@ class ItemPage extends PureComponent {
 
   componentDidMount() {
     this.getCurator(this.props.data.author);
+    document.querySelector('#modal').scrollTop = 0;
+    this.setState({
+      button: this.props.data.local.installed ? this.buttons.uninstall : this.buttons.install,
+    })
   }
 
   updateAddon() {
@@ -82,10 +106,31 @@ class ItemPage extends PureComponent {
     return nameMappings[name] || name;
   }
 
+  manage(type) {
+    if (type === 'install') {
+      install(this.props.data.type, this.props.data.data);
+    } else {
+      uninstall(this.props.data.type,this.props.data.display_name);
+    }
+
+    toast(variables.getMessage('toasts.' + type + 'ed'));
+    this.setState({
+      button: type === 'install' ? this.buttons.uninstall : this.buttons.install,
+    });
+
+    variables.stats.postEvent(
+      'marketplace-item',
+      `${this.state.item.display_name} ${type === 'install' ? 'installed' : 'uninstalled'}`,
+    );
+
+    variables.stats.postEvent('marketplace', type === 'install' ? 'Install' : 'Uninstall');
+  }
+
   render() {
     const locale = localStorage.getItem('language');
     const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
     let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
+
     const convertedType = (() => {
       const map = {
         photos: 'photo_packs',
@@ -94,6 +139,7 @@ class ItemPage extends PureComponent {
       };
       return map[this.props.data.data.type];
     })();
+
     const moreByCurator = this.state.moreByCurator
       .filter((item) => item.type === convertedType && item.name !== this.props.data.data.name)
       .sort(() => 0.5 - Math.random())
@@ -181,9 +227,7 @@ class ItemPage extends PureComponent {
           onRequestClose={() => this.setState({ shareModal: false })}
         >
           <ShareModal
-            data={
-              variables.constants.API_URL + '/marketplace/share/' + btoa(this.props.data.api_name)
-            }
+            data={variables.constants.API_URL + '/marketplace/share/' + btoa(this.props.data.slug)}
             modalClose={() => this.setState({ shareModal: false })}
           />
         </Modal>
@@ -347,7 +391,7 @@ class ItemPage extends PureComponent {
                 }}
               />
               {localStorage.getItem('welcomePreview') !== 'true' ? (
-                this.props.button
+                this.state.button
               ) : (
                 <p style={{ textAlign: 'center' }}>
                   {variables.getMessage(

@@ -1,12 +1,12 @@
 import variables from 'config/variables';
 import { memo } from 'react';
 
-import Tabs from '../../../components/Elements/MainModal/backend/Tabs';
 import MarketplaceTab from '../../marketplace/views/Browse';
 
 function Marketplace(props) {
   return (
-    <Tabs changeTab={(type) => props.changeTab(type)} current="marketplace" modalClose={props.modalClose}>
+    {
+      /*<Tabs changeTab={(type) => props.changeTab(type)} current="marketplace" modalClose={props.modalClose}>
       <div label={variables.getMessage('modals.main.marketplace.all')} name="all">
         <MarketplaceTab type="all" />
       </div>
@@ -25,7 +25,13 @@ function Marketplace(props) {
       <div label={variables.getMessage('modals.main.marketplace.collections')} name="collections">
         <MarketplaceTab type="collections" />
       </div>
-    </Tabs>
+    </Tabs>*/
+    },
+    (
+      <div className="modalTabContent">
+        <MarketplaceTab type="all" />
+      </div>
+    )
   );
 }
 

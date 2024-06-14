@@ -1,29 +1,26 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { useState } from 'react';
 import { MdStar, MdStarBorder } from 'react-icons/md';
 
-class Favourite extends PureComponent {
-  buttons = {
-    favourited: <MdStar onClick={() => this.favourite()} className="topicons" />,
-    unfavourited: <MdStarBorder onClick={() => this.favourite()} className="topicons" />,
+function Favourite({ credit, offline, pun, tooltipText }) {
+  const [favourited, setFavourited] = useState(
+    localStorage.getItem('favourite') ? (
+      <MdStar onClick={() => favourite()} className="topicons" />
+    ) : (
+      <MdStarBorder onClick={() => favourite()} className="topicons" />
+    ),
+  );
+
+  const buttons = {
+    favourited: <MdStar onClick={() => favourite()} className="topicons" />,
+    unfavourited: <MdStarBorder onClick={() => favourite()} className="topicons" />,
   };
 
-  constructor() {
-    super();
-    this.state = {
-      favourited: localStorage.getItem('favourite')
-        ? this.buttons.favourited
-        : this.buttons.unfavourited,
-    };
-  }
-
-  async favourite() {
+  async function favourite() {
     if (localStorage.getItem('favourite')) {
       localStorage.removeItem('favourite');
-      this.setState({
-        favourited: this.buttons.unfavourited,
-      });
-      this.props.tooltipText(variables.getMessage('widgets.quote.favourite'));
+      setFavourited(buttons.unfavourited);
+      tooltipText(variables.getMessage('widgets.quote.favourite'));
       variables.stats.postEvent('feature', 'Background favourite');
     } else {
       const type = localStorage.getItem('backgroundType');
@@ -57,58 +54,57 @@ class Favourite extends PureComponent {
               reader.onloadend = () => resolve(reader.result);
               reader.readAsDataURL(await (await fetch(url)).blob());
             });
+
+            if (type === 'custom') {
+              localStorage.setItem(
+                'favourite',
+                JSON.stringify({
+                  type,
+                  url,
+                }),
+              );
+            } else {
+              const location = document.getElementById('infoLocation');
+              const camera = document.getElementById('infoCamera');
+
+              localStorage.setItem(
+                'favourite',
+                JSON.stringify({
+                  type,
+                  url,
+                  credit,
+                  location: location?.innerText,
+                  camera: camera?.innerText,
+                  resolution: document.getElementById('infoResolution').textContent || '',
+                  offline,
+                  pun,
+                }),
+              );
+
+              setFavourited(buttons.favourited);
+
+              tooltipText(variables.getMessage('widgets.quote.unfavourite'));
+
+              variables.stats.postEvent('feature', 'Background unfavourite');
+            }
           }
 
-          if (type === 'custom') {
-            localStorage.setItem(
-              'favourite',
-              JSON.stringify({
-                type,
-                url,
-              }),
-            );
-          } else {
-            // photo information now hides information if it isn't sent, unless if photoinformation hover is hidden
-            const location = document.getElementById('infoLocation');
-            const camera = document.getElementById('infoCamera');
-
-            localStorage.setItem(
-              'favourite',
-              JSON.stringify({
-                type,
-                url,
-                credit: this.props.credit || '',
-                location: location?.innerText,
-                camera: camera?.innerText,
-                resolution: document.getElementById('infoResolution').textContent || '',
-                offline: this.props.offline,
-                pun: this.props.pun,
-              }),
-            );
-          }
+          return setFavourited(buttons.favourited);
       }
-
-      this.setState({
-        favourited: this.buttons.favourited,
-      });
-      this.props.tooltipText(variables.getMessage('widgets.quote.unfavourite'));
-      variables.stats.postEvent('feature', 'Background unfavourite');
     }
   }
 
-  render() {
-    if (localStorage.getItem('backgroundType') === 'colour') {
-      return null;
-    }
-
-    this.props.tooltipText(
-      localStorage.getItem('favourite')
-        ? variables.getMessage('widgets.quote.unfavourite')
-        : variables.getMessage('widgets.quote.favourite'),
-    );
-
-    return this.state.favourited;
+  if (localStorage.getItem('backgroundType') === 'colour') {
+    return null;
   }
+
+  tooltipText(
+    localStorage.getItem('favourite')
+      ? variables.getMessage('widgets.quote.unfavourite')
+      : variables.getMessage('widgets.quote.favourite'),
+  );
+
+  return favourited;
 }
 
 export default Favourite;

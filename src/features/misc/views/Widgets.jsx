@@ -1,4 +1,4 @@
-import { PureComponent, Fragment, Suspense, lazy } from 'react';
+import { Fragment, Suspense, lazy, useState, useEffect } from 'react';
 
 import Clock from '../../time/Clock';
 import Greeting from '../../greeting/Greeting';
@@ -18,74 +18,61 @@ import defaults from 'config/default';
 // as seen here it is ridiculously large
 const Weather = lazy(() => import('../../weather/Weather'));
 
-export default class Widgets extends PureComponent {
-  online = localStorage.getItem('offlineMode') === 'false';
-  constructor() {
-    super();
-    this.state = {
-      order: JSON.parse(localStorage.getItem('order')) || defaults.order,
-      welcome: localStorage.getItem('showWelcome'),
-    };
-    // widgets we can re-order
-    this.widgets = {
-      time: this.enabled('time') && <Clock />,
-      greeting: this.enabled('greeting') && <Greeting />,
-      quote: this.enabled('quote') && <Quote />,
-      date: this.enabled('date') && <Date />,
-      quicklinks: this.enabled('quicklinksenabled') && this.online ? <QuickLinks /> : null,
-      message: this.enabled('message') && <Message />,
-    };
-  }
+export function Widgets() {
+  const [order, setOrder] = useState(JSON.parse(localStorage.getItem('order')) || defaults.order);
+  const [welcome, setWelcome] = useState(localStorage.getItem('showWelcome'));
 
-  enabled(key) {
+  const online = localStorage.getItem('offlineMode') === 'false';
+
+  const widgets = {
+    time: enabled('time') && <Clock />,
+    greeting: enabled('greeting') && <Greeting />,
+    quote: enabled('quote') && <Quote />,
+    date: enabled('date') && <Date />,
+    quicklinks: enabled('quicklinksenabled') && online ? <QuickLinks /> : null,
+    message: enabled('message') && <Message />,
+  };
+
+  function enabled(key) {
     return localStorage.getItem(key) === 'true';
   }
 
-  componentDidMount() {
+  useEffect(() => {
     EventBus.on('refresh', (data) => {
       switch (data) {
         case 'widgets':
-          return this.setState({
-            order: JSON.parse(localStorage.getItem('order')) || defaults.order,
-          });
+          setOrder(JSON.parse(localStorage.getItem('order')) || defaults.order);
+          break;
         case 'widgetsWelcome':
-          this.setState({
-            welcome: localStorage.getItem('showWelcome'),
-          });
+          setWelcome(localStorage.getItem('showWelcome'));
           localStorage.setItem('showWelcome', true);
           window.onbeforeunload = () => {
             localStorage.clear();
           };
           break;
         case 'widgetsWelcomeDone':
-          this.setState({
-            welcome: localStorage.getItem('showWelcome'),
-          });
-          return (window.onbeforeunload = null);
+          setWelcome(localStorage.getItem('showWelcome'));
+          break;
         default:
           break;
       }
     });
-  }
+    return () => EventBus.off('refresh');
+  }, []);
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
-
-  render() {
-    // don't show when welcome is there
-    return this.state.welcome !== 'false' ? (
-      <WidgetsLayout />
-    ) : (
-      <WidgetsLayout>
-        <Suspense fallback={<></>}>
-          {this.enabled('searchBar') && <Search />}
-          {this.state.order.map((element, key) => (
-            <Fragment key={key}>{this.widgets[element]}</Fragment>
-          ))}
-          {this.enabled('weatherEnabled') && this.online ? <Weather /> : null}
-        </Suspense>
-      </WidgetsLayout>
-    );
-  }
+  return welcome !== 'false' ? (
+    <WidgetsLayout />
+  ) : (
+    <WidgetsLayout>
+      <Suspense fallback={<></>}>
+        {enabled('searchBar') && <Search />}
+        {order.map((element, key) => (
+          <Fragment key={key}>{widgets[element]}</Fragment>
+        ))}
+        {enabled('weatherEnabled') && online ? <Weather /> : null}
+      </Suspense>
+    </WidgetsLayout>
+  );
 }
+
+export default Widgets;

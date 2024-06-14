@@ -12,12 +12,6 @@
     background-color: t($modal-background);
   }
 
-  .welcomeCredit {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-  }
-
   .MuiFormControlLabel-root {
     margin-right: 0;
   }
@@ -331,19 +325,6 @@ a.privacy {
 }
 
 .welcomeButtons {
-  z-index: 999;
-  backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-  position: sticky;
-  bottom: 0;
-  padding: 25px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-
   button {
     @include modal-button(standard);
   }

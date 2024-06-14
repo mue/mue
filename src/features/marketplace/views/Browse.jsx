@@ -1,475 +1,332 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import {
-  MdWifiOff,
-  MdLocalMall,
-  MdClose,
-  MdSearch,
-  MdOutlineArrowForward,
-  MdLibraryAdd,
-} from 'react-icons/md';
+import { MdWifiOff, MdLocalMall, MdOutlineArrowForward, MdLibraryAdd } from 'react-icons/md';
 
 import ItemPage from './ItemPage';
 import Items from '../components/Items/Items';
-import Dropdown from '../../../components/Form/Settings/Dropdown/Dropdown';
+
 import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
-import { install, uninstall } from 'utils/marketplace';
+import { install } from 'utils/marketplace';
+import { sortItems } from '../api';
 
-class Marketplace extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      items: [],
-      button: '',
-      done: false,
-      item: {},
-      collection: false,
-      filter: '',
-      type: 'all',
-    };
-    this.buttons = {
-      uninstall: (
-        <Button
-          type="settings"
-          onClick={() => this.manage('uninstall')}
-          icon={<MdClose />}
-          label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-        />
-      ),
-      install: (
-        <Button
-          type="settings"
-          onClick={() => this.manage('install')}
-          icon={<MdLibraryAdd />}
-          label={variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
-        />
-      ),
-    };
-    this.controller = new AbortController();
-  }
+function Marketplace() {
+  const [items, setItems] = useState([]);
+  const [done, setDone] = useState(false);
+  const [item, setItem] = useState({});
+  const [collection, setCollection] = useState({});
+  const [filter, setFilter] = useState('');
+  const [type, setType] = useState('all');
+  const [busy, setBusy] = useState(false);
+  const [collectionTitle, setCollectionTitle] = useState('');
+  
+  const controller = new AbortController();
 
-  async toggle(pageType, data) {
+  async function toggle(pageType, data) {
     if (pageType === 'item') {
-      let info;
-      // get item info
-      try {
-        let type = this.props.type;
-        if (type === 'all' || type === 'collections') {
-          type = data.type;
-        }
-        info = await (
-          await fetch(`${variables.constants.API_URL}/marketplace/item/${type}/${data.name}`, {
-            signal: this.controller.signal,
-          })
-        ).json();
-      } catch (e) {
-        if (this.controller.signal.aborted === false) {
-          return toast(variables.getMessage('toasts.error'));
-        }
-      }
+      const toggleType = type === 'all' || type === 'collections' ? data.type : type;
+      const item = await (
+        await fetch(`${variables.constants.API_URL}/marketplace/item/${toggleType}/${data.name}`, {
+          signal: controller.signal,
+        })
+      ).json();
 
-      if (this.controller.signal.aborted === true) {
+      if (controller.signal.aborted === true) {
         return;
       }
 
       // check if already installed
-      let button = this.buttons.install;
       let addonInstalled = false;
       let addonInstalledVersion;
-
       const installed = JSON.parse(localStorage.getItem('installed'));
-
-      if (installed.some((item) => item.name === info.data.name)) {
-        button = this.buttons.uninstall;
+      if (installed.some((item) => item.name === item.data.name)) {
         addonInstalled = true;
         for (let i = 0; i < installed.length; i++) {
-          if (installed[i].name === info.data.name) {
+          if (installed[i].name === item.data.name) {
             addonInstalledVersion = installed[i].version;
             break;
           }
         }
       }
 
-      this.setState({
-        item: {
-          onCollection: data._onCollection,
-          type: info.data.type,
-          display_name: info.data.name,
-          author: info.data.author,
-          description: info.data.description,
-          //updated: info.updated,
-          version: info.data.version,
-          icon: info.data.screenshot_url,
-          data: info.data,
-          addonInstalled,
-          addonInstalledVersion,
-          api_name: data.name,
+      setItem({
+        onCollection: data._onCollection,
+        type: item.data.type,
+        display_name: item.data.name,
+        author: item.data.author,
+        description: item.data.description,
+        version: item.data.version,
+        icon: item.data.screenshot_url,
+        data: item.data,
+        local: {
+          installed: addonInstalled,
+          version: addonInstalledVersion,
         },
-        button: button,
+        slug: data.name,
       });
-      document.querySelector('#modal').scrollTop = 0;
-      variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
+
+      setType('item');
+
+      variables.stats.postEvent('marketplace-item', `${item.display_name} viewed`);
     } else if (pageType === 'collection') {
-      this.setState({
-        done: false,
-        item: {},
-      });
+      setDone(false);
+      setItem({});
+
       const collection = await (
         await fetch(`${variables.constants.API_URL}/marketplace/collection/${data}`, {
-          signal: this.controller.signal,
+          signal: controller.signal,
         })
       ).json();
-      this.setState({
-        items: collection.data.items,
-        collectionTitle: collection.data.display_name,
-        collectionDescription: collection.data.description,
-        collectionImg: collection.data.img,
-        collection: true,
-        done: true,
+
+      setItems(collection.data.items);
+      setCollection({
+        visible: true,
+        title: collection.data.display_name,
+        description: collection.data.description,
+        img: collection.data.img,
       });
+
+      setType('collection');
     } else {
-      this.setState({
-        item: {},
-      });
+      setItem({});
+      setCollection({});
+      setType('normal');
     }
   }
 
-  async getItems() {
-    this.setState({
-      done: false,
-    });
+  async function getItems() {
+    setDone(false);
     const dataURL =
-      this.props.type === 'collections'
-        ? variables.constants.API_URL + '/marketplace/collections'
-        : variables.constants.API_URL + '/marketplace/items/' + this.props.type;
+      variables.constants.API_URL +
+      (type === 'collections' ? '/marketplace/collections' : '/marketplace/items/' + type);
+
     const { data } = await (
       await fetch(dataURL, {
-        signal: this.controller.signal,
+        signal: controller.signal,
       })
     ).json();
-    const collections = await (
+
+    if (controller.signal.aborted === true) {
+      return;
+    }
+
+    setItems(sortItems(data, 'z-a'));
+    setDone(true);
+  }
+
+  async function getCollections() {
+    setDone(false);
+
+    const { data } = await (
       await fetch(variables.constants.API_URL + '/marketplace/collections', {
-        signal: this.controller.signal,
+        signal: controller.signal,
       })
     ).json();
 
-    if (this.controller.signal.aborted === true) {
-      return;
-    }
-
-    const sorted = this.sortMarketplace(data, false);
-
-    this.setState({
-      items: sorted.items,
-      sortType: sorted.sortType,
-      oldItems: sorted.items,
-      collections: collections.data,
-      displayedCollection:
-        collections.data[Math.floor(Math.random() * collections.data.length)] || [],
-      done: true,
-    });
+    setItems(data);
+    setDone(true);
   }
 
-  manage(type) {
-    if (type === 'install') {
-      install(this.state.item.type, this.state.item.data);
-    } else {
-      uninstall(this.state.item.type, this.state.item.display_name);
-    }
 
-    toast(variables.getMessage('toasts.' + type + 'ed'));
-    this.setState({
-      button: type === 'install' ? this.buttons.uninstall : this.buttons.install,
-    });
-
-    variables.stats.postEvent(
-      'marketplace-item',
-      `${this.state.item.display_name} ${type === 'install' ? 'installed' : 'uninstalled'}`,
-    );
-    variables.stats.postEvent('marketplace', type === 'install' ? 'Install' : 'Uninstall');
+  function returnToMain() {
+    setCollection(false);
   }
 
-  async installCollection() {
-    this.setState({ busy: true });
-    try {
-      const installed = JSON.parse(localStorage.getItem('installed'));
-      for (const item of this.state.items) {
-        if (installed.some((i) => i.name === item.display_name)) continue; // don't install if already installed
-        let { data } = await (
-          await fetch(`${variables.constants.API_URL}/marketplace/item/${item.type}/${item.name}`, {
-            signal: this.controller.signal,
-          })
-        ).json();
-        install(data.type, data, false, true);
-        variables.stats.postEvent('marketplace-item', `${item.display_name} installed}`);
-        variables.stats.postEvent('marketplace', 'Install');
-      }
-      toast(variables.getMessage('toasts.installed'));
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
-      toast(variables.getMessage('toasts.error'));
-    } finally {
-      this.setState({ busy: false });
-    }
-  }
-
-  sortMarketplace(data, sendEvent) {
-    const value = localStorage.getItem('sortMarketplace') || 'a-z';
-    let items = data || this.state.items;
-    if (!items) {
-      return;
-    }
-
-    switch (value) {
-      case 'a-z':
-        // sort by name key alphabetically
-        const sorted = items.sort((a, b) => {
-          if (a.display_name < b.display_name) {
-            return -1;
-          }
-          if (a.display_name > b.display_name) {
-            return 1;
-          }
-          return 0;
-        });
-        items = sorted;
-        break;
-      case 'z-a':
-        items.sort();
-        items.reverse();
-        break;
-      default:
-        break;
-    }
-
-    if (sendEvent) {
-      variables.stats.postEvent('marketplace', 'Sort');
-    }
-
-    return {
-      items: items,
-      sortType: value,
-    };
-  }
-
-  changeSort(value) {
-    localStorage.setItem('sortMarketplace', value);
-    this.setState(this.sortMarketplace(null, true));
-  }
-
-  returnToMain() {
-    this.setState({
-      items: this.state.oldItems,
-      collection: false,
-    });
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       return;
     }
 
-    this.getItems();
-  }
+    getItems();
+  }, []);
 
-  componentWillUnmount() {
+  useEffect(() => {
     // stop making requests
-    this.controller.abort();
+    return () => controller.abort();
+  }, []);
+
+  const errorMessage = (msg) => {
+    return (
+      <>
+        <div className="flexTopMarketplace">
+          <span className="mainTitle">
+            {variables.getMessage('modals.main.navbar.marketplace')}
+          </span>
+        </div>
+        <div className="emptyItems">
+          <div className="emptyMessage">{msg}</div>
+        </div>
+      </>
+    );
+  };
+
+  if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+    return errorMessage(
+      <>
+        <MdWifiOff />
+        <span className="title">
+          {variables.getMessage('modals.main.marketplace.offline.title')}
+        </span>
+        <span className="subtitle">
+          {variables.getMessage('modals.main.marketplace.offline.description')}
+        </span>
+      </>,
+    );
   }
 
-  render() {
-    const errorMessage = (msg) => {
-      return (
+  if (done === false) {
+    return errorMessage(
+      <div className="loaderHolder">
+        <div id="loader"></div>
+        <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+      </div>,
+    );
+  }
+
+  if (!items || items?.length === 0) {
+    getItems();
+    return errorMessage(
+      <>
+        <MdLocalMall />
+        <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
+        <span className="subtitle">{variables.getMessage('modals.main.marketplace.no_items')}</span>
+      </>,
+    );
+  }
+
+  if (item.display_name) {
+    return (
+      <ItemPage
+        data={item}
+        toggleFunction={(...args) => toggle(...args)}
+        icon={item.screenshot_url}
+      />
+    );
+  }
+
+  return (
+    <>
+      {collection === true ? (
         <>
-          <div className="flexTopMarketplace">
+          <Header
+            title={variables.getMessage('modals.main.navbar.marketplace')}
+            secondaryTitle={collectionTitle}
+            report={false}
+            goBack={() => returnToMain()}
+          />
+          <div
+            className="collectionPage"
+            style={{
+            //  backgroundImage: `linear-gradient(to bottom, transparent, black), url('${collectionImg}')`,
+            }}
+          >
+            <div className="nice-tag">
+              {variables.getMessage('modals.main.marketplace.collection')}
+            </div>
+            <div className="content">
+              <span className="mainTitle">{collectionTitle}</span>
+=            </div>
+
+            <Button
+              type="collection"
+              onClick={() => installCollection()}
+              disabled={busy}
+              icon={<MdLibraryAdd />}
+              label={
+                busy
+                  ? variables.getMessage('modals.main.marketplace.installing')
+                  : variables.getMessage('modals.main.marketplace.add_all')
+              }
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          {/*<div className="flexTopMarketplace">
             <span className="mainTitle">
               {variables.getMessage('modals.main.navbar.marketplace')}
             </span>
           </div>
-          <div className="emptyItems">
-            <div className="emptyMessage">{msg}</div>
-          </div>
-        </>
-      );
-    };
-
-    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      return errorMessage(
-        <>
-          <MdWifiOff />
-          <span className="title">
-            {variables.getMessage('modals.main.marketplace.offline.title')}
-          </span>
-          <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.offline.description')}
-          </span>
-        </>,
-      );
-    }
-
-    if (this.state.done === false) {
-      return errorMessage(
-        <div className="loaderHolder">
-          <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
-        </div>,
-      );
-    }
-
-    if (!this.state.items || this.state.items?.length === 0) {
-      this.getItems();
-      return errorMessage(
-        <>
-          <MdLocalMall />
-          <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
-          <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.no_items')}
-          </span>
-        </>,
-      );
-    }
-
-    if (this.state.item.display_name) {
-      return (
-        <ItemPage
-          data={this.state.item}
-          button={this.state.button}
-          toggleFunction={(...args) => this.toggle(...args)}
-          addonInstalled={this.state.item.addonInstalled}
-          addonInstalledVersion={this.state.item.addonInstalledVersion}
-          icon={this.state.item.screenshot_url}
-        />
-      );
-    }
-
-    return (
-      <>
-        {this.state.collection === true ? (
-          <>
-            <Header
-              title={variables.getMessage('modals.main.navbar.marketplace')}
-              secondaryTitle={this.state.collectionTitle}
-              report={false}
-              goBack={() => this.returnToMain()}
+          <div className="headerExtras marketplaceCondition">
+            {type !== 'collections' && (
+              <div>
+                <form className="max-w-md mx-auto relative">
+                  <input
+                    label={variables.getMessage('widgets.search')}
+                    placeholder={variables.getMessage('widgets.search')}
+                    name="filter"
+                    id="filter"
+                    value={filter}
+                    onChange={(event) => setFilter(event.target.value)}
+                    className="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-[#484848] rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white/5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-neutral-100"
+                  />
+                  <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <MdSearch />
+                  </div>
+                </form>
+              </div>
+            )}
+            <Dropdown
+              label={variables.getMessage('modals.main.addons.sort.title')}
+              name="sortMarketplace"
+              onChange={(value) => changeSort(value
+              items)}
+              items={[
+                {
+                  value: 'a-z',
+                  text: variables.getMessage('modals.main.addons.sort.a_z'),
+                },
+                {
+                  value: 'z-a',
+                  text: variables.getMessage('modals.main.addons.sort.z_a'),
+                },
+              ]}
             />
-            <div
-              className="collectionPage"
-              style={{
-                backgroundImage: `linear-gradient(to bottom, transparent, black), url('${this.state.collectionImg}')`,
-              }}
-            >
-              <div className="nice-tag">
-                {variables.getMessage('modals.main.marketplace.collection')}
-              </div>
-              <div className="content">
-                <span className="mainTitle">{this.state.collectionTitle}</span>
-                <span className="subtitle">{this.state.collectionDescription}</span>
-              </div>
 
+          </div>*/}
+        </>
+      )}
+
+      {type === 'collections' && !collection ? (
+        items.map((item) =>
+          !item.news ? (
+            <div
+              className="collection"
+              style={
+                item.news
+                  ? { backgroundColor: item.background_colour }
+                  : {
+                      backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
+                    }
+              }
+            >
+              <div className="content">
+                <span className="title">{item.display_name}</span>
+                <span className="subtitle">{item.description}</span>
+              </div>
               <Button
                 type="collection"
-                onClick={() => this.installCollection()}
-                disabled={this.state.busy}
-                icon={<MdLibraryAdd />}
-                label={
-                  this.state.busy
-                    ? variables.getMessage('modals.main.marketplace.installing')
-                    : variables.getMessage('modals.main.marketplace.add_all')
-                }
+                onClick={() => toggle('collection', item.name)}
+                icon={<MdOutlineArrowForward />}
+                label={variables.getMessage('modals.main.marketplace.explore_collection')}
+                iconPlacement="right"
               />
             </div>
-          </>
-        ) : (
-          <>
-            {/*<div className="flexTopMarketplace">
-              <span className="mainTitle">
-                {variables.getMessage('modals.main.navbar.marketplace')}
-              </span>
-            </div>
-            <div className="headerExtras marketplaceCondition">
-              {this.props.type !== 'collections' && (
-                <div>
-                  <form className="max-w-md mx-auto relative">
-                    <input
-                      label={variables.getMessage('widgets.search')}
-                      placeholder={variables.getMessage('widgets.search')}
-                      name="filter"
-                      id="filter"
-                      value={this.state.filter}
-                      onChange={(event) => this.setState({ filter: event.target.value })}
-                      className="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-[#484848] rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white/5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-neutral-100"
-                    />
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <MdSearch />
-                    </div>
-                  </form>
-                </div>
-              )}
-              <Dropdown
-                label={variables.getMessage('modals.main.addons.sort.title')}
-                name="sortMarketplace"
-                onChange={(value) => this.changeSort(value)}
-                items={[
-                  {
-                    value: 'a-z',
-                    text: variables.getMessage('modals.main.addons.sort.a_z'),
-                  },
-                  {
-                    value: 'z-a',
-                    text: variables.getMessage('modals.main.addons.sort.z_a'),
-                  },
-                ]}
-              />
-            </div>*/}
-          </>
-        )}
-
-        {this.props.type === 'collections' && !this.state.collection ? (
-          this.state.items.map((item) =>
-            !item.news ? (
-              <div
-                className="collection"
-                style={
-                  item.news
-                    ? { backgroundColor: item.background_colour }
-                    : {
-                        backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
-                      }
-                }
-              >
-                <div className="content">
-                  <span className="title">{item.display_name}</span>
-                  <span className="subtitle">{item.description}</span>
-                </div>
-                <Button
-                  type="collection"
-                  onClick={() => this.toggle('collection', item.name)}
-                  icon={<MdOutlineArrowForward />}
-                  label={variables.getMessage('modals.main.marketplace.explore_collection')}
-                  iconPlacement="right"
-                />
-              </div>
-            ) : null,
-          )
-        ) : (
-          <Items
-            type={this.state.type}
-            items={this.state.items}
-            collection={this.state.displayedCollection}
-            onCollection={this.state.collection}
-            toggleFunction={(input) => this.toggle('item', input)}
-            collectionFunction={(input) => this.toggle('collection', input)}
-            filter={this.state.filter}
-            showCreateYourOwn={true}
-          />
-        )}
-      </>
-    );
-  }
+          ) : null,
+        )
+      ) : (
+        <Items
+          type={type}
+          items={items}
+          toggleFunction={(input) => toggle('item', input)}
+          filter={filter}
+          showCreateYourOwn={true}
+        />
+      )}
+    </>
+  );
 }
 
 export default Marketplace;

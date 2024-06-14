@@ -19,6 +19,7 @@
 
 .tooltipTitle {
   @extend %basic;
+  border-radius: 8px !important;
 
   text-align: center;
   font-size: 0.6rem;

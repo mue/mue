@@ -15,6 +15,7 @@ import { FileUpload, Text, Switch, Dropdown } from 'components/Form/Settings';
 import { ResetModal, Button } from 'components/Elements';
 
 import { Header, Section, Row, Content, Action } from 'components/Layout/Settings';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 import time_zones from 'features/time/timezones.json';
 
@@ -22,6 +23,7 @@ function AdvancedOptions() {
   const [resetModal, setResetModal] = useState(false);
   const [data, setData] = useState(false);
   const ADVANCED_SECTION = 'modals.main.settings.sections.advanced';
+  const { subSection } = useTab();
 
   const Data = () => {
     return localStorage.getItem('welcomePreview') !== 'true' ? (
@@ -93,7 +95,7 @@ function AdvancedOptions() {
   return (
     <>
       {header}
-      {data ? (
+      {subSection === "data" ? (
         <>
           <Data />
           <Modal
@@ -110,6 +112,7 @@ function AdvancedOptions() {
       ) : (
         <>
           <Section
+            id="data"
             title={variables.getMessage(`${ADVANCED_SECTION}.data`)}
             subtitle={variables.getMessage(`${ADVANCED_SECTION}.data_subtitle`)}
             onClick={() => setData(true)}

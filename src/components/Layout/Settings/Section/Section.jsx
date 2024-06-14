@@ -1,9 +1,20 @@
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 import React from 'react';
 
-function Section({ title, subtitle, icon, onClick, children }) {
+function Section({ id, title, subtitle, icon, onClick, children }) {
+  const { setSubSection } = useTab();
+
+  const handleClick = () => {
+    setSubSection(id);
+    if (onClick) {
+      onClick();
+    }
+  };
+  
+
   return (
-    <div className="moreSettings" onClick={onClick}>
+    <div className="moreSettings" onClick={handleClick}>
       <div className="left">
         {icon}
         <div className="content">

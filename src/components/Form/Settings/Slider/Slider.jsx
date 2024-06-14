@@ -1,88 +1,77 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Slider } from '@mui/material';
 import { MdRefresh } from 'react-icons/md';
 
 import EventBus from 'utils/eventbus';
 
-class SliderComponent extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: localStorage.getItem(this.props.name) || this.props.default,
-    };
-  }
+function SliderComponent(props) {
+  const [value, setValue] = useState(localStorage.getItem(props.name) || props.default);
 
-  handleChange = (e, text) => {
+  const handleChange = (e, text) => {
     let { value } = e.target;
     value = Number(value);
 
     if (text) {
       if (value === '') {
-        return this.setState({
-          value: 0,
-        });
+        return setValue(0);
       }
 
-      if (value > this.props.max) {
-        value = this.props.max;
+      if (value > props.max) {
+        value = props.max;
       }
 
-      if (value < this.props.min) {
-        value = this.props.min;
+      if (value < props.min) {
+        value = props.min;
       }
     }
 
-    localStorage.setItem(this.props.name, value);
-    this.setState({
-      value,
-    });
+    localStorage.setItem(props.name, value);
+    setValue(value);
 
-    if (this.props.element) {
-      if (!document.querySelector(this.props.element)) {
+    if (props.element) {
+      if (!document.querySelector(props.element)) {
         document.querySelector('.reminder-info').style.display = 'flex';
         return localStorage.setItem('showReminder', true);
       }
     }
 
-    EventBus.emit('refresh', this.props.category);
+    EventBus.emit('refresh', props.category);
   };
 
-  resetItem = () => {
-    this.handleChange({
+  const resetItem = () => {
+    handleChange({
       target: {
-        value: this.props.default || '',
+        value: props.default || '',
       },
     });
     toast(variables.getMessage('toasts.reset'));
   };
 
-  render() {
-    return (
-      <>
-        <span className={'sliderTitle'}>
-          {this.props.title}
-          <span>{Number(this.state.value)}</span>
-          <span className="link" onClick={this.resetItem}>
-            <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
-          </span>
+  return (
+    <>
+      <span className={'sliderTitle'}>
+        {props.title}
+        <span>{Number(value)}</span>
+        <span className="link" onClick={resetItem}>
+          <MdRefresh />
+          {variables.getMessage('modals.main.settings.buttons.reset')}
         </span>
-        <Slider
-          value={Number(this.state.value)}
-          onChange={this.handleChange}
-          valueLabelDisplay="auto"
-          default={Number(this.props.default)}
-          min={Number(this.props.min)}
-          max={Number(this.props.max)}
-          step={Number(this.props.step) || 1}
-          getAriaValueText={(value) => `${value}`}
-          marks={this.props.marks || []}
-        />
-      </>
-    );
-  }
+      </span>
+      <Slider
+        value={Number(value)}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+        default={Number(props.default)}
+        min={Number(props.min)}
+        max={Number(props.max)}
+        step={Number(props.step) || 1}
+        getAriaValueText={(value) => `${value}`}
+        marks={props.marks || []}
+      />
+    </>
+  );
 }
 
 export { SliderComponent as default, SliderComponent as Slider };

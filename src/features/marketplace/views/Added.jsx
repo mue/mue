@@ -12,6 +12,7 @@ import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, uninstall } from 'utils/marketplace';
+import { sortItems } from '../api';
 
 export default class Added extends PureComponent {
   constructor() {
@@ -130,42 +131,6 @@ export default class Added extends PureComponent {
     variables.stats.postEvent('marketplace', 'Uninstall');
   }
 
-  sortAddons(value, sendEvent) {
-    let installed = JSON.parse(localStorage.getItem('installed'));
-    switch (value) {
-      case 'newest':
-        installed.reverse();
-        break;
-      case 'oldest':
-        break;
-      case 'a-z':
-        installed.sort((a, b) => {
-          if (a.display_name < b.display_name) {
-            return -1;
-          }
-          if (a.display_name > b.display_name) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case 'z-a':
-        installed.sort();
-        installed.reverse();
-        break;
-      default:
-        break;
-    }
-
-    this.setState({
-      installed,
-    });
-
-    if (sendEvent) {
-      variables.stats.postEvent('marketplace', 'Sort');
-    }
-  }
-
   updateCheck() {
     let updates = 0;
     this.state.installed.forEach(async (item) => {
@@ -207,7 +172,9 @@ export default class Added extends PureComponent {
   }
 
   componentDidMount() {
-    this.sortAddons(localStorage.getItem('sortAddons'), false);
+    this.setState({
+      installed: sortItems(JSON.parse(localStorage.getItem('installed')), 'newest'),
+    });
   }
 
   render() {
@@ -297,7 +264,7 @@ export default class Added extends PureComponent {
         <Dropdown
           label={variables.getMessage('modals.main.addons.sort.title')}
           name="sortAddons"
-          onChange={(value) => this.sortAddons(value)}
+          onChange={(value) => this.setState({ installed: sortItems(this.state.installed, value) })}
           items={[
             {
               value: 'newest',

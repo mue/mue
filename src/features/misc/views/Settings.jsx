@@ -1,7 +1,8 @@
 import variables from 'config/variables';
 import { memo } from 'react';
 
-import Tabs from 'components/Elements/MainModal/backend/Tabs';
+//import Tabs from 'components/Elements/MainModal/backend/Tabs';
+import { Tabs } from 'components/Elements/MainModal/backend/newTabs';
 
 import { NavbarOptions } from 'features/navbar';
 import { GreetingOptions } from 'features/greeting';
@@ -90,13 +91,9 @@ const sections = [
 
 function Settings(props) {
   return (
-    <Tabs setSubTab={props.setSubTab} changeTab={(type) => props.changeTab(type)} current="settings" modalClose={props.modalClose}>
-      {sections.map(({ label, name, component: Component }) => (
-        <div key={name} label={variables.getMessage(label)} name={name}>
-          <Component />
-        </div>
-      ))}
-    </Tabs>
+    <>
+      <Tabs sections={sections} />
+    </>
   );
 }
 

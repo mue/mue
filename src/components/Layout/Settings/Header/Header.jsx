@@ -8,12 +8,15 @@ import {
 } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
 import { Button } from 'components/Elements';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 export const CustomActions = ({ children }) => {
   return children;
 };
 
 function Header(props) {
+  const { setSubSection, subSection } = useTab();
+
   const [setting, setSetting] = useState(localStorage.getItem(props.setting) === 'true');
 
   useEffect(() => {
@@ -67,15 +70,17 @@ function Header(props) {
   return (
     <div className="modalHeader">
       <span className="mainTitle">
+        {/*}
         {props.secondaryTitle && (
           <>
-            <span className="backTitle" onClick={props.goBack}>
+            <span className="backTitle" onClick={() => setSubSection('')}>
               {props.title}
             </span>
             <MdOutlineKeyboardArrowRight />
           </>
         )}
         {props.secondaryTitle || props.title}
+        */}
       </span>
       <div className="headerActions">
         {props.visibilityToggle && <VisibilityToggle />}

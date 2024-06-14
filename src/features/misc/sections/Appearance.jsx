@@ -4,6 +4,7 @@ import variables from 'config/variables';
 
 import { Checkbox, Dropdown, Radio, Slider, Text } from 'components/Form/Settings';
 import { Header, Section, Row, Content, Action } from 'components/Layout/Settings';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 import { MdAccessibility } from 'react-icons/md';
 
@@ -11,6 +12,7 @@ import values from 'utils/data/slider_values.json';
 
 function AppearanceOptions() {
   const [accessibility, setAccessibility] = useState(false);
+  const { subSection } = useTab();
 
   const ThemeSelection = () => {
     return (
@@ -262,11 +264,12 @@ function AppearanceOptions() {
   return (
     <>
       {header}
-      {accessibility ? (
+      {subSection === "accessibility" ? (
         <AccessibilityOptions />
       ) : (
         <>
           <Section
+            id="accessibility"
             title={variables.getMessage(
               'modals.main.settings.sections.appearance.accessibility.title',
             )}

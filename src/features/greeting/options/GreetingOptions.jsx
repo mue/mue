@@ -13,6 +13,7 @@ import { Checkbox, Switch, Text } from 'components/Form/Settings';
 import { TextareaAutosize } from '@mui/material';
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 import defaults from './default';
 import defaultEvents from '../events.json';
@@ -20,6 +21,7 @@ import defaultEvents from '../events.json';
 import { MdEventNote, MdAdd, MdCancel, MdRefresh } from 'react-icons/md';
 
 const GreetingOptions = () => {
+  const { subSection } = useTab();
   const [customEvents, setCustomEvents] = useState(
     JSON.parse(localStorage.getItem('customEvents')) || defaultEvents
   );
@@ -297,7 +299,8 @@ const GreetingOptions = () => {
   return (
     <>
       {header}
-      {events ? (
+      {subSection}
+      {subSection === "events" ? (
         <>
           <Row>
             <Content
@@ -327,6 +330,7 @@ const GreetingOptions = () => {
         >
           <AdditionalOptions />
           <Section
+            id="events"
             title={variables.getMessage(`${GREETING_SECTION}.events`)}
             subtitle={variables.getMessage(`${GREETING_SECTION}.events_description`)}
             onClick={() => setEvents(true)}

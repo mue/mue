@@ -37,7 +37,8 @@ function WelcomeModal() {
   useEffect(() => {
     setFirstRender(false);
     const welcomeTab = localStorage.getItem('welcomeTab');
-    const randomQuote = offline_quotes[Math.floor(Math.random() * offline_quotes.length)].quote;
+    const usableQuotes = offline_quotes.filter((q) => q.quote.length <= 100);
+    const randomQuote = usableQuotes[Math.floor(Math.random() * usableQuotes.length)].quote;
     setQuote(randomQuote);
     if (welcomeTab) {
       const tab = Number(welcomeTab);
@@ -116,29 +117,31 @@ function WelcomeModal() {
 
   const Navigation = () => {
     return (
-      <div className="welcomeButtons">
-        {currentTab !== 0 ? (
+      <div className="welcomeButtons z-50 backdrop-blur-sm absolute bottom-0 right-0 w-1/2">
+        <div className="flex justify-end gap-5 p-6">
+          {currentTab !== 0 ? (
+            <Button
+              type="settings"
+              onClick={() => prevTab()}
+              icon={<MdArrowBackIosNew />}
+              label={variables.getMessage('modals.welcome.buttons.previous')}
+            />
+          ) : (
+            <Button
+              type="settings"
+              onClick={() => modalSkip()}
+              icon={<MdOutlinePreview />}
+              label={variables.getMessage('modals.welcome.buttons.preview')}
+            />
+          )}
           <Button
             type="settings"
-            onClick={() => prevTab()}
-            icon={<MdArrowBackIosNew />}
-            label={variables.getMessage('modals.welcome.buttons.previous')}
+            onClick={() => nextTab()}
+            icon={<MdArrowForwardIos />}
+            label={buttonText}
+            iconPlacement={'right'}
           />
-        ) : (
-          <Button
-            type="settings"
-            onClick={() => modalSkip()}
-            icon={<MdOutlinePreview />}
-            label={variables.getMessage('modals.welcome.buttons.preview')}
-          />
-        )}
-        <Button
-          type="settings"
-          onClick={() => nextTab()}
-          icon={<MdArrowForwardIos />}
-          label={buttonText}
-          iconPlacement={'right'}
-        />
+        </div>
       </div>
     );
   };
@@ -196,17 +199,17 @@ function WelcomeModal() {
           transition={{ type: 'spring', duration: 3 }}
         >
           <motion.span
-            className="text-6xl font-bold max-w-[50%] leading-normal"
+            className="text-6xl font-bold mx-auto max-w-[75%] 2xl:max-w-[50%] leading-tight lg:leading-snug"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 0 }}
             transition={{ type: 'spring', duration: 2 }}
             key={currentTab}
           >
-            <mark className="bg-[#ff6b6b]">"{quote}"</mark>
+            <mark className="bg-transparent text-white shadow-black text-shadow-lg">"{quote}"</mark>
           </motion.span>
         </motion.div>
-        <div className="welcomeCredit">
+        <div className="absolute bottom-4 left-4 text-white">
           {variables.getMessage('widgets.background.credit')}{' '}
           <motion.span
             initial={{ opacity: 0, x: -100 }}
@@ -231,7 +234,7 @@ function WelcomeModal() {
             transition={{ type: 'tween', duration: 0.8 }}
             style={{ position: 'absolute', height: '100%', width: '50%' }}
           >
-            <div style={{ height: '100%', overflow: 'auto' }}>{tabs[currentTab]}</div>
+            <div className="h-full overflow-auto p-8">{tabs[currentTab]}</div>
           </motion.div>
         </AnimatePresence>
         <Navigation />
