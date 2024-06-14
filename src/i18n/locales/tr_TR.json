@@ -25,7 +25,7 @@
             "no_type": "Tür sağlanmadı"
           },
           "failed": "Eklenti dışarıdan yüklenemedi",
-          "title": "Diğer Eklentiler"
+          "title": "Dışarıdan Eklentiler"
         },
         "sort": {
           "a_z": "Alfabetik (A-Z)",
@@ -41,7 +41,7 @@
         "refresh": "Yenile",
         "report_error": "Hata Raporunu Gönder",
         "sent": "Gönder!",
-        "title": "Error"
+        "title": "Hata"
       },
       "file_upload_error": "Dosya 2 MB'ın üzerinde",
       "loading": "Yükleniyor...",
@@ -76,13 +76,13 @@
           },
           "created_by": "Oluşturan",
           "description": "Açıklama",
-          "details": "Details",
+          "details": "Ayrıntılar",
           "explore": "Keşfet",
           "information": "Bilgi",
           "last_updated": "Son Güncelleme",
           "more_from_curator": "{name} tarafından sağlanan buna benzer diğer içerikler",
           "no_images": "Fotoğraf bulunamadı",
-          "no_quotes": "Alıntı bulunamadı",
+          "no_quotes": "Alıntı Sayısı",
           "not_in_language": "Bu eklenti sizin dilinizde değil",
           "overview": "Genel Bakış",
           "part_of": "Parçası",
@@ -109,7 +109,7 @@
         "buttons": {
           "export": "Dışarı Aktar",
           "import": "İçeri Aktar",
-          "reset": "Yenile"
+          "reset": "Sıfırla"
         },
         "enabled": "Etkinleştir",
         "open_knowledgebase": "Bilgilendirme Sayfasını Aç",
@@ -121,7 +121,7 @@
           "about": {
             "contact_us": "Bize Ulaşın",
             "contributors": "Katkıda Bulunanlar",
-            "curators": "Eklenti yaratıcıları",
+            "curators": "Eklenti Oluşturucular",
             "form_button": "Form",
             "no_supporters": "Şu anda Mue destekçisi yok",
             "photographers": "Fotoğrafçılar",
@@ -151,11 +151,11 @@
             "custom_css_subtitle": "Mue'nin stilini Cascading Style Sheets (CSS) ile özelleştirin.",
             "custom_js": "Özel JS",
             "customisation": "Özelleştirme",
-            "data": "Data",
+            "data": "Verileriniz",
             "data_description": "Mue ayarlarınızı bilgisayarınıza aktarmayı, mevcut bir ayar dosyasını içe aktarmayı veya ayarlarınızı varsayılan değerlerine sıfırlamayı seçin.",
             "data_subtitle": "Mue'daki verilerinizi yönetin.",
             "experimental_warning": "Deneysel modunuz açıksa Mue ekibinin destek sağlayamadığını lütfen unutmayın. Lütfen önce devre dışı bırakın ve desteğe başvurmadan önce sorunun devam edip etmediğini görün.",
-            "offline_mode": "Offline mode",
+            "offline_mode": "Çevrimdışı Mod",
             "offline_subtitle": "Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm talepler devre dışı bırakılır.",
             "preview_data_disabled": {
               "description": "Veri ayarları önizleme modunda devre dışıdır. Bu özelliği kullanmak için lütfen önizleme modundan çıkın.",
@@ -165,9 +165,9 @@
               "cancel": "İptal",
               "information": "Bu işlem tüm verileri silecektir. Verilerinizi ve tercihlerinizi saklamak istiyorsanız, lütfen önce bunları dışa aktarın.",
               "question": "Mue'yu sıfırlamak istiyor musunuz?",
-              "title": "WARNING"
+              "title": "UYARI"
             },
-            "tab_name": "Tab name",
+            "tab_name": "Sekme Adı",
             "tab_name_subtitle": "Tarayıcınızda görünen sekmenin adını değiştirin.",
             "timezone": {
               "automatic": "Otomatik",
@@ -185,11 +185,11 @@
                 "new": "Yeni",
                 "none": "Hiçbiri",
                 "old": "Eski",
-                "title": "Widget metin gölgesi"
+                "title": "Araç metin gölgesi"
               },
               "title": "Erişebilirlik",
               "toast_duration": "Bildirim süresi",
-              "widget_zoom": "Widget Ölçeği"
+              "widget_zoom": "Araç Ölçeği"
             },
             "font": {
               "custom": "Özel yazı tipi",
@@ -232,12 +232,12 @@
               "description": "Eski (7.0 öncesi kullanıcılar için etkin) ve şık modern stilimiz olmak üzere iki stil arasından seçim yapın.",
               "legacy": "Eski",
               "new": "Yeni",
-              "title": "Widget Stili"
+              "title": "Araç Stili"
             },
             "theme": {
               "auto": "Otomatik",
               "dark": "Koyu",
-              "description": "Mue araçlarınızın(widget) ve modellerinin temasını değiştirin.",
+              "description": "Mue araçlarının ve modellerinin temasını değiştirin.",
               "light": "Açık",
               "title": "Tema"
             },
@@ -275,7 +275,7 @@
             "source": {
               "add_background": "Arka Plan Ekle",
               "add_colour": "Renk Ekle",
-              "add_url": "Add URL",
+              "add_url": "URL ekle",
               "api": "Arka plan API",
               "custom_background": "Özel arka plan görseli",
               "custom_colour": "Özel Arka Plan Rengi",
@@ -348,30 +348,30 @@
             "warning": "Bu ayarlar tam olarak test edilmemiştir/uygulanmamıştır ve doğru çalışmayabilir!"
           },
           "greeting": {
-            "add_event": "Add Event",
+            "add_event": "Olay Ekle",
             "additional": "Karşılama ekranı için ek ayarlarınızı belirleyin.",
             "birthday": "Doğum Günü",
             "birthday_age": "Doğum günümde yaş bilgisi gözüksün.",
             "birthday_date": "Doğum günü tarihim",
             "birthday_subtitle": "Doğum günüm olduğunda bir 'Mutlu Yıllar' mesajı göster.",
             "custom": "Özel olaylar",
-            "day": "Day",
+            "day": "Gün",
             "default": "Karşılama mesajları görünsün.",
             "enable_events": "Özel günlerde mesaj göster.",
-            "event_name": "Event Name",
+            "event_name": "Olay Adı",
             "events": "Olaylar",
-            "events_description": "Mue'da doğum günleri gibi etkinlikleri kontrol edin.",
+            "events_description": "Mue'da doğum günleri gibi olayları kontrol edin.",
             "month": "Ay",
             "name": "Karşılama için isim",
-            "no_events": "No Events",
+            "no_events": "Olay Yok",
             "no_events_description": "Bazı Olaylar Ekleyin",
             "title": "Karşılama Ekranı"
           },
           "header": {
-            "enabled": "Bu widget'ın gösterilip gösterilmeyeceğini seçin.",
+            "enabled": "Bu aracın gösterilip gösterilmeyeceğini seçin.",
             "more_info": "Daha fazla bilgi",
             "report_issue": "Hata Bildir",
-            "size": "Widget'ın büyüklüğünü kontrol etmek için kaydırın."
+            "size": "Aracın büyüklüğünü kontrol etmek için kaydırın."
           },
           "language": {
             "quote": "Alıntı dili",
@@ -387,7 +387,7 @@
             "title": "Mesaj"
           },
           "order": {
-            "title": "Widget Sıralaması"
+            "title": "Araç Sıralaması"
           },
           "quicklinks": {
             "add_link": "Link Ekle",
@@ -409,7 +409,7 @@
           },
           "quote": {
             "add": "Alıntı Ekle",
-            "additional": "Alıntı widget'ının stilini özelleştirmek için diğer ayarlar",
+            "additional": "Alıntı aracının stilini özelleştirmek için diğer ayarlar",
             "author": "Yazar",
             "author_img": "Yazar resmini göster.",
             "author_link": "Yazara dair bilgilendirme bağlantısı göster.",
@@ -429,7 +429,7 @@
             "title": "Alıntı"
           },
           "search": {
-            "additional": "Arama widget'ı için ekran ve işlevsellik seçeneklerini belirleyin.",
+            "additional": "Arama aracı için ekran ve işlevsellik seçeneklerini belirleyin.",
             "autocomplete": "Otomatik Tamamlama",
             "autocomplete_provider": "Otomatik Tamamlama Sağlayıcısı",
             "autocomplete_provider_subtitle": "Otomatik tamamlama açılır sonuçları için kullanılacak arama motorunu belirleyin.",
@@ -524,7 +524,7 @@
               "title": "Sıcaklık Ölçü Birimi"
             },
             "title": "Hava Durumu",
-            "widget_type": "Widget Türü"
+            "widget_type": "Araç Türü"
           }
         }
       },
@@ -604,7 +604,7 @@
         },
         "theme": {
           "description": "Mue için hem açık hem de koyu tema mevcuttur. İsterseniz sistem temanıza bağlı olarak otomatik olarak da ayarlanabilir.",
-          "tip": "Otomatik ayarları kullanmak, bilgisayarınızdaki varsayılan temayı kullanır. Bu ayar, modları ve ekranda görüntülenen hava durumu ve notlar gibi bazı araçları(widget) etkiler.",
+          "tip": "Otomatik ayarları kullanmak, bilgisayarınızdaki varsayılan temayı kullanır. Bu ayar, modları ve ekranda görüntülenen hava durumu ve notlar gibi bazı araçları etkiler.",
           "title": "Bir Tema Seçin"
         }
       },
@@ -621,7 +621,7 @@
     "notes": "Not kopyalandı",
     "quote": "Alıntı kopyalandı",
     "reset": "Başarıyla resetlendi",
-    "stats_reset": "Stats reset",
+    "stats_reset": "İstatistikler sıfırlandı",
     "uninstalled": "Başarıyla kaldırıldı",
     "updated": "Başarıyla güncellendi"
   },
