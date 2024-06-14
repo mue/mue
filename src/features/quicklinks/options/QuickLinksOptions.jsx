@@ -11,12 +11,13 @@ import { AddModal } from 'components/Elements/AddModal';
 import EventBus from 'utils/eventbus';
 import { QuickLink } from './QuickLink';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
+import defaults from './default';
 
 class QuickLinksOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
-      items: JSON.parse(localStorage.getItem('quicklinks')),
+      items: JSON.parse(localStorage.getItem('quicklinks')) || defaults.quicklinks,
       showAddModal: false,
       urlError: '',
       iconError: '',
@@ -41,7 +42,7 @@ class QuickLinksOptions extends PureComponent {
   }
 
   async addLink(name, url, icon) {
-    const data = JSON.parse(localStorage.getItem('quicklinks'));
+    const data = JSON.parse(localStorage.getItem('quicklinks')) || defaults.quicklinks;
 
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
       url = 'https://' + url;
@@ -87,7 +88,7 @@ class QuickLinksOptions extends PureComponent {
   }
 
   async editLink(og, name, url, icon) {
-    const data = JSON.parse(localStorage.getItem('quicklinks'));
+    const data = JSON.parse(localStorage.getItem('quicklinks')) || defaults.quicklinks;
     const dataobj = data.find((i) => i.key === og.key);
     dataobj.name = name || (await getTitleFromUrl(url));
     dataobj.url = url;
