@@ -130,9 +130,9 @@ h5 {
   height: 50px;
 
   @include themed {
-    border: 3px solid t($modal-sidebar);
+    border: 3px solid t($btn-background);
     border-radius: 50%;
-    border-top-color: t($modal-sidebarActive);
+    border-top-color: t($brand-accent);
   }
 
   animation: spin 1s ease-in-out infinite;

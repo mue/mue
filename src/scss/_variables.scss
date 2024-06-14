@@ -18,8 +18,11 @@ $link: 'link';
 $weather: 'weather';
 $modal-secondaryColour: 'modal-secondaryColour';
 $slightGradient: 'slightGradient';
+$orange: #ffb032;
+$pink: #dd3b67;
+$brand-accent: 'brand-accent';
 $theme-colours: (
-  'gradient': linear-gradient(90deg, #ffb032 0%, #dd3b67 100%),
+  'gradient': linear-gradient(90deg, $orange 0%, $pink 100%),
   'main': rgb(242 243 244 / 100%),
   'secondary': rgb(0 0 0 / 100%),
   'main-text-color': rgb(242 243 244 / 100%),
@@ -54,6 +57,7 @@ $ui-elements: (
 );
 $themes: (
   light: (
+    'brand-accent': $pink,
     'weather': #333,
     'background': rgb(255 255 255 / 70%),
     'backgroundBlur': 15px,
@@ -71,6 +75,7 @@ $themes: (
     'slightGradient': linear-gradient(#fff, #ddd),
   ),
   dark: (
+    'brand-accent': $orange,
     'weather': #e7e7e7,
     'background': rgb(0 0 0 / 70%),
     'backgroundBlur': 15px,
@@ -82,7 +87,7 @@ $themes: (
     'btn-backgroundHover': #565656,
     'modal-background': #0a0a0a,
     'modal-sidebar': rgb(14, 16, 19),
-    'modal-sidebarActive': #333,
+    'modal-sidebarActive': rgba(0, 0, 0, 0.4),
     'modal-secondaryColour': #111,
     'link': rgb(115 115 255),
     'slightGradient': linear-gradient(#0e1013, #322a2a),
