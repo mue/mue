@@ -12,6 +12,8 @@ import { Button } from 'components/Elements';
 import { install } from 'utils/marketplace';
 import { sortItems } from '../api';
 
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
+
 function Marketplace() {
   const [items, setItems] = useState([]);
   const [done, setDone] = useState(false);
@@ -21,7 +23,8 @@ function Marketplace() {
   const [type, setType] = useState('all');
   const [busy, setBusy] = useState(false);
   const [collectionTitle, setCollectionTitle] = useState('');
-  
+  const { changeTab } = useTab();
+
   const controller = new AbortController();
 
   async function toggle(pageType, data) {
@@ -129,7 +132,6 @@ function Marketplace() {
     setDone(true);
   }
 
-
   function returnToMain() {
     setCollection(false);
   }
@@ -208,6 +210,16 @@ function Marketplace() {
 
   return (
     <>
+      <h1
+        onClick={() =>
+          changeTab(
+            'settings',
+            variables.getMessage('modals.main.settings.sections.changelog.title'),
+          )
+        }
+      >
+        See changelog
+      </h1>
       {collection === true ? (
         <>
           <Header
@@ -218,16 +230,18 @@ function Marketplace() {
           />
           <div
             className="collectionPage"
-            style={{
-            //  backgroundImage: `linear-gradient(to bottom, transparent, black), url('${collectionImg}')`,
-            }}
+            style={
+              {
+                //  backgroundImage: `linear-gradient(to bottom, transparent, black), url('${collectionImg}')`,
+              }
+            }
           >
             <div className="nice-tag">
               {variables.getMessage('modals.main.marketplace.collection')}
             </div>
             <div className="content">
-              <span className="mainTitle">{collectionTitle}</span>
-=            </div>
+              <span className="mainTitle">{collectionTitle}</span>={' '}
+            </div>
 
             <Button
               type="collection"
