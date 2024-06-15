@@ -10,16 +10,10 @@ const Addons = lazy(() => import('../../../features/misc/views/Addons'));
 const Marketplace = lazy(() => import('../../../features/misc/views/Marketplace'));
 
 const renderLoader = () => (
-  <div className="flex w-full min-h-full">
-    <div className="modalTabContent">
-      <div className="emptyItems">
-        <div className="emptyMessage">
-          <div className="loaderHolder">
-            <div id="loader"></div>
-            <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
-          </div>
-        </div>
-      </div>
+  <div className="flex flex-col w-full h-[65vh] justify-center items-center">
+    <div className="loaderHolder">
+      <div id="loader"></div>
+      <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
     </div>
   </div>
 );
