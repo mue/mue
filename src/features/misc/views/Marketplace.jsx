@@ -1,9 +1,49 @@
 import variables from 'config/variables';
-import { memo } from 'react';
+import { memo, useState, useEffect } from 'react';
 
 import MarketplaceTab from '../../marketplace/views/Browse';
+import { sortItems } from '../../marketplace/api';
+import { NewItems as Items } from '../../marketplace/components/Items/NewItems';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
+import { NewItemPage } from '../../marketplace/views/newItemPage';
 
 function Marketplace(props) {
+  const [done, setDone] = useState(false);
+  const [items, setItems] = useState([]);
+  const [type, setType] = useState('all');
+  const [selectedItem, setSelectedItem] = useState(null);
+  const { subTab } = useTab();
+
+  const controller = new AbortController();
+
+  async function getItems() {
+    setDone(false);
+    const dataURL =
+      variables.constants.API_URL +
+      (type === 'collections' ? '/marketplace/collections' : '/marketplace/items/' + type);
+
+    const { data } = await (
+      await fetch(dataURL, {
+        signal: controller.signal,
+      })
+    ).json();
+
+    if (controller.signal.aborted === true) {
+      return;
+    }
+
+    setItems(sortItems(data, 'z-a'));
+    setDone(true);
+  }
+
+  useEffect(() => {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+      return;
+    }
+
+    getItems();
+  }, []);
+
   return (
     {
       /*<Tabs changeTab={(type) => props.changeTab(type)} current="marketplace" modalClose={props.modalClose}>
@@ -29,7 +69,15 @@ function Marketplace(props) {
     },
     (
       <div className="modalTabContent">
-        <MarketplaceTab type="all" />
+        {/*<MarketplaceTab type="all" />
+        {selectedItem !== null ? <span>{selectedItem?.display_name}</span> : null}*/}
+        {subTab === '' ? (
+          <Items items={items} />
+        ) : (
+          <>
+            <NewItemPage />
+          </>
+        )}
       </div>
     )
   );
