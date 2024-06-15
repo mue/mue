@@ -2,7 +2,8 @@ import { Suspense, lazy, memo } from 'react';
 const Analog = lazy(() => import('react-clock'));
 
 function ClockSkeleton() {
-  if (localStorage.getItem('timeType') === 'analogue') {
+  const timeType = localStorage.getItem('timeType');
+  if (timeType === 'analogue') {
     return (
       <Suspense fallback={<></>}>
         <div className="clockBackground">
@@ -14,9 +15,9 @@ function ClockSkeleton() {
         </div>
       </Suspense>
     );
-  } else if (localStorage.getItem('timeType') === 'percentageComplete') {
+  } else if (timeType === 'percentageComplete') {
     return <span className="vertical-clock clock-container clockSkeleton">68%</span>;
-  } else if (localStorage.getItem('timeType') === 'verticalClock') {
+  } else if (timeType === 'verticalClock') {
     return (
       <span className="vertical-clock clock-container" style={{ fontSize: '30px' }}>
         <div className="hour">10</div>

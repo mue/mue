@@ -3,7 +3,6 @@ import { FileUpload } from 'components/Form/Settings';
 import { MdCloudUpload } from 'react-icons/md';
 import { importSettings as importSettingsFunction } from 'utils/settings';
 import { Header, Content } from '../Layout';
-import default_settings from 'utils/data/default_settings.json';
 
 function ImportSettings(props) {
   const importSettings = (e) => {
@@ -21,13 +20,6 @@ function ImportSettings(props) {
         setting === 'showReminder'
       ) {
         return;
-      }
-
-      const defaultSetting = default_settings.find((i) => i.name === setting);
-      if (defaultSetting !== undefined) {
-        if (data[setting] === String(defaultSetting.value)) {
-          return;
-        }
       }
 
       settings.push({

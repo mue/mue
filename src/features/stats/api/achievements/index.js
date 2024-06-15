@@ -14,7 +14,7 @@ import tr_TR from 'i18n/locales/achievements/tr_TR.json';
 import bn from 'i18n/locales/achievements/bn.json';
 import pt_BR from 'i18n/locales/achievements/pt_BR.json';
 
-import achievements from 'utils/data/achievements.json';
+import achievements from '../../achievements.json';
 
 import { checkAchievements, newAchievements } from './condition';
 

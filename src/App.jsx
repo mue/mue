@@ -11,6 +11,7 @@ import Preview from 'features/helpers/preview/Preview';
 import Welcome from 'features/welcome/Welcome';
 
 import BackgroundDefaults from 'features/background/options/default';
+import defaults from 'config/default';
 
 const useAppSetup = () => {
   useEffect(() => {
@@ -37,7 +38,7 @@ const App = () => {
   const [showBackground, setShowBackground] = useState(false);
 
   useEffect(() => {
-    const storedToastDisplayTime = localStorage.getItem('toastDisplayTime');
+    const storedToastDisplayTime = localStorage.getItem('toastDisplayTime') || defaults.toastDisplayTime;
     const storedBackground = localStorage.getItem('background') || BackgroundDefaults.background;
 
     if (storedToastDisplayTime) {

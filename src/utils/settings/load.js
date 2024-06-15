@@ -105,15 +105,6 @@ export function loadSettings(hotreload) {
     );
   }
 
-  // If the extension got updated and the new app links default settings
-  // were not set, set them
-  if (localStorage.getItem('applinks') === null) {
-    localStorage.setItem('applinks', JSON.stringify([]));
-  }
-  if (localStorage.getItem('appsEnabled') === null) {
-    localStorage.setItem('showWelcome', false);
-  }
-
   // everything below this shouldn't run on a hot reload event
   if (hotreload === true) {
     return;

@@ -4,10 +4,11 @@ import EventBus from 'utils/eventbus';
 import { Tooltip, Button } from 'components/Elements';
 
 import { MdClose, MdDone } from 'react-icons/md';
+import defaults from '../options/default';
 
 function ExcludeModal({ modalClose, info }) {
   const excludeImage = async () => {
-    let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
+    let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude')) || defaults.backgroundExclude;
     backgroundExclude.push(info.pun);
     backgroundExclude = JSON.stringify(backgroundExclude);
     localStorage.setItem('backgroundExclude', backgroundExclude);

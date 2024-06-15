@@ -6,7 +6,6 @@ import { SiGithubsponsors, SiOpencollective, SiX } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
 import { Tooltip, Button } from 'components/Elements';
-import other_contributors from 'utils/data/other_contributors.json';
 
 class About extends PureComponent {
   constructor() {
@@ -14,7 +13,6 @@ class About extends PureComponent {
     this.state = {
       contributors: [],
       sponsors: [],
-      other_contributors: [],
       photographers: [],
       curators: [],
       update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
@@ -106,7 +104,6 @@ class About extends PureComponent {
       contributors: contributors.filter((contributor) => !contributor.login.includes('bot')),
       sponsors,
       update,
-      other_contributors,
       photographers,
       curators,
       loading: null,
@@ -301,16 +298,6 @@ class About extends PureComponent {
                 </a>
               </Tooltip>
             ))}
-            {
-              // for those who contributed without opening a pull request
-              this.state.other_contributors.map(({ login, avatar_url }) => (
-                <Tooltip title={login} key={login}>
-                  <a href={'https://github.com/' + login} target="_blank" rel="noopener noreferrer">
-                    <img draggable={false} src={avatar_url + '&s=128'} alt={login}></img>
-                  </a>
-                </Tooltip>
-              ))
-            }
           </div>
         </div>
 

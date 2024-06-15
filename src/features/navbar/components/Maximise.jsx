@@ -1,16 +1,16 @@
 import variables from 'config/variables';
 import { useState } from 'react';
-
 import { MdCropFree } from 'react-icons/md';
-
 import { Tooltip } from 'components/Elements';
+
+import defaults from '../options/default';
 
 function Maximise(props) {
   const [hidden, setHidden] = useState(false);
 
   const setAttribute = (blur, brightness, filter) => {
     // don't attempt to modify the background if it isn't an image
-    const backgroundType = localStorage.getItem('backgroundType');
+    const backgroundType = localStorage.getItem('backgroundType') || defaults.backgroundType;
     if (
       backgroundType === 'colour' ||
       backgroundType === 'random_colour' ||
@@ -23,7 +23,7 @@ function Maximise(props) {
 
     let backgroundFilter;
     if (filter === true) {
-      const filterData = localStorage.getItem('backgroundFilter');
+      const filterData = localStorage.getItem('backgroundFilter') || defaults.backgroundFilter;
       if (filterData !== 'none') {
         backgroundFilter = filterData;
       }
@@ -51,7 +51,11 @@ function Maximise(props) {
       setAttribute(0, 100);
       variables.stats.postEvent('feature', 'Background maximise');
     } else {
-      setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'), true);
+      setAttribute(
+        localStorage.getItem('blur') || defaults.blur,
+        localStorage.getItem('brightness') || defaults.brightness,
+        true,
+      );
       variables.stats.postEvent('feature', 'Background unmaximise');
     }
   };

@@ -18,6 +18,7 @@ import { Tooltip, Button } from 'components/Elements';
 import Modal from 'react-modal';
 
 import CustomURLModal from './CustomURLModal';
+import defaults from './default';
 
 export default class CustomSettings extends PureComponent {
   getMessage = (text, obj) => variables.getMessage(text, obj || {});
@@ -106,7 +107,8 @@ export default class CustomSettings extends PureComponent {
     try {
       data = JSON.parse(localStorage.getItem('customBackground'));
     } catch (e) {
-      data = [localStorage.getItem('customBackground')];
+      const custom = localStorage.getItem('customBackground');
+      data = custom ? [custom] : defaults.customBackground
     }
 
     return data;

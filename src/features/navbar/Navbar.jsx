@@ -18,7 +18,7 @@ class Navbar extends PureComponent {
     this.state = {
       classList: localStorage.getItem('widgetStyle') === 'legacy' ? 'navbar old' : 'navbar new',
       refreshText: '',
-      refreshEnabled: localStorage.getItem('refresh'),
+      refreshEnabled: localStorage.getItem('refresh') || defaults.refresh,
       refreshOption: localStorage.getItem('refreshOption') || defaults.refreshOption,
       appsOpen: false,
     };
@@ -32,7 +32,7 @@ class Navbar extends PureComponent {
 
   updateRefreshText() {
     let refreshText;
-    switch (localStorage.getItem('refreshOption')) {
+    switch (this.state.refreshOption) {
       case 'background':
         refreshText = variables.getMessage('modals.main.settings.sections.background.title');
         break;

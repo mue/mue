@@ -1,4 +1,3 @@
-import defaultSettings from 'utils/data/default_settings.json';
 import languages from 'i18n/languages.json';
 import variables from 'config/variables';
 
@@ -8,7 +7,6 @@ import variables from 'config/variables';
  */
 export function setDefaultSettings(reset) {
   localStorage.clear();
-  defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 
   // Languages
   const languageCodes = languages.map(({ value }) => value);

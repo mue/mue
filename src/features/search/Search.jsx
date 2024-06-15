@@ -12,6 +12,7 @@ import EventBus from 'utils/eventbus';
 
 import './search.scss';
 
+import defaults from './options/default';
 import searchEngines from './search_engines.json';
 
 function Search() {
@@ -53,7 +54,7 @@ function Search() {
     let _url;
     let _query = 'q';
 
-    const setting = localStorage.getItem('searchEngine');
+    const setting = localStorage.getItem('searchEngine') || defaults.searchEngine;
     const info = searchEngines.find((i) => i.settingsName === setting);
 
     if (info !== undefined) {
@@ -64,7 +65,7 @@ function Search() {
     }
 
     if (setting === 'custom') {
-      const custom = localStorage.getItem('customSearchEngine');
+      const custom = localStorage.getItem('customSearchEngine') || defaults.customSearchEngine;
       if (custom !== null) {
         _url = custom;
       }

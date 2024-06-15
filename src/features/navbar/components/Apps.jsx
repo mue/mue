@@ -13,7 +13,7 @@ class Apps extends PureComponent {
   constructor() {
     super();
     this.state = {
-      apps: JSON.parse(localStorage.getItem('applinks')),
+      apps: JSON.parse(localStorage.getItem('applinks')) || defaults.applinks,
       visibility: localStorage.getItem('appsPinned') === 'true' ? 'visible' : 'hidden',
       marginLeft: localStorage.getItem('refresh') === 'false' ? '-200px' : '-130px',
       showApps: localStorage.getItem('appsPinned') === 'true',
@@ -51,7 +51,7 @@ class Apps extends PureComponent {
 
   hideApps() {
     this.setState({
-      showApps: localStorage.getItem('AppsPinned') === 'true',
+      showApps: localStorage.getItem('appsPinned') === 'true',
     });
   }
 

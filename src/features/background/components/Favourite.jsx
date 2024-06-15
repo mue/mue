@@ -2,6 +2,8 @@ import variables from 'config/variables';
 import { useState } from 'react';
 import { MdStar, MdStarBorder } from 'react-icons/md';
 
+import defaults from '../options/default';
+
 function Favourite({ credit, offline, pun, tooltipText }) {
   const [favourited, setFavourited] = useState(
     localStorage.getItem('favourite') ? (
@@ -23,7 +25,7 @@ function Favourite({ credit, offline, pun, tooltipText }) {
       tooltipText(variables.getMessage('widgets.quote.favourite'));
       variables.stats.postEvent('feature', 'Background favourite');
     } else {
-      const type = localStorage.getItem('backgroundType');
+      const type = localStorage.getItem('backgroundType') || defaults.backgroundType;
 
       switch (type) {
         case 'colour':

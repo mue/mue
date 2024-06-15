@@ -68,10 +68,12 @@ export const getWeather = async (location, done) => {
       },
       done: true,
     };
+
     localStorage.setItem(
       'currentWeather',
       JSON.stringify({ data: cacheable, cachedAt: Date.now() }),
     );
+
     return cacheable;
   } catch (error) {
     console.error('Fetch Error: ', error);

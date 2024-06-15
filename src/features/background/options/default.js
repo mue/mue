@@ -15,7 +15,8 @@ const DefaultOptions = {
   customBackgroundColour: 'rgba(0, 0, 0, 0)',
   customBackground: [],
   backgroundVideoLoop: true,
-  backgroundVideoMute: true
+  backgroundVideoMute: true,
+  backgroundExclude: []
 };
 
 export default DefaultOptions;

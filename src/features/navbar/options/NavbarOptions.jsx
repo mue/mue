@@ -11,12 +11,13 @@ import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { Header } from 'components/Layout/Settings';
 
 import AppsOptions from './AppsOptions';
+import defaults from './default';
 
 function NavbarOptions() {
   const [showRefreshOptions, setShowRefreshOptions] = useState(
     localStorage.getItem('refresh') === 'true',
   );
-  const [appsEnabled, setAppsEnabled] = useState(localStorage.getItem('appsEnabled') === 'true' || false);
+  const [appsEnabled, setAppsEnabled] = useState(localStorage.getItem('appsEnabled') === 'true' || defaults.appsEnabled);
 
   const NAVBAR_SECTION = 'modals.main.settings.sections.appearance.navbar';
 
