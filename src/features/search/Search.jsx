@@ -1,12 +1,14 @@
 import variables from 'config/variables';
+
 import { memo, createRef, useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-import { MdSearch, MdMic, MdScreenSearchDesktop } from 'react-icons/md';
-import { BsGoogle } from 'react-icons/bs';
-import { SiDuckduckgo, SiMicrosoftbing, SiBaidu, SiNaver } from 'react-icons/si';
-import { FaYandex, FaYahoo } from 'react-icons/fa';
+
+import { MdSearch, MdMic } from 'react-icons/md';
+
 import { Tooltip } from 'components/Elements';
 import { Autocomplete as AutocompleteInput } from './components/autocomplete';
+import Icon from './components/dropdown/Icon';
+import Dropdown from './components/dropdown/Dropdown';
 
 import EventBus from 'utils/eventbus';
 
@@ -20,11 +22,12 @@ function Search() {
   const [query, setQuery] = useState('');
   const [microphone, setMicrophone] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
+  const [currentSearch, setCurrentSearch] = useState('');
   const [searchDropdown, setSearchDropdown] = useState(false);
+
   const [classList] = useState(
     localStorage.getItem('widgetStyle') === 'legacy' ? 'searchIcons old' : 'searchIcons',
   );
-  const [currentSearch, setCurrentSearch] = useState('');
 
   useEffect(() => {
     EventBus.on('refresh', (data) => {
@@ -45,10 +48,6 @@ function Search() {
   }, []);
 
   let micIcon = createRef();
-
-  const customText = variables
-    .getMessage('modals.main.settings.sections.search.custom')
-    .split(' ')[0];
 
   function init() {
     let _url;
@@ -141,87 +140,11 @@ function Search() {
 
   const getSuggestionsDebounced = useDebouncedCallback(getSuggestions, 100);
 
-  /**
-   * If the user selects a search engine from the dropdown menu, the function will set the state of the
-   * search engine to the selected search engine.
-   * @param {string} name - The name of the search engine
-   * @param {boolean} custom - If the search engine is custom
-   */
-  function setSearch(name, custom) {
-    let _url;
-    let _query = 'q';
-    const info = searchEngines.find((i) => i.name === name);
-
-    if (info !== undefined) {
-      _url = info.url;
-      if (info.query) {
-        _query = info.query;
-      }
-    }
-
-    if (custom) {
-      const customSetting = localStorage.getItem('customSearchEngine');
-      if (customSetting !== null) {
-        _url = customSetting;
-      } else {
-        _url = url;
-      }
-    } else {
-      localStorage.setItem('searchEngine', info.settingsName);
-    }
-
-    setURL(_url);
-    setQuery(_query);
-    setCurrentSearch(name);
-    setSearchDropdown(false);
-  }
-
-  /**
-   * Gets the icon for the search engine dropdown.
-   * @param {string} name - The name of the search engine.
-   * @returns A React component.
-   */
-  function getSearchDropdownicon(name) {
-    switch (name) {
-      case 'Google':
-        return <BsGoogle />;
-      case 'DuckDuckGo':
-        return <SiDuckduckgo />;
-      case 'Bing':
-        return <SiMicrosoftbing />;
-      case 'Yahoo':
-      case 'Yahoo! JAPAN':
-        return <FaYahoo />;
-      case 'Яндекс':
-        return <FaYandex />;
-      case '百度':
-        return <SiBaidu />;
-      case 'NAVER':
-        return <SiNaver />;
-      default:
-        return <MdScreenSearchDesktop />;
-    }
-  }
-
   return (
     <div className="searchComponents">
       <div className="searchMain">
         <div className={classList}>
-          {localStorage.getItem('searchDropdown') === 'true' ? (
-            <Tooltip
-              title={variables.getMessage('modals.main.settings.sections.search.search_engine')}
-            >
-              <button
-                className="navbarButton"
-                aria-label="Search Engine"
-                onClick={() => setSearchDropdown(!searchDropdown)}
-              >
-                {getSearchDropdownicon(currentSearch)}
-              </button>
-            </Tooltip>
-          ) : (
-            ''
-          )}
+          <Icon currentSearch={currentSearch} setSearchDropdown={setSearchDropdown} />
           <Tooltip
             title={variables.getMessage('modals.main.settings.sections.search.voice_search')}
           >
@@ -246,33 +169,16 @@ function Search() {
         </form>
       </div>
       <div>
-        {localStorage.getItem('searchDropdown') === 'true' && searchDropdown === true && (
-          <div className="searchDropdown">
-            {searchEngines.map(({ name }, key) => {
-              return (
-                <span
-                  className={
-                    'searchDropdownList' +
-                    (currentSearch === name ? ' searchDropdownListActive' : '')
-                  }
-                  onClick={() => setSearch(name)}
-                  key={key}
-                >
-                  {name}
-                </span>
-              );
-            })}
-            <span
-              className={
-                'searchDropdownList' +
-                (currentSearch === customText ? ' searchDropdownListActive' : '')
-              }
-              onClick={() => setSearch(customText, 'custom')}
-            >
-              {customText}
-            </span>
-          </div>
-        )}
+        <Dropdown
+          url={url}
+          setURL={setURL}
+          setQuery={setQuery}
+          setCurrentSearch={setCurrentSearch}
+          currentSearch={currentSearch}
+          searchDropdown={searchDropdown}
+          setSearchDropdown={setSearchDropdown}
+          searchEngines={searchEngines}
+        />
       </div>
     </div>
   );
