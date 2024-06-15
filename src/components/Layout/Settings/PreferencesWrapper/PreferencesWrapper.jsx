@@ -7,7 +7,8 @@ import values from 'utils/data/slider_values.json';
 import EventBus from 'utils/eventbus';
 
 const PreferencesWrapper = ({ children, ...props }) => {
-  const [shown, setShown] = useState(localStorage.getItem(props.setting) === 'true');
+  const [shown, setShown] = useState(localStorage.getItem(props.setting) === 'true' || props.default || false);
+  console.log(props.default)
 
   EventBus.on('toggle', (setting) => {
     if (setting === props.setting) {

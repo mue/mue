@@ -1,5 +1,5 @@
 const DefaultOptions = {
-  quote: false,
+  quote: true,
   quoteType: 'api',
   customQuote: [],
   copyButton: false,

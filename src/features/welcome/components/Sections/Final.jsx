@@ -1,6 +1,7 @@
 import variables from 'config/variables';
 import languages from '@/i18n/languages.json';
 import { Header, Content } from '../Layout';
+import defaults from 'config/default';
 
 function Final(props) {
   return (
@@ -17,7 +18,7 @@ function Final(props) {
         <div className="toggle" onClick={() => props.switchTab(1)}>
           <span>
             {variables.getMessage('modals.main.settings.sections.language.title')}:{' '}
-            {languages.find((i) => i.value === localStorage.getItem('language')).name}
+            {languages.find((i) => i.value === localStorage.getItem('language') || defaults.language).name}
           </span>
         </div>
         <div className="toggle" onClick={() => props.switchTab(3)}>
