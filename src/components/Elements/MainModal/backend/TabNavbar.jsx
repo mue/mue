@@ -60,7 +60,7 @@ const TabNavbar = ({ modalClose }) => {
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -144,11 +144,30 @@ const TabNavbar = ({ modalClose }) => {
       <div className="flex flex-row gap-5 items-center">
         {navbarLogo}
         <div className="flex flex-row items-center gap-2">
-          <span onClick={() => changeTab(activeTab)} className={clsx("text-xl capitalize tracking-normal transition-all duration-150 ease-in-out", { 'text-neutral-300 cursor-pointer hover:text-neutral-100': subTab !== '' && activeTab === 'marketplace' })}>{variables.getMessage(`modals.main.navbar.${activeTab}`)}</span>
+          <span
+            onClick={() => changeTab(activeTab)}
+            className={clsx(
+              'text-xl capitalize tracking-normal transition-all duration-150 ease-in-out',
+              {
+                'text-neutral-300 cursor-pointer hover:text-neutral-100':
+                  subTab !== '' && activeTab === 'marketplace',
+              },
+            )}
+          >
+            {variables.getMessage(`modals.main.navbar.${activeTab}`)}
+          </span>
           {subTab !== '' && (
             <>
               <MdOutlineKeyboardArrowRight />
-              <span onClick={() => setSubSection('')} className={clsx("text-xl capitalize tracking-normal transition-all duration-150 ease-in-out", { 'text-neutral-300 cursor-pointer hover:text-neutral-100': subSection !== '' })}>{subTab}</span>
+              <span
+                onClick={() => setSubSection('')}
+                className={clsx(
+                  'text-xl capitalize tracking-normal transition-all duration-150 ease-in-out',
+                  { 'text-neutral-300 cursor-pointer hover:text-neutral-100': subSection !== '' },
+                )}
+              >
+                {subTab}
+              </span>
             </>
           )}
           {subSection !== '' && (
@@ -161,7 +180,7 @@ const TabNavbar = ({ modalClose }) => {
       </div>
       <div className="flex flex-row gap-5">
         <AnimatePresence>
-          {activeTab === 'marketplace' && (
+          {activeTab === 'marketplace' && subTab === '' && (
             <motion.div
               initial={{ opacity: 0, y: '-100%' }}
               animate={{ opacity: 1, y: 0 }}

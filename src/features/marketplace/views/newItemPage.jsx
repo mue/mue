@@ -24,41 +24,77 @@ import { Button } from 'components/Elements';
 const NewItemPage = () => {
   const { subTab } = useTab();
   const controller = new AbortController();
-  const [itemName, setItemName] = useState('');
-  const [ItemDescription, setItemDescription] = useState('');
-  const [ItemAuthor, setItemAuthor] = useState('');
-  const [ItemType, setItemType] = useState('');
-  const [ItemIcon, setItemIcon] = useState('');
   const [count, setCount] = useState(5);
-  let quotes = [];
-  let ItemData;
-  //const [ItemData, setItemData] = useState([]);
+  const [itemData, setItemData] = useState(null);
 
   async function getItemData() {
-    const item = await (
-      await fetch(`${variables.constants.API_URL}/marketplace/item/quote_packs/${subTab}`, {
+    let testType = 'quote_packs';
+    // Fetch data from API
+    const response = await fetch(
+      `${variables.constants.API_URL}/marketplace/item/${testType}/${subTab}`,
+      {
         signal: controller.signal,
-      })
-    ).json();
+      },
+    );
+    const item = await response.json();
     console.log(item);
 
-    setItemName(item.data.display_name);
-    setItemType(item.data.type);
-    setItemDescription(item.data.description);
-    setItemAuthor(item.data.author);
-    setItemType(item.data.type);
-    setItemIcon(item.data.icon_url);
-    console.log(ItemType)
-    if (ItemType === 'quotes') {
-      quotes = item.data.quotes
-      console.log(quotes)
-    }
-    ItemData = item.data.data;
+    // Extract all the information you need
+    const {
+      onCollection,
+      type,
+      display_name,
+      author,
+      description,
+      version,
+      icon_url,
+      data,
+      local,
+      slug,
+      quotes,
+    } = item;
+
+    // Return an object with all the information
+    return {
+      onCollection,
+      type,
+      display_name,
+      author,
+      description,
+      version,
+      icon_url,
+      data,
+      local,
+      slug,
+      quotes,
+    };
   }
 
   useEffect(() => {
-    getItemData();
+    async function fetchData() {
+      const data = await getItemData();
+      setItemData(data.data);
+    }
+
+    fetchData();
   }, []);
+
+  if (!itemData) {
+    return null; // or a loading spinner
+  }
+
+  const {
+    onCollection,
+    type,
+    display_name,
+    author,
+    description,
+    version,
+    icon,
+    data,
+    local,
+    slug,
+  } = itemData;
 
   const moreInfoItem = (icon, header, text) => (
     <div className="infoItem">
@@ -209,7 +245,7 @@ const NewItemPage = () => {
             {moreInfoItem(
               <MdAccountCircle />,
               variables.getMessage('modals.main.marketplace.product.created_by'),
-              ItemAuthor,
+              itemData.author,
             )}
             {itemWarning()}
           </div>
@@ -235,10 +271,10 @@ const NewItemPage = () => {
             <span className="title">
               {variables.getMessage('modals.main.marketplace.product.description')}
             </span>
-            <Markdown>{ItemDescription}</Markdown>
+            <Markdown>{itemData.description}</Markdown>
           </div>
-          {quotes[0]}
-          {ItemType === 'quotes' && (
+          {itemData.quotes && itemData.quotes.length > 0 ? itemData.quotes[0].quote : 'Loading...'}
+          {itemData.type === 'quotes' && (
             <>
               <table>
                 <tbody>
@@ -246,7 +282,7 @@ const NewItemPage = () => {
                     <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
                     <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
                   </tr>
-                  {quotes.slice(0, count).map((quote, index) => (
+                  {itemData.quotes.slice(0, count).map((quote, index) => (
                     <tr key={index}>
                       <td>{quote.quote}</td>
                       <td>{quote.author}</td>
@@ -255,8 +291,8 @@ const NewItemPage = () => {
                 </tbody>
               </table>
               <div className="showMoreItems">
-                <span className="link" onClick={() => count === quotes.length}>
-                  {count !== quotes.length
+                <span className="link" onClick={() => count === itemData.quotes.length}>
+                  {count !== itemData.quotes.length
                     ? variables.getMessage('modals.main.marketplace.product.show_all')
                     : variables.getMessage('modals.main.marketplace.product.show_less')}
                 </span>
@@ -301,19 +337,19 @@ const NewItemPage = () => {
                   variables.getMessage('modals.main.marketplace.product.updated_at'),
                   formattedDate,
                 )}*/}
-              {ItemData?.quotes &&
+              {itemData?.quotes &&
                 moreInfoItem(
                   <MdFormatQuote />,
-                  variables.getMessage('modals.main.marketplace.product.no_quotes'),
-                  ItemData.quotes.length,
+                  variables.getMessage('modals.main.marketplace.product.no_itemData.quotes'),
+                  itemData.quotes.length,
                 )}
-              {ItemData?.photos &&
+              {itemData?.photos &&
                 moreInfoItem(
                   <MdImage />,
                   variables.getMessage('modals.main.marketplace.product.no_images'),
-                  ItemData.photos.length,
+                  itemData.photos.length,
                 )}
-              {/*{ItemData.quotes && ItemData.language
+              {/*{itemData.itemData.quotes && itemData.language
                 ? moreInfoItem(
                     <MdTranslate />,
                     variables.getMessage('modals.main.settings.sections.language.title'),
@@ -333,7 +369,7 @@ const NewItemPage = () => {
         <div
           className="itemInfo"
           style={{
-            backgroundImage: `url("${ItemIcon}")`,
+            backgroundImage: `url("${itemData.icon_url || placeholderIcon}")`,
           }}
         >
           <div className="front">
@@ -341,7 +377,7 @@ const NewItemPage = () => {
               className="icon"
               alt="icon"
               draggable={false}
-              src={ItemIcon}
+              src={itemData.icon_url}
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = placeholderIcon;

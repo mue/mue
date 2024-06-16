@@ -6,6 +6,7 @@ import { sortItems } from '../../marketplace/api';
 import { NewItems as Items } from '../../marketplace/components/Items/NewItems';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 import { NewItemPage } from '../../marketplace/views/newItemPage';
+import { AnimatePresence, motion } from 'framer-motion';
 
 function Marketplace(props) {
   const [done, setDone] = useState(false);
@@ -68,17 +69,25 @@ function Marketplace(props) {
     </Tabs>*/
     },
     (
-      <div className="modalTabContent">
-        {/*<MarketplaceTab type="all" />
-        {selectedItem !== null ? <span>{selectedItem?.display_name}</span> : null}*/}
-        {subTab === '' ? (
-          <Items items={items} />
-        ) : (
-          <>
-            <NewItemPage />
-          </>
-        )}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          className="modalTabContent"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 10 }}
+        >
+          {subTab === '' ? (
+            <motion.div key="items">
+              <Items items={items} />
+            </motion.div>
+          ) : (
+            <motion.div key="itempage">
+              <NewItemPage />
+            </motion.div>
+          )}
+        </motion.div>
+      </AnimatePresence>
     )
   );
 }
