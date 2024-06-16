@@ -1,0 +1,105 @@
+tabname: New Tab
+widgets:
+  greeting:
+    morning: Good Morning
+    afternoon: Good Afternoon
+    evening: Good Evening
+    christmas: Merry Christmas
+    newyear: Happy New Year
+    halloween: Happy Halloween
+    birthday: Happy Birthday
+  background:
+    credit: Photo by
+    unsplash: on Unsplash
+    information: Information
+    download: Download
+    downloads: Downloads
+    views: Views
+    likes: Likes
+    location: Location
+    camera: Camera
+    resolution: Resolution
+    source: Source
+    category: Category
+    exclude: Don't show again
+    exclude_confirm: >-
+      Are you sure you don't want to see this image again?
+
+      Note: if you don't like "{category}" images, you can deselect the category
+      in the background source settings.
+    confirm: Confirm
+  search: Search
+  quicklinks:
+    new: New Link
+    edit: Edit Link
+    name: Name
+    url: URL
+    icon: Icon (optional)
+    add: Add
+    name_error: Must provide name
+    url_error: Must provide URL
+  date:
+    week: Week
+  weather:
+    not_found: Not Found
+    meters: '{amount} metres'
+    extra_information: Extra Information
+    feels_like: Feels like {amount}
+  quote:
+    link_tooltip: Open on Wikipedia
+    share: Share
+    copy: Copy
+    favourite: Favourite
+    unfavourite: Unfavourite
+  navbar:
+    tooltips:
+      refresh: Refresh
+    notes:
+      title: Notes
+      placeholder: Type here
+    todo:
+      title: Todo
+      pin: Pin
+      add: Add
+      no_todos: No Todos
+    apps:
+      title: Apps
+      no_apps: No app links found
+modals:
+  main:
+    title: Options
+    loading: Loading...
+    file_upload_error: File is over 2MB
+    navbar:
+      settings: Settings
+      addons: Add-ons
+      marketplace: Marketplace
+    error_boundary:
+      title: Error
+      message: Failed to load this component of Mue
+      report_error: Send Error Report
+      sent: Sent!
+      refresh: Refresh
+  update:
+    title: Update
+    offline:
+      title: Offline
+      description: Cannot get update logs while in offline mode
+    error:
+      title: Error
+      description: Could not connect to the server
+  share:
+    copy_link: Copy link
+    email: Email
+toasts:
+  quote: Quote copied
+  notes: Notes copied
+  reset: Reset successfully
+  installed: Successfully installed
+  uninstalled: Successfully removed
+  updated: Successfully updated
+  error: Something went wrong
+  imported: Successfully imported
+  no_storage: Not enough storage
+  link_copied: Link copied
+  stats_reset: Stats reset

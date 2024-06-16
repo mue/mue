@@ -9,16 +9,13 @@ export function setDefaultSettings(reset) {
   localStorage.clear();
 
   // Languages
-  const languageCodes = languages.map(({ value }) => value);
-  const browserLanguage =
-    (navigator.languages &&
-      navigator.languages.find((lang) => lang.replace('-', '_') && languageCodes.includes(lang))) ||
-    navigator.language.replace('-', '_');
+  const locale_ids = languages.map(({ value }) => value);
+  const browserLanguage = (navigator.languages && navigator.languages.find((lang) => locale_ids.includes(lang))) || navigator.language;
 
-  if (languageCodes.includes(browserLanguage)) {
+  if (locale_ids.includes(browserLanguage)) {
     localStorage.setItem('language', browserLanguage);
   } else {
-    localStorage.setItem('language', 'en_GB');
+    localStorage.setItem('language', 'en-GB');
   }
 
   localStorage.setItem('tabName', variables.getMessage('tabname'));

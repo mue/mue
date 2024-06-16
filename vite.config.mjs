@@ -5,6 +5,8 @@ import fs from 'fs';
 import ADMZip from 'adm-zip';
 import * as pkg from './package.json';
 import progress from 'vite-plugin-progress';
+import { I18nPlugin } from '@eartharoid/vite-plugin-i18n';
+import YAML from 'yaml';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -98,7 +100,15 @@ export default defineConfig(({ command, mode }) => {
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
     },
-    plugins: [react(), prepareBuilds(), progress()],
+    plugins: [
+      react(),
+      I18nPlugin({
+        include: './src/i18n/**/*.yml',
+        parser: (file) => YAML.parse(file),
+      }),
+      prepareBuilds(),
+      progress()
+    ],
     server: {
       open: true,
       hmr: {
@@ -134,7 +144,6 @@ export default defineConfig(({ command, mode }) => {
         features: path.resolve(__dirname, './src/features'),
         lib: path.resolve(__dirname, './src/lib'),
         scss: path.resolve(__dirname, './src/scss'),
-        translations: path.resolve(__dirname, './src/i18n/locales'),
         utils: path.resolve(__dirname, './src/utils'),
       },
     },

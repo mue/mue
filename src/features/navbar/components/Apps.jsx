@@ -116,7 +116,7 @@ class Apps extends PureComponent {
                   <MdPlaylistRemove />
                   <span className="title">
                     {variables.language.getMessage(
-                      variables.languagecode,
+                      variables.locale_id,
                       'widgets.navbar.apps.no_apps',
                     )}
                   </span>

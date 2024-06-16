@@ -3,7 +3,7 @@ import Stats from 'features/stats/api/stats';
 
 const variables = {
   language: {},
-  languagecode: '',
+  locale_id: '',
   stats: Stats,
   constants,
 };

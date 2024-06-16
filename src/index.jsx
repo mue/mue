@@ -12,15 +12,15 @@ import './scss/index.scss';
 // the toast css is based on default so we need to import it
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import { initTranslations } from 'lib/translations';
+import { createTranslator } from 'lib/translations';
 
-const languagecode = localStorage.getItem('language') || defaults.language;
-variables.language = initTranslations(languagecode);
-variables.languagecode = languagecode;
-document.documentElement.lang = languagecode.replace('_', '-');
+const locale_id = localStorage.getItem('language').replace('_', '-') || defaults.language;
+variables.language = createTranslator(locale_id);
+variables.locale_id = locale_id;
+document.documentElement.lang = locale_id;
 
 variables.getMessage = (text, optional) =>
-  variables.language.getMessage(variables.languagecode, text, optional || {});
+  variables.language.getMessage(variables.locale_id, text, optional || {});
 
 Sentry.init({
   dsn: variables.constants.SENTRY_DSN,

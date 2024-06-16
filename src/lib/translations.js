@@ -1,60 +1,23 @@
-import I18n from '@eartharoid/i18n';
+import { I18nLite } from '@eartharoid/i18n';
+import { importJSON } from '@eartharoid/vite-plugin-i18n';
 
-import * as de_DE from 'translations/de_DE.json';
-import * as en_GB from 'translations/en_GB.json';
-import * as en_US from 'translations/en_US.json';
-import * as es from 'translations/es.json';
-import * as es_419 from 'translations/es_419.json';
-import * as fr from 'translations/fr.json';
-import * as nl from 'translations/nl.json';
-import * as no from 'translations/no.json';
-import * as ru from 'translations/ru.json';
-import * as zh_CN from 'translations/zh_CN.json';
-import * as id_ID from 'translations/id_ID.json';
-import * as tr_TR from 'translations/tr_TR.json';
-import * as pt_BR from 'translations/pt_BR.json';
-import * as bn from 'translations/bn.json';
-
+export const languages = Object.keys(import.meta.glob('i18n/**/*.yml'));
 /**
  * Initialise the i18n object.
  * The i18n object is then returned.
- * @param locale _ The locale to use.
+ * @param locale_id The locale to use.
  * @returns The i18n object.
  */
-export function initTranslations(locale) {
-  const i18n = new I18n(locale, {
-    de_DE,
-    en_GB,
-    en_US,
-    es,
-    es_419,
-    fr,
-    nl,
-    no,
-    ru,
-    zh_CN,
-    id_ID,
-    tr_TR,
-    pt_BR,
-    bn,
-  });
-
-  return i18n;
+export async function createTranslator(locale_id) {
+  const loaded = importJSON(
+    await import(`i18n/${locale_id}/_achievements.yml`),
+    await import(`i18n/${locale_id}/_addons.yml`),
+    await import(`i18n/${locale_id}/_marketplace.yml`),
+    await import(`i18n/${locale_id}/_settings.yml`),
+    await import(`i18n/${locale_id}/_welcome.yml`),
+    await import(`i18n/${locale_id}/main.yml`),
+  );
+  const i18n = new I18nLite();
+  const t = i18n.loadParsed(...loaded).createTranslator();
+  return t;
 }
-
-export const translations = {
-  de_DE,
-  en_GB,
-  en_US,
-  es,
-  es_419,
-  fr,
-  nl,
-  no,
-  ru,
-  zh_CN,
-  id_ID,
-  tr_TR,
-  pt_BR,
-  bn,
-};

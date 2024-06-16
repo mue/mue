@@ -1,0 +1,49 @@
+by: by {author}
+all: All
+learn_more: Learn More
+photo_packs: Photo Packs
+quote_packs: Quote Packs
+preset_settings: Preset Settings
+no_items: No items in this category
+collection: Collection
+explore_collection: Explore Collection
+add_all: Add All To Mue
+collections: Collections
+cant_find: Can't find what you're looking for?
+knowledgebase_one: Visit the
+knowledgebase_two: knowledgebase
+knowledgebase_three: to create your own.
+installing: Installing
+product:
+  overview: Overview
+  information: Information
+  last_updated: Last Updated
+  description: Description
+  details: Details
+  more_from_curator: More like this from {name}
+  show_more: Show More
+  show_less: Show Less
+  show_all: Show All
+  showing: Showing
+  no_images: No. Images
+  no_quotes: No. Quotes
+  version: Version
+  created_by: Created by
+  updated_at: Updated on
+  part_of: Part of
+  explore: Explore
+  buttons:
+    addtomue: Add To Mue
+    remove: Remove
+    update_addon: Update Add-on
+    back: Back
+    report: Report
+    not_available_preview: Unavailable on Preview
+  not_in_language: This add-on is not in your language
+  third_party_api: This add-on uses a third-party API
+  sideload_warning: This add-on has been sideloaded.
+  setting: Setting
+  value: Value
+offline:
+  title: Looks like you're offline
+  description: Please connect to the internet

@@ -4,7 +4,6 @@ import { Radio as PureRadio, RadioGroup } from '@headlessui/react';
 import { MdCheckCircle } from 'react-icons/md';
 
 import EventBus from 'utils/eventbus';
-import { translations } from 'lib/translations';
 
 function Radio(props) {
   const [value, setValue] = useState(localStorage.getItem(props.name));
@@ -17,7 +16,7 @@ function Radio(props) {
     if (props.name === 'language') {
       // old tab name
       if (localStorage.getItem('tabName') === variables.getMessage('tabname')) {
-        localStorage.setItem('tabName', translations[value.replace('-', '_')].tabname);
+        localStorage.setItem('tabName', translations[value].tabname);
       }
     }
 

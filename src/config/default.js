@@ -1,6 +1,6 @@
 const DefaultOptions = {
   installed: [],
-  language: 'en_GB',
+  language: 'en-GB',
   toastDisplayTime: 2500,
   fontstyle: 'normal',
   fontweight: 400,

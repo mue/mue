@@ -25,7 +25,7 @@ export const getWeather = async (location, done) => {
 
   try {
     const response = await fetch(
-      variables.constants.API_URL + `/weather?city=${location}&language=${variables.languagecode}`,
+      variables.constants.API_URL + `/weather?city=${location}&language=${variables.locale_id}`,
     );
 
     if (!response.ok) {

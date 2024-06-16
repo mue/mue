@@ -1,0 +1,30 @@
+added: Added
+check_updates: Check for updates
+no_updates: No updates available
+updates_available: Updates available {amount}
+empty:
+  title: Empty
+  description: No addons are installed
+sideload:
+  title: Sideload
+  description: Install a Mue addon not on the marketplace from your computer
+  failed: Failed to sideload addon
+  errors:
+    no_name: No name provided
+    no_author: No author provided
+    no_type: No type provided
+    invalid_photos: Invalid photos object
+    invalid_quotes: Invalid quotes object
+sort:
+  title: Sort
+  newest: Installed (Newest)
+  oldest: Installed (Oldest)
+  a_z: Alphabetical (A-Z)
+  z_a: Alphabetical (Z-A)
+create:
+  title: Create
+  moved_title: Create add-on has moved!
+  moved_description: >-
+    Following the 7.1 update, the creation of addons has now moved to the
+    web UI
+  moved_button: Coming Soon....

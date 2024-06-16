@@ -1,0 +1,75 @@
+tip: Quick Tip
+sections:
+  intro:
+    title: Welcome to Mue Tab
+    description: >-
+      Thank you for installing Mue, we hope you enjoy your time with our
+      extension.
+    notices:
+      discord_title: Join our Discord
+      discord_description: Talk with the Mue community and developers
+      discord_join: Join
+      github_title: Contribute on GitHub
+      github_description: Report bugs, add features or donate
+      github_open: Open
+  language:
+    title: Choose your language
+    description: >-
+      Mue can be displayed the languages listed below. You can also add new
+      translations on our
+  theme:
+    title: Select a theme
+    description: >-
+      Mue is available in both light and dark theme, or this can be
+      automatically set depending on your system theme.
+    tip: >-
+      Using the Auto settings will use the theme on your computer. This
+      setting will impact the modals and some of the widgets displayed on
+      the screen, such as weather and notes.
+  style:
+    title: Choose a style
+    description: >-
+      Mue currently offers the choice between the legacy styling and the
+      newly released modern styling.
+    legacy: Legacy
+    modern: Modern
+  settings:
+    title: Import Settings
+    description: Installing Mue on a new device? Feel free to import your old settings!
+    tip: >-
+      You can export your old settings by navigating to the Advanced tab in
+      your old Mue setup. Then you need to click the export button which
+      will download the JSON file. You can upload this file here to carry
+      across your settings and preferences from your previous Mue
+      installation.
+  privacy:
+    title: Privacy Options
+    description: Enable settings to further protect your privacy with Mue.
+    offline_mode_description: >-
+      Enabling offline mode will disable all requests to any service. This
+      will result in online backgrounds, online quotes, marketplace,
+      weather, quick links, change log and some about tab information to be
+      disabled.
+    links:
+      title: Links
+      privacy_policy: Privacy Policy
+      source_code: Source Code
+  final:
+    title: Final step
+    description: Your Mue Tab experience is about to begin.
+    changes: Changes
+    changes_description: >-
+      To change settings later click on the settings icon in the top right
+      corner of your tab.
+    imported: Imported {amount} settings
+buttons:
+  next: Next
+  preview: Preview
+  previous: Previous
+  close: Close
+  finish: Finish
+preview:
+  description: >-
+    You are currently in preview mode. Settings will be reset on closing
+    this tab.
+  continue: Continue setup

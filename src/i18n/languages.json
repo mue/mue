@@ -1,7 +1,7 @@
 [
   {
     "name": "Bahasa Indonesia",
-    "value": "id_ID"
+    "value": "id-ID"
   },
   {
     "name": "বাংলা",
@@ -9,15 +9,15 @@
   },
   {
     "name": "Deutsch",
-    "value": "de_DE"
+    "value": "de-DE"
   },
   {
     "name": "English (UK)",
-    "value": "en_GB"
+    "value": "en-GB"
   },
   {
     "name": "English (US)",
-    "value": "en_US"
+    "value": "en-US"
   },
   {
     "name": "Español",
@@ -25,7 +25,7 @@
   },
   {
     "name": "Español (Latinoamérica)",
-    "value": "es_419"
+    "value": "es-419"
   },
   {
     "name": "Français",
@@ -45,14 +45,14 @@
   },
   {
     "name": "Türkçe",
-    "value": "tr_TR"
+    "value": "tr-TR"
   },
   {
     "name": "中文 (简体)",
-    "value": "zh_CN"
+    "value": "zh-CN"
   },
   {
     "name": "Portuguese (Brazil)",
-    "value": "pt_BR"
+    "value": "pt-BR"
   }
 ]
