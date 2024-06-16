@@ -1,5 +1,6 @@
 import variables from 'config/variables';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
+import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { useEffect, useState } from 'react';
 import { ShareModal } from 'components/Elements';
 import {
@@ -18,12 +19,20 @@ import {
 import { Header } from 'components/Layout/Settings';
 import Modal from 'react-modal';
 import Markdown from 'markdown-to-jsx';
+import { Button } from 'components/Elements';
 
 const NewItemPage = () => {
   const { subTab } = useTab();
   const controller = new AbortController();
   const [itemName, setItemName] = useState('');
   const [ItemDescription, setItemDescription] = useState('');
+  const [ItemAuthor, setItemAuthor] = useState('');
+  const [ItemType, setItemType] = useState('');
+  const [ItemIcon, setItemIcon] = useState('');
+  const [count, setCount] = useState(5);
+  let quotes = [];
+  let ItemData;
+  //const [ItemData, setItemData] = useState([]);
 
   async function getItemData() {
     const item = await (
@@ -34,7 +43,17 @@ const NewItemPage = () => {
     console.log(item);
 
     setItemName(item.data.display_name);
+    setItemType(item.data.type);
     setItemDescription(item.data.description);
+    setItemAuthor(item.data.author);
+    setItemType(item.data.type);
+    setItemIcon(item.data.icon_url);
+    console.log(ItemType)
+    if (ItemType === 'quotes') {
+      quotes = item.data.quotes
+      console.log(quotes)
+    }
+    ItemData = item.data.data;
   }
 
   useEffect(() => {
@@ -62,7 +81,7 @@ const NewItemPage = () => {
       </div>
     );
 
-    if (this.props.data.data.sideload === true) {
+    /*if (this.props.data.data.sideload === true) {
       return template(variables.getMessage('modals.main.marketplace.product.sideload_warning'));
     }
 
@@ -74,7 +93,7 @@ const NewItemPage = () => {
       if (shortLocale !== this.props.data.data.language) {
         return template(variables.getMessage('modals.main.marketplace.product.not_in_language'));
       }
-    }
+    }*/
 
     return null;
   };
@@ -157,7 +176,7 @@ const NewItemPage = () => {
     <>
       {/*<Modal
         closeTimeoutMS={300}
-        //isOpen={this.state.shareModal}
+        isOpen={this.state.shareModal}
         className="Modal mainModal"
         overlayClassName="Overlay"
         ariaHideApp={false}
@@ -184,18 +203,17 @@ const NewItemPage = () => {
         report={false}
         goBack={this.props.toggleFunction}
       />*/}
-      {itemName}
       <div className="itemPage">
-        {/*<div className="itemShowcase">
+        <div className="itemShowcase">
           <div className="subHeader">
             {moreInfoItem(
               <MdAccountCircle />,
               variables.getMessage('modals.main.marketplace.product.created_by'),
-              this.props.data.author,
+              ItemAuthor,
             )}
             {itemWarning()}
           </div>
-          {this.props.data.data.photos && (
+          {/*{this.props.data.data.photos && (
             <div className="carousel">
               <div className="carousel_container">
                 <Carousel data={this.props.data.data.photos} />
@@ -213,15 +231,14 @@ const NewItemPage = () => {
               }}
             />
           )}*/}
-        <div className="marketplaceDescription">
-          <span className="title">
-            {variables.getMessage('modals.main.marketplace.product.description')}
-          </span>
-          <Markdown>{ItemDescription}</Markdown>
-        </div>
-      </div>
-      {/*}
-          {this.props.data.data.quotes && (
+          <div className="marketplaceDescription">
+            <span className="title">
+              {variables.getMessage('modals.main.marketplace.product.description')}
+            </span>
+            <Markdown>{ItemDescription}</Markdown>
+          </div>
+          {quotes[0]}
+          {ItemType === 'quotes' && (
             <>
               <table>
                 <tbody>
@@ -229,7 +246,7 @@ const NewItemPage = () => {
                     <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
                     <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
                   </tr>
-                  {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
+                  {quotes.slice(0, count).map((quote, index) => (
                     <tr key={index}>
                       <td>{quote.quote}</td>
                       <td>{quote.author}</td>
@@ -238,15 +255,15 @@ const NewItemPage = () => {
                 </tbody>
               </table>
               <div className="showMoreItems">
-                <span className="link" onClick={() => this.incrementCount('quotes')}>
-                  {this.state.count !== this.props.data.data.quotes.length
+                <span className="link" onClick={() => count === quotes.length}>
+                  {count !== quotes.length
                     ? variables.getMessage('modals.main.marketplace.product.show_all')
                     : variables.getMessage('modals.main.marketplace.product.show_less')}
                 </span>
               </div>
             </>
           )}
-          {this.props.data.data.settings && (
+          {/*{this.props.data.data.settings && (
             <>
               <table>
                 <tbody>
@@ -272,31 +289,31 @@ const NewItemPage = () => {
                 </span>
               </div>
             </>
-          )}
+          )}*/}
           <div className="marketplaceDescription">
             <span className="title">
               {variables.getMessage('modals.main.marketplace.product.details')}
             </span>
             <div className="moreInfo">
-              {this.props.data.data.updated_at &&
+              {/*{this.props.data.data.updated_at &&
                 moreInfoItem(
                   <MdCalendarMonth />,
                   variables.getMessage('modals.main.marketplace.product.updated_at'),
                   formattedDate,
-                )}
-              {this.props.data.data.quotes &&
+                )}*/}
+              {ItemData?.quotes &&
                 moreInfoItem(
                   <MdFormatQuote />,
                   variables.getMessage('modals.main.marketplace.product.no_quotes'),
-                  this.props.data.data.quotes.length,
+                  ItemData.quotes.length,
                 )}
-              {this.props.data.data.photos &&
+              {ItemData?.photos &&
                 moreInfoItem(
                   <MdImage />,
                   variables.getMessage('modals.main.marketplace.product.no_images'),
-                  this.props.data.data.photos.length,
+                  ItemData.photos.length,
                 )}
-              {this.props.data.data.quotes && this.props.data.data.language
+              {/*{ItemData.quotes && ItemData.language
                 ? moreInfoItem(
                     <MdTranslate />,
                     variables.getMessage('modals.main.settings.sections.language.title'),
@@ -309,14 +326,14 @@ const NewItemPage = () => {
                 variables.getMessage(
                   'modals.main.marketplace.' + this.getName(this.props.data.data.type),
                 ) || 'marketplace',
-              )}
+              )}*/}
             </div>
           </div>
         </div>
         <div
           className="itemInfo"
           style={{
-            backgroundImage: `url("${this.props.data.data.icon_url}")`,
+            backgroundImage: `url("${ItemIcon}")`,
           }}
         >
           <div className="front">
@@ -324,14 +341,19 @@ const NewItemPage = () => {
               className="icon"
               alt="icon"
               draggable={false}
-              src={this.props.data.data.icon_url}
+              src={ItemIcon}
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = placeholderIcon;
               }}
             />
             {localStorage.getItem('welcomePreview') !== 'true' ? (
-              this.state.button
+              <Button
+                type="settings"
+                onClick={() => this.manage('install')}
+                icon={<MdLibraryAdd />}
+                label={variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
+              />
             ) : (
               <p style={{ textAlign: 'center' }}>
                 {variables.getMessage(
@@ -339,7 +361,7 @@ const NewItemPage = () => {
                 )}
               </p>
             )}
-            {this.props.data.data.sideload !== true && (
+            {/*{this.props.data.data.sideload !== true && (
               <div className="iconButtons">
                 <Button
                   type="icon"
@@ -364,7 +386,8 @@ const NewItemPage = () => {
                   tooltipKey="report"
                 />
               </div>
-            )}
+            )}*/}
+            {/*}
             {this.props.data.data.in_collections?.length > 0 && (
               <div>
                 <div className="inCollection">
@@ -384,34 +407,32 @@ const NewItemPage = () => {
                   </span>
                 </div>
               </div>
-            )}
+            )}*/}
           </div>
         </div>
       </div>
-      {/*}
-        {moreByCurator.length > 1 && (
-          <div className="moreFromCurator">
-            <span className="title">
-              {variables.getMessage('modals.main.marketplace.product.more_from_curator', {
-                name: this.props.data.author,
-              })}
-            </span>
-            <div>
-              <Items
-                isCurator={true}
-                type={this.props.data.data.type}
-                items={moreByCurator}
-                onCollection={this.state.collection}
-                toggleFunction={(input) => this.props.toggleFunction('item', input)}
-                collectionFunction={(input) => this.props.toggleFunction('collection', input)}
-                filter={''}
-                moreByCreator={true}
-                showCreateYourOwn={false}
-              />
-            </div>
+      {/*{moreByCurator.length > 1 && (
+        <div className="moreFromCurator">
+          <span className="title">
+            {variables.getMessage('modals.main.marketplace.product.more_from_curator', {
+              name: this.props.data.author,
+            })}
+          </span>
+          <div>
+            <Items
+              isCurator={true}
+              type={this.props.data.data.type}
+              items={moreByCurator}
+              onCollection={this.state.collection}
+              toggleFunction={(input) => this.props.toggleFunction('item', input)}
+              collectionFunction={(input) => this.props.toggleFunction('collection', input)}
+              filter={''}
+              moreByCreator={true}
+              showCreateYourOwn={false}
+            />
           </div>
-        )}
-          */}
+        </div>
+      )}*/}
     </>
   );
 };
