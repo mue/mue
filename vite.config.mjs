@@ -1,4 +1,5 @@
 import { defineConfig, loadEnv } from 'vite';
+import inspect from 'vite-plugin-inspect';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 import fs from 'fs';
@@ -101,6 +102,7 @@ export default defineConfig(({ command, mode }) => {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
     },
     plugins: [
+      inspect(),
       react(),
       I18nPlugin({
         include: './src/i18n/**/*.yml',
