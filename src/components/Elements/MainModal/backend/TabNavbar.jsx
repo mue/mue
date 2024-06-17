@@ -58,7 +58,7 @@ const TabNavbar = ({ modalClose }) => {
           width="122.4"
           height="122.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
@@ -87,9 +87,9 @@ const TabNavbar = ({ modalClose }) => {
           y2="88.366"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FF5C25" />
-          <stop offset="0.484375" stop-color="#D21A11" />
-          <stop offset="1" stop-color="#FF456E" />
+          <stop stopColor="#FF5C25" />
+          <stop offset="0.484375" stopColor="#D21A11" />
+          <stop offset="1" stopColor="#FF456E" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_2473_27"
@@ -99,8 +99,8 @@ const TabNavbar = ({ modalClose }) => {
           y2="43.1796"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F18D91" />
-          <stop offset="1" stop-color="#FBD3C6" />
+          <stop stopColor="#F18D91" />
+          <stop offset="1" stopColor="#FBD3C6" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_2473_27"
@@ -110,8 +110,8 @@ const TabNavbar = ({ modalClose }) => {
           y2="45.5766"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F18D91" />
-          <stop offset="1" stop-color="#FBD3C6" />
+          <stop stopColor="#F18D91" />
+          <stop offset="1" stopColor="#FBD3C6" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_2473_27"
@@ -121,8 +121,8 @@ const TabNavbar = ({ modalClose }) => {
           y2="50.518"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F18D91" />
-          <stop offset="1" stop-color="#FBD3C6" />
+          <stop stopColor="#F18D91" />
+          <stop offset="1" stopColor="#FBD3C6" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_2473_27"
@@ -132,8 +132,8 @@ const TabNavbar = ({ modalClose }) => {
           y2="55.4516"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F18D91" />
-          <stop offset="1" stop-color="#FBD3C6" />
+          <stop stopColor="#F18D91" />
+          <stop offset="1" stopColor="#FBD3C6" />
         </linearGradient>
       </defs>
     </svg>
