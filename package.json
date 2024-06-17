@@ -64,7 +64,6 @@
   "scripts": {
     "dev": "vite",
     "dev:host": "vite --host",
-    "translations": "cd scripts && node updatetranslations.js",
     "build": "vite build",
     "pretty": "prettier --write \"./**/*.{js,jsx,json,scss,css}\"",
     "lint": "eslint \"./src/**/*.{js,jsx}\" && stylelint \"./src/**/*.{scss,css}\"",
