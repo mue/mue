@@ -17,7 +17,7 @@ const TimeOptions = () => {
   const [secondColour, setSecondColour] = useState(
     localStorage.getItem('secondColour') || defaults.time.secondColour,
   );
-  const TIME_SECTION = 'modals.main.settings.sections.time';
+  const TIME_SECTION = 'settings:sections.time';
 
   const updateColour = (type, event) => {
     const colour = event.target.value;
@@ -143,7 +143,7 @@ const TimeOptions = () => {
       <Row>
         <Content
           title={variables.getMessage(
-            'modals.main.settings.sections.time.vertical_clock.change_hour_colour',
+            'settings:sections.time.vertical_clock.change_hour_colour',
           )}
         />
         <Action>
@@ -161,14 +161,14 @@ const TimeOptions = () => {
           </div>
           <span className="link" onClick={() => localStorage.setItem('hourColour', '#ffffff')}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {variables.getMessage('settings:buttons.reset')}
           </span>
         </Action>
       </Row>
       <Row>
         <Content
           title={variables.getMessage(
-            'modals.main.settings.sections.time.vertical_clock.change_minute_colour',
+            'settings:sections.time.vertical_clock.change_minute_colour',
           )}
         />
         <Action>
@@ -186,14 +186,14 @@ const TimeOptions = () => {
           </div>
           <span className="link" onClick={() => localStorage.setItem('minuteColour', '#ffffff')}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {variables.getMessage('settings:buttons.reset')}
           </span>
         </Action>
       </Row>
       <Row>
         <Content
           title={variables.getMessage(
-            'modals.main.settings.sections.time.vertical_clock.change_second_colour',
+            'settings:sections.time.vertical_clock.change_second_colour',
           )}
         />
         <Action>
@@ -211,7 +211,7 @@ const TimeOptions = () => {
           </div>
           <span className="link" onClick={() => localStorage.setItem('secondColour', '#ffffff')}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {variables.getMessage('settings:buttons.reset')}
           </span>
         </Action>
       </Row>

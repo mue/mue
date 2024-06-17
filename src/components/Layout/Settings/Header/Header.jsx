@@ -62,7 +62,7 @@ function Header(props) {
           window.open(variables.constants.BUG_REPORT + props.title.split(' ').join('+'), '_blank')
         }
         icon={<MdFlag />}
-        label={variables.getMessage('modals.main.settings.sections.header.report_issue')}
+        label={variables.getMessage('settings:sections.header.report_issue')}
       />
     );
   };

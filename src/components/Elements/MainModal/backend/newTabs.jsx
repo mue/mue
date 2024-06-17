@@ -14,7 +14,7 @@ const Sidebar = memo(({ sections, currentTab, setCurrentTab }) => {
     [setSubTab, setSubSection],
   );
 
-  
+
   const hideReminder = () => {
     localStorage.setItem('showReminder', false);
     document.querySelector('.reminder-info').style.display = 'none';
@@ -28,14 +28,14 @@ const Sidebar = memo(({ sections, currentTab, setCurrentTab }) => {
       >
         <div className="shareHeader">
           <span className="title">
-            {variables.getMessage('modals.main.settings.reminder.title')}
+            {variables.getMessage('settings:reminder.title')}
           </span>
           <span className="closeModal" onClick={hideReminder}>
             <MdClose />
           </span>
         </div>
         <span className="subtitle">
-          {variables.getMessage('modals.main.settings.reminder.message')}
+          {variables.getMessage('settings:reminder.message')}
         </span>
         <button onClick={() => window.location.reload()}>
           <MdRefresh />

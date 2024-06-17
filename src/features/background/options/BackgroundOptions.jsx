@@ -94,14 +94,14 @@ class BackgroundOptions extends PureComponent {
       <>
         <Row final={this.state.backgroundAPI === 'mue'}>
           <Content
-            title={variables.getMessage('modals.main.settings.sections.background.api')}
-            subtitle={variables.getMessage('modals.main.settings.sections.background.api_subtitle')}
+            title={variables.getMessage('settings:sections.background.api')}
+            subtitle={variables.getMessage('settings:sections.background.api_subtitle')}
           />
           <Action>
             {this.state.backgroundCategories[0] === variables.getMessage('modals.main.loading') ? (
               <>
                 <Dropdown
-                  label={variables.getMessage('modals.main.settings.sections.background.category')}
+                  label={variables.getMessage('settings:sections.background.category')}
                   name="apiCategories"
                   items={[
                     {
@@ -117,14 +117,14 @@ class BackgroundOptions extends PureComponent {
               </>
             ) : (
               <ChipSelect
-                label={variables.getMessage('modals.main.settings.sections.background.categories')}
+                label={variables.getMessage('settings:sections.background.categories')}
                 options={this.state.backgroundCategories}
                 name="apiCategories"
               />
             )}
             <Dropdown
               label={variables.getMessage(
-                'modals.main.settings.sections.background.source.quality.title',
+                'settings:sections.background.source.quality.title',
               )}
               name="apiQuality"
               element=".other"
@@ -153,17 +153,17 @@ class BackgroundOptions extends PureComponent {
           <Row final={true}>
             <Content
               title={variables.getMessage(
-                'modals.main.settings.sections.background.unsplash.title',
+                'settings:sections.background.unsplash.title',
               )}
               subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.unsplash.subtitle',
+                'settings:sections.background.unsplash.subtitle',
               )}
             />
             <Action>
               <Text
-                title={variables.getMessage('modals.main.settings.sections.background.unsplash.id')}
+                title={variables.getMessage('settings:sections.background.unsplash.id')}
                 subtitle={variables.getMessage(
-                  'modals.main.settings.sections.background.unsplash.id_subtitle',
+                  'settings:sections.background.unsplash.id_subtitle',
                 )}
                 placeholder="e.g. 123456, 654321"
                 name="unsplashCollections"
@@ -210,9 +210,9 @@ class BackgroundOptions extends PureComponent {
     if (this.state.effects === true) {
       header = (
         <Header
-          title={variables.getMessage('modals.main.settings.sections.background.title')}
+          title={variables.getMessage('settings:sections.background.title')}
           secondaryTitle={variables.getMessage(
-            'modals.main.settings.sections.background.effects.title',
+            'settings:sections.background.effects.title',
           )}
           goBack={() => this.setState({ effects: false })}
         />
@@ -220,9 +220,9 @@ class BackgroundOptions extends PureComponent {
     } else if (this.state.backgroundSettingsSection === true) {
       header = (
         <Header
-          title={variables.getMessage('modals.main.settings.sections.background.title')}
+          title={variables.getMessage('settings:sections.background.title')}
           secondaryTitle={variables.getMessage(
-            'modals.main.settings.sections.background.source.title',
+            'settings:sections.background.source.title',
           )}
           goBack={() => this.setState({ backgroundSettingsSection: false })}
         />
@@ -230,7 +230,7 @@ class BackgroundOptions extends PureComponent {
     } else {
       header = (
         <Header
-          title={variables.getMessage('modals.main.settings.sections.background.title')}
+          title={variables.getMessage('settings:sections.background.title')}
           setting="background"
           category="background"
           element="#backgroundImage"
@@ -251,11 +251,11 @@ class BackgroundOptions extends PureComponent {
                 <MdSource />
                 <div className="content">
                   <span className="title">
-                    {variables.getMessage('modals.main.settings.sections.background.source.title')}
+                    {variables.getMessage('settings:sections.background.source.title')}
                   </span>
                   <span className="subtitle">
                     {variables.getMessage(
-                      'modals.main.settings.sections.background.source.subtitle',
+                      'settings:sections.background.source.subtitle',
                     )}
                   </span>
                 </div>
@@ -263,7 +263,7 @@ class BackgroundOptions extends PureComponent {
               <div className="action">
                 <Dropdown
                   label={variables.getMessage(
-                    'modals.main.settings.sections.background.type.title',
+                    'settings:sections.background.type.title',
                   )}
                   name="backgroundType"
                   onChange={(value) => this.setState({ backgroundType: value })}
@@ -282,12 +282,12 @@ class BackgroundOptions extends PureComponent {
                     <div className="content">
                       <span className="title">
                         {variables.getMessage(
-                          'modals.main.settings.sections.background.effects.title',
+                          'settings:sections.background.effects.title',
                         )}
                       </span>
                       <span className="subtitle">
                         {variables.getMessage(
-                          'modals.main.settings.sections.background.effects.subtitle',
+                          'settings:sections.background.effects.subtitle',
                         )}
                       </span>
                     </div>
@@ -308,28 +308,28 @@ class BackgroundOptions extends PureComponent {
           this.state.marketplaceEnabled) ? (
           <Row final={true}>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.background.display')}
+              title={variables.getMessage('settings:sections.background.display')}
               subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.display_subtitle',
+                'settings:sections.background.display_subtitle',
               )}
             />
             <Action>
               <Checkbox
                 name="bgtransition"
-                text={variables.getMessage('modals.main.settings.sections.background.transition')}
+                text={variables.getMessage('settings:sections.background.transition')}
                 element=".other"
                 disabled={!usingImage}
               />
               <Checkbox
                 name="photoInformation"
                 text={variables.getMessage(
-                  'modals.main.settings.sections.background.photo_information',
+                  'settings:sections.background.photo_information',
                 )}
                 element=".other"
               />
               <Checkbox
                 name="photoMap"
-                text={variables.getMessage('modals.main.settings.sections.background.show_map')}
+                text={variables.getMessage('settings:sections.background.show_map')}
                 element=".other"
                 disabled={!usingImage}
               />
@@ -346,16 +346,16 @@ class BackgroundOptions extends PureComponent {
             >
               <Content
                 title={variables.getMessage(
-                  'modals.main.settings.sections.background.source.title',
+                  'settings:sections.background.source.title',
                 )}
                 subtitle={variables.getMessage(
-                  'modals.main.settings.sections.background.source.subtitle',
+                  'settings:sections.background.source.subtitle',
                 )}
               />
               <Action>
                 <Dropdown
                   label={variables.getMessage(
-                    'modals.main.settings.sections.background.type.title',
+                    'settings:sections.background.type.title',
                   )}
                   name="backgroundType"
                   onChange={(value) => this.setState({ backgroundType: value })}
@@ -374,15 +374,15 @@ class BackgroundOptions extends PureComponent {
         this.state.effects ? (
           <Row final={true}>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.background.effects.title')}
+              title={variables.getMessage('settings:sections.background.effects.title')}
               subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.effects.subtitle',
+                'settings:sections.background.effects.subtitle',
               )}
             />
             <Action>
               <Slider
                 title={variables.getMessage(
-                  'modals.main.settings.sections.background.effects.blur',
+                  'settings:sections.background.effects.blur',
                 )}
                 name="blur"
                 min="0"
@@ -395,7 +395,7 @@ class BackgroundOptions extends PureComponent {
               />
               <Slider
                 title={variables.getMessage(
-                  'modals.main.settings.sections.background.effects.brightness',
+                  'settings:sections.background.effects.brightness',
                 )}
                 name="brightness"
                 min="0"
@@ -408,7 +408,7 @@ class BackgroundOptions extends PureComponent {
               />
               <Dropdown
                 label={variables.getMessage(
-                  'modals.main.settings.sections.background.effects.filters.title',
+                  'settings:sections.background.effects.filters.title',
                 )}
                 name="backgroundFilter"
                 onChange={(value) => this.setState({ backgroundFilter: value })}
@@ -419,7 +419,7 @@ class BackgroundOptions extends PureComponent {
               {this.state.backgroundFilter !== 'none' && (
                 <Slider
                   title={variables.getMessage(
-                    'modals.main.settings.sections.background.effects.filters.amount',
+                    'settings:sections.background.effects.filters.amount',
                   )}
                   name="backgroundFilterAmount"
                   min="0"

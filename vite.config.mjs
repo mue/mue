@@ -105,8 +105,9 @@ export default defineConfig(({ command, mode }) => {
       inspect(),
       react(),
       I18nPlugin({
+        id_regex: /((?<locale>[a-z0-9-_]+)\/)((_(?<namespace>[a-z0-9-_]+))|[a-z0-9-_]+)\.[a-z]+/i,
         include: './src/i18n/**/*.yml',
-        parser: (file) => YAML.parse(file),
+        parser: YAML.parse,
       }),
       prepareBuilds(),
       progress()

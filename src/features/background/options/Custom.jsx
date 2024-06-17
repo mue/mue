@@ -86,13 +86,13 @@ export default class CustomSettings extends PureComponent {
           <Checkbox
             name="backgroundVideoLoop"
             text={variables.getMessage(
-              'modals.main.settings.sections.background.source.loop_video',
+              'settings:sections.background.source.loop_video',
             )}
           />
           <Checkbox
             name="backgroundVideoMute"
             text={variables.getMessage(
-              'modals.main.settings.sections.background.source.mute_video',
+              'settings:sections.background.source.mute_video',
             )}
           />
         </>
@@ -194,12 +194,12 @@ export default class CustomSettings extends PureComponent {
               <div>
                 <span className="title">
                   {variables.getMessage(
-                    'modals.main.settings.sections.background.source.custom_title',
+                    'settings:sections.background.source.custom_title',
                   )}
                 </span>
                 <span className="subtitle">
                   {variables.getMessage(
-                    'modals.main.settings.sections.background.source.custom_description',
+                    'settings:sections.background.source.custom_description',
                   )}
                 </span>
               </div>
@@ -210,7 +210,7 @@ export default class CustomSettings extends PureComponent {
                 onClick={() => this.uploadCustomBackground()}
                 icon={<MdOutlineFileUpload />}
                 label={variables.getMessage(
-                  'modals.main.settings.sections.background.source.upload',
+                  'settings:sections.background.source.upload',
                 )}
               />
               <Button
@@ -218,7 +218,7 @@ export default class CustomSettings extends PureComponent {
                 onClick={() => this.setState({ customURLModal: true })}
                 icon={<MdAddLink />}
                 label={variables.getMessage(
-                  'modals.main.settings.sections.background.source.add_url',
+                  'settings:sections.background.source.add_url',
                 )}
               />
             </div>
@@ -236,7 +236,7 @@ export default class CustomSettings extends PureComponent {
                     {this.state.customBackground.length > 0 && (
                       <Tooltip
                         title={variables.getMessage(
-                          'modals.main.settings.sections.background.source.remove',
+                          'settings:sections.background.source.remove',
                         )}
                       >
                         <Button
@@ -255,12 +255,12 @@ export default class CustomSettings extends PureComponent {
                   <MdAddPhotoAlternate />
                   <span className="title">
                     {variables.getMessage(
-                      'modals.main.settings.sections.background.source.drop_to_upload',
+                      'settings:sections.background.source.drop_to_upload',
                     )}
                   </span>
                   <span className="subtitle">
                     {variables.getMessage(
-                      'modals.main.settings.sections.background.source.formats',
+                      'settings:sections.background.source.formats',
                       {
                         list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
                       },
@@ -271,7 +271,7 @@ export default class CustomSettings extends PureComponent {
                     onClick={() => this.uploadCustomBackground()}
                     icon={<MdFolder />}
                     label={variables.getMessage(
-                      'modals.main.settings.sections.background.source.select',
+                      'settings:sections.background.source.select',
                     )}
                   />
                 </div>

@@ -146,7 +146,7 @@ function Search() {
         <div className={classList}>
           <Icon currentSearch={currentSearch} setSearchDropdown={setSearchDropdown} />
           <Tooltip
-            title={variables.getMessage('modals.main.settings.sections.search.voice_search')}
+            title={variables.getMessage('settings:sections.search.voice_search')}
           >
             {microphone}
           </Tooltip>

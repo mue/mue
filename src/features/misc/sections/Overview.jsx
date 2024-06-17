@@ -16,12 +16,12 @@ import EventBus from 'utils/eventbus';
 import defaults from 'config/default';
 
 const widget_name = {
-  greeting: variables.getMessage('modals.main.settings.sections.greeting.title'),
-  time: variables.getMessage('modals.main.settings.sections.time.title'),
-  quicklinks: variables.getMessage('modals.main.settings.sections.quicklinks.title'),
-  quote: variables.getMessage('modals.main.settings.sections.quote.title'),
-  date: variables.getMessage('modals.main.settings.sections.date.title'),
-  message: variables.getMessage('modals.main.settings.sections.message.title'),
+  greeting: variables.getMessage('settings:sections.greeting.title'),
+  time: variables.getMessage('settings:sections.time.title'),
+  quicklinks: variables.getMessage('settings:sections.quicklinks.title'),
+  quote: variables.getMessage('settings:sections.quote.title'),
+  date: variables.getMessage('settings:sections.date.title'),
+  message: variables.getMessage('settings:sections.message.title'),
 };
 
 const SortableItem = sortableElement(({ value }) => (
@@ -96,11 +96,11 @@ const Overview = () => {
   return (
     <>
       <span className="mainTitle">
-        {variables.getMessage('modals.main.marketplace.product.overview')}
+        {variables.getMessage('marketplace:product.overview')}
       </span>
       <div className="overviewGrid">
         <div>
-          <span className="title">{variables.getMessage('modals.welcome.buttons.preview')}</span>
+          <span className="title">{variables.getMessage('welcome:buttons.preview')}</span>
           <div className="tabPreview">
             <div className="previewItem" style={{ maxWidth: '50%' }}>
               {items.map((value, index) => {
@@ -118,7 +118,7 @@ const Overview = () => {
         </div>
         <div>
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.order.title')}
+            {variables.getMessage('settings:sections.order.title')}
           </span>
           <SortableContainer
             onSortEnd={onSortEnd}

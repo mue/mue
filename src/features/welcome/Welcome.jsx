@@ -25,7 +25,7 @@ import {
 
 function WelcomeModal() {
   const [currentTab, setCurrentTab] = useState(0);
-  const [buttonText, setButtonText] = useState(variables.getMessage('modals.welcome.buttons.next'));
+  const [buttonText, setButtonText] = useState(variables.getMessage('welcome:buttons.next'));
   const [importedSettings, setImportedSettings] = useState([]);
   const [image, setImage] = useState(null);
   const [credit, setCredit] = useState('');
@@ -45,8 +45,8 @@ function WelcomeModal() {
       setCurrentTab(tab);
       setButtonText(
         tab !== finalTab + 1
-          ? variables.getMessage('modals.welcome.buttons.next')
-          : variables.getMessage('modals.welcome.buttons.finish'),
+          ? variables.getMessage('welcome:buttons.next')
+          : variables.getMessage('welcome:buttons.finish'),
       );
     }
 
@@ -76,8 +76,8 @@ function WelcomeModal() {
     setCurrentTab(newTab);
     setButtonText(
       newTab !== finalTab
-        ? variables.getMessage('modals.welcome.buttons.next')
-        : variables.getMessage('modals.welcome.buttons.finish'),
+        ? variables.getMessage('welcome:buttons.next')
+        : variables.getMessage('welcome:buttons.finish'),
     );
 
     localStorage.setItem('bgtransition', true);
@@ -91,7 +91,7 @@ function WelcomeModal() {
 
   const nextTab = () => {
     setDirection(1);
-    if (buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
+    if (buttonText === variables.getMessage('welcome:buttons.finish')) {
       completeSetup();
       return;
     }
@@ -124,14 +124,14 @@ function WelcomeModal() {
               type="settings"
               onClick={() => prevTab()}
               icon={<MdArrowBackIosNew />}
-              label={variables.getMessage('modals.welcome.buttons.previous')}
+              label={variables.getMessage('welcome:buttons.previous')}
             />
           ) : (
             <Button
               type="settings"
               onClick={() => modalSkip()}
               icon={<MdOutlinePreview />}
-              label={variables.getMessage('modals.welcome.buttons.preview')}
+              label={variables.getMessage('welcome:buttons.preview')}
             />
           )}
           <Button

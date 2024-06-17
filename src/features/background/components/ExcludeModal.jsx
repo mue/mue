@@ -20,10 +20,10 @@ function ExcludeModal({ modalClose, info }) {
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
-          {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.title')}
+          {variables.getMessage('settings:sections.advanced.reset_modal.title')}
         </span>
         <Tooltip
-          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+          title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
         >
           <div className="close" onClick={modalClose}>
             <MdClose />
@@ -38,7 +38,7 @@ function ExcludeModal({ modalClose, info }) {
           type="secondary"
           onClick={modalClose}
           icon={<MdClose />}
-          label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+          label={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
         />
         <Button
           type="settings"

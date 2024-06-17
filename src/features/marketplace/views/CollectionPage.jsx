@@ -44,7 +44,7 @@ function CollectionPage() {
           }
         }
       >
-        <div className="nice-tag">{variables.getMessage('modals.main.marketplace.collection')}</div>
+        <div className="nice-tag">{variables.getMessage('marketplace:collection')}</div>
         <div className="content">
           <span className="mainTitle">{collectionTitle}</span>={' '}
         </div>
@@ -56,8 +56,8 @@ function CollectionPage() {
           icon={<MdLibraryAdd />}
           label={
             busy
-              ? variables.getMessage('modals.main.marketplace.installing')
-              : variables.getMessage('modals.main.marketplace.add_all')
+              ? variables.getMessage('marketplace:installing')
+              : variables.getMessage('marketplace:add_all')
           }
         />
       </div>

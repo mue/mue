@@ -25,68 +25,68 @@ import {
 } from '../sections';
 
 const sections = [
-  { label: 'modals.main.marketplace.product.overview', name: 'order', component: Overview },
+  { label: 'marketplace:product.overview', name: 'order', component: Overview },
   {
-    label: 'modals.main.settings.sections.appearance.navbar.title',
+    label: 'settings:sections.appearance.navbar.title',
     name: 'navbar',
     component: NavbarOptions,
   },
   {
-    label: 'modals.main.settings.sections.greeting.title',
+    label: 'settings:sections.greeting.title',
     name: 'greeting',
     component: GreetingOptions,
   },
-  { label: 'modals.main.settings.sections.time.title', name: 'time', component: TimeOptions },
+  { label: 'settings:sections.time.title', name: 'time', component: TimeOptions },
   {
-    label: 'modals.main.settings.sections.quicklinks.title',
+    label: 'settings:sections.quicklinks.title',
     name: 'quicklinks',
     component: QuickLinksOptions,
   },
-  { label: 'modals.main.settings.sections.quote.title', name: 'quote', component: QuoteOptions },
-  { label: 'modals.main.settings.sections.date.title', name: 'date', component: DateOptions },
+  { label: 'settings:sections.quote.title', name: 'quote', component: QuoteOptions },
+  { label: 'settings:sections.date.title', name: 'date', component: DateOptions },
   {
-    label: 'modals.main.settings.sections.message.title',
+    label: 'settings:sections.message.title',
     name: 'message',
     component: MessageOptions,
   },
   {
-    label: 'modals.main.settings.sections.background.title',
+    label: 'settings:sections.background.title',
     name: 'background',
     component: BackgroundOptions,
   },
-  { label: 'modals.main.settings.sections.search.title', name: 'search', component: SearchOptions },
+  { label: 'settings:sections.search.title', name: 'search', component: SearchOptions },
   {
-    label: 'modals.main.settings.sections.weather.title',
+    label: 'settings:sections.weather.title',
     name: 'weather',
     component: WeatherOptions,
   },
   {
-    label: 'modals.main.settings.sections.appearance.title',
+    label: 'settings:sections.appearance.title',
     name: 'appearance',
     component: AppearanceOptions,
   },
   {
-    label: 'modals.main.settings.sections.language.title',
+    label: 'settings:sections.language.title',
     name: 'language',
     component: LanguageOptions,
   },
   {
-    label: 'modals.main.settings.sections.advanced.title',
+    label: 'settings:sections.advanced.title',
     name: 'advanced',
     component: AdvancedOptions,
   },
-  { label: 'modals.main.settings.sections.stats.title', name: 'stats', component: Stats },
+  { label: 'settings:sections.stats.title', name: 'stats', component: Stats },
   {
-    label: 'modals.main.settings.sections.experimental.title',
+    label: 'settings:sections.experimental.title',
     name: 'experimental',
     component: ExperimentalOptions,
   },
   {
-    label: 'modals.main.settings.sections.changelog.title',
+    label: 'settings:sections.changelog.title',
     name: 'changelog',
     component: Changelog,
   },
-  { label: 'modals.main.settings.sections.about.title', name: 'about', component: About },
+  { label: 'settings:sections.about.title', name: 'about', component: About },
 ];
 
 function Settings(props) {

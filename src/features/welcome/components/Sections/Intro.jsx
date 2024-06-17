@@ -23,7 +23,7 @@ function WelcomeNotice({ config }) {
       {link && (
         <a href={link} target="_blank" rel="noopener noreferrer">
           <MdOpenInNew />
-          {variables.getMessage('modals.welcome.sections.intro.notices.github_open')}
+          {variables.getMessage('welcome:sections.intro.notices.github_open')}
         </a>
       )}
     </div>
@@ -55,21 +55,21 @@ function Intro() {
 
   return (
     <Content>
-      <Header title={variables.getMessage('modals.welcome.sections.intro.title')} />
+      <Header title={variables.getMessage('welcome:sections.intro.title')} />
       {/*{ShareYourMue}*/}
       <WelcomeNotice
         config={{
           icon: MdOutlineWavingHand,
-          title: variables.getMessage('modals.welcome.sections.intro.title'),
-          subtitle: variables.getMessage('modals.welcome.sections.intro.description'),
+          title: variables.getMessage('welcome:sections.intro.title'),
+          subtitle: variables.getMessage('welcome:sections.intro.description'),
         }}
       />
       <WelcomeNotice
         config={{
           icon: FaDiscord,
-          title: variables.getMessage('modals.welcome.sections.intro.notices.discord_title'),
+          title: variables.getMessage('welcome:sections.intro.notices.discord_title'),
           subtitle: variables.getMessage(
-            'modals.welcome.sections.intro.notices.discord_description',
+            'welcome:sections.intro.notices.discord_description',
           ),
           link: DISCORD_LINK,
         }}
@@ -77,9 +77,9 @@ function Intro() {
       <WelcomeNotice
         config={{
           icon: FaGithub,
-          title: variables.getMessage('modals.welcome.sections.intro.notices.github_title'),
+          title: variables.getMessage('welcome:sections.intro.notices.github_title'),
           subtitle: variables.getMessage(
-            'modals.welcome.sections.intro.notices.github_description',
+            'welcome:sections.intro.notices.github_description',
           ),
           link: GITHUB_LINK,
         }}

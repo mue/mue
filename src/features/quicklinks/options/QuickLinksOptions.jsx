@@ -124,13 +124,13 @@ class QuickLinksOptions extends PureComponent {
   }
 
   render() {
-    const QUICKLINKS_SECTION = 'modals.main.settings.sections.quicklinks';
+    const QUICKLINKS_SECTION = 'settings:sections.quicklinks';
 
     const AdditionalSettings = () => {
       return (
         <Row>
           <Content
-            title={variables.getMessage('modals.main.settings.additional_settings')}
+            title={variables.getMessage('settings:additional_settings')}
             subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.additional`)}
           />
           <Action>
@@ -155,7 +155,7 @@ class QuickLinksOptions extends PureComponent {
           <Content
             title={variables.getMessage(`${QUICKLINKS_SECTION}.styling`)}
             subtitle={variables.getMessage(
-              'modals.main.settings.sections.quicklinks.styling_description',
+              'settings:sections.quicklinks.styling_description',
             )}
           />
           <Action>
@@ -227,7 +227,7 @@ class QuickLinksOptions extends PureComponent {
                   {variables.getMessage(`${QUICKLINKS_SECTION}.no_quicklinks`)}
                 </span>
                 <span className="subtitle">
-                  {variables.getMessage('modals.main.settings.sections.message.add_some')}
+                  {variables.getMessage('settings:sections.message.add_some')}
                 </span>
                 <Button
                   type="settings"

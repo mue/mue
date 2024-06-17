@@ -14,13 +14,14 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 import { createTranslator } from 'lib/translations';
 
-const locale_id = localStorage.getItem('language').replace('_', '-') || defaults.language;
-variables.language = createTranslator(locale_id);
+const locale_id = localStorage.getItem('language')?.replace('_', '-') || defaults.language;
+console.log(locale_id)
+const t = await createTranslator(locale_id);
 variables.locale_id = locale_id;
 document.documentElement.lang = locale_id;
 
-variables.getMessage = (text, optional) =>
-  variables.language.getMessage(variables.locale_id, text, optional || {});
+variables.language = { getMessage: t };
+variables.getMessage = t;
 
 Sentry.init({
   dsn: variables.constants.SENTRY_DSN,

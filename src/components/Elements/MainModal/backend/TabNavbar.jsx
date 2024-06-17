@@ -237,7 +237,7 @@ const TabNavbar = ({ modalClose }) => {
         </div>
         <Tooltip
           style={{ marginLeft: 'auto', justifySelf: 'flex-end' }}
-          title={variables.getMessage('modals.welcome.buttons.close')}
+          title={variables.getMessage('welcome:buttons.close')}
           key="closeTooltip"
         >
           <span className="closeModal" onClick={modalClose}>

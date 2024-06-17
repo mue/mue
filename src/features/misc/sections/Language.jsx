@@ -37,7 +37,7 @@ function LanguageOptions() {
     <>
       <div className="modalHeader">
         <span className="mainTitle">
-          {variables.getMessage('modals.main.settings.sections.language.title')}
+          {variables.getMessage('settings:sections.language.title')}
         </span>
         <div className="headerActions">
           <a
@@ -55,7 +55,7 @@ function LanguageOptions() {
         <Radio name="language" options={languages} element=".other" />
       </div>
       <span className="mainTitle">
-        {variables.getMessage('modals.main.settings.sections.language.quote')}
+        {variables.getMessage('settings:sections.language.quote')}
       </span>
       <div className="languageSettings">
         <Radio

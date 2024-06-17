@@ -185,7 +185,7 @@ class Todo extends PureComponent {
                         {variables.getMessage('widgets.navbar.todo.no_todos')}
                       </span>
                       <span className="subtitle">
-                        {variables.getMessage('modals.main.settings.sections.message.add_some')}
+                        {variables.getMessage('settings:sections.message.add_some')}
                       </span>
                     </div>
                   </div>
@@ -218,7 +218,7 @@ class Todo extends PureComponent {
                             />
                             <Tooltip
                               title={variables.getMessage(
-                                'modals.main.marketplace.product.buttons.remove',
+                                'marketplace:product.buttons.remove',
                               )}
                             >
                               <MdDelete onClick={() => this.updateTodo('remove', index)} />

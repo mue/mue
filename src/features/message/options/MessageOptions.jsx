@@ -45,7 +45,7 @@ function MessageOptions() {
   return (
     <>
       <Header
-        title={variables.getMessage('modals.main.settings.sections.message.title')}
+        title={variables.getMessage('settings:sections.message.title')}
         setting="message"
         category="message"
         element=".message"
@@ -59,13 +59,13 @@ function MessageOptions() {
         zoomSetting="zoomMessage"
       >
         <Row final={true}>
-          <Content title={variables.getMessage('modals.main.settings.sections.message.messages')} />
+          <Content title={variables.getMessage('settings:sections.message.messages')} />
           <Action>
             <Button
               type="settings"
               onClick={() => modifyMessage('add')}
               icon={<MdAdd />}
-              label={variables.getMessage('modals.main.settings.sections.message.add')}
+              label={variables.getMessage('settings:sections.message.add')}
             />
           </Action>
         </Row>
@@ -78,12 +78,12 @@ function MessageOptions() {
                 </div>
                 <div className="messageText">
                   <span className="subtitle">
-                    {variables.getMessage('modals.main.settings.sections.message.title')}
+                    {variables.getMessage('settings:sections.message.title')}
                   </span>
                   <TextareaAutosize
                     value={messages[index]}
                     placeholder={variables.getMessage(
-                      'modals.main.settings.sections.message.content',
+                      'settings:sections.message.content',
                     )}
                     onChange={(e) => message(e, true, index)}
                     varient="outlined"
@@ -97,7 +97,7 @@ function MessageOptions() {
                     type="settings"
                     onClick={() => modifyMessage('remove', index)}
                     icon={<MdCancel />}
-                    label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                    label={variables.getMessage('marketplace:product.buttons.remove')}
                   />
 
                 </div>
@@ -110,16 +110,16 @@ function MessageOptions() {
             <div className="emptyNewMessage">
               <MdOutlineTextsms />
               <span className="title">
-                {variables.getMessage('modals.main.settings.sections.message.no_messages')}
+                {variables.getMessage('settings:sections.message.no_messages')}
               </span>
               <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.message.add_some')}
+                {variables.getMessage('settings:sections.message.add_some')}
               </span>
               <Button
                 type="settings"
                 onClick={() => modifyMessage('add')}
                 icon={<MdAdd />}
-                label={variables.getMessage('modals.main.settings.sections.message.add')}
+                label={variables.getMessage('settings:sections.message.add')}
               />
             </div>
           </div>

@@ -29,7 +29,7 @@ export default class Added extends PureComponent {
         <Button
           type="settings"
           onClick={() => this.uninstall()}
-          label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+          label={variables.getMessage('marketplace:product.buttons.remove')}
         />
       ),
     };
@@ -38,13 +38,13 @@ export default class Added extends PureComponent {
   installAddon(input) {
     let failedReason = '';
     if (!input.name) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_name');
+      failedReason = variables.getMessage('addons:sideload.errors.no_name');
     } else if (!input.author) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_author');
+      failedReason = variables.getMessage('addons:sideload.errors.no_author');
     } else if (!input.type) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_type');
+      failedReason = variables.getMessage('addons:sideload.errors.no_type');
     } else if (!input.version) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_version');
+      failedReason = variables.getMessage('addons:sideload.errors.no_version');
     } else if (
       input.type === 'photos' &&
       (!input.photos ||
@@ -54,12 +54,12 @@ export default class Added extends PureComponent {
         !input.photos[0].photographer ||
         !input.photos[0].location)
     ) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.invalid_photos');
+      failedReason = variables.getMessage('addons:sideload.errors.invalid_photos');
     } else if (
       input.type === 'quotes' &&
       (!input.quotes || !input.quotes.length || !input.quotes[0].quote || !input.quotes[0].author)
     ) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
+      failedReason = variables.getMessage('addons:sideload.errors.invalid_quotes');
     }
 
     if (failedReason !== '' && this.state.showFailed === false) {
@@ -84,7 +84,7 @@ export default class Added extends PureComponent {
         onClick={() => document.getElementById('file-input').click()}
         ref={this.customDnd}
         icon={<MdSendTimeExtension />}
-        label={variables.getMessage('modals.main.addons.sideload.title')}
+        label={variables.getMessage('addons:sideload.title')}
       />
     );
   }
@@ -144,12 +144,12 @@ export default class Added extends PureComponent {
 
     if (updates > 0) {
       toast(
-        variables.getMessage('modals.main.addons.updates_available', {
+        variables.getMessage('addons:updates_available', {
           amount: updates,
         }),
       );
     } else {
-      toast(variables.getMessage('modals.main.addons.no_updates'));
+      toast(variables.getMessage('addons:no_updates'));
     }
   }
 
@@ -213,10 +213,10 @@ export default class Added extends PureComponent {
             <div className="emptyNewMessage">
               <MdOutlineExtensionOff />
               <span className="title">
-                {variables.getMessage('modals.main.addons.empty.title')}
+                {variables.getMessage('addons:empty.title')}
               </span>
               <span className="subtitle">
-                {variables.getMessage('modals.main.addons.empty.description')}
+                {variables.getMessage('addons:empty.description')}
               </span>
             </div>
           </div>
@@ -237,7 +237,7 @@ export default class Added extends PureComponent {
 
     return (
       <>
-        <Header title={variables.getMessage('modals.main.addons.added')} report={false}>
+        <Header title={variables.getMessage('addons:added')} report={false}>
           <CustomActions>
             {this.getSideloadButton()}
             {sideLoadBackendElements()}
@@ -245,7 +245,7 @@ export default class Added extends PureComponent {
               type="settings"
               onClick={() => this.updateCheck()}
               icon={<MdUpdate />}
-              label={variables.getMessage('modals.main.addons.check_updates')}
+              label={variables.getMessage('addons:check_updates')}
             />
             <Button
               type="settings"
@@ -257,30 +257,30 @@ export default class Added extends PureComponent {
                 type="settings"
                 onClick={() => document.getElementById('file-input').click()}
                 icon={<MdSendTimeExtension />}
-                label={variables.getMessage('modals.main.addons.sideload.title')}
+                label={variables.getMessage('addons:sideload.title')}
     `       />*/}
           </CustomActions>
         </Header>
         <Dropdown
-          label={variables.getMessage('modals.main.addons.sort.title')}
+          label={variables.getMessage('addons:sort.title')}
           name="sortAddons"
           onChange={(value) => this.setState({ installed: sortItems(this.state.installed, value) })}
           items={[
             {
               value: 'newest',
-              text: variables.getMessage('modals.main.addons.sort.newest'),
+              text: variables.getMessage('addons:sort.newest'),
             },
             {
               value: 'oldest',
-              text: variables.getMessage('modals.main.addons.sort.oldest'),
+              text: variables.getMessage('addons:sort.oldest'),
             },
             {
               value: 'a-z',
-              text: variables.getMessage('modals.main.addons.sort.a_z'),
+              text: variables.getMessage('addons:sort.a_z'),
             },
             {
               value: 'z-a',
-              text: variables.getMessage('modals.main.addons.sort.z_a'),
+              text: variables.getMessage('addons:sort.z_a'),
             },
           ]}
         />

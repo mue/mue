@@ -8,9 +8,9 @@ function Addons(props) {
   return (
     {
       /*<Tabs changeTab={(type) => props.changeTab(type)} current="addons" modalClose={props.modalClose}>
-      <div label={variables.getMessage('modals.main.addons.added')} name="added">
+      <div label={variables.getMessage('addons:added')} name="added">
       </div>
-      <div label={variables.getMessage('modals.main.addons.create.title')} name="create">
+      <div label={variables.getMessage('addons:create.title')} name="create">
         <Create />
       </div>
     </Tabs>*/

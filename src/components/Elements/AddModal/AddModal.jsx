@@ -19,7 +19,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
             ? variables.getMessage('widgets.quicklinks.edit')
             : variables.getMessage('widgets.quicklinks.new')}
         </span>
-        <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
+        <Tooltip title={variables.getMessage('welcome:buttons.close')}>
           <div className="close" onClick={() => closeModal()}>
             <MdClose />
           </div>
@@ -56,7 +56,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
             type="settings"
             onClick={() => editLink(editData, name, url, icon)}
             icon={<MdAddLink />}
-            label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
+            label={variables.getMessage('settings:sections.quicklinks.edit')}
           />
         ) : (
           <Button

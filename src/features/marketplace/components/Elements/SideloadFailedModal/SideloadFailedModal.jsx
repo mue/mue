@@ -9,14 +9,14 @@ function SideloadFailedModal({ modalClose, reason }) {
       <div className="shareHeader">
         <span className="title">{variables.getMessage('modals.main.error_boundary.title')}</span>
         <Tooltip
-          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+          title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
         >
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>
         </Tooltip>
       </div>
-      <span>{variables.getMessage('modals.main.addons.sideload.failed')}</span>
+      <span>{variables.getMessage('addons:sideload.failed')}</span>
       <span className="subtitle">{reason}</span>
     </div>
   );

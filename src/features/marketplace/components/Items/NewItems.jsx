@@ -39,7 +39,7 @@ function ItemCard({ item, onClick, type, onCollection, isCurator }) {
         <span className="card-title">{item.display_name || item.name}</span>
         {!isCurator ? (
           <span className="card-subtitle">
-            {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
+            {variables.getMessage('marketplace:by', { author: item.author })}
           </span>
         ) : (
           ''
@@ -47,7 +47,7 @@ function ItemCard({ item, onClick, type, onCollection, isCurator }) {
 
         {type === 'all' && !onCollection ? (
           <span className="card-type">
-            {variables.getMessage('modals.main.marketplace.' + item.type)}
+            {variables.getMessage('marketplace:' + item.type)}
           </span>
         ) : null}
       </div>

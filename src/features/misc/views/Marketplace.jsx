@@ -48,22 +48,22 @@ function Marketplace(props) {
   return (
     {
       /*<Tabs changeTab={(type) => props.changeTab(type)} current="marketplace" modalClose={props.modalClose}>
-      <div label={variables.getMessage('modals.main.marketplace.all')} name="all">
+      <div label={variables.getMessage('marketplace:all')} name="all">
         <MarketplaceTab type="all" />
       </div>
-      <div label={variables.getMessage('modals.main.marketplace.photo_packs')} name="photo_packs">
+      <div label={variables.getMessage('marketplace:photo_packs')} name="photo_packs">
         <MarketplaceTab type="photo_packs" />
       </div>
-      <div label={variables.getMessage('modals.main.marketplace.quote_packs')} name="quote_packs">
+      <div label={variables.getMessage('marketplace:quote_packs')} name="quote_packs">
         <MarketplaceTab type="quote_packs" />
       </div>
       <div
-        label={variables.getMessage('modals.main.marketplace.preset_settings')}
+        label={variables.getMessage('marketplace:preset_settings')}
         name="preset_settings"
       >
         <MarketplaceTab type="preset_settings" />
       </div>
-      <div label={variables.getMessage('modals.main.marketplace.collections')} name="collections">
+      <div label={variables.getMessage('marketplace:collections')} name="collections">
         <MarketplaceTab type="collections" />
       </div>
     </Tabs>*/

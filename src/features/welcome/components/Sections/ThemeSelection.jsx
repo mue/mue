@@ -24,25 +24,25 @@ function ThemeSelection() {
     [THEMES.AUTO]: {
       className: theme === THEMES.AUTO ? 'toggle auto active' : 'toggle auto',
       icon: <MdAutoAwesome />,
-      text: variables.getMessage('modals.main.settings.sections.appearance.theme.auto'),
+      text: variables.getMessage('settings:sections.appearance.theme.auto'),
     },
     [THEMES.LIGHT]: {
       className: theme === THEMES.LIGHT ? 'toggle lightTheme active' : 'toggle lightTheme',
       icon: <MdLightMode />,
-      text: variables.getMessage('modals.main.settings.sections.appearance.theme.light'),
+      text: variables.getMessage('settings:sections.appearance.theme.light'),
     },
     [THEMES.DARK]: {
       className: theme === THEMES.DARK ? 'toggle darkTheme active' : 'toggle darkTheme',
       icon: <MdDarkMode />,
-      text: variables.getMessage('modals.main.settings.sections.appearance.theme.dark'),
+      text: variables.getMessage('settings:sections.appearance.theme.dark'),
     },
   };
 
   return (
     <Content>
       <Header
-        title={variables.getMessage('modals.welcome.sections.theme.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.theme.description')}
+        title={variables.getMessage('welcome:sections.theme.title')}
+        subtitle={variables.getMessage('welcome:sections.theme.description')}
       />
       <div className="themesToggleArea">
         <div
@@ -63,8 +63,8 @@ function ThemeSelection() {
             ))}
         </div>
       </div>
-      <span className="title">{variables.getMessage('modals.welcome.tip')}</span>
-      <span className="subtitle">{variables.getMessage('modals.welcome.sections.theme.tip')}</span>
+      <span className="title">{variables.getMessage('welcome:tip')}</span>
+      <span className="subtitle">{variables.getMessage('welcome:sections.theme.tip')}</span>
     </Content>
   );
 }

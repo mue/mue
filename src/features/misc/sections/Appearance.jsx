@@ -18,9 +18,9 @@ function AppearanceOptions() {
     return (
       <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.appearance.theme.title')}
+          title={variables.getMessage('settings:sections.appearance.theme.title')}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.theme.description',
+            'settings:sections.appearance.theme.description',
           )}
         />
         <Action>
@@ -28,15 +28,15 @@ function AppearanceOptions() {
             name="theme"
             options={[
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.theme.auto'),
+                name: variables.getMessage('settings:sections.appearance.theme.auto'),
                 value: 'auto',
               },
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.theme.light'),
+                name: variables.getMessage('settings:sections.appearance.theme.light'),
                 value: 'light',
               },
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.theme.dark'),
+                name: variables.getMessage('settings:sections.appearance.theme.dark'),
                 value: 'dark',
               },
             ]}
@@ -48,23 +48,23 @@ function AppearanceOptions() {
   };
 
   const FontOptions = () => {
-    const fontWeight = 'modals.main.settings.sections.appearance.font.weight';
+    const fontWeight = 'settings:sections.appearance.font.weight';
     return (
       <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.appearance.font.title')}
+          title={variables.getMessage('settings:sections.appearance.font.title')}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.font.description',
+            'settings:sections.appearance.font.description',
           )}
         />
         <Action>
           <Checkbox
             name="fontGoogle"
-            text={variables.getMessage('modals.main.settings.sections.appearance.font.google')}
+            text={variables.getMessage('settings:sections.appearance.font.google')}
             category="other"
           />
           <Text
-            title={variables.getMessage('modals.main.settings.sections.appearance.font.custom')}
+            title={variables.getMessage('settings:sections.appearance.font.custom')}
             name="font"
             upperCaseFirst={true}
             category="other"
@@ -72,7 +72,7 @@ function AppearanceOptions() {
           {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
           <Dropdown
             label={variables.getMessage(
-              'modals.main.settings.sections.appearance.font.weight.title',
+              'settings:sections.appearance.font.weight.title',
             )}
             name="fontweight"
             category="other"
@@ -113,7 +113,7 @@ function AppearanceOptions() {
           />
           <Dropdown
             label={variables.getMessage(
-              'modals.main.settings.sections.appearance.font.style.title',
+              'settings:sections.appearance.font.style.title',
             )}
             name="fontstyle"
             category="other"
@@ -121,19 +121,19 @@ function AppearanceOptions() {
               {
                 value: 'normal',
                 text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.font.style.normal',
+                  'settings:sections.appearance.font.style.normal',
                 ),
               },
               {
                 value: 'italic',
                 text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.font.style.italic',
+                  'settings:sections.appearance.font.style.italic',
                 ),
               },
               {
                 value: 'oblique',
                 text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.font.style.oblique',
+                  'settings:sections.appearance.font.style.oblique',
                 ),
               },
             ]}
@@ -147,9 +147,9 @@ function AppearanceOptions() {
     return (
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.appearance.style.title')}
+          title={variables.getMessage('settings:sections.appearance.style.title')}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.style.description',
+            'settings:sections.appearance.style.description',
           )}
         />
         <Action>
@@ -158,11 +158,11 @@ function AppearanceOptions() {
             element=".other"
             options={[
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.style.legacy'),
+                name: variables.getMessage('settings:sections.appearance.style.legacy'),
                 value: 'legacy',
               },
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.style.new'),
+                name: variables.getMessage('settings:sections.appearance.style.new'),
                 value: 'new',
               },
             ]}
@@ -178,16 +178,16 @@ function AppearanceOptions() {
       <Row final={true}>
         <Content
           title={variables.getMessage(
-            'modals.main.settings.sections.appearance.accessibility.title',
+            'settings:sections.appearance.accessibility.title',
           )}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.accessibility.description',
+            'settings:sections.appearance.accessibility.description',
           )}
         />
         <Action>
           <Dropdown
             label={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.text_shadow.title',
+              'settings:sections.appearance.accessibility.text_shadow.title',
             )}
             name="textBorder"
             category="other"
@@ -195,33 +195,33 @@ function AppearanceOptions() {
               {
                 value: 'new',
                 text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.accessibility.text_shadow.new',
+                  'settings:sections.appearance.accessibility.text_shadow.new',
                 ),
               },
               {
                 value: 'true',
                 text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.accessibility.text_shadow.old',
+                  'settings:sections.appearance.accessibility.text_shadow.old',
                 ),
               },
               {
                 value: 'none',
                 text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.accessibility.text_shadow.none',
+                  'settings:sections.appearance.accessibility.text_shadow.none',
                 ),
               },
             ]}
           />
           <Checkbox
             text={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.animations',
+              'settings:sections.appearance.accessibility.animations',
             )}
             name="animations"
             category="other"
           />
           <Slider
             title={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.toast_duration',
+              'settings:sections.appearance.accessibility.toast_duration',
             )}
             name="toastDisplayTime"
             default="2500"
@@ -232,7 +232,7 @@ function AppearanceOptions() {
             display={
               ' ' +
               variables.getMessage(
-                'modals.main.settings.sections.appearance.accessibility.milliseconds',
+                'settings:sections.appearance.accessibility.milliseconds',
               )
             }
           />
@@ -245,9 +245,9 @@ function AppearanceOptions() {
   if (accessibility) {
     header = (
       <Header
-        title={variables.getMessage('modals.main.settings.sections.appearance.title')}
+        title={variables.getMessage('settings:sections.appearance.title')}
         secondaryTitle={variables.getMessage(
-          'modals.main.settings.sections.appearance.accessibility.title',
+          'settings:sections.appearance.accessibility.title',
         )}
         goBack={() => setAccessibility(false)}
         report={false}
@@ -256,7 +256,7 @@ function AppearanceOptions() {
   } else {
     header = (
       <Header
-        title={variables.getMessage('modals.main.settings.sections.appearance.title')}
+        title={variables.getMessage('settings:sections.appearance.title')}
         report={false}
       />
     );
@@ -271,10 +271,10 @@ function AppearanceOptions() {
           <Section
             id="accessibility"
             title={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.title',
+              'settings:sections.appearance.accessibility.title',
             )}
             subtitle={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.description',
+              'settings:sections.appearance.accessibility.description',
             )}
             icon={<MdAccessibility />}
             onClick={() => setAccessibility(true)}

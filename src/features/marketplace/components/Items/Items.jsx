@@ -51,7 +51,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
         <span className="card-title">{item.display_name || item.name}</span>
         {!isCurator ? (
           <span className="card-subtitle">
-            {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
+            {variables.getMessage('marketplace:by', { author: item.author })}
           </span>
         ) : (
           ''
@@ -59,7 +59,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
 
         {type === 'all' && !onCollection ? (
           <span className="card-type">
-            {variables.getMessage('modals.main.marketplace.' + item.type)}
+            {variables.getMessage('marketplace:' + item.type)}
           </span>
         ) : null}
       </div>
@@ -108,14 +108,14 @@ function Items({
               target="_blank"
               rel="noopener noreferrer"
             >
-              {variables.getMessage('modals.main.marketplace.learn_more')} <MdOutlineOpenInNew />
+              {variables.getMessage('marketplace:learn_more')} <MdOutlineOpenInNew />
             </a>
           ) : (
             <Button
               type="collection"
               onClick={() => collectionFunction(collection?.name)}
               icon={<MdOutlineArrowForward />}
-              label={variables.getMessage('modals.main.marketplace.explore_collection')}
+              label={variables.getMessage('marketplace:explore_collection')}
               iconPlacement={'right'}
             />
           )}
@@ -168,18 +168,18 @@ function Items({
       {!onCollection && showCreateYourOwn ? (
         <div className="createYourOwn">
           <MdAutoFixHigh />
-          <span className="title">{variables.getMessage('modals.main.marketplace.cant_find')}</span>
+          <span className="title">{variables.getMessage('marketplace:cant_find')}</span>
           <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.knowledgebase_one') + ' '}
+            {variables.getMessage('marketplace:knowledgebase_one') + ' '}
             <a
               className="link"
               target="_blank"
               href={variables.constants.KNOWLEDGEBASE}
               rel="noreferrer"
             >
-              {variables.getMessage('modals.main.marketplace.knowledgebase_two')}
+              {variables.getMessage('marketplace:knowledgebase_two')}
             </a>
-            {' ' + variables.getMessage('modals.main.marketplace.knowledgebase_three')}
+            {' ' + variables.getMessage('marketplace:knowledgebase_three')}
           </span>
         </div>
       ) : null}

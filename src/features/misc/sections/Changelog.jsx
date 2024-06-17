@@ -76,9 +76,9 @@ function Changelog() {
     return errorMessage(
       <>
         <MdOutlineWifiOff />
-        <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
+        <h1>{variables.getMessage('marketplace:offline.title')}</h1>
         <p className="description">
-          {variables.getMessage('modals.main.marketplace.offline.description')}
+          {variables.getMessage('marketplace:offline.description')}
         </p>
       </>,
     );

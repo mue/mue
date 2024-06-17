@@ -95,16 +95,16 @@ const NewItemPage = () => {
     );
 
     /*if (this.props.data.data.sideload === true) {
-      return template(variables.getMessage('modals.main.marketplace.product.sideload_warning'));
+      return template(variables.getMessage('marketplace:product.sideload_warning'));
     }
 
     if (this.props.data.data.image_api === true) {
-      return template(variables.getMessage('modals.main.marketplace.product.third_party_api'));
+      return template(variables.getMessage('marketplace:product.third_party_api'));
     }
 
     if (this.props.data.data.language !== undefined && this.props.data.data.language !== null) {
       if (shortLocale !== this.props.data.data.language) {
-        return template(variables.getMessage('modals.main.marketplace.product.not_in_language'));
+        return template(variables.getMessage('marketplace:product.not_in_language'));
       }
     }*/
 
@@ -115,39 +115,39 @@ const NewItemPage = () => {
     return (
       <div className="marketplaceDescription">
         <span className="title">
-          {variables.getMessage('modals.main.marketplace.product.details')}
+          {variables.getMessage('marketplace:product.details')}
         </span>
         <div className="moreInfo">
           {item?.updated_at &&
             moreInfoItem(
               <MdCalendarMonth />,
-              variables.getMessage('modals.main.marketplace.product.updated_at'),
+              variables.getMessage('marketplace:product.updated_at'),
               formattedDate,
             )}
           {item?.quotes &&
             moreInfoItem(
               <MdFormatQuote />,
-              variables.getMessage('modals.main.marketplace.product.no_quotes'),
+              variables.getMessage('marketplace:product.no_quotes'),
               item.quotes.length,
             )}
           {item?.photos &&
             moreInfoItem(
               <MdImage />,
-              variables.getMessage('modals.main.marketplace.product.no_images'),
+              variables.getMessage('marketplace:product.no_images'),
               item.photos.length,
             )}
           {item?.quotes && item?.language
             ? moreInfoItem(
                 <MdTranslate />,
-                variables.getMessage('modals.main.settings.sections.language.title'),
+                variables.getMessage('settings:sections.language.title'),
                 languageNames.of(item.language),
               )
             : null}
           {/*{moreInfoItem(
           <MdStyle />,
-          variables.getMessage('modals.main.settings.sections.background.type.title'),
+          variables.getMessage('settings:sections.background.type.title'),
           variables.getMessage(
-            'modals.main.marketplace.' + this.getName(this.props.data.data.type),
+            'marketplace:' + this.getName(this.props.data.data.type),
           ) || 'marketplace',
         )}*/}
         </div>
@@ -163,8 +163,8 @@ const NewItemPage = () => {
             <table>
               <tbody>
                 <tr>
-                  <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
-                  <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
+                  <th>{variables.getMessage('settings:sections.quote.title')}</th>
+                  <th>{variables.getMessage('settings:sections.quote.author')}</th>
                 </tr>
                 {item.quotes.slice(0, count).map((quote, index) => (
                   <tr key={index}>
@@ -177,8 +177,8 @@ const NewItemPage = () => {
             <div className="showMoreItems">
               <span className="link" onClick={() => count === item.quotes.length}>
                 {count !== item.quotes.length
-                  ? variables.getMessage('modals.main.marketplace.product.show_all')
-                  : variables.getMessage('modals.main.marketplace.product.show_less')}
+                  ? variables.getMessage('marketplace:product.show_all')
+                  : variables.getMessage('marketplace:product.show_less')}
               </span>
             </div>
           </>
@@ -189,8 +189,8 @@ const NewItemPage = () => {
             <table>
               <tbody>
                 <tr>
-                  <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
-                  <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
+                  <th>{variables.getMessage('marketplace:product.setting')}</th>
+                  <th>{variables.getMessage('marketplace:product.value')}</th>
                 </tr>
                 {Object.entries(this.props.data.data.settings)
                   .slice(0, this.state.count)
@@ -205,8 +205,8 @@ const NewItemPage = () => {
             <div className="showMoreItems">
               <span className="link" onClick={() => this.incrementCount('settings')}>
                 {this.state.count !== this.props.data.data.settings.length
-                  ? variables.getMessage('modals.main.marketplace.product.show_all')
-                  : variables.getMessage('modals.main.marketplace.product.show_less')}
+                  ? variables.getMessage('marketplace:product.show_all')
+                  : variables.getMessage('marketplace:product.show_less')}
               </span>
             </div>
           </>
@@ -248,7 +248,7 @@ const NewItemPage = () => {
       {/*<Header
         title={
           this.props.addons
-            ? variables.getMessage('modals.main.addons.added')
+            ? variables.getMessage('addons:added')
             : this.props.data.onCollection && this.props.data.data.in_collections?.length > 0
               ? this.props.data.data.in_collections[0].display_name
               : variables.getMessage('modals.main.navbar.marketplace')
@@ -266,7 +266,7 @@ const NewItemPage = () => {
           <div className="subHeader">
             {moreInfoItem(
               <MdAccountCircle />,
-              variables.getMessage('modals.main.marketplace.product.created_by'),
+              variables.getMessage('marketplace:product.created_by'),
               item.author,
             )}
             {itemWarning()}
@@ -291,7 +291,7 @@ const NewItemPage = () => {
           )}*/}
           <div className="marketplaceDescription">
             <span className="title">
-              {variables.getMessage('modals.main.marketplace.product.description')}
+              {variables.getMessage('marketplace:product.description')}
             </span>
             <Markdown>{item.description}</Markdown>
           </div>
@@ -320,12 +320,12 @@ const NewItemPage = () => {
                 type="settings"
                 onClick={() => this.manage('install')}
                 icon={<MdLibraryAdd />}
-                label={variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
+                label={variables.getMessage('marketplace:product.buttons.addtomue')}
               />
             ) : (
               <p style={{ textAlign: 'center' }}>
                 {variables.getMessage(
-                  'modals.main.marketplace.product.buttons.not_available_preview',
+                  'marketplace:product.buttons.not_available_preview',
                 )}
               </p>
             )}
@@ -349,7 +349,7 @@ const NewItemPage = () => {
                   }
                   icon={<MdFlag />}
                   tooltipTitle={variables.getMessage(
-                    'modals.main.marketplace.product.buttons.report',
+                    'marketplace:product.buttons.report',
                   )}
                   tooltipKey="report"
                 />
@@ -360,7 +360,7 @@ const NewItemPage = () => {
               <div>
                 <div className="inCollection">
                   <span className="subtitle">
-                    {variables.getMessage('modals.main.marketplace.product.part_of')}
+                    {variables.getMessage('marketplace:product.part_of')}
                   </span>
                   <span
                     className="title"
@@ -382,7 +382,7 @@ const NewItemPage = () => {
       {/*{moreByCurator.length > 1 && (
         <div className="moreFromCurator">
           <span className="title">
-            {variables.getMessage('modals.main.marketplace.product.more_from_curator', {
+            {variables.getMessage('marketplace:product.more_from_curator', {
               name: this.props.data.author,
             })}
           </span>

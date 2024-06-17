@@ -38,7 +38,7 @@ function CustomSettings() {
     return data;
   }
 
-  const QUOTE_SECTION = 'modals.main.settings.sections.quote';
+  const QUOTE_SECTION = 'settings:sections.quote';
 
   return (
     <>
@@ -67,14 +67,14 @@ function CustomSettings() {
               <div className="messageText">
                 <TextareaAutosize
                   value={customQuote[index].quote}
-                  placeholder={variables.getMessage('modals.main.settings.sections.quote.title')}
+                  placeholder={variables.getMessage('settings:sections.quote.title')}
                   onChange={(e) => handleCustomQuote(e, index, 'quote')}
                   varient="outlined"
                   style={{ fontSize: '22px', fontWeight: 'bold' }}
                 />
                 <TextareaAutosize
                   value={customQuote[index].author}
-                  placeholder={variables.getMessage('modals.main.settings.sections.quote.author')}
+                  placeholder={variables.getMessage('settings:sections.quote.author')}
                   className="subtitle"
                   onChange={(e) => handleCustomQuote(e, index, 'author')}
                   varient="outlined"
@@ -86,7 +86,7 @@ function CustomSettings() {
                     type="settings"
                     onClick={() => modifyCustomQuote('remove', index)}
                     icon={<MdCancel />}
-                    label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                    label={variables.getMessage('marketplace:product.buttons.remove')}
                   />
                 </div>
               </div>
@@ -99,7 +99,7 @@ function CustomSettings() {
             <MdOutlineFormatQuote />
             <span className="title">{variables.getMessage(`${QUOTE_SECTION}.no_quotes`)}</span>
             <span className="subtitle">
-              {variables.getMessage('modals.main.settings.sections.message.add_some')}
+              {variables.getMessage('settings:sections.message.add_some')}
             </span>
             <Button
               type="settings"

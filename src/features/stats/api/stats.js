@@ -9,7 +9,7 @@ export default class Stats {
       if (achievement) {
         const { name } = getLocalisedAchievementData(achievement.id);
         toast.info(
-          `🏆 ${variables.getMessage('modals.main.settings.sections.stats.achievement_unlocked', { name: name })}`,
+          `🏆 ${variables.getMessage('settings:sections.stats.achievement_unlocked', { name: name })}`,
           {
             icon: false,
             closeButton: false,

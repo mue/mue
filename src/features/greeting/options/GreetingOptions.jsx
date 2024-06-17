@@ -45,7 +45,7 @@ const GreetingOptions = () => {
     setBirthday(newDate);
   };
 
-  const GREETING_SECTION = 'modals.main.settings.sections.greeting';
+  const GREETING_SECTION = 'settings:sections.greeting';
 
   const addEvent = () => {
     // Retrieve the current array of events from localStorage
@@ -109,7 +109,7 @@ const GreetingOptions = () => {
     return (
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.additional_settings')}
+          title={variables.getMessage('settings:additional_settings')}
           subtitle={variables.getMessage(`${GREETING_SECTION}.additional`)}
         />
         <Action>
@@ -134,13 +134,13 @@ const GreetingOptions = () => {
         <Content
           title={variables.getMessage(`${GREETING_SECTION}.birthday`)}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.greeting.birthday_subtitle',
+            'settings:sections.greeting.birthday_subtitle',
           )}
         />
         <Action>
           <Switch
             name="birthdayenabled"
-            text={variables.getMessage('modals.main.settings.enabled')}
+            text={variables.getMessage('settings:enabled')}
             category="greeting"
             onChange={(value) => {
               setEnableBirthday(value ? 'preferences' : 'preferencesInactive');
@@ -178,7 +178,7 @@ const GreetingOptions = () => {
                 type="settings"
                 onClick={resetEvents}
                 icon={<MdRefresh />}
-                label={variables.getMessage('modals.main.settings.buttons.reset')}
+                label={variables.getMessage('settings:buttons.reset')}
               />
               <Button
                 type="settings"
@@ -245,7 +245,7 @@ const GreetingOptions = () => {
                     type="settings"
                     onClick={() => removeEvent(index)}
                     icon={<MdCancel />}
-                    label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                    label={variables.getMessage('marketplace:product.buttons.remove')}
                   />
                 </div>
               </div>

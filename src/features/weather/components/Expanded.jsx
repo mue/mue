@@ -13,37 +13,37 @@ const weatherTypes = {
     icon: WiCloud,
     key: 'cloudiness',
     unit: '%',
-    title: 'modals.main.settings.sections.weather.extra_info.cloudiness',
+    title: 'settings:sections.weather.extra_info.cloudiness',
   },
   windspeed: {
     icon: WiWindy,
     key: 'wind_speed',
     unit: 'm/s',
-    title: 'modals.main.settings.sections.weather.extra_info.wind_speed',
+    title: 'settings:sections.weather.extra_info.wind_speed',
     extra: 'windDirection',
   },
   atmosphericpressure: {
     icon: WiBarometer,
     key: 'pressure',
     unit: 'hPa',
-    title: 'modals.main.settings.sections.weather.extra_info.atmospheric_pressure',
+    title: 'settings:sections.weather.extra_info.atmospheric_pressure',
   },
   weatherdescription: {
     icon: WeatherIcon,
     key: 'description',
-    title: 'modals.main.settings.sections.weather.extra_info.weather_description',
+    title: 'settings:sections.weather.extra_info.weather_description',
   },
   visibility: {
     icon: MdDisabledVisible,
     key: 'visibility',
     unit: 'm',
-    title: 'modals.main.settings.sections.weather.extra_info.visibility',
+    title: 'settings:sections.weather.extra_info.visibility',
   },
   humidity: {
     icon: WiHumidity,
     key: 'humidity',
     unit: '%',
-    title: 'modals.main.settings.sections.weather.extra_info.humidity',
+    title: 'settings:sections.weather.extra_info.humidity',
   },
 };
 

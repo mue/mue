@@ -19,15 +19,15 @@ function NavbarOptions() {
   );
   const [appsEnabled, setAppsEnabled] = useState(localStorage.getItem('appsEnabled') === 'true' || defaults.appsEnabled);
 
-  const NAVBAR_SECTION = 'modals.main.settings.sections.appearance.navbar';
+  const NAVBAR_SECTION = 'settings:sections.appearance.navbar';
 
   const AdditionalSettings = () => {
     return (
       <Row final={false}>
         <Content
-          title={variables.getMessage('modals.main.settings.additional_settings')}
+          title={variables.getMessage('settings:additional_settings')}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.navbar.additional',
+            'settings:sections.appearance.navbar.additional',
           )}
         />
         <Action>
@@ -78,7 +78,7 @@ function NavbarOptions() {
       {
         icon: <MdCropFree />,
         settingName: 'view',
-        messageKey: 'modals.main.settings.sections.background.buttons.view',
+        messageKey: 'settings:sections.background.buttons.view',
       },
       {
         icon: <MdAssignment />,
@@ -105,7 +105,7 @@ function NavbarOptions() {
     return (
       <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.appearance.navbar.widgets')}
+          title={variables.getMessage('settings:sections.appearance.navbar.widgets')}
         />
         <Action>
           <div className="navbarButtonOptions">
@@ -124,7 +124,7 @@ function NavbarOptions() {
         <Content
           title={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
+            'settings:sections.appearance.navbar.refresh_subtitle',
           )}
         />
         <Action>
@@ -135,23 +135,23 @@ function NavbarOptions() {
               {
                 value: 'page',
                 text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+                  'settings:sections.appearance.navbar.refresh_options.page',
                 ),
               },
               {
                 value: 'background',
-                text: variables.getMessage('modals.main.settings.sections.background.title'),
+                text: variables.getMessage('settings:sections.background.title'),
               },
               {
                 value: 'quote',
-                text: variables.getMessage('modals.main.settings.sections.quote.title'),
+                text: variables.getMessage('settings:sections.quote.title'),
               },
               {
                 value: 'quotebackground',
                 text:
-                  variables.getMessage('modals.main.settings.sections.quote.title') +
+                  variables.getMessage('settings:sections.quote.title') +
                   ' + ' +
-                  variables.getMessage('modals.main.settings.sections.background.title'),
+                  variables.getMessage('settings:sections.background.title'),
               },
             ]}
           />

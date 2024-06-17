@@ -28,14 +28,14 @@ const Collection = ({ collection, collectionFunction }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {variables.getMessage('modals.main.marketplace.learn_more')} <MdOutlineOpenInNew />
+          {variables.getMessage('marketplace:learn_more')} <MdOutlineOpenInNew />
         </a>
       ) : (
         <Button
           type="collection"
           onClick={() => collectionFunction(collection.name)}
           icon={<MdOutlineArrowForward />}
-          label={variables.getMessage('modals.main.marketplace.explore_collection')}
+          label={variables.getMessage('marketplace:explore_collection')}
           iconPlacement={'right'}
         />
       )}

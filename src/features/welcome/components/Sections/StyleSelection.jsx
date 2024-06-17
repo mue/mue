@@ -21,20 +21,20 @@ const StyleSelection = () => {
     [STYLES.LEGACY]: {
       className: style === STYLES.LEGACY ? 'toggle legacyStyle active' : 'toggle legacyStyle',
       icon: <MdArchive />,
-      text: variables.getMessage('modals.welcome.sections.style.legacy'),
+      text: variables.getMessage('welcome:sections.style.legacy'),
     },
     [STYLES.NEW]: {
       className: style === STYLES.NEW ? 'toggle newStyle active' : 'toggle newStyle',
       icon: <MdOutlineWhatshot />,
-      text: variables.getMessage('modals.welcome.sections.style.modern'),
+      text: variables.getMessage('welcome:sections.style.modern'),
     },
   };
 
   return (
     <Content>
       <Header
-        title={variables.getMessage('modals.welcome.sections.style.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.style.description')}
+        title={variables.getMessage('welcome:sections.style.title')}
+        subtitle={variables.getMessage('welcome:sections.style.description')}
       />
       <div className="themesToggleArea">
         <div className="options">

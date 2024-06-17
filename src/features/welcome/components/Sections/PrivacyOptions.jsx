@@ -8,11 +8,11 @@ function OfflineMode() {
     <>
       <Checkbox
         name="offlineMode"
-        text={variables.getMessage('modals.main.settings.sections.advanced.offline_mode')}
+        text={variables.getMessage('settings:sections.advanced.offline_mode')}
         element=".other"
       />
       <span className="subtitle">
-        {variables.getMessage('modals.welcome.sections.privacy.offline_mode_description')}
+        {variables.getMessage('welcome:sections.privacy.offline_mode_description')}
       </span>
     </>
   );
@@ -22,7 +22,7 @@ function Links() {
   return (
     <>
       <span className="title">
-        {variables.getMessage('modals.welcome.sections.privacy.links.title')}
+        {variables.getMessage('welcome:sections.privacy.links.title')}
       </span>
       <a
         className="link"
@@ -30,7 +30,7 @@ function Links() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        {variables.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}
+        {variables.getMessage('welcome:sections.privacy.links.privacy_policy')}
         <MdOutlineOpenInNew />
       </a>
 
@@ -40,7 +40,7 @@ function Links() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        {variables.getMessage('modals.welcome.sections.privacy.links.source_code')}
+        {variables.getMessage('welcome:sections.privacy.links.source_code')}
         <MdOutlineOpenInNew />
       </a>
     </>
@@ -51,8 +51,8 @@ function PrivacyOptions() {
   return (
     <Content>
       <Header
-        title={variables.getMessage('modals.welcome.sections.privacy.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.privacy.description')}
+        title={variables.getMessage('welcome:sections.privacy.title')}
+        subtitle={variables.getMessage('welcome:sections.privacy.description')}
       />
       <OfflineMode />
       <Links />

@@ -38,7 +38,7 @@ const ColourOptions = () => {
     <Row final={true}>
       <Content
         title={variables.getMessage(
-          'modals.main.settings.sections.background.source.custom_colour',
+          'settings:sections.background.source.custom_colour',
         )}
       />
       <Action>
@@ -53,7 +53,7 @@ const ColourOptions = () => {
         <div className="colourReset">
           <span className="link" onClick={() => resetColour()}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {variables.getMessage('settings:buttons.reset')}
           </span>
         </div>
       </Action>

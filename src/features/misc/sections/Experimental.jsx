@@ -17,14 +17,14 @@ function ExperimentalOptions() {
   return (
     <>
       <span className="mainTitle">
-        {variables.getMessage('modals.main.settings.sections.experimental.title')}
+        {variables.getMessage('settings:sections.experimental.title')}
       </span>
       <span className="subtitle">
-        {variables.getMessage('modals.main.settings.sections.experimental.warning')}
+        {variables.getMessage('settings:sections.experimental.warning')}
       </span>
       <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.experimental.developer')}
+          title={variables.getMessage('settings:sections.experimental.developer')}
         />
         <Action>
           <Checkbox name="debug" text="Debug hotkey (Ctrl + #)" element=".other" />

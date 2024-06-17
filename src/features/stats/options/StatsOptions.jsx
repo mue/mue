@@ -78,7 +78,7 @@ const Stats = () => {
     </div>
   );
 
-  const STATS_SECTION = 'modals.main.settings.sections.stats';
+  const STATS_SECTION = 'settings:sections.stats';
 
   return (
     <>
@@ -94,7 +94,7 @@ const Stats = () => {
             type="settings"
             onClick={() => setClearmodal(true)}
             icon={<MdRestartAlt />}
-            label={variables.getMessage('modals.main.settings.buttons.reset')}
+            label={variables.getMessage('settings:buttons.reset')}
           />
         </CustomActions>
       </Header>

@@ -111,7 +111,7 @@ function AppsOptions({ appsEnabled }) {
         <Content
           title={variables.getMessage('widgets.navbar.apps.title')}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.navbar.apps_subtitle',
+            'settings:sections.appearance.navbar.apps_subtitle',
           )}
         />
         <Action>
@@ -119,7 +119,7 @@ function AppsOptions({ appsEnabled }) {
             type="settings"
             onClick={() => setAppsModalInfo((oldState) => ({ ...oldState, newLink: true }))}
             icon={<MdAddLink />}
-            label={variables.getMessage('modals.main.settings.sections.quicklinks.add_link')}
+            label={variables.getMessage('settings:sections.quicklinks.add_link')}
           />
         </Action>
       </Row>

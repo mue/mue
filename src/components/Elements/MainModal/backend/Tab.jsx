@@ -28,34 +28,34 @@ import {
 } from 'react-icons/md';
 
 const iconMapping = {
-  [variables.getMessage('modals.main.marketplace.product.overview')]: <Overview />,
+  [variables.getMessage('marketplace:product.overview')]: <Overview />,
   [variables.getMessage('modals.main.navbar.settings')]: <Settings />,
   [variables.getMessage('modals.main.navbar.addons')]: <Addons />,
   [variables.getMessage('modals.main.navbar.marketplace')]: <Marketplace />,
-  [variables.getMessage('modals.main.settings.sections.appearance.navbar.title')]: <Navbar />,
-  [variables.getMessage('modals.main.settings.sections.greeting.title')]: <Greeting />,
-  [variables.getMessage('modals.main.settings.sections.time.title')]: <Time />,
-  [variables.getMessage('modals.main.settings.sections.quicklinks.title')]: <QuickLinks />,
-  [variables.getMessage('modals.main.settings.sections.quote.title')]: <Quote />,
-  [variables.getMessage('modals.main.settings.sections.date.title')]: <Date />,
-  [variables.getMessage('modals.main.settings.sections.message.title')]: <Message />,
-  [variables.getMessage('modals.main.settings.sections.background.title')]: <Background />,
-  [variables.getMessage('modals.main.settings.sections.search.title')]: <MdSearch />,
-  [variables.getMessage('modals.main.settings.sections.weather.title')]: <Weather />,
-  [variables.getMessage('modals.main.settings.sections.appearance.title')]: <Appearance />,
-  [variables.getMessage('modals.main.settings.sections.language.title')]: <Language />,
-  [variables.getMessage('modals.main.settings.sections.advanced.title')]: <Advanced />,
-  [variables.getMessage('modals.main.settings.sections.stats.title')]: <Stats />,
-  [variables.getMessage('modals.main.settings.sections.experimental.title')]: <Experimental />,
-  [variables.getMessage('modals.main.settings.sections.changelog.title')]: <Changelog />,
-  [variables.getMessage('modals.main.settings.sections.about.title')]: <About />,
-  [variables.getMessage('modals.main.addons.added')]: <Added />,
-  [variables.getMessage('modals.main.addons.create.title')]: <Create />,
-  [variables.getMessage('modals.main.marketplace.all')]: <Addons />,
-  [variables.getMessage('modals.main.marketplace.photo_packs')]: <Background />,
-  [variables.getMessage('modals.main.marketplace.quote_packs')]: <Quote />,
-  [variables.getMessage('modals.main.marketplace.preset_settings')]: <Advanced />,
-  [variables.getMessage('modals.main.marketplace.collections')]: <Collections />,
+  [variables.getMessage('settings:sections.appearance.navbar.title')]: <Navbar />,
+  [variables.getMessage('settings:sections.greeting.title')]: <Greeting />,
+  [variables.getMessage('settings:sections.time.title')]: <Time />,
+  [variables.getMessage('settings:sections.quicklinks.title')]: <QuickLinks />,
+  [variables.getMessage('settings:sections.quote.title')]: <Quote />,
+  [variables.getMessage('settings:sections.date.title')]: <Date />,
+  [variables.getMessage('settings:sections.message.title')]: <Message />,
+  [variables.getMessage('settings:sections.background.title')]: <Background />,
+  [variables.getMessage('settings:sections.search.title')]: <MdSearch />,
+  [variables.getMessage('settings:sections.weather.title')]: <Weather />,
+  [variables.getMessage('settings:sections.appearance.title')]: <Appearance />,
+  [variables.getMessage('settings:sections.language.title')]: <Language />,
+  [variables.getMessage('settings:sections.advanced.title')]: <Advanced />,
+  [variables.getMessage('settings:sections.stats.title')]: <Stats />,
+  [variables.getMessage('settings:sections.experimental.title')]: <Experimental />,
+  [variables.getMessage('settings:sections.changelog.title')]: <Changelog />,
+  [variables.getMessage('settings:sections.about.title')]: <About />,
+  [variables.getMessage('addons:added')]: <Added />,
+  [variables.getMessage('addons:create.title')]: <Create />,
+  [variables.getMessage('marketplace:all')]: <Addons />,
+  [variables.getMessage('marketplace:photo_packs')]: <Background />,
+  [variables.getMessage('marketplace:quote_packs')]: <Quote />,
+  [variables.getMessage('marketplace:preset_settings')]: <Advanced />,
+  [variables.getMessage('marketplace:collections')]: <Collections />,
 };
 
 function Tab({ label, currentTab, onClick, navbarTab }) {
@@ -72,20 +72,20 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   const icon = iconMapping[label];
   const divider = [
-    variables.getMessage('modals.main.settings.sections.weather.title'),
-    variables.getMessage('modals.main.settings.sections.language.title'),
-    variables.getMessage('modals.main.marketplace.all'),
-    variables.getMessage('modals.main.settings.sections.experimental.title'),
+    variables.getMessage('settings:sections.weather.title'),
+    variables.getMessage('settings:sections.language.title'),
+    variables.getMessage('marketplace:all'),
+    variables.getMessage('settings:sections.experimental.title'),
   ].includes(label);
 
   const mue = [
-    variables.getMessage('modals.main.marketplace.product.overview'),
-    variables.getMessage('modals.main.addons.added'),
-    variables.getMessage('modals.main.marketplace.all'),
+    variables.getMessage('marketplace:product.overview'),
+    variables.getMessage('addons:added'),
+    variables.getMessage('marketplace:all'),
   ].includes(label);
 
   if (
-    label === variables.getMessage('modals.main.settings.sections.experimental.title') &&
+    label === variables.getMessage('settings:sections.experimental.title') &&
     !isExperimental
   ) {
     return null;

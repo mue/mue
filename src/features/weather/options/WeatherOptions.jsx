@@ -56,14 +56,14 @@ const WeatherOptions = () => {
   const { location, windSpeed, setWindSpeed, changeLocation, getAutoLocation } =
     useWeatherSettings();
   const weatherType = localStorage.getItem('weatherType');
-  const WEATHER_SECTION = 'modals.main.settings.sections.weather';
+  const WEATHER_SECTION = 'settings:sections.weather';
 
   const WidgetType = () => (
     <Row>
       <Content title={variables.getMessage(`${WEATHER_SECTION}.widget_type`)} />
       <Action>
         <Dropdown
-          label={variables.getMessage('modals.main.settings.sections.time.type')}
+          label={variables.getMessage('settings:sections.time.type')}
           name="weatherType"
           category="weather"
           onChange={() => this.forceUpdate()}

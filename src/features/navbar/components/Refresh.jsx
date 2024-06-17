@@ -24,10 +24,10 @@ function Refresh() {
     let text;
     switch (refreshOption) {
       case 'background':
-        text = variables.getMessage('modals.main.settings.sections.background.title');
+        text = variables.getMessage('settings:sections.background.title');
         break;
       case 'quote':
-        text = variables.getMessage('modals.main.settings.sections.quote.title');
+        text = variables.getMessage('settings:sections.quote.title');
         break;
       case 'quotebackground':
         text = new Intl.ListFormat(
@@ -37,13 +37,13 @@ function Refresh() {
             type: 'conjunction',
           },
         ).format([
-          variables.getMessage('modals.main.settings.sections.quote.title'),
-          variables.getMessage('modals.main.settings.sections.background.title'),
+          variables.getMessage('settings:sections.quote.title'),
+          variables.getMessage('settings:sections.background.title'),
         ]);
         break;
       default:
         text = variables.getMessage(
-          'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+          'settings:sections.appearance.navbar.refresh_options.page',
         );
         break;
     }

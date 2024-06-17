@@ -11,7 +11,7 @@ function Dropdown({
   searchEngines
 }) {
   const customText = variables
-    .getMessage('modals.main.settings.sections.search.custom')
+    .getMessage('settings:sections.search.custom')
     .split(' ')[0];
 
   function setSearch(name, custom) {

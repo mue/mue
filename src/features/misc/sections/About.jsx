@@ -15,7 +15,7 @@ class About extends PureComponent {
       sponsors: [],
       photographers: [],
       curators: [],
-      update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
+      update: variables.getMessage('settings:sections.about.version.checking_update'),
       loading: variables.getMessage('modals.main.loading'),
     };
     this.controller = new AbortController();
@@ -72,9 +72,9 @@ class About extends PureComponent {
       }
 
       return this.setState({
-        update: variables.getMessage('modals.main.settings.sections.about.version.error.title'),
+        update: variables.getMessage('settings:sections.about.version.error.title'),
         loading: variables.getMessage(
-          'modals.main.settings.sections.about.version.error.description',
+          'settings:sections.about.version.error.description',
         ),
       });
     }
@@ -89,13 +89,13 @@ class About extends PureComponent {
 
     const newVersion = versionData[0].tag_name;
 
-    let update = variables.getMessage('modals.main.settings.sections.about.version.no_update');
+    let update = variables.getMessage('settings:sections.about.version.no_update');
     if (
       Number(variables.constants.VERSION.replaceAll('.', '')) <
       Number(newVersion.replaceAll('.', ''))
     ) {
       update = `${variables.getMessage(
-        'modals.main.settings.sections.about.version.update_available',
+        'settings:sections.about.version.update_available',
       )}: ${newVersion}`;
     }
 
@@ -113,8 +113,8 @@ class About extends PureComponent {
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       this.setState({
-        update: variables.getMessage('modals.main.marketplace.offline.description'),
-        loading: variables.getMessage('modals.main.marketplace.offline.description'),
+        update: variables.getMessage('marketplace:offline.description'),
+        loading: variables.getMessage('marketplace:offline.description'),
       });
       return;
     }
@@ -141,7 +141,7 @@ class About extends PureComponent {
             <div className="aboutText">
               <span className="title">Mue, by Kaiso</span>
               <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
+                {variables.getMessage('settings:sections.about.version.title')}{' '}
                 {variables.constants.VERSION}
               </span>
               <span className="subtitle">({this.state.update})</span>
@@ -187,7 +187,7 @@ class About extends PureComponent {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {variables.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}
+                {variables.getMessage('welcome:sections.privacy.links.privacy_policy')}
               </a>
             </span>
           </div>
@@ -195,14 +195,14 @@ class About extends PureComponent {
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.contact_us')}
+            {variables.getMessage('settings:sections.about.contact_us')}
           </span>
           <div className="aboutContact">
             <Button
               type="linkButton"
               href="https://muetab.com/contact"
               icon={<MdContactPage />}
-              label={variables.getMessage('modals.main.settings.sections.about.form_button')}
+              label={variables.getMessage('settings:sections.about.form_button')}
             />
             <Button
               type="linkIconButton"
@@ -227,15 +227,15 @@ class About extends PureComponent {
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.support_mue')}
+            {variables.getMessage('settings:sections.about.support_mue')}
           </span>
-          <p>{variables.getMessage('modals.main.settings.sections.about.support_subtitle')}</p>
+          <p>{variables.getMessage('settings:sections.about.support_subtitle')}</p>
           <div className="aboutContact">
             <Button
               type="linkButton"
               href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
               icon={<BiDonateHeart />}
-              label={variables.getMessage('modals.main.settings.sections.about.support_donate')}
+              label={variables.getMessage('settings:sections.about.support_donate')}
             />
             <Button
               type="linkIconButton"
@@ -257,7 +257,7 @@ class About extends PureComponent {
           style={{ flexFlow: 'column', alignItems: 'flex-start', minHeight: '70px' }}
         >
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.resources_used.title')}
+            {variables.getMessage('settings:sections.about.resources_used.title')}
           </span>
           <span className="subtitle">
             <a
@@ -277,13 +277,13 @@ class About extends PureComponent {
             >
               Unsplash
             </a>{' '}
-            ({variables.getMessage('modals.main.settings.sections.about.resources_used.bg_images')})
+            ({variables.getMessage('settings:sections.about.resources_used.bg_images')})
           </span>
         </div>
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.contributors')}
+            {variables.getMessage('settings:sections.about.contributors')}
           </span>
           <p>{this.state.loading}</p>
           <div className="contributorImages">
@@ -303,14 +303,14 @@ class About extends PureComponent {
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.supporters')}
+            {variables.getMessage('settings:sections.about.supporters')}
           </span>
           <p>{this.state.loading}</p>
           <div className="contributorImages">
             {this.state.sponsors.map(({ handle, avatar }) => {
               if (handle === 'empty') {
                 return (
-                  <p>{variables.getMessage('modals.main.settings.sections.about.no_supporters')}</p>
+                  <p>{variables.getMessage('settings:sections.about.no_supporters')}</p>
                 );
               }
 
@@ -337,7 +337,7 @@ class About extends PureComponent {
           }}
         >
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.photographers')}
+            {variables.getMessage('settings:sections.about.photographers')}
           </span>
           {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
@@ -359,7 +359,7 @@ class About extends PureComponent {
           }}
         >
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.curators')}
+            {variables.getMessage('settings:sections.about.curators')}
           </span>
           {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>

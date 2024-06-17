@@ -34,12 +34,12 @@ function ImportSettings(props) {
   return (
     <Content>
       <Header
-        title={variables.getMessage('modals.welcome.sections.settings.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.settings.description')}
+        title={variables.getMessage('welcome:sections.settings.title')}
+        subtitle={variables.getMessage('welcome:sections.settings.description')}
       />
       <button className="upload" onClick={() => document.getElementById('file-input').click()}>
         <MdCloudUpload />
-        <span>{variables.getMessage('modals.main.settings.buttons.import')}</span>
+        <span>{variables.getMessage('settings:buttons.import')}</span>
       </button>
       <FileUpload
         id="file-input"
@@ -47,9 +47,9 @@ function ImportSettings(props) {
         type="settings"
         loadFunction={(e) => importSettings(e)}
       />
-      <span className="title">{variables.getMessage('modals.welcome.tip')}</span>
+      <span className="title">{variables.getMessage('welcome:tip')}</span>
       <span className="subtitle">
-        {variables.getMessage('modals.welcome.sections.settings.tip')}
+        {variables.getMessage('welcome:sections.settings.tip')}
       </span>
     </Content>
   );

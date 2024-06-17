@@ -169,10 +169,10 @@ function Marketplace() {
       <>
         <MdWifiOff />
         <span className="title">
-          {variables.getMessage('modals.main.marketplace.offline.title')}
+          {variables.getMessage('marketplace:offline.title')}
         </span>
         <span className="subtitle">
-          {variables.getMessage('modals.main.marketplace.offline.description')}
+          {variables.getMessage('marketplace:offline.description')}
         </span>
       </>,
     );
@@ -192,8 +192,8 @@ function Marketplace() {
     return errorMessage(
       <>
         <MdLocalMall />
-        <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
-        <span className="subtitle">{variables.getMessage('modals.main.marketplace.no_items')}</span>
+        <span className="title">{variables.getMessage('addons:empty.title')}</span>
+        <span className="subtitle">{variables.getMessage('marketplace:no_items')}</span>
       </>,
     );
   }
@@ -214,7 +214,7 @@ function Marketplace() {
         onClick={() =>
           changeTab(
             'settings',
-            variables.getMessage('modals.main.settings.sections.changelog.title'),
+            variables.getMessage('settings:sections.changelog.title'),
           )
         }
       >
@@ -237,7 +237,7 @@ function Marketplace() {
             }
           >
             <div className="nice-tag">
-              {variables.getMessage('modals.main.marketplace.collection')}
+              {variables.getMessage('marketplace:collection')}
             </div>
             <div className="content">
               <span className="mainTitle">{collectionTitle}</span>={' '}
@@ -250,8 +250,8 @@ function Marketplace() {
               icon={<MdLibraryAdd />}
               label={
                 busy
-                  ? variables.getMessage('modals.main.marketplace.installing')
-                  : variables.getMessage('modals.main.marketplace.add_all')
+                  ? variables.getMessage('marketplace:installing')
+                  : variables.getMessage('marketplace:add_all')
               }
             />
           </div>
@@ -283,18 +283,18 @@ function Marketplace() {
               </div>
             )}
             <Dropdown
-              label={variables.getMessage('modals.main.addons.sort.title')}
+              label={variables.getMessage('addons:sort.title')}
               name="sortMarketplace"
               onChange={(value) => changeSort(value
               items)}
               items={[
                 {
                   value: 'a-z',
-                  text: variables.getMessage('modals.main.addons.sort.a_z'),
+                  text: variables.getMessage('addons:sort.a_z'),
                 },
                 {
                   value: 'z-a',
-                  text: variables.getMessage('modals.main.addons.sort.z_a'),
+                  text: variables.getMessage('addons:sort.z_a'),
                 },
               ]}
             />
@@ -324,7 +324,7 @@ function Marketplace() {
                 type="collection"
                 onClick={() => toggle('collection', item.name)}
                 icon={<MdOutlineArrowForward />}
-                label={variables.getMessage('modals.main.marketplace.explore_collection')}
+                label={variables.getMessage('marketplace:explore_collection')}
                 iconPlacement="right"
               />
             </div>

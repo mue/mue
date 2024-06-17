@@ -4,29 +4,29 @@ export const backgroundImageEffects = [
   {
     value: 'none',
     text: variables.getMessage(
-      'modals.main.settings.sections.appearance.navbar.refresh_options.none',
+      'settings:sections.appearance.navbar.refresh_options.none',
     ),
   },
   {
     value: 'grayscale',
     text: variables.getMessage(
-      'modals.main.settings.sections.background.effects.filters.grayscale',
+      'settings:sections.background.effects.filters.grayscale',
     ),
   },
   {
     value: 'sepia',
-    text: variables.getMessage('modals.main.settings.sections.background.effects.filters.sepia'),
+    text: variables.getMessage('settings:sections.background.effects.filters.sepia'),
   },
   {
     value: 'invert',
-    text: variables.getMessage('modals.main.settings.sections.background.effects.filters.invert'),
+    text: variables.getMessage('settings:sections.background.effects.filters.invert'),
   },
   {
     value: 'saturate',
-    text: variables.getMessage('modals.main.settings.sections.background.effects.filters.saturate'),
+    text: variables.getMessage('settings:sections.background.effects.filters.saturate'),
   },
   {
     value: 'contrast',
-    text: variables.getMessage('modals.main.settings.sections.background.effects.filters.contrast'),
+    text: variables.getMessage('settings:sections.background.effects.filters.contrast'),
   },
 ];

@@ -22,31 +22,31 @@ import time_zones from 'features/time/timezones.json';
 function AdvancedOptions() {
   const [resetModal, setResetModal] = useState(false);
   const [data, setData] = useState(false);
-  const ADVANCED_SECTION = 'modals.main.settings.sections.advanced';
+  const ADVANCED_SECTION = 'settings:sections.advanced';
   const { subSection } = useTab();
 
   const Data = () => {
     return localStorage.getItem('welcomePreview') !== 'true' ? (
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.advanced.data')}
-          subtitle={variables.getMessage('modals.main.settings.sections.advanced.data_description')}
+          title={variables.getMessage('settings:sections.advanced.data')}
+          subtitle={variables.getMessage('settings:sections.advanced.data_description')}
         />
         <div className="resetDataButtonsLayout">
           <Button
             onClick={() => setResetModal(true)}
             icon={<ResetIcon />}
-            label={variables.getMessage('modals.main.settings.buttons.reset')}
+            label={variables.getMessage('settings:buttons.reset')}
           />
           <Button
             onClick={() => exportSettings()}
             icon={<ExportIcon />}
-            label={variables.getMessage('modals.main.settings.buttons.export')}
+            label={variables.getMessage('settings:buttons.export')}
           />
           <Button
             onClick={() => document.getElementById('file-input').click()}
             icon={<ImportIcon />}
-            label={variables.getMessage('modals.main.settings.buttons.import')}
+            label={variables.getMessage('settings:buttons.import')}
           />
         </div>
         <FileUpload
@@ -64,12 +64,12 @@ function AdvancedOptions() {
 
             <span className="title">
               {variables.getMessage(
-                'modals.main.settings.sections.advanced.preview_data_disabled.title',
+                'settings:sections.advanced.preview_data_disabled.title',
               )}
             </span>
             <span className="subtitle">
               {variables.getMessage(
-                'modals.main.settings.sections.advanced.preview_data_disabled.description',
+                'settings:sections.advanced.preview_data_disabled.description',
               )}
             </span>
           </div>
@@ -120,9 +120,9 @@ function AdvancedOptions() {
           />
           <Row>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.advanced.offline_mode')}
+              title={variables.getMessage('settings:sections.advanced.offline_mode')}
               subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.offline_subtitle',
+                'settings:sections.advanced.offline_subtitle',
               )}
             />
             <Action>
@@ -132,9 +132,9 @@ function AdvancedOptions() {
 
           <Row>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.advanced.timezone.title')}
+              title={variables.getMessage('settings:sections.advanced.timezone.title')}
               subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.timezone.subtitle',
+                'settings:sections.advanced.timezone.subtitle',
               )}
             />
             <Action>
@@ -145,7 +145,7 @@ function AdvancedOptions() {
                   {
                     value: 'auto',
                     text: variables.getMessage(
-                      'modals.main.settings.sections.advanced.timezone.automatic',
+                      'settings:sections.advanced.timezone.automatic',
                     ),
                   },
                   ...time_zones.map((timezone) => ({ value: timezone, text: timezone })),
@@ -155,9 +155,9 @@ function AdvancedOptions() {
           </Row>
           <Row>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.advanced.tab_name')}
+              title={variables.getMessage('settings:sections.advanced.tab_name')}
               subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.tab_name_subtitle',
+                'settings:sections.advanced.tab_name_subtitle',
               )}
             />
             <Action>
@@ -166,9 +166,9 @@ function AdvancedOptions() {
           </Row>
           <Row>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.advanced.custom_css')}
+              title={variables.getMessage('settings:sections.advanced.custom_css')}
               subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_css_subtitle',
+                'settings:sections.advanced.custom_css_subtitle',
               )}
             />
             <Action>
@@ -177,15 +177,15 @@ function AdvancedOptions() {
           </Row>
           <Row final={true}>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.experimental.title')}
+              title={variables.getMessage('settings:sections.experimental.title')}
               subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.experimental_warning',
+                'settings:sections.advanced.experimental_warning',
               )}
             />
             <Action>
               <Switch
                 name="experimental"
-                text={variables.getMessage('modals.main.settings.enabled')}
+                text={variables.getMessage('settings:enabled')}
                 element=".other"
               />
             </Action>

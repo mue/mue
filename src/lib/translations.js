@@ -1,5 +1,7 @@
 import { I18nLite } from '@eartharoid/i18n';
-import { importJSON } from '@eartharoid/vite-plugin-i18n';
+// import { importJSON } from '@eartharoid/vite-plugin-i18n';
+
+const importJSON = (...modules) => ([modules[0].locale_id, [].concat(...modules.map(mod => mod.json))]);
 
 export const languages = Object.keys(import.meta.glob('i18n/**/*.yml'));
 /**

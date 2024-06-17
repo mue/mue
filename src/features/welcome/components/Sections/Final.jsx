@@ -7,31 +7,31 @@ function Final(props) {
   return (
     <Content>
       <Header
-        title={variables.getMessage('modals.welcome.sections.final.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.final.description')}
+        title={variables.getMessage('welcome:sections.final.title')}
+        subtitle={variables.getMessage('welcome:sections.final.description')}
       />
-      <span className="title">{variables.getMessage('modals.welcome.sections.final.changes')}</span>
+      <span className="title">{variables.getMessage('welcome:sections.final.changes')}</span>
       <span className="subtitle">
-        {variables.getMessage('modals.welcome.sections.final.changes_description')}
+        {variables.getMessage('welcome:sections.final.changes_description')}
       </span>
       <div className="themesToggleArea themesToggleAreaWelcome">
         <div className="toggle" onClick={() => props.switchTab(1)}>
           <span>
-            {variables.getMessage('modals.main.settings.sections.language.title')}:{' '}
+            {variables.getMessage('settings:sections.language.title')}:{' '}
             {languages.find((i) => i.value === localStorage.getItem('language') || defaults.language).name}
           </span>
         </div>
         <div className="toggle" onClick={() => props.switchTab(3)}>
           <span>
-            {variables.getMessage('modals.main.settings.sections.appearance.theme.title')}:{' '}
+            {variables.getMessage('settings:sections.appearance.theme.title')}:{' '}
             {variables.getMessage(
-              'modals.main.settings.sections.appearance.theme.' + localStorage.getItem('theme'),
+              'settings:sections.appearance.theme.' + localStorage.getItem('theme'),
             )}
           </span>
         </div>
         {props.importedSettings.length !== 0 && (
           <div className="toggle" onClick={() => props.switchTab(2)}>
-            {variables.getMessage('modals.welcome.sections.final.imported', {
+            {variables.getMessage('welcome:sections.final.imported', {
               amount: props.importedSettings.length,
             })}{' '}
           </div>

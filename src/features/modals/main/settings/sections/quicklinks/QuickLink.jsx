@@ -56,13 +56,13 @@ const QuickLink = ({ item, deleteLink, startEditLink }) => {
             type="settings"
             onClick={() => startEditLink(item)}
             icon={<MdEdit />}
-            label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
+            label={variables.getMessage('settings:sections.quicklinks.edit')}
           />
           <Button
             type="settings"
             onClick={(e) => deleteLink(item.key, e)}
             icon={<MdCancel />}
-            label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+            label={variables.getMessage('marketplace:product.buttons.remove')}
           />
         </div>
       </div>

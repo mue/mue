@@ -26,7 +26,8 @@ class Navbar extends PureComponent {
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
+      zoomFontSize:
+        Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
     });
   }
 
@@ -34,20 +35,20 @@ class Navbar extends PureComponent {
     let refreshText;
     switch (this.state.refreshOption) {
       case 'background':
-        refreshText = variables.getMessage('modals.main.settings.sections.background.title');
+        refreshText = variables.getMessage('settings:sections.background.title');
         break;
       case 'quote':
-        refreshText = variables.getMessage('modals.main.settings.sections.quote.title');
+        refreshText = variables.getMessage('settings:sections.quote.title');
         break;
       case 'quotebackground':
         refreshText =
-          variables.getMessage('modals.main.settings.sections.quote.title') +
+          variables.getMessage('settings:sections.quote.title') +
           ' ' +
-          variables.getMessage('modals.main.settings.sections.background.title');
+          variables.getMessage('settings:sections.background.title');
         break;
       default:
         refreshText = variables.getMessage(
-          'modals.main.settings.sections.appearance.navbar.refresh_options.page',
+          'settings:sections.appearance.navbar.refresh_options.page',
         );
         break;
     }
@@ -118,21 +119,23 @@ class Navbar extends PureComponent {
           {this.state.refreshEnabled !== 'false' && <Refresh fontSize={this.state.zoomFontSize} />}
 
           <Tooltip
-            title={variables.getMessage('modals.main.navbar.settings', {
-              type: variables.getMessage(
-                'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
-              ),
-            })}
+          // FIXME: doesn't exist
+          // title={variables.getMessage('modals.main.navbar.settings', {
+          //   type: variables.getMessage(
+          //     'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
+          //   ),
+          // })}
           >
             <button
               className="navbarButton"
               onClick={() => this.props.openModal('mainModal')}
               style={{ fontSize: this.state.zoomFontSize }}
-              aria-label={variables.getMessage('modals.main.navbar.settings', {
-                type: variables.getMessage(
-                  'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
-                ),
-              })}
+              // FIXME: and here
+              // aria-label={variables.getMessage('modals.main.navbar.settings', {
+              //   type: variables.getMessage(
+              //     'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
+              //   ),
+              // })}
             >
               <MdSettings className="settings-icon topicons" />
             </button>

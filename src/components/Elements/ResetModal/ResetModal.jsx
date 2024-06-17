@@ -15,10 +15,10 @@ function ResetModal({ modalClose }) {
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
-          {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.title')}
+          {variables.getMessage('settings:sections.advanced.reset_modal.title')}
         </span>
         <Tooltip
-          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+          title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
         >
           <div className="close" onClick={modalClose}>
             <MdClose />
@@ -26,23 +26,23 @@ function ResetModal({ modalClose }) {
         </Tooltip>
       </div>
       <span className="title">
-        {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.question')}
+        {variables.getMessage('settings:sections.advanced.reset_modal.question')}
       </span>
       <span className="subtitle">
-        {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.information')}
+        {variables.getMessage('settings:sections.advanced.reset_modal.information')}
       </span>
       <div className="resetFooter">
         <Button
           type="secondary"
           onClick={modalClose}
           icon={<MdClose />}
-          label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+          label={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
         />
         <Button
           type="settings"
           onClick={() => reset()}
           icon={<MdRestartAlt />}
-          label={variables.getMessage('modals.main.settings.buttons.reset')}
+          label={variables.getMessage('settings:buttons.reset')}
         />
       </div>
     </div>

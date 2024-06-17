@@ -42,7 +42,7 @@ function ShareModal({ modalClose, data }) {
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">{variables.getMessage('widgets.quote.share')}</span>
-        <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
+        <Tooltip title={variables.getMessage('welcome:buttons.close')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>

@@ -51,13 +51,13 @@ function SearchOptions() {
     EventBus.emit('refresh', 'search');
   }
 
-  const SEARCH_SECTION = 'modals.main.settings.sections.search';
+  const SEARCH_SECTION = 'settings:sections.search';
 
   const AdditionalOptions = () => {
     return (
       <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.additional_settings')}
+          title={variables.getMessage('settings:additional_settings')}
           subtitle={variables.getMessage(`${SEARCH_SECTION}.additional`)}
         />
         <Action>
@@ -97,7 +97,7 @@ function SearchOptions() {
         <Content
           title={variables.getMessage(`${SEARCH_SECTION}.search_engine`)}
           subtitle={variables.getMessage(
-            'modals.main.settings.sections.search.search_engine_subtitle',
+            'settings:sections.search.search_engine_subtitle',
           )}
         />
         <Action>
@@ -134,7 +134,7 @@ function SearchOptions() {
           />
           <p style={{ marginTop: '0px' }}>
             <span className="link" onClick={() => resetSearch()}>
-              {variables.getMessage('modals.main.settings.buttons.reset')}
+              {variables.getMessage('settings:buttons.reset')}
             </span>
           </p>
         </Action>

@@ -22,9 +22,9 @@ const PreferencesWrapper = ({ children, ...props }) => {
         <Row>
           <Content
             title={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.widget_zoom',
+              'settings:sections.appearance.accessibility.widget_zoom',
             )}
-            subtitle={variables.getMessage('modals.main.settings.sections.header.size')}
+            subtitle={variables.getMessage('settings:sections.header.size')}
           />
           <Action>
             <Slider

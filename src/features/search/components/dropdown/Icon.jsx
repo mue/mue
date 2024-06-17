@@ -35,7 +35,7 @@ function Icon({ currentSearch, searchDropdown, setSearchDropdown }) {
   }
 
   return (
-    <Tooltip title={variables.getMessage('modals.main.settings.sections.search.search_engine')}>
+    <Tooltip title={variables.getMessage('settings:sections.search.search_engine')}>
       <button
         className="navbarButton"
         aria-label="Search Engine"

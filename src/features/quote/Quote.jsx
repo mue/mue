@@ -110,7 +110,7 @@ class Quote extends PureComponent {
   getAuthorLink(author) {
     return localStorage.getItem('authorLink') === 'false' || author === 'Unknown'
       ? null
-      : `https://${variables.locale_id.split('_')[0]}.wikipedia.org/wiki/${author
+      : `https://${variables.locale_id.split('-')[0]}.wikipedia.org/wiki/${author
           .split(' ')
           .join('_')}`;
   }
@@ -131,7 +131,7 @@ class Quote extends PureComponent {
     const authorimgdata = await (
       await fetch(
         `https://${
-          variables.locale_id.split('_')[0]
+          variables.locale_id.split('-')[0]
         }.wikipedia.org/w/api.php?action=query&titles=${author}&origin=*&prop=pageimages&format=json&pithumbsize=100`,
       )
     ).json();
@@ -144,7 +144,7 @@ class Quote extends PureComponent {
       const authorimglicensedata = await (
         await fetch(
           `https://${
-            variables.locale_id.split('_')[0]
+            variables.locale_id.split('-')[0]
           }.wikipedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata&titles=File:${
             authorPage.pageimage
           }&origin=*&format=json`,
@@ -278,7 +278,7 @@ class Quote extends PureComponent {
         const getAPIQuoteData = async () => {
           const quoteLanguage = localStorage.getItem('quoteLanguage');
           const data = await (
-            await fetch(variables.constants.API_URL + '/quotes/random?language=' + quoteLanguage)
+            await fetch(`${variables.constants.API_URL}/quotes/random?language=${quoteLanguage || 'en'}`)
           ).json();
           // If we hit the ratelimit, we fall back to local quotes
           if (data.statusCode === 429) {

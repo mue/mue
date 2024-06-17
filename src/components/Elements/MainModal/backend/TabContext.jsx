@@ -10,7 +10,7 @@ export const useTab = () => {
 export const TabProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState('settings');
   const [subTab, setSubTab] = useState(
-    variables.getMessage('modals.main.marketplace.product.overview'),
+    variables.getMessage('marketplace:product.overview'),
   );
   const [subSection, setSubSection] = useState('');
   const [direction, setDirection] = useState(1);
@@ -28,7 +28,7 @@ export const TabProvider = ({ children }) => {
     setDirection(newIndex > currentIndex ? 1 : -1);
     setSubTab(subtab);
     if (tab === 'settings' && subtab === '' && section === '') {
-      setSubTab(variables.getMessage('modals.main.marketplace.product.overview'));
+      setSubTab(variables.getMessage('marketplace:product.overview'));
     }
 
     setActiveTab(tab);

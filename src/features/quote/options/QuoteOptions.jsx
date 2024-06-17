@@ -30,14 +30,14 @@ const QuoteOptions = () => {
     localStorage.setItem('quoteType', quoteType);
   }, [quoteType]);
 
-  const QUOTE_SECTION = 'modals.main.settings.sections.quote';
+  const QUOTE_SECTION = 'settings:sections.quote';
 
   const ButtonOptions = () => {
     return (
       <Row>
         <Content
           title={variables.getMessage(`${QUOTE_SECTION}.buttons.title`)}
-          subtitle={variables.getMessage('modals.main.settings.sections.quote.buttons.subtitle')}
+          subtitle={variables.getMessage('settings:sections.quote.buttons.subtitle')}
         />
         <Action>
           <Checkbox
@@ -64,7 +64,7 @@ const QuoteOptions = () => {
     return (
       <Dropdown
         name="quoteType"
-        label={variables.getMessage('modals.main.settings.sections.background.type.title')}
+        label={variables.getMessage('settings:sections.background.type.title')}
         onChange={(value) => setQuoteType(value)}
         category="quote"
         items={[
@@ -74,7 +74,7 @@ const QuoteOptions = () => {
           },
           {
             value: 'api',
-            text: variables.getMessage('modals.main.settings.sections.background.type.api'),
+            text: variables.getMessage('settings:sections.background.type.api'),
           },
           { value: 'custom', text: variables.getMessage(`${QUOTE_SECTION}.custom`) },
         ]}
@@ -86,7 +86,7 @@ const QuoteOptions = () => {
     return (
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.additional_settings')}
+          title={variables.getMessage('settings:additional_settings')}
           subtitle={variables.getMessage(`${QUOTE_SECTION}.additional`)}
         />
         <Action>
@@ -111,7 +111,7 @@ const QuoteOptions = () => {
         <Header
           title={variables.getMessage(`${QUOTE_SECTION}.title`)}
           secondaryTitle={variables.getMessage(
-            'modals.main.settings.sections.background.source.title',
+            'settings:sections.background.source.title',
           )}
           report={false}
         />
@@ -128,7 +128,7 @@ const QuoteOptions = () => {
       {subSection === 'source' && (
         <Row final={true}>
           <Content
-            title={variables.getMessage('modals.main.settings.sections.background.source.title')}
+            title={variables.getMessage('settings:sections.background.source.title')}
             subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
           />
           <Action>
@@ -148,7 +148,7 @@ const QuoteOptions = () => {
           <Section
             id="source"
             icon={<MdSource />}
-            title={variables.getMessage('modals.main.settings.sections.background.source.title')}
+            title={variables.getMessage('settings:sections.background.source.title')}
             subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
           >
             <SourceDropdown />

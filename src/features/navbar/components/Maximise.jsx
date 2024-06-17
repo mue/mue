@@ -61,12 +61,12 @@ function Maximise(props) {
   };
 
   return (
-    <Tooltip title={variables.getMessage('modals.main.settings.sections.background.buttons.view')}>
+    <Tooltip title={variables.getMessage('settings:sections.background.buttons.view')}>
       <button
         className="navbarButton"
         style={{ fontSize: props.fontSize }}
         onClick={maximise}
-        aria-label={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
+        aria-label={variables.getMessage('settings:sections.background.buttons.view')}
       >
         <MdCropFree className="topicons" />
       </button>

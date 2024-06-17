@@ -13,13 +13,13 @@ function Preview(props) {
 
   return (
     <div className="preview-mode">
-      <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
-      <span className="subtitle">{variables.getMessage('modals.welcome.preview.description')}</span>
+      <span className="title">{variables.getMessage('settings:reminder.title')}</span>
+      <span className="subtitle">{variables.getMessage('welcome:preview.description')}</span>
       <Button
         type="settings"
         onClick={() => setup()}
         icon={<MdArrowForwardIos />}
-        label={variables.getMessage('modals.welcome.preview.continue')}
+        label={variables.getMessage('welcome:preview.continue')}
         iconPlacement={'right'}
       />
     </div>

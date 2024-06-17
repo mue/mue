@@ -9,8 +9,8 @@ function ChooseLanguage() {
   return (
     <Content>
       <Header
-        title={variables.getMessage('modals.welcome.sections.language.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.language.description')}
+        title={variables.getMessage('welcome:sections.language.title')}
+        subtitle={variables.getMessage('welcome:sections.language.description')}
       />
       <a
         href={variables.constants.TRANSLATIONS_URL}

@@ -47,7 +47,7 @@ function Text(props) {
         <Label>{props.title}</Label>
         <span className="link" onClick={resetItem}>
           <MdRefresh />
-          {variables.getMessage('modals.main.settings.buttons.reset')}
+          {variables.getMessage('settings:buttons.reset')}
         </span>
       </div>
       {props.textarea === true ? (

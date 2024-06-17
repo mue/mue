@@ -56,7 +56,7 @@ function SliderComponent(props) {
         <span>{Number(value)}</span>
         <span className="link" onClick={resetItem}>
           <MdRefresh />
-          {variables.getMessage('modals.main.settings.buttons.reset')}
+          {variables.getMessage('settings:buttons.reset')}
         </span>
       </span>
       <Slider
