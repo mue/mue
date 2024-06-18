@@ -72,7 +72,7 @@ modals:
     file_upload_error: File is over 2MB
     navbar:
       settings: Settings
-      addons: Add-ons
+      addons: Library
       marketplace: Marketplace
     error_boundary:
       title: Error

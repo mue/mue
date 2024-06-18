@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './scss/index.scss';
 import Navbar from './backend/TabNavbar';
 import { TabProvider, useTab } from './backend/TabContext';
+import { MarketplaceDataProvider } from 'features/marketplace/api/MarketplaceDataContext';
 
 const Settings = lazy(() => import('../../../features/misc/views/Settings'));
 const Addons = lazy(() => import('../../../features/misc/views/Addons'));
@@ -79,7 +80,9 @@ const MainModalContent = ({ modalClose }) => {
 
 const MainModal = ({ modalClose }) => (
   <TabProvider>
-    <MainModalContent modalClose={modalClose} />
+    <MarketplaceDataProvider>
+      <MainModalContent modalClose={modalClose} />
+    </MarketplaceDataProvider>
   </TabProvider>
 );
 

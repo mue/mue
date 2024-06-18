@@ -3,15 +3,30 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
+import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
 
 function ItemCard({ item, onClick, type, onCollection, isCurator }) {
+  const { getItemData, selectedItem, setSelectedItem } = useMarketData();
+  const { setSubTab } = useTab();
+
   item._onCollection = onCollection;
+
+  const SelectItem = () => {
+    console.log("Item selected: ", item.display_name);
+    console.log("Item type: ", item.type);
+    getItemData(item.type, item.name).then((data) => {
+      console.log("Selected item: ", data);
+      //setSelectedItem(data);
+      setSubTab(data.display_name);
+    });
+  }
+
   return (
     <motion.div
       whileHover={{ y: -10 }}
       transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
       className="item"
-      onClick={onClick}
+      onClick={SelectItem}
       key={item.name}
     >
       <img

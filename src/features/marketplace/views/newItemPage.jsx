@@ -20,6 +20,8 @@ import { Header } from 'components/Layout/Settings';
 import Modal from 'react-modal';
 import Markdown from 'markdown-to-jsx';
 import { Button } from 'components/Elements';
+import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
+import { Carousel } from '../components/Elements/Carousel';
 
 const NewItemPage = () => {
   const { subTab } = useTab();
@@ -27,51 +29,16 @@ const NewItemPage = () => {
   const [count, setCount] = useState(5);
   const [item, setItemData] = useState(null);
   const [shareModal, setShareModal] = useState(false);
+  const { selectedItem } = useMarketData();
 
-  async function getItemData() {
-    let testType = 'quote_packs';
-    // Fetch data from API
-    const response = await fetch(
-      `${variables.constants.API_URL}/marketplace/item/${testType}/${subTab}`,
-      {
-        signal: controller.signal,
-      },
-    );
-    const item = await response.json();
-    console.log(item);
-
-    const { data } = item;
-
-    return {
-      data,
+  const getName = (name) => {
+    const nameMappings = {
+      photos: 'photo_packs',
+      quotes: 'quote_packs',
+      settings: 'preset_settings',
     };
-  }
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getItemData();
-      setItemData(data.data);
-    }
-
-    fetchData();
-  }, []);
-
-  if (!item) {
-    return null; // or a loading spinner
-  }
-
-  const {
-    onCollection,
-    type,
-    display_name,
-    author,
-    description,
-    version,
-    icon,
-    data,
-    local,
-    slug,
-  } = item;
+    return nameMappings[name] || name;
+  };
 
   const moreInfoItem = (icon, header, text) => (
     <div className="infoItem">
@@ -118,45 +85,45 @@ const NewItemPage = () => {
           {variables.getMessage('marketplace:product.details')}
         </span>
         <div className="moreInfo">
-          {item?.updated_at &&
+          {selectedItem?.updated_at &&
             moreInfoItem(
               <MdCalendarMonth />,
               variables.getMessage('marketplace:product.updated_at'),
               formattedDate,
             )}
-          {item?.quotes &&
+          {selectedItem?.quotes &&
             moreInfoItem(
               <MdFormatQuote />,
               variables.getMessage('marketplace:product.no_quotes'),
-              item.quotes.length,
+              selectedItem.quotes.length,
             )}
-          {item?.photos &&
+          {selectedItem?.photos &&
             moreInfoItem(
               <MdImage />,
               variables.getMessage('marketplace:product.no_images'),
-              item.photos.length,
+              selectedItem.photos.length,
             )}
-          {item?.quotes && item?.language
+          {selectedItem?.quotes && selectedItem?.language
             ? moreInfoItem(
                 <MdTranslate />,
                 variables.getMessage('settings:sections.language.title'),
-                languageNames.of(item.language),
+                languageNames.of(selectedItem.language),
               )
             : null}
-          {/*{moreInfoItem(
+          {moreInfoItem(
           <MdStyle />,
           variables.getMessage('settings:sections.background.type.title'),
           variables.getMessage(
-            'marketplace:' + this.getName(this.props.data.data.type),
+            'marketplace:' + getName(selectedItem.type),
           ) || 'marketplace',
-        )}*/}
+        )}
         </div>
       </div>
     );
   };
 
   const ItemShowcase = () => {
-    switch (item.type) {
+    switch (selectedItem.type) {
       case 'quotes':
         return (
           <>
@@ -166,7 +133,7 @@ const NewItemPage = () => {
                   <th>{variables.getMessage('settings:sections.quote.title')}</th>
                   <th>{variables.getMessage('settings:sections.quote.author')}</th>
                 </tr>
-                {item.quotes.slice(0, count).map((quote, index) => (
+                {selectedItem.quotes.slice(0, count).map((quote, index) => (
                   <tr key={index}>
                     <td>{quote.quote}</td>
                     <td>{quote.author}</td>
@@ -175,8 +142,8 @@ const NewItemPage = () => {
               </tbody>
             </table>
             <div className="showMoreItems">
-              <span className="link" onClick={() => count === item.quotes.length}>
-                {count !== item.quotes.length
+              <span className="link" onClick={() => count === selectedItem.quotes.length}>
+                {count !== selectedItem.quotes.length
                   ? variables.getMessage('marketplace:product.show_all')
                   : variables.getMessage('marketplace:product.show_less')}
               </span>
@@ -192,8 +159,8 @@ const NewItemPage = () => {
                   <th>{variables.getMessage('marketplace:product.setting')}</th>
                   <th>{variables.getMessage('marketplace:product.value')}</th>
                 </tr>
-                {Object.entries(this.props.data.data.settings)
-                  .slice(0, this.state.count)
+                {Object.entries(selectedItem.settings)
+                  .slice(0, count)
                   .map(([key, value]) => (
                     <tr key={key}>
                       <td>{key}</td>
@@ -204,7 +171,7 @@ const NewItemPage = () => {
             </table>
             <div className="showMoreItems">
               <span className="link" onClick={() => this.incrementCount('settings')}>
-                {this.state.count !== this.props.data.data.settings.length
+                {count !== selectedItem.settings.length
                   ? variables.getMessage('marketplace:product.show_all')
                   : variables.getMessage('marketplace:product.show_less')}
               </span>
@@ -221,8 +188,8 @@ const NewItemPage = () => {
   let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
 
   let dateObj, formattedDate;
-  if (item.updated_at) {
-    dateObj = new Date(item.updated_at);
+  if (selectedItem.updated_at) {
+    dateObj = new Date(selectedItem.updated_at);
     formattedDate = new Intl.DateTimeFormat(shortLocale, {
       year: 'numeric',
       month: 'long',
@@ -241,7 +208,7 @@ const NewItemPage = () => {
         onRequestClose={() => setShareModal(false)}
       >
         <ShareModal
-          data={variables.constants.API_URL + '/marketplace/share/' + btoa(this.props.data.slug)}
+          data={variables.constants.API_URL + '/marketplace/share/' + btoa(selectedItem.name)}
           modalClose={() => setShareModal(false)}
         />
       </Modal>
@@ -267,18 +234,18 @@ const NewItemPage = () => {
             {moreInfoItem(
               <MdAccountCircle />,
               variables.getMessage('marketplace:product.created_by'),
-              item.author,
+              selectedItem.author,
             )}
             {itemWarning()}
           </div>
-          {/*{this.props.data.data.photos && (
+          {selectedItem.photos && (
             <div className="carousel">
               <div className="carousel_container">
-                <Carousel data={this.props.data.data.photos} />
+                <Carousel data={selectedItem.photos} />
               </div>
             </div>
           )}
-          {this.props.data.data.settings && (
+          {/*{selectedItem.settings && (
             <img
               alt="product"
               draggable={false}
@@ -293,7 +260,7 @@ const NewItemPage = () => {
             <span className="title">
               {variables.getMessage('marketplace:product.description')}
             </span>
-            <Markdown>{item.description}</Markdown>
+            <Markdown>{selectedItem.description}</Markdown>
           </div>
           <ItemShowcase />
           <ItemDetails />
@@ -301,7 +268,7 @@ const NewItemPage = () => {
         <div
           className="itemInfo"
           style={{
-            backgroundImage: `url("${item.icon_url || placeholderIcon}")`,
+            backgroundImage: `url("${selectedItem.icon_url || placeholderIcon}")`,
           }}
         >
           <div className="front">
@@ -309,7 +276,7 @@ const NewItemPage = () => {
               className="icon"
               alt="icon"
               draggable={false}
-              src={item.icon_url}
+              src={selectedItem.icon_url}
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = placeholderIcon;
@@ -329,7 +296,7 @@ const NewItemPage = () => {
                 )}
               </p>
             )}
-            {item.sideload !== true && (
+            {selectedItem.sideload !== true && (
               <div className="iconButtons">
                 <Button
                   type="icon"
@@ -355,8 +322,7 @@ const NewItemPage = () => {
                 />
               </div>
             )}
-            {/*}
-            {this.props.data.data.in_collections?.length > 0 && (
+            {selectedItem.in_collections?.length > 0 && (
               <div>
                 <div className="inCollection">
                   <span className="subtitle">
@@ -364,18 +330,18 @@ const NewItemPage = () => {
                   </span>
                   <span
                     className="title"
-                    onClick={() =>
+                    /*onClick={() =>
                       this.props.toggleFunction(
                         'collection',
-                        this.props.data.data.in_collections[0].name,
+                        selectedItem.in_collections[0].name,
                       )
-                    }
+                    }*/
                   >
-                    {this.props.data.data.in_collections[0].display_name}
+                    {selectedItem.in_collections[0].display_name}
                   </span>
                 </div>
               </div>
-            )}*/}
+            )}
           </div>
         </div>
       </div>

@@ -2,11 +2,12 @@ import React from 'react';
 import {
   MdSettings,
   MdOutlineShoppingBasket,
-  MdOutlineExtension,
+  MdSpaceDashboard,
   MdOutlineKeyboardArrowRight,
   MdClose,
   MdSearch,
 } from 'react-icons/md';
+import { IoMdPricetag } from "react-icons/io";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTab } from './TabContext';
 import { Tooltip } from 'components/Elements';
@@ -18,8 +19,8 @@ const TabNavbar = ({ modalClose }) => {
 
   const tabs = [
     { id: 'settings', label: 'Settings', icon: <MdSettings /> },
-    { id: 'addons', label: 'Addons', icon: <MdOutlineExtension /> },
-    { id: 'marketplace', label: 'Marketplace', icon: <MdOutlineShoppingBasket /> },
+    { id: 'addons', label: 'Addons', icon: <MdSpaceDashboard /> },
+    { id: 'marketplace', label: 'Marketplace', icon: <IoMdPricetag /> },
   ];
 
   const navbarLogo = (

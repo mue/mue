@@ -21,7 +21,7 @@ import {
   MdOutlineAssessment as Stats,
   MdOutlineNewReleases as Changelog,
   MdInfoOutline as About,
-  MdOutlineExtension as Added,
+  MdSpaceDashboard as Added,
   MdAddCircleOutline as Create,
   MdViewAgenda as Overview,
   MdCollectionsBookmark as Collections,
