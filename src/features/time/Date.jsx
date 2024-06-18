@@ -94,7 +94,7 @@ const DateWidget = () => {
       setDate(format);
     } else {
       // Long date
-      const lang = variables.locale_id.split('_')[0];
+      const lang = variables.locale_id.split('-')[0];
 
       const datenth =
         localStorage.getItem('datenth') === 'true'

@@ -276,9 +276,9 @@ class Quote extends PureComponent {
         }
 
         const getAPIQuoteData = async () => {
-          const quoteLanguage = localStorage.getItem('quoteLanguage');
+          const quoteLanguage = localStorage.getItem('quoteLanguage') || 'en';
           const data = await (
-            await fetch(`${variables.constants.API_URL}/quotes/random?language=${quoteLanguage || 'en'}`)
+            await fetch(`${variables.constants.API_URL}/quotes/random?language=${quoteLanguage}`)
           ).json();
           // If we hit the ratelimit, we fall back to local quotes
           if (data.statusCode === 429) {

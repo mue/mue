@@ -1,9 +1,9 @@
 import variables from 'config/variables';
-import languages from '@/i18n/languages.json';
 import { Header, Content } from '../Layout';
 import defaults from 'config/default';
 
 function Final(props) {
+  const language = localStorage.getItem('language') || defaults.language;
   return (
     <Content>
       <Header
@@ -18,7 +18,7 @@ function Final(props) {
         <div className="toggle" onClick={() => props.switchTab(1)}>
           <span>
             {variables.getMessage('settings:sections.language.title')}:{' '}
-            {languages.find((i) => i.value === localStorage.getItem('language') || defaults.language).name}
+            {new Intl.DisplayNames([language], { type: 'language' }).of(language)}
           </span>
         </div>
         <div className="toggle" onClick={() => props.switchTab(3)}>

@@ -128,7 +128,7 @@ class ItemPage extends PureComponent {
 
   render() {
     const locale = localStorage.getItem('language');
-    const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
+    const shortLocale = locale.includes('-') ? locale.split('-')[0] : locale;
     let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
 
     const convertedType = (() => {

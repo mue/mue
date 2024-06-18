@@ -1,9 +1,21 @@
 import variables from 'config/variables';
 import { MdOutlineOpenInNew } from 'react-icons/md';
-import languages from '@/i18n/languages.json';
+import { languages } from 'lib/i18n';
 
 import { Radio } from 'components/Form/Settings';
 import { Header, Content } from '../Layout';
+
+const options = languages.map(id => {
+  const native = new Intl.DisplayNames([id], { type: 'language' });
+  // const current = new Intl.DisplayNames([variables.locale_id], { type: 'language' });
+  // const current = new Intl.DisplayNames([localStorage.getItem('language')], { type: 'language' });
+  const current = new Intl.DisplayNames(['en'], { type: 'language' });
+  return {
+    name: native.of(id),
+    subname: current.of(id),
+    value: id,
+  };
+})
 
 function ChooseLanguage() {
   return (
@@ -31,7 +43,7 @@ function ChooseLanguage() {
         <MdOutlineOpenInNew />
       </a>
       <div className="languageSettings">
-        <Radio name="language" options={languages} category="welcomeLanguage" />
+        <Radio name="language" options={options} category="welcomeLanguage" />
       </div>
     </Content>
   );

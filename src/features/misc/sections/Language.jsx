@@ -3,8 +3,19 @@ import { useState, useEffect } from 'react';
 
 import { MdOutlineOpenInNew } from 'react-icons/md';
 import { Radio } from 'components/Form/Settings';
+import { languages } from 'lib/i18n';
 
-import languages from '@/i18n/languages.json';
+const options = languages.map(id => {
+  const native = new Intl.DisplayNames([id], { type: 'language' });
+  // const current = new Intl.DisplayNames([variables.locale_id], { type: 'language' });
+  const current = new Intl.DisplayNames([localStorage.getItem('language')], { type: 'language' });
+  return {
+    name: native.of(id),
+    subname: current.of(id),
+    value: id,
+  };
+})
+console.log(options)
 
 function LanguageOptions() {
   const [quoteLanguages, setQuoteLanguages] = useState([
@@ -20,9 +31,7 @@ function LanguageOptions() {
 
       const quoteLanguages = data.map((language) => {
         return {
-          name: languages.find((l) => l.value === language.name)
-            ? languages.find((l) => l.value === language.name).name
-            : 'English',
+          name: new Intl.DisplayNames([variables.locale_id], { type: 'language' }).of(language),
           value: language,
         };
       });
@@ -52,7 +61,7 @@ function LanguageOptions() {
         </div>
       </div>
       <div className="languageSettings">
-        <Radio name="language" options={languages} element=".other" />
+        <Radio name="language" options={options} element=".other" />
       </div>
       <span className="mainTitle">
         {variables.getMessage('settings:sections.language.quote')}

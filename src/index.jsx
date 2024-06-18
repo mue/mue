@@ -12,10 +12,14 @@ import './scss/index.scss';
 // the toast css is based on default so we need to import it
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import { createTranslator } from 'lib/translations';
+import { createTranslator } from 'lib/i18n';
 
-const locale_id = localStorage.getItem('language')?.replace('_', '-') || defaults.language;
-console.log(locale_id)
+let locale_id = localStorage.getItem('language');
+
+if (locale_id?.indexOf('_')) {
+  localStorage.setItem('language', locale_id.replace('_', '-'));
+}
+locale_id ||= defaults.language;
 const t = await createTranslator(locale_id);
 variables.locale_id = locale_id;
 document.documentElement.lang = locale_id;

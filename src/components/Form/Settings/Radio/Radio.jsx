@@ -15,9 +15,10 @@ function Radio(props) {
 
     if (props.name === 'language') {
       // old tab name
-      if (localStorage.getItem('tabName') === variables.getMessage('tabname')) {
-        localStorage.setItem('tabName', translations[value].tabname);
-      }
+      // TODO: was this important?
+      // if (localStorage.getItem('tabName') === variables.getMessage('tabname')) {
+      //   localStorage.setItem('tabName', translations[value].tabname);
+      // }
     }
 
     localStorage.setItem(props.name, value);
@@ -60,9 +61,9 @@ function Radio(props) {
               <div className="text-sm/6">
                 <p className="font-semibold text-white">{option.name}</p>
                 <div className="flex gap-2 text-white/50">
-                  <div>10%</div>
+                  <div>{option.subname}</div>
                   <div aria-hidden="true">&middot;</div>
-                  <div>sus</div>
+                  <div>10%</div>
                 </div>
               </div>
               <MdCheckCircle className="size-6 fill-white opacity-0 transition group-data-[checked]:opacity-100" />

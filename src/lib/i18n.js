@@ -3,7 +3,14 @@ import { I18nLite } from '@eartharoid/i18n';
 
 const importJSON = (...modules) => ([modules[0].locale_id, [].concat(...modules.map(mod => mod.json))]);
 
-export const languages = Object.keys(import.meta.glob('i18n/**/*.yml'));
+export const languages = Object
+  .keys(import.meta.glob('i18n/**/main.yml'))
+  .map(path => {
+    const parts = path.split('/');
+    const id = parts[parts.length - 2];
+    return id;
+  });
+
 /**
  * Initialise the i18n object.
  * The i18n object is then returned.
