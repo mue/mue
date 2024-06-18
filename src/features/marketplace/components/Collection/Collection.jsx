@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 import { Button } from 'components/Elements';
 import variables from 'config/variables';
@@ -44,4 +45,5 @@ const Collection = ({ collections, collectionFunction }) => {
   );
 };
 
-export { Collection as default, Collection };
+const MemoizedCollection = memo(Collection);
+export { MemoizedCollection as default, MemoizedCollection as Collection };

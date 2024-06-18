@@ -31,6 +31,20 @@ const ItemPage = () => {
   const [shareModal, setShareModal] = useState(false);
   const { selectedItem } = useMarketData();
 
+  const locale = localStorage.getItem('language');
+  const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
+  let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
+
+  let dateObj, formattedDate;
+  if (selectedItem?.updated_at) {
+    dateObj = new Date(selectedItem?.updated_at);
+    formattedDate = new Intl.DateTimeFormat(shortLocale, {
+      year: 'numeric',
+      month: 'long',
+      day: '2-digit',
+    }).format(dateObj);
+  }
+
   const getName = (name) => {
     const nameMappings = {
       photos: 'photo_packs',
@@ -63,17 +77,17 @@ const ItemPage = () => {
 
     /*if (this.props.data.data.sideload === true) {
       return template(variables.getMessage('marketplace:product.sideload_warning'));
-    }
+    }*/
 
-    if (this.props.data.data.image_api === true) {
+    if (selectedItem?.image_api === true) {
       return template(variables.getMessage('marketplace:product.third_party_api'));
     }
 
-    if (this.props.data.data.language !== undefined && this.props.data.data.language !== null) {
-      if (shortLocale !== this.props.data.data.language) {
+    if (selectedItem?.language !== undefined && selectedItem?.language !== null) {
+      if (shortLocale !== selectedItem?.language) {
         return template(variables.getMessage('marketplace:product.not_in_language'));
       }
-    }*/
+    }
 
     return null;
   };
@@ -258,20 +272,6 @@ const ItemPage = () => {
       </div>
     );
   };
-
-  const locale = localStorage.getItem('language');
-  const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
-  let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
-
-  let dateObj, formattedDate;
-  if (selectedItem?.updated_at) {
-    dateObj = new Date(selectedItem?.updated_at);
-    formattedDate = new Intl.DateTimeFormat(shortLocale, {
-      year: 'numeric',
-      month: 'long',
-      day: '2-digit',
-    }).format(dateObj);
-  }
 
   useEffect(() => {
     document.querySelector('#modal').scrollTop = 0;
