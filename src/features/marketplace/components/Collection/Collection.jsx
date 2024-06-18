@@ -2,29 +2,30 @@ import { MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 import { Button } from 'components/Elements';
 import variables from 'config/variables';
 
-const Collection = ({ collection, collectionFunction }) => {
-  const { news, background_colour, img, display_name, description } = collection;
+const Collection = ({ collections, collectionFunction }) => {
+  const randomIndex = Math.floor(Math.random() * collections.length);
+  const collection = collections[randomIndex];
 
   const getStyle = () => {
-    if (news) {
-      return { backgroundColor: background_colour };
+    if (collection?.news) {
+      return { backgroundColor: collection?.background_colour };
     }
 
     return {
-      backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${img}')`,
+      backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${collection?.img}')`,
     };
   };
 
   return (
     <div className="collection" style={getStyle()}>
       <div className="content">
-        <span className="title">{display_name} using component</span>
-        <span className="subtitle">{description ? description.substr(0, 75) : ''}</span>
+        <span className="title">{collection?.display_name}</span>
+        <span className="subtitle">{collection?.description ? collection?.description.substr(0, 75) : ''}</span>
       </div>
-      {collection.news === true ? (
+      {collection?.news === true ? (
         <a
           className="btn-collection"
-          href={collection.news_link}
+          href={collection?.news_link}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -33,7 +34,7 @@ const Collection = ({ collection, collectionFunction }) => {
       ) : (
         <Button
           type="collection"
-          onClick={() => collectionFunction(collection.name)}
+          onClick={() => collectionFunction(collection?.name)}
           icon={<MdOutlineArrowForward />}
           label={variables.getMessage('marketplace:explore_collection')}
           iconPlacement={'right'}

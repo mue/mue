@@ -81,60 +81,61 @@
     padding: 5px 10px;
   }
 }
+.itemPage {
+  table {
+    border-collapse: separate;
+    border-radius: 10px;
+    margin-top: 20px;
 
-table {
-  border-collapse: separate;
-  border-radius: 10px;
-  margin-top: 20px;
-
-  @include themed {
-    box-shadow: 0 0 0 1px t($modal-sidebarActive);
-    padding: 0;
-    border: 0;
-    outline: none;
-  }
-
-  tr:first-child {
     @include themed {
-      border-radius: t($borderRadius);
-      color: t($subColor);
+      box-shadow: 0 0 0 1px t($modal-sidebarActive);
+      padding: 0;
+      border: 0;
+      outline: none;
     }
 
-    letter-spacing: 2px;
-
-    th {
-      padding: 20px;
-    }
-  }
-
-  td {
-    padding: 15px;
-  }
-
-  tr {
-    th:last-child {
-      display: grid;
-      place-items: center;
-    }
-  }
-
-  ::placeholder {
-    @include themed {
-      color: t($subColor);
-    }
-  }
-
-  tr:not(:first-child) {
-    @include themed {
-      background: t($modal-secondaryColour);
-    }
-
-    textarea {
-      width: 90%;
-      margin: 10px;
-
+    tr:first-child {
       @include themed {
-        color: t($color);
+        border-radius: t($borderRadius);
+        color: t($subColor);
+      }
+
+      letter-spacing: 2px;
+
+      th {
+        padding: 20px;
+      }
+    }
+
+    td {
+      padding: 15px;
+    }
+
+    tr {
+      th:last-child {
+        display: grid;
+        place-items: center;
+      }
+    }
+
+    ::placeholder {
+      @include themed {
+        color: t($subColor);
+      }
+    }
+
+    tr:not(:first-child) {
+      @include themed {
+        background: t($modal-secondaryColour);
+      }
+
+      textarea {
+        width: 90%;
+        margin: 10px;
+
+        @include themed {
+          color: t($color);
+        }
       }
     }
   }

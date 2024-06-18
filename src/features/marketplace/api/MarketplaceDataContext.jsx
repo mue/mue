@@ -9,7 +9,9 @@ export const useMarketData = () => useContext(MarketDataContext);
 export const MarketplaceDataProvider = ({ children }) => {
   const [done, setDone] = useState(false);
   const [items, setItems] = useState([]);
+  const [collections, setCollections] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  let numOfRequests = 0;
   const controller = new AbortController();
 
   const getItems = async (type = 'all') => {
@@ -28,9 +30,31 @@ export const MarketplaceDataProvider = ({ children }) => {
       return;
     }
 
+    //console.log(data);
+    numOfRequests++;
+    console.log("Request number: ", numOfRequests);
+
     setItems(sortItems(data, 'z-a'));
     setDone(true);
   };
+
+  const getCollections = async () => {
+    setDone(false);
+    const { data } = await (
+      await fetch(`${variables.constants.API_URL}/marketplace/collections`, {
+        signal: controller.signal,
+      })
+    ).json();
+
+    if (controller.signal.aborted === true) {
+      return;
+    }
+
+    console.log(data);
+
+    setCollections(data);
+    setDone(true);
+  }
 
   const getItemData = async (itemType, itemName) => {
     const response = await fetch(
@@ -46,7 +70,7 @@ export const MarketplaceDataProvider = ({ children }) => {
     });
   };
   return (
-    <MarketDataContext.Provider value={{ done, items, selectedItem, getItems, getItemData, setSelectedItem }}>
+    <MarketDataContext.Provider value={{ done, items, selectedItem, getItems, getCollections, getItemData, setSelectedItem, collections }}>
       {children}
     </MarketDataContext.Provider>
   );

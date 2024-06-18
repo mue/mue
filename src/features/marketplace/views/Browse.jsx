@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { MdWifiOff, MdLocalMall, MdOutlineArrowForward, MdLibraryAdd } from 'react-icons/md';
 
-import ItemPage from './ItemPage';
-import Items from '../components/Items/Items';
+import ItemPage from './oldItemPage';
+import Items from '../components/Items/OldItems';
 
 import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';

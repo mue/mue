@@ -5,8 +5,8 @@ import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 import { SideloadFailedModal } from '../components/Elements/SideloadFailedModal/SideloadFailedModal';
-import ItemPage from './ItemPage';
-import Items from '../components/Items/Items';
+import ItemPage from './oldItemPage';
+import Items from '../components/Items/OldItems';
 import { Dropdown, FileUpload } from 'components/Form/Settings';
 import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';

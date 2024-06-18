@@ -208,8 +208,8 @@ const TabNavbar = ({ modalClose }) => {
               key={tab.id}
               onClick={() => changeTab(tab.id)}
               className={`${
-                activeTab === tab.id ? '' : 'hover:text-white/60'
-              } flex flex-row gap-2 items-center relative rounded-sm px-3 py-1.5 text-sm text-white outline-sky-400 transition focus-visible:outline-2`}
+                activeTab === tab.id ? '' : 'hover:text-white/70'
+              } transition-all duration-800	ease-in-out flex flex-row gap-2 items-center relative rounded-sm px-3 py-1.5 text-sm text-white outline-sky-400 transition focus-visible:outline-2`}
               style={{
                 WebkitTapHighlightColor: 'transparent',
               }}
