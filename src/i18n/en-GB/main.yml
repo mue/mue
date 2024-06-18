@@ -73,7 +73,7 @@ modals:
     navbar:
       settings: Settings
       addons: Library
-      marketplace: Marketplace
+      marketplace: Discover
     error_boundary:
       title: Error
       message: Failed to load this component of Mue
