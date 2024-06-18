@@ -90,7 +90,7 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
             )}
 
             {type === true && !onCollection ? (
-              <span className="card-type">{variables.getMessage('marketplace:' + item.type)}</span>
+              <span className="card-type">{variables.getMessage('marketplace:' + getName(item.type))}</span>
             ) : null}
           </div>
         </motion.div>

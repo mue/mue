@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import { SideloadFailedModal } from '../components/Elements/SideloadFailedModal/SideloadFailedModal';
 import ItemPage from './oldItemPage';
 import Items from '../components/Items/OldItems';
+import { NewItems } from '../components/Items/Items';
 import { Dropdown, FileUpload } from 'components/Form/Settings';
 import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
@@ -178,6 +179,8 @@ export default class Added extends PureComponent {
   }
 
   render() {
+    console.log(this.state.installed);
+
     const sideLoadBackendElements = () => (
       <>
         <Modal
@@ -212,12 +215,8 @@ export default class Added extends PureComponent {
           <div className="emptyItems">
             <div className="emptyNewMessage">
               <MdOutlineExtensionOff />
-              <span className="title">
-                {variables.getMessage('addons:empty.title')}
-              </span>
-              <span className="subtitle">
-                {variables.getMessage('addons:empty.description')}
-              </span>
+              <span className="title">{variables.getMessage('addons:empty.title')}</span>
+              <span className="subtitle">{variables.getMessage('addons:empty.description')}</span>
             </div>
           </div>
         </>
@@ -261,7 +260,7 @@ export default class Added extends PureComponent {
     `       />*/}
           </CustomActions>
         </Header>
-        <Dropdown
+        {/*<Dropdown
           label={variables.getMessage('addons:sort.title')}
           name="sortAddons"
           onChange={(value) => this.setState({ installed: sortItems(this.state.installed, value) })}
@@ -283,14 +282,17 @@ export default class Added extends PureComponent {
               text: variables.getMessage('addons:sort.z_a'),
             },
           ]}
-        />
-        <Items
+        />*/}
+        {/*<Items
           items={this.state.installed}
           isAdded={true}
           filter=""
           toggleFunction={(input) => this.toggle('item', input)}
           showCreateYourOwn={false}
-        />
+        />*/}
+        <div className="w-full ">
+        <NewItems items={this.state.installed} view="list" />
+        </div>
       </>
     );
   }

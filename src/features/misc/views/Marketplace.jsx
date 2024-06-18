@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState, useMemo } from 'react';
 import variables from 'config/variables';
 import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
 import MarketplaceTab from '../../marketplace/views/Browse';
@@ -71,29 +71,38 @@ function Marketplace(props) {
     );
   }, [itemsFilter]);
 
-  const ItemView = useCallback(
-    () => (
-      <div className="flex flex-row gap-2">
-        <button
-          onClick={() => setItemsView('grid')}
-          className={clsx('cursor-pointer h-[40px] w-[40px] grid place-items-center rounded-lg', {
-            'bg-[#333]': itemsView === 'grid',
-          })}
-        >
-          <PiGridFourFill />
-        </button>
-        <button
-          onClick={() => setItemsView('list')}
-          className={clsx('cursor-pointer h-[40px] w-[40px] grid place-items-center rounded-lg', {
-            'bg-[#333]': itemsView === 'list',
-          })}
-        >
-          <MdFormatListBulleted />
-        </button>
+  const viewOptions = useMemo(() => [
+    { id: 'grid', icon: <PiGridFourFill /> },
+    { id: 'list', icon: <MdFormatListBulleted /> },
+  ], []);
+  
+  const ItemView = useCallback(() => {
+    return (
+      <div className="flex space-x-1">
+        {viewOptions.map((option) => (
+          <button
+            key={option.id}
+            onClick={() => setItemsView(option.id)}
+            className={`${
+              itemsView === option.id ? '' : 'hover:text-white/70'
+            } transition-all duration-800	ease-in-out flex flex-row gap-2 items-center relative rounded-sm px-2 py-2 text-xl text-white outline-sky-400 focus-visible:outline-2`}
+            style={{
+              WebkitTapHighlightColor: 'transparent',
+            }}
+          >
+            {itemsView === option.id && (
+              <motion.span
+                layoutId="viewSelectorBubble"
+                className="absolute inset-0 z-10 bg-[#333] mix-blend-lighten rounded-xl"
+                transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            {option.icon}
+          </button>
+        ))}
       </div>
-    ),
-    [itemsView],
-  );
+    );
+  }, [itemsView, setItemsView, viewOptions]);
 
   useEffect(() => {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {

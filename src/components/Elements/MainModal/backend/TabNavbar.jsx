@@ -216,7 +216,7 @@ const TabNavbar = ({ modalClose }) => {
             >
               {activeTab === tab.id && (
                 <motion.span
-                  layoutId="bubble"
+                  layoutId="tabNavbarBubble"
                   className="absolute inset-0 z-10 bg-[#333] mix-blend-lighten rounded-xl"
                   transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                 />

@@ -9,13 +9,15 @@ const NewItems = ({ items, view }) => {
     case 'list':
       return (
         <table className="w-full">
-          <tbody>
-            <tr>
+          <thead className="text-left">
+             <tr>
               <th>Name</th>
               <th>Type</th>
               <th>{variables.getMessage('settings:sections.quote.author')}</th>
               <th></th>
             </tr>
+          </thead>
+          <tbody>
             {items.map((item, index) => (
               <ItemCard
                 onClick={() => setSubTab(item.name)}
