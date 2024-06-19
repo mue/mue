@@ -151,31 +151,24 @@
     border-radius: 15px;
     width: 30%;
     max-width: 300px;
-    max-height: 700px;
+    // max-height: 700px;
 
-    .front {
-      padding: 20px;
-      height: 100%;
-      display: flex;
-      flex-flow: column;
-      gap: 15px;
-      width: 100%;
-      box-sizing: border-box !important;
-      border-radius: 12px 12px 0 0;
-      backdrop-filter: blur(40px) saturate(150%) brightness(75%);
-
-      @include themed {
-        background-image: linear-gradient(to bottom, transparent, t($modal-background));
-      }
-    }
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
+    width: 100%;
+    box-sizing: border-box !important;
+    border-radius: 12px;
 
     .icon {
       width: 100%;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 5px 25px black;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, .75);
       aspect-ratio: 1 / 1;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     .divider {
@@ -274,9 +267,9 @@ p.author {
   margin-top: -5px;
 }
 
-#item > img,
+#item>img,
 .updateImage,
-.updateChangelog > p > img {
+.updateChangelog>p>img {
   border-radius: 12px;
   height: 200px;
   width: auto;

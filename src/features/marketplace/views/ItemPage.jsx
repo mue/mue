@@ -198,77 +198,76 @@ const ItemPage = () => {
       <div
         className="itemInfo"
         style={{
-          backgroundImage: `url("${selectedItem?.icon_url || placeholderIcon}")`,
+          // backgroundImage: `linear-gradient(to bottom, ${selectedItem.colour}FF, ${selectedItem}FF)`,
+          backgroundImage: `radial-gradient(circle at center top, ${selectedItem.colour}80, ${selectedItem.colour}20)`,
+          // backgroundColor: selectedItem.colour,
         }}
       >
-        <div className="front">
-          <img
-            className="icon"
-            alt="icon"
-            draggable={false}
-            src={selectedItem?.icon_url}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = placeholderIcon;
-            }}
+        <img
+          className="icon"
+          alt="icon"
+          draggable={false}
+          src={selectedItem?.icon_url}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = placeholderIcon;
+          }}
+        />
+        {localStorage.getItem('welcomePreview') !== 'true' ? (
+          <Button
+            type="settings"
+            onClick={() => this.manage('install')}
+            icon={<MdLibraryAdd />}
+            label={variables.getMessage('marketplace:product.buttons.addtomue')}
           />
-          {localStorage.getItem('welcomePreview') !== 'true' ? (
+        ) : (
+          <p style={{ textAlign: 'center' }}>
+            {variables.getMessage('marketplace:product.buttons.not_available_preview')}
+          </p>
+        )}
+        {selectedItem?.sideload !== true && (
+          <div className="iconButtons">
             <Button
-              type="settings"
-              onClick={() => this.manage('install')}
-              icon={<MdLibraryAdd />}
-              label={variables.getMessage('marketplace:product.buttons.addtomue')}
+              type="icon"
+              onClick={() => setShareModal(true)}
+              icon={<MdIosShare />}
+              tooltipTitle={variables.getMessage('widgets.quote.share')}
+              tooltipKey="share"
             />
-          ) : (
-            <p style={{ textAlign: 'center' }}>
-              {variables.getMessage('marketplace:product.buttons.not_available_preview')}
-            </p>
-          )}
-          {selectedItem?.sideload !== true && (
-            <div className="iconButtons">
-              <Button
-                type="icon"
-                onClick={() => setShareModal(true)}
-                icon={<MdIosShare />}
-                tooltipTitle={variables.getMessage('widgets.quote.share')}
-                tooltipKey="share"
-              />
-              <Button
-                type="icon"
-                onClick={() =>
-                  window.open(
-                    variables.constants.REPORT_ITEM +
-                      selectedItem?.display_name.split(' ').join('+'),
-                    '_blank',
-                  )
-                }
-                icon={<MdFlag />}
-                tooltipTitle={variables.getMessage('marketplace:product.buttons.report')}
-                tooltipKey="report"
-              />
-            </div>
-          )}
-          {selectedItem?.in_collections?.length > 0 && (
-            <div>
-              <div className="inCollection">
-                <span className="subtitle">
-                  {variables.getMessage('marketplace:product.part_of')}
-                </span>
-                <span
-                  className="title"
-                  /*onClick={() =>
+            <Button
+              type="icon"
+              onClick={() =>
+                window.open(
+                  variables.constants.REPORT_ITEM + selectedItem?.display_name.split(' ').join('+'),
+                  '_blank',
+                )
+              }
+              icon={<MdFlag />}
+              tooltipTitle={variables.getMessage('marketplace:product.buttons.report')}
+              tooltipKey="report"
+            />
+          </div>
+        )}
+        {selectedItem?.in_collections?.length > 0 && (
+          <div>
+            <div className="inCollection">
+              <span className="subtitle">
+                {variables.getMessage('marketplace:product.part_of')}
+              </span>
+              <span
+                className="title"
+                /*onClick={() =>
                       this.props.toggleFunction(
                         'collection',
                         selectedItem?.in_collections[0].name,
                       )
                     }*/
-                >
-                  {selectedItem?.in_collections[0].display_name}
-                </span>
-              </div>
+              >
+                {selectedItem?.in_collections[0].display_name}
+              </span>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   };
