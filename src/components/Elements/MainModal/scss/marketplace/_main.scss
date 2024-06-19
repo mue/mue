@@ -65,17 +65,6 @@
       margin-top: 7px;
     }
 
-    .item-back {
-      filter: blur(60px) saturate(180%) brightness(90%);
-      position: absolute;
-      object-fit: cover !important;
-      height: 90px;
-      width: 100px;
-      border-radius: 100px;
-      transition: 0.5s;
-      margin-top: 30px;
-    }
-
     .item-icon {
       object-fit: cover !important;
       height: 60px !important;

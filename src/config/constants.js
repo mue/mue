@@ -1,5 +1,6 @@
 // API URLs
 export const API_URL = 'https://api.muetab.com/v2';
+// export const API_URL = 'http://127.0.0.1:8787/v2';
 export const SPONSORS_URL = 'https://sponsors.muetab.com';
 export const GITHUB_URL = 'https://api.github.com';
 export const OPENSTREETMAP_URL = 'https://www.openstreetmap.org';
