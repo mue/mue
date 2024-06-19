@@ -8,7 +8,7 @@ import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 const Collection = ({ collection }) => {
   const { setSubTab } = useTab();
-  const { setSelectedCollection } = useMarketData();
+  const { setSelectedCollection, getCollectionData } = useMarketData();
 
   const getStyle = () => {
     if (collection?.news) {
@@ -21,12 +21,13 @@ const Collection = ({ collection }) => {
   };
 
   const SelectCollection = () => {
-    setSubTab(collection.display_name);
-    setSelectedCollection(collection);
+    getCollectionData(collection.name).then((data) => {
+      setSubTab(data.display_name);
+    });
   }
 
   return (
-    <div className="collection" style={getStyle()}>
+    <div className="collection h-[125px]" style={getStyle()}>
       <div className="content">
         <span className="title">{collection?.display_name}</span>
         <span className="subtitle">{collection?.description ? collection?.description.substr(0, 75) : ''}</span>

@@ -15,6 +15,7 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
   const SelectItem = () => {
     getItemData(item.type, item.name).then((data) => {
       setSubTab(data.display_name);
+      console.log(data)
     });
   };
 
@@ -66,8 +67,8 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
           key={item.name}
           style={{
             // alpha  66=0.4  33=0.2  00=0
-            backgroundImage: `radial-gradient(circle at center 25%, ${item.colour}66 0%, ${item.colour}33 10%, ${item.colour}00 75%)`,
-            // backgroundImage: `radial-gradient(circle at center 25%, ${item.colour}60, ${item.colour}0F)`,
+            //backgroundImage: `radial-gradient(circle at center 25%, ${item.colour}66 0%, ${item.colour}33 10%, ${item.colour}00 75%)`,
+            backgroundImage: `radial-gradient(circle at center 25%, ${item.colour}60, ${item.colour}0F)`,
             // backgroundImage: `radial-gradient(circle at center 25%, ${item.colour}55, ${item.colour}0A)`,
           }}
         >

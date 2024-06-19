@@ -2,6 +2,7 @@ import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
 import variables from 'config/variables';
 import { MdLibraryAdd } from 'react-icons/md';
 import { Button } from 'components/Elements';
+import { NewItems as Items } from '../components/Items/Items';
 
 function CollectionPage() {
   const { selectedCollection } = useMarketData();
@@ -71,6 +72,7 @@ function CollectionPage() {
           }*/
         />
       </div>
+      <Items items={selectedCollection?.items} />
     </>
   );
 }

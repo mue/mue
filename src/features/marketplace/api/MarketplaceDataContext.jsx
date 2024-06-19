@@ -36,7 +36,11 @@ export const MarketplaceDataProvider = ({ children }) => {
     numOfRequests++;
     console.log('Request number: ', numOfRequests);
 
-    setItems(sortItems(data, 'z-a'));
+    //setItems(sortItems(data, 'z-a'));
+    const shuffledData = data.sort(() => Math.random() - 0.5);
+
+    setItems(shuffledData);
+
     setDone(true);
   };
 
@@ -71,6 +75,20 @@ export const MarketplaceDataProvider = ({ children }) => {
       resolve(item.data);
     });
   };
+
+  const getCollectionData = async (collectionName) => {
+    const response = await fetch(
+      `${variables.constants.API_URL}/marketplace/collection/${collectionName}`,
+      {
+        signal: controller.signal,
+      },
+    );
+    const item = await response.json();
+    setSelectedCollection(item.data);
+    return new Promise((resolve) => {
+      resolve(item.data);
+    });
+  }
   return (
     <MarketDataContext.Provider
       value={{
@@ -81,6 +99,7 @@ export const MarketplaceDataProvider = ({ children }) => {
         getItems,
         getCollections,
         getItemData,
+        getCollectionData,
         setSelectedItem,
         setSelectedCollection,
         collections,
