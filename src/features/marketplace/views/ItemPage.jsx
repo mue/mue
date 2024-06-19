@@ -31,6 +31,30 @@ const ItemPage = () => {
   const [shareModal, setShareModal] = useState(false);
   const { selectedItem } = useMarketData();
 
+  const [isInstalled, setIsInstalled] = useState(false);
+
+  useEffect(() => {
+    const installedItems = JSON.parse(localStorage.getItem('installed')) || [];
+    const installed = installedItems.some((item) => item.name === selectedItem.name);
+    setIsInstalled(installed);
+  }, [selectedItem]);
+
+  const installItem = () => {
+    const installedItems = JSON.parse(localStorage.getItem('installed')) || [];
+    if (!installedItems.some((item) => item.name === selectedItem.name)) {
+      installedItems.push(selectedItem);
+      localStorage.setItem('installed', JSON.stringify(installedItems));
+      setIsInstalled(true);
+    }
+  };
+
+  const uninstallItem = () => {
+    let installedItems = JSON.parse(localStorage.getItem('installed')) || [];
+    installedItems = installedItems.filter((item) => item.name !== selectedItem.name);
+    localStorage.setItem('installed', JSON.stringify(installedItems));
+    setIsInstalled(false);
+  };
+
   const locale = localStorage.getItem('language');
   const shortLocale = locale.includes('-') ? locale.split('-')[0] : locale;
   let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
@@ -90,6 +114,14 @@ const ItemPage = () => {
     }
 
     return null;
+  };
+
+  const showAndCollapse = (max) => {
+    if (count > 5) {
+      setCount(5);
+    } else {
+      setCount(max);
+    }
   };
 
   const ItemDetails = () => {
@@ -152,7 +184,7 @@ const ItemPage = () => {
               </tbody>
             </table>
             <div className="showMoreItems">
-              <span className="link" onClick={() => count === selectedItem?.quotes.length}>
+              <span className="link" onClick={() => showAndCollapse(selectedItem?.quotes.length)}>
                 {count !== selectedItem?.quotes.length
                   ? variables.getMessage('marketplace:product.show_all')
                   : variables.getMessage('marketplace:product.show_less')}
@@ -211,6 +243,21 @@ const ItemPage = () => {
             e.target.src = placeholderIcon;
           }}
         />
+        {!isInstalled ? (
+          <button
+            onClick={installItem}
+            className="bg-white text-black cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:bg-[#ccc]"
+          >
+            Add To Mue
+          </button>
+        ) : (
+          <button
+            onClick={uninstallItem}
+            className="bg-white text-black cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:bg-[#ccc]"
+          >
+            Remove
+          </button>
+        )}
         {localStorage.getItem('welcomePreview') !== 'true' ? (
           <Button
             type="settings"
