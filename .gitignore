@@ -10,6 +10,7 @@ dist/
 package-lock.json
 .stylelintcache
 yarn-error.log
+pnpm-lock.yaml
 .eslintcache
 stats.json
 yarn.lock

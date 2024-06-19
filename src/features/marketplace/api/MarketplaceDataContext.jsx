@@ -89,6 +89,7 @@ export const MarketplaceDataProvider = ({ children }) => {
       resolve(item.data);
     });
   }
+
   return (
     <MarketDataContext.Provider
       value={{

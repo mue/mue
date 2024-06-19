@@ -44,6 +44,56 @@ const ItemPage = () => {
     if (!installedItems.some((item) => item.name === selectedItem.name)) {
       installedItems.push(selectedItem);
       localStorage.setItem('installed', JSON.stringify(installedItems));
+
+      if (selectedItem?.type === 'settings') {
+        localStorage.removeItem('backup_settings');
+
+        let oldSettings = [];
+        Object.keys(localStorage).forEach((key) => {
+          oldSettings.push({
+            name: key,
+            value: localStorage.getItem(key),
+          });
+        });
+
+        localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
+        Object.keys(selectedItem.settings).forEach((key) => {
+          localStorage.setItem(key, selectedItem.settings[key]);
+        });
+      }
+
+      if (selectedItem?.type === 'photos') {
+        const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
+
+        selectedItem.photos.forEach((photo) => {
+          currentPhotos.push(photo);
+        });
+  
+        localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
+
+        const oldBackgroundType = localStorage.getItem('backgroundType');
+        if (oldBackgroundType !== 'photo_pack') {
+          localStorage.setItem('oldBackgroundType', oldBackgroundType);
+          localStorage.setItem('backgroundType', 'photo_pack');
+        }
+      }
+
+      if (selectedItem?.type === 'quotes') {
+        const currentQuotes = JSON.parse(localStorage.getItem('quote_packs')) || [];
+
+        selectedItem.quotes.forEach((quote) => {
+          currentQuotes.push(quote);
+        });
+
+        localStorage.setItem('quote_packs', JSON.stringify(currentQuotes));
+
+        const oldQuoteType = localStorage.getItem('quoteType');
+        if (oldQuoteType !== 'quote_pack') {
+          localStorage.setItem('oldQuoteType', oldQuoteType);
+          localStorage.setItem('quoteType', 'quote_pack');
+        }
+      }
+
       setIsInstalled(true);
     }
   };
@@ -52,6 +102,61 @@ const ItemPage = () => {
     let installedItems = JSON.parse(localStorage.getItem('installed')) || [];
     installedItems = installedItems.filter((item) => item.name !== selectedItem.name);
     localStorage.setItem('installed', JSON.stringify(installedItems));
+
+    if (selectedItem?.type === 'settings') {
+      const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
+      localStorage.clear();
+      oldSettings.forEach((item) => {
+        localStorage.setItem(item.name, item.value);
+      });
+    }
+
+    if (selectedItem?.type === 'photos') {
+      const installedContents = JSON.parse(localStorage.getItem('photo_packs'));
+      const packContents = JSON.parse(localStorage.getItem('installed')).find(
+        (content) => content.name === selectedItem.name,
+      );
+
+      installedContents.forEach((item, index) => {
+        const exists = packContents.photos.find((content) => content.photo === item.photo);
+        if (exists !== undefined) {
+          installedContents.splice(index, 1);
+        }
+      });
+
+      if (installedContents.length === 0) {
+        localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
+        localStorage.removeItem('oldBackgroundType');
+        localStorage.removeItem('photo_packs');
+      } else {
+        localStorage.setItem('photo_packs', JSON.stringify(installedContents));
+      }
+    }
+
+    if (selectedItem?.type === 'quotes') {
+      const installedContents = JSON.parse(localStorage.getItem('quote_packs'));
+      const packContents = JSON.parse(localStorage.getItem('installed')).find(
+        (content) => content.name === selectedItem.name,
+      );
+
+      installedContents.forEach((item, index) => {
+        const exists = packContents.quotes.find(
+          (content) => content.quote === item.quote || content.author === item.author,
+        );
+        if (exists !== undefined) {
+          installedContents.splice(index, 1);
+        }
+      });
+
+      if (installedContents.length === 0) {
+        localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType'));
+        localStorage.removeItem('oldQuoteType');
+        localStorage.removeItem('quote_packs');
+      } else {
+        localStorage.setItem('quote_packs', JSON.stringify(installedContents));
+      }
+    }
+
     setIsInstalled(false);
   };
 
