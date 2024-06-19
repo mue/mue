@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion';
 import variables from 'config/variables';
-import { useState } from 'react';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
@@ -15,7 +13,6 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
   const SelectItem = () => {
     getItemData(item.type, item.name).then((data) => {
       setSubTab(data.display_name);
-      console.log(data)
     });
   };
 
@@ -57,19 +54,72 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
         </tr>
       );
     default:
+      const gradient_var_0 = `--item-${item.name.replaceAll('_', '-')}-gradient0`;
+      const gradient_var_10 = `--item-${item.name.replaceAll('_', '-')}-gradient10`;
+      const gradient_var_75 = `--item-${item.name.replaceAll('_', '-')}-gradient75`;
+      const gradient_var_100 = `--item-${item.name.replaceAll('_', '-')}-gradient100`;
+      const initial_colour_0 = item.colour + '60'
+      const initial_colour_10 = item.colour + '58' // 10% between 96(0x60) and 15(0x0F), only needed for hover
+      const initial_colour_75 = item.colour + '23' // 75% between 96(0x60) and 15(0x0F), only needed for hover
+      const initial_colour_100 = item.colour + '0F'
+      const hover_colour_0 = item.colour + '66'
+      const hover_colour_10 = item.colour + '33'
+      const hover_colour_75 = item.colour + '00'
+      const hover_colour_100 = item.colour + '00' // only needed for initial
+     try {
+       window.CSS.registerProperty({
+        name: gradient_var_0,
+        syntax: '<color>',
+        initialValue: initial_colour_0,
+        inherits: false,
+      });
+      window.CSS.registerProperty({
+        name: gradient_var_10,
+        syntax: '<color>',
+        initialValue: initial_colour_10,
+        inherits: false,
+      });
+       window.CSS.registerProperty({
+         name: gradient_var_75,
+         syntax: '<color>',
+         initialValue: initial_colour_75,
+         inherits: false,
+       });
+      window.CSS.registerProperty({
+        name: gradient_var_100,
+        syntax: '<color>',
+        initialValue: initial_colour_100,
+        inherits: false,
+      });
+     } catch (error) {
+      // don't throw on rerenders (names can only be registered once before refresh)
+     }
       return (
-        <motion.div
-          // whileHover={{ y: -10 }}
-          // transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
-          //  ease-in-out duration-100
-          className="item transition hover:-translate-y-2.5 motion-reduce:transition-none motion-reduce:hover:transform-none"
+        <div
+          // transition(-all)
+          className={`item hover:-translate-y-2 motion-reduce:transition-none motion-reduce:hover:transform-none`}
           onClick={SelectItem}
           key={item.name}
           style={{
-            // alpha  66=0.4  33=0.2  00=0
-            //backgroundImage: `radial-gradient(circle at center 25%, ${item.colour}66 0%, ${item.colour}33 10%, ${item.colour}00 75%)`,
-            backgroundImage: `radial-gradient(circle at center 25%, ${item.colour}60, ${item.colour}0F)`,
-            // backgroundImage: `radial-gradient(circle at center 25%, ${item.colour}55, ${item.colour}0A)`,
+            // on Firefox (which doesn't support @property yet) these would not be set yet
+            [gradient_var_0]: initial_colour_0,
+            [gradient_var_10]: initial_colour_10,
+            [gradient_var_75]: initial_colour_75,
+            [gradient_var_100]: initial_colour_100,
+            transition: `transform 300ms cubic-bezier(0.4, 0, 0.2, 1), ${gradient_var_0} 300ms ease-in-out, ${gradient_var_10} 300ms ease-in-out, ${gradient_var_100} 300ms ease-in-out`,
+            backgroundImage: `radial-gradient(circle at center 25%, var(${gradient_var_0}) 0%, var(${gradient_var_10}) 10%, var(${gradient_var_75}) 75%, var(${gradient_var_100}) 100%)`,
+          }}
+          onMouseEnter={({ target }) => {
+            target.style.setProperty(gradient_var_0, hover_colour_0);
+            target.style.setProperty(gradient_var_10, hover_colour_10);
+            target.style.setProperty(gradient_var_75, hover_colour_75);
+            target.style.setProperty(gradient_var_100, hover_colour_100);
+          }}
+          onMouseLeave={({ target }) => {
+            target.style.setProperty(gradient_var_0, initial_colour_0);
+            target.style.setProperty(gradient_var_10, initial_colour_10);
+            target.style.setProperty(gradient_var_75, initial_colour_75);
+            target.style.setProperty(gradient_var_100, initial_colour_100);
           }}
         >
           <img
@@ -98,7 +148,7 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
               </span>
             ) : null}
           </div>
-        </motion.div>
+        </div>
       );
   }
 }

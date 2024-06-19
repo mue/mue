@@ -51,14 +51,6 @@
     @include themed {
       background-color: t($modal-secondaryColour);
       box-shadow: 0 0 0 1px t($modal-sidebarActive);
-
-      &:hover {
-        background-color: t($modal-sidebarActive);
-
-        img {
-          background-color: t($modal-sidebarActive);
-        }
-      }
     }
 
     .tags {

@@ -198,9 +198,7 @@ const ItemPage = () => {
       <div
         className="itemInfo"
         style={{
-          // backgroundImage: `linear-gradient(to bottom, ${selectedItem.colour}FF, ${selectedItem}FF)`,
           backgroundImage: `radial-gradient(circle at center top, ${selectedItem.colour}80, ${selectedItem.colour}20)`,
-          // backgroundColor: selectedItem.colour,
         }}
       >
         <img
