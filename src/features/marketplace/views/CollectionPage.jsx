@@ -1,5 +1,14 @@
+import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
+import variables from 'config/variables';
+import { MdLibraryAdd } from 'react-icons/md';
+import { Button } from 'components/Elements';
+
 function CollectionPage() {
-  async function installCollection() {
+  const { selectedCollection } = useMarketData();
+
+  console.log(selectedCollection);
+
+  /*async function installCollection() {
     setBusy(true);
     try {
       const installed = JSON.parse(localStorage.getItem('installed'));
@@ -26,43 +35,44 @@ function CollectionPage() {
 
   function returnToMain() {
     setCollection(false);
-  }
+  }*/
 
   return (
     <>
-      <Header
+      {/*<Header
         title={variables.getMessage('modals.main.navbar.marketplace')}
         secondaryTitle={collectionTitle}
         report={false}
         goBack={() => returnToMain()}
-      />
+      />*/}
       <div
         className="collectionPage"
         style={
           {
-            //  backgroundImage: `linear-gradient(to bottom, transparent, black), url('${collectionImg}')`,
+            backgroundImage: `linear-gradient(to bottom, transparent, black), url('${selectedCollection.img}')`,
           }
         }
       >
         <div className="nice-tag">{variables.getMessage('marketplace:collection')}</div>
         <div className="content">
-          <span className="mainTitle">{collectionTitle}</span>={' '}
+          <span className="mainTitle">{selectedCollection.display_name}</span>
         </div>
 
         <Button
           type="collection"
-          onClick={() => installCollection()}
-          disabled={busy}
+          //onClick={() => installCollection()}
+          //disabled={busy}
           icon={<MdLibraryAdd />}
-          label={
+          label={variables.getMessage('marketplace:add_all')}
+          /*label={
             busy
               ? variables.getMessage('marketplace:installing')
               : variables.getMessage('marketplace:add_all')
-          }
+          }*/
         />
       </div>
     </>
   );
 }
 
-export default CollectionPage;
+export { CollectionPage as default, CollectionPage };

@@ -20,7 +20,6 @@ const NewItems = ({ items, view }) => {
           <tbody>
             {items.map((item, index) => (
               <ItemCard
-                onClick={() => setSubTab(item.name)}
                 item={item}
                 type={true}
                 key={index}
@@ -35,7 +34,6 @@ const NewItems = ({ items, view }) => {
         <div className="items">
           {items.map((item, index) => (
             <ItemCard
-              onClick={() => setSubTab(item.name)}
               item={item}
               type={true}
               key={index}

@@ -5,6 +5,7 @@ import MarketplaceTab from '../../marketplace/views/Browse';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 import { ItemPage } from '../../marketplace/views/ItemPage';
+import { CollectionPage } from '../../marketplace/views/CollectionPage';
 import { NewItems as Items } from '../../marketplace/components/Items/Items';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -33,12 +34,15 @@ function Marketplace(props) {
     collections = [],
     getItems,
     getCollections,
+    selectedCollection,
     selectedItem,
   } = useMarketData();
   const { subTab } = useTab();
   const [itemsView, setItemsView] = useState('grid');
   const [itemsFilter, setItemsFilter] = useState('all');
   const [filteredItems, setFilteredItems] = useState([]);
+  const randomIndex = Math.floor(Math.random() * collections.length);
+  const collection = collections[randomIndex];
 
   const fetchMarketData = async () => {
     try {
@@ -71,11 +75,14 @@ function Marketplace(props) {
     );
   }, [itemsFilter]);
 
-  const viewOptions = useMemo(() => [
-    { id: 'grid', icon: <PiGridFourFill /> },
-    { id: 'list', icon: <MdFormatListBulleted /> },
-  ], []);
-  
+  const viewOptions = useMemo(
+    () => [
+      { id: 'grid', icon: <PiGridFourFill /> },
+      { id: 'list', icon: <MdFormatListBulleted /> },
+    ],
+    [],
+  );
+
   const ItemView = useCallback(() => {
     return (
       <div className="flex space-x-1">
@@ -124,9 +131,31 @@ function Marketplace(props) {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.8 }}
       >
-        {subTab === '' ? (
+        {subTab === '' && selectedItem === null && selectedCollection === null && (
           <>
-            <Collection collections={collections} />
+            <Collection collection={collection} />
+            <motion.div key="items">
+              <div className="w-full flex flex-row justify-between items-center">
+                <FilterOptions />
+                <div className="flex flex-row gap-2">
+                  <ItemView />
+                </div>
+              </div>
+              <Items items={filteredItems} view={itemsView} />
+            </motion.div>
+          </>
+        )}
+        {selectedItem !== null && (
+          <motion.div key="itempage">
+            <ItemPage />
+          </motion.div>
+        )}
+        {selectedCollection !== null && (
+          <CollectionPage />
+        )}
+        {/*{subTab === '' ? (
+          <>
+            <Collection collection={collection} />
             <motion.div key="items">
               <div className="w-full flex flex-row justify-between items-center">
                 <FilterOptions />
@@ -141,7 +170,7 @@ function Marketplace(props) {
           <motion.div key="itempage">
             <ItemPage />
           </motion.div>
-        )}
+        )}*/}
       </motion.div>
     </AnimatePresence>
   );

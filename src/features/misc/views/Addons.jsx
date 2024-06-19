@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { memo } from 'react';
 
-import Added from '../../marketplace/views/Added';
+import Added from '../../marketplace/views/Library';
 import Create from '../../marketplace/views/Create';
 
 function Addons(props) {

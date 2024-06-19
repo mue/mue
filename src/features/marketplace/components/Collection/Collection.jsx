@@ -1,11 +1,14 @@
 import { memo } from 'react';
+import variables from 'config/variables';
 import { MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 import { Button } from 'components/Elements';
-import variables from 'config/variables';
 
-const Collection = ({ collections, collectionFunction }) => {
-  const randomIndex = Math.floor(Math.random() * collections.length);
-  const collection = collections[randomIndex];
+import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
+
+const Collection = ({ collection }) => {
+  const { setSubTab } = useTab();
+  const { setSelectedCollection } = useMarketData();
 
   const getStyle = () => {
     if (collection?.news) {
@@ -16,6 +19,11 @@ const Collection = ({ collections, collectionFunction }) => {
       backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${collection?.img}')`,
     };
   };
+
+  const SelectCollection = () => {
+    setSubTab(collection.display_name);
+    setSelectedCollection(collection);
+  }
 
   return (
     <div className="collection" style={getStyle()}>
@@ -35,7 +43,7 @@ const Collection = ({ collections, collectionFunction }) => {
       ) : (
         <Button
           type="collection"
-          onClick={() => collectionFunction(collection?.name)}
+          onClick={SelectCollection}
           icon={<MdOutlineArrowForward />}
           label={variables.getMessage('marketplace:explore_collection')}
           iconPlacement={'right'}

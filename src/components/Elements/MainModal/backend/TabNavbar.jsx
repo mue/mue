@@ -10,12 +10,14 @@ import {
 import { IoMdPricetag } from "react-icons/io";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTab } from './TabContext';
+import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
 import { Tooltip } from 'components/Elements';
 import variables from 'config/variables';
 import clsx from 'clsx';
 
 const TabNavbar = ({ modalClose }) => {
   const { activeTab, subTab, changeTab, subSection, setSubTab, setSubSection } = useTab();
+  const { setSelectedItem, setSelectedCollection } = useMarketData();
 
   const tabs = [
     { id: 'settings', label: 'Settings', icon: <MdSettings /> },
@@ -146,7 +148,11 @@ const TabNavbar = ({ modalClose }) => {
         {navbarLogo}
         <div className="flex flex-row items-center gap-2">
           <span
-            onClick={() => changeTab(activeTab)}
+            onClick={() => {
+              changeTab(activeTab);
+              setSelectedItem(null);
+              setSelectedCollection(null);
+            }}
             className={clsx(
               'text-xl capitalize tracking-normal transition-all duration-150 ease-in-out',
               {
@@ -206,7 +212,11 @@ const TabNavbar = ({ modalClose }) => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => changeTab(tab.id)}
+              onClick={() => {
+                changeTab(tab.id);
+                setSelectedItem(null);
+                setSelectedCollection(null);
+              }}
               className={`${
                 activeTab === tab.id ? '' : 'hover:text-white/70'
               } transition-all duration-800	ease-in-out flex flex-row gap-2 items-center relative rounded-sm px-3 py-1.5 text-sm text-white outline-sky-400 transition focus-visible:outline-2`}

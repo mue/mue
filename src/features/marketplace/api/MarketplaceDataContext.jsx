@@ -11,6 +11,8 @@ export const MarketplaceDataProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [collections, setCollections] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedCollection, setSelectedCollection] = useState(null);
+
   let numOfRequests = 0;
   const controller = new AbortController();
 
@@ -32,7 +34,7 @@ export const MarketplaceDataProvider = ({ children }) => {
 
     //console.log(data);
     numOfRequests++;
-    console.log("Request number: ", numOfRequests);
+    console.log('Request number: ', numOfRequests);
 
     setItems(sortItems(data, 'z-a'));
     setDone(true);
@@ -54,7 +56,7 @@ export const MarketplaceDataProvider = ({ children }) => {
 
     setCollections(data);
     setDone(true);
-  }
+  };
 
   const getItemData = async (itemType, itemName) => {
     const response = await fetch(
@@ -70,7 +72,20 @@ export const MarketplaceDataProvider = ({ children }) => {
     });
   };
   return (
-    <MarketDataContext.Provider value={{ done, items, selectedItem, getItems, getCollections, getItemData, setSelectedItem, collections }}>
+    <MarketDataContext.Provider
+      value={{
+        done,
+        items,
+        selectedItem,
+        selectedCollection,
+        getItems,
+        getCollections,
+        getItemData,
+        setSelectedItem,
+        setSelectedCollection,
+        collections,
+      }}
+    >
       {children}
     </MarketDataContext.Provider>
   );
