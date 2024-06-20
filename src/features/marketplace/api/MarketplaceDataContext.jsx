@@ -98,21 +98,37 @@ export const MarketplaceDataProvider = ({ children }) => {
       setInstalledItems([...installedItems, selectedItem]);
       localStorage.setItem('installed', JSON.stringify(installedItems));
     }
+
     console.log('type', selectedItem.type, 'name', selectedItem.name, 'installed', installedItems);
+
     if (selectedItem.type === 'quotes') {
       let quotePacks = JSON.parse(localStorage.getItem('quote_packs')) || {};
       quotePacks[selectedItem.name] = selectedItem.quotes;
       localStorage.setItem('quote_packs', JSON.stringify(quotePacks));
+    }
+
+    if (selectedItem.type === 'photos') 
+    {
+      let photoPacks = JSON.parse(localStorage.getItem('photo_packs')) || {};
+      photoPacks[selectedItem.name] = selectedItem.photos;
+      localStorage.setItem('photo_packs', JSON.stringify(photoPacks));
     }
   };
 
   const uninstallItem = () => {
     setInstalledItems(installedItems.filter((item) => item.name !== selectedItem.name));
     localStorage.setItem('installed', JSON.stringify(installedItems));
+
     if (selectedItem.type === 'quotes') {
       let quotePacks = JSON.parse(localStorage.getItem('quote_packs')) || {};
       delete quotePacks[selectedItem.name];
       localStorage.setItem('quote_packs', JSON.stringify(quotePacks));
+    }
+
+    if (selectedItem.type === 'photos') {
+      let photoPacks = JSON.parse(localStorage.getItem('photo_packs')) || {};
+      delete photoPacks[selectedItem.name];
+      localStorage.setItem('photo_packs', JSON.stringify(photoPacks));
     }
   };
 
