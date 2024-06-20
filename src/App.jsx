@@ -13,6 +13,9 @@ import Welcome from 'features/welcome/Welcome';
 import BackgroundDefaults from 'features/background/options/default';
 import defaults from 'config/default';
 
+import '@fontsource-variable/lexend-deca';
+import '@fontsource-variable/montserrat';
+
 const useAppSetup = () => {
   useEffect(() => {
     loadSettings();
