@@ -32,7 +32,7 @@ const ItemPage = () => {
   const [shareModal, setShareModal] = useState(false);
   const { installedItems, setInstalledItems, selectedItem, installItem, uninstallItem } =
     useMarketData();
-  let themeColour = selectedItem?.colour || '#000000';
+  let themeColour = selectedItem.colour || '#000000';
 
   const [isInstalled, setIsInstalled] = useState(false);
 
@@ -57,7 +57,7 @@ const ItemPage = () => {
       installedItems.push(selectedItem);
       localStorage.setItem('installed', JSON.stringify(installedItems));
 
-      if (selectedItem?.type === 'settings') {
+      if (selectedItem.type === 'settings') {
         localStorage.removeItem('backup_settings');
 
         let oldSettings = [];
@@ -74,13 +74,13 @@ const ItemPage = () => {
         });
       }
 
-      if (selectedItem?.type === 'photos') {
+      if (selectedItem.type === 'photos') {
         const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
 
         selectedItem.photos.forEach((photo) => {
           currentPhotos.push(photo);
         });
-  
+
         localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
 
         const oldBackgroundType = localStorage.getItem('backgroundType');
@@ -90,7 +90,7 @@ const ItemPage = () => {
         }
       }
 
-      if (selectedItem?.type === 'quotes') {
+      if (selectedItem.type === 'quotes') {
         const currentQuotes = JSON.parse(localStorage.getItem('quote_packs')) || [];
 
         selectedItem.quotes.forEach((quote) => {
@@ -115,7 +115,7 @@ const ItemPage = () => {
     installedItems = installedItems.filter((item) => item.name !== selectedItem.name);
     localStorage.setItem('installed', JSON.stringify(installedItems));
 
-    if (selectedItem?.type === 'settings') {
+    if (selectedItem.type === 'settings') {
       const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
       localStorage.clear();
       oldSettings.forEach((item) => {
@@ -123,7 +123,7 @@ const ItemPage = () => {
       });
     }
 
-    if (selectedItem?.type === 'photos') {
+    if (selectedItem.type === 'photos') {
       const installedContents = JSON.parse(localStorage.getItem('photo_packs'));
       const packContents = JSON.parse(localStorage.getItem('installed')).find(
         (content) => content.name === selectedItem.name,
@@ -145,7 +145,7 @@ const ItemPage = () => {
       }
     }
 
-    if (selectedItem?.type === 'quotes') {
+    if (selectedItem.type === 'quotes') {
       const installedContents = JSON.parse(localStorage.getItem('quote_packs'));
       const packContents = JSON.parse(localStorage.getItem('installed')).find(
         (content) => content.name === selectedItem.name,
@@ -178,8 +178,8 @@ const ItemPage = () => {
   let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
 
   let dateObj, formattedDate;
-  if (selectedItem?.updated_at) {
-    dateObj = new Date(selectedItem?.updated_at);
+  if (selectedItem.updated_at) {
+    dateObj = new Date(selectedItem.updated_at);
     formattedDate = new Intl.DateTimeFormat(shortLocale, {
       year: 'numeric',
       month: 'long',
@@ -221,12 +221,12 @@ const ItemPage = () => {
       return template(variables.getMessage('marketplace:product.sideload_warning'));
     }*/
 
-    if (selectedItem?.image_api === true) {
+    if (selectedItem.image_api === true) {
       return template(variables.getMessage('marketplace:product.third_party_api'));
     }
 
-    if (selectedItem?.language !== undefined && selectedItem?.language !== null) {
-      if (shortLocale !== selectedItem?.language) {
+    if (selectedItem.language !== undefined && selectedItem.language !== null) {
+      if (shortLocale !== selectedItem.language) {
         return template(variables.getMessage('marketplace:product.not_in_language'));
       }
     }
@@ -245,45 +245,54 @@ const ItemPage = () => {
   const ItemDetails = () => {
     return (
       <div className="marketplaceDescription">
-        <span className="title">{variables.getMessage('marketplace:product.details')}</span>
-        <div className="moreInfo">
-          {selectedItem?.updated_at &&
-            moreInfoItem(
-              <MdCalendarMonth />,
-              variables.getMessage('marketplace:product.updated_at'),
-              formattedDate,
+        <div className="moreInfo flex flex-col gap-4">
+          <span className="text-black dark:text-white font-bold">
+            {variables.getMessage('marketplace:product.details')}
+          </span>
+          <div className="details">
+            {moreInfoItem(
+              <MdAccountCircle />,
+              variables.getMessage('marketplace:product.created_by'),
+              selectedItem.author,
             )}
-          {selectedItem?.quotes &&
-            moreInfoItem(
-              <MdFormatQuote />,
-              variables.getMessage('marketplace:product.no_quotes'),
-              selectedItem?.quotes.length,
+            {selectedItem.updated_at &&
+              moreInfoItem(
+                <MdCalendarMonth />,
+                variables.getMessage('marketplace:product.updated_at'),
+                formattedDate,
+              )}
+            {selectedItem.quotes &&
+              moreInfoItem(
+                <MdFormatQuote />,
+                variables.getMessage('marketplace:product.no_quotes'),
+                selectedItem.quotes.length,
+              )}
+            {selectedItem.photos &&
+              moreInfoItem(
+                <MdImage />,
+                variables.getMessage('marketplace:product.no_images'),
+                selectedItem.photos.length,
+              )}
+            {selectedItem.quotes && selectedItem.language
+              ? moreInfoItem(
+                  <MdTranslate />,
+                  variables.getMessage('settings:sections.language.title'),
+                  languageNames.of(selectedItem.language),
+                )
+              : null}
+            {moreInfoItem(
+              <MdStyle />,
+              variables.getMessage('settings:sections.background.type.title'),
+              variables.getMessage('marketplace:' + getName(selectedItem.type)) || 'marketplace',
             )}
-          {selectedItem?.photos &&
-            moreInfoItem(
-              <MdImage />,
-              variables.getMessage('marketplace:product.no_images'),
-              selectedItem?.photos.length,
-            )}
-          {selectedItem?.quotes && selectedItem?.language
-            ? moreInfoItem(
-                <MdTranslate />,
-                variables.getMessage('settings:sections.language.title'),
-                languageNames.of(selectedItem?.language),
-              )
-            : null}
-          {moreInfoItem(
-            <MdStyle />,
-            variables.getMessage('settings:sections.background.type.title'),
-            variables.getMessage('marketplace:' + getName(selectedItem?.type)) || 'marketplace',
-          )}
+          </div>
         </div>
       </div>
     );
   };
 
   const ItemShowcase = () => {
-    switch (selectedItem?.type) {
+    switch (selectedItem.type) {
       case 'quotes':
         return (
           <>
@@ -293,7 +302,7 @@ const ItemPage = () => {
                   <th>{variables.getMessage('settings:sections.quote.title')}</th>
                   <th>{variables.getMessage('settings:sections.quote.author')}</th>
                 </tr>
-                {selectedItem?.quotes.slice(0, count).map((quote, index) => (
+                {selectedItem.quotes.slice(0, count).map((quote, index) => (
                   <tr key={index}>
                     <td>{quote.quote}</td>
                     <td>{quote.author}</td>
@@ -302,8 +311,8 @@ const ItemPage = () => {
               </tbody>
             </table>
             <div className="showMoreItems">
-              <span className="link" onClick={() => showAndCollapse(selectedItem?.quotes.length)}>
-                {count !== selectedItem?.quotes.length
+              <span className="link" onClick={() => showAndCollapse(selectedItem.quotes.length)}>
+                {count !== selectedItem.quotes.length
                   ? variables.getMessage('marketplace:product.show_all')
                   : variables.getMessage('marketplace:product.show_less')}
               </span>
@@ -319,7 +328,7 @@ const ItemPage = () => {
                   <th>{variables.getMessage('marketplace:product.setting')}</th>
                   <th>{variables.getMessage('marketplace:product.value')}</th>
                 </tr>
-                {Object.entries(selectedItem?.settings)
+                {Object.entries(selectedItem.settings)
                   .slice(0, count)
                   .map(([key, value]) => (
                     <tr key={key}>
@@ -331,7 +340,7 @@ const ItemPage = () => {
             </table>
             <div className="showMoreItems">
               <span className="link" onClick={() => this.incrementCount('settings')}>
-                {count !== selectedItem?.settings.length
+                {count !== selectedItem.settings.length
                   ? variables.getMessage('marketplace:product.show_all')
                   : variables.getMessage('marketplace:product.show_less')}
               </span>
@@ -355,7 +364,7 @@ const ItemPage = () => {
           className="icon mb-5"
           alt="icon"
           draggable={false}
-          src={selectedItem?.icon_url}
+          src={selectedItem.icon_url}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = placeholderIcon;
@@ -366,16 +375,26 @@ const ItemPage = () => {
             {!isInstalled ? (
               <button
                 onClick={installItem}
-                style={{ backgroundColor: selectedItem?.colour }}
-                className={` text-white cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:opacity-50`}
+                style={{
+                  '--border-colour': selectedItem.colour,
+                  '--background-colour': selectedItem.colour + '80',
+                  // '--background-colour-hover': selectedItem.Color + '100',
+                }}
+                // bg-black/50 (bg-opacity-50)
+                // hover:bg-[var(--background-colour-hover)]
+                className={`bg-[var(--background-colour)] border-2 border-[var(--border-colour)] text-white font-medium cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:opacity-50  `}
               >
                 {variables.getMessage('marketplace:product.buttons.addtomue')}
               </button>
             ) : (
               <button
                 onClick={uninstallItem}
-                style={{ backgroundColor: selectedItem?.colour }}
-                className="cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:bg-[#ccc]"
+                style={{
+                  '--border-colour': selectedItem.colour,
+                  '--background-colour': selectedItem.colour + '80',
+                  // '--background-colour-hover': selectedItem.Color + '100',
+                }}
+                className={`bg-[var(--background-colour)] border-2 border-[var(--border-colour)] cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:opacity-50 `}
               >
                 Remove
               </button>
@@ -386,24 +405,30 @@ const ItemPage = () => {
             {variables.getMessage('marketplace:product.buttons.not_available_preview')}
           </p>
         )}
-        {selectedItem?.sideload !== true && (
+        {selectedItem.sideload !== true && (
           <div className="grid grid-cols-2 gap-5">
             <button
               onClick={() => setShareModal(true)}
-              style={{ backgroundColor: selectedItem?.colour }}
-              className={` text-white cursor-pointer transition-all duration-200 rounded-full px-6 py-3 text-base hover:opacity-50 grid place-items-center`}
+              style={{
+                '--border-colour': selectedItem.colour,
+                '--background-colour': selectedItem.colour + '80',
+              }} // 50 60 80 C0
+              className={` text-white font-medium cursor-pointer transition-all duration-200 rounded-full px-6 py-3 text-base hover:opacity-50  grid place-items-center bg-[var(--background-colour)] border-2 border-[var(--border-colour)]`}
             >
               <MdIosShare />
             </button>
             <button
               onClick={() =>
                 window.open(
-                  variables.constants.REPORT_ITEM + selectedItem?.display_name.split(' ').join('+'),
+                  variables.constants.REPORT_ITEM + selectedItem.display_name.split(' ').join('+'),
                   '_blank',
                 )
               }
-              style={{ backgroundColor: selectedItem?.colour }}
-              className={` text-white cursor-pointer transition-all duration-200 rounded-full px-6 py-3 text-base hover:opacity-50 grid place-items-center`}
+              style={{
+                '--border-colour': selectedItem.colour,
+                '--background-colour': selectedItem.colour + '80',
+              }}
+              className={` text-white font-medium cursor-pointer transition-all duration-200 rounded-full px-6 py-3 text-base hover:opacity-50  grid place-items-center bg-[var(--background-colour)] border-2 border-[var(--border-colour)]`}
             >
               <MdFlag />
             </button>
@@ -423,7 +448,7 @@ const ItemPage = () => {
             {variables.getMessage('marketplace:product.buttons.not_available_preview')}
           </p>
         )}
-        {selectedItem?.sideload !== true && (
+        {selectedItem.sideload !== true && (
           <div className="iconButtons">
             <Button
               type="icon"
@@ -436,7 +461,7 @@ const ItemPage = () => {
               type="icon"
               onClick={() =>
                 window.open(
-                  variables.constants.REPORT_ITEM + selectedItem?.display_name.split(' ').join('+'),
+                  variables.constants.REPORT_ITEM + selectedItem.display_name.split(' ').join('+'),
                   '_blank',
                 )
               }
@@ -446,7 +471,7 @@ const ItemPage = () => {
             />
           </div>
         )}*/}
-        {selectedItem?.in_collections?.length > 0 && (
+        {selectedItem.in_collections?.length > 0 && (
           <div>
             <div className="inCollection">
               <span className="subtitle">
@@ -457,11 +482,11 @@ const ItemPage = () => {
                 /*onClick={() =>
                       this.props.toggleFunction(
                         'collection',
-                        selectedItem?.in_collections[0].name,
+                        selectedItem.in_collections[0].name,
                       )
                     }*/
               >
-                {selectedItem?.in_collections[0].display_name}
+                {selectedItem.in_collections[0].display_name}
               </span>
             </div>
           </div>
@@ -485,45 +510,47 @@ const ItemPage = () => {
         onRequestClose={() => setShareModal(false)}
       >
         <ShareModal
-          data={variables.constants.API_URL + '/marketplace/share/' + btoa(selectedItem?.name)}
+          data={variables.constants.API_URL + '/marketplace/share/' + btoa(selectedItem.name)}
           modalClose={() => setShareModal(false)}
         />
       </Modal>
-      <div className="itemPage">
-        <div className="itemShowcase">
-          <div className="subHeader">
-            {moreInfoItem(
-              <MdAccountCircle />,
-              variables.getMessage('marketplace:product.created_by'),
-              selectedItem?.author,
-            )}
-            {itemWarning()}
-          </div>
-          {selectedItem?.photos && (
-            <div className="carousel">
-              <div className="carousel_container">
-                <Carousel data={selectedItem?.photos} />
-              </div>
-            </div>
-          )}
-          {selectedItem?.settings && selectedItem?.screenshot_url !== null && (
-            <img
-              alt="product"
-              draggable={false}
-              src={selectedItem?.screenshot_url}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = placeholderIcon;
-              }}
-            />
-          )}
-          <div className="marketplaceDescription">
-            <span className="title">{variables.getMessage('marketplace:product.description')}</span>
-            <Markdown>{selectedItem?.description}</Markdown>
-          </div>
-          <ItemShowcase />
+      <div className="itemPage flex flex-row gap-8 2xl:gap-16 justify-between">
+        <div class="flex flex-col-reverse xl:flex-row gap-8 2xl:gap-16">
           <ItemDetails />
+          {/* <div> */}
+            <div className="itemShowcase">
+              <div className="subHeader">
+                {itemWarning()}
+              </div>
+              {selectedItem.photos && (
+                <div className="carousel">
+                  <div className="carousel_container">
+                    <Carousel data={selectedItem.photos} />
+                  </div>
+                </div>
+              )}
+              {selectedItem.settings && selectedItem.screenshot_url !== null && (
+                <img
+                  alt="product"
+                  draggable={false}
+                  src={selectedItem.screenshot_url}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = placeholderIcon;
+                  }}
+                />
+              )}
+              <div className="marketplaceDescription">
+                <span className="title">
+                  {variables.getMessage('marketplace:product.description')}
+                </span>
+                <Markdown>{selectedItem.description}</Markdown>
+              </div>
+              <ItemShowcase />
+            {/* </div> */}
+          </div>
         </div>
+
         {sidePanel()}
       </div>
       {/*{moreByCurator.length > 1 && (

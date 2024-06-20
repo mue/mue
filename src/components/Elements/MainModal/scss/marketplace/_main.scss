@@ -106,15 +106,15 @@
 }
 
 .itemPage {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
+  // display: flex;
+  // flex-flow: row;
+  // justify-content: space-between;
 
   .itemShowcase {
     display: flex;
     flex-flow: column;
     gap: 25px;
-    width: 60%;
+    // width: 60%;
     max-width: 650px;
 
     .description {

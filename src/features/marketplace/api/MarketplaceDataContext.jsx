@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import variables from 'config/variables';
 import { sortItems } from '../../marketplace/api';
 
@@ -12,123 +12,127 @@ export const MarketplaceDataProvider = ({ children }) => {
   const [collections, setCollections] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedCollection, setSelectedCollection] = useState(null);
-  const [installedItems, setInstalledItems] = useState(
-    JSON.parse(localStorage.getItem('installed')) || [],
-  );
+  const [installedItems, setInstalledItems] = useState(() => JSON.parse(localStorage.getItem('installed')) || []);
 
-  let numOfRequests = 0;
   const controller = new AbortController();
 
-  const getItems = async (type = 'all') => {
+  const fetchData = async (url, setter) => {
     setDone(false);
-    const dataURL =
-      variables.constants.API_URL +
-      (type === 'collections' ? '/marketplace/collections' : '/marketplace/items/' + type);
-
-    const { data } = await (
-      await fetch(dataURL, {
-        signal: controller.signal,
-      })
-    ).json();
-
-    if (controller.signal.aborted === true) {
-      return;
+    try {
+      const response = await fetch(url, { signal: controller.signal });
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      const { data } = await response.json();
+      if (controller.signal.aborted) {
+        return;
+      }
+      setter(data);
+    } catch (error) {
+      if (error.name !== 'AbortError') {
+        console.error('Fetch error:', error);
+      }
+    } finally {
+      setDone(true);
     }
-
-    //console.log(data);
-    numOfRequests++;
-    console.log('Request number: ', numOfRequests);
-
-    //setItems(sortItems(data, 'z-a'));
-    const shuffledData = data.sort(() => Math.random() - 0.5);
-
-    setItems(shuffledData);
-
-    setDone(true);
   };
 
-  const getCollections = async () => {
-    setDone(false);
-    const { data } = await (
-      await fetch(`${variables.constants.API_URL}/marketplace/collections`, {
-        signal: controller.signal,
-      })
-    ).json();
+  const getItems = (type = 'all') => {
+    const dataURL = `${variables.constants.API_URL}/marketplace/${type === 'collections' ? 'collections' : 'items/' + type}`;
+    fetchData(dataURL, (data) => {
+      const shuffledData = data.sort(() => Math.random() - 0.5);
+      setItems(shuffledData);
+    });
+  };
 
-    if (controller.signal.aborted === true) {
-      return;
-    }
-
-    console.log(data);
-
-    setCollections(data);
-    setDone(true);
+  const getCollections = () => {
+    const dataURL = `${variables.constants.API_URL}/marketplace/collections`;
+    fetchData(dataURL, setCollections);
   };
 
   const getItemData = async (itemType, itemName) => {
-    const response = await fetch(
-      `${variables.constants.API_URL}/marketplace/item/${itemType}/${itemName}`,
-      {
+    try {
+      const response = await fetch(`${variables.constants.API_URL}/marketplace/item/${itemType}/${itemName}`, {
         signal: controller.signal,
-      },
-    );
-    const item = await response.json();
-    setSelectedItem(item.data);
-    return new Promise((resolve) => {
-      resolve(item.data);
-    });
+      });
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      const item = await response.json();
+      setSelectedItem(item.data);
+      return item.data;
+    } catch (error) {
+      console.error('Fetch item data error:', error);
+      return null;
+    }
   };
 
   const getCollectionData = async (collectionName) => {
-    const response = await fetch(
-      `${variables.constants.API_URL}/marketplace/collection/${collectionName}`,
-      {
+    try {
+      const response = await fetch(`${variables.constants.API_URL}/marketplace/collection/${collectionName}`, {
         signal: controller.signal,
-      },
-    );
-    const item = await response.json();
-    setSelectedCollection(item.data);
-    return new Promise((resolve) => {
-      resolve(item.data);
-    });
+      });
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      const item = await response.json();
+      setSelectedCollection(item.data);
+      return item.data;
+    } catch (error) {
+      console.error('Fetch collection data error:', error);
+      return null;
+    }
   };
+
+  const updateLocalStorage = useCallback((key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, []);
+
+  useEffect(() => {
+    updateLocalStorage('installed', installedItems);
+  }, [installedItems, updateLocalStorage]);
 
   const installItem = () => {
     if (!installedItems.some((item) => item.name === selectedItem.name)) {
-      setInstalledItems([...installedItems, selectedItem]);
-      localStorage.setItem('installed', JSON.stringify(installedItems));
-    }
+      const updatedItems = [...installedItems, selectedItem];
+      setInstalledItems(updatedItems);
 
-    console.log('type', selectedItem.type, 'name', selectedItem.name, 'installed', installedItems);
+      if (selectedItem.type === 'quotes') {
+        const quotePacks = JSON.parse(localStorage.getItem('quote_packs')) || {};
+        quotePacks[selectedItem.name] = selectedItem.quotes;
+        updateLocalStorage('quote_packs', quotePacks);
 
-    if (selectedItem.type === 'quotes') {
-      let quotePacks = JSON.parse(localStorage.getItem('quote_packs')) || {};
-      quotePacks[selectedItem.name] = selectedItem.quotes;
-      localStorage.setItem('quote_packs', JSON.stringify(quotePacks));
-    }
+        if (localStorage.getItem('quoteType') !== 'quote_pack') {
+          localStorage.setItem('quoteType', 'quote_pack');
+        }
+      }
 
-    if (selectedItem.type === 'photos') 
-    {
-      let photoPacks = JSON.parse(localStorage.getItem('photo_packs')) || {};
-      photoPacks[selectedItem.name] = selectedItem.photos;
-      localStorage.setItem('photo_packs', JSON.stringify(photoPacks));
+      if (selectedItem.type === 'photos') {
+        const photoPacks = JSON.parse(localStorage.getItem('photo_packs')) || {};
+        photoPacks[selectedItem.name] = selectedItem.photos;
+        updateLocalStorage('photo_packs', photoPacks);
+      }
     }
   };
 
   const uninstallItem = () => {
-    setInstalledItems(installedItems.filter((item) => item.name !== selectedItem.name));
-    localStorage.setItem('installed', JSON.stringify(installedItems));
+    const updatedItems = installedItems.filter((item) => item.name !== selectedItem.name);
+    setInstalledItems(updatedItems);
 
     if (selectedItem.type === 'quotes') {
-      let quotePacks = JSON.parse(localStorage.getItem('quote_packs')) || {};
+      const quotePacks = JSON.parse(localStorage.getItem('quote_packs')) || {};
       delete quotePacks[selectedItem.name];
-      localStorage.setItem('quote_packs', JSON.stringify(quotePacks));
+      updateLocalStorage('quote_packs', quotePacks);
+
+      if (Object.keys(quotePacks).length === 0) {
+        localStorage.setItem('quoteType', 'api');
+      }
     }
 
     if (selectedItem.type === 'photos') {
-      let photoPacks = JSON.parse(localStorage.getItem('photo_packs')) || {};
+      const photoPacks = JSON.parse(localStorage.getItem('photo_packs')) || {};
       delete photoPacks[selectedItem.name];
-      localStorage.setItem('photo_packs', JSON.stringify(photoPacks));
+      updateLocalStorage('photo_packs', photoPacks);
     }
   };
 

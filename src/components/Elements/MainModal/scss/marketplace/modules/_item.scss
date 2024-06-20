@@ -9,9 +9,11 @@ p.description {
 }
 
 .moreInfo {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
+  .details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+  }
 
   .items {
     margin-top: 0 !important;
