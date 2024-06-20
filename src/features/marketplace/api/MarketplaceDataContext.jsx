@@ -12,6 +12,9 @@ export const MarketplaceDataProvider = ({ children }) => {
   const [collections, setCollections] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedCollection, setSelectedCollection] = useState(null);
+  const [installedItems, setInstalledItems] = useState(
+    JSON.parse(localStorage.getItem('installed')) || [],
+  );
 
   let numOfRequests = 0;
   const controller = new AbortController();
@@ -88,7 +91,30 @@ export const MarketplaceDataProvider = ({ children }) => {
     return new Promise((resolve) => {
       resolve(item.data);
     });
-  }
+  };
+
+  const installItem = () => {
+    if (!installedItems.some((item) => item.name === selectedItem.name)) {
+      setInstalledItems([...installedItems, selectedItem]);
+      localStorage.setItem('installed', JSON.stringify(installedItems));
+    }
+    console.log('type', selectedItem.type, 'name', selectedItem.name, 'installed', installedItems);
+    if (selectedItem.type === 'quotes') {
+      let quotePacks = JSON.parse(localStorage.getItem('quote_packs')) || {};
+      quotePacks[selectedItem.name] = selectedItem.quotes;
+      localStorage.setItem('quote_packs', JSON.stringify(quotePacks));
+    }
+  };
+
+  const uninstallItem = () => {
+    setInstalledItems(installedItems.filter((item) => item.name !== selectedItem.name));
+    localStorage.setItem('installed', JSON.stringify(installedItems));
+    if (selectedItem.type === 'quotes') {
+      let quotePacks = JSON.parse(localStorage.getItem('quote_packs')) || {};
+      delete quotePacks[selectedItem.name];
+      localStorage.setItem('quote_packs', JSON.stringify(quotePacks));
+    }
+  };
 
   return (
     <MarketDataContext.Provider
@@ -104,6 +130,10 @@ export const MarketplaceDataProvider = ({ children }) => {
         setSelectedItem,
         setSelectedCollection,
         collections,
+        installedItems,
+        setInstalledItems,
+        installItem,
+        uninstallItem,
       }}
     >
       {children}

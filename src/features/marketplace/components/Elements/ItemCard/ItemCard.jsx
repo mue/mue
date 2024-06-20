@@ -10,12 +10,6 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
 
   item._onCollection = onCollection;
 
-  const SelectItem = () => {
-    getItemData(item.type, item.name).then((data) => {
-      setSubTab(data.display_name);
-    });
-  };
-
   const getName = (name) => {
     const nameMappings = {
       photos: 'photo_packs',
@@ -23,6 +17,12 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
       settings: 'preset_settings',
     };
     return nameMappings[name] || name;
+  };
+
+  const SelectItem = () => {
+    getItemData(getName(item.type), item.name).then((data) => {
+      setSubTab(data.display_name);
+    });
   };
 
   switch (cardStyle) {

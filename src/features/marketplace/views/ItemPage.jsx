@@ -22,6 +22,7 @@ import Markdown from 'markdown-to-jsx';
 import { Button } from 'components/Elements';
 import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
 import { Carousel } from '../components/Elements/Carousel';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ItemPage = () => {
   const { subTab } = useTab();
@@ -29,17 +30,28 @@ const ItemPage = () => {
   const [count, setCount] = useState(5);
   const [item, setItemData] = useState(null);
   const [shareModal, setShareModal] = useState(false);
-  const { selectedItem } = useMarketData();
+  const { installedItems, setInstalledItems, selectedItem, installItem, uninstallItem } =
+    useMarketData();
+  let themeColour = selectedItem?.colour || '#000000';
 
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
-    const installedItems = JSON.parse(localStorage.getItem('installed')) || [];
+    localStorage.setItem('installed', JSON.stringify(installedItems));
     const installed = installedItems.some((item) => item.name === selectedItem.name);
     setIsInstalled(installed);
-  }, [selectedItem]);
+  }, [installedItems, selectedItem.name]);
 
-  const installItem = () => {
+  {
+    /*const uninstallItem = () => {
+    setInstalledItems(installedItems.filter((item) => item.name !== selectedItem.name));
+    localStorage.setItem('installed', JSON.stringify(installedItems));
+    setIsInstalled(false);
+  };*/
+  }
+
+  {
+    /*const installItem = () => {
     const installedItems = JSON.parse(localStorage.getItem('installed')) || [];
     if (!installedItems.some((item) => item.name === selectedItem.name)) {
       installedItems.push(selectedItem);
@@ -158,7 +170,8 @@ const ItemPage = () => {
     }
 
     setIsInstalled(false);
-  };
+  };*/
+  }
 
   const locale = localStorage.getItem('language');
   const shortLocale = locale.includes('-') ? locale.split('-')[0] : locale;
@@ -339,7 +352,7 @@ const ItemPage = () => {
         }}
       >
         <img
-          className="icon"
+          className="icon mb-5"
           alt="icon"
           draggable={false}
           src={selectedItem?.icon_url}
@@ -348,21 +361,56 @@ const ItemPage = () => {
             e.target.src = placeholderIcon;
           }}
         />
-        {!isInstalled ? (
-          <button
-            onClick={installItem}
-            className="bg-white text-black cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:bg-[#ccc]"
-          >
-            Add To Mue
-          </button>
+        {localStorage.getItem('welcomePreview') !== 'true' ? (
+          <>
+            {!isInstalled ? (
+              <button
+                onClick={installItem}
+                style={{ backgroundColor: selectedItem?.colour }}
+                className={` text-white cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:opacity-50`}
+              >
+                {variables.getMessage('marketplace:product.buttons.addtomue')}
+              </button>
+            ) : (
+              <button
+                onClick={uninstallItem}
+                style={{ backgroundColor: selectedItem?.colour }}
+                className="cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:bg-[#ccc]"
+              >
+                Remove
+              </button>
+            )}
+          </>
         ) : (
-          <button
-            onClick={uninstallItem}
-            className="bg-white text-black cursor-pointer transition-all duration-200 rounded-full px-6 py-2 text-base hover:bg-[#ccc]"
-          >
-            Remove
-          </button>
+          <p style={{ textAlign: 'center' }}>
+            {variables.getMessage('marketplace:product.buttons.not_available_preview')}
+          </p>
         )}
+        {selectedItem?.sideload !== true && (
+          <div className="grid grid-cols-2 gap-5">
+            <button
+              onClick={() => setShareModal(true)}
+              style={{ backgroundColor: selectedItem?.colour }}
+              className={` text-white cursor-pointer transition-all duration-200 rounded-full px-6 py-3 text-base hover:opacity-50 grid place-items-center`}
+            >
+              <MdIosShare />
+            </button>
+            <button
+              onClick={() =>
+                window.open(
+                  variables.constants.REPORT_ITEM + selectedItem?.display_name.split(' ').join('+'),
+                  '_blank',
+                )
+              }
+              style={{ backgroundColor: selectedItem?.colour }}
+              className={` text-white cursor-pointer transition-all duration-200 rounded-full px-6 py-3 text-base hover:opacity-50 grid place-items-center`}
+            >
+              <MdFlag />
+            </button>
+          </div>
+        )}
+
+        {/*}
         {localStorage.getItem('welcomePreview') !== 'true' ? (
           <Button
             type="settings"
@@ -397,7 +445,7 @@ const ItemPage = () => {
               tooltipKey="report"
             />
           </div>
-        )}
+        )}*/}
         {selectedItem?.in_collections?.length > 0 && (
           <div>
             <div className="inCollection">

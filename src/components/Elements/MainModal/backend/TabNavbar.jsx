@@ -7,7 +7,7 @@ import {
   MdClose,
   MdSearch,
 } from 'react-icons/md';
-import { IoMdPricetag } from "react-icons/io";
+import { IoMdPricetag } from 'react-icons/io';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTab } from './TabContext';
 import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
@@ -17,7 +17,7 @@ import clsx from 'clsx';
 
 const TabNavbar = ({ modalClose }) => {
   const { activeTab, subTab, changeTab, subSection, setSubTab, setSubSection } = useTab();
-  const { setSelectedItem, setSelectedCollection } = useMarketData();
+  const { setSelectedItem, setSelectedCollection, installedItems } = useMarketData();
 
   const tabs = [
     { id: 'settings', label: 'Settings', icon: <MdSettings /> },
@@ -157,7 +157,7 @@ const TabNavbar = ({ modalClose }) => {
               'text-xl capitalize tracking-normal transition-all duration-150 ease-in-out',
               {
                 'text-neutral-300 cursor-pointer hover:text-neutral-100':
-                  subTab !== '' && activeTab === 'marketplace',
+                  subTab !== '' && (activeTab === 'marketplace' || activeTab === 'addons'),
               },
             )}
           >
@@ -234,9 +234,18 @@ const TabNavbar = ({ modalClose }) => {
               {tab.icon}
               {variables.getMessage(`modals.main.navbar.${tab.id}`)}
               {tab.id === 'addons' && (
-                <span className="px-3 py-1 bg-[#424242] rounded-lg text-xs">
-                  {(JSON.parse(localStorage.getItem('installed')) || []).length}
-                </span>
+                <AnimatePresence>
+                  <div className="px-3 py-1 bg-[#424242] rounded-lg text-xs">
+                    <motion.span
+                      key={installedItems.length}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                    >
+                      {installedItems.length}
+                    </motion.span>
+                  </div>
+                </AnimatePresence>
               )}
               {tab.id === 'marketplace' && (
                 <span className="px-3 py-1 bg-rose-800 rounded-lg text-xs border border-rose-700">
