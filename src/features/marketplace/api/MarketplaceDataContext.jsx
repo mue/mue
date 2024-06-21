@@ -69,6 +69,17 @@ export const MarketplaceDataProvider = ({ children }) => {
       const packs = JSON.parse(localStorage.getItem(key)) || {};
       packs[selectedItem.name] = selectedItem[selectedItem.type];
       localStorage.setItem(key, JSON.stringify(packs));
+
+      if (selectedItem.type === 'quotes' && localStorage.getItem('quoteType') !== 'quote_packs') {
+        localStorage.setItem('quoteType', 'quote_packs');
+      }
+
+      if (
+        selectedItem.type === 'photos' &&
+        localStorage.getItem('backgroundType') !== 'photo_pack'
+      ) {
+        localStorage.setItem('backgroundType', 'photo_pack');
+      }
     }
   };
 
@@ -81,6 +92,21 @@ export const MarketplaceDataProvider = ({ children }) => {
     const packs = JSON.parse(localStorage.getItem(key)) || {};
     delete packs[selectedItem.name];
     localStorage.setItem(key, JSON.stringify(packs));
+
+    if (
+      selectedItem.type === 'quotes' &&
+      localStorage.getItem('quoteType') === 'quote_packs' &&
+      localStorage.getItem('installed').length() === 0
+    ) {
+      localStorage.setItem('quoteType', 'api');
+    }
+    if (
+      selectedItem.type === 'photos' &&
+      localStorage.getItem('backgroundType') !== 'photo_pack' &&
+      localStorage.getItem('installed').length() === 0
+    ) {
+      localStorage.setItem('backgroundType', 'api');
+    }
   };
 
   return (
