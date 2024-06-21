@@ -19,7 +19,6 @@ import Modal from 'react-modal';
 import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
-import { install, uninstall } from 'utils/marketplace';
 import { Carousel } from '../components/Elements/Carousel';
 import { ShareModal } from 'components/Elements';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
@@ -80,8 +79,8 @@ class ItemPage extends PureComponent {
   }
 
   updateAddon() {
-    uninstall(this.props.data.type, this.props.data.display_name);
-    install(this.props.data.type, this.props.data);
+   // uninstall(this.props.data.type, this.props.data.display_name);
+    //install(this.props.data.type, this.props.data);
     toast(variables.getMessage('toasts.updated'));
     this.setState({
       showUpdateButton: false,
@@ -108,9 +107,9 @@ class ItemPage extends PureComponent {
 
   manage(type) {
     if (type === 'install') {
-      install(this.props.data.type, this.props.data.data);
+     // install(this.props.data.type, this.props.data.data);
     } else {
-      uninstall(this.props.data.type,this.props.data.display_name);
+     // uninstall(this.props.data.type,this.props.data.display_name);
     }
 
     toast(variables.getMessage('toasts.' + type + 'ed'));

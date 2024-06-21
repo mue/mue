@@ -276,79 +276,36 @@ export default class Background extends PureComponent {
 
       case 'photo_pack':
         if (offline) {
-          return this.setState(getOfflineImage('photo_pack'));
-        }
-
-        const photofavourited = JSON.parse(localStorage.getItem('favourite'));
-        if (photofavourited) {
-          return setFavourited(photofavourited);
+          return this.setState(getOfflineImage('photo'));
         }
 
         const photoPack = [];
         const installed = JSON.parse(localStorage.getItem('installed'));
         installed.forEach((item) => {
           if (item.type === 'photos') {
-            photoPack.push(...item.photos);
+            const photos = item.photos.map((photo) => {
+              return photo;
+            });
+
+            photoPack.push(...photos);
           }
         });
-        if (photoPack) {
-          const randomNumber = Math.floor(Math.random() * photoPack.length);
-          const randomPhoto = photoPack[randomNumber];
-          if (
-            (localStorage.getItem('backgroundchange') === 'refresh' &&
-              this.state.firstTime === true) ||
-            (localStorage.getItem('backgroundchange') === null && this.state.firstTime === true)
-          ) {
-            if (this.state.firstTime !== true) {
-              localStorage.setItem('marketplaceNumber', randomNumber);
-              this.setState({
-                firstTime: false,
-                url: randomPhoto.url.default,
-                type: 'photo_pack',
-                photoInfo: {
-                  hidden: false,
-                  credit: randomPhoto.photographer,
-                  location: randomPhoto.location,
-                },
-              });
-            }
-          } else {
-            if (
-              Number(
-                Number(localStorage.getItem('backgroundStartTime')) +
-                  Number(localStorage.getItem('backgroundchange')) >=
-                  Number(Date.now()),
-              )
-            ) {
-              const randomPhoto = photoPack[localStorage.getItem('marketplaceNumber')];
-              if (this.state.firstTime !== true) {
-                this.setState({
-                  url: randomPhoto.url.default,
-                  type: 'photo_pack',
-                  photoInfo: {
-                    hidden: false,
-                    credit: randomPhoto.photographer,
-                    location: randomPhoto.location,
-                  },
-                });
-              } else {
-                this.setState({ firstTime: true });
-              }
-              this.setState({ firstTime: true });
-            } else {
-              localStorage.setItem('marketplaceNumber', randomNumber);
-              return this.setState({
-                url: randomPhoto.url.default,
-                type: 'photo_pack',
-                photoInfo: {
-                  hidden: false,
-                  credit: randomPhoto.photographer,
-                  location: randomPhoto.location,
-                },
-              });
-            }
-          }
+
+        if (photoPack.length === 0) {
+          return this.setState(getOfflineImage('photo'));
         }
+
+        const photo = photoPack[Math.floor(Math.random() * photoPack.length)];
+
+        this.setState({
+          url: photo.url.default,
+          type: 'photo_pack',
+          video: videoCheck(photo.url.default),
+          photoInfo: {
+            // todo: finish this
+            photographer: photo.photographer,
+          },
+        });
         break;
       default:
         break;
@@ -474,19 +431,13 @@ export default class Background extends PureComponent {
       return this.setState(JSON.parse(localStorage.getItem('welcomeImage')));
     }
 
-    if (
-      localStorage.getItem('backgroundchange') === 'refresh' ||
-      localStorage.getItem('backgroundchange') === null
-    ) {
-      try {
-        document.getElementById('backgroundImage').classList.remove('fade-in');
-        document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
-      } catch (e) {
-        // Disregard exception
-      }
-      this.getBackground();
-      localStorage.setItem('backgroundStartTime', Date.now());
+    try {
+      document.getElementById('backgroundImage').classList.remove('fade-in');
+      document.getElementsByClassName('photoInformation')[0].classList.remove('fade-in');
+    } catch (e) {
+      // Disregard exception
     }
+    this.getBackground();
   }
 
   // only set once we've got the info

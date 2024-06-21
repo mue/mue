@@ -1,5 +1,4 @@
 import variables from 'config/variables';
-import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { useEffect, useState } from 'react';
 import { ShareModal } from 'components/Elements';
@@ -14,25 +13,17 @@ import {
   MdOutlineWarning,
   MdStyle,
   MdClose,
-  MdLibraryAdd,
 } from 'react-icons/md';
-import { Header } from 'components/Layout/Settings';
 import Modal from 'react-modal';
 import Markdown from 'markdown-to-jsx';
-import { Button } from 'components/Elements';
 import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
 import { Carousel } from '../components/Elements/Carousel';
-import { AnimatePresence, motion } from 'framer-motion';
 
 const ItemPage = () => {
-  const { subTab } = useTab();
-  const controller = new AbortController();
   const [count, setCount] = useState(5);
-  const [item, setItemData] = useState(null);
   const [shareModal, setShareModal] = useState(false);
-  const { installedItems, setInstalledItems, selectedItem, installItem, uninstallItem } =
+  const { installedItems, selectedItem, installItem, uninstallItem } =
     useMarketData();
-  let themeColour = selectedItem.colour || '#000000';
 
   const [isInstalled, setIsInstalled] = useState(false);
 
@@ -41,137 +32,6 @@ const ItemPage = () => {
     const installed = installedItems.some((item) => item.name === selectedItem.name);
     setIsInstalled(installed);
   }, [installedItems, selectedItem.name]);
-
-  {
-    /*const uninstallItem = () => {
-    setInstalledItems(installedItems.filter((item) => item.name !== selectedItem.name));
-    localStorage.setItem('installed', JSON.stringify(installedItems));
-    setIsInstalled(false);
-  };*/
-  }
-
-  {
-    /*const installItem = () => {
-    const installedItems = JSON.parse(localStorage.getItem('installed')) || [];
-    if (!installedItems.some((item) => item.name === selectedItem.name)) {
-      installedItems.push(selectedItem);
-      localStorage.setItem('installed', JSON.stringify(installedItems));
-
-      if (selectedItem.type === 'settings') {
-        localStorage.removeItem('backup_settings');
-
-        let oldSettings = [];
-        Object.keys(localStorage).forEach((key) => {
-          oldSettings.push({
-            name: key,
-            value: localStorage.getItem(key),
-          });
-        });
-
-        localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
-        Object.keys(selectedItem.settings).forEach((key) => {
-          localStorage.setItem(key, selectedItem.settings[key]);
-        });
-      }
-
-      if (selectedItem.type === 'photos') {
-        const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
-
-        selectedItem.photos.forEach((photo) => {
-          currentPhotos.push(photo);
-        });
-
-        localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
-
-        const oldBackgroundType = localStorage.getItem('backgroundType');
-        if (oldBackgroundType !== 'photo_pack') {
-          localStorage.setItem('oldBackgroundType', oldBackgroundType);
-          localStorage.setItem('backgroundType', 'photo_pack');
-        }
-      }
-
-      if (selectedItem.type === 'quotes') {
-        const currentQuotes = JSON.parse(localStorage.getItem('quote_packs')) || [];
-
-        selectedItem.quotes.forEach((quote) => {
-          currentQuotes.push(quote);
-        });
-
-        localStorage.setItem('quote_packs', JSON.stringify(currentQuotes));
-
-        const oldQuoteType = localStorage.getItem('quoteType');
-        if (oldQuoteType !== 'quote_pack') {
-          localStorage.setItem('oldQuoteType', oldQuoteType);
-          localStorage.setItem('quoteType', 'quote_pack');
-        }
-      }
-
-      setIsInstalled(true);
-    }
-  };
-
-  const uninstallItem = () => {
-    let installedItems = JSON.parse(localStorage.getItem('installed')) || [];
-    installedItems = installedItems.filter((item) => item.name !== selectedItem.name);
-    localStorage.setItem('installed', JSON.stringify(installedItems));
-
-    if (selectedItem.type === 'settings') {
-      const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
-      localStorage.clear();
-      oldSettings.forEach((item) => {
-        localStorage.setItem(item.name, item.value);
-      });
-    }
-
-    if (selectedItem.type === 'photos') {
-      const installedContents = JSON.parse(localStorage.getItem('photo_packs'));
-      const packContents = JSON.parse(localStorage.getItem('installed')).find(
-        (content) => content.name === selectedItem.name,
-      );
-
-      installedContents.forEach((item, index) => {
-        const exists = packContents.photos.find((content) => content.photo === item.photo);
-        if (exists !== undefined) {
-          installedContents.splice(index, 1);
-        }
-      });
-
-      if (installedContents.length === 0) {
-        localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType'));
-        localStorage.removeItem('oldBackgroundType');
-        localStorage.removeItem('photo_packs');
-      } else {
-        localStorage.setItem('photo_packs', JSON.stringify(installedContents));
-      }
-    }
-
-    if (selectedItem.type === 'quotes') {
-      const installedContents = JSON.parse(localStorage.getItem('quote_packs'));
-      const packContents = JSON.parse(localStorage.getItem('installed')).find(
-        (content) => content.name === selectedItem.name,
-      );
-
-      installedContents.forEach((item, index) => {
-        const exists = packContents.quotes.find(
-          (content) => content.quote === item.quote || content.author === item.author,
-        );
-        if (exists !== undefined) {
-          installedContents.splice(index, 1);
-        }
-      });
-
-      if (installedContents.length === 0) {
-        localStorage.setItem('quoteType', localStorage.getItem('oldQuoteType'));
-        localStorage.removeItem('oldQuoteType');
-        localStorage.removeItem('quote_packs');
-      } else {
-        localStorage.setItem('quote_packs', JSON.stringify(installedContents));
-      }
-    }
-
-    setIsInstalled(false);
-  };*/
-  }
 
   const locale = localStorage.getItem('language');
   const shortLocale = locale.includes('-') ? locale.split('-')[0] : locale;
@@ -517,7 +377,6 @@ const ItemPage = () => {
       <div className="itemPage flex flex-row gap-8 2xl:gap-16 justify-between">
         <div class="flex flex-col-reverse xl:flex-row gap-8 2xl:gap-16">
           <ItemDetails />
-          {/* <div> */}
             <div className="itemShowcase">
               <div className="subHeader">
                 {itemWarning()}
@@ -547,7 +406,6 @@ const ItemPage = () => {
                 <Markdown>{selectedItem.description}</Markdown>
               </div>
               <ItemShowcase />
-            {/* </div> */}
           </div>
         </div>
 

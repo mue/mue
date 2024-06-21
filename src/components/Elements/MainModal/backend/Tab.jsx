@@ -71,18 +71,6 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
   }
 
   const icon = iconMapping[label];
-  const divider = [
-    variables.getMessage('settings:sections.weather.title'),
-    variables.getMessage('settings:sections.language.title'),
-    variables.getMessage('marketplace:all'),
-    variables.getMessage('settings:sections.experimental.title'),
-  ].includes(label);
-
-  const mue = [
-    variables.getMessage('marketplace:product.overview'),
-    variables.getMessage('addons:added'),
-    variables.getMessage('marketplace:all'),
-  ].includes(label);
 
   if (
     label === variables.getMessage('settings:sections.experimental.title') &&
@@ -92,13 +80,9 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
   }
 
   return (
-    <>
-      {/*{mue && <span className="mainTitle">Mue</span>}*/}
-      <button className={className} onClick={() => onClick(label)}>
-        {icon} <span>{label}</span>
-      </button>
-      {/*{divider && <hr />}*/}
-    </>
+    <button className={className} onClick={() => onClick(label)}>
+      {icon} <span>{label}</span>
+    </button>
   );
 }
 

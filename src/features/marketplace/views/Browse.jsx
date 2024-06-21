@@ -1,6 +1,5 @@
 import variables from 'config/variables';
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
 import { MdWifiOff, MdLocalMall, MdOutlineArrowForward, MdLibraryAdd } from 'react-icons/md';
 
 import ItemPage from './oldItemPage';
@@ -9,7 +8,6 @@ import Items from '../components/Items/OldItems';
 import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
-import { install } from 'utils/marketplace';
 import { sortItems } from '../api';
 
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';

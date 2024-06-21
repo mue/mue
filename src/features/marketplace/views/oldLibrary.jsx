@@ -12,7 +12,6 @@ import { Dropdown, FileUpload } from 'components/Form/Settings';
 import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
-import { install, uninstall } from 'utils/marketplace';
 import { sortItems } from '../api';
 
 export default class Added extends PureComponent {
@@ -70,7 +69,7 @@ export default class Added extends PureComponent {
       });
     }
 
-    install(input.type, input, true, false);
+   // install(input.type, input, true, false);
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
     this.setState({
@@ -119,7 +118,7 @@ export default class Added extends PureComponent {
   }
 
   uninstall() {
-    uninstall(this.state.item.type, this.state.item.display_name);
+    //uninstall(this.state.item.type, this.state.item.display_name);
 
     toast(variables.getMessage('toasts.uninstalled'));
 
@@ -157,7 +156,7 @@ export default class Added extends PureComponent {
   removeAll() {
     try {
       this.state.installed.forEach((item) => {
-        uninstall(item.type, item.name);
+      //  uninstall(item.type, item.name);
       });
     } catch (e) {}
 

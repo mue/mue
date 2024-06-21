@@ -389,15 +389,6 @@ class Quote extends PureComponent {
         this.getQuote();
       }
     });
-
-    if (
-      localStorage.getItem('quotechange') === 'refresh' ||
-      localStorage.getItem('quotechange') === null
-    ) {
-      this.setZoom();
-      this.getQuote();
-      localStorage.setItem('quoteStartTime', Date.now());
-    }
   }
 
   componentWillUnmount() {
