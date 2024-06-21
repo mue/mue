@@ -44,10 +44,12 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
                 e.target.src = placeholderIcon;
               }}
             />
-            {item.display_name}
+            <div className="flex flex-col">
+            <span className="text-base font-normal">{item.display_name}</span>
+            <span className="text-xs text-neutral-400">{item.author}</span>
+            </div>
           </td>
-          <td>{variables.getMessage('marketplace:' + getName(item.type)) || 'marketplace'}</td>
-          <td>{item.author}</td>
+          <td className="text-base text-neutral-300 font-light">{variables.getMessage('marketplace:' + getName(item.type)) || 'marketplace'}</td>
           <td>
             <MdOpenInNew />
           </td>

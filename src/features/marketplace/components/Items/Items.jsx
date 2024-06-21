@@ -13,7 +13,7 @@ const NewItems = ({ items, view }) => {
              <tr>
               <th>Name</th>
               <th>Type</th>
-              <th>{variables.getMessage('settings:sections.quote.author')}</th>
+              {/*<th>{variables.getMessage('settings:sections.quote.author')}</th>*/}
               <th></th>
             </tr>
           </thead>

@@ -70,8 +70,8 @@ export const MarketplaceDataProvider = ({ children }) => {
       packs[selectedItem.name] = selectedItem[selectedItem.type];
       localStorage.setItem(key, JSON.stringify(packs));
 
-      if (selectedItem.type === 'quotes' && localStorage.getItem('quoteType') !== 'quote_packs') {
-        localStorage.setItem('quoteType', 'quote_packs');
+      if (selectedItem.type === 'quotes' && localStorage.getItem('quoteType') !== 'quote_pack') {
+        localStorage.setItem('quoteType', 'quote_pack');
       }
 
       if (
@@ -95,7 +95,7 @@ export const MarketplaceDataProvider = ({ children }) => {
 
     if (
       selectedItem.type === 'quotes' &&
-      localStorage.getItem('quoteType') === 'quote_packs' &&
+      localStorage.getItem('quoteType') === 'quote_pack' &&
       localStorage.getItem('installed').length() === 0
     ) {
       localStorage.setItem('quoteType', 'api');
