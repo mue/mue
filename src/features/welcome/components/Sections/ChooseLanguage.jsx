@@ -42,7 +42,7 @@ function ChooseLanguage() {
         Weblate
         <MdOutlineOpenInNew />
       </a>
-      <div className="languageSettings">
+      <div className="languageSettings mb-24">
         <Radio name="language" options={options} category="welcomeLanguage" />
       </div>
     </Content>
