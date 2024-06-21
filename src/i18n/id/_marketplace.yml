@@ -1,0 +1,13 @@
+no_items: Tidak ada item pada kategori ini
+product:
+  overview: Ikhtisar
+  information: Informasi
+  last_updated: Pembaruan Terakhir
+  version: Versi
+  buttons:
+    addtomue: Tambahkan ke Mue
+    remove: Hapus
+    update_addon: Perbarui Add-on
+offline:
+  title: Sepertinya Anda sedang dalam mode luring
+  description: Harap periksa kembali koneksi Anda dan coba lagi nanti

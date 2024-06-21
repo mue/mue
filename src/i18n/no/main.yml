@@ -1,0 +1,43 @@
+widgets:
+  greeting:
+    morning: God Morgen
+    afternoon: God Ettermiddag
+    evening: God Kveld
+    christmas: God Jul
+    newyear: Godt Nyttår
+    halloween: Ha en god Halloween
+  background:
+    credit: Bilde av
+    downloads: Nedlastinger
+  search: Søk
+  quicklinks: {}
+  date: {}
+  weather:
+    meters: "{amount} meter"
+  quote: {}
+  navbar:
+    tooltips: {}
+    notes: {}
+    todo: {}
+    apps: {}
+modals:
+  main:
+    loading: Laster...
+    navbar:
+      settings: Instillinger
+      addons: Mine add-ons
+      marketplace: Markedsplass
+    error_boundary: {}
+  update:
+    title: Oppdater
+    offline:
+      description: Kan ikke få oppdatering loggene når i offline modus
+    error:
+      description: Kan ikke koble til serveren.
+  share: {}
+toasts:
+  quote: Sitat kopiert
+  reset: Tilbakestillte vellykket
+  installed: Installert
+  uninstalled: Fjernet
+  error: Noe gikk galt

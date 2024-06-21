@@ -1,0 +1,96 @@
+tabname: Tab Baru
+widgets:
+  greeting:
+    morning: Selamat Pagi
+    afternoon: Selamat Siang
+    evening: Selamat Malam
+    christmas: Selamat Natal
+    newyear: Selamat Tahun Baru
+    halloween: Selamat Hari Halloween
+    birthday: Selamat Ulang Tahun
+  background:
+    credit: Foto oleh
+    unsplash: di Unsplash
+    information: Informasi
+    download: Unduh
+    downloads: Unduhan
+    views: Tayangan
+    likes: Suka
+    location: Lokasi
+    camera: Kamera
+    resolution: Resolusi
+    source: Sumber
+    category: Kategori
+    exclude: Jangan tampilkan lagi
+    exclude_confirm: >-
+      Apakah Anda yakin tidak ingin melihat gambar ini lagi?
+
+      Catatan: jika Anda tidak menyukai gambar "{category}", Anda dapat
+      membatalkan pilihan kategori di setelan sumber latar belakang.
+    confirm: Konfirmasi
+  search: Cari
+  quicklinks:
+    new: Pranala Baru
+    name: Nama
+    icon: Ikon (opsional)
+    add: Tambah
+    name_error: Harap cantumkan nama
+    url_error: Harap cantumkan URL
+  date:
+    week: Pekan
+  weather:
+    not_found: Tidak Ditemukan
+    meters: "{amount} meter"
+    extra_information: Informasi Tambahan
+    feels_like: Terasa seperti {jumlah}
+  quote:
+    link_tooltip: Buka di Wikipedia
+    share: Bagikan
+    copy: Salin
+    favourite: Favorit
+    unfavourite: Copot favorit
+  navbar:
+    tooltips:
+      refresh: Muat Ulang
+    notes:
+      title: Catatan
+      placeholder: Ketik di sini
+    todo:
+      title: Tugas
+      pin: Sematkan
+      add: Tambah
+      no_todos: Tidak ada Tugas
+    apps: {}
+modals:
+  main:
+    title: Setelan
+    loading: Sedang memuat...
+    file_upload_error: Ukuran berkas lebih dari 2MB
+    navbar:
+      settings: Pengaturan
+      addons: Pengaya
+    error_boundary:
+      title: Galat
+      message: Gagal memuat komponen Mue
+      report_error: Kirim Laporan Galat
+      sent: Terkirim!
+      refresh: Muat Ulang
+  update:
+    title: Pembaruan
+    offline:
+      title: Anda dalam mode luring
+      description: Tidak dapat memeriksa pembaruan. Harap periksa kembali koneksi Anda
+        dan coba lagi nanti.
+    error:
+      title: Galat
+      description: Tidak dapat terhubung ke peladen
+  share: {}
+toasts:
+  quote: Berhasil menyalin kutipan
+  notes: Berhasil menyalin catatan
+  reset: Reset berhasil
+  installed: Berhasil menginstal
+  uninstalled: Berhasil menghapus
+  updated: Berhasil diperbarui
+  error: Terdapat kesalahan
+  imported: Berhasil mengimpor

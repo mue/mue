@@ -24,7 +24,5 @@ sort:
 create:
   title: Create
   moved_title: Create add-on has moved!
-  moved_description: >-
-    Following the 7.1 update, the creation of addons has now moved to the
-    web UI
+  moved_description: Following the 7.1 update, the creation of addons has now moved to the web UI
   moved_button: Coming Soon....

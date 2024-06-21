@@ -1,0 +1,29 @@
+added: Hinzugefügt
+check_updates: Nach Aktualisierungen suchen
+no_updates: Keine Updates verfügbar
+updates_available: Updates verfügbar {amount}
+empty:
+  title: Hier ist es leer
+  description: Gehen Sie zum Marktplatz, um einige hinzuzufügen
+sideload:
+  title: Hochladen
+  description: Installieren Sie ein Mue-Addon, das nicht auf dem Marktplatz
+    angeboten wird, von Ihrem Computer aus
+  failed: Ladevorgang für das Addon fehlgeschlagen
+  errors:
+    no_name: Kein Name angegeben
+    no_author: Kein Autor angegeben
+    no_type: Kein Typ angegeben
+    invalid_photos: Ungültiges Fotos Objekt
+    invalid_quotes: Ungültiges Zitat Objekt
+sort:
+  title: Sortieren
+  newest: Installiert (Neueste)
+  oldest: Installiert (Älteste)
+  a_z: Alphabetisch (A-Z)
+  z_a: Alphabetisch (Z-A)
+create:
+  title: Erstellen
+  moved_title: Add-on erstellen wurde verschoben!
+  moved_description: Mit dem 7.1-Update wurde die Erstellung von Addons auf die Web-UI verlagert
+  moved_button: Los geht's

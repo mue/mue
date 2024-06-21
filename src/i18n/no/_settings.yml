@@ -1,0 +1,87 @@
+reminder: {}
+sections:
+  header: {}
+  time:
+    title: Tid
+    type_subtitle: Choose whether to display the time in digital or analogue format,
+      or a percentage completion of the day
+    digital:
+      seconds: Sekunder
+      twentyfourhour: 24 Timer
+      zero: Ekstra Null
+    analogue: {}
+    vertical_clock: {}
+  date:
+    type: {}
+    short_separator: {}
+  quote:
+    title: Sitat
+    buttons:
+      copy: Kopier knapp
+  greeting:
+    title: Hallo
+    events: Planer
+    default: Standard Hallo Melding
+    name: Navn for Hallo
+  background:
+    title: Bakgrunn
+    buttons: {}
+    effects:
+      blur: Juster Blur
+      filters: {}
+    type: {}
+    unsplash: {}
+    source:
+      api: Bakgrunn API
+      custom_background: Personlig bakgrunn
+      custom_colour: Personlig Bakgrunn Farge
+      add_colour: Legg til farge
+      quality: {}
+  search:
+    title: Søkebar
+    search_engine: Søkemotor
+    custom: Custom Search
+    dropdown: Search dropdown
+  weather:
+    temp_format: {}
+    extra_info: {}
+    options: {}
+  quicklinks:
+    options: {}
+  message: {}
+  appearance:
+    style: {}
+    theme: {}
+    navbar:
+      refresh_options: {}
+    font:
+      weight: {}
+      style: {}
+    accessibility:
+      animations: Animasjoner
+      text_shadow: {}
+  order: {}
+  advanced:
+    offline_mode: Frakoblet Modus
+    data_subtitle: Choose whether to export your Mue settings to your computer,
+      import an existing settings file, or reset your settings to their default
+      values
+    reset_modal: {}
+    timezone: {}
+    preview_data_disabled: {}
+  stats:
+    sections: {}
+    clear_modal: {}
+  experimental:
+    title: Eksperimental
+  language:
+    title: Språk
+  changelog: {}
+  about:
+    version:
+      error: {}
+    resources_used: {}
+buttons:
+  reset: Nullstill
+  import: Importer
+  export: Eksporter

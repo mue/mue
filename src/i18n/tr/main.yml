@@ -1,0 +1,101 @@
+tabname: Yeni Sekme
+widgets:
+  greeting:
+    morning: Günaydın
+    afternoon: Tünaydın
+    evening: İyi Akşamlar
+    christmas: Mutlu Noeller
+    newyear: Yeni Yılınız Kutlu Olsun
+    halloween: Cadılar Bayramınız Kutlu Olsun
+    birthday: Doğum Gününüz Kutlu Olsun
+  background:
+    credit: Fotoğraf sahibi
+    unsplash: ", Unsplash"
+    information: Bilgilendirme
+    download: İndir
+    downloads: İndirilenler
+    views: Görüntülenme
+    likes: Beğeni
+    location: Konum
+    camera: Kamera
+    resolution: Çözünürlük
+    source: Kaynak
+    category: Kategori
+    exclude: Tekrar Gösterme
+    exclude_confirm: >-
+      Bu görseli tekrar görmek istemediğinize emin misiniz?
+
+      Not: Eğer bu kategoriye ait "{category}" resimleri beğenmiyorsanız, arka
+      plan kaynak ayarları kısmından kategorinin seçimini kaldırabilirsiniz.
+    confirm: Evet
+  search: Arama
+  quicklinks:
+    new: Yeni Bağlantı
+    edit: Bağlantıyı Düzenle
+    name: İsim
+    icon: İkon (İsteğe Bağlı)
+    add: Ekle
+    name_error: İsim gerekli
+    url_error: URL gerekli
+  date:
+    week: Haftada Bir
+  weather:
+    not_found: Bulunamadı.
+    meters: "{amount} metre"
+    extra_information: Ek Bilgilendirme
+    feels_like: "{amount} gibi hissettiriyor."
+  quote:
+    link_tooltip: Wikipedia'da Aç
+    share: Paylaş
+    copy: Kopyala
+    favourite: Favorilere Ekle
+    unfavourite: Favorilerden Çıkar
+  navbar:
+    tooltips:
+      refresh: Sayfayı Yenile
+    notes:
+      title: Notlar
+      placeholder: Buraya Yaz!
+    todo:
+      title: Yapılacaklar
+      pin: Tuttur
+      add: Ekle
+      no_todos: Yapılacak bir şey yok
+    apps: {}
+modals:
+  main:
+    title: Seçenekler
+    loading: Yükleniyor...
+    file_upload_error: Dosya 2 MB'ın üzerinde
+    navbar:
+      settings: Ayarlar
+      addons: Eklentilerim
+      marketplace: Market
+    error_boundary:
+      title: Hata
+      message: Mue'nin bu bileşeni yüklenemedi.
+      report_error: Hata Raporunu Gönder!
+      sent: Gönder!
+      refresh: Yenile
+  update:
+    title: Güncelleme
+    offline:
+      title: Çevrimdışı
+      description: Çevrimdışı moddayken güncelleme günlükleri alınamıyor
+    error:
+      title: Hata
+      description: Sunucuya bağlanılamadı
+  share:
+    copy_link: Bağlantıyı kopyala
+    email: E-posta
+toasts:
+  quote: Alıntı kopyalandı.
+  notes: Not kopyalandı.
+  reset: Başarıyla resetlendi.
+  installed: Başarıyla yüklendi.
+  uninstalled: Başarıyla kaldırıldı.
+  updated: Başarıyla güncellendi.
+  error: Bir şeyler yanlış gitti.
+  imported: Başarıyla içe aktarıldı.
+  no_storage: Yeteri kadar yer yok.
+  link_copied: Bağlantı kopyalandı.

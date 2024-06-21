@@ -1,0 +1,9 @@
+added: Lagt til
+empty:
+  title: Det er tomt her.
+  description: Gå til markedsplassen å legg til noe
+sideload:
+  errors: {}
+sort: {}
+create:
+  moved_button: Get Started

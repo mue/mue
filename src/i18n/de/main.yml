@@ -1,0 +1,88 @@
+tabname: Neuer Tab
+widgets:
+  greeting:
+    morning: Guten Morgen
+    afternoon: Guten Tag
+    evening: Guten Abend
+    christmas: Fröhliche Weihnachten
+    newyear: Frohes neues Jahr
+    birthday: Glückwunsch zum Geburtstag
+  background:
+    credit: Foto von
+    unsplash: unsplash.com
+    information: Informationen
+    views: Ansichten
+    location: Standort
+    camera: Kamera
+    resolution: Auflösung
+    source: Quelle
+    category: Kategorie
+    exclude: Nicht mehr anzeigen
+    exclude_confirm: >-
+      Sind Sie sicher, dass Sie dieses Bild nicht mehr sehen wollen?
+
+      Hinweis: Wenn Sie "{category}"-Bilder nicht mögen, können Sie die
+      Kategorie in den Einstellungen für die Hintergrundquelle abwählen.
+    confirm: Bestätigen
+  search: Suche
+  quicklinks:
+    new: Neuer Link
+    add: Hinzufügen
+    name_error: Muss einen Namen angeben
+    url_error: Muss eine URL angeben
+  date:
+    week: Kalenderwoche
+  weather:
+    not_found: Nicht gefunden
+    meters: "{amount} Meter"
+    feels_like: Bei gefühlten {amount}
+  quote:
+    share: Teilen
+    copy: Kopieren
+    favourite: Favorit
+  navbar:
+    tooltips:
+      refresh: Neuladen
+    notes:
+      title: Notizen
+      placeholder: Hier eingeben
+    todo:
+      pin: Pinn
+      add: Hinzufügen
+      no_todos: Keine Todos
+    apps: {}
+modals:
+  main:
+    title: Einstellungen
+    loading: Läd...
+    file_upload_error: Datei ist größer als 2MB
+    navbar:
+      settings: Einstellungen
+      addons: Meine Addons
+      marketplace: Marktplatz
+    error_boundary:
+      title: Fehler
+      message: Diese Komponente von Mue konnte nicht geladen werden
+      report_error: Fehlerbericht senden
+      sent: Gesendet!
+      refresh: Neuladen
+  update:
+    offline:
+      description: Update-Protokolle können im Offline-Modus nicht abgerufen werden
+    error:
+      title: Fehler
+      description: Konnte keine Verbindung zum Server herstellen
+  share:
+    copy_link: Link kopieren
+    email: E-Mail
+toasts:
+  quote: Kopierte zitate
+  notes: Kopierte notizen
+  reset: Erfolgreich zurücksetzen
+  installed: Erfolgreich installiert
+  uninstalled: Erfolgreich entfernt
+  updated: Erfolgreich aktualisiert
+  error: Etwas ist schief gelaufen
+  imported: Erfolgreich importiert
+  no_storage: Nicht genügend Speicherplatz
+  link_copied: Link kopiert

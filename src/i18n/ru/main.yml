@@ -1,0 +1,91 @@
+tabname: Новая вкладка
+widgets:
+  greeting:
+    morning: Доброе утро
+    afternoon: Добрый день
+    evening: Добрый вечер
+    christmas: С Рождеством
+    newyear: С Новым Годом
+    halloween: Счастливого Хэллоуина
+    birthday: С Днём рождения
+  background:
+    credit: Фото
+    unsplash: на Unsplash
+    downloads: Загрузки
+    views: Просмотры
+    likes: Нравится
+    location: Локация
+    camera: Камера
+    resolution: Разрешение
+    source: Источник
+    category: Категория
+    exclude: Больше не показывать
+    exclude_confirm: >-
+      Вы уверены, что больше не хотите видеть это изображение?
+
+      Примечание: если вам не нравятся изображения "{category}", вы можете
+      отменить выбор категории в настройках источника фона.
+    confirm: Подтверждаю
+  search: Поиск
+  quicklinks:
+    new: Новая ссылка
+    icon: Значок (необязательно)
+    name_error: Должно содержать имя
+    url_error: Должно содержать URL
+  date:
+    week: Неделя
+  weather:
+    not_found: Не найдено
+    meters: "{amount} метры"
+    extra_information: Дополнительная информация
+    feels_like: По ощущениям {amount}
+  quote:
+    link_tooltip: Открыть в Википедии
+    share: Поделиться
+    copy: Копировать
+    favourite: Избранное
+    unfavourite: Не нравится
+  navbar:
+    tooltips:
+      refresh: Перезагрузить
+    notes:
+      placeholder: Напишите здесь
+    todo:
+      title: Задачи
+      pin: Прикрепить
+      add: Добавить
+      no_todos: Нет задач
+    apps: {}
+modals:
+  main:
+    loading: Загрузка...
+    file_upload_error: Файл больше 2 МБ
+    navbar:
+      settings: Настройки
+      addons: Аддоны
+      marketplace: Магазин
+    error_boundary:
+      title: Ошибка
+      message: Не удалось загрузить этот компонент Mue
+      report_error: Отправить сообщение об ошибке
+      sent: Отправил!
+      refresh: Обновить
+  update:
+    title: Обновление
+    offline:
+      title: Офлайн
+      description: Не удалось получить журнал обновления в офлайн режиме
+    error:
+      title: Ошибка
+  share:
+    copy_link: Копировать ссылку
+    email: Эл. адрес
+toasts:
+  quote: Цитата скопирована
+  reset: Сброшено
+  installed: Успешно установлено
+  uninstalled: Успешно удалено
+  error: Что-то пошло не так
+  imported: Успешно импортировано
+  no_storage: Недостаточно места
+  link_copied: Ссылка скопирована

@@ -1,0 +1,344 @@
+enabled: Habilitado
+open_knowledgebase: Abrir base de conhecimento
+additional_settings: Configurações adicionais
+reminder:
+  title: AVISO
+  message: Para que todas as alterações ocorram, a página deve ser atualizada.
+sections:
+  header:
+    more_info: Mais informações
+    report_issue: Relatório De Problema
+    enabled: Escolha se deseja ou não mostrar este widget
+    size: Controle deslizante para controlar o tamanho do widget
+  time:
+    title: Hora
+    format: Formato
+    type: Modelo
+    type_subtitle: Escolha se deseja exibir a hora em formato digital, analógico ou
+      em uma porcentagem de duração do dia
+    digital:
+      subtitle: Alterar a aparência do relógio digital
+      seconds: Segundos
+      twentyfourhour: 24 Horas
+      twelvehour: 12 horas
+      zero: Preenchimento com zeros
+    analogue:
+      title: Analógico
+      subtitle: Alterar a aparência do relógio analógico
+      second_hand: Ponteiro dos segundos
+      minute_hand: ponteiro dos minutos
+      hour_hand: Ponteiro das horas
+      hour_marks: Marcas de horas
+      minute_marks: Marcas de minutos
+      round_clock: Fundo arredondado
+    percentage_complete: Porcentagem concluída
+    vertical_clock:
+      title: Relógio Vertical
+      change_hour_colour: Alterar a cor das horas
+      change_minute_colour: Alterar a cor dos minutos
+  date:
+    title: Data
+    week_number: Número da semana
+    day_of_week: Dia da semana
+    datenth: Data nth
+    type:
+      short: Curto
+      long: Longo
+      subtitle: Se a data deve ser exibida em forma longa ou abreviada
+    type_settings: Exibir configurações e formato para o tipo de data selecionado
+    short_date: Data curta
+    short_format: formato curto
+    long_format: formato longo
+    short_separator:
+      title: Separador curto
+      dots: pontos
+      dash: Traço
+      gaps: Traço espaçado
+      slashes: Barras
+  quote:
+    title: Citações
+    additional: Outras configurações para personalizar o estilo do widget de citações
+    author_link: link do autor
+    custom: Citação personalizada
+    custom_subtitle: Defina suas próprias citações personalizadas
+    no_quotes: sem aspas
+    author: Autor
+    custom_buttons: Botões
+    custom_author: Autor personalizado
+    author_img: Mostrar imagem do autor
+    add: Adicionar citação
+    source_subtitle: Escolha de onde obter citações
+    buttons:
+      title: Botões
+      subtitle: Escolha quais botões mostrar na citação
+      copy: Copiar
+      tweet: Tweetar
+      favourite: Favorito
+  greeting:
+    title: Saudações
+    events: Eventos
+    default: Mensagem de saudação padrão
+    name: Nome para saudação
+    birthday: Aniversário
+    birthday_subtitle: Mostrar uma mensagem de feliz aniversário quando for seu aniversário
+    birthday_age: idade de aniversário
+    birthday_date: Data de nascimento
+    additional: Configurações para a exibição de saudação
+  background:
+    title: Plano de fundo
+    transition: Transição gradual
+    photo_information: Mostrar informações da foto
+    show_map: Mostrar mapa de localização nas informações da foto, se disponível
+    categories: Categorias
+    buttons:
+      title: Botões
+      view: Maximizar
+      favourite: Favorito
+      download: Baixar
+    effects:
+      title: efeitos
+      subtitle: Adicione efeitos às imagens de fundo
+      blur: Ajustar desfoque
+      brightness: Ajustar o brilho
+      filters:
+        title: Filtro de fundo
+        amount: Quantidade de filtro
+        grayscale: Escala de cinza
+        sepia: Sépia
+        invert: Invertido
+        saturate: Saturação
+        contrast: Contraste
+    type:
+      title: Tipo
+      custom_image: Imagem personalizada
+      custom_colour: Cor/gradiente personalizados
+      random_colour: cor aleatória
+      random_gradient: Gradiente aleatório
+    unsplash: {}
+    source:
+      title: Fonte
+      subtitle: Selecione de onde obter as imagens de plano de fundo
+      api: API de Planos de fundo
+      custom_background: Plano de fundo personalizado
+      custom_colour: Cor de fundo personalizada
+      upload: Carregar
+      add_colour: Adicionar cor
+      add_background: Adicionar plano de fundo
+      drop_to_upload: Solte para carregar
+      formats: "Formatos disponíveis: {lista}"
+      select: Ou selecione
+      add_url: Adicione URL
+      disabled: Desativado
+      loop_video: Vídeo em loop
+      mute_video: mutar vídeo
+      quality:
+        title: Qualidade
+        high: Alta qualidade
+        normal: qualidade normal
+        datasaver: Economizar dados
+      custom_title: Imagens personalizadas
+      custom_description: Selecione imagens do seu computador
+      remove: Remover imagem
+    display: Tela
+    display_subtitle: Alterar como as informações de plano de fundo e foto são carregadas
+    api: Configurações da API
+    api_subtitle: Opções para obter uma imagem de um serviço externo (API)
+  search:
+    title: Pesquisar
+    additional: Opções adicionais para exibição e funcionalidade do widget de pesquisa
+    search_engine: Motor de busca
+    search_engine_subtitle: Escolha o mecanismo de pesquisa para usar na barra de pesquisa
+    custom: URL de pesquisa personalizada
+    autocomplete: autocompletar
+    autocomplete_provider: Provedor de preenchimento automático
+    autocomplete_provider_subtitle: Mecanismo de pesquisa a ser usado para
+      resultados suspensos de preenchimento automático
+    voice_search: Pesquisa por voz
+    dropdown: Lista suspensa de pesquisa
+    focus: Foco na guia aberta
+  weather:
+    title: Tempo
+    location: Localização
+    widget_type: Tipo de widget
+    temp_format:
+      title: Unidade de temperatura
+    extra_info:
+      title: Informação extra
+      show_location: Mostrar localização
+      show_description: Mostrar descrição
+      weather_description: Descrição do tempo
+      cloudiness: Nebulosidade
+      humidity: Umidade
+      visibility: Visibilidade
+      wind_speed: Velocidade do vento
+      wind_direction: Direção do vento
+      min_temp: Temperatura mínima
+      max_temp: Temperatura máxima
+      atmospheric_pressure: Pressão atmosférica
+    options:
+      basic: básico
+      standard: Padrão
+      expanded: expandido
+      custom: Personalizado
+    custom_settings: Configurações personalizadas
+  quicklinks:
+    title: Links Rápidos
+    additional: Configurações adicionais para exibição e funções de links rápidos
+    open_new: Abrir em nova guia
+    tooltip: Dica de ferramenta
+    text_only: Mostrar apenas texto
+    add_link: Adicionar link
+    no_quicklinks: Sem links rápidos
+    edit: Editar
+    style: Estilo
+    options:
+      icon: Ícone
+      text_only: Somente texto
+    styling: Estilizar links rápidos
+    styling_description: Personalizar a aparência dos Links rápidos
+  message:
+    title: Mensagem
+    add: Adicionar mensagem
+    messages: Mensagens
+    text: Texto
+    no_messages: Sem mensagens
+    add_some: Vá em frente e adicione alguns.
+    content: Conteúdo da mensagem
+  appearance:
+    title: Aparência
+    style:
+      title: Estilo do widget
+      description: Escolha entre os dois estilos, legado (ativado para usuários pré
+        7.0) e nosso estilo moderno e elegante.
+      legacy: Legado
+      new: Novo
+    theme:
+      title: Tema
+      description: Alterar o tema dos widgets e modais do Mue
+      light: Claro
+      dark: Escuro
+    navbar:
+      title: Barra de navegação
+      notes: Notas
+      refresh: Botão atualizar
+      refresh_subtitle: Escolha o que é atualizado quando você clica no botão de atualização
+      hover: Exibir apenas ao passar o mouse
+      additional: Modifique o estilo da barra de navegação e quais botões você deseja
+        exibir
+      refresh_options:
+        none: Nenhum
+        page: Página
+    font:
+      title: Fonte
+      description: Alterar a fonte usada no Mue
+      custom: Fonte personalizada
+      google: Importar do Google Fonts
+      weight:
+        title: Espessura da fonte
+        thin: Fina
+        extra_light: Extra Leve
+        light: Leve
+        medium: Médio
+        semi_bold: Semi-negrito
+        bold: Negrito
+        extra_bold: Extra Negrito
+      style:
+        title: Estilo de fonte
+        italic: itálico
+        oblique: Oblíquo
+    accessibility:
+      title: Acessibilidade
+      description: Configurações de acessibilidade para Mue
+      animations: Animações
+      text_shadow:
+        title: Sombra de texto do widget
+        new: Novo
+        old: Velho
+        none: Nenhum
+      widget_zoom: Zoom do widget
+      toast_duration: Duração do Toast de notificação
+      milliseconds: milissegundos
+  order:
+    title: Ordem do widget
+  advanced:
+    title: Avançado
+    offline_mode: Modo offline
+    offline_subtitle: Quando ativado, todos os pedidos de serviços online serão desativados.
+    data: Dados
+    data_subtitle: Escolha se deseja exportar suas configurações de Mue para o seu
+      computador, importar um arquivo de configurações existente ou redefinir
+      suas configurações para seus valores padrão
+    reset_modal:
+      title: AVISO
+      question: Deseja redefinir o Mue?
+      information: Isso excluirá todos os dados. Se você deseja manter seus dados e
+        preferências, exporte-os primeiro.
+      cancel: Cancelar
+    customisation: Customização
+    custom_css: CSS customizado
+    custom_css_subtitle: Faça o estilo de Mue personalizado para você com Cascading
+      Style Sheets (CSS).
+    custom_js: JS personalizado
+    tab_name: Nome da guia
+    tab_name_subtitle: Mude o nome da aba que aparece no seu navegador
+    timezone:
+      title: Fuso horário
+      subtitle: Escolha um fuso horário na lista em vez do padrão automático do seu
+        computador
+      automatic: Automático
+    experimental_warning: Observe que a equipe Mue não pode fornecer suporte se você
+      tiver o modo experimental ativado. Desative-o primeiro e veja se o
+      problema continua antes de entrar em contato com o suporte.
+    preview_data_disabled: {}
+  stats:
+    title: Estatísticas
+    sections:
+      tabs_opened: Abas abertas
+      backgrounds_favourited: Planos de fundo favoritos
+      backgrounds_downloaded: Planos de fundo baixados
+      quotes_favourited: Citações favoritas
+      quicklinks_added: Links rápidos adicionados
+      settings_changed: Configurações alteradas
+      addons_installed: Complementos instalados
+    usage: Estatísticas de uso
+    achievements: Conquistas
+    unlocked: "{count} Desbloqueado"
+    clear_modal: {}
+  experimental:
+    warning: Essas configurações não foram totalmente testadas/implementadas e podem
+      não funcionar corretamente!
+    developer: Desenvolvedor
+  language:
+    title: Idioma
+    quote: Idioma das citações
+  changelog:
+    title: Registo de alterações
+    by: Por {author}
+  about:
+    title: Sobre
+    version:
+      title: Versão
+      checking_update: Verificando atualização
+      update_available: Atualização disponível
+      no_update: Nenhuma atualização disponível
+      offline_mode: Não é possível verificar por atualizações no modo offline
+      error:
+        title: Falha ao obter informações de atualização
+        description: Ocorreu um erro
+    contact_us: Contate-nos
+    support_mue: Apoie Mue
+    support_subtitle: Como o Mue é totalmente gratuito, contamos com doações para
+      cobrir as contas do servidor e financiar o desenvolvimento
+    support_donate: Doar
+    form_button: Formulário
+    resources_used:
+      title: Recursos usados
+      bg_images: Imagens de plano de fundo offline
+    contributors: Contribuintes
+    supporters: Apoiadores
+    no_supporters: Atualmente não há apoiadores do Mue
+    photographers: Fotógrafos
+buttons:
+  reset: Redefinir
+  import: Importar
+  export: Exportar

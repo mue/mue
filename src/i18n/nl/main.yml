@@ -1,0 +1,92 @@
+tabname: Nieuw Tabblad
+widgets:
+  greeting:
+    morning: Goedemorgen
+    afternoon: Goedemiddag
+    evening: Goedenavond
+    christmas: Fijne kerstdagen
+    newyear: Gelukkig nieuwjaar
+    halloween: Fijne Halloween
+    birthday: Gefeliciteerd
+  background:
+    credit: Foto van
+    unsplash: op Unsplash
+    downloads: Downloaden
+    views: Keer bekeken
+    likes: Vind ik leuk
+    location: Locatie
+    resolution: Resolutie
+    source: Bron
+    category: Categorie
+    exclude: Niet meer laten zien
+    exclude_confirm: >-
+      Weet je zeker dat je deze afbeelding niet meer wilt zien?
+
+      Opmerking: als u niet van "{category}"-afbeeldingen houdt, kunt u de
+      categorie deselecteren in de achtergrondbroninstellingen.
+    confirm: Bevestigen
+  search: Zoeken
+  quicklinks:
+    new: Nieuwe Koppeling
+    edit: Bewerk Koppeling
+    name: Naam
+    icon: Icoon (optioneel)
+    add: Toevoegen
+    name_error: Naam moet worden opgegeven
+    url_error: URL moet worden opgegeven
+  date: {}
+  weather:
+    not_found: Niet Gevonden
+    meters: "{amount} meter"
+    extra_information: Extra Informatie
+    feels_like: Voelt als {amount}
+  quote:
+    link_tooltip: Openen op Wikipedia
+    share: Deel
+    copy: Kopieerknop
+    favourite: Favoriet
+    unfavourite: Verwijder als favoriet
+  navbar:
+    tooltips:
+      refresh: Vernieuw
+    notes:
+      title: Notities
+      placeholder: Typ hier
+    todo:
+      title: Taken
+      pin: Vastzetten
+      add: Toevoegen
+      no_todos: Geen taken
+    apps:
+      title: Applicaties
+      no_apps: Geen app-links gevonden
+modals:
+  main:
+    title: Opties
+    loading: Bezig met laden…
+    file_upload_error: Bestand is boven de 2MB
+    navbar:
+      settings: Instellingen
+      addons: Extensies
+      marketplace: Marktplaats
+    error_boundary:
+      title: Foutmelding
+      message: Kan dit onderdeel van Mue niet laden
+      report_error: Stuur foutrapport
+      sent: Verstuurd!
+      refresh: Vernieuw
+  update:
+    offline: {}
+    error: {}
+  share:
+    copy_link: Kopieer link
+    email: E-mail
+toasts:
+  quote: Het citaat is gekopieerd
+  reset: Het herstellen is voltooid
+  installed: De installatie is voltooid
+  uninstalled: Het verwijderen is voltooid
+  error: Er is iets misgegaan
+  imported: Het importeren is voltooid
+  no_storage: Niet genoeg opslag
+  link_copied: Link gekopieerd

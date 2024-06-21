@@ -1,0 +1,253 @@
+enabled: Activado
+reminder:
+  title: AVISO
+  message: Para que todos los cambios surjan efecto, recarga la pestaña.
+sections:
+  header: {}
+  time:
+    title: Tiempo
+    format: Formato
+    type: Tipo
+    digital:
+      seconds: Segundos
+      twentyfourhour: 24 Horas
+      twelvehour: 12 Horas
+      zero: Sin ceros
+    analogue:
+      title: Analógico
+      second_hand: Manecilla de los segundos
+      minute_hand: Manecilla de los minutos
+      hour_hand: Manecilla de las horas
+      hour_marks: Marcas de las horas
+      minute_marks: Marcas de los minutos
+    percentage_complete: Porcentaje completado
+    vertical_clock: {}
+  date:
+    title: Fecha
+    week_number: Número de la semana
+    day_of_week: Día de la semana
+    datenth: Fecha nth
+    type:
+      short: Corto
+      long: Largo
+    short_date: Fecha corta
+    short_format: Formato corto
+    short_separator:
+      title: Separador corto
+      dots: Puntos
+      dash: Guiones
+      gaps: Guiones con espacios
+      slashes: Barras
+  quote:
+    title: Citación
+    author_link: Enlace del autor
+    custom: Citación personalizada
+    custom_author: Autor personalizado
+    add: Añadir cita
+    buttons:
+      title: Botones
+      copy: Botón de copiar
+      tweet: Botón de Tweet
+      favourite: Botón de favoritos
+  greeting:
+    title: Saludo
+    events: Eventos
+    default: Mensaje del saludo por defecto
+    name: Nombre para el saludo
+    birthday: Cumpleaños
+    birthday_age: Edad de cumpleaños
+    birthday_date: Fecha de cumpleaños
+  background:
+    title: Fondo
+    transition: Transición fade-in
+    photo_information: Ver información de la foto
+    show_map: Mostrar el mapa de la ubicación en la información de la foto si está
+      disponible
+    buttons:
+      title: Botones
+      view: Ver
+      favourite: Favorito
+      download: Descargar
+    effects:
+      title: Efectos
+      blur: Ajustar difuminado
+      brightness: Ajustar brillo
+      filters:
+        title: Filtros del fondo
+        amount: Cantidad del filtro
+        grayscale: Escala de grises
+        invert: Invertir
+        saturate: Saturar
+        contrast: Contraste
+    type:
+      title: Tipo
+      custom_image: Imagen personalizada
+      custom_colour: Color/degradado personalizado
+      random_colour: Color aleatorio
+      random_gradient: Degradado aleatorio
+    unsplash: {}
+    source:
+      title: Fuente
+      api: API de fondos
+      custom_background: Fondo personalizado
+      custom_colour: Color del fondo personalizado
+      upload: Subir
+      add_colour: Añadir color
+      add_background: Añadir fondo
+      add_url: Añadir URL
+      disabled: Desactivado
+      loop_video: Vídeo en bucle
+      mute_video: Silenciar video
+      quality:
+        title: Calidad
+        high: Calidad alta
+        normal: Calidad normal
+        datasaver: Ahorro de datos
+  search:
+    title: Búsqueda
+    search_engine: Motor de Búsqueda
+    custom: URL de búsqueda personalizada
+    autocomplete: Autocompletado
+    autocomplete_provider: Proveedor del autocompletado
+    voice_search: Búsqueda por voz
+    dropdown: Listado de búsqueda
+  weather:
+    title: Clima
+    location: Ubicación
+    temp_format:
+      title: Formato de la temperatura
+    extra_info:
+      title: Información extra
+      show_location: Mostrar ubicación
+      show_description: Mostrar descripción
+      cloudiness: Nubosidad
+      humidity: Humedad
+      visibility: Visibilidad
+      wind_speed: Velocidad del viento
+      wind_direction: Dirección del viento
+      min_temp: Temperatura mínima
+      max_temp: Temperatura máxima
+      atmospheric_pressure: Presión atmosférica
+    options: {}
+  quicklinks:
+    title: Enlaces rápidos
+    open_new: Abrir en una nueva pestaña
+    tooltip: Descripción emergente
+    text_only: Mostrar solo texto
+    options: {}
+  message:
+    title: Mensaje
+    add: Añadir mensaje
+    text: Texto
+  appearance:
+    title: Apariencia
+    style: {}
+    theme:
+      title: Tema
+      auto: Automática
+      light: Claro
+      dark: Oscuro
+    navbar:
+      title: Barra de búsqueda
+      notes: Notas
+      refresh: Botón de recargar
+      hover: Solo mostrar al pasar el cursor
+      refresh_options:
+        none: Ninguno
+        page: Página
+    font:
+      title: Fuente
+      custom: Fuente personalizada
+      google: Importar desde Google Fonts
+      weight:
+        title: Tipo de la fuente
+        thin: Delgado
+        extra_light: Extra fino
+        light: Fino
+        medium: Mediano
+        semi_bold: Semi negrita
+        bold: Negrita
+        extra_bold: Extra negrita
+      style:
+        title: Estilo de la fuente
+        italic: Cursiva
+        oblique: Oblicua
+    accessibility:
+      title: Accesibilidad
+      animations: Animaciones
+      text_shadow: {}
+      widget_zoom: Zoom del widget
+      toast_duration: Duración de la notificación
+      milliseconds: milisegundos
+  order:
+    title: Orden de los widgets
+  advanced:
+    title: Avanzado
+    offline_mode: Modo sin conexión
+    data: Datos
+    data_subtitle: Choose whether to export your Mue settings to your computer,
+      import an existing settings file, or reset your settings to their default
+      values
+    reset_modal:
+      title: ADVERTENCIA
+      question: ¿Quieres reiniciar Mue?
+      information: Esto borrará todos los datos. Si desea mantener sus datos y
+        preferencias, por favor, expórtelos primero.
+      cancel: Cancelar
+    customisation: Personalización
+    custom_css: CSS personalizado
+    custom_js: JS personalizado
+    tab_name: Nombre de la pestaña
+    timezone:
+      title: Zona horaria
+      automatic: Automático
+    experimental_warning: Por favor, ten en cuenta que el equipo de Mue no puede dar
+      soporte si tienes el modo experimental activado. Por favor, desactívalo
+      primero y comprueba si el problema sigue ocurriendo antes de contactar al
+      equipo de soporte.
+    preview_data_disabled: {}
+  stats:
+    title: Estadísticas
+    sections:
+      tabs_opened: Pestañas abiertas
+      backgrounds_favourited: Fondos en tus favoritos
+      backgrounds_downloaded: Fondos descargados
+      quotes_favourited: "Citaciones en favoritos "
+      quicklinks_added: Enlaces rápidos agregados
+      settings_changed: Ajustes cambiados
+      addons_installed: Complementos instalados
+    usage: Estadísticas de uso
+    clear_modal: {}
+  experimental:
+    warning: Estos ajustes no han sido totalmente probados/implementados y pueden no
+      funcionar correctamente.
+    developer: Desarrollador
+  language:
+    title: Idioma
+    quote: Idioma de las citaciones
+  changelog:
+    title: Registro de cambios
+    by: Por {author}
+  about:
+    title: Acerca de
+    version:
+      title: Versión
+      checking_update: Comprobando actualizaciones
+      update_available: Actualización disponible
+      no_update: No hay actualizaciones disponibles
+      offline_mode: No se puede comprobar la actualización en modo sin conexión
+      error:
+        title: Error al obtener la información de la actualización
+        description: Ha ocurrido un error
+    contact_us: Contáctanos
+    support_mue: Apoya Mue
+    resources_used:
+      title: Recursos usados
+      bg_images: Fondos sin conexión
+    contributors: Contribuidores
+    no_supporters: Actualmente no hay partidarios de Mue
+    photographers: Fotógrafos
+buttons:
+  reset: Reiniciar
+  import: Importar
+  export: Exportar

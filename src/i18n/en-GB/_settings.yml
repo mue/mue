@@ -3,9 +3,7 @@ open_knowledgebase: Open Knowledgebase
 additional_settings: Additional Settings
 reminder:
   title: NOTICE
-  message: >-
-    In order for all of the changes to take place, the page must be
-    refreshed.
+  message: In order for all of the changes to take place, the page must be refreshed.
 sections:
   header:
     more_info: More info
@@ -16,8 +14,7 @@ sections:
     title: Time
     format: Format
     type: Type
-    type_subtitle: >-
-      Choose whether to display the time in digital format, analogue
+    type_subtitle: Choose whether to display the time in digital format, analogue
       format, or a percentage completion of the day
     digital:
       title: Digital
@@ -144,7 +141,7 @@ sections:
       add_colour: Add colour
       add_background: Add background
       drop_to_upload: Drop to upload
-      formats: 'Available formats: {list}'
+      formats: "Available formats: {list}"
       select: Or Select
       add_url: Add URL
       disabled: Disabled
@@ -232,8 +229,7 @@ sections:
     title: Appearance
     style:
       title: Widget Style
-      description: >-
-        Choose between the two styles, legacy (enabled for pre 7.0 users)
+      description: Choose between the two styles, legacy (enabled for pre 7.0 users)
         and our slick modern styling.
       legacy: Legacy
       new: New
@@ -294,40 +290,33 @@ sections:
     offline_mode: Offline mode
     offline_subtitle: When enabled, all requests to online services will be disabled.
     data: Data
-    data_description: >-
-      Choose whether to export your Mue settings to your computer, import
-      an existing settings file, or reset your settings to their default
+    data_description: Choose whether to export your Mue settings to your computer,
+      import an existing settings file, or reset your settings to their default
       values
     data_subtitle: Manage your data on Mue.
     reset_modal:
       title: WARNING
       question: Do you want to reset Mue?
-      information: >-
-        This will delete all data. If you wish to keep your data and
+      information: This will delete all data. If you wish to keep your data and
         preferences, please export them first.
       cancel: Cancel
     customisation: Customisation
     custom_css: Custom CSS
-    custom_css_subtitle: >-
-      Make Mue's styling customised to you with Cascading Style Sheets
-      (CSS).
+    custom_css_subtitle: Make Mue's styling customised to you with Cascading Style Sheets (CSS).
     custom_js: Custom JS
     tab_name: Tab name
     tab_name_subtitle: Change the name of the tab that appears in your browser
     timezone:
       title: Time Zone
-      subtitle: >-
-        Choose a timezone from the list instead of the automatic default
-        from your computer
+      subtitle: Choose a timezone from the list instead of the automatic default from
+        your computer
       automatic: Automatic
-    experimental_warning: >-
-      Please note that the Mue team cannot provide support if you have
-      experimental mode on. Please disable it first and see if the issue
-      continues to occur before contacting support.
+    experimental_warning: Please note that the Mue team cannot provide support if
+      you have experimental mode on. Please disable it first and see if the
+      issue continues to occur before contacting support.
     preview_data_disabled:
       title: Data Settings Disabled
-      description: >-
-        Data settings are disabled in preview mode. Please exit preview
+      description: Data settings are disabled in preview mode. Please exit preview
         mode to use this feature.
   stats:
     title: Stats
@@ -341,17 +330,16 @@ sections:
       addons_installed: Add-ons installed
     usage: Usage Stats
     achievements: Achievements
-    achievement_unlocked: 'Achievement Unlocked: {name}'
-    unlocked: '{count} Unlocked'
+    achievement_unlocked: "Achievement Unlocked: {name}"
+    unlocked: "{count} Unlocked"
     locked: Locked
     clear_modal:
       question: Do you want to clear your stats?
       information: This will clear all achievements and usage statistics.
   experimental:
     title: Experimental
-    warning: >-
-      These settings have not been fully tested/implemented and may not
-      work correctly!
+    warning: These settings have not been fully tested/implemented and may not work
+      correctly!
     developer: Developer
   language:
     title: Language
@@ -372,9 +360,8 @@ sections:
         description: An error occured
     contact_us: Contact Us
     support_mue: Support Mue
-    support_subtitle: >-
-      As Mue is entirely free, we rely on donations to cover the server
-      bills and fund development
+    support_subtitle: As Mue is entirely free, we rely on donations to cover the
+      server bills and fund development
     support_donate: Donate
     form_button: Form
     resources_used:

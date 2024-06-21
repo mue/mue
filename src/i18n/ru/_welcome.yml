@@ -1,0 +1,31 @@
+sections:
+  intro:
+    title: Добро пожаловать в Mue Tab
+    notices:
+      discord_title: Присоединяйтесь к нашему дискорду
+      discord_description: Поговорите с сообществом Mue и разработчиками
+      discord_join: Присоединиться
+      github_title: Внесите свой вклад в GitHub
+      github_description: Сообщайте об ошибках, добавляйте функции или пожертвуйте
+      github_open: Открыть
+  language:
+    title: Выберите свой язык
+  theme:
+    title: Выберите тему
+  style:
+    title: Выберите стиль
+    description: В настоящее время Mue предлагает выбор между устаревшим стилем и
+      недавно выпущенным современным стилем.
+    legacy: Устаревший
+    modern: Современное
+  settings:
+    title: Импортировать настройки
+  privacy:
+    links: {}
+  final:
+    title: Последний шаг
+    changes: Изменения
+buttons:
+  close: Закрыть
+preview:
+  continue: Продолжить установку

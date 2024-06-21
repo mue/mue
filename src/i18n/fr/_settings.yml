@@ -1,0 +1,179 @@
+enabled: Activé
+reminder:
+  title: REMARQUER
+  message: Pour que toutes les modifications aient lieu, la page doit être actualisée.
+sections:
+  header: {}
+  time:
+    title: Heure
+    type: Genre
+    digital:
+      title: Affichage numériquel
+      seconds: Secondes
+      twentyfourhour: 24 heures
+      twelvehour: 12 heures
+      zero: Complétion de zéros
+    analogue:
+      title: Analogique
+      second_hand: Aiguille des secondes
+      minute_hand: Aiguille des minutes
+      hour_hand: Aiguille de heure
+      hour_marks: Marques d'heure
+      minute_marks: Marques des minutes
+    percentage_complete: Pourcentage achevé
+    vertical_clock: {}
+  date:
+    week_number: Numéro de semaine
+    day_of_week: Jour de la semaine
+    type:
+      short: Courtt
+    short_date: Date courte
+    short_format: Format court
+    short_separator:
+      title: Séparateur court
+      dots: Points
+      dash: Tiret
+      gaps: Blancs
+      slashes: Barres
+  quote:
+    title: Citation
+    author_link: Lien auteur
+    custom: Citation personnalisé
+    custom_author: Auteur de devis personnalisé
+    buttons:
+      title: Boutons
+      copy: Copier
+      tweet: Twitter
+      favourite: Ajouter aux favoris
+  greeting:
+    title: Salutation
+    events: Événements
+    default: Salutation par défaut
+    name: Nom pour salutation
+    birthday: Anniversaire
+    birthday_age: âge d'anniversaire
+    birthday_date: date d'anniversaire
+  background:
+    title: Fond
+    transition: Transition en fondu
+    buttons:
+      title: Boutons
+      view: Mode vue
+      favourite: Ajouter aux favoris
+      download: Télécharger
+    effects:
+      title: Effets
+      blur: Ajuster le flou
+      brightness: Ajuster la luminosité
+      filters: {}
+    type:
+      custom_image: Image personnalisée
+      custom_colour: Couleur / dégradé personnalisé
+    unsplash: {}
+    source:
+      api: Source
+      custom_background: Arrière-plan personnalisé
+      custom_colour: Couleur d'arrière-plan personnalisée
+      upload: Ajouter
+      add_colour: Ajouter une couleur
+      loop_video: Boucle vidéo
+      mute_video: Mettre la vidéo en sourdine
+      quality: {}
+  search:
+    title: Barre de Recherche
+    search_engine: Moteur de Recherche
+    custom: URL de recherche personnalisée
+    voice_search: Recherche vocale
+    dropdown: Search dropdown
+  weather:
+    title: Météo
+    location: Emplacement
+    temp_format:
+      title: Format de température
+    extra_info:
+      title: Informations supplémentaires
+      show_location: Afficher l'emplacement
+      humidity: Humidité
+      wind_speed: Vitesse du vent
+      min_temp: Température minimale
+      max_temp: Température maximale
+      atmospheric_pressure: Pression atmosphérique
+    options: {}
+  quicklinks:
+    title: Liens rapides
+    open_new: Ouvrir dans un nouvel onglet
+    tooltip: Info-bulle
+    options: {}
+  message: {}
+  appearance:
+    title: Apparence
+    style: {}
+    theme:
+      title: Thème
+      light: Clair
+      dark: Sombre
+    navbar:
+      refresh_options: {}
+    font:
+      weight: {}
+      style: {}
+    accessibility:
+      title: Accessibilité
+      text_shadow: {}
+      widget_zoom: Zoom du widget
+      toast_duration: Durée du toast
+      milliseconds: millisecondes
+  order:
+    title: Ordre des widgets
+  advanced:
+    title: Avancée
+    offline_mode: Mode hors-ligne
+    data: Donnés
+    data_subtitle: Choose whether to export your Mue settings to your computer,
+      import an existing settings file, or reset your settings to their default
+      values
+    reset_modal:
+      title: ATTENTION
+      question: Voulez-vous réinitialiser Mue?
+      information: Cela supprimera toutes les données. Si vous souhaitez conserver vos
+        données et préférences, veuillez d'abord les exporter.
+      cancel: Annuler
+    customisation: Personnalisation
+    custom_css: CSS personnalisé
+    custom_js: JS personnalisé
+    tab_name: Nom de l'onglet
+    timezone: {}
+    experimental_warning: Veuillez noter que l'équipe Mue ne peut pas fournir
+      d'assistance si vous avez activé le mode expérimental. Veuillez d'abord le
+      désactiver et voir si le problème persiste avant de contacter le support.
+    preview_data_disabled: {}
+  stats:
+    sections: {}
+    clear_modal: {}
+  experimental:
+    title: Expérimental
+  language:
+    title: Langue
+    quote: Citation langue
+  changelog:
+    title: Journal des modifications
+  about:
+    title: à propos de
+    version:
+      checking_update: Vérification de la mise à jour
+      update_available: Mise à jour disponible
+      no_update: Pas de mise a jour disponible
+      offline_mode: Impossible de vérifier la mise à jour en mode hors ligne
+      error: {}
+    contact_us: Nous contacter
+    support_mue: Soutenir Mue
+    resources_used:
+      title: Ressources utilisées
+      bg_images: Images d'arrière-plan hors ligne
+    contributors: Collaborateurs
+    supporters: Partisans
+    photographers: Photographes
+buttons:
+  reset: Réinitialiser
+  import: Importer
+  export: Exporter

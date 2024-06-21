@@ -1,0 +1,65 @@
+sections:
+  intro:
+    title: Willkommen bei Mue Tab
+    description: Vielen Dank für die Installation, wir wünschen Ihnen viel Spaß mit
+      unserer Erweiterung.
+    notices:
+      discord_title: Unserem Discord beitreten
+      discord_description: Sprechen Sie mit der Mue-Community und den Entwicklern
+      discord_join: Beitreten
+      github_title: Auf GitHub mitwirken
+      github_description: Fehler melden, Funktionen hinzufügen oder spenden
+      github_open: Öffnen
+  language:
+    title: Wählen Sie Ihre Sprache
+    description: Mue kann in den unten aufgeführten Sprachen angezeigt werden. Sie
+      können auch neue Übersetzungen auf unserer Website hinzufügen
+  theme:
+    title: Wählen Sie Ihr Erscheinungsbild
+    description: Mue ist sowohl mit einem hellen als auch mit einem dunklen
+      Erscheinungsbild erhältlich, das je nach dem Erscheinungsbild Ihres
+      Systems automatisch eingestellt werden kann.
+    tip: Bei der Einstellung Automatisch wird das Design auf Ihrem System verwendet.
+      Diese Einstellung wirkt sich auf die Modalitäten und einige der Widgets
+      aus, die auf dem Bildschirm angezeigt werden, z. B. Wetter und Notizen.
+  style:
+    title: Wählen Sie einen Stil aus
+    description: Mue bietet derzeit die Wahl zwischen dem alten Design und dem
+      neuen, modernen Design.
+  settings:
+    title: Einstellungen importieren
+    description: Installieren Sie Mue auf einem neuen Gerät? So können Sie Ihre
+      alten Einstellungen importieren!
+    tip: Sie können Ihre alten Einstellungen exportieren, indem Sie in Ihrem alten
+      Mue-Einstellungen zur Registerkarte Erweitert navigieren. Klicken Sie dann
+      auf die Schaltfläche Exportieren, um die JSON-Datei herunterzuladen. Sie
+      können diese Datei hier hochladen, um Ihre Einstellungen und Präferenzen
+      von Ihrer vorherigen Mue-Installation zu übernehmen.
+  privacy:
+    title: Datenschutz Optionen
+    description: Aktivieren Sie die Einstellungen, um Ihre Privatsphäre mit Mue
+      weiter zu schützen.
+    offline_mode_description: Wenn Sie den Offline-Modus aktivieren, werden alle
+      Anfragen an jeden Dienst deaktiviert. Dies hat zur Folge, dass
+      Online-Hintergründe, Online-Zitate, Marktplatz, Wetter, Quicklinks,
+      Änderungshinweise und einige Informationen über die Registerkarte
+      deaktiviert werden.
+    links:
+      privacy_policy: Datenschutzerklärung
+      source_code: Quellcode
+  final:
+    title: Letzter Abschnitt
+    description: Ihr Mue Tab Erlebnis kann beginnen.
+    changes: Änderungen
+    changes_description: Um die Einstellungen später zu ändern, klicken Sie auf das
+      Einstellungssymbol in der oberen rechten Ecke Ihrer Registerkarte.
+    imported: Importiert {amount} Einstellung
+buttons:
+  next: Weiter
+  preview: Vorschau
+  previous: Zurück
+  close: Schließen
+preview:
+  description: Sie befinden sich derzeit im Vorschaumodus. Die Einstellungen
+    werden beim Schließen dieser Registerkarte zurückgesetzt.
+  continue: Einrichtung fortführen

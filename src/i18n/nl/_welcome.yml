@@ -1,0 +1,22 @@
+sections:
+  intro:
+    notices:
+      discord_title: Wordt lid van onze Discord server
+      discord_description: Praat met de Mue gemeenschap en ontwikkelaars
+      discord_join: Meedoen
+      github_title: Draag bij op GitHub
+      github_description: Rapporteer bugs, voeg functies toe of doneer
+      github_open: Openen
+  language: {}
+  theme: {}
+  style:
+    title: Kies een stijl
+    description: Mue biedt momenteel de keuze aan tussen de oude stijl en de nieuw
+      uitgebrachte moderne stijl.
+  settings: {}
+  privacy:
+    links: {}
+  final: {}
+buttons:
+  finish: Afronden
+preview: {}

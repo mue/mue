@@ -1,0 +1,69 @@
+reminder: {}
+sections:
+  header: {}
+  time:
+    digital: {}
+    analogue:
+      title: Analog
+    vertical_clock:
+      change_hour_colour: Change hour text color
+      change_minute_colour: Change minute text color
+  date:
+    type: {}
+    short_separator: {}
+  quote:
+    buttons:
+      favourite: Favorite
+  greeting: {}
+  background:
+    buttons:
+      view: Maximize
+    effects:
+      filters: {}
+    type:
+      custom_colour: Custom color/gradient
+    unsplash: {}
+    source:
+      custom_colour: Custom background color
+      add_colour: Add color
+      quality: {}
+  search:
+    voice_search: Voice Search
+  weather:
+    temp_format: {}
+    extra_info: {}
+    options: {}
+  quicklinks:
+    options: {}
+  message: {}
+  appearance:
+    style: {}
+    theme: {}
+    navbar:
+      refresh_options: {}
+    font:
+      weight: {}
+      style: {}
+    accessibility:
+      text_shadow: {}
+      widget_zoom: Widget zoom
+  order: {}
+  advanced:
+    data_subtitle: Choose whether to export your Mue settings to your computer,
+      import an existing settings file, or reset your settings to their default
+      values
+    reset_modal: {}
+    customisation: Customization
+    timezone: {}
+    preview_data_disabled: {}
+  stats:
+    sections: {}
+    clear_modal: {}
+  experimental: {}
+  language: {}
+  changelog: {}
+  about:
+    version:
+      error: {}
+    resources_used: {}
+buttons: {}

@@ -1,0 +1,26 @@
+added: Adicionado
+check_updates: Verifique se há atualizações
+no_updates: Nenhuma atualização disponível
+updates_available: Atualizações disponíveis {amount}
+empty:
+  title: Vazio
+  description: Nenhum complemento está instalado
+sideload:
+  title: Carregar localmente
+  description: Instale um complemento Mue que não esteja no mercado do seu computador
+  failed: Falha ao carregar o complemento
+  errors:
+    no_name: Nenhum nome fornecido
+    no_author: Nenhum autor fornecido
+    no_type: Nenhum tipo fornecido
+    invalid_photos: Objeto de fotos inválido
+    invalid_quotes: Objeto de citações inválido
+sort:
+  title: Organizar
+  newest: Instalado (mais recente)
+  oldest: Instalado (mais antigo)
+  a_z: Alfabética (A-Z)
+  z_a: Alfabética (Z-A)
+create:
+  title: Criar
+  moved_button: Get Started

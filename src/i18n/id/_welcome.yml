@@ -1,0 +1,51 @@
+tip: Tip
+sections:
+  intro:
+    title: Selamat datang di Mue Tab
+    description: Terima kasih sudah menginstal Mue, kami harap Anda dapat menikmati
+      pengalaman bersama Mue
+    notices: {}
+  language:
+    title: Pilih bahasa
+    description: Antarmuka Mue dapat ditampilkan dalam ragam bahasa berikut. Kamu
+      juga bisa menambahkan terjemahan baru untuk Mue pada
+  theme:
+    title: Pilih tema
+    description: Mue tersedia dalam tema terang dan gelap, atau kami juga bisa
+      mengaturnya secara otomatis sesuai dengan preferensi sistem Anda.
+    tip: Pengaturan otomatis akan menyesuaikan dengan tema komputer Anda. Pengaturan
+      ini akan mengubah tampilan modal dan beberapa widget, seperti Cuaca dan
+      Catatan.
+  style: {}
+  settings:
+    title: Impor Pengaturan
+    description: Sudah pernah menginstal Mue? Yuk coba impor pengaturan lama kamu
+      tanpa perlu mengatur ulang dari awal!
+    tip: Kamu bisa mengekspor pengaturan lama kamu melalui tab lanjutan pada
+      Pengaturan. Klik tombol ekspor untuk mengunduh berkas JSON. Unggah berkas
+      tersebut di sini sehingga kamu dapat menikmati preferensi yang sama pada
+      perangkat yang berbeda!
+  privacy:
+    title: Opsi Privasi
+    description: Aktifkan pegaturan sehingga Mue dapat melindungi privasi Anda.
+    offline_mode_description: Mengaktifkan mode luring akan menghalangi request ke
+      semua layanan, termasuk Background Online, Kutipan Daring, Marketplace,
+      Cuaca, Pranala Cepat, Change Log, dan beberapa informasi tentang tab.
+    links:
+      title: Pranala
+      privacy_policy: Kebijakan Privasi
+  final:
+    title: Langkah terakhir
+    description: Pengalaman Mue Tab Anda akan segera dimulai!
+    changes: Perubahan
+    changes_description: Untuk mengubah pengaturan lainnya, klik pada ikon
+      pengaturan di pojok kanan atas tab Anda.
+    imported: Berhasil mengimpor {amount} pengaturan
+buttons:
+  next: Selanjutnya
+  preview: Pratinjau
+  previous: Kembali
+  close: Tutup
+preview:
+  description: Kamu dalam mode Pratinjau. Pengaturan akan direset ketika tab ini ditutup.
+  continue: Lanjutkan setup

@@ -1,0 +1,18 @@
+added: Terinstal
+check_updates: Periksa pembaruan
+no_updates: Tidak ada pembaruan
+updates_available: Terdapat {amount} pembaruan
+empty:
+  title: Kosong
+  description: Belum ada addons yang terinstal
+sideload:
+  errors: {}
+sort:
+  title: Urutkan
+  newest: Terinstal (Terbaru)
+  oldest: Terinstal (Terlama)
+  a_z: Abjad (A-Z)
+  z_a: Abjad (Z-A)
+create:
+  title: Buat
+  moved_button: Get Started

@@ -1,0 +1,332 @@
+enabled: Aktivieren
+open_knowledgebase: Offene Wissensdatenbank
+additional_settings: Zusätzliche Einstellungen
+reminder:
+  title: HINWEIS
+  message: Damit alle Änderungen vorgenommen werden können, muss die Seite
+    aktualisiert werden.
+sections:
+  header:
+    more_info: Mehr Information
+    report_issue: Fehler Melden
+    enabled: Wählen Sie, ob dieses Widget angezeigt werden soll oder nicht
+    size: Slider zur Steuerung der Größe des Widgets
+  time:
+    title: Uhrzeit
+    type: Typ
+    type_subtitle: Legen Sie fest, ob die Uhrzeit im digitalen oder analogen Format
+      oder als Prozentsatz der Tageszeit angezeigt werden soll.
+    digital:
+      subtitle: Ändern Sie das Aussehen der Digitaluhr
+      seconds: Sekunden
+      twentyfourhour: 24 Stunden
+      twelvehour: 12 Stunden
+      zero: Mit nullen füllen
+    analogue:
+      title: Analog
+      subtitle: Ändern Sie das Aussehen der Analoguhr
+      second_hand: Sekundenzeiger
+      minute_hand: Minutenzeiger
+      hour_hand: Stundenzeiger
+      hour_marks: Stunden-Markierungen
+      minute_marks: Minuten-Markierungen
+      round_clock: Gerundeter Hintergrund
+    percentage_complete: Denn Tages fotschritt in Prozent anzeigen
+    vertical_clock:
+      title: Vertikale Uhr
+      change_hour_colour: Textfarbe der Stunde ändern
+      change_minute_colour: Textfarbe der Minute ändern
+  date:
+    title: Datum
+    week_number: Kalenderwoche
+    day_of_week: Wochentag
+    datenth: Mit nullen füllen
+    type:
+      short: Kurz
+      long: Lang
+      subtitle: Anzeige des Datums in Lang- oder Kurzform
+    type_settings: Anzeigeeinstellungen und Format für den ausgewählten Datumstyp
+    short_date: Kurzes Datum
+    short_format: Kurzes Format
+    long_format: Langes Format
+    short_separator:
+      title: Kurzer Trenner
+      dots: Punkte
+      dash: Bindestrich
+      gaps: Lücke
+      slashes: Schrägstriche
+  quote:
+    title: Zitat
+    additional: Zusätzliche Einstellungen zum Anpassen des Zitate-Widgets
+    author_link: Autor Link
+    custom: Benutzerdefiniertes Zitat
+    custom_subtitle: Legen Sie Ihre eigenen Zitate fest
+    no_quotes: Keine Zitate
+    custom_author: Benutzerdefinierter Autor
+    author_img: Bild des Autors anzeigen
+    add: Zitat hinzufügen
+    source_subtitle: Wählen Sie aus, woher die Zitate kommen sollen
+    buttons:
+      title: Schaltflächen
+      subtitle: Wählen Sie, welche Schaltflächen im Zitat angezeigt werden sollen
+      copy: Kopieren
+      tweet: Twitter
+      favourite: Favorit
+  greeting:
+    title: Begrüßung
+    events: Veranstaltungen
+    default: Standard-Begrüßungsnachricht
+    name: Name zur Begrüßung
+    birthday: Geburtstag
+    birthday_subtitle: Zeigen Sie eine Geburtstagsnachricht an, wenn Sie Geburtstag haben
+    birthday_age: Alter
+    birthday_date: Datum
+    additional: Einstellungen für die Begrüßungsanzeige
+  background:
+    title: Hintergrund
+    transition: Weicher übergang
+    photo_information: Foto-Informationen anzeigen
+    show_map: Standortkarte auf dem Foto anzeigen, falls verfügbar
+    categories: Kategorien
+    buttons:
+      title: Schaltflächen
+      view: Vollbild
+      favourite: Favorit
+    effects:
+      title: Effekte
+      subtitle: Effekte zu den Hintergrundbildern hinzufügen
+      blur: Unschärfe anpassen
+      brightness: Helligkeit anpassen
+      filters:
+        title: Hintergrundfilter
+        amount: Filtermenge
+        grayscale: Graustufen
+        invert: Invertieren
+        saturate: Sättigen
+        contrast: Kontrast
+    type:
+      custom_image: Benutzerdefiniertes Bild
+      custom_colour: Benutzerdefinierte Farbe/Farbverlauf
+      random_colour: Zufällige Farben
+      random_gradient: Zufälliger Verlauf
+    unsplash: {}
+    source:
+      title: Quelle
+      subtitle: Wählen Sie aus, woher die Hintergrundbilder kommen sollen
+      api: Hintergrund API
+      custom_background: Benutzerdefinierter Hintergrund
+      custom_colour: Benutzerdefinierter Hintergrundfarbe
+      upload: Hochladen
+      add_colour: Farbe hinzufügen
+      add_background: Hintergrund hinzufügen
+      drop_to_upload: Zum Hochladen ablegen
+      formats: "Verfügbare Formate: {list}"
+      select: Auswählen
+      add_url: URL hinzufügen
+      disabled: Deaktiviert
+      loop_video: Video schleife
+      mute_video: Video stumm
+      quality:
+        title: Qualität
+        high: Hohe Qualität
+        normal: Normale Qualität
+        datasaver: Datensparer
+      custom_title: Eigene Bilder
+      custom_description: Wählen Sie Bilder von Ihrem lokalen Computer
+      remove: Bild entfernen
+    display: Anzeige
+    display_subtitle: Ändern Sie, wie Hintergrund- und Fotodaten geladen werden
+    api: API Einstellung
+    api_subtitle: Optionen für den Abruf eines Bildes von einem externen Anbieter (API)
+  search:
+    title: Suche
+    additional: Zusätzliche Optionen für die Anzeige und Funktionalität des Such-Widgets
+    search_engine: Suchmaschine
+    search_engine_subtitle: Wählen Sie die zu verwendende Suchmaschine in der Suchleiste
+    custom: Abfrage-URL
+    autocomplete: Autovervollständigen
+    autocomplete_provider: Anbieter von Autovervollständigung
+    autocomplete_provider_subtitle: Suchmaschine für die automatische Vervollständigung der Dropdown-Ergebnisse
+    voice_search: Sprachsuche
+    dropdown: Auswahlmenü Suche
+    focus: Fokus auf geöffneten Tab
+  weather:
+    title: Wetter
+    location: Standort
+    temp_format:
+      title: Temperatur Format
+    extra_info:
+      title: Zusätzliche informationen
+      show_location: Standort anzeigen
+      show_description: Beschreibung anzeigen
+      weather_description: Wetterbeschreibung
+      cloudiness: Bewölkungsgrad
+      humidity: Luftfeuchtigkeit
+      visibility: Sichtbarkeit
+      wind_speed: Windgeschwindigkeit
+      wind_direction: Windrichtung
+      min_temp: Mindesttemperatur
+      max_temp: Höchsttemperatur
+      atmospheric_pressure: Atmosphärischer Druck
+    options:
+      basic: Allgemein
+      expanded: Erweitert
+      custom: Benutzerdefiniert
+    custom_settings: Benutzerdefinierte Einstellungen
+  quicklinks:
+    title: Schnellzugriff
+    additional: Zusätzliche Einstellungen für die Anzeige von Schnellzugriffen und
+      Funktionen
+    open_new: In neuen Tab öffnen
+    tooltip: Kurzinfo
+    text_only: Nur Text anzeigen
+    add_link: Link einfügen
+    no_quicklinks: Keine Schnellzugriffe
+    edit: Bearbeiten
+    style: Stil
+    options:
+      text_only: Nur Text
+    styling: Schnellzugriff Stile
+    styling_description: Aussehen der Schnellzugriffe anpassen
+  message:
+    title: Mitteilung
+    add: Mitteilung hinzufügen
+    messages: Mitteilungen
+    no_messages: Keine Mitteilungen
+    add_some: Fügen Sie ruhig etwas hinzu.
+    content: Mitteilungs Inhalt
+  appearance:
+    title: Erscheinungsbild
+    style:
+      title: Widget Stil
+      description: "Wählen Sie zwischen zwei Stilen: Dem alten (aktiviert für Benutzer
+        vor Version 7.0) und dem modernen Stil."
+      legacy: Legendär
+      new: Modern
+    theme:
+      title: Design
+      description: Ändern Sie das Thema der Mue-Widgets und -Modale
+      light: Hell
+      dark: Dunkel
+    navbar:
+      title: Navigationsleiste
+      notes: Notizen
+      refresh: Aktualisieren
+      refresh_subtitle: Wählen Sie aus, was aktualisiert werden soll, wenn Sie auf die
+        Schaltfläche "Aktualisieren" klicken
+      hover: Nur beim Hovern anzeigen
+      additional: Ändern Sie den Stil der Navigationsleiste und der gewünschten
+        Schaltflächen
+      refresh_options:
+        none: Keine
+        page: Seite
+    font:
+      title: Schriftart
+      custom: Eigene Schriftart
+      google: Importieren von Google Fonts
+      weight:
+        title: Schriftgröße
+        thin: Dünn
+        extra_light: Extra hell
+        light: Hell
+        medium: Mittel
+      style:
+        title: Schriftart
+    accessibility:
+      title: Barrierefreiheit
+      description: Einstellungen zur Barrierefreiheit für Mue
+      animations: Animationen
+      text_shadow:
+        title: Textschatten des Widgets
+        new: Neu
+        old: Alt
+        none: Keinen
+      widget_zoom: Widget größe
+      toast_duration: Toast Dauer
+      milliseconds: ms
+  order:
+    title: Widget Sortieren
+  advanced:
+    title: Erweitert
+    offline_mode: Offline Modus
+    offline_subtitle: Wenn diese Option aktiviert ist, werden alle Anfragen an
+      Online-Dienste deaktiviert.
+    data: Daten
+    data_subtitle: Wählen Sie, ob Sie Ihre Mue-Einstellungen auf Ihren Computer
+      exportieren, eine vorhandene Einstellungsdatei importieren oder Ihre
+      Einstellungen auf die Standardwerte zurücksetzen möchten
+    reset_modal:
+      title: ACHTUNG
+      question: Möchten Sie Mue zurücksetzen?
+      information: Dadurch werden alle Daten gelöscht. Wenn Sie Ihre Daten und
+        Einstellungen behalten möchten, exportieren Sie sie bitte zuerst.
+      cancel: Abbrechen
+    customisation: Anpassung
+    custom_css: Benutzerdefiniertes CSS
+    custom_css_subtitle: Passen Sie das Styling von Mue mit Cascading Style Sheets
+      (CSS) an Ihre Bedürfnisse an.
+    custom_js: Benutzerdefiniertes JS
+    tab_name: Tab Name
+    tab_name_subtitle: Ändern Sie den Namen der Tabs, die in Ihrem Browser angezeigt werden
+    timezone:
+      title: Zeitzone
+      subtitle: Wählen Sie eine Zeitzone aus der Liste anstelle der automatischen
+        Vorgabe Ihres Computers
+      automatic: Automatisch
+    experimental_warning: Bitte beachten Sie, dass das Mue Team keinen Support
+      leisten kann, wenn Sie den experimentellen Modus aktiviert haben. Bitte
+      deaktivieren Sie ihn zuerst und schauen Sie, ob das Problem weiterhin
+      auftritt, bevor Sie den Support kontaktieren.
+    preview_data_disabled: {}
+  stats:
+    title: Statistiken
+    sections:
+      tabs_opened: Geöffnete Tabs
+      backgrounds_favourited: Bevorzugte Hintergründe
+      backgrounds_downloaded: Hintergründe heruntergeladen
+      quotes_favourited: Bevorzugte Zitate
+      quicklinks_added: Quicklinks hinzugefügt
+      settings_changed: Einstellungen geändert
+      addons_installed: Installierte Add-ons
+    usage: Nutzungsstatistiken
+    achievements: Errungenschaften
+    unlocked: "{count} Freigeschaltet"
+    clear_modal: {}
+  experimental:
+    title: Experimentell
+    warning: Diese Einstellungen sind nicht vollständig getestet/implementiert und
+      funktionieren möglicherweise nicht korrekt!
+    developer: Entwickler
+  language:
+    title: Sprache
+    quote: Zitat-Sprache
+  changelog:
+    title: Änderungen
+    by: Von {author}
+  about:
+    title: Über
+    version:
+      checking_update: Auf Update prüfen
+      update_available: Update verfügbar
+      no_update: Kein Update verfügbar
+      offline_mode: Im Offline Modus kann nicht nach Updates gesucht werden
+      error:
+        title: Update-Informationen konnten nicht abgerufen werden
+        description: Es ist ein Fehler aufgetreten
+    contact_us: Kontaktieren Sie uns
+    support_mue: Mue unterstützen
+    support_subtitle: Da Mue völlig kostenlos ist, sind wir auf Spenden angewiesen,
+      um die Serverkosten zu decken und die Entwicklung zu finanzieren.
+    support_donate: Spenden
+    form_button: Formular
+    resources_used:
+      title: Verwendete Ressourcen
+      bg_images: Offline Hintergrundbilder
+    contributors: Mitwirkende
+    supporters: Unterstützer
+    no_supporters: Derzeit gibt es keine Mue-Unterstützer
+    photographers: Fotografen
+buttons:
+  reset: Zurücksetzen
+  import: Importieren
+  export: Exportieren

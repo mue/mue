@@ -1,0 +1,16 @@
+sections:
+  intro:
+    title: Bienvenue en Mue Tab
+    description: Merci d'avoir installé Mue, nous espérons que vous apprécierez
+      votre temps avec notre extension.
+    notices: {}
+  language: {}
+  theme: {}
+  style: {}
+  settings: {}
+  privacy:
+    links: {}
+  final: {}
+buttons:
+  close: Fermer
+preview: {}

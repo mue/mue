@@ -1,0 +1,37 @@
+by: von {author}
+all: Alle
+learn_more: Lerne mehr
+photo_packs: Fotopakete
+quote_packs: Zitat-Pakete
+preset_settings: Voreingestellte Einstellungen
+no_items: Keine Einträge in dieser Kategorie
+collection: Sammlung
+explore_collection: Sammlung erkunden
+add_all: Alle zu Mue hinzufügen
+collections: Sammlungen
+cant_find: Sie können nicht finden, was Sie suchen?
+knowledgebase_one: Besuchen Sie die
+knowledgebase_two: Wissensdatenbank
+knowledgebase_three: um Ihr eigenes zu erstellen.
+product:
+  overview: Übersicht
+  last_updated: Letzte Aktualisierung
+  description: Beschreibung
+  show_more: Mehr anzeigen
+  show_less: Weniger anzeigen
+  show_all: Alle anzeigen
+  showing: Anzeigen
+  no_images: Keine Bilder
+  no_quotes: Keine Zitate
+  part_of: Teil von
+  explore: Erkunden
+  buttons:
+    addtomue: Zu Mue hinzufügen
+    remove: Entfernen
+    back: Zurück
+    report: Melden
+  setting: Einstellung
+  value: Wert
+offline:
+  title: Sieht aus, als ob Sie offline sind
+  description: Bitte stellen Sie eine Verbindung zum Internet her

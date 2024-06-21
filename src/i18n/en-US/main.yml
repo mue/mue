@@ -1,0 +1,25 @@
+widgets:
+  greeting: {}
+  background: {}
+  quicklinks: {}
+  date: {}
+  weather:
+    meters: "{amount} meters"
+  quote:
+    favourite: Favorite
+    unfavourite: Unfavorite
+  navbar:
+    tooltips: {}
+    notes: {}
+    todo: {}
+    apps: {}
+modals:
+  main:
+    navbar:
+      addons: My Add-ons
+    error_boundary: {}
+  update:
+    offline: {}
+    error: {}
+  share: {}
+toasts: {}

@@ -1,0 +1,68 @@
+tabname: Nueva pestaña
+widgets:
+  greeting:
+    morning: Buenos días
+    afternoon: Buenas tardes
+    evening: Buenas noches
+    christmas: Feliz Navidad
+    newyear: Feliz año nuevo
+    halloween: Feliz Halloween
+    birthday: Feliz cumpleaños
+  background:
+    credit: Foto por
+    unsplash: en Unsplash
+    information: Información
+    download: Descargar
+    downloads: Descargas
+    views: Vistas
+  search: Buscar
+  quicklinks:
+    new: Nuevo enlace
+    name: Nombre
+    icon: Icono (opcional)
+    add: Añadir
+    name_error: Debe indicar el nombre
+    url_error: Debe indicar la URL
+  date:
+    week: Semana
+  weather:
+    not_found: No encontrado
+    meters: "{amount} metros"
+  quote: {}
+  navbar:
+    tooltips:
+      refresh: Recargar
+    notes:
+      title: Notas
+      placeholder: Escribe aquí
+    todo: {}
+    apps: {}
+modals:
+  main:
+    title: Opciones
+    loading: Cargando...
+    file_upload_error: El archivo pesa más de 2MB
+    navbar:
+      settings: Ajustes
+      addons: Mis complementos
+      marketplace: Tienda
+    error_boundary:
+      message: No se ha podido cargar este componente de Mue
+      refresh: Recargar
+  update:
+    title: Actualizar
+    offline:
+      title: Sin conexión
+      description: No se pueden obtener actualizaciones en modo sin conexión
+    error:
+      description: No se pudo conectar con el servidor
+  share: {}
+toasts:
+  quote: Citación copiada
+  notes: Notas copiadas
+  reset: Restablecido correctamente
+  installed: Instalado correctamente
+  uninstalled: Desinstalado correctamente
+  updated: Actualizado correctamente
+  error: Algo salió mal
+  imported: Importado correctamente

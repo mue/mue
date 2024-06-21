@@ -1,0 +1,56 @@
+tip: Consejo
+sections:
+  intro:
+    title: Bienvenido a Mue Tab
+    description: Gracias por instalar Mue, esperamos que disfrute de su tiempo con
+      nuestra extensión.
+    notices: {}
+  language:
+    title: Elige el idioma
+    description: Mue puede mostrarse en los idiomas que se indican debajo. ¡También
+      puedes contribuir con traducciones en nuestro
+  theme:
+    title: Selecciona un tema
+    description: Mue está disponible tanto en el tema claro como en el oscuro,
+      también se puede configurar automáticamente en función del tema de su
+      sistema.
+    tip: Si utiliza la configuración automática, se utilizará el tema de tu
+      computadora. Esta configuración afectará a los modales y a algunos de los
+      widgets que aparecen en la pantalla, como la hora y las notas.
+  style: {}
+  settings:
+    title: Importa los ajustes
+    description: ¿Instalando Mue en un nuevo dispositivo? No dudes en importar tu
+      configuración anterior.
+    tip: Puedes exportar tu configuración yendo a la pestaña Avanzado en tu
+      configuración de Mue. Luego debes hacer clic en el botón de exportación
+      que descargará el archivo JSON. Puedes subir este archivo aquí para
+      mantener tus ajustes y preferencias de tu instalación anterior de Mue.
+  privacy:
+    title: Opciones de privacidad
+    description: Activa estos ajustes para proteger aún más tu privacidad con Mue.
+    offline_mode_description: Al activar el modo sin conexión se deshabilitarán
+      todas las peticiones a cualquier servicio. Esto hará que se desactiven los
+      fondos en línea, las citaciones en línea, la tienda, el tiempo, los
+      enlaces rápidos, el registro de cambios, y alguna información de la
+      pestaña Acerca de.
+    links:
+      title: Enlaces
+      privacy_policy: Política de privacidad
+      source_code: Código fuente
+  final:
+    title: Último paso
+    description: Tu experiencia con Mue Tab está a punto de comenzar
+    changes: Cambios
+    changes_description: Para cambiar la configuración más tarde, haga clic en el
+      icono de configuración en la esquina superior derecha de su pestaña.
+    imported: Importados {amount} ajustes
+buttons:
+  next: Siguiente
+  preview: Vista previa
+  previous: Anterior
+  close: Cerrar
+preview:
+  description: Actualmente se encuentra en el modo de vista previa. La
+    configuración se restablecerá al cerrar esta pestaña.
+  continue: Continuar con la configuración

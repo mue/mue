@@ -119,23 +119,13 @@ class Navbar extends PureComponent {
           {this.state.refreshEnabled !== 'false' && <Refresh fontSize={this.state.zoomFontSize} />}
 
           <Tooltip
-          // FIXME: doesn't exist
-          // title={variables.getMessage('modals.main.navbar.settings', {
-          //   type: variables.getMessage(
-          //     'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
-          //   ),
-          // })}
+            title={variables.getMessage('modals.main.navbar.settings')}
           >
             <button
               className="navbarButton"
               onClick={() => this.props.openModal('mainModal')}
               style={{ fontSize: this.state.zoomFontSize }}
-              // FIXME: and here
-              // aria-label={variables.getMessage('modals.main.navbar.settings', {
-              //   type: variables.getMessage(
-              //     'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
-              //   ),
-              // })}
+              aria-label={variables.getMessage('modals.main.navbar.settings')}
             >
               <MdSettings className="settings-icon topicons" />
             </button>

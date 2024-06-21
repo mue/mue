@@ -1,0 +1,315 @@
+enabled: Включено
+open_knowledgebase: Открытая база знаний
+additional_settings: Дополнительные настройки
+reminder:
+  message: Для того чтобы все изменения произошли, необходимо обновить страницу.
+sections:
+  header:
+    more_info: Больше информации
+    report_issue: Сообщить о проблеме
+    enabled: Выберите, показывать ли этот виджет
+    size: Ползунок для управления размером виджета
+  time:
+    title: Время
+    type_subtitle: "Выберите, в каком формате будет отображаться время: в цифровом,
+      аналоговом или в процентах завершения дня"
+    digital:
+      title: Цифровые
+      subtitle: Измените внешний вид цифровых часов
+      seconds: Секунды
+      twentyfourhour: 24 Часа
+      twelvehour: 12 часов
+      zero: Дополнительный ноль
+    analogue:
+      title: Аналоговые
+      subtitle: Измените внешний вид аналоговых часов
+      second_hand: Секундная стрелка
+      minute_hand: Минутная стрелка
+      hour_hand: Часовая стрелка
+      hour_marks: Часовые метки
+      minute_marks: Минутные метки
+      round_clock: Округлый фон
+    percentage_complete: Процент завершения
+    vertical_clock:
+      title: Вертикальные часы
+      change_hour_colour: Изменить цвет текста часа
+      change_minute_colour: Изменить цвет текста минут
+  date:
+    week_number: Число недели
+    day_of_week: День недели
+    datenth: Дата n-ая
+    type:
+      short: Короткая
+      long: Длинная
+      subtitle: Отображать ли дату в длинной или короткой форме
+    type_settings: Настройки отображения и формат для выбранного типа даты
+    short_date: Короткая дата
+    short_format: Короткий формат
+    long_format: Длинный формат
+    short_separator:
+      title: Короткий разделитель
+      dots: Точки
+      dash: Тире
+      gaps: Пробелы
+      slashes: Слэшы
+  quote:
+    title: Цитата
+    additional: Другие настройки для настройки стиля виджета котировок
+    custom: Пользовательская цитата
+    custom_subtitle: Установите свои собственные пользовательские цитаты
+    no_quotes: Без кавычек
+    author: Автор
+    custom_buttons: Кнопки
+    custom_author: Пользовательский автор
+    author_img: Показать изображение автора
+    add: Добавить цитату
+    source_subtitle: Выберите, откуда брать цитаты
+    buttons:
+      title: Кнопки
+      subtitle: Выберите, какие кнопки отображать в котировке
+      copy: Кнопка копирования
+      tweet: Кнопка твита
+      favourite: Кнопка для оценки
+  greeting:
+    title: Приветствие
+    events: События
+    default: Сообщение с приветствием по-умолчанию
+    name: Имя для приветствия
+    birthday: День рождения
+    birthday_subtitle: Показать сообщение с днем рождения, когда это ваш день рождения
+    birthday_age: Возраст рождения
+    birthday_date: Дата рождения
+    additional: Настройки отображения приветствия
+  background:
+    title: Фон
+    transition: Затухающий переход
+    photo_information: Показать информацию о фотографии
+    show_map: Показывать карту местоположения на фотографии, если она доступна
+    categories: Категории
+    buttons:
+      title: Кнопки
+      view: Просмотр
+      favourite: Любимые
+    effects:
+      title: Эффекты
+      subtitle: Добавляйте эффекты к фоновым изображениям
+      blur: Размытие
+      brightness: Яркость
+      filters:
+        title: Фильтр фона
+        amount: Количество фильтров
+        grayscale: Градации серого
+        sepia: Сепия
+        invert: Негатив
+        saturate: Насыщенность
+        contrast: Контраст
+    type:
+      custom_image: Пользовательское изображение
+      custom_colour: Пользовательский цвет/градиент
+      random_colour: Случайный цвет
+      random_gradient: Случайный градиент
+    unsplash: {}
+    source:
+      subtitle: Выберите, откуда брать фоновые изображения
+      api: API для фона
+      custom_background: Пользовательский фон
+      custom_colour: Пользовательский цвет фон
+      upload: Загрузить
+      add_colour: Добавить цвет
+      add_background: Добавить фон
+      drop_to_upload: Перетащите, чтобы загрузить
+      formats: "Доступные форматы: {список}"
+      select: Или выберите
+      disabled: Выключен
+      loop_video: Зацикленное видео
+      mute_video: Отключить звук видео
+      quality:
+        title: Качество
+        high: Высокое качество
+        normal: Нормальное качество
+      custom_title: Пользовательские изображения
+      custom_description: Выберите изображения с вашего локального компьютера
+      remove: Удалить изображение
+    display: Отображать
+    display_subtitle: Изменение способа загрузки фона и информации о фотографии
+    api: Настройки API
+    api_subtitle: Варианты получения изображения из внешнего сервиса (API)
+  search:
+    title: Панель поиска
+    additional: Дополнительные параметры отображения и функциональности поискового виджета
+    search_engine: Поисковый движок
+    search_engine_subtitle: Выберите поисковую систему для использования в строке поиска
+    custom: Пользовательский поисковый движок
+    autocomplete: Автозаполнение
+    autocomplete_provider: Поставщик автозаполнения
+    autocomplete_provider_subtitle: Поисковая система, используемая для выпадающих результатов автозаполнения
+    voice_search: Поиск голосом
+    dropdown: Выпадающий список поиска
+    focus: Фокус на открытой вкладке
+  weather:
+    title: Погода
+    location: Локация
+    widget_type: Тип виджета
+    temp_format:
+      title: Формат температуры
+      celsius: Цельсии
+      fahrenheit: Фаренгейт
+      kelvin: Кельвин
+    extra_info:
+      show_location: Показать расположение
+      show_description: Показать описание
+      weather_description: Описание погоды
+      cloudiness: Облачность
+      humidity: Влажность
+      visibility: Видимость
+      wind_speed: Сила ветра
+      wind_direction: Направление ветра
+      min_temp: Минимальная температура
+      max_temp: Максимальная температура
+      atmospheric_pressure: Атмосферное давление
+    options:
+      basic: Базовый
+      standard: Стандарт
+      expanded: Расширенный
+      custom: Свой
+    custom_settings: Пользовательские настройки
+  quicklinks:
+    title: Быстрые ссылки
+    additional: Дополнительные настройки отображения и функций быстрых ссылок
+    open_new: Открывать в новой вкладке
+    tooltip: Всплывающая подсказка
+    text_only: Показывать только текст
+    add_link: Добавить ссылку
+    no_quicklinks: Нет быстрых ссылок
+    edit: Редактировать
+    style: Стиль
+    options:
+      icon: Иконка
+      text_only: Только текст
+      metro: Метро
+    styling: Стиль быстрых ссылок
+    styling_description: Настройка внешнего вида быстрых ссылок
+  message:
+    messages: Сообщения
+    no_messages: Нет сообщений
+    add_some: Идем дальше и добавить некоторые.
+    content: Содержание сообщения
+  appearance:
+    title: Оформление
+    style:
+      title: Стиль виджета
+      description: "Выберите один из двух стилей: устаревший (доступен для
+        пользователей, предшествующих версии 7.0) и наш стильный современный
+        стиль."
+      legacy: Устаревшее
+      new: Новый
+    theme:
+      description: Измените тему виджетов и модальных окон Mue
+      light: Светлая
+      dark: Тёмная
+    navbar:
+      title: Навбар
+      refresh: Кнопка перезагрузки
+      refresh_subtitle: Выберите, что будет обновляться при нажатии кнопки обновления
+      hover: Отображение только при наведении
+      additional: Измените стиль панели навигации и какие кнопки вы хотите отображать
+      refresh_options: {}
+    font:
+      description: Измените шрифт, используемый в Mue
+      custom: Пользовательский шрифт
+      google: Импортировать из Google Fonts
+      weight:
+        title: Толщина шрифта
+        thin: Тонкий
+        extra_light: Очень тонкий
+        light: Лёгкий
+        semi_bold: Полужирный
+        bold: Жирный
+        extra_bold: Сверхжирный
+      style:
+        oblique: Курсив
+    accessibility:
+      title: Доступность
+      description: Настройки специальных возможностей для Mue
+      animations: Анимации
+      text_shadow:
+        title: Тень текста виджета
+        new: Новое
+      toast_duration: Продолжительность подсказки
+      milliseconds: миллисекунды
+  order:
+    title: Порядок виджетов
+  advanced:
+    title: Дополнительно
+    offline_mode: Офлайн режим
+    offline_subtitle: При включении все запросы к онлайн-сервисам будут отключены.
+    data_subtitle: Выберите, следует ли экспортировать настройки Mue на компьютер,
+      импортировать существующий файл настроек или сбросить настройки до
+      значений по умолчанию
+    reset_modal:
+      question: Вы хотите сбросить Mue?
+      information: Это приведет к удалению всех данных. Если вы хотите сохранить свои
+        данные и предпочтения, сначала экспортируйте их.
+      cancel: Отменить
+    customisation: Кастомизация
+    custom_css: Пользовательский CSS
+    custom_css_subtitle: Настройте стиль Mue под себя с помощью каскадных таблиц стилей (CSS).
+    custom_js: Пользовательский JS
+    tab_name_subtitle: Измените название вкладки, которая появляется в вашем браузере
+    timezone:
+      title: Часовой пояс
+      subtitle: Выберите часовой пояс из списка вместо автоматического по умолчанию с
+        вашего компьютера
+      automatic: Автоматически
+    experimental_warning: Обратите внимание, что команда Mue не может оказать
+      поддержку, если у вас включен экспериментальный режим. Пожалуйста, сначала
+      отключите его и посмотрите, сохранится ли проблема, прежде чем обращаться
+      в службу поддержки.
+    preview_data_disabled: {}
+  stats:
+    sections:
+      tabs_opened: Открытые вкладки
+      backgrounds_favourited: Избранные фоны
+      backgrounds_downloaded: Загруженные фоны
+      quotes_favourited: Избранные цитаты
+      quicklinks_added: Добавлены быстрые ссылки
+      settings_changed: Изменены настройки
+      addons_installed: Установленные аддоны
+    usage: Статистика использования
+    achievements: Достижения
+    unlocked: "{count} разблокировано"
+    clear_modal: {}
+  experimental:
+    title: Экспериментальные настройки
+    warning: Данные настройки не были полностью протестированы/реализованы и могут
+      работать некорректно!
+  language:
+    title: Язык
+    quote: Язык цитат
+  changelog:
+    title: Журнал изменений
+  about:
+    title: О программе
+    version:
+      checking_update: Проверка обновлений
+      update_available: Обновление доступно
+      no_update: Нет доступных обновлений
+      offline_mode: Невозможно проверить наличие обновления в автономном режиме
+      error:
+        title: Не удалось получить информацию об обновлении
+        description: Обнаружена ошибка
+    support_subtitle: Поскольку Mue полностью бесплатен, мы полагаемся на
+      пожертвования для покрытия счетов за сервер и финансирования развития
+    support_donate: Пожертвовать
+    form_button: Форма
+    resources_used:
+      title: Используемые ресурсы
+      bg_images: Фоновые изображения в оффлайне
+    contributors: Участники
+    supporters: Поддержка
+    no_supporters: В настоящее время нет поддержки Mue
+    photographers: Фотографы
+buttons:
+  reset: Сбросить
+  import: Импорт
+  export: Экспорт

@@ -1,0 +1,98 @@
+tabname: Nueva pestaña
+widgets:
+  greeting:
+    morning: Buenos días
+    afternoon: Buenas tardes
+    evening: Buenas noches
+    christmas: Feliz Navidad
+    newyear: Feliz año nuevo
+    halloween: Feliz Halloween
+    birthday: Feliz cumpleaños
+  background:
+    credit: Foto por
+    unsplash: en Unsplash
+    information: Información
+    download: Descargar
+    downloads: Descargas
+    views: Vistas
+    likes: Me gustas
+    location: Ubicación
+    camera: Cámara
+    resolution: Resolución
+    source: Fuente
+    category: Categoría
+    exclude: No mostrar de nuevo
+    exclude_confirm: >-
+      ¿Estás seguro de que no quieres volver a ver esta imagen?
+
+      Nota: si no te gustan las imágenes de "{category}", puedes anular la
+      selección de la categoría en la configuración de la fuente de fondo.
+    confirm: Confirmar
+  search: Buscar
+  quicklinks:
+    new: Nuevo enlace
+    edit: Modificar el enlace
+    name: Nombre
+    icon: Icono (opcional)
+    add: Añadir
+    name_error: Debe indicar el nombre
+    url_error: Debe indicar la URL
+  date:
+    week: Semana
+  weather:
+    not_found: No encontrado
+    meters: "{amount} metros"
+    extra_information: Información adicional
+    feels_like: Parece que {amount}
+  quote:
+    link_tooltip: Abrir en la Wikipedia
+    share: Compartir
+    copy: Copiar
+    favourite: Favorito
+    unfavourite: No favorito
+  navbar:
+    tooltips:
+      refresh: Recargar
+    notes:
+      title: Notas
+      placeholder: Escribe aquí
+    todo:
+      title: Tareas
+      add: Añadir
+      no_todos: Sin tareas
+    apps: {}
+modals:
+  main:
+    title: Opciones
+    loading: Cargando...
+    file_upload_error: El archivo pesa más de 2MB
+    navbar:
+      settings: Ajustes
+      addons: Addons
+      marketplace: Tienda
+    error_boundary:
+      message: No se ha podido cargar este componente de Mue
+      report_error: Enviar informe de error
+      sent: ¡Enviado!
+      refresh: Recargar
+  update:
+    title: Actualizar
+    offline:
+      title: Sin conexión
+      description: No se pueden obtener actualizaciones en modo sin conexión
+    error:
+      description: No se pudo conectar con el servidor
+  share:
+    copy_link: Copiar enlace
+    email: Correo electrónico
+toasts:
+  quote: Cita copiada
+  notes: Notas copiadas
+  reset: Restablecido correctamente
+  installed: Instalado correctamente
+  uninstalled: Desinstalado correctamente
+  updated: Actualizado correctamente
+  error: Algo salió mal
+  imported: Importado correctamente
+  no_storage: No hay espacio suficiente
+  link_copied: Enlace copiado

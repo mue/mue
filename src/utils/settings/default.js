@@ -1,4 +1,4 @@
-import languages from 'i18n/languages.json';
+import { languages } from 'lib/i18n';
 import variables from 'config/variables';
 
 /**
@@ -9,7 +9,7 @@ export function setDefaultSettings(reset) {
   localStorage.clear();
 
   // Languages
-  const locale_ids = languages.map(({ value }) => value);
+  const locale_ids = languages;
   const browserLanguage = (navigator.languages && navigator.languages.find((lang) => locale_ids.includes(lang))) || navigator.language;
 
   if (locale_ids.includes(browserLanguage)) {

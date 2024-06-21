@@ -1,0 +1,351 @@
+enabled: Etkinleştir
+open_knowledgebase: Bilgilendirme Sayfasını Aç.
+additional_settings: Ek Ayarlar
+reminder:
+  title: UYARI
+  message: Tüm değişikliklerin gerçekleşmesi için sayfanın yenilenmesi gerekir.
+sections:
+  header:
+    more_info: Daha fazla bilgi
+    report_issue: Hata Bildir
+    enabled: Bu widget'ınızın gösterilip gösterilmeyeceğini seçin.
+    size: Widget'ınızın büyüklüğünü kontrol etmek için kaydırın.
+  time:
+    title: Saat
+    type: Tip
+    type_subtitle: Saat formatını dijital olarak, analog olarak veya günün
+      tamamlanma yüzdesi olarak göstermeyi seçin.
+    digital:
+      title: Dijital
+      subtitle: Dijital saatin görünümünü değiştirin.
+      seconds: Saniye gösterilsin.
+      twentyfourhour: 24 Saat
+      twelvehour: 12 Saat
+      zero: Sıfır eklensin.
+    analogue:
+      title: Analog
+      subtitle: Analog saatin nasıl görüntüleneceğini belirleyin.
+      second_hand: Saniye ibresi
+      minute_hand: Yelkovan (dakika) ibresi
+      hour_hand: Akrep (saat) ibresi
+      hour_marks: Saat çizgileri
+      minute_marks: Dakika çizgileri
+      round_clock: Yuvarlanmış arka plan
+    percentage_complete: Tamamlanma Yüzdesi
+    vertical_clock:
+      title: Dikey Saat
+      change_hour_colour: Saat Metni Rengini Değiştirin
+      change_minute_colour: Dakika Metni Rengini Değiştirin
+  date:
+    title: Gün
+    week_number: Hafta Sayısı
+    day_of_week: Haftanın Günü
+    datenth: Gün Vurgusu
+    type:
+      short: Kısa
+      long: Uzun
+      subtitle: Tarihin uzun veya kısa olmak üzere hangi biçimde görüntüleneceğini seçin.
+    type_settings: Seçilen tarih türü için ekran ayarları ve biçimi belirten
+      özellikleri belirleyin.
+    short_date: Kısa Tarih
+    short_format: Kısa biçim
+    long_format: Uzun biçim
+    short_separator:
+      title: Kısa Tarih Ayracı
+      dots: Nokta
+      dash: Kısa çizgi
+      gaps: Boşluk
+      slashes: Eğik çizgi
+  quote:
+    title: Alıntı
+    additional: Alıntı widget'ının stilini özelleştirmek için diğer ayarlar.
+    author_link: Yazara dair bilgilendirme bağlantısı göster.
+    custom: Özel Alıntı
+    custom_subtitle: Kendi özel alıntınızı belirleyin, ekleyin.
+    no_quotes: Alıntı yok!
+    author: Yazar
+    custom_buttons: Butonlar
+    custom_author: Özel yazar
+    author_img: Yazar resmini göster.
+    add: Alıntı Ekle
+    source_subtitle: Alıntıyı nereden alacağınızı seçin.
+    buttons:
+      title: Butonlar
+      subtitle: Alıntı kısmı için hangi butonların gösterileceğini seçin.
+      copy: Kopyala
+      tweet: Tweet'le
+      favourite: Favorilere Ekle
+  greeting:
+    title: Karşılama Ekranı
+    events: Olaylar
+    default: Karşılama mesajları görünsün.
+    name: İsminiz
+    birthday: Doğum Günü
+    birthday_subtitle: Doğum günüm olduğunda bir 'Mutlu Yıllar' mesajı göster.
+    birthday_age: Doğum günümde yaş bilgisi gözüksün.
+    birthday_date: Doğum günü tarihim
+    additional: Karşılama ekranı için ek ayarlarınızı belirleyin.
+  background:
+    title: Arka Plan
+    transition: Geçiş sırasında solma efekti uygula.
+    photo_information: Fotoğraf bilgilerini göster.
+    show_map: Varsa fotoğraf bilgilerinde konum bilgisini göster.
+    categories: Kategoriler
+    buttons:
+      title: Butonlar
+      view: Arka Planı Görüntüle
+      favourite: Favorilere Ekle
+      download: İndir
+    effects:
+      title: Görsel Efektler
+      subtitle: Arka plan görseli için efektleri düzenleyin.
+      blur: Bulanıklığı ayarla
+      brightness: Parlaklığı ayarla
+      filters:
+        title: Arka plan filtresi
+        amount: Filtre miktarı
+        grayscale: Gri tonlama
+        sepia: Sepya
+        invert: Ters çevir
+        saturate: Doygunluk
+        contrast: Kontrast
+    type:
+      title: Tip
+      custom_image: Özel resim
+      custom_colour: Özel renk/gradyan
+      random_colour: Özel renk
+      random_gradient: Özel gradyan
+    unsplash: {}
+    source:
+      title: Kaynak
+      subtitle: Arka plan resimlerinin nereden alınacağını seçin.
+      api: Arka plan API
+      custom_background: Özel arka plan resmi
+      custom_colour: Özel Arka Plan Rengi
+      upload: Yükle
+      add_colour: Renk Ekle
+      add_background: Arka Plan Ekle
+      drop_to_upload: Yüklemek için bırakın!
+      formats: "Kullanılabilir biçimler: {list}"
+      select: Veya Seç
+      add_url: URL Ekle
+      disabled: Kullanılamaz
+      loop_video: Tekrarlayan video
+      mute_video: Videonun sesini kapat.
+      quality:
+        title: Kalite
+        original: Orjinal
+        high: Yüksek Kalite
+        normal: Normal Kalite
+        datasaver: Veri Tasarrufu
+      custom_title: Özel Arka Plan
+      custom_description: Bilgisayarınızdan görseli seçin.
+      remove: Resmi Kaldır
+    display: Görüntüleme
+    display_subtitle: Arka plan ve fotoğraf bilgilerinin nasıl yüklendiğini değiştirin.
+    api: API Ayarları
+    api_subtitle: Harici bir hizmetten (API) aracılığıyla görüntü alma seçeneklerini
+      belirleyin.
+  search:
+    title: Arama
+    additional: Arama widget'ı ekranı ve işlevselliği için ek seçenekleri belirleyin.
+    search_engine: Arama Motoru
+    search_engine_subtitle: Arama çubuğunda kullanmak için arama motorunu seçin.
+    custom: Özel URL
+    autocomplete: Otomatik Tamamlama
+    autocomplete_provider: Otomatik Tamamlama Sağlayıcısı
+    autocomplete_provider_subtitle: Otomatik tamamlama açılır sonuçları için
+      kullanılacak arama motorunu belirleyin.
+    voice_search: Sesli Arama
+    dropdown: Arama Motorları Açılır Menüsü
+    focus: Açık Sekmeye Odaklan
+  weather:
+    title: Hava Durumu
+    location: Konum
+    auto: Otomatik
+    widget_type: Hava Tipi Formatı
+    temp_format:
+      title: Sıcaklık Formatı
+      fahrenheit: Fahrenhayt
+    extra_info:
+      title: Ek Bilgi
+      show_location: Konumu Göster
+      show_description: Açıklamayı Göster
+      weather_description: Hava açıklaması
+      cloudiness: Bulutluluk
+      humidity: Nem
+      visibility: Görüş Mesafesi
+      wind_speed: Rüzgar Hızı
+      wind_direction: Rüzgar Yönü
+      min_temp: Minimum Sıcaklık
+      max_temp: Maksimum Sıcaklık
+      atmospheric_pressure: Atmosferik Basınç
+    options:
+      basic: Basit
+      standard: Standart
+      expanded: Genişletilmiş
+      custom: Kişiselleştirlmiş
+    custom_settings: Kişisel Ayarlar
+  quicklinks:
+    title: Hızlı Bağlantılar
+    additional: Hızlı bağlantılar ekranı ve işlevleri için ek ayarlarınızı belirleyin.
+    open_new: Yeni Sekmede Aç
+    tooltip: İpucu
+    text_only: Yalnızca Metni Göster
+    add_link: Link Ekle
+    no_quicklinks: Hızlı bağlantı yok.
+    edit: Düzenleme
+    style: Stil
+    options:
+      icon: İkon
+      text_only: Sadece Metin
+    styling: Hızlı Bağlantı Görünümü
+    styling_description: Bağlantıların görünümünü özelleştirin.
+  message:
+    title: Mesaj
+    add: Mesaj Ekle
+    messages: Mesajlar
+    text: Metin
+    no_messages: Mesaj yok
+    add_some: Devam et ve biraz ekle.
+    content: Mesaj İçeriği
+  appearance:
+    title: Görünüm
+    style:
+      title: Widget Stili
+      description: Eski (7.0 öncesi kullanıcılar için etkin) ve şık modern stilimiz
+        olmak üzere iki stil arasından seçim yapın.
+      legacy: Eski
+      new: Yeni
+    theme:
+      title: Tema
+      description: Mue araçlarınızın(widget) ve modellerinin temasını değiştirin.
+      auto: Otomatik
+      light: Açık
+      dark: Koyu
+    navbar:
+      title: Gezinme Çubuğu
+      notes: Notlar
+      refresh: Yenile Butonu
+      refresh_subtitle: Yenile düğmesine tıkladığınızda yenilenecek öğeleri seçin.
+      hover: Yalnızca fareyle üzerine gelindiğinde göster.
+      additional: Gezinme çubuğu stilini ve hangi butonları görüntülemek istediğinizi
+        değiştirin.
+      refresh_options:
+        none: Hiçbiri
+        page: Sayfa
+    font:
+      title: Yazı tipi
+      description: Mue'da kullanılan yazı tipini değiştirin.
+      custom: Özel yazı tipi
+      google: Google Fonts'tan içeri aktar.
+      weight:
+        title: Yazı tipi genişliği
+        thin: Ekstra İnce
+        extra_light: İnce
+        light: Hafif İnce
+        medium: Orta
+        semi_bold: Hafif Kalın
+        bold: Kalın
+        extra_bold: Ekstra Kalın
+      style:
+        title: Yazı stili
+        italic: İtalik
+        oblique: Eğik
+    accessibility:
+      title: Erişebilirlik
+      description: Mue Erişebilirlik ayarlarını değiştirin
+      animations: Animasyonlar
+      text_shadow:
+        title: Widget metin gölgesi
+        new: Yeni
+        old: Eski
+        none: Hiçbiri
+      widget_zoom: Widget Ölçeği
+      toast_duration: Bildirim süresi
+      milliseconds: Milisaniye
+  order:
+    title: Widget Sıralaması
+  advanced:
+    title: Gelişmiş
+    offline_mode: Çevrimdışı Mod
+    offline_subtitle: Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm
+      istekler devre dışı bırakılır.
+    data: Veri
+    data_subtitle: Mue Tab ayarlarınızı bilgisayarınıza kaydetmenize, mevcut
+      ayarlarınızı başka bir bilgisayara aktarmanıza veya ayarlarınızı
+      varsayılan değerlerine sıfırlamınıza olanak sağlar. İstediğiniz işlemi
+      seçin.
+    reset_modal:
+      title: UYARI
+      question: Mue'yu sıfırlamak istiyor musunuz?
+      information: Bu, tüm verilerinizi silecektir. Verilerinizi ve tercihlerinizi
+        saklamak istiyorsanız, lütfen önce bunları dışa aktarın.
+      cancel: İptal
+    customisation: Özelleştirme
+    custom_css: Özel CSS
+    custom_css_subtitle: Mue'nin stilini 'Cascading Style Sheets (CSS)' ile özelleştirin.
+    custom_js: Özel JS
+    tab_name: Sekme Adı
+    tab_name_subtitle: Tarayıcınızda görünen sekmenin adını değiştirin.
+    timezone:
+      title: Zaman Dilimi
+      subtitle: Bilgisayarınızın otomatik varsayılanından ziyade listeden bir zaman
+        dilimi seçin.
+      automatic: Otomatik
+    experimental_warning: Deneysel modunuz açıksa Mue ekibinin destek
+      sağlayamadığını lütfen unutmayın. Lütfen önce devre dışı bırakın ve
+      desteğe başvurmadan önce sorunun devam edip etmediğini görün.
+    preview_data_disabled: {}
+  stats:
+    title: İstatistikler
+    sections:
+      tabs_opened: Sekme açıldı.
+      backgrounds_favourited: Arka plan favorilere eklendi.
+      backgrounds_downloaded: Arka plan indirildi.
+      quotes_favourited: Alıntı favorilere eklendi.
+      quicklinks_added: Hızlı bağlantılar eklendi.
+      settings_changed: Ayarlar değişti.
+      addons_installed: Eklentiler yüklendi.
+    usage: Kullanım İstatistikleri
+    achievements: Başarılar
+    unlocked: "{count} Kilidi Açıldı"
+    clear_modal: {}
+  experimental:
+    title: Deneysel Özellikler
+    warning: Bu ayarlar tam olarak test edilmedi ve düzgün çalışmayabilir!
+    developer: Geliştirici
+  language:
+    title: Dil
+    quote: Alıntı dili
+  changelog:
+    title: Güncelleme Notları
+    by: "Yayınlayan: {author}"
+  about:
+    title: Hakkında
+    version:
+      title: Versiyon
+      checking_update: Güncellemeleri Kontrol Et
+      update_available: Güncelleme Mevcut!
+      no_update: En Güncel Sürümdesiniz
+      offline_mode: Çevrimdışı modda güncelleme kontrol edilemiyor.
+      error:
+        title: Güncelleme bilgisi alınamadı.
+        description: Bir hata oluştu.
+    contact_us: Bize Ulaşın!
+    support_mue: Mue Destek
+    support_subtitle: Mue tamamen ücretsiz olduğu için, sunucu faturalarını
+      karşılamak ve geliştirme masraflarını finanse etmek için bağışları
+      kullanıyoruz.
+    support_donate: Bağış Yap
+    resources_used:
+      title: Kullanılan Kaynaklar
+      bg_images: Çevrimdışı Arka Plan Resim İçerikleri
+    contributors: Katkıda Bulunanlar
+    supporters: Destekleyenler
+    no_supporters: Şu anda Mue destekçisi yok!
+    photographers: Fotoğrafçılar
+buttons:
+  reset: Yenile
+  import: İçeri Aktar
+  export: Dışarı Aktar

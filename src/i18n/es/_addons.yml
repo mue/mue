@@ -1,0 +1,29 @@
+added: Añadidos
+check_updates: Comprobar actualizaciones
+no_updates: No hay actualizaciones disponibles
+updates_available: Actualizaciones disponibles {amount}
+empty:
+  title: Vacío
+  description: Dirígete a la tienda para agregar algunos.
+sideload:
+  title: Cargar localmente
+  description: Instala un complemento Mue que no esté en la tienda de su ordenador
+  failed: Fallo en la carga lateral del complemento
+  errors:
+    no_name: No se ha indicado el nombre
+    no_author: No se ha indicado el autor
+    no_type: No se ha indicado el tipo
+    invalid_photos: Objeto de fotos inválido
+    invalid_quotes: Objeto de citas inválido
+sort:
+  title: Ordenar
+  newest: Instalado (Nuevos)
+  oldest: Instalado (Antiguos)
+  a_z: Alfabético (A-Z)
+  z_a: Alfabético (Z-A)
+create:
+  title: Crear
+  moved_title: ¡Crear complemento se ha movido!
+  moved_description: Tras la actualización 7.1, la creación de complementos se ha
+    trasladado a la interfaz web.
+  moved_button: Comenzar

@@ -1,0 +1,38 @@
+by: Door {author}
+all: Alles
+learn_more: Meer Informatie
+photo_packs: Fotoverzamelingen
+quote_packs: Citaatverzamelingen
+preset_settings: Voorinstellingen
+collection: Collectie
+explore_collection: Verken Collectie
+add_all: Voeg alles toe aan Mue
+collections: Collecties
+cant_find: Kan je niet vinden waar je naar opzoek was?
+knowledgebase_one: Bezoek de
+knowledgebase_two: kennisbank
+knowledgebase_three: Om je eigen te creëren.
+product:
+  overview: Overzicht
+  information: Informatie
+  last_updated: Laatst geüpdatet
+  description: Beschrijving
+  show_more: Toon Meer
+  show_less: Toon Minder
+  show_all: Toon Alles
+  showing: Tonen
+  no_images: Geen. Foto's
+  no_quotes: Geen. Citaten
+  version: Versie
+  part_of: Deel van
+  explore: Verken
+  buttons:
+    addtomue: Toevoegen aan Mue
+    remove: Verwijderen
+    back: Terug
+    report: Rapporteer
+  setting: Instelling
+  value: Waarde
+offline:
+  title: Het lijkt er op dat je niet verbonden bent het internet
+  description: Maak verbinding met het internet

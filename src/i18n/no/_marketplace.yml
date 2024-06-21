@@ -1,0 +1,14 @@
+photo_packs: Bilde pakker
+quote_packs: Sitat pakker
+preset_settings: Preset instillinger
+product:
+  overview: Oversikt
+  information: Informasjon
+  last_updated: Sist oppdatert
+  version: Versjon
+  buttons:
+    addtomue: Legg Til Mue
+    remove: Fjern
+offline:
+  title: Ser ut som at du er offiline
+  description: Vær så snill, koble til internettet

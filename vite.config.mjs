@@ -6,7 +6,7 @@ import fs from 'fs';
 import ADMZip from 'adm-zip';
 import * as pkg from './package.json';
 import progress from 'vite-plugin-progress';
-import { I18nPlugin } from '@eartharoid/vite-plugin-i18n';
+import I18nPlugin from '@eartharoid/vite-plugin-i18n';
 import YAML from 'yaml';
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -105,6 +105,7 @@ export default defineConfig(({ command, mode }) => {
       inspect(),
       react(),
       I18nPlugin({
+        default: 'en-GB',
         id_regex: /((?<locale>[a-z0-9-_]+)\/)((_(?<namespace>[a-z0-9-_]+))|[a-z0-9-_]+)\.[a-z]+/i,
         include: './src/i18n/**/*.yml',
         parser: YAML.parse,

@@ -1,0 +1,13 @@
+photo_packs: Packs Photos
+quote_packs: Packs Citations
+preset_settings: Paramètres prédéfinis
+no_items: Aucun article dans cette catégorie
+product:
+  overview: Aperçu
+  last_updated: Dernière mise à jour
+  buttons:
+    addtomue: Ajouter à Mue
+    remove: Enlever
+offline:
+  title: Hors ligne
+  description: Veuillez vous connecter à Internet.

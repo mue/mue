@@ -1,0 +1,67 @@
+tip: Dica rápida
+sections:
+  intro:
+    title: Bem-vindo ao Mue Tab
+    description: Obrigado por instalar o Mue, esperamos que aproveite o seu tempo
+      com nossa extensão.
+    notices:
+      discord_title: Junte-se ao nosso Discord
+      discord_description: Fale com a comunidade Mue e programadores
+      discord_join: Participar
+      github_title: Contribua no GitHub
+      github_description: Relatar bugs, adicionar recursos ou doar
+      github_open: Abrir
+  language:
+    title: Escolha o seu idioma
+    description: Mue pode ser exibido nos idiomas listados abaixo. Também pode
+      adicionar novas traduções em nosso
+  theme:
+    title: Selecione um tema
+    description: O Mue está disponível nos temas claro e escuro, ou pode ser
+      definido automaticamente dependendo do tema do sistema.
+    tip: Usar as configurações automáticas usará o tema no seu computador. Essa
+      configuração afetará os modais e alguns dos widgets exibidos no ecrã, como
+      previsão do tempo e notas.
+  style:
+    title: Escolha um estilo
+    description: Atualmente, o Mue oferece a escolha entre o estilo legado e o
+      estilo moderno recém-lançado.
+    legacy: Legado
+    modern: Moderno
+  settings:
+    title: Configurações de Importação
+    description: Instalando o Mue num novo aparelho? Sinta-se à vontade para
+      importar as suas configurações antigas!
+    tip: Pode exportar as suas configurações antigas navegando até a guia Avançado
+      na sua configuração antiga do Mue. Depois deve clicar no botão de
+      exportação que descarregará o ficheiro JSON. Pode enviar este ficheiro
+      aqui para transportar as suas configurações e preferências da sua
+      instalação anterior do Mue.
+  privacy:
+    title: Opções de privacidade
+    description: Ative as configurações para proteger ainda mais a sua privacidade
+      com o Mue.
+    offline_mode_description: A ativação do modo offline desativará todas as
+      solicitações para qualquer serviço. Isso resultará na desativação de
+      planos de fundo online, citações online, marketplace, previsão do tempo,
+      ligações rápidas, log de alterações e algumas informações sobre as guias.
+    links:
+      title: Ligações
+      privacy_policy: Política de Privacidade
+      source_code: Código fonte
+  final:
+    title: Último passo
+    description: A sua experiência sobre a Mue Tab está prestes a começar.
+    changes: Mudanças
+    changes_description: Para alterar as configurações mais tarde, clique no ícone
+      de engrenagem no canto superior direito da sua guia.
+    imported: Configurações {amount} importadas
+buttons:
+  next: Próximo
+  preview: Pré-visualizar
+  previous: Anterior
+  close: Fechar
+preview:
+  description: Está atualmente no modo de visualização. As configurações serão
+    redefinidas ao fechar esta guia.
+  continue: Continuar configuração

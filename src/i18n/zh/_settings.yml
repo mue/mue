@@ -1,0 +1,255 @@
+enabled: 已启用
+reminder:
+  title: 注意
+  message: 刷新页面后设置才会生效
+sections:
+  header: {}
+  time:
+    title: 时间
+    format: 格式
+    type: 类型
+    digital:
+      title: 数字时钟
+      seconds: 显示秒
+      twentyfourhour: 使用 24 小时制
+      twelvehour: 使用 12 小时制
+      zero: 加零补足两位数字
+    analogue:
+      title: 模拟时钟
+      second_hand: 秒针
+      minute_hand: 分针
+      hour_hand: 时针
+      hour_marks: 时钟刻度
+      minute_marks: 分钟刻度
+    percentage_complete: 今天过去了%几
+    vertical_clock: {}
+  date:
+    title: 显示日期
+    week_number: 第n周
+    day_of_week: 星期n
+    datenth: 添加th后缀
+    type:
+      short: 显示简写
+      long: 显示全部
+    short_date: 简写日期
+    short_format: 简写格式
+    short_separator:
+      title: 简写分隔
+      dots: 点
+      dash: 横杠
+      gaps: 空格
+      slashes: 斜杠
+  quote:
+    title: 名言警句
+    author_link: 出处链接
+    custom: 自定义名言
+    custom_author: 自定义出处
+    add: 继续添加名言
+    buttons:
+      title: 下方按钮
+      copy: 显示复制按钮
+      tweet: 显示发推按钮
+      favourite: 显示收藏按钮
+  greeting:
+    title: 问候
+    events: 节日问候
+    default: 常规问候
+    name: 您在问候中的名字
+    birthday: 生日
+    birthday_age: 显示年龄
+    birthday_date: 生日日期
+  background:
+    title: 背景
+    transition: 过渡动画
+    photo_information: 显示图片信息
+    show_map: 在图片信息内显示位置信息 (如果可用)
+    buttons:
+      title: 显示顶部按钮
+      view: 仅显示背景
+      favourite: 收藏
+      download: 下载
+    effects:
+      title: 背景特效
+      blur: 模糊程度
+      brightness: 更改亮度
+      filters:
+        title: 背景滤镜
+        amount: 数值
+        grayscale: 灰度
+        sepia: 相片
+        invert: 反色
+        saturate: 饱和度
+        contrast: 对比度
+    type:
+      title: 来源
+      api: 网络图像库API
+      custom_image: 自定义图像/视频
+      custom_colour: 自定义纯色背景
+      random_colour: 随机纯色背景
+      random_gradient: 随机渐变色背景
+    unsplash: {}
+    source:
+      title: 来源
+      api: 背景来源
+      custom_background: 自定义背景 (支持图片/视频)
+      custom_colour: 自定义背景颜色
+      upload: 选择
+      add_colour: 添加颜色
+      add_background: 继续添加背景
+      disabled: 已禁用
+      loop_video: 循环播放
+      mute_video: 静音
+      quality:
+        title: 画质
+        original: 原画
+        high: 高画质
+        normal: 普通画质
+        datasaver: 省流模式
+  search:
+    title: 搜索栏
+    search_engine: 搜索引擎
+    custom: 自定义搜索链接
+    autocomplete: 搜索联想
+    autocomplete_provider: 联想功能提供引擎
+    voice_search: 语音搜索
+    dropdown: 搜索框左侧显示搜索引擎选择框
+  weather:
+    title: 天气
+    location: 位置
+    auto: 自动定位
+    temp_format:
+      title: 温度单位
+      celsius: 摄氏度
+      fahrenheit: 华氏度
+      kelvin: 开尔文
+    extra_info:
+      title: 更多信息
+      show_location: 显示位置
+      show_description: 显示描述
+      cloudiness: 云量
+      humidity: 湿度
+      visibility: 能见度
+      wind_speed: 风速
+      wind_direction: 风向
+      min_temp: 最低温度
+      max_temp: 最高温度
+      atmospheric_pressure: 大气压
+    options: {}
+  quicklinks:
+    title: 快捷方式
+    open_new: 在新标签页打开
+    tooltip: 光标停留时下方显示标题
+    text_only: 仅显示标题
+    options: {}
+  message:
+    title: 消息
+    add: 继续添加消息
+    text: 文本
+  appearance:
+    title: 外观
+    style: {}
+    theme:
+      title: 主题
+      auto: 自动选择
+      light: 日间主题
+      dark: 夜间主题
+    navbar:
+      title: 右上方功能键
+      notes: 便签
+      refresh: 刷新键
+      refresh_options:
+        none: 不显示
+        page: 页面
+    font:
+      title: 字体
+      custom: 自定义字体
+      google: 从 Google Fonts 导入
+      weight:
+        title: 字体粗细
+        thin: 极细
+        extra_light: 细字
+        light: 较细
+        normal: 一般
+        medium: 中等
+        semi_bold: 较粗
+        bold: 粗体
+        extra_bold: 加粗
+      style:
+        title: 字体样式
+        normal: 常规
+        italic: 意大利斜体
+        oblique: 伪斜体
+    accessibility:
+      title: 无障碍设定
+      animations: 动画效果
+      text_shadow: {}
+      widget_zoom: 小部件缩放
+      toast_duration: 窗口弹出时间长度
+      milliseconds: 毫秒
+  order:
+    title: 小部件顺序
+  advanced:
+    title: 高级
+    offline_mode: 启用离线模式
+    data: 数据和设置
+    data_subtitle: Choose whether to export your Mue settings to your computer,
+      import an existing settings file, or reset your settings to their default
+      values
+    reset_modal:
+      title: 警告
+      question: 您想要重置 Mue 的所有设置吗？
+      information: 本操作将删除所有数据。若您想保留数据及设置，请先将其导出。
+      cancel: 取消
+    customisation: 自定义
+    custom_css: 自定义 CSS
+    custom_js: 自定义 JS
+    tab_name: 新标签页名称
+    timezone:
+      title: 时区
+      automatic: 自动
+    experimental_warning: 请注意 Mue 团队无法提供实验性功能的支持。若您遇到问题，请先关闭实验性功能，再寻求帮助。
+    preview_data_disabled: {}
+  stats:
+    title: 统计
+    sections:
+      tabs_opened: 页面打开次数
+      backgrounds_favourited: 收藏的背景
+      backgrounds_downloaded: 下载过背景
+      quotes_favourited: 收藏的名言警句
+      quicklinks_added: 添加的快捷方式
+      settings_changed: 更改的设置
+      addons_installed: 添加的插件
+    usage: 启用统计
+    clear_modal: {}
+  experimental:
+    title: 实验性功能
+    warning: 以下设置仍未完成编写或测试，可能无法正常运作！
+    developer: 开发者
+  language:
+    title: 语言
+    quote: 名言语言
+  changelog:
+    title: 更新日志
+  about:
+    title: 关于
+    version:
+      title: 版本
+      checking_update: 正在检查更新……
+      update_available: 可下载更新
+      no_update: 无可下载更新
+      offline_mode: 离线模式下不能检查更新
+      error:
+        title: 获取更新信息失败
+        description: 错误
+    contact_us: 联系我们
+    support_mue: 支持 Mue
+    resources_used:
+      title: 使用资源
+      bg_images: 离线背景
+    contributors: 贡献者
+    supporters: 支持者
+    photographers: 背景摄影者
+buttons:
+  reset: 重置
+  import: 导入
+  export: 导出

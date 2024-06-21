@@ -1,0 +1,15 @@
+added: Toegevoegd
+empty:
+  title: Het is hier erg leeg
+  description: Ga naar de marktplaats om een paar extensies toe te voegen
+sideload:
+  title: Sideloaden
+  description: Installeer een Mue extensie die niet op de marktplaats staat vanaf
+    je computer
+  errors: {}
+sort: {}
+create:
+  moved_title: Creëer extensies is verplaatst!
+  moved_description: Na de 7.1-update is het maken van extensies nu verplaatst
+    naar de webinterface
+  moved_button: Begin

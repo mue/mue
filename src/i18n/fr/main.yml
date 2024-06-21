@@ -1,0 +1,62 @@
+tabname: Nouvel Onglet
+widgets:
+  greeting:
+    morning: Bonjour
+    afternoon: Bon après-midi
+    evening: Bonsoir
+    christmas: Joyeux Noël
+    newyear: Bonne année
+    halloween: Joyeux Halloween
+    birthday: Bon anniversaire
+  background:
+    credit: Photo par
+    unsplash: sur Unsplash
+    download: Téléchargement
+    downloads: Téléchargements
+  search: Rechercher
+  quicklinks:
+    new: Nouveau lien
+    name: Nom
+    add: Ajouter
+    name_error: Doit fournir le nom
+    url_error: Doit fournir une URL
+  date:
+    week: Semaine
+  weather:
+    not_found: Pas trouvé
+    meters: "{amount} mètres"
+  quote: {}
+  navbar:
+    tooltips: {}
+    notes:
+      title: Remarques
+      placeholder: Écrivez ici
+    todo: {}
+    apps: {}
+modals:
+  main:
+    loading: Chargement...
+    navbar:
+      settings: Paramètres
+      addons: Mes Options
+      marketplace: Marché
+    error_boundary:
+      title: Erreur
+      refresh: Rafraîchir
+  update:
+    title: Mettre à jour
+    offline:
+      title: Hors
+      description: Vous ne pouvez pas obtenir de mise à jour si vous êtes hors ligne
+    error:
+      title: Erreur
+      description: Impossible de se connecter au serveur
+  share: {}
+toasts:
+  quote: Citation copiée
+  notes: Remarques copiée
+  reset: Réinitialisé avec succès
+  installed: Installé avec succès
+  uninstalled: Enlevé avec succès
+  error: Quelque chose s'est mal passé
+  imported: Importé avec succès

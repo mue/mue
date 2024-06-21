@@ -1,0 +1,39 @@
+by: от {author}
+all: Все
+learn_more: Узнать больше
+photo_packs: Наборы фото
+quote_packs: Наборы цитат
+preset_settings: Пресеты настроек
+no_items: Нет элементов в этой категории
+collection: Коллекция
+explore_collection: Исследуйте коллекцию
+add_all: Добавить все в Mue
+collections: Коллекции
+cant_find: Не можете найти то, что ищете?
+knowledgebase_one: Посетить
+knowledgebase_two: база знаний
+knowledgebase_three: чтобы создать свой собственный.
+product:
+  overview: Обзор
+  information: Информация
+  last_updated: Последнее обновление
+  description: Описание
+  show_more: Показать больше
+  show_less: Показать меньше
+  show_all: Показать все
+  showing: Показаны
+  no_images: № Изображения
+  no_quotes: Цитаты
+  version: Версия
+  part_of: Часть
+  explore: Обзор
+  buttons:
+    addtomue: Добавить в Mue
+    remove: Удалить
+    back: Назад
+    report: Жалоба
+  setting: Параметр
+  value: Цена
+offline:
+  title: Похоже, что вы офлайн
+  description: Пожалуйста, подключитесь к интернету

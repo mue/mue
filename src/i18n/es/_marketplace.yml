@@ -1,0 +1,40 @@
+by: por {author}
+all: Todo
+learn_more: Más información
+photo_packs: Paquetes de fotos
+quote_packs: Paquetes de citas
+preset_settings: Ajustes preestablecidos
+no_items: No hay artículos en esta categoría
+collection: Colección
+explore_collection: Explorar la colección
+add_all: Añadir todo a Mue
+collections: Colecciones
+cant_find: ¿No encuentra lo que busca?
+knowledgebase_one: Visite la
+knowledgebase_two: Base de conocimiento
+knowledgebase_three: para crear la suya propia.
+product:
+  overview: Vista general
+  information: Información
+  last_updated: Última actualización
+  description: Descripción
+  show_more: Mostrar más
+  show_less: Mostrar menos
+  show_all: Mostrar todo
+  showing: Mostrando
+  no_images: Sin imágenes
+  no_quotes: Sin citas
+  version: Versión
+  part_of: Parte de
+  explore: Explorar
+  buttons:
+    addtomue: Añadir a Mue
+    remove: Desinstalar
+    update_addon: Actualizar complemento
+    back: Atrás
+    report: Informe
+  setting: Ajustes
+  value: Valor
+offline:
+  title: Parece que estás desconectado
+  description: Por favor conéctate a Internet

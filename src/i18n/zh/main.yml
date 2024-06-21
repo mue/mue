@@ -1,0 +1,69 @@
+tabname: 新标签页
+widgets:
+  greeting:
+    morning: 早上好
+    afternoon: 下午好
+    evening: 晚上好
+    christmas: 圣诞节快乐
+    newyear: 新年快乐
+    halloween: 万圣节快乐
+    birthday: 生日快乐
+  background:
+    credit: 图像作者：
+    unsplash: "@ Unsplash"
+    information: 信息
+    download: 下载
+    downloads: 下载
+  search: 搜索
+  quicklinks:
+    new: 新快捷方式
+    name: 名称
+    url: 链接
+    icon: 图标 (可选)
+    add: 添加
+    name_error: 请输入名称
+    url_error: 请输入链接
+  date:
+    week: 周
+  weather:
+    not_found: 未找到
+    meters: "{amount}米"
+  quote: {}
+  navbar:
+    tooltips:
+      refresh: 刷新
+    notes:
+      title: 便签
+      placeholder: 请键入内容
+    todo: {}
+    apps: {}
+modals:
+  main:
+    title: 选项
+    loading: 载入中...
+    file_upload_error: 大小超过了 2MB
+    navbar:
+      settings: 设置
+      addons: 我的插件
+      marketplace: 插件市场
+    error_boundary:
+      title: 错误
+      message: 无法载入该Mue组件
+      refresh: 刷新
+  update:
+    title: 更新日志
+    offline:
+      title: 离线模式已启用
+      description: 不能从官网获取更新日志
+    error:
+      title: 错误
+      description: 无法连接到服务器
+  share: {}
+toasts:
+  quote: 名言已复制
+  notes: 便签已复制
+  reset: 重置成功
+  installed: 安装成功
+  uninstalled: 卸载成功
+  error: 发生错误
+  imported: 导入成功

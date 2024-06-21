@@ -1,0 +1,83 @@
+tabname: নতুন ট্যাব খুলুন
+widgets:
+  greeting:
+    morning: শুভ সকাল
+    afternoon: শুভ অপরাহ্ণ
+    evening: শুভ সন্ধ্যা
+    christmas: শুভ বড়দিন
+    newyear: শুভ নব বর্ষ
+    halloween: শুভ হ্যালোইন
+    birthday: শুভ জন্মদিন
+  background:
+    credit: ছবি তুলেছেন
+    unsplash: Unsplash - এ আছে
+    information: তথ্য
+    download: ডাউনলোড করুন
+    downloads: ডাউনলোডগুলি
+    views: দর্শক
+    likes: পছন্দসমূহ
+    location: অবস্থান
+    camera: ক্যামেরা
+    resolution: রেজোলিউশন
+    source: উৎস
+    category: শ্রেণী
+    exclude: আবার দেখাবেন না
+    exclude_confirm: >-
+      আপনি কি নিশ্চিত যে আপনি এই ছবিটি আবার দেখতে চান না?
+
+      দ্রষ্টব্য: আপনি যদি "{category}" ছবিগুলি পছন্দ না করেন, তাহলে আপনি
+      ব্যাকগ্রাউন্ড সোর্স সেটিংসে বিভাগটি অনির্বাচন করতে পারেন।
+    confirm: নিশ্চিত করুন
+  search: অনুসন্ধান করুন
+  quicklinks:
+    new: নতুন লিঙ্ক
+    name: নাম
+    icon: আইকন (ঐচ্ছিক)
+    add: যোগ করুন
+    name_error: অবশ্যই নাম দিতে হবে
+    url_error: অবশ্যই URL দিতে হবে
+  date:
+    week: সপ্তাহ
+  weather:
+    not_found: পাওয়া যায়নি
+    meters: "{amount} মিটার"
+    extra_information: অতিরিক্ত তথ্য
+    feels_like: মনে হচ্ছে {amount}
+  quote:
+    link_tooltip: উইকিপিডিয়াতে খুলুন
+    share: শেয়ার করুন
+    copy: কপি করুন
+    favourite: প্রিয়
+    unfavourite: অপছন্দ
+  navbar:
+    tooltips:
+      refresh: রিফ্রেশ
+    notes:
+      title: মন্তব্য
+      placeholder: এখানে লিখুন
+    todo:
+      title: সব
+      pin: পিন
+      add: যোগ করুন
+      no_todos: সব নেই
+    apps: {}
+modals:
+  main:
+    title: অপশন
+    loading: লোড হচ্ছে..।
+    file_upload_error: ফাইল ২ মেগাবাইট এর বেশি
+    navbar:
+      settings: সেটিংস
+      addons: অ্যাড-অন
+      marketplace: মার্কেটপ্লেস
+    error_boundary:
+      title: ত্রুটি
+      message: Mue এর এই উপাদানটি লোড করতে ব্যর্থ হয়েছে
+      report_error: ত্রুটি প্রতিবেদন পাঠানো
+      sent: প্রেরিত !
+      refresh: রিফ্রেশ
+  update:
+    offline: {}
+    error: {}
+  share: {}
+toasts: {}

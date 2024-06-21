@@ -1,0 +1,24 @@
+added: Добавлен
+check_updates: Проверка обновлений
+no_updates: Обновления отсутствуют
+updates_available: Доступны обновления {amount}
+empty:
+  title: Здесь пусто
+  description: Зайдите в магазин, чтобы найти что-то интересное
+sideload:
+  title: Загрузить
+  description: Установить аддон Mue, не представленную на торговой площадке, со
+    своего компьютера
+  failed: Не удалось загрузить аддоны
+  errors:
+    no_name: Название не указано
+    no_author: Автор не указан
+    no_type: Тип не указан
+    invalid_photos: Недопустимый объект фотографии
+sort:
+  title: Сортировка
+create:
+  title: Создать
+  moved_title: Создание аддонов переместилось!
+  moved_description: После обновления 7.1, создание дополнений теперь переместилось в веб-UI
+  moved_button: Get Started

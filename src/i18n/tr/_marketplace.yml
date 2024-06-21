@@ -1,0 +1,39 @@
+all: Tümü
+learn_more: Daha Fazla Bilgi Edin
+photo_packs: Fotoğraf Paketleri
+quote_packs: Alıntı Paketleri
+preset_settings: Ön Ayar Paketleri
+no_items: Bu kategoride öğe yok
+collection: Koleksiyon
+explore_collection: Koleksiyonu Keşfedin
+add_all: Hepsini Ekle
+collections: Koleksiyonlar
+cant_find: Aradığınızı bulamıyor musunuz?
+knowledgebase_one: "Kendiniz oluşturmak için "
+knowledgebase_two: "bilgilendirme sayfamızı "
+knowledgebase_three: ziyaret edin.
+product:
+  overview: Genel Bakış
+  information: Bilgi
+  last_updated: Son Güncelleme
+  description: Açıklama
+  show_more: Daha Fazla Göster
+  show_less: Daha Az Göster
+  show_all: Hepsini Göster
+  showing: Gösteriliyor
+  no_images: Fotoğraf bulunamadı
+  no_quotes: Alıntı bulunamadı
+  version: Versiyon
+  part_of: Parçası
+  explore: Keşfet
+  buttons:
+    addtomue: Mue Tab'ıma Ekle
+    remove: Kaldır
+    update_addon: Eklentiyi Güncelle
+    back: Geri
+    report: Raporla
+  setting: Ayarlar
+  value: Değer
+offline:
+  title: Görünüşe bakılırsa çevrimdışısınız!
+  description: Lütfen internete bağlanın ve tekrar deneyin.

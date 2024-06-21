@@ -42,7 +42,7 @@ widgets:
     week: Week
   weather:
     not_found: Not Found
-    meters: '{amount} metres'
+    meters: "{amount} metres"
     extra_information: Extra Information
     feels_like: Feels like {amount}
   quote:
@@ -72,8 +72,8 @@ modals:
     file_upload_error: File is over 2MB
     navbar:
       settings: Settings
-      addons: Library
-      marketplace: Discover
+      addons: Add-ons
+      marketplace: Marketplace
     error_boundary:
       title: Error
       message: Failed to load this component of Mue

@@ -1,0 +1,98 @@
+tabname: Nova Guia
+widgets:
+  greeting:
+    morning: Bom Dia
+    afternoon: Boa Tarde
+    evening: Boa noite
+    christmas: Feliz Natal
+    newyear: Feliz Ano Novo
+    halloween: Feliz Dia das Bruxas
+    birthday: Feliz Aniversário
+  background:
+    credit: Foto por
+    unsplash: no Unsplash
+    information: Informação
+    download: Baixar
+    downloads: Baixados
+    views: Visualizações
+    likes: Curtidas
+    location: Localização
+    camera: Câmera
+    resolution: Resolução
+    source: Fonte
+    category: Categoria
+    exclude: Não mostrar novamente
+    exclude_confirm: >-
+      Tem certeza de que não deseja ver esta imagem novamente?
+
+      Nota: se você não gosta de imagens "{category}", pode desmarcar a
+      categoria nas configurações de origem do plano de fundo.
+    confirm: Confirmar
+  search: Pesquisar
+  quicklinks:
+    new: Novo link
+    name: Nome
+    icon: Ícone (opcional)
+    add: Adicionar
+    name_error: Deve fornecer o nome
+    url_error: Forneça uma URL
+  date:
+    week: Semana
+  weather:
+    not_found: Não encontrado
+    meters: "{amount} metros"
+    extra_information: Informação extra
+    feels_like: Parece {amount}
+  quote:
+    link_tooltip: Abrir na Wikipédia
+    share: Compartilhar
+    copy: Copiar
+    favourite: Favorito
+    unfavourite: Não favorito
+  navbar:
+    tooltips:
+      refresh: Atualizar
+    notes:
+      title: Notas
+      placeholder: Digite aqui
+    todo:
+      title: Tarefas
+      pin: Fixar
+      add: Adicionar
+      no_todos: Sem afazeres
+    apps: {}
+modals:
+  main:
+    title: Opções
+    loading: Carregando...
+    file_upload_error: O arquivo tem mais de 2 MB
+    navbar:
+      settings: Configurações
+      addons: Complementos
+      marketplace: Mercado
+    error_boundary:
+      title: Erro
+      message: Falha ao carregar este componente do Mue
+      report_error: Enviar relatório de erro
+      sent: Enviei!
+      refresh: Atualizar
+  update:
+    title: Atualizar
+    offline:
+      description: Não é possível obter logs de atualização no modo offline
+    error:
+      title: Erro
+      description: Não pode conectar-se ao servidor
+  share:
+    copy_link: Copiar link
+toasts:
+  quote: Citação copiada
+  notes: Notas copiadas
+  reset: Redefinido com sucesso
+  installed: Instalado com sucesso
+  uninstalled: Removido com sucesso
+  updated: Atualizado com sucesso
+  error: Algo deu errado
+  imported: Importado com sucesso
+  no_storage: Espaço de armazenamento insuficiente
+  link_copied: Link copiado

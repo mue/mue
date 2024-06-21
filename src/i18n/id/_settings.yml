@@ -1,0 +1,239 @@
+enabled: Aktif
+open_knowledgebase: Buka Basis Pengetahuan
+additional_settings: Pengaturan Tambahan
+reminder:
+  title: PERHATIAN
+  message: Agar semua perubahan dapat diterapkan, harap muat ulang halaman ini
+sections:
+  header:
+    more_info: Info lebih lanjut
+    report_issue: Laporkan Masalah
+    enabled: Pilih apakah akan menampilkan widget ini atau tidak
+    size: Slider untuk mengontrol seberapa besar widget tersebut
+  time:
+    title: Waktu
+    type: Tipe
+    digital:
+      subtitle: Mengubah tampilan jam digital
+      seconds: Detik
+      twentyfourhour: "24"
+      twelvehour: 12 (AM/PM)
+    analogue:
+      title: Analog
+      subtitle: Mengubah tampilan jam analog
+      second_hand: Jarum Detik
+      minute_hand: Jarum Menit
+      hour_hand: Jarum Jam
+      hour_marks: Penanda Jam
+      minute_marks: Penanda Menit
+      round_clock: Latar belakang berbentuk bulat
+    percentage_complete: Persentase
+    vertical_clock:
+      title: Jam Vertikal
+      change_hour_colour: Ubah warna teks jam
+      change_minute_colour: Ubah warna teks menit
+  date:
+    title: Tanggal
+    week_number: Nomor Urut Pekan
+    day_of_week: Hari
+    datenth: Imbuhan nth
+    type:
+      short: Ringkas
+      long: Lengkap
+      subtitle: Apakah akan menampilkan tanggal dalam bentuk panjang atau bentuk pendek
+    type_settings: Tampilkan setelan dan format untuk jenis tanggal yang dipilih
+    short_date: Tanggal Ringkas
+    short_format: Format Ringkas
+    long_format: Format panjang
+    short_separator:
+      title: Pemisah
+      dots: Titik
+      dash: Setrip
+      gaps: Spasi
+      slashes: Garis Miring
+  quote:
+    title: Kutipan
+    additional: Pengaturan lain untuk menyesuaikan gaya widget kutipan
+    author_link: Pranala penulis
+    custom: Kutipan kustom
+    custom_subtitle: Tetapkan kutipan khusus Anda sendiri
+    no_quotes: Tidak ada kutipan
+    author: Kreator
+    custom_buttons: Tombol
+    custom_author: Penulis kustom
+    author_img: Tampilkan pemilik gambar
+    add: Tambahkan kutipan
+    buttons:
+      title: Aksi
+      copy: Salin
+      favourite: Favorit
+  greeting:
+    title: Sapaan
+    events: Hari Besar
+    default: Sapaan bawaan
+    name: Nama
+    birthday: Hari Ulang Tahun
+    birthday_age: Usia
+    birthday_date: Tanggal Ulang Tahun
+  background:
+    transition: Transisi Fade-in
+    photo_information: Tampilkan informasi foto
+    show_map: Tampilkan informasi lokasi foto jika ada
+    buttons:
+      title: Aksi
+      view: Layar Penuh
+      favourite: Favorit
+      download: Unduh
+    effects:
+      title: Efek
+      blur: Sesuaikan blur
+      brightness: Sesuaikan kecerahan
+      filters:
+        title: Filter background
+        amount: Sesuaikan filter
+    type:
+      title: Tipe
+      custom_image: Gambar kustom
+      custom_colour: Warna/gradasi kustom
+      random_colour: Warna acak
+      random_gradient: Gradasi acak
+    unsplash: {}
+    source:
+      title: Sumber
+      custom_background: Background kustom
+      custom_colour: Background warna kustom
+      upload: Unggah
+      add_colour: Tambah warna
+      add_background: Tambah background
+      add_url: Tambah URL
+      disabled: Nonaktif
+      loop_video: Ulang video
+      mute_video: Bisukan video
+      quality:
+        title: Kualitas
+  search:
+    title: Cari
+    search_engine: Mesin pencari
+    custom: URL Kustom
+    autocomplete_provider: Provider Autocomplete
+    voice_search: Pencarian suara
+    dropdown: Dropdown pencarian
+  weather:
+    title: Cuaca
+    location: Lokasi
+    auto: Otomatis
+    temp_format:
+      title: Format suhu
+    extra_info:
+      title: Informasi Tambahan
+      show_location: Tampilkan lokasi
+      show_description: Tampilkan deskripsi
+      cloudiness: Kondisi awan
+      humidity: Kelembapan
+      visibility: Jarak pandang
+      wind_speed: Kecepatan angin
+      wind_direction: Arah angin
+      min_temp: Temperatur minimal
+      max_temp: Temperatur maksimal
+      atmospheric_pressure: Tekanan atmosfer
+    options: {}
+  quicklinks:
+    title: Pranala cepat
+    open_new: Buka di tab baru
+    text_only: Hanya teks
+    options: {}
+  message:
+    title: Pesan
+    add: Tambahkan pesan
+    text: Teks
+  appearance:
+    title: Antarmuka
+    style: {}
+    theme:
+      title: Tema
+      auto: Otomatis
+    navbar:
+      notes: Catatan
+      refresh: Muat ulang
+      hover: Tampilkan ketika hover
+      refresh_options:
+        none: Nonaktif
+        page: Halaman
+    font:
+      custom: Font kustom
+      google: Impor dari Google Fonts
+      weight: {}
+      style: {}
+    accessibility:
+      title: Aksesibilitas
+      animations: Animasi
+      text_shadow: {}
+      toast_duration: Durasi toast
+  order:
+    title: Urutan Widget
+  advanced:
+    title: Lanjutan
+    offline_mode: Mode Luring
+    data_subtitle: Choose whether to export your Mue settings to your computer,
+      import an existing settings file, or reset your settings to their default
+      values
+    reset_modal:
+      title: PERINGATAN
+      question: Apakah Anda ingin me-reset Mue?
+      information: Aksi ini akan menghapus semua data Anda. Harap ekspor pengaturan
+        Anda sebelum melakukan reset.
+      cancel: Batal
+    customisation: Kustomisasi
+    custom_css: CSS Kustom
+    custom_js: JS Kustom
+    tab_name: Nama tab
+    timezone:
+      title: Zona Waktu
+      automatic: Otomatis
+    experimental_warning: Harap diperhatikan bahwa tim Mue tidak menyediakan
+      dukungan jika Anda mengaktifkan mode experimental. Harap nonaktifkan
+      terlebih dahulu dan lihat apabila kendala Anda masih terjadi sebelum
+      menghubungi kami.
+    preview_data_disabled: {}
+  stats:
+    title: Statistik
+    sections:
+      tabs_opened: Riwayat tab terbuka
+      backgrounds_favourited: Backgrounds favorit
+      backgrounds_downloaded: Backgrounds terunduh
+      quotes_favourited: Kutipan favorit
+      quicklinks_added: Pranala cepat ditambahkan
+      settings_changed: Perubahan pengaturan
+      addons_installed: Add-ons ditambahkan
+    usage: Statistik Penggunaan
+    clear_modal: {}
+  experimental: {}
+  language:
+    title: Bahasa
+    quote: Bahasa untuk kutipan
+  changelog:
+    title: Changelog
+    by: Oleh {author}
+  about:
+    title: Tentang Mue
+    version:
+      title: Versi
+      checking_update: Periksa pembaruan
+      update_available: Pembaruan tersedia
+      no_update: Tidak ada pembaruan
+      offline_mode: Periksa pembaruan tidak dapat dilakukan pada mode luring
+      error:
+        title: Gagal mendapatkan informasi pembaruan
+        description: Muncul galat saat mencoba mendapatkan informasi pembaruan. Harap
+          coba lagi nanti.
+    contact_us: Hubungi Kami
+    support_mue: Dukung Mue
+    resources_used:
+      title: Resources yang kami gunakan
+    contributors: Kontributor
+    supporters: Suporter
+    no_supporters: Mue belum punya suporter saat ini.
+    photographers: Fotografer
+buttons:
+  import: Impor
+  export: Ekspor

@@ -1,0 +1,16 @@
+photo_packs: Paquetes de fotos
+quote_packs: Paquetes de citas
+preset_settings: Ajustes preestablecidos
+no_items: No hay artículos en esta categoría
+product:
+  overview: Vista general
+  information: Información
+  last_updated: Última actualización
+  version: Versión
+  buttons:
+    addtomue: Añadir a Mue
+    remove: Desinstalar
+    update_addon: Actualizar complemento
+offline:
+  title: Parece que estás desconectado
+  description: Por favor conéctate a Internet

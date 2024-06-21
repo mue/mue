@@ -1,0 +1,15 @@
+photo_packs: 图片包
+quote_packs: 名言包
+preset_settings: 预设设定
+no_items: 本类别为空
+product:
+  overview: 总览
+  information: 信息
+  last_updated: 更新日期
+  version: 版本
+  buttons:
+    addtomue: 添加至 Mue
+    remove: 卸载
+offline:
+  title: 您目前似乎离线
+  description: 请连接到互联网。
