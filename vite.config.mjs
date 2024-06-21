@@ -121,6 +121,7 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     build: {
+      target: ['es2022', 'chrome89', 'edge89', 'firefox89', 'safari15'],
       minify: isProd ? 'esbuild' : false,
       sourcemap: !isProd,
       rollupOptions: {
