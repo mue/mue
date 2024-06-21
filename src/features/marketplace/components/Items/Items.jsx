@@ -14,7 +14,7 @@ const NewItems = ({ items, view }) => {
               <th>Name</th>
               <th>Type</th>
               {/*<th>{variables.getMessage('settings:sections.quote.author')}</th>*/}
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>

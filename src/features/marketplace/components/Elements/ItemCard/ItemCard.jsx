@@ -1,12 +1,14 @@
 import variables from 'config/variables';
+import { useEffect, useState } from 'react';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
-import { MdOpenInNew } from 'react-icons/md';
+import { MdCheckCircle, MdOpenInNew } from 'react-icons/md';
 
 function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
-  const { getItemData, selectedItem, setSelectedItem } = useMarketData();
+  const { getItemData, installedItems } = useMarketData();
   const { setSubTab } = useTab();
+  let installed = '';
 
   item._onCollection = onCollection;
 
@@ -25,12 +27,16 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
     });
   };
 
+  const isItemInstalled = (itemName) => {
+    return installedItems.some((item) => item.name === itemName);
+  };
+
   switch (cardStyle) {
     case 'list':
       return (
         <tr
           key={item.name}
-          className="py-5 hover:bg-white/5 rounded-lg cursor-pointer"
+          className="hover:bg-white/5 rounded-lg cursor-pointer transition duration-300 ease-in-out"
           onClick={SelectItem}
         >
           <td className="flex flex-row items-center gap-10 py-3">
@@ -45,13 +51,18 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
               }}
             />
             <div className="flex flex-col">
-            <span className="text-base font-normal">{item.display_name}</span>
-            <span className="text-xs text-neutral-400">{item.author}</span>
+              <span className="text-base font-normal">{item.display_name}</span>
+              <span className="text-xs text-neutral-400">{item.author}</span>
             </div>
           </td>
-          <td className="text-base text-neutral-300 font-light">{variables.getMessage('marketplace:' + getName(item.type)) || 'marketplace'}</td>
-          <td>
-            <MdOpenInNew />
+          <td className="text-base text-neutral-300 font-light py-3">
+            {variables.getMessage('marketplace:' + getName(item.type)) || 'marketplace'}
+          </td>
+          <td className="flex items-center h-[55px] text-xl py-3">
+            <div className="flex flex-row gap-5 items-center">
+              <MdOpenInNew />
+              {isItemInstalled(item.name) && <MdCheckCircle className="text-rose-600" />}
+            </div>
           </td>
         </tr>
       );
@@ -60,42 +71,42 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
       const gradient_var_10 = `--item-${item.name.replaceAll('_', '-')}-gradient10`;
       const gradient_var_75 = `--item-${item.name.replaceAll('_', '-')}-gradient75`;
       const gradient_var_100 = `--item-${item.name.replaceAll('_', '-')}-gradient100`;
-      const initial_colour_0 = item.colour + '60'
-      const initial_colour_10 = item.colour + '58' // 10% between 96(0x60) and 15(0x0F), only needed for hover
-      const initial_colour_75 = item.colour + '23' // 75% between 96(0x60) and 15(0x0F), only needed for hover
-      const initial_colour_100 = item.colour + '0F'
-      const hover_colour_0 = item.colour + '66'
-      const hover_colour_10 = item.colour + '33'
-      const hover_colour_75 = item.colour + '00'
-      const hover_colour_100 = item.colour + '00' // only needed for initial
-     try {
-       window.CSS.registerProperty({
-        name: gradient_var_0,
-        syntax: '<color>',
-        initialValue: initial_colour_0,
-        inherits: false,
-      });
-      window.CSS.registerProperty({
-        name: gradient_var_10,
-        syntax: '<color>',
-        initialValue: initial_colour_10,
-        inherits: false,
-      });
-       window.CSS.registerProperty({
-         name: gradient_var_75,
-         syntax: '<color>',
-         initialValue: initial_colour_75,
-         inherits: false,
-       });
-      window.CSS.registerProperty({
-        name: gradient_var_100,
-        syntax: '<color>',
-        initialValue: initial_colour_100,
-        inherits: false,
-      });
-     } catch (error) {
-      // don't throw on rerenders (names can only be registered once before refresh)
-     }
+      const initial_colour_0 = item.colour + '60';
+      const initial_colour_10 = item.colour + '58'; // 10% between 96(0x60) and 15(0x0F), only needed for hover
+      const initial_colour_75 = item.colour + '23'; // 75% between 96(0x60) and 15(0x0F), only needed for hover
+      const initial_colour_100 = item.colour + '0F';
+      const hover_colour_0 = item.colour + '66';
+      const hover_colour_10 = item.colour + '33';
+      const hover_colour_75 = item.colour + '00';
+      const hover_colour_100 = item.colour + '00'; // only needed for initial
+      try {
+        window.CSS.registerProperty({
+          name: gradient_var_0,
+          syntax: '<color>',
+          initialValue: initial_colour_0,
+          inherits: false,
+        });
+        window.CSS.registerProperty({
+          name: gradient_var_10,
+          syntax: '<color>',
+          initialValue: initial_colour_10,
+          inherits: false,
+        });
+        window.CSS.registerProperty({
+          name: gradient_var_75,
+          syntax: '<color>',
+          initialValue: initial_colour_75,
+          inherits: false,
+        });
+        window.CSS.registerProperty({
+          name: gradient_var_100,
+          syntax: '<color>',
+          initialValue: initial_colour_100,
+          inherits: false,
+        });
+      } catch (error) {
+        // don't throw on rerenders (names can only be registered once before refresh)
+      }
       return (
         <div
           // transition(-all)
@@ -134,6 +145,7 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
               e.target.src = placeholderIcon;
             }}
           />
+          <div className="absolute top-3 right-3">{isItemInstalled(item.name) && <MdCheckCircle style={{ color: `${item.colour}` }} className="h-8 w-8" />}</div>
           <div className="card-details">
             <span className="card-title">{item.display_name || item.name}</span>
             {!isCurator ? (
