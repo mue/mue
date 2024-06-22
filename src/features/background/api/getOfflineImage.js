@@ -29,7 +29,7 @@ export function getOfflineImage(type) {
   lastImage = randomImage;
 
   const object = {
-    url: `src/assets/offline-images/${randomImage}.webp`,
+    url: `offline-images/${randomImage}.webp`,
     type,
     photoInfo: {
       offline: true,

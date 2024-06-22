@@ -1,11 +1,11 @@
 const images = [
-  '/src/assets/icons/undraw_celebration.svg',
-  '/src/assets/icons/undraw_around_the_world_modified.svg',
-  '/src/assets/icons/undraw_add_files_modified.svg',
-  '/src/assets/icons/undraw_dark_mode.svg',
-  '/src/assets/icons/undraw_making_art.svg',
-  '/src/assets/icons/undraw_private_data_modified.svg',
-  '/src/assets/icons/undraw_upgrade_modified.svg',
+  '/icons/undraw_celebration.svg',
+  '/icons/undraw_around_the_world_modified.svg',
+  '/icons/undraw_add_files_modified.svg',
+  '/icons/undraw_dark_mode.svg',
+  '/icons/undraw_making_art.svg',
+  '/icons/undraw_private_data_modified.svg',
+  '/icons/undraw_upgrade_modified.svg',
 ];
 
 function AsideImage({ currentTab }) {

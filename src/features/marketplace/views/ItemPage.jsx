@@ -1,5 +1,4 @@
 import variables from 'config/variables';
-import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { useEffect, useState } from 'react';
 import { ShareModal } from 'components/Elements';
 import {
@@ -227,7 +226,7 @@ const ItemPage = () => {
           src={selectedItem.icon_url}
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = placeholderIcon;
+            e.target.src = '/icons/marketplace-placeholder.png';
           }}
         />
         {localStorage.getItem('welcomePreview') !== 'true' ? (
@@ -395,7 +394,7 @@ const ItemPage = () => {
                   src={selectedItem.screenshot_url}
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = placeholderIcon;
+                    e.target.src = '/icons/marketplace-placeholder.png';
                   }}
                 />
               )}

@@ -21,7 +21,6 @@ import { Button } from 'components/Elements';
 
 import { Carousel } from '../components/Elements/Carousel';
 import { ShareModal } from 'components/Elements';
-import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { Items } from '../components/Items/OldItems';
 
 import Markdown from 'markdown-to-jsx';
@@ -270,7 +269,7 @@ class ItemPage extends PureComponent {
                 src={iconsrc}
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src = placeholderIcon;
+                  e.target.src = '/icons/marketplace-placeholder.png';
                 }}
               />
             )}
@@ -386,7 +385,7 @@ class ItemPage extends PureComponent {
                 src={this.props.data.data.icon_url}
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src = placeholderIcon;
+                  e.target.src = '/icons/marketplace-placeholder.png';
                 }}
               />
               {localStorage.getItem('welcomePreview') !== 'true' ? (

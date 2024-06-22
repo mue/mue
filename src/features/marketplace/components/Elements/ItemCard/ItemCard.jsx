@@ -1,6 +1,5 @@
 import variables from 'config/variables';
 import { useEffect, useState } from 'react';
-import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 import { useMarketData } from 'features/marketplace/api/MarketplaceDataContext';
 import { MdCheckCircle, MdOpenInNew } from 'react-icons/md';
@@ -47,7 +46,7 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
               src={item.icon_url}
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = placeholderIcon;
+                e.target.src = '/icons/marketplace-placeholder.png';
               }}
             />
             <div className="flex flex-col">
@@ -142,7 +141,7 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
             src={item.icon_url}
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = placeholderIcon;
+              e.target.src = '/icons/marketplace-placeholder.png';
             }}
           />
           <div className="absolute top-3 right-3">{isItemInstalled(item.name) && <MdCheckCircle style={{ color: `${item.colour}` }} className="h-8 w-8" />}</div>

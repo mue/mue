@@ -1,7 +1,6 @@
 import variables from 'config/variables';
 import React, { memo } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
-import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { motion } from 'framer-motion';
 
 import { Button } from 'components/Elements';
@@ -33,7 +32,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
         src={item.icon_url}
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = placeholderIcon;
+          e.target.src = '/icons/marketplace-placeholder.png';
         }}
         aria-hidden="true"
       />
@@ -44,7 +43,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
         src={item.icon_url}
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = placeholderIcon;
+          e.target.src = '/icons/marketplace-placeholder.png';
         }}
       />
       <div className="card-details">

@@ -40,7 +40,7 @@ function Intro() {
   const ShareYourMue = (
     <div className="examples">
       <img
-        src={`/src/assets/welcome-images/example${welcomeImage + 1}.webp`}
+        src={`/welcome-images/example${welcomeImage + 1}.webp`}
         alt="Example Mue setup"
         draggable={false}
       />

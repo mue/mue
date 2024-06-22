@@ -135,7 +135,7 @@ class About extends PureComponent {
             <img
               draggable={false}
               className="aboutLogo"
-              src={'src/assets/icons/mue_about.png'}
+              src={'icons/mue_about.png'}
               alt="Logo"
             />
             <div className="aboutText">

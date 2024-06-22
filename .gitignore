@@ -2,7 +2,7 @@
 node_modules/
 .history/
 .vscode/
-build/
+extensions/
 .idea/
 dist/
 
@@ -17,3 +17,4 @@ yarn.lock
 keys.json
 .DS_Store
 *.zip
+i18n-fallback.json
