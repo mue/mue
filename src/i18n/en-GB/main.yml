@@ -72,8 +72,8 @@ modals:
     file_upload_error: File is over 2MB
     navbar:
       settings: Settings
-      addons: Add-ons
-      marketplace: Marketplace
+      addons: Library
+      marketplace: Discover
     error_boundary:
       title: Error
       message: Failed to load this component of Mue
