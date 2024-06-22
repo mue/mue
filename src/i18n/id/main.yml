@@ -79,8 +79,8 @@ modals:
     title: Pembaruan
     offline:
       title: Anda dalam mode luring
-      description: Tidak dapat memeriksa pembaruan. Harap periksa kembali koneksi Anda
-        dan coba lagi nanti.
+      description: Tidak dapat memeriksa pembaruan. Harap periksa kembali koneksi
+        Anda dan coba lagi nanti.
     error:
       title: Galat
       description: Tidak dapat terhubung ke peladen
