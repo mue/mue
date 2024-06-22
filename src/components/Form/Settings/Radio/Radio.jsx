@@ -55,11 +55,11 @@ function Radio(props) {
             key={option.name}
             label={option.name}
             value={option.value}
-            className="group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 text-white shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+            className="data-[checked]:bg-white/10 group relative flex cursor-pointer rounded-lg bg-white/5 data-[checked]:hover:bg-neutral-700 hover:bg-neutral-700 py-4 px-5 text-white shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
           >
             <div className="flex w-full items-center justify-between">
               <div className="text-sm/6">
-                <p className="font-semibold text-white">{option.name}</p>
+                <p className="font-semibold text-white capitalize">{option.name}</p>
                 <div className="flex gap-2 text-white/50">
                   <div>{option.subname}</div>
                   <div aria-hidden="true">&middot;</div>
