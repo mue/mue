@@ -15,8 +15,8 @@ dependencies:
     specifier: ^11.11.5
     version: 11.11.5(@emotion/react@11.11.4)(react@18.3.1)
   '@floating-ui/react-dom':
-    specifier: 2.1.0
-    version: 2.1.0(react-dom@18.3.1)(react@18.3.1)
+    specifier: 2.1.1
+    version: 2.1.1(react-dom@18.3.1)(react@18.3.1)
   '@fontsource/lexend-deca':
     specifier: 5.0.12
     version: 5.0.12
@@ -2132,8 +2132,8 @@ packages:
       '@floating-ui/utils': 0.2.2
     dev: false
 
-  /@floating-ui/react-dom@2.1.0(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-lNzj5EQmEKn5FFKc04+zasr09h/uX8RtJRNj5gUXsSQIXHVWTVh+hVAg1vOMCexkX8EgvemMvIFpQfkosnVNyA==}
+  /@floating-ui/react-dom@2.1.1(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-4h84MJt3CHrtG18mGsXuLCHMrug49d7DFkU0RMIyshRveBeyV2hmV/pDaF2Uxtu8kgq5r46llp5E5FQiR0K2Yg==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -2231,7 +2231,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.24.6
-      '@floating-ui/react-dom': 2.1.0(react-dom@18.3.1)(react@18.3.1)
+      '@floating-ui/react-dom': 2.1.1(react-dom@18.3.1)(react@18.3.1)
       '@mui/types': 7.2.14
       '@mui/utils': 5.15.20(react@18.3.1)
       '@popperjs/core': 2.11.8
