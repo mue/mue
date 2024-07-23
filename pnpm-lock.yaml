@@ -36,8 +36,8 @@ importers:
         specifier: ^8.19.0
         version: 8.19.0(react@18.3.1)
       embla-carousel-autoplay:
-        specifier: 8.1.6
-        version: 8.1.6(embla-carousel@8.1.7)
+        specifier: 8.1.7
+        version: 8.1.7(embla-carousel@8.1.7)
       embla-carousel-react:
         specifier: 8.1.7
         version: 8.1.7(react@18.3.1)
@@ -1979,10 +1979,10 @@ packages:
   electron-to-chromium@1.4.786:
     resolution: {integrity: sha512-i/A2UB0sxYViMN0M2zIotQFRIOt1jLuVXudACHBDiJ5gGuAUzf/crZxwlBTdA0O52Hy4CNtTzS7AKRAacs/08Q==}
 
-  embla-carousel-autoplay@8.1.6:
-    resolution: {integrity: sha512-e5n9f4q+DVeBPiPPT3gwzqpiqfae8aP8fQACS4OZkPFvFLdsVhnWcw+cwtewryP7snWJGKPXEMA1GOjieEKv+w==}
+  embla-carousel-autoplay@8.1.7:
+    resolution: {integrity: sha512-UXt1XvCNwzC/Sqd7iU8nYd1CjuDLweIwJClfBL3gVTzHQBVwb68GBBfC/oPFsEeIWNUZe8NO5xDQSI9aTnYO7Q==}
     peerDependencies:
-      embla-carousel: 8.1.6
+      embla-carousel: 8.1.7
 
   embla-carousel-react@8.1.7:
     resolution: {integrity: sha512-ermMKzQ46LhXE4f81VBCVGxCJWvZfsu504dkyiUDO+cnEEPW8NlC2PpKULmiOWugusYWRLhQLjmyQs3b8vvOjA==}
@@ -5528,7 +5528,7 @@ snapshots:
 
   electron-to-chromium@1.4.786: {}
 
-  embla-carousel-autoplay@8.1.6(embla-carousel@8.1.7):
+  embla-carousel-autoplay@8.1.7(embla-carousel@8.1.7):
     dependencies:
       embla-carousel: 8.1.7
 
