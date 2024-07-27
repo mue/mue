@@ -1,19 +1,19 @@
-tabname: Nova Guia
+tabname: Nova guia
 widgets:
   greeting:
-    morning: Bom Dia
-    afternoon: Boa Tarde
+    morning: Bom dia
+    afternoon: Boa tarde
     evening: Boa noite
-    christmas: Feliz Natal
-    newyear: Feliz Ano Novo
-    halloween: Feliz Dia das Bruxas
-    birthday: Feliz Aniversário
+    christmas: Feliz natal
+    newyear: Feliz ano novo
+    halloween: Feliz dia das bruxas
+    birthday: Feliz aniversário
   background:
     credit: Foto por
     unsplash: no Unsplash
     information: Informação
-    download: Baixar
-    downloads: Baixados
+    download: Download
+    downloads: Downloads
     views: Visualizações
     likes: Curtidas
     location: Localização
@@ -32,16 +32,18 @@ widgets:
   quicklinks:
     new: Novo link
     name: Nome
-    icon: Ícone (opcional)
+    icon: ícone (opcional)
     add: Adicionar
-    name_error: Deve fornecer o nome
-    url_error: Forneça uma URL
+    name_error: Digite um nome
+    url_error: Digite uma URL
+    edit: Editar link
+    url: URL
   date:
     week: Semana
   weather:
     not_found: Não encontrado
     meters: "{amount} metros"
-    extra_information: Informação extra
+    extra_information: Informações adicionais
     feels_like: Parece {amount}
   quote:
     link_tooltip: Abrir na Wikipédia
@@ -60,7 +62,9 @@ widgets:
       pin: Fixar
       add: Adicionar
       no_todos: Sem afazeres
-    apps: {}
+    apps:
+      title: Aplicativos
+      no_apps: Nenhum link de aplicativo encontrado
 modals:
   main:
     title: Opções
@@ -68,23 +72,25 @@ modals:
     file_upload_error: O arquivo tem mais de 2 MB
     navbar:
       settings: Configurações
-      addons: Complementos
-      marketplace: Mercado
+      addons: Biblioteca
+      marketplace: Descobrir
     error_boundary:
       title: Erro
       message: Falha ao carregar este componente do Mue
       report_error: Enviar relatório de erro
-      sent: Enviei!
+      sent: Enviado!
       refresh: Atualizar
   update:
     title: Atualizar
     offline:
       description: Não é possível obter logs de atualização no modo offline
+      title: Offline
     error:
       title: Erro
-      description: Não pode conectar-se ao servidor
+      description: Não foi possível conectar-se ao servidor
   share:
     copy_link: Copiar link
+    email: Email
 toasts:
   quote: Citação copiada
   notes: Notas copiadas
@@ -96,3 +102,4 @@ toasts:
   imported: Importado com sucesso
   no_storage: Espaço de armazenamento insuficiente
   link_copied: Link copiado
+  stats_reset: Redefinição de estatísticas
