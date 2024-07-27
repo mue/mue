@@ -7,8 +7,8 @@ empty:
   description: Nenhum complemento está instalado
 sideload:
   title: Carregar localmente
-  description: Instale um complemento Mue que não esteja no mercado a partir do
-    seu computador
+  description: Instale um complemento Mue que não esteja no mercado a partir do seu
+    computador
   failed: Falha ao carregar o complemento
   errors:
     no_name: Nenhum nome fornecido
@@ -25,3 +25,6 @@ sort:
 create:
   title: Criar
   moved_button: Get Started
+  moved_description: Após a atualização 7.1, a criação de complementos foi transferida
+    para a interface do usuário da Web
+  moved_title: '"Criar complemento" foi movido!'
