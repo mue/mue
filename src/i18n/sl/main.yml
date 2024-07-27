@@ -1,1 +1,32 @@
-{}
+widgets:
+  quicklinks:
+    url: URL
+    add: Dodaj
+    new: Nova Povezava
+    edit: Uredi Povezavo
+    name: Ime
+  greeting:
+    morning: Dobro Jutro
+    afternoon: Dober Dan
+    evening: Dober Večer
+    christmas: Vesel Božič
+    newyear: Srečno Novo Leto
+    halloween: Vesel Noč Čarovnic
+    birthday: Vse Najboljše
+  background:
+    credit: Fotografiral
+    unsplash: na Unsplash
+    information: Informacija
+    download: Prenos
+    downloads: Prenosi
+    location: Lokacija
+    camera: Kamera
+    resolution: Resolucija
+    source: Vir
+    exclude: Ne prikazuj več
+    confirm: Potrdi
+    views: Ogledi
+    category: Kategorija
+    likes: Všečki
+  search: Išči
+tabname: Nov Zavihek
