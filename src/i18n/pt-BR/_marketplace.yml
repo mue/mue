@@ -33,8 +33,17 @@ product:
     update_addon: Atualizar complemento
     back: Voltar
     report: Reportar
+    not_available_preview: Indisponível na visualização
   setting: Configuração
   value: Valor
+  details: Detalhes
+  more_from_curator: Mais como este de {name}
+  created_by: Criado por
+  updated_at: Atualizado em
+  not_in_language: Este complemento não está em seu idioma
+  third_party_api: Esse complemento usa uma API de terceiros
+  sideload_warning: Este complemento foi carregado lateralmente.
 offline:
   title: Parece que você está offline
   description: Conecte-se à Internet
+installing: Instalando
