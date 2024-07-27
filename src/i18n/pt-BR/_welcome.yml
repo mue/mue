@@ -17,15 +17,15 @@ sections:
       adicionar novas traduções em nosso
   theme:
     title: Selecione um tema
-    description: O Mue está disponível nos temas claro e escuro, ou pode ser
-      definido automaticamente dependendo do tema do sistema.
-    tip: Usar as configurações automáticas usará o tema em seu computador. Essa
-      configuração afetará os modais e alguns dos widgets exibidos na tela, como
-      previsão do tempo e notas.
+    description: O Mue está disponível nos temas claro e escuro, ou pode ser definido
+      automaticamente dependendo do tema do sistema.
+    tip: Usar as configurações automáticas usará o tema em seu computador. Essa configuração
+      afetará os modais e alguns dos widgets exibidos na tela, como previsão do tempo
+      e notas.
   style:
     title: Escolha um estilo
-    description: Atualmente, o Mue oferece a escolha entre o estilo legado e o
-      estilo moderno recém-lançado.
+    description: Atualmente, o Mue oferece a escolha entre o estilo legado e o estilo
+      moderno recém-lançado.
     legacy: Legado
     modern: Moderno
   settings:
@@ -33,20 +33,21 @@ sections:
     description: Instalando o Mue em um novo dispositivo? Sinta-se à vontade para
       importar suas configurações antigas!
     tip: Você pode exportar suas configurações antigas navegando até a guia Avançado
-      em sua configuração antiga do Mue. Então você precisa clicar no botão de
-      exportação que fará o download do arquivo JSON. Você pode carregar este
-      arquivo aqui para carregar suas configurações e preferências de sua
-      instalação anterior do Mue.
+      em sua configuração antiga do Mue. Então você precisa clicar no botão de exportação
+      que fará o download do arquivo JSON. Você pode carregar este arquivo aqui para
+      carregar suas configurações e preferências de sua instalação anterior do Mue.
   privacy:
     title: Opções de privacidade
-    description: Ative as configurações para proteger ainda mais sua privacidade com o Mue.
-    offline_mode_description: A ativação do modo offline desativará todas as
-      solicitações para qualquer serviço. Isso resultará na desativação de
-      planos de fundo online, citações online, marketplace, previsão do tempo,
-      links rápidos, log de alterações e algumas informações sobre as guias.
+    description: Ative as configurações para proteger ainda mais sua privacidade com
+      o Mue.
+    offline_mode_description: A ativação do modo offline desativará todas as solicitações
+      para qualquer serviço. Isso resultará na desativação de planos de fundo online,
+      citações online, marketplace, previsão do tempo, links rápidos, log de alterações
+      e algumas informações sobre as guias.
     links:
       privacy_policy: Política de Privacidade
       source_code: Código fonte
+      title: Links
   final:
     title: Último passo
     description: Sua experiência Mue Tab está prestes a começar.
@@ -59,7 +60,8 @@ buttons:
   preview: Pré-visualizar
   previous: Anterior
   close: Fechar
+  finish: Terminar
 preview:
-  description: Você está atualmente no modo de visualização. As configurações
-    serão redefinidas ao fechar esta guia.
+  description: Você está atualmente no modo de visualização. As configurações serão
+    redefinidas ao fechar esta guia.
   continue: Continuar configuração
