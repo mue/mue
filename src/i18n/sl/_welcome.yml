@@ -1,1 +1,16 @@
-{}
+tip: Hiter Nasvet
+sections:
+  intro:
+    title: Dobrodošli v Mue Tab
+    notices:
+      github_open: Odpri
+  language:
+    title: Izberite jezik
+    description: Mue je lahko prikazan v jezikih naštetih spodaj. Lahko tudi dodate
+      nov prevod na naših
+  theme:
+    title: Izberite temo
+    description: Mue je na voljo v svetli in temni temi, lahko pa se samodejno nastavi
+      glede na temo vašega sistema.
+  style:
+    title: Izberite stil
