@@ -21,6 +21,8 @@
   z-index: 1;
   display: flex;
   place-content: center center;
+  flex-wrap: wrap;
+  padding: 0 25px;
   gap: 12px;
 
   textarea {
