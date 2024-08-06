@@ -85,8 +85,8 @@ importers:
         specifier: ^3.6.0
         version: 3.7.0(vite@5.3.5(@types/node@20.12.13)(sass@1.77.8))
       adm-zip:
-        specifier: 0.5.14
-        version: 0.5.14
+        specifier: 0.5.15
+        version: 0.5.15
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -1619,8 +1619,8 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  adm-zip@0.5.14:
-    resolution: {integrity: sha512-DnyqqifT4Jrcvb8USYjp6FHtBpEIz1mnXu6pTRHZ0RL69LbQYiO+0lDFg5+OKA7U29oWSs3a/i8fhn8ZcceIWg==}
+  adm-zip@0.5.15:
+    resolution: {integrity: sha512-jYPWSeOA8EFoZnucrKCNihqBjoEGQSU4HKgHYQgKNEQ0pQF9a/DYuo/+fAxY76k4qe75LUlLWpAM1QWcBMTOKw==}
     engines: {node: '>=12.0'}
 
   ajv@6.12.6:
@@ -5101,7 +5101,7 @@ snapshots:
 
   acorn@8.11.3: {}
 
-  adm-zip@0.5.14: {}
+  adm-zip@0.5.15: {}
 
   ajv@6.12.6:
     dependencies:
