@@ -71,7 +71,7 @@ modals:
     file_upload_error: Файл больше 2 МБ
     navbar:
       settings: Настройки
-      addons: Аддоны
+      addons: Библиотека
       marketplace: Обзор
     error_boundary:
       title: Ошибка
