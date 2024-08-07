@@ -26,12 +26,15 @@ widgets:
       Примечание: если вам не нравятся изображения "{category}", вы можете
       отменить выбор категории в настройках источника фона.
     confirm: Подтверждаю
+    information: Информация
+    download: Скачать
   search: Поиск
   quicklinks:
     new: Новая ссылка
     icon: Значок (необязательно)
     name_error: Должно содержать имя
     url_error: Должно содержать URL
+    name: Имя
   date:
     week: Неделя
   weather:
@@ -50,6 +53,7 @@ widgets:
       refresh: Перезагрузить
     notes:
       placeholder: Напишите здесь
+      title: Заметки
     todo:
       title: Задачи
       pin: Прикрепить
@@ -63,13 +67,14 @@ modals:
     navbar:
       settings: Настройки
       addons: Аддоны
-      marketplace: Магазин
+      marketplace: Обзор
     error_boundary:
       title: Ошибка
       message: Не удалось загрузить этот компонент Mue
       report_error: Отправить сообщение об ошибке
       sent: Отправил!
       refresh: Обновить
+    title: Опции
   update:
     title: Обновление
     offline:
@@ -89,3 +94,6 @@ toasts:
   imported: Успешно импортировано
   no_storage: Недостаточно места
   link_copied: Ссылка скопирована
+  notes: Заметка скопирована
+  updated: Успешно обновлено
+  stats_reset: Статистика сброшена
