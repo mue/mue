@@ -35,6 +35,9 @@ widgets:
     name_error: Должно содержать имя
     url_error: Должно содержать URL
     name: Имя
+    edit: Изменить ссылку
+    url: URL
+    add: Добавить
   date:
     week: Неделя
   weather:
@@ -59,7 +62,9 @@ widgets:
       pin: Прикрепить
       add: Добавить
       no_todos: Нет задач
-    apps: {}
+    apps:
+      title: Приложения
+      no_apps: Не найдено ссылок приложений
 modals:
   main:
     loading: Загрузка...
@@ -82,6 +87,7 @@ modals:
       description: Не удалось получить журнал обновления в офлайн режиме
     error:
       title: Ошибка
+      description: Невозможно подключиться к серверу
   share:
     copy_link: Копировать ссылку
     email: Эл. адрес
