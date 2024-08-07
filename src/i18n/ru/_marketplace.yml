@@ -33,12 +33,15 @@ product:
     back: Назад
     report: Жалоба
     not_available_preview: Недоступен для предварительного просмотра
+    update_addon: Обновить аддон
   setting: Параметр
   value: Цена
   details: Подробности
   updated_at: Обновлено
   more_from_curator: Больше похоже на это от {name}
   created_by: Создано
+  not_in_language: Этот аддон не на вашем языке
+  third_party_api: Этот аддон использует стороннее API
 offline:
   title: Похоже, что вы офлайн
   description: Пожалуйста, подключитесь к интернету
