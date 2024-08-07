@@ -32,8 +32,14 @@ product:
     remove: Удалить
     back: Назад
     report: Жалоба
+    not_available_preview: Недоступен для предварительного просмотра
   setting: Параметр
   value: Цена
+  details: Подробности
+  updated_at: Обновлено
+  more_from_curator: Больше похоже на это от {name}
+  created_by: Создано
 offline:
   title: Похоже, что вы офлайн
   description: Пожалуйста, подключитесь к интернету
+installing: Установка
