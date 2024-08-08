@@ -34,7 +34,7 @@
     "use-debounce": "^10.0.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.3.0",
+    "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@eartharoid/deep-merge": "^0.0.2",
     "@vitejs/plugin-react-swc": "^3.6.0",
