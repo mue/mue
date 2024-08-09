@@ -36,6 +36,8 @@ widgets:
     add: Adicionar
     name_error: Deve fornecer o nome
     url_error: Forneça uma URL
+    edit: Editar Link
+    url: URL
   date:
     week: Semana
   weather:
@@ -60,7 +62,9 @@ widgets:
       pin: Fixar
       add: Adicionar
       no_todos: Sem Tarefas
-    apps: {}
+    apps:
+      no_apps: Nenhum link de aplicativo encontrado
+      title: Apps
 modals:
   main:
     title: Opções
@@ -68,8 +72,8 @@ modals:
     file_upload_error: O ficheiro tem mais de 2 MB
     navbar:
       settings: Configurações
-      addons: Complementos
-      marketplace: Mercado
+      addons: Biblioteca
+      marketplace: Descobrir
     error_boundary:
       title: Erro
       message: Falha ao carregar este componente do Mue
@@ -80,11 +84,13 @@ modals:
     title: Atualizar
     offline:
       description: Não é possível obter logs de atualização no modo offline
+      title: Offline
     error:
       title: Erro
       description: Não pode conectar-se ao servidor
   share:
     copy_link: Copiar ligação
+    email: Email
 toasts:
   quote: Citação copiada
   notes: Notas copiadas
@@ -96,3 +102,4 @@ toasts:
   imported: Importado com sucesso
   no_storage: Espaço de armazenamento insuficiente
   link_copied: Ligação copiada
+  stats_reset: Redefinição de estatísticas
