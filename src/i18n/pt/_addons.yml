@@ -24,3 +24,6 @@ sort:
 create:
   title: Criar
   moved_button: Get Started
+  moved_title: Criar complemento foi movido!
+  moved_description: Após a atualização 7.1, a criação de complementos agora foi transferida
+    para a interface da web
