@@ -1,1 +1,26 @@
-{}
+{
+  "tabname": "New Tab",
+  "toasts": {
+    "stats_reset": "ریست امار"
+  },
+  "widgets": {
+    "background": {
+      "credit": "عکس متوسط",
+      "download": "دانلود",
+      "downloads": "دانلودها",
+      "information": "اطلاعات",
+      "likes": "لایک ها",
+      "unsplash": "در Unsplash",
+      "views": "بازدید ها"
+    },
+    "greeting": {
+      "afternoon": "ظهر بخیر",
+      "birthday": "تولدت مبارک",
+      "christmas": "سال نو مبارک",
+      "evening": "عصر بخیر",
+      "halloween": "هالوین مبارک",
+      "morning": "صبح بخیر",
+      "newyear": "سال جدید مبارک"
+    }
+  }
+}
