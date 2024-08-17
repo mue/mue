@@ -63,7 +63,7 @@ const Content = memo(({ sections, currentTab }) => (
       ({ label, name, component: Component }) =>
         variables.getMessage(label) === currentTab && (
           <div
-            className="modalTabContent"
+            className="w-full rounded min-h-[69vh] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col"
             key={name}
             label={variables.getMessage(label)}
             name={name}

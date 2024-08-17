@@ -16,7 +16,7 @@ function Addons(props) {
     </Tabs>*/
     },
     (
-      <div className="modalTabContent">
+      <div className="w-full rounded min-h-[69vh] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col">
         <Added />
       </div>
     )

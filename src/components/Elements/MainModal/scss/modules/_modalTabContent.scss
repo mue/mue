@@ -1,67 +1,43 @@
 @import 'scss/variables';
 
-.modalTabContent {
-  width: 100% !important;
-  border-radius: 15px;
-  min-height: 69vh;
-  /* button {
-    @include modal-button(standard);
-  } */
+.settingsRow {
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  justify-content: space-between;
+  transition: 0.4s ease-in-out;
+  @extend %tabText;
 
-  @include themed {
-    padding: 1rem 3rem 3rem;
+  /* border-top: 1px solid #ccc; */
+  border-bottom: 1px solid #676767;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  &.settingsNoBorder {
+    border-bottom: none;
+  }
+
+  .content {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    background: t($modal-sidebar);
+    flex-flow: column;
+    max-width: 50%;
+  }
 
-    @extend %tabText;
+  .action {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    width: 300px;
 
-    hr {
-      width: 100%;
-      background: rgb(196 196 196 / 74%);
-      outline: none;
+    button {
+      margin-top: 10px;
     }
 
-    .settingsRow {
+    .link {
       display: flex;
+      flex-flow: row;
+      gap: 15px;
       align-items: center;
-      min-height: 100px;
-      justify-content: space-between;
-      transition: 0.4s ease-in-out;
-
-      /* border-top: 1px solid #ccc; */
-      border-bottom: 1px solid #676767;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-
-      &.settingsNoBorder {
-        border-bottom: none;
-      }
-
-      .content {
-        display: flex;
-        flex-flow: column;
-        max-width: 50%;
-      }
-
-      .action {
-        display: flex;
-        flex-flow: column;
-        align-items: flex-end;
-        width: 300px;
-
-        button {
-          margin-top: 10px;
-        }
-
-        .link {
-          display: flex;
-          flex-flow: row;
-          gap: 15px;
-          align-items: center;
-        }
-      }
     }
   }
 }

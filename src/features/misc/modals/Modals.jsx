@@ -56,7 +56,8 @@ function Modals() {
         closeTimeoutMS={300}
         onRequestClose={() => toggleModal('main', false)}
         isOpen={main}
-        className="h-[80vh] w-modal border-3 border-modal ease-in-out duration-800 transition-all backdrop-blur-3xl bg-modal-light dark:bg-modal-dark text-black dark:text-white overflow-y-auto shadow-xl rounded"
+        id="#modal"
+        className="z-[100] h-[80vh] w-modal border-3 border-modal ease-in-out duration-800 transition-all backdrop-blur-3xl bg-modal-light dark:bg-modal-dark text-black dark:text-white overflow-y-auto shadow-xl rounded"
         overlayClassName="grid place-content-center absolute top-0 left-0 h-screen w-screen"
         ariaHideApp={false}
       >

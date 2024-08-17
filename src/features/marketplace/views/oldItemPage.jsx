@@ -28,10 +28,11 @@ import Markdown from 'markdown-to-jsx';
 class ItemPage extends PureComponent {
   constructor(props) {
     super(props);
-    console.log(this.props)
+    console.log(this.props);
     this.state = {
       showUpdateButton:
-        this.props.data.local.installed === true && this.props.data.local.version !== this.props.data.version,
+        this.props.data.local.installed === true &&
+        this.props.data.local.version !== this.props.data.version,
       shareModal: false,
       count: 5,
       moreByCurator: [],
@@ -74,11 +75,11 @@ class ItemPage extends PureComponent {
     document.querySelector('#modal').scrollTop = 0;
     this.setState({
       button: this.props.data.local.installed ? this.buttons.uninstall : this.buttons.install,
-    })
+    });
   }
 
   updateAddon() {
-   // uninstall(this.props.data.type, this.props.data.display_name);
+    // uninstall(this.props.data.type, this.props.data.display_name);
     //install(this.props.data.type, this.props.data);
     toast(variables.getMessage('toasts.updated'));
     this.setState({
@@ -106,9 +107,9 @@ class ItemPage extends PureComponent {
 
   manage(type) {
     if (type === 'install') {
-     // install(this.props.data.type, this.props.data.data);
+      // install(this.props.data.type, this.props.data.data);
     } else {
-     // uninstall(this.props.data.type,this.props.data.display_name);
+      // uninstall(this.props.data.type,this.props.data.display_name);
     }
 
     toast(variables.getMessage('toasts.' + type + 'ed'));
@@ -332,9 +333,7 @@ class ItemPage extends PureComponent {
               </>
             )}
             <div className="marketplaceDescription">
-              <span className="title">
-                {variables.getMessage('marketplace:product.details')}
-              </span>
+              <span className="title">{variables.getMessage('marketplace:product.details')}</span>
               <div className="moreInfo">
                 {this.props.data.data.updated_at &&
                   moreInfoItem(
@@ -364,9 +363,8 @@ class ItemPage extends PureComponent {
                 {moreInfoItem(
                   <MdStyle />,
                   variables.getMessage('settings:sections.background.type.title'),
-                  variables.getMessage(
-                    'marketplace:' + this.getName(this.props.data.data.type),
-                  ) || 'marketplace',
+                  variables.getMessage('marketplace:' + this.getName(this.props.data.data.type)) ||
+                    'marketplace',
                 )}
               </div>
             </div>
@@ -392,9 +390,7 @@ class ItemPage extends PureComponent {
                 this.state.button
               ) : (
                 <p style={{ textAlign: 'center' }}>
-                  {variables.getMessage(
-                    'marketplace:product.buttons.not_available_preview',
-                  )}
+                  {variables.getMessage('marketplace:product.buttons.not_available_preview')}
                 </p>
               )}
               {this.props.data.data.sideload !== true && (
@@ -416,9 +412,7 @@ class ItemPage extends PureComponent {
                       )
                     }
                     icon={<MdFlag />}
-                    tooltipTitle={variables.getMessage(
-                      'marketplace:product.buttons.report',
-                    )}
+                    tooltipTitle={variables.getMessage('marketplace:product.buttons.report')}
                     tooltipKey="report"
                   />
                 </div>

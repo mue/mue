@@ -21,8 +21,7 @@ import { Carousel } from '../components/Elements/Carousel';
 const ItemPage = () => {
   const [count, setCount] = useState(5);
   const [shareModal, setShareModal] = useState(false);
-  const { installedItems, selectedItem, installItem, uninstallItem } =
-    useMarketData();
+  const { installedItems, selectedItem, installItem, uninstallItem } = useMarketData();
 
   const [isInstalled, setIsInstalled] = useState(false);
 
@@ -376,35 +375,33 @@ const ItemPage = () => {
       <div className="itemPage flex flex-row gap-8 2xl:gap-16 justify-between">
         <div class="flex flex-col-reverse xl:flex-row gap-8 2xl:gap-16">
           <ItemDetails />
-            <div className="itemShowcase">
-              <div className="subHeader">
-                {itemWarning()}
-              </div>
-              {selectedItem.photos && (
-                <div className="carousel">
-                  <div className="carousel_container">
-                    <Carousel data={selectedItem.photos} />
-                  </div>
+          <div className="itemShowcase">
+            <div className="subHeader">{itemWarning()}</div>
+            {selectedItem.photos && (
+              <div className="carousel">
+                <div className="carousel_container">
+                  <Carousel data={selectedItem.photos} />
                 </div>
-              )}
-              {selectedItem.settings && selectedItem.screenshot_url !== null && (
-                <img
-                  alt="product"
-                  draggable={false}
-                  src={selectedItem.screenshot_url}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/icons/marketplace-placeholder.png';
-                  }}
-                />
-              )}
-              <div className="marketplaceDescription">
-                <span className="title">
-                  {variables.getMessage('marketplace:product.description')}
-                </span>
-                <Markdown>{selectedItem.description}</Markdown>
               </div>
-              <ItemShowcase />
+            )}
+            {selectedItem.settings && selectedItem.screenshot_url !== null && (
+              <img
+                alt="product"
+                draggable={false}
+                src={selectedItem.screenshot_url}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/icons/marketplace-placeholder.png';
+                }}
+              />
+            )}
+            <div className="marketplaceDescription">
+              <span className="title">
+                {variables.getMessage('marketplace:product.description')}
+              </span>
+              <Markdown>{selectedItem.description}</Markdown>
+            </div>
+            <ItemShowcase />
           </div>
         </div>
 

@@ -37,16 +37,12 @@ const Tabs = (props) => {
         style={{ display: localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none' }}
       >
         <div className="shareHeader">
-          <span className="title">
-            {variables.getMessage('settings:reminder.title')}
-          </span>
+          <span className="title">{variables.getMessage('settings:reminder.title')}</span>
           <span className="closeModal" onClick={hideReminder}>
             <MdClose />
           </span>
         </div>
-        <span className="subtitle">
-          {variables.getMessage('settings:reminder.message')}
-        </span>
+        <span className="subtitle">{variables.getMessage('settings:reminder.message')}</span>
         <button onClick={() => window.location.reload()}>
           <MdRefresh />
           {variables.getMessage('modals.main.error_boundary.refresh')}
@@ -72,7 +68,7 @@ const Tabs = (props) => {
           {reminderInfo}
         </div>
       )}
-      <div className="modalTabContent">
+      <div className="w-full rounded min-h-[69vh] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col">
         {props.children.map((tab, index) => {
           if (tab.props.label !== currentTab) {
             return null;

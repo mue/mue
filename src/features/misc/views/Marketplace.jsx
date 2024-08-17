@@ -54,7 +54,7 @@ function Marketplace() {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        className="modalTabContent"
+        className="w-full rounded min-h-[69vh] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -79,9 +79,7 @@ function Marketplace() {
             <ItemPage />
           </motion.div>
         )}
-        {selectedCollection !== null && (
-          <CollectionPage />
-        )}
+        {selectedCollection !== null && <CollectionPage />}
       </motion.div>
     </AnimatePresence>
   );

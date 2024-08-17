@@ -12,6 +12,10 @@ module.exports = {
           light: 'rgba(255, 255, 255, .85)',
           dark: 'rgba(14, 16, 19, .85)',
         },
+        'modal-content': {
+          light: 'rgba(255, 255, 255, .95)',
+          dark: 'rgba(14, 16, 19, .95)',
+        },
         background: {
           light: 'rgba(255, 255, 255, 0.7)',
           dark: 'rgba(0, 0, 0, 0.7)',
