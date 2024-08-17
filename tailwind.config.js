@@ -1,10 +1,31 @@
+const { light } = require('@mui/material/styles/createPalette');
 const plugin = require('tailwindcss/plugin');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        modal: {
+          light: 'rgba(255, 255, 255, .85)',
+          dark: 'rgba(14, 16, 19, .85)',
+        },
+        background: {
+          light: 'rgba(255, 255, 255, 0.7)',
+          dark: 'rgba(0, 0, 0, 0.7)',
+        },
+      },
+      width: {
+        modal: 'clamp(60vw, 1400px, 90vw)',
+      },
+      borderRadius: {
+        DEFAULT: '12px',
+      },
+      borderColor: {
+        modal: 'rgba(14, 16, 19, 0.3)', // Define your custom border color
+      },
       textShadow: {
         sm: '0 1px 4px var(--tw-shadow-color)',
         DEFAULT: '0 2px 8px var(--tw-shadow-color)',

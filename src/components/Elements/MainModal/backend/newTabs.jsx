@@ -14,7 +14,6 @@ const Sidebar = memo(({ sections, currentTab, setCurrentTab }) => {
     [setSubTab, setSubSection],
   );
 
-
   const hideReminder = () => {
     localStorage.setItem('showReminder', false);
     document.querySelector('.reminder-info').style.display = 'none';
@@ -27,16 +26,12 @@ const Sidebar = memo(({ sections, currentTab, setCurrentTab }) => {
         style={{ display: localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none' }}
       >
         <div className="shareHeader">
-          <span className="title">
-            {variables.getMessage('settings:reminder.title')}
-          </span>
+          <span className="title">{variables.getMessage('settings:reminder.title')}</span>
           <span className="closeModal" onClick={hideReminder}>
             <MdClose />
           </span>
         </div>
-        <span className="subtitle">
-          {variables.getMessage('settings:reminder.message')}
-        </span>
+        <span className="subtitle">{variables.getMessage('settings:reminder.message')}</span>
         <button onClick={() => window.location.reload()}>
           <MdRefresh />
           {variables.getMessage('modals.main.error_boundary.refresh')}
@@ -84,7 +79,7 @@ const Tabs = ({ sections }) => {
   const { subTab, setSubTab, setSubSection } = useTab();
 
   return (
-    <div className="flex flex-row w-full">
+    <div className="flex flex-row w-full gap-2">
       <Sidebar sections={sections} currentTab={subTab} />
       <Content sections={sections} currentTab={subTab} />
     </div>

@@ -85,7 +85,6 @@ body {
   height: 100%;
 }
 
-
 /* error */
 .criticalError {
   display: grid;
@@ -208,4 +207,8 @@ body {
       }
     }
   }
+}
+
+.modal-clamp-width {
+  width: clamp(60vw, 1400px, 90vw);
 }

@@ -7,40 +7,6 @@
 @import 'settings/main';
 @import 'marketplace/main';
 
-.Overlay {
-  position: fixed;
-  z-index: 100;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-}
-
-.Modal {
-  @include themed {
-    color: t($color);
-  }
-
-  box-shadow: 0 0 20px rgb(0 0 0 / 30%);
-  opacity: 1;
-  z-index: -2;
-  transition-timing-function: ease-in;
-  border-radius: map-get($modal, 'border-radius');
-  user-select: none;
-  overflow-y: auto;
-  transform: scale(0);
-  transition: all 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8);
-
-  &:focus {
-    outline: 0;
-  }
-
-  .modalInfoPage {
-    user-select: text;
-  }
-}
-
 .closePositioning {
   position: absolute;
   top: 3rem;
@@ -83,19 +49,6 @@
   opacity: 0;
   transform: scale(0);
 }
-
-#modal {
-  height: 80vh;
-  width: clamp(60vw, 1400px, 90vw);
-  background: rgba(14, 16, 19, .85);
-  backdrop-filter: blur(60px);
-  border: 3px solid rgba(14, 16, 19, .3);
-
-  /*@include themed {
-    background-color: t($modal-sidebar);
-  }*/
-}
-
 
 /* fixes for font size on extension */
 label,

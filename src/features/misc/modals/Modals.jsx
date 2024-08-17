@@ -32,7 +32,6 @@ function Modals() {
     localStorage.setItem('showReminder', false);
   }, []);
 
-
   const toggleModal = (type, action) => {
     switch (type) {
       case 'main':
@@ -48,21 +47,17 @@ function Modals() {
     if (action !== false) {
       variables.stats.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
     }
-  }
-  
+  };
 
   return (
     <>
-      {welcome === false && (
-        <Navbar openModal={(modal) => toggleModal('main', true)} />
-      )}
+      {welcome === false && <Navbar openModal={(modal) => toggleModal('main', true)} />}
       <Modal
         closeTimeoutMS={300}
-        id="modal"
         onRequestClose={() => toggleModal('main', false)}
         isOpen={main}
-        className="Modal mainModal"
-        overlayClassName="Overlay"
+        className="h-[80vh] w-modal border-3 border-modal ease-in-out duration-800 transition-all backdrop-blur-3xl bg-modal-light dark:bg-modal-dark text-black dark:text-white overflow-y-auto shadow-xl rounded"
+        overlayClassName="grid place-content-center absolute top-0 left-0 h-screen w-screen"
         ariaHideApp={false}
       >
         <MainModal modalClose={() => toggleModal('main', false)} />
