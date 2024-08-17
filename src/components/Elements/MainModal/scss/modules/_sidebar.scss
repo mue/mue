@@ -9,7 +9,7 @@
     padding: 0 5px;
     border-radius: 12px 0 0 12px;
     overflow: hidden auto;
-    height: 67vh;
+    height: calc(80vh - 80px);
     min-width: 250px;
 
     .mainTitle {

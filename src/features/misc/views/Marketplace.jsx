@@ -54,7 +54,7 @@ function Marketplace() {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        className="w-full rounded min-h-[69vh] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col"
+        className="w-full rounded h-[calc(78vh-80px)] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col overflow-scroll"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

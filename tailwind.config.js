@@ -20,6 +20,11 @@ module.exports = {
           light: 'rgba(255, 255, 255, 0.7)',
           dark: 'rgba(0, 0, 0, 0.7)',
         },
+        brand: {
+          orange: '#FF5C25',
+          red: '#D21A11',
+          pink: '#FF456E',
+        },
       },
       width: {
         modal: 'clamp(60vw, 1400px, 90vw)',

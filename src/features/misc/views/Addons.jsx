@@ -1,8 +1,7 @@
 import variables from 'config/variables';
 import { memo } from 'react';
 
-import Added from '../../marketplace/views/Library';
-import Create from '../../marketplace/views/Create';
+import Library from '../../marketplace/views/Library';
 
 function Addons(props) {
   return (
@@ -16,8 +15,8 @@ function Addons(props) {
     </Tabs>*/
     },
     (
-      <div className="w-full rounded min-h-[69vh] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col">
-        <Added />
+      <div className="w-full rounded h-[calc(78vh-80px)] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col overflow-scroll">
+        <Library />
       </div>
     )
   );

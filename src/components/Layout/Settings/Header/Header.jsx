@@ -1,10 +1,6 @@
 import variables from 'config/variables';
 import { useState, useEffect } from 'react';
-import {
-  MdFlag,
-  MdOutlineVisibilityOff,
-  MdOutlineVisibility,
-} from 'react-icons/md';
+import { MdFlag, MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
 import { Button } from 'components/Elements';
 
@@ -64,8 +60,8 @@ function Header(props) {
   };
 
   return (
-    <div className="modalHeader">
-      <div className="headerActions">
+    <div className="bg-modal-content-light dark:bg-modal-content-dark py-6 px-10 rounded">
+      <div className="flex flex-row gap-5">
         {props.visibilityToggle && <VisibilityToggle />}
         {props.report !== false && <ReportButton />}
         {props.children}

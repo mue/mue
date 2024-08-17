@@ -68,7 +68,7 @@ const Tabs = (props) => {
           {reminderInfo}
         </div>
       )}
-      <div className="w-full rounded min-h-[69vh] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col">
+      <div className="w-full rounded h-[calc(78vh-80px)] bg-modal-content-light dark:bg-modal-content-dark p-10 flex flex-col overflow-scroll">
         {props.children.map((tab, index) => {
           if (tab.props.label !== currentTab) {
             return null;

@@ -72,7 +72,9 @@ class ItemPage extends PureComponent {
 
   componentDidMount() {
     this.getCurator(this.props.data.author);
-    document.querySelector('#modal').scrollTop = 0;
+    if (document.querySelector('#modal')) {
+      document.querySelector('#modal').scrollTop = 0;
+    }
     this.setState({
       button: this.props.data.local.installed ? this.buttons.uninstall : this.buttons.install,
     });

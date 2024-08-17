@@ -69,7 +69,7 @@ const MainModalContent = ({ modalClose }) => {
           animate="center"
           exit="exit"
           transition={{ type: 'tween', duration: 0.8 }}
-          className="flex w-full min-w-full"
+          className="flex w-full min-w-full overflow-y-auto"
         >
           <Suspense fallback={renderLoader()}>{renderTab()}</Suspense>
         </motion.div>

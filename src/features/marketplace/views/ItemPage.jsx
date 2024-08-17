@@ -354,7 +354,9 @@ const ItemPage = () => {
   };
 
   useEffect(() => {
-    document.querySelector('#modal').scrollTop = 0;
+    if (document.querySelector('#modal')) {
+      document.querySelector('#modal').scrollTop = 0;
+    }
   });
 
   return (

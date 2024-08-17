@@ -158,7 +158,7 @@
       width: 100%;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, .75);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.75);
       aspect-ratio: 1 / 1;
       object-fit: cover;
     }
@@ -259,9 +259,9 @@ p.author {
   margin-top: -5px;
 }
 
-#item>img,
+#item > img,
 .updateImage,
-.updateChangelog>p>img {
+.updateChangelog > p > img {
   border-radius: 12px;
   height: 200px;
   width: auto;
@@ -452,7 +452,6 @@ p.author {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 15px;
 
   .tooltip {
     margin-right: 25px;
