@@ -14,6 +14,16 @@ widgets:
     information: 信息
     download: 下载
     downloads: 下载
+    camera: 相机
+    exclude_confirm: "您确定不想再看到此图片吗？\n注意：如果您不喜欢“{category}”图片，您可以在背景源设置中取消选择该类别。"
+    views: 视图
+    likes: 喜欢
+    location: 位置
+    resolution: 解决
+    source: 来源
+    category: 分类
+    exclude: 不再显示
+    confirm: 确认
   search: 搜索
   quicklinks:
     new: 新快捷方式
@@ -23,20 +33,34 @@ widgets:
     add: 添加
     name_error: 请输入名称
     url_error: 请输入链接
+    edit: 编辑链接
   date:
     week: 周
   weather:
     not_found: 未找到
     meters: "{amount}米"
-  quote: {}
+    extra_information: 额外信息
+    feels_like: 感觉像 {amount}
+  quote:
+    link_tooltip: 用 Wikipedia 打开
+    share: 分享
+    copy: 复制
+    favourite: 收藏
+    unfavourite: 取消收藏
   navbar:
     tooltips:
       refresh: 刷新
     notes:
       title: 便签
       placeholder: 请键入内容
-    todo: {}
-    apps: {}
+    todo:
+      add: 添加
+      no_todos: 没有待办事项
+      title: 待办事项
+      pin: 固定
+    apps:
+      title: 应用
+      no_apps: 未找到应用链接
 modals:
   main:
     title: 选项
@@ -44,12 +68,14 @@ modals:
     file_upload_error: 大小超过了 2MB
     navbar:
       settings: 设置
-      addons: 我的插件
-      marketplace: 插件市场
+      addons: 图书馆
+      marketplace: 发现
     error_boundary:
       title: 错误
       message: 无法载入该Mue组件
       refresh: 刷新
+      report_error: 发送错误报告
+      sent: 发送
   update:
     title: 更新日志
     offline:
@@ -58,12 +84,18 @@ modals:
     error:
       title: 错误
       description: 无法连接到服务器
-  share: {}
+  share:
+    copy_link: 复制链接
+    email: 邮箱
 toasts:
-  quote: 名言已复制
+  quote: 引用已复制
   notes: 便签已复制
   reset: 重置成功
   installed: 安装成功
   uninstalled: 卸载成功
   error: 发生错误
   imported: 导入成功
+  updated: 更新成功
+  no_storage: 存储空间不足
+  link_copied: 链接已复制
+  stats_reset: 统计数据重置
