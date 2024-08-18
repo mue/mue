@@ -8,7 +8,7 @@ import { Checkbox, Dropdown } from 'components/Form';
 import EventBus from 'utils/eventbus';
 
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
-import { Header } from 'components/Layout/Settings';
+import { Header, PreferencesWrapper } from 'components/Layout/Settings';
 
 import AppsOptions from './AppsOptions';
 import defaults from './default';
@@ -17,7 +17,9 @@ function NavbarOptions() {
   const [showRefreshOptions, setShowRefreshOptions] = useState(
     localStorage.getItem('refresh') === 'true',
   );
-  const [appsEnabled, setAppsEnabled] = useState(localStorage.getItem('appsEnabled') === 'true' || defaults.appsEnabled);
+  const [appsEnabled, setAppsEnabled] = useState(
+    localStorage.getItem('appsEnabled') === 'true' || defaults.appsEnabled,
+  );
 
   const NAVBAR_SECTION = 'settings:sections.appearance.navbar';
 
@@ -26,9 +28,7 @@ function NavbarOptions() {
       <Row final={false}>
         <Content
           title={variables.getMessage('settings:additional_settings')}
-          subtitle={variables.getMessage(
-            'settings:sections.appearance.navbar.additional',
-          )}
+          subtitle={variables.getMessage('settings:sections.appearance.navbar.additional')}
         />
         <Action>
           <Checkbox
@@ -104,9 +104,7 @@ function NavbarOptions() {
 
     return (
       <Row>
-        <Content
-          title={variables.getMessage('settings:sections.appearance.navbar.widgets')}
-        />
+        <Content title={variables.getMessage('settings:sections.appearance.navbar.widgets')} />
         <Action>
           <div className="navbarButtonOptions">
             {buttons.map((button, index) => (
@@ -123,9 +121,7 @@ function NavbarOptions() {
       <Row final={false} inactive={!showRefreshOptions}>
         <Content
           title={variables.getMessage(`${NAVBAR_SECTION}.refresh`)}
-          subtitle={variables.getMessage(
-            'settings:sections.appearance.navbar.refresh_subtitle',
-          )}
+          subtitle={variables.getMessage('settings:sections.appearance.navbar.refresh_subtitle')}
         />
         <Action>
           <Dropdown
@@ -169,10 +165,12 @@ function NavbarOptions() {
         zoomSetting="zoomNavbar"
         zoomCategory="navbar"
       />
-      <AdditionalSettings />
-      <NavbarOptions />
-      <RefreshOptions />
-      <AppsOptions appsEnabled={appsEnabled} />
+      <PreferencesWrapper visibilityToggle={false}>
+        <AdditionalSettings />
+        <NavbarOptions />
+        <RefreshOptions />
+        <AppsOptions appsEnabled={appsEnabled} />
+      </PreferencesWrapper>
     </>
   );
 }

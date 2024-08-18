@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { useEffect, useState } from 'react';
 import { Checkbox as CheckboxUI, Field, Label } from '@headlessui/react';
-import { MdCheckBox } from "react-icons/md";
+import { MdCheckBox } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
 
 const Checkbox = (props) => {
@@ -21,10 +21,7 @@ const Checkbox = (props) => {
       props.onChange(value);
     }
 
-    variables.stats.postEvent(
-      'setting',
-      `${props.name} ${value ? 'enabled' : 'disabled'}`,
-    );
+    variables.stats.postEvent('setting', `${props.name} ${value ? 'enabled' : 'disabled'}`);
 
     if (props.element) {
       if (!document.querySelector(props.element)) {
@@ -42,9 +39,9 @@ const Checkbox = (props) => {
         checked={checked}
         onChange={handleChange}
         disabled={props.disabled || false}
-        className="border border-[#484848] bg-white/5 group size-4 rounded data-[checked]:bg-neutral-900 cursor-pointer grid place-content-center"
+        className="border border-[#484848] bg-white/5 group size-4 rounded-sm data-[checked]:bg-neutral-900 cursor-pointer grid place-content-center"
       >
-          <MdCheckBox className="stroke-white opacity-0 group-data-[checked]:opacity-100 size-6" />
+        <MdCheckBox className="stroke-white opacity-0 group-data-[checked]:opacity-100 size-6" />
       </CheckboxUI>
       <Label>{props.text}</Label>
     </Field>

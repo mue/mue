@@ -49,7 +49,7 @@ function Changelog() {
     setTitle(changelog.name);
     setContent(changelog.body);
     setDate(new Date(changelog.published_at).toLocaleDateString());
-  }
+  };
 
   useEffect(() => {
     if (navigator.onLine === false || offlineMode) {
@@ -77,9 +77,7 @@ function Changelog() {
       <>
         <MdOutlineWifiOff />
         <h1>{variables.getMessage('marketplace:offline.title')}</h1>
-        <p className="description">
-          {variables.getMessage('marketplace:offline.description')}
-        </p>
+        <p className="description">{variables.getMessage('marketplace:offline.description')}</p>
       </>,
     );
   }
@@ -106,14 +104,15 @@ function Changelog() {
   }
 
   return (
-    <article className="changelogtab prose dark:prose-invert" ref={changelog}>
-      <div className="not-prose">
-        <span className="mainTitle">{title}</span>
-        <span className="subtitle">Released on {date}</span>
+    <article
+      className="bg-modal-content-light dark:bg-modal-content-dark w-full rounded p-10 prose dark:prose-invert"
+      ref={changelog}
+    >
+      <div>
+        <h1 class="leading-tight mb-1">{title}</h1>
+        <p class="leading-none mt-0">Published on {date}</p>
       </div>
-      <Markdown options={{ overrides: { a: { props: { target: '_blank' } } } }}>
-        {content}
-      </Markdown>
+      <Markdown options={{ overrides: { a: { props: { target: '_blank' } } } }}>{content}</Markdown>
     </article>
   );
 }

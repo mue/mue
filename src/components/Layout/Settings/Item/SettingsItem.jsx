@@ -1,5 +1,5 @@
 const Row = (props) => {
-  const classes = `${props.final ? 'border-b-0' : 'border-b border-gray-500'} ${props.inactive ? 'opacity-50 pointer-events-none transition duration-400 ease-in-out' : ''} flex items-center min-h-[100px] justify-between py-4 transition duration-400 ease-in-out`;
+  const classes = `${props.inactive ? 'opacity-50 pointer-events-none transition duration-400 ease-in-out' : ''} flex items-center min-h-[100px] justify-between py-4 transition duration-400 ease-in-out`;
   return <div className={classes}>{props.children}</div>;
 };
 

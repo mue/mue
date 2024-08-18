@@ -110,9 +110,7 @@ function AppsOptions({ appsEnabled }) {
       <Row final={true} inactive={!appsEnabled}>
         <Content
           title={variables.getMessage('widgets.navbar.apps.title')}
-          subtitle={variables.getMessage(
-            'settings:sections.appearance.navbar.apps_subtitle',
-          )}
+          subtitle={variables.getMessage('settings:sections.appearance.navbar.apps_subtitle')}
         />
         <Action>
           <Button
@@ -123,17 +121,18 @@ function AppsOptions({ appsEnabled }) {
           />
         </Action>
       </Row>
-
-      <div className="messagesContainer">
-        {appsModalInfo.items.map((item, i) => (
-          <QuickLink
-            key={i}
-            item={item}
-            startEditLink={() => startEditLink(item)}
-            deleteLink={(key, e) => deleteLink(key, e)}
-          />
-        ))}
-      </div>
+      {appsModalInfo.items.length > 0 && (
+        <div className="messagesContainer">
+          {appsModalInfo.items.map((item, i) => (
+            <QuickLink
+              key={i}
+              item={item}
+              startEditLink={() => startEditLink(item)}
+              deleteLink={(key, e) => deleteLink(key, e)}
+            />
+          ))}
+        </div>
+      )}
 
       <Modal
         closeTimeoutMS={100}

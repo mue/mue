@@ -58,7 +58,7 @@ const MainModalContent = ({ modalClose }) => {
   };
 
   return (
-    <div className="flex flex-col w-full min-w-full">
+    <div className="flex flex-col w-full min-w-full ">
       <Navbar modalClose={modalClose} />
       <AnimatePresence initial={false} custom={direction}>
         <motion.div

@@ -14,22 +14,6 @@ const Sidebar = memo(({ sections, currentTab, setCurrentTab }) => {
     [setSubTab, setSubSection],
   );
 
-  return (
-    <div className="modalSidebar">
-      {sections.map((section, index) => (
-        <Tab
-          key={index}
-          currentTab={subTab}
-          label={variables.getMessage(section.label)}
-          onClick={handleClick(section.label)}
-          navbarTab={section.navbar || false}
-        />
-      ))}
-    </div>
-  );
-});
-
-const Content = memo(({ sections, currentTab }) => {
   const hideReminder = () => {
     localStorage.setItem('showReminder', false);
     document.querySelector('.reminder-info').style.display = 'none';
@@ -66,17 +50,38 @@ const Content = memo(({ sections, currentTab }) => {
   );
 
   return (
+    <div className="modalSidebar">
+      {sections.map((section, index) => (
+        <Tab
+          key={index}
+          currentTab={subTab}
+          label={variables.getMessage(section.label)}
+          onClick={handleClick(section.label)}
+          navbarTab={section.navbar || false}
+        />
+      ))}
+      {reminderInfo}
+    </div>
+  );
+});
+
+const Content = memo(({ sections, currentTab }) => {
+  const hideReminder = () => {
+    localStorage.setItem('showReminder', false);
+    document.querySelector('.reminder-info').style.display = 'none';
+  };
+
+  return (
     <>
       {sections.map(
         ({ label, name, component: Component }) =>
           variables.getMessage(label) === currentTab && (
             <div
-              className="w-full rounded h-[calc(78vh-80px)] flex flex-col overflow-scroll pr-2 gap-3"
+              className="w-full rounded h-[calc(78vh-80px)] flex flex-col pr-10 gap-3 lg:overflow-x-hidden overflow-y-auto overflow-x-auto"
               key={name}
               label={variables.getMessage(label)}
               name={name}
             >
-              {reminderInfo}
               <Component />
             </div>
           ),

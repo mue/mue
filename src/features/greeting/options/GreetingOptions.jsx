@@ -23,12 +23,12 @@ import { MdEventNote, MdAdd, MdCancel, MdRefresh } from 'react-icons/md';
 const GreetingOptions = () => {
   const { subSection } = useTab();
   const [customEvents, setCustomEvents] = useState(
-    JSON.parse(localStorage.getItem('customEvents')) || defaultEvents
+    JSON.parse(localStorage.getItem('customEvents')) || defaultEvents,
   );
   const [events, setEvents] = useState(false);
 
   const [birthday, setBirthday] = useState(
-    new Date(localStorage.getItem('birthday')) || defaults.birthday
+    new Date(localStorage.getItem('birthday')) || defaults.birthday,
   );
 
   const [enableBirthday, setEnableBirthday] = useState(
@@ -133,9 +133,7 @@ const GreetingOptions = () => {
       <Row>
         <Content
           title={variables.getMessage(`${GREETING_SECTION}.birthday`)}
-          subtitle={variables.getMessage(
-            'settings:sections.greeting.birthday_subtitle',
-          )}
+          subtitle={variables.getMessage('settings:sections.greeting.birthday_subtitle')}
         />
         <Action>
           <Switch
@@ -298,8 +296,8 @@ const GreetingOptions = () => {
 
   return (
     <>
-      {header}
-      {subSection === "events" ? (
+      {/*{header}*/}
+      {subSection === 'events' ? (
         <>
           <Row>
             <Content
@@ -321,13 +319,15 @@ const GreetingOptions = () => {
           {CustomEventsSection()}
         </>
       ) : (
-        <PreferencesWrapper
-          setting="greeting"
-          zoomSetting="zoomGreeting"
-          category="greeting"
-          visibilityToggle={true}
-        >
-          <AdditionalOptions />
+        <>
+          <PreferencesWrapper
+            setting="greeting"
+            zoomSetting="zoomGreeting"
+            category="greeting"
+            visibilityToggle={true}
+          >
+            <AdditionalOptions />
+          </PreferencesWrapper>
           <Section
             id="events"
             title={variables.getMessage(`${GREETING_SECTION}.events`)}
@@ -335,7 +335,7 @@ const GreetingOptions = () => {
             onClick={() => setEvents(true)}
             icon={<MdEventNote />}
           />
-        </PreferencesWrapper>
+        </>
       )}
     </>
   );

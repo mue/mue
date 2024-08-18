@@ -110,9 +110,7 @@ const QuoteOptions = () => {
       {subSection === 'source' ? (
         <Header
           title={variables.getMessage(`${QUOTE_SECTION}.title`)}
-          secondaryTitle={variables.getMessage(
-            'settings:sections.background.source.title',
-          )}
+          secondaryTitle={variables.getMessage('settings:sections.background.source.title')}
           report={false}
         />
       ) : (
@@ -138,13 +136,17 @@ const QuoteOptions = () => {
       )}
 
       {subSection !== 'source' && (
-        <PreferencesWrapper
-          setting="quote"
-          default={defaults.quote}
-          zoomSetting="zoomQuote"
-          category="quote"
-          visibilityToggle={true}
-        >
+        <>
+          <PreferencesWrapper
+            setting="quote"
+            default={defaults.quote}
+            zoomSetting="zoomQuote"
+            category="quote"
+            visibilityToggle={true}
+          >
+            <ButtonOptions />
+            <AdditionalOptions />
+          </PreferencesWrapper>
           <Section
             id="source"
             icon={<MdSource />}
@@ -153,9 +155,7 @@ const QuoteOptions = () => {
           >
             <SourceDropdown />
           </Section>
-          <ButtonOptions />
-          <AdditionalOptions />
-        </PreferencesWrapper>
+        </>
       )}
 
       {quoteType === 'custom' && subSection === 'source' && <CustomSettings />}
