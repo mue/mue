@@ -101,6 +101,7 @@ sections:
     photo_information: Show photo information
     show_map: Show location map on photo information if available
     categories: Categories
+    category: Category
     buttons:
       title: Buttons
       view: Maximise
@@ -141,7 +142,7 @@ sections:
       add_colour: Add colour
       add_background: Add background
       drop_to_upload: Drop to upload
-      formats: "Available formats: {list}"
+      formats: 'Available formats: {list}'
       select: Or Select
       add_url: Add URL
       disabled: Disabled
@@ -330,8 +331,8 @@ sections:
       addons_installed: Add-ons installed
     usage: Usage Stats
     achievements: Achievements
-    achievement_unlocked: "Achievement Unlocked: {name}"
-    unlocked: "{count} Unlocked"
+    achievement_unlocked: 'Achievement Unlocked: {name}'
+    unlocked: '{count} Unlocked'
     locked: Locked
     clear_modal:
       question: Do you want to clear your stats?

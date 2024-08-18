@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
 
-import { Header } from 'components/Layout/Settings';
+import { Header, PreferencesWrapper } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Slider, Radio, Text, ChipSelect } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 //import Text from 'components/Form/Settings/Text/Text';
@@ -123,9 +123,7 @@ class BackgroundOptions extends PureComponent {
               />
             )}
             <Dropdown
-              label={variables.getMessage(
-                'settings:sections.background.source.quality.title',
-              )}
+              label={variables.getMessage('settings:sections.background.source.quality.title')}
               name="apiQuality"
               element=".other"
               items={APIQualityOptions}
@@ -152,19 +150,13 @@ class BackgroundOptions extends PureComponent {
         {this.state.backgroundAPI === 'unsplash' && (
           <Row final={true}>
             <Content
-              title={variables.getMessage(
-                'settings:sections.background.unsplash.title',
-              )}
-              subtitle={variables.getMessage(
-                'settings:sections.background.unsplash.subtitle',
-              )}
+              title={variables.getMessage('settings:sections.background.unsplash.title')}
+              subtitle={variables.getMessage('settings:sections.background.unsplash.subtitle')}
             />
             <Action>
               <Text
                 title={variables.getMessage('settings:sections.background.unsplash.id')}
-                subtitle={variables.getMessage(
-                  'settings:sections.background.unsplash.id_subtitle',
-                )}
+                subtitle={variables.getMessage('settings:sections.background.unsplash.id_subtitle')}
                 placeholder="e.g. 123456, 654321"
                 name="unsplashCollections"
                 category="background"
@@ -211,9 +203,7 @@ class BackgroundOptions extends PureComponent {
       header = (
         <Header
           title={variables.getMessage('settings:sections.background.title')}
-          secondaryTitle={variables.getMessage(
-            'settings:sections.background.effects.title',
-          )}
+          secondaryTitle={variables.getMessage('settings:sections.background.effects.title')}
           goBack={() => this.setState({ effects: false })}
         />
       );
@@ -221,9 +211,7 @@ class BackgroundOptions extends PureComponent {
       header = (
         <Header
           title={variables.getMessage('settings:sections.background.title')}
-          secondaryTitle={variables.getMessage(
-            'settings:sections.background.source.title',
-          )}
+          secondaryTitle={variables.getMessage('settings:sections.background.source.title')}
           goBack={() => this.setState({ backgroundSettingsSection: false })}
         />
       );
@@ -254,17 +242,13 @@ class BackgroundOptions extends PureComponent {
                     {variables.getMessage('settings:sections.background.source.title')}
                   </span>
                   <span className="subtitle">
-                    {variables.getMessage(
-                      'settings:sections.background.source.subtitle',
-                    )}
+                    {variables.getMessage('settings:sections.background.source.subtitle')}
                   </span>
                 </div>
               </div>
               <div className="action">
                 <Dropdown
-                  label={variables.getMessage(
-                    'settings:sections.background.type.title',
-                  )}
+                  label={variables.getMessage('settings:sections.background.type.title')}
                   name="backgroundType"
                   onChange={(value) => this.setState({ backgroundType: value })}
                   category="background"
@@ -281,14 +265,10 @@ class BackgroundOptions extends PureComponent {
                     <MdOutlineAutoAwesome />
                     <div className="content">
                       <span className="title">
-                        {variables.getMessage(
-                          'settings:sections.background.effects.title',
-                        )}
+                        {variables.getMessage('settings:sections.background.effects.title')}
                       </span>
                       <span className="subtitle">
-                        {variables.getMessage(
-                          'settings:sections.background.effects.subtitle',
-                        )}
+                        {variables.getMessage('settings:sections.background.effects.subtitle')}
                       </span>
                     </div>
                   </div>
@@ -306,35 +286,33 @@ class BackgroundOptions extends PureComponent {
         (this.state.backgroundType === 'api' ||
           this.state.backgroundType === 'custom' ||
           this.state.marketplaceEnabled) ? (
-          <Row final={true}>
-            <Content
-              title={variables.getMessage('settings:sections.background.display')}
-              subtitle={variables.getMessage(
-                'settings:sections.background.display_subtitle',
-              )}
-            />
-            <Action>
-              <Checkbox
-                name="bgtransition"
-                text={variables.getMessage('settings:sections.background.transition')}
-                element=".other"
-                disabled={!usingImage}
+          <PreferencesWrapper>
+            <Row final={true}>
+              <Content
+                title={variables.getMessage('settings:sections.background.display')}
+                subtitle={variables.getMessage('settings:sections.background.display_subtitle')}
               />
-              <Checkbox
-                name="photoInformation"
-                text={variables.getMessage(
-                  'settings:sections.background.photo_information',
-                )}
-                element=".other"
-              />
-              <Checkbox
-                name="photoMap"
-                text={variables.getMessage('settings:sections.background.show_map')}
-                element=".other"
-                disabled={!usingImage}
-              />
-            </Action>
-          </Row>
+              <Action>
+                <Checkbox
+                  name="bgtransition"
+                  text={variables.getMessage('settings:sections.background.transition')}
+                  element=".other"
+                  disabled={!usingImage}
+                />
+                <Checkbox
+                  name="photoInformation"
+                  text={variables.getMessage('settings:sections.background.photo_information')}
+                  element=".other"
+                />
+                <Checkbox
+                  name="photoMap"
+                  text={variables.getMessage('settings:sections.background.show_map')}
+                  element=".other"
+                  disabled={!usingImage}
+                />
+              </Action>
+            </Row>
+          </PreferencesWrapper>
         ) : null}
         {this.state.backgroundSettingsSection && (
           <>
@@ -345,18 +323,12 @@ class BackgroundOptions extends PureComponent {
               }
             >
               <Content
-                title={variables.getMessage(
-                  'settings:sections.background.source.title',
-                )}
-                subtitle={variables.getMessage(
-                  'settings:sections.background.source.subtitle',
-                )}
+                title={variables.getMessage('settings:sections.background.source.title')}
+                subtitle={variables.getMessage('settings:sections.background.source.subtitle')}
               />
               <Action>
                 <Dropdown
-                  label={variables.getMessage(
-                    'settings:sections.background.type.title',
-                  )}
+                  label={variables.getMessage('settings:sections.background.type.title')}
                   name="backgroundType"
                   onChange={(value) => this.setState({ backgroundType: value })}
                   category="background"
@@ -375,15 +347,11 @@ class BackgroundOptions extends PureComponent {
           <Row final={true}>
             <Content
               title={variables.getMessage('settings:sections.background.effects.title')}
-              subtitle={variables.getMessage(
-                'settings:sections.background.effects.subtitle',
-              )}
+              subtitle={variables.getMessage('settings:sections.background.effects.subtitle')}
             />
             <Action>
               <Slider
-                title={variables.getMessage(
-                  'settings:sections.background.effects.blur',
-                )}
+                title={variables.getMessage('settings:sections.background.effects.blur')}
                 name="blur"
                 min="0"
                 max="100"
@@ -394,9 +362,7 @@ class BackgroundOptions extends PureComponent {
                 element="#backgroundImage"
               />
               <Slider
-                title={variables.getMessage(
-                  'settings:sections.background.effects.brightness',
-                )}
+                title={variables.getMessage('settings:sections.background.effects.brightness')}
                 name="brightness"
                 min="0"
                 max="100"
@@ -407,9 +373,7 @@ class BackgroundOptions extends PureComponent {
                 element="#backgroundImage"
               />
               <Dropdown
-                label={variables.getMessage(
-                  'settings:sections.background.effects.filters.title',
-                )}
+                label={variables.getMessage('settings:sections.background.effects.filters.title')}
                 name="backgroundFilter"
                 onChange={(value) => this.setState({ backgroundFilter: value })}
                 category="backgroundeffect"
