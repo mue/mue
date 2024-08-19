@@ -14,6 +14,7 @@ import Message from './overview_skeletons/Message';
 import EventBus from 'utils/eventbus';
 
 import defaults from 'config/default';
+import { PreferencesWrapper } from 'components/Layout';
 
 const widget_name = {
   greeting: variables.getMessage('settings:sections.greeting.title'),
@@ -31,15 +32,13 @@ const SortableItem = sortableElement(({ value }) => (
   </li>
 ));
 
-
 const SortableContainer = sortableContainer(({ children }) => (
   <ul className="sortableContainer">{children}</ul>
 ));
 
 const Overview = () => {
   const [items, setItems] = useState(
-    () =>
-      JSON.parse(localStorage.getItem('order')) || defaults.order
+    () => JSON.parse(localStorage.getItem('order')) || defaults.order,
   );
 
   const arrayMove = (array, oldIndex, newIndex) => {
@@ -94,10 +93,8 @@ const Overview = () => {
   }, [items]);
 
   return (
-    <>
-      <span className="mainTitle">
-        {variables.getMessage('marketplace:product.overview')}
-      </span>
+    <PreferencesWrapper>
+      <span className="mainTitle">{variables.getMessage('marketplace:product.overview')}</span>
       <div className="overviewGrid">
         <div>
           <span className="title">{variables.getMessage('welcome:buttons.preview')}</span>
@@ -117,9 +114,7 @@ const Overview = () => {
           </div>
         </div>
         <div>
-          <span className="title">
-            {variables.getMessage('settings:sections.order.title')}
-          </span>
+          <span className="title">{variables.getMessage('settings:sections.order.title')}</span>
           <SortableContainer
             onSortEnd={onSortEnd}
             lockAxis="y"
@@ -135,7 +130,7 @@ const Overview = () => {
           </SortableContainer>
         </div>
       </div>
-    </>
+    </PreferencesWrapper>
   );
 };
 

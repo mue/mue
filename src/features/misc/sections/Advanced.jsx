@@ -7,6 +7,7 @@ import {
   MdRestartAlt as ResetIcon,
   MdDataUsage,
   MdError,
+  MdBrush,
 } from 'react-icons/md';
 
 import { exportSettings, importSettings } from 'utils/settings';
@@ -14,7 +15,14 @@ import { exportSettings, importSettings } from 'utils/settings';
 import { FileUpload, Text, Switch, Dropdown } from 'components/Form/Settings';
 import { ResetModal, Button } from 'components/Elements';
 
-import { Header, Section, Row, Content, Action } from 'components/Layout/Settings';
+import {
+  Header,
+  Section,
+  Row,
+  Content,
+  Action,
+  PreferencesWrapper,
+} from 'components/Layout/Settings';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 import time_zones from 'features/time/timezones.json';
@@ -63,14 +71,10 @@ function AdvancedOptions() {
             <MdError />
 
             <span className="title">
-              {variables.getMessage(
-                'settings:sections.advanced.preview_data_disabled.title',
-              )}
+              {variables.getMessage('settings:sections.advanced.preview_data_disabled.title')}
             </span>
             <span className="subtitle">
-              {variables.getMessage(
-                'settings:sections.advanced.preview_data_disabled.description',
-              )}
+              {variables.getMessage('settings:sections.advanced.preview_data_disabled.description')}
             </span>
           </div>
         </div>
@@ -94,8 +98,8 @@ function AdvancedOptions() {
 
   return (
     <>
-      {header}
-      {subSection === "data" ? (
+      {/*{header}*/}
+      {subSection === 'data' && (
         <>
           <Data />
           <Modal
@@ -109,87 +113,82 @@ function AdvancedOptions() {
             <ResetModal modalClose={() => setResetModal(false)} />
           </Modal>
         </>
-      ) : (
+      )}
+      {subSection === 'custom-css' && (
+        <PreferencesWrapper>
+          <span className="text-3xl font-semibold tracking-tight">
+            {variables.getMessage('settings:sections.advanced.custom_css')}
+          </span>
+          <Text name="customcss" textarea={true} category="other" customcss={true} />
+        </PreferencesWrapper>
+      )}
+      {subSection === '' && (
         <>
           <Section
             id="data"
             title={variables.getMessage(`${ADVANCED_SECTION}.data`)}
             subtitle={variables.getMessage(`${ADVANCED_SECTION}.data_subtitle`)}
-            onClick={() => setData(true)}
             icon={<MdDataUsage />}
           />
-          <Row>
-            <Content
-              title={variables.getMessage('settings:sections.advanced.offline_mode')}
-              subtitle={variables.getMessage(
-                'settings:sections.advanced.offline_subtitle',
-              )}
-            />
-            <Action>
-              <Switch name="offlineMode" element=".other" />
-            </Action>
-          </Row>
+          <Section
+            id="custom-css"
+            title={variables.getMessage('settings:sections.advanced.custom_css')}
+            subtitle={variables.getMessage('settings:sections.advanced.custom_css_subtitle')}
+            icon={<MdBrush />}
+          />
+          <PreferencesWrapper>
+            <Row>
+              <Content
+                title={variables.getMessage('settings:sections.advanced.offline_mode')}
+                subtitle={variables.getMessage('settings:sections.advanced.offline_subtitle')}
+              />
+              <Action>
+                <Switch name="offlineMode" element=".other" />
+              </Action>
+            </Row>
 
-          <Row>
-            <Content
-              title={variables.getMessage('settings:sections.advanced.timezone.title')}
-              subtitle={variables.getMessage(
-                'settings:sections.advanced.timezone.subtitle',
-              )}
-            />
-            <Action>
-              <Dropdown
-                name="timezone"
-                category="timezone"
-                items={[
-                  {
-                    value: 'auto',
-                    text: variables.getMessage(
-                      'settings:sections.advanced.timezone.automatic',
-                    ),
-                  },
-                  ...time_zones.map((timezone) => ({ value: timezone, text: timezone })),
-                ]}
+            <Row>
+              <Content
+                title={variables.getMessage('settings:sections.advanced.timezone.title')}
+                subtitle={variables.getMessage('settings:sections.advanced.timezone.subtitle')}
               />
-            </Action>
-          </Row>
-          <Row>
-            <Content
-              title={variables.getMessage('settings:sections.advanced.tab_name')}
-              subtitle={variables.getMessage(
-                'settings:sections.advanced.tab_name_subtitle',
-              )}
-            />
-            <Action>
-              <Text name="tabName" default={variables.getMessage('tabname')} category="other" />
-            </Action>
-          </Row>
-          <Row>
-            <Content
-              title={variables.getMessage('settings:sections.advanced.custom_css')}
-              subtitle={variables.getMessage(
-                'settings:sections.advanced.custom_css_subtitle',
-              )}
-            />
-            <Action>
-              <Text name="customcss" textarea={true} category="other" customcss={true} />
-            </Action>
-          </Row>
-          <Row final={true}>
-            <Content
-              title={variables.getMessage('settings:sections.experimental.title')}
-              subtitle={variables.getMessage(
-                'settings:sections.advanced.experimental_warning',
-              )}
-            />
-            <Action>
-              <Switch
-                name="experimental"
-                text={variables.getMessage('settings:enabled')}
-                element=".other"
+              <Action>
+                <Dropdown
+                  name="timezone"
+                  category="timezone"
+                  items={[
+                    {
+                      value: 'auto',
+                      text: variables.getMessage('settings:sections.advanced.timezone.automatic'),
+                    },
+                    ...time_zones.map((timezone) => ({ value: timezone, text: timezone })),
+                  ]}
+                />
+              </Action>
+            </Row>
+            <Row>
+              <Content
+                title={variables.getMessage('settings:sections.advanced.tab_name')}
+                subtitle={variables.getMessage('settings:sections.advanced.tab_name_subtitle')}
               />
-            </Action>
-          </Row>
+              <Action>
+                <Text name="tabName" default={variables.getMessage('tabname')} category="other" />
+              </Action>
+            </Row>
+            <Row final={true}>
+              <Content
+                title={variables.getMessage('settings:sections.experimental.title')}
+                subtitle={variables.getMessage('settings:sections.advanced.experimental_warning')}
+              />
+              <Action>
+                <Switch
+                  name="experimental"
+                  text={variables.getMessage('settings:enabled')}
+                  element=".other"
+                />
+              </Action>
+            </Row>
+          </PreferencesWrapper>
         </>
       )}
     </>

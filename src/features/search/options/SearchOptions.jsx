@@ -96,9 +96,7 @@ function SearchOptions() {
       <Row final={!customEnabled}>
         <Content
           title={variables.getMessage(`${SEARCH_SECTION}.search_engine`)}
-          subtitle={variables.getMessage(
-            'settings:sections.search.search_engine_subtitle',
-          )}
+          subtitle={variables.getMessage('settings:sections.search.search_engine_subtitle')}
         />
         <Action>
           <Dropdown
@@ -151,8 +149,8 @@ function SearchOptions() {
         visibilityToggle={true}
       />
       <PreferencesWrapper setting="searchBar" category="widgets" visibilityToggle={true}>
-        <AdditionalOptions />
         <SearchEngineSelection />
+        <AdditionalOptions />
         {customEnabled && CustomOptions()}
       </PreferencesWrapper>
     </>

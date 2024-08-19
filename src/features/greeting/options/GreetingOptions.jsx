@@ -320,6 +320,13 @@ const GreetingOptions = () => {
         </>
       ) : (
         <>
+          <Section
+            id="events"
+            title={variables.getMessage(`${GREETING_SECTION}.events`)}
+            subtitle={variables.getMessage(`${GREETING_SECTION}.events_description`)}
+            onClick={() => setEvents(true)}
+            icon={<MdEventNote />}
+          />
           <PreferencesWrapper
             setting="greeting"
             zoomSetting="zoomGreeting"
@@ -328,13 +335,6 @@ const GreetingOptions = () => {
           >
             <AdditionalOptions />
           </PreferencesWrapper>
-          <Section
-            id="events"
-            title={variables.getMessage(`${GREETING_SECTION}.events`)}
-            subtitle={variables.getMessage(`${GREETING_SECTION}.events_description`)}
-            onClick={() => setEvents(true)}
-            icon={<MdEventNote />}
-          />
         </>
       )}
     </>

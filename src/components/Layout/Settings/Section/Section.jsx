@@ -11,15 +11,14 @@ function Section({ id, title, subtitle, icon, onClick, children }) {
       onClick();
     }
   };
-  
 
   return (
     <div className="moreSettings" onClick={handleClick}>
       <div className="left">
         {icon}
         <div className="content">
-          <span className="title">{title}</span>
-          <span className="subtitle">{subtitle}</span>
+          <span className="text-xl font-semibold">{title}</span>
+          <span className="text-neutral-800 dark:text-neutral-300 ">{subtitle}</span>
         </div>
       </div>
       <div className="action">

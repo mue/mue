@@ -3,7 +3,14 @@ import { memo, useState } from 'react';
 import variables from 'config/variables';
 
 import { Checkbox, Dropdown, Radio, Slider, Text } from 'components/Form/Settings';
-import { Header, Section, Row, Content, Action } from 'components/Layout/Settings';
+import {
+  Header,
+  Section,
+  Row,
+  Content,
+  Action,
+  PreferencesWrapper,
+} from 'components/Layout/Settings';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 import { MdAccessibility } from 'react-icons/md';
@@ -19,9 +26,7 @@ function AppearanceOptions() {
       <Row>
         <Content
           title={variables.getMessage('settings:sections.appearance.theme.title')}
-          subtitle={variables.getMessage(
-            'settings:sections.appearance.theme.description',
-          )}
+          subtitle={variables.getMessage('settings:sections.appearance.theme.description')}
         />
         <Action>
           <Radio
@@ -53,9 +58,7 @@ function AppearanceOptions() {
       <Row>
         <Content
           title={variables.getMessage('settings:sections.appearance.font.title')}
-          subtitle={variables.getMessage(
-            'settings:sections.appearance.font.description',
-          )}
+          subtitle={variables.getMessage('settings:sections.appearance.font.description')}
         />
         <Action>
           <Checkbox
@@ -71,9 +74,7 @@ function AppearanceOptions() {
           />
           {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
           <Dropdown
-            label={variables.getMessage(
-              'settings:sections.appearance.font.weight.title',
-            )}
+            label={variables.getMessage('settings:sections.appearance.font.weight.title')}
             name="fontweight"
             category="other"
             items={[
@@ -112,29 +113,21 @@ function AppearanceOptions() {
             ]}
           />
           <Dropdown
-            label={variables.getMessage(
-              'settings:sections.appearance.font.style.title',
-            )}
+            label={variables.getMessage('settings:sections.appearance.font.style.title')}
             name="fontstyle"
             category="other"
             items={[
               {
                 value: 'normal',
-                text: variables.getMessage(
-                  'settings:sections.appearance.font.style.normal',
-                ),
+                text: variables.getMessage('settings:sections.appearance.font.style.normal'),
               },
               {
                 value: 'italic',
-                text: variables.getMessage(
-                  'settings:sections.appearance.font.style.italic',
-                ),
+                text: variables.getMessage('settings:sections.appearance.font.style.italic'),
               },
               {
                 value: 'oblique',
-                text: variables.getMessage(
-                  'settings:sections.appearance.font.style.oblique',
-                ),
+                text: variables.getMessage('settings:sections.appearance.font.style.oblique'),
               },
             ]}
           />
@@ -148,9 +141,7 @@ function AppearanceOptions() {
       <Row final={true}>
         <Content
           title={variables.getMessage('settings:sections.appearance.style.title')}
-          subtitle={variables.getMessage(
-            'settings:sections.appearance.style.description',
-          )}
+          subtitle={variables.getMessage('settings:sections.appearance.style.description')}
         />
         <Action>
           <Radio
@@ -177,12 +168,8 @@ function AppearanceOptions() {
     return (
       <Row final={true}>
         <Content
-          title={variables.getMessage(
-            'settings:sections.appearance.accessibility.title',
-          )}
-          subtitle={variables.getMessage(
-            'settings:sections.appearance.accessibility.description',
-          )}
+          title={variables.getMessage('settings:sections.appearance.accessibility.title')}
+          subtitle={variables.getMessage('settings:sections.appearance.accessibility.description')}
         />
         <Action>
           <Dropdown
@@ -213,9 +200,7 @@ function AppearanceOptions() {
             ]}
           />
           <Checkbox
-            text={variables.getMessage(
-              'settings:sections.appearance.accessibility.animations',
-            )}
+            text={variables.getMessage('settings:sections.appearance.accessibility.animations')}
             name="animations"
             category="other"
           />
@@ -230,10 +215,7 @@ function AppearanceOptions() {
             max="5000"
             marks={values.toast}
             display={
-              ' ' +
-              variables.getMessage(
-                'settings:sections.appearance.accessibility.milliseconds',
-              )
+              ' ' + variables.getMessage('settings:sections.appearance.accessibility.milliseconds')
             }
           />
         </Action>
@@ -246,42 +228,37 @@ function AppearanceOptions() {
     header = (
       <Header
         title={variables.getMessage('settings:sections.appearance.title')}
-        secondaryTitle={variables.getMessage(
-          'settings:sections.appearance.accessibility.title',
-        )}
+        secondaryTitle={variables.getMessage('settings:sections.appearance.accessibility.title')}
         goBack={() => setAccessibility(false)}
         report={false}
       />
     );
   } else {
     header = (
-      <Header
-        title={variables.getMessage('settings:sections.appearance.title')}
-        report={false}
-      />
+      <Header title={variables.getMessage('settings:sections.appearance.title')} report={false} />
     );
   }
   return (
     <>
       {header}
-      {subSection === "accessibility" ? (
+      {subSection === 'accessibility' ? (
         <AccessibilityOptions />
       ) : (
         <>
           <Section
             id="accessibility"
-            title={variables.getMessage(
-              'settings:sections.appearance.accessibility.title',
-            )}
+            title={variables.getMessage('settings:sections.appearance.accessibility.title')}
             subtitle={variables.getMessage(
               'settings:sections.appearance.accessibility.description',
             )}
             icon={<MdAccessibility />}
             onClick={() => setAccessibility(true)}
           />
-          <ThemeSelection />
-          <FontOptions />
-          <WidgetStyle />
+          <PreferencesWrapper>
+            <ThemeSelection />
+            <FontOptions />
+            <WidgetStyle />
+          </PreferencesWrapper>
         </>
       )}
     </>

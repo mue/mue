@@ -8,7 +8,8 @@ import { Checkbox, Dropdown } from 'components/Form';
 import EventBus from 'utils/eventbus';
 
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
-import { Header, PreferencesWrapper } from 'components/Layout/Settings';
+import { Header, PreferencesWrapper, Section } from 'components/Layout/Settings';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 import AppsOptions from './AppsOptions';
 import defaults from './default';
@@ -20,6 +21,8 @@ function NavbarOptions() {
   const [appsEnabled, setAppsEnabled] = useState(
     localStorage.getItem('appsEnabled') === 'true' || defaults.appsEnabled,
   );
+
+  const { subSection } = useTab();
 
   const NAVBAR_SECTION = 'settings:sections.appearance.navbar';
 
@@ -158,19 +161,32 @@ function NavbarOptions() {
 
   return (
     <>
-      <Header
-        title={variables.getMessage(`${NAVBAR_SECTION}.title`)}
-        setting="navbar"
-        category="widgets"
-        zoomSetting="zoomNavbar"
-        zoomCategory="navbar"
-      />
-      <PreferencesWrapper visibilityToggle={false}>
-        <AdditionalSettings />
-        <NavbarOptions />
-        <RefreshOptions />
-        <AppsOptions appsEnabled={appsEnabled} />
-      </PreferencesWrapper>
+      {subSection !== 'apps' ? (
+        <>
+          <Header
+            title={variables.getMessage(`${NAVBAR_SECTION}.title`)}
+            setting="navbar"
+            category="widgets"
+            zoomSetting="zoomNavbar"
+            zoomCategory="navbar"
+          />
+          <Section
+            id="apps"
+            icon={<MdOutlineApps />}
+            title={variables.getMessage('widgets.navbar.apps.title')}
+            subtitle={variables.getMessage('settings:sections.appearance.navbar.apps_subtitle')}
+          />
+          <PreferencesWrapper visibilityToggle={false}>
+            <AdditionalSettings />
+            <NavbarOptions />
+            <RefreshOptions />
+          </PreferencesWrapper>
+        </>
+      ) : (
+        <PreferencesWrapper>
+          <AppsOptions appsEnabled={appsEnabled} />
+        </PreferencesWrapper>
+      )}
     </>
   );
 }

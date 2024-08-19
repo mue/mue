@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { MdOutlineOpenInNew } from 'react-icons/md';
 import { Radio } from 'components/Form/Settings';
 import { languages } from 'lib/i18n';
+import { PreferencesWrapper } from 'components/Layout';
 
-const options = languages.map(id => {
+const options = languages.map((id) => {
   const native = new Intl.DisplayNames([id], { type: 'language' });
   // const current = new Intl.DisplayNames([variables.locale_id], { type: 'language' });
   const current = new Intl.DisplayNames([localStorage.getItem('language')], { type: 'language' });
@@ -14,8 +15,8 @@ const options = languages.map(id => {
     subname: current.of(id),
     value: id,
   };
-})
-console.log(options)
+});
+console.log(options);
 
 function LanguageOptions() {
   const [quoteLanguages, setQuoteLanguages] = useState([
@@ -43,7 +44,7 @@ function LanguageOptions() {
   }, []);
 
   return (
-    <>
+    <PreferencesWrapper>
       <div className="modalHeader">
         <span className="mainTitle">
           {variables.getMessage('settings:sections.language.title')}
@@ -63,9 +64,7 @@ function LanguageOptions() {
       <div className="languageSettings">
         <Radio name="language" options={options} element=".other" />
       </div>
-      <span className="mainTitle">
-        {variables.getMessage('settings:sections.language.quote')}
-      </span>
+      {/*<span className="mainTitle">{variables.getMessage('settings:sections.language.quote')}</span>
       <div className="languageSettings">
         <Radio
           name="quoteLanguage"
@@ -75,8 +74,8 @@ function LanguageOptions() {
           defaultValue={quoteLanguages[0].name}
           category="quote"
         />
-      </div>
-    </>
+      </div>*/}
+    </PreferencesWrapper>
   );
 }
 

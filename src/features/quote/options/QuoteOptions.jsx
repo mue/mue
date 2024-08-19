@@ -137,6 +137,14 @@ const QuoteOptions = () => {
 
       {subSection !== 'source' && (
         <>
+          <Section
+            id="source"
+            icon={<MdSource />}
+            title={variables.getMessage('settings:sections.background.source.title')}
+            subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
+          >
+            <SourceDropdown />
+          </Section>
           <PreferencesWrapper
             setting="quote"
             default={defaults.quote}
@@ -147,14 +155,6 @@ const QuoteOptions = () => {
             <ButtonOptions />
             <AdditionalOptions />
           </PreferencesWrapper>
-          <Section
-            id="source"
-            icon={<MdSource />}
-            title={variables.getMessage('settings:sections.background.source.title')}
-            subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
-          >
-            <SourceDropdown />
-          </Section>
         </>
       )}
 
