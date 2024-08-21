@@ -3,7 +3,7 @@ import variables from 'config/variables';
 import { useState, useEffect } from 'react';
 import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
 
-import { Header, PreferencesWrapper } from 'components/Layout/Settings';
+import { Header, PreferencesWrapper, Section } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Slider, Radio, Text, ChipSelect } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 //import Text from 'components/Form/Settings/Text/Text';
@@ -13,10 +13,13 @@ import CustomSettings from './Custom';
 
 import values from 'utils/data/slider_values.json';
 import { APIQualityOptions, backgroundImageEffects, getBackgroundOptionItems } from './optionTypes';
+import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 
 import defaults from './default';
 
 function BackgroundOptions() {
+  const { subSection } = useTab();
+
   const [backgroundType, setBackgroundType] = useState(
     localStorage.getItem('backgroundType') || defaults.backgroundType,
   );
@@ -37,7 +40,7 @@ function BackgroundOptions() {
   useEffect(() => {
     return () => {
       controller.abort();
-    }
+    };
   }, []);
 
   async function getBackgroundCategories() {
@@ -229,9 +232,9 @@ function BackgroundOptions() {
   return (
     <>
       {header}
-      {backgroundSettingsSection !== true && effects !== true ? (
+      {subSection === '' ? (
         <>
-          <div className="moreSettings" onClick={() => setBackgroundSettingsSection(true)}>
+          {/*<div className="moreSettings" onClick={() => setBackgroundSettingsSection(true)}>
             <div className="left">
               <MdSource />
               <div className="content">
@@ -252,32 +255,34 @@ function BackgroundOptions() {
                 items={getBackgroundOptionItems(marketplaceEnabled)}
               />
             </div>
-          </div>
+          </div>*/}
+          <Section
+            id="source"
+            title={variables.getMessage('settings:sections.background.source.title')}
+            subtitle={variables.getMessage('settings:sections.background.source.subtitle')}
+            icon={<MdSource />}
+          >
+            <Dropdown
+              label={variables.getMessage('settings:sections.background.type.title')}
+              name="backgroundType"
+              onChange={(value) => this.setState({ backgroundType: value })}
+              category="background"
+              items={getBackgroundOptionItems(marketplaceEnabled)}
+            />
+          </Section>
           {backgroundType === 'api' || backgroundType === 'custom' || marketplaceEnabled ? (
             <>
-              <div className="moreSettings" onClick={() => setEffects(true)}>
-                <div className="left">
-                  <MdOutlineAutoAwesome />
-                  <div className="content">
-                    <span className="title">
-                      {variables.getMessage('settings:sections.background.effects.title')}
-                    </span>
-                    <span className="subtitle">
-                      {variables.getMessage('settings:sections.background.effects.subtitle')}
-                    </span>
-                  </div>
-                </div>
-                <div className="action">
-                  {' '}
-                  <MdOutlineKeyboardArrowRight />
-                </div>
-              </div>
+              <Section
+                id="effects"
+                title={variables.getMessage('settings:sections.background.effects.title')}
+                subtitle={variables.getMessage('settings:sections.background.effects.subtitle')}
+                icon={<MdOutlineAutoAwesome />}
+              />
             </>
           ) : null}
         </>
       ) : null}
-      {backgroundSettingsSection !== true &&
-      effects !== true &&
+      {subSection === '' &&
       (backgroundType === 'api' || backgroundType === 'custom' || marketplaceEnabled) ? (
         <PreferencesWrapper>
           <Row final={true}>
@@ -307,7 +312,7 @@ function BackgroundOptions() {
           </Row>
         </PreferencesWrapper>
       ) : null}
-      {backgroundSettingsSection && (
+      {subSection === 'source' && (
         <>
           <Row final={backgroundType === 'random_colour' || backgroundType === 'random_gradient'}>
             <Content
@@ -329,7 +334,7 @@ function BackgroundOptions() {
         </>
       )}
       {(backgroundType === 'api' || backgroundType === 'custom' || marketplaceEnabled) &&
-      effects ? (
+      subSection === 'effects' ? (
         <Row final={true}>
           <Content
             title={variables.getMessage('settings:sections.background.effects.title')}

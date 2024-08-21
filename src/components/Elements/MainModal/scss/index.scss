@@ -292,6 +292,7 @@ h5 {
     flex-flow: row;
     align-items: center;
     gap: 25px;
+    flex-grow: 0;
 
     svg {
       @include themed {
