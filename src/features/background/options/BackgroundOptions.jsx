@@ -171,6 +171,62 @@ function BackgroundOptions() {
     </>
   );
 
+  const EffectsOptions = () => (
+    <PreferencesWrapper>
+      <Row final={true}>
+        <Content
+          title={variables.getMessage('settings:sections.background.effects.title')}
+          subtitle={variables.getMessage('settings:sections.background.effects.subtitle')}
+        />
+        <Action>
+          <Slider
+            title={variables.getMessage('settings:sections.background.effects.blur')}
+            name="blur"
+            min="0"
+            max="100"
+            default="0"
+            display="%"
+            marks={values.background}
+            category="backgroundeffect"
+            element="#backgroundImage"
+          />
+          <Slider
+            title={variables.getMessage('settings:sections.background.effects.brightness')}
+            name="brightness"
+            min="0"
+            max="100"
+            default="90"
+            display="%"
+            marks={values.background}
+            category="backgroundeffect"
+            element="#backgroundImage"
+          />
+          <Dropdown
+            label={variables.getMessage('settings:sections.background.effects.filters.title')}
+            name="backgroundFilter"
+            onChange={(value) => setBackgroundFilter(value)}
+            category="backgroundeffect"
+            element="#backgroundImage"
+            items={backgroundImageEffects}
+          />
+          {backgroundFilter !== 'none' && (
+            <Slider
+              title={variables.getMessage('settings:sections.background.effects.filters.amount')}
+              name="backgroundFilterAmount"
+              min="0"
+              max="100"
+              default="0"
+              display="%"
+              marks={values.background}
+              category="backgroundeffect"
+              element="#backgroundImage"
+            />
+          )}
+        </Action>
+      </Row>
+    </PreferencesWrapper>
+  );
+
   let backgroundSettings = APISettings;
   switch (backgroundType) {
     case 'custom':
@@ -234,28 +290,6 @@ function BackgroundOptions() {
       {header}
       {subSection === '' ? (
         <>
-          {/*<div className="moreSettings" onClick={() => setBackgroundSettingsSection(true)}>
-            <div className="left">
-              <MdSource />
-              <div className="content">
-                <span className="title">
-                  {variables.getMessage('settings:sections.background.source.title')}
-                </span>
-                <span className="subtitle">
-                  {variables.getMessage('settings:sections.background.source.subtitle')}
-                </span>
-              </div>
-            </div>
-            <div className="action">
-              <Dropdown
-                label={variables.getMessage('settings:sections.background.type.title')}
-                name="backgroundType"
-                onChange={(value) => this.setState({ backgroundType: value })}
-                category="background"
-                items={getBackgroundOptionItems(marketplaceEnabled)}
-              />
-            </div>
-          </div>*/}
           <Section
             id="source"
             title={variables.getMessage('settings:sections.background.source.title')}
@@ -335,57 +369,7 @@ function BackgroundOptions() {
       )}
       {(backgroundType === 'api' || backgroundType === 'custom' || marketplaceEnabled) &&
       subSection === 'effects' ? (
-        <Row final={true}>
-          <Content
-            title={variables.getMessage('settings:sections.background.effects.title')}
-            subtitle={variables.getMessage('settings:sections.background.effects.subtitle')}
-          />
-          <Action>
-            <Slider
-              title={variables.getMessage('settings:sections.background.effects.blur')}
-              name="blur"
-              min="0"
-              max="100"
-              default="0"
-              display="%"
-              marks={values.background}
-              category="backgroundeffect"
-              element="#backgroundImage"
-            />
-            <Slider
-              title={variables.getMessage('settings:sections.background.effects.brightness')}
-              name="brightness"
-              min="0"
-              max="100"
-              default="90"
-              display="%"
-              marks={values.background}
-              category="backgroundeffect"
-              element="#backgroundImage"
-            />
-            <Dropdown
-              label={variables.getMessage('settings:sections.background.effects.filters.title')}
-              name="backgroundFilter"
-              onChange={(value) => setBackgroundFilter(value)}
-              category="backgroundeffect"
-              element="#backgroundImage"
-              items={backgroundImageEffects}
-            />
-            {backgroundFilter !== 'none' && (
-              <Slider
-                title={variables.getMessage('settings:sections.background.effects.filters.amount')}
-                name="backgroundFilterAmount"
-                min="0"
-                max="100"
-                default="0"
-                display="%"
-                marks={values.background}
-                category="backgroundeffect"
-                element="#backgroundImage"
-              />
-            )}
-          </Action>
-        </Row>
+        <>{EffectsOptions()}</>
       ) : null}
     </>
   );

@@ -19,6 +19,7 @@ import values from 'utils/data/slider_values.json';
 
 function AppearanceOptions() {
   const [accessibility, setAccessibility] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState(localStorage.getItem('theme') || 'auto');
   const { subSection } = useTab();
 
   const ThemeSelection = () => {
@@ -223,6 +224,58 @@ function AppearanceOptions() {
     );
   };
 
+  const newThemeSelector = (currentTheme) => {
+    const themes = [
+      {
+        example: 'light.jpg',
+        name: variables.getMessage('settings:sections.appearance.theme.light'),
+        value: 'light',
+      },
+      {
+        example: 'dark.jpg',
+        name: variables.getMessage('settings:sections.appearance.theme.dark'),
+        value: 'dark',
+      },
+      {
+        example: 'light.jpg',
+        name: variables.getMessage('settings:sections.appearance.theme.auto'),
+        value: 'auto',
+      },
+    ];
+
+    console.log(currentTheme);
+
+    const ThemeCard = ({ example, name, value }) => {
+      return (
+        <div
+          class={
+            'flex flex-col items-center rounded p-2 hover:bg-background-light hover:dark:bg-background-dark cursor-pointer' +
+            (currentTheme === value ? ' border-2 border-neutral-100' : '')
+          }
+        >
+          <img src={`theme-examples/${example}`} alt="Light theme" class="rounded-t" />
+          <div class="py-4">{name}</div>
+        </div>
+      );
+    };
+
+    return (
+      <div class="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded divide-gray-500 flex flex-col gap-5">
+        <h1 class="text-3xl tracking-tight font-semibold">
+          {variables.getMessage('settings:sections.appearance.theme.title')}
+        </h1>
+        <p class="text-neutral-300">
+          {variables.getMessage('settings:sections.appearance.theme.description')}
+        </p>
+        <div class="grid grid-cols-3 items-center gap-28">
+          {themes.map((theme) => (
+            <ThemeCard key={theme.value} {...theme} />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   let header;
   if (accessibility) {
     header = (
@@ -240,7 +293,7 @@ function AppearanceOptions() {
   }
   return (
     <>
-      {header}
+      {/*{header}*/}
       {subSection === 'accessibility' ? (
         <AccessibilityOptions />
       ) : (
@@ -254,9 +307,14 @@ function AppearanceOptions() {
             icon={<MdAccessibility />}
             onClick={() => setAccessibility(true)}
           />
+          {newThemeSelector(currentTheme)}
           <PreferencesWrapper>
             <ThemeSelection />
+          </PreferencesWrapper>
+          <PreferencesWrapper>
             <FontOptions />
+          </PreferencesWrapper>
+          <PreferencesWrapper>
             <WidgetStyle />
           </PreferencesWrapper>
         </>
