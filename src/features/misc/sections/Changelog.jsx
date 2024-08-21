@@ -10,8 +10,14 @@ function Changelog() {
   const [date, setDate] = useState(null);
 
   const offlineMode = localStorage.getItem('offlineMode') === 'true';
-  const controller = new AbortController();
   const changelog = createRef();
+
+  const controller = new AbortController();
+  useEffect(() => {
+    return () => {
+      controller.abort();
+    }
+  }, []);
 
   const getUpdate = async () => {
     const releases = await fetch(

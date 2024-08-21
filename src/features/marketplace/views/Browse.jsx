@@ -24,6 +24,11 @@ function Marketplace() {
   const { changeTab } = useTab();
 
   const controller = new AbortController();
+  useEffect(() => {
+    return () => {
+      controller.abort();
+    }
+  }, []);
 
   async function toggle(pageType, data) {
     if (pageType === 'item') {

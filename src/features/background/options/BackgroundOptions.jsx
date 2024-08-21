@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import variables from 'config/variables';
 import { useState, useEffect } from 'react';
 import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
@@ -33,6 +34,11 @@ function BackgroundOptions() {
   const [backgroundSettingsSection, setBackgroundSettingsSection] = useState(false);
 
   const controller = new AbortController();
+  useEffect(() => {
+    return () => {
+      controller.abort();
+    }
+  }, []);
 
   async function getBackgroundCategories() {
     const data = await (
