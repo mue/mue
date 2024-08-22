@@ -12,7 +12,7 @@
   "version": "7.1.1",
   "dependencies": {
     "@eartharoid/i18n": "1.2.1",
-    "@emotion/react": "^11.13.0",
+    "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@floating-ui/react-dom": "2.1.1",
     "@fontsource/lexend-deca": "5.0.12",
