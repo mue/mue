@@ -8,7 +8,7 @@ import values from 'utils/data/slider_values.json';
 
 const Preview = (props) => {
   return (
-    <div>
+    <div className="h-full">
       <h1 className="py-3 uppercase tracking-tight text-neutral-300">Preview</h1>
       <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded">
         {props.children}
@@ -69,7 +69,7 @@ const Controls = (props) => {
   };
 
   return (
-    <div>
+    <div className="h-full">
       <h1 className="py-3 uppercase tracking-tight text-neutral-300">Controls</h1>
       <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded flex flex-col gap-10">
         {props.visibilityToggle && <VisibilityToggle />}
@@ -92,7 +92,7 @@ const Controls = (props) => {
 
 const Hero = (props) => {
   return (
-    <div className="grid grid-cols-2 w-full rounded gap-10 auto-rows-[1fr]	">{props.children}</div>
+    <div className="grid grid-cols-2 w-full rounded gap-10 auto-rows-[1fr]">{props.children}</div>
   );
 };
 

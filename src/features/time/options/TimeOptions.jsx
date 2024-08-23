@@ -3,14 +3,20 @@ import React, { useState } from 'react';
 
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
+import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
+import Clock from 'features/time/Clock';
 
 import { MdRefresh } from 'react-icons/md';
 
 import defaults from './default';
 
 const TimeOptions = () => {
-  const [timeType, setTimeType] = useState(localStorage.getItem('timeType') || defaults.time.timeType);
-  const [hourColour, setHourColour] = useState(localStorage.getItem('hourColour') || defaults.time.hourColour);
+  const [timeType, setTimeType] = useState(
+    localStorage.getItem('timeType') || defaults.time.timeType,
+  );
+  const [hourColour, setHourColour] = useState(
+    localStorage.getItem('hourColour') || defaults.time.hourColour,
+  );
   const [minuteColour, setMinuteColour] = useState(
     localStorage.getItem('minuteColour') || defaults.time.minuteColour,
   );
@@ -142,9 +148,7 @@ const TimeOptions = () => {
     <>
       <Row>
         <Content
-          title={variables.getMessage(
-            'settings:sections.time.vertical_clock.change_hour_colour',
-          )}
+          title={variables.getMessage('settings:sections.time.vertical_clock.change_hour_colour')}
         />
         <Action>
           <div className="colourInput">
@@ -167,9 +171,7 @@ const TimeOptions = () => {
       </Row>
       <Row>
         <Content
-          title={variables.getMessage(
-            'settings:sections.time.vertical_clock.change_minute_colour',
-          )}
+          title={variables.getMessage('settings:sections.time.vertical_clock.change_minute_colour')}
         />
         <Action>
           <div className="colourInput">
@@ -192,9 +194,7 @@ const TimeOptions = () => {
       </Row>
       <Row>
         <Content
-          title={variables.getMessage(
-            'settings:sections.time.vertical_clock.change_second_colour',
-          )}
+          title={variables.getMessage('settings:sections.time.vertical_clock.change_second_colour')}
         />
         <Action>
           <div className="colourInput">
@@ -235,7 +235,7 @@ const TimeOptions = () => {
 
   return (
     <>
-      <Header
+      {/*<Header
         title={variables.getMessage(`${TIME_SECTION}.title`)}
         setting="time"
         category="clock"
@@ -248,10 +248,24 @@ const TimeOptions = () => {
         zoomSetting="zoomClock"
         category="clock"
         visibilityToggle={true}
-      >
+      />*/}
+      <Hero>
+        <Preview>
+          <Clock />
+        </Preview>
+        <Controls
+          setting="time"
+          category="clock"
+          element=".clock-container"
+          zoomSetting="zoomClock"
+          visibilityToggle={true}
+        />
+      </Hero>
+      <h1 className="py-3 uppercase tracking-tight text-neutral-300">options</h1>
+      <PreferencesWrapper setting="time">
         <WidgetType />
-        {getTimeSettings()}
       </PreferencesWrapper>
+      <PreferencesWrapper setting="time">{getTimeSettings()}</PreferencesWrapper>
     </>
   );
 };
