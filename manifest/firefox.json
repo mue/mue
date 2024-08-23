@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Mue",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
-  "version": "7.1.1",
+  "version": "8.0.0",
   "homepage_url": "https://muetab.com",
   "action": {
     "default_icon": "icons/128x128.png"
