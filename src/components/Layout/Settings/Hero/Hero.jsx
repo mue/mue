@@ -92,7 +92,7 @@ const Controls = (props) => {
 
 const Hero = (props) => {
   return (
-    <div className="grid grid-cols-2 w-full rounded gap-10 auto-rows-[1fr]">{props.children}</div>
+    <div className="grid grid-cols-2 w-full rounded gap-3 auto-rows-[1fr]">{props.children}</div>
   );
 };
 
