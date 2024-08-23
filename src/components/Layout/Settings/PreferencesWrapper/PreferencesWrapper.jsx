@@ -32,7 +32,7 @@ const PreferencesWrapper = ({ children, ...props }) => {
     <div
       className={`preferences transition-opacity duration-700 ease-in-out ${
         shown ? 'opacity-100 pointer-events-auto' : 'opacity-50 pointer-events-none'
-      } bg-modal-content-light dark:bg-modal-content-dark p-10 rounded divide-y divide-gray-500`}
+      } bg-modal-content-light dark:bg-modal-content-dark p-10 rounded`}
     >
       {props.zoomSetting && (
         <Row>

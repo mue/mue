@@ -170,7 +170,10 @@ const TabNavbar = ({ modalClose }) => {
                 onClick={() => setSubSection('')}
                 className={clsx(
                   'text-xl capitalize tracking-normal transition-all duration-150 ease-in-out',
-                  { 'text-neutral-300 cursor-pointer hover:text-neutral-100': subSection !== '' },
+                  {
+                    'dark:text-neutral-300 text-neutral-600 cursor-pointer hover:text-black dark:hover:text-neutral-100':
+                      subSection !== '',
+                  },
                 )}
               >
                 {subTab}
@@ -218,8 +221,8 @@ const TabNavbar = ({ modalClose }) => {
                 setSelectedCollection(null);
               }}
               className={`${
-                activeTab === tab.id ? '' : 'hover:text-white/70'
-              } transition-all duration-800	ease-in-out flex flex-row gap-2 items-center relative rounded-sm px-3 py-1.5 text-sm text-white outline-sky-400 transition focus-visible:outline-2`}
+                activeTab === tab.id ? '' : 'dark:hover:text-white/70 hover:text-black/70'
+              } dark:text-white text-black transition-all duration-800	ease-in-out flex flex-row gap-2 items-center relative rounded-sm px-3 py-1.5 text-sm outline-sky-400 transition focus-visible:outline-2`}
               style={{
                 WebkitTapHighlightColor: 'transparent',
               }}
@@ -235,7 +238,7 @@ const TabNavbar = ({ modalClose }) => {
               {variables.getMessage(`modals.main.navbar.${tab.id}`)}
               {tab.id === 'addons' && (
                 <AnimatePresence>
-                  <div className="px-3 py-1 bg-[#424242] rounded-lg text-xs">
+                  <div className="px-3 py-1 dark:bg-[#424242] bg-neutral-300 rounded-lg text-xs">
                     <motion.span
                       key={installedItems.length}
                       initial={{ opacity: 0, y: -10 }}
@@ -248,7 +251,7 @@ const TabNavbar = ({ modalClose }) => {
                 </AnimatePresence>
               )}
               {tab.id === 'marketplace' && (
-                <span className="px-3 py-1 bg-rose-800 rounded-lg text-xs border border-rose-700">
+                <span className="px-3 py-1 bg-rose-800 rounded-lg text-xs border border-rose-700 text-white">
                   NEW
                 </span>
               )}

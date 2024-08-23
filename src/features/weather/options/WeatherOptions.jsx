@@ -3,7 +3,9 @@ import { MdAutoAwesome } from 'react-icons/md';
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { useLocalStorageState } from 'utils/useLocalStorageState';
 import { Radio, Dropdown, Checkbox } from 'components/Form/Settings';
+import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
 import { TextField } from '@mui/material';
+import { WeatherWidget } from 'features/weather';
 import variables from 'config/variables';
 
 const useWeatherSettings = () => {
@@ -176,26 +178,46 @@ const WeatherOptions = () => {
 
   return (
     <>
-      <Header
+      {/*<Header
         title={variables.getMessage(`${WEATHER_SECTION}.title`)}
         setting="weatherEnabled"
         category="widgets"
         zoomSetting="zoomWeather"
         zoomCategory="weather"
         visibilityToggle={true}
-      />
-      <PreferencesWrapper
+      />*/}
+      <Hero>
+        <Preview>
+          <WeatherWidget />
+        </Preview>
+        <Controls
+          setting="weatherEnabled"
+          category="widgets"
+          zoomSetting="zoomWeather"
+          zoomCategory="weather"
+          visibilityToggle={true}
+        />
+      </Hero>
+      {/*<PreferencesWrapper
         setting="weatherEnabled"
         zoomSetting="zoomWeather"
         zoomCategory="weather"
         visibilityToggle={true}
-      >
+      />*/}
+      <h1 className="py-3 uppercase tracking-tight text-neutral-300">options</h1>
+      <PreferencesWrapper setting="weatherEnabled">
         <WidgetType />
-        {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}
-        {LocationSetting()}
-        <TemperatureFormat />
-        {weatherType === '4' && <CustomOptions />}
       </PreferencesWrapper>
+      {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}
+      <PreferencesWrapper setting="weatherEnabled">{LocationSetting()}</PreferencesWrapper>
+      <PreferencesWrapper setting="weatherEnabled">
+        <TemperatureFormat />
+      </PreferencesWrapper>
+      {weatherType === '4' && (
+        <PreferencesWrapper setting="weatherEnabled">
+          <CustomOptions />
+        </PreferencesWrapper>
+      )}
     </>
   );
 };

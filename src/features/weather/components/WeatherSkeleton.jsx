@@ -1,8 +1,15 @@
 import { memo } from 'react';
 
-function WeatherSkeleton({ weatherType }) {
+function WeatherSkeleton({ weatherType, preview }) {
   return (
-    <div className="weather skeleton">
+    <div
+      className="weather skeleton"
+      style={{
+        position: preview ? 'relative' : '',
+        right: preview ? '0' : '',
+        bottom: preview ? '0' : '',
+      }}
+    >
       <div className="weatherCore">
         <div className="iconAndTemps">
           <div className="weathericon">

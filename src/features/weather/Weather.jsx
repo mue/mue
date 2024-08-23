@@ -11,7 +11,7 @@ import defaults from './options/default';
 
 import './weather.scss';
 
-const WeatherWidget = () => {
+const WeatherWidget = (props) => {
   const [location, setLocation] = useState(localStorage.getItem('location') || defaults.location);
   const [done, setDone] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
@@ -48,7 +48,7 @@ const WeatherWidget = () => {
   const weatherType = localStorage.getItem('weatherType') || defaults.weatherType;
 
   if (!done) {
-    return <WeatherSkeleton weatherType={weatherType} />;
+    return <WeatherSkeleton weatherType={weatherType} preview={true} />;
   }
 
   if (!weatherData) {

@@ -59,17 +59,19 @@ function SliderComponent(props) {
           {variables.getMessage('settings:buttons.reset')}
         </span>
       </span>
-      <Slider
-        value={Number(value)}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        default={Number(props.default)}
-        min={Number(props.min)}
-        max={Number(props.max)}
-        step={Number(props.step) || 1}
-        getAriaValueText={(value) => `${value}`}
-        marks={props.marks || []}
-      />
+      <div class="mx-auto">
+        <Slider
+          value={Number(value)}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          default={Number(props.default)}
+          min={Number(props.min)}
+          max={Number(props.max)}
+          step={Number(props.step) || 1}
+          getAriaValueText={(value) => `${value}`}
+          marks={props.marks || []}
+        />
+      </div>
     </>
   );
 }

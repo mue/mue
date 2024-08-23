@@ -13,11 +13,11 @@ import { MessageOptions } from 'features/message';
 import { BackgroundOptions } from 'features/background';
 import { SearchOptions } from 'features/search';
 import { WeatherOptions } from 'features/weather';
+import { AppearanceOptions } from 'features/appearance';
 import { Stats } from 'features/stats';
 import {
   About,
   AdvancedOptions,
-  AppearanceOptions,
   Changelog,
   ExperimentalOptions,
   LanguageOptions,
