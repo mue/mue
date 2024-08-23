@@ -23,9 +23,7 @@ function ExperimentalOptions() {
         {variables.getMessage('settings:sections.experimental.warning')}
       </span>
       <Row>
-        <Content
-          title={variables.getMessage('settings:sections.experimental.developer')}
-        />
+        <Content title={variables.getMessage('settings:sections.experimental.developer')} />
         <Action>
           <Checkbox name="debug" text="Debug hotkey (Ctrl + #)" element=".other" />
           <Slider

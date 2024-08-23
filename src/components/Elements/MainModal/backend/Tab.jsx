@@ -72,10 +72,7 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   const icon = iconMapping[label];
 
-  if (
-    label === variables.getMessage('settings:sections.experimental.title') &&
-    !isExperimental
-  ) {
+  if (label === variables.getMessage('settings:sections.experimental.title') && !isExperimental) {
     return null;
   }
 

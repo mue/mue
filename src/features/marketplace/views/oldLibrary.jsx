@@ -69,7 +69,7 @@ export default class Added extends PureComponent {
       });
     }
 
-   // install(input.type, input, true, false);
+    // install(input.type, input, true, false);
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
     this.setState({
@@ -156,7 +156,7 @@ export default class Added extends PureComponent {
   removeAll() {
     try {
       this.state.installed.forEach((item) => {
-      //  uninstall(item.type, item.name);
+        //  uninstall(item.type, item.name);
       });
     } catch (e) {}
 

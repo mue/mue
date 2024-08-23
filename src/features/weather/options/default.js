@@ -10,7 +10,7 @@ const DefaultOptions = {
   windDirection: false,
   atmosphericpressure: false,
   zoomWeather: 100,
-  location: 'London'
+  location: 'London',
 };
 
 export default DefaultOptions;

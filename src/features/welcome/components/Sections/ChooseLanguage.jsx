@@ -5,7 +5,7 @@ import { languages } from 'lib/i18n';
 import { Radio } from 'components/Form/Settings';
 import { Header, Content } from '../Layout';
 
-const options = languages.map(id => {
+const options = languages.map((id) => {
   const native = new Intl.DisplayNames([id], { type: 'language' });
   // const current = new Intl.DisplayNames([variables.locale_id], { type: 'language' });
   // const current = new Intl.DisplayNames([localStorage.getItem('language')], { type: 'language' });
@@ -15,7 +15,7 @@ const options = languages.map(id => {
     subname: current.of(id),
     value: id,
   };
-})
+});
 
 function ChooseLanguage() {
   return (

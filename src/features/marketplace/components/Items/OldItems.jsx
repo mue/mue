@@ -57,9 +57,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
         )}
 
         {type === 'all' && !onCollection ? (
-          <span className="card-type">
-            {variables.getMessage('marketplace:' + item.type)}
-          </span>
+          <span className="card-type">{variables.getMessage('marketplace:' + item.type)}</span>
         ) : null}
       </div>
     </motion.div>

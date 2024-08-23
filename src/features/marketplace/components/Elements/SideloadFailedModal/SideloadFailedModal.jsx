@@ -8,9 +8,7 @@ function SideloadFailedModal({ modalClose, reason }) {
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">{variables.getMessage('modals.main.error_boundary.title')}</span>
-        <Tooltip
-          title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
-        >
+        <Tooltip title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>

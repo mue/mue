@@ -11,7 +11,7 @@ const DefaultOptions = {
   notesPinned: false,
   todoPinned: false,
   todo: [],
-  notes: ''
+  notes: '',
 };
 
 export default DefaultOptions;

@@ -19,7 +19,7 @@ const compareAndRemoveKeys = (json1, json2) => {
 
 const original = JSON.parse(fs.readFileSync(`./src/i18n/locales/en-GB.json`, 'utf8'));
 
-fs.readdirSync('./src/i18n/locales').forEach(e => {
+fs.readdirSync('./src/i18n/locales').forEach((e) => {
   if (!e.endsWith('json')) return;
   const data = JSON.parse(fs.readFileSync(`./src/i18n/locales/${e}`, 'utf8'));
   const name = e.replace('.json', '');
@@ -30,7 +30,7 @@ fs.readdirSync('./src/i18n/locales').forEach(e => {
 
   try {
     fs.mkdirSync(`./src/i18n/${name}`);
-  } catch (e) { }
+  } catch (e) {}
 
   const _addons = YAML.stringify(data.modals?.main?.addons) || '{}';
   fs.writeFileSync(`./src/i18n/${name}/_addons.yml`, _addons);
@@ -52,8 +52,7 @@ fs.readdirSync('./src/i18n/locales').forEach(e => {
   fs.writeFileSync(`./src/i18n/${name}/main.yml`, main);
 });
 
-
-fs.readdirSync('./src/i18n/locales/achievements').forEach(e => {
+fs.readdirSync('./src/i18n/locales/achievements').forEach((e) => {
   if (!e.endsWith('json')) return;
   const data = JSON.parse(fs.readFileSync(`./src/i18n/locales/achievements/${e}`, 'utf8'));
   const name = e.replace('.json', '');

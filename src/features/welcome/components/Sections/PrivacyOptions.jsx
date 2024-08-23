@@ -21,9 +21,7 @@ function OfflineMode() {
 function Links() {
   return (
     <>
-      <span className="title">
-        {variables.getMessage('welcome:sections.privacy.links.title')}
-      </span>
+      <span className="title">{variables.getMessage('welcome:sections.privacy.links.title')}</span>
       <a
         className="link"
         href={variables.constants.PRIVACY_URL}

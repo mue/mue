@@ -12,9 +12,7 @@ function CustomURLModal({ modalClose, urlError, modalCloseOnly }) {
         <span className="title">
           {variables.getMessage('settings:sections.background.source.add_url')}
         </span>
-        <Tooltip
-          title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
-        >
+        <Tooltip title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}>
           <div className="close" onClick={modalCloseOnly}>
             <MdClose />
           </div>

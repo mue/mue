@@ -9,9 +9,7 @@ export const useTab = () => {
 
 export const TabProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState('settings');
-  const [subTab, setSubTab] = useState(
-    variables.getMessage('marketplace:product.overview'),
-  );
+  const [subTab, setSubTab] = useState(variables.getMessage('marketplace:product.overview'));
   const [subSection, setSubSection] = useState('');
   const [direction, setDirection] = useState(1);
 

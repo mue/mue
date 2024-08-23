@@ -3,15 +3,11 @@ import variables from 'config/variables';
 export const backgroundImageEffects = [
   {
     value: 'none',
-    text: variables.getMessage(
-      'settings:sections.appearance.navbar.refresh_options.none',
-    ),
+    text: variables.getMessage('settings:sections.appearance.navbar.refresh_options.none'),
   },
   {
     value: 'grayscale',
-    text: variables.getMessage(
-      'settings:sections.background.effects.filters.grayscale',
-    ),
+    text: variables.getMessage('settings:sections.background.effects.filters.grayscale'),
   },
   {
     value: 'sepia',

@@ -154,9 +154,7 @@ class QuickLinksOptions extends PureComponent {
         <Row>
           <Content
             title={variables.getMessage(`${QUICKLINKS_SECTION}.styling`)}
-            subtitle={variables.getMessage(
-              'settings:sections.quicklinks.styling_description',
-            )}
+            subtitle={variables.getMessage('settings:sections.quicklinks.styling_description')}
           />
           <Action>
             <Dropdown

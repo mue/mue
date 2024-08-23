@@ -27,7 +27,7 @@ function Marketplace() {
   useEffect(() => {
     return () => {
       controller.abort();
-    }
+    };
   }, []);
 
   async function toggle(pageType, data) {
@@ -171,12 +171,8 @@ function Marketplace() {
     return errorMessage(
       <>
         <MdWifiOff />
-        <span className="title">
-          {variables.getMessage('marketplace:offline.title')}
-        </span>
-        <span className="subtitle">
-          {variables.getMessage('marketplace:offline.description')}
-        </span>
+        <span className="title">{variables.getMessage('marketplace:offline.title')}</span>
+        <span className="subtitle">{variables.getMessage('marketplace:offline.description')}</span>
       </>,
     );
   }
@@ -215,10 +211,7 @@ function Marketplace() {
     <>
       <h1
         onClick={() =>
-          changeTab(
-            'settings',
-            variables.getMessage('settings:sections.changelog.title'),
-          )
+          changeTab('settings', variables.getMessage('settings:sections.changelog.title'))
         }
       >
         See changelog
@@ -239,9 +232,7 @@ function Marketplace() {
               }
             }
           >
-            <div className="nice-tag">
-              {variables.getMessage('marketplace:collection')}
-            </div>
+            <div className="nice-tag">{variables.getMessage('marketplace:collection')}</div>
             <div className="content">
               <span className="mainTitle">{collectionTitle}</span>={' '}
             </div>

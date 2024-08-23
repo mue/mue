@@ -42,9 +42,7 @@ function Refresh() {
         ]);
         break;
       default:
-        text = variables.getMessage(
-          'settings:sections.appearance.navbar.refresh_options.page',
-        );
+        text = variables.getMessage('settings:sections.appearance.navbar.refresh_options.page');
         break;
     }
 

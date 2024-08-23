@@ -7,19 +7,23 @@ import './autocomplete.scss';
 function Autocomplete(props) {
   const [filtered, setFiltered] = useState([]);
   const [input, setInput] = useState('');
-  const [autocompleteDisabled, setAutocompleteDisabled] = useState(localStorage.getItem('autocomplete') !== 'true');
+  const [autocompleteDisabled, setAutocompleteDisabled] = useState(
+    localStorage.getItem('autocomplete') !== 'true',
+  );
 
   const onChange = (e) => {
     if (autocompleteDisabled) {
       return setInput(e.target.value);
     }
 
-    setFiltered(props.suggestions.filter(
-      (suggestion) => suggestion.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1,
-    ));
+    setFiltered(
+      props.suggestions.filter(
+        (suggestion) => suggestion.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1,
+      ),
+    );
     setInput(e.target.value);
     props.onChange(e.target.value);
-  }
+  };
 
   const onClick = (e) => {
     setFiltered([]);
@@ -30,7 +34,7 @@ function Autocomplete(props) {
         value: e.target.innerText,
       },
     });
-  }
+  };
 
   useEffect(() => {
     EventBus.on('refresh', (data) => {
@@ -41,7 +45,7 @@ function Autocomplete(props) {
 
     return () => {
       EventBus.off('refresh');
-    }
+    };
   });
 
   let autocomplete = null;

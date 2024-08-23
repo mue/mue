@@ -49,8 +49,22 @@ const Dropdown = (props) => {
 
   return (
     <div className="w-[100%] max-w-md">
-      <Field id={props.name} value={value} label={label} onChange={onChange} ref={dropdown} key={id}>
-        <Label id={props.name} value={value} label={label} onChange={onChange} ref={dropdown} key={id}>
+      <Field
+        id={props.name}
+        value={value}
+        label={label}
+        onChange={onChange}
+        ref={dropdown}
+        key={id}
+      >
+        <Label
+          id={props.name}
+          value={value}
+          label={label}
+          onChange={onChange}
+          ref={dropdown}
+          key={id}
+        >
           {label}
         </Label>
         <div className="relative">

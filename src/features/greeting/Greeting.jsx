@@ -40,7 +40,7 @@ function Greeting() {
     }
 
     return message;
-  }
+  };
 
   /**
    * It takes a date object and returns the age of the person in years.
@@ -51,7 +51,7 @@ function Greeting() {
     const diff = Date.now() - date.getTime();
     const birthday = new Date(diff);
     return Math.abs(birthday.getUTCFullYear() - 1970);
-  }
+  };
 
   const getGreeting = (time = 60000 - (Date.now() % 60000)) => {
     timer.current = setTimeout(() => {
@@ -119,7 +119,7 @@ function Greeting() {
 
       getGreeting();
     }, time);
-  }
+  };
 
   useEffect(() => {
     EventBus.on('refresh', (data) => {
@@ -146,7 +146,7 @@ function Greeting() {
 
     return () => {
       EventBus.off('refresh');
-    }
+    };
   }, []);
 
   return (

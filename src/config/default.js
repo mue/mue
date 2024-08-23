@@ -4,7 +4,7 @@ const DefaultOptions = {
   toastDisplayTime: 2500,
   fontstyle: 'normal',
   fontweight: 400,
-  order: ["greeting", "time", "quicklinks", "quote", "date", "message"],
+  order: ['greeting', 'time', 'quicklinks', 'quote', 'date', 'message'],
   theme: 'auto',
   experimental: false,
   debugtimeout: 0,
@@ -12,7 +12,7 @@ const DefaultOptions = {
   animations: true,
   textBorder: 'new',
   widgetStyle: 'new',
-  showWelcome: true
+  showWelcome: true,
 };
 
 export default DefaultOptions;

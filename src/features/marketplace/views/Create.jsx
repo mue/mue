@@ -11,17 +11,12 @@ function Create() {
       <div className="emptyItems">
         <div className="emptyNewMessage">
           <MdOutlineExtensionOff />
-          <span className="title">
-            {variables.getMessage('addons:create.moved_title')}
-          </span>
+          <span className="title">{variables.getMessage('addons:create.moved_title')}</span>
           <span className="subtitle">
             {variables.getMessage('addons:create.moved_description')}
           </span>
           <div className="createButtons">
-            <Button
-              type="settings"
-              label={variables.getMessage('addons:create.moved_button')}
-            />
+            <Button type="settings" label={variables.getMessage('addons:create.moved_button')} />
           </div>
         </div>
       </div>

@@ -23,7 +23,8 @@ class Notes extends PureComponent {
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
+      zoomFontSize:
+        Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
     });
   }
 

@@ -3,7 +3,7 @@ const DefaultOptions = {
   searchEngine: 'duckduckgo',
   customSearchEngine: '',
   voiceSearch: false,
-  searchDropdown: false
+  searchDropdown: false,
 };
 
 export default DefaultOptions;

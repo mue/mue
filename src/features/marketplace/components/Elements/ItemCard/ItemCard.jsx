@@ -144,7 +144,11 @@ function ItemCard({ item, type, onCollection, isCurator, cardStyle }) {
               e.target.src = '/icons/marketplace-placeholder.png';
             }}
           />
-          <div className="absolute top-3 right-3">{isItemInstalled(item.name) && <MdCheckCircle style={{ color: `${item.colour}` }} className="h-8 w-8" />}</div>
+          <div className="absolute top-3 right-3">
+            {isItemInstalled(item.name) && (
+              <MdCheckCircle style={{ color: `${item.colour}` }} className="h-8 w-8" />
+            )}
+          </div>
           <div className="card-details">
             <span className="card-title">{item.display_name || item.name}</span>
             {!isCurator ? (

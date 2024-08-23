@@ -8,11 +8,9 @@ function Dropdown({
   currentSearch,
   searchDropdown,
   setSearchDropdown,
-  searchEngines
+  searchEngines,
 }) {
-  const customText = variables
-    .getMessage('settings:sections.search.custom')
-    .split(' ')[0];
+  const customText = variables.getMessage('settings:sections.search.custom').split(' ')[0];
 
   function setSearch(name, custom) {
     let _url;

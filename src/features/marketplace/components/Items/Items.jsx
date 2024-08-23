@@ -10,7 +10,7 @@ const NewItems = ({ items, view }) => {
       return (
         <table className="w-full">
           <thead className="text-left">
-             <tr>
+            <tr>
               <th>Name</th>
               <th>Type</th>
               {/*<th>{variables.getMessage('settings:sections.quote.author')}</th>*/}
@@ -19,12 +19,7 @@ const NewItems = ({ items, view }) => {
           </thead>
           <tbody>
             {items.map((item, index) => (
-              <ItemCard
-                item={item}
-                type={true}
-                key={index}
-                cardStyle="list"
-              />
+              <ItemCard item={item} type={true} key={index} cardStyle="list" />
             ))}
           </tbody>
         </table>
@@ -33,12 +28,7 @@ const NewItems = ({ items, view }) => {
       return (
         <div className="items">
           {items.map((item, index) => (
-            <ItemCard
-              item={item}
-              type={true}
-              key={index}
-              cardStyle="card"
-            />
+            <ItemCard item={item} type={true} key={index} cardStyle="card" />
           ))}
         </div>
       );

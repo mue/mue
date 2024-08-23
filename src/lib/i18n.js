@@ -1,13 +1,11 @@
 import { I18nLite } from '@eartharoid/i18n';
 import { importJSON } from '@eartharoid/vite-plugin-i18n/client';
 
-export const languages = Object
-  .keys(import.meta.glob('i18n/**/main.yml'))
-  .map(path => {
-    const parts = path.split('/');
-    const id = parts[parts.length - 2];
-    return id;
-  });
+export const languages = Object.keys(import.meta.glob('i18n/**/main.yml')).map((path) => {
+  const parts = path.split('/');
+  const id = parts[parts.length - 2];
+  return id;
+});
 
 /**
  * Initialise the i18n object.

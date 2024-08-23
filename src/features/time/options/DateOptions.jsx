@@ -9,7 +9,9 @@ import { Row, Content, Action, PreferencesWrapper } from 'components/Layout/Sett
 import defaults from './default';
 
 function DateOptions() {
-  const [dateType, setDateType] = useState(localStorage.getItem('dateType') || defaults.date.dateType);
+  const [dateType, setDateType] = useState(
+    localStorage.getItem('dateType') || defaults.date.dateType,
+  );
   const dateFormats = ['DMY', 'MDY', 'YMD'];
 
   const longSettings = (
@@ -71,9 +73,7 @@ function DateOptions() {
           },
           {
             value: 'slashes',
-            text: variables.getMessage(
-              'settings:sections.date.short_separator.slashes',
-            ),
+            text: variables.getMessage('settings:sections.date.short_separator.slashes'),
           },
         ]}
       />

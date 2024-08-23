@@ -85,15 +85,11 @@ export default class CustomSettings extends PureComponent {
         <>
           <Checkbox
             name="backgroundVideoLoop"
-            text={variables.getMessage(
-              'settings:sections.background.source.loop_video',
-            )}
+            text={variables.getMessage('settings:sections.background.source.loop_video')}
           />
           <Checkbox
             name="backgroundVideoMute"
-            text={variables.getMessage(
-              'settings:sections.background.source.mute_video',
-            )}
+            text={variables.getMessage('settings:sections.background.source.mute_video')}
           />
         </>
       );
@@ -108,7 +104,7 @@ export default class CustomSettings extends PureComponent {
       data = JSON.parse(localStorage.getItem('customBackground'));
     } catch (e) {
       const custom = localStorage.getItem('customBackground');
-      data = custom ? [custom] : defaults.customBackground
+      data = custom ? [custom] : defaults.customBackground;
     }
 
     return data;
@@ -174,11 +170,14 @@ export default class CustomSettings extends PureComponent {
           return toast(variables.getMessage('toasts.no_storage'));
         }
 
-        this.customBackground({
-          target: {
-            result: await filetoDataURL(res),
-          }
-        }, this.state.currentBackgroundIndex);
+        this.customBackground(
+          {
+            target: {
+              result: await filetoDataURL(res),
+            },
+          },
+          this.state.currentBackgroundIndex,
+        );
       });
       e.preventDefault();
     };
@@ -193,14 +192,10 @@ export default class CustomSettings extends PureComponent {
               <MdAddPhotoAlternate />
               <div>
                 <span className="title">
-                  {variables.getMessage(
-                    'settings:sections.background.source.custom_title',
-                  )}
+                  {variables.getMessage('settings:sections.background.source.custom_title')}
                 </span>
                 <span className="subtitle">
-                  {variables.getMessage(
-                    'settings:sections.background.source.custom_description',
-                  )}
+                  {variables.getMessage('settings:sections.background.source.custom_description')}
                 </span>
               </div>
             </div>
@@ -209,17 +204,13 @@ export default class CustomSettings extends PureComponent {
                 type="settings"
                 onClick={() => this.uploadCustomBackground()}
                 icon={<MdOutlineFileUpload />}
-                label={variables.getMessage(
-                  'settings:sections.background.source.upload',
-                )}
+                label={variables.getMessage('settings:sections.background.source.upload')}
               />
               <Button
                 type="settings"
                 onClick={() => this.setState({ customURLModal: true })}
                 icon={<MdAddLink />}
-                label={variables.getMessage(
-                  'settings:sections.background.source.add_url',
-                )}
+                label={variables.getMessage('settings:sections.background.source.add_url')}
               />
             </div>
           </div>
@@ -235,9 +226,7 @@ export default class CustomSettings extends PureComponent {
                     {videoCheck(url) && <MdPersonalVideo className="customvideoicon" />}
                     {this.state.customBackground.length > 0 && (
                       <Tooltip
-                        title={variables.getMessage(
-                          'settings:sections.background.source.remove',
-                        )}
+                        title={variables.getMessage('settings:sections.background.source.remove')}
                       >
                         <Button
                           type="settings"
@@ -254,25 +243,18 @@ export default class CustomSettings extends PureComponent {
                 <div className="emptyNewMessage">
                   <MdAddPhotoAlternate />
                   <span className="title">
-                    {variables.getMessage(
-                      'settings:sections.background.source.drop_to_upload',
-                    )}
+                    {variables.getMessage('settings:sections.background.source.drop_to_upload')}
                   </span>
                   <span className="subtitle">
-                    {variables.getMessage(
-                      'settings:sections.background.source.formats',
-                      {
-                        list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
-                      },
-                    )}
+                    {variables.getMessage('settings:sections.background.source.formats', {
+                      list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
+                    })}
                   </span>
                   <Button
                     type="settings"
                     onClick={() => this.uploadCustomBackground()}
                     icon={<MdFolder />}
-                    label={variables.getMessage(
-                      'settings:sections.background.source.select',
-                    )}
+                    label={variables.getMessage('settings:sections.background.source.select')}
                   />
                 </div>
               </div>

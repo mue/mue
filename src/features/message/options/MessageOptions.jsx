@@ -82,9 +82,7 @@ function MessageOptions() {
                   </span>
                   <TextareaAutosize
                     value={messages[index]}
-                    placeholder={variables.getMessage(
-                      'settings:sections.message.content',
-                    )}
+                    placeholder={variables.getMessage('settings:sections.message.content')}
                     onChange={(e) => message(e, true, index)}
                     varient="outlined"
                     style={{ padding: '0' }}
@@ -99,7 +97,6 @@ function MessageOptions() {
                     icon={<MdCancel />}
                     label={variables.getMessage('marketplace:product.buttons.remove')}
                   />
-
                 </div>
               </div>
             </div>

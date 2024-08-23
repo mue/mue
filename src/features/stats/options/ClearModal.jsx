@@ -10,9 +10,7 @@ function ClearModal({ modalClose, resetStats }) {
         <span className="title">
           {variables.getMessage('settings:sections.advanced.reset_modal.title')}
         </span>
-        <Tooltip
-          title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
-        >
+        <Tooltip title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>

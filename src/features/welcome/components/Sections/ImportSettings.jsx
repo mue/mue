@@ -48,9 +48,7 @@ function ImportSettings(props) {
         loadFunction={(e) => importSettings(e)}
       />
       <span className="title">{variables.getMessage('welcome:tip')}</span>
-      <span className="subtitle">
-        {variables.getMessage('welcome:sections.settings.tip')}
-      </span>
+      <span className="subtitle">{variables.getMessage('welcome:sections.settings.tip')}</span>
     </Content>
   );
 }

@@ -74,7 +74,7 @@ const ItemUtilities = ({ itemsFilter, setItemsFilter, itemsView, setItemsView })
 
   return (
     <div className="w-full flex flex-row justify-between items-center">
-    {itemsFilter && <FilterOptions />}
+      {itemsFilter && <FilterOptions />}
       <div className="flex flex-row gap-2 ml-auto">
         <ItemView />
       </div>

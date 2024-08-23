@@ -118,9 +118,7 @@ class Navbar extends PureComponent {
 
           {this.state.refreshEnabled !== 'false' && <Refresh fontSize={this.state.zoomFontSize} />}
 
-          <Tooltip
-            title={variables.getMessage('modals.main.navbar.settings')}
-          >
+          <Tooltip title={variables.getMessage('modals.main.navbar.settings')}>
             <button
               className="navbarButton"
               onClick={() => this.props.openModal('mainModal')}

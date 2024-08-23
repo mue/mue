@@ -38,7 +38,6 @@ import { checkAchievements, newAchievements } from './condition';
 function getLocalisedAchievementData(id) {
   // const localised = translations[variables.locale_id][id] ||
   //   translations.en-GB[id] || { name: id, description: '' };
-
   // return {
   //   name: localised.name,
   //   description: localised.description,

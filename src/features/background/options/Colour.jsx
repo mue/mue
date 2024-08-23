@@ -36,11 +36,7 @@ const ColourOptions = () => {
 
   return (
     <Row final={true}>
-      <Content
-        title={variables.getMessage(
-          'settings:sections.background.source.custom_colour',
-        )}
-      />
+      <Content title={variables.getMessage('settings:sections.background.source.custom_colour')} />
       <Action>
         <ColorPicker
           value={colour}

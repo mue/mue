@@ -48,11 +48,9 @@ function CollectionPage() {
       />*/}
       <div
         className="collectionPage"
-        style={
-          {
-            backgroundImage: `linear-gradient(to bottom, transparent, black), url('${selectedCollection.img}')`,
-          }
-        }
+        style={{
+          backgroundImage: `linear-gradient(to bottom, transparent, black), url('${selectedCollection.img}')`,
+        }}
       >
         <div className="nice-tag">{variables.getMessage('marketplace:collection')}</div>
         <div className="content">

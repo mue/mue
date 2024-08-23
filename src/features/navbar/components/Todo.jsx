@@ -35,7 +35,8 @@ class Todo extends PureComponent {
 
   setZoom() {
     this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
+      zoomFontSize:
+        Number(((localStorage.getItem('zoomNavbar') || defaults.zoomNavbar) / 100) * 1.2) + 'rem',
     });
   }
 
@@ -217,9 +218,7 @@ class Todo extends PureComponent {
                               readOnly={this.state.todo[index].done}
                             />
                             <Tooltip
-                              title={variables.getMessage(
-                                'marketplace:product.buttons.remove',
-                              )}
+                              title={variables.getMessage('marketplace:product.buttons.remove')}
                             >
                               <MdDelete onClick={() => this.updateTodo('remove', index)} />
                             </Tooltip>

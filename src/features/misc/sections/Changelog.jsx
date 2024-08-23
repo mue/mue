@@ -16,7 +16,7 @@ function Changelog() {
   useEffect(() => {
     return () => {
       controller.abort();
-    }
+    };
   }, []);
 
   const getUpdate = async () => {

@@ -8,7 +8,8 @@ import defaults from '../options/default';
 
 function ExcludeModal({ modalClose, info }) {
   const excludeImage = async () => {
-    let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude')) || defaults.backgroundExclude;
+    let backgroundExclude =
+      JSON.parse(localStorage.getItem('backgroundExclude')) || defaults.backgroundExclude;
     backgroundExclude.push(info.pun);
     backgroundExclude = JSON.stringify(backgroundExclude);
     localStorage.setItem('backgroundExclude', backgroundExclude);
@@ -22,9 +23,7 @@ function ExcludeModal({ modalClose, info }) {
         <span className="title">
           {variables.getMessage('settings:sections.advanced.reset_modal.title')}
         </span>
-        <Tooltip
-          title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}
-        >
+        <Tooltip title={variables.getMessage('settings:sections.advanced.reset_modal.cancel')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>

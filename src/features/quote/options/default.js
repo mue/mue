@@ -7,7 +7,7 @@ const DefaultOptions = {
   favouriteQuoteEnabled: false,
   authorLink: false,
   authorImg: true,
-  zoomQuote: 100
+  zoomQuote: 100,
 };
 
 export default DefaultOptions;

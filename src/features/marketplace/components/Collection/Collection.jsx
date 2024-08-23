@@ -24,13 +24,15 @@ const Collection = ({ collection }) => {
     getCollectionData(collection.name).then((data) => {
       setSubTab(data.display_name);
     });
-  }
+  };
 
   return (
     <div className="collection h-[125px]" style={getStyle()}>
       <div className="content">
         <span className="title">{collection?.display_name}</span>
-        <span className="subtitle">{collection?.description ? collection?.description.substr(0, 75) : ''}</span>
+        <span className="subtitle">
+          {collection?.description ? collection?.description.substr(0, 75) : ''}
+        </span>
       </div>
       {collection?.news === true ? (
         <a

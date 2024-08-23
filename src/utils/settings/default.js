@@ -10,7 +10,9 @@ export function setDefaultSettings(reset) {
 
   // Languages
   const locale_ids = languages;
-  const browserLanguage = (navigator.languages && navigator.languages.find((lang) => locale_ids.includes(lang))) || navigator.language;
+  const browserLanguage =
+    (navigator.languages && navigator.languages.find((lang) => locale_ids.includes(lang))) ||
+    navigator.language;
 
   if (locale_ids.includes(browserLanguage)) {
     localStorage.setItem('language', browserLanguage);

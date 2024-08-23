@@ -1,7 +1,7 @@
 const DefaultOptions = {
   message: false,
   messages: [],
-  zoomMessage: 100
+  zoomMessage: 100,
 };
 
 export default DefaultOptions;

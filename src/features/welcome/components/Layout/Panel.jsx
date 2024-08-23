@@ -7,11 +7,7 @@ const Panel = ({ children, type }) => {
       className = 'aside';
       break;
     case 'content':
-      return (
-        <section className="content">
-            {children}
-        </section>
-      );
+      return <section className="content">{children}</section>;
     default:
       className = type;
   }

@@ -41,7 +41,8 @@ const App = () => {
   const [showBackground, setShowBackground] = useState(false);
 
   useEffect(() => {
-    const storedToastDisplayTime = localStorage.getItem('toastDisplayTime') || defaults.toastDisplayTime;
+    const storedToastDisplayTime =
+      localStorage.getItem('toastDisplayTime') || defaults.toastDisplayTime;
     const storedBackground = localStorage.getItem('background') || BackgroundDefaults.background;
 
     if (storedToastDisplayTime) {

@@ -9,7 +9,9 @@ import { PreferencesWrapper } from 'components/Layout';
 const options = languages.map((id) => {
   const native = new Intl.DisplayNames([id], { type: 'language' });
   // const current = new Intl.DisplayNames([variables.locale_id], { type: 'language' });
-  const current = new Intl.DisplayNames([localStorage.getItem('language')], { type: 'language' });
+  const current = new Intl.DisplayNames([localStorage.getItem('language') || 'en'], {
+    type: 'language',
+  });
   return {
     name: native.of(id),
     subname: current.of(id),

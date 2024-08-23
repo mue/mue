@@ -68,9 +68,7 @@ function Intro() {
         config={{
           icon: FaDiscord,
           title: variables.getMessage('welcome:sections.intro.notices.discord_title'),
-          subtitle: variables.getMessage(
-            'welcome:sections.intro.notices.discord_description',
-          ),
+          subtitle: variables.getMessage('welcome:sections.intro.notices.discord_description'),
           link: DISCORD_LINK,
         }}
       />
@@ -78,9 +76,7 @@ function Intro() {
         config={{
           icon: FaGithub,
           title: variables.getMessage('welcome:sections.intro.notices.github_title'),
-          subtitle: variables.getMessage(
-            'welcome:sections.intro.notices.github_description',
-          ),
+          subtitle: variables.getMessage('welcome:sections.intro.notices.github_description'),
           link: GITHUB_LINK,
         }}
       />
