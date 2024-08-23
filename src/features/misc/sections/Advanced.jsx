@@ -146,7 +146,8 @@ function AdvancedOptions() {
                 <Switch name="offlineMode" element=".other" />
               </Action>
             </Row>
-
+          </PreferencesWrapper>
+          <PreferencesWrapper>
             <Row>
               <Content
                 title={variables.getMessage('settings:sections.advanced.timezone.title')}
@@ -166,6 +167,8 @@ function AdvancedOptions() {
                 />
               </Action>
             </Row>
+          </PreferencesWrapper>
+          <PreferencesWrapper>
             <Row>
               <Content
                 title={variables.getMessage('settings:sections.advanced.tab_name')}
@@ -175,6 +178,8 @@ function AdvancedOptions() {
                 <Text name="tabName" default={variables.getMessage('tabname')} category="other" />
               </Action>
             </Row>
+          </PreferencesWrapper>
+          <PreferencesWrapper>
             <Row final={true}>
               <Content
                 title={variables.getMessage('settings:sections.experimental.title')}
