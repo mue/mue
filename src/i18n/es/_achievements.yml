@@ -3,13 +3,32 @@
   description: Abriste 727 pestañas
 "1337":
   description: Abriste 1337 pestañas
+  name: MU3T4B
 thankyou:
   name: Gracias
   description: Abriste 39 pestañas
 mrworldwide:
   name: Señor Mundial
+  description: 305 pestañas abiertas
 10tabs:
   description: Abriste 10 pestañas
+  name: 10/10 IGN
 seasoning:
   name: Condimento
   description: Abriste 100 pestañas
+averagelinuxuser:
+  description: Complemento instalado
+  name: Usuario medio de Linux
+fullyriced:
+  description: Se instalaron 5 complementos
+tabaholic:
+  name: Tabaquismo
+  description: 500 pestañas abiertas
+808s:
+  description: 808 pestañas abiertas
+21addons:
+  name: ¿Instalaron 21 complementos? ¿Qué?
+  description: Se instalaron 21 complementos
+overload:
+  name: Sobrecarga del sistema
+  description: Se instalaron 50 complementos
