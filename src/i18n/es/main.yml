@@ -37,6 +37,7 @@ widgets:
     add: Añadir
     name_error: Debe indicar el nombre
     url_error: Debe indicar la URL
+    url: URL
   date:
     week: Semana
   weather:
@@ -60,7 +61,10 @@ widgets:
       title: Tareas
       add: Añadir
       no_todos: Sin tareas
-    apps: {}
+      pin: Pin
+    apps:
+      title: Aplicaciones
+      no_apps: No se han encontrado enlaces
 modals:
   main:
     title: Opciones
@@ -68,13 +72,14 @@ modals:
     file_upload_error: El archivo pesa más de 2MB
     navbar:
       settings: Ajustes
-      addons: Addons
-      marketplace: Tienda
+      addons: Biblioteca
+      marketplace: Descubrir
     error_boundary:
       message: No se ha podido cargar este componente de Mue
       report_error: Enviar informe de error
       sent: ¡Enviado!
       refresh: Recargar
+      title: Error
   update:
     title: Actualizar
     offline:
@@ -82,6 +87,7 @@ modals:
       description: No se pueden obtener actualizaciones en modo sin conexión
     error:
       description: No se pudo conectar con el servidor
+      title: Error
   share:
     copy_link: Copiar enlace
     email: Correo electrónico
@@ -96,3 +102,4 @@ toasts:
   imported: Importado correctamente
   no_storage: No hay espacio suficiente
   link_copied: Enlace copiado
+  stats_reset: Restablecer estadísticas
