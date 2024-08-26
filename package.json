@@ -47,7 +47,7 @@
     "sass": "^1.77.8",
     "stylelint": "^16.8.2",
     "stylelint-config-standard-scss": "^13.1.0",
-    "stylelint-scss": "^6.5.0",
+    "stylelint-scss": "^6.5.1",
     "vite": "5.4.2",
     "vite-plugin-progress": "^0.0.7"
   },
