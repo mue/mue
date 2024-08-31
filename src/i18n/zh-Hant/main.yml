@@ -1,1 +1,101 @@
-{}
+widgets:
+  greeting:
+    afternoon: 午安
+    morning: 早安
+    evening: 晚安
+    christmas: 聖誕快樂
+    newyear: 新年快樂
+    birthday: 生日快樂
+    halloween: 萬聖節快樂
+  background:
+    unsplash: 在 Unsplash 上
+    information: 資訊
+    download: 下載
+    downloads: 下載
+    views: 檢視
+    likes: 喜歡
+    location: 地點
+    camera: 相機
+    resolution: 解析度
+    source: 來源
+    category: 類別
+    confirm: 確認
+    credit: 影像來自
+    exclude: 不要再顯示
+    exclude_confirm: "你確定你不想再次看到此影像嗎？\n注意：如果你不喜歡「{category}」影像，你可以在背景來源設定中取消選擇該類別。"
+  search: 搜尋
+  quicklinks:
+    new: 新增連結
+    icon: 圖示（選擇性）
+    add: 增加
+    name_error: 必須提供名稱
+    url: 網址
+    edit: 編輯連結
+    name: 名稱
+    url_error: 必須提供網址
+  date:
+    week: 週
+  navbar:
+    tooltips:
+      refresh: 重新整理
+    notes:
+      title: 筆記
+      placeholder: 在此輸入
+    todo:
+      title: 待辦事項
+      pin: 釘選
+      add: 增加
+      no_todos: 無待辦事項
+    apps:
+      title: 應用程式
+      no_apps: 找不到應用程式連結
+  weather:
+    extra_information: 額外資訊
+    not_found: 找不到
+    feels_like: 感覺像 {amount}
+    meters: '{amount} 公尺'
+  quote:
+    share: 分享
+    favourite: 收藏
+    unfavourite: 取消收藏
+    link_tooltip: 在維基百科上開啟
+    copy: 複製
+modals:
+  main:
+    loading: 載入中…
+    file_upload_error: 檔案超過 2MB
+    navbar:
+      settings: 設定
+      marketplace: 探索
+      addons: 藏庫
+    error_boundary:
+      title: 錯誤
+      report_error: 傳送錯誤報告
+      sent: 已傳送！
+      refresh: 重新整理
+      message: 無法載入 Mue 的此元件
+    title: 選項
+  update:
+    title: 更新
+    offline:
+      title: 離線
+      description: 在離線模式下無法取得更新日誌
+    error:
+      title: 錯誤
+      description: 無法連接至伺服器
+  share:
+    copy_link: 複製連結
+    email: 電子郵件
+toasts:
+  quote: 引用已複製
+  notes: 筆記已複製
+  reset: 重置成功
+  uninstalled: 移除成功
+  updated: 更新成功
+  imported: 匯入成功
+  no_storage: 儲存空間不足
+  link_copied: 連結已複製
+  stats_reset: 統計資料重置
+  error: 出了一些問題
+  installed: 安裝成功
+tabname: 新分頁
