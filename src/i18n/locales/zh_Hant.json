@@ -1,1 +1,153 @@
-{}
+{
+  "modals": {
+    "main": {
+      "error_boundary": {
+        "message": "無法載入 Mue 的此元件",
+        "refresh": "重新整理",
+        "report_error": "傳送錯誤報告",
+        "sent": "已傳送！",
+        "title": "錯誤"
+      },
+      "file_upload_error": "檔案超過 2MB",
+      "loading": "載入中…",
+      "navbar": {
+        "addons": "附加元件",
+        "marketplace": "市場",
+        "settings": "設定"
+      },
+      "settings": {
+        "additional_settings": "附加設定",
+        "enabled": "已啟用",
+        "open_knowledgebase": "開啟知識庫",
+        "reminder": {
+          "message": "為了使所有變更生效，必須重新整理頁面。",
+          "title": "注意"
+        },
+        "sections": {
+          "date": {
+            "datenth": "日期 th",
+            "day_of_week": "星期",
+            "title": "日期",
+            "type": {
+              "long": "長",
+              "short": "短"
+            },
+            "week_number": "週數"
+          },
+          "header": {
+            "enabled": "選擇是否顯示此小工具",
+            "more_info": "更多資訊",
+            "report_issue": "報告問題",
+            "size": "滑桿控制小部件的大小"
+          },
+          "time": {
+            "analogue": {
+              "hour_hand": "時針",
+              "hour_marks": "小時刻度",
+              "minute_hand": "分針",
+              "minute_marks": "分鐘刻度",
+              "round_clock": "圓形背景",
+              "second_hand": "秒針",
+              "subtitle": "變更類比時鐘的外觀",
+              "title": "類比"
+            },
+            "digital": {
+              "seconds": "秒",
+              "subtitle": "變更數位時鐘的外觀",
+              "title": "數位",
+              "twelvehour": "12 小時制",
+              "twentyfourhour": "24 小時制"
+            },
+            "format": "格式",
+            "percentage_complete": "完成百分比",
+            "title": "時間",
+            "type": "類型",
+            "type_subtitle": "選擇是否以數位格式、類比格式或當天完成百分比顯示時間",
+            "vertical_clock": {
+              "change_hour_colour": "變更小時文字顏色",
+              "change_minute_colour": "變更分鐘文字顏色",
+              "change_second_colour": "變更秒文字顏色",
+              "title": "垂直時鐘"
+            }
+          }
+        }
+      },
+      "title": "選項"
+    }
+  },
+  "tabname": "新分頁",
+  "widgets": {
+    "background": {
+      "camera": "相機",
+      "category": "類別",
+      "confirm": "確認",
+      "credit": "影像來自",
+      "download": "下載",
+      "downloads": "下載",
+      "exclude": "不要再顯示",
+      "exclude_confirm": "你確定你不想再次看到此影像嗎？\n注意：如果你不喜歡「{category}」影像，你可以在背景來源設定中取消選擇該類別。",
+      "information": "資訊",
+      "likes": "喜歡",
+      "location": "地點",
+      "resolution": "解析度",
+      "source": "來源",
+      "unsplash": "在 Unsplash 上",
+      "views": "檢視"
+    },
+    "date": {
+      "week": "週"
+    },
+    "greeting": {
+      "afternoon": "午安",
+      "birthday": "生日快樂",
+      "christmas": "聖誕快樂",
+      "evening": "晚安",
+      "halloween": "萬聖節快樂",
+      "morning": "早安",
+      "newyear": "新年快樂"
+    },
+    "navbar": {
+      "apps": {
+        "no_apps": "找不到應用程式連結",
+        "title": "應用程式"
+      },
+      "notes": {
+        "placeholder": "在此輸入",
+        "title": "筆記"
+      },
+      "todo": {
+        "add": "增加",
+        "no_todos": "無待辦事項",
+        "pin": "釘選",
+        "title": "待辦事項"
+      },
+      "tooltips": {
+        "refresh": "重新整理"
+      }
+    },
+    "quicklinks": {
+      "add": "增加",
+      "edit": "編輯連結",
+      "icon": "圖示（選擇性）",
+      "name": "名稱",
+      "name_error": "必須提供名稱",
+      "new": "新增連結",
+      "url": "網址",
+      "url_error": "必須提供網址"
+    },
+    "quote": {
+      "copy": "複製",
+      "favourite": "收藏",
+      "link_tooltip": "在維基百科上開啟",
+      "share": "分享",
+      "unfavourite": "取消收藏"
+    },
+    "search": "搜尋",
+    "weather": {
+      "extra_information": "額外資訊",
+      "feels_like": "感覺像 {amount}",
+      "meters": "{amount} 公尺",
+      "not_found": "找不到"
+    }
+  }
+}
