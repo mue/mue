@@ -107,7 +107,7 @@ function Search() {
       }
 
       setTimeout(() => {
-        variables.stats.postEvent('feature', 'Voice search');
+        variables.stats.postEvent('feature', 'voice-search');
         window.location.href = url + `?${query}=` + searchText.value;
       }, 1000);
     };
@@ -116,7 +116,7 @@ function Search() {
   function searchButton(e) {
     e.preventDefault();
     const value = e.target.value || document.getElementById('searchtext').value || 'mue fast';
-    variables.stats.postEvent('feature', 'Search');
+    variables.stats.postEvent('feature', 'search');
     window.location.href = url + `?${query}=` + value;
   }
 

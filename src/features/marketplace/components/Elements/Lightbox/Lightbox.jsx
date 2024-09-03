@@ -2,7 +2,7 @@ import { memo } from 'react';
 import variables from 'config/variables';
 
 function Lightbox({ modalClose, img }) {
-  variables.stats.postEvent('modal', 'Opened lightbox');
+  variables.stats.postEvent('modal', 'lightbox', 'opened');
 
   return (
     <>

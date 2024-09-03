@@ -29,7 +29,11 @@ function Radio(props) {
       props.onChange(value);
     }
 
-    variables.stats.postEvent('setting', `${props.name} from ${value} to ${value}`);
+    if (props.name !== 'language') {
+      variables.stats.postEvent('setting', props.name, `${value}-${value}`);
+    } else {
+      variables.stats.postEvent('language', props.name, `${value}-${value}`);
+    }
 
     if (props.element) {
       if (!document.querySelector(props.element)) {

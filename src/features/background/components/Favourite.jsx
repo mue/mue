@@ -23,7 +23,7 @@ function Favourite({ credit, offline, pun, tooltipText }) {
       localStorage.removeItem('favourite');
       setFavourited(buttons.unfavourited);
       tooltipText(variables.getMessage('widgets.quote.favourite'));
-      variables.stats.postEvent('feature', 'Background favourite');
+      variables.stats.postEvent('feature', 'background', 'favourite');
     } else {
       const type = localStorage.getItem('backgroundType') || defaults.backgroundType;
 
@@ -87,7 +87,7 @@ function Favourite({ credit, offline, pun, tooltipText }) {
 
               tooltipText(variables.getMessage('widgets.quote.unfavourite'));
 
-              variables.stats.postEvent('feature', 'Background unfavourite');
+              variables.stats.postEvent('feature', 'background', 'unfavourite');
             }
           }
 

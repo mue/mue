@@ -17,7 +17,7 @@ function Modals() {
       window.location.search !== '?nointro=true'
     ) {
       setWelcomeVisible(true);
-      variables.stats.postEvent('modal', 'Opened welcome');
+      variables.stats.postEvent('modal', 'welcome', 'opened');
     }
 
     if (window.location.search === '?nointro=true') {
@@ -45,7 +45,7 @@ function Modals() {
     }
 
     if (action !== false) {
-      variables.stats.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
+      variables.stats.postEvent('modal', type.replace('Modal', ''), 'opened');
     }
   };
 

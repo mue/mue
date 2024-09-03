@@ -21,7 +21,7 @@ const Checkbox = (props) => {
       props.onChange(value);
     }
 
-    variables.stats.postEvent('setting', `${props.name} ${value ? 'enabled' : 'disabled'}`);
+    variables.stats.postEvent('setting', props.name, value ? 'enabled' : 'disabled');
 
     if (props.element) {
       if (!document.querySelector(props.element)) {

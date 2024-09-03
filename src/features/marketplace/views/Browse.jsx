@@ -75,7 +75,7 @@ function Marketplace() {
 
       setType('item');
 
-      variables.stats.postEvent('marketplace-item', `${item.display_name} viewed`);
+      variables.stats.postEvent('marketplace-item', item.display_name, 'viewed');
     } else if (pageType === 'collection') {
       setDone(false);
       setItem({});

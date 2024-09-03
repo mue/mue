@@ -88,7 +88,7 @@ const Overview = () => {
 
   useEffect(() => {
     localStorage.setItem('order', JSON.stringify(items));
-    variables.stats.postEvent('setting', 'Widget order');
+    variables.stats.postEvent('setting', 'widget-order');
     EventBus.emit('refresh', 'widgets');
   }, [items]);
 

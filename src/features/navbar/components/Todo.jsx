@@ -129,7 +129,7 @@ class Todo extends PureComponent {
   }
 
   pin() {
-    variables.stats.postEvent('feature', 'Todo pin');
+    variables.stats.postEvent('feature', 'todo', 'pin');
     const todoPinned = localStorage.getItem('todoPinned') === 'true';
     localStorage.setItem('todoPinned', !todoPinned);
     this.setState({

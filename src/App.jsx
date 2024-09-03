@@ -28,7 +28,7 @@ const useAppSetup = () => {
 
     EventBus.on('refresh', refreshHandler);
 
-    variables.stats.tabLoad();
+    variables.stats.postEvent('tabs-opened');
 
     return () => {
       EventBus.off('refresh', refreshHandler);

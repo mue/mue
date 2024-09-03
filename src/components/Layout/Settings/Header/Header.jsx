@@ -22,7 +22,7 @@ function Header(props) {
 
     variables.stats.postEvent(
       'setting',
-      `${props.name} ${setting === true ? 'enabled' : 'disabled'}`,
+      props.setting, setting === true ? 'enabled' : 'disabled',
     );
 
     EventBus.emit('toggle', props.setting);

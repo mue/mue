@@ -18,7 +18,7 @@ const Tabs = (props) => {
 
   const onClick = (tab, name) => {
     if (name !== currentName) {
-      variables.stats.postEvent('tab', `Opened ${name}`);
+      variables.stats.postEvent('tab', ${name}, 'opened');
     }
     setCurrentTab(tab);
     setCurrentName(name);

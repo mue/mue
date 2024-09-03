@@ -61,7 +61,7 @@ function AppsOptions({ appsEnabled }) {
       iconError: '',
     });
 
-    variables.stats.postEvent('feature', 'App link add');
+    variables.stats.postEvent('feature', 'app-link', 'add');
   };
 
   const startEditLink = (data) => {
@@ -102,7 +102,7 @@ function AppsOptions({ appsEnabled }) {
       items: data,
     }));
 
-    variables.stats.postEvent('feature', 'App link delete');
+    variables.stats.postEvent('feature', 'app-link', 'delete');
   };
 
   return (

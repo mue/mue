@@ -6,7 +6,7 @@ import { Tooltip, Button } from 'components/Elements';
 
 function ResetModal({ modalClose }) {
   const reset = () => {
-    variables.stats.postEvent('setting', 'Reset');
+    variables.stats.postEvent('setting', 'reset');
     setDefaultSettings('reset');
     window.location.reload();
   };

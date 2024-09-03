@@ -50,7 +50,7 @@ const downloadImage = async (info) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-  variables.stats.postEvent('feature', 'Background download');
+  variables.stats.postEvent('feature', 'background', 'download');
 };
 
 function PhotoInformation({ info, url, api }) {

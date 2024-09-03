@@ -60,7 +60,7 @@ function NavbarOptions() {
 
         variables.stats.postEvent(
           'setting',
-          `${settingName} ${!isDisabled === true ? 'enabled' : 'disabled'}`,
+          settingName, !isDisabled === true ? 'enabled' : 'disabled',
         );
 
         EventBus.emit('refresh', 'navbar');

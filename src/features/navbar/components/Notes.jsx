@@ -65,7 +65,7 @@ class Notes extends PureComponent {
   }
 
   pin() {
-    variables.stats.postEvent('feature', 'Notes pin');
+    variables.stats.postEvent('feature', 'notes', 'pin');
     const notesPinned = localStorage.getItem('notesPinned') === 'true';
     localStorage.setItem('notesPinned', !notesPinned);
     this.setState({
@@ -74,7 +74,7 @@ class Notes extends PureComponent {
   }
 
   copy() {
-    variables.stats.postEvent('feature', 'Notes copied');
+    variables.stats.postEvent('feature', 'notes', 'copied');
     navigator.clipboard.writeText(this.state.notes);
     toast(variables.getMessage('toasts.notes'));
   }
@@ -85,7 +85,7 @@ class Notes extends PureComponent {
       return;
     }
 
-    variables.stats.postEvent('feature', 'Notes download');
+    variables.stats.postEvent('feature', 'notes', 'download');
     saveFile(this.state.notes, 'mue-notes.txt', 'text/plain');
   }
 

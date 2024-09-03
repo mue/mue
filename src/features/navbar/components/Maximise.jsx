@@ -49,14 +49,14 @@ function Maximise(props) {
 
     if (hidden === false) {
       setAttribute(0, 100);
-      variables.stats.postEvent('feature', 'Background maximise');
+      variables.stats.postEvent('feature', 'background-maximise');
     } else {
       setAttribute(
         localStorage.getItem('blur') || defaults.blur,
         localStorage.getItem('brightness') || defaults.brightness,
         true,
       );
-      variables.stats.postEvent('feature', 'Background unmaximise');
+      variables.stats.postEvent('feature', 'background-unmaximise');
     }
   };
 

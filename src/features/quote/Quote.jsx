@@ -318,7 +318,7 @@ class Quote extends PureComponent {
   }
 
   copyQuote() {
-    variables.stats.postEvent('feature', 'Quote copied');
+    variables.stats.postEvent('feature', 'quote', 'copied');
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
     toast(variables.getMessage('toasts.quote'));
   }
@@ -336,7 +336,7 @@ class Quote extends PureComponent {
       });
     }
 
-    variables.stats.postEvent('feature', 'Quote favourite');
+    variables.stats.postEvent('feature', 'quote', 'favourite');
   }
 
   init() {

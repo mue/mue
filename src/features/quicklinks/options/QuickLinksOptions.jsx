@@ -38,7 +38,7 @@ class QuickLinksOptions extends PureComponent {
       items: data,
     });
 
-    variables.stats.postEvent('feature', 'Quicklink delete');
+    variables.stats.postEvent('feature', 'quicklink' ,'delete');
   }
 
   async addLink(name, url, icon) {
@@ -76,7 +76,7 @@ class QuickLinksOptions extends PureComponent {
       iconError: '',
     });
 
-    variables.stats.postEvent('feature', 'Quicklink add');
+    variables.stats.postEvent('feature', 'quicklink', 'add');
   }
 
   startEditLink(data) {
