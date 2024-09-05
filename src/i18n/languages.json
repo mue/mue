@@ -44,6 +44,14 @@
     "value": "ru"
   },
   {
+    "name": "Português",
+    "value": "pt"
+  },
+  {
+    "name": "Português (Brasil)",
+    "value": "pt_BR"
+  },
+  {
     "name": "Türkçe",
     "value": "tr_TR"
   },
@@ -54,9 +62,5 @@
   {
     "name": "中文 (繁體)",
     "value": "zh_Hant"
-  },
-  {
-    "name": "Portuguese (Brazil)",
-    "value": "pt_BR"
   }
 ]
