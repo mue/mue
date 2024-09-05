@@ -172,11 +172,14 @@ export default class CustomSettings extends PureComponent {
           return toast(variables.getMessage('toasts.no_storage'));
         }
 
-        this.customBackground({
-          target: {
-            result: await filetoDataURL(res),
-          }
-        }, this.state.currentBackgroundIndex);
+        this.customBackground(
+          {
+            target: {
+              result: await filetoDataURL(res),
+            },
+          },
+          this.state.currentBackgroundIndex,
+        );
       });
       e.preventDefault();
     };

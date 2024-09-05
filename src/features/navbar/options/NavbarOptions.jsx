@@ -16,7 +16,9 @@ function NavbarOptions() {
   const [showRefreshOptions, setShowRefreshOptions] = useState(
     localStorage.getItem('refresh') === 'true',
   );
-  const [appsEnabled, setAppsEnabled] = useState(localStorage.getItem('appsEnabled') === 'true' || false);
+  const [appsEnabled, setAppsEnabled] = useState(
+    localStorage.getItem('appsEnabled') === 'true' || false,
+  );
 
   const NAVBAR_SECTION = 'modals.main.settings.sections.appearance.navbar';
 
