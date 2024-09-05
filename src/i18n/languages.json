@@ -52,6 +52,10 @@
     "value": "zh_CN"
   },
   {
+    "name": "中文 (繁體)",
+    "value": "zh_Hant"
+  },
+  {
     "name": "Portuguese (Brazil)",
     "value": "pt_BR"
   }
