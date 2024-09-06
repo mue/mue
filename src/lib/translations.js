@@ -10,9 +10,11 @@ import * as nl from 'translations/nl.json';
 import * as no from 'translations/no.json';
 import * as ru from 'translations/ru.json';
 import * as zh_CN from 'translations/zh_CN.json';
+import * as zh_Hant from 'translations/zh_Hant.json';
 import * as id_ID from 'translations/id_ID.json';
 import * as tr_TR from 'translations/tr_TR.json';
 import * as pt_BR from 'translations/pt_BR.json';
+import * as pt from 'translations/pt.json';
 import * as bn from 'translations/bn.json';
 
 /**
@@ -37,6 +39,8 @@ export function initTranslations(locale) {
     tr_TR,
     pt_BR,
     bn,
+    pt,
+    zh_Hant
   });
 
   return i18n;
@@ -57,4 +61,6 @@ export const translations = {
   tr_TR,
   pt_BR,
   bn,
+  pt,
+  zh_Hant
 };
