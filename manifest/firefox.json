@@ -1,5 +1,6 @@
 {
   "manifest_version": 3,
+  "id": "muetab@muetab.com",
   "name": "Mue",
   "description": "Fast, open and free-to-use new tab page for modern browsers.",
   "version": "7.1.2",
