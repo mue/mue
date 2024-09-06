@@ -26,4 +26,4 @@ export const TWITTER_HANDLE = 'getmue';
 export const DISCORD_SERVER = 'zv8C9F8';
 export const OPENCOLLECTIVE_USERNAME = 'mue';
 
-export const VERSION = '7.1.1';
+export const VERSION = '7.1.2';
