@@ -37,6 +37,7 @@ widgets:
     add: Ekle
     name_error: İsim gerekli
     url_error: URL gerekli
+    url: URL
   date:
     week: Haftada Bir
   weather:
@@ -61,7 +62,8 @@ widgets:
       pin: Tuttur
       add: Ekle
       no_todos: Yapılacak bir şey yok
-    apps: {}
+    apps:
+      title: Uygulamalar
 modals:
   main:
     title: Seçenekler
