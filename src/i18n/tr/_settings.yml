@@ -218,6 +218,7 @@ sections:
     options:
       icon: İkon
       text_only: Sadece Metin
+      metro: Metro
     styling: Hızlı Bağlantı Görünümü
     styling_description: Bağlantıların görünümünü özelleştirin.
   message:
