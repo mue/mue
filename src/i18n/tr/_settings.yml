@@ -378,6 +378,7 @@ sections:
     no_supporters: Şu anda Mue destekçisi yok!
     photographers: Fotoğrafçılar
     curators: Eklenti Oluşturucular
+    form_button: Form
 buttons:
   reset: Yenile
   import: İçeri Aktar
