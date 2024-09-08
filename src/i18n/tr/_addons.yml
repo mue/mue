@@ -7,7 +7,7 @@ empty:
   description: Hiçbir eklenti yüklü değil.
 sideload:
   title: Diğer Eklentiler
-  description: Bilgisayarınızdan pazar yerinde olmayan bir Mue eklentisi yükleyin.
+  description: Bilgisayarınızdan markette olmayan bir Mue eklentisi yükleyin.
   failed: Eklenti yüklenemedi.
   errors:
     no_name: İsim belirtilmedi.
@@ -24,6 +24,6 @@ sort:
 create:
   title: Oluştur
   moved_title: Eklenti oluşturma taşındı!
-  moved_description: 7.1 güncellemesinden sonra, eklentilerin oluşturulması web
-    kullanıcı arayüzüne taşındı
-  moved_button: Başlayın
+  moved_description: 7.1 güncellemesinden sonra, eklentilerin oluşturulması web kullanıcı
+    arayüzüne taşındı
+  moved_button: Çok Yakında....
