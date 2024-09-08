@@ -254,6 +254,8 @@ sections:
       refresh_options:
         none: Hiçbiri
         page: Sayfa
+      apps_subtitle: Sık kullandığınız diğer web sitelerinin kısayollarını oluşturun.
+      widgets: Gezinme Çubuğu Araçları
     font:
       title: Yazı tipi
       description: Mue'da kullanılan yazı tipini değiştirin.
@@ -268,10 +270,12 @@ sections:
         semi_bold: Hafif Kalın
         bold: Kalın
         extra_bold: Ekstra Kalın
+        normal: Normal
       style:
         title: Yazı stili
         italic: İtalik
         oblique: Eğik
+        normal: Normal
     accessibility:
       title: Erişebilirlik
       description: Mue Erişebilirlik ayarlarını değiştirin
@@ -315,7 +319,13 @@ sections:
     experimental_warning: Deneysel modunuz açıksa Mue ekibinin destek sağlayamadığını
       lütfen unutmayın. Lütfen önce devre dışı bırakın ve desteğe başvurmadan önce
       sorunun devam edip etmediğini görün.
-    preview_data_disabled: {}
+    preview_data_disabled:
+      description: Veri ayarları önizleme modunda devre dışıdır. Bu özelliği kullanmak
+        için lütfen önizleme modundan çıkın.
+      title: Veri Ayarları Devre Dışı
+    data_description: Mue ayarlarınızı bilgisayarınıza aktarmayı, mevcut bir ayar
+      dosyasını içe aktarmayı veya ayarlarınızı varsayılan değerlerine sıfırlamayı
+      seçin.
   stats:
     title: İstatistikler
     sections:
@@ -329,7 +339,11 @@ sections:
     usage: Kullanım İstatistikleri
     achievements: Başarılar
     unlocked: "{count} Kilidi Açıldı"
-    clear_modal: {}
+    clear_modal:
+      question: İstatistiklerinizi temizlemek istiyor musunuz?
+      information: Bu, tüm başarıları ve kullanım istatistiklerini temizleyecektir.
+    achievement_unlocked: 'Başarım Açıldı: {name}'
+    locked: Kilitli
   experimental:
     title: Deneysel Özellikler
     warning: Bu ayarlar tam olarak test edilmedi ve düzgün çalışmayabilir!
@@ -363,6 +377,7 @@ sections:
     supporters: Destekleyenler
     no_supporters: Şu anda Mue destekçisi yok!
     photographers: Fotoğrafçılar
+    curators: Eklenti Oluşturucular
 buttons:
   reset: Yenile
   import: İçeri Aktar
