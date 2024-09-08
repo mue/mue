@@ -64,6 +64,7 @@ widgets:
       no_todos: Yapılacak bir şey yok
     apps:
       title: Uygulamalar
+      no_apps: Uygulama bağlantıları bulunamadı
 modals:
   main:
     title: Seçenekler
@@ -71,8 +72,8 @@ modals:
     file_upload_error: Dosya 2 MB'ın üzerinde
     navbar:
       settings: Ayarlar
-      addons: Eklentilerim
-      marketplace: Market
+      addons: Kütüphane
+      marketplace: Keşfedin
     error_boundary:
       title: Hata
       message: Mue'nin bu bileşeni yüklenemedi.
@@ -101,3 +102,4 @@ toasts:
   imported: Başarıyla içe aktarıldı.
   no_storage: Yeteri kadar yer yok.
   link_copied: Bağlantı kopyalandı.
+  stats_reset: İstatistikler sıfırlandı
