@@ -17,32 +17,31 @@ sections:
       yeni çeviriler de ekleyebilirsiniz.
   theme:
     title: Bir Tema Seçin
-    description: Mue için hem açık hem de koyu tema mevcuttur. İsterseniz sistem
-      temanıza bağlı olarak otomatik olarak da ayarlanabilir.
+    description: Mue için hem açık hem de koyu tema mevcuttur. İsterseniz sistem temanıza
+      bağlı olarak otomatik olarak da ayarlanabilir.
     tip: Otomatik ayarları kullanmak, bilgisayarınızdaki varsayılan temayı kullanır.
-      Bu ayar, modları ve ekranda görüntülenen hava durumu ve notlar gibi bazı
-      araçları(widget) etkiler.
+      Bu ayar, modları ve ekranda görüntülenen hava durumu ve notlar gibi bazı araçları(widget)
+      etkiler.
   style:
     title: Bir Stil Seçin
-    description: Mue şu anda eski stil ile yeni çıkan modern stil arasında seçim
-      yapma olanağı sunuyor.
+    description: Mue şu anda eski stil ile yeni çıkan modern stil arasında seçim yapma
+      olanağı sunuyor.
     legacy: Eski
   settings:
     title: Ayarları İçe Aktar
     description: Mue'yi yeni bir cihaza mı yüklüyorsunuz? Eski ayarlarınızı almaktan
       çekinmeyin!
     tip: Eski Mue kurulumunuzdaki 'Gelişmiş' sekmesine giderek ayarlarınızı dışarıya
-      aktarabilirsiniz. Bunun için JSON dosyasını indirecek olan 'Dışarı Aktar'
-      butonuna tıklamanız gerekir. Önceki Mue kurulumunuzdan ayarlarınızı ve
-      tercihlerinizi taşımak için bu dosyayı buraya yükleyebilirsiniz.
+      aktarabilirsiniz. Bunun için JSON dosyasını indirecek olan 'Dışarı Aktar' butonuna
+      tıklamanız gerekir. Önceki Mue kurulumunuzdan ayarlarınızı ve tercihlerinizi
+      taşımak için bu dosyayı buraya yükleyebilirsiniz.
   privacy:
     title: Gizlilik Seçenekleri
     description: Mue ile gizliliğinizi daha da korumak için ayarları etkinleştirin.
     offline_mode_description: Çevrimdışı modu etkinleştirmek, herhangi bir hizmete
-      yönelik tüm istekleri devre dışı bırakır. Bu durum çevrimiçi arka planlar,
-      çevrimiçi alıntılar, market, hava durumu, hızlı bağlantılar, değişiklik
-      günlüğü ve bazı sekme bilgilerinin devre dışı bırakılmasıyla
-      sonuçlanacaktır.
+      yönelik tüm istekleri devre dışı bırakır. Bu durum çevrimiçi arka planlar, çevrimiçi
+      alıntılar, market, hava durumu, hızlı bağlantılar, değişiklik günlüğü ve bazı
+      sekme bilgilerinin devre dışı bırakılmasıyla sonuçlanacaktır.
     links:
       title: Bağlantılar
       privacy_policy: Gizlilik Politikası
@@ -51,8 +50,8 @@ sections:
     title: Son Adım
     description: Mue Tab deneyiminiz başlamak üzere.
     changes: Değişiklikler
-    changes_description: Ayarları daha sonra değiştirmek için sekmenizin sağ üst
-      köşesindeki ayarlar simgesine tıklayın.
+    changes_description: Ayarları daha sonra değiştirmek için sekmenizin sağ üst köşesindeki
+      ayarlar simgesine tıklayın.
     imported: Ayarlar {amount} eklendi
 buttons:
   next: Sonraki
