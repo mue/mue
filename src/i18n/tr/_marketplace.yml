@@ -32,8 +32,13 @@ product:
     update_addon: Eklentiyi Güncelle
     back: Geri
     report: Raporla
+    not_available_preview: Önizlemede Kullanılamıyor
   setting: Ayarlar
   value: Değer
+  details: Ayrıntılar
+  more_from_curator: '{name} tarafından sağlanan buna benzer diğer içerikler'
+  updated_at: Tarihinde güncellendi
 offline:
   title: Görünüşe bakılırsa çevrimdışısınız!
   description: Lütfen internete bağlanın ve tekrar deneyin.
+installing: Kurulum
