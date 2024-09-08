@@ -9,7 +9,7 @@ explore_collection: Koleksiyonu Keşfedin
 add_all: Hepsini Ekle
 collections: Koleksiyonlar
 cant_find: Aradığınızı bulamıyor musunuz?
-knowledgebase_one: "Kendiniz oluşturmak için "
+knowledgebase_one: "Kendiniz oluşturmak için"
 knowledgebase_two: "bilgilendirme sayfamızı "
 knowledgebase_three: ziyaret edin.
 product:
@@ -32,7 +32,7 @@ product:
     update_addon: Eklentiyi Güncelle
     back: Geri
     report: Raporla
-    not_available_preview: Önizlemede Kullanılamıyor
+    not_available_preview: Önizleme Kullanılamıyor
   setting: Ayarlar
   value: Değer
   details: Ayrıntılar
