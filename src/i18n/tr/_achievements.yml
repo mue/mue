@@ -1,6 +1,6 @@
 "727":
   description: 727 sekme açıldı
-  name: Gördüğün zaman
+  name: Gördüğün Zaman
 "1337":
   description: 1337 sekme açıldı
   name: MU3T4B
@@ -15,3 +15,22 @@ seasoning:
   description: 100 sekme açıldı
 mrworldwide:
   name: Bay Dünya Çapında
+  description: 305 sekme açıldı
+fullyriced:
+  description: 5 eklenti yüklendi
+  name: Tam Donanımlı
+21addons:
+  description: 21 eklenti yüklendi
+  name: 21 eklenti mi yüklenmiş? Ne?
+tabaholic:
+  name: Tabkolik
+  description: 500 sekme açıldı
+808s:
+  name: 808 && Sekme Molaları
+  description: 808 sekme açıldı
+averagelinuxuser:
+  name: Ortalama Linux Kullanıcısı
+  description: Bir eklenti yüklendi
+overload:
+  name: Sistem Aşırı Yüklemesi
+  description: 50 eklenti yüklendi
