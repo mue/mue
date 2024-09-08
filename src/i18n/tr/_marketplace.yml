@@ -38,7 +38,9 @@ product:
   details: Ayrıntılar
   more_from_curator: '{name} tarafından sağlanan buna benzer diğer içerikler'
   updated_at: Tarihinde güncellendi
+  created_by: Oluşturan
 offline:
   title: Görünüşe bakılırsa çevrimdışısınız!
   description: Lütfen internete bağlanın ve tekrar deneyin.
 installing: Kurulum
+by: '{author}'
