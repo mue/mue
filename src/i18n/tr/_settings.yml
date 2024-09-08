@@ -1,15 +1,15 @@
 enabled: Etkinleştir
-open_knowledgebase: Bilgilendirme Sayfasını Aç.
+open_knowledgebase: Bilgilendirme Sayfasını Aç
 additional_settings: Ek Ayarlar
 reminder:
-  title: UYARI
+  title: BİLDİRİM
   message: Tüm değişikliklerin gerçekleşmesi için sayfanın yenilenmesi gerekir.
 sections:
   header:
     more_info: Daha fazla bilgi
     report_issue: Hata Bildir
-    enabled: Bu widget'ınızın gösterilip gösterilmeyeceğini seçin.
-    size: Widget'ınızın büyüklüğünü kontrol etmek için kaydırın.
+    enabled: Bu aracın gösterilip gösterilmeyeceğini seçin.
+    size: Aracın büyüklüğünü kontrol etmek için kaydırın.
   time:
     title: Saat
     type: Tip
@@ -61,7 +61,7 @@ sections:
       slashes: Eğik çizgi
   quote:
     title: Alıntı
-    additional: Alıntı widget'ının stilini özelleştirmek için diğer ayarlar.
+    additional: Alıntı aracının stilini özelleştirmek için diğer ayarlar
     author_link: Yazara dair bilgilendirme bağlantısı göster.
     custom: Özel Alıntı
     custom_subtitle: Kendi özel alıntınızı belirleyin, ekleyin.
@@ -132,7 +132,7 @@ sections:
       subtitle: Arka planınız için kullanmak istediğiniz koleksiyonu seçin.
       title: Unsplash Koleksiyonu
       id: Koleksiyon Kimliği
-      id_subtitle: Unsplash ID'lerinin virgülle ayrılmış bir listesini girin.
+      id_subtitle: Unsplash ID'lerinin virgülle ayrılmış bir listesini girin
     source:
       title: Kaynak
       subtitle: Arka plan resimlerinin nereden alınacağını seçin.
@@ -165,7 +165,7 @@ sections:
       belirleyin.
   search:
     title: Arama
-    additional: Arama widget'ı ekranı ve işlevselliği için ek seçenekleri belirleyin.
+    additional: Arama aracı için ekran ve işlevsellik seçenekleri belirleyin.
     search_engine: Arama Motoru
     search_engine_subtitle: Arama çubuğunda kullanmak için arama motorunu seçin.
     custom: Özel URL
@@ -184,7 +184,7 @@ sections:
     temp_format:
       title: Sıcaklık Formatı
       fahrenheit: Fahrenhayt
-      celsius: Celsius
+      celsius: Santigrat
       kelvin: Kelvin
     extra_info:
       title: Ek Bilgi
@@ -239,7 +239,7 @@ sections:
       new: Yeni
     theme:
       title: Tema
-      description: Mue araçlarınızın(widget) ve modellerinin temasını değiştirin.
+      description: Mue araçlarınızın ve modellerinin temasını değiştirin.
       auto: Otomatik
       light: Açık
       dark: Koyu
