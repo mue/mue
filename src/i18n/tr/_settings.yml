@@ -13,8 +13,8 @@ sections:
   time:
     title: Saat
     type: Tip
-    type_subtitle: Saat formatını dijital olarak, analog olarak veya günün
-      tamamlanma yüzdesi olarak göstermeyi seçin.
+    type_subtitle: Saat formatını dijital olarak, analog olarak veya günün tamamlanma
+      yüzdesi olarak göstermeyi seçin.
     digital:
       title: Dijital
       subtitle: Dijital saatin görünümünü değiştirin.
@@ -36,6 +36,8 @@ sections:
       title: Dikey Saat
       change_hour_colour: Saat Metni Rengini Değiştirin
       change_minute_colour: Dakika Metni Rengini Değiştirin
+      change_second_colour: Saniye kısmının metin rengini değiştirin
+    format: Biçim
   date:
     title: Gün
     week_number: Hafta Sayısı
@@ -44,9 +46,10 @@ sections:
     type:
       short: Kısa
       long: Uzun
-      subtitle: Tarihin uzun veya kısa olmak üzere hangi biçimde görüntüleneceğini seçin.
-    type_settings: Seçilen tarih türü için ekran ayarları ve biçimi belirten
-      özellikleri belirleyin.
+      subtitle: Tarihin uzun veya kısa olmak üzere hangi biçimde görüntüleneceğini
+        seçin.
+    type_settings: Seçilen tarih türü için ekran ayarları ve biçimi belirten özellikleri
+      belirleyin.
     short_date: Kısa Tarih
     short_format: Kısa biçim
     long_format: Uzun biçim
@@ -85,6 +88,15 @@ sections:
     birthday_age: Doğum günümde yaş bilgisi gözüksün.
     birthday_date: Doğum günü tarihim
     additional: Karşılama ekranı için ek ayarlarınızı belirleyin.
+    no_events: Olay Yok
+    enable_events: Özel günlerde mesaj göster.
+    month: Ayda Bir
+    events_description: Mue'da doğum günleri gibi olayları kontrol edin.
+    no_events_description: Bazı Olaylar Ekleyin
+    add_event: Olay Ekle
+    custom: Özel olaylar
+    event_name: Olay Adı
+    day: Günde Bir
   background:
     title: Arka Plan
     transition: Geçiş sırasında solma efekti uygula.
@@ -115,7 +127,12 @@ sections:
       custom_colour: Özel renk/gradyan
       random_colour: Özel renk
       random_gradient: Özel gradyan
-    unsplash: {}
+      api: API
+    unsplash:
+      subtitle: Arka planınız için kullanmak istediğiniz koleksiyonu seçin.
+      title: Unsplash Koleksiyonu
+      id: Koleksiyon Kimliği
+      id_subtitle: Unsplash ID'lerinin virgülle ayrılmış bir listesini girin.
     source:
       title: Kaynak
       subtitle: Arka plan resimlerinin nereden alınacağını seçin.
@@ -154,8 +171,8 @@ sections:
     custom: Özel URL
     autocomplete: Otomatik Tamamlama
     autocomplete_provider: Otomatik Tamamlama Sağlayıcısı
-    autocomplete_provider_subtitle: Otomatik tamamlama açılır sonuçları için
-      kullanılacak arama motorunu belirleyin.
+    autocomplete_provider_subtitle: Otomatik tamamlama açılır sonuçları için kullanılacak
+      arama motorunu belirleyin.
     voice_search: Sesli Arama
     dropdown: Arama Motorları Açılır Menüsü
     focus: Açık Sekmeye Odaklan
@@ -167,6 +184,8 @@ sections:
     temp_format:
       title: Sıcaklık Formatı
       fahrenheit: Fahrenhayt
+      celsius: Celsius
+      kelvin: Kelvin
     extra_info:
       title: Ek Bilgi
       show_location: Konumu Göster
@@ -269,13 +288,12 @@ sections:
   advanced:
     title: Gelişmiş
     offline_mode: Çevrimdışı Mod
-    offline_subtitle: Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm
-      istekler devre dışı bırakılır.
+    offline_subtitle: Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm istekler
+      devre dışı bırakılır.
     data: Veri
-    data_subtitle: Mue Tab ayarlarınızı bilgisayarınıza kaydetmenize, mevcut
-      ayarlarınızı başka bir bilgisayara aktarmanıza veya ayarlarınızı
-      varsayılan değerlerine sıfırlamınıza olanak sağlar. İstediğiniz işlemi
-      seçin.
+    data_subtitle: Mue Tab ayarlarınızı bilgisayarınıza kaydetmenize, mevcut ayarlarınızı
+      başka bir bilgisayara aktarmanıza veya ayarlarınızı varsayılan değerlerine sıfırlamınıza
+      olanak sağlar. İstediğiniz işlemi seçin.
     reset_modal:
       title: UYARI
       question: Mue'yu sıfırlamak istiyor musunuz?
@@ -293,9 +311,9 @@ sections:
       subtitle: Bilgisayarınızın otomatik varsayılanından ziyade listeden bir zaman
         dilimi seçin.
       automatic: Otomatik
-    experimental_warning: Deneysel modunuz açıksa Mue ekibinin destek
-      sağlayamadığını lütfen unutmayın. Lütfen önce devre dışı bırakın ve
-      desteğe başvurmadan önce sorunun devam edip etmediğini görün.
+    experimental_warning: Deneysel modunuz açıksa Mue ekibinin destek sağlayamadığını
+      lütfen unutmayın. Lütfen önce devre dışı bırakın ve desteğe başvurmadan önce
+      sorunun devam edip etmediğini görün.
     preview_data_disabled: {}
   stats:
     title: İstatistikler
@@ -334,9 +352,8 @@ sections:
         description: Bir hata oluştu.
     contact_us: Bize Ulaşın!
     support_mue: Mue Destek
-    support_subtitle: Mue tamamen ücretsiz olduğu için, sunucu faturalarını
-      karşılamak ve geliştirme masraflarını finanse etmek için bağışları
-      kullanıyoruz.
+    support_subtitle: Mue tamamen ücretsiz olduğu için, sunucu faturalarını karşılamak
+      ve geliştirme masraflarını finanse etmek için bağışları kullanıyoruz.
     support_donate: Bağış Yap
     resources_used:
       title: Kullanılan Kaynaklar
