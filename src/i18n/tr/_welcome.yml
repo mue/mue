@@ -27,6 +27,7 @@ sections:
     description: Mue şu anda eski stil ile yeni çıkan modern stil arasında seçim yapma
       olanağı sunuyor.
     legacy: Eski
+    modern: Modern
   settings:
     title: Ayarları İçe Aktar
     description: Mue'yi yeni bir cihaza mı yüklüyorsunuz? Eski ayarlarınızı almaktan
