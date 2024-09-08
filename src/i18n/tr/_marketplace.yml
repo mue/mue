@@ -39,6 +39,9 @@ product:
   more_from_curator: '{name} tarafından sağlanan buna benzer diğer içerikler'
   updated_at: Tarihinde güncellendi
   created_by: Oluşturan
+  third_party_api: Bu eklenti üçüncü taraf bir API kullanır
+  not_in_language: Bu eklenti sizin dilinizde değil
+  sideload_warning: Bu eklenti dışarıdan yüklenmiştir.
 offline:
   title: Görünüşe bakılırsa çevrimdışısınız!
   description: Lütfen internete bağlanın ve tekrar deneyin.
