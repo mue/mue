@@ -17,5 +17,10 @@
   },
   "chrome_settings_overrides": {
     "homepage": "index.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{ac143a20-4b61-4c81-abdd-4bff77032972}"
+    }
   }
 }

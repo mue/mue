@@ -28,6 +28,7 @@
     "framer-motion": "^11.3.30",
     "image-conversion": "^2.1.1",
     "markdown-to-jsx": "^7.5.0",
+    "mue": "file:",
     "react": "^18.3.1",
     "react-best-gradient-color-picker": "^3.0.10",
     "react-clock": "5.0.0",
