@@ -10,7 +10,7 @@
 
 
 
-## Why Mue?
+## 🤔 Why Mue?
 - Beautiful and Minimalist Design
 - Customisable Layout
 - Widgets (such as weather, notes, bookmarks and more)
@@ -18,7 +18,7 @@
 - Extensible with the Mue Marketplace
 - Open Source under the BSD-3 License
 
-## Installation
+## 🌶️ Installation
 Mue can be downloaded on the following browsers:
 
 - [Chrome](https://chromewebstore.google.com/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
@@ -29,11 +29,11 @@ Mue can be downloaded on the following browsers:
 and can be manually sideloaded on others using the files on [GitHub Releases](https://github.com/mue/mue/releases)
 
 
-## Demo
+## 🚀 Demo
 A fully-featured demo of the tab extension is available in-browser at [demo.muetab.com](https://demo.muetab.com)
 
 
-## Development
+## 💻 Development
 Install dependencies with ``bun install``, and then you can run any of the following scripts as needed:
 
 - `bun run dev[:host]` - start development server
@@ -42,7 +42,7 @@ Install dependencies with ``bun install``, and then you can run any of the follo
 - `bun run pretty` - run prettier
 - `bun run translations` - migrate old translation format to new
 
-## Translations
+## 🌍 Translations
 We use [Weblate](https://weblate.org) for translations. To get started, please visit the [project](https://hosted.weblate.org/projects/mue/) and look for the latest version to start translating Mue into your langauge.
 
 ## Attribution
