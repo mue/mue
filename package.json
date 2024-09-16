@@ -14,7 +14,7 @@
     "@eartharoid/i18n": "1.2.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@floating-ui/react-dom": "2.1.1",
+    "@floating-ui/react-dom": "2.1.2",
     "@fontsource/lexend-deca": "5.0.14",
     "@fontsource/montserrat": "5.0.19",
     "@muetab/react-sortable-hoc": "^2.0.1",
