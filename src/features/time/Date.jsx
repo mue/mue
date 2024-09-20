@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-import { nth, convertTimezone } from 'utils/date';
+import { appendNth, convertTimezone } from 'utils/date';
 import EventBus from 'utils/eventbus';
 import defaults from './options/default';
 
@@ -98,7 +98,7 @@ const DateWidget = () => {
 
       const datenth =
         localStorage.getItem('datenth') === 'true'
-          ? nth(currentDate.getDate())
+          ? appendNth(currentDate.getDate())
           : currentDate.getDate();
 
       const dateDay =

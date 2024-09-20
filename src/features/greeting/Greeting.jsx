@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { useRef, useState, useEffect } from 'react';
 
-import { nth, convertTimezone } from 'utils/date';
+import { appendNth, convertTimezone } from 'utils/date';
 import EventBus from 'utils/eventbus';
 import defaults from './options/default';
 
@@ -107,7 +107,7 @@ function Greeting() {
         if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
           if (localStorage.getItem('birthdayage') === 'true' && calculateAge(birth) !== 0) {
             const text = variables.getMessage('widgets.greeting.birthday').split(' ');
-            message = `${text[0]} ${nth(calculateAge(birth))} ${text[1]}`;
+            message = `${text[0]} ${appendNth(calculateAge(birth))} ${text[1]}`;
           } else {
             message = variables.getMessage('widgets.greeting.birthday');
           }
