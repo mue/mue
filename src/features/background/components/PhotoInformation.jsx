@@ -77,7 +77,7 @@ function PhotoInformation({ info, url, api }) {
   // unsplash credit
   if (info.photographerURL && info.photographerURL !== '' && !info.offline && api) {
     photo = (
-      <a href={info.photoURL + '?utm_source=mue'} target="_blank" rel="noopener noreferrer">
+      <a href={info.photoURL} target="_blank" rel="noopener noreferrer">
         {photo}
       </a>
     );
@@ -171,7 +171,7 @@ function PhotoInformation({ info, url, api }) {
             <span id="infoSource">
               {info.photoURL ? (
                 <a
-                  href={info.photoURL + '?utm_source=mue'}
+                  href={info.photoURL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link"
