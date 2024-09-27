@@ -1,4 +1,4 @@
 import { convertTimezone } from './convertTimezone';
-import { getNth } from './getNth';
+import { appendNth } from './appendNth';
 
-export { convertTimezone, getNth };
+export { convertTimezone, appendNth };
