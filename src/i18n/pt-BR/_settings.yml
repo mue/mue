@@ -160,6 +160,7 @@ sections:
     display_subtitle: Alterar como as informações de plano de fundo e foto são carregadas
     api: Configurações da API
     api_subtitle: Opções para obter uma imagem de um serviço externo (API)
+    category: Categoria
   search:
     title: Pesquisar
     additional: Opções adicionais para exibição e funcionalidade do widget de pesquisa

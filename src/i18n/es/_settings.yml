@@ -14,8 +14,8 @@ sections:
     title: Tiempo
     format: Formato
     type: Tipo
-    type_subtitle: Elija si desea mostrar la hora en formato digital, formato
-      analógico o un porcentaje de finalización del día
+    type_subtitle: Elija si desea mostrar la hora en formato digital, formato analógico
+      o un porcentaje de finalización del día
     digital:
       subtitle: Cambiar el aspecto del reloj digital
       seconds: Segundos
@@ -143,16 +143,18 @@ sections:
     display_subtitle: Cambiar cómo se carga la información de fondo y de la foto
     api: Configuración de la API
     api_subtitle: Opciones para obtener una imagen de un servicio externo (API)
+    category: Categoría
   search:
     title: Búsqueda
-    additional: Opciones adicionales para la visualización y funcionalidad del
-      widget de búsqueda
+    additional: Opciones adicionales para la visualización y funcionalidad del widget
+      de búsqueda
     search_engine: Motor de búsqueda
     search_engine_subtitle: Elija el motor de búsqueda para usar en la barra de búsqueda
     custom: URL de búsqueda personalizada
     autocomplete: Autocompletado
     autocomplete_provider: Proveedor del autocompletado
-    autocomplete_provider_subtitle: Motor de búsqueda para los resultados desplegables de autocompletar
+    autocomplete_provider_subtitle: Motor de búsqueda para los resultados desplegables
+      de autocompletar
     voice_search: Búsqueda por voz
     dropdown: Menú desplegable de búsqueda
     focus: Centrarse en la pestaña abierta
@@ -208,8 +210,8 @@ sections:
     title: Apariencia
     style:
       title: Estilo del widget
-      description: Elige entre dos estilos, el antiguo (habilitado para usuarios
-        anteriores a la versión 7.0) y nuestro elegante estilo moderno.
+      description: Elige entre dos estilos, el antiguo (habilitado para usuarios anteriores
+        a la versión 7.0) y nuestro elegante estilo moderno.
       legacy: Legado
       new: Nuevo
     theme:
@@ -259,33 +261,33 @@ sections:
   advanced:
     title: Avanzado
     offline_mode: Modo sin conexión
-    offline_subtitle: Cuando esté activada, se desactivarán todas las solicitudes a
-      los servicios en línea.
+    offline_subtitle: Cuando esté activada, se desactivarán todas las solicitudes
+      a los servicios en línea.
     data: Datos
     data_subtitle: Elija si desea exportar la configuración de Mue a su ordenador,
-      importar un archivo de configuración existente o restablecer los valores
-      predeterminados
+      importar un archivo de configuración existente o restablecer los valores predeterminados
     reset_modal:
       title: ADVERTENCIA
       question: ¿Quieres reiniciar Mue?
-      information: Esto borrará todos los datos. Si desea mantener sus datos y
-        preferencias, por favor, expórtelos primero.
+      information: Esto borrará todos los datos. Si desea mantener sus datos y preferencias,
+        por favor, expórtelos primero.
       cancel: Cancelar
     customisation: Personalización
     custom_css: CSS personalizado
-    custom_css_subtitle: Personaliza el estilo de Mue con hojas de estilo en cascada (CSS).
+    custom_css_subtitle: Personaliza el estilo de Mue con hojas de estilo en cascada
+      (CSS).
     custom_js: JS personalizado
     tab_name: Nombre de la pestaña
     tab_name_subtitle: Cambiar el nombre de la pestaña que aparece en el navegador
     timezone:
       title: Zona horaria
-      subtitle: Elija una zona horaria de la lista en lugar de la predeterminada
-        automáticamente de su ordenador
+      subtitle: Elija una zona horaria de la lista en lugar de la predeterminada automáticamente
+        de su ordenador
       automatic: Automático
     experimental_warning: Por favor, ten en cuenta que el equipo de Mue no puede dar
-      soporte si tienes el modo experimental activado. Por favor, desactívalo
-      primero y comprueba si el problema sigue ocurriendo antes de contactar con
-      el equipo de soporte.
+      soporte si tienes el modo experimental activado. Por favor, desactívalo primero
+      y comprueba si el problema sigue ocurriendo antes de contactar con el equipo
+      de soporte.
     preview_data_disabled: {}
   stats:
     title: Estadísticas
@@ -302,8 +304,8 @@ sections:
     unlocked: "{count} Desbloqueado"
     clear_modal: {}
   experimental:
-    warning: Estos ajustes no han sido totalmente probados/implementados y pueden no
-      funcionar correctamente.
+    warning: Estos ajustes no han sido totalmente probados/implementados y pueden
+      no funcionar correctamente.
     developer: Desarrollador
   language:
     title: Idioma
