@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 import { Button } from 'components/Elements';
-import { Header, CustomActions } from 'components/Layout/Settings';
+import { Header, CustomActions, PreferencesWrapper } from 'components/Layout/Settings';
 import { ClearModal } from './ClearModal';
 
 import { saveFile } from 'utils/saveFile';
@@ -169,19 +169,21 @@ const Stats = () => {
             })}
           </div>
           <span className="title">{variables.getMessage(`${STATS_SECTION}.locked`)}</span>
-          <div className="achievementsGrid preferencesInactive">
-            {achievements.map((achievement, index) => {
-              if (!achievement.achieved) {
-                return (
-                  <AchievementElement
-                    key={index}
-                    id={achievement.id}
-                    achieved={achievement.achieved}
-                  />
-                );
-              }
-            })}
-          </div>
+          <PreferencesWrapper>
+            <div className="achievementsGrid preferencesInactive">
+              {achievements.map((achievement, index) => {
+                if (!achievement.achieved) {
+                  return (
+                    <AchievementElement
+                      key={index}
+                      id={achievement.id}
+                      achieved={achievement.achieved}
+                    />
+                  );
+                }
+              })}
+            </div>
+          </PreferencesWrapper>
         </div>
       </div>
     </>

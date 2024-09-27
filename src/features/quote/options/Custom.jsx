@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { MdCancel, MdAdd, MdOutlineFormatQuote } from 'react-icons/md';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
-import { Row, Content, Action } from 'components/Layout/Settings';
+import { Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 function CustomSettings() {
@@ -42,21 +42,22 @@ function CustomSettings() {
 
   return (
     <>
-      <Row final={true}>
-        <Content
-          title={variables.getMessage(`${QUOTE_SECTION}.custom`)}
-          subtitle={variables.getMessage(`${QUOTE_SECTION}.custom_subtitle`)}
-        />
-        <Action>
-          <Button
-            type="settings"
-            onClick={() => modifyCustomQuote('add')}
-            icon={<MdAdd />}
-            label={variables.getMessage(`${QUOTE_SECTION}.add`)}
+      <PreferencesWrapper>
+        <Row final={true}>
+          <Content
+            title={variables.getMessage(`${QUOTE_SECTION}.custom`)}
+            subtitle={variables.getMessage(`${QUOTE_SECTION}.custom_subtitle`)}
           />
-        </Action>
-      </Row>
-
+          <Action>
+            <Button
+              type="settings"
+              onClick={() => modifyCustomQuote('add')}
+              icon={<MdAdd />}
+              label={variables.getMessage(`${QUOTE_SECTION}.add`)}
+            />
+          </Action>
+        </Row>
+      </PreferencesWrapper>
       {customQuote.length !== 0 ? (
         <div className="messagesContainer">
           {customQuote.map((_url, index) => (

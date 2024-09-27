@@ -15,6 +15,7 @@ import {
 import { Checkbox, Dropdown } from 'components/Form/Settings';
 
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
+import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
 
 import CustomSettings from './Custom';
 
@@ -107,7 +108,7 @@ const QuoteOptions = () => {
 
   return (
     <>
-      {subSection === 'source' ? (
+      {/* {subSection === 'source' ? (
         <Header
           title={variables.getMessage(`${QUOTE_SECTION}.title`)}
           secondaryTitle={variables.getMessage('settings:sections.background.source.title')}
@@ -122,17 +123,31 @@ const QuoteOptions = () => {
           zoomSetting="zoomQuote"
           visibilityToggle={true}
         />
+      )} */}
+      {subSection === '' && (
+        <Hero>
+          <Controls
+            title={variables.getMessage(`${QUOTE_SECTION}.title`)}
+            setting="quote"
+            category="quote"
+            element=".quotediv"
+            zoomSetting="zoomQuote"
+            visibilityToggle={true}
+          />
+        </Hero>
       )}
       {subSection === 'source' && (
-        <Row final={true}>
-          <Content
-            title={variables.getMessage('settings:sections.background.source.title')}
-            subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
-          />
-          <Action>
-            <SourceDropdown />
-          </Action>
-        </Row>
+        <PreferencesWrapper>
+          <Row final={true}>
+            <Content
+              title={variables.getMessage('settings:sections.background.source.title')}
+              subtitle={variables.getMessage(`${QUOTE_SECTION}.source_subtitle`)}
+            />
+            <Action>
+              <SourceDropdown />
+            </Action>
+          </Row>
+        </PreferencesWrapper>
       )}
 
       {subSection !== 'source' && (

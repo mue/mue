@@ -3,6 +3,7 @@ import { PureComponent, createRef } from 'react';
 import { MdAddLink, MdLinkOff } from 'react-icons/md';
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { Checkbox, Dropdown } from 'components/Form/Settings';
+import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
 import { Button } from 'components/Elements';
 import Modal from 'react-modal';
 
@@ -38,7 +39,7 @@ class QuickLinksOptions extends PureComponent {
       items: data,
     });
 
-    variables.stats.postEvent('feature', 'quicklink' ,'delete');
+    variables.stats.postEvent('feature', 'quicklink', 'delete');
   }
 
   async addLink(name, url, icon) {
@@ -199,24 +200,32 @@ class QuickLinksOptions extends PureComponent {
 
     return (
       <>
-        <Header
+        {/* <Header
           title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)}
           setting="quicklinksenabled"
           category="quicklinks"
           element=".quicklinks-container"
           zoomSetting="zoomQuicklinks"
           visibilityToggle={true}
-        />
-        <PreferencesWrapper
-          setting="quicklinksenabled"
-          category="quicklinks"
-          visibilityToggle={true}
-          zoomSetting="zoomQuicklinks"
-        >
+        /> */}
+        <Hero>
+          <Controls
+            setting="quicklinksenabled"
+            category="quicklinks"
+            visibilityToggle={true}
+            zoomSetting="zoomQuicklinks"
+          />
+        </Hero>
+        <PreferencesWrapper>
           <AdditionalSettings />
+        </PreferencesWrapper>
+        <PreferencesWrapper>
           <StylingOptions />
+        </PreferencesWrapper>
+        <PreferencesWrapper>
           <AddLink />
-
+        </PreferencesWrapper>
+        <PreferencesWrapper>
           {this.state.items.length === 0 && (
             <div className="photosEmpty">
               <div className="emptyNewMessage">
