@@ -1,6 +1,41 @@
 {
   "modals": {
     "main": {
+      "addons": {
+        "added": "Pridėta",
+        "check_updates": "Tikrinti atnaujinimus",
+        "create": {
+          "moved_button": "Greitai...",
+          "moved_description": "Po 7.1 atnaujinimo papildinių kūrimas perkeltas į žiniatinklio sąsają",
+          "moved_title": "Papildinio kūrimas perkeltas!",
+          "title": "Kurti"
+        },
+        "empty": {
+          "description": "Nėra įdiegtų priedų",
+          "title": "Tuščia"
+        },
+        "no_updates": "Nėra atnaujinimų",
+        "sideload": {
+          "description": "Įdiekite Mue priedą, kurio nėra prekyvietėje, iš savo kompiuterio",
+          "errors": {
+            "invalid_photos": "Neteisingas nuotraukų objektas",
+            "invalid_quotes": "Neteisingas citatų objektas",
+            "no_author": "Nepateiktas autorius",
+            "no_name": "Nepateiktas pavadinimas",
+            "no_type": "Nepateiktas tipas"
+          },
+          "failed": "Nepavyko įkelti priedo iš šalies",
+          "title": "Įkelti iš šalies"
+        },
+        "sort": {
+          "a_z": "Abėcėlės tvarka (A-Ž)",
+          "newest": "Įdiegta (Naujausi)",
+          "oldest": "Įdiegta (Seniausi)",
+          "title": "Rūšiuoti",
+          "z_a": "Abėcėlės tvarka (Ž-A)"
+        },
+        "updates_available": "Yra atnaujinimų: {amount}"
+      },
       "error_boundary": {
         "message": "Nepavyko įkelti šio Mue komponento",
         "refresh": "Atnaujinti",
@@ -24,6 +59,10 @@
         "knowledgebase_two": "žinių bazėje",
         "learn_more": "Sužinoti daugiau",
         "no_items": "Nėra elementų šioje kategorijoje",
+        "offline": {
+          "description": "Prisijunkite prie interneto",
+          "title": "Atrodo, kad esate neprisijungę"
+        },
         "photo_packs": "Nuotraukų rinkiniai",
         "preset_settings": "Iš anksto nustatyti nustatymai",
         "product": {
@@ -47,7 +86,7 @@
           "not_in_language": "Šis priedas nėra jūsų kalba",
           "overview": "Apžvalga",
           "part_of": "Dalis",
-          "setting": "Nustatymai",
+          "setting": "Nustatymas",
           "show_all": "Rodyti viską",
           "show_less": "Rodyti mažiau",
           "show_more": "Rodyti daugiau",
@@ -55,6 +94,7 @@
           "sideload_warning": "Šis priedas buvo įkeltas iš šalies.",
           "third_party_api": "Šis priedas naudoja trečiosios šalies API",
           "updated_at": "Atnaujinta",
+          "value": "Reikšmė",
           "version": "Versija"
         },
         "quote_packs": "Citatų rinkiniai"
@@ -490,13 +530,101 @@
       },
       "title": "Parinktys"
     },
+    "share": {
+      "copy_link": "Kopijuoti nuorodą",
+      "email": "El. paštas"
+    },
     "update": {
       "error": {
+        "description": "Nepavyko prisijungti prie serverio",
         "title": "Klaida"
-      }
+      },
+      "offline": {
+        "description": "Nepavyksta gauti atnaujinimo žurnalų veikiant neprisijungus",
+        "title": "Neprisijungęs"
+      },
+      "title": "Atnaujinti"
+    },
+    "welcome": {
+      "buttons": {
+        "close": "Uždaryti",
+        "finish": "Baigti",
+        "next": "Kitas",
+        "preview": "Peržiūra",
+        "previous": "Ankstesnis"
+      },
+      "preview": {
+        "continue": "Tęsti sąranką",
+        "description": "Šiuo metu esate peržiūros režime. Uždarius šį skirtuką, nustatymai bus atstatyti."
+      },
+      "sections": {
+        "final": {
+          "changes": "Pakeitimai",
+          "changes_description": "Norėdami vėliau pakeisti nustatymus, spustelėkite nustatymų piktogramą viršutiniame dešiniajame skirtuko kampe.",
+          "description": "Jūsų Mue Tab patirtis tuoj prasidės.",
+          "imported": "Importuota {amount} nustatymų",
+          "title": "Paskutinis žingsnis"
+        },
+        "intro": {
+          "description": "Dėkojame, kad įdiegėte Mue, tikimės, kad mėgausitės mūsų plėtiniu.",
+          "notices": {
+            "discord_description": "Bendraukite su Mue bendruomene ir kūrėjais",
+            "discord_join": "Prisijungti",
+            "discord_title": "Prisijunkite prie mūsų Discord",
+            "github_description": "Praneškite apie klaidas, pridėkite funkcijų arba paaukokite",
+            "github_open": "Atidaryti",
+            "github_title": "Prisidėkite GitHub"
+          },
+          "title": "Sveiki atvykę į Mue Tab"
+        },
+        "language": {
+          "description": "Mue gali būti rodomas žemiau išvardintomis kalbomis. Taip pat galite pridėti naujų vertimų mūsų",
+          "title": "Pasirinkite kalbą"
+        },
+        "privacy": {
+          "description": "Įjunkite nustatymus, kad dar labiau apsaugotumėte savo privatumą naudodami Mue.",
+          "links": {
+            "privacy_policy": "Privatumo politika",
+            "source_code": "Šaltinio kodas",
+            "title": "Nuorodos"
+          },
+          "offline_mode_description": "Įjungus neprisijungimo režimą, bus išjungti visi užklausų siuntimo į bet kokią tarnybą. Dėl to bus išjungti internetiniai fonai, internetinės citatos, prekyvietė, orai, greitosios nuorodos, pakeitimų žurnalas ir kai kuri informacija apie skiltį.",
+          "title": "Privatumo parinktys"
+        },
+        "settings": {
+          "description": "Diegiate Mue naujame įrenginyje? Drąsiai importuokite savo senus nustatymus!",
+          "tip": "Galite eksportuoti savo senus nustatymus pereidami į skiltį Išplėstiniai senoje Mue sąrankoje. Tada turite spustelėti eksportavimo mygtuką, kuris atsisiųs JSON failą. Galite įkelti šį failą čia, kad perkeltumėte savo nustatymus ir nuostatas iš ankstesnio Mue diegimo.",
+          "title": "Importuoti nustatymus"
+        },
+        "style": {
+          "description": "Šiuo metu Mue siūlo pasirinkimą tarp pasenusio stiliaus ir naujai išleisto modernaus stiliaus.",
+          "legacy": "Pasenęs",
+          "modern": "Modernus",
+          "title": "Pasirinkite stilių"
+        },
+        "theme": {
+          "description": "Mue galima naudoti tiek šviesioje, tiek tamsioje temoje, arba ji gali būti automatiškai nustatyta pagal jūsų sistemos temą.",
+          "tip": "Naudojant automatinį nustatymą, bus naudojama jūsų kompiuterio tema. Šis nustatymas paveiks modalus ir kai kuriuos ekrane rodomus valdiklius, pvz., orų ir užrašų.",
+          "title": "Pasirinkite temą"
+        }
+      },
+      "tip": "Greitas patarimas"
     }
   },
   "tabname": "Naujas skirtukas",
+  "toasts": {
+    "error": "Kažkas nepavyko",
+    "imported": "Sėkmingai importuota",
+    "installed": "Sėkmingai įdiegta",
+    "link_copied": "Nuoroda nukopijuota",
+    "no_storage": "Nepakanka saugyklos vietos",
+    "notes": "Užrašai nukopijuoti",
+    "quote": "Citata nukopijuota",
+    "reset": "Sėkmingai atstatyta",
+    "stats_reset": "Statistika atstatyta",
+    "uninstalled": "Sėkmingai pašalinta",
+    "updated": "Sėkmingai atnaujinta"
+  },
   "widgets": {
     "background": {
       "camera": "Fotoaparatas",
