@@ -1,1 +1,381 @@
-{}
+enabled: Įjungta
+open_knowledgebase: Atidaryti žinių bazę
+sections:
+  time:
+    analogue:
+      subtitle: Pakeiskite, kaip atrodo analoginis laikrodis
+      title: Analoginis
+      second_hand: Sekundės rodyklė
+      minute_hand: Minučių rodyklė
+      hour_hand: Valandų rodyklė
+      hour_marks: Valandų žymės
+      minute_marks: Minučių žymės
+      round_clock: Apvalus fonas
+    title: Laikas
+    format: Formatas
+    type: Tipas
+    digital:
+      twentyfourhour: 24 valandos
+      twelvehour: 12 valandų
+      title: Skaitmeninis
+      subtitle: Pakeiskite, kaip atrodo skaitmeninis laikrodis
+      seconds: Sekundės
+      zero: Su nuliu
+    type_subtitle: Pasirinkite, ar rodyti laiką skaitmeniniu formatu, analoginiu formatu,
+      ar dienos procentinį užbaigtumą
+    percentage_complete: Procentinis užbaigtumas
+    vertical_clock:
+      title: Vertikalus laikrodis
+      change_hour_colour: Keisti valandų spalvą
+      change_minute_colour: Keisti minučių spalvą
+      change_second_colour: Keisti sekundžių spalvą
+  date:
+    short_separator:
+      title: Trumpas skyriklis
+      dots: Taškai
+      dash: Brūkšniai
+      gaps: Tarpai
+      slashes: Pasvirieji brūkšniai
+    title: Data
+    week_number: Savaitės numeris
+    day_of_week: Savaitės diena
+    datenth: Datos pabaiga
+    type:
+      short: Trumpas
+      long: Ilgas
+      subtitle: Ar rodyti datą ilgąja ar trumpąja forma
+    type_settings: Pasirinkto datos tipo rodymo nustatymai ir formatas
+    short_date: Trumpa data
+    short_format: Trumpas formatas
+    long_format: Ilgas formatas
+  quote:
+    custom_subtitle: Nustatykite savo tinkintas citatas
+    author: Autorius
+    source_subtitle: Pasirinkite, iš kur gauti citatas
+    buttons:
+      title: Mygtukai
+      copy: Kopijuoti
+      favourite: Mėgstama
+      subtitle: Pasirinkite, kuriuos mygtukus rodyti prie citatos
+      tweet: Tweet
+    title: Citata
+    additional: Kiti nustatymai citatos valdiklio stiliui pritaikyti
+    author_link: Autoriaus nuoroda
+    custom: Tinkinta citata
+    no_quotes: Nėra citatų
+    custom_buttons: Mygtukai
+    custom_author: Tinkintas autorius
+    author_img: Rodyti autoriaus paveikslėlį
+    add: Pridėti citatą
+  background:
+    unsplash:
+      title: Unsplash kolekcija(os)
+      subtitle: Pasirinkite kolekcijas, kurias norite naudoti fono vaizdui
+      id: Kolekcijos ID(-ai)
+      id_subtitle: Įveskite kableliais atskirtų Unsplash ID sąrašą
+    source:
+      select: Arba pasirinkite
+      add_url: Pridėti URL
+      remove: Pašalinti vaizdą
+      title: Šaltinis
+      subtitle: Pasirinkite, iš kur gauti fono vaizdus
+      api: Fono API
+      custom_background: Tinkintas fonas
+      custom_colour: Tinkinta fono spalva
+      upload: Įkelti
+      add_colour: Pridėti spalvą
+      add_background: Pridėti foną
+      drop_to_upload: Vilkite čia, kad įkelumėte
+      formats: 'Galimi formatai: {list}'
+      disabled: Išjungta
+      loop_video: Kartoti vaizdo įrašą
+      mute_video: Nutildyti vaizdo įrašą
+      quality:
+        title: Kokybė
+        original: Originalas
+        high: Aukšta kokybė
+        normal: Normali kokybė
+        datasaver: Duomenų taupymas
+      custom_description: Pasirinkite vaizdus iš savo vietinio kompiuterio
+      custom_title: Tinkinti vaizdai
+    display: Rodymas
+    display_subtitle: Pakeiskite, kaip fonas ir nuotraukos informacija yra įkeliama
+    effects:
+      filters:
+        title: Fono filtras
+        amount: Filtro stiprumas
+        grayscale: Pilkasis tonas
+        sepia: Sepija
+        invert: Inversija
+        saturate: Saturacija
+        contrast: Kontrastas
+      title: Efektai
+      subtitle: Pridėkite efektų fono vaizdams
+      blur: Reguliuoti išplaukimą
+      brightness: Reguliuoti ryškumą
+    title: Fonas
+    transition: Išblukimo perėjimas
+    photo_information: Rodyti nuotraukos informaciją
+    show_map: Rodyti vietos žemėlapį, jei įmanoma
+    categories: Kategorijos
+    category: Kategorija
+    buttons:
+      title: Mygtukai
+      view: Padidinti
+      favourite: Mėgstama
+      download: Atsisiųsti
+    type:
+      api: API
+      custom_image: Tinkintas vaizdas
+      title: Tipas
+      custom_colour: Tinkinta spalva/gradientas
+      random_colour: Atsitiktinė spalva
+      random_gradient: Atsitiktinis gradientas
+    api: API nustatymai
+    api_subtitle: Nustatymai gauti vaizdą iš išorinio šaltinio (API)
+  weather:
+    temp_format:
+      fahrenheit: Farenheitas
+      kelvin: Kelvinas
+      title: Temperatūros formatas
+      celsius: Celsijus
+    title: Oras
+    location: Vieta
+    auto: Automatinė vieta
+    widget_type: Valdiklio tipas
+    extra_info:
+      title: Papildoma informacija
+      show_location: Rodyti vietą
+      show_description: Rodyti aprašymą
+      weather_description: Orų aprašymas
+      cloudiness: Debesuotumas
+      humidity: Drėgmė
+      visibility: Matomumas
+      wind_speed: Vėjo greitis
+      wind_direction: Vėjo kryptis
+      min_temp: Minimalus temperatūra
+      max_temp: Maksimali temperatūra
+      atmospheric_pressure: Atmosferos slėgis
+    options:
+      basic: Bazinis
+      standard: Standartinis
+      expanded: Išplėstinis
+      custom: Tinkintas
+    custom_settings: Tinkinti nustatymai
+  quicklinks:
+    additional: Papildomi spartųjų saituų rodymo ir funkcijų nustatymai
+    open_new: Atidaryti naujame skirtuke
+    tooltip: Patarimas
+    text_only: Rodyti tik tekstą
+    add_link: Pridėti saitą
+    no_quicklinks: Nėra spartųjų saitų
+    edit: Redaguoti
+    style: Stilius
+    options:
+      icon: Piktograma
+      text_only: Tik tekstas
+      metro: Metro
+    title: Spartūs saitai
+    styling: Stilius
+    styling_description: Tinkinkite spartųjų saitų išvaizdą
+  message:
+    add: Pridėti žinutę
+    messages: Žinutės
+    text: Tekstas
+    title: Žinutė
+    no_messages: Nėra žinutės
+    add_some: Eikite ir pridėkite.
+    content: Žinutės turinys
+  appearance:
+    theme:
+      auto: Automatinė
+      title: Tema
+      description: Pakeisti Mue valdiklių ir langų temą
+      light: Šviesi
+      dark: Tamsi
+    navbar:
+      refresh: Atnaujinti
+      refresh_subtitle: Pasirinkite, kas atnaujinama paspaudus atnaujinimo mygtuką
+      title: Naršymo juosta
+      widgets: Naršymo juostos valdikliai
+      notes: Pastabos
+      hover: Rodyti tik paslinkus pelę
+      additional: Koreguokite naršymo juostos stilių ir pasirinkite rodomus mygtukus
+      refresh_options:
+        none: Nieko
+        page: Puslapis
+      apps_subtitle: Sukurkite nuorodą į savo dažnai naudojamas svetaines.
+    font:
+      weight:
+        light: Lengvas
+        normal: Normalus
+        medium: Vidutinis
+        semi_bold: Pusiau paryškintas
+        bold: Paryškintas
+        title: Šrifto storis
+        thin: Plonas
+        extra_light: Ypač lengvas
+        extra_bold: Labai paryškintas
+      title: Šriftas
+      description: Pakeiskite šriftą, naudojamą Mue
+      custom: Tinkintas šriftas
+      google: Importuoti iš Google šriftų
+      style:
+        title: Šrifto stilius
+        normal: Normalus
+        italic: Italikas
+        oblique: Pasvirąs
+    accessibility:
+      text_shadow:
+        old: Senas
+        none: Nėra
+        title: Valdiklio teksto šešėlis
+        new: Naujas
+      widget_zoom: Valdiklio mastelis
+      toast_duration: Žinutės rodymo trukmė
+      milliseconds: Milisekundės
+      description: Padarykite Mue patogų ir prieinamą
+      title: Prieinamumas
+      animations: Animacijos
+    title: Išvaizda
+    style:
+      title: Valdiklio stilius
+      description: Pasirinkite tarp dviejų stilių, legacy (aktyvus vartotojams iki
+        7.0 versijos) ir modernaus stiliaus.
+      legacy: Legacy
+      new: Naujas
+  advanced:
+    title: Išplėstinis
+    offline_mode: Neprisijungusio rėžimas
+    data: Duomenys
+    data_subtitle: Valdykite savo duomenis Mue.
+    reset_modal:
+      title: Įspėjimas
+      question: Ar norite atkurti Mue?
+      information: Tai ištrins visus duomenis. Jei norite išsaugoti savo duomenis
+        ir nustatymus, pirmiausia eksportuokite juos.
+      cancel: Atšaukti
+    customisation: Tinkinti
+    custom_css: Tinkintas CSS
+    custom_css_subtitle: Pritaikykite Mue stilių pagal save naudodami CSS (Cascading
+      Style Sheets).
+    custom_js: Tinkintas JS
+    timezone:
+      automatic: Automatinė
+      title: Laiko zona
+      subtitle: Pasirinkite laiko zoną iš sąrašo, o ne automatiniu numatytuoju iš
+        kompiuterio
+    preview_data_disabled:
+      title: Duomenų nustatymai išjungti
+      description: Duomenų nustatymai išjungti peržiūros rėžime. Norėdami naudotis
+        šia funkcija, išeikite iš peržiūros rėžimo.
+    offline_subtitle: Jei įjungtas, visi užklausimai į interneto paslaugas bus išjungti.
+    tab_name: Skirtuko pavadinimas
+    tab_name_subtitle: Pakeiskite skirtuko pavadinimą, rodomą naršyklėje
+    experimental_warning: Atkreipkite dėmesį, kad Mue komanda negali suteikti palaikymo,
+      jei eksperimentinis rėžimas yra įjungtas. Prieš kreipdamiesi į palaikymą išjungti
+      ir patikrinkite, ar problema vis dar egzistuoja.
+    data_description: Pasirinkite, ar eksportuoti Mue nustatymus į savo kompiuterį,
+      importuoti esamą nustatymų failą, ar atkurti nustatymus į numatytuosius.
+  stats:
+    sections:
+      tabs_opened: Atidaryti skirtukai
+      backgrounds_favourited: Mėgstamiausi fonai
+      backgrounds_downloaded: Atsisiųsti fonai
+      quotes_favourited: Mėgstamiausios citatos
+      quicklinks_added: Pridėti spartieji saitai
+      settings_changed: Pakeisti nustatymai
+      addons_installed: Įrdiegti priedai
+    clear_modal:
+      question: Ar norite išvalyti savo statistiką?
+      information: Tai išvalys visus pasiekimus ir naudojimo statistikas.
+    title: Statistika
+    usage: Naudojimo statistika
+    achievements: Pasiekimai
+    achievement_unlocked: 'Pasiekimas atrakintas: {name}'
+    unlocked: '{count} atrakinta'
+    locked: Užrakinta
+  experimental:
+    title: Eksperimentinis
+    warning: Šie nustatymai dar nebuvo pilnai išbandyti/įgyvendinti ir gali neveikti
+      tinkamai!
+    developer: Kūrėjas
+  language:
+    title: Kalba
+    quote: Citatos kalba
+  about:
+    version:
+      update_available: Naujinimas prieinamas
+      no_update: Nėra naujinimų
+      title: Versija
+      checking_update: Tikrinama naujinimų
+      offline_mode: Neprisijungus negalima patikrinti naujinimų
+      error:
+        title: Nepavyko gauti naujinimo informacijos
+        description: Įvyko klaida
+    contact_us: Susisiekite su mumis
+    support_mue: Palaikykite Mue
+    resources_used:
+      title: Naudoti ištekliai
+      bg_images: Neprisijungus naudojami fono vaizdai
+    contributors: Bendradarbiai
+    curators: Priedų kūrėjai
+    title: Apie
+    support_subtitle: Kadangi Mue yra visiškai nemokamas, mes priklausome nuo aukų,
+      kad padengtume serverio sąskaitas ir finansuotume kūrimą
+    support_donate: Paaukoti
+    form_button: Forma
+    supporters: Rėmėjai
+    no_supporters: Šiuo metu nėra Mue rėmėjų
+    photographers: Fotografai
+  header:
+    more_info: Daugiau informacijos
+    report_issue: Pranešti apie problemą
+    enabled: Pasirinkite, ar rodyti šį valdiklį
+    size: Slankiklis valdiklio dydžio reguliavimui
+  greeting:
+    title: Pasveikinimas
+    events: Įvykiai
+    events_description: Valdykite Mue įvykį, pavyzdžiui, gimtadienius.
+    enable_events: Rodyti pranešimus ypatingomis dienomis
+    default: Numatytoji pasveikinimo žinutė
+    name: Sveikinimo vardas
+    birthday: Gimtadienis
+    birthday_date: Gimtadienio data
+    additional: Sveikinimo rodymo nustatymai
+    custom: Tinkinti įvykiai
+    birthday_subtitle: Rodyti „Su gimtadieniu“ pranešimą, kai yra jūsų gimtadienis
+    birthday_age: Gimtadienio amžius
+    event_name: Įvykio pavadinimas
+    day: Diena
+    month: Mėnuo
+    no_events: Nėra įvykį
+    no_events_description: Pridėkite kai kuriuos įvykį
+    add_event: Pridėti įvykį
+  search:
+    title: Paieška
+    additional: Papildomi paieškos valdiklio rodymo ir funkcijų nustatymai
+    search_engine: Paieškos variklis
+    search_engine_subtitle: Pasirinkite paieškos variklį, kurį norite naudoti paieškos
+      juostoje
+    custom: Tinkintas paieškos URL
+    autocomplete: Automatinis užbaigimas
+    autocomplete_provider: Automatinio užbaigimo teikėjas
+    autocomplete_provider_subtitle: Paieškos variklis, kurį naudoti automatinio užbaigimo
+      iššokančiame sąraše
+    voice_search: Balsinė paieška
+    dropdown: Paieškos iššokantis meniu
+    focus: Fokusas atsidarius skirtukui
+  order:
+    title: Valdiklių tvarka
+  changelog:
+    title: Pakeitimų žrašai
+    by: Sukurta {author}
+buttons:
+  import: Importuoti
+  export: Eksportuoti
+  reset: Atkurti
+additional_settings: Papildomi nustatymai
+reminder:
+  title: PRANEŠIMAS
+  message: Kad visi pakeitimai įsigaliotų, puslapis turi būti atnaujintas.
