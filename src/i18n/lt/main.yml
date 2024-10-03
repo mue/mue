@@ -72,7 +72,7 @@ modals:
     title: Parinktys
     error_boundary:
       title: Klaida
-      report_error: Pateikti klaidos ataskaitą
+      report_error: Pranešti apie klaidą
       sent: Nusiųsta!
       refresh: Perkrauti
       message: Nepavyko įkelti šio Mue komponento
