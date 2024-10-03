@@ -1,1 +1,185 @@
-{}
+{
+  "modals": {
+    "main": {
+      "error_boundary": {
+        "message": "Nepavyko įkelti šio Mue komponento",
+        "refresh": "Atnaujinti",
+        "report_error": "Siųsti klaidos ataskaitą",
+        "sent": "Išsiųsta!",
+        "title": "Klaida"
+      },
+      "file_upload_error": "Failas viršija 2MB",
+      "loading": "Įkeliama...",
+      "navbar": {
+        "addons": "Priedai",
+        "marketplace": "Prekyvietė",
+        "settings": "Nustatymai"
+      },
+      "settings": {
+        "additional_settings": "Papildomi nustatymai",
+        "enabled": "Įjungta",
+        "open_knowledgebase": "Atidaryti žinių bazę",
+        "reminder": {
+          "message": "Kad visi pakeitimai įsigaliotų, puslapį reikia atnaujinti.",
+          "title": "PASTABA"
+        },
+        "sections": {
+          "date": {
+            "datenth": "Data su galūne",
+            "day_of_week": "Savaitės diena",
+            "long_format": "Ilgas formatas",
+            "short_date": "Trumpa data",
+            "short_format": "Trumpas formatas",
+            "short_separator": {
+              "dash": "Brūkšnys",
+              "dots": "Taškai",
+              "gaps": "Tarpai",
+              "slashes": "Pasvirieji brūkšniai",
+              "title": "Trumpas skirtukas"
+            },
+            "title": "Data",
+            "type": {
+              "long": "Ilga",
+              "short": "Trumpa",
+              "subtitle": "Ar rodyti datą trumpuoju, ar ilguoju formatu"
+            },
+            "type_settings": "Pasirinkto datos tipo rodymo nustatymai ir formatas",
+            "week_number": "Savaitės numeris"
+          },
+          "header": {
+            "enabled": "Pasirinkite, ar rodyti šį valdiklį",
+            "more_info": "Daugiau informacijos",
+            "report_issue": "Pranešti apie problemą",
+            "size": "Slankiklis valdiklio dydžiui reguliuoti"
+          },
+          "quote": {
+            "add": "Pridėti citatą",
+            "additional": "Kiti nustatymai citatos valdiklio stiliui pritaikyti",
+            "author": "Autorius",
+            "author_img": "Rodyti autoriaus nuotrauką",
+            "author_link": "Autoriaus nuoroda",
+            "buttons": {
+              "subtitle": "Pasirinkite, kuriuos mygtukus rodyti prie citatos",
+              "title": "Mygtukai",
+              "tweet": "Tviteryje"
+            },
+            "custom": "Pasirinktinė citata",
+            "custom_author": "Pasirinktinis autorius",
+            "custom_buttons": "Mygtukai",
+            "custom_subtitle": "Nustatykite savo pasirinktines citatas",
+            "no_quotes": "Nėra citatų",
+            "source_subtitle": "Pasirinkite, iš kur gauti citatas",
+            "title": "Citata"
+          },
+          "time": {
+            "analogue": {
+              "hour_hand": "Valandų rodyklė",
+              "hour_marks": "Valandų žymės",
+              "minute_hand": "Minučių rodyklė",
+              "minute_marks": "Minučių žymės",
+              "round_clock": "Apvalus fonas",
+              "second_hand": "Sekundžių rodyklė",
+              "subtitle": "Keisti analoginio laikrodžio išvaizdą",
+              "title": "Analoginis"
+            },
+            "digital": {
+              "seconds": "Sekundės",
+              "subtitle": "Keisti skaitmeninio laikrodžio išvaizdą",
+              "title": "Skaitmeninis",
+              "twelvehour": "12 valandų",
+              "twentyfourhour": "24 valandų",
+              "zero": "Su nuliais"
+            },
+            "format": "Formatas",
+            "percentage_complete": "Užbaigimo procentas",
+            "title": "Laikas",
+            "type": "Tipas",
+            "type_subtitle": "Pasirinkite, ar rodyti laiką skaitmeniniu formatu, analoginiu formatu, ar kaip dienos užbaigimo procentą",
+            "vertical_clock": {
+              "change_hour_colour": "Keisti valandų teksto spalvą",
+              "change_minute_colour": "Keisti minučių teksto spalvą",
+              "change_second_colour": "Keisti sekundžių teksto spalvą",
+              "title": "Vertikalus laikrodis"
+            }
+          }
+        }
+      },
+      "title": "Parinktys"
+    }
+  },
+  "tabname": "Naujas skirtukas",
+  "widgets": {
+    "background": {
+      "camera": "Fotoaparatas",
+      "category": "Kategorija",
+      "confirm": "Patvirtinti",
+      "credit": "Nuotrauka",
+      "download": "Atsisiųsti",
+      "downloads": "Atsisiuntimai",
+      "exclude": "Daugiau nerodyti",
+      "exclude_confirm": "Ar tikrai nenorite matyti šio paveikslėlio?\nPastaba: jei nepatinka \"{category}\" paveikslėliai, galite atšaukti šios kategorijos pasirinkimą fono šaltinio nustatymuose.",
+      "information": "Informacija",
+      "likes": "Patinka",
+      "location": "Vieta",
+      "resolution": "Rezoliucija",
+      "source": "Šaltinis",
+      "unsplash": "iš Unsplash",
+      "views": "Peržiūros"
+    },
+    "date": {
+      "week": "Savaitė"
+    },
+    "greeting": {
+      "afternoon": "Laba diena",
+      "birthday": "Su gimtadieniu",
+      "christmas": "Linksmų Kalėdų",
+      "evening": "Labas vakaras",
+      "halloween": "Linksmojo Helovino",
+      "morning": "Labas rytas",
+      "newyear": "Laimingų Naujųjų metų"
+    },
+    "navbar": {
+      "apps": {
+        "no_apps": "Nerasta programų nuorodų",
+        "title": "Programos"
+      },
+      "notes": {
+        "placeholder": "Rašykite čia",
+        "title": "Užrašai"
+      },
+      "todo": {
+        "add": "Pridėti",
+        "no_todos": "Nėra užduočių",
+        "pin": "Prisegti",
+        "title": "Užduotys"
+      },
+      "tooltips": {
+        "refresh": "Atnaujinti"
+      }
+    },
+    "quicklinks": {
+      "add": "Pridėti",
+      "edit": "Redaguoti nuorodą",
+      "icon": "Piktograma (neprivaloma)",
+      "name": "Pavadinimas",
+      "name_error": "Būtina įvesti pavadinimą",
+      "new": "Nauja nuoroda",
+      "url": "URL",
+      "url_error": "Būtina įvesti URL"
+    },
+    "quote": {
+      "copy": "Kopijuoti",
+      "favourite": "Įtraukti į mėgstamus",
+      "link_tooltip": "Atidaryti Vikipedijoje",
+      "share": "Dalintis",
+      "unfavourite": "Pašalinti iš mėgstamų"
+    },
+    "search": "Ieškoti",
+    "weather": {
+      "extra_information": "Papildoma informacija",
+      "feels_like": "Jaučiasi kaip {amount}",
+      "meters": "{amount} metrų",
+      "not_found": "Nerasta"
+    }
+  }
+}
