@@ -74,8 +74,29 @@ modals:
       title: Klaida
       report_error: Pranešti apie klaidą
       sent: Išsiųsta!
-      refresh: Perkrauti
+      refresh: Atnaujinti
       message: Nepavyko įkelti šio Mue komponento
   update:
     title: Atnaujinti
+    offline:
+      title: Be ryšio
+      description: Negalima gauti atnaujinimų žurnalų neprisijungus
+    error:
+      title: Klaida
+      description: Nepavyko prisijungti prie serverio
+  share:
+    copy_link: Kopijuoti nuorodą
+    email: El. paštas
 tabname: Nauja kortelė
+toasts:
+  quote: Citata nukopijuota
+  notes: Užrašai nukopijuoti
+  reset: Sėkmingai atstatyta
+  installed: Sėkmingai įdiegta
+  updated: Sėkmingai atnaujinta
+  error: Kažkas negerai
+  uninstalled: Sėkmingai pašalinta
+  imported: Sėkmingai importuota
+  no_storage: Nepakanka vietos
+  link_copied: Nuoroda nukopijuota
+  stats_reset: Statistika atstatyta
