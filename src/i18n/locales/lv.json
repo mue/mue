@@ -1,1 +1,702 @@
-{}
+{
+  "modals": {
+    "main": {
+      "addons": {
+        "added": "Pievienots",
+        "check_updates": "Pārbaudīt atjauninājumus",
+        "create": {
+          "moved_button": "Drīzumā....",
+          "moved_description": "Pēc 7.1 atjauninājuma paplašinājumu izveide tagad ir pārvietota uz tīmekļa saskarni",
+          "moved_title": "Paplašinājuma izveide ir pārvietota!",
+          "title": "Izveidot"
+        },
+        "empty": {
+          "description": "Nav instalētu paplašinājumu",
+          "title": "Tukšs"
+        },
+        "no_updates": "Nav pieejamu atjauninājumu",
+        "sideload": {
+          "description": "Instalēt Mue paplašinājumu, kas nav tirgū, no jūsu datora",
+          "errors": {
+            "invalid_photos": "Nederīgs fotoattēlu objekts",
+            "invalid_quotes": "Nederīgs citātu objekts",
+            "no_author": "Nav norādīts autors",
+            "no_name": "Nav norādīts nosaukums",
+            "no_type": "Nav norādīts veids"
+          },
+          "failed": "Neizdevās sānu ielādēt paplašinājumu",
+          "title": "Sānu ielāde"
+        },
+        "sort": {
+          "a_z": "Alfabētiski (A-Z)",
+          "newest": "Instalēts (Jaunākais)",
+          "oldest": "Instalēts (Vecākais)",
+          "title": "Kārtot",
+          "z_a": "Alfabētiski (Z-A)"
+        },
+        "updates_available": "Pieejami atjauninājumi {amount}"
+      },
+      "error_boundary": {
+        "message": "Neizdevās ielādēt šo Mue komponentu",
+        "refresh": "Atsvaidzināt",
+        "report_error": "Nosūtīt kļūdas ziņojumu",
+        "sent": "Nosūtīts!",
+        "title": "Kļūda"
+      },
+      "file_upload_error": "Fails pārsniedz 2MB",
+      "loading": "Ielāde...",
+      "marketplace": {
+        "add_all": "Pievienot visus Mue",
+        "all": "Visi",
+        "by": "autors {author}",
+        "cant_find": "Nevarat atrast to, ko meklējat?",
+        "collection": "Kolekcija",
+        "collections": "Kolekcijas",
+        "explore_collection": "Izpētīt kolekciju",
+        "installing": "Instalē",
+        "knowledgebase_one": "Apmeklējiet",
+        "knowledgebase_three": "lai izveidotu savu.",
+        "knowledgebase_two": "zināšanu bāzi",
+        "learn_more": "Uzzināt vairāk",
+        "no_items": "Nav vienumu šajā kategorijā",
+        "offline": {
+          "description": "Lūdzu, izveidojiet savienojumu ar internetu",
+          "title": "Izskatās, ka esat bezsaistē"
+        },
+        "photo_packs": "Fotogrāfiju pakotnes",
+        "preset_settings": "Iepriekš iestatīti iestatījumi",
+        "product": {
+          "buttons": {
+            "addtomue": "Pievienot Mue",
+            "back": "Atpakaļ",
+            "not_available_preview": "Nav pieejams priekšskatījumā",
+            "remove": "Noņemt",
+            "report": "Ziņot",
+            "update_addon": "Atjaunināt paplašinājumu"
+          },
+          "created_by": "Izveidoja",
+          "description": "Apraksts",
+          "details": "Detaļas",
+          "explore": "Izpētīt",
+          "information": "Informācija",
+          "last_updated": "Pēdējoreiz atjaunināts",
+          "more_from_curator": "Vairāk līdzīgu no {name}",
+          "no_images": "Attēlu skaits",
+          "no_quotes": "Citātu skaits",
+          "not_in_language": "Šis paplašinājums nav jūsu valodā",
+          "overview": "Pārskats",
+          "part_of": "Daļa no",
+          "setting": "Iestatījums",
+          "show_all": "Rādīt visus",
+          "show_less": "Rādīt mazāk",
+          "show_more": "Rādīt vairāk",
+          "showing": "Rāda",
+          "sideload_warning": "Šis paplašinājums ir ielādēts no malas.",
+          "third_party_api": "Šis paplašinājums izmanto trešās puses API",
+          "updated_at": "Atjaunināts",
+          "value": "Vērtība",
+          "version": "Versija"
+        },
+        "quote_packs": "Citātu pakotnes"
+      },
+      "navbar": {
+        "addons": "Paplašinājumi",
+        "marketplace": "Tirgus",
+        "settings": "Iestatījumi"
+      },
+      "settings": {
+        "additional_settings": "Papildu iestatījumi",
+        "buttons": {
+          "export": "Eksportēt",
+          "import": "Importēt",
+          "reset": "Atiestatīt"
+        },
+        "enabled": "Iespējots",
+        "open_knowledgebase": "Atvērt zināšanu bāzi",
+        "reminder": {
+          "message": "Lai visas izmaiņas stātos spēkā, lapa ir jāatsvaidzina.",
+          "title": "PAZIŅOJUMS"
+        },
+        "sections": {
+          "about": {
+            "contact_us": "Sazināties ar mums",
+            "contributors": "Atbalstītāji",
+            "curators": "Paplašinājumu veidotāji",
+            "form_button": "Forma",
+            "no_supporters": "Pašlaik nav Mue atbalstītāju",
+            "photographers": "Fotogrāfi",
+            "resources_used": {
+              "bg_images": "Bezsaistes fona attēli",
+              "title": "Izmantotie resursi"
+            },
+            "support_donate": "Ziedot",
+            "support_mue": "Atbalstīt Mue",
+            "support_subtitle": "Tā kā Mue ir pilnīgi bezmaksas, mēs paļaujamies uz ziedojumiem, lai segtu serveru rēķinus un finansētu izstrādi",
+            "supporters": "Atbalstītāji",
+            "title": "Par",
+            "version": {
+              "checking_update": "Pārbauda atjauninājumus",
+              "error": {
+                "description": "Radās kļūda",
+                "title": "Neizdevās iegūt atjauninājuma informāciju"
+              },
+              "no_update": "Nav pieejamu atjauninājumu",
+              "offline_mode": "Nevar pārbaudīt atjauninājumus bezsaistes režīmā",
+              "title": "Versija",
+              "update_available": "Pieejams atjauninājums"
+            }
+          },
+          "advanced": {
+            "custom_css": "Pielāgots CSS",
+            "custom_css_subtitle": "Pielāgojiet Mue stilu sev ar kaskādes stila lapām (CSS).",
+            "custom_js": "Pielāgots JS",
+            "customisation": "Pielāgošana",
+            "data": "Dati",
+            "data_description": "Izvēlieties, vai eksportēt savus Mue iestatījumus uz datoru, importēt esošo iestatījumu failu vai atiestatīt iestatījumus uz noklusējuma vērtībām",
+            "data_subtitle": "Pārvaldiet savus datus Mue.",
+            "experimental_warning": "Lūdzu, ņemiet vērā, ka Mue komanda nevar nodrošināt atbalstu, ja jums ir ieslēgts eksperimentālais režīms. Lūdzu, vispirms atspējojiet to un pārbaudiet, vai problēma joprojām pastāv, pirms sazināties ar atbalsta dienestu.",
+            "offline_mode": "Bezsaistes režīms",
+            "offline_subtitle": "Kad iespējots, visi pieprasījumi tiešsaistes pakalpojumiem tiks atspējoti.",
+            "preview_data_disabled": {
+              "description": "Datu iestatījumi ir atspējoti priekšskatījuma režīmā. Lūdzu, izejiet no priekšskatījuma režīma, lai izmantotu šo funkciju.",
+              "title": "Datu iestatījumi atspējoti"
+            },
+            "reset_modal": {
+              "cancel": "Atcelt",
+              "information": "Tas izdzēsīs visus datus. Ja vēlaties saglabāt savus datus un preferences, lūdzu, vispirms eksportējiet tos.",
+              "question": "Vai vēlaties atiestatīt Mue?",
+              "title": "BRĪDINĀJUMS"
+            },
+            "tab_name": "Cilnes nosaukums",
+            "tab_name_subtitle": "Mainīt cilnes nosaukumu, kas parādās pārlūkprogrammā",
+            "timezone": {
+              "automatic": "Automātiski",
+              "subtitle": "Izvēlieties laika joslu no saraksta, nevis automātisko noklusējumu no jūsu datora",
+              "title": "Laika josla"
+            },
+            "title": "Papildu"
+          },
+          "appearance": {
+            "accessibility": {
+              "animations": "Animācijas",
+              "description": "Padariet Mue ērtu un pieejamu",
+              "milliseconds": "milisekundes",
+              "text_shadow": {
+                "new": "Jauna",
+                "none": "Nav",
+                "old": "Veca",
+                "title": "Logrīku teksta ēna"
+              },
+              "title": "Pieejamība",
+              "toast_duration": "Paziņojuma ilgums",
+              "widget_zoom": "Logrīku tālummaiņa"
+            },
+            "font": {
+              "custom": "Pielāgots fonts",
+              "description": "Mainīt Mue izmantoto fontu",
+              "google": "Importēt no Google Fonts",
+              "style": {
+                "italic": "Slīpraksts",
+                "normal": "Normāls",
+                "oblique": "Slīps",
+                "title": "Fonta stils"
+              },
+              "title": "Fonts",
+              "weight": {
+                "bold": "Treknraksts",
+                "extra_bold": "Īpaši treknraksts",
+                "extra_light": "Īpaši viegls",
+                "light": "Viegls",
+                "medium": "Vidējs",
+                "normal": "Normāls",
+                "semi_bold": "Pus-treknraksts",
+                "thin": "Plāns",
+                "title": "Fonta biezums"
+              }
+            },
+            "navbar": {
+              "additional": "Modificēt navigācijas joslas stilu un kuras pogas vēlaties rādīt",
+              "apps_subtitle": "Izveidojiet saīsni uz citām bieži lietotajām vietnēm.",
+              "hover": "Rādīt tikai, kad kursors ir virs",
+              "notes": "Piezīmes",
+              "refresh": "Atsvaidzināt",
+              "refresh_options": {
+                "none": "Nekas",
+                "page": "Lapa"
+              },
+              "refresh_subtitle": "Izvēlieties, kas tiek atsvaidzināts, kad noklikšķināt uz atsvaidzināšanas pogas",
+              "title": "Navigācijas josla",
+              "widgets": "Navigācijas joslas logrīki"
+            },
+            "style": {
+              "description": "Izvēlieties starp diviem stiliem, mantoto (iespējots lietotājiem pirms 7.0 versijas) un mūsu gludo moderno stilu.",
+              "legacy": "Mantotais",
+              "new": "Jaunais",
+              "title": "Logrīku stils"
+            },
+            "theme": {
+              "auto": "Automātiski",
+              "dark": "Tumša",
+              "description": "Mainīt Mue logrīku un modālo logu tēmu",
+              "light": "Gaiša",
+              "title": "Tēma"
+            },
+            "title": "Izskats"
+          },
+          "background": {
+            "api": "API iestatījumi",
+            "api_subtitle": "Opcijas attēla iegūšanai no ārēja pakalpojuma (API)",
+            "buttons": {
+              "download": "Lejupielādēt",
+              "favourite": "Pievienot izlasei",
+              "title": "Pogas",
+              "view": "Maksimizēt"
+            },
+            "categories": "Kategorijas",
+            "display": "Attēlošana",
+            "display_subtitle": "Mainīt, kā tiek ielādēts fons un fotogrāfijas informācija",
+            "effects": {
+              "blur": "Pielāgot izplūdumu",
+              "brightness": "Pielāgot spilgtumu",
+              "filters": {
+                "amount": "Filtra daudzums",
+                "contrast": "Kontrasts",
+                "grayscale": "Pelēktoņu",
+                "invert": "Invertēt",
+                "saturate": "Piesātināt",
+                "sepia": "Sēpija",
+                "title": "Fona filtrs"
+              },
+              "subtitle": "Pievienot efektus fona attēliem",
+              "title": "Efekti"
+            },
+            "photo_information": "Rādīt fotogrāfijas informāciju",
+            "show_map": "Rādīt atrašanās vietas karti fotogrāfijas informācijā, ja pieejama",
+            "source": {
+              "add_background": "Pievienot fonu",
+              "add_colour": "Pievienot krāsu",
+              "add_url": "Pievienot URL",
+              "api": "Fona API",
+              "custom_background": "Pielāgots fons",
+              "custom_colour": "Pielāgota fona krāsa",
+              "custom_description": "Izvēlieties attēlus no sava datora",
+              "custom_title": "Pielāgoti attēli",
+              "disabled": "Atspējots",
+              "drop_to_upload": "Nometiet, lai augšupielādētu",
+              "formats": "Pieejamie formāti: {list}",
+              "loop_video": "Atkārtot video",
+              "mute_video": "Izslēgt video skaņu",
+              "quality": {
+                "datasaver": "Datu taupītājs",
+                "high": "Augsta kvalitāte",
+                "normal": "Normāla kvalitāte",
+                "original": "Oriģinālā",
+                "title": "Kvalitāte"
+              },
+              "remove": "Noņemt attēlu",
+              "select": "Vai izvēlieties",
+              "subtitle": "Izvēlieties, no kurienes iegūt fona attēlus",
+              "title": "Avots",
+              "upload": "Augšupielādēt"
+            },
+            "title": "Fons",
+            "transition": "Pakāpeniska parādīšanās",
+            "type": {
+              "api": "API",
+              "custom_colour": "Pielāgota krāsa/gradients",
+              "custom_image": "Pielāgots attēls",
+              "random_colour": "Nejauša krāsa",
+              "random_gradient": "Nejaušs gradients",
+              "title": "Veids"
+            },
+            "unsplash": {
+              "id": "Kolekcijas ID",
+              "id_subtitle": "Ievadiet ar komatu atdalītu Unsplash ID sarakstu",
+              "subtitle": "Izvēlieties kolekciju(as), kuras vēlaties izmantot savam fonam",
+              "title": "Unsplash kolekcija(s)"
+            }
+          },
+          "changelog": {
+            "by": "Autors {author}",
+            "title": "Izmaiņu žurnāls"
+          },
+          "date": {
+            "datenth": "Datums ar kārtas skaitli",
+            "day_of_week": "Nedēļas diena",
+            "long_format": "Garais formāts",
+            "short_date": "Īsais datums",
+            "short_format": "Īsais formāts",
+            "short_separator": {
+              "dash": "Svītra",
+              "dots": "Punkti",
+              "gaps": "Atstarpes",
+              "slashes": "Slīpsvītras",
+              "title": "Īsais atdalītājs"
+            },
+            "title": "Datums",
+            "type": {
+              "long": "Garš",
+              "short": "Īss",
+              "subtitle": "Vai rādīt datumu garā vai īsā formā"
+            },
+            "type_settings": "Rādīšanas iestatījumi un formāts izvēlētajam datuma veidam",
+            "week_number": "Nedēļas numurs"
+          },
+          "experimental": {
+            "developer": "Izstrādātājs",
+            "title": "Eksperimentāls",
+            "warning": "Šie iestatījumi nav pilnībā pārbaudīti/ieviesti un var nedarboties pareizi!"
+          },
+          "greeting": {
+            "add_event": "Pievienot notikumu",
+            "additional": "Iestatījumi sveiciena attēlošanai",
+            "birthday": "Dzimšanas diena",
+            "birthday_age": "Dzimšanas dienas vecums",
+            "birthday_date": "Dzimšanas dienas datums",
+            "birthday_subtitle": "Rādīt apsveikumu dzimšanas dienā, kad tā pienāk",
+            "custom": "Pielāgoti notikumi",
+            "day": "Diena",
+            "default": "Noklusējuma sveiciena ziņojums",
+            "enable_events": "Rādīt ziņojumus īpašās dienās",
+            "event_name": "Notikuma nosaukums",
+            "events": "Notikumi",
+            "events_description": "Kontrolējiet notikumus Mue, piemēram, dzimšanas dienas.",
+            "month": "Mēnesis",
+            "name": "Vārds sveicienam",
+            "no_events": "Nav notikumu",
+            "no_events_description": "Pievienojiet dažus notikumus",
+            "title": "Sveiciens"
+          },
+          "header": {
+            "enabled": "Izvēlieties, vai rādīt šo logrīku",
+            "more_info": "Vairāk informācijas",
+            "report_issue": "Ziņot par problēmu",
+            "size": "Slīdnis, lai kontrolētu logrīka izmēru"
+          },
+          "language": {
+            "quote": "Citātu valoda",
+            "title": "Valoda"
+          },
+          "message": {
+            "add": "Pievienot ziņojumu",
+            "add_some": "Turpiniet un pievienojiet dažus.",
+            "content": "Ziņojuma saturs",
+            "messages": "Ziņojumi",
+            "no_messages": "Nav ziņojumu",
+            "text": "Teksts",
+            "title": "Ziņojums"
+          },
+          "order": {
+            "title": "Logrīku secība"
+          },
+          "quicklinks": {
+            "add_link": "Pievienot saiti",
+            "additional": "Papildu iestatījumi ātro saišu attēlošanai un funkcijām",
+            "edit": "Rediģēt",
+            "no_quicklinks": "Nav ātro saišu",
+            "open_new": "Atvērt jaunā cilnē",
+            "options": {
+              "icon": "Ikona",
+              "metro": "Metro",
+              "text_only": "Tikai teksts"
+            },
+            "style": "Stils",
+            "styling": "Stils",
+            "styling_description": "Pielāgot ātro saišu izskatu",
+            "text_only": "Rādīt tikai tekstu",
+            "title": "Ātrās saites",
+            "tooltip": "Rīka padoms"
+          },
+          "quote": {
+            "add": "Pievienot citātu",
+            "additional": "Citi iestatījumi citātu logrīka stila pielāgošanai",
+            "author": "Autors",
+            "author_img": "Rādīt autora attēlu",
+            "author_link": "Autora saite",
+            "buttons": {
+              "copy": "Kopēt",
+              "favourite": "Pievienot izlasei",
+              "subtitle": "Izvēlieties, kuras pogas rādīt uz citāta",
+              "title": "Pogas",
+              "tweet": "Tvītot"
+            },
+            "custom": "Pielāgots citāts",
+            "custom_author": "Pielāgots autors",
+            "custom_buttons": "Pogas",
+            "custom_subtitle": "Iestatiet savus pielāgotos citātus",
+            "no_quotes": "Nav citātu",
+            "source_subtitle": "Izvēlieties, no kurienes iegūt citātus",
+            "title": "Citāts"
+          },
+          "search": {
+            "additional": "Papildu opcijas meklēšanas logrīka attēlošanai un funkcionalitātei",
+            "autocomplete": "Automātiskā pabeigšana",
+            "autocomplete_provider": "Automātiskās pabeigšanas nodrošinātājs",
+            "autocomplete_provider_subtitle": "Meklētājprogramma, ko izmantot automātiskās pabeigšanas nolaižamā saraksta rezultātiem",
+            "custom": "Pielāgots meklēšanas URL",
+            "dropdown": "Meklēšanas nolaižamais saraksts",
+            "focus": "Fokuss cilnes atvēršanā",
+            "search_engine": "Meklētājprogramma",
+            "search_engine_subtitle": "Izvēlieties meklētājprogrammu, ko izmantot meklēšanas joslā",
+            "title": "Meklēšana",
+            "voice_search": "Balss meklēšana"
+          },
+          "stats": {
+            "achievement_unlocked": "Sasniegums atbloķēts: {name}",
+            "achievements": "Sasniegumi",
+            "clear_modal": {
+              "information": "Tas notīrīs visus sasniegumus un lietošanas statistiku.",
+              "question": "Vai vēlaties notīrīt savu statistiku?"
+            },
+            "locked": "Bloķēts",
+            "sections": {
+              "addons_installed": "Paplašinājumi instalēti",
+              "backgrounds_downloaded": "Foni lejupielādēti",
+              "backgrounds_favourited": "Foni pievienoti izlasei",
+              "quicklinks_added": "Ātrās saites pievienotas",
+              "quotes_favourited": "Citāti pievienoti izlasei",
+              "settings_changed": "Iestatījumi mainīti",
+              "tabs_opened": "Atvērtas cilnes"
+            },
+            "title": "Statistika",
+            "unlocked": "{count} Atbloķēts",
+            "usage": "Lietošanas statistika"
+          },
+          "time": {
+            "analogue": {
+              "hour_hand": "Stundu rādītājs",
+              "hour_marks": "Stundu atzīmes",
+              "minute_hand": "Minūšu rādītājs",
+              "minute_marks": "Minūšu atzīmes",
+              "round_clock": "Apaļš fons",
+              "second_hand": "Sekunžu rādītājs",
+              "subtitle": "Mainīt analogā pulksteņa izskatu",
+              "title": "Analogais"
+            },
+            "digital": {
+              "seconds": "Sekundes",
+              "subtitle": "Mainīt digitālā pulksteņa izskatu",
+              "title": "Digitālais",
+              "twelvehour": "12 stundu",
+              "twentyfourhour": "24 stundu",
+              "zero": "Ar nullēm priekšā"
+            },
+            "format": "Formāts",
+            "percentage_complete": "Pabeigšanas procents",
+            "title": "Laiks",
+            "type": "Veids",
+            "type_subtitle": "Izvēlieties, vai rādīt laiku digitālā formātā, analogā formātā vai kā dienas pabeigšanas procentuālo daudzumu",
+            "vertical_clock": {
+              "change_hour_colour": "Mainīt stundu teksta krāsu",
+              "change_minute_colour": "Mainīt minūšu teksta krāsu",
+              "change_second_colour": "Mainīt sekunžu teksta krāsu",
+              "title": "Vertikālais pulkstenis"
+            }
+          },
+          "weather": {
+            "auto": "Automātiski",
+            "custom_settings": "Pielāgoti iestatījumi",
+            "extra_info": {
+              "atmospheric_pressure": "Atmosfēras spiediens",
+              "cloudiness": "Mākoņainums",
+              "humidity": "Mitrums",
+              "max_temp": "Maksimālā temperatūra",
+              "min_temp": "Minimālā temperatūra",
+              "show_description": "Rādīt aprakstu",
+              "show_location": "Rādīt atrašanās vietu",
+              "title": "Papildu informācija",
+              "visibility": "Redzamība",
+              "weather_description": "Laikapstākļu apraksts",
+              "wind_direction": "Vēja virziens",
+              "wind_speed": "Vēja ātrums"
+            },
+            "location": "Atrašanās vieta",
+            "options": {
+              "basic": "Pamata",
+              "custom": "Pielāgots",
+              "expanded": "Paplašināts",
+              "standard": "Standarta"
+            },
+            "temp_format": {
+              "celsius": "Celsija",
+              "fahrenheit": "Fārenheita",
+              "kelvin": "Kelvina",
+              "title": "Temperatūras formāts"
+            },
+            "title": "Laikapstākļi",
+            "widget_type": "Logrīka veids"
+          }
+        }
+      },
+      "title": "Opcijas"
+    },
+    "share": {
+      "copy_link": "Kopēt saiti",
+      "email": "E-pasts"
+    },
+    "update": {
+      "error": {
+        "description": "Nevarēja izveidot savienojumu ar serveri",
+        "title": "Kļūda"
+      },
+      "offline": {
+        "description": "Nevar iegūt atjauninājumu žurnālus bezsaistes režīmā",
+        "title": "Bezsaistē"
+      },
+      "title": "Atjaunināt"
+    },
+    "welcome": {
+      "buttons": {
+        "close": "Aizvērt",
+        "finish": "Pabeigt",
+        "next": "Tālāk",
+        "preview": "Priekšskatīt",
+        "previous": "Iepriekšējais"
+      },
+      "preview": {
+        "continue": "Turpināt iestatīšanu",
+        "description": "Jūs pašlaik esat priekšskatījuma režīmā. Iestatījumi tiks atiestatīti, aizverot šo cilni."
+      },
+      "sections": {
+        "final": {
+          "changes": "Izmaiņas",
+          "changes_description": "Lai vēlāk mainītu iestatījumus, noklikšķiniet uz iestatījumu ikonas cilnes augšējā labajā stūrī.",
+          "description": "Jūsu Mue cilnes pieredze drīz sāksies.",
+          "imported": "Importēti {amount} iestatījumi",
+          "title": "Pēdējais solis"
+        },
+        "intro": {
+          "description": "Paldies, ka instalējāt Mue, mēs ceram, ka jums patiks mūsu paplašinājums.",
+          "notices": {
+            "discord_description": "Sarunājieties ar Mue kopienu un izstrādātājiem",
+            "discord_join": "Pievienoties",
+            "discord_title": "Pievienojieties mūsu Discord",
+            "github_description": "Ziņojiet par kļūdām, pievienojiet funkcijas vai ziedojiet",
+            "github_open": "Atvērt",
+            "github_title": "Piedalieties GitHub"
+          },
+          "title": "Laipni lūdzam Mue cilnē"
+        },
+        "language": {
+          "description": "Mue var tikt attēlots zemāk uzskaitītajās valodās. Jūs varat arī pievienot jaunus tulkojumus mūsu",
+          "title": "Izvēlieties valodu"
+        },
+        "privacy": {
+          "description": "Iespējot iestatījumus, lai vēl vairāk aizsargātu jūsu privātumu ar Mue.",
+          "links": {
+            "privacy_policy": "Privātuma politika",
+            "source_code": "Pirmkods",
+            "title": "Saites"
+          },
+          "offline_mode_description": "Iespējojot bezsaistes režīmu, tiks atspējoti visi pieprasījumi jebkādam pakalpojumam. Tas izraisīs tiešsaistes fonu, tiešsaistes citātu, tirgus, laikapstākļu, ātro saišu, izmaiņu žurnāla un dažas informācijas par cilni atspējošanu.",
+          "title": "Privātuma opcijas"
+        },
+        "settings": {
+          "description": "Instalējat Mue jaunā ierīcē? Droši importējiet savus vecos iestatījumus!",
+          "tip": "Jūs varat eksportēt savus vecos iestatījumus, dodoties uz sadaļu Papildu jūsu vecajā Mue iestatījumā. Pēc tam jums jānoklikšķina uz eksportēšanas pogas, kas lejupielādēs JSON failu. Jūs varat augšupielādēt šo failu šeit, lai pārnestu savus iestatījumus un preferences no iepriekšējās Mue instalācijas.",
+          "title": "Importēt iestatījumus"
+        },
+        "style": {
+          "description": "Mue pašlaik piedāvā izvēli starp mantoto stilu un jaunizlaisto moderno stilu.",
+          "legacy": "Mantotais",
+          "modern": "Modernais",
+          "title": "Izvēlieties stilu"
+        },
+        "theme": {
+          "description": "Mue ir pieejams gan gaišā, gan tumšā tēmā, vai arī to var automātiski iestatīt atkarībā no jūsu sistēmas tēmas.",
+          "tip": "Izmantojot automātiskos iestatījumus, tiks izmantota jūsu datora tēma. Šis iestatījums ietekmēs modālos logus un dažus logrīkus, kas tiek attēloti ekrānā, piemēram, laikapstākļus un piezīmes.",
+          "title": "Izvēlieties tēmu"
+        }
+      },
+      "tip": "Ātrs padoms"
+    }
+  },
+  "tabname": "Jauna cilne",
+  "toasts": {
+    "error": "Kaut kas nogāja greizi",
+    "imported": "Veiksmīgi importēts",
+    "installed": "Veiksmīgi instalēts",
+    "link_copied": "Saite nokopēta",
+    "no_storage": "Nepietiek atmiņas",
+    "notes": "Piezīmes nokopētas",
+    "quote": "Citāts nokopēts",
+    "reset": "Veiksmīgi atiestatīts",
+    "stats_reset": "Statistika atiestatīta",
+    "uninstalled": "Veiksmīgi noņemts",
+    "updated": "Veiksmīgi atjaunināts"
+  },
+  "widgets": {
+    "background": {
+      "camera": "Kamera",
+      "category": "Kategorija",
+      "confirm": "Apstiprināt",
+      "credit": "Fotogrāfijas autors",
+      "download": "Lejupielādēt",
+      "downloads": "Lejupielādes",
+      "exclude": "Nerādīt vairs",
+      "exclude_confirm": "Vai tiešām nevēlaties vairs redzēt šo attēlu?\nPiezīme: ja jums nepatīk \"{category}\" attēli, varat atcelt šīs kategorijas izvēli fona avota iestatījumos.",
+      "information": "Informācija",
+      "likes": "Patīk",
+      "location": "Atrašanās vieta",
+      "resolution": "Izšķirtspēja",
+      "source": "Avots",
+      "unsplash": "Unsplash",
+      "views": "Skatījumi"
+    },
+    "date": {
+      "week": "Nedēļa"
+    },
+    "greeting": {
+      "afternoon": "Labdien",
+      "birthday": "Daudz laimes dzimšanas dienā",
+      "christmas": "Priecīgus Ziemassvētkus",
+      "evening": "Labvakar",
+      "halloween": "Priecīgus Helovīnus",
+      "morning": "Labrīt",
+      "newyear": "Laimīgu Jauno gadu"
+    },
+    "navbar": {
+      "apps": {
+        "no_apps": "Nav atrasta neviena lietotnes saite",
+        "title": "Lietotnes"
+      },
+      "notes": {
+        "placeholder": "Rakstiet šeit",
+        "title": "Piezīmes"
+      },
+      "todo": {
+        "add": "Pievienot",
+        "no_todos": "Nav darāmo lietu",
+        "pin": "Piespraust",
+        "title": "Darāmo lietu saraksts"
+      },
+      "tooltips": {
+        "refresh": "Atsvaidzināt"
+      }
+    },
+    "quicklinks": {
+      "add": "Pievienot",
+      "edit": "Rediģēt saiti",
+      "icon": "Ikona (neobligāti)",
+      "name": "Nosaukums",
+      "name_error": "Jānorāda nosaukums",
+      "new": "Jauna saite",
+      "url": "URL",
+      "url_error": "Jānorāda URL"
+    },
+    "quote": {
+      "copy": "Kopēt",
+      "favourite": "Pievienot izlasei",
+      "link_tooltip": "Atvērt Vikipēdijā",
+      "share": "Dalīties",
+      "unfavourite": "Noņemt no izlases"
+    },
+    "search": "Meklēt",
+    "weather": {
+      "extra_information": "Papildu informācija",
+      "feels_like": "Pēc sajūtām {amount}",
+      "meters": "{amount} metri",
+      "not_found": "Nav atrasts"
+    }
+  }
+}
