@@ -1,5 +1,5 @@
-enabled: Įjungta
-open_knowledgebase: Atidaryti žinių bazę
+enabled: Aktyvuota
+open_knowledgebase: Atidaryti informacijos bazę
 sections:
   time:
     analogue:
@@ -11,18 +11,18 @@ sections:
       hour_marks: Valandų žymės
       minute_marks: Minučių žymės
       round_clock: Apvalus fonas
-    title: Laikas
-    format: Formatas
-    type: Tipas
+    title: Laikrodis
+    format: Rodymo būdas
+    type: Rūšis
     digital:
       twentyfourhour: 24 valandos
       twelvehour: 12 valandų
       title: Skaitmeninis
-      subtitle: Pakeiskite, kaip atrodo skaitmeninis laikrodis
+      subtitle: Keisti skaitmeninio laikrodžio išvaizdą
       seconds: Sekundės
       zero: Su nuliu
-    type_subtitle: Pasirinkite, ar rodyti laiką skaitmeniniu formatu, analoginiu formatu,
-      ar dienos procentinį užbaigtumą
+    type_subtitle: Pasirinkti, ar rodyti laiką skaitmeniniu, analoginiu formatu ar
+      procentinę dienos dalį.
     percentage_complete: Procentinis užbaigtumas
     vertical_clock:
       title: Vertikalus laikrodis
@@ -331,8 +331,8 @@ sections:
   header:
     more_info: Daugiau informacijos
     report_issue: Pranešti apie problemą
-    enabled: Pasirinkite, ar rodyti šį valdiklį
-    size: Slankiklis valdiklio dydžio reguliavimui
+    enabled: Pasirinkti, ar rodyti šį valdiklį
+    size: Valdiklio dydžio reguliatorius
   greeting:
     title: Pasveikinimas
     events: Įvykiai
@@ -375,7 +375,7 @@ buttons:
   import: Importuoti
   export: Eksportuoti
   reset: Atkurti
-additional_settings: Papildomi nustatymai
+additional_settings: Daugiau nustatymų
 reminder:
   title: PRANEŠIMAS
-  message: Kad visi pakeitimai įsigaliotų, puslapis turi būti atnaujintas.
+  message: Pakeitimams įsigalioti būtina perkrauti puslapį.
