@@ -1,1 +1,65 @@
-{}
+sections:
+  intro:
+    title: Sveiki atvykę į Mue Tab
+    notices:
+      discord_title: Prisijunkite prie mūsų Discord
+      github_title: Prisidėkite prie GitHub
+      github_description: Praneškite apie klaidas, pridėkite funkcijų ar paaukokite
+      discord_join: Prisijungti
+      github_open: Atidaryti
+      discord_description: Bendraukite su Mue bendruomene ir kūrėjais
+    description: Ačiū, kad įdiegėte Mue, tikimės, kad jums patiks naudotis mūsų priedu.
+  settings:
+    title: Importuoti nustatymus
+    description: Įdiegiate Mue naujame įrenginyje? Drąsiai importuokite savo senus
+      nustatymus!
+    tip: Galite eksportuoti savo senus nustatymus, eidami į Išplėstinių nustatymų
+      skirtuką savo senoje Mue sąrankoje. Tuomet reikia paspausti eksporto mygtuką,
+      kuris atsisiųs JSON failą. Galite įkelti šį failą čia, kad perkelti savo nustatymus
+      ir parinktis iš ankstesnės Mue įdiegimo.
+  privacy:
+    links:
+      title: Nuorodos
+      privacy_policy: Privatumo politika
+      source_code: Šaltinio kodas
+    title: Privatumo parinktys
+    description: Įjunkite nustatymus, kad dar labiau apsaugotumėte savo privatumą
+      su Mue.
+    offline_mode_description: Įjungus neprisijungusio rėžimą, bus išjungti visi užklausimai
+      į bet kokią paslaugą. Dėl to bus išjungti internetiniai fonai, internetinės
+      citatos, turgus, oras, spartieji saitai, pakeitimų žurnalas ir kai kurios skiltys
+      apie skirtuke.
+  language:
+    title: Pasirinkite kalbą
+    description: Mue gali būti rodoma žemiau išvardytomis kalbomis. Taip pat galite
+      pridėti naujų vertimų mūsų
+  theme:
+    title: Pasirinkite temą
+    description: Mue galima naudoti tiek šviesią, tiek tamsią temą, arba ji gali būti
+      automatiškai nustatyta pagal jūsų sistemos temą.
+    tip: Naudojant automatinį nustatymą bus naudojama jūsų kompiuterio tema. Šis nustatymas
+      paveiks modalius ir kai kuriuos valdiklius ekrane, tokius kaip oras ir užrašai.
+  style:
+    title: Pasirinkite stilių
+    modern: Modernus
+    description: Šiuo metu Mue siūlo pasirinkimą tarp senojo stiliaus ir naujai išleisto
+      modernaus stiliaus.
+    legacy: Senasis
+  final:
+    title: Paskutinis žingsnis
+    description: Jūsų Mue Tab patirtis netrukus prasidės.
+    changes: Pakeitimai
+    changes_description: Norėdami pakeisti nustatymus vėliau, spustelėkite nustatymų
+      piktogramą viršutiniame dešiniajame skirtuko kampe.
+    imported: Importuota {amount} nustatymų
+tip: Greitas Patarimas
+buttons:
+  next: Kitas
+  preview: Peržiūra
+  previous: Ankstesnis
+  close: Uždaryti
+  finish: Baigti
+preview:
+  description: Šiuo metu esate peržiūros režime. Nustatymai bus atstatyti uždarius
+    šį skirtuką.
+  continue: Tęsti nustatymus
