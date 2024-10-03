@@ -73,7 +73,7 @@ modals:
     error_boundary:
       title: Klaida
       report_error: Pranešti apie klaidą
-      sent: Nusiųsta!
+      sent: Išsiųsta!
       refresh: Perkrauti
       message: Nepavyko įkelti šio Mue komponento
   update:
