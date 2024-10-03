@@ -72,6 +72,10 @@ modals:
     title: Parinktys
     error_boundary:
       title: Klaida
+      report_error: Pateikti klaidos ataskaitą
+      sent: Nusiųsta!
+      refresh: Perkrauti
+      message: Nepavyko įkelti šio Mue komponento
   update:
     title: Atnaujinti
 tabname: Nauja kortelė
