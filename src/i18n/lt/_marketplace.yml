@@ -1,1 +1,49 @@
-{}
+by: pagal {author}
+all: Visi
+learn_more: Sužinokite daugiau
+photo_packs: Nuotraukų paketai
+quote_packs: Citatų paketai
+product:
+  buttons:
+    report: Pranešti
+    not_available_preview: Peržiūroje negalima
+    addtomue: Pridėti į Mue
+    remove: Pašalinti
+    update_addon: Atnaujinti priedą
+    back: Atgal
+  show_more: Rodyti daugiau
+  show_less: Rodyti mažiau
+  overview: Apžvalga
+  information: Informacija
+  last_updated: Paskutinį kartą atnaujinta
+  description: Aprašymas
+  details: Detalės
+  more_from_curator: Daugiau panašių iš {name}
+  show_all: Rodyti viską
+  showing: Rodoma
+  no_images: Nr. Nuotraukų
+  no_quotes: Nr. Citatų
+  version: Versija
+  created_by: Sukūrė
+  updated_at: Atnaujinta
+  part_of: Dalis
+  explore: Tyrinėti
+  not_in_language: Šis priedas nėra jūsų kalba
+  third_party_api: Šis priedas naudoja trečiosios šalies API
+  sideload_warning: Šis priedas buvo šaliai įkeltas.
+  setting: Nustatymas
+  value: Vertė
+preset_settings: Išankstiniai nustatymai
+no_items: Nėra elementų šioje kategorijoje
+collection: Kolekcija
+explore_collection: Naršyti kolekciją
+add_all: Pridėti viską į Mue
+collections: Kolekcijos
+cant_find: Nerandate to, ko ieškote?
+knowledgebase_one: Aplankykite
+knowledgebase_two: žinių bazę
+knowledgebase_three: kad sukurtumėte savo.
+installing: Diegiama
+offline:
+  title: Atrodo, kad esate neprisijungę
+  description: Prašome prisijungti prie interneto
