@@ -1,1 +1,29 @@
-{}
+added: Pridėta
+check_updates: Patikrinti atnaujinimus
+no_updates: Atnaujinimų nėra
+updates_available: Galimi atnaujinimai {amount}
+empty:
+  title: Tuščia
+  description: Nėra įdiegtų papildinių
+sideload:
+  title: Įkelti rankiniu būdu
+  description: Įdiegti Mue papildinį, kuris nėra rinkoje, iš savo kompiuterio
+  errors:
+    no_type: Nepateiktas tipas
+    no_name: Nepateiktas pavadinimas
+    no_author: Nepateiktas autorius
+    invalid_photos: Neteisingi nuotraukų objektai
+    invalid_quotes: Neteisingi citatų objektai
+  failed: Nepavyko įkelti papildinio
+sort:
+  a_z: Abėcėlės tvarka (A-Z)
+  z_a: Abėcėlės tvarka (Z-A)
+  title: Rūšiuoti
+  newest: Įdiegta (naujausia)
+  oldest: Įdiegta (seniausia)
+create:
+  title: Kurti
+  moved_title: Papildinio kūrimas perkeltas!
+  moved_description: Po 7.1 atnaujinimo papildinių kūrimas perkeltas į internetinę
+    vartotojo sąsają
+  moved_button: Netrukus...
