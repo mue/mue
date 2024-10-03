@@ -13,13 +13,12 @@ widgets:
     exclude: Nerodyti daugiau
     confirm: Patvirtinti
     source: Šaltinis
-    exclude_confirm: "Ar tikrai nebenorite matyti šio paveikslėlio dar kartą?\nPastaba:
-      jei nemėgstate „{category}“ paveikslėlių, galite išjungti šią kategoriją fono
-      nustatymuose."
+    exclude_confirm: "Ar tikrai nebenorite matyti šio paveikslėlio?\nPastaba: jei
+      nemėgstate „{category}“ paveikslėlių, galite išjungti šią kategoriją fono nustatymuose."
     likes: Patinka
     location: Vieta
     credit: Nuotrauka pagal
-    unsplash: iš "Unsplash"
+    unsplash: iš Unsplash
     information: Informacija
     views: Peržiūros
     camera: Kamera
@@ -37,8 +36,8 @@ widgets:
   quote:
     link_tooltip: Atidaryti Vikipedijoje
     share: Dalintis
-    favourite: Mėgstamiausias
-    unfavourite: Pašalinti iš mėgstamiausių
+    favourite: Pamėgtas
+    unfavourite: Nepamėgtas
     copy: Kopijuoti
   navbar:
     notes:
@@ -53,20 +52,26 @@ widgets:
       title: Programėlės
       no_apps: Nerasta programėlių nuorodų
     tooltips:
-      refresh: Perkrauti
+      refresh: Atnaujinti
   date:
     week: Savaitė
   search: Paieška
   weather:
-    feels_like: 'Šilumos pojūtis: {amount}'
+    feels_like: 'Jaučiamas kaip {kiekis}'
     not_found: Nerasta
-    meters: '{amount} metrų'
+    meters: '{kiekis} metrų'
     extra_information: Papildoma informacija
 modals:
   main:
-    loading: Įkeliama…
+    loading: Įkeliama...
     file_upload_error: Failas viršija 2 MB
     navbar:
       settings: Nustatymai
-    title: Nustatymai
+      addons: Biblioteka
+      marketplace: Atradimai
+    title: Parinktys
+    error_boundary:
+      title: Klaida
+  update:
+    title: Atnaujinti
 tabname: Nauja kortelė
