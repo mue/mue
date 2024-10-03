@@ -1,1 +1,71 @@
-{}
+widgets:
+  greeting:
+    morning: Labas rytas
+    afternoon: Laba diena
+    halloween: Linksmos Helovino šventės
+    birthday: Su gimtadieniu
+    evening: Labas vakaras
+    christmas: Linksmų Kalėdų
+    newyear: Laimingų Naujųjų Metų
+  background:
+    download: Atsisiųsti
+    downloads: Atsisiuntimai
+    exclude: Nerodyti daugiau
+    confirm: Patvirtinti
+    source: Šaltinis
+    exclude_confirm: "Ar tikrai nebenorite matyti šio paveikslėlio dar kartą?\nPastaba:
+      jei nemėgstate „{category}“ paveikslėlių, galite išjungti šią kategoriją fono
+      nustatymuose."
+    likes: Patinka
+    location: Vieta
+    credit: Nuotrauka pagal
+    unsplash: iš "Unsplash"
+    information: Informacija
+    views: Peržiūros
+    camera: Kamera
+    resolution: Rezoliucija
+    category: Kategorija
+  quicklinks:
+    icon: Piktograma (neprivaloma)
+    add: Pridėti
+    new: Nauja nuoroda
+    edit: Redaguoti nuorodą
+    name_error: Būtina įvesti pavadinimą
+    name: Pavadinimas
+    url_error: Būtina įvesti URL
+    url: URL
+  quote:
+    link_tooltip: Atidaryti Vikipedijoje
+    share: Dalintis
+    favourite: Mėgstamiausias
+    unfavourite: Pašalinti iš mėgstamiausių
+    copy: Kopijuoti
+  navbar:
+    notes:
+      title: Užrašai
+      placeholder: Rašykite čia
+    todo:
+      title: Užduotys
+      pin: Prisegti
+      add: Pridėti
+      no_todos: Nėra užduočių
+    apps:
+      title: Programėlės
+      no_apps: Nerasta programėlių nuorodų
+    tooltips:
+      refresh: Perkrauti
+  date:
+    week: Savaitė
+  search: Paieška
+  weather:
+    feels_like: 'Šilumos pojūtis: {amount}'
+    not_found: Nerasta
+    meters: '{amount} metrų'
+    extra_information: Papildoma informacija
+modals:
+  main:
+    loading: Įkeliama…
+    file_upload_error: Failas viršija 2 MB
+    navbar:
+      settings: Nustatymai
+    title: Nustatymai
