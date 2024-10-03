@@ -10,6 +10,12 @@
       },
       "file_upload_error": "Failas viršija 2MB",
       "loading": "Įkeliama...",
+      "marketplace": {
+        "product": {
+          "information": "Informacija",
+          "setting": "Nustatymai"
+        }
+      },
       "navbar": {
         "addons": "Priedai",
         "marketplace": "Prekyvietė",
@@ -24,6 +30,24 @@
           "title": "PASTABA"
         },
         "sections": {
+          "appearance": {
+            "navbar": {
+              "notes": "Užrašai",
+              "refresh": "Perkrauti"
+            }
+          },
+          "background": {
+            "buttons": {
+              "download": "Atsisiųsti",
+              "favourite": "Mėgstamiausias"
+            },
+            "source": {
+              "title": "Šaltinis"
+            },
+            "type": {
+              "title": "Rūšis"
+            }
+          },
           "date": {
             "datenth": "Data su galūne",
             "day_of_week": "Savaitės diena",
@@ -59,6 +83,8 @@
             "author_img": "Rodyti autoriaus nuotrauką",
             "author_link": "Autoriaus nuoroda",
             "buttons": {
+              "copy": "Kopijuoti",
+              "favourite": "Mėgstamiausias",
               "subtitle": "Pasirinkite, kuriuos mygtukus rodyti prie citatos",
               "title": "Mygtukai",
               "tweet": "Tviteryje"
@@ -70,6 +96,9 @@
             "no_quotes": "Nėra citatų",
             "source_subtitle": "Pasirinkite, iš kur gauti citatas",
             "title": "Citata"
+          },
+          "search": {
+            "title": "Paieška"
           },
           "time": {
             "analogue": {
@@ -101,10 +130,21 @@
               "change_second_colour": "Keisti sekundžių teksto spalvą",
               "title": "Vertikalus laikrodis"
             }
+          },
+          "weather": {
+            "extra_info": {
+              "title": "Papildoma informacija"
+            },
+            "location": "Vieta"
           }
         }
       },
       "title": "Parinktys"
+    },
+    "update": {
+      "error": {
+        "title": "Klaida"
+      }
     }
   },
   "tabname": "Naujas skirtukas",
