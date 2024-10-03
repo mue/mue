@@ -242,7 +242,7 @@ sections:
       title: Valdiklio stilius
       description: Pasirinkite tarp dviejų stilių, legacy (aktyvus vartotojams iki
         7.0 versijos) ir modernaus stiliaus.
-      legacy: Legacy
+      legacy: Sena
       new: Naujas
   advanced:
     title: Išplėstinis
