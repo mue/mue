@@ -11,10 +11,53 @@
       "file_upload_error": "Failas viršija 2MB",
       "loading": "Įkeliama...",
       "marketplace": {
+        "add_all": "Pridėti visus į Mue",
+        "all": "Visi",
+        "by": "autorius {author}",
+        "cant_find": "Nerandate to, ko ieškote?",
+        "collection": "Kolekcija",
+        "collections": "Kolekcijos",
+        "explore_collection": "Naršyti kolekciją",
+        "installing": "Diegiama",
+        "knowledgebase_one": "Apsilankykite",
+        "knowledgebase_three": "norėdami sukurti savo.",
+        "knowledgebase_two": "žinių bazėje",
+        "learn_more": "Sužinoti daugiau",
+        "no_items": "Nėra elementų šioje kategorijoje",
+        "photo_packs": "Nuotraukų rinkiniai",
+        "preset_settings": "Iš anksto nustatyti nustatymai",
         "product": {
+          "buttons": {
+            "addtomue": "Pridėti į Mue",
+            "back": "Atgal",
+            "not_available_preview": "Negalima peržiūros režime",
+            "remove": "Pašalinti",
+            "report": "Pranešti",
+            "update_addon": "Atnaujinti priedą"
+          },
+          "created_by": "Sukūrė",
+          "description": "Aprašymas",
+          "details": "Išsami informacija",
+          "explore": "Naršyti",
           "information": "Informacija",
-          "setting": "Nustatymai"
-        }
+          "last_updated": "Paskutinį kartą atnaujinta",
+          "more_from_curator": "Daugiau panašių iš {name}",
+          "no_images": "Paveikslėlių skaičius",
+          "no_quotes": "Citatų skaičius",
+          "not_in_language": "Šis priedas nėra jūsų kalba",
+          "overview": "Apžvalga",
+          "part_of": "Dalis",
+          "setting": "Nustatymai",
+          "show_all": "Rodyti viską",
+          "show_less": "Rodyti mažiau",
+          "show_more": "Rodyti daugiau",
+          "showing": "Rodoma",
+          "sideload_warning": "Šis priedas buvo įkeltas iš šalies.",
+          "third_party_api": "Šis priedas naudoja trečiosios šalies API",
+          "updated_at": "Atnaujinta",
+          "version": "Versija"
+        },
+        "quote_packs": "Citatų rinkiniai"
       },
       "navbar": {
         "addons": "Priedai",
@@ -23,6 +66,11 @@
       },
       "settings": {
         "additional_settings": "Papildomi nustatymai",
+        "buttons": {
+          "export": "Eksportuoti",
+          "import": "Importuoti",
+          "reset": "Atstatyti"
+        },
         "enabled": "Įjungta",
         "open_knowledgebase": "Atidaryti žinių bazę",
         "reminder": {
@@ -30,23 +78,207 @@
           "title": "PASTABA"
         },
         "sections": {
-          "appearance": {
-            "navbar": {
-              "notes": "Užrašai",
-              "refresh": "Perkrauti"
+          "about": {
+            "contact_us": "Susisiekite su mumis",
+            "contributors": "Prisidėjusieji",
+            "curators": "Priedų kūrėjai",
+            "form_button": "Forma",
+            "no_supporters": "Šiuo metu nėra Mue rėmėjų",
+            "photographers": "Fotografai",
+            "resources_used": {
+              "bg_images": "Autonominiai fono paveikslėliai",
+              "title": "Naudojami ištekliai"
+            },
+            "support_donate": "Paaukoti",
+            "support_mue": "Paremkite Mue",
+            "support_subtitle": "Kadangi Mue yra visiškai nemokamas, mes pasikliaujame aukomis, kad padengtume serverio sąskaitas ir finansuotume plėtrą",
+            "supporters": "Rėmėjai",
+            "title": "Apie",
+            "version": {
+              "checking_update": "Tikrinama, ar yra atnaujinimų",
+              "error": {
+                "description": "Įvyko klaida",
+                "title": "Nepavyko gauti atnaujinimo informacijos"
+              },
+              "no_update": "Nėra atnaujinimų",
+              "offline_mode": "Negalima patikrinti atnaujinimų autonominiame režime",
+              "title": "Versija",
+              "update_available": "Yra atnaujinimas"
             }
           },
+          "advanced": {
+            "custom_css": "Pasirinktinis CSS",
+            "custom_css_subtitle": "Pritaikykite Mue stilių sau naudodami kaskadines stilių lenteles (CSS).",
+            "custom_js": "Pasirinktinis JS",
+            "customisation": "Pritaikymas",
+            "data": "Duomenys",
+            "data_description": "Pasirinkite, ar eksportuoti Mue nustatymus į savo kompiuterį, importuoti esamą nustatymų failą, ar atstatyti nustatymus į numatytuosius",
+            "data_subtitle": "Tvarkykite savo duomenis Mue.",
+            "experimental_warning": "Atkreipkite dėmesį, kad Mue komanda negali suteikti pagalbos, jei įjungtas eksperimentinis režimas. Prieš kreipdamiesi pagalbos, pirmiausia jį išjunkite ir pažiūrėkite, ar problema išlieka.",
+            "offline_mode": "Autonominis režimas",
+            "offline_subtitle": "Kai įjungta, visi prašymai į internetines paslaugas bus išjungti.",
+            "preview_data_disabled": {
+              "description": "Duomenų nustatymai yra išjungti peržiūros režime. Norėdami naudoti šią funkciją, išeikite iš peržiūros režimo.",
+              "title": "Duomenų nustatymai išjungti"
+            },
+            "reset_modal": {
+              "cancel": "Atšaukti",
+              "information": "Tai ištrins visus duomenis. Jei norite išsaugoti savo duomenis ir nuostatas, pirmiausia juos eksportuokite.",
+              "question": "Ar norite atstatyti Mue?",
+              "title": "ĮSPĖJIMAS"
+            },
+            "tab_name": "Skirtuko pavadinimas",
+            "tab_name_subtitle": "Keiskite skirtuko, kuris rodomas naršyklėje, pavadinimą",
+            "timezone": {
+              "automatic": "Automatiškai",
+              "subtitle": "Pasirinkite laiko juostą iš sąrašo vietoj automatinio nustatymo iš jūsų kompiuterio",
+              "title": "Laiko juosta"
+            },
+            "title": "Išplėstiniai"
+          },
+          "appearance": {
+            "accessibility": {
+              "animations": "Animacijos",
+              "description": "Padarykite Mue patogų ir prieinamą",
+              "milliseconds": "milisekundžių",
+              "text_shadow": {
+                "new": "Naujas",
+                "none": "Nėra",
+                "old": "Senas",
+                "title": "Valdiklių teksto šešėlis"
+              },
+              "title": "Prieinamumas",
+              "toast_duration": "Pranešimų trukmė",
+              "widget_zoom": "Valdiklių mastelis"
+            },
+            "font": {
+              "custom": "Pasirinktinis šriftas",
+              "description": "Keiskite Mue naudojamą šriftą",
+              "google": "Importuoti iš Google Fonts",
+              "style": {
+                "italic": "Kursyvas",
+                "normal": "Normalus",
+                "oblique": "Pasviręs",
+                "title": "Šrifto stilius"
+              },
+              "title": "Šriftas",
+              "weight": {
+                "bold": "Paryškintas",
+                "extra_bold": "Itin paryškintas",
+                "extra_light": "Itin lengvas",
+                "light": "Lengvas",
+                "medium": "Vidutinis",
+                "normal": "Normalus",
+                "semi_bold": "Pusiau paryškintas",
+                "thin": "Plonas",
+                "title": "Šrifto storis"
+              }
+            },
+            "navbar": {
+              "additional": "Keiskite naršymo juostos stilių ir pasirinkite, kuriuos mygtukus norite rodyti",
+              "apps_subtitle": "Sukurkite nuorodas į kitas dažnai naudojamas svetaines.",
+              "hover": "Rodyti tik užvedus pelę",
+              "notes": "Užrašai",
+              "refresh": "Atnaujinti",
+              "refresh_options": {
+                "none": "Nieko",
+                "page": "Puslapis"
+              },
+              "refresh_subtitle": "Pasirinkite, kas atnaujinama, kai spaudžiate atnaujinimo mygtuką",
+              "title": "Naršymo juosta",
+              "widgets": "Naršymo juostos valdikliai"
+            },
+            "style": {
+              "description": "Pasirinkite vieną iš dviejų stilių: senąjį (įjungtas naudotojams iki 7.0 versijos) arba mūsų dailų modernų stilių.",
+              "legacy": "Senasis",
+              "new": "Naujasis",
+              "title": "Valdiklių stilius"
+            },
+            "theme": {
+              "auto": "Automatiškai",
+              "dark": "Tamsi",
+              "description": "Keiskite Mue valdiklių ir modalinių langų temą",
+              "light": "Šviesi",
+              "title": "Tema"
+            },
+            "title": "Išvaizda"
+          },
           "background": {
+            "api": "API nustatymai",
+            "api_subtitle": "Parinktys paveikslėlio gavimui iš išorinės paslaugos (API)",
             "buttons": {
               "download": "Atsisiųsti",
-              "favourite": "Mėgstamiausias"
+              "favourite": "Mėgstama",
+              "title": "Mygtukai",
+              "view": "Padidinti"
             },
+            "categories": "Kategorijos",
+            "display": "Rodymas",
+            "display_subtitle": "Keisti, kaip įkeliamas fonas ir nuotraukos informacija",
+            "effects": {
+              "blur": "Reguliuoti suliejimą",
+              "brightness": "Reguliuoti ryškumą",
+              "filters": {
+                "amount": "Filtro kiekis",
+                "contrast": "Kontrastas",
+                "grayscale": "Pilkos spalvos",
+                "invert": "Invertuoti",
+                "saturate": "Sodrinti",
+                "sepia": "Sepija",
+                "title": "Fono filtras"
+              },
+              "subtitle": "Pridėti efektų fono paveikslėliams",
+              "title": "Efektai"
+            },
+            "photo_information": "Rodyti nuotraukos informaciją",
+            "show_map": "Rodyti vietos žemėlapį nuotraukos informacijoje, jei įmanoma",
             "source": {
-              "title": "Šaltinis"
+              "add_background": "Pridėti foną",
+              "add_colour": "Pridėti spalvą",
+              "add_url": "Pridėti URL",
+              "api": "Fono API",
+              "custom_background": "Pasirinktinis fonas",
+              "custom_colour": "Pasirinktinė fono spalva",
+              "custom_description": "Pasirinkite paveikslėlius iš savo kompiuterio",
+              "custom_title": "Pasirinktiniai paveikslėliai",
+              "disabled": "Išjungta",
+              "drop_to_upload": "Nutempkite, kad įkeltumėte",
+              "formats": "Galimi formatai: {list}",
+              "loop_video": "Kartoti vaizdo įrašą",
+              "mute_video": "Nutildyti vaizdo įrašą",
+              "quality": {
+                "datasaver": "Duomenų taupymas",
+                "high": "Aukšta kokybė",
+                "normal": "Normali kokybė",
+                "original": "Originali",
+                "title": "Kokybė"
+              },
+              "remove": "Pašalinti paveikslėlį",
+              "select": "Arba pasirinkite",
+              "subtitle": "Pasirinkite, iš kur gauti fono paveikslėlius",
+              "title": "Šaltinis",
+              "upload": "Įkelti"
             },
+            "title": "Fonas",
+            "transition": "Išblukimo perėjimas",
             "type": {
-              "title": "Rūšis"
+              "api": "API",
+              "custom_colour": "Pasirinktinė spalva/gradientas",
+              "custom_image": "Pasirinktinis paveikslėlis",
+              "random_colour": "Atsitiktinė spalva",
+              "random_gradient": "Atsitiktinis gradientas",
+              "title": "Tipas"
+            },
+            "unsplash": {
+              "id": "Kolekcijos ID",
+              "id_subtitle": "Įveskite kableliais atskirtą Unsplash ID sąrašą",
+              "subtitle": "Pasirinkite kolekciją(-as), kurią(-as) norite naudoti fonui",
+              "title": "Unsplash kolekcija(-os)"
             }
+          },
+          "changelog": {
+            "by": "Autorius: {author}",
+            "title": "Pakeitimų žurnalas"
           },
           "date": {
             "datenth": "Data su galūne",
@@ -70,11 +302,70 @@
             "type_settings": "Pasirinkto datos tipo rodymo nustatymai ir formatas",
             "week_number": "Savaitės numeris"
           },
+          "experimental": {
+            "developer": "Kūrėjas",
+            "title": "Eksperimentiniai",
+            "warning": "Šie nustatymai nebuvo pilnai išbandyti/įgyvendinti ir gali veikti neteisingai!"
+          },
+          "greeting": {
+            "add_event": "Pridėti įvykį",
+            "additional": "Pasisveikinimo rodymo nustatymai",
+            "birthday": "Gimtadienis",
+            "birthday_age": "Gimtadienio amžius",
+            "birthday_date": "Gimtadienio data",
+            "birthday_subtitle": "Rodyti „Su gimtadieniu",
+            "custom": "Pasirinktiniai įvykiai",
+            "day": "Diena",
+            "default": "Numatytasis pasisveikinimo pranešimas",
+            "enable_events": "Rodyti pranešimus specialiomis dienomis",
+            "event_name": "Įvykio pavadinimas",
+            "events": "Įvykiai",
+            "events_description": "Valdykite Mue įvykius, pvz., gimtadienius.",
+            "month": "Mėnuo",
+            "name": "Vardas pasisveikinimui",
+            "no_events": "Nėra įvykių",
+            "no_events_description": "Pridėkite įvykių",
+            "title": "Pasisveikinimas"
+          },
           "header": {
             "enabled": "Pasirinkite, ar rodyti šį valdiklį",
             "more_info": "Daugiau informacijos",
             "report_issue": "Pranešti apie problemą",
             "size": "Slankiklis valdiklio dydžiui reguliuoti"
+          },
+          "language": {
+            "quote": "Citatų kalba",
+            "title": "Kalba"
+          },
+          "message": {
+            "add": "Pridėti pranešimą",
+            "add_some": "Eikite ir pridėkite keletą.",
+            "content": "Pranešimo turinys",
+            "messages": "Pranešimai",
+            "no_messages": "Nėra pranešimų",
+            "text": "Tekstas",
+            "title": "Pranešimas"
+          },
+          "order": {
+            "title": "Valdiklių tvarka"
+          },
+          "quicklinks": {
+            "add_link": "Pridėti nuorodą",
+            "additional": "Papildomi greitųjų nuorodų rodymo ir funkcijų nustatymai",
+            "edit": "Redaguoti",
+            "no_quicklinks": "Nėra greitųjų nuorodų",
+            "open_new": "Atidaryti naujame skirtuke",
+            "options": {
+              "icon": "Piktograma",
+              "metro": "Metro",
+              "text_only": "Tik tekstas"
+            },
+            "style": "Stilius",
+            "styling": "Stilizavimas",
+            "styling_description": "Pritaikykite greitųjų nuorodų išvaizdą",
+            "text_only": "Rodyti tik tekstą",
+            "title": "Greitos nuorodos",
+            "tooltip": "Paaiškinimas"
           },
           "quote": {
             "add": "Pridėti citatą",
@@ -84,7 +375,7 @@
             "author_link": "Autoriaus nuoroda",
             "buttons": {
               "copy": "Kopijuoti",
-              "favourite": "Mėgstamiausias",
+              "favourite": "Mėgstama",
               "subtitle": "Pasirinkite, kuriuos mygtukus rodyti prie citatos",
               "title": "Mygtukai",
               "tweet": "Tviteryje"
@@ -98,7 +389,38 @@
             "title": "Citata"
           },
           "search": {
-            "title": "Paieška"
+            "additional": "Papildomos paieškos valdiklio rodymo ir funkcionalumo parinktys",
+            "autocomplete": "Automatinis užbaigimas",
+            "autocomplete_provider": "Automatinio užbaigimo teikėjas",
+            "autocomplete_provider_subtitle": "Paieškos sistema, naudojama automatinio užbaigimo išskleidžiamojo sąrašo rezultatams",
+            "custom": "Pasirinktinis paieškos URL",
+            "dropdown": "Paieškos išskleidžiamasis sąrašas",
+            "focus": "Fokusuoti atidarius skirtuką",
+            "search_engine": "Paieškos sistema",
+            "search_engine_subtitle": "Pasirinkite paieškos sistemą, kurią naudosite paieškos juostoje",
+            "title": "Paieška",
+            "voice_search": "Paieška balsu"
+          },
+          "stats": {
+            "achievement_unlocked": "Pasiekimas atrakinta: {name}",
+            "achievements": "Pasiekimai",
+            "clear_modal": {
+              "information": "Tai išvalys visus pasiekimus ir naudojimo statistiką.",
+              "question": "Ar norite išvalyti savo statistiką?"
+            },
+            "locked": "Užrakinta",
+            "sections": {
+              "addons_installed": "Įdiegta priedų",
+              "backgrounds_downloaded": "Atsisiųsta fonų",
+              "backgrounds_favourited": "Pamėgta fonų",
+              "quicklinks_added": "Pridėta greitųjų nuorodų",
+              "quotes_favourited": "Pamėgta citatų",
+              "settings_changed": "Pakeista nustatymų",
+              "tabs_opened": "Atidaryta skirtukų"
+            },
+            "title": "Statistika",
+            "unlocked": "Atrakinta: {count}",
+            "usage": "Naudojimo statistika"
           },
           "time": {
             "analogue": {
@@ -132,10 +454,37 @@
             }
           },
           "weather": {
+            "auto": "Automatiškai",
+            "custom_settings": "Pasirinktiniai nustatymai",
             "extra_info": {
-              "title": "Papildoma informacija"
+              "atmospheric_pressure": "Atmosferos slėgis",
+              "cloudiness": "Debesuotumas",
+              "humidity": "Drėgmė",
+              "max_temp": "Maksimali temperatūra",
+              "min_temp": "Minimali temperatūra",
+              "show_description": "Rodyti aprašymą",
+              "show_location": "Rodyti vietą",
+              "title": "Papildoma informacija",
+              "visibility": "Matomumas",
+              "weather_description": "Orų aprašymas",
+              "wind_direction": "Vėjo kryptis",
+              "wind_speed": "Vėjo greitis"
             },
-            "location": "Vieta"
+            "location": "Vieta",
+            "options": {
+              "basic": "Paprasta",
+              "custom": "Pasirinktinė",
+              "expanded": "Išplėstinė",
+              "standard": "Standartinė"
+            },
+            "temp_format": {
+              "celsius": "Celsijus",
+              "fahrenheit": "Farenheitas",
+              "kelvin": "Kelvinas",
+              "title": "Temperatūros formatas"
+            },
+            "title": "Orai",
+            "widget_type": "Valdiklio tipas"
           }
         }
       },
