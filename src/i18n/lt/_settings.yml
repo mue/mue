@@ -3,30 +3,30 @@ open_knowledgebase: Atidaryti informacijos bazę
 sections:
   time:
     analogue:
-      subtitle: Pakeiskite, kaip atrodo analoginis laikrodis
-      title: Analoginis
-      second_hand: Sekundės rodyklė
+      subtitle: Keisti analoginio laikrodžio išvaizdą
+      title: Analoginis laikrodis
+      second_hand: Sekundžių rodyklė
       minute_hand: Minučių rodyklė
       hour_hand: Valandų rodyklė
-      hour_marks: Valandų žymės
-      minute_marks: Minučių žymės
-      round_clock: Apvalus fonas
+      hour_marks: Valandų padalos
+      minute_marks: Minučių padalos
+      round_clock: Apvalintas fonas
     title: Laikrodis
     format: Rodymo būdas
     type: Rūšis
     digital:
-      twentyfourhour: 24 valandos
+      twentyfourhour: 24 valandas
       twelvehour: 12 valandų
       title: Skaitmeninis
       subtitle: Keisti skaitmeninio laikrodžio išvaizdą
       seconds: Sekundės
-      zero: Su nuliu
+      zero: Su nuliais pradžioje
     type_subtitle: Pasirinkti, ar rodyti laiką skaitmeniniu, analoginiu formatu ar
       procentinę dienos dalį.
-    percentage_complete: Procentinis užbaigtumas
+    percentage_complete: Užbaigimo procentas
     vertical_clock:
-      title: Vertikalus laikrodis
-      change_hour_colour: Keisti valandų spalvą
+      title: Laikrodis vertikaliai
+      change_hour_colour: Keisti valandų teksto spalvą
       change_minute_colour: Keisti minučių spalvą
       change_second_colour: Keisti sekundžių spalvą
   date:
@@ -55,7 +55,7 @@ sections:
     buttons:
       title: Mygtukai
       copy: Kopijuoti
-      favourite: Mėgstama
+      favourite: Mėgstamiausias
       subtitle: Pasirinkite, kuriuos mygtukus rodyti prie citatos
       tweet: Tweet
     title: Citata
@@ -122,12 +122,12 @@ sections:
     buttons:
       title: Mygtukai
       view: Padidinti
-      favourite: Mėgstama
+      favourite: Mėgstamiausias
       download: Atsisiųsti
     type:
       api: API
       custom_image: Tinkintas vaizdas
-      title: Tipas
+      title: Rūšis
       custom_colour: Tinkinta spalva/gradientas
       random_colour: Atsitiktinė spalva
       random_gradient: Atsitiktinis gradientas
@@ -194,11 +194,11 @@ sections:
       light: Šviesi
       dark: Tamsi
     navbar:
-      refresh: Atnaujinti
+      refresh: Perkrauti
       refresh_subtitle: Pasirinkite, kas atnaujinama paspaudus atnaujinimo mygtuką
       title: Naršymo juosta
       widgets: Naršymo juostos valdikliai
-      notes: Pastabos
+      notes: Užrašai
       hover: Rodyti tik paslinkus pelę
       additional: Koreguokite naršymo juostos stilių ir pasirinkite rodomus mygtukus
       refresh_options:
