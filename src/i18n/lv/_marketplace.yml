@@ -1,4 +1,49 @@
-by: 'autors: {author}'
-all: viss
-learn_more: Uzziniet vairāk
-photo_packs: Fotoattēlu pakotnes
+by: 'autors {author}'
+all: Viss
+learn_more: Uzzināt vairāk
+photo_packs: Fotogrāfiju pakotnes
+collection: Kolekcija
+explore_collection: Izpētīt kolekciju
+add_all: Pievienot visu Mue
+collections: Kolekcijas
+cant_find: Nevari atrast to, ko meklē?
+knowledgebase_one: Apmeklē
+installing: Instalē
+product:
+  overview: Pārskats
+  details: Detaļas
+  show_all: Rādīt visu
+  showing: Rāda
+  no_images: Attēlu skaits
+  no_quotes: Citātu skaits
+  part_of: Daļa no
+  explore: Izpētīt
+  buttons:
+    addtomue: Pievienot Mue
+    remove: Noņemt
+    update_addon: Atjaunināt papildinājumu
+    back: Atpakaļ
+    report: Ziņot
+    not_available_preview: Nav pieejams priekšskatījumā
+  not_in_language: Šis papildinājums nav tavā valodā
+  third_party_api: Šis papildinājums izmanto trešās puses API
+  setting: Iestatījums
+  information: Informācija
+  last_updated: Pēdējoreiz atjaunināts
+  description: Apraksts
+  more_from_curator: Vairāk līdzīgu no {name}
+  show_more: Rādīt vairāk
+  show_less: Rādīt mazāk
+  version: Versija
+  created_by: Izveidojis
+  updated_at: Atjaunināts
+  sideload_warning: Šis papildinājums ir sāniski ielādēts.
+  value: Vērtība
+offline:
+  description: Lūdzu, izveido savienojumu ar internetu
+  title: Izskatās, ka esi bezsaistē
+quote_packs: Citātu pakotnes
+preset_settings: Iepriekš iestatītie iestatījumi
+no_items: Šajā kategorijā nav vienumu
+knowledgebase_two: zināšanu bāzi
+knowledgebase_three: lai izveidotu savu.
