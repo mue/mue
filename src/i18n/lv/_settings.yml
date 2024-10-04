@@ -1,1 +1,383 @@
-{}
+sections:
+  time:
+    digital:
+      subtitle: Mainīt digitālā pulksteņa izskatu
+      seconds: Sekundes
+      title: Digitāls
+      twentyfourhour: 24 stundas
+      twelvehour: 12 stundas
+      zero: Ar nullēm
+    analogue:
+      second_hand: Sekunžu rādītājs
+      minute_hand: Minūšu rādītājs
+      hour_hand: Stundu rādītājs
+      hour_marks: Stundu atzīmes
+      minute_marks: Minūšu atzīmes
+      title: Analogs
+      subtitle: Mainīt analogā pulksteņa izskatu
+      round_clock: Apaļš fons
+    vertical_clock:
+      title: Vertikāls pulkstenis
+      change_hour_colour: Mainīt stundu teksta krāsu
+      change_minute_colour: Mainīt minūšu teksta krāsu
+      change_second_colour: Mainīt sekunžu teksta krāsu
+    title: Laiks
+    format: Formāts
+    type: Veids
+    type_subtitle: Izvēlieties, vai rādīt laiku digitālā formātā, analogā formātā
+      vai kā dienas procentuālo pabeigšanu
+    percentage_complete: Procentuālais pabeigums
+  date:
+    datenth: Datums ar galotni
+    type:
+      short: Īss
+      long: Garš
+      subtitle: Vai rādīt datumu garā vai īsā formā
+    short_separator:
+      dots: Punkti
+      dash: Domuzīme
+      gaps: Atstarpes
+      slashes: Slīpsvītras
+      title: Īsais atdalītājs
+    title: Datums
+    week_number: Nedēļas numurs
+    day_of_week: Nedēļas diena
+    type_settings: Rādīšanas iestatījumi un formāts izvēlētajam datuma veidam
+    short_date: Īss datums
+    short_format: Īss formāts
+    long_format: Garš formāts
+  quote:
+    title: Citāts
+    additional: Citi iestatījumi, lai pielāgotu citāta logrīka stilu
+    author_link: Autora saite
+    custom: Pielāgots citāts
+    custom_subtitle: Iestatiet savus pielāgotos citātus
+    no_quotes: Nav citātu
+    source_subtitle: Izvēlieties, no kurienes iegūt citātus
+    buttons:
+      title: Pogas
+      subtitle: Izvēlieties, kuras pogas rādīt pie citāta
+      copy: Kopēt
+      tweet: Tvītot
+      favourite: Favorīts
+    custom_author: Pielāgots autors
+    author: Autors
+    custom_buttons: Pogas
+    author_img: Rādīt autora attēlu
+    add: Pievienot citātu
+  greeting:
+    title: Sveiciens
+    event_name: Notikuma nosaukums
+    day: Diena
+    events: Notikumi
+    default: Noklusējuma sveiciena ziņojums
+    events_description: Kontrolējiet notikumus Mue, piemēram, dzimšanas dienas.
+    enable_events: Rādīt ziņojumus īpašās dienās
+    name: Vārds sveicienam
+    birthday: Dzimšanas diena
+    birthday_subtitle: Rādīt Daudz laimes dzimšanas dienā ziņojumu, kad ir jūsu dzimšanas
+      diena
+    birthday_age: Dzimšanas dienas vecums
+    birthday_date: Dzimšanas dienas datums
+    additional: Iestatījumi sveiciena attēlošanai
+    custom: Pielāgoti notikumi
+    month: Mēnesis
+    no_events: Nav notikumu
+    no_events_description: Pievienot dažus notikumus
+    add_event: Pievienot notikumu
+  background:
+    transition: Ienākšanas pāreja
+    photo_information: Rādīt fotogrāfijas informāciju
+    show_map: Rādīt atrašanās vietas karti fotogrāfijas informācijā, ja pieejama
+    buttons:
+      favourite: Favorīts
+      download: Lejupielādēt
+      title: Pogas
+      view: Maksimizēt
+    effects:
+      title: Efekti
+      subtitle: Pievienot efektus fona attēliem
+      blur: Pielāgot izplūdumu
+      brightness: Pielāgot spilgtumu
+      filters:
+        title: Fona filtrs
+        amount: Filtra daudzums
+        contrast: Kontrasts
+        sepia: Sēpija
+        invert: Invertēt
+        saturate: Piesātināt
+        grayscale: Pelēktoņi
+    title: Fons
+    categories: Kategorijas
+    category: Kategorija
+    type:
+      title: Veids
+      api: API
+      custom_image: Pielāgots attēls
+      custom_colour: Pielāgota krāsa/gradients
+      random_colour: Nejauša krāsa
+      random_gradient: Nejaušs gradients
+    unsplash:
+      title: Unsplash kolekcija(s)
+      subtitle: Izvēlieties kolekciju(as), ko vēlaties izmantot savam fonam
+      id_subtitle: Ievadiet ar komatu atdalītu Unsplash ID sarakstu
+      id: Kolekcijas ID
+    source:
+      title: Avots
+      subtitle: Izvēlieties, no kurienes iegūt fona attēlus
+      api: Fona API
+      custom_background: Pielāgots fons
+      custom_colour: Pielāgota fona krāsa
+      upload: Augšupielādēt
+      add_colour: Pievienot krāsu
+      add_background: Pievienot fonu
+      drop_to_upload: Nometiet, lai augšupielādētu
+      formats: 'Pieejamie formāti: {list}'
+      select: Vai izvēlieties
+      add_url: Pievienot URL
+      disabled: Atspējots
+      loop_video: Atkārtot video
+      mute_video: Izslēgt video skaņu
+      quality:
+        original: Oriģināla
+        title: Kvalitāte
+        high: Augsta kvalitāte
+        normal: Normāla kvalitāte
+        datasaver: Datu taupīšana
+      remove: Noņemt attēlu
+      custom_title: Pielāgoti attēli
+      custom_description: Izvēlieties attēlus no sava lokālā datora
+    display: Attēlošana
+    display_subtitle: Mainīt, kā tiek ielādēts fons un fotogrāfijas informācija
+    api: API iestatījumi
+    api_subtitle: Opcijas attēla iegūšanai no ārēja pakalpojuma (API)
+  search:
+    dropdown: Meklēšanas nolaižamais saraksts
+    focus: Fokuss, atverot cilni
+    title: Meklēšana
+    additional: Papildu opcijas meklēšanas logrīka attēlošanai un funkcionalitātei
+    search_engine: Meklētājprogramma
+    search_engine_subtitle: Izvēlieties meklētājprogrammu, ko izmantot meklēšanas
+      joslā
+    custom: Pielāgots meklēšanas URL
+    autocomplete: Automātiskā pabeigšana
+    autocomplete_provider: Automātiskās pabeigšanas sniedzējs
+    voice_search: Balss meklēšana
+    autocomplete_provider_subtitle: Meklētājprogramma, ko izmantot automātiskās pabeigšanas
+      nolaižamā saraksta rezultātiem
+  weather:
+    options:
+      expanded: Paplašināts
+      basic: Pamata
+      standard: Standarta
+      custom: Pielāgots
+    title: Laikapstākļi
+    location: Atrašanās vieta
+    auto: Automātiski
+    widget_type: Logrīka veids
+    temp_format:
+      title: Temperatūras formāts
+      celsius: Celsijs
+      fahrenheit: Fārenheits
+      kelvin: Kelvins
+    extra_info:
+      title: Papildu informācija
+      show_location: Rādīt atrašanās vietu
+      weather_description: Laikapstākļu apraksts
+      show_description: Rādīt aprakstu
+      cloudiness: Mākoņainība
+      humidity: Mitrums
+      visibility: Redzamība
+      wind_speed: Vēja ātrums
+      wind_direction: Vēja virziens
+      min_temp: Minimālā temperatūra
+      max_temp: Maksimālā temperatūra
+      atmospheric_pressure: Atmosfēras spiediens
+    custom_settings: Pielāgoti iestatījumi
+  quicklinks:
+    open_new: Atvērt jaunā cilnē
+    tooltip: Rīka padoms
+    text_only: Rādīt tikai tekstu
+    add_link: Pievienot saiti
+    edit: Rediģēt
+    style: Stils
+    options:
+      icon: Ikona
+      text_only: Tikai teksts
+      metro: Metro
+    styling: Stils
+    title: Ātrās saites
+    additional: Papildu iestatījumi ātro saišu attēlošanai un funkcijām
+    no_quicklinks: Nav ātro saišu
+    styling_description: Pielāgot ātro saišu izskatu
+  appearance:
+    title: Izskats
+    theme:
+      title: Tēma
+      description: Mainīt Mue logrīku un modālo logu tēmu
+      auto: Automātiski
+      light: Gaiša
+      dark: Tumša
+    font:
+      description: Mainīt Mue izmantoto fontu
+      custom: Pielāgots fonts
+      title: Fonts
+      google: Importēt no Google Fonts
+      weight:
+        title: Fonta biezums
+        thin: Plāns
+        extra_light: Īpaši viegls
+        medium: Vidējs
+        semi_bold: Pus-treknraksts
+        bold: Treknraksts
+        light: Viegls
+        normal: Normāls
+        extra_bold: Īpaši treknraksts
+      style:
+        title: Fonta stils
+        normal: Normāls
+        italic: Slīpraksts
+        oblique: Slīps
+    accessibility:
+      text_shadow:
+        none: Nav
+        title: Logrīka teksta ēna
+        new: Jauna
+        old: Veca
+      widget_zoom: Logrīka tālummaiņa
+      toast_duration: Paziņojuma ilgums
+      milliseconds: milisekundes
+      title: Pieejamība
+      description: Padarīt Mue ērtu un pieejamu
+      animations: Animācijas
+    style:
+      title: Logrīka stils
+      description: Izvēlieties starp diviem stiliem, mantoto (iespējots lietotājiem
+        pirms 7.0 versijas) un mūsu eleganto moderno stilu.
+      legacy: Mantotais
+      new: Jauns
+    navbar:
+      refresh_options:
+        none: Neviens
+        page: Lapa
+      apps_subtitle: Izveidojiet īsceļu uz citām bieži izmantotajām vietnēm.
+      title: Navigācijas josla
+      widgets: Navigācijas joslas logrīki
+      notes: Piezīmes
+      refresh: Atsvaidzināt
+      refresh_subtitle: Izvēlieties, kas tiek atsvaidzināts, kad noklikšķināt uz atsvaidzināšanas
+        pogas
+      hover: Rādīt tikai, uzbraucot ar peli
+      additional: Modificēt navigācijas joslas stilu un kuras pogas vēlaties rādīt
+  advanced:
+    title: Papildu
+    offline_mode: Bezsaistes režīms
+    offline_subtitle: Kad iespējots, visi pieprasījumi tiešsaistes pakalpojumiem tiks
+      atspējoti.
+    data: Dati
+    data_description: Izvēlieties, vai eksportēt Mue iestatījumus uz datoru, importēt
+      esošu iestatījumu failu vai atiestatīt iestatījumus uz noklusējuma vērtībām
+    reset_modal:
+      question: Vai vēlaties atiestatīt Mue?
+      information: Tas izdzēsīs visus datus. Ja vēlaties saglabāt savus datus un preferences,
+        lūdzu, vispirms eksportējiet tos.
+      cancel: Atcelt
+      title: BRĪDINĀJUMS
+    customisation: Pielāgošana
+    custom_css: Pielāgots CSS
+    tab_name_subtitle: Mainīt cilnes nosaukumu, kas parādās jūsu pārlūkprogrammā
+    timezone:
+      title: Laika josla
+      automatic: Automātiski
+      subtitle: Izvēlieties laika joslu no saraksta, nevis automātisko noklusējumu
+        no jūsu datora
+    data_subtitle: Pārvaldiet savus datus Mue.
+    custom_css_subtitle: Padariet Mue stilu pielāgotu sev ar kaskādes stilu lapām
+      (CSS).
+    custom_js: Pielāgots JS
+    tab_name: Cilnes nosaukums
+    experimental_warning: Lūdzu, ņemiet vērā, ka Mue komanda nevar sniegt atbalstu,
+      ja jums ir ieslēgts eksperimentālais režīms. Lūdzu, vispirms atspējojiet to
+      un pārbaudiet, vai problēma joprojām pastāv, pirms sazināties ar atbalstu.
+    preview_data_disabled:
+      title: Datu iestatījumi atspējoti
+      description: Datu iestatījumi ir atspējoti priekšskatījuma režīmā. Lūdzu, izejiet
+        no priekšskatījuma režīma, lai izmantotu šo funkciju.
+  stats:
+    achievements: Sasniegumi
+    achievement_unlocked: 'Sasniegums atbloķēts: {name}'
+    unlocked: '{count} Atbloķēts'
+    locked: Bloķēts
+    clear_modal:
+      question: Vai vēlaties notīrīt savu statistiku?
+      information: Tas notīrīs visus sasniegumus un lietošanas statistiku.
+    title: Statistika
+    sections:
+      tabs_opened: Atvērtas cilnes
+      backgrounds_favourited: Iecienītie foni
+      backgrounds_downloaded: Lejupielādētie foni
+      quotes_favourited: Iecienītie citāti
+      quicklinks_added: Pievienotās ātrās saites
+      settings_changed: Mainītie iestatījumi
+      addons_installed: Instalētie papildinājumi
+    usage: Lietošanas statistika
+  experimental:
+    developer: Izstrādātājs
+    title: Eksperimentāls
+    warning: Šie iestatījumi nav pilnībā pārbaudīti/ieviesti un var nedarboties pareizi!
+  language:
+    title: Valoda
+    quote: Citāta valoda
+  changelog:
+    title: Izmaiņu žurnāls
+    by: Autors {author}
+  about:
+    title: Par
+    version:
+      title: Versija
+      update_available: Pieejams atjauninājums
+      no_update: Nav pieejamu atjauninājumu
+      offline_mode: Nevar pārbaudīt atjauninājumu bezsaistes režīmā
+      checking_update: Pārbauda atjauninājumu
+      error:
+        title: Neizdevās iegūt atjauninājuma informāciju
+        description: Radās kļūda
+    form_button: Forma
+    resources_used:
+      title: Izmantotie resursi
+      bg_images: Bezsaistes fona attēli
+    contributors: Līdzstrādnieki
+    supporters: Atbalstītāji
+    no_supporters: Pašlaik nav Mue atbalstītāju
+    photographers: Fotogrāfi
+    curators: Papildinājumu veidotāji
+    contact_us: Sazinieties ar mums
+    support_mue: Atbalstīt Mue
+    support_subtitle: Tā kā Mue ir pilnībā bezmaksas, mēs paļaujamies uz ziedojumiem,
+      lai segtu servera rēķinus un finansētu izstrādi
+    support_donate: Ziedot
+  header:
+    more_info: Vairāk informācijas
+    report_issue: Ziņot par problēmu
+    enabled: Izvēlieties, vai rādīt šo logrīku
+    size: Slīdnis, lai kontrolētu logrīka lielumu
+  message:
+    content: Ziņojuma saturs
+    title: Ziņojums
+    add: Pievienot ziņojumu
+    messages: Ziņojumi
+    text: Teksts
+    no_messages: Nav ziņojumu
+    add_some: Dodieties un pievienojiet dažus.
+  order:
+    title: Logrīku secība
+buttons:
+  import: Importēt
+  export: Eksportēt
+  reset: Atiestatīt
+additional_settings: Papildu iestatījumi
+enabled: Iespējots
+reminder:
+  title: PAZIŅOJUMS
+  message: Lai visas izmaiņas stātos spēkā, lapa ir jāatsvaidzina.
+open_knowledgebase: Atvērt zināšanu bāzi
