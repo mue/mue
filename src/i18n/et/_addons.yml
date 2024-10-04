@@ -1,1 +1,29 @@
-{}
+updates_available: Saadaval on {amount} värskendust
+empty:
+  title: Tühi
+  description: Lisasid pole installitud
+sideload:
+  title: Kõrvallaadimine
+  errors:
+    no_name: Nime pole esitatud
+    no_author: Autorit pole esitatud
+    no_type: Tüüpi pole esitatud
+    invalid_photos: Vigane fotode objekt
+    invalid_quotes: Vigane tsitaatide objekt
+  description: Installi Mue lisa, mida pole turul, oma arvutist
+  failed: Lisa kõrvallaadimine ebaõnnestus
+added: Lisatud
+check_updates: Kontrolli värskendusi
+no_updates: Värskendusi pole saadaval
+sort:
+  title: Sorteeri
+  newest: Installitud (uusimad)
+  oldest: Installitud (vanimad)
+  a_z: Tähestikuline (A-Z)
+  z_a: Tähestikuline (Z-A)
+create:
+  title: Loo
+  moved_title: Lisa loomine on ümber tõstetud!
+  moved_description: Pärast 7.1 värskendust on lisade loomine nüüd üle viidud veebi
+    kasutajaliidesesse
+  moved_button: Tulekul....
