@@ -1,1 +1,29 @@
-{}
+added: Pievienots
+check_updates: Pārbaudiet, vai nav atjauninājumu
+no_updates: Nav pieejami atjauninājumi
+updates_available: Pieejami atjauninājumi {amount}
+empty:
+  title: Tukšs
+  description: Nav instalēts neviens papildinājums
+sideload:
+  title: Sānu slodze
+  description: No sava datora instalējiet Mue papildinājumu, kas nav pieejams tirgū
+  failed: Neizdevās sānielādēt papildinājumu
+  errors:
+    no_name: Nav norādīts nosaukums
+    no_author: Nav norādīts neviens autors
+    no_type: Nav norādīts veids
+    invalid_quotes: Nederīgs pēdiņu objekts
+    invalid_photos: Nederīgs fotoattēlu objekts
+sort:
+  newest: Instalēts (jaunākais)
+  z_a: Alfabētiskā secībā (Z-A)
+  title: Kārtot
+  oldest: Instalēts (vecākais)
+  a_z: Alfabētiskā secībā (A–Z)
+create:
+  moved_title: Izveidot papildinājumu ir pārvietots!
+  moved_button: Drīzumā...
+  moved_description: Pēc 7.1 atjauninājuma papildinājumu izveide tagad ir pārcelta
+    uz tīmekļa lietotāja interfeisu
+  title: Izveidot
