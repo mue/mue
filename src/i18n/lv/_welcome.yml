@@ -1,1 +1,65 @@
-{}
+tip: Ātrais padoms
+sections:
+  intro:
+    title: Laipni lūdzam Mue cilnē
+    description: Paldies, ka instalējāt Mue, mēs ceram, ka jums patiks mūsu paplašinājums.
+    notices:
+      discord_title: Pievienojieties mūsu Discord
+      discord_join: Pievienoties
+      github_open: Atvērt
+      discord_description: Sarunājieties ar Mue kopienu un izstrādātājiem
+      github_title: Piedalieties GitHub
+      github_description: Ziņojiet par kļūdām, pievienojiet funkcijas vai ziedojiet
+  theme:
+    title: Izvēlieties tēmu
+    description: Mue ir pieejams gan gaišā, gan tumšā tēmā, vai arī to var automātiski
+      iestatīt atkarībā no jūsu sistēmas tēmas.
+    tip: Izmantojot Auto iestatījumus, tiks izmantota jūsu datora tēma. Šis iestatījums
+      ietekmēs modālos logus un dažus logrīkus, kas tiek attēloti ekrānā, piemēram,
+      laika apstākļus un piezīmes.
+  style:
+    description: Mue pašlaik piedāvā izvēli starp mantoto stilu un jaunizlaisto moderno
+      stilu.
+    legacy: Mantotais
+    modern: Modernais
+    title: Izvēlieties stilu
+  settings:
+    title: Importēt iestatījumus
+    description: Instalējat Mue jaunā ierīcē? Droši importējiet savus vecos iestatījumus!
+    tip: Jūs varat eksportēt savus vecos iestatījumus, pārejot uz cilni Papildu jūsu
+      vecajā Mue iestatījumā. Pēc tam jums jāklikšķina uz eksportēšanas pogas, kas
+      lejupielādēs JSON failu. Jūs varat augšupielādēt šo failu šeit, lai pārnestu
+      savus iestatījumus un preferences no jūsu iepriekšējās Mue instalācijas.
+  privacy:
+    title: Privātuma opcijas
+    links:
+      source_code: Pirmkods
+      title: Saites
+      privacy_policy: Privātuma politika
+    description: Iespējojiet iestatījumus, lai vēl vairāk aizsargātu savu privātumu
+      ar Mue.
+    offline_mode_description: Bezsaistes režīma iespējošana atspējos visus pieprasījumus
+      jebkuram pakalpojumam. Tas izraisīs tiešsaistes fonu, tiešsaistes citātu, tirgus,
+      laika apstākļu, ātro saišu, izmaiņu žurnāla un dažu par cilnes informācijas
+      atspējošanu.
+  final:
+    title: Pēdējais solis
+    description: Jūsu Mue cilnes pieredze drīz sāksies.
+    changes: Izmaiņas
+    imported: Importēti {amount} iestatījumi
+    changes_description: Lai vēlāk mainītu iestatījumus, noklikšķiniet uz iestatījumu
+      ikonas cilnes augšējā labajā stūrī.
+  language:
+    title: Izvēlieties savu valodu
+    description: Mue var tikt attēlots zemāk uzskaitītajās valodās. Jūs varat arī
+      pievienot jaunus tulkojumus mūsu
+buttons:
+  next: Tālāk
+  preview: Priekšskatījums
+  previous: Iepriekšējais
+  close: Aizvērt
+  finish: Pabeigt
+preview:
+  description: Jūs pašlaik esat priekšskatījuma režīmā. Iestatījumi tiks atiestatīti,
+    aizverot šo cilni.
+  continue: Turpināt iestatīšanu
