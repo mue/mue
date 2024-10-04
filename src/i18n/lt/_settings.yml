@@ -157,7 +157,7 @@ sections:
       max_temp: Maksimali temperatūra
       atmospheric_pressure: Atmosferos slėgis
     options:
-      basic: Bazinis
+      basic: Paprastas
       standard: Standartinis
       expanded: Išplėstinis
       custom: Tinkintas
@@ -170,7 +170,7 @@ sections:
     add_link: Pridėti saitą
     no_quicklinks: Nėra spartųjų saitų
     edit: Redaguoti
-    style: Stilius
+    style: Rodymas
     options:
       icon: Piktograma
       text_only: Tik tekstas
@@ -240,10 +240,10 @@ sections:
     title: Išvaizda
     style:
       title: Valdiklio stilius
-      description: Pasirinkite tarp dviejų stilių, legacy (aktyvus vartotojams iki
-        7.0 versijos) ir modernaus stiliaus.
-      legacy: Sena
-      new: Naujas
+      description: 'Pasirinkite vieną iš dviejų stilių: senąjį (skirtą vartotojams
+        iki 7.0 versijos) arba naująjį (modernų).'
+      legacy: Senasis
+      new: Naujasis
   advanced:
     title: Išplėstinis
     offline_mode: Neprisijungusio rėžimas
@@ -318,7 +318,7 @@ sections:
     resources_used:
       title: Naudoti ištekliai
       bg_images: Neprisijungus naudojami fono vaizdai
-    contributors: Bendradarbiai
+    contributors: Pagalbininkai
     curators: Priedų kūrėjai
     title: Apie
     support_subtitle: Kadangi Mue yra visiškai nemokamas, mes priklausome nuo aukų,
