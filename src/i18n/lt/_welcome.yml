@@ -2,7 +2,7 @@ sections:
   intro:
     title: Sveiki atvykę į Mue Tab
     notices:
-      discord_title: Prisijunkite prie mūsų Discord
+      discord_title: Prisijunkite prie mūsų Discord kanalo
       github_title: Prisidėkite prie GitHub
       github_description: Praneškite apie klaidas, pridėkite funkcijų ar paaukokite
       discord_join: Prisijungti
@@ -38,7 +38,7 @@ sections:
     description: Mue galima naudoti tiek šviesią, tiek tamsią temą, arba ji gali būti
       automatiškai nustatyta pagal jūsų sistemos temą.
     tip: Naudojant automatinį nustatymą bus naudojama jūsų kompiuterio tema. Šis nustatymas
-      paveiks modalius ir kai kuriuos valdiklius ekrane, tokius kaip oras ir užrašai.
+      paveiks modulius ir kai kuriuos valdiklius ekrane, tokius kaip oras ir užrašai.
   style:
     title: Pasirinkite stilių
     modern: Modernus
