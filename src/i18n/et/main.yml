@@ -1,1 +1,103 @@
 tabname: Uus vahekaart
+widgets:
+  greeting:
+    morning: Tere hommikust
+    afternoon: Tere päevast
+    evening: Tere õhtust
+    christmas: Häid jõule
+    newyear: Head uut aastat
+    halloween: Head halloweeni
+    birthday: Palju õnne sünnipäevaks
+  weather:
+    meters: '{amount} meetrit'
+    extra_information: Lisainfo
+    feels_like: Tundub nagu {amount}
+    not_found: Ei leitud
+  background:
+    credit: Foto autor
+    unsplash: Unsplashis
+    information: Informatsioon
+    download: Lae alla
+    downloads: Allalaadimised
+    views: Vaatamised
+    likes: Meeldimised
+    location: Asukoht
+    camera: Kaamera
+    resolution: Resolutsioon
+    source: Allikas
+    category: Kategooria
+    exclude: Ära näita enam
+    exclude_confirm: "Kas olete kindel, et te ei soovi seda pilti enam näha?\nMärkus:
+      kui teile ei meeldi \"{category}\" pildid, saate kategooria taustaallika seadetest
+      eemaldada."
+    confirm: Kinnita
+  search: Otsi
+  quicklinks:
+    new: Uus link
+    edit: Muuda linki
+    name: Nimi
+    url: URL
+    icon: Ikoon (valikuline)
+    add: Lisa
+    name_error: Nimi peab olema täidetud
+    url_error: URL peab olema täidetud
+  date:
+    week: Nädal
+  quote:
+    link_tooltip: Ava Wikipedias
+    share: Jaga
+    copy: Kopeeri
+    favourite: Lisa lemmikuks
+    unfavourite: Eemalda lemmikutest
+  navbar:
+    tooltips:
+      refresh: Värskenda
+    notes:
+      title: Märkmed
+      placeholder: Kirjuta siia
+    todo:
+      title: Ülesanded
+      pin: Kinnita
+      add: Lisa
+      no_todos: Ülesandeid pole
+    apps:
+      title: Rakendused
+      no_apps: Rakenduse linke ei leitud
+toasts:
+  no_storage: Mälumaht ei ole piisav
+  link_copied: Link kopeeritud
+  stats_reset: Statistika lähtestatud
+  quote: Tsitaat kopeeritud
+  notes: Märkmed kopeeritud
+  reset: Lähtestamine õnnestus
+  installed: Edukalt installitud
+  updated: Edukalt uuendatud
+  error: Midagi läks valesti
+  uninstalled: Edukalt eemaldatud
+  imported: Edukalt imporditud
+modals:
+  main:
+    title: Valikud
+    loading: Laadimine...
+    file_upload_error: Fail on üle 2MB
+    navbar:
+      settings: Seaded
+      addons: Teek
+      marketplace: Avasta
+    error_boundary:
+      title: Viga
+      message: Mue komponendi laadimine ebaõnnestus
+      report_error: Saada veaaruanne
+      sent: Saadetud!
+      refresh: Värskenda
+  update:
+    title: Uuenda
+    offline:
+      title: Võrguühenduseta
+      description: Võrguühenduseta režiimis ei saa uuenduste logisid hankida
+    error:
+      title: Viga
+      description: Serveriga ei õnnestunud ühendust luua
+  share:
+    copy_link: Kopeeri link
+    email: E-post
