@@ -1,1 +1,103 @@
-{}
+widgets:
+  greeting:
+    christmas: Priecīgus Ziemassvētkus
+    newyear: Laimīgu Jauno gadu
+    halloween: Priecīgus Helovīnus
+    afternoon: Labdien
+    morning: Labrīt
+    evening: Labvakar
+    birthday: Daudz laimes dzimšanas dienā
+  background:
+    credit: Fotogrāfijas autors
+    unsplash: Unsplash
+    information: Informācija
+    download: Lejupielādēt
+    downloads: Lejupielādes
+    views: Skatījumi
+    likes: Patīk
+    confirm: Apstiprināt
+    location: Atrašanās vieta
+    resolution: Izšķirtspēja
+    source: Avots
+    category: Kategorija
+    camera: Kamera
+    exclude: Nerādīt vairs
+    exclude_confirm: "Vai tiešām nevēlaties vairs redzēt šo attēlu?\nPiezīme: ja jums
+      nepatīk \"{category}\" attēli, varat atcelt šīs kategorijas izvēli fona avota
+      iestatījumos."
+  search: Meklēt
+  quicklinks:
+    new: Jauna saite
+    edit: Rediģēt saiti
+    name: Nosaukums
+    url: URL
+    icon: Ikona (neobligāti)
+    add: Pievienot
+    name_error: Jānorāda nosaukums
+    url_error: Jānorāda URL
+  date:
+    week: Nedēļa
+  weather:
+    not_found: Nav atrasts
+    meters: '{amount} metri'
+    extra_information: Papildu informācija
+    feels_like: Pēc sajūtām {amount}
+  navbar:
+    todo:
+      pin: Piespraust
+      title: Darāmo lietu saraksts
+      add: Pievienot
+      no_todos: Nav darāmo lietu
+    tooltips:
+      refresh: Atsvaidzināt
+    notes:
+      placeholder: Rakstiet šeit
+      title: Piezīmes
+    apps:
+      title: Lietotnes
+      no_apps: Nav atrasta neviena lietotnes saite
+  quote:
+    link_tooltip: Atvērt Vikipēdijā
+    share: Dalīties
+    copy: Kopēt
+    favourite: Pievienot izlasei
+    unfavourite: Noņemt no izlases
+modals:
+  main:
+    navbar:
+      settings: Iestatījumi
+      addons: Bibliotēka
+      marketplace: Atklājiet
+    error_boundary:
+      title: Kļūda
+      message: Neizdevās ielādēt šo Mue komponentu
+      report_error: Nosūtīt kļūdas ziņojumu
+      sent: Nosūtīts!
+      refresh: Atsvaidzināt
+    title: Opcijas
+    loading: Ielāde...
+    file_upload_error: Fails pārsniedz 2MB
+  share:
+    email: E-pasts
+    copy_link: Kopēt saiti
+  update:
+    error:
+      description: Nevarēja izveidot savienojumu ar serveri
+      title: Kļūda
+    title: Atjaunināt
+    offline:
+      title: Bezsaistē
+      description: Nevar iegūt atjauninājumu žurnālus bezsaistes režīmā
+toasts:
+  error: Kaut kas nogāja greizi
+  imported: Veiksmīgi importēts
+  no_storage: Nepietiek atmiņas
+  link_copied: Saite nokopēta
+  quote: Citāts nokopēts
+  notes: Piezīmes nokopētas
+  reset: Veiksmīgi atiestatīts
+  installed: Veiksmīgi instalēts
+  uninstalled: Veiksmīgi noņemts
+  updated: Veiksmīgi atjaunināts
+  stats_reset: Statistika atiestatīta
+tabname: Jauna cilne
