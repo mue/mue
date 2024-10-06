@@ -1,702 +1,702 @@
 {
-  "tabname": "New Tab",
-  "widgets": {
-    "greeting": {
-      "morning": "Good Morning",
-      "afternoon": "Good Afternoon",
-      "evening": "Good Evening",
-      "christmas": "Merry Christmas",
-      "newyear": "Happy New Year",
-      "halloween": "Happy Halloween",
-      "birthday": "Happy Birthday"
-    },
-    "background": {
-      "credit": "Photo by",
-      "unsplash": "on Unsplash",
-      "information": "Information",
-      "download": "Download",
-      "downloads": "Downloads",
-      "views": "Views",
-      "likes": "Likes",
-      "location": "Location",
-      "camera": "Camera",
-      "resolution": "Resolution",
-      "source": "Source",
-      "category": "Category",
-      "exclude": "Don't show again",
-      "exclude_confirm": "Are you sure you don't want to see this image again?\nNote: if you don't like \"{category}\" images, you can deselect the category in the background source settings.",
-      "confirm": "Confirm"
-    },
-    "search": "Search",
-    "quicklinks": {
-      "new": "New Link",
-      "edit": "Edit Link",
-      "name": "Name",
-      "url": "URL",
-      "icon": "Icon (optional)",
-      "add": "Add",
-      "name_error": "Must provide name",
-      "url_error": "Must provide URL"
-    },
-    "date": {
-      "week": "Week"
-    },
-    "weather": {
-      "not_found": "Not Found",
-      "meters": "{amount} metres",
-      "extra_information": "Extra Information",
-      "feels_like": "Feels like {amount}"
-    },
-    "quote": {
-      "link_tooltip": "Open on Wikipedia",
-      "share": "Share",
-      "copy": "Copy",
-      "favourite": "Favourite",
-      "unfavourite": "Unfavourite"
-    },
-    "navbar": {
-      "tooltips": {
-        "refresh": "Refresh"
-      },
-      "notes": {
-        "title": "Notes",
-        "placeholder": "Type here"
-      },
-      "todo": {
-        "title": "Todo",
-        "pin": "Pin",
-        "add": "Add",
-        "no_todos": "No Todos"
-      },
-      "apps": {
-        "title": "Apps",
-        "no_apps": "No app links found"
-      }
-    }
-  },
   "modals": {
     "main": {
-      "title": "Options",
-      "loading": "Loading...",
-      "file_upload_error": "File is over 2MB",
-      "navbar": {
-        "settings": "Settings",
-        "addons": "Add-ons",
-        "marketplace": "Marketplace"
-      },
-      "error_boundary": {
-        "title": "Error",
-        "message": "Failed to load this component of Mue",
-        "report_error": "Send Error Report",
-        "sent": "Sent!",
-        "refresh": "Refresh"
-      },
-      "settings": {
-        "enabled": "Enabled",
-        "open_knowledgebase": "Open Knowledgebase",
-        "additional_settings": "Additional Settings",
-        "reminder": {
-          "title": "NOTICE",
-          "message": "In order for all of the changes to take place, the page must be refreshed."
-        },
-        "sections": {
-          "header": {
-            "more_info": "More info",
-            "report_issue": "Report Issue",
-            "enabled": "Choose whether or not to show this widget",
-            "size": "Slider to control how large the widget is"
-          },
-          "time": {
-            "title": "Time",
-            "format": "Format",
-            "type": "Type",
-            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
-            "digital": {
-              "title": "Digital",
-              "subtitle": "Change how the digital clock looks",
-              "seconds": "Seconds",
-              "twentyfourhour": "24 Hour",
-              "twelvehour": "12 hour",
-              "zero": "Zero-padded"
-            },
-            "analogue": {
-              "title": "Analogue",
-              "subtitle": "Change how the analogue clock looks",
-              "second_hand": "Seconds hand",
-              "minute_hand": "Minutes hand",
-              "hour_hand": "Hours hand",
-              "hour_marks": "Hour marks",
-              "minute_marks": "Minute marks",
-              "round_clock": "Rounded background"
-            },
-            "percentage_complete": "Percentage complete",
-            "vertical_clock": {
-              "title": "Vertical Clock",
-              "change_hour_colour": "Change hour text colour",
-              "change_minute_colour": "Change minute text colour",
-              "change_second_colour": "Change second text colour"
-            }
-          },
-          "date": {
-            "title": "Date",
-            "week_number": "Week number",
-            "day_of_week": "Day of week",
-            "datenth": "Date nth",
-            "type": {
-              "short": "Short",
-              "long": "Long",
-              "subtitle": "Whether to display the date in long form or short form"
-            },
-            "type_settings": "Display settings and format for the selected date type",
-            "short_date": "Short date",
-            "short_format": "Short format",
-            "long_format": "Long format",
-            "short_separator": {
-              "title": "Short separator",
-              "dots": "Dots",
-              "dash": "Dash",
-              "gaps": "Gaps",
-              "slashes": "Slashes"
-            }
-          },
-          "quote": {
-            "title": "Quote",
-            "additional": "Other settings to customise the style of the quote widget",
-            "author_link": "Author link",
-            "custom": "Custom quote",
-            "custom_subtitle": "Set your own custom quotes",
-            "no_quotes": "No quotes",
-            "author": "Author",
-            "custom_buttons": "Buttons",
-            "custom_author": "Custom author",
-            "author_img": "Show author image",
-            "add": "Add quote",
-            "source_subtitle": "Choose where to get quotes from",
-            "buttons": {
-              "title": "Buttons",
-              "subtitle": "Choose which buttons to show on the quote",
-              "copy": "Copy",
-              "tweet": "Tweet",
-              "favourite": "Favourite"
-            }
-          },
-          "greeting": {
-            "title": "Greeting",
-            "events": "Events",
-            "events_description": "Control events on Mue such as birthdays.",
-            "enable_events": "Show messages on special days",
-            "default": "Default greeting message",
-            "name": "Name for greeting",
-            "birthday": "Birthday",
-            "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
-            "birthday_age": "Birthday age",
-            "birthday_date": "Birthday date",
-            "additional": "Settings for the greeting display",
-            "custom": "Custom events",
-            "event_name": "Event Name",
-            "day": "Day",
-            "month": "Month",
-            "no_events": "No Events",
-            "no_events_description": "Add Some Events",
-            "add_event": "Add Event"
-          },
-          "background": {
-            "title": "Background",
-            "transition": "Fade-in transition",
-            "photo_information": "Show photo information",
-            "show_map": "Show location map on photo information if available",
-            "categories": "Categories",
-            "buttons": {
-              "title": "Buttons",
-              "view": "Maximise",
-              "favourite": "Favourite",
-              "download": "Download"
-            },
-            "effects": {
-              "title": "Effects",
-              "subtitle": "Add effects to the background images",
-              "blur": "Adjust blur",
-              "brightness": "Adjust brightness",
-              "filters": {
-                "title": "Background filter",
-                "amount": "Filter amount",
-                "grayscale": "Grayscale",
-                "sepia": "Sepia",
-                "invert": "Invert",
-                "saturate": "Saturate",
-                "contrast": "Contrast"
-              }
-            },
-            "type": {
-              "title": "Type",
-              "api": "API",
-              "custom_image": "Custom image",
-              "custom_colour": "Custom colour/gradient",
-              "random_colour": "Random colour",
-              "random_gradient": "Random gradient"
-            },
-            "unsplash": {
-              "title": "Unsplash Collection(s)",
-              "subtitle": "Select the collection(s) you want to use for your background",
-              "id": "Collection ID(s)",
-              "id_subtitle": "Enter a comma separated list of Unsplash IDs"
-            },
-            "source": {
-              "title": "Source",
-              "subtitle": "Select where to get background images from",
-              "api": "Background API",
-              "custom_background": "Custom background",
-              "custom_colour": "Custom background colour",
-              "upload": "Upload",
-              "add_colour": "Add colour",
-              "add_background": "Add background",
-              "drop_to_upload": "Drop to upload",
-              "formats": "Available formats: {list}",
-              "select": "Or Select",
-              "add_url": "Add URL",
-              "disabled": "Disabled",
-              "loop_video": "Loop video",
-              "mute_video": "Mute video",
-              "quality": {
-                "title": "Quality",
-                "original": "Original",
-                "high": "High Quality",
-                "normal": "Normal Quality",
-                "datasaver": "Data Saver"
-              },
-              "custom_title": "Custom Images",
-              "custom_description": "Select images from your local computer",
-              "remove": "Remove Image"
-            },
-            "display": "Display",
-            "display_subtitle": "Change how background and photo information are loaded",
-            "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)"
-          },
-          "search": {
-            "title": "Search",
-            "additional": "Additional options for search widget display and functionality",
-            "search_engine": "Search Engine",
-            "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "custom": "Custom Search URL",
-            "autocomplete": "Autocomplete",
-            "autocomplete_provider": "Autocomplete Provider",
-            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
-            "voice_search": "Voice search",
-            "dropdown": "Search Dropdown",
-            "focus": "Focus on tab open"
-          },
-          "weather": {
-            "title": "Weather",
-            "location": "Location",
-            "auto": "Auto",
-            "widget_type": "Widget Type",
-            "temp_format": {
-              "title": "Temperature format",
-              "celsius": "Celsius",
-              "fahrenheit": "Fahrenheit",
-              "kelvin": "Kelvin"
-            },
-            "extra_info": {
-              "title": "Extra information",
-              "show_location": "Show location",
-              "show_description": "Show description",
-              "weather_description": "Weather description",
-              "cloudiness": "Cloudiness",
-              "humidity": "Humidity",
-              "visibility": "Visibility",
-              "wind_speed": "Wind speed",
-              "wind_direction": "Wind direction",
-              "min_temp": "Minimum temperature",
-              "max_temp": "Maximum temperature",
-              "atmospheric_pressure": "Atmospheric pressure"
-            },
-            "options": {
-              "basic": "Basic",
-              "standard": "Standard",
-              "expanded": "Expanded",
-              "custom": "Custom"
-            },
-            "custom_settings": "Custom Settings"
-          },
-          "quicklinks": {
-            "title": "Quick Links",
-            "additional": "Additional settings for quick links display and functions",
-            "open_new": "Open in new tab",
-            "tooltip": "Tooltip",
-            "text_only": "Show text only",
-            "add_link": "Add Link",
-            "no_quicklinks": "No quick links",
-            "edit": "Edit",
-            "style": "Style",
-            "options": {
-              "icon": "Icon",
-              "text_only": "Text Only",
-              "metro": "Metro"
-            },
-            "styling": "Styling",
-            "styling_description": "Customise Quick Links appearance"
-          },
-          "message": {
-            "title": "Message",
-            "add": "Add message",
-            "messages": "Messages",
-            "text": "Text",
-            "no_messages": "No messages",
-            "add_some": "Go ahead and add some.",
-            "content": "Message Content"
-          },
-          "appearance": {
-            "title": "Appearance",
-            "style": {
-              "title": "Widget Style",
-              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
-              "legacy": "Legacy",
-              "new": "New"
-            },
-            "theme": {
-              "title": "Theme",
-              "description": "Change the theme of the Mue widgets and modals",
-              "auto": "Auto",
-              "light": "Light",
-              "dark": "Dark"
-            },
-            "navbar": {
-              "title": "Navbar",
-              "widgets": "Navbar Widgets",
-              "notes": "Notes",
-              "refresh": "Refresh",
-              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
-              "hover": "Only display on hover",
-              "additional": "Modify navbar style and which buttons you want to display",
-              "refresh_options": {
-                "none": "None",
-                "page": "Page"
-              },
-              "apps_subtitle": "Create a shortcut of your other commonly used websites."
-            },
-            "font": {
-              "title": "Font",
-              "description": "Change the font used in Mue",
-              "custom": "Custom font",
-              "google": "Import from Google Fonts",
-              "weight": {
-                "title": "Font weight",
-                "thin": "Thin",
-                "extra_light": "Extra Light",
-                "light": "Light",
-                "normal": "Normal",
-                "medium": "Medium",
-                "semi_bold": "Semi-Bold",
-                "bold": "Bold",
-                "extra_bold": "Extra-Bold"
-              },
-              "style": {
-                "title": "Font style",
-                "normal": "Normal",
-                "italic": "Italic",
-                "oblique": "Oblique"
-              }
-            },
-            "accessibility": {
-              "title": "Accessibility",
-              "description": "Make Mue comfortable and accessible",
-              "animations": "Animations",
-              "text_shadow": {
-                "title": "Widget text shadow",
-                "new": "New",
-                "old": "Old",
-                "none": "None"
-              },
-              "widget_zoom": "Widget Zoom",
-              "toast_duration": "Toast Duration",
-              "milliseconds": "milliseconds"
-            }
-          },
-          "order": {
-            "title": "Widget Order"
-          },
-          "advanced": {
-            "title": "Advanced",
-            "offline_mode": "Offline mode",
-            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
-            "data": "Data",
-            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
-            "data_subtitle": "Manage your data on Mue.",
-            "reset_modal": {
-              "title": "WARNING",
-              "question": "Do you want to reset Mue?",
-              "information": "This will delete all data. If you wish to keep your data and preferences, please export them first.",
-              "cancel": "Cancel"
-            },
-            "customisation": "Customisation",
-            "custom_css": "Custom CSS",
-            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
-            "custom_js": "Custom JS",
-            "tab_name": "Tab name",
-            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
-            "timezone": {
-              "title": "Time Zone",
-              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
-              "automatic": "Automatic"
-            },
-            "experimental_warning": "Please note that the Mue team cannot provide support if you have experimental mode on. Please disable it first and see if the issue continues to occur before contacting support.",
-            "preview_data_disabled": {
-              "title": "Data Settings Disabled",
-              "description": "Data settings are disabled in preview mode. Please exit preview mode to use this feature."
-            }
-          },
-          "stats": {
-            "title": "Stats",
-            "sections": {
-              "tabs_opened": "Tabs opened",
-              "backgrounds_favourited": "Backgrounds favourited",
-              "backgrounds_downloaded": "Backgrounds downloaded",
-              "quotes_favourited": "Quotes favourited",
-              "quicklinks_added": "Quicklinks added",
-              "settings_changed": "Settings changed",
-              "addons_installed": "Add-ons installed"
-            },
-            "usage": "Usage Stats",
-            "achievements": "Achievements",
-            "achievement_unlocked": "Achievement Unlocked: {name}",
-            "unlocked": "{count} Unlocked",
-            "locked": "Locked",
-            "clear_modal": {
-              "question": "Do you want to clear your stats?",
-              "information": "This will clear all achievements and usage statistics."
-            }
-          },
-          "experimental": {
-            "title": "Experimental",
-            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
-            "developer": "Developer"
-          },
-          "language": {
-            "title": "Language",
-            "quote": "Quote language"
-          },
-          "changelog": {
-            "title": "Change Log",
-            "by": "By {author}"
-          },
-          "about": {
-            "title": "About",
-            "version": {
-              "title": "Version",
-              "checking_update": "Checking for update",
-              "update_available": "Update available",
-              "no_update": "No update available",
-              "offline_mode": "Cannot check for update in offline mode",
-              "error": {
-                "title": "Failed to get update information",
-                "description": "An error occured"
-              }
-            },
-            "contact_us": "Contact Us",
-            "support_mue": "Support Mue",
-            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
-            "support_donate": "Donate",
-            "form_button": "Form",
-            "resources_used": {
-              "title": "Resources used",
-              "bg_images": "Offline background images"
-            },
-            "contributors": "Contributors",
-            "supporters": "Supporters",
-            "no_supporters": "There are currently no Mue supporters",
-            "photographers": "Photographers",
-            "curators": "Add-on creators"
-          }
-        },
-        "buttons": {
-          "reset": "Reset",
-          "import": "Import",
-          "export": "Export"
-        }
-      },
-      "marketplace": {
-        "by": "by {author}",
-        "all": "All",
-        "learn_more": "Learn More",
-        "photo_packs": "Photo Packs",
-        "quote_packs": "Quote Packs",
-        "preset_settings": "Preset Settings",
-        "no_items": "No items in this category",
-        "collection": "Collection",
-        "explore_collection": "Explore Collection",
-        "add_all": "Add All To Mue",
-        "collections": "Collections",
-        "cant_find": "Can't find what you're looking for?",
-        "knowledgebase_one": "Visit the",
-        "knowledgebase_two": "knowledgebase",
-        "knowledgebase_three": "to create your own.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Overview",
-          "information": "Information",
-          "last_updated": "Last Updated",
-          "description": "Description",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Show More",
-          "show_less": "Show Less",
-          "show_all": "Show All",
-          "showing": "Showing",
-          "no_images": "No. Images",
-          "no_quotes": "No. Quotes",
-          "version": "Version",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Part of",
-          "explore": "Explore",
-          "buttons": {
-            "addtomue": "Add To Mue",
-            "remove": "Remove",
-            "update_addon": "Update Add-on",
-            "back": "Back",
-            "report": "Report",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Setting",
-          "value": "Value"
-        },
-        "offline": {
-          "title": "Looks like you're offline",
-          "description": "Please connect to the internet"
-        }
-      },
       "addons": {
-        "added": "Added",
-        "check_updates": "Check for updates",
-        "no_updates": "No updates available",
-        "updates_available": "Updates available {amount}",
-        "empty": {
-          "title": "Empty",
-          "description": "No addons are installed"
+        "added": "Dodano",
+        "check_updates": "Preveri posodobitve",
+        "create": {
+          "moved_button": "Kmalu na voljo...",
+          "moved_description": "Po posodobitvi 7.1 se je ustvarjanje dodatkov preselilo v spletni vmesnik",
+          "moved_title": "Ustvarjanje dodatka je bilo premaknjeno!",
+          "title": "Ustvari"
         },
+        "empty": {
+          "description": "Ni nameščenih dodatkov",
+          "title": "Prazno"
+        },
+        "no_updates": "Ni na voljo posodobitev",
         "sideload": {
-          "title": "Sideload",
-          "description": "Install a Mue addon not on the marketplace from your computer",
-          "failed": "Failed to sideload addon",
+          "description": "Namestite dodatek Mue, ki ni na tržnici, iz svojega računalnika",
           "errors": {
-            "no_name": "No name provided",
-            "no_author": "No author provided",
-            "no_type": "No type provided",
-            "invalid_photos": "Invalid photos object",
-            "invalid_quotes": "Invalid quotes object"
-          }
+            "invalid_photos": "Neveljaven objekt fotografij",
+            "invalid_quotes": "Neveljaven objekt citatov",
+            "no_author": "Ni navedenega avtorja",
+            "no_name": "Ni navedenega imena",
+            "no_type": "Ni navedenega tipa"
+          },
+          "failed": "Ni uspelo stransko naložiti dodatka",
+          "title": "Stransko naloži"
         },
         "sort": {
-          "title": "Sort",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
-          "a_z": "Alphabetical (A-Z)",
-          "z_a": "Alphabetical (Z-A)"
+          "a_z": "Abecedno (A-Ž)",
+          "newest": "Nameščeno (najnovejše)",
+          "oldest": "Nameščeno (najstarejše)",
+          "title": "Razvrsti",
+          "z_a": "Abecedno (Ž-A)"
         },
-        "create": {
-          "title": "Create",
-          "moved_title": "Create add-on has moved!",
-          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_button": "Coming Soon...."
-        }
-      }
-    },
-    "update": {
-      "title": "Update",
-      "offline": {
-        "title": "Offline",
-        "description": "Cannot get update logs while in offline mode"
+        "updates_available": "Posodobitve na voljo {amount}"
       },
-      "error": {
-        "title": "Error",
-        "description": "Could not connect to the server"
-      }
-    },
-    "welcome": {
-      "tip": "Quick Tip",
-      "sections": {
-        "intro": {
-          "title": "Welcome to Mue Tab",
-          "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
-          "notices": {
-            "discord_title": "Join our Discord",
-            "discord_description": "Talk with the Mue community and developers",
-            "discord_join": "Join",
-            "github_title": "Contribute on GitHub",
-            "github_description": "Report bugs, add features or donate",
-            "github_open": "Open"
+      "error_boundary": {
+        "message": "Ni uspelo naložiti te komponente Mue",
+        "refresh": "Osveži",
+        "report_error": "Pošlji poročilo o napaki",
+        "sent": "Poslano!",
+        "title": "Napaka"
+      },
+      "file_upload_error": "Datoteka je večja od 2 MB",
+      "loading": "Nalaganje...",
+      "marketplace": {
+        "add_all": "Dodaj vse v Mue",
+        "all": "Vse",
+        "by": "avtor {author}",
+        "cant_find": "Ne najdete, kar iščete?",
+        "collection": "Zbirka",
+        "collections": "Zbirke",
+        "explore_collection": "Raziskuj zbirko",
+        "installing": "Nameščanje",
+        "knowledgebase_one": "Obiščite",
+        "knowledgebase_three": "za ustvarjanje lastnih.",
+        "knowledgebase_two": "bazo znanja",
+        "learn_more": "Več informacij",
+        "no_items": "V tej kategoriji ni elementov",
+        "offline": {
+          "description": "Prosimo, povežite se z internetom",
+          "title": "Videti je, da ste brez povezave"
+        },
+        "photo_packs": "Paketi fotografij",
+        "preset_settings": "Prednastavljene nastavitve",
+        "product": {
+          "buttons": {
+            "addtomue": "Dodaj v Mue",
+            "back": "Nazaj",
+            "not_available_preview": "Ni na voljo v predogledu",
+            "remove": "Odstrani",
+            "report": "Prijavi",
+            "update_addon": "Posodobi dodatek"
+          },
+          "created_by": "Ustvaril",
+          "description": "Opis",
+          "details": "Podrobnosti",
+          "explore": "Raziskuj",
+          "information": "Informacije",
+          "last_updated": "Zadnja posodobitev",
+          "more_from_curator": "Več takšnih od {name}",
+          "no_images": "Št. slik",
+          "no_quotes": "Št. citatov",
+          "not_in_language": "Ta dodatek ni v vašem jeziku",
+          "overview": "Pregled",
+          "part_of": "Del",
+          "setting": "Nastavitev",
+          "show_all": "Prikaži vse",
+          "show_less": "Prikaži manj",
+          "show_more": "Prikaži več",
+          "showing": "Prikazujem",
+          "sideload_warning": "Ta dodatek je bil stransko naložen.",
+          "third_party_api": "Ta dodatek uporablja API tretje osebe",
+          "updated_at": "Posodobljeno dne",
+          "value": "Vrednost",
+          "version": "Različica"
+        },
+        "quote_packs": "Paketi citatov"
+      },
+      "navbar": {
+        "addons": "Dodatki",
+        "marketplace": "Tržnica",
+        "settings": "Nastavitve"
+      },
+      "settings": {
+        "additional_settings": "Dodatne nastavitve",
+        "buttons": {
+          "export": "Izvozi",
+          "import": "Uvozi",
+          "reset": "Ponastavi"
+        },
+        "enabled": "Omogočeno",
+        "open_knowledgebase": "Odpri bazo znanja",
+        "reminder": {
+          "message": "Za uveljavitev vseh sprememb je potrebno osvežiti stran.",
+          "title": "OPOMNIK"
+        },
+        "sections": {
+          "about": {
+            "contact_us": "Kontaktirajte nas",
+            "contributors": "Sodelavci",
+            "curators": "Ustvarjalci dodatkov",
+            "form_button": "Obrazec",
+            "no_supporters": "Trenutno ni podpornikov Mue",
+            "photographers": "Fotografi",
+            "resources_used": {
+              "bg_images": "Ozadne slike brez povezave",
+              "title": "Uporabljeni viri"
+            },
+            "support_donate": "Doniraj",
+            "support_mue": "Podprite Mue",
+            "support_subtitle": "Ker je Mue popolnoma brezplačen, se zanašamo na donacije za kritje stroškov strežnika in financiranje razvoja",
+            "supporters": "Podporniki",
+            "title": "O nas",
+            "version": {
+              "checking_update": "Preverjanje posodobitve",
+              "error": {
+                "description": "Prišlo je do napake",
+                "title": "Ni uspelo pridobiti informacij o posodobitvi"
+              },
+              "no_update": "Ni na voljo posodobitev",
+              "offline_mode": "V načinu brez povezave ni mogoče preveriti posodobitve",
+              "title": "Različica",
+              "update_available": "Posodobitev na voljo"
+            }
+          },
+          "advanced": {
+            "custom_css": "Lastni CSS",
+            "custom_css_subtitle": "Naredite Mue stil prilagojen vam s kaskadnimi slogi (CSS).",
+            "custom_js": "Lastni JS",
+            "customisation": "Prilagajanje",
+            "data": "Podatki",
+            "data_description": "Izberite, ali želite izvoziti nastavitve Mue na svoj računalnik, uvoziti obstoječo datoteko nastavitev ali ponastaviti nastavitve na privzete vrednosti",
+            "data_subtitle": "Upravljajte svoje podatke na Mue.",
+            "experimental_warning": "Upoštevajte, da ekipa Mue ne more nuditi podpore, če imate vklopljen eksperimentalni način. Prosimo, najprej ga onemogočite in preverite, ali se težava še vedno pojavlja, preden stopite v stik s podporo.",
+            "offline_mode": "Način brez povezave",
+            "offline_subtitle": "Ko je omogočen, bodo vse zahteve do spletnih storitev onemogočene.",
+            "preview_data_disabled": {
+              "description": "Nastavitve podatkov so onemogočene v načinu predogleda. Prosimo, zapustite način predogleda za uporabo te funkcije.",
+              "title": "Nastavitve podatkov onemogočene"
+            },
+            "reset_modal": {
+              "cancel": "Prekliči",
+              "information": "To bo izbrisalo vse podatke. Če želite obdržati svoje podatke in nastavitve, jih najprej izvozite.",
+              "question": "Ali želite ponastaviti Mue?",
+              "title": "OPOZORILO"
+            },
+            "tab_name": "Ime zavihka",
+            "tab_name_subtitle": "Spremenite ime zavihka, ki se prikaže v vašem brskalniku",
+            "timezone": {
+              "automatic": "Samodejno",
+              "subtitle": "Izberite časovni pas s seznama namesto samodejnega privzetega iz vašega računalnika",
+              "title": "Časovni pas"
+            },
+            "title": "Napredno"
+          },
+          "appearance": {
+            "accessibility": {
+              "animations": "Animacije",
+              "description": "Naredite Mue udoben in dostopen",
+              "milliseconds": "milisekunde",
+              "text_shadow": {
+                "new": "Nova",
+                "none": "Brez",
+                "old": "Stara",
+                "title": "Senca besedila pripomočka"
+              },
+              "title": "Dostopnost",
+              "toast_duration": "Trajanje obvestila",
+              "widget_zoom": "Povečava pripomočka"
+            },
+            "font": {
+              "custom": "Lastna pisava",
+              "description": "Spremenite pisavo, ki se uporablja v Mue",
+              "google": "Uvozi iz Google Pisav",
+              "style": {
+                "italic": "Ležeče",
+                "normal": "Normalno",
+                "oblique": "Poševno",
+                "title": "Slog pisave"
+              },
+              "title": "Pisava",
+              "weight": {
+                "bold": "Krepka",
+                "extra_bold": "Zelo krepka",
+                "extra_light": "Zelo svetla",
+                "light": "Svetla",
+                "medium": "Srednja",
+                "normal": "Normalna",
+                "semi_bold": "Polkrepka",
+                "thin": "Tanka",
+                "title": "Debelina pisave"
+              }
+            },
+            "navbar": {
+              "additional": "Spremenite slog navigacijske vrstice in katere gumbe želite prikazati",
+              "apps_subtitle": "Ustvarite bližnjico do drugih pogosto uporabljenih spletnih mest.",
+              "hover": "Prikaži samo ob prehodu miške",
+              "notes": "Opombe",
+              "refresh": "Osveži",
+              "refresh_options": {
+                "none": "Nič",
+                "page": "Stran"
+              },
+              "refresh_subtitle": "Izberite, kaj se osveži, ko kliknete gumb za osvežitev",
+              "title": "Navigacijska vrstica",
+              "widgets": "Pripomočki navigacijske vrstice"
+            },
+            "style": {
+              "description": "Izberite med dvema slogoma, zapuščena (omogočena za uporabnike pred 7.0) in naša moderna elegantna oblika.",
+              "legacy": "Zapuščena",
+              "new": "Nova",
+              "title": "Slog pripomočka"
+            },
+            "theme": {
+              "auto": "Samodejno",
+              "dark": "Temna",
+              "description": "Spremenite temo pripomočkov in modala Mue",
+              "light": "Svetla",
+              "title": "Tema"
+            },
+            "title": "Videz"
+          },
+          "background": {
+            "api": "API nastavitve",
+            "api_subtitle": "Možnosti za pridobivanje slike iz zunanje storitve (API)",
+            "buttons": {
+              "download": "Prenesi",
+              "favourite": "Priljubljeno",
+              "title": "Gumbi",
+              "view": "Povečaj"
+            },
+            "categories": "Kategorije",
+            "display": "Prikaz",
+            "display_subtitle": "Spremenite, kako se ozadje in informacije o fotografiji nalagajo",
+            "effects": {
+              "blur": "Nastavi zamegljenost",
+              "brightness": "Nastavi svetlost",
+              "filters": {
+                "amount": "Količina filtra",
+                "contrast": "Kontrast",
+                "grayscale": "Črno-belo",
+                "invert": "Inverzija",
+                "saturate": "Nasičenost",
+                "sepia": "Sepija",
+                "title": "Filter ozadja"
+              },
+              "subtitle": "Dodajte učinke slikam ozadja",
+              "title": "Učinki"
+            },
+            "photo_information": "Prikaži informacije o fotografiji",
+            "show_map": "Prikaži zemljevid lokacije na informacijah o fotografiji, če je na voljo",
+            "source": {
+              "add_background": "Dodaj ozadje",
+              "add_colour": "Dodaj barvo",
+              "add_url": "Dodaj URL",
+              "api": "API za ozadje",
+              "custom_background": "Lastno ozadje",
+              "custom_colour": "Lastna barva ozadja",
+              "custom_description": "Izberite slike iz svojega računalnika",
+              "custom_title": "Lastne slike",
+              "disabled": "Onemogočeno",
+              "drop_to_upload": "Spustite za nalaganje",
+              "formats": "Razpoložljivi formati: {list}",
+              "loop_video": "Ponovi video",
+              "mute_video": "Utišaj video",
+              "quality": {
+                "datasaver": "Varčevalec podatkov",
+                "high": "Visoka kakovost",
+                "normal": "Normalna kakovost",
+                "original": "Izvirnik",
+                "title": "Kakovost"
+              },
+              "remove": "Odstrani sliko",
+              "select": "Ali izberite",
+              "subtitle": "Izberite, od kod želite pridobiti slike ozadja",
+              "title": "Vir",
+              "upload": "Naloži"
+            },
+            "title": "Ozadje",
+            "transition": "Prehod zbledi",
+            "type": {
+              "api": "API",
+              "custom_colour": "Lastna barva/gradient",
+              "custom_image": "Lastna slika",
+              "random_colour": "Naključna barva",
+              "random_gradient": "Naključni gradient",
+              "title": "Tip"
+            },
+            "unsplash": {
+              "id": "ID zbirke",
+              "id_subtitle": "Vnesite ločen z vejico seznam ID-jev Unsplash",
+              "subtitle": "Izberite zbirke, ki jih želite uporabiti za svoje ozadje",
+              "title": "Unsplash zbirke"
+            }
+          },
+          "changelog": {
+            "by": "Avtor {author}",
+            "title": "Dnevnik sprememb"
+          },
+          "date": {
+            "datenth": "Datum nth",
+            "day_of_week": "Dan v tednu",
+            "long_format": "Dolga oblika",
+            "short_date": "Kratki datum",
+            "short_format": "Kratka oblika",
+            "short_separator": {
+              "dash": "Vejica",
+              "dots": "Pike",
+              "gaps": "Presledki",
+              "slashes": "Poševnice",
+              "title": "Kratko ločilo"
+            },
+            "title": "Datum",
+            "type": {
+              "long": "Dolgo",
+              "short": "Kratko",
+              "subtitle": "Ali želite prikazati datum v dolgi ali kratki obliki"
+            },
+            "type_settings": "Prikazne nastavitve in oblika za izbrani tip datuma",
+            "week_number": "Številka tedna"
+          },
+          "experimental": {
+            "developer": "Razvijalec",
+            "title": "Eksperimentalno",
+            "warning": "Te nastavitve niso bile popolnoma preizkušene/implementirane in morda ne bodo delovale pravilno!"
+          },
+          "greeting": {
+            "add_event": "Dodaj dogodek",
+            "additional": "Nastavitve za prikaz pozdrava",
+            "birthday": "Rojstni dan",
+            "birthday_age": "Starost na rojstni dan",
+            "birthday_date": "Datum rojstnega dne",
+            "birthday_subtitle": "Prikaži sporočilo Vse najboljše, ko je tvoj rojstni dan",
+            "custom": "Lastni dogodki",
+            "day": "Dan",
+            "default": "Privzeto pozdravno sporočilo",
+            "enable_events": "Prikaži sporočila na posebne dneve",
+            "event_name": "Ime dogodka",
+            "events": "Dogodki",
+            "events_description": "Nadzorujte dogodke na Mue, kot so rojstni dnevi.",
+            "month": "Mesec",
+            "name": "Ime za pozdrav",
+            "no_events": "Ni dogodkov",
+            "no_events_description": "Dodajte nekaj dogodkov",
+            "title": "Pozdrav"
+          },
+          "header": {
+            "enabled": "Izberite, ali želite prikazati ta pripomoček",
+            "more_info": "Več informacij",
+            "report_issue": "Prijavi težavo",
+            "size": "Drsnik za nadzor velikosti pripomočka"
+          },
+          "language": {
+            "quote": "Jezik citata",
+            "title": "Jezik"
+          },
+          "message": {
+            "add": "Dodaj sporočilo",
+            "add_some": "Dodajte jih.",
+            "content": "Vsebina sporočila",
+            "messages": "Sporočila",
+            "no_messages": "Ni sporočil",
+            "text": "Besedilo",
+            "title": "Sporočilo"
+          },
+          "order": {
+            "title": "Vrstni red pripomočkov"
+          },
+          "quicklinks": {
+            "add_link": "Dodaj povezavo",
+            "additional": "Dodatne nastavitve za prikaz in funkcije hitrih povezav",
+            "edit": "Uredi",
+            "no_quicklinks": "Ni hitrih povezav",
+            "open_new": "Odpri v novem zavihku",
+            "options": {
+              "icon": "Ikona",
+              "metro": "Metro",
+              "text_only": "Samo besedilo"
+            },
+            "style": "Slog",
+            "styling": "Slog",
+            "styling_description": "Prilagodite videz hitrih povezav",
+            "text_only": "Prikaži samo besedilo",
+            "title": "Hitre povezave",
+            "tooltip": "Orodna vrstica"
+          },
+          "quote": {
+            "add": "Dodaj citat",
+            "additional": "Druge nastavitve za prilagoditev sloga pripomočka za citate",
+            "author": "Avtor",
+            "author_img": "Prikaži sliko avtorja",
+            "author_link": "Povezava avtorja",
+            "buttons": {
+              "copy": "Kopiraj",
+              "favourite": "Priljubljeno",
+              "subtitle": "Izberite, katere gumbe želite prikazati na citatu",
+              "title": "Gumbi",
+              "tweet": "Tviti"
+            },
+            "custom": "Lastni citat",
+            "custom_author": "Lastni avtor",
+            "custom_buttons": "Gumbi",
+            "custom_subtitle": "Nastavite svoje lastne citate",
+            "no_quotes": "Brez citatov",
+            "source_subtitle": "Izberite, od kod želite pridobiti citate",
+            "title": "Citati"
+          },
+          "search": {
+            "additional": "Dodatne možnosti za prikaz in funkcionalnost pripomočka za iskanje",
+            "autocomplete": "Samodejno dokončanje",
+            "autocomplete_provider": "Ponudnik samodejnega dokončanja",
+            "autocomplete_provider_subtitle": "Iskalnik za uporabo pri rezultatih samodejnega dokončanja v spustnem meniju",
+            "custom": "Lastni URL iskanja",
+            "dropdown": "Spustni meni iskanja",
+            "focus": "Osredotoči se ob odprtju zavihka",
+            "search_engine": "Iskalnik",
+            "search_engine_subtitle": "Izberite iskalnik za uporabo v iskalni vrstici",
+            "title": "Iskanje",
+            "voice_search": "Glasovno iskanje"
+          },
+          "stats": {
+            "achievement_unlocked": "Dosežek odklenjen: {name}",
+            "achievements": "Dosežki",
+            "clear_modal": {
+              "information": "To bo počistilo vse dosežke in statistiko uporabe.",
+              "question": "Ali želite počistiti svojo statistiko?"
+            },
+            "locked": "Zaklenjeno",
+            "sections": {
+              "addons_installed": "Nameščeni dodatki",
+              "backgrounds_downloaded": "Prenesena ozadja",
+              "backgrounds_favourited": "Priljubljena ozadja",
+              "quicklinks_added": "Dodane hitre povezave",
+              "quotes_favourited": "Priljubljeni citati",
+              "settings_changed": "Spremenjene nastavitve",
+              "tabs_opened": "Odprti zavihki"
+            },
+            "title": "Statistika",
+            "unlocked": "{count} odklenjenih",
+            "usage": "Statistika uporabe"
+          },
+          "time": {
+            "analogue": {
+              "hour_hand": "Kazalec ur",
+              "hour_marks": "Oznake ur",
+              "minute_hand": "Kazalec minut",
+              "minute_marks": "Oznake minut",
+              "round_clock": "Zaobljeno ozadje",
+              "second_hand": "Kazalec sekund",
+              "subtitle": "Spremenite videz analogne ure",
+              "title": "Analogno"
+            },
+            "digital": {
+              "seconds": "Sekunde",
+              "subtitle": "Spremenite videz digitalne ure",
+              "title": "Digitalno",
+              "twelvehour": "12-urna",
+              "twentyfourhour": "24-urna",
+              "zero": "Z ničlo izpolnjene"
+            },
+            "format": "Oblika",
+            "percentage_complete": "Odstotek dokončanega",
+            "title": "Čas",
+            "type": "Tip",
+            "type_subtitle": "Izberite, ali želite prikazati čas v digitalni obliki, analogni obliki ali kot odstotek dneva",
+            "vertical_clock": {
+              "change_hour_colour": "Spremeni barvo besedila ure",
+              "change_minute_colour": "Spremeni barvo besedila minute",
+              "change_second_colour": "Spremeni barvo besedila sekunde",
+              "title": "Navpična ura"
+            }
+          },
+          "weather": {
+            "auto": "Samodejno",
+            "custom_settings": "Nastavitve po meri",
+            "extra_info": {
+              "atmospheric_pressure": "Atmosferski tlak",
+              "cloudiness": "Oblačnost",
+              "humidity": "Vlažnost",
+              "max_temp": "Maksimalna temperatura",
+              "min_temp": "Minimalna temperatura",
+              "show_description": "Prikaži opis",
+              "show_location": "Prikaži lokacijo",
+              "title": "Dodatne informacije",
+              "visibility": "Vidljivost",
+              "weather_description": "Opis vremena",
+              "wind_direction": "Smer vetra",
+              "wind_speed": "Hitrost vetra"
+            },
+            "location": "Lokacija",
+            "options": {
+              "basic": "Osnovno",
+              "custom": "Po meri",
+              "expanded": "Razširjeno",
+              "standard": "Standardno"
+            },
+            "temp_format": {
+              "celsius": "Celzija",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin",
+              "title": "Oblika temperature"
+            },
+            "title": "Vreme",
+            "widget_type": "Tip pripomočka"
           }
-        },
-        "language": {
-          "title": "Choose your language",
-          "description": "Mue can be displayed the languages listed below. You can also add new translations on our"
-        },
-        "theme": {
-          "title": "Select a theme",
-          "description": "Mue is available in both light and dark theme, or this can be automatically set depending on your system theme.",
-          "tip": "Using the Auto settings will use the theme on your computer. This setting will impact the modals and some of the widgets displayed on the screen, such as weather and notes."
-        },
-        "style": {
-          "title": "Choose a style",
-          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
-          "legacy": "Legacy",
-          "modern": "Modern"
-        },
-        "settings": {
-          "title": "Import Settings",
-          "description": "Installing Mue on a new device? Feel free to import your old settings!",
-          "tip": "You can export your old settings by navigating to the Advanced tab in your old Mue setup. Then you need to click the export button which will download the JSON file. You can upload this file here to carry across your settings and preferences from your previous Mue installation."
-        },
-        "privacy": {
-          "title": "Privacy Options",
-          "description": "Enable settings to further protect your privacy with Mue.",
-          "offline_mode_description": "Enabling offline mode will disable all requests to any service. This will result in online backgrounds, online quotes, marketplace, weather, quick links, change log and some about tab information to be disabled.",
-          "links": {
-            "title": "Links",
-            "privacy_policy": "Privacy Policy",
-            "source_code": "Source Code"
-          }
-        },
-        "final": {
-          "title": "Final step",
-          "description": "Your Mue Tab experience is about to begin.",
-          "changes": "Changes",
-          "changes_description": "To change settings later click on the settings icon in the top right corner of your tab.",
-          "imported": "Imported {amount} settings"
         }
       },
-      "buttons": {
-        "next": "Next",
-        "preview": "Preview",
-        "previous": "Previous",
-        "close": "Close",
-        "finish": "Finish"
-      },
-      "preview": {
-        "description": "You are currently in preview mode. Settings will be reset on closing this tab.",
-        "continue": "Continue setup"
-      }
+      "title": "Možnosti"
     },
     "share": {
-      "copy_link": "Copy link",
-      "email": "Email"
+      "copy_link": "Kopiraj povezavo",
+      "email": "E-pošta"
+    },
+    "update": {
+      "error": {
+        "description": "Ni bilo mogoče povezati s strežnikom",
+        "title": "Napaka"
+      },
+      "offline": {
+        "description": "Ni mogoče pridobiti dnevnikov posodobitev v načinu brez povezave",
+        "title": "Brez povezave"
+      },
+      "title": "Posodobitev"
+    },
+    "welcome": {
+      "buttons": {
+        "close": "Zapri",
+        "finish": "Končaj",
+        "next": "Naprej",
+        "preview": "Predogled",
+        "previous": "Nazaj"
+      },
+      "preview": {
+        "continue": "Nadaljuj z nastavitvijo",
+        "description": "Trenutno ste v načinu predogleda. Nastavitve bodo ob zapiranju tega zavihka ponastavljene."
+      },
+      "sections": {
+        "final": {
+          "changes": "Spremembe",
+          "changes_description": "Če želite kasneje spremeniti nastavitve, kliknite ikono nastavitev v zgornjem desnem kotu vašega zavihka.",
+          "description": "Vaša izkušnja z Mue Tab se bo kmalu začela.",
+          "imported": "Uvoženo {amount} nastavitev",
+          "title": "Končni korak"
+        },
+        "intro": {
+          "description": "Hvala, ker ste namestili Mue, upamo, da boste uživali v našem razširitvi.",
+          "notices": {
+            "discord_description": "Pogovarjajte se s skupnostjo in razvijalci Mue",
+            "discord_join": "Pridruži se",
+            "discord_title": "Pridružite se našemu Discordu",
+            "github_description": "Prijavite napake, dodajte funkcije ali donirajte",
+            "github_open": "Odpri",
+            "github_title": "Prispevajte na GitHubu"
+          },
+          "title": "Dobrodošli v Mue Tab"
+        },
+        "language": {
+          "description": "Mue je lahko prikazan v spodaj navedenih jezikih. Nove prevode lahko dodate tudi na našem",
+          "title": "Izberite svoj jezik"
+        },
+        "privacy": {
+          "description": "Omogočite nastavitve za nadaljnjo zaščito vaše zasebnosti z Mue.",
+          "links": {
+            "privacy_policy": "Pravilnik o zasebnosti",
+            "source_code": "Izvorna koda",
+            "title": "Povezave"
+          },
+          "offline_mode_description": "Če omogočite način brez povezave, bodo vse zahteve do katere koli storitve onemogočene. To bo povzročilo, da bodo spletna ozadja, spletni citati, tržnica, vreme, hitre povezave, dnevnik sprememb in nekatere informacije o zavihku »O nas« onemogočene.",
+          "title": "Možnosti zasebnosti"
+        },
+        "settings": {
+          "description": "Nameščate Mue na novo napravo? Lahko uvozite svoje stare nastavitve!",
+          "tip": "Svoje stare nastavitve lahko izvozite tako, da se pomaknete na zavihek Napredno v stari nastavitvi Mue. Nato morate klikniti gumb za izvoz, ki bo prenesel datoteko JSON. To datoteko lahko tukaj naložite, da prenesete svoje nastavitve in preference iz prejšnje namestitve Mue.",
+          "title": "Uvozi nastavitve"
+        },
+        "style": {
+          "description": "Mue trenutno ponuja izbiro med zapuščenim slogom in novim modernim slogom.",
+          "legacy": "Zapuščeno",
+          "modern": "Moderno",
+          "title": "Izberite slog"
+        },
+        "theme": {
+          "description": "Mue je na voljo v svetli in temni temi, lahko pa se samodejno nastavi glede na temo vašega sistema.",
+          "tip": "Uporaba samodejnih nastavitev bo uporabila temo na vašem računalniku. Ta nastavitev bo vplivala na modale in nekatere pripomočke, prikazane na zaslonu, kot so vreme in opombe.",
+          "title": "Izberite temo"
+        }
+      },
+      "tip": "Hiter nasvet"
     }
   },
+  "tabname": "Nov zavihek",
   "toasts": {
-    "quote": "Quote copied",
-    "notes": "Notes copied",
-    "reset": "Reset successfully",
-    "installed": "Successfully installed",
-    "uninstalled": "Successfully removed",
-    "updated": "Successfully updated",
-    "error": "Something went wrong",
-    "imported": "Successfully imported",
-    "no_storage": "Not enough storage",
-    "link_copied": "Link copied",
-    "stats_reset": "Stats reset"
+    "error": "Prišlo je do napake",
+    "imported": "Uspešno uvoženo",
+    "installed": "Uspešno nameščeno",
+    "link_copied": "Povezava kopirana",
+    "no_storage": "Ni dovolj prostora za shranjevanje",
+    "notes": "Opombe kopirane",
+    "quote": "Citat kopiran",
+    "reset": "Uspešno ponastavljeno",
+    "stats_reset": "Statistika ponastavljena",
+    "uninstalled": "Uspešno odstranjeno",
+    "updated": "Uspešno posodobljeno"
+  },
+  "widgets": {
+    "background": {
+      "camera": "Kamera",
+      "category": "Kategorija",
+      "confirm": "Potrdi",
+      "credit": "Fotografija od",
+      "download": "Prenesi",
+      "downloads": "Prenosi",
+      "exclude": "Ne prikaži več",
+      "exclude_confirm": "Ali ste prepričani, da ne želite več videti te slike?\nOpomba: če vam slike iz kategorije \"{category}\" niso všeč, lahko izklopite kategorijo v nastavitvah vira ozadja.",
+      "information": "Informacije",
+      "likes": "Všečki",
+      "location": "Lokacija",
+      "resolution": "Ločljivost",
+      "source": "Vir",
+      "unsplash": "na Unsplash",
+      "views": "Ogledi"
+    },
+    "date": {
+      "week": "Teden"
+    },
+    "greeting": {
+      "afternoon": "Dober dan",
+      "birthday": "Vse najboljše",
+      "christmas": "Vesel božič",
+      "evening": "Dober večer",
+      "halloween": "Veselo noč čarovnic",
+      "morning": "Dobro jutro",
+      "newyear": "Srečno novo leto"
+    },
+    "navbar": {
+      "apps": {
+        "no_apps": "Ni najdenih povezav do aplikacij",
+        "title": "Aplikacije"
+      },
+      "notes": {
+        "placeholder": "Vnesite tukaj",
+        "title": "Opombe"
+      },
+      "todo": {
+        "add": "Dodaj",
+        "no_todos": "Ni opravil",
+        "pin": "Pripni",
+        "title": "Opravila"
+      },
+      "tooltips": {
+        "refresh": "Osveži"
+      }
+    },
+    "quicklinks": {
+      "add": "Dodaj",
+      "edit": "Uredi povezavo",
+      "icon": "Ikona (neobvezno)",
+      "name": "Ime",
+      "name_error": "Vnesite ime",
+      "new": "Nova povezava",
+      "url": "URL",
+      "url_error": "Vnesite URL"
+    },
+    "quote": {
+      "copy": "Kopiraj",
+      "favourite": "Priljubljeno",
+      "link_tooltip": "Odpri na Wikipediji",
+      "share": "Deli",
+      "unfavourite": "Odstrani iz priljubljenih"
+    },
+    "search": "Iskanje",
+    "weather": {
+      "extra_information": "Dodatne informacije",
+      "feels_like": "Občutek kot {amount}",
+      "meters": "{amount} metrov",
+      "not_found": "Ni najdeno"
+    }
   }
 }
