@@ -82,8 +82,7 @@ class Quote extends PureComponent {
     this.quote = createRef();
     this.quotediv = createRef();
     this.quoteauthor = createRef();
-    this.authorDetails =  localStorage.getItem('authorDetails') === 'true' ? true : false;
-    console.log("authorDetails", this.authorDetails);
+    this.authorDetails = (localStorage.getItem('authorDetails') === 'true' || true) ? true : false;
   }
 
   useFavourite() {

@@ -88,6 +88,16 @@ const prepareBuilds = () => ({
       const zip2 = new ADMZip();
       zip2.addLocalFolder(path.resolve(__dirname, './build/firefox'));
       zip2.writeZip(path.resolve(__dirname, `./build/firefox-${pkg.version}.zip`));
+
+      //todo: fix this
+      // temp copy src for /dist too
+      fs.cpSync(
+        path.resolve(__dirname, './src/assets'),
+        path.resolve(__dirname, './dist/src/assets'),
+        {
+          recursive: true,
+        },
+      );
     }
   },
 });
@@ -136,6 +146,13 @@ export default defineConfig(({ command, mode }) => {
         scss: path.resolve(__dirname, './src/scss'),
         translations: path.resolve(__dirname, './src/i18n/locales'),
         utils: path.resolve(__dirname, './src/utils'),
+      },
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
       },
     },
   };

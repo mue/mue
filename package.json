@@ -24,6 +24,7 @@
     "embla-carousel-react": "8.3.0",
     "fast-blurhash": "^1.1.4",
     "image-conversion": "^2.1.1",
+    "mue": "file:",
     "react": "^18.3.1",
     "react-best-gradient-color-picker": "^3.0.10",
     "react-clock": "5.0.0",
