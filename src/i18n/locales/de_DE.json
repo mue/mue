@@ -163,6 +163,7 @@
             "title": "Zitat",
             "additional": "Zusätzliche Einstellungen zum Anpassen des Zitate-Widgets",
             "author_link": "Autor Link",
+            "author_details": "Autor Details",
             "custom": "Benutzerdefiniertes Zitat",
             "custom_subtitle": "Legen Sie Ihre eigenen Zitate fest",
             "no_quotes": "Keine Zitate",

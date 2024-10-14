@@ -163,6 +163,7 @@
             "title": "名言警句",
             "additional": "Other settings to customise the style of the quote widget",
             "author_link": "出处链接",
+            "author_details": "作者详情",
             "custom": "自定义名言",
             "custom_subtitle": "Set your own custom quotes",
             "no_quotes": "No quotes",

@@ -45,7 +45,7 @@ export default class DateWidget extends PureComponent {
     if (timezone && timezone !== 'auto') {
       date = convertTimezone(date, timezone);
     }
-
+  
     if (localStorage.getItem('weeknumber') === 'true') {
       this.getWeekNumber(date);
     } else if (this.state.weekNumber !== null) {
@@ -53,18 +53,18 @@ export default class DateWidget extends PureComponent {
         weekNumber: null,
       });
     }
-
+  
     if (localStorage.getItem('dateType') === 'short') {
       const dateDay = date.getDate();
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
-
+  
       const zero = localStorage.getItem('datezero') === 'true';
-
+  
       let day = zero ? ('00' + dateDay).slice(-2) : dateDay;
       let month = zero ? ('00' + dateMonth).slice(-2) : dateMonth;
       let year = dateYear;
-
+  
       switch (localStorage.getItem('dateFormat')) {
         case 'MDY':
           day = dateMonth;
@@ -78,7 +78,7 @@ export default class DateWidget extends PureComponent {
         default:
           break;
       }
-
+  
       let format;
       switch (localStorage.getItem('shortFormat')) {
         case 'dots':
@@ -96,47 +96,41 @@ export default class DateWidget extends PureComponent {
         default:
           break;
       }
-
+  
       this.setState({
         date: format,
       });
     } else {
       // Long date
       const lang = variables.languagecode.split('_')[0];
-
-      const datenth =
-        localStorage.getItem('datenth') === 'true' ? nth(date.getDate()) : date.getDate();
-
-      const dateDay =
-        localStorage.getItem('dayofweek') === 'true'
-          ? date.toLocaleDateString(lang, { weekday: 'long' })
-          : '';
+      const datenth = localStorage.getItem('datenth') === 'true' ? nth(date.getDate()) : date.getDate();
+      const dateDay = localStorage.getItem('dayofweek') === 'true'
+        ? date.toLocaleDateString(lang, { weekday: 'long' })
+        : '';
       const dateMonth = date.toLocaleDateString(lang, { month: 'long' });
       const dateYear = date.getFullYear();
-
-      let day = dateDay + ' ' + datenth;
-      let month = dateMonth;
-      let year = dateYear;
+  
+      let formattedDate;
+  
       switch (localStorage.getItem('longFormat')) {
         case 'MDY':
-          day = dateMonth;
-          month = dateDay + ' ' + datenth;
+          formattedDate = `${dateMonth} ${datenth}, ${dateYear}${dateDay ? `, ${dateDay}` : ''}`;
           break;
         case 'YMD':
-          day = dateYear;
-          year = dateDay + ' ' + datenth;
+          formattedDate = `${dateYear} ${dateMonth} ${datenth}${dateDay ? `, ${dateDay}` : ''}`;
           break;
         // DMY
         default:
+          formattedDate = `${datenth} ${dateMonth} ${dateYear}${dateDay ? `, ${dateDay}` : ''}`;
           break;
       }
-
+  
       this.setState({
-        date: `${day} ${month} ${year}`,
+        date: formattedDate,
       });
     }
   }
-
+  
   componentDidMount() {
     EventBus.on('refresh', (data) => {
       if (data === 'date' || data === 'timezone') {
