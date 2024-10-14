@@ -145,14 +145,21 @@ class QuoteOptions extends PureComponent {
           />
           <Action>
             <Checkbox
+              name="authorDetails"
+              text = "Author Details"
+              element=".other"
+            />
+            <Checkbox
               name="authorLink"
               text={variables.getMessage(`${QUOTE_SECTION}.author_link`)}
               element=".other"
+              disabled={localStorage.getItem('authorDetails')==='false'}
             />
             <Checkbox
               name="authorImg"
               text={variables.getMessage(`${QUOTE_SECTION}.author_img`)}
               element=".other"
+              disabled={localStorage.getItem('authorDetails')==='false'}
             />
           </Action>
         </Row>
