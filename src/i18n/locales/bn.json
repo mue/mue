@@ -163,6 +163,7 @@
             "title": "Quote",
             "additional": "উদ্ধৃতি উইজেটের শৈলী কাস্টমাইজ করার জন্য অন্যান্য সেটিংস",
             "author_link": "লেখকের লিঙ্ক",
+            "author_details": "লেখকের বিস্তারিত তথ্য",
             "custom": "Custom quote",
             "custom_subtitle": "Set your own custom quotes",
             "no_quotes": "No quotes",

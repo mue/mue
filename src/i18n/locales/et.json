@@ -413,6 +413,7 @@
             "author": "Autor",
             "author_img": "Näita autori pilti",
             "author_link": "Autori link",
+            "author_details": "Näita autori üksikasju",
             "buttons": {
               "copy": "Kopeeri",
               "favourite": "Lisa lemmikuks",

@@ -146,7 +146,7 @@ class QuoteOptions extends PureComponent {
           <Action>
             <Checkbox
               name="authorDetails"
-              text = "Author Details"
+              text = {variables.getMessage(`${QUOTE_SECTION}.author_details`)}
               element=".other"
             />
             <Checkbox

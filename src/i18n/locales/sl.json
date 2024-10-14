@@ -413,6 +413,7 @@
             "author": "Avtor",
             "author_img": "Prikaži sliko avtorja",
             "author_link": "Povezava avtorja",
+            "author_details": "Podrobnosti avtorja",
             "buttons": {
               "copy": "Kopiraj",
               "favourite": "Priljubljeno",

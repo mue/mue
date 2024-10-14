@@ -163,6 +163,7 @@
             "title": "Citações",
             "additional": "Outras configurações para personalizar o estilo do widget de citações",
             "author_link": "link do autor",
+            "author_details": "Detalhes do autor",
             "custom": "Citação personalizada",
             "custom_subtitle": "Defina suas próprias citações personalizadas",
             "no_quotes": "sem aspas",

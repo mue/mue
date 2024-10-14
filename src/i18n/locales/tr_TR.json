@@ -163,6 +163,7 @@
             "title": "Alıntı",
             "additional": "Alıntı aracının stilini özelleştirmek için diğer ayarlar",
             "author_link": "Yazara dair bilgilendirme bağlantısı göster.",
+            "author_details": "Yazar hakkında daha fazla bilgi göster.",
             "custom": "Özel Alıntı",
             "custom_subtitle": "Kendi özel alıntınızı belirleyin, ekleyin.",
             "no_quotes": "Alıntı yok",

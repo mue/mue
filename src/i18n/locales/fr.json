@@ -413,6 +413,7 @@
             "author": "Auteur",
             "author_img": "Afficher l'image de l'auteur",
             "author_link": "Lien de l'auteur",
+            "author_details": "Détails de l'auteur",
             "buttons": {
               "copy": "Copier",
               "favourite": "Favori",
