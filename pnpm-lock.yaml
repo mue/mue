@@ -69,8 +69,8 @@ importers:
         specifier: 10.0.6
         version: 10.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       use-debounce:
-        specifier: ^10.0.3
-        version: 10.0.3(react@18.3.1)
+        specifier: ^10.0.4
+        version: 10.0.4(react@18.3.1)
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.5.0
@@ -3447,8 +3447,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  use-debounce@10.0.3:
-    resolution: {integrity: sha512-DxQSI9ZKso689WM1mjgGU3ozcxU1TJElBJ3X6S4SMzMNcm2lVH0AHmyXB+K7ewjz2BSUKJTDqTcwtSMRfB89dg==}
+  use-debounce@10.0.4:
+    resolution: {integrity: sha512-6Cf7Yr7Wk7Kdv77nnJMf6de4HuDE4dTxKij+RqE9rufDsI6zsbjyAxcH5y2ueJCQAnfgKbzXbZHYlkFwmBlWkw==}
     engines: {node: '>= 16.0.0'}
     peerDependencies:
       react: '*'
@@ -7314,7 +7314,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-debounce@10.0.3(react@18.3.1):
+  use-debounce@10.0.4(react@18.3.1):
     dependencies:
       react: 18.3.1
 
