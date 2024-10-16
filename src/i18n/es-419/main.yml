@@ -34,6 +34,7 @@ widgets:
     name_error: Debe indicar el nombre
     url_error: Debe indicar la URL
     edit: Editar vínculo
+    url: URL
   date:
     week: Semana
   weather:
