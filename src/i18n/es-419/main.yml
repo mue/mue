@@ -20,7 +20,7 @@ widgets:
     category: Categoría
     exclude_confirm: "¿Seguro que no quieres volver a ver esta imagen?\nNota: si no
       le gustan las imágenes \"{category}\", puede deseleccionar la categoría en la
-      configuración de origen de fondo."
+      configuración de la fuente de origen."
     location: Ubicación
     source: Fuente
     exclude: No volver a mostrar
