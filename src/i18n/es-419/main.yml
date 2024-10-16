@@ -21,6 +21,8 @@ widgets:
     exclude_confirm: "¿Seguro que no quieres volver a ver esta imagen?\nNota: si no
       le gustan las imágenes \"{category}\", puede deseleccionar la categoría en la
       configuración de origen de fondo."
+    location: Ubicación
+    source: Fuente
   search: Buscar
   quicklinks:
     new: Nuevo enlace
