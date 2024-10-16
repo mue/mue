@@ -33,6 +33,7 @@ widgets:
     add: Añadir
     name_error: Debe indicar el nombre
     url_error: Debe indicar la URL
+    edit: Edit Link
   date:
     week: Semana
   weather:
