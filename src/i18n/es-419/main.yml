@@ -24,6 +24,7 @@ widgets:
     location: Ubicación
     source: Fuente
     exclude: No volver a mostrar
+    confirm: Confirmación
   search: Buscar
   quicklinks:
     new: Nuevo enlace
