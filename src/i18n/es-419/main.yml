@@ -23,6 +23,7 @@ widgets:
       configuración de origen de fondo."
     location: Ubicación
     source: Fuente
+    exclude: No volver a mostrar
   search: Buscar
   quicklinks:
     new: Nuevo enlace
