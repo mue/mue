@@ -33,12 +33,13 @@ widgets:
     add: Añadir
     name_error: Debe indicar el nombre
     url_error: Debe indicar la URL
-    edit: Edit Link
+    edit: Editar vínculo
   date:
     week: Semana
   weather:
     not_found: No encontrado
     meters: "{amount} metros"
+    extra_information: Información adicional
   quote: {}
   navbar:
     tooltips:
