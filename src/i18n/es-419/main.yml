@@ -15,6 +15,12 @@ widgets:
     download: Descargar
     downloads: Descargas
     views: Vistas
+    likes: Me gusta
+    camera: Cámara
+    category: Categoría
+    exclude_confirm: "¿Seguro que no quieres volver a ver esta imagen?\nNota: si no
+      le gustan las imágenes \"{category}\", puede deseleccionar la categoría en la
+      configuración de origen de fondo."
   search: Buscar
   quicklinks:
     new: Nuevo enlace
