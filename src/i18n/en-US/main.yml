@@ -1,5 +1,11 @@
 widgets:
-  greeting: {}
+  greeting:
+    morning: Good Morning
+    afternoon: Good Afternoon
+    evening: Good Evening
+    christmas: Merry Christmas
+    newyear: Happy New Year
+    halloween: Happy Halloween
   background: {}
   quicklinks: {}
   date: {}
@@ -23,3 +29,4 @@ modals:
     error: {}
   share: {}
 toasts: {}
+tabname: New Tab
