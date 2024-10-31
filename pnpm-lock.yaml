@@ -36,8 +36,8 @@ importers:
         specifier: ^8.35.0
         version: 8.35.0(react@18.3.1)
       embla-carousel-autoplay:
-        specifier: 8.3.0
-        version: 8.3.0(embla-carousel@8.3.1)
+        specifier: 8.3.1
+        version: 8.3.1(embla-carousel@8.3.1)
       embla-carousel-react:
         specifier: 8.3.1
         version: 8.3.1(react@18.3.1)
@@ -1981,10 +1981,10 @@ packages:
   electron-to-chromium@1.5.36:
     resolution: {integrity: sha512-HYTX8tKge/VNp6FGO+f/uVDmUkq+cEfcxYhKf15Akc4M5yxt5YmorwlAitKWjWhWQnKcDRBAQKXkhqqXMqcrjw==}
 
-  embla-carousel-autoplay@8.3.0:
-    resolution: {integrity: sha512-h7DFJLf9uQD+XDxr1NwA3/oFIjsnj/iED2RjET5u6/svMec46IbF1CYPhmB5Q/1Fc0WkcvhPpsEsrtVXQLxNzA==}
+  embla-carousel-autoplay@8.3.1:
+    resolution: {integrity: sha512-L8THF1AJJSQtlNa1wZ6lEKh/CiZssE3TsVFtabQNsS+pc1O1O/YTIYCC3khdQAztGMOBf3WfVDIY/4AIfQj3JQ==}
     peerDependencies:
-      embla-carousel: 8.3.0
+      embla-carousel: 8.3.1
 
   embla-carousel-react@8.3.1:
     resolution: {integrity: sha512-gBY0zM+2ASvKFwRpTIOn2SLifFqOKKap9R/y0iCpJWS3bc8OHVEn2gAThGYl2uq0N+hu9aBiswffL++OYZOmDQ==}
@@ -5565,7 +5565,7 @@ snapshots:
 
   electron-to-chromium@1.5.36: {}
 
-  embla-carousel-autoplay@8.3.0(embla-carousel@8.3.1):
+  embla-carousel-autoplay@8.3.1(embla-carousel@8.3.1):
     dependencies:
       embla-carousel: 8.3.1
 
@@ -6464,7 +6464,7 @@ snapshots:
       '@muetab/react-sortable-hoc': 2.0.1(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mui/material': 6.1.6(@emotion/react@11.13.3(@types/react@18.3.11)(react@18.3.1))(@emotion/styled@11.13.0(@emotion/react@11.13.3(@types/react@18.3.11)(react@18.3.1))(@types/react@18.3.11)(react@18.3.1))(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@sentry/react': 8.35.0(react@18.3.1)
-      embla-carousel-autoplay: 8.3.0(embla-carousel@8.3.1)
+      embla-carousel-autoplay: 8.3.1(embla-carousel@8.3.1)
       embla-carousel-react: 8.3.1(react@18.3.1)
       fast-blurhash: 1.1.4
       image-conversion: 2.1.1
