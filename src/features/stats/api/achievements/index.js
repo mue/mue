@@ -5,7 +5,7 @@ import { checkAchievements, newAchievements } from './condition';
 function getLocalisedAchievementData(id) {
   return {
     name: variables.getMessage(`achievements:${id}.name`),
-    description: variables.getMessage(`achievements:${id}.description`)
+    description: variables.getMessage(`achievements:${id}.description`),
   };
 }
 

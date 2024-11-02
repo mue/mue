@@ -113,8 +113,8 @@ function Changelog() {
     <div className="bg-modal-content-light dark:bg-modal-content-dark w-full ">
       <article className="rounded p-10 prose dark:prose-invert" ref={changelog}>
         <div>
-          <h1 class="leading-tight mb-1">{title}</h1>
-          <p class="leading-none mt-0">Published on {date}</p>
+          <h1 className="leading-tight mb-1">{title}</h1>
+          <p className="leading-none mt-0">Published on {date}</p>
         </div>
         <Markdown options={{ overrides: { a: { props: { target: '_blank' } } } }}>
           {content}

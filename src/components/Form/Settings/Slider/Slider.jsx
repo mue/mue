@@ -59,7 +59,7 @@ function SliderComponent(props) {
           {variables.getMessage('settings:buttons.reset')}
         </span>
       </span>
-      <div class="mx-auto">
+      <div className="mx-auto">
         <Slider
           value={Number(value)}
           onChange={handleChange}

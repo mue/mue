@@ -4,13 +4,13 @@ export function checkAchievements(stats) {
   achievements.forEach((achievement) => {
     switch (achievement.condition.type) {
       case 'tabsOpened':
-        if (stats['tabs-opened'] >= achievement.condition.amount) {
+        if (stats['tabs-opened']?.count >= achievement.condition.amount) {
           achievement.achieved = true;
         }
         break;
       case 'addonInstall':
         if (stats.marketplace) {
-          if (stats.marketplace['install'] >= achievement.condition.amount) {
+          if (stats.marketplace['install']?.count >= achievement.condition.amount) {
             achievement.achieved = true;
           }
         }
@@ -30,21 +30,18 @@ export function newAchievements(stats) {
   const newAchievements = [];
 
   checkedAchievements.forEach((achievement) => {
-    if (achievement.achieved && !oldAchievements.includes(achievement.id)) {
+    if (achievement.achieved && !oldAchievements.some((a) => a.id === achievement.id)) {
       newAchievements.push(achievement);
     }
   });
 
   // add timestamp to new achievements
   newAchievements.forEach((achievement) => {
-    achievement.timestamp = Date.now();
+    achievement.timestamp = new Date().toISOString();
   });
 
   // save new achievements to local storage
-  localStorage.setItem(
-    'achievements',
-    JSON.stringify([...oldAchievements, ...newAchievements.map((achievement) => achievement.id)]),
-  );
+  localStorage.setItem('achievements', JSON.stringify([...oldAchievements, ...newAchievements]));
 
   return newAchievements;
 }

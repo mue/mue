@@ -375,7 +375,7 @@ const ItemPage = () => {
         />
       </Modal>
       <div className="itemPage flex flex-row gap-8 2xl:gap-16 justify-between">
-        <div class="flex flex-col-reverse xl:flex-row gap-8 2xl:gap-16">
+        <div className="flex flex-col-reverse xl:flex-row gap-8 2xl:gap-16">
           <ItemDetails />
           <div className="itemShowcase">
             <div className="subHeader">{itemWarning()}</div>

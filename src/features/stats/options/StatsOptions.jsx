@@ -1,25 +1,26 @@
-/* eslint-disable array-callback-return */
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { MdShowChart, MdRestartAlt, MdDownload, MdAccessTime, MdLock } from 'react-icons/md';
-import { FaTrophy } from 'react-icons/fa';
+import { MdShowChart, MdRestartAlt, MdDownload } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 import { Button } from 'components/Elements';
-import { Header, CustomActions, PreferencesWrapper } from 'components/Layout/Settings';
+import { Header, CustomActions } from 'components/Layout/Settings';
+import { StatsOverview } from './sections/StatsOverview';
 import { ClearModal } from './ClearModal';
+import Achievements from './sections/Achievements';
 
 import { saveFile } from 'utils/saveFile';
 import variables from 'config/variables';
 import {
-  getLocalisedAchievementData,
   achievements as initialAchievements,
   checkAchievements,
 } from 'features/stats/api/achievements';
 
 const Stats = () => {
   const [stats, setStats] = useState(() => JSON.parse(localStorage.getItem('statsData')) || {});
-  const [achievements, setAchievements] = useState(initialAchievements);
+  const [achievements, setAchievements] = useState(
+    () => JSON.parse(localStorage.getItem('achievements')) || initialAchievements,
+  );
   const [clearmodal, setClearmodal] = useState(false);
 
   const updateAchievements = useCallback(() => {
@@ -52,25 +53,6 @@ const Stats = () => {
     saveFile(JSON.stringify(stats, null, 2), filename);
   };
 
-  const AchievementElement = ({ key, id, achieved, timestamp }) => {
-    const { name, description } = getLocalisedAchievementData(id);
-
-    return (
-      <div className="achievement" key={key}>
-        {achieved ? <FaTrophy className="trophy" /> : <MdLock className="trophyLocked" />}
-        <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
-          {achieved && timestamp && (
-            <span className="timestamp">
-              <MdAccessTime /> {new Date(timestamp).toLocaleDateString()}
-            </span>
-          )}
-          <span className="achievementTitle">{name}</span>
-          <span className="subtitle">{achieved ? description : '?????'}</span>
-        </div>
-      </div>
-    );
-  };
-
   const StatsElement = ({ title, value }) => (
     <div>
       <span className="subtitle">{title}</span>
@@ -82,7 +64,7 @@ const Stats = () => {
 
   return (
     <>
-      <Header title={variables.getMessage(`${STATS_SECTION}.title`)} report={false}>
+      {/* <Header title={variables.getMessage(`${STATS_SECTION}.title`)} report={false}>
         <CustomActions>
           <Button
             type="settings"
@@ -97,7 +79,7 @@ const Stats = () => {
             label={variables.getMessage('settings:buttons.reset')}
           />
         </CustomActions>
-      </Header>
+      </Header> */}
       <Modal
         closeTimeoutMS={100}
         onRequestClose={() => setClearmodal(false)}
@@ -108,6 +90,14 @@ const Stats = () => {
       >
         <ClearModal modalClose={() => setClearmodal(false)} resetStats={resetStats} />
       </Modal>
+      <StatsOverview stats={stats} />
+      <Achievements
+        achievements={achievements}
+        getUnlockedCount={getUnlockedCount}
+        STATS_SECTION={STATS_SECTION}
+        variables={variables}
+      />
+      <span class="text-2xl font-semibold pb-5">Statistics</span>
       <div className="modalInfoPage stats">
         <div className="statSection rightPanel">
           <div className="statIcon">
@@ -116,23 +106,23 @@ const Stats = () => {
           <div className="statGrid">
             <StatsElement
               title={variables.getMessage(`${STATS_SECTION}.sections.tabs_opened`)}
-              value={stats['tabs-opened'] || 0}
+              value={stats['tabs-opened']?.count || 0}
             />
             <StatsElement
               title={variables.getMessage(`${STATS_SECTION}.sections.backgrounds_favourited`)}
-              value={stats['background-favourite'] || 0}
+              value={stats['background-favourite']?.count || 0}
             />
             <StatsElement
               title={variables.getMessage(`${STATS_SECTION}.sections.backgrounds_downloaded`)}
-              value={stats.feature ? stats.feature['background-download'] || 0 : 0}
+              value={stats['background-download']?.count || 0}
             />
             <StatsElement
               title={variables.getMessage(`${STATS_SECTION}.sections.quotes_favourited`)}
-              value={stats.feature ? stats.feature['quoted-favourite'] || 0 : 0}
+              value={stats['quoted-favourite']?.count || 0}
             />
             <StatsElement
               title={variables.getMessage(`${STATS_SECTION}.sections.quicklinks_added`)}
-              value={stats.feature ? stats.feature['quicklink-add'] || 0 : 0}
+              value={stats['quicklink-add']?.count || 0}
             />
             <StatsElement
               title={variables.getMessage(`${STATS_SECTION}.sections.settings_changed`)}
@@ -142,48 +132,13 @@ const Stats = () => {
               title={variables.getMessage(`${STATS_SECTION}.sections.addons_installed`)}
               value={stats.marketplace?.install?.length || 0}
             />
+            <StatsElement
+              title="XP Level"
+              value={`${stats.level || 1} (${stats.xp || 0}/${stats.nextLevelXp || 100} XP)`}
+            />
+            <StatsElement title="Total XP" value={`${stats.totalXp || 0} XP`} />
+            <StatsElement title="Streak" value={`${stats.streak?.current || 0} days`} />
           </div>
-        </div>
-        <div className="statSection leftPanel">
-          <span className="title">{variables.getMessage(`${STATS_SECTION}.achievements`)}</span>
-          <br />
-          <span className="subtitle">
-            {variables.getMessage(`${STATS_SECTION}.unlocked`, {
-              count: `${getUnlockedCount}/${achievements.length}`,
-            })}
-          </span>
-        </div>
-        <div className="achievements">
-          <div className="achievementsGrid">
-            {achievements.map((achievement, index) => {
-              if (achievement.achieved) {
-                return (
-                  <AchievementElement
-                    key={index}
-                    id={achievement.id}
-                    achieved={achievement.achieved}
-                    timestamp={achievement.timestamp}
-                  />
-                );
-              }
-            })}
-          </div>
-          <span className="title">{variables.getMessage(`${STATS_SECTION}.locked`)}</span>
-          <PreferencesWrapper>
-            <div className="achievementsGrid preferencesInactive">
-              {achievements.map((achievement, index) => {
-                if (!achievement.achieved) {
-                  return (
-                    <AchievementElement
-                      key={index}
-                      id={achievement.id}
-                      achieved={achievement.achieved}
-                    />
-                  );
-                }
-              })}
-            </div>
-          </PreferencesWrapper>
         </div>
       </div>
     </>

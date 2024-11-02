@@ -29,7 +29,7 @@ const Sidebar = memo(({ sections, currentTab, setCurrentTab }) => {
           <MdOutlineWarning />
           <span>{variables.getMessage('settings:reminder.message')}</span>
         </div>
-        <div class="flex flex-row items-center gap-5">
+        <div className="flex flex-row items-center gap-5">
           <button
             className="bg-neutral-900 border-neutral-800 border-2 px-8 py-2 flex flex-row items-center gap-2 rounded"
             onClick={() => window.location.reload()}
