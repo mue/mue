@@ -9,15 +9,19 @@ import variables from 'config/variables';
 
 const useAppSetup = () => {
   useEffect(() => {
-    const firstRun = localStorage.getItem('firstRun');
-    const stats = localStorage.getItem('stats');
+    const initializeSettings = () => {
+      const firstRun = localStorage.getItem('firstRun');
+      const stats = localStorage.getItem('stats');
 
-    if (!firstRun || !stats) {
-      moveSettings();
-      window.location.reload();
-    }
+      if (!firstRun || !stats) {
+        moveSettings();
+        window.location.reload();
+      }
 
-    loadSettings();
+      loadSettings();
+    };
+
+    initializeSettings();
 
     const refreshHandler = (data) => {
       if (data === 'other') {
@@ -26,7 +30,6 @@ const useAppSetup = () => {
     };
 
     EventBus.on('refresh', refreshHandler);
-
     variables.stats.tabLoad();
 
     return () => {
@@ -35,22 +38,22 @@ const useAppSetup = () => {
   }, []);
 };
 
-const App = () => {
-  const [toastDisplayTime, setToastDisplayTime] = useState(2500);
-  const [showBackground, setShowBackground] = useState(false);
+const useLocalStorageState = (key, initialValue) => {
+  const [value, setValue] = useState(() => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue !== null ? JSON.parse(storedValue) : initialValue;
+  });
 
   useEffect(() => {
-    const storedToastDisplayTime = localStorage.getItem('toastDisplayTime');
-    const storedBackground = localStorage.getItem('background');
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
 
-    if (storedToastDisplayTime) {
-      setToastDisplayTime(parseInt(storedToastDisplayTime, 10));
-    }
+  return [value, setValue];
+};
 
-    if (storedBackground === 'true') {
-      setShowBackground(true);
-    }
-  }, []);
+const App = () => {
+  const [toastDisplayTime, setToastDisplayTime] = useLocalStorageState('toastDisplayTime', 2500);
+  const [showBackground, setShowBackground] = useLocalStorageState('background', false);
 
   useAppSetup();
 
@@ -60,7 +63,7 @@ const App = () => {
       <ToastContainer
         position="top-center"
         autoClose={toastDisplayTime}
-        newestOnTop={true}
+        newestOnTop
         closeOnClick
         pauseOnFocusLoss
       />
