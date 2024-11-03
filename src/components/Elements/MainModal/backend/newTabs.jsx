@@ -3,13 +3,16 @@ import variables from 'config/variables';
 import Tab from './Tab';
 import { useTab } from './TabContext';
 import { MdOutlineWarning, MdRefresh, MdClose } from 'react-icons/md';
+import Stats from 'features/stats/api/stats';
 
 const Sidebar = memo(({ sections, currentTab, setCurrentTab }) => {
   const { subTab, setSubTab, setSubSection } = useTab();
   const handleClick = useCallback(
     (label) => () => {
-      setSubTab(variables.getMessage(label));
+      const newTab = variables.getMessage(label);
+      setSubTab(newTab);
       setSubSection('');
+      Stats.postEvent('settings-tab', newTab, 'opened');
     },
     [setSubTab, setSubSection],
   );

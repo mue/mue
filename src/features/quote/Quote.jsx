@@ -10,6 +10,7 @@ import {
 } from 'react-icons/md';
 
 import { toast } from 'react-toastify';
+import Stats from 'features/stats/api/stats';
 
 import { Tooltip } from 'components/Elements';
 
@@ -105,6 +106,7 @@ class Quote extends PureComponent {
       authorlink: this.getAuthorLink(quote.author),
       authorimg: '',
     });
+    Stats.postEvent('feature', 'quote', 'shown');
   }
 
   getAuthorLink(author) {
@@ -198,13 +200,15 @@ class Quote extends PureComponent {
     if (favouriteQuote) {
       let author = favouriteQuote.split(' - ')[1];
       const authorimgdata = await this.getAuthorImg(author);
-      return this.setState({
+      this.setState({
         quote: favouriteQuote.split(' - ')[0],
         author,
         authorlink: this.getAuthorLink(author),
         authorimg: authorimgdata.authorimg,
         authorimglicense: authorimgdata.authorimglicense,
       });
+      Stats.postEvent('feature', 'quote', 'shown');
+      return;
     }
 
     switch (this.state.type) {
@@ -229,13 +233,14 @@ class Quote extends PureComponent {
           : null;
 
         if (customQuote !== undefined && customQuote !== null) {
-          return this.setState({
+          this.setState({
             quote: '"' + customQuote.quote + '"',
             author: customQuote.author,
             authorlink: this.getAuthorLink(customQuote.author),
             authorimg: await this.getAuthorImg(customQuote.author),
             noQuote: false,
           });
+          Stats.postEvent('feature', 'quote', 'shown');
         } else {
           this.setState({
             noQuote: true,
@@ -244,7 +249,8 @@ class Quote extends PureComponent {
         break;
       case 'quote_pack':
         if (offline) {
-          return this.doOffline();
+          this.doOffline();
+          return;
         }
 
         const quotePack = [];
@@ -261,18 +267,21 @@ class Quote extends PureComponent {
 
         if (quotePack) {
           const data = quotePack[Math.floor(Math.random() * quotePack.length)];
-          return this.setState({
+          this.setState({
             quote: '"' + data.quote + '"',
             author: data.author,
             authorlink: this.getAuthorLink(data.author),
             authorimg: data.fallbackauthorimg,
           });
+          Stats.postEvent('feature', 'quote', 'shown');
         } else {
-          return this.doOffline();
+          this.doOffline();
         }
+        break;
       case 'api':
         if (offline) {
-          return this.doOffline();
+          this.doOffline();
+          return;
         }
 
         const getAPIQuoteData = async () => {
@@ -304,6 +313,7 @@ class Quote extends PureComponent {
             this.setState(data);
             localStorage.setItem('currentQuote', JSON.stringify(data));
             localStorage.setItem('nextQuote', JSON.stringify(await getAPIQuoteData())); // pre-fetch data about the next quote
+            Stats.postEvent('feature', 'quote', 'shown');
           } else {
             this.doOffline();
           }
@@ -318,7 +328,7 @@ class Quote extends PureComponent {
   }
 
   copyQuote() {
-    variables.stats.postEvent('feature', 'quote', 'copied');
+    Stats.postEvent('feature', 'quote', 'copied');
     navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
     toast(variables.getMessage('toasts.quote'));
   }
@@ -329,14 +339,14 @@ class Quote extends PureComponent {
       this.setState({
         favourited: this.buttons.unfavourited,
       });
+      Stats.postEvent('feature', 'quote', 'favourite_removed');
     } else {
       localStorage.setItem('favouriteQuote', this.state.quote + ' - ' + this.state.author);
       this.setState({
         favourited: this.buttons.favourited,
       });
+      Stats.postEvent('feature', 'quote', 'favourited');
     }
-
-    variables.stats.postEvent('feature', 'quote', 'favourite');
   }
 
   init() {

@@ -1,5 +1,5 @@
 const StatsOverview = ({ stats }) => {
-  const xpPercentage = Math.floor((stats.xp / stats.nextLevelXp) * 100);
+  const xpPercentage = Math.floor((stats.currentLevelXp / stats.nextLevelXp) * 100);
 
   const ProgressCircle = ({ percentage }) => {
     const circleRadius = 50;
@@ -36,12 +36,12 @@ const StatsOverview = ({ stats }) => {
   };
 
   return (
-    <div class="grid grid-cols-2 gap-10">
+    <div className="grid grid-cols-2 gap-10">
       <div className="bg-modal-content-light dark:bg-modal-content-dark py-6 px-10 rounded flex flex-row items-center">
         <ProgressCircle percentage={xpPercentage} />
         <div className="flex flex-col">
           <span className="text-2xl font-bold">Level {stats.level || 1}</span>
-          <span>{`${Math.round(stats.nextLevelXp - stats.xp) || 0} XP until next level`}</span>
+          <span>{`${Math.round(stats.nextLevelXp - stats.currentLevelXp) || 0} XP until next level`}</span>
         </div>
       </div>
       <div className="bg-modal-content-light dark:bg-modal-content-dark py-6 px-10 rounded flex flex-row items-center justify-center">

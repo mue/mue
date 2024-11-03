@@ -16,6 +16,7 @@ import './scss/index.scss';
 import { decodeBlurHash } from 'fast-blurhash';
 
 import defaults from './options/default';
+import Stats from 'features/stats/api/stats';
 
 export default class Background extends PureComponent {
   constructor() {
@@ -71,9 +72,11 @@ export default class Background extends PureComponent {
       this.blob = URL.createObjectURL(await (await fetch(url)).blob());
       backgroundImage.classList.add('backgroundTransform');
       backgroundImage.style.backgroundImage = `url(${this.blob})`;
+      Stats.postEvent('feature', 'background-image', 'shown');
     } else {
       // custom colour
       backgroundImage.setAttribute('style', this.state.style);
+      Stats.postEvent('background', 'colour', 'set');
     }
   }
 
@@ -121,6 +124,7 @@ export default class Background extends PureComponent {
     } catch (e) {
       // if requesting to the API fails, we get an offline image
       this.setState(getOfflineImage('api'));
+      Stats.postEvent('background', 'image', 'offline');
       return null;
     }
 
@@ -182,6 +186,7 @@ export default class Background extends PureComponent {
           url,
         },
       });
+      Stats.postEvent('background', 'favourite', 'set');
     };
 
     const favourited = JSON.parse(localStorage.getItem('favourite'));
@@ -193,7 +198,9 @@ export default class Background extends PureComponent {
     switch (type) {
       case 'api':
         if (offline) {
-          return this.setState(getOfflineImage('api'));
+          this.setState(getOfflineImage('api'));
+          Stats.postEvent('background', 'image', 'offline');
+          return;
         }
 
         // API background
@@ -206,6 +213,7 @@ export default class Background extends PureComponent {
             'nextImage',
             JSON.stringify(await this.getAPIImageData(data.photoInfo.pun)),
           ); // pre-fetch data about the next image
+          Stats.postEvent('background', 'image', 'api');
         }
         break;
 
@@ -227,11 +235,13 @@ export default class Background extends PureComponent {
           type: 'colour',
           style: `background: ${customBackgroundColour || 'rgb(0,0,0)'}`,
         });
+        Stats.postEvent('background', 'colour', 'custom');
         break;
 
       case 'random_colour':
       case 'random_gradient':
         this.setState(randomColourStyleBuilder(type));
+        Stats.postEvent('background', 'colour', 'random');
         break;
       case 'custom':
         let customBackground = [];
@@ -251,7 +261,9 @@ export default class Background extends PureComponent {
 
         // allow users to use offline images
         if (offline && !customBackground.startsWith('data:')) {
-          return this.setState(getOfflineImage('custom'));
+          this.setState(getOfflineImage('custom'));
+          Stats.postEvent('background', 'image', 'offline');
+          return;
         }
 
         if (
@@ -271,12 +283,15 @@ export default class Background extends PureComponent {
           this.setState(object);
 
           localStorage.setItem('currentBackground', JSON.stringify(object));
+          Stats.postEvent('background', 'image', 'custom');
         }
         break;
 
       case 'photo_pack':
         if (offline) {
-          return this.setState(getOfflineImage('photo'));
+          this.setState(getOfflineImage('photo'));
+          Stats.postEvent('background', 'image', 'offline');
+          return;
         }
 
         const photoPack = [];
@@ -292,7 +307,9 @@ export default class Background extends PureComponent {
         });
 
         if (photoPack.length === 0) {
-          return this.setState(getOfflineImage('photo'));
+          this.setState(getOfflineImage('photo'));
+          Stats.postEvent('background', 'image', 'offline');
+          return;
         }
 
         const photo = photoPack[Math.floor(Math.random() * photoPack.length)];
@@ -306,6 +323,7 @@ export default class Background extends PureComponent {
             photographer: photo.photographer,
           },
         });
+        Stats.postEvent('background', 'image', 'photo_pack');
         break;
       default:
         break;

@@ -8,6 +8,7 @@ import { Header, CustomActions } from 'components/Layout/Settings';
 import { StatsOverview } from './sections/StatsOverview';
 import { ClearModal } from './ClearModal';
 import Achievements from './sections/Achievements';
+import StatsDashboard from './sections/StatsDashboard';
 
 import { saveFile } from 'utils/saveFile';
 import variables from 'config/variables';
@@ -37,8 +38,15 @@ const Stats = () => {
   }, [achievements]);
 
   const resetStats = () => {
-    const emptyStats = {};
+    const emptyStats = {
+      level: 1,
+      totalXp: 0,
+      currentLevelXp: 0,
+      nextLevelXp: 100,
+      streak: { current: 0 },
+    };
     localStorage.setItem('statsData', JSON.stringify(emptyStats));
+    localStorage.setItem('eventLog', JSON.stringify([]));
     localStorage.setItem('achievements', JSON.stringify(initialAchievements));
     setStats(emptyStats);
     setClearmodal(false);
@@ -53,18 +61,11 @@ const Stats = () => {
     saveFile(JSON.stringify(stats, null, 2), filename);
   };
 
-  const StatsElement = ({ title, value }) => (
-    <div>
-      <span className="subtitle">{title}</span>
-      <span>{value}</span>
-    </div>
-  );
-
   const STATS_SECTION = 'settings:sections.stats';
 
   return (
     <>
-      {/* <Header title={variables.getMessage(`${STATS_SECTION}.title`)} report={false}>
+      <Header title={variables.getMessage(`${STATS_SECTION}.title`)} report={false}>
         <CustomActions>
           <Button
             type="settings"
@@ -79,7 +80,7 @@ const Stats = () => {
             label={variables.getMessage('settings:buttons.reset')}
           />
         </CustomActions>
-      </Header> */}
+      </Header>
       <Modal
         closeTimeoutMS={100}
         onRequestClose={() => setClearmodal(false)}
@@ -97,50 +98,7 @@ const Stats = () => {
         STATS_SECTION={STATS_SECTION}
         variables={variables}
       />
-      <span class="text-2xl font-semibold pb-5">Statistics</span>
-      <div className="modalInfoPage stats">
-        <div className="statSection rightPanel">
-          <div className="statIcon">
-            <MdShowChart />
-          </div>
-          <div className="statGrid">
-            <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.tabs_opened`)}
-              value={stats['tabs-opened']?.count || 0}
-            />
-            <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.backgrounds_favourited`)}
-              value={stats['background-favourite']?.count || 0}
-            />
-            <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.backgrounds_downloaded`)}
-              value={stats['background-download']?.count || 0}
-            />
-            <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.quotes_favourited`)}
-              value={stats['quoted-favourite']?.count || 0}
-            />
-            <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.quicklinks_added`)}
-              value={stats['quicklink-add']?.count || 0}
-            />
-            <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.settings_changed`)}
-              value={stats.setting ? Object.keys(stats.setting).length : 0}
-            />
-            <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.addons_installed`)}
-              value={stats.marketplace?.install?.length || 0}
-            />
-            <StatsElement
-              title="XP Level"
-              value={`${stats.level || 1} (${stats.xp || 0}/${stats.nextLevelXp || 100} XP)`}
-            />
-            <StatsElement title="Total XP" value={`${stats.totalXp || 0} XP`} />
-            <StatsElement title="Streak" value={`${stats.streak?.current || 0} days`} />
-          </div>
-        </div>
-      </div>
+      <StatsDashboard stats={stats} variables={variables} STATS_SECTION={STATS_SECTION} />
     </>
   );
 };

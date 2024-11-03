@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 
 import { appendNth, convertTimezone } from 'utils/date';
 import EventBus from 'utils/eventbus';
+import Stats from 'features/stats/api/stats';
 import defaults from './options/default';
 
 import './greeting.scss';
@@ -116,6 +117,9 @@ function Greeting() {
 
       // Set the state to the greeting string
       setGreeting(`${message}${name}`);
+
+      // Log the event when a greeting is shown
+      Stats.postEvent('feature', 'greeting', 'shown');
 
       getGreeting();
     }, time);

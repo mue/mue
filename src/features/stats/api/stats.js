@@ -1,3 +1,4 @@
+import { addEvent, getEvents } from 'utils/indexedDB';
 import { newAchievements, getLocalisedAchievementData } from './achievements';
 import { toast } from 'react-toastify';
 import variables from 'config/variables';
@@ -20,35 +21,71 @@ export default class Stats {
   }
 
   static calculateNextLevelXp(level) {
-    return Math.floor(100 * Math.pow(1.5, level - 1));
+    const baseXP = 100;
+    const scalingFactor = 1.2;
+    const softCap = 50;
+
+    if (level <= softCap) {
+      return Math.floor(baseXP * Math.pow(scalingFactor, level - 1));
+    } else {
+      const softCapXP = baseXP * Math.pow(scalingFactor, softCap - 1);
+      const extraLevels = level - softCap;
+      return Math.floor(softCapXP + baseXP * extraLevels * 0.5);
+    }
   }
 
   static calculateXpForEvent(eventType, streak) {
-    let baseXp = 10; // Base XP for an event
-    if (eventType === 'tabs-opened') {
-      baseXp = 5;
+    let baseXp;
+
+    switch (eventType) {
+      case 'new-tab':
+        baseXp = 5;
+        break;
+      case 'settings-tab':
+        baseXp = 1;
+        break;
+      case 'marketplace-install':
+        baseXp = 20;
+        break;
+      default:
+        baseXp = 10;
+        break;
     }
-    return baseXp * (1 + streak * 0.1); // Increase XP by 10% for each day in the streak
+    return Math.round(baseXp * (1 + streak * 0.1));
   }
 
-  static async postEvent(type, name = '', action = '') {
-    const data = JSON.parse(localStorage.getItem('statsData')) || {};
-    const timestamp = new Date().toISOString();
+  static async addEvent(eventLog, event) {
+    await addEvent(event);
+  }
 
-    console.log(`Event Type: ${type}`);
-    console.log(`Event Name: ${name}`);
-    console.log(`Event Action: ${action}`);
+  static updateStatsData(statsData, xpGained) {
+    statsData.totalXp += xpGained;
+    statsData.currentLevelXp += xpGained;
 
-    if (!data[type]) {
-      data[type] = { count: 0, events: [] };
+    while (statsData.currentLevelXp >= statsData.nextLevelXp) {
+      statsData.currentLevelXp -= statsData.nextLevelXp;
+      statsData.level += 1;
+      statsData.nextLevelXp = this.calculateNextLevelXp(statsData.level);
+      toast.info(`🎉 Level Up ${statsData.level}`, {
+        icon: false,
+        closeButton: false,
+      });
     }
 
-    data[type].count += 1;
-    data[type].events.push({ name, action, timestamp });
+    // Ensure XP values are integers
+    statsData.totalXp = Math.round(statsData.totalXp);
+    statsData.currentLevelXp = Math.round(statsData.currentLevelXp);
 
-    // Calculate XP and level
-    const streak = data.streak?.current || 0;
-    const lastEventTimestamp = data[type].events[data[type].events.length - 2]?.timestamp;
+    localStorage.setItem('statsData', JSON.stringify(statsData));
+  }
+
+  static calculateStreak(data, timestamp) {
+    if (!data.events || data.events.length < 2) {
+      data.streak.current = 1;
+      return;
+    }
+
+    const lastEventTimestamp = data.events[data.events.length - 2]?.timestamp;
     const lastEventDate = lastEventTimestamp ? new Date(lastEventTimestamp).toDateString() : null;
     const currentEventDate = new Date(timestamp).toDateString();
 
@@ -56,36 +93,60 @@ export default class Stats {
       const daysDifference =
         (new Date(currentEventDate) - new Date(lastEventDate)) / (1000 * 60 * 60 * 24);
       if (daysDifference === 1) {
-        data.streak = { current: streak + 1 };
+        data.streak.current = (data.streak.current || 0) + 1;
       } else {
-        data.streak = { current: 1 };
+        data.streak.current = 1;
       }
-    } else if (!lastEventDate) {
-      data.streak = { current: 1 };
+    } else {
+      data.streak.current = 1;
     }
+  }
 
-    const xpGained = this.calculateXpForEvent(type, data.streak.current);
-    data.totalXp = (data.totalXp || 0) + xpGained;
-    data.xp = (data.xp || 0) + xpGained;
-    data.nextLevelXp = data.nextLevelXp || this.calculateNextLevelXp(data.level || 1);
+  static async postEvent(type, name = '', action = '') {
+    const eventLog = await getEvents();
+    const statsData = JSON.parse(localStorage.getItem('statsData')) || {
+      level: 1,
+      totalXp: 0,
+      currentLevelXp: 0,
+      nextLevelXp: this.calculateNextLevelXp(1),
+      streak: { current: 0 },
+    };
+    const timestamp = new Date().toISOString();
 
-    console.log(`XP Gained for ${type}: ${xpGained}`);
-    console.log(`Total XP: ${data.totalXp}`);
-    console.log(`Current Level XP: ${data.xp}`);
-    console.log(`Next Level XP: ${data.nextLevelXp}`);
-    console.log(`Current Streak: ${data.streak.current}`);
+    console.log(`Event Type: ${type}`);
+    console.log(`Event Name: ${name}`);
+    console.log(`Event Action: ${action}`);
 
-    while (data.xp >= data.nextLevelXp) {
-      data.xp -= data.nextLevelXp;
-      data.level = (data.level || 1) + 1;
-      data.nextLevelXp = this.calculateNextLevelXp(data.level);
-      toast.info(`🎉 Level Up ${data.level}`, {
-        icon: false,
-        closeButton: false,
-      });
-    }
+    const xpGained = this.calculateXpForEvent(type, statsData.streak.current);
+    await this.addEvent(eventLog, { type, name, action, timestamp, xpGained });
+    this.updateStatsData(statsData, xpGained);
+    this.calculateStreak(statsData, timestamp);
 
-    localStorage.setItem('statsData', JSON.stringify(data));
-    this.achievementTrigger(data);
+    localStorage.setItem('statsData', JSON.stringify(statsData));
+    this.achievementTrigger(statsData);
+  }
+
+  static async getStats(type, name, action, startDate, endDate) {
+    const eventLog = await getEvents();
+    return eventLog.filter((event) => {
+      const eventDate = new Date(event.timestamp);
+      return (
+        (!type || event.type === type) &&
+        (!name || event.name === name) &&
+        (!action || event.action === action) &&
+        (!startDate || eventDate >= new Date(startDate)) &&
+        (!endDate || eventDate <= new Date(endDate))
+      );
+    });
+  }
+
+  static async calculateXpBetweenDates(startDate, endDate) {
+    const eventLog = await getEvents();
+    return eventLog
+      .filter((event) => {
+        const eventDate = new Date(event.timestamp);
+        return eventDate >= new Date(startDate) && eventDate <= new Date(endDate);
+      })
+      .reduce((totalXp, event) => totalXp + (event.xpGained || 0), 0);
   }
 }

@@ -32,7 +32,7 @@ const ItemPage = () => {
   }, [installedItems, selectedItem.name]);
 
   const locale = localStorage.getItem('language');
-  const shortLocale = locale.includes('-') ? locale.split('-')[0] : locale;
+  const shortLocale = locale && locale.includes('-') ? locale.split('-')[0] : locale || 'en';
   let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
 
   let dateObj, formattedDate;

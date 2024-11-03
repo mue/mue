@@ -7,6 +7,7 @@ import { loadSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
 import Preview from 'features/helpers/preview/Preview';
+import Stats from 'features/stats/api/stats';
 
 import Welcome from 'features/welcome/Welcome';
 
@@ -27,8 +28,6 @@ const useAppSetup = () => {
     };
 
     EventBus.on('refresh', refreshHandler);
-
-    variables.stats.postEvent('tabs-opened');
 
     return () => {
       EventBus.off('refresh', refreshHandler);
@@ -52,6 +51,9 @@ const App = () => {
     if (storedBackground === 'true' || storedBackground === true) {
       setShowBackground(true);
     }
+
+    // Post event immediately when the component mounts
+    Stats.postEvent('new-tab', 'tab', 'opened');
   }, []);
 
   useAppSetup();
