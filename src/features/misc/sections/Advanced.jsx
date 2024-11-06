@@ -119,7 +119,7 @@ function AdvancedOptions() {
           <span className="text-3xl font-semibold tracking-tight">
             {variables.getMessage('settings:sections.advanced.custom_css')}
           </span>
-          <Text name="customcss" textarea={true} category="other" customcss={true} />
+          <Text name="customcss" textarea={true} category="other" code={true} />
         </PreferencesWrapper>
       )}
       {subSection === '' && (

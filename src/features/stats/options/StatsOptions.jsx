@@ -24,10 +24,10 @@ const Stats = () => {
   );
   const [clearmodal, setClearmodal] = useState(false);
 
-  const updateAchievements = useCallback(() => {
-    const achieved = checkAchievements(stats);
+  const updateAchievements = useCallback(async () => {
+    const achieved = await checkAchievements();
     setAchievements(achieved);
-  }, [stats]);
+  }, []);
 
   useEffect(() => {
     updateAchievements();

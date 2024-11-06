@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { MdEmail, MdContactPage } from 'react-icons/md';
 import { FaDiscord } from 'react-icons/fa';
 import { SiGithubsponsors, SiOpencollective, SiX } from 'react-icons/si';
@@ -18,15 +18,20 @@ function About() {
   );
   const [loading, setLoading] = useState(variables.getMessage('modals.main.loading'));
 
-  const controller = new AbortController();
+  const controller = useMemo(() => new AbortController(), []);
+
   useEffect(() => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [controller]);
 
-  const getGitHubData = async () => {
-    let contributors, sponsors, photographers, curators, versionData;
+  const getGitHubData = useCallback(async () => {
+    let contributors = [];
+    let sponsors = [];
+    let photographers = [];
+    let curators = [];
+    let versionData = [];
 
     try {
       versionData = await (
@@ -81,7 +86,7 @@ function About() {
       setLoading(variables.getMessage('settings:sections.about.version.error.description'));
     }
 
-    if (sponsors.length === 0) {
+    if (!sponsors || sponsors.length === 0) {
       sponsors = [{ handle: 'empty' }];
     }
 
@@ -89,7 +94,7 @@ function About() {
       return;
     }
 
-    const newVersion = versionData[0].tag_name;
+    const newVersion = versionData[0]?.tag_name || '';
 
     let update = variables.getMessage('settings:sections.about.version.no_update');
 
@@ -108,7 +113,7 @@ function About() {
     setPhotographers(photographers);
     setCurators(curators);
     setLoading(null);
-  };
+  }, [controller]);
 
   useEffect(() => {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
@@ -118,11 +123,11 @@ function About() {
     }
 
     getGitHubData();
-  }, []);
+  }, [getGitHubData]);
 
-  return (
-    <div className="modalInfoPage">
-      <div className="settingsRow" style={{ justifyContent: 'center' }}>
+  const Header = () => {
+    return (
+      <div className="settingsRow" style={{ justifyContent: 'center', border: 'none' }}>
         <div style={{ display: 'flex', flexFlow: 'column', gap: '5px' }}>
           <img draggable={false} className="aboutLogo" src={'icons/mue_about.png'} alt="Logo" />
           <div className="aboutText">
@@ -179,9 +184,15 @@ function About() {
           </span>
         </div>
       </div>
+    );
+  };
 
-      <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
-        <span className="title">{variables.getMessage('settings:sections.about.contact_us')}</span>
+  const ContactBlock = () => {
+    return (
+      <div className="bg-modal-content-light dark:bg-modal-content-dark py-6 px-10 rounded flex flex-col items-start gap-5">
+        <span className="text-2xl font-semibold">
+          {variables.getMessage('settings:sections.about.contact_us')}
+        </span>
         <div className="aboutContact">
           <Button
             type="linkButton"
@@ -209,9 +220,15 @@ function About() {
           />
         </div>
       </div>
+    );
+  };
 
-      <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
-        <span className="title">{variables.getMessage('settings:sections.about.support_mue')}</span>
+  const SponsorBlock = () => {
+    return (
+      <div className="bg-modal-content-light dark:bg-modal-content-dark py-6 px-10 rounded flex flex-col items-start gap-5">
+        <span className="text-2xl font-semibold">
+          {variables.getMessage('settings:sections.about.support_mue')}
+        </span>
         <p>{variables.getMessage('settings:sections.about.support_subtitle')}</p>
         <div className="aboutContact">
           <Button
@@ -232,6 +249,36 @@ function About() {
             icon={<SiOpencollective />}
             tooltipTitle="Open Collective"
           />
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="modalInfoPage">
+      <Header />
+      <div className="grid grid-cols-2 gap-10">
+        <ContactBlock />
+        <SponsorBlock />
+      </div>
+
+      <div className="flex flex-col px-10">
+        <span className="py-10 text-2xl font-semibold">
+          {variables.getMessage('settings:sections.about.contributors')}
+        </span>
+        <p>{loading}</p>
+        <div className="contributorImages">
+          {contributors.map(({ login, id }) => (
+            <Tooltip title={login} key={login}>
+              <a href={'https://github.com/' + login} target="_blank" rel="noopener noreferrer">
+                <img
+                  draggable={false}
+                  src={'https://avatars.githubusercontent.com/u/' + id + '?s=128'}
+                  alt={login}
+                ></img>
+              </a>
+            </Tooltip>
+          ))}
         </div>
       </div>
 
@@ -257,26 +304,6 @@ function About() {
           </a>{' '}
           ({variables.getMessage('settings:sections.about.resources_used.bg_images')})
         </span>
-      </div>
-
-      <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
-        <span className="title">
-          {variables.getMessage('settings:sections.about.contributors')}
-        </span>
-        <p>{loading}</p>
-        <div className="contributorImages">
-          {contributors.map(({ login, id }) => (
-            <Tooltip title={login} key={login}>
-              <a href={'https://github.com/' + login} target="_blank" rel="noopener noreferrer">
-                <img
-                  draggable={false}
-                  src={'https://avatars.githubusercontent.com/u/' + id + '?s=128'}
-                  alt={login}
-                ></img>
-              </a>
-            </Tooltip>
-          ))}
-        </div>
       </div>
 
       <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>

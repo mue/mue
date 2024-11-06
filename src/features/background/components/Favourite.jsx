@@ -1,27 +1,26 @@
 import variables from 'config/variables';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MdStar, MdStarBorder } from 'react-icons/md';
 
 import defaults from '../options/default';
 
 function Favourite({ credit, offline, pun, tooltipText }) {
-  const [favourited, setFavourited] = useState(
-    localStorage.getItem('favourite') ? (
-      <MdStar onClick={() => favourite()} className="topicons" />
-    ) : (
-      <MdStarBorder onClick={() => favourite()} className="topicons" />
-    ),
-  );
+  const [favourited, setFavourited] = useState(false);
 
-  const buttons = {
-    favourited: <MdStar onClick={() => favourite()} className="topicons" />,
-    unfavourited: <MdStarBorder onClick={() => favourite()} className="topicons" />,
-  };
+  useEffect(() => {
+    const isFavourited = localStorage.getItem('favourite') !== null;
+    setFavourited(isFavourited);
+    tooltipText(
+      isFavourited
+        ? variables.getMessage('widgets.quote.unfavourite')
+        : variables.getMessage('widgets.quote.favourite'),
+    );
+  }, [tooltipText]);
 
-  async function favourite() {
+  const favourite = async () => {
     if (localStorage.getItem('favourite')) {
       localStorage.removeItem('favourite');
-      setFavourited(buttons.unfavourited);
+      setFavourited(false);
       tooltipText(variables.getMessage('widgets.quote.favourite'));
       variables.stats.postEvent('feature', 'background', 'favourite');
     } else {
@@ -82,31 +81,30 @@ function Favourite({ credit, offline, pun, tooltipText }) {
                   pun,
                 }),
               );
-
-              setFavourited(buttons.favourited);
-
-              tooltipText(variables.getMessage('widgets.quote.unfavourite'));
-
-              variables.stats.postEvent('feature', 'background', 'unfavourite');
             }
           }
 
-          return setFavourited(buttons.favourited);
+          setFavourited(true);
+          tooltipText(variables.getMessage('widgets.quote.unfavourite'));
+          variables.stats.postEvent('feature', 'background', 'unfavourite');
+          return;
       }
+
+      setFavourited(true);
+      tooltipText(variables.getMessage('widgets.quote.unfavourite'));
+      variables.stats.postEvent('feature', 'background', 'unfavourite');
     }
-  }
+  };
 
   if (localStorage.getItem('backgroundType') === 'colour') {
     return null;
   }
 
-  tooltipText(
-    localStorage.getItem('favourite')
-      ? variables.getMessage('widgets.quote.unfavourite')
-      : variables.getMessage('widgets.quote.favourite'),
+  return favourited ? (
+    <MdStar onClick={favourite} className="topicons" />
+  ) : (
+    <MdStarBorder onClick={favourite} className="topicons" />
   );
-
-  return favourited;
 }
 
 export default Favourite;

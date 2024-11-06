@@ -5,7 +5,7 @@ import variables from 'config/variables';
 
 export default class Stats {
   static async achievementTrigger(stats) {
-    const newAchievement = newAchievements(stats);
+    const newAchievement = await newAchievements(stats);
     newAchievement.forEach((achievement) => {
       if (achievement) {
         const { name } = getLocalisedAchievementData(achievement.id);
@@ -54,7 +54,7 @@ export default class Stats {
     return Math.round(baseXp * (1 + streak * 0.1));
   }
 
-  static async addEvent(eventLog, event) {
+  static async addEvent(event) {
     await addEvent(event);
   }
 
@@ -118,12 +118,14 @@ export default class Stats {
     console.log(`Event Action: ${action}`);
 
     const xpGained = this.calculateXpForEvent(type, statsData.streak.current);
-    await this.addEvent(eventLog, { type, name, action, timestamp, xpGained });
+    await this.addEvent({ type, name, action, timestamp, xpGained });
     this.updateStatsData(statsData, xpGained);
     this.calculateStreak(statsData, timestamp);
 
+    console.log(`Updated Stats Data: ${JSON.stringify(statsData)}`);
+
     localStorage.setItem('statsData', JSON.stringify(statsData));
-    this.achievementTrigger(statsData);
+    await this.achievementTrigger(statsData);
   }
 
   static async getStats(type, name, action, startDate, endDate) {

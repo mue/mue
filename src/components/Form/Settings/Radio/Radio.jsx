@@ -59,18 +59,18 @@ function Radio(props) {
             key={option.name}
             label={option.name}
             value={option.value}
-            className="data-[checked]:bg-white/10 group relative flex cursor-pointer rounded-lg bg-white/5 data-[checked]:hover:bg-neutral-700 hover:bg-neutral-700 py-4 px-5 text-white shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
+            className="data-[checked]:bg-white/10 group relative flex cursor-pointer rounded-lg bg-white/5 data-[checked]:hover:bg-neutral-700 hover:bg-neutral-700 py-4 px-5 dark:text-white text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
           >
             <div className="flex w-full items-center justify-between">
               <div className="text-sm/6">
-                <p className="font-semibold text-white capitalize">{option.name}</p>
-                <div className="flex gap-2 text-white/50">
+                <p className="font-semibold capitalize">{option.name}</p>
+                <div className="flex gap-2 dark:text-white/50">
                   <div>{option.subname}</div>
                   <div aria-hidden="true">&middot;</div>
                   <div>10%</div>
                 </div>
               </div>
-              <MdCheckCircle className="size-6 fill-white opacity-0 transition group-data-[checked]:opacity-100" />
+              <MdCheckCircle className="size-6 dark:fill-white fill-black opacity-0 transition group-data-[checked]:opacity-100" />
             </div>
           </PureRadio>
         ))}
