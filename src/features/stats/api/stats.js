@@ -79,27 +79,40 @@ export default class Stats {
     localStorage.setItem('statsData', JSON.stringify(statsData));
   }
 
-  static calculateStreak(data, timestamp) {
-    if (!data.events || data.events.length < 2) {
+  static async calculateStreak(data) {
+    const events = await getEvents();
+    if (!events || events.length < 2) {
       data.streak.current = 1;
+      data.streak.highest = 1;
       return;
     }
 
-    const lastEventTimestamp = data.events[data.events.length - 2]?.timestamp;
-    const lastEventDate = lastEventTimestamp ? new Date(lastEventTimestamp).toDateString() : null;
-    const currentEventDate = new Date(timestamp).toDateString();
+    let currentStreak = 1;
+    let highestStreak = data.streak.highest || 1;
 
-    if (lastEventDate && lastEventDate !== currentEventDate) {
+    for (let i = events.length - 2; i >= 0; i--) {
+      const currentEventDate = new Date(events[i].timestamp).toDateString();
+      const nextEventDate = new Date(events[i + 1].timestamp).toDateString();
+
       const daysDifference =
-        (new Date(currentEventDate) - new Date(lastEventDate)) / (1000 * 60 * 60 * 24);
+        (new Date(nextEventDate) - new Date(currentEventDate)) / (1000 * 60 * 60 * 24);
+
       if (daysDifference === 1) {
-        data.streak.current = (data.streak.current || 0) + 1;
+        currentStreak += 1;
       } else {
-        data.streak.current = 1;
+        if (currentStreak > highestStreak) {
+          highestStreak = currentStreak;
+        }
+        currentStreak = 1;
       }
-    } else {
-      data.streak.current = 1;
     }
+
+    if (currentStreak > highestStreak) {
+      highestStreak = currentStreak;
+    }
+
+    data.streak.current = currentStreak;
+    data.streak.highest = highestStreak;
   }
 
   static async postEvent(type, name = '', action = '') {
@@ -109,7 +122,7 @@ export default class Stats {
       totalXp: 0,
       currentLevelXp: 0,
       nextLevelXp: this.calculateNextLevelXp(1),
-      streak: { current: 0 },
+      streak: { current: 0, highest: 0 },
     };
     const timestamp = new Date().toISOString();
 
@@ -120,7 +133,7 @@ export default class Stats {
     const xpGained = this.calculateXpForEvent(type, statsData.streak.current);
     await this.addEvent({ type, name, action, timestamp, xpGained });
     this.updateStatsData(statsData, xpGained);
-    this.calculateStreak(statsData, timestamp);
+    await this.calculateStreak(statsData);
 
     console.log(`Updated Stats Data: ${JSON.stringify(statsData)}`);
 
