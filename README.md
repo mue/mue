@@ -9,6 +9,15 @@
 <p align="center"><a href="https://muetab.com">muetab.com</a></p>
 
 
+<div align="center">
+
+[![Chrome](./assets/chrome.svg)](https://chromewebstore.google.com/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
+[![Edge](./assets/edge.svg)](https://microsoftedge.microsoft.com/addons/detail/mue/aepnglgjfokepefimhbnibfjekidhmja)
+[![Firefox](./assets/firefox.svg)](https://addons.mozilla.org/en-GB/firefox/addon/mue/)
+
+</div>
+
+
 
 ## 🤔 Why Mue?
 - Beautiful and Minimalist Design
