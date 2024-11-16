@@ -6,27 +6,98 @@ widgets:
     christmas: Merry Christmas
     newyear: Happy New Year
     halloween: Happy Halloween
-  background: {}
-  quicklinks: {}
-  date: {}
+    birthday: Happy Birthday
+  background:
+    unsplash: on Unsplash
+    information: Information
+    views: Views
+    likes: Likes
+    location: Location
+    camera: Camera
+    resolution: Resolution
+    source: Source
+    category: Category
+    exclude: Don't show again
+    exclude_confirm: "Are you sure you don't want to see this image again?\nNote:
+      if you don't like \"{category}\" images, you can deselect the category in the
+      background source settings."
+    confirm: Confirm
+    download: Download
+    credit: Photo by
+    downloads: Downloads
+  quicklinks:
+    new: New Link
+    edit: Edit Link
+    url: URL
+    icon: Icon (optional)
+    add: Add
+    url_error: Must provide URL
+    name: Name
+    name_error: Must provide name
+  date:
+    week: Week
   weather:
     meters: "{amount} meters"
+    not_found: Not Found
+    extra_information: Extra Information
+    feels_like: Feels like {amount}
   quote:
     favourite: Favorite
     unfavourite: Unfavorite
+    link_tooltip: Open on Wikipedia
+    share: Share
+    copy: Copy
   navbar:
-    tooltips: {}
-    notes: {}
-    todo: {}
-    apps: {}
+    tooltips:
+      refresh: Refresh
+    notes:
+      title: Notes
+      placeholder: Type here
+    todo:
+      title: Todo
+      pin: Pin
+      add: Add
+      no_todos: No Todos
+    apps:
+      no_apps: No app links found
+      title: Apps
+  search: Search
 modals:
   main:
     navbar:
       addons: My Add-ons
-    error_boundary: {}
+      settings: Settings
+      marketplace: Discover
+    error_boundary:
+      title: Error
+      report_error: Send Error Report
+      sent: Sent!
+      message: Failed to load this component of Mue
+      refresh: Refresh
+    title: Options
+    file_upload_error: File is over 2MB
+    loading: Loading...
   update:
-    offline: {}
-    error: {}
-  share: {}
-toasts: {}
+    offline:
+      description: Cannot get update logs while in offline mode
+      title: Offline
+    error:
+      title: Error
+      description: Could not connect to the server
+    title: Update
+  share:
+    email: Email
+    copy_link: Copy link
+toasts:
+  quote: Quote copied
+  notes: Notes copied
+  reset: Reset successfully
+  installed: Successfully installed
+  uninstalled: Successfully removed
+  updated: Successfully updated
+  error: Something went wrong
+  imported: Successfully imported
+  no_storage: Not enough storage
+  link_copied: Link copied
+  stats_reset: Stats reset
 tabname: New Tab
