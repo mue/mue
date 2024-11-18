@@ -10,7 +10,6 @@ import {
   MdFolder,
 } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
-import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from '../api/videoCheck';
 
 import { Checkbox, FileUpload } from 'components/Form/Settings';
@@ -162,23 +161,14 @@ export default class CustomSettings extends PureComponent {
         return this.customBackground(file, this.state.currentBackgroundIndex);
       }
 
-      compressAccurately(file, {
-        size: 450,
-        accuracy: 0.9,
-      }).then(async (res) => {
-        if (settingsSize + res.size > 4850000) {
-          return toast(variables.getMessage('toasts.no_storage'));
-        }
-
-        this.customBackground(
-          {
-            target: {
-              result: await filetoDataURL(res),
-            },
+      this.customBackground(
+        {
+          target: {
+            result: file,
           },
-          this.state.currentBackgroundIndex,
-        );
-      });
+        },
+        this.state.currentBackgroundIndex,
+      );
       e.preventDefault();
     };
   }
