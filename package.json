@@ -21,7 +21,7 @@
     "@mui/material": "6.1.7",
     "@sentry/react": "^8.38.0",
     "embla-carousel-autoplay": "8.3.1",
-    "embla-carousel-react": "8.3.1",
+    "embla-carousel-react": "8.4.0",
     "fast-blurhash": "^1.1.4",
     "image-conversion": "^2.1.1",
     "mue": "file:",
