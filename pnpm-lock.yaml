@@ -37,10 +37,10 @@ importers:
         version: 8.39.0(react@18.3.1)
       embla-carousel-autoplay:
         specifier: 8.4.0
-        version: 8.4.0(embla-carousel@8.4.0)
+        version: 8.4.0(embla-carousel@8.5.1)
       embla-carousel-react:
-        specifier: 8.4.0
-        version: 8.4.0(react@18.3.1)
+        specifier: 8.5.1
+        version: 8.5.1(react@18.3.1)
       fast-blurhash:
         specifier: ^1.1.4
         version: 1.1.4
@@ -49,7 +49,7 @@ importers:
         version: 2.1.1
       mue:
         specifier: 'file:'
-        version: file:(@types/react@18.3.11)(embla-carousel@8.4.0)(prop-types@15.8.1)
+        version: file:(@types/react@18.3.11)(embla-carousel@8.5.1)(prop-types@15.8.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -1993,18 +1993,18 @@ packages:
     peerDependencies:
       embla-carousel: 8.4.0
 
-  embla-carousel-react@8.4.0:
-    resolution: {integrity: sha512-r5UszqLnIIhfXfGzTlfEAYZ310H4gIiLvBsNQ9dnHY6T2ooMsZs+k5vpJAYjkFtUSaQJ1xZxSGwIV6+IoA8QEw==}
+  embla-carousel-react@8.5.1:
+    resolution: {integrity: sha512-z9Y0K84BJvhChXgqn2CFYbfEi6AwEr+FFVVKm/MqbTQ2zIzO1VQri6w67LcfpVF0AjbhwVMywDZqY4alYkjW5w==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
-  embla-carousel-reactive-utils@8.4.0:
-    resolution: {integrity: sha512-yi/2paSYQqMGgh983Sj8G4+zt4bhABC1pzN4P4Vmc7UhSxqo9I7r15tR7s3/zS0JEl3orRSw7TxX92IZqj5NXA==}
+  embla-carousel-reactive-utils@8.5.1:
+    resolution: {integrity: sha512-n7VSoGIiiDIc4MfXF3ZRTO59KDp820QDuyBDGlt5/65+lumPHxX2JLz0EZ23hZ4eg4vZGUXwMkYv02fw2JVo/A==}
     peerDependencies:
-      embla-carousel: 8.4.0
+      embla-carousel: 8.5.1
 
-  embla-carousel@8.4.0:
-    resolution: {integrity: sha512-sUzm4DGGsdZCom7LEO38Uu6C7oQoFfPorKDf/f7j2EeRCMhHSOt3CvF+pHCaI6N+x5Y8/tfLueJ0WZlgUREnew==}
+  embla-carousel@8.5.1:
+    resolution: {integrity: sha512-JUb5+FOHobSiWQ2EJNaueCNT/cQU9L6XWBbWmorWPQT9bkbk+fhsuLr8wWrzXKagO3oWszBO7MSx+GfaRk4E6A==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -5593,21 +5593,21 @@ snapshots:
 
   electron-to-chromium@1.5.36: {}
 
-  embla-carousel-autoplay@8.4.0(embla-carousel@8.4.0):
+  embla-carousel-autoplay@8.4.0(embla-carousel@8.5.1):
     dependencies:
-      embla-carousel: 8.4.0
+      embla-carousel: 8.5.1
 
-  embla-carousel-react@8.4.0(react@18.3.1):
+  embla-carousel-react@8.5.1(react@18.3.1):
     dependencies:
-      embla-carousel: 8.4.0
-      embla-carousel-reactive-utils: 8.4.0(embla-carousel@8.4.0)
+      embla-carousel: 8.5.1
+      embla-carousel-reactive-utils: 8.5.1(embla-carousel@8.5.1)
       react: 18.3.1
 
-  embla-carousel-reactive-utils@8.4.0(embla-carousel@8.4.0):
+  embla-carousel-reactive-utils@8.5.1(embla-carousel@8.5.1):
     dependencies:
-      embla-carousel: 8.4.0
+      embla-carousel: 8.5.1
 
-  embla-carousel@8.4.0: {}
+  embla-carousel@8.5.1: {}
 
   emoji-regex@8.0.0: {}
 
@@ -6485,7 +6485,7 @@ snapshots:
 
   ms@2.1.3: {}
 
-  mue@file:(@types/react@18.3.11)(embla-carousel@8.4.0)(prop-types@15.8.1):
+  mue@file:(@types/react@18.3.11)(embla-carousel@8.5.1)(prop-types@15.8.1):
     dependencies:
       '@eartharoid/i18n': 1.2.1
       '@emotion/react': 11.13.5(@types/react@18.3.11)(react@18.3.1)
@@ -6496,8 +6496,8 @@ snapshots:
       '@muetab/react-sortable-hoc': 2.0.1(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mui/material': 6.1.7(@emotion/react@11.13.5(@types/react@18.3.11)(react@18.3.1))(@emotion/styled@11.13.5(@emotion/react@11.13.5(@types/react@18.3.11)(react@18.3.1))(@types/react@18.3.11)(react@18.3.1))(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@sentry/react': 8.39.0(react@18.3.1)
-      embla-carousel-autoplay: 8.4.0(embla-carousel@8.4.0)
-      embla-carousel-react: 8.4.0(react@18.3.1)
+      embla-carousel-autoplay: 8.4.0(embla-carousel@8.5.1)
+      embla-carousel-react: 8.5.1(react@18.3.1)
       fast-blurhash: 1.1.4
       image-conversion: 2.1.1
       react: 18.3.1
