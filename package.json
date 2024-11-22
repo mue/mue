@@ -20,7 +20,7 @@
     "@muetab/react-sortable-hoc": "^2.0.1",
     "@mui/material": "6.1.8",
     "@sentry/react": "^8.39.0",
-    "embla-carousel-autoplay": "8.4.0",
+    "embla-carousel-autoplay": "8.5.1",
     "embla-carousel-react": "8.5.1",
     "fast-blurhash": "^1.1.4",
     "image-conversion": "^2.1.1",
