@@ -4,6 +4,8 @@ import defaults from 'config/default';
 
 function Final(props) {
   const language = localStorage.getItem('language') || defaults.language;
+  const theme = localStorage.getItem('theme') || defaults.theme;
+
   return (
     <Content>
       <Header
@@ -25,7 +27,7 @@ function Final(props) {
           <span>
             {variables.getMessage('settings:sections.appearance.theme.title')}:{' '}
             {variables.getMessage(
-              'settings:sections.appearance.theme.' + localStorage.getItem('theme'),
+              'settings:sections.appearance.theme.' + theme,
             )}
           </span>
         </div>

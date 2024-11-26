@@ -25,6 +25,7 @@ widgets:
     source: Fuente
     exclude: No volver a mostrar
     confirm: Confirmación
+    resolution: Resolución
   search: Buscar
   quicklinks:
     new: Nuevo enlace
@@ -41,6 +42,7 @@ widgets:
     not_found: No encontrado
     meters: "{amount} metros"
     extra_information: Información adicional
+    feels_like: Sensación {amount}
   quote: {}
   navbar:
     tooltips:

@@ -18,9 +18,13 @@ let locale_id = localStorage.getItem('language');
 
 if (locale_id?.indexOf('_')) {
   localStorage.setItem('language', locale_id.replace('_', '-'));
+  locale_id = locale_id.replace('_', '-');
 }
+
 locale_id ||= defaults.language;
+
 const t = await createTranslator(locale_id);
+
 variables.locale_id = locale_id;
 document.documentElement.lang = locale_id;
 
@@ -33,8 +37,8 @@ Sentry.init({
   autoSessionTracking: false,
 });
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const root = createRoot(document.getElementById('root'));
+
 root.render(
   <ErrorBoundary>
     <App />

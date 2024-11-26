@@ -3,7 +3,7 @@
  * @param url - The URL of the file to be checked.
  * @returns A function that takes a url and returns a boolean.
  */
-export default function videoCheck(url) {
+export default function videoCheck(url = '') {
   return (
     url.startsWith('data:video/') ||
     url.endsWith('.mp4') ||

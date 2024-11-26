@@ -1,6 +1,5 @@
 import variables from 'config/variables';
 import { toast } from 'react-toastify';
-import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from 'features/background/api/videoCheck';
 
 function FileUpload({ id, type, accept, loadFunction }) {
@@ -30,20 +29,13 @@ function FileUpload({ id, type, accept, loadFunction }) {
         return loadFunction(file);
       }
 
-      compressAccurately(file, {
-        size: 450,
-        accuracy: 0.9,
-      }).then(async (res) => {
-        if (settingsSize + res.size > 4850000) {
-          return toast(variables.getMessage('toasts.no_storage'));
-        }
-
-        loadFunction({
+      loadFunction(
+        {
           target: {
-            result: await filetoDataURL(res),
+            result: file,
           },
-        });
-      });
+        },
+      );
     }
   };
 

@@ -59,7 +59,7 @@ function Radio(props) {
             key={option.name}
             label={option.name}
             value={option.value}
-            className="data-[checked]:bg-white/10 group relative flex cursor-pointer rounded-lg bg-white/5 data-[checked]:hover:bg-neutral-700 hover:bg-neutral-700 py-4 px-5 dark:text-white text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
+            className="data-[checked]:bg-white/10 group relative flex cursor-pointer rounded-lg bg-white/5 dark:data-[checked]:hover:bg-neutral-700 dark:hover:bg-neutral-700 dark:data-[checked]:hover:bg-neutral-700 hover:bg-neutral-200 py-4 px-5 dark:text-white text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
           >
             <div className="flex w-full items-center justify-between">
               <div className="text-sm/6">

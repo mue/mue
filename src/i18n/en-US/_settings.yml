@@ -1,69 +1,381 @@
-reminder: {}
+reminder:
+  message: In order for all of the changes to take place, the page must be refreshed.
+  title: NOTICE
 sections:
-  header: {}
+  header:
+    more_info: More info
+    report_issue: Report Issue
+    enabled: Choose whether or not to show this widget
+    size: Slider to control how large the widget is
   time:
-    digital: {}
+    digital:
+      title: Digital
+      seconds: Seconds
+      twentyfourhour: 24 Hour
+      twelvehour: 12 hour
+      zero: Zero-padded
+      subtitle: Change how the digital clock looks
     analogue:
       title: Analog
+      subtitle: Change how the analogue clock looks
+      second_hand: Seconds hand
+      minute_hand: Minutes hand
+      hour_hand: Hours hand
+      hour_marks: Hour marks
+      minute_marks: Minute marks
+      round_clock: Rounded background
     vertical_clock:
       change_hour_colour: Change hour text color
       change_minute_colour: Change minute text color
+      title: Vertical Clock
+      change_second_colour: Change second text colour
+    title: Time
+    format: Format
+    type: Type
+    type_subtitle: Choose whether to display the time in digital format, analogue
+      format, or a percentage completion of the day
+    percentage_complete: Percentage complete
   date:
-    type: {}
-    short_separator: {}
+    type:
+      short: Short
+      long: Long
+      subtitle: Whether to display the date in long form or short form
+    short_separator:
+      slashes: Slashes
+      title: Short separator
+      dots: Dots
+      dash: Dash
+      gaps: Gaps
+    short_date: Short date
+    long_format: Long format
+    title: Date
+    week_number: Week number
+    day_of_week: Day of week
+    datenth: Date nth
+    type_settings: Display settings and format for the selected date type
+    short_format: Short format
   quote:
     buttons:
       favourite: Favorite
-  greeting: {}
+      title: Buttons
+      subtitle: Choose which buttons to show on the quote
+      copy: Copy
+      tweet: Tweet
+    add: Add quote
+    title: Quote
+    additional: Other settings to customise the style of the quote widget
+    author_link: Author link
+    custom: Custom quote
+    custom_subtitle: Set your own custom quotes
+    no_quotes: No quotes
+    author: Author
+    custom_buttons: Buttons
+    custom_author: Custom author
+    author_img: Show author image
+    source_subtitle: Choose where to get quotes from
+  greeting:
+    events_description: Control events on Mue such as birthdays.
+    title: Greeting
+    events: Events
+    enable_events: Show messages on special days
+    default: Default greeting message
+    name: Name for greeting
+    birthday: Birthday
+    birthday_subtitle: Show a Happy Birthday message when it is your birthday
+    birthday_age: Birthday age
+    birthday_date: Birthday date
+    additional: Settings for the greeting display
+    custom: Custom events
+    event_name: Event Name
+    day: Day
+    month: Month
+    no_events: No Events
+    no_events_description: Add Some Events
+    add_event: Add Event
   background:
     buttons:
       view: Maximize
+      title: Buttons
+      favourite: Favourite
+      download: Download
     effects:
-      filters: {}
+      filters:
+        title: Background filter
+        amount: Filter amount
+        grayscale: Grayscale
+        sepia: Sepia
+        contrast: Contrast
+        invert: Invert
+        saturate: Saturate
+      title: Effects
+      brightness: Adjust brightness
+      subtitle: Add effects to the background images
+      blur: Adjust blur
     type:
       custom_colour: Custom color/gradient
-    unsplash: {}
+      title: Type
+      api: API
+      custom_image: Custom image
+      random_colour: Random colour
+      random_gradient: Random gradient
+    unsplash:
+      title: Unsplash Collection(s)
+      subtitle: Select the collection(s) you want to use for your background
+      id: Collection ID(s)
+      id_subtitle: Enter a comma separated list of Unsplash IDs
     source:
       custom_colour: Custom background color
       add_colour: Add color
-      quality: {}
+      quality:
+        title: Quality
+        high: High Quality
+        normal: Normal Quality
+        datasaver: Data Saver
+        original: Original
+      title: Source
+      add_background: Add background
+      drop_to_upload: Drop to upload
+      formats: 'Available formats: {list}'
+      select: Or Select
+      add_url: Add URL
+      disabled: Disabled
+      loop_video: Loop video
+      mute_video: Mute video
+      custom_title: Custom Images
+      custom_description: Select images from your local computer
+      remove: Remove Image
+      api: Background API
+      subtitle: Select where to get background images from
+      custom_background: Custom background
+      upload: Upload
+    category: Category
+    display: Display
+    display_subtitle: Change how background and photo information are loaded
+    api: API Settings
+    api_subtitle: Options for getting an image from an external service (API)
+    show_map: Show location map on photo information if available
+    title: Background
+    transition: Fade-in transition
+    photo_information: Show photo information
+    categories: Categories
   search:
     voice_search: Voice Search
+    title: Search
+    additional: Additional options for search widget display and functionality
+    search_engine: Search Engine
+    search_engine_subtitle: Choose search engine to use in the search bar
+    custom: Custom Search URL
+    autocomplete: Autocomplete
+    autocomplete_provider: Autocomplete Provider
+    autocomplete_provider_subtitle: Search engine to use for autocomplete dropdown
+      results
+    dropdown: Search Dropdown
+    focus: Focus on tab open
   weather:
-    temp_format: {}
-    extra_info: {}
-    options: {}
+    temp_format:
+      title: Temperature format
+      celsius: Celsius
+      fahrenheit: Fahrenheit
+      kelvin: Kelvin
+    extra_info:
+      title: Extra information
+      show_location: Show location
+      show_description: Show description
+      weather_description: Weather description
+      cloudiness: Cloudiness
+      humidity: Humidity
+      visibility: Visibility
+      wind_speed: Wind speed
+      wind_direction: Wind direction
+      min_temp: Minimum temperature
+      max_temp: Maximum temperature
+      atmospheric_pressure: Atmospheric pressure
+    options:
+      basic: Basic
+      standard: Standard
+      expanded: Expanded
+      custom: Custom
+    title: Weather
+    location: Location
+    auto: Auto
+    widget_type: Widget Type
+    custom_settings: Custom Settings
   quicklinks:
-    options: {}
-  message: {}
+    options:
+      icon: Icon
+      text_only: Text Only
+      metro: Metro
+    title: Quick Links
+    additional: Additional settings for quick links display and functions
+    open_new: Open in new tab
+    tooltip: Tooltip
+    text_only: Show text only
+    add_link: Add Link
+    no_quicklinks: No quick links
+    edit: Edit
+    style: Style
+    styling: Styling
+    styling_description: Customise Quick Links appearance
+  message:
+    title: Message
+    add: Add message
+    messages: Messages
+    text: Text
+    no_messages: No messages
+    add_some: Go ahead and add some.
+    content: Message Content
   appearance:
-    style: {}
-    theme: {}
+    style:
+      title: Widget Style
+      description: Choose between the two styles, legacy (enabled for pre 7.0 users)
+        and our slick modern styling.
+      legacy: Legacy
+      new: New
+    theme:
+      title: Theme
+      description: Change the theme of the Mue widgets and modals
+      auto: Auto
+      light: Light
+      dark: Dark
     navbar:
-      refresh_options: {}
+      refresh_options:
+        none: None
+        page: Page
+      title: Navbar
+      widgets: Navbar Widgets
+      notes: Notes
+      refresh: Refresh
+      refresh_subtitle: Choose what is refreshed when you click the refresh button
+      hover: Only display on hover
+      additional: Modify navbar style and which buttons you want to display
+      apps_subtitle: Create a shortcut of your other commonly used websites.
     font:
-      weight: {}
-      style: {}
+      weight:
+        title: Font weight
+        thin: Thin
+        extra_light: Extra Light
+        light: Light
+        normal: Normal
+        medium: Medium
+        semi_bold: Semi-Bold
+        bold: Bold
+        extra_bold: Extra-Bold
+      style:
+        title: Font style
+        normal: Normal
+        italic: Italic
+        oblique: Oblique
+      title: Font
+      description: Change the font used in Mue
+      custom: Custom font
+      google: Import from Google Fonts
     accessibility:
-      text_shadow: {}
+      text_shadow:
+        title: Widget text shadow
+        new: New
+        old: Old
+        none: None
       widget_zoom: Widget zoom
-  order: {}
+      description: Make Mue comfortable and accessible
+      toast_duration: Toast Duration
+      milliseconds: milliseconds
+      title: Accessibility
+      animations: Animations
+    title: Appearance
+  order:
+    title: Widget Order
   advanced:
-    data_subtitle: Choose whether to export your Mue settings to your computer,
-      import an existing settings file, or reset your settings to their default
-      values
-    reset_modal: {}
+    data_subtitle: Choose whether to export your Mue settings to your computer, import
+      an existing settings file, or reset your settings to their default values
+    reset_modal:
+      title: WARNING
+      question: Do you want to reset Mue?
+      information: This will delete all data. If you wish to keep your data and preferences,
+        please export them first.
+      cancel: Cancel
     customisation: Customization
-    timezone: {}
-    preview_data_disabled: {}
+    timezone:
+      title: Time Zone
+      subtitle: Choose a timezone from the list instead of the automatic default from
+        your computer
+      automatic: Automatic
+    preview_data_disabled:
+      title: Data Settings Disabled
+      description: Data settings are disabled in preview mode. Please exit preview
+        mode to use this feature.
+    title: Advanced
+    offline_mode: Offline mode
+    offline_subtitle: When enabled, all requests to online services will be disabled.
+    data: Data
+    custom_css: Custom CSS
+    custom_js: Custom JS
+    tab_name: Tab name
+    tab_name_subtitle: Change the name of the tab that appears in your browser
+    data_description: Choose whether to export your Mue settings to your computer,
+      import an existing settings file, or reset your settings to their default values
+    custom_css_subtitle: Make Mue's styling customised to you with Cascading Style
+      Sheets (CSS).
+    experimental_warning: Please note that the Mue team cannot provide support if
+      you have experimental mode on. Please disable it first and see if the issue
+      continues to occur before contacting support.
   stats:
-    sections: {}
-    clear_modal: {}
-  experimental: {}
-  language: {}
-  changelog: {}
+    sections:
+      tabs_opened: Tabs opened
+      backgrounds_favourited: Backgrounds favourited
+      backgrounds_downloaded: Backgrounds downloaded
+      quotes_favourited: Quotes favourited
+      quicklinks_added: Quicklinks added
+      settings_changed: Settings changed
+      addons_installed: Add-ons installed
+    clear_modal:
+      question: Do you want to clear your stats?
+      information: This will clear all achievements and usage statistics.
+    title: Stats
+    usage: Usage Stats
+    achievements: Achievements
+    achievement_unlocked: 'Achievement Unlocked: {name}'
+    unlocked: '{count} Unlocked'
+    locked: Locked
+  experimental:
+    developer: Developer
+    title: Experimental
+    warning: These settings have not been fully tested/implemented and may not work
+      correctly!
+  language:
+    quote: Quote language
+    title: Language
+  changelog:
+    title: Change Log
+    by: By {author}
   about:
     version:
-      error: {}
-    resources_used: {}
-buttons: {}
+      error:
+        title: Failed to get update information
+        description: An error occured
+      title: Version
+      checking_update: Checking for update
+      update_available: Update available
+      no_update: No update available
+      offline_mode: Cannot check for update in offline mode
+    resources_used:
+      title: Resources used
+      bg_images: Offline background images
+    title: About
+    contact_us: Contact Us
+    support_mue: Support Mue
+    support_subtitle: As Mue is entirely free, we rely on donations to cover the server
+      bills and fund development
+    support_donate: Donate
+    contributors: Contributors
+    supporters: Supporters
+    no_supporters: There are currently no Mue supporters
+    photographers: Photographers
+    curators: Add-on creators
+    form_button: Form
+buttons:
+  reset: Reset
+  import: Import
+  export: Export
+enabled: Enabled
+open_knowledgebase: Open Knowledgebase
+additional_settings: Additional Settings
