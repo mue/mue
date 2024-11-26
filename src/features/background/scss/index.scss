@@ -7,13 +7,13 @@
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-attachment: fixed !important;
-  zoom: 100% !important;
+  transform: scale(1) !important;
+  position: relative;
 }
 
 .backgroundTransform {
   @include animation('fadein2 2s');
-
-  transition: background 2s;
+  transition: opacity 2s;
 }
 
 @include keyframes(fadein2) {
@@ -24,6 +24,29 @@
   to {
     opacity: 1;
   }
+}
+
+.blurhashOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity 2s;
+}
+
+.backgroundImageActual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 2s;
 }
 
 .backgroundPreload {

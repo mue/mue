@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import variables from 'config/variables';
 import PhotoInformation from './components/PhotoInformation';
 import EventBus from 'utils/eventbus';
@@ -13,85 +13,26 @@ import BackgroundImage from './components/BackgroundImage';
 import BackgroundVideo from './components/BackgroundVideo';
 import './scss/index.scss';
 
-export default class Background extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      blob: null,
-      style: '',
-      url: '',
-      currentAPI: '',
-      firstTime: false,
-      photoInfo: {
-        hidden: false,
-        offline: false,
-        photographerURL: '',
-        photoURL: '',
-      },
-    };
-  }
+const Background = () => {
+  const [state, setState] = useState({
+    blob: null,
+    style: '',
+    url: '',
+    currentAPI: '',
+    firstTime: false,
+    photoInfo: {
+      hidden: false,
+      offline: false,
+      photographerURL: '',
+      photoURL: '',
+    },
+    type: '',
+    video: false,
+  });
 
-  async componentDidMount() {
-    const element = document.getElementById('backgroundImage');
-    EventBus.on('refresh', (data) => this.handleRefreshEvent(data));
-    EventBus.on('backgroundeffect', () => this.handleBackgroundEffectEvent());
-    if (localStorage.getItem('welcomeTab')) {
-      this.setState(JSON.parse(localStorage.getItem('welcomeImage')));
-      return;
-    }
-    this.getBackground();
-  }
+  const blobRef = useRef(null);
 
-  componentDidUpdate() {
-    if (this.state.video !== true) {
-      this.setBackground();
-    }
-  }
-
-  componentWillUnmount() {
-    EventBus.off('refresh');
-    EventBus.off('backgroundeffect');
-  }
-
-  async setBackground() {
-    if (this.blob) {
-      URL.revokeObjectURL(this.blob);
-    }
-    const backgroundImage = document.getElementById('backgroundImage');
-    if (this.state.url !== '') {
-      let url = this.state.url;
-      const photoInformation = document.querySelector('.photoInformation');
-      if (localStorage.getItem('bgtransition') === 'false') {
-        if (photoInformation) {
-          photoInformation.style.display = 'flex';
-        }
-        backgroundImage.style.background = `url(${url})`;
-        return;
-      }
-      backgroundImage.style.background = null;
-      if (this.state.photoInfo.blur_hash) {
-        backgroundImage.style.backgroundColor = this.state.photoInfo.colour;
-        backgroundImage.classList.add('fade-in');
-        const canvas = document.createElement('canvas');
-        canvas.width = 32;
-        canvas.height = 32;
-        const ctx = canvas.getContext('2d');
-        const imageData = ctx.createImageData(32, 32);
-        imageData.data.set(decodeBlurHash(this.state.photoInfo.blur_hash, 32, 32));
-        ctx.putImageData(imageData, 0, 0);
-        backgroundImage.style.backgroundImage = `url(${canvas.toDataURL()})`;
-      }
-      this.blob = URL.createObjectURL(await (await fetch(url)).blob());
-      backgroundImage.classList.add('backgroundTransform');
-      backgroundImage.style.backgroundImage = `url(${this.blob})`;
-      Stats.postEvent('feature', 'background-image', 'shown');
-    } else {
-      backgroundImage.setAttribute('style', this.state.style);
-      Stats.postEvent('background', 'colour', 'set');
-    }
-  }
-
-  async getAPIImageData(currentPun) {
+  const getAPIImageData = useCallback(async (currentPun) => {
     let apiCategories;
     try {
       apiCategories = JSON.parse(localStorage.getItem('apiCategories'));
@@ -107,7 +48,8 @@ export default class Background extends PureComponent {
     if (currentPun) {
       backgroundExclude.push(currentPun);
     }
-    let requestURL, data;
+
+    let requestURL;
     switch (backgroundAPI) {
       case 'unsplash':
       case 'pexels':
@@ -121,58 +63,152 @@ export default class Background extends PureComponent {
         requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories || ''}&quality=${apiQuality}&excludes=${backgroundExclude}`;
         break;
     }
+
     const accept = `application/json, ${supportsAVIF() ? 'image/avif' : 'image/webp'}`;
     try {
-      data = await (await fetch(requestURL, { headers: { accept } })).json();
+      const response = await fetch(requestURL, { headers: { accept } });
+      const data = await response.json();
+      let photoURL, photographerURL;
+      if (backgroundAPI === 'unsplash') {
+        photoURL = data.photo_page;
+        photographerURL = data.photographer_page;
+      }
+      return {
+        url: data.file,
+        type: 'api',
+        currentAPI: backgroundAPI,
+        photoInfo: {
+          hidden: false,
+          category: data.category,
+          credit: data.photographer,
+          location: data.location.name,
+          camera: data.camera,
+          url: data.file,
+          photographerURL,
+          photoURL,
+          latitude: data.location.latitude || null,
+          longitude: data.location.longitude || null,
+          views: data.views || null,
+          downloads: data.downloads || null,
+          likes: data.likes || null,
+          description: data.description || null,
+          colour: data.colour,
+          blur_hash: data.blur_hash,
+          pun: data.pun || null,
+        },
+      };
     } catch (e) {
-      this.setState(getOfflineImage('api'));
+      setState(getOfflineImage('api'));
       Stats.postEvent('background', 'image', 'offline');
       return null;
     }
-    let photoURL, photographerURL;
-    if (backgroundAPI === 'unsplash') {
-      photoURL = data.photo_page;
-      photographerURL = data.photographer_page;
-    }
-    return {
-      url: data.file,
-      type: 'api',
-      currentAPI: backgroundAPI,
-      photoInfo: {
-        hidden: false,
-        category: data.category,
-        credit: data.photographer,
-        location: data.location.name,
-        camera: data.camera,
-        url: data.file,
-        photographerURL,
-        photoURL,
-        latitude: data.location.latitude || null,
-        longitude: data.location.longitude || null,
-        views: data.views || null,
-        downloads: data.downloads || null,
-        likes: data.likes || null,
-        description: data.description || null,
-        colour: data.colour,
-        blur_hash: data.blur_hash,
-        pun: data.pun || null,
-      },
-    };
-  }
+  }, []);
 
-  async getBackground() {
+  const setBackground = useCallback(async () => {
+    // Clean up previous blob URL
+    if (blobRef.current) {
+      URL.revokeObjectURL(blobRef.current);
+      blobRef.current = null;
+    }
+
+    const backgroundImage = document.getElementById('backgroundImage');
+    const blurhashOverlay = document.getElementById('blurhashOverlay');
+    const backgroundImageActual = document.getElementById('backgroundImageActual');
+    const photoInformation = document.querySelector('.photoInformation');
+
+    // Reset elements to default state
+    backgroundImageActual.style.opacity = 0;
+    blurhashOverlay.style.backgroundImage = '';
+    blurhashOverlay.style.backgroundColor = '';
+
+    // Handle different background types
+    try {
+      switch (state.type) {
+        case 'api':
+          // Handle API image with blurhash
+          if (state.url) {
+            if (localStorage.getItem('bgtransition') === 'false') {
+              if (photoInformation) {
+                photoInformation.style.display = 'flex';
+              }
+              backgroundImage.style.background = `url(${state.url})`;
+              return;
+            }
+
+            // Set blurhash overlay if available
+            if (state.photoInfo.blur_hash) {
+              blurhashOverlay.style.backgroundColor = state.photoInfo.colour;
+              const canvas = document.createElement('canvas');
+              canvas.width = 32;
+              canvas.height = 32;
+              const ctx = canvas.getContext('2d');
+              const imageData = ctx.createImageData(32, 32);
+              imageData.data.set(decodeBlurHash(state.photoInfo.blur_hash, 32, 32));
+              ctx.putImageData(imageData, 0, 0);
+              blurhashOverlay.style.backgroundImage = `url(${canvas.toDataURL()})`;
+            }
+
+            // Load actual image
+            const newBlob = URL.createObjectURL(await (await fetch(state.url)).blob());
+            blobRef.current = newBlob;
+            backgroundImageActual.src = newBlob;
+          }
+          break;
+
+        case 'colour':
+        case 'random_colour':
+        case 'random_gradient':
+          backgroundImage.style.background = state.style;
+          backgroundImageActual.src = '';
+          Stats.postEvent('background', 'colour', 'set');
+          break;
+
+        case 'custom':
+        case 'photo_pack':
+          if (state.url) {
+            backgroundImage.style.background = `url(${state.url})`;
+            if (photoInformation && !state.photoInfo.hidden) {
+              photoInformation.style.display = 'flex';
+            }
+          }
+          Stats.postEvent('background', state.type, 'set');
+          break;
+
+        default:
+          // Fallback to solid color
+          backgroundImage.style.background = state.style || 'rgb(0,0,0)';
+          Stats.postEvent('background', 'colour', 'set');
+      }
+
+      // Set up image load handler for all image types
+      if (backgroundImageActual.src) {
+        backgroundImageActual.onload = () => {
+          backgroundImageActual.style.opacity = 1;
+          blurhashOverlay.style.opacity = 0;
+          Stats.postEvent('feature', 'background-image', 'shown');
+        };
+      }
+    } catch (error) {
+      console.error('Error setting background:', error);
+      // Fallback to solid black background
+      backgroundImage.style.background = 'rgb(0,0,0)';
+    }
+  }, [state]);
+
+  const getBackground = useCallback(async () => {
     let offline = localStorage.getItem('offlineMode') === 'true';
     if (localStorage.getItem('showWelcome') !== 'false') {
       offline = true;
     }
+
     const setFavourited = ({ type, url, credit, location, camera, pun, offline }) => {
       if (type === 'random_colour' || type === 'random_gradient') {
-        this.setState({
+        setState({
           type: 'colour',
-          style: `background:${url}`,
+          style: url,
         });
       } else {
-        this.setState({
+        setState({
           url,
           photoInfo: {
             credit,
@@ -186,27 +222,29 @@ export default class Background extends PureComponent {
       }
       Stats.postEvent('background', 'favourite', 'set');
     };
+
     const favourited = JSON.parse(localStorage.getItem('favourite'));
     if (favourited) {
       setFavourited(favourited);
       return;
     }
+
     const type = localStorage.getItem('backgroundType') || defaults.backgroundType;
     switch (type) {
       case 'api':
         if (offline) {
-          this.setState(getOfflineImage('api'));
+          setState(getOfflineImage('api'));
           Stats.postEvent('background', 'image', 'offline');
           return;
         }
-        let data = JSON.parse(localStorage.getItem('nextImage')) || (await this.getAPIImageData());
+        let data = JSON.parse(localStorage.getItem('nextImage')) || (await getAPIImageData());
         localStorage.setItem('nextImage', null);
         if (data) {
-          this.setState(data);
+          setState(data);
           localStorage.setItem('currentBackground', JSON.stringify(data));
           localStorage.setItem(
             'nextImage',
-            JSON.stringify(await this.getAPIImageData(data.photoInfo.pun)),
+            JSON.stringify(await getAPIImageData(data.photoInfo.pun)),
           );
           Stats.postEvent('background', 'image', 'api');
         }
@@ -222,15 +260,19 @@ export default class Background extends PureComponent {
             customBackgroundColour = 'rgb(0,0,0)';
           }
         }
-        this.setState({
+        setState({
           type: 'colour',
-          style: `background: ${customBackgroundColour || 'rgb(0,0,0)'}`,
+          style: customBackgroundColour || 'rgb(0,0,0)',
         });
         Stats.postEvent('background', 'colour', 'custom');
         break;
       case 'random_colour':
       case 'random_gradient':
-        this.setState(randomColourStyleBuilder(type));
+        const randomStyle = randomColourStyleBuilder(type);
+        setState({
+          type: 'colour',
+          style: randomStyle,
+        });
         Stats.postEvent('background', 'colour', 'random');
         break;
       case 'custom':
@@ -246,7 +288,7 @@ export default class Background extends PureComponent {
         }
         customBackground = customBackground[Math.floor(Math.random() * customBackground.length)];
         if (offline && !customBackground.startsWith('data:')) {
-          this.setState(getOfflineImage('custom'));
+          setState(getOfflineImage('custom'));
           Stats.postEvent('background', 'image', 'offline');
           return;
         }
@@ -263,14 +305,14 @@ export default class Background extends PureComponent {
               hidden: true,
             },
           };
-          this.setState(object);
+          setState(object);
           localStorage.setItem('currentBackground', JSON.stringify(object));
           Stats.postEvent('background', 'image', 'custom');
         }
         break;
       case 'photo_pack':
         if (offline) {
-          this.setState(getOfflineImage('photo'));
+          setState(getOfflineImage('photo'));
           Stats.postEvent('background', 'image', 'offline');
           return;
         }
@@ -283,12 +325,12 @@ export default class Background extends PureComponent {
           }
         });
         if (photoPack.length === 0) {
-          this.setState(getOfflineImage('photo'));
+          setState(getOfflineImage('photo'));
           Stats.postEvent('background', 'image', 'offline');
           return;
         }
         const photo = photoPack[Math.floor(Math.random() * photoPack.length)];
-        this.setState({
+        setState({
           url: photo.url.default,
           type: 'photo_pack',
           video: videoCheck(photo.url.default),
@@ -301,111 +343,132 @@ export default class Background extends PureComponent {
       default:
         break;
     }
-  }
+  }, [getAPIImageData]);
 
-  handleRefreshEvent(data) {
-    const element = document.getElementById('backgroundImage');
-    const refresh = () => {
-      element.classList.remove('fade-in');
-      this.setState({
-        url: '',
-        style: '',
-        type: '',
-        video: false,
-        photoInfo: {
-          hidden: true,
-        },
-      });
-      this.getBackground();
-    };
-    if (data === 'welcomeLanguage') {
-      localStorage.setItem('welcomeImage', JSON.stringify(this.state));
-    }
-    if (data === 'background') {
-      if (localStorage.getItem('background') === 'false') {
-        if (this.state.photoInfo.hidden === false) {
-          document.querySelector('.photoInformation').style.display = 'none';
-        }
-        if (this.state.video === true) {
-          document.getElementById('backgroundVideo').style.display = 'none';
-        } else {
-          element.style.display = 'none';
-        }
-        return;
+  const handleRefreshEvent = useCallback(
+    (data) => {
+      const element = document.getElementById('backgroundImage');
+      const refresh = () => {
+        element.classList.remove('fade-in');
+        setState({
+          url: '',
+          style: '',
+          type: '',
+          video: false,
+          photoInfo: {
+            hidden: true,
+          },
+        });
+        getBackground();
+      };
+
+      if (data === 'welcomeLanguage') {
+        localStorage.setItem('welcomeImage', JSON.stringify(state));
       }
-      if (this.state.video === true) {
-        document.getElementById('backgroundVideo').style.display = 'block';
-      } else {
-        if (this.state.photoInfo.hidden === false) {
-          try {
-            document.querySelector('.photoInformation').style.display = 'flex';
-          } catch (e) {
-            // Disregard exception
+      if (data === 'background') {
+        if (localStorage.getItem('background') === 'false') {
+          if (state.photoInfo.hidden === false) {
+            document.querySelector('.photoInformation').style.display = 'none';
           }
+          if (state.video === true) {
+            document.getElementById('backgroundVideo').style.display = 'none';
+          } else {
+            element.style.display = 'none';
+          }
+          return;
         }
-        element.style.display = 'block';
-      }
-      const backgroundType = localStorage.getItem('backgroundType') || defaults.backgroundType;
-      if (this.state.photoInfo.offline !== true) {
-        if (
-          backgroundType !== this.state.type ||
-          (this.state.type === 'api' &&
-            localStorage.getItem('backgroundAPI') !== this.state.currentAPI) ||
-          (this.state.type === 'custom' &&
-            localStorage.getItem('customBackground') !== this.state.url) ||
-          JSON.parse(localStorage.getItem('backgroundExclude')).includes(this.state.photoInfo.pun)
-        ) {
+        if (state.video === true) {
+          document.getElementById('backgroundVideo').style.display = 'block';
+        } else {
+          if (state.photoInfo.hidden === false) {
+            try {
+              document.querySelector('.photoInformation').style.display = 'flex';
+            } catch (e) {
+              // Disregard exception
+            }
+          }
+          element.style.display = 'block';
+        }
+        const backgroundType = localStorage.getItem('backgroundType') || defaults.backgroundType;
+        if (state.photoInfo.offline !== true) {
+          if (
+            backgroundType !== state.type ||
+            (state.type === 'api' && localStorage.getItem('backgroundAPI') !== state.currentAPI) ||
+            (state.type === 'custom' && localStorage.getItem('customBackground') !== state.url) ||
+            JSON.parse(localStorage.getItem('backgroundExclude')).includes(state.photoInfo.pun)
+          ) {
+            refresh();
+            return;
+          }
+        } else if (backgroundType !== state.type) {
           refresh();
           return;
         }
-      } else if (backgroundType !== this.state.type) {
-        refresh();
-        return;
       }
-    }
-    if (
-      data === 'marketplacebackgrounduninstall' ||
-      data === 'backgroundwelcome' ||
-      data === 'backgroundrefresh'
-    ) {
-      refresh();
-    }
-  }
+      if (
+        data === 'marketplacebackgrounduninstall' ||
+        data === 'backgroundwelcome' ||
+        data === 'backgroundrefresh'
+      ) {
+        refresh();
+      }
+    },
+    [state, getBackground],
+  );
 
-  handleBackgroundEffectEvent() {
+  const handleBackgroundEffectEvent = useCallback(() => {
     const element = document.getElementById('backgroundImage');
     const backgroundFilterSetting =
       localStorage.getItem('backgroundFilter') || defaults.backgroundFilter;
     const backgroundFilter = backgroundFilterSetting && backgroundFilterSetting !== 'none';
-    const filterValue = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem(
-      'brightness',
-    )}%) ${
+    const filterValue = `blur(${localStorage.getItem('blur')}px) brightness(${localStorage.getItem('brightness')}%) ${
       backgroundFilter
         ? backgroundFilterSetting + '(' + localStorage.getItem('backgroundFilterAmount') + '%)'
         : ''
     }`;
-    if (this.state.video === true) {
+    if (state.video === true) {
       document.getElementById('backgroundVideo').style.filter = filterValue;
     } else {
       element.style.filter = filterValue;
     }
+  }, [state.video]);
+
+  useEffect(() => {
+    if (localStorage.getItem('welcomeTab')) {
+      setState(JSON.parse(localStorage.getItem('welcomeImage')));
+      return;
+    }
+    getBackground();
+  }, [getBackground]);
+
+  useEffect(() => {
+    EventBus.on('refresh', handleRefreshEvent);
+    EventBus.on('backgroundeffect', handleBackgroundEffectEvent);
+
+    return () => {
+      EventBus.off('refresh', handleRefreshEvent);
+      EventBus.off('backgroundeffect', handleBackgroundEffectEvent);
+    };
+  }, [handleRefreshEvent, handleBackgroundEffectEvent]);
+
+  useEffect(() => {
+    if (state.video !== true) {
+      setBackground();
+    }
+  }, [state, setBackground]);
+
+  if (state.video === true) {
+    return <BackgroundVideo url={state.url} />;
   }
 
-  render() {
-    if (this.state.video === true) {
-      return <BackgroundVideo url={this.state.url} />;
-    }
-    return (
-      <>
-        <BackgroundImage />
-        {this.state.photoInfo.credit !== '' && (
-          <PhotoInformation
-            info={this.state.photoInfo}
-            api={this.state.currentAPI}
-            url={this.state.url}
-          />
-        )}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <BackgroundImage />
+      {state.photoInfo && state.photoInfo.credit && (
+        <PhotoInformation info={state.photoInfo} api={state.currentAPI} url={state.url} />
+      )}
+    </>
+  );
+};
+
+export default Background;

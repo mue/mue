@@ -16,7 +16,11 @@ const BackgroundImage = () => {
         }`,
       }}
       id="backgroundImage"
-    />
+      className="backgroundImage"
+    >
+      <div id="blurhashOverlay" className="blurhashOverlay" />
+      <img id="backgroundImageActual" className="backgroundImageActual" alt="background" />
+    </div>
   );
 };
 
