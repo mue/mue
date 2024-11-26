@@ -29,7 +29,18 @@ const useBackgroundAPI = (setBackgroundState) => {
       try {
         const response = await fetch(requestURL, { headers: { accept } });
         const data = await response.json();
-        return formatAPIData(data, backgroundAPI);
+        const formattedData = formatAPIData(data, backgroundAPI);
+
+        // Prefetch next image
+        const nextImageData = await fetchNextImage(
+          backgroundAPI,
+          apiCategories,
+          apiQuality,
+          backgroundExclude,
+        );
+        localStorage.setItem('nextImage', JSON.stringify(nextImageData));
+
+        return formattedData;
       } catch (e) {
         setBackgroundState(getOfflineImage('api'));
         Stats.postEvent('background', 'image', 'offline');
@@ -38,6 +49,19 @@ const useBackgroundAPI = (setBackgroundState) => {
     },
     [setBackgroundState],
   );
+
+  const fetchNextImage = async (backgroundAPI, apiCategories, apiQuality, backgroundExclude) => {
+    const requestURL = getRequestURL(backgroundAPI, apiCategories, apiQuality, backgroundExclude);
+    const accept = `application/json, ${supportsAVIF() ? 'image/avif' : 'image/webp'}`;
+
+    try {
+      const response = await fetch(requestURL, { headers: { accept } });
+      const data = await response.json();
+      return formatAPIData(data, backgroundAPI);
+    } catch (e) {
+      return null;
+    }
+  };
 
   return { getAPIImageData };
 };
