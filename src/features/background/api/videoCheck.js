@@ -4,6 +4,9 @@
  * @returns A function that takes a url and returns a boolean.
  */
 export default function videoCheck(url = '') {
+  if (typeof url !== 'string') {
+    return false;
+  }
   return (
     url.startsWith('data:video/') ||
     url.endsWith('.mp4') ||
