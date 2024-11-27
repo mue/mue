@@ -26,8 +26,10 @@ const AchievementElement = ({ achievementKey, id, achieved, timestamp }) => {
             <MdAccessTime /> {new Date(timestamp).toLocaleDateString()}
           </span>
         )}
-        <span className="achievementTitle">{name}</span>
-        <span className="subtitle">{achieved ? description : '?????'}</span>
+        <span className="text-base">{name}</span>
+        <span className="text-xs text-neutral-400 leading-tight lowercase">
+          {achieved ? description : '?????'}
+        </span>
       </div>
     </div>
   );
