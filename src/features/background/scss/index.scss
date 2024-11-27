@@ -75,7 +75,15 @@
   }
 }
 
-.dropzone.dragging {
-  border: 2px dashed #007bff;
-  background-color: rgba(0, 123, 255, 0.1);
+.dropzone {
+  border: 2px dashed transparent;
+  background-color: transparent;
+  transition:
+    border 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+
+  &.dragging {
+    border: 2px dashed #007bff;
+    background-color: rgba(0, 123, 255, 0.1);
+  }
 }

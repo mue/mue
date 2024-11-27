@@ -9,11 +9,10 @@ import {
   MdFolder,
 } from 'react-icons/md';
 import { addCustomImage, getCustomImages, deleteCustomImage } from 'utils/indexedDB';
-
 import { Tooltip, Button } from 'components/Elements';
 import Modal from 'react-modal';
-
 import CustomURLModal from './CustomURLModal';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default class CustomSettings extends PureComponent {
   getMessage = (text, obj) => variables.getMessage(text, obj || {});
@@ -123,50 +122,71 @@ export default class CustomSettings extends PureComponent {
             </div>
           </div>
           <div className={`dropzone dropzone-content ${this.state.isDragging ? 'dragging' : ''}`}>
-            {this.state.customBackground.length > 0 ? (
-              <div className="images-row fixed-width">
-                {this.state.customBackground.map((image, index) => (
-                  <div key={index} className="image-container">
-                    <img alt={'Custom background ' + index} src={image.url} />
-                    <Tooltip
-                      title={variables.getMessage('settings:sections.background.source.remove')}
+            <AnimatePresence>
+              {this.state.customBackground.length > 0 ? (
+                <motion.div
+                  className="images-row fixed-width"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  layout
+                >
+                  {this.state.customBackground.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      className="image-container"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                      layout
                     >
-                      <Button
-                        type="settings"
-                        onClick={() => this.removeCustomImage(image.id)}
-                        icon={<MdCancel />}
-                      />
-                    </Tooltip>
+                      <img alt={'Custom background ' + index} src={image.url} />
+                      <Tooltip
+                        title={variables.getMessage('settings:sections.background.source.remove')}
+                      >
+                        <Button
+                          type="settings"
+                          onClick={() => this.removeCustomImage(image.id)}
+                          icon={<MdCancel />}
+                        />
+                      </Tooltip>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              ) : (
+                <motion.div
+                  className="photosEmpty"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <div className="emptyNewMessage">
+                    <MdAddPhotoAlternate />
+                    <span className="title">
+                      {variables.getMessage('settings:sections.background.source.drop_to_upload')}
+                    </span>
+                    <span className="subtitle">
+                      {variables.getMessage('settings:sections.background.source.formats', {
+                        list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
+                      })}
+                    </span>
+                    <Button
+                      type="settings"
+                      onClick={this.uploadCustomBackground}
+                      icon={<MdFolder />}
+                      label={variables.getMessage('settings:sections.background.source.select')}
+                    />
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="photosEmpty">
-                <div className="emptyNewMessage">
-                  <MdAddPhotoAlternate />
-                  <span className="title">
-                    {variables.getMessage('settings:sections.background.source.drop_to_upload')}
-                  </span>
-                  <span className="subtitle">
-                    {variables.getMessage('settings:sections.background.source.formats', {
-                      list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
-                    })}
-                  </span>
-                  <Button
-                    type="settings"
-                    onClick={this.uploadCustomBackground}
-                    icon={<MdFolder />}
-                    label={variables.getMessage('settings:sections.background.source.select')}
-                  />
-                </div>
-              </div>
-            )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
         <input
           type="file"
           id="bg-input"
-          accept="image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg"
+          accept="image/jpeg, image/png, image/webp, image.webm, image/gif, video/mp4, video/webm, video/ogg"
           multiple
           style={{ display: 'none' }}
           onChange={(e) => {
