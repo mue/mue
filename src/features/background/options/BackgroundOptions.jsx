@@ -1,12 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import variables from 'config/variables';
 import { useState, useEffect } from 'react';
-import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
+import { MdSource, MdOutlineAutoAwesome } from 'react-icons/md';
 
 import { Header, PreferencesWrapper, Section } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Slider, Radio, Text, ChipSelect } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
-//import Text from 'components/Form/Settings/Text/Text';
 
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';
@@ -35,6 +33,7 @@ function BackgroundOptions() {
   const [marketplaceEnabled, setMarketplaceEnabled] = useState(localStorage.getItem('photo_packs'));
   const [effects, setEffects] = useState(false);
   const [backgroundSettingsSection, setBackgroundSettingsSection] = useState(false);
+  const [blurValue, setBlurValue] = useState(localStorage.getItem('blur') || 0);
 
   const controller = new AbortController();
   useEffect(() => {
@@ -42,6 +41,13 @@ function BackgroundOptions() {
       controller.abort();
     };
   }, []);
+
+  useEffect(() => {
+    const backgroundImage = document.getElementById('backgroundImage');
+    if (backgroundImage) {
+      backgroundImage.style.filter = `blur(${blurValue}px)`;
+    }
+  }, [blurValue]);
 
   async function getBackgroundCategories() {
     const data = await (
@@ -189,6 +195,7 @@ function BackgroundOptions() {
             marks={values.background}
             category="backgroundeffect"
             element="#backgroundImage"
+            onChange={(value) => setBlurValue(value)}
           />
           <Slider
             title={variables.getMessage('settings:sections.background.effects.brightness')}
@@ -299,7 +306,7 @@ function BackgroundOptions() {
             <Dropdown
               label={variables.getMessage('settings:sections.background.type.title')}
               name="backgroundType"
-              onChange={(value) => this.setState({ backgroundType: value })}
+              onChange={(value) => setBackgroundType(value)}
               category="background"
               items={getBackgroundOptionItems(marketplaceEnabled)}
             />
@@ -363,7 +370,6 @@ function BackgroundOptions() {
               />
             </Action>
           </Row>
-          {/*  todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
           {backgroundSettings}
         </>
       )}

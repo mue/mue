@@ -13,6 +13,7 @@ import {
   handleBackgroundVisibility,
   handleBackgroundEffectEvent,
 } from './api/backgroundHelpers';
+import { getCustomImages } from 'utils/indexedDB';
 
 const initialState = {
   blob: null,
@@ -79,6 +80,18 @@ const Background = () => {
     }
 
     const type = localStorage.getItem('backgroundType') || defaults.backgroundType;
+    if (type === 'custom') {
+      const customImages = await getCustomImages();
+      if (customImages.length > 0) {
+        const randomImage = customImages[Math.floor(Math.random() * customImages.length)];
+        setBackgroundState({
+          url: randomImage.url,
+          type: 'custom',
+        });
+        return;
+      }
+    }
+
     await handleBackgroundType(type, offline, getAPIImageData, setBackgroundState);
   }, [getAPIImageData]);
 

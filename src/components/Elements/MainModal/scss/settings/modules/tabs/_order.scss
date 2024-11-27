@@ -45,6 +45,16 @@
   margin-top: 16px;
 }
 
+.images-row.fixed-width {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.image-container {
+  width: 200px;
+}
+
 .images-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

@@ -17,14 +17,14 @@ function AppsOptions({ appsEnabled }) {
   const [appsModalInfo, setAppsModalInfo] = useState({
     newLink: false,
     edit: false,
-    items: JSON.parse(localStorage.getItem('applinks')),
+    items: JSON.parse(localStorage.getItem('applinks')) || [],
     urlError: '',
     iconError: '',
     editData: null,
   });
 
   const addLink = async (name, url, icon) => {
-    const data = JSON.parse(localStorage.getItem('applinks'));
+    const data = JSON.parse(localStorage.getItem('applinks')) || [];
 
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
       url = 'https://' + url;
@@ -73,7 +73,7 @@ function AppsOptions({ appsEnabled }) {
   };
 
   const editLink = async (og, name, url, icon) => {
-    const data = JSON.parse(localStorage.getItem('applinks'));
+    const data = JSON.parse(localStorage.getItem('applinks')) || [];
     const dataobj = data.find((i) => i.key === og.key);
     dataobj.name = name || (await getTitleFromUrl(url));
     dataobj.url = url;
