@@ -85,8 +85,8 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2
       '@vitejs/plugin-react-swc':
-        specifier: ^3.7.1
-        version: 3.7.1(vite@5.4.11(@types/node@22.7.5)(sass@1.81.0))
+        specifier: ^3.7.2
+        version: 3.7.2(vite@5.4.11(@types/node@22.7.5)(sass@1.81.0))
       adm-zip:
         specifier: 0.5.16
         version: 0.5.16
@@ -1618,10 +1618,10 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  '@vitejs/plugin-react-swc@3.7.1':
-    resolution: {integrity: sha512-vgWOY0i1EROUK0Ctg1hwhtC3SdcDjZcdit4Ups4aPkDcB1jYhmo+RMYWY87cmXMhvtD5uf8lV89j2w16vkdSVg==}
+  '@vitejs/plugin-react-swc@3.7.2':
+    resolution: {integrity: sha512-y0byko2b2tSVVf5Gpng1eEhX1OvPC7x8yns1Fx8jDzlJp4LS6CMkCPfLw47cjyoMrshQDoQw4qcgjsU9VvlCew==}
     peerDependencies:
-      vite: ^4 || ^5
+      vite: ^4 || ^5 || ^6
 
   '@wojtekmaj/date-utils@1.5.1':
     resolution: {integrity: sha512-+i7+JmNiE/3c9FKxzWFi2IjRJ+KzZl1QPu6QNrsgaa2MuBgXvUy4gA1TVzf/JMdIIloB76xSKikTWuyYAIVLww==}
@@ -5138,7 +5138,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react-swc@3.7.1(vite@5.4.11(@types/node@22.7.5)(sass@1.81.0))':
+  '@vitejs/plugin-react-swc@3.7.2(vite@5.4.11(@types/node@22.7.5)(sass@1.81.0))':
     dependencies:
       '@swc/core': 1.7.35
       vite: 5.4.11(@types/node@22.7.5)(sass@1.81.0)
