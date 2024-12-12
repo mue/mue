@@ -12,9 +12,6 @@ function PhotoInformation({ info, url, api }) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [usePhotoMap, setPhotoMap] = useState(false);
-  const [useMapIcon, setMapIcon] = useState(true);
-  const [showExtraInfo, setShowExtraInfo] = useState(false);
-  const [other, setOther] = useState(false);
   const [shareModal, openShareModal] = useState(false);
   const [excludeModal, openExcludeModal] = useState(false);
   const [favouriteTooltipText, setFavouriteTooltipText] = useState(
@@ -51,16 +48,6 @@ function PhotoInformation({ info, url, api }) {
       </a>
     );
   }, [info.latitude, info.longitude, usePhotoMap]);
-
-  useEffect(() => {
-    const photoInformationElement = document.getElementsByClassName('photoInformation')[0];
-    if (photoInformationElement) {
-      photoInformationElement.onmouseover = () => {
-        setPhotoMap(true);
-        setMapIcon(false);
-      };
-    }
-  }, []);
 
   if (info.hidden === true || !info.credit) {
     return null;
@@ -103,11 +90,7 @@ function PhotoInformation({ info, url, api }) {
   const widgetStyle = localStorage.getItem('widgetStyle');
 
   return (
-    <div
-      className="photoInformationHolder"
-      onMouseEnter={() => setOther(true)}
-      onMouseLeave={() => setOther(false)}
-    >
+    <div className="photoInformationHolder">
       <Modal
         closeTimeoutMS={300}
         isOpen={shareModal}
@@ -136,15 +119,13 @@ function PhotoInformation({ info, url, api }) {
           </span>
         </div>
       )}
-      {(widgetStyle !== 'legacy' || other) && (
+      {widgetStyle !== 'legacy' && (
         <div
           className="photoInformation orHover"
           style={{ padding: widgetStyle === 'legacy' && '20px' }}
-          onMouseEnter={() => setShowExtraInfo(true)}
-          onMouseLeave={() => setShowExtraInfo(false)}
         >
           <div className={photoMapClassList}>
-            {useMapIcon || photoMap() === null ? <MdLocationOn /> : ''}
+            <MdLocationOn />
             {photoMap()}
           </div>
           {photoMap() && (
@@ -179,16 +160,9 @@ function PhotoInformation({ info, url, api }) {
           )}
           <div className="photoInformation-content">
             <div className="photoInformation-text">
-              <span
-                className="title"
-                title={
-                  (showExtraInfo || other) && info.description ? info.description : info.location
-                }
-              >
-                {(showExtraInfo || other) && info.description
-                  ? info.description.length > 40
-                    ? `${info.description.substring(0, 40)}...`
-                    : info.description
+              <span className="title" title={info.description || info.location}>
+                {info.description?.length > 40
+                  ? `${info.description.substring(0, 40)}...`
                   : info.location?.split(',').slice(-2).join(', ').trim()}
               </span>
               <span className="subtitle" id="credit">
@@ -197,21 +171,17 @@ function PhotoInformation({ info, url, api }) {
             </div>
             {info.views && info.downloads !== null && <UnsplashStats info={info} />}
           </div>
-          {(showExtraInfo || other) && !excludeModal && (
-            <>
-              <span className="subtitle">
-                {variables.getMessage('widgets.background.information')}
-              </span>
-              <InformationItems info={info} width={width} height={height} api={api} />
-              <ActionButtons
-                info={info}
-                favouriteTooltipText={favouriteTooltipText}
-                setFavouriteTooltipText={setFavouriteTooltipText}
-                openShareModal={openShareModal}
-                openExcludeModal={openExcludeModal}
-              />
-            </>
-          )}
+          <span className="subtitle information-title">
+            {variables.getMessage('widgets.background.information')}
+          </span>
+          <InformationItems info={info} width={width} height={height} api={api} />
+          <ActionButtons
+            info={info}
+            favouriteTooltipText={favouriteTooltipText}
+            setFavouriteTooltipText={setFavouriteTooltipText}
+            openShareModal={openShareModal}
+            openExcludeModal={openExcludeModal}
+          />
         </div>
       )}
     </div>

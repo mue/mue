@@ -1,5 +1,4 @@
-import { Fragment, Suspense, lazy, useState, useEffect } from 'react';
-
+import { Fragment, Suspense, lazy, useState, useEffect, useCallback, useMemo } from 'react';
 import Clock from '../../time/Clock';
 import Greeting from '../../greeting/Greeting';
 import Quote from '../../quote/Quote';
@@ -8,37 +7,35 @@ import QuickLinks from '../../quicklinks/QuickLinks';
 import Date from '../../time/Date';
 import Message from '../../message/Message';
 import { WidgetsLayout } from 'components/Layout';
-
 import EventBus from 'utils/eventbus';
 import defaults from 'config/default';
 
 // weather is lazy loaded due to the size of the weather icons module
-// since we're using react-icons this might not be accurate,
-// however, when we used the original module https://bundlephobia.com/package/weather-icons-react@1.2.0
-// as seen here it is ridiculously large
 const Weather = lazy(() => import('../../weather/Weather'));
 
-export function Widgets() {
-  const [order, setOrder] = useState(JSON.parse(localStorage.getItem('order')) || defaults.order);
-  const [welcome, setWelcome] = useState(localStorage.getItem('showWelcome'));
+const Widgets = () => {
+  const [order, setOrder] = useState(
+    () => JSON.parse(localStorage.getItem('order')) || defaults.order,
+  );
+  const [welcome, setWelcome] = useState(() => localStorage.getItem('showWelcome'));
+  const online = useMemo(() => localStorage.getItem('offlineMode') === 'false', []);
 
-  const online = localStorage.getItem('offlineMode') === 'false';
+  const enabled = useCallback((key) => localStorage.getItem(key) !== 'false', []);
 
-  const widgets = {
-    time: enabled('time') && <Clock />,
-    greeting: enabled('greeting') && <Greeting />,
-    quote: enabled('quote') && <Quote />,
-    date: enabled('date') && <Date />,
-    quicklinks: enabled('quicklinksenabled') && online ? <QuickLinks /> : null,
-    message: enabled('message') && <Message />,
-  };
-
-  function enabled(key) {
-    return localStorage.getItem(key) !== 'false';
-  }
+  const widgets = useMemo(
+    () => ({
+      time: enabled('time') && <Clock />,
+      greeting: enabled('greeting') && <Greeting />,
+      quote: enabled('quote') && <Quote />,
+      date: enabled('date') && <Date />,
+      quicklinks: enabled('quicklinksenabled') && online ? <QuickLinks /> : null,
+      message: enabled('message') && <Message />,
+    }),
+    [enabled, online],
+  );
 
   useEffect(() => {
-    EventBus.on('refresh', (data) => {
+    const handleRefresh = (data) => {
       switch (data) {
         case 'widgets':
           setOrder(JSON.parse(localStorage.getItem('order')) || defaults.order);
@@ -56,8 +53,10 @@ export function Widgets() {
         default:
           break;
       }
-    });
-    return () => EventBus.off('refresh');
+    };
+
+    EventBus.on('refresh', handleRefresh);
+    return () => EventBus.off('refresh', handleRefresh);
   }, []);
 
   return welcome !== 'false' ? (
@@ -73,6 +72,6 @@ export function Widgets() {
       </Suspense>
     </WidgetsLayout>
   );
-}
+};
 
 export default Widgets;
