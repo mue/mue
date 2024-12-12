@@ -11,7 +11,8 @@ const PreferencesWrapper = ({ children, ...props }) => {
     if (!props.setting) {
       return true;
     }
-    return localStorage.getItem(props.setting) === 'true' || props.default || false;
+    const storedValue = localStorage.getItem(props.setting);
+    return storedValue !== null ? storedValue === 'true' : props.default || false;
   });
 
   useEffect(() => {
@@ -30,8 +31,8 @@ const PreferencesWrapper = ({ children, ...props }) => {
 
   return (
     <div
-      className={`preferences transition-opacity duration-700 ease-in-out ${
-        shown ? 'opacity-100 pointer-events-auto' : 'opacity-50 pointer-events-none'
+      className={`preferences transition-all duration-1000 delay-75 ease-cubic ${
+        shown ? 'opacity-100 pointer-events-auto' : 'opacity-40 pointer-events-none'
       } bg-modal-content-light dark:bg-modal-content-dark p-10 rounded`}
     >
       {props.zoomSetting && (
