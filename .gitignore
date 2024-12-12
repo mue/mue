@@ -6,6 +6,8 @@ extensions/
 .idea/
 dist/
 build/
+coverage/
+logs/
 
 # Files
 package-lock.json
@@ -19,3 +21,7 @@ keys.json
 .DS_Store
 *.zip
 i18n-fallback.json
+bun.lockb
+.env
+*.log
+*.tmp
