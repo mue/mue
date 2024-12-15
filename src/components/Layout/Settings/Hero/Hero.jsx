@@ -8,9 +8,9 @@ import values from 'utils/data/slider_values.json';
 
 const Preview = (props) => {
   return (
-    <div className="h-full">
+    <div className="h-full flex flex-col">
       <h1 className="py-3 uppercase tracking-tight text-neutral-300">Preview</h1>
-      <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded">
+      <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded flex-grow">
         {props.children}
       </div>
     </div>
@@ -29,10 +29,7 @@ const Controls = (props) => {
     localStorage.setItem(props.setting, !toggle);
     setSetting(!toggle);
 
-    variables.stats.postEvent(
-      'setting',
-      props.name, setting === true ? 'enabled' : 'disabled',
-    );
+    variables.stats.postEvent('setting', props.name, setting === true ? 'enabled' : 'disabled');
 
     EventBus.emit('toggle', props.setting);
 
@@ -69,11 +66,13 @@ const Controls = (props) => {
   };
 
   return (
-    <div className="h-full">
+    <div className="h-full flex flex-col">
       <h1 className="py-3 uppercase tracking-tight text-neutral-300">Controls</h1>
-      <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded flex flex-col gap-10">
-        {props.visibilityToggle && <VisibilityToggle />}
-        {props.report !== false && <ReportButton />}
+      <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded flex flex-col gap-10 flex-grow">
+        <div className="grid grid-cols-2 gap-5">
+          {props.visibilityToggle && <VisibilityToggle />}
+          {props.report !== false && <ReportButton />}
+        </div>
         {(props.zoomSetting !== null || props.zoomSetting !== '') && (
           <Slider
             name={props.zoomSetting}
