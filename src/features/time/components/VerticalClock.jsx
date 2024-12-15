@@ -1,27 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTimeUpdate } from '../hooks/useTimeUpdate';
 import { useClockZoom } from '../hooks/useClockZoom';
-import { convertTimezone } from 'utils/date';
+import { useTime } from '../context/TimeContext';
 import defaults from '../options/default';
 
 export const VerticalClock = () => {
   const [hour, setHour] = useState('');
   const [minute, setMinute] = useState('');
   const [seconds, setSeconds] = useState('');
-  const { elementRef, updateZoom } = useClockZoom();
+  const { elementRef } = useClockZoom();
+  const { currentDate, updateTime } = useTime();
 
-  const updateTime = () => {
-    let now = new Date();
-    const timezone = localStorage.getItem('timezone');
+  useTimeUpdate(updateTime);
+
+  useEffect(() => {
     const zero = localStorage.getItem('zero');
     const showSeconds = localStorage.getItem('seconds') === 'true';
 
-    if (timezone && timezone !== 'auto') {
-      now = convertTimezone(now, timezone);
-    }
-
-    let hours = now.getHours();
-    const minutes = ('00' + now.getMinutes()).slice(-2);
+    let hours = currentDate.getHours();
+    const minutes = ('00' + currentDate.getMinutes()).slice(-2);
 
     if (localStorage.getItem('timeformat') !== 'twentyfourhour') {
       if (hours > 12) {
@@ -34,11 +31,9 @@ export const VerticalClock = () => {
     setHour(zero === 'false' ? `${hours}` : ('00' + hours).slice(-2));
     setMinute(minutes);
     if (showSeconds) {
-      setSeconds(('00' + now.getSeconds()).slice(-2));
+      setSeconds(('00' + currentDate.getSeconds()).slice(-2));
     }
-  };
-
-  useTimeUpdate(updateTime);
+  }, [currentDate]);
 
   const hourColour = localStorage.getItem('hourColour') || defaults.hourColour;
   const minuteColour = localStorage.getItem('minuteColour') || defaults.minuteColour;

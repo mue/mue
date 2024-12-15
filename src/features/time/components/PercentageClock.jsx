@@ -1,22 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useTimeUpdate } from '../hooks/useTimeUpdate';
-import { convertTimezone } from 'utils/date';
+import { useTime } from '../context/TimeContext';
 
 export const PercentageClock = () => {
   const [percentage, setPercentage] = useState('');
-
-  const updateTime = () => {
-    let now = new Date();
-    const timezone = localStorage.getItem('timezone');
-
-    if (timezone && timezone !== 'auto') {
-      now = convertTimezone(now, timezone);
-    }
-
-    setPercentage((now.getHours() / 24).toFixed(2).replace('0.', '') + '%');
-  };
+  const { currentDate, updateTime } = useTime();
 
   useTimeUpdate(updateTime);
+
+  useEffect(() => {
+    setPercentage((currentDate.getHours() / 24).toFixed(2).replace('0.', '') + '%');
+  }, [currentDate]);
 
   return <span className="clock clock-container">{percentage}</span>;
 };

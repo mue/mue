@@ -1,9 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTimeUpdate } from '../hooks/useTimeUpdate';
 import { useClockZoom } from '../hooks/useClockZoom';
-import { convertTimezone } from 'utils/date';
+import { useTime } from '../context/TimeContext';
 
-// Add memoization of time settings
 const getTimeSettings = () => {
   const settings = {
     timeformat: localStorage.getItem('timeformat'),
@@ -18,21 +17,18 @@ export const DigitalClock = React.memo(() => {
   const [time, setTime] = useState('');
   const [ampm, setAmpm] = useState('');
   const { elementRef } = useClockZoom();
+  const { currentDate, updateTime } = useTime();
   const timeSettings = useMemo(getTimeSettings, []);
 
-  const updateTime = () => {
-    let now = new Date();
-    const { timezone, zero, showSeconds, timeformat } = timeSettings;
+  useTimeUpdate(updateTime);
 
-    if (timezone && timezone !== 'auto') {
-      now = convertTimezone(now, timezone);
-    }
+  useEffect(() => {
+    const { zero, showSeconds, timeformat } = timeSettings;
+    let hours = currentDate.getHours();
+    const minutes = ('00' + currentDate.getMinutes()).slice(-2);
+    const seconds = showSeconds ? `:${('00' + currentDate.getSeconds()).slice(-2)}` : '';
 
     let timeStr = '';
-    let hours = now.getHours();
-    const minutes = ('00' + now.getMinutes()).slice(-2);
-    const seconds = showSeconds ? `:${('00' + now.getSeconds()).slice(-2)}` : '';
-
     if (timeformat === 'twentyfourhour') {
       timeStr =
         zero === 'false'
@@ -49,12 +45,10 @@ export const DigitalClock = React.memo(() => {
         zero === 'false'
           ? `${hours}:${minutes}${seconds}`
           : `${('00' + hours).slice(-2)}:${minutes}${seconds}`;
-      setAmpm(now.getHours() > 11 ? 'PM' : 'AM');
+      setAmpm(currentDate.getHours() > 11 ? 'PM' : 'AM');
     }
     setTime(timeStr);
-  };
-
-  useTimeUpdate(updateTime);
+  }, [currentDate, timeSettings]);
 
   return (
     <span className="clock clock-container" ref={elementRef}>
