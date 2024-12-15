@@ -1,28 +1,20 @@
 import { useEffect, useRef } from 'react';
 
-export const useTimeUpdate = (updateFn) => {
-  const timerRef = useRef(null);
+export const useTimeUpdate = (callback, interval = 1000) => {
+  const savedCallback = useRef(callback);
 
   useEffect(() => {
-    const startTime = (initialDelay = null) => {
-      const showSeconds = localStorage.getItem('seconds') === 'true';
-      const delay =
-        initialDelay ?? (showSeconds ? 1000 - (Date.now() % 1000) : 60000 - (Date.now() % 60000));
+    savedCallback.current = callback;
+  }, [callback]);
 
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
+  useEffect(() => {
+    // Immediately execute callback to avoid delay
+    savedCallback.current();
 
-      updateFn();
-      timerRef.current = setTimeout(() => startTime(), delay);
-    };
+    const id = setInterval(() => {
+      savedCallback.current();
+    }, interval);
 
-    startTime(0);
-
-    return () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-    };
-  }, [updateFn]);
+    return () => clearInterval(id);
+  }, [interval]);
 };

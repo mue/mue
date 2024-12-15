@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, memo } from 'react';
 import { AnalogClock } from './components/AnalogClock';
 import { VerticalClock } from './components/VerticalClock';
 import { DigitalClock } from './components/DigitalClock';
 import { PercentageClock } from './components/PercentageClock';
 import EventBus from 'utils/eventbus';
 import defaults from './options/default';
+import ErrorBoundary from '../../ErrorBoundary';
 
 import 'react-clock/dist/Clock.css';
 import './clock.scss';
@@ -49,7 +50,11 @@ const Clock = () => {
     }
   };
 
-  return renderClock();
+  return (
+    <ErrorBoundary fallback={<div className="clock-error">Error loading clock</div>}>
+      <Suspense fallback={<div className="clock-loading"></div>}>{renderClock()}</Suspense>
+    </ErrorBoundary>
+  );
 };
 
-export default Clock;
+export default memo(Clock);

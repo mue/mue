@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useTimeUpdate } from '../hooks/useTimeUpdate';
 import { useClockZoom } from '../hooks/useClockZoom';
 import { convertTimezone } from 'utils/date';
 
-export const DigitalClock = () => {
+// Add memoization of time settings
+const getTimeSettings = () => {
+  const settings = {
+    timeformat: localStorage.getItem('timeformat'),
+    timezone: localStorage.getItem('timezone'),
+    zero: localStorage.getItem('zero'),
+    showSeconds: localStorage.getItem('seconds') === 'true',
+  };
+  return settings;
+};
+
+export const DigitalClock = React.memo(() => {
   const [time, setTime] = useState('');
   const [ampm, setAmpm] = useState('');
   const { elementRef } = useClockZoom();
+  const timeSettings = useMemo(getTimeSettings, []);
 
   const updateTime = () => {
     let now = new Date();
-    const timezone = localStorage.getItem('timezone');
-    const zero = localStorage.getItem('zero');
-    const showSeconds = localStorage.getItem('seconds') === 'true';
+    const { timezone, zero, showSeconds, timeformat } = timeSettings;
 
     if (timezone && timezone !== 'auto') {
       now = convertTimezone(now, timezone);
@@ -23,7 +33,7 @@ export const DigitalClock = () => {
     const minutes = ('00' + now.getMinutes()).slice(-2);
     const seconds = showSeconds ? `:${('00' + now.getSeconds()).slice(-2)}` : '';
 
-    if (localStorage.getItem('timeformat') === 'twentyfourhour') {
+    if (timeformat === 'twentyfourhour') {
       timeStr =
         zero === 'false'
           ? `${hours}:${minutes}${seconds}`
@@ -52,4 +62,4 @@ export const DigitalClock = () => {
       <span className="ampm">{ampm}</span>
     </span>
   );
-};
+});

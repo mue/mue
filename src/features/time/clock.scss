@@ -61,3 +61,28 @@
     line-height: 0;
   }
 }
+
+.clock-loading {
+  width: 4em;
+  height: 1.5em;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.clock-error {
+  color: #ff6b6b;
+  font-size: 1em;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
