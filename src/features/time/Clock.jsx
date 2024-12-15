@@ -58,9 +58,9 @@ const ClockContent = () => {
   );
 };
 
-const Clock = () => {
+const Clock = ({ isPreview, staticTime }) => {
   return (
-    <TimeProvider>
+    <TimeProvider staticTime={staticTime}>
       <ClockContent />
     </TimeProvider>
   );

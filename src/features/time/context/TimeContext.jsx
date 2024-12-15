@@ -3,10 +3,12 @@ import { convertTimezone } from 'utils/date';
 
 const TimeContext = createContext();
 
-export const TimeProvider = ({ children }) => {
-  const [currentDate, setCurrentDate] = useState(new Date());
+export const TimeProvider = ({ children, staticTime }) => {
+  const [currentDate, setCurrentDate] = useState(staticTime || new Date());
 
   const updateTime = () => {
+    if (staticTime) return; // Don't update if using static time
+
     let now = new Date();
     const timezone = localStorage.getItem('timezone');
 
