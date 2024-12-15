@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
 import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
-import Clock from 'features/time/Clock';
-
+import { ClockPreview } from './ClockPreview';
 import { MdRefresh } from 'react-icons/md';
 
 import defaults from './default';
@@ -251,7 +250,7 @@ const TimeOptions = () => {
       />*/}
       <Hero>
         <Preview>
-          <Clock />
+          <ClockPreview />
         </Preview>
         <Controls
           setting="time"
