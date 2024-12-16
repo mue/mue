@@ -39,7 +39,7 @@ module.exports = {
         sm: '0 1px 4px var(--tw-shadow-color)',
         DEFAULT: '0 2px 8px var(--tw-shadow-color)',
         lg: '0 8px 24px var(--tw-shadow-color)',
-      }
+      },
     },
   },
   plugins: [

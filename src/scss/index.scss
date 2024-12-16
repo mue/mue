@@ -213,3 +213,12 @@ body {
 .modal-clamp-width {
   width: clamp(60vw, 1400px, 90vw);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
