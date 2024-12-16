@@ -434,7 +434,7 @@ class Quote extends PureComponent {
             modalClose={() => this.setState({ shareModal: false })}
           />
         </Modal>
-        <span className="quote" ref={this.quote}>
+        <span className="quote w-[40vw]" ref={this.quote}>
           {this.state.quote}
         </span>
 

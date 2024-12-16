@@ -4,7 +4,7 @@ import Greeting from '../../greeting/Greeting';
 import Quote from '../../quote/Quote';
 import Search from '../../search/Search';
 import QuickLinks from '../../quicklinks/QuickLinks';
-import Date from '../../time/Date';
+import Date from '../../date/Date';
 import Message from '../../message/Message';
 import { WidgetsLayout } from 'components/Layout';
 import EventBus from 'utils/eventbus';

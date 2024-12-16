@@ -2,7 +2,7 @@ import variables from 'config/variables';
 
 import { useState, useEffect } from 'react';
 
-import { MdSource } from 'react-icons/md';
+import { MdSource, MdPerson, MdContentCopy, MdIosShare, MdStarBorder } from 'react-icons/md';
 
 import {
   Header,
@@ -16,10 +16,34 @@ import { Checkbox, Dropdown } from 'components/Form/Settings';
 
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
 import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
-
+import { Quote } from 'features/quote';
 import CustomSettings from './Custom';
 
 import defaults from './default';
+
+const QuotePreview = () => {
+  return (
+    <div className="quotediv">
+      <span className="quote">"The best way to predict the future is to invent it."</span>
+      <div className="author-holder">
+        <div className="author">
+          <div className="author-img">
+            <MdPerson />
+          </div>
+          <div className="author-content">
+            <span className="title">Alan Kay</span>
+            <span className="subtitle">Computer Scientist</span>
+          </div>
+          <div className="quote-buttons">
+            <MdContentCopy />
+            <MdIosShare />
+            <MdStarBorder />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const QuoteOptions = () => {
   const [quoteType, setQuoteType] = useState(
@@ -108,24 +132,11 @@ const QuoteOptions = () => {
 
   return (
     <>
-      {/* {subSection === 'source' ? (
-        <Header
-          title={variables.getMessage(`${QUOTE_SECTION}.title`)}
-          secondaryTitle={variables.getMessage('settings:sections.background.source.title')}
-          report={false}
-        />
-      ) : (
-        <Header
-          title={variables.getMessage(`${QUOTE_SECTION}.title`)}
-          setting="quote"
-          category="quote"
-          element=".quotediv"
-          zoomSetting="zoomQuote"
-          visibilityToggle={true}
-        />
-      )} */}
       {subSection === '' && (
         <Hero>
+          <Preview>
+            <QuotePreview />
+          </Preview>
           <Controls
             title={variables.getMessage(`${QUOTE_SECTION}.title`)}
             setting="quote"
@@ -160,14 +171,10 @@ const QuoteOptions = () => {
           >
             <SourceDropdown />
           </Section>
-          <PreferencesWrapper
-            setting="quote"
-            default={defaults.quote}
-            zoomSetting="zoomQuote"
-            category="quote"
-            visibilityToggle={true}
-          >
+          <PreferencesWrapper setting="quote">
             <ButtonOptions />
+          </PreferencesWrapper>
+          <PreferencesWrapper setting="quote">
             <AdditionalOptions />
           </PreferencesWrapper>
         </>

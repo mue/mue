@@ -1,17 +1,4 @@
-const DefaultDateOptions = {
-  date: false,
-  dateType: 'long',
-  longFormat: 'DMY',
-  dayofweek: false,
-  datenth: false,
-  dateFormat: 'DMY',
-  shortFormat: 'dots',
-  zoomDate: 100,
-  weeknumber: false,
-  datezero: false,
-};
-
-const DefaultTimeOptions = {
+const DefaultOptions = {
   time: true,
   timeType: 'digital',
   hourColour: '#ffffff',
@@ -27,11 +14,6 @@ const DefaultTimeOptions = {
   minuteMarks: false,
   roundClock: true,
   zoomClock: 100,
-};
-
-const DefaultOptions = {
-  date: DefaultDateOptions,
-  time: DefaultTimeOptions,
 };
 
 export default DefaultOptions;

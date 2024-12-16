@@ -6,7 +6,8 @@ import { Tabs } from 'components/Elements/MainModal/backend/newTabs';
 
 import { NavbarOptions } from 'features/navbar';
 import { GreetingOptions } from 'features/greeting';
-import { TimeOptions, DateOptions } from 'features/time';
+import { TimeOptions } from 'features/time';
+import { DateOptions } from 'features/date';
 import { QuickLinksOptions } from 'features/quicklinks';
 import { QuoteOptions } from 'features/quote';
 import { MessageOptions } from 'features/message';
