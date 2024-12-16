@@ -11,7 +11,9 @@ const Preview = (props) => {
     <div className="h-full flex flex-col">
       <h1 className="py-3 uppercase tracking-tight text-neutral-300">Preview</h1>
       <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded flex-grow">
-        {props.children}
+        <div className="relative w-full h-[300px] bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-lg overflow-hidden grid place-items-center">
+          {props.children}
+        </div>
       </div>
     </div>
   );
