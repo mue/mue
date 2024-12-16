@@ -8,7 +8,7 @@ const DatePreview = ({ zoomLevel = 100 }) => {
   return (
     <AnimatePresence mode="crossfade">
       <motion.div
-        className="absolute"
+        className="absolute text-3xl"
         key={`date-preview-${dateType}`}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{

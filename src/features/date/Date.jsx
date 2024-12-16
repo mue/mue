@@ -10,15 +10,16 @@ import { LongDate } from './components/LongDate';
 
 import './date.scss';
 
-const DateWidget = () => {
+const DateWidget = ({ isPreview = false, staticDate }) => {
   const [date, setDate] = useState('');
   const [weekNumber, setWeekNumber] = useState('');
   const dateRef = useRef();
 
   const getDate = useCallback(() => {
-    let currentDate = new Date();
+    let currentDate = isPreview ? staticDate : new Date();
+
     const timezone = localStorage.getItem('timezone');
-    if (timezone && timezone !== 'auto') {
+    if (!isPreview && timezone && timezone !== 'auto') {
       currentDate = convertTimezone(currentDate, timezone);
     }
 
@@ -29,33 +30,35 @@ const DateWidget = () => {
     }
 
     setWeekNumber(WeekNumber(currentDate));
-  }, []);
+  }, [isPreview, staticDate]);
 
   useEffect(() => {
-    const handleRefresh = (data) => {
-      if (data === 'date' || data === 'timezone') {
-        if (localStorage.getItem('date') === 'false') {
-          dateRef.current.style.display = 'none';
-          return;
+    if (!isPreview) {
+      const handleRefresh = (data) => {
+        if (data === 'date' || data === 'timezone') {
+          if (localStorage.getItem('date') === 'false') {
+            dateRef.current.style.display = 'none';
+            return;
+          }
+
+          dateRef.current.style.display = 'block';
+          dateRef.current.style.fontSize = `${Number(
+            (localStorage.getItem('zoomDate') || defaults.zoomDate) / 100,
+          )}em`;
+          getDate();
         }
+      };
 
-        dateRef.current.style.display = 'block';
-        dateRef.current.style.fontSize = `${Number(
-          (localStorage.getItem('zoomDate') || defaults.zoomDate) / 100,
-        )}em`;
-        getDate();
-      }
-    };
+      EventBus.on('refresh', handleRefresh);
+      dateRef.current.style.fontSize = `${Number((localStorage.getItem('zoomDate') || defaults.zoomDate) / 100)}em`;
 
-    EventBus.on('refresh', handleRefresh);
+      return () => {
+        EventBus.off('refresh', handleRefresh);
+      };
+    }
 
-    dateRef.current.style.fontSize = `${Number((localStorage.getItem('zoomDate') || defaults.zoomDate) / 100)}em`;
     getDate();
-
-    return () => {
-      EventBus.off('refresh', handleRefresh);
-    };
-  }, [getDate]);
+  }, [getDate, isPreview]);
 
   return (
     <div className="flex flex-col" ref={dateRef}>
