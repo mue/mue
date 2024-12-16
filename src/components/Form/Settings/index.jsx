@@ -6,3 +6,4 @@ export * from './Radio';
 export * from './Slider';
 export * from './Switch';
 export * from './Text';
+export * from './TextareaAutosize';

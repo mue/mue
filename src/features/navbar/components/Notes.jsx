@@ -3,9 +3,9 @@ import { PureComponent, memo, useState } from 'react';
 
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
 import { Tooltip } from 'components/Elements';
+import { TextareaAutosize } from 'components/Form/Settings';
 
 import { saveFile } from 'utils/saveFile';
 import EventBus from 'utils/eventbus';

@@ -1,10 +1,9 @@
 import variables from 'config/variables';
 
 import { useState, memo } from 'react';
-import { TextareaAutosize } from '@mui/material';
 import { MdAddLink, MdClose } from 'react-icons/md';
-import { Tooltip } from 'components/Elements';
-import { Button } from 'components/Elements';
+import { Tooltip, Button } from 'components/Elements';
+import { TextareaAutosize } from 'components/Form';
 
 function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, editLink }) {
   const [name, setName] = useState(edit ? editData.name : '');

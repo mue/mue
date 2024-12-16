@@ -9,8 +9,7 @@ import {
   PreferencesWrapper,
   Section,
 } from 'components/Layout/Settings';
-import { Checkbox, Switch, Text } from 'components/Form/Settings';
-import { TextareaAutosize } from '@mui/material';
+import { Checkbox, Switch, Text, TextareaAutosize } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
@@ -200,6 +199,7 @@ const GreetingOptions = () => {
                   </span>
                   <TextareaAutosize
                     value={event.name}
+                    minRows={1}
                     placeholder={variables.getMessage(`${GREETING_SECTION}.event_name`)}
                     onChange={(e) => {
                       const updatedEvent = { ...event, name: e.target.value };
