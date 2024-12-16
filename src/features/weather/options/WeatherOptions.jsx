@@ -196,6 +196,7 @@ const WeatherOptions = () => {
           zoomSetting="zoomWeather"
           zoomCategory="weather"
           visibilityToggle={true}
+          title={variables.getMessage(`${WEATHER_SECTION}.title`)}
         />
       </Hero>
       {/*<PreferencesWrapper

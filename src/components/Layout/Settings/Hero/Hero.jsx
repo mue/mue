@@ -21,6 +21,12 @@ const Preview = (props) => {
 };
 
 const VisibilityToggleButton = ({ setting, onClick }) => {
+  const [isInitialRender, setIsInitialRender] = useState(true);
+
+  useEffect(() => {
+    setIsInitialRender(false);
+  }, []);
+
   const iconVariants = {
     initial: { opacity: 0, scale: 0.8 },
     animate: { opacity: 1, scale: 1 },
@@ -65,9 +71,9 @@ const VisibilityToggleButton = ({ setting, onClick }) => {
         </motion.span>
       </AnimatePresence>
       <motion.span
-        initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
+        initial={isInitialRender ? { opacity: 1 } : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
+        transition={{ duration: isInitialRender ? 0 : prefersReducedMotion ? 0 : 0.2 }}
         className="text-base text-gray-900 dark:text-gray-100"
       >
         {setting ? 'Hide' : 'Show'}
@@ -130,7 +136,7 @@ const Controls = (props) => {
 
   const memoizedToggle = useMemo(
     () => <VisibilityToggleButton setting={setting} onClick={changeSetting} />,
-    [setting],
+    [setting, changeSetting],
   );
 
   return (

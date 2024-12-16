@@ -258,6 +258,7 @@ const TimeOptions = () => {
           element=".clock-container"
           zoomSetting="zoomClock"
           visibilityToggle={true}
+          title={variables.getMessage(`${TIME_SECTION}.title`)}
         />
       </Hero>
       <h1 className="py-3 uppercase tracking-tight text-neutral-300">options</h1>

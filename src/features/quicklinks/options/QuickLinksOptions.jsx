@@ -214,6 +214,7 @@ class QuickLinksOptions extends PureComponent {
             category="quicklinks"
             visibilityToggle={true}
             zoomSetting="zoomQuicklinks"
+            title="Quick Link Options"
           />
         </Hero>
         <PreferencesWrapper>

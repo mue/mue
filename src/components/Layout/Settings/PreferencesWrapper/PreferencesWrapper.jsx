@@ -31,7 +31,7 @@ const PreferencesWrapper = ({ children, ...props }) => {
 
   return (
     <div
-      className={`preferences transition-all duration-1000 delay-75 ease-cubic ${
+      className={`preferences transition-all duration-200 delay-75 ease-cubic ${
         shown ? 'opacity-100 pointer-events-auto' : 'opacity-40 pointer-events-none'
       } bg-modal-content-light dark:bg-modal-content-dark p-10 rounded`}
     >

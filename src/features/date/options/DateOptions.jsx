@@ -92,6 +92,7 @@ function DateOptions() {
           element=".date"
           zoomSetting="zoomDate"
           visibilityToggle={true}
+          title={variables.getMessage('settings:sections.date.title')}
         />
       </Hero>
       <PreferencesWrapper setting="date">
