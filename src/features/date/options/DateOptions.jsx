@@ -3,8 +3,10 @@ import { useState } from 'react';
 
 import { Header } from 'components/Layout/Settings';
 import { Checkbox, Dropdown } from 'components/Form/Settings';
+import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
 
 import { Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import DatePreview from './DatePreview';
 
 import defaults from './default';
 
@@ -80,20 +82,19 @@ function DateOptions() {
 
   return (
     <>
-      <Header
-        title={variables.getMessage('settings:sections.date.title')}
-        setting="date"
-        category="date"
-        element=".date"
-        zoomSetting="zoomDate"
-        visibilityToggle={true}
-      />
-      <PreferencesWrapper
-        setting="date"
-        visibilityToggle={true}
-        category="date"
-        zoomSetting="zoomDate"
-      >
+      <Hero>
+        <Preview>
+          <DatePreview />
+        </Preview>
+        <Controls
+          setting="date"
+          category="date"
+          element=".date"
+          zoomSetting="zoomDate"
+          visibilityToggle={true}
+        />
+      </Hero>
+      <PreferencesWrapper setting="date">
         <Row>
           <Content
             title={variables.getMessage('settings:sections.time.type')}
