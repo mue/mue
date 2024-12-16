@@ -140,7 +140,7 @@ const Controls = (props) => {
         {props.visibilityToggle && memoizedToggle}
         {props.report !== false && <ReportButton />}
       </div>
-      <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded flex flex-col gap-10 flex-grow">
+      <div className="bg-modal-content-light dark:bg-modal-content-dark p-10 rounded flex items-center jutify-center flex-grow">
         {(props.zoomSetting !== null || props.zoomSetting !== '') && (
           <Slider
             name={props.zoomSetting}
