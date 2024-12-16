@@ -4,6 +4,7 @@
   font-size: 4em;
   margin: 0;
   cursor: initial;
+  -webkit-user-select: none;
   user-select: none;
   font-weight: 600;
   animation: fadeIn 1s;
@@ -26,7 +27,7 @@
   @include themed {
     border: 1px solid t($color) !important;
   }
-
+  -webkit-user-select: none;
   cursor: initial;
   user-select: none;
 }
@@ -52,6 +53,7 @@
 
 .vertical-clock {
   line-height: 100%;
+  -webkit-user-select: none;
   user-select: none;
   font-size: 4em;
 

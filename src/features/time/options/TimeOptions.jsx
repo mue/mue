@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import React, { useState } from 'react';
 
-import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
 import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
 import { ClockPreview } from './ClockPreview';
