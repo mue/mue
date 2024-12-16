@@ -13,11 +13,13 @@ import { Checkbox, Switch, Text, TextareaAutosize } from 'components/Form/Settin
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
 import { useTab } from 'components/Elements/MainModal/backend/TabContext';
+import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
 
 import defaults from './default';
 import defaultEvents from '../events.json';
 
 import { MdEventNote, MdAdd, MdCancel, MdRefresh } from 'react-icons/md';
+import GreetingPreview from './GreetingPreview';
 
 const GreetingOptions = () => {
   const { subSection } = useTab();
@@ -296,8 +298,34 @@ const GreetingOptions = () => {
 
   return (
     <>
-      {/*{header}*/}
-      {subSection === 'events' ? (
+      {subSection === '' && (
+        <>
+          <Hero>
+            <Preview>
+              <GreetingPreview />
+            </Preview>
+            <Controls
+              title={variables.getMessage(`${GREETING_SECTION}.title`)}
+              setting="greeting"
+              category="greeting"
+              element=".greeting"
+              zoomSetting="zoomGreeting"
+              visibilityToggle={true}
+            />
+          </Hero>
+          <Section
+            id="events"
+            title={variables.getMessage(`${GREETING_SECTION}.events`)}
+            subtitle={variables.getMessage(`${GREETING_SECTION}.events_description`)}
+            onClick={() => setEvents(true)}
+            icon={<MdEventNote />}
+          />
+          <PreferencesWrapper setting="greeting">
+            <AdditionalOptions />
+          </PreferencesWrapper>
+        </>
+      )}
+      {subSection === 'events' && (
         <>
           <Row>
             <Content
@@ -317,24 +345,6 @@ const GreetingOptions = () => {
           </Row>
           {BirthdayOptions()}
           {CustomEventsSection()}
-        </>
-      ) : (
-        <>
-          <Section
-            id="events"
-            title={variables.getMessage(`${GREETING_SECTION}.events`)}
-            subtitle={variables.getMessage(`${GREETING_SECTION}.events_description`)}
-            onClick={() => setEvents(true)}
-            icon={<MdEventNote />}
-          />
-          <PreferencesWrapper
-            setting="greeting"
-            zoomSetting="zoomGreeting"
-            category="greeting"
-            visibilityToggle={true}
-          >
-            <AdditionalOptions />
-          </PreferencesWrapper>
         </>
       )}
     </>
