@@ -98,7 +98,7 @@ function SliderComponent(props) {
         markClassName={`
           h-3 w-1.5 bg-white/30 rounded-full cursor-pointer
           hover:bg-white/50 hover:scale-110
-          transition-all duration-200
+          hover:transition-transform hover:duration-200
           absolute top-1/2 transform -translate-y-1/2
           after:content-[attr(data-value)]
           after:absolute after:top-5
