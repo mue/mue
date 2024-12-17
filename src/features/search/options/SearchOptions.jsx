@@ -4,12 +4,14 @@ import { toast } from 'react-toastify';
 import { TextField } from '@mui/material';
 
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Hero, Preview, Controls } from 'components/Layout/Settings/Hero';
 import { Dropdown, Checkbox } from 'components/Form/Settings';
 
 import EventBus from 'utils/eventbus';
 
 import searchEngines from '../search_engines.json';
 import defaults from './default';
+import SearchPreview from './SearchPreview';
 
 function SearchOptions() {
   const [customEnabled, setCustomEnabled] = useState(false);
@@ -148,6 +150,17 @@ function SearchOptions() {
         category="widgets"
         visibilityToggle={true}
       />
+      <Hero>
+        <Preview>
+          <SearchPreview />
+        </Preview>
+        <Controls
+          title={variables.getMessage(`${SEARCH_SECTION}.title`)}
+          setting="searchBar"
+          category="widgets"
+          visibilityToggle={true}
+        />
+      </Hero>
       <PreferencesWrapper setting="searchBar" category="widgets" visibilityToggle={true}>
         <SearchEngineSelection />
         <AdditionalOptions />

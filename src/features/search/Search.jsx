@@ -17,7 +17,7 @@ import './search.scss';
 import defaults from './options/default';
 import searchEngines from './search_engines.json';
 
-function Search() {
+function Search({ isPreview }) {
   const [url, setURL] = useState('');
   const [query, setQuery] = useState('');
   const [microphone, setMicrophone] = useState(null);
@@ -139,6 +139,29 @@ function Search() {
   }
 
   const getSuggestionsDebounced = useDebouncedCallback(getSuggestions, 100);
+
+  if (isPreview) {
+    return (
+      <div className="searchComponents">
+        <div className="searchMain">
+          <div className={classList}>
+            <Icon currentSearch={currentSearch} setSearchDropdown={setSearchDropdown} />
+          </div>
+          <form className="searchBar">
+            <div className={classList}>
+              <MdSearch />
+            </div>
+            <input
+              placeholder={variables.getMessage('widgets.search')}
+              id="searchPreviewText"
+              disabled={true}
+              className="previewInput"
+            />
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="searchComponents">
