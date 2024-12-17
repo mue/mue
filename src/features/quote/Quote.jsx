@@ -1,128 +1,52 @@
+import { useState, useEffect, useRef } from 'react';
 import variables from 'config/variables';
-import { PureComponent, createRef } from 'react';
-import {
-  MdContentCopy,
-  MdStarBorder,
-  MdStar,
-  MdPerson,
-  MdOpenInNew,
-  MdIosShare,
-} from 'react-icons/md';
-
 import { toast } from 'react-toastify';
-import Stats from 'features/stats/api/stats';
-
-import { Tooltip } from 'components/Elements';
-
 import Modal from 'react-modal';
 import { ShareModal } from 'components/Elements';
 
-import offline_quotes from './offline_quotes.json';
-
+import Stats from 'features/stats/api/stats';
 import EventBus from 'utils/eventbus';
 import defaults from './options/default';
+import offline_quotes from './offline_quotes.json';
+
+import QuoteButtons from './components/QuoteButtons';
+import QuoteAuthor from './components/QuoteAuthor';
 
 import './quote.scss';
 
-class Quote extends PureComponent {
-  buttons = {
-    share: (
-      <Tooltip title={variables.getMessage('widgets.quote.share')}>
-        <button
-          onClick={() => this.setState({ shareModal: true })}
-          aria-label={variables.getMessage('widgets.quote.share')}
-        >
-          <MdIosShare className="copyButton" />
-        </button>
-      </Tooltip>
-    ),
-    copy: (
-      <Tooltip title={variables.getMessage('widgets.quote.copy')}>
-        <button
-          onClick={() => this.copyQuote()}
-          aria-label={variables.getMessage('widgets.quote.copy')}
-        >
-          <MdContentCopy className="copyButton" />
-        </button>
-      </Tooltip>
-    ),
-    unfavourited: (
-      <Tooltip title={variables.getMessage('widgets.quote.favourite')}>
-        <button
-          onClick={() => this.favourite()}
-          aria-label={variables.getMessage('widgets.quote.favourite')}
-        >
-          <MdStarBorder className="copyButton" />
-        </button>
-      </Tooltip>
-    ),
-    favourited: (
-      <Tooltip title={variables.getMessage('widgets.quote.unfavourite')}>
-        <button
-          onClick={() => this.favourite()}
-          aria-label={variables.getMessage('widgets.quote.unfavourite')}
-        >
-          <MdStar className="copyButton" />
-        </button>
-      </Tooltip>
-    ),
+const Quote = () => {
+  const [quoteState, setQuoteState] = useState({
+    quote: null,
+    author: null,
+    authorOccupation: null,
+    authorLink: null,
+    authorImg: null,
+    authorImgLicense: null,
+    quoteLanguage: '',
+    type: localStorage.getItem('quoteType') || defaults.quoteType,
+    shareModal: false,
+    isFavourited: !!localStorage.getItem('favouriteQuote'),
+    noQuote: false,
+  });
+
+  const quoteRef = useRef();
+  const quoteDivRef = useRef();
+  const quoteAuthorRef = useRef();
+
+  const stripHTML = (html) => {
+    const tmpdoc = new DOMParser().parseFromString(html, 'text/html');
+    return tmpdoc.body.textContent || '';
   };
 
-  constructor() {
-    super();
-    this.state = {
-      quote: null,
-      author: null,
-      authorOccupation: null,
-      favourited: this.useFavourite(),
-      share: localStorage.getItem('quoteShareButton') === 'false' ? null : this.buttons.share,
-      copy: localStorage.getItem('copyButton') === 'false' ? null : this.buttons.copy,
-      quoteLanguage: '',
-      type: localStorage.getItem('quoteType') || defaults.quoteType,
-      shareModal: false,
-    };
-    this.quote = createRef();
-    this.quotediv = createRef();
-    this.quoteauthor = createRef();
-  }
-
-  useFavourite() {
-    if (localStorage.getItem('favouriteQuoteEnabled') === 'true') {
-      return localStorage.getItem('favouriteQuote')
-        ? this.buttons.favourited
-        : this.buttons.unfavourited;
-    } else {
-      return null;
-    }
-  }
-
-  doOffline() {
-    // Get a random quote from our local JSON
-    const quote = offline_quotes[Math.floor(Math.random() * offline_quotes.length)];
-
-    this.setState({
-      quote: '"' + quote.quote + '"',
-      author: quote.author,
-      authorlink: this.getAuthorLink(quote.author),
-      authorimg: '',
-    });
-    Stats.postEvent('feature', 'quote', 'shown');
-  }
-
-  getAuthorLink(author) {
+  const getAuthorLink = (author) => {
     return localStorage.getItem('authorLink') === 'false' || author === 'Unknown'
       ? null
       : `https://${variables.locale_id.split('-')[0]}.wikipedia.org/wiki/${author
           .split(' ')
           .join('_')}`;
-  }
+  };
 
-  stripHTML(html) {
-    const tmpdoc = new DOMParser().parseFromString(html, 'text/html');
-    return tmpdoc.body.textContent || '';
-  }
-
-  async getAuthorImg(author) {
+  const getAuthorImg = async (author) => {
     if (localStorage.getItem('authorImg') === 'false') {
       return {
         authorimg: null,
@@ -157,9 +81,7 @@ class Quote extends PureComponent {
         authorimglicensedata.query.pages[Object.keys(authorimglicensedata.query.pages)[0]];
       const metadata = authorImagePage?.imageinfo?.[0]?.extmetadata;
       const license = metadata?.LicenseShortName;
-      const photographer = this.stripHTML(
-        metadata?.Attribution?.value || metadata?.Artist?.value || '',
-      )
+      const photographer = stripHTML(metadata?.Attribution?.value || metadata?.Artist?.value || '')
         .replace(/©\s/, '')
         .replace(/ \(talk\)/, ''); // talk page link (if applicable) is only removed for English
 
@@ -191,27 +113,66 @@ class Quote extends PureComponent {
       authorimg,
       authorimglicense,
     };
-  }
+  };
 
-  async getQuote() {
+  const copyQuote = () => {
+    Stats.postEvent('feature', 'quote', 'copied');
+    navigator.clipboard.writeText(`${quoteState.quote} - ${quoteState.author}`);
+    toast(variables.getMessage('toasts.quote'));
+  };
+
+  const handleFavourite = () => {
+    const newIsFavourited = !quoteState.isFavourited;
+    if (newIsFavourited) {
+      localStorage.setItem('favouriteQuote', quoteState.quote + ' - ' + quoteState.author);
+      Stats.postEvent('feature', 'quote', 'favourited');
+    } else {
+      localStorage.removeItem('favouriteQuote');
+      Stats.postEvent('feature', 'quote', 'favourite_removed');
+    }
+    setQuoteState((prev) => ({ ...prev, isFavourited: newIsFavourited }));
+  };
+
+  const setZoom = () => {
+    const zoomQuote = Number((localStorage.getItem('zoomQuote') || defaults.zoomQuote) / 100);
+    if (quoteRef.current && quoteAuthorRef.current) {
+      quoteRef.current.style.fontSize = `${0.8 * zoomQuote}em`;
+      quoteAuthorRef.current.style.fontSize = `${0.9 * zoomQuote}em`;
+    }
+  };
+
+  const doOffline = () => {
+    // Get a random quote from our local JSON
+    const quote = offline_quotes[Math.floor(Math.random() * offline_quotes.length)];
+
+    setQuoteState({
+      quote: '"' + quote.quote + '"',
+      author: quote.author,
+      authorLink: getAuthorLink(quote.author),
+      authorImg: '',
+    });
+    Stats.postEvent('feature', 'quote', 'shown');
+  };
+
+  const getQuote = async () => {
     const offline = localStorage.getItem('offlineMode') === 'true';
 
     const favouriteQuote = localStorage.getItem('favouriteQuote');
     if (favouriteQuote) {
       let author = favouriteQuote.split(' - ')[1];
-      const authorimgdata = await this.getAuthorImg(author);
-      this.setState({
+      const authorimgdata = await getAuthorImg(author);
+      setQuoteState({
         quote: favouriteQuote.split(' - ')[0],
         author,
-        authorlink: this.getAuthorLink(author),
-        authorimg: authorimgdata.authorimg,
-        authorimglicense: authorimgdata.authorimglicense,
+        authorLink: getAuthorLink(author),
+        authorImg: authorimgdata.authorimg,
+        authorImgLicense: authorimgdata.authorimglicense,
       });
       Stats.postEvent('feature', 'quote', 'shown');
       return;
     }
 
-    switch (this.state.type) {
+    switch (quoteState.type) {
       case 'custom':
         let customQuote;
         try {
@@ -233,23 +194,23 @@ class Quote extends PureComponent {
           : null;
 
         if (customQuote !== undefined && customQuote !== null) {
-          this.setState({
+          setQuoteState({
             quote: '"' + customQuote.quote + '"',
             author: customQuote.author,
-            authorlink: this.getAuthorLink(customQuote.author),
-            authorimg: await this.getAuthorImg(customQuote.author),
+            authorLink: getAuthorLink(customQuote.author),
+            authorImg: await getAuthorImg(customQuote.author),
             noQuote: false,
           });
           Stats.postEvent('feature', 'quote', 'shown');
         } else {
-          this.setState({
+          setQuoteState({
             noQuote: true,
           });
         }
         break;
       case 'quote_pack':
         if (offline) {
-          this.doOffline();
+          doOffline();
           return;
         }
 
@@ -267,20 +228,20 @@ class Quote extends PureComponent {
 
         if (quotePack) {
           const data = quotePack[Math.floor(Math.random() * quotePack.length)];
-          this.setState({
+          setQuoteState({
             quote: '"' + data.quote + '"',
             author: data.author,
-            authorlink: this.getAuthorLink(data.author),
-            authorimg: data.fallbackauthorimg,
+            authorLink: getAuthorLink(data.author),
+            authorImg: data.fallbackauthorimg,
           });
           Stats.postEvent('feature', 'quote', 'shown');
         } else {
-          this.doOffline();
+          doOffline();
         }
         break;
       case 'api':
         if (offline) {
-          this.doOffline();
+          doOffline();
           return;
         }
 
@@ -293,13 +254,13 @@ class Quote extends PureComponent {
           if (data.statusCode === 429) {
             return null;
           }
-          const authorimgdata = await this.getAuthorImg(data.author);
+          const authorimgdata = await getAuthorImg(data.author);
           return {
             quote: '"' + data.quote.replace(/\s+$/g, '') + '"',
             author: data.author,
-            authorlink: this.getAuthorLink(data.author),
-            authorimg: authorimgdata.authorimg,
-            authorimglicense: authorimgdata.authorimglicense,
+            authorLink: getAuthorLink(data.author),
+            authorImg: authorimgdata.authorimg,
+            authorImgLicense: authorimgdata.authorimglicense,
             quoteLanguage: quoteLanguage,
             authorOccupation: data.author_occupation,
           };
@@ -310,210 +271,123 @@ class Quote extends PureComponent {
           let data = JSON.parse(localStorage.getItem('nextQuote')) || (await getAPIQuoteData());
           localStorage.setItem('nextQuote', null);
           if (data) {
-            this.setState(data);
+            setQuoteState(data);
             localStorage.setItem('currentQuote', JSON.stringify(data));
             localStorage.setItem('nextQuote', JSON.stringify(await getAPIQuoteData())); // pre-fetch data about the next quote
             Stats.postEvent('feature', 'quote', 'shown');
           } else {
-            this.doOffline();
+            doOffline();
           }
         } catch (e) {
           // ...and if that fails we load one locally
-          this.doOffline();
+          doOffline();
         }
         break;
       default:
         break;
     }
-  }
+  };
 
-  copyQuote() {
-    Stats.postEvent('feature', 'quote', 'copied');
-    navigator.clipboard.writeText(`${this.state.quote} - ${this.state.author}`);
-    toast(variables.getMessage('toasts.quote'));
-  }
+  useEffect(() => {
+    // Initialize quote
+    getQuote();
+    setZoom();
 
-  favourite() {
-    if (localStorage.getItem('favouriteQuote')) {
-      localStorage.removeItem('favouriteQuote');
-      this.setState({
-        favourited: this.buttons.unfavourited,
-      });
-      Stats.postEvent('feature', 'quote', 'favourite_removed');
-    } else {
-      localStorage.setItem('favouriteQuote', this.state.quote + ' - ' + this.state.author);
-      this.setState({
-        favourited: this.buttons.favourited,
-      });
-      Stats.postEvent('feature', 'quote', 'favourited');
-    }
-  }
-
-  init() {
-    this.setZoom();
-
-    const quoteType = localStorage.getItem('quoteType');
-
-    if (
-      this.state.type !== quoteType ||
-      localStorage.getItem('quoteLanguage') !== this.state.quoteLanguage ||
-      (quoteType === 'custom' && this.state.quote !== localStorage.getItem('customQuote')) ||
-      (quoteType === 'custom' && this.state.author !== localStorage.getItem('customQuoteAuthor'))
-    ) {
-      this.getQuote();
-    }
-  }
-
-  setZoom() {
-    const zoomQuote = Number((localStorage.getItem('zoomQuote') || defaults.zoomQuote) / 100);
-    this.quote.current.style.fontSize = `${0.8 * zoomQuote}em`;
-    this.quoteauthor.current.style.fontSize = `${0.9 * zoomQuote}em`;
-  }
-
-  componentDidMount() {
-    this.setZoom();
-
-    EventBus.on('refresh', (data) => {
+    // Event listener setup
+    const handleRefresh = (data) => {
       if (data === 'quote') {
         if (localStorage.getItem('quote') === 'false') {
-          return (this.quotediv.current.style.display = 'none');
+          quoteDivRef.current.style.display = 'none';
+          return;
         }
 
-        this.quotediv.current.style.display = 'block';
-        this.init();
-
-        // buttons hot reload
-        this.setState({
-          favourited: this.useFavourite(),
-          share: localStorage.getItem('quoteShareButton') === 'false' ? null : this.buttons.share,
-          copy: localStorage.getItem('copyButton') === 'false' ? null : this.buttons.copy,
-        });
+        quoteDivRef.current.style.display = 'block';
+        getQuote();
+        setZoom();
       }
 
-      // uninstall quote pack reverts the quote to what you had previously
       if (data === 'marketplacequoteuninstall') {
-        this.init();
+        getQuote();
       }
 
       if (data === 'quoterefresh') {
-        this.getQuote();
+        getQuote();
       }
-    });
+    };
 
-    if (
-      localStorage.getItem('quotechange') === 'refresh' ||
-      localStorage.getItem('quotechange') === null
-    ) {
-      this.setZoom();
-      this.getQuote();
-      localStorage.setItem('quoteStartTime', Date.now());
-    }
+    EventBus.on('refresh', handleRefresh);
+    return () => EventBus.off('refresh', handleRefresh);
+  }, []);
+
+  if (quoteState.noQuote) {
+    return null;
   }
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
+  return (
+    <div className="quotediv" ref={quoteDivRef}>
+      <Modal
+        closeTimeoutMS={300}
+        isOpen={quoteState.shareModal}
+        className="Modal mainModal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+        onRequestClose={() => setQuoteState((prev) => ({ ...prev, shareModal: false }))}
+      >
+        <ShareModal
+          data={`${quoteState.quote} - ${quoteState.author}`}
+          modalClose={() => setQuoteState((prev) => ({ ...prev, shareModal: false }))}
+        />
+      </Modal>
 
-  render() {
-    if (this.state.noQuote === true) {
-      return <></>;
-    }
+      <span className="quote w-[40vw]" ref={quoteRef}>
+        {quoteState.quote}
+      </span>
 
-    return (
-      <div className="quotediv" ref={this.quotediv}>
-        <Modal
-          closeTimeoutMS={300}
-          isOpen={this.state.shareModal}
-          className="Modal mainModal"
-          overlayClassName="Overlay"
-          ariaHideApp={false}
-          onRequestClose={() => this.setState({ shareModal: false })}
-        >
-          <ShareModal
-            data={`${this.state.quote} - ${this.state.author}`}
-            modalClose={() => this.setState({ shareModal: false })}
-          />
-        </Modal>
-        <span className="quote w-[40vw]" ref={this.quote}>
-          {this.state.quote}
-        </span>
-
-        {localStorage.getItem('widgetStyle') === 'legacy' ? (
-          <>
-            <div>
-              <h1 className="quoteauthor" ref={this.quoteauthor}>
-                <a
-                  href={this.state.authorlink}
-                  className="quoteAuthorLink"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Learn about the author of the quote."
-                >
-                  {this.state.author}
-                </a>
-              </h1>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-              {this.state.copy} {this.state.share} {this.state.favourited}
-            </div>
-          </>
-        ) : (
-          <div className="author-holder">
-            <div className="author">
-              {localStorage.getItem('authorImg') !== 'false' ? (
-                <div
-                  className="author-img"
-                  style={{ backgroundImage: `url(${this.state.authorimg})` }}
-                >
-                  {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
-                </div>
-              ) : null}
-              {this.state.author !== null ? (
-                <div className="author-content" ref={this.quoteauthor}>
-                  <span className="title">{this.state.author}</span>
-                  {this.state.authorOccupation !== 'Unknown' && (
-                    <span className="subtitle">{this.state.authorOccupation}</span>
-                  )}
-                  <span className="author-license" title={this.state.authorimglicense}>
-                    {this.state.authorimglicense &&
-                      this.state.authorimglicense.substring(0, 40) +
-                        (this.state.authorimglicense.length > 40 ? '…' : '')}
-                  </span>
-                </div>
-              ) : (
-                <div className="author-content whileLoading" ref={this.quoteauthor}>
-                  {/* these are placeholders for skeleton and as such don't need translating */}
-                  <span className="title pulse">loading</span>
-                  <span className="subtitle pulse">loading</span>
-                </div>
-              )}
-              {(this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null) ||
-              this.state.copy ||
-              this.state.share ||
-              this.state.favourited ? (
-                <div className="quote-buttons">
-                  {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null ? (
-                    <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
-                      <a
-                        href={this.state.authorlink}
-                        className="quoteAuthorLink"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Learn about the author of the quote."
-                      >
-                        <MdOpenInNew />
-                      </a>{' '}
-                    </Tooltip>
-                  ) : null}
-                  {this.state.copy} {this.state.share} {this.state.favourited}
-                </div>
-              ) : null}
-            </div>
+      {localStorage.getItem('widgetStyle') === 'legacy' ? (
+        <>
+          <div>
+            <h1 className="quoteauthor" ref={quoteAuthorRef}>
+              <a
+                href={quoteState.authorLink}
+                className="quoteAuthorLink"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Learn about the author of the quote."
+              >
+                {quoteState.author}
+              </a>
+            </h1>
           </div>
-        )}
-      </div>
-    );
-  }
-}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+            <QuoteButtons
+              onCopy={copyQuote}
+              onFavourite={handleFavourite}
+              onShare={() => setQuoteState((prev) => ({ ...prev, shareModal: true }))}
+              isFavourited={quoteState.isFavourited}
+            />
+          </div>
+        </>
+      ) : (
+        <div className="author-holder" ref={quoteAuthorRef}>
+          <QuoteAuthor
+            author={quoteState.author}
+            authorOccupation={quoteState.authorOccupation}
+            authorImg={quoteState.authorImg}
+            authorImgLicense={quoteState.authorImgLicense}
+            authorLink={quoteState.authorLink}
+            buttons={
+              <QuoteButtons
+                onCopy={copyQuote}
+                onFavourite={handleFavourite}
+                onShare={() => setQuoteState((prev) => ({ ...prev, shareModal: true }))}
+                isFavourited={quoteState.isFavourited}
+              />
+            }
+          />
+        </div>
+      )}
+    </div>
+  );
+};
 
 export { Quote as default, Quote };
