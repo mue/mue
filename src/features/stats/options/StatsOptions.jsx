@@ -9,6 +9,7 @@ import { StatsOverview } from './sections/StatsOverview';
 import { ClearModal } from './ClearModal';
 import Achievements from './sections/Achievements';
 import StatsDashboard from './sections/StatsDashboard';
+import SessionStats from '../components/SessionStats';
 
 import { saveFile } from 'utils/saveFile';
 import variables from 'config/variables';
@@ -52,6 +53,7 @@ const Stats = () => {
     setClearmodal(false);
     toast(variables.getMessage('toasts.stats_reset'));
     updateAchievements(); // Call updateAchievements to refresh achievements after reset
+    Stats.clearSessionStats(); // Clear session stats when resetting
   };
 
   const downloadStats = () => {
@@ -99,6 +101,9 @@ const Stats = () => {
         variables={variables}
       />
       <StatsDashboard stats={stats} variables={variables} STATS_SECTION={STATS_SECTION} />
+      <div className="stats-section">
+        <SessionStats />
+      </div>
     </>
   );
 };

@@ -1,9 +1,28 @@
-import { addEvent, getEvents } from 'utils/indexedDB';
+import {
+  addEvent,
+  getEvents,
+  updateSessionStats,
+  getAllSessionStats,
+  clearSessionStats,
+} from 'utils/indexedDB';
 import { newAchievements, getLocalisedAchievementData } from './achievements';
 import { toast } from 'react-toastify';
 import variables from 'config/variables';
 
 export default class Stats {
+  static #currentTabId = null;
+
+  static generateTabId() {
+    return `tab_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+  }
+
+  static getCurrentTabId() {
+    if (!this.#currentTabId) {
+      this.#currentTabId = this.generateTabId();
+    }
+    return this.#currentTabId;
+  }
+
   static async achievementTrigger(stats) {
     const newAchievement = await newAchievements(stats);
     newAchievement.forEach((achievement) => {
@@ -115,6 +134,45 @@ export default class Stats {
     data.streak.highest = highestStreak;
   }
 
+  static async updateSessionStats(event) {
+    const { tabId, timestamp, xpGained } = event;
+    let session = await this.getSessionStats(tabId);
+
+    if (!session) {
+      session = {
+        tabId,
+        startTime: timestamp,
+        endTime: timestamp,
+        duration: 0,
+        eventCount: 0,
+        totalXp: 0,
+        averageXpPerEvent: 0,
+      };
+    }
+
+    session.endTime = timestamp;
+    session.duration = new Date(session.endTime) - new Date(session.startTime);
+    session.eventCount += 1;
+    session.totalXp += xpGained;
+    session.averageXpPerEvent = session.totalXp / session.eventCount;
+
+    await updateSessionStats(session);
+    return session;
+  }
+
+  static async getSessionStats(tabId) {
+    const sessions = await getAllSessionStats();
+    return sessions.find((session) => session.tabId === tabId);
+  }
+
+  static getAllSessionStats() {
+    return getAllSessionStats();
+  }
+
+  static clearSessionStats() {
+    return clearSessionStats();
+  }
+
   static async postEvent(type, name = '', action = '') {
     const eventLog = await getEvents();
     const statsData = JSON.parse(localStorage.getItem('statsData')) || {
@@ -125,13 +183,17 @@ export default class Stats {
       streak: { current: 0, highest: 0 },
     };
     const timestamp = new Date().toISOString();
+    const tabId = this.getCurrentTabId();
 
     console.log(`Event Type: ${type}`);
     console.log(`Event Name: ${name}`);
     console.log(`Event Action: ${action}`);
+    console.log(`Tab ID: ${tabId}`);
 
     const xpGained = this.calculateXpForEvent(type, statsData.streak.current);
-    await this.addEvent({ type, name, action, timestamp, xpGained });
+    const event = { type, name, action, timestamp, xpGained, tabId };
+    await this.addEvent(event);
+    await this.updateSessionStats(event); // Now awaits the IndexedDB operation
     this.updateStatsData(statsData, xpGained);
     await this.calculateStreak(statsData);
 
@@ -141,7 +203,7 @@ export default class Stats {
     await this.achievementTrigger(statsData);
   }
 
-  static async getStats(type, name, action, startDate, endDate) {
+  static async getStats(type, name, action, startDate, endDate, tabId) {
     const eventLog = await getEvents();
     return eventLog.filter((event) => {
       const eventDate = new Date(event.timestamp);
@@ -150,7 +212,8 @@ export default class Stats {
         (!name || event.name === name) &&
         (!action || event.action === action) &&
         (!startDate || eventDate >= new Date(startDate)) &&
-        (!endDate || eventDate <= new Date(endDate))
+        (!endDate || eventDate <= new Date(endDate)) &&
+        (!tabId || event.tabId === tabId)
       );
     });
   }

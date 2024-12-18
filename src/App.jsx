@@ -52,7 +52,8 @@ const App = () => {
       setShowBackground(true);
     }
 
-    // Post event immediately when the component mounts
+    // Reset tab ID when component mounts and post initial event
+    Stats.generateTabId();
     Stats.postEvent('new-tab', 'tab', 'opened');
   }, []);
 
