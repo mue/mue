@@ -3,6 +3,7 @@ const DB_VERSION = 4; // Increment version for new store
 const STORE_NAME = 'eventLog';
 const CUSTOM_STORE_NAME = 'customImages';
 const SESSION_STORE_NAME = 'sessionStats';
+const ACHIEVEMENTS_STORE = 'achievements';
 
 export const openDB = () => {
   return new Promise((resolve, reject) => {
@@ -26,6 +27,11 @@ export const openDB = () => {
 
       if (!db.objectStoreNames.contains(SESSION_STORE_NAME)) {
         db.createObjectStore(SESSION_STORE_NAME, { keyPath: 'tabId' });
+      }
+
+      // Create achievements store if it doesn't exist
+      if (!db.objectStoreNames.contains(ACHIEVEMENTS_STORE)) {
+        db.createObjectStore(ACHIEVEMENTS_STORE, { keyPath: 'id' });
       }
     };
 
@@ -167,5 +173,42 @@ export const clearSessionStats = () => {
       request.onsuccess = () => resolve();
       request.onerror = (event) => reject(event.target.error);
     });
+  });
+};
+
+// Add new methods for achievements
+export const saveAchievement = async (achievement) => {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction([ACHIEVEMENTS_STORE], 'readwrite');
+    const store = transaction.objectStore(ACHIEVEMENTS_STORE);
+    const request = store.put(achievement);
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+};
+
+export const getAchievements = async () => {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction([ACHIEVEMENTS_STORE], 'readonly');
+    const store = transaction.objectStore(ACHIEVEMENTS_STORE);
+    const request = store.getAll();
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+};
+
+export const clearAchievements = async () => {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction([ACHIEVEMENTS_STORE], 'readwrite');
+    const store = transaction.objectStore(ACHIEVEMENTS_STORE);
+    const request = store.clear();
+
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
   });
 };

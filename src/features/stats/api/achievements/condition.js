@@ -1,9 +1,11 @@
 import { achievements } from './index';
 import statsModule from '../stats';
+import { getAchievements, saveAchievement } from 'utils/indexedDB';
 
 export async function checkAchievements() {
-  // First get the events data which contains all user actions
+  const storedAchievements = await getAchievements();
   const events = await statsModule.getStats();
+  const currentTabId = statsModule.getCurrentTabId();
 
   // Calculate aggregated stats
   const aggregatedStats = {
@@ -13,83 +15,51 @@ export async function checkAchievements() {
     level: statsModule.level || 1,
   };
 
-  console.log('Checking achievements with aggregated stats:', aggregatedStats);
+  const newlyAchieved = [];
+  const updatedAchievements = achievements.map((achievement) => {
+    const stored = storedAchievements.find((a) => a.id === achievement.id);
+    if (stored && stored.achieved) {
+      return stored;
+    }
 
-  achievements.forEach((achievement) => {
+    let achieved = false;
     switch (achievement.condition.type) {
       case 'tabsOpened':
-        console.log(
-          `Checking achievement: ${achievement.id}, Condition: ${achievement.condition.type}, Required: ${achievement.condition.amount}, Current: ${aggregatedStats['new-tab']}`,
-        );
-        if (aggregatedStats['new-tab'] >= achievement.condition.amount) {
-          achievement.achieved = true;
-        }
+        achieved = aggregatedStats['new-tab'] >= achievement.condition.amount;
         break;
-
       case 'addonInstall':
-        console.log(
-          `Checking achievement: ${achievement.id}, Condition: ${achievement.condition.type}, Required: ${achievement.condition.amount}, Current: ${aggregatedStats['marketplace-install']}`,
-        );
-        if (aggregatedStats['marketplace-install'] >= achievement.condition.amount) {
-          achievement.achieved = true;
-        }
+        achieved = aggregatedStats['marketplace-install'] >= achievement.condition.amount;
         break;
-
       case 'reachLevel':
-        console.log(
-          `Checking achievement: ${achievement.id}, Condition: ${achievement.condition.type}, Required: ${achievement.condition.amount}, Current: ${aggregatedStats.level}`,
-        );
-        if (aggregatedStats.level >= achievement.condition.amount) {
-          achievement.achieved = true;
-        }
+        achieved = aggregatedStats.level >= achievement.condition.amount;
         break;
-
       case 'earnXp':
-        console.log(
-          `Checking achievement: ${achievement.id}, Condition: ${achievement.condition.type}, Required: ${achievement.condition.amount}, Current: ${aggregatedStats.totalXp}`,
-        );
-        if (aggregatedStats.totalXp >= achievement.condition.amount) {
-          achievement.achieved = true;
-        }
-        break;
-
-      default:
-        console.warn(`Unknown achievement condition type: ${achievement.condition.type}`);
+        achieved = aggregatedStats.totalXp >= achievement.condition.amount;
         break;
     }
+
+    if (achieved && !stored?.achieved) {
+      const updatedAchievement = {
+        ...achievement,
+        achieved: true,
+        timestamp: new Date().toISOString(),
+        tabId: currentTabId,
+      };
+      newlyAchieved.push(updatedAchievement);
+      saveAchievement(updatedAchievement);
+      return updatedAchievement;
+    }
+
+    return achievement;
   });
 
-  return achievements;
+  return { updatedAchievements, newlyAchieved };
 }
 
 export async function newAchievements() {
-  // Get previously achieved achievements
-  const oldAchievements = JSON.parse(localStorage.getItem('achievements')) || [];
-
-  // Check for new achievements
-  const checkedAchievements = await checkAchievements();
-  const newAchievements = [];
-
-  checkedAchievements.forEach((achievement) => {
-    const isNewAchievement =
-      achievement.achieved && !oldAchievements.some((a) => a.id === achievement.id);
-
-    if (isNewAchievement) {
-      const newAchievement = {
-        ...achievement,
-        timestamp: new Date().toISOString(),
-      };
-      newAchievements.push(newAchievement);
-    }
-  });
-
-  // Update stored achievements
-  if (newAchievements.length > 0) {
-    const updatedAchievements = [...oldAchievements, ...newAchievements];
-    localStorage.setItem('achievements', JSON.stringify(updatedAchievements));
-  }
-
-  return newAchievements;
+  const { updatedAchievements, newlyAchieved } = await checkAchievements();
+  // Only return newly achieved achievements for toast notifications
+  return newlyAchieved;
 }
 
 // Helper function to get achievement progress

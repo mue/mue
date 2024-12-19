@@ -11,6 +11,8 @@ import variables from 'config/variables';
 
 export default class Stats {
   static #currentTabId = null;
+  static #toastTimeout = null;
+  static #processedAchievements = new Set();
 
   static generateTabId() {
     return `tab_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
@@ -24,19 +26,29 @@ export default class Stats {
   }
 
   static async achievementTrigger(stats) {
-    const newAchievement = await newAchievements(stats);
-    newAchievement.forEach((achievement) => {
-      if (achievement) {
-        const { name } = getLocalisedAchievementData(achievement.id);
-        toast.info(
-          `🏆 ${variables.getMessage('settings:sections.stats.achievement_unlocked', { name: name })}`,
-          {
-            icon: false,
-            closeButton: false,
-          },
-        );
-      }
-    });
+    // Clear any pending achievement checks
+    if (this.#toastTimeout) {
+      clearTimeout(this.#toastTimeout);
+    }
+
+    this.#toastTimeout = setTimeout(async () => {
+      const newlyAchieved = await newAchievements(stats);
+
+      newlyAchieved.forEach((achievement) => {
+        // Only show toast if we haven't processed this achievement in this session
+        if (!this.#processedAchievements.has(achievement.id)) {
+          const { name } = getLocalisedAchievementData(achievement.id);
+          toast.info(
+            `🏆 ${variables.getMessage('settings:sections.stats.achievement_unlocked', { name })}`,
+            {
+              icon: false,
+              closeButton: false,
+            },
+          );
+          this.#processedAchievements.add(achievement.id);
+        }
+      });
+    }, 1000); // 1 second debounce
   }
 
   static calculateNextLevelXp(level) {

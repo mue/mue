@@ -17,6 +17,7 @@ import {
   achievements as initialAchievements,
   checkAchievements,
 } from 'features/stats/api/achievements';
+import { clearAchievements } from 'utils/indexedDB';
 
 const Stats = () => {
   const [stats, setStats] = useState(() => JSON.parse(localStorage.getItem('statsData')) || {});
@@ -26,8 +27,8 @@ const Stats = () => {
   const [clearmodal, setClearmodal] = useState(false);
 
   const updateAchievements = useCallback(async () => {
-    const achieved = await checkAchievements();
-    setAchievements(achieved);
+    const { updatedAchievements } = await checkAchievements(); // Destructure the result
+    setAchievements(updatedAchievements); // Use the updatedAchievements array
   }, []);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const Stats = () => {
     return achievements.filter((achievement) => achievement.achieved).length;
   }, [achievements]);
 
-  const resetStats = () => {
+  const resetStats = async () => {
     const emptyStats = {
       level: 1,
       totalXp: 0,
@@ -48,12 +49,12 @@ const Stats = () => {
     };
     localStorage.setItem('statsData', JSON.stringify(emptyStats));
     localStorage.setItem('eventLog', JSON.stringify([]));
-    localStorage.setItem('achievements', JSON.stringify(initialAchievements));
+    await clearAchievements(); // Clear achievements from IndexedDB
     setStats(emptyStats);
     setClearmodal(false);
     toast(variables.getMessage('toasts.stats_reset'));
-    updateAchievements(); // Call updateAchievements to refresh achievements after reset
-    Stats.clearSessionStats(); // Clear session stats when resetting
+    updateAchievements();
+    Stats.clearSessionStats();
   };
 
   const downloadStats = () => {
