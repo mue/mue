@@ -1,4 +1,4 @@
-const DB_NAME = 'StatsDB';
+const DB_NAME = 'MueDB';
 const DB_VERSION = 4; // Increment version for new store
 const STORE_NAME = 'eventLog';
 const CUSTOM_STORE_NAME = 'customImages';
