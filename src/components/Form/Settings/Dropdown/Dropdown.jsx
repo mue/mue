@@ -1,28 +1,20 @@
+import { useState } from 'react';
 import { Field, Label, Select } from '@headlessui/react';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 import clsx from 'clsx';
-import { useEffect, useState, useRef } from 'react';
 
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
 
 const Dropdown = (props) => {
   const [value, setValue] = useState(localStorage.getItem(props.name) || props.items[0]?.value);
-  const dropdown = useRef(null);
 
-  useEffect(() => {
-    setValue(localStorage.getItem(props.name) || props.items[0]?.value);
-  }, [props.name]);
-
-  const onChange = (e) => {
+  const handleChange = (e) => {
     const newValue = e.target.value;
-
     if (newValue === variables.getMessage('modals.main.loading')) {
       return;
     }
 
     variables.stats.postEvent('setting', `${props.name} from ${value} to ${newValue}`);
-
     setValue(newValue);
 
     if (!props.noSetting) {
@@ -44,51 +36,50 @@ const Dropdown = (props) => {
     EventBus.emit('refresh', props.category);
   };
 
-  const id = 'dropdown' + props.name;
-  const label = props.label || '';
+  const selectedItem = props.items.find((item) => item?.value === value);
 
   return (
-    <div className="w-[100%] max-w-md">
-      <Field
-        id={props.name}
-        value={value}
-        label={label}
-        onChange={onChange}
-        ref={dropdown}
-        key={id}
-      >
-        <Label
-          id={props.name}
+    <Field className="w-[100%] max-w-md mr-10">
+      {props.label && <Label className="mb-2 block text-sm font-medium">{props.label}</Label>}
+      <div className="relative">
+        <Select
+          name={props.name}
           value={value}
-          label={label}
-          onChange={onChange}
-          ref={dropdown}
-          key={id}
+          onChange={handleChange}
+          aria-label={props.label || props.name}
+          className={clsx(
+            'w-full rounded-lg py-4 px-5 text-sm/6 font-semibold text-white shadow-md',
+            'bg-white/5 hover:bg-white/10 dark:text-white',
+            'border border-white/10',
+            'transition-colors duration-200',
+            'focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white',
+            'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
+            'appearance-none',
+          )}
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='white' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right 1.25rem center',
+            backgroundSize: '1rem',
+          }}
         >
-          {label}
-        </Label>
-        <div className="relative">
-          <Select
-            className={clsx(
-              'mt-3 border border-[#484848] block w-full appearance-none rounded-lg bg-white/5 py-1.5 px-3 text-sm/6 text-white',
-              'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25',
-              '*:text-black box-border',
-            )}
-            value={value}
-            onChange={onChange}
-          >
-            {props.items.map((item) =>
-              item !== null ? (
-                <option key={id + item.value} value={item.value}>
-                  {item.text}
-                </option>
-              ) : null,
-            )}
-          </Select>
-          <MdKeyboardArrowDown className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60" />
-        </div>
-      </Field>
-    </div>
+          {props.items.map((item) =>
+            item !== null ? (
+              <option
+                key={item.value}
+                value={item.value}
+                className="bg-modal-content-light dark:bg-modal-content-dark"
+              >
+                {item.text}
+              </option>
+            ) : null,
+          )}
+        </Select>
+      </div>
+      {selectedItem?.description && (
+        <p className="mt-2 text-sm text-white/50">{selectedItem.description}</p>
+      )}
+    </Field>
   );
 };
 
