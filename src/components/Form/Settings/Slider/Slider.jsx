@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { useState, useCallback, memo, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import ReactSlider from 'react-slider';
-import { MdRefresh } from 'react-icons/md';
+import { MdRefresh, MdEdit } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
 import clsx from 'clsx';
 
@@ -66,13 +66,64 @@ const MULTIPLIER_MARKS = {
   400: '4x',
 };
 
-// Memoized value display component
-const ValueDisplay = memo(({ value, display }) => (
-  <span className="text-sm bg-neutral-200 dark:bg-white/15 text-neutral-800 dark:text-white px-3 py-1.5 rounded-md font-medium">
-    {value}
-    {display}
-  </span>
-));
+// Update ValueDisplay component to show edit affordance
+const ValueDisplay = memo(({ value, display, onChange }) => {
+  const [editing, setEditing] = useState(false);
+  const [inputValue, setInputValue] = useState(value);
+
+  const handleBlur = () => {
+    setEditing(false);
+    const numValue = Number(inputValue);
+    if (!isNaN(numValue)) {
+      onChange(numValue);
+    } else {
+      setInputValue(value);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleBlur();
+    } else if (e.key === 'Escape') {
+      setEditing(false);
+      setInputValue(value);
+    }
+  };
+
+  return editing ? (
+    <input
+      type="text"
+      value={inputValue}
+      onChange={(e) => setInputValue(e.target.value)}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
+      className="w-20 text-sm bg-neutral-200 dark:bg-white/15 text-neutral-800 dark:text-white 
+                px-3 py-1.5 rounded-md font-medium outline-none focus:ring-2 
+                focus:ring-neutral-400 dark:focus:ring-white/40"
+      autoFocus
+    />
+  ) : (
+    <div
+      onClick={() => setEditing(true)}
+      className="group relative flex items-center gap-2 text-sm bg-neutral-200 dark:bg-white/15 
+                text-neutral-800 dark:text-white px-3 py-1.5 rounded-md font-medium cursor-pointer 
+                hover:bg-neutral-300 dark:hover:bg-white/20 transition-colors duration-200"
+    >
+      <span>
+        {value}
+        {display}
+      </span>
+      <MdEdit className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+      <span
+        className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-neutral-800 
+                     dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 
+                     transition-opacity duration-200 whitespace-nowrap"
+      >
+        Click to edit
+      </span>
+    </div>
+  );
+});
 
 // Memoized reset button component
 const ResetButton = memo(({ onClick }) => (
@@ -194,7 +245,7 @@ function SliderComponent(props) {
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-medium text-neutral-800 dark:text-white">{props.title}</span>
         <div className="flex items-center gap-2 justify-between w-full">
-          <ValueDisplay value={value} display={props.display} />
+          <ValueDisplay value={value} display={props.display} onChange={handleChange} />
           <ResetButton onClick={resetItem} />
         </div>
       </div>
