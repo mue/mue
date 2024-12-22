@@ -1,10 +1,11 @@
 import variables from 'config/variables';
-import { useState, useCallback, memo, useMemo } from 'react';
+import { useState, useCallback, memo, useMemo, useRef } from 'react';
 import { toast } from 'react-toastify';
 import ReactSlider from 'react-slider';
 import { MdRefresh, MdEdit } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
 import clsx from 'clsx';
+import debounce from 'lodash/debounce';
 
 // Style definitions split into logical groups for better readability
 const buttonStyles = {
@@ -18,17 +19,18 @@ const buttonStyles = {
 const thumbStyles = {
   base: [
     'w-5 h-5 rounded-full cursor-pointer',
-    'absolute top-1/2 transform -translate-y-1/2',
+    'absolute top-1/2',
     'flex items-center justify-center',
+    '-translate-y-1/2', // Keep only Y transform in classes
   ],
   colors: 'bg-gradient-to-br from-neutral-50 to-neutral-200 dark:from-white dark:to-neutral-100',
   interactions: [
     'hover:from-neutral-100 hover:to-neutral-300',
     'dark:hover:from-white dark:hover:to-neutral-200',
     'focus:outline-none focus:ring-2 focus:ring-neutral-400 dark:focus:ring-white/40',
-    'active:scale-95',
   ],
-  effects: 'shadow-lg shadow-black/10 dark:shadow-black/25 transition-all duration-200',
+  // Remove transition-all which was causing lag
+  effects: 'shadow-lg shadow-black/10 dark:shadow-black/25',
   tooltip: [
     'before:content-[attr(aria-valuenow)]',
     'before:absolute before:top-[-28px]',
@@ -52,9 +54,11 @@ const markStyles = {
     'after:content-[attr(data-value)]',
     'after:absolute after:top-5',
     'after:text-xs after:opacity-85',
-    'after:transform after:-translate-x-1/2',
+    'after:left-1/2', // Add this to position relative to center
+    'after:transform after:-translate-x-1/2', // Center the label
     'after:whitespace-nowrap after:pointer-events-none',
     'after:font-medium',
+    'after:text-center', // Ensure text is centered
     'after:text-neutral-700 dark:after:text-white/85',
   ],
 };
@@ -67,15 +71,25 @@ const MULTIPLIER_MARKS = {
 };
 
 // Update ValueDisplay component to show edit affordance
-const ValueDisplay = memo(({ value, display, onChange }) => {
+const ValueDisplay = memo(({ value, display, onChange, min, max }) => {
   const [editing, setEditing] = useState(false);
   const [inputValue, setInputValue] = useState(value);
+
+  const handleChange = (e) => {
+    // Allow typing any numeric input, validate on blur
+    const numericValue = e.target.value.replace(/[^\d.-]/g, '');
+    setInputValue(numericValue);
+  };
 
   const handleBlur = () => {
     setEditing(false);
     const numValue = Number(inputValue);
+
+    // Only validate and clamp on blur
     if (!isNaN(numValue)) {
-      onChange(numValue);
+      const clampedValue = Math.min(Math.max(numValue, min), max);
+      setInputValue(clampedValue);
+      onChange(clampedValue);
     } else {
       setInputValue(value);
     }
@@ -92,14 +106,19 @@ const ValueDisplay = memo(({ value, display, onChange }) => {
 
   return editing ? (
     <input
-      type="text"
+      type="number" // Change to number type
       value={inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
+      onChange={handleChange}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
+      min={min} // Optional: add min/max if needed
+      max={max}
+      step="any" // Allow decimal values
       className="w-20 text-sm bg-neutral-200 dark:bg-white/15 text-neutral-800 dark:text-white 
                 px-3 py-1.5 rounded-md font-medium outline-none focus:ring-2 
-                focus:ring-neutral-400 dark:focus:ring-white/40"
+                focus:ring-neutral-400 dark:focus:ring-white/40
+                [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none
+                transition-colors duration-200" // Added transition
       autoFocus
     />
   ) : (
@@ -109,9 +128,9 @@ const ValueDisplay = memo(({ value, display, onChange }) => {
                 text-neutral-800 dark:text-white px-3 py-1.5 rounded-md font-medium cursor-pointer 
                 hover:bg-neutral-300 dark:hover:bg-white/20 transition-colors duration-200"
     >
-      <span>
+      <span className="flex items-center">
         {value}
-        {display}
+        <span className="text-neutral-500 dark:text-white/50 ml-0.5">{display}</span>
       </span>
       <MdEdit className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
       <span
@@ -152,36 +171,73 @@ function SliderComponent(props) {
     }
   });
 
+  const isDraggingRef = useRef(false);
+  const lastUpdateRef = useRef(value);
+
+  // Separated storage update from visual update
+  const updateStorage = useCallback(
+    (newValue) => {
+      try {
+        localStorage.setItem(props.name, newValue);
+        lastUpdateRef.current = newValue;
+
+        if (props.element && !document.querySelector(props.element)) {
+          const reminderElement = document.querySelector('.reminder-info');
+          if (reminderElement) {
+            reminderElement.style.display = 'flex';
+            localStorage.setItem('showReminder', true);
+            return;
+          }
+        }
+
+        EventBus.emit('refresh', props.category);
+      } catch (e) {
+        console.error('Error updating slider:', e);
+      }
+    },
+    [props.element, props.category],
+  );
+
+  // More efficient debounced storage update
+  const debouncedUpdate = useMemo(() => debounce(updateStorage, 150), [updateStorage]);
+
   const handleChange = useCallback(
     (newValue) => {
       if (typeof newValue !== 'number') return;
       const clampedValue = Math.min(Math.max(newValue, props.min), props.max);
 
-      // Update state immediately for smooth UI
+      // Always update visual state immediately
       setValue(clampedValue);
 
-      // Batch heavy operations in requestAnimationFrame
-      requestAnimationFrame(() => {
-        try {
-          localStorage.setItem(props.name, clampedValue);
-
-          if (props.element && !document.querySelector(props.element)) {
-            const reminderElement = document.querySelector('.reminder-info');
-            if (reminderElement) {
-              reminderElement.style.display = 'flex';
-              localStorage.setItem('showReminder', true);
-              return;
-            }
-          }
-
-          EventBus.emit('refresh', props.category);
-        } catch (e) {
-          console.error('Error updating slider:', e);
-        }
-      });
+      // Only update storage if we're not actively dragging
+      if (!isDraggingRef.current) {
+        debouncedUpdate(clampedValue);
+      }
     },
-    [props.min, props.max, props.name, props.element, props.category],
+    [props.min, props.max, debouncedUpdate],
   );
+
+  const handleDragStart = useCallback(() => {
+    isDraggingRef.current = true;
+  }, []);
+
+  const handleDragEnd = useCallback(() => {
+    isDraggingRef.current = false;
+    // Ensure final value is stored
+    if (lastUpdateRef.current !== value) {
+      updateStorage(value);
+    }
+  }, [value, updateStorage]);
+
+  // Update thumbStyles to include performance optimizations
+  const enhancedThumbStyles = {
+    ...thumbStyles,
+    performance: [
+      'will-change-transform',
+      'transform translate3d(0,0,0)',
+      'backface-visibility-hidden',
+    ],
+  };
 
   const resetItem = useCallback(() => {
     handleChange(Number(props.default));
@@ -200,6 +256,12 @@ function SliderComponent(props) {
     () => (thumbProps, state) => (
       <div
         {...thumbProps}
+        style={{
+          ...thumbProps.style,
+          left: thumbProps.style.left,
+          marginLeft: 0,
+          transform: 'translateY(-50%)', // Only handle Y transform here
+        }}
         aria-label={`Slider value: ${state.valueNow}%`}
         aria-valuenow={`${state.valueNow}${props.display}`}
         role="slider"
@@ -245,7 +307,13 @@ function SliderComponent(props) {
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-medium text-neutral-800 dark:text-white">{props.title}</span>
         <div className="flex items-center gap-2 justify-between w-full">
-          <ValueDisplay value={value} display={props.display} onChange={handleChange} />
+          <ValueDisplay
+            value={value}
+            display={props.display}
+            onChange={handleChange}
+            min={Number(props.min)}
+            max={Number(props.max)}
+          />
           <ResetButton onClick={resetItem} />
         </div>
       </div>
@@ -253,21 +321,25 @@ function SliderComponent(props) {
       <ReactSlider
         value={value}
         onChange={handleChange}
+        onBeforeChange={handleDragStart}
+        onAfterChange={handleDragEnd}
         min={Number(props.min)}
         max={Number(props.max)}
         step={Number(props.step) || 1}
         marks={Object.keys(MULTIPLIER_MARKS).map(Number)}
         snapPoints={Object.keys(MULTIPLIER_MARKS).map(Number)}
         snap
-        className="h-14 flex items-center"
+        className="h-14 flex items-center touch-none"
         thumbClassName={clsx([
           ...thumbStyles.base,
           thumbStyles.colors,
           ...thumbStyles.interactions,
           thumbStyles.effects,
           ...thumbStyles.tooltip,
+          'touch-none',
+          'left-0', // Add this to ensure proper positioning
         ])}
-        trackClassName="h-2 bg-neutral-300 dark:bg-white/15 rounded-full absolute top-1/2 transform -translate-y-1/2"
+        trackClassName="h-2 bg-neutral-300 dark:bg-white/15 rounded-full absolute top-1/2 transform -translate-y-1/2 touch-none"
         markClassName={clsx([
           ...markStyles.base,
           markStyles.colors,
@@ -283,5 +355,7 @@ function SliderComponent(props) {
 }
 
 // Export memoized version for better performance when parent components re-render
-export const Slider = memo(SliderComponent);
-export default Slider;
+const Slider = memo(SliderComponent);
+Slider.displayName = 'Slider';
+
+export { Slider as default, Slider };
