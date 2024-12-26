@@ -69,8 +69,8 @@ importers:
         specifier: 3.16.3
         version: 3.16.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-toastify:
-        specifier: 10.0.6
-        version: 10.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 11.0.2
+        version: 11.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       use-debounce:
         specifier: ^10.0.4
         version: 10.0.4(react@18.3.1)
@@ -3000,11 +3000,11 @@ packages:
       react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
       react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
 
-  react-toastify@10.0.6:
-    resolution: {integrity: sha512-yYjp+omCDf9lhZcrZHKbSq7YMuK0zcYkDFTzfRFgTXkTFHZ1ToxwAonzA4JI5CxA91JpjFLmwEsZEgfYfOqI1A==}
+  react-toastify@11.0.2:
+    resolution: {integrity: sha512-GjHuGaiXMvbls3ywqv8XdWONwrcO4DXCJIY1zVLkHU73gEElKvTTXNI5Vom3s/k/M8hnkrfsqgBSX3OwmlonbA==}
     peerDependencies:
-      react: '>=18'
-      react-dom: '>=18'
+      react: ^18 || ^19
+      react-dom: ^18 || ^19
 
   react-transition-group@4.4.5:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
@@ -6491,7 +6491,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-icons: 5.4.0(react@18.3.1)
       react-modal: 3.16.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-toastify: 10.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-toastify: 11.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       use-debounce: 10.0.4(react@18.3.1)
     transitivePeerDependencies:
       - '@mui/material-pigment-css'
@@ -6708,7 +6708,7 @@ snapshots:
       react-lifecycles-compat: 3.0.4
       warning: 4.0.3
 
-  react-toastify@10.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-toastify@11.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       clsx: 2.1.1
       react: 18.3.1
