@@ -48,6 +48,7 @@
     "@vitejs/plugin-react-swc": "^3.7.1",
     "adm-zip": "^0.5.16",
     "autoprefixer": "^10.4.20",
+    "cypress": "^13.17.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
@@ -64,12 +65,13 @@
     "yaml": "^2.5.1"
   },
   "scripts": {
+    "build": "vite build",
+    "cy:open": "cypress open",
     "dev": "vite",
     "dev:host": "vite --host",
-    "build": "vite build",
-    "pretty": "prettier --write \"./**/*.{js,jsx,json,scss,css}\"",
     "lint": "eslint \"./src/**/*.{js,jsx}\" && stylelint \"./src/**/*.{scss,css}\"",
     "lint:fix": "eslint \"./src/**/*.{js,jsx}\" --fix && stylelint \"./src/**/*.{scss,css}\" --fix",
-    "postinstall": "husky"
+    "postinstall": "husky",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json,scss,css}\""
   }
 }
