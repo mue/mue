@@ -43,15 +43,23 @@ widgets:
     meters: "{amount} metros"
     extra_information: Información adicional
     feels_like: Sensación {amount}
-  quote: {}
+  quote:
+    share: compartir
+    copy: Copiar
+    favourite: Favorito
+    unfavourite: No favorito
   navbar:
     tooltips:
       refresh: Recargar
     notes:
       title: Notas
       placeholder: Escribe aquí
-    todo: {}
-    apps: {}
+    todo:
+      add: Agregar
+      no_todos: '>no_todos'
+    apps:
+      title: '>aplicaciónes_'
+      no_apps: '>No_se_encontraron_enlaces de_aplicaciones'
 modals:
   main:
     title: Opciones
@@ -59,11 +67,12 @@ modals:
     file_upload_error: El archivo pesa más de 2MB
     navbar:
       settings: Ajustes
-      addons: Mis complementos
-      marketplace: Tienda
+      addons: Biblioteca
+      marketplace: Descubrir
     error_boundary:
       message: No se ha podido cargar este componente de Mue
       refresh: Recargar
+      report_error: Envíar informé de error
   update:
     title: Actualizar
     offline:
