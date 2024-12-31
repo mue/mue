@@ -54,8 +54,8 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1
       react-best-gradient-color-picker:
-        specifier: ^3.0.11
-        version: 3.0.11(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^3.0.12
+        version: 3.0.12(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-clock:
         specifier: 5.1.0
         version: 5.1.0(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2955,8 +2955,8 @@ packages:
   rd@2.0.1:
     resolution: {integrity: sha512-/XdKU4UazUZTXFmI0dpABt8jSXPWcEyaGdk340KdHnsEOdkTctlX23aAK7ChQDn39YGNlAJr1M5uvaKt4QnpNw==}
 
-  react-best-gradient-color-picker@3.0.11:
-    resolution: {integrity: sha512-LhZgHDx/9xca7XDg9ooot4grgJ9eRR8yfR7qjHfP5Q8yqRl94YQ9FZ/CVOp17MmpVGmwf91g139+mmHSW+I15w==}
+  react-best-gradient-color-picker@3.0.12:
+    resolution: {integrity: sha512-uYG69NfjOcKSOs1o/5QPaRkIOPnaH+ebXZLE9yM8jyWsAsM4BVyoOer8rMw3h7zsLNDhLvLYFJvPqLoP94wn4Q==}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -6486,7 +6486,7 @@ snapshots:
       fast-blurhash: 1.1.4
       image-conversion: 2.1.1
       react: 18.3.1
-      react-best-gradient-color-picker: 3.0.11(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-best-gradient-color-picker: 3.0.12(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-clock: 5.1.0(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
       react-icons: 5.4.0(react@18.3.1)
@@ -6663,7 +6663,7 @@ snapshots:
     dependencies:
       '@types/node': 10.17.60
 
-  react-best-gradient-color-picker@3.0.11(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-best-gradient-color-picker@3.0.12(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       html2canvas: 1.4.1
       lodash.throttle: 4.1.1

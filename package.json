@@ -26,7 +26,7 @@
     "image-conversion": "^2.1.1",
     "mue": "file:",
     "react": "^18.3.1",
-    "react-best-gradient-color-picker": "^3.0.11",
+    "react-best-gradient-color-picker": "^3.0.12",
     "react-clock": "5.1.0",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
