@@ -86,7 +86,7 @@ importers:
         version: 0.0.2
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.2
-        version: 3.7.2(vite@6.0.6(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0))
+        version: 3.7.2(vite@6.0.7(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0))
       adm-zip:
         specifier: 0.5.16
         version: 0.5.16
@@ -118,11 +118,11 @@ importers:
         specifier: ^6.10.0
         version: 6.10.0(stylelint@16.12.0(typescript@5.6.3))
       vite:
-        specifier: 6.0.6
-        version: 6.0.6(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0)
+        specifier: 6.0.7
+        version: 6.0.7(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0)
       vite-plugin-progress:
         specifier: ^0.0.7
-        version: 0.0.7(vite@6.0.6(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0))
+        version: 0.0.7(vite@6.0.7(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0))
 
 packages:
 
@@ -3396,8 +3396,8 @@ packages:
     peerDependencies:
       vite: '>2.0.0-0'
 
-  vite@6.0.6:
-    resolution: {integrity: sha512-NSjmUuckPmDU18bHz7QZ+bTYhRR0iA72cs2QAxCqDpafJ0S6qetco0LB3WW2OxlMHS0JmAv+yZ/R3uPmMyGTjQ==}
+  vite@6.0.7:
+    resolution: {integrity: sha512-RDt8r/7qx9940f8FcOIAH9PTViRrghKaK2K1jY3RaAURrEUbm9Du1mJ72G+jlhtG3WwodnfzY8ORQZbBavZEAQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -5152,10 +5152,10 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react-swc@3.7.2(vite@6.0.6(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0))':
+  '@vitejs/plugin-react-swc@3.7.2(vite@6.0.7(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0))':
     dependencies:
       '@swc/core': 1.7.35
-      vite: 6.0.6(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0)
+      vite: 6.0.7(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -7188,14 +7188,14 @@ snapshots:
     dependencies:
       base64-arraybuffer: 1.0.2
 
-  vite-plugin-progress@0.0.7(vite@6.0.6(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0)):
+  vite-plugin-progress@0.0.7(vite@6.0.7(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0)):
     dependencies:
       picocolors: 1.1.0
       progress: 2.0.3
       rd: 2.0.1
-      vite: 6.0.6(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0)
+      vite: 6.0.7(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0)
 
-  vite@6.0.6(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0):
+  vite@6.0.7(@types/node@22.7.5)(jiti@2.4.2)(sass@1.83.0):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.4.49
