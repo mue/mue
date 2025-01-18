@@ -1,17 +1,1 @@
-version: 2
-updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: fontsource-lexend-deca
-    versions:
-    - ">= 4.a, < 5"
-  - dependency-name: fontsource-roboto
-    versions:
-    - ">= 4.a, < 5"
-  - dependency-name: react-modal
-    versions:
-    - 3.13.1
+
