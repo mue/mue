@@ -1,1 +1,104 @@
-{}
+tabname: புதிய தாவல்
+widgets:
+  greeting:
+    morning: காலை வணக்கம்
+    afternoon: நல்ல மதியம்
+    evening: நல்ல மாலை
+    christmas: மெர்ரி கிறிச்துமச்
+    newyear: புத்தாண்டு வாழ்த்துக்கள்
+    halloween: இனிய ஆலோவீன்
+    birthday: பிறந்தநாள் வாழ்த்துக்கள்
+  background:
+    credit: புகைப்படம்
+    unsplash: Unsplash இல்
+    information: தகவல்
+    download: பதிவிறக்கம்
+    downloads: பதிவிறக்கங்கள்
+    views: காட்சிகள்
+    likes: பிடிக்கும்
+    location: இடம்
+    camera: கேமரா
+    resolution: பகுத்தல்
+    source: மூலம்
+    category: வகை
+    exclude: மீண்டும் காட்ட வேண்டாம்
+    exclude_confirm: "இந்த படத்தை மீண்டும் பார்க்க விரும்பவில்லை என்பது உறுதி?\n குறிப்பு:
+      \"{category}\" படங்கள் உங்களுக்கு பிடிக்கவில்லை என்றால், பின்னணி மூல அமைப்புகளில்
+      வகையை நீங்கள் தேர்வு செய்யலாம்."
+    confirm: உறுதிப்படுத்தவும்
+  search: தேடல்
+  quicklinks:
+    new: புதிய இணைப்பு
+    edit: இணைப்பைத் திருத்து
+    name: பெயர்
+    url: முகவரி
+    icon: படவுரு (விரும்பினால்)
+    add: கூட்டு
+    name_error: பெயரை வழங்க வேண்டும்
+    url_error: முகவரி ஐ வழங்க வேண்டும்
+  date:
+    week: வாரம்
+  weather:
+    not_found: கண்டுபிடிக்கப்படவில்லை
+    meters: '{amount} மீட்டர்'
+    extra_information: கூடுதல் செய்தி
+    feels_like: '{amount} போல உணர்கிறது'
+  quote:
+    link_tooltip: விக்கிபீடியாவில் திறந்திருக்கும்
+    share: பங்கு
+    copy: நகலெடு
+    favourite: பிடித்த
+    unfavourite: விடுதலை
+  navbar:
+    tooltips:
+      refresh: புதுப்பிப்பு
+    notes:
+      title: குறிப்புகள்
+      placeholder: இங்கே தட்டச்சு செய்க
+    todo:
+      title: அனைத்தும்
+      pin: முள்
+      add: கூட்டு
+      no_todos: எல்லாம் இல்லை
+    apps:
+      title: பயன்பாடுகள்
+      no_apps: பயன்பாட்டு இணைப்புகள் எதுவும் கிடைக்கவில்லை
+modals:
+  main:
+    title: விருப்பங்கள்
+    loading: ஏற்றுகிறது ...
+    file_upload_error: கோப்பு 2MB க்கு மேல் உள்ளது
+    navbar:
+      settings: அமைப்புகள்
+      addons: நூலகம்
+      marketplace: கண்டுபிடி
+    error_boundary:
+      title: பிழை
+      message: மியூவின் இந்த கூறுகளை ஏற்றுவதில் தோல்வி
+      report_error: பிழை அறிக்கையை அனுப்பவும்
+      sent: அனுப்பப்பட்டது!
+      refresh: புதுப்பிப்பு
+  update:
+    title: புதுப்பிப்பு
+    offline:
+      title: இணையமில்லாமல்
+      description: இணைப்பில்லாத பயன்முறையில் இருக்கும்போது புதுப்பிப்பு பதிவுகளைப்
+        பெற முடியாது
+    error:
+      title: பிழை
+      description: சேவையகத்துடன் இணைக்க முடியவில்லை
+  share:
+    copy_link: இணைப்பை நகலெடுக்கவும்
+    email: மின்னஞ்சல்
+toasts:
+  quote: மேற்கோள் நகலெடுக்கப்பட்டது
+  notes: குறிப்புகள் நகலெடுக்கப்பட்டன
+  reset: வெற்றிகரமாக மீட்டமைக்கவும்
+  installed: வெற்றிகரமாக நிறுவப்பட்டது
+  uninstalled: வெற்றிகரமாக அகற்றப்பட்டது
+  updated: வெற்றிகரமாக புதுப்பிக்கப்பட்டது
+  error: ஏதோ தவறு நடந்தது
+  imported: வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது
+  no_storage: போதுமான சேமிப்பு இல்லை
+  link_copied: இணைப்பு நகலெடுக்கப்பட்டது
+  stats_reset: புள்ளிவிவரங்கள் மீட்டமைக்கப்படுகின்றன
