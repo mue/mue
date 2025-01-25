@@ -1,1 +1,16 @@
-{}
+widgets:
+  background:
+    download: Tải xuống
+    credit: Ảnh bởi
+    information: Thông tin
+    downloads: Các mục tải xuống
+    unsplash: trên Unsplash
+  greeting:
+    birthday: Chúc mừng sinh nhật
+    morning: Chào buổi sáng
+    afternoon: Chào buổi chiều
+    evening: Chào buổi tối
+    christmas: Giáng sinh an lành
+    newyear: Chúc mừng năm mới
+    halloween: Halloween vui vẻ
+tabname: Tab mới
