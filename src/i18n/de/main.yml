@@ -27,6 +27,7 @@ widgets:
     confirm: Bestätigen
     download: Download
     likes: Likes
+    downloads: Downloads
   search: Suche
   quicklinks:
     new: Neuer Link
