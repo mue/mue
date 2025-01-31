@@ -24,22 +24,28 @@ widgets:
       Hinweis: Wenn Sie "{category}"-Bilder nicht mögen, können Sie die
       Kategorie in den Einstellungen für die Hintergrundquelle abwählen.
     confirm: Bestätigen
+    download: Download
   search: Suche
   quicklinks:
     new: Neuer Link
     add: Hinzufügen
     name_error: Muss einen Namen angeben
     url_error: Muss eine URL angeben
+    icon: Icon (optional)
+    name: Name
+    url: URL
   date:
     week: Kalenderwoche
   weather:
     not_found: Nicht gefunden
     meters: "{amount} Meter"
     feels_like: Bei gefühlten {amount}
+    extra_information: Zusätzliche informationen
   quote:
     share: Teilen
     copy: Kopieren
     favourite: Favorit
+    link_tooltip: Auf Wikipedia öffnen
   navbar:
     tooltips:
       refresh: Neuladen
@@ -50,7 +56,8 @@ widgets:
       pin: Pinn
       add: Hinzufügen
       no_todos: Keine Todos
-    apps: {}
+    apps:
+      title: Apps
 modals:
   main:
     title: Einstellungen
@@ -69,9 +76,11 @@ modals:
   update:
     offline:
       description: Update-Protokolle können im Offline-Modus nicht abgerufen werden
+      title: Offline
     error:
       title: Fehler
       description: Konnte keine Verbindung zum Server herstellen
+    title: Update
   share:
     copy_link: Link kopieren
     email: E-Mail
