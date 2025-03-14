@@ -411,9 +411,9 @@
             "add": "Añadir cita",
             "additional": "Otras configuraciones para personalizar el estilo del widget de cotización",
             "author": "Autor",
+            "author_details": "Detalles del autor",
             "author_img": "Mostrar la imagen del autor",
             "author_link": "Enlace del autor",
-            "author_details": "Detalles del autor",
             "buttons": {
               "copy": "Botón de copiar",
               "favourite": "Botón de favoritos",
