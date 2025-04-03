@@ -36,9 +36,19 @@ modals:
     loading: ローディング中
     error_boundary:
       title: エラー
+    title: オプション
   update:
     title: 更新
     error:
       title: エラー
   share:
     email: 電子メール
+toasts:
+  installed: 正常にインストール
+  uninstalled: 徹底的に削除
+  updated: 完全更新
+  error: 何かが間違っていた
+  imported: 十分に輸入されて
+  no_storage: 十分なストレージがない
+  link_copied: コピーしたリンク
+  stats_reset: ステータスのリセット
