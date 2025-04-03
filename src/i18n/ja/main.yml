@@ -1,1 +1,44 @@
-{}
+widgets:
+  greeting:
+    morning: おはようございます
+    afternoon: こんにちは
+    evening: こんばんは
+    christmas: メリークリスマス
+    newyear: あけましておめでとうございます
+    birthday: 誕生日おめでとうございます
+  background:
+    information: 情報
+    download: ダウンロード
+    likes: 好き
+    camera: カメラ
+  search: 探す
+  quicklinks:
+    new: 新しいリンク
+    add: 足す
+  date:
+    week: 週
+  quote:
+    share: 共有
+    copy: コピー
+  navbar:
+    notes:
+      title: ノート
+      placeholder: ここに入力
+    todo:
+      add: 足す
+    apps:
+      title: アプリ
+tabname: 新しいタブ
+modals:
+  main:
+    navbar:
+      settings: 設定
+    loading: ローディング中
+    error_boundary:
+      title: エラー
+  update:
+    title: 更新
+    error:
+      title: エラー
+  share:
+    email: 電子メール
