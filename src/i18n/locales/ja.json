@@ -2,7 +2,12 @@
   "tabname": "新しいタブ",
   "widgets": {
     "greeting": {
-      "christmas": "メリークリスマス"
+      "afternoon": "こんにちは",
+      "birthday": "誕生日おめでとう",
+      "christmas": "メリークリスマス",
+      "evening": "こんばんは",
+      "morning": "おはようございます",
+      "newyear": "あけましておめでとうございます"
     }
   }
 }
