@@ -1,1 +1,103 @@
-{}
+widgets:
+  navbar:
+    tooltips:
+      refresh: تَحديث
+    notes:
+      title: الملاحظات
+      placeholder: اكتب هنا
+    todo:
+      title: المهام
+      pin: تثبيت
+      add: إضافة
+      no_todos: لا توجد مهام
+    apps:
+      title: التطبيقات
+      no_apps: لم يتم العثور على روابط تطبيقات
+  greeting:
+    morning: صباح الخير
+    afternoon: مساء الخير
+    evening: ليلة سعيدة
+    christmas: عيد ميلاد مجيد
+    newyear: سنة جديدة سعيدة
+    halloween: هالوين سعيد
+    birthday: عيد ميلاد سعيد
+  background:
+    credit: الصورة بواسطة
+    unsplash: على Unsplash
+    information: معلومات
+    download: تنزيل
+    views: المشاهدات
+    likes: الإعجابات
+    location: الموقع
+    camera: الكاميرا
+    resolution: الدقة
+    category: الفئة
+    exclude: عدم العرض مرة أخرى
+    exclude_confirm: "هل أنت متأكد من أنك لا تريد رؤية هذه الصورة مجددًا؟\nملاحظة:
+      إذا لم تعجبك صور فئة \"{category}\"، يمكنك إلغاء تحديد الفئة في إعدادات مصدر
+      الخلفية."
+    confirm: تأكيد
+    downloads: التنزيلات
+    source: المصدر
+  search: بحث
+  quicklinks:
+    new: رابط جديد
+    edit: تعديل الرابط
+    name: الاسم
+    url: الرابط
+    icon: الأيقونة (اختياري)
+    add: إضافة
+    name_error: يجب إدخال الاسم
+    url_error: يجب إدخال الرابط
+  date:
+    week: الأسبوع
+  weather:
+    not_found: غير موجود
+    meters: '{amount} متر'
+    extra_information: معلومات إضافية
+    feels_like: تشعر وكأنها {amount}
+  quote:
+    link_tooltip: فتح على ويكيبيديا
+    share: مشاركة
+    copy: نسخ
+    favourite: إضافة إلى المفضلة
+    unfavourite: إزالة من المفضلة
+modals:
+  main:
+    error_boundary:
+      refresh: تَحديث
+      title: خطأ
+      message: فشل تحميل هذا المكون من Mue
+      report_error: إرسال تقرير الخطأ
+      sent: تم الإرسال!
+    title: الخيارات
+    loading: جارٍ التحميل...
+    file_upload_error: الملف يتجاوز 2 ميغابايت
+    navbar:
+      settings: الإعدادات
+      addons: المكتبة
+      marketplace: اكتشف
+  update:
+    title: تحديث
+    offline:
+      title: غير متصل
+      description: لا يمكن الحصول على سجلات التحديث في وضع عدم الاتصال
+    error:
+      description: تعذر الاتصال بالخادم
+      title: خطأ
+  share:
+    copy_link: نسخ الرابط
+    email: البريد الإلكتروني
+tabname: علامة تبويب جديدة
+toasts:
+  quote: تم نسخ الاقتباس
+  notes: تم نسخ الملاحظات
+  reset: تم إعادة التعيين بنجاح
+  installed: تم التثبيت بنجاح
+  uninstalled: تم الإزالة بنجاح
+  updated: تم التحديث بنجاح
+  error: حدث خطأ ما
+  link_copied: تم نسخ الرابط
+  imported: تم الاستيراد بنجاح
+  stats_reset: تم إعادة تعيين الإحصائيات
+  no_storage: مساحة التخزين غير كافية
