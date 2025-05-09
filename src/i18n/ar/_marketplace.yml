@@ -1,1 +1,49 @@
-{}
+by: بواسطة {author}
+all: الكل
+learn_more: معرفة المزيد
+photo_packs: حزم الصور
+quote_packs: حزم الاقتباسات
+preset_settings: إعدادات مسبقة
+no_items: لا توجد عناصر في هذه الفئة
+collection: مجموعة
+explore_collection: استكشاف المجموعة
+add_all: إضافة الكل إلى Mue
+collections: المجموعات
+cant_find: لا تجد ما تبحث عنه؟
+knowledgebase_one: قم بزيارة
+knowledgebase_two: قاعدة المعرفة
+knowledgebase_three: لإنشاء ما يناسبك.
+installing: جارٍ التثبيت
+product:
+  overview: نظرة عامة
+  information: معلومات
+  last_updated: آخر تحديث
+  description: الوصف
+  more_from_curator: المزيد من {name}
+  show_more: إظهار المزيد
+  show_less: إظهار أقل
+  show_all: إظهار الكل
+  showing: يتم العرض
+  no_images: عدد الصور
+  no_quotes: عدد الاقتباسات
+  version: الإصدار
+  created_by: أنشأها
+  updated_at: تم التحديث في
+  part_of: جزء من
+  explore: استكشاف
+  buttons:
+    addtomue: إضافة إلى Mue
+    remove: إزالة
+    update_addon: تحديث الإضافة
+    back: رجوع
+    report: الإبلاغ
+    not_available_preview: غير متاح في المعاينة
+  not_in_language: هذه الإضافة غير متوفرة بلغتك
+  third_party_api: تستخدم هذه الإضافة واجهة برمجية تابعة لجهة خارجية
+  sideload_warning: تم تثبيت هذه الإضافة جانبيًا.
+  details: التفاصيل
+  setting: الإعداد
+  value: القيمة
+offline:
+  title: يبدو أنك غير متصل
+  description: يرجى الاتصال بالإنترنت
