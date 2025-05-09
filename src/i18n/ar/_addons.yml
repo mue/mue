@@ -1,1 +1,28 @@
-{}
+sideload:
+  failed: فشل التثبيت الجانبي للإضافة
+  errors:
+    no_name: لم يتم تقديم اسم
+    no_author: لم يتم تقديم مؤلف
+    no_type: لم يتم تقديم نوع
+    invalid_photos: كائن الصور غير صالح
+    invalid_quotes: كائن الاقتباسات غير صالح
+  title: التثبيت الجانبي
+  description: تثبيت إضافة Mue غير موجودة في السوق من جهازك
+sort:
+  title: ترتيب
+  newest: المثبتة (الأحدث)
+  oldest: المثبتة (الأقدم)
+  a_z: أبجدي (أ-ي)
+  z_a: أبجدي (ي-أ)
+create:
+  title: إنشاء
+  moved_title: تم نقل إنشاء الإضافة!
+  moved_description: بعد تحديث 7.1، تم نقل إنشاء الإضافات الآن إلى واجهة الويب
+  moved_button: قريبًا...
+added: تمت الإضافة
+check_updates: التحقق من التحديثات
+no_updates: لا توجد تحديثات متاحة
+updates_available: تحديثات متاحة {amount}
+empty:
+  title: فارغ
+  description: لم يتم تثبيت أي إضافات
