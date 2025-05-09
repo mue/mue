@@ -1,1 +1,375 @@
-{}
+reminder:
+  message: لتطبيق جميع التغييرات، يجب تحديث الصفحة.
+  title: تنبيه
+sections:
+  header:
+    more_info: معلومات إضافية
+    report_issue: الإبلاغ عن مشكلة
+    enabled: اختر ما إذا كنت تريد إظهار هذا العنصر
+    size: شريط التمرير للتحكم في حجم العنصر
+  time:
+    type: النوع
+    type_subtitle: اختر عرض الوقت بتنسيق رقمي، تناظري، أو نسبة اكتمال اليوم
+    digital:
+      title: رقمي
+      subtitle: تغيير مظهر الساعة الرقمية
+      seconds: الثواني
+      twentyfourhour: 24 ساعة
+      twelvehour: 12 ساعة
+      zero: إضافة صفر
+    analogue:
+      title: تناظري
+      subtitle: تغيير مظهر الساعة التناظرية
+      second_hand: عقرب الثواني
+      minute_hand: عقرب الدقائق
+      hour_hand: عقرب الساعات
+      hour_marks: علامات الساعات
+      minute_marks: علامات الدقائق
+      round_clock: خلفية دائرية
+    percentage_complete: نسبة الاكتمال
+    vertical_clock:
+      title: ساعة عمودية
+      change_hour_colour: تغيير لون نص الساعات
+      change_minute_colour: تغيير لون نص الدقائق
+      change_second_colour: تغيير لون نص الثواني
+    title: الوقت
+    format: التنسيق
+  date:
+    week_number: رقم الأسبوع
+    day_of_week: يوم الأسبوع
+    datenth: ترتيب التاريخ
+    type:
+      short: قصير
+      long: طويل
+      subtitle: اختر عرض التاريخ بصيغة طويلة أو قصيرة
+    type_settings: إعدادات العرض وتنسيق نوع التاريخ المحدد
+    short_date: تاريخ قصير
+    short_format: تنسيق قصير
+    long_format: تنسيق طويل
+    short_separator:
+      title: فاصل قصير
+      dots: نقاط
+      gaps: فراغات
+      dash: شرطة
+      slashes: شرطات مائلة
+    title: التاريخ
+  quote:
+    title: الاقتباس
+    additional: إعدادات أخرى لتخصيص نمط عنصر الاقتباس
+    author_link: رابط المؤلف
+    custom: اقتباس مخصص
+    custom_subtitle: قم بتعيين اقتباساتك المخصصة
+    no_quotes: لا توجد اقتباسات
+    author: المؤلف
+    author_img: إظهار صورة المؤلف
+    add: إضافة اقتباس
+    custom_buttons: الأزرار
+    custom_author: مؤلف مخصص
+    source_subtitle: اختر مصدر الاقتباسات
+    buttons:
+      title: الأزرار
+      subtitle: اختر الأزرار التي ستظهر على الاقتباس
+      copy: نسخ
+      tweet: تغريد
+      favourite: إضافة إلى المفضلة
+  greeting:
+    title: التحية
+    events: الأحداث
+    events_description: التحكم في أحداث Mue مثل أعياد الميلاد.
+    enable_events: إظهار رسائل في الأيام الخاصة
+    default: رسالة التحية الافتراضية
+    name: الاسم للتحية
+    birthday: عيد الميلاد
+    birthday_subtitle: إظهار رسالة عيد ميلاد سعيد في عيد ميلادك
+    birthday_age: عمر عيد الميلاد
+    additional: إعدادات عرض التحية
+    custom: أحداث مخصصة
+    event_name: اسم الحدث
+    day: اليوم
+    month: الشهر
+    no_events: لا توجد أحداث
+    no_events_description: أضف بعض الأحداث
+    add_event: إضافة حدث
+    birthday_date: تاريخ عيد الميلاد
+  background:
+    title: الخلفية
+    transition: انتقال التدرج
+    photo_information: إظهار معلومات الصورة
+    show_map: إظهار خريطة الموقع في معلومات الصورة إذا كانت متاحة
+    categories: الفئات
+    category: الفئة
+    buttons:
+      title: الأزرار
+      view: التكبير
+      favourite: إضافة إلى المفضلة
+      download: تنزيل
+    effects:
+      title: التأثيرات
+      subtitle: إضافة تأثيرات لصور الخلفية
+      blur: ضبط التمويه
+      brightness: ضبط السطوع
+      filters:
+        title: فلتر الخلفية
+        amount: كمية الفلتر
+        grayscale: التدرج الرمادي
+        sepia: سيبيا
+        invert: عكس
+        saturate: التشبع
+        contrast: التباين
+    type:
+      title: النوع
+      api: واجهة برمجية
+      custom_image: صورة مخصصة
+      random_colour: لون عشوائي
+      random_gradient: تدرج عشوائي
+      custom_colour: لون/تدرج مخصص
+    unsplash:
+      title: مجموعات Unsplash
+      subtitle: اختر المجموعة (المجموعات) التي تريد استخدامها للخلفية
+      id: معرفات المجموعات
+      id_subtitle: أدخل قائمة مفصولة بفواصل لمعرفات Unsplash
+    source:
+      title: المصدر
+      subtitle: اختر مصدر صور الخلفية
+      api: واجهة برمجية للخلفية
+      custom_background: خلفية مخصصة
+      custom_colour: لون خلفية مخصص
+      upload: رفع
+      add_colour: إضافة لون
+      add_background: إضافة خلفية
+      drop_to_upload: اسحب للرفع
+      formats: 'الصيغ المتاحة: {list}'
+      select: أو اختر
+      add_url: إضافة رابط
+      disabled: معطل
+      loop_video: تكرار الفيديو
+      mute_video: كتم الفيديو
+      quality:
+        title: الجودة
+        original: الأصلية
+        high: جودة عالية
+        normal: جودة عادية
+        datasaver: توفير البيانات
+      custom_title: الصور المخصصة
+      custom_description: اختر الصور من جهازك المحلي
+      remove: إزالة الصورة
+    display: العرض
+    display_subtitle: تغيير طريقة تحميل الخلفية ومعلومات الصور
+    api: إعدادات الواجهة البرمجية
+    api_subtitle: خيارات الحصول على صورة من خدمة خارجية (واجهة برمجية)
+  search:
+    title: البحث
+    additional: خيارات إضافية لعرض ووظائف عنصر البحث
+    search_engine: محرك البحث
+    search_engine_subtitle: اختر محرك البحث لاستخدامه في شريط البحث
+    custom: رابط بحث مخصص
+    autocomplete: الإكمال التلقائي
+    autocomplete_provider: مزود الإكمال التلقائي
+    autocomplete_provider_subtitle: محرك البحث لنتائج القائمة المنسدلة للإكمال التلقائي
+    voice_search: البحث الصوتي
+    dropdown: قائمة البحث المنسدلة
+    focus: التركيز عند فتح علامة التبويب
+  weather:
+    title: الطقس
+    location: الموقع
+    auto: تلقائي
+    widget_type: نوع العنصر
+    temp_format:
+      title: تنسيق درجة الحرارة
+      celsius: مئوية
+      kelvin: كلفن
+      fahrenheit: فهرنهايت
+    extra_info:
+      title: معلومات إضافية
+      show_location: إظهار الموقع
+      humidity: الرطوبة
+      visibility: الرؤية
+      wind_speed: سرعة الرياح
+      wind_direction: اتجاه الرياح
+      min_temp: الحد الأدنى لدرجة الحرارة
+      max_temp: الحد الأقصى لدرجة الحرارة
+      atmospheric_pressure: الضغط الجوي
+      show_description: إظهار الوصف
+      weather_description: وصف الطقس
+      cloudiness: الغيوم
+    options:
+      standard: قياسي
+      expanded: موسع
+      custom: مخصص
+      basic: أساسي
+    custom_settings: إعدادات مخصصة
+  quicklinks:
+    additional: إعدادات إضافية لعرض ووظائف الروابط السريعة
+    open_new: فتح في علامة تبويب جديدة
+    tooltip: تلميح
+    text_only: إظهار النص فقط
+    add_link: إضافة رابط
+    no_quicklinks: لا توجد روابط سريعة
+    style: النمط
+    options:
+      icon: أيقونة
+      text_only: نص فقط
+      metro: ميترو
+    styling: التصميم
+    styling_description: تخصيص مظهر الروابط السريعة
+    title: الروابط السريعة
+    edit: تعديل
+  message:
+    title: الرسالة
+    add: إضافة رسالة
+    messages: الرسائل
+    text: النص
+    no_messages: لا توجد رسائل
+    add_some: أضف بعض الرسائل.
+    content: محتوى الرسالة
+  appearance:
+    style:
+      title: نمط العنصر
+      description: اختر بين النمطين، القديم (مفعل لمستخدمي ما قبل الإصدار 7.0) أو
+        التصميم الحديث الأنيق.
+      legacy: قديم
+      new: جديد
+    theme:
+      title: السمة
+      description: تغيير سمة عناصر ونوافذ Mue
+      auto: تلقائي
+      light: فاتح
+      dark: داكن
+    navbar:
+      title: شريط التنقل
+      widgets: عناصر شريط التنقل
+      notes: الملاحظات
+      refresh: تحديث
+      refresh_subtitle: اختر ما يتم تحديثه عند النقر على زر التحديث
+      hover: العرض عند التمرير
+      additional: تعديل نمط شريط التنقل والأزرار المعروضة
+      refresh_options:
+        none: لا شيء
+        page: الصفحة
+      apps_subtitle: إنشاء اختصارات لمواقعك الأخرى المستخدمة بشكل متكرر.
+    font:
+      title: الخط
+      description: تغيير الخط المستخدم في Mue
+      custom: خط مخصص
+      google: استيراد من Google Fonts
+      weight:
+        title: وزن الخط
+        thin: رفيع
+        extra_light: خفيف جدًا
+        light: خفيف
+        normal: عادي
+        medium: متوسط
+        semi_bold: شبه غامق
+        bold: غامق
+        extra_bold: غامق جدًا
+      style:
+        title: نمط الخط
+        normal: عادي
+        italic: مائل
+        oblique: مائل غير منتظم
+    accessibility:
+      title: إمكانية الوصول
+      description: جعل Mue مريحًا ومتاحًا
+      animations: الرسوم المتحركة
+      text_shadow:
+        title: ظل نص العنصر
+        new: جديد
+        old: قديم
+        none: بدون
+      widget_zoom: تكبير العنصر
+      toast_duration: مدة الإشعار
+      milliseconds: ميلي ثانية
+    title: المظهر
+  order:
+    title: ترتيب العناصر
+  advanced:
+    title: متقدم
+    offline_mode: وضع عدم الاتصال
+    offline_subtitle: عند التفعيل، سيتم تعطيل جميع الطلبات إلى الخدمات عبر الإنترنت.
+    data: البيانات
+    data_description: اختر تصدير إعدادات Mue إلى جهازك، استيراد ملف إعدادات موجود،
+      أو إعادة تعيين الإعدادات إلى قيمها الافتراضية
+    data_subtitle: إدارة بياناتك على Mue.
+    reset_modal:
+      title: تحذير
+      question: هل تريد إعادة تعيين Mue؟
+      information: سيؤدي هذا إلى حذف جميع البيانات. إذا كنت ترغب في الاحتفاظ ببياناتك
+        وتفضيلاتك، يرجى تصديرها أولاً.
+      cancel: إلغاء
+    custom_css: CSS مخصص
+    customisation: التخصيص
+    custom_css_subtitle: تخصيص تصميم Mue باستخدام أوراق الأنماط المتتالية (CSS).
+    custom_js: JS مخصص
+    tab_name: اسم علامة التبويب
+    tab_name_subtitle: تغيير اسم علامة التبويب التي تظهر في متصفحك
+    timezone:
+      title: المنطقة الزمنية
+      subtitle: اختر منطقة زمنية من القائمة بدلاً من الافتراضي التلقائي من جهازك
+      automatic: تلقائي
+    preview_data_disabled:
+      title: إعدادات البيانات معطلة
+      description: إعدادات البيانات معطلة في وضع المعاينة. يرجى الخروج من وضع المعاينة
+        لاستخدام هذه الميزة.
+    experimental_warning: يرجى ملاحظة أن فريق Mue لا يمكنه تقديم الدعم إذا كان وضع
+      التجربة مفعلاً. يرجى تعطيله أولاً ومعرفة ما إذا كانت المشكلة مستمرة قبل التواصل
+      مع الدعم.
+  stats:
+    title: الإحصائيات
+    sections:
+      backgrounds_favourited: الخلفيات المفضلة
+      tabs_opened: علامات التبويب المفتوحة
+      backgrounds_downloaded: الخلفيات التي تم تنزيلها
+      quotes_favourited: الاقتباسات المفضلة
+      quicklinks_added: الروابط السريعة المضافة
+      settings_changed: الإعدادات التي تم تغييرها
+      addons_installed: الإضافات المثبتة
+    usage: إحصائيات الاستخدام
+    achievements: الإنجازات
+    unlocked: '{count} مفتوح'
+    achievement_unlocked: 'تم فتح الإنجاز: {name}'
+    locked: مغلق
+    clear_modal:
+      question: هل تريد مسح إحصائياتك؟
+      information: سيؤدي ذلك إلى مسح جميع الإنجازات وإحصائيات الاستخدام.
+  experimental:
+    title: تجريبي
+    warning: هذه الإعدادات لم يتم اختبارها/تنفيذها بالكامل وقد لا تعمل بشكل صحيح!
+    developer: المطور
+  language:
+    title: اللغة
+    quote: لغة الاقتباس
+  changelog:
+    by: بواسطة {author}
+    title: سجل التغييرات
+  about:
+    title: حول
+    version:
+      no_update: لا توجد تحديثات متاحة
+      update_available: تحديث متاح
+      offline_mode: لا يمكن التحقق من التحديث في وضع عدم الاتصال
+      error:
+        title: فشل الحصول على معلومات التحديث
+        description: حدث خطأ
+      title: الإصدار
+      checking_update: التحقق من التحديث
+    contact_us: تواصل معنا
+    support_mue: دعم Mue
+    support_subtitle: بما أن Mue مجاني بالكامل، نحن نعتمد على التبرعات لتغطية فواتير
+      الخادم وتمويل التطوير
+    support_donate: التبرع
+    form_button: نموذج
+    resources_used:
+      title: الموارد المستخدمة
+      bg_images: صور خلفية غير متصلة
+    contributors: المساهمون
+    supporters: الداعمون
+    no_supporters: لا يوجد داعمون لـ Mue حاليًا
+    photographers: المصورون
+    curators: مبدعو الإضافات
+buttons:
+  reset: إعادة تعيين
+  import: استيراد
+  export: تصدير
+enabled: مفعّل
+open_knowledgebase: فتح قاعدة المعرفة
+additional_settings: إعدادات إضافية
