@@ -13,6 +13,19 @@ widgets:
     unsplash: sur Unsplash
     download: Téléchargement
     downloads: Téléchargements
+    information: Information
+    views: Vues
+    likes: j'aimes
+    location: Localisation
+    camera: Caméra
+    resolution: Résolution
+    source: Source
+    category: Catégorie
+    exclude: Ne pas réafficher
+    exclude_confirm: "Etes-vous sur de ne pas vouloir voir cette image de nouveau?\n
+      Remarque: si vous n'aimez pas les \"{category}\" images, vous pouvez déselectionner
+      cette catégorie dans les paramètre d'arrière plan."
+    confirm: Confirmer
   search: Rechercher
   quicklinks:
     new: Nouveau lien
@@ -20,6 +33,9 @@ widgets:
     add: Ajouter
     name_error: Doit fournir le nom
     url_error: Doit fournir une URL
+    edit: Editer le lien
+    url: URL
+    icon: Icon (optionnelle)
   date:
     week: Semaine
   weather:
@@ -46,15 +62,16 @@ modals:
   update:
     title: Mettre à jour
     offline:
-      title: Hors
-      description: Vous ne pouvez pas obtenir de mise à jour si vous êtes hors ligne
+      title: Hors ligne
+      description: Vous ne pouvez pas obtenir les journaux de mise à jour si vous
+        êtes hors ligne
     error:
       title: Erreur
       description: Impossible de se connecter au serveur
   share: {}
 toasts:
   quote: Citation copiée
-  notes: Remarques copiée
+  notes: Remarques copiées
   reset: Réinitialisé avec succès
   installed: Installé avec succès
   uninstalled: Enlevé avec succès
