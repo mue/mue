@@ -1,1 +1,13 @@
-{}
+{
+  "tabname": "Ny flik",
+  "widgets": {
+    "greeting": {
+      "afternoon": "Bra eftermiddag",
+      "christmas": "Merry Christmas",
+      "evening": "God kväll",
+      "halloween": "Happy Halloween",
+      "morning": "God morgon",
+      "newyear": "Glad nyår"
+    }
+  }
+}
