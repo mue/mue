@@ -43,7 +43,7 @@ product:
   not_in_language: Bu eklenti sizin dilinizde değil
   sideload_warning: Bu eklenti dışarıdan yüklenmiştir.
 offline:
-  title: Görünüşe bakılırsa çevrimdışısınız!
+  title: Görünüşe bakılırsa çevrimdışısınız
   description: Lütfen internete bağlanın ve tekrar deneyin.
 installing: Kurulum
 by: '{author}'
