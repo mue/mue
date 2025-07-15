@@ -39,7 +39,7 @@ widgets:
   weather:
     meters: "{amount} meters"
     not_found: Not Found
-    extra_information: Extra Information
+    extra_information: Extra information
     feels_like: Feels like {amount}
   quote:
     favourite: Favorite
@@ -67,7 +67,7 @@ modals:
     navbar:
       addons: My Add-ons
       settings: Settings
-      marketplace: Discover
+      marketplace: Marketplace
     error_boundary:
       title: Error
       report_error: Send Error Report
