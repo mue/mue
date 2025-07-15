@@ -1,5 +1,6 @@
 reminder:
-  message: In order for all of the changes to take place, the page must be refreshed.
+  message: In order for all of the changes to take place, the page must be 
+    refreshed.
   title: NOTICE
 sections:
   header:
@@ -32,8 +33,8 @@ sections:
     title: Time
     format: Format
     type: Type
-    type_subtitle: Choose whether to display the time in digital format, analogue
-      format, or a percentage completion of the day
+    type_subtitle: Choose whether to display the time in digital format, 
+      analogue format, or a percentage completion of the day
     percentage_complete: Percentage complete
   date:
     type:
@@ -167,8 +168,8 @@ sections:
     custom: Custom Search URL
     autocomplete: Autocomplete
     autocomplete_provider: Autocomplete Provider
-    autocomplete_provider_subtitle: Search engine to use for autocomplete dropdown
-      results
+    autocomplete_provider_subtitle: Search engine to use for autocomplete 
+      dropdown results
     dropdown: Search Dropdown
     focus: Focus on tab open
   weather:
@@ -227,8 +228,8 @@ sections:
   appearance:
     style:
       title: Widget Style
-      description: Choose between the two styles, legacy (enabled for pre 7.0 users)
-        and our slick modern styling.
+      description: Choose between the two styles, legacy (enabled for pre 7.0 
+        users) and our slick modern styling.
       legacy: Legacy
       new: New
     theme:
@@ -245,7 +246,8 @@ sections:
       widgets: Navbar Widgets
       notes: Notes
       refresh: Refresh
-      refresh_subtitle: Choose what is refreshed when you click the refresh button
+      refresh_subtitle: Choose what is refreshed when you click the refresh 
+        button
       hover: Only display on hover
       additional: Modify navbar style and which buttons you want to display
       apps_subtitle: Create a shortcut of your other commonly used websites.
@@ -285,39 +287,40 @@ sections:
   order:
     title: Widget Order
   advanced:
-    data_subtitle: Choose whether to export your Mue settings to your computer, import
-      an existing settings file, or reset your settings to their default values
+    data_subtitle: Manage your data on Mue.
     reset_modal:
       title: WARNING
       question: Do you want to reset Mue?
-      information: This will delete all data. If you wish to keep your data and preferences,
-        please export them first.
+      information: This will delete all data. If you wish to keep your data and 
+        preferences, please export them first.
       cancel: Cancel
     customisation: Customization
     timezone:
       title: Time Zone
-      subtitle: Choose a timezone from the list instead of the automatic default from
-        your computer
+      subtitle: Choose a timezone from the list instead of the automatic default
+        from your computer
       automatic: Automatic
     preview_data_disabled:
       title: Data Settings Disabled
-      description: Data settings are disabled in preview mode. Please exit preview
-        mode to use this feature.
+      description: Data settings are disabled in preview mode. Please exit 
+        preview mode to use this feature.
     title: Advanced
     offline_mode: Offline mode
-    offline_subtitle: When enabled, all requests to online services will be disabled.
+    offline_subtitle: When enabled, all requests to online services will be 
+      disabled.
     data: Data
     custom_css: Custom CSS
     custom_js: Custom JS
     tab_name: Tab name
     tab_name_subtitle: Change the name of the tab that appears in your browser
-    data_description: Choose whether to export your Mue settings to your computer,
-      import an existing settings file, or reset your settings to their default values
-    custom_css_subtitle: Make Mue's styling customised to you with Cascading Style
-      Sheets (CSS).
-    experimental_warning: Please note that the Mue team cannot provide support if
-      you have experimental mode on. Please disable it first and see if the issue
-      continues to occur before contacting support.
+    data_description: Choose whether to export your Mue settings to your 
+      computer, import an existing settings file, or reset your settings to 
+      their default values
+    custom_css_subtitle: Make Mue's styling customised to you with Cascading 
+      Style Sheets (CSS).
+    experimental_warning: Please note that the Mue team cannot provide support 
+      if you have experimental mode on. Please disable it first and see if the 
+      issue continues to occur before contacting support.
   stats:
     sections:
       tabs_opened: Tabs opened
@@ -339,8 +342,8 @@ sections:
   experimental:
     developer: Developer
     title: Experimental
-    warning: These settings have not been fully tested/implemented and may not work
-      correctly!
+    warning: These settings have not been fully tested/implemented and may not 
+      work correctly!
   language:
     quote: Quote language
     title: Language
@@ -363,8 +366,8 @@ sections:
     title: About
     contact_us: Contact Us
     support_mue: Support Mue
-    support_subtitle: As Mue is entirely free, we rely on donations to cover the server
-      bills and fund development
+    support_subtitle: As Mue is entirely free, we rely on donations to cover the
+      server bills and fund development
     support_donate: Donate
     contributors: Contributors
     supporters: Supporters
