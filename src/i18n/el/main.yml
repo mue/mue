@@ -1,1 +1,8 @@
-{}
+tabname: Νέα καρτέλα
+widgets:
+  greeting:
+    morning: Καλημέρα
+    afternoon: Καλησπέρα
+    evening: Καλησπέρα
+    christmas: Καλά Χριστούγεννα
+    newyear: Ευτυχισμένο το νέο έτος
