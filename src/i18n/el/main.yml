@@ -23,3 +23,5 @@ widgets:
     add: Προσθήκη
     name_error: Πρέπει να παρέχει το όνομα
     url_error: Πρέπει να παρέχει διεύθυνση URL
+  weather:
+    not_found: Δεν υπάρχει
