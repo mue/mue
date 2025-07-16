@@ -54,7 +54,7 @@ widgets:
       placeholder: Πληκτρολόγισε εδώ
     todo:
       add: Προσθήκη
-      title: 'Να γίνουν:'
+      title: Να γίνουν
       pin: Πινέζομα
       no_todos: Δεν υπάρχει κατι στη λίστα "Todo"
     apps:
@@ -66,3 +66,6 @@ modals:
   main:
     title: Ρυθμήσεις
     loading: Φορτόνει...
+    error_boundary:
+      title: Σφάλμα
+      message: Αυτόι το κομάτι του Mue απέτυχε να φορτόσει
