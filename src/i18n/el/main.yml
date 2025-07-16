@@ -2,41 +2,67 @@ tabname: Νέα καρτέλα
 widgets:
   greeting:
     morning: Καλημέρα
-    afternoon: Καλησπέρα
+    afternoon: Καλό απόγευμα
     evening: Καλησπέρα
     christmas: Καλά Χριστούγεννα
     newyear: Ευτυχισμένο το νέο έτος
+    halloween: Χαρούμενο Χάλογουιν
+    birthday: Χρόνια πολλά
   background:
     information: Πληροφορίες
     source: Πηγή
     category: Κατηγορία
     exclude: Μην δείξετε ξανά
     exclude_confirm: "Είστε σίγουροι ότι δεν θέλετε να δείτε ξανά αυτή την εικόνα;\n\
-      Σημείωση: αν δεν σας αρέσουν οι εικόνες \"{κατηγορία}, μπορείτε να επιλέξετε
-      την κατηγορία στις ρυθμίσεις προέλευσης φόντου."
+      Σημείωση: αν δεν σας αρέσουν οι εικόνες \"{κατηγορία}\", μπορείτε να αφαιρέσετε
+      την κατηγορία απο τις ρυθμίσεις προέλευσης φόντου."
     confirm: Επιβεβαίωση
+    credit: Φωτογραφία τραβηγμένη από
+    download: Κατέβασε
+    downloads: Κατεβασμένα
+    views: Προβολές
+    likes: '"μου αρέσει"'
+    location: Τοποθεσία
+    camera: Κάμερα
+    resolution: Ανάλυση
   search: Αναζήτηση
   quicklinks:
     name: Όνομα
     url: URL
-    icon: Icon (προαιρετικό)
+    icon: Εικονίδιο (προαιρετικό)
     add: Προσθήκη
-    name_error: Πρέπει να παρέχει το όνομα
-    url_error: Πρέπει να παρέχει διεύθυνση URL
+    name_error: Πρέπει να παρέχετε ένα όνομα
+    url_error: Πρέπει να περιέχειι διεύθυνση URL
+    new: Καινούριος σύνδεσμος
+    edit: Επεξεργασία σύνδεσμου
   weather:
-    not_found: Δεν υπάρχει
+    not_found: Δεν βρέθηκε
     meters: '{amount} μέτρα'
     extra_information: Πρόσθετες πληροφορίες
     feels_like: Νιώνεται σαν {amount}
   quote:
     copy: Αντιγραφή
+    link_tooltip: Άνοιξε στη Wikipedia
+    share: Κοινοποίηση
+    favourite: Αγαπημένα
+    unfavourite: διαγραφή απο τα "αγαπημένα"
   navbar:
     tooltips:
       refresh: Ανανέωση
     notes:
       title: Σημειώσεις
+      placeholder: Πληκτρολόγισε εδώ
     todo:
       add: Προσθήκη
+      title: 'Να γίνουν:'
+      pin: Πινέζομα
+      no_todos: Δεν υπάρχει κατι στη λίστα "Todo"
     apps:
       title: Εφαρμογές
-      no_apps: Δεν υπάρχουν συνδέσεις εφαρμογής
+      no_apps: Δεν υπάρχουν σύνδεσμοι εφαρμογής
+  date:
+    week: Εβδομάδα
+modals:
+  main:
+    title: Ρυθμήσεις
+    loading: Φορτόνει...
