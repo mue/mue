@@ -25,3 +25,18 @@ widgets:
     url_error: Πρέπει να παρέχει διεύθυνση URL
   weather:
     not_found: Δεν υπάρχει
+    meters: '{amount} μέτρα'
+    extra_information: Πρόσθετες πληροφορίες
+    feels_like: Νιώνεται σαν {amount}
+  quote:
+    copy: Αντιγραφή
+  navbar:
+    tooltips:
+      refresh: Ανανέωση
+    notes:
+      title: Σημειώσεις
+    todo:
+      add: Προσθήκη
+    apps:
+      title: Εφαρμογές
+      no_apps: Δεν υπάρχουν συνδέσεις εφαρμογής
