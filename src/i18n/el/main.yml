@@ -64,8 +64,18 @@ widgets:
     week: Εβδομάδα
 modals:
   main:
-    title: Ρυθμήσεις
+    title: Επιλογές
     loading: Φορτόνει...
     error_boundary:
       title: Σφάλμα
       message: Αυτόι το κομάτι του Mue απέτυχε να φορτόσει
+      refresh: Ανανέωση
+    file_upload_error: Το αρχείο είναι πάνω από 2MB
+    navbar:
+      settings: Ρυθμίσεις
+      addons: Βιβλιοθήκη
+      marketplace: Ανακαλύψτε
+  update:
+    title: Ενημέρωση
+  share:
+    copy_link: Αντίγραφο link
