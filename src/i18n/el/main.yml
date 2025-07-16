@@ -20,3 +20,5 @@ widgets:
     name: Όνομα
     url: URL
     icon: Icon (προαιρετικό)
+    add: Προσθήκη
+    name_error: Πρέπει να παρέχει το όνομα
