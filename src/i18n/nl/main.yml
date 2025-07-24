@@ -25,6 +25,9 @@ widgets:
       Opmerking: als u niet van "{category}"-afbeeldingen houdt, kunt u de
       categorie deselecteren in de achtergrondbroninstellingen.
     confirm: Bevestigen
+    information: Informatie
+    download: Download
+    camera: Camera
   search: Zoeken
   quicklinks:
     new: Nieuwe Koppeling
@@ -76,8 +79,13 @@ modals:
       sent: Verstuurd!
       refresh: Vernieuw
   update:
-    offline: {}
-    error: {}
+    offline:
+      title: Offline
+      description: Kan geen update logboeken krijgen in offline mode
+    error:
+      title: Error
+      description: Kan niet verbinden met de server
+    title: Update
   share:
     copy_link: Kopieer link
     email: E-mail
@@ -90,3 +98,6 @@ toasts:
   imported: Het importeren is voltooid
   no_storage: Niet genoeg opslag
   link_copied: Link gekopieerd
+  notes: Notities gekopieerd
+  updated: Succesvolle update
+  stats_reset: Reset statistieken
