@@ -1,1 +1,18 @@
-{}
+{
+  "tabname": "Нова вкладка",
+  "widgets": {
+    "background": {
+      "credit": "Фото зроблене",
+      "unsplash": "на Unsplash"
+    },
+    "greeting": {
+      "afternoon": "Добрий день",
+      "birthday": "З днем народження",
+      "christmas": "Веселого Різдва",
+      "evening": "Добрий вечір",
+      "halloween": "З Днем Хеллоуїна",
+      "morning": "Добрий ранок",
+      "newyear": "З Новим роком"
+    }
+  }
+}
