@@ -1,1 +1,148 @@
-{}
+open_knowledgebase: Відкрити базу знань
+additional_settings: Додаткові налаштування
+reminder:
+  title: ПОВІДОМЛЕННЯ
+  message: Щоб усі зміни відбулися, сторінку потрібно оновити.
+sections:
+  header:
+    more_info: Більше інформації
+    report_issue: Повідомити про проблему
+    enabled: Виберіть, чи показувати цей віджет
+    size: Слайдер для керування розміром віджета
+  time:
+    title: Час
+    format: Формат
+    type: Тип
+    type_subtitle: Виберіть, чи відображати час у цифровому форматі, аналоговому
+      форматі або у відсотках завершення дня
+    digital:
+      title: Цифровий
+      subtitle: Зміна вигляду цифрового годинника
+      seconds: Секунди
+      twentyfourhour: 24 Година
+      twelvehour: 12 година
+      zero: З нульовим доповненням
+    analogue:
+      title: Аналоговий
+      subtitle: Зміна вигляду аналогового годинника
+      second_hand: Секундна стрілка
+      minute_hand: Хвилинна стрілка
+      hour_hand: Годинникова стрілка
+      hour_marks: Годинникові позначки
+      minute_marks: Хвилинні позначки
+      round_clock: Заокруглений фон
+    percentage_complete: Відсоток виконання
+    vertical_clock:
+      title: Вертикальний годинник
+      change_hour_colour: Змінити колір тексту години
+      change_minute_colour: Змінити колір тексту хвилин
+      change_second_colour: Змінити колір другого тексту
+  date:
+    title: Дата
+    week_number: Номер тижня
+    day_of_week: День тижня
+    datenth: Дата n-та
+    type:
+      short: Короткий
+      long: Довгий
+      subtitle: Чи відображати дату у повній чи короткій формі
+    type_settings: Налаштування відображення та формат для вибраного типу дати
+    short_date: Коротка дата
+    short_format: Короткий формат
+    long_format: Довгий формат
+    short_separator:
+      title: Короткий роздільник
+      dots: Крапки
+      dash: Тире
+      gaps: Прогалини
+      slashes: Слеші
+  quote:
+    title: Цитата
+    additional: Інші налаштування для налаштування стилю віджета цитат
+    author_link: Посилання автора
+    custom: Індивідуальна цінова пропозиція
+    custom_subtitle: Встановіть власні цінові пропозиції
+    no_quotes: Без цитат
+    author: Автор
+    custom_buttons: Кпонки
+    custom_author: Автор на замовлення
+    author_img: Показати зображення автора
+    add: Додати цитату
+    source_subtitle: Виберіть, звідки отримати котирування
+    buttons:
+      title: Кнопки
+      subtitle: Виберіть, які кнопки відображати в ціновій пропозиції
+      copy: Копіювати
+      tweet: Твіт
+      favourite: Улюблене
+  greeting:
+    title: Привітання
+    events: Події
+    events_description: Керуйте подіями на Mue, такими як дні народження.
+    enable_events: Показувати повідомлення у особливі дні
+    default: Вітальне повідомлення за замовчуванням
+    name: Ім'я для привітання
+    birthday: День народження
+    birthday_subtitle: Показувати повідомлення "З днем народження", коли у вас 
+      день народження
+    birthday_age: Вік дня народження
+    birthday_date: Дата народження
+    additional: Налаштування відображення привітання
+    custom: Користувацькі події
+    event_name: Назва події
+    day: День
+    month: Місяць
+    no_events: Немає подій
+    no_events_description: Додати деякі події
+    add_event: Додати подію
+  background:
+    title: Передісторія
+    transition: Перехід із поступовим появою
+    photo_information: Показати інформацію про фото
+    show_map: Показати карту розташування на фотографії, якщо вона доступна
+    categories: Категорії
+    category: Категорія
+    buttons:
+      title: Кпонки
+      view: Максимізувати
+      favourite: Улюблене
+      download: Завантажити
+    effects:
+      title: Ефекти
+      subtitle: Додавання ефектів до фонових зображень
+      blur: Налаштувати розмиття
+      brightness: Налаштування яскравості
+      filters:
+        title: Фоновий фільтр
+        amount: Кількість фільтра
+        grayscale: Відтінки сірого
+        sepia: Сепія
+        invert: Інвертувати
+        saturate: Насичувати
+        contrast: Контраст
+    type:
+      title: Тип
+      api: API
+      custom_image: Власне зображення
+      custom_colour: Власний колір/градієнт
+      random_colour: Випадковий колір
+      random_gradient: Випадковий градієнт
+    unsplash:
+      title: Колекція(ї) Unsplash
+      subtitle: Виберіть колекцію(и), яку(і) ви хочете використовувати як фон
+      id: Ідентифікатор(и) колекції
+      id_subtitle: Введіть список ідентифікаторів Unsplash, розділених комами
+    source:
+      title: Джерело
+      subtitle: Виберіть, звідки отримати фонові зображення
+      api: Фоновий API
+      custom_background: Власний фон
+      custom_colour: Власний колір фону
+      upload: Вавантажити
+      add_colour: Додати колір
+      add_background: Додати фон
+      drop_to_upload: Відпустіть, щоб завантажити
+      formats: 'Доступні формати: {list}'
+      select: Або Виберіть
+      add_url: Додати URL-адресу
+      disabled: Інвалід
