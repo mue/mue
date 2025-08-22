@@ -1,1 +1,103 @@
 tabname: Нова вкладка
+widgets:
+  greeting:
+    morning: Доброго ранку
+    afternoon: Доброго дня
+    evening: Доброго вечора
+    christmas: З Різдвом Христовим
+    newyear: З Новим роком
+    halloween: Щасливого Хелловіну
+    birthday: З Днем народження
+  background:
+    credit: Фото від
+    unsplash: на Unsplash
+    information: Інформація
+    download: Завантажити'
+    downloads: Завантаженням
+    views: Перегляди
+    likes: Вподобання
+    location: Розташування
+    camera: Камера
+    resolution: Роздільна здатність
+    source: Джерело
+    category: Категорія
+    exclude: Більше не показувати
+    exclude_confirm: "Ви впевнені, що більше не хочете бачити це зображення?\nПримітка:
+      якщо вам не подобаються зображення \"{category}\", ви можете скасувати вибір
+      категорії в налаштуваннях джерела фону."
+    confirm: Підтвердити
+  search: Пошук
+  quicklinks:
+    new: Нове посилання
+    edit: Редагувати посилання
+    name: Ім'я
+    url: URL
+    icon: Піктограма (необов'язково)
+    add: Додати
+    name_error: Потрібно вказати ім'я
+    url_error: Потрібно вказати URL-адресу
+  date:
+    week: Тиждень
+  weather:
+    not_found: Не знайдено
+    meters: '{amount} метрів'
+    extra_information: Додаткова інформація
+    feels_like: Відчувається як {amount}
+  quote:
+    link_tooltip: Відкрито Wikipedia
+    share: Поділитися
+    copy: Копіювати
+    favourite: Улюблене
+    unfavourite: Видалити з обраного
+  navbar:
+    tooltips:
+      refresh: Оновити
+    notes:
+      title: Нотатки
+      placeholder: Введіть тут
+    todo:
+      title: Усі
+      pin: Закріпити
+      add: Додати
+      no_todos: Не всі
+    apps:
+      title: Програми
+      no_apps: Посилань на програми не знайдено
+modals:
+  main:
+    title: Опції
+    loading: Завантаження...
+    file_upload_error: Файл має розмір понад 2 МБ
+    navbar:
+      settings: Налаштування
+      addons: Бібліотека
+      marketplace: Відкрийте
+    error_boundary:
+      title: Помилка
+      message: Не вдалося завантажити цей компонент Mue
+      report_error: Надіслати звіт про помилку
+      sent: Надіслано!
+      refresh: Оновити
+  update:
+    title: Оновлення
+    offline:
+      title: Офлайн
+      description: Не вдається отримати журнали оновлень у автономному режимі
+    error:
+      title: Помилка
+      description: Не вдалося підключитися до сервера
+  share:
+    copy_link: Копіювати посилання
+    email: Електронна пошта
+toasts:
+  quote: Цитата скопійована
+  notes: Нотатки скопійовано
+  reset: Скидання успішно
+  installed: Успішно встановлено
+  uninstalled: Успішно вилучено
+  updated: Успішно оновлено
+  error: Щось пішло не так
+  imported: Успішно імпортовано
+  no_storage: Недостатньо місця для зберігання
+  link_copied: Посилання скопійовано
+  stats_reset: Скидання статистики
