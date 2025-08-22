@@ -145,5 +145,7 @@ sections:
       formats: 'Доступні формати: {list}'
       select: Або Виберіть
       add_url: Додати URL-адресу
-      disabled: Інвалід
+      disabled: Вимкнено
+  experimental:
+    title: Експериментальні
 enabled: Увімкнено
