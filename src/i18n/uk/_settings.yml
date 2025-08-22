@@ -146,6 +146,247 @@ sections:
       select: Або Виберіть
       add_url: Додати URL-адресу
       disabled: Вимкнено
+      loop_video: Циклічне відео
+      mute_video: Вимкнути звук відео
+      quality:
+        title: Якість
+        original: Оригінал
+        high: Висока якість
+        normal: Звичайна якість
+        datasaver: Економія даних
+      custom_title: Користувацькі зображення
+      custom_description: Виберіть зображення з локального комп’ютера
+      remove: Вилучити зображення
+    display: Дисплей
+    display_subtitle: Зміна способу завантаження фонової інформації та 
+      інформації про фотографії
+    api: Налаштування API
+    api_subtitle: Варіанти отримання зображення із зовнішнього сервісу (API)
   experimental:
     title: Експериментальні
+    warning: Ці налаштування не були повністю протестовані/реалізовані та можуть
+      працювати неправильно!
+    developer: Розробник
+  search:
+    title: Пошук
+    additional: Додаткові опції відображення та функціональності віджета пошуку
+    search_engine: Пошукова система
+    search_engine_subtitle: Виберіть пошукову систему для використання в рядку 
+      пошуку
+    custom: URL-адреса користувацького пошуку
+    autocomplete: Автозаповнення
+    autocomplete_provider: Постачальник автозаповнення
+    autocomplete_provider_subtitle: Пошукова система для використання у 
+      випадаючому списку результатів автозаповнення
+    voice_search: Голосовий пошук
+    dropdown: Випадаючий список пошуку
+    focus: Фокус на відкритій вкладці
+  weather:
+    title: Погода
+    location: Розташування
+    auto: Авто
+    widget_type: Тип віджета
+    temp_format:
+      title: Формат температури
+      celsius: Цельсій
+      fahrenheit: Фаренгейт
+      kelvin: Кельвін
+    extra_info:
+      title: Додаткова Інформація
+      show_location: Показати місцезнаходження
+      show_description: Показати опис
+      weather_description: Опис погоди
+      cloudiness: Хмарність
+      humidity: Вологість
+      visibility: Видимість
+      wind_speed: Швидкість вітру
+      wind_direction: Напрямок вітру
+      min_temp: Мінімальна температура
+      max_temp: Максимальна температура
+      atmospheric_pressure: Атмосферний тиск
+    options:
+      basic: Базовий
+      standard: Стандартний
+      expanded: Розгорнуто
+      custom: Користувацька
+    custom_settings: Користувацькі налаштування
+  quicklinks:
+    title: Швидкі посилання
+    additional: Додаткові налаштування для відображення та функцій швидких 
+      посилань
+    open_new: Відкрити в новій вкладці
+    tooltip: Підказка
+    text_only: Показувати лише текст
+    add_link: Додати посилання
+    no_quicklinks: Немає швидких посилань
+    edit: Редагувати
+    style: Стиль
+    options:
+      icon: Значок
+      text_only: Тільки текст
+      metro: Метро
+    styling: Стайлінг
+    styling_description: Налаштування зовнішнього вигляду швидких посилань
+  message:
+    title: Повідомлення'
+    add: Додати повідомлення
+    messages: Повідомлення
+    text: Текст
+    no_messages: Немає повідомлень
+    add_some: Сміливо додавайте трохи.
+    content: Вміст повідомлення
+  appearance:
+    title: Зовнішній вигляд
+    style:
+      title: Стиль віджета
+      description: 'Оберіть один із двох стилів: застарілий (доступний для користувачів
+        версій до 7.0) та наш елегантний сучасний стиль.'
+      legacy: Спадщина
+      new: Новий
+    theme:
+      title: Тема
+      description: Зміна теми віджетів та модальних вікон Mue
+      auto: Авто
+      light: Світло
+      dark: Темний
+    navbar:
+      title: Панель навігації
+      widgets: Віджети панелі навігації
+      notes: Нотатки
+      refresh: Оновити
+      refresh_subtitle: Виберіть, що оновлюватиметься після натискання кнопки 
+        оновлення
+      hover: Відображати лише при наведенні курсора
+      additional: Змініть стиль панелі навігації та кнопки, які ви хочете 
+        відображати
+      refresh_options:
+        none: Жоден
+        page: Сторінка
+      apps_subtitle: Створіть ярлик для інших часто використовуваних веб-сайтів.
+    font:
+      title: Шрифт
+      description: Зміна шрифту, що використовується в Mue
+      custom: Власний шрифт
+      google: Імпорт із шрифтів Google
+      weight:
+        title: Вага шрифту
+        thin: Тонкий
+        extra_light: Додаткове світло
+        light: Світло
+        normal: Звичайний
+        medium: Середній
+        semi_bold: Напівжирний шрифт
+        bold: Жирний шрифт
+        extra_bold: Надзвичайно жирний шрифт
+      style:
+        title: Стиль шрифту
+        normal: Звичайний
+        italic: Курсив'
+        oblique: Косий
+    accessibility:
+      title: Доступність
+      description: Зробіть Mue комфортним та доступним
+      animations: Анімації
+      text_shadow:
+        title: Тінь тексту віджета
+        new: Новий
+        old: Старий
+        none: Жоден
+      widget_zoom: Масштаб віджета
+      toast_duration: Тривалість тосту
+      milliseconds: мілісекунди
+  order:
+    title: Порядок віджетів
+  advanced:
+    title: Розширений'
+    offline_mode: Офлайн-режим
+    offline_subtitle: Після ввімкнення всі запити до онлайн-сервісів будуть 
+      вимкнені.
+    data: Дані
+    data_description: Виберіть, чи експортувати налаштування Mue на комп’ютер, 
+      імпортувати існуючий файл налаштувань чи скинути налаштування до значень 
+      за замовчуванням
+    data_subtitle: Керуйте своїми даними на Mue.
+    reset_modal:
+      title: УВАГА
+      question: Ви хочете скинути налаштування Mue?
+      information: Це видалить усі дані. Якщо ви хочете зберегти свої дані та 
+        налаштування, спочатку експортуйте їх.
+      cancel: Скасувати
+    customisation: Кастомізанція
+    custom_css: Користувацька CSS
+    custom_css_subtitle: Налаштуйте стиль Mue під себе за допомогою каскадних 
+      таблиць стилів (CSS).
+    custom_js: Користувацька JS
+    tab_name: Назва вкладки
+    tab_name_subtitle: Змініть назву вкладки, яка відображається у вашому 
+      браузері
+    timezone:
+      title: Часовий пояс
+      subtitle: Виберіть часовий пояс зі списку замість автоматичного значення 
+        за замовчуванням на вашому комп’ютері
+      automatic: Автоматичний
+    experimental_warning: Зверніть увагу, що команда Mue не може надати 
+      підтримку, якщо у вас увімкнено експериментальний режим. Будь ласка, 
+      спочатку вимкніть його та перевірте, чи проблема продовжує виникати, перш 
+      ніж звертатися до служби підтримки.
+    preview_data_disabled:
+      title: Налаштування даних вимкнено
+      description: Налаштування даних вимкнено в режимі попереднього перегляду. 
+        Вийдіть із режиму попереднього перегляду, щоб скористатися цією 
+        функцією.
+  stats:
+    title: Статистика
+    sections:
+      tabs_opened: Відкрито вкладок
+      backgrounds_favourited: Фони додані до обраного
+      backgrounds_downloaded: Фони завантажено
+      quotes_favourited: Цитати додані до обраного
+      quicklinks_added: Додано швидкі посилання
+      settings_changed: Налаштування змінено
+      addons_installed: Встановлені доповнення
+    usage: Статистика використання
+    achievements: Досягнення
+    achievement_unlocked: 'Досягнення розблоковано: {name}'
+    unlocked: '{count} Розблоковано'
+    locked: Заблоковано
+    clear_modal:
+      question: Ви хочете очистити свою статистику?
+      information: Це очистить усі досягнення та статистику використання.
+  language:
+    title: Мова
+    quote: Мова цитат
+  changelog:
+    title: Журнал змін
+    by: Від {author}
+  about:
+    title: Про нас
+    version:
+      title: Версія
+      checking_update: Перевірка оновлень
+      update_available: Доступне оновлення
+      no_update: Оновлення недоступне
+      offline_mode: Не вдається перевірити наявність оновлень в автономному 
+        режимі
+      error:
+        title: Не вдалося отримати інформацію про оновлення
+        description: Сталася помилка
+    contact_us: Зв'яжіться з нами
+    support_mue: Підтримка Mue
+    support_subtitle: Оскільки Mue повністю безкоштовний, ми покладаємося на 
+      пожертви для покриття рахунків за сервер та фінансування розвитку
+    support_donate: Пожертвувати
+    form_button: Форма
+    resources_used:
+      title: Використані ресурси
+      bg_images: Фонові зображення офлайн
+    contributors: Автори
+    supporters: Прихильники
+    no_supporters: Наразі немає прихильників Муе
+    photographers: Фотографи
+    curators: Творці доповнень
 enabled: Увімкнено
+buttons:
+  reset: Скинути
+  import: Імпорт
+  export: Експорт
