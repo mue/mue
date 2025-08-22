@@ -1,1 +1,49 @@
 by: від {автор}
+all: "'Усі"
+learn_more: Дізнатися більше
+photo_packs: Фотопакети
+quote_packs: Пакети цитат
+preset_settings: Попередньо встановлені налаштування
+no_items: Немає товарів у цій категорії
+collection: Колекція
+explore_collection: Ознайомитися з колекцією
+add_all: Додати все до Mue
+collections: Колекції
+cant_find: Не можете знайти те, що шукаєте?
+knowledgebase_one: Відвідайте
+knowledgebase_two: база знань
+knowledgebase_three: щоб створити свій власний.
+installing: Встановлення
+product:
+  overview: Огляд
+  information: Інформація
+  last_updated: Останнє оновлення
+  description: Опис
+  details: Деталі
+  more_from_curator: Більше схожих матеріалів від {name}
+  show_more: Показати більше
+  show_less: Показати менше
+  show_all: Показати все
+  showing: Показ
+  no_images: № Зображень
+  no_quotes: № Цитати
+  version: Версія
+  created_by: Створено
+  updated_at: Оновлено
+  part_of: Частина
+  explore: Дослідити
+  buttons:
+    addtomue: Додати до Mue
+    remove: Вилучити
+    update_addon: Оновити доповнення
+    back: Назад
+    report: Звіт
+    not_available_preview: Недоступно в режимі попереднього перегляду
+  not_in_language: Це доповнення не доступне вашою мовою
+  third_party_api: Це доповнення використовує сторонній API
+  sideload_warning: Це доповнення було завантажено незалежним способом.
+  setting: "'Налаштування"
+  value: Значення
+offline:
+  title: Схоже, ви офлайн
+  description: Будь ласка, підключіться до Інтернету
