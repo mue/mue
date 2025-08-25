@@ -5,6 +5,18 @@ widgets:
     information: Thông tin
     downloads: Các mục tải xuống
     unsplash: trên Unsplash
+    views: Lượt xem
+    likes: Lượt thích
+    location: Vị trí
+    camera: Máy ảnh
+    resolution: Quyết định
+    source: Nguồn
+    category: Danh mục
+    exclude: Không hiển thị lại
+    exclude_confirm: "Bạn có chắc rằng bạn không muốn xem hình ảnh này lần nữa?\n\
+      Nè: Nếu bạn khôn thích hình \"{category}\", bạn có thể bỏ chọn danh mục nguồn
+      của ảnh nền."
+    confirm: Xác nhận
   greeting:
     birthday: Chúc mừng sinh nhật
     morning: Chào buổi sáng
@@ -13,4 +25,79 @@ widgets:
     christmas: Giáng sinh an lành
     newyear: Chúc mừng năm mới
     halloween: Halloween vui vẻ
+  search: Tìm kiếm
+  quicklinks:
+    new: Liên kết mới
+    edit: Chỉnh sửa liên kết
+    name: Tên
+    url: URL
+    icon: Biểu tượng (tùy chọn)
+    add: Thêm
+    name_error: Buộc phải có tên
+    url_error: Buộc phải có URL
+  date:
+    week: Tuần
+  weather:
+    not_found: Không tìm thấy
+    meters: '{amount} mét'
+    extra_information: Thông tin bổ sung
+    feels_like: Cảm giác như {amount}
+  quote:
+    link_tooltip: Mở trên Wikipedia
+    share: Chia sẻ
+    copy: Sao chép
+    favourite: Yêu thích
+    unfavourite: Không thích
+  navbar:
+    tooltips:
+      refresh: Làm mới
+    notes:
+      title: Ghi chú
+      placeholder: Nhập vào đây
+    todo:
+      title: Việc cần làm
+      pin: Ghim
+      add: Thêm
+      no_todos: Không phải tất cả
+    apps:
+      title: Các ứng dụng
+      no_apps: Không tìm thấy liên kết ứng dụng
 tabname: Tab mới
+modals:
+  main:
+    title: Tùy chọn
+    loading: Đang tải...
+    file_upload_error: Tệp tin có dung lượng hơn 2MB
+    navbar:
+      settings: Cài đặt
+      addons: Thư viện
+      marketplace: Phát hiện
+    error_boundary:
+      title: Lỗi
+      message: Không tải được thành phần này của Mue
+      report_error: Gửi báo cáo lỗi
+      sent: Đã gửi!
+      refresh: Làm mới
+  update:
+    title: Cập nhật
+    offline:
+      title: Ngoại tuyến
+      description: Không thể lấy nhật ký cập nhật khi ở chế độ ngoại tuyến
+    error:
+      title: Lỗi
+      description: Không thể kết nối với máy chủ
+  share:
+    copy_link: Sao chép liên kết
+    email: Email
+toasts:
+  quote: Đã sao chép trích dẫn
+  notes: Đã sao chép ghi chú
+  reset: Đặt lại thành công
+  installed: Đã cài đặt thành công
+  uninstalled: Đã xóa thành công
+  updated: Đã cập nhật thành công
+  error: Có gì đó không ổn
+  imported: Đã nhập thành công
+  no_storage: Không đủ dung lượng lưu trữ
+  link_copied: Liên kết đã được sao chép
+  stats_reset: Đặt lại số liệu thống kê
