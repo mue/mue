@@ -1,16 +1,26 @@
 sections:
   intro:
     title: Bienvenue en Mue Tab
-    description: Merci d'avoir installé Mue, nous espérons que vous apprécierez
+    description: Merci d'avoir installé Mue, nous espérons que vous apprécierez 
       votre temps avec notre extension.
-    notices: {}
+    notices:
+      discord_title: Rejoignez notre Discord
   language: {}
   theme: {}
   style: {}
   settings: {}
   privacy:
     links: {}
-  final: {}
+  final:
+    imported: '{amount} réglages importés'
 buttons:
   close: Fermer
-preview: {}
+  next: Prochain
+  preview: Visionnez
+  previous: Antécédent
+  finish: Terminer
+preview:
+  description: Vous êtes maintenant en mode visionnage. Les réglages seront 
+    réinitialisées à la fermeture de cet onglet.
+  continue: Continuez la mise en marche
+tip: Rapide Conseil
