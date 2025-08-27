@@ -22,7 +22,7 @@ widgets:
     source: Source
     category: Catégorie
     exclude: Ne pas réafficher
-    exclude_confirm: "Etes-vous sur de ne pas vouloir voir cette image de nouveau?\n
+    exclude_confirm: "Etes-vous sur de ne pas vouloir voir cette image de nouveau?\n\
       Remarque: si vous n'aimez pas les \"{category}\" images, vous pouvez déselectionner
       cette catégorie dans les paramètre d'arrière plan."
     confirm: Confirmer
@@ -41,14 +41,28 @@ widgets:
   weather:
     not_found: Pas trouvé
     meters: "{amount} mètres"
-  quote: {}
+    extra_information: Informations en plus
+    feels_like: Ressenti comme {amount}
+  quote:
+    link_tooltip: Ouvrir sur Wikipedia
+    share: Partager
+    copy: Copier
+    favourite: Favori
+    unfavourite: Enlever des favoris
   navbar:
-    tooltips: {}
+    tooltips:
+      refresh: Rafraîchire
     notes:
       title: Remarques
       placeholder: Écrivez ici
-    todo: {}
-    apps: {}
+    todo:
+      title: A faire
+      pin: Epingler
+      add: Ajouter
+      no_todos: Pas à faire
+    apps:
+      title: Applications
+      no_apps: Pas de liens d'application trouvés
 modals:
   main:
     loading: Chargement...
@@ -59,16 +73,23 @@ modals:
     error_boundary:
       title: Erreur
       refresh: Rafraîchir
+      message: Echec du chargement de ce composant de Mue
+      report_error: Envoyer le rapport d'erreur
+      sent: Envoyé!
+    title: Options
+    file_upload_error: Le fichier est plus lourd que 2Mo
   update:
     title: Mettre à jour
     offline:
       title: Hors ligne
-      description: Vous ne pouvez pas obtenir les journaux de mise à jour si vous
-        êtes hors ligne
+      description: Vous ne pouvez pas obtenir les journaux de mise à jour si 
+        vous êtes hors ligne
     error:
       title: Erreur
       description: Impossible de se connecter au serveur
-  share: {}
+  share:
+    copy_link: Copier le lien
+    email: Courriel
 toasts:
   quote: Citation copiée
   notes: Remarques copiées
@@ -77,3 +98,7 @@ toasts:
   uninstalled: Enlevé avec succès
   error: Quelque chose s'est mal passé
   imported: Importé avec succès
+  updated: mis à jour réussit
+  no_storage: Stockage pas suffisant
+  link_copied: Lien copié
+  stats_reset: Réinitialisation des statistiques
