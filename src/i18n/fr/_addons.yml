@@ -8,3 +8,6 @@ sideload:
 sort: {}
 create:
   moved_button: Get Started
+check_updates: Regarder pour des mise-à-jours
+no_updates: Pas de mise-à-jour disponible
+updates_available: Mise-à-jour disponibles {amount}
