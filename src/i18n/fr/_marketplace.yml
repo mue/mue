@@ -8,6 +8,17 @@ product:
   buttons:
     addtomue: Ajouter à Mue
     remove: Enlever
+    update_addon: Mettre à jour les Add-on
+    back: Arrière
+    not_available_preview: pré-visionnage non-disponible
+  updated_at: mis-à-jour le
+  part_of: Fait partie du
+  explore: Explorer
+  not_in_language: Cet add-on n'est pas disponible dans votre langue
+  third_party_api: Cet add-on utilise une API tier
 offline:
   title: Hors ligne
   description: Veuillez vous connecter à Internet.
+by: Par{author}
+all: tout
+learn_more: apprenez en plus
