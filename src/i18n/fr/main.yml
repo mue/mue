@@ -68,14 +68,14 @@ modals:
     loading: Chargement...
     navbar:
       settings: Paramètres
-      addons: Mes Options
-      marketplace: Marché
+      addons: librarie
+      marketplace: Découvrir
     error_boundary:
       title: Erreur
       refresh: Rafraîchir
       message: Echec du chargement de ce composant de Mue
       report_error: Envoyer le rapport d'erreur
-      sent: Envoyé!
+      sent: Envoyé !
     title: Options
     file_upload_error: Le fichier est plus lourd que 2Mo
   update:
