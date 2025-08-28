@@ -5,12 +5,43 @@ sections:
       votre temps avec notre extension.
     notices:
       discord_title: Rejoignez notre Discord
-  language: {}
-  theme: {}
-  style: {}
-  settings: {}
+      discord_description: Parler avec la communauté Mue et aux devs
+      discord_join: Rejoindre
+      github_title: Contribuez sur GitHub
+      github_description: Raporter un bog, ajoutez une fonctionnalité ou faite 
+        un don
+      github_open: ouvert
+  language:
+    title: Choisissez votre langue
+    description: Mue ne peux pas afficher les langues listé ci-dessous. Vous 
+      pouvez aussi ajouter de nouvelles traductions sur notre
+  theme:
+    title: Selectionez un thème
+    description: Mue est disponible en mode claire et sombre, et peux être 
+      changé automatiquement selon le thème de votre système.
+    tip: En utilisant les réglages automatiques, ces derniers utiliseront le 
+      thème de votre ordinateur. Ce réglage impactera les modèles et quelques 
+      widgets affiché sur l'écran, comme la météo et les notes.
+  style:
+    title: Choisir un style
+    description: Mue offre actuellement le choix entre le vieux styling et du 
+      dernièrement sortie styling moderne.
+    legacy: Héritage
+    modern: Moderne
+  settings:
+    title: Importer les réglages
+    description: Vous installez Mue sur un nouvel appareil? Importez vos 
+      ancients réglages!
+    tip: Vous pouvez importer vos ancients réglages en navigant sur l'onglet 
+      Avancé dans votre vieux Mue setup. Puis vous devez clicker sur le bouton 
+      exporter, qui téléchargera un ficher JSON. Vous pouvez apporter ce ficher 
+      ici pour transporter vos vieux réglages et préférences de votre 
+      antécédente instalation de Mue.
   privacy:
     links: {}
+    title: Options confidentialité
+    description: Activez les réglages pour mieux protéger votre confidentialité 
+      avec Mue
   final:
     imported: '{amount} réglages importés'
 buttons:
