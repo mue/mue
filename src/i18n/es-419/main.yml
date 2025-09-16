@@ -58,6 +58,8 @@ widgets:
     todo:
       add: Agregar
       no_todos: '>no_todos'
+      title: Todo
+      pin: Pin
     apps:
       title: '>aplicaciónes_'
       no_apps: '>No_se_encontraron_enlaces de_aplicaciones'
@@ -74,6 +76,8 @@ modals:
       message: No se ha podido cargar este componente de Mue
       refresh: Recargar
       report_error: Envíar informé de error
+      title: Error
+      sent: ¡Enviado!
   update:
     title: Actualizar
     offline:
@@ -81,7 +85,10 @@ modals:
       description: No se pueden obtener actualizaciones en modo sin conexión
     error:
       description: No se pudo conectar con el servidor
-  share: {}
+      title: Error
+  share:
+    copy_link: Copiar el enlace
+    email: Email
 toasts:
   quote: Citación copiada
   notes: Notas copiadas
@@ -92,3 +99,5 @@ toasts:
   error: Algo salió mal
   imported: Importado correctamente
   stats_reset: Restablecer estadísticas
+  no_storage: No suficiente almacenamiento
+  link_copied: Enlace copiado
