@@ -48,6 +48,7 @@ widgets:
     copy: Copiar
     favourite: Favorito
     unfavourite: No favorito
+    link_tooltip: Abierto en Wikipedia
   navbar:
     tooltips:
       refresh: Recargar
@@ -90,3 +91,4 @@ toasts:
   updated: Actualizado correctamente
   error: Algo salió mal
   imported: Importado correctamente
+  stats_reset: Restablecer estadísticas
