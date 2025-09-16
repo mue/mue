@@ -14,6 +14,8 @@ sideload:
     no_type: No se ha indicado el tipo
     invalid_photos: Objeto de fotos inválido
     invalid_quotes: Objeto de citaciones inválido
+  description: Instala un complemento de Mue que no esté en el marketplace desde
+    tu computadora
 sort:
   title: Ordenar
   newest: Instalados (Nuevos)
@@ -23,3 +25,6 @@ sort:
 create:
   title: Crear
   moved_button: Get Started
+  moved_title: ¡El complemento crear se ha movido!
+  moved_description: Tras la actualización 7.1, la creación de complementos 
+    ahora se ha trasladado a la interfaz web
