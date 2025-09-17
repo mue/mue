@@ -345,7 +345,7 @@
           "experimental": {
             "developer": "Desarrollador",
             "title": "Experimental",
-            "warning": "Estos ajustes no han sido totalmente probados/implementados y pueden no funcionar correctamente."
+            "warning": "¡Estas configuraciones no han sido completamente probadas/implementadas y es posible que no funcionen correctamente!"
           },
           "greeting": {
             "add_event": "Add Event",
@@ -593,7 +593,7 @@
           "title": "Opciones de privacidad"
         },
         "settings": {
-          "description": "¿Instalando Mue en un nuevo dispositivo? No dudes en importar tu configuración anterior.",
+          "description": "¿Instalando Mue en un dispositivo nuevo? ¡Importa tu configuración anterior!",
           "tip": "Puedes exportar tu configuración yendo a la pestaña Avanzado en tu configuración de Mue. Luego debes hacer clic en el botón de exportación que descargará el archivo JSON. Puedes subir este archivo aquí para mantener tus ajustes y preferencias de tu instalación anterior de Mue.",
           "title": "Importa los ajustes"
         },
