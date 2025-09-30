@@ -4,8 +4,6 @@
 
 <p align="center">A fast, open and free-to-use browser extension that gives a new, fresh and customisable tab page to modern browsers.</p>
 
-<p align="center"><i>Managed by <a href="https://kaiso.one" target="_blank">Kaiso</a> and maintained by contributors all over the world.</i></p>
-
 <p align="center"><a href="https://muetab.com">muetab.com</a></p>
 
 
