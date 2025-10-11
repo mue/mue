@@ -9,13 +9,16 @@ class QuickLinks extends PureComponent {
   constructor() {
     super();
     this.state = {
-      items: JSON.parse(localStorage.getItem('quicklinks')),
+      items: JSON.parse(localStorage.getItem('quicklinks')) || [],
+      forceUpdate: 0, // Used to force complete re-render
     };
     this.quicklinksContainer = createRef();
   }
 
   // widget zoom
   setZoom(element) {
+    if (!element) return;
+    
     const zoom = localStorage.getItem('zoomQuicklinks') || 100;
     for (const link of element.getElementsByTagName('span')) {
       link.style.fontSize = `${14 * Number(zoom / 100)}px`;
@@ -35,11 +38,15 @@ class QuickLinks extends PureComponent {
           return (this.quicklinksContainer.current.style.display = 'none');
         }
 
-        this.quicklinksContainer.current.style.display = 'block';
-        this.setZoom(this.quicklinksContainer.current);
-
+        this.quicklinksContainer.current.style.display = 'flex'; // Force flex display
+        
+        // Force complete re-render with new data
         this.setState({
-          items: JSON.parse(localStorage.getItem('quicklinks')),
+          items: JSON.parse(localStorage.getItem('quicklinks')) || [],
+          forceUpdate: Date.now(), // Change key to force React to rebuild DOM
+        }, () => {
+          // Apply zoom after state update
+          this.setZoom(this.quicklinksContainer.current);
         });
       }
     });
@@ -79,7 +86,7 @@ class QuickLinks extends PureComponent {
 
       const img =
         item.icon ||
-        'https://icon.horse/icon/ ' + item.url.replace('https://', '').replace('http://', '');
+        'https://icon.horse/icon/' + item.url.replace('https://', '').replace('http://', '');
 
       if (localStorage.getItem('quickLinksStyle') === 'metro') {
         return (
@@ -113,8 +120,12 @@ class QuickLinks extends PureComponent {
     };
 
     return (
-      <div className="quicklinkscontainer" ref={this.quicklinksContainer}>
-        {this.state.items.map((item) => quickLink(item))}
+      <div 
+        className="quicklinkscontainer" 
+        ref={this.quicklinksContainer}
+        key={this.state.forceUpdate} // Force complete re-render when order changes
+      >
+        {this.state.items && this.state.items.map((item) => quickLink(item))}
       </div>
     );
   }

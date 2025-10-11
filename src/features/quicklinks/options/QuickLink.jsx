@@ -1,9 +1,20 @@
 import variables from 'config/variables';
 
-import { MdEdit, MdCancel } from 'react-icons/md';
+import { MdEdit, MdCancel, MdDragHandle } from 'react-icons/md';
 import { Button } from 'components/Elements';
 
-const QuickLink = ({ item, deleteLink, startEditLink }) => {
+const QuickLink = ({
+  item,
+  deleteLink,
+  startEditLink,
+  draggable = false,
+  onDragStart,
+  onDragOver,
+  onDrop,
+  onDragEnd,
+  isDragOver = false,
+  isDragging = false,
+}) => {
   let target,
     rel = null;
   if (localStorage.getItem('quicklinksnewtab') === 'true') {
@@ -32,8 +43,22 @@ const QuickLink = ({ item, deleteLink, startEditLink }) => {
     item.icon ||
     'https://icon.horse/icon/ ' + item.url.replace('https://', '').replace('http://', '');
 
+  // Compose classes for drag state
+  const rootClass = `messageMap ${isDragging ? 'dragging' : ''} ${isDragOver ? 'drag-over' : ''}`;
+
   return (
-    <div className="messageMap">
+    <div
+      className={rootClass}
+      draggable={draggable}
+      onDragStart={(e) => onDragStart && onDragStart(e, item.key)}
+      onDragOver={(e) => onDragOver && onDragOver(e, item.key)}
+      onDrop={(e) => onDrop && onDrop(e, item.key)}
+      onDragEnd={(e) => onDragEnd && onDragEnd(e)}
+    >
+      <div className="dragHandle" aria-hidden>
+        <MdDragHandle />
+      </div>
+
       <div className="icon">
         <img
           src={img}

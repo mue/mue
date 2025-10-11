@@ -8,7 +8,7 @@ import variables from './config/variables';
 
 import './scss/index.scss';
 // the toast css is based on default so we need to import it
-import 'react-toastify/dist/ReactToastify.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { initTranslations } from 'lib/translations';
 
