@@ -586,10 +586,12 @@ button.quicklinks {
 }
 
 .sortable-ghost {
-  opacity: 1 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
   background: rgba(255, 255, 255, 0.1) !important;
-  visibility: visible !important;
   transition: none !important;
+}
 
 .messagesContainer {
   display: flex;
@@ -621,4 +623,4 @@ button.quicklinks {
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.9);
   }
-}}
+}

@@ -12,7 +12,18 @@ import { AddModal } from 'components/Elements/AddModal';
 import EventBus from 'utils/eventbus';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
 
-// Drag handle shown only when enabled
+const readQuicklinks = () => {
+  try {
+    const raw = localStorage.getItem('quicklinks');
+    if (!raw) return [];
+    const data = JSON.parse(raw);
+    return Array.isArray(data) ? data : [];
+  } catch (e) {
+    console.warn('Failed to parse quicklinks from localStorage. Resetting to []', e);
+    return [];
+  }
+};
+
 const DragHandle = () => (
   <div className="quicklink-drag-handle" aria-hidden="true">
     <MdOutlineDragIndicator />
@@ -25,7 +36,7 @@ const SortableItem = sortableElement(({ value, enabled, startEditLink, deleteLin
   };
 
   return (
-    <div className={`quicklink-item ${!enabled ? 'disabled' : ''}`} role="listitem" aria-disabled={!enabled}>
+    <div className={`quicklink-item ${!enabled ? 'disabled' : ''}`} role="listitem">
       <DragHandle />
       <div className="quicklink-icon">
         <img src={getIconUrl(value)} alt={value.name} draggable={false} />
@@ -76,7 +87,7 @@ class QuickLinksOptions extends PureComponent {
   constructor() {
     super();
     this.state = {
-      items: JSON.parse(localStorage.getItem('quicklinks')) || [],
+      items: readQuicklinks(),
       showAddModal: false,
       urlError: '',
       iconError: '',
@@ -85,6 +96,8 @@ class QuickLinksOptions extends PureComponent {
       enabled: localStorage.getItem('quicklinksenabled') !== 'false',
     };
     this.quicklinksContainer = createRef();
+    this.silenceEvent = false;
+    this.handleRefresh = null;
   }
 
   setContainerDisplay(enabled) {
@@ -98,68 +111,75 @@ class QuickLinksOptions extends PureComponent {
   }
 }
   deleteLink(key, event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const stored = JSON.parse(localStorage.getItem('quicklinks')) || [];
-    const data = stored.filter((i) => i.key !== key);
-
-    localStorage.setItem('quicklinks', JSON.stringify(data));
-    this.setState({ items: data });
-
+  const stored = readQuicklinks();
+  const data = stored.filter((i) => i.key !== key);
+  this.silenceEvent = true;
+  localStorage.setItem('quicklinks', JSON.stringify(data));
+  this.setState({ items: data }, () => {
     variables.stats.postEvent('feature', 'Quicklink delete');
-
     EventBus.emit('refresh', 'quicklinks');
-  }
+    setTimeout(() => { this.silenceEvent = false; }, 0);
+  });
+}
+
 
   async addLink(name, url, icon) {
-    const data = JSON.parse(localStorage.getItem('quicklinks')) || [];
+  const data = readQuicklinks();
 
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      url = 'https://' + url;
-    }
-
-    if (url.length <= 0 || isValidUrl(url) === false) {
-      return this.setState({ urlError: variables.getMessage('widgets.quicklinks.url_error') });
-    }
-
-    if (icon.length > 0 && isValidUrl(icon) === false) {
-      return this.setState({ iconError: variables.getMessage('widgets.quicklinks.url_error') });
-    }
-
-    data.push({
-      name: name || (await getTitleFromUrl(url)),
-      url,
-      icon: icon || '',
-      key: Math.random().toString(36).substring(7) + 1,
-    });
-
-    localStorage.setItem('quicklinks', JSON.stringify(data));
-
-    this.setState({ items: data, showAddModal: false, urlError: '', iconError: '' });
-
-    variables.stats.postEvent('feature', 'Quicklink add');
-
-    EventBus.emit('refresh', 'quicklinks');
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    url = 'https://' + url;
   }
+
+  if (url.length <= 0 || isValidUrl(url) === false) {
+    return this.setState({ urlError: variables.getMessage('widgets.quicklinks.url_error') });
+  }
+
+  if (icon.length > 0 && isValidUrl(icon) === false) {
+    return this.setState({ iconError: variables.getMessage('widgets.quicklinks.url_error') });
+  }
+
+  const newItem = {
+    name: name || (await getTitleFromUrl(url)),
+    url,
+    icon: icon || '',
+    key: Date.now().toString() + Math.random().toString(36).substring(2),
+  };
+
+  data.push(newItem);
+
+  this.silenceEvent = true;
+  localStorage.setItem('quicklinks', JSON.stringify(data));
+  this.setState({ items: data, showAddModal: false, urlError: '', iconError: '' }, () => {
+    variables.stats.postEvent('feature', 'Quicklink add');
+    EventBus.emit('refresh', 'quicklinks');
+    setTimeout(() => { this.silenceEvent = false; }, 0);
+  });
+}
+
 
   startEditLink(data) {
     this.setState({ edit: true, editData: data, showAddModal: true });
   }
 
   async editLink(og, name, url, icon) {
-    const data = JSON.parse(localStorage.getItem('quicklinks')) || [];
-    const dataobj = data.find((i) => i.key === og.key);
-    if (!dataobj) return;
-    dataobj.name = name || (await getTitleFromUrl(url));
-    dataobj.url = url;
-    dataobj.icon = icon || '';
+  const data = readQuicklinks();
+  const dataobj = data.find((i) => i.key === og.key);
+  if (!dataobj) return;
 
-    localStorage.setItem('quicklinks', JSON.stringify(data));
+  dataobj.name = name || (await getTitleFromUrl(url));
+  dataobj.url = url;
+  dataobj.icon = icon || '';
 
-    this.setState({ items: data, showAddModal: false, edit: false });
-
+  this.silenceEvent = true;
+  localStorage.setItem('quicklinks', JSON.stringify(data));
+  this.setState({ items: data, showAddModal: false, edit: false }, () => {
     EventBus.emit('refresh', 'quicklinks');
-  }
+    setTimeout(() => { this.silenceEvent = false; }, 0);
+  });
+}
+
 
   arrayMove = (array, oldIndex, newIndex) => {
     const result = Array.from(array);
@@ -171,68 +191,63 @@ class QuickLinksOptions extends PureComponent {
 onSortStart = () => {
   if (this.quicklinksContainer && this.quicklinksContainer.current) {
     this.quicklinksContainer.current.classList.add('dragging');
-    setTimeout(() => {
-      if (this.quicklinksContainer && this.quicklinksContainer.current) {
-        this.quicklinksContainer.current.classList.add('dragging-active');
-      }
-    }, 10);
   }
 };
 
 onSortEnd = ({ oldIndex, newIndex }) => {
-  if (!this.state.enabled) {
-    // ensure we always remove dragging class if disabled mid-drag
-    if (this.quicklinksContainer && this.quicklinksContainer.current) {
-      this.quicklinksContainer.current.classList.remove('dragging');
-    }
-    return;
-  }
-  if (oldIndex === newIndex) {
-    // remove dragging class and exit early
-    if (this.quicklinksContainer && this.quicklinksContainer.current) {
-      this.quicklinksContainer.current.classList.remove('dragging');
-    }
-    return;
-  }
-
+  if (!this.state.enabled) return;
+  if (oldIndex === newIndex) return;
   const newItems = this.arrayMove(this.state.items, oldIndex, newIndex);
-  localStorage.setItem('quicklinks', JSON.stringify(newItems));
-  this.setState({ items: newItems });
 
-  variables.stats.postEvent('feature', 'Quicklink reorder');
-
-  if (this.quicklinksContainer && this.quicklinksContainer.current) {
-    this.quicklinksContainer.current.classList.remove('dragging');
-  }
-
-  setTimeout(() => {
+  this.silenceEvent = true;
+  this.setState({ items: newItems }, () => {
+    localStorage.setItem('quicklinks', JSON.stringify(newItems));
     EventBus.emit('refresh', 'quicklinks');
-  }, 120);
+    setTimeout(() => { this.silenceEvent = false; }, 0);
+  });
 };
 
-  componentDidMount() {
-    this.setContainerDisplay(this.state.enabled);
-    this.setState({ items: JSON.parse(localStorage.getItem('quicklinks')) || [] });
 
-    EventBus.on('refresh', (data) => {
-      if (data === 'quicklinks') {
-        const enabled = localStorage.getItem('quicklinksenabled') !== 'false';
-        this.setContainerDisplay(enabled);
-        this.setState({ items: JSON.parse(localStorage.getItem('quicklinks')) || [], enabled });
-      }
-    });
-  }
+  componentDidMount() {
+  this.setContainerDisplay(this.state.enabled);
+
+  this.handleRefresh = (data) => {
+    if (data !== 'quicklinks') return;
+    if (this.silenceEvent) return;
+
+    const enabled = localStorage.getItem('quicklinksenabled') !== 'false';
+    const newItems = readQuicklinks();
+    const oldItems = this.state.items || [];
+    const oldKeys = new Set(oldItems.map(i => i.key));
+    const newKeys = new Set(newItems.map(i => i.key));
+
+    const keysEqual =
+      oldItems.length === newItems.length &&
+      oldItems.every(i => newKeys.has(i.key));
+
+    if (enabled !== this.state.enabled || !keysEqual) {
+      this.setContainerDisplay(enabled);
+      this.setState({ items: newItems, enabled });
+    }
+  };
+
+  EventBus.on('refresh', this.handleRefresh);
+}
+
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.enabled !== this.state.enabled) {
-      this.setContainerDisplay(this.state.enabled);
-    }
+  if (prevState.enabled !== this.state.enabled) {
+    this.setContainerDisplay(this.state.enabled);
   }
+}
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
+ componentWillUnmount() {
+  if (this.handleRefresh) {
+    EventBus.off('refresh', this.handleRefresh);
+  } else {
+    try { EventBus.off('refresh'); } catch (e) {}
   }
-
+}
   render() {
     const QUICKLINKS_SECTION = 'modals.main.settings.sections.quicklinks';
     const { enabled } = this.state;
@@ -336,7 +351,7 @@ onSortEnd = ({ oldIndex, newIndex }) => {
             >
               {this.state.items.map((item, index) => (
                 <SortableItem
-                  key={`item-${item.key}`}
+                  key={item.key}
                   index={index}
                   value={item}
                   enabled={enabled}
