@@ -24,6 +24,13 @@
   flex-wrap: wrap;
   padding: 0 25px;
   gap: 12px;
+  max-width: 100%;
+  overflow-x: visible;
+  box-sizing: border-box;
+
+  &.sortable-quicklinks {
+    cursor: default;
+  }
 
   textarea {
     @extend %basic;
@@ -60,25 +67,75 @@
   }
 }
 
-.quicklinks-container > a,
-.quicklinks-container > .quicklinks > button {
-  display: inline;
+.messagesContainer.disabled {
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.55;
 }
 
-.quicklinks-container {
-  img {
-    height: 32px;
-    width: auto;
-    transition: transform 0.2s;
-    user-select: none;
-
-    &:hover {
-      transform: scale(1.1);
+.quicklink-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  cursor: grab;
+  user-select: none;
+  border-radius: 8px;
+  padding: 4px;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    
+    .quicklink-drag-handle {
+      opacity: 1;
     }
   }
-
+  
+  &:active {
+    cursor: grabbing;
+  }
+  
   a {
-    margin: 5px;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.quicklink-drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: grab;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  border-radius: 4px;
+  
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.metro-wrapper {
+  flex-direction: column;
+  
+  .quicklink-drag-handle {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
   }
 }
 
@@ -91,9 +148,6 @@
     text-decoration: underline;
   }
 }
-
-/*  background-color: var(--background);
-  color: var(--modal-text); */
 
 .quicklinksdropdown {
   @extend %basic;
@@ -256,5 +310,317 @@ button.quicklinks {
 
   @include themed {
     color: t($subColor);
+  }
+}
+
+.messageMap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: box-shadow 0.15s ease, transform 0.12s ease, opacity 0.12s ease;
+  cursor: grab;
+  user-select: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &.dragging {
+    opacity: 0.6;
+    transform: scale(0.995);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    z-index: 10;
+  }
+
+  &.drag-over {
+    outline: 2px dashed rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  .dragHandle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 8px;
+    margin-right: 4px;
+    cursor: grab;
+    user-select: none;
+    transition: background 0.12s ease, color 0.12s ease;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.02);
+    }
+  }
+
+  .messageText {
+    flex: 1 1 auto;
+    min-width: 0;
+    .title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .subtitle {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .messageAction {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+.quicklinks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  width: 100%;
+}
+
+.quicklink-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px 20px;
+  transition: all 0.01s ease;
+  cursor: grab;
+  user-select: none;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+
+    .quicklink-drag-handle {
+      opacity: 1;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .quicklink-drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 24px;
+    padding: 4px;
+    opacity: 0.3;
+    transition: opacity 0.2s ease, color 0.2s ease;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  .quicklink-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .quicklink-icon-placeholder {
+      font-size: 20px;
+    }
+  }
+
+  .quicklink-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .quicklink-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    .quicklink-url {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+  }
+
+  .quicklink-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+
+    .quicklink-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+
+      svg {
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      &.quicklink-remove-btn {
+        &:hover {
+          background: rgba(239, 68, 68, 0.15);
+          border-color: rgba(239, 68, 68, 0.4);
+          color: #ef4444;
+        }
+      }
+    }
+  }
+}
+
+.quicklink-item.disabled {
+  cursor: default;
+}
+.quicklink-item.disabled .quicklink-action-btn {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.quicklink-item.disabled .drag-handle {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.sortable-helper {
+  transform: scale(1.02);
+  z-index: 9999 !important;
+  opacity: 0.5 !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+  cursor: grabbing !important;
+  
+
+  &.quicklink-item {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  .quicklink-drag-handle {
+    opacity: 1 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .quicklink-icon,
+  .quicklink-content,
+  .quicklink-actions {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  img {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  * {
+    pointer-events: none !important;
+  }
+}
+
+.sortable-ghost {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  transition: none !important;
+}
+
+.messagesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+}
+
+.quicklink-wrapper .quicklinkstext {
+  text-decoration: none;
+  color: white;
+  font-size: 0.8em;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.quicklink-wrapper .quickLinksMetro {
+  position: relative;
+  min-width: 100px;
+  
+  .subtitle {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
   }
 }
