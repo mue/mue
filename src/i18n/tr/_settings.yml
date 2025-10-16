@@ -13,8 +13,8 @@ sections:
   time:
     title: Saat
     type: Tip
-    type_subtitle: Saat formatını dijital olarak, analog olarak veya günün tamamlanma
-      yüzdesi olarak göstermeyi seçin.
+    type_subtitle: Saat formatını dijital olarak, analog olarak veya günün 
+      tamamlanma yüzdesi olarak göstermeyi seçin.
     digital:
       title: Dijital
       subtitle: Dijital saatin görünümünü değiştirin.
@@ -46,10 +46,10 @@ sections:
     type:
       short: Kısa
       long: Uzun
-      subtitle: Tarihin uzun veya kısa olmak üzere hangi biçimde görüntüleneceğini
-        seçin.
-    type_settings: Seçilen tarih türü için ekran ayarları ve biçimi belirten özellikleri
-      belirleyin.
+      subtitle: Tarihin uzun veya kısa olmak üzere hangi biçimde 
+        görüntüleneceğini seçin.
+    type_settings: Seçilen tarih türü için ekran ayarları ve biçimi belirten 
+      özellikleri belirleyin.
     short_date: Kısa Tarih
     short_format: Kısa biçim
     long_format: Uzun biçim
@@ -159,10 +159,11 @@ sections:
       custom_description: Bilgisayarınızdan görseli seçin.
       remove: Resmi Kaldır
     display: Görüntüleme
-    display_subtitle: Arka plan ve fotoğraf bilgilerinin nasıl yüklendiğini değiştirin.
+    display_subtitle: Arka plan ve fotoğraf bilgilerinin nasıl yüklendiğini 
+      değiştirin.
     api: API Ayarları
-    api_subtitle: Harici bir hizmetten (API) aracılığıyla görüntü alma seçeneklerini
-      belirleyin.
+    api_subtitle: Harici bir hizmetten (API) aracılığıyla görüntü alma 
+      seçeneklerini belirleyin.
   search:
     title: Arama
     additional: Arama aracı için ekran ve işlevsellik seçenekleri belirleyin.
@@ -171,8 +172,8 @@ sections:
     custom: Özel URL
     autocomplete: Otomatik Tamamlama
     autocomplete_provider: Otomatik Tamamlama Sağlayıcısı
-    autocomplete_provider_subtitle: Otomatik tamamlama açılır sonuçları için kullanılacak
-      arama motorunu belirleyin.
+    autocomplete_provider_subtitle: Otomatik tamamlama açılır sonuçları için 
+      kullanılacak arama motorunu belirleyin.
     voice_search: Sesli Arama
     dropdown: Arama Motorları Açılır Menüsü
     focus: Açık Sekmeye Odaklan
@@ -203,11 +204,12 @@ sections:
       basic: Basit
       standard: Standart
       expanded: Genişletilmiş
-      custom: Kişiselleştirlmiş
+      custom: Özelleştirilmiş
     custom_settings: Kişisel Ayarlar
   quicklinks:
     title: Hızlı Bağlantılar
-    additional: Hızlı bağlantılar ekranı ve işlevleri için ek ayarlarınızı belirleyin.
+    additional: Hızlı bağlantılar ekranı ve işlevleri için ek ayarlarınızı 
+      belirleyin.
     open_new: Yeni Sekmede Aç
     tooltip: İpucu
     text_only: Yalnızca Metni Göster
@@ -233,8 +235,8 @@ sections:
     title: Görünüm
     style:
       title: Widget Stili
-      description: Eski (7.0 öncesi kullanıcılar için etkin) ve şık modern stilimiz
-        olmak üzere iki stil arasından seçim yapın.
+      description: Eski (7.0 öncesi kullanıcılar için etkin) ve şık modern 
+        stilimiz olmak üzere iki stil arasından seçim yapın.
       legacy: Eski
       new: Yeni
     theme:
@@ -247,14 +249,16 @@ sections:
       title: Gezinme Çubuğu
       notes: Notlar
       refresh: Yenile Butonu
-      refresh_subtitle: Yenile düğmesine tıkladığınızda yenilenecek öğeleri seçin.
+      refresh_subtitle: Yenile düğmesine tıkladığınızda yenilenecek öğeleri 
+        seçin.
       hover: Yalnızca fareyle üzerine gelindiğinde göster.
-      additional: Gezinme çubuğu stilini ve hangi butonları görüntülemek istediğinizi
-        değiştirin.
+      additional: Gezinme çubuğu stilini ve hangi butonları görüntülemek 
+        istediğinizi değiştirin.
       refresh_options:
         none: Hiçbiri
         page: Sayfa
-      apps_subtitle: Sık kullandığınız diğer web sitelerinin kısayollarını oluşturun.
+      apps_subtitle: Sık kullandığınız diğer web sitelerinin kısayollarını 
+        oluşturun.
       widgets: Gezinme Çubuğu Araçları
     font:
       title: Yazı tipi
@@ -293,39 +297,41 @@ sections:
   advanced:
     title: Gelişmiş
     offline_mode: Çevrimdışı Mod
-    offline_subtitle: Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm istekler
-      devre dışı bırakılır.
+    offline_subtitle: Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm 
+      istekler devre dışı bırakılır.
     data: Veri
-    data_subtitle: Mue Tab ayarlarınızı bilgisayarınıza kaydetmenize, mevcut ayarlarınızı
-      başka bir bilgisayara aktarmanıza veya ayarlarınızı varsayılan değerlerine sıfırlamınıza
-      olanak sağlar. İstediğiniz işlemi seçin.
+    data_subtitle: Mue Tab ayarlarınızı bilgisayarınıza kaydetmenize, mevcut 
+      ayarlarınızı başka bir bilgisayara aktarmanıza veya ayarlarınızı 
+      varsayılan değerlerine sıfırlamınıza olanak sağlar. İstediğiniz işlemi 
+      seçin.
     reset_modal:
       title: UYARI
       question: Mue'yu sıfırlamak istiyor musunuz?
-      information: Bu, tüm verilerinizi silecektir. Verilerinizi ve tercihlerinizi
-        saklamak istiyorsanız, lütfen önce bunları dışa aktarın.
+      information: Bu, tüm verilerinizi silecektir. Verilerinizi ve 
+        tercihlerinizi saklamak istiyorsanız, lütfen önce bunları dışa aktarın.
       cancel: İptal
     customisation: Özelleştirme
     custom_css: Özel CSS
-    custom_css_subtitle: Mue'nin stilini 'Cascading Style Sheets (CSS)' ile özelleştirin.
+    custom_css_subtitle: Mue'nin stilini 'Cascading Style Sheets (CSS)' ile 
+      özelleştirin.
     custom_js: Özel JS
     tab_name: Sekme Adı
     tab_name_subtitle: Tarayıcınızda görünen sekmenin adını değiştirin.
     timezone:
       title: Zaman Dilimi
-      subtitle: Bilgisayarınızın otomatik varsayılanından ziyade listeden bir zaman
-        dilimi seçin.
+      subtitle: Bilgisayarınızın otomatik varsayılanından ziyade listeden bir 
+        zaman dilimi seçin.
       automatic: Otomatik
-    experimental_warning: Deneysel modunuz açıksa Mue ekibinin destek sağlayamadığını
-      lütfen unutmayın. Lütfen önce devre dışı bırakın ve desteğe başvurmadan önce
-      sorunun devam edip etmediğini görün.
+    experimental_warning: Deneysel modunuz açıksa Mue ekibinin destek 
+      sağlayamadığını lütfen unutmayın. Lütfen önce devre dışı bırakın ve 
+      desteğe başvurmadan önce sorunun devam edip etmediğini görün.
     preview_data_disabled:
-      description: Veri ayarları önizleme modunda devre dışıdır. Bu özelliği kullanmak
-        için lütfen önizleme modundan çıkın.
+      description: Veri ayarları önizleme modunda devre dışıdır. Bu özelliği 
+        kullanmak için lütfen önizleme modundan çıkın.
       title: Veri Ayarları Devre Dışı
-    data_description: Mue ayarlarınızı bilgisayarınıza aktarmayı, mevcut bir ayar
-      dosyasını içe aktarmayı veya ayarlarınızı varsayılan değerlerine sıfırlamayı
-      seçin.
+    data_description: Mue ayarlarınızı bilgisayarınıza aktarmayı, mevcut bir 
+      ayar dosyasını içe aktarmayı veya ayarlarınızı varsayılan değerlerine 
+      sıfırlamayı seçin.
   stats:
     title: İstatistikler
     sections:
@@ -341,7 +347,8 @@ sections:
     unlocked: "{count} Kilidi Açıldı"
     clear_modal:
       question: İstatistiklerinizi temizlemek istiyor musunuz?
-      information: Bu, tüm başarıları ve kullanım istatistiklerini temizleyecektir.
+      information: Bu, tüm başarıları ve kullanım istatistiklerini 
+        temizleyecektir.
     achievement_unlocked: 'Başarım Açıldı: {name}'
     locked: Kilitli
   experimental:
@@ -367,8 +374,9 @@ sections:
         description: Bir hata oluştu.
     contact_us: Bize Ulaşın!
     support_mue: Mue Destek
-    support_subtitle: Mue tamamen ücretsiz olduğu için, sunucu faturalarını karşılamak
-      ve geliştirme masraflarını finanse etmek için bağışları kullanıyoruz.
+    support_subtitle: Mue tamamen ücretsiz olduğu için, sunucu faturalarını 
+      karşılamak ve geliştirme masraflarını finanse etmek için bağışları 
+      kullanıyoruz.
     support_donate: Bağış Yap
     resources_used:
       title: Kullanılan Kaynaklar
