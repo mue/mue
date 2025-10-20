@@ -343,7 +343,7 @@
             "week_number": "Hafta Sayısı"
           },
           "experimental": {
-            "developer": "Developer",
+            "developer": "Geliştirici",
             "title": "Deneysel",
             "warning": "Bu ayarlar tam olarak test edilmemiştir/uygulanmamıştır ve doğru çalışmayabilir!"
           },
