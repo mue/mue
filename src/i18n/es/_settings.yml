@@ -14,14 +14,15 @@ sections:
     title: Tiempo
     format: Formato
     type: Tipo
-    type_subtitle: Elija si desea mostrar la hora en formato digital, formato analógico
-      o un porcentaje de finalización del día
+    type_subtitle: Elija si desea mostrar la hora en formato digital, formato 
+      analógico o un porcentaje de finalización del día
     digital:
       subtitle: Cambiar el aspecto del reloj digital
       seconds: Segundos
       twentyfourhour: 24 Horas
       twelvehour: 12 Horas
       zero: Sin ceros
+      title: Digital
     analogue:
       title: Analógico
       subtitle: Cambiar el aspecto del reloj analógico
@@ -45,7 +46,8 @@ sections:
       short: Corto
       long: Largo
       subtitle: Visualización de la fecha en formato largo o corto
-    type_settings: Ajustes de visualización y formato para el tipo de fecha seleccionado
+    type_settings: Ajustes de visualización y formato para el tipo de fecha 
+      seleccionado
     short_date: Fecha corta
     short_format: Formato corto
     long_format: Formato largo
@@ -57,7 +59,8 @@ sections:
       slashes: Barras
   quote:
     title: Cita
-    additional: Otras configuraciones para personalizar el estilo del widget de cotización
+    additional: Otras configuraciones para personalizar el estilo del widget de 
+      cotización
     author_link: Enlace del autor
     custom: Cita personalizada
     custom_subtitle: Establece tus propias cotizaciones personalizados
@@ -80,16 +83,18 @@ sections:
     default: Mensaje del saludo por defecto
     name: Nombre para el saludo
     birthday: Cumpleaños
-    birthday_subtitle: Mostrar un mensaje de Feliz Cumpleaños cuando sea su cumpleaños
+    birthday_subtitle: Mostrar un mensaje de Feliz Cumpleaños cuando sea su 
+      cumpleaños
     birthday_age: Edad de cumpleaños
     birthday_date: Fecha de cumpleaños
     additional: Ajustes para la visualización del saludo
+    custom: Eventos personalizados
   background:
     title: Fondo
     transition: Transición fade-in
     photo_information: Ver información de la foto
-    show_map: Mostrar el mapa de la ubicación en la información de la foto si está
-      disponible
+    show_map: Mostrar el mapa de la ubicación en la información de la foto si 
+      está disponible
     categories: Categorías
     buttons:
       title: Botones
@@ -114,7 +119,10 @@ sections:
       custom_colour: Color/degradado personalizado
       random_colour: Color aleatorio
       random_gradient: Degradado aleatorio
-    unsplash: {}
+    unsplash:
+      title: Colección(es) Unsplash
+      subtitle: Seleccione la colección(es) que desea utilizar para su fondo
+      id_subtitle: Introduzca una lista separada del coma de IDs de Unsplash
     source:
       title: Fuente
       subtitle: Seleccione de dónde obtener las imágenes de fondo
@@ -146,15 +154,16 @@ sections:
     category: Categoría
   search:
     title: Búsqueda
-    additional: Opciones adicionales para la visualización y funcionalidad del widget
-      de búsqueda
+    additional: Opciones adicionales para la visualización y funcionalidad del 
+      widget de búsqueda
     search_engine: Motor de búsqueda
-    search_engine_subtitle: Elija el motor de búsqueda para usar en la barra de búsqueda
+    search_engine_subtitle: Elija el motor de búsqueda para usar en la barra de 
+      búsqueda
     custom: URL de búsqueda personalizada
     autocomplete: Autocompletado
     autocomplete_provider: Proveedor del autocompletado
-    autocomplete_provider_subtitle: Motor de búsqueda para los resultados desplegables
-      de autocompletar
+    autocomplete_provider_subtitle: Motor de búsqueda para los resultados 
+      desplegables de autocompletar
     voice_search: Búsqueda por voz
     dropdown: Menú desplegable de búsqueda
     focus: Centrarse en la pestaña abierta
@@ -185,7 +194,8 @@ sections:
     custom_settings: Ajustes personalizados
   quicklinks:
     title: Enlaces rápidos
-    additional: Ajustes adicionales para la visualización de enlaces rápidos y funciones
+    additional: Ajustes adicionales para la visualización de enlaces rápidos y 
+      funciones
     open_new: Abrir en una nueva pestaña
     tooltip: Descripción emergente
     text_only: Mostrar solo texto
@@ -210,8 +220,8 @@ sections:
     title: Apariencia
     style:
       title: Estilo del widget
-      description: Elige entre dos estilos, el antiguo (habilitado para usuarios anteriores
-        a la versión 7.0) y nuestro elegante estilo moderno.
+      description: Elige entre dos estilos, el antiguo (habilitado para usuarios
+        anteriores a la versión 7.0) y nuestro elegante estilo moderno.
       legacy: Legado
       new: Nuevo
     theme:
@@ -223,13 +233,16 @@ sections:
       title: Barra de búsqueda
       notes: Notas
       refresh: Botón de recargar
-      refresh_subtitle: Elija qué se actualiza al pulsar el botón de actualización
+      refresh_subtitle: Elija qué se actualiza al pulsar el botón de 
+        actualización
       hover: Solo mostrar al pasar el cursor
-      additional: Modifique el estilo de la barra de navegación y los botones que
-        desea mostrar
+      additional: Modifique el estilo de la barra de navegación y los botones 
+        que desea mostrar
       refresh_options:
         none: Ninguno
         page: Página
+      apps_subtitle: Crea un atajo para tus otras web usadas comúnmente.
+      widgets: Widgets de barras de navegación
     font:
       title: Fuente
       description: Cambiar la tipografía utilizada en Mue
@@ -252,7 +265,9 @@ sections:
       title: Accesibilidad
       description: Ajustes de accesibilidad para Mue
       animations: Animaciones
-      text_shadow: {}
+      text_shadow:
+        old: Antiguo
+        title: Widget de sombreado de texto
       widget_zoom: Zoom del widget
       toast_duration: Duración de la notificación
       milliseconds: milisegundos
@@ -261,34 +276,37 @@ sections:
   advanced:
     title: Avanzado
     offline_mode: Modo sin conexión
-    offline_subtitle: Cuando esté activada, se desactivarán todas las solicitudes
-      a los servicios en línea.
+    offline_subtitle: Cuando esté activada, se desactivarán todas las 
+      solicitudes a los servicios en línea.
     data: Datos
-    data_subtitle: Elija si desea exportar la configuración de Mue a su ordenador,
-      importar un archivo de configuración existente o restablecer los valores predeterminados
+    data_subtitle: Elija si desea exportar la configuración de Mue a su 
+      ordenador, importar un archivo de configuración existente o restablecer 
+      los valores predeterminados
     reset_modal:
       title: ADVERTENCIA
       question: ¿Quieres reiniciar Mue?
-      information: Esto borrará todos los datos. Si desea mantener sus datos y preferencias,
-        por favor, expórtelos primero.
+      information: Esto borrará todos los datos. Si desea mantener sus datos y 
+        preferencias, por favor, expórtelos primero.
       cancel: Cancelar
     customisation: Personalización
     custom_css: CSS personalizado
-    custom_css_subtitle: Personaliza el estilo de Mue con hojas de estilo en cascada
-      (CSS).
+    custom_css_subtitle: Personaliza el estilo de Mue con hojas de estilo en 
+      cascada (CSS).
     custom_js: JS personalizado
     tab_name: Nombre de la pestaña
-    tab_name_subtitle: Cambiar el nombre de la pestaña que aparece en el navegador
+    tab_name_subtitle: Cambiar el nombre de la pestaña que aparece en el 
+      navegador
     timezone:
       title: Zona horaria
-      subtitle: Elija una zona horaria de la lista en lugar de la predeterminada automáticamente
-        de su ordenador
+      subtitle: Elija una zona horaria de la lista en lugar de la predeterminada
+        automáticamente de su ordenador
       automatic: Automático
-    experimental_warning: Por favor, ten en cuenta que el equipo de Mue no puede dar
-      soporte si tienes el modo experimental activado. Por favor, desactívalo primero
-      y comprueba si el problema sigue ocurriendo antes de contactar con el equipo
-      de soporte.
-    preview_data_disabled: {}
+    experimental_warning: Por favor, ten en cuenta que el equipo de Mue no puede
+      dar soporte si tienes el modo experimental activado. Por favor, 
+      desactívalo primero y comprueba si el problema sigue ocurriendo antes de 
+      contactar con el equipo de soporte.
+    preview_data_disabled:
+      title: Configuración de datos deshabilitada
   stats:
     title: Estadísticas
     sections:
@@ -302,10 +320,13 @@ sections:
     usage: Estadísticas de uso
     achievements: Logros
     unlocked: "{count} Desbloqueado"
-    clear_modal: {}
+    clear_modal:
+      question: ¿Quieres borrar tus estadísticas?
+      information: Esto borrará todos los logros y estadísticas de uso.
+    locked: Bloqueado
   experimental:
-    warning: Estos ajustes no han sido totalmente probados/implementados y pueden
-      no funcionar correctamente.
+    warning: Estos ajustes no han sido totalmente probados/implementados y 
+      pueden no funcionar correctamente.
     developer: Desarrollador
   language:
     title: Idioma
@@ -326,8 +347,8 @@ sections:
         description: Ha ocurrido un error
     contact_us: Contacto
     support_mue: Apoya Mue
-    support_subtitle: Como Mue es totalmente gratuito, dependemos de las donaciones
-      para cubrir las facturas del servidor y financiar el desarrollo
+    support_subtitle: Como Mue es totalmente gratuito, dependemos de las 
+      donaciones para cubrir las facturas del servidor y financiar el desarrollo
     support_donate: Donar
     form_button: Formulario
     resources_used:
@@ -337,6 +358,7 @@ sections:
     supporters: Partidarios
     no_supporters: Actualmente no hay partidarios de Mue
     photographers: Fotógrafos
+    curators: Creadores de complementos
 buttons:
   reset: Reiniciar
   import: Importar
