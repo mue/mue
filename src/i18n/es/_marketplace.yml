@@ -9,7 +9,7 @@ collection: Colección
 explore_collection: Explorar la colección
 add_all: Añadir todo a Mue
 collections: Colecciones
-cant_find: ¿No encuentra lo que busca?
+cant_find: ¿No encuentras lo que buscas?
 knowledgebase_one: Visite la
 knowledgebase_two: Base de conocimiento
 knowledgebase_three: para crear la suya propia.
@@ -29,7 +29,7 @@ product:
   explore: Explorar
   buttons:
     addtomue: Añadir a Mue
-    remove: Desinstalar
+    remove: Quitar
     update_addon: Actualizar complemento
     back: Atrás
     report: Informe
@@ -37,8 +37,13 @@ product:
   setting: Ajustes
   value: Valor
   details: Detalles
-  not_in_language: Este add-on no está en tu idioma
+  not_in_language: Este complemento no está en tu idioma
   third_party_api: Este complemento utiliza una API de terceros
+  more_from_curator: Más como esto de {name}
+  created_by: Creado por
+  updated_at: Actualizado el
+  sideload_warning: Este complemento ha sido cargado.
 offline:
   title: Parece que estás desconectado
   description: Por favor conéctate a Internet
+installing: Instalando
