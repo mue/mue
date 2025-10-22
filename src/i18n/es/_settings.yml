@@ -96,6 +96,8 @@ sections:
     no_events: No Eventos
     no_events_description: Agregar algunos eventos
     add_event: Agregar evento
+    day: Día
+    month: Mes
   background:
     title: Fondo
     transition: Transición fade-in
@@ -120,12 +122,14 @@ sections:
         invert: Invertir
         saturate: Saturar
         contrast: Contraste
+        sepia: Sepia
     type:
       title: Tipo
       custom_image: Imagen personalizada
       custom_colour: Color/degradado personalizado
       random_colour: Color aleatorio
       random_gradient: Degradado aleatorio
+      api: API
     unsplash:
       title: Colección(es) Unsplash
       subtitle: Seleccione la colección(es) que desea utilizar para su fondo
@@ -152,6 +156,7 @@ sections:
         high: Calidad alta
         normal: Calidad normal
         datasaver: Ahorro de datos
+        original: Original
       custom_title: Imágenes personalizadas
       custom_description: Selecciona imágenes de tu ordenador
       remove: Eliminar imagen
@@ -181,6 +186,9 @@ sections:
     widget_type: Tipo de widget
     temp_format:
       title: Formato de la temperatura
+      celsius: Celsius
+      fahrenheit: Fahrenheit
+      kelvin: Kelvin
     extra_info:
       title: Información extra
       show_location: Mostrar ubicación
@@ -200,6 +208,7 @@ sections:
       expanded: Ampliado
       custom: Personalizado
     custom_settings: Ajustes personalizados
+    auto: Auto
   quicklinks:
     title: Enlaces rápidos
     additional: Ajustes adicionales para la visualización de enlaces rápidos y 
@@ -238,6 +247,7 @@ sections:
       description: Cambiar el tema de los widgets y formas de Mue
       light: Claro
       dark: Oscuro
+      auto: Auto
     navbar:
       title: Barra de búsqueda
       notes: Notas
@@ -266,10 +276,12 @@ sections:
         semi_bold: Semi negrita
         bold: Negrita
         extra_bold: Extra negrita
+        normal: Normal
       style:
         title: Estilo de la fuente
         italic: Cursiva
         oblique: Oblicua
+        normal: Normal
     accessibility:
       title: Accesibilidad
       description: Ajustes de accesibilidad para Mue
@@ -277,6 +289,8 @@ sections:
       text_shadow:
         old: Antiguo
         title: Widget de sombreado de texto
+        new: Nuevo
+        none: Ninguno
       widget_zoom: Zoom del widget
       toast_duration: Duración de la notificación
       milliseconds: milisegundos
@@ -319,6 +333,9 @@ sections:
       description: Los ajustes de datos están deshabilitados en modo de vista 
         previa. Por favor, salga del modo de vista previa para usar esta 
         función.
+    data_description: Elija si desea exportar la configuración de Mue a su 
+      ordenador, importar un archivo de configuración existente o restablecer 
+      los valores predeterminados
   stats:
     title: Estadísticas
     sections:
@@ -341,6 +358,7 @@ sections:
     warning: Estos ajustes no han sido totalmente probados/implementados y 
       pueden no funcionar correctamente.
     developer: Desarrollador
+    title: Experimental
   language:
     title: Idioma
     quote: Idioma de las citas
