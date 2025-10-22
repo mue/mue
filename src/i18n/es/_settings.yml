@@ -37,6 +37,7 @@ sections:
       title: Reloj en vertical
       change_hour_colour: Cambiar el color de las horas
       change_minute_colour: Cambiar el color de los minutos
+      change_second_colour: Cambiar segundo color de texto
   date:
     title: Fecha
     week_number: Número de la semana
@@ -89,6 +90,12 @@ sections:
     birthday_date: Fecha de cumpleaños
     additional: Ajustes para la visualización del saludo
     custom: Eventos personalizados
+    events_description: Control de eventos en Mue como cumpleaños.
+    enable_events: Mostrar mensajes en días especiales
+    event_name: Nombre del evento
+    no_events: No Eventos
+    no_events_description: Agregar algunos eventos
+    add_event: Agregar evento
   background:
     title: Fondo
     transition: Transición fade-in
@@ -123,6 +130,7 @@ sections:
       title: Colección(es) Unsplash
       subtitle: Seleccione la colección(es) que desea utilizar para su fondo
       id_subtitle: Introduzca una lista separada del coma de IDs de Unsplash
+      id: ID(s) de colección
     source:
       title: Fuente
       subtitle: Seleccione de dónde obtener las imágenes de fondo
@@ -206,6 +214,7 @@ sections:
     options:
       icon: Icono
       text_only: Solo texto
+      metro: Metro
     styling: Estilo de los enlaces rápidos
     styling_description: Personalizar el aspecto de los enlaces rápidos
   message:
@@ -307,6 +316,9 @@ sections:
       contactar con el equipo de soporte.
     preview_data_disabled:
       title: Configuración de datos deshabilitada
+      description: Los ajustes de datos están deshabilitados en modo de vista 
+        previa. Por favor, salga del modo de vista previa para usar esta 
+        función.
   stats:
     title: Estadísticas
     sections:
@@ -324,6 +336,7 @@ sections:
       question: ¿Quieres borrar tus estadísticas?
       information: Esto borrará todos los logros y estadísticas de uso.
     locked: Bloqueado
+    achievement_unlocked: 'Logros Desbloqueado: {nombre}'
   experimental:
     warning: Estos ajustes no han sido totalmente probados/implementados y 
       pueden no funcionar correctamente.
