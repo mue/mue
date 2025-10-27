@@ -96,16 +96,30 @@ class Favourite extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.updateTooltip();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.favourited !== this.state.favourited) {
+      this.updateTooltip();
+    }
+  }
+
+  updateTooltip() {
+    if (this.props.tooltipText) {
+      this.props.tooltipText(
+        localStorage.getItem('favourite')
+          ? variables.getMessage('widgets.quote.unfavourite')
+          : variables.getMessage('widgets.quote.favourite'),
+      );
+    }
+  }
+
   render() {
     if (localStorage.getItem('backgroundType') === 'colour') {
       return null;
     }
-
-    this.props.tooltipText(
-      localStorage.getItem('favourite')
-        ? variables.getMessage('widgets.quote.unfavourite')
-        : variables.getMessage('widgets.quote.favourite'),
-    );
 
     return this.state.favourited;
   }

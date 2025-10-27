@@ -1,9 +1,26 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "baseUrl": "src"
+    "module": "esnext",
+    "target": "esnext",
+    "baseUrl": "src",
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": false,
+    "checkJs": false,
+    "paths": {
+      "@/*": ["./*"],
+      "i18n/*": ["./i18n/*"],
+      "components/*": ["./components/*"],
+      "assets/*": ["./assets/*"],
+      "config/*": ["./config/*"],
+      "features/*": ["./features/*"],
+      "lib/*": ["./lib/*"],
+      "scss/*": ["./scss/*"],
+      "translations/*": ["./i18n/locales/*"],
+      "utils/*": ["./utils/*"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
 }

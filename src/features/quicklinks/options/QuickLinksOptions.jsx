@@ -1,7 +1,23 @@
 import variables from 'config/variables';
 import { PureComponent, createRef } from 'react';
 import { MdAddLink, MdLinkOff, MdOutlineDragIndicator, MdEdit, MdDelete } from 'react-icons/md';
-import { sortableContainer, sortableElement } from '@muetab/react-sortable-hoc';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragOverlay,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { Checkbox, Dropdown } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
@@ -30,13 +46,31 @@ const DragHandle = () => (
   </div>
 );
 
-const SortableItem = sortableElement(({ value, enabled, startEditLink, deleteLink }) => {
+const SortableItem = ({ value, enabled, startEditLink, deleteLink }) => {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: value.key,
+    disabled: !enabled,
+  });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
+
   const getIconUrl = (item) => {
     return item.icon || 'https://icon.horse/icon/' + item.url.replace('https://', '').replace('http://', '');
   };
 
   return (
-    <div className={`quicklink-item ${!enabled ? 'disabled' : ''}`} role="listitem">
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className={`quicklink-item ${!enabled ? 'disabled' : ''}`}
+      role="listitem"
+    >
       <DragHandle />
       <div className="quicklink-icon">
         <img src={getIconUrl(value)} alt={value.name} draggable={false} />
@@ -77,11 +111,38 @@ const SortableItem = sortableElement(({ value, enabled, startEditLink, deleteLin
       </div>
     </div>
   );
-});
+};
 
-const SortableContainer = sortableContainer(({ children }) => (
-  <div className="quicklinks-list" role="list">{children}</div>
-));
+const SortableList = ({ items, enabled, onDragEnd, startEditLink, deleteLink }) => {
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 6,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  );
+
+  return (
+    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+      <SortableContext items={items.map((item) => item.key)} strategy={verticalListSortingStrategy}>
+        <div className="quicklinks-list" role="list">
+          {items.map((item) => (
+            <SortableItem
+              key={item.key}
+              value={item}
+              enabled={enabled}
+              startEditLink={startEditLink}
+              deleteLink={deleteLink}
+            />
+          ))}
+        </div>
+      </SortableContext>
+    </DndContext>
+  );
+};
 
 class QuickLinksOptions extends PureComponent {
   constructor() {
@@ -188,24 +249,28 @@ class QuickLinksOptions extends PureComponent {
     return result;
   };
 
-onSortStart = () => {
-  if (this.quicklinksContainer && this.quicklinksContainer.current) {
-    this.quicklinksContainer.current.classList.add('dragging');
-  }
-};
+  handleDragEnd = (event) => {
+    const { active, over } = event;
+    
+    if (!over || !this.state.enabled) return;
+    if (active.id === over.id) return;
 
-onSortEnd = ({ oldIndex, newIndex }) => {
-  if (!this.state.enabled) return;
-  if (oldIndex === newIndex) return;
-  const newItems = this.arrayMove(this.state.items, oldIndex, newIndex);
+    const oldIndex = this.state.items.findIndex((item) => item.key === active.id);
+    const newIndex = this.state.items.findIndex((item) => item.key === over.id);
 
-  this.silenceEvent = true;
-  this.setState({ items: newItems }, () => {
-    localStorage.setItem('quicklinks', JSON.stringify(newItems));
-    EventBus.emit('refresh', 'quicklinks');
-    setTimeout(() => { this.silenceEvent = false; }, 0);
-  });
-};
+    if (oldIndex === -1 || newIndex === -1) return;
+
+    const newItems = arrayMove(this.state.items, oldIndex, newIndex);
+
+    this.silenceEvent = true;
+    this.setState({ items: newItems }, () => {
+      localStorage.setItem('quicklinks', JSON.stringify(newItems));
+      EventBus.emit('refresh', 'quicklinks');
+      setTimeout(() => {
+        this.silenceEvent = false;
+      }, 0);
+    });
+  };
 
 
   componentDidMount() {
@@ -339,27 +404,13 @@ onSortEnd = ({ oldIndex, newIndex }) => {
           aria-hidden={!enabled}
         >
           <div className={`messagesContainer ${!enabled ? 'disabled' : ''}`}>
-            <SortableContainer
-              onSortStart={this.onSortStart}
-              onSortEnd={this.onSortEnd}
-              lockAxis="y"
-              lockToContainerEdges
-              disableAutoscroll
-              helperClass="sortable-helper"
-              distance={6}
-              disabled={!enabled}
-            >
-              {this.state.items.map((item, index) => (
-                <SortableItem
-                  key={item.key}
-                  index={index}
-                  value={item}
-                  enabled={enabled}
-                  startEditLink={(data) => this.startEditLink(data)}
-                  deleteLink={(key, e) => this.deleteLink(key, e)}
-                />
-              ))}
-            </SortableContainer>
+            <SortableList
+              items={this.state.items}
+              enabled={enabled}
+              onDragEnd={this.handleDragEnd}
+              startEditLink={(data) => this.startEditLink(data)}
+              deleteLink={(key, e) => this.deleteLink(key, e)}
+            />
           </div>
         </div>
 

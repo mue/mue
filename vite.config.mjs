@@ -117,6 +117,7 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     build: {
+      target: 'esnext', // Use modern JavaScript features
       minify: isProd ? 'esbuild' : false,
       sourcemap: !isProd,
       rollupOptions: {
@@ -126,7 +127,9 @@ export default defineConfig(({ command, mode }) => {
               if (id.includes('@mui')) {
                 return 'vendor_mui';
               }
-
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'vendor_react';
+              }
               return 'vendor';
             }
           },

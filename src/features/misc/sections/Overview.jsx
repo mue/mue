@@ -1,6 +1,21 @@
 import { useState, useEffect, useCallback } from 'react';
 import { MdOutlineDragIndicator } from 'react-icons/md';
-import { sortableContainer, sortableElement } from '@muetab/react-sortable-hoc';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { toast } from 'react-toastify';
 
 import variables from 'config/variables';
@@ -22,16 +37,21 @@ const widget_name = {
   message: variables.getMessage('modals.main.settings.sections.message.title'),
 };
 
-const SortableItem = sortableElement(({ value }) => (
-  <li className="sortableItem">
-    {widget_name[value]}
-    <MdOutlineDragIndicator />
-  </li>
-));
+const SortableItem = ({ id }) => {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
-const SortableContainer = sortableContainer(({ children }) => (
-  <ul className="sortableContainer">{children}</ul>
-));
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <li ref={setNodeRef} style={style} {...attributes} {...listeners} className="sortableItem">
+      {widget_name[id]}
+      <MdOutlineDragIndicator />
+    </li>
+  );
+};
 
 const Overview = () => {
   const [items, setItems] = useState(
@@ -55,15 +75,23 @@ const Overview = () => {
   const [newsDone, setNewsDone] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const arrayMove = (array, oldIndex, newIndex) => {
-    const result = Array.from(array);
-    const [removed] = result.splice(oldIndex, 1);
-    result.splice(newIndex, 0, removed);
-    return result;
-  };
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  );
 
-  const onSortEnd = ({ oldIndex, newIndex }) => {
-    setItems((prevItems) => arrayMove(prevItems, oldIndex, newIndex));
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+
+    if (active.id !== over.id) {
+      setItems((items) => {
+        const oldIndex = items.indexOf(active.id);
+        const newIndex = items.indexOf(over.id);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
   };
 
   const reset = () => {
@@ -159,19 +187,18 @@ const Overview = () => {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.order.title')}
           </span>
-          <SortableContainer
-            onSortEnd={onSortEnd}
-            lockAxis="y"
-            lockToContainerEdges
-            disableAutoscroll
-          >
-            {items.map((value, index) => {
-              if (!enabled(value)) {
-                return null;
-              }
-              return <SortableItem key={`item-${value}`} index={index} value={value} />;
-            })}
-          </SortableContainer>
+          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+            <SortableContext items={items} strategy={verticalListSortingStrategy}>
+              <ul className="sortableContainer">
+                {items.map((value) => {
+                  if (!enabled(value)) {
+                    return null;
+                  }
+                  return <SortableItem key={value} id={value} />;
+                })}
+              </ul>
+            </SortableContext>
+          </DndContext>
         </div>
       </div>
     </>

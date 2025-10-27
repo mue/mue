@@ -14,12 +14,65 @@ import { Tooltip } from 'components/Elements';
 
 import Checkbox from '@mui/material/Checkbox';
 import { shift, useFloating } from '@floating-ui/react-dom';
-import { sortableContainer, sortableElement, sortableHandle } from '@muetab/react-sortable-hoc';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import EventBus from 'utils/eventbus';
 
-const SortableItem = sortableElement(({ value }) => <div>{value}</div>);
-const SortableContainer = sortableContainer(({ children }) => <div>{children}</div>);
-const SortableHandle = sortableHandle(() => <MdOutlineDragIndicator />);
+const DragHandle = () => (
+  <div className="todo-drag-handle" {...arguments[0]}>
+    <MdOutlineDragIndicator />
+  </div>
+);
+
+const SortableItem = ({ id, children }) => {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div ref={setNodeRef} style={style}>
+      {typeof children === 'function' ? children({ attributes, listeners }) : children}
+    </div>
+  );
+};
+
+const SortableList = ({ items, onDragEnd, children }) => {
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  );
+
+  return (
+    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+      <SortableContext items={items} strategy={verticalListSortingStrategy}>
+        <div>{children}</div>
+      </SortableContext>
+    </DndContext>
+  );
+};
 
 class Todo extends PureComponent {
   constructor() {
@@ -70,10 +123,17 @@ class Todo extends PureComponent {
     return result;
   }
 
-  onSortEnd = ({ oldIndex, newIndex }) => {
-    this.setState({
-      todo: this.arrayMove(this.state.todo, oldIndex, newIndex),
-    });
+  handleDragEnd = (event) => {
+    const { active, over } = event;
+
+    if (over && active.id !== over.id) {
+      const oldIndex = Number(active.id);
+      const newIndex = Number(over.id);
+
+      this.setState({
+        todo: arrayMove(this.state.todo, oldIndex, newIndex),
+      });
+    }
   };
 
   showTodo() {
@@ -189,31 +249,25 @@ class Todo extends PureComponent {
                     </div>
                   </div>
                 ) : (
-                  <SortableContainer
-                    onSortEnd={this.onSortEnd}
-                    lockAxis="y"
-                    lockToContainerEdges
-                    disableAutoscroll
-                    useDragHandle
+                  <SortableList
+                    items={this.state.todo.map((_, index) => index)}
+                    onDragEnd={this.handleDragEnd}
                   >
-                    {this.state.todo.map((_value, index) => (
-                      <SortableItem
-                        key={`item-${index}`}
-                        index={index}
-                        value={
+                    {this.state.todo.map((todo, index) => (
+                      <SortableItem key={index} id={index}>
+                        {({ attributes, listeners }) => (
                           <div
-                            className={'todoRow' + (this.state.todo[index].done ? ' done' : '')}
-                            key={index}
+                            className={'todoRow' + (todo.done ? ' done' : '')}
                           >
                             <Checkbox
-                              checked={this.state.todo[index].done}
+                              checked={todo.done}
                               onClick={() => this.updateTodo('done', index)}
                             />
                             <TextareaAutosize
                               placeholder={variables.getMessage('widgets.navbar.notes.placeholder')}
-                              value={this.state.todo[index].value}
+                              value={todo.value}
                               onChange={(data) => this.updateTodo('set', index, data)}
-                              readOnly={this.state.todo[index].done}
+                              readOnly={todo.done}
                             />
                             <Tooltip
                               title={variables.getMessage(
@@ -222,12 +276,12 @@ class Todo extends PureComponent {
                             >
                               <MdDelete onClick={() => this.updateTodo('remove', index)} />
                             </Tooltip>
-                            <SortableHandle />
+                            <DragHandle {...attributes} {...listeners} />
                           </div>
-                        }
-                      />
+                        )}
+                      </SortableItem>
                     ))}
-                  </SortableContainer>
+                  </SortableList>
                 )}
               </div>
             </div>
