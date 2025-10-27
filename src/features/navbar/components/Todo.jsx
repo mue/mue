@@ -41,10 +41,7 @@ const DragHandle = () => (
 const SortableItem = ({ id, children }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
+  const style = { transform: CSS.Transform.toString(transform), transition };
 
   return (
     <div ref={setNodeRef} style={style}>
@@ -55,14 +52,8 @@ const SortableItem = ({ id, children }) => {
 
 const SortableList = ({ items, onDragEnd, children }) => {
   const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 5,
-      },
-    }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
 
   return (
@@ -130,22 +121,16 @@ class Todo extends PureComponent {
       const oldIndex = Number(active.id);
       const newIndex = Number(over.id);
 
-      this.setState({
-        todo: arrayMove(this.state.todo, oldIndex, newIndex),
-      });
+      this.setState({ todo: arrayMove(this.state.todo, oldIndex, newIndex) });
     }
   };
 
   showTodo() {
-    this.setState({
-      showTodo: true,
-    });
+    this.setState({ showTodo: true });
   }
 
   hideTodo() {
-    this.setState({
-      showTodo: localStorage.getItem('todoPinned') === 'true',
-    });
+    this.setState({ showTodo: localStorage.getItem('todoPinned') === 'true' });
   }
 
   /**
@@ -158,19 +143,13 @@ class Todo extends PureComponent {
     const todo = this.state.todo;
     switch (action) {
       case 'add':
-        todo.push({
-          value: '',
-          done: false,
-        });
+        todo.push({ value: '', done: false });
         break;
       case 'remove':
         todo.splice(index, 1);
         break;
       case 'set':
-        todo[index] = {
-          value: data.target.value,
-          done: todo[index].done,
-        };
+        todo[index] = { value: data.target.value, done: todo[index].done };
         break;
       case 'done':
         todo[index].done = !todo[index].done;
@@ -180,9 +159,7 @@ class Todo extends PureComponent {
     }
 
     localStorage.setItem('todo', JSON.stringify(todo));
-    this.setState({
-      todo,
-    });
+    this.setState({ todo });
     this.forceUpdate();
   }
 
@@ -190,9 +167,7 @@ class Todo extends PureComponent {
     variables.stats.postEvent('feature', 'Todo pin');
     const todoPinned = localStorage.getItem('todoPinned') === 'true';
     localStorage.setItem('todoPinned', !todoPinned);
-    this.setState({
-      showTodo: !todoPinned,
-    });
+    this.setState({ showTodo: !todoPinned });
   }
 
   render() {
@@ -256,9 +231,7 @@ class Todo extends PureComponent {
                     {this.state.todo.map((todo, index) => (
                       <SortableItem key={index} id={index}>
                         {({ attributes, listeners }) => (
-                          <div
-                            className={'todoRow' + (todo.done ? ' done' : '')}
-                          >
+                          <div className={'todoRow' + (todo.done ? ' done' : '')}>
                             <Checkbox
                               checked={todo.done}
                               onClick={() => this.updateTodo('done', index)}
@@ -298,9 +271,7 @@ function TodoWrapper() {
   const { x, y, refs, strategy } = useFloating({
     placement: 'bottom',
     middleware: [shift()],
-    elements: {
-      reference,
-    },
+    elements: { reference },
   });
 
   return (
