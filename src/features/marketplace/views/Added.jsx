@@ -193,7 +193,9 @@ export default class Added extends PureComponent {
       this.state.installed.forEach((item) => {
         uninstall(item.type, item.name);
       });
-    } catch (e) {}
+    } catch {
+      // Ignore errors during bulk uninstall
+    }
 
     localStorage.setItem('installed', JSON.stringify([]));
 

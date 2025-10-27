@@ -32,8 +32,8 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import EventBus from 'utils/eventbus';
 
-const DragHandle = () => (
-  <div className="todo-drag-handle" {...arguments[0]}>
+const DragHandle = (props) => (
+  <div className="todo-drag-handle" {...props}>
     <MdOutlineDragIndicator />
   </div>
 );
@@ -88,7 +88,9 @@ class Todo extends PureComponent {
         this.forceUpdate();
         try {
           this.setZoom();
-        } catch (e) {}
+        } catch {
+          // Ignore errors
+        }
       }
     });
 

@@ -310,7 +310,11 @@ class QuickLinksOptions extends PureComponent {
   if (this.handleRefresh) {
     EventBus.off('refresh', this.handleRefresh);
   } else {
-    try { EventBus.off('refresh'); } catch (e) {}
+    try {
+      EventBus.off('refresh');
+    } catch {
+      // Ignore errors
+    }
   }
 }
   render() {

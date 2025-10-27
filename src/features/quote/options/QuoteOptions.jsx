@@ -188,7 +188,7 @@ class QuoteOptions extends PureComponent {
           {this.state.customQuote.length !== 0 ? (
             <div className="messagesContainer">
               {this.state.customQuote.map((_url, index) => (
-                <div className="messageMap">
+                <div className="messageMap" key={index}>
                   <div className="icon">
                     <MdOutlineFormatQuote />
                   </div>

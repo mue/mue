@@ -50,7 +50,7 @@ export default class Clock extends PureComponent {
             time: now,
           });
           break;
-        default:
+        default: {
           // Default clock
           let time,
             sec = '';
@@ -112,6 +112,7 @@ export default class Clock extends PureComponent {
             });
           }
           break;
+        }
       }
 
       this.startTime();

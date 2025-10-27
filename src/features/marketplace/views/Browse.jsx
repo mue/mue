@@ -224,7 +224,7 @@ class Marketplace extends PureComponent {
     }
 
     switch (value) {
-      case 'a-z':
+      case 'a-z': {
         // sort by name key alphabetically
         const sorted = items.sort((a, b) => {
           if (a.display_name < b.display_name) {
@@ -237,6 +237,7 @@ class Marketplace extends PureComponent {
         });
         items = sorted;
         break;
+      }
       case 'z-a':
         items.sort();
         items.reverse();
@@ -427,6 +428,7 @@ class Marketplace extends PureComponent {
           this.state.items.map((item) =>
             !item.news ? (
               <div
+                key={item.name}
                 className="collection"
                 style={
                   item.news

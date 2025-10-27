@@ -24,7 +24,6 @@ function CustomURLModal({ modalClose, urlError, modalCloseOnly }) {
         type="text"
         value={url}
         onChange={(e) => setURL(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
-        varient="outlined"
       />
       <span className="dropdown-error">{urlError}</span>
       <div className="resetFooter">

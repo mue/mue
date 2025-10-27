@@ -68,7 +68,7 @@ class About extends PureComponent {
           })
         ).json()
       ).data;
-    } catch (e) {
+    } catch {
       if (this.controller.signal.aborted === true) {
         return;
       }
@@ -323,7 +323,9 @@ class About extends PureComponent {
             {this.state.sponsors.map(({ handle, avatar }) => {
               if (handle === 'empty') {
                 return (
-                  <p>{variables.getMessage('modals.main.settings.sections.about.no_supporters')}</p>
+                  <p key="empty">
+                    {variables.getMessage('modals.main.settings.sections.about.no_supporters')}
+                  </p>
                 );
               }
 

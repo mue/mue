@@ -4,7 +4,7 @@ import { MdPerson } from 'react-icons/md';
 function QuoteSkeleton() {
   return (
     <div className="quoteSkeleton">
-      <span className="subtitle">"Never gonna give you up"</span>
+      <span className="subtitle">&ldquo;Never gonna give you up&rdquo;</span>
       <div className="skeletonAuthor">
         <div>
           <MdPerson />

@@ -9,7 +9,7 @@ function showReminder() {
 export function uninstall(type, name) {
   let installedContents, packContents;
   switch (type) {
-    case 'settings':
+    case 'settings': {
       const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
       localStorage.clear();
       oldSettings.forEach((item) => {
@@ -17,6 +17,7 @@ export function uninstall(type, name) {
       });
       showReminder();
       break;
+    }
 
     case 'quotes':
       installedContents = JSON.parse(localStorage.getItem('quote_packs'));

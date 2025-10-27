@@ -175,7 +175,7 @@ const Overview = () => {
                   return null;
                 }
                 return (
-                  <div className="previewItem" key={`item-${value}`} index={index}>
+                  <div className="previewItem" key={`item-${value}`}>
                     {getTab(value)}
                   </div>
                 );

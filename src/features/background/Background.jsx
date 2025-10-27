@@ -98,7 +98,7 @@ export default class Background extends PureComponent {
 
     switch (backgroundAPI) {
       case 'unsplash':
-      case 'pexels':
+      case 'pexels': {
         const collection = localStorage.getItem('unsplashCollections');
         if (collection) {
           requestURL = `${variables.constants.API_URL}/images/unsplash?collections=${collection}&quality=${apiQuality}`;
@@ -106,6 +106,7 @@ export default class Background extends PureComponent {
           requestURL = `${variables.constants.API_URL}/images/unsplash?categories=${apiCategories || ''}&quality=${apiQuality}`;
         }
         break;
+      }
       // Defaults to Mue
       default:
         requestURL = `${variables.constants.API_URL}/images/random?categories=${apiCategories || ''}&quality=${apiQuality}&excludes=${backgroundExclude}`;
@@ -115,7 +116,7 @@ export default class Background extends PureComponent {
     const accept = 'application/json, ' + ((await supportsAVIF()) ? 'image/avif' : 'image/webp');
     try {
       data = await (await fetch(requestURL, { headers: { accept } })).json();
-    } catch (e) {
+    } catch {
       // if requesting to the API fails, we get an offline image
       this.setState(getOfflineImage('api'));
       return null;
@@ -188,7 +189,7 @@ export default class Background extends PureComponent {
 
     const type = localStorage.getItem('backgroundType');
     switch (type) {
-      case 'api':
+      case 'api': {
         if (offline) {
           return this.setState(getOfflineImage('api'));
         }
@@ -205,8 +206,9 @@ export default class Background extends PureComponent {
           ); // pre-fetch data about the next image
         }
         break;
+      }
 
-      case 'colour':
+      case 'colour': {
         let customBackgroundColour = localStorage.getItem('customBackgroundColour');
         // check if its a json object
         if (customBackgroundColour && customBackgroundColour.startsWith('{')) {
@@ -215,7 +217,7 @@ export default class Background extends PureComponent {
           try {
             localStorage.setItem('customBackgroundColour', customBackground.gradient[0].colour);
             customBackgroundColour = customBackground.gradient.colour;
-          } catch (e) {
+          } catch {
             // give up
             customBackgroundColour = 'rgb(0,0,0)';
           }
@@ -225,17 +227,18 @@ export default class Background extends PureComponent {
           style: `background: ${customBackgroundColour || 'rgb(0,0,0)'}`,
         });
         break;
+      }
 
       case 'random_colour':
       case 'random_gradient':
         this.setState(randomColourStyleBuilder(type));
         break;
-      case 'custom':
+      case 'custom': {
         let customBackground = [];
         const customSaved = localStorage.getItem('customBackground');
         try {
           customBackground = JSON.parse(customSaved);
-        } catch (e) {
+        } catch {
           if (customSaved !== '') {
             // move to new format
             customBackground = [customSaved];
@@ -270,8 +273,9 @@ export default class Background extends PureComponent {
           localStorage.setItem('currentBackground', JSON.stringify(object));
         }
         break;
+      }
 
-      case 'photo_pack':
+      case 'photo_pack': {
         if (offline) {
           return this.setState(getOfflineImage('photo_pack'));
         }
@@ -347,6 +351,7 @@ export default class Background extends PureComponent {
           }
         }
         break;
+      }
       default:
         break;
     }

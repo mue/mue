@@ -41,7 +41,7 @@ class Favourite extends PureComponent {
             }),
           );
           break;
-        default:
+        default: {
           let url = document
             .getElementById('backgroundImage')
             .style.backgroundImage.replace('url("', '')
@@ -53,9 +53,11 @@ class Favourite extends PureComponent {
 
           if (url.startsWith('blob:')) {
             const reader = new FileReader();
-            url = await new Promise(async (resolve) => {
+            url = await new Promise((resolve) => {
               reader.onloadend = () => resolve(reader.result);
-              reader.readAsDataURL(await (await fetch(url)).blob());
+              fetch(url)
+                .then((res) => res.blob())
+                .then((blob) => reader.readAsDataURL(blob));
             });
           }
 
@@ -86,6 +88,8 @@ class Favourite extends PureComponent {
               }),
             );
           }
+          break;
+        }
       }
 
       this.setState({

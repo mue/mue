@@ -32,7 +32,9 @@ class Notes extends PureComponent {
         this.forceUpdate();
         try {
           this.setZoom();
-        } catch (e) {}
+        } catch {
+          // Ignore errors
+        }
       }
     });
 

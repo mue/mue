@@ -12,7 +12,7 @@ function showReminder() {
 
 export function install(type, input, sideload, collection) {
   switch (type) {
-    case 'settings':
+    case 'settings': {
       localStorage.removeItem('backup_settings');
 
       const oldSettings = [];
@@ -29,8 +29,9 @@ export function install(type, input, sideload, collection) {
       });
       showReminder();
       break;
+    }
 
-    case 'photos':
+    case 'photos': {
       const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
       input.photos.forEach((photo) => {
         currentPhotos.push(photo);
@@ -49,8 +50,9 @@ export function install(type, input, sideload, collection) {
         window.location.reload();
       }
       break;
+    }
 
-    case 'quotes':
+    case 'quotes': {
       const currentQuotes = JSON.parse(localStorage.getItem('quote_packs')) || [];
       input.quotes.forEach((quote) => {
         currentQuotes.push(quote);
@@ -64,6 +66,7 @@ export function install(type, input, sideload, collection) {
       localStorage.removeItem('quotechange');
       EventBus.emit('refresh', 'quote');
       break;
+    }
 
     default:
       break;

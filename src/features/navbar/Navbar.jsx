@@ -69,7 +69,9 @@ class Navbar extends PureComponent {
         try {
           this.updateRefreshText();
           this.setZoom();
-        } catch (e) {}
+        } catch {
+          // Ignore errors
+        }
       }
     });
 

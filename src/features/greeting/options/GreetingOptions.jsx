@@ -24,9 +24,10 @@ const GreetingOptions = () => {
   );
   const [events, setEvents] = useState(false);
 
-  const [birthday, setBirthday] = useState(
-    new Date(localStorage.getItem('birthday')) || new Date(),
-  );
+  const [birthday, setBirthday] = useState(() => {
+    const stored = localStorage.getItem('birthday');
+    return stored ? new Date(stored) : new Date();
+  });
 
   const [enableBirthday, setEnableBirthday] = useState(
     localStorage.getItem('birthdayenabled') === 'true' ? 'preferences' : 'preferencesInactive',

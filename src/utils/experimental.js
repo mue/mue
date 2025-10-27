@@ -10,17 +10,20 @@ export default function ExperimentalInit() {
       const code = e.which || e.keyCode;
 
       switch (code) {
-        case 222:
+        case 222: {
           const timeout = localStorage.getItem('debugtimeout');
 
           if (timeout !== '0') {
             setTimeout(() => {
+              // eslint-disable-next-line no-debugger
               debugger;
             }, timeout);
           } else {
+            // eslint-disable-next-line no-debugger
             debugger;
           }
           break;
+        }
         default:
           break;
       }

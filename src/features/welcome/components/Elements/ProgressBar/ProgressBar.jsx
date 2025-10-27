@@ -10,6 +10,8 @@ const Step = memo(({ isActive, index, onClick }) => {
   );
 });
 
+Step.displayName = 'Step';
+
 function ProgressBar({ numberOfTabs, currentTab, switchTab }) {
   return (
     <div className="progressbar">

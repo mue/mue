@@ -82,7 +82,7 @@ class Quote extends PureComponent {
     this.quote = createRef();
     this.quotediv = createRef();
     this.quoteauthor = createRef();
-    this.authorDetails = (localStorage.getItem('authorDetails') === 'true' || true) ? true : false;
+    this.authorDetails = localStorage.getItem('authorDetails') === 'true';
   }
 
   useFavourite() {
@@ -208,11 +208,11 @@ class Quote extends PureComponent {
     }
 
     switch (this.state.type) {
-      case 'custom':
+      case 'custom': {
         let customQuote;
         try {
           customQuote = JSON.parse(localStorage.getItem('customQuote'));
-        } catch (e) {
+        } catch {
           // move to new format
           customQuote = [
             {
@@ -242,7 +242,8 @@ class Quote extends PureComponent {
           });
         }
         break;
-      case 'quote_pack':
+      }
+      case 'quote_pack': {
         if (offline) {
           return this.doOffline();
         }
@@ -268,9 +269,11 @@ class Quote extends PureComponent {
             authorimg: data.fallbackauthorimg,
           });
         } else {
-          return this.doOffline();
+          this.doOffline();
         }
-      case 'api':
+        break;
+      }
+      case 'api': {
         if (offline) {
           return this.doOffline();
         }
@@ -307,11 +310,12 @@ class Quote extends PureComponent {
           } else {
             this.doOffline();
           }
-        } catch (e) {
+        } catch {
           // ...and if that fails we load one locally
           this.doOffline();
         }
         break;
+      }
       default:
         break;
     }
