@@ -40,7 +40,7 @@
     "@eartharoid/deep-merge": "^0.0.2",
     "@vitejs/plugin-react-swc": "^4.1.0",
     "adm-zip": "0.5.16",
-    "eslint": "^8.57.1",
+    "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-config-react-app": "^7.0.1",
     "husky": "^9.1.7",
