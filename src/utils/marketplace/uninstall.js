@@ -66,7 +66,7 @@ export function uninstall(type, name) {
       break;
   }
 
-  let installed = JSON.parse(localStorage.getItem('installed'));
+  const installed = JSON.parse(localStorage.getItem('installed'));
   for (let i = 0; i < installed.length; i++) {
     if (installed[i].name === name) {
       installed.splice(i, 1);

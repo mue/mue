@@ -240,7 +240,7 @@ function PhotoInformation({ info, url, api }) {
           <Download />
           <span>{info.downloads.toLocaleString()}</span>
         </div>
-        {!!info.likes ? (
+        {info.likes ? (
           <div title={variables.getMessage('widgets.background.likes')}>
             <MdFavourite />
             <span>{info.likes.toLocaleString()}</span>

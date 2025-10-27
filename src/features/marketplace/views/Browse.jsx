@@ -197,7 +197,7 @@ class Marketplace extends PureComponent {
       const installed = JSON.parse(localStorage.getItem('installed'));
       for (const item of this.state.items) {
         if (installed.some((i) => i.name === item.display_name)) continue; // don't install if already installed
-        let { data } = await (
+        const { data } = await (
           await fetch(`${variables.constants.API_URL}/marketplace/item/${item.type}/${item.name}`, {
             signal: this.controller.signal,
           })

@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-expressions */
+ 
 // todo: rewrite this mess
 import variables from 'config/variables';
 import { PureComponent } from 'react';
@@ -42,7 +42,7 @@ export default class Background extends PureComponent {
     const backgroundImage = document.getElementById('backgroundImage');
 
     if (this.state.url !== '') {
-      let url = this.state.url;
+      const url = this.state.url;
       const photoInformation = document.querySelector('.photoInformation');
 
       // just set the background
@@ -194,7 +194,7 @@ export default class Background extends PureComponent {
         }
 
         // API background
-        let data = JSON.parse(localStorage.getItem('nextImage')) || (await this.getAPIImageData());
+        const data = JSON.parse(localStorage.getItem('nextImage')) || (await this.getAPIImageData());
         localStorage.setItem('nextImage', null);
         if (data) {
           this.setState(data);

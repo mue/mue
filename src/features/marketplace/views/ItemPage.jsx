@@ -83,7 +83,7 @@ class ItemPage extends PureComponent {
   render() {
     const locale = localStorage.getItem('language');
     const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
-    let languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
+    const languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
     const convertedType = (() => {
       const map = {
         photos: 'photo_packs',

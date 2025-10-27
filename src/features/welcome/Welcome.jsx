@@ -136,7 +136,7 @@ function WelcomeModal({ modalClose, modalSkip }) {
   };
 
   // Current tab component
-  let CurrentTab = tabComponents[currentTab] || <Intro />;
+  const CurrentTab = tabComponents[currentTab] || <Intro />;
 
   // Render the WelcomeModal component
   return (

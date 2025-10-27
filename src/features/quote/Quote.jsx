@@ -196,7 +196,7 @@ class Quote extends PureComponent {
 
     const favouriteQuote = localStorage.getItem('favouriteQuote');
     if (favouriteQuote) {
-      let author = favouriteQuote.split(' - ')[1];
+      const author = favouriteQuote.split(' - ')[1];
       const authorimgdata = await this.getAuthorImg(author);
       return this.setState({
         quote: favouriteQuote.split(' - ')[0],
@@ -298,7 +298,7 @@ class Quote extends PureComponent {
 
         // First we try and get a quote from the API...
         try {
-          let data = JSON.parse(localStorage.getItem('nextQuote')) || (await getAPIQuoteData());
+          const data = JSON.parse(localStorage.getItem('nextQuote')) || (await getAPIQuoteData());
           localStorage.setItem('nextQuote', null);
           if (data) {
             this.setState(data);

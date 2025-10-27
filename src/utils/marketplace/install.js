@@ -15,7 +15,7 @@ export function install(type, input, sideload, collection) {
     case 'settings':
       localStorage.removeItem('backup_settings');
 
-      let oldSettings = [];
+      const oldSettings = [];
       Object.keys(localStorage).forEach((key) => {
         oldSettings.push({
           name: key,

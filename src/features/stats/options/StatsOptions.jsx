@@ -1,4 +1,4 @@
-/* eslint-disable array-callback-return */
+ 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { MdShowChart, MdRestartAlt, MdDownload, MdAccessTime, MdLock } from 'react-icons/md';
 import { FaTrophy } from 'react-icons/fa';

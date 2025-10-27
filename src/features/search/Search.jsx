@@ -43,7 +43,7 @@ function Search() {
     };
   }, []);
 
-  let micIcon = createRef();
+  const micIcon = createRef();
 
   const customText = variables
     .getMessage('modals.main.settings.sections.search.custom')

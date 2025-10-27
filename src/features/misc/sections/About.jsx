@@ -352,7 +352,7 @@ class About extends PureComponent {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.about.photographers')}
           </span>
-          {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
+          {this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
             {this.state.photographers.map(({ name, count }) => (
               <li key={name} className="subtitle-photographers">
@@ -374,7 +374,7 @@ class About extends PureComponent {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.about.curators')}
           </span>
-          {!!this.state.loading ? <p>{this.state.loading}</p> : <></>}
+          {this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
             {this.state.curators.map((name) => (
               <li key={name} className="subtitle-photographers">

@@ -131,7 +131,7 @@ export default class Added extends PureComponent {
   }
 
   sortAddons(value, sendEvent) {
-    let installed = JSON.parse(localStorage.getItem('installed'));
+    const installed = JSON.parse(localStorage.getItem('installed'));
     switch (value) {
       case 'newest':
         installed.reverse();

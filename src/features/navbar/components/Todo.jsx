@@ -155,7 +155,7 @@ class Todo extends PureComponent {
    * @param {Object} data The data to use for the action.
    */
   updateTodo(action, index, data) {
-    let todo = this.state.todo;
+    const todo = this.state.todo;
     switch (action) {
       case 'add':
         todo.push({
