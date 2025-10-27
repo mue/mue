@@ -1,6 +1,6 @@
 /* these are overrides for the material ui default styles */
 
-@import 'scss/variables';
+@use 'scss/variables' as *;
 
 .MuiCheckbox-colorPrimary.Mui-checked,
 .MuiSwitch-colorPrimary.Mui-checked,

@@ -1,7 +1,8 @@
-@import 'notes';
-@import 'todo';
-@import 'apps';
-@import 'scss/variables';
+@use 'sass:map';
+@use 'notes' as *;
+@use 'todo' as *;
+@use 'apps' as *;
+@use 'scss/variables' as *;
 
 .navbar {
   display: flex;
@@ -29,7 +30,7 @@
     }
 
     /* &:hover {
-      color: map-get($theme-colours, 'main-text-color');
+      color: map.get($theme-colours, 'main-text-color');
       transform: translateZ(0);
       transform: scale(1.3);
     } */

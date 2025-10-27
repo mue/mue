@@ -1,5 +1,5 @@
-@import '../../scss/index';
-@import 'scss/variables';
+@use '../../scss/index' as *;
+@use 'scss/variables' as *;
 
 .welcomemodal {
   @include themed {

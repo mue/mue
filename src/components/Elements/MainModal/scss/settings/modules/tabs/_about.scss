@@ -1,3 +1,5 @@
+@use 'scss/variables' as *;
+
 .aboutLink {
   &:hover {
     opacity: 0.8;

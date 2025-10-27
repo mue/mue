@@ -1,9 +1,9 @@
-@import 'scss/variables';
-@import 'modules/material-ui';
-@import 'modules/tabs/about';
-@import 'modules/tabs/changelog';
-@import 'modules/tabs/order';
-@import 'modules/tabs/stats';
+@use 'scss/variables' as *;
+@use 'modules/material-ui' as *;
+@use 'modules/tabs/about' as *;
+@use 'modules/tabs/changelog' as *;
+@use 'modules/tabs/order' as *;
+@use 'modules/tabs/stats' as *;
 
 input {
   /* colour picker */

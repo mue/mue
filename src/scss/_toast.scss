@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as *;
 
 .Toastify__toast-body {
   font-size: 16px !important;

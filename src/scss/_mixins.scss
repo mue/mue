@@ -1,10 +1,12 @@
+@use 'sass:list';
+
 // Source https://joshbroton.com/quick-fix-sass-mixins-for-css-keyframe-animations/
 @mixin animation($animate...) {
-  $max: length($animate);
+  $max: list.length($animate);
   $animations: '';
 
   @for $i from 1 through $max {
-    $animations: #{$animations + nth($animate, $i)};
+    $animations: #{$animations + list.nth($animate, $i)};
 
     @if $i < $max {
       $animations: #{$animations + ', '};
@@ -26,29 +28,4 @@
   @keyframes #{$animationName} {
     @content;
   }
-}
-
-@mixin themed() {
-  @each $theme, $map in $themes {
-    .#{$theme} & {
-      $theme-map: () !global;
-
-      @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), '#{$key}');
-        $theme-map: map-merge(
-          $theme-map,
-          (
-            $key: $value,
-          )
-        ) !global;
-      }
-      @content;
-
-      $theme-map: null !global;
-    }
-  }
-}
-
-@function t($key) {
-  @return map-get($theme-map, $key);
 }

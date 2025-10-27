@@ -1,4 +1,4 @@
-@use 'scss/variables';
+@use 'scss/variables' as *;
 
 .suggestions {
   @extend %basic;

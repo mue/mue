@@ -1,5 +1,5 @@
 //noinspection CssUnknownTarget
-@import 'scss/variables';
+@use 'scss/variables' as *;
 
 .weather {
   @extend %basic;

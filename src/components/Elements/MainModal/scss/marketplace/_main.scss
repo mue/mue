@@ -1,8 +1,8 @@
 // this file is too long
-@import 'modules/item';
-@import 'modules/buttons';
-@import 'modules/lightbox';
-@import 'scss/variables';
+@use 'modules/item' as *;
+@use 'modules/buttons' as *;
+@use 'modules/lightbox' as *;
+@use 'scss/variables' as *;
 
 .creatorItems {
   .item {

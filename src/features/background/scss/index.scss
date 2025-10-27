@@ -1,5 +1,5 @@
-@import 'photoinformation';
-@import 'scss/mixins';
+@use 'photoinformation' as *;
+@use 'scss/mixins' as *;
 
 #backgroundImage {
   height: 100vh;

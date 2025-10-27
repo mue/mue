@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'toast';
+@use 'variables' as *;
+@use 'toast' as *;
 
 body {
   background: #000;

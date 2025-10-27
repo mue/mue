@@ -1,4 +1,4 @@
-@import 'scss/variables';
+@use 'scss/variables' as *;
 
 ::-webkit-scrollbar {
   width: 6px;

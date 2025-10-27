@@ -1,4 +1,4 @@
-@import 'scss/variables';
+@use 'scss/variables' as *;
 
 .quicklinks {
   @include basicIconButton(10px, 14px, ui);

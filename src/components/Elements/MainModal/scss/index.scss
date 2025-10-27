@@ -1,11 +1,13 @@
-@import 'scss/variables';
-@import 'modules/sidebar';
-@import 'modules/navbar';
-@import 'modules/modalTabContent';
-@import 'modules/links';
-@import 'modules/scrollbars';
-@import 'settings/main';
-@import 'marketplace/main';
+@use 'sass:map';
+@use 'scss/variables' as *;
+@use 'modules/sidebar' as *;
+@use 'modules/navbar' as *;
+@use 'modules/modalTabContent' as *;
+@use 'modules/links' as *;
+@use 'modules/scrollbars' as *;
+@use 'settings/main' as *;
+@use 'marketplace/main' as *;
+// Fixed: Added sass:map module
 
 .Overlay {
   position: fixed;
@@ -26,7 +28,7 @@
   opacity: 1;
   z-index: -2;
   transition-timing-function: ease-in;
-  border-radius: map-get($modal, 'border-radius');
+  border-radius: map.get($modal, 'border-radius');
   user-select: none;
   overflow-y: auto;
   transform: scale(0);

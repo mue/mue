@@ -1,7 +1,7 @@
 // since alex will no doubtedly be looking at this file often
 // here's a reminder: please add a new line when doing nested scss, otherwise it is messy!
 @use 'sass:map';
-@import 'mixins';
+@use 'mixins' as *;
 
 $background: 'background';
 $boxShadow: 'boxShadow';
@@ -89,15 +89,42 @@ $themes: (
   ),
 );
 
+$theme-map: null;
+
+@mixin themed() {
+  @each $theme, $themeMap in $themes {
+    .#{$theme} & {
+      $theme-map: () !global;
+
+      @each $key, $submap in $themeMap {
+        $value: map.get(map.get($themes, $theme), '#{$key}');
+        $theme-map: map.merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map.get($theme-map, $key);
+}
+
 %basic {
+  backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
+
   @include themed {
     background: t($background);
     border-radius: t($borderRadius);
     color: t($color);
     box-shadow: t($boxShadow);
   }
-
-  backdrop-filter: blur(map.get($ui-elements, 'backgroundBlur'));
 
   .title {
     font-size: 18px;
