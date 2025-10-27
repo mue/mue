@@ -62,18 +62,13 @@ export default class Added extends PureComponent {
     }
 
     if (failedReason !== '' && this.state.showFailed === false) {
-      return this.setState({
-        failedReason,
-        showFailed: true,
-      });
+      return this.setState({ failedReason, showFailed: true });
     }
 
     install(input.type, input, true, false);
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
-    this.setState({
-      installed: JSON.parse(localStorage.getItem('installed')),
-    });
+    this.setState({ installed: JSON.parse(localStorage.getItem('installed')) });
   }
 
   getSideloadButton() {
@@ -91,9 +86,7 @@ export default class Added extends PureComponent {
   toggle(type, data) {
     if (type === 'item') {
       const installed = JSON.parse(localStorage.getItem('installed'));
-      const info = {
-        data: installed.find((i) => i.name === data.name),
-      };
+      const info = { data: installed.find((i) => i.name === data.name) };
 
       this.setState({
         item: {
@@ -110,9 +103,7 @@ export default class Added extends PureComponent {
       });
       variables.stats.postEvent('marketplace', 'ItemPage viewed');
     } else {
-      this.setState({
-        item: {},
-      });
+      this.setState({ item: {} });
     }
   }
 
@@ -157,9 +148,7 @@ export default class Added extends PureComponent {
         break;
     }
 
-    this.setState({
-      installed,
-    });
+    this.setState({ installed });
 
     if (sendEvent) {
       variables.stats.postEvent('marketplace', 'Sort');
@@ -178,11 +167,7 @@ export default class Added extends PureComponent {
     });
 
     if (updates > 0) {
-      toast(
-        variables.getMessage('modals.main.addons.updates_available', {
-          amount: updates,
-        }),
-      );
+      toast(variables.getMessage('modals.main.addons.updates_available', { amount: updates }));
     } else {
       toast(variables.getMessage('modals.main.addons.no_updates'));
     }
@@ -201,9 +186,7 @@ export default class Added extends PureComponent {
 
     toast(variables.getMessage('toasts.uninstalled_all'));
 
-    this.setState({
-      installed: [],
-    });
+    this.setState({ installed: [] });
 
     this.forceUpdate();
   }
@@ -301,22 +284,10 @@ export default class Added extends PureComponent {
           name="sortAddons"
           onChange={(value) => this.sortAddons(value)}
           items={[
-            {
-              value: 'newest',
-              text: variables.getMessage('modals.main.addons.sort.newest'),
-            },
-            {
-              value: 'oldest',
-              text: variables.getMessage('modals.main.addons.sort.oldest'),
-            },
-            {
-              value: 'a-z',
-              text: variables.getMessage('modals.main.addons.sort.a_z'),
-            },
-            {
-              value: 'z-a',
-              text: variables.getMessage('modals.main.addons.sort.z_a'),
-            },
+            { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
+            { value: 'oldest', text: variables.getMessage('modals.main.addons.sort.oldest') },
+            { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
+            { value: 'z-a', text: variables.getMessage('modals.main.addons.sort.z_a') },
           ]}
         />
         <Items

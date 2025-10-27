@@ -47,30 +47,22 @@ class Notes extends PureComponent {
 
   setNotes = (e) => {
     localStorage.setItem('notes', e.target.value);
-    this.setState({
-      notes: e.target.value,
-    });
+    this.setState({ notes: e.target.value });
   };
 
   showNotes() {
-    this.setState({
-      showNotes: true,
-    });
+    this.setState({ showNotes: true });
   }
 
   hideNotes() {
-    this.setState({
-      showNotes: localStorage.getItem('notesPinned') === 'true',
-    });
+    this.setState({ showNotes: localStorage.getItem('notesPinned') === 'true' });
   }
 
   pin() {
     variables.stats.postEvent('feature', 'Notes pin');
     const notesPinned = localStorage.getItem('notesPinned') === 'true';
     localStorage.setItem('notesPinned', !notesPinned);
-    this.setState({
-      showNotes: !notesPinned,
-    });
+    this.setState({ showNotes: !notesPinned });
   }
 
   copy() {
@@ -156,9 +148,7 @@ function NotesWrapper() {
   const { x, y, refs, strategy } = useFloating({
     placement: 'bottom',
     middleware: [shift()],
-    elements: {
-      reference,
-    },
+    elements: { reference },
   });
 
   return (

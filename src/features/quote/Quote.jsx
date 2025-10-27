@@ -122,10 +122,7 @@ class Quote extends PureComponent {
 
   async getAuthorImg(author) {
     if (localStorage.getItem('authorImg') === 'false') {
-      return {
-        authorimg: null,
-        authorimglicense: null,
-      };
+      return { authorimg: null, authorimglicense: null };
     }
 
     const authorimgdata = await (
@@ -185,10 +182,7 @@ class Quote extends PureComponent {
       authorimglicense = null;
     }
 
-    return {
-      authorimg,
-      authorimglicense,
-    };
+    return { authorimg, authorimglicense };
   }
 
   async getQuote() {
@@ -237,9 +231,7 @@ class Quote extends PureComponent {
             noQuote: false,
           });
         } else {
-          this.setState({
-            noQuote: true,
-          });
+          this.setState({ noQuote: true });
         }
         break;
       }
@@ -330,14 +322,10 @@ class Quote extends PureComponent {
   favourite() {
     if (localStorage.getItem('favouriteQuote')) {
       localStorage.removeItem('favouriteQuote');
-      this.setState({
-        favourited: this.buttons.unfavourited,
-      });
+      this.setState({ favourited: this.buttons.unfavourited });
     } else {
       localStorage.setItem('favouriteQuote', this.state.quote + ' - ' + this.state.author);
-      this.setState({
-        favourited: this.buttons.favourited,
-      });
+      this.setState({ favourited: this.buttons.favourited });
     }
 
     variables.stats.postEvent('feature', 'Quote favourite');
@@ -438,85 +426,91 @@ class Quote extends PureComponent {
 
         {localStorage.getItem('widgetStyle') === 'legacy' ? (
           <>
-            { this.authorDetails && (
+            {this.authorDetails && (
               <>
-            <div>
-              <h1 className="quoteauthor" ref={this.quoteauthor}>
-                <a
-                  href={this.state.authorlink}
-                  className="quoteAuthorLink"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Learn about the author of the quote."
-                >
-                  {this.state.author}
-                </a>
-              </h1>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-              {this.state.copy} {this.state.share} {this.state.favourited}
-            </div>
-            </>
-            )}  
+                <div>
+                  <h1 className="quoteauthor" ref={this.quoteauthor}>
+                    <a
+                      href={this.state.authorlink}
+                      className="quoteAuthorLink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Learn about the author of the quote."
+                    >
+                      {this.state.author}
+                    </a>
+                  </h1>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+                  {this.state.copy} {this.state.share} {this.state.favourited}
+                </div>
+              </>
+            )}
           </>
         ) : (
           <>
-          { this.authorDetails && (
-            <>
-          <div className="author-holder">
-            <div className="author">
-              {localStorage.getItem('authorImg') !== 'false' ? (
-                <div
-                  className="author-img"
-                  style={{ backgroundImage: `url(${this.state.authorimg})` }}
-                >
-                  {this.state.authorimg === undefined || this.state.authorimg ? '' : <MdPerson />}
-                </div>
-              ) : null}
-              {this.state.author !== null ? (
-                <div className="author-content" ref={this.quoteauthor}>
-                  <span className="title">{this.state.author}</span>
-                  {this.state.authorOccupation !== 'Unknown' && (
-                    <span className="subtitle">{this.state.authorOccupation}</span>
-                  )}
-                  <span className="author-license" title={this.state.authorimglicense}>
-                    {this.state.authorimglicense &&
-                      this.state.authorimglicense.substring(0, 40) +
-                        (this.state.authorimglicense.length > 40 ? '…' : '')}
-                  </span>
-                </div>
-              ) : (
-                <div className="author-content whileLoading" ref={this.quoteauthor}>
-                  {/* these are placeholders for skeleton and as such don't need translating */}
-                  <span className="title pulse">loading</span>
-                  <span className="subtitle pulse">loading</span>
-                </div>
-              )}
-              {(this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null) ||
-              this.state.copy ||
-              this.state.share ||
-              this.state.favourited ? (
-                <div className="quote-buttons">
-                  {this.state.authorOccupation !== 'Unknown' && this.state.authorlink !== null ? (
-                    <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
-                      <a
-                        href={this.state.authorlink}
-                        className="quoteAuthorLink"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Learn about the author of the quote."
+            {this.authorDetails && (
+              <>
+                <div className="author-holder">
+                  <div className="author">
+                    {localStorage.getItem('authorImg') !== 'false' ? (
+                      <div
+                        className="author-img"
+                        style={{ backgroundImage: `url(${this.state.authorimg})` }}
                       >
-                        <MdOpenInNew />
-                      </a>{' '}
-                    </Tooltip>
-                  ) : null}
-                  {this.state.copy} {this.state.share} {this.state.favourited}
+                        {this.state.authorimg === undefined || this.state.authorimg ? (
+                          ''
+                        ) : (
+                          <MdPerson />
+                        )}
+                      </div>
+                    ) : null}
+                    {this.state.author !== null ? (
+                      <div className="author-content" ref={this.quoteauthor}>
+                        <span className="title">{this.state.author}</span>
+                        {this.state.authorOccupation !== 'Unknown' && (
+                          <span className="subtitle">{this.state.authorOccupation}</span>
+                        )}
+                        <span className="author-license" title={this.state.authorimglicense}>
+                          {this.state.authorimglicense &&
+                            this.state.authorimglicense.substring(0, 40) +
+                              (this.state.authorimglicense.length > 40 ? '…' : '')}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="author-content whileLoading" ref={this.quoteauthor}>
+                        {/* these are placeholders for skeleton and as such don't need translating */}
+                        <span className="title pulse">loading</span>
+                        <span className="subtitle pulse">loading</span>
+                      </div>
+                    )}
+                    {(this.state.authorOccupation !== 'Unknown' &&
+                      this.state.authorlink !== null) ||
+                    this.state.copy ||
+                    this.state.share ||
+                    this.state.favourited ? (
+                      <div className="quote-buttons">
+                        {this.state.authorOccupation !== 'Unknown' &&
+                        this.state.authorlink !== null ? (
+                          <Tooltip title={variables.getMessage('widgets.quote.link_tooltip')}>
+                            <a
+                              href={this.state.authorlink}
+                              className="quoteAuthorLink"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="Learn about the author of the quote."
+                            >
+                              <MdOpenInNew />
+                            </a>{' '}
+                          </Tooltip>
+                        ) : null}
+                        {this.state.copy} {this.state.share} {this.state.favourited}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
-              ) : null}
-            </div>
-          </div>
-          </>
-          )}
+              </>
+            )}
           </>
         )}
       </div>

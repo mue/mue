@@ -29,9 +29,7 @@ const prepareBuilds = () => ({
       fs.cpSync(
         path.resolve(__dirname, './manifest/_locales'),
         path.resolve(__dirname, './build/chrome/_locales'),
-        {
-          recursive: true,
-        },
+        { recursive: true },
       );
       fs.cpSync(path.resolve(__dirname, './dist'), path.resolve(__dirname, './build/chrome/'), {
         recursive: true,
@@ -39,17 +37,13 @@ const prepareBuilds = () => ({
       fs.cpSync(
         path.resolve(__dirname, './src/assets/icons'),
         path.resolve(__dirname, './build/chrome/icons'),
-        {
-          recursive: true,
-        },
+        { recursive: true },
       );
       fs.mkdirSync(path.resolve(__dirname, './build/chrome/src/assets'), { recursive: true });
       fs.cpSync(
         path.resolve(__dirname, './src/assets'),
         path.resolve(__dirname, './build/chrome/src/assets'),
-        {
-          recursive: true,
-        },
+        { recursive: true },
       );
 
       // firefox
@@ -68,16 +62,12 @@ const prepareBuilds = () => ({
       fs.cpSync(
         path.resolve(__dirname, './src/assets/icons'),
         path.resolve(__dirname, './build/firefox/icons'),
-        {
-          recursive: true,
-        },
+        { recursive: true },
       );
       fs.cpSync(
         path.resolve(__dirname, './src/assets'),
         path.resolve(__dirname, './build/firefox/src/assets'),
-        {
-          recursive: true,
-        },
+        { recursive: true },
       );
 
       // create zip
@@ -94,9 +84,7 @@ const prepareBuilds = () => ({
       fs.cpSync(
         path.resolve(__dirname, './src/assets'),
         path.resolve(__dirname, './dist/src/assets'),
-        {
-          recursive: true,
-        },
+        { recursive: true },
       );
     }
   },
@@ -105,17 +93,9 @@ const prepareBuilds = () => ({
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
-    define: {
-      __APP_ENV__: JSON.stringify(env.APP_ENV),
-    },
+    define: { __APP_ENV__: JSON.stringify(env.APP_ENV) },
     plugins: [react(), prepareBuilds(), progress()],
-    server: {
-      open: true,
-      hmr: {
-        protocol: 'ws',
-        host: 'localhost',
-      },
-    },
+    server: { open: true, hmr: { protocol: 'ws', host: 'localhost' } },
     build: {
       target: 'esnext', // Use modern JavaScript features
       minify: isProd ? 'esbuild' : false,
@@ -151,12 +131,6 @@ export default defineConfig(({ command, mode }) => {
         utils: path.resolve(__dirname, './src/utils'),
       },
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern-compiler',
-        },
-      },
-    },
+    css: { preprocessorOptions: { scss: { api: 'modern-compiler' } } },
   };
 });

@@ -51,9 +51,7 @@ class Navbar extends PureComponent {
         break;
     }
 
-    this.setState({
-      refreshText,
-    });
+    this.setState({ refreshText });
   }
 
   componentDidMount() {

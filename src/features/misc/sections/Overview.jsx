@@ -40,10 +40,7 @@ const widget_name = {
 const SortableItem = ({ id }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
+  const style = { transform: CSS.Transform.toString(transform), transition };
 
   return (
     <li ref={setNodeRef} style={style} {...attributes} {...listeners} className="sortableItem">
@@ -77,9 +74,7 @@ const Overview = () => {
 
   const sensors = useSensors(
     useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
 
   const handleDragEnd = (event) => {
@@ -135,11 +130,7 @@ const Overview = () => {
       const data = await response.json();
       data.date = new window.Date(data.date).toLocaleDateString(
         variables.languagecode.replace('_', '-'),
-        {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        },
+        { year: 'numeric', month: 'long', day: 'numeric' },
       );
       setNews(data);
       setNewsDone(true);
@@ -187,7 +178,11 @@ const Overview = () => {
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.order.title')}
           </span>
-          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
             <SortableContext items={items} strategy={verticalListSortingStrategy}>
               <ul className="sortableContainer">
                 {items.map((value) => {

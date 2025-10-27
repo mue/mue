@@ -46,9 +46,7 @@ export default class Clock extends PureComponent {
           // load analog clock css
           import('react-clock/dist/Clock.css');
 
-          this.setState({
-            time: now,
-          });
+          this.setState({ time: now });
           break;
         default: {
           // Default clock
@@ -78,10 +76,7 @@ export default class Clock extends PureComponent {
               });
             }
 
-            this.setState({
-              time,
-              ampm: '',
-            });
+            this.setState({ time, ampm: '' });
           } else {
             // 12 hour
             let hours = now.getHours();
@@ -106,10 +101,7 @@ export default class Clock extends PureComponent {
               });
             }
 
-            this.setState({
-              time,
-              ampm: now.getHours() > 11 ? 'PM' : 'AM',
-            });
+            this.setState({ time, ampm: now.getHours() > 11 ? 'PM' : 'AM' });
           }
           break;
         }

@@ -21,14 +21,7 @@ import { install, urlParser, uninstall } from 'utils/marketplace';
 class Marketplace extends PureComponent {
   constructor() {
     super();
-    this.state = {
-      items: [],
-      button: '',
-      done: false,
-      item: {},
-      collection: false,
-      filter: '',
-    };
+    this.state = { items: [], button: '', done: false, item: {}, collection: false, filter: '' };
     this.buttons = {
       uninstall: (
         <Button
@@ -112,10 +105,7 @@ class Marketplace extends PureComponent {
       document.querySelector('#modal').scrollTop = 0;
       variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
     } else if (pageType === 'collection') {
-      this.setState({
-        done: false,
-        item: {},
-      });
+      this.setState({ done: false, item: {} });
       const collection = await (
         await fetch(`${variables.constants.API_URL}/marketplace/collection/${data}`, {
           signal: this.controller.signal,
@@ -130,25 +120,17 @@ class Marketplace extends PureComponent {
         done: true,
       });
     } else {
-      this.setState({
-        item: {},
-      });
+      this.setState({ item: {} });
     }
   }
 
   async getItems() {
-    this.setState({
-      done: false,
-    });
+    this.setState({ done: false });
     const dataURL =
       this.props.type === 'collections'
         ? variables.constants.API_URL + '/marketplace/collections'
         : variables.constants.API_URL + '/marketplace/items/' + this.props.type;
-    const { data } = await (
-      await fetch(dataURL, {
-        signal: this.controller.signal,
-      })
-    ).json();
+    const { data } = await (await fetch(dataURL, { signal: this.controller.signal })).json();
     const collections = await (
       await fetch(variables.constants.API_URL + '/marketplace/collections', {
         signal: this.controller.signal,
@@ -180,9 +162,7 @@ class Marketplace extends PureComponent {
     }
 
     toast(variables.getMessage('toasts.' + type + 'ed'));
-    this.setState({
-      button: type === 'install' ? this.buttons.uninstall : this.buttons.install,
-    });
+    this.setState({ button: type === 'install' ? this.buttons.uninstall : this.buttons.install });
 
     variables.stats.postEvent(
       'marketplace-item',
@@ -250,10 +230,7 @@ class Marketplace extends PureComponent {
       variables.stats.postEvent('marketplace', 'Sort');
     }
 
-    return {
-      items: items,
-      sortType: value,
-    };
+    return { items: items, sortType: value };
   }
 
   changeSort(value) {
@@ -262,10 +239,7 @@ class Marketplace extends PureComponent {
   }
 
   returnToMain() {
-    this.setState({
-      items: this.state.oldItems,
-      collection: false,
-    });
+    this.setState({ items: this.state.oldItems, collection: false });
   }
 
   componentDidMount() {
@@ -411,14 +385,8 @@ class Marketplace extends PureComponent {
                 name="sortMarketplace"
                 onChange={(value) => this.changeSort(value)}
                 items={[
-                  {
-                    value: 'a-z',
-                    text: variables.getMessage('modals.main.addons.sort.a_z'),
-                  },
-                  {
-                    value: 'z-a',
-                    text: variables.getMessage('modals.main.addons.sort.z_a'),
-                  },
+                  { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
+                  { value: 'z-a', text: variables.getMessage('modals.main.addons.sort.z_a') },
                 ]}
               />
             </div>

@@ -45,15 +45,11 @@ class Apps extends PureComponent {
   }
 
   showApps() {
-    this.setState({
-      showApps: true,
-    });
+    this.setState({ showApps: true });
   }
 
   hideApps() {
-    this.setState({
-      showApps: localStorage.getItem('AppsPinned') === 'true',
-    });
+    this.setState({ showApps: localStorage.getItem('AppsPinned') === 'true' });
   }
 
   render() {
@@ -137,9 +133,7 @@ function AppsWrapper() {
   const { x, y, refs, strategy } = useFloating({
     placement: 'bottom',
     middleware: [shift()],
-    elements: {
-      reference,
-    },
+    elements: { reference },
   });
 
   return (

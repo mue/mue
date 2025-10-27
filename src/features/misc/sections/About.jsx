@@ -345,11 +345,7 @@ class About extends PureComponent {
         </div>
         <div
           className="settingsRow"
-          style={{
-            flexFlow: 'column',
-            alignItems: 'flex-start',
-            minHeight: '10px',
-          }}
+          style={{ flexFlow: 'column', alignItems: 'flex-start', minHeight: '10px' }}
         >
           <span className="title">
             {variables.getMessage('modals.main.settings.sections.about.photographers')}

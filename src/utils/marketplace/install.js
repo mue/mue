@@ -17,10 +17,7 @@ export function install(type, input, sideload, collection) {
 
       const oldSettings = [];
       Object.keys(localStorage).forEach((key) => {
-        oldSettings.push({
-          name: key,
-          value: localStorage.getItem(key),
-        });
+        oldSettings.push({ name: key, value: localStorage.getItem(key) });
       });
 
       localStorage.setItem('backup_settings', JSON.stringify(oldSettings));

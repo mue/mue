@@ -29,14 +29,7 @@ class QuoteOptions extends PureComponent {
 
   resetCustom = () => {
     localStorage.setItem('customQuote', '[{"quote": "", "author": ""}]');
-    this.setState({
-      customQuote: [
-        {
-          quote: '',
-          author: '',
-        },
-      ],
-    });
+    this.setState({ customQuote: [{ quote: '', author: '' }] });
     toast(variables.getMessage('toasts.reset'));
     EventBus.emit('refresh', 'background');
   };
@@ -46,9 +39,7 @@ class QuoteOptions extends PureComponent {
 
     const customQuote = this.state.customQuote;
     customQuote[index][type] = result;
-    this.setState({
-      customQuote,
-    });
+    this.setState({ customQuote });
     this.forceUpdate();
 
     localStorage.setItem('customQuote', JSON.stringify(customQuote));
@@ -59,17 +50,12 @@ class QuoteOptions extends PureComponent {
   modifyCustomQuote(type, index) {
     const customQuote = this.state.customQuote;
     if (type === 'add') {
-      customQuote.push({
-        quote: '',
-        author: '',
-      });
+      customQuote.push({ quote: '', author: '' });
     } else {
       customQuote.splice(index, 1);
     }
 
-    this.setState({
-      customQuote,
-    });
+    this.setState({ customQuote });
     this.forceUpdate();
 
     localStorage.setItem('customQuote', JSON.stringify(customQuote));
@@ -153,7 +139,7 @@ class QuoteOptions extends PureComponent {
               name="authorLink"
               text={variables.getMessage(`${QUOTE_SECTION}.author_link`)}
               element=".other"
-              disabled={localStorage.getItem('authorDetails' )=== 'false'}
+              disabled={localStorage.getItem('authorDetails') === 'false'}
             />
             <Checkbox
               name="authorImg"

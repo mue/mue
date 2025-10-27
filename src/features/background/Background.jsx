@@ -1,4 +1,3 @@
- 
 // todo: rewrite this mess
 import variables from 'config/variables';
 import { PureComponent } from 'react';
@@ -24,12 +23,7 @@ export default class Background extends PureComponent {
       url: '',
       currentAPI: '',
       firstTime: false,
-      photoInfo: {
-        hidden: false,
-        offline: false,
-        photographerURL: '',
-        photoURL: '',
-      },
+      photoInfo: { hidden: false, offline: false, photographerURL: '', photoURL: '' },
     };
   }
 
@@ -164,22 +158,9 @@ export default class Background extends PureComponent {
 
     const setFavourited = ({ type, url, credit, location, camera, pun, offline }) => {
       if (type === 'random_colour' || type === 'random_gradient') {
-        return this.setState({
-          type: 'colour',
-          style: `background:${url}`,
-        });
+        return this.setState({ type: 'colour', style: `background:${url}` });
       }
-      this.setState({
-        url,
-        photoInfo: {
-          credit,
-          location,
-          camera,
-          pun,
-          offline,
-          url,
-        },
-      });
+      this.setState({ url, photoInfo: { credit, location, camera, pun, offline, url } });
     };
 
     const favourited = JSON.parse(localStorage.getItem('favourite'));
@@ -195,7 +176,8 @@ export default class Background extends PureComponent {
         }
 
         // API background
-        const data = JSON.parse(localStorage.getItem('nextImage')) || (await this.getAPIImageData());
+        const data =
+          JSON.parse(localStorage.getItem('nextImage')) || (await this.getAPIImageData());
         localStorage.setItem('nextImage', null);
         if (data) {
           this.setState(data);
@@ -263,9 +245,7 @@ export default class Background extends PureComponent {
             url: customBackground,
             type: 'custom',
             video: videoCheck(customBackground),
-            photoInfo: {
-              hidden: true,
-            },
+            photoInfo: { hidden: true },
           };
 
           this.setState(object);
@@ -363,15 +343,7 @@ export default class Background extends PureComponent {
     // this resets it so the fade in and getting background all works properly
     const refresh = () => {
       element.classList.remove('fade-in');
-      this.setState({
-        url: '',
-        style: '',
-        type: '',
-        video: false,
-        photoInfo: {
-          hidden: true,
-        },
-      });
+      this.setState({ url: '', style: '', type: '', video: false, photoInfo: { hidden: true } });
       this.getBackground();
     };
 

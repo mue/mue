@@ -170,12 +170,7 @@ function PhotoInformation({ info, url, api }) {
             <Source />
             <span id="infoSource">
               {info.photoURL ? (
-                <a
-                  href={info.photoURL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link"
-                >
+                <a href={info.photoURL} target="_blank" rel="noopener noreferrer" className="link">
                   {api.charAt(0).toUpperCase() + api.slice(1)}
                 </a>
               ) : (

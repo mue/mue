@@ -20,9 +20,7 @@ class Favourite extends PureComponent {
   async favourite() {
     if (localStorage.getItem('favourite')) {
       localStorage.removeItem('favourite');
-      this.setState({
-        favourited: this.buttons.unfavourited,
-      });
+      this.setState({ favourited: this.buttons.unfavourited });
       this.props.tooltipText(variables.getMessage('widgets.quote.favourite'));
       variables.stats.postEvent('feature', 'Background favourite');
     } else {
@@ -62,13 +60,7 @@ class Favourite extends PureComponent {
           }
 
           if (type === 'custom') {
-            localStorage.setItem(
-              'favourite',
-              JSON.stringify({
-                type,
-                url,
-              }),
-            );
+            localStorage.setItem('favourite', JSON.stringify({ type, url }));
           } else {
             // photo information now hides information if it isn't sent, unless if photoinformation hover is hidden
             const location = document.getElementById('infoLocation');
@@ -92,9 +84,7 @@ class Favourite extends PureComponent {
         }
       }
 
-      this.setState({
-        favourited: this.buttons.favourited,
-      });
+      this.setState({ favourited: this.buttons.favourited });
       this.props.tooltipText(variables.getMessage('widgets.quote.unfavourite'));
       variables.stats.postEvent('feature', 'Background unfavourite');
     }

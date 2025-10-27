@@ -50,12 +50,7 @@ const GreetingOptions = () => {
     const customEvents = JSON.parse(localStorage.getItem('customEvents')) || [];
 
     // Create a new event
-    const newEvent = {
-      id: 'widgets.greeting.halloween',
-      name: '',
-      month: 1,
-      date: 1,
-    };
+    const newEvent = { id: 'widgets.greeting.halloween', name: '', month: 1, date: 1 };
 
     // Add the new event to the array
     const updatedEvents = [...customEvents, newEvent];

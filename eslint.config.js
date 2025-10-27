@@ -24,11 +24,7 @@ export default [
     languageOptions: {
       ecmaVersion: 2024,
       sourceType: 'module',
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
+      parserOptions: { ecmaFeatures: { jsx: true } },
       globals: {
         // Browser globals
         window: 'readonly',
@@ -60,16 +56,8 @@ export default [
         require: 'readonly',
       },
     },
-    plugins: {
-      react,
-      'react-hooks': reactHooks,
-      'jsx-a11y': jsxA11y,
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
+    plugins: { react, 'react-hooks': reactHooks, 'jsx-a11y': jsxA11y },
+    settings: { react: { version: 'detect' } },
     rules: {
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
@@ -84,7 +72,7 @@ export default [
       // General rules
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
-      
+
       // Modern JS
       'prefer-const': 'warn',
       'no-var': 'error',
