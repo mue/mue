@@ -25,7 +25,7 @@
     "fast-blurhash": "^1.1.4",
     "image-conversion": "^2.1.1",
     "mue": "file:",
-    "react": "^18.3.1",
+    "react": "^19.2.0",
     "react-best-gradient-color-picker": "^3.0.14",
     "react-clock": "6.0.0",
     "react-dom": "^18.3.1",
