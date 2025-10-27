@@ -83,19 +83,19 @@
   user-select: none;
   border-radius: 8px;
   padding: 4px;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.05);
-    
+
     .quicklink-drag-handle {
       opacity: 1;
     }
   }
-  
+
   &:active {
     cursor: grabbing;
   }
-  
+
   a {
     margin: 0;
     flex: 1;
@@ -114,14 +114,16 @@
   color: rgba(255, 255, 255, 0.4);
   cursor: grab;
   opacity: 0;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
   border-radius: 4px;
-  
+
   &:hover {
     color: rgba(255, 255, 255, 0.8);
     background: rgba(255, 255, 255, 0.1);
   }
-  
+
   svg {
     width: 16px;
     height: 16px;
@@ -130,7 +132,7 @@
 
 .metro-wrapper {
   flex-direction: column;
-  
+
   .quicklink-drag-handle {
     position: absolute;
     top: 8px;
@@ -319,7 +321,10 @@ button.quicklinks {
   gap: 12px;
   padding: 10px;
   border-radius: 10px;
-  transition: box-shadow 0.15s ease, transform 0.12s ease, opacity 0.12s ease;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.12s ease,
+    opacity 0.12s ease;
   cursor: grab;
   user-select: none;
   background: transparent;
@@ -353,7 +358,9 @@ button.quicklinks {
     margin-right: 4px;
     cursor: grab;
     user-select: none;
-    transition: background 0.12s ease, color 0.12s ease;
+    transition:
+      background 0.12s ease,
+      color 0.12s ease;
 
     &:hover {
       color: rgba(255, 255, 255, 0.9);
@@ -431,7 +438,9 @@ button.quicklinks {
     font-size: 24px;
     padding: 4px;
     opacity: 0.3;
-    transition: opacity 0.2s ease, color 0.2s ease;
+    transition:
+      opacity 0.2s ease,
+      color 0.2s ease;
 
     &:active {
       cursor: grabbing;
@@ -556,13 +565,12 @@ button.quicklinks {
   opacity: 0.5 !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
   cursor: grabbing !important;
-  
 
   &.quicklink-item {
     background: rgba(255, 255, 255, 0.1) !important;
     border-color: rgba(255, 255, 255, 0.2) !important;
   }
-  
+
   .quicklink-drag-handle {
     opacity: 1 !important;
     color: rgba(255, 255, 255, 0.9) !important;
@@ -607,7 +615,7 @@ button.quicklinks {
   padding: 8px 12px;
   border-radius: 6px;
   transition: all 0.2s ease;
-  
+
   &:hover {
     text-decoration: underline;
     background: rgba(255, 255, 255, 0.1);
@@ -617,7 +625,7 @@ button.quicklinks {
 .quicklink-wrapper .quickLinksMetro {
   position: relative;
   min-width: 100px;
-  
+
   .subtitle {
     margin-top: 8px;
     font-size: 0.8rem;
