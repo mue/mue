@@ -1,18 +1,14 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { memo, useState, useCallback } from 'react';
 
 import { MdCropFree } from 'react-icons/md';
 
 import { Tooltip } from 'components/Elements';
-class Maximise extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      hidden: false,
-    };
-  }
 
-  setAttribute(blur, brightness, filter) {
+const Maximise = memo(({ fontSize }) => {
+  const [hidden, setHidden] = useState(false);
+
+  const setAttribute = useCallback((blur, brightness, filter) => {
     // don't attempt to modify the background if it isn't an image
     const backgroundType = localStorage.getItem('backgroundType');
     if (
@@ -43,48 +39,41 @@ class Maximise extends PureComponent {
           : ''
       };`,
     );
-  }
+  }, []);
 
-  maximise = () => {
+  const maximise = useCallback(() => {
     // hide widgets
     const widgets = document.getElementById('widgets');
-    this.state.hidden === false
-      ? (widgets.style.display = 'none')
-      : (widgets.style.display = 'flex');
-
-    if (this.state.hidden === false) {
-      this.setState({
-        hidden: true,
-      });
-
-      this.setAttribute(0, 100);
+    
+    if (!hidden) {
+      widgets.style.display = 'none';
+      setHidden(true);
+      setAttribute(0, 100);
       variables.stats.postEvent('feature', 'Background maximise');
     } else {
-      this.setState({
-        hidden: false,
-      });
-
-      this.setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'), true);
+      widgets.style.display = 'flex';
+      setHidden(false);
+      setAttribute(localStorage.getItem('blur'), localStorage.getItem('brightness'), true);
       variables.stats.postEvent('feature', 'Background unmaximise');
     }
-  };
+  }, [hidden, setAttribute]);
 
-  render() {
-    return (
-      <Tooltip
-        title={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
+  return (
+    <Tooltip
+      title={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
+    >
+      <button
+        className="navbarButton"
+        style={{ fontSize }}
+        onClick={maximise}
+        aria-label={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
       >
-        <button
-          className="navbarButton"
-          style={{ fontSize: this.props.fontSize }}
-          onClick={this.maximise}
-          aria-label={variables.getMessage('modals.main.settings.sections.background.buttons.view')}
-        >
-          <MdCropFree className="topicons" />
-        </button>
-      </Tooltip>
-    );
-  }
-}
+        <MdCropFree className="topicons" />
+      </button>
+    </Tooltip>
+  );
+});
+
+Maximise.displayName = 'Maximise';
 
 export { Maximise as default, Maximise };

@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import { MainModal } from 'components/Elements';
@@ -11,28 +11,21 @@ import { parseDeepLink, shouldAutoOpenModal } from 'utils/deepLinking';
 
 import Welcome from 'features/welcome/Welcome';
 
-export default class Modals extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      mainModal: false,
-      updateModal: false,
-      welcomeModal: false,
-      appsModal: false,
-      preview: false,
-      deepLinkData: null,
-    };
-  }
+const Modals = () => {
+  const [mainModal, setMainModal] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
+  const [welcomeModal, setWelcomeModal] = useState(false);
+  const [appsModal, setAppsModal] = useState(false);
+  const [preview, setPreview] = useState(false);
+  const [deepLinkData, setDeepLinkData] = useState(null);
 
-  componentDidMount() {
+  useEffect(() => {
     // Check for deep link first (has priority)
     if (shouldAutoOpenModal()) {
-      const deepLinkData = parseDeepLink();
-      this.setState({
-        mainModal: true,
-        deepLinkData,
-      });
-      variables.stats.postEvent('modal', `Opened via deep link: ${deepLinkData.tab}`);
+      const linkData = parseDeepLink();
+      setMainModal(true);
+      setDeepLinkData(linkData);
+      variables.stats.postEvent('modal', `Opened via deep link: ${linkData.tab}`);
       return;
     }
 
@@ -40,9 +33,7 @@ export default class Modals extends PureComponent {
       localStorage.getItem('showWelcome') === 'true' &&
       window.location.search !== '?nointro=true'
     ) {
-      this.setState({
-        welcomeModal: true,
-      });
+      setWelcomeModal(true);
       variables.stats.postEvent('modal', 'Opened welcome');
     }
 
@@ -56,71 +47,69 @@ export default class Modals extends PureComponent {
 
     // hide refresh reminder once the user has refreshed the page
     localStorage.setItem('showReminder', false);
-  }
+  }, []);
 
-  closeWelcome() {
+  const closeWelcome = () => {
     localStorage.setItem('showWelcome', false);
-    this.setState({
-      welcomeModal: false,
-    });
+    setWelcomeModal(false);
     EventBus.emit('refresh', 'widgetsWelcomeDone');
     EventBus.emit('refresh', 'widgets');
     EventBus.emit('refresh', 'backgroundwelcome');
-  }
+  };
 
-  previewWelcome() {
+  const previewWelcome = () => {
     localStorage.setItem('showWelcome', false);
     localStorage.setItem('welcomePreview', true);
-    this.setState({
-      welcomeModal: false,
-      preview: true,
-    });
+    setWelcomeModal(false);
+    setPreview(true);
     EventBus.emit('refresh', 'widgetsWelcome');
-  }
+  };
 
-  toggleModal(type, action) {
-    this.setState({
-      [type]: action,
-    });
+  const toggleModal = (type, action) => {
+    const modalSetters = {
+      mainModal: setMainModal,
+      updateModal: setUpdateModal,
+      welcomeModal: setWelcomeModal,
+      appsModal: setAppsModal,
+    };
+
+    if (modalSetters[type]) {
+      modalSetters[type](action);
+    }
 
     if (action !== false) {
       variables.stats.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
     }
-  }
+  };
 
-  render() {
-    return (
-      <>
-        {this.state.welcomeModal === false && (
-          <Navbar openModal={(modal) => this.toggleModal(modal, true)} />
-        )}
-        <Modal
-          closeTimeoutMS={300}
-          id="modal"
-          onRequestClose={() => this.toggleModal('mainModal', false)}
-          isOpen={this.state.mainModal}
-          className="Modal mainModal"
-          overlayClassName="Overlay"
-          ariaHideApp={false}
-        >
-          <MainModal
-            modalClose={() => this.toggleModal('mainModal', false)}
-            deepLinkData={this.state.deepLinkData}
-          />
-        </Modal>
-        <Modal
-          closeTimeoutMS={300}
-          onRequestClose={() => this.closeWelcome()}
-          isOpen={this.state.welcomeModal}
-          className="Modal welcomemodal mainModal"
-          overlayClassName="Overlay mainModal"
-          shouldCloseOnOverlayClick={false}
-          ariaHideApp={false}
-        >
-          <Welcome modalClose={() => this.closeWelcome()} modalSkip={() => this.previewWelcome()} />
-        </Modal>
-        {this.state.preview && <Preview setup={() => window.location.reload()} />}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {welcomeModal === false && <Navbar openModal={(modal) => toggleModal(modal, true)} />}
+      <Modal
+        closeTimeoutMS={300}
+        id="modal"
+        onRequestClose={() => toggleModal('mainModal', false)}
+        isOpen={mainModal}
+        className="Modal mainModal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+      >
+        <MainModal modalClose={() => toggleModal('mainModal', false)} deepLinkData={deepLinkData} />
+      </Modal>
+      <Modal
+        closeTimeoutMS={300}
+        onRequestClose={() => closeWelcome()}
+        isOpen={welcomeModal}
+        className="Modal welcomemodal mainModal"
+        overlayClassName="Overlay mainModal"
+        shouldCloseOnOverlayClick={false}
+        ariaHideApp={false}
+      >
+        <Welcome modalClose={() => closeWelcome()} modalSkip={() => previewWelcome()} />
+      </Modal>
+      {preview && <Preview setup={() => window.location.reload()} />}
+    </>
+  );
+};
+
+export { Modals as default, Modals };

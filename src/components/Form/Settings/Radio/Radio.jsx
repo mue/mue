@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { memo, useState, useCallback } from 'react';
 import {
   Radio as RadioUI,
   RadioGroup,
@@ -11,77 +11,69 @@ import {
 import EventBus from 'utils/eventbus';
 import { translations } from 'lib/translations';
 
-class Radio extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: localStorage.getItem(this.props.name),
-    };
-  }
+const Radio = memo((props) => {
+  const [value, setValue] = useState(localStorage.getItem(props.name));
 
-  handleChange = async (e) => {
-    const { value } = e.target;
+  const handleChange = useCallback(async (e) => {
+    const newValue = e.target.value;
 
-    if (value === 'loading') {
+    if (newValue === 'loading') {
       return;
     }
 
-    if (this.props.name === 'language') {
+    if (props.name === 'language') {
       // old tab name
       if (localStorage.getItem('tabName') === variables.getMessage('tabname')) {
-        localStorage.setItem('tabName', translations[value.replace('-', '_')].tabname);
+        localStorage.setItem('tabName', translations[newValue.replace('-', '_')].tabname);
       }
     }
 
-    localStorage.setItem(this.props.name, value);
+    localStorage.setItem(props.name, newValue);
+    setValue(newValue);
 
-    this.setState({
-      value,
-    });
-
-    if (this.props.onChange) {
-      this.props.onChange(value);
+    if (props.onChange) {
+      props.onChange(newValue);
     }
 
-    variables.stats.postEvent('setting', `${this.props.name} from ${this.state.value} to ${value}`);
+    variables.stats.postEvent('setting', `${props.name} from ${value} to ${newValue}`);
 
-    if (this.props.element) {
-      if (!document.querySelector(this.props.element)) {
+    if (props.element) {
+      if (!document.querySelector(props.element)) {
         document.querySelector('.reminder-info').style.display = 'flex';
         return localStorage.setItem('showReminder', true);
       }
     }
 
-    EventBus.emit('refresh', this.props.category);
-  };
+    EventBus.emit('refresh', props.category);
+  }, [value, props]);
 
-  render() {
-    return (
-      <FormControl component="fieldset">
-        <FormLabel
-          className={this.props.smallTitle ? 'radio-title-small' : 'radio-title'}
-          component="legend"
-        >
-          {this.props.title}
-        </FormLabel>
-        <RadioGroup
-          aria-label={this.props.name}
-          name={this.props.name}
-          onChange={this.handleChange}
-          value={this.state.value}
-        >
-          {this.props.options.map((option) => (
-            <FormControlLabel
-              value={option.value}
-              control={<RadioUI />}
-              label={option.name}
-              key={option.name}
-            />
-          ))}
-        </RadioGroup>
-      </FormControl>
-    );
-  }
-}
+  return (
+    <FormControl component="fieldset">
+      <FormLabel
+        className={props.smallTitle ? 'radio-title-small' : 'radio-title'}
+        component="legend"
+      >
+        {props.title}
+      </FormLabel>
+      <RadioGroup
+        aria-label={props.name}
+        name={props.name}
+        onChange={handleChange}
+        value={value}
+      >
+        {props.options.map((option) => (
+          <FormControlLabel
+            value={option.value}
+            control={<RadioUI />}
+            label={option.name}
+            key={option.name}
+          />
+        ))}
+      </RadioGroup>
+    </FormControl>
+  );
+});
+
+Radio.displayName = 'Radio';
 
 export { Radio as default, Radio };

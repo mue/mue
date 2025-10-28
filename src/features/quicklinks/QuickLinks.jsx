@@ -1,4 +1,4 @@
-import { PureComponent, createRef } from 'react';
+import { memo, useRef, useState, useEffect, useCallback } from 'react';
 import { Tooltip } from 'components/Elements';
 
 import EventBus from 'utils/eventbus';
@@ -18,18 +18,13 @@ const readQuicklinks = () => {
   }
 };
 
-class QuickLinks extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      items: readQuicklinks(),
-      forceUpdate: 0, // Used to force complete re-render
-    };
-    this.quicklinksContainer = createRef();
-  }
+const QuickLinks = memo(() => {
+  const [items, setItems] = useState(readQuicklinks());
+  const [forceUpdate, setForceUpdate] = useState(0); // Used to force complete re-render
+  const quicklinksContainer = useRef(null);
 
   // widget zoom
-  setZoom(element) {
+  const setZoom = useCallback((element) => {
     if (!element) return;
     
     const zoom = localStorage.getItem('zoomQuicklinks') || 100;
@@ -42,103 +37,109 @@ class QuickLinks extends PureComponent {
         img.style.height = `${30 * Number(zoom / 100)}px`;
       }
     }
-  }
+  }, []);
 
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  useEffect(() => {
+    const handleRefresh = (data) => {
       if (data === 'quicklinks') {
         if (localStorage.getItem('quicklinksenabled') === 'false') {
-          return (this.quicklinksContainer.current.style.display = 'none');
+          if (quicklinksContainer.current) {
+            quicklinksContainer.current.style.display = 'none';
+          }
+          return;
         }
 
-        this.quicklinksContainer.current.style.display = 'flex';
+        if (quicklinksContainer.current) {
+          quicklinksContainer.current.style.display = 'flex';
+        }
         
-        this.setState({
-          items: readQuicklinks(),
-          forceUpdate: Date.now(),
-        }, () => {
-          this.setZoom(this.quicklinksContainer.current);
-        });
+        setItems(readQuicklinks());
+        setForceUpdate(Date.now());
       }
-    });
-
-    this.setZoom(this.quicklinksContainer.current);
-  }
-
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
-
-  render() {
-    let target,
-      rel = null;
-    if (localStorage.getItem('quicklinksnewtab') === 'true') {
-      target = '_blank';
-      rel = 'noopener noreferrer';
-    }
-
-    const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
-
-    const quickLink = (item, index) => {
-      if (localStorage.getItem('quickLinksStyle') === 'text') {
-        return (
-          <a
-            className="quicklinkstext"
-            key={`quicklink-${item.key}-${index}`}
-            href={item.url}
-            target={target}
-            rel={rel}
-            draggable={false}
-          >
-            {item.name}
-          </a>
-        );
-      }
-
-      const img =
-        item.icon ||
-        'https://icon.horse/icon/' + item.url.replace('https://', '').replace('http://', '');
-
-      if (localStorage.getItem('quickLinksStyle') === 'metro') {
-        return (
-          <a
-            className="quickLinksMetro"
-            key={`quicklink-${item.key}-${index}`}
-            href={item.url}
-            target={target}
-            rel={rel}
-            draggable={false}
-          >
-            <img src={img} alt={item.name} draggable={false} />
-            <span className="subtitle">{item.name}</span>
-          </a>
-        );
-      }
-
-      const link = (
-        <a key={`quicklink-${item.key}-${index}`} href={item.url} target={target} rel={rel} draggable={false}>
-          <img src={img} alt={item.name} draggable={false} />
-        </a>
-      );
-
-      return tooltipEnabled === 'true' ? (
-        <Tooltip title={item.name} placement="bottom" key={`quicklink-${item.key}-${index}`}>
-          {link}
-        </Tooltip>
-      ) : (
-        link
-      );
     };
 
-    return (
-      <div 
-        className="quicklinkscontainer" 
-        ref={this.quicklinksContainer}
-      >
-        {this.state.items && this.state.items.map((item, index) => quickLink(item, index))}
-      </div>
-    );
+    EventBus.on('refresh', handleRefresh);
+
+    setZoom(quicklinksContainer.current);
+
+    return () => {
+      EventBus.off('refresh', handleRefresh);
+    };
+  }, [setZoom]);
+
+  useEffect(() => {
+    setZoom(quicklinksContainer.current);
+  }, [items, forceUpdate, setZoom]);
+
+  let target, rel = null;
+  if (localStorage.getItem('quicklinksnewtab') === 'true') {
+    target = '_blank';
+    rel = 'noopener noreferrer';
   }
-}
+
+  const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
+
+  const quickLink = (item, index) => {
+    if (localStorage.getItem('quickLinksStyle') === 'text') {
+      return (
+        <a
+          className="quicklinkstext"
+          key={`quicklink-${item.key}-${index}`}
+          href={item.url}
+          target={target}
+          rel={rel}
+          draggable={false}
+        >
+          {item.name}
+        </a>
+      );
+    }
+
+    const img =
+      item.icon ||
+      'https://icon.horse/icon/' + item.url.replace('https://', '').replace('http://', '');
+
+    if (localStorage.getItem('quickLinksStyle') === 'metro') {
+      return (
+        <a
+          className="quickLinksMetro"
+          key={`quicklink-${item.key}-${index}`}
+          href={item.url}
+          target={target}
+          rel={rel}
+          draggable={false}
+        >
+          <img src={img} alt={item.name} draggable={false} />
+          <span className="subtitle">{item.name}</span>
+        </a>
+      );
+    }
+
+    const link = (
+      <a key={`quicklink-${item.key}-${index}`} href={item.url} target={target} rel={rel} draggable={false}>
+        <img src={img} alt={item.name} draggable={false} />
+      </a>
+    );
+
+    return tooltipEnabled === 'true' ? (
+      <Tooltip title={item.name} placement="bottom" key={`quicklink-${item.key}-${index}`}>
+        {link}
+      </Tooltip>
+    ) : (
+      link
+    );
+  };
+
+  return (
+    <div 
+      className="quicklinkscontainer" 
+      ref={quicklinksContainer}
+    >
+      {items && items.map((item, index) => quickLink(item, index))}
+    </div>
+  );
+});
+
+QuickLinks.displayName = 'QuickLinks';
 
 export { QuickLinks as default, QuickLinks };

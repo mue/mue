@@ -1,43 +1,37 @@
-import { PureComponent } from 'react';
+import { useState, useEffect } from 'react';
 
 import EventBus from 'utils/eventbus';
 
 import './autocomplete.scss';
 
-class Autocomplete extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filtered: [],
-      input: '',
-      autocompleteDisabled: localStorage.getItem('autocomplete') !== 'true',
-    };
-  }
+const Autocomplete = ({ suggestions, onChange: onChangeCallback, onClick: onClickCallback, placeholder, id }) => {
+  const [filtered, setFiltered] = useState([]);
+  const [input, setInput] = useState('');
+  const [autocompleteDisabled, setAutocompleteDisabled] = useState(
+    localStorage.getItem('autocomplete') !== 'true',
+  );
 
-  onChange = (e) => {
-    if (this.state.autocompleteDisabled) {
-      return this.setState({
-        input: e.target.value,
-      });
+  const onChange = (e) => {
+    if (autocompleteDisabled) {
+      setInput(e.target.value);
+      return;
     }
 
-    this.setState({
-      filtered: this.props.suggestions.filter(
+    setFiltered(
+      suggestions.filter(
         (suggestion) => suggestion.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1,
       ),
-      input: e.target.value,
-    });
+    );
+    setInput(e.target.value);
 
-    this.props.onChange(e.target.value);
+    onChangeCallback(e.target.value);
   };
 
-  onClick = (e) => {
-    this.setState({
-      filtered: [],
-      input: e.target.innerText,
-    });
+  const onClick = (e) => {
+    setFiltered([]);
+    setInput(e.target.innerText);
 
-    this.props.onClick({
+    onClickCallback({
       preventDefault: () => e.preventDefault(),
       target: {
         value: e.target.innerText,
@@ -45,51 +39,48 @@ class Autocomplete extends PureComponent {
     });
   };
 
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  useEffect(() => {
+    const handleRefresh = (data) => {
       if (data === 'search') {
-        this.setState({
-          autocompleteDisabled: localStorage.getItem('autocomplete') !== 'true',
-        });
+        setAutocompleteDisabled(localStorage.getItem('autocomplete') !== 'true');
       }
-    });
-  }
+    };
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
+    EventBus.on('refresh', handleRefresh);
+    return () => {
+      EventBus.off('refresh');
+    };
+  }, []);
 
-  render() {
-    let autocomplete = null;
+  let autocomplete = null;
 
-    // length will only be > 0 if enabled
-    if (this.state.filtered.length > 0 && this.state.input.length > 0) {
-      autocomplete = (
-        <div className="suggestions">
-          {this.state.filtered.map((suggestion) => (
-            <div key={suggestion} onClick={this.onClick}>
-              {suggestion}
-            </div>
-          ))}
-        </div>
-      );
-    }
-
-    return (
-      <div style={{ display: 'flex', flexFlow: 'column' }}>
-        <input
-          type="text"
-          onChange={this.onChange}
-          value={this.state.input}
-          placeholder={this.props.placeholder || ''}
-          autoComplete="off"
-          spellCheck={false}
-          id={this.props.id || ''}
-        />
-        {autocomplete}
+  // length will only be > 0 if enabled
+  if (filtered.length > 0 && input.length > 0) {
+    autocomplete = (
+      <div className="suggestions">
+        {filtered.map((suggestion) => (
+          <div key={suggestion} onClick={onClick}>
+            {suggestion}
+          </div>
+        ))}
       </div>
     );
   }
-}
+
+  return (
+    <div style={{ display: 'flex', flexFlow: 'column' }}>
+      <input
+        type="text"
+        onChange={onChange}
+        value={input}
+        placeholder={placeholder || ''}
+        autoComplete="off"
+        spellCheck={false}
+        id={id || ''}
+      />
+      {autocomplete}
+    </div>
+  );
+};
 
 export { Autocomplete as default, Autocomplete };

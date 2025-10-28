@@ -1,4 +1,4 @@
-import { PureComponent, Fragment, Suspense, lazy } from 'react';
+import { useState, useEffect, Fragment, Suspense, lazy, useMemo } from 'react';
 
 import Clock from '../../time/Clock';
 import Greeting from '../../greeting/Greeting';
@@ -17,74 +17,69 @@ import EventBus from 'utils/eventbus';
 // as seen here it is ridiculously large
 const Weather = lazy(() => import('../../weather/Weather'));
 
-export default class Widgets extends PureComponent {
-  online = localStorage.getItem('offlineMode') === 'false';
-  constructor() {
-    super();
-    this.state = {
-      order: JSON.parse(localStorage.getItem('order')),
-      welcome: localStorage.getItem('showWelcome'),
-    };
-    // widgets we can re-order
-    this.widgets = {
-      time: this.enabled('time') && <Clock />,
-      greeting: this.enabled('greeting') && <Greeting />,
-      quote: this.enabled('quote') && <Quote />,
-      date: this.enabled('date') && <Date />,
-      quicklinks: this.enabled('quicklinksenabled') && this.online ? <QuickLinks /> : null,
-      message: this.enabled('message') && <Message />,
-    };
-  }
+const Widgets = () => {
+  const online = localStorage.getItem('offlineMode') === 'false';
+  const [order, setOrder] = useState(JSON.parse(localStorage.getItem('order')));
+  const [welcome, setWelcome] = useState(localStorage.getItem('showWelcome'));
 
-  enabled(key) {
+  const enabled = (key) => {
     return localStorage.getItem(key) === 'true';
-  }
+  };
 
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  // widgets we can re-order
+  const widgets = useMemo(
+    () => ({
+      time: enabled('time') && <Clock />,
+      greeting: enabled('greeting') && <Greeting />,
+      quote: enabled('quote') && <Quote />,
+      date: enabled('date') && <Date />,
+      quicklinks: enabled('quicklinksenabled') && online ? <QuickLinks /> : null,
+      message: enabled('message') && <Message />,
+    }),
+    [order], // Re-create widgets when order changes
+  );
+
+  useEffect(() => {
+    const handleRefresh = (data) => {
       switch (data) {
         case 'widgets':
-          return this.setState({
-            order: JSON.parse(localStorage.getItem('order')),
-          });
+          return setOrder(JSON.parse(localStorage.getItem('order')));
         case 'widgetsWelcome':
-          this.setState({
-            welcome: localStorage.getItem('showWelcome'),
-          });
+          setWelcome(localStorage.getItem('showWelcome'));
           localStorage.setItem('showWelcome', true);
           window.onbeforeunload = () => {
             localStorage.clear();
           };
           break;
         case 'widgetsWelcomeDone':
-          this.setState({
-            welcome: localStorage.getItem('showWelcome'),
-          });
-          return (window.onbeforeunload = null);
+          setWelcome(localStorage.getItem('showWelcome'));
+          window.onbeforeunload = null;
+          break;
         default:
           break;
       }
-    });
-  }
+    };
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
+    EventBus.on('refresh', handleRefresh);
+    return () => {
+      EventBus.off('refresh');
+    };
+  }, []);
 
-  render() {
-    // don't show when welcome is there
-    return this.state.welcome !== 'false' ? (
-      <WidgetsLayout />
-    ) : (
-      <WidgetsLayout>
-        <Suspense fallback={<></>}>
-          {this.enabled('searchBar') && <Search />}
-          {this.state.order.map((element, key) => (
-            <Fragment key={key}>{this.widgets[element]}</Fragment>
-          ))}
-          {this.enabled('weatherEnabled') && this.online ? <Weather /> : null}
-        </Suspense>
-      </WidgetsLayout>
-    );
-  }
-}
+  // don't show when welcome is there
+  return welcome !== 'false' ? (
+    <WidgetsLayout />
+  ) : (
+    <WidgetsLayout>
+      <Suspense fallback={<></>}>
+        {enabled('searchBar') && <Search />}
+        {order.map((element, key) => (
+          <Fragment key={key}>{widgets[element]}</Fragment>
+        ))}
+        {enabled('weatherEnabled') && online ? <Weather /> : null}
+      </Suspense>
+    </WidgetsLayout>
+  );
+};
+
+export { Widgets as default, Widgets };

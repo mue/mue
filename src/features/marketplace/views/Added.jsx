@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { memo, useState, useEffect, useCallback } from 'react';
 import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
@@ -13,37 +13,32 @@ import { Button } from 'components/Elements';
 
 import { install, uninstall, urlParser } from 'utils/marketplace';
 
-export default class Added extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      installed: JSON.parse(localStorage.getItem('installed')),
-      item: {},
-      button: '',
-      showFailed: false,
-      failedReason: '',
-    };
-    this.buttons = {
-      uninstall: (
-        <Button
-          type="settings"
-          onClick={() => this.uninstall()}
-          label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-        />
-      ),
-    };
-  }
+const Added = memo(() => {
+  const [installed, setInstalled] = useState(JSON.parse(localStorage.getItem('installed')));
+  const [item, setItem] = useState({});
+  const [showFailed, setShowFailed] = useState(false);
+  const [failedReason, setFailedReason] = useState('');
 
-  installAddon(input) {
-    let failedReason = '';
+  const uninstallItem = useCallback(() => {
+    uninstall(item.type, item.display_name);
+    toast(variables.getMessage('toasts.uninstalled'));
+
+    setItem({});
+    setInstalled(JSON.parse(localStorage.getItem('installed')));
+
+    variables.stats.postEvent('marketplace', 'Uninstall');
+  }, [item.type, item.display_name]);
+
+  const installAddon = useCallback((input) => {
+    let failedReasonText = '';
     if (!input.name) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_name');
+      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_name');
     } else if (!input.author) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_author');
+      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_author');
     } else if (!input.type) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_type');
+      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_type');
     } else if (!input.version) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.no_version');
+      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_version');
     } else if (
       input.type === 'photos' &&
       (!input.photos ||
@@ -53,84 +48,69 @@ export default class Added extends PureComponent {
         !input.photos[0].photographer ||
         !input.photos[0].location)
     ) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.invalid_photos');
+      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.invalid_photos');
     } else if (
       input.type === 'quotes' &&
       (!input.quotes || !input.quotes.length || !input.quotes[0].quote || !input.quotes[0].author)
     ) {
-      failedReason = variables.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
+      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
     }
 
-    if (failedReason !== '' && this.state.showFailed === false) {
-      return this.setState({ failedReason, showFailed: true });
+    if (failedReasonText !== '') {
+      setFailedReason(failedReasonText);
+      setShowFailed(true);
+      return;
     }
 
     install(input.type, input, true, false);
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
-    this.setState({ installed: JSON.parse(localStorage.getItem('installed')) });
-  }
+    setInstalled(JSON.parse(localStorage.getItem('installed')));
+  }, []);
 
-  getSideloadButton() {
+  const getSideloadButton = useCallback(() => {
     return (
       <Button
         type="settings"
         onClick={() => document.getElementById('file-input').click()}
-        ref={this.customDnd}
         icon={<MdSendTimeExtension />}
         label={variables.getMessage('modals.main.addons.sideload.title')}
       />
     );
-  }
+  }, []);
 
-  toggle(type, data) {
+  const toggle = useCallback((type, data) => {
     if (type === 'item') {
-      const installed = JSON.parse(localStorage.getItem('installed'));
-      const info = { data: installed.find((i) => i.name === data.name) };
+      const installedItems = JSON.parse(localStorage.getItem('installed'));
+      const info = { data: installedItems.find((i) => i.name === data.name) };
 
-      this.setState({
-        item: {
-          type: info.data.type,
-          display_name: info.data.name,
-          author: info.data.author,
-          description: urlParser(info.data.description.replace(/\n/g, '<br>')),
-          //updated: info.updated,
-          version: info.data.version,
-          icon: info.data.screenshot_url,
-          data: info.data,
-        },
-        button: this.buttons.uninstall,
+      setItem({
+        type: info.data.type,
+        display_name: info.data.name,
+        author: info.data.author,
+        description: urlParser(info.data.description.replace(/\n/g, '<br>')),
+        version: info.data.version,
+        icon: info.data.screenshot_url,
+        data: info.data,
       });
+      
       variables.stats.postEvent('marketplace', 'ItemPage viewed');
     } else {
-      this.setState({ item: {} });
+      setItem({});
     }
-  }
+  }, []);
 
-  uninstall() {
-    uninstall(this.state.item.type, this.state.item.display_name);
-
-    toast(variables.getMessage('toasts.uninstalled'));
-
-    this.setState({
-      button: '',
-      installed: JSON.parse(localStorage.getItem('installed')),
-      item: {},
-    });
-
-    variables.stats.postEvent('marketplace', 'Uninstall');
-  }
-
-  sortAddons(value, sendEvent) {
-    const installed = JSON.parse(localStorage.getItem('installed'));
+  const sortAddons = useCallback((value, sendEvent) => {
+    const installedItems = JSON.parse(localStorage.getItem('installed'));
+    
     switch (value) {
       case 'newest':
-        installed.reverse();
+        installedItems.reverse();
         break;
       case 'oldest':
         break;
       case 'a-z':
-        installed.sort((a, b) => {
+        installedItems.sort((a, b) => {
           if (a.display_name < b.display_name) {
             return -1;
           }
@@ -141,23 +121,23 @@ export default class Added extends PureComponent {
         });
         break;
       case 'z-a':
-        installed.sort();
-        installed.reverse();
+        installedItems.sort();
+        installedItems.reverse();
         break;
       default:
         break;
     }
 
-    this.setState({ installed });
+    setInstalled(installedItems);
 
     if (sendEvent) {
       variables.stats.postEvent('marketplace', 'Sort');
     }
-  }
+  }, []);
 
-  updateCheck() {
+  const updateCheck = useCallback(() => {
     let updates = 0;
-    this.state.installed.forEach(async (item) => {
+    installed.forEach(async (item) => {
       const data = await (
         await fetch(variables.constants.API_URL + 'marketplace/item/' + item.name)
       ).json();
@@ -171,11 +151,11 @@ export default class Added extends PureComponent {
     } else {
       toast(variables.getMessage('modals.main.addons.no_updates'));
     }
-  }
+  }, [installed]);
 
-  removeAll() {
+  const removeAll = useCallback(() => {
     try {
-      this.state.installed.forEach((item) => {
+      installed.forEach((item) => {
         uninstall(item.type, item.name);
       });
     } catch {
@@ -183,121 +163,121 @@ export default class Added extends PureComponent {
     }
 
     localStorage.setItem('installed', JSON.stringify([]));
-
     toast(variables.getMessage('toasts.uninstalled_all'));
+    setInstalled([]);
+  }, [installed]);
 
-    this.setState({ installed: [] });
+  useEffect(() => {
+    sortAddons(localStorage.getItem('sortAddons'), false);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    this.forceUpdate();
-  }
+  const button = item.display_name ? (
+    <Button
+      type="settings"
+      onClick={uninstallItem}
+      label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+    />
+  ) : '';
 
-  componentDidMount() {
-    this.sortAddons(localStorage.getItem('sortAddons'), false);
-  }
-
-  render() {
-    const sideLoadBackendElements = () => (
-      <>
-        <Modal
-          closeTimeoutMS={100}
-          onRequestClose={() => this.setState({ showFailed: false })}
-          isOpen={this.state.showFailed}
-          className="Modal resetmodal mainModal resetmodal"
-          overlayClassName="Overlay resetoverlay"
-          ariaHideApp={false}
-        >
-          <SideloadFailedModal
-            modalClose={() => this.setState({ showFailed: false })}
-            reason={this.state.failedReason}
-          />
-        </Modal>
-        <FileUpload
-          id="file-input"
-          type="settings"
-          accept="application/json"
-          loadFunction={(e) => this.installAddon(JSON.parse(e))}
+  const sideLoadBackendElements = () => (
+    <>
+      <Modal
+        closeTimeoutMS={100}
+        onRequestClose={() => setShowFailed(false)}
+        isOpen={showFailed}
+        className="Modal resetmodal mainModal resetmodal"
+        overlayClassName="Overlay resetoverlay"
+        ariaHideApp={false}
+      >
+        <SideloadFailedModal
+          modalClose={() => setShowFailed(false)}
+          reason={failedReason}
         />
-      </>
-    );
+      </Modal>
+      <FileUpload
+        id="file-input"
+        type="settings"
+        accept="application/json"
+        loadFunction={(e) => installAddon(JSON.parse(e))}
+      />
+    </>
+  );
 
-    if (this.state.installed.length === 0) {
-      return (
-        <>
-          <Header title={variables.getMessage('modals.main.navbar.addons')} report={false}>
-            <CustomActions>{this.getSideloadButton()}</CustomActions>
-          </Header>
-          {sideLoadBackendElements()}
-          <div className="emptyItems">
-            <div className="emptyNewMessage">
-              <MdOutlineExtensionOff />
-              <span className="title">
-                {variables.getMessage('modals.main.addons.empty.title')}
-              </span>
-              <span className="subtitle">
-                {variables.getMessage('modals.main.addons.empty.description')}
-              </span>
-            </div>
-          </div>
-        </>
-      );
-    }
-
-    if (this.state.item.display_name) {
-      return (
-        <ItemPage
-          data={this.state.item}
-          button={this.state.button}
-          addons={true}
-          toggleFunction={() => this.toggle()}
-        />
-      );
-    }
-
+  if (installed.length === 0) {
     return (
       <>
-        <Header title={variables.getMessage('modals.main.addons.added')} report={false}>
-          <CustomActions>
-            {this.getSideloadButton()}
-            {sideLoadBackendElements()}
-            <Button
-              type="settings"
-              onClick={() => this.updateCheck()}
-              icon={<MdUpdate />}
-              label={variables.getMessage('modals.main.addons.check_updates')}
-            />
-            <Button
-              type="settings"
-              onClick={() => this.removeAll()}
-              icon={<MdOutlineExtensionOff />}
-              label="Remove all addons"
-            />
-            {/*<Button
-                type="settings"
-                onClick={() => document.getElementById('file-input').click()}
-                icon={<MdSendTimeExtension />}
-                label={variables.getMessage('modals.main.addons.sideload.title')}
-    `       />*/}
-          </CustomActions>
+        <Header title={variables.getMessage('modals.main.navbar.addons')} report={false}>
+          <CustomActions>{getSideloadButton()}</CustomActions>
         </Header>
-        <Dropdown
-          label={variables.getMessage('modals.main.addons.sort.title')}
-          name="sortAddons"
-          onChange={(value) => this.sortAddons(value)}
-          items={[
-            { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
-            { value: 'oldest', text: variables.getMessage('modals.main.addons.sort.oldest') },
-            { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
-            { value: 'z-a', text: variables.getMessage('modals.main.addons.sort.z_a') },
-          ]}
-        />
-        <Items
-          items={this.state.installed}
-          isAdded={true}
-          filter=""
-          toggleFunction={(input) => this.toggle('item', input)}
-          showCreateYourOwn={false}
-        />
+        {sideLoadBackendElements()}
+        <div className="emptyItems">
+          <div className="emptyNewMessage">
+            <MdOutlineExtensionOff />
+            <span className="title">
+              {variables.getMessage('modals.main.addons.empty.title')}
+            </span>
+            <span className="subtitle">
+              {variables.getMessage('modals.main.addons.empty.description')}
+            </span>
+          </div>
+        </div>
       </>
     );
   }
-}
+
+  if (item.display_name) {
+    return (
+      <ItemPage
+        data={item}
+        button={button}
+        addons={true}
+        toggleFunction={() => toggle()}
+      />
+    );
+  }
+
+  return (
+    <>
+      <Header title={variables.getMessage('modals.main.addons.added')} report={false}>
+        <CustomActions>
+          {getSideloadButton()}
+          {sideLoadBackendElements()}
+          <Button
+            type="settings"
+            onClick={updateCheck}
+            icon={<MdUpdate />}
+            label={variables.getMessage('modals.main.addons.check_updates')}
+          />
+          <Button
+            type="settings"
+            onClick={removeAll}
+            icon={<MdOutlineExtensionOff />}
+            label="Remove all addons"
+          />
+        </CustomActions>
+      </Header>
+      <Dropdown
+        label={variables.getMessage('modals.main.addons.sort.title')}
+        name="sortAddons"
+        onChange={(value) => sortAddons(value)}
+        items={[
+          { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
+          { value: 'oldest', text: variables.getMessage('modals.main.addons.sort.oldest') },
+          { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
+          { value: 'z-a', text: variables.getMessage('modals.main.addons.sort.z_a') },
+        ]}
+      />
+      <Items
+        items={installed}
+        isAdded={true}
+        filter=""
+        toggleFunction={(input) => toggle('item', input)}
+        showCreateYourOwn={false}
+      />
+    </>
+  );
+});
+
+Added.displayName = 'Added';
+
+export default Added;

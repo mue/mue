@@ -1,24 +1,24 @@
 import variables from 'config/variables';
-import { PureComponent, createRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MdOutlineWifiOff } from 'react-icons/md';
 import Modal from 'react-modal';
 
 import Lightbox from '../../marketplace/components/Elements/Lightbox/Lightbox';
 
-class Changelog extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      title: null,
-      showLightbox: false,
-      lightboxImg: null,
-    };
-    this.offlineMode = localStorage.getItem('offlineMode') === 'true';
-    this.controller = new AbortController();
-    this.changelog = createRef();
-  }
+const Changelog = () => {
+  const [title, setTitle] = useState(null);
+  const [content, setContent] = useState(null);
+  const [date, setDate] = useState(null);
+  const [image, setImage] = useState(null);
+  const [error, setError] = useState(false);
+  const [showLightbox, setShowLightbox] = useState(false);
+  const [lightboxImg, setLightboxImg] = useState(null);
+  
+  const offlineMode = localStorage.getItem('offlineMode') === 'true';
+  const controllerRef = useRef(new AbortController());
+  const changelog = useRef();
 
-  parseMarkdown = (text) => {
+  const parseMarkdown = (text) => {
     if (typeof text !== 'string') {
       throw new Error('Input must be a string');
     }
@@ -46,15 +46,15 @@ class Changelog extends PureComponent {
     return text;
   };
 
-  async getUpdate() {
+  const getUpdate = async () => {
     const releases = await fetch(
       `https://api.github.com/repos/${variables.constants.ORG_NAME}/${variables.constants.REPO_NAME}/releases`,
       {
-        signal: this.controller.signal,
+        signal: controllerRef.current.signal,
       },
     );
 
-    if (this.controller.signal.aborted === true) {
+    if (controllerRef.current.signal.aborted === true) {
       return;
     }
 
@@ -67,109 +67,105 @@ class Changelog extends PureComponent {
     }
 
     // request the changelog
-    const res = await fetch(release.url, { signal: this.controller.signal });
+    const res = await fetch(release.url, { signal: controllerRef.current.signal });
 
     if (res.status === 404) {
-      this.setState({ error: true });
+      setError(true);
       return;
     }
 
-    if (this.controller.signal.aborted === true) {
+    if (controllerRef.current.signal.aborted === true) {
       return;
     }
 
     const changelog = await res.json();
-    this.setState({
-      title: changelog.name,
-      content: this.parseMarkdown(changelog.body),
-      date: new Date(changelog.published_at).toLocaleDateString(),
-    });
-  }
+    setTitle(changelog.name);
+    setContent(parseMarkdown(changelog.body));
+    setDate(new Date(changelog.published_at).toLocaleDateString());
+  };
 
-  componentDidMount() {
-    if (navigator.onLine === false || this.offlineMode) {
+  useEffect(() => {
+    if (navigator.onLine === false || offlineMode) {
       return;
     }
 
-    this.getUpdate();
-  }
+    getUpdate();
 
-  componentWillUnmount() {
-    // stop making requests
-    this.controller.abort();
-  }
-
-  render() {
-    const errorMessage = (msg) => {
-      return (
-        <div className="emptyItems">
-          <div className="emptyMessage">{msg}</div>
-        </div>
-      );
+    return () => {
+      // stop making requests
+      controllerRef.current.abort();
     };
+  }, []);
 
-    if (navigator.onLine === false || this.offlineMode) {
-      return errorMessage(
-        <>
-          <MdOutlineWifiOff />
-          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
-          <p className="description">
-            {variables.getMessage('modals.main.marketplace.offline.description')}
-          </p>
-        </>,
-      );
-    }
-
-    if (this.state.error === true) {
-      return errorMessage(
-        <>
-          <MdOutlineWifiOff />
-          <span className="title">{variables.getMessage('modals.main.error_boundary.title')}</span>
-          <span className="subtitle">
-            {variables.getMessage('modals.main.error_boundary.message')}
-          </span>
-        </>,
-      );
-    }
-
-    if (!this.state.title) {
-      return errorMessage(
-        <div className="loaderHolder">
-          <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
-        </div>,
-      );
-    }
-
+  const errorMessage = (msg) => {
     return (
-      <div className="modalInfoPage changelogtab" ref={this.changelog}>
-        <span className="mainTitle">{this.state.title}</span>
-        <span className="subtitle">Released on {this.state.date}</span>
-        {this.state.image && (
-          <img
-            draggable={false}
-            src={this.state.image}
-            alt={this.state.title}
-            className="updateImage"
-          />
-        )}
-        <div className="updateChangelog" dangerouslySetInnerHTML={{ __html: this.state.content }} />
-        <Modal
-          closeTimeoutMS={100}
-          onRequestClose={() => this.setState({ showLightbox: false })}
-          isOpen={this.state.showLightbox}
-          className="Modal lightBoxModal"
-          overlayClassName="Overlay resetoverlay"
-          ariaHideApp={false}
-        >
-          <Lightbox
-            modalClose={() => this.setState({ showLightbox: false })}
-            img={this.state.lightboxImg}
-          />
-        </Modal>
+      <div className="emptyItems">
+        <div className="emptyMessage">{msg}</div>
       </div>
     );
+  };
+
+  if (navigator.onLine === false || offlineMode) {
+    return errorMessage(
+      <>
+        <MdOutlineWifiOff />
+        <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
+        <p className="description">
+          {variables.getMessage('modals.main.marketplace.offline.description')}
+        </p>
+      </>,
+    );
   }
-}
+
+  if (error === true) {
+    return errorMessage(
+      <>
+        <MdOutlineWifiOff />
+        <span className="title">{variables.getMessage('modals.main.error_boundary.title')}</span>
+        <span className="subtitle">
+          {variables.getMessage('modals.main.error_boundary.message')}
+        </span>
+      </>,
+    );
+  }
+
+  if (!title) {
+    return errorMessage(
+      <div className="loaderHolder">
+        <div id="loader"></div>
+        <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+      </div>,
+    );
+  }
+
+  return (
+    <div className="modalInfoPage changelogtab" ref={changelog}>
+      <span className="mainTitle">{title}</span>
+      <span className="subtitle">Released on {date}</span>
+      {image && (
+        <img
+          draggable={false}
+          src={image}
+          alt={title}
+          className="updateImage"
+        />
+      )}
+      <div className="updateChangelog" dangerouslySetInnerHTML={{ __html: content }} />
+      <Modal
+        closeTimeoutMS={100}
+        onRequestClose={() => setShowLightbox(false)}
+        isOpen={showLightbox}
+        className="Modal lightBoxModal"
+        overlayClassName="Overlay resetoverlay"
+        ariaHideApp={false}
+      >
+        <Lightbox
+          modalClose={() => setShowLightbox(false)}
+          img={lightboxImg}
+        />
+      </Modal>
+    </div>
+  );
+};
 
 export { Changelog as default, Changelog };

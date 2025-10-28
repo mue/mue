@@ -1,26 +1,23 @@
 import variables from 'config/variables';
-import { PureComponent, createRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { nth, convertTimezone } from 'utils/date';
 import EventBus from 'utils/eventbus';
 
 import './date.scss';
 
-export default class DateWidget extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      date: '',
-      weekNumber: null,
-    };
-    this.date = createRef();
-  }
+const DateWidget = () => {
+  const [date, setDate] = useState('');
+  const [weekNumber, setWeekNumber] = useState(null);
+  const [display, setDisplay] = useState('block');
+  const [fontSize, setFontSize] = useState('1em');
+  const dateRef = useRef();
 
   /**
    * Get the week number of the year for the given date.
    * @param {Date} date
    */
-  getWeekNumber(date) {
+  const getWeekNumber = (date) => {
     const dateToday = new Date(date.valueOf());
     const dayNumber = (dateToday.getDay() + 6) % 7;
 
@@ -32,39 +29,37 @@ export default class DateWidget extends PureComponent {
       dateToday.setMonth(0, 1 + ((4 - dateToday.getDay() + 7) % 7));
     }
 
-    this.setState({
-      weekNumber: `${variables.getMessage('widgets.date.week')} ${
+    setWeekNumber(
+      `${variables.getMessage('widgets.date.week')} ${
         1 + Math.ceil((firstThursday - dateToday) / 604800000)
       }`,
-    });
-  }
+    );
+  };
 
-  getDate() {
+  const getDate = () => {
     let date = new Date();
     const timezone = localStorage.getItem('timezone');
     if (timezone && timezone !== 'auto') {
       date = convertTimezone(date, timezone);
     }
-  
+
     if (localStorage.getItem('weeknumber') === 'true') {
-      this.getWeekNumber(date);
-    } else if (this.state.weekNumber !== null) {
-      this.setState({
-        weekNumber: null,
-      });
+      getWeekNumber(date);
+    } else if (weekNumber !== null) {
+      setWeekNumber(null);
     }
-  
+
     if (localStorage.getItem('dateType') === 'short') {
       const dateDay = date.getDate();
       const dateMonth = date.getMonth() + 1;
       const dateYear = date.getFullYear();
-  
+
       const zero = localStorage.getItem('datezero') === 'true';
-  
+
       let day = zero ? ('00' + dateDay).slice(-2) : dateDay;
       let month = zero ? ('00' + dateMonth).slice(-2) : dateMonth;
       let year = dateYear;
-  
+
       switch (localStorage.getItem('dateFormat')) {
         case 'MDY':
           day = dateMonth;
@@ -78,7 +73,7 @@ export default class DateWidget extends PureComponent {
         default:
           break;
       }
-  
+
       let format;
       switch (localStorage.getItem('shortFormat')) {
         case 'dots':
@@ -96,22 +91,22 @@ export default class DateWidget extends PureComponent {
         default:
           break;
       }
-  
-      this.setState({
-        date: format,
-      });
+
+      setDate(format);
     } else {
       // Long date
       const lang = variables.languagecode.split('_')[0];
-      const datenth = localStorage.getItem('datenth') === 'true' ? nth(date.getDate()) : date.getDate();
-      const dateDay = localStorage.getItem('dayofweek') === 'true'
-        ? date.toLocaleDateString(lang, { weekday: 'long' })
-        : '';
+      const datenth =
+        localStorage.getItem('datenth') === 'true' ? nth(date.getDate()) : date.getDate();
+      const dateDay =
+        localStorage.getItem('dayofweek') === 'true'
+          ? date.toLocaleDateString(lang, { weekday: 'long' })
+          : '';
       const dateMonth = date.toLocaleDateString(lang, { month: 'long' });
       const dateYear = date.getFullYear();
-  
+
       let formattedDate;
-  
+
       switch (localStorage.getItem('longFormat')) {
         case 'MDY':
           formattedDate = `${dateMonth} ${datenth}, ${dateYear}${dateDay ? `, ${dateDay}` : ''}`;
@@ -124,45 +119,41 @@ export default class DateWidget extends PureComponent {
           formattedDate = `${datenth} ${dateMonth} ${dateYear}${dateDay ? `, ${dateDay}` : ''}`;
           break;
       }
-  
-      this.setState({
-        date: formattedDate,
-      });
+
+      setDate(formattedDate);
     }
-  }
-  
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  };
+
+  useEffect(() => {
+    const handleRefresh = (data) => {
       if (data === 'date' || data === 'timezone') {
         if (localStorage.getItem('date') === 'false') {
-          return (this.date.current.style.display = 'none');
+          setDisplay('none');
+          return;
         }
 
-        this.date.current.style.display = 'block';
-        this.date.current.style.fontSize = `${Number(
-          (localStorage.getItem('zoomDate') || 100) / 100,
-        )}em`;
-        this.getDate();
+        setDisplay('block');
+        setFontSize(`${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`);
+        getDate();
       }
-    });
+    };
 
-    this.date.current.style.fontSize = `${Number(
-      (localStorage.getItem('zoomDate') || 100) / 100,
-    )}em`;
-    this.getDate();
-  }
+    setFontSize(`${Number((localStorage.getItem('zoomDate') || 100) / 100)}em`);
+    getDate();
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
+    EventBus.on('refresh', handleRefresh);
+    return () => {
+      EventBus.off('refresh');
+    };
+  }, []);
 
-  render() {
-    return (
-      <span className="date" ref={this.date}>
-        {this.state.date}
-        <br />
-        {this.state.weekNumber}
-      </span>
-    );
-  }
-}
+  return (
+    <span className="date" ref={dateRef} style={{ display, fontSize }}>
+      {date}
+      <br />
+      {weekNumber}
+    </span>
+  );
+};
+
+export { DateWidget as default, DateWidget };

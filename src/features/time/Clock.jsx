@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { convertTimezone } from 'utils/date';
 import { AnalogClock } from './components/AnalogClock';
@@ -6,29 +6,25 @@ import { VerticalClock } from './components/VerticalClock';
 import EventBus from 'utils/eventbus';
 
 import './clock.scss';
-export default class Clock extends PureComponent {
-  constructor() {
-    super();
 
-    this.timer = undefined;
-    this.state = {
-      timeType: localStorage.getItem('timeType'),
-      time: '',
-      finalHour: '',
-      finalMinute: '',
-      finalSeconds: '',
-      ampm: '',
-      nowGlobal: new Date(),
-    };
-  }
+const Clock = () => {
+  const [timeType] = useState(localStorage.getItem('timeType'));
+  const [time, setTime] = useState('');
+  const [finalHour, setFinalHour] = useState('');
+  const [finalMinute, setFinalMinute] = useState('');
+  const [finalSeconds, setFinalSeconds] = useState('');
+  const [ampm, setAmpm] = useState('');
+  const [display, setDisplay] = useState('block');
+  const [fontSize, setFontSize] = useState('4em');
+  const timerRef = useRef(undefined);
 
-  startTime(
+  const startTime = (
     time = localStorage.getItem('seconds') === 'true' ||
     localStorage.getItem('timeType') === 'analogue'
       ? 1000 - (Date.now() % 1000)
       : 60000 - (Date.now() % 60000),
-  ) {
-    this.timer = setTimeout(() => {
+  ) => {
+    timerRef.current = setTimeout(() => {
       let now = new Date();
       const timezone = localStorage.getItem('timezone');
       if (timezone && timezone !== 'auto') {
@@ -37,16 +33,14 @@ export default class Clock extends PureComponent {
 
       switch (localStorage.getItem('timeType')) {
         case 'percentageComplete':
-          this.setState({
-            time: (now.getHours() / 24).toFixed(2).replace('0.', '') + '%',
-            ampm: '',
-          });
+          setTime((now.getHours() / 24).toFixed(2).replace('0.', '') + '%');
+          setAmpm('');
           break;
         case 'analogue':
           // load analog clock css
           import('react-clock/dist/Clock.css');
 
-          this.setState({ time: now });
+          setTime(now);
           break;
         default: {
           // Default clock
@@ -56,27 +50,24 @@ export default class Clock extends PureComponent {
 
           if (localStorage.getItem('seconds') === 'true') {
             sec = `:${('00' + now.getSeconds()).slice(-2)}`;
-            this.setState({ finalSeconds: `${('00' + now.getSeconds()).slice(-2)}` });
+            setFinalSeconds(`${('00' + now.getSeconds()).slice(-2)}`);
           }
 
           if (localStorage.getItem('timeformat') === 'twentyfourhour') {
             if (zero === 'false') {
               time = `${now.getHours()}:${('00' + now.getMinutes()).slice(-2)}:${sec}`;
-              this.setState({
-                finalHour: `${now.getHours()}`,
-                finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,
-              });
+              setFinalHour(`${now.getHours()}`);
+              setFinalMinute(`${('00' + now.getMinutes()).slice(-2)}`);
             } else {
               time = `${('00' + now.getHours()).slice(-2)}:${('00' + now.getMinutes()).slice(
                 -2,
               )}${sec}`;
-              this.setState({
-                finalHour: `${('00' + now.getHours()).slice(-2)}`,
-                finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,
-              });
+              setFinalHour(`${('00' + now.getHours()).slice(-2)}`);
+              setFinalMinute(`${('00' + now.getMinutes()).slice(-2)}`);
             }
 
-            this.setState({ time, ampm: '' });
+            setTime(time);
+            setAmpm('');
           } else {
             // 12 hour
             let hours = now.getHours();
@@ -89,80 +80,76 @@ export default class Clock extends PureComponent {
 
             if (zero === 'false') {
               time = `${hours}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
-              this.setState({
-                finalHour: `${hours}`,
-                finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,
-              });
+              setFinalHour(`${hours}`);
+              setFinalMinute(`${('00' + now.getMinutes()).slice(-2)}`);
             } else {
               time = `${('00' + hours).slice(-2)}:${('00' + now.getMinutes()).slice(-2)}${sec}`;
-              this.setState({
-                finalHour: `${('00' + hours).slice(-2)}`,
-                finalMinute: `${('00' + now.getMinutes()).slice(-2)}`,
-              });
+              setFinalHour(`${('00' + hours).slice(-2)}`);
+              setFinalMinute(`${('00' + now.getMinutes()).slice(-2)}`);
             }
 
-            this.setState({ time, ampm: now.getHours() > 11 ? 'PM' : 'AM' });
+            setTime(time);
+            setAmpm(now.getHours() > 11 ? 'PM' : 'AM');
           }
           break;
         }
       }
 
-      this.startTime();
+      startTime();
     }, time);
-  }
+  };
 
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  useEffect(() => {
+    const handleRefresh = (data) => {
       if (data === 'clock' || data === 'timezone') {
-        const element = document.querySelector('.clock-container');
-
         if (localStorage.getItem('time') === 'false') {
-          return (element.style.display = 'none');
+          setDisplay('none');
+          return;
         }
 
-        this.timer = null;
-        this.startTime(0);
+        timerRef.current = null;
+        startTime(0);
 
-        element.style.display = 'block';
-        element.style.fontSize = `${
-          4 * Number((localStorage.getItem('zoomClock') || 100) / 100)
-        }em`;
+        setDisplay('block');
+        setFontSize(`${4 * Number((localStorage.getItem('zoomClock') || 100) / 100)}em`);
       }
-    });
+    };
 
     if (localStorage.getItem('timeType') !== 'analogue') {
-      document.querySelector('.clock-container').style.fontSize = `${
-        4 * Number((localStorage.getItem('zoomClock') || 100) / 100)
-      }em`;
+      setFontSize(`${4 * Number((localStorage.getItem('zoomClock') || 100) / 100)}em`);
     }
 
-    this.startTime(0);
+    startTime(0);
+
+    EventBus.on('refresh', handleRefresh);
+    return () => {
+      EventBus.off('refresh');
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
+
+  if (localStorage.getItem('timeType') === 'analogue') {
+    return <AnalogClock time={time} />;
   }
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
-
-  render() {
-    if (localStorage.getItem('timeType') === 'analogue') {
-      return <AnalogClock time={this.state.time} />;
-    }
-
-    if (localStorage.getItem('timeType') === 'verticalClock') {
-      return (
-        <VerticalClock
-          finalHour={this.state.finalHour}
-          finalMinute={this.state.finalMinute}
-          finalSeconds={this.state.finalSeconds}
-        />
-      );
-    }
-
+  if (localStorage.getItem('timeType') === 'verticalClock') {
     return (
-      <span className="clock clock-container">
-        {this.state.time}
-        <span className="ampm">{this.state.ampm}</span>
-      </span>
+      <VerticalClock
+        finalHour={finalHour}
+        finalMinute={finalMinute}
+        finalSeconds={finalSeconds}
+      />
     );
   }
-}
+
+  return (
+    <span className="clock clock-container" style={{ display, fontSize }}>
+      {time}
+      <span className="ampm">{ampm}</span>
+    </span>
+  );
+};
+
+export { Clock as default, Clock };

@@ -1,19 +1,22 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { memo, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from 'features/background/api/videoCheck';
 
-class FileUpload extends PureComponent {
-  componentDidMount() {
-    document.getElementById(this.props.id).onchange = (e) => {
+const FileUpload = memo(({ id, type, accept, loadFunction }) => {
+  useEffect(() => {
+    const fileInput = document.getElementById(id);
+    if (!fileInput) return;
+
+    const handleChange = (e) => {
       const reader = new FileReader();
       const file = e.target.files[0];
 
-      if (this.props.type === 'settings') {
+      if (type === 'settings') {
         reader.readAsText(file, 'UTF-8');
         reader.onload = (e) => {
-          return this.props.loadFunction(e.target.result);
+          return loadFunction(e.target.result);
         };
       } else {
         // background upload
@@ -29,7 +32,7 @@ class FileUpload extends PureComponent {
             return toast(variables.getMessage('toasts.no_storage'));
           }
 
-          return this.props.loadFunction(file);
+          return loadFunction(file);
         }
 
         compressAccurately(file, {
@@ -40,7 +43,7 @@ class FileUpload extends PureComponent {
             return toast(variables.getMessage('toasts.no_storage'));
           }
 
-          this.props.loadFunction({
+          loadFunction({
             target: {
               result: await filetoDataURL(res),
             },
@@ -48,18 +51,26 @@ class FileUpload extends PureComponent {
         });
       }
     };
-  }
 
-  render() {
-    return (
-      <input
-        id={this.props.id}
-        type="file"
-        style={{ display: 'none' }}
-        accept={this.props.accept}
-      />
-    );
-  }
-}
+    fileInput.onchange = handleChange;
+
+    return () => {
+      if (fileInput) {
+        fileInput.onchange = null;
+      }
+    };
+  }, [id, type, loadFunction]);
+
+  return (
+    <input
+      id={id}
+      type="file"
+      style={{ display: 'none' }}
+      accept={accept}
+    />
+  );
+});
+
+FileUpload.displayName = 'FileUpload';
 
 export { FileUpload as default, FileUpload };

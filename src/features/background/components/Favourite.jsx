@@ -1,27 +1,20 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { memo, useState, useCallback, useEffect, useRef } from 'react';
 import { MdStar, MdStarBorder } from 'react-icons/md';
 
-class Favourite extends PureComponent {
-  buttons = {
-    favourited: <MdStar onClick={() => this.favourite()} className="topicons" />,
-    unfavourited: <MdStarBorder onClick={() => this.favourite()} className="topicons" />,
+const Favourite = memo(({ tooltipText, credit, offline, pun }) => {
+  const getInitialButton = () => {
+    return localStorage.getItem('favourite') ? 'favourited' : 'unfavourited';
   };
 
-  constructor() {
-    super();
-    this.state = {
-      favourited: localStorage.getItem('favourite')
-        ? this.buttons.favourited
-        : this.buttons.unfavourited,
-    };
-  }
+  const [favourited, setFavourited] = useState(getInitialButton());
+  const previousFavouritedRef = useRef(favourited);
 
-  async favourite() {
+  const favourite = useCallback(async () => {
     if (localStorage.getItem('favourite')) {
       localStorage.removeItem('favourite');
-      this.setState({ favourited: this.buttons.unfavourited });
-      this.props.tooltipText(variables.getMessage('widgets.quote.favourite'));
+      setFavourited('unfavourited');
+      tooltipText(variables.getMessage('widgets.quote.favourite'));
       variables.stats.postEvent('feature', 'Background favourite');
     } else {
       const type = localStorage.getItem('backgroundType');
@@ -71,12 +64,12 @@ class Favourite extends PureComponent {
               JSON.stringify({
                 type,
                 url,
-                credit: this.props.credit || '',
+                credit: credit || '',
                 location: location?.innerText,
                 camera: camera?.innerText,
                 resolution: document.getElementById('infoResolution').textContent || '',
-                offline: this.props.offline,
-                pun: this.props.pun,
+                offline,
+                pun,
               }),
             );
           }
@@ -84,39 +77,47 @@ class Favourite extends PureComponent {
         }
       }
 
-      this.setState({ favourited: this.buttons.favourited });
-      this.props.tooltipText(variables.getMessage('widgets.quote.unfavourite'));
+      setFavourited('favourited');
+      tooltipText(variables.getMessage('widgets.quote.unfavourite'));
       variables.stats.postEvent('feature', 'Background unfavourite');
     }
-  }
+  }, [tooltipText, credit, offline, pun]);
 
-  componentDidMount() {
-    this.updateTooltip();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.favourited !== this.state.favourited) {
-      this.updateTooltip();
-    }
-  }
-
-  updateTooltip() {
-    if (this.props.tooltipText) {
-      this.props.tooltipText(
+  const updateTooltip = useCallback(() => {
+    if (tooltipText) {
+      tooltipText(
         localStorage.getItem('favourite')
           ? variables.getMessage('widgets.quote.unfavourite')
           : variables.getMessage('widgets.quote.favourite'),
       );
     }
-  }
+  }, [tooltipText]);
 
-  render() {
-    if (localStorage.getItem('backgroundType') === 'colour') {
-      return null;
+  // componentDidMount
+  useEffect(() => {
+    updateTooltip();
+  }, [updateTooltip]);
+
+  // componentDidUpdate - only when favourited changes
+  useEffect(() => {
+    if (previousFavouritedRef.current !== favourited) {
+      updateTooltip();
+      previousFavouritedRef.current = favourited;
     }
+  }, [favourited, updateTooltip]);
 
-    return this.state.favourited;
+  if (localStorage.getItem('backgroundType') === 'colour') {
+    return null;
   }
-}
+
+  const buttons = {
+    favourited: <MdStar onClick={favourite} className="topicons" />,
+    unfavourited: <MdStarBorder onClick={favourite} className="topicons" />,
+  };
+
+  return buttons[favourited];
+});
+
+Favourite.displayName = 'Favourite';
 
 export default Favourite;

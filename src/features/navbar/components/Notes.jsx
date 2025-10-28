@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { PureComponent, memo, useState } from 'react';
+import { memo, useState, useEffect } from 'react';
 
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
@@ -10,137 +10,119 @@ import { Tooltip } from 'components/Elements';
 import { saveFile } from 'utils/saveFile';
 import EventBus from 'utils/eventbus';
 
-class Notes extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      notes: localStorage.getItem('notes') || '',
-      visibility: localStorage.getItem('notesPinned') === 'true' ? 'visible' : 'hidden',
-      showNotes: localStorage.getItem('notesPinned') === 'true' ? true : false,
-    };
-  }
+const Notes = ({ notesRef, floatRef, position, xPosition, yPosition }) => {
+  const [notes, setNotes] = useState(localStorage.getItem('notes') || '');
+  const [showNotes, setShowNotes] = useState(localStorage.getItem('notesPinned') === 'true');
+  const [zoomFontSize, setZoomFontSize] = useState('1.2rem');
 
-  setZoom() {
-    this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
-    });
-  }
-
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  useEffect(() => {
+    const handleRefresh = (data) => {
       if (data === 'navbar') {
-        this.forceUpdate();
-        try {
-          this.setZoom();
-        } catch {
-          // Ignore errors
-        }
+        setZoomFontSize(Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem');
       }
-    });
+    };
 
-    this.setZoom();
-  }
+    setZoomFontSize(Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem');
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
+    EventBus.on('refresh', handleRefresh);
+    return () => {
+      EventBus.off('refresh');
+    };
+  }, []);
 
-  setNotes = (e) => {
+  const handleSetNotes = (e) => {
     localStorage.setItem('notes', e.target.value);
-    this.setState({ notes: e.target.value });
+    setNotes(e.target.value);
   };
 
-  showNotes() {
-    this.setState({ showNotes: true });
-  }
+  const handleShowNotes = () => {
+    setShowNotes(true);
+  };
 
-  hideNotes() {
-    this.setState({ showNotes: localStorage.getItem('notesPinned') === 'true' });
-  }
+  const handleHideNotes = () => {
+    setShowNotes(localStorage.getItem('notesPinned') === 'true');
+  };
 
-  pin() {
+  const handlePin = () => {
     variables.stats.postEvent('feature', 'Notes pin');
     const notesPinned = localStorage.getItem('notesPinned') === 'true';
     localStorage.setItem('notesPinned', !notesPinned);
-    this.setState({ showNotes: !notesPinned });
-  }
+    setShowNotes(!notesPinned);
+  };
 
-  copy() {
+  const handleCopy = () => {
     variables.stats.postEvent('feature', 'Notes copied');
-    navigator.clipboard.writeText(this.state.notes);
+    navigator.clipboard.writeText(notes);
     toast(variables.getMessage('toasts.notes'));
-  }
+  };
 
-  download() {
-    const notes = localStorage.getItem('notes');
+  const handleDownload = () => {
     if (!notes || notes === '') {
       return;
     }
 
     variables.stats.postEvent('feature', 'Notes download');
-    saveFile(this.state.notes, 'mue-notes.txt', 'text/plain');
-  }
+    saveFile(notes, 'mue-notes.txt', 'text/plain');
+  };
 
-  render() {
-    return (
-      <div className="notes" onMouseLeave={() => this.hideNotes()} onFocus={() => this.showNotes()}>
-        <button
-          className="navbarButton"
-          onMouseEnter={() => this.showNotes()}
-          onFocus={() => this.showNotes()}
-          onBlur={() => this.hideNotes()}
-          ref={this.props.notesRef}
-          style={{ fontSize: this.state.zoomFontSize }}
-          aria-label={variables.getMessage('widgets.navbar.notes.title')}
+  return (
+    <div className="notes" onMouseLeave={handleHideNotes} onFocus={handleShowNotes}>
+      <button
+        className="navbarButton"
+        onMouseEnter={handleShowNotes}
+        onFocus={handleShowNotes}
+        onBlur={handleHideNotes}
+        ref={notesRef}
+        style={{ fontSize: zoomFontSize }}
+        aria-label={variables.getMessage('widgets.navbar.notes.title')}
+      >
+        <MdAssignment className="topicons" />
+      </button>
+      {showNotes && (
+        <span
+          className="notesContainer"
+          ref={floatRef}
+          style={{
+            position: position,
+            top: yPosition ?? '44',
+            left: xPosition ?? '',
+          }}
         >
-          <MdAssignment className="topicons" />
-        </button>
-        {this.state.showNotes && (
-          <span
-            className="notesContainer"
-            ref={this.props.floatRef}
-            style={{
-              position: this.props.position,
-              top: this.props.yPosition ?? '44',
-              left: this.props.xPosition ?? '',
-            }}
-          >
-            <div className="flexNotes">
-              <div className="topBarNotes" style={{ display: 'flex' }}>
-                <MdAssignment />
-                <span>{variables.getMessage('widgets.navbar.notes.title')}</span>
-              </div>
-              <div className="notes-buttons">
-                <Tooltip title={variables.getMessage('widgets.navbar.todo.pin')}>
-                  <button onClick={() => this.pin()}>
-                    <MdPushPin />
-                  </button>
-                </Tooltip>
-                <Tooltip title={variables.getMessage('widgets.quote.copy')}>
-                  <button onClick={() => this.copy()} disabled={this.state.notes === ''}>
-                    <MdContentCopy />
-                  </button>
-                </Tooltip>
-                <Tooltip title={variables.getMessage('widgets.background.download')}>
-                  <button onClick={() => this.download()} disabled={this.state.notes === ''}>
-                    <MdDownload />
-                  </button>
-                </Tooltip>
-              </div>
-              <TextareaAutosize
-                placeholder={variables.getMessage('widgets.navbar.notes.placeholder')}
-                value={this.state.notes}
-                onChange={this.setNotes}
-                minRows={5}
-                maxLength={10000}
-              />
+          <div className="flexNotes">
+            <div className="topBarNotes" style={{ display: 'flex' }}>
+              <MdAssignment />
+              <span>{variables.getMessage('widgets.navbar.notes.title')}</span>
             </div>
-          </span>
-        )}
-      </div>
-    );
-  }
-}
+            <div className="notes-buttons">
+              <Tooltip title={variables.getMessage('widgets.navbar.todo.pin')}>
+                <button onClick={handlePin}>
+                  <MdPushPin />
+                </button>
+              </Tooltip>
+              <Tooltip title={variables.getMessage('widgets.quote.copy')}>
+                <button onClick={handleCopy} disabled={notes === ''}>
+                  <MdContentCopy />
+                </button>
+              </Tooltip>
+              <Tooltip title={variables.getMessage('widgets.background.download')}>
+                <button onClick={handleDownload} disabled={notes === ''}>
+                  <MdDownload />
+                </button>
+              </Tooltip>
+            </div>
+            <TextareaAutosize
+              placeholder={variables.getMessage('widgets.navbar.notes.placeholder')}
+              value={notes}
+              onChange={handleSetNotes}
+              minRows={5}
+              maxLength={10000}
+            />
+          </div>
+        </span>
+      )}
+    </div>
+  );
+};
 
 function NotesWrapper() {
   const [reference, setReference] = useState(null);

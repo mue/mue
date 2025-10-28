@@ -1,440 +1,229 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
-import { MdSource, MdOutlineKeyboardArrowRight, MdOutlineAutoAwesome } from 'react-icons/md';
+import { memo, useState, useEffect, useCallback, useRef } from 'react';
+import { MdSource, MdOutlineAutoAwesome } from 'react-icons/md';
 
 import { Header } from 'components/Layout/Settings';
-import { Checkbox, Dropdown, Slider, Radio, Text, ChipSelect } from 'components/Form/Settings';
-import { Row, Content, Action } from 'components/Layout/Settings/Item';
-//import Text from 'components/Form/Settings/Text/Text';
+import { Dropdown } from 'components/Form/Settings';
 
 import ColourSettings from './Colour';
 import CustomSettings from './Custom';
+import APISettings from './sections/APISettings';
+import DisplaySettings from './sections/DisplaySettings';
+import EffectsSettings from './sections/EffectsSettings';
+import SourceSection from './sections/SourceSection';
+import NavigationCard from './sections/NavigationCard';
 
-import values from 'utils/data/slider_values.json';
-import { APIQualityOptions, backgroundImageEffects, getBackgroundOptionItems } from './optionTypes';
+import { getBackgroundOptionItems } from './optionTypes';
 
-class BackgroundOptions extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      backgroundType: localStorage.getItem('backgroundType') || 'api',
-      backgroundFilter: localStorage.getItem('backgroundFilter') || 'none',
-      backgroundCategories: [variables.getMessage('modals.main.loading')],
-      backgroundAPI: localStorage.getItem('backgroundAPI') || 'mue',
-      marketplaceEnabled: localStorage.getItem('photo_packs'),
-      effects: false,
-      backgroundSettingsSection: false,
-    };
-    this.controller = new AbortController();
-  }
+const BackgroundOptions = memo(() => {
+  const [backgroundType, setBackgroundType] = useState(
+    localStorage.getItem('backgroundType') || 'api',
+  );
+  const [backgroundFilter, setBackgroundFilter] = useState(
+    localStorage.getItem('backgroundFilter') || 'none',
+  );
+  const [backgroundCategories, setBackgroundCategories] = useState([
+    variables.getMessage('modals.main.loading'),
+  ]);
+  const [backgroundCategoriesOG, setBackgroundCategoriesOG] = useState([]);
+  const [backgroundAPI, setBackgroundAPI] = useState(localStorage.getItem('backgroundAPI') || 'mue');
+  const [marketplaceEnabled] = useState(localStorage.getItem('photo_packs'));
+  const [effects, setEffects] = useState(false);
+  const [backgroundSettingsSection, setBackgroundSettingsSection] = useState(false);
+  
+  const controllerRef = useRef(null);
 
-  async getBackgroundCategories() {
+  const getBackgroundCategories = useCallback(async () => {
     const data = await (
       await fetch(variables.constants.API_URL + '/images/categories', {
-        signal: this.controller.signal,
+        signal: controllerRef.current.signal,
       })
     ).json();
 
-    if (this.controller.signal.aborted === true) {
+    if (controllerRef.current.signal.aborted === true) {
       return;
     }
 
-    if (this.state.backgroundAPI !== 'mue') {
+    if (backgroundAPI !== 'mue') {
       // remove counts from unsplash categories
       data.forEach((category) => {
         delete category.count;
       });
     }
 
-    this.setState({
-      backgroundCategories: data,
-      backgroundCategoriesOG: data,
-    });
-  }
+    setBackgroundCategories(data);
+    setBackgroundCategoriesOG(data);
+  }, [backgroundAPI]);
 
-  updateAPI(e) {
+  const updateAPI = useCallback((e) => {
     localStorage.setItem('nextImage', null);
     if (e === 'mue') {
-      this.setState({
-        backgroundCategories: this.state.backgroundCategoriesOG,
-        backgroundAPI: 'mue',
-      });
+      setBackgroundCategories(backgroundCategoriesOG);
+      setBackgroundAPI('mue');
     } else {
-      const data = this.state.backgroundCategories;
+      const data = [...backgroundCategories];
       data.forEach((category) => {
         delete category.count;
       });
 
-      this.setState({
-        backgroundAPI: 'unsplash',
-        backgroundCategories: data,
-      });
+      setBackgroundAPI('unsplash');
+      setBackgroundCategories(data);
     }
-  }
+  }, [backgroundCategories, backgroundCategoriesOG]);
 
-  componentDidMount() {
+  useEffect(() => {
+    controllerRef.current = new AbortController();
+
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      return this.setState({
-        backgroundCategories: [variables.getMessage('modals.update.offline.title')],
-      });
+      setBackgroundCategories([variables.getMessage('modals.update.offline.title')]);
+      return;
     }
 
-    this.getBackgroundCategories();
-  }
+    getBackgroundCategories();
 
-  componentWillUnmount() {
-    // stop making requests
-    this.controller.abort();
-  }
+    return () => {
+      // stop making requests
+      controllerRef.current.abort();
+    };
+  }, [getBackgroundCategories]);
 
-  render() {
-    const APISettings = (
-      <>
-        <Row final={this.state.backgroundAPI === 'mue'}>
-          <Content
-            title={variables.getMessage('modals.main.settings.sections.background.api')}
-            subtitle={variables.getMessage('modals.main.settings.sections.background.api_subtitle')}
-          />
-          <Action>
-            {this.state.backgroundCategories[0] === variables.getMessage('modals.main.loading') ? (
-              <>
-                <Dropdown
-                  label={variables.getMessage('modals.main.settings.sections.background.category')}
-                  name="apiCategories"
-                  items={[
-                    {
-                      value: 'loading',
-                      text: variables.getMessage('modals.main.loading'),
-                    },
-                    {
-                      value: 'loading',
-                      text: variables.getMessage('modals.main.loading'),
-                    },
-                  ]}
-                />
-              </>
-            ) : (
-              <ChipSelect
-                label={variables.getMessage('modals.main.settings.sections.background.categories')}
-                options={this.state.backgroundCategories}
-                name="apiCategories"
-              />
-            )}
-            <Dropdown
-              label={variables.getMessage(
-                'modals.main.settings.sections.background.source.quality.title',
-              )}
-              name="apiQuality"
-              element=".other"
-              items={APIQualityOptions}
-            />
-            <Radio
-              title="API"
-              options={[
-                {
-                  name: 'Mue',
-                  value: 'mue',
-                },
-                {
-                  name: 'Unsplash',
-                  value: 'unsplash',
-                },
-              ]}
-              name="backgroundAPI"
-              category="background"
-              element="#backgroundImage"
-              onChange={(e) => this.updateAPI(e)}
-            />
-          </Action>
-        </Row>
-        {this.state.backgroundAPI === 'unsplash' && (
-          <Row final={true}>
-            <Content
-              title={variables.getMessage(
-                'modals.main.settings.sections.background.unsplash.title',
-              )}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.unsplash.subtitle',
-              )}
-            />
-            <Action>
-              <Text
-                title={variables.getMessage('modals.main.settings.sections.background.unsplash.id')}
-                subtitle={variables.getMessage(
-                  'modals.main.settings.sections.background.unsplash.id_subtitle',
-                )}
-                placeholder="e.g. 123456, 654321"
-                name="unsplashCollections"
-                category="background"
-                element="#backgroundImage"
-              />
-            </Action>
-          </Row>
-        )}
-      </>
-    );
-
-    let backgroundSettings = APISettings;
-    switch (this.state.backgroundType) {
+  const getBackgroundSettings = () => {
+    switch (backgroundType) {
       case 'custom':
-        backgroundSettings = <CustomSettings />;
-        break;
+        return <CustomSettings />;
       case 'colour':
-        backgroundSettings = <ColourSettings />;
-        break;
+        return <ColourSettings />;
       case 'random_colour':
       case 'random_gradient':
-        backgroundSettings = <></>;
-        break;
+        return null;
       default:
         break;
     }
 
     if (
       localStorage.getItem('photo_packs') &&
-      this.state.backgroundType !== 'custom' &&
-      this.state.backgroundType !== 'colour' &&
-      this.state.backgroundType !== 'api'
+      backgroundType !== 'custom' &&
+      backgroundType !== 'colour' &&
+      backgroundType !== 'api'
     ) {
-      backgroundSettings = null;
+      return null;
     }
 
-    const usingImage =
-      this.state.backgroundType !== 'colour' &&
-      this.state.backgroundType !== 'random_colour' &&
-      this.state.backgroundType !== 'random_gradient';
+    return (
+      <APISettings
+        backgroundAPI={backgroundAPI}
+        backgroundCategories={backgroundCategories}
+        onUpdateAPI={updateAPI}
+      />
+    );
+  };
 
-    let header;
-    if (this.state.effects === true) {
-      header = (
+  const usingImage =
+    backgroundType !== 'colour' &&
+    backgroundType !== 'random_colour' &&
+    backgroundType !== 'random_gradient';
+
+  const showEffects = backgroundType === 'api' || backgroundType === 'custom' || marketplaceEnabled;
+
+  const getHeader = () => {
+    if (effects) {
+      return (
         <Header
           title={variables.getMessage('modals.main.settings.sections.background.title')}
           secondaryTitle={variables.getMessage(
             'modals.main.settings.sections.background.effects.title',
           )}
-          goBack={() => this.setState({ effects: false })}
+          goBack={() => setEffects(false)}
         />
       );
-    } else if (this.state.backgroundSettingsSection === true) {
-      header = (
+    }
+    
+    if (backgroundSettingsSection) {
+      return (
         <Header
           title={variables.getMessage('modals.main.settings.sections.background.title')}
           secondaryTitle={variables.getMessage(
             'modals.main.settings.sections.background.source.title',
           )}
-          goBack={() => this.setState({ backgroundSettingsSection: false })}
-        />
-      );
-    } else {
-      header = (
-        <Header
-          title={variables.getMessage('modals.main.settings.sections.background.title')}
-          setting="background"
-          category="background"
-          element="#backgroundImage"
+          goBack={() => setBackgroundSettingsSection(false)}
         />
       );
     }
-
+    
     return (
-      <>
-        {header}
-        {this.state.backgroundSettingsSection !== true && this.state.effects !== true ? (
-          <>
-            <div
-              className="moreSettings"
-              onClick={() => this.setState({ backgroundSettingsSection: true })}
-            >
-              <div className="left">
-                <MdSource />
-                <div className="content">
-                  <span className="title">
-                    {variables.getMessage('modals.main.settings.sections.background.source.title')}
-                  </span>
-                  <span className="subtitle">
-                    {variables.getMessage(
-                      'modals.main.settings.sections.background.source.subtitle',
-                    )}
-                  </span>
-                </div>
-              </div>
-              <div className="action">
-                <Dropdown
-                  label={variables.getMessage(
-                    'modals.main.settings.sections.background.type.title',
-                  )}
-                  name="backgroundType"
-                  onChange={(value) => this.setState({ backgroundType: value })}
-                  category="background"
-                  items={getBackgroundOptionItems(this.state.marketplaceEnabled)}
-                />
-              </div>
-            </div>
-            {this.state.backgroundType === 'api' ||
-            this.state.backgroundType === 'custom' ||
-            this.state.marketplaceEnabled ? (
-              <>
-                <div className="moreSettings" onClick={() => this.setState({ effects: true })}>
-                  <div className="left">
-                    <MdOutlineAutoAwesome />
-                    <div className="content">
-                      <span className="title">
-                        {variables.getMessage(
-                          'modals.main.settings.sections.background.effects.title',
-                        )}
-                      </span>
-                      <span className="subtitle">
-                        {variables.getMessage(
-                          'modals.main.settings.sections.background.effects.subtitle',
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="action">
-                    {' '}
-                    <MdOutlineKeyboardArrowRight />
-                  </div>
-                </div>
-              </>
-            ) : null}
-          </>
-        ) : null}
-        {this.state.backgroundSettingsSection !== true &&
-        this.state.effects !== true &&
-        (this.state.backgroundType === 'api' ||
-          this.state.backgroundType === 'custom' ||
-          this.state.marketplaceEnabled) ? (
-          <Row final={true}>
-            <Content
-              title={variables.getMessage('modals.main.settings.sections.background.display')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.display_subtitle',
+      <Header
+        title={variables.getMessage('modals.main.settings.sections.background.title')}
+        setting="background"
+        category="background"
+        element="#backgroundImage"
+      />
+    );
+  };
+
+  return (
+    <>
+      {getHeader()}
+      
+      {!backgroundSettingsSection && !effects && (
+        <>
+          <NavigationCard
+            icon={MdSource}
+            title={variables.getMessage('modals.main.settings.sections.background.source.title')}
+            subtitle={variables.getMessage(
+              'modals.main.settings.sections.background.source.subtitle',
+            )}
+            onClick={() => setBackgroundSettingsSection(true)}
+            action={
+              <Dropdown
+                label={variables.getMessage('modals.main.settings.sections.background.type.title')}
+                name="backgroundType"
+                onChange={(value) => setBackgroundType(value)}
+                category="background"
+                items={getBackgroundOptionItems(marketplaceEnabled)}
+              />
+            }
+          />
+          
+          {showEffects && (
+            <NavigationCard
+              icon={MdOutlineAutoAwesome}
+              title={variables.getMessage(
+                'modals.main.settings.sections.background.effects.title',
               )}
-            />
-            <Action>
-              <Checkbox
-                name="bgtransition"
-                text={variables.getMessage('modals.main.settings.sections.background.transition')}
-                element=".other"
-                disabled={!usingImage}
-              />
-              <Checkbox
-                name="photoInformation"
-                text={variables.getMessage(
-                  'modals.main.settings.sections.background.photo_information',
-                )}
-                element=".other"
-              />
-              <Checkbox
-                name="photoMap"
-                text={variables.getMessage('modals.main.settings.sections.background.show_map')}
-                element=".other"
-                disabled={!usingImage}
-              />
-            </Action>
-          </Row>
-        ) : null}
-        {this.state.backgroundSettingsSection && (
-          <>
-            <Row
-              final={
-                this.state.backgroundType === 'random_colour' ||
-                this.state.backgroundType === 'random_gradient'
-              }
-            >
-              <Content
-                title={variables.getMessage(
-                  'modals.main.settings.sections.background.source.title',
-                )}
-                subtitle={variables.getMessage(
-                  'modals.main.settings.sections.background.source.subtitle',
-                )}
-              />
-              <Action>
-                <Dropdown
-                  label={variables.getMessage(
-                    'modals.main.settings.sections.background.type.title',
-                  )}
-                  name="backgroundType"
-                  onChange={(value) => this.setState({ backgroundType: value })}
-                  category="background"
-                  items={getBackgroundOptionItems(this.state.marketplaceEnabled)}
-                />
-              </Action>
-            </Row>
-            {/*  todo: ideally refactor all of this file, but we need interval to appear on marketplace too */}
-            {backgroundSettings}
-          </>
-        )}
-        {(this.state.backgroundType === 'api' ||
-          this.state.backgroundType === 'custom' ||
-          this.state.marketplaceEnabled) &&
-        this.state.effects ? (
-          <Row final={true}>
-            <Content
-              title={variables.getMessage('modals.main.settings.sections.background.effects.title')}
               subtitle={variables.getMessage(
                 'modals.main.settings.sections.background.effects.subtitle',
               )}
+              onClick={() => setEffects(true)}
             />
-            <Action>
-              <Slider
-                title={variables.getMessage(
-                  'modals.main.settings.sections.background.effects.blur',
-                )}
-                name="blur"
-                min="0"
-                max="100"
-                default="0"
-                display="%"
-                marks={values.background}
-                category="backgroundeffect"
-                element="#backgroundImage"
-              />
-              <Slider
-                title={variables.getMessage(
-                  'modals.main.settings.sections.background.effects.brightness',
-                )}
-                name="brightness"
-                min="0"
-                max="100"
-                default="90"
-                display="%"
-                marks={values.background}
-                category="backgroundeffect"
-                element="#backgroundImage"
-              />
-              <Dropdown
-                label={variables.getMessage(
-                  'modals.main.settings.sections.background.effects.filters.title',
-                )}
-                name="backgroundFilter"
-                onChange={(value) => this.setState({ backgroundFilter: value })}
-                category="backgroundeffect"
-                element="#backgroundImage"
-                items={backgroundImageEffects}
-              />
-              {this.state.backgroundFilter !== 'none' && (
-                <Slider
-                  title={variables.getMessage(
-                    'modals.main.settings.sections.background.effects.filters.amount',
-                  )}
-                  name="backgroundFilterAmount"
-                  min="0"
-                  max="100"
-                  default="0"
-                  display="%"
-                  marks={values.background}
-                  category="backgroundeffect"
-                  element="#backgroundImage"
-                />
-              )}
-            </Action>
-          </Row>
-        ) : null}
-      </>
-    );
-  }
-}
+          )}
+        </>
+      )}
+
+      {!backgroundSettingsSection && !effects && showEffects && (
+        <DisplaySettings usingImage={usingImage} />
+      )}
+
+      {backgroundSettingsSection && (
+        <>
+          <SourceSection
+            backgroundType={backgroundType}
+            marketplaceEnabled={marketplaceEnabled}
+            onTypeChange={(value) => setBackgroundType(value)}
+          />
+          {getBackgroundSettings()}
+        </>
+      )}
+
+      {showEffects && effects && (
+        <EffectsSettings
+          backgroundFilter={backgroundFilter}
+          onFilterChange={(value) => setBackgroundFilter(value)}
+        />
+      )}
+    </>
+  );
+});
+
+BackgroundOptions.displayName = 'BackgroundOptions';
 
 export { BackgroundOptions as default, BackgroundOptions };

@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { memo, useState, useEffect, useCallback } from 'react';
 
 import WeatherIcon from './components/WeatherIcon';
 import Expanded from './components/Expanded';
@@ -11,85 +11,85 @@ import { getWeather } from './api/getWeather.js';
 
 import './weather.scss';
 
-class WeatherWidget extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      location: localStorage.getItem('location') || 'London',
-      done: false,
-    };
-  }
+const WeatherWidget = memo(() => {
+  const [location, setLocation] = useState(localStorage.getItem('location') || 'London');
+  const [done, setDone] = useState(false);
+  const [weatherData, setWeatherData] = useState({});
 
-  async componentDidMount() {
-    EventBus.on('refresh', async (data) => {
-      if (data === 'weather') {
-        const weatherData = await getWeather(this.state.location, this.state.done);
-        this.setState(weatherData);
-
-        const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
-        document.querySelector('.weather').style.fontSize = zoomWeather;
-      }
-    });
-
-    const weatherData = await getWeather(this.state.location, this.state.done);
-    this.setState(weatherData);
+  const updateWeather = useCallback(async () => {
+    const data = await getWeather(location, done);
+    setWeatherData(data);
+    setDone(data.done);
 
     const zoomWeather = `${Number((localStorage.getItem('zoomWeather') || 100) / 100)}em`;
-    document.querySelector('.weather').style.fontSize = zoomWeather;
+    const weatherElement = document.querySelector('.weather');
+    if (weatherElement) {
+      weatherElement.style.fontSize = zoomWeather;
+    }
+  }, [location, done]);
+
+  useEffect(() => {
+    const handleRefresh = async (data) => {
+      if (data === 'weather') {
+        await updateWeather();
+      }
+    };
+
+    EventBus.on('refresh', handleRefresh);
+    updateWeather();
+
+    return () => {
+      EventBus.off('refresh', handleRefresh);
+    };
+  }, [updateWeather]);
+
+  const weatherType = localStorage.getItem('weatherType') || 1;
+
+  if (done === false) {
+    return <WeatherSkeleton weatherType={weatherType} />;
   }
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
-
-  render() {
-    const weatherType = localStorage.getItem('weatherType') || 1;
-
-    if (this.state.done === false) {
-      return <WeatherSkeleton weatherType={weatherType} />;
-    }
-
-    if (!this.state.weather) {
-      return (
-        <div className="weather">
-          <span className="loc">{this.state.location}</span>
-        </div>
-      );
-    }
-
+  if (!weatherData.weather) {
     return (
       <div className="weather">
-        {/*{this.state.done === false ? <h1>cheese</h1> : <h1>loading finished</h1>}*/}
-        <div className="weatherCore">
-          <div className="iconAndTemps">
-            <div className="weathericon">
-              <WeatherIcon name={this.state.icon} />
-              <span>{`${this.state.weather.temp}${this.state.temp_text}`}</span>
-            </div>
-            {weatherType >= 2 && (
-              <span className="minmax">
-                <span className="subtitle">{`${this.state.weather.temp_min}${this.state.temp_text}`}</span>
-                <span className="subtitle">{`${this.state.weather.temp_max}${this.state.temp_text}`}</span>
-              </span>
-            )}
-          </div>
-          {weatherType >= 2 && (
-            <div className="extra-info">
-              <span>
-                {variables.getMessage('widgets.weather.feels_like', {
-                  amount: `${this.state.weather.feels_like}${this.state.temp_text}`,
-                })}
-              </span>
-              <span className="loc">{this.state.location}</span>
-            </div>
-          )}
-        </div>
-        {weatherType >= 3 && (
-          <Expanded weatherType={weatherType} state={this.state} variables={variables} />
-        )}
+        <span className="loc">{location}</span>
       </div>
     );
   }
-}
+
+  return (
+    <div className="weather">
+      <div className="weatherCore">
+        <div className="iconAndTemps">
+          <div className="weathericon">
+            <WeatherIcon name={weatherData.icon} />
+            <span>{`${weatherData.weather.temp}${weatherData.temp_text}`}</span>
+          </div>
+          {weatherType >= 2 && (
+            <span className="minmax">
+              <span className="subtitle">{`${weatherData.weather.temp_min}${weatherData.temp_text}`}</span>
+              <span className="subtitle">{`${weatherData.weather.temp_max}${weatherData.temp_text}`}</span>
+            </span>
+          )}
+        </div>
+        {weatherType >= 2 && (
+          <div className="extra-info">
+            <span>
+              {variables.getMessage('widgets.weather.feels_like', {
+                amount: `${weatherData.weather.feels_like}${weatherData.temp_text}`,
+              })}
+            </span>
+            <span className="loc">{location}</span>
+          </div>
+        )}
+      </div>
+      {weatherType >= 3 && (
+        <Expanded weatherType={weatherType} state={weatherData} variables={variables} />
+      )}
+    </div>
+  );
+});
+
+WeatherWidget.displayName = 'WeatherWidget';
 
 export { WeatherWidget as default, WeatherWidget };

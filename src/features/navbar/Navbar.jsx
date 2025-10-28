@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { PureComponent, createRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { MdSettings } from 'react-icons/md';
 
@@ -10,26 +10,22 @@ import EventBus from 'utils/eventbus';
 
 import './scss/index.scss';
 
-class Navbar extends PureComponent {
-  constructor() {
-    super();
-    this.navbarContainer = createRef();
-    this.state = {
-      classList: localStorage.getItem('widgetStyle') === 'legacy' ? 'navbar old' : 'navbar new',
-      refreshText: '',
-      refreshEnabled: localStorage.getItem('refresh'),
-      refreshOption: localStorage.getItem('refreshOption') || '',
-      appsOpen: false,
-    };
-  }
+const Navbar = ({ openModal }) => {
+  const navbarContainer = useRef();
+  const [classList] = useState(
+    localStorage.getItem('widgetStyle') === 'legacy' ? 'navbar old' : 'navbar new',
+  );
+  const [refreshText, setRefreshText] = useState('');
+  const [refreshEnabled, setRefreshEnabled] = useState(localStorage.getItem('refresh'));
+  const [refreshOption, setRefreshOption] = useState(localStorage.getItem('refreshOption') || '');
+  const [appsOpen, setAppsOpen] = useState(false);
+  const [zoomFontSize, setZoomFontSize] = useState('1.2rem');
 
-  setZoom() {
-    this.setState({
-      zoomFontSize: Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem',
-    });
-  }
+  const setZoom = () => {
+    setZoomFontSize(Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem');
+  };
 
-  updateRefreshText() {
+  const updateRefreshText = () => {
     let refreshText;
     switch (localStorage.getItem('refreshOption')) {
       case 'background':
@@ -51,38 +47,35 @@ class Navbar extends PureComponent {
         break;
     }
 
-    this.setState({ refreshText });
-  }
+    setRefreshText(refreshText);
+  };
 
-  componentDidMount() {
-    EventBus.on('refresh', (data) => {
+  useEffect(() => {
+    const handleRefresh = (data) => {
       if (data === 'navbar' || data === 'background') {
-        this.setState({
-          refreshEnabled: localStorage.getItem('refresh'),
-          refreshOption: localStorage.getItem('refreshOption'),
-        });
-
-        this.forceUpdate();
+        setRefreshEnabled(localStorage.getItem('refresh'));
+        setRefreshOption(localStorage.getItem('refreshOption'));
 
         try {
-          this.updateRefreshText();
-          this.setZoom();
+          updateRefreshText();
+          setZoom();
         } catch {
           // Ignore errors
         }
       }
-    });
+    };
 
-    this.updateRefreshText();
-    this.setZoom();
-  }
+    updateRefreshText();
+    setZoom();
 
-  componentWillUnmount() {
-    EventBus.off('refresh');
-  }
+    EventBus.on('refresh', handleRefresh);
+    return () => {
+      EventBus.off('refresh');
+    };
+  }, []);
 
-  refresh() {
-    switch (this.state.refreshOption) {
+  const refresh = () => {
+    switch (refreshOption) {
       case 'background':
         return EventBus.emit('refresh', 'backgroundrefresh');
       case 'quote':
@@ -93,59 +86,47 @@ class Navbar extends PureComponent {
       default:
         window.location.reload();
     }
-  }
+  };
 
-  render() {
-    const backgroundEnabled = localStorage.getItem('background') === 'true';
+  const backgroundEnabled = localStorage.getItem('background') === 'true';
 
-    const navbar = (
-      <div className="navbar-container">
-        <div className={this.state.classList}>
-          {localStorage.getItem('view') === 'true' && backgroundEnabled ? (
-            <Maximise fontSize={this.state.zoomFontSize} />
-          ) : null}
-          {localStorage.getItem('notesEnabled') === 'true' && (
-            <Notes fontSize={this.state.zoomFontSize} />
-          )}
-          {localStorage.getItem('todoEnabled') === 'true' && (
-            <Todo fontSize={this.state.zoomFontSize} />
-          )}
-          {localStorage.getItem('appsEnabled') === 'true' && (
-            <Apps fontSize={this.state.zoomFontSize} />
-          )}
+  const navbar = (
+    <div className="navbar-container">
+      <div className={classList}>
+        {localStorage.getItem('view') === 'true' && backgroundEnabled ? (
+          <Maximise fontSize={zoomFontSize} />
+        ) : null}
+        {localStorage.getItem('notesEnabled') === 'true' && <Notes fontSize={zoomFontSize} />}
+        {localStorage.getItem('todoEnabled') === 'true' && <Todo fontSize={zoomFontSize} />}
+        {localStorage.getItem('appsEnabled') === 'true' && <Apps fontSize={zoomFontSize} />}
 
-          {this.state.refreshEnabled !== 'false' && <Refresh fontSize={this.state.zoomFontSize} />}
+        {refreshEnabled !== 'false' && <Refresh fontSize={zoomFontSize} />}
 
-          <Tooltip
-            title={variables.getMessage('modals.main.navbar.settings', {
-              type: variables.getMessage(
-                'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
-              ),
+        <Tooltip
+          title={variables.getMessage('modals.main.navbar.settings', {
+            type: variables.getMessage('modals.main.navbar.tooltips.refresh_' + refreshOption),
+          })}
+        >
+          <button
+            className="navbarButton"
+            onClick={() => openModal('mainModal')}
+            style={{ fontSize: zoomFontSize }}
+            aria-label={variables.getMessage('modals.main.navbar.settings', {
+              type: variables.getMessage('modals.main.navbar.tooltips.refresh_' + refreshOption),
             })}
           >
-            <button
-              className="navbarButton"
-              onClick={() => this.props.openModal('mainModal')}
-              style={{ fontSize: this.state.zoomFontSize }}
-              aria-label={variables.getMessage('modals.main.navbar.settings', {
-                type: variables.getMessage(
-                  'modals.main.navbar.tooltips.refresh_' + this.refreshValue,
-                ),
-              })}
-            >
-              <MdSettings className="settings-icon topicons" />
-            </button>
-          </Tooltip>
-        </div>
+            <MdSettings className="settings-icon topicons" />
+          </button>
+        </Tooltip>
       </div>
-    );
+    </div>
+  );
 
-    return localStorage.getItem('navbarHover') === 'true' ? (
-      <div className="navbar-hover">{navbar}</div>
-    ) : (
-      navbar
-    );
-  }
-}
+  return localStorage.getItem('navbarHover') === 'true' ? (
+    <div className="navbar-hover">{navbar}</div>
+  ) : (
+    navbar
+  );
+};
 
 export { Navbar as default, Navbar };

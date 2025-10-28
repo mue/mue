@@ -1,61 +1,53 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
+import { memo, useState, useCallback } from 'react';
 import { Checkbox as CheckboxUI, FormControlLabel } from '@mui/material';
 
 import EventBus from 'utils/eventbus';
 
-class Checkbox extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: localStorage.getItem(this.props.name) === 'true',
-    };
-  }
+const Checkbox = memo((props) => {
+  const [checked, setChecked] = useState(localStorage.getItem(props.name) === 'true');
 
-  handleChange = () => {
-    const value = this.state.checked !== true;
-    localStorage.setItem(this.props.name, value);
+  const handleChange = useCallback(() => {
+    const value = !checked;
+    localStorage.setItem(props.name, value);
+    setChecked(value);
 
-    this.setState({
-      checked: value,
-    });
-
-    if (this.props.onChange) {
-      this.props.onChange(value);
+    if (props.onChange) {
+      props.onChange(value);
     }
 
     variables.stats.postEvent(
       'setting',
-      `${this.props.name} ${this.state.checked === true ? 'enabled' : 'disabled'}`,
+      `${props.name} ${checked ? 'enabled' : 'disabled'}`,
     );
 
-    if (this.props.element) {
-      if (!document.querySelector(this.props.element)) {
+    if (props.element) {
+      if (!document.querySelector(props.element)) {
         document.querySelector('.reminder-info').style.display = 'flex';
         return localStorage.setItem('showReminder', true);
       }
     }
 
-    EventBus.emit('refresh', this.props.category);
-  };
+    EventBus.emit('refresh', props.category);
+  }, [checked, props]);
 
-  render() {
-    return (
-      <FormControlLabel
-        control={
-          <CheckboxUI
-            name={this.props.name}
-            color="primary"
-            className="checkbox"
-            checked={this.state.checked}
-            onChange={this.handleChange}
-            disabled={this.props.disabled || false}
-          />
-        }
-        label={this.props.text}
-      />
-    );
-  }
-}
+  return (
+    <FormControlLabel
+      control={
+        <CheckboxUI
+          name={props.name}
+          color="primary"
+          className="checkbox"
+          checked={checked}
+          onChange={handleChange}
+          disabled={props.disabled || false}
+        />
+      }
+      label={props.text}
+    />
+  );
+});
+
+Checkbox.displayName = 'Checkbox';
 
 export { Checkbox as default, Checkbox };
