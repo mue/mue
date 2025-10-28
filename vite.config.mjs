@@ -102,17 +102,7 @@ export default defineConfig(({ command, mode }) => {
       sourcemap: !isProd,
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('@mui')) {
-                return 'vendor_mui';
-              }
-              if (id.includes('react') || id.includes('react-dom')) {
-                return 'vendor_react';
-              }
-              return 'vendor';
-            }
-          },
+          manualChunks: undefined, // Let Vite handle chunking automatically to avoid circular dependency issues
         },
       },
     },
