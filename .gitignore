@@ -5,6 +5,7 @@ node_modules/
 build/
 .idea/
 dist/
+/docs
 
 # Files
 package-lock.json

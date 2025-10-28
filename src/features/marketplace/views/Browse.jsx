@@ -17,11 +17,23 @@ import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, urlParser, uninstall } from 'utils/marketplace';
+import { updateHash } from 'utils/deepLinking';
+
+// API v2 base URL
+const API_V2_BASE = `${variables.constants.API_URL}/marketplace`;
 
 class Marketplace extends PureComponent {
-  constructor() {
-    super();
-    this.state = { items: [], button: '', done: false, item: {}, collection: false, filter: '' };
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+      relatedItems: [],
+      button: '',
+      done: false,
+      item: {},
+      collection: false,
+      filter: '',
+    };
     this.buttons = {
       uninstall: (
         <Button
@@ -46,19 +58,48 @@ class Marketplace extends PureComponent {
   async toggle(pageType, data) {
     if (pageType === 'item') {
       let info;
-      // get item info
+      let relatedItems = [];
+
+      // get item info using API v2
       try {
         let type = this.props.type;
         if (type === 'all' || type === 'collections') {
           type = data.type;
         }
+
+        // API v2: Fetch by ID if available, otherwise by name
+        const itemEndpoint = data.id
+          ? `${API_V2_BASE}/item/${data.id}`
+          : `${API_V2_BASE}/item/${type}/${data.name}`;
+
         info = await (
-          await fetch(`${variables.constants.API_URL}/marketplace/item/${type}/${data.name}`, {
+          await fetch(itemEndpoint, {
             signal: this.controller.signal,
           })
         ).json();
-      } catch (e) {
+
+        // Fetch related items using API v2
+        if (info.data?.id) {
+          try {
+            const relatedResponse = await fetch(`${API_V2_BASE}/item/${info.data.id}/related`, {
+              signal: this.controller.signal,
+            });
+            const relatedData = await relatedResponse.json();
+            relatedItems = relatedData.data?.related || [];
+          } catch (relatedError) {
+            console.warn('Failed to fetch related items:', relatedError);
+          }
+
+          // Track view using API v2
+          fetch(`${API_V2_BASE}/item/${info.data.id}/view`, {
+            method: 'POST',
+            signal: this.controller.signal,
+          }).catch(() => {}); // Silent fail for analytics
+        }
+      } catch (error) {
+        // Error caught but only used for flow control
         if (this.controller.signal.aborted === false) {
+          console.error('Failed to fetch item:', error);
           return toast(variables.getMessage('toasts.error'));
         }
       }
@@ -87,12 +128,12 @@ class Marketplace extends PureComponent {
 
       this.setState({
         item: {
+          id: info.data.id, // Store item ID for deep linking
           onCollection: data._onCollection,
           type: info.data.type,
-          display_name: info.data.name,
+          display_name: info.data.name || info.data.display_name,
           author: info.data.author,
           description: urlParser(info.data.description.replace(/\n/g, '<br>')),
-          //updated: info.updated,
           version: info.data.version,
           icon: info.data.screenshot_url,
           data: info.data,
@@ -100,17 +141,26 @@ class Marketplace extends PureComponent {
           addonInstalledVersion,
           api_name: data.name,
         },
+        relatedItems,
         button: button,
       });
+
+      // Update URL hash with item ID for deep linking
+      if (info.data?.id) {
+        updateHash(`#marketplace/${info.data.type}/${info.data.id}`);
+      }
+
       document.querySelector('#modal').scrollTop = 0;
       variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
     } else if (pageType === 'collection') {
       this.setState({ done: false, item: {} });
+      // Use API v2 for collections
       const collection = await (
-        await fetch(`${variables.constants.API_URL}/marketplace/collection/${data}`, {
+        await fetch(`${API_V2_BASE}/collection/${data}`, {
           signal: this.controller.signal,
         })
       ).json();
+
       this.setState({
         items: collection.data.items,
         collectionTitle: collection.data.display_name,
@@ -119,20 +169,28 @@ class Marketplace extends PureComponent {
         collection: true,
         done: true,
       });
+
+      // Update hash for collection deep linking
+      updateHash(`#marketplace/collection/${data}`);
     } else {
-      this.setState({ item: {} });
+      this.setState({ item: {}, relatedItems: [] });
+      // Clear hash when returning to main view
+      updateHash('#marketplace');
     }
   }
 
   async getItems() {
     this.setState({ done: false });
+
+    // Use API v2 endpoints
     const dataURL =
       this.props.type === 'collections'
-        ? variables.constants.API_URL + '/marketplace/collections'
-        : variables.constants.API_URL + '/marketplace/items/' + this.props.type;
+        ? `${API_V2_BASE}/collections`
+        : `${API_V2_BASE}/items/${this.props.type}`;
+
     const { data } = await (await fetch(dataURL, { signal: this.controller.signal })).json();
     const collections = await (
-      await fetch(variables.constants.API_URL + '/marketplace/collections', {
+      await fetch(`${API_V2_BASE}/collections`, {
         signal: this.controller.signal,
       })
     ).json();
@@ -177,11 +235,18 @@ class Marketplace extends PureComponent {
       const installed = JSON.parse(localStorage.getItem('installed'));
       for (const item of this.state.items) {
         if (installed.some((i) => i.name === item.display_name)) continue; // don't install if already installed
+
+        // Use API v2 - fetch by ID if available, otherwise by name
+        const itemEndpoint = item.id
+          ? `${API_V2_BASE}/item/${item.id}`
+          : `${API_V2_BASE}/item/${item.type}/${item.name}`;
+
         const { data } = await (
-          await fetch(`${variables.constants.API_URL}/marketplace/item/${item.type}/${item.name}`, {
+          await fetch(itemEndpoint, {
             signal: this.controller.signal,
           })
         ).json();
+
         install(data.type, data, false, true);
         variables.stats.postEvent('marketplace-item', `${item.display_name} installed}`);
         variables.stats.postEvent('marketplace', 'Install');
@@ -248,6 +313,22 @@ class Marketplace extends PureComponent {
     }
 
     this.getItems();
+
+    // Handle deep link data if provided
+    if (this.props.deepLinkData) {
+      const { itemId, collection, category } = this.props.deepLinkData;
+
+      // Wait for items to load, then open the specific item or collection
+      setTimeout(() => {
+        if (collection) {
+          // Open collection
+          this.toggle('collection', collection);
+        } else if (itemId) {
+          // Open specific item by ID
+          this.toggle('item', { id: itemId, type: category });
+        }
+      }, 500);
+    }
   }
 
   componentWillUnmount() {
@@ -316,6 +397,7 @@ class Marketplace extends PureComponent {
           addonInstalled={this.state.item.addonInstalled}
           addonInstalledVersion={this.state.item.addonInstalledVersion}
           icon={this.state.item.screenshot_url}
+          relatedItems={this.state.relatedItems}
         />
       );
     }

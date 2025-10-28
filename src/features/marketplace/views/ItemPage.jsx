@@ -405,7 +405,7 @@ class ItemPage extends PureComponent {
             </div>
           </div>
         </div>
-        {moreByCurator.length > 1 && (
+        {/* {moreByCurator.length > 1 && (
           <div className="moreFromCurator">
             <span className="title">
               {variables.getMessage('modals.main.marketplace.product.more_from_curator', {
@@ -422,6 +422,26 @@ class ItemPage extends PureComponent {
                 collectionFunction={(input) => this.props.toggleFunction('collection', input)}
                 filter={''}
                 moreByCreator={true}
+                showCreateYourOwn={false}
+              />
+            </div>
+          </div>
+        )} */}
+        {this.props.relatedItems && this.props.relatedItems.length > 0 && (
+          <div className="moreFromCurator">
+            <span className="title">
+              {variables.getMessage('modals.main.marketplace.you_might_also_like') ||
+                'You might also like'}
+            </span>
+            <div>
+              <Items
+                type={this.props.data.data.type}
+                items={this.props.relatedItems}
+                onCollection={false}
+                toggleFunction={(input) => this.props.toggleFunction('item', input)}
+                collectionFunction={(input) => this.props.toggleFunction('collection', input)}
+                filter={''}
+                moreByCreator={false}
                 showCreateYourOwn={false}
               />
             </div>

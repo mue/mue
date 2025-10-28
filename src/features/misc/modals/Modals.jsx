@@ -7,6 +7,7 @@ import Navbar from '../../navbar/Navbar';
 import Preview from '../../helpers/preview/Preview';
 
 import EventBus from 'utils/eventbus';
+import { parseDeepLink, shouldAutoOpenModal } from 'utils/deepLinking';
 
 import Welcome from 'features/welcome/Welcome';
 
@@ -19,10 +20,22 @@ export default class Modals extends PureComponent {
       welcomeModal: false,
       appsModal: false,
       preview: false,
+      deepLinkData: null,
     };
   }
 
   componentDidMount() {
+    // Check for deep link first (has priority)
+    if (shouldAutoOpenModal()) {
+      const deepLinkData = parseDeepLink();
+      this.setState({
+        mainModal: true,
+        deepLinkData,
+      });
+      variables.stats.postEvent('modal', `Opened via deep link: ${deepLinkData.tab}`);
+      return;
+    }
+
     if (
       localStorage.getItem('showWelcome') === 'true' &&
       window.location.search !== '?nointro=true'
@@ -90,7 +103,10 @@ export default class Modals extends PureComponent {
           overlayClassName="Overlay"
           ariaHideApp={false}
         >
-          <MainModal modalClose={() => this.toggleModal('mainModal', false)} />
+          <MainModal
+            modalClose={() => this.toggleModal('mainModal', false)}
+            deepLinkData={this.state.deepLinkData}
+          />
         </Modal>
         <Modal
           closeTimeoutMS={300}
