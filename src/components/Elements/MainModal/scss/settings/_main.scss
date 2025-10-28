@@ -144,3 +144,40 @@ h4 {
   pointer-events: none;
   transition: 0.4s ease-in-out;
 }
+
+// Warning banner (used in Search settings and potentially others)
+.itemWarning {
+  padding: 10px 20px;
+  display: flex;
+  flex-flow: row;
+  gap: 15px;
+  align-items: center;
+
+  .text {
+    display: flex;
+    flex-flow: column;
+
+    .header {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+  }
+
+  svg {
+    @include themed {
+      background-image: t($slightGradient);
+      box-shadow: t($boxShadow);
+    }
+
+    padding: 7px;
+    border-radius: 100%;
+    font-size: 24px;
+    min-width: 24px;
+  }
+
+  @include themed {
+    background: t($modal-sidebar);
+    border-radius: t($borderRadius);
+    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+  }
+}

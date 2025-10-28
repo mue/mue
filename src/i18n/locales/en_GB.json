@@ -285,7 +285,8 @@
             "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
             "voice_search": "Voice search",
             "dropdown": "Search Dropdown",
-            "focus": "Focus on tab open"
+            "focus": "Focus on tab open",
+            "chrome_policy_warning": "In version 7.2, the ability to choose your search engine within Mue was removed to comply with new Chrome Web Store guidelines. Mue now uses your browser's default search engine. You can change this in Chrome Settings."
           },
           "weather": {
             "title": "Weather",
