@@ -1,16 +1,9 @@
 import offlineImages from '../offline_images.json';
 
 /**
- * It gets a random photographer from the offlineImages.json file, then gets a random image from that
- * photographer, and returns an object with the image's URL, type, and photoInfo.
- * </code>
- * @param type - 'background' or 'thumbnail'
- * @returns An object with the following properties:
- * url: A string that is the path to the image.
- * type: A string that is the type of image.
- * photoInfo: An object with the following properties:
- * offline: A boolean that is true.
- * credit: A string that is the name of the photographer.
+ * Gets a random offline image from the bundled collection
+ * @param {string} type - The background type (for storage)
+ * @returns {object} Background data object with offline image
  */
 export function getOfflineImage(type) {
   const photographers = Object.keys(offlineImages);

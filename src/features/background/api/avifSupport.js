@@ -2,14 +2,14 @@ const testImage =
   'AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAAFCbWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAFBETmF2aWYAAAAADnBpdG0AAAAAAAEAAAAsaWxvYwAAAABEAAACAAEAAAABAAACRgAAABgAAgAAAAEAAAFqAAAA3AAAAEFpaW5mAAAAAAACAAAAGmluZmUCAAAAAAEAAGF2MDFDb2xvcgAAAAAZaW5mZQIAAAEAAgAARXhpZkV4aWYAAAAAGmlyZWYAAAAAAAAADmNkc2MAAgABAAEAAAB5aXBycAAAAFlpcGNvAAAAFGlzcGUAAAAAAAAAAQAAAAEAAAAQcGFzcAAAAAEAAAABAAAADGF2MUOBABwAAAAADnBpeGkAAAAAAQgAAAATY29scm5jbHgAAQANAAGAAAAAGGlwbWEAAAAAAAAAAQABBQECg4SFAAAA/G1kYXQAAAAASUkqAAgAAAAGABIBAwABAAAAAQAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAADEBAgARAAAAZgAAAGmHBAABAAAAeAAAAAAAAAABAAAAAQAAAAEAAAABAAAAcGFpbnQubmV0IDQuMy4xMgAABQAAkAcABAAAADAyMzABoAMAAQAAAAEAAAACoAQAAQAAAAEAAAADoAQAAQAAAAEAAAAFoAQAAQAAALoAAAAAAAAAAgABAAIABAAAAFI5OAACAAcABAAAADAxMDAAAAAAEgAKBxgABpgIaA0yCxJABBEAEADG1FkX';
 
 /**
- * It creates a new image element, sets the source to a base64 encoded AVIF image, and then resolves
- * true if the image loads successfully, or false if it doesn't
+ * Checks if the browser supports AVIF image format
+ * @returns {Promise<boolean>} True if AVIF is supported, false otherwise
  */
-export const supportsAVIF = () => {
-  new Promise((resolve) => {
+export function supportsAVIF() {
+  return new Promise((resolve) => {
     const image = new Image();
     image.src = `data:image/avif;base64,${testImage}`;
     image.onload = () => resolve(true);
     image.onerror = () => resolve(false);
   });
-};
+}
