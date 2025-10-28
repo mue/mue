@@ -1,1 +1,1 @@
-export * from './Main';
+export { default as MainModal } from './Main';

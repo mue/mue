@@ -1,21 +1,16 @@
 import variables from 'config/variables';
-import React, { useState, useEffect } from 'react';
-import {
-  MdSettings,
-  MdOutlineShoppingBasket,
-  MdOutlineExtension,
-  MdRefresh,
-  MdClose,
-} from 'react-icons/md';
+import { useState } from 'react';
 import Tab from './Tab';
-import { Button } from 'components/Elements';
+import ModalNavbar from '../components/ModalNavbar';
+import ReminderInfo from '../components/ReminderInfo';
 import ErrorBoundary from '../../../../features/misc/modals/ErrorBoundary';
 
-const Tabs = (props) => {
-  const [currentTab, setCurrentTab] = useState(props.children[0].props.label);
-  const [currentName, setCurrentName] = useState(props.children[0].props.name);
+const Tabs = ({ children, changeTab, current, navbar = false }) => {
+  const [currentTab, setCurrentTab] = useState(children[0]?.props.label);
+  const [currentName, setCurrentName] = useState(children[0]?.props.name);
+  const [showReminder, setShowReminder] = useState(localStorage.getItem('showReminder') === 'true');
 
-  const onClick = (tab, name) => {
+  const handleTabClick = (tab, name) => {
     if (name !== currentName) {
       variables.stats.postEvent('tab', `Opened ${name}`);
     }
@@ -24,77 +19,30 @@ const Tabs = (props) => {
     setCurrentName(name);
   };
 
-  const hideReminder = () => {
-    localStorage.setItem('showReminder', false);
-    document.querySelector('.reminder-info').style.display = 'none';
+  const handleHideReminder = () => {
+    localStorage.setItem('showReminder', 'false');
+    setShowReminder(false);
   };
-
-  const navbarButtons = [
-    {
-      tab: 'settings',
-      icon: <MdSettings />,
-    },
-    {
-      tab: 'addons',
-      icon: <MdOutlineExtension />,
-    },
-    {
-      tab: 'marketplace',
-      icon: <MdOutlineShoppingBasket />,
-    },
-  ];
-
-  const reminderInfo = (
-    <div
-      className="reminder-info"
-      style={{ display: localStorage.getItem('showReminder') === 'true' ? 'flex' : 'none' }}
-    >
-      <div className="shareHeader">
-        <span className="title">{variables.getMessage('modals.main.settings.reminder.title')}</span>
-        <span className="closeModal" onClick={hideReminder}>
-          <MdClose />
-        </span>
-      </div>
-      <span className="subtitle">
-        {variables.getMessage('modals.main.settings.reminder.message')}
-      </span>
-      <button onClick={() => window.location.reload()}>
-        <MdRefresh />
-        {variables.getMessage('modals.main.error_boundary.refresh')}
-      </button>
-    </div>
-  );
 
   return (
     <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
       <div className="modalSidebar">
-        {props.children.map((tab, index) => (
+        {children.map((tab, index) => (
           <Tab
-            currentTab={currentTab}
             key={index}
+            currentTab={currentTab}
             label={tab.props.label}
-            onClick={(nextTab) => onClick(nextTab, tab.props.name)}
-            navbarTab={props.navbar || false}
+            onClick={(nextTab) => handleTabClick(nextTab, tab.props.name)}
+            navbarTab={navbar}
           />
         ))}
-        {reminderInfo}
+        <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
       </div>
       <div className="modalTabContent">
-        <div className="modalNavbar">
-          {navbarButtons.map(({ tab, icon }, index) => (
-            <Button
-              type="navigation"
-              onClick={() => props.changeTab(tab)}
-              icon={icon}
-              label={variables.getMessage(`modals.main.navbar.${tab}`)}
-              active={props.current === tab}
-              key={`${tab}-${index}`}
-            />
-          ))}
-        </div>
-        {props.children.map((tab, index) => {
+        <ModalNavbar currentTab={current} onChangeTab={changeTab} />
+        {children.map((tab, index) => {
           if (tab.props.label !== currentTab) {
-            return undefined;
+            return null;
           }
 
           return (

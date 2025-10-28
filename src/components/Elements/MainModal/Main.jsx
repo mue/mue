@@ -4,45 +4,24 @@ import { MdClose } from 'react-icons/md';
 
 import './scss/index.scss';
 import { Tooltip } from 'components/Elements';
+import ModalLoader from './components/ModalLoader';
+import { TAB_TYPES } from './constants/tabConfig';
+
 const Settings = lazy(() => import('../../../features/misc/views/Settings'));
 const Addons = lazy(() => import('../../../features/misc/views/Addons'));
 const Marketplace = lazy(() => import('../../../features/misc/views/Marketplace'));
 
-const renderLoader = () => (
-  <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
-    <div className="modalSidebar">
-      <span className="mainTitle">Mue</span>
-    </div>
-    <div className="modalTabContent">
-      <div className="emptyItems">
-        <div className="emptyMessage">
-          <div className="loaderHolder">
-            <div id="loader"></div>
-            <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+// Map tab types to their corresponding components
+const TAB_COMPONENTS = {
+  [TAB_TYPES.SETTINGS]: Settings,
+  [TAB_TYPES.ADDONS]: Addons,
+  [TAB_TYPES.MARKETPLACE]: Marketplace,
+};
 
 function MainModal({ modalClose }) {
-  const [currentTab, setCurrentTab] = useState('settings');
+  const [currentTab, setCurrentTab] = useState(TAB_TYPES.SETTINGS);
 
-  const changeTab = (type) => {
-    setCurrentTab(type);
-  };
-
-  const renderTab = () => {
-    switch (currentTab) {
-      case 'addons':
-        return <Addons changeTab={changeTab} />;
-      case 'marketplace':
-        return <Marketplace changeTab={changeTab} />;
-      default:
-        return <Settings changeTab={changeTab} />;
-    }
-  };
+  const TabComponent = TAB_COMPONENTS[currentTab] || Settings;
 
   return (
     <div className="frame">
@@ -55,10 +34,11 @@ function MainModal({ modalClose }) {
           <MdClose />
         </span>
       </Tooltip>
-      <Suspense fallback={renderLoader()}>{renderTab()}</Suspense>
+      <Suspense fallback={<ModalLoader />}>
+        <TabComponent changeTab={setCurrentTab} />
+      </Suspense>
     </div>
   );
 }
 
-const MemoizedMainModal = memo(MainModal);
-export { MemoizedMainModal as default, MemoizedMainModal as MainModal };
+export default memo(MainModal);
