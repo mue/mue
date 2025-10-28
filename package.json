@@ -51,7 +51,6 @@
     "adm-zip": "0.5.16",
     "eslint": "^9",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-jsx-a11y": "^6",
     "eslint-plugin-react": "^7",
     "eslint-plugin-react-hooks": "^5",
