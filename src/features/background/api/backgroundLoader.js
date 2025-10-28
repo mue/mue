@@ -24,12 +24,13 @@ export async function fetchAPIImageData(excludedPun = null) {
   const baseURL = `${variables.constants.API_URL}/images`;
   const collection = localStorage.getItem('unsplashCollections');
 
-  const url = (api === 'unsplash' || api === 'pexels')
-    ? `${baseURL}/unsplash?${collection ? `collections=${collection}` : `categories=${categories || ''}`}&quality=${quality}`
-    : `${baseURL}/random?categories=${categories || ''}&quality=${quality}&excludes=${excludes}`;
+  const url =
+    api === 'unsplash' || api === 'pexels'
+      ? `${baseURL}/unsplash?${collection ? `collections=${collection}` : `categories=${categories || ''}`}&quality=${quality}`
+      : `${baseURL}/random?categories=${categories || ''}&quality=${quality}&excludes=${excludes}`;
 
   try {
-    const accept = `application/json, ${await supportsAVIF() ? 'image/avif' : 'image/webp'}`;
+    const accept = `application/json, ${(await supportsAVIF()) ? 'image/avif' : 'image/webp'}`;
     const data = await (await fetch(url, { headers: { accept } })).json();
 
     return {
@@ -66,7 +67,9 @@ export async function fetchAPIImageData(excludedPun = null) {
  * Gets background data based on current configuration
  */
 export async function getBackgroundData() {
-  const isOffline = localStorage.getItem('offlineMode') === 'true' || localStorage.getItem('showWelcome') === 'true';
+  const isOffline =
+    localStorage.getItem('offlineMode') === 'true' ||
+    localStorage.getItem('showWelcome') === 'true';
 
   // Handle favourited background
   const fav = parseJSON('favourite');
@@ -105,19 +108,10 @@ export async function getBackgroundData() {
  * Gets solid colour background
  */
 function getColourBackground() {
-  let colour = localStorage.getItem('customBackgroundColour');
-
-  // Migrate legacy format
-  if (colour?.startsWith('{')) {
-    try {
-      colour = JSON.parse(colour).gradient[0].colour;
-      localStorage.setItem('customBackgroundColour', colour);
-    } catch {
-      colour = 'rgb(0,0,0)';
-    }
-  }
-
-  return { type: 'colour', style: `background: ${colour || 'rgb(0,0,0)'}` };
+  return {
+    type: 'colour',
+    style: `background: ${localStorage.getItem('customBackgroundColour') || 'rgb(0,0,0)'}`,
+  };
 }
 
 /**
@@ -128,7 +122,7 @@ async function getAPIBackground(isOffline) {
 
   // Use cached next image if available
   const cached = parseJSON('nextImage');
-  const data = cached || await fetchAPIImageData();
+  const data = cached || (await fetchAPIImageData());
 
   if (!data) return getOfflineImage('api');
 
@@ -148,13 +142,6 @@ async function getAPIBackground(isOffline) {
  */
 function getCustomBackground(isOffline) {
   let backgrounds = parseJSON('customBackground');
-
-  // Migrate legacy format
-  if (!Array.isArray(backgrounds)) {
-    const saved = localStorage.getItem('customBackground');
-    backgrounds = saved ? [saved] : [];
-    localStorage.setItem('customBackground', JSON.stringify(backgrounds));
-  }
 
   if (backgrounds.length === 0) return null;
 
@@ -180,14 +167,15 @@ function getPhotoPackBackground(isOffline) {
   if (isOffline) return getOfflineImage('photo_pack');
 
   const photos = parseJSON('installed', []).flatMap((item) =>
-    item.type === 'photos' && item.photos ? item.photos : []
+    item.type === 'photos' && item.photos ? item.photos : [],
   );
 
   if (photos.length === 0) return null;
 
   const interval = localStorage.getItem('backgroundchange');
   const startTime = Number(localStorage.getItem('backgroundStartTime'));
-  const shouldRefresh = !interval || interval === 'refresh' || startTime + Number(interval) < Date.now();
+  const shouldRefresh =
+    !interval || interval === 'refresh' || startTime + Number(interval) < Date.now();
 
   let index;
   if (shouldRefresh) {
@@ -199,13 +187,11 @@ function getPhotoPackBackground(isOffline) {
 
   const photo = photos[index];
 
-  return photo ? {
-    url: photo.url.default,
-    type: 'photo_pack',
-    photoInfo: {
-      hidden: false,
-      credit: photo.photographer,
-      location: photo.location,
-    },
-  } : null;
+  return photo
+    ? {
+        url: photo.url.default,
+        type: 'photo_pack',
+        photoInfo: { hidden: false, credit: photo.photographer, location: photo.location },
+      }
+    : null;
 }
