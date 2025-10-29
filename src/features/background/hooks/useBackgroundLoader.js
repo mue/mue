@@ -13,14 +13,19 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
 
     try {
       // Check for welcome tab first
-      const welcomeImage = localStorage.getItem('welcomeImage');
-      if (localStorage.getItem('welcomeTab') && welcomeImage) {
-        updateBackground(JSON.parse(welcomeImage));
-        return;
+      const welcomeTab = localStorage.getItem('welcomeTab');
+      if (welcomeTab) {
+        const welcomeImage = localStorage.getItem('welcomeImage');
+        if (welcomeImage) {
+          updateBackground(JSON.parse(welcomeImage));
+          return;
+        }
       }
 
       const data = await getBackgroundData();
-      if (data) updateBackground(data);
+      if (data) {
+        updateBackground(data);
+      }
     } catch (error) {
       console.error('Failed to load background:', error);
     } finally {
@@ -36,12 +41,14 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
   // Initial load - only run once on mount
   useEffect(() => {
     const changeMode = localStorage.getItem('backgroundchange');
-    if (changeMode === 'refresh' || !changeMode) {
+    const hasStartTime = localStorage.getItem('backgroundStartTime');
+
+    if (!hasStartTime || changeMode === 'refresh') {
       localStorage.setItem('backgroundStartTime', Date.now());
-      loadBackground();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    loadBackground();
+  }, [loadBackground]);
 
   return { loadBackground, refreshBackground };
 }

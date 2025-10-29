@@ -8,22 +8,23 @@
   background-position: center !important;
   background-attachment: fixed !important;
   zoom: 100% !important;
+  position: relative;
+  z-index: -2;
 }
 
-.backgroundTransform {
-  @include animation('fadein2 2s');
-
-  transition: background 2s;
-}
-
-@include keyframes(fadein2) {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+#backgroundOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 1.2s ease-in-out;
 }
 
 .backgroundPreload {
@@ -39,7 +40,7 @@
 }
 
 .fade-in {
-  @include animation('fadein 1s');
+  @include animation('fadein 0.8s ease-in-out');
 }
 
 @include keyframes(fadein) {

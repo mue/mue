@@ -115,24 +115,49 @@ function getColourBackground() {
 }
 
 /**
- * Gets API background with caching
+ * Gets API background with caching and prefetching
  */
 async function getAPIBackground(isOffline) {
   if (isOffline) return getOfflineImage('api');
 
   // Use cached next image if available
-  const cached = parseJSON('nextImage');
-  const data = cached || (await fetchAPIImageData());
+  const cachedQueue = parseJSON('imageQueue', []);
+  let data;
+
+  if (cachedQueue.length > 0) {
+    data = cachedQueue.shift();
+    localStorage.setItem('imageQueue', JSON.stringify(cachedQueue));
+  } else {
+    data = await fetchAPIImageData();
+  }
 
   if (!data) return getOfflineImage('api');
 
   localStorage.setItem('currentBackground', JSON.stringify(data));
-  localStorage.setItem('nextImage', null);
 
-  // Pre-fetch next image
-  fetchAPIImageData(data.photoInfo.pun).then((next) => {
-    if (next) localStorage.setItem('nextImage', JSON.stringify(next));
-  });
+  // Pre-fetch next 3 images in the background
+  const targetQueueSize = 3;
+  const currentQueueSize = cachedQueue.length;
+
+  if (currentQueueSize < targetQueueSize) {
+    const excludedPuns = [
+      data.photoInfo.pun,
+      ...cachedQueue.map((img) => img.photoInfo?.pun).filter(Boolean),
+    ];
+
+    // Prefetch remaining images asynchronously
+    Promise.all(
+      Array.from({ length: targetQueueSize - currentQueueSize }, (_, i) =>
+        fetchAPIImageData(excludedPuns[i] || data.photoInfo.pun),
+      ),
+    ).then((newImages) => {
+      const validImages = newImages.filter(Boolean);
+      if (validImages.length > 0) {
+        const updatedQueue = [...cachedQueue, ...validImages];
+        localStorage.setItem('imageQueue', JSON.stringify(updatedQueue));
+      }
+    });
+  }
 
   return data;
 }
@@ -141,7 +166,7 @@ async function getAPIBackground(isOffline) {
  * Gets custom background
  */
 function getCustomBackground(isOffline) {
-  let backgrounds = parseJSON('customBackground');
+  const backgrounds = parseJSON('customBackground');
 
   if (backgrounds.length === 0) return null;
 

@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import BackgroundImage from './components/BackgroundImage';
 import BackgroundVideo from './components/BackgroundVideo';
 

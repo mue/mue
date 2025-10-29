@@ -5,11 +5,19 @@
  */
 export async function createBlobUrl(url) {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      mode: 'cors',
+      credentials: 'omit',
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const blob = await response.blob();
     return URL.createObjectURL(blob);
-  } catch (error) {
-    console.error('Failed to create blob URL:', error);
+  } catch {
+    // Silently fail - we'll use direct URL as fallback
     return null;
   }
 }
