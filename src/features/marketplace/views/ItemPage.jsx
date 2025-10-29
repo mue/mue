@@ -185,7 +185,7 @@ class ItemPage extends PureComponent {
             modalClose={() => this.setState({ shareModal: false })}
           />
         </Modal>
-        <Header
+        {/* <Header
           title={
             this.props.addons
               ? variables.getMessage('modals.main.addons.added')
@@ -200,7 +200,7 @@ class ItemPage extends PureComponent {
           }
           report={false}
           goBack={this.props.toggleFunction}
-        />
+        /> */}
         <div className="itemPage">
           <div className="itemShowcase">
             <div className="subHeader">

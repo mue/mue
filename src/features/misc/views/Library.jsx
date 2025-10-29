@@ -7,7 +7,12 @@ import Create from '../../marketplace/views/Create';
 
 function Library(props) {
   return (
-    <Tabs changeTab={(type) => props.changeTab(type)} current="library" currentTab={props.currentTab}>
+    <Tabs
+      changeTab={(type) => props.changeTab(type)}
+      current="library"
+      currentTab={props.currentTab}
+      onSectionChange={props.onSectionChange}
+    >
       <div label={variables.getMessage('modals.main.addons.added')} name="added">
         <Added />
       </div>

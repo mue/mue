@@ -147,7 +147,24 @@ class Marketplace extends PureComponent {
 
       // Update URL hash with item ID for deep linking
       if (info.data?.id) {
-        updateHash(`#marketplace/${info.data.type}/${info.data.id}`);
+        updateHash(`#discover/${info.data.type}/${info.data.id}`);
+      }
+
+      // Notify parent about product view for breadcrumbs
+      if (this.props.onProductView) {
+        this.props.onProductView({
+          id: info.data.id,
+          type: info.data.type,
+          name: info.data.display_name || info.data.name,
+          onBack: () => this.toggle('main'),
+          onBackToAll: () => {
+            this.toggle('main');
+            updateHash('#discover/all');
+            if (this.props.onResetToAll) {
+              this.props.onResetToAll();
+            }
+          },
+        });
       }
 
       document.querySelector('#modal').scrollTop = 0;
@@ -171,11 +188,16 @@ class Marketplace extends PureComponent {
       });
 
       // Update hash for collection deep linking
-      updateHash(`#marketplace/collection/${data}`);
+      updateHash(`#discover/collection/${data}`);
     } else {
       this.setState({ item: {}, relatedItems: [] });
       // Clear hash when returning to main view
-      updateHash('#marketplace');
+      updateHash(`#discover/${this.props.type}`);
+
+      // Clear product view for breadcrumbs
+      if (this.props.onProductView) {
+        this.props.onProductView(null);
+      }
     }
   }
 
@@ -328,6 +350,21 @@ class Marketplace extends PureComponent {
           this.toggle('item', { id: itemId, type: category });
         }
       }, 500);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Handle navigation trigger changes
+    if (this.props.navigationTrigger && this.props.navigationTrigger !== prevProps.navigationTrigger) {
+      const { type, data } = this.props.navigationTrigger;
+
+      if (type === 'product' && data) {
+        // Navigate to product
+        this.toggle('item', { id: data.id, type: data.type });
+      } else if (type === 'main' || type === 'section') {
+        // Navigate to main view (browse/listing page)
+        this.toggle('main');
+      }
     }
   }
 

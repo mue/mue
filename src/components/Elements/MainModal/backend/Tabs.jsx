@@ -1,11 +1,11 @@
 import variables from 'config/variables';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Tab from './Tab';
 import ReminderInfo from '../components/ReminderInfo';
 import ErrorBoundary from '../../../../features/misc/modals/ErrorBoundary';
 import { TAB_TYPES } from '../constants/tabConfig';
 
-const Tabs = ({ children, navbar = false, currentTab: activeTab }) => {
+const Tabs = ({ children, navbar = false, currentTab: activeTab, onSectionChange, resetToFirst }) => {
   const [currentTab, setCurrentTab] = useState(children[0]?.props.label);
   const [currentName, setCurrentName] = useState(children[0]?.props.name);
   const [showReminder, setShowReminder] = useState(localStorage.getItem('showReminder') === 'true');
@@ -17,7 +17,30 @@ const Tabs = ({ children, navbar = false, currentTab: activeTab }) => {
 
     setCurrentTab(tab);
     setCurrentName(name);
+
+    // Notify parent of section change
+    if (onSectionChange) {
+      onSectionChange(tab);
+    }
   };
+
+  // Notify parent of initial section on mount
+  useEffect(() => {
+    if (onSectionChange && currentTab) {
+      onSectionChange(currentTab);
+    }
+  }, []);
+
+  // Reset to first tab when requested
+  useEffect(() => {
+    if (resetToFirst) {
+      setCurrentTab(children[0]?.props.label);
+      setCurrentName(children[0]?.props.name);
+      if (onSectionChange) {
+        onSectionChange(children[0]?.props.label);
+      }
+    }
+  }, [resetToFirst]);
 
   const handleHideReminder = () => {
     localStorage.setItem('showReminder', 'false');
