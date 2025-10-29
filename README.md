@@ -49,6 +49,23 @@ Install dependencies with ``bun install``, and then you can run any of the follo
 - `bun run pretty` - run prettier
 - `bun run translations` - migrate old translation format to new
 
+## 🐳 Docker development
+Hot reload is available while coding.
+
+- `docker build -t mue-app .` - build the image
+
+- `docker volume create dev-bun-app` - create a volume for the app
+
+- `docker run -p 5173:5173 mue-app` - run the container
+
+- `docker run -p 5173:5173 \
+  -v $(pwd):/app \
+  -v dev-bun-app:/app/node_modules \
+  mue-app 
+` - run the container
+
+Navigate to http://localhost:5173
+
 ## 🌍 Translations
 We use [Weblate](https://weblate.org) for translations. To get started, please visit the [project](https://hosted.weblate.org/projects/mue/) and look for the latest version to start translating Mue into your langauge.
 
