@@ -54,7 +54,7 @@ Hot reload is available while coding.
 
 - `docker build -t mue-app .` - build the image
 
-- `docker volume create dev-bun-app` - create a volumen for the app
+- `docker volume create dev-bun-app` - create a volume for the app
 
 - `docker run -p 5173:5173 mue-app` - run the container
 
