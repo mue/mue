@@ -100,8 +100,8 @@
         "quote_packs": "Quote Packs"
       },
       "navbar": {
-        "addons": "Pengaya",
-        "marketplace": "Marketplace",
+        "library": "Pengaya",
+        "discover": "Marketplace",
         "settings": "Pengaturan"
       },
       "settings": {

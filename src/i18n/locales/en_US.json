@@ -100,8 +100,8 @@
         "quote_packs": "Quote Packs"
       },
       "navbar": {
-        "addons": "Add-ons",
-        "marketplace": "Marketplace",
+        "library": "Library",
+        "discover": "Discover",
         "settings": "Settings"
       },
       "settings": {

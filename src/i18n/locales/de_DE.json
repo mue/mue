@@ -81,8 +81,8 @@
       "file_upload_error": "Datei ist größer als 2MB",
       "navbar": {
         "settings": "Einstellungen",
-        "addons": "Add-Ons",
-        "marketplace": "Marktplatz"
+        "library": "Add-Ons",
+        "discover": "Marktplatz"
       },
       "error_boundary": {
         "title": "Fehler",

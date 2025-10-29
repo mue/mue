@@ -1,0 +1,53 @@
+@use 'scss/variables' as *;
+
+.modalTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem;
+  // width: 100%;
+
+  .topBarLeft {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    .topBarLogo {
+      height: 32px;
+      width: auto;
+    }
+  }
+
+  .topBarRight {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+
+    .topBarNavigation {
+      display: flex;
+      flex-flow: row;
+      gap: 0.5rem;
+    }
+
+    .closeModal {
+      display: grid;
+      place-items: center;
+      padding: 0.4em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.5s;
+      flex-shrink: 0;
+
+      svg {
+        font-size: 1.5em;
+      }
+
+      &:hover {
+        @include themed {
+          background: t($modal-sidebarActive);
+        }
+      }
+    }
+  }
+}

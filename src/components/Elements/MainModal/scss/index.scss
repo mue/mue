@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'scss/variables' as *;
+@use 'modules/topBar' as *;
 @use 'modules/sidebar' as *;
 @use 'modules/navbar' as *;
 @use 'modules/modalTabContent' as *;

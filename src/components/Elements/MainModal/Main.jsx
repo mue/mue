@@ -1,22 +1,20 @@
-import variables from 'config/variables';
 import { Suspense, lazy, useState, memo, useEffect } from 'react';
-import { MdClose } from 'react-icons/md';
 
 import './scss/index.scss';
-import { Tooltip } from 'components/Elements';
 import ModalLoader from './components/ModalLoader';
+import ModalTopBar from './components/ModalTopBar';
 import { TAB_TYPES } from './constants/tabConfig';
 import { updateHash, onHashChange } from 'utils/deepLinking';
 
 const Settings = lazy(() => import('../../../features/misc/views/Settings'));
-const Addons = lazy(() => import('../../../features/misc/views/Addons'));
-const Marketplace = lazy(() => import('../../../features/misc/views/Marketplace'));
+const Library = lazy(() => import('../../../features/misc/views/Library'));
+const Discover = lazy(() => import('../../../features/misc/views/Discover'));
 
 // Map tab types to their corresponding components
 const TAB_COMPONENTS = {
   [TAB_TYPES.SETTINGS]: Settings,
-  [TAB_TYPES.ADDONS]: Addons,
-  [TAB_TYPES.MARKETPLACE]: Marketplace,
+  [TAB_TYPES.LIBRARY]: Library,
+  [TAB_TYPES.DISCOVER]: Discover,
 };
 
 function MainModal({ modalClose, deepLinkData }) {
@@ -45,17 +43,13 @@ function MainModal({ modalClose, deepLinkData }) {
 
   return (
     <div className="frame">
-      <Tooltip
-        style={{ position: 'absolute', top: '1rem', right: '1rem' }}
-        title={variables.getMessage('modals.welcome.buttons.close')}
-        key="closeTooltip"
-      >
-        <span className="closeModal" onClick={modalClose}>
-          <MdClose />
-        </span>
-      </Tooltip>
+      <ModalTopBar currentTab={currentTab} onTabChange={handleChangeTab} onClose={modalClose} />
       <Suspense fallback={<ModalLoader />}>
-        <TabComponent changeTab={handleChangeTab} deepLinkData={deepLinkData} />
+        <TabComponent
+          changeTab={handleChangeTab}
+          deepLinkData={deepLinkData}
+          currentTab={currentTab}
+        />
       </Suspense>
     </div>
   );

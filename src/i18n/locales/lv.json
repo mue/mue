@@ -100,8 +100,8 @@
         "quote_packs": "Citātu pakotnes"
       },
       "navbar": {
-        "addons": "Paplašinājumi",
-        "marketplace": "Tirgus",
+        "library": "Paplašinājumi",
+        "discover": "Tirgus",
         "settings": "Iestatījumi"
       },
       "settings": {

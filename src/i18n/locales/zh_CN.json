@@ -100,8 +100,8 @@
         "quote_packs": "名言包"
       },
       "navbar": {
-        "addons": "我的插件",
-        "marketplace": "插件市场",
+        "library": "我的插件",
+        "discover": "插件市场",
         "settings": "设置"
       },
       "settings": {

@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 import { memo, useState, useEffect } from 'react';
-import { getIconComponent, DIVIDER_LABELS, MUE_TITLE_LABELS } from '../constants/tabConfig';
+import { getIconComponent, DIVIDER_LABELS } from '../constants/tabConfig';
 
 function Tab({ label, currentTab, onClick, navbarTab }) {
   const [isExperimental, setIsExperimental] = useState(true);
@@ -14,9 +14,6 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   // Determine if this label should have a divider after it
   const hasDivider = DIVIDER_LABELS.some((key) => variables.getMessage(key) === label);
-
-  // Determine if this label should have "Mue" title before it
-  const hasMueTitle = MUE_TITLE_LABELS.some((key) => variables.getMessage(key) === label);
 
   // Build className
   const baseClass = navbarTab ? 'navbar-item' : 'tab-list-item';
@@ -32,7 +29,6 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   return (
     <>
-      {hasMueTitle && <span className="mainTitle">Mue</span>}
       <button className={className} onClick={() => onClick(label)}>
         {IconComponent && <IconComponent />} <span>{label}</span>
       </button>

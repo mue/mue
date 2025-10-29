@@ -81,8 +81,8 @@
       "file_upload_error": "ফাইল ২ মেগাবাইট এর বেশি",
       "navbar": {
         "settings": "সেটিংস",
-        "addons": "অ্যাড-অন",
-        "marketplace": "মার্কেটপ্লেস"
+        "library": "অ্যাড-অন",
+        "discover": "মার্কেটপ্লেস"
       },
       "error_boundary": {
         "title": "ত্রুটি",

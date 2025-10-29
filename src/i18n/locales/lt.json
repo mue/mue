@@ -100,8 +100,8 @@
         "quote_packs": "Citatų rinkiniai"
       },
       "navbar": {
-        "addons": "Priedai",
-        "marketplace": "Prekyvietė",
+        "library": "Priedai",
+        "discover": "Prekyvietė",
         "settings": "Nustatymai"
       },
       "settings": {

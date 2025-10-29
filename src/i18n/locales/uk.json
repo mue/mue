@@ -100,8 +100,8 @@
         "quote_packs": "Набори цитат"
       },
       "navbar": {
-        "addons": "Доповнення",
-        "marketplace": "Маркетплейс",
+        "library": "Доповнення",
+        "discover": "Маркетплейс",
         "settings": "Налаштування"
       },
       "settings": {

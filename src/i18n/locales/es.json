@@ -100,8 +100,8 @@
         "quote_packs": "Paquetes de citas"
       },
       "navbar": {
-        "addons": "Addons",
-        "marketplace": "Tienda",
+        "library": "Addons",
+        "discover": "Tienda",
         "settings": "Ajustes"
       },
       "settings": {

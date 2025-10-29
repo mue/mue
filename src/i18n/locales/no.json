@@ -81,8 +81,8 @@
       "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Instillinger",
-        "addons": "Mine add-ons",
-        "marketplace": "Markedsplass"
+        "library": "Mine add-ons",
+        "discover": "Markedsplass"
       },
       "error_boundary": {
         "title": "Error",

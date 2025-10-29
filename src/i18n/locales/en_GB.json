@@ -81,8 +81,8 @@
       "file_upload_error": "File is over 2MB",
       "navbar": {
         "settings": "Settings",
-        "addons": "Add-ons",
-        "marketplace": "Marketplace"
+        "library": "Library",
+        "discover": "Discover"
       },
       "error_boundary": {
         "title": "Error",

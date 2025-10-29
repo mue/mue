@@ -100,8 +100,8 @@
         "quote_packs": "Sitat Paketləri"
       },
       "navbar": {
-        "addons": "Əlavələr",
-        "marketplace": "Bazarı",
+        "library": "Əlavələr",
+        "discover": "Bazarı",
         "settings": "Parametrlər"
       },
       "settings": {

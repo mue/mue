@@ -5,9 +5,9 @@ import Tabs from 'components/Elements/MainModal/backend/Tabs';
 import Added from '../../marketplace/views/Added';
 import Create from '../../marketplace/views/Create';
 
-function Addons(props) {
+function Library(props) {
   return (
-    <Tabs changeTab={(type) => props.changeTab(type)} current="addons">
+    <Tabs changeTab={(type) => props.changeTab(type)} current="library" currentTab={props.currentTab}>
       <div label={variables.getMessage('modals.main.addons.added')} name="added">
         <Added />
       </div>
@@ -18,4 +18,4 @@ function Addons(props) {
   );
 }
 
-export default memo(Addons);
+export default memo(Library);

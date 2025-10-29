@@ -28,15 +28,15 @@ import {
 // Tab type constants
 export const TAB_TYPES = {
   SETTINGS: 'settings',
-  ADDONS: 'addons',
-  MARKETPLACE: 'marketplace',
+  LIBRARY: 'library',
+  DISCOVER: 'discover',
 };
 
 // Icon component mapping - using component references instead of elements
 export const ICON_COMPONENTS = {
   SETTINGS: MdSettings,
-  ADDONS: MdWidgets,
-  MARKETPLACE: MdShoppingBasket,
+  LIBRARY: MdWidgets,
+  DISCOVER: MdShoppingBasket,
   NAVBAR: MdMenu,
   GREETING: MdEmojiPeople,
   TIME: MdAccessAlarm,
@@ -64,8 +64,8 @@ export const ICON_COMPONENTS = {
 export const MESSAGE_KEYS = {
   OVERVIEW: 'modals.main.marketplace.product.overview',
   SETTINGS: 'modals.main.navbar.settings',
-  ADDONS: 'modals.main.navbar.addons',
-  MARKETPLACE: 'modals.main.navbar.marketplace',
+  LIBRARY: 'modals.main.navbar.library',
+  DISCOVER: 'modals.main.navbar.discover',
   NAVBAR: 'modals.main.settings.sections.appearance.navbar.title',
   GREETING: 'modals.main.settings.sections.greeting.title',
   TIME: 'modals.main.settings.sections.time.title',
@@ -98,8 +98,8 @@ export const getIconComponent = (label, variables) => {
   const iconMap = {
     [variables.getMessage(MESSAGE_KEYS.OVERVIEW)]: ICON_COMPONENTS.OVERVIEW,
     [variables.getMessage(MESSAGE_KEYS.SETTINGS)]: ICON_COMPONENTS.SETTINGS,
-    [variables.getMessage(MESSAGE_KEYS.ADDONS)]: ICON_COMPONENTS.ADDONS,
-    [variables.getMessage(MESSAGE_KEYS.MARKETPLACE)]: ICON_COMPONENTS.MARKETPLACE,
+    [variables.getMessage(MESSAGE_KEYS.LIBRARY)]: ICON_COMPONENTS.LIBRARY,
+    [variables.getMessage(MESSAGE_KEYS.DISCOVER)]: ICON_COMPONENTS.DISCOVER,
     [variables.getMessage(MESSAGE_KEYS.NAVBAR)]: ICON_COMPONENTS.NAVBAR,
     [variables.getMessage(MESSAGE_KEYS.GREETING)]: ICON_COMPONENTS.GREETING,
     [variables.getMessage(MESSAGE_KEYS.TIME)]: ICON_COMPONENTS.TIME,
@@ -119,7 +119,7 @@ export const getIconComponent = (label, variables) => {
     [variables.getMessage(MESSAGE_KEYS.ABOUT)]: ICON_COMPONENTS.ABOUT,
     [variables.getMessage(MESSAGE_KEYS.ADDED)]: ICON_COMPONENTS.ADDED,
     [variables.getMessage(MESSAGE_KEYS.CREATE)]: ICON_COMPONENTS.CREATE,
-    [variables.getMessage(MESSAGE_KEYS.ALL_MARKETPLACE)]: ICON_COMPONENTS.ADDONS,
+    [variables.getMessage(MESSAGE_KEYS.ALL_MARKETPLACE)]: ICON_COMPONENTS.LIBRARY,
     [variables.getMessage(MESSAGE_KEYS.PHOTO_PACKS)]: ICON_COMPONENTS.BACKGROUND,
     [variables.getMessage(MESSAGE_KEYS.QUOTE_PACKS)]: ICON_COMPONENTS.QUOTE,
     [variables.getMessage(MESSAGE_KEYS.PRESET_SETTINGS)]: ICON_COMPONENTS.ADVANCED,
@@ -137,14 +137,14 @@ export const NAVBAR_BUTTONS = [
     messageKey: 'modals.main.navbar.settings',
   },
   {
-    tab: TAB_TYPES.ADDONS,
-    icon: ICON_COMPONENTS.ADDONS,
-    messageKey: 'modals.main.navbar.addons',
+    tab: TAB_TYPES.LIBRARY,
+    icon: ICON_COMPONENTS.LIBRARY,
+    messageKey: 'modals.main.navbar.library',
   },
   {
-    tab: TAB_TYPES.MARKETPLACE,
-    icon: ICON_COMPONENTS.MARKETPLACE,
-    messageKey: 'modals.main.navbar.marketplace',
+    tab: TAB_TYPES.DISCOVER,
+    icon: ICON_COMPONENTS.DISCOVER,
+    messageKey: 'modals.main.navbar.discover',
   },
 ];
 
@@ -154,11 +154,4 @@ export const DIVIDER_LABELS = [
   'modals.main.settings.sections.language.title',
   'modals.main.marketplace.all',
   'modals.main.settings.sections.experimental.title',
-];
-
-// Labels that should have "Mue" title before them
-export const MUE_TITLE_LABELS = [
-  'modals.main.marketplace.product.overview',
-  'modals.main.addons.added',
-  'modals.main.marketplace.all',
 ];

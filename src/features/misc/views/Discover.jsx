@@ -4,9 +4,9 @@ import { memo } from 'react';
 import Tabs from '../../../components/Elements/MainModal/backend/Tabs';
 import MarketplaceTab from '../../marketplace/views/Browse';
 
-function Marketplace({ changeTab, deepLinkData }) {
+function Discover({ changeTab, deepLinkData, currentTab }) {
   return (
-    <Tabs changeTab={(type) => changeTab(type)} current="marketplace">
+    <Tabs changeTab={(type) => changeTab(type)} current="discover" currentTab={currentTab}>
       <div label={variables.getMessage('modals.main.marketplace.all')} name="all">
         <MarketplaceTab type="all" deepLinkData={deepLinkData} />
       </div>
@@ -29,4 +29,4 @@ function Marketplace({ changeTab, deepLinkData }) {
   );
 }
 
-export default memo(Marketplace);
+export default memo(Discover);

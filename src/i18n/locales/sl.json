@@ -100,8 +100,8 @@
         "quote_packs": "Paketi citatov"
       },
       "navbar": {
-        "addons": "Dodatki",
-        "marketplace": "Tržnica",
+        "library": "Dodatki",
+        "discover": "Tržnica",
         "settings": "Nastavitve"
       },
       "settings": {

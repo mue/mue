@@ -100,8 +100,8 @@
         "quote_packs": "மேற்கோள் பொதிகள்"
       },
       "navbar": {
-        "addons": "துணை நிரல்கள்",
-        "marketplace": "சந்தை",
+        "library": "துணை நிரல்கள்",
+        "discover": "சந்தை",
         "settings": "அமைப்புகள்"
       },
       "settings": {

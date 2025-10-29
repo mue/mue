@@ -100,8 +100,8 @@
         "quote_packs": "Tsitaadikomplektid"
       },
       "navbar": {
-        "addons": "Lisad",
-        "marketplace": "Rakenduste pood",
+        "library": "Lisad",
+        "discover": "Rakenduste pood",
         "settings": "Seaded"
       },
       "settings": {

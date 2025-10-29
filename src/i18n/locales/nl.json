@@ -81,8 +81,8 @@
       "file_upload_error": "Bestand is boven de 2MB",
       "navbar": {
         "settings": "Instellingen",
-        "addons": "Extensies",
-        "marketplace": "Marktplaats"
+        "library": "Extensies",
+        "discover": "Marktplaats"
       },
       "error_boundary": {
         "title": "Foutmelding",

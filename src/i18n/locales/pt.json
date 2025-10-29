@@ -100,8 +100,8 @@
         "quote_packs": "Pacotes de citações"
       },
       "navbar": {
-        "addons": "Complementos",
-        "marketplace": "Mercado",
+        "library": "Complementos",
+        "discover": "Mercado",
         "settings": "Configurações"
       },
       "settings": {
