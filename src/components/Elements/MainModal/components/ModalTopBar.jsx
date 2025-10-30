@@ -2,6 +2,7 @@ import variables from 'config/variables';
 import { MdClose, MdChevronRight, MdArrowBack, MdArrowForward } from 'react-icons/md';
 import { Tooltip, Button } from 'components/Elements';
 import { NAVBAR_BUTTONS } from '../constants/tabConfig';
+import mueAboutIcon from 'assets/icons/mue_about.png';
 
 // Map marketplace types to translation keys
 const MARKETPLACE_TYPE_TO_KEY = {
@@ -89,7 +90,7 @@ function ModalTopBar({
           </Tooltip>
         </div>
         <img
-          src="src/assets/icons/mue_about.png"
+          src={mueAboutIcon}
           alt="Mue"
           className="topBarLogo"
           draggable={false}
