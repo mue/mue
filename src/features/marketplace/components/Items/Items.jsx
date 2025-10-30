@@ -1,18 +1,31 @@
 import variables from 'config/variables';
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
 import { Button } from 'components/Elements';
+import Dropdown from '../../../../components/Form/Settings/Dropdown/Dropdown';
 
-function filterItems(item, filter) {
+function filterItems(item, filter, categoryFilter) {
   const lowerCaseFilter = filter.toLowerCase();
-  return (
+  const textMatch =
     item.name?.toLowerCase().includes(lowerCaseFilter) ||
     filter === '' ||
     item.author?.toLowerCase().includes(lowerCaseFilter) ||
-    item.type?.toLowerCase().includes(lowerCaseFilter)
-  );
+    item.type?.toLowerCase().includes(lowerCaseFilter);
+
+  // Apply category filter
+  if (categoryFilter === 'all') {
+    return textMatch;
+  }
+
+  const categoryMap = {
+    quotes: 'quote_packs',
+    photos: 'photo_packs',
+    presets: 'preset_settings',
+  };
+
+  return textMatch && item.type === categoryMap[categoryFilter];
 }
 
 function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
@@ -71,7 +84,27 @@ function Items({
   filter,
   moreByCreator,
   showCreateYourOwn,
+  filterOptions = false,
+  onSortChange,
 }) {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
+
+  const filterCategories = [
+    { id: 'all', label: 'All' },
+    { id: 'quotes', label: 'Quotes' },
+    { id: 'photos', label: 'Photos' },
+    { id: 'presets', label: 'Presets' },
+  ];
+
+  const handleSortChange = (value) => {
+    setSortType(value);
+    localStorage.setItem('sortMarketplace', value);
+    if (onSortChange) {
+      onSortChange(value);
+    }
+  };
+
   const shouldShowCollection =
     ((collection && !onCollection && (filter === null || filter === '')) ||
       (type === 'collections' && !onCollection && (filter === null || filter === ''))) &&
@@ -114,9 +147,34 @@ function Items({
           )}
         </div>
       )}
+      {/* Items Filter Options */}
+      {filterOptions && (
+        <div className="filter-options-container">
+          <div className="filter-chips">
+            {filterCategories.map((category) => (
+              <button
+                key={category.id}
+                className={`filter-chip ${selectedCategory === category.id ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(category.id)}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
+          <Dropdown
+            label={variables.getMessage('modals.main.addons.sort.title')}
+            name="sortMarketplace"
+            onChange={(value) => handleSortChange(value)}
+            items={[
+              { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
+              { value: 'z-a', text: variables.getMessage('modals.main.addons.sort.z_a') },
+            ]}
+          />
+        </div>
+      )}
       <div className={`items ${moreByCreator ? 'creatorItems' : ''}`}>
         {items
-          ?.filter((item) => filterItems(item, filter))
+          ?.filter((item) => filterItems(item, filter, filterOptions ? selectedCategory : 'all'))
           .map((item, index) => (
             <ItemCard
               isCurator={isCurator}

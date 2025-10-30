@@ -12,7 +12,6 @@ import {
 
 import ItemPage from './ItemPage';
 import Items from '../components/Items/Items';
-import Dropdown from '../../../components/Form/Settings/Dropdown/Dropdown';
 import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
@@ -355,7 +354,10 @@ class Marketplace extends PureComponent {
 
   componentDidUpdate(prevProps) {
     // Handle navigation trigger changes
-    if (this.props.navigationTrigger && this.props.navigationTrigger !== prevProps.navigationTrigger) {
+    if (
+      this.props.navigationTrigger &&
+      this.props.navigationTrigger !== prevProps.navigationTrigger
+    ) {
       const { type, data } = this.props.navigationTrigger;
 
       if (type === 'product' && data) {
@@ -478,11 +480,11 @@ class Marketplace extends PureComponent {
           </>
         ) : (
           <>
-            <div className="flexTopMarketplace">
+            {/* <div className="flexTopMarketplace">
               <span className="mainTitle">
                 {variables.getMessage('modals.main.navbar.marketplace')}
               </span>
-            </div>
+            </div> */}
             <div className="headerExtras marketplaceCondition">
               {this.props.type !== 'collections' && (
                 <div>
@@ -499,15 +501,6 @@ class Marketplace extends PureComponent {
                   </form>
                 </div>
               )}
-              <Dropdown
-                label={variables.getMessage('modals.main.addons.sort.title')}
-                name="sortMarketplace"
-                onChange={(value) => this.changeSort(value)}
-                items={[
-                  { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
-                  { value: 'z-a', text: variables.getMessage('modals.main.addons.sort.z_a') },
-                ]}
-              />
             </div>
           </>
         )}
@@ -541,6 +534,7 @@ class Marketplace extends PureComponent {
           )
         ) : (
           <Items
+            filterOptions={true}
             type={this.props.type}
             items={this.state.items}
             collection={this.state.displayedCollection}
@@ -548,6 +542,7 @@ class Marketplace extends PureComponent {
             toggleFunction={(input) => this.toggle('item', input)}
             collectionFunction={(input) => this.toggle('collection', input)}
             filter={this.state.filter}
+            onSortChange={(value) => this.changeSort(value)}
             showCreateYourOwn={true}
           />
         )}
