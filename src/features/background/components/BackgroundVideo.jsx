@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 /**
  * BackgroundVideo component for rendering video backgrounds
  */
 function BackgroundVideo({ url, filterStyle }) {
-  const isMuted = localStorage.getItem('backgroundVideoMute') === 'true';
-  const shouldLoop = localStorage.getItem('backgroundVideoLoop') === 'true';
+  const isMuted = useMemo(() => localStorage.getItem('backgroundVideoMute') === 'true', []);
+  const shouldLoop = useMemo(() => localStorage.getItem('backgroundVideoLoop') === 'true', []);
 
   return (
     <video

@@ -20,6 +20,11 @@ const Text = memo((props) => {
     localStorage.setItem(props.name, value);
     setValue(value);
 
+    // Call parent onChange if provided
+    if (props.onChange) {
+      props.onChange(value);
+    }
+
     if (props.element) {
       if (!document.querySelector(props.element)) {
         document.querySelector('.reminder-info').style.display = 'flex';
@@ -28,7 +33,7 @@ const Text = memo((props) => {
     }
 
     EventBus.emit('refresh', props.category);
-  }, [props.name, props.upperCaseFirst, props.element, props.category]);
+  }, [props.name, props.upperCaseFirst, props.element, props.category, props.onChange]);
 
   const resetItem = useCallback(() => {
     handleChange({

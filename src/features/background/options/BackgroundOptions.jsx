@@ -57,6 +57,8 @@ const BackgroundOptions = memo(() => {
 
   const updateAPI = useCallback((e) => {
     localStorage.setItem('nextImage', null);
+    // Clear prefetch queue when API changes to prevent showing cached images from old API
+    localStorage.removeItem('imageQueue');
     if (e === 'mue') {
       setBackgroundCategories(backgroundCategoriesOG);
       setBackgroundAPI('mue');
@@ -177,7 +179,11 @@ const BackgroundOptions = memo(() => {
               <Dropdown
                 label={variables.getMessage('modals.main.settings.sections.background.type.title')}
                 name="backgroundType"
-                onChange={(value) => setBackgroundType(value)}
+                onChange={(value) => {
+                  // Clear prefetch queue when changing background type
+                  localStorage.removeItem('imageQueue');
+                  setBackgroundType(value);
+                }}
                 category="background"
                 items={getBackgroundOptionItems(marketplaceEnabled)}
               />
@@ -208,7 +214,11 @@ const BackgroundOptions = memo(() => {
           <SourceSection
             backgroundType={backgroundType}
             marketplaceEnabled={marketplaceEnabled}
-            onTypeChange={(value) => setBackgroundType(value)}
+            onTypeChange={(value) => {
+              // Clear prefetch queue when changing background type
+              localStorage.removeItem('imageQueue');
+              setBackgroundType(value);
+            }}
           />
           {getBackgroundSettings()}
         </>

@@ -1,13 +1,17 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { createBlobUrl } from '../api/blobUrl';
 import { generateBlurHashDataUrl } from '../api/blurHash';
 import { getBackgroundFilterStyle, getBackgroundOverlayStyle } from '../api/backgroundFilters';
+
+// Constants
+const TRANSITION_DURATION = 1200; // milliseconds
 
 /**
  * Hook for rendering backgrounds to the DOM
  */
 export function useBackgroundRenderer(backgroundData) {
   const blobRef = useRef(null);
+  const abortControllerRef = useRef(null);
 
   useEffect(() => {
     if (backgroundData.video) return;
@@ -15,11 +19,18 @@ export function useBackgroundRenderer(backgroundData) {
     const element = document.getElementById('backgroundImage');
     if (!element) return;
 
+    // Abort any pending image loads
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
+
     const applyBackground = async () => {
       if (backgroundData.url) {
         const hasTransition = localStorage.getItem('bgtransition') !== 'false';
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        if (!hasTransition) {
+        if (!hasTransition || prefersReducedMotion) {
           element.style.background = `url(${backgroundData.url})`;
           document.querySelector('.photoInformation')?.style.setProperty('display', 'flex');
           return;
@@ -82,7 +93,7 @@ export function useBackgroundRenderer(backgroundData) {
         void overlay.offsetHeight;
 
         // Re-enable transition
-        overlay.style.transition = 'opacity 1.2s ease-in-out';
+        overlay.style.transition = `opacity ${TRANSITION_DURATION / 1000}s ease-in-out`;
 
         // Force another reflow before changing opacity
         void overlay.offsetHeight;
@@ -95,7 +106,7 @@ export function useBackgroundRenderer(backgroundData) {
           element.style.backgroundImage = `url(${finalUrl})`;
           overlay.style.opacity = '0';
           overlay.style.backgroundImage = '';
-        }, 1300);
+        }, TRANSITION_DURATION + 100);
       } else if (backgroundData.style) {
         element.setAttribute('style', backgroundData.style);
       }
@@ -104,7 +115,21 @@ export function useBackgroundRenderer(backgroundData) {
     applyBackground();
 
     return () => {
-      if (blobRef.current) URL.revokeObjectURL(blobRef.current);
+      // Cleanup blob URL
+      if (blobRef.current) {
+        URL.revokeObjectURL(blobRef.current);
+      }
+
+      // Abort pending image loads
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+
+      // Remove overlay element to prevent memory leak
+      const overlay = document.getElementById('backgroundOverlay');
+      if (overlay) {
+        overlay.remove();
+      }
     };
   }, [backgroundData.url, backgroundData.style, backgroundData.video, backgroundData.photoInfo]);
 }
@@ -113,12 +138,12 @@ export function useBackgroundRenderer(backgroundData) {
  * Hook to get computed filter styles (legacy - for video backgrounds)
  */
 export function useBackgroundFilters() {
-  return { WebkitFilter: getBackgroundFilterStyle() };
+  return useMemo(() => ({ WebkitFilter: getBackgroundFilterStyle() }), []);
 }
 
 /**
  * Hook to get computed overlay filter styles
  */
 export function useBackgroundOverlayFilters() {
-  return getBackgroundOverlayStyle();
+  return useMemo(() => getBackgroundOverlayStyle(), []);
 }

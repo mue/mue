@@ -34,6 +34,10 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
               label={variables.getMessage('modals.main.settings.sections.background.categories')}
               options={backgroundCategories}
               name="apiCategories"
+              onChange={() => {
+                // Clear prefetch queue when categories change
+                localStorage.removeItem('imageQueue');
+              }}
             />
           )}
           <Dropdown
@@ -43,6 +47,10 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
             name="apiQuality"
             element=".other"
             items={APIQualityOptions}
+            onChange={() => {
+              // Clear prefetch queue when quality changes
+              localStorage.removeItem('imageQueue');
+            }}
           />
           <Radio
             title="API"
@@ -81,6 +89,10 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
               name="unsplashCollections"
               category="background"
               element="#backgroundImage"
+              onChange={() => {
+                // Clear prefetch queue when Unsplash collections change
+                localStorage.removeItem('imageQueue');
+              }}
             />
           </Action>
         </Row>
