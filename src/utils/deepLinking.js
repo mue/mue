@@ -10,14 +10,16 @@ import { TAB_TYPES } from '../components/Elements/MainModal/constants/tabConfig'
 /**
  * Parse hash from URL
  * Examples (NEW API v2 format):
- * #marketplace/f41219846700 -> { tab: 'marketplace', itemId: 'f41219846700' }
- * #marketplace/preset_settings/f41219846700 -> { tab: 'marketplace', category: 'preset_settings', itemId: 'f41219846700' }
- * #marketplace/collection/featured -> { tab: 'marketplace', collection: 'featured' }
+ * #discover/f41219846700 -> { tab: 'discover', itemId: 'f41219846700' }
+ * #discover/preset_settings/f41219846700 -> { tab: 'discover', category: 'preset_settings', itemId: 'f41219846700' }
+ * #discover/collection/featured -> { tab: 'discover', collection: 'featured' }
+ * #discover/collection/featured/f41219846700 -> { tab: 'discover', collection: 'featured', itemId: 'f41219846700' }
+ * #marketplace/74ef53ceed0b -> { tab: 'discover', itemId: '74ef53ceed0b' } (marketplace is aliased to discover)
  * #settings/appearance -> { tab: 'settings', section: 'appearance' }
  * #addons -> { tab: 'addons' }
  *
  * Legacy format (still supported):
- * #marketplace/quote_packs/digital-stoicism -> converted to item lookup
+ * #discover/quote_packs/digital-stoicism -> converted to item lookup
  */
 export const parseDeepLink = (hash = window.location.hash) => {
   if (!hash || hash === '#') {
@@ -34,25 +36,36 @@ export const parseDeepLink = (hash = window.location.hash) => {
     itemId: parts[2],
   };
 
+  // Handle marketplace as an alias for discover (for backward compatibility with external URLs)
+  if (result.tab === 'marketplace') {
+    result.tab = 'discover';
+  }
+
   // Validate tab
   const validTabs = Object.values(TAB_TYPES);
   if (!validTabs.includes(result.tab)) {
     return null;
   }
 
-  // Handle marketplace-specific parsing
-  if (result.tab === 'marketplace') {
+  // Handle discover-specific parsing (marketplace URLs are aliased to discover)
+  if (result.tab === 'discover') {
     // Check if it's a collection
     if (result.section === 'collection') {
       result.collection = result.itemId;
-      result.itemId = null;
+      // Check if there's a 4th part (item ID within collection)
+      if (parts[3]) {
+        result.itemId = parts[3];
+        result.fromCollection = true;
+      } else {
+        result.itemId = null;
+      }
     }
     // Check if section is a category (preset_settings, photo_packs, quote_packs)
     else if (['preset_settings', 'photo_packs', 'quote_packs', 'all'].includes(result.section)) {
       result.category = result.section;
       // Third part is the item ID (already in result.itemId)
     }
-    // If only one part after marketplace, assume it's an item ID
+    // If only one part after tab, assume it's an item ID
     else if (result.section && !result.itemId) {
       result.itemId = result.section;
       result.section = null;
@@ -64,20 +77,25 @@ export const parseDeepLink = (hash = window.location.hash) => {
 
 /**
  * Create a deep link hash
- * @param {string} tab - The main tab (settings, marketplace, addons)
+ * @param {string} tab - The main tab (settings, discover, addons)
  * @param {object} options - Additional options
- * @param {string} options.itemId - Item ID for marketplace items (v2 format)
- * @param {string} options.category - Category for marketplace items (optional)
- * @param {string} options.collection - Collection name for marketplace
+ * @param {string} options.itemId - Item ID for discover/marketplace items (v2 format)
+ * @param {string} options.category - Category for discover/marketplace items (optional)
+ * @param {string} options.collection - Collection name for discover/marketplace
+ * @param {boolean} options.fromCollection - If item is being viewed from within a collection
  * @param {string} options.section - Section within the tab
  * @returns {string} Hash string
  */
 export const createDeepLink = (tab, options = {}) => {
   let hash = `#${tab}`;
 
-  if (tab === 'marketplace') {
-    // Collection link
-    if (options.collection) {
+  if (tab === 'discover') {
+    // Collection with item (item viewed from within a collection)
+    if (options.collection && options.itemId && options.fromCollection) {
+      hash += `/collection/${options.collection}/${options.itemId}`;
+    }
+    // Collection link (just the collection page)
+    else if (options.collection) {
       hash += `/collection/${options.collection}`;
     }
     // Item with category
@@ -101,10 +119,16 @@ export const createDeepLink = (tab, options = {}) => {
 
 /**
  * Update URL hash without triggering page reload
+ * @param {string} hash - The hash to set
+ * @param {boolean} pushToHistory - If true, adds to browser history (default: true)
  */
-export const updateHash = (hash) => {
+export const updateHash = (hash, pushToHistory = true) => {
   if (window.history.pushState) {
-    window.history.pushState(null, null, hash);
+    if (pushToHistory) {
+      window.history.pushState(null, null, hash);
+    } else {
+      window.history.replaceState(null, null, hash);
+    }
   } else {
     window.location.hash = hash;
   }

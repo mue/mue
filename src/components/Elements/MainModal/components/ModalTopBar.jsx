@@ -43,18 +43,43 @@ function ModalTopBar({
     });
 
     if (productView) {
-      // Show: Discover > Category > Product
-      const categoryKey = MARKETPLACE_TYPE_TO_KEY[productView.type];
-      if (categoryKey) {
+      console.log('ModalTopBar productView:', productView);
+      console.log('fromCollection:', productView.fromCollection, 'isCollection:', productView.isCollection, 'collectionTitle:', productView.collectionTitle);
+
+      // If viewing a collection page itself (not a product within it)
+      if (productView.isCollection) {
+        // Show: Discover > Collection Name
         breadcrumbPath.push({
-          label: variables.getMessage(categoryKey),
-          onClick: productView.onBack || null,
+          label: productView.collectionTitle || productView.name,
+          onClick: null, // Current page - not clickable
+        });
+      } else {
+        // Viewing a product
+        // Show: Discover > Collection/Category > Product
+        if (productView.fromCollection && productView.collectionTitle) {
+          console.log('Showing collection breadcrumb:', productView.collectionTitle);
+          // If from a collection, show collection name
+          breadcrumbPath.push({
+            label: productView.collectionTitle,
+            onClick: productView.onBack || null,
+          });
+        } else {
+          console.log('Showing category breadcrumb');
+          // Otherwise show category
+          const categoryKey = MARKETPLACE_TYPE_TO_KEY[productView.type];
+          if (categoryKey) {
+            breadcrumbPath.push({
+              label: variables.getMessage(categoryKey),
+              onClick: productView.onBack || null,
+            });
+          }
+        }
+        // Add product name as final breadcrumb
+        breadcrumbPath.push({
+          label: productView.name,
+          onClick: null, // Current item - not clickable
         });
       }
-      breadcrumbPath.push({
-        label: productView.name,
-        onClick: null, // Current item - not clickable
-      });
     } else if (currentSection) {
       // Show: Tab > Section
       breadcrumbPath.push({

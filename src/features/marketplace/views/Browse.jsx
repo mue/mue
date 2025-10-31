@@ -12,7 +12,6 @@ import {
 
 import ItemPage from './ItemPage';
 import Items from '../components/Items/Items';
-import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, urlParser, uninstall } from 'utils/marketplace';
@@ -99,11 +98,19 @@ class Marketplace extends PureComponent {
         // Error caught but only used for flow control
         if (this.controller.signal.aborted === false) {
           console.error('Failed to fetch item:', error);
-          return toast(variables.getMessage('toasts.error'));
+          toast(variables.getMessage('toasts.error'));
         }
+        return;
       }
 
       if (this.controller.signal.aborted === true) {
+        return;
+      }
+
+      // Verify we have valid data before proceeding
+      if (!info || !info.data) {
+        console.error('Invalid item data received:', info);
+        toast(variables.getMessage('toasts.error'));
         return;
       }
 
@@ -112,7 +119,7 @@ class Marketplace extends PureComponent {
       let addonInstalled = false;
       let addonInstalledVersion;
 
-      const installed = JSON.parse(localStorage.getItem('installed'));
+      const installed = JSON.parse(localStorage.getItem('installed')) || [];
 
       if (installed.some((item) => item.name === info.data.name)) {
         button = this.buttons.uninstall;
@@ -146,24 +153,49 @@ class Marketplace extends PureComponent {
 
       // Update URL hash with item ID for deep linking
       if (info.data?.id) {
-        updateHash(`#discover/${info.data.type}/${info.data.id}`);
+        // If viewing from a collection, include collection in URL
+        if (this.state.collection && this.state.collectionName) {
+          updateHash(`#discover/collection/${this.state.collectionName}/${info.data.id}`);
+        } else {
+          updateHash(`#discover/${info.data.type}/${info.data.id}`);
+        }
       }
 
       // Notify parent about product view for breadcrumbs
       if (this.props.onProductView) {
-        this.props.onProductView({
+        const productViewData = {
           id: info.data.id,
           type: info.data.type,
           name: info.data.display_name || info.data.name,
+          fromCollection: this.state.collection,
+          collectionName: this.state.collectionName,
+          collectionTitle: this.state.collectionTitle,
+          collectionDescription: this.state.collectionDescription,
+          collectionImg: this.state.collectionImg,
           onBack: () => this.toggle('main'),
           onBackToAll: () => {
-            this.toggle('main');
-            updateHash('#discover/all');
-            if (this.props.onResetToAll) {
-              this.props.onResetToAll();
-            }
+            // Clear collection state before toggling to main
+            this.setState(
+              {
+                collection: false,
+                collectionName: null,
+                collectionTitle: null,
+                collectionDescription: null,
+                collectionImg: null,
+              },
+              () => {
+                // Call after state is updated
+                updateHash('#discover/all');
+                this.toggle('main');
+                if (this.props.onResetToAll) {
+                  this.props.onResetToAll();
+                }
+              },
+            );
           },
-        });
+        };
+        console.log('Product view data being sent to parent:', productViewData);
+        this.props.onProductView(productViewData);
       }
 
       document.querySelector('#modal').scrollTop = 0;
@@ -177,21 +209,82 @@ class Marketplace extends PureComponent {
         })
       ).json();
 
-      this.setState({
+      const collectionState = {
         items: collection.data.items,
+        collectionName: data, // Store the collection name/slug for navigation
         collectionTitle: collection.data.display_name,
         collectionDescription: collection.data.description,
         collectionImg: collection.data.img,
         collection: true,
         done: true,
-      });
+      };
+      console.log('Setting collection state:', collectionState);
+      this.setState(collectionState);
 
       // Update hash for collection deep linking
       updateHash(`#discover/collection/${data}`);
+
+      // Notify parent about collection view for breadcrumbs
+      if (this.props.onProductView) {
+        const collectionViewData = {
+          id: data,
+          type: 'collection',
+          name: collection.data.display_name,
+          isCollection: true,
+          fromCollection: false,
+          collectionName: data,
+          collectionTitle: collection.data.display_name,
+          onBack: () => {
+            this.setState(
+              {
+                collection: false,
+                collectionName: null,
+                collectionTitle: null,
+                collectionDescription: null,
+                collectionImg: null,
+              },
+              () => {
+                // Call toggle after state is updated
+                updateHash('#discover/all');
+                this.toggle('main');
+              },
+            );
+          },
+          onBackToAll: () => {
+            // Clear collection state and return to main view
+            this.setState(
+              {
+                collection: false,
+                collectionName: null,
+                collectionTitle: null,
+                collectionDescription: null,
+                collectionImg: null,
+              },
+              () => {
+                // Call toggle after state is updated
+                updateHash('#discover/all');
+                this.toggle('main');
+                if (this.props.onResetToAll) {
+                  this.props.onResetToAll();
+                }
+              },
+            );
+          },
+        };
+        console.log('Collection view data being sent to parent:', collectionViewData);
+        this.props.onProductView(collectionViewData);
+      }
     } else {
       this.setState({ item: {}, relatedItems: [] });
-      // Clear hash when returning to main view
-      updateHash(`#discover/${this.props.type}`);
+
+      // Update hash based on current view state
+      if (this.state.collection && this.state.collectionName) {
+        // If returning to a collection view, preserve collection hash
+        updateHash(`#discover/collection/${this.state.collectionName}`);
+      } else {
+        // Clear hash when returning to main view
+        updateHash(`#discover/${this.props.type}`);
+      }
 
       // Clear product view for breadcrumbs
       if (this.props.onProductView) {
@@ -325,7 +418,15 @@ class Marketplace extends PureComponent {
   }
 
   returnToMain() {
-    this.setState({ items: this.state.oldItems, collection: false });
+    this.setState({
+      items: this.state.oldItems,
+      collection: false,
+      collectionName: null,
+      collectionTitle: null,
+      collectionDescription: null,
+      collectionImg: null,
+    });
+    updateHash(`#discover/${this.props.type}`);
   }
 
   componentDidMount() {
@@ -363,9 +464,28 @@ class Marketplace extends PureComponent {
       if (type === 'product' && data) {
         // Navigate to product
         this.toggle('item', { id: data.id, type: data.type });
+      } else if (type === 'collection' && data) {
+        // Navigate to collection
+        this.toggle('collection', data);
       } else if (type === 'main' || type === 'section') {
         // Navigate to main view (browse/listing page)
-        this.toggle('main');
+        // Check if we need to clear collection state first
+        if (data && data.clearCollection && this.state.collection) {
+          this.setState(
+            {
+              collection: false,
+              collectionName: null,
+              collectionTitle: null,
+              collectionDescription: null,
+              collectionImg: null,
+            },
+            () => {
+              this.toggle('main');
+            },
+          );
+        } else {
+          this.toggle('main');
+        }
       }
     }
   }
@@ -445,12 +565,6 @@ class Marketplace extends PureComponent {
       <>
         {this.state.collection === true ? (
           <>
-            <Header
-              title={variables.getMessage('modals.main.navbar.marketplace')}
-              secondaryTitle={this.state.collectionTitle}
-              report={false}
-              goBack={() => this.returnToMain()}
-            />
             <div
               className="collectionPage"
               style={{

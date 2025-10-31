@@ -52,7 +52,7 @@ const Tabs = ({ children, navbar = false, currentTab: activeTab, onSectionChange
 
   return (
     <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
-      {showSidebar && (
+      {showSidebar ? (
         <div className="modalSidebar">
           {children.map((tab, index) => (
             <Tab
@@ -65,8 +65,8 @@ const Tabs = ({ children, navbar = false, currentTab: activeTab, onSectionChange
           ))}
           <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
         </div>
-      )}
-      <div className="modalTabContent">
+      ) : null}
+      <div className="modalTabContent" style={{ marginLeft: showSidebar ? '1rem' : '0' }}>
         {children.map((tab, index) => {
           if (tab.props.label !== currentTab) {
             return null;

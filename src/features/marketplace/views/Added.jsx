@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 import { memo, useState, useEffect, useCallback } from 'react';
-import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension } from 'react-icons/md';
+import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension, MdExplore } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
@@ -12,6 +12,7 @@ import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, uninstall, urlParser } from 'utils/marketplace';
+import { updateHash } from 'utils/deepLinking';
 
 const Added = memo(() => {
   const [installed, setInstalled] = useState(JSON.parse(localStorage.getItem('installed')));
@@ -203,6 +204,13 @@ const Added = memo(() => {
     </>
   );
 
+  const goToDiscover = useCallback(() => {
+    updateHash('#discover/all');
+    // Trigger a popstate event to update the UI
+    const event = new window.Event('popstate');
+    window.dispatchEvent(event);
+  }, []);
+
   if (installed.length === 0) {
     return (
       <>
@@ -219,6 +227,12 @@ const Added = memo(() => {
             <span className="subtitle">
               {variables.getMessage('modals.main.addons.empty.description')}
             </span>
+            <Button
+              type="collection"
+              onClick={goToDiscover}
+              icon={<MdExplore />}
+              label="Get Some"
+            />
           </div>
         </div>
       </>
