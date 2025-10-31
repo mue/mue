@@ -14,6 +14,9 @@
     width: 100%;
     background: t($modal-background);
 
+    margin: 0 1rem;
+    border-radius: t($borderRadius);
+
     @extend %tabText;
 
     hr {
