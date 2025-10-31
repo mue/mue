@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import EventBus from 'utils/eventbus';
-import { getBackgroundFilterStyle } from '../api/backgroundFilters';
+import { getBackgroundFilterStyle, getBackgroundOverlayStyle } from '../api/backgroundFilters';
 
 /**
  * Hook for handling EventBus background events
@@ -45,9 +45,21 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
     };
 
     const applyFilters = () => {
-      const filter = getBackgroundFilterStyle();
-      const element = document.getElementById(backgroundData.video ? 'backgroundVideo' : 'backgroundImage');
-      if (element) element.style.webkitFilter = filter;
+      // For video backgrounds, apply filters directly to the video element
+      if (backgroundData.video) {
+        const filter = getBackgroundFilterStyle();
+        const element = document.getElementById('backgroundVideo');
+        if (element) element.style.webkitFilter = filter;
+      } else {
+        // For image backgrounds, apply filters to the overlay element
+        const overlayElement = document.getElementById('backgroundFilterOverlay');
+        if (overlayElement) {
+          const overlayStyle = getBackgroundOverlayStyle();
+          overlayElement.style.backdropFilter = overlayStyle.backdropFilter;
+          overlayElement.style.webkitBackdropFilter = overlayStyle.WebkitBackdropFilter;
+          overlayElement.style.backgroundColor = overlayStyle.backgroundColor;
+        }
+      }
     };
 
     EventBus.on('refresh', handleEvent);

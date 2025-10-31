@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { createBlobUrl } from '../api/blobUrl';
 import { generateBlurHashDataUrl } from '../api/blurHash';
-import { getBackgroundFilterStyle } from '../api/backgroundFilters';
+import { getBackgroundFilterStyle, getBackgroundOverlayStyle } from '../api/backgroundFilters';
 
 /**
  * Hook for rendering backgrounds to the DOM
@@ -110,8 +110,15 @@ export function useBackgroundRenderer(backgroundData) {
 }
 
 /**
- * Hook to get computed filter styles
+ * Hook to get computed filter styles (legacy - for video backgrounds)
  */
 export function useBackgroundFilters() {
   return { WebkitFilter: getBackgroundFilterStyle() };
+}
+
+/**
+ * Hook to get computed overlay filter styles
+ */
+export function useBackgroundOverlayFilters() {
+  return getBackgroundOverlayStyle();
 }

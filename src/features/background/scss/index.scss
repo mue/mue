@@ -27,6 +27,17 @@
   transition: opacity 1.2s ease-in-out;
 }
 
+#backgroundFilterOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  transition: backdrop-filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
 .backgroundPreload {
   opacity: 0;
 }
