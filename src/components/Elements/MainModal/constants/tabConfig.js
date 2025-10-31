@@ -2,6 +2,9 @@ import {
   MdSettings,
   MdWidgets,
   MdShoppingBasket,
+  MdTune,
+  MdBookmarks,
+  MdExplore,
   MdMenu,
   MdEmojiPeople,
   MdAccessAlarm,
@@ -34,9 +37,9 @@ export const TAB_TYPES = {
 
 // Icon component mapping - using component references instead of elements
 export const ICON_COMPONENTS = {
-  SETTINGS: MdSettings,
-  LIBRARY: MdWidgets,
-  DISCOVER: MdShoppingBasket,
+  SETTINGS: MdTune,
+  LIBRARY: MdBookmarks,
+  DISCOVER: MdExplore,
   NAVBAR: MdMenu,
   GREETING: MdEmojiPeople,
   TIME: MdAccessAlarm,

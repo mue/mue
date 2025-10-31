@@ -25,25 +25,52 @@
 .btn-navigation {
   @include modal-button(standard);
 
-  padding: 0 15px;
+  padding: 10px 20px;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  position: relative;
 
   @include themed {
-    background: t($modal-secondaryColour) !important;
-    border-radius: t($borderRadius) !important;
-    box-shadow: t($boxShadow) !important;
-    border: 0 !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(209, 213, 219, 0.2) !important;
+    box-shadow: none !important;
 
-    &:hover {
-      background: t($modal-sidebarActive) !important;
+    @media (prefers-color-scheme: dark) {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
     }
   }
 
+  .light & {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(209, 213, 219, 0.2) !important;
+  }
+
+  .dark & {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+
   &:hover {
-    svg {
-      background: var(--tab-active);
+    @include themed {
+      backdrop-filter: blur(18px) saturate(190%);
+      -webkit-backdrop-filter: blur(18px) saturate(190%);
+      background: rgba(255, 255, 255, 0.15) !important;
     }
 
-    color: var(--modal-text);
+    .light & {
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .dark & {
+      background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    svg {
+      filter: brightness(1.1);
+    }
   }
 
   span,
@@ -53,7 +80,10 @@
 
   svg {
     font-size: 1.2em !important;
-    color: var(--photo-info);
+
+    @include themed {
+      color: t($color);
+    }
   }
 }
 
@@ -66,7 +96,22 @@
 
 .btn-navigation-active {
   @include themed {
-    background: t($modal-sidebarActive) !important;
+    backdrop-filter: blur(20px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .light & {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border: 1px solid rgba(209, 213, 219, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .dark & {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
   }
 }
 
