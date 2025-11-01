@@ -9,13 +9,6 @@
     flex-flow: row !important;
   }
 
-  .item-back {
-    margin: 0 !important;
-    filter: blur(40px) saturate(180%) brightness(90%) !important;
-    height: 15px !important;
-    width: 200px !important;
-  }
-
   .item-icon {
     margin: 0 !important;
   }
@@ -38,42 +31,29 @@
     border-radius: 12px;
     width: auto;
     cursor: pointer;
-    transition: 0.5s;
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-flow: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
     gap: 15px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 1.5rem;
+    will-change: transform;
+    transform: translate3d(0, 0, 0); // Force GPU acceleration
 
     @include themed {
       background-color: t($modal-secondaryColour);
       box-shadow: 0 0 0 1px t($modal-sidebarActive);
 
       &:hover {
-        background-color: t($modal-sidebarActive);
-
-        img {
-          background-color: t($modal-sidebarActive);
-        }
+        transform: translate3d(0, -5px, 0);
       }
     }
 
     .tags {
       margin-top: 7px;
-    }
-
-    .item-back {
-      filter: blur(60px) saturate(180%) brightness(90%);
-      position: absolute;
-      object-fit: cover !important;
-      height: 90px;
-      width: 100px;
-      border-radius: 100px;
-      transition: 0.5s;
-      margin-top: 30px;
     }
 
     .item-icon {
@@ -82,17 +62,13 @@
       width: 60px !important;
       border-radius: 12px;
       transition: 0.5s;
-      margin-top: 25px;
     }
 
     .card-details {
       z-index: 1;
-      padding: 10px;
-      margin-bottom: 24px;
       display: flex;
       flex-flow: column;
-      gap: 5px;
-      align-items: center;
+      align-items: flex-start;
 
       .card-title {
         font-size: 18px;
@@ -106,8 +82,16 @@
         }
       }
 
-      .card-type {
-        margin-top: 8px;
+      .card-chips {
+        margin-top: 20px;
+        display: flex;
+        flex-flow: row;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .card-type,
+      .card-collection {
         font-size: 12px;
         font-weight: bolder;
 
@@ -120,6 +104,39 @@
         background-color: rgb(255 255 255 / 10%);
         border: 1px solid rgb(209 213 219 / 30%);
       }
+
+      .card-collection {
+        @include themed {
+          background-color: rgb(255 255 255 / 15%);
+          border: 1px solid rgb(209 213 219 / 40%);
+        }
+      }
+    }
+
+    .item-installed-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      pointer-events: none;
+      will-change: transform;
+
+      svg {
+        color: white;
+        font-size: 20px;
+      }
+    }
+
+    &:hover .item-installed-badge {
+      transform: scale(1.05);
     }
   }
 }

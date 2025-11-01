@@ -1,6 +1,6 @@
 import variables from 'config/variables';
-import React, { memo, useState } from 'react';
-import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew } from 'react-icons/md';
+import React, { memo, useState, useMemo } from 'react';
+import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew, MdCheckCircle } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
 import { Button } from 'components/Elements';
@@ -28,21 +28,63 @@ function filterItems(item, filter, categoryFilter) {
   return textMatch && item.type === categoryMap[categoryFilter];
 }
 
-function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
+function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInstalled }) {
   item._onCollection = onCollection;
+
+  // Convert hex color to RGB for gradient with opacity
+  const hexToRgb = (hex) => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+      ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16),
+        }
+      : null;
+  };
+
+  const getGradientStyle = () => {
+    if (!item.colour) return {};
+
+    const rgb = hexToRgb(item.colour);
+    if (!rgb) return {};
+
+    const baseColor = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+
+    return {
+      '--item-gradient0': `rgba(${baseColor}, 0.38)`,
+      '--item-gradient10': `rgba(${baseColor}, 0.35)`,
+      '--item-gradient75': `rgba(${baseColor}, 0.14)`,
+      '--item-gradient100': `rgba(${baseColor}, 0.06)`,
+      backgroundImage: `radial-gradient(circle at center 25%, var(--item-gradient0) 0%, var(--item-gradient10) 10%, var(--item-gradient75) 75%, var(--item-gradient100) 100%)`,
+    };
+  };
+
+  const getBadgeStyle = () => {
+    if (!item.colour) return {};
+
+    const rgb = hexToRgb(item.colour);
+    if (!rgb) return {};
+
+    const baseColor = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+
+    return {
+      backgroundColor: `rgba(${baseColor}, 0.9)`,
+    };
+  };
+
   return (
-    <div className="item" onClick={() => toggleFunction(item)} key={item.name}>
-      <img
-        className="item-back"
-        alt=""
-        draggable={false}
-        src={item.icon_url}
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = placeholderIcon;
-        }}
-        aria-hidden="true"
-      />
+    <div
+      className="item"
+      onClick={() => toggleFunction(item)}
+      key={item.name}
+      style={getGradientStyle()}
+    >
+      {isInstalled && item.colour && (
+        <div className="item-installed-badge" style={getBadgeStyle()}>
+          <MdCheckCircle />
+        </div>
+      )}
       <img
         className="item-icon"
         alt="icon"
@@ -63,11 +105,19 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator }) {
           ''
         )}
 
-        {type === 'all' && !onCollection ? (
-          <span className="card-type">
-            {variables.getMessage('modals.main.marketplace.' + item.type)}
-          </span>
-        ) : null}
+        <div className="card-chips">
+          {type === 'all' && !onCollection ? (
+            <span className="card-type">
+              {variables.getMessage('modals.main.marketplace.' + item.type)}
+            </span>
+          ) : null}
+
+          {/* {item.in_collections && item.in_collections.length > 0 && !onCollection ? (
+            <span className="card-collection">
+              {item.in_collections[0]}
+            </span>
+          ) : null} */}
+        </div>
       </div>
     </div>
   );
@@ -89,6 +139,12 @@ function Items({
 }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
+
+  // Cache installed items lookup - only parse localStorage once
+  const installedNames = useMemo(() => {
+    const installed = JSON.parse(localStorage.getItem('installed')) || [];
+    return new Set(installed.map((item) => item.name));
+  }, []);
 
   const filterCategories = [
     { id: 'all', label: 'All' },
@@ -182,6 +238,7 @@ function Items({
               toggleFunction={toggleFunction}
               type={type}
               onCollection={onCollection}
+              isInstalled={installedNames.has(item.name)}
               key={index}
             />
           ))}
