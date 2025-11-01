@@ -13,6 +13,7 @@ import {
 import ItemPage from './ItemPage';
 import Items from '../components/Items/Items';
 import { Button } from 'components/Elements';
+import InstallButton from '../components/Elements/InstallButton';
 
 import { install, urlParser, uninstall } from 'utils/marketplace';
 import { updateHash } from 'utils/deepLinking';
@@ -34,18 +35,16 @@ class Marketplace extends PureComponent {
     };
     this.buttons = {
       uninstall: (
-        <Button
-          type="settings"
+        <InstallButton
           onClick={() => this.manage('uninstall')}
-          icon={<MdClose />}
+          isInstalled={true}
           label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
         />
       ),
       install: (
-        <Button
-          type="settings"
+        <InstallButton
           onClick={() => this.manage('install')}
-          icon={<MdLibraryAdd />}
+          isInstalled={false}
           label={variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
         />
       ),

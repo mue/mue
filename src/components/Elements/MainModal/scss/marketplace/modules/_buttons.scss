@@ -178,6 +178,7 @@ a.btn-collection {
   height: 40px;
   display: grid;
   place-content: center;
+  border-radius: 8px !important;
 
   @include modal-button(standard);
 }

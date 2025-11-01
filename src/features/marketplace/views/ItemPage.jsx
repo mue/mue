@@ -97,6 +97,95 @@ class ItemPage extends PureComponent {
       .sort(() => 0.5 - Math.random())
       .slice(0, 3);
 
+    // Extract colour from data (British spelling as used in API)
+    const mainColor = this.props.data.data.colour;
+
+    // Helper function to determine if a color is light or dark
+    const isLightColor = (hexColor) => {
+      if (!hexColor) return false;
+      // Remove # if present
+      const hex = hexColor.replace('#', '');
+      // Convert to RGB
+      const r = parseInt(hex.substr(0, 2), 16);
+      const g = parseInt(hex.substr(2, 2), 16);
+      const b = parseInt(hex.substr(4, 2), 16);
+      // Calculate relative luminance (perceived brightness)
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      return luminance > 0.6; // If > 0.6, it's a light color
+    };
+
+    const isLight = isLightColor(mainColor);
+    const textColor = isLight ? '#000000' : '#ffffff';
+
+    // Create dynamic styles for theming with the main color
+    const themedStyles = mainColor ? (
+      <style>{`
+        /* Icon buttons styling */
+        .iconButtons .btn-icon {
+          background: ${mainColor} !important;
+          background-image: none !important;
+          border-color: ${mainColor} !important;
+          box-shadow: 0 0 0 1px ${mainColor}, 0 4px 12px ${mainColor}40 !important;
+          color: ${textColor} !important;
+        }
+        .iconButtons .btn-icon:hover {
+          background: ${mainColor} !important;
+          filter: brightness(${isLight ? '0.95' : '1.15'});
+          transform: translateY(-2px);
+          box-shadow: 0 0 0 1px ${mainColor}, 0 6px 20px ${mainColor}60 !important;
+        }
+
+        /* ItemInfo background gradient */
+        .itemInfo {
+          background: linear-gradient(135deg, ${mainColor}ee 0%, ${mainColor}aa 50%, ${mainColor}66 100%) !important;
+          box-shadow: 0 8px 32px ${mainColor}40 !important;
+        }
+
+        /* Icon shadow */
+        .itemInfo .icon {
+          box-shadow: 0 8px 32px ${mainColor}80, 0 0 0 1px ${mainColor}40 !important;
+        }
+
+        /* Install button styling */
+        .itemInfo .installButton {
+          background: ${mainColor} !important;
+          background-image: linear-gradient(135deg, ${mainColor} 0%, ${mainColor}dd 100%) !important;
+          box-shadow: 0 4px 16px ${mainColor}60 !important;
+        }
+
+        .itemInfo .installButton:hover {
+          background: ${mainColor} !important;
+          filter: brightness(${isLight ? '0.95' : '1.15'});
+          box-shadow: 0 6px 24px ${mainColor}80 !important;
+        }
+
+        /* Install button text and icon color */
+        .itemInfo .installButton span,
+        .itemInfo .installButton svg {
+          color: ${textColor} !important;
+        }
+
+        /* Mue logo - circle matches text color, paths match button color */
+        .itemInfo .installButton .mueLogo circle {
+          fill: ${textColor} !important;
+        }
+
+        .itemInfo .installButton .mueLogo path {
+          fill: ${mainColor} !important;
+        }
+
+        /* Remove the default gradient animation when themed */
+        .itemInfo .installButton.installed {
+          background: ${mainColor}aa !important;
+          background-image: none !important;
+        }
+
+        .itemInfo .installButton.installed:hover {
+          background: ${mainColor}99 !important;
+        }
+      `}</style>
+    ) : null;
+
     if (!this.props.data.display_name) {
       return null;
     }
@@ -330,12 +419,7 @@ class ItemPage extends PureComponent {
               </div>
             </div>
           </div>
-          <div
-            className="itemInfo"
-            style={{
-              backgroundImage: `url("${this.props.data.data.icon_url}")`,
-            }}
-          >
+          <div className="itemInfo">
             <div className="front">
               <img
                 className="icon"
@@ -357,30 +441,33 @@ class ItemPage extends PureComponent {
                 </p>
               )}
               {this.props.data.data.sideload !== true && (
-                <div className="iconButtons">
-                  <Button
-                    type="icon"
-                    onClick={() => this.setState({ shareModal: true })}
-                    icon={<MdIosShare />}
-                    tooltipTitle={variables.getMessage('widgets.quote.share')}
-                    tooltipKey="share"
-                  />
-                  <Button
-                    type="icon"
-                    onClick={() =>
-                      window.open(
-                        variables.constants.REPORT_ITEM +
-                          this.props.data.data.display_name.split(' ').join('+'),
-                        '_blank',
-                      )
-                    }
-                    icon={<MdFlag />}
-                    tooltipTitle={variables.getMessage(
-                      'modals.main.marketplace.product.buttons.report',
-                    )}
-                    tooltipKey="report"
-                  />
-                </div>
+                <>
+                  {themedStyles}
+                  <div className="iconButtons">
+                    <Button
+                      type="icon"
+                      onClick={() => this.setState({ shareModal: true })}
+                      icon={<MdIosShare />}
+                      tooltipTitle={variables.getMessage('widgets.quote.share')}
+                      tooltipKey="share"
+                    />
+                    <Button
+                      type="icon"
+                      onClick={() =>
+                        window.open(
+                          variables.constants.REPORT_ITEM +
+                            this.props.data.data.display_name.split(' ').join('+'),
+                          '_blank',
+                        )
+                      }
+                      icon={<MdFlag />}
+                      tooltipTitle={variables.getMessage(
+                        'modals.main.marketplace.product.buttons.report',
+                      )}
+                      tooltipKey="report"
+                    />
+                  </div>
+                </>
               )}
               {this.props.data.data.in_collections?.length > 0 && (
                 <div>

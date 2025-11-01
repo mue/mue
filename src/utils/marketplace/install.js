@@ -1,16 +1,14 @@
 import EventBus from 'utils/eventbus';
 
-// todo: relocate these 2 functions
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
+// todo: relocate this function
 function showReminder() {
   document.querySelector('.reminder-info').style.display = 'flex';
   localStorage.setItem('showReminder', true);
 }
 
 export function install(type, input, sideload, collection) {
+  let refreshEvent = null;
+
   switch (type) {
     case 'settings': {
       localStorage.removeItem('backup_settings');
@@ -40,12 +38,10 @@ export function install(type, input, sideload, collection) {
       }
       localStorage.setItem('backgroundType', 'photo_pack');
       localStorage.removeItem('backgroundchange');
-      EventBus.emit('refresh', 'background');
-      // TODO: make this legitimately good and work without a reload - currently we just refresh
-      sleep(4000);
-      if (!collection) {
-        window.location.reload();
-      }
+      // Clear image queue to ensure fresh background loads
+      localStorage.removeItem('imageQueue');
+      // Set refresh event to emit after installed data is saved
+      refreshEvent = 'backgroundrefresh';
       break;
     }
 
@@ -61,7 +57,7 @@ export function install(type, input, sideload, collection) {
       }
       localStorage.setItem('quoteType', 'quote_pack');
       localStorage.removeItem('quotechange');
-      EventBus.emit('refresh', 'quote');
+      refreshEvent = 'quote';
       break;
     }
 
@@ -78,4 +74,9 @@ export function install(type, input, sideload, collection) {
   installed.push(input);
 
   localStorage.setItem('installed', JSON.stringify(installed));
+
+  // Emit refresh event after all data is saved
+  if (refreshEvent) {
+    EventBus.emit('refresh', refreshEvent);
+  }
 }

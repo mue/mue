@@ -10,6 +10,7 @@ import Items from '../components/Items/Items';
 import { Dropdown, FileUpload } from 'components/Form/Settings';
 import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
+import InstallButton from '../components/Elements/InstallButton';
 
 import { install, uninstall, urlParser } from 'utils/marketplace';
 import { updateHash } from 'utils/deepLinking';
@@ -173,9 +174,9 @@ const Added = memo(() => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const button = item.display_name ? (
-    <Button
-      type="settings"
+    <InstallButton
       onClick={uninstallItem}
+      isInstalled={true}
       label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
     />
   ) : '';

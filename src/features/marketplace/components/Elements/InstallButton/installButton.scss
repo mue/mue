@@ -1,0 +1,166 @@
+.installButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-width: 180px;
+
+  .buttonContent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .iconWrapper {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.show {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    &.hide {
+      opacity: 0;
+      transform: rotate(90deg) scale(0.3);
+    }
+  }
+
+  .mueLogo {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  .removeIcon {
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .labelText {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  // Install state (not installed yet)
+  &.notInstalled {
+    background: linear-gradient(135deg, #ff5c25 0%, #d21a11 48%, #ff456e 100%);
+    color: white;
+    // box-shadow: 0 4px 12px rgba(255, 92, 37, 0.3);
+
+    &:hover {
+      // box-shadow: 0 6px 16px rgba(255, 92, 37, 0.4);
+
+      .mueLogo {
+        animation: logoFloat 0.6s ease-in-out;
+      }
+
+      // .labelText {
+      //   transform: translateX(2px);
+      // }
+    }
+
+    &:active {
+      box-shadow: 0 2px 8px rgba(255, 92, 37, 0.2);
+    }
+  }
+
+  // Installed state (already installed)
+  &.installed {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    // border: 2px solid rgba(255, 255, 255, 0.2);
+    // backdrop-filter: blur(10px);
+
+    &:hover {
+      background: rgba(255, 92, 37, 0.2);
+      border-color: rgba(255, 92, 37, 0.4);
+      // transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 92, 37, 0.2);
+
+      .removeIcon {
+        animation: rotateIcon 0.4s ease-in-out;
+      }
+
+      // .labelText {
+      //   transform: translateX(2px);
+      // }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // Loading state (optional - for future use)
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+
+    &:hover {
+      transform: none !important;
+    }
+  }
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+// Smooth state transition animation
+.installButton.notInstalled.transitioning,
+.installButton.installed.transitioning {
+  animation: buttonPulse 0.5s ease-out;
+}
+
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

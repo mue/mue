@@ -8,6 +8,8 @@ function showReminder() {
 
 export function uninstall(type, name) {
   let installedContents, packContents;
+  let refreshEvent = null;
+
   switch (type) {
     case 'settings': {
       const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
@@ -39,7 +41,7 @@ export function uninstall(type, name) {
         localStorage.removeItem('quote_packs');
       }
       localStorage.removeItem('quotechange');
-      EventBus.emit('refresh', 'marketplacequoteuninstall');
+      refreshEvent = 'marketplacequoteuninstall';
       break;
 
     case 'photos':
@@ -55,12 +57,16 @@ export function uninstall(type, name) {
       });
       localStorage.setItem('photo_packs', JSON.stringify(installedContents));
       if (installedContents.length === 0) {
+        // Switch back to old background type or default to mue api
         localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType') || 'api');
         localStorage.removeItem('oldBackgroundType');
         localStorage.removeItem('photo_packs');
       }
       localStorage.removeItem('backgroundchange');
-      EventBus.emit('refresh', 'marketplacebackgrounduninstall');
+      // Clear image queue to ensure fresh background loads
+      localStorage.removeItem('imageQueue');
+      // Set refresh event to emit after installed data is saved
+      refreshEvent = 'marketplacebackgrounduninstall';
       break;
 
     default:
@@ -76,4 +82,9 @@ export function uninstall(type, name) {
   }
 
   localStorage.setItem('installed', JSON.stringify(installed));
+
+  // Emit refresh event after all data is saved
+  if (refreshEvent) {
+    EventBus.emit('refresh', refreshEvent);
+  }
 }
