@@ -606,7 +606,7 @@
         "theme": {
           "description": "Mue está disponible tanto en el tema claro como en el oscuro, también se puede configurar automáticamente en función del tema de su sistema.",
           "tip": "Si utiliza la configuración automática, se utilizará el tema de tu computadora. Esta configuración afectará a los modales y a algunos de los widgets que aparecen en la pantalla, como la hora y las notas.",
-          "title": "Selecciona un tema"
+          "title": "Seleccione un tema"
         }
       },
       "tip": "Consejo"
