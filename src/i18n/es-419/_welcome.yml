@@ -7,6 +7,10 @@ sections:
     notices:
       discord_title: Únase a nuestro Discord
       discord_description: Habla con la comunidad y desarrolladores de Mue
+      discord_join: Únase
+      github_title: Contribuir a GitHub
+      github_description: Informar errores, añadir características o donar
+      github_open: Abierto
   language:
     title: Elige el idioma
     description: Mue puede mostrarse en los idiomas que se indican debajo. 
@@ -20,6 +24,9 @@ sections:
       widgets que aparecen en la pantalla, como la hora y las notas.
   style:
     legacy: Legado
+    description: Mue actualmente ofrece la opción entre el estilo legado y el 
+      estilo moderno recién lanzado.
+    modern: Moderno
   settings:
     title: Importa los ajustes
     description: ¿Instalando Mue en un nuevo dispositivo? ¡No dudes en importar 
