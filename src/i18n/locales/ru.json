@@ -100,8 +100,8 @@
         "quote_packs": "Наборы цитат"
       },
       "navbar": {
-        "library": "Аддоны",
         "discover": "Магазин",
+        "library": "Аддоны",
         "settings": "Настройки"
       },
       "settings": {

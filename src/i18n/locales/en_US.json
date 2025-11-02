@@ -100,8 +100,8 @@
         "quote_packs": "Quote Packs"
       },
       "navbar": {
-        "library": "Library",
         "discover": "Discover",
+        "library": "Library",
         "settings": "Settings"
       },
       "settings": {

@@ -100,8 +100,8 @@
         "quote_packs": "Quote Packs"
       },
       "navbar": {
-        "library": "附加元件",
         "discover": "市場",
+        "library": "附加元件",
         "settings": "設定"
       },
       "settings": {

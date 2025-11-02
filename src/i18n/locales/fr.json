@@ -100,8 +100,8 @@
         "quote_packs": "Packs de citations"
       },
       "navbar": {
-        "library": "Add-ons",
         "discover": "Marché",
+        "library": "Add-ons",
         "settings": "Paramètres"
       },
       "settings": {
@@ -411,9 +411,9 @@
             "add": "Ajouter une citation",
             "additional": "Autres paramètres pour personnaliser le style du widget de citation",
             "author": "Auteur",
+            "author_details": "Détails de l'auteur",
             "author_img": "Afficher l'image de l'auteur",
             "author_link": "Lien de l'auteur",
-            "author_details": "Détails de l'auteur",
             "buttons": {
               "copy": "Copier",
               "favourite": "Favori",
