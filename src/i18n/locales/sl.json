@@ -100,8 +100,8 @@
         "quote_packs": "Paketi citatov"
       },
       "navbar": {
-        "library": "Dodatki",
         "discover": "Tržnica",
+        "library": "Dodatki",
         "settings": "Nastavitve"
       },
       "settings": {
@@ -411,9 +411,9 @@
             "add": "Dodaj citat",
             "additional": "Druge nastavitve za prilagoditev sloga pripomočka za citate",
             "author": "Avtor",
+            "author_details": "Podrobnosti avtorja",
             "author_img": "Prikaži sliko avtorja",
             "author_link": "Povezava avtorja",
-            "author_details": "Podrobnosti avtorja",
             "buttons": {
               "copy": "Kopiraj",
               "favourite": "Priljubljeno",

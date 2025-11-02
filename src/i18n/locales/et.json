@@ -100,8 +100,8 @@
         "quote_packs": "Tsitaadikomplektid"
       },
       "navbar": {
-        "library": "Lisad",
         "discover": "Rakenduste pood",
+        "library": "Lisad",
         "settings": "Seaded"
       },
       "settings": {
@@ -411,9 +411,9 @@
             "add": "Lisa tsitaat",
             "additional": "Muud seaded tsitaadi vidina stiili kohandamiseks",
             "author": "Autor",
+            "author_details": "Näita autori üksikasju",
             "author_img": "Näita autori pilti",
             "author_link": "Autori link",
-            "author_details": "Näita autori üksikasju",
             "buttons": {
               "copy": "Kopeeri",
               "favourite": "Lisa lemmikuks",

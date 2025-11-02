@@ -100,8 +100,8 @@
         "quote_packs": "Sitat Paketləri"
       },
       "navbar": {
-        "library": "Əlavələr",
         "discover": "Bazar",
+        "library": "Əlavələr",
         "settings": "Parametrlər"
       },
       "settings": {
@@ -411,9 +411,9 @@
             "add": "Sitat əlavə et",
             "additional": "Sitat vidjetinin üslubunu fərdiləşdirmək üçün digər parametrlər",
             "author": "Müəllif",
+            "author_details": "Müəllif məlumatlarını",
             "author_img": "Müəllif şəklini göstər",
             "author_link": "Müəllif linki",
-            "author_details": "Müəllif məlumatlarını",
             "buttons": {
               "copy": "Kopyala",
               "favourite": "Sevimli",

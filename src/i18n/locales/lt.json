@@ -100,8 +100,8 @@
         "quote_packs": "Citatų rinkiniai"
       },
       "navbar": {
-        "library": "Priedai",
         "discover": "Prekyvietė",
+        "library": "Priedai",
         "settings": "Nustatymai"
       },
       "settings": {
@@ -411,9 +411,9 @@
             "add": "Pridėti citatą",
             "additional": "Kiti nustatymai citatos valdiklio stiliui pritaikyti",
             "author": "Autorius",
+            "author_details": "Rodyti autoriaus informaciją",
             "author_img": "Rodyti autoriaus nuotrauką",
             "author_link": "Autoriaus nuoroda",
-            "author_details": "Rodyti autoriaus informaciją",
             "buttons": {
               "copy": "Kopijuoti",
               "favourite": "Mėgstama",

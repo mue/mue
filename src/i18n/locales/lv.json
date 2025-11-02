@@ -100,8 +100,8 @@
         "quote_packs": "Citātu pakotnes"
       },
       "navbar": {
-        "library": "Paplašinājumi",
         "discover": "Tirgus",
+        "library": "Paplašinājumi",
         "settings": "Iestatījumi"
       },
       "settings": {
@@ -411,9 +411,9 @@
             "add": "Pievienot citātu",
             "additional": "Citi iestatījumi citātu logrīka stila pielāgošanai",
             "author": "Autors",
+            "author_details": "Rādīt autora detaļas",
             "author_img": "Rādīt autora attēlu",
             "author_link": "Autora saite",
-            "author_details": "Rādīt autora detaļas",
             "buttons": {
               "copy": "Kopēt",
               "favourite": "Pievienot izlasei",
