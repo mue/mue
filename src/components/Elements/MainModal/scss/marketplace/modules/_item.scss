@@ -74,6 +74,8 @@ p.description {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 25px;
 
   .itemWarning {
@@ -167,6 +169,7 @@ p.description {
   gap: 15px;
 
   .subtitle {
+    -webkit-user-select: text !important;
     user-select: text !important;
   }
 }

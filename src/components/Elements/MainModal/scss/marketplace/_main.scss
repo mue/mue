@@ -145,30 +145,124 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
 
-  .itemShowcase {
+  .itemContent {
     display: flex;
     flex-flow: column;
     gap: 25px;
-    width: 60%;
-    max-width: 650px;
-
-    .description {
-      max-lines: 3;
-      font-size: 16px;
-    }
+    flex: 1;
 
     img {
       width: 100%;
       height: auto;
+      border-radius: 12px;
     }
 
     table {
       table-layout: fixed;
       width: 100%;
-      max-width: 650px !important;
       word-wrap: break-word !important;
       font-size: 16px;
+      border-collapse: collapse;
+    }
+
+    .itemTop {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .itemTabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      .itemTab {
+        border-radius: 999px;
+        padding: 0.55rem 1.3rem;
+        border: 1px solid transparent;
+        background: transparent;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+
+        @include themed {
+          color: t($subColor);
+          border-color: rgb(255 255 255 / 10%);
+          background-color: rgb(255 255 255 / 5%);
+        }
+
+        &:hover {
+          transform: translateY(-1px);
+
+          @include themed {
+            border-color: rgb(255 255 255 / 18%);
+          }
+        }
+
+        &.active {
+          @include themed {
+            color: t($color);
+            background-color: t($modal-sidebarActive);
+            border-color: transparent;
+          }
+        }
+      }
+    }
+
+    .tabContent {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .itemHighlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+
+      .highlightCard {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 18px;
+        border-radius: 14px;
+        border: 1px solid transparent;
+
+        @include themed {
+          background-color: t($modal-secondaryColour);
+          border-color: rgb(255 255 255 / 8%);
+          box-shadow: 0 0 0 1px t($modal-sidebarActive);
+        }
+
+        .highlightLabel {
+          font-size: 14px;
+
+          @include themed {
+            color: t($subColor);
+          }
+        }
+
+        .highlightValue {
+          font-size: 30px;
+          font-weight: 600;
+
+          @include themed {
+            color: t($color);
+          }
+        }
+      }
+    }
+
+    .marketplaceDetails {
+      .moreInfo {
+        margin-top: 10px;
+      }
     }
   }
 
@@ -177,8 +271,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 15px;
-    width: 30%;
-    max-width: 300px;
+    flex: 0 0 300px;
+    width: 300px;
+    max-width: 100%;
     max-height: 700px;
 
     .front {
@@ -190,6 +285,7 @@
       width: 100%;
       box-sizing: border-box !important;
       border-radius: 12px 12px 0 0;
+      -webkit-backdrop-filter: blur(40px) saturate(150%) brightness(75%);
       backdrop-filter: blur(40px) saturate(150%) brightness(75%);
 
       @include themed {
@@ -269,6 +365,7 @@
   flex-flow: column;
   text-align: center;
   align-items: center;
+  -webkit-user-select: none;
   user-select: none;
 
   img {
@@ -382,6 +479,7 @@ p.author {
   .nice-tag {
     border-radius: 150px;
     padding: 1px 12px;
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
     backdrop-filter: blur(16px) saturate(180%);
     background-color: rgb(255 255 255 / 10%);
     border: 1px solid rgb(209 213 219 / 30%);
@@ -437,6 +535,7 @@ p.author {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 5;
+      line-clamp: 5;
     }
   }
 
@@ -559,6 +658,7 @@ p.author {
     cursor: pointer;
     transition: all 0.2s ease;
     white-space: nowrap;
+    -webkit-user-select: none;
     user-select: none;
 
     @include themed {

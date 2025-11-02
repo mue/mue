@@ -1,27 +1,25 @@
 import variables from 'config/variables';
 import { PureComponent, Fragment } from 'react';
 import { toast } from 'react-toastify';
-import {
-  MdIosShare,
-  MdFlag,
-  MdAccountCircle,
-  MdCalendarMonth,
-  MdFormatQuote,
-  MdImage,
-  MdTranslate,
-  MdOutlineWarning,
-  MdStyle,
-} from 'react-icons/md';
+import { MdIosShare, MdFlag, MdAccountCircle } from 'react-icons/md';
 import Modal from 'react-modal';
 
-import { Header } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, uninstall } from 'utils/marketplace';
-import { Carousel } from '../components/Elements/Carousel';
 import { ShareModal } from 'components/Elements';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { Items } from '../components/Items/Items';
+
+// Tab components
+import OverviewTab from './components/OverviewTab';
+import QuotesTab from './components/QuotesTab';
+import PhotosTab from './components/PhotosTab';
+import PresetsTab from './components/PresetsTab';
+
+// Helper components
+import InfoItem from './components/InfoItem';
+import WarningBanner from './components/WarningBanner';
 
 class ItemPage extends PureComponent {
   constructor(props) {
@@ -33,6 +31,7 @@ class ItemPage extends PureComponent {
       shareModal: false,
       count: 5,
       moreByCurator: [],
+      activeTab: 'overview',
     };
   }
 
@@ -63,11 +62,18 @@ class ItemPage extends PureComponent {
   }
 
   incrementCount(type) {
-    const newCount =
-      this.state.count !== this.props.data.data[type].length
-        ? this.props.data.data[type].length
-        : 5;
+    const data = this.props.data.data;
+    let length;
 
+    if (type === 'quotes' && Array.isArray(data.quotes)) {
+      length = data.quotes.length;
+    } else if (type === 'settings' && data.settings) {
+      length = Object.keys(data.settings).length;
+    } else {
+      return;
+    }
+
+    const newCount = this.state.count !== length ? length : 5;
     this.setState({ count: newCount });
   }
 
@@ -84,18 +90,6 @@ class ItemPage extends PureComponent {
     const locale = localStorage.getItem('language');
     const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
     const languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
-    const convertedType = (() => {
-      const map = {
-        photos: 'photo_packs',
-        quotes: 'quote_packs',
-        settings: 'preset_settings',
-      };
-      return map[this.props.data.data.type];
-    })();
-    const moreByCurator = this.state.moreByCurator
-      .filter((item) => item.type === convertedType && item.name !== this.props.data.data.name)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 3);
 
     // Extract colour from data (British spelling as used in API)
     const mainColor = this.props.data.data.colour;
@@ -116,6 +110,25 @@ class ItemPage extends PureComponent {
 
     const isLight = isLightColor(mainColor);
     const textColor = isLight ? '#000000' : '#ffffff';
+
+    const { activeTab } = this.state;
+    const quotes = Array.isArray(this.props.data.data.quotes) ? this.props.data.data.quotes : [];
+    const photos = Array.isArray(this.props.data.data.photos) ? this.props.data.data.photos : [];
+    const settings = this.props.data.data.settings;
+    const hasPhotos = photos.length > 0;
+    const hasQuotes = quotes.length > 0;
+    const hasSettings = !!settings;
+
+    // Format date for details section
+    let formattedDate = '';
+    if (this.props.data.data.updated_at) {
+      const dateObj = new Date(this.props.data.data.updated_at);
+      formattedDate = new Intl.DateTimeFormat(shortLocale, {
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit',
+      }).format(dateObj);
+    }
 
     // Create dynamic styles for theming with the main color
     const themedStyles = mainColor ? (
@@ -190,12 +203,6 @@ class ItemPage extends PureComponent {
       return null;
     }
 
-    // prevent console error
-    let iconsrc = this.props.data.icon;
-    if (!this.props.data.icon) {
-      iconsrc = null;
-    }
-
     let updateButton;
     if (this.state.showUpdateButton) {
       updateButton = (
@@ -209,52 +216,10 @@ class ItemPage extends PureComponent {
       );
     }
 
-    const itemWarning = () => {
-      const template = (message) => (
-        <div className="itemWarning">
-          <MdOutlineWarning />
-          <div className="text">
-            <span className="header">Warning</span>
-            <span>{message}</span>
-          </div>
-        </div>
-      );
-
-      if (this.props.data.data.sideload === true) {
-        return template(variables.getMessage('modals.main.marketplace.product.sideload_warning'));
-      }
-
-      if (this.props.data.data.image_api === true) {
-        return template(variables.getMessage('modals.main.marketplace.product.third_party_api'));
-      }
-
-      if (this.props.data.data.language !== undefined && this.props.data.data.language !== null) {
-        if (shortLocale !== this.props.data.data.language) {
-          return template(variables.getMessage('modals.main.marketplace.product.not_in_language'));
-        }
-      }
-
-      return null;
-    };
-
-    const moreInfoItem = (icon, header, text) => (
-      <div className="infoItem">
-        {icon}
-        <div className="text">
-          <span className="header">{header}</span>
-          <span>{text}</span>
-        </div>
-      </div>
-    );
-
-    let dateObj, formattedDate;
-    if (this.props.data.data.updated_at) {
-      dateObj = new Date(this.props.data.data.updated_at);
-      formattedDate = new Intl.DateTimeFormat(shortLocale, {
-        year: 'numeric',
-        month: 'long',
-        day: '2-digit',
-      }).format(dateObj);
+    // prevent console error
+    let iconsrc = this.props.data.icon;
+    if (!this.props.data.icon) {
+      iconsrc = null;
     }
 
     return (
@@ -291,135 +256,7 @@ class ItemPage extends PureComponent {
           goBack={this.props.toggleFunction}
         /> */}
         <div className="itemPage">
-          <div className="itemShowcase">
-            <div className="subHeader">
-              {moreInfoItem(
-                <MdAccountCircle />,
-                variables.getMessage('modals.main.marketplace.product.created_by'),
-                this.props.data.author,
-              )}
-              {itemWarning()}
-            </div>
-            {this.props.data.data.photos && (
-              <div className="carousel">
-                <div className="carousel_container">
-                  <Carousel data={this.props.data.data.photos} />
-                </div>
-              </div>
-            )}
-            {this.props.data.data.settings && (
-              <img
-                alt="product"
-                draggable={false}
-                src={iconsrc}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = placeholderIcon;
-                }}
-              />
-            )}
-            <div className="marketplaceDescription">
-              <span className="title">
-                {variables.getMessage('modals.main.marketplace.product.description')}
-              </span>
-              <span
-                className="subtitle"
-                dangerouslySetInnerHTML={{ __html: this.props.data.description }}
-              />
-            </div>
-            {this.props.data.data.quotes && (
-              <>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>{variables.getMessage('modals.main.settings.sections.quote.title')}</th>
-                      <th>{variables.getMessage('modals.main.settings.sections.quote.author')}</th>
-                    </tr>
-                    {this.props.data.data.quotes.slice(0, this.state.count).map((quote, index) => (
-                      <tr key={index}>
-                        <td>{quote.quote}</td>
-                        <td>{quote.author}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <div className="showMoreItems">
-                  <span className="link" onClick={() => this.incrementCount('quotes')}>
-                    {this.state.count !== this.props.data.data.quotes.length
-                      ? variables.getMessage('modals.main.marketplace.product.show_all')
-                      : variables.getMessage('modals.main.marketplace.product.show_less')}
-                  </span>
-                </div>
-              </>
-            )}
-            {this.props.data.data.settings && (
-              <>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>{variables.getMessage('modals.main.marketplace.product.setting')}</th>
-                      <th>{variables.getMessage('modals.main.marketplace.product.value')}</th>
-                    </tr>
-                    {Object.entries(this.props.data.data.settings)
-                      .slice(0, this.state.count)
-                      .map(([key, value]) => (
-                        <tr key={key}>
-                          <td>{key}</td>
-                          <td>{value}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-                <div className="showMoreItems">
-                  <span className="link" onClick={() => this.incrementCount('settings')}>
-                    {this.state.count !== this.props.data.data.settings.length
-                      ? variables.getMessage('modals.main.marketplace.product.show_all')
-                      : variables.getMessage('modals.main.marketplace.product.show_less')}
-                  </span>
-                </div>
-              </>
-            )}
-            <div className="marketplaceDescription">
-              <span className="title">
-                {variables.getMessage('modals.main.marketplace.product.details')}
-              </span>
-              <div className="moreInfo">
-                {this.props.data.data.updated_at &&
-                  moreInfoItem(
-                    <MdCalendarMonth />,
-                    variables.getMessage('modals.main.marketplace.product.updated_at'),
-                    formattedDate,
-                  )}
-                {this.props.data.data.quotes &&
-                  moreInfoItem(
-                    <MdFormatQuote />,
-                    variables.getMessage('modals.main.marketplace.product.no_quotes'),
-                    this.props.data.data.quotes.length,
-                  )}
-                {this.props.data.data.photos &&
-                  moreInfoItem(
-                    <MdImage />,
-                    variables.getMessage('modals.main.marketplace.product.no_images'),
-                    this.props.data.data.photos.length,
-                  )}
-                {this.props.data.data.quotes && this.props.data.data.language
-                  ? moreInfoItem(
-                      <MdTranslate />,
-                      variables.getMessage('modals.main.settings.sections.language.title'),
-                      languageNames.of(this.props.data.data.language),
-                    )
-                  : null}
-                {moreInfoItem(
-                  <MdStyle />,
-                  variables.getMessage('modals.main.settings.sections.background.type.title'),
-                  variables.getMessage(
-                    'modals.main.marketplace.' + this.getName(this.props.data.data.type),
-                  ) || 'marketplace',
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="itemInfo">
+          <aside className="itemInfo">
             <div className="front">
               <img
                 className="icon"
@@ -432,7 +269,10 @@ class ItemPage extends PureComponent {
                 }}
               />
               {localStorage.getItem('welcomePreview') !== 'true' ? (
-                this.props.button
+                <>
+                  {this.props.button}
+                  {updateButton}
+                </>
               ) : (
                 <p style={{ textAlign: 'center' }}>
                   {variables.getMessage(
@@ -470,24 +310,104 @@ class ItemPage extends PureComponent {
                 </>
               )}
               {this.props.data.data.in_collections?.length > 0 && (
-                <div>
-                  <div className="inCollection">
-                    <span className="subtitle">
-                      {variables.getMessage('modals.main.marketplace.product.part_of')}
-                    </span>
-                    <span
-                      className="title"
-                      onClick={() =>
-                        this.props.toggleFunction(
-                          'collection',
-                          this.props.data.data.in_collections[0].name,
-                        )
-                      }
-                    >
-                      {this.props.data.data.in_collections[0].display_name}
-                    </span>
-                  </div>
+                <div className="inCollection">
+                  <span className="subtitle">
+                    {variables.getMessage('modals.main.marketplace.product.part_of')}
+                  </span>
+                  <span
+                    className="title"
+                    onClick={() =>
+                      this.props.toggleFunction(
+                        'collection',
+                        this.props.data.data.in_collections[0].name,
+                      )
+                    }
+                  >
+                    {this.props.data.data.in_collections[0].display_name}
+                  </span>
                 </div>
+              )}
+            </div>
+          </aside>
+          <div className="itemContent">
+            <div className="itemTop">
+              <div className="subHeader">
+                <InfoItem
+                  icon={<MdAccountCircle />}
+                  header={variables.getMessage('modals.main.marketplace.product.created_by')}
+                  text={this.props.data.author}
+                />
+                <WarningBanner data={this.props.data.data} shortLocale={shortLocale} />
+              </div>
+              <div className="itemTabs">
+                <button
+                  type="button"
+                  className={`itemTab ${activeTab === 'overview' ? 'active' : ''}`}
+                  onClick={() => this.setState({ activeTab: 'overview' })}
+                >
+                  {variables.getMessage('modals.main.marketplace.product.overview_tab') ||
+                    'Overview'}
+                </button>
+                {hasQuotes && (
+                  <button
+                    type="button"
+                    className={`itemTab ${activeTab === 'quotes' ? 'active' : ''}`}
+                    onClick={() => this.setState({ activeTab: 'quotes' })}
+                  >
+                    {variables.getMessage('modals.main.marketplace.product.quotes_tab') || 'Quotes'}
+                  </button>
+                )}
+
+                {hasPhotos && (
+                  <button
+                    type="button"
+                    className={`itemTab ${activeTab === 'photos' ? 'active' : ''}`}
+                    onClick={() => this.setState({ activeTab: 'photos' })}
+                  >
+                    {variables.getMessage('modals.main.marketplace.product.photos_tab') || 'Photos'}
+                  </button>
+                )}
+
+                {hasSettings && (
+                  <button
+                    type="button"
+                    className={`itemTab ${activeTab === 'presets' ? 'active' : ''}`}
+                    onClick={() => this.setState({ activeTab: 'presets' })}
+                  >
+                    {variables.getMessage('modals.main.marketplace.product.presets_tab') ||
+                      'Presets'}
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="tabContent">
+              {activeTab === 'overview' && (
+                <OverviewTab
+                  data={this.props.data.data}
+                  description={this.props.data.description}
+                  iconsrc={iconsrc}
+                  shortLocale={shortLocale}
+                  languageNames={languageNames}
+                  formattedDate={formattedDate}
+                  getName={this.getName}
+                  count={this.state.count}
+                  onIncrementCount={(type) => this.incrementCount(type)}
+                />
+              )}
+              {activeTab === 'quotes' && hasQuotes && (
+                <QuotesTab
+                  quotes={quotes}
+                  count={this.state.count}
+                  onIncrementCount={(type) => this.incrementCount(type)}
+                />
+              )}
+              {activeTab === 'photos' && hasPhotos && <PhotosTab photos={photos} />}
+              {activeTab === 'presets' && hasSettings && (
+                <PresetsTab
+                  settings={settings}
+                  count={this.state.count}
+                  onIncrementCount={(type) => this.incrementCount(type)}
+                />
               )}
             </div>
           </div>
