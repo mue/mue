@@ -1,667 +1,222 @@
 import variables from 'config/variables';
-import { PureComponent } from 'react';
-import { toast } from 'react-toastify';
-import {
-  MdWifiOff,
-  MdLocalMall,
-  MdClose,
-  MdSearch,
-  MdOutlineArrowForward,
-  MdLibraryAdd,
-} from 'react-icons/md';
+import { useState, useEffect } from 'react';
+import { MdWifiOff, MdLocalMall } from 'react-icons/md';
 
 import ItemPage from './ItemPage';
-import Items from '../components/Items/Items';
-import { Button } from 'components/Elements';
+import CollectionPage from './CollectionPage';
+import BrowsePage from './BrowsePage';
 import InstallButton from '../components/Elements/InstallButton';
 
-import { install, urlParser, uninstall } from 'utils/marketplace';
-import { updateHash } from 'utils/deepLinking';
+import { useMarketplaceData } from '../hooks/useMarketplaceData';
+import { useMarketplaceNavigation } from '../hooks/useMarketplaceNavigation';
+import { useMarketplaceInstall } from '../hooks/useMarketplaceInstall';
+import { MarketplaceContext } from '../contexts/MarketplaceContext';
 
-// API v2 base URL
-const API_V2_BASE = `${variables.constants.API_URL}/marketplace`;
+const Marketplace = ({ type, onProductView, onResetToAll, deepLinkData, navigationTrigger }) => {
+  const [filter, setFilter] = useState('');
 
-class Marketplace extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-      relatedItems: [],
-      button: '',
-      done: false,
-      item: {},
-      collection: false,
-      filter: '',
-    };
-    this.buttons = {
-      uninstall: (
-        <InstallButton
-          onClick={() => this.manage('uninstall')}
-          isInstalled={true}
-          label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-        />
-      ),
-      install: (
-        <InstallButton
-          onClick={() => this.manage('install')}
-          isInstalled={false}
-          label={variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
-        />
-      ),
-    };
-    this.controller = new AbortController();
-  }
+  // Custom hooks for data, navigation, and installation
+  const { items, displayedCollection, loading, changeSort } = useMarketplaceData(type, deepLinkData);
+  const {
+    currentView,
+    currentItem,
+    currentCollection,
+    relatedItems,
+    navigateToItem,
+    navigateToCollection,
+    navigateBack,
+    navigateToMain,
+  } = useMarketplaceNavigation(onProductView, onResetToAll);
+  const { busy, installItem, uninstallItem, installCollection } = useMarketplaceInstall();
 
-  async toggle(pageType, data) {
-    if (pageType === 'item') {
-      let info;
-      let relatedItems = [];
+  const handleManage = (action) => {
+    if (!currentItem) return;
 
-      // get item info using API v2
-      try {
-        let type = this.props.type;
-        if (type === 'all' || type === 'collections') {
-          type = data.type;
-        }
-
-        // API v2: Fetch by ID if available, otherwise by name
-        const itemEndpoint = data.id
-          ? `${API_V2_BASE}/item/${data.id}`
-          : `${API_V2_BASE}/item/${type}/${data.name}`;
-
-        info = await (
-          await fetch(itemEndpoint, {
-            signal: this.controller.signal,
-          })
-        ).json();
-
-        // Fetch related items using API v2
-        if (info.data?.id) {
-          try {
-            const relatedResponse = await fetch(`${API_V2_BASE}/item/${info.data.id}/related`, {
-              signal: this.controller.signal,
-            });
-            const relatedData = await relatedResponse.json();
-            relatedItems = relatedData.data?.related || [];
-          } catch (relatedError) {
-            console.warn('Failed to fetch related items:', relatedError);
-          }
-
-          // Track view using API v2
-          fetch(`${API_V2_BASE}/item/${info.data.id}/view`, {
-            method: 'POST',
-            signal: this.controller.signal,
-          }).catch(() => {}); // Silent fail for analytics
-        }
-      } catch (error) {
-        // Error caught but only used for flow control
-        if (this.controller.signal.aborted === false) {
-          console.error('Failed to fetch item:', error);
-          toast(variables.getMessage('toasts.error'));
-        }
-        return;
-      }
-
-      if (this.controller.signal.aborted === true) {
-        return;
-      }
-
-      // Verify we have valid data before proceeding
-      if (!info || !info.data) {
-        console.error('Invalid item data received:', info);
-        toast(variables.getMessage('toasts.error'));
-        return;
-      }
-
-      // check if already installed
-      let button = this.buttons.install;
-      let addonInstalled = false;
-      let addonInstalledVersion;
-
-      const installed = JSON.parse(localStorage.getItem('installed')) || [];
-
-      if (installed.some((item) => item.name === info.data.name)) {
-        button = this.buttons.uninstall;
-        addonInstalled = true;
-        for (let i = 0; i < installed.length; i++) {
-          if (installed[i].name === info.data.name) {
-            addonInstalledVersion = installed[i].version;
-            break;
-          }
-        }
-      }
-
-      this.setState({
-        item: {
-          id: info.data.id, // Store item ID for deep linking
-          onCollection: data._onCollection,
-          type: info.data.type,
-          display_name: info.data.name || info.data.display_name,
-          author: info.data.author,
-          description: urlParser(info.data.description.replace(/\n/g, '<br>')),
-          version: info.data.version,
-          icon: info.data.screenshot_url,
-          data: info.data,
-          addonInstalled,
-          addonInstalledVersion,
-          api_name: data.name,
-        },
-        relatedItems,
-        button: button,
-      });
-
-      // Update URL hash with item ID for deep linking
-      if (info.data?.id) {
-        // If viewing from a collection, include collection in URL
-        if (this.state.collection && this.state.collectionName) {
-          updateHash(`#discover/collection/${this.state.collectionName}/${info.data.id}`);
-        } else {
-          updateHash(`#discover/${info.data.type}/${info.data.id}`);
-        }
-      }
-
-      // Notify parent about product view for breadcrumbs
-      if (this.props.onProductView) {
-        const productViewData = {
-          id: info.data.id,
-          type: info.data.type,
-          name: info.data.display_name || info.data.name,
-          fromCollection: this.state.collection,
-          collectionName: this.state.collectionName,
-          collectionTitle: this.state.collectionTitle,
-          collectionDescription: this.state.collectionDescription,
-          collectionImg: this.state.collectionImg,
-          onBack: () => this.toggle('main'),
-          onBackToAll: () => {
-            // Clear collection state before toggling to main
-            this.setState(
-              {
-                collection: false,
-                collectionName: null,
-                collectionTitle: null,
-                collectionDescription: null,
-                collectionImg: null,
-              },
-              () => {
-                // Call after state is updated
-                updateHash('#discover/all');
-                this.toggle('main');
-                if (this.props.onResetToAll) {
-                  this.props.onResetToAll();
-                }
-              },
-            );
-          },
-        };
-        console.log('Product view data being sent to parent:', productViewData);
-        this.props.onProductView(productViewData);
-      }
-
-      document.querySelector('#modal').scrollTop = 0;
-      variables.stats.postEvent('marketplace-item', `${this.state.item.display_name} viewed`);
-    } else if (pageType === 'collection') {
-      this.setState({ done: false, item: {} });
-      // Use API v2 for collections
-      const collection = await (
-        await fetch(`${API_V2_BASE}/collection/${data}`, {
-          signal: this.controller.signal,
-        })
-      ).json();
-
-      const collectionState = {
-        items: collection.data.items,
-        collectionName: data, // Store the collection name/slug for navigation
-        collectionTitle: collection.data.display_name,
-        collectionDescription: collection.data.description,
-        collectionImg: collection.data.img,
-        collection: true,
-        done: true,
-      };
-      console.log('Setting collection state:', collectionState);
-      this.setState(collectionState);
-
-      // Update hash for collection deep linking
-      updateHash(`#discover/collection/${data}`);
-
-      // Notify parent about collection view for breadcrumbs
-      if (this.props.onProductView) {
-        const collectionViewData = {
-          id: data,
-          type: 'collection',
-          name: collection.data.display_name,
-          isCollection: true,
-          fromCollection: false,
-          collectionName: data,
-          collectionTitle: collection.data.display_name,
-          onBack: () => {
-            this.setState(
-              {
-                collection: false,
-                collectionName: null,
-                collectionTitle: null,
-                collectionDescription: null,
-                collectionImg: null,
-              },
-              () => {
-                // Call toggle after state is updated
-                updateHash('#discover/all');
-                this.toggle('main');
-              },
-            );
-          },
-          onBackToAll: () => {
-            // Clear collection state and return to main view
-            this.setState(
-              {
-                collection: false,
-                collectionName: null,
-                collectionTitle: null,
-                collectionDescription: null,
-                collectionImg: null,
-              },
-              () => {
-                // Call toggle after state is updated
-                updateHash('#discover/all');
-                this.toggle('main');
-                if (this.props.onResetToAll) {
-                  this.props.onResetToAll();
-                }
-              },
-            );
-          },
-        };
-        console.log('Collection view data being sent to parent:', collectionViewData);
-        this.props.onProductView(collectionViewData);
-      }
+    if (action === 'install') {
+      installItem(currentItem.type, currentItem.data);
     } else {
-      this.setState({ item: {}, relatedItems: [] });
-
-      // Update hash based on current view state
-      if (this.state.collection && this.state.collectionName) {
-        // If returning to a collection view, preserve collection hash
-        updateHash(`#discover/collection/${this.state.collectionName}`);
-      } else {
-        // Clear hash when returning to main view
-        updateHash(`#discover/${this.props.type}`);
-      }
-
-      // Clear product view for breadcrumbs
-      if (this.props.onProductView) {
-        this.props.onProductView(null);
-      }
+      uninstallItem(currentItem.type, currentItem.display_name);
     }
-  }
+  };
 
-  async getItems() {
-    this.setState({ done: false });
+  // Install/uninstall buttons
+  const buttons = {
+    uninstall: (
+      <InstallButton
+        onClick={() => handleManage('uninstall')}
+        isInstalled={true}
+        label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+      />
+    ),
+    install: (
+      <InstallButton
+        onClick={() => handleManage('install')}
+        isInstalled={false}
+        label={variables.getMessage('modals.main.marketplace.product.buttons.addtomue')}
+      />
+    ),
+  };
 
-    // Use API v2 endpoints
-    const dataURL =
-      this.props.type === 'collections'
-        ? `${API_V2_BASE}/collections`
-        : `${API_V2_BASE}/items/${this.props.type}`;
+  // Get appropriate button based on installation status
+  const getButton = () => {
+    if (!currentItem) return buttons.install;
+    return currentItem.addonInstalled ? buttons.uninstall : buttons.install;
+  };
 
-    const { data } = await (await fetch(dataURL, { signal: this.controller.signal })).json();
-    const collections = await (
-      await fetch(`${API_V2_BASE}/collections`, {
-        signal: this.controller.signal,
-      })
-    ).json();
+  // Handle deep linking on mount
+  useEffect(() => {
+    if (deepLinkData) {
+      const { itemId, collection, category } = deepLinkData;
 
-    if (this.controller.signal.aborted === true) {
-      return;
-    }
-
-    const sorted = this.sortMarketplace(data, false);
-
-    this.setState({
-      items: sorted.items,
-      sortType: sorted.sortType,
-      oldItems: sorted.items,
-      collections: collections.data,
-      displayedCollection:
-        collections.data[Math.floor(Math.random() * collections.data.length)] || [],
-      done: true,
-    });
-  }
-
-  manage(type) {
-    if (type === 'install') {
-      install(this.state.item.type, this.state.item.data);
-    } else {
-      uninstall(this.state.item.type, this.state.item.display_name);
-    }
-
-    toast(variables.getMessage('toasts.' + type + 'ed'));
-    this.setState({ button: type === 'install' ? this.buttons.uninstall : this.buttons.install });
-
-    variables.stats.postEvent(
-      'marketplace-item',
-      `${this.state.item.display_name} ${type === 'install' ? 'installed' : 'uninstalled'}`,
-    );
-    variables.stats.postEvent('marketplace', type === 'install' ? 'Install' : 'Uninstall');
-  }
-
-  async installCollection() {
-    this.setState({ busy: true });
-    try {
-      const installed = JSON.parse(localStorage.getItem('installed'));
-      for (const item of this.state.items) {
-        if (installed.some((i) => i.name === item.display_name)) continue; // don't install if already installed
-
-        // Use API v2 - fetch by ID if available, otherwise by name
-        const itemEndpoint = item.id
-          ? `${API_V2_BASE}/item/${item.id}`
-          : `${API_V2_BASE}/item/${item.type}/${item.name}`;
-
-        const { data } = await (
-          await fetch(itemEndpoint, {
-            signal: this.controller.signal,
-          })
-        ).json();
-
-        install(data.type, data, false, true);
-        variables.stats.postEvent('marketplace-item', `${item.display_name} installed}`);
-        variables.stats.postEvent('marketplace', 'Install');
-      }
-      toast(variables.getMessage('toasts.installed'));
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
-      toast(variables.getMessage('toasts.error'));
-    } finally {
-      this.setState({ busy: false });
-    }
-  }
-
-  sortMarketplace(data, sendEvent) {
-    const value = localStorage.getItem('sortMarketplace') || 'a-z';
-    let items = data || this.state.items;
-    if (!items) {
-      return;
-    }
-
-    switch (value) {
-      case 'a-z': {
-        // sort by name key alphabetically
-        const sorted = items.sort((a, b) => {
-          if (a.display_name < b.display_name) {
-            return -1;
-          }
-          if (a.display_name > b.display_name) {
-            return 1;
-          }
-          return 0;
-        });
-        items = sorted;
-        break;
-      }
-      case 'z-a':
-        items.sort();
-        items.reverse();
-        break;
-      default:
-        break;
-    }
-
-    if (sendEvent) {
-      variables.stats.postEvent('marketplace', 'Sort');
-    }
-
-    return { items: items, sortType: value };
-  }
-
-  changeSort(value) {
-    localStorage.setItem('sortMarketplace', value);
-    this.setState(this.sortMarketplace(null, true));
-  }
-
-  returnToMain() {
-    this.setState({
-      items: this.state.oldItems,
-      collection: false,
-      collectionName: null,
-      collectionTitle: null,
-      collectionDescription: null,
-      collectionImg: null,
-    });
-    updateHash(`#discover/${this.props.type}`);
-  }
-
-  componentDidMount() {
-    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      return;
-    }
-
-    this.getItems();
-
-    // Handle deep link data if provided
-    if (this.props.deepLinkData) {
-      const { itemId, collection, category } = this.props.deepLinkData;
-
-      // Wait for items to load, then open the specific item or collection
       setTimeout(() => {
         if (collection) {
-          // Open collection
-          this.toggle('collection', collection);
+          navigateToCollection(collection);
         } else if (itemId) {
-          // Open specific item by ID
-          this.toggle('item', { id: itemId, type: category });
+          navigateToItem({ id: itemId, type: category }, type);
         }
       }, 500);
     }
-  }
+  }, [deepLinkData, navigateToCollection, navigateToItem, type]);
 
-  componentDidUpdate(prevProps) {
-    // Handle navigation trigger changes
-    if (
-      this.props.navigationTrigger &&
-      this.props.navigationTrigger !== prevProps.navigationTrigger
-    ) {
-      const { type, data } = this.props.navigationTrigger;
+  // Handle navigation trigger changes
+  useEffect(() => {
+    if (navigationTrigger) {
+      const { type: navType, data } = navigationTrigger;
 
-      if (type === 'product' && data) {
-        // Navigate to product
-        this.toggle('item', { id: data.id, type: data.type });
-      } else if (type === 'collection' && data) {
-        // Navigate to collection
-        this.toggle('collection', data);
-      } else if (type === 'main' || type === 'section') {
-        // Navigate to main view (browse/listing page)
-        // Check if we need to clear collection state first
-        if (data && data.clearCollection && this.state.collection) {
-          this.setState(
-            {
-              collection: false,
-              collectionName: null,
-              collectionTitle: null,
-              collectionDescription: null,
-              collectionImg: null,
-            },
-            () => {
-              this.toggle('main');
-            },
-          );
-        } else {
-          this.toggle('main');
-        }
+      if (navType === 'product' && data) {
+        navigateToItem({ id: data.id, type: data.type }, type);
+      } else if (navType === 'collection' && data) {
+        navigateToCollection(data);
+      } else if (navType === 'main' || navType === 'section') {
+        const clearCollection = data?.clearCollection && currentCollection;
+        navigateToMain(clearCollection);
       }
     }
-  }
+  }, [navigationTrigger, navigateToItem, navigateToCollection, navigateToMain, currentCollection, type]);
 
-  componentWillUnmount() {
-    // stop making requests
-    this.controller.abort();
-  }
+  // Context value to share with child components
+  const contextValue = {
+    currentView,
+    currentItem,
+    currentCollection,
+    items,
+    navigateToItem: (data) => navigateToItem(data, type),
+    navigateToCollection,
+    navigateBack,
+    navigateToMain,
+    installItem,
+    uninstallItem,
+  };
 
-  render() {
-    const errorMessage = (msg) => {
-      return (
-        <>
-          <div className="flexTopMarketplace">
-            <span className="mainTitle">
-              {variables.getMessage('modals.main.navbar.marketplace')}
-            </span>
-          </div>
-          <div className="emptyItems">
-            <div className="emptyMessage">{msg}</div>
-          </div>
-        </>
-      );
-    };
+  // Error message component
+  const renderError = (content) => (
+    <>
+      <div className="flexTopMarketplace">
+        <span className="mainTitle">{variables.getMessage('modals.main.navbar.marketplace')}</span>
+      </div>
+      <div className="emptyItems">
+        <div className="emptyMessage">{content}</div>
+      </div>
+    </>
+  );
 
-    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      return errorMessage(
-        <>
-          <MdWifiOff />
-          <span className="title">
-            {variables.getMessage('modals.main.marketplace.offline.title')}
-          </span>
-          <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.offline.description')}
-          </span>
-        </>,
-      );
-    }
-
-    if (this.state.done === false) {
-      return errorMessage(
-        <div className="loaderHolder">
-          <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
-        </div>,
-      );
-    }
-
-    if (!this.state.items || this.state.items?.length === 0) {
-      this.getItems();
-      return errorMessage(
-        <>
-          <MdLocalMall />
-          <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
-          <span className="subtitle">
-            {variables.getMessage('modals.main.marketplace.no_items')}
-          </span>
-        </>,
-      );
-    }
-
-    if (this.state.item.display_name) {
-      return (
-        <ItemPage
-          data={this.state.item}
-          button={this.state.button}
-          toggleFunction={(...args) => this.toggle(...args)}
-          addonInstalled={this.state.item.addonInstalled}
-          addonInstalledVersion={this.state.item.addonInstalledVersion}
-          icon={this.state.item.screenshot_url}
-          relatedItems={this.state.relatedItems}
-        />
-      );
-    }
-
-    return (
+  // Offline check
+  if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+    return renderError(
       <>
-        {this.state.collection === true ? (
-          <>
-            <div
-              className="collectionPage"
-              style={{
-                backgroundImage: `linear-gradient(to bottom, transparent, black), url('${this.state.collectionImg}')`,
-              }}
-            >
-              <div className="nice-tag">
-                {variables.getMessage('modals.main.marketplace.collection')}
-              </div>
-              <div className="content">
-                <span className="mainTitle">{this.state.collectionTitle}</span>
-                <span className="subtitle">{this.state.collectionDescription}</span>
-              </div>
-
-              <Button
-                type="collection"
-                onClick={() => this.installCollection()}
-                disabled={this.state.busy}
-                icon={<MdLibraryAdd />}
-                label={
-                  this.state.busy
-                    ? variables.getMessage('modals.main.marketplace.installing')
-                    : variables.getMessage('modals.main.marketplace.add_all')
-                }
-              />
-            </div>
-          </>
-        ) : (
-          <>
-            {/* <div className="flexTopMarketplace">
-              <span className="mainTitle">
-                {variables.getMessage('modals.main.navbar.marketplace')}
-              </span>
-            </div> */}
-            <div className="headerExtras marketplaceCondition">
-              {this.props.type !== 'collections' && (
-                <div>
-                  <form className="marketplaceSearch">
-                    <input
-                      label={variables.getMessage('widgets.search')}
-                      placeholder={variables.getMessage('widgets.search')}
-                      name="filter"
-                      id="filter"
-                      value={this.state.filter}
-                      onChange={(event) => this.setState({ filter: event.target.value })}
-                    />
-                    <MdSearch />
-                  </form>
-                </div>
-              )}
-            </div>
-          </>
-        )}
-        {this.props.type === 'collections' && !this.state.collection ? (
-          this.state.items.map((item) =>
-            !item.news ? (
-              <div
-                key={item.name}
-                className="collection"
-                style={
-                  item.news
-                    ? { backgroundColor: item.background_colour }
-                    : {
-                        backgroundImage: `linear-gradient(to left, #000, transparent, #000), url('${item.img}')`,
-                      }
-                }
-              >
-                <div className="content">
-                  <span className="title">{item.display_name}</span>
-                  <span className="subtitle">{item.description}</span>
-                </div>
-                <Button
-                  type="collection"
-                  onClick={() => this.toggle('collection', item.name)}
-                  icon={<MdOutlineArrowForward />}
-                  label={variables.getMessage('modals.main.marketplace.explore_collection')}
-                  iconPlacement="right"
-                />
-              </div>
-            ) : null,
-          )
-        ) : (
-          <Items
-            filterOptions={true}
-            type={this.props.type}
-            items={this.state.items}
-            collection={this.state.displayedCollection}
-            onCollection={this.state.collection}
-            toggleFunction={(input) => this.toggle('item', input)}
-            collectionFunction={(input) => this.toggle('collection', input)}
-            filter={this.state.filter}
-            onSortChange={(value) => this.changeSort(value)}
-            showCreateYourOwn={true}
-          />
-        )}
-      </>
+        <MdWifiOff />
+        <span className="title">
+          {variables.getMessage('modals.main.marketplace.offline.title')}
+        </span>
+        <span className="subtitle">
+          {variables.getMessage('modals.main.marketplace.offline.description')}
+        </span>
+      </>,
     );
   }
-}
+
+  // Loading state
+  if (loading) {
+    return renderError(
+      <div className="loaderHolder">
+        <div id="loader"></div>
+        <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+      </div>,
+    );
+  }
+
+  // Empty state
+  if (!items || items.length === 0) {
+    return renderError(
+      <>
+        <MdLocalMall />
+        <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
+        <span className="subtitle">
+          {variables.getMessage('modals.main.marketplace.no_items')}
+        </span>
+      </>,
+    );
+  }
+
+  // Render item view
+  if (currentView === 'item' && currentItem) {
+    return (
+      <MarketplaceContext.Provider value={contextValue}>
+        <ItemPage
+          data={currentItem}
+          button={getButton()}
+          toggleFunction={(pageType, data) => {
+            if (pageType === 'collection') {
+              navigateToCollection(data);
+            } else if (pageType === 'main') {
+              navigateBack();
+            } else {
+              navigateToItem(data, type);
+            }
+          }}
+          addonInstalled={currentItem.addonInstalled}
+          addonInstalledVersion={currentItem.addonInstalledVersion}
+          icon={currentItem.icon}
+          relatedItems={relatedItems}
+        />
+      </MarketplaceContext.Provider>
+    );
+  }
+
+  // Render collection view
+  if (currentView === 'collection' && currentCollection) {
+    return (
+      <MarketplaceContext.Provider value={contextValue}>
+        <CollectionPage
+          collectionName={currentCollection.name}
+          collectionTitle={currentCollection.title}
+          collectionDescription={currentCollection.description}
+          collectionImg={currentCollection.img}
+          items={currentCollection.items}
+          busy={busy}
+          onInstallCollection={() => installCollection(currentCollection.items)}
+          onItemClick={(item) => navigateToItem(item, type)}
+          onSortChange={changeSort}
+        />
+      </MarketplaceContext.Provider>
+    );
+  }
+
+  // Render browse view
+  return (
+    <MarketplaceContext.Provider value={contextValue}>
+      <BrowsePage
+        type={type}
+        items={items}
+        featuredCollection={displayedCollection}
+        filter={filter}
+        onFilterChange={(event) => setFilter(event.target.value)}
+        onItemClick={(item) => navigateToItem(item, type)}
+        onCollectionClick={navigateToCollection}
+        onSortChange={changeSort}
+      />
+    </MarketplaceContext.Provider>
+  );
+};
 
 export default Marketplace;
