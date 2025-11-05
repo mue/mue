@@ -15,9 +15,10 @@ const PerformanceMonitor = () => {
   useEffect(() => {
     if (!import.meta.env.DEV) return;
 
-    // Toggle with Ctrl+Shift+P
+    // Toggle with Ctrl+Shift+M (M for Monitor) or Alt+P
     const handleKeyPress = (e) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'P') {
+      if ((e.ctrlKey && e.shiftKey && e.key === 'M') || (e.altKey && e.key === 'p')) {
+        e.preventDefault(); // Prevent any browser defaults
         setIsVisible((prev) => !prev);
       }
     };
@@ -75,7 +76,7 @@ const PerformanceMonitor = () => {
     };
   }, [isVisible]);
 
-  if (!import.meta.env.DEV || !isVisible) return null;
+  if (!import.meta.env.DEV) return null;
 
   const getFpsColor = () => {
     if (fps >= 55) return '#4CAF50'; // Green
@@ -87,12 +88,40 @@ const PerformanceMonitor = () => {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
 
+  const getMemoryColor = () => {
+    if (!memoryUsage) return '#4CAF50';
+    const usedMB = parseFloat(memoryUsage.used);
+    if (usedMB < 50) return '#4CAF50'; // Green - good
+    if (usedMB < 100) return '#FFC107'; // Yellow - okay
+    return '#F44336'; // Red - high
+  };
+
   return (
-    <div className="performance-monitor">
-      <div className="perf-header">
-        <span className="perf-title">⚡ Performance Monitor</span>
-        <span className="perf-hint">Ctrl+Shift+P to toggle</span>
-      </div>
+    <>
+      {/* Floating toggle button */}
+      {!isVisible && (
+        <button
+          className="perf-toggle-btn"
+          onClick={() => setIsVisible(true)}
+          title="Open Performance Monitor (Ctrl+Shift+M or Alt+P)"
+        >
+          📊
+        </button>
+      )}
+
+      {/* Performance monitor panel */}
+      {isVisible && (
+        <div className="performance-monitor">
+          <div className="perf-header">
+            <span className="perf-title">⚡ Performance Monitor</span>
+            <button
+              className="perf-close"
+              onClick={() => setIsVisible(false)}
+              title="Close (Ctrl+Shift+M or Alt+P)"
+            >
+              ✕
+            </button>
+          </div>
 
       <div className="perf-metric">
         <span className="perf-label">FPS:</span>
@@ -104,9 +133,15 @@ const PerformanceMonitor = () => {
       {memoryUsage && (
         <div className="perf-metric">
           <span className="perf-label">Memory:</span>
-          <span className="perf-value">
+          <span className="perf-value" style={{ color: getMemoryColor() }}>
             {memoryUsage.used} / {memoryUsage.total} MB
           </span>
+        </div>
+      )}
+
+      {memoryUsage && parseFloat(memoryUsage.used) > 80 && (
+        <div className="perf-warning">
+          ⚠️ High memory usage - try closing other tabs
         </div>
       )}
 
@@ -145,7 +180,9 @@ const PerformanceMonitor = () => {
           Show Report
         </button>
       </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 
