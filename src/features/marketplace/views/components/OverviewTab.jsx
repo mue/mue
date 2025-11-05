@@ -4,6 +4,7 @@ import { MdCalendarMonth, MdFormatQuote, MdImage, MdTranslate, MdStyle } from 'r
 import { Carousel } from '../../components/Elements/Carousel';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import InfoItem from './InfoItem';
+import { useRenderCounter } from 'utils/performance';
 
 const OverviewTab = ({
   data,
@@ -16,6 +17,8 @@ const OverviewTab = ({
   count,
   onIncrementCount,
 }) => {
+  useRenderCounter('OverviewTab');
+
   const quotes = Array.isArray(data.quotes) ? data.quotes : [];
   const photos = Array.isArray(data.photos) ? data.photos : [];
   const hasPhotos = photos.length > 0;

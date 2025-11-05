@@ -7,8 +7,11 @@ import { Tooltip } from 'components/Elements';
 
 import { shift, useFloating } from '@floating-ui/react-dom';
 import EventBus from 'utils/eventbus';
+import { useRenderCounter } from 'utils/performance';
 
 const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
+  useRenderCounter('Apps');
+
   const [apps, setApps] = useState(JSON.parse(localStorage.getItem('applinks')));
   const [visibility, setVisibility] = useState(
     localStorage.getItem('appsPinned') === 'true' ? 'visible' : 'hidden',

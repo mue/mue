@@ -3,6 +3,7 @@ import { useState, Fragment, useMemo, useCallback, lazy, Suspense } from 'react'
 import { toast } from 'react-toastify';
 import { MdIosShare, MdFlag, MdAccountCircle } from 'react-icons/md';
 import Modal from 'react-modal';
+import { useRenderCounter } from 'utils/performance';
 
 import { Button } from 'components/Elements';
 
@@ -22,6 +23,8 @@ import InfoItem from './components/InfoItem';
 import WarningBanner from './components/WarningBanner';
 
 const ItemPage = (props) => {
+  useRenderCounter('ItemPage');
+
   const [showUpdateButton, setShowUpdateButton] = useState(
     props.addonInstalled === true && props.addonInstalledVersion !== props.data.version,
   );

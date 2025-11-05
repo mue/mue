@@ -9,8 +9,11 @@ import { Tooltip } from 'components/Elements';
 
 import { saveFile } from 'utils/saveFile';
 import EventBus from 'utils/eventbus';
+import { useRenderCounter } from 'utils/performance';
 
 const Notes = ({ notesRef, floatRef, position, xPosition, yPosition }) => {
+  useRenderCounter('Notes');
+
   const [notes, setNotes] = useState(localStorage.getItem('notes') || '');
   const [showNotes, setShowNotes] = useState(localStorage.getItem('notesPinned') === 'true');
   const [zoomFontSize, setZoomFontSize] = useState('1.2rem');

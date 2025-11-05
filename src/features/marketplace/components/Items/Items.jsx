@@ -5,6 +5,7 @@ import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
 import { Button } from 'components/Elements';
 import Dropdown from '../../../../components/Form/Settings/Dropdown/Dropdown';
+import { useRenderCounter } from 'utils/performance';
 
 function filterItems(item, filter, categoryFilter) {
   const lowerCaseFilter = filter.toLowerCase();
@@ -41,6 +42,8 @@ const hexToRgb = (hex) => {
 };
 
 function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInstalled }) {
+  useRenderCounter('ItemCard');
+
   item._onCollection = onCollection;
 
   // Memoize gradient style calculation to avoid recalculating on every render
@@ -139,6 +142,8 @@ function Items({
   filterOptions = false,
   onSortChange,
 }) {
+  useRenderCounter('Items');
+
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
 

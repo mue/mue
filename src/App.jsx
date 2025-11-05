@@ -6,6 +6,7 @@ import Modals from 'features/misc/modals/Modals';
 import { loadSettings, moveSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
+import PerformanceMonitor from 'components/Elements/PerformanceMonitor/PerformanceMonitor';
 
 const useAppSetup = () => {
   useEffect(() => {
@@ -68,6 +69,7 @@ const App = () => {
         <Widgets />
         <Modals />
       </div>
+      <PerformanceMonitor />
     </>
   );
 };
