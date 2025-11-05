@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { memo, useState, useEffect } from 'react';
+import { memo, useState, useEffect, useCallback } from 'react';
 
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
@@ -30,40 +30,40 @@ const Notes = ({ notesRef, floatRef, position, xPosition, yPosition }) => {
     };
   }, []);
 
-  const handleSetNotes = (e) => {
+  const handleSetNotes = useCallback((e) => {
     localStorage.setItem('notes', e.target.value);
     setNotes(e.target.value);
-  };
+  }, []);
 
-  const handleShowNotes = () => {
+  const handleShowNotes = useCallback(() => {
     setShowNotes(true);
-  };
+  }, []);
 
-  const handleHideNotes = () => {
+  const handleHideNotes = useCallback(() => {
     setShowNotes(localStorage.getItem('notesPinned') === 'true');
-  };
+  }, []);
 
-  const handlePin = () => {
+  const handlePin = useCallback(() => {
     variables.stats.postEvent('feature', 'Notes pin');
     const notesPinned = localStorage.getItem('notesPinned') === 'true';
     localStorage.setItem('notesPinned', !notesPinned);
     setShowNotes(!notesPinned);
-  };
+  }, []);
 
-  const handleCopy = () => {
+  const handleCopy = useCallback(() => {
     variables.stats.postEvent('feature', 'Notes copied');
     navigator.clipboard.writeText(notes);
     toast(variables.getMessage('toasts.notes'));
-  };
+  }, [notes]);
 
-  const handleDownload = () => {
+  const handleDownload = useCallback(() => {
     if (!notes || notes === '') {
       return;
     }
 
     variables.stats.postEvent('feature', 'Notes download');
     saveFile(notes, 'mue-notes.txt', 'text/plain');
-  };
+  }, [notes]);
 
   return (
     <div className="notes" onMouseLeave={handleHideNotes} onFocus={handleShowNotes}>

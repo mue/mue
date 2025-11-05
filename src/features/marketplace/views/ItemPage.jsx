@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useMemo, useCallback, lazy, Suspense } from 'react';
 import { toast } from 'react-toastify';
 import { MdIosShare, MdFlag, MdAccountCircle } from 'react-icons/md';
 import Modal from 'react-modal';
@@ -11,11 +11,11 @@ import { ShareModal } from 'components/Elements';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import { Items } from '../components/Items/Items';
 
-// Tab components
-import OverviewTab from './components/OverviewTab';
-import QuotesTab from './components/QuotesTab';
-import PhotosTab from './components/PhotosTab';
-import PresetsTab from './components/PresetsTab';
+// Lazy load tab components for better code splitting
+const OverviewTab = lazy(() => import('./components/OverviewTab'));
+const QuotesTab = lazy(() => import('./components/QuotesTab'));
+const PhotosTab = lazy(() => import('./components/PhotosTab'));
+const PresetsTab = lazy(() => import('./components/PresetsTab'));
 
 // Helper components
 import InfoItem from './components/InfoItem';
@@ -29,14 +29,15 @@ const ItemPage = (props) => {
   const [count, setCount] = useState(5);
   const [activeTab, setActiveTab] = useState('overview');
 
-  const updateAddon = () => {
+  // Memoize event handlers for better performance
+  const updateAddon = useCallback(() => {
     uninstall(props.data.type, props.data.display_name);
     install(props.data.type, props.data);
     toast(variables.getMessage('toasts.updated'));
     setShowUpdateButton(false);
-  };
+  }, [props.data.type, props.data.display_name, props.data]);
 
-  const incrementCount = (type) => {
+  const incrementCount = useCallback((type) => {
     const data = props.data.data;
     let length;
 
@@ -48,42 +49,50 @@ const ItemPage = (props) => {
       return;
     }
 
-    const newCount = count !== length ? length : 5;
-    setCount(newCount);
-  };
+    setCount(prevCount => prevCount !== length ? length : 5);
+  }, [props.data.data]);
 
-  const getName = (name) => {
+  const getName = useCallback((name) => {
     const nameMappings = {
       photos: 'photo_packs',
       quotes: 'quote_packs',
       settings: 'preset_settings',
     };
     return nameMappings[name] || name;
-  };
+  }, []);
 
-  const locale = localStorage.getItem('language');
-  const shortLocale = locale.includes('_') ? locale.split('_')[0] : locale;
-  const languageNames = new Intl.DisplayNames([shortLocale], { type: 'language' });
+  // Memoize locale-related computations
+  const { shortLocale, languageNames } = useMemo(() => {
+    const locale = localStorage.getItem('language');
+    const short = locale.includes('_') ? locale.split('_')[0] : locale;
+    return {
+      shortLocale: short,
+      languageNames: new Intl.DisplayNames([short], { type: 'language' })
+    };
+  }, []);
 
   // Extract colour from data (British spelling as used in API)
   const mainColor = props.data.data.colour;
 
-  // Helper function to determine if a color is light or dark
-  const isLightColor = (hexColor) => {
-    if (!hexColor) return false;
+  // Memoize color brightness calculation - expensive operation
+  const { isLight, textColor } = useMemo(() => {
+    if (!mainColor) return { isLight: false, textColor: '#ffffff' };
+
     // Remove # if present
-    const hex = hexColor.replace('#', '');
+    const hex = mainColor.replace('#', '');
     // Convert to RGB
     const r = parseInt(hex.substr(0, 2), 16);
     const g = parseInt(hex.substr(2, 2), 16);
     const b = parseInt(hex.substr(4, 2), 16);
     // Calculate relative luminance (perceived brightness)
     const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-    return luminance > 0.6; // If > 0.6, it's a light color
-  };
+    const light = luminance > 0.6;
 
-  const isLight = isLightColor(mainColor);
-  const textColor = isLight ? '#000000' : '#ffffff';
+    return {
+      isLight: light,
+      textColor: light ? '#000000' : '#ffffff'
+    };
+  }, [mainColor]);
 
   const quotes = Array.isArray(props.data.data.quotes) ? props.data.data.quotes : [];
   const photos = Array.isArray(props.data.data.photos) ? props.data.data.photos : [];
@@ -92,85 +101,90 @@ const ItemPage = (props) => {
   const hasQuotes = quotes.length > 0;
   const hasSettings = !!settings;
 
-  // Format date for details section
-  let formattedDate = '';
-  if (props.data.data.updated_at) {
+  // Memoize date formatting - expensive Intl operation
+  const formattedDate = useMemo(() => {
+    if (!props.data.data.updated_at) return '';
+
     const dateObj = new Date(props.data.data.updated_at);
-    formattedDate = new Intl.DateTimeFormat(shortLocale, {
+    return new Intl.DateTimeFormat(shortLocale, {
       year: 'numeric',
       month: 'long',
       day: '2-digit',
     }).format(dateObj);
-  }
+  }, [props.data.data.updated_at, shortLocale]);
 
-  // Create dynamic styles for theming with the main color
-  const themedStyles = mainColor ? (
-    <style>{`
-      /* Icon buttons styling */
-      .iconButtons .btn-icon {
-        background: ${mainColor} !important;
-        background-image: none !important;
-        border-color: ${mainColor} !important;
-        box-shadow: 0 0 0 1px ${mainColor}, 0 4px 12px ${mainColor}40 !important;
-        color: ${textColor} !important;
-      }
-      .iconButtons .btn-icon:hover {
-        background: ${mainColor} !important;
-        filter: brightness(${isLight ? '0.95' : '1.15'});
-        transform: translateY(-2px);
-        box-shadow: 0 0 0 1px ${mainColor}, 0 6px 20px ${mainColor}60 !important;
-      }
+  // Memoize themed styles - avoid recreating style element on every render
+  const themedStyles = useMemo(() => {
+    if (!mainColor) return null;
 
-      /* ItemInfo background gradient */
-      .itemInfo {
-        background: linear-gradient(135deg, ${mainColor}ee 0%, ${mainColor}aa 50%, ${mainColor}66 100%) !important;
-        box-shadow: 0 8px 32px ${mainColor}40 !important;
-      }
+    return (
+      <style>{`
+        /* Icon buttons styling */
+        .iconButtons .btn-icon {
+          background: ${mainColor} !important;
+          background-image: none !important;
+          border-color: ${mainColor} !important;
+          box-shadow: 0 0 0 1px ${mainColor}, 0 4px 12px ${mainColor}40 !important;
+          color: ${textColor} !important;
+        }
+        .iconButtons .btn-icon:hover {
+          background: ${mainColor} !important;
+          filter: brightness(${isLight ? '0.95' : '1.15'});
+          transform: translateY(-2px);
+          box-shadow: 0 0 0 1px ${mainColor}, 0 6px 20px ${mainColor}60 !important;
+        }
 
-      /* Icon shadow */
-      .itemInfo .icon {
-        box-shadow: 0 8px 32px ${mainColor}80, 0 0 0 1px ${mainColor}40 !important;
-      }
+        /* ItemInfo background gradient */
+        .itemInfo {
+          background: linear-gradient(135deg, ${mainColor}ee 0%, ${mainColor}aa 50%, ${mainColor}66 100%) !important;
+          box-shadow: 0 8px 32px ${mainColor}40 !important;
+        }
 
-      /* Install button styling */
-      .itemInfo .installButton {
-        background: ${mainColor} !important;
-        background-image: linear-gradient(135deg, ${mainColor} 0%, ${mainColor}dd 100%) !important;
-        box-shadow: 0 4px 16px ${mainColor}60 !important;
-      }
+        /* Icon shadow */
+        .itemInfo .icon {
+          box-shadow: 0 8px 32px ${mainColor}80, 0 0 0 1px ${mainColor}40 !important;
+        }
 
-      .itemInfo .installButton:hover {
-        background: ${mainColor} !important;
-        filter: brightness(${isLight ? '0.95' : '1.15'});
-        box-shadow: 0 6px 24px ${mainColor}80 !important;
-      }
+        /* Install button styling */
+        .itemInfo .installButton {
+          background: ${mainColor} !important;
+          background-image: linear-gradient(135deg, ${mainColor} 0%, ${mainColor}dd 100%) !important;
+          box-shadow: 0 4px 16px ${mainColor}60 !important;
+        }
 
-      /* Install button text and icon color */
-      .itemInfo .installButton span,
-      .itemInfo .installButton svg {
-        color: ${textColor} !important;
-      }
+        .itemInfo .installButton:hover {
+          background: ${mainColor} !important;
+          filter: brightness(${isLight ? '0.95' : '1.15'});
+          box-shadow: 0 6px 24px ${mainColor}80 !important;
+        }
 
-      /* Mue logo - circle matches text color, paths match button color */
-      .itemInfo .installButton .mueLogo circle {
-        fill: ${textColor} !important;
-      }
+        /* Install button text and icon color */
+        .itemInfo .installButton span,
+        .itemInfo .installButton svg {
+          color: ${textColor} !important;
+        }
 
-      .itemInfo .installButton .mueLogo path {
-        fill: ${mainColor} !important;
-      }
+        /* Mue logo - circle matches text color, paths match button color */
+        .itemInfo .installButton .mueLogo circle {
+          fill: ${textColor} !important;
+        }
 
-      /* Remove the default gradient animation when themed */
-      .itemInfo .installButton.installed {
-        background: ${mainColor}aa !important;
-        background-image: none !important;
-      }
+        .itemInfo .installButton .mueLogo path {
+          fill: ${mainColor} !important;
+        }
 
-      .itemInfo .installButton.installed:hover {
-        background: ${mainColor}99 !important;
-      }
-    `}</style>
-  ) : null;
+        /* Remove the default gradient animation when themed */
+        .itemInfo .installButton.installed {
+          background: ${mainColor}aa !important;
+          background-image: none !important;
+        }
+
+        .itemInfo .installButton.installed:hover {
+          background: ${mainColor}99 !important;
+        }
+      `}</style>
+    );
+  }, [mainColor, textColor, isLight]);
 
   if (!props.data.display_name) {
     return null;
@@ -343,34 +357,36 @@ const ItemPage = (props) => {
             </div>
           </div>
           <div className="tabContent">
-            {activeTab === 'overview' && (
-              <OverviewTab
-                data={props.data.data}
-                description={props.data.description}
-                iconsrc={iconsrc}
-                shortLocale={shortLocale}
-                languageNames={languageNames}
-                formattedDate={formattedDate}
-                getName={getName}
-                count={count}
-                onIncrementCount={(type) => incrementCount(type)}
-              />
-            )}
-            {activeTab === 'quotes' && hasQuotes && (
-              <QuotesTab
-                quotes={quotes}
-                count={count}
-                onIncrementCount={(type) => incrementCount(type)}
-              />
-            )}
-            {activeTab === 'photos' && hasPhotos && <PhotosTab photos={photos} />}
-            {activeTab === 'presets' && hasSettings && (
-              <PresetsTab
-                settings={settings}
-                count={count}
-                onIncrementCount={(type) => incrementCount(type)}
-              />
-            )}
+            <Suspense fallback={<div className="loader"></div>}>
+              {activeTab === 'overview' && (
+                <OverviewTab
+                  data={props.data.data}
+                  description={props.data.description}
+                  iconsrc={iconsrc}
+                  shortLocale={shortLocale}
+                  languageNames={languageNames}
+                  formattedDate={formattedDate}
+                  getName={getName}
+                  count={count}
+                  onIncrementCount={incrementCount}
+                />
+              )}
+              {activeTab === 'quotes' && hasQuotes && (
+                <QuotesTab
+                  quotes={quotes}
+                  count={count}
+                  onIncrementCount={incrementCount}
+                />
+              )}
+              {activeTab === 'photos' && hasPhotos && <PhotosTab photos={photos} />}
+              {activeTab === 'presets' && hasSettings && (
+                <PresetsTab
+                  settings={settings}
+                  count={count}
+                  onIncrementCount={incrementCount}
+                />
+              )}
+            </Suspense>
           </div>
         </div>
       </div>

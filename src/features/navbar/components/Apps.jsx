@@ -1,6 +1,6 @@
 // TODO: make it work with pins or on click or smth
 import variables from 'config/variables';
-import { memo, useState, useEffect } from 'react';
+import { memo, useState, useEffect, useCallback } from 'react';
 
 import { MdPlaylistRemove, MdOutlineApps } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
@@ -19,9 +19,9 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
   const [showApps, setShowApps] = useState(localStorage.getItem('appsPinned') === 'true');
   const [zoomFontSize, setZoomFontSize] = useState('1.2rem');
 
-  const setZoom = () => {
+  const setZoom = useCallback(() => {
     setZoomFontSize(Number(((localStorage.getItem('zoomNavbar') || 100) / 100) * 1.2) + 'rem');
-  };
+  }, []);
 
   useEffect(() => {
     const handleRefresh = (data) => {
@@ -41,15 +41,15 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
     return () => {
       EventBus.off('refresh', handleRefresh);
     };
+  }, [setZoom]);
+
+  const handleShowApps = useCallback(() => {
+    setShowApps(true);
   }, []);
 
-  const handleShowApps = () => {
-    setShowApps(true);
-  };
-
-  const handleHideApps = () => {
+  const handleHideApps = useCallback(() => {
     setShowApps(localStorage.getItem('AppsPinned') === 'true');
-  };
+  }, []);
 
   const appsInfo = apps;
 

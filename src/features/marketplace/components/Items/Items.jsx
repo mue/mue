@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import React, { memo, useState, useMemo } from 'react';
+import React, { memo, useState, useMemo, useCallback } from 'react';
 import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew, MdCheckCircle } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
@@ -28,22 +28,23 @@ function filterItems(item, filter, categoryFilter) {
   return textMatch && item.type === categoryMap[categoryFilter];
 }
 
+// Convert hex color to RGB for gradient with opacity - moved outside component
+const hexToRgb = (hex) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
+};
+
 function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInstalled }) {
   item._onCollection = onCollection;
 
-  // Convert hex color to RGB for gradient with opacity
-  const hexToRgb = (hex) => {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-      ? {
-          r: parseInt(result[1], 16),
-          g: parseInt(result[2], 16),
-          b: parseInt(result[3], 16),
-        }
-      : null;
-  };
-
-  const getGradientStyle = () => {
+  // Memoize gradient style calculation to avoid recalculating on every render
+  const gradientStyle = React.useMemo(() => {
     if (!item.colour) return {};
 
     const rgb = hexToRgb(item.colour);
@@ -58,9 +59,10 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
       '--item-gradient100': `rgba(${baseColor}, 0.06)`,
       backgroundImage: `radial-gradient(circle at center 25%, var(--item-gradient0) 0%, var(--item-gradient10) 10%, var(--item-gradient75) 75%, var(--item-gradient100) 100%)`,
     };
-  };
+  }, [item.colour]);
 
-  const getBadgeStyle = () => {
+  // Memoize badge style calculation
+  const badgeStyle = React.useMemo(() => {
     if (!item.colour) return {};
 
     const rgb = hexToRgb(item.colour);
@@ -71,17 +73,17 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
     return {
       backgroundColor: `rgba(${baseColor}, 0.9)`,
     };
-  };
+  }, [item.colour]);
 
   return (
     <div
       className="item"
       onClick={() => toggleFunction(item)}
       key={item.name}
-      style={getGradientStyle()}
+      style={gradientStyle}
     >
       {isInstalled && item.colour && (
-        <div className="item-installed-badge" style={getBadgeStyle()}>
+        <div className="item-installed-badge" style={badgeStyle}>
           <MdCheckCircle />
         </div>
       )}
@@ -153,18 +155,35 @@ function Items({
     { id: 'presets', label: 'Presets' },
   ];
 
-  const handleSortChange = (value) => {
+  const handleSortChange = useCallback((value) => {
     setSortType(value);
     localStorage.setItem('sortMarketplace', value);
     if (onSortChange) {
       onSortChange(value);
     }
-  };
+  }, [onSortChange]);
+
+  const handleCategoryChange = useCallback((categoryId) => {
+    setSelectedCategory(categoryId);
+  }, []);
+
+  const handleCollectionClick = useCallback(() => {
+    if (collectionFunction && collection?.name) {
+      collectionFunction(collection.name);
+    }
+  }, [collectionFunction, collection?.name]);
 
   const shouldShowCollection =
     ((collection && !onCollection && (filter === null || filter === '')) ||
       (type === 'collections' && !onCollection && (filter === null || filter === ''))) &&
     type !== 'preset_settings';
+
+  // Memoize filtered items to avoid refiltering on every render
+  const filteredItems = useMemo(() => {
+    return items?.filter((item) =>
+      filterItems(item, filter, filterOptions ? selectedCategory : 'all')
+    ) || [];
+  }, [items, filter, filterOptions, selectedCategory]);
 
   return (
     <>
@@ -195,7 +214,7 @@ function Items({
           ) : (
             <Button
               type="collection"
-              onClick={() => collectionFunction(collection?.name)}
+              onClick={handleCollectionClick}
               icon={<MdOutlineArrowForward />}
               label={variables.getMessage('modals.main.marketplace.explore_collection')}
               iconPlacement={'right'}
@@ -211,7 +230,7 @@ function Items({
               <button
                 key={category.id}
                 className={`filter-chip ${selectedCategory === category.id ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(category.id)}
+                onClick={() => handleCategoryChange(category.id)}
               >
                 {category.label}
               </button>
@@ -229,19 +248,17 @@ function Items({
         </div>
       )}
       <div className={`items ${moreByCreator ? 'creatorItems' : ''}`}>
-        {items
-          ?.filter((item) => filterItems(item, filter, filterOptions ? selectedCategory : 'all'))
-          .map((item, index) => (
-            <ItemCard
-              isCurator={isCurator}
-              item={item}
-              toggleFunction={toggleFunction}
-              type={type}
-              onCollection={onCollection}
-              isInstalled={installedNames.has(item.name)}
-              key={index}
-            />
-          ))}
+        {filteredItems.map((item, index) => (
+          <ItemCard
+            isCurator={isCurator}
+            item={item}
+            toggleFunction={toggleFunction}
+            type={type}
+            onCollection={onCollection}
+            isInstalled={installedNames.has(item.name)}
+            key={index}
+          />
+        ))}
       </div>
       <div className="loader"></div>
       {!onCollection && showCreateYourOwn ? (

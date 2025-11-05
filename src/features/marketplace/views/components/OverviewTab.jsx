@@ -1,4 +1,5 @@
 import variables from 'config/variables';
+import { useMemo } from 'react';
 import { MdCalendarMonth, MdFormatQuote, MdImage, MdTranslate, MdStyle } from 'react-icons/md';
 import { Carousel } from '../../components/Elements/Carousel';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
@@ -21,17 +22,27 @@ const OverviewTab = ({
   const hasQuotes = quotes.length > 0;
   const hasSettings = data.settings;
 
-  // Quote statistics
-  const totalQuotes = hasQuotes ? quotes.length : 0;
-  const uniqueAuthorsCount = hasQuotes ? new Set(quotes.map((quote) => quote.author)).size : 0;
-  const averageCharacters = hasQuotes
-    ? Math.round(
-        quotes.reduce(
-          (accumulator, quote) => accumulator + (quote.quote ? quote.quote.length : 0),
-          0,
-        ) / quotes.length,
-      )
-    : 0;
+  // Memoize expensive quote statistics calculations
+  const { totalQuotes, uniqueAuthorsCount, averageCharacters } = useMemo(() => {
+    if (!hasQuotes || quotes.length === 0) {
+      return { totalQuotes: 0, uniqueAuthorsCount: 0, averageCharacters: 0 };
+    }
+
+    const total = quotes.length;
+    const uniqueAuthors = new Set(quotes.map((quote) => quote.author)).size;
+    const avgChars = Math.round(
+      quotes.reduce(
+        (accumulator, quote) => accumulator + (quote.quote ? quote.quote.length : 0),
+        0,
+      ) / quotes.length,
+    );
+
+    return {
+      totalQuotes: total,
+      uniqueAuthorsCount: uniqueAuthors,
+      averageCharacters: avgChars,
+    };
+  }, [quotes, hasQuotes]);
 
   const totalQuotesLabel =
     variables.getMessage('modals.main.marketplace.product.no_quotes') || 'Total quotes';
