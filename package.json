@@ -26,7 +26,7 @@
     "@floating-ui/react-dom": "2.1.6",
     "@fontsource/lexend-deca": "5.0.14",
     "@fontsource/montserrat": "5.0.19",
-    "@mui/material": "7.3.4",
+    "@mui/material": "7.3.5",
     "@sentry/react": "^10.22.0",
     "embla-carousel-autoplay": "8.6.0",
     "embla-carousel-react": "8.6.0",
