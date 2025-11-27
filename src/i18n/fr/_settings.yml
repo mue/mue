@@ -4,16 +4,21 @@ reminder:
   message: Pour que toutes les modifications aient lieu, la page doit être 
     actualisée.
 sections:
-  header: {}
+  header:
+    more_info: Plus d'infos
+    report_issue: Signaler un problème
+    enabled: Choisissez d'afficher ou non ce widget
+    size: Curseur permettant de contrôler la taille du widget
   time:
     title: Heure
     type: Genre
     digital:
-      title: Affichage numériquel
+      title: Numérique
       seconds: Secondes
       twentyfourhour: 24 heures
       twelvehour: 12 heures
-      zero: Complétion de zéros
+      zero: Remplissage par des zéros
+      subtitle: Modifier l'apparence de l'horloge numérique
     analogue:
       title: Analogique
       second_hand: Aiguille des secondes
@@ -21,46 +26,68 @@ sections:
       hour_hand: Aiguille de heure
       hour_marks: Marques d'heure
       minute_marks: Marques des minutes
-    percentage_complete: Pourcentage achevé
+      subtitle: Modifier l'apparence de l'horloge analogique
+      round_clock: Arrière-plan arrondi
+    percentage_complete: Pourcentage d'achèvement
     vertical_clock:
-      change_minute_colour: Chengez la couleur des minutes
-      change_second_colour: Changez la couleur du second texte
+      change_minute_colour: Modifier la couleur du texte des minutes
+      change_second_colour: Modifier la couleur du texte des secondes
+      title: Horloge verticale
+      change_hour_colour: Modifier la couleur du texte des heures
+    format: Format
+    type_subtitle: Choisissez d'afficher l'heure au format numérique, au format 
+      analogique ou sous forme de pourcentage de la journée écoulée
   date:
     week_number: Numéro de semaine
     day_of_week: Jour de la semaine
     type:
-      short: Courtt
+      short: Court
       long: Long
+      subtitle: Afficher la date sous forme longue ou courte
     short_date: Date courte
     short_format: Format court
     short_separator:
       title: Séparateur court
       dots: Points
       dash: Tiret
-      gaps: Blancs
-      slashes: Barres
+      gaps: Écart
+      slashes: Barres obliques
     title: Date
     datenth: Date nth
-    type_settings: Afficher les réglages et formats pour le type de donnée 
-      séléctioné
+    type_settings: Paramètres d'affichage et format pour le type de date 
+      sélectionné
+    long_format: Format long
   quote:
     title: Citation
     author_link: Lien auteur
-    custom: Citation personnalisé
+    custom: Citation personnalisée
     custom_author: Auteur de devis personnalisé
     buttons:
       title: Boutons
       copy: Copier
       tweet: Twitter
-      favourite: Ajouter aux favoris
+      favourite: Favori
+      subtitle: Choisissez les boutons à afficher sur la citation
+    additional: Autres paramètres permettant de personnaliser le style du widget
+      de citation
+    custom_subtitle: Définissez vos propres citations personnalisées
+    no_quotes: Pas de citations
+    author: Auteur
+    custom_buttons: Boutons
+    author_img: Afficher l'auteur de l'image
+    add: Ajouter une citation
+    source_subtitle: Choisissez où obtenir des citations
   greeting:
     title: Salutation
     events: Événements
-    default: Salutation par défaut
+    default: Message d'accueil par défaut
     name: Nom pour salutation
     birthday: Anniversaire
     birthday_age: âge d'anniversaire
     birthday_date: date d'anniversaire
+    events_description: Contrôlez les événements sur Mue, tels que les 
+      anniversaires.
+    enable_events: Afficher les messages lors de jours spéciaux
   background:
     title: Fond
     transition: Transition en fondu
@@ -185,5 +212,5 @@ buttons:
   reset: Réinitialiser
   import: Importer
   export: Exporter
-open_knowledgebase: Base de connaissances ouverte
+open_knowledgebase: Ouvrir la base de connaissances
 additional_settings: réglages supplémentaires
