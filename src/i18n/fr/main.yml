@@ -22,9 +22,9 @@ widgets:
     source: Source
     category: Catégorie
     exclude: Ne pas réafficher
-    exclude_confirm: "Etes-vous sur de ne pas vouloir voir cette image de nouveau?\n\
-      Remarque: si vous n'aimez pas les \"{category}\" images, vous pouvez déselectionner
-      cette catégorie dans les paramètre d'arrière plan."
+    exclude_confirm: "Êtes-vous sûr de ne pas vouloir revoir cette image ?\nRemarque :
+      si vous n'aimez pas les \"{catégorie}\" images, vous pouvez décocher cette catégorie
+      dans les paramètre d'arrière plan."
     confirm: Confirmer
   search: Rechercher
   quicklinks:
@@ -35,7 +35,7 @@ widgets:
     url_error: Doit fournir une URL
     edit: Editer le lien
     url: URL
-    icon: Icon (optionnelle)
+    icon: Icône (facultatif)
   date:
     week: Semaine
   weather:
@@ -48,7 +48,7 @@ widgets:
     share: Partager
     copy: Copier
     favourite: Favori
-    unfavourite: Enlever des favoris
+    unfavourite: Non favori
   navbar:
     tooltips:
       refresh: Rafraîchire
@@ -57,23 +57,23 @@ widgets:
       placeholder: Écrivez ici
     todo:
       title: A faire
-      pin: Epingler
+      pin: Épingler
       add: Ajouter
       no_todos: Pas à faire
     apps:
       title: Applications
-      no_apps: Pas de liens d'application trouvés
+      no_apps: Aucun lien d'application trouvé
 modals:
   main:
     loading: Chargement...
     navbar:
       settings: Paramètres
-      addons: librarie
+      addons: Bibliothèque
       marketplace: Découvrir
     error_boundary:
       title: Erreur
       refresh: Rafraîchir
-      message: Echec du chargement de ce composant de Mue
+      message: Échec du chargement de ce composant de Mue
       report_error: Envoyer le rapport d'erreur
       sent: Envoyé !
     title: Options
@@ -89,16 +89,16 @@ modals:
       description: Impossible de se connecter au serveur
   share:
     copy_link: Copier le lien
-    email: Courriel
+    email: Email
 toasts:
   quote: Citation copiée
   notes: Remarques copiées
   reset: Réinitialisé avec succès
   installed: Installé avec succès
-  uninstalled: Enlevé avec succès
+  uninstalled: Supprimé avec succès
   error: Quelque chose s'est mal passé
   imported: Importé avec succès
   updated: mis à jour réussit
   no_storage: Stockage pas suffisant
   link_copied: Lien copié
-  stats_reset: Réinitialisation des statistiques
+  stats_reset: Statistiques réinitialisées
