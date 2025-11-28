@@ -5,53 +5,66 @@ sections:
       votre temps avec notre extension.
     notices:
       discord_title: Rejoignez notre Discord
-      discord_description: Parler avec la communauté Mue et aux devs
+      discord_description: Parler avec la communauté de Mue et aux développeurs
       discord_join: Rejoindre
       github_title: Contribuez sur GitHub
-      github_description: Raporter un bog, ajoutez une fonctionnalité ou faite 
+      github_description: Signaler un bug, ajoutez une fonctionnalité ou faire 
         un don
       github_open: ouvert
   language:
     title: Choisissez votre langue
-    description: Mue ne peux pas afficher les langues listé ci-dessous. Vous 
-      pouvez aussi ajouter de nouvelles traductions sur notre
+    description: Mue peut afficher les langues répertoriées ci-dessous. Vous 
+      pouvez également ajouter de nouvelles traductions sur notre
   theme:
-    title: Selectionez un thème
-    description: Mue est disponible en mode claire et sombre, et peux être 
-      changé automatiquement selon le thème de votre système.
-    tip: En utilisant les réglages automatiques, ces derniers utiliseront le 
-      thème de votre ordinateur. Ce réglage impactera les modèles et quelques 
-      widgets affiché sur l'écran, comme la météo et les notes.
+    title: Sélectionnez un thème
+    description: Mue est disponible en thème clair et sombre, ou peut être 
+      configuré automatiquement en fonction du thème de votre système.
+    tip: L'utilisation des paramètres automatiques appliquera le thème de votre 
+      ordinateur. Ce paramètre aura un impact sur les modèles et certains 
+      widgets affichés à l'écran, tels que la météo et les notes.
   style:
     title: Choisir un style
-    description: Mue offre actuellement le choix entre le vieux styling et du 
-      dernièrement sortie styling moderne.
-    legacy: Héritage
+    description: Mue propose actuellement le choix entre le style traditionnel 
+      et le style moderne récemment lancé.
+    legacy: Traditionnel
     modern: Moderne
   settings:
     title: Importer les réglages
-    description: Vous installez Mue sur un nouvel appareil? Importez vos 
-      ancients réglages!
-    tip: Vous pouvez importer vos ancients réglages en navigant sur l'onglet 
-      Avancé dans votre vieux Mue setup. Puis vous devez clicker sur le bouton 
-      exporter, qui téléchargera un ficher JSON. Vous pouvez apporter ce ficher 
-      ici pour transporter vos vieux réglages et préférences de votre 
-      antécédente instalation de Mue.
+    description: Vous installez Mue sur un nouvel appareil ? N'hésitez pas à 
+      importer vos anciens réglages !
+    tip: Vous pouvez exporter vos anciens paramètres en accédant à l'onglet 
+      Avancé dans votre ancienne configuration Mue. Vous devez ensuite cliquer 
+      sur le bouton Exporter pour télécharger le fichier JSON. Vous pouvez 
+      télécharger ce fichier ici afin de transférer vos paramètres et 
+      préférences depuis votre ancienne installation Mue.
   privacy:
-    links: {}
-    title: Options confidentialité
+    links:
+      title: Liens
+      privacy_policy: Politique de confidentialité
+      source_code: Code source
+    title: Options de confidentialité
     description: Activez les réglages pour mieux protéger votre confidentialité 
-      avec Mue
+      avec Mue.
+    offline_mode_description: L'activation du mode hors ligne désactivera toutes
+      les requêtes vers tous les services. Cela entraînera la désactivation des 
+      arrière-plans en ligne, des devis en ligne, du marché, de la météo, des 
+      liens rapides, du journal des modifications et de certaines informations 
+      de l'onglet « À propos ».
   final:
     imported: '{amount} réglages importés'
+    title: Dernière étape
+    description: Votre expérience Mue Tab est sur le point de commencer.
+    changes: Changements
+    changes_description: Pour modifier les paramètres ultérieurement, cliquez 
+      sur l'icône des paramètres dans le coin supérieur droit de votre onglet.
 buttons:
   close: Fermer
-  next: Prochain
-  preview: Visionnez
-  previous: Antécédent
+  next: Suivant
+  preview: Aperçu
+  previous: Précédent
   finish: Terminer
 preview:
-  description: Vous êtes maintenant en mode visionnage. Les réglages seront 
-    réinitialisées à la fermeture de cet onglet.
+  description: Vous êtes actuellement en mode aperçu. Les réglages seront 
+    réinitialisés à la fermeture de cet onglet.
   continue: Continuez la mise en marche
 tip: Rapide Conseil
