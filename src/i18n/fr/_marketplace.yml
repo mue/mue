@@ -1,24 +1,49 @@
-photo_packs: Packs Photos
-quote_packs: Packs Citations
+photo_packs: Packs de Photos
+quote_packs: Packs de Citations
 preset_settings: Paramètres prédéfinis
-no_items: Aucun article dans cette catégorie
+no_items: Aucun articles dans cette catégorie
 product:
   overview: Aperçu
   last_updated: Dernière mise à jour
   buttons:
     addtomue: Ajouter à Mue
-    remove: Enlever
-    update_addon: Mettre à jour les Add-on
-    back: Arrière
-    not_available_preview: pré-visionnage non-disponible
-  updated_at: mis-à-jour le
-  part_of: Fait partie du
+    remove: Supprimer
+    update_addon: Mise à jour des Add-on
+    back: Retour
+    not_available_preview: Indisponible en aperçu
+    report: Rapport
+  updated_at: Mis à jour le
+  part_of: Une partie de
   explore: Explorer
   not_in_language: Cet add-on n'est pas disponible dans votre langue
   third_party_api: Cet add-on utilise une API tier
+  information: Information
+  description: Description
+  details: Détails
+  more_from_curator: Plus de contenu similaire de {nom}
+  show_more: Afficher plus
+  show_less: Afficher moins
+  show_all: Tout afficher
+  showing: Affichage
+  no_images: N° d'images
+  no_quotes: N° de citation
+  version: Version
+  created_by: Créé par
+  sideload_warning: Cet add-on a été installé manuellement.
+  setting: Réglage
+  value: Valeur
 offline:
-  title: Hors ligne
-  description: Veuillez vous connecter à Internet.
-by: Par{author}
+  title: On dirait que tu es hors ligne
+  description: Veuillez vous connecter à Internet
+by: Par {auteur}
 all: tout
-learn_more: apprenez en plus
+learn_more: En savoir plus
+collection: Collection
+explore_collection: Explorer la collection
+add_all: Ajouter tout à Mue
+collections: Collections
+cant_find: Vous ne trouvez pas ce que vous cherchez ?
+knowledgebase_one: Visitez le
+knowledgebase_two: base de connaissances
+knowledgebase_three: créer le vôtre.
+installing: Installation
