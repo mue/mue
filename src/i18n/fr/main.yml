@@ -32,7 +32,7 @@ widgets:
     name: Nom
     add: Ajouter
     name_error: Doit fournir le nom
-    url_error: Doit fournir une URL
+    url_error: L'URL est obligatoire
     edit: Editer le lien
     url: URL
     icon: Icône (facultatif)
