@@ -67,7 +67,7 @@
         "preset_settings": "Paramètres prédéfinis",
         "product": {
           "buttons": {
-            "addtomue": "Ajouter à Mue",
+            "addtomue": "Ajouter à",
             "back": "Retour",
             "not_available_preview": "Non disponible en aperçu",
             "remove": "Supprimer",
@@ -230,7 +230,7 @@
             },
             "style": {
               "description": "Choisissez entre les deux styles, legacy (activé pour les utilisateurs antérieurs à la version 7.0) et notre style moderne et élégant.",
-              "legacy": "Legacy",
+              "legacy": "Hérité",
               "new": "Nouveau",
               "title": "Style du widget"
             },
@@ -253,7 +253,7 @@
               "view": "Agrandir"
             },
             "categories": "Catégories",
-            "display": "Affichage",
+            "display": "écran",
             "display_subtitle": "Modifier la façon dont le fond d'écran et les informations photo sont chargés",
             "effects": {
               "blur": "Ajuster le flou",
@@ -397,7 +397,7 @@
             "open_new": "Ouvrir dans un nouvel onglet",
             "options": {
               "icon": "Icône",
-              "metro": "Metro",
+              "metro": "Métro",
               "text_only": "Texte uniquement"
             },
             "style": "Style",
@@ -434,6 +434,7 @@
             "autocomplete": "Saisie semi-automatique",
             "autocomplete_provider": "Fournisseur de saisie semi-automatique",
             "autocomplete_provider_subtitle": "Moteur de recherche à utiliser pour les résultats déroulants de saisie semi-automatique",
+            "chrome_policy_warning": "Dans la version 7.2, la possibilité de choisir votre moteur de recherche dans Mue a été supprimée afin de se conformer aux nouvelles directives du Chrome Web Store. Mue utilise désormais le moteur de recherche par défaut de votre navigateur. Vous pouvez modifier ce paramètre dans les paramètres de Chrome.",
             "custom": "URL de recherche personnalisée",
             "dropdown": "Menu déroulant de recherche",
             "focus": "Focus à l'ouverture de l'onglet",
@@ -495,7 +496,7 @@
             }
           },
           "weather": {
-            "auto": "Automatique",
+            "auto": "Auto",
             "custom_settings": "Paramètres personnalisés",
             "extra_info": {
               "atmospheric_pressure": "Pression atmosphérique",
@@ -599,7 +600,7 @@
         },
         "style": {
           "description": "Mue offre actuellement le choix entre le style legacy et le nouveau style moderne.",
-          "legacy": "Legacy",
+          "legacy": "Hérité",
           "modern": "Moderne",
           "title": "Choisissez un style"
         },
