@@ -302,9 +302,7 @@ sections:
     offline_subtitle: Cuando esté activada, se desactivarán todas las 
       solicitudes a los servicios en línea.
     data: Datos
-    data_subtitle: Elija si desea exportar la configuración de Mue a su 
-      ordenador, importar un archivo de configuración existente o restablecer 
-      los valores predeterminados
+    data_subtitle: Gestiona tus datos en Mue.
     reset_modal:
       title: ADVERTENCIA
       question: ¿Quieres reiniciar Mue?
@@ -355,8 +353,8 @@ sections:
     locked: Bloqueado
     achievement_unlocked: 'Logros Desbloqueado: {nombre}'
   experimental:
-    warning: Estos ajustes no han sido totalmente probados/implementados y 
-      pueden no funcionar correctamente.
+    warning: ¡Estos ajustes no han sido totalmente probados/implementados y 
+      pueden no funcionar correctamente!
     developer: Desarrollador
     title: Experimental
   language:
