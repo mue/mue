@@ -6,12 +6,12 @@
         "check_updates": "Comprobar actualizaciones",
         "create": {
           "moved_button": "Muy pronto....",
-          "moved_description": "Tras la actualización 7.1, la creación de complementos se ha trasladado a la interfaz web.",
+          "moved_description": "Tras la actualización 7.1, la creación de complementos se ha trasladado a la interfaz web",
           "moved_title": "¡Crear complemento se ha movido!",
           "title": "Crear"
         },
         "empty": {
-          "description": "Dirígete a la tienda para agregar algunos.",
+          "description": "No hay addons instalados",
           "title": "Vacío"
         },
         "no_updates": "No hay actualizaciones disponibles",
@@ -345,7 +345,7 @@
           "experimental": {
             "developer": "Desarrollador",
             "title": "Experimental",
-            "warning": "Estos ajustes no han sido totalmente probados/implementados y pueden no funcionar correctamente."
+            "warning": "¡Estos ajustes no han sido totalmente probados/implementados y pueden no funcionar correctamente!"
           },
           "greeting": {
             "add_event": "Add Event",
@@ -434,6 +434,7 @@
             "autocomplete": "Autocompletado",
             "autocomplete_provider": "Proveedor del autocompletado",
             "autocomplete_provider_subtitle": "Motor de búsqueda para los resultados desplegables de autocompletar",
+            "chrome_policy_warning": "En la versión 7.2, la posibilidad de elegir un motor de búsqueda en Mue se ha quitado para cumplir las nuevas directrices de la Chrome Web Store. Mue ahora utiliza el motor de búsqueda predeterminado de tu navegador. Puedes cambiarlo en la configuración de Chrome.",
             "custom": "URL de búsqueda personalizada",
             "dropdown": "Menú desplegable de búsqueda",
             "focus": "Centrarse en la pestaña abierta",
@@ -562,7 +563,7 @@
         "final": {
           "changes": "Cambios",
           "changes_description": "Para cambiar la configuración más tarde, haga clic en el icono de configuración en la esquina superior derecha de su pestaña.",
-          "description": "Tu experiencia con Mue Tab está a punto de comenzar",
+          "description": "Tu experiencia con Mue Tab está a punto de comenzar.",
           "imported": "Importados {amount} ajustes",
           "title": "Último paso"
         },
@@ -593,7 +594,7 @@
           "title": "Opciones de privacidad"
         },
         "settings": {
-          "description": "¿Instalando Mue en un nuevo dispositivo? No dudes en importar tu antigua configuración.",
+          "description": "¿Instalando Mue en un nuevo dispositivo? ¡No dudes en importar tu antigua configuración!",
           "tip": "Puedes exportar tu antigua configuración navegando a la pestaña Avanzado en tu antigua configuración de Mue. Luego debes hacer clic en el botón de exportación que descargará el archivo JSON. Puedes subir este archivo aquí para mantener tus ajustes y preferencias de tu anterior instalación de Mue.",
           "title": "Importa los ajustes"
         },
