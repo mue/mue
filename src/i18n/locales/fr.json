@@ -40,7 +40,7 @@
         "message": "Échec du chargement de ce composant de Mue",
         "refresh": "Rafraîchir",
         "report_error": "Envoyer un rapport d'erreur",
-        "sent": "Expédié!",
+        "sent": "Envoyé !",
         "title": "Erreur"
       },
       "file_upload_error": "Le fichier dépasse 2 Mo",
@@ -696,7 +696,7 @@
     "search": "Rechercher",
     "weather": {
       "extra_information": "Informations supplémentaires",
-      "feels_like": "Ressemble à {montant}",
+      "feels_like": "Ressenti {amount}",
       "meters": "{amount} mètres",
       "not_found": "Non trouvé"
     }
