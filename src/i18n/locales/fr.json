@@ -40,7 +40,7 @@
         "message": "Échec du chargement de ce composant de Mue",
         "refresh": "Rafraîchir",
         "report_error": "Envoyer un rapport d'erreur",
-        "sent": "Envoyé !",
+        "sent": "Expédié!",
         "title": "Erreur"
       },
       "file_upload_error": "Le fichier dépasse 2 Mo",
@@ -105,7 +105,7 @@
         "settings": "Paramètres"
       },
       "settings": {
-        "additional_settings": "Paramètres supplémentaires",
+        "additional_settings": "Paramètres additionnels",
         "buttons": {
           "export": "Exporter",
           "import": "Importer",
@@ -245,7 +245,7 @@
           },
           "background": {
             "api": "Paramètres de l'API",
-            "api_subtitle": "Options pour obtenir une image d'un service externe (API)",
+            "api_subtitle": "Options pour obtenir une image à partir d'un service externe (API)",
             "buttons": {
               "download": "Télécharger",
               "favourite": "Favori",
@@ -253,7 +253,7 @@
               "view": "Agrandir"
             },
             "categories": "Catégories",
-            "display": "écran",
+            "display": "Afficher",
             "display_subtitle": "Modifier la façon dont le fond d'écran et les informations photo sont chargés",
             "effects": {
               "blur": "Ajuster le flou",
@@ -267,7 +267,7 @@
                 "sepia": "Sépia",
                 "title": "Filtre de fond"
               },
-              "subtitle": "Ajouter des effets aux images de fond",
+              "subtitle": "Ajouter des effets aux images d'arrière-plan",
               "title": "Effets"
             },
             "photo_information": "Afficher les informations de la photo",
@@ -294,8 +294,8 @@
                 "title": "Qualité"
               },
               "remove": "Supprimer l'image",
-              "select": "Ou sélectionner",
-              "subtitle": "Sélectionnez où obtenir les images de fond",
+              "select": "Ou sélectionnez",
+              "subtitle": "Sélectionnez d'où obtenir les images d'arrière-plan",
               "title": "Source",
               "upload": "Télécharger"
             },
@@ -337,7 +337,7 @@
             "type": {
               "long": "Long",
               "short": "Court",
-              "subtitle": "Afficher la date en format long ou court"
+              "subtitle": "Afficher ou non la date sous forme longue ou courte"
             },
             "type_settings": "Paramètres d'affichage et format pour le type de date sélectionné",
             "week_number": "Numéro de semaine"
@@ -349,11 +349,11 @@
           },
           "greeting": {
             "add_event": "Ajouter un événement",
-            "additional": "Paramètres pour l'affichage de la salutation",
+            "additional": "Paramètres de l'affichage du message d'accueil",
             "birthday": "Anniversaire",
             "birthday_age": "Âge d'anniversaire",
             "birthday_date": "Date d'anniversaire",
-            "birthday_subtitle": "Afficher un message d'anniversaire lorsque c'est votre anniversaire",
+            "birthday_subtitle": "Afficher un message de joyeux anniversaire quand c'est votre anniversaire",
             "custom": "Événements personnalisés",
             "day": "Jour",
             "default": "Message de salutation par défaut",
@@ -368,8 +368,8 @@
             "title": "Salutation"
           },
           "header": {
-            "enabled": "Choisir d'afficher ou non ce widget",
-            "more_info": "Plus d'infos",
+            "enabled": "Choisissez d'afficher ou non ce widget",
+            "more_info": "Plus d'informations",
             "report_issue": "Signaler un problème",
             "size": "Curseur pour contrôler la taille du widget"
           },
@@ -392,13 +392,13 @@
           "quicklinks": {
             "add_link": "Ajouter un lien",
             "additional": "Paramètres supplémentaires pour l'affichage et les fonctions des liens rapides",
-            "edit": "Modifier",
-            "no_quicklinks": "Pas de liens rapides",
+            "edit": "Éditer",
+            "no_quicklinks": "Aucun lien rapide",
             "open_new": "Ouvrir dans un nouvel onglet",
             "options": {
               "icon": "Icône",
               "metro": "Métro",
-              "text_only": "Texte uniquement"
+              "text_only": "Texte seulement"
             },
             "style": "Style",
             "styling": "Style",
@@ -409,7 +409,7 @@
           },
           "quote": {
             "add": "Ajouter une citation",
-            "additional": "Autres paramètres pour personnaliser le style du widget de citation",
+            "additional": "Autres paramètres pour personnaliser le style du widget de devis",
             "author": "Auteur",
             "author_details": "Détails de l'auteur",
             "author_img": "Afficher l'image de l'auteur",
@@ -433,11 +433,11 @@
             "additional": "Options supplémentaires pour l'affichage et la fonctionnalité du widget de recherche",
             "autocomplete": "Saisie semi-automatique",
             "autocomplete_provider": "Fournisseur de saisie semi-automatique",
-            "autocomplete_provider_subtitle": "Moteur de recherche à utiliser pour les résultats déroulants de saisie semi-automatique",
+            "autocomplete_provider_subtitle": "Moteur de recherche à utiliser pour les résultats de la liste déroulante de saisie semi-automatique",
             "chrome_policy_warning": "Dans la version 7.2, la possibilité de choisir votre moteur de recherche dans Mue a été supprimée afin de se conformer aux nouvelles directives du Chrome Web Store. Mue utilise désormais le moteur de recherche par défaut de votre navigateur. Vous pouvez modifier ce paramètre dans les paramètres de Chrome.",
             "custom": "URL de recherche personnalisée",
             "dropdown": "Menu déroulant de recherche",
-            "focus": "Focus à l'ouverture de l'onglet",
+            "focus": "Focus sur l'onglet ouvert",
             "search_engine": "Moteur de recherche",
             "search_engine_subtitle": "Choisissez le moteur de recherche à utiliser dans la barre de recherche",
             "title": "Recherche",
@@ -487,9 +487,9 @@
             "percentage_complete": "Pourcentage accompli",
             "title": "Heure",
             "type": "Type",
-            "type_subtitle": "Choisir d'afficher l'heure en format numérique, analogique ou en pourcentage d'accomplissement de la journée",
+            "type_subtitle": "Choisissez d'afficher l'heure au format numérique ou analogique, ou un pourcentage d'achèvement de la journée",
             "vertical_clock": {
-              "change_hour_colour": "Changer la couleur du texte des heures",
+              "change_hour_colour": "Changer la couleur du texte de l'heure",
               "change_minute_colour": "Changer la couleur du texte des minutes",
               "change_second_colour": "Changer la couleur du texte des secondes",
               "title": "Horloge verticale"
@@ -508,7 +508,7 @@
               "show_location": "Afficher l'emplacement",
               "title": "Informations supplémentaires",
               "visibility": "Visibilité",
-              "weather_description": "Description météo",
+              "weather_description": "Descriptif météo",
               "wind_direction": "Direction du vent",
               "wind_speed": "Vitesse du vent"
             },
@@ -600,7 +600,7 @@
         },
         "style": {
           "description": "Mue offre actuellement le choix entre le style legacy et le nouveau style moderne.",
-          "legacy": "Hérité",
+          "legacy": "Héritage",
           "modern": "Moderne",
           "title": "Choisissez un style"
         },
@@ -636,9 +636,9 @@
       "download": "Télécharger",
       "downloads": "Téléchargements",
       "exclude": "Ne plus afficher",
-      "exclude_confirm": "Êtes-vous sûr de ne plus vouloir voir cette image ?\nNote : si vous n'aimez pas les images \"{category}\", vous pouvez désélectionner la catégorie dans les paramètres de source de fond d'écran.",
+      "exclude_confirm": "Êtes-vous sûr de ne plus vouloir revoir cette image ?\nRemarque : si vous n'aimez pas les images \"{category}\", vous pouvez désélectionner la catégorie dans les paramètres de source d'arrière-plan.",
       "information": "Information",
-      "likes": "J'aime",
+      "likes": "Aime",
       "location": "Emplacement",
       "resolution": "Résolution",
       "source": "Source",
@@ -691,12 +691,12 @@
       "favourite": "Favori",
       "link_tooltip": "Ouvrir sur Wikipédia",
       "share": "Partager",
-      "unfavourite": "Retirer des favoris"
+      "unfavourite": "Défavorisé"
     },
     "search": "Rechercher",
     "weather": {
       "extra_information": "Informations supplémentaires",
-      "feels_like": "Ressenti {amount}",
+      "feels_like": "Ressemble à {montant}",
       "meters": "{amount} mètres",
       "not_found": "Non trouvé"
     }
