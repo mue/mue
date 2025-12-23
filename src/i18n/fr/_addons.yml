@@ -4,10 +4,27 @@ empty:
   description: Dirigez vous vers le marché pour ajouter des options
 sideload:
   title: Charger
-  errors: {}
-sort: {}
+  errors:
+    no_name: Aucun nom fourni
+    no_author: Aucun auteur fourni
+    no_type: Aucun type fourni
+    invalid_photos: Objet photos invalide
+    invalid_quotes: Objet citations invalide
+  description: Installer un add-on Mue depuis votre ordinateur qui n'est pas sur
+    le marketplace intégré
+  failed: Échec du chargement manuel de l'add-on
+sort:
+  title: Trie
+  newest: Installé (plus récent)
+  oldest: Installé (plus ancien)
+  a_z: Alphabétique (A-Z)
+  z_a: Alphabétique (Z-A)
 create:
-  moved_button: Get Started
+  moved_button: Bientôt disponible....
+  title: Créer
+  moved_title: La création d'add-on a été déplacée  !
+  moved_description: Après la mise à jour 7.1, la création d'addons est déplacée
+    dans l'interface web
 check_updates: Regarder pour des mise-à-jours
 no_updates: Pas de mise-à-jour disponible
 updates_available: Mise-à-jour disponibles {amount}
