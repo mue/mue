@@ -15,12 +15,12 @@ product:
   updated_at: Mis à jour le
   part_of: Une partie de
   explore: Explorer
-  not_in_language: Cet add-on n'est pas disponible dans votre langue
-  third_party_api: Cet add-on utilise une API tier
+  not_in_language: Ce add-on n'est pas dans votre langue
+  third_party_api: Cet add-on utilise une API tierce
   information: Information
   description: Description
   details: Détails
-  more_from_curator: Plus de contenu similaire de {nom}
+  more_from_curator: Plus comme ça depuis {name}
   show_more: Afficher plus
   show_less: Afficher moins
   show_all: Tout afficher
@@ -42,8 +42,8 @@ collection: Collection
 explore_collection: Explorer la collection
 add_all: Ajouter tout à Mue
 collections: Collections
-cant_find: Vous ne trouvez pas ce que vous cherchez ?
-knowledgebase_one: Visitez le
+cant_find: Tu ne trouves pas ce que tu cherches ?
+knowledgebase_one: Visite
 knowledgebase_two: base de connaissances
-knowledgebase_three: créer le vôtre.
+knowledgebase_three: pour créer votre propre.
 installing: Installation
