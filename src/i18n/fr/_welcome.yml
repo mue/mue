@@ -66,5 +66,5 @@ buttons:
 preview:
   description: Vous êtes actuellement en mode aperçu. Les réglages seront 
     réinitialisés à la fermeture de cet onglet.
-  continue: Continuez la mise en marche
+  continue: Continuez la configuration
 tip: Rapide Conseil
