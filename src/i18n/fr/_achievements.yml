@@ -1,28 +1,36 @@
 "727":
   name: Quand tu le vois
-  description: 727 onglets ouverts
+  description: Ouvrir 727 onglets
 "1337":
   name: MU3T4B
-  description: 1337 onglets ouverts
+  description: Ouvrez 1337 onglets
 10tabs:
   name: 10/10 IGN
-  description: 10 onglets ouverts
+  description: Ouvrir 10 onglets
 thankyou:
   name: Merci
-  description: 39 onglets ouverts
+  description: Ouvrir 39 onglets
 seasoning:
-  description: 100 onglets ouverts
+  description: Ouvrir 100 onglets
+  name: Assaisonnement
 mrworldwide:
-  name: Mr. Mondial
-  description: 305 onglets ouverts
+  name: Mr. Worldwide
+  description: Ouvrir 305 onglets
 tabaholic:
-  description: 500 onglets ouverts
+  description: Ouvrir 500 onglets
+  name: Tabaholic
 808s:
-  description: 808 onglets ouverts
+  description: Ouvrir 808 onglets
+  name: 808s & Tab Breaks
 averagelinuxuser:
-  name: Utilisateur de Linux commun
-  description: add-on installé
+  name: Utilisateur Linux moyen
+  description: Installé un add-on
 fullyriced:
-  description: 5 options installés
+  description: Installation de 5 add-ons
+  name: Fully Riced
 21addons:
-  name: Ils ont installé 21 options? Quoiii?
+  name: Ils ont installé 21 add-ons ? Whaaat ?
+  description: Installation de 21 add-ons
+overload:
+  name: Décharge de système
+  description: Installation de 50 add-ons
