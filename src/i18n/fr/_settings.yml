@@ -68,8 +68,8 @@ sections:
       tweet: Twitter
       favourite: Favori
       subtitle: Choisissez les boutons à afficher sur la citation
-    additional: Autres paramètres permettant de personnaliser le style du widget
-      de citation
+    additional: Autres paramètres pour personnaliser le style du widget de 
+      citation
     custom_subtitle: Définissez vos propres citations personnalisées
     no_quotes: Pas de citations
     author: Auteur
@@ -91,6 +91,13 @@ sections:
     additional: Paramètres pour l'écran de bienvenue
     day: Jour
     month: Mois
+    birthday_subtitle: Afficher un message Joyeux anniversaire quand c'est votre
+      anniversaire
+    custom: Événements personnalisés
+    event_name: Nom de l'événement
+    no_events: Pas d'événements
+    no_events_description: Ajouter quelques événements
+    add_event: Ajouter l'événement
   background:
     title: Fond
     transition: Transition en fondu
@@ -111,6 +118,7 @@ sections:
         invert: Inverser
         saturate: Saturer
         contrast: Contraster
+      subtitle: Ajouter des effets sur les images de fond
     type:
       custom_image: Image personnalisée
       custom_colour: Couleur / dégradé personnalisé
@@ -132,6 +140,7 @@ sections:
     photo_information: Afficher les informations de la photo
     show_map: Afficher la localisation dans les informations de la photo, si 
       elle est disponible
+    categories: Catégories
   search:
     title: Barre de Recherche
     search_engine: Moteur de Recherche
@@ -229,4 +238,4 @@ buttons:
   import: Importer
   export: Exporter
 open_knowledgebase: Ouvrir la base de connaissances
-additional_settings: réglages supplémentaires
+additional_settings: Réglages supplémentaires
