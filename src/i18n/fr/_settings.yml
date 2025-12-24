@@ -17,7 +17,7 @@ sections:
       seconds: Secondes
       twentyfourhour: 24 heures
       twelvehour: 12 heures
-      zero: Remplissage par des zéros
+      zero: Complétion de zéros
       subtitle: Modifier l'apparence de l'horloge numérique
     analogue:
       title: Analogique
@@ -28,7 +28,7 @@ sections:
       minute_marks: Marques des minutes
       subtitle: Modifier l'apparence de l'horloge analogique
       round_clock: Arrière-plan arrondi
-    percentage_complete: Pourcentage d'achèvement
+    percentage_complete: Pourcentage accompli
     vertical_clock:
       change_minute_colour: Modifier la couleur du texte des minutes
       change_second_colour: Modifier la couleur du texte des secondes
@@ -100,10 +100,13 @@ sections:
       title: Effets
       blur: Ajuster le flou
       brightness: Ajuster la luminosité
-      filters: {}
+      filters:
+        sepia: Sepia
     type:
       custom_image: Image personnalisée
       custom_colour: Couleur / dégradé personnalisé
+      title: Genre
+      api: API
     unsplash: {}
     source:
       api: Source
@@ -114,6 +117,7 @@ sections:
       loop_video: Boucle vidéo
       mute_video: Mettre la vidéo en sourdine
       quality: {}
+    category: Catégorie
   search:
     title: Barre de Recherche
     search_engine: Moteur de Recherche
