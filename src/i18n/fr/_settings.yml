@@ -88,6 +88,9 @@ sections:
     events_description: Contrôlez les événements sur Mue, tels que les 
       anniversaires.
     enable_events: Afficher les messages lors de jours spéciaux
+    additional: Paramètres pour l'écran de bienvenue
+    day: Jour
+    month: Mois
   background:
     title: Fond
     transition: Transition en fondu
@@ -101,12 +104,20 @@ sections:
       blur: Ajuster le flou
       brightness: Ajuster la luminosité
       filters:
-        sepia: Sepia
+        sepia: Sépia
+        title: Filtre d'arrière plan
+        amount: Intensité du filtre
+        grayscale: Échelle de gris
+        invert: Inverser
+        saturate: Saturer
+        contrast: Contraster
     type:
       custom_image: Image personnalisée
       custom_colour: Couleur / dégradé personnalisé
       title: Genre
       api: API
+      random_colour: Couleur aléatoire
+      random_gradient: Gradient aléatoire
     unsplash: {}
     source:
       api: Source
@@ -118,6 +129,9 @@ sections:
       mute_video: Mettre la vidéo en sourdine
       quality: {}
     category: Catégorie
+    photo_information: Afficher les informations de la photo
+    show_map: Afficher la localisation dans les informations de la photo, si 
+      elle est disponible
   search:
     title: Barre de Recherche
     search_engine: Moteur de Recherche
@@ -168,12 +182,10 @@ sections:
     title: Avancée
     offline_mode: Mode hors-ligne
     data: Donnés
-    data_subtitle: Choose whether to export your Mue settings to your computer, 
-      import an existing settings file, or reset your settings to their default 
-      values
+    data_subtitle: Gérez vos données sur Mue.
     reset_modal:
       title: ATTENTION
-      question: Voulez-vous réinitialiser Mue?
+      question: Voulez-vous réinitialiser Mue ?
       information: Cela supprimera toutes les données. Si vous souhaitez 
         conserver vos données et préférences, veuillez d'abord les exporter.
       cancel: Annuler
