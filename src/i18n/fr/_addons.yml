@@ -25,6 +25,6 @@ create:
   moved_title: La création d'add-on a été déplacée  !
   moved_description: Après la mise à jour 7.1, la création d'addons est déplacée
     dans l'interface web
-check_updates: Regarder pour des mise-à-jours
+check_updates: Vérifier les mise-à-jours
 no_updates: Pas de mise-à-jour disponible
 updates_available: Mise-à-jour disponibles {amount}
