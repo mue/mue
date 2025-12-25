@@ -253,6 +253,7 @@ sections:
     navbar:
       refresh_options:
         none: Aucun
+        page: Page
       notes: Remarques
       refresh: Actualiser
       refresh_subtitle: Choisissez ce qui est actualisé lorsque vous cliquez sur
