@@ -138,13 +138,18 @@ sections:
       add_colour: Ajouter une couleur
       loop_video: Boucle vidéo
       mute_video: Mettre la vidéo en sourdine
-      quality: {}
+      quality:
+        title: Qualité
+        original: Original
+        high: Haute qualité
+        normal: Qualité normale
       subtitle: Sélectionnez où obtenir des images de fond
       formats: 'Formats disponibles: {list}'
       select: Ou sélectionnez
       custom_title: Images personnalisées
       custom_description: Sélectionnez les images de votre ordinateur local
       remove: Supprimer l'image
+      title: Source
     category: Catégorie
     photo_information: Afficher les informations de la photo
     show_map: Afficher la localisation dans les informations de la photo, si 
@@ -165,11 +170,15 @@ sections:
     search_engine_subtitle: Choisissez le moteur de recherche à utiliser dans la
       barre de recherche
     focus: Focus sur l'onglet ouvert
+    autocomplete: Autocomplete
   weather:
     title: Météo
     location: Emplacement
     temp_format:
       title: Format de température
+      celsius: Celsius
+      fahrenheit: Fahrenheit
+      kelvin: Kelvin
     extra_info:
       title: Informations supplémentaires
       show_location: Afficher l'emplacement
@@ -184,6 +193,7 @@ sections:
       standard: Standard
       custom: Personnalisé
     custom_settings: Paramètres personnalisés
+    auto: Auto
   quicklinks:
     title: Liens rapides
     open_new: Ouvrir dans un nouvel onglet
@@ -201,6 +211,7 @@ sections:
     no_messages: Pas de messages
     add_some: Allez-y et ajoutez-en.
     content: Contenu du message
+    title: Message
   appearance:
     title: Apparence
     style:
@@ -210,8 +221,11 @@ sections:
       title: Thème
       light: Clair
       dark: Sombre
+      auto: Auto
     navbar:
       refresh_options: {}
+      notes: Remarques
+      refresh: Rafraîchir
     font:
       weight: {}
       style: {}
