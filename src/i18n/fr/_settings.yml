@@ -126,7 +126,10 @@ sections:
       api: API
       random_colour: Couleur aléatoire
       random_gradient: Gradient aléatoire
-    unsplash: {}
+    unsplash:
+      subtitle: Sélectionnez la ou les collections que vous souhaitez utiliser 
+        pour votre arrière-plan
+      id_subtitle: Entrez une liste séparée des identifiants Unsplash
     source:
       api: Source
       custom_background: Arrière-plan personnalisé
@@ -136,6 +139,9 @@ sections:
       loop_video: Boucle vidéo
       mute_video: Mettre la vidéo en sourdine
       quality: {}
+      subtitle: Sélectionnez où obtenir des images de fond
+      formats: 'Formats disponibles: {list}'
+      select: Ou sélectionnez
     category: Catégorie
     photo_information: Afficher les informations de la photo
     show_map: Afficher la localisation dans les informations de la photo, si 
