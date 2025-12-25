@@ -142,17 +142,29 @@ sections:
       subtitle: Sélectionnez où obtenir des images de fond
       formats: 'Formats disponibles: {list}'
       select: Ou sélectionnez
+      custom_title: Images personnalisées
+      custom_description: Sélectionnez les images de votre ordinateur local
+      remove: Supprimer l'image
     category: Catégorie
     photo_information: Afficher les informations de la photo
     show_map: Afficher la localisation dans les informations de la photo, si 
       elle est disponible
     categories: Catégories
+    display_subtitle: Modifier comment les informations de fond et de photo sont
+      chargées
+    api: Paramètres de l'API
+    api_subtitle: Options pour obtenir une image d'un service externe (API)
   search:
     title: Barre de Recherche
     search_engine: Moteur de Recherche
     custom: URL de recherche personnalisée
     voice_search: Recherche vocale
     dropdown: Search dropdown
+    additional: Options supplémentaires pour l'affichage de widget de recherche 
+      et fonctionnalité
+    search_engine_subtitle: Choisissez le moteur de recherche à utiliser dans la
+      barre de recherche
+    focus: Focus sur l'onglet ouvert
   weather:
     title: Météo
     location: Emplacement
@@ -166,16 +178,34 @@ sections:
       min_temp: Température minimale
       max_temp: Température maximale
       atmospheric_pressure: Pression atmosphérique
-    options: {}
+      weather_description: Description météo
+    options:
+      basic: Base
+      standard: Standard
+      custom: Personnalisé
+    custom_settings: Paramètres personnalisés
   quicklinks:
     title: Liens rapides
     open_new: Ouvrir dans un nouvel onglet
     tooltip: Info-bulle
-    options: {}
-  message: {}
+    options:
+      text_only: Texte seulement
+      metro: Metro
+    additional: Paramètres supplémentaires pour l'affichage et les fonctions des
+      liens rapides
+    add_link: Ajouter le lien
+    no_quicklinks: Pas de lien rapide
+    style: Style
+  message:
+    messages: Messages
+    no_messages: Pas de messages
+    add_some: Allez-y et ajoutez-en.
+    content: Contenu du message
   appearance:
     title: Apparence
-    style: {}
+    style:
+      description: Choisissez entre les deux styles, l'héritage (utilisable pour
+        les utilisateurs pré 7.0) et notre style moderne élégant.
     theme:
       title: Thème
       light: Clair
