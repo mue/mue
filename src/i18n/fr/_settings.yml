@@ -130,8 +130,10 @@ sections:
       subtitle: Sélectionnez la ou les collections que vous souhaitez utiliser 
         pour votre arrière-plan
       id_subtitle: Entrez une liste séparée des identifiants Unsplash
+      id: ID(s) de collection(s)
+      title: Collection(s) d'unsplash
     source:
-      api: Source
+      api: API d'arrière-plan
       custom_background: Arrière-plan personnalisé
       custom_colour: Couleur d'arrière-plan personnalisée
       upload: Ajouter
@@ -143,13 +145,18 @@ sections:
         original: Original
         high: Haute qualité
         normal: Qualité normale
+        datasaver: Économiseur de données
       subtitle: Sélectionnez où obtenir des images de fond
-      formats: 'Formats disponibles: {list}'
+      formats: 'Formats disponibles : {list}'
       select: Ou sélectionnez
       custom_title: Images personnalisées
       custom_description: Sélectionnez les images de votre ordinateur local
       remove: Supprimer l'image
       title: Source
+      add_background: Ajouter un arrière plan
+      drop_to_upload: Relâchez pour uploader
+      add_url: Ajouter une URL
+      disabled: Désactiver
     category: Catégorie
     photo_information: Afficher les informations de la photo
     show_map: Afficher la localisation dans les informations de la photo, si 
@@ -159,6 +166,7 @@ sections:
       chargées
     api: Paramètres de l'API
     api_subtitle: Options pour obtenir une image d'un service externe (API)
+    display: Affichage
   search:
     title: Barre de Recherche
     search_engine: Moteur de Recherche
@@ -171,6 +179,9 @@ sections:
       barre de recherche
     focus: Focus sur l'onglet ouvert
     autocomplete: Autocomplete
+    autocomplete_provider: Source de l'autocompletion
+    autocomplete_provider_subtitle: Moteur de recherche à utiliser pour les 
+      résultats suggérés d'autocomplétion
   weather:
     title: Météo
     location: Emplacement
@@ -188,35 +199,51 @@ sections:
       max_temp: Température maximale
       atmospheric_pressure: Pression atmosphérique
       weather_description: Description météo
+      show_description: Afficher la description
+      visibility: Visibilité
+      wind_direction: Direction du vent
+      cloudiness: Couverture nuageuse
     options:
       basic: Base
       standard: Standard
       custom: Personnalisé
+      expanded: Étendu
     custom_settings: Paramètres personnalisés
     auto: Auto
+    widget_type: Type de Widget
   quicklinks:
     title: Liens rapides
     open_new: Ouvrir dans un nouvel onglet
     tooltip: Info-bulle
     options:
       text_only: Texte seulement
-      metro: Metro
+      metro: Métro
+      icon: Icone
     additional: Paramètres supplémentaires pour l'affichage et les fonctions des
       liens rapides
     add_link: Ajouter le lien
     no_quicklinks: Pas de lien rapide
     style: Style
+    text_only: Montrer seulement le texte
+    edit: Éditer
+    styling_description: Personnaliser l'apparence des liens rapides
+    styling: Style
   message:
     messages: Messages
     no_messages: Pas de messages
     add_some: Allez-y et ajoutez-en.
     content: Contenu du message
     title: Message
+    add: Ajouter un message
+    text: Texte
   appearance:
     title: Apparence
     style:
-      description: Choisissez entre les deux styles, l'héritage (utilisable pour
-        les utilisateurs pré 7.0) et notre style moderne élégant.
+      description: Choisissez entre les deux styles, l'hérité(activépour les 
+        utilisateurs pré 7.0) et notre style moderne élégant.
+      title: Style du widget
+      legacy: Hérité
+      new: Nouveau
     theme:
       title: Thème
       light: Clair
@@ -224,15 +251,24 @@ sections:
       auto: Auto
       description: Changer le thème des widgets Mue et des modals
     navbar:
-      refresh_options: {}
+      refresh_options:
+        none: Aucun
       notes: Remarques
-      refresh: Rafraîchir
-      refresh_subtitle: Choisissez ce qui est rafraîchi lorsque vous cliquez sur
-        le bouton rafraîchir
-      additional: Modifier le style navbar et quels boutons vous voulez afficher
+      refresh: Actualiser
+      refresh_subtitle: Choisissez ce qui est actualisé lorsque vous cliquez sur
+        le bouton actualiser
+      additional: Modifier le style de la barre de navigation et quels boutons 
+        vous voulez afficher
+      title: Barre de navigation
+      widgets: Widgets de la barre de navigation
+      hover: Afficher seulement lors du survol
+      apps_subtitle: Créez un raccourci vers vos autres sites web couramment 
+        utilisés.
     font:
       weight: {}
       style: {}
+      title: Police
+      custom: Police personnalisée
     accessibility:
       title: Accessibilité
       text_shadow: {}
