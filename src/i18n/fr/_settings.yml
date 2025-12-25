@@ -270,6 +270,7 @@ sections:
       style: {}
       title: Police
       custom: Police personnalisée
+      description: Changer la police utilisée dans Mue
     accessibility:
       title: Accessibilité
       text_shadow: {}
