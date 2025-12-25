@@ -222,10 +222,13 @@ sections:
       light: Clair
       dark: Sombre
       auto: Auto
+      description: Changer le thème des widgets Mue et des modals
     navbar:
       refresh_options: {}
       notes: Remarques
       refresh: Rafraîchir
+      refresh_subtitle: Choisissez ce qui est rafraîchi lorsque vous cliquez sur
+        le bouton rafraîchir
     font:
       weight: {}
       style: {}
