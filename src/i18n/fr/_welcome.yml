@@ -8,13 +8,13 @@ sections:
       discord_description: Parler avec la communauté de Mue et aux développeurs
       discord_join: Rejoindre
       github_title: Contribuez sur GitHub
-      github_description: Signaler un bug, ajoutez une fonctionnalité ou faire 
+      github_description: Signaler un bug, ajouter une fonctionnalité ou faire 
         un don
-      github_open: ouvert
+      github_open: Ouvert
   language:
     title: Choisissez votre langue
-    description: Mue peut afficher les langues répertoriées ci-dessous. Vous 
-      pouvez également ajouter de nouvelles traductions sur notre
+    description: Mue peut être affiché dans les langues répertoriées ci-dessous.
+      Vous pouvez également ajouter de nouvelles traductions sur notre
   theme:
     title: Sélectionnez un thème
     description: Mue est disponible en thème clair et sombre, ou peut être 
@@ -25,7 +25,7 @@ sections:
   style:
     title: Choisir un style
     description: Mue propose actuellement le choix entre le style traditionnel 
-      et le style moderne récemment lancé.
+      et le nouveau style moderne.
     legacy: Traditionnel
     modern: Moderne
   settings:
