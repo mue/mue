@@ -229,6 +229,7 @@ sections:
       refresh: Rafraîchir
       refresh_subtitle: Choisissez ce qui est rafraîchi lorsque vous cliquez sur
         le bouton rafraîchir
+      additional: Modifier le style navbar et quels boutons vous voulez afficher
     font:
       weight: {}
       style: {}
