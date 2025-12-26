@@ -6,8 +6,8 @@
         "check_updates": "Vérifier les mises à jour",
         "create": {
           "moved_button": "Bientôt disponible....",
-          "moved_description": "Suite à la mise à jour 7.1, la création d'add-ons a maintenant été déplacée vers l'interface web",
-          "moved_title": "La création d'add-on a été déplacée !",
+          "moved_description": "A la suite de la mise à jour 7.1, la création d'add-ons a maintenant été déplacée vers l'interface web",
+          "moved_title": "La création d'add-on a été déplacée  !",
           "title": "Créer"
         },
         "empty": {
@@ -16,7 +16,7 @@
         },
         "no_updates": "Aucune mise à jour disponible",
         "sideload": {
-          "description": "Installer un add-on Mue qui n'est pas sur le marché depuis votre ordinateur",
+          "description": "Installez un addon Mue qui n'est pas sur le marché depuis votre ordinateur",
           "errors": {
             "invalid_photos": "Objet photos invalide",
             "invalid_quotes": "Objet citations invalide",
@@ -46,7 +46,7 @@
       "file_upload_error": "Le fichier dépasse 2 Mo",
       "loading": "Chargement...",
       "marketplace": {
-        "add_all": "Tout ajouter à Mue",
+        "add_all": "Ajouter tout à Mue",
         "all": "Tout",
         "by": "par {author}",
         "cant_find": "Vous ne trouvez pas ce que vous cherchez ?",
@@ -54,8 +54,8 @@
         "collections": "Collections",
         "explore_collection": "Explorer la collection",
         "installing": "Installation",
-        "knowledgebase_one": "Visitez la",
-        "knowledgebase_three": "pour créer la vôtre.",
+        "knowledgebase_one": "Visiter le",
+        "knowledgebase_three": "pour créer le vôtre.",
         "knowledgebase_two": "base de connaissances",
         "learn_more": "En savoir plus",
         "no_items": "Aucun élément dans cette catégorie",
@@ -168,10 +168,10 @@
               "title": "AVERTISSEMENT"
             },
             "tab_name": "Nom de l'onglet",
-            "tab_name_subtitle": "Changer le nom de l'onglet qui apparaît dans votre navigateur",
+            "tab_name_subtitle": "Modifier le nom de l'onglet qui apparaît dans votre navigateur",
             "timezone": {
               "automatic": "Automatique",
-              "subtitle": "Choisissez un fuseau horaire dans la liste au lieu du défaut automatique de votre ordinateur",
+              "subtitle": "Choisissez un fuseau horaire dans la liste au lieu de la valeur par défaut automatique de votre ordinateur",
               "title": "Fuseau horaire"
             },
             "title": "Avancé"
@@ -179,7 +179,7 @@
           "appearance": {
             "accessibility": {
               "animations": "Animations",
-              "description": "Rendre Mue confortable et accessible",
+              "description": "Paramètres d'accessibilité pour Mue",
               "milliseconds": "millisecondes",
               "text_shadow": {
                 "new": "Nouveau",
@@ -224,20 +224,20 @@
                 "none": "Aucun",
                 "page": "Page"
               },
-              "refresh_subtitle": "Choisir ce qui est rafraîchi lorsque vous cliquez sur le bouton de rafraîchissement",
+              "refresh_subtitle": "Choisissez ce qui est actualisé lorsque vous cliquez sur le bouton d'actualisation",
               "title": "Barre de navigation",
               "widgets": "Widgets de la barre de navigation"
             },
             "style": {
-              "description": "Choisissez entre les deux styles, legacy (activé pour les utilisateurs antérieurs à la version 7.0) et notre style moderne et élégant.",
-              "legacy": "Hérité",
+              "description": "Choisissez entre les deux styles, hérité (activé pour les utilisateurs antérieurs à la version 7.0) et notre style moderne et élégant.",
+              "legacy": "Héritage",
               "new": "Nouveau",
               "title": "Style du widget"
             },
             "theme": {
               "auto": "Auto",
               "dark": "Sombre",
-              "description": "Changer le thème des widgets et des modals Mue",
+              "description": "Changer le thème des widgets et modaux Mue",
               "light": "Clair",
               "title": "Thème"
             },
@@ -534,7 +534,7 @@
     },
     "share": {
       "copy_link": "Copier le lien",
-      "email": "Email"
+      "email": "E-mail"
     },
     "update": {
       "error": {
@@ -575,7 +575,7 @@
             "discord_title": "Rejoignez notre Discord",
             "github_description": "Signalez des bugs, ajoutez des fonctionnalités ou faites un don",
             "github_open": "Ouvrir",
-            "github_title": "Contribuez sur GitHub"
+            "github_title": "Contribuer sur GitHub"
           },
           "title": "Bienvenue sur Mue Tab"
         },
@@ -599,7 +599,7 @@
           "title": "Importer les paramètres"
         },
         "style": {
-          "description": "Mue offre actuellement le choix entre le style legacy et le nouveau style moderne.",
+          "description": "Mue offre actuellement le choix entre le style hérité et le nouveau style moderne.",
           "legacy": "Héritage",
           "modern": "Moderne",
           "title": "Choisissez un style"
