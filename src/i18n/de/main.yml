@@ -60,6 +60,7 @@ widgets:
       pin: Pinn
       add: Hinzufügen
       no_todos: Keine Todos
+      title: Aufgabe
     apps:
       title: Apps
       no_apps: Keine App-Links gefunden
@@ -70,7 +71,7 @@ modals:
     file_upload_error: Datei ist größer als 2MB
     navbar:
       settings: Einstellungen
-      addons: Meine Addons
+      addons: Bibliothek
       marketplace: Erkunden
     error_boundary:
       title: Fehler
@@ -80,7 +81,8 @@ modals:
       refresh: Neuladen
   update:
     offline:
-      description: Update-Protokolle können im Offline-Modus nicht abgerufen werden
+      description: Update-Protokolle können im Offline-Modus nicht abgerufen 
+        werden
       title: Offline
     error:
       title: Fehler
@@ -100,3 +102,4 @@ toasts:
   imported: Erfolgreich importiert
   no_storage: Nicht genügend Speicherplatz
   link_copied: Link kopiert
+  stats_reset: Statistiken zurücksetzen
