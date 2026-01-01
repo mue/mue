@@ -273,8 +273,14 @@ sections:
         semi_bold: Semi-gras
         bold: Gras
         extra_bold: Extra-gras
+        light: Clair
+        normal: Normal
+        medium: Medium
       style:
         title: Style de police
+        normal: Normal
+        italic: Italic
+        oblique: Oblique
       title: Police
       custom: Police personnalisée
       description: Changer la police utilisée dans Mue
@@ -290,6 +296,7 @@ sections:
       toast_duration: Durée du toast
       milliseconds: millisecondes
       description: Rendre Mue confortable et accessible
+      animations: Animations
   order:
     title: Ordre des widgets
   advanced:
@@ -338,6 +345,7 @@ sections:
     achievement_unlocked: 'Succès débloqué : {name}'
     unlocked: '{count} débloqué'
     locked: Verrouillé
+    title: Stats
   experimental:
     title: Expérimental
     warning: Ces paramètres n'ont pas été entièrement testés/implémentés et 
@@ -359,6 +367,7 @@ sections:
       error:
         title: Échec de l'obtention des informations de mise à jour
         description: Une erreur est survenue
+      title: Version
     contact_us: Nous contacter
     support_mue: Soutenir Mue
     resources_used:
