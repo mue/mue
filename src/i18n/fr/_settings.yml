@@ -317,10 +317,16 @@ sections:
     timezone:
       title: Fuseau horaire
       automatic: Automatique
+      subtitle: Choisissez un fuseau horaire dans la liste au lieu du défaut 
+        automatique de votre ordinateur
     experimental_warning: Veuillez noter que l'équipe Mue ne peut pas fournir 
       d'assistance si vous avez activé le mode expérimental. Veuillez d'abord le
       désactiver et voir si le problème persiste avant de contacter le support.
-    preview_data_disabled: {}
+    preview_data_disabled:
+      title: Paramètres de données désactivés
+      description: Les paramètres de données sont désactivés en mode 
+        prévisualisation. Veuillez quitter le mode de prévisualisation pour 
+        utiliser cette fonctionnalité.
     offline_subtitle: Lorsque activé, toutes les demandes de services en ligne 
       seront désactivées.
     data_description: Choisissez si vous souhaitez exporter vos Paramètres Mue 
@@ -328,6 +334,8 @@ sections:
       réinitialiser vos paramètres à leurs valeurs par défaut
     custom_css_subtitle: Personnalisez le style de Mue avec des feuilles de 
       style en cascade (CSS).
+    tab_name_subtitle: Changer le nom de l'onglet qui apparaît dans votre 
+      navigateur
   stats:
     sections:
       tabs_opened: Onglets ouverts
@@ -381,6 +389,7 @@ sections:
     support_donate: Faire un don
     no_supporters: Il n'y a actuellement aucun supporter de Mue
     curators: Créateurs d'add-ons
+    form_button: Formulaire
 buttons:
   reset: Réinitialiser
   import: Importer
