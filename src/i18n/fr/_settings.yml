@@ -266,17 +266,30 @@ sections:
       apps_subtitle: Créez un raccourci vers vos autres sites web couramment 
         utilisés.
     font:
-      weight: {}
-      style: {}
+      weight:
+        title: Épaisseur de police
+        thin: Finnesse
+        extra_light: Extra lumineux
+        semi_bold: Semi-gras
+        bold: Gras
+        extra_bold: Extra-gras
+      style:
+        title: Style de police
       title: Police
       custom: Police personnalisée
       description: Changer la police utilisée dans Mue
+      google: Importer depuis Google Fonts
     accessibility:
       title: Accessibilité
-      text_shadow: {}
+      text_shadow:
+        title: Ombre du texte des widgets
+        new: Nouveau
+        old: Ancien
+        none: Aucun
       widget_zoom: Zoom du widget
       toast_duration: Durée du toast
       milliseconds: millisecondes
+      description: Rendre Mue confortable et accessible
   order:
     title: Ordre des widgets
   advanced:
@@ -294,21 +307,48 @@ sections:
     custom_css: CSS personnalisé
     custom_js: JS personnalisé
     tab_name: Nom de l'onglet
-    timezone: {}
+    timezone:
+      title: Fuseau horaire
+      automatic: Automatique
     experimental_warning: Veuillez noter que l'équipe Mue ne peut pas fournir 
       d'assistance si vous avez activé le mode expérimental. Veuillez d'abord le
       désactiver et voir si le problème persiste avant de contacter le support.
     preview_data_disabled: {}
+    offline_subtitle: Lorsque activé, toutes les demandes de services en ligne 
+      seront désactivées.
+    data_description: Choisissez si vous souhaitez exporter vos Paramètres Mue 
+      sur votre ordinateur, importer un fichier de paramètres existant ou 
+      réinitialiser vos paramètres à leurs valeurs par défaut
+    custom_css_subtitle: Personnalisez le style de Mue avec des feuilles de 
+      style en cascade (CSS).
   stats:
-    sections: {}
-    clear_modal: {}
+    sections:
+      tabs_opened: Onglets ouverts
+      backgrounds_favourited: Fonds d'écran ajoutés aux favoris
+      backgrounds_downloaded: Fonds d'écran téléchargés
+      quotes_favourited: Citations ajoutées aux favoris
+      quicklinks_added: Liens rapides ajoutés
+      settings_changed: Paramètres modifiés
+      addons_installed: Add-ons installés
+    clear_modal:
+      question: Voulez-vous effacer vos statistiques ?
+      information: Cela effacera tous les succès et statistiques d'utilisation.
+    usage: Statistiques d'utilisation
+    achievements: Succès
+    achievement_unlocked: 'Succès débloqué : {name}'
+    unlocked: '{count} débloqué'
+    locked: Verrouillé
   experimental:
     title: Expérimental
+    warning: Ces paramètres n'ont pas été entièrement testés/implémentés et 
+      peuvent ne pas fonctionner correctement !
+    developer: Développeur
   language:
     title: Langue
     quote: Citation langue
   changelog:
     title: Journal des modifications
+    by: Par {author}
   about:
     title: à propos de
     version:
@@ -316,7 +356,9 @@ sections:
       update_available: Mise à jour disponible
       no_update: Pas de mise a jour disponible
       offline_mode: Impossible de vérifier la mise à jour en mode hors ligne
-      error: {}
+      error:
+        title: Échec de l'obtention des informations de mise à jour
+        description: Une erreur est survenue
     contact_us: Nous contacter
     support_mue: Soutenir Mue
     resources_used:
@@ -325,6 +367,11 @@ sections:
     contributors: Collaborateurs
     supporters: Partisans
     photographers: Photographes
+    support_subtitle: Comme Mue est entièrement gratuit, nous comptons sur les 
+      dons pour couvrir les factures du serveur et financer le développement
+    support_donate: Faire un don
+    no_supporters: Il n'y a actuellement aucun supporter de Mue
+    curators: Créateurs d'add-ons
 buttons:
   reset: Réinitialiser
   import: Importer
