@@ -70,6 +70,50 @@ const prepareBuilds = () => ({
         { recursive: true },
       );
 
+      // safari
+      const safariResourcesPath = path.resolve(__dirname, './safari/Mue Extension/Resources');
+      fs.mkdirSync(safariResourcesPath, { recursive: true });
+      
+      // Copy manifest (already exists in Resources, but ensure it's updated)
+      // The manifest.json is managed separately for Safari
+      
+      // Copy background.js
+      fs.copyFileSync(
+        path.resolve(__dirname, './manifest/background.js'),
+        path.resolve(safariResourcesPath, 'background.js'),
+      );
+      
+      // Copy built files from dist
+      fs.cpSync(path.resolve(__dirname, './dist'), safariResourcesPath, {
+        recursive: true,
+        filter: (src) => {
+          // Don't overwrite the manifest.json we've already set up
+          return !src.endsWith('manifest.json');
+        },
+      });
+      
+      // Copy icons
+      fs.cpSync(
+        path.resolve(__dirname, './src/assets/icons'),
+        path.resolve(safariResourcesPath, 'icons'),
+        { recursive: true },
+      );
+      
+      // Copy src/assets
+      fs.mkdirSync(path.resolve(safariResourcesPath, 'src/assets'), { recursive: true });
+      fs.cpSync(
+        path.resolve(__dirname, './src/assets'),
+        path.resolve(safariResourcesPath, 'src/assets'),
+        { recursive: true },
+      );
+      
+      // Copy locales
+      fs.cpSync(
+        path.resolve(__dirname, './manifest/_locales'),
+        path.resolve(safariResourcesPath, '_locales'),
+        { recursive: true },
+      );
+
       // create zip
       const zip = new ADMZip();
       zip.addLocalFolder(path.resolve(__dirname, './build/chrome'));

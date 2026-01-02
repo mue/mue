@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "offline_enabled": true,
+  "default_locale": "en",
+  "name": "__MSG_name__",
+  "description": "__MSG_description__",
+  "version": "7.1.2",
+  "homepage_url": "https://muetab.com",
+  "permissions": ["search"],
+  "action": {
+    "default_icon": "icons/128x128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "icons": {
+    "16": "icons/16x16.png",
+    "48": "icons/48x48.png",
+    "128": "icons/128x128.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module",
+    "persistent": false
+  }
+}
