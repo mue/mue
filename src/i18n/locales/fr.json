@@ -615,7 +615,7 @@
   },
   "tabname": "Nouvel onglet",
   "toasts": {
-    "error": "Une erreur est survenue",
+    "error": "Quelque chose s'est mal passé",
     "imported": "Importé avec succès",
     "installed": "Installé avec succès",
     "link_copied": "Lien copié",
