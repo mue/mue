@@ -7,9 +7,6 @@
   "version": "7.1.2",
   "homepage_url": "https://muetab.com",
   "permissions": ["search"],
-  "action": {
-    "default_icon": "icons/128x128.png"
-  },
   "chrome_url_overrides": {
     "newtab": "index.html"
   },

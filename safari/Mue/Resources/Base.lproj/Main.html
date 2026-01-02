@@ -2,18 +2,30 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Style.css">
     <script src="../Script.js" defer></script>
 </head>
 <body>
-    <img src="../Icon.png" width="128" height="128" alt="Mue Icon">
-    <p class="state-unknown">You can turn on Mue’s extension in Safari Extensions preferences.</p>
-    <p class="state-on">Mue’s extension is currently on. You can turn it off in Safari Extensions preferences.</p>
-    <p class="state-off">Mue’s extension is currently off. You can turn it on in Safari Extensions preferences.</p>
-    <button class="open-preferences">Quit and Open Safari Extensions Preferences…</button>
+    <div class="gradient-bg"></div>
+    <div class="content">
+        <img src="../Icon.png" width="128" height="128" alt="Mue Icon">
+        <h1 class="title">Mue</h1>
+        <p class="subtitle">Fast, open and free-to-use new tab page</p>
+        
+        <div class="status-container">
+            <p class="state-unknown">Enable Mue in Safari Extensions preferences to get started.</p>
+            <p class="state-on">✓ Extension is enabled and ready to use!</p>
+            <p class="state-off">Extension is disabled. Enable it in Safari Extensions preferences.</p>
+        </div>
+        
+        <button class="open-preferences">Open Safari Extensions Preferences</button>
+    </div>
 </body>
 </html>

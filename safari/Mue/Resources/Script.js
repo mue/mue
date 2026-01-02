@@ -1,9 +1,9 @@
 function show(enabled, useSettingsInsteadOfPreferences) {
     if (useSettingsInsteadOfPreferences) {
-        document.getElementsByClassName('state-on')[0].innerText = "Mue’s extension is currently on. You can turn it off in the Extensions section of Safari Settings.";
-        document.getElementsByClassName('state-off')[0].innerText = "Mue’s extension is currently off. You can turn it on in the Extensions section of Safari Settings.";
-        document.getElementsByClassName('state-unknown')[0].innerText = "You can turn on Mue’s extension in the Extensions section of Safari Settings.";
-        document.getElementsByClassName('open-preferences')[0].innerText = "Quit and Open Safari Settings…";
+        document.getElementsByClassName('state-on')[0].innerText = "Extension is enabled and ready to use!";
+        document.getElementsByClassName('state-off')[0].innerText = "Extension is disabled. Enable it in Safari Settings.";
+        document.getElementsByClassName('state-unknown')[0].innerText = "Enable Mue in Safari Settings to get started.";
+        document.getElementsByClassName('open-preferences')[0].innerText = "Open Safari Settings";
     }
 
     if (typeof enabled === "boolean") {
