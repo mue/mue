@@ -5,31 +5,18 @@ import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 import { SideloadFailedModal } from '../components/Elements/SideloadFailedModal/SideloadFailedModal';
-import ItemPage from './ItemPage';
 import Items from '../components/Items/Items';
 import { Dropdown, FileUpload } from 'components/Form/Settings';
 import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
-import InstallButton from '../components/Elements/InstallButton';
 
-import { install, uninstall, urlParser } from 'utils/marketplace';
+import { install, uninstall } from 'utils/marketplace';
 import { updateHash } from 'utils/deepLinking';
 
 const Added = memo(() => {
   const [installed, setInstalled] = useState(JSON.parse(localStorage.getItem('installed')));
-  const [item, setItem] = useState({});
   const [showFailed, setShowFailed] = useState(false);
   const [failedReason, setFailedReason] = useState('');
-
-  const uninstallItem = useCallback(() => {
-    uninstall(item.type, item.display_name);
-    toast(variables.getMessage('toasts.uninstalled'));
-
-    setItem({});
-    setInstalled(JSON.parse(localStorage.getItem('installed')));
-
-    variables.stats.postEvent('marketplace', 'Uninstall');
-  }, [item.type, item.display_name]);
 
   const installAddon = useCallback((input) => {
     let failedReasonText = '';
@@ -83,22 +70,15 @@ const Added = memo(() => {
 
   const toggle = useCallback((type, data) => {
     if (type === 'item') {
-      const installedItems = JSON.parse(localStorage.getItem('installed'));
-      const info = { data: installedItems.find((i) => i.name === data.name) };
-
-      setItem({
-        type: info.data.type,
-        display_name: info.data.name,
-        author: info.data.author,
-        description: urlParser(info.data.description.replace(/\n/g, '<br>')),
-        version: info.data.version,
-        icon: info.data.screenshot_url,
-        data: info.data,
-      });
+      // Navigate to discover tab with the item
+      const itemId = data.name;
+      updateHash(`#discover/all?item=${itemId}`);
+      
+      // Trigger navigation
+      const event = new window.Event('popstate');
+      window.dispatchEvent(event);
       
       variables.stats.postEvent('marketplace', 'ItemPage viewed');
-    } else {
-      setItem({});
     }
   }, []);
 
@@ -173,14 +153,6 @@ const Added = memo(() => {
     sortAddons(localStorage.getItem('sortAddons'), false);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const button = item.display_name ? (
-    <InstallButton
-      onClick={uninstallItem}
-      isInstalled={true}
-      label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-    />
-  ) : '';
-
   const sideLoadBackendElements = () => (
     <>
       <Modal
@@ -237,17 +209,6 @@ const Added = memo(() => {
           </div>
         </div>
       </>
-    );
-  }
-
-  if (item.display_name) {
-    return (
-      <ItemPage
-        data={item}
-        button={button}
-        addons={true}
-        toggleFunction={() => toggle()}
-      />
     );
   }
 

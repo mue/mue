@@ -26,6 +26,7 @@ function MainModal({ modalClose, deepLinkData }) {
   const [productView, setProductView] = useState(null);
   const [resetDiscoverToAll, setResetDiscoverToAll] = useState(false);
   const [navigationTrigger, setNavigationTrigger] = useState(null);
+  const [iframeBreadcrumbs, setIframeBreadcrumbs] = useState([]);
 
   // Clear product view when changing tabs
   useEffect(() => {
@@ -172,6 +173,7 @@ function MainModal({ modalClose, deepLinkData }) {
         currentTab={currentTab}
         currentSection={currentSection}
         productView={productView}
+        iframeBreadcrumbs={iframeBreadcrumbs}
         onTabChange={handleChangeTab}
         onClose={modalClose}
         onBack={handleBack}
@@ -187,6 +189,7 @@ function MainModal({ modalClose, deepLinkData }) {
           currentTab={currentTab}
           onSectionChange={handleSectionChange}
           onProductView={handleProductView}
+          onBreadcrumbsChange={setIframeBreadcrumbs}
           resetToAll={resetDiscoverToAll}
           onResetToAll={handleResetDiscoverToAll}
           navigationTrigger={navigationTrigger}

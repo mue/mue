@@ -20,6 +20,7 @@ function ModalTopBar({
   currentTab,
   currentSection,
   productView,
+  iframeBreadcrumbs,
   onTabChange,
   onClose,
   onBack,
@@ -34,7 +35,7 @@ function ModalTopBar({
     : '';
 
   // Determine breadcrumb path with click handlers
-  const breadcrumbPath = [];
+  let breadcrumbPath = [];
 
   if (currentTabLabel) {
     breadcrumbPath.push({
@@ -42,7 +43,26 @@ function ModalTopBar({
       onClick: productView ? productView.onBackToAll : null, // Clickable if viewing a product
     });
 
-    if (productView) {
+    // Check if we have iframe breadcrumbs (from Discover iframe)
+    // If so, only use the last item (the item name) and keep our section
+    if (iframeBreadcrumbs && iframeBreadcrumbs.length > 0) {
+      // Get the last breadcrumb item (the item name)
+      const lastCrumb = iframeBreadcrumbs[iframeBreadcrumbs.length - 1];
+
+      // Add current section if available
+      if (currentSection) {
+        breadcrumbPath.push({
+          label: currentSection,
+          onClick: () => onBack(), // Clickable to go back
+        });
+      }
+
+      // Add the item name from iframe
+      breadcrumbPath.push({
+        label: lastCrumb.label,
+        onClick: null, // Current item - not clickable
+      });
+    } else if (productView) {
       console.log('ModalTopBar productView:', productView);
       console.log('fromCollection:', productView.fromCollection, 'isCollection:', productView.isCollection, 'collectionTitle:', productView.collectionTitle);
 

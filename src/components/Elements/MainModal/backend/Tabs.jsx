@@ -47,8 +47,8 @@ const Tabs = ({ children, navbar = false, currentTab: activeTab, onSectionChange
     setShowReminder(false);
   };
 
-  // Only show sidebar for Settings tab
-  const showSidebar = activeTab === TAB_TYPES.SETTINGS;
+  // Show sidebar for Settings and Discover tabs
+  const showSidebar = activeTab === TAB_TYPES.SETTINGS || activeTab === TAB_TYPES.DISCOVER;
 
   return (
     <div style={{ display: 'flex', width: '100%', minHeight: '100%' }}>

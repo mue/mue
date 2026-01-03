@@ -3,7 +3,6 @@ import { memo } from 'react';
 import Tabs from 'components/Elements/MainModal/backend/Tabs';
 
 import Added from '../../marketplace/views/Added';
-import Create from '../../marketplace/views/Create';
 
 function Library(props) {
   return (
@@ -17,7 +16,6 @@ function Library(props) {
         <Added />
       </div>
       <div label={variables.getMessage('modals.main.addons.create.title')} name="create">
-        <Create />
       </div>
     </Tabs>
   );
