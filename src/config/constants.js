@@ -24,6 +24,5 @@ export const REPO_NAME = 'mue';
 export const EMAIL = 'hello@muetab.com';
 export const TWITTER_HANDLE = 'getmue';
 export const DISCORD_SERVER = 'zv8C9F8';
-export const OPENCOLLECTIVE_USERNAME = 'mue';
 
 export const VERSION = '7.1.2';

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { FaDiscord } from 'react-icons/fa';
-import { SiGithubsponsors, SiOpencollective, SiX } from 'react-icons/si';
+import { SiGithubsponsors, SiX } from 'react-icons/si';
 
 function QuicklinksSkeleton() {
   return (
@@ -14,9 +14,6 @@ function QuicklinksSkeleton() {
         </div>
         <div>
           <SiGithubsponsors />
-        </div>
-        <div>
-          <SiOpencollective />
         </div>
       </div>
     </div>

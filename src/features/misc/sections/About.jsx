@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdEmail, MdContactPage } from 'react-icons/md';
 import { FaDiscord } from 'react-icons/fa';
-import { SiGithubsponsors, SiOpencollective, SiX } from 'react-icons/si';
+import { SiGithubsponsors, SiX } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
 import { Tooltip, Button } from 'components/Elements';
@@ -142,7 +142,7 @@ class About extends PureComponent {
               alt="Logo"
             />
             <div className="aboutText">
-              <span className="title">Mue, by Kaiso</span>
+              <span className="title">Mue</span>
               <span className="subtitle">
                 {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
                 {variables.constants.VERSION}
@@ -166,19 +166,6 @@ class About extends PureComponent {
                   rel="noopener noreferrer"
                 >
                   The Mue Authors
-                </a>
-              </span>
-              <br></br>
-              <span className="subtitle">
-                Copyright 2023-2024{' '}
-                <a
-                  className="link"
-                  href="https://kaiso.one"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {' '}
-                  Kaiso One Ltd
                 </a>
               </span>
             </div>
@@ -236,7 +223,7 @@ class About extends PureComponent {
           <div className="aboutContact">
             <Button
               type="linkButton"
-              href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
+              href={'https://github.com/sponsors/' + variables.constants.ORG_NAME}
               icon={<BiDonateHeart />}
               label={variables.getMessage('modals.main.settings.sections.about.support_donate')}
             />
@@ -245,12 +232,6 @@ class About extends PureComponent {
               href={'https://github.com/sponsors/' + variables.constants.ORG_NAME}
               icon={<SiGithubsponsors />}
               tooltipTitle="Github Sponsors"
-            />
-            <Button
-              type="linkIconButton"
-              href={'https://opencollective.com/' + variables.constants.OPENCOLLECTIVE_USERNAME}
-              icon={<SiOpencollective />}
-              tooltipTitle="Open Collective"
             />
           </div>
         </div>
