@@ -49,8 +49,8 @@ function ModalTopBar({
       // Get the last breadcrumb item (the item name)
       const lastCrumb = iframeBreadcrumbs[iframeBreadcrumbs.length - 1];
 
-      // Add current section if available
-      if (currentSection) {
+      // Add current section if available and different from the last crumb
+      if (currentSection && currentSection !== lastCrumb.label) {
         breadcrumbPath.push({
           label: currentSection,
           onClick: () => onBack(), // Clickable to go back

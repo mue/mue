@@ -2,17 +2,30 @@ import variables from 'config/variables';
 import { MARKETPLACE_URL } from 'config/constants';
 import { memo, useEffect, useRef, useState } from 'react';
 import { MdOutlineWifiOff } from 'react-icons/md';
+import Modal from 'react-modal';
 import Tabs from 'components/Elements/MainModal/backend/Tabs';
 import { useMarketplaceInstall } from 'features/marketplace/components/hooks/useMarketplaceInstall';
+import Lightbox from 'features/marketplace/components/Elements/Lightbox/Lightbox';
 
 function DiscoverContent({ category, onBreadcrumbsChange }) {
   const iframeRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showLightbox, setShowLightbox] = useState(false);
+  const [lightboxImg, setLightboxImg] = useState(null);
   const { installItem, uninstallItem } = useMarketplaceInstall();
 
   // Check for offline mode
   const offlineMode = localStorage.getItem('offlineMode') === 'true';
   const isOffline = navigator.onLine === false || offlineMode;
+
+  // Clear breadcrumbs when component unmounts (navigating away from discover)
+  useEffect(() => {
+    return () => {
+      if (onBreadcrumbsChange) {
+        onBreadcrumbsChange([]);
+      }
+    };
+  }, [onBreadcrumbsChange]);
 
   useEffect(() => {
     // Show loader when category changes
@@ -84,7 +97,8 @@ function DiscoverContent({ category, onBreadcrumbsChange }) {
     // Listen for postMessage events from the iframe
     const handleMessage = (event) => {
       // Verify the origin if needed
-      if (event.origin !== MARKETPLACE_URL) {
+      const marketplaceOrigin = new URL(MARKETPLACE_URL).origin;
+      if (event.origin !== marketplaceOrigin) {
         return;
       }
 
@@ -109,7 +123,7 @@ function DiscoverContent({ category, onBreadcrumbsChange }) {
 
         case 'marketplace:item:uninstall':
           if (payload?.item) {
-            uninstallItem(payload.item.type, payload.item.display_name || payload.item.name);
+            uninstallItem(payload.item.type, payload.item.name || payload.item.display_name);
             // Send confirmation back to iframe
             if (iframeRef.current?.contentWindow) {
               iframeRef.current.contentWindow.postMessage(
@@ -148,6 +162,13 @@ function DiscoverContent({ category, onBreadcrumbsChange }) {
           }
           break;
 
+        case 'marketplace:lightbox':
+          if (payload?.photo) {
+            setLightboxImg(payload.photo.url);
+            setShowLightbox(true);
+          }
+          break;
+
         default:
           break;
       }
@@ -181,10 +202,23 @@ function DiscoverContent({ category, onBreadcrumbsChange }) {
 
   return (
     <div style={{ position: 'relative', width: '100%', minHeight: '100vh' }}>
+      <Modal
+        closeTimeoutMS={300}
+        onRequestClose={() => setShowLightbox(false)}
+        isOpen={showLightbox}
+        className="Modal lightBoxModal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+      >
+        <Lightbox
+          modalClose={() => setShowLightbox(false)}
+          img={lightboxImg}
+        />
+      </Modal>
       {isLoading && (
         <div className="loaderHolder" style={{
           position: 'absolute',
-          top: '50%',
+          top: '20%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           zIndex: 10
@@ -200,12 +234,11 @@ function DiscoverContent({ category, onBreadcrumbsChange }) {
         scrolling="no"
         style={{
           width: '100%',
-          height: '2000px',
+          height: '1500px',
           minHeight: '100vh',
           border: 'none',
           opacity: isLoading ? 0 : 1,
           transition: 'opacity 0.2s ease-in-out',
-          overflow: 'hidden',
         }}
         title="Marketplace"
       />

@@ -227,12 +227,6 @@ class About extends PureComponent {
               icon={<BiDonateHeart />}
               label={variables.getMessage('modals.main.settings.sections.about.support_donate')}
             />
-            <Button
-              type="linkIconButton"
-              href={'https://github.com/sponsors/' + variables.constants.ORG_NAME}
-              icon={<SiGithubsponsors />}
-              tooltipTitle="Github Sponsors"
-            />
           </div>
         </div>
 
