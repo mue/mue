@@ -1,1 +1,103 @@
-tabname: New Tab
+tabname: برگه جدید
+modals:
+  main:
+    navbar:
+      addons: کتابخانه
+      marketplace: پی بردن
+      settings: تنظیمات
+    error_boundary:
+      title: خطا
+      message: بارگیری این مؤلفه از Mue ناموفق بود
+      report_error: ارسال گزارش خطا
+      sent: ارسال شد!
+      refresh: نوسازی
+    title: گزینه‌ها
+    loading: در حال بارگذاری...
+    file_upload_error: فایل بیش از ۲ مگابایت است
+  update:
+    title: بروزرسانی
+    offline:
+      title: برون‌خط
+      description: نمی‌توان گزارش‌های بروزرسانی را در حالت برون‌خط دریافت کرد
+    error:
+      title: خطا
+      description: نمی‌توان به سرور وصل شد
+  share:
+    copy_link: کپی کردن لینک
+    email: ایمیل
+toasts:
+  quote: نقل قول کپی شد
+  notes: یادداشت‌ها کپی شدند
+  reset: با موفقیت تنظیم مجدد شد
+  installed: با موفقیت نصب شد
+  uninstalled: با موفقیت حذف شد
+  updated: با موفقیت بروز شد
+  error: مشکلی پیش آمد
+  imported: با موفقیت وارد شد
+  no_storage: فضای ذخیره‌سازی کافی نیست
+  link_copied: لینک کپی شد
+  stats_reset: آمارها بازنشانی شدند
+widgets:
+  greeting:
+    morning: صبح بخیر
+    afternoon: عصر بخیر
+    evening: عصر بخیر
+    christmas: کریسمس مبارک
+    newyear: سال نو مبارک
+    halloween: هالووین مبارک
+    birthday: تولد مبارک
+  background:
+    credit: عکس توسط
+    unsplash: در آن‌اسپلش
+    information: اطلاعات
+    download: دانلود
+    downloads: دانلودها
+    views: چشم‌اندارها
+    likes: دوست‌داشتن‌ها
+    location: موقعیت
+    camera: دوربین
+    resolution: وضوح تصویر
+    source: منبع
+    category: دسته
+    exclude: دوباره نمایش داده نشود
+    exclude_confirm: |-
+      آیا مطمئنید که نمی‌خواهید دوباره این تصویر را ببینید؟
+      توجه: اگر تصاویر "{دسته}" را دوست ندارید، می‌توانید در تنظیمات منبع پس‌زمینه، دسته را از حالت انتخاب خارج کنید.
+    confirm: تأیید
+  search: جستجو
+  quicklinks:
+    new: لینک جدید
+    edit: ویرایش لینک
+    name: نام
+    url: آدرس اینترنتی
+    icon: آیکون (اختیاری)
+    add: اضافه کردن
+    name_error: ارائه نام الزامی است
+    url_error: آدرس اینترنتی باید ارائه شود
+  date:
+    week: هفته
+  weather:
+    not_found: پیدا نشد
+    meters: '{مقدار} متر'
+    extra_information: اطلاعات اضافی
+    feels_like: '{مقدار} احساس می‌شود'
+  quote:
+    link_tooltip: باز کردن در ویکی پدیا
+    share: اشتراک‌گذاری
+    copy: کپی
+    favourite: مورد علاقه
+    unfavourite: نامطلوب
+  navbar:
+    tooltips:
+      refresh: نوسازی
+    notes:
+      title: یادداشت‌ها
+      placeholder: اینجا تایپ کنید
+    todo:
+      title: انجام دادنی‌ها
+      pin: سنجاق
+      add: اضافه کردن
+      no_todos: بدون کارهای اجام دادنی
+    apps:
+      title: برنامه‌ها
+      no_apps: لینک برنامه پیدا نشد
