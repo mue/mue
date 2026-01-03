@@ -33,7 +33,7 @@ widgets:
     add: Ajouter
     name_error: Doit fournir le nom
     url_error: L'URL est obligatoire
-    edit: Editer le lien
+    edit: Éditer le lien
     url: URL
     icon: Icône (facultatif)
   date:
@@ -41,7 +41,7 @@ widgets:
   weather:
     not_found: Pas trouvé
     meters: "{amount} mètres"
-    extra_information: Informations en plus
+    extra_information: Information complémentaire
     feels_like: Ressenti comme {amount}
   quote:
     link_tooltip: Ouvrir sur Wikipedia
@@ -98,7 +98,7 @@ toasts:
   uninstalled: Supprimé avec succès
   error: Quelque chose s'est mal passé
   imported: Importé avec succès
-  updated: mis à jour réussit
-  no_storage: Stockage pas suffisant
+  updated: Mise à jour réussie
+  no_storage: Stockage insuffisant
   link_copied: Lien copié
   stats_reset: Statistiques réinitialisées
