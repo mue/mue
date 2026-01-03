@@ -44,7 +44,7 @@ widgets:
     extra_information: Information complémentaire
     feels_like: Ressenti comme {amount}
   quote:
-    link_tooltip: Ouvrir sur Wikipedia
+    link_tooltip: Ouvrir sur Wikipédia
     share: Partager
     copy: Copier
     favourite: Favori
@@ -101,4 +101,4 @@ toasts:
   updated: Mise à jour réussie
   no_storage: Stockage insuffisant
   link_copied: Lien copié
-  stats_reset: Statistiques réinitialisées
+  stats_reset: Réinitialisation des Statistiques
