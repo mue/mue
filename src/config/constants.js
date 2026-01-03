@@ -6,7 +6,7 @@ export const OPENSTREETMAP_URL = 'https://www.openstreetmap.org';
 
 // Mue URLs
 export const WEBSITE_URL = 'https://muetab.com';
-export const MARKETPLACE_URL = 'https://marketplace.muetab.com';
+export const MARKETPLACE_URL = 'https://muetab.com/marketplace';
 export const PRIVACY_URL = 'https://muetab.com/privacy';
 export const TRANSLATIONS_URL = 'https://muetab.com/docs/translations';
 export const WEBLATE_URL = 'https://hosted.weblate.org/projects/mue/mue-tab/';
