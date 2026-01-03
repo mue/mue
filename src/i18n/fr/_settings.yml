@@ -136,7 +136,7 @@ sections:
       api: API d'arrière-plan
       custom_background: Arrière-plan personnalisé
       custom_colour: Couleur d'arrière-plan personnalisée
-      upload: Ajouter
+      upload: Mettre en ligne
       add_colour: Ajouter une couleur
       loop_video: Boucle vidéo
       mute_video: Mettre la vidéo en sourdine
@@ -178,7 +178,7 @@ sections:
     search_engine_subtitle: Choisissez le moteur de recherche à utiliser dans la
       barre de recherche
     focus: Focus sur l'onglet ouvert
-    autocomplete: Autocomplete
+    autocomplete: Autocompleter
     autocomplete_provider: Source de l'autocompletion
     autocomplete_provider_subtitle: Moteur de recherche à utiliser pour les 
       résultats suggérés d'autocomplétion
