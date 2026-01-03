@@ -1,5 +1,21 @@
 [
   {
+    "name": "العربية",
+    "value": "ar"
+  },
+  {
+    "name": "مصرى",
+    "value": "arz"
+  },
+  {
+    "name": "Azərbaycan",
+    "value": "az"
+  },
+  {
+    "name": "تۆرکجه",
+    "value": "azb"
+  },
+  {
     "name": "Bahasa Indonesia",
     "value": "id_ID"
   },
@@ -10,6 +26,10 @@
   {
     "name": "Deutsch",
     "value": "de_DE"
+  },
+  {
+    "name": "Ελληνικά",
+    "value": "el"
   },
   {
     "name": "English (UK)",
@@ -28,12 +48,32 @@
     "value": "es_419"
   },
   {
+    "name": "Eesti",
+    "value": "et"
+  },
+  {
+    "name": "فارسی",
+    "value": "fa"
+  },
+  {
     "name": "Français",
     "value": "fr"
   },
   {
+    "name": "Magyar",
+    "value": "hu"
+  },
+  {
+    "name": "日本語",
+    "value": "ja"
+  },
+  {
     "name": "Lietuvių",
     "value": "lt"
+  },
+  {
+    "name": "Latviešu",
+    "value": "lv"
   },
   {
     "name": "Nederlands",
@@ -42,6 +82,10 @@
   {
     "name": "Norsk",
     "value": "no"
+  },
+  {
+    "name": "𐎱𐎠𐎼𐎿",
+    "value": "peo"
   },
   {
     "name": "Pусский",
@@ -56,8 +100,32 @@
     "value": "pt_BR"
   },
   {
+    "name": "Português (Portugal)",
+    "value": "pt_PT"
+  },
+  {
+    "name": "Slovenščina",
+    "value": "sl"
+  },
+  {
+    "name": "Svenska",
+    "value": "sv"
+  },
+  {
+    "name": "தமிழ்",
+    "value": "ta"
+  },
+  {
     "name": "Türkçe",
     "value": "tr_TR"
+  },
+  {
+    "name": "Українська",
+    "value": "uk"
+  },
+  {
+    "name": "Tiếng Việt",
+    "value": "vi"
   },
   {
     "name": "中文 (简体)",

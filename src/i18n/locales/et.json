@@ -1,703 +1,704 @@
 {
-  "modals": {
-    "main": {
-      "addons": {
-        "added": "Lisatud",
-        "check_updates": "Kontrolli uuendusi",
-        "create": {
-          "moved_button": "Tulemas....",
-          "moved_description": "Pärast 7.1 versiooni uuendust on lisade loomine nüüd kolinud veebi kasutajaliidesesse",
-          "moved_title": "Lisa loomine on kolinud!",
-          "title": "Loo"
-        },
-        "empty": {
-          "description": "Lisasid pole installitud",
-          "title": "Tühi"
-        },
-        "no_updates": "Uuendusi pole saadaval",
-        "sideload": {
-          "description": "Installi Mue lisa, mida pole rakenduste poes, oma arvutist",
-          "errors": {
-            "invalid_photos": "Vigane fotode objekt",
-            "invalid_quotes": "Vigane tsitaatide objekt",
-            "no_author": "Autorit pole antud",
-            "no_name": "Nime pole antud",
-            "no_type": "Tüüpi pole antud"
-          },
-          "failed": "Lisa kõrvalt laadimine ebaõnnestus",
-          "title": "Kõrvalt laadimine"
-        },
-        "sort": {
-          "a_z": "Tähestikuline (A-Z)",
-          "newest": "Installitud (uusimad)",
-          "oldest": "Installitud (vanimad)",
-          "title": "Sorteeri",
-          "z_a": "Tähestikuline (Z-A)"
-        },
-        "updates_available": "Uuendusi saadaval: {amount}"
-      },
-      "error_boundary": {
-        "message": "Mue komponendi laadimine ebaõnnestus",
-        "refresh": "Värskenda",
-        "report_error": "Saada veateade",
-        "sent": "Saadetud!",
-        "title": "Viga"
-      },
-      "file_upload_error": "Fail on üle 2MB",
-      "loading": "Laadimine...",
-      "marketplace": {
-        "add_all": "Lisa kõik Muesse",
-        "all": "Kõik",
-        "by": "autor: {author}",
-        "cant_find": "Ei leia, mida otsid?",
-        "collection": "Kollektsioon",
-        "collections": "Kollektsioonid",
-        "explore_collection": "Uuri kollektsiooni",
-        "installing": "Installimine",
-        "knowledgebase_one": "Külasta",
-        "knowledgebase_three": "oma loomiseks.",
-        "knowledgebase_two": "teadmusbaasi",
-        "learn_more": "Loe lähemalt",
-        "no_items": "Selles kategoorias pole üksusi",
-        "offline": {
-          "description": "Palun loo internetiühendus",
-          "title": "Tundub, et oled võrguühenduseta"
-        },
-        "photo_packs": "Fotokomplektid",
-        "preset_settings": "Eelseadistatud seaded",
-        "product": {
-          "buttons": {
-            "addtomue": "Lisa Muesse",
-            "back": "Tagasi",
-            "not_available_preview": "Pole eelvaates saadaval",
-            "remove": "Eemalda",
-            "report": "Teata",
-            "update_addon": "Uuenda lisa"
-          },
-          "created_by": "Loodud",
-          "description": "Kirjeldus",
-          "details": "Üksikasjad",
-          "explore": "Uuri",
-          "information": "Teave",
-          "last_updated": "Viimati uuendatud",
-          "more_from_curator": "Rohkem sarnaseid autorilt {name}",
-          "no_images": "Piltide arv",
-          "no_quotes": "Tsitaatide arv",
-          "not_in_language": "See lisa pole sinu keeles",
-          "overview": "Ülevaade",
-          "part_of": "Osa",
-          "setting": "Seade",
-          "show_all": "Näita kõiki",
-          "show_less": "Näita vähem",
-          "show_more": "Näita rohkem",
-          "showing": "Näidatakse",
-          "sideload_warning": "See lisa on kõrvalt laaditud.",
-          "third_party_api": "See lisa kasutab kolmanda osapoole API-t",
-          "updated_at": "Uuendatud",
-          "value": "Väärtus",
-          "version": "Versioon"
-        },
-        "quote_packs": "Tsitaadikomplektid"
-      },
-      "navbar": {
-        "discover": "Rakenduste pood",
-        "library": "Lisad",
-        "settings": "Seaded"
-      },
-      "settings": {
-        "additional_settings": "Lisaseaded",
-        "buttons": {
-          "export": "Ekspordi",
-          "import": "Impordi",
-          "reset": "Lähtesta"
-        },
-        "enabled": "Lubatud",
-        "open_knowledgebase": "Ava teadmusbaas",
-        "reminder": {
-          "message": "Kõigi muudatuste rakendamiseks tuleb leht värskendada.",
-          "title": "MÄRKUS"
-        },
-        "sections": {
-          "about": {
-            "contact_us": "Võta meiega ühendust",
-            "contributors": "Kaasaaitajad",
-            "curators": "Lisade loojad",
-            "form_button": "Vorm",
-            "no_supporters": "Hetkel pole Muel toetajaid",
-            "photographers": "Fotograafid",
-            "resources_used": {
-              "bg_images": "Võrguühenduseta taustapildid",
-              "title": "Kasutatud ressursid"
-            },
-            "support_donate": "Anneta",
-            "support_mue": "Toeta Mued",
-            "support_subtitle": "Kuna Mue on täiesti tasuta, sõltume annetustest serveriarvetee tasumiseks ja arenduse rahastamiseks",
-            "supporters": "Toetajad",
-            "title": "Teave",
-            "version": {
-              "checking_update": "Uuenduse kontrollimine",
-              "error": {
-                "description": "Ilmnes viga",
-                "title": "Uuenduse teabe hankimine ebaõnnestus"
-              },
-              "no_update": "Uuendusi pole saadaval",
-              "offline_mode": "Võrguühenduseta režiimis ei saa uuendusi kontrollida",
-              "title": "Versioon",
-              "update_available": "Uuendus on saadaval"
-            }
-          },
-          "advanced": {
-            "custom_css": "Kohandatud CSS",
-            "custom_css_subtitle": "Kohanda Mue stiili kaskaadlaadistiku (CSS) abil.",
-            "custom_js": "Kohandatud JS",
-            "customisation": "Kohandamine",
-            "data": "Andmed",
-            "data_description": "Vali, kas eksportida oma Mue seaded arvutisse, importida olemasolev seadete fail või lähtestada seaded vaikeväärtustele",
-            "data_subtitle": "Halda oma andmeid Mues.",
-            "experimental_warning": "Palun pange tähele, et Mue meeskond ei saa pakkuda tuge, kui eksperimentaalrežiim on sisse lülitatud. Enne toe poole pöördumist lülitage see välja ja vaadake, kas probleem jätkub.",
-            "offline_mode": "Võrguühenduseta režiim",
-            "offline_subtitle": "Kui see on lubatud, keelatakse kõik päringud veebiteenustele.",
-            "preview_data_disabled": {
-              "description": "Andmete seaded on eelvaaterežiimis keelatud. Selle funktsiooni kasutamiseks väljuge palun eelvaaterežiimist.",
-              "title": "Andmete seaded on keelatud"
-            },
-            "reset_modal": {
-              "cancel": "Tühista",
-              "information": "See kustutab kõik andmed. Kui soovid oma andmeid ja eelistusi säilitada, ekspordi need enne.",
-              "question": "Kas soovid Mue lähtestada?",
-              "title": "HOIATUS"
-            },
-            "tab_name": "Vahekaardi nimi",
-            "tab_name_subtitle": "Muuda brauseris kuvatava vahekaardi nime",
-            "timezone": {
-              "automatic": "Automaatne",
-              "subtitle": "Vali loendist ajavöönd arvuti automaatse vaikeväärtuse asemel",
-              "title": "Ajavöönd"
-            },
-            "title": "Täpsemad seaded"
-          },
-          "appearance": {
-            "accessibility": {
-              "animations": "Animatsioonid",
-              "description": "Muuda Mue mugavaks ja ligipääsetavaks",
-              "milliseconds": "millisekundit",
-              "text_shadow": {
-                "new": "Uus",
-                "none": "Puudub",
-                "old": "Vana",
-                "title": "Vidina teksti vari"
-              },
-              "title": "Ligipääsetavus",
-              "toast_duration": "Teate kestus",
-              "widget_zoom": "Vidina suum"
-            },
-            "font": {
-              "custom": "Kohandatud font",
-              "description": "Muuda Mues kasutatavat fonti",
-              "google": "Impordi Google Fontsist",
-              "style": {
-                "italic": "Kursiiv",
-                "normal": "Tavaline",
-                "oblique": "Kaldkiri",
-                "title": "Fondi stiil"
-              },
-              "title": "Font",
-              "weight": {
-                "bold": "Paks",
-                "extra_bold": "Eriti paks",
-                "extra_light": "Eriti kerge",
-                "light": "Kerge",
-                "medium": "Keskmine",
-                "normal": "Tavaline",
-                "semi_bold": "Poolpaks",
-                "thin": "Õhuke",
-                "title": "Fondi paksus"
-              }
-            },
-            "navbar": {
-              "additional": "Muuda navigatsiooniriba stiili ja milliseid nuppe soovid kuvada",
-              "apps_subtitle": "Loo otsetee oma teistele sageli kasutatavatele veebisaitidele.",
-              "hover": "Kuva ainult hiirega üle liikudes",
-              "notes": "Märkmed",
-              "refresh": "Värskenda",
-              "refresh_options": {
-                "none": "Mitte midagi",
-                "page": "Leht"
-              },
-              "refresh_subtitle": "Vali, mida värskendatakse, kui klõpsad värskendamisnuppu",
-              "title": "Navigatsiooniriba",
-              "widgets": "Navigatsiooniriba vidinad"
-            },
-            "style": {
-              "description": "Vali kahe stiili vahel: pärand (lubatud enne 7.0 versiooni kasutajatele) ja meie uus moodne kujundus.",
-              "legacy": "Pärand",
-              "new": "Uus",
-              "title": "Vidina stiil"
-            },
-            "theme": {
-              "auto": "Automaatne",
-              "dark": "Tume",
-              "description": "Muuda Mue vidinatee ja modaalakende teemat",
-              "light": "Hele",
-              "title": "Teema"
-            },
-            "title": "Välimus"
-          },
-          "background": {
-            "api": "API seaded",
-            "api_subtitle": "Valikud pildi saamiseks välisest teenusest (API)",
-            "buttons": {
-              "download": "Lae alla",
-              "favourite": "Lisa lemmikuks",
-              "title": "Nupud",
-              "view": "Suurenda"
-            },
-            "categories": "Kategooriad",
-            "display": "Kuva",
-            "display_subtitle": "Muuda tausta ja foto teabe laadimise viisi",
-            "effects": {
-              "blur": "Reguleeri hägusust",
-              "brightness": "Reguleeri heledust",
-              "filters": {
-                "amount": "Filtri tugevus",
-                "contrast": "Kontrast",
-                "grayscale": "Hallskaala",
-                "invert": "Pööra",
-                "saturate": "Küllasta",
-                "sepia": "Seepia",
-                "title": "Tausta filter"
-              },
-              "subtitle": "Lisa taustapiltidele efekte",
-              "title": "Efektid"
-            },
-            "photo_information": "Näita foto teavet",
-            "show_map": "Näita asukoha kaarti foto teabes, kui saadaval",
-            "source": {
-              "add_background": "Lisa taust",
-              "add_colour": "Lisa värv",
-              "add_url": "Lisa URL",
-              "api": "Tausta API",
-              "custom_background": "Kohandatud taust",
-              "custom_colour": "Kohandatud taustavärv",
-              "custom_description": "Vali pildid oma arvutist",
-              "custom_title": "Kohandatud pildid",
-              "disabled": "Keelatud",
-              "drop_to_upload": "Lohista üleslaadimiseks",
-              "formats": "Saadaolevad formaadid: {list}",
-              "loop_video": "Korda videot",
-              "mute_video": "Vaigista video",
-              "quality": {
-                "datasaver": "Andmesäästja",
-                "high": "Kõrge kvaliteet",
-                "normal": "Tavaline kvaliteet",
-                "original": "Originaal",
-                "title": "Kvaliteet"
-              },
-              "remove": "Eemalda pilt",
-              "select": "Või vali",
-              "subtitle": "Vali, kust taustapilte võtta",
-              "title": "Allikas",
-              "upload": "Lae üles"
-            },
-            "title": "Taust",
-            "transition": "Sissehajumine",
-            "type": {
-              "api": "API",
-              "custom_colour": "Kohandatud värv/gradient",
-              "custom_image": "Kohandatud pilt",
-              "random_colour": "Juhuslik värv",
-              "random_gradient": "Juhuslik gradient",
-              "title": "Tüüp"
-            },
-            "unsplash": {
-              "id": "Kollektsiooni ID(d)",
-              "id_subtitle": "Sisesta komadega eraldatud Unsplash ID-de loend",
-              "subtitle": "Vali kollektsioon(id), mida soovid taustaks kasutada",
-              "title": "Unsplash kollektsioon(id)"
-            }
-          },
-          "changelog": {
-            "by": "Autor: {author}",
-            "title": "Muudatuste logi"
-          },
-          "date": {
-            "datenth": "Kuupäev järgarvu vormis",
-            "day_of_week": "Nädalapäev",
-            "long_format": "Pikk formaat",
-            "short_date": "Lühike kuupäev",
-            "short_format": "Lühike formaat",
-            "short_separator": {
-              "dash": "Kriips",
-              "dots": "Punktid",
-              "gaps": "Tühikud",
-              "slashes": "Kaldkriipsud",
-              "title": "Lühike eraldaja"
-            },
-            "title": "Kuupäev",
-            "type": {
-              "long": "Pikk",
-              "short": "Lühike",
-              "subtitle": "Kas kuvada kuupäeva lühikeses või pikas vormis"
-            },
-            "type_settings": "Valitud kuupäeva tüübi kuvaseaded ja formaat",
-            "week_number": "Nädala number"
-          },
-          "experimental": {
-            "developer": "Arendaja",
-            "title": "Eksperimentaalne",
-            "warning": "Neid seadeid pole täielikult testitud/rakendatud ja need ei pruugi korrektselt töötada!"
-          },
-          "greeting": {
-            "add_event": "Lisa sündmus",
-            "additional": "Seaded tervituse kuvamiseks",
-            "birthday": "Sünnipäev",
-            "birthday_age": "Sünnipäeva vanus",
-            "birthday_date": "Sünnipäeva kuupäev",
-            "birthday_subtitle": "Näita sünnipäeva õnnitlust sinu sünnipäeval",
-            "custom": "Kohandatud sündmused",
-            "day": "Päev",
-            "default": "Vaikimisi tervitussõnum",
-            "enable_events": "Näita sõnumeid erilistel päevadel",
-            "event_name": "Sündmuse nimi",
-            "events": "Sündmused",
-            "events_description": "Halda Mue sündmusi, nagu sünnipäevad.",
-            "month": "Kuu",
-            "name": "Nimi tervituseks",
-            "no_events": "Sündmusi pole",
-            "no_events_description": "Lisa mõned sündmused",
-            "title": "Tervitus"
-          },
-          "header": {
-            "enabled": "Vali, kas näidata seda vidinat või mitte",
-            "more_info": "Lisateave",
-            "report_issue": "Teata probleemist",
-            "size": "Liugur vidina suuruse muutmiseks"
-          },
-          "language": {
-            "quote": "Tsitaadi keel",
-            "title": "Keel"
-          },
-          "message": {
-            "add": "Lisa sõnum",
-            "add_some": "Lisa mõned.",
-            "content": "Sõnumi sisu",
-            "messages": "Sõnumid",
-            "no_messages": "Sõnumeid pole",
-            "text": "Tekst",
-            "title": "Sõnum"
-          },
-          "order": {
-            "title": "Vidinate järjekord"
-          },
-          "quicklinks": {
-            "add_link": "Lisa link",
-            "additional": "Lisaseaded kiirlinkide kuvamiseks ja funktsioonideks",
-            "edit": "Muuda",
-            "no_quicklinks": "Kiirlinke pole",
-            "open_new": "Ava uues vahekaardis",
-            "options": {
-              "icon": "Ikoon",
-              "metro": "Metro",
-              "text_only": "Ainult tekst"
-            },
-            "style": "Stiil",
-            "styling": "Kujundus",
-            "styling_description": "Kohanda kiirlinkide välimust",
-            "text_only": "Näita ainult teksti",
-            "title": "Kiirlingid",
-            "tooltip": "Kohtspikker"
-          },
-          "quote": {
-            "add": "Lisa tsitaat",
-            "additional": "Muud seaded tsitaadi vidina stiili kohandamiseks",
-            "author": "Autor",
-            "author_details": "Näita autori üksikasju",
-            "author_img": "Näita autori pilti",
-            "author_link": "Autori link",
-            "buttons": {
-              "copy": "Kopeeri",
-              "favourite": "Lisa lemmikuks",
-              "subtitle": "Vali, milliseid nuppe tsitaadi juures näidata",
-              "title": "Nupud",
-              "tweet": "Tweedi"
-            },
-            "custom": "Kohandatud tsitaat",
-            "custom_author": "Kohandatud autor",
-            "custom_buttons": "Nupud",
-            "custom_subtitle": "Määra oma kohandatud tsitaadid",
-            "no_quotes": "Tsitaate pole",
-            "source_subtitle": "Vali, kust tsitaate võtta",
-            "title": "Tsitaat"
-          },
-          "search": {
-            "additional": "Lisavalikud otsingu vidina kuvamiseks ja funktsionaalsuseks",
-            "autocomplete": "Automaatne lõpetamine",
-            "autocomplete_provider": "Automaatse lõpetamise pakkuja",
-            "autocomplete_provider_subtitle": "Otsingumootor, mida kasutada automaatse lõpetamise rippmenüü tulemusteks",
-            "custom": "Kohandatud otsingu URL",
-            "dropdown": "Otsingu rippmenüü",
-            "focus": "Fookus vahekaardi avamisel",
-            "search_engine": "Otsingumootor",
-            "search_engine_subtitle": "Vali otsinguriba jaoks kasutatav otsingumootor",
-            "title": "Otsing",
-            "voice_search": "Häälega otsing"
-          },
-          "stats": {
-            "achievement_unlocked": "Saavutus avatud: {name}",
-            "achievements": "Saavutused",
-            "clear_modal": {
-              "information": "See kustutab kõik saavutused ja kasutusstatistika.",
-              "question": "Kas soovid oma statistika kustutada?"
-            },
-            "locked": "Lukus",
-            "sections": {
-              "addons_installed": "Installitud lisad",
-              "backgrounds_downloaded": "Allalaaditud taustad",
-              "backgrounds_favourited": "Lemmikutesse lisatud taustad",
-              "quicklinks_added": "Lisatud kiirlingid",
-              "quotes_favourited": "Lemmikutesse lisatud tsitaadid",
-              "settings_changed": "Muudetud seaded",
-              "tabs_opened": "Avatud vahekaardid"
-            },
-            "title": "Statistika",
-            "unlocked": "{count} avatud",
-            "usage": "Kasutusstatistika"
-          },
-          "time": {
-            "analogue": {
-              "hour_hand": "Tunniosuti",
-              "hour_marks": "Tunnimärgid",
-              "minute_hand": "Minutiosuti",
-              "minute_marks": "Minutimärgid",
-              "round_clock": "Ümmargune taust",
-              "second_hand": "Sekundiosuti",
-              "subtitle": "Muuda analoogkella välimust",
-              "title": "Analoog"
-            },
-            "digital": {
-              "seconds": "Sekundid",
-              "subtitle": "Muuda digitaalse kella välimust",
-              "title": "Digitaalne",
-              "twelvehour": "12-tunnine",
-              "twentyfourhour": "24-tunnine",
-              "zero": "Nullidega täidetud"
-            },
-            "format": "Formaat",
-            "percentage_complete": "Protsent lõpetatud",
-            "title": "Aeg",
-            "type": "Tüüp",
-            "type_subtitle": "Vali, kas kuvada aega digitaalsel kujul, analoogsel kujul või päeva kulgemise protsendina",
-            "vertical_clock": {
-              "change_hour_colour": "Muuda tunni teksti värvi",
-              "change_minute_colour": "Muuda minuti teksti värvi",
-              "change_second_colour": "Muuda sekundi teksti värvi",
-              "title": "Vertikaalne kell"
-            }
-          },
-          "weather": {
-            "auto": "Automaatne",
-            "custom_settings": "Kohandatud seaded",
-            "extra_info": {
-              "atmospheric_pressure": "Õhurõhk",
-              "cloudiness": "Pilvisus",
-              "humidity": "Niiskus",
-              "max_temp": "Maksimumtemperatuur",
-              "min_temp": "Miinimumtemperatuur",
-              "show_description": "Näita kirjeldust",
-              "show_location": "Näita asukohta",
-              "title": "Lisateave",
-              "visibility": "Nähtavus",
-              "weather_description": "Ilma kirjeldus",
-              "wind_direction": "Tuule suund",
-              "wind_speed": "Tuule kiirus"
-            },
-            "location": "Asukoht",
-            "options": {
-              "basic": "Põhiline",
-              "custom": "Kohandatud",
-              "expanded": "Laiendatud",
-              "standard": "Standardne"
-            },
-            "temp_format": {
-              "celsius": "Celsius",
-              "fahrenheit": "Fahrenheit",
-              "kelvin": "Kelvin",
-              "title": "Temperatuuri formaat"
-            },
-            "title": "Ilm",
-            "widget_type": "Vidina tüüp"
-          }
-        }
-      },
-      "title": "Valikud"
-    },
-    "share": {
-      "copy_link": "Kopeeri link",
-      "email": "E-post"
-    },
-    "update": {
-      "error": {
-        "description": "Serveriga ei õnnestunud ühendust luua",
-        "title": "Viga"
-      },
-      "offline": {
-        "description": "Võrguühenduseta režiimis ei saa uuenduste logisid hankida",
-        "title": "Võrguühenduseta"
-      },
-      "title": "Uuenda"
-    },
-    "welcome": {
-      "buttons": {
-        "close": "Sulge",
-        "finish": "Lõpeta",
-        "next": "Järgmine",
-        "preview": "Eelvaade",
-        "previous": "Eelmine"
-      },
-      "preview": {
-        "continue": "Jätka seadistamist",
-        "description": "Oled praegu eelvaaterežiimis. Seaded lähtestatakse selle vahelehe sulgemisel."
-      },
-      "sections": {
-        "final": {
-          "changes": "Muudatused",
-          "changes_description": "Seadete hilisemaks muutmiseks klõpsa seadete ikoonil vahelehe ülemises parempoolses nurgas.",
-          "description": "Sinu Mue vahelehe kogemus on kohe algamas.",
-          "imported": "Imporditud {amount} seadet",
-          "title": "Viimane samm"
-        },
-        "intro": {
-          "description": "Täname, et installisid Mue, loodame, et naudid meie laiendust.",
-          "notices": {
-            "discord_description": "Suhtle Mue kogukonna ja arendajatega",
-            "discord_join": "Liitu",
-            "discord_title": "Liitu meie Discordiga",
-            "github_description": "Teata vigadest, lisa funktsioone või anneta",
-            "github_open": "Ava",
-            "github_title": "Panusta GitHubis"
-          },
-          "title": "Tere tulemast Mue Tabi"
-        },
-        "language": {
-          "description": "Mued saab kuvada allpool loetletud keeltes. Saad ka lisada uusi tõlkeid meie",
-          "title": "Vali oma keel"
-        },
-        "privacy": {
-          "description": "Luba seaded, et veelgi kaitsta oma privaatsust Mue-ga.",
-          "links": {
-            "privacy_policy": "Privaatsuspoliitika",
-            "source_code": "Lähtekood",
-            "title": "Lingid"
-          },
-          "offline_mode_description": "Võrguühenduseta režiimi lubamine keelab kõik päringud mis tahes teenusele. See tähendab, et võrgupõhised taustad, võrgupõhised tsitaadid, turg, ilm, kiirlingid, muudatuste logi ja osa teabe vahelehe infost keelatakse.",
-          "title": "Privaatsuse valikud"
-        },
-        "settings": {
-          "description": "Paigaldad Mue uuele seadmele? Võid vabalt importida oma vanad seaded!",
-          "tip": "Saad oma vanad seaded eksportida, navigeerides oma vanas Mue seadistuses Täpsemad seaded vahelehele. Seejärel pead klõpsama ekspordinuppu, mis laadib alla JSON-faili. Saad selle faili siia üles laadida, et kanda üle oma seaded ja eelistused eelmisest Mue paigaldusest.",
-          "title": "Impordi seaded"
-        },
-        "style": {
-          "description": "Mue pakub praegu valikut pärand-stiili ja äsja välja lastud moodsa stiili vahel.",
-          "legacy": "Pärand",
-          "modern": "Moodne",
-          "title": "Vali stiil"
-        },
-        "theme": {
-          "description": "Mue on saadaval nii heleda kui ka tumeda teemaga või see võib olla automaatselt seadistatud vastavalt teie süsteemi teemale.",
-          "tip": "Automaatse seadistuse kasutamine kasutab teie arvutis olevat teemat. See seadistus mõjutab modaalaknaid ja mõningaid ekraanil kuvatavaid vidinaid, nagu ilm ja märkmed.",
-          "title": "Vali teema"
-        }
-      },
-      "tip": "Kiire nõuanne"
-    }
-  },
   "tabname": "Uus vahekaart",
-  "toasts": {
-    "error": "Midagi läks valesti",
-    "imported": "Edukalt imporditud",
-    "installed": "Edukalt paigaldatud",
-    "link_copied": "Link kopeeritud",
-    "no_storage": "Pole piisavalt mäluruumi",
-    "notes": "Märkmed kopeeritud",
-    "quote": "Tsitaat kopeeritud",
-    "reset": "Lähtestamine õnnestus",
-    "stats_reset": "Statistika lähtestatud",
-    "uninstalled": "Edukalt eemaldatud",
-    "updated": "Edukalt uuendatud"
-  },
   "widgets": {
+    "greeting": {
+      "morning": "Tere hommikust",
+      "afternoon": "Tere päevast",
+      "evening": "Tere õhtust",
+      "christmas": "Häid jõule",
+      "newyear": "Head uut aastat",
+      "halloween": "Head halloweeni",
+      "birthday": "Palju õnne sünnipäevaks"
+    },
     "background": {
-      "camera": "Kaamera",
-      "category": "Kategooria",
-      "confirm": "Kinnita",
       "credit": "Foto autor",
+      "unsplash": "Unsplashis",
+      "information": "Teave",
       "download": "Lae alla",
       "downloads": "Allalaadimised",
-      "exclude": "Ära enam näita",
-      "exclude_confirm": "Kas oled kindel, et ei soovi seda pilti enam näha?\nMärkus: kui sulle ei meeldi \"{category}\" pildid, saad selle kategooria taustapildi allika seadetest eemaldada.",
-      "information": "Teave",
+      "views": "Vaatamised",
       "likes": "Meeldimised",
       "location": "Asukoht",
+      "camera": "Kaamera",
       "resolution": "Resolutsioon",
       "source": "Allikas",
-      "unsplash": "Unsplashis",
-      "views": "Vaatamised"
+      "category": "Kategooria",
+      "exclude": "Ära enam näita",
+      "exclude_confirm": "Kas oled kindel, et ei soovi seda pilti enam näha?\nMärkus: kui sulle ei meeldi \"{category}\" pildid, saad selle kategooria taustapildi allika seadetest eemaldada.",
+      "confirm": "Kinnita"
+    },
+    "search": "Otsi",
+    "quicklinks": {
+      "new": "Uus link",
+      "edit": "Muuda linki",
+      "name": "Nimi",
+      "url": "URL",
+      "icon": "Ikoon (valikuline)",
+      "add": "Lisa",
+      "name_error": "Nimi peab olema määratud",
+      "url_error": "URL peab olema määratud"
     },
     "date": {
       "week": "Nädal"
     },
-    "greeting": {
-      "afternoon": "Tere päevast",
-      "birthday": "Palju õnne sünnipäevaks",
-      "christmas": "Häid jõule",
-      "evening": "Tere õhtust",
-      "halloween": "Head halloweeni",
-      "morning": "Tere hommikust",
-      "newyear": "Head uut aastat"
-    },
-    "navbar": {
-      "apps": {
-        "no_apps": "Rakenduste linke ei leitud",
-        "title": "Rakendused"
-      },
-      "notes": {
-        "placeholder": "Kirjuta siia",
-        "title": "Märkmed"
-      },
-      "todo": {
-        "add": "Lisa",
-        "no_todos": "Ülesandeid pole",
-        "pin": "Kinnita",
-        "title": "Ülesanded"
-      },
-      "tooltips": {
-        "refresh": "Värskenda"
-      }
-    },
-    "quicklinks": {
-      "add": "Lisa",
-      "edit": "Muuda linki",
-      "icon": "Ikoon (valikuline)",
-      "name": "Nimi",
-      "name_error": "Nimi peab olema määratud",
-      "new": "Uus link",
-      "url": "URL",
-      "url_error": "URL peab olema määratud"
+    "weather": {
+      "not_found": "Ei leitud",
+      "meters": "{amount} meetrit",
+      "extra_information": "Lisateave",
+      "feels_like": "Tundub nagu {amount}"
     },
     "quote": {
-      "copy": "Kopeeri",
-      "favourite": "Lisa lemmikuks",
       "link_tooltip": "Ava Wikipedias",
       "share": "Jaga",
+      "copy": "Kopeeri",
+      "favourite": "Lisa lemmikuks",
       "unfavourite": "Eemalda lemmikutest"
     },
-    "search": "Otsi",
-    "weather": {
-      "extra_information": "Lisateave",
-      "feels_like": "Tundub nagu {amount}",
-      "meters": "{amount} meetrit",
-      "not_found": "Ei leitud"
+    "navbar": {
+      "tooltips": {
+        "refresh": "Värskenda"
+      },
+      "notes": {
+        "title": "Märkmed",
+        "placeholder": "Kirjuta siia"
+      },
+      "todo": {
+        "title": "Ülesanded",
+        "pin": "Kinnita",
+        "add": "Lisa",
+        "no_todos": "Ülesandeid pole"
+      },
+      "apps": {
+        "title": "Rakendused",
+        "no_apps": "Rakenduste linke ei leitud"
+      }
     }
+  },
+  "modals": {
+    "main": {
+      "title": "Valikud",
+      "loading": "Laadimine...",
+      "file_upload_error": "Fail on üle 2MB",
+      "navbar": {
+        "settings": "Seaded",
+        "library": "Lisad",
+        "discover": "Rakenduste pood"
+      },
+      "error_boundary": {
+        "title": "Viga",
+        "message": "Mue komponendi laadimine ebaõnnestus",
+        "report_error": "Saada veateade",
+        "sent": "Saadetud!",
+        "refresh": "Värskenda"
+      },
+      "settings": {
+        "enabled": "Lubatud",
+        "open_knowledgebase": "Ava teadmusbaas",
+        "additional_settings": "Lisaseaded",
+        "reminder": {
+          "title": "MÄRKUS",
+          "message": "Kõigi muudatuste rakendamiseks tuleb leht värskendada."
+        },
+        "sections": {
+          "header": {
+            "more_info": "Lisateave",
+            "report_issue": "Teata probleemist",
+            "enabled": "Vali, kas näidata seda vidinat või mitte",
+            "size": "Liugur vidina suuruse muutmiseks"
+          },
+          "time": {
+            "title": "Aeg",
+            "format": "Formaat",
+            "type": "Tüüp",
+            "type_subtitle": "Vali, kas kuvada aega digitaalsel kujul, analoogsel kujul või päeva kulgemise protsendina",
+            "digital": {
+              "title": "Digitaalne",
+              "subtitle": "Muuda digitaalse kella välimust",
+              "seconds": "Sekundid",
+              "twentyfourhour": "24-tunnine",
+              "twelvehour": "12-tunnine",
+              "zero": "Nullidega täidetud"
+            },
+            "analogue": {
+              "title": "Analoog",
+              "subtitle": "Muuda analoogkella välimust",
+              "second_hand": "Sekundiosuti",
+              "minute_hand": "Minutiosuti",
+              "hour_hand": "Tunniosuti",
+              "hour_marks": "Tunnimärgid",
+              "minute_marks": "Minutimärgid",
+              "round_clock": "Ümmargune taust"
+            },
+            "percentage_complete": "Protsent lõpetatud",
+            "vertical_clock": {
+              "title": "Vertikaalne kell",
+              "change_hour_colour": "Muuda tunni teksti värvi",
+              "change_minute_colour": "Muuda minuti teksti värvi",
+              "change_second_colour": "Muuda sekundi teksti värvi"
+            }
+          },
+          "date": {
+            "title": "Kuupäev",
+            "week_number": "Nädala number",
+            "day_of_week": "Nädalapäev",
+            "datenth": "Kuupäev järgarvu vormis",
+            "type": {
+              "short": "Lühike",
+              "long": "Pikk",
+              "subtitle": "Kas kuvada kuupäeva lühikeses või pikas vormis"
+            },
+            "type_settings": "Valitud kuupäeva tüübi kuvaseaded ja formaat",
+            "short_date": "Lühike kuupäev",
+            "short_format": "Lühike formaat",
+            "long_format": "Pikk formaat",
+            "short_separator": {
+              "title": "Lühike eraldaja",
+              "dots": "Punktid",
+              "dash": "Kriips",
+              "gaps": "Tühikud",
+              "slashes": "Kaldkriipsud"
+            }
+          },
+          "quote": {
+            "title": "Tsitaat",
+            "additional": "Muud seaded tsitaadi vidina stiili kohandamiseks",
+            "author_link": "Autori link",
+            "author_details": "Näita autori üksikasju",
+            "custom": "Kohandatud tsitaat",
+            "custom_subtitle": "Määra oma kohandatud tsitaadid",
+            "no_quotes": "Tsitaate pole",
+            "author": "Autor",
+            "custom_buttons": "Nupud",
+            "custom_author": "Kohandatud autor",
+            "author_img": "Näita autori pilti",
+            "add": "Lisa tsitaat",
+            "source_subtitle": "Vali, kust tsitaate võtta",
+            "buttons": {
+              "title": "Nupud",
+              "subtitle": "Vali, milliseid nuppe tsitaadi juures näidata",
+              "copy": "Kopeeri",
+              "tweet": "Tweedi",
+              "favourite": "Lisa lemmikuks"
+            }
+          },
+          "greeting": {
+            "title": "Tervitus",
+            "events": "Sündmused",
+            "events_description": "Halda Mue sündmusi, nagu sünnipäevad.",
+            "enable_events": "Näita sõnumeid erilistel päevadel",
+            "default": "Vaikimisi tervitussõnum",
+            "name": "Nimi tervituseks",
+            "birthday": "Sünnipäev",
+            "birthday_subtitle": "Näita sünnipäeva õnnitlust sinu sünnipäeval",
+            "birthday_age": "Sünnipäeva vanus",
+            "birthday_date": "Sünnipäeva kuupäev",
+            "additional": "Seaded tervituse kuvamiseks",
+            "custom": "Kohandatud sündmused",
+            "event_name": "Sündmuse nimi",
+            "day": "Päev",
+            "month": "Kuu",
+            "no_events": "Sündmusi pole",
+            "no_events_description": "Lisa mõned sündmused",
+            "add_event": "Lisa sündmus"
+          },
+          "background": {
+            "title": "Taust",
+            "transition": "Sissehajumine",
+            "photo_information": "Näita foto teavet",
+            "show_map": "Näita asukoha kaarti foto teabes, kui saadaval",
+            "categories": "Kategooriad",
+            "buttons": {
+              "title": "Nupud",
+              "view": "Suurenda",
+              "favourite": "Lisa lemmikuks",
+              "download": "Lae alla"
+            },
+            "effects": {
+              "title": "Efektid",
+              "subtitle": "Lisa taustapiltidele efekte",
+              "blur": "Reguleeri hägusust",
+              "brightness": "Reguleeri heledust",
+              "filters": {
+                "title": "Tausta filter",
+                "amount": "Filtri tugevus",
+                "grayscale": "Hallskaala",
+                "sepia": "Seepia",
+                "invert": "Pööra",
+                "saturate": "Küllasta",
+                "contrast": "Kontrast"
+              }
+            },
+            "type": {
+              "title": "Tüüp",
+              "api": "API",
+              "custom_image": "Kohandatud pilt",
+              "custom_colour": "Kohandatud värv/gradient",
+              "random_colour": "Juhuslik värv",
+              "random_gradient": "Juhuslik gradient"
+            },
+            "unsplash": {
+              "title": "Unsplash kollektsioon(id)",
+              "subtitle": "Vali kollektsioon(id), mida soovid taustaks kasutada",
+              "id": "Kollektsiooni ID(d)",
+              "id_subtitle": "Sisesta komadega eraldatud Unsplash ID-de loend"
+            },
+            "source": {
+              "title": "Allikas",
+              "subtitle": "Vali, kust taustapilte võtta",
+              "api": "Tausta API",
+              "custom_background": "Kohandatud taust",
+              "custom_colour": "Kohandatud taustavärv",
+              "upload": "Lae üles",
+              "add_colour": "Lisa värv",
+              "add_background": "Lisa taust",
+              "drop_to_upload": "Lohista üleslaadimiseks",
+              "formats": "Saadaolevad formaadid: {list}",
+              "select": "Või vali",
+              "add_url": "Lisa URL",
+              "disabled": "Keelatud",
+              "loop_video": "Korda videot",
+              "mute_video": "Vaigista video",
+              "quality": {
+                "title": "Kvaliteet",
+                "original": "Originaal",
+                "high": "Kõrge kvaliteet",
+                "normal": "Tavaline kvaliteet",
+                "datasaver": "Andmesäästja"
+              },
+              "custom_title": "Kohandatud pildid",
+              "custom_description": "Vali pildid oma arvutist",
+              "remove": "Eemalda pilt"
+            },
+            "display": "Kuva",
+            "display_subtitle": "Muuda tausta ja foto teabe laadimise viisi",
+            "api": "API seaded",
+            "api_subtitle": "Valikud pildi saamiseks välisest teenusest (API)"
+          },
+          "search": {
+            "title": "Otsing",
+            "additional": "Lisavalikud otsingu vidina kuvamiseks ja funktsionaalsuseks",
+            "search_engine": "Otsingumootor",
+            "search_engine_subtitle": "Vali otsinguriba jaoks kasutatav otsingumootor",
+            "custom": "Kohandatud otsingu URL",
+            "autocomplete": "Automaatne lõpetamine",
+            "autocomplete_provider": "Automaatse lõpetamise pakkuja",
+            "autocomplete_provider_subtitle": "Otsingumootor, mida kasutada automaatse lõpetamise rippmenüü tulemusteks",
+            "voice_search": "Häälega otsing",
+            "dropdown": "Otsingu rippmenüü",
+            "focus": "Fookus vahekaardi avamisel",
+            "chrome_policy_warning": "In version 7.2, the ability to choose your search engine within Mue was removed to comply with new Chrome Web Store guidelines. Mue now uses your browser's default search engine. You can change this in Chrome Settings."
+          },
+          "weather": {
+            "title": "Ilm",
+            "location": "Asukoht",
+            "auto": "Automaatne",
+            "widget_type": "Vidina tüüp",
+            "temp_format": {
+              "title": "Temperatuuri formaat",
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Lisateave",
+              "show_location": "Näita asukohta",
+              "show_description": "Näita kirjeldust",
+              "weather_description": "Ilma kirjeldus",
+              "cloudiness": "Pilvisus",
+              "humidity": "Niiskus",
+              "visibility": "Nähtavus",
+              "wind_speed": "Tuule kiirus",
+              "wind_direction": "Tuule suund",
+              "min_temp": "Miinimumtemperatuur",
+              "max_temp": "Maksimumtemperatuur",
+              "atmospheric_pressure": "Õhurõhk"
+            },
+            "options": {
+              "basic": "Põhiline",
+              "standard": "Standardne",
+              "expanded": "Laiendatud",
+              "custom": "Kohandatud"
+            },
+            "custom_settings": "Kohandatud seaded"
+          },
+          "quicklinks": {
+            "title": "Kiirlingid",
+            "additional": "Lisaseaded kiirlinkide kuvamiseks ja funktsioonideks",
+            "open_new": "Ava uues vahekaardis",
+            "tooltip": "Kohtspikker",
+            "text_only": "Näita ainult teksti",
+            "add_link": "Lisa link",
+            "no_quicklinks": "Kiirlinke pole",
+            "edit": "Muuda",
+            "style": "Stiil",
+            "options": {
+              "icon": "Ikoon",
+              "text_only": "Ainult tekst",
+              "metro": "Metro"
+            },
+            "styling": "Kujundus",
+            "styling_description": "Kohanda kiirlinkide välimust"
+          },
+          "message": {
+            "title": "Sõnum",
+            "add": "Lisa sõnum",
+            "messages": "Sõnumid",
+            "text": "Tekst",
+            "no_messages": "Sõnumeid pole",
+            "add_some": "Lisa mõned.",
+            "content": "Sõnumi sisu"
+          },
+          "appearance": {
+            "title": "Välimus",
+            "style": {
+              "title": "Vidina stiil",
+              "description": "Vali kahe stiili vahel: pärand (lubatud enne 7.0 versiooni kasutajatele) ja meie uus moodne kujundus.",
+              "legacy": "Pärand",
+              "new": "Uus"
+            },
+            "theme": {
+              "title": "Teema",
+              "description": "Muuda Mue vidinatee ja modaalakende teemat",
+              "auto": "Automaatne",
+              "light": "Hele",
+              "dark": "Tume"
+            },
+            "navbar": {
+              "title": "Navigatsiooniriba",
+              "widgets": "Navigatsiooniriba vidinad",
+              "notes": "Märkmed",
+              "refresh": "Värskenda",
+              "refresh_subtitle": "Vali, mida värskendatakse, kui klõpsad värskendamisnuppu",
+              "hover": "Kuva ainult hiirega üle liikudes",
+              "additional": "Muuda navigatsiooniriba stiili ja milliseid nuppe soovid kuvada",
+              "refresh_options": {
+                "none": "Mitte midagi",
+                "page": "Leht"
+              },
+              "apps_subtitle": "Loo otsetee oma teistele sageli kasutatavatele veebisaitidele."
+            },
+            "font": {
+              "title": "Font",
+              "description": "Muuda Mues kasutatavat fonti",
+              "custom": "Kohandatud font",
+              "google": "Impordi Google Fontsist",
+              "weight": {
+                "title": "Fondi paksus",
+                "thin": "Õhuke",
+                "extra_light": "Eriti kerge",
+                "light": "Kerge",
+                "normal": "Tavaline",
+                "medium": "Keskmine",
+                "semi_bold": "Poolpaks",
+                "bold": "Paks",
+                "extra_bold": "Eriti paks"
+              },
+              "style": {
+                "title": "Fondi stiil",
+                "normal": "Tavaline",
+                "italic": "Kursiiv",
+                "oblique": "Kaldkiri"
+              }
+            },
+            "accessibility": {
+              "title": "Ligipääsetavus",
+              "description": "Muuda Mue mugavaks ja ligipääsetavaks",
+              "animations": "Animatsioonid",
+              "text_shadow": {
+                "title": "Vidina teksti vari",
+                "new": "Uus",
+                "old": "Vana",
+                "none": "Puudub"
+              },
+              "widget_zoom": "Vidina suum",
+              "toast_duration": "Teate kestus",
+              "milliseconds": "millisekundit"
+            }
+          },
+          "order": {
+            "title": "Vidinate järjekord"
+          },
+          "advanced": {
+            "title": "Täpsemad seaded",
+            "offline_mode": "Võrguühenduseta režiim",
+            "offline_subtitle": "Kui see on lubatud, keelatakse kõik päringud veebiteenustele.",
+            "data": "Andmed",
+            "data_description": "Vali, kas eksportida oma Mue seaded arvutisse, importida olemasolev seadete fail või lähtestada seaded vaikeväärtustele",
+            "data_subtitle": "Halda oma andmeid Mues.",
+            "reset_modal": {
+              "title": "HOIATUS",
+              "question": "Kas soovid Mue lähtestada?",
+              "information": "See kustutab kõik andmed. Kui soovid oma andmeid ja eelistusi säilitada, ekspordi need enne.",
+              "cancel": "Tühista"
+            },
+            "customisation": "Kohandamine",
+            "custom_css": "Kohandatud CSS",
+            "custom_css_subtitle": "Kohanda Mue stiili kaskaadlaadistiku (CSS) abil.",
+            "custom_js": "Kohandatud JS",
+            "tab_name": "Vahekaardi nimi",
+            "tab_name_subtitle": "Muuda brauseris kuvatava vahekaardi nime",
+            "timezone": {
+              "title": "Ajavöönd",
+              "subtitle": "Vali loendist ajavöönd arvuti automaatse vaikeväärtuse asemel",
+              "automatic": "Automaatne"
+            },
+            "experimental_warning": "Palun pange tähele, et Mue meeskond ei saa pakkuda tuge, kui eksperimentaalrežiim on sisse lülitatud. Enne toe poole pöördumist lülitage see välja ja vaadake, kas probleem jätkub.",
+            "preview_data_disabled": {
+              "title": "Andmete seaded on keelatud",
+              "description": "Andmete seaded on eelvaaterežiimis keelatud. Selle funktsiooni kasutamiseks väljuge palun eelvaaterežiimist."
+            }
+          },
+          "stats": {
+            "title": "Statistika",
+            "sections": {
+              "tabs_opened": "Avatud vahekaardid",
+              "backgrounds_favourited": "Lemmikutesse lisatud taustad",
+              "backgrounds_downloaded": "Allalaaditud taustad",
+              "quotes_favourited": "Lemmikutesse lisatud tsitaadid",
+              "quicklinks_added": "Lisatud kiirlingid",
+              "settings_changed": "Muudetud seaded",
+              "addons_installed": "Installitud lisad"
+            },
+            "usage": "Kasutusstatistika",
+            "achievements": "Saavutused",
+            "achievement_unlocked": "Saavutus avatud: {name}",
+            "unlocked": "{count} avatud",
+            "locked": "Lukus",
+            "clear_modal": {
+              "question": "Kas soovid oma statistika kustutada?",
+              "information": "See kustutab kõik saavutused ja kasutusstatistika."
+            }
+          },
+          "experimental": {
+            "title": "Eksperimentaalne",
+            "warning": "Neid seadeid pole täielikult testitud/rakendatud ja need ei pruugi korrektselt töötada!",
+            "developer": "Arendaja"
+          },
+          "language": {
+            "title": "Keel",
+            "quote": "Tsitaadi keel"
+          },
+          "changelog": {
+            "title": "Muudatuste logi",
+            "by": "Autor: {author}"
+          },
+          "about": {
+            "title": "Teave",
+            "version": {
+              "title": "Versioon",
+              "checking_update": "Uuenduse kontrollimine",
+              "update_available": "Uuendus on saadaval",
+              "no_update": "Uuendusi pole saadaval",
+              "offline_mode": "Võrguühenduseta režiimis ei saa uuendusi kontrollida",
+              "error": {
+                "title": "Uuenduse teabe hankimine ebaõnnestus",
+                "description": "Ilmnes viga"
+              }
+            },
+            "contact_us": "Võta meiega ühendust",
+            "support_mue": "Toeta Mued",
+            "support_subtitle": "Kuna Mue on täiesti tasuta, sõltume annetustest serveriarvetee tasumiseks ja arenduse rahastamiseks",
+            "support_donate": "Anneta",
+            "form_button": "Vorm",
+            "resources_used": {
+              "title": "Kasutatud ressursid",
+              "bg_images": "Võrguühenduseta taustapildid"
+            },
+            "contributors": "Kaasaaitajad",
+            "supporters": "Toetajad",
+            "no_supporters": "Hetkel pole Muel toetajaid",
+            "photographers": "Fotograafid",
+            "curators": "Lisade loojad"
+          }
+        },
+        "buttons": {
+          "reset": "Lähtesta",
+          "import": "Impordi",
+          "export": "Ekspordi"
+        }
+      },
+      "marketplace": {
+        "by": "autor: {author}",
+        "all": "Kõik",
+        "learn_more": "Loe lähemalt",
+        "photo_packs": "Fotokomplektid",
+        "quote_packs": "Tsitaadikomplektid",
+        "preset_settings": "Eelseadistatud seaded",
+        "no_items": "Selles kategoorias pole üksusi",
+        "collection": "Kollektsioon",
+        "explore_collection": "Uuri kollektsiooni",
+        "add_all": "Lisa kõik Muesse",
+        "collections": "Kollektsioonid",
+        "cant_find": "Ei leia, mida otsid?",
+        "knowledgebase_one": "Külasta",
+        "knowledgebase_two": "teadmusbaasi",
+        "knowledgebase_three": "oma loomiseks.",
+        "installing": "Installimine",
+        "product": {
+          "overview": "Ülevaade",
+          "information": "Teave",
+          "last_updated": "Viimati uuendatud",
+          "description": "Kirjeldus",
+          "details": "Üksikasjad",
+          "more_from_curator": "Rohkem sarnaseid autorilt {name}",
+          "show_more": "Näita rohkem",
+          "show_less": "Näita vähem",
+          "show_all": "Näita kõiki",
+          "showing": "Näidatakse",
+          "no_images": "Piltide arv",
+          "no_quotes": "Tsitaatide arv",
+          "version": "Versioon",
+          "created_by": "Loodud",
+          "updated_at": "Uuendatud",
+          "part_of": "Osa",
+          "explore": "Uuri",
+          "buttons": {
+            "addtomue": "Lisa Muesse",
+            "remove": "Eemalda",
+            "update_addon": "Uuenda lisa",
+            "back": "Tagasi",
+            "report": "Teata",
+            "not_available_preview": "Pole eelvaates saadaval"
+          },
+          "not_in_language": "See lisa pole sinu keeles",
+          "third_party_api": "See lisa kasutab kolmanda osapoole API-t",
+          "sideload_warning": "See lisa on kõrvalt laaditud.",
+          "setting": "Seade",
+          "value": "Väärtus"
+        },
+        "offline": {
+          "title": "Tundub, et oled võrguühenduseta",
+          "description": "Palun loo internetiühendus"
+        }
+      },
+      "addons": {
+        "added": "Lisatud",
+        "check_updates": "Kontrolli uuendusi",
+        "no_updates": "Uuendusi pole saadaval",
+        "updates_available": "Uuendusi saadaval: {amount}",
+        "empty": {
+          "title": "Tühi",
+          "description": "Lisasid pole installitud"
+        },
+        "sideload": {
+          "title": "Kõrvalt laadimine",
+          "description": "Installi Mue lisa, mida pole rakenduste poes, oma arvutist",
+          "failed": "Lisa kõrvalt laadimine ebaõnnestus",
+          "errors": {
+            "no_name": "Nime pole antud",
+            "no_author": "Autorit pole antud",
+            "no_type": "Tüüpi pole antud",
+            "invalid_photos": "Vigane fotode objekt",
+            "invalid_quotes": "Vigane tsitaatide objekt"
+          }
+        },
+        "sort": {
+          "title": "Sorteeri",
+          "newest": "Installitud (uusimad)",
+          "oldest": "Installitud (vanimad)",
+          "a_z": "Tähestikuline (A-Z)",
+          "z_a": "Tähestikuline (Z-A)"
+        },
+        "create": {
+          "title": "Loo",
+          "moved_title": "Lisa loomine on kolinud!",
+          "moved_description": "Pärast 7.1 versiooni uuendust on lisade loomine nüüd kolinud veebi kasutajaliidesesse",
+          "moved_button": "Tulemas...."
+        }
+      }
+    },
+    "update": {
+      "title": "Uuenda",
+      "offline": {
+        "title": "Võrguühenduseta",
+        "description": "Võrguühenduseta režiimis ei saa uuenduste logisid hankida"
+      },
+      "error": {
+        "title": "Viga",
+        "description": "Serveriga ei õnnestunud ühendust luua"
+      }
+    },
+    "welcome": {
+      "tip": "Kiire nõuanne",
+      "sections": {
+        "intro": {
+          "title": "Tere tulemast Mue Tabi",
+          "description": "Täname, et installisid Mue, loodame, et naudid meie laiendust.",
+          "notices": {
+            "discord_title": "Liitu meie Discordiga",
+            "discord_description": "Suhtle Mue kogukonna ja arendajatega",
+            "discord_join": "Liitu",
+            "github_title": "Panusta GitHubis",
+            "github_description": "Teata vigadest, lisa funktsioone või anneta",
+            "github_open": "Ava"
+          }
+        },
+        "language": {
+          "title": "Vali oma keel",
+          "description": "Mued saab kuvada allpool loetletud keeltes. Saad ka lisada uusi tõlkeid meie"
+        },
+        "theme": {
+          "title": "Vali teema",
+          "description": "Mue on saadaval nii heleda kui ka tumeda teemaga või see võib olla automaatselt seadistatud vastavalt teie süsteemi teemale.",
+          "tip": "Automaatse seadistuse kasutamine kasutab teie arvutis olevat teemat. See seadistus mõjutab modaalaknaid ja mõningaid ekraanil kuvatavaid vidinaid, nagu ilm ja märkmed."
+        },
+        "style": {
+          "title": "Vali stiil",
+          "description": "Mue pakub praegu valikut pärand-stiili ja äsja välja lastud moodsa stiili vahel.",
+          "legacy": "Pärand",
+          "modern": "Moodne"
+        },
+        "settings": {
+          "title": "Impordi seaded",
+          "description": "Paigaldad Mue uuele seadmele? Võid vabalt importida oma vanad seaded!",
+          "tip": "Saad oma vanad seaded eksportida, navigeerides oma vanas Mue seadistuses Täpsemad seaded vahelehele. Seejärel pead klõpsama ekspordinuppu, mis laadib alla JSON-faili. Saad selle faili siia üles laadida, et kanda üle oma seaded ja eelistused eelmisest Mue paigaldusest."
+        },
+        "privacy": {
+          "title": "Privaatsuse valikud",
+          "description": "Luba seaded, et veelgi kaitsta oma privaatsust Mue-ga.",
+          "offline_mode_description": "Võrguühenduseta režiimi lubamine keelab kõik päringud mis tahes teenusele. See tähendab, et võrgupõhised taustad, võrgupõhised tsitaadid, turg, ilm, kiirlingid, muudatuste logi ja osa teabe vahelehe infost keelatakse.",
+          "links": {
+            "title": "Lingid",
+            "privacy_policy": "Privaatsuspoliitika",
+            "source_code": "Lähtekood"
+          }
+        },
+        "final": {
+          "title": "Viimane samm",
+          "description": "Sinu Mue vahelehe kogemus on kohe algamas.",
+          "changes": "Muudatused",
+          "changes_description": "Seadete hilisemaks muutmiseks klõpsa seadete ikoonil vahelehe ülemises parempoolses nurgas.",
+          "imported": "Imporditud {amount} seadet"
+        }
+      },
+      "buttons": {
+        "next": "Järgmine",
+        "preview": "Eelvaade",
+        "previous": "Eelmine",
+        "close": "Sulge",
+        "finish": "Lõpeta"
+      },
+      "preview": {
+        "description": "Oled praegu eelvaaterežiimis. Seaded lähtestatakse selle vahelehe sulgemisel.",
+        "continue": "Jätka seadistamist"
+      }
+    },
+    "share": {
+      "copy_link": "Kopeeri link",
+      "email": "E-post"
+    }
+  },
+  "toasts": {
+    "quote": "Tsitaat kopeeritud",
+    "notes": "Märkmed kopeeritud",
+    "reset": "Lähtestamine õnnestus",
+    "installed": "Edukalt paigaldatud",
+    "uninstalled": "Edukalt eemaldatud",
+    "updated": "Edukalt uuendatud",
+    "error": "Midagi läks valesti",
+    "imported": "Edukalt imporditud",
+    "no_storage": "Pole piisavalt mäluruumi",
+    "link_copied": "Link kopeeritud",
+    "stats_reset": "Statistika lähtestatud"
   }
 }

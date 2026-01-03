@@ -1,703 +1,704 @@
 {
-  "modals": {
-    "main": {
-      "addons": {
-        "added": "Əlavə edildi",
-        "check_updates": "Yeniləmələri yoxla",
-        "create": {
-          "moved_button": "Tezliklə...",
-          "moved_description": "7.1 yeniləməsindən sonra əlavələrin yaradılması indi veb UI-ya köçürülüb",
-          "moved_title": "Əlavə yaratma yeri dəyişdirildi!",
-          "title": "Yarat"
-        },
-        "empty": {
-          "description": "Heç bir əlavə quraşdırılmayıb",
-          "title": "Boşdur"
-        },
-        "no_updates": "Yeniləmə mövcud deyil",
-        "sideload": {
-          "description": "Kompüterinizdən bazarda olmayan bir Mue əlavəsini quraşdırın",
-          "errors": {
-            "invalid_photos": "Yanlış foto obyekt",
-            "invalid_quotes": "Yanlış sitat obyekt",
-            "no_author": "Müəllif verilmir",
-            "no_name": "Ad verilmir",
-            "no_type": "Növ verilmir"
-          },
-          "failed": "Əlavəni yan yükləmək alınmadı",
-          "title": "Yan Yükləmə"
-        },
-        "sort": {
-          "a_z": "Əlifba sırası (A-Z)",
-          "newest": "Quraşdırılmış (Ən yeni)",
-          "oldest": "Quraşdırılmış (Ən köhnə)",
-          "title": "Sıralama",
-          "z_a": "Əlifba sırası (Z-A)"
-        },
-        "updates_available": "Mövcud yeniləmələr {amount}"
-      },
-      "error_boundary": {
-        "message": "Mue-nun bu komponentini yükləmək alınmadı",
-        "refresh": "Yenilə",
-        "report_error": "Xətanı Bildir",
-        "sent": "Göndərildi!",
-        "title": "Xəta"
-      },
-      "file_upload_error": "Fayl 2MB-dan böyükdür",
-      "loading": "Yüklənir...",
-      "marketplace": {
-        "add_all": "Hamısını Mue-ya Əlavə et",
-        "all": "Hamısı",
-        "by": "{author} tərəfindən",
-        "cant_find": "Axtardığınızı tapa bilmirsiniz?",
-        "collection": "Kolleksiya",
-        "collections": "Kolleksiyalar",
-        "explore_collection": "Kolleksiyanı Kəşf et",
-        "installing": "Quraşdırılır",
-        "knowledgebase_one": "Ziyarət edin",
-        "knowledgebase_three": "özünüz yaratmaq üçün.",
-        "knowledgebase_two": "bilik bazası",
-        "learn_more": "Daha çox öyrən",
-        "no_items": "Bu kateqoriyada heç bir maddə yoxdur",
-        "offline": {
-          "description": "Zəhmət olmasa internetə qoşulun",
-          "title": "Görünür, oflaynsınız"
-        },
-        "photo_packs": "Foto Paketləri",
-        "preset_settings": "Hazır Parametrlər",
-        "product": {
-          "buttons": {
-            "addtomue": "Mue-ya Əlavə et",
-            "back": "Geri",
-            "not_available_preview": "Önizləmədə Mövcud Deyil",
-            "remove": "Sil",
-            "report": "Bildir",
-            "update_addon": "Əlavəni Yenilə"
-          },
-          "created_by": "Yaradıcı",
-          "description": "Təsvir",
-          "details": "Detallar",
-          "explore": "Kəşf et",
-          "information": "Məlumat",
-          "last_updated": "Son Yenilənmə",
-          "more_from_curator": "{name} tərəfindən buna bənzər daha çox",
-          "no_images": "Şəkil sayı",
-          "no_quotes": "Sitat sayı",
-          "not_in_language": "Bu əlavə sizin dilinizdə deyil",
-          "overview": "Ümumi Baxış",
-          "part_of": "Bir hissəsi",
-          "setting": "Parametr",
-          "show_all": "Hamısını göstər",
-          "show_less": "Daha az göstər",
-          "show_more": "Daha çox göstər",
-          "showing": "Göstərilir",
-          "sideload_warning": "Bu əlavə yan tərəfdən yüklənmişdir.",
-          "third_party_api": "Bu əlavə üçüncü tərəf API istifadə edir",
-          "updated_at": "Yeniləmə tarixi",
-          "value": "Dəyər",
-          "version": "Versiya"
-        },
-        "quote_packs": "Sitat Paketləri"
-      },
-      "navbar": {
-        "discover": "Bazarı",
-        "library": "Əlavələr",
-        "settings": "Parametrlər"
-      },
-      "settings": {
-        "additional_settings": "Əlavə Parametrlər",
-        "buttons": {
-          "export": "İxrac et",
-          "import": "İdxal et",
-          "reset": "Sıfırla"
-        },
-        "enabled": "Aktivdir",
-        "open_knowledgebase": "Bilik Bazası Aç",
-        "reminder": {
-          "message": "Bütün dəyişikliklərin qüvvəyə minməsi üçün səhifə yenilənməlidir.",
-          "title": "XƏBƏRDARLIQ"
-        },
-        "sections": {
-          "about": {
-            "contact_us": "Bizimlə əlaqə",
-            "contributors": "Töhfə verənlər",
-            "curators": "Əlavə yaradanlar",
-            "form_button": "Form",
-            "no_supporters": "Hazırda Mue-u dəstəkləyənlər yoxdur",
-            "photographers": "Fotoqraflar",
-            "resources_used": {
-              "bg_images": "Oflayn fon şəkilləri",
-              "title": "İstifadə edilən resurslar"
-            },
-            "support_donate": "İanə et",
-            "support_mue": "Mue-u Dəstəklə",
-            "support_subtitle": "Mue tamamilə pulsuz olduğundan, biz server xərclərini ödəmək və inkişafı maliyyələşdirmək üçün ianələrə güvənirik",
-            "supporters": "Dəstəkləyənlər",
-            "title": "Haqqında",
-            "version": {
-              "checking_update": "Yeniləmə yoxlanılır",
-              "error": {
-                "description": "Bir xəta baş verdi",
-                "title": "Yeniləmə məlumatını almaq alınmadı"
-              },
-              "no_update": "Yeniləmə mövcud deyil",
-              "offline_mode": "Oflayn rejimdə yeniləməni yoxlamaq mümkün deyil",
-              "title": "Versiya",
-              "update_available": "Yeniləmə mövcuddur"
-            }
-          },
-          "advanced": {
-            "custom_css": "Xüsusi CSS",
-            "custom_css_subtitle": "Cascading Style Sheets (CSS) ilə Mue-nun üslubunu fərdiləşdirin.",
-            "custom_js": "Xüsusi JS",
-            "customisation": "Fərdiləşdirmə",
-            "data": "Məlumat",
-            "data_description": "Mue parametrlərinizi kompüterinizə ixrac etməyi, mövcud bir parametrlər faylını idxal etməyi və ya parametrlərinizi varsayılan dəyərlərinə sıfırlamağı seçin",
-            "data_subtitle": "Mue-da məlumatlarınızı idarə edin.",
-            "experimental_warning": "Zəhmət olmasa qeyd edin ki, Mue komandası eksperimental rejim aktiv olduqda dəstək göstərə bilmir. Zəhmət olmasa, dəstək ilə əlaqə saxlamazdan əvvəl onu söndürün və problemin davam edib-etmədiyini yoxlayın.",
-            "offline_mode": "Oflayn rejim",
-            "offline_subtitle": "Aktiv olduqda, bütün onlayn xidmətlərə sorğular dayandırılacaq.",
-            "preview_data_disabled": {
-              "description": "Məlumat parametrləri önizləmə rejimində deaktivdir. Bu xüsusiyyəti istifadə etmək üçün önizləmə rejimindən çıxın.",
-              "title": "Məlumat Parametrləri Deaktivdir"
-            },
-            "reset_modal": {
-              "cancel": "Ləğv et",
-              "information": "Bu, bütün məlumatları siləcək. Məlumatlarınızı və seçimlərinizi saxlamaq istəyirsinizsə, əvvəlcə onları ixrac edin.",
-              "question": "Mue-nu sıfırlamaq istəyirsinizmi?",
-              "title": "XƏBƏRDARLIQ"
-            },
-            "tab_name": "Vərəq adı",
-            "tab_name_subtitle": "Brauzerinizdə görünən vərəqin adını dəyişdirin",
-            "timezone": {
-              "automatic": "Avtomatik",
-              "subtitle": "Kompüterinizdən avtomatik alınan saat qurşağı əvəzinə siyahıdan birini seçin",
-              "title": "Saat Qurşağı"
-            },
-            "title": "Ətraflı"
-          },
-          "appearance": {
-            "accessibility": {
-              "animations": "Animasiyalar",
-              "description": "Mue-nu rahat və əlçatan edin",
-              "milliseconds": "millisaniyə",
-              "text_shadow": {
-                "new": "Yeni",
-                "none": "Heç biri",
-                "old": "Köhnə",
-                "title": "Vidjet mətn kölgəsi"
-              },
-              "title": "Əlçatanlıq",
-              "toast_duration": "Toast Müddəti",
-              "widget_zoom": "Vidjet Zoomu"
-            },
-            "font": {
-              "custom": "Xüsusi şrift",
-              "description": "Mue-da istifadə edilən şrifti dəyişdirin",
-              "google": "Google Şriftlərdən idxal edin",
-              "style": {
-                "italic": "İtalik",
-                "normal": "Normal",
-                "oblique": "Maili",
-                "title": "Şrift üslubu"
-              },
-              "title": "Şrift",
-              "weight": {
-                "bold": "Qalın",
-                "extra_bold": "Əlavə Qalın",
-                "extra_light": "Əlavə Yüngül",
-                "light": "Yüngül",
-                "medium": "Orta",
-                "normal": "Normal",
-                "semi_bold": "Yarı Qalın",
-                "thin": "Nazik",
-                "title": "Şrift qalınlığı"
-              }
-            },
-            "navbar": {
-              "additional": "Naviqasiya çubuğunun üslubunu və göstərmək istədiyiniz düymələri dəyişdirin",
-              "apps_subtitle": "Digər tez-tez istifadə etdiyiniz veb saytların qısayolunu yaradın.",
-              "hover": "Yalnız üzərində dayandıqda göstər",
-              "notes": "Qeydlər",
-              "refresh": "Yenilə",
-              "refresh_options": {
-                "none": "Heç biri",
-                "page": "Səhifə"
-              },
-              "refresh_subtitle": "Yenilə düyməsinə kliklədiyiniz zaman nəyi yeniləmək istədiyinizi seçin",
-              "title": "Naviqasiya Çubuğu",
-              "widgets": "Naviqasiya Vidjetləri"
-            },
-            "style": {
-              "description": "İki üslub arasında seçim edin, miras (7.0-dan əvvəlki istifadəçilər üçün aktivdir) və yeni müasir üslubumuz.",
-              "legacy": "Miras",
-              "new": "Yeni",
-              "title": "Vidjet Üslubu"
-            },
-            "theme": {
-              "auto": "Avto",
-              "dark": "Tünd",
-              "description": "Mue vidjetlərinin və modallarının mövzusunu dəyişdirin",
-              "light": "Açıq",
-              "title": "Tema"
-            },
-            "title": "Görünüş"
-          },
-          "background": {
-            "api": "API Parametrləri",
-            "api_subtitle": "Xarici xidmətdən (API) şəkil almaq üçün seçimlər",
-            "buttons": {
-              "download": "Yüklə",
-              "favourite": "Sevimli",
-              "title": "Düymələr",
-              "view": "Maksimallaşdır"
-            },
-            "categories": "Kateqoriyalar",
-            "display": "Ekran",
-            "display_subtitle": "Fon və foto məlumatlarının necə yüklənəcəyini dəyişdirin",
-            "effects": {
-              "blur": "Bulanıqlığı tənzimləyin",
-              "brightness": "Parlaqlığı tənzimləyin",
-              "filters": {
-                "amount": "Filtr miqdarı",
-                "contrast": "Kontrast",
-                "grayscale": "Boz rəng",
-                "invert": "Tərs çevir",
-                "saturate": "Doyma",
-                "sepia": "Sepiya",
-                "title": "Fon filtri"
-              },
-              "subtitle": "Fon şəkillərinə effektlər əlavə edin",
-              "title": "Effektlər"
-            },
-            "photo_information": "Foto məlumatını göstər",
-            "show_map": "Mövcud olduqda foto məlumatında yer xəritəsini göstər",
-            "source": {
-              "add_background": "Fon əlavə et",
-              "add_colour": "Rəng əlavə et",
-              "add_url": "URL əlavə et",
-              "api": "Fon API",
-              "custom_background": "Xüsusi fon",
-              "custom_colour": "Xüsusi fon rəngi",
-              "custom_description": "Kompüterinizdən şəkillər seçin",
-              "custom_title": "Xüsusi Şəkillər",
-              "disabled": "Deaktiv",
-              "drop_to_upload": "Yükləmək üçün atın",
-              "formats": "Mövcud formatlar: {list}",
-              "loop_video": "Videonu dövr et",
-              "mute_video": "Videonu səssizləşdir",
-              "quality": {
-                "datasaver": "Data Qənaəti",
-                "high": "Yüksək Keyfiyyət",
-                "normal": "Normal Keyfiyyət",
-                "original": "Orijinal",
-                "title": "Keyfiyyət"
-              },
-              "remove": "Şəkli Sil",
-              "select": "Yaxud Seçin",
-              "subtitle": "Fon şəkillərini haradan əldə etməyi seçin",
-              "title": "Mənbə",
-              "upload": "Yüklə"
-            },
-            "title": "Fon",
-            "transition": "Solğunlaşma keçidi",
-            "type": {
-              "api": "API",
-              "custom_colour": "Xüsusi rəng/qradiyent",
-              "custom_image": "Xüsusi şəkil",
-              "random_colour": "Təsadüfi rəng",
-              "random_gradient": "Təsadüfi qradiyent",
-              "title": "Növ"
-            },
-            "unsplash": {
-              "id": "Kolleksiya ID-ləri",
-              "id_subtitle": "Vergüllə ayrılmış Unsplash ID-ləri daxil edin",
-              "subtitle": "Fon üçün istifadə etmək istədiyiniz kolleksiyanı seçin",
-              "title": "Unsplash Kolleksiyası"
-            }
-          },
-          "changelog": {
-            "by": "{author} tərəfindən",
-            "title": "Dəyişikliklər Siyahısı"
-          },
-          "date": {
-            "datenth": "Tarix nth",
-            "day_of_week": "Həftənin günü",
-            "long_format": "Uzun format",
-            "short_date": "Qısa tarix",
-            "short_format": "Qısa format",
-            "short_separator": {
-              "dash": "Tire",
-              "dots": "Nöqtələr",
-              "gaps": "Boşluqlar",
-              "slashes": "Sləşlər",
-              "title": "Qısa ayrıcı"
-            },
-            "title": "Tarix",
-            "type": {
-              "long": "Uzun",
-              "short": "Qısa",
-              "subtitle": "Tarixin uzun və ya qısa formatda göstərilməsi"
-            },
-            "type_settings": "Seçilmiş tarix növü üçün ekran parametrləri və formatı",
-            "week_number": "Həftə nömrəsi"
-          },
-          "experimental": {
-            "developer": "Yaradıcı",
-            "title": "Eksperimental",
-            "warning": "Bu parametrlər tam sınaqdan keçirilməyib/tətbiq edilməyib və düzgün işləməyə bilər!"
-          },
-          "greeting": {
-            "add_event": "Hadisə əlavə et",
-            "additional": "Salamlaşma ekranı üçün parametrlər",
-            "birthday": "Ad günü",
-            "birthday_age": "Ad günü yaşı",
-            "birthday_date": "Ad günü tarixi",
-            "birthday_subtitle": "Ad gününüz olanda 'Ad Gününüz Mübarək' mesajını göstərin",
-            "custom": "Xüsusi hadisələr",
-            "day": "Gün",
-            "default": "Varsayılan salamlaşma mesajı",
-            "enable_events": "Xüsusi günlərdə mesajları göstər",
-            "event_name": "Hadisə adı",
-            "events": "Hadisələr",
-            "events_description": "Ad günləri kimi Mue-da hadisələri idarə edin.",
-            "month": "Ay",
-            "name": "Salamlaşma üçün ad",
-            "no_events": "Hadisə yoxdur",
-            "no_events_description": "Bəzi hadisələr əlavə edin",
-            "title": "Salamlaşma"
-          },
-          "header": {
-            "enabled": "Bu vidjeti göstərmək və ya göstərməmək seçimi",
-            "more_info": "Daha çox məlumat",
-            "report_issue": "Problemi Bildir",
-            "size": "Vidjetin ölçüsünü tənzimləmək üçün sürgü"
-          },
-          "language": {
-            "quote": "Sitat dili",
-            "title": "Dil"
-          },
-          "message": {
-            "add": "Mesaj əlavə et",
-            "add_some": "Əlavə etməyə başlayın.",
-            "content": "Mesaj Məzmunu",
-            "messages": "Mesajlar",
-            "no_messages": "Mesaj yoxdur",
-            "text": "Mətn",
-            "title": "Mesaj"
-          },
-          "order": {
-            "title": "Vidjet Sırası"
-          },
-          "quicklinks": {
-            "add_link": "Keçid əlavə et",
-            "additional": "Tez keçidlərin görünüşü və funksiyaları üçün əlavə parametrlər",
-            "edit": "Redaktə et",
-            "no_quicklinks": "Tez keçid yoxdur",
-            "open_new": "Yeni vərəqdə aç",
-            "options": {
-              "icon": "İkon",
-              "metro": "Metro",
-              "text_only": "Yalnız Mətn"
-            },
-            "style": "Üslub",
-            "styling": "Üslublaşdırma",
-            "styling_description": "Tez keçidlərin görünüşünü fərdiləşdirin",
-            "text_only": "Yalnız mətn göstər",
-            "title": "Tez Keçidlər",
-            "tooltip": "İpucu"
-          },
-          "quote": {
-            "add": "Sitat əlavə et",
-            "additional": "Sitat vidjetinin üslubunu fərdiləşdirmək üçün digər parametrlər",
-            "author": "Müəllif",
-            "author_details": "Müəllif məlumatlarını",
-            "author_img": "Müəllif şəkli göstər",
-            "author_link": "Müəllif linki",
-            "buttons": {
-              "copy": "Kopyala",
-              "favourite": "Sevimli",
-              "subtitle": "Sitatda hansı düymələri göstərmək istədiyinizi seçin",
-              "title": "Düymələr",
-              "tweet": "Tvitter"
-            },
-            "custom": "Xüsusi sitat",
-            "custom_author": "Xüsusi müəllif",
-            "custom_buttons": "Düymələr",
-            "custom_subtitle": "Öz xüsusi sitatlarınızı təyin edin",
-            "no_quotes": "Sitat yoxdur",
-            "source_subtitle": "Sitatları haradan almaq istədiyinizi seçin",
-            "title": "Sitat"
-          },
-          "search": {
-            "additional": "Axtarış vidjeti ekranı və funksionallığı üçün əlavə seçimlər",
-            "autocomplete": "Avtomatik tamamlama",
-            "autocomplete_provider": "Avtomatik Tamamlama Təchizatçısı",
-            "autocomplete_provider_subtitle": "Avtomatik tamamlama açılan nəticələr üçün istifadə ediləcək axtarış motoru",
-            "custom": "Xüsusi Axtarış URL-i",
-            "dropdown": "Axtarış Açılan Siyahısı",
-            "focus": "Vərəqi açarkən fokusla",
-            "search_engine": "Axtarış Motoru",
-            "search_engine_subtitle": "Axtarış çubuğunda istifadə ediləcək axtarış motorunu seçin",
-            "title": "Axtarış",
-            "voice_search": "Səsli axtarış"
-          },
-          "stats": {
-            "achievement_unlocked": "Nailiyyət Açıldı: {name}",
-            "achievements": "Nailiyyətlər",
-            "clear_modal": {
-              "information": "Bu, bütün nailiyyətləri və istifadə statistikalarını təmizləyəcək.",
-              "question": "Statistikanızı təmizləmək istəyirsinizmi?"
-            },
-            "locked": "Kilidlənib",
-            "sections": {
-              "addons_installed": "Quraşdırılan əlavələr",
-              "backgrounds_downloaded": "Yüklənən fonlar",
-              "backgrounds_favourited": "Sevimlilərə əlavə edilən fonlar",
-              "quicklinks_added": "Əlavə edilən tez keçidlər",
-              "quotes_favourited": "Sevimlilərə əlavə edilən sitatlar",
-              "settings_changed": "Dəyişdirilən parametrlər",
-              "tabs_opened": "Açılan vərəqlər"
-            },
-            "title": "Statistika",
-            "unlocked": "{count} Açıldı",
-            "usage": "İstifadə Statistikası"
-          },
-          "time": {
-            "analogue": {
-              "hour_hand": "Saat əqrəbi",
-              "hour_marks": "Saat işarələri",
-              "minute_hand": "Dəqiqə əqrəbi",
-              "minute_marks": "Dəqiqə işarələri",
-              "round_clock": "Dairəvi fon",
-              "second_hand": "Saniyə əqrəbi",
-              "subtitle": "Analoq saatın görünüşünü dəyişdirin",
-              "title": "Analoq"
-            },
-            "digital": {
-              "seconds": "Saniyələr",
-              "subtitle": "Rəqəmsal saatın görünüşünü dəyişdirin",
-              "title": "Rəqəmsal",
-              "twelvehour": "12 Saat",
-              "twentyfourhour": "24 Saat",
-              "zero": "Sıfır doldurmalı"
-            },
-            "format": "Format",
-            "percentage_complete": "Faiz tamamlandı",
-            "title": "Vaxt",
-            "type": "Növ",
-            "type_subtitle": "Saatın rəqəmsal, analoq və ya günün faiz tamamlanma formatında göstərilməsi",
-            "vertical_clock": {
-              "change_hour_colour": "Saat rəngini dəyişdir",
-              "change_minute_colour": "Dəqiqə rəngini dəyişdir",
-              "change_second_colour": "Saniyə rəngini dəyişdir",
-              "title": "Şaquli Saat"
-            }
-          },
-          "weather": {
-            "auto": "Avtomatik",
-            "custom_settings": "Xüsusi Parametrlər",
-            "extra_info": {
-              "atmospheric_pressure": "Atmosfer təzyiqi",
-              "cloudiness": "Buludluluq",
-              "humidity": "Rütubət",
-              "max_temp": "Maksimum temperatur",
-              "min_temp": "Minimum temperatur",
-              "show_description": "Təsviri göstər",
-              "show_location": "Yeri göstər",
-              "title": "Əlavə məlumat",
-              "visibility": "Görünürlük",
-              "weather_description": "Hava təsviri",
-              "wind_direction": "Küləyin istiqaməti",
-              "wind_speed": "Küləyin sürəti"
-            },
-            "location": "Yer",
-            "options": {
-              "basic": "Əsas",
-              "custom": "Xüsusi",
-              "expanded": "Genişlənmiş",
-              "standard": "Standart"
-            },
-            "temp_format": {
-              "celsius": "Selsi",
-              "fahrenheit": "Farenhayt",
-              "kelvin": "Kelvin",
-              "title": "Temperatur formatı"
-            },
-            "title": "Hava",
-            "widget_type": "Vidjet Növü"
-          }
-        }
-      },
-      "title": "Seçimlər"
-    },
-    "share": {
-      "copy_link": "Keçidi kopyala",
-      "email": "E-poçt"
-    },
-    "update": {
-      "error": {
-        "description": "Serverə qoşulmaq alınmadı",
-        "title": "Xəta"
-      },
-      "offline": {
-        "description": "Oflayn rejimdə yeniləmə qeydlərini əldə etmək mümkün deyil",
-        "title": "Oflayn"
-      },
-      "title": "Yeniləmə"
-    },
-    "welcome": {
-      "buttons": {
-        "close": "Bağla",
-        "finish": "Bitir",
-        "next": "Növbəti",
-        "preview": "Önizləmə",
-        "previous": "Əvvəlki"
-      },
-      "preview": {
-        "continue": "Quraşdırmaya davam et",
-        "description": "Hal-hazırda önizləmə rejimindəsiniz. Bu vərəqi bağladıqda parametrlər sıfırlanacaq."
-      },
-      "sections": {
-        "final": {
-          "changes": "Dəyişikliklər",
-          "changes_description": "Sonradan parametrləri dəyişdirmək üçün vərəqinizin sağ üst küncündəki parametrlər ikonuna klikləyin.",
-          "description": "Mue Tab təcrübəniz başlamaq üzrədir.",
-          "imported": "{amount} parametrlər idxal edildi",
-          "title": "Son addım"
-        },
-        "intro": {
-          "description": "Mue-nu quraşdırdığınız üçün təşəkkür edirik, uzantımızla vaxtınızdan zövq alacağınızı ümid edirik.",
-          "notices": {
-            "discord_description": "Mue icması və inkişaf etdiriciləri ilə danışın",
-            "discord_join": "Qoşul",
-            "discord_title": "Discord-a qoşulun",
-            "github_description": "Xətaları bildirin, xüsusiyyətlər əlavə edin və ya ianə edin",
-            "github_open": "Aç",
-            "github_title": "GitHub-da töhfə verin"
-          },
-          "title": "Mue Tab-a xoş gəlmisiniz"
-        },
-        "language": {
-          "description": "Mue aşağıda sadalanan dillərdə göstərilə bilər. Həmçinin bizim üzərimizdən yeni tərcümələr əlavə edə bilərsiniz",
-          "title": "Dil seçin"
-        },
-        "privacy": {
-          "description": "Mue ilə məxfiliyinizi daha da qorumaq üçün parametrləri aktiv edin.",
-          "links": {
-            "privacy_policy": "Gizlilik Siyasəti",
-            "source_code": "Mənbə Kodu",
-            "title": "Keçidlər"
-          },
-          "offline_mode_description": "Oflayn rejimi aktivləşdirmək hər hansı bir xidmətə bütün sorğuları dayandıracaq. Bu, onlayn fonların, onlayn sitatların, bazarın, havanın, tez keçidlərin, dəyişikliklər siyahısının və bəzi haqqında sekmesi məlumatlarının deaktiv olmasına səbəb olacaq.",
-          "title": "Gizlilik Seçimləri"
-        },
-        "settings": {
-          "description": "Mue-nu yeni bir cihazda quraşdırırsınız? Köhnə parametrlərinizi idxal edə bilərsiniz!",
-          "tip": "Köhnə parametrlərinizi köhnə Mue quraşdırmanızda Ətraflı sekmesine keçərək ixrac edə bilərsiniz. Sonra JSON faylını yükləyəcək ixrac düyməsini klikləməlisiniz. Bu faylı buraya yükləyərək əvvəlki Mue quraşdırmanızdakı parametrləri və seçimləri keçirə bilərsiniz.",
-          "title": "Parametrləri İdxal et"
-        },
-        "style": {
-          "description": "Mue hazırda miras üslubu və yeni buraxılmış müasir üslub arasında seçim təklif edir.",
-          "legacy": "Miras",
-          "modern": "Müasir",
-          "title": "Üslub seçin"
-        },
-        "theme": {
-          "description": "Mue həm açıq, həm də tünd temada mövcuddur və ya bu, sistem temanızdan asılı olaraq avtomatik təyin edilə bilər.",
-          "tip": "Avto parametrlərindən istifadə etmək kompüterinizdəki temadan istifadə edəcək. Bu parametr modallara və ekranda göstərilən bəzi vidjetlərə, məsələn, hava və qeydlərə təsir edəcək.",
-          "title": "Bir tema seçin"
-        }
-      },
-      "tip": "Sürətli İpucu"
-    }
-  },
   "tabname": "Yeni Vərəq",
-  "toasts": {
-    "error": "Bir şey səhv getdi",
-    "imported": "Uğurla idxal edildi",
-    "installed": "Uğurla quraşdırıldı",
-    "link_copied": "Keçid kopyalandı",
-    "no_storage": "Kifayət qədər yaddaş yoxdur",
-    "notes": "Qeydlər kopyalandı",
-    "quote": "Sitat kopyalandı",
-    "reset": "Uğurla sıfırlandı",
-    "stats_reset": "Statistikalar sıfırlandı",
-    "uninstalled": "Uğurla silindi",
-    "updated": "Uğurla yeniləndi"
-  },
   "widgets": {
+    "greeting": {
+      "morning": "Sabahınız Xeyir",
+      "afternoon": "Günortanız Xeyir",
+      "evening": "Axşamınız Xeyir",
+      "christmas": "Milad Bayramınız Mübarək",
+      "newyear": "Yeni İliniz Mübarək",
+      "halloween": "Xellouin Bayramınız Mübarək",
+      "birthday": "Ad Gününüz Mübarək"
+    },
     "background": {
-      "camera": "Kamera",
-      "category": "Kateqoriya",
-      "confirm": "Təsdiq et",
       "credit": "Fotoşəkil müəllifi",
+      "unsplash": "Unsplash-da",
+      "information": "Məlumat",
       "download": "Yüklə",
       "downloads": "Yükləmələr",
-      "exclude": "Bir daha göstərmə",
-      "exclude_confirm": "Bu şəkli bir daha görmək istədiyinizə əminsiniz?\nQeyd: əgər \"{category}\" şəkillərini bəyənmirsinizsə, fon mənbə parametrlərində kateqoriyanı seçməyə bilərsiniz.",
-      "information": "Məlumat",
+      "views": "Baxışlar",
       "likes": "Bəyənmələr",
       "location": "Yer",
+      "camera": "Kamera",
       "resolution": "Həllolma",
       "source": "Mənbə",
-      "unsplash": "Unsplash-da",
-      "views": "Baxışlar"
+      "category": "Kateqoriya",
+      "exclude": "Bir daha göstərmə",
+      "exclude_confirm": "Bu şəkli bir daha görmək istədiyinizə əminsiniz?\nQeyd: əgər \"{category}\" şəkillərini bəyənmirsinizsə, fon mənbə parametrlərində kateqoriyanı seçməyə bilərsiniz.",
+      "confirm": "Təsdiq et"
+    },
+    "search": "Axtar",
+    "quicklinks": {
+      "new": "Yeni Keçid",
+      "edit": "Keçidi Redaktə et",
+      "name": "Ad",
+      "url": "URL",
+      "icon": "İkon (istəyə bağlı)",
+      "add": "Əlavə et",
+      "name_error": "Ad göstərilməlidir",
+      "url_error": "URL göstərilməlidir"
     },
     "date": {
       "week": "Həftə"
     },
-    "greeting": {
-      "afternoon": "Günortanız Xeyir",
-      "birthday": "Ad Gününüz Mübarək",
-      "christmas": "Milad Bayramınız Mübarək",
-      "evening": "Axşamınız Xeyir",
-      "halloween": "Xellouin Bayramınız Mübarək",
-      "morning": "Sabahınız Xeyir",
-      "newyear": "Yeni İliniz Mübarək"
-    },
-    "navbar": {
-      "apps": {
-        "no_apps": "Tətbiq keçidləri tapılmadı",
-        "title": "Tətbiqlər"
-      },
-      "notes": {
-        "placeholder": "Buraya yazın",
-        "title": "Qeydlər"
-      },
-      "todo": {
-        "add": "Əlavə et",
-        "no_todos": "Ediləcək tapşırıq yoxdur",
-        "pin": "Sancaqla",
-        "title": "Ediləcək"
-      },
-      "tooltips": {
-        "refresh": "Yenilə"
-      }
-    },
-    "quicklinks": {
-      "add": "Əlavə et",
-      "edit": "Keçidi Redaktə et",
-      "icon": "İkon (istəyə bağlı)",
-      "name": "Ad",
-      "name_error": "Ad göstərilməlidir",
-      "new": "Yeni Keçid",
-      "url": "URL",
-      "url_error": "URL göstərilməlidir"
+    "weather": {
+      "not_found": "Tapılmadı",
+      "meters": "{amount} metr",
+      "extra_information": "Əlavə Məlumat",
+      "feels_like": "Hiss Olunan {amount}"
     },
     "quote": {
-      "copy": "Kopyala",
-      "favourite": "Sevimli",
       "link_tooltip": "Vikipediyada aç",
       "share": "Paylaş",
+      "copy": "Kopyala",
+      "favourite": "Sevimli",
       "unfavourite": "Sevimlidən çıxar"
     },
-    "search": "Axtar",
-    "weather": {
-      "extra_information": "Əlavə Məlumat",
-      "feels_like": "Hiss Olunan {amount}",
-      "meters": "{amount} metr",
-      "not_found": "Tapılmadı"
+    "navbar": {
+      "tooltips": {
+        "refresh": "Yenilə"
+      },
+      "notes": {
+        "title": "Qeydlər",
+        "placeholder": "Buraya yazın"
+      },
+      "todo": {
+        "title": "Ediləcək",
+        "pin": "Sancaqla",
+        "add": "Əlavə et",
+        "no_todos": "Ediləcək tapşırıq yoxdur"
+      },
+      "apps": {
+        "title": "Tətbiqlər",
+        "no_apps": "Tətbiq keçidləri tapılmadı"
+      }
     }
+  },
+  "modals": {
+    "main": {
+      "title": "Seçimlər",
+      "loading": "Yüklənir...",
+      "file_upload_error": "Fayl 2MB-dan böyükdür",
+      "navbar": {
+        "settings": "Parametrlər",
+        "library": "Əlavələr",
+        "discover": "Bazarı"
+      },
+      "error_boundary": {
+        "title": "Xəta",
+        "message": "Mue-nun bu komponentini yükləmək alınmadı",
+        "report_error": "Xətanı Bildir",
+        "sent": "Göndərildi!",
+        "refresh": "Yenilə"
+      },
+      "settings": {
+        "enabled": "Aktivdir",
+        "open_knowledgebase": "Bilik Bazası Aç",
+        "additional_settings": "Əlavə Parametrlər",
+        "reminder": {
+          "title": "XƏBƏRDARLIQ",
+          "message": "Bütün dəyişikliklərin qüvvəyə minməsi üçün səhifə yenilənməlidir."
+        },
+        "sections": {
+          "header": {
+            "more_info": "Daha çox məlumat",
+            "report_issue": "Problemi Bildir",
+            "enabled": "Bu vidjeti göstərmək və ya göstərməmək seçimi",
+            "size": "Vidjetin ölçüsünü tənzimləmək üçün sürgü"
+          },
+          "time": {
+            "title": "Vaxt",
+            "format": "Format",
+            "type": "Növ",
+            "type_subtitle": "Saatın rəqəmsal, analoq və ya günün faiz tamamlanma formatında göstərilməsi",
+            "digital": {
+              "title": "Rəqəmsal",
+              "subtitle": "Rəqəmsal saatın görünüşünü dəyişdirin",
+              "seconds": "Saniyələr",
+              "twentyfourhour": "24 Saat",
+              "twelvehour": "12 Saat",
+              "zero": "Sıfır doldurmalı"
+            },
+            "analogue": {
+              "title": "Analoq",
+              "subtitle": "Analoq saatın görünüşünü dəyişdirin",
+              "second_hand": "Saniyə əqrəbi",
+              "minute_hand": "Dəqiqə əqrəbi",
+              "hour_hand": "Saat əqrəbi",
+              "hour_marks": "Saat işarələri",
+              "minute_marks": "Dəqiqə işarələri",
+              "round_clock": "Dairəvi fon"
+            },
+            "percentage_complete": "Faiz tamamlandı",
+            "vertical_clock": {
+              "title": "Şaquli Saat",
+              "change_hour_colour": "Saat rəngini dəyişdir",
+              "change_minute_colour": "Dəqiqə rəngini dəyişdir",
+              "change_second_colour": "Saniyə rəngini dəyişdir"
+            }
+          },
+          "date": {
+            "title": "Tarix",
+            "week_number": "Həftə nömrəsi",
+            "day_of_week": "Həftənin günü",
+            "datenth": "Tarix nth",
+            "type": {
+              "short": "Qısa",
+              "long": "Uzun",
+              "subtitle": "Tarixin uzun və ya qısa formatda göstərilməsi"
+            },
+            "type_settings": "Seçilmiş tarix növü üçün ekran parametrləri və formatı",
+            "short_date": "Qısa tarix",
+            "short_format": "Qısa format",
+            "long_format": "Uzun format",
+            "short_separator": {
+              "title": "Qısa ayrıcı",
+              "dots": "Nöqtələr",
+              "dash": "Tire",
+              "gaps": "Boşluqlar",
+              "slashes": "Sləşlər"
+            }
+          },
+          "quote": {
+            "title": "Sitat",
+            "additional": "Sitat vidjetinin üslubunu fərdiləşdirmək üçün digər parametrlər",
+            "author_link": "Müəllif linki",
+            "author_details": "Müəllif məlumatlarını",
+            "custom": "Xüsusi sitat",
+            "custom_subtitle": "Öz xüsusi sitatlarınızı təyin edin",
+            "no_quotes": "Sitat yoxdur",
+            "author": "Müəllif",
+            "custom_buttons": "Düymələr",
+            "custom_author": "Xüsusi müəllif",
+            "author_img": "Müəllif şəkli göstər",
+            "add": "Sitat əlavə et",
+            "source_subtitle": "Sitatları haradan almaq istədiyinizi seçin",
+            "buttons": {
+              "title": "Düymələr",
+              "subtitle": "Sitatda hansı düymələri göstərmək istədiyinizi seçin",
+              "copy": "Kopyala",
+              "tweet": "Tvitter",
+              "favourite": "Sevimli"
+            }
+          },
+          "greeting": {
+            "title": "Salamlaşma",
+            "events": "Hadisələr",
+            "events_description": "Ad günləri kimi Mue-da hadisələri idarə edin.",
+            "enable_events": "Xüsusi günlərdə mesajları göstər",
+            "default": "Varsayılan salamlaşma mesajı",
+            "name": "Salamlaşma üçün ad",
+            "birthday": "Ad günü",
+            "birthday_subtitle": "Ad gününüz olanda 'Ad Gününüz Mübarək' mesajını göstərin",
+            "birthday_age": "Ad günü yaşı",
+            "birthday_date": "Ad günü tarixi",
+            "additional": "Salamlaşma ekranı üçün parametrlər",
+            "custom": "Xüsusi hadisələr",
+            "event_name": "Hadisə adı",
+            "day": "Gün",
+            "month": "Ay",
+            "no_events": "Hadisə yoxdur",
+            "no_events_description": "Bəzi hadisələr əlavə edin",
+            "add_event": "Hadisə əlavə et"
+          },
+          "background": {
+            "title": "Fon",
+            "transition": "Solğunlaşma keçidi",
+            "photo_information": "Foto məlumatını göstər",
+            "show_map": "Mövcud olduqda foto məlumatında yer xəritəsini göstər",
+            "categories": "Kateqoriyalar",
+            "buttons": {
+              "title": "Düymələr",
+              "view": "Maksimallaşdır",
+              "favourite": "Sevimli",
+              "download": "Yüklə"
+            },
+            "effects": {
+              "title": "Effektlər",
+              "subtitle": "Fon şəkillərinə effektlər əlavə edin",
+              "blur": "Bulanıqlığı tənzimləyin",
+              "brightness": "Parlaqlığı tənzimləyin",
+              "filters": {
+                "title": "Fon filtri",
+                "amount": "Filtr miqdarı",
+                "grayscale": "Boz rəng",
+                "sepia": "Sepiya",
+                "invert": "Tərs çevir",
+                "saturate": "Doyma",
+                "contrast": "Kontrast"
+              }
+            },
+            "type": {
+              "title": "Növ",
+              "api": "API",
+              "custom_image": "Xüsusi şəkil",
+              "custom_colour": "Xüsusi rəng/qradiyent",
+              "random_colour": "Təsadüfi rəng",
+              "random_gradient": "Təsadüfi qradiyent"
+            },
+            "unsplash": {
+              "title": "Unsplash Kolleksiyası",
+              "subtitle": "Fon üçün istifadə etmək istədiyiniz kolleksiyanı seçin",
+              "id": "Kolleksiya ID-ləri",
+              "id_subtitle": "Vergüllə ayrılmış Unsplash ID-ləri daxil edin"
+            },
+            "source": {
+              "title": "Mənbə",
+              "subtitle": "Fon şəkillərini haradan əldə etməyi seçin",
+              "api": "Fon API",
+              "custom_background": "Xüsusi fon",
+              "custom_colour": "Xüsusi fon rəngi",
+              "upload": "Yüklə",
+              "add_colour": "Rəng əlavə et",
+              "add_background": "Fon əlavə et",
+              "drop_to_upload": "Yükləmək üçün atın",
+              "formats": "Mövcud formatlar: {list}",
+              "select": "Yaxud Seçin",
+              "add_url": "URL əlavə et",
+              "disabled": "Deaktiv",
+              "loop_video": "Videonu dövr et",
+              "mute_video": "Videonu səssizləşdir",
+              "quality": {
+                "title": "Keyfiyyət",
+                "original": "Orijinal",
+                "high": "Yüksək Keyfiyyət",
+                "normal": "Normal Keyfiyyət",
+                "datasaver": "Data Qənaəti"
+              },
+              "custom_title": "Xüsusi Şəkillər",
+              "custom_description": "Kompüterinizdən şəkillər seçin",
+              "remove": "Şəkli Sil"
+            },
+            "display": "Ekran",
+            "display_subtitle": "Fon və foto məlumatlarının necə yüklənəcəyini dəyişdirin",
+            "api": "API Parametrləri",
+            "api_subtitle": "Xarici xidmətdən (API) şəkil almaq üçün seçimlər"
+          },
+          "search": {
+            "title": "Axtarış",
+            "additional": "Axtarış vidjeti ekranı və funksionallığı üçün əlavə seçimlər",
+            "search_engine": "Axtarış Motoru",
+            "search_engine_subtitle": "Axtarış çubuğunda istifadə ediləcək axtarış motorunu seçin",
+            "custom": "Xüsusi Axtarış URL-i",
+            "autocomplete": "Avtomatik tamamlama",
+            "autocomplete_provider": "Avtomatik Tamamlama Təchizatçısı",
+            "autocomplete_provider_subtitle": "Avtomatik tamamlama açılan nəticələr üçün istifadə ediləcək axtarış motoru",
+            "voice_search": "Səsli axtarış",
+            "dropdown": "Axtarış Açılan Siyahısı",
+            "focus": "Vərəqi açarkən fokusla",
+            "chrome_policy_warning": "In version 7.2, the ability to choose your search engine within Mue was removed to comply with new Chrome Web Store guidelines. Mue now uses your browser's default search engine. You can change this in Chrome Settings."
+          },
+          "weather": {
+            "title": "Hava",
+            "location": "Yer",
+            "auto": "Avtomatik",
+            "widget_type": "Vidjet Növü",
+            "temp_format": {
+              "title": "Temperatur formatı",
+              "celsius": "Selsi",
+              "fahrenheit": "Farenhayt",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Əlavə məlumat",
+              "show_location": "Yeri göstər",
+              "show_description": "Təsviri göstər",
+              "weather_description": "Hava təsviri",
+              "cloudiness": "Buludluluq",
+              "humidity": "Rütubət",
+              "visibility": "Görünürlük",
+              "wind_speed": "Küləyin sürəti",
+              "wind_direction": "Küləyin istiqaməti",
+              "min_temp": "Minimum temperatur",
+              "max_temp": "Maksimum temperatur",
+              "atmospheric_pressure": "Atmosfer təzyiqi"
+            },
+            "options": {
+              "basic": "Əsas",
+              "standard": "Standart",
+              "expanded": "Genişlənmiş",
+              "custom": "Xüsusi"
+            },
+            "custom_settings": "Xüsusi Parametrlər"
+          },
+          "quicklinks": {
+            "title": "Tez Keçidlər",
+            "additional": "Tez keçidlərin görünüşü və funksiyaları üçün əlavə parametrlər",
+            "open_new": "Yeni vərəqdə aç",
+            "tooltip": "İpucu",
+            "text_only": "Yalnız mətn göstər",
+            "add_link": "Keçid əlavə et",
+            "no_quicklinks": "Tez keçid yoxdur",
+            "edit": "Redaktə et",
+            "style": "Üslub",
+            "options": {
+              "icon": "İkon",
+              "text_only": "Yalnız Mətn",
+              "metro": "Metro"
+            },
+            "styling": "Üslublaşdırma",
+            "styling_description": "Tez keçidlərin görünüşünü fərdiləşdirin"
+          },
+          "message": {
+            "title": "Mesaj",
+            "add": "Mesaj əlavə et",
+            "messages": "Mesajlar",
+            "text": "Mətn",
+            "no_messages": "Mesaj yoxdur",
+            "add_some": "Əlavə etməyə başlayın.",
+            "content": "Mesaj Məzmunu"
+          },
+          "appearance": {
+            "title": "Görünüş",
+            "style": {
+              "title": "Vidjet Üslubu",
+              "description": "İki üslub arasında seçim edin, miras (7.0-dan əvvəlki istifadəçilər üçün aktivdir) və yeni müasir üslubumuz.",
+              "legacy": "Miras",
+              "new": "Yeni"
+            },
+            "theme": {
+              "title": "Tema",
+              "description": "Mue vidjetlərinin və modallarının mövzusunu dəyişdirin",
+              "auto": "Avto",
+              "light": "Açıq",
+              "dark": "Tünd"
+            },
+            "navbar": {
+              "title": "Naviqasiya Çubuğu",
+              "widgets": "Naviqasiya Vidjetləri",
+              "notes": "Qeydlər",
+              "refresh": "Yenilə",
+              "refresh_subtitle": "Yenilə düyməsinə kliklədiyiniz zaman nəyi yeniləmək istədiyinizi seçin",
+              "hover": "Yalnız üzərində dayandıqda göstər",
+              "additional": "Naviqasiya çubuğunun üslubunu və göstərmək istədiyiniz düymələri dəyişdirin",
+              "refresh_options": {
+                "none": "Heç biri",
+                "page": "Səhifə"
+              },
+              "apps_subtitle": "Digər tez-tez istifadə etdiyiniz veb saytların qısayolunu yaradın."
+            },
+            "font": {
+              "title": "Şrift",
+              "description": "Mue-da istifadə edilən şrifti dəyişdirin",
+              "custom": "Xüsusi şrift",
+              "google": "Google Şriftlərdən idxal edin",
+              "weight": {
+                "title": "Şrift qalınlığı",
+                "thin": "Nazik",
+                "extra_light": "Əlavə Yüngül",
+                "light": "Yüngül",
+                "normal": "Normal",
+                "medium": "Orta",
+                "semi_bold": "Yarı Qalın",
+                "bold": "Qalın",
+                "extra_bold": "Əlavə Qalın"
+              },
+              "style": {
+                "title": "Şrift üslubu",
+                "normal": "Normal",
+                "italic": "İtalik",
+                "oblique": "Maili"
+              }
+            },
+            "accessibility": {
+              "title": "Əlçatanlıq",
+              "description": "Mue-nu rahat və əlçatan edin",
+              "animations": "Animasiyalar",
+              "text_shadow": {
+                "title": "Vidjet mətn kölgəsi",
+                "new": "Yeni",
+                "old": "Köhnə",
+                "none": "Heç biri"
+              },
+              "widget_zoom": "Vidjet Zoomu",
+              "toast_duration": "Toast Müddəti",
+              "milliseconds": "millisaniyə"
+            }
+          },
+          "order": {
+            "title": "Vidjet Sırası"
+          },
+          "advanced": {
+            "title": "Ətraflı",
+            "offline_mode": "Oflayn rejim",
+            "offline_subtitle": "Aktiv olduqda, bütün onlayn xidmətlərə sorğular dayandırılacaq.",
+            "data": "Məlumat",
+            "data_description": "Mue parametrlərinizi kompüterinizə ixrac etməyi, mövcud bir parametrlər faylını idxal etməyi və ya parametrlərinizi varsayılan dəyərlərinə sıfırlamağı seçin",
+            "data_subtitle": "Mue-da məlumatlarınızı idarə edin.",
+            "reset_modal": {
+              "title": "XƏBƏRDARLIQ",
+              "question": "Mue-nu sıfırlamaq istəyirsinizmi?",
+              "information": "Bu, bütün məlumatları siləcək. Məlumatlarınızı və seçimlərinizi saxlamaq istəyirsinizsə, əvvəlcə onları ixrac edin.",
+              "cancel": "Ləğv et"
+            },
+            "customisation": "Fərdiləşdirmə",
+            "custom_css": "Xüsusi CSS",
+            "custom_css_subtitle": "Cascading Style Sheets (CSS) ilə Mue-nun üslubunu fərdiləşdirin.",
+            "custom_js": "Xüsusi JS",
+            "tab_name": "Vərəq adı",
+            "tab_name_subtitle": "Brauzerinizdə görünən vərəqin adını dəyişdirin",
+            "timezone": {
+              "title": "Saat Qurşağı",
+              "subtitle": "Kompüterinizdən avtomatik alınan saat qurşağı əvəzinə siyahıdan birini seçin",
+              "automatic": "Avtomatik"
+            },
+            "experimental_warning": "Zəhmət olmasa qeyd edin ki, Mue komandası eksperimental rejim aktiv olduqda dəstək göstərə bilmir. Zəhmət olmasa, dəstək ilə əlaqə saxlamazdan əvvəl onu söndürün və problemin davam edib-etmədiyini yoxlayın.",
+            "preview_data_disabled": {
+              "title": "Məlumat Parametrləri Deaktivdir",
+              "description": "Məlumat parametrləri önizləmə rejimində deaktivdir. Bu xüsusiyyəti istifadə etmək üçün önizləmə rejimindən çıxın."
+            }
+          },
+          "stats": {
+            "title": "Statistika",
+            "sections": {
+              "tabs_opened": "Açılan vərəqlər",
+              "backgrounds_favourited": "Sevimlilərə əlavə edilən fonlar",
+              "backgrounds_downloaded": "Yüklənən fonlar",
+              "quotes_favourited": "Sevimlilərə əlavə edilən sitatlar",
+              "quicklinks_added": "Əlavə edilən tez keçidlər",
+              "settings_changed": "Dəyişdirilən parametrlər",
+              "addons_installed": "Quraşdırılan əlavələr"
+            },
+            "usage": "İstifadə Statistikası",
+            "achievements": "Nailiyyətlər",
+            "achievement_unlocked": "Nailiyyət Açıldı: {name}",
+            "unlocked": "{count} Açıldı",
+            "locked": "Kilidlənib",
+            "clear_modal": {
+              "question": "Statistikanızı təmizləmək istəyirsinizmi?",
+              "information": "Bu, bütün nailiyyətləri və istifadə statistikalarını təmizləyəcək."
+            }
+          },
+          "experimental": {
+            "title": "Eksperimental",
+            "warning": "Bu parametrlər tam sınaqdan keçirilməyib/tətbiq edilməyib və düzgün işləməyə bilər!",
+            "developer": "Yaradıcı"
+          },
+          "language": {
+            "title": "Dil",
+            "quote": "Sitat dili"
+          },
+          "changelog": {
+            "title": "Dəyişikliklər Siyahısı",
+            "by": "{author} tərəfindən"
+          },
+          "about": {
+            "title": "Haqqında",
+            "version": {
+              "title": "Versiya",
+              "checking_update": "Yeniləmə yoxlanılır",
+              "update_available": "Yeniləmə mövcuddur",
+              "no_update": "Yeniləmə mövcud deyil",
+              "offline_mode": "Oflayn rejimdə yeniləməni yoxlamaq mümkün deyil",
+              "error": {
+                "title": "Yeniləmə məlumatını almaq alınmadı",
+                "description": "Bir xəta baş verdi"
+              }
+            },
+            "contact_us": "Bizimlə əlaqə",
+            "support_mue": "Mue-u Dəstəklə",
+            "support_subtitle": "Mue tamamilə pulsuz olduğundan, biz server xərclərini ödəmək və inkişafı maliyyələşdirmək üçün ianələrə güvənirik",
+            "support_donate": "İanə et",
+            "form_button": "Form",
+            "resources_used": {
+              "title": "İstifadə edilən resurslar",
+              "bg_images": "Oflayn fon şəkilləri"
+            },
+            "contributors": "Töhfə verənlər",
+            "supporters": "Dəstəkləyənlər",
+            "no_supporters": "Hazırda Mue-u dəstəkləyənlər yoxdur",
+            "photographers": "Fotoqraflar",
+            "curators": "Əlavə yaradanlar"
+          }
+        },
+        "buttons": {
+          "reset": "Sıfırla",
+          "import": "İdxal et",
+          "export": "İxrac et"
+        }
+      },
+      "marketplace": {
+        "by": "{author} tərəfindən",
+        "all": "Hamısı",
+        "learn_more": "Daha çox öyrən",
+        "photo_packs": "Foto Paketləri",
+        "quote_packs": "Sitat Paketləri",
+        "preset_settings": "Hazır Parametrlər",
+        "no_items": "Bu kateqoriyada heç bir maddə yoxdur",
+        "collection": "Kolleksiya",
+        "explore_collection": "Kolleksiyanı Kəşf et",
+        "add_all": "Hamısını Mue-ya Əlavə et",
+        "collections": "Kolleksiyalar",
+        "cant_find": "Axtardığınızı tapa bilmirsiniz?",
+        "knowledgebase_one": "Ziyarət edin",
+        "knowledgebase_two": "bilik bazası",
+        "knowledgebase_three": "özünüz yaratmaq üçün.",
+        "installing": "Quraşdırılır",
+        "product": {
+          "overview": "Ümumi Baxış",
+          "information": "Məlumat",
+          "last_updated": "Son Yenilənmə",
+          "description": "Təsvir",
+          "details": "Detallar",
+          "more_from_curator": "{name} tərəfindən buna bənzər daha çox",
+          "show_more": "Daha çox göstər",
+          "show_less": "Daha az göstər",
+          "show_all": "Hamısını göstər",
+          "showing": "Göstərilir",
+          "no_images": "Şəkil sayı",
+          "no_quotes": "Sitat sayı",
+          "version": "Versiya",
+          "created_by": "Yaradıcı",
+          "updated_at": "Yeniləmə tarixi",
+          "part_of": "Bir hissəsi",
+          "explore": "Kəşf et",
+          "buttons": {
+            "addtomue": "Mue-ya Əlavə et",
+            "remove": "Sil",
+            "update_addon": "Əlavəni Yenilə",
+            "back": "Geri",
+            "report": "Bildir",
+            "not_available_preview": "Önizləmədə Mövcud Deyil"
+          },
+          "not_in_language": "Bu əlavə sizin dilinizdə deyil",
+          "third_party_api": "Bu əlavə üçüncü tərəf API istifadə edir",
+          "sideload_warning": "Bu əlavə yan tərəfdən yüklənmişdir.",
+          "setting": "Parametr",
+          "value": "Dəyər"
+        },
+        "offline": {
+          "title": "Görünür, oflaynsınız",
+          "description": "Zəhmət olmasa internetə qoşulun"
+        }
+      },
+      "addons": {
+        "added": "Əlavə edildi",
+        "check_updates": "Yeniləmələri yoxla",
+        "no_updates": "Yeniləmə mövcud deyil",
+        "updates_available": "Mövcud yeniləmələr {amount}",
+        "empty": {
+          "title": "Boşdur",
+          "description": "Heç bir əlavə quraşdırılmayıb"
+        },
+        "sideload": {
+          "title": "Yan Yükləmə",
+          "description": "Kompüterinizdən bazarda olmayan bir Mue əlavəsini quraşdırın",
+          "failed": "Əlavəni yan yükləmək alınmadı",
+          "errors": {
+            "no_name": "Ad verilmir",
+            "no_author": "Müəllif verilmir",
+            "no_type": "Növ verilmir",
+            "invalid_photos": "Yanlış foto obyekt",
+            "invalid_quotes": "Yanlış sitat obyekt"
+          }
+        },
+        "sort": {
+          "title": "Sıralama",
+          "newest": "Quraşdırılmış (Ən yeni)",
+          "oldest": "Quraşdırılmış (Ən köhnə)",
+          "a_z": "Əlifba sırası (A-Z)",
+          "z_a": "Əlifba sırası (Z-A)"
+        },
+        "create": {
+          "title": "Yarat",
+          "moved_title": "Əlavə yaratma yeri dəyişdirildi!",
+          "moved_description": "7.1 yeniləməsindən sonra əlavələrin yaradılması indi veb UI-ya köçürülüb",
+          "moved_button": "Tezliklə..."
+        }
+      }
+    },
+    "update": {
+      "title": "Yeniləmə",
+      "offline": {
+        "title": "Oflayn",
+        "description": "Oflayn rejimdə yeniləmə qeydlərini əldə etmək mümkün deyil"
+      },
+      "error": {
+        "title": "Xəta",
+        "description": "Serverə qoşulmaq alınmadı"
+      }
+    },
+    "welcome": {
+      "tip": "Sürətli İpucu",
+      "sections": {
+        "intro": {
+          "title": "Mue Tab-a xoş gəlmisiniz",
+          "description": "Mue-nu quraşdırdığınız üçün təşəkkür edirik, uzantımızla vaxtınızdan zövq alacağınızı ümid edirik.",
+          "notices": {
+            "discord_title": "Discord-a qoşulun",
+            "discord_description": "Mue icması və inkişaf etdiriciləri ilə danışın",
+            "discord_join": "Qoşul",
+            "github_title": "GitHub-da töhfə verin",
+            "github_description": "Xətaları bildirin, xüsusiyyətlər əlavə edin və ya ianə edin",
+            "github_open": "Aç"
+          }
+        },
+        "language": {
+          "title": "Dil seçin",
+          "description": "Mue aşağıda sadalanan dillərdə göstərilə bilər. Həmçinin bizim üzərimizdən yeni tərcümələr əlavə edə bilərsiniz"
+        },
+        "theme": {
+          "title": "Bir tema seçin",
+          "description": "Mue həm açıq, həm də tünd temada mövcuddur və ya bu, sistem temanızdan asılı olaraq avtomatik təyin edilə bilər.",
+          "tip": "Avto parametrlərindən istifadə etmək kompüterinizdəki temadan istifadə edəcək. Bu parametr modallara və ekranda göstərilən bəzi vidjetlərə, məsələn, hava və qeydlərə təsir edəcək."
+        },
+        "style": {
+          "title": "Üslub seçin",
+          "description": "Mue hazırda miras üslubu və yeni buraxılmış müasir üslub arasında seçim təklif edir.",
+          "legacy": "Miras",
+          "modern": "Müasir"
+        },
+        "settings": {
+          "title": "Parametrləri İdxal et",
+          "description": "Mue-nu yeni bir cihazda quraşdırırsınız? Köhnə parametrlərinizi idxal edə bilərsiniz!",
+          "tip": "Köhnə parametrlərinizi köhnə Mue quraşdırmanızda Ətraflı sekmesine keçərək ixrac edə bilərsiniz. Sonra JSON faylını yükləyəcək ixrac düyməsini klikləməlisiniz. Bu faylı buraya yükləyərək əvvəlki Mue quraşdırmanızdakı parametrləri və seçimləri keçirə bilərsiniz."
+        },
+        "privacy": {
+          "title": "Gizlilik Seçimləri",
+          "description": "Mue ilə məxfiliyinizi daha da qorumaq üçün parametrləri aktiv edin.",
+          "offline_mode_description": "Oflayn rejimi aktivləşdirmək hər hansı bir xidmətə bütün sorğuları dayandıracaq. Bu, onlayn fonların, onlayn sitatların, bazarın, havanın, tez keçidlərin, dəyişikliklər siyahısının və bəzi haqqında sekmesi məlumatlarının deaktiv olmasına səbəb olacaq.",
+          "links": {
+            "title": "Keçidlər",
+            "privacy_policy": "Gizlilik Siyasəti",
+            "source_code": "Mənbə Kodu"
+          }
+        },
+        "final": {
+          "title": "Son addım",
+          "description": "Mue Tab təcrübəniz başlamaq üzrədir.",
+          "changes": "Dəyişikliklər",
+          "changes_description": "Sonradan parametrləri dəyişdirmək üçün vərəqinizin sağ üst küncündəki parametrlər ikonuna klikləyin.",
+          "imported": "{amount} parametrlər idxal edildi"
+        }
+      },
+      "buttons": {
+        "next": "Növbəti",
+        "preview": "Önizləmə",
+        "previous": "Əvvəlki",
+        "close": "Bağla",
+        "finish": "Bitir"
+      },
+      "preview": {
+        "description": "Hal-hazırda önizləmə rejimindəsiniz. Bu vərəqi bağladıqda parametrlər sıfırlanacaq.",
+        "continue": "Quraşdırmaya davam et"
+      }
+    },
+    "share": {
+      "copy_link": "Keçidi kopyala",
+      "email": "E-poçt"
+    }
+  },
+  "toasts": {
+    "quote": "Sitat kopyalandı",
+    "notes": "Qeydlər kopyalandı",
+    "reset": "Uğurla sıfırlandı",
+    "installed": "Uğurla quraşdırıldı",
+    "uninstalled": "Uğurla silindi",
+    "updated": "Uğurla yeniləndi",
+    "error": "Bir şey səhv getdi",
+    "imported": "Uğurla idxal edildi",
+    "no_storage": "Kifayət qədər yaddaş yoxdur",
+    "link_copied": "Keçid kopyalandı",
+    "stats_reset": "Statistikalar sıfırlandı"
   }
 }

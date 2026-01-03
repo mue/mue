@@ -1,703 +1,704 @@
 {
-  "modals": {
-    "main": {
-      "addons": {
-        "added": "Dodano",
-        "check_updates": "Preveri posodobitve",
-        "create": {
-          "moved_button": "Kmalu na voljo...",
-          "moved_description": "Po posodobitvi 7.1 se je ustvarjanje dodatkov preselilo v spletni vmesnik",
-          "moved_title": "Ustvarjanje dodatka je bilo premaknjeno!",
-          "title": "Ustvari"
-        },
-        "empty": {
-          "description": "Ni nameščenih dodatkov",
-          "title": "Prazno"
-        },
-        "no_updates": "Ni na voljo posodobitev",
-        "sideload": {
-          "description": "Namestite dodatek Mue, ki ni na tržnici, iz svojega računalnika",
-          "errors": {
-            "invalid_photos": "Neveljaven objekt fotografij",
-            "invalid_quotes": "Neveljaven objekt citatov",
-            "no_author": "Ni navedenega avtorja",
-            "no_name": "Ni navedenega imena",
-            "no_type": "Ni navedenega tipa"
-          },
-          "failed": "Ni uspelo stransko naložiti dodatka",
-          "title": "Stransko naloži"
-        },
-        "sort": {
-          "a_z": "Abecedno (A-Ž)",
-          "newest": "Nameščeno (najnovejše)",
-          "oldest": "Nameščeno (najstarejše)",
-          "title": "Razvrsti",
-          "z_a": "Abecedno (Ž-A)"
-        },
-        "updates_available": "Posodobitve na voljo {amount}"
-      },
-      "error_boundary": {
-        "message": "Ni uspelo naložiti te komponente Mue",
-        "refresh": "Osveži",
-        "report_error": "Pošlji poročilo o napaki",
-        "sent": "Poslano!",
-        "title": "Napaka"
-      },
-      "file_upload_error": "Datoteka je večja od 2 MB",
-      "loading": "Nalaganje...",
-      "marketplace": {
-        "add_all": "Dodaj vse v Mue",
-        "all": "Vse",
-        "by": "avtor {author}",
-        "cant_find": "Ne najdete, kar iščete?",
-        "collection": "Zbirka",
-        "collections": "Zbirke",
-        "explore_collection": "Raziskuj zbirko",
-        "installing": "Nameščanje",
-        "knowledgebase_one": "Obiščite",
-        "knowledgebase_three": "za ustvarjanje lastnih.",
-        "knowledgebase_two": "bazo znanja",
-        "learn_more": "Več informacij",
-        "no_items": "V tej kategoriji ni elementov",
-        "offline": {
-          "description": "Prosimo, povežite se z internetom",
-          "title": "Videti je, da ste brez povezave"
-        },
-        "photo_packs": "Paketi fotografij",
-        "preset_settings": "Prednastavljene nastavitve",
-        "product": {
-          "buttons": {
-            "addtomue": "Dodaj v Mue",
-            "back": "Nazaj",
-            "not_available_preview": "Ni na voljo v predogledu",
-            "remove": "Odstrani",
-            "report": "Prijavi",
-            "update_addon": "Posodobi dodatek"
-          },
-          "created_by": "Ustvaril",
-          "description": "Opis",
-          "details": "Podrobnosti",
-          "explore": "Raziskuj",
-          "information": "Informacije",
-          "last_updated": "Zadnja posodobitev",
-          "more_from_curator": "Več takšnih od {name}",
-          "no_images": "Št. slik",
-          "no_quotes": "Št. citatov",
-          "not_in_language": "Ta dodatek ni v vašem jeziku",
-          "overview": "Pregled",
-          "part_of": "Del",
-          "setting": "Nastavitev",
-          "show_all": "Prikaži vse",
-          "show_less": "Prikaži manj",
-          "show_more": "Prikaži več",
-          "showing": "Prikazujem",
-          "sideload_warning": "Ta dodatek je bil stransko naložen.",
-          "third_party_api": "Ta dodatek uporablja API tretje osebe",
-          "updated_at": "Posodobljeno dne",
-          "value": "Vrednost",
-          "version": "Različica"
-        },
-        "quote_packs": "Paketi citatov"
-      },
-      "navbar": {
-        "discover": "Tržnica",
-        "library": "Dodatki",
-        "settings": "Nastavitve"
-      },
-      "settings": {
-        "additional_settings": "Dodatne nastavitve",
-        "buttons": {
-          "export": "Izvozi",
-          "import": "Uvozi",
-          "reset": "Ponastavi"
-        },
-        "enabled": "Omogočeno",
-        "open_knowledgebase": "Odpri bazo znanja",
-        "reminder": {
-          "message": "Za uveljavitev vseh sprememb je potrebno osvežiti stran.",
-          "title": "OPOMNIK"
-        },
-        "sections": {
-          "about": {
-            "contact_us": "Kontaktirajte nas",
-            "contributors": "Sodelavci",
-            "curators": "Ustvarjalci dodatkov",
-            "form_button": "Obrazec",
-            "no_supporters": "Trenutno ni podpornikov Mue",
-            "photographers": "Fotografi",
-            "resources_used": {
-              "bg_images": "Ozadne slike brez povezave",
-              "title": "Uporabljeni viri"
-            },
-            "support_donate": "Doniraj",
-            "support_mue": "Podprite Mue",
-            "support_subtitle": "Ker je Mue popolnoma brezplačen, se zanašamo na donacije za kritje stroškov strežnika in financiranje razvoja",
-            "supporters": "Podporniki",
-            "title": "O nas",
-            "version": {
-              "checking_update": "Preverjanje posodobitve",
-              "error": {
-                "description": "Prišlo je do napake",
-                "title": "Ni uspelo pridobiti informacij o posodobitvi"
-              },
-              "no_update": "Ni na voljo posodobitev",
-              "offline_mode": "V načinu brez povezave ni mogoče preveriti posodobitve",
-              "title": "Različica",
-              "update_available": "Posodobitev na voljo"
-            }
-          },
-          "advanced": {
-            "custom_css": "Lastni CSS",
-            "custom_css_subtitle": "Naredite Mue stil prilagojen vam s kaskadnimi slogi (CSS).",
-            "custom_js": "Lastni JS",
-            "customisation": "Prilagajanje",
-            "data": "Podatki",
-            "data_description": "Izberite, ali želite izvoziti nastavitve Mue na svoj računalnik, uvoziti obstoječo datoteko nastavitev ali ponastaviti nastavitve na privzete vrednosti",
-            "data_subtitle": "Upravljajte svoje podatke na Mue.",
-            "experimental_warning": "Upoštevajte, da ekipa Mue ne more nuditi podpore, če imate vklopljen eksperimentalni način. Prosimo, najprej ga onemogočite in preverite, ali se težava še vedno pojavlja, preden stopite v stik s podporo.",
-            "offline_mode": "Način brez povezave",
-            "offline_subtitle": "Ko je omogočen, bodo vse zahteve do spletnih storitev onemogočene.",
-            "preview_data_disabled": {
-              "description": "Nastavitve podatkov so onemogočene v načinu predogleda. Prosimo, zapustite način predogleda za uporabo te funkcije.",
-              "title": "Nastavitve podatkov onemogočene"
-            },
-            "reset_modal": {
-              "cancel": "Prekliči",
-              "information": "To bo izbrisalo vse podatke. Če želite obdržati svoje podatke in nastavitve, jih najprej izvozite.",
-              "question": "Ali želite ponastaviti Mue?",
-              "title": "OPOZORILO"
-            },
-            "tab_name": "Ime zavihka",
-            "tab_name_subtitle": "Spremenite ime zavihka, ki se prikaže v vašem brskalniku",
-            "timezone": {
-              "automatic": "Samodejno",
-              "subtitle": "Izberite časovni pas s seznama namesto samodejnega privzetega iz vašega računalnika",
-              "title": "Časovni pas"
-            },
-            "title": "Napredno"
-          },
-          "appearance": {
-            "accessibility": {
-              "animations": "Animacije",
-              "description": "Naredite Mue udoben in dostopen",
-              "milliseconds": "milisekunde",
-              "text_shadow": {
-                "new": "Nova",
-                "none": "Brez",
-                "old": "Stara",
-                "title": "Senca besedila pripomočka"
-              },
-              "title": "Dostopnost",
-              "toast_duration": "Trajanje obvestila",
-              "widget_zoom": "Povečava pripomočka"
-            },
-            "font": {
-              "custom": "Lastna pisava",
-              "description": "Spremenite pisavo, ki se uporablja v Mue",
-              "google": "Uvozi iz Google Pisav",
-              "style": {
-                "italic": "Ležeče",
-                "normal": "Normalno",
-                "oblique": "Poševno",
-                "title": "Slog pisave"
-              },
-              "title": "Pisava",
-              "weight": {
-                "bold": "Krepka",
-                "extra_bold": "Zelo krepka",
-                "extra_light": "Zelo svetla",
-                "light": "Svetla",
-                "medium": "Srednja",
-                "normal": "Normalna",
-                "semi_bold": "Polkrepka",
-                "thin": "Tanka",
-                "title": "Debelina pisave"
-              }
-            },
-            "navbar": {
-              "additional": "Spremenite slog navigacijske vrstice in katere gumbe želite prikazati",
-              "apps_subtitle": "Ustvarite bližnjico do drugih pogosto uporabljenih spletnih mest.",
-              "hover": "Prikaži samo ob prehodu miške",
-              "notes": "Opombe",
-              "refresh": "Osveži",
-              "refresh_options": {
-                "none": "Nič",
-                "page": "Stran"
-              },
-              "refresh_subtitle": "Izberite, kaj se osveži, ko kliknete gumb za osvežitev",
-              "title": "Navigacijska vrstica",
-              "widgets": "Pripomočki navigacijske vrstice"
-            },
-            "style": {
-              "description": "Izberite med dvema slogoma, zapuščena (omogočena za uporabnike pred 7.0) in naša moderna elegantna oblika.",
-              "legacy": "Zapuščena",
-              "new": "Nova",
-              "title": "Slog pripomočka"
-            },
-            "theme": {
-              "auto": "Samodejno",
-              "dark": "Temna",
-              "description": "Spremenite temo pripomočkov in modala Mue",
-              "light": "Svetla",
-              "title": "Tema"
-            },
-            "title": "Videz"
-          },
-          "background": {
-            "api": "API nastavitve",
-            "api_subtitle": "Možnosti za pridobivanje slike iz zunanje storitve (API)",
-            "buttons": {
-              "download": "Prenesi",
-              "favourite": "Priljubljeno",
-              "title": "Gumbi",
-              "view": "Povečaj"
-            },
-            "categories": "Kategorije",
-            "display": "Prikaz",
-            "display_subtitle": "Spremenite, kako se ozadje in informacije o fotografiji nalagajo",
-            "effects": {
-              "blur": "Nastavi zamegljenost",
-              "brightness": "Nastavi svetlost",
-              "filters": {
-                "amount": "Količina filtra",
-                "contrast": "Kontrast",
-                "grayscale": "Črno-belo",
-                "invert": "Inverzija",
-                "saturate": "Nasičenost",
-                "sepia": "Sepija",
-                "title": "Filter ozadja"
-              },
-              "subtitle": "Dodajte učinke slikam ozadja",
-              "title": "Učinki"
-            },
-            "photo_information": "Prikaži informacije o fotografiji",
-            "show_map": "Prikaži zemljevid lokacije na informacijah o fotografiji, če je na voljo",
-            "source": {
-              "add_background": "Dodaj ozadje",
-              "add_colour": "Dodaj barvo",
-              "add_url": "Dodaj URL",
-              "api": "API za ozadje",
-              "custom_background": "Lastno ozadje",
-              "custom_colour": "Lastna barva ozadja",
-              "custom_description": "Izberite slike iz svojega računalnika",
-              "custom_title": "Lastne slike",
-              "disabled": "Onemogočeno",
-              "drop_to_upload": "Spustite za nalaganje",
-              "formats": "Razpoložljivi formati: {list}",
-              "loop_video": "Ponovi video",
-              "mute_video": "Utišaj video",
-              "quality": {
-                "datasaver": "Varčevalec podatkov",
-                "high": "Visoka kakovost",
-                "normal": "Normalna kakovost",
-                "original": "Izvirnik",
-                "title": "Kakovost"
-              },
-              "remove": "Odstrani sliko",
-              "select": "Ali izberite",
-              "subtitle": "Izberite, od kod želite pridobiti slike ozadja",
-              "title": "Vir",
-              "upload": "Naloži"
-            },
-            "title": "Ozadje",
-            "transition": "Prehod zbledi",
-            "type": {
-              "api": "API",
-              "custom_colour": "Lastna barva/gradient",
-              "custom_image": "Lastna slika",
-              "random_colour": "Naključna barva",
-              "random_gradient": "Naključni gradient",
-              "title": "Tip"
-            },
-            "unsplash": {
-              "id": "ID zbirke",
-              "id_subtitle": "Vnesite ločen z vejico seznam ID-jev Unsplash",
-              "subtitle": "Izberite zbirke, ki jih želite uporabiti za svoje ozadje",
-              "title": "Unsplash zbirke"
-            }
-          },
-          "changelog": {
-            "by": "Avtor {author}",
-            "title": "Dnevnik sprememb"
-          },
-          "date": {
-            "datenth": "Datum nth",
-            "day_of_week": "Dan v tednu",
-            "long_format": "Dolga oblika",
-            "short_date": "Kratki datum",
-            "short_format": "Kratka oblika",
-            "short_separator": {
-              "dash": "Vejica",
-              "dots": "Pike",
-              "gaps": "Presledki",
-              "slashes": "Poševnice",
-              "title": "Kratko ločilo"
-            },
-            "title": "Datum",
-            "type": {
-              "long": "Dolgo",
-              "short": "Kratko",
-              "subtitle": "Ali želite prikazati datum v dolgi ali kratki obliki"
-            },
-            "type_settings": "Prikazne nastavitve in oblika za izbrani tip datuma",
-            "week_number": "Številka tedna"
-          },
-          "experimental": {
-            "developer": "Razvijalec",
-            "title": "Eksperimentalno",
-            "warning": "Te nastavitve niso bile popolnoma preizkušene/implementirane in morda ne bodo delovale pravilno!"
-          },
-          "greeting": {
-            "add_event": "Dodaj dogodek",
-            "additional": "Nastavitve za prikaz pozdrava",
-            "birthday": "Rojstni dan",
-            "birthday_age": "Starost na rojstni dan",
-            "birthday_date": "Datum rojstnega dne",
-            "birthday_subtitle": "Prikaži sporočilo Vse najboljše, ko je tvoj rojstni dan",
-            "custom": "Lastni dogodki",
-            "day": "Dan",
-            "default": "Privzeto pozdravno sporočilo",
-            "enable_events": "Prikaži sporočila na posebne dneve",
-            "event_name": "Ime dogodka",
-            "events": "Dogodki",
-            "events_description": "Nadzorujte dogodke na Mue, kot so rojstni dnevi.",
-            "month": "Mesec",
-            "name": "Ime za pozdrav",
-            "no_events": "Ni dogodkov",
-            "no_events_description": "Dodajte nekaj dogodkov",
-            "title": "Pozdrav"
-          },
-          "header": {
-            "enabled": "Izberite, ali želite prikazati ta pripomoček",
-            "more_info": "Več informacij",
-            "report_issue": "Prijavi težavo",
-            "size": "Drsnik za nadzor velikosti pripomočka"
-          },
-          "language": {
-            "quote": "Jezik citata",
-            "title": "Jezik"
-          },
-          "message": {
-            "add": "Dodaj sporočilo",
-            "add_some": "Dodajte jih.",
-            "content": "Vsebina sporočila",
-            "messages": "Sporočila",
-            "no_messages": "Ni sporočil",
-            "text": "Besedilo",
-            "title": "Sporočilo"
-          },
-          "order": {
-            "title": "Vrstni red pripomočkov"
-          },
-          "quicklinks": {
-            "add_link": "Dodaj povezavo",
-            "additional": "Dodatne nastavitve za prikaz in funkcije hitrih povezav",
-            "edit": "Uredi",
-            "no_quicklinks": "Ni hitrih povezav",
-            "open_new": "Odpri v novem zavihku",
-            "options": {
-              "icon": "Ikona",
-              "metro": "Metro",
-              "text_only": "Samo besedilo"
-            },
-            "style": "Slog",
-            "styling": "Slog",
-            "styling_description": "Prilagodite videz hitrih povezav",
-            "text_only": "Prikaži samo besedilo",
-            "title": "Hitre povezave",
-            "tooltip": "Orodna vrstica"
-          },
-          "quote": {
-            "add": "Dodaj citat",
-            "additional": "Druge nastavitve za prilagoditev sloga pripomočka za citate",
-            "author": "Avtor",
-            "author_details": "Podrobnosti avtorja",
-            "author_img": "Prikaži sliko avtorja",
-            "author_link": "Povezava avtorja",
-            "buttons": {
-              "copy": "Kopiraj",
-              "favourite": "Priljubljeno",
-              "subtitle": "Izberite, katere gumbe želite prikazati na citatu",
-              "title": "Gumbi",
-              "tweet": "Tviti"
-            },
-            "custom": "Lastni citat",
-            "custom_author": "Lastni avtor",
-            "custom_buttons": "Gumbi",
-            "custom_subtitle": "Nastavite svoje lastne citate",
-            "no_quotes": "Brez citatov",
-            "source_subtitle": "Izberite, od kod želite pridobiti citate",
-            "title": "Citati"
-          },
-          "search": {
-            "additional": "Dodatne možnosti za prikaz in funkcionalnost pripomočka za iskanje",
-            "autocomplete": "Samodejno dokončanje",
-            "autocomplete_provider": "Ponudnik samodejnega dokončanja",
-            "autocomplete_provider_subtitle": "Iskalnik za uporabo pri rezultatih samodejnega dokončanja v spustnem meniju",
-            "custom": "Lastni URL iskanja",
-            "dropdown": "Spustni meni iskanja",
-            "focus": "Osredotoči se ob odprtju zavihka",
-            "search_engine": "Iskalnik",
-            "search_engine_subtitle": "Izberite iskalnik za uporabo v iskalni vrstici",
-            "title": "Iskanje",
-            "voice_search": "Glasovno iskanje"
-          },
-          "stats": {
-            "achievement_unlocked": "Dosežek odklenjen: {name}",
-            "achievements": "Dosežki",
-            "clear_modal": {
-              "information": "To bo počistilo vse dosežke in statistiko uporabe.",
-              "question": "Ali želite počistiti svojo statistiko?"
-            },
-            "locked": "Zaklenjeno",
-            "sections": {
-              "addons_installed": "Nameščeni dodatki",
-              "backgrounds_downloaded": "Prenesena ozadja",
-              "backgrounds_favourited": "Priljubljena ozadja",
-              "quicklinks_added": "Dodane hitre povezave",
-              "quotes_favourited": "Priljubljeni citati",
-              "settings_changed": "Spremenjene nastavitve",
-              "tabs_opened": "Odprti zavihki"
-            },
-            "title": "Statistika",
-            "unlocked": "{count} odklenjenih",
-            "usage": "Statistika uporabe"
-          },
-          "time": {
-            "analogue": {
-              "hour_hand": "Kazalec ur",
-              "hour_marks": "Oznake ur",
-              "minute_hand": "Kazalec minut",
-              "minute_marks": "Oznake minut",
-              "round_clock": "Zaobljeno ozadje",
-              "second_hand": "Kazalec sekund",
-              "subtitle": "Spremenite videz analogne ure",
-              "title": "Analogno"
-            },
-            "digital": {
-              "seconds": "Sekunde",
-              "subtitle": "Spremenite videz digitalne ure",
-              "title": "Digitalno",
-              "twelvehour": "12-urna",
-              "twentyfourhour": "24-urna",
-              "zero": "Z ničlo izpolnjene"
-            },
-            "format": "Oblika",
-            "percentage_complete": "Odstotek dokončanega",
-            "title": "Čas",
-            "type": "Tip",
-            "type_subtitle": "Izberite, ali želite prikazati čas v digitalni obliki, analogni obliki ali kot odstotek dneva",
-            "vertical_clock": {
-              "change_hour_colour": "Spremeni barvo besedila ure",
-              "change_minute_colour": "Spremeni barvo besedila minute",
-              "change_second_colour": "Spremeni barvo besedila sekunde",
-              "title": "Navpična ura"
-            }
-          },
-          "weather": {
-            "auto": "Samodejno",
-            "custom_settings": "Nastavitve po meri",
-            "extra_info": {
-              "atmospheric_pressure": "Atmosferski tlak",
-              "cloudiness": "Oblačnost",
-              "humidity": "Vlažnost",
-              "max_temp": "Maksimalna temperatura",
-              "min_temp": "Minimalna temperatura",
-              "show_description": "Prikaži opis",
-              "show_location": "Prikaži lokacijo",
-              "title": "Dodatne informacije",
-              "visibility": "Vidljivost",
-              "weather_description": "Opis vremena",
-              "wind_direction": "Smer vetra",
-              "wind_speed": "Hitrost vetra"
-            },
-            "location": "Lokacija",
-            "options": {
-              "basic": "Osnovno",
-              "custom": "Po meri",
-              "expanded": "Razširjeno",
-              "standard": "Standardno"
-            },
-            "temp_format": {
-              "celsius": "Celzija",
-              "fahrenheit": "Fahrenheit",
-              "kelvin": "Kelvin",
-              "title": "Oblika temperature"
-            },
-            "title": "Vreme",
-            "widget_type": "Tip pripomočka"
-          }
-        }
-      },
-      "title": "Možnosti"
-    },
-    "share": {
-      "copy_link": "Kopiraj povezavo",
-      "email": "E-pošta"
-    },
-    "update": {
-      "error": {
-        "description": "Ni bilo mogoče povezati s strežnikom",
-        "title": "Napaka"
-      },
-      "offline": {
-        "description": "Ni mogoče pridobiti dnevnikov posodobitev v načinu brez povezave",
-        "title": "Brez povezave"
-      },
-      "title": "Posodobitev"
-    },
-    "welcome": {
-      "buttons": {
-        "close": "Zapri",
-        "finish": "Končaj",
-        "next": "Naprej",
-        "preview": "Predogled",
-        "previous": "Nazaj"
-      },
-      "preview": {
-        "continue": "Nadaljuj z nastavitvijo",
-        "description": "Trenutno ste v načinu predogleda. Nastavitve bodo ob zapiranju tega zavihka ponastavljene."
-      },
-      "sections": {
-        "final": {
-          "changes": "Spremembe",
-          "changes_description": "Če želite kasneje spremeniti nastavitve, kliknite ikono nastavitev v zgornjem desnem kotu vašega zavihka.",
-          "description": "Vaša izkušnja z Mue Tab se bo kmalu začela.",
-          "imported": "Uvoženo {amount} nastavitev",
-          "title": "Končni korak"
-        },
-        "intro": {
-          "description": "Hvala, ker ste namestili Mue, upamo, da boste uživali v našem razširitvi.",
-          "notices": {
-            "discord_description": "Pogovarjajte se s skupnostjo in razvijalci Mue",
-            "discord_join": "Pridruži se",
-            "discord_title": "Pridružite se našemu Discordu",
-            "github_description": "Prijavite napake, dodajte funkcije ali donirajte",
-            "github_open": "Odpri",
-            "github_title": "Prispevajte na GitHubu"
-          },
-          "title": "Dobrodošli v Mue Tab"
-        },
-        "language": {
-          "description": "Mue je lahko prikazan v spodaj navedenih jezikih. Nove prevode lahko dodate tudi na našem",
-          "title": "Izberite svoj jezik"
-        },
-        "privacy": {
-          "description": "Omogočite nastavitve za nadaljnjo zaščito vaše zasebnosti z Mue.",
-          "links": {
-            "privacy_policy": "Pravilnik o zasebnosti",
-            "source_code": "Izvorna koda",
-            "title": "Povezave"
-          },
-          "offline_mode_description": "Če omogočite način brez povezave, bodo vse zahteve do katere koli storitve onemogočene. To bo povzročilo, da bodo spletna ozadja, spletni citati, tržnica, vreme, hitre povezave, dnevnik sprememb in nekatere informacije o zavihku »O nas« onemogočene.",
-          "title": "Možnosti zasebnosti"
-        },
-        "settings": {
-          "description": "Nameščate Mue na novo napravo? Lahko uvozite svoje stare nastavitve!",
-          "tip": "Svoje stare nastavitve lahko izvozite tako, da se pomaknete na zavihek Napredno v stari nastavitvi Mue. Nato morate klikniti gumb za izvoz, ki bo prenesel datoteko JSON. To datoteko lahko tukaj naložite, da prenesete svoje nastavitve in preference iz prejšnje namestitve Mue.",
-          "title": "Uvozi nastavitve"
-        },
-        "style": {
-          "description": "Mue trenutno ponuja izbiro med zapuščenim slogom in novim modernim slogom.",
-          "legacy": "Zapuščeno",
-          "modern": "Moderno",
-          "title": "Izberite slog"
-        },
-        "theme": {
-          "description": "Mue je na voljo v svetli in temni temi, lahko pa se samodejno nastavi glede na temo vašega sistema.",
-          "tip": "Uporaba samodejnih nastavitev bo uporabila temo na vašem računalniku. Ta nastavitev bo vplivala na modale in nekatere pripomočke, prikazane na zaslonu, kot so vreme in opombe.",
-          "title": "Izberite temo"
-        }
-      },
-      "tip": "Hiter nasvet"
-    }
-  },
   "tabname": "Nov zavihek",
-  "toasts": {
-    "error": "Prišlo je do napake",
-    "imported": "Uspešno uvoženo",
-    "installed": "Uspešno nameščeno",
-    "link_copied": "Povezava kopirana",
-    "no_storage": "Ni dovolj prostora za shranjevanje",
-    "notes": "Opombe kopirane",
-    "quote": "Citat kopiran",
-    "reset": "Uspešno ponastavljeno",
-    "stats_reset": "Statistika ponastavljena",
-    "uninstalled": "Uspešno odstranjeno",
-    "updated": "Uspešno posodobljeno"
-  },
   "widgets": {
+    "greeting": {
+      "morning": "Dobro jutro",
+      "afternoon": "Dober dan",
+      "evening": "Dober večer",
+      "christmas": "Vesel božič",
+      "newyear": "Srečno novo leto",
+      "halloween": "Veselo noč čarovnic",
+      "birthday": "Vse najboljše"
+    },
     "background": {
-      "camera": "Kamera",
-      "category": "Kategorija",
-      "confirm": "Potrdi",
       "credit": "Fotografija od",
+      "unsplash": "na Unsplash",
+      "information": "Informacije",
       "download": "Prenesi",
       "downloads": "Prenosi",
-      "exclude": "Ne prikaži več",
-      "exclude_confirm": "Ali ste prepričani, da ne želite več videti te slike?\nOpomba: če vam slike iz kategorije \"{category}\" niso všeč, lahko izklopite kategorijo v nastavitvah vira ozadja.",
-      "information": "Informacije",
+      "views": "Ogledi",
       "likes": "Všečki",
       "location": "Lokacija",
+      "camera": "Kamera",
       "resolution": "Ločljivost",
       "source": "Vir",
-      "unsplash": "na Unsplash",
-      "views": "Ogledi"
+      "category": "Kategorija",
+      "exclude": "Ne prikaži več",
+      "exclude_confirm": "Ali ste prepričani, da ne želite več videti te slike?\nOpomba: če vam slike iz kategorije \"{category}\" niso všeč, lahko izklopite kategorijo v nastavitvah vira ozadja.",
+      "confirm": "Potrdi"
+    },
+    "search": "Iskanje",
+    "quicklinks": {
+      "new": "Nova povezava",
+      "edit": "Uredi povezavo",
+      "name": "Ime",
+      "url": "URL",
+      "icon": "Ikona (neobvezno)",
+      "add": "Dodaj",
+      "name_error": "Vnesite ime",
+      "url_error": "Vnesite URL"
     },
     "date": {
       "week": "Teden"
     },
-    "greeting": {
-      "afternoon": "Dober dan",
-      "birthday": "Vse najboljše",
-      "christmas": "Vesel božič",
-      "evening": "Dober večer",
-      "halloween": "Veselo noč čarovnic",
-      "morning": "Dobro jutro",
-      "newyear": "Srečno novo leto"
-    },
-    "navbar": {
-      "apps": {
-        "no_apps": "Ni najdenih povezav do aplikacij",
-        "title": "Aplikacije"
-      },
-      "notes": {
-        "placeholder": "Vnesite tukaj",
-        "title": "Opombe"
-      },
-      "todo": {
-        "add": "Dodaj",
-        "no_todos": "Ni opravil",
-        "pin": "Pripni",
-        "title": "Opravila"
-      },
-      "tooltips": {
-        "refresh": "Osveži"
-      }
-    },
-    "quicklinks": {
-      "add": "Dodaj",
-      "edit": "Uredi povezavo",
-      "icon": "Ikona (neobvezno)",
-      "name": "Ime",
-      "name_error": "Vnesite ime",
-      "new": "Nova povezava",
-      "url": "URL",
-      "url_error": "Vnesite URL"
+    "weather": {
+      "not_found": "Ni najdeno",
+      "meters": "{amount} metrov",
+      "extra_information": "Dodatne informacije",
+      "feels_like": "Občutek kot {amount}"
     },
     "quote": {
-      "copy": "Kopiraj",
-      "favourite": "Priljubljeno",
       "link_tooltip": "Odpri na Wikipediji",
       "share": "Deli",
+      "copy": "Kopiraj",
+      "favourite": "Priljubljeno",
       "unfavourite": "Odstrani iz priljubljenih"
     },
-    "search": "Iskanje",
-    "weather": {
-      "extra_information": "Dodatne informacije",
-      "feels_like": "Občutek kot {amount}",
-      "meters": "{amount} metrov",
-      "not_found": "Ni najdeno"
+    "navbar": {
+      "tooltips": {
+        "refresh": "Osveži"
+      },
+      "notes": {
+        "title": "Opombe",
+        "placeholder": "Vnesite tukaj"
+      },
+      "todo": {
+        "title": "Opravila",
+        "pin": "Pripni",
+        "add": "Dodaj",
+        "no_todos": "Ni opravil"
+      },
+      "apps": {
+        "title": "Aplikacije",
+        "no_apps": "Ni najdenih povezav do aplikacij"
+      }
     }
+  },
+  "modals": {
+    "main": {
+      "title": "Možnosti",
+      "loading": "Nalaganje...",
+      "file_upload_error": "Datoteka je večja od 2 MB",
+      "navbar": {
+        "settings": "Nastavitve",
+        "library": "Dodatki",
+        "discover": "Tržnica"
+      },
+      "error_boundary": {
+        "title": "Napaka",
+        "message": "Ni uspelo naložiti te komponente Mue",
+        "report_error": "Pošlji poročilo o napaki",
+        "sent": "Poslano!",
+        "refresh": "Osveži"
+      },
+      "settings": {
+        "enabled": "Omogočeno",
+        "open_knowledgebase": "Odpri bazo znanja",
+        "additional_settings": "Dodatne nastavitve",
+        "reminder": {
+          "title": "OPOMNIK",
+          "message": "Za uveljavitev vseh sprememb je potrebno osvežiti stran."
+        },
+        "sections": {
+          "header": {
+            "more_info": "Več informacij",
+            "report_issue": "Prijavi težavo",
+            "enabled": "Izberite, ali želite prikazati ta pripomoček",
+            "size": "Drsnik za nadzor velikosti pripomočka"
+          },
+          "time": {
+            "title": "Čas",
+            "format": "Oblika",
+            "type": "Tip",
+            "type_subtitle": "Izberite, ali želite prikazati čas v digitalni obliki, analogni obliki ali kot odstotek dneva",
+            "digital": {
+              "title": "Digitalno",
+              "subtitle": "Spremenite videz digitalne ure",
+              "seconds": "Sekunde",
+              "twentyfourhour": "24-urna",
+              "twelvehour": "12-urna",
+              "zero": "Z ničlo izpolnjene"
+            },
+            "analogue": {
+              "title": "Analogno",
+              "subtitle": "Spremenite videz analogne ure",
+              "second_hand": "Kazalec sekund",
+              "minute_hand": "Kazalec minut",
+              "hour_hand": "Kazalec ur",
+              "hour_marks": "Oznake ur",
+              "minute_marks": "Oznake minut",
+              "round_clock": "Zaobljeno ozadje"
+            },
+            "percentage_complete": "Odstotek dokončanega",
+            "vertical_clock": {
+              "title": "Navpična ura",
+              "change_hour_colour": "Spremeni barvo besedila ure",
+              "change_minute_colour": "Spremeni barvo besedila minute",
+              "change_second_colour": "Spremeni barvo besedila sekunde"
+            }
+          },
+          "date": {
+            "title": "Datum",
+            "week_number": "Številka tedna",
+            "day_of_week": "Dan v tednu",
+            "datenth": "Datum nth",
+            "type": {
+              "short": "Kratko",
+              "long": "Dolgo",
+              "subtitle": "Ali želite prikazati datum v dolgi ali kratki obliki"
+            },
+            "type_settings": "Prikazne nastavitve in oblika za izbrani tip datuma",
+            "short_date": "Kratki datum",
+            "short_format": "Kratka oblika",
+            "long_format": "Dolga oblika",
+            "short_separator": {
+              "title": "Kratko ločilo",
+              "dots": "Pike",
+              "dash": "Vejica",
+              "gaps": "Presledki",
+              "slashes": "Poševnice"
+            }
+          },
+          "quote": {
+            "title": "Citati",
+            "additional": "Druge nastavitve za prilagoditev sloga pripomočka za citate",
+            "author_link": "Povezava avtorja",
+            "author_details": "Podrobnosti avtorja",
+            "custom": "Lastni citat",
+            "custom_subtitle": "Nastavite svoje lastne citate",
+            "no_quotes": "Brez citatov",
+            "author": "Avtor",
+            "custom_buttons": "Gumbi",
+            "custom_author": "Lastni avtor",
+            "author_img": "Prikaži sliko avtorja",
+            "add": "Dodaj citat",
+            "source_subtitle": "Izberite, od kod želite pridobiti citate",
+            "buttons": {
+              "title": "Gumbi",
+              "subtitle": "Izberite, katere gumbe želite prikazati na citatu",
+              "copy": "Kopiraj",
+              "tweet": "Tviti",
+              "favourite": "Priljubljeno"
+            }
+          },
+          "greeting": {
+            "title": "Pozdrav",
+            "events": "Dogodki",
+            "events_description": "Nadzorujte dogodke na Mue, kot so rojstni dnevi.",
+            "enable_events": "Prikaži sporočila na posebne dneve",
+            "default": "Privzeto pozdravno sporočilo",
+            "name": "Ime za pozdrav",
+            "birthday": "Rojstni dan",
+            "birthday_subtitle": "Prikaži sporočilo Vse najboljše, ko je tvoj rojstni dan",
+            "birthday_age": "Starost na rojstni dan",
+            "birthday_date": "Datum rojstnega dne",
+            "additional": "Nastavitve za prikaz pozdrava",
+            "custom": "Lastni dogodki",
+            "event_name": "Ime dogodka",
+            "day": "Dan",
+            "month": "Mesec",
+            "no_events": "Ni dogodkov",
+            "no_events_description": "Dodajte nekaj dogodkov",
+            "add_event": "Dodaj dogodek"
+          },
+          "background": {
+            "title": "Ozadje",
+            "transition": "Prehod zbledi",
+            "photo_information": "Prikaži informacije o fotografiji",
+            "show_map": "Prikaži zemljevid lokacije na informacijah o fotografiji, če je na voljo",
+            "categories": "Kategorije",
+            "buttons": {
+              "title": "Gumbi",
+              "view": "Povečaj",
+              "favourite": "Priljubljeno",
+              "download": "Prenesi"
+            },
+            "effects": {
+              "title": "Učinki",
+              "subtitle": "Dodajte učinke slikam ozadja",
+              "blur": "Nastavi zamegljenost",
+              "brightness": "Nastavi svetlost",
+              "filters": {
+                "title": "Filter ozadja",
+                "amount": "Količina filtra",
+                "grayscale": "Črno-belo",
+                "sepia": "Sepija",
+                "invert": "Inverzija",
+                "saturate": "Nasičenost",
+                "contrast": "Kontrast"
+              }
+            },
+            "type": {
+              "title": "Tip",
+              "api": "API",
+              "custom_image": "Lastna slika",
+              "custom_colour": "Lastna barva/gradient",
+              "random_colour": "Naključna barva",
+              "random_gradient": "Naključni gradient"
+            },
+            "unsplash": {
+              "title": "Unsplash zbirke",
+              "subtitle": "Izberite zbirke, ki jih želite uporabiti za svoje ozadje",
+              "id": "ID zbirke",
+              "id_subtitle": "Vnesite ločen z vejico seznam ID-jev Unsplash"
+            },
+            "source": {
+              "title": "Vir",
+              "subtitle": "Izberite, od kod želite pridobiti slike ozadja",
+              "api": "API za ozadje",
+              "custom_background": "Lastno ozadje",
+              "custom_colour": "Lastna barva ozadja",
+              "upload": "Naloži",
+              "add_colour": "Dodaj barvo",
+              "add_background": "Dodaj ozadje",
+              "drop_to_upload": "Spustite za nalaganje",
+              "formats": "Razpoložljivi formati: {list}",
+              "select": "Ali izberite",
+              "add_url": "Dodaj URL",
+              "disabled": "Onemogočeno",
+              "loop_video": "Ponovi video",
+              "mute_video": "Utišaj video",
+              "quality": {
+                "title": "Kakovost",
+                "original": "Izvirnik",
+                "high": "Visoka kakovost",
+                "normal": "Normalna kakovost",
+                "datasaver": "Varčevalec podatkov"
+              },
+              "custom_title": "Lastne slike",
+              "custom_description": "Izberite slike iz svojega računalnika",
+              "remove": "Odstrani sliko"
+            },
+            "display": "Prikaz",
+            "display_subtitle": "Spremenite, kako se ozadje in informacije o fotografiji nalagajo",
+            "api": "API nastavitve",
+            "api_subtitle": "Možnosti za pridobivanje slike iz zunanje storitve (API)"
+          },
+          "search": {
+            "title": "Iskanje",
+            "additional": "Dodatne možnosti za prikaz in funkcionalnost pripomočka za iskanje",
+            "search_engine": "Iskalnik",
+            "search_engine_subtitle": "Izberite iskalnik za uporabo v iskalni vrstici",
+            "custom": "Lastni URL iskanja",
+            "autocomplete": "Samodejno dokončanje",
+            "autocomplete_provider": "Ponudnik samodejnega dokončanja",
+            "autocomplete_provider_subtitle": "Iskalnik za uporabo pri rezultatih samodejnega dokončanja v spustnem meniju",
+            "voice_search": "Glasovno iskanje",
+            "dropdown": "Spustni meni iskanja",
+            "focus": "Osredotoči se ob odprtju zavihka",
+            "chrome_policy_warning": "In version 7.2, the ability to choose your search engine within Mue was removed to comply with new Chrome Web Store guidelines. Mue now uses your browser's default search engine. You can change this in Chrome Settings."
+          },
+          "weather": {
+            "title": "Vreme",
+            "location": "Lokacija",
+            "auto": "Samodejno",
+            "widget_type": "Tip pripomočka",
+            "temp_format": {
+              "title": "Oblika temperature",
+              "celsius": "Celzija",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Dodatne informacije",
+              "show_location": "Prikaži lokacijo",
+              "show_description": "Prikaži opis",
+              "weather_description": "Opis vremena",
+              "cloudiness": "Oblačnost",
+              "humidity": "Vlažnost",
+              "visibility": "Vidljivost",
+              "wind_speed": "Hitrost vetra",
+              "wind_direction": "Smer vetra",
+              "min_temp": "Minimalna temperatura",
+              "max_temp": "Maksimalna temperatura",
+              "atmospheric_pressure": "Atmosferski tlak"
+            },
+            "options": {
+              "basic": "Osnovno",
+              "standard": "Standardno",
+              "expanded": "Razširjeno",
+              "custom": "Po meri"
+            },
+            "custom_settings": "Nastavitve po meri"
+          },
+          "quicklinks": {
+            "title": "Hitre povezave",
+            "additional": "Dodatne nastavitve za prikaz in funkcije hitrih povezav",
+            "open_new": "Odpri v novem zavihku",
+            "tooltip": "Orodna vrstica",
+            "text_only": "Prikaži samo besedilo",
+            "add_link": "Dodaj povezavo",
+            "no_quicklinks": "Ni hitrih povezav",
+            "edit": "Uredi",
+            "style": "Slog",
+            "options": {
+              "icon": "Ikona",
+              "text_only": "Samo besedilo",
+              "metro": "Metro"
+            },
+            "styling": "Slog",
+            "styling_description": "Prilagodite videz hitrih povezav"
+          },
+          "message": {
+            "title": "Sporočilo",
+            "add": "Dodaj sporočilo",
+            "messages": "Sporočila",
+            "text": "Besedilo",
+            "no_messages": "Ni sporočil",
+            "add_some": "Dodajte jih.",
+            "content": "Vsebina sporočila"
+          },
+          "appearance": {
+            "title": "Videz",
+            "style": {
+              "title": "Slog pripomočka",
+              "description": "Izberite med dvema slogoma, zapuščena (omogočena za uporabnike pred 7.0) in naša moderna elegantna oblika.",
+              "legacy": "Zapuščena",
+              "new": "Nova"
+            },
+            "theme": {
+              "title": "Tema",
+              "description": "Spremenite temo pripomočkov in modala Mue",
+              "auto": "Samodejno",
+              "light": "Svetla",
+              "dark": "Temna"
+            },
+            "navbar": {
+              "title": "Navigacijska vrstica",
+              "widgets": "Pripomočki navigacijske vrstice",
+              "notes": "Opombe",
+              "refresh": "Osveži",
+              "refresh_subtitle": "Izberite, kaj se osveži, ko kliknete gumb za osvežitev",
+              "hover": "Prikaži samo ob prehodu miške",
+              "additional": "Spremenite slog navigacijske vrstice in katere gumbe želite prikazati",
+              "refresh_options": {
+                "none": "Nič",
+                "page": "Stran"
+              },
+              "apps_subtitle": "Ustvarite bližnjico do drugih pogosto uporabljenih spletnih mest."
+            },
+            "font": {
+              "title": "Pisava",
+              "description": "Spremenite pisavo, ki se uporablja v Mue",
+              "custom": "Lastna pisava",
+              "google": "Uvozi iz Google Pisav",
+              "weight": {
+                "title": "Debelina pisave",
+                "thin": "Tanka",
+                "extra_light": "Zelo svetla",
+                "light": "Svetla",
+                "normal": "Normalna",
+                "medium": "Srednja",
+                "semi_bold": "Polkrepka",
+                "bold": "Krepka",
+                "extra_bold": "Zelo krepka"
+              },
+              "style": {
+                "title": "Slog pisave",
+                "normal": "Normalno",
+                "italic": "Ležeče",
+                "oblique": "Poševno"
+              }
+            },
+            "accessibility": {
+              "title": "Dostopnost",
+              "description": "Naredite Mue udoben in dostopen",
+              "animations": "Animacije",
+              "text_shadow": {
+                "title": "Senca besedila pripomočka",
+                "new": "Nova",
+                "old": "Stara",
+                "none": "Brez"
+              },
+              "widget_zoom": "Povečava pripomočka",
+              "toast_duration": "Trajanje obvestila",
+              "milliseconds": "milisekunde"
+            }
+          },
+          "order": {
+            "title": "Vrstni red pripomočkov"
+          },
+          "advanced": {
+            "title": "Napredno",
+            "offline_mode": "Način brez povezave",
+            "offline_subtitle": "Ko je omogočen, bodo vse zahteve do spletnih storitev onemogočene.",
+            "data": "Podatki",
+            "data_description": "Izberite, ali želite izvoziti nastavitve Mue na svoj računalnik, uvoziti obstoječo datoteko nastavitev ali ponastaviti nastavitve na privzete vrednosti",
+            "data_subtitle": "Upravljajte svoje podatke na Mue.",
+            "reset_modal": {
+              "title": "OPOZORILO",
+              "question": "Ali želite ponastaviti Mue?",
+              "information": "To bo izbrisalo vse podatke. Če želite obdržati svoje podatke in nastavitve, jih najprej izvozite.",
+              "cancel": "Prekliči"
+            },
+            "customisation": "Prilagajanje",
+            "custom_css": "Lastni CSS",
+            "custom_css_subtitle": "Naredite Mue stil prilagojen vam s kaskadnimi slogi (CSS).",
+            "custom_js": "Lastni JS",
+            "tab_name": "Ime zavihka",
+            "tab_name_subtitle": "Spremenite ime zavihka, ki se prikaže v vašem brskalniku",
+            "timezone": {
+              "title": "Časovni pas",
+              "subtitle": "Izberite časovni pas s seznama namesto samodejnega privzetega iz vašega računalnika",
+              "automatic": "Samodejno"
+            },
+            "experimental_warning": "Upoštevajte, da ekipa Mue ne more nuditi podpore, če imate vklopljen eksperimentalni način. Prosimo, najprej ga onemogočite in preverite, ali se težava še vedno pojavlja, preden stopite v stik s podporo.",
+            "preview_data_disabled": {
+              "title": "Nastavitve podatkov onemogočene",
+              "description": "Nastavitve podatkov so onemogočene v načinu predogleda. Prosimo, zapustite način predogleda za uporabo te funkcije."
+            }
+          },
+          "stats": {
+            "title": "Statistika",
+            "sections": {
+              "tabs_opened": "Odprti zavihki",
+              "backgrounds_favourited": "Priljubljena ozadja",
+              "backgrounds_downloaded": "Prenesena ozadja",
+              "quotes_favourited": "Priljubljeni citati",
+              "quicklinks_added": "Dodane hitre povezave",
+              "settings_changed": "Spremenjene nastavitve",
+              "addons_installed": "Nameščeni dodatki"
+            },
+            "usage": "Statistika uporabe",
+            "achievements": "Dosežki",
+            "achievement_unlocked": "Dosežek odklenjen: {name}",
+            "unlocked": "{count} odklenjenih",
+            "locked": "Zaklenjeno",
+            "clear_modal": {
+              "question": "Ali želite počistiti svojo statistiko?",
+              "information": "To bo počistilo vse dosežke in statistiko uporabe."
+            }
+          },
+          "experimental": {
+            "title": "Eksperimentalno",
+            "warning": "Te nastavitve niso bile popolnoma preizkušene/implementirane in morda ne bodo delovale pravilno!",
+            "developer": "Razvijalec"
+          },
+          "language": {
+            "title": "Jezik",
+            "quote": "Jezik citata"
+          },
+          "changelog": {
+            "title": "Dnevnik sprememb",
+            "by": "Avtor {author}"
+          },
+          "about": {
+            "title": "O nas",
+            "version": {
+              "title": "Različica",
+              "checking_update": "Preverjanje posodobitve",
+              "update_available": "Posodobitev na voljo",
+              "no_update": "Ni na voljo posodobitev",
+              "offline_mode": "V načinu brez povezave ni mogoče preveriti posodobitve",
+              "error": {
+                "title": "Ni uspelo pridobiti informacij o posodobitvi",
+                "description": "Prišlo je do napake"
+              }
+            },
+            "contact_us": "Kontaktirajte nas",
+            "support_mue": "Podprite Mue",
+            "support_subtitle": "Ker je Mue popolnoma brezplačen, se zanašamo na donacije za kritje stroškov strežnika in financiranje razvoja",
+            "support_donate": "Doniraj",
+            "form_button": "Obrazec",
+            "resources_used": {
+              "title": "Uporabljeni viri",
+              "bg_images": "Ozadne slike brez povezave"
+            },
+            "contributors": "Sodelavci",
+            "supporters": "Podporniki",
+            "no_supporters": "Trenutno ni podpornikov Mue",
+            "photographers": "Fotografi",
+            "curators": "Ustvarjalci dodatkov"
+          }
+        },
+        "buttons": {
+          "reset": "Ponastavi",
+          "import": "Uvozi",
+          "export": "Izvozi"
+        }
+      },
+      "marketplace": {
+        "by": "avtor {author}",
+        "all": "Vse",
+        "learn_more": "Več informacij",
+        "photo_packs": "Paketi fotografij",
+        "quote_packs": "Paketi citatov",
+        "preset_settings": "Prednastavljene nastavitve",
+        "no_items": "V tej kategoriji ni elementov",
+        "collection": "Zbirka",
+        "explore_collection": "Raziskuj zbirko",
+        "add_all": "Dodaj vse v Mue",
+        "collections": "Zbirke",
+        "cant_find": "Ne najdete, kar iščete?",
+        "knowledgebase_one": "Obiščite",
+        "knowledgebase_two": "bazo znanja",
+        "knowledgebase_three": "za ustvarjanje lastnih.",
+        "installing": "Nameščanje",
+        "product": {
+          "overview": "Pregled",
+          "information": "Informacije",
+          "last_updated": "Zadnja posodobitev",
+          "description": "Opis",
+          "details": "Podrobnosti",
+          "more_from_curator": "Več takšnih od {name}",
+          "show_more": "Prikaži več",
+          "show_less": "Prikaži manj",
+          "show_all": "Prikaži vse",
+          "showing": "Prikazujem",
+          "no_images": "Št. slik",
+          "no_quotes": "Št. citatov",
+          "version": "Različica",
+          "created_by": "Ustvaril",
+          "updated_at": "Posodobljeno dne",
+          "part_of": "Del",
+          "explore": "Raziskuj",
+          "buttons": {
+            "addtomue": "Dodaj v Mue",
+            "remove": "Odstrani",
+            "update_addon": "Posodobi dodatek",
+            "back": "Nazaj",
+            "report": "Prijavi",
+            "not_available_preview": "Ni na voljo v predogledu"
+          },
+          "not_in_language": "Ta dodatek ni v vašem jeziku",
+          "third_party_api": "Ta dodatek uporablja API tretje osebe",
+          "sideload_warning": "Ta dodatek je bil stransko naložen.",
+          "setting": "Nastavitev",
+          "value": "Vrednost"
+        },
+        "offline": {
+          "title": "Videti je, da ste brez povezave",
+          "description": "Prosimo, povežite se z internetom"
+        }
+      },
+      "addons": {
+        "added": "Dodano",
+        "check_updates": "Preveri posodobitve",
+        "no_updates": "Ni na voljo posodobitev",
+        "updates_available": "Posodobitve na voljo {amount}",
+        "empty": {
+          "title": "Prazno",
+          "description": "Ni nameščenih dodatkov"
+        },
+        "sideload": {
+          "title": "Stransko naloži",
+          "description": "Namestite dodatek Mue, ki ni na tržnici, iz svojega računalnika",
+          "failed": "Ni uspelo stransko naložiti dodatka",
+          "errors": {
+            "no_name": "Ni navedenega imena",
+            "no_author": "Ni navedenega avtorja",
+            "no_type": "Ni navedenega tipa",
+            "invalid_photos": "Neveljaven objekt fotografij",
+            "invalid_quotes": "Neveljaven objekt citatov"
+          }
+        },
+        "sort": {
+          "title": "Razvrsti",
+          "newest": "Nameščeno (najnovejše)",
+          "oldest": "Nameščeno (najstarejše)",
+          "a_z": "Abecedno (A-Ž)",
+          "z_a": "Abecedno (Ž-A)"
+        },
+        "create": {
+          "title": "Ustvari",
+          "moved_title": "Ustvarjanje dodatka je bilo premaknjeno!",
+          "moved_description": "Po posodobitvi 7.1 se je ustvarjanje dodatkov preselilo v spletni vmesnik",
+          "moved_button": "Kmalu na voljo..."
+        }
+      }
+    },
+    "update": {
+      "title": "Posodobitev",
+      "offline": {
+        "title": "Brez povezave",
+        "description": "Ni mogoče pridobiti dnevnikov posodobitev v načinu brez povezave"
+      },
+      "error": {
+        "title": "Napaka",
+        "description": "Ni bilo mogoče povezati s strežnikom"
+      }
+    },
+    "welcome": {
+      "tip": "Hiter nasvet",
+      "sections": {
+        "intro": {
+          "title": "Dobrodošli v Mue Tab",
+          "description": "Hvala, ker ste namestili Mue, upamo, da boste uživali v našem razširitvi.",
+          "notices": {
+            "discord_title": "Pridružite se našemu Discordu",
+            "discord_description": "Pogovarjajte se s skupnostjo in razvijalci Mue",
+            "discord_join": "Pridruži se",
+            "github_title": "Prispevajte na GitHubu",
+            "github_description": "Prijavite napake, dodajte funkcije ali donirajte",
+            "github_open": "Odpri"
+          }
+        },
+        "language": {
+          "title": "Izberite svoj jezik",
+          "description": "Mue je lahko prikazan v spodaj navedenih jezikih. Nove prevode lahko dodate tudi na našem"
+        },
+        "theme": {
+          "title": "Izberite temo",
+          "description": "Mue je na voljo v svetli in temni temi, lahko pa se samodejno nastavi glede na temo vašega sistema.",
+          "tip": "Uporaba samodejnih nastavitev bo uporabila temo na vašem računalniku. Ta nastavitev bo vplivala na modale in nekatere pripomočke, prikazane na zaslonu, kot so vreme in opombe."
+        },
+        "style": {
+          "title": "Izberite slog",
+          "description": "Mue trenutno ponuja izbiro med zapuščenim slogom in novim modernim slogom.",
+          "legacy": "Zapuščeno",
+          "modern": "Moderno"
+        },
+        "settings": {
+          "title": "Uvozi nastavitve",
+          "description": "Nameščate Mue na novo napravo? Lahko uvozite svoje stare nastavitve!",
+          "tip": "Svoje stare nastavitve lahko izvozite tako, da se pomaknete na zavihek Napredno v stari nastavitvi Mue. Nato morate klikniti gumb za izvoz, ki bo prenesel datoteko JSON. To datoteko lahko tukaj naložite, da prenesete svoje nastavitve in preference iz prejšnje namestitve Mue."
+        },
+        "privacy": {
+          "title": "Možnosti zasebnosti",
+          "description": "Omogočite nastavitve za nadaljnjo zaščito vaše zasebnosti z Mue.",
+          "offline_mode_description": "Če omogočite način brez povezave, bodo vse zahteve do katere koli storitve onemogočene. To bo povzročilo, da bodo spletna ozadja, spletni citati, tržnica, vreme, hitre povezave, dnevnik sprememb in nekatere informacije o zavihku »O nas« onemogočene.",
+          "links": {
+            "title": "Povezave",
+            "privacy_policy": "Pravilnik o zasebnosti",
+            "source_code": "Izvorna koda"
+          }
+        },
+        "final": {
+          "title": "Končni korak",
+          "description": "Vaša izkušnja z Mue Tab se bo kmalu začela.",
+          "changes": "Spremembe",
+          "changes_description": "Če želite kasneje spremeniti nastavitve, kliknite ikono nastavitev v zgornjem desnem kotu vašega zavihka.",
+          "imported": "Uvoženo {amount} nastavitev"
+        }
+      },
+      "buttons": {
+        "next": "Naprej",
+        "preview": "Predogled",
+        "previous": "Nazaj",
+        "close": "Zapri",
+        "finish": "Končaj"
+      },
+      "preview": {
+        "description": "Trenutno ste v načinu predogleda. Nastavitve bodo ob zapiranju tega zavihka ponastavljene.",
+        "continue": "Nadaljuj z nastavitvijo"
+      }
+    },
+    "share": {
+      "copy_link": "Kopiraj povezavo",
+      "email": "E-pošta"
+    }
+  },
+  "toasts": {
+    "quote": "Citat kopiran",
+    "notes": "Opombe kopirane",
+    "reset": "Uspešno ponastavljeno",
+    "installed": "Uspešno nameščeno",
+    "uninstalled": "Uspešno odstranjeno",
+    "updated": "Uspešno posodobljeno",
+    "error": "Prišlo je do napake",
+    "imported": "Uspešno uvoženo",
+    "no_storage": "Ni dovolj prostora za shranjevanje",
+    "link_copied": "Povezava kopirana",
+    "stats_reset": "Statistika ponastavljena"
   }
 }

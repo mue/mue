@@ -1,703 +1,704 @@
 {
-  "modals": {
-    "main": {
-      "addons": {
-        "added": "Terinstal",
-        "check_updates": "Periksa pembaruan",
-        "create": {
-          "moved_button": "Get Started",
-          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_title": "Create add-on has moved!",
-          "title": "Buat"
-        },
-        "empty": {
-          "description": "Belum ada addons yang terinstal",
-          "title": "Kosong"
-        },
-        "no_updates": "Tidak ada pembaruan",
-        "sideload": {
-          "description": "Install a Mue addon not on the marketplace from your computer",
-          "errors": {
-            "invalid_photos": "Invalid photos object",
-            "invalid_quotes": "Invalid quotes object",
-            "no_author": "No author provided",
-            "no_name": "No name provided",
-            "no_type": "No type provided"
-          },
-          "failed": "Failed to sideload addon",
-          "title": "Sideload"
-        },
-        "sort": {
-          "a_z": "Abjad (A-Z)",
-          "newest": "Terinstal (Terbaru)",
-          "oldest": "Terinstal (Terlama)",
-          "title": "Urutkan",
-          "z_a": "Abjad (Z-A)"
-        },
-        "updates_available": "Terdapat {amount} pembaruan"
-      },
-      "error_boundary": {
-        "message": "Gagal memuat komponen Mue",
-        "refresh": "Muat Ulang",
-        "report_error": "Kirim Laporan Galat",
-        "sent": "Terkirim!",
-        "title": "Galat"
-      },
-      "file_upload_error": "Ukuran berkas lebih dari 2MB",
-      "loading": "Sedang memuat...",
-      "marketplace": {
-        "add_all": "Add All To Mue",
-        "all": "All",
-        "by": "by {author}",
-        "cant_find": "Can't find what you're looking for?",
-        "collection": "Collection",
-        "collections": "Collections",
-        "explore_collection": "Explore Collection",
-        "installing": "Installing",
-        "knowledgebase_one": "Visit the",
-        "knowledgebase_three": "to create your own.",
-        "knowledgebase_two": "knowledgebase",
-        "learn_more": "Learn More",
-        "no_items": "Tidak ada item pada kategori ini",
-        "offline": {
-          "description": "Harap periksa kembali koneksi Anda dan coba lagi nanti",
-          "title": "Sepertinya Anda sedang dalam mode luring"
-        },
-        "photo_packs": "Photo Packs",
-        "preset_settings": "Preset Settings",
-        "product": {
-          "buttons": {
-            "addtomue": "Tambahkan ke Mue",
-            "back": "Back",
-            "not_available_preview": "Unavailable on Preview",
-            "remove": "Hapus",
-            "report": "Report",
-            "update_addon": "Perbarui Add-on"
-          },
-          "created_by": "Created by",
-          "description": "Description",
-          "details": "Details",
-          "explore": "Explore",
-          "information": "Informasi",
-          "last_updated": "Pembaruan Terakhir",
-          "more_from_curator": "More like this from {name}",
-          "no_images": "No. Images",
-          "no_quotes": "No. Quotes",
-          "not_in_language": "This add-on is not in your language",
-          "overview": "Ikhtisar",
-          "part_of": "Part of",
-          "setting": "Setting",
-          "show_all": "Show All",
-          "show_less": "Show Less",
-          "show_more": "Show More",
-          "showing": "Showing",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "third_party_api": "This add-on uses a third-party API",
-          "updated_at": "Updated on",
-          "value": "Value",
-          "version": "Versi"
-        },
-        "quote_packs": "Quote Packs"
-      },
-      "navbar": {
-        "discover": "Marketplace",
-        "library": "Pengaya",
-        "settings": "Pengaturan"
-      },
-      "settings": {
-        "additional_settings": "Pengaturan Tambahan",
-        "buttons": {
-          "export": "Ekspor",
-          "import": "Impor",
-          "reset": "Reset"
-        },
-        "enabled": "Aktif",
-        "open_knowledgebase": "Buka Basis Pengetahuan",
-        "reminder": {
-          "message": "Agar semua perubahan dapat diterapkan, harap muat ulang halaman ini",
-          "title": "PERHATIAN"
-        },
-        "sections": {
-          "about": {
-            "contact_us": "Hubungi Kami",
-            "contributors": "Kontributor",
-            "curators": "Add-on creators",
-            "form_button": "Form",
-            "no_supporters": "Mue belum punya suporter saat ini.",
-            "photographers": "Fotografer",
-            "resources_used": {
-              "bg_images": "Offline background images",
-              "title": "Resources yang kami gunakan"
-            },
-            "support_donate": "Donate",
-            "support_mue": "Dukung Mue",
-            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
-            "supporters": "Suporter",
-            "title": "Tentang Mue",
-            "version": {
-              "checking_update": "Periksa pembaruan",
-              "error": {
-                "description": "Muncul galat saat mencoba mendapatkan informasi pembaruan. Harap coba lagi nanti.",
-                "title": "Gagal mendapatkan informasi pembaruan"
-              },
-              "no_update": "Tidak ada pembaruan",
-              "offline_mode": "Periksa pembaruan tidak dapat dilakukan pada mode luring",
-              "title": "Versi",
-              "update_available": "Pembaruan tersedia"
-            }
-          },
-          "advanced": {
-            "custom_css": "CSS Kustom",
-            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
-            "custom_js": "JS Kustom",
-            "customisation": "Kustomisasi",
-            "data": "Data",
-            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
-            "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
-            "experimental_warning": "Harap diperhatikan bahwa tim Mue tidak menyediakan dukungan jika Anda mengaktifkan mode experimental. Harap nonaktifkan terlebih dahulu dan lihat apabila kendala Anda masih terjadi sebelum menghubungi kami.",
-            "offline_mode": "Mode Luring",
-            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
-            "preview_data_disabled": {
-              "description": "Data settings are disabled in preview mode. Please exit preview mode to use this feature.",
-              "title": "Data Settings Disabled"
-            },
-            "reset_modal": {
-              "cancel": "Batal",
-              "information": "Aksi ini akan menghapus semua data Anda. Harap ekspor pengaturan Anda sebelum melakukan reset.",
-              "question": "Apakah Anda ingin me-reset Mue?",
-              "title": "PERINGATAN"
-            },
-            "tab_name": "Nama tab",
-            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
-            "timezone": {
-              "automatic": "Otomatis",
-              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
-              "title": "Zona Waktu"
-            },
-            "title": "Lanjutan"
-          },
-          "appearance": {
-            "accessibility": {
-              "animations": "Animasi",
-              "description": "Accessibility settings for Mue",
-              "milliseconds": "milliseconds",
-              "text_shadow": {
-                "new": "New",
-                "none": "None",
-                "old": "Old",
-                "title": "Widget text shadow"
-              },
-              "title": "Aksesibilitas",
-              "toast_duration": "Durasi toast",
-              "widget_zoom": "Widget zoom"
-            },
-            "font": {
-              "custom": "Font kustom",
-              "description": "Change the font used in Mue",
-              "google": "Impor dari Google Fonts",
-              "style": {
-                "italic": "Italic",
-                "normal": "Normal",
-                "oblique": "Oblique",
-                "title": "Font style"
-              },
-              "title": "Font",
-              "weight": {
-                "bold": "Bold",
-                "extra_bold": "Extra-Bold",
-                "extra_light": "Extra Light",
-                "light": "Light",
-                "medium": "Medium",
-                "normal": "Normal",
-                "semi_bold": "Semi-Bold",
-                "thin": "Thin",
-                "title": "Font weight"
-              }
-            },
-            "navbar": {
-              "additional": "Modify navbar style and which buttons you want to display",
-              "apps_subtitle": "Buat sebuah pintasan untuk situs yang umum kamu gunakan lainnya.",
-              "hover": "Tampilkan ketika hover",
-              "notes": "Catatan",
-              "refresh": "Muat ulang",
-              "refresh_options": {
-                "none": "Nonaktif",
-                "page": "Halaman"
-              },
-              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
-              "title": "Navbar",
-              "widgets": "Navbar Widgets"
-            },
-            "style": {
-              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
-              "legacy": "Legacy",
-              "new": "New",
-              "title": "Widget Style"
-            },
-            "theme": {
-              "auto": "Otomatis",
-              "dark": "Dark",
-              "description": "Change the theme of the Mue widgets and modals",
-              "light": "Light",
-              "title": "Tema"
-            },
-            "title": "Antarmuka"
-          },
-          "background": {
-            "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)",
-            "buttons": {
-              "download": "Unduh",
-              "favourite": "Favorit",
-              "title": "Aksi",
-              "view": "Layar Penuh"
-            },
-            "categories": "Categories",
-            "display": "Display",
-            "display_subtitle": "Change how background and photo information are loaded",
-            "effects": {
-              "blur": "Sesuaikan blur",
-              "brightness": "Sesuaikan kecerahan",
-              "filters": {
-                "amount": "Sesuaikan filter",
-                "contrast": "Contrast",
-                "grayscale": "Grayscale",
-                "invert": "Invert",
-                "saturate": "Saturate",
-                "sepia": "Sepia",
-                "title": "Filter background"
-              },
-              "subtitle": "Add effects to the background images",
-              "title": "Efek"
-            },
-            "photo_information": "Tampilkan informasi foto",
-            "show_map": "Tampilkan informasi lokasi foto jika ada",
-            "source": {
-              "add_background": "Tambah background",
-              "add_colour": "Tambah warna",
-              "add_url": "Tambah URL",
-              "api": "Background API",
-              "custom_background": "Background kustom",
-              "custom_colour": "Background warna kustom",
-              "custom_description": "Select images from your local computer",
-              "custom_title": "Custom Images",
-              "disabled": "Nonaktif",
-              "drop_to_upload": "Drop to upload",
-              "formats": "Available formats: {list}",
-              "loop_video": "Ulang video",
-              "mute_video": "Bisukan video",
-              "quality": {
-                "datasaver": "Data Saver",
-                "high": "High Quality",
-                "normal": "Normal Quality",
-                "original": "Original",
-                "title": "Kualitas"
-              },
-              "remove": "Remove Image",
-              "select": "Or Select",
-              "subtitle": "Select where to get background images from",
-              "title": "Sumber",
-              "upload": "Unggah"
-            },
-            "title": "Background",
-            "transition": "Transisi Fade-in",
-            "type": {
-              "api": "API",
-              "custom_colour": "Warna/gradasi kustom",
-              "custom_image": "Gambar kustom",
-              "random_colour": "Warna acak",
-              "random_gradient": "Gradasi acak",
-              "title": "Tipe"
-            },
-            "unsplash": {
-              "id": "Collection ID(s)",
-              "id_subtitle": "Enter a comma separated list of Unsplash IDs",
-              "subtitle": "Select the collection(s) you want to use for your background",
-              "title": "Unsplash Collection(s)"
-            }
-          },
-          "changelog": {
-            "by": "Oleh {author}",
-            "title": "Changelog"
-          },
-          "date": {
-            "datenth": "Imbuhan nth",
-            "day_of_week": "Hari",
-            "long_format": "Format panjang",
-            "short_date": "Tanggal Ringkas",
-            "short_format": "Format Ringkas",
-            "short_separator": {
-              "dash": "Setrip",
-              "dots": "Titik",
-              "gaps": "Spasi",
-              "slashes": "Garis Miring",
-              "title": "Pemisah"
-            },
-            "title": "Tanggal",
-            "type": {
-              "long": "Lengkap",
-              "short": "Ringkas",
-              "subtitle": "Apakah akan menampilkan tanggal dalam bentuk panjang atau bentuk pendek"
-            },
-            "type_settings": "Tampilkan setelan dan format untuk jenis tanggal yang dipilih",
-            "week_number": "Nomor Urut Pekan"
-          },
-          "experimental": {
-            "developer": "Developer",
-            "title": "Experimental",
-            "warning": "These settings have not been fully tested/implemented and may not work correctly!"
-          },
-          "greeting": {
-            "add_event": "Add Event",
-            "additional": "Settings for the greeting display",
-            "birthday": "Hari Ulang Tahun",
-            "birthday_age": "Usia",
-            "birthday_date": "Tanggal Ulang Tahun",
-            "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
-            "custom": "Custom events",
-            "day": "Day",
-            "default": "Sapaan bawaan",
-            "enable_events": "Show messages on special days",
-            "event_name": "Event Name",
-            "events": "Hari Besar",
-            "events_description": "Control events on Mue such as birthdays.",
-            "month": "Month",
-            "name": "Nama",
-            "no_events": "No Events",
-            "no_events_description": "Add Some Events",
-            "title": "Sapaan"
-          },
-          "header": {
-            "enabled": "Pilih apakah akan menampilkan widget ini atau tidak",
-            "more_info": "Info lebih lanjut",
-            "report_issue": "Laporkan Masalah",
-            "size": "Slider untuk mengontrol seberapa besar widget tersebut"
-          },
-          "language": {
-            "quote": "Bahasa untuk kutipan",
-            "title": "Bahasa"
-          },
-          "message": {
-            "add": "Tambahkan pesan",
-            "add_some": "Go ahead and add some.",
-            "content": "Message Content",
-            "messages": "Messages",
-            "no_messages": "No messages",
-            "text": "Teks",
-            "title": "Pesan"
-          },
-          "order": {
-            "title": "Urutan Widget"
-          },
-          "quicklinks": {
-            "add_link": "Add Link",
-            "additional": "Additional settings for quick links display and functions",
-            "edit": "Edit",
-            "no_quicklinks": "No quicklinks",
-            "open_new": "Buka di tab baru",
-            "options": {
-              "icon": "Icon",
-              "metro": "Metro",
-              "text_only": "Text Only"
-            },
-            "style": "Style",
-            "styling": "Quick Links Styling",
-            "styling_description": "Customise Quick Links appearance",
-            "text_only": "Hanya teks",
-            "title": "Pranala cepat",
-            "tooltip": "Tooltip"
-          },
-          "quote": {
-            "add": "Tambahkan kutipan",
-            "additional": "Pengaturan lain untuk menyesuaikan gaya widget kutipan",
-            "author": "Kreator",
-            "author_details": "Tampilkan detail penulis",
-            "author_img": "Tampilkan pemilik gambar",
-            "author_link": "Pranala penulis",
-            "buttons": {
-              "copy": "Salin",
-              "favourite": "Favorit",
-              "subtitle": "Choose which buttons to show on the quote",
-              "title": "Aksi",
-              "tweet": "Tweet"
-            },
-            "custom": "Kutipan kustom",
-            "custom_author": "Penulis kustom",
-            "custom_buttons": "Tombol",
-            "custom_subtitle": "Tetapkan kutipan khusus Anda sendiri",
-            "no_quotes": "Tidak ada kutipan",
-            "source_subtitle": "Choose where to get quotes from",
-            "title": "Kutipan"
-          },
-          "search": {
-            "additional": "Additional options for search widget display and functionality",
-            "autocomplete": "Autocomplete",
-            "autocomplete_provider": "Provider Autocomplete",
-            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
-            "custom": "URL kustom",
-            "dropdown": "Dropdown pencarian",
-            "focus": "Focus on tab open",
-            "search_engine": "Mesin pencari",
-            "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "title": "Cari",
-            "voice_search": "Pencarian suara"
-          },
-          "stats": {
-            "achievement_unlocked": "Achievement Unlocked: {name}",
-            "achievements": "Achievements",
-            "clear_modal": {
-              "information": "This will clear all achievements and usage statistics.",
-              "question": "Do you want to clear your stats?"
-            },
-            "locked": "Locked",
-            "sections": {
-              "addons_installed": "Add-ons ditambahkan",
-              "backgrounds_downloaded": "Backgrounds terunduh",
-              "backgrounds_favourited": "Backgrounds favorit",
-              "quicklinks_added": "Pranala cepat ditambahkan",
-              "quotes_favourited": "Kutipan favorit",
-              "settings_changed": "Perubahan pengaturan",
-              "tabs_opened": "Riwayat tab terbuka"
-            },
-            "title": "Statistik",
-            "unlocked": "{count} Unlocked",
-            "usage": "Statistik Penggunaan"
-          },
-          "time": {
-            "analogue": {
-              "hour_hand": "Jarum Jam",
-              "hour_marks": "Penanda Jam",
-              "minute_hand": "Jarum Menit",
-              "minute_marks": "Penanda Menit",
-              "round_clock": "Latar belakang berbentuk bulat",
-              "second_hand": "Jarum Detik",
-              "subtitle": "Mengubah tampilan jam analog",
-              "title": "Analog"
-            },
-            "digital": {
-              "seconds": "Detik",
-              "subtitle": "Mengubah tampilan jam digital",
-              "title": "Digital",
-              "twelvehour": "12 (AM/PM)",
-              "twentyfourhour": "24",
-              "zero": "Zero-padded"
-            },
-            "format": "Format",
-            "percentage_complete": "Persentase",
-            "title": "Waktu",
-            "type": "Tipe",
-            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
-            "vertical_clock": {
-              "change_hour_colour": "Ubah warna teks jam",
-              "change_minute_colour": "Ubah warna teks menit",
-              "change_second_colour": "Change second text colour",
-              "title": "Jam Vertikal"
-            }
-          },
-          "weather": {
-            "auto": "Otomatis",
-            "custom_settings": "Custom Settings",
-            "extra_info": {
-              "atmospheric_pressure": "Tekanan atmosfer",
-              "cloudiness": "Kondisi awan",
-              "humidity": "Kelembapan",
-              "max_temp": "Temperatur maksimal",
-              "min_temp": "Temperatur minimal",
-              "show_description": "Tampilkan deskripsi",
-              "show_location": "Tampilkan lokasi",
-              "title": "Informasi Tambahan",
-              "visibility": "Jarak pandang",
-              "weather_description": "Weather description",
-              "wind_direction": "Arah angin",
-              "wind_speed": "Kecepatan angin"
-            },
-            "location": "Lokasi",
-            "options": {
-              "basic": "Basic",
-              "custom": "Custom",
-              "expanded": "Expanded",
-              "standard": "Standard"
-            },
-            "temp_format": {
-              "celsius": "Celsius",
-              "fahrenheit": "Fahrenheit",
-              "kelvin": "Kelvin",
-              "title": "Format suhu"
-            },
-            "title": "Cuaca",
-            "widget_type": "Widget Type"
-          }
-        }
-      },
-      "title": "Setelan"
-    },
-    "share": {
-      "copy_link": "Copy link",
-      "email": "Email"
-    },
-    "update": {
-      "error": {
-        "description": "Tidak dapat terhubung ke peladen",
-        "title": "Galat"
-      },
-      "offline": {
-        "description": "Tidak dapat memeriksa pembaruan. Harap periksa kembali koneksi Anda dan coba lagi nanti.",
-        "title": "Anda dalam mode luring"
-      },
-      "title": "Pembaruan"
-    },
-    "welcome": {
-      "buttons": {
-        "close": "Tutup",
-        "finish": "Finish",
-        "next": "Selanjutnya",
-        "preview": "Pratinjau",
-        "previous": "Kembali"
-      },
-      "preview": {
-        "continue": "Lanjutkan setup",
-        "description": "Kamu dalam mode Pratinjau. Pengaturan akan direset ketika tab ini ditutup."
-      },
-      "sections": {
-        "final": {
-          "changes": "Perubahan",
-          "changes_description": "Untuk mengubah pengaturan lainnya, klik pada ikon pengaturan di pojok kanan atas tab Anda.",
-          "description": "Pengalaman Mue Tab Anda akan segera dimulai!",
-          "imported": "Berhasil mengimpor {amount} pengaturan",
-          "title": "Langkah terakhir"
-        },
-        "intro": {
-          "description": "Terima kasih sudah menginstal Mue, kami harap Anda dapat menikmati pengalaman bersama Mue",
-          "notices": {
-            "discord_description": "Talk with the Mue community and developers",
-            "discord_join": "Join",
-            "discord_title": "Join our Discord",
-            "github_description": "Report bugs, add features or donate",
-            "github_open": "Open",
-            "github_title": "Contribute on GitHub"
-          },
-          "title": "Selamat datang di Mue Tab"
-        },
-        "language": {
-          "description": "Antarmuka Mue dapat ditampilkan dalam ragam bahasa berikut. Kamu juga bisa menambahkan terjemahan baru untuk Mue pada",
-          "title": "Pilih bahasa"
-        },
-        "privacy": {
-          "description": "Aktifkan pegaturan sehingga Mue dapat melindungi privasi Anda.",
-          "links": {
-            "privacy_policy": "Kebijakan Privasi",
-            "source_code": "Source Code",
-            "title": "Pranala"
-          },
-          "offline_mode_description": "Mengaktifkan mode luring akan menghalangi request ke semua layanan, termasuk Background Online, Kutipan Daring, Marketplace, Cuaca, Pranala Cepat, Change Log, dan beberapa informasi tentang tab.",
-          "title": "Opsi Privasi"
-        },
-        "settings": {
-          "description": "Sudah pernah menginstal Mue? Yuk coba impor pengaturan lama kamu tanpa perlu mengatur ulang dari awal!",
-          "tip": "Kamu bisa mengekspor pengaturan lama kamu melalui tab lanjutan pada Pengaturan. Klik tombol ekspor untuk mengunduh berkas JSON. Unggah berkas tersebut di sini sehingga kamu dapat menikmati preferensi yang sama pada perangkat yang berbeda!",
-          "title": "Impor Pengaturan"
-        },
-        "style": {
-          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
-          "legacy": "Legacy",
-          "modern": "Modern",
-          "title": "Choose a style"
-        },
-        "theme": {
-          "description": "Mue tersedia dalam tema terang dan gelap, atau kami juga bisa mengaturnya secara otomatis sesuai dengan preferensi sistem Anda.",
-          "tip": "Pengaturan otomatis akan menyesuaikan dengan tema komputer Anda. Pengaturan ini akan mengubah tampilan modal dan beberapa widget, seperti Cuaca dan Catatan.",
-          "title": "Pilih tema"
-        }
-      },
-      "tip": "Tip"
-    }
-  },
   "tabname": "Tab Baru",
-  "toasts": {
-    "error": "Terdapat kesalahan",
-    "imported": "Berhasil mengimpor",
-    "installed": "Berhasil menginstal",
-    "link_copied": "Link copied",
-    "no_storage": "Not enough storage",
-    "notes": "Berhasil menyalin catatan",
-    "quote": "Berhasil menyalin kutipan",
-    "reset": "Reset berhasil",
-    "stats_reset": "Stats reset",
-    "uninstalled": "Berhasil menghapus",
-    "updated": "Berhasil diperbarui"
-  },
   "widgets": {
+    "greeting": {
+      "morning": "Selamat Pagi",
+      "afternoon": "Selamat Siang",
+      "evening": "Selamat Malam",
+      "christmas": "Selamat Natal",
+      "newyear": "Selamat Tahun Baru",
+      "halloween": "Selamat Hari Halloween",
+      "birthday": "Selamat Ulang Tahun"
+    },
     "background": {
-      "camera": "Kamera",
-      "category": "Kategori",
-      "confirm": "Konfirmasi",
       "credit": "Foto oleh",
+      "unsplash": "di Unsplash",
+      "information": "Informasi",
       "download": "Unduh",
       "downloads": "Unduhan",
-      "exclude": "Jangan tampilkan lagi",
-      "exclude_confirm": "Apakah Anda yakin tidak ingin melihat gambar ini lagi?\nCatatan: jika Anda tidak menyukai gambar \"{category}\", Anda dapat membatalkan pilihan kategori di setelan sumber latar belakang.",
-      "information": "Informasi",
+      "views": "Tayangan",
       "likes": "Suka",
       "location": "Lokasi",
+      "camera": "Kamera",
       "resolution": "Resolusi",
       "source": "Sumber",
-      "unsplash": "di Unsplash",
-      "views": "Tayangan"
+      "category": "Kategori",
+      "exclude": "Jangan tampilkan lagi",
+      "exclude_confirm": "Apakah Anda yakin tidak ingin melihat gambar ini lagi?\nCatatan: jika Anda tidak menyukai gambar \"{category}\", Anda dapat membatalkan pilihan kategori di setelan sumber latar belakang.",
+      "confirm": "Konfirmasi"
+    },
+    "search": "Cari",
+    "quicklinks": {
+      "new": "Pranala Baru",
+      "edit": "Edit Link",
+      "name": "Nama",
+      "url": "URL",
+      "icon": "Ikon (opsional)",
+      "add": "Tambah",
+      "name_error": "Harap cantumkan nama",
+      "url_error": "Harap cantumkan URL"
     },
     "date": {
       "week": "Pekan"
     },
-    "greeting": {
-      "afternoon": "Selamat Siang",
-      "birthday": "Selamat Ulang Tahun",
-      "christmas": "Selamat Natal",
-      "evening": "Selamat Malam",
-      "halloween": "Selamat Hari Halloween",
-      "morning": "Selamat Pagi",
-      "newyear": "Selamat Tahun Baru"
-    },
-    "navbar": {
-      "apps": {
-        "no_apps": "Link aplikasi tidak ditemukan",
-        "title": "Aplikasi"
-      },
-      "notes": {
-        "placeholder": "Ketik di sini",
-        "title": "Catatan"
-      },
-      "todo": {
-        "add": "Tambah",
-        "no_todos": "Tidak ada Tugas",
-        "pin": "Sematkan",
-        "title": "Tugas"
-      },
-      "tooltips": {
-        "refresh": "Muat Ulang"
-      }
-    },
-    "quicklinks": {
-      "add": "Tambah",
-      "edit": "Edit Link",
-      "icon": "Ikon (opsional)",
-      "name": "Nama",
-      "name_error": "Harap cantumkan nama",
-      "new": "Pranala Baru",
-      "url": "URL",
-      "url_error": "Harap cantumkan URL"
+    "weather": {
+      "not_found": "Tidak Ditemukan",
+      "meters": "{amount} meter",
+      "extra_information": "Informasi Tambahan",
+      "feels_like": "Terasa seperti {jumlah}"
     },
     "quote": {
-      "copy": "Salin",
-      "favourite": "Favorit",
       "link_tooltip": "Buka di Wikipedia",
       "share": "Bagikan",
+      "copy": "Salin",
+      "favourite": "Favorit",
       "unfavourite": "Copot favorit"
     },
-    "search": "Cari",
-    "weather": {
-      "extra_information": "Informasi Tambahan",
-      "feels_like": "Terasa seperti {jumlah}",
-      "meters": "{amount} meter",
-      "not_found": "Tidak Ditemukan"
+    "navbar": {
+      "tooltips": {
+        "refresh": "Muat Ulang"
+      },
+      "notes": {
+        "title": "Catatan",
+        "placeholder": "Ketik di sini"
+      },
+      "todo": {
+        "title": "Tugas",
+        "pin": "Sematkan",
+        "add": "Tambah",
+        "no_todos": "Tidak ada Tugas"
+      },
+      "apps": {
+        "title": "Aplikasi",
+        "no_apps": "Link aplikasi tidak ditemukan"
+      }
     }
+  },
+  "modals": {
+    "main": {
+      "title": "Setelan",
+      "loading": "Sedang memuat...",
+      "file_upload_error": "Ukuran berkas lebih dari 2MB",
+      "navbar": {
+        "settings": "Pengaturan",
+        "library": "Pengaya",
+        "discover": "Marketplace"
+      },
+      "error_boundary": {
+        "title": "Galat",
+        "message": "Gagal memuat komponen Mue",
+        "report_error": "Kirim Laporan Galat",
+        "sent": "Terkirim!",
+        "refresh": "Muat Ulang"
+      },
+      "settings": {
+        "enabled": "Aktif",
+        "open_knowledgebase": "Buka Basis Pengetahuan",
+        "additional_settings": "Pengaturan Tambahan",
+        "reminder": {
+          "title": "PERHATIAN",
+          "message": "Agar semua perubahan dapat diterapkan, harap muat ulang halaman ini"
+        },
+        "sections": {
+          "header": {
+            "more_info": "Info lebih lanjut",
+            "report_issue": "Laporkan Masalah",
+            "enabled": "Pilih apakah akan menampilkan widget ini atau tidak",
+            "size": "Slider untuk mengontrol seberapa besar widget tersebut"
+          },
+          "time": {
+            "title": "Waktu",
+            "format": "Format",
+            "type": "Tipe",
+            "type_subtitle": "Choose whether to display the time in digital format, analogue format, or a percentage completion of the day",
+            "digital": {
+              "title": "Digital",
+              "subtitle": "Mengubah tampilan jam digital",
+              "seconds": "Detik",
+              "twentyfourhour": "24",
+              "twelvehour": "12 (AM/PM)",
+              "zero": "Zero-padded"
+            },
+            "analogue": {
+              "title": "Analog",
+              "subtitle": "Mengubah tampilan jam analog",
+              "second_hand": "Jarum Detik",
+              "minute_hand": "Jarum Menit",
+              "hour_hand": "Jarum Jam",
+              "hour_marks": "Penanda Jam",
+              "minute_marks": "Penanda Menit",
+              "round_clock": "Latar belakang berbentuk bulat"
+            },
+            "percentage_complete": "Persentase",
+            "vertical_clock": {
+              "title": "Jam Vertikal",
+              "change_hour_colour": "Ubah warna teks jam",
+              "change_minute_colour": "Ubah warna teks menit",
+              "change_second_colour": "Change second text colour"
+            }
+          },
+          "date": {
+            "title": "Tanggal",
+            "week_number": "Nomor Urut Pekan",
+            "day_of_week": "Hari",
+            "datenth": "Imbuhan nth",
+            "type": {
+              "short": "Ringkas",
+              "long": "Lengkap",
+              "subtitle": "Apakah akan menampilkan tanggal dalam bentuk panjang atau bentuk pendek"
+            },
+            "type_settings": "Tampilkan setelan dan format untuk jenis tanggal yang dipilih",
+            "short_date": "Tanggal Ringkas",
+            "short_format": "Format Ringkas",
+            "long_format": "Format panjang",
+            "short_separator": {
+              "title": "Pemisah",
+              "dots": "Titik",
+              "dash": "Setrip",
+              "gaps": "Spasi",
+              "slashes": "Garis Miring"
+            }
+          },
+          "quote": {
+            "title": "Kutipan",
+            "additional": "Pengaturan lain untuk menyesuaikan gaya widget kutipan",
+            "author_link": "Pranala penulis",
+            "author_details": "Tampilkan detail penulis",
+            "custom": "Kutipan kustom",
+            "custom_subtitle": "Tetapkan kutipan khusus Anda sendiri",
+            "no_quotes": "Tidak ada kutipan",
+            "author": "Kreator",
+            "custom_buttons": "Tombol",
+            "custom_author": "Penulis kustom",
+            "author_img": "Tampilkan pemilik gambar",
+            "add": "Tambahkan kutipan",
+            "source_subtitle": "Choose where to get quotes from",
+            "buttons": {
+              "title": "Aksi",
+              "subtitle": "Choose which buttons to show on the quote",
+              "copy": "Salin",
+              "tweet": "Tweet",
+              "favourite": "Favorit"
+            }
+          },
+          "greeting": {
+            "title": "Sapaan",
+            "events": "Hari Besar",
+            "events_description": "Control events on Mue such as birthdays.",
+            "enable_events": "Show messages on special days",
+            "default": "Sapaan bawaan",
+            "name": "Nama",
+            "birthday": "Hari Ulang Tahun",
+            "birthday_subtitle": "Show a Happy Birthday message when it is your birthday",
+            "birthday_age": "Usia",
+            "birthday_date": "Tanggal Ulang Tahun",
+            "additional": "Settings for the greeting display",
+            "custom": "Custom events",
+            "event_name": "Event Name",
+            "day": "Day",
+            "month": "Month",
+            "no_events": "No Events",
+            "no_events_description": "Add Some Events",
+            "add_event": "Add Event"
+          },
+          "background": {
+            "title": "Background",
+            "transition": "Transisi Fade-in",
+            "photo_information": "Tampilkan informasi foto",
+            "show_map": "Tampilkan informasi lokasi foto jika ada",
+            "categories": "Categories",
+            "buttons": {
+              "title": "Aksi",
+              "view": "Layar Penuh",
+              "favourite": "Favorit",
+              "download": "Unduh"
+            },
+            "effects": {
+              "title": "Efek",
+              "subtitle": "Add effects to the background images",
+              "blur": "Sesuaikan blur",
+              "brightness": "Sesuaikan kecerahan",
+              "filters": {
+                "title": "Filter background",
+                "amount": "Sesuaikan filter",
+                "grayscale": "Grayscale",
+                "sepia": "Sepia",
+                "invert": "Invert",
+                "saturate": "Saturate",
+                "contrast": "Contrast"
+              }
+            },
+            "type": {
+              "title": "Tipe",
+              "api": "API",
+              "custom_image": "Gambar kustom",
+              "custom_colour": "Warna/gradasi kustom",
+              "random_colour": "Warna acak",
+              "random_gradient": "Gradasi acak"
+            },
+            "unsplash": {
+              "title": "Unsplash Collection(s)",
+              "subtitle": "Select the collection(s) you want to use for your background",
+              "id": "Collection ID(s)",
+              "id_subtitle": "Enter a comma separated list of Unsplash IDs"
+            },
+            "source": {
+              "title": "Sumber",
+              "subtitle": "Select where to get background images from",
+              "api": "Background API",
+              "custom_background": "Background kustom",
+              "custom_colour": "Background warna kustom",
+              "upload": "Unggah",
+              "add_colour": "Tambah warna",
+              "add_background": "Tambah background",
+              "drop_to_upload": "Drop to upload",
+              "formats": "Available formats: {list}",
+              "select": "Or Select",
+              "add_url": "Tambah URL",
+              "disabled": "Nonaktif",
+              "loop_video": "Ulang video",
+              "mute_video": "Bisukan video",
+              "quality": {
+                "title": "Kualitas",
+                "original": "Original",
+                "high": "High Quality",
+                "normal": "Normal Quality",
+                "datasaver": "Data Saver"
+              },
+              "custom_title": "Custom Images",
+              "custom_description": "Select images from your local computer",
+              "remove": "Remove Image"
+            },
+            "display": "Display",
+            "display_subtitle": "Change how background and photo information are loaded",
+            "api": "API Settings",
+            "api_subtitle": "Options for getting an image from an external service (API)"
+          },
+          "search": {
+            "title": "Cari",
+            "additional": "Additional options for search widget display and functionality",
+            "search_engine": "Mesin pencari",
+            "search_engine_subtitle": "Choose search engine to use in the search bar",
+            "custom": "URL kustom",
+            "autocomplete": "Autocomplete",
+            "autocomplete_provider": "Provider Autocomplete",
+            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
+            "voice_search": "Pencarian suara",
+            "dropdown": "Dropdown pencarian",
+            "focus": "Focus on tab open",
+            "chrome_policy_warning": "In version 7.2, the ability to choose your search engine within Mue was removed to comply with new Chrome Web Store guidelines. Mue now uses your browser's default search engine. You can change this in Chrome Settings."
+          },
+          "weather": {
+            "title": "Cuaca",
+            "location": "Lokasi",
+            "auto": "Otomatis",
+            "widget_type": "Widget Type",
+            "temp_format": {
+              "title": "Format suhu",
+              "celsius": "Celsius",
+              "fahrenheit": "Fahrenheit",
+              "kelvin": "Kelvin"
+            },
+            "extra_info": {
+              "title": "Informasi Tambahan",
+              "show_location": "Tampilkan lokasi",
+              "show_description": "Tampilkan deskripsi",
+              "weather_description": "Weather description",
+              "cloudiness": "Kondisi awan",
+              "humidity": "Kelembapan",
+              "visibility": "Jarak pandang",
+              "wind_speed": "Kecepatan angin",
+              "wind_direction": "Arah angin",
+              "min_temp": "Temperatur minimal",
+              "max_temp": "Temperatur maksimal",
+              "atmospheric_pressure": "Tekanan atmosfer"
+            },
+            "options": {
+              "basic": "Basic",
+              "standard": "Standard",
+              "expanded": "Expanded",
+              "custom": "Custom"
+            },
+            "custom_settings": "Custom Settings"
+          },
+          "quicklinks": {
+            "title": "Pranala cepat",
+            "additional": "Additional settings for quick links display and functions",
+            "open_new": "Buka di tab baru",
+            "tooltip": "Tooltip",
+            "text_only": "Hanya teks",
+            "add_link": "Add Link",
+            "no_quicklinks": "No quicklinks",
+            "edit": "Edit",
+            "style": "Style",
+            "options": {
+              "icon": "Icon",
+              "text_only": "Text Only",
+              "metro": "Metro"
+            },
+            "styling": "Quick Links Styling",
+            "styling_description": "Customise Quick Links appearance"
+          },
+          "message": {
+            "title": "Pesan",
+            "add": "Tambahkan pesan",
+            "messages": "Messages",
+            "text": "Teks",
+            "no_messages": "No messages",
+            "add_some": "Go ahead and add some.",
+            "content": "Message Content"
+          },
+          "appearance": {
+            "title": "Antarmuka",
+            "style": {
+              "title": "Widget Style",
+              "description": "Choose between the two styles, legacy (enabled for pre 7.0 users) and our slick modern styling.",
+              "legacy": "Legacy",
+              "new": "New"
+            },
+            "theme": {
+              "title": "Tema",
+              "description": "Change the theme of the Mue widgets and modals",
+              "auto": "Otomatis",
+              "light": "Light",
+              "dark": "Dark"
+            },
+            "navbar": {
+              "title": "Navbar",
+              "widgets": "Navbar Widgets",
+              "notes": "Catatan",
+              "refresh": "Muat ulang",
+              "refresh_subtitle": "Choose what is refreshed when you click the refresh button",
+              "hover": "Tampilkan ketika hover",
+              "additional": "Modify navbar style and which buttons you want to display",
+              "refresh_options": {
+                "none": "Nonaktif",
+                "page": "Halaman"
+              },
+              "apps_subtitle": "Buat sebuah pintasan untuk situs yang umum kamu gunakan lainnya."
+            },
+            "font": {
+              "title": "Font",
+              "description": "Change the font used in Mue",
+              "custom": "Font kustom",
+              "google": "Impor dari Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "accessibility": {
+              "title": "Aksesibilitas",
+              "description": "Accessibility settings for Mue",
+              "animations": "Animasi",
+              "text_shadow": {
+                "title": "Widget text shadow",
+                "new": "New",
+                "old": "Old",
+                "none": "None"
+              },
+              "widget_zoom": "Widget zoom",
+              "toast_duration": "Durasi toast",
+              "milliseconds": "milliseconds"
+            }
+          },
+          "order": {
+            "title": "Urutan Widget"
+          },
+          "advanced": {
+            "title": "Lanjutan",
+            "offline_mode": "Mode Luring",
+            "offline_subtitle": "When enabled, all requests to online services will be disabled.",
+            "data": "Data",
+            "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
+            "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
+            "reset_modal": {
+              "title": "PERINGATAN",
+              "question": "Apakah Anda ingin me-reset Mue?",
+              "information": "Aksi ini akan menghapus semua data Anda. Harap ekspor pengaturan Anda sebelum melakukan reset.",
+              "cancel": "Batal"
+            },
+            "customisation": "Kustomisasi",
+            "custom_css": "CSS Kustom",
+            "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
+            "custom_js": "JS Kustom",
+            "tab_name": "Nama tab",
+            "tab_name_subtitle": "Change the name of the tab that appears in your browser",
+            "timezone": {
+              "title": "Zona Waktu",
+              "subtitle": "Choose a timezone from the list instead of the automatic default from your computer",
+              "automatic": "Otomatis"
+            },
+            "experimental_warning": "Harap diperhatikan bahwa tim Mue tidak menyediakan dukungan jika Anda mengaktifkan mode experimental. Harap nonaktifkan terlebih dahulu dan lihat apabila kendala Anda masih terjadi sebelum menghubungi kami.",
+            "preview_data_disabled": {
+              "title": "Data Settings Disabled",
+              "description": "Data settings are disabled in preview mode. Please exit preview mode to use this feature."
+            }
+          },
+          "stats": {
+            "title": "Statistik",
+            "sections": {
+              "tabs_opened": "Riwayat tab terbuka",
+              "backgrounds_favourited": "Backgrounds favorit",
+              "backgrounds_downloaded": "Backgrounds terunduh",
+              "quotes_favourited": "Kutipan favorit",
+              "quicklinks_added": "Pranala cepat ditambahkan",
+              "settings_changed": "Perubahan pengaturan",
+              "addons_installed": "Add-ons ditambahkan"
+            },
+            "usage": "Statistik Penggunaan",
+            "achievements": "Achievements",
+            "achievement_unlocked": "Achievement Unlocked: {name}",
+            "unlocked": "{count} Unlocked",
+            "locked": "Locked",
+            "clear_modal": {
+              "question": "Do you want to clear your stats?",
+              "information": "This will clear all achievements and usage statistics."
+            }
+          },
+          "experimental": {
+            "title": "Experimental",
+            "warning": "These settings have not been fully tested/implemented and may not work correctly!",
+            "developer": "Developer"
+          },
+          "language": {
+            "title": "Bahasa",
+            "quote": "Bahasa untuk kutipan"
+          },
+          "changelog": {
+            "title": "Changelog",
+            "by": "Oleh {author}"
+          },
+          "about": {
+            "title": "Tentang Mue",
+            "version": {
+              "title": "Versi",
+              "checking_update": "Periksa pembaruan",
+              "update_available": "Pembaruan tersedia",
+              "no_update": "Tidak ada pembaruan",
+              "offline_mode": "Periksa pembaruan tidak dapat dilakukan pada mode luring",
+              "error": {
+                "title": "Gagal mendapatkan informasi pembaruan",
+                "description": "Muncul galat saat mencoba mendapatkan informasi pembaruan. Harap coba lagi nanti."
+              }
+            },
+            "contact_us": "Hubungi Kami",
+            "support_mue": "Dukung Mue",
+            "support_subtitle": "As Mue is entirely free, we rely on donations to cover the server bills and fund development",
+            "support_donate": "Donate",
+            "form_button": "Form",
+            "resources_used": {
+              "title": "Resources yang kami gunakan",
+              "bg_images": "Offline background images"
+            },
+            "contributors": "Kontributor",
+            "supporters": "Suporter",
+            "no_supporters": "Mue belum punya suporter saat ini.",
+            "photographers": "Fotografer",
+            "curators": "Add-on creators"
+          }
+        },
+        "buttons": {
+          "reset": "Reset",
+          "import": "Impor",
+          "export": "Ekspor"
+        }
+      },
+      "marketplace": {
+        "by": "by {author}",
+        "all": "All",
+        "learn_more": "Learn More",
+        "photo_packs": "Photo Packs",
+        "quote_packs": "Quote Packs",
+        "preset_settings": "Preset Settings",
+        "no_items": "Tidak ada item pada kategori ini",
+        "collection": "Collection",
+        "explore_collection": "Explore Collection",
+        "add_all": "Add All To Mue",
+        "collections": "Collections",
+        "cant_find": "Can't find what you're looking for?",
+        "knowledgebase_one": "Visit the",
+        "knowledgebase_two": "knowledgebase",
+        "knowledgebase_three": "to create your own.",
+        "installing": "Installing",
+        "product": {
+          "overview": "Ikhtisar",
+          "information": "Informasi",
+          "last_updated": "Pembaruan Terakhir",
+          "description": "Description",
+          "details": "Details",
+          "more_from_curator": "More like this from {name}",
+          "show_more": "Show More",
+          "show_less": "Show Less",
+          "show_all": "Show All",
+          "showing": "Showing",
+          "no_images": "No. Images",
+          "no_quotes": "No. Quotes",
+          "version": "Versi",
+          "created_by": "Created by",
+          "updated_at": "Updated on",
+          "part_of": "Part of",
+          "explore": "Explore",
+          "buttons": {
+            "addtomue": "Tambahkan ke Mue",
+            "remove": "Hapus",
+            "update_addon": "Perbarui Add-on",
+            "back": "Back",
+            "report": "Report",
+            "not_available_preview": "Unavailable on Preview"
+          },
+          "not_in_language": "This add-on is not in your language",
+          "third_party_api": "This add-on uses a third-party API",
+          "sideload_warning": "This add-on has been sideloaded.",
+          "setting": "Setting",
+          "value": "Value"
+        },
+        "offline": {
+          "title": "Sepertinya Anda sedang dalam mode luring",
+          "description": "Harap periksa kembali koneksi Anda dan coba lagi nanti"
+        }
+      },
+      "addons": {
+        "added": "Terinstal",
+        "check_updates": "Periksa pembaruan",
+        "no_updates": "Tidak ada pembaruan",
+        "updates_available": "Terdapat {amount} pembaruan",
+        "empty": {
+          "title": "Kosong",
+          "description": "Belum ada addons yang terinstal"
+        },
+        "sideload": {
+          "title": "Sideload",
+          "description": "Install a Mue addon not on the marketplace from your computer",
+          "failed": "Failed to sideload addon",
+          "errors": {
+            "no_name": "No name provided",
+            "no_author": "No author provided",
+            "no_type": "No type provided",
+            "invalid_photos": "Invalid photos object",
+            "invalid_quotes": "Invalid quotes object"
+          }
+        },
+        "sort": {
+          "title": "Urutkan",
+          "newest": "Terinstal (Terbaru)",
+          "oldest": "Terinstal (Terlama)",
+          "a_z": "Abjad (A-Z)",
+          "z_a": "Abjad (Z-A)"
+        },
+        "create": {
+          "title": "Buat",
+          "moved_title": "Create add-on has moved!",
+          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
+          "moved_button": "Get Started"
+        }
+      }
+    },
+    "update": {
+      "title": "Pembaruan",
+      "offline": {
+        "title": "Anda dalam mode luring",
+        "description": "Tidak dapat memeriksa pembaruan. Harap periksa kembali koneksi Anda dan coba lagi nanti."
+      },
+      "error": {
+        "title": "Galat",
+        "description": "Tidak dapat terhubung ke peladen"
+      }
+    },
+    "welcome": {
+      "tip": "Tip",
+      "sections": {
+        "intro": {
+          "title": "Selamat datang di Mue Tab",
+          "description": "Terima kasih sudah menginstal Mue, kami harap Anda dapat menikmati pengalaman bersama Mue",
+          "notices": {
+            "discord_title": "Join our Discord",
+            "discord_description": "Talk with the Mue community and developers",
+            "discord_join": "Join",
+            "github_title": "Contribute on GitHub",
+            "github_description": "Report bugs, add features or donate",
+            "github_open": "Open"
+          }
+        },
+        "language": {
+          "title": "Pilih bahasa",
+          "description": "Antarmuka Mue dapat ditampilkan dalam ragam bahasa berikut. Kamu juga bisa menambahkan terjemahan baru untuk Mue pada"
+        },
+        "theme": {
+          "title": "Pilih tema",
+          "description": "Mue tersedia dalam tema terang dan gelap, atau kami juga bisa mengaturnya secara otomatis sesuai dengan preferensi sistem Anda.",
+          "tip": "Pengaturan otomatis akan menyesuaikan dengan tema komputer Anda. Pengaturan ini akan mengubah tampilan modal dan beberapa widget, seperti Cuaca dan Catatan."
+        },
+        "style": {
+          "title": "Choose a style",
+          "description": "Mue currently offers the choice between the legacy styling and the newly released modern styling.",
+          "legacy": "Legacy",
+          "modern": "Modern"
+        },
+        "settings": {
+          "title": "Impor Pengaturan",
+          "description": "Sudah pernah menginstal Mue? Yuk coba impor pengaturan lama kamu tanpa perlu mengatur ulang dari awal!",
+          "tip": "Kamu bisa mengekspor pengaturan lama kamu melalui tab lanjutan pada Pengaturan. Klik tombol ekspor untuk mengunduh berkas JSON. Unggah berkas tersebut di sini sehingga kamu dapat menikmati preferensi yang sama pada perangkat yang berbeda!"
+        },
+        "privacy": {
+          "title": "Opsi Privasi",
+          "description": "Aktifkan pegaturan sehingga Mue dapat melindungi privasi Anda.",
+          "offline_mode_description": "Mengaktifkan mode luring akan menghalangi request ke semua layanan, termasuk Background Online, Kutipan Daring, Marketplace, Cuaca, Pranala Cepat, Change Log, dan beberapa informasi tentang tab.",
+          "links": {
+            "title": "Pranala",
+            "privacy_policy": "Kebijakan Privasi",
+            "source_code": "Source Code"
+          }
+        },
+        "final": {
+          "title": "Langkah terakhir",
+          "description": "Pengalaman Mue Tab Anda akan segera dimulai!",
+          "changes": "Perubahan",
+          "changes_description": "Untuk mengubah pengaturan lainnya, klik pada ikon pengaturan di pojok kanan atas tab Anda.",
+          "imported": "Berhasil mengimpor {amount} pengaturan"
+        }
+      },
+      "buttons": {
+        "next": "Selanjutnya",
+        "preview": "Pratinjau",
+        "previous": "Kembali",
+        "close": "Tutup",
+        "finish": "Finish"
+      },
+      "preview": {
+        "description": "Kamu dalam mode Pratinjau. Pengaturan akan direset ketika tab ini ditutup.",
+        "continue": "Lanjutkan setup"
+      }
+    },
+    "share": {
+      "copy_link": "Copy link",
+      "email": "Email"
+    }
+  },
+  "toasts": {
+    "quote": "Berhasil menyalin kutipan",
+    "notes": "Berhasil menyalin catatan",
+    "reset": "Reset berhasil",
+    "installed": "Berhasil menginstal",
+    "uninstalled": "Berhasil menghapus",
+    "updated": "Berhasil diperbarui",
+    "error": "Terdapat kesalahan",
+    "imported": "Berhasil mengimpor",
+    "no_storage": "Not enough storage",
+    "link_copied": "Link copied",
+    "stats_reset": "Stats reset"
   }
 }
