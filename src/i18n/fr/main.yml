@@ -51,7 +51,7 @@ widgets:
     unfavourite: Non favori
   navbar:
     tooltips:
-      refresh: Rafraîchire
+      refresh: Rafraîchir
     notes:
       title: Remarques
       placeholder: Écrivez ici
@@ -77,7 +77,7 @@ modals:
       report_error: Envoyer le rapport d'erreur
       sent: Envoyé !
     title: Options
-    file_upload_error: Le fichier est plus lourd que 2Mo
+    file_upload_error: Le fichier dépasse 2 Mo
   update:
     title: Mettre à jour
     offline:
