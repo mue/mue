@@ -1,1 +1,49 @@
-{}
+by: توسط {نویسنده}
+all: همه
+learn_more: اطلاعات بیشتر
+collection: مجموعه
+explore_collection: کاوش مجموعه
+add_all: اضافه کردن همه به Mue
+collections: مجموعه‌ها
+cant_find: چیزی را که دنبالش هستید پیدا نمی‌کنید؟
+knowledgebase_one: بازدید کنید
+knowledgebase_two: پایگاه دانش
+knowledgebase_three: مال خودت را ایجاد کنی.
+installing: در حال نصب
+product:
+  overview: نمای کلی
+  information: اطلاعات
+  last_updated: آخرین بروزرسانی
+  description: توضیحات
+  details: جزییات
+  more_from_curator: بیشتر شبیه این از {نام}
+  show_more: نمایش بیشتر
+  show_less: نمایش کمتر
+  show_all: نمایش همه
+  showing: نمایش
+  no_images: شماره تصاویر
+  no_quotes: شماره نقل قول‌ها
+  version: نسخه
+  created_by: ایجاد شده توسط
+  updated_at: بروزرسانی‌شده در
+  part_of: بخشی از
+  explore: گشتن
+  buttons:
+    addtomue: اضافه کردن به Mue
+    remove: حذف
+    update_addon: بروزرسانی افزونه
+    back: عقب
+    report: گزارش
+    not_available_preview: در پیش‌نمایش موجود نیست
+  not_in_language: این افزونه به زبان شما نیست
+  third_party_api: این افزونه از یک API شخص ثالث استفاده می‌کند
+  sideload_warning: این افزونه از طریق سایدلود منتشر شده است.
+  setting: تنظیمات
+  value: مقدار
+offline:
+  title: به نظر می‌رسد برون‌خط هستید
+  description: لطفاً به اینترنت وصل شوید
+photo_packs: بسته‌های عکس
+quote_packs: بسته‌های نقل قول
+preset_settings: تنظیمات از پیش تعیین‌شده
+no_items: هیچ موردی در این دسته‌بندی وجود ندارد
