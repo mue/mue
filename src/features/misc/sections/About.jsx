@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { PureComponent } from 'react';
 import { MdEmail, MdContactPage } from 'react-icons/md';
 import { FaDiscord } from 'react-icons/fa';
-import { SiGithubsponsors, SiX } from 'react-icons/si';
+import { SiX } from 'react-icons/si';
 import { BiDonateHeart } from 'react-icons/bi';
 
 import { Tooltip, Button } from 'components/Elements';

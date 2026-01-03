@@ -50,7 +50,10 @@ const Button = forwardRef(
     );
 
     const linkButton = (
-      <a className={className} onClick={onClick} ref={ref} disabled={disabled} href={href} style={style}>
+      <a className={className} onClick={onClick} ref={ref} disabled={disabled} href={href} style={style} 
+                   target="_blank"
+              rel="noopener noreferrer"
+      >
         {icon}
         {label}
       </a>
