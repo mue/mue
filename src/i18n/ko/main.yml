@@ -1,1 +1,62 @@
-{}
+tabname: 새 탭
+widgets:
+  background:
+    download: 다운로드
+    downloads: 다운로드 기록
+    views: 조회수
+    likes: 좋아요
+    location: 위치
+    camera: 카메라
+    resolution: 해상도
+    source: 출처
+    category: 카테고리
+    exclude: 다시 보지 않기
+    information: 정보
+    confirm: 확인
+  search: 검색
+  quicklinks:
+    new: 새로운 링크
+    edit: 링크 수정
+    name: 이름
+    url: URL
+    icon: 아이콘 (선택사항)
+    add: 추가
+    name_error: 반드시 이름을 입력해야 합니다
+    url_error: 반드시 링크를 입력해야 합니다
+  date:
+    week: 주
+  weather:
+    not_found: 찾을 수 없음
+    meters: '{amount} 미터'
+    extra_information: 추가 정보
+  quote:
+    link_tooltip: 위키피디아에서 열기
+    share: 공유
+    copy: 복사
+    favourite: 즐겨찾기
+    unfavourite: 즐겨찾기 해제
+  navbar:
+    tooltips:
+      refresh: 새로고침
+    notes:
+      title: 노트
+      placeholder: 여기에 입력하세요
+    todo:
+      title: 할 일
+      pin: 고정
+      add: 추가
+      no_todos: 할 일 없음
+    apps:
+      title: 앱 목록
+      no_apps: 앱 링크 찾을 수 없음
+modals:
+  main:
+    title: 설정
+    loading: 로딩중...
+    file_upload_error: 2MB를 초과하는 파일은 올릴 수 없습니다
+    navbar:
+      settings: 설정
+      addons: 라이브러리
+      marketplace: 탐색
+    error_boundary:
+      title: 오류
