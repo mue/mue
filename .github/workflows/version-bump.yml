@@ -8,9 +8,9 @@ on:
         required: true
         type: choice
         options:
-          - patch  # 7.6.0 -> 7.5.1 (bug fixes)
-          - minor  # 7.6.0 -> 7.6.0 (new features)
-          - major  # 7.6.0 -> 8.0.0 (breaking changes)
+          - patch  # 7.5.0 -> 7.5.1 (bug fixes)
+          - minor  # 7.5.0 -> 7.6.0 (new features)
+          - major  # 7.5.0 -> 8.0.0 (breaking changes)
       pre_release:
         description: 'Pre-release label (leave empty for stable release)'
         required: false
@@ -53,12 +53,6 @@ jobs:
           # Remove any pre-release suffix for base version
           BASE_VERSION=$(echo $CURRENT_VERSION | sed 's/-.*$//')
           IFS='.' read -r -a VERSION_PARTS <<< "$BASE_VERSION"
-          
-          # Detect if current version is already a pre-release
-          IS_PRERELEASE=false
-          case "$CURRENT_VERSION" in
-            *-*) IS_PRERELEASE=true ;;
-          esac
           
           MAJOR="${VERSION_PARTS[0]}"
           MINOR="${VERSION_PARTS[1]}"
