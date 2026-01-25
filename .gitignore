@@ -5,7 +5,6 @@ node_modules/
 build/
 .idea/
 dist/
-/docs
 
 # Safari Extension Build Files
 safari/Mue Extension/Resources/*.html

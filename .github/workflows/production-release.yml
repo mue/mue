@@ -1,0 +1,187 @@
+name: Production Release
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+permissions:
+  contents: write
+
+jobs:
+  # Only run if PR was merged (not just closed)
+  check-merge:
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'beta'
+    runs-on: ubuntu-latest
+    outputs:
+      should_release: ${{ steps.check.outputs.should_release }}
+    steps:
+      - name: Check if this is a beta to main merge
+        id: check
+        run: |
+          echo "should_release=true" >> $GITHUB_OUTPUT
+          echo "✅ This is a beta → main merge, proceeding with production release" >> $GITHUB_STEP_SUMMARY
+
+  build-and-release:
+    needs: check-merge
+    if: needs.check-merge.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    environment: production  # Requires manual approval from maintainers
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.1'
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build extension
+        run: bun run build
+        env:
+          NODE_ENV: production
+
+      - name: Get version from package.json
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          # Remove any pre-release suffix for production
+          STABLE_VERSION=$(echo $VERSION | sed 's/-.*$//')
+          echo "version=$STABLE_VERSION" >> $GITHUB_OUTPUT
+          echo "full_version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Building production version: $STABLE_VERSION"
+
+      - name: Generate production changelog
+        id: changelog
+        run: |
+          # Get the latest production (non-beta) tag
+          PREVIOUS_TAG=$(git tag -l 'v*' --sort=-v:refname | grep -v 'beta\|alpha\|rc' | head -n 1 || echo "")
+          
+          if [ -z "$PREVIOUS_TAG" ]; then
+            echo "No previous production tag found, using all commits"
+            COMMITS=$(git log --pretty=format:"- %s (%h)" main)
+          else
+            echo "Generating changelog from $PREVIOUS_TAG to main"
+            COMMITS=$(git log --pretty=format:"- %s (%h)" ${PREVIOUS_TAG}..main)
+          fi
+          
+          # Categorize commits
+          FEATURES=$(echo "$COMMITS" | grep -i "^- feat" || echo "")
+          FIXES=$(echo "$COMMITS" | grep -i "^- fix" || echo "")
+          PERFORMANCE=$(echo "$COMMITS" | grep -i "^- perf" || echo "")
+          BREAKING=$(echo "$COMMITS" | grep -i "BREAKING CHANGE" || echo "")
+          
+          {
+            echo "changelog<<EOF"
+            if [ -n "$BREAKING" ]; then
+              echo "### ⚠️ Breaking Changes"
+              echo "$BREAKING"
+              echo ""
+            fi
+            if [ -n "$FEATURES" ]; then
+              echo "### ✨ New Features"
+              echo "$FEATURES"
+              echo ""
+            fi
+            if [ -n "$FIXES" ]; then
+              echo "### 🐛 Bug Fixes"
+              echo "$FIXES"
+              echo ""
+            fi
+            if [ -n "$PERFORMANCE" ]; then
+              echo "### ⚡ Performance Improvements"
+              echo "$PERFORMANCE"
+            fi
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          if git rev-parse "v${{ steps.version.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create production tag
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v${{ steps.version.outputs.version }}" -m "Release v${{ steps.version.outputs.version }}"
+          git push origin "v${{ steps.version.outputs.version }}"
+
+      - name: Create GitHub Release
+        run: |
+          RELEASE_NOTES=$(cat <<EOF
+          ## 🎉 Mue v${{ steps.version.outputs.version }}
+          
+          ${{ steps.changelog.outputs.changelog }}
+          
+          ### 📦 Installation
+          
+          **Browser Extensions:**
+          - **Chrome**: [Chrome Web Store](https://chromewebstore.google.com/detail/mue/bngmbednanpcfochchhgbkookpiaiaid)
+          - **Edge**: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/mue/aepnglgjfokepefimhbnibfjekidhmja)
+          - **Firefox**: [Firefox Add-ons](https://addons.mozilla.org/en-GB/firefox/addon/mue/)
+          
+          **Manual Installation:**
+          - Download the appropriate ZIP file below
+          - Chrome/Edge: Load unpacked extension from extracted folder
+          - Firefox: Install from about:debugging → Load Temporary Add-on
+          
+          ### 🔗 Links
+          - **Demo**: [demo.muetab.com](https://demo.muetab.com)
+          - **Changelog**: [muetab.com/blog/changelog](https://muetab.com/blog/changelog)
+          - **Documentation**: [github.com/mue/mue](https://github.com/mue/mue)
+          
+          ---
+          
+          ### 📝 Build Information
+          - **Version**: ${{ steps.version.outputs.version }}
+          - **Build Date**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          - **Commit**: ${{ github.sha }}
+          EOF
+          )
+          
+          gh release create "v${{ steps.version.outputs.version }}" \
+            "build/chrome-${{ steps.version.outputs.version }}.zip" \
+            "build/firefox-${{ steps.version.outputs.version }}.zip" \
+            --title "Mue v${{ steps.version.outputs.version }}" \
+            --notes "$RELEASE_NOTES" \
+            --latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Output success summary
+        run: |
+          echo "## 🚀 Production Release Published!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version**: v${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Release URL**: https://github.com/${{ github.repository }}/releases/tag/v${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 Build Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "- Chrome/Edge: \`chrome-${{ steps.version.outputs.version }}.zip\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Firefox: \`firefox-${{ steps.version.outputs.version }}.zip\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ⚠️ Manual Steps Required" >> $GITHUB_STEP_SUMMARY
+          echo "1. Go to [GitHub Actions](https://github.com/${{ github.repository }}/actions/workflows/submit.yml)" >> $GITHUB_STEP_SUMMARY
+          echo "2. Click 'Run workflow'" >> $GITHUB_STEP_SUMMARY
+          echo "3. Enter tag: \`${{ steps.version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "4. Click 'Run workflow' to submit to Chrome/Firefox/Edge stores" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📢 Post-Release Checklist" >> $GITHUB_STEP_SUMMARY
+          echo "- [ ] Submit to browser stores (see manual steps above)" >> $GITHUB_STEP_SUMMARY
+          echo "- [ ] Update [muetab.com/blog/changelog](https://muetab.com/blog/changelog)" >> $GITHUB_STEP_SUMMARY
+          echo "- [ ] Announce release on Discord/social media" >> $GITHUB_STEP_SUMMARY
+          echo "- [ ] Monitor issue tracker for bug reports" >> $GITHUB_STEP_SUMMARY
+          echo "- [ ] Merge \`main\` back to \`beta\` and \`dev\` to sync version" >> $GITHUB_STEP_SUMMARY
