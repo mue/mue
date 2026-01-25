@@ -81,14 +81,13 @@ const SliderComponent = memo((props) => {
 
   return (
     <div className="slider-container">
-      <span className="sliderTitle">
-        {props.title}
-        <span>{Number(value)}</span>
-        <span className="link" onClick={resetItem}>
+      <div className="slider-header">
+        <span className="slider-value">{Number(value)}</span>
+        <span className="slider-reset" onClick={resetItem}>
           <MdRefresh />
           {variables.getMessage('modals.main.settings.buttons.reset')}
         </span>
-      </span>
+      </div>
       <div className="slider-wrapper">
         <input
           type="range"

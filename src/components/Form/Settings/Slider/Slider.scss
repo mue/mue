@@ -4,39 +4,42 @@
   width: 300px;
   margin-bottom: 30px;
 
-  .sliderTitle {
+  .slider-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .slider-value {
+    font-size: 16px;
+    font-weight: 600;
 
     @include themed {
       color: t($color);
     }
+  }
 
-    > span:first-of-type {
-      font-weight: 600;
+  .slider-reset {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($link);
     }
 
-    .link {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-left: auto;
-      cursor: pointer;
-      font-size: 14px;
+    &:hover {
+      opacity: 0.8;
+    }
 
-      @include themed {
-        color: t($link);
-      }
-
-      &:hover {
-        opacity: 0.8;
-      }
-
-      svg {
-        font-size: 16px;
-      }
+    svg {
+      font-size: 12px;
     }
   }
 

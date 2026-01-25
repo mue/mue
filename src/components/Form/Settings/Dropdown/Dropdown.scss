@@ -97,7 +97,7 @@
     right: 0;
     max-height: 250px;
     overflow-y: auto;
-    z-index: 100;
+    z-index: 9999;
     @include animation(dropdownSlideIn 0.2s ease-out);
 
     @include themed {
