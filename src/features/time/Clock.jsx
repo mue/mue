@@ -8,6 +8,13 @@ import EventBus from 'utils/eventbus';
 
 import './clock.scss';
 
+// Helper function to format padded time values while preserving padding
+const formatPaddedDigits = (value) => {
+  const str = String(value);
+  // Format each digit individually to preserve padding with locale numerals
+  return str.split('').map(digit => formatDigits(digit)).join('');
+};
+
 const Clock = () => {
   const [timeType] = useState(localStorage.getItem('timeType'));
   const [time, setTime] = useState('');
@@ -51,23 +58,22 @@ const Clock = () => {
 
           if (localStorage.getItem('seconds') === 'true') {
             const secs = ('00' + now.getSeconds()).slice(-2);
-            sec = `:${formatDigits(secs)}`;
-            setFinalSeconds(formatDigits(secs));
+            sec = `:${formatPaddedDigits(secs)}`;
+            setFinalSeconds(formatPaddedDigits(secs));
           }
 
           if (localStorage.getItem('timeformat') === 'twentyfourhour') {
-            if (zero === 'false') {
-              const hours = now.getHours();
-              const minutes = ('00' + now.getMinutes()).slice(-2);
-              time = `${formatDigits(hours)}:${formatDigits(minutes)}${sec}`;
-              setFinalHour(formatDigits(hours));
-              setFinalMinute(formatDigits(minutes));
-            } else {
+            const minutes = ('00' + now.getMinutes()).slice(-2);
+            if (zero === 'true') {
               const hours = ('00' + now.getHours()).slice(-2);
-              const minutes = ('00' + now.getMinutes()).slice(-2);
-              time = `${formatDigits(hours)}:${formatDigits(minutes)}${sec}`;
+              time = `${formatPaddedDigits(hours)}:${formatPaddedDigits(minutes)}${sec}`;
+              setFinalHour(formatPaddedDigits(hours));
+              setFinalMinute(formatPaddedDigits(minutes));
+            } else {
+              const hours = now.getHours();
+              time = `${formatDigits(hours)}:${formatPaddedDigits(minutes)}${sec}`;
               setFinalHour(formatDigits(hours));
-              setFinalMinute(formatDigits(minutes));
+              setFinalMinute(formatPaddedDigits(minutes));
             }
 
             setTime(time);
@@ -82,17 +88,16 @@ const Clock = () => {
               hours = 12;
             }
 
-            if (zero === 'false') {
-              const minutes = ('00' + now.getMinutes()).slice(-2);
-              time = `${formatDigits(hours)}:${formatDigits(minutes)}${sec}`;
-              setFinalHour(formatDigits(hours));
-              setFinalMinute(formatDigits(minutes));
-            } else {
+            const minutes = ('00' + now.getMinutes()).slice(-2);
+            if (zero === 'true') {
               const paddedHours = ('00' + hours).slice(-2);
-              const minutes = ('00' + now.getMinutes()).slice(-2);
-              time = `${formatDigits(paddedHours)}:${formatDigits(minutes)}${sec}`;
-              setFinalHour(formatDigits(paddedHours));
-              setFinalMinute(formatDigits(minutes));
+              time = `${formatPaddedDigits(paddedHours)}:${formatPaddedDigits(minutes)}${sec}`;
+              setFinalHour(formatPaddedDigits(paddedHours));
+              setFinalMinute(formatPaddedDigits(minutes));
+            } else {
+              time = `${formatDigits(hours)}:${formatPaddedDigits(minutes)}${sec}`;
+              setFinalHour(formatDigits(hours));
+              setFinalMinute(formatPaddedDigits(minutes));
             }
 
             setTime(time);

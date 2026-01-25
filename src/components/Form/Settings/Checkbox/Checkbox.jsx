@@ -20,7 +20,7 @@ const Checkbox = memo((props) => {
 
     variables.stats.postEvent(
       'setting',
-      `${props.name} ${checked ? 'enabled' : 'disabled'}`,
+      `${props.name} ${value ? 'enabled' : 'disabled'}`,
     );
 
     if (props.element) {
