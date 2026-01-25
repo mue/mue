@@ -54,27 +54,40 @@ jobs:
           BASE_VERSION=$(echo $CURRENT_VERSION | sed 's/-.*$//')
           IFS='.' read -r -a VERSION_PARTS <<< "$BASE_VERSION"
           
+          # Detect if current version is already a pre-release
+          IS_PRERELEASE=false
+          case "$CURRENT_VERSION" in
+            *-*) IS_PRERELEASE=true ;;
+          esac
+          
           MAJOR="${VERSION_PARTS[0]}"
           MINOR="${VERSION_PARTS[1]}"
           PATCH="${VERSION_PARTS[2]}"
           
-          # Bump version based on type
-          case "${{ github.event.inputs.bump_type }}" in
-            major)
-              MAJOR=$((MAJOR + 1))
-              MINOR=0
-              PATCH=0
-              ;;
-            minor)
-              MINOR=$((MINOR + 1))
-              PATCH=0
-              ;;
-            patch)
-              PATCH=$((PATCH + 1))
-              ;;
-          esac
-          
-          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          # If requesting a pre-release and current is already a pre-release, keep base version
+          # Otherwise, bump the version based on type
+          if [ -n "${{ github.event.inputs.pre_release }}" ] && [ "$IS_PRERELEASE" = "true" ]; then
+            # Keep existing base version for iterative betas (7.6.0-beta.1 -> 7.6.0-beta.2)
+            NEW_VERSION="$BASE_VERSION"
+          else
+            # Bump version based on type
+            case "${{ github.event.inputs.bump_type }}" in
+              major)
+                MAJOR=$((MAJOR + 1))
+                MINOR=0
+                PATCH=0
+                ;;
+              minor)
+                MINOR=$((MINOR + 1))
+                PATCH=0
+                ;;
+              patch)
+                PATCH=$((PATCH + 1))
+                ;;
+            esac
+            
+            NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          fi
           
           # Add pre-release label if specified
           if [ -n "${{ github.event.inputs.pre_release }}" ]; then

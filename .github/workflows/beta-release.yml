@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - beta
-    tags:
-      - 'v*-beta.*'
 
 permissions:
   contents: write

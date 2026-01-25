@@ -176,7 +176,7 @@ jobs:
           echo "### ⚠️ Manual Steps Required" >> $GITHUB_STEP_SUMMARY
           echo "1. Go to [GitHub Actions](https://github.com/${{ github.repository }}/actions/workflows/submit.yml)" >> $GITHUB_STEP_SUMMARY
           echo "2. Click 'Run workflow'" >> $GITHUB_STEP_SUMMARY
-          echo "3. Enter tag: \`${{ steps.version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "3. Enter tag: \`v${{ steps.version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
           echo "4. Click 'Run workflow' to submit to Chrome/Firefox/Edge stores" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📢 Post-Release Checklist" >> $GITHUB_STEP_SUMMARY
