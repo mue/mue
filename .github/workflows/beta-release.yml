@@ -39,6 +39,13 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Building version: $VERSION"
+          
+          # Check if this is actually a beta version
+          if [[ ! "$VERSION" =~ -beta\. ]]; then
+            echo "❌ Version $VERSION is not a beta version (must contain '-beta.')"
+            echo "Skipping beta release. Use Version Bump workflow to create a beta version first."
+            exit 1
+          fi
 
       - name: Generate changelog
         id: changelog
