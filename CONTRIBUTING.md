@@ -263,7 +263,7 @@ When beta is stable:
 7. Manually trigger store submission:
    ```
    Actions → Submit → Run workflow
-   - Enter version tag (e.g., 7.6.0)
+   - Enter version tag (e.g., v7.6.0)
    ```
 
 #### 4. Emergency Hotfix
