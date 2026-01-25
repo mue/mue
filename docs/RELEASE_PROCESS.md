@@ -184,7 +184,7 @@ Before starting any release:
    - Check build artifacts
    - **Approve deployment** in Environments → production
 
-4. **Review period** - Workflow waits for your approval (10 min deployment protection)
+4. **Wait 10 minutes** (cooldown period)
 
 5. **Release completes**:
    - GitHub release published
@@ -197,7 +197,7 @@ Before starting any release:
 
 1. Go to **Actions** → **Submit** → **Run workflow**
 
-2. Enter version tag: `v7.6.0` (include the 'v' prefix to match the release tag)
+2. Enter version tag: `7.6.0` (no 'v' prefix)
 
 3. Click **Run workflow**
 
