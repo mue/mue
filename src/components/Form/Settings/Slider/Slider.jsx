@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { memo, useState, useCallback } from 'react';
+import { memo, useState, useCallback, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { MdRefresh } from 'react-icons/md';
 
@@ -9,6 +9,7 @@ import './Slider.scss';
 
 const SliderComponent = memo((props) => {
   const [value, setValue] = useState(localStorage.getItem(props.name) || props.default);
+  const animationRef = useRef(null);
 
   const handleChange = useCallback(
     (e) => {
@@ -39,13 +40,41 @@ const SliderComponent = memo((props) => {
   );
 
   const resetItem = useCallback(() => {
-    handleChange({
-      target: {
-        value: props.default || '',
-      },
-    });
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+
+    const startValue = Number(value);
+    const endValue = Number(props.default || 0);
+    const duration = 300; // milliseconds
+    const startTime = performance.now();
+
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+
+      const currentValue = startValue + (endValue - startValue) * easeOutCubic;
+      const roundedValue = Math.round(currentValue / (Number(props.step) || 1)) * (Number(props.step) || 1);
+
+      localStorage.setItem(props.name, roundedValue);
+      setValue(roundedValue);
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        // Ensure we end exactly at the target value
+        localStorage.setItem(props.name, endValue);
+        setValue(endValue);
+        EventBus.emit('refresh', props.category);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
     toast(variables.getMessage('toasts.reset'));
-  }, [handleChange, props.default]);
+  }, [value, props]);
 
   const percentage =
     ((Number(value) - Number(props.min)) / (Number(props.max) - Number(props.min))) * 100;

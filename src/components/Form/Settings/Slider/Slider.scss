@@ -53,6 +53,7 @@
     border-radius: 3px;
     outline: none;
     cursor: pointer;
+    transition: background 0.3s ease;
 
     @include themed {
       background: linear-gradient(
