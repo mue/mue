@@ -33,7 +33,7 @@ const Switch = memo((props) => {
   }, [checked, props]);
 
   return (
-    <label className="switch-wrapper">
+    <div className="switch-wrapper">
       {!props.header && <span className="switch-label">{props.text}</span>}
       <div className={`switch-track ${checked ? 'checked' : ''}`} onClick={handleChange}>
         <div className="switch-thumb" />
@@ -44,8 +44,9 @@ const Switch = memo((props) => {
         checked={checked}
         onChange={handleChange}
         className="switch-input"
+        aria-hidden="true"
       />
-    </label>
+    </div>
   );
 });
 
