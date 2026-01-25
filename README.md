@@ -49,6 +49,16 @@ Install dependencies with `bun install`, and then you can run any of the followi
 - `bun run translations` - migrate old translation format to new
 - `bun run translations:percentages` - update translation completion percentages from Weblate
 
+### Contributing
+
+We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
+- Development workflow
+- Branch strategy (dev → beta → main)
+- Commit message format
+- Pull request process
+
+For maintainers, see [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md) for release procedures.
+
 ## 🐳 Docker development
 
 Hot reload is available while coding.
