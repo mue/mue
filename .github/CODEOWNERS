@@ -1,2 +1,8 @@
 # Automatically assigned to any PRs
 * @davidcralph @alexsparkes
+
+# Workflow files require maintainer approval
+/.github/workflows/ @davidcralph @alexsparkes
+
+# Release process documentation
+/docs/RELEASE_PROCESS.md @davidcralph @alexsparkes

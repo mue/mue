@@ -1,0 +1,140 @@
+name: Version Bump
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'Version bump type'
+        required: true
+        type: choice
+        options:
+          - patch  # 7.5.0 -> 7.5.1 (bug fixes)
+          - minor  # 7.5.0 -> 7.6.0 (new features)
+          - major  # 7.5.0 -> 8.0.0 (breaking changes)
+      pre_release:
+        description: 'Pre-release label (leave empty for stable release)'
+        required: false
+        type: choice
+        options:
+          - ''
+          - beta
+          - rc
+          - alpha
+
+permissions:
+  contents: write
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.1'
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Calculate new version
+        id: version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          
+          # Remove any pre-release suffix for base version
+          BASE_VERSION=$(echo $CURRENT_VERSION | sed 's/-.*$//')
+          IFS='.' read -r -a VERSION_PARTS <<< "$BASE_VERSION"
+          
+          MAJOR="${VERSION_PARTS[0]}"
+          MINOR="${VERSION_PARTS[1]}"
+          PATCH="${VERSION_PARTS[2]}"
+          
+          # Bump version based on type
+          case "${{ github.event.inputs.bump_type }}" in
+            major)
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            minor)
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            patch)
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+          
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          
+          # Add pre-release label if specified
+          if [ -n "${{ github.event.inputs.pre_release }}" ]; then
+            # Get beta number by counting existing beta tags for this version
+            BETA_COUNT=$(git tag -l "v${NEW_VERSION}-${{ github.event.inputs.pre_release }}.*" | wc -l)
+            BETA_NUM=$((BETA_COUNT + 1))
+            NEW_VERSION="${NEW_VERSION}-${{ github.event.inputs.pre_release }}.${BETA_NUM}"
+          fi
+          
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "New version will be: $NEW_VERSION"
+
+      - name: Update package.json
+        run: |
+          bun x json -I -f package.json -e "this.version='${{ steps.version.outputs.new_version }}'"
+
+      - name: Update Chrome manifest
+        run: |
+          VERSION_WITHOUT_PRERELEASE=$(echo "${{ steps.version.outputs.new_version }}" | sed 's/-.*$//')
+          bun x json -I -f manifest/chrome.json -e "this.version='${VERSION_WITHOUT_PRERELEASE}'"
+
+      - name: Update Firefox manifest
+        run: |
+          VERSION_WITHOUT_PRERELEASE=$(echo "${{ steps.version.outputs.new_version }}" | sed 's/-.*$//')
+          bun x json -I -f manifest/firefox.json -e "this.version='${VERSION_WITHOUT_PRERELEASE}'"
+
+      - name: Update Safari manifest
+        run: |
+          VERSION_WITHOUT_PRERELEASE=$(echo "${{ steps.version.outputs.new_version }}" | sed 's/-.*$//')
+          bun x json -I -f safari/Mue\ Extension/Resources/manifest.json -e "this.version='${VERSION_WITHOUT_PRERELEASE}'"
+
+      - name: Update Safari Xcode project
+        run: |
+          VERSION_WITHOUT_PRERELEASE=$(echo "${{ steps.version.outputs.new_version }}" | sed 's/-.*$//')
+          sed -i "s/MARKETING_VERSION = [^;]*/MARKETING_VERSION = ${VERSION_WITHOUT_PRERELEASE}/g" safari/Mue.xcodeproj/project.pbxproj
+
+      - name: Update constants.js
+        run: |
+          sed -i "s/export const VERSION = '[^']*'/export const VERSION = '${{ steps.version.outputs.new_version }}'/" src/config/constants.js
+
+      - name: Commit version bump
+        run: |
+          git add package.json manifest/chrome.json manifest/firefox.json safari/Mue\ Extension/Resources/manifest.json safari/Mue.xcodeproj/project.pbxproj src/config/constants.js
+          git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }}"
+          git tag -a "v${{ steps.version.outputs.new_version }}" -m "Release v${{ steps.version.outputs.new_version }}"
+
+      - name: Push changes
+        run: |
+          git push origin ${{ github.ref_name }}
+          git push origin "v${{ steps.version.outputs.new_version }}"
+
+      - name: Summary
+        run: |
+          echo "✅ Version bumped to ${{ steps.version.outputs.new_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "📦 Tag created: v${{ steps.version.outputs.new_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Files updated:" >> $GITHUB_STEP_SUMMARY
+          echo "- package.json" >> $GITHUB_STEP_SUMMARY
+          echo "- manifest/chrome.json" >> $GITHUB_STEP_SUMMARY
+          echo "- manifest/firefox.json" >> $GITHUB_STEP_SUMMARY
+          echo "- safari/Mue Extension/Resources/manifest.json" >> $GITHUB_STEP_SUMMARY
+          echo "- safari/Mue.xcodeproj/project.pbxproj" >> $GITHUB_STEP_SUMMARY
+          echo "- src/config/constants.js" >> $GITHUB_STEP_SUMMARY
