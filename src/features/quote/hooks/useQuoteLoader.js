@@ -83,7 +83,13 @@ export function useQuoteLoader(updateQuote) {
 
   const getQuote = useCallback(async () => {
     const offline = localStorage.getItem('offlineMode') === 'true';
-    const type = localStorage.getItem('quoteType') || 'api';
+    let type = localStorage.getItem('quoteType') || 'quote_pack';
+
+    // Migrate deprecated 'api' type to 'quote_pack'
+    if (type === 'api') {
+      type = 'quote_pack';
+      localStorage.setItem('quoteType', 'quote_pack');
+    }
 
     // Check for favourite quote first
     const favouriteQuote = localStorage.getItem('favouriteQuote');
@@ -128,7 +134,8 @@ export function useQuoteLoader(updateQuote) {
         });
       }
 
-      case 'quote_pack': {
+      case 'quote_pack':
+      default: {
         if (offline) return doOffline();
 
         const installed = JSON.parse(localStorage.getItem('installed') || '[]');
@@ -138,55 +145,30 @@ export function useQuoteLoader(updateQuote) {
             ...quote,
             fallbackauthorimg: item.icon_url,
             packName: item.display_name || item.name,
+            noAuthorImg: item.noAuthorImg || quote.noAuthorImg,
           })));
 
         if (quotePack.length === 0) return doOffline();
 
         const data = quotePack[Math.floor(Math.random() * quotePack.length)];
         const hasAuthor = data.author && data.author.trim() !== '';
+        const displayAuthor = hasAuthor ? data.author : data.packName;
+
+        // Try to get author image from Wikipedia unless pack disables it
+        let authorimgdata = { authorimg: data.fallbackauthorimg, authorimglicense: null };
+        if (hasAuthor && !data.noAuthorImg) {
+          const wikiImg = await getAuthorImg(data.author);
+          if (wikiImg.authorimg) {
+            authorimgdata = wikiImg;
+          }
+        }
+
         return updateQuote({
           quote: `"${data.quote}"`,
-          author: hasAuthor ? data.author : data.packName,
+          author: displayAuthor,
           authorlink: hasAuthor ? getAuthorLink(data.author) : null,
-          authorimg: data.fallbackauthorimg,
+          ...authorimgdata,
         });
-      }
-
-      case 'api': {
-        if (offline) return doOffline();
-
-        const fetchAPIQuote = async () => {
-          const response = await fetch(
-            `${variables.constants.API_URL}/quotes/random`
-          ).then(res => res.json());
-
-          if (response.statusCode === 429) return null;
-
-          const authorimgdata = await getAuthorImg(response.author);
-          return {
-            quote: `"${response.quote.replace(/\s+$/g, '')}"`,
-            author: response.author,
-            authorlink: getAuthorLink(response.author),
-            ...authorimgdata,
-            authorOccupation: response.author_occupation,
-          };
-        };
-
-        try {
-          const data = JSON.parse(localStorage.getItem('nextQuote')) || await fetchAPIQuote();
-          localStorage.setItem('nextQuote', null);
-          
-          if (data) {
-            updateQuote(data);
-            localStorage.setItem('currentQuote', JSON.stringify(data));
-            localStorage.setItem('nextQuote', JSON.stringify(await fetchAPIQuote()));
-          } else {
-            doOffline();
-          }
-        } catch {
-          doOffline();
-        }
-        break;
       }
     }
   }, [updateQuote, getAuthorLink, getAuthorImg, doOffline]);

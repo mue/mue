@@ -8,8 +8,44 @@ import Preview from '../../helpers/preview/Preview';
 
 import EventBus from 'utils/eventbus';
 import { parseDeepLink, shouldAutoOpenModal, updateHash } from 'utils/deepLinking';
+import { install } from 'utils/marketplace';
 
 import Welcome from 'features/welcome/Welcome';
+
+const DEFAULT_PACK_ID = '0c8a5bdebd13';
+
+const isDefaultPackInstalled = () => {
+  const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+  return installed.some((item) => item.id === DEFAULT_PACK_ID);
+};
+
+const isDefaultPackUninstalled = () => {
+  const uninstalledPacks = JSON.parse(localStorage.getItem('uninstalledPacks') || '[]');
+  return uninstalledPacks.includes(DEFAULT_PACK_ID);
+};
+
+const tryInstallDefaultPack = async () => {
+  // Don't install if offline mode, already installed, or explicitly uninstalled
+  if (
+    localStorage.getItem('offlineMode') === 'true' ||
+    isDefaultPackInstalled() ||
+    isDefaultPackUninstalled()
+  ) {
+    return false;
+  }
+
+  try {
+    const response = await fetch(
+      `${variables.constants.API_URL}/marketplace/item/${DEFAULT_PACK_ID}`,
+    );
+    const { data } = await response.json();
+    install(data.type, data, false, true);
+    return true;
+  } catch (e) {
+    console.error('Failed to install default pack:', e);
+    return false;
+  }
+};
 
 const Modals = () => {
   const [mainModal, setMainModal] = useState(false);
@@ -60,6 +96,15 @@ const Modals = () => {
       localStorage.setItem('showReminder', false);
     }
 
+    // Try to install default pack if it wasn't installed during welcome (e.g., no internet)
+    if (localStorage.getItem('showWelcome') !== 'true') {
+      tryInstallDefaultPack().then((installed) => {
+        if (installed) {
+          EventBus.emit('refresh', 'quote');
+        }
+      });
+    }
+
     // Listen for EventBus modal open requests
     const handleModalOpen = (data) => {
       if (data === 'openMainModal') {
@@ -76,9 +121,12 @@ const Modals = () => {
     };
   }, []);
 
-  const closeWelcome = () => {
+  const closeWelcome = async () => {
     localStorage.setItem('showWelcome', false);
     setWelcomeModal(false);
+
+    await tryInstallDefaultPack();
+
     EventBus.emit('refresh', 'widgetsWelcomeDone');
     EventBus.emit('refresh', 'widgets');
     EventBus.emit('refresh', 'backgroundwelcome');

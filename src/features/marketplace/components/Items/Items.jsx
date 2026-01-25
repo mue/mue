@@ -1,9 +1,16 @@
 import variables from 'config/variables';
 import React, { memo, useState, useMemo } from 'react';
-import { MdAutoFixHigh, MdOutlineArrowForward, MdOutlineOpenInNew, MdCheckCircle } from 'react-icons/md';
+import {
+  MdAutoFixHigh,
+  MdOutlineArrowForward,
+  MdOutlineOpenInNew,
+  MdCheckCircle,
+  MdOutlineUploadFile,
+  MdClose,
+} from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
-import { Button } from 'components/Elements';
+import { Button, Tooltip } from 'components/Elements';
 import Dropdown from '../../../../components/Form/Settings/Dropdown/Dropdown';
 
 function filterItems(item, filter, categoryFilter) {
@@ -28,7 +35,29 @@ function filterItems(item, filter, categoryFilter) {
   return textMatch && item.type === categoryMap[categoryFilter];
 }
 
-function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInstalled }) {
+function getInitials(name) {
+  if (!name) return '??';
+  const words = name.split(' ');
+  if (words.length === 1) {
+    return name.substring(0, 2).toUpperCase();
+  }
+  return words
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join('')
+    .toUpperCase();
+}
+
+function getTypeTranslationKey(type) {
+  const typeMap = {
+    photos: 'photo_packs',
+    quotes: 'quote_packs',
+    settings: 'preset_settings',
+  };
+  return typeMap[type] || type;
+}
+
+function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInstalled, isAdded, onUninstall }) {
   item._onCollection = onCollection;
 
   // Convert hex color to RGB for gradient with opacity
@@ -73,28 +102,62 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
     };
   };
 
+  const isSideloaded = item.sideload === true;
+
   return (
     <div
-      className="item"
-      onClick={() => toggleFunction(item)}
+      className={`item ${isSideloaded ? 'item-sideloaded' : ''}`}
+      onClick={isSideloaded ? undefined : () => toggleFunction(item)}
       key={item.name}
       style={getGradientStyle()}
     >
-      {isInstalled && item.colour && (
+      {isAdded && onUninstall && (
+        <Tooltip
+          title={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+          style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 3 }}
+        >
+          <button
+            className="item-uninstall-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              onUninstall(item.type, item.name);
+            }}
+          >
+            <MdClose />
+          </button>
+        </Tooltip>
+      )}
+      {isSideloaded && (
+        <Tooltip
+          title={variables.getMessage('modals.main.addons.sideload.title')}
+          style={{ position: 'absolute', top: '12px', right: '48px', zIndex: 2 }}
+        >
+          <div className="item-sideload-badge">
+            <MdOutlineUploadFile />
+          </div>
+        </Tooltip>
+      )}
+      {isInstalled && item.colour && !isSideloaded && (
         <div className="item-installed-badge" style={getBadgeStyle()}>
           <MdCheckCircle />
         </div>
       )}
-      <img
-        className="item-icon"
-        alt="icon"
-        draggable={false}
-        src={item.icon_url}
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = placeholderIcon;
-        }}
-      />
+      {item.icon_url ? (
+        <img
+          className="item-icon"
+          alt="icon"
+          draggable={false}
+          src={item.icon_url}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = placeholderIcon;
+          }}
+        />
+      ) : (
+        <div className="item-icon item-icon-text">
+          {getInitials(item.display_name || item.name)}
+        </div>
+      )}
       <div className="card-details">
         <span className="card-title">{item.display_name || item.name}</span>
         {!isCurator ? (
@@ -106,17 +169,14 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
         )}
 
         <div className="card-chips">
-          {type === 'all' && !onCollection ? (
+          {item.type && (
             <span className="card-type">
-              {variables.getMessage('modals.main.marketplace.' + item.type)}
+              {variables.getMessage('modals.main.marketplace.' + getTypeTranslationKey(item.type))}
             </span>
-          ) : null}
-
-          {/* {item.in_collections && item.in_collections.length > 0 && !onCollection ? (
-            <span className="card-collection">
-              {item.in_collections[0]}
-            </span>
-          ) : null} */}
+          )}
+          {item.in_collections && item.in_collections.length > 0 && !onCollection && (
+            <span className="card-collection">{item.in_collections[0]}</span>
+          )}
         </div>
       </div>
     </div>
@@ -136,6 +196,8 @@ function Items({
   showCreateYourOwn,
   filterOptions = false,
   onSortChange,
+  isAdded = false,
+  onUninstall,
 }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
@@ -239,6 +301,8 @@ function Items({
               type={type}
               onCollection={onCollection}
               isInstalled={installedNames.has(item.name)}
+              isAdded={isAdded}
+              onUninstall={onUninstall}
               key={index}
             />
           ))}

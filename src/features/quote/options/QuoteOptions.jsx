@@ -23,7 +23,15 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     return data;
   };
 
-  const [quoteType, setQuoteType] = useState(localStorage.getItem('quoteType') || 'api');
+  const [quoteType, setQuoteType] = useState(() => {
+    let type = localStorage.getItem('quoteType') || 'quote_pack';
+    // Migrate deprecated 'api' type to 'quote_pack'
+    if (type === 'api') {
+      type = 'quote_pack';
+      localStorage.setItem('quoteType', 'quote_pack');
+    }
+    return type;
+  });
   const [customQuote, setCustomQuote] = useState(getCustom());
 
   const handleCustomQuote = (e, text, index, type) => {
@@ -92,10 +100,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
           localStorage.getItem('quote_packs') && {
             value: 'quote_pack',
             text: variables.getMessage('modals.main.marketplace.title'),
-          },
-          {
-            value: 'api',
-            text: variables.getMessage('modals.main.settings.sections.background.type.api'),
           },
           { value: 'custom', text: variables.getMessage(`${QUOTE_SECTION}.custom`) },
         ]}

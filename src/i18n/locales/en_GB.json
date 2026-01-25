@@ -599,10 +599,9 @@
         },
         "sort": {
           "title": "Sort",
-          "newest": "Installed (Newest)",
-          "oldest": "Installed (Oldest)",
-          "a_z": "Alphabetical (A-Z)",
-          "z_a": "Alphabetical (Z-A)"
+          "newest": "Recently Added",
+          "a_z": "Name (A-Z)",
+          "recently_updated": "Recently Updated"
         },
         "create": {
           "title": "Create",
