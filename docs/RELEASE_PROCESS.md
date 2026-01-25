@@ -35,14 +35,14 @@ We follow [Semantic Versioning](https://semver.org/): `MAJOR.MINOR.PATCH`
 | Type | When | Example |
 |------|------|---------|
 | **Major** (x.0.0) | Breaking changes, API changes, major UI overhaul | 7.5.0 → 8.0.0 |
-| **Minor** (0.x.0) | New features, backward-compatible changes | 7.5.0 → 7.6.0 |
+| **Minor** (0.x.0) | New features, backward-compatible changes | 7.5.0 → 7.5.0 |
 | **Patch** (0.0.x) | Bug fixes, small improvements | 7.5.0 → 7.5.1 |
 
 ### Beta Versions
 
 Beta versions follow the format: `MAJOR.MINOR.PATCH-beta.X`
 
-Example: `7.6.0-beta.1`, `7.6.0-beta.2`
+Example: `7.5.0-beta.1`, `7.5.0-beta.2`
 
 ## Pre-Release Checklist
 
@@ -69,7 +69,7 @@ Before starting any release:
 3. Click **Run workflow**
 
 4. Workflow will:
-   - Calculate new version (e.g., `7.6.0-beta.1`)
+   - Calculate new version (e.g., `7.5.0-beta.1`)
    - Update all 6 version files
    - Create git tag
    - Push to `dev`
@@ -119,7 +119,7 @@ Before starting any release:
 3. **Fix issues**:
    - Fix bugs on `dev` branch
    - Create new beta (repeat from Step 1)
-   - Increment beta number (7.6.0-beta.2, etc.)
+   - Increment beta number (7.5.0-beta.2, etc.)
 
 4. **Minimum beta period**: 3-7 days (depending on changes)
 
@@ -147,7 +147,7 @@ Before starting any release:
    - **Bump type**: Usually same as beta (minor/major/patch)
    - **Pre-release**: Leave empty (stable release)
 
-3. This updates `7.6.0-beta.X` → `7.6.0`
+3. This updates `7.5.0-beta.X` → `7.5.0`
 
 ### Step 3: Create Production PR
 
@@ -197,7 +197,7 @@ Before starting any release:
 
 1. Go to **Actions** → **Submit** → **Run workflow**
 
-2. Enter version tag: `v7.6.0` (include the 'v' prefix to match the release tag)
+2. Enter version tag: `v7.5.0` (include the 'v' prefix to match the release tag)
 
 3. Click **Run workflow**
 
@@ -274,7 +274,7 @@ git push origin beta
    - Approve in **Environments** → **production**
 
 6. **Workflow automatically**:
-   - Bumps patch version (7.6.0 → 7.6.1)
+   - Bumps patch version (7.5.0 → 7.6.1)
    - Merges to `main`
    - Creates release tag
    - Builds and releases
@@ -393,8 +393,8 @@ Stored in GitHub Secrets as `SUBMIT_KEYS`:
 **Solutions**:
 1. Delete existing tag:
    ```bash
-   git tag -d v7.6.0
-   git push origin :refs/tags/v7.6.0
+   git tag -d v7.5.0
+   git push origin :refs/tags/v7.5.0
    ```
 2. Re-run workflow
 
