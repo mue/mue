@@ -72,7 +72,7 @@
       height: 20px;
       border-radius: 50%;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
       @include themed {
@@ -82,6 +82,7 @@
 
       &:hover {
         transform: scale(1.1);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
       }
     }
 
@@ -90,7 +91,7 @@
       height: 20px;
       border-radius: 50%;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       border: none;
 
@@ -101,6 +102,52 @@
 
       &:hover {
         transform: scale(1.1);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::-webkit-slider-thumb {
+        @include themed {
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 0 3px t($link);
+        }
+
+        transform: scale(1.15);
+      }
+
+      &::-moz-range-thumb {
+        @include themed {
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 0 3px t($link);
+        }
+
+        transform: scale(1.15);
+      }
+    }
+
+    &:active:not(:disabled) {
+      &::-webkit-slider-thumb {
+        transform: scale(1.2);
+      }
+
+      &::-moz-range-thumb {
+        transform: scale(1.2);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      &::-webkit-slider-thumb {
+        cursor: not-allowed;
+        transform: scale(1) !important;
+      }
+
+      &::-moz-range-thumb {
+        cursor: not-allowed;
+        transform: scale(1) !important;
       }
     }
   }

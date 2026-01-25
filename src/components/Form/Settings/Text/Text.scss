@@ -3,17 +3,42 @@
 .text-field-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   width: 300px;
   margin-top: 10px;
+}
 
-  .link {
+.text-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .text-field-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .text-field-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .text-field-reset {
     display: flex;
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    font-size: 14px;
-    width: fit-content;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 
     @include themed {
       color: t($link);
@@ -24,24 +49,7 @@
     }
 
     svg {
-      font-size: 16px;
-    }
-  }
-}
-
-.text-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  .text-field-label {
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-
-    @include themed {
-      color: t($subColor);
+      font-size: 12px;
     }
   }
 

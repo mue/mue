@@ -33,15 +33,16 @@ const Checkbox = memo((props) => {
     EventBus.emit('refresh', props.category);
   }, [checked, props]);
 
+  const handleKeyDown = useCallback((e) => {
+    if ((e.key === ' ' || e.key === 'Enter') && !props.disabled) {
+      e.preventDefault();
+      handleChange();
+    }
+  }, [handleChange, props.disabled]);
+
   return (
     <div className={`checkbox-wrapper ${props.disabled ? 'disabled' : ''}`}>
       <span className="checkbox-label">{props.text}</span>
-      <div
-        className={`checkbox-box ${checked ? 'checked' : ''}`}
-        onClick={props.disabled ? undefined : handleChange}
-      >
-        {checked && <MdCheck />}
-      </div>
       <input
         type="checkbox"
         name={props.name}
@@ -49,8 +50,12 @@ const Checkbox = memo((props) => {
         onChange={handleChange}
         disabled={props.disabled || false}
         className="checkbox-input"
-        aria-hidden="true"
+        aria-label={props.text}
+        onKeyDown={handleKeyDown}
       />
+      <div className={`checkbox-box ${checked ? 'checked' : ''}`}>
+        {checked && <MdCheck />}
+      </div>
     </div>
   );
 });

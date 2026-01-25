@@ -52,7 +52,15 @@ const Text = memo((props) => {
     <div className="text-field-container">
       {textarea === true ? (
         <div className={`text-field ${customcss ? 'customcss' : ''}`}>
-          {title && <label className="text-field-label">{title}</label>}
+          {title && (
+            <div className="text-field-header">
+              <label className="text-field-label">{title}</label>
+              <span className="text-field-reset" onClick={resetItem}>
+                <MdRefresh />
+                {variables.getMessage('modals.main.settings.buttons.reset')}
+              </span>
+            </div>
+          )}
           <textarea
             value={value}
             onChange={handleChange}
@@ -63,7 +71,15 @@ const Text = memo((props) => {
         </div>
       ) : (
         <div className="text-field">
-          {title && <label className="text-field-label">{title}</label>}
+          {title && (
+            <div className="text-field-header">
+              <label className="text-field-label">{title}</label>
+              <span className="text-field-reset" onClick={resetItem}>
+                <MdRefresh />
+                {variables.getMessage('modals.main.settings.buttons.reset')}
+              </span>
+            </div>
+          )}
           <input
             type="text"
             value={value}
@@ -73,10 +89,6 @@ const Text = memo((props) => {
           />
         </div>
       )}
-      <span className="link" onClick={resetItem}>
-        <MdRefresh />
-        {variables.getMessage('modals.main.settings.buttons.reset')}
-      </span>
     </div>
   );
 });

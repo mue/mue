@@ -62,21 +62,23 @@ const Radio = memo((props) => {
         {props.options.map((option) => (
           <label
             key={option.value}
-            className={`radio-option ${value === option.value ? 'selected' : ''}`}
-            onClick={() => handleChange(option.value)}
+            className={`radio-option ${value === option.value ? 'selected' : ''} ${option.disabled || props.disabled ? 'disabled' : ''}`}
           >
             <span className="radio-label">{option.name}</span>
-            <div className="radio-circle">
-              {value === option.value && <div className="radio-dot" />}
-            </div>
             <input
               type="radio"
               name={props.name}
               value={option.value}
               checked={value === option.value}
               onChange={() => handleChange(option.value)}
+              disabled={option.disabled || props.disabled || false}
               className="radio-input"
+              aria-label={option.name}
+              tabIndex={0}
             />
+            <div className="radio-circle">
+              {value === option.value && <div className="radio-dot" />}
+            </div>
           </label>
         ))}
       </div>

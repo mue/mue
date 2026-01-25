@@ -99,6 +99,11 @@ const SliderComponent = memo((props) => {
           max={Number(props.max)}
           step={Number(props.step) || 1}
           style={{ '--slider-percentage': `${percentage}%` }}
+          aria-label={props.title}
+          aria-valuemin={Number(props.min)}
+          aria-valuemax={Number(props.max)}
+          aria-valuenow={Number(value)}
+          disabled={props.disabled || false}
         />
         {props.marks && props.marks.length > 0 && (
           <div className="slider-marks">

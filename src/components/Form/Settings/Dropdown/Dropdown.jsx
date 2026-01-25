@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 import { memo, useState, useCallback, useRef, useEffect } from 'react';
-import { MdExpandMore } from 'react-icons/md';
+import { MdExpandMore, MdCheck } from 'react-icons/md';
 
 import EventBus from 'utils/eventbus';
 
@@ -11,12 +11,15 @@ const Dropdown = memo((props) => {
     localStorage.getItem(props.name) || props.items[0]?.value,
   );
   const [isOpen, setIsOpen] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
   const containerRef = useRef(null);
+  const optionsRef = useRef([]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (containerRef.current && !containerRef.current.contains(event.target)) {
         setIsOpen(false);
+        setFocusedIndex(-1);
       }
     };
 
@@ -34,6 +37,7 @@ const Dropdown = memo((props) => {
 
       setValue(newValue);
       setIsOpen(false);
+      setFocusedIndex(-1);
 
       if (!props.noSetting) {
         localStorage.setItem(props.name, newValue);
@@ -56,27 +60,85 @@ const Dropdown = memo((props) => {
     [value, props],
   );
 
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (props.disabled) return;
+
+      switch (e.key) {
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          setIsOpen(!isOpen);
+          break;
+        case 'Escape':
+          setIsOpen(false);
+          setFocusedIndex(-1);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          if (!isOpen) {
+            setIsOpen(true);
+          } else {
+            setFocusedIndex((prev) => (prev < props.items.filter((i) => i !== null).length - 1 ? prev + 1 : prev));
+          }
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          if (isOpen) {
+            setFocusedIndex((prev) => (prev > 0 ? prev - 1 : prev));
+          }
+          break;
+      }
+    },
+    [isOpen, props.items, props.disabled],
+  );
+
+  const handleOptionKeyDown = useCallback(
+    (e, item) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onChange(item.value);
+      }
+    },
+    [onChange],
+  );
+
   const id = 'dropdown' + props.name;
   const label = props.label || '';
   const selectedItem = props.items.find((item) => item?.value === value);
 
   return (
-    <div className={`dropdown ${id}`} ref={containerRef}>
+    <div className={`dropdown ${id} ${props.disabled ? 'disabled' : ''}`} ref={containerRef}>
       {label && <label className="dropdown-label">{label}</label>}
-      <div className="dropdown-control" onClick={() => setIsOpen(!isOpen)}>
+      <div
+        className="dropdown-control"
+        onClick={() => !props.disabled && setIsOpen(!isOpen)}
+        onKeyDown={handleKeyDown}
+        role="button"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-label={label || props.name}
+        tabIndex={props.disabled ? -1 : 0}
+      >
         <span className="dropdown-value">{selectedItem?.text || value}</span>
         <MdExpandMore className={`dropdown-arrow ${isOpen ? 'open' : ''}`} />
       </div>
       {isOpen && (
-        <div className="dropdown-menu">
-          {props.items.map((item) =>
+        <div className="dropdown-menu" role="listbox">
+          {props.items.map((item, index) =>
             item !== null ? (
               <div
                 key={id + item.value}
-                className={`dropdown-option ${value === item.value ? 'selected' : ''}`}
+                ref={(el) => (optionsRef.current[index] = el)}
+                className={`dropdown-option ${value === item.value ? 'selected' : ''} ${index === focusedIndex ? 'focused' : ''}`}
                 onClick={() => onChange(item.value)}
+                onKeyDown={(e) => handleOptionKeyDown(e, item)}
+                role="option"
+                aria-selected={value === item.value}
+                tabIndex={0}
               >
-                {item.text}
+                <span className="dropdown-option-text">{item.text}</span>
+                {value === item.value && <MdCheck className="dropdown-option-check" />}
               </div>
             ) : null,
           )}
