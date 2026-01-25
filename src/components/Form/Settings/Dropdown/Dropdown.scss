@@ -24,9 +24,14 @@
     pointer-events: none;
   }
 
-  .dropdown-label {
-    display: block;
+  .dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 8px;
+  }
+
+  .dropdown-label {
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
@@ -34,6 +39,29 @@
 
     @include themed {
       color: t($subColor);
+    }
+  }
+
+  .dropdown-reset {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($link);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      font-size: 12px;
     }
   }
 

@@ -1,6 +1,7 @@
 import variables from 'config/variables';
 import { memo, useState, useCallback, useRef, useEffect } from 'react';
-import { MdExpandMore, MdCheck } from 'react-icons/md';
+import { MdExpandMore, MdCheck, MdRefresh } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 import EventBus from 'utils/eventbus';
 
@@ -103,13 +104,27 @@ const Dropdown = memo((props) => {
     [onChange],
   );
 
+  const resetItem = useCallback(() => {
+    const defaultValue = props.default || props.items[0]?.value;
+    onChange(defaultValue);
+    toast(variables.getMessage('toasts.reset'));
+  }, [onChange, props.default, props.items]);
+
   const id = 'dropdown' + props.name;
   const label = props.label || '';
   const selectedItem = props.items.find((item) => item?.value === value);
 
   return (
     <div className={`dropdown ${id} ${props.disabled ? 'disabled' : ''}`} ref={containerRef}>
-      {label && <label className="dropdown-label">{label}</label>}
+      {label && (
+        <div className="dropdown-header">
+          <label className="dropdown-label">{label}</label>
+          <span className="dropdown-reset" onClick={resetItem}>
+            <MdRefresh />
+            {variables.getMessage('modals.main.settings.buttons.reset')}
+          </span>
+        </div>
+      )}
       <div
         className="dropdown-control"
         onClick={() => !props.disabled && setIsOpen(!isOpen)}
