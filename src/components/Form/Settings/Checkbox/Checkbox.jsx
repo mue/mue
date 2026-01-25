@@ -34,7 +34,7 @@ const Checkbox = memo((props) => {
   }, [checked, props]);
 
   return (
-    <label className={`checkbox-wrapper ${props.disabled ? 'disabled' : ''}`}>
+    <div className={`checkbox-wrapper ${props.disabled ? 'disabled' : ''}`}>
       <span className="checkbox-label">{props.text}</span>
       <div
         className={`checkbox-box ${checked ? 'checked' : ''}`}
@@ -49,8 +49,9 @@ const Checkbox = memo((props) => {
         onChange={handleChange}
         disabled={props.disabled || false}
         className="checkbox-input"
+        aria-hidden="true"
       />
-    </label>
+    </div>
   );
 });
 
