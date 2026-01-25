@@ -1,0 +1,123 @@
+@use 'scss/variables' as *;
+
+.slider-container {
+  width: 300px;
+  margin-bottom: 30px;
+
+  .sliderTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+
+    @include themed {
+      color: t($color);
+    }
+
+    > span:first-of-type {
+      font-weight: 600;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: auto;
+      cursor: pointer;
+      font-size: 14px;
+
+      @include themed {
+        color: t($link);
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      svg {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .slider-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .slider-input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+
+    @include themed {
+      background: linear-gradient(
+        to right,
+        t($link) 0%,
+        t($link) var(--slider-percentage),
+        t($modal-sidebarActive) var(--slider-percentage),
+        t($modal-sidebarActive) 100%
+      );
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+      @include themed {
+        background: t($color);
+        border: 2px solid t($link);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border: none;
+
+      @include themed {
+        background: t($color);
+        border: 2px solid t($link);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .slider-marks {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    margin-top: 8px;
+
+    .slider-mark {
+      position: absolute;
+      transform: translateX(-50%);
+      font-size: 12px;
+
+      @include themed {
+        color: t($subColor);
+      }
+    }
+  }
+}

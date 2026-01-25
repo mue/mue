@@ -1,0 +1,63 @@
+@use 'scss/variables' as *;
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  padding: 8px 0;
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .checkbox-label {
+    flex: 1;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .checkbox-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    @include themed {
+      border: 2px solid t($modal-sidebarActive);
+      background: t($modal-sidebar);
+      color: t($color);
+
+      &:hover {
+        border-color: t($color);
+      }
+    }
+
+    &.checked {
+      @include themed {
+        background: t($link);
+        border-color: t($link);
+      }
+    }
+
+    svg {
+      font-size: 18px;
+      color: white;
+    }
+  }
+
+  .checkbox-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

@@ -1,8 +1,10 @@
 import variables from 'config/variables';
 import { memo, useState, useCallback } from 'react';
-import { Checkbox as CheckboxUI, FormControlLabel } from '@mui/material';
+import { MdCheck } from 'react-icons/md';
 
 import EventBus from 'utils/eventbus';
+
+import './Checkbox.scss';
 
 const Checkbox = memo((props) => {
   const [checked, setChecked] = useState(localStorage.getItem(props.name) === 'true');
@@ -32,19 +34,23 @@ const Checkbox = memo((props) => {
   }, [checked, props]);
 
   return (
-    <FormControlLabel
-      control={
-        <CheckboxUI
-          name={props.name}
-          color="primary"
-          className="checkbox"
-          checked={checked}
-          onChange={handleChange}
-          disabled={props.disabled || false}
-        />
-      }
-      label={props.text}
-    />
+    <label className={`checkbox-wrapper ${props.disabled ? 'disabled' : ''}`}>
+      <span className="checkbox-label">{props.text}</span>
+      <div
+        className={`checkbox-box ${checked ? 'checked' : ''}`}
+        onClick={props.disabled ? undefined : handleChange}
+      >
+        {checked && <MdCheck />}
+      </div>
+      <input
+        type="checkbox"
+        name={props.name}
+        checked={checked}
+        onChange={handleChange}
+        disabled={props.disabled || false}
+        className="checkbox-input"
+      />
+    </label>
   );
 });
 

@@ -1,12 +1,7 @@
-import { useState, memo } from 'react';
+import { useState, memo, useRef, useEffect } from 'react';
+import { MdExpandMore, MdClose } from 'react-icons/md';
 
-import Box from '@mui/material/Box';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Chip from '@mui/material/Chip';
+import './ChipSelect.scss';
 
 function ChipSelect({ label, options, onChange }) {
   let start = (localStorage.getItem('apiCategories') || '').split(',');
@@ -14,47 +9,88 @@ function ChipSelect({ label, options, onChange }) {
     start = [];
   }
 
-  const [optionsSelected, setoptionsSelected] = useState(start);
+  const [optionsSelected, setOptionsSelected] = useState(start);
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setoptionsSelected(typeof value === 'string' ? value.split(',') : value);
-    localStorage.setItem('apiCategories', value);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
 
-    // Call parent onChange if provided
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleToggle = (optionName) => {
+    let newSelected;
+    if (optionsSelected.includes(optionName)) {
+      newSelected = optionsSelected.filter((item) => item !== optionName);
+    } else {
+      newSelected = [...optionsSelected, optionName];
+    }
+
+    setOptionsSelected(newSelected);
+    localStorage.setItem('apiCategories', newSelected.join(','));
+
     if (onChange) {
-      onChange(value);
+      onChange(newSelected);
     }
   };
 
+  const handleRemoveChip = (e, optionName) => {
+    e.stopPropagation();
+    handleToggle(optionName);
+  };
+
   return (
-    <FormControl>
-      <InputLabel id="chipSelect-label">{label}</InputLabel>
-      <Select
-        labelId="chipSelect-label"
-        id="chipSelect"
-        multiple
-        value={optionsSelected}
-        onChange={handleChange}
-        input={<OutlinedInput id="select-multiple-chip" label={label} />}
-        renderValue={(optionsSelected) => (
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-            {optionsSelected.map((value) => (
-              <Chip key={value} label={value} />
-            ))}
-          </Box>
-        )}
-      >
-        {options.map((option) => (
-          <MenuItem key={option.name} value={option.name}>
-            {option.name.charAt(0).toUpperCase() + option.name.slice(1)}{' '}
-            {option.count && `(${option.count})`}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <div className="chipSelect" ref={containerRef}>
+      {label && <label className="chipSelect-label">{label}</label>}
+      <div className="chipSelect-control" onClick={() => setIsOpen(!isOpen)}>
+        <div className="chipSelect-value">
+          {optionsSelected.length === 0 ? (
+            <span className="chipSelect-placeholder">Select options...</span>
+          ) : (
+            <div className="chipSelect-chips">
+              {optionsSelected.map((value) => (
+                <span key={value} className="chipSelect-chip">
+                  {value.charAt(0).toUpperCase() + value.slice(1)}
+                  <button
+                    type="button"
+                    className="chipSelect-chip-remove"
+                    onClick={(e) => handleRemoveChip(e, value)}
+                  >
+                    <MdClose />
+                  </button>
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+        <MdExpandMore className={`chipSelect-arrow ${isOpen ? 'open' : ''}`} />
+      </div>
+      {isOpen && (
+        <div className="chipSelect-dropdown">
+          {options.map((option) => (
+            <div
+              key={option.name}
+              className={`chipSelect-option ${optionsSelected.includes(option.name) ? 'selected' : ''}`}
+              onClick={() => handleToggle(option.name)}
+            >
+              <span className="chipSelect-option-checkbox">
+                {optionsSelected.includes(option.name) && '✓'}
+              </span>
+              <span className="chipSelect-option-label">
+                {option.name.charAt(0).toUpperCase() + option.name.slice(1)}
+                {option.count && ` (${option.count})`}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 

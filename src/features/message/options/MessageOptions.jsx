@@ -2,9 +2,9 @@ import variables from 'config/variables';
 import { useState } from 'react';
 import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import { TextareaAutosize } from '@mui/material';
 
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Textarea } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import EventBus from 'utils/eventbus';
 
@@ -82,14 +82,13 @@ const MessageOptions = () => {
                   <span className="subtitle">
                     {variables.getMessage(`${MESSAGE_SECTION}.title`)}
                   </span>
-                  <TextareaAutosize
+                  <Textarea
                     value={messages[index]}
                     placeholder={variables.getMessage(
                       'modals.main.settings.sections.message.content',
                     )}
                     onChange={(e) => message(e, true, index)}
-                    varient="outlined"
-                    style={{ padding: '0' }}
+                    minRows={2}
                   />
                 </div>
               </div>

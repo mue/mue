@@ -1,0 +1,63 @@
+@use 'scss/variables' as *;
+
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  padding: 8px 0;
+
+  .switch-label {
+    flex: 1;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .switch-track {
+    position: relative;
+    width: 52px;
+    height: 32px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    flex-shrink: 0;
+
+    @include themed {
+      background: t($modal-sidebarActive);
+    }
+
+    &.checked {
+      @include themed {
+        background: t($link);
+      }
+
+      .switch-thumb {
+        transform: translateX(20px);
+      }
+    }
+  }
+
+  .switch-thumb {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    @include themed {
+      background: t($color);
+    }
+  }
+
+  .switch-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

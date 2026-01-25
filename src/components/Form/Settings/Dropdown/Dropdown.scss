@@ -1,0 +1,98 @@
+@use 'scss/variables' as *;
+
+.dropdown {
+  position: relative;
+  width: 300px;
+  margin-top: 10px;
+
+  .dropdown-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .dropdown-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      color: t($color);
+
+      &:hover {
+        border-color: t($color);
+      }
+    }
+  }
+
+  .dropdown-value {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dropdown-arrow {
+    flex-shrink: 0;
+    font-size: 24px;
+    transition: transform 0.2s ease;
+
+    @include themed {
+      color: t($subColor);
+    }
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 100;
+
+    @include themed {
+      background: t($modal-background);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .dropdown-option {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    @include themed {
+      color: t($color);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+      }
+
+      &.selected {
+        background: t($modal-sidebar);
+        font-weight: 500;
+      }
+    }
+  }
+}

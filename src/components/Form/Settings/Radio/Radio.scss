@@ -1,0 +1,102 @@
+@use 'scss/variables' as *;
+
+.radio-group {
+  width: 100%;
+  margin-top: 10px;
+
+  .radio-title {
+    font-weight: bold;
+    font-size: 1.17rem;
+    margin-bottom: 12px;
+    display: block;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .radio-title-small {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .radio-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 16px 20px;
+    transition: 0.2s ease;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border-radius: t($borderRadius);
+      box-shadow: 0 0 0 1px t($modal-sidebarActive);
+
+      &:hover {
+        background: t($modal-secondaryColour);
+      }
+    }
+
+    &.selected .radio-circle {
+      @include themed {
+        border-color: t($link);
+      }
+    }
+  }
+
+  .radio-label {
+    flex: 1;
+    font-size: 15px;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .radio-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    transition: 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: 20px;
+
+    @include themed {
+      border: 2px solid t($modal-sidebarActive);
+      background: t($modal-secondaryColour);
+    }
+  }
+
+  .radio-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    @include themed {
+      background: t($link);
+    }
+  }
+
+  .radio-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

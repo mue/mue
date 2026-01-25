@@ -4,9 +4,9 @@ import { useT } from 'contexts';
 
 import { MdContentCopy, MdAssignment, MdPushPin, MdDownload } from 'react-icons/md';
 import { useFloating, shift } from '@floating-ui/react-dom';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { toast } from 'react-toastify';
 import { Tooltip } from 'components/Elements';
+import { Textarea } from 'components/Form/Settings';
 
 import { saveFile } from 'utils/saveFile';
 import EventBus from 'utils/eventbus';
@@ -112,12 +112,11 @@ const Notes = ({ notesRef, floatRef, position, xPosition, yPosition }) => {
                 </button>
               </Tooltip>
             </div>
-            <TextareaAutosize
+            <Textarea
               placeholder={t('widgets.navbar.notes.placeholder')}
               value={notes}
               onChange={handleSetNotes}
               minRows={5}
-              maxLength={10000}
             />
           </div>
         </span>
