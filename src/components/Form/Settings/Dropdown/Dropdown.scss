@@ -17,6 +17,10 @@
   position: relative;
   width: 300px;
   margin-top: 10px;
+  gap: 8px;
+  display: flex;
+  flex-flow: column;
+
 
   &.disabled {
     opacity: 0.5;
