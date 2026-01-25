@@ -10,7 +10,6 @@ import {
   Section,
 } from 'components/Layout/Settings';
 import { Checkbox, Switch, Text } from 'components/Form/Settings';
-import { TextareaAutosize } from '@mui/material';
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
 
@@ -192,15 +191,15 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
                   <span className="subtitle">
                     {variables.getMessage(`${GREETING_SECTION}.event_name`)}
                   </span>
-                  <TextareaAutosize
+                  <input
+                    type="text"
+                    className="text-field-input"
                     value={event.name}
                     placeholder={variables.getMessage(`${GREETING_SECTION}.event_name`)}
                     onChange={(e) => {
                       const updatedEvent = { ...event, name: e.target.value };
                       updateEvent(index, updatedEvent);
                     }}
-                    varient="outlined"
-                    style={{ padding: '0' }}
                   />
                 </div>
               </div>

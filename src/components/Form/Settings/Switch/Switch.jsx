@@ -1,8 +1,9 @@
 import variables from 'config/variables';
 import { memo, useState, useCallback } from 'react';
-import { Switch as SwitchUI, FormControlLabel } from '@mui/material';
 
 import EventBus from 'utils/eventbus';
+
+import './Switch.scss';
 
 const Switch = memo((props) => {
   const [checked, setChecked] = useState(localStorage.getItem(props.name) === 'true');
@@ -32,18 +33,20 @@ const Switch = memo((props) => {
   }, [checked, props]);
 
   return (
-    <FormControlLabel
-      control={
-        <SwitchUI
-          name={props.name}
-          color="primary"
-          checked={checked}
-          onChange={handleChange}
-        />
-      }
-      label={props.header ? '' : props.text}
-      labelPlacement="start"
-    />
+    <div className="switch-wrapper">
+      {!props.header && <span className="switch-label">{props.text}</span>}
+      <div className={`switch-track ${checked ? 'checked' : ''}`} onClick={handleChange}>
+        <div className="switch-thumb" />
+      </div>
+      <input
+        type="checkbox"
+        name={props.name}
+        checked={checked}
+        onChange={handleChange}
+        className="switch-input"
+        aria-hidden="true"
+      />
+    </div>
   );
 });
 

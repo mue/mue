@@ -1,0 +1,218 @@
+@use 'scss/variables' as *;
+@use 'scss/mixins' as *;
+
+@include keyframes(dropdownSlideIn) {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown {
+  position: relative;
+  width: 300px;
+  margin-top: 10px;
+  gap: 8px;
+  display: flex;
+  flex-flow: column;
+
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .dropdown-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .dropdown-reset {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($link);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      font-size: 12px;
+    }
+  }
+
+  .dropdown-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      color: t($color);
+
+      &:hover {
+        border-color: t($color);
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      @include themed {
+        border-color: t($link);
+        box-shadow: 0 0 0 3px t($link);
+      }
+    }
+  }
+
+  .dropdown-value {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .dropdown-arrow {
+    flex-shrink: 0;
+    font-size: 24px;
+    transition: transform 0.2s ease;
+
+    @include themed {
+      color: t($subColor);
+    }
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 9999;
+    @include animation(dropdownSlideIn 0.2s ease-out);
+
+    @include themed {
+      background: t($modal-background);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      @include themed {
+        background: t($modal-sidebar);
+      }
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @include themed {
+        background: t($modal-sidebarActive);
+        border-radius: 3px;
+      }
+
+      &:hover {
+        @include themed {
+          background: t($color);
+        }
+      }
+    }
+  }
+
+  .dropdown-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    outline: none;
+
+    @include themed {
+      color: t($color);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+        padding-left: 20px;
+      }
+
+      &.selected {
+        background: t($modal-sidebar);
+        font-weight: 500;
+      }
+
+      &.focused {
+        background: t($modal-sidebarActive);
+        border-left: 2px solid t($link);
+      }
+    }
+
+    .dropdown-option-text {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .dropdown-option-check {
+      flex-shrink: 0;
+      font-size: 14px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include themed {
+        background: t($link);
+        color: white;
+      }
+    }
+  }
+}

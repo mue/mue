@@ -76,6 +76,14 @@ export function uninstall(type, name) {
   const installed = JSON.parse(localStorage.getItem('installed'));
   for (let i = 0; i < installed.length; i++) {
     if (installed[i].name === name) {
+      // Track uninstalled pack IDs to prevent auto-reinstall
+      if (installed[i].id) {
+        const uninstalledPacks = JSON.parse(localStorage.getItem('uninstalledPacks') || '[]');
+        if (!uninstalledPacks.includes(installed[i].id)) {
+          uninstalledPacks.push(installed[i].id);
+          localStorage.setItem('uninstalledPacks', JSON.stringify(uninstalledPacks));
+        }
+      }
       installed.splice(i, 1);
       break;
     }

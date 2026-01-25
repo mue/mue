@@ -1,0 +1,110 @@
+@use 'scss/variables' as *;
+
+.text-field-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-top: 10px;
+}
+
+.text-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .text-field-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .text-field-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .text-field-reset {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($link);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      font-size: 12px;
+    }
+  }
+
+  .text-field-input {
+    height: 56px;
+    padding: 0 16px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.2s ease;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      color: t($color);
+
+      &:hover,
+      &:focus {
+        border-color: t($color);
+      }
+
+      &::placeholder {
+        color: t($subColor);
+      }
+    }
+  }
+
+  .text-field-textarea {
+    padding: 16px;
+    font-size: 16px;
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    transition: 0.2s ease;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      color: t($color);
+
+      &:hover,
+      &:focus {
+        border-color: t($color);
+      }
+
+      &::placeholder {
+        color: t($subColor);
+      }
+    }
+  }
+
+  &.customcss .text-field-textarea {
+    font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+      'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
+      'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace !important;
+  }
+}

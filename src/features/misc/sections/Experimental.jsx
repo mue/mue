@@ -2,7 +2,6 @@ import variables from 'config/variables';
 import { useState, memo } from 'react';
 import { Checkbox, Slider } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
-import { TextField } from '@mui/material';
 import { toast } from 'react-toastify';
 
 import EventBus from 'utils/eventbus';
@@ -39,22 +38,26 @@ function ExperimentalOptions() {
             element=".other"
           />
           <p style={{ textAlign: 'left', width: '100%' }}>Send Event</p>
-          <TextField
-            label={'Type'}
-            value={eventType}
-            onChange={(e) => setEventType(e.target.value)}
-            spellCheck={false}
-            varient="outlined"
-            InputLabelProps={{ shrink: true }}
-          />
-          <TextField
-            label={'Name'}
-            value={eventName}
-            onChange={(e) => setEventName(e.target.value)}
-            spellCheck={false}
-            varient="outlined"
-            InputLabelProps={{ shrink: true }}
-          />
+          <div className="text-field">
+            <label className="text-field-label">Type</label>
+            <input
+              type="text"
+              className="text-field-input"
+              value={eventType || ''}
+              onChange={(e) => setEventType(e.target.value)}
+              spellCheck={false}
+            />
+          </div>
+          <div className="text-field">
+            <label className="text-field-label">Name</label>
+            <input
+              type="text"
+              className="text-field-input"
+              value={eventName || ''}
+              onChange={(e) => setEventName(e.target.value)}
+              spellCheck={false}
+            />
+          </div>
           <Button
             type="settings"
             onClick={() => EventBus.emit(eventType, eventName)}

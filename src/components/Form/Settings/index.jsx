@@ -3,6 +3,8 @@ export * from './ChipSelect';
 export * from './Dropdown';
 export * from './FileUpload';
 export * from './Radio';
+export * from './SearchInput';
 export * from './Slider';
 export * from './Switch';
 export * from './Text';
+export * from './Textarea';

@@ -3,7 +3,6 @@ import { MdAutoAwesome } from 'react-icons/md';
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { useLocalStorageState } from 'utils/useLocalStorageState';
 import { Radio, Dropdown, Checkbox } from 'components/Form/Settings';
-import { TextField } from '@mui/material';
 import variables from 'config/variables';
 
 const useWeatherSettings = () => {
@@ -82,18 +81,26 @@ const WeatherOptions = () => {
     <Row>
       <Content title={variables.getMessage(`${WEATHER_SECTION}.location`)} />
       <Action>
-        <TextField
-          label={variables.getMessage(`${WEATHER_SECTION}.location`)}
-          value={location}
-          onChange={changeLocation}
-          placeholder="London"
-          variant="outlined"
-          InputLabelProps={{ shrink: true }}
-        />
-        <span className="link" onClick={getAutoLocation}>
-          <MdAutoAwesome />
-          {variables.getMessage(`${WEATHER_SECTION}.auto`)}
-        </span>
+        <div className="text-field-container">
+          <div className="text-field">
+            <div className="text-field-header">
+              <label className="text-field-label">
+                {variables.getMessage(`${WEATHER_SECTION}.location`)}
+              </label>
+              <span className="text-field-reset" onClick={getAutoLocation}>
+                <MdAutoAwesome />
+                {variables.getMessage(`${WEATHER_SECTION}.auto`)}
+              </span>
+            </div>
+            <input
+              type="text"
+              className="text-field-input"
+              value={location}
+              onChange={changeLocation}
+              placeholder="London"
+            />
+          </div>
+        </div>
       </Action>
     </Row>
   );

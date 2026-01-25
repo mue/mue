@@ -1,0 +1,178 @@
+@use 'scss/variables' as *;
+
+.chipSelect {
+  position: relative;
+  width: 300px;
+  margin-top: 10px;
+
+  .chipSelect-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .chipSelect-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      color: t($color);
+
+      &:hover {
+        border-color: t($color);
+      }
+    }
+  }
+
+  .chipSelect-value {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .chipSelect-placeholder {
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .chipSelect-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chipSelect-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    font-size: 13px;
+    text-transform: capitalize;
+
+    @include themed {
+      background: t($modal-sidebarActive);
+      border-radius: calc(t($borderRadius) / 2);
+      color: t($color);
+    }
+
+    .chipSelect-chip-remove {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px;
+      margin-left: 2px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: 0.2s ease;
+
+      @include themed {
+        color: t($subColor);
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: t($color);
+        }
+      }
+
+      svg {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .chipSelect-arrow {
+    flex-shrink: 0;
+    font-size: 24px;
+    transition: transform 0.2s ease;
+
+    @include themed {
+      color: t($subColor);
+    }
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+
+  .chipSelect-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 100;
+
+    @include themed {
+      background: t($modal-background);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .chipSelect-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    @include themed {
+      color: t($color);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+      }
+
+      &.selected {
+        background: t($modal-sidebar);
+      }
+    }
+
+    .chipSelect-option-checkbox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      font-weight: bold;
+
+      @include themed {
+        border: 2px solid t($modal-sidebarActive);
+        border-radius: 4px;
+        color: t($color);
+      }
+    }
+
+    &.selected .chipSelect-option-checkbox {
+      @include themed {
+        background: t($modal-sidebarActive);
+        border-color: t($color);
+      }
+    }
+
+    .chipSelect-option-label {
+      flex: 1;
+    }
+  }
+}

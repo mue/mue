@@ -84,27 +84,24 @@ const Added = memo(() => {
 
   const sortAddons = useCallback((value, sendEvent) => {
     const installedItems = JSON.parse(localStorage.getItem('installed'));
-    
+
     switch (value) {
       case 'newest':
         installedItems.reverse();
         break;
-      case 'oldest':
-        break;
       case 'a-z':
         installedItems.sort((a, b) => {
-          if (a.display_name < b.display_name) {
-            return -1;
-          }
-          if (a.display_name > b.display_name) {
-            return 1;
-          }
-          return 0;
+          const nameA = (a.display_name || a.name || '').toLowerCase();
+          const nameB = (b.display_name || b.name || '').toLowerCase();
+          return nameA.localeCompare(nameB);
         });
         break;
-      case 'z-a':
-        installedItems.sort();
-        installedItems.reverse();
+      case 'recently-updated':
+        installedItems.sort((a, b) => {
+          const dateA = a.updated_at ? new Date(a.updated_at) : new Date(0);
+          const dateB = b.updated_at ? new Date(b.updated_at) : new Date(0);
+          return dateB - dateA;
+        });
         break;
       default:
         break;
@@ -153,6 +150,12 @@ const Added = memo(() => {
     toast(variables.getMessage('toasts.uninstalled_all'));
     setInstalled([]);
   }, [installed]);
+
+  const handleUninstall = useCallback((type, name) => {
+    uninstall(type, name);
+    toast(variables.getMessage('toasts.uninstalled'));
+    setInstalled(JSON.parse(localStorage.getItem('installed')));
+  }, []);
 
   useEffect(() => {
     sortAddons(localStorage.getItem('sortAddons'), false);
@@ -243,9 +246,8 @@ const Added = memo(() => {
         onChange={(value) => sortAddons(value)}
         items={[
           { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
-          { value: 'oldest', text: variables.getMessage('modals.main.addons.sort.oldest') },
           { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
-          { value: 'z-a', text: variables.getMessage('modals.main.addons.sort.z_a') },
+          { value: 'recently-updated', text: 'Recently Updated' },
         ]}
       />
       <Items
@@ -254,6 +256,7 @@ const Added = memo(() => {
         filter=""
         toggleFunction={(input) => toggle('item', input)}
         showCreateYourOwn={false}
+        onUninstall={handleUninstall}
       />
     </>
   );

@@ -9,11 +9,10 @@ import {
   MdPlaylistAdd,
   MdOutlineDragIndicator,
   MdPlaylistRemove,
+  MdCheck,
 } from 'react-icons/md';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { Tooltip } from 'components/Elements';
-
-import Checkbox from '@mui/material/Checkbox';
+import { Textarea } from 'components/Form/Settings';
 import { shift, useFloating } from '@floating-ui/react-dom';
 import {
   DndContext,
@@ -210,15 +209,18 @@ function Todo({ todoRef, floatRef, position, xPosition, yPosition }) {
                     <SortableItem key={index} id={index}>
                       {({ attributes, listeners }) => (
                         <div className={'todoRow' + (todoItem.done ? ' done' : '')}>
-                          <Checkbox
-                            checked={todoItem.done}
+                          <div
+                            className={'todo-checkbox' + (todoItem.done ? ' checked' : '')}
                             onClick={() => updateTodo('done', index)}
-                          />
-                          <TextareaAutosize
+                          >
+                            {todoItem.done && <MdCheck />}
+                          </div>
+                          <Textarea
                             placeholder={t('widgets.navbar.notes.placeholder')}
                             value={todoItem.value}
                             onChange={(data) => updateTodo('set', index, data)}
                             readOnly={todoItem.done}
+                            minRows={1}
                           />
                           <Tooltip
                             title={t(

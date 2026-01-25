@@ -1,0 +1,174 @@
+@use 'scss/variables' as *;
+
+.slider-container {
+  width: 300px;
+  margin-bottom: 30px;
+
+  .slider-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .slider-value {
+    font-size: 16px;
+    font-weight: 600;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .slider-reset {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($link);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      font-size: 12px;
+    }
+  }
+
+  .slider-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .slider-input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    @include themed {
+      background: linear-gradient(
+        to right,
+        t($link) 0%,
+        t($link) var(--slider-percentage),
+        t($modal-sidebarActive) var(--slider-percentage),
+        t($modal-sidebarActive) 100%
+      );
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+      @include themed {
+        background: t($color);
+        border: 2px solid t($link);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border: none;
+
+      @include themed {
+        background: t($color);
+        border: 2px solid t($link);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::-webkit-slider-thumb {
+        @include themed {
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 0 3px t($link);
+        }
+
+        transform: scale(1.15);
+      }
+
+      &::-moz-range-thumb {
+        @include themed {
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 0 3px t($link);
+        }
+
+        transform: scale(1.15);
+      }
+    }
+
+    &:active:not(:disabled) {
+      &::-webkit-slider-thumb {
+        transform: scale(1.2);
+      }
+
+      &::-moz-range-thumb {
+        transform: scale(1.2);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      &::-webkit-slider-thumb {
+        cursor: not-allowed;
+        transform: scale(1) !important;
+      }
+
+      &::-moz-range-thumb {
+        cursor: not-allowed;
+        transform: scale(1) !important;
+      }
+    }
+  }
+
+  .slider-marks {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    margin-top: 8px;
+
+    .slider-mark {
+      position: absolute;
+      transform: translateX(-50%);
+      font-size: 12px;
+
+      @include themed {
+        color: t($subColor);
+      }
+    }
+  }
+}

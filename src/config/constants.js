@@ -25,4 +25,4 @@ export const EMAIL = 'hello@muetab.com';
 export const TWITTER_HANDLE = 'getmue';
 export const DISCORD_SERVER = 'zv8C9F8';
 
-export const VERSION = '7.5.0';
+export const VERSION = '7.6.0';

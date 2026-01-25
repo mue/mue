@@ -1,7 +1,6 @@
 import variables from 'config/variables';
 import React, { useState } from 'react';
 import { MdCancel, MdAdd, MdSource, MdOutlineFormatQuote } from 'react-icons/md';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 import {
   Header,
@@ -11,7 +10,7 @@ import {
   Section,
   PreferencesWrapper,
 } from 'components/Layout/Settings';
-import { Checkbox, Dropdown } from 'components/Form/Settings';
+import { Checkbox, Dropdown, Textarea } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 
 const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
@@ -23,7 +22,15 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     return data;
   };
 
-  const [quoteType, setQuoteType] = useState(localStorage.getItem('quoteType') || 'api');
+  const [quoteType, setQuoteType] = useState(() => {
+    let type = localStorage.getItem('quoteType') || 'quote_pack';
+    // Migrate deprecated 'api' type to 'quote_pack'
+    if (type === 'api') {
+      type = 'quote_pack';
+      localStorage.setItem('quoteType', 'quote_pack');
+    }
+    return type;
+  });
   const [customQuote, setCustomQuote] = useState(getCustom());
 
   const handleCustomQuote = (e, text, index, type) => {
@@ -93,10 +100,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
             value: 'quote_pack',
             text: variables.getMessage('modals.main.marketplace.title'),
           },
-          {
-            value: 'api',
-            text: variables.getMessage('modals.main.settings.sections.background.type.api'),
-          },
           { value: 'custom', text: variables.getMessage(`${QUOTE_SECTION}.custom`) },
         ]}
       />
@@ -162,23 +165,23 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
                   <MdOutlineFormatQuote />
                 </div>
                 <div className="messageText">
-                  <TextareaAutosize
+                  <Textarea
                     value={customQuote[index].quote}
                     placeholder={variables.getMessage(
                       'modals.main.settings.sections.quote.title',
                     )}
                     onChange={(e) => handleCustomQuote(e, true, index, 'quote')}
-                    varient="outlined"
                     style={{ fontSize: '22px', fontWeight: 'bold' }}
+                    minRows={1}
                   />
-                  <TextareaAutosize
+                  <Textarea
                     value={customQuote[index].author}
                     placeholder={variables.getMessage(
                       'modals.main.settings.sections.quote.author',
                     )}
                     className="subtitle"
                     onChange={(e) => handleCustomQuote(e, true, index, 'author')}
-                    varient="outlined"
+                    minRows={1}
                   />
                 </div>
                 <div>

@@ -1,85 +1,88 @@
 import variables from 'config/variables';
 import { memo, useState, useCallback } from 'react';
 import { useTranslation } from 'contexts/TranslationContext';
-import {
-  Radio as RadioUI,
-  RadioGroup,
-  FormControlLabel,
-  FormControl,
-  FormLabel,
-} from '@mui/material';
 
 import EventBus from 'utils/eventbus';
+
+import './Radio.scss';
 
 const Radio = memo((props) => {
   const { changeLanguage } = useTranslation();
   const [value, setValue] = useState(localStorage.getItem(props.name));
 
-  const handleChange = useCallback(async (e) => {
-    const newValue = e.target.value;
+  const handleChange = useCallback(
+    async (newValue) => {
+      if (newValue === 'loading') {
+        return;
+      }
 
-    if (newValue === 'loading') {
-      return;
-    }
+      if (props.name === 'language') {
+        changeLanguage(newValue);
+        setValue(newValue);
 
-    if (props.name === 'language') {
-      // Use context to change language directly - no EventBus needed
-      changeLanguage(newValue);
+        variables.stats.postEvent('setting', `${props.name} from ${value} to ${newValue}`);
+
+        if (props.onChange) {
+          props.onChange(newValue);
+        }
+
+        EventBus.emit('refresh', props.category);
+        return;
+      }
+
+      localStorage.setItem(props.name, newValue);
       setValue(newValue);
-
-      variables.stats.postEvent('setting', `${props.name} from ${value} to ${newValue}`);
 
       if (props.onChange) {
         props.onChange(newValue);
       }
 
-      EventBus.emit('refresh', props.category);
-      return;
-    }
+      variables.stats.postEvent('setting', `${props.name} from ${value} to ${newValue}`);
 
-    localStorage.setItem(props.name, newValue);
-    setValue(newValue);
-
-    if (props.onChange) {
-      props.onChange(newValue);
-    }
-
-    variables.stats.postEvent('setting', `${props.name} from ${value} to ${newValue}`);
-
-    if (props.element) {
-      if (!document.querySelector(props.element)) {
-        document.querySelector('.reminder-info').style.display = 'flex';
-        return localStorage.setItem('showReminder', true);
+      if (props.element) {
+        if (!document.querySelector(props.element)) {
+          document.querySelector('.reminder-info').style.display = 'flex';
+          return localStorage.setItem('showReminder', true);
+        }
       }
-    }
 
-    EventBus.emit('refresh', props.category);
-  }, [value, props, changeLanguage]);
+      EventBus.emit('refresh', props.category);
+    },
+    [value, props, changeLanguage],
+  );
 
   return (
-    <FormControl component="fieldset">
-      <FormLabel
-        className={props.smallTitle ? 'radio-title-small' : 'radio-title'}
-        component="legend"
-      >
-        {props.title}
-      </FormLabel>
-      <RadioGroup
-        aria-label={props.name}
-        name={props.name}
-        onChange={handleChange}
-        value={value}
-      >
+    <div className="radio-group">
+      {props.title && (
+        <legend className={props.smallTitle ? 'radio-title-small' : 'radio-title'}>
+          {props.title}
+        </legend>
+      )}
+      <div className="radio-options" role="radiogroup" aria-label={props.name}>
         {props.options.map((option) => (
-          <FormControlLabel
-            value={option.value}
-            control={<RadioUI />}
-            label={option.name}
+          <label
             key={option.value}
-          />
+            className={`radio-option ${value === option.value ? 'selected' : ''} ${option.disabled || props.disabled ? 'disabled' : ''}`}
+          >
+            <span className="radio-label">{option.name}</span>
+            <input
+              type="radio"
+              name={props.name}
+              value={option.value}
+              checked={value === option.value}
+              onChange={() => handleChange(option.value)}
+              disabled={option.disabled || props.disabled || false}
+              className="radio-input"
+              aria-label={option.name}
+              tabIndex={0}
+            />
+            <div className="radio-circle">
+              {value === option.value && <div className="radio-dot" />}
+            </div>
+          </label>
         ))}
-      </RadioGroup>
-    </FormControl>
+      </div>
+    </div>
   );
 });
 

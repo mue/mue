@@ -1,7 +1,6 @@
 import variables from 'config/variables';
 
 import { useState, memo } from 'react';
-import { TextareaAutosize } from '@mui/material';
 import { MdAddLink, MdClose } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
 import { Button } from 'components/Elements';
@@ -26,22 +25,24 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
         </Tooltip>
       </div>
       <div className="quicklinkModalTextbox">
-        <TextareaAutosize
-          maxRows={1}
+        <input
+          type="text"
+          className="text-field-input"
           placeholder={variables.getMessage('widgets.quicklinks.name')}
           value={name}
           onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
           style={{ gridColumn: 'span 2' }}
         />
-        <TextareaAutosize
-          maxRows={10}
+        <input
+          type="text"
+          className="text-field-input"
           placeholder={variables.getMessage('widgets.quicklinks.url')}
           value={url}
           onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
         />
-        <TextareaAutosize
-          maxRows={10}
-          maxLines={1}
+        <input
+          type="text"
+          className="text-field-input"
           placeholder={variables.getMessage('widgets.quicklinks.icon')}
           value={icon}
           onChange={(e) => setIcon(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}

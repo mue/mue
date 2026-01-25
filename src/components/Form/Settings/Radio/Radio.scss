@@ -1,0 +1,159 @@
+@use 'scss/variables' as *;
+@use 'scss/mixins' as *;
+
+@include keyframes(radioDotScale) {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.radio-group {
+  width: 100%;
+  margin-top: 10px;
+
+  .radio-title {
+    font-weight: bold;
+    font-size: 1.17rem;
+    margin-bottom: 12px;
+    display: block;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .radio-title-small {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .radio-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .radio-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 16px 20px;
+    transition: all 0.2s ease;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border-radius: t($borderRadius);
+      box-shadow: 0 0 0 1px t($modal-sidebarActive);
+
+      &:hover:not(.disabled) {
+        background: t($modal-secondaryColour);
+        transform: translateY(-1px);
+      }
+    }
+
+    &:active:not(.disabled) {
+      transform: translateY(0);
+    }
+
+    &.selected .radio-circle {
+      @include themed {
+        border-color: t($link);
+      }
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  .radio-label {
+    flex: 1;
+    font-size: 15px;
+    pointer-events: none;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .radio-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: 20px;
+    pointer-events: none;
+
+    @include themed {
+      border: 2px solid t($modal-sidebarActive);
+      background: t($modal-secondaryColour);
+    }
+
+    &:hover:not(.disabled) {
+      transform: scale(1.1);
+    }
+
+    &:active:not(.disabled) {
+      @include themed {
+        box-shadow: 0 0 0 4px rgba(255, 92, 37, 0.1);
+      }
+    }
+  }
+
+  .radio-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    @include animation(radioDotScale 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55));
+
+    @include themed {
+      background: t($link);
+    }
+  }
+
+  .radio-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    margin: 0;
+
+    &:focus-visible + .radio-circle {
+      @include themed {
+        box-shadow: 0 0 0 3px t($link);
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

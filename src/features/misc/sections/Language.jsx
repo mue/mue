@@ -1,10 +1,9 @@
 import { useState, useMemo } from 'react';
 import { useT, useTranslation } from 'contexts/TranslationContext';
 
-import { MdOutlineOpenInNew, MdSearch, MdComputer } from 'react-icons/md';
-import { TextField, InputAdornment } from '@mui/material';
+import { MdOutlineOpenInNew, MdComputer } from 'react-icons/md';
 
-import { Radio, Checkbox } from 'components/Form/Settings';
+import { Radio, Checkbox, SearchInput } from 'components/Form/Settings';
 
 import languages from '@/i18n/languages.json';
 import translationPercentages from '@/i18n/translationPercentages.json';
@@ -123,35 +122,10 @@ const LanguageOptions = () => {
           marginBottom: 16,
         }}
       >
-        <TextField
+        <SearchInput
           placeholder={t('modals.main.settings.sections.language.search')}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          variant="outlined"
-          size="small"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <MdSearch style={{ color: '#888' }} />
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            width: '250px',
-            '& .MuiOutlinedInput-root': {
-              borderRadius: '24px',
-              backgroundColor: 'rgba(255, 255, 255, 0.08)',
-              '& fieldset': {
-                border: 'none',
-              },
-              '&:hover fieldset': {
-                border: 'none',
-              },
-              '&.Mui-focused fieldset': {
-                border: 'none',
-              },
-            },
-          }}
         />
         {currentLangOption && (
           <div style={{ color: '#888', whiteSpace: 'nowrap' }}>
