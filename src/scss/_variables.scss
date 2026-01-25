@@ -181,6 +181,7 @@ $theme-map: null;
 
   .subtitle {
     font-size: 16px;
+    font-family: 'Inter', sans-serif !important;
 
     @include themed {
       color: t($subColor);

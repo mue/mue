@@ -93,7 +93,7 @@ export function loadSettings(hotreload) {
         <style id='customfont'>
           ${url}
           * {
-            font-family: '${font}', 'Lexend Deca', 'Montserrat', sans-serif !important;
+            font-family: '${font}', 'Lexend Deca', 'Inter', sans-serif !important;
             font-weight: ${localStorage.getItem('fontweight')};
             font-style: ${localStorage.getItem('fontstyle')};
           }
