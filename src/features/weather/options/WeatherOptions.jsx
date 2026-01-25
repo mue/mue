@@ -83,9 +83,15 @@ const WeatherOptions = () => {
       <Action>
         <div className="text-field-container">
           <div className="text-field">
-            <label className="text-field-label">
-              {variables.getMessage(`${WEATHER_SECTION}.location`)}
-            </label>
+            <div className="text-field-header">
+              <label className="text-field-label">
+                {variables.getMessage(`${WEATHER_SECTION}.location`)}
+              </label>
+              <span className="text-field-reset" onClick={getAutoLocation}>
+                <MdAutoAwesome />
+                {variables.getMessage(`${WEATHER_SECTION}.auto`)}
+              </span>
+            </div>
             <input
               type="text"
               className="text-field-input"
@@ -94,10 +100,6 @@ const WeatherOptions = () => {
               placeholder="London"
             />
           </div>
-          <span className="link" onClick={getAutoLocation}>
-            <MdAutoAwesome />
-            {variables.getMessage(`${WEATHER_SECTION}.auto`)}
-          </span>
         </div>
       </Action>
     </Row>
