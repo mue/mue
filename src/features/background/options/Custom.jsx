@@ -56,10 +56,33 @@ const CustomSettings = memo(() => {
   const [selectedImages, setSelectedImages] = useState(new Set());
   const [sortBy, setSortBy] = useState(localStorage.getItem('customImageSort') || 'date_desc');
   const [storageQuotaModal, setStorageQuotaModal] = useState(false);
+  const [storageQuota, setStorageQuota] = useState({ usage: 0, quota: 0 });
   const customDnd = useRef(null);
   const dragCounter = useRef(0);
 
-  const STORAGE_LIMIT = 4850000; // 4.85MB
+  // IndexedDB typically has 50MB+ quota, we'll check dynamically
+  const FALLBACK_STORAGE_LIMIT = 50000000; // 50MB fallback if API unavailable
+
+  // Fetch storage quota
+  useEffect(() => {
+    const fetchQuota = async () => {
+      if (navigator.storage && navigator.storage.estimate) {
+        try {
+          const estimate = await navigator.storage.estimate();
+          setStorageQuota({
+            usage: estimate.usage || 0,
+            quota: estimate.quota || FALLBACK_STORAGE_LIMIT,
+          });
+        } catch (error) {
+          console.warn('Could not get storage estimate:', error);
+          setStorageQuota({ usage: 0, quota: FALLBACK_STORAGE_LIMIT });
+        }
+      } else {
+        setStorageQuota({ usage: 0, quota: FALLBACK_STORAGE_LIMIT });
+      }
+    };
+    fetchQuota();
+  }, [customBackground]);
 
   // Load backgrounds from IndexedDB on mount
   useEffect(() => {
@@ -145,8 +168,10 @@ const CustomSettings = memo(() => {
       return total;
     }, 0);
 
-    // Request more storage if approaching limit (90%)
-    if (storageSize / STORAGE_LIMIT > 0.9 && navigator.storage && navigator.storage.persist) {
+    const availableQuota = storageQuota.quota || FALLBACK_STORAGE_LIMIT;
+
+    // Request persistent storage if approaching limit (90%)
+    if (storageSize / availableQuota > 0.9 && navigator.storage && navigator.storage.persist) {
       try {
         const isPersisted = await navigator.storage.persist();
         if (isPersisted) {
@@ -158,7 +183,7 @@ const CustomSettings = memo(() => {
     }
 
     if (videoCheck(file.type)) {
-      if (storageSize + file.size > STORAGE_LIMIT) {
+      if (storageSize + file.size > availableQuota) {
         throw new Error('no_storage');
       }
 
@@ -186,7 +211,8 @@ const CustomSettings = memo(() => {
         accuracy: 0.9,
       });
 
-      if (storageSize + compressed.size > STORAGE_LIMIT) {
+      const availableQuota = storageQuota.quota || FALLBACK_STORAGE_LIMIT;
+      if (storageSize + compressed.size > availableQuota) {
         throw new Error('no_storage');
       }
 
@@ -421,7 +447,8 @@ const CustomSettings = memo(() => {
     }
     return total;
   }, 0);
-  const storagePercent = (storageUsed / STORAGE_LIMIT) * 100;
+  const availableStorageLimit = storageQuota.quota || FALLBACK_STORAGE_LIMIT;
+  const storagePercent = (storageUsed / availableStorageLimit) * 100;
   const totalStorageUsed = calculateTotalStorageSize();
   const TOTAL_STORAGE_LIMIT = 5242880; // 5MB total localStorage limit (browser default)
 
@@ -570,26 +597,32 @@ const CustomSettings = memo(() => {
               {customBackground.length} {customBackground.length === 1 ? 'image' : 'images'}
               <span className="storage-info">
                 {' '}
-                · {formatBytes(storageUsed)} / {formatBytes(STORAGE_LIMIT)}
+                · {formatBytes(storageUsed)} / {formatBytes(availableStorageLimit)}
                 {storagePercent > 80 && navigator.storage && navigator.storage.persist && (
-                  <button
-                    className="request-storage-link"
-                    onClick={async () => {
-                      try {
-                        const isPersisted = await navigator.storage.persist();
-                        if (isPersisted) {
-                          toast('Storage persistence granted');
-                        } else {
-                          toast('Storage persistence not available');
+                  <Tooltip title="Request persistent storage to prevent browser from automatically clearing your images">
+                    <button
+                      className="request-storage-link"
+                      onClick={async () => {
+                        try {
+                          const isPersisted = await navigator.storage.persist();
+                          if (isPersisted) {
+                            toast(
+                              'Persistent storage granted - your images are protected from eviction',
+                            );
+                          } else {
+                            toast(
+                              'Persistent storage denied - images may be cleared if storage is low',
+                            );
+                          }
+                        } catch (error) {
+                          console.error('Storage request error:', error);
+                          toast('Could not request persistent storage');
                         }
-                      } catch (error) {
-                        console.error('Storage request error:', error);
-                        toast('Could not request storage');
-                      }
-                    }}
-                  >
-                    Request more
-                  </button>
+                      }}
+                    >
+                      Protect images
+                    </button>
+                  </Tooltip>
                 )}
               </span>
             </span>
@@ -911,7 +944,7 @@ const CustomSettings = memo(() => {
                 Custom Backgrounds
               </p>
               <p className="subtitle">
-                {formatBytes(storageUsed)} / {formatBytes(STORAGE_LIMIT)} (
+                {formatBytes(storageUsed)} / {formatBytes(availableStorageLimit)} (
                 {Math.round(storagePercent)}%)
               </p>
             </div>
