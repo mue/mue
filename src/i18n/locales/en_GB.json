@@ -271,7 +271,7 @@
               "delete_selected": "Delete {count} Selected",
               "uploading": "Uploading {current} of {total}...",
               "images": "images",
-              "tag_images": "Organise Images",
+              "tag_images": "Tag Images",
               "tag_description": "Add {count} images to a folder (optional)",
               "folder_name": "Folder Name",
               "folder_placeholder": "Leave empty for no folder",

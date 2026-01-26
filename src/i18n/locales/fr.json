@@ -267,7 +267,25 @@
               },
               "custom_title": "Images personnalisées",
               "custom_description": "Sélectionnez des images depuis votre ordinateur local",
-              "remove": "Supprimer l'image"
+              "remove": "Supprimer l'image",
+              "delete_selected": "Delete {count} Selected",
+              "uploading": "Uploading {current} of {total}...",
+              "images": "images",
+              "tag_images": "Tag Images",
+              "tag_description": "Add {count} images to a folder (optional)",
+              "folder_name": "Folder Name",
+              "folder_placeholder": "Leave empty for no folder",
+              "storage_info": "Storage Information",
+              "storage_description": "Mue uses browser storage to save your custom images. The current limit is approximately 4.85MB for all settings and images combined.",
+              "storage_current": "Current usage: {used} of {total} ({percent}%)",
+              "sort": {
+                "date_newest": "Date Added (Newest)",
+                "date_oldest": "Date Added (Oldest)",
+                "name_asc": "Name (A-Z)",
+                "name_desc": "Name (Z-A)",
+                "size_small": "File Size (Smallest)",
+                "size_large": "File Size (Largest)"
+              }
             },
             "display": "Afficher",
             "display_subtitle": "Modifier la façon dont le fond d'écran et les informations photo sont chargés",
@@ -518,7 +536,10 @@
         "buttons": {
           "reset": "Réinitialiser",
           "import": "Importer",
-          "export": "Exporter"
+          "export": "Exporter",
+          "cancel": "Cancel",
+          "continue": "Continue",
+          "close": "Close"
         }
       },
       "marketplace": {
@@ -600,9 +621,8 @@
         "sort": {
           "title": "Trier",
           "newest": "Installé (plus récent)",
-          "oldest": "Installé (plus ancien)",
           "a_z": "Alphabétique (A-Z)",
-          "z_a": "Alphabétique (Z-A)"
+          "recently_updated": "Recently Updated"
         },
         "create": {
           "title": "Créer",

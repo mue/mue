@@ -193,7 +193,9 @@ async function getCustomBackground(isOffline) {
 
   const url = selected.url || selected;
 
-  if (isOffline && !url.startsWith('data:')) return getOfflineImage('custom');
+  if (isOffline && !url.startsWith('data:')) {
+    return getOfflineImage('custom');
+  }
 
   const data = {
     url,

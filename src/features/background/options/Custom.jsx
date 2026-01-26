@@ -267,7 +267,9 @@ const CustomSettings = memo(() => {
   }, []);
 
   const handleBatchDelete = async () => {
-    if (selectedImages.size === 0) return;
+    if (selectedImages.size === 0) {
+      return;
+    }
 
     try {
       const indices = Array.from(selectedImages).sort((a, b) => b - a);
@@ -357,9 +359,12 @@ const CustomSettings = memo(() => {
       }
 
       try {
-        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
+        localStorage.setItem(
+          'customBackground',
+          JSON.stringify(updatedBackgrounds.map((bg) => bg.url)),
+        );
       } catch (_quotaError) {
-        localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
+        localStorage.setItem('customBackgroundCount', updatedBackgrounds.length.toString());
       }
 
       EventBus.emit('refresh', 'background');
@@ -445,7 +450,9 @@ const CustomSettings = memo(() => {
 
       const files = Array.from(e.dataTransfer.files);
 
-      if (files.length === 0) return;
+      if (files.length === 0) {
+        return;
+      }
 
       if (files.length > 1) {
         // Multiple files - show tagging modal
@@ -476,9 +483,12 @@ const CustomSettings = memo(() => {
 
   if (isLoading) {
     return (
-      <div className="loaderHolder">
-        <div id="loader"></div>
-        <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+      <div className="photosEmpty">
+        <div className="emptyNewMessage"></div>
+        <div className="loaderHolder">
+          <div id="loader"></div>
+          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+        </div>
       </div>
     );
   }
@@ -664,7 +674,16 @@ const CustomSettings = memo(() => {
                 const isVideo = bg && videoCheck(bg.url);
 
                 return (
-                  <div key={originalIndex} className="image-card">
+                  <div
+                    key={originalIndex}
+                    className="image-card"
+                    onClick={(e) => {
+                      // Only select if clicking the card itself, not navigation buttons
+                      if (!e.target.closest('.image-nav-buttons')) {
+                        toggleImageSelection(originalIndex);
+                      }
+                    }}
+                  >
                     <div className="image-checkbox">
                       <input
                         type="checkbox"

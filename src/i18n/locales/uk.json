@@ -267,7 +267,25 @@
               },
               "custom_title": "Користувацькі зображення",
               "custom_description": "Виберіть зображення з вашего локального комп'ютера",
-              "remove": "Видалити зображення"
+              "remove": "Видалити зображення",
+              "delete_selected": "Delete {count} Selected",
+              "uploading": "Uploading {current} of {total}...",
+              "images": "images",
+              "tag_images": "Tag Images",
+              "tag_description": "Add {count} images to a folder (optional)",
+              "folder_name": "Folder Name",
+              "folder_placeholder": "Leave empty for no folder",
+              "storage_info": "Storage Information",
+              "storage_description": "Mue uses browser storage to save your custom images. The current limit is approximately 4.85MB for all settings and images combined.",
+              "storage_current": "Current usage: {used} of {total} ({percent}%)",
+              "sort": {
+                "date_newest": "Date Added (Newest)",
+                "date_oldest": "Date Added (Oldest)",
+                "name_asc": "Name (A-Z)",
+                "name_desc": "Name (Z-A)",
+                "size_small": "File Size (Smallest)",
+                "size_large": "File Size (Largest)"
+              }
             },
             "display": "Відображати",
             "display_subtitle": "Зміна способу завантаження фону та інформації про фотографію",
@@ -518,7 +536,10 @@
         "buttons": {
           "reset": "Скинути",
           "import": "Імпорт",
-          "export": "Експорт"
+          "export": "Експорт",
+          "cancel": "Cancel",
+          "continue": "Continue",
+          "close": "Close"
         }
       },
       "marketplace": {
@@ -600,9 +621,8 @@
         "sort": {
           "title": "Сортування",
           "newest": "Встановлені (найновіші)",
-          "oldest": "Встановлені (найстаріші)",
           "a_z": "За алфавітом (A-Z)",
-          "z_a": "За алфавітом (Z-A)"
+          "recently_updated": "Recently Updated"
         },
         "create": {
           "title": "Створити",

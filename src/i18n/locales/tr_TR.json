@@ -267,7 +267,25 @@
               },
               "custom_title": "Özel Arka Plan",
               "custom_description": "Bilgisayarınızdan görseli seçin",
-              "remove": "Görseli Kaldır"
+              "remove": "Görseli Kaldır",
+              "delete_selected": "Delete {count} Selected",
+              "uploading": "Uploading {current} of {total}...",
+              "images": "images",
+              "tag_images": "Tag Images",
+              "tag_description": "Add {count} images to a folder (optional)",
+              "folder_name": "Folder Name",
+              "folder_placeholder": "Leave empty for no folder",
+              "storage_info": "Storage Information",
+              "storage_description": "Mue uses browser storage to save your custom images. The current limit is approximately 4.85MB for all settings and images combined.",
+              "storage_current": "Current usage: {used} of {total} ({percent}%)",
+              "sort": {
+                "date_newest": "Date Added (Newest)",
+                "date_oldest": "Date Added (Oldest)",
+                "name_asc": "Name (A-Z)",
+                "name_desc": "Name (Z-A)",
+                "size_small": "File Size (Smallest)",
+                "size_large": "File Size (Largest)"
+              }
             },
             "display": "Görüntüleme",
             "display_subtitle": "Arka plan ve fotoğraf bilgilerinin nasıl yükleneceğini değiştirin",
@@ -518,7 +536,10 @@
         "buttons": {
           "reset": "Sıfırla",
           "import": "İçeri Aktar",
-          "export": "Dışarı Aktar"
+          "export": "Dışarı Aktar",
+          "cancel": "Cancel",
+          "continue": "Continue",
+          "close": "Close"
         }
       },
       "marketplace": {
@@ -600,9 +621,8 @@
         "sort": {
           "title": "Sırala",
           "newest": "Kurulanlar (En Yeni)",
-          "oldest": "Kurulanlar (En Eski)",
           "a_z": "Alfabetik (A-Z)",
-          "z_a": "Alfabetik (Z-A)"
+          "recently_updated": "Recently Updated"
         },
         "create": {
           "title": "Oluştur",

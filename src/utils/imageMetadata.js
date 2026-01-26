@@ -93,7 +93,9 @@ export async function generateBlurHash(source, componentX = 4, componentY = 3) {
 export function getDataUrlSize(dataUrl) {
   // Remove data URL prefix to get just the base64 string
   const base64String = dataUrl.split(',')[1];
-  if (!base64String) return 0;
+  if (!base64String) {
+    return 0;
+  }
 
   // Base64 encoding adds ~33% overhead
   // Actual size = (base64 length * 3) / 4
@@ -143,8 +145,12 @@ export function calculateTotalStorageSize() {
  * @returns {string} Formatted string (e.g., "2.3 MB")
  */
 export function formatBytes(bytes) {
-  if (bytes === 0) return '0 Bytes';
-  if (!bytes) return 'Unknown';
+  if (bytes === 0) {
+    return '0 Bytes';
+  }
+  if (!bytes) {
+    return 'Unknown';
+  }
 
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];

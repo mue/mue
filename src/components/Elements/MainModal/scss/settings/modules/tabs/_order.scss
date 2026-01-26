@@ -117,6 +117,7 @@
       overflow: hidden;
       transition: all 0.3s ease;
       box-shadow: t($boxShadow);
+      cursor: pointer;
 
       &.selected {
         outline: 3px solid #ff5c25;
