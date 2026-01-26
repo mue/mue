@@ -8,34 +8,58 @@ import {
   MdPersonalVideo,
   MdOutlineFileUpload,
   MdFolder,
+  MdChevronLeft,
+  MdChevronRight,
+  MdDelete,
+  MdInfo,
 } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from '../api/videoCheck';
 import {
   getAllBackgrounds,
+  getAllBackgroundsWithMetadata,
   addBackground,
-  updateBackground,
   deleteBackground,
-  clearAllBackgrounds,
+  deleteMultipleBackgrounds,
   migrateFromLocalStorage,
+  updateBackgroundMetadata,
 } from 'utils/customBackgroundDB';
+import {
+  getImageDimensions,
+  generateBlurHash,
+  getDataUrlSize,
+  getFileName,
+  calculateStorageSize,
+  calculateTotalStorageSize,
+  formatBytes,
+} from 'utils/imageMetadata';
+import { generateBlurHashDataUrl } from '../api/blurHash';
 
-import { Checkbox, FileUpload } from 'components/Form/Settings';
+import { Checkbox, FileUpload, Dropdown } from 'components/Form/Settings';
 import { Tooltip, Button } from 'components/Elements';
 import Modal from 'react-modal';
 
 import CustomURLModal from './CustomURLModal';
+import FolderTaggingModal from './FolderTaggingModal';
 
 const CustomSettings = memo(() => {
   const [customBackground, setCustomBackground] = useState([]);
   const [customURLModal, setCustomURLModal] = useState(false);
+  const [folderTaggingModal, setFolderTaggingModal] = useState(false);
+  const [pendingFiles, setPendingFiles] = useState([]);
   const [urlError, setUrlError] = useState('');
-  const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const [selectedImages, setSelectedImages] = useState(new Set());
+  const [sortBy, setSortBy] = useState(localStorage.getItem('customImageSort') || 'date_desc');
+  const [storageQuotaModal, setStorageQuotaModal] = useState(false);
   const customDnd = useRef(null);
   const dragCounter = useRef(0);
+
+  const STORAGE_LIMIT = 4850000; // 4.85MB
 
   // Load backgrounds from IndexedDB on mount
   useEffect(() => {
@@ -45,8 +69,24 @@ const CustomSettings = memo(() => {
         await migrateFromLocalStorage();
 
         // Load from IndexedDB
-        const backgrounds = await getAllBackgrounds();
+        const backgrounds = await getAllBackgroundsWithMetadata();
         setCustomBackground(backgrounds);
+
+        // Backfill missing metadata for existing images
+        backgrounds.forEach(async (bg) => {
+          if (!bg.dimensions && bg.url && !videoCheck(bg.url)) {
+            try {
+              const dimensions = await getImageDimensions(bg.url);
+              const blurHash = await generateBlurHash(bg.url);
+              await updateBackgroundMetadata(bg.id, { dimensions, blurHash });
+              // Reload backgrounds to show updated metadata
+              const updatedBackgrounds = await getAllBackgroundsWithMetadata();
+              setCustomBackground(updatedBackgrounds);
+            } catch (error) {
+              console.warn('Could not extract metadata for existing image:', error);
+            }
+          }
+        });
       } catch (error) {
         console.error('Error loading backgrounds:', error);
         toast(variables.getMessage('toasts.error'));
@@ -58,44 +98,146 @@ const CustomSettings = memo(() => {
     loadBackgrounds();
   }, []);
 
-  const handleCustomBackground = useCallback(
-    async (e, index) => {
-      const result = e.target.result;
+  const handleCustomBackground = useCallback(async (file, dataUrl, metadata) => {
+    try {
+      const backgroundData = {
+        url: dataUrl,
+        name: metadata.name,
+        uploadDate: Date.now(),
+        dimensions: metadata.dimensions,
+        fileSize: metadata.fileSize,
+        folder: metadata.folder || '',
+        blurHash: metadata.blurHash,
+      };
+
+      await addBackground(backgroundData);
+
+      // Reload from IndexedDB to get the latest state and update React state
+      const backgrounds = await getAllBackgroundsWithMetadata();
+      setCustomBackground(backgrounds);
 
       try {
-        // Update or add to IndexedDB
-        if (index < customBackground.length) {
-          await updateBackground(index, result);
-        } else {
-          await addBackground(result);
-        }
-
-        // Reload from IndexedDB to get the latest state
-        const backgrounds = await getAllBackgrounds();
-        setCustomBackground(backgrounds);
-
-        // Store count in localStorage for backward compatibility
-        try {
-          localStorage.setItem('customBackground', JSON.stringify(backgrounds));
-        } catch (_quotaError) {
-          // If quota exceeded, just store the count
-          console.warn('localStorage quota exceeded, storing count only');
-          localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
-        }
-
-        const reminderInfo = document.querySelector('.reminder-info');
-        if (reminderInfo) {
-          reminderInfo.style.display = 'flex';
-        }
-        localStorage.setItem('showReminder', true);
-        EventBus.emit('refresh', 'background');
-      } catch (error) {
-        console.error('Error saving background:', error);
-        toast(variables.getMessage('toasts.error'));
+        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
+      } catch (_quotaError) {
+        console.warn('localStorage quota exceeded, storing count only');
+        localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
       }
-    },
-    [customBackground.length],
-  );
+
+      EventBus.emit('refresh', 'background');
+    } catch (error) {
+      console.error('Error saving background:', error);
+      toast(variables.getMessage('toasts.error'));
+    }
+  }, []);
+
+  const processImageFile = async (file, folderName = '') => {
+    // Calculate actual storage from existing backgrounds
+    const storageSize = customBackground.reduce((total, bg) => {
+      if (bg.url && bg.url.startsWith('data:')) {
+        return total + getDataUrlSize(bg.url);
+      }
+      return total;
+    }, 0);
+
+    // Request more storage if approaching limit (90%)
+    if (storageSize / STORAGE_LIMIT > 0.9 && navigator.storage && navigator.storage.persist) {
+      try {
+        const isPersisted = await navigator.storage.persist();
+        if (isPersisted) {
+          console.log('Storage persistence granted');
+        }
+      } catch (error) {
+        console.warn('Could not request storage persistence:', error);
+      }
+    }
+
+    if (videoCheck(file.type)) {
+      if (storageSize + file.size > STORAGE_LIMIT) {
+        throw new Error('no_storage');
+      }
+
+      const reader = new FileReader();
+      return new Promise((resolve, reject) => {
+        reader.onloadend = () => {
+          resolve({
+            dataUrl: reader.result,
+            metadata: {
+              name: getFileName(file, customBackground.length),
+              dimensions: null,
+              fileSize: file.size,
+              folder: folderName,
+              blurHash: null,
+            },
+          });
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    } else {
+      // Compress image
+      const compressed = await compressAccurately(file, {
+        size: 450,
+        accuracy: 0.9,
+      });
+
+      if (storageSize + compressed.size > STORAGE_LIMIT) {
+        throw new Error('no_storage');
+      }
+
+      const dataUrl = await filetoDataURL(compressed);
+
+      // Generate metadata in parallel
+      const [dimensions, blurHash] = await Promise.all([
+        getImageDimensions(dataUrl),
+        generateBlurHash(dataUrl).catch(() => null), // Don't fail if blur hash fails
+      ]);
+
+      return {
+        dataUrl,
+        metadata: {
+          name: getFileName(file, customBackground.length),
+          dimensions,
+          fileSize: getDataUrlSize(dataUrl),
+          folder: folderName,
+          blurHash,
+        },
+      };
+    }
+  };
+
+  const handleBatchUpload = async (files, folderName = '') => {
+    setIsUploading(true);
+    setUploadProgress({ current: 0, total: files.length });
+
+    const errors = [];
+
+    for (let i = 0; i < files.length; i++) {
+      try {
+        const result = await processImageFile(files[i], folderName);
+        await handleCustomBackground(files[i], result.dataUrl, result.metadata);
+        setUploadProgress({ current: i + 1, total: files.length });
+      } catch (error) {
+        if (error.message === 'no_storage') {
+          toast(variables.getMessage('toasts.no_storage'));
+          break;
+        }
+        errors.push(files[i].name);
+      }
+    }
+
+    if (errors.length > 0) {
+      toast(variables.getMessage('toasts.error') + `: ${errors.join(', ')}`);
+    }
+
+    setIsUploading(false);
+    setUploadProgress({ current: 0, total: 0 });
+  };
+
+  const handleFolderTagging = async (folderName) => {
+    setFolderTaggingModal(false);
+    await handleBatchUpload(pendingFiles, folderName);
+    setPendingFiles([]);
+  };
 
   const modifyCustomBackground = useCallback(async (type, index) => {
     try {
@@ -106,22 +248,17 @@ const CustomSettings = memo(() => {
       }
 
       // Reload from IndexedDB to get the latest state
-      const backgrounds = await getAllBackgrounds();
+      const backgrounds = await getAllBackgroundsWithMetadata();
       setCustomBackground(backgrounds);
 
       // Store in localStorage with quota handling
       try {
-        localStorage.setItem('customBackground', JSON.stringify(backgrounds));
+        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
       } catch (_quotaError) {
         console.warn('localStorage quota exceeded, storing count only');
         localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
       }
 
-      const reminderInfo = document.querySelector('.reminder-info');
-      if (reminderInfo) {
-        reminderInfo.style.display = 'flex';
-      }
-      localStorage.setItem('showReminder', true);
       EventBus.emit('refresh', 'background');
     } catch (error) {
       console.error('Error modifying background:', error);
@@ -129,12 +266,51 @@ const CustomSettings = memo(() => {
     }
   }, []);
 
+  const handleBatchDelete = async () => {
+    if (selectedImages.size === 0) return;
+
+    try {
+      const indices = Array.from(selectedImages).sort((a, b) => b - a);
+      await deleteMultipleBackgrounds(indices);
+
+      // Reload from IndexedDB
+      const backgrounds = await getAllBackgroundsWithMetadata();
+      setCustomBackground(backgrounds);
+      setSelectedImages(new Set());
+
+      // Update localStorage
+      try {
+        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
+      } catch (_quotaError) {
+        localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
+      }
+
+      EventBus.emit('refresh', 'background');
+      toast(variables.getMessage('toasts.deleted'));
+    } catch (error) {
+      console.error('Error batch deleting:', error);
+      toast(variables.getMessage('toasts.error'));
+    }
+  };
+
+  const toggleImageSelection = (index) => {
+    const newSelection = new Set(selectedImages);
+    if (newSelection.has(index)) {
+      newSelection.delete(index);
+    } else {
+      newSelection.add(index);
+    }
+    setSelectedImages(newSelection);
+  };
+
+  const handleSort = (sortOption) => {
+    setSortBy(sortOption);
+    localStorage.setItem('customImageSort', sortOption);
+  };
+
   const uploadCustomBackground = useCallback(() => {
-    const newIndex = customBackground.length;
-    document.getElementById('bg-input').setAttribute('index', newIndex);
     document.getElementById('bg-input').click();
-    setCurrentBackgroundIndex(newIndex);
-  }, [customBackground.length]);
+  }, []);
 
   const addCustomURL = useCallback(
     async (e) => {
@@ -145,13 +321,94 @@ const CustomSettings = memo(() => {
         return setUrlError(variables.getMessage('widgets.quicklinks.url_error'));
       }
 
-      const newIndex = customBackground.length;
       setCustomURLModal(false);
-      setCurrentBackgroundIndex(newIndex);
-      await handleCustomBackground({ target: { result: e } }, newIndex);
+
+      try {
+        // Extract filename from URL
+        const urlParts = e.split('/');
+        const filename = urlParts[urlParts.length - 1].split('?')[0] || 'Remote Image';
+
+        // Try to extract metadata from the remote image
+        let dimensions = null;
+        let blurHash = null;
+        try {
+          dimensions = await getImageDimensions(e);
+          blurHash = await generateBlurHash(e);
+        } catch (metadataError) {
+          console.warn('Could not extract metadata from remote image:', metadataError);
+        }
+
+        const backgroundData = {
+          url: e,
+          name: filename,
+          uploadDate: Date.now(),
+          dimensions,
+          fileSize: null, // Cannot determine file size for remote URLs without fetching
+          folder: '',
+          blurHash,
+        };
+
+        await addBackground(backgroundData);
+        const backgrounds = await getAllBackgroundsWithMetadata();
+        setCustomBackground(backgrounds);
+      } catch (error) {
+        console.error('Error adding URL:', error);
+        toast(variables.getMessage('toasts.error'));
+      }
+
+      try {
+        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
+      } catch (_quotaError) {
+        localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
+      }
+
+      EventBus.emit('refresh', 'background');
     },
-    [customBackground.length, handleCustomBackground],
+    [customBackground.length],
   );
+
+  const handleFileInputChange = async (files) => {
+    if (files.length > 1) {
+      // Multiple files - show tagging modal
+      setPendingFiles(files);
+      setFolderTaggingModal(true);
+    } else {
+      // Single file - upload directly
+      await handleBatchUpload(files, '');
+    }
+  };
+
+  // Sorted backgrounds
+  const sortedBackgrounds = [...customBackground].sort((a, b) => {
+    switch (sortBy) {
+      case 'date_asc':
+        return a.uploadDate - b.uploadDate;
+      case 'date_desc':
+        return b.uploadDate - a.uploadDate;
+      case 'name_asc':
+        return (a.name || '').localeCompare(b.name || '');
+      case 'name_desc':
+        return (b.name || '').localeCompare(a.name || '');
+      case 'size_asc':
+        return (a.fileSize || 0) - (b.fileSize || 0);
+      case 'size_desc':
+        return (b.fileSize || 0) - (a.fileSize || 0);
+      default:
+        return 0;
+    }
+  });
+
+  // Calculate storage usage from actual background data
+  const storageUsed = customBackground.reduce((total, bg) => {
+    // Calculate size of the data URL
+    if (bg.url && bg.url.startsWith('data:')) {
+      return total + getDataUrlSize(bg.url);
+    }
+    return total;
+  }, 0);
+  const storagePercent = (storageUsed / STORAGE_LIMIT) * 100;
+  const totalStorageUsed = calculateTotalStorageSize();
+  const TOTAL_STORAGE_LIMIT = 5242880; // 5MB total localStorage limit (browser default)
 
   useEffect(() => {
     const dnd = customDnd.current;
@@ -166,10 +423,8 @@ const CustomSettings = memo(() => {
       e.preventDefault();
       e.stopPropagation();
       dragCounter.current++;
-      console.log('Drag enter, counter:', dragCounter.current);
       if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
         setIsDragging(true);
-        console.log('Setting isDragging to true');
       }
     };
 
@@ -182,61 +437,24 @@ const CustomSettings = memo(() => {
       }
     };
 
-    const handleDrop = (e) => {
+    const handleDrop = async (e) => {
       e.preventDefault();
       e.stopPropagation();
       setIsDragging(false);
       dragCounter.current = 0;
 
       const files = Array.from(e.dataTransfer.files);
-      const settings = {};
 
-      Object.keys(localStorage).forEach((key) => {
-        settings[key] = localStorage.getItem(key);
-      });
+      if (files.length === 0) return;
 
-      const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
-
-      // Process each dropped file
-      files.forEach((file, index) => {
-        const fileIndex = customBackground.length + index;
-
-        if (videoCheck(file.type) === true) {
-          if (settingsSize + file.size > 4850000) {
-            return toast(variables.getMessage('toasts.no_storage'));
-          }
-
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            handleCustomBackground({ target: { result: reader.result } }, fileIndex);
-          };
-          reader.readAsDataURL(file);
-        } else {
-          // Handle image files
-          compressAccurately(file, {
-            size: 450,
-            accuracy: 0.9,
-          })
-            .then(async (res) => {
-              if (settingsSize + res.size > 4850000) {
-                return toast(variables.getMessage('toasts.no_storage'));
-              }
-
-              handleCustomBackground(
-                {
-                  target: {
-                    result: await filetoDataURL(res),
-                  },
-                },
-                fileIndex,
-              );
-            })
-            .catch((error) => {
-              console.error('Error compressing image:', error);
-              toast(variables.getMessage('toasts.error'));
-            });
-        }
-      });
+      if (files.length > 1) {
+        // Multiple files - show tagging modal
+        setPendingFiles(files);
+        setFolderTaggingModal(true);
+      } else {
+        // Single file - upload directly
+        await handleBatchUpload(files, '');
+      }
     };
 
     dnd.ondragover = handleDragOver;
@@ -252,14 +470,32 @@ const CustomSettings = memo(() => {
         dnd.ondrop = null;
       }
     };
-  }, [customBackground.length, handleCustomBackground]);
+  }, [customBackground.length, handleBatchUpload]);
 
-  const hasVideo = customBackground.filter((bg) => bg && videoCheck(bg)).length > 0;
+  const hasVideo = sortedBackgrounds.filter((bg) => bg && videoCheck(bg.url)).length > 0;
 
   if (isLoading) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center' }}>
-        <span>{variables.getMessage('modals.main.loading')}</span>
+      <div className="loaderHolder">
+        <div id="loader"></div>
+        <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+      </div>
+    );
+  }
+
+  if (isUploading) {
+    return (
+      <div className="loaderHolder">
+        <div id="loader"></div>
+        <span className="subtitle">
+          {variables.getMessage('modals.main.settings.sections.background.source.uploading', {
+            current: uploadProgress.current,
+            total: uploadProgress.total,
+          })}
+        </span>
+        <span className="subtitle">
+          {Math.round((uploadProgress.current / uploadProgress.total) * 100)}%
+        </span>
       </div>
     );
   }
@@ -281,7 +517,7 @@ const CustomSettings = memo(() => {
         }
       >
         <div className="imagesTopBar">
-          <div>
+          <div className="imagesTopBarTitle">
             <MdAddPhotoAlternate />
             <div>
               <span className="title">
@@ -303,41 +539,228 @@ const CustomSettings = memo(() => {
               icon={<MdOutlineFileUpload />}
               label={variables.getMessage('modals.main.settings.sections.background.source.upload')}
             />
-            <Button
-              type="settings"
-              onClick={() => setCustomURLModal(true)}
-              icon={<MdAddLink />}
-              label={variables.getMessage(
-                'modals.main.settings.sections.background.source.add_url',
-              )}
+          </div>
+        </div>
+
+        <div className="imagesControlBar">
+          <div className="controlBarLeft">
+            <span className="image-count">
+              {customBackground.length} {customBackground.length === 1 ? 'image' : 'images'}
+              <span className="storage-info">
+                {' '}
+                · {formatBytes(storageUsed)} / {formatBytes(STORAGE_LIMIT)}
+                {storagePercent > 80 && navigator.storage && navigator.storage.persist && (
+                  <button
+                    className="request-storage-link"
+                    onClick={async () => {
+                      try {
+                        const isPersisted = await navigator.storage.persist();
+                        if (isPersisted) {
+                          toast('Storage persistence granted');
+                        } else {
+                          toast('Storage persistence not available');
+                        }
+                      } catch (error) {
+                        console.error('Storage request error:', error);
+                        toast('Could not request storage');
+                      }
+                    }}
+                  >
+                    Request more
+                  </button>
+                )}
+              </span>
+            </span>
+            <span className="selection-separator">·</span>
+            {selectedImages.size > 0 ? (
+              <>
+                <span className="selected-count">{selectedImages.size} selected</span>
+                <button className="delete-link" onClick={handleBatchDelete}>
+                  Delete
+                </button>
+                {selectedImages.size < customBackground.length && (
+                  <button
+                    className="select-all-link"
+                    onClick={() => {
+                      const allIndices = new Set(customBackground.map((_, i) => i));
+                      setSelectedImages(allIndices);
+                    }}
+                  >
+                    Select all
+                  </button>
+                )}
+                {selectedImages.size === customBackground.length && (
+                  <button className="select-all-link" onClick={() => setSelectedImages(new Set())}>
+                    Deselect all
+                  </button>
+                )}
+              </>
+            ) : (
+              customBackground.length > 0 && (
+                <button
+                  className="select-all-link"
+                  onClick={() => {
+                    const allIndices = new Set(customBackground.map((_, i) => i));
+                    setSelectedImages(allIndices);
+                  }}
+                >
+                  Select all
+                </button>
+              )
+            )}
+          </div>
+          <div className="controlBarRight">
+            <Dropdown
+              name="customImageSort"
+              category="customImageSort"
+              onChange={handleSort}
+              items={[
+                {
+                  value: 'date_desc',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.sort.date_newest',
+                  ),
+                },
+                {
+                  value: 'date_asc',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.sort.date_oldest',
+                  ),
+                },
+                {
+                  value: 'name_asc',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.sort.name_asc',
+                  ),
+                },
+                {
+                  value: 'name_desc',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.sort.name_desc',
+                  ),
+                },
+                {
+                  value: 'size_asc',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.sort.size_small',
+                  ),
+                },
+                {
+                  value: 'size_desc',
+                  text: variables.getMessage(
+                    'modals.main.settings.sections.background.source.sort.size_large',
+                  ),
+                },
+              ]}
             />
           </div>
         </div>
+
         <div className="dropzone-content">
-          {customBackground.length > 0 ? (
-            <div className="images-row">
-              {customBackground.map((url, index) => (
-                <div key={index}>
-                  {url && !videoCheck(url) ? (
-                    <img alt={'Custom background ' + (index || 0)} src={customBackground[index]} />
-                  ) : url && videoCheck(url) ? (
-                    <MdPersonalVideo className="customvideoicon" />
-                  ) : null}
-                  {customBackground.length > 0 && (
+          {sortedBackgrounds.length > 0 ? (
+            <div className={`images-grid ${selectedImages.size > 0 ? 'selection-mode' : ''}`}>
+              {sortedBackgrounds.map((bg, index) => {
+                const originalIndex = customBackground.findIndex((item) => item === bg);
+                const isVideo = bg && videoCheck(bg.url);
+
+                return (
+                  <div key={originalIndex} className="image-card">
+                    <div className="image-checkbox">
+                      <input
+                        type="checkbox"
+                        checked={selectedImages.has(originalIndex)}
+                        onChange={() => toggleImageSelection(originalIndex)}
+                      />
+                    </div>
+                    <div className="image-preview">
+                      {bg.blurHash &&
+                        !isVideo &&
+                        (() => {
+                          const blurHashDataUrl = generateBlurHashDataUrl(bg.blurHash, 32, 32);
+                          return blurHashDataUrl ? (
+                            <div
+                              className="blur-placeholder"
+                              style={{
+                                backgroundImage: `url(${blurHashDataUrl})`,
+                                filter: 'blur(20px)',
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                zIndex: 0,
+                              }}
+                            />
+                          ) : null;
+                        })()}
+                      {isVideo ? (
+                        <div className="video-icon-wrapper">
+                          <MdPersonalVideo className="customvideoicon" />
+                        </div>
+                      ) : (
+                        <img
+                          alt={bg.name || 'Custom background'}
+                          src={bg.url}
+                          loading="lazy"
+                          style={{ position: 'relative', zIndex: 1 }}
+                        />
+                      )}
+                      <div className="image-nav-buttons">
+                        <button
+                          className="nav-button nav-prev"
+                          onClick={() => {
+                            if (index > 0) {
+                              const prevBg = sortedBackgrounds[index - 1];
+                              EventBus.emit('refresh', 'background', prevBg.url);
+                            }
+                          }}
+                          disabled={index === 0}
+                        >
+                          <MdChevronLeft />
+                        </button>
+                        <button
+                          className="nav-button nav-next"
+                          onClick={() => {
+                            if (index < sortedBackgrounds.length - 1) {
+                              const nextBg = sortedBackgrounds[index + 1];
+                              EventBus.emit('refresh', 'background', nextBg.url);
+                            }
+                          }}
+                          disabled={index === sortedBackgrounds.length - 1}
+                        >
+                          <MdChevronRight />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="image-metadata">
+                      <span className="image-name" title={bg.name}>
+                        {bg.name || 'Unnamed'}
+                      </span>
+                      <div className="image-details">
+                        {bg.dimensions && (
+                          <span className="detail">
+                            {bg.dimensions.width} × {bg.dimensions.height}
+                          </span>
+                        )}
+                        {bg.fileSize && <span className="detail">{formatBytes(bg.fileSize)}</span>}
+                        {bg.folder && <span className="detail folder-tag">{bg.folder}</span>}
+                      </div>
+                    </div>
                     <Tooltip
                       title={variables.getMessage(
                         'modals.main.settings.sections.background.source.remove',
                       )}
                     >
-                      <Button
-                        type="settings"
-                        onClick={() => modifyCustomBackground('remove', index)}
-                        icon={<MdCancel />}
-                      />
+                      <button
+                        className="delete-button"
+                        onClick={() => modifyCustomBackground('remove', originalIndex)}
+                      >
+                        <MdCancel />
+                      </button>
                     </Tooltip>
-                  )}
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <div className="photosEmpty">
@@ -366,14 +789,16 @@ const CustomSettings = memo(() => {
           )}
         </div>
       </div>
+
       <FileUpload
         id="bg-input"
         accept="image/jpeg, image/png, image/webp, image/webm, image/gif, video/mp4, video/webm, video/ogg"
-        loadFunction={(e, fileIndex) => {
-          const index = currentBackgroundIndex + fileIndex;
-          handleCustomBackground(e, index);
+        multiple
+        loadFunction={async (files) => {
+          await handleFileInputChange(files);
         }}
       />
+
       {hasVideo && (
         <>
           <Checkbox
@@ -390,6 +815,7 @@ const CustomSettings = memo(() => {
           />
         </>
       )}
+
       <Modal
         closeTimeoutMS={100}
         onRequestClose={() => setCustomURLModal(false)}
@@ -403,6 +829,82 @@ const CustomSettings = memo(() => {
           urlError={urlError}
           modalCloseOnly={() => setCustomURLModal(false)}
         />
+      </Modal>
+
+      <Modal
+        closeTimeoutMS={100}
+        onRequestClose={() => {
+          setFolderTaggingModal(false);
+          setPendingFiles([]);
+        }}
+        isOpen={folderTaggingModal}
+        className="Modal resetmodal mainModal"
+        overlayClassName="Overlay resetoverlay"
+        ariaHideApp={false}
+      >
+        <FolderTaggingModal
+          files={pendingFiles}
+          onConfirm={handleFolderTagging}
+          onCancel={() => {
+            setFolderTaggingModal(false);
+            setPendingFiles([]);
+          }}
+        />
+      </Modal>
+
+      <Modal
+        closeTimeoutMS={100}
+        onRequestClose={() => setStorageQuotaModal(false)}
+        isOpen={storageQuotaModal}
+        className="Modal resetmodal mainModal"
+        overlayClassName="Overlay resetoverlay"
+        ariaHideApp={false}
+      >
+        <div className="smallModal">
+          <div className="shareHeader">
+            <span className="title">
+              {variables.getMessage('modals.main.settings.sections.background.source.storage_info')}
+            </span>
+            <button className="closeModal" onClick={() => setStorageQuotaModal(false)}>
+              <MdCancel />
+            </button>
+          </div>
+          <div style={{ padding: '20px' }}>
+            <p className="subtitle">
+              {variables.getMessage(
+                'modals.main.settings.sections.background.source.storage_description',
+              )}
+            </p>
+            <div style={{ marginTop: '20px' }}>
+              <p className="subtitle" style={{ fontWeight: '600', marginBottom: '8px' }}>
+                Custom Backgrounds
+              </p>
+              <p className="subtitle">
+                {formatBytes(storageUsed)} / {formatBytes(STORAGE_LIMIT)} (
+                {Math.round(storagePercent)}%)
+              </p>
+            </div>
+            <div style={{ marginTop: '15px' }}>
+              <p className="subtitle" style={{ fontWeight: '600', marginBottom: '8px' }}>
+                Total localStorage Usage
+              </p>
+              <p className="subtitle">
+                {formatBytes(totalStorageUsed)} / {formatBytes(TOTAL_STORAGE_LIMIT)} (
+                {Math.round((totalStorageUsed / TOTAL_STORAGE_LIMIT) * 100)}%)
+              </p>
+              <p className="subtitle" style={{ marginTop: '8px', fontSize: '12px', opacity: 0.7 }}>
+                Includes all Mue settings and custom images
+              </p>
+            </div>
+          </div>
+          <div className="resetFooter">
+            <Button
+              type="settings"
+              onClick={() => setStorageQuotaModal(false)}
+              label={variables.getMessage('modals.main.settings.buttons.close')}
+            />
+          </div>
+        </div>
       </Modal>
     </>
   );

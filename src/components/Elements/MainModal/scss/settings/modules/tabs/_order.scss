@@ -95,6 +95,412 @@
   }
 }
 
+// Enhanced custom images grid
+.images-grid {
+  display: grid;
+  padding: 1px;
+
+  // Show all checkboxes when in selection mode (any image selected)
+  &.selection-mode {
+    .image-checkbox {
+      opacity: 1;
+    }
+  }
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+
+  @include themed {
+    .image-card {
+      position: relative;
+      border-radius: t($borderRadius);
+      background: t($modal-secondaryColour);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: t($boxShadow);
+
+      &.selected {
+        outline: 3px solid #ff5c25;
+        outline-offset: -3px;
+      }
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+        .image-nav-buttons {
+          opacity: 1;
+        }
+
+        .delete-button {
+          opacity: 1;
+        }
+
+        .image-checkbox {
+          opacity: 1;
+        }
+      }
+
+      .image-checkbox {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        z-index: 12;
+        opacity: 0;
+        transition: opacity 0.2s;
+
+        input[type='checkbox'] {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+          appearance: none;
+          border: 2px solid #fff;
+          border-radius: 4px;
+          background: rgba(0, 0, 0, 0.6);
+          -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+          transition: all 0.2s;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+          position: relative;
+
+          &:checked {
+            background: #ff5c25;
+            border-color: #ff5c25;
+            opacity: 1;
+
+            &::after {
+              content: '';
+              position: absolute;
+              left: 5px;
+              top: 2px;
+              width: 5px;
+              height: 10px;
+              border: solid white;
+              border-width: 0 2px 2px 0;
+              transform: rotate(45deg);
+            }
+          }
+
+          &:hover {
+            border-color: #ff5c25;
+            transform: scale(1.1);
+          }
+        }
+
+        // Keep checkbox visible when checked
+        &:has(input:checked) {
+          opacity: 1;
+        }
+      }
+
+      .image-preview {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        background: t($modal-sidebar);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .video-icon-wrapper {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: t($modal-sidebar);
+
+          .customvideoicon {
+            font-size: 60px;
+            color: t($subColor);
+          }
+        }
+
+        .blur-placeholder {
+          background-size: cover;
+          background-position: center;
+        }
+
+        .image-nav-buttons {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          display: flex;
+          justify-content: space-between;
+          padding: 0 8px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+
+          .nav-button {
+            pointer-events: all;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.6);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            svg {
+              font-size: 24px;
+            }
+
+            &:hover:not(:disabled) {
+              background: rgba(0, 0, 0, 0.8);
+              transform: scale(1.1);
+            }
+
+            &:disabled {
+              opacity: 0.3;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+
+      .image-metadata {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .image-name {
+          font-size: 14px;
+          font-weight: 500;
+          color: t($color);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .image-details {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          font-size: 12px;
+          color: t($subColor);
+
+          .detail {
+            display: inline-block;
+          }
+
+          .folder-tag {
+            padding: 2px 8px;
+            background: t($modal-sidebarActive);
+            border-radius: 4px;
+            font-size: 11px;
+          }
+        }
+      }
+
+      .delete-button {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 71, 87, 0.9);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        transition: all 0.2s;
+        z-index: 11;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+        svg {
+          font-size: 20px;
+        }
+
+        &:hover {
+          background: rgb(255 71 87);
+          transform: scale(1.1);
+        }
+      }
+
+      // Show delete button when card is hovered or has checkbox visible
+      &:hover .delete-button,
+      .image-checkbox:has(input:checked) ~ * .delete-button {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Storage quota display
+.storage-quota {
+  padding: 15px 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+
+  @include themed {
+    background: t($modal-secondaryColour);
+    border-top: 1px solid t($modal-sidebarActive);
+  }
+
+  .quota-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    .quota-text {
+      font-size: 13px;
+
+      @include themed {
+        color: t($subColor);
+      }
+    }
+
+    .quota-info-button {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+
+      @include themed {
+        color: t($subColor);
+
+        &:hover {
+          background: t($modal-sidebarActive);
+        }
+      }
+
+      svg {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .quota-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+
+    @include themed {
+      background: t($modal-sidebar);
+    }
+
+    .quota-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+// Folder tagging modal styles
+.taggingModalContent {
+  padding: 20px;
+
+  p.subtitle {
+    margin-bottom: 20px;
+  }
+
+  .taggingInput {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      @include themed {
+        color: t($subColor);
+      }
+    }
+
+    input {
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid;
+      font-size: 14px;
+      transition: all 0.2s;
+
+      @include themed {
+        background: t($modal-background);
+        color: t($color);
+        border-color: t($modal-sidebarActive);
+
+        &:focus {
+          border-color: #ff5c25;
+          box-shadow: 0 0 0 3px rgba(255, 92, 37, 0.1);
+        }
+      }
+    }
+  }
+}
+
+.dropzone {
+  margin-bottom: 100px;
+
+  @include themed {
+    background: t($modal-background);
+  }
+
+  .dropzone-content {
+    min-height: 200px;
+  }
+
+  .photosEmpty {
+    padding: 60px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .emptyNewMessage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      text-align: center;
+
+      .title {
+        font-size: 18px;
+        font-weight: 500;
+
+        @include themed {
+          color: t($color);
+        }
+      }
+
+      .subtitle {
+        font-size: 14px;
+
+        @include themed {
+          color: t($subColor);
+        }
+      }
+    }
+  }
+}
+
 .overviewGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

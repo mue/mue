@@ -23,7 +23,10 @@ function openDB() {
 
       // Create object store if it doesn't exist
       if (!db.objectStoreNames.contains(STORE_NAME)) {
-        const objectStore = db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+        const objectStore = db.createObjectStore(STORE_NAME, {
+          keyPath: 'id',
+          autoIncrement: true,
+        });
         objectStore.createIndex('url', 'url', { unique: false });
       }
     };
@@ -31,10 +34,10 @@ function openDB() {
 }
 
 /**
- * Get all custom backgrounds
- * @returns {Promise<Array<string>>} Array of background URLs
+ * Get all custom backgrounds as objects
+ * @returns {Promise<Array<Object>>} Array of background objects with metadata
  */
-export async function getAllBackgrounds() {
+export async function getAllBackgroundsWithMetadata() {
   try {
     const db = await openDB();
     const transaction = db.transaction(STORE_NAME, 'readonly');
@@ -44,8 +47,26 @@ export async function getAllBackgrounds() {
     return new Promise((resolve, reject) => {
       request.onsuccess = () => {
         const results = request.result;
-        // Return array of URLs in order
-        resolve(results.map(item => item.url));
+        // Return array of background objects in order
+        // For backward compatibility, convert old string URLs to objects
+        resolve(
+          results.map((item) => {
+            if (typeof item.url === 'string' && !item.name) {
+              // Old format - migrate to new format
+              return {
+                id: item.id,
+                url: item.url,
+                name: `Image ${item.id}`,
+                uploadDate: item.createdAt || Date.now(),
+                dimensions: null,
+                fileSize: null,
+                folder: '',
+                blurHash: null,
+              };
+            }
+            return item;
+          }),
+        );
       };
       request.onerror = () => reject(request.error);
     });
@@ -56,15 +77,38 @@ export async function getAllBackgrounds() {
 }
 
 /**
- * Add a new background
- * @param {string} url - The background URL (data URL or remote URL)
+ * Get all custom backgrounds (URLs only for backward compatibility)
+ * @returns {Promise<Array<string>>} Array of background URLs
+ */
+export async function getAllBackgrounds() {
+  const backgrounds = await getAllBackgroundsWithMetadata();
+  return backgrounds.map((bg) => bg.url || bg);
+}
+
+/**
+ * Add a new background with metadata
+ * @param {Object} backgroundData - The background data object
+ * @param {string} backgroundData.url - The background URL (data URL or remote URL)
+ * @param {string} backgroundData.name - The filename
+ * @param {number} backgroundData.uploadDate - Upload timestamp
+ * @param {Object} backgroundData.dimensions - {width, height}
+ * @param {number} backgroundData.fileSize - File size in bytes
+ * @param {string} backgroundData.folder - Folder name (optional)
+ * @param {string} backgroundData.blurHash - BlurHash string (optional)
  * @returns {Promise<number>} The ID of the added background
  */
-export async function addBackground(url) {
+export async function addBackground(backgroundData) {
   const db = await openDB();
   const transaction = db.transaction(STORE_NAME, 'readwrite');
   const store = transaction.objectStore(STORE_NAME);
-  const request = store.add({ url, createdAt: Date.now() });
+
+  // Support old string format for backward compatibility
+  const data =
+    typeof backgroundData === 'string'
+      ? { url: backgroundData, name: 'Image', uploadDate: Date.now(), folder: '' }
+      : { ...backgroundData, uploadDate: backgroundData.uploadDate || Date.now() };
+
+  const request = store.add(data);
 
   return new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result);
@@ -75,10 +119,10 @@ export async function addBackground(url) {
 /**
  * Update a background at a specific index
  * @param {number} index - The index to update (0-based)
- * @param {string} url - The new URL
+ * @param {Object|string} backgroundData - The new background data
  * @returns {Promise<void>}
  */
-export async function updateBackground(index, url) {
+export async function updateBackground(index, backgroundData) {
   const db = await openDB();
   const transaction = db.transaction(STORE_NAME, 'readwrite');
   const store = transaction.objectStore(STORE_NAME);
@@ -91,7 +135,13 @@ export async function updateBackground(index, url) {
       const items = getAllRequest.result;
       if (items[index]) {
         const item = items[index];
-        item.url = url;
+
+        // Support old string format
+        if (typeof backgroundData === 'string') {
+          item.url = backgroundData;
+        } else {
+          Object.assign(item, backgroundData);
+        }
         item.updatedAt = Date.now();
 
         const updateRequest = store.put(item);
@@ -99,7 +149,7 @@ export async function updateBackground(index, url) {
         updateRequest.onerror = () => reject(updateRequest.error);
       } else {
         // If index doesn't exist, add it
-        addBackground(url).then(resolve).catch(reject);
+        addBackground(backgroundData).then(resolve).catch(reject);
       }
     };
     getAllRequest.onerror = () => reject(getAllRequest.error);
@@ -129,6 +179,48 @@ export async function deleteBackground(index) {
       } else {
         resolve(); // Index doesn't exist, nothing to delete
       }
+    };
+    getAllRequest.onerror = () => reject(getAllRequest.error);
+  });
+}
+
+/**
+ * Delete multiple backgrounds by indices
+ * @param {Array<number>} indices - Array of indices to delete (0-based)
+ * @returns {Promise<void>}
+ */
+export async function deleteMultipleBackgrounds(indices) {
+  const db = await openDB();
+  const transaction = db.transaction(STORE_NAME, 'readwrite');
+  const store = transaction.objectStore(STORE_NAME);
+
+  // Get all items first
+  const getAllRequest = store.getAll();
+
+  return new Promise((resolve, reject) => {
+    getAllRequest.onsuccess = () => {
+      const items = getAllRequest.result;
+      const idsToDelete = indices.filter((index) => items[index]).map((index) => items[index].id);
+
+      // Delete all selected items
+      let completed = 0;
+      const total = idsToDelete.length;
+
+      if (total === 0) {
+        resolve();
+        return;
+      }
+
+      idsToDelete.forEach((id) => {
+        const deleteRequest = store.delete(id);
+        deleteRequest.onsuccess = () => {
+          completed++;
+          if (completed === total) {
+            resolve();
+          }
+        };
+        deleteRequest.onerror = () => reject(deleteRequest.error);
+      });
     };
     getAllRequest.onerror = () => reject(getAllRequest.error);
   });
@@ -167,6 +259,35 @@ export async function getBackgroundCount() {
 }
 
 /**
+ * Update a background's metadata by ID
+ * @param {number} id - The background ID
+ * @param {Object} metadata - Metadata to update
+ * @returns {Promise<void>}
+ */
+export async function updateBackgroundMetadata(id, metadata) {
+  const db = await openDB();
+  const transaction = db.transaction(STORE_NAME, 'readwrite');
+  const store = transaction.objectStore(STORE_NAME);
+  const request = store.get(id);
+
+  return new Promise((resolve, reject) => {
+    request.onsuccess = () => {
+      const item = request.result;
+      if (item) {
+        Object.assign(item, metadata);
+        item.updatedAt = Date.now();
+        const updateRequest = store.put(item);
+        updateRequest.onsuccess = () => resolve();
+        updateRequest.onerror = () => reject(updateRequest.error);
+      } else {
+        reject(new Error('Background not found'));
+      }
+    };
+    request.onerror = () => reject(request.error);
+  });
+}
+
+/**
  * Migrate backgrounds from localStorage to IndexedDB
  * @returns {Promise<boolean>} True if migration occurred
  */
@@ -188,7 +309,7 @@ export async function migrateFromLocalStorage() {
     }
 
     // Filter out null/empty values
-    backgrounds = backgrounds.filter(bg => bg && bg.trim() !== '');
+    backgrounds = backgrounds.filter((bg) => bg && bg.trim() !== '');
 
     if (backgrounds.length === 0) {
       return false;

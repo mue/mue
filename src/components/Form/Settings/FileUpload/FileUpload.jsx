@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from 'features/background/api/videoCheck';
 
-const FileUpload = memo(({ id, type, accept, loadFunction }) => {
+const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
   useEffect(() => {
     const fileInput = document.getElementById(id);
     if (!fileInput) return;
@@ -20,40 +20,48 @@ const FileUpload = memo(({ id, type, accept, loadFunction }) => {
           return loadFunction(e.target.result);
         };
       } else {
-        // background upload - handle multiple files
-        const settings = {};
+        // Pass files directly to loadFunction if it's a newer implementation
+        if (typeof loadFunction === 'function' && loadFunction.length === 1) {
+          loadFunction(files);
+        } else {
+          // Legacy background upload - handle multiple files
+          const settings = {};
 
-        Object.keys(localStorage).forEach((key) => {
-          settings[key] = localStorage.getItem(key);
-        });
-
-        const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
-
-        // Process each file
-        files.forEach((file, index) => {
-          if (videoCheck(file.type) === true) {
-            if (settingsSize + file.size > 4850000) {
-              return toast(variables.getMessage('toasts.no_storage'));
-            }
-
-            return loadFunction(file, index);
-          }
-
-          compressAccurately(file, {
-            size: 450,
-            accuracy: 0.9,
-          }).then(async (res) => {
-            if (settingsSize + res.size > 4850000) {
-              return toast(variables.getMessage('toasts.no_storage'));
-            }
-
-            loadFunction({
-              target: {
-                result: await filetoDataURL(res),
-              },
-            }, index);
+          Object.keys(localStorage).forEach((key) => {
+            settings[key] = localStorage.getItem(key);
           });
-        });
+
+          const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
+
+          // Process each file
+          files.forEach((file, index) => {
+            if (videoCheck(file.type) === true) {
+              if (settingsSize + file.size > 4850000) {
+                return toast(variables.getMessage('toasts.no_storage'));
+              }
+
+              return loadFunction(file, index);
+            }
+
+            compressAccurately(file, {
+              size: 450,
+              accuracy: 0.9,
+            }).then(async (res) => {
+              if (settingsSize + res.size > 4850000) {
+                return toast(variables.getMessage('toasts.no_storage'));
+              }
+
+              loadFunction(
+                {
+                  target: {
+                    result: await filetoDataURL(res),
+                  },
+                },
+                index,
+              );
+            });
+          });
+        }
       }
     };
 
@@ -64,7 +72,7 @@ const FileUpload = memo(({ id, type, accept, loadFunction }) => {
         fileInput.onchange = null;
       }
     };
-  }, [id, type, loadFunction]);
+  }, [id, type, loadFunction, multiple]);
 
   return (
     <input
@@ -72,7 +80,7 @@ const FileUpload = memo(({ id, type, accept, loadFunction }) => {
       type="file"
       style={{ display: 'none' }}
       accept={accept}
-      multiple={type !== 'settings'}
+      multiple={multiple !== undefined ? multiple : type !== 'settings'}
     />
   );
 });

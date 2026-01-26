@@ -92,13 +92,20 @@ h4 {
 }
 
 .imagesTopBar {
-  padding-top: 25px;
+  position: sticky;
+  top: -20px;
+  z-index: 90;
+  padding: 25px 0 15px 0;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
 
-  div:nth-child(1) {
+  @include themed {
+    background: t($modal-background);
+  }
+
+  .imagesTopBarTitle {
     display: flex;
     flex-flow: row;
     align-items: center;
@@ -121,18 +128,139 @@ h4 {
   .topbarbuttons {
     display: flex;
     flex-flow: row;
-    gap: 25px;
+    gap: 15px;
+    align-items: center;
   }
 
-  button {
+  button:not(.MuiButtonBase-root) {
     padding: 0 20px;
   }
 }
 
+.imagesControlBar {
+  position: sticky;
+  top: 68px;
+  z-index: 89;
+  padding: 12px 0;
+  margin-bottom: 15px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @include themed {
+    background: t($modal-background);
+    border-bottom: 1px solid t($modal-sidebarActive);
+  }
+
+  .controlBarLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+
+    @include themed {
+      color: t($subColor);
+    }
+
+    .image-count {
+      font-weight: 500;
+      display: flex;
+
+      @include themed {
+        color: t($color);
+      }
+
+      .storage-info {
+        font-weight: 400;
+
+        @include themed {
+          color: t($subColor);
+        }
+
+        .request-storage-link {
+          background: none;
+          border: none;
+          padding: 0;
+          margin-left: 5px;
+          cursor: pointer;
+          text-decoration: underline;
+          font-size: 13px;
+          transition: opacity 0.2s;
+
+          @include themed {
+            color: #ff5c25;
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+
+    .selection-separator {
+      opacity: 0.5;
+    }
+
+    .selected-count {
+      font-weight: 500;
+    }
+
+    .delete-link {
+      background: none;
+      border: none;
+      padding: 0;
+      margin-left: 5px;
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 14px;
+      transition: opacity 0.2s;
+
+      @include themed {
+        color: rgb(255 71 87);
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .select-all-link {
+      background: none;
+      border: none;
+      padding: 0;
+      margin-left: 5px;
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 14px;
+      transition: opacity 0.2s;
+
+      @include themed {
+        color: t($subColor);
+      }
+
+      &:hover {
+        opacity: 0.8;
+
+        @include themed {
+          color: t($color);
+        }
+      }
+    }
+  }
+
+  .controlBarRight {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .customcss textarea {
-  font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
-    'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
-    'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace !important;
+  font-family:
+    Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
+    'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco,
+    'Courier New', Courier, monospace !important;
 }
 
 .preferences {

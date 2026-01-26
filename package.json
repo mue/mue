@@ -25,6 +25,7 @@
     "@fontsource/inter": "^5.2.8",
     "@fontsource/lexend-deca": "5.0.14",
     "@sentry/react": "^10.36.0",
+    "blurhash": "^2.0.5",
     "fast-blurhash": "^1.1.4",
     "image-conversion": "^2.1.1",
     "react": "^19.2.3",
