@@ -58,9 +58,16 @@
   border-radius: 12px;
   cursor: pointer;
   transition: 0.5s;
+  outline: none;
+  border: none;
+  background: transparent;
 
   svg {
     font-size: 2em;
+  }
+
+  @include themed {
+    color: t($color);
   }
 
   &:hover {
