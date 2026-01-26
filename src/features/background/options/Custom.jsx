@@ -98,37 +98,43 @@ const CustomSettings = memo(() => {
     loadBackgrounds();
   }, []);
 
-  const handleCustomBackground = useCallback(async (file, dataUrl, metadata) => {
-    try {
-      const backgroundData = {
-        url: dataUrl,
-        name: metadata.name,
-        uploadDate: Date.now(),
-        dimensions: metadata.dimensions,
-        fileSize: metadata.fileSize,
-        folder: metadata.folder || '',
-        blurHash: metadata.blurHash,
-      };
-
-      await addBackground(backgroundData);
-
-      // Reload from IndexedDB to get the latest state and update React state
-      const backgrounds = await getAllBackgroundsWithMetadata();
-      setCustomBackground(backgrounds);
-
+  const handleCustomBackground = useCallback(
+    async (file, dataUrl, metadata, skipRefresh = false) => {
       try {
-        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
-      } catch (_quotaError) {
-        console.warn('localStorage quota exceeded, storing count only');
-        localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
-      }
+        const backgroundData = {
+          url: dataUrl,
+          name: metadata.name,
+          uploadDate: Date.now(),
+          dimensions: metadata.dimensions,
+          fileSize: metadata.fileSize,
+          folder: metadata.folder || '',
+          blurHash: metadata.blurHash,
+        };
 
-      EventBus.emit('refresh', 'background');
-    } catch (error) {
-      console.error('Error saving background:', error);
-      toast(variables.getMessage('toasts.error'));
-    }
-  }, []);
+        await addBackground(backgroundData);
+
+        // Reload from IndexedDB to get the latest state and update React state
+        const backgrounds = await getAllBackgroundsWithMetadata();
+        setCustomBackground(backgrounds);
+
+        try {
+          localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
+        } catch (_quotaError) {
+          console.warn('localStorage quota exceeded, storing count only');
+          localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
+        }
+
+        // Only emit refresh if not part of a batch upload
+        if (!skipRefresh) {
+          EventBus.emit('refresh', 'background');
+        }
+      } catch (error) {
+        console.error('Error saving background:', error);
+        toast(variables.getMessage('toasts.error'));
+      }
+    },
+    [],
+  );
 
   const processImageFile = async (file, folderName = '') => {
     // Calculate actual storage from existing backgrounds
@@ -214,7 +220,8 @@ const CustomSettings = memo(() => {
     for (let i = 0; i < files.length; i++) {
       try {
         const result = await processImageFile(files[i], folderName);
-        await handleCustomBackground(files[i], result.dataUrl, result.metadata);
+        // Skip refresh during batch upload to prevent background flashing
+        await handleCustomBackground(files[i], result.dataUrl, result.metadata, true);
         setUploadProgress({ current: i + 1, total: files.length });
       } catch (error) {
         if (error.message === 'no_storage') {
@@ -228,6 +235,9 @@ const CustomSettings = memo(() => {
     if (errors.length > 0) {
       toast(variables.getMessage('toasts.error') + `: ${errors.join(', ')}`);
     }
+
+    // Emit refresh once after all images are uploaded
+    EventBus.emit('refresh', 'background');
 
     setIsUploading(false);
     setUploadProgress({ current: 0, total: 0 });
@@ -484,7 +494,7 @@ const CustomSettings = memo(() => {
   if (isLoading) {
     return (
       <div className="photosEmpty">
-        <div className="emptyNewMessage"></div>
+        ={' '}
         <div className="loaderHolder">
           <div id="loader"></div>
           <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
@@ -495,17 +505,19 @@ const CustomSettings = memo(() => {
 
   if (isUploading) {
     return (
-      <div className="loaderHolder">
-        <div id="loader"></div>
-        <span className="subtitle">
-          {variables.getMessage('modals.main.settings.sections.background.source.uploading', {
-            current: uploadProgress.current,
-            total: uploadProgress.total,
-          })}
-        </span>
-        <span className="subtitle">
-          {Math.round((uploadProgress.current / uploadProgress.total) * 100)}%
-        </span>
+      <div className="photosEmpty">
+        <div className="loaderHolder">
+          <div id="loader"></div>
+          <span className="subtitle">
+            {variables.getMessage('modals.main.settings.sections.background.source.uploading', {
+              current: uploadProgress.current,
+              total: uploadProgress.total,
+            })}
+          </span>
+          <span className="subtitle">
+            {Math.round((uploadProgress.current / uploadProgress.total) * 100)}%
+          </span>
+        </div>
       </div>
     );
   }
