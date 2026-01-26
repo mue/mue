@@ -288,7 +288,8 @@ button.quicklinks {
   flex-flow: column;
   align-items: center;
   min-width: 100px;
-  background-image: linear-gradient(to left, rgb(0 0 0), transparent, rgb(0 0 0)),
+  background-image:
+    linear-gradient(to left, rgb(0 0 0), transparent, rgb(0 0 0)),
     url('https://media.cntraveller.com/photos/615ee85…/16:9/w_2580,c_limit/Best%20Cities%20in%20the%20World%20-%20Grid.jpg');
   transition: 0.8s;
   text-align: left;
@@ -605,7 +606,7 @@ button.quicklinks {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 0;
+  padding-bottom: 50px;
 }
 
 .quicklink-wrapper .quicklinkstext {
