@@ -296,6 +296,13 @@
     white-space: nowrap;
   }
 
+  .dropdown-option-default {
+    @include themed {
+      color: t($subColor);
+      opacity: 0.7;
+    }
+  }
+
   .dropdown-option-check {
     flex-shrink: 0;
     font-size: 14px;
