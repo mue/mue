@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "Lähtesta",
+          "default": "Default",
           "import": "Impordi",
           "export": "Ekspordi",
           "cancel": "Cancel",

@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "Atiestatīt",
+          "default": "Default",
           "import": "Importēt",
           "export": "Eksportēt",
           "cancel": "Cancel",

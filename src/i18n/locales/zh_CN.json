@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "重置",
+          "default": "Default",
           "import": "导入",
           "export": "导出",
           "cancel": "Cancel",

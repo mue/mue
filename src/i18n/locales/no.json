@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "Nullstill",
+          "default": "Default",
           "import": "Importer",
           "export": "Eksporter",
           "cancel": "Cancel",

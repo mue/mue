@@ -166,6 +166,7 @@ const Dropdown = memo((props) => {
   const id = 'dropdown' + props.name;
   const label = props.label || '';
   const selectedItem = props.items.find((item) => item?.value === value);
+  const defaultValue = props.default || props.items[0]?.value;
 
   return (
     <div className={`dropdown ${id} ${props.disabled ? 'disabled' : ''}`} ref={containerRef}>
@@ -226,7 +227,15 @@ const Dropdown = memo((props) => {
                   aria-selected={value === item.value}
                   tabIndex={0}
                 >
-                  <span className="dropdown-option-text">{item.text}</span>
+                  <span className="dropdown-option-text">
+                    {item.text}
+                    {item.value === defaultValue && (
+                      <span className="dropdown-option-default">
+                        {' '}
+                        ({variables.getMessage('modals.main.settings.buttons.default')})
+                      </span>
+                    )}
+                  </span>
                   {value === item.value && <MdCheck className="dropdown-option-check" />}
                 </div>
               ) : null,

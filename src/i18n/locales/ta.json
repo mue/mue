@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "மீட்டமை",
+          "default": "Default",
           "import": "இறக்குமதி",
           "export": "ஏற்றுமதி",
           "cancel": "Cancel",

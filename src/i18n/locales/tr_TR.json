@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "Sıfırla",
+          "default": "Default",
           "import": "İçeri Aktar",
           "export": "Dışarı Aktar",
           "cancel": "Cancel",

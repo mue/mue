@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "Ponastavi",
+          "default": "Default",
           "import": "Uvozi",
           "export": "Izvozi",
           "cancel": "Cancel",

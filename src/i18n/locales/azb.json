@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "Sıfırla",
+          "default": "Default",
           "import": "İdxal et",
           "export": "İxrac et",
           "cancel": "Cancel",

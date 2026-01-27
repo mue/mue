@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "إعادة تعيين",
+          "default": "Default",
           "import": "استيراد",
           "export": "تصدير",
           "cancel": "Cancel",

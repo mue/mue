@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "Скинути",
+          "default": "Default",
           "import": "Імпорт",
           "export": "Експорт",
           "cancel": "Cancel",

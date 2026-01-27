@@ -242,6 +242,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    .dropdown-option-default {
+      @include themed {
+        color: t($subColor);
+      }
+    }
   }
 
   .dropdown-option-check {

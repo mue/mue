@@ -535,6 +535,7 @@
         },
         "buttons": {
           "reset": "Atstatyti",
+          "default": "Default",
           "import": "Importuoti",
           "export": "Eksportuoti",
           "cancel": "Cancel",
