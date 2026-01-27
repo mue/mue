@@ -1,16 +1,13 @@
 import variables from 'config/variables';
 import React, { memo, useState, useMemo } from 'react';
 import {
-  MdAutoFixHigh,
-  MdOutlineArrowForward,
-  MdOutlineOpenInNew,
   MdCheckCircle,
   MdOutlineUploadFile,
   MdClose,
 } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
-import { Button, Tooltip } from 'components/Elements';
+import { Tooltip } from 'components/Elements';
 import Dropdown from '../../../../components/Form/Settings/Dropdown/Dropdown';
 
 function filterItems(item, filter, categoryFilter) {
@@ -60,40 +57,6 @@ function getTypeTranslationKey(type) {
 function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInstalled, isAdded, onUninstall }) {
   item._onCollection = onCollection;
 
-  // Convert hex color to RGB for gradient with opacity
-  const hexToRgb = (hex) => {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-      ? {
-          r: parseInt(result[1], 16),
-          g: parseInt(result[2], 16),
-          b: parseInt(result[3], 16),
-        }
-      : null;
-  };
-
-  const getGradientStyle = () => {
-    if (!item.colour) return {};
-
-    const rgb = hexToRgb(item.colour);
-    if (!rgb) return {};
-
-    const baseColor = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
-
-function getTypeTranslationKey(type) {
-  const typeMap = {
-    photos: 'photo_packs',
-    quotes: 'quote_packs',
-    settings: 'preset_settings',
-  };
-  return typeMap[type] || type;
-}
-
-function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInstalled, isAdded, onUninstall }) {
-  item._onCollection = onCollection;
-
-  const isSideloaded = item.sideload === true;
-
   const isSideloaded = item.sideload === true;
 
   return (
@@ -129,7 +92,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
         </Tooltip>
       )}
       {isInstalled && item.colour && !isSideloaded && (
-        <div className="item-installed-badge" style={getBadgeStyle()}>
+        <div className="item-installed-badge">
           <MdCheckCircle />
         </div>
       )}
