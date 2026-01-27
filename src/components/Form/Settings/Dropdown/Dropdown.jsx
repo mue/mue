@@ -191,7 +191,8 @@ const Dropdown = memo((props) => {
     [onChange],
   );
 
-  const resetItem = useCallback(() => {
+  const resetItem = useCallback((e) => {
+    e?.stopPropagation();
     const defaultValue = props.default || props.items[0]?.value;
     onChange(defaultValue);
     toast(variables.getMessage('toasts.reset'));
@@ -223,7 +224,7 @@ const Dropdown = memo((props) => {
     : props.items;
 
   return (
-    <div className={`dropdown ${id} ${props.disabled ? 'disabled' : ''}`} ref={containerRef}>
+    <div className={`dropdown ${id} ${props.disabled ? 'disabled' : ''}`} ref={containerRef} onClick={(e) => e.stopPropagation()}>
       {label && (
         <div className="dropdown-header">
           <label className="dropdown-label">{label}</label>
@@ -236,7 +237,8 @@ const Dropdown = memo((props) => {
       <div
         ref={controlRef}
         className={`dropdown-control ${props.searchable && (isOpen || searchQuery) ? 'searching' : ''}`}
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           if (props.disabled) return;
           if (isOpen) {
             closeDropdown();
