@@ -1,4 +1,4 @@
-import { MdMenu } from 'react-icons/md';
+import { FiSidebar } from "react-icons/fi";
 import { Tooltip } from 'components/Elements';
 import { useT } from 'contexts/TranslationContext';
 
@@ -16,7 +16,7 @@ function SidebarToggle({ isCollapsed, onToggle }) {
         aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         aria-expanded={!isCollapsed}
       >
-        <MdMenu />
+        <FiSidebar />
       </button>
     </Tooltip>
   );

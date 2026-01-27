@@ -238,7 +238,7 @@ $theme-map: null;
     flex-flow: row;
     justify-content: center;
     gap: 20px;
-    transition: 0.5s;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
     cursor: pointer;
 
     &:hover {
@@ -248,16 +248,19 @@ $theme-map: null;
     &:active {
       background: t($modal-sidebarActive);
       box-shadow: 0 0 0 1px t($color);
+      transform: scale(0.98);
     }
 
-    &:focus {
+    &:focus-visible {
       background: t($modal-sidebarActive);
-      box-shadow: 0 0 0 1px t($color);
+      box-shadow: 0 0 0 2px t($color);
+      outline: none;
     }
 
     &:disabled {
       background: t($modal-sidebarActive);
       cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 }

@@ -22,24 +22,28 @@ function Header(props) {
 
   const changeSetting = () => {
     const toggle = localStorage.getItem(props.setting) === 'true';
-    localStorage.setItem(props.setting, !toggle);
-    setSetting(!toggle);
 
-    variables.stats.postEvent(
-      'setting',
-      `${props.name} ${setting === true ? 'enabled' : 'disabled'}`,
-    );
+    // Small delay to let the button click animation complete
+    setTimeout(() => {
+      localStorage.setItem(props.setting, !toggle);
+      setSetting(!toggle);
 
-    EventBus.emit('toggle', props.setting);
+      variables.stats.postEvent(
+        'setting',
+        `${props.name} ${setting === true ? 'enabled' : 'disabled'}`,
+      );
 
-    if (props.element) {
-      if (!document.querySelector(props.element)) {
-        document.querySelector('.reminder-info').style.display = 'flex';
-        return localStorage.setItem('showReminder', true);
+      EventBus.emit('toggle', props.setting);
+
+      if (props.element) {
+        if (!document.querySelector(props.element)) {
+          document.querySelector('.reminder-info').style.display = 'flex';
+          return localStorage.setItem('showReminder', true);
+        }
       }
-    }
 
-    EventBus.emit('refresh', props.category);
+      EventBus.emit('refresh', props.category);
+    }, 100);
   };
 
   const VisibilityToggle = () => (
