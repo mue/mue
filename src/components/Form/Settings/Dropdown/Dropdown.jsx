@@ -44,16 +44,38 @@ const Dropdown = memo((props) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [closeDropdown]);
 
-  useEffect(() => {
-    if (isOpen && controlRef.current) {
+  const calculatePosition = useCallback(() => {
+    if (controlRef.current) {
       const rect = controlRef.current.getBoundingClientRect();
-      setMenuPosition({
-        top: rect.bottom + 4,
+      const gap = 4;
+      const viewportHeight = window.innerHeight;
+
+      // Estimate menu height (will be more accurate after first render)
+      const estimatedMenuHeight = Math.min(props.items.filter((i) => i !== null).length * 44, 250);
+
+      // Calculate if dropdown would overflow bottom of viewport
+      const spaceBelow = viewportHeight - rect.bottom - gap;
+      const spaceAbove = rect.top - gap;
+
+      // If not enough space below but more space above, flip to top
+      const shouldFlipUp = spaceBelow < estimatedMenuHeight && spaceAbove > spaceBelow;
+
+      return {
+        top: shouldFlipUp ? rect.top - gap : rect.bottom + gap,
         left: rect.left,
         width: rect.width,
-      });
+        maxHeight: shouldFlipUp ? Math.min(250, spaceAbove) : Math.min(250, spaceBelow),
+        flipped: shouldFlipUp,
+      };
     }
-  }, [isOpen]);
+    return { top: 0, left: 0, width: 0, maxHeight: 250, flipped: false };
+  }, [props.items]);
+
+  const openDropdown = useCallback(() => {
+    const position = calculatePosition();
+    setMenuPosition(position);
+    setIsOpen(true);
+  }, [calculatePosition]);
 
   const onChange = useCallback(
     (newValue) => {
@@ -98,7 +120,7 @@ const Dropdown = memo((props) => {
           if (isOpen) {
             closeDropdown();
           } else {
-            setIsOpen(true);
+            openDropdown();
           }
           break;
         case 'Escape':
@@ -107,7 +129,7 @@ const Dropdown = memo((props) => {
         case 'ArrowDown':
           e.preventDefault();
           if (!isOpen) {
-            setIsOpen(true);
+            openDropdown();
           } else {
             setFocusedIndex((prev) =>
               prev < props.items.filter((i) => i !== null).length - 1 ? prev + 1 : prev,
@@ -122,7 +144,7 @@ const Dropdown = memo((props) => {
           break;
       }
     },
-    [isOpen, props.items, props.disabled],
+    [isOpen, props.items, props.disabled, openDropdown, closeDropdown],
   );
 
   const handleOptionKeyDown = useCallback(
@@ -164,7 +186,7 @@ const Dropdown = memo((props) => {
           if (isOpen) {
             closeDropdown();
           } else {
-            setIsOpen(true);
+            openDropdown();
           }
         }}
         onKeyDown={handleKeyDown}
@@ -181,13 +203,15 @@ const Dropdown = memo((props) => {
         createPortal(
           <div
             ref={menuRef}
-            className={`dropdown-menu ${isClosing ? 'closing' : ''}`}
+            className={`dropdown-menu ${isClosing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
             role="listbox"
             style={{
               position: 'fixed',
               top: `${menuPosition.top}px`,
               left: `${menuPosition.left}px`,
               width: `${menuPosition.width}px`,
+              maxHeight: menuPosition.maxHeight ? `${menuPosition.maxHeight}px` : '250px',
+              transform: menuPosition.flipped ? 'translateY(-100%)' : 'none',
             }}
           >
             {props.items.map((item, index) =>

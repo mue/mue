@@ -13,6 +13,42 @@
   }
 }
 
+@include keyframes(dropdownSlideOut) {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@include keyframes(dropdownSlideInUp) {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+}
+
+@include keyframes(dropdownSlideOutUp) {
+  0% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100%) translateY(10px);
+  }
+}
+
 .dropdown {
   position: relative;
   width: 300px;
@@ -20,7 +56,6 @@
   gap: 8px;
   display: flex;
   flex-flow: column;
-
 
   &.disabled {
     opacity: 0.5;
@@ -121,98 +156,107 @@
       transform: rotate(180deg);
     }
   }
+}
 
-  .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 4px);
-    left: 0;
-    right: 0;
-    max-height: 250px;
-    overflow-y: auto;
-    z-index: 9999;
-    @include animation(dropdownSlideIn 0.2s ease-out);
+.dropdown-menu {
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 9999;
+  @include animation(dropdownSlideIn 0.2s ease-out);
+  will-change: transform, opacity;
 
-    @include themed {
-      background: t($modal-background);
-      border: 1px solid t($modal-sidebarActive);
-      border-radius: t($borderRadius);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
+  @include themed {
+    background: t($modal-background);
+    border: 1px solid t($modal-sidebarActive);
+    border-radius: t($borderRadius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 
-    &::-webkit-scrollbar {
-      width: 6px;
-    }
+  &.flipped {
+    @include animation(dropdownSlideInUp 0.2s ease-out);
 
-    &::-webkit-scrollbar-track {
-      @include themed {
-        background: t($modal-sidebar);
-      }
-    }
-
-    &::-webkit-scrollbar-thumb {
-      @include themed {
-        background: t($modal-sidebarActive);
-        border-radius: 3px;
-      }
-
-      &:hover {
-        @include themed {
-          background: t($color);
-        }
-      }
+    &.closing {
+      @include animation(dropdownSlideOutUp 0.2s ease-out forwards);
     }
   }
 
-  .dropdown-option {
+  &.closing:not(.flipped) {
+    @include animation(dropdownSlideOut 0.2s ease-out forwards);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    @include themed {
+      background: t($modal-sidebar);
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @include themed {
+      background: t($modal-sidebarActive);
+      border-radius: 3px;
+    }
+
+    &:hover {
+      @include themed {
+        background: t($color);
+      }
+    }
+  }
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+
+  @include themed {
+    color: t($color);
+
+    &:hover {
+      background: t($modal-sidebarActive);
+      padding-left: 20px;
+    }
+
+    &.selected {
+      background: t($modal-sidebar);
+      font-weight: 500;
+    }
+
+    &.focused {
+      background: t($modal-sidebarActive);
+      border-left: 2px solid t($link);
+    }
+  }
+
+  .dropdown-option-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dropdown-option-check {
+    flex-shrink: 0;
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 12px 16px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    outline: none;
+    justify-content: center;
 
     @include themed {
-      color: t($color);
-
-      &:hover {
-        background: t($modal-sidebarActive);
-        padding-left: 20px;
-      }
-
-      &.selected {
-        background: t($modal-sidebar);
-        font-weight: 500;
-      }
-
-      &.focused {
-        background: t($modal-sidebarActive);
-        border-left: 2px solid t($link);
-      }
-    }
-
-    .dropdown-option-text {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .dropdown-option-check {
-      flex-shrink: 0;
-      font-size: 14px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      @include themed {
-        background: t($link);
-        color: white;
-      }
+      background: t($link);
+      color: white;
     }
   }
 }
