@@ -84,6 +84,10 @@
         "library": "Lisad",
         "discover": "Rakenduste pood"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Viga",
         "message": "Mue komponendi laadimine ebaõnnestus",

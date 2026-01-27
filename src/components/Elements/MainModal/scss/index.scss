@@ -269,7 +269,7 @@ h5 {
   @include themed {
     background: t($modal-sidebar);
     border-radius: t($borderRadius);
-    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+    box-shadow: 0 0 0 1px t($modal-border);
 
     &:hover {
       background: t($modal-sidebarActive);
@@ -294,6 +294,7 @@ h5 {
 
       padding: 15px;
       border-radius: 100%;
+      flex-shrink: 0;
     }
   }
 

@@ -84,6 +84,10 @@
         "library": "Dodatki",
         "discover": "Tržnica"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Napaka",
         "message": "Ni uspelo naložiti te komponente Mue",

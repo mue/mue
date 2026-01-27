@@ -84,6 +84,10 @@
         "library": "অ্যাড-অন",
         "discover": "মার্কেটপ্লেস"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "ত্রুটি",
         "message": "Mue এর এই উপাদানটি লোড করতে ব্যর্থ হয়েছে",

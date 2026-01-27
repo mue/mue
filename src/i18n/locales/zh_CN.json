@@ -84,6 +84,10 @@
         "library": "我的插件",
         "discover": "插件市场"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "错误",
         "message": "无法载入该Mue组件",

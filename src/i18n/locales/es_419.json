@@ -84,6 +84,10 @@
         "library": "Mis complementos",
         "discover": "Tienda"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Error",
         "message": "No se ha podido cargar este componente de Mue",

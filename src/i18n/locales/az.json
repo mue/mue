@@ -84,6 +84,10 @@
         "library": "Əlavələr",
         "discover": "Bazarı"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Xəta",
         "message": "Mue-nun bu komponentini yükləmək alınmadı",

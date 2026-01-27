@@ -3,6 +3,7 @@ import { useT } from 'contexts/TranslationContext';
 import variables from 'config/variables';
 import Tab from './Tab';
 import ReminderInfo from '../components/ReminderInfo';
+import SidebarToggle from '../components/SidebarToggle';
 import ErrorBoundary from '../../../../features/misc/modals/ErrorBoundary';
 import { TAB_TYPES } from '../constants/tabConfig';
 
@@ -39,6 +40,9 @@ const Tabs = ({
   const [currentTab, setCurrentTab] = useState(initial.label);
   const [currentName, setCurrentName] = useState(initial.name);
   const [showReminder, setShowReminder] = useState(localStorage.getItem('showReminder') === 'true');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(
+    localStorage.getItem('sidebarCollapsed') === 'true'
+  );
   const contentRef = useRef(null);
 
   const handleTabClick = (tab, name) => {
@@ -114,13 +118,37 @@ const Tabs = ({
     setShowReminder(false);
   };
 
+  const handleToggleSidebar = () => {
+    const newState = !isSidebarCollapsed;
+    setIsSidebarCollapsed(newState);
+    localStorage.setItem('sidebarCollapsed', newState.toString());
+  };
+
   // Show sidebar for Settings and Discover tabs
   const showSidebar = activeTab === TAB_TYPES.SETTINGS || activeTab === TAB_TYPES.DISCOVER;
+
+  // Keyboard shortcut for sidebar toggle (Ctrl/Cmd + B)
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+        e.preventDefault();
+        if (showSidebar) {
+          setIsSidebarCollapsed((prev) => !prev);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [showSidebar]);
 
   return (
     <div style={{ display: 'flex', width: '100%', height: '100%', overflow: 'hidden' }}>
       {showSidebar ? (
-        <div className="modalSidebar">
+        <div className={`modalSidebar ${isSidebarCollapsed ? 'collapsed' : 'expanded'}`}>
+          <div className="sidebarHeader">
+            <SidebarToggle isCollapsed={isSidebarCollapsed} onToggle={handleToggleSidebar} />
+          </div>
           {children.map((tab, index) => (
             <Tab
               key={index}
@@ -128,9 +156,12 @@ const Tabs = ({
               label={tab.props.label}
               onClick={(nextTab) => handleTabClick(nextTab, tab.props.name)}
               navbarTab={navbar}
+              isCollapsed={isSidebarCollapsed}
             />
           ))}
-          <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
+          {!isSidebarCollapsed && (
+            <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
+          )}
         </div>
       ) : null}
       <div className="modalTabContent" ref={contentRef}>

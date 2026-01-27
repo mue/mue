@@ -1,8 +1,9 @@
 import { memo, useState, useEffect } from 'react';
 import { useT } from 'contexts/TranslationContext';
+import { Tooltip } from 'components/Elements';
 import { getIconComponent, DIVIDER_LABELS } from '../constants/tabConfig';
 
-function Tab({ label, currentTab, onClick, navbarTab }) {
+function Tab({ label, currentTab, onClick, navbarTab, isCollapsed }) {
   const t = useT();
   const [isExperimental, setIsExperimental] = useState(true);
 
@@ -29,10 +30,18 @@ function Tab({ label, currentTab, onClick, navbarTab }) {
 
   return (
     <>
-      <button className={className} onClick={() => onClick(label)}>
-        {IconComponent && <IconComponent />} <span>{label}</span>
-      </button>
-      {hasDivider && <hr />}
+      {isCollapsed ? (
+        <Tooltip title={label} placement="right">
+          <button className={className} onClick={() => onClick(label)}>
+            {IconComponent && <IconComponent />}
+          </button>
+        </Tooltip>
+      ) : (
+        <button className={className} onClick={() => onClick(label)}>
+          {IconComponent && <IconComponent />} <span>{label}</span>
+        </button>
+      )}
+      {!isCollapsed && hasDivider && <hr />}
     </>
   );
 }

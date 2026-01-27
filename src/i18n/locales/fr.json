@@ -84,6 +84,10 @@
         "library": "Add-ons",
         "discover": "Marché"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Erreur",
         "message": "Échec du chargement de ce composant de Mue",

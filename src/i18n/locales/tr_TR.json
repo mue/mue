@@ -84,6 +84,10 @@
         "library": "Eklentilerim",
         "discover": "Market"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Hata",
         "message": "Mue bileşeni yüklenemedi",
