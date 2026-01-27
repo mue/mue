@@ -1,0 +1,256 @@
+@use 'scss/variables' as *;
+@use 'scss/mixins' as *;
+
+@include keyframes(datepickerSlideIn) {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(datepickerSlideOut) {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@include keyframes(datepickerSlideInUp) {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+}
+
+@include keyframes(datepickerSlideOutUp) {
+  0% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100%) translateY(10px);
+  }
+}
+
+.datepicker {
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  max-width: 300px;
+
+  .datepicker-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    height: 56px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      color: t($color);
+
+      &:hover {
+        border-color: t($color);
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      @include themed {
+        border-color: t($link);
+        box-shadow: 0 0 0 3px t($link);
+      }
+    }
+  }
+
+  .datepicker-value {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .datepicker-arrow {
+    flex-shrink: 0;
+    font-size: 24px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    margin: -4px;
+
+    @include themed {
+      color: t($subColor);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+        color: t($color);
+      }
+    }
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.datepicker-menu {
+  z-index: 9999;
+  @include animation(datepickerSlideIn 0.2s ease-out);
+  will-change: transform, opacity;
+  padding: 16px;
+  min-width: 280px;
+  box-sizing: border-box;
+
+  @include themed {
+    background: t($modal-background);
+    border: 1px solid t($modal-sidebarActive);
+    border-radius: t($borderRadius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &.flipped {
+    @include animation(datepickerSlideInUp 0.2s ease-out);
+
+    &.closing {
+      @include animation(datepickerSlideOutUp 0.2s ease-out forwards);
+    }
+  }
+
+  &.closing:not(.flipped) {
+    @include animation(datepickerSlideOut 0.2s ease-out forwards);
+  }
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 8px;
+
+  .calendar-nav {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    @include themed {
+      color: t($subColor);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+        color: t($color);
+      }
+    }
+
+    svg {
+      font-size: 20px;
+    }
+  }
+
+  .calendar-month {
+    font-weight: 600;
+    font-size: 14px;
+    flex: 1;
+    text-align: center;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+
+  div {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 4px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+
+  .calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 14px;
+    transition: all 0.15s ease;
+    min-width: 32px;
+    min-height: 32px;
+
+    @include themed {
+      color: t($color);
+
+      &:hover:not(.empty) {
+        background: t($modal-sidebarActive);
+      }
+
+      &.today {
+        border: 2px solid t($link);
+      }
+
+      &.selected {
+        background: t($link);
+        color: white;
+        font-weight: 600;
+
+        &:hover {
+          background: t($link);
+          opacity: 0.9;
+        }
+      }
+
+      &.empty {
+        cursor: default;
+      }
+    }
+  }
+}

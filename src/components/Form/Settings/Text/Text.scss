@@ -75,6 +75,10 @@
         color: t($subColor);
       }
     }
+
+    &.event-name-input {
+      max-width: 300px;
+    }
   }
 
   .text-field-textarea {

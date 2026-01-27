@@ -10,6 +10,7 @@ import {
   Section,
 } from 'components/Layout/Settings';
 import { Checkbox, Switch, Text } from 'components/Form/Settings';
+import { DatePicker } from 'components/Form/Settings/DatePicker';
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
 
@@ -146,11 +147,12 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
             <p style={{ marginRight: 'auto' }}>
               {variables.getMessage(`${GREETING_SECTION}.birthday_date`)}
             </p>
-            <input
-              type="date"
-              onChange={changeDate}
-              value={birthday.toISOString().substring(0, 10)}
-              required
+            <DatePicker
+              value={birthday}
+              onChange={(newDate) => {
+                localStorage.setItem('birthday', newDate);
+                setBirthday(newDate);
+              }}
             />
           </div>
         </Action>
@@ -193,7 +195,7 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
                   </span>
                   <input
                     type="text"
-                    className="text-field-input"
+                    className="text-field-input event-name-input"
                     value={event.name}
                     placeholder={variables.getMessage(`${GREETING_SECTION}.event_name`)}
                     onChange={(e) => {
@@ -205,43 +207,18 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
               </div>
               <div>
                 <div className="messageAction">
-                  <div className="eventDateSelection">
-                    <label className="subtitle">
-                      {variables.getMessage(`${GREETING_SECTION}.day`)}:
-                    </label>
-                    <input
-                      id="day"
-                      type="number"
-                      min="1"
-                      max="31"
-                      value={event.date}
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value, 10);
-                        if (value >= 1 && value <= 31) {
-                          const updatedEvent = { ...event, date: value };
-                          updateEvent(index, updatedEvent);
-                        }
-                      }}
-                    />
-                    <hr />
-                    <label className="subtitle">
-                      {variables.getMessage(`${GREETING_SECTION}.month`)}:
-                    </label>
-                    <input
-                      id="month"
-                      type="number"
-                      min="1"
-                      max="12"
-                      value={event.month}
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value, 10);
-                        if (value >= 1 && value <= 12) {
-                          const updatedEvent = { ...event, month: value };
-                          updateEvent(index, updatedEvent);
-                        }
-                      }}
-                    />
-                  </div>
+                  <DatePicker
+                    value={new Date(2000, event.month - 1, event.date)}
+                    hideYear={true}
+                    onChange={(newDate) => {
+                      const updatedEvent = {
+                        ...event,
+                        month: newDate.getMonth() + 1,
+                        date: newDate.getDate(),
+                      };
+                      updateEvent(index, updatedEvent);
+                    }}
+                  />
                   <Button
                     type="settings"
                     onClick={() => removeEvent(index)}
