@@ -19,16 +19,19 @@
 
 .radio-group {
   width: 100%;
-  margin-top: 10px;
 
-  .radio-title {
-    font-weight: bold;
-    font-size: 1.17rem;
-    margin-bottom: 12px;
-    display: block;
+  .radio-header {
+    margin-bottom: 18px;
+  }
+
+  .radio-header-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 
     @include themed {
-      color: t($color);
+      color: t($subColor);
     }
   }
 

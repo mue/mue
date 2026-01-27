@@ -54,9 +54,9 @@ const Radio = memo((props) => {
   return (
     <div className="radio-group">
       {props.title && (
-        <legend className={props.smallTitle ? 'radio-title-small' : 'radio-title'}>
-          {props.title}
-        </legend>
+        <div className="radio-header">
+          <label className="radio-header-label">{props.title}</label>
+        </div>
       )}
       <div className="radio-options" role="radiogroup" aria-label={props.name}>
         {props.options.map((option) => (
