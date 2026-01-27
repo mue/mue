@@ -31,14 +31,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     }
     return type;
   });
-
-  // Migration: Force authorDetails on for users upgrading from older versions
-  useState(() => {
-    if (localStorage.getItem('authorDetails') === null) {
-      localStorage.setItem('authorDetails', 'true');
-    }
-  });
-
   const [customQuote, setCustomQuote] = useState(getCustom());
 
   const handleCustomQuote = (e, text, index, type) => {
