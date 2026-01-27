@@ -521,7 +521,6 @@ const CustomSettings = memo(() => {
   if (isLoading) {
     return (
       <div className="photosEmpty">
-        ={' '}
         <div className="loaderHolder">
           <div id="loader"></div>
           <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
