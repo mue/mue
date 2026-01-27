@@ -9,7 +9,10 @@ import './Slider.scss';
 
 const SliderComponent = memo((props) => {
   const [value, setValue] = useState(localStorage.getItem(props.name) || props.default);
+  const [hoverValue, setHoverValue] = useState(null);
+  const [hoverPosition, setHoverPosition] = useState(0);
   const animationRef = useRef(null);
+  const sliderRef = useRef(null);
 
   const handleChange = useCallback(
     (e) => {
@@ -57,7 +60,8 @@ const SliderComponent = memo((props) => {
       const easeOutCubic = 1 - Math.pow(1 - progress, 3);
 
       const currentValue = startValue + (endValue - startValue) * easeOutCubic;
-      const roundedValue = Math.round(currentValue / (Number(props.step) || 1)) * (Number(props.step) || 1);
+      const roundedValue =
+        Math.round(currentValue / (Number(props.step) || 1)) * (Number(props.step) || 1);
 
       localStorage.setItem(props.name, roundedValue);
       setValue(roundedValue);
@@ -76,6 +80,30 @@ const SliderComponent = memo((props) => {
     toast(variables.getMessage('toasts.reset'));
   }, [value, props]);
 
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (!sliderRef.current || props.disabled) return;
+
+      const rect = sliderRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+      const range = Number(props.max) - Number(props.min);
+      const rawValue = (percentage / 100) * range + Number(props.min);
+      const step = Number(props.step) || 1;
+      const snappedValue = Math.round(rawValue / step) * step;
+      const clampedValue = Math.max(Number(props.min), Math.min(Number(props.max), snappedValue));
+
+      setHoverPosition(percentage);
+      setHoverValue(clampedValue);
+    },
+    [props],
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    setHoverValue(null);
+  }, []);
+
   const percentage =
     ((Number(value) - Number(props.min)) / (Number(props.max) - Number(props.min))) * 100;
 
@@ -88,8 +116,9 @@ const SliderComponent = memo((props) => {
           {variables.getMessage('modals.main.settings.buttons.reset')}
         </span>
       </div>
-      <div className="slider-wrapper">
+      <div className="slider-wrapper" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
         <input
+          ref={sliderRef}
           type="range"
           className="slider-input"
           value={Number(value)}
@@ -104,6 +133,14 @@ const SliderComponent = memo((props) => {
           aria-valuenow={Number(value)}
           disabled={props.disabled || false}
         />
+        {hoverValue !== null && !props.disabled && (
+          <>
+            <div className="slider-hover-indicator" style={{ left: `${hoverPosition}%` }} />
+            <div className="slider-hover-tooltip" style={{ left: `${hoverPosition}%` }}>
+              {hoverValue}
+            </div>
+          </>
+        )}
         {props.marks && props.marks.length > 0 && (
           <div className="slider-marks">
             {props.marks.map((mark) => (

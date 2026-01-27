@@ -29,6 +29,7 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transition: all 0.2s ease;
 
     @include themed {
       color: t($link);
@@ -36,10 +37,16 @@
 
     &:hover {
       opacity: 0.8;
+      transform: scale(1.05);
     }
 
     svg {
       font-size: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover svg {
+      transform: rotate(180deg);
     }
   }
 
@@ -56,7 +63,7 @@
     border-radius: 3px;
     outline: none;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.2s ease;
 
     @include themed {
       background: linear-gradient(
@@ -66,6 +73,11 @@
         t($modal-sidebarActive) var(--slider-percentage),
         t($modal-sidebarActive) 100%
       );
+    }
+
+    &:hover:not(:disabled) {
+      height: 8px;
+      filter: brightness(1.1);
     }
 
     &::-webkit-slider-thumb {
@@ -114,7 +126,9 @@
 
       &::-webkit-slider-thumb {
         @include themed {
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 0 3px t($link);
+          box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.2),
+            0 0 0 3px t($link);
         }
 
         transform: scale(1.15);
@@ -122,7 +136,9 @@
 
       &::-moz-range-thumb {
         @include themed {
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 0 3px t($link);
+          box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.2),
+            0 0 0 3px t($link);
         }
 
         transform: scale(1.15);
@@ -168,6 +184,55 @@
 
       @include themed {
         color: t($subColor);
+      }
+    }
+  }
+
+  .slider-hover-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+
+    @include themed {
+      background: t($link);
+      box-shadow: 0 0 8px rgba(t($link), 0.5);
+    }
+  }
+
+  .slider-hover-tooltip {
+    position: absolute;
+    top: -35px;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 2;
+
+    @include themed {
+      background: t($link);
+      color: t($background);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+
+      @include themed {
+        border-top-color: t($link);
       }
     }
   }
