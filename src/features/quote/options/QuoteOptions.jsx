@@ -31,6 +31,14 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     }
     return type;
   });
+
+  // Migration: Force authorDetails on for users upgrading from older versions
+  useState(() => {
+    if (localStorage.getItem('authorDetails') === null) {
+      localStorage.setItem('authorDetails', 'true');
+    }
+  });
+
   const [customQuote, setCustomQuote] = useState(getCustom());
 
   const handleCustomQuote = (e, text, index, type) => {
@@ -167,18 +175,14 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
                 <div className="messageText">
                   <Textarea
                     value={customQuote[index].quote}
-                    placeholder={variables.getMessage(
-                      'modals.main.settings.sections.quote.title',
-                    )}
+                    placeholder={variables.getMessage('modals.main.settings.sections.quote.title')}
                     onChange={(e) => handleCustomQuote(e, true, index, 'quote')}
                     style={{ fontSize: '22px', fontWeight: 'bold' }}
                     minRows={1}
                   />
                   <Textarea
                     value={customQuote[index].author}
-                    placeholder={variables.getMessage(
-                      'modals.main.settings.sections.quote.author',
-                    )}
+                    placeholder={variables.getMessage('modals.main.settings.sections.quote.author')}
                     className="subtitle"
                     onChange={(e) => handleCustomQuote(e, true, index, 'author')}
                     minRows={1}
@@ -190,9 +194,7 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
                       type="settings"
                       onClick={() => modifyCustomQuote('remove', index)}
                       icon={<MdCancel />}
-                      label={variables.getMessage(
-                        'modals.main.marketplace.product.buttons.remove',
-                      )}
+                      label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
                     />
                   </div>
                 </div>
