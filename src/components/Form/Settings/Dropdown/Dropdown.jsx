@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import { memo, useState, useCallback, useRef, useEffect } from 'react';
+import { memo, useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { MdExpandMore, MdCheck, MdRefresh, MdClose } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -47,6 +47,12 @@ const Dropdown = memo((props) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [closeDropdown]);
 
+  // Memoize items count to avoid unnecessary recalculations
+  const itemsCount = useMemo(() =>
+    props.items.filter((i) => i !== null).length,
+    [props.items]
+  );
+
   const calculatePosition = useCallback(() => {
     if (controlRef.current) {
       const rect = controlRef.current.getBoundingClientRect();
@@ -54,7 +60,7 @@ const Dropdown = memo((props) => {
       const viewportHeight = window.innerHeight;
 
       // Estimate menu height (will be more accurate after first render)
-      const estimatedMenuHeight = Math.min(props.items.filter((i) => i !== null).length * 44, 250);
+      const estimatedMenuHeight = Math.min(itemsCount * 44, 250);
 
       // Calculate if dropdown would overflow bottom of viewport
       const spaceBelow = viewportHeight - rect.bottom - gap;
@@ -72,13 +78,57 @@ const Dropdown = memo((props) => {
       };
     }
     return { top: 0, left: 0, width: 0, maxHeight: 250, flipped: false };
-  }, [props.items]);
+  }, [itemsCount]);
 
   const openDropdown = useCallback(() => {
     const position = calculatePosition();
     setMenuPosition(position);
     setIsOpen(true);
   }, [calculatePosition]);
+
+  // Update dropdown position on scroll or resize
+  useEffect(() => {
+    if (!isOpen) return;
+
+    let rafId = null;
+
+    const updatePosition = () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+
+      rafId = window.requestAnimationFrame(() => {
+        const newPosition = calculatePosition();
+        setMenuPosition(newPosition);
+      });
+    };
+
+    // Listen to window scroll and resize
+    window.addEventListener('scroll', updatePosition, { passive: true });
+    window.addEventListener('resize', updatePosition, { passive: true });
+
+    // Find and listen to scrollable ancestors
+    let element = controlRef.current?.parentElement;
+    const scrollableElements = [];
+    while (element) {
+      const hasScrollableContent = element.scrollHeight > element.clientHeight;
+      const overflowYStyle = window.getComputedStyle(element).overflowY;
+      const isOverflowYScrollable = overflowYStyle !== 'visible' && overflowYStyle !== 'hidden';
+
+      if (hasScrollableContent && isOverflowYScrollable) {
+        scrollableElements.push(element);
+        element.addEventListener('scroll', updatePosition, { passive: true });
+      }
+      element = element.parentElement;
+    }
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', updatePosition);
+      window.removeEventListener('resize', updatePosition);
+      scrollableElements.forEach(el =>
+        el.removeEventListener('scroll', updatePosition)
+      );
+    };
+  }, [isOpen, calculatePosition]);
 
   useEffect(() => {
     if (isOpen && props.searchable && searchInputRef.current) {
