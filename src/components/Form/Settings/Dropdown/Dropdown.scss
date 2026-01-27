@@ -107,6 +107,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
     height: 56px;
     padding: 0 16px;
     cursor: pointer;
@@ -132,6 +133,10 @@
         box-shadow: 0 0 0 3px t($link);
       }
     }
+
+    &.searching {
+      cursor: text;
+    }
   }
 
   .dropdown-value {
@@ -145,14 +150,61 @@
   .dropdown-arrow {
     flex-shrink: 0;
     font-size: 24px;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    margin: -4px;
 
     @include themed {
       color: t($subColor);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+        color: t($color);
+      }
     }
 
     &.open {
       transform: rotate(180deg);
+    }
+  }
+
+  .dropdown-search-input-control {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    height: 100%;
+    font-size: 14px;
+    padding: 0;
+    min-width: 0;
+
+    @include themed {
+      color: t($color);
+
+      &::placeholder {
+        color: t($color);
+        opacity: 1;
+      }
+    }
+  }
+
+  .dropdown-clear {
+    flex-shrink: 0;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 4px;
+    border-radius: 50%;
+
+    @include themed {
+      color: t($subColor);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+        color: t($color);
+      }
     }
   }
 }
@@ -160,6 +212,7 @@
 .dropdown-menu {
   max-height: 250px;
   overflow-y: auto;
+  overflow-x: hidden;
   z-index: 9999;
   @include animation(dropdownSlideIn 0.2s ease-out);
   will-change: transform, opacity;

@@ -139,6 +139,7 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
               <Dropdown
                 name="timezone"
                 category="timezone"
+                searchable={true}
                 items={[
                   {
                     value: 'auto',

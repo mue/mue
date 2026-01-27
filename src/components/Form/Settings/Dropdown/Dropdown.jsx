@@ -1,7 +1,7 @@
 import variables from 'config/variables';
 import { memo, useState, useCallback, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { MdExpandMore, MdCheck, MdRefresh } from 'react-icons/md';
+import { MdExpandMore, MdCheck, MdRefresh, MdClose } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 import EventBus from 'utils/eventbus';
@@ -14,10 +14,12 @@ const Dropdown = memo((props) => {
   const [isClosing, setIsClosing] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, width: 0 });
+  const [searchQuery, setSearchQuery] = useState('');
   const containerRef = useRef(null);
   const controlRef = useRef(null);
   const menuRef = useRef(null);
   const optionsRef = useRef([]);
+  const searchInputRef = useRef(null);
 
   const closeDropdown = useCallback(() => {
     setIsClosing(true);
@@ -25,6 +27,7 @@ const Dropdown = memo((props) => {
       setIsOpen(false);
       setIsClosing(false);
       setFocusedIndex(-1);
+      setSearchQuery('');
     }, 200); // Match animation duration
   }, []);
 
@@ -76,6 +79,37 @@ const Dropdown = memo((props) => {
     setMenuPosition(position);
     setIsOpen(true);
   }, [calculatePosition]);
+
+  useEffect(() => {
+    if (isOpen && props.searchable && searchInputRef.current) {
+      // Focus the search input when dropdown opens
+      setTimeout(() => searchInputRef.current?.focus(), 0);
+    }
+  }, [isOpen, props.searchable]);
+
+  const handleSearchChange = useCallback((e) => {
+    setSearchQuery(e.target.value);
+    if (!isOpen) {
+      openDropdown();
+    }
+  }, [isOpen, openDropdown]);
+
+  const handleInputClick = useCallback((e) => {
+    e.stopPropagation();
+    if (!isOpen) {
+      openDropdown();
+    }
+  }, [isOpen, openDropdown]);
+
+  const handleInputFocus = useCallback(() => {
+    // When focusing, if not default value, pre-fill with current value for editing
+    const defaultValue = props.default || props.items[0]?.value;
+    if (value !== defaultValue && !searchQuery) {
+      const currentItem = props.items.find((item) => item?.value === value);
+      const currentText = currentItem?.text || value;
+      setSearchQuery(currentText);
+    }
+  }, [value, props.default, props.items, searchQuery]);
 
   const onChange = useCallback(
     (newValue) => {
@@ -163,10 +197,30 @@ const Dropdown = memo((props) => {
     toast(variables.getMessage('toasts.reset'));
   }, [onChange, props.default, props.items]);
 
+  const clearSearch = useCallback((e) => {
+    e.stopPropagation();
+    setSearchQuery('');
+    if (props.searchable) {
+      // Reset to default value (first item, usually "Automatic")
+      const defaultValue = props.default || props.items[0]?.value;
+      onChange(defaultValue);
+    }
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [props, onChange]);
+
   const id = 'dropdown' + props.name;
   const label = props.label || '';
   const selectedItem = props.items.find((item) => item?.value === value);
   const defaultValue = props.default || props.items[0]?.value;
+
+  // Filter items based on search query
+  const filteredItems = props.searchable && searchQuery
+    ? props.items.filter((item) =>
+        item !== null && item.text.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    : props.items;
 
   return (
     <div className={`dropdown ${id} ${props.disabled ? 'disabled' : ''}`} ref={containerRef}>
@@ -181,7 +235,7 @@ const Dropdown = memo((props) => {
       )}
       <div
         ref={controlRef}
-        className="dropdown-control"
+        className={`dropdown-control ${props.searchable && (isOpen || searchQuery) ? 'searching' : ''}`}
         onClick={() => {
           if (props.disabled) return;
           if (isOpen) {
@@ -197,7 +251,37 @@ const Dropdown = memo((props) => {
         aria-label={label || props.name}
         tabIndex={props.disabled ? -1 : 0}
       >
-        <span className="dropdown-value">{selectedItem?.text || value}</span>
+        {props.searchable ? (
+          <>
+            <input
+              ref={searchInputRef}
+              type="text"
+              className="dropdown-search-input-control"
+              placeholder={selectedItem?.text || value}
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onClick={handleInputClick}
+              onFocus={handleInputFocus}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') {
+                  if (searchQuery) {
+                    setSearchQuery('');
+                  } else {
+                    closeDropdown();
+                  }
+                }
+                if (e.key === ' ') {
+                  e.stopPropagation();
+                }
+              }}
+            />
+            {(searchQuery || value !== (props.default || props.items[0]?.value)) && (
+              <MdClose className="dropdown-clear" onClick={clearSearch} />
+            )}
+          </>
+        ) : (
+          <span className="dropdown-value">{selectedItem?.text || value}</span>
+        )}
         <MdExpandMore className={`dropdown-arrow ${isOpen ? 'open' : ''}`} />
       </div>
       {(isOpen || isClosing) &&
@@ -215,7 +299,7 @@ const Dropdown = memo((props) => {
               transform: menuPosition.flipped ? 'translateY(-100%)' : 'none',
             }}
           >
-            {props.items.map((item, index) =>
+            {filteredItems.map((item, index) =>
               item !== null ? (
                 <div
                   key={id + item.value}
