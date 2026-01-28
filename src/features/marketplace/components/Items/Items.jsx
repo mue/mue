@@ -84,14 +84,14 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
       {isSideloaded && (
         <Tooltip
           title={variables.getMessage('modals.main.addons.sideload.title')}
-          style={{ position: 'absolute', top: '12px', right: '48px', zIndex: 2 }}
+          style={{ position: 'absolute', top: '12px', right: isAdded ? '48px' : '12px', zIndex: 2 }}
         >
           <div className="item-sideload-badge">
             <MdOutlineUploadFile />
           </div>
         </Tooltip>
       )}
-      {isInstalled && item.colour && !isSideloaded && (
+      {isInstalled && item.colour && !isSideloaded && !isAdded && (
         <div className="item-installed-badge">
           <MdCheckCircle />
         </div>
@@ -148,6 +148,7 @@ function Items({
   onSortChange,
   isAdded = false,
   onUninstall,
+  viewType = 'grid',
 }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
@@ -200,7 +201,7 @@ function Items({
           />
         </div>
       )}
-      <div className='items'>
+      <div className={`items ${viewType === 'list' ? 'items-list' : 'items-grid'}`}>
         {items
           ?.filter((item) => filterItems(item, filter, filterOptions ? selectedCategory : 'all'))
           .map((item, index) => (

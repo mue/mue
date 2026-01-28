@@ -40,6 +40,7 @@ const tryInstallDefaultPack = async () => {
     );
     const { data } = await response.json();
     install(data.type, data, false, true);
+    window.dispatchEvent(new Event('installedAddonsChanged'));
     return true;
   } catch (e) {
     console.error('Failed to install default pack:', e);

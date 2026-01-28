@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 import { memo, useState, useEffect, useCallback } from 'react';
-import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension, MdExplore } from 'react-icons/md';
+import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension, MdExplore, MdViewModule, MdViewList } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
@@ -17,6 +17,7 @@ const Added = memo(() => {
   const [installed, setInstalled] = useState(JSON.parse(localStorage.getItem('installed')));
   const [showFailed, setShowFailed] = useState(false);
   const [failedReason, setFailedReason] = useState('');
+  const [viewType, setViewType] = useState(localStorage.getItem('addonsViewType') || 'grid');
 
   const installAddon = useCallback((input) => {
     let failedReasonText = '';
@@ -55,6 +56,7 @@ const Added = memo(() => {
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
     setInstalled(JSON.parse(localStorage.getItem('installed')));
+    window.dispatchEvent(new Event('installedAddonsChanged'));
   }, []);
 
   const getSideloadButton = useCallback(() => {
@@ -149,12 +151,14 @@ const Added = memo(() => {
     localStorage.setItem('installed', JSON.stringify([]));
     toast(variables.getMessage('toasts.uninstalled_all'));
     setInstalled([]);
+    window.dispatchEvent(new Event('installedAddonsChanged'));
   }, [installed]);
 
   const handleUninstall = useCallback((type, name) => {
     uninstall(type, name);
     toast(variables.getMessage('toasts.uninstalled'));
     setInstalled(JSON.parse(localStorage.getItem('installed')));
+    window.dispatchEvent(new Event('installedAddonsChanged'));
   }, []);
 
   useEffect(() => {
@@ -190,6 +194,11 @@ const Added = memo(() => {
     // Trigger a popstate event to update the UI
     const event = new window.Event('popstate');
     window.dispatchEvent(event);
+  }, []);
+
+  const toggleViewType = useCallback((type) => {
+    setViewType(type);
+    localStorage.setItem('addonsViewType', type);
   }, []);
 
   if (installed.length === 0) {
@@ -240,16 +249,34 @@ const Added = memo(() => {
           />
         </CustomActions>
       </Header>
-      <Dropdown
-        label={variables.getMessage('modals.main.addons.sort.title')}
-        name="sortAddons"
-        onChange={(value) => sortAddons(value)}
-        items={[
-          { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
-          { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
-          { value: 'recently-updated', text: 'Recently Updated' },
-        ]}
-      />
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
+        <Dropdown
+          label={variables.getMessage('modals.main.addons.sort.title')}
+          name="sortAddons"
+          onChange={(value) => sortAddons(value)}
+          items={[
+            { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
+            { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
+            { value: 'recently-updated', text: 'Recently Updated' },
+          ]}
+        />
+        <div className="view-toggle-buttons">
+          <button
+            className={`view-toggle-btn ${viewType === 'grid' ? 'active' : ''}`}
+            onClick={() => toggleViewType('grid')}
+            aria-label="Grid view"
+          >
+            <MdViewModule />
+          </button>
+          <button
+            className={`view-toggle-btn ${viewType === 'list' ? 'active' : ''}`}
+            onClick={() => toggleViewType('list')}
+            aria-label="List view"
+          >
+            <MdViewList />
+          </button>
+        </div>
+      </div>
       <Items
         items={installed}
         isAdded={true}
@@ -257,6 +284,7 @@ const Added = memo(() => {
         toggleFunction={(input) => toggle('item', input)}
         showCreateYourOwn={false}
         onUninstall={handleUninstall}
+        viewType={viewType}
       />
     </>
   );

@@ -14,6 +14,7 @@ export const useMarketplaceInstall = () => {
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace-item', `${data.display_name || data.name} installed`);
     variables.stats.postEvent('marketplace', 'Install');
+    window.dispatchEvent(new Event('installedAddonsChanged'));
   };
 
   const uninstallItem = (type, name) => {
@@ -21,6 +22,7 @@ export const useMarketplaceInstall = () => {
     toast(variables.getMessage('toasts.uninstalled'));
     variables.stats.postEvent('marketplace-item', `${name} uninstalled`);
     variables.stats.postEvent('marketplace', 'Uninstall');
+    window.dispatchEvent(new Event('installedAddonsChanged'));
   };
 
   const installCollection = async (items) => {
@@ -51,6 +53,7 @@ export const useMarketplaceInstall = () => {
       }
 
       toast(variables.getMessage('toasts.installed'));
+      window.dispatchEvent(new Event('installedAddonsChanged'));
       window.location.reload();
     } catch (error) {
       if (!controllerRef.current.signal.aborted) {

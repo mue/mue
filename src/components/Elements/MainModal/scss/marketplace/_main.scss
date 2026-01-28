@@ -46,6 +46,10 @@
       border-radius: 12px;
       transition: 0.5s;
 
+      @include themed {
+        background-color: t($modal-sidebarActive);
+      }
+
       &.item-icon-text {
         display: flex;
         align-items: center;
@@ -436,6 +440,103 @@ p.author {
     &:focus-visible {
       outline: 2px solid rgba(255, 255, 255, 0.5);
       outline-offset: 2px;
+    }
+  }
+}
+
+.view-toggle-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  .view-toggle-btn {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-user-select: none;
+    user-select: none;
+
+    @include themed {
+      background-color: t($modal-sidebarActive);
+      color: t($subColor);
+    }
+
+    svg {
+      font-size: 20px;
+    }
+
+    &:hover {
+      @include themed {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: t($color);
+      }
+    }
+
+    &.active {
+      @include themed {
+        background-color: #fff;
+        color: #000;
+      }
+
+      &:hover {
+        @include themed {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 2px;
+    }
+  }
+}
+
+.items-list {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: unset !important;
+  gap: 12px !important;
+
+  .item {
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 1rem 1.5rem !important;
+    gap: 20px !important;
+
+    &:hover {
+      transform: translate3d(5px, 0, 0) !important;
+    }
+
+    .item-icon {
+      flex-shrink: 0;
+    }
+
+    .card-details {
+      flex: 1;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between;
+      gap: 15px;
+
+      .card-title {
+        font-size: 16px;
+      }
+
+      .card-subtitle {
+        font-size: 13px;
+      }
+
+      .card-chips {
+        margin-top: 0 !important;
+        margin-left: auto;
+      }
     }
   }
 }

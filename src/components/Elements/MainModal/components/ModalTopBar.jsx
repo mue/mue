@@ -1,7 +1,8 @@
 import { useT } from 'contexts/TranslationContext';
+import { useState, useEffect } from 'react';
 import { MdClose, MdChevronRight, MdArrowBack, MdArrowForward } from 'react-icons/md';
 import { Tooltip, Button } from 'components/Elements';
-import { NAVBAR_BUTTONS } from '../constants/tabConfig';
+import { NAVBAR_BUTTONS, TAB_TYPES } from '../constants/tabConfig';
 import mueAboutIcon from 'assets/icons/mue_about.png';
 
 // Map marketplace types to translation keys
@@ -32,6 +33,38 @@ function ModalTopBar({
   canGoForward,
 }) {
   const t = useT();
+
+  // Track installed addons count for badge
+  const [installedCount, setInstalledCount] = useState(() => {
+    try {
+      const installed = JSON.parse(localStorage.getItem('installed')) || [];
+      return installed.length;
+    } catch (e) {
+      return 0;
+    }
+  });
+
+  useEffect(() => {
+    const updateCount = () => {
+      try {
+        const installed = JSON.parse(localStorage.getItem('installed')) || [];
+        setInstalledCount(installed.length);
+      } catch (e) {
+        setInstalledCount(0);
+      }
+    };
+
+    // Listen for storage events (changes from other tabs)
+    window.addEventListener('storage', updateCount);
+
+    // Listen for custom event for same-tab updates
+    window.addEventListener('installedAddonsChanged', updateCount);
+
+    return () => {
+      window.removeEventListener('storage', updateCount);
+      window.removeEventListener('installedAddonsChanged', updateCount);
+    };
+  }, []);
 
   // Get the current tab label
   const currentTabButton = NAVBAR_BUTTONS.find(({ tab }) => tab === currentTab);
@@ -204,16 +237,22 @@ function ModalTopBar({
       </div>
       <div className="topBarRight">
         <div className="topBarNavigation">
-          {NAVBAR_BUTTONS.map(({ tab, icon: Icon, messageKey }) => (
-            <Button
-              key={tab}
-              type="navigation"
-              onClick={() => onTabChange(tab)}
-              active={currentTab === tab}
-              icon={<Icon />}
-              label={t(messageKey)}
-            />
-          ))}
+          {NAVBAR_BUTTONS.map(({ tab, icon: Icon, messageKey }) => {
+            // Show badge for Library tab when there are installed addons
+            const badgeValue = tab === TAB_TYPES.LIBRARY && installedCount > 0 ? installedCount : undefined;
+
+            return (
+              <Button
+                key={tab}
+                type="navigation"
+                onClick={() => onTabChange(tab)}
+                active={currentTab === tab}
+                icon={<Icon />}
+                label={t(messageKey)}
+                badge={badgeValue}
+              />
+            );
+          })}
         </div>
         <Tooltip title={t('modals.welcome.buttons.close')} key="closeTooltip">
           <span className="closeModal" onClick={onClose}>
