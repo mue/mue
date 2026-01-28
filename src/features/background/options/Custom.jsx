@@ -10,9 +10,10 @@ import {
   MdFolder,
   MdChevronLeft,
   MdChevronRight,
-  MdDelete,
-  MdInfo,
+  MdImage,
 } from 'react-icons/md';
+import { BiSolidFilm } from 'react-icons/bi';
+
 import EventBus from 'utils/eventbus';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from '../api/videoCheck';
@@ -802,9 +803,7 @@ const CustomSettings = memo(() => {
                                 justifyContent: 'center',
                               }}
                             >
-                              <MdPersonalVideo
-                                style={{ fontSize: '20px', color: 'white' }}
-                              />
+                              <BiSolidFilm style={{ fontSize: '20px', color: 'white' }} />
                             </div>
                           </>
                         ) : (
@@ -813,12 +812,31 @@ const CustomSettings = memo(() => {
                           </div>
                         )
                       ) : (
-                        <img
-                          alt={bg.name || 'Custom background'}
-                          src={bg.url}
-                          loading="lazy"
-                          style={{ position: 'relative', zIndex: 1 }}
-                        />
+                        <>
+                          <img
+                            alt={bg.name || 'Custom background'}
+                            src={bg.url}
+                            loading="lazy"
+                            style={{ position: 'relative', zIndex: 1 }}
+                          />
+                          <div
+                            className="photo-overlay-icon"
+                            style={{
+                              position: 'absolute',
+                              top: '8px',
+                              right: '8px',
+                              zIndex: 2,
+                              background: 'rgba(0, 0, 0, 0.6)',
+                              borderRadius: '4px',
+                              padding: '4px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <MdImage style={{ fontSize: '20px', color: 'white' }} />
+                          </div>
+                        </>
                       )}
                       <div className="image-nav-buttons">
                         <button
