@@ -13,7 +13,21 @@ import { getWeather } from './api/getWeather.js';
 import './weather.scss';
 
 const WeatherWidget = memo(() => {
-  const [location, setLocation] = useState(localStorage.getItem('location') || 'London');
+  const [location, setLocation] = useState(() => {
+    const stored = localStorage.getItem('location');
+    if (!stored) return 'London';
+
+    // Try parsing as new JSON format
+    try {
+      const parsed = JSON.parse(stored);
+      if (parsed && typeof parsed === 'object') {
+        return parsed;
+      }
+    } catch {
+      // Legacy string format
+    }
+    return stored;
+  });
   const [done, setDone] = useState(false);
   const [weatherData, setWeatherData] = useState({});
 
@@ -57,10 +71,14 @@ const WeatherWidget = memo(() => {
     return <WeatherSkeleton weatherType={weatherType} />;
   }
 
+  // Get display name from location (handles both object and string formats)
+  const locationDisplay =
+    typeof location === 'object' ? location.displayName || location.name : location;
+
   if (!weatherData.weather) {
     return (
       <div className="weather">
-        <span className="loc">{location}</span>
+        <span className="loc">{locationDisplay}</span>
       </div>
     );
   }
@@ -87,7 +105,7 @@ const WeatherWidget = memo(() => {
                 amount: `${formatNumber(weatherData.weather.feels_like)}${weatherData.temp_text}`,
               })}
             </span>
-            <span className="loc">{location}</span>
+            <span className="loc">{locationDisplay}</span>
           </div>
         )}
       </div>

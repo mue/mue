@@ -2,6 +2,7 @@ export * from './Checkbox';
 export * from './ChipSelect';
 export * from './Dropdown';
 export * from './FileUpload';
+export * from './LocationSearch';
 export * from './Radio';
 export * from './SearchInput';
 export * from './Slider';

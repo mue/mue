@@ -1,59 +1,19 @@
-import { useCallback } from 'react';
-import { MdAutoAwesome } from 'react-icons/md';
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { useLocalStorageState } from 'utils/useLocalStorageState';
-import { Radio, Dropdown, Checkbox } from 'components/Form/Settings';
+import { Radio, Dropdown, Checkbox, LocationSearch } from 'components/Form/Settings';
 import variables from 'config/variables';
 
 const useWeatherSettings = () => {
-  const [location, setLocation] = useLocalStorageState('location', '');
   const [windSpeed, setWindSpeed] = useLocalStorageState('windspeed', 'true');
 
-  const showReminder = useCallback(() => {
-    document.querySelector('.reminder-info').style.display = 'flex';
-    localStorage.setItem('showReminder', true);
-  }, []);
-
-  const changeLocation = (e) => {
-    localStorage.removeItem('currentWeather');
-    setLocation(e.target.value);
-    showReminder();
-  };
-
-  const getAutoLocation = useCallback(() => {
-    setLocation(variables.getMessage('modals.main.loading'));
-
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const data = await (
-          await fetch(
-            `${variables.constants.API_URL}/gps?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`,
-          )
-        ).json();
-        setLocation(data[0].name);
-        showReminder();
-      },
-      (error) => {
-        console.error(error);
-      },
-      {
-        enableHighAccuracy: true,
-      },
-    );
-  }, [setLocation, showReminder]);
-
   return {
-    location,
     windSpeed: windSpeed !== 'true',
     setWindSpeed,
-    changeLocation,
-    getAutoLocation,
   };
 };
 
 const WeatherOptions = () => {
-  const { location, windSpeed, setWindSpeed, changeLocation, getAutoLocation } =
-    useWeatherSettings();
+  const { windSpeed, setWindSpeed } = useWeatherSettings();
   const weatherType = localStorage.getItem('weatherType');
   const WEATHER_SECTION = 'modals.main.settings.sections.weather';
 
@@ -81,26 +41,12 @@ const WeatherOptions = () => {
     <Row>
       <Content title={variables.getMessage(`${WEATHER_SECTION}.location`)} />
       <Action>
-        <div className="text-field-container">
-          <div className="text-field">
-            <div className="text-field-header">
-              <label className="text-field-label">
-                {variables.getMessage(`${WEATHER_SECTION}.location`)}
-              </label>
-              <span className="text-field-reset" onClick={getAutoLocation}>
-                <MdAutoAwesome />
-                {variables.getMessage(`${WEATHER_SECTION}.auto`)}
-              </span>
-            </div>
-            <input
-              type="text"
-              className="text-field-input"
-              value={location}
-              onChange={changeLocation}
-              placeholder="London"
-            />
-          </div>
-        </div>
+        <LocationSearch
+          label={variables.getMessage(`${WEATHER_SECTION}.location`)}
+          name="location"
+          category="weather"
+          placeholder="London"
+        />
       </Action>
     </Row>
   );

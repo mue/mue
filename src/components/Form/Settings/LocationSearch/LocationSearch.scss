@@ -1,0 +1,351 @@
+@use 'scss/variables' as *;
+@use 'scss/mixins' as *;
+
+@include keyframes(locationSearchSlideIn) {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(locationSearchSlideOut) {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@include keyframes(locationSearchSlideInUp) {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+}
+
+@include keyframes(locationSearchSlideOutUp) {
+  0% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100%) translateY(10px);
+  }
+}
+
+@include keyframes(locationSearchSpin) {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.location-search {
+  position: relative;
+  width: 300px;
+  gap: 8px;
+  display: flex;
+  flex-flow: column;
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .location-search-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .location-search-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .location-search-auto {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($link);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      font-size: 14px;
+    }
+  }
+
+  .location-search-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    height: 56px;
+    padding: 0 16px;
+    cursor: text;
+    transition: all 0.2s ease;
+    outline: none;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      color: t($color);
+
+      &:hover {
+        border-color: t($color);
+      }
+    }
+
+    &:focus-within {
+      @include themed {
+        border-color: t($link);
+        box-shadow: 0 0 0 3px rgba(t($link), 0.2);
+      }
+    }
+  }
+
+  .location-search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    height: 100%;
+    font-size: 14px;
+    padding: 0;
+    min-width: 0;
+
+    @include themed {
+      color: t($color);
+
+      &::placeholder {
+        color: t($color);
+        opacity: 1;
+      }
+    }
+  }
+
+  .location-search-clear {
+    flex-shrink: 0;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 4px;
+    border-radius: 50%;
+
+    @include themed {
+      color: t($subColor);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+        color: t($color);
+      }
+    }
+  }
+
+  .location-search-loading {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    @include animation(locationSearchSpin 0.8s linear infinite);
+
+    @include themed {
+      border-top-color: t($link);
+      border-right-color: t($link);
+    }
+  }
+
+  .location-search-arrow {
+    flex-shrink: 0;
+    font-size: 24px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    margin: -4px;
+
+    @include themed {
+      color: t($subColor);
+
+      &:hover {
+        background: t($modal-sidebarActive);
+        color: t($color);
+      }
+    }
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.location-search-menu {
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 9999;
+  @include animation(locationSearchSlideIn 0.2s ease-out);
+  will-change: transform, opacity;
+
+  @include themed {
+    background: t($modal-background);
+    border: 1px solid t($modal-sidebarActive);
+    border-radius: t($borderRadius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &.flipped {
+    @include animation(locationSearchSlideInUp 0.2s ease-out);
+
+    &.closing {
+      @include animation(locationSearchSlideOutUp 0.2s ease-out forwards);
+    }
+  }
+
+  &.closing:not(.flipped) {
+    @include animation(locationSearchSlideOut 0.2s ease-out forwards);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    @include themed {
+      background: t($modal-sidebar);
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @include themed {
+      background: t($modal-sidebarActive);
+      border-radius: 3px;
+    }
+
+    &:hover {
+      @include themed {
+        background: t($color);
+      }
+    }
+  }
+}
+
+.location-search-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+
+  @include themed {
+    color: t($color);
+
+    &:hover {
+      background: t($modal-sidebarActive);
+      padding-left: 20px;
+    }
+
+    &.focused {
+      background: t($modal-sidebarActive);
+      border-left: 2px solid t($link);
+    }
+  }
+
+  .location-search-option-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  .location-search-option-name {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .location-search-option-detail {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .location-search-option-check {
+    flex-shrink: 0;
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+
+    @include themed {
+      background: t($link);
+      color: white;
+    }
+  }
+
+  &:hover .location-search-option-check {
+    opacity: 0.5;
+  }
+}
+
+.location-search-empty {
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+
+  @include themed {
+    color: t($subColor);
+  }
+}

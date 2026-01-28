@@ -49,7 +49,19 @@ export const getWeather = async (location) => {
   }
 
   try {
-    const response = await fetch(variables.constants.API_URL + `/weather?city=${location}`);
+    // Build URL based on location type
+    let url;
+    if (typeof location === 'object' && location.lat && location.lon) {
+      // New format: use coordinates (preferred)
+      url = `${variables.constants.API_URL}/weather?lat=${location.lat}&lon=${location.lon}`;
+    } else {
+      // Legacy format: use city name string
+      const cityName =
+        typeof location === 'object' ? location.displayName || location.name : location;
+      url = `${variables.constants.API_URL}/weather?city=${encodeURIComponent(cityName)}`;
+    }
+
+    const response = await fetch(url);
 
     if (!response.ok) {
       console.error('Weather API response not ok:', response.status, response.statusText);
