@@ -145,6 +145,10 @@
   text-decoration: none;
   color: white;
   font-size: 0.8em;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
 
   &:hover {
     text-decoration: underline;
@@ -616,6 +620,10 @@ button.quicklinks {
   padding: 8px 12px;
   border-radius: 6px;
   transition: all 0.2s ease;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
 
   &:hover {
     text-decoration: underline;

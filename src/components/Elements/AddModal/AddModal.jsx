@@ -25,28 +25,33 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
         </Tooltip>
       </div>
       <div className="quicklinkModalTextbox">
-        <input
-          type="text"
-          className="text-field-input"
-          placeholder={variables.getMessage('widgets.quicklinks.name')}
-          value={name}
-          onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
-          style={{ gridColumn: 'span 2' }}
-        />
-        <input
-          type="text"
-          className="text-field-input"
-          placeholder={variables.getMessage('widgets.quicklinks.url')}
-          value={url}
-          onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
-        />
-        <input
-          type="text"
-          className="text-field-input"
-          placeholder={variables.getMessage('widgets.quicklinks.icon')}
-          value={icon}
-          onChange={(e) => setIcon(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
-        />
+        <div className="text-field" style={{ gridColumn: 'span 2' }}>
+          <input
+            type="text"
+            className="text-field-input"
+            placeholder={variables.getMessage('widgets.quicklinks.name')}
+            value={name}
+            onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
+          />
+        </div>
+        <div className="text-field">
+          <input
+            type="text"
+            className="text-field-input"
+            placeholder={variables.getMessage('widgets.quicklinks.url')}
+            value={url}
+            onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
+          />
+        </div>
+        <div className="text-field">
+          <input
+            type="text"
+            className="text-field-input"
+            placeholder={variables.getMessage('widgets.quicklinks.icon')}
+            value={icon}
+            onChange={(e) => setIcon(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
+          />
+        </div>
       </div>
       <div className="addFooter">
         <span className="dropdown-error">

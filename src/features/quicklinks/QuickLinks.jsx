@@ -32,7 +32,7 @@ const QuickLinks = memo(() => {
       link.style.fontSize = `${14 * Number(zoom / 100)}px`;
     }
 
-    if (localStorage.getItem('quickLinksStyle') !== 'text') {
+    if (localStorage.getItem('quickLinksStyle') !== 'text_only') {
       for (const img of element.getElementsByTagName('img')) {
         img.style.height = `${30 * Number(zoom / 100)}px`;
       }
@@ -80,7 +80,7 @@ const QuickLinks = memo(() => {
   const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
 
   const quickLink = (item, index) => {
-    if (localStorage.getItem('quickLinksStyle') === 'text') {
+    if (localStorage.getItem('quickLinksStyle') === 'text_only') {
       return (
         <a
           className="quicklinkstext"
