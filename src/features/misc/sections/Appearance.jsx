@@ -1,6 +1,7 @@
 import { memo, useState } from 'react';
 
 import variables from 'config/variables';
+import googleFonts from 'config/googleFonts.json';
 
 import { Checkbox, Dropdown, Radio, Slider, Text } from 'components/Form/Settings';
 import { Header, Section, Row, Content, Action } from 'components/Layout/Settings';
@@ -10,7 +11,6 @@ import { MdAccessibility } from 'react-icons/md';
 import values from 'utils/data/slider_values.json';
 
 function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName }) {
-
   const ThemeSelection = () => {
     return (
       <Row>
@@ -55,16 +55,15 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
           )}
         />
         <Action>
-          <Checkbox
-            name="fontGoogle"
-            text={variables.getMessage('modals.main.settings.sections.appearance.font.google')}
-            category="other"
-          />
-          <Text
-            title={variables.getMessage('modals.main.settings.sections.appearance.font.custom')}
+          <Dropdown
+            label={variables.getMessage('modals.main.settings.sections.appearance.font.custom')}
             name="font"
-            upperCaseFirst={true}
             category="other"
+            searchable={true}
+            items={googleFonts.map((font) => ({
+              value: font,
+              text: font,
+            }))}
           />
           {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
           <Dropdown
@@ -74,6 +73,10 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
             name="fontweight"
             category="other"
             items={[
+              {
+                value: '400',
+                text: variables.getMessage(fontWeight + '.normal'),
+              },
               {
                 value: '100',
                 text: variables.getMessage(fontWeight + '.thin'),
@@ -85,10 +88,6 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
               {
                 value: '300',
                 text: variables.getMessage(fontWeight + '.light'),
-              },
-              {
-                value: '400',
-                text: variables.getMessage(fontWeight + '.normal'),
               },
               {
                 value: '500',
