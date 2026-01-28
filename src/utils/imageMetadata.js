@@ -158,3 +158,56 @@ export function formatBytes(bytes) {
 
   return Math.round((bytes / Math.pow(k, i)) * 10) / 10 + ' ' + sizes[i];
 }
+
+/**
+ * Extract the first frame of a video as a thumbnail
+ * @param {string} videoDataUrl - Video data URL
+ * @param {number} maxWidth - Maximum width for thumbnail (default: 320)
+ * @returns {Promise<{thumbnail: string, dimensions: {width: number, height: number}}>}
+ */
+export async function extractVideoThumbnail(videoDataUrl, maxWidth = 320) {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement('video');
+    video.preload = 'metadata';
+    video.muted = true;
+    video.playsInline = true;
+
+    video.onloadedmetadata = () => {
+      // Seek to 0.1 seconds to get a better frame than the first black frame
+      video.currentTime = 0.1;
+    };
+
+    video.onseeked = () => {
+      try {
+        // Calculate thumbnail dimensions maintaining aspect ratio
+        const scale = maxWidth / video.videoWidth;
+        const thumbnailWidth = Math.floor(video.videoWidth * scale);
+        const thumbnailHeight = Math.floor(video.videoHeight * scale);
+
+        // Create canvas and draw the video frame
+        const canvas = document.createElement('canvas');
+        canvas.width = thumbnailWidth;
+        canvas.height = thumbnailHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, thumbnailWidth, thumbnailHeight);
+
+        // Convert to data URL (JPEG for better compression)
+        const thumbnail = canvas.toDataURL('image/jpeg', 0.8);
+
+        resolve({
+          thumbnail,
+          dimensions: {
+            width: video.videoWidth,
+            height: video.videoHeight,
+          },
+        });
+      } catch (error) {
+        reject(new Error('Failed to extract video thumbnail: ' + error.message));
+      }
+    };
+
+    video.onerror = () => reject(new Error('Failed to load video'));
+
+    video.src = videoDataUrl;
+  });
+}

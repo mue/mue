@@ -33,6 +33,7 @@ import {
   calculateStorageSize,
   calculateTotalStorageSize,
   formatBytes,
+  extractVideoThumbnail,
 } from 'utils/imageMetadata';
 import { generateBlurHashDataUrl } from '../api/blurHash';
 
@@ -132,6 +133,7 @@ const CustomSettings = memo(() => {
           fileSize: metadata.fileSize,
           folder: metadata.folder || '',
           blurHash: metadata.blurHash,
+          thumbnail: metadata.thumbnail || null,
         };
 
         await addBackground(backgroundData);
@@ -189,17 +191,37 @@ const CustomSettings = memo(() => {
 
       const reader = new FileReader();
       return new Promise((resolve, reject) => {
-        reader.onloadend = () => {
-          resolve({
-            dataUrl: reader.result,
-            metadata: {
-              name: getFileName(file, customBackground.length),
-              dimensions: null,
-              fileSize: file.size,
-              folder: folderName,
-              blurHash: null,
-            },
-          });
+        reader.onloadend = async () => {
+          try {
+            // Extract thumbnail and dimensions from video
+            const { thumbnail, dimensions } = await extractVideoThumbnail(reader.result);
+
+            resolve({
+              dataUrl: reader.result,
+              metadata: {
+                name: getFileName(file, customBackground.length),
+                dimensions,
+                fileSize: file.size,
+                folder: folderName,
+                blurHash: null,
+                thumbnail,
+              },
+            });
+          } catch (error) {
+            console.warn('Could not extract video thumbnail:', error);
+            // Fallback to no thumbnail if extraction fails
+            resolve({
+              dataUrl: reader.result,
+              metadata: {
+                name: getFileName(file, customBackground.length),
+                dimensions: null,
+                fileSize: file.size,
+                folder: folderName,
+                blurHash: null,
+                thumbnail: null,
+              },
+            });
+          }
         };
         reader.onerror = reject;
         reader.readAsDataURL(file);
@@ -625,7 +647,7 @@ const CustomSettings = memo(() => {
                 )}
               </span>
             </span>
-            <span className="selection-separator">·</span>
+            {customBackground.length > 0 && <span className="selection-separator">·</span>}
             {selectedImages.size > 0 ? (
               <>
                 <span className="selected-count">{selectedImages.size} selected</span>
@@ -757,9 +779,39 @@ const CustomSettings = memo(() => {
                           ) : null;
                         })()}
                       {isVideo ? (
-                        <div className="video-icon-wrapper">
-                          <MdPersonalVideo className="customvideoicon" />
-                        </div>
+                        bg.thumbnail ? (
+                          <>
+                            <img
+                              alt={bg.name || 'Custom video'}
+                              src={bg.thumbnail}
+                              loading="lazy"
+                              style={{ position: 'relative', zIndex: 1 }}
+                            />
+                            <div
+                              className="video-overlay-icon"
+                              style={{
+                                position: 'absolute',
+                                top: '8px',
+                                right: '8px',
+                                zIndex: 2,
+                                background: 'rgba(0, 0, 0, 0.6)',
+                                borderRadius: '4px',
+                                padding: '4px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                              }}
+                            >
+                              <MdPersonalVideo
+                                style={{ fontSize: '20px', color: 'white' }}
+                              />
+                            </div>
+                          </>
+                        ) : (
+                          <div className="video-icon-wrapper">
+                            <MdPersonalVideo className="customvideoicon" />
+                          </div>
+                        )
                       ) : (
                         <img
                           alt={bg.name || 'Custom background'}
