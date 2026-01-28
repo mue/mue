@@ -14,7 +14,7 @@ const useWeatherSettings = () => {
 
 const WeatherOptions = () => {
   const { windSpeed, setWindSpeed } = useWeatherSettings();
-  const weatherType = localStorage.getItem('weatherType');
+  const [weatherType, setWeatherType] = useLocalStorageState('weatherType', '1');
   const WEATHER_SECTION = 'modals.main.settings.sections.weather';
 
   const WidgetType = () => (
@@ -25,7 +25,7 @@ const WeatherOptions = () => {
           label={variables.getMessage('modals.main.settings.sections.time.type')}
           name="weatherType"
           category="weather"
-          onChange={() => this.forceUpdate()}
+          onChange={(value) => setWeatherType(value)}
           items={[
             { value: '1', text: variables.getMessage(`${WEATHER_SECTION}.options.basic`) },
             { value: '2', text: variables.getMessage(`${WEATHER_SECTION}.options.standard`) },
@@ -143,11 +143,11 @@ const WeatherOptions = () => {
         zoomCategory="weather"
         visibilityToggle={true}
       >
-        <WidgetType />
+        {WidgetType()}
         {/* https://stackoverflow.com/a/65328486 when using inputs it may defocus so we do the {} instead of <> */}
         {LocationSetting()}
-        <TemperatureFormat />
-        {weatherType === '4' && <CustomOptions />}
+        {TemperatureFormat()}
+        {weatherType === '4' && CustomOptions()}
       </PreferencesWrapper>
     </>
   );
