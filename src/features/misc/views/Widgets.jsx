@@ -33,7 +33,7 @@ const Widgets = () => {
       greeting: enabled('greeting') && <Greeting />,
       quote: enabled('quote') && <Quote />,
       date: enabled('date') && <Date />,
-      quicklinks: enabled('quicklinksenabled') && online ? <QuickLinks /> : null,
+      quicklinks: enabled('quicklinksenabled') && <QuickLinks />,
       message: enabled('message') && <Message />,
     }),
     [order], // Re-create widgets when order changes
