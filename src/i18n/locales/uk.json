@@ -1,5 +1,9 @@
 {
   "tabname": "Нова вкладка",
+  "branding": {
+    "name": "Мю",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Доброго ранку",

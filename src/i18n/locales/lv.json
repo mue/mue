@@ -1,5 +1,9 @@
 {
   "tabname": "Jauna cilne",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Labrīt",

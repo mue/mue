@@ -1,5 +1,9 @@
 {
   "tabname": "புதிய தாவல்",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "காலை வணக்கம்",

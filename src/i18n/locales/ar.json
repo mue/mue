@@ -1,5 +1,9 @@
 {
   "tabname": "علامة تبويب جديدة",
+  "branding": {
+    "name": "ميو",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "صباح الخير",

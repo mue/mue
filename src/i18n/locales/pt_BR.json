@@ -1,5 +1,9 @@
 {
   "tabname": "Nova guia",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Bom Dia",

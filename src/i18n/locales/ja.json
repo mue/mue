@@ -1,5 +1,9 @@
 {
   "tabname": "新しいタブ",
+  "branding": {
+    "name": "ミュー",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "おはようございます",

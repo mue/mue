@@ -8,6 +8,8 @@ import { BiDonateHeart } from 'react-icons/bi';
 import { Tooltip, Button } from 'components/Elements';
 import other_contributors from 'utils/data/other_contributors.json';
 
+import { useT } from 'contexts/TranslationContext';
+
 class About extends PureComponent {
   constructor() {
     super();
@@ -142,7 +144,7 @@ class About extends PureComponent {
               alt="Logo"
             />
             <div className="aboutText">
-              <span className="title">Mue</span>
+              <span className="title">{variables.getMessage('branding.name')}</span>
               <span className="subtitle">
                 {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
                 {variables.constants.VERSION}

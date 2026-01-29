@@ -1,5 +1,9 @@
 {
   "tabname": "Νέα καρτέλα",
+  "branding": {
+    "name": "Μιου",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Good Morning",

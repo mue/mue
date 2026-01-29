@@ -1,5 +1,9 @@
 {
   "tabname": "Naujas skirtukas",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Labas rytas",

@@ -1,5 +1,9 @@
 {
   "tabname": "新标签页",
+  "branding": {
+    "name": "沐页",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "早上好",

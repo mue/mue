@@ -1,5 +1,9 @@
 {
   "tabname": "New Tab",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "‬dsdsdsdfdfffs",

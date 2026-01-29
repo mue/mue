@@ -1,5 +1,9 @@
 {
   "tabname": "নতুন ট্যাব খুলুন",
+  "branding": {
+    "name": "মিউ",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "শুভ সকাল",

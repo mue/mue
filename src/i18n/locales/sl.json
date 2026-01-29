@@ -1,5 +1,9 @@
 {
   "tabname": "Nov zavihek",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Dobro jutro",

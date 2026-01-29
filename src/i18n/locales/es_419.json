@@ -1,5 +1,9 @@
 {
   "tabname": "Nueva pestaña",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Buenos días",
