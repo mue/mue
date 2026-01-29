@@ -106,7 +106,8 @@ const Greeting = () => {
         if (birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth()) {
           if (localStorage.getItem('birthdayage') === 'true' && calculateAge(birth) !== 0) {
             const text = t('widgets.greeting.birthday').split(' ');
-            message = `${text[0]} ${nth(calculateAge(birth))} ${text[1]}`;
+            const lang = variables.languagecode.split('_')[0];
+            message = `${text[0]} ${nth(calculateAge(birth), lang)} ${text[1]}`;
           } else {
             message = t('widgets.greeting.birthday');
           }

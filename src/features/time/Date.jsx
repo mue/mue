@@ -29,11 +29,13 @@ const DateWidget = () => {
       dateToday.setMonth(0, 1 + ((4 - dateToday.getDay() + 7) % 7));
     }
 
-    setWeekNumber(
-      `${variables.getMessage('widgets.date.week')} ${
-        1 + Math.ceil((firstThursday - dateToday) / 604800000)
-      }`,
-    );
+    const weekLabel = variables.getMessage('widgets.date.week');
+    const weekNum = 1 + Math.ceil((firstThursday - dateToday) / 604800000);
+    // Support {number} placeholder for locales that need different word order (e.g., Turkish: "{number}. Hafta")
+    const weekText = weekLabel.includes('{number}')
+      ? weekLabel.replace('{number}', weekNum)
+      : `${weekLabel} ${weekNum}`;
+    setWeekNumber(weekText);
   };
 
   const getDate = () => {
@@ -97,7 +99,7 @@ const DateWidget = () => {
       // Long date
       const lang = variables.languagecode.split('_')[0];
       const datenth =
-        localStorage.getItem('datenth') === 'true' ? nth(date.getDate()) : date.getDate();
+        localStorage.getItem('datenth') === 'true' ? nth(date.getDate(), lang) : date.getDate();
       const dateDay =
         localStorage.getItem('dayofweek') === 'true'
           ? date.toLocaleDateString(lang, { weekday: 'long' })

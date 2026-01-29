@@ -43,7 +43,7 @@
       "url_error": "URL sağlanmalıdır"
     },
     "date": {
-      "week": "Hafta"
+      "week": "{number}. Hafta"
     },
     "weather": {
       "not_found": "Bulunamadı",
