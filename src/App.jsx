@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import Background from 'features/background/Background';
 import Widgets from 'features/misc/views/Widgets';
 import Modals from 'features/misc/modals/Modals';
+import CustomWidgets from 'features/misc/CustomWidgets';
 import { loadSettings, moveSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
@@ -60,6 +61,7 @@ const App = () => {
   return (
     <TranslationProvider initialLanguage={languagecode}>
       {showBackground && <Background />}
+      <CustomWidgets />
       <ToastContainer
         position="top-center"
         autoClose={toastDisplayTime}

@@ -8,6 +8,7 @@ import QuickLinks from '../../quicklinks/QuickLinks';
 import Date from '../../time/Date';
 import Message from '../../message/Message';
 import { WidgetsLayout } from 'components/Layout';
+import CenteredCustomWidgets from '../CenteredCustomWidgets';
 
 import EventBus from 'utils/eventbus';
 
@@ -77,6 +78,7 @@ const Widgets = () => {
           <Fragment key={key}>{widgets[element]}</Fragment>
         ))}
         {enabled('weatherEnabled') && online ? <Weather /> : null}
+        <CenteredCustomWidgets />
       </Suspense>
     </WidgetsLayout>
   );

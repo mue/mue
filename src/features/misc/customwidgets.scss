@@ -1,0 +1,264 @@
+@use 'scss/variables' as *;
+
+// Iframe widgets positioned on the page
+.custom-widget-iframe {
+  position: fixed;
+  z-index: -1;
+  width: 300px;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: auto;
+
+  &.custom-widget-top-left {
+    top: 20px;
+    left: 20px;
+  }
+
+  &.custom-widget-top-right {
+    top: 20px;
+    right: 20px;
+  }
+
+  &.custom-widget-bottom-left {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  &.custom-widget-bottom-right {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+  }
+}
+
+// Centered widgets (rendered in main content area)
+.custom-widget-centered {
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  margin: 20px auto;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+  }
+}
+
+// Overlay mode - renders above other widgets
+.custom-widget-overlay {
+  z-index: 100 !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.widgets-container {
+  width: 100%;
+  padding: 0;
+}
+
+.widgets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  width: 100%;
+}
+
+.widget-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px 20px;
+  transition: all 0.01s ease;
+  cursor: grab;
+  user-select: none;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+
+    .widget-drag-handle {
+      opacity: 1;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .widget-drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 24px;
+    padding: 4px;
+    opacity: 0.3;
+    transition:
+      opacity 0.2s ease,
+      color 0.2s ease;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  .widget-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    svg {
+      width: 28px;
+      height: 28px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .widget-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .widget-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    .widget-url {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    .widget-position {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      font-style: italic;
+      line-height: 1.3;
+    }
+  }
+
+  .widget-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+
+    .widget-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+
+      svg {
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      &.widget-remove-btn {
+        &:hover {
+          background: rgba(239, 68, 68, 0.15);
+          border-color: rgba(239, 68, 68, 0.4);
+          color: #ef4444;
+        }
+      }
+    }
+  }
+}
+
+.sortable-helper {
+  transform: scale(1.02);
+  z-index: 9999 !important;
+  opacity: 0.5 !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+  cursor: grabbing !important;
+
+  &.widget-item {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .widget-drag-handle {
+    opacity: 1 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .widget-icon,
+  .widget-content,
+  .widget-actions {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  * {
+    pointer-events: none !important;
+  }
+}
+
+.sortable-ghost {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  transition: none !important;
+}

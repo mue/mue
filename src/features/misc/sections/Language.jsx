@@ -162,7 +162,7 @@ const LanguageOptions = () => {
         >
           <MdComputer style={{ fontSize: '18px', opacity: 0.8 }} />
           {t('modals.main.settings.sections.language.use_system')}
-          <span style={{ opacity: 0.6 }}>({systemLanguage.name})</span>
+          <span style={{ opacity: 0.6 }}>• {systemLanguage.name}</span>
         </button>
       )}
       <div className="languageSettings">
