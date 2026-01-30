@@ -8,9 +8,7 @@ import { getBackgroundFilterStyle, getBackgroundOverlayStyle } from '../api/back
 export function useBackgroundEvents(backgroundData, refreshBackground) {
   useEffect(() => {
     const handleEvent = (event) => {
-      if (event === 'welcomeLanguage') {
-        localStorage.setItem('welcomeImage', JSON.stringify(backgroundData));
-      } else if (event === 'background') {
+      if (event === 'background') {
         handleVisibilityToggle();
       } else if (['marketplacebackgrounduninstall', 'backgroundwelcome', 'backgroundrefresh'].includes(event)) {
         refreshBackground();

@@ -124,18 +124,19 @@ const Modals = () => {
 
   const closeWelcome = async () => {
     localStorage.setItem('showWelcome', false);
+    localStorage.setItem('justCompletedWelcome', 'true');
     setWelcomeModal(false);
 
     await tryInstallDefaultPack();
 
     EventBus.emit('refresh', 'widgetsWelcomeDone');
     EventBus.emit('refresh', 'widgets');
-    EventBus.emit('refresh', 'backgroundwelcome');
   };
 
   const previewWelcome = () => {
     localStorage.setItem('showWelcome', false);
     localStorage.setItem('welcomePreview', true);
+    localStorage.setItem('justCompletedWelcome', 'true');
     setWelcomeModal(false);
     setPreview(true);
     EventBus.emit('refresh', 'widgetsWelcome');
@@ -181,7 +182,7 @@ const Modals = () => {
         onRequestClose={() => closeWelcome()}
         isOpen={welcomeModal}
         className="Modal welcomemodal mainModal"
-        overlayClassName="Overlay mainModal"
+        overlayClassName="Overlay welcomeOverlay"
         shouldCloseOnOverlayClick={false}
         ariaHideApp={false}
       >

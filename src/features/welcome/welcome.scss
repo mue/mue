@@ -3,7 +3,34 @@
 
 .welcomemodal {
   @include themed {
-    background-color: t($modal-background);
+    background-color: t($modal);
+  }
+
+  // Disable opening animation - appear instantly
+  &.ReactModal__Content {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  // Smooth fade out on close
+  &.ReactModal__Content--before-close {
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 0.3s ease-out;
+  }
+}
+
+.welcomeOverlay {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+
+  // Instant appear, fade out on close
+  &.ReactModal__Overlay {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
+
+  &.ReactModal__Overlay--before-close {
+    opacity: 0;
   }
 }
 
@@ -11,7 +38,6 @@
   @include themed {
     background-color: t($modal-background);
   }
-
   .MuiFormControlLabel-root {
     margin-right: 0;
   }
@@ -27,10 +53,8 @@
 
   height: 80vh;
   width: clamp(60vw, 1200px, 90vw);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  grid-gap: 0;
+  display: flex;
+  flex-direction: column;
 
   section.aside {
     display: flex;
@@ -48,6 +72,14 @@
     justify-content: space-between;
     overflow-y: auto;
 
+    &.simpleWelcome {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      max-width: none;
+    }
+
     .content {
       display: flex;
       flex-flow: column;
@@ -57,35 +89,208 @@
   }
 }
 
-.progressbar {
-  position: fixed;
-  bottom: 50px;
-  text-align: center;
-  display: inline;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 18px;
+.mueLogo {
+  width: 50px;
+  height: auto;
+  position: absolute;
+  top: 50px;
+  margin: 0 auto;
+}
 
-  .step {
-    display: inline-block;
-    border-bottom: 2px solid grey;
-    padding: 10px 20px;
-    margin: 5px;
-    transition: 0.2s ease-in-out;
-    cursor: pointer;
-    border-radius: 10px 10px 0 0;
+.simpleWelcomeContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 
-    &:hover {
-      background: #dd4038;
-      border-radius: 10px;
-      border-bottom: 2px solid #dd4038;
+  @include themed {
+    background-color: t($modal);
+  }
+
+  .welcomeContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .welcomeLogoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+
+    .welcomeTitle {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin: 0;
+      letter-spacing: -0.02em;
+
+      @include themed {
+        color: t($color);
+      }
     }
   }
 
-  .active {
-    background: #d21a11;
-    border-bottom: 2px solid #d21a11;
-    border-radius: 10px;
+  .welcomeNameSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 3rem;
+
+    .nameLabel {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.7;
+
+      @include themed {
+        color: t($color);
+      }
+    }
+
+    .nameInput {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      transition: all 0.2s ease;
+
+      @include themed {
+        color: t($color);
+      }
+
+      &::placeholder {
+        opacity: 0.4;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: rgba(210, 26, 17, 0.5);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 0 3px rgba(210, 26, 17, 0.1);
+      }
+    }
+  }
+
+  .welcomeActions {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    .skipButton {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      opacity: 0.6;
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      transition: opacity 0.2s ease;
+
+      @include themed {
+        color: t($color);
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    button:not(.skipButton) {
+      min-width: 120px;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+  }
+
+  .welcomeCopyright {
+    position: absolute;
+    bottom: 2rem;
+    font-size: 1rem;
+    opacity: 0.4;
+    font-weight: 300;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    gap: 0.25rem;
+
+    .icons {
+      display: flex;
+      flex-flow: row;
+      gap: 0.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--modal-text);
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &:hover {
+        scale: 1.1;
+        @include themed() {
+          color: t($link);
+        }
+      }
+    }
+
+    @include themed {
+      color: t($color);
+    }
+  }
+}
+
+.welcomeNameInput {
+  margin: 2rem 0;
+  text-align: center;
+
+  label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: white;
+    text-align: center;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .helperText {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.5rem;
   }
 }
 

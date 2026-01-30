@@ -657,7 +657,11 @@
       "sections": {
         "intro": {
           "title": "Welcome to Mue Tab",
+          "subtitle": "Your new tab, your way",
           "description": "Thank you for installing Mue, we hope you enjoy your time with our extension.",
+          "name_label": "So, what should we call you?",
+          "name_placeholder": "Name",
+          "name_helper": "We'll use this in your tab",
           "notices": {
             "discord_title": "Join our Discord",
             "discord_description": "Talk with the Mue community and developers",
@@ -710,7 +714,9 @@
         "preview": "Preview",
         "previous": "Previous",
         "close": "Close",
-        "finish": "Finish"
+        "finish": "Finish",
+        "continue": "Continue",
+        "skip": "Skip"
       },
       "preview": {
         "description": "You are currently in preview mode. Settings will be reset on closing this tab.",

@@ -12,16 +12,6 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
     isLoadingRef.current = true;
 
     try {
-      // Check for welcome tab first
-      const welcomeTab = localStorage.getItem('welcomeTab');
-      if (welcomeTab) {
-        const welcomeImage = localStorage.getItem('welcomeImage');
-        if (welcomeImage) {
-          updateBackground(JSON.parse(welcomeImage));
-          return;
-        }
-      }
-
       const data = await getBackgroundData();
       if (data) {
         updateBackground(data);

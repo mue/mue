@@ -19,8 +19,9 @@ const Weather = lazy(() => import('../../weather/Weather'));
 
 const Widgets = () => {
   const online = localStorage.getItem('offlineMode') === 'false';
-  const [order, setOrder] = useState(JSON.parse(localStorage.getItem('order')));
+  const [order, setOrder] = useState(JSON.parse(localStorage.getItem('order')) || []);
   const [welcome, setWelcome] = useState(localStorage.getItem('showWelcome'));
+  const [fadeIn, setFadeIn] = useState(false);
 
   const enabled = (key) => {
     return localStorage.getItem(key) === 'true';
@@ -43,7 +44,7 @@ const Widgets = () => {
     const handleRefresh = (data) => {
       switch (data) {
         case 'widgets':
-          return setOrder(JSON.parse(localStorage.getItem('order')));
+          return setOrder(JSON.parse(localStorage.getItem('order')) || []);
         case 'widgetsWelcome':
           setWelcome(localStorage.getItem('showWelcome'));
           localStorage.setItem('showWelcome', true);
@@ -54,6 +55,15 @@ const Widgets = () => {
         case 'widgetsWelcomeDone':
           setWelcome(localStorage.getItem('showWelcome'));
           window.onbeforeunload = null;
+
+          // Check if user just completed welcome
+          if (localStorage.getItem('justCompletedWelcome') === 'true') {
+            setFadeIn(true);
+            // Clear the flag after animations complete
+            setTimeout(() => {
+              localStorage.removeItem('justCompletedWelcome');
+            }, 2000);
+          }
           break;
         default:
           break;
@@ -66,11 +76,15 @@ const Widgets = () => {
     };
   }, []);
 
-  // don't show when welcome is there
-  return welcome !== 'false' ? (
-    <WidgetsLayout />
-  ) : (
-    <WidgetsLayout>
+  // Determine class based on state
+  const getClassName = () => {
+    if (welcome !== 'false') return 'behind-welcome';
+    if (fadeIn) return 'fade-in-widgets';
+    return '';
+  };
+
+  return (
+    <WidgetsLayout className={getClassName()}>
       <Suspense fallback={<></>}>
         {enabled('searchBar') && <Search />}
         {order.map((element, key) => (

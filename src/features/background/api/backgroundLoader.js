@@ -73,9 +73,7 @@ export async function fetchAPIImageData(excludedPun = null) {
  * Gets background data based on current configuration
  */
 export async function getBackgroundData() {
-  const isOffline =
-    localStorage.getItem('offlineMode') === 'true' ||
-    localStorage.getItem('showWelcome') === 'true';
+  const isOffline = localStorage.getItem('offlineMode') === 'true';
 
   // Handle favourited background
   const fav = parseJSON('favourite');
