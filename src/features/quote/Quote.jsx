@@ -51,6 +51,9 @@ export default function Quote() {
         setAuthorDetails(authorDetailsSetting === 'true');
         setIsLegacyStyle(widgetStyle === 'legacy');
       } else if (data === 'marketplacequoteuninstall' || data === 'quoterefresh') {
+        // Clear queue when quote packs change
+        localStorage.removeItem('quoteQueue');
+        localStorage.removeItem('currentQuote');
         getQuote();
       }
     };

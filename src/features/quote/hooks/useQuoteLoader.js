@@ -19,6 +19,30 @@ export function useQuoteLoader(updateQuote) {
     return tmpdoc.body.textContent || '';
   }, []);
 
+  // Parse JSON safely with fallback
+  const parseJSON = useCallback((key, fallback = null) => {
+    const item = localStorage.getItem(key);
+    if (item === null || item === 'null') {
+      return fallback;
+    }
+    try {
+      const parsed = JSON.parse(item);
+      return parsed !== null ? parsed : fallback;
+    } catch {
+      // Corrupt data - reinitialize
+      localStorage.setItem(key, JSON.stringify(fallback));
+      return fallback;
+    }
+  }, []);
+
+  // Check if author image cache is still valid (7 day expiry)
+  const isAuthorCacheValid = useCallback(() => {
+    const timestamp = localStorage.getItem('authorImageCacheTimestamp');
+    if (!timestamp) return false;
+    const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
+    return Date.now() - Number(timestamp) < SEVEN_DAYS;
+  }, []);
+
   const getAuthorImg = useCallback(
     async (author) => {
       if (localStorage.getItem('authorImg') === 'false' || author === 'Unknown') {
@@ -70,6 +94,164 @@ export function useQuoteLoader(updateQuote) {
     [stripHTML],
   );
 
+  // Get cached author image or fetch and cache it
+  const getCachedAuthorImg = useCallback(async (author) => {
+    if (localStorage.getItem('authorImg') === 'false' || author === 'Unknown') {
+      return { authorimg: null, authorimglicense: null };
+    }
+
+    // Check cache first
+    const cache = parseJSON('authorImageCache', {});
+    if (isAuthorCacheValid() && cache[author]) {
+      return {
+        authorimg: cache[author].authorimg,
+        authorimglicense: cache[author].authorimglicense
+      };
+    }
+
+    // Fetch from Wikipedia
+    const result = await getAuthorImg(author);
+
+    // Cache the result (even if null, to avoid re-fetching)
+    if (result.authorimg || result.authorimglicense) {
+      cache[author] = {
+        authorimg: result.authorimg,
+        authorimglicense: result.authorimglicense,
+        timestamp: Date.now()
+      };
+      try {
+        localStorage.setItem('authorImageCache', JSON.stringify(cache));
+        localStorage.setItem('authorImageCacheTimestamp', Date.now().toString());
+      } catch (e) {
+        // Handle quota exceeded - clear old cache entries
+        console.warn('Author image cache quota exceeded, clearing cache');
+        localStorage.removeItem('authorImageCache');
+        localStorage.setItem('authorImageCacheTimestamp', Date.now().toString());
+      }
+    }
+
+    return result;
+  }, [parseJSON, isAuthorCacheValid, getAuthorImg]);
+
+  // Select raw quote data without author images (non-blocking)
+  const selectQuoteData = useCallback(() => {
+    const offline = localStorage.getItem('offlineMode') === 'true';
+    let type = localStorage.getItem('quoteType') || 'quote_pack';
+
+    // Migrate deprecated 'api' type
+    if (type === 'api') {
+      type = 'quote_pack';
+      localStorage.setItem('quoteType', 'quote_pack');
+    }
+
+    // Custom quotes
+    if (type === 'custom') {
+      let customQuote;
+      try {
+        customQuote = JSON.parse(localStorage.getItem('customQuote'));
+      } catch {
+        customQuote = [{
+          quote: localStorage.getItem('customQuote'),
+          author: localStorage.getItem('customQuoteAuthor'),
+        }];
+      }
+
+      if (!customQuote || customQuote.length === 0) {
+        return { noQuote: true };
+      }
+
+      const selected = customQuote[Math.floor(Math.random() * customQuote.length)];
+      return {
+        quote: `"${selected.quote}"`,
+        author: selected.author,
+        authorlink: getAuthorLink(selected.author),
+        needsAuthorImg: true,
+        noQuote: false,
+      };
+    }
+
+    // Quote packs or offline
+    if (offline) {
+      const quote = offline_quotes[Math.floor(Math.random() * offline_quotes.length)];
+      return {
+        quote: '"' + quote.quote + '"',
+        author: quote.author,
+        authorlink: getAuthorLink(quote.author),
+        needsAuthorImg: false, // Offline quotes don't get author images
+      };
+    }
+
+    const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+    const quotePack = installed
+      .filter(item => item.type === 'quotes')
+      .flatMap(item => item.quotes.map(quote => ({
+        ...quote,
+        fallbackauthorimg: item.icon_url,
+        packName: item.display_name || item.name,
+        noAuthorImg: item.noAuthorImg || quote.noAuthorImg,
+      })));
+
+    if (quotePack.length === 0) {
+      const quote = offline_quotes[Math.floor(Math.random() * offline_quotes.length)];
+      return {
+        quote: '"' + quote.quote + '"',
+        author: quote.author,
+        authorlink: getAuthorLink(quote.author),
+        needsAuthorImg: false,
+      };
+    }
+
+    const data = quotePack[Math.floor(Math.random() * quotePack.length)];
+    const hasAuthor = data.author && data.author.trim() !== '';
+    const displayAuthor = hasAuthor ? data.author : data.packName;
+
+    return {
+      quote: `"${data.quote}"`,
+      author: displayAuthor,
+      realAuthor: hasAuthor ? data.author : null, // For Wikipedia lookup
+      authorlink: hasAuthor ? getAuthorLink(data.author) : null,
+      fallbackauthorimg: data.fallbackauthorimg,
+      needsAuthorImg: hasAuthor && !data.noAuthorImg,
+    };
+  }, [getAuthorLink]);
+
+  // Fetch complete quote data including author image (for prefetching)
+  const fetchCompleteQuote = useCallback(async (quoteData) => {
+    if (!quoteData || quoteData.noQuote) return quoteData;
+
+    // If author image is needed, fetch it
+    if (quoteData.needsAuthorImg) {
+      const authorToLookup = quoteData.realAuthor || quoteData.author;
+      try {
+        const authorImgData = await getCachedAuthorImg(authorToLookup);
+
+        // For quote packs, use fallback if Wikipedia fails
+        if (!authorImgData.authorimg && quoteData.fallbackauthorimg) {
+          return {
+            ...quoteData,
+            authorimg: quoteData.fallbackauthorimg,
+            authorimglicense: null,
+          };
+        }
+
+        return {
+          ...quoteData,
+          ...authorImgData,
+        };
+      } catch (e) {
+        console.error('Failed to fetch author image:', e);
+        // Return quote data with fallback or no image
+        return {
+          ...quoteData,
+          authorimg: quoteData.fallbackauthorimg || null,
+          authorimglicense: null,
+        };
+      }
+    }
+
+    return quoteData;
+  }, [getCachedAuthorImg]);
+
   const doOffline = useCallback(() => {
     const quote = offline_quotes[Math.floor(Math.random() * offline_quotes.length)];
 
@@ -83,95 +265,136 @@ export function useQuoteLoader(updateQuote) {
 
   const getQuote = useCallback(async () => {
     const offline = localStorage.getItem('offlineMode') === 'true';
-    let type = localStorage.getItem('quoteType') || 'quote_pack';
 
-    // Migrate deprecated 'api' type to 'quote_pack'
-    if (type === 'api') {
-      type = 'quote_pack';
-      localStorage.setItem('quoteType', 'quote_pack');
+    // Initialize prefetch storage on first access
+    if (localStorage.getItem('quoteQueue') === null) {
+      localStorage.setItem('quoteQueue', JSON.stringify([]));
+    }
+    if (localStorage.getItem('authorImageCache') === null) {
+      localStorage.setItem('authorImageCache', JSON.stringify({}));
+      localStorage.setItem('authorImageCacheTimestamp', Date.now().toString());
+    }
+    if (localStorage.getItem('quotePrefetchEnabled') === null) {
+      localStorage.setItem('quotePrefetchEnabled', 'true');
     }
 
-    // Check for favourite quote first
+    // SPECIAL CASE: Favourite quote (highest priority, no queue)
     const favouriteQuote = localStorage.getItem('favouriteQuote');
     if (favouriteQuote) {
       const [quote, author] = favouriteQuote.split(' - ');
-      const authorimgdata = await getAuthorImg(author);
-      return updateQuote({
+
+      // Display quote immediately
+      updateQuote({
         quote,
         author,
         authorlink: getAuthorLink(author),
-        ...authorimgdata,
+        authorimg: null, // Will be updated asynchronously
+        authorimglicense: null,
       });
+
+      // Fetch author image asynchronously (non-blocking)
+      getCachedAuthorImg(author).then((authorimgdata) => {
+        updateQuote({
+          quote,
+          author,
+          authorlink: getAuthorLink(author),
+          ...authorimgdata,
+        });
+      });
+
+      return; // Don't use queue for favourite quotes
     }
 
-    switch (type) {
-      case 'custom': {
-        let customQuote;
-        try {
-          customQuote = JSON.parse(localStorage.getItem('customQuote'));
-        } catch {
-          // Migrate old format
-          customQuote = [{
-            quote: localStorage.getItem('customQuote'),
-            author: localStorage.getItem('customQuoteAuthor'),
-          }];
-          localStorage.setItem('customQuote', JSON.stringify(customQuote));
-        }
+    // MAIN FLOW: Use queue system
+    const cachedQueue = parseJSON('quoteQueue', []);
+    let quoteData;
 
-        if (!customQuote || customQuote.length === 0) {
-          return updateQuote({ noQuote: true });
-        }
-
-        const selected = customQuote[Math.floor(Math.random() * customQuote.length)];
-        const authorimgdata = await getAuthorImg(selected.author);
-        
-        return updateQuote({
-          quote: `"${selected.quote}"`,
-          author: selected.author,
-          authorlink: getAuthorLink(selected.author),
-          ...authorimgdata,
-          noQuote: false,
-        });
+    // Step 1: Try to get from queue
+    if (cachedQueue.length > 0) {
+      quoteData = cachedQueue.shift();
+      localStorage.setItem('quoteQueue', JSON.stringify(cachedQueue));
+    } else {
+      // Step 2: No queue, fetch new quote immediately
+      const rawQuote = selectQuoteData();
+      if (rawQuote.noQuote) {
+        return updateQuote({ noQuote: true });
       }
 
-      case 'quote_pack':
-      default: {
-        if (offline) return doOffline();
+      // For non-queue fetch, display immediately then enhance with author image
+      if (rawQuote.needsAuthorImg) {
+        // Display quote text immediately
+        updateQuote({
+          ...rawQuote,
+          authorimg: rawQuote.fallbackauthorimg || null,
+          authorimglicense: null,
+        });
 
-        const installed = JSON.parse(localStorage.getItem('installed') || '[]');
-        const quotePack = installed
-          .filter(item => item.type === 'quotes')
-          .flatMap(item => item.quotes.map(quote => ({
-            ...quote,
-            fallbackauthorimg: item.icon_url,
-            packName: item.display_name || item.name,
-            noAuthorImg: item.noAuthorImg || quote.noAuthorImg,
-          })));
+        // Fetch author image asynchronously
+        const authorToLookup = rawQuote.realAuthor || rawQuote.author;
+        getCachedAuthorImg(authorToLookup).then((authorImgData) => {
+          updateQuote({
+            ...rawQuote,
+            ...(authorImgData.authorimg ? authorImgData : {
+              authorimg: rawQuote.fallbackauthorimg || null,
+              authorimglicense: null,
+            }),
+          });
+        });
 
-        if (quotePack.length === 0) return doOffline();
+        quoteData = rawQuote; // Use for prefetch reference
+      } else {
+        quoteData = rawQuote;
+        updateQuote(quoteData);
+      }
+    }
 
-        const data = quotePack[Math.floor(Math.random() * quotePack.length)];
-        const hasAuthor = data.author && data.author.trim() !== '';
-        const displayAuthor = hasAuthor ? data.author : data.packName;
+    // Step 3: Display current quote (if from queue, it's already complete)
+    if (cachedQueue.length > 0 || !quoteData.needsAuthorImg) {
+      updateQuote(quoteData);
+    }
 
-        // Try to get author image from Wikipedia unless pack disables it
-        let authorimgdata = { authorimg: data.fallbackauthorimg, authorimglicense: null };
-        if (hasAuthor && !data.noAuthorImg) {
-          const wikiImg = await getAuthorImg(data.author);
-          if (wikiImg.authorimg) {
-            authorimgdata = wikiImg;
+    // Step 4: Store current quote
+    try {
+      localStorage.setItem('currentQuote', JSON.stringify(quoteData));
+    } catch (e) {
+      console.warn('Could not save currentQuote to localStorage:', e);
+    }
+
+    // Step 5: Prefetch next 3 quotes asynchronously (non-blocking)
+    const targetQueueSize = 3;
+    const currentQueueSize = cachedQueue.length;
+
+    if (currentQueueSize < targetQueueSize && !offline) {
+      Promise.all(
+        Array.from({ length: targetQueueSize - currentQueueSize }, async () => {
+          const rawQuote = selectQuoteData();
+          if (rawQuote.noQuote) return null;
+          return await fetchCompleteQuote(rawQuote);
+        })
+      ).then((newQuotes) => {
+        const validQuotes = newQuotes.filter(Boolean);
+        if (validQuotes.length > 0) {
+          const updatedQueue = [...cachedQueue, ...validQuotes];
+          try {
+            localStorage.setItem('quoteQueue', JSON.stringify(updatedQueue));
+          } catch (e) {
+            console.warn('Quote queue quota exceeded:', e);
+            // Keep only 2 quotes if quota exceeded
+            localStorage.setItem('quoteQueue', JSON.stringify(updatedQueue.slice(0, 2)));
           }
         }
-
-        return updateQuote({
-          quote: `"${data.quote}"`,
-          author: displayAuthor,
-          authorlink: hasAuthor ? getAuthorLink(data.author) : null,
-          ...authorimgdata,
-        });
-      }
+      }).catch((error) => {
+        console.error('Failed to prefetch quotes:', error);
+      });
     }
-  }, [updateQuote, getAuthorLink, getAuthorImg, doOffline]);
+  }, [
+    updateQuote,
+    getAuthorLink,
+    getCachedAuthorImg,
+    selectQuoteData,
+    fetchCompleteQuote,
+    parseJSON,
+  ]);
 
   return {
     getQuote,

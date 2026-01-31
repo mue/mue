@@ -40,6 +40,9 @@ export function uninstall(type, name) {
         localStorage.removeItem('quote_packs');
       }
       localStorage.removeItem('quotechange');
+      // Clear quote queue and cache when uninstalling quote packs
+      localStorage.removeItem('quoteQueue');
+      localStorage.removeItem('currentQuote');
       refreshEvent = 'marketplacequoteuninstall';
       break;
 

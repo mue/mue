@@ -1,5 +1,5 @@
 import variables from 'config/variables';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdCancel, MdAdd, MdSource, MdOutlineFormatQuote } from 'react-icons/md';
 
 import {
@@ -41,6 +41,12 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
 
   const [customQuote, setCustomQuote] = useState(getCustom());
 
+  // Clear quote queue when quote type changes
+  useEffect(() => {
+    localStorage.removeItem('quoteQueue');
+    localStorage.removeItem('currentQuote');
+  }, [quoteType]);
+
   const handleCustomQuote = (e, text, index, type) => {
     const result = text === true ? e.target.value : e.target.result;
 
@@ -64,6 +70,9 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     setCustomQuote(updatedCustomQuote);
 
     localStorage.setItem('customQuote', JSON.stringify(updatedCustomQuote));
+    // Clear quote queue when custom quotes are modified
+    localStorage.removeItem('quoteQueue');
+    localStorage.removeItem('currentQuote');
   };
 
   const QUOTE_SECTION = 'modals.main.settings.sections.quote';

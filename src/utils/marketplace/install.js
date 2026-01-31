@@ -57,6 +57,9 @@ export function install(type, input, sideload, collection) {
       }
       localStorage.setItem('quoteType', 'quote_pack');
       localStorage.removeItem('quotechange');
+      // Clear quote queue and cache when installing new quote packs
+      localStorage.removeItem('quoteQueue');
+      localStorage.removeItem('currentQuote');
       refreshEvent = 'quote';
       break;
     }
