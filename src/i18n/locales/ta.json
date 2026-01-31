@@ -448,6 +448,8 @@
             "title": "மேம்பட்ட",
             "offline_mode": "இணைப்பில்லாத பயன்முறை",
             "offline_subtitle": "இயக்கப்பட்டால், நிகழ்நிலை சேவைகளுக்கான அனைத்து கோரிக்கைகளும் முடக்கப்படும்.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "தகவல்கள்",
             "data_description": "உங்கள் MUE அமைப்புகளை உங்கள் கணினியில் ஏற்றுமதி செய்யலாமா, ஏற்கனவே உள்ள அமைப்புகள் கோப்பை இறக்குமதி செய்யலாமா அல்லது உங்கள் அமைப்புகளை அவற்றின் இயல்புநிலை மதிப்புகளுக்கு மீட்டமைக்க வேண்டுமா என்பதைத் தேர்வுசெய்க",
             "data_subtitle": "உங்கள் தரவை MUE இல் நிர்வகிக்கவும்.",

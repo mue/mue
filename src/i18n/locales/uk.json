@@ -448,6 +448,8 @@
             "title": "Додатково",
             "offline_mode": "Офлайн режим",
             "offline_subtitle": "Якщо ввімкнено, всі запити до онлайн-сервісів будуть вимкнені.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Data",
             "data_description": "Виберіть, чи потрібно експортувати налаштування Mue на комп'ютер, імпортувати існуючий файл налаштувань або скинути налаштування до значень за замовчуванням",
             "data_subtitle": "Керуйте своїми даними на Mue.",

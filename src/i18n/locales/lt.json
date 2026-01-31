@@ -448,6 +448,8 @@
             "title": "Išplėstiniai",
             "offline_mode": "Autonominis režimas",
             "offline_subtitle": "Kai įjungta, visi prašymai į internetines paslaugas bus išjungti.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Duomenys",
             "data_description": "Pasirinkite, ar eksportuoti Mue nustatymus į savo kompiuterį, importuoti esamą nustatymų failą, ar atstatyti nustatymus į numatytuosius",
             "data_subtitle": "Tvarkykite savo duomenis Mue.",

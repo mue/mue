@@ -448,6 +448,8 @@
             "title": "Täpsemad seaded",
             "offline_mode": "Võrguühenduseta režiim",
             "offline_subtitle": "Kui see on lubatud, keelatakse kõik päringud veebiteenustele.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Andmed",
             "data_description": "Vali, kas eksportida oma Mue seaded arvutisse, importida olemasolev seadete fail või lähtestada seaded vaikeväärtustele",
             "data_subtitle": "Halda oma andmeid Mues.",

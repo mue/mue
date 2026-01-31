@@ -448,6 +448,8 @@
             "title": "Avancé",
             "offline_mode": "Mode hors ligne",
             "offline_subtitle": "Lorsqu'il est activé, toutes les requêtes vers les services en ligne seront désactivées.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Données",
             "data_description": "Choisissez d'exporter vos paramètres Mue sur votre ordinateur, d'importer un fichier de paramètres existant ou de réinitialiser vos paramètres à leurs valeurs par défaut",
             "data_subtitle": "Gérez vos données sur Mue.",

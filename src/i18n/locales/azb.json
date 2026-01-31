@@ -448,6 +448,8 @@
             "title": "Qabaqcıl",
             "offline_mode": "Offline rejim",
             "offline_subtitle": "Aktiv olduqda, bütün onlayn xidmətlərə sorğular deaktiv ediləcək.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Məlumat",
             "data_description": "Mue parametrlərinizi kompüterinizə ixrac etməyi, mövcud bir parametrlər faylını idxal etməyi və ya parametrlərinizi defolt dəyərlərinə sıfırlamağı seçin",
             "data_subtitle": "Mue-də məlumatlarınızı idarə edin.",

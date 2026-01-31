@@ -5,6 +5,7 @@ import { randomColourStyleBuilder } from './randomColour';
 import videoCheck from './videoCheck';
 import { getAllBackgrounds, getAllBackgroundsWithMetadata } from 'utils/customBackgroundDB';
 import { BackgroundQueueManager } from 'utils/backgroundQueue';
+import { getProxiedImageUrl } from 'utils/marketplace';
 
 const parseJSON = (key, fallback = null) => {
   const item = localStorage.getItem(key);
@@ -324,13 +325,14 @@ function getPhotoPackBackground(isOffline) {
     const selected = photos[index];
 
     photoData = {
-      url: selected.url.default,
+      url: getProxiedImageUrl(selected.url.default),
       type: 'photo_pack',
       photoInfo: {
         hidden: false,
         credit: selected.photographer,
         location: selected.location,
         blur_hash: selected.blur_hash || null,
+        url: selected.url.default,
       },
     };
   }
@@ -378,13 +380,14 @@ async function prefetchPhotoPackImages(queueManager, allPhotos, currentPhoto, cu
 
   // Normalize metadata
   const normalized = selected.map((photo) => ({
-    url: photo.url.default,
+    url: getProxiedImageUrl(photo.url.default),
     type: 'photo_pack',
     photoInfo: {
       hidden: false,
       credit: photo.photographer,
       location: photo.location,
       blur_hash: photo.blur_hash || null,
+      url: photo.url.default,
     },
   }));
 

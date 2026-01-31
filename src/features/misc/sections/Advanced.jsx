@@ -14,6 +14,7 @@ import {
 import '../customwidgets.scss';
 
 import { exportSettings, importSettings } from 'utils/settings';
+import { clearBackgroundQueues } from 'utils/queueOperations';
 
 import { FileUpload, Text, Switch, Dropdown } from 'components/Form/Settings';
 import { ResetModal, Button } from 'components/Elements';
@@ -366,6 +367,26 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
             />
             <Action>
               <Switch name="offlineMode" element=".other" />
+            </Action>
+          </Row>
+
+          <Row>
+            <Content
+              title={variables.getMessage('modals.main.settings.sections.advanced.marketplace_img_proxy')}
+              subtitle={variables.getMessage(
+                'modals.main.settings.sections.advanced.marketplace_img_proxy_subtitle',
+              )}
+            />
+            <Action>
+              <Switch
+                name="marketplaceDDGProxy"
+                element=".other"
+                onChange={() => {
+                  // Clear all prefetch queues when proxy setting changes
+                  // so new images are fetched with correct proxy state
+                  clearBackgroundQueues('all');
+                }}
+              />
             </Action>
           </Row>
 

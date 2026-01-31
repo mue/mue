@@ -448,6 +448,8 @@
             "title": "متقدم",
             "offline_mode": "وضع عدم الاتصال",
             "offline_subtitle": "عند التفعيل، سيتم تعطيل جميع الطلبات إلى الخدمات عبر الإنترنت.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "البيانات",
             "data_description": "اختر تصدير إعدادات Mue إلى جهازك، استيراد ملف إعدادات موجود، أو إعادة تعيين الإعدادات إلى قيمها الافتراضية",
             "data_subtitle": "إدارة بياناتك على Mue.",

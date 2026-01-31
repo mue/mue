@@ -16,6 +16,7 @@ import {
   MdVisibilityOff as VisibilityOff,
 } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
+import { getProxiedImageUrl } from 'utils/marketplace';
 
 import Modal from 'react-modal';
 import { ShareModal } from 'components/Elements';
@@ -46,7 +47,7 @@ const formatText = (text) => {
  */
 const downloadImage = async (info) => {
   const link = document.createElement('a');
-  link.href = await toDataURL(info.url);
+  link.href = await toDataURL(getProxiedImageUrl(info.url));
   link.download = `mue-${formatText(info.credit)}-${formatText(info.location)}.jpg`; // image is more likely to be webp or avif btw
   document.body.appendChild(link);
   link.click();
@@ -98,7 +99,7 @@ function PhotoInformation({ info, url, api }) {
     setWidth(event.target.width);
     setHeight(event.target.height);
   };
-  img.src = url;
+  img.src = getProxiedImageUrl(url);
 
   // info is still there because we want the favourite button to work
   if (localStorage.getItem('photoInformation') === 'false') {

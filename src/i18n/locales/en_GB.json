@@ -448,6 +448,8 @@
             "title": "Advanced",
             "offline_mode": "Offline mode",
             "offline_subtitle": "When enabled, all requests to online services will be disabled.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Data",
             "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Manage your data on Mue.",

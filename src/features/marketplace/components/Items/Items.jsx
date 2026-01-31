@@ -9,6 +9,7 @@ import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
 import { Tooltip } from 'components/Elements';
 import Dropdown from '../../../../components/Form/Settings/Dropdown/Dropdown';
+import { getProxiedImageUrl } from 'utils/marketplace';
 
 function filterItems(item, filter, categoryFilter) {
   const lowerCaseFilter = filter.toLowerCase();
@@ -101,7 +102,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
           className="item-icon"
           alt="icon"
           draggable={false}
-          src={item.icon_url}
+          src={getProxiedImageUrl(item.icon_url)}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = placeholderIcon;

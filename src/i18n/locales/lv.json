@@ -448,6 +448,8 @@
             "title": "Papildu",
             "offline_mode": "Bezsaistes režīms",
             "offline_subtitle": "Kad iespējots, visi pieprasījumi tiešsaistes pakalpojumiem tiks atspējoti.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Dati",
             "data_description": "Izvēlieties, vai eksportēt savus Mue iestatījumus uz datoru, importēt esošo iestatījumu failu vai atiestatīt iestatījumus uz noklusējuma vērtībām",
             "data_subtitle": "Pārvaldiet savus datus Mue.",

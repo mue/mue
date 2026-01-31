@@ -278,5 +278,9 @@
   {
     "name": "authorDetails",
     "value": true
+  },
+  {
+    "name": "marketplaceDDGProxy",
+    "value": false
   }
 ]

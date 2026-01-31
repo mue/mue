@@ -448,6 +448,8 @@
             "title": "Napredno",
             "offline_mode": "Način brez povezave",
             "offline_subtitle": "Ko je omogočen, bodo vse zahteve do spletnih storitev onemogočene.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Podatki",
             "data_description": "Izberite, ali želite izvoziti nastavitve Mue na svoj računalnik, uvoziti obstoječo datoteko nastavitev ali ponastaviti nastavitve na privzete vrednosti",
             "data_subtitle": "Upravljajte svoje podatke na Mue.",
