@@ -187,6 +187,10 @@
               "copy": "Kopyala",
               "tweet": "Tvitter",
               "favourite": "Sevimli"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Ekran",
             "display_subtitle": "Fon və foto məlumatlarının necə yüklənəcəyini dəyişdirin",
             "api": "API Parametrləri",
-            "api_subtitle": "Xarici xidmətdən (API) şəkil almaq üçün seçimlər"
+            "api_subtitle": "Xarici xidmətdən (API) şəkil almaq üçün seçimlər",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Axtarış",

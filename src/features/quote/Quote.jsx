@@ -5,6 +5,7 @@ import { ShareModal } from 'components/Elements';
 import { useQuoteState, useQuoteLoader, useQuoteActions } from './hooks';
 import { AuthorInfo, AuthorInfoLegacy } from './components';
 import EventBus from 'utils/eventbus';
+import { useFrequencyInterval } from '../../hooks/useFrequencyInterval';
 
 import './scss/index.scss';
 
@@ -37,6 +38,9 @@ export default function Quote() {
     toggleFavourite();
     setLocalIsFavourited(!localIsFavourited);
   };
+
+  // Set up frequency-based interval for automatic quote updates
+  useFrequencyInterval('quote', getQuote);
 
   useEffect(() => {
     const handleRefresh = (data) => {

@@ -187,6 +187,10 @@
               "copy": "显示复制按钮",
               "tweet": "显示发推按钮",
               "favourite": "显示收藏按钮"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "显示",
             "display_subtitle": "Change how background and photo information are loaded",
             "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)"
+            "api_subtitle": "Options for getting an image from an external service (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "搜索栏",

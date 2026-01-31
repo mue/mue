@@ -187,6 +187,10 @@
               "copy": "Kopēt",
               "tweet": "Tvītot",
               "favourite": "Pievienot izlasei"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Attēlošana",
             "display_subtitle": "Mainīt, kā tiek ielādēts fons un fotogrāfijas informācija",
             "api": "API iestatījumi",
-            "api_subtitle": "Opcijas attēla iegūšanai no ārēja pakalpojuma (API)"
+            "api_subtitle": "Opcijas attēla iegūšanai no ārēja pakalpojuma (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Meklēšana",

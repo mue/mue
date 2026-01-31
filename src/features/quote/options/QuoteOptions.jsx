@@ -12,6 +12,7 @@ import {
 } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Textarea } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
+import { FREQUENCY_OPTIONS } from 'utils/frequencyManager';
 
 const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
   const getCustom = () => {
@@ -120,6 +121,39 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
           { value: 'custom', text: variables.getMessage(`${QUOTE_SECTION}.custom`) },
         ]}
       />
+    );
+  };
+
+  const FrequencyOptions = () => {
+    return (
+      <Row>
+        <Content
+          title={variables.getMessage(`${QUOTE_SECTION}.frequency.title`)}
+          subtitle={variables.getMessage(`${QUOTE_SECTION}.frequency.subtitle`)}
+        />
+        <Action>
+          <Dropdown
+            name="quoteFrequency"
+            label={variables.getMessage(`${QUOTE_SECTION}.frequency.title`)}
+            onChange={(value) => {
+              localStorage.setItem('quoteStartTime', Date.now());
+              // Clear queue if switching from refresh to time-based frequency
+              const oldValue = localStorage.getItem('quoteFrequency');
+              if (oldValue === 'refresh' && value !== 'refresh') {
+                localStorage.removeItem('quoteQueue');
+              }
+              // Notify the frequency interval hook that the frequency changed
+              window.dispatchEvent(new CustomEvent('frequencyChanged', {
+                detail: { type: 'quote' }
+              }));
+            }}
+            items={FREQUENCY_OPTIONS.map((opt) => ({
+              value: opt.value,
+              text: variables.getMessage(opt.text),
+            }))}
+          />
+        </Action>
+      </Row>
     );
   };
 
@@ -282,6 +316,7 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
             <SourceDropdown />
           </Section>
           <ButtonOptions />
+          <FrequencyOptions />
           <AdditionalOptions />
         </PreferencesWrapper>
       )}

@@ -187,6 +187,10 @@
               "copy": "Kopieerknop",
               "tweet": "Tweetknop",
               "favourite": "Knop 'Toevoegen aan favorieten'"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Weergave",
             "display_subtitle": "Verander hoe achtergrond- en foto informatie geladen wordt",
             "api": "API Instellingen",
-            "api_subtitle": "Opties voor het verkrijgen van afbeeldingen van externe bronnen (API)"
+            "api_subtitle": "Opties voor het verkrijgen van afbeeldingen van externe bronnen (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Zoekbalk",

@@ -212,6 +212,14 @@
     "value": "quote_pack"
   },
   {
+    "name": "backgroundFrequency",
+    "value": "refresh"
+  },
+  {
+    "name": "quoteFrequency",
+    "value": "refresh"
+  },
+  {
     "name": "backgroundFilter",
     "value": "none"
   },

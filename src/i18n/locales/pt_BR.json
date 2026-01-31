@@ -187,6 +187,10 @@
               "copy": "Copiar",
               "tweet": "Tweetar",
               "favourite": "Favorito"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Tela",
             "display_subtitle": "Alterar como as informações de plano de fundo e foto são carregadas",
             "api": "Configurações da API",
-            "api_subtitle": "Opções para obter uma imagem de um serviço externo (API)"
+            "api_subtitle": "Opções para obter uma imagem de um serviço externo (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Pesquisar",

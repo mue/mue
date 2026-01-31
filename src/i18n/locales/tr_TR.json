@@ -187,6 +187,10 @@
               "copy": "Kopyala",
               "tweet": "Tweet'le",
               "favourite": "Favorilere Ekle"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Görüntüleme",
             "display_subtitle": "Arka plan ve fotoğraf bilgilerinin nasıl yükleneceğini değiştirin",
             "api": "API Ayarları",
-            "api_subtitle": "Harici bir hizmet (API) aracılığıyla görüntü alma seçeneklerini belirleyin."
+            "api_subtitle": "Harici bir hizmet (API) aracılığıyla görüntü alma seçeneklerini belirleyin.",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Arama",

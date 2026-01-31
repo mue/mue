@@ -187,6 +187,10 @@
               "copy": "Botón de copiar",
               "tweet": "Botón de Tweet",
               "favourite": "Botón de favoritos"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Mostrar",
             "display_subtitle": "Cambiar cómo se carga la información de fondo y de la foto",
             "api": "Configuración de la API",
-            "api_subtitle": "Opciones para obtener una imagen de un servicio externo (API)"
+            "api_subtitle": "Opciones para obtener una imagen de un servicio externo (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Búsqueda",

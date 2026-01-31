@@ -187,6 +187,10 @@
               "copy": "Kopijuoti",
               "tweet": "Tviteryje",
               "favourite": "Mėgstama"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Rodymas",
             "display_subtitle": "Keisti, kaip įkeliamas fonas ir nuotraukos informacija",
             "api": "API nustatymai",
-            "api_subtitle": "Parinktys paveikslėlio gavimui iš išorinės paslaugos (API)"
+            "api_subtitle": "Parinktys paveikslėlio gavimui iš išorinės paslaugos (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Paieška",

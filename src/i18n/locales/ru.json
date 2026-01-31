@@ -187,6 +187,10 @@
               "copy": "Кнопка копирования",
               "tweet": "Кнопка твита",
               "favourite": "Кнопка для оценки"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Отображать",
             "display_subtitle": "Изменение способа загрузки фона и информации о фотографии",
             "api": "Настройки API",
-            "api_subtitle": "Варианты получения изображения из внешнего сервиса (API)"
+            "api_subtitle": "Варианты получения изображения из внешнего сервиса (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Панель поиска",

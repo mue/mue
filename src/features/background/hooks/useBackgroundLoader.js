@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { getBackgroundData } from '../api/backgroundLoader';
+import { shouldUpdateByFrequency, resetStartTime } from 'utils/frequencyManager';
 
 /**
  * Hook for loading and refreshing background data
@@ -25,6 +26,7 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
       const data = await getBackgroundData();
       if (data) {
         updateBackground(data);
+        resetStartTime('background'); // Reset timestamp after successful load
       }
     } catch (error) {
       console.error('Failed to load background:', error);
@@ -34,21 +36,31 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
   }, [updateBackground]);
 
   const refreshBackground = useCallback(() => {
+    resetStartTime('background'); // Reset timer on manual refresh
     resetBackground();
     loadBackground();
   }, [loadBackground, resetBackground]);
 
-  // Initial load - only run once on mount
+  // Initial load - check frequency before loading
   useEffect(() => {
-    const changeMode = localStorage.getItem('backgroundchange');
-    const hasStartTime = localStorage.getItem('backgroundStartTime');
-
-    if (!hasStartTime || changeMode === 'refresh') {
-      localStorage.setItem('backgroundStartTime', Date.now());
+    // Check if we should update based on frequency
+    if (shouldUpdateByFrequency('background')) {
+      loadBackground();
+    } else {
+      // Load cached background without fetching new one
+      const cached = localStorage.getItem('currentBackground');
+      if (cached) {
+        try {
+          updateBackground(JSON.parse(cached));
+        } catch {
+          // If cache invalid, load new
+          loadBackground();
+        }
+      } else {
+        loadBackground();
+      }
     }
-
-    loadBackground();
-  }, [loadBackground]);
+  }, [loadBackground, updateBackground]);
 
   return { loadBackground, refreshBackground };
 }

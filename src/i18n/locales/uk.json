@@ -187,6 +187,10 @@
               "copy": "Скопіювати",
               "tweet": "Твітнути",
               "favourite": "Улюблене"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Відображати",
             "display_subtitle": "Зміна способу завантаження фону та інформації про фотографію",
             "api": "Налаштування API",
-            "api_subtitle": "Варіанти отримання зображення із зовнішнього сервісу (API)"
+            "api_subtitle": "Варіанти отримання зображення із зовнішнього сервісу (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Пошук",

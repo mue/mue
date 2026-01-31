@@ -187,6 +187,10 @@
               "copy": "نسخ",
               "tweet": "تغريد",
               "favourite": "إضافة إلى المفضلة"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "العرض",
             "display_subtitle": "تغيير طريقة تحميل الخلفية ومعلومات الصور",
             "api": "إعدادات الواجهة البرمجية",
-            "api_subtitle": "خيارات الحصول على صورة من خدمة خارجية (واجهة برمجية)"
+            "api_subtitle": "خيارات الحصول على صورة من خدمة خارجية (واجهة برمجية)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "البحث",

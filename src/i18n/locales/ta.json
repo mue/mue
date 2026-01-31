@@ -187,6 +187,10 @@
               "copy": "நகலெடு",
               "tweet": "ட்வீட்",
               "favourite": "பிடித்த"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "காட்சி",
             "display_subtitle": "பின்னணி மற்றும் புகைப்படத் தகவல்கள் எவ்வாறு ஏற்றப்படுகின்றன என்பதை மாற்றவும்",
             "api": "பநிஇ அமைப்புகள்",
-            "api_subtitle": "வெளிப்புற சேவையிலிருந்து (ஏபிஐ) படத்தைப் பெறுவதற்கான விருப்பங்கள்"
+            "api_subtitle": "வெளிப்புற சேவையிலிருந்து (ஏபிஐ) படத்தைப் பெறுவதற்கான விருப்பங்கள்",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "தேடல்",

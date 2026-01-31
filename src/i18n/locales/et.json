@@ -187,6 +187,10 @@
               "copy": "Kopeeri",
               "tweet": "Tweedi",
               "favourite": "Lisa lemmikuks"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
             }
           },
           "greeting": {
@@ -298,7 +302,16 @@
             "display": "Kuva",
             "display_subtitle": "Muuda tausta ja foto teabe laadimise viisi",
             "api": "API seaded",
-            "api_subtitle": "Valikud pildi saamiseks välisest teenusest (API)"
+            "api_subtitle": "Valikud pildi saamiseks välisest teenusest (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            }
           },
           "search": {
             "title": "Otsing",

@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import variables from 'config/variables';
 import offline_quotes from '../offline_quotes.json';
+import { shouldUpdateByFrequency, resetStartTime } from 'utils/frequencyManager';
 
 /**
  * Custom hook for loading quote data from various sources
@@ -278,6 +279,21 @@ export function useQuoteLoader(updateQuote) {
       localStorage.setItem('quotePrefetchEnabled', 'true');
     }
 
+    // Check if we should update based on frequency
+    if (!shouldUpdateByFrequency('quote')) {
+      // Load cached quote without fetching new one
+      const cached = localStorage.getItem('currentQuote');
+      if (cached) {
+        try {
+          const cachedQuote = JSON.parse(cached);
+          updateQuote(cachedQuote);
+          return;
+        } catch {
+          // If cache invalid, continue to fetch new
+        }
+      }
+    }
+
     // SPECIAL CASE: Favourite quote (highest priority, no queue)
     const favouriteQuote = localStorage.getItem('favouriteQuote');
     if (favouriteQuote) {
@@ -353,9 +369,10 @@ export function useQuoteLoader(updateQuote) {
       updateQuote(quoteData);
     }
 
-    // Step 4: Store current quote
+    // Step 4: Store current quote and reset timestamp
     try {
       localStorage.setItem('currentQuote', JSON.stringify(quoteData));
+      resetStartTime('quote'); // Reset timestamp after successfully updating quote
     } catch (e) {
       console.warn('Could not save currentQuote to localStorage:', e);
     }
