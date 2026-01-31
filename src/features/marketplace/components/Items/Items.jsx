@@ -129,7 +129,7 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
             </span>
           )}
           {item.in_collections && item.in_collections.length > 0 && !onCollection && (
-            <span className="card-collection">{item.in_collections[0]}</span>
+            <span className="card-collection">{item.in_collections[0].display_name || item.in_collections[0].name}</span>
           )}
         </div>
       </div>

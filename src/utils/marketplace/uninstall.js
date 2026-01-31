@@ -1,4 +1,5 @@
 import EventBus from 'utils/eventbus';
+import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 
 // todo: relocate this function
 function showReminder() {
@@ -67,7 +68,7 @@ export function uninstall(type, name) {
       }
       localStorage.removeItem('backgroundchange');
       // Clear image queue to ensure fresh background loads
-      localStorage.removeItem('imageQueue');
+      clearQueuesOnSettingChange('packUninstall');
       // Set refresh event to emit after installed data is saved
       refreshEvent = 'marketplacebackgrounduninstall';
       break;

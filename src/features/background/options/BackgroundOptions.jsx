@@ -2,6 +2,7 @@ import variables from 'config/variables';
 import { memo, useState, useEffect, useCallback, useRef } from 'react';
 import { MdSource, MdOutlineAutoAwesome } from 'react-icons/md';
 import EventBus from 'utils/eventbus';
+import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 
 import { Header } from 'components/Layout/Settings';
 import { Dropdown } from 'components/Form/Settings';
@@ -67,7 +68,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   const updateAPI = useCallback((e) => {
     localStorage.setItem('nextImage', null);
     // Clear prefetch queue when API changes to prevent showing cached images from old API
-    localStorage.removeItem('imageQueue');
+    clearQueuesOnSettingChange('backgroundAPI');
     if (e === 'mue') {
       setBackgroundCategories(backgroundCategoriesOG);
       setBackgroundAPI('mue');
@@ -190,7 +191,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
                 name="backgroundType"
                 onChange={(value) => {
                   // Clear prefetch queue when changing background type
-                  localStorage.removeItem('imageQueue');
+                  clearQueuesOnSettingChange('backgroundType');
                   setBackgroundType(value);
                   // Automatically refresh background when switching to custom images
                   if (value === 'custom') {
@@ -229,7 +230,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
             marketplaceEnabled={marketplaceEnabled}
             onTypeChange={(value) => {
               // Clear prefetch queue when changing background type
-              localStorage.removeItem('imageQueue');
+              clearQueuesOnSettingChange('backgroundType');
               setBackgroundType(value);
             }}
           />

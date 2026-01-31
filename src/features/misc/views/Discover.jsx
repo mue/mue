@@ -154,17 +154,33 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       switch (type) {
         case 'marketplace:item:install':
           if (payload?.item) {
-            installItem(payload.item.type, payload.item);
-            // Send confirmation back to iframe
-            if (iframeRef.current?.contentWindow) {
-              iframeRef.current.contentWindow.postMessage(
-                {
-                  type: 'marketplace:item:installed',
-                  payload: { id: payload.item.id || payload.item.name, installed: true },
-                },
-                MARKETPLACE_URL
-              );
-            }
+            // Fetch fresh data from API to ensure we get latest version with blur_hash
+            const itemId = payload.item.id || payload.item.name;
+            const itemType = payload.item.type;
+
+            fetch(`${variables.constants.API_URL}/marketplace/item/${itemId}`)
+              .then(res => res.json())
+              .then(({ data }) => {
+                // Install with fresh data from API
+                installItem(data.type, data);
+              })
+              .catch(error => {
+                console.error('Failed to fetch item from API, using iframe data:', error);
+                // Fallback to iframe data if API fetch fails
+                installItem(itemType, payload.item);
+              })
+              .finally(() => {
+                // Send confirmation back to iframe
+                if (iframeRef.current?.contentWindow) {
+                  iframeRef.current.contentWindow.postMessage(
+                    {
+                      type: 'marketplace:item:installed',
+                      payload: { id: itemId, installed: true },
+                    },
+                    MARKETPLACE_URL
+                  );
+                }
+              });
           }
           break;
 

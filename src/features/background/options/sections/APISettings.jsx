@@ -2,6 +2,7 @@ import variables from 'config/variables';
 import { Dropdown, Radio, Text, ChipSelect } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { APIQualityOptions } from '../optionTypes';
+import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 
 const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
   return (
@@ -36,7 +37,7 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
               name="apiCategories"
               onChange={() => {
                 // Clear prefetch queue when categories change
-                localStorage.removeItem('imageQueue');
+                clearQueuesOnSettingChange('apiCategories');
               }}
             />
           )}
@@ -49,7 +50,7 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
             items={APIQualityOptions}
             onChange={() => {
               // Clear prefetch queue when quality changes
-              localStorage.removeItem('imageQueue');
+              clearQueuesOnSettingChange('apiQuality');
             }}
           />
           <Radio
@@ -91,7 +92,7 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
               element="#backgroundImage"
               onChange={() => {
                 // Clear prefetch queue when Unsplash collections change
-                localStorage.removeItem('imageQueue');
+                clearQueuesOnSettingChange('unsplashCollections');
               }}
             />
           </Action>

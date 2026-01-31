@@ -1,4 +1,5 @@
 import EventBus from 'utils/eventbus';
+import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 
 // todo: relocate this function
 function showReminder() {
@@ -39,7 +40,7 @@ export function install(type, input, sideload, collection) {
       localStorage.setItem('backgroundType', 'photo_pack');
       localStorage.removeItem('backgroundchange');
       // Clear image queue to ensure fresh background loads
-      localStorage.removeItem('imageQueue');
+      clearQueuesOnSettingChange('packInstall');
       // Set refresh event to emit after installed data is saved
       refreshEvent = 'backgroundrefresh';
       break;

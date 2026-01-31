@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Check localStorage</title></head>
+<body>
+<h3>Checking installed photo packs...</h3>
+<pre id="output"></pre>
+<script>
+const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+const photoPacks = installed.filter(item => item.type === 'photos');
+
+document.getElementById('output').textContent = JSON.stringify(photoPacks, null, 2);
+
+// Check for blur_hash
+photoPacks.forEach(pack => {
+  console.log(`Pack: ${pack.name}`);
+  if (pack.photos && pack.photos.length > 0) {
+    console.log('First photo has blur_hash?', !!pack.photos[0].blur_hash);
+    console.log('First photo:', pack.photos[0]);
+  }
+});
+</script>
+</body>
+</html>
