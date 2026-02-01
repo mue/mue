@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Fotoşəkil müəllifi",
-      "unsplash": "Unsplash-da",
       "information": "Məlumat",
       "download": "Yüklə",
       "downloads": "Yükləmələr",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Aktivdir",
-        "open_knowledgebase": "Bilik Bazası Aç",
         "additional_settings": "Əlavə Parametrlər",
         "reminder": {
           "title": "XƏBƏRDARLIQ",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Axtarış",
             "additional": "Axtarış vidjeti ekranı və funksionallığı üçün əlavə seçimlər",
-            "search_engine": "Axtarış Motoru",
-            "search_engine_subtitle": "Axtarış çubuğunda istifadə ediləcək axtarış motorunu seçin",
-            "custom": "Xüsusi Axtarış URL-i",
-            "autocomplete": "Avtomatik tamamlama",
-            "autocomplete_provider": "Avtomatik Tamamlama Təchizatçısı",
-            "autocomplete_provider_subtitle": "Avtomatik tamamlama açılan nəticələr üçün istifadə ediləcək axtarış motoru",
             "voice_search": "Səsli axtarış",
             "dropdown": "Axtarış Açılan Siyahısı",
             "focus": "Vərəqi açarkən fokusla",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "{author} tərəfindən",
         "all": "Hamısı",
-        "learn_more": "Daha çox öyrən",
         "photo_packs": "Foto Paketləri",
         "quote_packs": "Sitat Paketləri",
         "preset_settings": "Hazır Parametrlər",
-        "no_items": "Bu kateqoriyada heç bir maddə yoxdur",
-        "collection": "Kolleksiya",
-        "explore_collection": "Kolleksiyanı Kəşf et",
-        "add_all": "Hamısını Mue-ya Əlavə et",
         "collections": "Kolleksiyalar",
-        "cant_find": "Axtardığınızı tapa bilmirsiniz?",
-        "knowledgebase_one": "Ziyarət edin",
-        "knowledgebase_two": "bilik bazası",
-        "knowledgebase_three": "özünüz yaratmaq üçün.",
-        "installing": "Quraşdırılır",
-        "product": {
-          "overview": "Ümumi Baxış",
-          "information": "Məlumat",
-          "last_updated": "Son Yenilənmə",
-          "description": "Təsvir",
-          "details": "Detallar",
-          "more_from_curator": "{name} tərəfindən buna bənzər daha çox",
-          "show_more": "Daha çox göstər",
-          "show_less": "Daha az göstər",
-          "show_all": "Hamısını göstər",
-          "showing": "Göstərilir",
-          "no_images": "Şəkil sayı",
-          "no_quotes": "Sitat sayı",
-          "version": "Versiya",
-          "created_by": "Yaradıcı",
-          "updated_at": "Yeniləmə tarixi",
-          "part_of": "Bir hissəsi",
-          "explore": "Kəşf et",
-          "buttons": {
-            "addtomue": "Mue-ya Əlavə et",
-            "remove": "Sil",
-            "update_addon": "Əlavəni Yenilə",
-            "back": "Geri",
-            "report": "Bildir",
-            "not_available_preview": "Önizləmədə Mövcud Deyil"
-          },
-          "not_in_language": "Bu əlavə sizin dilinizdə deyil",
-          "third_party_api": "Bu əlavə üçüncü tərəf API istifadə edir",
-          "sideload_warning": "Bu əlavə yan tərəfdən yüklənmişdir.",
-          "setting": "Parametr",
-          "value": "Dəyər"
-        },
         "offline": {
           "title": "Görünür, oflaynsınız",
           "description": "Zəhmət olmasa internetə qoşulun"
@@ -666,24 +616,7 @@
           "newest": "Quraşdırılmış (Ən yeni)",
           "a_z": "Əlifba sırası (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Yarat",
-          "moved_title": "Əlavə yaratma yeri dəyişdirildi!",
-          "moved_description": "7.1 yeniləməsindən sonra əlavələrin yaradılması indi veb UI-ya köçürülüb",
-          "moved_button": "Tezliklə..."
         }
-      }
-    },
-    "update": {
-      "title": "Yeniləmə",
-      "offline": {
-        "title": "Oflayn",
-        "description": "Oflayn rejimdə yeniləmə qeydlərini əldə etmək mümkün deyil"
-      },
-      "error": {
-        "title": "Xəta",
-        "description": "Serverə qoşulmaq alınmadı"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Keçidi kopyala",
-      "email": "E-poçt"
+      "copy_link": "Keçidi kopyala"
     }
   },
   "toasts": {

@@ -64,6 +64,7 @@
     "dev:host": "vite --host",
     "translations": "cd scripts && node updatetranslations.cjs",
     "translations:percentages": "node scripts/updateTranslationPercentages.cjs",
+    "translations:unused": "node scripts/findUnusedTranslations.cjs",
     "build": "vite build",
     "pretty": "prettier --write \"./**/*.{js,jsx,json,scss,css}\"",
     "lint": "eslint \"./src/**/*.{js,jsx}\" && stylelint \"./src/**/*.{scss,css}\"",

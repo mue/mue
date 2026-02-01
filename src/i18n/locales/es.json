@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Foto por",
-      "unsplash": "en Unsplash",
       "information": "Información",
       "download": "Descargar",
       "downloads": "Descargas",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Activado",
-        "open_knowledgebase": "Abrir la base de conocimiento",
         "additional_settings": "Ajustes adicionales",
         "reminder": {
           "title": "AVISO",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Búsqueda",
             "additional": "Opciones adicionales para la visualización y funcionalidad del widget de búsqueda",
-            "search_engine": "Motor de búsqueda",
-            "search_engine_subtitle": "Elija el motor de búsqueda para usar en la barra de búsqueda",
-            "custom": "URL de búsqueda personalizada",
-            "autocomplete": "Autocompletado",
-            "autocomplete_provider": "Proveedor del autocompletado",
-            "autocomplete_provider_subtitle": "Motor de búsqueda para los resultados desplegables de autocompletar",
             "voice_search": "Búsqueda por voz",
             "dropdown": "Menú desplegable de búsqueda",
             "focus": "Centrarse en la pestaña abierta",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "por {author}",
         "all": "Todo",
-        "learn_more": "Más información",
         "photo_packs": "Paquetes de fotos",
         "quote_packs": "Paquetes de citas",
         "preset_settings": "Ajustes preestablecidos",
-        "no_items": "No hay artículos en esta categoría",
-        "collection": "Colección",
-        "explore_collection": "Explorar la colección",
-        "add_all": "Añadir todo a Mue",
         "collections": "Colecciones",
-        "cant_find": "¿No encuentra lo que busca?",
-        "knowledgebase_one": "Visite la",
-        "knowledgebase_two": "Base de conocimiento",
-        "knowledgebase_three": "para crear la suya propia.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Vista general",
-          "information": "Información",
-          "last_updated": "Última actualización",
-          "description": "Descripción",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Mostrar más",
-          "show_less": "Mostrar menos",
-          "show_all": "Mostrar todo",
-          "showing": "Mostrando",
-          "no_images": "Sin imágenes",
-          "no_quotes": "Sin citas",
-          "version": "Versión",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Parte de",
-          "explore": "Explorar",
-          "buttons": {
-            "addtomue": "Añadir a Mue",
-            "remove": "Desinstalar",
-            "update_addon": "Actualizar complemento",
-            "back": "Atrás",
-            "report": "Informe",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Ajustes",
-          "value": "Valor"
-        },
         "offline": {
           "title": "Parece que estás desconectado",
           "description": "Por favor conéctate a Internet"
@@ -666,24 +616,7 @@
           "newest": "Instalado (Nuevos)",
           "a_z": "Alfabético (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Crear",
-          "moved_title": "¡Crear complemento se ha movido!",
-          "moved_description": "Tras la actualización 7.1, la creación de complementos se ha trasladado a la interfaz web",
-          "moved_button": "Muy pronto...."
         }
-      }
-    },
-    "update": {
-      "title": "Actualizar",
-      "offline": {
-        "title": "Sin conexión",
-        "description": "No se pueden obtener actualizaciones en modo sin conexión"
-      },
-      "error": {
-        "title": "Error",
-        "description": "No se pudo conectar con el servidor"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Copiar enlace",
-      "email": "Correo electrónico"
+      "copy_link": "Copiar enlace"
     }
   },
   "toasts": {

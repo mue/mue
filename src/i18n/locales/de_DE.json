@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Foto von",
-      "unsplash": "unsplash.com",
       "information": "Informationen",
       "download": "Download",
       "downloads": "Downloads",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Aktivieren",
-        "open_knowledgebase": "Offene Wissensdatenbank",
         "additional_settings": "Zusätzliche Einstellungen",
         "reminder": {
           "title": "HINWEIS",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Suche",
             "additional": "Zusätzliche Optionen für die Anzeige und Funktionalität des Such-Widgets",
-            "search_engine": "Suchmaschine",
-            "search_engine_subtitle": "Wählen Sie die zu verwendende Suchmaschine in der Suchleiste",
-            "custom": "Abfrage-URL",
-            "autocomplete": "Autovervollständigen",
-            "autocomplete_provider": "Anbieter von Autovervollständigung",
-            "autocomplete_provider_subtitle": "Suchmaschine für die automatische Vervollständigung der Dropdown-Ergebnisse",
             "voice_search": "Sprachsuche",
             "dropdown": "Auswahlmenü Suche",
             "focus": "Fokus auf geöffneten Tab",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "von {author}",
         "all": "Alle",
-        "learn_more": "Lerne mehr",
         "photo_packs": "Fotopakete",
         "quote_packs": "Zitat-Pakete",
         "preset_settings": "Voreingestellte Einstellungen",
-        "no_items": "Keine Einträge in dieser Kategorie",
-        "collection": "Sammlung",
-        "explore_collection": "Sammlung erkunden",
-        "add_all": "Alle zu Mue hinzufügen",
         "collections": "Sammlungen",
-        "cant_find": "Sie können nicht finden, was Sie suchen?",
-        "knowledgebase_one": "Besuchen Sie die",
-        "knowledgebase_two": "Wissensdatenbank",
-        "knowledgebase_three": "um Ihr eigenes zu erstellen.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Übersicht",
-          "information": "Information",
-          "last_updated": "Letzte Aktualisierung",
-          "description": "Beschreibung",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Mehr anzeigen",
-          "show_less": "Weniger anzeigen",
-          "show_all": "Alle anzeigen",
-          "showing": "Anzeigen",
-          "no_images": "Keine Bilder",
-          "no_quotes": "Keine Zitate",
-          "version": "Version",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Teil von",
-          "explore": "Erkunden",
-          "buttons": {
-            "addtomue": "Zu Mue hinzufügen",
-            "remove": "Entfernen",
-            "update_addon": "Update Add-on",
-            "back": "Zurück",
-            "report": "Melden",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Einstellung",
-          "value": "Wert"
-        },
         "offline": {
           "title": "Sieht aus, als ob Sie offline sind",
           "description": "Bitte stellen Sie eine Verbindung zum Internet her"
@@ -666,24 +616,7 @@
           "newest": "Installiert (Neueste)",
           "a_z": "Alphabetisch (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Erstellen",
-          "moved_title": "Add-on erstellen wurde verschoben!",
-          "moved_description": "Mit dem 7.1-Update wurde die Erstellung von Addons auf die Web-UI verlagert",
-          "moved_button": "Los geht's"
         }
-      }
-    },
-    "update": {
-      "title": "Update",
-      "offline": {
-        "title": "Offline",
-        "description": "Update-Protokolle können im Offline-Modus nicht abgerufen werden"
-      },
-      "error": {
-        "title": "Fehler",
-        "description": "Konnte keine Verbindung zum Server herstellen"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Link kopieren",
-      "email": "E-Mail"
+      "copy_link": "Link kopieren"
     }
   },
   "toasts": {

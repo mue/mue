@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Fotogrāfijas autors",
-      "unsplash": "Unsplash",
       "information": "Informācija",
       "download": "Lejupielādēt",
       "downloads": "Lejupielādes",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Iespējots",
-        "open_knowledgebase": "Atvērt zināšanu bāzi",
         "additional_settings": "Papildu iestatījumi",
         "reminder": {
           "title": "PAZIŅOJUMS",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Meklēšana",
             "additional": "Papildu opcijas meklēšanas logrīka attēlošanai un funkcionalitātei",
-            "search_engine": "Meklētājprogramma",
-            "search_engine_subtitle": "Izvēlieties meklētājprogrammu, ko izmantot meklēšanas joslā",
-            "custom": "Pielāgots meklēšanas URL",
-            "autocomplete": "Automātiskā pabeigšana",
-            "autocomplete_provider": "Automātiskās pabeigšanas nodrošinātājs",
-            "autocomplete_provider_subtitle": "Meklētājprogramma, ko izmantot automātiskās pabeigšanas nolaižamā saraksta rezultātiem",
             "voice_search": "Balss meklēšana",
             "dropdown": "Meklēšanas nolaižamais saraksts",
             "focus": "Fokuss cilnes atvēršanā",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "autors {author}",
         "all": "Visi",
-        "learn_more": "Uzzināt vairāk",
         "photo_packs": "Fotogrāfiju pakotnes",
         "quote_packs": "Citātu pakotnes",
         "preset_settings": "Iepriekš iestatīti iestatījumi",
-        "no_items": "Nav vienumu šajā kategorijā",
-        "collection": "Kolekcija",
-        "explore_collection": "Izpētīt kolekciju",
-        "add_all": "Pievienot visus Mue",
         "collections": "Kolekcijas",
-        "cant_find": "Nevarat atrast to, ko meklējat?",
-        "knowledgebase_one": "Apmeklējiet",
-        "knowledgebase_two": "zināšanu bāzi",
-        "knowledgebase_three": "lai izveidotu savu.",
-        "installing": "Instalē",
-        "product": {
-          "overview": "Pārskats",
-          "information": "Informācija",
-          "last_updated": "Pēdējoreiz atjaunināts",
-          "description": "Apraksts",
-          "details": "Detaļas",
-          "more_from_curator": "Vairāk līdzīgu no {name}",
-          "show_more": "Rādīt vairāk",
-          "show_less": "Rādīt mazāk",
-          "show_all": "Rādīt visus",
-          "showing": "Rāda",
-          "no_images": "Attēlu skaits",
-          "no_quotes": "Citātu skaits",
-          "version": "Versija",
-          "created_by": "Izveidoja",
-          "updated_at": "Atjaunināts",
-          "part_of": "Daļa no",
-          "explore": "Izpētīt",
-          "buttons": {
-            "addtomue": "Pievienot Mue",
-            "remove": "Noņemt",
-            "update_addon": "Atjaunināt paplašinājumu",
-            "back": "Atpakaļ",
-            "report": "Ziņot",
-            "not_available_preview": "Nav pieejams priekšskatījumā"
-          },
-          "not_in_language": "Šis paplašinājums nav jūsu valodā",
-          "third_party_api": "Šis paplašinājums izmanto trešās puses API",
-          "sideload_warning": "Šis paplašinājums ir ielādēts no malas.",
-          "setting": "Iestatījums",
-          "value": "Vērtība"
-        },
         "offline": {
           "title": "Izskatās, ka esat bezsaistē",
           "description": "Lūdzu, izveidojiet savienojumu ar internetu"
@@ -666,24 +616,7 @@
           "newest": "Instalēts (Jaunākais)",
           "a_z": "Alfabētiski (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Izveidot",
-          "moved_title": "Paplašinājuma izveide ir pārvietota!",
-          "moved_description": "Pēc 7.1 atjauninājuma paplašinājumu izveide tagad ir pārvietota uz tīmekļa saskarni",
-          "moved_button": "Drīzumā...."
         }
-      }
-    },
-    "update": {
-      "title": "Atjaunināt",
-      "offline": {
-        "title": "Bezsaistē",
-        "description": "Nevar iegūt atjauninājumu žurnālus bezsaistes režīmā"
-      },
-      "error": {
-        "title": "Kļūda",
-        "description": "Nevarēja izveidot savienojumu ar serveri"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Kopēt saiti",
-      "email": "E-pasts"
+      "copy_link": "Kopēt saiti"
     }
   },
   "toasts": {

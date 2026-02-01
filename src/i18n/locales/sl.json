@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Fotografija od",
-      "unsplash": "na Unsplash",
       "information": "Informacije",
       "download": "Prenesi",
       "downloads": "Prenosi",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Omogočeno",
-        "open_knowledgebase": "Odpri bazo znanja",
         "additional_settings": "Dodatne nastavitve",
         "reminder": {
           "title": "OPOMNIK",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Iskanje",
             "additional": "Dodatne možnosti za prikaz in funkcionalnost pripomočka za iskanje",
-            "search_engine": "Iskalnik",
-            "search_engine_subtitle": "Izberite iskalnik za uporabo v iskalni vrstici",
-            "custom": "Lastni URL iskanja",
-            "autocomplete": "Samodejno dokončanje",
-            "autocomplete_provider": "Ponudnik samodejnega dokončanja",
-            "autocomplete_provider_subtitle": "Iskalnik za uporabo pri rezultatih samodejnega dokončanja v spustnem meniju",
             "voice_search": "Glasovno iskanje",
             "dropdown": "Spustni meni iskanja",
             "focus": "Osredotoči se ob odprtju zavihka",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "avtor {author}",
         "all": "Vse",
-        "learn_more": "Več informacij",
         "photo_packs": "Paketi fotografij",
         "quote_packs": "Paketi citatov",
         "preset_settings": "Prednastavljene nastavitve",
-        "no_items": "V tej kategoriji ni elementov",
-        "collection": "Zbirka",
-        "explore_collection": "Raziskuj zbirko",
-        "add_all": "Dodaj vse v Mue",
         "collections": "Zbirke",
-        "cant_find": "Ne najdete, kar iščete?",
-        "knowledgebase_one": "Obiščite",
-        "knowledgebase_two": "bazo znanja",
-        "knowledgebase_three": "za ustvarjanje lastnih.",
-        "installing": "Nameščanje",
-        "product": {
-          "overview": "Pregled",
-          "information": "Informacije",
-          "last_updated": "Zadnja posodobitev",
-          "description": "Opis",
-          "details": "Podrobnosti",
-          "more_from_curator": "Več takšnih od {name}",
-          "show_more": "Prikaži več",
-          "show_less": "Prikaži manj",
-          "show_all": "Prikaži vse",
-          "showing": "Prikazujem",
-          "no_images": "Št. slik",
-          "no_quotes": "Št. citatov",
-          "version": "Različica",
-          "created_by": "Ustvaril",
-          "updated_at": "Posodobljeno dne",
-          "part_of": "Del",
-          "explore": "Raziskuj",
-          "buttons": {
-            "addtomue": "Dodaj v Mue",
-            "remove": "Odstrani",
-            "update_addon": "Posodobi dodatek",
-            "back": "Nazaj",
-            "report": "Prijavi",
-            "not_available_preview": "Ni na voljo v predogledu"
-          },
-          "not_in_language": "Ta dodatek ni v vašem jeziku",
-          "third_party_api": "Ta dodatek uporablja API tretje osebe",
-          "sideload_warning": "Ta dodatek je bil stransko naložen.",
-          "setting": "Nastavitev",
-          "value": "Vrednost"
-        },
         "offline": {
           "title": "Videti je, da ste brez povezave",
           "description": "Prosimo, povežite se z internetom"
@@ -666,24 +616,7 @@
           "newest": "Nameščeno (najnovejše)",
           "a_z": "Abecedno (A-Ž)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Ustvari",
-          "moved_title": "Ustvarjanje dodatka je bilo premaknjeno!",
-          "moved_description": "Po posodobitvi 7.1 se je ustvarjanje dodatkov preselilo v spletni vmesnik",
-          "moved_button": "Kmalu na voljo..."
         }
-      }
-    },
-    "update": {
-      "title": "Posodobitev",
-      "offline": {
-        "title": "Brez povezave",
-        "description": "Ni mogoče pridobiti dnevnikov posodobitev v načinu brez povezave"
-      },
-      "error": {
-        "title": "Napaka",
-        "description": "Ni bilo mogoče povezati s strežnikom"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Kopiraj povezavo",
-      "email": "E-pošta"
+      "copy_link": "Kopiraj povezavo"
     }
   },
   "toasts": {

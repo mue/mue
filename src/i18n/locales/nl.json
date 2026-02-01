@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Foto van",
-      "unsplash": "op Unsplash",
       "information": "Information",
       "download": "Download",
       "downloads": "Downloaden",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Ingeschakeld",
-        "open_knowledgebase": "Open Kennisbank",
         "additional_settings": "Aanvullende Instellingen",
         "reminder": {
           "title": "AANKONDIGING",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Zoekbalk",
             "additional": "Extra instellingen voor zoek widget uiterlijk en functionaliteit",
-            "search_engine": "Zoekmachine",
-            "search_engine_subtitle": "Kies zoekmachine die gebruikt wordt in de zoekbalk",
-            "custom": "Aangepaste zoekmachine-url",
-            "autocomplete": "Autocomplete",
-            "autocomplete_provider": "Autocomplete Provider",
-            "autocomplete_provider_subtitle": "Zoekmachine om te gebruiken voor automatisch aanvullen resultaten",
             "voice_search": "Spraakgestuurd zoeken gebruiken",
             "dropdown": "Search dropdown",
             "focus": "Focus op tabblad openen",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "Door {author}",
         "all": "Alles",
-        "learn_more": "Meer Informatie",
         "photo_packs": "Fotoverzamelingen",
         "quote_packs": "Citaatverzamelingen",
         "preset_settings": "Voorinstellingen",
-        "no_items": "No items in this category",
-        "collection": "Collectie",
-        "explore_collection": "Verken Collectie",
-        "add_all": "Voeg alles toe aan Mue",
         "collections": "Collecties",
-        "cant_find": "Kan je niet vinden waar je naar opzoek was?",
-        "knowledgebase_one": "Bezoek de",
-        "knowledgebase_two": "kennisbank",
-        "knowledgebase_three": "Om je eigen te creëren.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Overzicht",
-          "information": "Informatie",
-          "last_updated": "Laatst geüpdatet",
-          "description": "Beschrijving",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Toon Meer",
-          "show_less": "Toon Minder",
-          "show_all": "Toon Alles",
-          "showing": "Tonen",
-          "no_images": "Geen. Foto's",
-          "no_quotes": "Geen. Citaten",
-          "version": "Versie",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Deel van",
-          "explore": "Verken",
-          "buttons": {
-            "addtomue": "Toevoegen aan Mue",
-            "remove": "Verwijderen",
-            "update_addon": "Update Add-on",
-            "back": "Terug",
-            "report": "Rapporteer",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Instelling",
-          "value": "Waarde"
-        },
         "offline": {
           "title": "Het lijkt er op dat je niet verbonden bent het internet",
           "description": "Maak verbinding met het internet"
@@ -666,24 +616,7 @@
           "newest": "Installed (Newest)",
           "a_z": "Alphabetical (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Create",
-          "moved_title": "Creëer extensies is verplaatst!",
-          "moved_description": "Na de 7.1-update is het maken van extensies nu verplaatst naar de webinterface",
-          "moved_button": "Begin"
         }
-      }
-    },
-    "update": {
-      "title": "Update",
-      "offline": {
-        "title": "Offline",
-        "description": "Cannot get update logs while in offline mode"
-      },
-      "error": {
-        "title": "Error",
-        "description": "Could not connect to the server"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Kopieer link",
-      "email": "E-mail"
+      "copy_link": "Kopieer link"
     }
   },
   "toasts": {

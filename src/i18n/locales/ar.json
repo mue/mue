@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "الصورة بواسطة",
-      "unsplash": "على Unsplash",
       "information": "معلومات",
       "download": "تنزيل",
       "downloads": "التنزيلات",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "مفعّل",
-        "open_knowledgebase": "فتح قاعدة المعرفة",
         "additional_settings": "إعدادات إضافية",
         "reminder": {
           "title": "تنبيه",
@@ -316,12 +314,6 @@
           "search": {
             "title": "البحث",
             "additional": "خيارات إضافية لعرض ووظائف عنصر البحث",
-            "search_engine": "محرك البحث",
-            "search_engine_subtitle": "اختر محرك البحث لاستخدامه في شريط البحث",
-            "custom": "رابط بحث مخصص",
-            "autocomplete": "الإكمال التلقائي",
-            "autocomplete_provider": "مزود الإكمال التلقائي",
-            "autocomplete_provider_subtitle": "محرك البحث لنتائج القائمة المنسدلة للإكمال التلقائي",
             "voice_search": "البحث الصوتي",
             "dropdown": "قائمة البحث المنسدلة",
             "focus": "التركيز عند فتح علامة التبويب",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "بواسطة {author}",
         "all": "الكل",
-        "learn_more": "معرفة المزيد",
         "photo_packs": "حزم الصور",
         "quote_packs": "حزم الاقتباسات",
         "preset_settings": "إعدادات مسبقة",
-        "no_items": "لا توجد عناصر في هذه الفئة",
-        "collection": "مجموعة",
-        "explore_collection": "استكشاف المجموعة",
-        "add_all": "إضافة الكل إلى Mue",
         "collections": "المجموعات",
-        "cant_find": "لا تجد ما تبحث عنه؟",
-        "knowledgebase_one": "قم بزيارة",
-        "knowledgebase_two": "قاعدة المعرفة",
-        "knowledgebase_three": "لإنشاء ما يناسبك.",
-        "installing": "جارٍ التثبيت",
-        "product": {
-          "overview": "نظرة عامة",
-          "information": "معلومات",
-          "last_updated": "آخر تحديث",
-          "description": "الوصف",
-          "details": "التفاصيل",
-          "more_from_curator": "المزيد من {name}",
-          "show_more": "إظهار المزيد",
-          "show_less": "إظهار أقل",
-          "show_all": "إظهار الكل",
-          "showing": "يتم العرض",
-          "no_images": "عدد الصور",
-          "no_quotes": "عدد الاقتباسات",
-          "version": "الإصدار",
-          "created_by": "أنشأها",
-          "updated_at": "تم التحديث في",
-          "part_of": "جزء من",
-          "explore": "استكشاف",
-          "buttons": {
-            "addtomue": "إضافة إلى Mue",
-            "remove": "إزالة",
-            "update_addon": "تحديث الإضافة",
-            "back": "رجوع",
-            "report": "الإبلاغ",
-            "not_available_preview": "غير متاح في المعاينة"
-          },
-          "not_in_language": "هذه الإضافة غير متوفرة بلغتك",
-          "third_party_api": "تستخدم هذه الإضافة واجهة برمجية تابعة لجهة خارجية",
-          "sideload_warning": "تم تثبيت هذه الإضافة جانبيًا.",
-          "setting": "الإعداد",
-          "value": "القيمة"
-        },
         "offline": {
           "title": "يبدو أنك غير متصل",
           "description": "يرجى الاتصال بالإنترنت"
@@ -666,24 +616,7 @@
           "newest": "المثبتة (الأحدث)",
           "a_z": "أبجدي (أ-ي)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "إنشاء",
-          "moved_title": "تم نقل إنشاء الإضافة!",
-          "moved_description": "بعد تحديث 7.1، تم نقل إنشاء الإضافات الآن إلى واجهة الويب",
-          "moved_button": "قريبًا..."
         }
-      }
-    },
-    "update": {
-      "title": "تحديث",
-      "offline": {
-        "title": "غير متصل",
-        "description": "لا يمكن الحصول على سجلات التحديث في وضع عدم الاتصال"
-      },
-      "error": {
-        "title": "خطأ",
-        "description": "تعذر الاتصال بالخادم"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "نسخ الرابط",
-      "email": "البريد الإلكتروني"
+      "copy_link": "نسخ الرابط"
     }
   },
   "toasts": {

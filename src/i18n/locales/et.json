@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Foto autor",
-      "unsplash": "Unsplashis",
       "information": "Teave",
       "download": "Lae alla",
       "downloads": "Allalaadimised",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Lubatud",
-        "open_knowledgebase": "Ava teadmusbaas",
         "additional_settings": "Lisaseaded",
         "reminder": {
           "title": "MÄRKUS",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Otsing",
             "additional": "Lisavalikud otsingu vidina kuvamiseks ja funktsionaalsuseks",
-            "search_engine": "Otsingumootor",
-            "search_engine_subtitle": "Vali otsinguriba jaoks kasutatav otsingumootor",
-            "custom": "Kohandatud otsingu URL",
-            "autocomplete": "Automaatne lõpetamine",
-            "autocomplete_provider": "Automaatse lõpetamise pakkuja",
-            "autocomplete_provider_subtitle": "Otsingumootor, mida kasutada automaatse lõpetamise rippmenüü tulemusteks",
             "voice_search": "Häälega otsing",
             "dropdown": "Otsingu rippmenüü",
             "focus": "Fookus vahekaardi avamisel",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "autor: {author}",
         "all": "Kõik",
-        "learn_more": "Loe lähemalt",
         "photo_packs": "Fotokomplektid",
         "quote_packs": "Tsitaadikomplektid",
         "preset_settings": "Eelseadistatud seaded",
-        "no_items": "Selles kategoorias pole üksusi",
-        "collection": "Kollektsioon",
-        "explore_collection": "Uuri kollektsiooni",
-        "add_all": "Lisa kõik Muesse",
         "collections": "Kollektsioonid",
-        "cant_find": "Ei leia, mida otsid?",
-        "knowledgebase_one": "Külasta",
-        "knowledgebase_two": "teadmusbaasi",
-        "knowledgebase_three": "oma loomiseks.",
-        "installing": "Installimine",
-        "product": {
-          "overview": "Ülevaade",
-          "information": "Teave",
-          "last_updated": "Viimati uuendatud",
-          "description": "Kirjeldus",
-          "details": "Üksikasjad",
-          "more_from_curator": "Rohkem sarnaseid autorilt {name}",
-          "show_more": "Näita rohkem",
-          "show_less": "Näita vähem",
-          "show_all": "Näita kõiki",
-          "showing": "Näidatakse",
-          "no_images": "Piltide arv",
-          "no_quotes": "Tsitaatide arv",
-          "version": "Versioon",
-          "created_by": "Loodud",
-          "updated_at": "Uuendatud",
-          "part_of": "Osa",
-          "explore": "Uuri",
-          "buttons": {
-            "addtomue": "Lisa Muesse",
-            "remove": "Eemalda",
-            "update_addon": "Uuenda lisa",
-            "back": "Tagasi",
-            "report": "Teata",
-            "not_available_preview": "Pole eelvaates saadaval"
-          },
-          "not_in_language": "See lisa pole sinu keeles",
-          "third_party_api": "See lisa kasutab kolmanda osapoole API-t",
-          "sideload_warning": "See lisa on kõrvalt laaditud.",
-          "setting": "Seade",
-          "value": "Väärtus"
-        },
         "offline": {
           "title": "Tundub, et oled võrguühenduseta",
           "description": "Palun loo internetiühendus"
@@ -666,24 +616,7 @@
           "newest": "Installitud (uusimad)",
           "a_z": "Tähestikuline (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Loo",
-          "moved_title": "Lisa loomine on kolinud!",
-          "moved_description": "Pärast 7.1 versiooni uuendust on lisade loomine nüüd kolinud veebi kasutajaliidesesse",
-          "moved_button": "Tulemas...."
         }
-      }
-    },
-    "update": {
-      "title": "Uuenda",
-      "offline": {
-        "title": "Võrguühenduseta",
-        "description": "Võrguühenduseta režiimis ei saa uuenduste logisid hankida"
-      },
-      "error": {
-        "title": "Viga",
-        "description": "Serveriga ei õnnestunud ühendust luua"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Kopeeri link",
-      "email": "E-post"
+      "copy_link": "Kopeeri link"
     }
   },
   "toasts": {

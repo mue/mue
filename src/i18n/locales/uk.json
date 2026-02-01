@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Фотографія зроблена",
-      "unsplash": "на Unsplash",
       "information": "Інформація",
       "download": "Завантажити'",
       "downloads": "Завантаження",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Увімкнено",
-        "open_knowledgebase": "Відкрита база знань",
         "additional_settings": "Додаткові налаштування",
         "reminder": {
           "title": "ЗАМІТКА",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Пошук",
             "additional": "Додаткові параметри відображення та функціональності пошукового віджета",
-            "search_engine": "Пошукова система",
-            "search_engine_subtitle": "Виберіть пошукову систему в рядку пошуку",
-            "custom": "Користувацька URL-адреса пошуку",
-            "autocomplete": "Автозаповнення",
-            "autocomplete_provider": "Провайдер автозаповнення",
-            "autocomplete_provider_subtitle": "Пошукова система для автоматичного заповнення випадаючих результатів",
             "voice_search": "Голосовий пошук",
             "dropdown": "Випадаючий список пошуку",
             "focus": "Фокус на відкритій вкладці",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "від {author}",
         "all": "Усе",
-        "learn_more": "Дізнатися більше",
         "photo_packs": "Набори фото",
         "quote_packs": "Набори цитат",
         "preset_settings": "Пресети налаштувань",
-        "no_items": "У цій категорії немає елементів",
-        "collection": "Колекція",
-        "explore_collection": "Дослідити колекцію",
-        "add_all": "Додати все до Муе",
         "collections": "Колекції",
-        "cant_find": "Не можете знайти те, що шукаєте?",
-        "knowledgebase_one": "Завітайте на сторінку",
-        "knowledgebase_two": "база знань",
-        "knowledgebase_three": "щоб створити свій власний.",
-        "installing": "Встановлення",
-        "product": {
-          "overview": "Огляд",
-          "information": "Інформація",
-          "last_updated": "Останнє оновлення",
-          "description": "Опис",
-          "details": "Деталі",
-          "more_from_curator": "Більше схоже на це від {name}",
-          "show_more": "Показати більше",
-          "show_less": "Показати менше",
-          "show_all": "Показати всі",
-          "showing": "Показати",
-          "no_images": "Ні. Зображення",
-          "no_quotes": "Ні. Цитати",
-          "version": "Версія",
-          "created_by": "Створено",
-          "updated_at": "Оновлено на",
-          "part_of": "Частина",
-          "explore": "Дослідити",
-          "buttons": {
-            "addtomue": "Додати до",
-            "remove": "Видалити",
-            "update_addon": "Оновлення доповнення",
-            "back": "Назад",
-            "report": "Звіт",
-            "not_available_preview": "Недоступно в режимі попереднього перегляду"
-          },
-          "not_in_language": "Це доповнення недоступне вашою мовою",
-          "third_party_api": "Це доповнення використовує сторонній API",
-          "sideload_warning": "Це доповнення було завантажено збоку.",
-          "setting": "Налаштування'",
-          "value": "Значення"
-        },
         "offline": {
           "title": "Схоже, ти не в мережі",
           "description": "Будь ласка, підключіться до Інтернету"
@@ -666,24 +616,7 @@
           "newest": "Встановлені (найновіші)",
           "a_z": "За алфавітом (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Створити",
-          "moved_title": "Створення доповнення переїхало!",
-          "moved_description": "Після оновлення 7.1 створення аддонів було перенесено у веб-інтерфейс",
-          "moved_button": "Незабаром...."
         }
-      }
-    },
-    "update": {
-      "title": "Оновлення",
-      "offline": {
-        "title": "Офлайн",
-        "description": "Неможливо отримати журнали оновлень в автономному режимі"
-      },
-      "error": {
-        "title": "Помилка",
-        "description": "Не вдалося підключитися до сервера"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Скопіювати посилання",
-      "email": "Електронна пошта"
+      "copy_link": "Скопіювати посилання"
     }
   },
   "toasts": {

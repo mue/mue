@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Foto oleh",
-      "unsplash": "di Unsplash",
       "information": "Informasi",
       "download": "Unduh",
       "downloads": "Unduhan",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Aktif",
-        "open_knowledgebase": "Buka Basis Pengetahuan",
         "additional_settings": "Pengaturan Tambahan",
         "reminder": {
           "title": "PERHATIAN",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Cari",
             "additional": "Additional options for search widget display and functionality",
-            "search_engine": "Mesin pencari",
-            "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "custom": "URL kustom",
-            "autocomplete": "Autocomplete",
-            "autocomplete_provider": "Provider Autocomplete",
-            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
             "voice_search": "Pencarian suara",
             "dropdown": "Dropdown pencarian",
             "focus": "Focus on tab open",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "by {author}",
         "all": "All",
-        "learn_more": "Learn More",
         "photo_packs": "Photo Packs",
         "quote_packs": "Quote Packs",
         "preset_settings": "Preset Settings",
-        "no_items": "Tidak ada item pada kategori ini",
-        "collection": "Collection",
-        "explore_collection": "Explore Collection",
-        "add_all": "Add All To Mue",
         "collections": "Collections",
-        "cant_find": "Can't find what you're looking for?",
-        "knowledgebase_one": "Visit the",
-        "knowledgebase_two": "knowledgebase",
-        "knowledgebase_three": "to create your own.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Ikhtisar",
-          "information": "Informasi",
-          "last_updated": "Pembaruan Terakhir",
-          "description": "Description",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Show More",
-          "show_less": "Show Less",
-          "show_all": "Show All",
-          "showing": "Showing",
-          "no_images": "No. Images",
-          "no_quotes": "No. Quotes",
-          "version": "Versi",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Part of",
-          "explore": "Explore",
-          "buttons": {
-            "addtomue": "Tambahkan ke Mue",
-            "remove": "Hapus",
-            "update_addon": "Perbarui Add-on",
-            "back": "Back",
-            "report": "Report",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Setting",
-          "value": "Value"
-        },
         "offline": {
           "title": "Sepertinya Anda sedang dalam mode luring",
           "description": "Harap periksa kembali koneksi Anda dan coba lagi nanti"
@@ -666,24 +616,7 @@
           "newest": "Terinstal (Terbaru)",
           "a_z": "Abjad (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Buat",
-          "moved_title": "Create add-on has moved!",
-          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_button": "Get Started"
         }
-      }
-    },
-    "update": {
-      "title": "Pembaruan",
-      "offline": {
-        "title": "Anda dalam mode luring",
-        "description": "Tidak dapat memeriksa pembaruan. Harap periksa kembali koneksi Anda dan coba lagi nanti."
-      },
-      "error": {
-        "title": "Galat",
-        "description": "Tidak dapat terhubung ke peladen"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Copy link",
-      "email": "Email"
+      "copy_link": "Copy link"
     }
   },
   "toasts": {

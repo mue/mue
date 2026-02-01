@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Фото",
-      "unsplash": "на Unsplash",
       "information": "Information",
       "download": "Download",
       "downloads": "Загрузки",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Включено",
-        "open_knowledgebase": "Открытая база знаний",
         "additional_settings": "Дополнительные настройки",
         "reminder": {
           "title": "NOTICE",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Панель поиска",
             "additional": "Дополнительные параметры отображения и функциональности поискового виджета",
-            "search_engine": "Поисковый движок",
-            "search_engine_subtitle": "Выберите поисковую систему для использования в строке поиска",
-            "custom": "Пользовательский поисковый движок",
-            "autocomplete": "Автозаполнение",
-            "autocomplete_provider": "Поставщик автозаполнения",
-            "autocomplete_provider_subtitle": "Поисковая система, используемая для выпадающих результатов автозаполнения",
             "voice_search": "Поиск голосом",
             "dropdown": "Выпадающий список поиска",
             "focus": "Фокус на открытой вкладке",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "от {author}",
         "all": "Все",
-        "learn_more": "Узнать больше",
         "photo_packs": "Наборы фото",
         "quote_packs": "Наборы цитат",
         "preset_settings": "Пресеты настроек",
-        "no_items": "Нет элементов в этой категории",
-        "collection": "Коллекция",
-        "explore_collection": "Исследуйте коллекцию",
-        "add_all": "Добавить все в Mue",
         "collections": "Коллекции",
-        "cant_find": "Не можете найти то, что ищете?",
-        "knowledgebase_one": "Посетить",
-        "knowledgebase_two": "база знаний",
-        "knowledgebase_three": "чтобы создать свой собственный.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Обзор",
-          "information": "Информация",
-          "last_updated": "Последнее обновление",
-          "description": "Описание",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Показать больше",
-          "show_less": "Показать меньше",
-          "show_all": "Показать все",
-          "showing": "Показаны",
-          "no_images": "№ Изображения",
-          "no_quotes": "Цитаты",
-          "version": "Версия",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Часть",
-          "explore": "Обзор",
-          "buttons": {
-            "addtomue": "Добавить в Mue",
-            "remove": "Удалить",
-            "update_addon": "Update Add-on",
-            "back": "Назад",
-            "report": "Жалоба",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Параметр",
-          "value": "Цена"
-        },
         "offline": {
           "title": "Похоже, что вы офлайн",
           "description": "Пожалуйста, подключитесь к интернету"
@@ -666,24 +616,7 @@
           "newest": "Установлено (Новое)",
           "a_z": "Алфавитный (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Создать",
-          "moved_title": "Создание аддонов переместилось!",
-          "moved_description": "После обновления 7.1, создание дополнений теперь переместилось в веб-UI",
-          "moved_button": "Начните"
         }
-      }
-    },
-    "update": {
-      "title": "Обновление",
-      "offline": {
-        "title": "Офлайн",
-        "description": "Не удалось получить журнал обновления в офлайн режиме"
-      },
-      "error": {
-        "title": "Ошибка",
-        "description": "Невозможно подключиться к серверу"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Копировать ссылку",
-      "email": "Эл. адрес"
+      "copy_link": "Копировать ссылку"
     }
   },
   "toasts": {

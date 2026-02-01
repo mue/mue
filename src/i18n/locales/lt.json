@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Nuotrauka",
-      "unsplash": "iš Unsplash",
       "information": "Informacija",
       "download": "Atsisiųsti",
       "downloads": "Atsisiuntimai",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Įjungta",
-        "open_knowledgebase": "Atidaryti žinių bazę",
         "additional_settings": "Papildomi nustatymai",
         "reminder": {
           "title": "PASTABA",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Paieška",
             "additional": "Papildomos paieškos valdiklio rodymo ir funkcionalumo parinktys",
-            "search_engine": "Paieškos sistema",
-            "search_engine_subtitle": "Pasirinkite paieškos sistemą, kurią naudosite paieškos juostoje",
-            "custom": "Pasirinktinis paieškos URL",
-            "autocomplete": "Automatinis užbaigimas",
-            "autocomplete_provider": "Automatinio užbaigimo teikėjas",
-            "autocomplete_provider_subtitle": "Paieškos sistema, naudojama automatinio užbaigimo išskleidžiamojo sąrašo rezultatams",
             "voice_search": "Paieška balsu",
             "dropdown": "Paieškos išskleidžiamasis sąrašas",
             "focus": "Fokusuoti atidarius skirtuką",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "autorius {author}",
         "all": "Visi",
-        "learn_more": "Sužinoti daugiau",
         "photo_packs": "Nuotraukų rinkiniai",
         "quote_packs": "Citatų rinkiniai",
         "preset_settings": "Iš anksto nustatyti nustatymai",
-        "no_items": "Nėra elementų šioje kategorijoje",
-        "collection": "Kolekcija",
-        "explore_collection": "Naršyti kolekciją",
-        "add_all": "Pridėti visus į Mue",
         "collections": "Kolekcijos",
-        "cant_find": "Nerandate to, ko ieškote?",
-        "knowledgebase_one": "Apsilankykite",
-        "knowledgebase_two": "žinių bazėje",
-        "knowledgebase_three": "norėdami sukurti savo.",
-        "installing": "Diegiama",
-        "product": {
-          "overview": "Apžvalga",
-          "information": "Informacija",
-          "last_updated": "Paskutinį kartą atnaujinta",
-          "description": "Aprašymas",
-          "details": "Išsami informacija",
-          "more_from_curator": "Daugiau panašių iš {name}",
-          "show_more": "Rodyti daugiau",
-          "show_less": "Rodyti mažiau",
-          "show_all": "Rodyti viską",
-          "showing": "Rodoma",
-          "no_images": "Paveikslėlių skaičius",
-          "no_quotes": "Citatų skaičius",
-          "version": "Versija",
-          "created_by": "Sukūrė",
-          "updated_at": "Atnaujinta",
-          "part_of": "Dalis",
-          "explore": "Naršyti",
-          "buttons": {
-            "addtomue": "Pridėti į Mue",
-            "remove": "Pašalinti",
-            "update_addon": "Atnaujinti priedą",
-            "back": "Atgal",
-            "report": "Pranešti",
-            "not_available_preview": "Negalima peržiūros režime"
-          },
-          "not_in_language": "Šis priedas nėra jūsų kalba",
-          "third_party_api": "Šis priedas naudoja trečiosios šalies API",
-          "sideload_warning": "Šis priedas buvo įkeltas iš šalies.",
-          "setting": "Nustatymas",
-          "value": "Reikšmė"
-        },
         "offline": {
           "title": "Atrodo, kad esate neprisijungę",
           "description": "Prisijunkite prie interneto"
@@ -666,24 +616,7 @@
           "newest": "Įdiegta (Naujausi)",
           "a_z": "Abėcėlės tvarka (A-Ž)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Kurti",
-          "moved_title": "Papildinio kūrimas perkeltas!",
-          "moved_description": "Po 7.1 atnaujinimo papildinių kūrimas perkeltas į žiniatinklio sąsają",
-          "moved_button": "Greitai..."
         }
-      }
-    },
-    "update": {
-      "title": "Atnaujinti",
-      "offline": {
-        "title": "Neprisijungęs",
-        "description": "Nepavyksta gauti atnaujinimo žurnalų veikiant neprisijungus"
-      },
-      "error": {
-        "title": "Klaida",
-        "description": "Nepavyko prisijungti prie serverio"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Kopijuoti nuorodą",
-      "email": "El. paštas"
+      "copy_link": "Kopijuoti nuorodą"
     }
   },
   "toasts": {

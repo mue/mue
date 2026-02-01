@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Photo de",
-      "unsplash": "sur Unsplash",
       "information": "Information",
       "download": "Télécharger",
       "downloads": "Téléchargements",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Activé",
-        "open_knowledgebase": "Ouvrir la base de connaissances",
         "additional_settings": "Paramètres additionnels",
         "reminder": {
           "title": "AVIS",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Recherche",
             "additional": "Options supplémentaires pour l'affichage et la fonctionnalité du widget de recherche",
-            "search_engine": "Moteur de recherche",
-            "search_engine_subtitle": "Choisissez le moteur de recherche à utiliser dans la barre de recherche",
-            "custom": "URL de recherche personnalisée",
-            "autocomplete": "Saisie semi-automatique",
-            "autocomplete_provider": "Fournisseur de saisie semi-automatique",
-            "autocomplete_provider_subtitle": "Moteur de recherche à utiliser pour les résultats de la liste déroulante de saisie semi-automatique",
             "voice_search": "Recherche vocale",
             "dropdown": "Menu déroulant de recherche",
             "focus": "Focus sur l'onglet ouvert",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "par {author}",
         "all": "Tout",
-        "learn_more": "En savoir plus",
         "photo_packs": "Packs de photos",
         "quote_packs": "Packs de citations",
         "preset_settings": "Paramètres prédéfinis",
-        "no_items": "Aucun élément dans cette catégorie",
-        "collection": "Collection",
-        "explore_collection": "Explorer la collection",
-        "add_all": "Ajouter tout à Mue",
         "collections": "Collections",
-        "cant_find": "Vous ne trouvez pas ce que vous cherchez ?",
-        "knowledgebase_one": "Visiter le",
-        "knowledgebase_two": "base de connaissances",
-        "knowledgebase_three": "pour créer le vôtre.",
-        "installing": "Installation",
-        "product": {
-          "overview": "Aperçu",
-          "information": "Informations",
-          "last_updated": "Dernière mise à jour",
-          "description": "Description",
-          "details": "Détails",
-          "more_from_curator": "Plus comme cela de {name}",
-          "show_more": "Afficher plus",
-          "show_less": "Afficher moins",
-          "show_all": "Afficher tout",
-          "showing": "Affichage",
-          "no_images": "Nbre d'images",
-          "no_quotes": "Nbre de citations",
-          "version": "Version",
-          "created_by": "Créé par",
-          "updated_at": "Mis à jour le",
-          "part_of": "Fait partie de",
-          "explore": "Explorer",
-          "buttons": {
-            "addtomue": "Ajouter à",
-            "remove": "Supprimer",
-            "update_addon": "Mettre à jour l'add-on",
-            "back": "Retour",
-            "report": "Signaler",
-            "not_available_preview": "Non disponible en aperçu"
-          },
-          "not_in_language": "Cet add-on n'est pas dans votre langue",
-          "third_party_api": "Cet add-on utilise une API tierce",
-          "sideload_warning": "Cet add-on a été chargé manuellement.",
-          "setting": "Paramètre",
-          "value": "Valeur"
-        },
         "offline": {
           "title": "On dirait que vous êtes hors ligne",
           "description": "Veuillez vous connecter à Internet"
@@ -666,24 +616,7 @@
           "newest": "Installé (plus récent)",
           "a_z": "Alphabétique (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Créer",
-          "moved_title": "La création d'add-on a été déplacée  !",
-          "moved_description": "A la suite de la mise à jour 7.1, la création d'add-ons a maintenant été déplacée vers l'interface web",
-          "moved_button": "Bientôt disponible...."
         }
-      }
-    },
-    "update": {
-      "title": "Mise à jour",
-      "offline": {
-        "title": "Hors ligne",
-        "description": "Impossible d'obtenir les journaux de mise à jour en mode hors ligne"
-      },
-      "error": {
-        "title": "Erreur",
-        "description": "Impossible de se connecter au serveur"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Copier le lien",
-      "email": "E-mail"
+      "copy_link": "Copier le lien"
     }
   },
   "toasts": {

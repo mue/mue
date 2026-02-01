@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "图像作者：",
-      "unsplash": "@ Unsplash",
       "information": "信息",
       "download": "下载",
       "downloads": "下载",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "已启用",
-        "open_knowledgebase": "打开知识库",
         "additional_settings": "更多设置",
         "reminder": {
           "title": "注意",
@@ -316,12 +314,6 @@
           "search": {
             "title": "搜索栏",
             "additional": "Additional options for search widget display and functionality",
-            "search_engine": "搜索引擎",
-            "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "custom": "自定义搜索链接",
-            "autocomplete": "搜索联想",
-            "autocomplete_provider": "联想功能提供引擎",
-            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
             "voice_search": "语音搜索",
             "dropdown": "搜索框左侧显示搜索引擎选择框",
             "focus": "Focus on tab open",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "by {author}",
         "all": "All",
-        "learn_more": "Learn More",
         "photo_packs": "图片包",
         "quote_packs": "名言包",
         "preset_settings": "预设设定",
-        "no_items": "本类别为空",
-        "collection": "Collection",
-        "explore_collection": "Explore Collection",
-        "add_all": "Add All To Mue",
         "collections": "Collections",
-        "cant_find": "Can't find what you're looking for?",
-        "knowledgebase_one": "Visit the",
-        "knowledgebase_two": "knowledgebase",
-        "knowledgebase_three": "to create your own.",
-        "installing": "Installing",
-        "product": {
-          "overview": "总览",
-          "information": "信息",
-          "last_updated": "更新日期",
-          "description": "Description",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Show More",
-          "show_less": "Show Less",
-          "show_all": "Show All",
-          "showing": "Showing",
-          "no_images": "No. Images",
-          "no_quotes": "No. Quotes",
-          "version": "版本",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Part of",
-          "explore": "Explore",
-          "buttons": {
-            "addtomue": "添加至 Mue",
-            "remove": "卸载",
-            "update_addon": "Update Add-on",
-            "back": "Back",
-            "report": "Report",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Setting",
-          "value": "Value"
-        },
         "offline": {
           "title": "您目前似乎离线",
           "description": "请连接到互联网。"
@@ -666,24 +616,7 @@
           "newest": "安装过 (从新到旧)",
           "a_z": "首字母 (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "创建",
-          "moved_title": "Create add-on has moved!",
-          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_button": "Get Started"
         }
-      }
-    },
-    "update": {
-      "title": "更新日志",
-      "offline": {
-        "title": "离线模式已启用",
-        "description": "不能从官网获取更新日志"
-      },
-      "error": {
-        "title": "错误",
-        "description": "无法连接到服务器"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Copy link",
-      "email": "Email"
+      "copy_link": "Copy link"
     }
   },
   "toasts": {

@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Fotoğraf sahibi",
-      "unsplash": ", Unsplash",
       "information": "Bilgilendirme",
       "download": "İndir",
       "downloads": "İndirilenler",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Etkinleştir",
-        "open_knowledgebase": "Bilgilendirme Sayfasını Aç",
         "additional_settings": "Ek Ayarlar",
         "reminder": {
           "title": "BİLDİRİM",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Arama",
             "additional": "Arama aracı için ekran ve işlevsellik seçeneklerini belirleyin.",
-            "search_engine": "Arama Motoru",
-            "search_engine_subtitle": "Arama çubuğunda kullanılacak arama motorunu seçin.",
-            "custom": "Özel URL/bağlantı",
-            "autocomplete": "Otomatik Tamamlama",
-            "autocomplete_provider": "Otomatik Tamamlama Sağlayıcısı",
-            "autocomplete_provider_subtitle": "Otomatik tamamlama açılır sonuçları için kullanılacak arama motorunu belirleyin.",
             "voice_search": "Sesli Arama",
             "dropdown": "Arama Motorları Açılır Menüsü",
             "focus": "Açık Sekmeye Odaklan",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "{author}",
         "all": "Tümü",
-        "learn_more": "Daha Fazla Bilgi Edin",
         "photo_packs": "Fotoğraf Paketleri",
         "quote_packs": "Alıntı Paketleri",
         "preset_settings": "Ön Ayar Paketleri",
-        "no_items": "Bu kategoride öğe yok",
-        "collection": "Koleksiyon",
-        "explore_collection": "Koleksiyonu Keşfedin",
-        "add_all": "Hepsini Ekle",
         "collections": "Koleksiyonlar",
-        "cant_find": "Aradığınızı bulamıyor musunuz?",
-        "knowledgebase_one": "Kendiniz oluşturmak için",
-        "knowledgebase_two": "bilgilendirme sayfamızı",
-        "knowledgebase_three": "ziyaret edin.",
-        "installing": "Kurulum",
-        "product": {
-          "overview": "Genel Bakış",
-          "information": "Bilgi",
-          "last_updated": "Son Güncelleme",
-          "description": "Açıklama",
-          "details": "Ayrıntılar",
-          "more_from_curator": "{name} tarafından sağlanan buna benzer diğer içerikler",
-          "show_more": "Daha Fazla Göster",
-          "show_less": "Daha Az Göster",
-          "show_all": "Hepsini Göster",
-          "showing": "Gösteriliyor",
-          "no_images": "Fotoğraf bulunamadı",
-          "no_quotes": "Alıntı Sayısı",
-          "version": "Versiyon",
-          "created_by": "Oluşturan",
-          "updated_at": "Tarihinde güncellendi",
-          "part_of": "Parçası",
-          "explore": "Keşfet",
-          "buttons": {
-            "addtomue": "Mue Tab'ıma Ekle",
-            "remove": "Kaldır",
-            "update_addon": "Eklentiyi Güncelle",
-            "back": "Geri",
-            "report": "Raporla",
-            "not_available_preview": "Önizlemede Kullanılamıyor"
-          },
-          "not_in_language": "Bu eklenti sizin dilinizde değil",
-          "third_party_api": "Bu eklenti üçüncü taraf bir API kullanır",
-          "sideload_warning": "Bu eklenti dışarıdan yüklenmiştir.",
-          "setting": "Ayar",
-          "value": "Değer"
-        },
         "offline": {
           "title": "Görünüşe bakılırsa çevrimdışısınız",
           "description": "Lütfen internete bağlanın"
@@ -666,24 +616,7 @@
           "newest": "Kurulanlar (En Yeni)",
           "a_z": "Alfabetik (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Oluştur",
-          "moved_title": "Eklenti oluşturma taşındı!",
-          "moved_description": "7.1 güncellemesinden sonra, eklentilerin oluşturulması web kullanıcı arayüzüne taşındı",
-          "moved_button": "Çok Yakında...."
         }
-      }
-    },
-    "update": {
-      "title": "Güncelleme",
-      "offline": {
-        "title": "Çevrimdışı",
-        "description": "Çevrimdışı moddayken güncelleme günlükleri alınamıyor"
-      },
-      "error": {
-        "title": "Hata",
-        "description": "Sunucuya bağlanılamadı"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Bağlantıyı kopyala",
-      "email": "E-posta"
+      "copy_link": "Bağlantıyı kopyala"
     }
   },
   "toasts": {

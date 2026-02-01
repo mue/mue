@@ -16,7 +16,6 @@
     },
     "background": {
       "credit": "Foto por",
-      "unsplash": "en Unsplash",
       "information": "Información",
       "download": "Descargar",
       "downloads": "Descargas",
@@ -101,7 +100,6 @@
       },
       "settings": {
         "enabled": "Activado",
-        "open_knowledgebase": "Open Knowledgebase",
         "additional_settings": "Additional Settings",
         "reminder": {
           "title": "AVISO",
@@ -316,12 +314,6 @@
           "search": {
             "title": "Búsqueda",
             "additional": "Additional options for search widget display and functionality",
-            "search_engine": "Motor de búsqueda",
-            "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "custom": "URL de búsqueda personalizada",
-            "autocomplete": "Autocompletado",
-            "autocomplete_provider": "Proveedor del autocompletado",
-            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
             "voice_search": "Búsqueda por voz",
             "dropdown": "Listado de búsqueda",
             "focus": "Focus on tab open",
@@ -589,52 +581,10 @@
         "title": "Marketplace",
         "by": "by {author}",
         "all": "All",
-        "learn_more": "Learn More",
         "photo_packs": "Paquetes de fotos",
         "quote_packs": "Paquetes de citas",
         "preset_settings": "Ajustes preestablecidos",
-        "no_items": "No hay artículos en esta categoría",
-        "collection": "Collection",
-        "explore_collection": "Explore Collection",
-        "add_all": "Add All To Mue",
         "collections": "Collections",
-        "cant_find": "Can't find what you're looking for?",
-        "knowledgebase_one": "Visit the",
-        "knowledgebase_two": "knowledgebase",
-        "knowledgebase_three": "to create your own.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Vista general",
-          "information": "Información",
-          "last_updated": "Última actualización",
-          "description": "Description",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Show More",
-          "show_less": "Show Less",
-          "show_all": "Show All",
-          "showing": "Showing",
-          "no_images": "No. Images",
-          "no_quotes": "No. Quotes",
-          "version": "Versión",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Part of",
-          "explore": "Explore",
-          "buttons": {
-            "addtomue": "Añadir a Mue",
-            "remove": "Desinstalar",
-            "update_addon": "Actualizar complemento",
-            "back": "Back",
-            "report": "Report",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Setting",
-          "value": "Value"
-        },
         "offline": {
           "title": "Parece que estás desconectado",
           "description": "Por favor conéctate a Internet"
@@ -666,24 +616,7 @@
           "newest": "Instalados (Nuevos)",
           "a_z": "Alfabético (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Crear",
-          "moved_title": "Create add-on has moved!",
-          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_button": "Get Started"
         }
-      }
-    },
-    "update": {
-      "title": "Actualizar",
-      "offline": {
-        "title": "Sin conexión",
-        "description": "No se pueden obtener actualizaciones en modo sin conexión"
-      },
-      "error": {
-        "title": "Error",
-        "description": "No se pudo conectar con el servidor"
       }
     },
     "welcome": {
@@ -752,8 +685,7 @@
       }
     },
     "share": {
-      "copy_link": "Copy link",
-      "email": "Email"
+      "copy_link": "Copy link"
     }
   },
   "toasts": {

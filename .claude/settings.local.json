@@ -56,6 +56,10 @@
     {
       "title": "Development Server",
       "description": "Use `bun run dev` for local development with hot reload. Use `bun run dev:host` to make it accessible on the network for testing on other devices."
+    },
+    {
+      "title": "Commenting",
+      "description": "Do not add comments to the codebase. Keep the code clean and self-explanatory."
     }
   ]
 }
