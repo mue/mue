@@ -61,11 +61,11 @@ const Stats = () => {
     saveFile(JSON.stringify(stats, null, 2), filename);
   };
 
-  const AchievementElement = ({ key, id, achieved, timestamp }) => {
+  const AchievementElement = ({ id, achieved, timestamp }) => {
     const { name, description } = getLocalisedAchievementData(id);
 
     return (
-      <div className="achievement" key={key}>
+      <div className="achievement">
         {achieved ? <FaTrophy className="trophy" /> : <MdLock className="trophyLocked" />}
         <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
           {achieved && timestamp && (
