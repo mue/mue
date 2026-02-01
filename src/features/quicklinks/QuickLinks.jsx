@@ -19,11 +19,13 @@ const QuickLinks = memo(() => {
     if (!element) return;
 
     const zoom = localStorage.getItem('zoomQuicklinks') || 100;
+    const style = localStorage.getItem('quickLinksStyle') || 'card';
+
     for (const link of element.getElementsByTagName('span')) {
       link.style.fontSize = `${14 * Number(zoom / 100)}px`;
     }
 
-    if (localStorage.getItem('quickLinksStyle') !== 'text_only') {
+    if (style !== 'text_only') {
       for (const img of element.getElementsByTagName('img')) {
         img.style.height = `${30 * Number(zoom / 100)}px`;
       }
@@ -81,7 +83,11 @@ const QuickLinks = memo(() => {
   const tooltipEnabled = localStorage.getItem('quicklinkstooltip');
 
   const quickLink = (item, index) => {
-    if (localStorage.getItem('quickLinksStyle') === 'text_only') {
+    const zoom = localStorage.getItem('zoomQuicklinks') || 100;
+    const iconSize = 30 * Number(zoom / 100);
+    const style = localStorage.getItem('quickLinksStyle') || 'card';
+
+    if (style === 'text_only') {
       return (
         <a
           className="quicklinkstext"
@@ -96,10 +102,7 @@ const QuickLinks = memo(() => {
       );
     }
 
-    const zoom = localStorage.getItem('zoomQuicklinks') || 100;
-    const iconSize = 30 * Number(zoom / 100);
-
-    if (localStorage.getItem('quickLinksStyle') === 'metro') {
+    if (style === 'metro') {
       return (
         <a
           className="quickLinksMetro"
@@ -115,6 +118,25 @@ const QuickLinks = memo(() => {
       );
     }
 
+    if (style === 'card') {
+      return (
+        <a
+          className="quickLinksCard"
+          key={`quicklink-${item.key}-${index}`}
+          href={item.url}
+          target={target}
+          rel={rel}
+          draggable={false}
+        >
+          <div className="card-icon-container">
+            <SmartIcon item={item} size={iconSize} />
+          </div>
+          <span className="card-label">{item.name}</span>
+        </a>
+      );
+    }
+
+    // Default icon style
     const link = (
       <a
         key={`quicklink-${item.key}-${index}`}

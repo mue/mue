@@ -431,6 +431,71 @@ button.quicklinks {
   }
 }
 
+.quickLinksCard {
+
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  transition: all 0.2s ease;
+  padding: 5px;
+  border-radius: 12px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &:hover .card-icon-container {
+    transform: scale(1.1);
+
+    @include themed {
+      background: t($modal-sidebarActive);
+    }
+  }
+
+  .card-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+
+    @include themed {
+      background: t($modal-sidebar);
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+  }
+
+  .card-label {
+    font-size: 11px;
+    text-align: center;
+    word-break: break-word;
+    line-height: 1.2;
+    max-width: 76px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    text-shadow: 0 0 10px rgb(0 0 0 / 30%);
+
+
+    @include themed {
+      color: t($color);
+    }
+  }
+}
+
 .quicklinknostyle {
   text-decoration: none;
   font-size: 14px;

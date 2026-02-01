@@ -7,10 +7,9 @@ import {
   MdOutlineStyle,
   MdOutlineVisibility,
   MdOutlineFolderOpen,
-  MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
 import { arrayMove } from '@dnd-kit/sortable';
-import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Header, Row, Content, Action, PreferencesWrapper, Section } from 'components/Layout/Settings';
 import { Checkbox, Dropdown } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import Modal from 'react-modal';
@@ -22,23 +21,6 @@ import { BookmarkService } from 'utils/quicklinks';
 
 import EventBus from 'utils/eventbus';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
-
-const NavigationCard = ({ icon: Icon, title, subtitle, onClick }) => {
-  return (
-    <div className="moreSettings" onClick={onClick}>
-      <div className="left">
-        <Icon />
-        <div className="content">
-          <span className="title">{title}</span>
-          <span className="subtitle">{subtitle}</span>
-        </div>
-      </div>
-      <div className="action">
-        <MdOutlineKeyboardArrowRight />
-      </div>
-    </div>
-  );
-};
 
 const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
   const [items, setItems] = useState(readQuicklinks());
@@ -239,6 +221,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
               name="quickLinksStyle"
               category="quicklinks"
               items={[
+                { value: 'card', text: 'Card' },
                 { value: 'icon', text: variables.getMessage(`${QUICKLINKS_SECTION}.options.icon`) },
                 {
                   value: 'text_only',
@@ -351,10 +334,23 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     const [syncStatus, setSyncStatus] = useState('');
     const [syncing, setSyncing] = useState(false);
 
+    const handleSyncToggle = (value) => {
+      const config = JSON.parse(localStorage.getItem('quicklinks_config') || '{}');
+      config.bookmarkSyncEnabled = value;
+      localStorage.setItem('quicklinks_config', JSON.stringify(config));
+    };
+
     const handleSync = async () => {
       setSyncing(true);
       setSyncStatus('Syncing...');
       try {
+        // Enable sync first if not already enabled
+        const config = JSON.parse(localStorage.getItem('quicklinks_config') || '{}');
+        if (!config.bookmarkSyncEnabled) {
+          config.bookmarkSyncEnabled = true;
+          localStorage.setItem('quicklinks_config', JSON.stringify(config));
+        }
+
         const hasPermission = await BookmarkService.checkPermissions();
         if (!hasPermission) {
           const granted = await BookmarkService.requestPermissions();
@@ -377,22 +373,38 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     };
 
     return (
-      <Row>
-        <Content
-          title="Bookmark Sync"
-          subtitle="Import and sync browser bookmarks to quick links"
-        />
-        <Action>
-          <Button
-            type="settings"
-            onClick={handleSync}
-            icon={<MdSync />}
-            label="Sync Bookmarks"
-            disabled={syncing}
+      <>
+        <Row>
+          <Content
+            title="Bookmark Sync"
+            subtitle="Automatically sync browser bookmarks to quick links"
           />
-          {syncStatus && <p style={{ marginTop: '8px', fontSize: '14px' }}>{syncStatus}</p>}
-        </Action>
-      </Row>
+          <Action>
+            <Checkbox
+              name="quicklinks_bookmarkSyncEnabled"
+              text="Enable Bookmark Sync"
+              category="quicklinks"
+              onChange={handleSyncToggle}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title="Manual Sync"
+            subtitle="Manually sync bookmarks now"
+          />
+          <Action>
+            <Button
+              type="settings"
+              onClick={handleSync}
+              icon={<MdSync />}
+              label="Sync Bookmarks"
+              disabled={syncing}
+            />
+            {syncStatus && <p style={{ marginTop: '8px', fontSize: '14px' }}>{syncStatus}</p>}
+          </Action>
+        </Row>
+      </>
     );
   };
 
@@ -455,33 +467,39 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
 
       {!currentSubSection && (
         <>
-          <NavigationCard
-            icon={MdOutlineStyle}
-            title="Appearance"
-            subtitle="Customize style and layout of quick links"
-            onClick={() => onSubSectionChange('appearance', sectionName)}
-          />
+          <PreferencesWrapper
+            setting="quicklinksenabled"
+            category="quicklinks"
+            visibilityToggle={true}
+          >
+            <Section
+              title="Appearance"
+              subtitle="Customize style and layout of quick links"
+              icon={<MdOutlineStyle />}
+              onClick={() => onSubSectionChange('appearance', sectionName)}
+            />
 
-          <NavigationCard
-            icon={MdOutlineVisibility}
-            title="Display"
-            subtitle="Configure tooltips and tab behavior"
-            onClick={() => onSubSectionChange('display', sectionName)}
-          />
+            <Section
+              title="Display"
+              subtitle="Configure tooltips and tab behavior"
+              icon={<MdOutlineVisibility />}
+              onClick={() => onSubSectionChange('display', sectionName)}
+            />
 
-          <NavigationCard
-            icon={MdOutlineFolderOpen}
-            title="Organization"
-            subtitle="Organize links into groups"
-            onClick={() => onSubSectionChange('organization', sectionName)}
-          />
+            <Section
+              title="Organization"
+              subtitle="Organize links into groups"
+              icon={<MdOutlineFolderOpen />}
+              onClick={() => onSubSectionChange('organization', sectionName)}
+            />
 
-          <NavigationCard
-            icon={MdSync}
-            title="Bookmark Sync"
-            subtitle="Import and sync browser bookmarks"
-            onClick={() => onSubSectionChange('sync', sectionName)}
-          />
+            <Section
+              title="Bookmark Sync"
+              subtitle="Import and sync browser bookmarks"
+              icon={<MdSync />}
+              onClick={() => onSubSectionChange('sync', sectionName)}
+            />
+          </PreferencesWrapper>
         </>
       )}
 
@@ -531,7 +549,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
           <PreferencesWrapper
             setting="quicklinksenabled"
             category="quicklinks"
-            visibilityToggle={true}
+            visibilityToggle={false}
           >
             <Row final={true}>
               <Content title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)} />
@@ -567,12 +585,12 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
             )}
           </PreferencesWrapper>
 
-          <div
-            className={`quicklinks-container ${!enabled ? 'disabled' : ''}`}
-            ref={quicklinksContainer}
-            aria-hidden={!enabled}
+          <PreferencesWrapper
+            setting="quicklinksenabled"
+            category="quicklinks"
+            visibilityToggle={false}
           >
-            <div className={`messagesContainer ${!enabled ? 'disabled' : ''}`}>
+            <div className={`messagesContainer`}>
               <SortableList
                 items={items}
                 enabled={enabled}
@@ -581,7 +599,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
                 deleteLink={(key, e) => deleteLink(key, e)}
               />
             </div>
-          </div>
+          </PreferencesWrapper>
         </>
       )}
 
